@@ -1,0 +1,240 @@
+// Phone is default so no min-width actually set for lowest setting.
+
+/* min-width: 320px (1st gen), 480px (2nd gen), 640px (landscape) */
+// Should put the lowest one you want to support here without media restrictions. 
+// Others in _phone.scss
+
+header, section, footer, aside, .content {
+    margin: 0 0;
+}
+
+body > footer {
+    margin-top: 2em;
+
+}
+
+#main > div, footer > div, #meta > div, #content, #comments > div {
+    position:relative;
+    text-align: left;
+    margin: 0 auto;
+    word-wrap:break-word;
+}
+
+
+#content {
+    &>figure {
+        min-width: 178px;
+        position: relative;
+        margin-bottom: 1em;
+        max-width: 100%;
+
+        &>img {
+            max-width: 100%;
+        }
+
+        &>figcaption {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 8px;
+            position: absolute;
+            background: rgba(0,0,0,.56);
+            color: white;
+            font-family: Helvetica;
+            font-size: 14px;
+
+            &>h4 {
+                margin: 0 0 8px;
+                padding: 0 0 5px;
+                box-shadow: 0 1px 0 0 rgba(255,255,255,.35);
+                text-shadow: none;
+                color: white;
+                font-size: 17px;
+            }
+            &>p {
+                margin: 0;
+                line-height: 1.25;
+            }
+        }
+    }
+}
+
+.full {
+    @include center;
+    @include clearfix;
+    display:block;
+    max-width: 100%;
+    min-width: 100%;
+
+    &>img {
+        display:inline !important;
+    }
+}
+
+#header {
+    position: relative;
+    padding-top: emStep(8);
+    transition: opacity .7s;
+    /*@include  easeout(.7);*/
+
+    figure {
+        @include colwidth(6);
+        @include colmargin(3);
+        padding-bottom: emStep(8);
+
+        & > img {
+            width: 8em;
+            margin: 0 auto;
+        }
+    }
+}
+
+#logo {
+    font-size: 8em;
+    line-height: .7em;
+    text-align:center;
+    margin:.2em 0 .2em 0;
+}
+
+#byline {
+    @include hidden;
+}
+
+#nav {
+        text-align: center;
+        @include colwidth(12);
+
+    & > ul {
+        padding: 0;
+        display: inline;
+    }
+
+    li {
+        display: inline-block;
+        list-style: none outside none;
+        padding-bottom: emStep(8);
+        width: 20%;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+    }
+}
+
+#mainnav {
+    text-align: center;
+    margin-top: 1em;
+
+    span {
+        vertical-align: middle;
+        display:block;
+        font-size:75%;
+    }
+
+
+    span.icon {
+        font-size: 1.4em;
+    }
+
+    a {
+     color: #444;
+     transition: color 0.5s ease-in-out;
+    }
+
+    a:hover {
+        color: $peter-river;
+    }
+
+    li {
+        font-size: 130%;
+    }
+
+    & > li > a:hover i {
+        box-shadow: 0 0 0 0 RGBA(87, 161, 222, .15);
+        -webkit-transition: box-shadow .4s ease-in-out;
+        -moz-transition: box-shadow .4s ease-in-out;
+        -o-transition: box-shadow .4s ease-in-out;
+        -ms-transition: box-shadow .4s ease-in-out;
+        transition: box-shadow .4s ease-in-out;
+    }
+}
+
+.icon > i {
+    display: inline-block;
+    padding: 0.33em;
+    border-radius: 50%;
+    box-shadow: 0 0 0 30px transparent;
+    background: rgba(255,255,255, .8);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: box-shadow .6s ease-in-out;
+    -moz-transition: box-shadow .6s ease-in-out;
+    -o-transition: box-shadow .6s ease-in-out;
+    -ms-transition: box-shadow .6s ease-in-out;
+    transition: box-shadow .6s ease-in-out;
+}
+
+aside#tail {
+
+    &> #search, &> #explore {
+        text-align: center;
+        @include colwidth(12);
+        @include cellpad;
+    }
+
+    section {
+        margin-bottom: 1.5em;
+    }
+}
+
+#sidebar {
+    @include hidden;
+}
+
+article {
+    min-height: 1px;
+    @include colwidth(12);
+    padding-bottom: 2em;
+}
+
+body > footer > div {
+    border-top: 1px solid $silver;
+    padding-bottom: 1em;
+    margin-bottom:0;
+    padding-top: .7em;
+}
+
+body > footer p {
+    margin:0;
+    padding:0;
+    font-size:80%;
+    line-height: 1.5;
+}
+
+#social, .dropdown {
+    @include hidden;
+}
+
+#tags {
+    line-height: 2;
+}
+
+#author {
+    width:100% !important;
+    padding-top: 2em;
+}
+
+#next {
+    text-align: right;
+}
+
+#next, #prev {
+    width: 100% !important;
+    padding-top: 2em;
+}
