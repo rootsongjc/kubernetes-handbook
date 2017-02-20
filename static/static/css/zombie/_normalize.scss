@@ -1,0 +1,76 @@
+//  Margin, padding, and border resets
+//  except for form elements
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, nav, section, menu, time, mark, audio, video, canvas {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+// Consistency fixes
+// adopted from http://necolas.github.com/normalize.css/
+
+html {
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    min-height: 100%;
+    font-size: 100%;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, nav, section, audio, canvas, video {
+    display: block;
+}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+b, strong {
+    font-weight: bold;
+}
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+input, textarea, button, select {
+    margin: 0;
+    font-size: 100%;
+    line-height: normal;
+    vertical-align: baseline;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    @include bb;
+}
+textarea {
+    overflow: auto;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+  @include bb;
+}

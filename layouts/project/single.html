@@ -1,0 +1,53 @@
+{{ partial "header.html" . }}
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+{{ partial "subheader.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+
+<section id="main">
+  <h1 itemprop="name" id="title">{{ .Title }}</h1>
+  <div>
+        <article itemprop="articleBody" id="content">
+           {{ .Content }}
+        </article>
+  </div>
+</section>
+
+<aside id="meta">
+    <div itemscope itemtype="http://schema.org/SoftwareApplication" id="projectmeta">
+        {{ with .Params.project_name }}
+            <h2 itemprop="name"> {{ . }} </h2>
+        {{ end }}
+
+        {{ with .Params.project_description }}
+        <em itemprop="name"> {{.}} </em><br>
+        {{ end }}
+        <span class="smaller" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            by <span itemprop="name">Steve Francia.</span></span><br>
+        {{ with .Params.official_url }} <a href="{{.}}">{{.}}</a> {{end}}<br>
+        {{if isset .Params "download_url" }} <a id="download_link" class="pure-button" href="{{ index .Params "download_url" }}">
+            <i class="icon-cloud-download"></i> Download{{if isset .Params "version" }}<span itemprop="softwareVersion"> {{ index .Params "version" }}</span>{{end}}
+        {{if isset .Params "release_date" }}<br> <time itemprop="dateModified" datetime="{{ index .Params "release_date" }}" id="software_date"> {{ index .Params "release_date" }} </time> {{end}}
+             </a><br>{{end}}
+        {{if isset .Params "software_image" }} <meta itemprop="image" content="{{ index .Params "software_iamge" }}">{{end}}
+        {{if isset .Params "download_url" }}<meta itemprop="downloadURL" content="{{ index .Params "download_url" }}">{{end}}
+        <meta itemprop="publisher" content="{{ index .Params "publisher" | or "spf13.com" }}">
+        <meta itemprop="softwareApplicationCategory" content="{{ index .Params "software_category" | or "UtilitiesApplication" }}">
+        <meta itemprop="operatingSystems" content="{{ index .Params "operating_system" | or "Windows 7 and above, OSX 10.7 and above, linux" }}">
+    </div>
+
+{{ partial "details.html" . }}
+</aside>
+
+<meta itemprop="wordCount" content="{{ .WordCount }}">
+<meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02" }}">
+<meta itemprop="url" content="{{ .Permalink }}">
+
+
+{{if isset .Params "project_url" }}
+<div id="outer_ribbon">
+<div id="ribbon">
+    <a href="{{ index .Params "project_url" }}" rel="me">Fork me on GitHub</a>
+</div> </div>
+{{ end }}
+
+{{ partial "footer.html" . }}

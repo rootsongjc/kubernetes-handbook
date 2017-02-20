@@ -1,0 +1,73 @@
+// Phone is default so no min-width actually set for lowest setting.
+
+/* min-width: 320px (1st gen), 480px (2nd gen), 640px (landscape) */
+@media screen and (min-width: #{480/$em}em) {
+
+    .half, .third, .twothirds { max-width: 100% !important; }
+
+    #mainnav {
+        span.icon {
+            /*font-size: 2em;*/
+        }
+    }
+
+    #meta > section, #meta > ul {
+        @include colwidth(6);
+    }
+
+    #popular, #new {
+        @include colwidth(6);
+        @include cellpad;
+    }
+}
+
+//as an example of a mix & max slice
+/*@media screen and (min-width: #{640/$em}em) and (max-width: #{720/$em}em) {*/
+@media screen and (min-width: #{640/$em}em) {
+
+    body {
+        @include fontsize(1);
+    }
+
+    h1 {
+        text-align: left;
+    }
+
+    #meta > div > section, #meta > div > ul {
+        @include colwidth(4);
+        vertical-align: top;
+    }
+
+    #next, #prev {
+        width: 50% !important;
+        padding-top: 2em;
+    }
+
+    .half { max-width: 14em !important; }
+    .third { max-width: 10em !important; }
+    .twothirds { max-width: 20em !important; }
+
+    #header {
+        figure {
+            @include colwidth(3);
+            margin: 0;
+
+            & > img {
+                width: 8em;
+            }
+        }
+    }
+
+    #nav {
+        padding-top: 2.3em;
+        @include colmargin(1);
+        @include colwidth(8);
+    }
+
+    #mainnav {
+        span.icon {
+            /*font-size: 2em;*/
+        }
+    }
+}
+

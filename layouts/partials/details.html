@@ -1,0 +1,50 @@
+{{ $baseurl := .Site.BaseURL }}
+    <div>
+        <section id="datecount">
+          <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
+          <h5 id="wc"> {{ .FuzzyWordCount }} Words </h5>
+          <h5 id="readtime"> Read in about {{ .ReadingTime }} Min </h5>
+        </section>
+        <ul id="categories">
+          {{ range .Params.topics }}
+            <li><a href="{{ $baseurl }}/topics/{{ . | urlize }}">{{ . }}</a> </li>
+          {{ end }}
+        </ul>
+        <ul id="tags">
+          {{ range .Params.tags }}
+            <li> <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> </li>
+          {{ end }}
+        </ul>
+    </div>
+
+    <div>
+        <section id="prev">
+            &nbsp;{{if .Prev}}<a class="previous" href="{{.Prev.Permalink}}"><i class="icon-arrow-left"></i> {{.Prev.Title}}</a><br>{{end}}
+        </section><section id="next">
+            &nbsp;{{if .Next}}<a class="next" href="{{.Next.Permalink}}">{{.Next.Title}} <i class="icon-arrow-right"></i></a>{{end}}
+        </section>
+    </div>
+
+    <div>
+        <section id="author">
+             <h4>About the Author:</h4> 
+            <p>
+            Steve Francia has been responsible for two of the largest commercial open
+            source projects as the current Chief Operator of the <a href="http://docker.com">Docker Project</a> and the
+            former Chief Developer Advocate of <a href="http://mongodb.com">MongoDB</a>. Steve has also run some of the top
+            community-based open source projects: <a href="http://vim.spf13.com">spf13-vim</a>, <a href="http://gohugo.io">Hugo</a>, <a href="http://github.com/spf13/cobra">Cobra</a> & <a href="http://github.com/spf13/viper">Viper</a>
+            </p><p>
+            He loves open source and is thrilled to be able to work on it full-time and
+            then some. In writing, Steve tweets as <a href="http://twitter.com/spf13">@spf13</a>, 
+            codes on <a href="http://github.com/spf13">GitHub</a>, 
+            blogs at <a href="http://spf13.com">spf13.com</a>,
+            connects on <a href="http://www.linkedin.com/in/stevefrancia">LinkedIn</a>,
+            ocassionally posts on <a title="Author: Steve Francia on Google+" rel="author" href="https://plus.google.com/+SteveFrancia/posts?rel=author" target="_blank">Google+</a> 
+            and has written a few books for O'Reilly.
+            </p><p>
+            In person, he enjoys giving talks and workshops and spending time with the
+            developer community around the world. When not coding, he is usually having fun
+            outdoors with his wife and four children.
+            </p>
+        </section>
+    </div>

@@ -1,0 +1,4 @@
+languageCode = "en-us"
+title = "Jimmy's blog"
+baseurl = "http://rootsongjc.github.io/"
+disqusShortname = "rootsongjc"
