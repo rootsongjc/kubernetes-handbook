@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Jimmy&#39;s blog</title>
+    <link>http://rootsongjc.github.io/post/index.xml</link>
+    <description>Recent content in Posts on Jimmy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Feb 2017 22:28:24 +0800</lastBuildDate>
+    <atom:link href="http://rootsongjc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>helloworld</title>
+      <link>http://rootsongjc.github.io/post/helloworld/</link>
+      <pubDate>Mon, 20 Feb 2017 22:28:24 +0800</pubDate>
+      
+      <guid>http://rootsongjc.github.io/post/helloworld/</guid>
+      <description>
+
+&lt;h1 id=&#34;hello-world&#34;&gt;Hello world&lt;/h1&gt;
+
+&lt;p&gt;This is my first post!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

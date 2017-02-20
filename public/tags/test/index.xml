@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on Jimmy&#39;s blog</title>
+    <link>http://rootsongjc.github.io/tags/test/index.xml</link>
+    <description>Recent content in Test on Jimmy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://rootsongjc.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>about</title>
+      <link>http://rootsongjc.github.io/about/</link>
+      <pubDate>Mon, 20 Feb 2017 20:10:56 +0800</pubDate>
+      
+      <guid>http://rootsongjc.github.io/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-me&#34;&gt;About me&lt;/h1&gt;
+
+&lt;p&gt;Jimmy Song
+rootsongjc@gmail.com&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
