@@ -1,0 +1,43 @@
+//  Simple fluid media
+
+figure {
+    position: relative;
+}
+figure img, figure object, figure embed, figure video {
+    max-width: 100%;
+    display: block;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+body {
+    @include normal;
+}
+
+h1 {
+    @include huge;
+}
+
+h2 {
+    @include large;
+}
+
+h3 {
+    @include normal;
+}
+
+// May want to do the clearfix by intent rather than default
+body > header, body > section, body > aside, body > footer, body > .content {
+    @include body-container;
+}
+
+p {
+    margin-bottom: emStep(8);
+}
+
+article ul, article ol {
+    margin-bottom: emStep(8);
+    margin-left: emStep(8);
+}

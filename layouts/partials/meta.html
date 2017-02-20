@@ -1,0 +1,42 @@
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{with .Description }}<meta name="description" content="{{ . }}">{{end}}
+<meta name="keywords" content="{{ if .Keywords }}{{ range .Keywords }}{{ . }}, {{ end }}{{else if isset .Params "tags" }}{{ range .Params.tags }}{{ . }}, {{ end }}{{end}}">
+
+ <!-- open graph -->
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="{{ .Description }}"/>
+<meta property="og:title" content="{{ .Title }} : spf13.com"/>
+<meta property="og:site_name" content="spf13 is Steve Francia"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02" }}"/>
+<meta property="article:modified_time" content="{{ .Date.Format "2006-01-02" }}"/>
+
+
+{{if .Keywords }}
+{{ range .Keywords }}<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{else if isset .Params "tags" }}
+{{ range .Params.tags }}<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{end}}
+
+<!--Twitter Cards-->
+<meta name="twitter:card" content="summary">
+<!--<meta name="twitter:card" content="summary_large_image">-->
+<meta name="twitter:site" content="@spf13">
+<meta name="twitter:title" content="{{ .Title }} : spf13.com">
+<meta name="twitter:creator" content="@spf13">
+<meta name="twitter:description" content="{{ .Description }}">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="spf13.com">
+

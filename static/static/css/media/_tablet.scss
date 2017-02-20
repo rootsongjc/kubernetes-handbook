@@ -1,0 +1,38 @@
+/* min-width: 720px (ipad), 768px (other tabs), 900px (landscape) */
+
+@media screen and (min-width: #{720/$em}em) {
+
+}
+
+
+
+@media screen and (min-width: #{768/$em}em) {
+
+    h1#title {
+        margin: emStep(2) 0 emStep(4);
+    }
+
+    #logo {
+        font-size: 10em;
+        line-height: .5em;
+        text-align:center;
+        margin: .2em;
+    }
+
+    #nav {
+        padding-top: 2.7em;
+        @include colmargin(2);
+        @include colwidth(7);
+    }
+
+    .half { max-width: 19em !important; }
+    .third { max-width: 13em !important; }
+    .twothirds { max-width: 26em !important; }
+
+
+}
+
+
+@media screen and (min-width: #{900/$em}em) {
+
+}

@@ -1,0 +1,45 @@
+/*
+ *
+ *  Zombie Responsive System (1.0)	<http://zombiegridsystem.spf13.com/>
+ *  by Steve Francia 			<http://spf13.com/>
+ *  licensed under MIT			<http://opensource.org/licenses/mit-license.php>
+ *
+ */
+
+@import "mydefines";
+
+@import "zombie/defines";
+@import "zombie/functions";
+@import "zombie/mixins";
+@import "zombie/normalize";
+@import "zombie/font-sizes";
+@import "zombie/base";
+
+//@import "media/main";
+
+@import "mycolors";
+@import "myfonts";
+@import "mystyles";
+
+// Choose to create all, any or just one (lowest) per media
+
+// No media queries should be in this file
+@import "media/default";
+
+// 3 or 4 columns
+/* min-width: 320px (1st gen), 480px (2nd gen), 640px (landscape) */
+@import "media/phone";
+
+// 6 columns
+/* min-width: 720px (ipad), 768px (other tabs), 900px (landscape) */
+@import "media/tablet";
+
+// 8 or 12 columns
+/* min-width: 1024px (xga), 1200px (wxga), 1600px (uxga) */
+@import "media/desktop";
+
+// 12 columns
+/* min-width: 1920px (hd 1080), 2048px (2k), 2560px (wqhd)  */
+@import "media/widescreen";
+
+@import "spf13-1"

@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+{{ partial "subheader.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+
+<section id="main">
+  <h1 itemprop="name" id="title">{{ .Title }}</h1>
+  <div>
+        <article itemprop="articleBody" id="content">
+           {{ .Content }}
+        </article>
+  </div>
+</section>
+
+{{ partial "meta_aside.html" . }}
+
+{{ partial "disqus.html" . }}
+{{ partial "footer.html" . }}

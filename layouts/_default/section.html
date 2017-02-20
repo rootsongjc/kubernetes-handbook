@@ -1,0 +1,20 @@
+{{ partial "header.html" . }}
+<body lang="en">
+{{ partial "subheader.html" . }}
+
+<section id="main">
+  <div>
+   <h1 id="title">{{ .Title }}</h1>
+            {{ range .Data.Pages.GroupByDate "2006" }}
+            <h2>{{ .Key }}</h2>
+                <ul id="list">
+                    {{ range .Pages }}
+                        {{ .Render "li"}}
+                    {{ end }}
+                </ul>
+            {{ end }}
+  </div>
+</section>
+
+<aside id="meta"> </aside>
+{{ partial "footer.html" . }}
