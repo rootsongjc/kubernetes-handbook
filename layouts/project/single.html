@@ -22,7 +22,7 @@
         <em itemprop="name"> {{.}} </em><br>
         {{ end }}
         <span class="smaller" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            by <span itemprop="name">Steve Francia.</span></span><br>
+            by <span itemprop="name">Jimmy Song.</span></span><br>
         {{ with .Params.official_url }} <a href="{{.}}">{{.}}</a> {{end}}<br>
         {{if isset .Params "download_url" }} <a id="download_link" class="pure-button" href="{{ index .Params "download_url" }}">
             <i class="icon-cloud-download"></i> Download{{if isset .Params "version" }}<span itemprop="softwareVersion"> {{ index .Params "version" }}</span>{{end}}
