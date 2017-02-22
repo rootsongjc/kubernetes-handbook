@@ -11,3 +11,5 @@ draft = false
 - [Docker practice](https://rootsongjc.github.io/docker-practice/) - Docker in practice
 - [Go practice](https://rootsongjc.github.io/go-practice/) - Go in practice
 - [Linux practice](https://rootsongjc.github.io/linux-practice) - Linux in practice :)
+- [Team management](https://rootsongjc.github.com/team-management) - About team management
+
