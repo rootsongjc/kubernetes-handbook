@@ -1,6 +1,6 @@
 +++
 date = "2017-02-22T16:56:04+08:00"
-title = "my_project"
+title = "My github pages"
 draft = false
 
 +++
@@ -12,4 +12,5 @@ draft = false
 - [Go practice](https://rootsongjc.github.io/go-practice/) - Go in practice
 - [Linux practice](https://rootsongjc.github.io/linux-practice) - Linux in practice :)
 - [Team management](https://rootsongjc.github.com/team-management) - About team management
+- [Journal](https://rootsongjc.github.com/journal) - My journal
 
