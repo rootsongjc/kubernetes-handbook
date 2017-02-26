@@ -30,7 +30,7 @@
              </a><br>{{end}}
         {{if isset .Params "software_image" }} <meta itemprop="image" content="{{ index .Params "software_iamge" }}">{{end}}
         {{if isset .Params "download_url" }}<meta itemprop="downloadURL" content="{{ index .Params "download_url" }}">{{end}}
-        <meta itemprop="publisher" content="{{ index .Params "publisher" | or "spf13.com" }}">
+        <meta itemprop="publisher" content="{{ index .Params "publisher" | or "rootsongjc.github.io" }}">
         <meta itemprop="softwareApplicationCategory" content="{{ index .Params "software_category" | or "UtilitiesApplication" }}">
         <meta itemprop="operatingSystems" content="{{ index .Params "operating_system" | or "Windows 7 and above, OSX 10.7 and above, linux" }}">
     </div>
