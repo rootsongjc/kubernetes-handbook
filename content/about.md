@@ -8,6 +8,9 @@ Tags = ["Test"]
 +++
 
 # About me
-Jimmy Song
-rootsongjc@gmail.com
 
+- Jimmy Song
+- rootsongjc@gmail.com
+- wechat: jimmysong
+
+![wechat_qrcode](imgs/wechat_qrcode.jpg)
