@@ -2,7 +2,7 @@
 date = "2017-02-26T20:18:54+08:00"
 title = "TalkingData Annual Meeting"
 draft = false
-tag = "talkingdata"
+Tags = ["talkingdata"]
 
 +++
 
