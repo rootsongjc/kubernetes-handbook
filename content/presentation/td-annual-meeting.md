@@ -14,7 +14,5 @@ Dayin Theater, Beijing Friday, Feb 24, 2017
 
 ![pics2](http://olz1di9xf.bkt.clouddn.com/2017022402.jpeg)
 
-![pics3](http://a1.qpic.cn/psb?/V11ZhrQJ1eeDv4/9lD*rIhh5ogqNcJSPrUii18.8Bp1Bvxv5P65X55HRT4!/b/dCABAAAAAAAA&bo=VAY4BP4MqQgFAB4!&rf=viewer_4&t=5)
-
 Photo by [Jimmy Song](http://rootsongjc.github.io)
 
