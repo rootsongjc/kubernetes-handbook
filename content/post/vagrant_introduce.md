@@ -10,6 +10,21 @@ Tags = ["vagrant","tools","hashicorp"]
 
 久闻**Vagrant**大名，之前经常看到有开源项目使用它作为分布式开发的环境配置。
 
+因为今天在看[contiv](https://github.com/contiv/netplugin)正好里面使用vagrant搭建的开发测试环境，所以顺便了解下。它的[Vagrantfile](https://github.com/contiv/netplugin/blob/master/Vagrantfile)文件中定义了三台主机。并安装了很多依赖软件，如consul、etcd、docker、go等，整的比较复杂。
+
+```
+➜  netplugin git:(master) ✗ vagrant status
+Current machine states:
+
+netplugin-node1           running (virtualbox)
+netplugin-node2           running (virtualbox)
+netplugin-node3           running (virtualbox)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+```
+
 Vagrant是[hashicorp](https://www.hashicorp.com/)这家公司的产品，这家公司主要做数据中心PAAS和虚拟化，其名下大名鼎鼎的产品有``Consul``、``Vault``、``Nomad``、``Terraform``。他们的产品都是基于**Open Source**的[Github地址](https://github.com/hashicorp)。
 
 ## 用途
