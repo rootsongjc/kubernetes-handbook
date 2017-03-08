@@ -1,10 +1,14 @@
 +++
 date = "2017-03-08T20:40:08+08:00"
-title = "vagrant介绍"
+title = "Vagrant介绍"
 draft = false
 Tags = ["vagrant","tools","hashicorp"]
 
 +++
+
+![光熙家园夜景](http://olz1di9xf.bkt.clouddn.com/2017030513.jpg)
+
+*（题图：北京地铁13号线光熙家园夜景）*
 
 ## 起源
 
