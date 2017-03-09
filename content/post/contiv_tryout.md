@@ -12,7 +12,7 @@ Tags = ["contiv","docker","docker plugin","network","cisco","sdn"]
 
 关于contiv的介绍请看我的上一篇文章[Contiv Intro](http://rootsongjc.github.io/post/contiv_guide/)。
 
-开发环境使用**Vagrant**搭建，昨天试用了下，真不知道它们是怎么想的，即然是docker插件为啥不直接在docker中开发呢，我的这篇文章介绍如何搭建docker开发环境，http://rootsongjc.github.io/post/docker-dev-env/，可以在docker中开发docker，当然也可以用来开发contiv啊😄，只要下载一个docker镜像即可`dockercore/docker:latest`，不过有点大2.31G。
+开发环境使用**Vagrant**搭建，昨天试用了下，真不知道它们是怎么想的，即然是docker插件为啥不直接在docker中开发呢，我有篇文章介绍[如何搭建docker开发环境](http://rootsongjc.github.io/post/docker-dev-env/)，可以在docker中开发docker，当然也可以用来开发contiv啊😄，只要下载一个docker镜像`dockercore/docker:latest`即可，不过有点大2.31G，使用阿里云的mirror下载倒是也划算，总比你自己部署一个开发环境节省时间。
 
 ### Contiv概念解析
 
@@ -65,7 +65,7 @@ Contiv的编译安装比较复杂，我们直接下载github上的[release-1.0.0
 
 这个release是2017年3月8日发布的，就在我写这篇文章的前一天。有个**最重要的更新**是<u>支持docker1.13 swarm mode</u>。
 
-安装文档：https://github.com/contiv/netplugin/blob/master/install/HowtoSetupContiv.md
+[官方安装文档](https://github.com/contiv/netplugin/blob/master/install/HowtoSetupContiv.md)
 
 下载解压后会得到如下几个文件：
 
