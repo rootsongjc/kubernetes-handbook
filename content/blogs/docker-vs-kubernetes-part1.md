@@ -1,6 +1,6 @@
 +++
 date = "2017-03-10T21:09:47+08:00"
-title = "docker vs kubernetes part1"
+title = "Docker v.s Kubernetes part1"
 draft = false
 Tags = ["docker","kubernetes"]
 +++
@@ -11,7 +11,7 @@ Tags = ["docker","kubernetes"]
 
 ### 前言
 
-这一系列文章是对比*kubernetes*和*docker*这两者之间的差异，鉴于我之前从docker1.10.3起开始使用docker，对原生docker的了解比较多，最近又正在看**Kunernetes权威指南（第二版）**这本书（P.S感谢*电子工业出版社*的编辑朋友赠送此书）。这系列文章不是为了比较孰优孰劣，**适合自己的才是最好的**。
+这一系列文章是对比kubernetes 和docker两者之间的差异，鉴于我之前从docker1.10.3起开始使用docker，对原生docker的了解比较多，最近又正在看**Kunernetes权威指南（第二版）**这本书（P.S感谢<u>电子工业出版社</u>的编辑朋友赠送此书）。这系列文章不是为了比较孰优孰劣，**适合自己的才是最好的**。
 
 此系列文章中所说的**docker**指的是*17.03-ce*版本。
 
