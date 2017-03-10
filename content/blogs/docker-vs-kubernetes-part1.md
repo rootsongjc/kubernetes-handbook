@@ -7,7 +7,7 @@ Tags = ["docker","kubernetes"]
 
 ![杭州西湖](http://olz1di9xf.bkt.clouddn.com/20161016031.jpg)
 
-*（题图：杭州西湖）*
+*（题图：杭州西湖 Oct 16,2016）*
 
 ### 前言
 
@@ -48,7 +48,8 @@ Docker的资源对象相对于kubernetes来说就简单多了，只有以下几�
 - Pod中有个最底层的pause 容器，其他业务容器共用他的IP，docker因为没有这层概念，所以没法共用IP，而是使用overlay网络同处于一个网络里来通信。
 - Kubernetes在rc中使用环境变量传递配置（1.3版本是这样的，后续版本还没有研究过）
 - Kuberentes Label 可以在开始和动态的添加修改，所有的资源对象都有，这一点docker也有，但是资源调度因为没有kubernetes那么层级，所有还是相对比较弱一些。
-- Kubernetes对象选择机制继续通过label selector，用于对象调度
+- Kubernetes对象选择机制继续通过label selector，用于对象调度。
+- Kubernetes中有一个比较特别的镜像，叫做`google_containers/pause`，这个镜像是用来实现Pod概念的。
 - HPA horizontal pod autoscaling 横向移动扩容，也是一种资源对象，根据负载变化情况针对性的调整pod目标副本数。
 - Kubernetes中有三个IP，Node,Pod,Cluster IP的关系比较复杂，docker中没有Cluster IP的概念。
 - 持久化存储，在Kubernetes中有Persistent volume 只能是网络存储，不属于任何node，独立于pod之外，而docker只能使用`volume plugin`。
