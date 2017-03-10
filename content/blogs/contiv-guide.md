@@ -8,7 +8,7 @@ Tags = ["contiv","cisco","docker","network","docker plugin"]
 
 ![蓝色港湾](http://olz1di9xf.bkt.clouddn.com/2017021162.jpg)
 
-*(题图：北京蓝色港湾夜景)*
+*(题图：北京蓝色港湾夜景 Feb 11,2017 元宵节)*
 
 **Contiv**是思科开发的docker网络插件，从2015年就开源了，业界通常拿它和Calico比较。貌似Contiv以前还开发过volume plugin，现在销声匿迹了，只有netplugin仍在活跃开发。
 

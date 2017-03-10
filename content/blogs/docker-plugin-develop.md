@@ -8,7 +8,7 @@ Tags = ["docker","docker plugin"]
 
 ![杭州吴山](http://olz1di9xf.bkt.clouddn.com/20161016022.jpg)
 
-*（题图：杭州吴山步道旁的墙壁）*
+*（题图：杭州吴山步道旁的墙壁 Oct 16,2016）*
 
 [官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)
 
