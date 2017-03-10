@@ -1,6 +1,6 @@
 +++
 date = "2017-03-09T14:23:04+08:00"
-title = "Contiv人坑指南-试用全记录"
+title = "Contiv入坑指南-试用全记录"
 draft = false
 Tags = ["contiv","docker","docker plugin","network","cisco","sdn"]
 
