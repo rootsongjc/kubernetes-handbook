@@ -7,11 +7,14 @@ Tags = ["Test"]
 
 +++
 
+![myself](http://olz1di9xf.bkt.clouddn.com/jimmy-self.jpg)
+
 # About me
 
 - Jimmy Song
+- Beijing, China
 - rootsongjc@gmail.com
-- wechat: jimmysong
+- Wechat: jimmysong
 
 ## What I like
 
