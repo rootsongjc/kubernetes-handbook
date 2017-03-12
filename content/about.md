@@ -24,4 +24,4 @@ Movie, Kubrick, Miyazaki, animation, Akira Kurosawa, photography, Daido Moriyama
 
 Chattering, Chemical fiber clothes.
 
-![wechat_qrcode](imgs/wechat_qrcode.jpg)
+![wechat_qrcode](http://olz1di9xf.bkt.clouddn.com/wechat_qrcode.jpg)
