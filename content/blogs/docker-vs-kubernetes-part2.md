@@ -1,6 +1,6 @@
 +++
 date = "2017-03-10T22:06:32+08:00"
-title = "docker vs kubernetes part2"
+title = "Docker v.s Kubernetes part2"
 draft = false
 Tags = ["docker","kubernetes"]
 
