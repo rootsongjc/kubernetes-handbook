@@ -5,6 +5,11 @@ draft = false
 Tags = ["book","golang","microservice","cloud native","docker"]
 
 +++
+
+![北京植物园桃花](http://olz1di9xf.bkt.clouddn.com/20160326003.jpg)
+
+*(题图：北京植物园桃花 Mar 26,2016)*
+
 最近在翻译Kevin Hoffman和Dan Nemeth的书《Cloud Native Go - 基于Go和React的web云服务构建指南》。目前已经完成图书的粗译，格式调整和排版，正在调整校对，预计本月将完成。本书将由**电子工业出版社**出版。
 
 下面先罗列下目录，以飨读者。
