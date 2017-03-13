@@ -87,7 +87,7 @@ COPY docker-volume-sshfs docker-volume-sshfs
 CMD ["docker-volume-sshfs"]
 ```
 
-实际上是讲编译好的可执行文件复制到alpine linux容器中运行。
+实际上是编译好的可执行文件复制到alpine linux容器中运行。
 
 编译rootfsimage镜像的过程。
 
