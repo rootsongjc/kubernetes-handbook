@@ -12,6 +12,8 @@ Tags = ["docker","docker plugin","plugin","develop"]
 
 > 当你看到这篇文章时，如果你也正在进行docker1.13+版本下的plugin开发，恭喜你也入坑了，如果你趟出坑，麻烦告诉你的方法，感恩不尽🙏
 
+看了文章后你可能会觉得，官网上的可能是个假🌰。
+
 ### Docker plugin开发文档
 
 首先docker官方给出了一个[docker legacy plugin文档](https://docs.docker.com/engine/extend/legacy_plugins/)，这篇文章基本就是告诉你docker目前支持哪些插件，罗列了一系列连接，不过对不起，这些不是docker官方插件，有问题去找它们的开发者去吧😂
@@ -539,7 +541,7 @@ func (l *linuxStandardInit) Init() error {
 
 ## TODO
 
-问了解决这个问题有三件事情要做：
+为了解决这个问题有三件事情要做：
 
 1. 查看libnetwork和docker CNI之间的关系
 2. docker **Version1 Plugin Version2 **插件开发的具体流程
