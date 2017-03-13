@@ -10,6 +10,30 @@ Tags = ["docker","docker plugin"]
 
 *（题图：杭州吴山步道旁的墙壁 Oct 16,2016）*
 
+> 当你看到这篇文章时，如果你也正在进行docker1.13+版本下的plugin开发，恭喜你也入坑了，如果你趟出坑，麻烦告诉你的方法，感恩不尽🙏
+
+### Docker plugin开发文档
+
+首先docker官方给出了一个[docker legacy plugin文档](https://docs.docker.com/engine/extend/legacy_plugins/)，这篇文章基本就是告诉你docker目前支持哪些插件，罗列了一系列连接，不过对不起，这些不是docker官方插件，有问题去找它们的开发者去吧😂
+
+真正要开发一个docker plugin还是得看[docker plugin API](https://docs.docker.com/engine/extend/plugin_api/)，这篇文档告诉我们：
+
+#### 插件发现
+
+当你开发好一个插件**docker engine**怎么才能发现它们呢？有三种方式：
+
+- **.sock**，linux下放在/run/docker/plugins目录下，或该目录下的子目录比如[flocker](https://github.com/ClusterHQ/flocker)插件的`.sock`文件放在`/run/docker/plugins/flocker/flocker.sock`下
+- **.spec**，比如**convoy**插件在`/etc/docker/plugins/convoy.spec `定义，内容为`unix:///var/run/convoy/convoy.sock`
+- **.json**，比如**infinit**插件在`/usr/lib/docker/plugins/infinit.json `定义，内容为`{"Addr":"https://infinit.sh","Name":"infinit"}`
+
+文章中的其它部分**貌似都过时**了，新的插件不是作为**systemd**进程运行的，而是完全通过**docker plugin**命令来管理的。
+
+当你使用**docker plugin enable <plugin_name>**来激活了插件后，理应在`/run/docker/plugins`目录下生成插件的`.sock`文件，但是现在只有一个以runc ID命名的目录，这个问题下面有详细的叙述过程，你也可以跳过，直接看[issue-31723](https://github.com/docker/docker/issues/31723)
+
+[docker plugin管理](https://docs.docker.com/engine/extend/)
+
+### 创建sshfs volume plugin
+
 [官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)
 
 官方以开发一个**sshfs**的volume plugin为例。
@@ -142,3 +166,4 @@ denied: requested access to the resource is denied
 **plugin的使用**
 
 有发现了个问题[docker issue-31723](https://github.com/docker/docker/issues/31723)，使用plugin创建volume的时候居然找不到`sshfs.sock`文件！😢刚开始手动创建plugin的时候测试了下是正常的，不知道为啥弄到这台测试机器上出问题了。
+
