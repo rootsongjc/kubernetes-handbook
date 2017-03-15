@@ -1,5 +1,5 @@
 +++
-date = "2017-03-13T18:11:26+08:00"
+date = "2017-03-15T13:57:26+08:00"
 title = "Docker17.03-CE插件开发-举个🌰"
 draft = false
 Tags = ["docker","docker plugin","plugin","develop"]
@@ -56,7 +56,7 @@ const defaultAPIVersion string = "1.0"
 
 ### 创建sshfs volume plugin
 
-[官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)
+[官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)（这个文档有问题）[docker-issue29886](https://github.com/docker/docker/issues/29886)
 
 官方以开发一个**sshfs**的volume plugin为例。
 
