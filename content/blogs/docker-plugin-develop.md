@@ -145,21 +145,54 @@ Successfully built 0fd2e3d94860
 {
     "description": "sshFS plugin for Docker",
     "documentation": "https://docs.docker.com/engine/extend/plugins/",
-    "entrypoint": ["/go/bin/docker-volume-sshfs"],
-    "network": {
-           "type": "host"
-           },
-    "interface" : {
-           "types": ["docker.volumedriver/1.0"],
-           "socket": "sshfs.sock"
+    "entrypoint": [
+        "/docker-volume-sshfs"
+    ],
+    "env": [
+        {
+            "name": "DEBUG",
+            "settable": [
+                "value"
+            ],
+            "value": "0"
+        }
+    ],
+    "interface": {
+        "socket": "sshfs.sock",
+        "types": [
+            "docker.volumedriver/1.0"
+        ]
     },
     "linux": {
-        "capabilities": ["CAP_SYS_ADMIN"]
-    }
+        "capabilities": [
+            "CAP_SYS_ADMIN"
+        ],
+        "devices": [
+            {
+                "path": "/dev/fuse"
+            }
+        ]
+    },
+    "mounts": [
+        {
+            "destination": "/mnt/state",
+            "options": [
+                "rbind"
+            ],
+            "source": "/var/lib/docker/plugins/",
+            "type": "bind"
+        }
+    ],
+    "network": {
+        "type": "host"
+    },
+    "propagatedmount": "/mnt/volumes"
 }
 ```
 
 该插件使用host网络类型，使用/run/docker/plugins/sshfs.sock接口与docker engine通信。
+
+**注意官网上的这个文档有问题，config.json与代码里的不服，尤其入口二进制文件的地址不对**
 
 > 注意**socket**配置的地址不要写详细地址，默认会在/run/docker/plugins目录下生成socket文件。
 
