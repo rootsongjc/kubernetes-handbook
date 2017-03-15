@@ -60,6 +60,13 @@ const defaultAPIVersion string = "1.0"
 
 官方以开发一个**sshfs**的volume plugin为例。
 
+执行`docker plugin create`命令的目录下必须包含以下内容：
+
+- **config.json**文件，里面是插件的配置信息，[plugin config参考文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/config.md)
+- **rootfs**目录，插件镜像解压后的目录。v2版本的docker plugin都是以docker镜像的方式包装的。
+
+
+
 ```
 $ git clone https://github.com/vieux/docker-volume-sshfs
 $ cd docker-volume-sshfs
@@ -153,6 +160,8 @@ Successfully built 0fd2e3d94860
 ```
 
 该插件使用host网络类型，使用/run/docker/plugins/sshfs.sock接口与docker engine通信。
+
+> 注意**socket**配置的地址不要写详细地址，默认会在/run/docker/plugins目录下生成socket文件。
 
 **创建plugin**
 
