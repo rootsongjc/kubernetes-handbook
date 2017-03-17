@@ -203,7 +203,7 @@ Successfully built 0fd2e3d94860
 具体到sshfs插件，在myplugin目录下使用如下命令创建插件：
 
 ```shell
-docker plugin create jimmysong/sshfs:latest .
+docker plugin create jimmmysong/sshfs:latest .
 ```
 
 现在就可以看到刚创建的插件了
@@ -211,7 +211,7 @@ docker plugin create jimmysong/sshfs:latest .
 ```
 docker plugin ls
 ID                  NAME                 DESCRIPTION               ENABLED
-8aa1f6098fca        vieux/sshfs:latest   sshFS plugin for Docker   true
+8aa1f6098fca        jimmysong/sshfs:latest   sshFS plugin for Docker   true
 ```
 
 **push plugin**
@@ -238,7 +238,7 @@ denied: requested access to the resource is denied
 使用**sshfs**插件创建volume。
 
 ```shell
-docker volume create -d sshfs --name sshvolume -o sshcmd=1.2.3.4:/remote -o password=password
+docker volume create -d jimmysong/sshfs --name sshvolume -o sshcmd=1.2.3.4:/remote -o password=password
 ```
 
 报错如下：
@@ -253,55 +253,7 @@ Docker daemon在enable这个插件的时候会寻找这个**.sock**文件，然�
 
 ``` Go
 func (pm *Manager) enable(p *v2.Plugin, c *controller, force bool) error {
-	p.Rootfs = filepath.Join(pm.config.Root, p.PluginObj.ID, "rootfs")
-	if p.IsEnabled() && !force {
-		return fmt.Errorf("plugin %s is already enabled", p.Name())
-	}
-	spec, err := p.InitSpec(pm.config.ExecRoot)
-	if err != nil {
-		return err
-	}
-
-	c.restart = true
-	c.exitChan = make(chan bool)
-
-	pm.mu.Lock()
-	pm.cMap[p] = c
-	pm.mu.Unlock()
-
-	var propRoot string
-	if p.PropagatedMount != "" {
-		propRoot = filepath.Join(filepath.Dir(p.Rootfs), "propagated-mount")
-
-		if err := os.MkdirAll(propRoot, 0755); err != nil {
-			logrus.Errorf("failed to create PropagatedMount directory at %s: %v", propRoot, err)
-		}
-
-		if err := mount.MakeRShared(propRoot); err != nil {
-			return errors.Wrap(err, "error setting up propagated mount dir")
-		}
-
-		if err := mount.Mount(propRoot, p.PropagatedMount, "none", "rbind"); err != nil {
-			return errors.Wrap(err, "error creating mount for propagated mount")
-		}
-	}
-
-	if err := initlayer.Setup(filepath.Join(pm.config.Root, p.PluginObj.ID, rootFSFileName), 0, 0); err != nil {
-		return errors.WithStack(err)
-	}
-
-	if err := pm.containerdClient.Create(p.GetID(), "", "", specs.Spec(*spec), attachToLog(p.GetID())); err != nil {
-		if p.PropagatedMount != "" {
-			if err := mount.Unmount(p.PropagatedMount); err != nil {
-				logrus.Warnf("Could not unmount %s: %v", p.PropagatedMount, err)
-			}
-			if err := mount.Unmount(propRoot); err != nil {
-				logrus.Warnf("Could not unmount %s: %v", propRoot, err)
-			}
-		}
-		return errors.WithStack(err)
-	}
-
+	...
 	return pm.pluginPostStart(p, c)
 }
 
@@ -404,7 +356,7 @@ Error response from daemon: Unix socket path "/run/docker/plugins/ac34f7b246ac6c
 ```
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321277088+08:00" level=error msg="Sending SIGTERM to plugin failed with error: rpc error: code = 2 desc = no such process"
-Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321488680+08:00" level=error msg="Handler for POST /v1.26/plugins/sshfs/enable returned error: Unix socket path \"/run/docker/plugins/ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7/run/docker/plugins/sshfs.sock\" is too long\ngithub.com/docker/docker/plugin.(*Manager).pluginPostStart\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/manager_linux.go:84\ngithub.com/docker/docker/plugin.(*Manager).enable\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/manager_linux.go:76\ngithub.com/docker/docker/plugin.(*Manager).Enable\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/backend_linux.go:67\ngithub.com/docker/docker/api/server/router/plugin.(*pluginRouter).enablePlugin\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/api/server/router/plugin/plugin_routes.go:241\ngithub.com/docker/docker/api/server/router/plugin.(*pluginRouter).(github.com/docker/docker/api/server/router/plugin.enablePlugin)-fm\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/api/server/router/plugin/plugin.go:31\ngithub.com/docker/docker/api/server/middleware.ExperimentalMiddleware.WrapHandler.func1\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/api/server/middleware/experimental.go:27\ngithub.com/docker/docker/api/server/middleware.VersionMiddleware.WrapHandler.func1\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/api/server/middleware/version.go:47\ngithub.com/docker/docker/pkg/authorization.(*Middleware).WrapHandler.func1\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/pkg/authorization/middleware.go:43\ngithub.com/docker/docker/api/server.(*Server).makeHTTPHandler.func1\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/api/server/server.go:139\nnet/http.HandlerFunc.ServeHTTP\n\t/usr/local/go/src/net/http/server.go:1726\ngithub.com/docker/docker/vend
+Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321488680+08:00" level=error msg="Handler for POST /v1.26/plugins/sshfs/enable returned error: Unix socket path \"/run/docker/plugins/ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7/run/docker/plugins/sshfs.sock\" is too long\ngithub.com/docker/docker/plugin.(*Manager).pluginPostStart\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/manager_linux.go:84\ngithub.com/docker/docker/plugin.(*Manager).enable\n\t/root/rpmbuild/BUILD/docker-
 ```
 
 
@@ -443,121 +395,7 @@ func (l *linuxStandardInit) Init() error {
 		}
 	}
 
-	if err := setupNetwork(l.config); err != nil {
-		return err
-	}
-	if err := setupRoute(l.config.Config); err != nil {
-		return err
-	}
-
-	label.Init()
-
-	// prepareRootfs() can be executed only for a new mount namespace.
-	if l.config.Config.Namespaces.Contains(configs.NEWNS) {
-		if err := prepareRootfs(l.pipe, l.config.Config); err != nil {
-			return err
-		}
-	}
-
-	// Set up the console. This has to be done *before* we finalize the rootfs,
-	// but *after* we've given the user the chance to set up all of the mounts
-	// they wanted.
-	if l.config.CreateConsole {
-		if err := setupConsole(l.pipe, l.config, true); err != nil {
-			return err
-		}
-		if err := system.Setctty(); err != nil {
-			return err
-		}
-	}
-
-	// Finish the rootfs setup.
-	if l.config.Config.Namespaces.Contains(configs.NEWNS) {
-		if err := finalizeRootfs(l.config.Config); err != nil {
-			return err
-		}
-	}
-
-	if hostname := l.config.Config.Hostname; hostname != "" {
-		if err := syscall.Sethostname([]byte(hostname)); err != nil {
-			return err
-		}
-	}
-	if err := apparmor.ApplyProfile(l.config.AppArmorProfile); err != nil {
-		return err
-	}
-	if err := label.SetProcessLabel(l.config.ProcessLabel); err != nil {
-		return err
-	}
-
-	for key, value := range l.config.Config.Sysctl {
-		if err := writeSystemProperty(key, value); err != nil {
-			return err
-		}
-	}
-	for _, path := range l.config.Config.ReadonlyPaths {
-		if err := readonlyPath(path); err != nil {
-			return err
-		}
-	}
-	for _, path := range l.config.Config.MaskPaths {
-		if err := maskPath(path); err != nil {
-			return err
-		}
-	}
-	pdeath, err := system.GetParentDeathSignal()
-	if err != nil {
-		return err
-	}
-	if l.config.NoNewPrivileges {
-		if err := system.Prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0); err != nil {
-			return err
-		}
-	}
-	// Tell our parent that we're ready to Execv. This must be done before the
-	// Seccomp rules have been applied, because we need to be able to read and
-	// write to a socket.
-	if err := syncParentReady(l.pipe); err != nil {
-		return err
-	}
-	// Without NoNewPrivileges seccomp is a privileged operation, so we need to
-	// do this before dropping capabilities; otherwise do it as late as possible
-	// just before execve so as few syscalls take place after it as possible.
-	if l.config.Config.Seccomp != nil && !l.config.NoNewPrivileges {
-		if err := seccomp.InitSeccomp(l.config.Config.Seccomp); err != nil {
-			return err
-		}
-	}
-	if err := finalizeNamespace(l.config); err != nil {
-		return err
-	}
-	// finalizeNamespace can change user/group which clears the parent death
-	// signal, so we restore it here.
-	if err := pdeath.Restore(); err != nil {
-		return err
-	}
-	// compare the parent from the initial start of the init process and make sure that it did not change.
-	// if the parent changes that means it died and we were reparented to something else so we should
-	// just kill ourself and not cause problems for someone else.
-	if syscall.Getppid() != l.parentPid {
-		return syscall.Kill(syscall.Getpid(), syscall.SIGKILL)
-	}
-	// check for the arg before waiting to make sure it exists and it is returned
-	// as a create time error.
-	name, err := exec.LookPath(l.config.Args[0])
-	if err != nil {
-		return err
-	}
-	// close the pipe to signal that we have completed our init.
-	l.pipe.Close()
-	// wait for the fifo to be opened on the other side before
-	// exec'ing the users process.
-	fd, err := syscall.Openat(l.stateDirFD, execFifoFilename, os.O_WRONLY|syscall.O_CLOEXEC, 0)
-	if err != nil {
-		return newSystemErrorWithCause(err, "openat exec fifo")
-	}
-	if _, err := syscall.Write(fd, []byte("0")); err != nil {
-		return newSystemErrorWithCause(err, "write 0 exec fifo")
+...
 	}
 	if l.config.Config.Seccomp != nil && l.config.NoNewPrivileges {
          //下面这行是第178行
