@@ -291,3 +291,13 @@ func (r *pluginReference) Delete(ref reference.Named) (bool, error) {
 虽然docker代码里没有提供**rename plugin**的接口，但是使用**docker install**命令安装的plugin会存储在`/var/lib/docker/plugins/${PLUGIN_ID}`目录下。
 
 可以在这个目录下使用**docker plugin create**命令创建你自己想要的名称的docker plugin。
+
+使用`docker plugin set`命令修改plugin中的属性:
+
+- cluster_store
+- plugin_role
+- plugin_name
+
+**插件调试**
+
+日志地址`/run/contiv/log/`。
