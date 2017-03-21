@@ -301,3 +301,27 @@ func (r *pluginReference) Delete(ref reference.Named) (bool, error) {
 **插件调试**
 
 日志地址`/run/contiv/log/`。
+
+从非master节点的netplugin启动日志`netplugin_bootup.log`中可以看到：
+
+```
+V2 Plugin logs
+Loading OVS
+Starting OVS
+Starting Netplugin 
+/netplugin -debug -plugin-mode docker -vlan-if  -cluster-store etcd://172.20.0.113:2379  
+Not starting netmaster as plugin role is none
+```
+
+Netplugin启动的时候是正确的解析了**etcd**的配置了。
+
+但是我们再看一下`netplugin.log`的日志后就会发现，启动还是失败了。
+
+```
+time="Mar 21 03:20:37.537954358" level=debug msg="Got link list(16): [0xc4203fe200 0xc4203fe300 0xc4203fe400 0xc4203fe500 0xc420420000 0xc420420090 0xc420420120 0xc4204201b0 0xc420420240 0xc4204202d0 0xc420420360 0xc4204203f0 0xc420420480 0xc420420510 0xc4203feb80 0xc4203fec80]"
+time="Mar 21 03:20:37.538576647" level=error msg="Failed to connect to etcd. Err: client: etcd cluster is unavailable or misconfigured"
+time="Mar 21 03:20:37.538599827" level=error msg="Error creating client etcd to url 127.0.0.1:2379. Err: client: etcd cluster is unavailable or misconfigured"
+time="Mar 21 03:20:37.538612813" level=fatal msg="Error initializing cluster. Err: client: etcd cluster is unavailable or misconfigured"
+```
+
+`netplugin`没有正确的解析etcd的地址。这到底是为什么呢？bootup的日志里不是写的解析到了吗？这个问题还得研究下源码，也许是一个bug。
