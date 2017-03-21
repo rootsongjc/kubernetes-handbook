@@ -1,6 +1,6 @@
 +++
 date = "2017-02-27T18:23:42+08:00"
-title = "docker embedded dns"
+title = "Docker内置DNS"
 draft = false
 Tags = ["docker","network","dns"]
 

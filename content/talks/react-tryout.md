@@ -1,6 +1,6 @@
 +++
 date = "2017-03-18T10:07:13+08:00"
-title = "react tryout"
+title = "React入门"
 draft = false
 Tags = ["react","frontend","tool","web"]
 
