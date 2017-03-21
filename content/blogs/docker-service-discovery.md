@@ -1,6 +1,6 @@
 +++
 date = "2017-02-27T18:27:07+08:00"
-title = "docker service discovery"
+title = "Docker Service Discovery"
 draft = false
 Tags = ["docker","network","service discovery"]
 

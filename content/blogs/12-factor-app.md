@@ -1,6 +1,6 @@
 +++
 date = "2017-02-27T22:32:40+08:00"
-title = "12 factor app"
+title = "12因素法则"
 draft = false
 Tags = ["saas","software archtecture"]
 
