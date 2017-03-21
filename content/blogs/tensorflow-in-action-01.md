@@ -1,7 +1,7 @@
 +++
 date = "2017-03-20T22:04:33+08:00"
 title = "TensorFlow实战读书笔记——第一章深度学习简介"
-draft = True
+draft = true
 Tags = ["tensorflow","deep learning","AI","google","machine learning"]
 
 +++
