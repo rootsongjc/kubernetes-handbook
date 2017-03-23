@@ -6,7 +6,9 @@ Tags = ["cloud","cloud foundry","pivotal","paas","cloud native","micro service"]
 
 +++
 
-*（题图：）*
+![黄山日出](http://olz1di9xf.bkt.clouddn.com/2013100301.jpg)
+
+*（题图：黄山日出 Oct 3,2013）*
 
 ## 前言
 
