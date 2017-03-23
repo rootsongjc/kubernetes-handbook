@@ -2,7 +2,7 @@
 date = "2017-03-20T22:04:33+08:00"
 title = "TensorFlow实战（才云郑泽宇著）读书笔记——第二章TensorFlow环境搭建"
 draft = false
-Tags = ["tensorflow","deep learning","AI","google","machine learning","reading notes","book"]
+Tags = ["tensorflow","deep learning","AI","google","machine learning","reading notes","book","tensorflow practice reading notes"]
 
 +++
 
@@ -11,6 +11,8 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 *（题图：广州海珠桥 Aug 10,2014）*
 
 > 这是我阅读[才云科技](caicloud.io)郑泽宇的《TensorFlow实战Google深度学习框架》的读书笔记系列文章，按照文章的章节顺序来写的。
+
+整本书的笔记归档在[这里](http://rootsongjc.github.io/tags/tensorflow-practice-reading-notes/)。
 
 睇完这一章后应该就可以自己搭建出一个TensorFlow的环境，我之前在docker里玩过，镜像比较大，下载慢一点，不过用起来很方便，如果你仅仅是想试用一下TensorFlow，看看它能干什么的话，可以直接在docker里试用一下。在Mac上安装的详细步骤，[官方安装说明文档](https://www.tensorflow.org/install/install_mac)。
 
