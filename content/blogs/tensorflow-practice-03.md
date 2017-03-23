@@ -29,10 +29,32 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 **常用的方法**
 
 - 在python中导入tensorflow：import tensorflow as tf
-
 - 获取当前默认的计算图：tf.get_default_graph()
-
 - 生成新的计算图：tf.Graph()
 
-  ​
+书中这里都有例子讲解，可以从Github中[下载代码](https://github.com/caicloud/tensorflow-tutorial)，或者如果你使用才云提供的docker镜像的方式安装的话，在jupyter中可以看到各个章节的代码。
+
+**定义两个不同的图**
+
+```python
+import tensorflow as tf
+
+g1 = tf.Graph()
+with g1.as_default():
+    v = tf.get_variable("v", [1], initializer = tf.zeros_initializer) # 设置初始值为0
+
+g2 = tf.Graph()
+with g2.as_default():
+    v = tf.get_variable("v", [1], initializer = tf.ones_initializer())  # 设置初始值为1
+    
+with tf.Session(graph = g1) as sess:
+    tf.global_variables_initializer().run()
+    with tf.variable_scope("", reuse=True):
+        print(sess.run(tf.get_variable("v")))
+
+with tf.Session(graph = g2) as sess:
+    tf.global_variables_initializer().run()
+    with tf.variable_scope("", reuse=True):
+        print(sess.run(tf.get_variable("v")))
+```
 
