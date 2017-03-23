@@ -25,8 +25,43 @@ Tags = ["cloud","cloud foundry","pivotal","paas"]
 先[下载](https://network.pivotal.io/products/pcfdev)，如果你没有Pivotal network账号的话，还需要注册个用户，然后用以下命令安装：
 
 ```shell
-./pcfdev-VERSION-osx && \
+
+$./pcfdev-VERSION-osx && \
 cf dev start
+Less than 4096 MB of free memory detected, continue (y/N): > y
+Please sign in with your Pivotal Network account.
+Need an account? Join Pivotal Network: https://network.pivotal.io
+
+Email> 849122844@qq.com
+
+Password> 
+Downloading VM...
+Progress: |+++++++++++++=======>| 100% 
+VM downloaded.
+Allocating 4096 MB out of 16384 MB total system memory (3514 MB free).
+Importing VM...
+Starting VM...
+Provisioning VM...
+Waiting for services to start...
+8 out of 57 running
+8 out of 57 running
+8 out of 57 running
+46 out of 57 running
+57 out of 57 running
+ _______  _______  _______    ______   _______  __   __
+|       ||       ||       |  |      | |       ||  | |  |
+|    _  ||       ||    ___|  |  _    ||    ___||  |_|  |
+|   |_| ||       ||   |___   | | |   ||   |___ |       |
+|    ___||      _||    ___|  | |_|   ||    ___||       |
+|   |    |     |_ |   |      |       ||   |___  |     |
+|___|    |_______||___|      |______| |_______|  |___|
+is now running.
+To begin using PCF Dev, please run:
+   cf login -a https://api.local.pcfdev.io --skip-ssl-validation
+Apps Manager URL: https://local.pcfdev.io
+Admin user => Email: admin / Password: admin
+Regular user => Email: user / Password: pass
 ```
 
-启动过程中还需要**Sign In**，所以注册完后要记住用户名（邮箱地址）和密码（必须超过8位要有特殊字符和大写字母）。这个过程中还要下载VM，对内存要求至少4G。而且下载速度比较慢，我下载的了大概1个多小时吧。
+启动过程中还需要**Sign In**，所以注册完后要记住用户名（邮箱地址）和密码（必须超过8位要有特殊字符和大写字母）。这个过程中还要下载VM，对内存要求至少4G。而且下载速度比较慢，我下载的了大概3个多小时吧。
+
