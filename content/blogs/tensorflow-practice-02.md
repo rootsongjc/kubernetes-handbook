@@ -106,3 +106,13 @@ Starting TensorBoard 39 on port 6006
 现在用刚才从日志里看到的密码就可以登录了，Jupyter页面上可以看到本书所有章节的代码了。
 
 ![jupyter页面](http://olz1di9xf.bkt.clouddn.com/tensorflow-practice-chapter2-jupyter-web.jpg)
+
+**使用pip安装**
+
+另外我在mac上也用pip方式安装了。我安装的是最新版的1.0.1的CPU-only，加上`—user -U`是为了规避mac上的各种权限问题。
+
+```shell
+pip install --upgrade tensorflow --user -U
+```
+
+下载的整个软件包只有39.3MB，速度还是很快的。

@@ -65,3 +65,68 @@ Regular user => Email: user / Password: pass
 
 启动过程中还需要**Sign In**，所以注册完后要记住用户名（邮箱地址）和密码（必须超过8位要有特殊字符和大写字母）。这个过程中还要下载VM，对内存要求至少4G。而且下载速度比较慢，我下载的了大概3个多小时吧。
 
+下面部署一个应用到PCF Dev上试一试。
+
+**部署应用**
+
+```
+$git clone https://github.com/cloudfoundry-samples/spring-music
+$cd ./spring-music
+$cf login -a api.local.pcfdev.io --skip-ssl-validation
+API endpoint: api.local.pcfdev.io
+
+Email> user
+
+Password> pass
+Authenticating...
+OK
+
+Targeted org pcfdev-org
+
+Targeted space pcfdev-space
+
+
+                
+API endpoint:   https://api.local.pcfdev.io (API version: 2.65.0)
+User:           user
+Org:            pcfdev-org
+Space:          pcfdev-space
+
+$./gradlew assemble
+$cf push --hostname spring-music
+
+```
+在浏览器中访问app。
+
+```
+requested state: started
+instances: 1/1
+usage: 512M x 1 instances
+urls: spring-music.local.pcfdev.io
+```
+
+**查看日志**
+
+PCF提供应用的日志聚合功能，你可以查看HTTP请求、对应用操作时候的output，如扩容、重启等。
+
+每行日志中都包括如下信息：
+
+- Timestamp
+- Log type
+- Channel
+- Message
+
+查看刚才那个应用的日志信息：
+
+查看最近输出：
+
+```
+$cf logs spring-music --recent
+```
+
+查看实时输出流：
+
+```
+$cf logs spring-music
+```
+
