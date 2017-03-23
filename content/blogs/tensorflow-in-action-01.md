@@ -1,8 +1,8 @@
 +++
 date = "2017-03-20T22:04:33+08:00"
-title = "TensorFlow实战读书笔记——第一章深度学习简介"
-draft = true
-Tags = ["tensorflow","deep learning","AI","google","machine learning"]
+title = "TensorFlow实战（才云郑泽宇著）读书笔记——第一章深度学习简介"
+draft = false
+Tags = ["tensorflow","deep learning","AI","google","machine learning","reading notes","book"]
 
 +++
 
@@ -10,7 +10,7 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning"]
 
 *（题图：TensofFlow实战图书封面）*
 
-> 🙏**电子工业出版社**编辑赠书，能够这么快的那道这本书，也🙏[才云科技](www.caicloud.io)的郑泽宇大哥耐心的写了这本书，能够让我等小白一窥深度学习的真容。
+> 🙏**电子工业出版社**编辑赠书，能够这么快的拿到这本书，也🙏[才云科技](www.caicloud.io)的郑泽宇大哥耐心的写了这本书，能够让我等小白一窥深度学习的真容。强烈推荐这本书，这是本TensorFlow深度学习很好的入门书。
 
 书中提供的代码下载地址：https://github.com/caicloud/tensorflow-tutorial
 
@@ -40,5 +40,8 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning"]
 
 ## 1.4 深度学习工具介绍与对比
 
-TBD
+TensorFlow的渊源是Google大脑团队在2011年开发，在内部使用的**DistBelief**，并赢得了ImageNet 2014年的比赛，TF是其开源版本，还发表了一篇论文**TensorFlow: Large-Scale Machine Learning on Heteogeneous Distributed systems **，这就跟当年的**HDFS**、**MapReduce**一个套路啊。
 
+Google还把它用来做**RankBrain**和很多其他的产品线上使用。
+
+当然，还有很多其他的深度学习工具，比如**Caffe**、**Deeplearning4j**、**Torch**等不一而足。从各种指标来看，TensorFlow都是目前最受关注的深度学习框架。
