@@ -43,3 +43,4 @@ TensorFlow的渊源是Google大脑团队在2011年开发，在内部使用的**D
 Google还把它用来做**RankBrain**和很多其他的产品线上使用。
 
 当然，还有很多其他的深度学习工具，比如**Caffe**、**Deeplearning4j**、**Torch**等不一而足。从各种指标来看，TensorFlow都是目前最受关注的深度学习框架。
+
