@@ -12,6 +12,8 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 
 *这是我阅读[才云科技](caicloud.io)郑泽宇的《TensorFlow实战Google深度学习框架》的读书笔记系列文章，按照文章的章节顺序来写的。整本书的笔记归档在[这里](http://rootsongjc.github.io/tags/tensorflow-practice-reading-notes/)。*
 
+P.S 本书的**官方读者交流微信群（作者也在群里）**已经超过100人，您可以先加我微信后我拉您进去，我的二维码在[这里](rootsongjc.github.io/about)，或者直接搜索我的微信号jimmysong。
+
 这一章从三个角度带大家入门。
 
 分别是TensorFlow的
@@ -58,3 +60,4 @@ with tf.Session(graph = g2) as sess:
         print(sess.run(tf.get_variable("v")))
 ```
 
+To be continued…

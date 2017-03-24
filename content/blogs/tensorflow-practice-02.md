@@ -12,6 +12,8 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 
 > 这是我阅读[才云科技](caicloud.io)郑泽宇的《TensorFlow实战Google深度学习框架》的读书笔记系列文章，按照文章的章节顺序来写的。整本书的笔记归档在[这里](http://rootsongjc.github.io/tags/tensorflow-practice-reading-notes/)。
 
+P.S 本书的**官方读者交流微信群（作者也在群里）**已经超过100人，您可以先加我微信后我拉您进去，我的二维码在[这里](rootsongjc.github.io/about)，或者直接搜索我的微信号jimmysong。
+
 睇完这一章后应该就可以自己搭建出一个TensorFlow的环境，我之前在docker里玩过，镜像比较大，下载慢一点，不过用起来很方便，如果你仅仅是想试用一下TensorFlow，看看它能干什么的话，可以直接在docker里试用一下。在Mac上安装的详细步骤，[官方安装说明文档](https://www.tensorflow.org/install/install_mac)。
 
 ## 2.1 TensorFlow的主要依赖包
