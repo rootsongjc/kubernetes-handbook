@@ -769,8 +769,6 @@ print(a)
 func CompareAndSwapUint64(val *uint64, old, new uint64) (swapped bool)
 ```
 
-就提供了比较和交换两个uint64类型数据的操作。这让开发者无需再为这样的操作专门添加
-
-Lock操作。
+就提供了比较和交换两个uint64类型数据的操作。这让开发者无需再为这样的操作专门添加Lock操作。
 
 [原文链接](http://lib.csdn.net/article/53/36140?knId=1441)
