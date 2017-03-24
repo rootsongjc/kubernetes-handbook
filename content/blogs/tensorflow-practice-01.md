@@ -38,7 +38,7 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 
 ## 1.4 深度学习工具介绍与对比
 
-TensorFlow的渊源是Google大脑团队在2011年开发，在内部使用的**DistBelief**，并赢得了ImageNet 2014年的比赛，TF是其开源版本，还发表了一篇论文**TensorFlow: Large-Scale Machine Learning on Heteogeneous Distributed systems **，这就跟当年的**HDFS**、**MapReduce**一个套路啊。
+TensorFlow的渊源是Google大脑团队在2011年开发，在内部使用的**DistBelief**，并赢得了ImageNet 2014年的比赛，TF是其开源版本，还发表了一篇论文`TensorFlow: Large-Scale Machine Learning on Heteogeneous Distributed systems`，这就跟当年的**HDFS**、**MapReduce**一个套路啊。
 
 Google还把它用来做**RankBrain**和很多其他的产品线上使用。
 
