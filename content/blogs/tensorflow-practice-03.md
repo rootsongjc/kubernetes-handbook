@@ -111,3 +111,55 @@ Tensor("add:0", shape=(2,), dtype=float32)
 - **维度（Shape）**：如上面例子结果输出中的**shape=(2,)**，表示这个张量是一维数组，数组的长度是2。
 - **类型（Type）**：所有参与运算的张量的类型必须是相同的，比如不能float和int之间运算。TensorFlow会自动检查张量的类型，可以通过**dtype=df.float32**这样的声明来指定类型，如果不指定的话，TF会根据值确定默认类型。
 
+**Tensor的用途**
+
+- 作为对计算中间结果的引用，比如上面例子中的a和b，在复杂计算中使用tensor能够增加代码的可阅读性。
+- 用来获取计算结果。张量本身没有存储具体的数字，但是可以使用**会话**的tf.Session().run(result)来获取计算结果。
+
+## 3.3 TensorFlow的运行模型——会话
+
+**会话（Session）拥有和管理TensorFlow中所有的运算，可以执行定义好的运算。**
+
+**创建和关闭会话**
+
+```python
+# 创建一个会话。
+sess = tf.Session()
+
+# 使用会话得到之前计算的结果。
+print(sess.run(result))
+
+# 关闭会话使得本次运行中使用到的资源可以被释放。
+sess.close()
+```
+
+建议使用Python的**上下文管理器**，即通过**with**语法来创建会话，能够避免资源泄漏。
+
+```python
+with tf.Session() as sess:
+    print(sess.run(result))
+```
+
+在交互式环境下（比如Jupyter）直接使用**tf.InteractiveSession**函数创建**交互式会话**，将产生的会话直接注册为默认会话。
+
+```python
+sess = tf.InteractiveSession ()
+print(result.eval())
+sess.close()
+```
+
+不论使用哪种会话都可以通过**ConfigProto**来配置`并行线程数`、`GPU分配策略`、`运算超时时间`等。
+
+常用的两个配置有：
+
+- **allow_soft_placement**：布尔值，默认false，以下任何一个条件满足时则为true，允许将GPU上的运算放到CPU上进行。
+  - 运算无法在GPU上运行
+  - GPU资源不足（没有GPU或者指定的GPU个数不够）
+  - 运算输入包括对CPU计算结果的引用
+- **log_device_placement**：布尔值，默认值是？如果为true的话，日志中将会记录每个节点被安排在哪个设备上，这方便调试。生产环境中一般设置为false，能够减少日志量。
+
+## 3.4 TensorFlow实现神经网络
+
+To be continued…
+
+10:39 p.m Thu Mar 30,2017
