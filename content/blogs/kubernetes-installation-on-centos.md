@@ -66,7 +66,7 @@ yum -y install --enablerepo=virt7-docker-common-release kubernetes etcd flannel
 
 安装好了之后需要修改一系列配置文件。
 
-> 如果你使用的是CentOS7.2的话，会自动下载安装Kubernetes1.5（Till March 30,2017），如果使用的是CentOS7.2的化，会自动下载安装Kubernentes1.1。我们现在要安装目前的最新版本Kubernetes1.6，而使用的又是CentOS7.2，所以我们不使用yum安装。
+> 这个repo在CentOS7.3下是毫无意义的，因为CentOS官方源的extras中已经包含了Kubernetes1.5.2，如果你使用的是CentOS7.3的话，会自动下载安装Kubernetes1.5.2（Till March 30,2017）。如果你使用的是CentOS7.2的化，这个源就有用了，但是不幸的是，它会自动下载安装Kubernentes1.1。我们现在要安装目前的最新版本Kubernetes1.6，而使用的又是CentOS7.2，所以我们不使用yum安装（当前yum源支持的最高版本的kuberentes是1.5.2）。
 
 ## 第二种方式：使用二进制文件安装
 
