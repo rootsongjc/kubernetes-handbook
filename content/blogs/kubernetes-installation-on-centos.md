@@ -33,7 +33,7 @@ Tags = ["kubernetes","cloud computing"]
 **系统环境**
 
 - Centos 7.2.1511
-- docker 1.11.2
+- docker 1.12.6
 - etcd 3.1.5
 - kubernetes 1.6.0
 - flannel 0.7.0-1
@@ -74,15 +74,9 @@ yum -y install --enablerepo=virt7-docker-common-release kubernetes etcd flannel
 
 ### 安装Docker
 
-**下载安装包**
-
-https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-${DOCKER_VERSION}-1.el7.centos.x86_64.rpm
-
-https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-${DOCKER_VERSION}-1.el7.centos.noarch.rpm
-
-**安装**
-
 yum localinstall ./docker-engine*
+
+将使用CentOS的**extras** repo下载。
 
 ### 安装etcd
 
@@ -319,7 +313,7 @@ KUBELET_PORT="--kubelet-port=10250"
 KUBE_ETCD_SERVERS="--etcd-servers=http://127.0.0.1:2379"
 #
 ## Address range to use for services
-KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.254.0.0/16"
+KUBE_SERVICE_ADDREKUBELET_POD_INFRA_CONTAINERSSES="--service-cluster-ip-range=10.254.0.0/16"
 #
 ## default admission control policies
 KUBE_ADMISSION_CONTROL="--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota"
@@ -493,6 +487,8 @@ KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.
 ## Add your own!
 KUBELET_ARGS=""
 ```
+
+⚠️`KUBELET_POD_INFRA_CONTAINER`在生产环境中配置成自己私有仓库里的image。
 
 #### Node节点配置
 
