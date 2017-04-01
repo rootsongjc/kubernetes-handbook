@@ -47,6 +47,8 @@ Tags = ["kubernetes","cloud computing"]
 
 我们最终选择使用第二种方式安装。
 
+本文的很多安装步骤和命令是参考的Kubernetes官网[CentOS Manual Config](https://kubernetes.io/docs/getting-started-guides/centos/centos_manual_config/)文档。
+
 ## 第一种方式：CentOS系统中直接使用yum安装
 
 **给yum源增加一个Repo**
@@ -77,6 +79,16 @@ yum -y install --enablerepo=virt7-docker-common-release kubernetes etcd flannel
 yum localinstall ./docker-engine*
 
 将使用CentOS的**extras** repo下载。
+
+### 关闭防火墙和SELinux
+
+这是官网上建议的，我是直接将iptables-services和firewlld卸载掉了。
+
+```shell
+setenforce 0
+systemctl disable iptables-services firewalld
+systemctl stop iptables-services firewalld
+```
 
 ### 安装etcd
 
@@ -511,7 +523,7 @@ for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler kube-
 done
 ```
 
-在Node节点上执行：
+在另外两台Node节点上执行：
 
 ```shell
 for SERVICES in kube-proxy kubelet flanneld; do
