@@ -1,6 +1,6 @@
 +++
 date = "2017-03-31T11:05:18+08:00"
-title = "Kubernetes网络配置"
+title = "Kubernetes基于flannel的网络配置"
 draft = false
 Tags = ["kubernetes","cloud computing"]
 
@@ -171,7 +171,7 @@ systemctl status flanneld
 
 ```Shell
 #启动nginx的pod
-kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=8080
+kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=80
 #创建名为example-service的服务
 kubectl expose deployment nginx --type=NodePort --name=example-service
 #查看状态
@@ -187,15 +187,48 @@ Labels:			run=load-balancer-example
 Annotations:		<none>
 Selector:		run=load-balancer-example
 Type:			NodePort
-IP:			10.254.124.145
-Port:			<unset>	8080/TCP
-NodePort:		<unset>	30554/TCP
-Endpoints:		172.30.38.2:8080,172.30.46.2:8080
+IP:			10.254.180.209
+Port:			<unset>	80/TCP
+NodePort:		<unset>	32663/TCP
+Endpoints:		172.30.14.2:80,172.30.46.2:80
 Session Affinity:	None
 Events:			<none>
 ```
 
-我们上面启动的serivce的type是**nodePort**，Kubernetes的service支持三种类型的service，参考[Kubernetes Serivce分析](http://www.cnblogs.com/xuxinkun/p/5331728.html)。
+我们上面启动的serivce的type是**NodePort**，Kubernetes的service支持三种类型的service，参考[Kubernetes Serivce分析](http://www.cnblogs.com/xuxinkun/p/5331728.html)。
+
+现在访问三台物理机的IP:80端口就可以看到nginx的页面了。
+
+稍等一会在访问ClusterIP + Port也可以访问到nginx。
+
+```
+$curl 10.254.180.209:80
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+```
 
 ## 虚拟地址
 
@@ -205,15 +238,15 @@ Kubernetes中的Service了使用了虚拟地址；该地址无法ping通过，�
 
 ```
 $iptables-save|grep example-service
--A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 30554 -j KUBE-MARK-MASQ
--A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 30554 -j KUBE-SVC-BR4KARPIGKMRMN3E
--A KUBE-SEP-65MX5SGLQRLS77WG -s 172.30.46.2/32 -m comment --comment "default/example-service:" -j KUBE-MARK-MASQ
--A KUBE-SEP-65MX5SGLQRLS77WG -p tcp -m comment --comment "default/example-service:" -m tcp -j DNAT --to-destination 172.30.46.2:8080
--A KUBE-SEP-G3W5BQFRHWIMSQQY -s 172.30.38.2/32 -m comment --comment "default/example-service:" -j KUBE-MARK-MASQ
--A KUBE-SEP-G3W5BQFRHWIMSQQY -p tcp -m comment --comment "default/example-service:" -m tcp -j DNAT --to-destination 172.30.38.2:8080
--A KUBE-SERVICES -d 10.254.124.145/32 -p tcp -m comment --comment "default/example-service: cluster IP" -m tcp --dport 8080 -j KUBE-SVC-BR4KARPIGKMRMN3E
--A KUBE-SVC-BR4KARPIGKMRMN3E -m comment --comment "default/example-service:" -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-G3W5BQFRHWIMSQQY
--A KUBE-SVC-BR4KARPIGKMRMN3E -m comment --comment "default/example-service:" -j KUBE-SEP-65MX5SGLQRLS77WG
+-A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 32663 -j KUBE-MARK-MASQ
+-A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 32663 -j KUBE-SVC-BR4KARPIGKMRMN3E
+-A KUBE-SEP-NCPBOLUH5XTTHG3E -s 172.30.46.2/32 -m comment --comment "default/example-service:" -j KUBE-MARK-MASQ
+-A KUBE-SEP-NCPBOLUH5XTTHG3E -p tcp -m comment --comment "default/example-service:" -m tcp -j DNAT --to-destination 172.30.46.2:80
+-A KUBE-SEP-ONEKQBIWICF7RAR3 -s 172.30.14.2/32 -m comment --comment "default/example-service:" -j KUBE-MARK-MASQ
+-A KUBE-SEP-ONEKQBIWICF7RAR3 -p tcp -m comment --comment "default/example-service:" -m tcp -j DNAT --to-destination 172.30.14.2:80
+-A KUBE-SERVICES -d 10.254.180.209/32 -p tcp -m comment --comment "default/example-service: cluster IP" -m tcp --dport 80 -j KUBE-SVC-BR4KARPIGKMRMN3E
+-A KUBE-SVC-BR4KARPIGKMRMN3E -m comment --comment "default/example-service:" -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ONEKQBIWICF7RAR3
+-A KUBE-SVC-BR4KARPIGKMRMN3E -m comment --comment "default/example-service:" -j KUBE-SEP-NCPBOLUH5XTTHG3E
 ```
 
 **查看clusterIP的iptables**
@@ -221,15 +254,15 @@ $iptables-save|grep example-service
 ```
 $iptables -t nat -nL|grep 10.254
 KUBE-SVC-NPX46M4PTMTKRN6Y  tcp  --  0.0.0.0/0            10.254.0.1           /* default/kubernetes:https cluster IP */ tcp dpt:443
-KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /* default/example-service: cluster IP */ tcp dpt:8080
+KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.180.209       /* default/example-service: cluster IP */ tcp dpt:80
 ```
 
 可以看到在PREROUTING环节，k8s设置了一个target: KUBE-SERVICES。而KUBE-SERVICES下面又设置了许多target，一旦destination和dstport匹配，就会沿着chain进行处理。
 
-比如：当我们在pod网络curl 10.254.198.44 8080时，匹配到下面的KUBE-SVC-BR4KARPIGKMRMN3E target：
+比如：当我们在pod网络curl 10.254.198.44 80时，匹配到下面的KUBE-SVC-BR4KARPIGKMRMN3E target：
 
 ```
-KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /* default/example-service: cluster IP */ tcp dpt:8080
+KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.180.209       /* default/example-service: cluster IP */ tcp dpt:80
 ```
 
 参考[理解Kubernetes网络之Flannel网络](http://tonybai.com/2017/01/17/understanding-flannel-network-for-kubernetes/)，Tony Bai的文章中有对flannel的详细介绍。
@@ -244,9 +277,17 @@ KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /*
 
 Kube-proxy开放的**NodePort**端口无法访问。即无法使用NodeIP加NodePort的方式访问service，而且本地telnet也不通，但是端口确确实实在那。
 
-<u>**此问题暂时还没有找到解决方法。**</u>
+**问题状态**
 
-To be continued…
+已解决
+
+**解决方法**
+
+其实这不是问题，是因为从上面的操作记录中我们可以看到，**在启动Nginx的Pod**时，指定port为80即可。以ClusterIP + Port的方式访问serivce需要等一段时间。
+
+**反思**
+
+这个问题困扰了我们差不多两天时间，出现这个问题的根源还是因为<u>思想观念没有从运行docker的命令中解放出来</u>,还把`kubelet run —port`当成是docker run中的端口映射，这种想法是大错特错的，该端口是image中的应用实际暴露的端口，如nginx的80端口。😔
 
 ### 问题二
 
@@ -273,3 +314,11 @@ Kubernetes根据Pod中Containers Resource的`request`和`limit`的值来定义Po
 **解决方法**
 
 这个暂时还没找到根本的解决办法，参考Github上的[Failed to start ContainerManager failed to initialize top level QOS containers #43856](https://github.com/kubernetes/kubernetes/issues/43856)，重启主机后确实正常了，不过这只是临时解决方法。
+
+## 后记
+
+其实昨天就已经安装完毕了，是我们使用的姿势不对，白白耽误这么长时间，身边差个老司机啊，滴～学生卡。
+
+感谢[Tony Bai](tonybai.com)、[Peter Ma](https://godliness.github.io/)的大力支持。
+
+Apr 1,2017 愚人节，东直门
