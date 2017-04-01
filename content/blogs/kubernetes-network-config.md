@@ -1,6 +1,6 @@
 +++
 date = "2017-03-31T11:05:18+08:00"
-title = "kubernetes network config"
+title = "Kubernetes网络配置"
 draft = false
 Tags = ["kubernetes","cloud computing"]
 
@@ -138,8 +138,6 @@ Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: f
 --cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
 ```
 
-
-
 **启动flannel**
 
 ```shell
@@ -150,11 +148,13 @@ systemctl status flanneld
 
 重新登录这三台主机，可以看到每台主机都多了一个IP。
 
+参考Kubernetes官方文档的[Exposing an External IP Address to Access an Application in a Cluster](https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/)，官方使用的Hello World测试，我们启动Nginx服务测试。
+
 ```Shell
 #启动nginx的pod
 kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=8080
 #创建名为example-service的服务
-kubectl expose deployment nginx --type=NodePort --name=example-service
+kubectl expose deployment nginx --type=nodePort --name=example-service
 #查看状态
 kubectl get deployments nginx
 kubectl describe deployments nginx
@@ -175,6 +175,8 @@ Endpoints:		172.30.38.2:8080,172.30.46.2:8080
 Session Affinity:	None
 Events:			<none>
 ```
+
+我们上面启动的serivce的type是**nodePort**，Kubernetes的service支持三种类型的service，参考[Kubernetes Serivce分析](http://www.cnblogs.com/xuxinkun/p/5331728.html)。
 
 ## 虚拟地址
 
@@ -210,4 +212,26 @@ KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /*
 ```
 KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /* default/example-service: cluster IP */ tcp dpt:8080
 ```
+
+## 遇到的问题
+
+**问题一**
+
+问题描述：在没有删除service和deploy的情况下就重启kubelet的时候，会遇到kubelet启动失败的情况。
+
+报错如下：
+
+```
+Apr 01 14:24:08 sz-pg-oam-docker-test-001.tendcloud.com kubelet[103932]: I0401 14:24:08.359839  103932 kubelet.go:1752] skipping pod synchronization - [Failed to start ContainerManager failed to initialise top level QOS containers: failed to create top level Burstable QOS cgroup : Unit kubepods-burstable.slice already exists.]
+```
+
+[Kubernetes Resource QoS机制解读](http://www.osbaike.net/article-show-id-229028.html)，这篇文章详细介绍了QoS的机制。
+
+Kubernetes根据Pod中Containers Resource的`request`和`limit`的值来定义Pod的QoS Class。
+
+对于每一种Resource都可以将容器分为3中QoS Classes: *Guaranteed*, *Burstable*, and *Best-Effort*，它们的QoS级别依次递减。
+
+- **Guaranteed** 如果Pod中所有Container的所有Resource的`limit`和`request`都相等且不为0，则这个Pod的QoS Class就是Guaranteed。
+- **Burstable** 除了符合Guaranteed和Best-Effort的场景，其他场景的Pod QoS Class都属于Burstable。
+- **Best-Effort** 如果Pod中所有容器的所有Resource的request和limit都没有赋值，则这个Pod的QoS Class就是Best-Effort。
 
