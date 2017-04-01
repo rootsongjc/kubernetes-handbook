@@ -333,7 +333,6 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/controller-manager
-User=kube
 ExecStart=/usr/bin/kube-controller-manager \
 	    $KUBE_LOGTOSTDERR \
 	    $KUBE_LOG_LEVEL \
@@ -370,7 +369,6 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/scheduler
-User=kube
 ExecStart=/usr/bin/kube-scheduler \
 	    $KUBE_LOGTOSTDERR \
 	    $KUBE_LOG_LEVEL \
@@ -545,3 +543,4 @@ sz-pg-oam-docker-test-003.tendcloud.com   Ready     10s       v1.6.0
 另外Kuberntes还提供第三中安装方式，请看Tony Bai写的[使用Kubeadm方式安装Kubernetes集群的探索](http://tonybai.com/2017/01/24/explore-kubernetes-cluster-installed-by-kubeadm/)。
 
 *时隔一年重新捡起kubernetes，正好现在KubeCon正在德国柏林举行，IDC 发布的报告显示，2017年大数据全球市场规模将达324亿美元，年复合增长率为27%，其中市场增长最快的领域是数据存储领域（53.4%）*
+
