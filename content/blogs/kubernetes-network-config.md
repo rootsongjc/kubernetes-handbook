@@ -10,7 +10,7 @@ Tags = ["kubernetes","cloud computing"]
 
 *（题图：西安鼓楼 Oct 4,2014）*
 
-书接上文[在CentOS中安装Kubernetes详细指南](http://rootsongjc.github.io/blogs/kubernetes-installation-on-centos/)，这是一个系列文章，作为*学习Kubernetes*的心路历程吧。
+书接上文[在CentOS中安装Kubernetes详细指南](http://rootsongjc.github.io/blogs/kubernetes-installation-on-centos/)，这是一个系列文章，作为学习Kubernetes的心路历程吧。
 
 本文主要讲解**Kubernetes的网络配置**，👆文中有一个安装**Flannel**的步骤，但是安装好后并没有相应的配置说明。
 
@@ -56,7 +56,7 @@ FLANNEL_ETCD_PREFIX="/kube-centos/network"
 #FLANNEL_OPTIONS=""
 ```
 
-- **etcd**的地址`FLANNEL_ETCD_ENDPOINT`
+- etcd的地址`FLANNEL_ETCD_ENDPOINT`
 - etcd查询的目录，包含docker的IP地址段配置。`FLANNEL_ETCD_PREFIX`
 
 **在etcd中创建网络配置**
@@ -103,6 +103,25 @@ DOCKER_OPT_BIP="--bip=172.30.46.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
 ```
+
+现在查询etcd中的内容可以看到：
+
+```
+$etcdctl ls /kube-centos/network/subnets
+/kube-centos/network/subnets/172.30.14.0-24
+/kube-centos/network/subnets/172.30.38.0-24
+/kube-centos/network/subnets/172.30.46.0-24
+$etcdctl get /kube-centos/network/config
+{ "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
+$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
+{"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
+$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
+{"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
+$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
+{"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
+```
+
+
 
 **设置docker0网桥的IP地址**
 
@@ -154,7 +173,7 @@ systemctl status flanneld
 #启动nginx的pod
 kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=8080
 #创建名为example-service的服务
-kubectl expose deployment nginx --type=nodePort --name=example-service
+kubectl expose deployment nginx --type=NodePort --name=example-service
 #查看状态
 kubectl get deployments nginx
 kubectl describe deployments nginx
@@ -213,13 +232,27 @@ KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /*
 KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.198.44        /* default/example-service: cluster IP */ tcp dpt:8080
 ```
 
+参考[理解Kubernetes网络之Flannel网络](http://tonybai.com/2017/01/17/understanding-flannel-network-for-kubernetes/)，Tony Bai的文章中有对flannel的详细介绍。
+
 ## 遇到的问题
 
-**问题一**
+在设置网络的过程中遇到了很多问题，记录如下。
 
-问题描述：在没有删除service和deploy的情况下就重启kubelet的时候，会遇到kubelet启动失败的情况。
+### 问题一
 
-报错如下：
+**问题描述**
+
+Kube-proxy开放的**NodePort**端口无法访问。即无法使用NodeIP加NodePort的方式访问service，而且本地telnet也不通，但是端口确确实实在那。
+
+<u>**此问题暂时还没有找到解决方法。**</u>
+
+### 问题二
+
+**问题描述**
+
+在没有删除service和deploy的情况下就重启kubelet的时候，会遇到kubelet启动失败的情况。
+
+**出错信息**
 
 ```
 Apr 01 14:24:08 sz-pg-oam-docker-test-001.tendcloud.com kubelet[103932]: I0401 14:24:08.359839  103932 kubelet.go:1752] skipping pod synchronization - [Failed to start ContainerManager failed to initialise top level QOS containers: failed to create top level Burstable QOS cgroup : Unit kubepods-burstable.slice already exists.]
@@ -235,3 +268,8 @@ Kubernetes根据Pod中Containers Resource的`request`和`limit`的值来定义Po
 - **Burstable** 除了符合Guaranteed和Best-Effort的场景，其他场景的Pod QoS Class都属于Burstable。
 - **Best-Effort** 如果Pod中所有容器的所有Resource的request和limit都没有赋值，则这个Pod的QoS Class就是Best-Effort。
 
+**解决方法**
+
+这个暂时还没找到根本的解决办法，参考Github上的[Failed to start ContainerManager failed to initialize top level QOS containers #43856](https://github.com/kubernetes/kubernetes/issues/43856)，重启主机后确实正常了。
+
+这只是个临时解决方法。
