@@ -246,6 +246,8 @@ Kube-proxy开放的**NodePort**端口无法访问。即无法使用NodeIP加Node
 
 <u>**此问题暂时还没有找到解决方法。**</u>
 
+To be continued…
+
 ### 问题二
 
 **问题描述**
@@ -262,14 +264,12 @@ Apr 01 14:24:08 sz-pg-oam-docker-test-001.tendcloud.com kubelet[103932]: I0401 1
 
 Kubernetes根据Pod中Containers Resource的`request`和`limit`的值来定义Pod的QoS Class。
 
-对于每一种Resource都可以将容器分为3中QoS Classes: *Guaranteed*, *Burstable*, and *Best-Effort*，它们的QoS级别依次递减。
+对于每一种Resource都可以将容器分为3中QoS Classes: Guaranteed, Burstable, and Best-Effort，它们的QoS级别依次递减。
 
-- **Guaranteed** 如果Pod中所有Container的所有Resource的`limit`和`request`都相等且不为0，则这个Pod的QoS Class就是Guaranteed。
-- **Burstable** 除了符合Guaranteed和Best-Effort的场景，其他场景的Pod QoS Class都属于Burstable。
-- **Best-Effort** 如果Pod中所有容器的所有Resource的request和limit都没有赋值，则这个Pod的QoS Class就是Best-Effort。
+- **Guaranteed**：如果Pod中所有Container的所有Resource的`limit`和`request`都相等且不为0，则这个Pod的QoS Class就是Guaranteed。
+- **Burstable**：除了符合Guaranteed和Best-Effort的场景，其他场景的Pod QoS Class都属于Burstable。
+- **Best-Effort**：如果Pod中所有容器的所有Resource的request和limit都没有赋值，则这个Pod的QoS Class就是Best-Effort。
 
 **解决方法**
 
-这个暂时还没找到根本的解决办法，参考Github上的[Failed to start ContainerManager failed to initialize top level QOS containers #43856](https://github.com/kubernetes/kubernetes/issues/43856)，重启主机后确实正常了。
-
-这只是个临时解决方法。
+这个暂时还没找到根本的解决办法，参考Github上的[Failed to start ContainerManager failed to initialize top level QOS containers #43856](https://github.com/kubernetes/kubernetes/issues/43856)，重启主机后确实正常了，不过这只是临时解决方法。
