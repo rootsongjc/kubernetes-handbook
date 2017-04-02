@@ -1,6 +1,6 @@
 +++
 date = "2017-04-02T20:27:00+08:00"
-title = "两个图片处理工具——Google Guetzli和基于AI的Deep Photo Style Transfer"
+title = "两款图片处理工具——Google Guetzli和基于AI的Deep Photo Style Transfer"
 draft = false
 Tags = ["picture","tools"]
 
@@ -14,6 +14,8 @@ Tags = ["picture","tools"]
 
 - [Google Guetzli](https://github.com/google/guetzli) 图像压缩工具
 - [Luan Fujun's Deep Photo Style Transfer](https://github.com/luanfujun/deep-photo-styletransfer) 图像style转换工具
+
+另外对于图像处理还处于Photoshop、Lightroom这种摄影后期和图像处理命令行工具[ImageMagick](https://www.imagemagick.org/script/index.php)的我来说，图像压缩，智能图像风格转换实乃上乘武功，不是我等凡夫俗子驾驭的了，但是乘兴而来，总不能败兴而归吧，下面我们来一探究竟。
 
 ## Google Guetzli
 
@@ -75,8 +77,12 @@ guetzli --quality 84 --verbose 20160403052.jpg output.jpg
 
 # Deep Photo Style Transfer 
 
-来自康奈尔大学的Luan Fujun开源的图像sytle转换工具，看了[README](https://github.com/luanfujun/deep-photo-styletransfer)的介绍，真的很惊艳，市面上好像还没有这种能够，给定任意一张照片，自动将另一张照片转换成该照片的style。
+来自康奈尔大学的Luan Fujun开源的图像sytle转换工具，看了[README](https://github.com/luanfujun/deep-photo-styletransfer)的介绍，上面有很多图像风格转换的例子，真的很惊艳，市面上好像还没有这种能够在给定任意一张照片的情况下，自动将另一张照片转换成该照片的style。
 
 这个工具使用Matlab和Lua开发，基于[Torch](https://github.com/torch/torch7)运行的时候需要[CUDA](https://developer.nvidia.com/cuda-downloads)，[cudnn](https://developer.nvidia.com/cudnn)，[Matlab](https://www.mathworks.com/)，环境实在太复杂，就没折腾，启动有人发布[Docker镜像](https://github.com/luanfujun/deep-photo-styletransfer/issues/29)，已经有人提了issue。
 
 如果它能够被商用，绝对是继**Prisma**后又一人工智能照片处理应用利器。
+
+## 后记
+
+是不是有了照片风格转换这个东西就不需要做照片后期了？只要选几张自己喜欢的风格照片，再鼠标点几下就可以完成照片处理了？摄影师要失业了？非也！照片风格东西本来就是很主观性的，每个人都有自己喜欢的风格，照相机发明后就有人说画家要失业了，其实不然，画画依然是创造性地劳动，只能说很多写实风格的画家要失业了。Deep Photo Style Transfer也许会成为Lightroom或者手机上一款app的功能，是一个不错的工具。也许还会成为像Prisma一样的现象级产品，who knows?🤷‍♂️
