@@ -1,13 +1,15 @@
 +++
 
-date = "2017-1=04-03T23:57:04+08:00"
-title = "容器技术在大数据场景下的应用"
+date = "2017-04-04T00:19:04+08:00"
+title = "容器技术在大数据场景下的应用——Yarn on Docker"
 draft = false
 Tags = ["docker","big data","cloud computing"]
 
 +++
 
 **作者：[宋净超](rootsongjc.github.io/about/) TalkingData云计算及大数据工程师**
+
+> 温故而知新，可以为师矣。——孔子
 
 ## 前言
 
@@ -249,4 +251,8 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 这篇文章写好的时候是2016年10月，距离现在我添加**前言**和**后记**的已经快半年时间了，这段时间内业界也发生了很多变化，比如docker推出CE和SE版本，Google的kubernetes发布了1.6版本，人工智能依然大热，在可预见的未来，可以说<u>Kubernetes一定会远远超越Docker成为容器编排领域的王者</u>，这是毋庸置疑的，对于docker 17.03-CE我也研究过了一段时间，其disgusting的plugin让我对于docker的编排已经失去信心。
 
-以后请关注我的[Kuberentes实践](http://rootsongjc.github.io/tags/kubernetes/)相关文章。
+其实容器在大数据场景下的应用并不是很多，毕竟Hadoop那套笨重的东西放在容器下运行，上生产环境? Are you kidding me?如果说做原型验证、研发测试那还可以。这样就大大限制了容器技术在大数据场景下的应用场景。使用容器的编排调度来实现大数据集群的资源优化有点舍本逐末，<u>如果真的要优化集群资源利用率的话，应该让不同的应用混跑，而不应该让集群之间资源隔离，比如Web应用跟大数据应用混布。</u>目前的这种**Yarn on Docker**方案实质上是将原来的整体Hadoop Yarn集群划分成多个不同的Yarn，将存储和计算分离了。其实这跟**Nutanix**的超融合架构有点像，Nutanix是由前Google的工程师创立的，解决虚拟化计算环境下的存储问题，也是将存储和计算分离，共享存储，计算根据需要调度。事实上Yahoo已经有解决Hadoop集群的资源细粒度分配和调度问题的方案，这应该是从Yarn的scheduler层来处理。
+
+Swarm已死，Swarmkit将继续发展，Docker的Swarm Mode还会在艰难中前行，目前看到的趋势仍然是模仿Kubernentes为主，没有自己鲜明的特色（除了部署管理方便意外，谁让它就集成在了docker里呢，就像当年windows集成IE打败Netscape，不过这不会再此上演了），Kubernentes又是一个通用的资源调度框架，它的最小资源划分是**Pod**而不是docker，它还可以运行rkt、containerd。
+
+上周起我开始将注意力转移到kubernentes，以后请关注我的[Kuberentes实践](http://rootsongjc.github.io/tags/kubernetes/)相关文章。
