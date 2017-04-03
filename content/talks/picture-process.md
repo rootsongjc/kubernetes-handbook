@@ -19,6 +19,8 @@ Tags = ["picture","tools"]
 
 ## Google Guetzli
 
+聊聊架构微信公众号上有一篇介绍[Google开源新算法，可将JPEG文件缩小35%](https://mp.weixin.qq.com/s?__biz=MzA5Nzc4OTA1Mw==&mid=2659599074&idx=1&sn=a26ae2a8becdc1f2cfbddf44d8ca1495&chksm=8be997f0bc9e1ee6e33f3e33c73d11884ad66085c0aedc9dd5e482063482887d0733d8e7d187#rd)文章。
+
 我在Mac上试用了一下，安装很简单，只要一条命令：
 
 ```shlell
