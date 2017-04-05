@@ -1,5 +1,5 @@
 +++
-date = "2017-04-03T21:48:51+08:00"
+date = "2017-04-05T10:18:51+08:00"
 title = "Kubernetes Dashboard/Web UI安装全记录"
 draft = false
 Tags = ["kubernetes","cloud computing"]
@@ -151,4 +151,39 @@ kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 
 看来身份认证是绕不过去了。
 
-To be continued…
+```
+# start a container that contains curl
+$ kubectl run test --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/curl:latest -- sleep 10000
+$kubectl get pod
+NAME                     READY     STATUS    RESTARTS   AGE
+test-2428763157-pxkps    1/1       Running   0          6s
+$kubectl exec test-2428763157-pxkps ls /var/run/secrets/kubernetes.io/serviceaccount/
+ls: cannot access /var/run/secrets/kubernetes.io/serviceaccount/: No such file or directory
+$kubectl get secrets
+No resources found.
+```
+
+/var/run/secrets/kubernetes.io/serviceaccount/这个目录还是不存在，我们安装的Kubernetes压根就没有设置secret。
+
+[troubleshooting.md](https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md)上说需要用`—admission-control`配置API Server，在配置这个之前还要了解下[Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)和[如何管理Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)。
+
+## 配置Serivce Accounts
+
+Service Account是为Pod提供一个身份认证。
+
+当你使用kubectl来访问集群的时候，一般是使用的**admin**的User Account来跟API server交互的，除非管理员指定了其它的Account。当Pod中的容器跟APIservice交互的时候，需要Service Account（比如default）的身份授权。
+
+### 使用Default Service Account来访问API server
+
+如果你创建pod的时候不指定Service Account的话，系统会自动指定为**default**。`spec.serviceAccount=default`。
+
+**我系统中的Service Account**
+
+```
+$kubectl get serviceAccounts
+NAME      SECRETS   AGE
+default   0         4d
+```
+
+
+
