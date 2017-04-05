@@ -1,7 +1,7 @@
 +++
 date = "2017-04-05T18:41:19+08:00"
 title = "Kubernetes heapster监控插件安装文档"
-draft = true
+draft = false
 Tags = ["kubernetes","cloud computing"]
 
 +++
