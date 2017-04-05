@@ -334,6 +334,8 @@ KUBE_ADMISSION_CONTROL="--admission-control=NamespaceLifecycle,NamespaceExists,L
 #KUBE_API_ARGS=""
 ```
 
+> `—admission-control`参数是Kubernetes的安全机制配置，这些安全机制都是以插件的形式用来对API Serve进行准入控制，一开始我们没有配置`ServiceAccount`，这是为了方便集群之间的通信，不需要进行身份验证。如果你需要更高级的身份验证和鉴权的话就需要加上它了。
+
 **配置kube-controller-manager**
 
 编写`/usr/lib/systemd/system/kube-controller.service`文件。

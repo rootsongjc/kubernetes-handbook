@@ -1,5 +1,5 @@
 +++
-date = "2017-04-05T10:18:51+08:00"
+date = "2017-04-05T14:28:51+08:00"
 title = "Kubernetes Dashboard/Web UI安装全记录"
 draft = false
 Tags = ["kubernetes","cloud computing"]
@@ -83,6 +83,7 @@ spec:
           # If not specified, Dashboard will attempt to auto discover the API server and connect
           # to it. Uncomment only if the default does not work.
           # - --apiserver-host=http://my-address:port
+          - --apiserver-host=http://sz-pg-oam-docker-test-001.tendcloud.com:8080
         livenessProbe:
           httpGet:
             path: /
@@ -111,12 +112,30 @@ spec:
 准备好image后就可以部署了。
 
 ```
-kubectl create -f kubernetes-dashboard.yaml
+$kubectl create -f kubernetes-dashboard.yaml
+deployment "kubernetes-dashboard" created
+service "kubernetes-dashboard" created
+$kubectl get -f kubernetes-dashboard.yaml
+NAME                          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/kubernetes-dashboard   1         1         1            1           9s
+
+NAME                       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+svc/kubernetes-dashboard   10.254.113.226   <nodes>       80:31370/TCP   8s
 ```
 
-## 出错
+现在就可以访问http://sz-pg-oam-docker-test-001.tendcloud.com:8080/ui了，效果如图：
 
-启动service的时候出错了。
+![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-01.jpg)
+
+## Troubleshooting
+
+### 如果你没启动Service Account身份认证
+
+那就好办了，检查下你的**kubernetes-dashboard.yaml**文件，看看是不是API Server地址配错了，或者查看下pod的log，我就是在log里发现，原来API Server的主机名无法解析导致服务启动失败。在DNS里添加API Server主机的DNS记录即可。
+
+### 如果你启动API Server的ServiceAccount身份认证
+
+启动service的时候出错。
 
 ```
 kubectl --namespace=kube-system logs kubernetes-dashboard-1680927228-pdv45
@@ -125,9 +144,9 @@ Error while initializing connection to Kubernetes apiserver. This most likely me
 Refer to the troubleshooting guide for more information: https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md
 ```
 
-[troubleshooting.md](https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md)文件已经说明了，这是**Service Account**的问题。
+[troubleshooting.md](https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md)文件已经说明了，这是可能是你配置API server地址或**Service Account**的问题。
 
-这时候又要借鉴Tony Bai的[Kubernetes集群Dashboard插件安装](http://tonybai.com/2017/01/19/install-dashboard-addon-for-k8s/)这篇文章。
+如果是配置Service Account的问题，可以借鉴Tony Bai的[Kubernetes集群Dashboard插件安装](http://tonybai.com/2017/01/19/install-dashboard-addon-for-k8s/)这篇文章。
 
 **启动**
 
@@ -135,7 +154,7 @@ Refer to the troubleshooting guide for more information: https://github.com/kube
 kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 ```
 
-报错
+报错信息
 
 ```
 {
@@ -149,8 +168,6 @@ kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 }
 ```
 
-看来身份认证是绕不过去了。
-
 ```
 # start a container that contains curl
 $ kubectl run test --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/curl:latest -- sleep 10000
@@ -163,27 +180,10 @@ $kubectl get secrets
 No resources found.
 ```
 
-/var/run/secrets/kubernetes.io/serviceaccount/这个目录还是不存在，我们安装的Kubernetes压根就没有设置secret。
+`/var/run/secrets/kubernetes.io/serviceaccount/`这个目录还是不存在，我们安装的Kubernetes压根就没有设置secret。
 
 [troubleshooting.md](https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md)上说需要用`—admission-control`配置API Server，在配置这个之前还要了解下[Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)和[如何管理Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)。
 
-## 配置Serivce Accounts
+## 后记
 
-Service Account是为Pod提供一个身份认证。
-
-当你使用kubectl来访问集群的时候，一般是使用的**admin**的User Account来跟API server交互的，除非管理员指定了其它的Account。当Pod中的容器跟APIservice交互的时候，需要Service Account（比如default）的身份授权。
-
-### 使用Default Service Account来访问API server
-
-如果你创建pod的时候不指定Service Account的话，系统会自动指定为**default**。`spec.serviceAccount=default`。
-
-**我系统中的Service Account**
-
-```
-$kubectl get serviceAccounts
-NAME      SECRETS   AGE
-default   0         4d
-```
-
-
-
+一年前我安装Kubernetes Dashboard（那时候好像还叫Kube-UI）的时候没有其功能还极其不完善，经过一年多的发展，已经有模有样了，如果不启用**Service Account**的话，安装Dashboard还是很简单的。接下来我还要在Dashboard上安装其它Add-on，如Heapster用来监控Pod状态。
