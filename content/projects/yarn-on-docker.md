@@ -9,13 +9,13 @@ Tags = ["docker","big data","cloud computing"]
 
 **作者：[宋净超](rootsongjc.github.io/about/) TalkingData云计算及大数据工程师**
 
-> 温故而知新，可以为师矣。——孔子
-
 ## 前言
 
 我已就该话题已在2016年上海Qcon上发表过演讲，[点此观看](http://www.infoq.com/cn/presentations/yarn-on-docker-container-technology-in-big-data-scenarios)。
 
 另外InfoQ网站上的文字版[数据中心的Yarn on Docker集群方案](http://www.infoq.com/cn/articles/YarnOnDocker-forDCCluster)，即本文。
+
+项目代码开源在Github上：[Magpie](github.com/rootsongjc/magpie)
 
 ## 当前数据中心存在的问题
 
