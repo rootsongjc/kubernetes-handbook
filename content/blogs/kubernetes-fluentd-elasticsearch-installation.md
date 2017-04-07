@@ -1,5 +1,5 @@
 +++
-date = "2017-04-06T14:30:24+08:00"
+date = "2017-04-07T20:07:24+08:00"
 title = "使用Fluentd和ElasticSearch收集Kubernetes集群日志"
 draft = false
 Tags = ["kubernetes","cloud computing","fluentd","elasticsearch","logging"]
@@ -144,7 +144,7 @@ po/monitoring-grafana-127711743-xl9v1      1/1       Running   0          23h
 po/monitoring-influxdb-1411048194-cvxmm    1/1       Running   0          23h
 ```
 
-查看logging pod的日志。
+应该在个node节点上启动的**fluentd**没有看到。查看logging pod的日志。
 
 ```
 $kubectl -n kube-system logs po/elasticsearch-logging-v1-nshz2
@@ -192,7 +192,260 @@ SendRequestTransportException[[internal:discovery/zen/unicast]]; nested: NodeNot
 
 参考我的另一片译文[Kubernetes中ConfigMap解析](rootsongjc.github.io/blogs/kubernetes-configmap-introduction)。
 
-<u>问题尚未解决，同志仍需努力。</u>
+## 问题排查
+
+前面写的是直接使用`kubectl create -f flucentd-elasticsearch`命令启动整个fluentd+elasticsearch集群，这样启动看似很简单，但是对于问题排查的时候不便于我们分析出错原因，因为你根本不知道服务之间的依赖关系和启动顺序，所以现在我们依次启动每个服务，看看背后都做了什么。
+
+### 启动fluentd
+
+首先启动fluentd收集日志的服务，从`fluentd-es-ds.yaml`的配置中可以看到fluentd是以[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)方式来运行的。
+
+**DaemonSet简介**
+
+DaemonSet能够让所有（或者一些特定）的Node节点运行同一个pod。当节点加入到kubernetes集群中，pod会被（DaemonSet）调度到该节点上运行，当节点从kubernetes集群中被移除，被（DaemonSet）调度的pod会被移除，如果删除DaemonSet，所有跟这个DaemonSet相关的pods都会被删除。
+
+[DaemonSet详细介绍](http://www.dockerinfo.net/1139.html)，这是官方文档的中文翻译，其中还有示例。
+
+**启动fluentd**
+
+```
+$kubectl create -f fluentd-es-ds.yaml
+daemonset "fluentd-es-v1.22" created
+$kubectl get -f fluentd-es-ds.yaml 
+NAME               DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                              AGE
+fluentd-es-v1.22   0         0         0         0            0           beta.kubernetes.io/fluentd-ds-ready=true   2m
+```
+
+我们在没有修改`fluentd-es-ds.yaml`的情况下直接启动fluentd，实际上一个Pod也没有启动起来，这是为什么呢？因为**NODE-SELECTOR**选择的label是`beta.kubernetes.io/fluentd-ds-ready=true`。
+
+我们再来看下**node**的**label**。
+
+```
+$kubectl describe node sz-pg-oam-docker-test-001.tendcloud.com
+Name:			sz-pg-oam-docker-test-001.tendcloud.com
+Role:			
+Labels:			beta.kubernetes.io/arch=amd64
+			beta.kubernetes.io/os=linux
+			kubernetes.io/hostname=sz-pg-oam-docker-test-001.tendcloud.com
+Annotations:		node.alpha.kubernetes.io/ttl=0
+			volumes.kubernetes.io/controller-managed-attach-detach=true
+```
+
+我们没有给node设置`beta.kubernetes.io/fluentd-ds-ready=true`的label，所以DaemonSet没有调度上去。
+
+我们需要手动给kubernetes集群的三个node添加label。
+
+```
+$kubectl label node sz-pg-oam-docker-test-001.tendcloud.com beta.kubernetes.io/fluentd-ds-ready=true
+node "sz-pg-oam-docker-test-001.tendcloud.com" labeled
+```
+
+给另外两个node执行同样的操作。
+
+现在再查看下DaemonSet的状态。
+
+```
+$kubectl get -f fluentd-es-ds.yaml 
+NAME               DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                              AGE
+fluentd-es-v1.22   3         3         0         3            0           beta.kubernetes.io/fluentd-ds-ready=true   31m
+```
+
+现在可以看到三个DeamonSet都启动起来了。
+
+查看下fluentd的日志`/var/log/fluentd.log`，日志是mount到本地的。
+
+```
+2017-04-07 03:53:42 +0000 [info]: adding match pattern="fluent.**" type="null"
+2017-04-07 03:53:42 +0000 [info]: adding filter pattern="kubernetes.**" type="kubernetes_metadata"
+2017-04-07 03:53:42 +0000 [error]: config error file="/etc/td-agent/td-agent.conf" error="Invalid Kubernetes API v1 endpoint https://10.254.0.1:443/api: SSL_connect returned=1 errno=0 state=error: certificate verify failed"
+2017-04-07 03:53:42 +0000 [info]: process finished code=256
+2017-04-07 03:53:42 +0000 [warn]: process died within 1 second. exit.
+```
+
+从日志的最后几行中可以看到，`Invalid Kubernetes API v1 endpoint https://10.254.0.1:443/api: SSL_connect returned=1 errno=0 state=error: certificate verify failed`这样的错误，这些需要在`/etc/td-agent/td-agent.conf`文件中配置的。
+
+但是这些配置已经在创建`gcr.io/google_containers/fluentd-elasticsearch:1.22`镜像（该镜像是运行带有elasticsearch插件的fluentd的）的时候就已经copy进去了，从`fluentd-elasticsearch/fluentd-es-image/Dockerfile`文件中就可以看到：
+
+```
+# Copy the Fluentd configuration file.
+COPY td-agent.conf /etc/td-agent/td-agent.conf
+```
+
+我们可以使用[ConfigMap](http://rootsongjc.github.io/blogs/kubernetes-configmap-introduction/)，不用重新再build镜像，通过文件挂载的形式替换镜像中已有的td-agent.conf文件。
+
+[Tony Bai](tonybai.com)给出的两点建议：
+
+* 在基于td-agent.conf创建configmap资源之前，需要将td-agent.conf中的注释行都删掉，否则生成的configmap的内容可能不正确；
+* fluentd pod将创建在kube-system下，因此ConfigMap资源也需要创建在kube-system namespace下面，否则kubectl create无法找到对应的ConfigMap。
+
+在td-agent.conf的配置文件的<filter kubernetes.**>中增加两条配置配置：
+
+```
+<filter kubernetes.**>
+  type kubernetes_metadata
+  kubernetes_url sz-pg-oam-docker-test-001.tendcloud.com:8080
+  verify_ssl false
+</filter>
+```
+
+**创建ConfigMap**
+
+```
+kubectl create configmap td-agent-config --from-file=fluentd-elasticsearch/fluentd-es-image/td-agent.conf -n kube-system
+```
+
+查看刚创建的ConfigMap
+
+```
+$kubectl -n kube-system get configmaps td-agent-config -o yaml
+apiVersion: v1
+data:
+  td-agent.conf: |
+    <match fluent.**>
+      type null
+    </match>
+...
+<filter kubernetes.**>
+  type kubernetes_metadata
+  kubernetes_url http://sz-pg-oam-docker-test-001.tendcloud.com:8080
+  verify_ssl false
+</filter>
+...
+
+```
+
+> ⚠️ kubernetes_url地址要加上**http**。
+
+修改`fluentd-es-ds.yaml`文件，在其中增加`td-agent.conf`文件的volume。
+
+该文件的部分内容如下：
+
+```
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+...
+    spec:
+     ...
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+        - name: td-agent-config
+          mountPath: /etc/td-agent
+...
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: td-agent-config
+        configMap:
+          name: td-agent-config
+```
+
+启动日志收集服务
+
+```
+kubectl create -f ./fluentd-elasticsearch
+```
+
+现在再查看`/var/log/fluentd.log`日志里面就没有错误了。
+
+查看下elasticsearch pod日志，发现里面还有错误，跟以前的一样：
+
+```
+[2017-04-07 10:54:57,858][WARN ][discovery.zen.ping.unicast] [elasticsearch-logging-v1-wxd5f] failed to send ping to [{#zen_unicast_1#}{127.0.0.1}{127.0.0.1:9300}]
+SendRequestTransportException[[][127.0.0.1:9300][internal:discovery/zen/unicast]]; nested: NodeNotConnectedException[[][127.0.0.1:9300] Node not connected];
+	at org.elasticsearch.transport.TransportService.sendRequest(TransportService.java:340)
+	at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing.sendPingRequestToNode(UnicastZenPing.java:440)
+	at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing.sendPings(UnicastZenPing.java:426)
+	at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing.ping(UnicastZenPing.java:240)
+	at org.elasticsearch.discovery.zen.ping.ZenPingService.ping(ZenPingService.java:106)
+	at org.elasticsearch.discovery.zen.ping.ZenPingService.pingAndWait(ZenPingService.java:84)
+	at org.elasticsearch.discovery.zen.ZenDiscovery.findMaster(ZenDiscovery.java:945)
+	at org.elasticsearch.discovery.zen.ZenDiscovery.innerJoinCluster(ZenDiscovery.java:360)
+	at org.elasticsearch.discovery.zen.ZenDiscovery.access$4400(ZenDiscovery.java:96)
+	at org.elasticsearch.discovery.zen.ZenDiscovery$JoinThreadControl$1.run(ZenDiscovery.java:1296)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: NodeNotConnectedException[[][127.0.0.1:9300] Node not connected]
+	at org.elasticsearch.transport.netty.NettyTransport.nodeChannel(NettyTransport.java:1141)
+	at org.elasticsearch.transport.netty.NettyTransport.sendRequest(NettyTransport.java:830)
+	at org.elasticsearch.transport.TransportService.sendRequest(TransportService.java:329)
+```
+
+查看下elasticsearch:v2.4.1-2镜像的代码，在`fluentd-elasticsearch/es-image`目录下，该目录结构：
+
+```
+config
+Dockerfile
+elasticsearch_logging_discovery.go
+Makefile
+run.sh
+template-k8s-logstash.json
+```
+
+从**Dockerfile**中可以看到：
+
+```Dockerfile
+RUN mkdir -p /elasticsearch/config/templates
+COPY template-k8s-logstash.json /elasticsearch/config/templates/template-k8s-logstash.json
+
+COPY config /elasticsearch/config
+
+COPY run.sh /
+COPY elasticsearch_logging_discovery /
+
+RUN useradd --no-create-home --user-group elasticsearch \
+    && mkdir /data \
+    && chown -R elasticsearch:elasticsearch /elasticsearch
+
+VOLUME ["/data"]
+EXPOSE 9200 9300
+
+CMD ["/run.sh"]
+```
+
+将本地的`config`目录作为配置文件拷贝到了镜像里，`run.sh`启动脚本中有三行：
+
+```shell
+/elasticsearch_logging_discovery >> /elasticsearch/config/elasticsearch.yml
+
+chown -R elasticsearch:elasticsearch /data
+
+exec gosu elasticsearch /elasticsearch/bin/elasticsearch
+```
+
+我们再进入到镜像里查看下`/elasticsearch/config/elasticsearch.yml`文件的内容。
+
+```Yaml
+cluster.name: kubernetes-logging
+
+node.name: ${NODE_NAME}
+node.master: ${NODE_MASTER}
+node.data: ${NODE_DATA}
+
+transport.tcp.port: ${TRANSPORT_PORT}
+http.port: ${HTTP_PORT}
+
+path.data: /data
+
+network.host: 0.0.0.0
+
+discovery.zen.minimum_master_nodes: ${MINIMUM_MASTER_NODES}
+discovery.zen.ping.multicast.enabled: false
+```
+
+记录几个问题：
+
+- Kubernetes中的DNS没有配置。
+- ElasticSearch的配置有问题。
 
 **To be continued…**
 
