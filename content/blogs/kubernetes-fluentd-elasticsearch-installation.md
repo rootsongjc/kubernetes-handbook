@@ -1,5 +1,5 @@
 +++
-date = "2017-04-07T20:07:24+08:00"
+date = "2017-04-07T20:13:24+08:00"
 title = "使用Fluentd和ElasticSearch收集Kubernetes集群日志"
 draft = false
 Tags = ["kubernetes","cloud computing","fluentd","elasticsearch","logging"]
@@ -24,13 +24,13 @@ Tags = ["kubernetes","cloud computing","fluentd","elasticsearch","logging"]
 
 目前容器日志有两种输出形式：
 
-1. stdout,stderr标准输出
+**stdout,stderr标准输出**
 
-   这种形式的日志输出我们可以直接使用`docker logs`查看日志，kubernetes集群中同样可以使用`kubectl logs`类似的形式查看日志。
+这种形式的日志输出我们可以直接使用`docker logs`查看日志，kubernetes集群中同样可以使用`kubectl logs`类似的形式查看日志。
 
-2. 日志文件记录
+**日志文件记录**
 
-   这种日志输出我们无法从以上方法查看日志内容，只能`tail`日志文件查看。
+这种日志输出我们无法从以上方法查看日志内容，只能`tail`日志文件查看。
 
 ## Fluentd介绍
 
@@ -424,7 +424,7 @@ exec gosu elasticsearch /elasticsearch/bin/elasticsearch
 
 我们再进入到镜像里查看下`/elasticsearch/config/elasticsearch.yml`文件的内容。
 
-```Yaml
+```yaml
 cluster.name: kubernetes-logging
 
 node.name: ${NODE_NAME}
@@ -442,10 +442,23 @@ discovery.zen.minimum_master_nodes: ${MINIMUM_MASTER_NODES}
 discovery.zen.ping.multicast.enabled: false
 ```
 
-记录几个问题：
+**记录几个问题**
 
 - Kubernetes中的DNS没有配置。
 - ElasticSearch的配置有问题。
+- 是否要用ServiceAccount？
+
+## 参考
+
+[使用Fluentd和ElasticSearch Stack实现Kubernetes的集群Logging](http://tonybai.com/2017/03/03/implement-kubernetes-cluster-level-logging-with-fluentd-and-elasticsearch-stack/)
+
+[在Kubernetes上搭建EFK（Fluentd＋Elasticsearch＋Kibana）](https://my.oschina.net/newlife111/blog/714574)
+
+[elasticsearch2.2 集群搭建各种坑](http://www.cnblogs.com/muzhiye/p/elasticsearch_set_cluster.html)
+
+[elasticsearch_logging_discovery.go](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/fluentd-elasticsearch/es-image/elasticsearch_logging_discovery.go)
+
+[fluent-plugin-kubernetes_metadata_filter](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)
 
 **To be continued…**
 
