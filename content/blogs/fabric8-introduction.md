@@ -1,6 +1,6 @@
 +++
 draft = false
-date = "2017-04-10T21:01:00+08:00"
+date = "2017-04-10T21:39:00+08:00"
 title = "Fabric8简介"
 Tags = ["fabric8","tools","microservices"]
 
@@ -71,7 +71,7 @@ Fabric8提供了一个完全集成的开源微服务平台，可在任何的[Kub
 
 ## 后记
 
-我在自己笔记本上装了个minikube，试玩感受将在后续发表。
+~~我在自己笔记本上装了个minikube，试玩感受将在后续发表。~~
 
 试玩时需要科学上网。
 
@@ -117,3 +117,68 @@ Downloading images and waiting to open the fabric8 console...
 .....................................................
 ```
 
+启动了半天一直是这种状态：
+
+```
+Waiting, endpoint for service is not ready yet...
+```
+
+我一看下载下来的`https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml`文件，真是**蔚为壮观**啊，足足有**24712行**(这里面都是实际配置，没有配置充行数)，使用了如下这些docker镜像，足足有**53个docker镜像**：
+
+```
+fabric8/alpine-caddy:2.2.311
+fabric8/apiman-gateway:2.2.168
+fabric8/apiman:2.2.168
+fabric8/chaos-monkey:2.2.311
+fabric8/configmapcontroller:2.3.5
+fabric8/eclipse-orion:2.2.311
+fabric8/elasticsearch-k8s:2.3.4
+fabric8/elasticsearch-logstash-template:2.2.311
+fabric8/elasticsearch-v1:2.2.168
+fabric8/exposecontroller:2.3.2
+fabric8/fabric8-console:2.2.199
+fabric8/fabric8-forge:2.3.88
+fabric8/fabric8-kiwiirc:2.2.311
+fabric8/fluentd-kubernetes:v1.19
+fabric8/gerrit:2.2.311
+fabric8/git-collector:2.2.311
+fabric8/gogs:v0.9.97
+fabric8/grafana:2.6.1
+fabric8/hubot-irc:2.2.311
+fabric8/hubot-letschat:v1.0.0
+fabric8/hubot-notifier:2.2.311
+fabric8/hubot-slack:2.2.311
+fabric8/jenkins-docker:2.2.311
+fabric8/jenkinshift:2.2.199
+fabric8/kafka:2.2.153
+fabric8/kibana-config:2.2.311
+fabric8/kibana4:v4.5.3
+fabric8/lets-chat:2.2.311
+fabric8/maven-builder:2.2.311
+fabric8/message-broker:2.2.168
+fabric8/message-gateway:2.2.168
+fabric8/nexus:2.2.311
+fabric8/taiga-back:2.2.311
+fabric8/taiga-front:2.2.311
+fabric8/turbine-server:1.0.28
+fabric8/zookeeper:2.2.153
+fabric8/zookeeper:2.2.168
+funktion/funktion-nodejs-runtime:1.0.3
+funktion/funktion:1.0.9
+gitlab/gitlab-ce
+jboss/keycloak:2.2.0.Final
+jfrog-docker-registry.bintray.io/artifactory/artifactory-oss
+jimmidyson/configmap-reload:v0.1
+manageiq/manageiq:latest
+mongo
+mysql:5.7
+nginxdemos/nginx-ingress:0.3.1
+openzipkin/zipkin:1.13.0
+postgres
+prom/blackbox-exporter:master
+prom/node-exporter
+prom/prometheus:v1.3.1
+registry:2
+```
+
+你们感受下吧，我果断放弃了在自己笔记本上安装的念头。
