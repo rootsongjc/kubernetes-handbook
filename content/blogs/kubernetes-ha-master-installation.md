@@ -42,30 +42,32 @@ admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem
 
 有两种下载方式
 
-1. 从 [github release 页面](https://github.com/kubernetes/kubernetes/releases) 下载发布版 tarball，解压后再执行下载脚本
+**方式一**
 
-   ```shell
-   $ wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
-   $ tar -xzvf kubernetes.tar.gz
-   ...
-   $ cd kubernetes
-   $ ./cluster/get-kube-binaries.sh
-   ...
-   ```
+从 [github release 页面](https://github.com/kubernetes/kubernetes/releases) 下载发布版 tarball，解压后再执行下载脚本
 
-2. 从 [`CHANGELOG`页面](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md) 下载 `client` 或 `server` tarball 文件
+```shell
+$ wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
+$ tar -xzvf kubernetes.tar.gz
+...
+$ cd kubernetes
+$ ./cluster/get-kube-binaries.sh
+...
+```
+**方式二**
 
-   `server` 的 tarball `kubernetes-server-linux-amd64.tar.gz` 已经包含了 `client`(`kubectl`) 二进制文件，所以不用单独下载`kubernetes-client-linux-amd64.tar.gz`文件；
+从 [`CHANGELOG`页面](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md) 下载 `client` 或 `server` tarball 文件
 
-   ```shell
-   $ # wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
-   $ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
-   $ tar -xzvf kubernetes-server-linux-amd64.tar.gz
-   ...
-   $ cd kubernetes
-   $ tar -xzvf  kubernetes-src.tar.gz
-   ```
+`server` 的 tarball `kubernetes-server-linux-amd64.tar.gz` 已经包含了 `client`(`kubectl`) 二进制文件，所以不用单独下载`kubernetes-client-linux-amd64.tar.gz`文件；
 
+```shell
+$ # wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
+$ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
+$ tar -xzvf kubernetes-server-linux-amd64.tar.gz
+...
+$ cd kubernetes
+$ tar -xzvf  kubernetes-src.tar.gz
+```
 将二进制文件拷贝到指定路径
 
 ```bash
