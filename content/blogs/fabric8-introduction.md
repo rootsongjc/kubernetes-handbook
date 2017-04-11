@@ -1,8 +1,8 @@
 +++
 draft = false
 date = "2017-04-10T21:39:00+08:00"
-title = "Fabric8简介"
-Tags = ["fabric8","tools","microservices"]
+title = "开源微服务管理平台fabric8简介"
+Tags = ["fabric8","platform","microservices","redhat"]
 
 +++
 
