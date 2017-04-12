@@ -1,5 +1,5 @@
 +++
-draft = true
+draft = false
 date = "2017-04-12T13:04:45+08:00"
 title = "Kubernetes安装之kubedns配置"
 Tags = ["kubernetes"]
