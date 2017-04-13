@@ -18,4 +18,4 @@ Tags = ["kubernetes","book"]
 
 或者直接下载[pdf](http://olz1di9xf.bkt.clouddn.com/Kubernetes1.6%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E2%80%94%E2%80%94%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2%E5%BC%80%E5%90%AFTLS%E5%9F%BA%E4%BA%8ECentOS7.pdf)版本（2.92M）。
 
-Kubernetes的安装繁琐，步骤复杂，该文档能够帮助跳过很多坑，节约不少时间，我在本地环境上已经安装完成，有问题欢迎在[GitHub](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)上提issue。
+Kubernetes的安装繁琐，步骤复杂，该文档能够帮助跳过很多坑，节约不少时间，我在本地环境上已经安装完成，有问题欢迎在[GitHub](https://github.com/opsnull/follow-me-install-kubernetes-cluster)上提issue。
