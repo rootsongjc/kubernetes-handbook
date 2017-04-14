@@ -6,6 +6,10 @@ Tags = ["kubernetes"]
 
 +++
 
+![银河soho](http://olz1di9xf.bkt.clouddn.com/20160131054.jpg)
+
+*（题图：银河SOHO Jan 31,2016）*
+
 ## 参考
 
 [Kubernetes Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)
@@ -19,3 +23,5 @@ Tags = ["kubernetes"]
 [Kubernetes : Træfɪk and Let's Encrypt at scale](https://blog.osones.com/en/kubernetes-traefik-and-lets-encrypt-at-scale.html)
 
 [Kubernetes Ingress Controller-Træfɪk](https://docs.traefik.io/user-guide/kubernetes/)
+
+[Kubernetes 1.2 and simplifying advanced networking with Ingress](http://blog.kubernetes.io/2016/03/Kubernetes-1.2-and-simplifying-advanced-networking-with-Ingress.html)
