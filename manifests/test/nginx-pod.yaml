@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+    ports:
+    - containerPort: 80
