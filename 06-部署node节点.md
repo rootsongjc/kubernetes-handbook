@@ -24,6 +24,8 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 参考我之前写的文章[Kubernetes基于Flannel的网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
+直接使用yum安装flanneld即可。
+
 service配置文件`/usr/lib/systemd/system/flanneld.service`。
 
 ```ini
@@ -65,6 +67,126 @@ FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kub
 ```
 
 在FLANNEL_OPTIONS中增加TLS的配置。
+
+**在etcd中创建网络配置**
+
+执行下面的命令为docker分配IP地址段。
+
+```shell
+etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  mkdir /kube-centos/network
+etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  mk /kube-centos/network/config "{ \"Network\": \"172.30.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
+```
+
+**配置Docker**
+
+Flannel的[文档](https://github.com/coreos/flannel/blob/master/Documentation/running.md)中有写**Docker Integration**：
+
+Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
+
+```
+source /run/flannel/subnet.env
+docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &
+```
+
+Systemd users can use `EnvironmentFile` directive in the .service file to pull in `/run/flannel/subnet.env`
+
+如果你不是使用yum安装的flanneld，那么需要下载flannel github release中的tar包，解压后会获得一个**mk-docker-opts.sh**文件。
+
+这个文件是用来`Generate Docker daemon options based on flannel env file`。
+
+执行`./mk-docker-opts.sh -i`将会生成如下两个文件环境变量文件。
+
+/run/flannel/subnet.env
+
+```
+FLANNEL_NETWORK=172.30.0.0/16
+FLANNEL_SUBNET=172.30.46.1/24
+FLANNEL_MTU=1450
+FLANNEL_IPMASQ=false
+```
+
+/run/docker_opts.env
+
+```
+DOCKER_OPT_BIP="--bip=172.30.46.1/24"
+DOCKER_OPT_IPMASQ="--ip-masq=true"
+DOCKER_OPT_MTU="--mtu=1450"
+```
+
+现在查询etcd中的内容可以看到：
+
+```
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  ls /kube-centos/network/subnets
+/kube-centos/network/subnets/172.30.14.0-24
+/kube-centos/network/subnets/172.30.38.0-24
+/kube-centos/network/subnets/172.30.46.0-24
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/config
+{ "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
+$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
+{"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
+$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
+{"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
+$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
+{"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
+```
+
+**设置docker0网桥的IP地址**
+
+```shell
+source /run/flannel/subnet.env
+ifconfig docker0 $FLANNEL_SUBNET
+```
+
+这样docker0和flannel网桥会在同一个子网中，如
+
+```
+6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
+    link/ether 02:42:da:bf:83:a2 brd ff:ff:ff:ff:ff:ff
+    inet 172.30.38.1/24 brd 172.30.38.255 scope global docker0
+       valid_lft forever preferred_lft forever
+7: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN 
+    link/ether 9a:29:46:61:03:44 brd ff:ff:ff:ff:ff:ff
+    inet 172.30.38.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+```
+
+现在就可以重启docker了。
+
+重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
+
+```
+Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
+```
+
+这是kubelet与docker的**cgroup driver**不一致导致的，kubelet启动的时候有个`—cgroup-driver`参数可以指定为"cgroupfs"或者“systemd”。
+
+```
+--cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
+```
+
+**启动flannel**
+
+```shell
+systemctl daemon-reload
+systemctl start flanneld
+systemctl status flanneld
+```
 
 ## 安装和配置 kubelet
 
