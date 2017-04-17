@@ -15,7 +15,7 @@ Tags = ["docker","big data","cloud computing"]
 
 另外InfoQ网站上的文字版[数据中心的Yarn on Docker集群方案](http://www.infoq.com/cn/articles/YarnOnDocker-forDCCluster)，即本文。
 
-项目代码开源在Github上：[Magpie](github.com/rootsongjc/magpie)
+项目代码开源在Github上：[Magpie](https://github.com/rootsongjc/magpie)
 
 ## 当前数据中心存在的问题
 
