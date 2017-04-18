@@ -2,7 +2,7 @@
 
 date = "2017-04-18T22:21:21+08:00"
 
-title = "Resume"
+title = "Jimmy Song's Resume"
 
 Description = " Jimmy Song's Resume"
 
@@ -39,7 +39,7 @@ Blog：[rootsongjc.github.io](http://rootsongjc.github.io)
 
 ## 自我介绍
 
-Geek，热爱分享和写作，早年混迹Hadoop生态圈（2013-2015），后来（2015年末至今）沉浸于容器生态圈不能自拔，现在正研究kubernetes和CNCF组件，期待容器技术能为企业带来管理的变革、效率的提高、成本的改善。电子工业出版社[Cloud Native Go](http://rootsongjc.github.io/talks/cloud-native-go/)图书译者，先后在Qcon上海2016[大数据应用优化与实践](http://www.infoq.com/cn/presentations/yarn-on-docker-container-technology-in-big-data-scenarios?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=presentations_link&utm_content=link_text)、[上海全球微服务架构大会](http://msa-summit.com/)做大数据集群和微服务相关主题分享，在2016年云栖大会[大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.NYPF3E)的圆桌论坛。
+Geek，热爱分享和写作，早年混迹Hadoop生态圈（2013-2015），后来（2015年末至今）沉浸于容器生态圈不能自拔，现在正研究kubernetes和CNCF组件，期待容器技术能为企业带来管理的变革、效率的提高、成本的改善。电子工业出版社[Cloud Native Go](http://rootsongjc.github.io/talks/cloud-native-go/)图书译者，先后在Qcon上海2016[大数据应用优化与实践](http://www.infoq.com/cn/presentations/yarn-on-docker-container-technology-in-big-data-scenarios?utm_campaign=rightbar_v2&utm_source=infoq&utm_medium=presentations_link&utm_content=link_text)、[上海全球微服务架构大会](http://msa-summit.com/)做大数据集群和微服务相关主题分享，参与了2016年云栖大会[大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.NYPF3E)的圆桌论坛。
 
 ## 技能树
 
