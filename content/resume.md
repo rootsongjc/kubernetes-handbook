@@ -1,3 +1,14 @@
++++
+
+date = "2017-04-18T22:21:21+08:00"
+
+title = "Resume"
+
+Description = " Jimmy Song's Resume"
+
++++
+
+
 # $whoami
 
 ![me](https://avatars2.githubusercontent.com/u/3328185?v=3&u=84d2689cef6b2f92a651661b8931f7b09b3cf4c0&s=400)
