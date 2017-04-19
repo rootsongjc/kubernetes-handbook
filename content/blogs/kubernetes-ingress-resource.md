@@ -61,18 +61,18 @@ GCE/GKE会在master节点上部署一个ingress controller。你可以在一个p
 最简化的Ingress配置：
 
 ```yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: test-ingress
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /testpath
-        backend:
-          serviceName: test
-          servicePort: 80
+1: apiVersion: extensions/v1beta1
+2: kind: Ingress
+3: metadata:
+4:   name: test-ingress
+5: spec:
+6:   rules:
+7:   - http:
+8:       paths:
+9:       - path: /testpath
+10:        backend:
+11:           serviceName: test
+12:           servicePort: 80
 ```
 
 *如果你没有配置Ingress controller就将其POST到API server不会有任何用处*
