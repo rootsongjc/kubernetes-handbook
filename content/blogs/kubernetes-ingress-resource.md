@@ -294,7 +294,7 @@ test      -                       178.91.123.132
 
 ## 跨可用域故障
 
-在不通云供应商之间，跨故障域的流量传播技术有所不同。 有关详细信息，请查看相关Ingress controller的文档。 有关在federation集群中部署Ingress的详细信息，请参阅[federation文档]()。
+在不通云供应商之间，跨故障域的流量传播技术有所不同。 有关详细信息，请查看相关Ingress controller的文档。 有关在federation集群中部署Ingress的详细信息，请参阅[federation文档](https://kubernetes.io/docs/concepts/cluster-administration/federation/)。
 
 ## 未来计划
 
