@@ -8,7 +8,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 ## 目录
 
-1. [Kubernetes1.6安装文档](00-kubernetes安装前言.md)（原作来自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)，在此基础上进行了编辑、修改和整理成[follow-me-install-kubernetes-cluster](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)，具体安装步骤请大家查看原作）
+1. [Kubernetes1.6安装文档](00-kubernetes安装前言.md)（01-10原作来自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)，在此基础上进行了编辑、修改和整理成[follow-me-install-kubernetes-cluster](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)，具体安装步骤请大家查看原作）
 
 ## 说明
 
