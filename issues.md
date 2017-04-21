@@ -8,9 +8,11 @@
 
 重启kubelet时报错，目前的解决方法是：
 
-1.删除docker.service配置中的`--native.cgroupdriver=systemd`配置。
+1.在docker.service配置中增加的`--exec-opt native.cgroupdriver=systemd`配置。
 
-2.手动删除slice
+2.手动删除slice（貌似不管用）
+
+3.重启主机，这招最管用😄
 
 ```bash
 for i in $(systemctl list-unit-files —no-legend —no-pager -l | grep —color=never -o .*.slice | grep kubepod);do systemctl stop $i;done
