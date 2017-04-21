@@ -15,7 +15,11 @@
 * [Kubernetes服务发现与负载均衡]()
    * [2.0 Ingress解析](11-ingress-resource.md)
    * [2.1 Traefik ingress安装](12-traefik-ingress.md)
+* [Kubernetes中的容器设计模式]()
+* [Kubernetes中的概念解析]()
+* [Kubernetes的安全设置]()
 * [Kubernetes网络配置]()
 * [Kubernetes存储配置]()
 * [问题记录](issues.md)
+
 
