@@ -20,15 +20,16 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
   - [1.8 安装dashboard插件](08-dashboard-addon.md)
   - [1.9 安装heapster插件](09-heapster-addon.md)
   - [1.10 安装EFK插件](10-EFK-addons.md)
-- [Kubernetes服务发现与负载均衡]()
-  - [2.0 Ingress解析](11-ingress-resource.md)
-  - [2.1 Traefik ingress安装](12-traefik-ingress.md)
-- [Kubernetes中的容器设计模式]() TODO
-- [Kubernetes中的概念解析]() TODO
-- [Kubernetes的安全设置]() TODO
-- [Kubernetes网络配置]() TODO
-- [Kubernetes存储配置]() TODO
-- [问题记录](issues.md)
+- [2.0 Kubernetes服务发现与负载均衡]()
+  - [2.1 Ingress解析](11-ingress-resource.md)
+  - [2.2 Traefik ingress安装](12-traefik-ingress.md)
+- [3.0 Kubernetes中的容器设计模式]() TODO
+- [4.0 Kubernetes中的概念解析]() TODO
+- [5.0 Kubernetes的安全设置]() TODO
+  - [5.1 Kubernetes中的RBAC支持](13-Kubernetes中的RBAC支持.md)
+- [6.0 Kubernetes网络配置]() TODO
+- [7.0 Kubernetes存储配置]() TODO
+- [8.0 问题记录](issues.md)
 
 ## 说明
 
