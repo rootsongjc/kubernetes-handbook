@@ -10,11 +10,11 @@ Tags = ["kubernetes"]
 
 *（题图：东直门桥 Aug 20,2016）*
 
-*感谢[opsnull](github.com/opsnull)和[ipchy](github.com/ipchy)的细心解答*。
-
 ## 前言
 
 这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目(fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster))中的一篇文章，下文是结合我[之前部署kubernetes的过程](http://rootsongjc.github.io/tags/kubernetes/)产生的kuberentes环境，在开启了TLS验证的集群中部署dashboard。
+
+感谢[opsnull](github.com/opsnull)和[ipchy](github.com/ipchy)的细心解答。
 
 **安装环境配置信息**
 
