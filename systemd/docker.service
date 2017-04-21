@@ -18,6 +18,7 @@ ExecStart=/usr/bin/dockerd-current \
           --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current \
           --default-runtime=docker-runc \
           --userland-proxy-path=/usr/libexec/docker/docker-proxy-current \
+          --exec-opt native.cgroupdriver=systemd \
           $OPTIONS \
           $DOCKER_STORAGE_OPTIONS \
           $DOCKER_NETWORK_OPTIONS \
