@@ -23,11 +23,11 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - [Kubernetes服务发现与负载均衡]()
   - [2.0 Ingress解析](11-ingress-resource.md)
   - [2.1 Traefik ingress安装](12-traefik-ingress.md)
-- [Kubernetes中的容器设计模式]()
-- [Kubernetes中的概念解析]()
-- [Kubernetes的安全设置]()
-- [Kubernetes网络配置]()
-- [Kubernetes存储配置]()
+- [Kubernetes中的容器设计模式]() TODO
+- [Kubernetes中的概念解析]() TODO
+- [Kubernetes的安全设置]() TODO
+- [Kubernetes网络配置]() TODO
+- [Kubernetes存储配置]() TODO
 - [问题记录](issues.md)
 
 ## 说明
