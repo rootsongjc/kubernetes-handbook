@@ -8,9 +8,7 @@
 
 所以本文档主要适合于那些有一定 kubernetes 基础，想通过一步步部署的方式来学习和了解系统配置、运行原理的人。
 
-**项目代码中提供了汇总后的markdon和pdf格式的安装文档，pdf版本文档[下载](http://olz1di9xf.bkt.clouddn.com/Kubernetes1.6%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E2%80%94%E2%80%94%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2%E5%BC%80%E5%90%AFTLS%E5%9F%BA%E4%BA%8ECentOS7.pdf)。**
-
-注：本文档中不包括docker和私有镜像仓库的安装。
+*注：本文档中不包括docker和私有镜像仓库的安装。*
 
 ## 提供所有的配置文件
 
@@ -39,11 +37,11 @@
 3. [创建三节点的高可用 etcd 集群](03-高可用etcd集群.md)
 4. [kubectl命令行工具](04-kubectl命令行工具.md)
 5. [部署高可用 master 集群](05-部署高可用master集群.md)
-6. [部署 node 节点](06-部署node节点.md)
-7. [kubedns 插件](07-dns-addon.md)
-8. [Dashboard 插件](08-dashboard-addon.md)
-9. [Heapster 插件](09-heapster-addon.md)
-10. [EFK 插件](10-EFK-addons.md)
+6. [部署node节点](06-部署node节点.md)
+7. [安装kubedns插件](07-安装kubedns插件.md)
+8. [安装dashboard插件](08-安装dashboard插件.md)
+9. [安装heapster插件](09-安装heapster插件.md)
+10. [安装EFK 插件](10-安装EFK插件.md)
 
 
 ## 提醒
