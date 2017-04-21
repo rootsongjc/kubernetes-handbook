@@ -25,7 +25,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
   - [2.2 Traefik ingress安装](12-traefik-ingress.md)
 - [3.0 Kubernetes中的容器设计模式]() TODO
 - [4.0 Kubernetes中的概念解析]() TODO
-- [5.0 Kubernetes的安全设置]() TODO
+- [5.0 Kubernetes的安全设置]()
   - [5.1 Kubernetes中的RBAC支持](13-Kubernetes中的RBAC支持.md)
 - [6.0 Kubernetes网络配置]() TODO
 - [7.0 Kubernetes存储配置]() TODO
