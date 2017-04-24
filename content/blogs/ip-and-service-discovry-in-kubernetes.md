@@ -20,9 +20,10 @@ Tags = ["kubernetes"]
 
 **默认配置**
 
+```
 --service-cluster-ip-range=10.254.0.0/16
-
 --service-node-port-range=30000-32767
+```
 
 ## Pod IP
 
@@ -38,6 +39,8 @@ FLANNEL_SUBNET=172.30.46.1/24
 Pod的IP地址<u>不固定</u>，当pod重启时IP地址会变化。
 
 **该IP地址也是用户无需关心的。**
+
+但是Flannel会在本地生成相应IP段的虚拟网卡，为了防止和集群中的其他IP地址冲突，需要规划IP段。
 
 ## 主机/Node IP
 
@@ -57,11 +60,11 @@ NAME           STATUS    AGE       VERSION
 
 通过DNS即可发现，kubends是kubernetes的一个插件，不同服务之间可以直接使用service name访问。
 
-通过sericename:port即可调用服务。
+通过`sericename:port`即可调用服务。
 
 **服务外部的服务发现**
 
-通过Ingress来实现，我们是用的Traefik来实现。
+通过Ingress来实现，我们是用的**Traefik**来实现。
 
 ## 参考
 
