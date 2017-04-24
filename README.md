@@ -23,6 +23,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - [2.0 Kubernetes服务发现与负载均衡]()
   - [2.1 Ingress解析](11-ingress解析.md)
   - [2.2 安装traefik ingress](12-安装traefik-ingress.md)
+  - [2.3 分布式负载测试](14-分布式负载测试.md)
 - [3.0 Kubernetes中的容器设计模式]() TODO
 - [4.0 Kubernetes中的概念解析]() TODO
 - [5.0 Kubernetes的安全设置]()
