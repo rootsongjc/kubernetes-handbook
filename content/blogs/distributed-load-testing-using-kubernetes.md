@@ -79,7 +79,7 @@ $ kubectl create -f locust-worker-controller.yaml
 
 你可以很轻易的给work扩容，通过命令行方式：
 
-```ba sh
+```bash
 $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 ```
 
