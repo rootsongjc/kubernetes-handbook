@@ -28,13 +28,9 @@ $ sudo mv etcd-v3.1.4-linux-amd64/etcd* /root/local/bin
 
 ## 创建 etcd 的 systemd unit 文件
 
-注意替换 `ETCD_NAME` 和 `INTERNAL_IP` 变量的值；
+注意替换IP地址为你自己的etcd集群的主机IP。
 
 ``` bash
-$ export ETCD_NAME=sz-pg-oam-docker-test-001.tendcloud.com
-$ export INTERNAL_IP=172.20.0.113
-$ sudo mkdir -p /var/lib/etcd /var/lib/etcd
-$ cat > etcd.service <<EOF
 [Unit]
 Description=Etcd Server
 After=network.target
@@ -46,37 +42,53 @@ Documentation=https://github.com/coreos
 Type=notify
 WorkingDirectory=/var/lib/etcd/
 EnvironmentFile=-/etc/etcd/etcd.conf
-ExecStart=/root/local/bin/etcd \\
-  --name ${ETCD_NAME} \\
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \\
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \\
-  --peer-cert-file=/etc/kubernetes/ssl/kubernetes.pem \\
-  --peer-key-file=/etc/kubernetes/ssl/kubernetes-key.pem \\
-  --trusted-ca-file=/etc/kubernetes/ssl/ca.pem \\
-  --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \\
-  --initial-advertise-peer-urls https://${INTERNAL_IP}:2380 \\
-  --listen-peer-urls https://${INTERNAL_IP}:2380 \\
-  --listen-client-urls https://${INTERNAL_IP}:2379,https://127.0.0.1:2379 \\
-  --advertise-client-urls https://${INTERNAL_IP}:2379 \\
-  --initial-cluster-token etcd-cluster-0 \\
-  --initial-cluster sz-pg-oam-docker-test-001.tendcloud.com=https://172.20.0.113:2380,sz-pg-oam-docker-test-002.tendcloud.com=https://172.20.0.114:2380,sz-pg-oam-docker-test-003.tendcloud.com=https://172.20.0.115:2380 \\
-  --initial-cluster-state new \\
-  --data-dir=/var/lib/etcd
+ExecStart=/usr/bin/etcd \
+  --name ${ETCD_NAME} \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  --peer-cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --peer-key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  --trusted-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --initial-advertise-peer-urls ${ETCD_INITIAL_ADVERTISE_PEER_URLS} \
+  --listen-peer-urls ${ETCD_LISTEN_PEER_URLS} \
+  --listen-client-urls ${ETCD_LISTEN_CLIENT_URLS},http://127.0.0.1:2379 \
+  --advertise-client-urls ${ETCD_ADVERTISE_CLIENT_URLS} \
+  --initial-cluster-token ${ETCD_INITIAL_CLUSTER_TOKEN} \
+  --initial-cluster infra1=https://172.20.0.113:2380,infra2=https://172.20.0.114:2380,infra3=https://172.20.0.115:2380 \
+  --initial-cluster-state new \
+  --data-dir=${ETCD_DATA_DIR}
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=65536
 
 [Install]
 WantedBy=multi-user.target
-EOF
 ```
 
 + 指定 `etcd` 的工作目录为 `/var/lib/etcd`，数据目录为 `/var/lib/etcd`，需在启动服务前创建这两个目录；
 + 为了保证通信安全，需要指定 etcd 的公私钥(cert-file和key-file)、Peers 通信的公私钥和 CA 证书(peer-cert-file、peer-key-file、peer-trusted-ca-file)、客户端的CA证书（trusted-ca-file）；
-+ 创建 `kubernetes.pem` 证书时使用的 `kubernetes-csr.json` 文件的 `hosts` 字段**包含所有 etcd 节点的 INTERNAL_IP**，否则证书校验会出错；
++ 创建 `kubernetes.pem` 证书时使用的 `kubernetes-csr.json` 文件的 `hosts` 字段**包含所有 etcd 节点的IP**，否则证书校验会出错；
 + `--initial-cluster-state` 值为 `new` 时，`--name` 的参数值必须位于 `--initial-cluster` 列表中；
 
 完整 unit 文件见：[etcd.service](./systemd/etcd.service)
+
+环境变量配置文件`/etc/etcd/etcd.conf`。
+
+```ini
+# [member]
+ETCD_NAME=infra1
+ETCD_DATA_DIR="/var/lib/etcd"
+ETCD_LISTEN_PEER_URLS="https://172.20.0.113:2380"
+ETCD_LISTEN_CLIENT_URLS="https://172.20.0.113:2379"
+
+#[cluster]
+ETCD_INITIAL_ADVERTISE_PEER_URLS="https://172.20.0.113:2380"
+ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
+ETCD_ADVERTISE_CLIENT_URLS="https://172.20.0.113:2379"
+```
+
+这是172.20.0.113节点的配置，其他两个etcd节点只要将上面的IP地址改成相应节点的IP地址即可。
 
 ## 启动 etcd 服务
 
