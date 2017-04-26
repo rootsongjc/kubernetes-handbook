@@ -302,7 +302,19 @@ Test Suite Passed
 
 从kubemark输出的日志中可以看到**API calls latencies**和**Performance**。
 
-另外还有一个将测试结果画图的工具[plot](https://github.com/coreos/kscale/blob/dfe65f050cff5bebf83074e3b3e6b3c2d69a9222/logplot/main.go)
+日志里显示，创建90个pod用时40秒以内，平均创建每个pod耗时0.44秒。
+
+不同type的资源类型API请求耗时分布入下表所示：
+
+| Resource  | Verb   | 50%     | 90%      | 99%      |
+| --------- | ------ | ------- | -------- | -------- |
+| services  | DELETE | 8.472ms | 9.841ms  | 38.226ms |
+| endpoints | PUT    | 1.641ms | 3.161ms  | 30.715ms |
+| endpoints | GET    | 931µs   | 10.412ms | 27.97ms  |
+| nodes     | PATCH  | 4.245ms | 11.117ms | 18.63ms  |
+| pods      | PUT    | 2.193ms | 2.619ms  | 17.285ms |
+
+从`log.txt`日志中还可以看到更多详细请求的测试指标。
 
 ![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubenetes-e2e-test.jpg)
 
