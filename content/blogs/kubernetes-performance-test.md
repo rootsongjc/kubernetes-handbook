@@ -243,13 +243,14 @@ $ make ginkgo
 +++ [0425 17:05:58] Building go targets for linux/amd64:
     vendor/github.com/onsi/ginkgo/ginkgo
 
+$ export KUBERNETES_PROVIDER=local
 $ export KUBECTL_PATH=/usr/bin/kubectl
 $ go run hack/e2e.go -v -test  --test_args="--host=http://172.20.0.113:8080 --ginkgo.focus=\[Feature:Performance\]" >>log.txt
 ```
 
 **测试结果**
 
-```
+```bash
 Apr 25 18:27:31.461: INFO: API calls latencies: {
   "apicalls": [
     {
@@ -289,13 +290,14 @@ Apr 25 18:27:31.461: INFO: [Result:Performance] {
       }
     },
 ...
-Summarizing 1 Failure:
+2.857: INFO: Running AfterSuite actions on all node
+Apr 26 10:35:32.857: INFO: Running AfterSuite actions on node 1
 
-[Fail] [k8s.io] Density [It] [Feature:Performance] should allow starting 30 pods per node using { ReplicationController} with 0 secrets and 0 daemons 
-/usr/local/src/k8s.io/kubernetes/_output/local/go/src/k8s.io/kubernetes/test/e2e/perf/density.go:223
+Ran 2 of 606 Specs in 268.371 seconds
+SUCCESS! -- 2 Passed | 0 Failed | 0 Pending | 604 Skipped PASS
 
-Ran 2 of 606 Specs in 576.282 seconds
-FAIL! -- 1 Passed | 1 Failed | 0 Pending | 604 Skipped --- FAIL: TestE2E (576.30s)
+Ginkgo ran 1 suite in 4m28.667870101s
+Test Suite Passed
 ```
 
 从kubemark输出的日志中可以看到**API calls latencies**和**Performance**。
