@@ -22,6 +22,7 @@
 * [5.0 Kubernetes的安全设置]()
    * [5.1 Kubernetes中的RBAC支持](13-Kubernetes中的RBAC支持.md)
 * [6.0 Kubernetes网络配置]()
+   * [6.1 Kubernetes中的网络模式解析](16-kubernetes中的网络模式解析.md)
 * [7.0 Kubernetes存储配置]()
 * [8.0 问题记录](issues.md)
 
