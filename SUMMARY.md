@@ -16,6 +16,7 @@
    * [2.1 Ingress解析](11-ingress-resource.md)
    * [2.2 Traefik ingress安装](12-traefik-ingress.md)
    * [2.3 分布式负载测试](14-分布式负载测试.md)
+   * [2.4 kubernetes网络和集群性能测试](15-kubernetes网络和集群性能测试.md)
 * [3.0 Kubernetes中的容器设计模式]()
 * [4.0 Kubernetes中的概念解析]()
 * [5.0 Kubernetes的安全设置]()
