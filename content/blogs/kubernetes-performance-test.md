@@ -178,7 +178,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 [  3]  9.0-10.0 sec   652 MBytes  5.47 Gbits/sec
 **[  3]  0.0-10.0 sec  6.25 GBytes  5.37 Gbits/sec**
 
-### 场景二、不同主机的的Pod之间
+### 场景二、不同主机的Pod之间(使用flannel的vxlan模式)
 
 [ ID] Interval       Transfer     Bandwidth
 [  3]  0.0- 1.0 sec   372 MBytes  3.12 Gbits/sec
@@ -208,9 +208,23 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 [  3]  9.0-10.0 sec   451 MBytes  3.78 Gbits/sec
 **[  3]  0.0-10.0 sec  3.98 GBytes  3.42 Gbits/sec**
 
+### 场景四、不同主机的Pod之间（使用flannel的host-gw模式）
+
+[ ID] Interval       Transfer     Bandwidth[  5]  0.0- 1.0 sec   530 MBytes  4.45 Gbits/sec
+[  5]  1.0- 2.0 sec   576 MBytes  4.84 Gbits/sec
+[  5]  2.0- 3.0 sec   631 MBytes  5.29 Gbits/sec
+[  5]  3.0- 4.0 sec   580 MBytes  4.87 Gbits/sec
+[  5]  4.0- 5.0 sec   627 MBytes  5.26 Gbits/sec
+[  5]  5.0- 6.0 sec   578 MBytes  4.85 Gbits/sec
+[  5]  6.0- 7.0 sec   584 MBytes  4.90 Gbits/sec
+[  5]  7.0- 8.0 sec   571 MBytes  4.79 Gbits/sec
+[  5]  8.0- 9.0 sec   564 MBytes  4.73 Gbits/sec
+[  5]  9.0-10.0 sec   572 MBytes  4.80 Gbits/sec
+**[  5]  0.0-10.0 sec  5.68 GBytes  4.88 Gbits/sec**
+
 ### 网络性能对比综述
 
-使用Flannel的**vxlan**模式实现每个pod一个IP的方式，会比宿主机直接互联的网络性能损耗30%～40%，符合网上流传的测试结论。
+使用Flannel的**vxlan**模式实现每个pod一个IP的方式，会比宿主机直接互联的网络性能损耗30%～40%，符合网上流传的测试结论。而flannel的host-gw模式比起宿主机互连的网络性能损耗大约是10%。
 
 ## Kubernete的性能测试
 
@@ -302,9 +316,9 @@ Test Suite Passed
 
 从kubemark输出的日志中可以看到**API calls latencies**和**Performance**。
 
-日志里显示，创建90个pod用时40秒以内，平均创建每个pod耗时0.44秒。
+**日志里显示，创建90个pod用时40秒以内，平均创建每个pod耗时0.44秒。**
 
-不同type的资源类型API请求耗时分布入下表所示：
+### 不同type的资源类型API请求耗时分布
 
 | Resource  | Verb   | 50%     | 90%      | 99%      |
 | --------- | ------ | ------- | -------- | -------- |
