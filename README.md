@@ -2,6 +2,8 @@
 
 玩转Kubernetes，我就看kubernetes handbook！
 
+本书所有的组件安装、事例和操作等都基于**Kubernetes1.6.0**版本。
+
 文章同步更新到[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
 
 GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
