@@ -25,6 +25,7 @@ ExecStart=/usr/bin/dockerd-current \
           $ADD_REGISTRY \
           $BLOCK_REGISTRY \
           $INSECURE_REGISTRY \
+          -s=overlay \
           --log-driver=json-file \
           --insecure-registry=sz-pg-oam-docker-hub-001.tendcloud.com
 ExecReload=/bin/kill -s HUP $MAINPID
