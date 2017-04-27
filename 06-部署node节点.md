@@ -219,7 +219,7 @@ $ cp -r ./server/bin/{kube-proxy,kubelet} /usr/bin/
 
 ### 创建 kubelet 的service配置文件
 
-文件位置`/usr/lib/systemd/system/kubelet.serivce`。
+文件位置`/usr/lib/systemd/system/kubelet.service`。
 
 ```ini
 [Unit]
@@ -232,7 +232,7 @@ Requires=docker.service
 WorkingDirectory=/var/lib/kubelet
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/kubelet
-ExecStart=/usr/bin/kubelet \
+ExecStart=/usr/local/bin/kubelet \
             $KUBE_LOGTOSTDERR \
             $KUBE_LOG_LEVEL \
             $KUBELET_API_SERVER \

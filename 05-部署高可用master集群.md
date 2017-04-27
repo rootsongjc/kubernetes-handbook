@@ -55,7 +55,7 @@ $ tar -xzvf  kubernetes-src.tar.gz
 将二进制文件拷贝到指定路径
 
 ``` bash
-$ cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,kube-proxy,kubelet} /root/local/bin/
+$ cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,kube-proxy,kubelet} /usr/local/bin/
 ```
 
 ## 配置和启动 kube-apiserver
@@ -74,7 +74,7 @@ After=etcd.service
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/apiserver
-ExecStart=/usr/bin/kube-apiserver \
+ExecStart=/usr/local/bin/kube-apiserver \
 	    $KUBE_LOGTOSTDERR \
 	    $KUBE_LOG_LEVEL \
 	    $KUBE_ETCD_SERVERS \
@@ -190,7 +190,7 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/controller-manager
-ExecStart=/usr/bin/kube-controller-manager \
+ExecStart=/usr/local/bin/kube-controller-manager \
 	    $KUBE_LOGTOSTDERR \
 	    $KUBE_LOG_LEVEL \
 	    $KUBE_MASTER \
@@ -245,7 +245,7 @@ $ systemctl start kube-controller-manager
 
 **创建 kube-scheduler的serivce配置文件**
 
-文件路径`/usr/lib/systemd/system/kube-scheduler.serivce`。
+文件路径`/usr/lib/systemd/system/kube-scheduler.service`。
 
 ```ini
 [Unit]
@@ -255,7 +255,7 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/scheduler
-ExecStart=/usr/bin/kube-scheduler \
+ExecStart=/usr/local/bin/kube-scheduler \
             $KUBE_LOGTOSTDERR \
             $KUBE_LOG_LEVEL \
             $KUBE_MASTER \
