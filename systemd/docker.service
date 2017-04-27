@@ -11,20 +11,15 @@ NotifyAccess=all
 EnvironmentFile=-/etc/sysconfig/docker
 EnvironmentFile=-/etc/sysconfig/docker-storage
 EnvironmentFile=-/etc/sysconfig/docker-network
+EnvironmentFile=-/run/docker_opts.env
 Environment=GOTRACEBACK=crash
 Environment=DOCKER_HTTP_HOST_COMPAT=1
 Environment=PATH=/usr/libexec/docker:/usr/bin:/usr/sbin
-ExecStart=/usr/bin/dockerd-current \
-          --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current \
-          --default-runtime=docker-runc \
-          --userland-proxy-path=/usr/libexec/docker/docker-proxy-current \
+ExecStart=/usr/bin/dockerd \
           --exec-opt native.cgroupdriver=systemd \
-          $OPTIONS \
-          $DOCKER_STORAGE_OPTIONS \
-          $DOCKER_NETWORK_OPTIONS \
-          $ADD_REGISTRY \
-          $BLOCK_REGISTRY \
-          $INSECURE_REGISTRY \
+          $DOCKER_OPT_BIP \
+          $DOCKER_OPT_IPMASQ \
+          $DOCKER_OPT_MTU \
           -s=overlay \
           --log-driver=json-file \
           --insecure-registry=sz-pg-oam-docker-hub-001.tendcloud.com
