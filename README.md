@@ -54,6 +54,15 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 2. 安装gitbook：[Setup and Installation of GitBook](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md)
 3. 执行gitbook serve
 4. 在浏览器中访问http://localhost:4000
+5. 生成的文档在`_book`目录下
+
+**生成pdf**
+
+使用`pandoc`和`latex`来生成pdf格式文档。
+
+```shell
+pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
+```
 
 ## 贡献者
 
