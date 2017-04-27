@@ -82,7 +82,7 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
   --ca-file=/etc/kubernetes/ssl/ca.pem \
   --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
   --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  mk /kube-centos/network/config "{ \"Network\": \"172.30.0.0/16\", \"SubnetLen\": 24, \"Backend\": { \"Type\": \"vxlan\" } }"
+  mk /kube-centos/network/config "{"Network":"172.30.0.0/16","SubnetLen":24,"Backend":{"Type":"vxlan"}}"
 ```
 
 **配置Docker**
