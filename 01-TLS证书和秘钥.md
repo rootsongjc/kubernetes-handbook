@@ -57,6 +57,8 @@ cfssl cfssl-bundle cfssl-certinfo cfssljson cfssl-newkey cfssl-scan
 
 在`$GOPATH/bin`目录下得到以cfssl开头的几个命令。
 
+注意：以下文章中出现的cat的文件名如果不存在需要手工创建。
+
 ## 创建 CA (Certificate Authority)
 
 **创建 CA 配置文件**
