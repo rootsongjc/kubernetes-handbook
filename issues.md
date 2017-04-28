@@ -23,3 +23,17 @@ for i in $(systemctl list-unit-files —no-legend —no-pager -l | grep —color
 ## 2.[High Availability of Kube-apiserver #19816](https://github.com/kubernetes/kubernetes/issues/19816)
 
 API server的HA如何实现？或者说这个master节点上的服务`api-server`、`scheduler`、`controller` 如何实现HA？目前的解决方案是什么？
+
+目前的解决方案是api-server是无状态的可以启动多个，然后在前端再加一个nginx或者ha-proxy。而scheduler和controller都是直接用容器的方式启动的。
+
+## 3.Kubelet启动时Failed to start ContainerManager systemd version does not support ability to start a slice as transient unit
+
+CentOS系统版本7.2.1511
+
+kubelet启动时报错systemd版本不支持start a slice as transient unit。
+
+尝试升级CentOS版本到7.3，看看是否可以修复该问题。
+
+与[kubeadm init waiting for the control plane to become ready on CentOS 7.2 with kubeadm 1.6.1 #228](https://github.com/kubernetes/kubeadm/issues/228)类似。
+
+另外有一个使用systemd管理kubelet的[proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/kubelet-systemd.md)。
