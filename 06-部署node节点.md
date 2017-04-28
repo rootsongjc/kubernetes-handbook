@@ -214,7 +214,7 @@ $ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
 $ tar -xzvf kubernetes-server-linux-amd64.tar.gz
 $ cd kubernetes
 $ tar -xzvf  kubernetes-src.tar.gz
-$ cp -r ./server/bin/{kube-proxy,kubelet} /usr/bin/
+$ cp -r ./server/bin/{kube-proxy,kubelet} /usr/local/bin/
 ```
 
 ### 创建 kubelet 的service配置文件
@@ -249,6 +249,8 @@ WantedBy=multi-user.target
 ```
 
 kubelet的配置文件`/etc/kubernetes/kubelet`。其中的IP地址更改为你的每台node节点的IP地址。
+
+注意：`/var/lib/kubelet`需要手动创建。
 
 ``` bash
 ###
