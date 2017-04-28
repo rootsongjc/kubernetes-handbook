@@ -344,7 +344,7 @@ After=network.target
 [Service]
 EnvironmentFile=-/etc/kubernetes/config
 EnvironmentFile=-/etc/kubernetes/proxy
-ExecStart=/usr/bin/kube-proxy \
+ExecStart=/usr/local/bin/kube-proxy \
 	    $KUBE_LOGTOSTDERR \
 	    $KUBE_LOG_LEVEL \
 	    $KUBE_MASTER \
