@@ -21,8 +21,8 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
-      containers:
       serviceAccountName: efk
+      containers:
       - name: fluentd-es
         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/fluentd-elasticsearch:1.22
         command:
