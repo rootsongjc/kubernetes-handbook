@@ -37,3 +37,13 @@ kubelet启动时报错systemd版本不支持start a slice as transient unit。
 与[kubeadm init waiting for the control plane to become ready on CentOS 7.2 with kubeadm 1.6.1 #228](https://github.com/kubernetes/kubeadm/issues/228)类似。
 
 另外有一个使用systemd管理kubelet的[proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/kubelet-systemd.md)。
+
+## 4.kube-proxy报错kube-proxy[2241]: E0502 15:55:13.889842    2241 conntrack.go:42] conntrack returned error: error looking for path of conntrack: exec: "conntrack": executable file not found in $PATH
+
+**导致的现象**
+
+kubedns启动成功，运行正常，但是service之间无法解析，kubernetes中的DNS解析异常
+
+**解决方法**
+
+CentOS中安装`conntrack-tools`包后重启kubernetes集群即可。
