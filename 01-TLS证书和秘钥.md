@@ -72,7 +72,7 @@ $ cat ca-config.json
 {
   "signing": {
     "default": {
-      "expiry": "8760h"
+      "expiry": "87600h"
     },
     "profiles": {
       "kubernetes": {
@@ -82,7 +82,7 @@ $ cat ca-config.json
             "server auth",
             "client auth"
         ],
-        "expiry": "8760h"
+        "expiry": "87600h"
       }
     }
   }
