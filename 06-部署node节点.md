@@ -329,6 +329,8 @@ $ ls -l /etc/kubernetes/ssl/kubelet*
 -rw------- 1 root root 1675 Apr  7 02:07 /etc/kubernetes/ssl/kubelet.key
 ```
 
+注意：假如你更新kubernetes的证书，只要没有更新`token.csv`，当重启kubelet后，该node就会自动加入到kuberentes集群中，而不会重新发送`certificaterequest`，也不需要在master节点上执行`kubectl certificate approve`操作。前提是不要删除node节点上的`/etc/kubernetes/ssl/kubelet*`和`/etc/kubernetes/kubelet.kubeconfig`文件。否则kubelet启动时会提示找不到证书而失败。
+
 ## 配置 kube-proxy
 
 **创建 kube-proxy 的service配置文件**
