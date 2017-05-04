@@ -248,7 +248,7 @@ $ df -h
 
 PVC和PV的关系跟pod和node关系类似，前者消耗后者的资源。PVC可以向PV申请指定大小的存储资源并设置访问模式。
 
-**PV属性 **
+**PV属性**
 
 - storage容量 
 - 读写属性：分别为ReadWriteOnce：单个节点读写； ReadOnlyMany：多节点只读 ； ReadWriteMany：多节点读写
