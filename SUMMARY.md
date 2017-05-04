@@ -24,6 +24,7 @@
 * [6.0 Kubernetes网络配置]()
    * [6.1 Kubernetes中的网络模式解析](16-kubernetes中的网络模式解析.md)
 * [7.0 Kubernetes存储配置]()
+   * [7.1 使用glusterfs做持久化存储](17-使用glusterfs做持久化存储.md)
 * [8.0 问题记录](issues.md)
 
 

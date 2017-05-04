@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1 
+kind: Deployment 
+metadata: 
+  name: nginx-dm
+spec: 
+  replicas: 2
+  template: 
+    metadata: 
+      labels: 
+        name: nginx 
+    spec: 
+      containers: 
+        - name: nginx 
+          image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 80
+          volumeMounts:
+            - name: gluster-dev-volume
+              mountPath: "/usr/share/nginx/html"
+      volumes:
+      - name: gluster-dev-volume
+        persistentVolumeClaim:
+          claimName: glusterfs-nginx
