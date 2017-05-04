@@ -85,7 +85,7 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
   --ca-file=/etc/kubernetes/ssl/ca.pem \
   --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
   --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  mk /kube-centos/network/config "{"Network":"172.30.0.0/16","SubnetLen":24,"Backend":{"Type":"vxlan"}}"
+  mk /kube-centos/network/config '{"Network":"172.30.0.0/16","SubnetLen":24,"Backend":{"Type":"vxlan"}}'
 ```
 
 如果你要使用`host-gw`模式，可以直接将vxlan改成`host-gw`即可。
@@ -434,6 +434,8 @@ Commercial support is available at
 </body>
 </html>
 ```
+
+提示：上面的测试示例中使用的nginx是我的私有镜像仓库中的镜像`sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9`，大家在测试过程中请换成自己的nginx镜像地址。
 
 访问`172.20.0.113:32724`或`172.20.0.114:32724`或者`172.20.0.115:32724`都可以得到nginx的页面。
 
