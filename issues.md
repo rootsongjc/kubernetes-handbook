@@ -47,3 +47,13 @@ kubedns启动成功，运行正常，但是service之间无法解析，kubernete
 **解决方法**
 
 CentOS中安装`conntrack-tools`包后重启kubernetes集群即可。
+
+## 5. [Pod stucks in terminating if it has a privileged container but has been scheduled to a node which doesn't allow privilege issue#42568](https://github.com/kubernetes/kubernetes/issues/42568)
+
+当pod被调度到无法权限不足的node上时，pod一直处于pending状态，且无法删除pod，删除时一直处于terminating状态。
+
+**kubelet中的报错信息**
+
+```
+Error validating pod kube-keepalived-vip-1p62d_default(5d79ccc0-3173-11e7-bfbd-8af1e3a7c5bd) from api, ignoring: spec.containers[0].securityContext.privileged: Forbidden: disallowed by cluster policy
+```
