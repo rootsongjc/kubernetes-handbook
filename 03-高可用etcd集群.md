@@ -22,8 +22,8 @@ $ cp ca.pem kubernetes-key.pem kubernetes.pem /etc/kubernetes/ssl
 
 ``` bash
 $ https://github.com/coreos/etcd/releases/download/v3.1.5/etcd-v3.1.5-linux-amd64.tar.gz
-$ tar -xvf etcd-v3.1.4-linux-amd64.tar.gz
-$ sudo mv etcd-v3.1.4-linux-amd64/etcd* /root/local/bin
+$ tar -xvf etcd-v3.1.5-linux-amd64.tar.gz
+$ sudo mv etcd-v3.1.5-linux-amd64/etcd* /usr/local/bin
 ```
 
 ## 创建 etcd 的 systemd unit 文件
@@ -42,7 +42,7 @@ Documentation=https://github.com/coreos
 Type=notify
 WorkingDirectory=/var/lib/etcd/
 EnvironmentFile=-/etc/etcd/etcd.conf
-ExecStart=/usr/bin/etcd \
+ExecStart=/usr/local/bin/etcd \
   --name ${ETCD_NAME} \
   --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
   --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
