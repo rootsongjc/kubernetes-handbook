@@ -1,5 +1,5 @@
 +++
-date = "2017-04-21T19:52:18+08:00"
+date = "2017-04-21T19:53:18+08:00"
 title = "Kubernetes中的RBAC支持"
 draft = false
 Tags = ["kubernetes"]
