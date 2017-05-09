@@ -1,5 +1,5 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: traefik-ingress-lb
   namespace: kube-system
@@ -37,3 +37,5 @@ spec:
         - --web
         - --web.address=:8580
         - --kubernetes
+      nodeSelector:
+        edgenode: "true"

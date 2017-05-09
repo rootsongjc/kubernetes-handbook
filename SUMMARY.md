@@ -17,6 +17,7 @@
    * [2.2 安装Traefik ingress](12-安装traefik-ingress.md)
    * [2.3 分布式负载测试](14-分布式负载测试.md)
    * [2.4 kubernetes网络和集群性能测试](15-kubernetes网络和集群性能测试.md)
+   * [2.5 边缘节点配置](18-边缘节点配置.md)
 * [3.0 Kubernetes中的容器设计模式]()
 * [4.0 Kubernetes中的概念解析]()
 * [5.0 Kubernetes的安全设置]()
