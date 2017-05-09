@@ -14,6 +14,8 @@ Tags = ["kubernetes"]
 
 为了配置kubernetes中的traefik ingress的高可用，对于kubernetes集群以外只暴露一个访问入口，需要使用keepalived排除单点问题。本文参考了[kube-keepalived-vip](https://github.com/kubernetes/contrib/tree/master/keepalived-vip)，但并没有使用容器方式安装，而是直接在node节点上安装。
 
+本文已同步到gitbook [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的第2章第5节。
+
 ## 定义
 
 首先解释下什么叫边缘节点（Edge Node），所谓的边缘节点即集群内部用来向集群外暴露服务能力的节点，集群外部的服务通过该节点来调用集群内部的服务，边缘节点是集群内外交流的一个Endpoint。
