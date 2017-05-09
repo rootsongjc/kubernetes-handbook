@@ -145,7 +145,7 @@ KUBE_API_ADDRESS="--advertise-address=172.20.0.113 --bind-address=172.20.0.113 -
 #KUBELET_PORT="--kubelet-port=10250"
 #
 ## Comma separated list of nodes in the etcd cluster
-KUBE_ETCD_SERVERS="--etcd-servers=https://172.20.0.113:2379,172.20.0.114:2379,172.20.0.115:2379"
+KUBE_ETCD_SERVERS="--etcd-servers=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379"
 #
 ## Address range to use for services
 KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.254.0.0/16"
@@ -226,12 +226,12 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
     NAME                 STATUS      MESSAGE                                                                                        ERROR
     scheduler            Unhealthy   Get http://127.0.0.1:10251/healthz: dial tcp 127.0.0.1:10251: getsockopt: connection refused   
     controller-manager   Healthy     ok                                                                                             
-    etcd-2               Unhealthy   Get http://172.20.0.113:2379/health: malformed HTTP response "\x15\x03\x01\x00\x02\x02"        
+    etcd-2               Healthy     {"health": "true"} 
     etcd-0               Healthy     {"health": "true"}                                                                             
     etcd-1               Healthy     {"health": "true"}  
     ```
 
-    参考：https://github.com/kubernetes-incubator/bootkube/issues/64
+    如果有组件report unhealthy请参考：https://github.com/kubernetes-incubator/bootkube/issues/64
 
 完整 unit 见 [kube-controller-manager.service](./systemd/kube-controller-manager.service)
 
