@@ -26,6 +26,10 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 直接使用yum安装flanneld即可。
 
+```shell
+yum install -y flannel
+```
+
 service配置文件`/usr/lib/systemd/system/flanneld.service`。
 
 ```ini
