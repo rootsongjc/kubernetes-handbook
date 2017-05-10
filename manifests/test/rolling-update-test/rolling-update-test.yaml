@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: rolling-update-test
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: rolling-update-test
+    spec:
+      containers:
+      - name: rolling-update-test
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/hello:v1
+        ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rolling-update-test
+  labels:
+    app: rolling-update-test
+spec:
+  ports:
+  - port: 9090
+    protocol: TCP
+    name: http
+  selector:
+    app: rolling-update-test
