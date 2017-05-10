@@ -18,3 +18,10 @@ spec:
         backend:
           serviceName: frontend
           servicePort: 80
+  - host: rolling-update-test.traefik.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rolling-update-test
+          servicePort: 9090
