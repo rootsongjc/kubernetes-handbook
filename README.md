@@ -11,7 +11,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 ## 目录
 
 - [0.0 介绍](README.md)
-  - [1.0 Kubernetes集群安装](00-kubernetes安装前言.md)
+- [1.0 Kubernetes集群安装](00-kubernetes安装前言.md)
   - [1.1 创建 TLS 通信所需的证书和秘钥](01-TLS证书和秘钥.md)
   - [1.2 创建kubeconfig 文件](02-kubeconfig文件.md)
   - [1.3 创建三节点的高可用etcd集群](03-高可用etcd集群.md)
