@@ -26,6 +26,30 @@ Rolling Update适用于`Deployment`、`Replication Controller`，官方推荐使
 
 使用ReplicationController时的滚动升级请参考官网说明：https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/
 
+## ReplicationController与Deployment的关系
+
+ReplicationController和Deployment的RollingUpdate命令有些不同，但是实现的机制是一样的，关于这两个kind的关系我引用了[ReplicationController与Deployment的区别](https://segmentfault.com/a/1190000008232770)中的部分内容如下，详细区别请查看原文。
+
+### ReplicationController
+
+Replication Controller为Kubernetes的一个核心内容，应用托管到Kubernetes之后，需要保证应用能够持续的运行，Replication Controller就是这个保证的key，主要的功能如下：
+
+- 确保pod数量：它会确保Kubernetes中有指定数量的Pod在运行。如果少于指定数量的pod，Replication Controller会创建新的，反之则会删除掉多余的以保证Pod数量不变。
+- 确保pod健康：当pod不健康，运行出错或者无法提供服务时，Replication Controller也会杀死不健康的pod，重新创建新的。
+- 弹性伸缩 ：在业务高峰或者低峰期的时候，可以通过Replication Controller动态的调整pod的数量来提高资源的利用率。同时，配置相应的监控功能（Hroizontal Pod Autoscaler），会定时自动从监控平台获取Replication Controller关联pod的整体资源使用情况，做到自动伸缩。
+- 滚动升级：滚动升级为一种平滑的升级方式，通过逐步替换的策略，保证整体系统的稳定，在初始化升级的时候就可以及时发现和解决问题，避免问题不断扩大。
+
+### Deployment
+
+Deployment同样为Kubernetes的一个核心内容，主要职责同样是为了保证pod的数量和健康，90%的功能与Replication Controller完全一样，可以看做新一代的Replication Controller。但是，它又具备了Replication Controller之外的新特性：
+
+- Replication Controller全部功能：Deployment继承了上面描述的Replication Controller全部功能。
+- 事件和状态查看：可以查看Deployment的升级详细进度和状态。
+- 回滚：当升级pod镜像或者相关参数的时候发现问题，可以使用回滚操作回滚到上一个稳定的版本或者指定的版本。
+- 版本记录: 每一次对Deployment的操作，都能保存下来，给予后续可能的回滚使用。
+- 暂停和启动：对于每一次升级，都能够随时暂停和启动。
+- 多种升级方案：Recreate：删除所有已存在的pod,重新创建新的; RollingUpdate：滚动升级，逐步替换的策略，同时滚动升级时，支持更多的附加参数，例如设置最大不可用pod数量，最小升级间隔时间等等。
+
 ## 创建测试镜像
 
 我们来创建一个特别简单的web服务，当你访问网页时，将输出一句版本信息。通过区分这句版本信息输出我们就可以断定升级是否完成。
@@ -191,6 +215,25 @@ This is version 2.
 
 说明滚动升级成功。
 
+## 使用ReplicationController创建的Pod如何RollingUpdate
+
+以上讲解使用**Deployment**创建的Pod的RollingUpdate方式，那么如果使用传统的**ReplicationController**创建的Pod如何Update呢？
+
+举个例子：
+
+```bash
+$ kubectl -n spark-cluster rolling-update zeppelin-controller --image sz-pg-oam-docker-hub-001.tendcloud.com/library/zeppelin:0.7.1
+Created zeppelin-controller-99be89dbbe5cd5b8d6feab8f57a04a8b
+Scaling up zeppelin-controller-99be89dbbe5cd5b8d6feab8f57a04a8b from 0 to 1, scaling down zeppelin-controller from 1 to 0 (keep 1 pods available, don't exceed 2 pods)
+Scaling zeppelin-controller-99be89dbbe5cd5b8d6feab8f57a04a8b up to 1
+Scaling zeppelin-controller down to 0
+Update succeeded. Deleting old controller: zeppelin-controller
+Renaming zeppelin-controller-99be89dbbe5cd5b8d6feab8f57a04a8b to zeppelin-controller
+replicationcontroller "zeppelin-controller" rolling updated
+```
+
+只需要指定新的镜像即可，当然你可以配置RollingUpdate的策略。
+
 ## 参考
 
 [Rolling update机制解析](http://dockone.io/article/328)
@@ -199,3 +242,4 @@ This is version 2.
 
 [Simple Rolling Update](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/simple-rolling-update.md)
 
+[使用kubernetes的deployment进行RollingUpdate](https://segmentfault.com/a/1190000008232770)
