@@ -207,7 +207,21 @@ This is version 1.
 kubectl apply -f rolling-update-test.yaml
 ```
 
-在浏览器中刷新http://rolling-update-test.traefik.io将会看到以下输出：
+也可以参考[Kubernetes Deployment Concept](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)中的方法，直接设置新的镜像。
+
+```
+kubectl set image deployment/rolling-update-test rolling-update-test=sz-pg-oam-docker-hub-001.tendcloud.com/library/hello:v2
+```
+
+或者使用`kubectl edit deployment/rolling-update-test`修改镜像名称后保存。
+
+使用以下命令查看升级进度：
+
+```
+kubectl rollout status deployment/rolling-update-test
+```
+
+升级完成后在浏览器中刷新http://rolling-update-test.traefik.io将会看到以下输出：
 
 ```
 This is version 2.
@@ -243,3 +257,5 @@ replicationcontroller "zeppelin-controller" rolling updated
 [Simple Rolling Update](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/simple-rolling-update.md)
 
 [使用kubernetes的deployment进行RollingUpdate](https://segmentfault.com/a/1190000008232770)
+
+[Kubernetes Deployment Concept](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
