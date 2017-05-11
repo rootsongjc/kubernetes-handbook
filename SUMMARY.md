@@ -20,6 +20,7 @@
    * [2.5 边缘节点配置](18-边缘节点配置.md)
 * [3.0 Kubernetes中的容器设计模式]()
 * [4.0 Kubernetes中的概念解析]()
+   * [4.1 Deployment概念解析](20-deployment概念解析.md)
 * [5.0 Kubernetes的安全设置]()
    * [5.1 Kubernetes中的RBAC支持](13-kubernetes中的RBAC支持.md)
 * [6.0 Kubernetes网络配置]()

@@ -29,7 +29,8 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
   - [2.4 kubernetes网络和集群性能测试](15-kubernetes网络和集群性能测试.md)
   - [2.5 边缘节点配置](18-边缘节点配置.md)
 - 3.0 Kubernetes中的容器设计模式 TODO
-- 4.0 Kubernetes中的概念解析 TODO
+- 4.0 Kubernetes中的概念解析
+  - [4.1 Deployment概念解析](20-deployment概念解析.md)
 - 5.0 Kubernetes的安全设置
   - [5.1 Kubernetes中的RBAC支持](13-kubernetes中的RBAC支持.md)
 - 6.0 Kubernetes网络配置
@@ -62,6 +63,22 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 5. 生成的文档在`_book`目录下
 
 **生成pdf**
+
+[下载Calibre](http://calibre-ebook.com/download)
+
+在Mac下安装后，使用该命令创建链接
+
+```
+ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
+```
+
+在该项目目录下执行以下命令生成`kubernetes-handbook.pdf`文档。
+
+```
+gitbook pdf . ./kubernetes-handbook.pdf
+```
+
+**生成单个章节的pdf**
 
 使用`pandoc`和`latex`来生成pdf格式文档。
 
