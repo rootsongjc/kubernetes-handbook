@@ -1,4 +1,4 @@
-# 和我一步步部署kubernetes集群
+# 部署kubernetes集群
 
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
 
