@@ -2,7 +2,7 @@
 
 玩转Kubernetes，我就看kubernetes handbook！
 
-本书所有的组件安装、事例和操作等都基于**Kubernetes1.6.0**版本。
+本书所有的组件安装、示例和操作等都基于**Kubernetes1.6.0**版本。
 
 文章同步更新到[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
 
@@ -40,13 +40,14 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - 8.0 集群运维管理
   - [8.1 服务滚动升级](19-服务滚动升级.md)
 - 9.0 Kubernetes领域应用
+  - 9.1 Spark on Kubernetes TODO
 - [9.0 问题记录](issues.md)
 
 ## 说明
 
-文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录。
+文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typaro](www.typorai.o)。
 
-[Kubernetes集群安装部分](00-kubernetes安装前言.md)（1.0-1.10原作来自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)，在此基础上进行了编辑、修改和整理成[follow-me-install-kubernetes-cluster](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)）
+[Kubernetes集群安装部分](00-kubernetes安装前言.md)（1.0-1.10章节）在[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)的基础上进行了编辑、修改和整理而成。
 
 ## 如何使用
 
