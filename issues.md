@@ -57,3 +57,14 @@ CentOS中安装`conntrack-tools`包后重启kubernetes集群即可。
 ```
 Error validating pod kube-keepalived-vip-1p62d_default(5d79ccc0-3173-11e7-bfbd-8af1e3a7c5bd) from api, ignoring: spec.containers[0].securityContext.privileged: Forbidden: disallowed by cluster policy
 ```
+## 6.PVC中对Storage的容量设置不生效
+
+[使用glusterfs做持久化存储](17-使用glusterfs做持久化存储.md)文档中我们构建了PV和PVC，当时给`glusterfs-nginx`的PVC设置了8G的存储限额，`nginx-dm`这个Deployment使用了该PVC，进入该Deployment中的Pod执行测试：
+
+```
+dd if=/dev/zero of=test bs=1G count=10
+```
+
+![pvc-storage-limit](images/pvc-storage-limit.jpg)
+
+从截图中可以看到创建了9个size为1G的block后无法继续创建了，已经超出了8G的限额。
