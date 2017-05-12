@@ -41,7 +41,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
   - [8.1 服务滚动升级](19-服务滚动升级.md)
 - 9.0 Kubernetes领域应用
   - 9.1 Spark on Kubernetes TODO
-- [9.0 问题记录](issues.md)
+- [10.0 问题记录](issues.md)
 
 ## 说明
 
