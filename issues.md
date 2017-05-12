@@ -68,3 +68,9 @@ dd if=/dev/zero of=test bs=1G count=10
 ![pvc-storage-limit](images/pvc-storage-limit.jpg)
 
 从截图中可以看到创建了9个size为1G的block后无法继续创建了，已经超出了8G的限额。
+
+**参考**
+
+[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+
+[Resource Design Proposals](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md)
