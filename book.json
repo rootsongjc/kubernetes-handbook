@@ -1,0 +1,11 @@
+{
+  "gitbook": "3.2.0",
+  "plugins": ["mermaid", "katex"],
+  "pluginsConfig": {
+    "mathjax":{
+      "forceSVG": true
+    }
+  },
+  "output": "docs",
+  "generator": "site"
+}
