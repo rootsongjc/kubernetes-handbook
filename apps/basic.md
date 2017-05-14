@@ -1,7 +1,4 @@
----
-title: "Helm工作原理"
-layout: "post"
----
+# Helm工作原理
 
 ## 基本概念
 

@@ -1,6 +1,4 @@
----
-title: "Kubernetes认证与授权"
----
+# Kubernetes认证与授权插件
 
 ## 认证
 

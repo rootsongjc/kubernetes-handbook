@@ -11,9 +11,3 @@ Kubernetes是谷歌开源的容器集群管理系统，是Google多年大规模�
 - 插件机制保证扩展性
 
 Kubernetes发展非常迅速，已经成为容器编排领域的领导者。
-
-## Kubernetes生态圈
-
-![](CloudNativeLandscape.jpg)
-
-(图片来自[CNCF](https://github.com/cncf/landscape))

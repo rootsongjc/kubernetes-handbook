@@ -1,7 +1,4 @@
----
-title: "Volume Plugin"
-layout: "post"
----
+# Volume Plugin
 
 Kubernetes提供丰富的Volume插件，包括
 

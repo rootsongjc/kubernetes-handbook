@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes简介
 
 Kubernetes是谷歌开源的容器集群管理系统，是Google多年大规模容器管理技术Borg的开源版本，主要功能包括：

@@ -1,7 +1,4 @@
----
-title: "Helm命令"
-layout: "post"
----
+# Helm命令参考
 
 ## 查询charts
 

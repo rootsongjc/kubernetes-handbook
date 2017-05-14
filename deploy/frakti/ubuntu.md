@@ -1,8 +1,3 @@
----
-title: "Cluster deploying of frakti on Ubuntu"
-layout: "post"
----
-
 # Cluster deploying of frakti On Ubuntu
 
 This document shows how to easily install a kubernetes cluster with frakti runtime.

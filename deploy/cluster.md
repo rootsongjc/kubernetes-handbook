@@ -1,7 +1,4 @@
----
-title: "集群部署"
-layout: "post"
----
+# 集群部署
 
 ## Kubernetes集群架构
 

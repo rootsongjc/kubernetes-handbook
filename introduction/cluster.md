@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes cluster
 
 ![](architecture.png)

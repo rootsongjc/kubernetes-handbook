@@ -1,7 +1,4 @@
----
-title: "kube-proxy"
-layout: "post"
----
+# kube-proxy
 
 ## Iptables示例
 

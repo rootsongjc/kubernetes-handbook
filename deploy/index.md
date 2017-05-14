@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes部署
 
 - [单机部署](single.html)

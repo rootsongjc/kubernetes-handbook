@@ -1,8 +1,4 @@
----
-title: Kubernetes设计理念
----
-
-## Kubernetes的设计理念
+# Kubernetes的设计理念
 
 ### Kubernetes设计理念与分布式系统
 

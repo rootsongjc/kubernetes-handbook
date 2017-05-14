@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # 单机部署
 
 创建Kubernetes cluster（单机版）最简单的方法是[minikube](https://github.com/kubernetes/minikube):

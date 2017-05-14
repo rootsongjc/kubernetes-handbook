@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes监控
 
 ## cAdvisor

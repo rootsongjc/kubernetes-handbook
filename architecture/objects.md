@@ -1,9 +1,5 @@
----
-title: "Kubernetes Concepts"
-layout: "post"
----
+# Kubernetes基本概念
 
-基本概念
 
 * [Pod, Service, Namespace和Node](../introduction/concepts.html)
 * [Deployment](deployment.html)

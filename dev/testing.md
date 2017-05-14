@@ -1,7 +1,4 @@
----
-title: "Kubernetes测试"
-layout: "post"
----
+# Kubernetes测试
 
 ## 单元测试
 

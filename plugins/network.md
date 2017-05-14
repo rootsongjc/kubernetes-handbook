@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes网络插件
 
 Kubernetes有着丰富的网络插件，方便用户自定义所需的网络。

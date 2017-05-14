@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes核心概念
 
 ## Pod

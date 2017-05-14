@@ -1,10 +1,6 @@
----
-title: Kubernetes ecosystem
-date: 2016-10-21 16:11:07
-layout: "post"
----
-
 # Kubernetes ecosystem
+
+![](CloudNativeLandscape.jpg)
 
 * http://kubernetes.io/partners/
 * K8s distributions and SaaS offerings

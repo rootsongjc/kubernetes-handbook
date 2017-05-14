@@ -1,9 +1,3 @@
----
-title: Container Runtime Interface
-date: 2016-10-21 16:11:07
-layout: "post"
----
-
 # Container Runtime Interface
 
 Container Runtime Interface (CRI)是Kubelet 1.5/1.6中主要负责的一块项目，它重新定义了Kubelet Container Runtime API，将原来完全面向Pod级别的API拆分成面向Sandbox和Container的API，并分离镜像管理和容器引擎到不同的服务。

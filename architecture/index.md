@@ -1,8 +1,3 @@
----
-title: "Kubernetes架构"
-layout: "post"
----
-
 # Kubernetes架构
 
 Kubernetes最初源于谷歌内部的Borg，提供了面向应用的容器集群部署和管理系统。Kubernetes

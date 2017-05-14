@@ -1,7 +1,4 @@
----
-layout: "post"
-title: "证书生成"
----
+# 证书生成
 
 kubeadm在部署Kubernetes时会自动生成Kubernetes所需要的证书，这里是手动生成这些证书的方法。
 

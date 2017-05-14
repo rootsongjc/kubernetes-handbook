@@ -1,6 +1,4 @@
----
-title: "DaemonSet"
----
+# DaemonSet
 
 DaemonSet保证在每个Node上都运行一个容器副本，常用来部署一些集群的日志、监控或者其他系统管理程序。典型的应用常见包括：
 

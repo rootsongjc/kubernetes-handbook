@@ -1,7 +1,4 @@
----
-title: "kubeadm"
-layout: "post"
----
+# kubeadm
 
 ## 初始化系统
 

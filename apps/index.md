@@ -1,7 +1,4 @@
----
-title: "Kubernetes应用管理"
-layout: "post"
----
+# Kubernetes应用管理
 
 Kubernetes应用及manifest的管理方法。
 

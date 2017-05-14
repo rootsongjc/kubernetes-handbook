@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes Dashboard
 
 Kubernetes Dashboard的部署非常简单，只需要运行

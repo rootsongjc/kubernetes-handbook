@@ -1,6 +1,4 @@
----
-title: Service Account
----
+# Service Account
 
 Service account是为了方便Pod里面的进程调用Kubernetes API或其他外部服务，它不同于User account：
 

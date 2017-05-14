@@ -1,7 +1,4 @@
----
-title: Kubernetes日志
-layout: "post"
----
+# Kubernetes日志
 
 ELK可谓是容器日志收集、处理和搜索的黄金搭档:
 

@@ -1,6 +1,4 @@
----
-title: "StatefulSet"
----
+# StatefulSet
 
 StatefulSet是为了解决有状态服务的问题（对应Deployments和ReplicaSets是为无状态服务而设计），其应用场景包括
 

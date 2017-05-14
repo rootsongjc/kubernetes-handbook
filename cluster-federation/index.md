@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # 集群联邦
 
 ![federation](media/federation.png)

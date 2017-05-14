@@ -1,6 +1,4 @@
----
-title: "CronJob"
----
+# CronJob
 
 CronJob即定时任务，就类似于Linux系统的crontab，在指定的时间周期运行指定的任务。在Kubernetes 1.5，使用CronJob需要开启`batch/v2alpha1` API，即`--runtime-config=batch/v2alpha1`。
 

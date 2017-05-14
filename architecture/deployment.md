@@ -1,6 +1,4 @@
----
-title: "Deployment"
----
+# Deployment
 
 Deployment为Pod和ReplicaSet提供了一个声明式定义(declarative)方法，用来替代以前的ReplicationController来方便的管理应用。典型的应用场景包括：
 

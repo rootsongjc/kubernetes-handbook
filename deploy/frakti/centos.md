@@ -1,8 +1,3 @@
----
-title: "Cluster deploying of frakti on CentOS"
-layout: "post"
----
-
 # Cluster deploying of frakti On CentOS
 
 This document shows how to easily install a kubernetes cluster with frakti runtime.

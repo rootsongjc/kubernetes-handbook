@@ -1,8 +1,3 @@
----
-title: "Cluster deploying of frakti"
-layout: "post"
----
-
 # Cluster deploying of frakti
 
 - [Cluster deploying of frakti](#cluster-deploying-of-frakti)

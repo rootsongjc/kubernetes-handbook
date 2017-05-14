@@ -1,7 +1,4 @@
----
-title: "kubeadm工作原理"
-layout: "post"
----
+# kubeadm工作原理
 
 ## 初始化系统
 

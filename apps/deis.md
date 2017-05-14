@@ -1,7 +1,4 @@
----
-title: "Deis workflow"
-layout: "post"
----
+# Deis workflow
 
 ## Deis架构
 

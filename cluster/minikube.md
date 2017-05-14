@@ -1,9 +1,3 @@
----
-title: Minikube
-date: 2016-10-21 16:11:07
-layout: "post"
----
-
 # Minikube
 
 相比Docker一个二进制文件解决所有问题，Kubernetes则为不同的服务提供了不同的二进制文件，并将一些服务放到了addons中。故而，Kubernetes的部署相对要麻烦的多。借助[minikube](https://github.com/kubernetes/minikube)项目，现在可以很方便的在本机快速启动一个单节点的Kubernetes集群。

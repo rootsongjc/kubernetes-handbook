@@ -1,6 +1,4 @@
----
-title: "Kubernetes社区贡献"
----
+# Kubernetes社区贡献
 
 - [Contributing guidelines](https://github.com/kubernetes/kubernetes/blob/master/CONTRIBUTING.md)
 - [Kubernetes Developer Guide](https://github.com/kubernetes/community/tree/master/contributors/devel)

@@ -1,8 +1,4 @@
----
-layout: "post"
----
-
-Kubernetes Addons
+# Kubernetes Addons
 
 - [Dashboard](dashboard.html)
 - [Heapster](heapster.html)

@@ -1,7 +1,4 @@
----
-title: "Kubernetes应用管理--Helm"
-layout: "post"
----
+# Kubernetes应用管理--Helm
 
 [Helm](https://github.com/kubernetes/helm)是一个类似于yum/apt/[homebrew](https://brew.sh/)的Kubernetes应用管理工具。Helm使用[Chart](https://github.com/kubernetes/charts)来管理Kubernetes manifest文件。
 

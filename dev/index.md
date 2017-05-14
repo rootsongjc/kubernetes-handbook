@@ -1,7 +1,3 @@
----
-layout: "post"
----
-
 # Kubernetes开发环境
 
 ## 配置开发环境
