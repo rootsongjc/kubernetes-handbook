@@ -6,6 +6,5 @@
       "forceSVG": true
     }
   },
-  "output": "docs",
   "generator": "site"
 }
