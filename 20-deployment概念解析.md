@@ -741,4 +741,4 @@ Deployment revision history存储在它控制的ReplicaSets中。
 
 ### kubectl rolling update
 
-[Kubectl rolling update](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/user-guide/kubectl/v1.6/#rolling-update) 虽然使用类似的方式更新Pod和ReplicationController。但是我们推荐使用Deployment，因为它是声明式的，客户端侧，具有附加特性，例如及时滚动升级结束后也可以回滚到任何历史版本。
+[Kubectl rolling update](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/user-guide/kubectl/v1.6/#rolling-update) 虽然使用类似的方式更新Pod和ReplicationController。但是我们推荐使用Deployment，因为它是声明式的，客户端侧，具有附加特性，例如即使滚动升级结束后也可以回滚到任何历史版本。
