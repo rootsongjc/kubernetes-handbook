@@ -30,6 +30,16 @@ minikube/localkube只提供了正式release版本，而如果想要部署master�
 cd $GOPATH/src/k8s.io/kubernetes
 
 export KUBERNETES_PROVIDER=local
+hack/install-etcd.sh
+export PATH=$GOPATH/src/k8s.io/kubernetes/third_party/etcd:$PATH
 hack/local-up-cluster.sh 
+```
+
+打开另外一个终端，配置kubectl：
+
+```sh
+cd $GOPATH/src/k8s.io/kubernetes
+export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+cluster/kubectl.sh
 ```
 
