@@ -1,9 +1,9 @@
 # Kubernetes部署
 
-- [单机部署](single.html)
-- [集群部署](cluster.html)
-  - [kubeadm](kubeadm.html)
-  - [frakti](frakti/index.html)
-  - [证书生成示例](certificate.html)
+- [单机部署](single.md)
+- [集群部署](cluster.md)
+  - [kubeadm](kubeadm.md)
+  - [frakti](frakti/index.md)
+  - [证书生成示例](certificate.md)
 
 

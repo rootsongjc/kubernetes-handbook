@@ -36,12 +36,12 @@
   - 3.7 Cloud Provider
   - 3.8 Scheduler
   - [3.9 其他](plugins/other.md)
-- [4. 常用技巧](deploy)
-  - [4.1 部署](deploy)
+- [4. 常用技巧](deploy/index.md)
+  - [4.1 部署](deploy/index.md)
     - [4.1.1 单机部署](deploy/single.md)
     - [4.1.2 集群部署](deploy/cluster.md)
     - [4.1.3 kubeadm](deploy/kubeadm.md)
-    - [4.1.4 附加组件](addons)
+    - [4.1.4 附加组件](addons/index.md)
   - [4.2 监控](monitor/index.md)
   - [4.3 日志](deploy/logging.md)
   - [4.4 高可用](ha/index.md)
