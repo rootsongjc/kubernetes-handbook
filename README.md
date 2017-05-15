@@ -39,6 +39,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
   - [7.1 使用glusterfs做持久化存储](17-使用glusterfs做持久化存储.md)
 - 8.0 集群运维管理
   - [8.1 服务滚动升级](19-服务滚动升级.md)
+  - [8.2 应用日志收集](21-应用日志收集.md)
 - 9.0 Kubernetes领域应用
   - 9.1 Spark on Kubernetes TODO
 - [10.0 问题记录](issues.md)

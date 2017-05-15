@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: logstash-test
+  namespace: default
+  labels:
+    k8s-app: logstash-test
+spec:
+  selector:
+    k8s-app: logstash-test
+  template:
+    metadata:
+      labels:
+        k8s-app: logstash-test
+    spec:
+      containers:
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/logstash:5.3.0
+        name: logstash
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 50M
+          requests:
+            cpu: 100m
+            memory: 50M
+        volumeMounts:
+        - name: log-volume
+          mountPath: /log
+        env: 
+        - name: LogFile
+          value: /log
+        - name: ES_SERVER
+          value: 172.21.14.5:9200
+        - name: INDICES
+          value: xg-docker
+        - name: CODEC
+          value: plain 
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/app:latest
+        name : app
+        volumeMounts:
+        - name: app-logs
+          mountPath: /var/log/
+      volumes:
+      - name: app-logs
+        emptyDir: {}
