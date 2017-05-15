@@ -3,11 +3,7 @@ kind: Deployment
 metadata:
   name: logstash-test
   namespace: default
-  labels:
-    k8s-app: logstash-test
 spec:
-  selector:
-    k8s-app: logstash-test
   template:
     metadata:
       labels:
@@ -24,22 +20,22 @@ spec:
             cpu: 100m
             memory: 50M
         volumeMounts:
-        - name: log-volume
+        - name: app-logs
           mountPath: /log
         env: 
         - name: LogFile
-          value: /log
+          value: /log/*
         - name: ES_SERVER
-          value: 172.21.14.5:9200
+          value: 172.23.5.255:9200
         - name: INDICES
-          value: xg-docker
+          value: logstash-docker
         - name: CODEC
           value: plain 
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/app:latest
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
         name : app
         volumeMounts:
         - name: app-logs
-          mountPath: /var/log/
+          mountPath: /usr/local/TalkingData/logs
       volumes:
       - name: app-logs
         emptyDir: {}
