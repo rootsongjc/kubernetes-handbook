@@ -75,7 +75,7 @@ configmap "influxdb-config" created
 $ # 将 ConfigMap 中的配置文件挂载到 Pod 中，达到覆盖原始配置的目的
 $ diff influxdb-deployment.yaml.orig influxdb-deployment.yaml
 16c16
-<         image: grc.io/google_containers/heapster-influxdb-amd64:v1.1.1
+<         image: gcr.io/google_containers/heapster-influxdb-amd64:v1.1.1
 ---
 >         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-influxdb-amd64:v1.1.1
 19a20,21
