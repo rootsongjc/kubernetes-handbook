@@ -4,6 +4,7 @@ metadata:
   name: logstash-test
   namespace: default
 spec:
+  replicas: 3
   template:
     metadata:
       labels:
@@ -13,18 +14,15 @@ spec:
       - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/logstash:5.3.0
         name: logstash
         resources:
-          limits:
-            cpu: 1000m
-            memory: 50M
           requests:
             cpu: 100m
-            memory: 50M
+            memory: 500M
         volumeMounts:
         - name: app-logs
           mountPath: /log
         env: 
         - name: LogFile
-          value: /log/*
+          value: '["/log/*","/log/usermange/common/*"]'
         - name: ES_SERVER
           value: 172.23.5.255:9200
         - name: INDICES
