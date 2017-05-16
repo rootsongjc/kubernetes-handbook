@@ -9,12 +9,24 @@
 - [2. 核心原理](architecture/index.md)
   - [2.1 设计理念](architecture/concepts.md)
   - [2.2 主要概念](architecture/objects.md)
-    - [2.2.1 Service](architecture/Service.md)
-    - [2.2.2 Volume](architecture/Volume.md)
-    - [2.2.3 Deployment](architecture/deployment.md)
-    - [2.2.4 Secret](architecture/Secret.md)
-    - [2.2.5 StatefulSet](architecture/statefulset.md)
-    - [2.2.6 更多...](architecture/objects.md)
+    - [2.2.1 Pod, Service, Namespace和Node](introduction/concepts.md)
+    - [2.2.2 Service](architecture/Service.md)
+    - [2.2.3 Volume和Persistent Volume](architecture/Volume.md)
+    - [2.2.4 Deployment](architecture/deployment.md)
+    - [2.2.5 Secret](architecture/Secret.md)
+    - [2.2.6 StatefulSet](architecture/statefulset.md)
+    - [2.2.7 DaemonSet](architecture/daemonset.md)
+    - [2.2.8 ServiceAccount](architecture/serviceaccount.md)
+    - [2.2.9 ReplicationController和ReplicaSet](architecture/replicaset.md)
+    - [2.2.10 Job](architecture/job.md)
+    - [2.2.11 CronJob](architecture/cronjob.md)
+    - SecurityContext
+    - Resource Quota
+    - Pod Security Policy
+    - Horizontal Pod Autoscaling
+    - Network Policy
+    - Ingress
+    - ThirdPartyResources
   - [2.3 核心组件的工作原理](components/index.md)
     - Etcd
     - API Server
