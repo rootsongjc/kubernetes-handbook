@@ -1,4 +1,4 @@
-# 配置和安装 dashboard
+# 安装dashboard插件
 
 官方文件目录：`kubernetes/cluster/addons/dashboard`
 

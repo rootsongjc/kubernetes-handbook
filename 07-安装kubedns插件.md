@@ -1,4 +1,4 @@
-# 安装和配置 kubedns 插件
+# 安装kubedns插件
 
 官方的yaml文件目录：`kubernetes/cluster/addons/dns`。
 

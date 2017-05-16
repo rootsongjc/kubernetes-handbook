@@ -12,10 +12,10 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 - [0.0 介绍](README.md)
 - [1.0 Kubernetes集群安装](00-kubernetes安装前言.md)
-  - [1.1 创建 TLS 通信所需的证书和秘钥](01-TLS证书和秘钥.md)
-  - [1.2 创建kubeconfig 文件](02-kubeconfig文件.md)
-  - [1.3 创建三节点的高可用etcd集群](03-高可用etcd集群.md)
-  - [1.4 安装kubectl命令行工具](04-kubectl命令行工具.md)
+  - [1.1 创建 TLS 证书和秘钥](01-创建TLS证书和密钥.md)
+  - [1.2 创建kubeconfig 文件](02-创建kubeconfig文件.md)
+  - [1.3 创建高可用etcd集群](03-创建高可用etcd集群.md)
+  - [1.4 安装kubectl命令行工具](04-安装kubectl命令行工具.md)
   - [1.5 部署高可用master集群](05-部署高可用master集群.md)
   - [1.6 部署node节点](06-部署node节点.md)
   - [1.7 安装kubedns插件](07-安装kubedns插件.md)
@@ -31,6 +31,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - 3.0 Kubernetes中的容器设计模式 TODO
 - 4.0 Kubernetes中的概念解析
   - [4.1 Deployment概念解析](20-deployment概念解析.md)
+  - [4.2 kubernetes配置最佳实践.md](22-kubernetes配置最佳实践.md)
 - 5.0 Kubernetes的安全设置
   - [5.1 Kubernetes中的RBAC支持](13-kubernetes中的RBAC支持.md)
 - 6.0 Kubernetes网络配置

@@ -1,4 +1,4 @@
-# 部署高可用 kubernetes master 集群
+# 部署高可用master 集群
 
 kubernetes master 节点包含的组件：
 

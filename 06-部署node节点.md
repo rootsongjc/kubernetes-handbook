@@ -1,4 +1,4 @@
-# 部署kubernetes node节点
+# 部署node节点
 
 kubernetes node 节点包含如下组件：
 

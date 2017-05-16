@@ -71,12 +71,12 @@ nginx-deployment-2035384211-qqcnn   1/1       Running   0          18s       app
 
 刚创建的Replica Set将保证总是有3个nginx的pod存在。
 
-**注意：** 你必须在Deployment中的selector指定正确pod template label（在该示例中是 `app = nginx`），不要跟其他的controller搞混了（包括Deployment、Replica Set、Replication Controller等）。**Kubernetes本身不会阻止你这么做**，如果你真的这么做了，这些controller之间会相互打架，并可能导致不正确的行为。
+**注意：**  你必须在Deployment中的selector指定正确pod template label（在该示例中是 `app = nginx`），不要跟其他的controller搞混了（包括Deployment、Replica Set、Replication Controller等）。**Kubernetes本身不会阻止你这么做**，如果你真的这么做了，这些controller之间会相互打架，并可能导致不正确的行为。
 
 
 ## 更新Deployment
 
-**注意：** Deployment的rollout当且仅当Deployment的pod template（例如`.spec.template`）中的label更新或者镜像更改时被触发。其他更新，例如扩容Deployment不会触发rollout。
+**注意：**  Deployment的rollout当且仅当Deployment的pod template（例如`.spec.template`）中的label更新或者镜像更改时被触发。其他更新，例如扩容Deployment不会触发rollout。
 
 假如我们现在想要让nginx pod使用`nginx:1.9.1`的镜像来代替原来的`nginx:1.7.9`的镜像。
 
@@ -187,7 +187,7 @@ Events:
 
 默认情况下，kubernetes会在系统中保存前两次的Deployment的rollout历史记录，以便你可以随时会退（你可以修改`revision history limit`来更改保存的revision数）。ß
 
-**注意：**只要Deployment的rollout被触发就会创建一个revision。也就是说当且仅当Deployment的Pod template（如`.spec.template`）被更改，例如更新template中的label和容器镜像时，就会创建出一个新的revision。
+**注意：** 只要Deployment的rollout被触发就会创建一个revision。也就是说当且仅当Deployment的Pod template（如`.spec.template`）被更改，例如更新template中的label和容器镜像时，就会创建出一个新的revision。
 
 其他的更新，比如扩容Deployment不会创建revision——因此我们可以很方便的手动或者自动扩容。这意味着当你回退到历史revision是，直邮Deployment中的Pod template部分才会回退。
 
@@ -487,7 +487,7 @@ nginx-2142116321   0         0         0         2m
 nginx-3926361531   3         3         3         28s
 ```
 
-**注意：**在恢复Deployment之前你无法回退一个暂停了个Deployment。
+**注意：** 在恢复Deployment之前你无法回退一个暂停了个Deployment。
 
 ## Deployment状态
 
@@ -552,9 +552,9 @@ Once the deadline has been exceeded, the Deployment controller adds a  with the 
 
 浏览 [Kubernetes API conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#typical-status-properties) 查看关于status conditions的更多信息。
 
-**注意：**kubernetes除了报告`Reason=ProgressDeadlineExceeded`状态信息外不会对卡住的Deployment做任何操作。更高层次的协调器可以利用它并采取相应行动，例如，回滚Deployment到之前的版本。
+**注意：** kubernetes除了报告`Reason=ProgressDeadlineExceeded`状态信息外不会对卡住的Deployment做任何操作。更高层次的协调器可以利用它并采取相应行动，例如，回滚Deployment到之前的版本。
 
-**注意：**如果你暂停了一个Deployment，在暂停的这段时间内kubernetnes不会检查你指定的deadline。你可以在Deployment的rollout途中安全的暂停它，然后再恢复它，这不会触发超过deadline的状态。
+**注意：** 如果你暂停了一个Deployment，在暂停的这段时间内kubernetnes不会检查你指定的deadline。你可以在Deployment的rollout途中安全的暂停它，然后再恢复它，这不会触发超过deadline的状态。
 
 你可能在使用Deployment的时候遇到一些短暂的错误，这些可能是由于你设置了太短的timeout，也有可能是因为各种其他错误导致的短暂错误。例如，假设你使用了无效的引用。当你Describe Deployment的时候可能会注意到如下信息：
 
@@ -643,7 +643,7 @@ $ echo $?
 
 你可以设置Deployment中的 `.spec.revisionHistoryLimit` 项来指定保留多少旧的ReplicaSet。 余下的将在后台被当作垃圾收集。默认的，所有的revision历史就都会被保留。在未来的版本中，将会更改为2。
 
-**注意：**将该值设置为0，将导致所有的Deployment历史记录都会被清除，该Deploynent就无法再回退了。
+**注意：** 将该值设置为0，将导致所有的Deployment历史记录都会被清除，该Deploynent就无法再回退了。
 
 ## 用例
 
@@ -679,7 +679,7 @@ Deployment也需要 [`.spec` section](https://github.com/kubernetes/community/bl
 
 在Pod的template跟`.spec.template`不同或者数量超过了`.spec.replicas`规定的数量的情况下，Deployment会杀掉label跟selector不同的Pod。
 
-**注意：**你不应该再创建其他label跟这个selector匹配的pod，或者通过其他Deployment，或者通过其他Controller，例如ReplicaSet和ReplicationController。否则该Deployment会被把它们当成都是自己创建的。Kubernetes不会阻止你这么做。
+**注意：** 你不应该再创建其他label跟这个selector匹配的pod，或者通过其他Deployment，或者通过其他Controller，例如ReplicaSet和ReplicationController。否则该Deployment会被把它们当成都是自己创建的。Kubernetes不会阻止你这么做。
 
 如果你有多个controller使用了重复的selector，controller们就会互相打架并导致不正确的行为。
 

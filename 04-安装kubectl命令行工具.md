@@ -1,4 +1,4 @@
-# 下载和配置 kubectl 命令行工具
+# 安装kubectl命令行工具
 
 本文档介绍下载和配置 kubernetes 集群命令行工具 kubelet 的步骤。
 

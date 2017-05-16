@@ -1,3 +1,5 @@
+# Ingress解析
+
 ## 前言
 
 这是kubernete官方文档中[Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)的翻译，后面的章节会讲到使用[Traefik](https://github.com/containous/traefik)来做Ingress controller，文章末尾给出了几个相关链接。

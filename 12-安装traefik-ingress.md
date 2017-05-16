@@ -1,4 +1,4 @@
-# Kubernetes traefik ingress安装
+# 安装traefik ingress
 
 ## Ingress简介
 

@@ -1,4 +1,4 @@
-# 配置和安装 EFK
+# 安装EFK插件
 
 官方文件目录：`cluster/addons/fluentd-elasticsearch`
 
