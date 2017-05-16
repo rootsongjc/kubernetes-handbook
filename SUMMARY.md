@@ -5,7 +5,7 @@
    * [1.1 创建TLS证书和秘钥](01-创建TLS证书和密钥.md)
    * [1.2 创建kubeconfig 文件](02-创建kubeconfig文件.md)
    * [1.3 创建高可用etcd集群](03-创建高可用etcd集群.md)
-   * [1.4 安装kubectl命令行工具](04-kubectl命令行工具.md)
+   * [1.4 安装kubectl命令行工具](04-安装kubectl命令行工具.md)
    * [1.5 部署高可用master集群](05-部署高可用master集群.md)
    * [1.6 部署node节点](06-部署node节点.md)
    * [1.7 安装kubedns插件](07-安装kubedns插件.md)
