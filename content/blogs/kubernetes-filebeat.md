@@ -2,7 +2,7 @@
 date = "2017-05-17T17:24:52+08:00"
 draft = false
 title = "使用filebeat收集kubernetes中的应用日志"
-Tags = "kubernetes"
+Tags = ["kubernetes"]
 
 +++
 
