@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: filebeat-test
+  namespace: default
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        k8s-app: filebeat-test
+    spec:
+      containers:
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/filebeat:5.4.0
+        name: filebeat
+        volumeMounts:
+        - name: app-logs
+          mountPath: /log
+        - name: filebeat-config
+          mountPath: /etc/filebeat/
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
+        name : app
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: app-logs
+          mountPath: /usr/local/TalkingData/logs
+      volumes:
+      - name: app-logs
+        emptyDir: {}
+      - name: filebeat-config
+        configMap:
+          name: filebeat-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filebeat-test
+  labels:
+    app: filebeat-test
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: filebeat-test
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+data:
+  filebeat.yml: |
+    filebeat.prospectors:
+    - input_type: log
+      paths:
+        - "/log/*"
+        - "/log/usermange/common/*"
+    output.elasticsearch:
+      hosts: ["172.23.5.255:9200"]
+    username: "elastic"
+    password: "changeme"
+    index: "filebeat-test"
