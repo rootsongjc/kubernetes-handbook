@@ -130,31 +130,6 @@ DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
 ```
 
-现在查询etcd中的内容可以看到：
-
-```
-$etcdctl --endpoints=${ETCD_ENDPOINTS} \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  ls /kube-centos/network/subnets
-/kube-centos/network/subnets/172.30.14.0-24
-/kube-centos/network/subnets/172.30.38.0-24
-/kube-centos/network/subnets/172.30.46.0-24
-$etcdctl --endpoints=${ETCD_ENDPOINTS} \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  get /kube-centos/network/config
-{ "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
-$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
-{"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
-$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
-{"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
-$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
-{"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
-```
-
 **设置docker0网桥的IP地址**
 
 ```shell
@@ -175,7 +150,7 @@ ifconfig docker0 $FLANNEL_SUBNET
        valid_lft forever preferred_lft forever
 ```
 
-现在就可以重启docker了。
+**启动docker**
 
 重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
 
@@ -195,6 +170,31 @@ Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: f
 systemctl daemon-reload
 systemctl start flanneld
 systemctl status flanneld
+```
+
+现在查询etcd中的内容可以看到：
+
+```bash
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  ls /kube-centos/network/subnets
+/kube-centos/network/subnets/172.30.14.0-24
+/kube-centos/network/subnets/172.30.38.0-24
+/kube-centos/network/subnets/172.30.46.0-24
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/config
+{ "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
+$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
+{"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
+$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
+{"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
+$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
+{"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
 ```
 
 ## 安装和配置 kubelet
