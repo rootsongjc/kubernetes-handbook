@@ -6,6 +6,10 @@ Tags = "kubernetes"
 
 +++
 
+![民生美术馆](http://olz1di9xf.bkt.clouddn.com/20170514001.jpg)
+
+*（题图：民生现代美术馆 May 14,2017）*
+
 ## 前言
 
 本文已同步更新到Github仓库[kubernetes-handbook](http://github.com/rootsongjc/kubernetes-handbook)中。
