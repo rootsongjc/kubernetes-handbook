@@ -1,4 +1,4 @@
-# 部署kubernetes集群
+# 在CentOS上部署kubernetes1.6集群
 
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
 
@@ -32,16 +32,16 @@
 
 ## 步骤介绍
 
-- [1 创建 TLS 证书和秘钥](01-创建TLS证书和密钥.md)
-- [2 创建kubeconfig 文件](02-创建kubeconfig文件.md)
-- [3 创建高可用etcd集群](03-创建高可用etcd集群.md)
-- [4 安装kubectl命令行工具](04-安装kubectl命令行工具.md)
-- [5 部署高可用master集群](05-部署高可用master集群.md)
-- [6 部署node节点](06-部署node节点.md)
-- [7 安装kubedns插件](07-安装kubedns插件.md)
-- [8 安装dashboard插件](08-安装dashboard插件.md)
-- [9 安装heapster插件](09-安装heapster插件.md)
-- [10 安装EFK插件](10-安装EFK插件.md)
+- [1 创建 TLS 证书和秘钥](create-tls-and-secret-key.md)
+- [2 创建kubeconfig 文件](create-kubeconfig.md)
+- [3 创建高可用etcd集群](etcd-cluster-installation.md)
+- [4 安装kubectl命令行工具](kubectl-installation.md)
+- [5 部署高可用master集群](master-installation.md)
+- [6 部署node节点](node-installation.md)
+- [7 安装kubedns插件](kubedns-addon-installation.md)
+- [8 安装dashboard插件](dashboard-addon-installation.md.md)
+- [9 安装heapster插件](heapster-addon-installation.md)
+- [10 安装EFK插件](efk-addon-installation.md)
 
 ## 提醒
 
@@ -51,6 +51,4 @@
 ## 关于
 
 [Jimmy Song](http://rootsongjc.github.io/about)
-
-[我的Kubernetes相关文章](http://rootsongjc.github.io/tags/kubernetes)
 

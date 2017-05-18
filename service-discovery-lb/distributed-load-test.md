@@ -60,7 +60,7 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 ```
 当然你也可以通过WebUI：Dashboard - Workloads - Replication Controllers - **ServiceName** - Scale来扩容。
 
-![dashboard-scale](images/dashbaord-scale.jpg)
+![dashboard-scale](../images/dashbaord-scale.jpg)
 
 ### 配置Traefik
 
@@ -80,24 +80,21 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 通过Traefik的dashboard就可以看到刚增加的`traefik.locust.io`节点。
 
-![traefik-dashboard-locust](images/traefik-dashboard-locust.jpg)
+![traefik-dashboard-locust](../images/traefik-dashboard-locust.jpg)
 
 ## 执行测试
 
 打开`http://traefik.locust.io`页面，点击`Edit`输入伪造的用户数和用户每秒发送的请求个数，点击`Start Swarming`就可以开始测试了。
 
-![locust-start-swarming](images/locust-start-swarming.jpg)
+![locust-start-swarming](../images/locust-start-swarming.jpg)
 
 在测试过程中调整`sample-webapp`的pod个数（默认设置了1个pod），观察pod的负载变化情况。
 
-![sample-webapp-rc](images/sample-webapp-rc.jpg)
+![sample-webapp-rc](../images/sample-webapp-rc.jpg)
 
 从一段时间的观察中可以看到负载被平均分配给了3个pod。
 
 在locust的页面中可以实时观察也可以下载测试结果。
 
-![locust-dashboard](images/locust-dashboard.jpg)
+![locust-dashboard](../images/locust-dashboard.jpg)
 
-## License
-
-This code is Apache 2.0 licensed and more information can be found in `LICENSE`. For information on licenses for third party software and libraries, refer to the `docker-image/licenses` directory.

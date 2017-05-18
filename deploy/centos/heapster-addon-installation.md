@@ -178,7 +178,7 @@ monitoring-influxdb-1411048194-lzrpc    1/1       Running   0          2m
 
     浏览器访问 URL：`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana`
 
-![grafana](./images/kubernetes-heapster-grafana.jpg)
+![grafana](../../images/kubernetes-heapster-grafana.jpg)
 
 ## 访问 influxdb admin UI
 
@@ -193,5 +193,5 @@ monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/T
 
 在页面的 “Connection Settings” 的 Host 中输入 node IP， Port 中输入 8086 映射的 nodePort 如上面的 32299，点击 “Save” 即可（我的集群中的地址是172.20.0.113:32299）：
 
-![kubernetes-influxdb-heapster](./images/kubernetes-influxdb-heapster.jpg)
+![kubernetes-influxdb-heapster](../../images/kubernetes-influxdb-heapster.jpg)
 

@@ -21,7 +21,7 @@
 
 选择Kubernetes的三个node作为边缘节点，并安装keepalived。
 
-![边缘节点架构](images/node-edge-arch.jpg)
+![边缘节点架构](../images/node-edge-arch.jpg)
 
 ## 准备
 

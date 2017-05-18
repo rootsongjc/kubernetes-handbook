@@ -159,7 +159,7 @@ green open filebeat-2017.05.17             1qatsSajSYqAV42_XYwLsQ 5 1   1189    
 
 访问Kibana的web页面，查看`filebeat-2017.05.17`的索引，可以看到logstash收集到了app日志。
 
-![Kibana页面](images/filebeat-test-kibana.jpg)
+![Kibana页面](../images/filebeat-test-kibana.jpg)
 
 **问题记录**
 

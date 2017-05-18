@@ -22,7 +22,7 @@ Flannel的host-gw模式映射容器到容器的路由信息，kubernetes的每�
 
 下图是flannel host-gw模式的架构图
 
-![arch](images/flannel-host-gw-arch.png)
+![arch](../images/flannel-host-gw-arch.png)
 
 图片来源：[OpenShift Doc](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)
 
