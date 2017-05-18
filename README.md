@@ -105,4 +105,3 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 [opsnull](http://github.com/opsnull)
 
-[godliness](https://github.com/godliness/)
