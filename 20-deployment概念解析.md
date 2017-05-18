@@ -18,7 +18,7 @@ Deployment为Pod和Replica Set（下一代Replication Controller）提供声明�
 - 扩容Deployment以满足更高的负载。
 - 暂停Deployment来应用PodTemplateSpec的多个修复，然后恢复上线。
 - 根据Deployment 的状态判断上线是否hang住了。
-- 清楚旧的不必要的ReplicaSet。
+- 清除旧的不必要的ReplicaSet。
 
 ## 创建Deployment
 
