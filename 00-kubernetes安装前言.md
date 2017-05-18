@@ -32,17 +32,16 @@
 
 ## 步骤介绍
 
-1. [创建 TLS 通信所需的证书和秘钥](01-TLS证书和秘钥.md)
-2. [创建 kubeconfig 文件](02-kubeconfig文件.md)
-3. [创建三节点的高可用 etcd 集群](03-高可用etcd集群.md)
-4. [kubectl命令行工具](04-kubectl命令行工具.md)
-5. [部署高可用 master 集群](05-部署高可用master集群.md)
-6. [部署node节点](06-部署node节点.md)
-7. [安装kubedns插件](07-安装kubedns插件.md)
-8. [安装dashboard插件](08-安装dashboard插件.md)
-9. [安装heapster插件](09-安装heapster插件.md)
-10. [安装EFK 插件](10-安装EFK插件.md)
-
+- [1 创建 TLS 证书和秘钥](01-创建TLS证书和密钥.md)
+- [2 创建kubeconfig 文件](02-创建kubeconfig文件.md)
+- [3 创建高可用etcd集群](03-创建高可用etcd集群.md)
+- [4 安装kubectl命令行工具](04-安装kubectl命令行工具.md)
+- [5 部署高可用master集群](05-部署高可用master集群.md)
+- [6 部署node节点](06-部署node节点.md)
+- [7 安装kubedns插件](07-安装kubedns插件.md)
+- [8 安装dashboard插件](08-安装dashboard插件.md)
+- [9 安装heapster插件](09-安装heapster插件.md)
+- [10 安装EFK插件](10-安装EFK插件.md)
 
 ## 提醒
 
