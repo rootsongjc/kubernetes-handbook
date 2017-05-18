@@ -69,6 +69,8 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 [下载Calibre](http://calibre-ebook.com/download)
 
+- On Mac
+
 在Mac下安装后，使用该命令创建链接
 
 ```
@@ -80,6 +82,14 @@ ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
 ```
 gitbook pdf . ./kubernetes-handbook.pdf
 ```
+
+- On Windows
+
+需要用到的工具:`calibre`, `phantomjs`
+
+1. 将上述2个安装,calibre默认安装的路径C:\Program Files\Calibre2,[phantomjs](http://phantomjs.org/download.html)为你解压路径
+2. 并将其目录均加入到系统变量path中,参考:目录添加到系统变量path中
+3. 在cmd打开你需要转pdf的文件夹,输入gitbook pdf即可
 
 **生成单个章节的pdf**
 
