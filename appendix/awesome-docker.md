@@ -1,9 +1,11 @@
-# Awesome Docker [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Join the chat at https://gitter.im/veggiemonk/awesome-docker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veggiemonk/awesome-docker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/veggiemonk/awesome-docker.svg?branch=master)](https://travis-ci.org/veggiemonk/awesome-docker)
+# Awesome Docker
+
+#  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Join the chat at https://gitter.im/veggiemonk/awesome-docker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veggiemonk/awesome-docker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/veggiemonk/awesome-docker.svg?branch=master)](https://travis-ci.org/veggiemonk/awesome-docker)
 
 https://github.com/veggiemonk/awesome-docker
 
 > A curated list of Docker resources and projects
-Inspired by [@sindresorhus](https://github.com/sindresorhus)' [awesome][sindresorhus] and improved by these **[amazing contributors](https://github.com/veggiemonk/awesome-docker/graphs/contributors)**.
+> Inspired by [@sindresorhus](https://github.com/sindresorhus)' [awesome][sindresorhus] and improved by these **[amazing contributors](https://github.com/veggiemonk/awesome-docker/graphs/contributors)**.
 
 It's now a GitHub project because it's considerably easier for other people to edit, fix and expand on Docker using GitHub. Just click [README.md][editREADME] to submit a [pull request][editREADME].
 If this list is not complete, you can [contribute][editREADME] to make it so.
@@ -36,8 +38,8 @@ _Source:_ [What is Docker](https://www.docker.com/what-docker)
 * Check out: [Docker Cheat Sheet][docker-cheat-sheet] by [@wsargent][wsargent] __MUST SEE__
 * [Project Web Dev][projwebdev] : (Article series) How to create your own website based on Docker
 * [Docker Containers on the desktop][jessblog] by [@jfrazelle][jfrazelle]) The **funniest way** to
-learn
-about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerfiles][jfrazelledockerfiles])
+  learn
+  about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerfiles][jfrazelledockerfiles])
 * [Container Hacks and Fun Images][jessvid] by [@jfrazelle][jfrazelle] @ DockerCon 2015 **MUST WATCH VIDEO** (38:50)
 * [Learn Docker](https://github.com/dwyl/learn-docker) Full environment set up, screenshots, step-by-step tutorial and more resources (video, articles, cheat sheets) by [@dwyl](https://github.com/dwyl)
 * [Docker Caveats](http://docker-saigon.github.io/post/Docker-Caveats/) What You Should Know About Running Docker In Production (written 11 APRIL 2016) __MUST SEE__
@@ -124,7 +126,7 @@ about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerf
 * [Project Web Dev][projwebdev] : (Article series) How to create your own website based on Docker
 * [Docker vs. VMs? Combining Both for Cloud Portability Nirvana](http://www.rightscale.com/blog/cloud-management-best-practices/docker-vs-vms-combining-both-cloud-portability-nirvana)
 * [Docker Containers on the desktop][jessblog] by [@jfrazelle][jfrazelle] The **funniest way** to learn
-about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerfiles][jfrazelledockerfiles]))
+  about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerfiles][jfrazelledockerfiles]))
 * [Awesome Linux Container](https://github.com/Friz-zy/awesome-linux-containers) more general about container than this repo, by [@Friz-zy](https://github.com/Friz-zy).
 
 ## General Articles
@@ -136,7 +138,7 @@ about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerf
 * [Eight Docker Development Patterns](http://hokstad.com/docker/patterns)
 * [Rails Development Environment for OS X using Docker](https://allenan.com/docker-rails-dev-environment-for-osx/)
 * [Logging on Docker: What You Need to Know](https://dzone.com/articles/logging-docker-what-you-need) + see the
-[video][loggingDocker] (~50min)
+  [video][loggingDocker] (~50min)
 * [Comparing Five Monitoring Options for Docker](http://rancher.com/comparing-monitoring-options-for-docker-deployments/)
 * [Minimalistic data-only container for Docker Compose](http://dockermeetupsinbordeaux.github.io/docker-compose/data-container/2015/03/01/minimalistic-docker-data-container.html) (Written Mar 1, 2015)
 * [Running Docker Containers with Systemd](http://container-solutions.com/running-docker-containers-with-systemd/)
@@ -148,7 +150,7 @@ about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerf
 * [Docker: Build, Ship and Run Any App, Anywhere](http://delftswa.github.io/chapters/docker/index.html) by [Martijn Dwars](https://github.com/MartijnDwars), [Wiebe van Geest](https://github.com/wrvangeest), [Rik Nijessen](https://github.com/gewoonrik), and [Rick Wieman](https://github.com/RickWieman) from [Delft University of Technology](http://www.tudelft.nl/) (written 2 JUL 2015)
 * [Joining the Docker Ship](http://thenewstack.io/joining-the-docker-ship-and-go/) Learn how to contribute to docker (written 9 JUL 2015)
 * [Continuous Deployment with Gradle and Docker](https://github.com/gesellix/pipeline-with-gradle-and-docker/blob/master/README.md) Describes a complete pipeline from source to production deploy (includes a complete Spring Boot example project) by
-[@gesellix][gesellix]
+  [@gesellix][gesellix]
 * [Containerization and the PaaS Cloud](https://www.computer.org/cms/Computer.org/ComputingNow/issues/2015/09/mcd2015030024.pdf) -- This article discusses the requirements that arise from having to facilitate applications through distributed multicloud platforms.
 * [Docker for Development: Common Problems and Solutions](https://medium.com/@rdsubhas/docker-for-development-common-problems-and-solutions-95b25cae41eb) by [@rdsubhas](https://github.com/rdsubhas)
 * [Docker Adoption Data](https://www.datadoghq.com/docker-adoption/) A study by Datadog on the real world Docker usage stastics and deployment patterns.
@@ -177,7 +179,7 @@ about docker! (Tips: checkout her [dotfiles][jfrazelledotfiles] and her [dockerf
 
 ## Multi-Server
 * [A Docker based mini-PaaS](http://shortcircuit.net.au/~prologic/blog/article/2015/03/24/a-docker-based-mini-paas/)
-by [@prologic][prologic]
+  by [@prologic][prologic]
 * [A multi-host scalable web services demo using Docker swarm, Docker compose, NGINX, and Blockbridge](https://www.blockbridge.com/a-scalable-web-services-demo-using-docker-swarm-compose-and-blockbridge/)
 
 ## Cloud Infrastructure
@@ -233,9 +235,9 @@ by [@prologic][prologic]
 
 ## Service Discovery
 * [@progrium][progrium] Service Discovery articles series:
- * [Consul Service Discovery with Docker](http://progrium.com/blog/2014/08/20/consul-service-discovery-with-docker/)
- * [Understanding Modern Service Discovery with Docker](http://progrium.com/blog/2014/07/29/understanding-modern-service-discovery-with-docker/)
- * [Automatic Docker Service Announcement with Registrator](http://progrium.com/blog/2014/09/10/automatic-docker-service-announcement-with-registrator/)
+* [Consul Service Discovery with Docker](http://progrium.com/blog/2014/08/20/consul-service-discovery-with-docker/)
+* [Understanding Modern Service Discovery with Docker](http://progrium.com/blog/2014/07/29/understanding-modern-service-discovery-with-docker/)
+* [Automatic Docker Service Announcement with Registrator](http://progrium.com/blog/2014/09/10/automatic-docker-service-announcement-with-registrator/)
 
 ## Security
 * [Docker and SELinux](http://www.projectatomic.io/docs/docker-and-selinux/)
@@ -272,9 +274,9 @@ by [@prologic][prologic]
 
 ## Other
 * Presentation: Docker and JBoss - the perfect combination
- * [Vidéo](https://www.youtube.com/watch?v=4uQ6gR_xZhE)
- * [Code source](https://github.com/goldmann/goldmann.pl/tree/master/.presentations/2014-vjbug-docker/demos)
- * [JBoss and Docker Presentation](https://goldmann.pl/presentations/2014-vjbug-docker/ )
+* [Vidéo](https://www.youtube.com/watch?v=4uQ6gR_xZhE)
+* [Code source](https://github.com/goldmann/goldmann.pl/tree/master/.presentations/2014-vjbug-docker/demos)
+* [JBoss and Docker Presentation](https://goldmann.pl/presentations/2014-vjbug-docker/ )
 
 # Books
 
@@ -415,7 +417,7 @@ by [@prologic][prologic]
 * [InSpec](https://github.com/chef/inspec) - InSpec is an open-source testing framework for infrastructure with a human- and machine-readable language for specifying compliance, security and policy requirements.
 * [Shippable](https://app.shippable.com/) - A SaaS platform for developers and DevOps teams that significantly reduces the time taken for code to be built, tested and deployed to production.
 * [Watchtower](https://github.com/CenturyLinkLabs/watchtower) - Automatically update running Docker containers by
-[@CenturyLinkLabs][CenturyLinkLabs]
+  [@CenturyLinkLabs][CenturyLinkLabs]
 * [Microservices Continuous Deployment](https://github.com/francescou/docker-continuous-deployment) - Continuous deployment of a microservices application
 * [Pumba](https://github.com/gaia-adm/pumba) - Chaos testing tool for Docker. Can be deployed on Kubernets and CoreOS clusters.
 
@@ -472,7 +474,7 @@ Securely store your Docker images.
 ## Local Container Manager
 
 * [Shutit](http://ianmiell.github.io/shutit/) - Tool for building and maintaining complex Docker deployments by
-[@ianmiell][ianmiell]
+  [@ianmiell][ianmiell]
 * [FuGu](https://github.com/mattes/fugu) - Docker run wrapper without orchestration by [@mattes](https://github.com/mattes)
 * [Boot2Docker](https://github.com/boot2docker/boot2docker) - Docker for OSX and Windows -- http://boot2docker.io/
 * [docker-vm](https://github.com/shyiko/docker-vm) - Simple and transparent alternative to boot2docker (backed by Vagrant) by [@shyiko](https://github.com/shyiko)
@@ -523,7 +525,7 @@ Securely store your Docker images.
 * [Dockerfile Example](https://github.com/komljen/dockerfile-examples) by [@komljen](https://github.com/komljen)
 * [Dockerfile Example 2](https://github.com/kstaken/dockerfile-examples) by [@kstaken](https://github.com/kstaken)
 * [Dockerfile @jfrazelle][jfrazelledockerfiles] by [@jfrazelle][jfrazelle] **MUST SEE** for a fully containerized
-desktop!
+  desktop!
 
 ## Storing Images and Registries
 

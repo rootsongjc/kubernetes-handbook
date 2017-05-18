@@ -20,17 +20,13 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 [文章目录](SUMMARY.md)
 
-## 说明
-
-文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typaro](www.typorai.o)。
-
-[Kubernetes集群安装部分](00-kubernetes安装前言.md)（1.0-1.10章节）在[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)的基础上进行了编辑、修改和整理而成。
-
 ## 如何阅读
 
 **在线浏览**
 
 访问gitbook：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+
+文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typaro](www.typorai.o)。
 
 **本地查看**
 
@@ -44,7 +40,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 [下载Calibre](http://calibre-ebook.com/download)
 
-- On Mac
+- **On Mac**
 
 在Mac下安装后，使用该命令创建链接
 
@@ -58,7 +54,7 @@ ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
 gitbook pdf . ./kubernetes-handbook.pdf
 ```
 
-- On Windows
+- **On Windows**
 
 需要用到的工具:`calibre`, `phantomjs`
 

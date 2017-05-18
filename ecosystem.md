@@ -1,63 +1,35 @@
 # Kubernetes ecosystem
 
-![](CloudNativeLandscape.jpg)
+![Cloude Native Landscape](images/CloudNativeLandscape.jpg)
 
 * http://kubernetes.io/partners/
 * K8s distributions and SaaS offerings
     - [http://openshift.com](http://openshift.com/)
     - https://tectonic.com/
     - http://rancher.com/kubernetes/
-    - [https://www.infoq.com/news/
-        <wbr>2016/11/apprenda-kubernetes-
-        <wbr>ket](https://www.infoq.com/news/2016/11/apprenda-kubernetes-ket)
-    - [https://github.com/samsung-
-        <wbr>cnct/kraken](https://github.com/samsung-cnct/kraken)
-    - [https://www.mirantis.com/
-        <wbr>solutions/container-
-        <wbr>technologies/](https://www.mirantis.com/solutions/container-technologies/)
-    - [https://www.ubuntu.com/cloud/
-        <wbr>kubernetes](https://www.ubuntu.com/cloud/kubernetes)
-    - [https://platform9.com/
-        <wbr>products-2/kubernetes/](https://platform9.com/products-2/kubernetes/)
+    - [https://www.infoq.com/news/2016/11/apprenda-kubernetes-ket](https://www.infoq.com/news/2016/11/apprenda-kubernetes-ket)
+    - [https://github.com/samsung-cnct/kraken](https://github.com/samsung-cnct/kraken)
+    - [https://www.mirantis.com/solutions/container-technologies/](https://www.mirantis.com/solutions/container-technologies/)
+    - [https://www.ubuntu.com/cloud/kubernetes](https://www.ubuntu.com/cloud/kubernetes)
+    - [https://platform9.com/products-2/kubernetes/](https://platform9.com/products-2/kubernetes/)
     - https://kubermatic.io/en/
     - https://stackpoint.io/#/
-    - [http://gravitational.com/
-        <wbr>telekube/](http://gravitational.com/telekube/)
+    - [http://gravitational.com/telekube/](http://gravitational.com/telekube/)
     - https://kcluster.io/
-    - [http://www.stratoscale.com/
-        <wbr>products/kubernetes-as-a-
-        <wbr>service/](http://www.stratoscale.com/products/kubernetes-as-a-service/)
+    - [http://www.stratoscale.com/products/kubernetes-as-a-service/](http://www.stratoscale.com/products/kubernetes-as-a-service/)
     - https://giantswarm.io/product/
-    - [https://cloud.google.com/
-        <wbr>container-engine/](https://cloud.google.com/container-engine/)
-    - [https://www.digitalocean.com/
-        <wbr>community/tutorials/an-
-        <wbr>introduction-to-kubernetes](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
-    - [http://blog.kubernetes.io/
-        <wbr>2016/11/bringing-kubernetes-
-        <wbr>support-to-azure.html](http://blog.kubernetes.io/2016/11/bringing-kubernetes-support-to-azure.html)
-    - [http://thenewstack.io/huawei-
-        <wbr>launches-kubernetes-based-
-        <wbr>container-engine/](http://thenewstack.io/huawei-launches-kubernetes-based-container-engine/)
-    - [http://blogs.univa.com/2016/
-        <wbr>05/univa-announces-navops-
-        <wbr>command-for-managing-
-        <wbr>enterprise-container-workload-
-        <wbr>on-kubernetes-distributions/](http://blogs.univa.com/2016/05/univa-announces-navops-command-for-managing-enterprise-container-workload-on-kubernetes-distributions/)
+    - [https://cloud.google.com/container-engine/](https://cloud.google.com/container-engine/)
+    - [https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
+    - [http://blog.kubernetes.io/2016/11/bringing-kubernetes-support-to-azure.html](http://blog.kubernetes.io/2016/11/bringing-kubernetes-support-to-azure.html)
+    - [http://thenewstack.io/huawei-launches-kubernetes-based-container-engine/](http://thenewstack.io/huawei-launches-kubernetes-based-container-engine/)
+    - [http://blogs.univa.com/2016/05/univa-announces-navops-command-for-managing-enterprise-container-workload-on-kubernetes-distributions/](http://blogs.univa.com/2016/05/univa-announces-navops-command-for-managing-enterprise-container-workload-on-kubernetes-distributions/)
     - https://supergiant.io/
     - https://diamanti.com/products/
-    - [http://www.vmware.com/company/
-        <wbr>news/releases/vmw-newsfeed.
-        <wbr>VMware-Introduces-Kubernetes-
-        <wbr>as-a-Service-on-Photon-
-        <wbr>Platform.2104598.html](http://www.vmware.com/company/news/releases/vmw-newsfeed.VMware-Introduces-Kubernetes-as-a-Service-on-Photon-Platform.2104598.html)
+    - [http://www.vmware.com/company/news/releases/vmw-newsfeed.VMware-Introduces-Kubernetes-as-a-Service-on-Photon-Platform.2104598.html](http://www.vmware.com/company/news/releases/vmw-newsfeed.VMware-Introduces-Kubernetes-as-a-Service-on-Photon-Platform.2104598.html)
     - http://mantl.io/
-    - [https://github.com/hyperhq/
-        <wbr>hypernetes](https://github.com/hyperhq/hypernetes)
-    - [https://github.com/vmturbo/
-        <wbr>kubernetes](https://github.com/vmturbo/kubernetes) 
-    - [https://www.joyent.com/
-        <wbr>containerpilot](https://www.joyent.com/containerpilot)
+    - [https://github.com/hyperhq/hypernetes](https://github.com/hyperhq/hypernetes)
+    - [https://github.com/vmturbo/kubernetes](https://github.com/vmturbo/kubernetes) 
+    - [https://www.joyent.com/containerpilot](https://www.joyent.com/containerpilot)
 * PaaS on Kubernetes
     - Openshift
     - Deis Workflow

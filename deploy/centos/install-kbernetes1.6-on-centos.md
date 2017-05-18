@@ -1,5 +1,7 @@
 # 在CentOS上部署kubernetes1.6集群
 
+说明：本安装文档在[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster/)文档的基础上修改、整理而成。
+
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
 
 在部署的过程中，将详细列出各组件的启动参数，给出配置文件，详解它们的含义和可能遇到的问题。
