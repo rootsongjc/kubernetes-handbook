@@ -26,7 +26,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 访问gitbook：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
 
-文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typaro](www.typorai.o)。
+文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](www.typorai.o)。
 
 **本地查看**
 
