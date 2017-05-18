@@ -1,6 +1,16 @@
 # Kubernetes Handbook
 
-玩转Kubernetes，我就看kubernetes handbook！
+Kubernetes是谷歌开源的容器集群管理系统，是Google多年大规模容器管理技术Borg的开源版本，也是CNCF最重要的组件之一，主要功能包括：
+
+- 基于容器的应用部署、维护和滚动升级
+- 负载均衡和服务发现
+- 跨机器和跨地区的集群调度
+- 自动伸缩
+- 无状态服务和有状态服务
+- 广泛的Volume支持
+- 插件机制保证扩展性
+
+Kubernetes发展非常迅速，已经成为容器编排领域的领导者。Kubernetes的中文资料也非常丰富，但系统化和紧跟社区更新的则就比较少见了。《Kubernetes指南》开源电子书旨在整理平时在开发和使用Kubernetes时的参考指南和实践心得，更是为了形成一个系统化的参考指南以方便查阅。欢迎大家关注，更欢迎大家一起添加更多更好的内容。
 
 本书所有的组件安装、示例和操作等都基于**Kubernetes1.6.0**版本。
 
@@ -8,42 +18,7 @@
 
 GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
-## 目录
-
-- [0.0 介绍](README.md)
-- [1.0 Kubernetes集群安装](00-kubernetes安装前言.md)
-  - [1.1 创建 TLS 证书和秘钥](01-创建TLS证书和密钥.md)
-  - [1.2 创建kubeconfig 文件](02-创建kubeconfig文件.md)
-  - [1.3 创建高可用etcd集群](03-创建高可用etcd集群.md)
-  - [1.4 安装kubectl命令行工具](04-安装kubectl命令行工具.md)
-  - [1.5 部署高可用master集群](05-部署高可用master集群.md)
-  - [1.6 部署node节点](06-部署node节点.md)
-  - [1.7 安装kubedns插件](07-安装kubedns插件.md)
-  - [1.8 安装dashboard插件](08-安装dashboard插件.md)
-  - [1.9 安装heapster插件](09-安装heapster插件.md)
-  - [1.10 安装EFK插件](10-安装EFK插件.md)
-- 2.0 Kubernetes服务发现与负载均衡
-  - [2.1 Ingress解析](11-ingress解析.md)
-  - [2.2 安装traefik ingress](12-安装traefik-ingress.md)
-  - [2.3 分布式负载测试](14-分布式负载测试.md)
-  - [2.4 kubernetes网络和集群性能测试](15-kubernetes网络和集群性能测试.md)
-  - [2.5 边缘节点配置](18-边缘节点配置.md)
-- 3.0 Kubernetes中的容器设计模式 TODO
-- 4.0 Kubernetes中的概念解析
-  - [4.1 Deployment概念解析](20-deployment概念解析.md)
-  - [4.2 kubernetes配置最佳实践.md](22-kubernetes配置最佳实践.md)
-- 5.0 Kubernetes的安全设置
-  - [5.1 Kubernetes中的RBAC支持](13-kubernetes中的RBAC支持.md)
-- 6.0 Kubernetes网络配置
-  - [6.1 Kubernetes中的网络模式解析](16-kubernetes中的网络模式解析.md)
-- 7.0 Kubernetes存储配置
-  - [7.1 使用glusterfs做持久化存储](17-使用glusterfs做持久化存储.md)
-- 8.0 集群运维管理
-  - [8.1 服务滚动升级](19-服务滚动升级.md)
-  - [8.2 应用日志收集](21-应用日志收集.md)
-- 9.0 Kubernetes领域应用
-  - 9.1 Spark on Kubernetes TODO
-- [10.0 问题记录](issues.md)
+[文章目录](SUMMARY.md)
 
 ## 说明
 
@@ -51,7 +26,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 [Kubernetes集群安装部分](00-kubernetes安装前言.md)（1.0-1.10章节）在[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)的基础上进行了编辑、修改和整理而成。
 
-## 如何使用
+## 如何阅读
 
 **在线浏览**
 
@@ -103,6 +78,7 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 [Jimmy Song](http://rootsongjc.github.io/about)
 
-[opsnull](http://github.com/opsnull)
+[feiskyer](https://github.com/feiskyer)
 
-[godliness](https://github.com/godliness/)
+
+
