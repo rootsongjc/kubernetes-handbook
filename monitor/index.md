@@ -4,13 +4,13 @@
 
 [cAdvisor](https://github.com/google/cadvisor)是一个来自Google的容器监控工具，也是kubelet内置的容器资源收集工具。它会自动收集本机容器CPU、内存、网络和文件系统的资源占用情况，并对外提供cAdvisor原生的API（默认端口为`--cadvisor-port=4194`）。
 
-![](images/14842107270881.png)
+![cAdvisor监控示意图](../images/cadvisor.png)
 
 ## InfluxDB和Grafana
 
 [InfluxDB](https://www.influxdata.com/time-series-platform/influxdb/)是一个开源分布式时序、事件和指标数据库；而[Grafana](http://grafana.org/)则是InfluxDB的dashboard，提供了强大的图表展示功能。
 
-![](images/14842114123604.jpg)
+![Grafana界面图](../images/grafana-ui.jpg)
 
 ## Heapster
 
@@ -18,7 +18,7 @@
 
 Heapster从kubelet提供的API采集节点和容器的资源占用：
 
-![](images/14842118198998.png)
+![Heapster架构](../images/heapster-arch.png)
 
 另外，Heapster的`/metrics` API提供了Prometheus格式的数据。
 
@@ -42,13 +42,13 @@ InfluxDB is running at https://kubernetes-master/api/v1/proxy/namespaces/kube-sy
 
 [Prometheus](https://prometheus.io)是另外一个监控和时间序列数据库，并且还提供了告警的功能。他提供了强大的查询语言和HTTP接口，也支持将数据导出到Grafana中展示。
 
-使用Prometheus监控Kubernetes需要配置好数据源，一个简单的示例是[prometheus.yml](prometheus.txt)：
+使用Prometheus监控Kubernetes需要配置好数据源，一个简单的示例是[prometheus.yml](../manifests/prometheus/prometheus.yml)：
 
-```
-kubectl create -f http://feisky.xyz/kubernetes/monitor/prometheus.txt
+```bash
+kubectl create -f http://feisky.xyz/kubernetes/monitor/prometheus.yml
 ```
 
-![](images/14842125295113.jpg)
+![Prometheus界面示意图](../images/prometheus-ui.jpg)
 
 
 ## 其他容器监控系统

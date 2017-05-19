@@ -30,7 +30,7 @@ spec:
       restartPolicy: Never
 ```
 
-```
+```bash
 $ kubectl create -f ./job.yaml
 job "pi" created
 $ pods=$(kubectl get pods --selector=job-name=pi --output=jsonpath={.items..metadata.name})

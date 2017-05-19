@@ -12,7 +12,7 @@ Helm的使用方法见[这里](helm-app.html)。
 
 Deis workflow是基于Kubernetes的PaaS管理平台，进一步简化了应用的打包、部署和服务发现。
 
-![](https://deis.com/docs/workflow/diagrams/Git_Push_Flow.png)
+![Deis workflow](../images/git-push-flow.png)
 
 ## Operator
 

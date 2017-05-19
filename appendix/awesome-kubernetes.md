@@ -1,19 +1,9 @@
 Awesome-Kubernetes
 =======================================================================
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://travis-ci.org/ramitsurana/awesome-kubernetes.svg?branch=master)](https://travis-ci.org/ramitsurana/awesome-kubernetes)
-[![License](https://img.shields.io/badge/License-CC%204.0-brightgreen.svg)](http://creativecommons.org/licenses/by-nc/4.0/)
 
 A curated list for awesome kubernetes sources 
 Inspired by [@sindresorhus' awesome](https://github.com/sindresorhus/awesome)
-
-![k8](https://cloud.githubusercontent.com/assets/8342133/13547481/fcb5ffb0-e2fa-11e5-8f75-555cea5eb7b2.png)
-
-
-> "Talent wins games, but teamwork and intelligence wins championships."
->
-> -- Michael Jordan
 
 Without the help from these [amazing contributors](https://github.com/ramitsurana/awesome-kubernetes/graphs/contributors),
 building this awesome-repo would never has been possible. Thank You very much guys !!
@@ -37,9 +27,9 @@ _Source:_ [What is Kubernetes](http://kubernetes.io/)
 **Kubernetes is known to be a descendant of Google's system BORG**
 
 > The first unified container-management system developed at Google was the system we internally call Borg.
-It was built to manage both long-running services and batch jobs, which had previously been handled by two separate
-systems: Babysitter and the Global Work Queue. The latter’s architecture strongly influenced Borg, but was focused on
-batch jobs; both predated Linux control groups.
+> It was built to manage both long-running services and batch jobs, which had previously been handled by two separate
+> systems: Babysitter and the Global Work Queue. The latter’s architecture strongly influenced Borg, but was focused on
+> batch jobs; both predated Linux control groups.
 
 _Source:_ [Kubernetes Past](http://research.google.com/pubs/archive/44843.pdf)
 
@@ -163,9 +153,9 @@ Useful Articles
 
 * [Kubernetes: Getting Started With a Local Deployment](http://www.jetstack.io/new-blog/2015/7/6/getting-started-with-a-local-deployment)
 * [Installation on Centos 7](http://severalnines.com/blog/installing-kubernetes-cluster-minions-centos7-manage-pods-services)
-*  [Packaging Multiple Resources together](http://blog.arungupta.me/kubernetes-application-package-multiple-resources-together/)
-*  [An Introduction to Kubernetes](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes) by [Justin Ellingwood](https://twitter.com/jmellingwood)
-*  [Scaling Docker with Kubernetes](http://www.infoq.com/articles/scaling-docker-with-kubernetes) by [Carlos Sanchez](https://twitter.com/csanchez)
+* [Packaging Multiple Resources together](http://blog.arungupta.me/kubernetes-application-package-multiple-resources-together/)
+* [An Introduction to Kubernetes](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes) by [Justin Ellingwood](https://twitter.com/jmellingwood)
+* [Scaling Docker with Kubernetes](http://www.infoq.com/articles/scaling-docker-with-kubernetes) by [Carlos Sanchez](https://twitter.com/csanchez)
 * [Creating a Kubernetes Cluster to Run Docker Formatted Container Images](https://access.redhat.com/articles/1353773) by [Chris Negus](https://twitter.com/linuxcricket)
 * [Containerizing Docker on Kubernetes !!](https://www.linkedin.com/pulse/containerizing-docker-kubernetes-ramit-surana) by [Ramit Surana](https://twitter.com/ramitsurana)
 * [Running Kubernetes Example on CoreOS, Part 1](https://coreos.com/blog/running-kubernetes-example-on-CoreOS-part-1/) by [Kelsey Hightower](https://twitter.com/kelseyhightower)
@@ -225,7 +215,7 @@ Cloud Providers
 * [Rackspace](https://www.rackspace.com/en-in) - Rackspace
 * [Eldarion Cloud](http://eldarion.cloud/)
 * [StackPoint Cloud](https://stackpointcloud.com/)
- 
+
 
 Case Studies
 =======================================================================
@@ -398,7 +388,7 @@ Related Projects
 * [Vault controller](https://github.com/kelseyhightower/vault-controller)
 * [kube-lego](https://github.com/jetstack/kube-lego)
 * [k8sec](https://github.com/dtan4/k8sec)
-    
+
 ## Desktop applications
 
 * [Kubernetic](https://kubernetic.com/)
@@ -479,7 +469,7 @@ Related Projects
 * [Consul](http://consul.io)
   * [Kelsey Hightower Consul](https://github.com/kelseyhightower/consul-on-kubernetes)
   * [Bridge between Kubernetes and Consul](https://github.com/Beldur/kube2consul)
-  
+
 ## Operating System
 
 * [CoreOS](http://coreos.com)

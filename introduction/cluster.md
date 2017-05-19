@@ -1,6 +1,6 @@
 # Kubernetes cluster
 
-![](architecture.png)
+![集群架构图](../images/architecture.png)
 
 一个Kubernetes集群由分布式存储etcd、控制节点controller以及服务节点Node组成。
 
@@ -10,7 +10,7 @@
 
 ## 集群联邦
 
-![](federation.png)
+![集群联邦架构图](../images/federation.png)
 
 ## Kubernetes单机版
 

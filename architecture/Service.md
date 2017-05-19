@@ -9,7 +9,7 @@ Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载�
 
 ## Service
 
-![](media/14735737093456.jpg)
+![](../images/service.jpg)
 
 Service是对一组提供相同功能的Pods的抽象，并为它们提供一个统一的入口。借助Service，应用可以方便的实现服务发现与负载均衡，并实现应用的零宕机升级。Service通过标签来选取服务后端，一般配合Replication Controller或者Deployment来保证后端容器的正常运行。
 
@@ -59,7 +59,7 @@ spec:
           servicePort: 80
 ```
 
-注意Ingress本身并不会自动创建负载均衡器，cluster中需要运行一个ingress controller来根据Ingress的定义来管理负载均衡器。目前社区提供了nginx和gce的参考实现。
+**注意：** Ingress本身并不会自动创建负载均衡器，cluster中需要运行一个ingress controller来根据Ingress的定义来管理负载均衡器。目前社区提供了nginx和gce的参考实现。
 
 Traefik提供了易用的Ingress Controller，使用方法见<https://docs.traefik.io/user-guide/kubernetes/>。
 

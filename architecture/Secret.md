@@ -4,9 +4,9 @@ Secret解决了密码、token、密钥等敏感数据的配置问题，而不需
 
 Secret有三种类型：
 
-* Service Account：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的`/run/secrets/kubernetes.io/serviceaccount`目录中；
-* Opaque：base64编码格式的Secret，用来存储密码、密钥等；
-* `kubernetes.io/dockerconfigjson`：用来存储私有docker registry的认证信息。
+* **Service Account** ：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的`/run/secrets/kubernetes.io/serviceaccount`目录中；
+* **Opaque** ：base64编码格式的Secret，用来存储密码、密钥等；
+* **kubernetes.io/dockerconfigjson** ：用来存储私有docker registry的认证信息。
 
 ## Opaque Secret
 
@@ -21,7 +21,7 @@ MWYyZDFlMmU2N2Rm
 
 secrets.yml
 
-```yml
+```Yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -41,7 +41,7 @@ data:
 
 ### 将Secret挂载到Volume中
 
-```yml
+```Yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -68,7 +68,7 @@ spec:
 
 ### 将Secret导出到环境变量中
 
-```yml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -103,7 +103,7 @@ spec:
 
 ## kubernetes.io/dockerconfigjson
 
-可以直接用kubectl命令来创建用于docker registry认证的secret：
+可以直接用`kubectl`命令来创建用于docker registry认证的secret：
 
 ```sh
 $ kubectl create secret docker-registry myregistrykey --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL

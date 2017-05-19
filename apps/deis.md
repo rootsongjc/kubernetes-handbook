@@ -2,11 +2,11 @@
 
 ## Deis架构
 
-![](https://deis.com/docs/workflow/diagrams/Workflow_Overview.png)
+![Workflow概览](../images/workflow-overview.png)
 
-![](https://deis.com/docs/workflow/diagrams/Workflow_Detail.png)
+![Workflow详细结构](../images/workflow-detail.png)
 
-![](https://deis.com/docs/workflow/diagrams/Application_Layout.png)
+![应用分层架构](../images/application-layout.png)
 
 ## Deis安装部署
 

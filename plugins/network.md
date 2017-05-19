@@ -12,7 +12,7 @@ Kubernetes有着丰富的网络插件，方便用户自定义所需的网络。
 
 安装CNI：
 
-```
+```Bash
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -29,8 +29,8 @@ yum install -y kubernetes-cni
 
 配置CNI brige插件：
 
-```
-    mkdir -p /etc/cni/net.d
+```bash
+mkdir -p /etc/cni/net.d
 cat >/etc/cni/net.d/10-mynet.conf <<-EOF
 {
     "cniVersion": "0.3.0",

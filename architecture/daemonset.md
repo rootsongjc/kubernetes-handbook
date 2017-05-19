@@ -133,7 +133,7 @@ spec:
 
 除了DaemonSet，还可以使用静态Pod来在每台机器上运行指定的Pod，这需要kubelet在启动的时候指定manifest目录：
 
-```
+```bash
 kubelet --pod-manifest-path=<the directory>
 ```
 

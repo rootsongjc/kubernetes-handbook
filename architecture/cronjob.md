@@ -30,18 +30,18 @@ spec:
           restartPolicy: OnFailure
 ```
 
-```
+```Bash
 $ kubectl create -f cronjob.yaml
 cronjob "hello" created
 ```
 
 当然，也可以用`kubectl run`来创建一个CronJob：
 
-```
+```bash
 kubectl run hello --schedule="*/1 * * * *" --restart=OnFailure --image=busybox -- /bin/sh -c "date; echo Hello from the Kubernetes cluster"
 ```
 
-```
+```bash
 $ kubectl get cronjob
 NAME      SCHEDULE      SUSPEND   ACTIVE    LAST-SCHEDULE
 hello     */1 * * * *   False     0         <none>
