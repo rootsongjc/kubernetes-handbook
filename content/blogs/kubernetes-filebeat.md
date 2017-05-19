@@ -16,10 +16,7 @@ Tags = ["kubernetes"]
 
 昨天写了篇文章[使用Logstash收集Kubernetes的应用日志](http://rootsongjc.github.io/blogs/kubernetes-logstash/)，发现logstash十分消耗内存（大约500M），经人提醒改用filebeat（大约消耗10几M内存），因此重写一篇使用filebeat收集kubernetes中的应用日志。
 
-步骤和内容大同小异，不同之处是：
-
-- 另做了一个filebeat的镜像
-- 使用ConfigMap来传递配置文件，不再使用环境变量
+在进行日志收集的过程中，我们首先想到的是使用Logstash，因为它是ELK stack中的重要成员，但是在测试过程中发现，Logstash是基于JDK的，在没有产生日志的情况单纯启动Logstash就大概要消耗**500M**内存，在每个Pod中都启动一个日志收集组件的情况下，使用logstash有点浪费系统资源，经人推荐我们选择使用**Filebeat**替代，经测试单独启动Filebeat容器大约会消耗**12M**内存，比起logstash相当轻量级。
 
 ## 方案选择
 
@@ -27,7 +24,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 - 所有日志都必须是out前台输出，真实业务场景中无法保证所有日志都在前台输出
 - 只能有一个日志输出文件，而真实业务场景中往往有多个日志输出文件
-- Fluentd并不是常用的日志收集工具，我们更习惯用logstash
+- Fluentd并不是常用的日志收集工具，我们更习惯用logstash，现使用filebeat替代
 - 我们已经有自己的ELK集群且有专人维护，没有必要再在kubernetes上做一个日志收集服务
 
 基于以上几个原因，我们决定使用自己的ELK集群。
@@ -48,78 +45,103 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 我们创建了自己的logstash镜像。创建过程和使用方式见https://github.com/rootsongjc/docker-images
 
-镜像地址：`index.tenxcloud.com/jimmy/logstash:5.3.0`
+镜像地址：`index.tenxcloud.com/jimmy/filebeat:5.4.0`
 
 ## 测试
 
 我们部署一个应用对logstash的日志收集功能进行测试。
 
-创建应用yaml文件`logstash-test.yaml`。
+创建应用yaml文件`fielbeat-test.yaml`。
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: logstash-test
+  name: filebeat-test
   namespace: default
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        k8s-app: logstash-test
+        k8s-app: filebeat-test
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/logstash:5.3.0
-        name: logstash
-        resources:
-          requests:
-            cpu: 100m
-            memory: 500M
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/filebeat:5.4.0
+        name: filebeat
         volumeMounts:
         - name: app-logs
           mountPath: /log
-        env: 
-        - name: LogFile
-          value: '["/log/*","/log/usermange/common/*"]'
-        - name: ES_SERVER
-          value: 172.23.5.255:9200
-        - name: INDICES
-          value: logstash-docker
-        - name: CODEC
-          value: plain 
+        - name: filebeat-config
+          mountPath: /etc/filebeat/
       - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
         name : app
+        ports:
+        - containerPort: 80
         volumeMounts:
         - name: app-logs
           mountPath: /usr/local/TalkingData/logs
       volumes:
       - name: app-logs
         emptyDir: {}
+      - name: filebeat-config
+        configMap:
+          name: filebeat-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filebeat-test
+  labels:
+    app: filebeat-test
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: filebeat-test
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+data:
+  filebeat.yml: |
+    filebeat.prospectors:
+    - input_type: log
+      paths:
+        - "/log/*"
+        - "/log/usermange/common/*"
+    output.elasticsearch:
+      hosts: ["172.23.5.255:9200"]
+    username: "elastic"
+    password: "changeme"
+    index: "filebeat-docker-test"
 ```
 
 **注意事项**
 
 - 将app的`/usr/local/TalkingData/logs`目录挂载到logstash的`/log`目录下。
-- logstash容器大概需要500M以上内存。
-- 该文件可以在`manifests/test/logstash-test.yaml`找到。 
+- Filebeat容器大概需要10M左右内存。
+- 该文件可以在`manifests/test/filebeat-test.yaml`找到。 
 - 我使用了自己的私有镜像仓库，测试时请换成自己的应用镜像。
-- logstash的环境变量的值配置请参考https://github.com/rootsongjc/docker-images
+- filebeat镜像制作请参考https://github.com/rootsongjc/docker-images
 
 **创建应用**
 
 部署Deployment
 
 ```
-kubectl create -f logstash-test.yaml
+kubectl create -f filebeat-test.yaml
 ```
 
 查看`http://172.23.5.255:9200/_cat/indices`将可以看到列表有这样的indices：
 
 ```
-green open logstash-docker-2017.05.16      VkFWx3b_Ss6n4keDmXm-TQ 5 1   2078     0   1.6mb 795.3kb
+green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151     0   1.6mb 841.8kb
 ```
 
-访问Kibana的web页面，查看`logstash-docker-2017.05.16`的索引，可以看到logstash收集到了app日志。
+访问Kibana的web页面，查看`filebeat-docker-test`的索引，可以看到filebeat收集到了app日志。
 
-![Kibana页面](http://olz1di9xf.bkt.clouddn.com/filebeat-test-kibana.jpg)
+![Kibana页面](http://olz1di9xf.bkt.clouddn.com/filebeat-docker-test.jpg)

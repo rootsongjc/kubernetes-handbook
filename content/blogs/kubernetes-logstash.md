@@ -118,3 +118,7 @@ green open logstash-docker-2017.05.16      VkFWx3b_Ss6n4keDmXm-TQ 5 1   2078    
 访问Kibana的web页面，查看`logstash-docker-2017.05.16`的索引，可以看到logstash收集到了app日志。
 
 ![Kibana页面](http://olz1di9xf.bkt.clouddn.com/logstash-test-kibana.jpg)
+
+## 后记
+
+该方案因为logstash消耗内存才多而否决，我们改用了**filebeat**，请参考我的另一篇文章[使用filebeat收集应用日志](http://rootsongjc.github.io/blogs/kubernetes-filebeat/)。
