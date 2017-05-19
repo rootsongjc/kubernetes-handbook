@@ -70,6 +70,33 @@ gitbook pdf . ./kubernetes-handbook.pdf
 pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 ```
 
+## 如何贡献
+
+### 提issue
+
+如果你发现文档中的错误，或者有好的建议，不要犹豫，欢迎[提交issue](https://github.com/rootsongjc/kubernetes-handbook/issues/new)。
+
+### 发起Pull Request
+
+当你发现文章中明确的错误或者逻辑问题，在你自己的fork的分支中，创建一个新的branch，修改错误，push到你的branch，然后在[提交issue](https://github.com/rootsongjc/kubernetes-handbook/issues/new)后直接发起Pull Request。
+
+### 贡献文档
+
+**本书文档的组织规则**
+
+- 如果要创建一个大的主题就在最顶层创建一个目录；
+- 所有的图片都放在最顶层的`images`目录下，原则上文章中用到的图片都保存在本地；
+- 所有的文档的文件名使用英文命名，可以包含数字和中划线，不要使用下划线，为了生成网站时，分享URL时候的方便，中文会重新编码；
+- `etc`、`manifests`目录专门用来保存配置文件；
+
+**添加文档**
+
+1. 在该文章相关主题的目录下创建文档；
+2. 在`SUMMARY.md`中在相应的章节下添加文章链接；
+3. 在文章相应的主题的头文档，即以该主题命名的文档中添加链接；
+4. 执行`gitbook server`测试是否保存，然后访问 http://localhost:4000 查看该文档是否出现在相应主题的目录下；
+5. 对该文档有卓越贡献的人将被加入到**贡献者**名单中；
+
 ## 贡献者
 
 [Jimmy Song](http://rootsongjc.github.io/about)
