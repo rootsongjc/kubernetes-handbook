@@ -23,7 +23,7 @@ StatefulSet中每个Pod的DNS格式为`statefulSetName-{0..N-1}.serviceName.name
 
 ## 简单示例
 
-以一个简单的nginx服务[web.yaml](web.txt)为例：
+以一个简单的nginx服务[web.yaml](../manifests/test/web.yaml)为例：
 
 ```yaml
 ---
@@ -143,7 +143,7 @@ $ kubectl delete pvc www-web-0 www-web-1
 
 ## zookeeper
 
-另外一个更能说明StatefulSet强大功能的示例为[zookeeper.yaml](zookeeper.txt)。
+另外一个更能说明StatefulSet强大功能的示例为[zookeeper.yaml](../manifests/test/zookeeper.yaml)。
 
 ```yaml
 ---
