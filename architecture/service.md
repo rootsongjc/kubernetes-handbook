@@ -61,7 +61,7 @@ spec:
 
 **注意：** Ingress本身并不会自动创建负载均衡器，cluster中需要运行一个ingress controller来根据Ingress的定义来管理负载均衡器。目前社区提供了nginx和gce的参考实现。
 
-Traefik提供了易用的Ingress Controller，使用方法见<https://docs.traefik.io/user-guide/kubernetes/>。
+[Traefik](https://traefik.io)提供了易用的Ingress Controller，使用方法见<https://docs.traefik.io/user-guide/kubernetes/>。
 
 ## Service Load Balancer
 
@@ -71,12 +71,12 @@ Traefik提供了易用的Ingress Controller，使用方法见<https://docs.traef
 
 ## Custom Load Balancer
 
-虽然Kubernetes提供了丰富的负载均衡机制，但在实际使用的时候，还是会碰到一些复杂的场景是它不能支持的，比如
+虽然Kubernetes提供了丰富的负载均衡机制，但在实际使用的时候，还是会碰到一些复杂的场景是它不能支持的，比如：
 
 - 接入已有的负载均衡设备
 - 多租户网络情况下，容器网络和主机网络是隔离的，这样`kube-proxy`就不能正常工作
 
-这个时候就可以自定义组件，并代替kube-proxy来做负载均衡。基本的思路是监控kubernetes中service和endpoints的变化，并根据这些变化来配置负载均衡器。比如weave flux、nginx plus、kube2haproxy等
+这个时候就可以自定义组件，并代替kube-proxy来做负载均衡。基本的思路是监控kubernetes中service和endpoints的变化，并根据这些变化来配置负载均衡器。比如weave flux、nginx plus、kube2haproxy等。
 
 ## 参考资料
 
