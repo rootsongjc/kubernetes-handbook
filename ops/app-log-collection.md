@@ -101,9 +101,9 @@ data:
         - "/log/usermange/common/*"
     output.elasticsearch:
       hosts: ["172.23.5.255:9200"]
-    username: "elastic"
-    password: "changeme"
-    index: "filebeat-test"
+      username: "elastic"
+      password: "changeme"
+      index: "filebeat-docker-test"
 ```
 
 **说明**
@@ -154,13 +154,9 @@ kubectl create -f filebeat-test.yaml
 查看`http://172.23.5.255:9200/_cat/indices`将可以看到列表有这样的indices：
 
 ```
-green open filebeat-2017.05.17             1qatsSajSYqAV42_XYwLsQ 5 1   1189     0     1mb   588kb
+green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151     0   1.6mb 841.8kb
 ```
 
 访问Kibana的web页面，查看`filebeat-2017.05.17`的索引，可以看到logstash收集到了app日志。
 
-![Kibana页面](../images/filebeat-test-kibana.jpg)
-
-**问题记录**
-
-我们配置的`index: "filebeat-test"`没有生效，需要参考[filebeat的配置文档](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-howto-filebeat.html)，对filebeat的配置进一步优化。
+![Kibana页面](../images/filebeat-docker-test.jpg)
