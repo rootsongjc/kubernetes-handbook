@@ -12,10 +12,10 @@
     - 2.2.1 Pod
     - 2.2.2 Node
     - 2.2.3 Namespace
-    - [2.2.4 Service](architecture/Service.md)
-    - [2.2.5 Volume和Persistent Volume](architecture/Volume.md)
+    - [2.2.4 Service](architecture/service.md)
+    - [2.2.5 Volume和Persistent Volume](architecture/volume.md)
     - [2.2.6 Deployment](architecture/deployment.md)
-    - [2.2.7 Secret](architecture/Secret.md)
+    - [2.2.7 Secret](architecture/secret.md)
     - [2.2.8 StatefulSet](architecture/statefulset.md)
     - [2.2.9 DaemonSet](architecture/daemonset.md)
     - [2.2.10 ServiceAccount](architecture/serviceaccount.md)
@@ -51,7 +51,7 @@
   - 3.7 Cloud Provider
   - 3.8 Scheduler
   - [3.9 其他](plugins/other.md)
-- [4. 常用技巧](deploy/index.md)
+- [4. 最佳实践](deploy/index.md)
   - [4.1 部署](deploy/index.md)
     - [4.1.1 单机部署](deploy/single.md)
     - [4.1.2 集群部署](deploy/cluster.md)
@@ -97,6 +97,7 @@
 - [9. 附录](appendix/index.md)
   - [9.1 awesome-docker](appendix/awesome-docker.md)
   - [9.2 awesome-kubernetes](appendix/awesome-kubernetes.md)
-  - [9.3 Kubernetes ecosystem](ecosystem.md)
+  - [9.3 Kubernetes ecosystem](appendix/ecosystem.md)
+  - [9.4 Docker最佳实践](appendix/docker-best-practice.md)
   - [9.4 参考文档](reference.md)
   - [9.5 问题记录](issues.md)
