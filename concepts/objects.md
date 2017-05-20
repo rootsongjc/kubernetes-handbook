@@ -1,0 +1,22 @@
+# 主要概念
+
+- Pod
+- Node
+- Namespace
+- Service
+- Volume和Persistent Volume
+- Deployment
+- Secret
+- StatefulSet
+- DaemonSet
+- ServiceAccount
+- ReplicationController和ReplicaSet
+- Job
+- CronJob
+- SecurityContext
+- Resource Quota
+- Pod Security Policy
+- Horizontal Pod Autoscaling
+- Network Policy
+- Ingress
+- ThirdPartyResources

@@ -1,30 +1,22 @@
 # Kubernetes Handbook
 
-Kubernetes是谷歌开源的容器集群管理系统，是Google多年大规模容器管理技术Borg的开源版本，也是CNCF最重要的组件之一，主要功能包括：
+[Kubernetes](http://kubernetes.io)是Google基于[Borg](https://research.google.com/pubs/pub43438.html)开源的容器编排调度引擎，作为[CNCF](http://cncf.io)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，它将自动得将系统达到和维持在这个状态。
 
-- 基于容器的应用部署、维护和滚动升级
-- 负载均衡和服务发现
-- 跨机器和跨地区的集群调度
-- 自动伸缩
-- 无状态服务和有状态服务
-- 广泛的Volume支持
-- 插件机制保证扩展性
+本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路。
 
-Kubernetes发展非常迅速，已经成为容器编排领域的领导者。Kubernetes的中文资料也非常丰富，但系统化和紧跟社区更新的则就比较少见了。《Kubernetes指南》开源电子书旨在整理平时在开发和使用Kubernetes时的参考指南和实践心得，更是为了形成一个系统化的参考指南以方便查阅。欢迎大家关注，更欢迎大家一起添加更多更好的内容。
-
-本书所有的组件安装、示例和操作等都基于**Kubernetes1.6.0**版本。
-
-文章同步更新到[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
-
-GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
+在写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6.0**版本。
 
 [文章目录](SUMMARY.md)
 
-## 如何阅读
+GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
+
+Gitbook在线浏览：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+
+## 如何使用本书
 
 **在线浏览**
 
-访问gitbook：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+访问[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/)
 
 文中涉及的配置文件和代码链接在gitbook中会无法打开，请下载github源码后，在MarkDown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](www.typorai.o)。
 
@@ -56,11 +48,11 @@ gitbook pdf . ./kubernetes-handbook.pdf
 
 - **On Windows**
 
-需要用到的工具:`calibre`, `phantomjs`
+需要用到的工具：[calibre](http://calibre-ebook.com/)，[phantomjs](http://phantomjs.org/download.html)
 
-1. 将上述2个安装,calibre默认安装的路径C:\Program Files\Calibre2,[phantomjs](http://phantomjs.org/download.html)为你解压路径
-2. 并将其目录均加入到系统变量path中,参考:目录添加到系统变量path中
-3. 在cmd打开你需要转pdf的文件夹,输入gitbook pdf即可
+1. 将上述2个安装，calibre默认安装的路径`C:\Program Files\Calibre2`为你解压路径；
+2. 并将其目录均加入到系统变量path中,参考:目录添加到系统变量path中；
+3. 在cmd打开你需要转pdf的文件夹,输入`gitbook pdf`即可；
 
 **生成单个章节的pdf**
 
@@ -82,24 +74,20 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 ### 贡献文档
 
-**本书文档的组织规则**
+#### 文档的组织规则
 
 - 如果要创建一个大的主题就在最顶层创建一个目录；
 - 所有的图片都放在最顶层的`images`目录下，原则上文章中用到的图片都保存在本地；
-- 所有的文档的文件名使用英文命名，可以包含数字和中划线，不要使用下划线，为了生成网站时，分享URL时候的方便，中文会重新编码；
-- `etc`、`manifests`目录专门用来保存配置文件；
+- 所有的文档的文件名使用英文命名，可以包含数字和中划线；
+- `etc`、`manifests`目录专门用来保存配置文件和文档中用到的其他相关文件；
 
-**添加文档**
+#### 添加文档
 
 1. 在该文章相关主题的目录下创建文档；
 2. 在`SUMMARY.md`中在相应的章节下添加文章链接；
 3. 在文章相应的主题的头文档，即以该主题命名的文档中添加链接；
 4. 执行`gitbook server`测试是否保存，然后访问 http://localhost:4000 查看该文档是否出现在相应主题的目录下；
-5. 对该文档有卓越贡献的人将被加入到**贡献者**名单中；
 
-## 贡献者
+## 关于
 
 [Jimmy Song](http://rootsongjc.github.io/about)
-
-
-
