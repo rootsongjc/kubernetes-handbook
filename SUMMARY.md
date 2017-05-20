@@ -4,7 +4,7 @@
 - [2. 概念原理](concepts/index.md)
   - [2.1 设计理念](concepts/concepts.md)
   - [2.2 主要概念](concepts/objects.md)
-    - 2.2.1 [Pod](concepts/pod-overview.md)
+    - [2.2.1 Pod](concepts/pod-overview.md)
     - 2.2.2 Node
     - 2.2.3 Namespace
     - [2.2.4 Service](concepts/service.md)
