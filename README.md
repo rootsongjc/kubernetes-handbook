@@ -101,7 +101,5 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 [Jimmy Song](http://rootsongjc.github.io/about)
 
-[feiskyer](https://github.com/feiskyer)
-
 
 
