@@ -49,5 +49,5 @@
   - [6.3 社区贡献](develop/contribute.md)
 - [7. 附录](appendix/index.md)
   - [7.1 Docker最佳实践](appendix/docker-best-practice.md)
-  - [7.2 问题记录](issues.md)
+  - [7.2 问题记录](appendix/issues.md)
 

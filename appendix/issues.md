@@ -65,7 +65,7 @@ Error validating pod kube-keepalived-vip-1p62d_default(5d79ccc0-3173-11e7-bfbd-8
 dd if=/dev/zero of=test bs=1G count=10
 ```
 
-![pvc-storage-limit](images/pvc-storage-limit.jpg)
+![pvc-storage-limit](../images/pvc-storage-limit.jpg)
 
 从截图中可以看到创建了9个size为1G的block后无法继续创建了，已经超出了8G的限额。
 
