@@ -165,8 +165,8 @@ hostPath允许挂载Node上的文件系统到Pod里面去。如果Pod有需要�
 
 ```yaml
 - hostPath:
-  path: /tmp/data
-  name: data
+    path: /tmp/data
+    name: data
 ```
 
 ### NFS
