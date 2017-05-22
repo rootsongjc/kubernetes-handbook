@@ -21,6 +21,7 @@
     - [2.2.14 Ingress](concepts/ingress.md)
     - [2.2.15 ConfigMap](concepts/configmap.md)
 - [3. 用户指南](guide/index.md)
+  - [3.1 配置Pod的liveness和readiness探针](configure-liveness-readiness-probes.md)
 - [4. 最佳实践](practice/index.md)
   - [ 4.1 在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
     - [4.1.1 创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
