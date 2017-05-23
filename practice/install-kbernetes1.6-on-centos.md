@@ -32,6 +32,18 @@
 + kubedns、dashboard、heapster(influxdb、grafana)、EFK(elasticsearch、fluentd、kibana) 集群插件
 + 私有docker镜像仓库[harbor](github.com/vmware/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
 
+## 环境说明
+
+在下面的步骤中，我们将在三台CentOS系统的物理机上部署具有三个节点的kubernetes1.6.0集群。
+
+角色分配如下：
+
+**Master**：172.20.0.113
+
+**Node**：172.20.0.113、172.20.0.114、172.20.0.115
+
+注意：172.20.0.113这台主机master和node复用。所有生成证书、执行kubectl命令的操作都在这台节点上执行。一旦node加入到kubernetes集群之后就不需要再登陆node节点了。
+
 ## 步骤介绍
 
 - [1 创建 TLS 证书和秘钥](create-tls-and-secret-key.md)
