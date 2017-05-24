@@ -7,7 +7,7 @@
     - [2.2.1 Pod](concepts/pod-overview.md)
       - [2.2.1.1 Pod解析](concepts/pod.md)
     - 2.2.2 Node
-    - 2.2.3 Namespace
+    - [2.2.3 Namespace](concepts/namespace.md)
     - [2.2.4 Service](concepts/service.md)
     - [2.2.5 Volume和Persistent Volume](concepts/volume.md)
     - [2.2.6 Deployment](concepts/deployment.md)
