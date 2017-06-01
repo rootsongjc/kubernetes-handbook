@@ -47,7 +47,7 @@
      - [4.4.1 使用glusterfs做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
 - [5. 领域应用](usecases/index.md)
   - [5.1 微服务架构](usecases/microservices.md)
-    - [5.1.1 Istio](usecases/Istio.md)
+    - [5.1.1 Istio](usecases/istio.md)
       - [5.1.1.1 安装istio](usecases/istio-installation.md)
 - [6. 开发指南](develop/index.md)
   - [6.1 开发环境搭建](develop/developing-environment.md)
