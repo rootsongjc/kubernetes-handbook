@@ -4,6 +4,10 @@
 
 kubernetes 1.4 开始支持由 `kube-apiserver` 为客户端生成 TLS 证书的 [TLS Bootstrapping](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/) 功能，这样就不需要为每个客户端生成证书了；该功能**当前仅支持为 `kubelet`** 生成证书；
 
+因为我的master节点和node节点复用，所有在这一步其实已经安装了kubectl。参考[安装kubectl命令行工具](kubectl-installation.md)。
+
+以下操作只需要在master节点上执行，生成的`*.kubeconfig`文件可以直接拷贝到node节点的`/etc/kubernetes`目录下。
+
 ## 创建 TLS Bootstrapping Token
 
 **Token auth file**
