@@ -129,7 +129,7 @@ clusterrolebinding "istio-ingress-admin-role-binding" created
 clusterrolebinding "istio-sidecar-role-binding" created
 ```
 
-注意：官网的安装包中的该文件中存在RoleBinding错误，应该是集群级别的`clusterrolebinding`，而release里的代码只是普通的`rolebinding`，查看该Issue [Istio manager cannot list of create k8s TPR when RBAC enabled #327](https://github.com/istio/istio/issues/327)。
+**注意：**官网的安装包中的该文件中存在RoleBinding错误，应该是集群级别的`clusterrolebinding`，而release里的代码只是普通的`rolebinding`，查看该Issue [Istio manager cannot list of create k8s TPR when RBAC enabled #327](https://github.com/istio/istio/issues/327)。
 
 **6.安装istio核心组件**
 
@@ -143,7 +143,7 @@ docker.io/istio/proxy_debug:0.1.5
 
 我们暂时不开启[Istio Auth](https://istio.io/docs/concepts/network-and-auth/auth.html)。
 
-> 本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](practice/traefik-ingress-installation.md)。
+**注意：**本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](practice/traefik-ingress-installation.md)。
 
 ```bash
 kubectl apply -f install/kubernetes/istio.yaml
