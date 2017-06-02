@@ -275,7 +275,7 @@ http://servicegraph.istio.io/dotviz
 
 可以用来查看服务间的依赖关系。
 
-访问http://servicegraph.istio.io/graph可以获得json格式的返回结果。
+获得json格式的返回结果，访问http://servicegraph.istio.io/graph
 
 ![ServiceGraph页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-servicegraph.jpg)
 
