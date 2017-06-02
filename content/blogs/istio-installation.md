@@ -8,7 +8,7 @@ Tags = ["kubernetes","istio","microservices"]
 
 ![威海朱口](http://olz1di9xf.bkt.clouddn.com/20170528033.jpg)
 
-*（题图：威海朱口 May 28,2017）*
+*（题图：威海东部海湾 May 28,2017）*
 
 # 前言
 
@@ -176,7 +176,7 @@ kubectl apply -f install/kubernetes/addons/servicegraph.yaml
 kubectl apply -f install/kubernetes/addons/zipkin.yaml
 ```
 
-在traefik ingress中增加增加以上几个服务的配置。
+在traefik ingress中增加增加以上几个服务的配置，同时增加istio-ingress配置。
 
 ```Yaml
     - host: grafana.istio.io
@@ -207,21 +207,14 @@ kubectl apply -f install/kubernetes/addons/zipkin.yaml
           backend:
             serviceName: zipkin
             servicePort: 9411
+    - host: ingress.istio.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: istio-ingress
+            servicePort: 80
 ```
-
-Grafana页面
-
-![Istio Grafana界面](http://olz1di9xf.bkt.clouddn.com/istio-grafana.jpg)
-
-Prometheus页面
-
-![Prometheus页面](http://olz1di9xf.bkt.clouddn.com/istio-prometheus.jpg)
-
-Zipkin页面
-
-![Zipkin页面](http://olz1di9xf.bkt.clouddn.com/istio-zipkin.jpg)
-
-
 
 ## 测试
 
@@ -238,6 +231,10 @@ istio/examples-bookinfo-reviews-v3
 istio/examples-bookinfo-productpage-v1
 ```
 
+该应用架构图如下：
+
+![BookInfo Sample应用架构图](http://olz1di9xf.bkt.clouddn.com/bookinfo-sample-arch.png)
+
 **部署应用**
 
 ```
@@ -246,9 +243,47 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 `Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考：https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject
 
-## 问题
+在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息。具体步骤参考：[边缘节点配置](../practice/edge-node-configuration.md)
 
-在bookinfo部署后没有在Grafana、Prometheus、ServiceGraph和Zipkin中看到结果。
+在浏览器中访问http://ingress.istio.io/productpage
+
+## 监控
+
+不断刷新productpage页面，将可以在以下几个监控中看到如下界面。
+
+**Grafana页面**
+
+http://grafana.istio.io
+
+![Istio Grafana界面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-grafana.jpg)
+
+**Prometheus页面**
+
+http://prometheus.istio.io
+
+![Prometheus页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-prometheus.jpg)
+
+**Zipkin页面**
+
+http://zipkin.istio.io
+
+![Zipkin页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-zipkin.jpg)
+
+**ServiceGraph页面**
+
+http://servicegraph.istio.io/dotviz
+
+可以用来查看服务间的依赖关系。
+
+访问http://servicegraph.istio.io/graph可以获得json格式的返回结果。
+
+![ServiceGraph页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-servicegraph.jpg)
+
+## 更进一步
+
+BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由请求，将流量分摊到不同版本的应用上。参考[Configuring Request Routing](https://istio.io/docs/tasks/request-routing.html)。
+
+还有一些更高级的功能，我们后续将进一步探索。
 
 ## 参考
 
