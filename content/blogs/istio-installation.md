@@ -12,7 +12,7 @@ Tags = ["kubernetes","istio","microservices"]
 
 # 前言
 
-本文已上传的到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第五章微服务章节，本文仅作归档，更新以[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)为准。
+本文已上传到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第五章微服务章节，本文仅作归档，更新以[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)为准。
 
 本文根据官网的文档整理而成，步骤包括安装`istio 0.1.5`并创建一个bookinfo的微服务来测试istio的功能。
 

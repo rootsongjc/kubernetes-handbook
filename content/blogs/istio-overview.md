@@ -12,7 +12,7 @@ Tags = ["istio","kubernetes","microservices"]
 
 ## 前言
 
-本文已上传的到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第五章微服务章节，本文仅作归档，更新以[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)为准。
+本文已上传到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第五章微服务章节，本文仅作归档，更新以[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)为准。
 
 [Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
 
