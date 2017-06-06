@@ -1,5 +1,5 @@
 +++
-date = "2017-03-03T17:29:54+08:00"
+date = "2017-06-06T22:23:54+08:00"
 title = "Cloud Native Go - 基于Go和React的web云服务构建指南"
 draft = false
 Tags = ["book","golang","microservice","cloud native","docker"]
@@ -11,6 +11,8 @@ Tags = ["book","golang","microservice","cloud native","docker"]
 *(题图：北京植物园桃花 Mar 26,2016)*
 
 最近在翻译Kevin Hoffman和Dan Nemeth的书《Cloud Native Go - 基于Go和React的web云原生应用构建指南》。正在进行最终的校对。本书将由**电子工业出版社**出版。
+
+Cloud Native Go这本书中设计到的理论、模式、方法、工具、框架有：Micro Services、CQRS、Event Sourcing、TDD、Test-first、Docker、Wercker、Go、Blueprint、Markdown、Apiary、CloudFoundry、Pivotal Web Services、MongoDB、RabbitMQ、WebSockets、Auth0、JavaScripts、Webpack、React、Flux、Postman、Github等，从头开始教你如何使用Go语言构建云原生Web应用程序。
 
 ## 简介
 
@@ -33,7 +35,7 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 -  使用React和Flux构建大规模，云友好的GUI
 -  监控云中的动态扩展，故障转移和容错
 
-下面先罗列下目录，以飨读者。
+下面先罗列下目录，以飨读者。P.S 该目录跟出版时候的目录可能有所不同。
 
 ## 目录
 
@@ -308,4 +310,4 @@ Flux GUI 146
 
 在云中调试应用程序... 155
 
-*本文最后更新于2017年6月3日*
+*本文最后更新于2017年6月6日*
