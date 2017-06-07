@@ -157,6 +157,6 @@ kubectl create -f filebeat-test.yaml
 green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151     0   1.6mb 841.8kb
 ```
 
-访问Kibana的web页面，查看`filebeat-2017.05.17`的索引，可以看到logstash收集到了app日志。
+访问Kibana的web页面，查看`filebeat-2017.05.17`的索引，可以看到filebeat收集到了app日志。
 
 ![Kibana页面](../images/filebeat-docker-test.jpg)
