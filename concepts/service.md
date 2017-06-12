@@ -78,9 +78,64 @@ spec:
 
 这个时候就可以自定义组件，并代替kube-proxy来做负载均衡。基本的思路是监控kubernetes中service和endpoints的变化，并根据这些变化来配置负载均衡器。比如weave flux、nginx plus、kube2haproxy等。
 
+## Endpoints
+
+有几种情况下需要用到没有selector的service。
+
+- 使用kubernetes集群外部的数据库时
+- service中用到了其他namespace或kubernetes集群中的service
+- 在kubernetes的工作负载与集群外的后端之间互相迁移
+
+可以这样定义一个没有selector的service。
+
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+
+定义一个Endpoints来对应该service。
+
+```yaml
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: my-service
+subsets:
+  - addresses:
+      - ip: 1.2.3.4
+    ports:
+      - port: 9376
+```
+
+访问没有selector的service跟访问有selector的service时没有任何区别。
+
+使用kubernetes时有一个很常见的需求，就是当数据库部署在kubernetes集群之外的时候，集群内的service如何访问数据库呢？当然你可以直接使用数据库的IP地址和端口号来直接访问，有没有什么优雅的方式呢？你需要用到`ExternalName Service`。
+
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+  ports:
+  - port: 12345
+```
+
+这个例子中，在kubernetes集群内访问`my-service`实际上会重定向到`my.database.example.com:12345`这个地址。
+
 ## 参考资料
 
-- http://kubernetes.io/docs/user-guide/services/
+- https://kubernetes.io/docs/concepts/services-networking/service/
 - http://kubernetes.io/docs/user-guide/ingress/
 - https://github.com/kubernetes/contrib/tree/master/service-loadbalancer
 - https://www.nginx.com/blog/load-balancing-kubernetes-services-nginx-plus/
