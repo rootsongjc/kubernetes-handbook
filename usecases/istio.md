@@ -10,6 +10,18 @@
 
 目前版本的istio只支持kubernetes，未来计划支持其他其他环境。
 
+另外，Istio的前身是IBM开源的[Amalgam8](https://www.amalgam8.io)，追本溯源，我们来看下它的特性。
+
+### Amalgam8
+
+Amalgam8的网站上说，它是一个**Content-based Routing Fabric for Polyglot Microservices**，简单、强大且开源。
+
+Amalgam8是一款基于内容和版本的路由布局，用于集成多语言异构体微服务。 其control plane API可用于动态编程规则，用于在正在运行的应用程序中跨微服务进行路由和操作请求。
+
+以内容/版本感知方式路由请求的能力简化了DevOps任务，如金丝雀和红/黑发布，A/B Test和系统地测试弹性微服务。
+
+可以使用Amalgam8平台与受欢迎的容器运行时（如Docker，Kubernetes，Marathon / Mesos）或其他云计算提供商（如IBM Bluemix，Google Cloud Platform或Amazon AWS）。
+
 ## 特性
 
 使用istio的进行微服务管理有如下特性：
