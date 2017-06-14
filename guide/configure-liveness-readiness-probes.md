@@ -1,6 +1,6 @@
 # 配置Pod的liveness和readiness探针
 
-当你使用kuberentes的时候，有没有遇到过Pod在启动后一会就挂掉然后又重新启动这样的恶性循环？你有没有想过kubernetes是如何检测pod是否还存活？虽然容器已经启动，但是kubernetes如何知道容器的进程是否准备好对外提供服务了呢？通过kuberentes官网的这篇文章https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/，让我们来一探究竟。
+当你使用kuberentes的时候，有没有遇到过Pod在启动后一会就挂掉然后又重新启动这样的恶性循环？你有没有想过kubernetes是如何检测pod是否还存活？虽然容器已经启动，但是kubernetes如何知道容器的进程是否准备好对外提供服务了呢？让我们通过kuberentes官网的这篇文章[Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)，来一探究竟。
 
 本文将向展示如何配置容器的存活和可读性探针。
 
