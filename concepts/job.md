@@ -40,7 +40,5 @@ $ kubectl logs $pods
 
 ## Bare Pods
 
-所谓Bare Pods是指直接用PodSpec来创建的Pod（即不在ReplicaSets或者ReplicationCtroller的管理之下的Pods）。这些Pod在Node重启后不会自动重启，但Job则会创建新的Pod继续任务。所以，推荐使用Job来替代Bare Pods，即便是应用只需要一个Pod。
-
-
+所谓Bare Pods是指直接用PodSpec来创建的Pod（即不在ReplicaSets或者ReplicationController的管理之下的Pods）。这些Pod在Node重启后不会自动重启，但Job则会创建新的Pod继续任务。所以，推荐使用Job来替代Bare Pods，即便是应用只需要一个Pod。
 
