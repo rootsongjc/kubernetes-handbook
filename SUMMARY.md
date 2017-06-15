@@ -44,6 +44,7 @@
      - [4.3.1 服务滚动升级](practice/service-rolling-update.md)
      - [4.3.2 应用日志收集](practice/app-log-collection.md)
      - [4.3.3 配置最佳实践](practice/configuration-best-practice.md)
+     - [4.3.4 监控](practice/monitor.md)
   - [4.4 存储管理](practice/storage.md)
      - [4.4.1 使用glusterfs做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
 - [5. 领域应用](usecases/index.md)
