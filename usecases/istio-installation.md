@@ -235,6 +235,8 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 ![BookInfo Sample页面](../images/bookinfo-sample.jpg)
 
+多次刷新页面，你会发现有的页面上的评论里有星级打分，有的页面就没有，这是因为我们部署了三个版本的应用，有的应用里包含了评分，有的没有。Istio根据默认策略随机将流量分配到三个版本的应用上。
+
 ## 监控
 
 不断刷新productpage页面，将可以在以下几个监控中看到如下界面。
