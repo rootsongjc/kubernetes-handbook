@@ -26,6 +26,8 @@
         },
 ```
 
+这些信息其实都是kubernetes创建容器时给docker container打的`Labels`，使用`docker inspect $conainer_name`命令同样可以看到上述信息。
+
 你是否想过这些label跟容器的名字有什么关系？当你在node节点上执行`docker ps`看到的容器名字又对应哪个应用的Pod呢？
 
 在kubernetes代码中pkg/kubelet/dockertools/docker.go中的BuildDockerName方法定义了容器的名称规范。
@@ -142,6 +144,4 @@ k8s_php-redis_frontend-2337258262-154p7_default_d8a2e2dd-3617-11e7-a4b0-ecf4bbe5
 
 kubernetes容器命名规则解析，见下图所示。
 
-![kubernetes的容器命名规则示意图](http://olz1di9xf.bkt.clouddn.com/kubernetes-container-name-rule.jpg)
-
-最后一个标识位0的含义暂时还不了解。
+![kubernetes的容器命名规则示意图](../images/kubernetes-container-naming-rule.jpg)
