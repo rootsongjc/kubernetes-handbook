@@ -2,7 +2,7 @@
 date = "2017-06-15T21:52:38+08:00"
 draft = false
 title = "kubernetes管理的容器命名规则解析"
-Tags = "kubernetes"
+Tags = ["kubernetes"]
 
 +++
 
@@ -27,6 +27,8 @@ Tags = "kubernetes"
             "io.kubernetes.sandbox.id": "843a0f018c0cef2a5451434713ea3f409f0debc2101d2264227e814ca0745677"
         },
 ```
+
+这些信息其实都是kubernetes创建容器时给docker container打的`Labels`。
 
 你是否想过这些label跟容器的名字有什么关系？当你在node节点上执行`docker ps`看到的容器名字又对应哪个应用的Pod呢？
 
@@ -140,6 +142,6 @@ spec:
 
 kubernetes容器命名规则解析，见下图所示。
 
-![kubernetes的容器命名规则示意图](http://olz1di9xf.bkt.clouddn.com/kubernetes-container-name-rule.jpg)
+![kubernetes的容器命名规则示意图](http://olz1di9xf.bkt.clouddn.com/kubernetes-container-naming-rule.jpg)
 
 最后一个标识位0的含义暂时还不了解。
