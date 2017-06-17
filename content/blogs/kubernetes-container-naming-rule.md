@@ -11,21 +11,21 @@ Tags = ["kubernetes"]
 当我们通过cAdvisor获取到了容器的信息后，例如访问`${NODE_IP}:4194/api/v1.3/docker`获取的json结果中的某个容器包含如下字段：
 
 ```json
-        "labels": {
-            "annotation.io.kubernetes.container.hash": "f47f0602", 
-            "annotation.io.kubernetes.container.ports": "[{\"containerPort\":80,\"protocol\":\"TCP\"}]", 
-            "annotation.io.kubernetes.container.restartCount": "0", 
-            "annotation.io.kubernetes.container.terminationMessagePath": "/dev/termination-log", 
-            "annotation.io.kubernetes.container.terminationMessagePolicy": "File", 
-            "annotation.io.kubernetes.pod.terminationGracePeriod": "30", 
-            "io.kubernetes.container.logpath": "/var/log/pods/d8a2e995-3617-11e7-a4b0-ecf4bbe5d414/php-redis_0.log", 
-            "io.kubernetes.container.name": "php-redis", 
-            "io.kubernetes.docker.type": "container", 
-            "io.kubernetes.pod.name": "frontend-2337258262-771lz", 
-            "io.kubernetes.pod.namespace": "default", 
-            "io.kubernetes.pod.uid": "d8a2e995-3617-11e7-a4b0-ecf4bbe5d414", 
-            "io.kubernetes.sandbox.id": "843a0f018c0cef2a5451434713ea3f409f0debc2101d2264227e814ca0745677"
-        },
+"labels": {
+"annotation.io.kubernetes.container.hash": "f47f0602", 
+"annotation.io.kubernetes.container.ports": "[{\"containerPort\":80,\"protocol\":\"TCP\"}]", 
+"annotation.io.kubernetes.container.restartCount": "0", 
+"annotation.io.kubernetes.container.terminationMessagePath": "/dev/termination-log", 
+"annotation.io.kubernetes.container.terminationMessagePolicy": "File", 
+"annotation.io.kubernetes.pod.terminationGracePeriod": "30", 
+"io.kubernetes.container.logpath": "/var/log/pods/d8a2e995-3617-11e7-a4b0-ecf4bbe5d414/php-redis_0.log", 
+"io.kubernetes.container.name": "php-redis", 
+"io.kubernetes.docker.type": "container", 
+"io.kubernetes.pod.name": "frontend-2337258262-771lz", 
+"io.kubernetes.pod.namespace": "default", 
+"io.kubernetes.pod.uid": "d8a2e995-3617-11e7-a4b0-ecf4bbe5d414", 
+"io.kubernetes.sandbox.id": "843a0f018c0cef2a5451434713ea3f409f0debc2101d2264227e814ca0745677"
+},
 ```
 
 这些信息其实都是kubernetes创建容器时给docker container打的`Labels`。
@@ -139,9 +139,8 @@ spec:
 - replicaSetName：frontend-2337258262
 - namespace：default
 - podUID：d8a2e2dd-3617-11e7-a4b0-ecf4bbe5d414
+- restartCount：0
 
 kubernetes容器命名规则解析，见下图所示。
 
 ![kubernetes的容器命名规则示意图](http://olz1di9xf.bkt.clouddn.com/kubernetes-container-naming-rule.jpg)
-
-最后一个标识位0的含义暂时还不了解。
