@@ -5,6 +5,11 @@ title = "kubernetes client-go包使用示例"
 Tags = ["kubernetes","go"]
 
 +++
+
+![青岛栈桥](http://olz1di9xf.bkt.clouddn.com/20170526017.jpg)
+
+*(题图：青岛栈桥 May 26,2017)*
+
 ## 前言
 
 本文将归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的【开发指南—client-go示例】章节中，最终版本以kubernetes-handbook中为准。
