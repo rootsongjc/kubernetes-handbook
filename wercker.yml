@@ -1,0 +1,14 @@
+box: wercker/nodejs
+build:
+  steps:
+    # - npm-install
+
+    # install gitbook itself
+    - script:
+        name: install gitbook
+        code: sudo npm install -g gitbook
+
+    # build gitbook
+    - script:
+        name: build gitbook
+        code: gitbook install && gitbook build
