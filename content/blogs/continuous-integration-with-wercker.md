@@ -1,6 +1,6 @@
 +++
 date = "2017-06-22T18:08:51+08:00"
-draft = true
+draft = false
 title = "使用Wercker进行持续构建与发布"
 Tags = ["wercker","docker","ci"]
 
