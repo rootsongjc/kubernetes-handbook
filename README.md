@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/b8b69e593784e17ddcfd1286adfd8f3c/s/master "wercker status")](https://app.wercker.com/project/byKey/b8b69e593784e17ddcfd1286adfd8f3c)
+
 # Kubernetes Handbook
 
 [Kubernetes](http://kubernetes.io)是Google基于[Borg](https://research.google.com/pubs/pub43438.html)开源的容器编排调度引擎，作为[CNCF](http://cncf.io)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，它将自动得将系统达到和维持在这个状态。
