@@ -8,6 +8,8 @@ Tags = ["wercker","docker","ci"]
 
 本文介绍了wercker和它的基本用法，并用我GitHub上的[magpie](https://github.com/rootsongjc/magpie)应用作为示例，讲解如何给GitHub项目增加wercker构建流程，并将生成的镜像自动上传到Docker Hub上。
 
+注：本文参考了[Cloud Native Go](http://rootsongjc.github.io/cloud-native-go)书中的”持续交付“章节。
+
 ## CI工具
 
 开源项目的构建离不开CI工具，你可能经常会在很多GitHub的开源项目首页上看到这样的东西：
