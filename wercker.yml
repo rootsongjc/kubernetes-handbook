@@ -1,14 +1,9 @@
-box: wercker/nodejs
+box: billryan/gitbook:base
 build:
   steps:
-    # - npm-install
-
-    # install gitbook itself
     - script:
-        name: install gitbook
-        code: sudo npm install -g gitbook
+        name: build
+        code: |
+            gitbook install
+            gitbook build
 
-    # build gitbook
-    - script:
-        name: build gitbook
-        code: gitbook install && gitbook build
