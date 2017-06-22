@@ -166,6 +166,8 @@ Deploy管道中配置的docker镜像的repo、tag和cmd命令，其他容器配�
 
 当比于其他CI工具，wercker配置简单，更易于使用，同时在wercker的registry中还可以看到很多别人构建的pipline可供参考，还有十分友好的[workflows](http://devcenter.wercker.com/docs/workflows)可用于编排构建流程和依赖。
 
+当然CI工具的功能不止这些，利用它可以实现很多自动化流程，节约我们的时间，解放生产力，更多玩法就要大家自己去探索了。
+
 ## 参考
 
 [容器化应用开发部署平台Wercker获450万美元A轮融资](http://36kr.com/p/5042850.html)
