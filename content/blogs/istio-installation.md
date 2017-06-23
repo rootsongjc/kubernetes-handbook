@@ -1,7 +1,7 @@
 +++
 date = "2017-06-01T20:18:57+08:00"
 draft = false
-title = "istio安装笔记"
+title = "微服务管理框架istio安装笔记"
 Tags = ["kubernetes","istio","microservices"]
 
 +++
