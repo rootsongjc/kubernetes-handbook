@@ -129,6 +129,6 @@ Pod的强制删除是通过在集群和etcd中将其定义为删除状态。当�
 
 Pod是kubernetes REST API中的顶级资源类型。
 
-Pod的数据结构如下图所示：
+在kuberentes1.6的V1 core API版本中的Pod的数据结构如下图所示：
 
-![Pod Cheetsheet](../images/kubernetes-pod-cheetsheet.png)
+![Pod Cheetsheet](../images/kubernetes-pod-cheatsheet.png)
