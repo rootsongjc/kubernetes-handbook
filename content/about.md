@@ -1,9 +1,6 @@
 +++
-date = "2017-03-18T20:10:56+08:00"
-title = "About"
-Categories = ["Jimmy Song"]
-Description = "about Jimmy Song"
-Tags = ["jimmy"]
+date = "2017-06-24T20:53:54+08:00"
+title = "About Jimmy Song"
 
 +++
 
@@ -18,10 +15,10 @@ Tags = ["jimmy"]
 
 ## What I like
 
-Movie, Kubrick, Miyazaki, animation, Akira Kurosawa, photography, Daido Moriyama, potato, sony, apple, orange, Fellini, douban, google, Netease cloud music, Jay Chou, badminton, travelling, programming, golang, Java, Python, sea, blue, Henri Cartier-Bresson, Command & Conqure, Italy, Mac, pinao.
+Movie, Kubrick, Miyazaki, animation, Akira Kurosawa, photography, Daido Moriyama, potato, Sony, apple, orange, Fellini, douban, google, Netease cloud music, Jay Chou, badminton, travelling, programming, golang, Java, Python, sea, blue, Henri Cartier-Bresson, Command & Conqure, Italy, Mac, pinao, cats, Mindnode, Omni Graffle.
 
 ## What I dislike
 
 Chattering, Chemical fiber clothes, noise.
 
-![wechat_qrcode](http://olz1di9xf.bkt.clouddn.com/wechat_qrcode.jpg)
+![wechat_qrcode](http://olz1di9xf.bkt.clouddn.com/wechat-qrcode-20170624.JPG)

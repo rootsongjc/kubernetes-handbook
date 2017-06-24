@@ -1,37 +1,39 @@
 {{ $baseurl := .Site.BaseURL }}
-    <div>
-        <section id="datecount">
-          <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-          <h5 id="wc"> {{ .FuzzyWordCount }} Words </h5>
-          <h5 id="readtime"> Read in about {{ .ReadingTime }} Min </h5>
-        </section>
-        <ul id="categories">
-          {{ range .Params.topics }}
-            <li><a href="{{ $baseurl }}/topics/{{ . | urlize }}">{{ . }}</a> </li>
-          {{ end }}
-        </ul>
-        <ul id="tags">
-          {{ range .Params.tags }}
-            <li> <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> </li>
-          {{ end }}
-        </ul>
-    </div>
+<div>
+    <section id="datecount">
+        <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
+        <h5 id="wc"> {{ .FuzzyWordCount }} Words </h5>
+        <h5 id="readtime"> Read in about {{ .ReadingTime }} Min </h5>
+    </section>
+    <ul id="categories">
+        {{ range .Params.topics }}
+        <li><a href="{{ $baseurl }}/topics/{{ . | urlize }}">{{ . }}</a> </li>
+        {{ end }}
+    </ul>
+    <ul id="tags">
+        {{ range .Params.tags }}
+        <li> <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> </li>
+        {{ end }}
+    </ul>
+</div>
 
-    <div>
-        <section id="prev">
-            &nbsp;{{if .Prev}}<a class="previous" href="{{.Prev.Permalink}}"><i class="icon-arrow-left"></i> {{.Prev.Title}}</a><br>{{end}}
-        </section><section id="next">
-            &nbsp;{{if .Next}}<a class="next" href="{{.Next.Permalink}}">{{.Next.Title}} <i class="icon-arrow-right"></i></a>{{end}}
-        </section>
-    </div>
+<div>
+    <section id="prev">
+        &nbsp;{{if .Prev}}<a class="previous" href="{{.Prev.Permalink}}"><i class="icon-arrow-left"></i> {{.Prev.Title}}</a><br>{{end}}
+    </section>
+    <section id="next">
+        &nbsp;{{if .Next}}<a class="next" href="{{.Next.Permalink}}">{{.Next.Title}} <i class="icon-arrow-right"></i></a>{{end}}
+    </section>
+</div>
 
-    <div>
-        <section id="author">
-             <h4>About the Author:</h4>
-            <p>
-            <a href="http://rootsongjc.github.io/about/">Jimmy Song</a> is a software engineer living in Beijing, he usually likes to hack on open source softwares, traveling and photographing. He is familiar with Java, python, golang, PAAS, hadoop and docker ecosystem. He took photos particularly sticky,<a href=https://tuchong.com/1425795/>Jimmy's tuchong homepage</a>.
-            He has recently been keen on micro-services, DevOps, Kubernetes, TensorFlow and software architecture research.
-            </p>
-        </section>
+<div>
+    <section id="author">
+        <h4>About the Author</h4>
+        <p>
+            <a href="http://rootsongjc.github.io/about/">Jimmy Song</a> is a software engineer living in Beijing, he usually likes to hack on open source softwares, traveling and photographing. He also likes coding and writing. He can't live without music
+            and movies. Most of his career is about PAAS, hadoop and docker ecosystem. If you not see him on front of computer, he must being taking photoes in the outside, looking at his amazing photos from <a href=https://tuchong.com/1425795/>Jimmy's
+            tuchong homepage</a>. He has recently been keen on micro-services, DevOps, Kubernetes, Cloud native applications developing and software architecture research.
+        </p>
+    </section>
 
 </div>
