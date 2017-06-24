@@ -12,7 +12,7 @@ Tags = ["kubernetes"]
 
 该图是根据kubernetes 1.6版本的Pod v1 core API绘制。
 
-![kubernetes pod cheetsheet](http://olz1di9xf.bkt.clouddn.com/kubernetes-pod-cheatsheet-v1-20170624.png)
+![kubernetes pod cheatsheet](http://olz1di9xf.bkt.clouddn.com/kubernetes-pod-cheatsheet-v1-20170624-01.png)
 
 图片归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/kubernetes-pod-cheatsheet.png),请以GitHub中的图片为准。
 
