@@ -1,7 +1,7 @@
 +++
 date = "2017-06-24T14:20:39+08:00"
 draft = false
-title = "kubernetes pod cheetsheet——Pod数据结构参考图"
+title = "Kubernetes Pod Cheatsheet——Pod数据结构参考图"
 Tags = ["kubernetes"]
 
 +++
