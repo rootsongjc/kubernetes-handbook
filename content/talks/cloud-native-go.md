@@ -12,8 +12,6 @@ Tags = ["book","go","microservices","cloud native","docker"]
 
 Kevin Hoffman和Dan Nemeth著的《Cloud Native Go - 基于Go和React的web云原生应用构建指南》将由**电子工业出版社**出版。
 
-Cloud Native Go这本书中设计到的理论、模式、方法、工具、框架有：Micro Services、CQRS、Event Sourcing、TDD、Test-first、Docker、Wercker、Go、Blueprint、Markdown、Apiary、CloudFoundry、Pivotal Web Services、MongoDB、RabbitMQ、WebSockets、Auth0、JavaScripts、Webpack、React、Flux、Postman、Github等，从头开始教你如何使用Go语言构建云原生Web应用程序。
-
 ## 简介
 
 Cloud Native Go向开发人员展示如何构建大规模云应用程序，在满足当今客户的强大需求的同时还可以动态扩展来处理几乎任何规模的数据量、流量或用户。
@@ -34,6 +32,10 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 -  使用第三方消息传递供应商创建响应式云应用程序
 -  使用React和Flux构建大规模，云友好的GUI
 -  监控云中的动态扩展，故障转移和容错
+
+章节简介如下图。
+
+![Cloud Native Go各章节简介](http://olz1di9xf.bkt.clouddn.com/cloud-native-go-abstract.png)
 
 ## 关于作者
 
