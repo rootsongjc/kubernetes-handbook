@@ -16,4 +16,6 @@ Tags = ["kubernetes"]
 
 图片归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/kubernetes-pod-cheatsheet.png),请以GitHub中的图片为准。
 
+注：在移动设备上打开该链接后会提示<u>图片太大无法查看</u>请选择**Desktop version**方可查看原图。
+
 今后我将陆续推出其他object的cheat sheet，敬请关注。

@@ -24,7 +24,7 @@ Tags = ["wercker","docker","ci"]
 
 现在市面上有很多流行的CI/CD工具和DevOps工具有很多，这些工具提高了软件开发的效率，增加了开发人员的幸福感。这些工具有：
 
-适用于GitHub上的开源项目，可以直接使用GitHub账户登陆，对于公开项目可以直接使用：[Travis-ci](travis-ci.org)、[CircleCI](https://circleci.com)、[Wercker](http://www.wercker.com/)。从目前GitHub上开源项目的使用情况来看，Travis-ci的使用率更高一些。
+适用于GitHub上的开源项目，可以直接使用GitHub账户登陆，对于公开项目可以直接使用：[Travis-ci](https://travis-ci.org)、[CircleCI](https://circleci.com)、[Wercker](http://www.wercker.com/)。从目前GitHub上开源项目的使用情况来看，Travis-ci的使用率更高一些。
 
 适用于企业级的：[Jenkins](https://jenkins.io/)
 
@@ -58,7 +58,7 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 ## 如何使用
 
-可以使用GitHub帐号直接登录[Wercker](www.wercker.com)，整个创建应用CI的流程一共3步。
+可以使用GitHub帐号直接登录[Wercker](http://www.wercker.com)，整个创建应用CI的流程一共3步。
 
 一旦拥有了账户，那么只需简单地点击位于顶部的**应用程序**菜单，然后选择**创建**选项即可。如果系统提示是否要创建组织或应用程序，请选择**应用程序**。Wercker组织允许多个Wercker用户之间进行协作，而无须提供信用卡。下图为设置新应用程序的向导页面。
 
