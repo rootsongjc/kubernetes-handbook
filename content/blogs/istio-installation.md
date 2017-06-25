@@ -143,7 +143,7 @@ docker.io/istio/proxy_debug:0.1.5
 
 我们暂时不开启[Istio Auth](https://istio.io/docs/concepts/network-and-auth/auth.html)。
 
-**注意：**本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](practice/traefik-ingress-installation.md)。
+**注意：**本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/traefik-ingress-installation.md)。
 
 ```bash
 kubectl apply -f install/kubernetes/istio.yaml
@@ -243,7 +243,7 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 `Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考：https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject
 
-在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息。具体步骤参考：[边缘节点配置](../practice/edge-node-configuration.md)
+在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息。具体步骤参考：[边缘节点配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
 在浏览器中访问http://ingress.istio.io/productpage
 

@@ -12,7 +12,7 @@ Tags = ["kubernetes"]
 
 ## 前言
 
-本文同步更新到Github仓库[kubernetes-handbook](http://github.com/rootsongjc/kubernetes-handbook)中。
+本文同步更新到Github仓库[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中。
 
 本文翻译自kubernetes官方文档：https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/concepts/workloads/controllers/deployment.md
 

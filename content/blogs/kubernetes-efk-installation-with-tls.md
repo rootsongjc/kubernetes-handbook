@@ -164,7 +164,7 @@ server.basePath: /api/v1/proxy/namespaces/kube-system/services/kibana-logging
 
 **可能遇到的问题**
 
-如果你在这里发现Create按钮是灰色的无法点击，且Time-filed name中没有选项，fluentd要读取`/var/log/containers/`目录下的log日志，这些日志是从`/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log`链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging]([https://docs.docker.com/engine/admin/logging/overview/#examples](https://docs.docker.com/engine/admin/logging/overview/#examples))。
+如果你在这里发现Create按钮是灰色的无法点击，且Time-filed name中没有选项，fluentd要读取`/var/log/containers/`目录下的log日志，这些日志是从`/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log`链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
 
 ![es-setting](http://olz1di9xf.bkt.clouddn.com/kubernetes-es-setting.png)
 
