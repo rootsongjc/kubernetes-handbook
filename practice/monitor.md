@@ -145,3 +145,13 @@ k8s_php-redis_frontend-2337258262-154p7_default_d8a2e2dd-3617-11e7-a4b0-ecf4bbe5
 kubernetes容器命名规则解析，见下图所示。
 
 ![kubernetes的容器命名规则示意图](../images/kubernetes-container-naming-rule.jpg)
+
+## Heapster
+
+[Heapster](https://github.com/kubernetes/heapster)是kubernetes官方提供的监控方案，我们在前面的章节中已经讲解了如何部署和使用heapster，见[安装Heapster插件](../practice/heapster-addon-installation.md)。
+
+但是Grafana显示的指标只根据Namespace和Pod两层来分类，实在有些单薄，我们希望通过应用的label增加service这一层分类。架构图如下：
+
+![Heapster架构图（改进版）](../images/kubernetes-heapster-monitoring.png)
+
+在不改变原有架构的基础上，通过应用的label来区分不同应用的pod。
