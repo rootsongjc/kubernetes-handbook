@@ -1,8 +1,8 @@
-
-
 # Pod解析
 
 Pod是kubernetes中可以创建的最小部署单元。
+
+V1 core版本的Pod的配置模板见[Pod template](../manifests/template/pod-v1-template.yaml)。
 
 ## 什么是Pod？
 
