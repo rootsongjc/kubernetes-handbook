@@ -12,9 +12,9 @@ Tags = ["linkerd","cncf","cloud native","microservices"]
 
 ## 前言
 
-Linkerd是一个用于云原生应用的开源、可扩展的service mesh（一般翻译成服务网格，还有一种说法叫”服务啮合层“，见[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)）。
+[Linkerd](https://linkerd.io)是一个用于云原生应用的开源、可扩展的service mesh（一般翻译成服务网格，还有一种说法叫”服务啮合层“，见[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)）。同时，Linkerd也是[CNCF](https://cncf.io)（云原生计算基金会）中的组件之一。
 
-本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【领域应用—微服务架构】章节中。
+P.S 本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【领域应用—微服务架构】章节中。
 
 ## Linkerd是什么
 
@@ -22,7 +22,7 @@ Linkerd的出现是为了解决像twitter、google这类超大规模生产系统
 
 ![source https://linkerd.io](https://linkerd.io/images/diagram-individual-instance.png)
 
-Linkerd负责跨服务通信中最困难、易出错的部分，包括延迟感知、负载平衡、连接池、TLS、仪表盘、请求路由等——这些都会影响应用程序伸缩性、性能和弹性。
+Linkerd负责跨服务通信中最困难、易出错的部分，包括延迟感知、负载均衡、连接池、TLS、仪表盘、请求路由等——这些都会影响应用程序伸缩性、性能和弹性。
 
 ## 如何运行
 
