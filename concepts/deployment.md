@@ -557,7 +557,7 @@ Kubernetes将执行过下列任务之一的Deployment标记为*progressing*状�
 - Deployment正在缩容一个已有的ReplicaSet。
 - 有新的可用的pod出现。
 
-你可以使用`kubectl roullout status`命令监控Deployment的进度。
+你可以使用`kubectl rollout status`命令监控Deployment的进度。
 
 ### Complete Deployment
 
