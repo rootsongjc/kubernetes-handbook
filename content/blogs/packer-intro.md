@@ -1,6 +1,6 @@
 +++
 date = "2017-03-09T10:58:42+08:00"
-title = "Packer Intro"
+title = "开源镜像定义工具Packer简介"
 draft = false
 Tags = ["packer","hashicorp","tools"]
 
