@@ -240,7 +240,7 @@ Events:
 
 有时候你可能想回退一个Deployment，例如，当Deployment不稳定时，比如一直crash looping。
 
-默认情况下，kubernetes会在系统中保存前两次的Deployment的rollout历史记录，以便你可以随时会退（你可以修改`revision history limit`来更改保存的revision数）。ß
+默认情况下，kubernetes会在系统中保存前两次的Deployment的rollout历史记录，以便你可以随时回退（你可以修改`revision history limit`来更改保存的revision数）。ß
 
 **注意：** 只要Deployment的rollout被触发就会创建一个revision。也就是说当且仅当Deployment的Pod template（如`.spec.template`）被更改，例如更新template中的label和容器镜像时，就会创建出一个新的revision。
 
