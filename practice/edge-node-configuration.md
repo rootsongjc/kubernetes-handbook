@@ -17,11 +17,11 @@
 
 为了满足边缘节点的以上需求，我们使用[keepalived](http://www.keepalived.org/)来实现。
 
-在Kubernetes集群外部配置nginx来访问边缘节点的VIP。
+在Kubernetes中添加了service的同时，在DNS中增加一个记录，这条记录需要跟ingress中的`host`字段相同，IP地址即VIP的地址，本示例中是`172.20.0.119`，这样集群外部就可以通过service的DNS名称来访问服务了。
 
-选择Kubernetes的三个node作为边缘节点，并安装keepalived。
+选择Kubernetes的三个node作为边缘节点，并安装keepalived，下图展示了边缘节点的配置，同时展示了向Kubernetes中添加服务的过程。
 
-![边缘节点架构](../images/node-edge-arch.jpg)
+![边缘节点架构](../images/kubernetes-edge-node-architecture.png)
 
 ## 准备
 
