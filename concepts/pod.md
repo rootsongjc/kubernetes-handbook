@@ -131,4 +131,4 @@ Pod是kubernetes REST API中的顶级资源类型。
 
 在kuberentes1.6的V1 core API版本中的Pod的数据结构如下图所示：
 
-![Pod Cheetsheet](../images/kubernetes-pod-cheatsheet.png)
+![Pod Cheatsheet](../images/kubernetes-pod-cheatsheet.png)
