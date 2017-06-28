@@ -59,6 +59,6 @@ data:
         - "/log/usermange/common/*"
     output.elasticsearch:
       hosts: ["172.23.5.255:9200"]
-    username: "elastic"
-    password: "changeme"
-    index: "filebeat-test"
+      username: "elastic"
+      password: "changeme"
+      index: "filebeat-test"
