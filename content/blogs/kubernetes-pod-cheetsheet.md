@@ -2,7 +2,7 @@
 date = "2017-06-24T14:20:39+08:00"
 draft = false
 title = "Kubernetes Pod Cheat Sheet——Pod数据结构参考图"
-Tags = ["kubernetes"]
+Tags = ["kubernetes","cheatsheet"]
 
 +++
 
