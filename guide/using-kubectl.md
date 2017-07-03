@@ -16,3 +16,23 @@ Kubectl的子命令主要分为8个类别：
 - 其他命令
 
 熟悉这些命令有助于大家来操作和管理kubernetes集群。
+
+## kube-shell
+
+开源项目[kube-shell](https://github.com/cloudnativelabs/kube-shell)可以为kubectl提供自动的命令提示和补全，使用起来特别方便，推荐给大家。
+
+Kube-shell有以下特性：
+
+- 命令提示，给出命令的使用说明
+- 自动补全，列出可选命令并可以通过tab键自动补全，支持模糊搜索
+- 高亮
+- 使用tab键可以列出可选的对象
+- vim模式
+
+**Mac下安装**
+
+```bash
+pip install kube-shell --user -U
+```
+
+![kube-shell页面](../images/kube-shell.jpg)
