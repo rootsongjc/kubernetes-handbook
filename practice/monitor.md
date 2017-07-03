@@ -2,6 +2,19 @@
 
 在前面的[安装heapster插件](heapster-addon-installation.md)章节，我们已经谈到Kubernetes本身提供了监控插件作为集群和容器监控的选择，但是在实际使用中，因为种种原因，再考虑到跟我们自身的监控系统集成，我们准备重新造轮子。
 
+## Kubernetes集群中的监控
+
+![Kubernetes集群中的监控](../images/monitoring-in-kubernetes.png)
+
+跟物理机器和虚拟机的监控不同，在kuberntes集群中的监控复杂度更高一些，因为多了一个虚拟化层，当然这个跟直接监控docker容器又不一样，kubernetes在docker之上又抽象了一层service的概念。
+
+在kubernetes中的监控需要考虑到这几个方面：
+
+- 应该给Pod打上哪些label，这些label将成为监控的metrics。
+- 当应用的Pod漂移了之后怎么办？因为要考虑到Pod的生命周期比虚拟机和物理机短的多，如何持续监控应用的状态？
+- 更多的监控项，kubernetes本身、容器、应用等。
+- 监控指标的来源，是通过heapster收集后汇聚还是直接从每台主机的docker上取？
+
 ## 容器的命名规则
 
 首先我们需要清楚使用cAdvisor收集的数据的格式和字段信息。
@@ -155,3 +168,7 @@ kubernetes容器命名规则解析，见下图所示。
 ![Heapster架构图（改进版）](../images/kubernetes-heapster-monitoring.png)
 
 在不改变原有架构的基础上，通过应用的label来区分不同应用的pod。
+
+## 参考
+
+[Monitoring in the Kubernetes Era](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
