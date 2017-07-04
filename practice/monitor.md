@@ -2,6 +2,12 @@
 
 在前面的[安装heapster插件](heapster-addon-installation.md)章节，我们已经谈到Kubernetes本身提供了监控插件作为集群和容器监控的选择，但是在实际使用中，因为种种原因，再考虑到跟我们自身的监控系统集成，我们准备重新造轮子。
 
+针对kubernetes集群和应用的监控，相较于传统的虚拟机和物理机的监控有很多不同，因此对于传统监控需要有很多改造的地方，需要关注以下三个方面：
+
+- Kubernetes集群本身的监控，主要是kubernetes的各个组件
+- kubernetes集群中Pod的监控，Pod的CPU、内存、网络、磁盘等监控
+- 集群内部应用的监控，针对应用本身的监控
+
 ## Kubernetes集群中的监控
 
 ![Kubernetes集群中的监控](../images/monitoring-in-kubernetes.png)
@@ -159,7 +165,7 @@ kubernetes容器命名规则解析，见下图所示。
 
 ![kubernetes的容器命名规则示意图](../images/kubernetes-container-naming-rule.jpg)
 
-## Heapster
+## 使用Heapster进行集群监控
 
 [Heapster](https://github.com/kubernetes/heapster)是kubernetes官方提供的监控方案，我们在前面的章节中已经讲解了如何部署和使用heapster，见[安装Heapster插件](../practice/heapster-addon-installation.md)。
 
@@ -168,6 +174,19 @@ kubernetes容器命名规则解析，见下图所示。
 ![Heapster架构图（改进版）](../images/kubernetes-heapster-monitoring.png)
 
 在不改变原有架构的基础上，通过应用的label来区分不同应用的pod。
+
+## 应用监控
+
+Kubernetes中应用的监控架构如图：
+
+![应用监控架构图](../images/kubernetes-app-monitoring.png)
+
+这种方式有以下几个要点：
+
+- 访问kubernetes API获取应用Pod的IP和端口
+- Pod labels作为监控metric的tag
+- 直接访问应用的Pod的IP和端口获取应用监控数据
+- metrics发送到[OWL](https://github.com/talkingdata/owl)中存储和展示
 
 ## 参考
 
