@@ -44,6 +44,12 @@
 
 注意：172.20.0.113这台主机master和node复用。所有生成证书、执行kubectl命令的操作都在这台节点上执行。一旦node加入到kubernetes集群之后就不需要再登陆node节点了。
 
+## 安装前的准备
+
+1. 在node节点上安装docker1.12.5
+2. 关闭所有节点的SELinux
+3. 准备harbor私有镜像仓库
+
 ## 步骤介绍
 
 - [1 创建 TLS 证书和秘钥](create-tls-and-secret-key.md)
