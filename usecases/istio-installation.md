@@ -237,6 +237,72 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 多次刷新页面，你会发现有的页面上的评论里有星级打分，有的页面就没有，这是因为我们部署了三个版本的应用，有的应用里包含了评分，有的没有。Istio根据默认策略随机将流量分配到三个版本的应用上。
 
+查看部署的bookinfo应用中的`productpage-v1` service和deployment，查看`productpage-v1`的pod的详细json信息可以看到这样的结构：
+
+```bash
+$ kubectl get productpage-v1-944450470-bd530 -o json
+```
+
+见[productpage-v1-istio.json](../manifests/istio/productpage-v1-istio.json)文件。从详细输出中可以看到这个Pod中实际有两个容器，这里面包括了`initContainer`，作为istio植入到kubernetes deployment中的sidecar。
+
+```json
+"initContainers": [
+            {
+                "args": [
+                    "-p",
+                    "15001",
+                    "-u",
+                    "1337"
+                ],
+                "image": "docker.io/istio/init:0.1",
+                "imagePullPolicy": "Always",
+                "name": "init",
+                "resources": {},
+                "securityContext": {
+                    "capabilities": {
+                        "add": [
+                            "NET_ADMIN"
+                        ]
+                    }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            },
+            {
+                "args": [
+                    "-c",
+                    "sysctl -w kernel.core_pattern=/tmp/core.%e.%p.%t \u0026\u0026 ulimit -c unlimited"
+                ],
+                "command": [
+                    "/bin/sh"
+                ],
+                "image": "alpine",
+                "imagePullPolicy": "Always",
+                "name": "enable-core-dump",
+                "resources": {},
+                "securityContext": {
+                    "privileged": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+```
+
 ## 监控
 
 不断刷新productpage页面，将可以在以下几个监控中看到如下界面。

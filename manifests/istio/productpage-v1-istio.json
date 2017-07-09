@@ -1,0 +1,282 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "annotations": {
+            "alpha.istio.io/sidecar": "injected",
+            "alpha.istio.io/version": "jenkins@ubuntu-16-04-build-de3bbfab70500-0.1.5-21f4cb4",
+            "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicaSet\",\"namespace\":\"default\",\"name\":\"productpage-v1-944450470\",\"uid\":\"a9061cc1-46ba-11e7-bfbd-8af1e3a7c5bd\",\"apiVersion\":\"extensions\",\"resourceVersion\":\"6701131\"}}\n",
+            "pod.alpha.kubernetes.io/init-container-statuses": "[{\"name\":\"init\",\"state\":{\"terminated\":{\"exitCode\":0,\"reason\":\"Completed\",\"startedAt\":null,\"finishedAt\":\"2017-06-01T11:14:16Z\",\"containerID\":\"docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032\"}},\"lastState\":{},\"ready\":true,\"restartCount\":0,\"image\":\"docker.io/istio/init:0.1\",\"imageID\":\"docker-pullable://docker.io/istio/init@sha256:54815172c106cf2b6631f2d49b3df1f4ace805bc95b830edde3d7b6017ed89d5\",\"containerID\":\"docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032\"},{\"name\":\"enable-core-dump\",\"state\":{\"terminated\":{\"exitCode\":0,\"reason\":\"Completed\",\"startedAt\":null,\"finishedAt\":\"2017-06-01T11:14:33Z\",\"containerID\":\"docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314\"}},\"lastState\":{},\"ready\":true,\"restartCount\":0,\"image\":\"docker.io/alpine:latest\",\"imageID\":\"docker-pullable://docker.io/alpine@sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c\",\"containerID\":\"docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314\"}]",
+            "pod.alpha.kubernetes.io/init-containers": "[{\"name\":\"init\",\"image\":\"docker.io/istio/init:0.1\",\"args\":[\"-p\",\"15001\",\"-u\",\"1337\"],\"resources\":{},\"volumeMounts\":[{\"name\":\"default-token-3l9f0\",\"readOnly\":true,\"mountPath\":\"/var/run/secrets/kubernetes.io/serviceaccount\"}],\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\",\"securityContext\":{\"capabilities\":{\"add\":[\"NET_ADMIN\"]}}},{\"name\":\"enable-core-dump\",\"image\":\"alpine\",\"command\":[\"/bin/sh\"],\"args\":[\"-c\",\"sysctl -w kernel.core_pattern=/tmp/core.%e.%p.%t \\u0026\\u0026 ulimit -c unlimited\"],\"resources\":{},\"volumeMounts\":[{\"name\":\"default-token-3l9f0\",\"readOnly\":true,\"mountPath\":\"/var/run/secrets/kubernetes.io/serviceaccount\"}],\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\",\"securityContext\":{\"privileged\":true}}]",
+            "pod.beta.kubernetes.io/init-container-statuses": "[{\"name\":\"init\",\"state\":{\"terminated\":{\"exitCode\":0,\"reason\":\"Completed\",\"startedAt\":null,\"finishedAt\":\"2017-06-01T11:14:16Z\",\"containerID\":\"docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032\"}},\"lastState\":{},\"ready\":true,\"restartCount\":0,\"image\":\"docker.io/istio/init:0.1\",\"imageID\":\"docker-pullable://docker.io/istio/init@sha256:54815172c106cf2b6631f2d49b3df1f4ace805bc95b830edde3d7b6017ed89d5\",\"containerID\":\"docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032\"},{\"name\":\"enable-core-dump\",\"state\":{\"terminated\":{\"exitCode\":0,\"reason\":\"Completed\",\"startedAt\":null,\"finishedAt\":\"2017-06-01T11:14:33Z\",\"containerID\":\"docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314\"}},\"lastState\":{},\"ready\":true,\"restartCount\":0,\"image\":\"docker.io/alpine:latest\",\"imageID\":\"docker-pullable://docker.io/alpine@sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c\",\"containerID\":\"docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314\"}]",
+            "pod.beta.kubernetes.io/init-containers": "[{\"name\":\"init\",\"image\":\"docker.io/istio/init:0.1\",\"args\":[\"-p\",\"15001\",\"-u\",\"1337\"],\"resources\":{},\"volumeMounts\":[{\"name\":\"default-token-3l9f0\",\"readOnly\":true,\"mountPath\":\"/var/run/secrets/kubernetes.io/serviceaccount\"}],\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\",\"securityContext\":{\"capabilities\":{\"add\":[\"NET_ADMIN\"]}}},{\"name\":\"enable-core-dump\",\"image\":\"alpine\",\"command\":[\"/bin/sh\"],\"args\":[\"-c\",\"sysctl -w kernel.core_pattern=/tmp/core.%e.%p.%t \\u0026\\u0026 ulimit -c unlimited\"],\"resources\":{},\"volumeMounts\":[{\"name\":\"default-token-3l9f0\",\"readOnly\":true,\"mountPath\":\"/var/run/secrets/kubernetes.io/serviceaccount\"}],\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\",\"securityContext\":{\"privileged\":true}}]"
+        },
+        "creationTimestamp": "2017-06-01T11:08:37Z",
+        "generateName": "productpage-v1-944450470-",
+        "labels": {
+            "app": "productpage",
+            "pod-template-hash": "944450470",
+            "version": "v1"
+        },
+        "name": "productpage-v1-944450470-bd530",
+        "namespace": "default",
+        "ownerReferences": [
+            {
+                "apiVersion": "extensions/v1beta1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "productpage-v1-944450470",
+                "uid": "a9061cc1-46ba-11e7-bfbd-8af1e3a7c5bd"
+            }
+        ],
+        "resourceVersion": "6701985",
+        "selfLink": "/api/v1/namespaces/default/pods/productpage-v1-944450470-bd530",
+        "uid": "a906b1eb-46ba-11e7-bfbd-8af1e3a7c5bd"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "productpage",
+                "ports": [
+                    {
+                        "containerPort": 9080,
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            },
+            {
+                "args": [
+                    "proxy",
+                    "sidecar",
+                    "-v",
+                    "2"
+                ],
+                "env": [
+                    {
+                        "name": "POD_NAME",
+                        "valueFrom": {
+                            "fieldRef": {
+                                "apiVersion": "v1",
+                                "fieldPath": "metadata.name"
+                            }
+                        }
+                    },
+                    {
+                        "name": "POD_NAMESPACE",
+                        "valueFrom": {
+                            "fieldRef": {
+                                "apiVersion": "v1",
+                                "fieldPath": "metadata.namespace"
+                            }
+                        }
+                    },
+                    {
+                        "name": "POD_IP",
+                        "valueFrom": {
+                            "fieldRef": {
+                                "apiVersion": "v1",
+                                "fieldPath": "status.podIP"
+                            }
+                        }
+                    }
+                ],
+                "image": "docker.io/istio/proxy_debug:0.1",
+                "imagePullPolicy": "Always",
+                "name": "proxy",
+                "resources": {},
+                "securityContext": {
+                    "runAsUser": 1337
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "initContainers": [
+            {
+                "args": [
+                    "-p",
+                    "15001",
+                    "-u",
+                    "1337"
+                ],
+                "image": "docker.io/istio/init:0.1",
+                "imagePullPolicy": "Always",
+                "name": "init",
+                "resources": {},
+                "securityContext": {
+                    "capabilities": {
+                        "add": [
+                            "NET_ADMIN"
+                        ]
+                    }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            },
+            {
+                "args": [
+                    "-c",
+                    "sysctl -w kernel.core_pattern=/tmp/core.%e.%p.%t \u0026\u0026 ulimit -c unlimited"
+                ],
+                "command": [
+                    "/bin/sh"
+                ],
+                "image": "alpine",
+                "imagePullPolicy": "Always",
+                "name": "enable-core-dump",
+                "resources": {},
+                "securityContext": {
+                    "privileged": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-3l9f0",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "nodeName": "172.20.0.115",
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "volumes": [
+            {
+                "name": "default-token-3l9f0",
+                "secret": {
+                    "defaultMode": 420,
+                    "secretName": "default-token-3l9f0"
+                }
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-06-01T11:14:33Z",
+                "status": "True",
+                "type": "Initialized"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-06-01T11:14:38Z",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2017-06-01T11:08:37Z",
+                "status": "True",
+                "type": "PodScheduled"
+            }
+        ],
+        "containerStatuses": [
+            {
+                "containerID": "docker://686c609d0343b73f2e9fac39f6439203de776810c409546571f411301db2f164",
+                "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1:latest",
+                "imageID": "docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1@sha256:fceb387d10815a5be86322335e07358ce5398c686947e510c2454cfbb98c4c46",
+                "lastState": {},
+                "name": "productpage",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "running": {
+                        "startedAt": "2017-06-01T11:14:34Z"
+                    }
+                }
+            },
+            {
+                "containerID": "docker://b380e181fb0310651c7048a9dab14c360a5d7e62ad6ee735b1dd40bc42fbad7b",
+                "image": "docker.io/istio/proxy_debug:0.1",
+                "imageID": "docker-pullable://docker.io/istio/proxy_debug@sha256:0a3f8798f94e56897ca2759aa135843d0e6e2bb74d5d834f2eb1efe94f2a7c38",
+                "lastState": {},
+                "name": "proxy",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "running": {
+                        "startedAt": "2017-06-01T11:14:38Z"
+                    }
+                }
+            }
+        ],
+        "hostIP": "172.20.0.115",
+        "initContainerStatuses": [
+            {
+                "containerID": "docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032",
+                "image": "docker.io/istio/init:0.1",
+                "imageID": "docker-pullable://docker.io/istio/init@sha256:54815172c106cf2b6631f2d49b3df1f4ace805bc95b830edde3d7b6017ed89d5",
+                "lastState": {},
+                "name": "init",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "terminated": {
+                        "containerID": "docker://4cf32c25a9fa6d17410ac79b5c6e1273f42e6430fa130179b0ef75a5eba1d032",
+                        "exitCode": 0,
+                        "finishedAt": "2017-06-01T11:14:16Z",
+                        "reason": "Completed",
+                        "startedAt": null
+                    }
+                }
+            },
+            {
+                "containerID": "docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314",
+                "image": "docker.io/alpine:latest",
+                "imageID": "docker-pullable://docker.io/alpine@sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c",
+                "lastState": {},
+                "name": "enable-core-dump",
+                "ready": true,
+                "restartCount": 0,
+                "state": {
+                    "terminated": {
+                        "containerID": "docker://e0442172d07fc17d7a17de61fa229117ffca8c241b95c5065d928b07851f5314",
+                        "exitCode": 0,
+                        "finishedAt": "2017-06-01T11:14:33Z",
+                        "reason": "Completed",
+                        "startedAt": null
+                    }
+                }
+            }
+        ],
+        "phase": "Running",
+        "podIP": "172.30.60.7",
+        "qosClass": "BestEffort",
+        "startTime": "2017-06-01T11:08:37Z"
+    }
+}
