@@ -196,11 +196,11 @@ nginx-deployment-1564180365-z9gth   1/1       Running   0          14s
 
 下次更新这些pod的时候，只需要更新Deployment中的pod的template即可。
 
-Deployment可以保证在升级时只有一定数量的Pod是down的。默认的，它会确保至少有比期望的Pod数量少一个的Pod是up状态（最多一个不可用）。
+Deployment可以保证在升级时只有一定数量的Pod是down的。默认的，它会确保至少有比期望的Pod数量少一个是up状态（最多一个不可用）。
 
 Deployment同时也可以确保只创建出超过期望数量的一定数量的Pod。默认的，它会确保最多比期望的Pod数量多一个的Pod是up的（最多1个surge）。
 
-**在未来的Kuberentes版本中，将从1-1变成25%-25%）。**
+**在未来的Kuberentes版本中，将从1-1变成25%-25%。**
 
 例如，如果你自己看下上面的Deployment，你会发现，开始创建一个新的Pod，然后删除一些旧的Pod再创建一个新的。当新的Pod创建出来之前不会杀掉旧的Pod。这样能够确保可用的Pod数量至少有2个，Pod的总数最多4个。
 
@@ -710,7 +710,7 @@ $ echo $?
 
 ### 金丝雀Deployment
 
-如果你想要使用Deployment对部分用户或服务器发布relaese，你可以创建多个Deployment，每个对一个release，参照[managing resources](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/concepts/cluster-administration/manage-deployment/#canary-deployments) 中对金丝雀模式的描述。
+如果你想要使用Deployment对部分用户或服务器发布release，你可以创建多个Deployment，每个Deployment对应一个release，参照[managing resources](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/concepts/cluster-administration/manage-deployment/#canary-deployments) 中对金丝雀模式的描述。
 
 ## 编写Deployment Spec
 
