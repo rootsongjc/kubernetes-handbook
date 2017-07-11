@@ -49,6 +49,7 @@
      - [4.3.3 配置最佳实践](practice/configuration-best-practice.md)
      - [4.3.4 集群及应用监控](practice/monitor.md)
      - [4.3.5 使用Jenkins进行持续构建与发布](practice/jenkins-ci-cd.md)
+     - [4.3.6 数据持久化问题](practice/data-persistence-problem.md)
   - [4.4 存储管理](practice/storage.md)
      - [4.4.1 GlusterFS](practice/glusterfs.md)
         - [4.4.1.1 使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
