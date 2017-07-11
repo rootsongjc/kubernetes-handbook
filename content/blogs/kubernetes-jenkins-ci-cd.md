@@ -10,7 +10,7 @@ Tags = ["kubernetes","cicd","devops"]
 
 *（题图：正午@东直门 Jun 27，2017）*
 
-本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【最佳实践—使用Jenkins进行持续构建与发布】章节中，一切内容以kubernetes-handbook中稳准。
+本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【最佳实践—使用Jenkins进行持续构建与发布】章节中，一切内容以kubernetes-handbook为准。
 
 我们基于Jenkins的CI/CD流程如下所示。
 
