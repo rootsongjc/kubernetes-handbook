@@ -188,6 +188,51 @@ Kubernetes中应用的监控架构如图：
 - 直接访问应用的Pod的IP和端口获取应用监控数据
 - metrics发送到[OWL](https://github.com/talkingdata/owl)中存储和展示
 
+## 应用拓扑状态图
+
+对于复杂的应用编排和依赖关系，我们希望能够有清晰的图标一览应用状态和拓扑关系，因此我们用到了Weaveworks开源的[scope](https://github.com/weaveworks/scope)。
+
+**安装scope**
+
+我们在kubernetes集群上使用standalone方式安装，详情参考[Installing Weave Scope](https://www.weave.works/docs/scope/latest/installing/#k8s)。
+
+使用[scope.yaml](../manifests/weave/scope.yaml)文件安装scope，该服务安装在`kube-system` namespace下。
+
+```Bash
+$ kubectl apply -f scope.yaml
+```
+
+创建一个新的Ingress：`kube-system.yaml`，配置如下：
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+  namespace: kube-system
+spec:
+  rules:
+    - host: scope.weave.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: weave-scope-app
+            servicePort: 80
+```
+
+执行`kubectl apply -f kube-system.yaml`后在你的主机上的`/etc/hosts`文件中添加一条记录：
+
+```
+172.20.0.119 scope.weave.io
+```
+
+在浏览器中访问`scope.weave.io`就可以访问到scope了，详见[边缘节点配置](edge-node-configuration.md)。
+
+![应用拓扑图](../images/weave-scope-service-topology.jpg)
+
+如上图所示，scope可以监控kubernetes集群中的一系列资源的状态、资源使用情况、应用拓扑、scale、还可以直接通过浏览器进入容器内部调试等。
+
 ## 参考
 
 [Monitoring in the Kubernetes Era](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
