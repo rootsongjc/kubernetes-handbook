@@ -32,7 +32,7 @@
     - [4.1.2 创建kubeconfig文件](practice/create-kubeconfig.md)
     - [4.1.3 创建高可用etcd集群](practice/etcd-cluster-installation.md)
     - [4.1.4 安装kubectl命令行工具](practice/kubectl-installation.md)
-    - [4.1.5 部署高可用master集群](practice/master-installation.md)
+    - [4.1.5 部署master节点](practice/master-installation.md)
     - [4.1.6 部署node节点](practice/node-installation.md)
     - [4.1.7 安装kubedns插件](practice/kubedns-addon-installation.md)
     - [4.1.8 安装dashboard插件](practice/dashboard-addon-installation.md)
