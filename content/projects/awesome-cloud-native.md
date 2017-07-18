@@ -1,8 +1,8 @@
 +++
 date = "2017-07-18T11:21:14+08:00"
 draft = false
-title = "awesome cloud native"
-Tags = "cloud-native"
+title = "Awesome Cloud Native"
+Tags = ["cloud-native"]
 
 +++
 
