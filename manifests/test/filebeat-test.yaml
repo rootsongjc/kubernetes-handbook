@@ -44,7 +44,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    run: filebeat-test
+    k8s-app: filebeat-test
 ---
 apiVersion: v1
 kind: ConfigMap

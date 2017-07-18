@@ -52,4 +52,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    run: logstash-test
+    k8s-app: logstash-test
