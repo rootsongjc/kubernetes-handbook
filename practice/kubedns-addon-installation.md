@@ -32,7 +32,7 @@ kubedns-controller.yaml
 kubedns-svc.yaml
 ```
 
-已经修改好的 yaml 文件见：[dns](./manifests/kubedns)
+已经修改好的 yaml 文件见：[dns](../manifests/kubedns)
 
 ## 系统预定义的 RoleBinding
 
