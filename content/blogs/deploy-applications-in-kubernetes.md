@@ -59,7 +59,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
       - path: /
         backend:
           serviceName: k8s-app-monitor-agent
-          servicePort: 808
+          servicePort: 8080
 ```
 
 保存后，然后执行`kubectl replace -f ingress.yaml`即可刷新ingress。
