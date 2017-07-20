@@ -15,6 +15,10 @@ Tags = ["kubernetes"]
 - [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
 - [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
 
+API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio)生成，打开后如图所示：
+
+![API文档](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-test-api-doc.jpg)
+
 **关于服务发现**
 
 `K8s-app-monitor-agent`服务需要访问`k8s-app-monitor-test`服务，这就涉及到服务发现的问题，我们在代码中直接写死了要访问的服务的内网DNS地址（kubedns中的地址，即`k8s-app-monitor-test.default.svc.cluster.local`）。
@@ -71,3 +75,5 @@ Tags = ["kubernetes"]
 在浏览器中访问http://k8s-app-monitor-agent.jimmysong.io
 
 ![图表](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-agent.jpg)
+
+刷新页面将获得新的图表。
