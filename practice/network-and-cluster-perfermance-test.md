@@ -388,6 +388,8 @@ Locust模拟10万用户，每秒增长100个。
 
 ![locust-test](http://olz1di9xf.bkt.clouddn.com/kubernetes-locust-test.jpg)
 
+关于Locust的使用请参考Github：https://github.com/rootsongjc/distributed-load-testing-using-kubernetes
+
 ## 参考
 
 [基于 Python 的性能测试工具 locust (与 LR 的简单对比)](https://testerhome.com/topics/4839)
