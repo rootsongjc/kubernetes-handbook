@@ -10,7 +10,7 @@ Tags = ["kubernetes"]
 
 *（题图：风和日丽@野三坡 Jul 14,2017）*
 
-为了详细说明，我特意写了两个事例程序放在GitHub中，模拟应用开发流程：
+为了详细说明，我特意写了两个示例程序放在GitHub中，模拟应用开发流程：
 
 - [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
 - [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
