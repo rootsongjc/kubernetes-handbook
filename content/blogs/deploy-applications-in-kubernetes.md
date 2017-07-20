@@ -1,7 +1,7 @@
 +++
 date = "2017-07-20T19:41:53+08:00"
 draft = false
-title = "适用于kubernetes的应用开发与部署"
+Title = "适用于kubernetes的应用开发与部署流程详解"
 Tags = ["kubernetes"]
 
 +++
@@ -9,6 +9,8 @@ Tags = ["kubernetes"]
 ![野三坡](http://olz1di9xf.bkt.clouddn.com/20170714048.jpg)
 
 *（题图：风和日丽@野三坡 Jul 14,2017）*
+
+本文已归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第3章【用户指南】中，一切更新以kubernetes-handbook中为准。
 
 为了详细说明，我特意写了两个示例程序放在GitHub中，模拟应用开发流程：
 
