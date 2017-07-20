@@ -1,13 +1,16 @@
 +++
 date = "2017-07-20T19:41:53+08:00"
 draft = false
-title = "deploy applications in kubernetes"
+title = "适用于kubernetes的应用开发与部署"
+Tags = ["kubernetes"]
 
 +++
 
-*（题图：野三坡 Jul 14,2017）*
+![野三坡](http://olz1di9xf.bkt.clouddn.com/20170714048.jpg)
 
-为了讲解详细列成，我特意写了两个事例程序放在GitHub中，模拟监控流程：
+*（题图：风和日丽@野三坡 Jul 14,2017）*
+
+为了详细说明，我特意写了两个事例程序放在GitHub中，模拟应用开发流程：
 
 - [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
 - [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
