@@ -25,3 +25,10 @@ spec:
         backend:
           serviceName: rolling-update-test
           servicePort: 9090
+  - host: k8s-app-monitor-agent.jimmysong.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: k8s-app-monitor-agent
+          servicePort: 8080

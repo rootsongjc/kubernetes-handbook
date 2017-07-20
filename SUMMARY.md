@@ -26,6 +26,7 @@
   - [3.1 配置Pod的liveness和readiness探针](guide/configure-liveness-readiness-probes.md)
   - [3.2 管理集群中的TLS](guide/managing-tls-in-a-cluster.md)
   - [3.3 使用kubectl](guide/using-kubectl.md)
+  - [3.4 适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
 - [4. 最佳实践](practice/index.md)
   - [ 4.1 在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
     - [4.1.1 创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
