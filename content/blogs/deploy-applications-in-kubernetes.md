@@ -40,7 +40,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 生成了如下两个docker镜像：
 
 - jimmysong/k8s-app-monitor-test:latest
-- Jimmysong/k8s-app-monitor-agent:latest
+- jimmysong/k8s-app-monitor-agent:latest
 
 **启动服务**
 
