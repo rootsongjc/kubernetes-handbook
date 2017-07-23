@@ -1,6 +1,6 @@
 ## 分布式负载测试
 
-该教程描述如何在[Kubernetes](http://kubernetes.io)中进行分布式负载均衡测试，包括一个web应用、docker镜像和Kubernetes controllers/services。更多资料请查看[Distributed Load Testing Using Kubernetes](http://cloud.google.com/solutions/distributed-load-testing-using-kubernetes) 。
+该教程描述如何在[Kubernetes](http://kubernetes.io)中进行分布式负载均衡测试，包括一个web应用、docker镜像和Kubernetes controllers/services。关于分布式负载测试的更多资料请查看[Distributed Load Testing Using Kubernetes](http://cloud.google.com/solutions/distributed-load-testing-using-kubernetes) 。
 
 ## 准备
 
@@ -10,11 +10,14 @@
 
 ## 部署Web应用
 
+本文中使用的镜像、kubernetes应用的yaml配置来自我的另一个项目，请参考：https://github.com/rootsongjc/distributed-load-testing-using-kubernetes
+
  `sample-webapp` 目录下包含一个简单的web测试应用。我们将其构建为docker镜像，在kubernetes中运行。你可以自己构建，也可以直接用这个我构建好的镜像`index.tenxcloud.com/jimmy/k8s-sample-webapp:latest`。
 
 在kubernetes上部署sample-webapp。
 
 ```bash
+$ git clone https://github.com/rootsongjc/distributed-load-testing-using-kubernetes.git
 $ cd kubernetes-config
 $ kubectl create -f sample-webapp-controller.yaml
 $ kubectl create -f kubectl create -f sample-webapp-service.yaml
