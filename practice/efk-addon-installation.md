@@ -1,5 +1,7 @@
 # 安装EFK插件
 
+我们通过在每台node上部署一个以DaemonSet方式运行的fluentd来收集每台node上的日志。Fluentd将docker日志目录`/var/lib/docker/containers`和`/var/log`目录挂载到Pod中，然后Pod会在node节点的`/var/log/pods`目录中创建新的目录，可以区别不同的容器日志输出，该目录下有一个日志文件链接到`/var/lib/docker/contianers`目录下的容器日志输出。
+
 官方文件目录：`cluster/addons/fluentd-elasticsearch`
 
 ``` bash
@@ -9,7 +11,7 @@ es-controller.yaml  es-service.yaml  fluentd-es-ds.yaml  kibana-controller.yaml 
 
 同样EFK服务也需要一个`efk-rbac.yaml`文件，配置serviceaccount为`efk`。
 
-已经修改好的 yaml 文件见：[EFK](./manifests/EFK)
+已经修改好的 yaml 文件见：[EFK](../manifests/EFK)
 
 
 ## 配置 es-controller.yaml
