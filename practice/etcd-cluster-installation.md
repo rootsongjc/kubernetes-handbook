@@ -71,7 +71,7 @@ WantedBy=multi-user.target
 + 创建 `kubernetes.pem` 证书时使用的 `kubernetes-csr.json` 文件的 `hosts` 字段**包含所有 etcd 节点的IP**，否则证书校验会出错；
 + `--initial-cluster-state` 值为 `new` 时，`--name` 的参数值必须位于 `--initial-cluster` 列表中；
 
-完整 unit 文件见：[etcd.service](./systemd/etcd.service)
+完整 unit 文件见：[etcd.service](../systemd/etcd.service)
 
 环境变量配置文件`/etc/etcd/etcd.conf`。
 
