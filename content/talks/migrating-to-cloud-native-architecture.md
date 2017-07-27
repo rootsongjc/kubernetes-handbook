@@ -12,7 +12,7 @@ Tags = ["cloud-native","book"]
 
 本书是 [Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures) 的中文版。
 
-中文版地址：[https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures](https/github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
+中文版地址：[https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
 
 Gitbook 阅读地址：https://rootsongjc.gitbooks.io/moving-to-cloud-native-archtecture
 
