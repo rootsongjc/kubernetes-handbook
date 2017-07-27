@@ -6,6 +6,8 @@ Tags = ["cloud-native","book"]
 
 +++
 
+![cover](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-cover.jpg)
+
 # 迁移到云原生应用架构
 
 本书是 [Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures) 的中文版。
