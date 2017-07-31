@@ -1083,7 +1083,7 @@ object](/docs/api-reference/{{page.version}}/#service-v1-core).
 
 ## API 对象
 
-在 Kubernetes REST API 中，Service 是 top-level 资源。关于 API 对象的更多细节可以查看：[Service API 对象](https://kubernetes.io/docs/api-reference/{{page.version}}/#service-v1-core)。
+在 Kubernetes REST API 中，Service 是 top-level 资源。关于 API 对象的更多细节可以查看：[Service API 对象](https://kubernetes.io/docs/api-reference/v1.7/#service-v1-core)。
 
 <!--
 ## For More Information
