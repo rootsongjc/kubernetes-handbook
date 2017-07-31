@@ -1,12 +1,3 @@
----
-assignees:
-- bprashanth
-title: Services
-redirect_from:
-- "/docs/user-guide/services/"
-- "/docs/user-guide/services/index.html"
----
-
 <!--
 Kubernetes [`Pods`](/docs/user-guide/pods) are mortal. They are born and when they die, they
 are not resurrected.  [`ReplicationControllers`](/docs/user-guide/replication-controller) in
