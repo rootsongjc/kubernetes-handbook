@@ -141,7 +141,7 @@ nginx-deployment-2035384211-qqcnn   1/1       Running   0          18s       app
 
 ### Pod-template-hash label
 
-**注意：**这个 label 不是用户指定的！
+**注意**：这个 label 不是用户指定的！
 
 注意上面示例输出中的 pod label 里的 pod-template-hash label。当 Deployment 创建或者接管 ReplicaSet 时，Deployment controller 会自动为 Pod 添加 pod-template-hash label。这样做的目的是防止 Deployment 的子ReplicaSet 的 pod 名字重复。通过将 ReplicaSet 的 PodTemplate 进行哈希散列，使用生成的哈希值作为 label 的值，并添加到 ReplicaSet selector 里、 pod template label 和 ReplicaSet 管理中的 Pod 上。
 
