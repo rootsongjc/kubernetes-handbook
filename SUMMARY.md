@@ -74,4 +74,5 @@
 - [7. 附录](appendix/index.md)
   - [7.1 Docker最佳实践](appendix/docker-best-practice.md)
   - [7.2 问题记录](appendix/issues.md)
+  - [7.3 使用技巧](appendix/tricks.md)
 
