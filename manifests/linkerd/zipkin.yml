@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zipkin
+spec:
+  replicas: 1
+  selector:
+    app: zipkin
+  template:
+    metadata:
+      name: zipkin
+      labels:
+        app: zipkin
+    spec:
+      containers:
+      - name: zipkin
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openzipkin-zipkin:1.20
+        env:
+        - name: SCRIBE_ENABLED
+          value: "true"
+        ports:
+        - name: scribe
+          containerPort: 9410
+        - name: http
+          containerPort: 9411
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: zipkin-collector
+  name: zipkin-collector
+spec:
+  type: ClusterIP
+  selector:
+    app: zipkin
+  ports:
+  - name: scribe
+    port: 9410
+    targetPort: 9410
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: zipkin
+  name: zipkin
+spec:
+  selector:
+    app: zipkin
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9411

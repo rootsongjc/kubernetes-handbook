@@ -1,0 +1,369 @@
+################################################################################
+# Linkerd Sevice Mesh
+#
+# This is a basic Kubernetes config file to deploy a service mesh of Linkerd
+# instances onto your Kubernetes cluster that is capable of handling HTTP,
+# HTTP/2 and gRPC calls with some reasonable defaults.
+#
+# To configure your applications to use Linkerd for HTTP traffic you can set the
+# `http_proxy` envionment variable to `$(NODE_NAME):4140` where `NODE_NAME` is
+# the name of node on which the application instance is running.  The
+# `NODE_NAME` environment variable can be set with the downward API.
+#
+# If your application does not support the `http_proxy` environment variable or
+# if you want to configure your application to use Linkerd for HTTP/2 or gRPC
+# traffic, you must configure your application to send traffic directly to
+# Linkerd:
+#
+# * $(NODE_NAME):4140 for HTTP
+# * $(NODE_NAME):4240 for HTTP/2
+# * $(NODE_NAME):4340 for gRPC
+#
+# If you are sending HTTP or HTTP/2 traffic directly to Linkerd, you must set
+# the Host/Authority header to `<service>` or `<service>.<namespace>` where
+# `<service>` and `<namespace>` are the names of the service and namespace
+# that you want to proxy to.  If unspecified, `<namespace>` defaults to
+# `default`.
+#
+# If your application receives HTTP, HTTP/2, and/or gRPC traffic it must have a
+# Kubernetes Service object with ports named `http`, `h2`, and/or `grpc`
+# respectively.
+#
+# You can deploy this to your Kubernetes cluster by running:
+#   kubectl create ns linkerd
+#   kubectl apply -n linkerd -f servicemesh.yml
+#
+# There are sections of this config that can be uncommented to enable:
+# * CNI compatibility
+# * Automatic retries
+# * Zipkin tracing
+################################################################################
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: l5d-config
+  namespace: linkerd
+data:
+  config.yaml: |-
+    admin:
+      port: 9990
+
+    # Namers provide Linkerd with service discovery information.  To use a
+    # namer, you reference it in the dtab by its prefix.  We define 4 namers:
+    # * /io.l5d.k8s gets the address of the target app
+    # * /io.l5d.k8s.http gets the address of the http-incoming Linkerd router on the target app's node
+    # * /io.l5d.k8s.h2 gets the address of the h2-incoming Linkerd router on the target app's node
+    # * /io.l5d.k8s.grpc gets the address of the grpc-incoming Linkerd router on the target app's node
+    namers:
+    - kind: io.l5d.k8s
+    - kind: io.l5d.k8s
+      prefix: /io.l5d.k8s.http
+      transformers:
+        # The daemonset transformer replaces the address of the target app with
+        # the address of the http-incoming router of the Linkerd daemonset pod
+        # on the target app's node.
+      - kind: io.l5d.k8s.daemonset
+        namespace: linkerd
+        port: http-incoming
+        service: l5d
+        # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+    - kind: io.l5d.k8s
+      prefix: /io.l5d.k8s.h2
+      transformers:
+        # The daemonset transformer replaces the address of the target app with
+        # the address of the h2-incoming router of the Linkerd daemonset pod
+        # on the target app's node.
+      - kind: io.l5d.k8s.daemonset
+        namespace: linkerd
+        port: h2-incoming
+        service: l5d
+        # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+    - kind: io.l5d.k8s
+      prefix: /io.l5d.k8s.grpc
+      transformers:
+        # The daemonset transformer replaces the address of the target app with
+        # the address of the grpc-incoming router of the Linkerd daemonset pod
+        # on the target app's node.
+      - kind: io.l5d.k8s.daemonset
+        namespace: linkerd
+        port: grpc-incoming
+        service: l5d
+        # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+    - kind: io.l5d.rewrite
+      prefix: /portNsSvcToK8s
+      pattern: "/{port}/{ns}/{svc}"
+      name: "/k8s/{ns}/{port}/{svc}"
+
+    # Telemeters export metrics and tracing data about Linkerd, the services it
+    # connects to, and the requests it processes.
+    telemetry:
+    - kind: io.l5d.prometheus # Expose Prometheus style metrics on :9990/admin/metrics/prometheus
+    - kind: io.l5d.recentRequests
+      sampleRate: 0.25 # Tune this sample rate before going to production
+    # - kind: io.l5d.zipkin # Uncomment to enable exporting of zipkin traces
+    #   host: zipkin-collector.default.svc.cluster.local # Zipkin collector address
+    #   port: 9410
+    #   sampleRate: 1.0 # Set to a lower sample rate depending on your traffic volume
+
+    # Usage is used for anonymized usage reporting.  You can set the orgId to
+    # identify your organization or set `enabled: false` to disable entirely.
+    usage:
+      orgId: linkerd-examples-servicemesh
+
+    # Routers define how Linkerd actually handles traffic.  Each router listens
+    # for requests, applies routing rules to those requests, and proxies them
+    # to the appropriate destinations.  Each router is protocol specific.
+    # For each protocol (HTTP, HTTP/2, gRPC) we define an outgoing router and
+    # an incoming router.  The application is expected to send traffic to the
+    # outgoing router which proxies it to the incoming router of the Linkerd
+    # running on the target service's node.  The incoming router then proxies
+    # the request to the target application itself.  We also define HTTP and
+    # HTTP/2 ingress routers which act as Ingress Controllers and route based
+    # on the Ingress resource.
+    routers:
+    - label: http-outgoing
+      protocol: http
+      servers:
+      - port: 4140
+        ip: 0.0.0.0
+      # This dtab looks up service names in k8s and falls back to DNS if they're
+      # not found (e.g. for external services). It accepts names of the form
+      # "service" and "service.namespace", defaulting the namespace to
+      # "default". For DNS lookups, it uses port 80 if unspecified. Note that
+      # dtab rules are read bottom to top. To see this in action, on the Linkerd
+      # administrative dashboard, click on the "dtab" tab, select "http-outgoing"
+      # from the dropdown, and enter a service name like "a.b". (Or click on the
+      # "requests" tab to see recent traffic through the system and how it was
+      # resolved.)
+      dtab: |
+        /ph  => /$/io.buoyant.rinet ;                     # /ph/80/google.com -> /$/io.buoyant.rinet/80/google.com
+        /svc => /ph/80 ;                                  # /svc/google.com -> /ph/80/google.com
+        /svc => /$/io.buoyant.porthostPfx/ph ;            # /svc/google.com:80 -> /ph/80/google.com
+        /k8s => /#/io.l5d.k8s.http ;                      # /k8s/default/http/foo -> /#/io.l5d.k8s.http/default/http/foo
+        /portNsSvc => /#/portNsSvcToK8s ;                 # /portNsSvc/http/default/foo -> /k8s/default/http/foo
+        /host => /portNsSvc/http/default ;                # /host/foo -> /portNsSvc/http/default/foo
+        /host => /portNsSvc/http ;                        # /host/default/foo -> /portNsSvc/http/default/foo
+        /svc => /$/io.buoyant.http.domainToPathPfx/host ; # /svc/foo.default -> /host/default/foo
+      client:
+        kind: io.l5d.static
+        configs:
+        # Use HTTPS if sending to port 443
+        - prefix: "/$/io.buoyant.rinet/443/{service}"
+          tls:
+            commonName: "{service}"
+
+    - label: http-incoming
+      protocol: http
+      servers:
+      - port: 4141
+        ip: 0.0.0.0
+      interpreter:
+        kind: default
+        transformers:
+        - kind: io.l5d.k8s.localnode
+          # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+      dtab: |
+        /k8s => /#/io.l5d.k8s ;                           # /k8s/default/http/foo -> /#/io.l5d.k8s/default/http/foo
+        /portNsSvc => /#/portNsSvcToK8s ;                 # /portNsSvc/http/default/foo -> /k8s/default/http/foo
+        /host => /portNsSvc/http/default ;                # /host/foo -> /portNsSvc/http/default/foo
+        /host => /portNsSvc/http ;                        # /host/default/foo -> /portNsSvc/http/default/foo
+        /svc => /$/io.buoyant.http.domainToPathPfx/host ; # /svc/foo.default -> /host/default/foo
+
+    - label: h2-outgoing
+      protocol: h2
+      experimental: true
+      servers:
+      - port: 4240
+        ip: 0.0.0.0
+      dtab: |
+        /ph  => /$/io.buoyant.rinet ;                       # /ph/80/google.com -> /$/io.buoyant.rinet/80/google.com
+        /svc => /ph/80 ;                                    # /svc/google.com -> /ph/80/google.com
+        /svc => /$/io.buoyant.porthostPfx/ph ;              # /svc/google.com:80 -> /ph/80/google.com
+        /k8s => /#/io.l5d.k8s.h2 ;                          # /k8s/default/h2/foo -> /#/io.l5d.k8s.h2/default/h2/foo
+        /portNsSvc => /#/portNsSvcToK8s ;                   # /portNsSvc/h2/default/foo -> /k8s/default/h2/foo
+        /host => /portNsSvc/h2/default ;                    # /host/foo -> /portNsSvc/h2/default/foo
+        /host => /portNsSvc/h2 ;                            # /host/default/foo -> /portNsSvc/h2/default/foo
+        /svc => /$/io.buoyant.http.domainToPathPfx/host ;   # /svc/foo.default -> /host/default/foo
+      client:
+        kind: io.l5d.static
+        configs:
+        # Use HTTPS if sending to port 443
+        - prefix: "/$/io.buoyant.rinet/443/{service}"
+          tls:
+            commonName: "{service}"
+
+    - label: h2-incoming
+      protocol: h2
+      experimental: true
+      servers:
+      - port: 4241
+        ip: 0.0.0.0
+      interpreter:
+        kind: default
+        transformers:
+        - kind: io.l5d.k8s.localnode
+          # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+      dtab: |
+        /k8s => /#/io.l5d.k8s ;                             # /k8s/default/h2/foo -> /#/io.l5d.k8s/default/h2/foo
+        /portNsSvc => /#/portNsSvcToK8s ;                   # /portNsSvc/h2/default/foo -> /k8s/default/h2/foo
+        /host => /portNsSvc/h2/default ;                    # /host/foo -> /portNsSvc/h2/default/foo
+        /host => /portNsSvc/h2 ;                            # /host/default/foo -> /portNsSvc/h2/default/foo
+        /svc => /$/io.buoyant.http.domainToPathPfx/host ;   # /svc/foo.default -> /host/default/foo
+
+    - label: grpc-outgoing
+      protocol: h2
+      experimental: true
+      servers:
+      - port: 4340
+        ip: 0.0.0.0
+      identifier:
+        kind: io.l5d.header.path
+        segments: 1
+      dtab: |
+        /hp  => /$/inet ;                                # /hp/linkerd.io/8888 -> /$/inet/linkerd.io/8888
+        /svc => /$/io.buoyant.hostportPfx/hp ;           # /svc/linkerd.io:8888 -> /hp/linkerd.io/8888
+        /srv => /#/io.l5d.k8s.grpc/default/grpc;         # /srv/service/package -> /#/io.l5d.k8s.grpc/default/grpc/service/package
+        /svc => /$/io.buoyant.http.domainToPathPfx/srv ; # /svc/package.service -> /srv/service/package
+      client:
+        kind: io.l5d.static
+        configs:
+        # Always use TLS when sending to external grpc servers
+        - prefix: "/$/inet/{service}"
+          tls:
+            commonName: "{service}"
+
+    - label: gprc-incoming
+      protocol: h2
+      experimental: true
+      servers:
+      - port: 4341
+        ip: 0.0.0.0
+      identifier:
+        kind: io.l5d.header.path
+        segments: 1
+      interpreter:
+        kind: default
+        transformers:
+        - kind: io.l5d.k8s.localnode
+          # hostNetwork: true # Uncomment if using host networking (eg for CNI)
+      dtab: |
+        /srv => /#/io.l5d.k8s/default/grpc ;             # /srv/service/package -> /#/io.l5d.k8s/default/grpc/service/package
+        /svc => /$/io.buoyant.http.domainToPathPfx/srv ; # /svc/package.service -> /srv/service/package
+
+    # HTTP Ingress Controller listening on port 80
+    - protocol: http
+      label: http-ingress
+      servers:
+        - port: 80
+          ip: 0.0.0.0
+          clearContext: true
+      identifier:
+        kind: io.l5d.ingress
+      dtab: /svc => /#/io.l5d.k8s
+
+    # HTTP/2 Ingress Controller listening on port 8080
+    - protocol: h2
+      experimental: true
+      label: h2-ingress
+      servers:
+        - port: 8080
+          ip: 0.0.0.0
+          clearContext: true
+      identifier:
+        kind: io.l5d.ingress
+      dtab: /svc => /#/io.l5d.k8s
+
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: l5d
+  name: l5d
+  namespace: linkerd  
+spec:
+  template:
+    metadata:
+      labels:
+        app: l5d
+    spec:
+      # hostNetwork: true # Uncomment to use host networking (eg for CNI)
+      volumes:
+      - name: l5d-config
+        configMap:
+          name: "l5d-config"
+      containers:
+      - name: l5d
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-linkerd:1.1.2
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        args:
+        - /io.buoyant/linkerd/config/config.yaml
+        ports:
+        - name: http-outgoing
+          containerPort: 4140
+          hostPort: 4140
+        - name: http-incoming
+          containerPort: 4141
+        - name: h2-outgoing
+          containerPort: 4240
+          hostPort: 4240
+        - name: h2-incoming
+          containerPort: 4241
+        - name: grpc-outgoing
+          containerPort: 4340
+          hostPort: 4340
+        - name: grpc-incoming
+          containerPort: 4341
+        - name: http-ingress
+          containerPort: 80
+        - name: h2-ingress
+          containerPort: 8080
+        volumeMounts:
+        - name: "l5d-config"
+          mountPath: "/io.buoyant/linkerd/config"
+          readOnly: true
+
+      # Run `kubectl proxy` as a sidecar to give us authenticated access to the
+      # Kubernetes API.
+      - name: kubectl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        args:
+        - "proxy"
+        - "-p"
+        - "8001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: l5d
+  namespace: linkerd  
+spec:
+  selector:
+    app: l5d
+  type: LoadBalancer
+  ports:
+  - name: http-outgoing
+    port: 4140
+  - name: http-incoming
+    port: 4141
+  - name: h2-outgoing
+    port: 4240
+  - name: h2-incoming
+    port: 4241
+  - name: grpc-outgoing
+    port: 4340
+  - name: grpc-incoming
+    port: 4341
+  - name: http-ingress
+    port: 80
+  - name: h2-ingress
+    port: 8080

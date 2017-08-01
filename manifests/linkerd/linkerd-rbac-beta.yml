@@ -1,0 +1,47 @@
+# RBAC configs for linkerd
+---
+# grant linkerd/namerd permissions to enable service discovery
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: linkerd-endpoints-reader
+rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["endpoints", "services", "pods"] # pod access is required for the *-legacy.yml examples in this folder
+    verbs: ["get", "watch", "list"]
+---
+# grant namerd permisisons to third party resources for dtab storage
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: namerd-dtab-storage
+rules:
+  - apiGroups: ["l5d.io"]
+    resources: ["dtabs"]
+    verbs: ["get", "watch", "list", "update", "create"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: linkerd-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: linkerd-endpoints-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: namerd-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: namerd-dtab-storage
+  apiGroup: rbac.authorization.k8s.io

@@ -62,6 +62,7 @@
       - [5.1.1.1 安装istio](usecases/istio-installation.md)
       - [5.1.1.2 配置请求的路由规则](usecases/configuring-request-routing.md)
     - [5.1.2 Linkerd](usecases/linkerd.md)
+      - [5.1.2.1 Linkerd 使用指南](usecases/linkerd-user-guide.md)
     - [5.1.3 微服务中的服务发现](usecases/service-discovery-in-microservices.md)
   - [5.2 大数据](usecases/big-data.md)
     - [5.2.1 Spark on Kubernetes](usecases/spark-on-kubernetes.md)

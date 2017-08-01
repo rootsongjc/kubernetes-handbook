@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: world-v2
+spec:
+  replicas: 3
+  selector:
+    app: world-v2
+  template:
+    metadata:
+      labels:
+        app: world-v2
+    spec:
+      dnsPolicy: ClusterFirst
+      containers:
+      - name: service
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-helloworld:0.1.4
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: TARGET_WORLD
+          value: earth
+        args:
+        - "-addr=:7778"
+        ports:
+        - name: service
+          containerPort: 7778
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: world-v2
+spec:
+  selector:
+    app: world-v2
+  clusterIP: None
+  ports:
+  - name: http
+    port: 7778

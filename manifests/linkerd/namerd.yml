@@ -1,0 +1,152 @@
+---
+kind: ThirdPartyResource
+apiVersion: extensions/v1beta1
+metadata:
+  name: d-tab.l5d.io
+description: stores dtabs used by namerd
+versions:
+- name: v1alpha1
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: namerd-config
+data:
+  config.yml: |-
+    admin:
+      port: 9990
+
+    namers:
+    - kind: io.l5d.k8s
+      experimental: true
+      host: localhost
+      port: 8001
+
+    storage:
+      kind: io.l5d.k8s
+      host: localhost
+      port: 8001
+      namespace: default
+
+    interfaces:
+    - kind: io.l5d.thriftNameInterpreter
+      ip: 0.0.0.0
+      port: 4100
+    - kind: io.l5d.httpController
+      ip: 0.0.0.0
+      port: 4180
+---
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: namerd
+spec:
+  replicas: 1
+  selector:
+    app: namerd
+  template:
+    metadata:
+      labels:
+        app: namerd
+    spec:
+      dnsPolicy: ClusterFirst
+      volumes:
+      - name: namerd-config
+        configMap:
+          name: namerd-config
+      containers:
+      - name: namerd
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-namerd:1.1.2
+        args:
+        - /io.buoyant/namerd/config/config.yml
+        ports:
+        - name: thrift
+          containerPort: 4100
+        - name: http
+          containerPort: 4180
+        - name: admin
+          containerPort: 9990
+        volumeMounts:
+        - name: "namerd-config"
+          mountPath: "/io.buoyant/namerd/config"
+          readOnly: true
+      - name: kubectl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        args:
+        - "proxy"
+        - "-p"
+        - "8001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: namerd
+spec:
+  selector:
+    app: namerd
+  ports:
+  - name: thrift
+    port: 4100
+  - name: http
+    port: 4180
+  - name: admin
+    port: 9990
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: namerctl-script
+data:
+  createNs.sh: |-
+    #!/bin/sh
+
+    set -e
+
+    if namerctl dtab get external > /dev/null 2>&1; then
+      echo "external namespace already exists"
+    else
+      echo "
+      /host       => /#/io.l5d.k8s/default/http/hello;
+      /svc/*      => /host;
+      " | namerctl dtab create external -
+    fi
+
+    if namerctl dtab get internal > /dev/null 2>&1; then
+      echo "internal namespace already exists"
+    else
+      echo "
+      /srv        => /#/io.l5d.k8s/default/http;
+      /host       => /srv;
+      /tmp        => /srv;
+      /svc        => /host;
+      /host/world => /srv/world-v1;
+      " | namerctl dtab create internal -
+    fi
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: namerctl
+spec:
+  template:
+    metadata:
+      name: namerctl
+    spec:
+      volumes:
+      - name: namerctl-script
+        configMap:
+          name: namerctl-script
+          defaultMode: 0755
+      containers:
+      - name: namerctl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/linkerd-namerctl:0.8.6
+        env:
+        - name: NAMERCTL_BASE_URL
+          value: http://namerd.default.svc.cluster.local:4180
+        command:
+        - "/namerctl/createNs.sh"
+        volumeMounts:
+        - name: "namerctl-script"
+          mountPath: "/namerctl"
+          readOnly: true
+      restartPolicy: OnFailure

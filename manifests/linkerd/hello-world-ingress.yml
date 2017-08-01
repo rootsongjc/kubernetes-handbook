@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world
+  annotations:
+    kubernetes.io/ingress.class: "linkerd"
+spec:
+  backend:
+    serviceName: world-v1
+    servicePort: http
+  rules:
+  - host: world.v2
+    http:
+      paths:
+      - backend:
+          serviceName: world-v2
+          servicePort: http

@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: linkerd-viz
+  labels:
+    name: linkerd-viz
+spec:
+  replicas: 1
+  selector:
+    name: linkerd-viz
+  template:
+    metadata:
+      labels:
+        name: linkerd-viz
+    spec:
+      containers:
+      - name: linkerd-viz
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-linkerd-viz:latest
+        args: ["k8s"]
+        imagePullPolicy: Always
+        env:
+        - name: PUBLIC_PORT
+          value: "3000"
+        - name: STATS_PORT
+          value: "9191"
+        - name: SCRAPE_INTERVAL
+          value: "30s"
+        ports:
+        - name: grafana
+          containerPort: 3000
+        - name: prometheus
+          containerPort: 9191
+
+      - name: kubectl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        args:
+        - "proxy"
+        - "-p"
+        - "8001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkerd-viz
+  labels:
+    name: linkerd-viz
+spec:
+  ports:
+  - name: grafana
+    port: 80
+    targetPort: 3000
+  - name: prometheus
+    port: 9191
+    targetPort: 9191
+  selector:
+    name: linkerd-viz

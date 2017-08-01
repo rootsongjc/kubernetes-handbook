@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  selector:
+    app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      dnsPolicy: ClusterFirst
+      containers:
+      - name: jenkins
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-jenkins-plus:2.60.1
+        ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+spec:
+  selector:
+    app: jenkins
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080

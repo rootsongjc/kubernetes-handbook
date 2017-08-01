@@ -1,0 +1,122 @@
+# runs linkerd in a daemonset, in linker-to-linker mode
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: l5d-config
+data:
+  config.yaml: |-
+    admin:
+      port: 9990
+
+    namers:
+    - kind: io.l5d.k8s
+      experimental: true
+      host: localhost
+      port: 8001
+
+    telemetry:
+    - kind: io.l5d.prometheus
+    - kind: io.l5d.recentRequests
+      sampleRate: 0.25
+
+    usage:
+      orgId: linkerd-examples-daemonset
+
+    routers:
+    - protocol: http
+      label: outgoing
+      dtab: |
+        /srv        => /#/io.l5d.k8s/default/http;
+        /host       => /srv;
+        /svc        => /host;
+        /host/world => /srv/world-v1;
+      interpreter:
+        kind: default
+        transformers:
+        - kind: io.l5d.k8s.daemonset
+          namespace: default
+          port: incoming
+          service: l5d
+      servers:
+      - port: 4140
+        ip: 0.0.0.0
+      service:
+        responseClassifier:
+          kind: io.l5d.http.retryableRead5XX
+
+    - protocol: http
+      label: incoming
+      dtab: |
+        /srv        => /#/io.l5d.k8s/default/http;
+        /host       => /srv;
+        /svc        => /host;
+        /host/world => /srv/world-v1;
+      interpreter:
+        kind: default
+        transformers:
+        - kind: io.l5d.k8s.localnode
+      servers:
+      - port: 4141
+        ip: 0.0.0.0
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: l5d
+  name: l5d
+spec:
+  template:
+    metadata:
+      labels:
+        app: l5d
+    spec:
+      volumes:
+      - name: l5d-config
+        configMap:
+          name: "l5d-config"
+      containers:
+      - name: l5d
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-linkerd:1.1.2
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        args:
+        - /io.buoyant/linkerd/config/config.yaml
+        ports:
+        - name: outgoing
+          containerPort: 4140
+          hostPort: 4140
+        - name: incoming
+          containerPort: 4141
+        - name: admin
+          containerPort: 9990
+        volumeMounts:
+        - name: "l5d-config"
+          mountPath: "/io.buoyant/linkerd/config"
+          readOnly: true
+
+      - name: kubectl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        args:
+        - "proxy"
+        - "-p"
+        - "8001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: l5d
+spec:
+  selector:
+    app: l5d
+  ports:
+  - name: outgoing
+    port: 4140
+  - name: incoming
+    port: 4141
+  - name: admin
+    port: 9990

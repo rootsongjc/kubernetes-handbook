@@ -1,0 +1,110 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |-
+    worker_processes 1;
+
+    events { worker_connections 1024; }
+
+    http {
+        sendfile on;
+
+        server {
+            listen 80;
+
+            # a test endpoint that returns http 200s
+            location / {
+                proxy_pass http://httpstat.us/200;
+                proxy_set_header  X-Real-IP  $remote_addr;
+            }
+        }
+
+        server {
+
+            listen 80;
+            server_name api.hello.world;
+
+            location / {
+                proxy_pass http://l5d.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header Connection "";
+                proxy_http_version 1.1;
+
+                more_clear_input_headers 'l5d-ctx-*' 'l5d-dtab' 'l5d-sample';
+            }
+        }
+
+        server {
+
+            listen 80;
+            server_name www.hello.world;
+
+            location / {
+
+
+                # allow 'employees' to perform dtab overrides
+                if ($cookie_special_employee_cookie != "letmein") {
+                  more_clear_input_headers 'l5d-ctx-*' 'l5d-dtab' 'l5d-sample';
+                }
+
+                # add a dtab override to get people to our beta, world-v2
+                set $xheader "";
+
+                if ($cookie_special_employee_cookie ~* "dogfood") {
+                  set $xheader "/host/world => /srv/world-v2;";
+                }
+
+                proxy_set_header 'l5d-dtab' $xheader;
+
+
+                proxy_pass http://l5d.default.svc.cluster.local;
+                proxy_set_header Host $host;
+                proxy_set_header Connection "";
+                proxy_http_version 1.1;
+            }
+        }
+    }
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    app: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      containers:
+      - name: nginx
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-nginx:1.10.2
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: "nginx-config"
+          mountPath: "/etc/nginx"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: nginx
+  name: nginx
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: nginx

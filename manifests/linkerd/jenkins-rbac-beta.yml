@@ -1,0 +1,24 @@
+# RBAC configs for jenkins
+---
+# allows the jenkins process to run the continuous deploy demo
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-rc
+rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["services", "replicationcontrollers"]
+    verbs: ["*"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: jenkins-rc
+  apiGroup: rbac.authorization.k8s.io
