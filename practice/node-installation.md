@@ -9,6 +9,8 @@ kubernetes node 节点包含如下组件：
 
 下面着重讲`kubelet`和`kube-proxy`的安装，同时还要将之前安装的flannel集成TLS验证。
 
+**注意**：每台 node 上都需要安装 flannel，master 节点上可以不必安装。
+
 ## 目录和文件
 
 我们再检查一下三个节点上，经过前几步操作生成的配置文件。
@@ -149,6 +151,16 @@ ifconfig docker0 $FLANNEL_SUBNET
     inet 172.30.38.0/32 scope global flannel.1
        valid_lft forever preferred_lft forever
 ```
+
+同时在 docker 的配置文件 [docker.service](../systemd/docker.service) 中增加环境变量配置：
+
+```ini
+EnvironmentFile=-/run/flannel/docker
+EnvironmentFile=-/run/docker_opts.env
+EnvironmentFile=-/run/flannel/subnet.env
+```
+
+防止主机重启后 docker 自动重启时加载不到该上述环境变量。
 
 **启动docker**
 
