@@ -262,7 +262,7 @@ Kubernetes `ServiceTypes` 允许指定一个需要的类型的 Service，默认�
 
 * `ClusterIP`：通过集群的内部 IP 暴露服务，选择该值，服务只能够在集群内部可以访问，这也是默认的 `ServiceType`。
 * `NodePort`：通过每个 Node 上的 IP 和静态端口（`NodePort`）暴露服务。`NodePort` 服务会路由到 `ClusterIP` 服务，这个 `ClusterIP` 服务会自动创建。通过请求 `<NodeIP>:<NodePort>`，可以从集群的外部访问一个 `NodePort` 服务。
-* `LoadBalancer`：使用云提供商的负载局衡器，可以向外部暴露服务。外部的负载均衡器可以路由到 `NodePort` 服务和 `ClusterIP` 服务。
+* `LoadBalancer`：使用云提供商的负载均衡器，可以向外部暴露服务。外部的负载均衡器可以路由到 `NodePort` 服务和 `ClusterIP` 服务。
 * `ExternalName`：通过返回 `CNAME` 和它的值，可以将服务映射到 `externalName` 字段的内容（例如， `foo.bar.example.com`）。
     没有任何类型代理被创建，这只有 Kubernetes 1.7 或更高版本的 `kube-dns` 才支持。
 
@@ -353,7 +353,7 @@ TCP 和 SSL 将选择4层代理：ELB 将转发流量，并不修改 Header 信�
 `externalIPs` 不会被 Kubernetes 管理，它属于集群管理员的职责范畴。
 
 根据 `Service` 的规定，`externalIPs` 可以同任意的 `ServiceType` 来一起指定。
-在上面的例子中，`my-service` 可以在 80.11.12.10:80（外部 IP:端口）上被客户端访问。
+在下面的例子中，`my-service` 可以在 80.11.12.10:80（外部 IP:端口）上被客户端访问。
 
 ```yaml
 kind: Service
