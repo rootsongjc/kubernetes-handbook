@@ -62,7 +62,7 @@ Controller可以创建和管理多个Pod，提供副本管理、滚动升级和�
 
 ## Pod Templates
 
-Pod模版是包含了其他object的Pod定义，例如[Replication Controllers，[Jobs](./job.md)和
+Pod模版是包含了其他object的Pod定义，例如[Replication Controllers](replicaset.md)，[Jobs](./job.md)和
 [DaemonSets](./daemonset.md)。Controller根据Pod模板来创建实际的Pod。
 
 
