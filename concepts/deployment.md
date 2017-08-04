@@ -99,7 +99,7 @@ deployment "nginx-deployment" created
 
 将kubectl的 `--record` 的 flag 设置为 `true`可以在 annotation 中记录当前命令创建或者升级了该资源。这在未来会很有用，例如，查看在每个 Deployment revision 中执行了哪些命令。
 
-然后立即执行`get`í将获得如下结果：
+然后立即执行 `get` 将获得如下结果：
 
 ```shell
 $ kubectl get deployments
