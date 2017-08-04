@@ -137,7 +137,7 @@ nginx-deployment-2035384211-qqcnn   1/1       Running   0          18s       app
 
 刚创建的Replica Set将保证总是有3个 nginx 的 pod 存在。
 
-**注意：**  您必须在 Deployment 中的 selector 指定正确 pod template label（在该示例中是 `app = nginx`），不要跟其他的controller搞混了（包括Deployment、Replica Set、Replication Controller 等）。**Kubernetes 本身不会阻止您这么做**，如果您真的这么做了，这些 controller 之间会相互打架，并可能导致不正确的行为。
+**注意：**  您必须在 Deployment 中的 selector 指定正确的 pod template label（在该示例中是 `app = nginx`），不要跟其他的 controller 的 selector 中指定的 pod template label 搞混了（包括 Deployment、Replica Set、Replication Controller 等）。**Kubernetes 本身并不会阻止您任意指定 pod template label **，但是如果您真的这么做了，这些 controller 之间会相互打架，并可能导致不正确的行为。
 
 ### Pod-template-hash label
 
