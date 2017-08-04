@@ -93,7 +93,7 @@ Deployment为Pod和Replica Set（下一代Replication Controller）提供声明�
 下载示例文件并执行命令：
 
 ```shell
-$ kubectl create -f docs/user-guide/nginx-deployment.yaml --record
+$ kubectl create -f https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/user-guide/nginx-deployment.yaml --record
 deployment "nginx-deployment" created
 ```
 
@@ -346,7 +346,7 @@ Events:
 $ kubectl rollout history deployment/nginx-deployment
 deployments "nginx-deployment":
 REVISION    CHANGE-CAUSE
-1           kubectl create -f docs/user-guide/nginx-deployment.yaml --record
+1           kubectl create -f https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/user-guide/nginx-deployment.yaml--record
 2           kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1
 3           kubectl set image deployment/nginx-deployment nginx=nginx:1.91
 ```
