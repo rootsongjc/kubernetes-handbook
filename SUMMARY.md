@@ -29,6 +29,7 @@
   - [3.4 适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
   - [3.5 配置Pod的Service Account](guide/configure-pod-service-account.md)
   - [3.6 访问集群](guide/access-cluster.md)
+  - [3.7 使用 kubeconfig 文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
 - [4. 最佳实践](practice/index.md)
   - [ 4.1 在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
     - [4.1.1 创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
