@@ -20,7 +20,7 @@
 $ git clone https://github.com/rootsongjc/distributed-load-testing-using-kubernetes.git
 $ cd kubernetes-config
 $ kubectl create -f sample-webapp-controller.yaml
-$ kubectl create -f kubectl create -f sample-webapp-service.yaml
+$ kubectl create -f sample-webapp-service.yaml
 ```
 
 ## 部署Locust的Controller和Service
