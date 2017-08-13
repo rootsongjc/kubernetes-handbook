@@ -28,13 +28,14 @@
    ```
     NAME           READY     STATUS    RESTARTS   AGE
     redis-master   2/2       Running   0          41s
-
    ```
 
 3. 验证 Redis 服务器是否已在 Pod 中运行，并监听 6379 端口：
 
-   ```bash
+   ```
+   {% raw %}
    kubectl get pods redis-master --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}'
+   {% endraw %}
    ```
 
    端口输出如下：
