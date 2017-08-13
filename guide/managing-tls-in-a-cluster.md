@@ -117,6 +117,17 @@ $ kubectl get csr my-svc.my-namespace -o jsonpath='{.status.certificate}' \
 
 现在你可以用`server.crt`和`server-key.pem`来做为keypair来启动HTTPS server。
 
+## 批准证书签名请求
+
+Kubernetes 管理员（具有适当权限）可以使用 `kubectl certificate approve` 和`kubectl certificate deny` 命令手动批准（或拒绝）证书签名请求。但是，如果您打算大量使用此 API，则可以考虑编写自动化的证书控制器。
+
+如果上述机器或人类使用 kubectl，批准者的作用是验证 CSR 满足如下两个要求：
+
+1. CSR 的主体控制用于签署 CSR 的私钥。这解决了伪装成授权主体的第三方的威胁。在上述示例中，此步骤将验证该 pod 控制了用于生成 CSR 的私钥。
+2. CSR 的主体被授权在请求的上下文中执行。这解决了我们加入群集的我们不期望的主体的威胁。在上述示例中，此步骤将是验证该 pod 是否被允许加入到所请求的服务中。
+
+当且仅当满足这两个要求时，审批者应该批准 CSR，否则拒绝 CSR。
+
 ## 给集群管理员的一个建议
 
 本教程假设将signer设置为服务证书API。Kubernetes controller manager提供了一个signer的默认实现。 要启用它，请将`--cluster-signature-cert-file`和`—cluster-signing-key-file`参数传递给controller manager，并配置具有证书颁发机构的密钥对的路径。
