@@ -40,7 +40,7 @@ $ cat <<EOF | cfssl genkey - | cfssljson -bare server
 EOF
 ```
 
- `172.168.0.24` 是service的cluster IP，`my-svc.my-namespace.svc.cluster.local` 是service的DNS名称， `10.0.34.2` 是Pod的IP， `my-pod.my-namespace.pod.cluster.local` 是pode的DNS名称，你可以看到以下输出：
+ `172.168.0.24` 是 service 的 cluster IP，`my-svc.my-namespace.svc.cluster.local` 是 service 的 DNS 名称， `10.0.34.2` 是 Pod 的 IP， `my-pod.my-namespace.pod.cluster.local` 是pod 的 DNS 名称，你可以看到以下输出：
 
 ```
 2017/03/21 06:48:17 [INFO] generate received request
@@ -108,7 +108,7 @@ NAME                  AGE       REQUESTOR               CONDITION
 my-svc.my-namespace   10m       yourname@example.com    Approved,Issued
 ```
 
-你可以通过运行以下命令下载颁发的证书并将其保存到`server.crt`文件：
+你可以通过运行以下命令下载颁发的证书并将其保存到`server.crt`文件中：
 
 ```bash
 $ kubectl get csr my-svc.my-namespace -o jsonpath='{.status.certificate}' \
