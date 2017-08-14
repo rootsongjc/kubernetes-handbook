@@ -69,6 +69,18 @@ dd if=/dev/zero of=test bs=1G count=10
 
 从截图中可以看到创建了9个size为1G的block后无法继续创建了，已经超出了8G的限额。
 
+## 7. 使用 Headless service 的时候 kubedns 解析不生效
+
+kubelet 的配置文件 `/etc/kubernetes/kubelet` 中的配置中将集群 DNS 的 domain name 配置成了  `––cluster-domain=cluster.local.`  ，虽然对于 service 的名字能够正常的完成 DNS 解析，但是对于 headless service 中的 pod 名字解析不了，查看 pod 的 `/etc/resolv.conf` 文件可以看到以下内容：
+
+```
+nameserver 10.0.254.2
+search default.svc.cluster.local. svc.cluster.local. cluster.local. tendcloud.com
+options ndots:5
+```
+
+修改 `/etc/kubernetes/kubelet` 文件中的  `––cluster-domain=cluster.local.`  将 local 后面的点去掉后重启所有的 kubelet，这样新创建的 pod 中的 `/etc/resolv.conf`文件的 DNS 配置和解析就正常了。
+
 **参考**
 
 [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
