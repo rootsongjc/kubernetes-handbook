@@ -96,7 +96,7 @@ elasticsearch-logging   10.254.77.62    <none>        9200/TCP                  
 kibana-logging          10.254.8.113    <none>        5601/TCP                        2m
 ```
 
-kibana Pod 第一次启动时会用**较长时间(10-20分钟)**来优化和 Cache 状态页面，可以 tailf 该 Pod 的日志观察进度：
+kibana Pod 第一次启动时会用__较长时间(10-20分钟) __来优化和 Cache 状态页面，可以 tailf 该 Pod 的日志观察进度：
 
 ``` bash
 $ kubectl logs kibana-logging-1432287342-0gdng -n kube-system -f
