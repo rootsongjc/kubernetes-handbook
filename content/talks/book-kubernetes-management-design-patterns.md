@@ -18,6 +18,8 @@ Amazon购买链接：[链接](https://www.amazon.com/Kubernetes-Management-Desig
 
 页数：399
 
+![kubernetes management design patterns 书籍封面](http://olz1di9xf.bkt.clouddn.com/kubernets-management-design-patterns.jpg)
+
 ## 简介
 
 Kubernetes引领容器集群管理进入一个全新的阶段；学习如何在CoreOS上配置和管理kubernetes集群；使用适当的管理模式，如ConfigMaps、Autoscaling、弹性资源使用和高可用性配置。讨论了kubernetes的一些其他特性，如日志、调度、滚动升级、volume、服务类型和跨多个云供应商zone。
