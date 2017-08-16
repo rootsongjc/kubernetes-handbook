@@ -100,3 +100,6 @@ $ kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
 ``` bash
 $ cp bootstrap.kubeconfig kube-proxy.kubeconfig /etc/kubernetes/
 ```
+## 参考
+
+关于 kubeconfig 文件的更多信息请参考 [使用 kubeconfig 文件配置跨集群认证](../guide/authenticate-across-clusters-kubeconfig.md)。
