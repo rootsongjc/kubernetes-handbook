@@ -1,5 +1,17 @@
 # 创建TLS证书和秘钥
 
+## 前言
+
+执行下列步骤前建议你先阅读以下内容：
+
+- [管理集群中的TLS](../guide/managing-tls-in-a-cluster.md)：教您如何创建TLS证书
+- [kubelet的认证授权](../guide/kubelet-authentication-authorization.md)：向您描述如何通过认证授权来访问 kubelet 的 HTTPS 端点。
+- [TLS bootstrap](../guide/tls-bootstrapping.md)：介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）。
+
+**注意：**这一步是在安装配置kubernetes的所有步骤中最容易出错也最难于排查问题的一步，而这却刚好是第一步，万事开头难，不要因为这点困难就望而却步。
+
+**如果您足够有信心在完全不了解自己在做什么的情况下能够成功地完成了这一步的配置，那么您可以尽管跳过上面的几篇文章直接进行下面的操作。**
+
 `kubernetes` 系统的各组件需要使用 `TLS` 证书对通信进行加密，本文档使用 `CloudFlare` 的 PKI 工具集 [cfssl](https://github.com/cloudflare/cfssl) 来生成 Certificate Authority (CA) 和其它证书；
 
 **生成的 CA 证书和秘钥文件如下：**
@@ -362,3 +374,4 @@ $ sudo cp *.pem /etc/kubernetes/ssl
 + [Setting up a Certificate Authority and Creating TLS Certificates](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-certificate-authority.md)
 + [Client Certificates V/s Server Certificates](https://blogs.msdn.microsoft.com/kaushal/2012/02/17/client-certificates-vs-server-certificates/)
 + [数字证书及 CA 的扫盲介绍](http://blog.jobbole.com/104919/)
++ [TLS bootstrap 引导程序](../guide/tls-bootstrapping.md)

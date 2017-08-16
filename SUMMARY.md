@@ -31,6 +31,7 @@
   - [3.3 集群管理](guide/cluster-management.md)
     - [3.3.1 管理集群中的TLS](guide/managing-tls-in-a-cluster.md)
     - [3.3.2 kubelet的认证授权](guide/kubelet-authentication-authorization.md)
+    - [3.3.3 TLS bootstrap](guide/tls-bootstrapping.md)
   - [3.4 访问 Kubernetes 集群](guide/access-kubernetes-cluster.md)
     - [3.4.1 访问集群](guide/access-cluster.md)
     - [3.4.2 使用 kubeconfig 文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
