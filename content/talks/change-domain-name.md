@@ -1,7 +1,7 @@
 +++
 date = "2017-08-18T23:25:23+08:00"
 draft = false
-Title = "从今日起更换域名为jimmysong.io"
+title = "从今日起更换域名为jimmysong.io"
 
 +++
 
