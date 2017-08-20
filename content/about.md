@@ -11,9 +11,8 @@ title = "About Jimmy Song"
 - Jimmy Song
 - Beijing, China
 - [Wuhan University of Technology](http://www.whut.edu.cn)
-- Wechat: jimmysong
 - Career
-  - [iflytek](http://www.iflytek.com)
+  - [iFlytek](http://www.iflytek.com) （科大讯飞）
   - [TalkingData](http://www.talkingdata.com)
 
 ### GitHub
