@@ -38,7 +38,7 @@ Tags = ["kubernetes","hadoop","yarn"]
 
 整个迁移过程分为如下几个步骤：
 
-### 1. 将原有应用拆解为服务
+## 1. 将原有应用拆解为服务
 
 我们不是一上来就开始做镜像，写配置，而是应该先梳理下要迁移的应用中有哪些可以作为服务运行，哪些是变的，哪些是不变的部分。
 
@@ -50,7 +50,7 @@ Tags = ["kubernetes","hadoop","yarn"]
 - NodeManager
 - Spark client
 
-### 2. 制作镜像
+## 2. 制作镜像
 
 根据拆解出来的服务，我们需要制作两个镜像：
 
@@ -122,7 +122,7 @@ yarn-site.xml
 
 其中作为 bootstrap 启动脚本的 `bootstrap.sh` 也包含在该目录下，该脚本如何编写请见下文。
 
-### 4. Kubernetes YAML 文件
+## 4. Kubernetes YAML 文件
 
 根据业务的特性选择最适合的 kubernetes 的资源对象来运行，因为在 YARN 中 NodeManager 需要使用主机名向 ResourceManger 注册，因此需要沿用 YARN 原有的服务发现方式，使用 headless service 和 StatefulSet 资源。更多资料请参考 [StatefulSet](https://github.com/rootsongjc/kubernetes-handbook/blob/master/concepts/statefulset.md)。
 
@@ -141,7 +141,7 @@ yarn-rm-statefulset.yaml
 
 ```
 
-### 5. Bootstrap 脚本
+## 5. Bootstrap 脚本
 
 Bootstrap 脚本的作用是在启动时根据 Pod 的环境变量、主机名或其他可以区分不同 Pod 和将启动角色的变量来修改配置文件和启动服务应用。
 
@@ -199,7 +199,7 @@ fi
 
 如果 kubernetes YAML 中的 container CMD args 中包含 `-d` 则在后台运行 NodeManger 并 tail 输出 NodeManager 的日志到标准输出。
 
-### 6. ConfigMaps
+## 6. ConfigMaps
 
 将 Hadoop 的配置文件和 bootstrap 脚本作为 ConfigMap 资源保存，用作 Pod 启动时挂载的 volume。
 
