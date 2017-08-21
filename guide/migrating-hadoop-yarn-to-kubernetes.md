@@ -106,7 +106,33 @@
    yarn-site.xml
    ```
 
-   其中作为 bootstrap 启动脚本的 `bootstrap.sh` 也包含在该目录下。
+   其中作为 bootstrap 启动脚本的 `bootstrap.sh` 也包含在该目录下，该脚本的如何编写请见下文。
+
+4. **Kubernetes YAML 文件**
+
+   根据业务的特性选择最适合的 kubernetes 的资源对象来运行，因为在 YARN 中 NodeManager 需要使用主机名向 ResourceManger 注册，因此需要沿用 YARN 原有的服务发现方式，使用 headless service 和 StatefulSet 资源。更多资料请参考  [StatefulSet](../concepts/statefulset.md)。
+
+   所有的 Kubernetes YAML 配置文件存储在 `manifest` 目录下，包括如下配置：
+
+   - yarn-cluster 的 namespace 配置
+   - Spark、ResourceManager、NodeManager 的 headless service 和 StatefulSet 配置
+   - 需要暴露到 kubernetes 集群外部的 ingress 配置（ResourceManager 的 Web）
+
+   ```
+   kube-yarn-ingress.yaml
+   spark-statefulset.yaml
+   yarn-cluster-namespace.yaml
+   yarn-nm-statefulset.yaml
+   yarn-rm-statefulset.yaml
+   ```
+
+5. **Bootstrap 脚本**
+
+   Bootstrap 脚本的作用是在启动时根据 Pod 的环境变量、主机名或其他可以区分不同 Pod 和将启动角色的变量来修改配置文件和启动服务应用。
+
+   该脚本同时将原来 YARN 的日志使用 stdout 输出，便于使用 `kubectl logs` 查看日志或其他日志收集工具进行日志收集。
+
+   启动脚本 `bootstrap.sh`  跟 Hadoop 的配置文件同时保存在 `artifacts` 目录下。
 
    该脚本根据 Pod 的主机名，决定如何修改 Hadoop 的配置文件和启动何种服务。`bootstrap.sh` 文件的部分代码如下：
 
@@ -157,32 +183,6 @@
    所有的配置准备完成后，执行 `start-yarn-nm.sh` 脚本启动 NodeManager。
 
    如果 kubernetes YAML 中的 container CMD args 中包含 `-d` 则在后台运行 NodeManger 并 tail 输出 NodeManager 的日志到标准输出。
-
-4. **Kubernetes YAML 文件**
-
-   根据业务的特性选择最适合的 kubernetes 的资源对象来运行，因为在 YARN 中 NodeManager 需要使用主机名向 ResourceManger 注册，因此需要沿用 YARN 原有的服务发现方式，使用 headless service 和 StatefulSet 资源。更多资料请参考  [StatefulSet](../concepts/statefulset.md)。
-
-   所有的 Kubernetes YAML 配置文件存储在 `manifest` 目录下，包括如下配置：
-
-   - yarn-cluster 的 namespace 配置
-   - Spark、ResourceManager、NodeManager 的 headless service 和 StatefulSet 配置
-   - 需要暴露到 kubernetes 集群外部的 ingress 配置（ResourceManager 的 Web）
-
-   ```
-   kube-yarn-ingress.yaml
-   spark-statefulset.yaml
-   yarn-cluster-namespace.yaml
-   yarn-nm-statefulset.yaml
-   yarn-rm-statefulset.yaml
-   ```
-
-5. **Bootstrap 脚本**
-
-   Bootstrap 脚本的作用是在启动时根据 Pod 的环境变量、主机名或其他可以区分不同 Pod 和将启动角色的变量来修改配置文件和启动服务应用。
-
-   该脚本同时将原来 YARN 的日志使用 stdout 输出，便于使用 `kubectl logs` 查看日志或其他日志收集工具进行日志收集。
-
-   启动脚本 `bootstrap.sh`  跟 Hadoop 的配置文件同时保存在 `artifacts` 目录下。
 
 6. **ConfigMaps**
 
