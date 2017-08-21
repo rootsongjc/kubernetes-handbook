@@ -39,6 +39,7 @@
     - [3.4.4 使用 service 访问群集中的应用程序](guide/service-access-application-cluster.md)
   - [3.5 在kubernetes中开发部署应用](guide/application-development-deployment-flow.md)
     - [3.5.1 适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
+    - [3.5.2 迁移传统应用到kubernetes中——以Hadoop YARN为例](guide/migrating-hadoop-yarn-to-kubernetes.md)
 - [4. 最佳实践](practice/index.md)
   - [ 4.1 在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
     - [4.1.1 创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
