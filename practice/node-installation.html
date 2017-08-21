@@ -1,0 +1,1816 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>4.1.6 部署node节点 · Kubernetes Handbook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="Jimmy Song">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kubedns-addon-installation.html" />
+    
+    
+    <link rel="prev" href="master-installation.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1. 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../concepts/">
+            
+                <a href="../concepts/">
+            
+                    
+                    2. 概念原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../concepts/concepts.html">
+            
+                <a href="../concepts/concepts.html">
+            
+                    
+                    2.1 设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../concepts/objects.html">
+            
+                <a href="../concepts/objects.html">
+            
+                    
+                    2.2 主要概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../concepts/pod-overview.html">
+            
+                <a href="../concepts/pod-overview.html">
+            
+                    
+                    2.2.1 Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1.1" data-path="../concepts/pod.html">
+            
+                <a href="../concepts/pod.html">
+            
+                    
+                    2.2.1.1 Pod解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../concepts/node.html">
+            
+                <a href="../concepts/node.html">
+            
+                    
+                    2.2.2 Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../concepts/namespace.html">
+            
+                <a href="../concepts/namespace.html">
+            
+                    
+                    2.2.3 Namespace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../concepts/service.html">
+            
+                <a href="../concepts/service.html">
+            
+                    
+                    2.2.4 Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="../concepts/volume.html">
+            
+                <a href="../concepts/volume.html">
+            
+                    
+                    2.2.5 Volume和Persistent Volume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="../concepts/deployment.html">
+            
+                <a href="../concepts/deployment.html">
+            
+                    
+                    2.2.6 Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.7" data-path="../concepts/secret.html">
+            
+                <a href="../concepts/secret.html">
+            
+                    
+                    2.2.7 Secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.8" data-path="../concepts/statefulset.html">
+            
+                <a href="../concepts/statefulset.html">
+            
+                    
+                    2.2.8 StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.9" data-path="../concepts/daemonset.html">
+            
+                <a href="../concepts/daemonset.html">
+            
+                    
+                    2.2.9 DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.10" data-path="../concepts/serviceaccount.html">
+            
+                <a href="../concepts/serviceaccount.html">
+            
+                    
+                    2.2.10 ServiceAccount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.11" data-path="../concepts/replicaset.html">
+            
+                <a href="../concepts/replicaset.html">
+            
+                    
+                    2.2.11 ReplicationController和ReplicaSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.12" data-path="../concepts/job.html">
+            
+                <a href="../concepts/job.html">
+            
+                    
+                    2.2.12 Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13" data-path="../concepts/cronjob.html">
+            
+                <a href="../concepts/cronjob.html">
+            
+                    
+                    2.2.13 CronJob
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.14" data-path="../concepts/ingress.html">
+            
+                <a href="../concepts/ingress.html">
+            
+                    
+                    2.2.14 Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.15" data-path="../concepts/configmap.html">
+            
+                <a href="../concepts/configmap.html">
+            
+                    
+                    2.2.15 ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.16" data-path="../concepts/horizontal-pod-autoscaling.html">
+            
+                <a href="../concepts/horizontal-pod-autoscaling.html">
+            
+                    
+                    2.2.16 Horizontal Pod Autoscaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.17" data-path="../concepts/label.html">
+            
+                <a href="../concepts/label.html">
+            
+                    
+                    2.2.17 Label
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../guide/">
+            
+                <a href="../guide/">
+            
+                    
+                    3. 用户指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../guide/resource-configuration.html">
+            
+                <a href="../guide/resource-configuration.html">
+            
+                    
+                    3.1 资源配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../guide/configure-liveness-readiness-probes.html">
+            
+                <a href="../guide/configure-liveness-readiness-probes.html">
+            
+                    
+                    3.1.1 配置Pod的liveness和readiness探针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../guide/configure-pod-service-account.html">
+            
+                <a href="../guide/configure-pod-service-account.html">
+            
+                    
+                    3.1.2 配置Pod的Service Account
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../guide/command-usage.html">
+            
+                <a href="../guide/command-usage.html">
+            
+                    
+                    3.2 命令使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../guide/using-kubectl.html">
+            
+                <a href="../guide/using-kubectl.html">
+            
+                    
+                    3.2.1 使用kubectl
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../guide/cluster-management.html">
+            
+                <a href="../guide/cluster-management.html">
+            
+                    
+                    3.3 集群管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../guide/managing-tls-in-a-cluster.html">
+            
+                <a href="../guide/managing-tls-in-a-cluster.html">
+            
+                    
+                    3.3.1 管理集群中的TLS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../guide/access-kubernetes-cluster.html">
+            
+                <a href="../guide/access-kubernetes-cluster.html">
+            
+                    
+                    3.4 访问 Kubernetes 集群
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../guide/access-cluster.html">
+            
+                <a href="../guide/access-cluster.html">
+            
+                    
+                    3.4.1 访问集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../guide/authenticate-across-clusters-kubeconfig.html">
+            
+                <a href="../guide/authenticate-across-clusters-kubeconfig.html">
+            
+                    
+                    3.4.2 使用 kubeconfig 文件配置跨集群认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.3" data-path="../guide/connecting-to-applications-port-forward.html">
+            
+                <a href="../guide/connecting-to-applications-port-forward.html">
+            
+                    
+                    3.4.3 通过端口转发访问集群中的应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.4" data-path="../guide/service-access-application-cluster.html">
+            
+                <a href="../guide/service-access-application-cluster.html">
+            
+                    
+                    3.4.4 使用 service 访问群集中的应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../guide/application-development-deployment-flow.html">
+            
+                <a href="../guide/application-development-deployment-flow.html">
+            
+                    
+                    3.5 在kubernetes中开发部署应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../guide/deploy-applications-in-kubernetes.html">
+            
+                <a href="../guide/deploy-applications-in-kubernetes.html">
+            
+                    
+                    3.5.1 适用于kubernetes的应用开发部署流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    4. 最佳实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="install-kbernetes1.6-on-centos.html">
+            
+                <a href="install-kbernetes1.6-on-centos.html">
+            
+                    
+                     4.1 在CentOS上部署kubernetes1.6集群
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="create-tls-and-secret-key.html">
+            
+                <a href="create-tls-and-secret-key.html">
+            
+                    
+                    4.1.1 创建TLS证书和秘钥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="create-kubeconfig.html">
+            
+                <a href="create-kubeconfig.html">
+            
+                    
+                    4.1.2 创建kubeconfig文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="etcd-cluster-installation.html">
+            
+                <a href="etcd-cluster-installation.html">
+            
+                    
+                    4.1.3 创建高可用etcd集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="kubectl-installation.html">
+            
+                <a href="kubectl-installation.html">
+            
+                    
+                    4.1.4 安装kubectl命令行工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="master-installation.html">
+            
+                <a href="master-installation.html">
+            
+                    
+                    4.1.5 部署master节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.1.6" data-path="node-installation.html">
+            
+                <a href="node-installation.html">
+            
+                    
+                    4.1.6 部署node节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="kubedns-addon-installation.html">
+            
+                <a href="kubedns-addon-installation.html">
+            
+                    
+                    4.1.7 安装kubedns插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.8" data-path="dashboard-addon-installation.html">
+            
+                <a href="dashboard-addon-installation.html">
+            
+                    
+                    4.1.8 安装dashboard插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.9" data-path="heapster-addon-installation.html">
+            
+                <a href="heapster-addon-installation.html">
+            
+                    
+                    4.1.9 安装heapster插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.10" data-path="efk-addon-installation.html">
+            
+                <a href="efk-addon-installation.html">
+            
+                    
+                    4.1.10 安装EFK插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="service-discovery-and-loadbalancing.html">
+            
+                <a href="service-discovery-and-loadbalancing.html">
+            
+                    
+                    4.2 服务发现与负载均衡
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="traefik-ingress-installation.html">
+            
+                <a href="traefik-ingress-installation.html">
+            
+                    
+                    4.2.1 安装Traefik ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="distributed-load-test.html">
+            
+                <a href="distributed-load-test.html">
+            
+                    
+                    4.2.2 分布式负载测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="network-and-cluster-perfermance-test.html">
+            
+                <a href="network-and-cluster-perfermance-test.html">
+            
+                    
+                    4.2.3 网络和集群性能测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="edge-node-configuration.html">
+            
+                <a href="edge-node-configuration.html">
+            
+                    
+                    4.2.4 边缘节点配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="operation.html">
+            
+                <a href="operation.html">
+            
+                    
+                    4.3 运维管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="service-rolling-update.html">
+            
+                <a href="service-rolling-update.html">
+            
+                    
+                    4.3.1 服务滚动升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="app-log-collection.html">
+            
+                <a href="app-log-collection.html">
+            
+                    
+                    4.3.2 应用日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="configuration-best-practice.html">
+            
+                <a href="configuration-best-practice.html">
+            
+                    
+                    4.3.3 配置最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="monitor.html">
+            
+                <a href="monitor.html">
+            
+                    
+                    4.3.4 集群及应用监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.5" data-path="jenkins-ci-cd.html">
+            
+                <a href="jenkins-ci-cd.html">
+            
+                    
+                    4.3.5 使用Jenkins进行持续构建与发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.6" data-path="data-persistence-problem.html">
+            
+                <a href="data-persistence-problem.html">
+            
+                    
+                    4.3.6 数据持久化问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="storage.html">
+            
+                <a href="storage.html">
+            
+                    
+                    4.4 存储管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="glusterfs.html">
+            
+                <a href="glusterfs.html">
+            
+                    
+                    4.4.1 GlusterFS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1.1" data-path="using-glusterfs-for-persistent-storage.html">
+            
+                <a href="using-glusterfs-for-persistent-storage.html">
+            
+                    
+                    4.4.1.1 使用GlusterFS做持久化存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.2" data-path="storage-for-containers-using-glusterfs-with-openshift.html">
+            
+                <a href="storage-for-containers-using-glusterfs-with-openshift.html">
+            
+                    
+                    4.4.1.2 在OpenShift中使用GlusterFS做持久化存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../usecases/">
+            
+                <a href="../usecases/">
+            
+                    
+                    5. 领域应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../usecases/microservices.html">
+            
+                <a href="../usecases/microservices.html">
+            
+                    
+                    5.1 微服务架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../usecases/istio.html">
+            
+                <a href="../usecases/istio.html">
+            
+                    
+                    5.1.1 Istio
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1.1" data-path="../usecases/istio-installation.html">
+            
+                <a href="../usecases/istio-installation.html">
+            
+                    
+                    5.1.1.1 安装istio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.1.2" data-path="../usecases/configuring-request-routing.html">
+            
+                <a href="../usecases/configuring-request-routing.html">
+            
+                    
+                    5.1.1.2 配置请求的路由规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../usecases/linkerd.html">
+            
+                <a href="../usecases/linkerd.html">
+            
+                    
+                    5.1.2 Linkerd
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.2.1" data-path="../usecases/linkerd-user-guide.html">
+            
+                <a href="../usecases/linkerd-user-guide.html">
+            
+                    
+                    5.1.2.1 Linkerd 使用指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../usecases/service-discovery-in-microservices.html">
+            
+                <a href="../usecases/service-discovery-in-microservices.html">
+            
+                    
+                    5.1.3 微服务中的服务发现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../usecases/big-data.html">
+            
+                <a href="../usecases/big-data.html">
+            
+                    
+                    5.2 大数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../usecases/spark-on-kubernetes.html">
+            
+                <a href="../usecases/spark-on-kubernetes.html">
+            
+                    
+                    5.2.1 Spark on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../develop/">
+            
+                <a href="../develop/">
+            
+                    
+                    6. 开发指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../develop/developing-environment.html">
+            
+                <a href="../develop/developing-environment.html">
+            
+                    
+                    6.1 开发环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../develop/testing.html">
+            
+                <a href="../develop/testing.html">
+            
+                    
+                    6.2 单元测试和集成测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../develop/client-go-sample.html">
+            
+                <a href="../develop/client-go-sample.html">
+            
+                    
+                    6.3 client-go示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../develop/contribute.html">
+            
+                <a href="../develop/contribute.html">
+            
+                    
+                    6.4 社区贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    7. 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../appendix/docker-best-practice.html">
+            
+                <a href="../appendix/docker-best-practice.html">
+            
+                    
+                    7.1 Docker最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../appendix/issues.html">
+            
+                <a href="../appendix/issues.html">
+            
+                    
+                    7.2 问题记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../appendix/tricks.html">
+            
+                <a href="../appendix/tricks.html">
+            
+                    
+                    7.3 使用技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >4.1.6 部署node节点</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x90E8;&#x7F72;node&#x8282;&#x70B9;">&#x90E8;&#x7F72;node&#x8282;&#x70B9;</h1>
+<p>kubernetes node &#x8282;&#x70B9;&#x5305;&#x542B;&#x5982;&#x4E0B;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>Flanneld&#xFF1A;&#x53C2;&#x8003;&#x6211;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x6587;&#x7AE0;<a href="http://rootsongjc.github.io/blogs/kubernetes-network-config/" target="_blank">Kubernetes&#x57FA;&#x4E8E;Flannel&#x7684;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;</a>&#xFF0C;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x914D;&#x7F6E;TLS&#xFF0C;&#x73B0;&#x5728;&#x9700;&#x8981;&#x5728;serivce&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;TLS&#x914D;&#x7F6E;&#x3002;</li>
+<li>Docker1.12.5&#xFF1A;docker&#x7684;&#x5B89;&#x88C5;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x4E0D;&#x8BF4;&#x4E86;&#x3002;</li>
+<li>kubelet</li>
+<li>kube-proxy</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x7740;&#x91CD;&#x8BB2;<code>kubelet</code>&#x548C;<code>kube-proxy</code>&#x7684;&#x5B89;&#x88C5;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x8981;&#x5C06;&#x4E4B;&#x524D;&#x5B89;&#x88C5;&#x7684;flannel&#x96C6;&#x6210;TLS&#x9A8C;&#x8BC1;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x6BCF;&#x53F0; node &#x4E0A;&#x90FD;&#x9700;&#x8981;&#x5B89;&#x88C5; flannel&#xFF0C;master &#x8282;&#x70B9;&#x4E0A;&#x53EF;&#x4EE5;&#x4E0D;&#x5FC5;&#x5B89;&#x88C5;&#x3002;</p>
+<h2 id="&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;">&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;</h2>
+<p>&#x6211;&#x4EEC;&#x518D;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x7ECF;&#x8FC7;&#x524D;&#x51E0;&#x6B65;&#x64CD;&#x4F5C;&#x751F;&#x6210;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-bash">$ ls /etc/kubernetes/ssl
+admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem  kubernetes-key.pem  kubernetes.pem
+$ ls /etc/kubernetes/
+apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy.kubeconfig  proxy  scheduler  ssl  token.csv
+</code></pre>
+<h2 id="&#x914D;&#x7F6E;flanneld">&#x914D;&#x7F6E;Flanneld</h2>
+<p>&#x53C2;&#x8003;&#x6211;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x6587;&#x7AE0;<a href="http://rootsongjc.github.io/blogs/kubernetes-network-config/" target="_blank">Kubernetes&#x57FA;&#x4E8E;Flannel&#x7684;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;</a>&#xFF0C;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x914D;&#x7F6E;TLS&#xFF0C;&#x73B0;&#x5728;&#x9700;&#x8981;&#x5728;serivce&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;TLS&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x76F4;&#x63A5;&#x4F7F;&#x7528;yum&#x5B89;&#x88C5;flanneld&#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-shell">yum install -y flannel
+</code></pre>
+<p>service&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>/usr/lib/systemd/system/flanneld.service</code>&#x3002;</p>
+<pre><code class="lang-ini">[Unit]
+Description=Flanneld overlay address etcd agent
+After=network.target
+After=network-online.target
+Wants=network-online.target
+After=etcd.service
+Before=docker.service
+
+[Service]
+Type=notify
+EnvironmentFile=/etc/sysconfig/flanneld
+EnvironmentFile=-/etc/sysconfig/docker-network
+ExecStart=/usr/bin/flanneld-start \
+  -etcd-endpoints=${ETCD_ENDPOINTS} \
+  -etcd-prefix=${ETCD_PREFIX} \
+  $FLANNEL_OPTIONS
+ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=docker.service
+</code></pre>
+<p><code>/etc/sysconfig/flanneld</code>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-ini"><span class="hljs-comment"># Flanneld configuration options  </span>
+
+<span class="hljs-comment"># etcd url location.  Point this to the server where etcd runs</span>
+<span class="hljs-attr">ETCD_ENDPOINTS</span>=<span class="hljs-string">&quot;https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379&quot;</span>
+
+<span class="hljs-comment"># etcd config key.  This is the configuration key that flannel queries</span>
+<span class="hljs-comment"># For address range assignment</span>
+<span class="hljs-attr">ETCD_PREFIX</span>=<span class="hljs-string">&quot;/kube-centos/network&quot;</span>
+
+<span class="hljs-comment"># Any additional options that you want to pass</span>
+<span class="hljs-attr">FLANNEL_OPTIONS</span>=<span class="hljs-string">&quot;-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem&quot;</span>
+</code></pre>
+<p>&#x5728;FLANNEL_OPTIONS&#x4E2D;&#x589E;&#x52A0;TLS&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<p><strong>&#x5728;etcd&#x4E2D;&#x521B;&#x5EFA;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;</strong></p>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x4E3A;docker&#x5206;&#x914D;IP&#x5730;&#x5740;&#x6BB5;&#x3002;</p>
+<pre><code class="lang-shell">etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  mkdir /kube-centos/network
+etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  mk /kube-centos/network/config &apos;{&quot;Network&quot;:&quot;172.30.0.0/16&quot;,&quot;SubnetLen&quot;:24,&quot;Backend&quot;:{&quot;Type&quot;:&quot;vxlan&quot;}}&apos;
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x8981;&#x4F7F;&#x7528;<code>host-gw</code>&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;vxlan&#x6539;&#x6210;<code>host-gw</code>&#x5373;&#x53EF;&#x3002;</p>
+<p><strong>&#x914D;&#x7F6E;Docker</strong></p>
+<p>Flannel&#x7684;<a href="https://github.com/coreos/flannel/blob/master/Documentation/running.md" target="_blank">&#x6587;&#x6863;</a>&#x4E2D;&#x6709;&#x5199;<strong>Docker Integration</strong>&#xFF1A;</p>
+<p>Docker daemon accepts <code>--bip</code> argument to configure the subnet of the docker0 bridge. It also accepts <code>--mtu</code> to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:</p>
+<pre><code>source /run/flannel/subnet.env
+docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &amp;
+</code></pre><p>Systemd users can use <code>EnvironmentFile</code> directive in the .service file to pull in <code>/run/flannel/subnet.env</code></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x662F;&#x4F7F;&#x7528;yum&#x5B89;&#x88C5;&#x7684;flanneld&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x4E0B;&#x8F7D;flannel github release&#x4E2D;&#x7684;tar&#x5305;&#xFF0C;&#x89E3;&#x538B;&#x540E;&#x4F1A;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;<strong>mk-docker-opts.sh</strong>&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x662F;&#x7528;&#x6765;<code>Generate Docker daemon options based on flannel env file</code>&#x3002;</p>
+<p>&#x6267;&#x884C;<code>./mk-docker-opts.sh -i</code>&#x5C06;&#x4F1A;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x6587;&#x4EF6;&#x3002;</p>
+<p>/run/flannel/subnet.env</p>
+<pre><code>FLANNEL_NETWORK=172.30.0.0/16
+FLANNEL_SUBNET=172.30.46.1/24
+FLANNEL_MTU=1450
+FLANNEL_IPMASQ=false
+</code></pre><p>/run/docker_opts.env</p>
+<pre><code>DOCKER_OPT_BIP=&quot;--bip=172.30.46.1/24&quot;
+DOCKER_OPT_IPMASQ=&quot;--ip-masq=true&quot;
+DOCKER_OPT_MTU=&quot;--mtu=1450&quot;
+</code></pre><p><strong>&#x8BBE;&#x7F6E;docker0&#x7F51;&#x6865;&#x7684;IP&#x5730;&#x5740;</strong></p>
+<pre><code class="lang-shell">source /run/flannel/subnet.env
+ifconfig docker0 $FLANNEL_SUBNET
+</code></pre>
+<p>&#x8FD9;&#x6837;docker0&#x548C;flannel&#x7F51;&#x6865;&#x4F1A;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5B50;&#x7F51;&#x4E2D;&#xFF0C;&#x5982;</p>
+<pre><code>6: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN 
+    link/ether 02:42:da:bf:83:a2 brd ff:ff:ff:ff:ff:ff
+    inet 172.30.38.1/24 brd 172.30.38.255 scope global docker0
+       valid_lft forever preferred_lft forever
+7: flannel.1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN 
+    link/ether 9a:29:46:61:03:44 brd ff:ff:ff:ff:ff:ff
+    inet 172.30.38.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+</code></pre><p>&#x540C;&#x65F6;&#x5728; docker &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6; <a href="../systemd/docker.service">docker.service</a> &#x4E2D;&#x589E;&#x52A0;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;&#xFF1A;</p>
+<pre><code class="lang-ini"><span class="hljs-attr">EnvironmentFile</span>=-/run/flannel/docker
+<span class="hljs-attr">EnvironmentFile</span>=-/run/docker_opts.env
+<span class="hljs-attr">EnvironmentFile</span>=-/run/flannel/subnet.env
+</code></pre>
+<p>&#x9632;&#x6B62;&#x4E3B;&#x673A;&#x91CD;&#x542F;&#x540E; docker &#x81EA;&#x52A8;&#x91CD;&#x542F;&#x65F6;&#x52A0;&#x8F7D;&#x4E0D;&#x5230;&#x8BE5;&#x4E0A;&#x8FF0;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;</p>
+<p><strong>&#x542F;&#x52A8;docker</strong></p>
+<p>&#x91CD;&#x542F;&#x4E86;docker&#x540E;&#x8FD8;&#x8981;&#x91CD;&#x542F;kubelet&#xFF0C;&#x8FD9;&#x65F6;&#x53C8;&#x9047;&#x5230;&#x95EE;&#x9898;&#xFF0C;kubelet&#x542F;&#x52A8;&#x5931;&#x8D25;&#x3002;&#x62A5;&#x9519;&#xFF1A;</p>
+<pre><code>Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: &quot;cgroupfs&quot; is different from docker cgroup driver: &quot;systemd&quot;
+</code></pre><p>&#x8FD9;&#x662F;kubelet&#x4E0E;docker&#x7684;<strong>cgroup driver</strong>&#x4E0D;&#x4E00;&#x81F4;&#x5BFC;&#x81F4;&#x7684;&#xFF0C;kubelet&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x6709;&#x4E2A;<code>&#x2014;cgroup-driver</code>&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A;&quot;cgroupfs&quot;&#x6216;&#x8005;&#x201C;systemd&#x201D;&#x3002;</p>
+<pre><code>--cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: &apos;cgroupfs&apos;, &apos;systemd&apos; (default &quot;cgroupfs&quot;)
+</code></pre><p><strong>&#x542F;&#x52A8;flannel</strong></p>
+<pre><code class="lang-shell">systemctl daemon-reload
+systemctl start flanneld
+systemctl status flanneld
+</code></pre>
+<p>&#x73B0;&#x5728;&#x67E5;&#x8BE2;etcd&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
+<pre><code class="lang-bash"><span class="hljs-variable">$etcdctl</span> --endpoints=<span class="hljs-variable">${ETCD_ENDPOINTS}</span> \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  ls /kube-centos/network/subnets
+/kube-centos/network/subnets/172.30.14.0-24
+/kube-centos/network/subnets/172.30.38.0-24
+/kube-centos/network/subnets/172.30.46.0-24
+<span class="hljs-variable">$etcdctl</span> --endpoints=<span class="hljs-variable">${ETCD_ENDPOINTS}</span> \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/config
+{ <span class="hljs-string">&quot;Network&quot;</span>: <span class="hljs-string">&quot;172.30.0.0/16&quot;</span>, <span class="hljs-string">&quot;SubnetLen&quot;</span>: 24, <span class="hljs-string">&quot;Backend&quot;</span>: { <span class="hljs-string">&quot;Type&quot;</span>: <span class="hljs-string">&quot;vxlan&quot;</span> } }
+<span class="hljs-variable">$etcdctl</span> get /kube-centos/network/subnets/172.30.14.0-24
+{<span class="hljs-string">&quot;PublicIP&quot;</span>:<span class="hljs-string">&quot;172.20.0.114&quot;</span>,<span class="hljs-string">&quot;BackendType&quot;</span>:<span class="hljs-string">&quot;vxlan&quot;</span>,<span class="hljs-string">&quot;BackendData&quot;</span>:{<span class="hljs-string">&quot;VtepMAC&quot;</span>:<span class="hljs-string">&quot;56:27:7d:1c:08:22&quot;</span>}}
+<span class="hljs-variable">$etcdctl</span> get /kube-centos/network/subnets/172.30.38.0-24
+{<span class="hljs-string">&quot;PublicIP&quot;</span>:<span class="hljs-string">&quot;172.20.0.115&quot;</span>,<span class="hljs-string">&quot;BackendType&quot;</span>:<span class="hljs-string">&quot;vxlan&quot;</span>,<span class="hljs-string">&quot;BackendData&quot;</span>:{<span class="hljs-string">&quot;VtepMAC&quot;</span>:<span class="hljs-string">&quot;12:82:83:59:cf:b8&quot;</span>}}
+<span class="hljs-variable">$etcdctl</span> get /kube-centos/network/subnets/172.30.46.0-24
+{<span class="hljs-string">&quot;PublicIP&quot;</span>:<span class="hljs-string">&quot;172.20.0.113&quot;</span>,<span class="hljs-string">&quot;BackendType&quot;</span>:<span class="hljs-string">&quot;vxlan&quot;</span>,<span class="hljs-string">&quot;BackendData&quot;</span>:{<span class="hljs-string">&quot;VtepMAC&quot;</span>:<span class="hljs-string">&quot;e6:b2:fd:f6:66:96&quot;</span>}}
+</code></pre>
+<h2 id="&#x5B89;&#x88C5;&#x548C;&#x914D;&#x7F6E;-kubelet">&#x5B89;&#x88C5;&#x548C;&#x914D;&#x7F6E; kubelet</h2>
+<p>kubelet &#x542F;&#x52A8;&#x65F6;&#x5411; kube-apiserver &#x53D1;&#x9001; TLS bootstrapping &#x8BF7;&#x6C42;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5C06; bootstrap token &#x6587;&#x4EF6;&#x4E2D;&#x7684; kubelet-bootstrap &#x7528;&#x6237;&#x8D4B;&#x4E88; system:node-bootstrapper cluster &#x89D2;&#x8272;(role)&#xFF0C;
+&#x7136;&#x540E; kubelet &#x624D;&#x80FD;&#x6709;&#x6743;&#x9650;&#x521B;&#x5EFA;&#x8BA4;&#x8BC1;&#x8BF7;&#x6C42;(certificate signing requests)&#xFF1A;</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> /etc/kubernetes
+$ kubectl create clusterrolebinding kubelet-bootstrap \
+  --clusterrole=system:node-bootstrapper \
+  --user=kubelet-bootstrap
+</code></pre>
+<ul>
+<li><code>--user=kubelet-bootstrap</code> &#x662F;&#x5728; <code>/etc/kubernetes/token.csv</code> &#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5199;&#x5165;&#x4E86; <code>/etc/kubernetes/bootstrap.kubeconfig</code> &#x6587;&#x4EF6;&#xFF1B;</li>
+</ul>
+<h3 id="&#x4E0B;&#x8F7D;&#x6700;&#x65B0;&#x7684;-kubelet-&#x548C;-kube-proxy-&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;">&#x4E0B;&#x8F7D;&#x6700;&#x65B0;&#x7684; kubelet &#x548C; kube-proxy &#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;</h3>
+<pre><code class="lang-bash">$ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
+$ tar -xzvf kubernetes-server-linux-amd64.tar.gz
+$ <span class="hljs-built_in">cd</span> kubernetes
+$ tar -xzvf  kubernetes-src.tar.gz
+$ cp -r ./server/bin/{kube-proxy,kubelet} /usr/<span class="hljs-built_in">local</span>/bin/
+</code></pre>
+<h3 id="&#x521B;&#x5EFA;-kubelet-&#x7684;service&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x521B;&#x5EFA; kubelet &#x7684;service&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<p>&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;<code>/usr/lib/systemd/system/kubelet.service</code>&#x3002;</p>
+<pre><code class="lang-ini">[Unit]
+Description=Kubernetes Kubelet Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/var/lib/kubelet
+EnvironmentFile=-/etc/kubernetes/config
+EnvironmentFile=-/etc/kubernetes/kubelet
+ExecStart=/usr/local/bin/kubelet \
+            $KUBE_LOGTOSTDERR \
+            $KUBE_LOG_LEVEL \
+            $KUBELET_API_SERVER \
+            $KUBELET_ADDRESS \
+            $KUBELET_PORT \
+            $KUBELET_HOSTNAME \
+            $KUBE_ALLOW_PRIV \
+            $KUBELET_POD_INFRA_CONTAINER \
+            $KUBELET_ARGS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>kubelet&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>/etc/kubernetes/kubelet</code>&#x3002;&#x5176;&#x4E2D;&#x7684;IP&#x5730;&#x5740;&#x66F4;&#x6539;&#x4E3A;&#x4F60;&#x7684;&#x6BCF;&#x53F0;node&#x8282;&#x70B9;&#x7684;IP&#x5730;&#x5740;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;<code>/var/lib/kubelet</code>&#x9700;&#x8981;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x3002;</p>
+<pre><code class="lang-bash"><span class="hljs-comment">###</span>
+<span class="hljs-comment">## kubernetes kubelet (minion) config</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## The address for the info server to serve on (set to 0.0.0.0 or &quot;&quot; for all interfaces)</span>
+KUBELET_ADDRESS=<span class="hljs-string">&quot;--address=172.20.0.113&quot;</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## The port for the info server to serve on</span>
+<span class="hljs-comment">#KUBELET_PORT=&quot;--port=10250&quot;</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## You may leave this blank to use the actual hostname</span>
+KUBELET_HOSTNAME=<span class="hljs-string">&quot;--hostname-override=172.20.0.113&quot;</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## location of the api-server</span>
+KUBELET_API_SERVER=<span class="hljs-string">&quot;--api-servers=http://172.20.0.113:8080&quot;</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## pod infrastructure container</span>
+KUBELET_POD_INFRA_CONTAINER=<span class="hljs-string">&quot;--pod-infra-container-image=sz-pg-oam-docker-hub-001.tendcloud.com/library/pod-infrastructure:rhel7&quot;</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment">## Add your own!</span>
+KUBELET_ARGS=<span class="hljs-string">&quot;--cgroup-driver=systemd --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --kubeconfig=/etc/kubernetes/kubelet.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local. --hairpin-mode promiscuous-bridge --serialize-image-pulls=false&quot;</span>
+</code></pre>
+<ul>
+<li><code>--address</code> &#x4E0D;&#x80FD;&#x8BBE;&#x7F6E;&#x4E3A; <code>127.0.0.1</code>&#xFF0C;&#x5426;&#x5219;&#x540E;&#x7EED; Pods &#x8BBF;&#x95EE; kubelet &#x7684; API &#x63A5;&#x53E3;&#x65F6;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x56E0;&#x4E3A; Pods &#x8BBF;&#x95EE;&#x7684; <code>127.0.0.1</code> &#x6307;&#x5411;&#x81EA;&#x5DF1;&#x800C;&#x4E0D;&#x662F; kubelet&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86; <code>--hostname-override</code> &#x9009;&#x9879;&#xFF0C;&#x5219; <code>kube-proxy</code> &#x4E5F;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x8BE5;&#x9009;&#x9879;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x73B0;&#x627E;&#x4E0D;&#x5230; Node &#x7684;&#x60C5;&#x51B5;&#xFF1B;</li>
+<li><code>--experimental-bootstrap-kubeconfig</code> &#x6307;&#x5411; bootstrap kubeconfig &#x6587;&#x4EF6;&#xFF0C;kubelet &#x4F7F;&#x7528;&#x8BE5;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C; token &#x5411; kube-apiserver &#x53D1;&#x9001; TLS Bootstrapping &#x8BF7;&#x6C42;&#xFF1B;</li>
+<li>&#x7BA1;&#x7406;&#x5458;&#x901A;&#x8FC7;&#x4E86; CSR &#x8BF7;&#x6C42;&#x540E;&#xFF0C;kubelet &#x81EA;&#x52A8;&#x5728; <code>--cert-dir</code> &#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x8BC1;&#x4E66;&#x548C;&#x79C1;&#x94A5;&#x6587;&#x4EF6;(<code>kubelet-client.crt</code> &#x548C; <code>kubelet-client.key</code>)&#xFF0C;&#x7136;&#x540E;&#x5199;&#x5165; <code>--kubeconfig</code> &#x6587;&#x4EF6;&#xFF1B;</li>
+<li>&#x5EFA;&#x8BAE;&#x5728; <code>--kubeconfig</code> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A; <code>kube-apiserver</code> &#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x6307;&#x5B9A; <code>--api-servers</code> &#x9009;&#x9879;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x6307;&#x5B9A; <code>--require-kubeconfig</code> &#x9009;&#x9879;&#x540E;&#x624D;&#x4ECE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6; kube-apiserver &#x7684;&#x5730;&#x5740;&#xFF0C;&#x5426;&#x5219; kubelet &#x542F;&#x52A8;&#x540E;&#x5C06;&#x627E;&#x4E0D;&#x5230; kube-apiserver (&#x65E5;&#x5FD7;&#x4E2D;&#x63D0;&#x793A;&#x672A;&#x627E;&#x5230; API Server&#xFF09;&#xFF0C;<code>kubectl get nodes</code> &#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684; Node &#x4FE1;&#x606F;;</li>
+<li><code>--cluster-dns</code> &#x6307;&#x5B9A; kubedns &#x7684; Service IP(&#x53EF;&#x4EE5;&#x5148;&#x5206;&#x914D;&#xFF0C;&#x540E;&#x7EED;&#x521B;&#x5EFA; kubedns &#x670D;&#x52A1;&#x65F6;&#x6307;&#x5B9A;&#x8BE5; IP)&#xFF0C;<code>--cluster-domain</code> &#x6307;&#x5B9A;&#x57DF;&#x540D;&#x540E;&#x7F00;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x540C;&#x65F6;&#x6307;&#x5B9A;&#x540E;&#x624D;&#x4F1A;&#x751F;&#x6548;&#xFF1B;</li>
+<li><code>&#x2014;kubeconfig=/etc/kubernetes/kubelet.kubeconfig</code>&#x4E2D;&#x6307;&#x5B9A;&#x7684;<code>kubelet.kubeconfig</code>&#x6587;&#x4EF6;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;kubelet&#x4E4B;&#x524D;&#x5E76;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BF7;&#x770B;&#x4E0B;&#x6587;&#xFF0C;&#x5F53;&#x901A;&#x8FC7;CSR&#x8BF7;&#x6C42;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;<code>kubelet.kubeconfig</code>&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x4E86;<code>~/.kube/config</code>&#x6587;&#x4EF6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x8BE5;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230;&#x8BE5;&#x8DEF;&#x5F84;&#x4E0B;&#xFF0C;&#x5E76;&#x91CD;&#x547D;&#x540D;&#x4E3A;<code>kubelet.kubeconfig</code>&#xFF0C;&#x6240;&#x6709;node&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x5171;&#x7528;&#x540C;&#x4E00;&#x4E2A;kubelet.kubeconfig&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#x65B0;&#x6DFB;&#x52A0;&#x7684;&#x8282;&#x70B9;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x521B;&#x5EFA;CSR&#x8BF7;&#x6C42;&#x5C31;&#x80FD;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x5230;kubernetes&#x96C6;&#x7FA4;&#x4E2D;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x5728;&#x4EFB;&#x610F;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5230;kubernetes&#x96C6;&#x7FA4;&#x7684;&#x4E3B;&#x673A;&#x4E0A;&#x4F7F;&#x7528;<code>kubectl &#x2014;kubeconfig</code>&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x96C6;&#x7FA4;&#x65F6;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;<code>~/.kube/config</code>&#x6587;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6743;&#x9650;&#x8BA4;&#x8BC1;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x9762;&#x5DF2;&#x7ECF;&#x6709;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#x5E76;&#x8BA4;&#x4E3A;&#x4F60;&#x662F;admin&#x7528;&#x6237;&#xFF0C;&#x5BF9;&#x96C6;&#x7FA4;&#x62E5;&#x6709;&#x6240;&#x6709;&#x6743;&#x9650;&#x3002;</li>
+</ul>
+<p>&#x5B8C;&#x6574; unit &#x89C1; <a href="systemd/kubelet.service">kubelet.service</a></p>
+<h3 id="&#x542F;&#x52A8;kublet">&#x542F;&#x52A8;kublet</h3>
+<pre><code class="lang-bash">$ systemctl daemon-reload
+$ systemctl <span class="hljs-built_in">enable</span> kubelet
+$ systemctl start kubelet
+$ systemctl status kubelet
+</code></pre>
+<h3 id="&#x901A;&#x8FC7;-kublet-&#x7684;-tls-&#x8BC1;&#x4E66;&#x8BF7;&#x6C42;">&#x901A;&#x8FC7; kublet &#x7684; TLS &#x8BC1;&#x4E66;&#x8BF7;&#x6C42;</h3>
+<p>kubelet &#x9996;&#x6B21;&#x542F;&#x52A8;&#x65F6;&#x5411; kube-apiserver &#x53D1;&#x9001;&#x8BC1;&#x4E66;&#x7B7E;&#x540D;&#x8BF7;&#x6C42;&#xFF0C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x540E; kubernetes &#x7CFB;&#x7EDF;&#x624D;&#x4F1A;&#x5C06;&#x8BE5; Node &#x52A0;&#x5165;&#x5230;&#x96C6;&#x7FA4;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x672A;&#x6388;&#x6743;&#x7684; CSR &#x8BF7;&#x6C42;</p>
+<pre><code class="lang-bash">$ kubectl get csr
+NAME        AGE       REQUESTOR           CONDITION
+csr-2b308   4m        kubelet-bootstrap   Pending
+$ kubectl get nodes
+No resources found.
+</code></pre>
+<p>&#x901A;&#x8FC7; CSR &#x8BF7;&#x6C42;</p>
+<pre><code class="lang-bash">$ kubectl certificate approve csr-2b308
+certificatesigningrequest <span class="hljs-string">&quot;csr-2b308&quot;</span> approved
+$ kubectl get nodes
+NAME        STATUS    AGE       VERSION
+10.64.3.7   Ready     49m       v1.6.1
+</code></pre>
+<p>&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E86; kubelet kubeconfig &#x6587;&#x4EF6;&#x548C;&#x516C;&#x79C1;&#x94A5;</p>
+<pre><code class="lang-bash">$ ls <span class="hljs-_">-l</span> /etc/kubernetes/kubelet.kubeconfig
+-rw------- 1 root root 2284 Apr  7 02:07 /etc/kubernetes/kubelet.kubeconfig
+$ ls <span class="hljs-_">-l</span> /etc/kubernetes/ssl/kubelet*
+-rw-r--r-- 1 root root 1046 Apr  7 02:07 /etc/kubernetes/ssl/kubelet-client.crt
+-rw------- 1 root root  227 Apr  7 02:04 /etc/kubernetes/ssl/kubelet-client.key
+-rw-r--r-- 1 root root 1103 Apr  7 02:07 /etc/kubernetes/ssl/kubelet.crt
+-rw------- 1 root root 1675 Apr  7 02:07 /etc/kubernetes/ssl/kubelet.key
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5047;&#x5982;&#x4F60;&#x66F4;&#x65B0;kubernetes&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x53EA;&#x8981;&#x6CA1;&#x6709;&#x66F4;&#x65B0;<code>token.csv</code>&#xFF0C;&#x5F53;&#x91CD;&#x542F;kubelet&#x540E;&#xFF0C;&#x8BE5;node&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5230;kuberentes&#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x91CD;&#x65B0;&#x53D1;&#x9001;<code>certificaterequest</code>&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x5728;master&#x8282;&#x70B9;&#x4E0A;&#x6267;&#x884C;<code>kubectl certificate approve</code>&#x64CD;&#x4F5C;&#x3002;&#x524D;&#x63D0;&#x662F;&#x4E0D;&#x8981;&#x5220;&#x9664;node&#x8282;&#x70B9;&#x4E0A;&#x7684;<code>/etc/kubernetes/ssl/kubelet*</code>&#x548C;<code>/etc/kubernetes/kubelet.kubeconfig</code>&#x6587;&#x4EF6;&#x3002;&#x5426;&#x5219;kubelet&#x542F;&#x52A8;&#x65F6;&#x4F1A;&#x63D0;&#x793A;&#x627E;&#x4E0D;&#x5230;&#x8BC1;&#x4E66;&#x800C;&#x5931;&#x8D25;&#x3002;</p>
+<h2 id="&#x914D;&#x7F6E;-kube-proxy">&#x914D;&#x7F6E; kube-proxy</h2>
+<p><strong>&#x521B;&#x5EFA; kube-proxy &#x7684;service&#x914D;&#x7F6E;&#x6587;&#x4EF6;</strong></p>
+<p>&#x6587;&#x4EF6;&#x8DEF;&#x5F84;<code>/usr/lib/systemd/system/kube-proxy.service</code>&#x3002;</p>
+<pre><code class="lang-ini">[Unit]
+Description=Kubernetes Kube-Proxy Server
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/kubernetes/config
+EnvironmentFile=-/etc/kubernetes/proxy
+ExecStart=/usr/local/bin/kube-proxy \
+        $KUBE_LOGTOSTDERR \
+        $KUBE_LOG_LEVEL \
+        $KUBE_MASTER \
+        $KUBE_PROXY_ARGS
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>kube-proxy&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>/etc/kubernetes/proxy</code>&#x3002;</p>
+<pre><code class="lang-bash"><span class="hljs-comment">###</span>
+<span class="hljs-comment"># kubernetes proxy config</span>
+
+<span class="hljs-comment"># default config should be adequate</span>
+
+<span class="hljs-comment"># Add your own!</span>
+KUBE_PROXY_ARGS=<span class="hljs-string">&quot;--bind-address=172.20.0.113 --hostname-override=172.20.0.113 --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig --cluster-cidr=10.254.0.0/16&quot;</span>
+</code></pre>
+<ul>
+<li><code>--hostname-override</code> &#x53C2;&#x6570;&#x503C;&#x5FC5;&#x987B;&#x4E0E; kubelet &#x7684;&#x503C;&#x4E00;&#x81F4;&#xFF0C;&#x5426;&#x5219; kube-proxy &#x542F;&#x52A8;&#x540E;&#x4F1A;&#x627E;&#x4E0D;&#x5230;&#x8BE5; Node&#xFF0C;&#x4ECE;&#x800C;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x4EFB;&#x4F55; iptables &#x89C4;&#x5219;&#xFF1B;</li>
+<li>kube-proxy &#x6839;&#x636E; <code>--cluster-cidr</code> &#x5224;&#x65AD;&#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x548C;&#x5916;&#x90E8;&#x6D41;&#x91CF;&#xFF0C;&#x6307;&#x5B9A; <code>--cluster-cidr</code> &#x6216; <code>--masquerade-all</code> &#x9009;&#x9879;&#x540E; kube-proxy &#x624D;&#x4F1A;&#x5BF9;&#x8BBF;&#x95EE; Service IP &#x7684;&#x8BF7;&#x6C42;&#x505A; SNAT&#xFF1B;</li>
+<li><code>--kubeconfig</code> &#x6307;&#x5B9A;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5D4C;&#x5165;&#x4E86; kube-apiserver &#x7684;&#x5730;&#x5740;&#x3001;&#x7528;&#x6237;&#x540D;&#x3001;&#x8BC1;&#x4E66;&#x3001;&#x79D8;&#x94A5;&#x7B49;&#x8BF7;&#x6C42;&#x548C;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#xFF1B;</li>
+<li>&#x9884;&#x5B9A;&#x4E49;&#x7684; RoleBinding <code>cluster-admin</code> &#x5C06;User <code>system:kube-proxy</code> &#x4E0E; Role <code>system:node-proxier</code> &#x7ED1;&#x5B9A;&#xFF0C;&#x8BE5; Role &#x6388;&#x4E88;&#x4E86;&#x8C03;&#x7528; <code>kube-apiserver</code> Proxy &#x76F8;&#x5173; API &#x7684;&#x6743;&#x9650;&#xFF1B;</li>
+</ul>
+<p>&#x5B8C;&#x6574; unit &#x89C1; <a href="systemd/kube-proxy.service">kube-proxy.service</a></p>
+<h3 id="&#x542F;&#x52A8;-kube-proxy">&#x542F;&#x52A8; kube-proxy</h3>
+<pre><code class="lang-bash">$ systemctl daemon-reload
+$ systemctl <span class="hljs-built_in">enable</span> kube-proxy
+$ systemctl start kube-proxy
+$ systemctl status kube-proxy
+</code></pre>
+<h2 id="&#x9A8C;&#x8BC1;&#x6D4B;&#x8BD5;">&#x9A8C;&#x8BC1;&#x6D4B;&#x8BD5;</h2>
+<p>&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;niginx&#x7684;service&#x8BD5;&#x4E00;&#x4E0B;&#x96C6;&#x7FA4;&#x662F;&#x5426;&#x53EF;&#x7528;&#x3002;</p>
+<pre><code class="lang-bash">$ kubectl run nginx --replicas=2 --labels=<span class="hljs-string">&quot;run=load-balancer-example&quot;</span> --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=80
+deployment <span class="hljs-string">&quot;nginx&quot;</span> created
+$ kubectl expose deployment nginx --type=NodePort --name=example-service
+service <span class="hljs-string">&quot;example-service&quot;</span> exposed
+$ kubectl describe svc example-service
+Name:            example-service
+Namespace:        default
+Labels:            run=load-balancer-example
+Annotations:        &lt;none&gt;
+Selector:        run=load-balancer-example
+Type:            NodePort
+IP:            10.254.62.207
+Port:            &lt;<span class="hljs-built_in">unset</span>&gt;    80/TCP
+NodePort:        &lt;<span class="hljs-built_in">unset</span>&gt;    32724/TCP
+Endpoints:        172.30.60.2:80,172.30.94.2:80
+Session Affinity:    None
+Events:            &lt;none&gt;
+$ curl <span class="hljs-string">&quot;10.254.62.207:80&quot;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=<span class="hljs-string">&quot;http://nginx.org/&quot;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=<span class="hljs-string">&quot;http://nginx.com/&quot;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="hljs-keyword">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>&#x63D0;&#x793A;&#xFF1A;&#x4E0A;&#x9762;&#x7684;&#x6D4B;&#x8BD5;&#x793A;&#x4F8B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;nginx&#x662F;&#x6211;&#x7684;&#x79C1;&#x6709;&#x955C;&#x50CF;&#x4ED3;&#x5E93;&#x4E2D;&#x7684;&#x955C;&#x50CF;<code>sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9</code>&#xFF0C;&#x5927;&#x5BB6;&#x5728;&#x6D4B;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x8BF7;&#x6362;&#x6210;&#x81EA;&#x5DF1;&#x7684;nginx&#x955C;&#x50CF;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x8BBF;&#x95EE;<code>172.20.0.113:32724</code>&#x6216;<code>172.20.0.114:32724</code>&#x6216;&#x8005;<code>172.20.0.115:32724</code>&#x90FD;&#x53EF;&#x4EE5;&#x5F97;&#x5230;nginx&#x7684;&#x9875;&#x9762;&#x3002;</p>
+<p><img src="http://olz1di9xf.bkt.clouddn.com/kubernetes-installation-test-nginx.png" alt="welcome-nginx"> </p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">for GitBook</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update">update
+2017-08-02 23:06:14
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="master-installation.html" class="navigation navigation-prev " aria-label="Previous page: 4.1.5 部署master节点">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kubedns-addon-installation.html" class="navigation navigation-next " aria-label="Next page: 4.1.7 安装kubedns插件">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"4.1.6 部署node节点","level":"1.4.1.6","depth":3,"next":{"title":"4.1.7 安装kubedns插件","level":"1.4.1.7","depth":3,"path":"practice/kubedns-addon-installation.md","ref":"practice/kubedns-addon-installation.md","articles":[]},"previous":{"title":"4.1.5 部署master节点","level":"1.4.1.5","depth":3,"path":"practice/master-installation.md","ref":"practice/master-installation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","page-footer-ex","editlink","-lunr","-search","search-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/rootsongjc/kubernetes-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/rootsongjc/kubernetes-handbook/blob/master/"},"livereload":{},"page-footer-ex":{"copyright":"for GitBook","update_format":"YYYY-MM-DD HH:mm:ss","update_label":"update"},"splitter":{},"codesnippet":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"variable_name":"_pictures"}},"page-footer-ex":{"copyright":"Jimmy Song","update_label":"最后更新：","update_format":"YYYY-MM-DD HH:mm:ss"},"theme":"default","author":"Jimmy Song","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: wercker status","alt":"wercker status","nro":1,"url":"https://app.wercker.com/status/b8b69e593784e17ddcfd1286adfd8f3c/s/master","index":1,"caption_template":"Figure: _CAPTION_","label":"wercker status","attributes":{},"title":"wercker status","skip":false,"key":"1.1.1"},{"backlink":"concepts/index.html#fig1.2.1","level":"1.2","list_caption":"Figure: Borg架构","alt":"Borg架构","nro":2,"url":"../images/borg.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Borg架构","attributes":{},"skip":false,"key":"1.2.1"},{"backlink":"concepts/index.html#fig1.2.2","level":"1.2","list_caption":"Figure: Kubernetes架构","alt":"Kubernetes架构","nro":3,"url":"../images/architecture.png","index":2,"caption_template":"Figure: _CAPTION_","label":"Kubernetes架构","attributes":{},"skip":false,"key":"1.2.2"},{"backlink":"concepts/index.html#fig1.2.3","level":"1.2","list_caption":"Figure: kubernetes整体架构示意图","alt":"kubernetes整体架构示意图","nro":4,"url":"../images/kubernetes-whole-arch.png","index":3,"caption_template":"Figure: _CAPTION_","label":"kubernetes整体架构示意图","attributes":{},"skip":false,"key":"1.2.3"},{"backlink":"concepts/index.html#fig1.2.4","level":"1.2","list_caption":"Figure: Kubernetes master架构示意图","alt":"Kubernetes master架构示意图","nro":5,"url":"../images/kubernetes-master-arch.png","index":4,"caption_template":"Figure: _CAPTION_","label":"Kubernetes master架构示意图","attributes":{},"skip":false,"key":"1.2.4"},{"backlink":"concepts/index.html#fig1.2.5","level":"1.2","list_caption":"Figure: kubernetes node架构示意图","alt":"kubernetes node架构示意图","nro":6,"url":"../images/kubernetes-node-arch.png","index":5,"caption_template":"Figure: _CAPTION_","label":"kubernetes node架构示意图","attributes":{},"skip":false,"key":"1.2.5"},{"backlink":"concepts/index.html#fig1.2.6","level":"1.2","list_caption":"Figure: Kubernetes分层架构示意图","alt":"Kubernetes分层架构示意图","nro":7,"url":"../images/kubernetes-layers-arch.jpg","index":6,"caption_template":"Figure: _CAPTION_","label":"Kubernetes分层架构示意图","attributes":{},"skip":false,"key":"1.2.6"},{"backlink":"concepts/concepts.html#fig1.2.1.1","level":"1.2.1","list_caption":"Figure: 分层架构示意图","alt":"分层架构示意图","nro":8,"url":"../images/kubernetes-layers-arch.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"分层架构示意图","attributes":{},"skip":false,"key":"1.2.1.1"},{"backlink":"concepts/pod-overview.html#fig1.2.2.1.1","level":"1.2.2.1","list_caption":"Figure: pod diagram","alt":"pod diagram","nro":9,"url":"../images/pod-overview.png","index":1,"caption_template":"Figure: _CAPTION_","label":"pod diagram","attributes":{},"skip":false,"key":"1.2.2.1.1"},{"backlink":"concepts/pod.html#fig1.2.2.1.1.1","level":"1.2.2.1.1","list_caption":"Figure: Pod示意图","alt":"Pod示意图","nro":10,"url":"../images/pod-overview.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Pod示意图","attributes":{},"skip":false,"key":"1.2.2.1.1.1"},{"backlink":"concepts/pod.html#fig1.2.2.1.1.2","level":"1.2.2.1.1","list_caption":"Figure: Pod Cheatsheet","alt":"Pod Cheatsheet","nro":11,"url":"../images/kubernetes-pod-cheatsheet.png","index":2,"caption_template":"Figure: _CAPTION_","label":"Pod Cheatsheet","attributes":{},"skip":false,"key":"1.2.2.1.1.2"},{"backlink":"concepts/service.html#fig1.2.2.4.1","level":"1.2.2.4","list_caption":"Figure: userspace代理模式下Service概览图","alt":"userspace代理模式下Service概览图","nro":12,"url":"https://d33wubrfki0l68.cloudfront.net/b8e1022c2dd815d8dd36b1bc4f0cc3ad870a924f/1dd12/images/docs/services-userspace-overview.svg","index":1,"caption_template":"Figure: _CAPTION_","label":"userspace代理模式下Service概览图","attributes":{},"skip":false,"key":"1.2.2.4.1"},{"backlink":"concepts/service.html#fig1.2.2.4.2","level":"1.2.2.4","list_caption":"Figure: iptables代理模式下Service概览图","alt":"iptables代理模式下Service概览图","nro":13,"url":"https://d33wubrfki0l68.cloudfront.net/837afa5715eb31fb9ca6516ec6863e810f437264/42951/images/docs/services-iptables-overview.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"iptables代理模式下Service概览图","attributes":{},"skip":false,"key":"1.2.2.4.2"},{"backlink":"concepts/deployment.html#fig1.2.2.6.1","level":"1.2.2.6","list_caption":"Figure: kubernetes deployment cheatsheet","alt":"kubernetes deployment cheatsheet","nro":14,"url":"../images/deployment-cheatsheet.png","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes deployment cheatsheet","attributes":{},"skip":false,"key":"1.2.2.6.1"},{"backlink":"concepts/horizontal-pod-autoscaling.html#fig1.2.2.16.1","level":"1.2.2.16","list_caption":"Figure: horizontal-pod-autoscaler","alt":"horizontal-pod-autoscaler","nro":15,"url":"../images/horizontal-pod-autoscaler.png","index":1,"caption_template":"Figure: _CAPTION_","label":"horizontal-pod-autoscaler","attributes":{},"skip":false,"key":"1.2.2.16.1"},{"backlink":"concepts/label.html#fig1.2.2.17.1","level":"1.2.2.17","list_caption":"Figure: label示意图","alt":"label示意图","nro":16,"url":"../images/labels.png","index":1,"caption_template":"Figure: _CAPTION_","label":"label示意图","attributes":{},"skip":false,"key":"1.2.2.17.1"},{"backlink":"guide/using-kubectl.html#fig1.3.2.1.1","level":"1.3.2.1","list_caption":"Figure: kubectl cheatsheet","alt":"kubectl cheatsheet","nro":17,"url":"../images/kubernetes-kubectl-cheatsheet.png","index":1,"caption_template":"Figure: _CAPTION_","label":"kubectl cheatsheet","attributes":{},"skip":false,"key":"1.3.2.1.1"},{"backlink":"guide/using-kubectl.html#fig1.3.2.1.2","level":"1.3.2.1","list_caption":"Figure: kube-shell页面","alt":"kube-shell页面","nro":18,"url":"../images/kube-shell.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"kube-shell页面","attributes":{},"skip":false,"key":"1.3.2.1.2"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.1","level":"1.3.5.1","list_caption":"Figure: API","alt":"API","nro":19,"url":"../images/k8s-app-monitor-test-api-doc.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"API","attributes":{},"skip":false,"key":"1.3.5.1.1"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.2","level":"1.3.5.1","list_caption":"Figure: wercker","alt":"wercker","nro":20,"url":"../images/k8s-app-monitor-agent-wercker.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"wercker","attributes":{},"skip":false,"key":"1.3.5.1.2"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.3","level":"1.3.5.1","list_caption":"Figure: 图表","alt":"图表","nro":21,"url":"../images/k8s-app-monitor-agent.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"图表","attributes":{},"skip":false,"key":"1.3.5.1.3"},{"backlink":"practice/node-installation.html#fig1.4.1.6.1","level":"1.4.1.6","list_caption":"Figure: welcome-nginx","alt":"welcome-nginx","nro":22,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-installation-test-nginx.png","index":1,"caption_template":"Figure: _CAPTION_","label":"welcome-nginx","attributes":{},"skip":false,"key":"1.4.1.6.1"},{"backlink":"practice/dashboard-addon-installation.html#fig1.4.1.8.1","level":"1.4.1.8","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":23,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.1.8.1"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.1","level":"1.4.1.9","list_caption":"Figure: dashboard-heapster","alt":"dashboard-heapster","nro":24,"url":"../images/kubernetes-dashboard-with-heapster.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"dashboard-heapster","attributes":{},"skip":false,"key":"1.4.1.9.1"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.2","level":"1.4.1.9","list_caption":"Figure: grafana","alt":"grafana","nro":25,"url":"../images/kubernetes-heapster-grafana.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"grafana","attributes":{},"skip":false,"key":"1.4.1.9.2"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.3","level":"1.4.1.9","list_caption":"Figure: kubernetes-influxdb-heapster","alt":"kubernetes-influxdb-heapster","nro":26,"url":"../images/kubernetes-influxdb-heapster.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"kubernetes-influxdb-heapster","attributes":{},"skip":false,"key":"1.4.1.9.3"},{"backlink":"practice/efk-addon-installation.html#fig1.4.1.10.1","level":"1.4.1.10","list_caption":"Figure: es-setting","alt":"es-setting","nro":27,"url":"../images/es-setting.png","index":1,"caption_template":"Figure: _CAPTION_","label":"es-setting","attributes":{},"skip":false,"key":"1.4.1.10.1"},{"backlink":"practice/efk-addon-installation.html#fig1.4.1.10.2","level":"1.4.1.10","list_caption":"Figure: es-home","alt":"es-home","nro":28,"url":"../images/kubernetes-efk-kibana.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"es-home","attributes":{},"skip":false,"key":"1.4.1.10.2"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.1","level":"1.4.2.1","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":29,"url":"../images/traefik-dashboard.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.2.1.1"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.2","level":"1.4.2.1","list_caption":"Figure: traefik-nginx","alt":"traefik-nginx","nro":30,"url":"../images/traefik-nginx.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"traefik-nginx","attributes":{},"skip":false,"key":"1.4.2.1.2"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.3","level":"1.4.2.1","list_caption":"Figure: traefik-guestbook","alt":"traefik-guestbook","nro":31,"url":"../images/traefik-guestbook.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"traefik-guestbook","attributes":{},"skip":false,"key":"1.4.2.1.3"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.1","level":"1.4.2.2","list_caption":"Figure: traefik-dashboard-locust","alt":"traefik-dashboard-locust","nro":32,"url":"../images/traefik-dashboard-locust.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"traefik-dashboard-locust","attributes":{},"skip":false,"key":"1.4.2.2.1"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.2","level":"1.4.2.2","list_caption":"Figure: locust-start-swarming","alt":"locust-start-swarming","nro":33,"url":"../images/locust-start-swarming.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"locust-start-swarming","attributes":{},"skip":false,"key":"1.4.2.2.2"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.3","level":"1.4.2.2","list_caption":"Figure: sample-webapp-rc","alt":"sample-webapp-rc","nro":34,"url":"../images/sample-webapp-rc.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"sample-webapp-rc","attributes":{},"skip":false,"key":"1.4.2.2.3"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.4","level":"1.4.2.2","list_caption":"Figure: locust-dashboard","alt":"locust-dashboard","nro":35,"url":"../images/locust-dashboard.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"locust-dashboard","attributes":{},"skip":false,"key":"1.4.2.2.4"},{"backlink":"practice/network-and-cluster-perfermance-test.html#fig1.4.2.3.1","level":"1.4.2.3","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":36,"url":"http://olz1di9xf.bkt.clouddn.com/kubenetes-e2e-test.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.2.3.1"},{"backlink":"practice/network-and-cluster-perfermance-test.html#fig1.4.2.3.2","level":"1.4.2.3","list_caption":"Figure: locust-test","alt":"locust-test","nro":37,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-locust-test.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"locust-test","attributes":{},"skip":false,"key":"1.4.2.3.2"},{"backlink":"practice/edge-node-configuration.html#fig1.4.2.4.1","level":"1.4.2.4","list_caption":"Figure: 边缘节点架构","alt":"边缘节点架构","nro":38,"url":"../images/kubernetes-edge-node-architecture.png","index":1,"caption_template":"Figure: _CAPTION_","label":"边缘节点架构","attributes":{},"skip":false,"key":"1.4.2.4.1"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.1","level":"1.4.3.2","list_caption":"Figure: logstash日志收集架构图","alt":"logstash日志收集架构图","nro":39,"url":"../images/filebeat-log-collector.png","index":1,"caption_template":"Figure: _CAPTION_","label":"logstash日志收集架构图","attributes":{},"skip":false,"key":"1.4.3.2.1"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.2","level":"1.4.3.2","list_caption":"Figure: Kibana页面","alt":"Kibana页面","nro":40,"url":"../images/filebeat-docker-test.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"Kibana页面","attributes":{},"skip":false,"key":"1.4.3.2.2"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.3","level":"1.4.3.2","list_caption":"Figure: filebeat收集的日志详细信息","alt":"filebeat收集的日志详细信息","nro":41,"url":"../images/kubernetes-filebeat-detail.png","index":3,"caption_template":"Figure: _CAPTION_","label":"filebeat收集的日志详细信息","attributes":{},"skip":false,"key":"1.4.3.2.3"},{"backlink":"practice/monitor.html#fig1.4.3.4.1","level":"1.4.3.4","list_caption":"Figure: Kubernetes集群中的监控","alt":"Kubernetes集群中的监控","nro":42,"url":"../images/monitoring-in-kubernetes.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Kubernetes集群中的监控","attributes":{},"skip":false,"key":"1.4.3.4.1"},{"backlink":"practice/monitor.html#fig1.4.3.4.2","level":"1.4.3.4","list_caption":"Figure: kubernetes的容器命名规则示意图","alt":"kubernetes的容器命名规则示意图","nro":43,"url":"../images/kubernetes-container-naming-rule.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"kubernetes的容器命名规则示意图","attributes":{},"skip":false,"key":"1.4.3.4.2"},{"backlink":"practice/monitor.html#fig1.4.3.4.3","level":"1.4.3.4","list_caption":"Figure: Heapster架构图（改进版）","alt":"Heapster架构图（改进版）","nro":44,"url":"../images/kubernetes-heapster-monitoring.png","index":3,"caption_template":"Figure: _CAPTION_","label":"Heapster架构图（改进版）","attributes":{},"skip":false,"key":"1.4.3.4.3"},{"backlink":"practice/monitor.html#fig1.4.3.4.4","level":"1.4.3.4","list_caption":"Figure: 应用监控架构图","alt":"应用监控架构图","nro":45,"url":"../images/kubernetes-app-monitoring.png","index":4,"caption_template":"Figure: _CAPTION_","label":"应用监控架构图","attributes":{},"skip":false,"key":"1.4.3.4.4"},{"backlink":"practice/monitor.html#fig1.4.3.4.5","level":"1.4.3.4","list_caption":"Figure: 应用拓扑图","alt":"应用拓扑图","nro":46,"url":"../images/weave-scope-service-topology.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"应用拓扑图","attributes":{},"skip":false,"key":"1.4.3.4.5"},{"backlink":"practice/jenkins-ci-cd.html#fig1.4.3.5.1","level":"1.4.3.5","list_caption":"Figure: 基于Jenkins的持续集成与发布","alt":"基于Jenkins的持续集成与发布","nro":47,"url":"../images/kubernetes-jenkins-ci-cd.png","index":1,"caption_template":"Figure: _CAPTION_","label":"基于Jenkins的持续集成与发布","attributes":{},"skip":false,"key":"1.4.3.5.1"},{"backlink":"practice/data-persistence-problem.html#fig1.4.3.6.1","level":"1.4.3.6","list_caption":"Figure: 日志持久化收集解决方案示意图","alt":"日志持久化收集解决方案示意图","nro":48,"url":"../images/log-persistence-logstash.png","index":1,"caption_template":"Figure: _CAPTION_","label":"日志持久化收集解决方案示意图","attributes":{},"skip":false,"key":"1.4.3.6.1"},{"backlink":"practice/storage-for-containers-using-glusterfs-with-openshift.html#fig1.4.4.1.2.1","level":"1.4.4.1.2","list_caption":"Figure: Screen Shot 2017-03-23 at 21.50.34","alt":"Screen Shot 2017-03-23 at 21.50.34","nro":49,"url":"https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-23-at-21-50-34.png?w=440","index":1,"caption_template":"Figure: _CAPTION_","label":"Screen Shot 2017-03-23 at 21.50.34","attributes":{},"skip":false,"key":"1.4.4.1.2.1"},{"backlink":"practice/storage-for-containers-using-glusterfs-with-openshift.html#fig1.4.4.1.2.2","level":"1.4.4.1.2","list_caption":"Figure: Screen Shot 2017-03-24 at 11.09.34.png","alt":"Screen Shot 2017-03-24 at 11.09.34.png","nro":50,"url":"https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-24-at-11-09-341.png?w=440","index":2,"caption_template":"Figure: _CAPTION_","label":"Screen Shot 2017-03-24 at 11.09.34.png","attributes":{},"skip":false,"key":"1.4.4.1.2.2"},{"backlink":"usecases/istio.html#fig1.5.1.1.1","level":"1.5.1.1","list_caption":"Figure: Istio架构图","alt":"Istio架构图","nro":51,"url":"../images/istio-arch.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Istio架构图","attributes":{},"skip":false,"key":"1.5.1.1.1"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.1","level":"1.5.1.1.1","list_caption":"Figure: BookInfo Sample应用架构图","alt":"BookInfo Sample应用架构图","nro":52,"url":"../images/bookinfo-sample-arch.png","index":1,"caption_template":"Figure: _CAPTION_","label":"BookInfo Sample应用架构图","attributes":{},"skip":false,"key":"1.5.1.1.1.1"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.2","level":"1.5.1.1.1","list_caption":"Figure: BookInfo Sample页面","alt":"BookInfo Sample页面","nro":53,"url":"../images/bookinfo-sample.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"BookInfo Sample页面","attributes":{},"skip":false,"key":"1.5.1.1.1.2"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.3","level":"1.5.1.1.1","list_caption":"Figure: Istio Grafana界面","alt":"Istio Grafana界面","nro":54,"url":"../images/istio-grafana.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"Istio Grafana界面","attributes":{},"skip":false,"key":"1.5.1.1.1.3"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.4","level":"1.5.1.1.1","list_caption":"Figure: Prometheus页面","alt":"Prometheus页面","nro":55,"url":"../images/istio-prometheus.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"Prometheus页面","attributes":{},"skip":false,"key":"1.5.1.1.1.4"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.5","level":"1.5.1.1.1","list_caption":"Figure: Zipkin页面","alt":"Zipkin页面","nro":56,"url":"../images/istio-zipkin.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"Zipkin页面","attributes":{},"skip":false,"key":"1.5.1.1.1.5"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.6","level":"1.5.1.1.1","list_caption":"Figure: ServiceGraph页面","alt":"ServiceGraph页面","nro":57,"url":"../images/istio-servicegraph.jpg","index":6,"caption_template":"Figure: _CAPTION_","label":"ServiceGraph页面","attributes":{},"skip":false,"key":"1.5.1.1.1.6"},{"backlink":"usecases/linkerd.html#fig1.5.1.2.1","level":"1.5.1.2","list_caption":"Figure: source https://linkerd.io","alt":"source https://linkerd.io","nro":58,"url":"https://linkerd.io/images/diagram-individual-instance.png","index":1,"caption_template":"Figure: _CAPTION_","label":"source https://linkerd.io","attributes":{},"skip":false,"key":"1.5.1.2.1"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.1","level":"1.5.1.2.1","list_caption":"Figure: Jenkins pipeline","alt":"Jenkins pipeline","nro":59,"url":"../images/linkerd-jenkins-pipeline.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jenkins pipeline","attributes":{},"skip":false,"key":"1.5.1.2.1.1"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.2","level":"1.5.1.2.1","list_caption":"Figure: Jenkins config","alt":"Jenkins config","nro":60,"url":"../images/linkerd-jenkins.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"Jenkins config","attributes":{},"skip":false,"key":"1.5.1.2.1.2"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.3","level":"1.5.1.2.1","list_caption":"Figure: namerd","alt":"namerd","nro":61,"url":"../images/namerd-internal.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"namerd","attributes":{},"skip":false,"key":"1.5.1.2.1.3"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.4","level":"1.5.1.2.1","list_caption":"Figure: linkerd监控","alt":"linkerd监控","nro":62,"url":"../images/linkerd-helloworld-outgoing.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"linkerd监控","attributes":{},"skip":false,"key":"1.5.1.2.1.4"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.5","level":"1.5.1.2.1","list_caption":"Figure: linkerd监控","alt":"linkerd监控","nro":63,"url":"../images/linkerd-helloworld-incoming.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"linkerd监控","attributes":{},"skip":false,"key":"1.5.1.2.1.5"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.6","level":"1.5.1.2.1","list_caption":"Figure: linkerd性能监控","alt":"linkerd性能监控","nro":64,"url":"../images/linkerd-grafana.png","index":6,"caption_template":"Figure: _CAPTION_","label":"linkerd性能监控","attributes":{},"skip":false,"key":"1.5.1.2.1.6"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.7","level":"1.5.1.2.1","list_caption":"Figure: Linkerd ingress controller","alt":"Linkerd ingress controller","nro":65,"url":"../images/linkerd-ingress-controller.jpg","index":7,"caption_template":"Figure: _CAPTION_","label":"Linkerd ingress controller","attributes":{},"skip":false,"key":"1.5.1.2.1.7"},{"backlink":"usecases/service-discovery-in-microservices.html#fig1.5.1.3.1","level":"1.5.1.3","list_caption":"Figure: 微服务中的服务发现","alt":"微服务中的服务发现","nro":66,"url":"../images/service-discovery-in-microservices.png","index":1,"caption_template":"Figure: _CAPTION_","label":"微服务中的服务发现","attributes":{},"skip":false,"key":"1.5.1.3.1"},{"backlink":"usecases/spark-on-kubernetes.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: spark master ui","alt":"spark master ui","nro":67,"url":"../images/spark-ui.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"spark master ui","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"usecases/spark-on-kubernetes.html#fig1.5.2.1.2","level":"1.5.2.1","list_caption":"Figure: zeppelin ui","alt":"zeppelin ui","nro":68,"url":"../images/zeppelin-ui.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"zeppelin ui","attributes":{},"skip":false,"key":"1.5.2.1.2"},{"backlink":"develop/client-go-sample.html#fig1.6.3.1","level":"1.6.3","list_caption":"Figure: 使用kubernetes dashboard进行故障排查","alt":"使用kubernetes dashboard进行故障排查","nro":69,"url":"../images/kubernetes-client-go-sample-update.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"使用kubernetes dashboard进行故障排查","attributes":{},"skip":false,"key":"1.6.3.1"},{"backlink":"appendix/issues.html#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: pvc-storage-limit","alt":"pvc-storage-limit","nro":70,"url":"../images/pvc-storage-limit.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"pvc-storage-limit","attributes":{},"skip":false,"key":"1.7.2.1"}]},"title":"Kubernetes Handbook","language":"zh-cn","gitbook":"*","description":"Let's play fun with kubernetes!","image-captions":{"caption":"图片 - _CAPTION_"}},"file":{"path":"practice/node-installation.md","mtime":"2017-08-02T15:06:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-13T12:57:08.041Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

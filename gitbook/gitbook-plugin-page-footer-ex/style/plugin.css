@@ -1,0 +1,15 @@
+.page-footer-ex {
+    margin-top: 50px;
+    border-top: 1px solid #ccc;
+    overflow: hidden;
+    padding: 10px 0;
+    font-size: 12px;
+    color: #808080;
+}
+.page-footer-ex a {
+    color: #808080!important;
+    text-decoration: underline!important;
+}
+.page-footer-ex-footer-update {
+    float: right;
+}

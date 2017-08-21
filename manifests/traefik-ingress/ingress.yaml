@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: traefik-ingress
-  namespace: default
 spec:
   rules:
   - host: traefik.nginx.io

@@ -1,0 +1,1802 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.2.4 Service · Kubernetes Handbook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="Jimmy Song">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="volume.html" />
+    
+    
+    <link rel="prev" href="namespace.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1. 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    2. 概念原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="concepts.html">
+            
+                <a href="concepts.html">
+            
+                    
+                    2.1 设计理念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="objects.html">
+            
+                <a href="objects.html">
+            
+                    
+                    2.2 主要概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="pod-overview.html">
+            
+                <a href="pod-overview.html">
+            
+                    
+                    2.2.1 Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1.1" data-path="pod.html">
+            
+                <a href="pod.html">
+            
+                    
+                    2.2.1.1 Pod解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="node.html">
+            
+                <a href="node.html">
+            
+                    
+                    2.2.2 Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="namespace.html">
+            
+                <a href="namespace.html">
+            
+                    
+                    2.2.3 Namespace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2.4" data-path="service.html">
+            
+                <a href="service.html">
+            
+                    
+                    2.2.4 Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" data-path="volume.html">
+            
+                <a href="volume.html">
+            
+                    
+                    2.2.5 Volume和Persistent Volume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" data-path="deployment.html">
+            
+                <a href="deployment.html">
+            
+                    
+                    2.2.6 Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.7" data-path="secret.html">
+            
+                <a href="secret.html">
+            
+                    
+                    2.2.7 Secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.8" data-path="statefulset.html">
+            
+                <a href="statefulset.html">
+            
+                    
+                    2.2.8 StatefulSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.9" data-path="daemonset.html">
+            
+                <a href="daemonset.html">
+            
+                    
+                    2.2.9 DaemonSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.10" data-path="serviceaccount.html">
+            
+                <a href="serviceaccount.html">
+            
+                    
+                    2.2.10 ServiceAccount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.11" data-path="replicaset.html">
+            
+                <a href="replicaset.html">
+            
+                    
+                    2.2.11 ReplicationController和ReplicaSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.12" data-path="job.html">
+            
+                <a href="job.html">
+            
+                    
+                    2.2.12 Job
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.13" data-path="cronjob.html">
+            
+                <a href="cronjob.html">
+            
+                    
+                    2.2.13 CronJob
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.14" data-path="ingress.html">
+            
+                <a href="ingress.html">
+            
+                    
+                    2.2.14 Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.15" data-path="configmap.html">
+            
+                <a href="configmap.html">
+            
+                    
+                    2.2.15 ConfigMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.16" data-path="horizontal-pod-autoscaling.html">
+            
+                <a href="horizontal-pod-autoscaling.html">
+            
+                    
+                    2.2.16 Horizontal Pod Autoscaling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.17" data-path="label.html">
+            
+                <a href="label.html">
+            
+                    
+                    2.2.17 Label
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../guide/">
+            
+                <a href="../guide/">
+            
+                    
+                    3. 用户指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../guide/resource-configuration.html">
+            
+                <a href="../guide/resource-configuration.html">
+            
+                    
+                    3.1 资源配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../guide/configure-liveness-readiness-probes.html">
+            
+                <a href="../guide/configure-liveness-readiness-probes.html">
+            
+                    
+                    3.1.1 配置Pod的liveness和readiness探针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../guide/configure-pod-service-account.html">
+            
+                <a href="../guide/configure-pod-service-account.html">
+            
+                    
+                    3.1.2 配置Pod的Service Account
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../guide/command-usage.html">
+            
+                <a href="../guide/command-usage.html">
+            
+                    
+                    3.2 命令使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../guide/using-kubectl.html">
+            
+                <a href="../guide/using-kubectl.html">
+            
+                    
+                    3.2.1 使用kubectl
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../guide/cluster-management.html">
+            
+                <a href="../guide/cluster-management.html">
+            
+                    
+                    3.3 集群管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../guide/managing-tls-in-a-cluster.html">
+            
+                <a href="../guide/managing-tls-in-a-cluster.html">
+            
+                    
+                    3.3.1 管理集群中的TLS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../guide/access-kubernetes-cluster.html">
+            
+                <a href="../guide/access-kubernetes-cluster.html">
+            
+                    
+                    3.4 访问 Kubernetes 集群
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../guide/access-cluster.html">
+            
+                <a href="../guide/access-cluster.html">
+            
+                    
+                    3.4.1 访问集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../guide/authenticate-across-clusters-kubeconfig.html">
+            
+                <a href="../guide/authenticate-across-clusters-kubeconfig.html">
+            
+                    
+                    3.4.2 使用 kubeconfig 文件配置跨集群认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.3" data-path="../guide/connecting-to-applications-port-forward.html">
+            
+                <a href="../guide/connecting-to-applications-port-forward.html">
+            
+                    
+                    3.4.3 通过端口转发访问集群中的应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.4" data-path="../guide/service-access-application-cluster.html">
+            
+                <a href="../guide/service-access-application-cluster.html">
+            
+                    
+                    3.4.4 使用 service 访问群集中的应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../guide/application-development-deployment-flow.html">
+            
+                <a href="../guide/application-development-deployment-flow.html">
+            
+                    
+                    3.5 在kubernetes中开发部署应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../guide/deploy-applications-in-kubernetes.html">
+            
+                <a href="../guide/deploy-applications-in-kubernetes.html">
+            
+                    
+                    3.5.1 适用于kubernetes的应用开发部署流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../practice/">
+            
+                <a href="../practice/">
+            
+                    
+                    4. 最佳实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../practice/install-kbernetes1.6-on-centos.html">
+            
+                <a href="../practice/install-kbernetes1.6-on-centos.html">
+            
+                    
+                     4.1 在CentOS上部署kubernetes1.6集群
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../practice/create-tls-and-secret-key.html">
+            
+                <a href="../practice/create-tls-and-secret-key.html">
+            
+                    
+                    4.1.1 创建TLS证书和秘钥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../practice/create-kubeconfig.html">
+            
+                <a href="../practice/create-kubeconfig.html">
+            
+                    
+                    4.1.2 创建kubeconfig文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../practice/etcd-cluster-installation.html">
+            
+                <a href="../practice/etcd-cluster-installation.html">
+            
+                    
+                    4.1.3 创建高可用etcd集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../practice/kubectl-installation.html">
+            
+                <a href="../practice/kubectl-installation.html">
+            
+                    
+                    4.1.4 安装kubectl命令行工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../practice/master-installation.html">
+            
+                <a href="../practice/master-installation.html">
+            
+                    
+                    4.1.5 部署master节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../practice/node-installation.html">
+            
+                <a href="../practice/node-installation.html">
+            
+                    
+                    4.1.6 部署node节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../practice/kubedns-addon-installation.html">
+            
+                <a href="../practice/kubedns-addon-installation.html">
+            
+                    
+                    4.1.7 安装kubedns插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.8" data-path="../practice/dashboard-addon-installation.html">
+            
+                <a href="../practice/dashboard-addon-installation.html">
+            
+                    
+                    4.1.8 安装dashboard插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.9" data-path="../practice/heapster-addon-installation.html">
+            
+                <a href="../practice/heapster-addon-installation.html">
+            
+                    
+                    4.1.9 安装heapster插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.10" data-path="../practice/efk-addon-installation.html">
+            
+                <a href="../practice/efk-addon-installation.html">
+            
+                    
+                    4.1.10 安装EFK插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../practice/service-discovery-and-loadbalancing.html">
+            
+                <a href="../practice/service-discovery-and-loadbalancing.html">
+            
+                    
+                    4.2 服务发现与负载均衡
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../practice/traefik-ingress-installation.html">
+            
+                <a href="../practice/traefik-ingress-installation.html">
+            
+                    
+                    4.2.1 安装Traefik ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../practice/distributed-load-test.html">
+            
+                <a href="../practice/distributed-load-test.html">
+            
+                    
+                    4.2.2 分布式负载测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../practice/network-and-cluster-perfermance-test.html">
+            
+                <a href="../practice/network-and-cluster-perfermance-test.html">
+            
+                    
+                    4.2.3 网络和集群性能测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../practice/edge-node-configuration.html">
+            
+                <a href="../practice/edge-node-configuration.html">
+            
+                    
+                    4.2.4 边缘节点配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../practice/operation.html">
+            
+                <a href="../practice/operation.html">
+            
+                    
+                    4.3 运维管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../practice/service-rolling-update.html">
+            
+                <a href="../practice/service-rolling-update.html">
+            
+                    
+                    4.3.1 服务滚动升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../practice/app-log-collection.html">
+            
+                <a href="../practice/app-log-collection.html">
+            
+                    
+                    4.3.2 应用日志收集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="../practice/configuration-best-practice.html">
+            
+                <a href="../practice/configuration-best-practice.html">
+            
+                    
+                    4.3.3 配置最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="../practice/monitor.html">
+            
+                <a href="../practice/monitor.html">
+            
+                    
+                    4.3.4 集群及应用监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.5" data-path="../practice/jenkins-ci-cd.html">
+            
+                <a href="../practice/jenkins-ci-cd.html">
+            
+                    
+                    4.3.5 使用Jenkins进行持续构建与发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.6" data-path="../practice/data-persistence-problem.html">
+            
+                <a href="../practice/data-persistence-problem.html">
+            
+                    
+                    4.3.6 数据持久化问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../practice/storage.html">
+            
+                <a href="../practice/storage.html">
+            
+                    
+                    4.4 存储管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../practice/glusterfs.html">
+            
+                <a href="../practice/glusterfs.html">
+            
+                    
+                    4.4.1 GlusterFS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1.1" data-path="../practice/using-glusterfs-for-persistent-storage.html">
+            
+                <a href="../practice/using-glusterfs-for-persistent-storage.html">
+            
+                    
+                    4.4.1.1 使用GlusterFS做持久化存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.1.2" data-path="../practice/storage-for-containers-using-glusterfs-with-openshift.html">
+            
+                <a href="../practice/storage-for-containers-using-glusterfs-with-openshift.html">
+            
+                    
+                    4.4.1.2 在OpenShift中使用GlusterFS做持久化存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../usecases/">
+            
+                <a href="../usecases/">
+            
+                    
+                    5. 领域应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../usecases/microservices.html">
+            
+                <a href="../usecases/microservices.html">
+            
+                    
+                    5.1 微服务架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../usecases/istio.html">
+            
+                <a href="../usecases/istio.html">
+            
+                    
+                    5.1.1 Istio
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1.1" data-path="../usecases/istio-installation.html">
+            
+                <a href="../usecases/istio-installation.html">
+            
+                    
+                    5.1.1.1 安装istio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.1.2" data-path="../usecases/configuring-request-routing.html">
+            
+                <a href="../usecases/configuring-request-routing.html">
+            
+                    
+                    5.1.1.2 配置请求的路由规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../usecases/linkerd.html">
+            
+                <a href="../usecases/linkerd.html">
+            
+                    
+                    5.1.2 Linkerd
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.2.1" data-path="../usecases/linkerd-user-guide.html">
+            
+                <a href="../usecases/linkerd-user-guide.html">
+            
+                    
+                    5.1.2.1 Linkerd 使用指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../usecases/service-discovery-in-microservices.html">
+            
+                <a href="../usecases/service-discovery-in-microservices.html">
+            
+                    
+                    5.1.3 微服务中的服务发现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../usecases/big-data.html">
+            
+                <a href="../usecases/big-data.html">
+            
+                    
+                    5.2 大数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../usecases/spark-on-kubernetes.html">
+            
+                <a href="../usecases/spark-on-kubernetes.html">
+            
+                    
+                    5.2.1 Spark on Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../develop/">
+            
+                <a href="../develop/">
+            
+                    
+                    6. 开发指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../develop/developing-environment.html">
+            
+                <a href="../develop/developing-environment.html">
+            
+                    
+                    6.1 开发环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../develop/testing.html">
+            
+                <a href="../develop/testing.html">
+            
+                    
+                    6.2 单元测试和集成测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../develop/client-go-sample.html">
+            
+                <a href="../develop/client-go-sample.html">
+            
+                    
+                    6.3 client-go示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../develop/contribute.html">
+            
+                <a href="../develop/contribute.html">
+            
+                    
+                    6.4 社区贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    7. 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../appendix/docker-best-practice.html">
+            
+                <a href="../appendix/docker-best-practice.html">
+            
+                    
+                    7.1 Docker最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../appendix/issues.html">
+            
+                <a href="../appendix/issues.html">
+            
+                    
+                    7.2 问题记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../appendix/tricks.html">
+            
+                <a href="../appendix/tricks.html">
+            
+                    
+                    7.3 使用技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.2.4 Service</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="service">Service</h1>
+<p>Kubernetes <a href="https://kubernetes.io/docs/user-guide/pods" target="_blank"><code>Pod</code></a> &#x662F;&#x6709;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x7136;&#x800C;&#x4E00;&#x65E6;&#x88AB;&#x9500;&#x6BC1;&#x751F;&#x547D;&#x5C31;&#x6C38;&#x8FDC;&#x7ED3;&#x675F;&#x3002; 
+&#x901A;&#x8FC7; <a href="https://kubernetes.io/docs/user-guide/replication-controller" target="_blank"><code>ReplicationController</code></a> &#x80FD;&#x591F;&#x52A8;&#x6001;&#x5730;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1; <code>Pod</code>&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6269;&#x7F29;&#x5BB9;&#xFF0C;&#x6216;&#x8005;&#x6267;&#x884C; <a href="https://kubernetes.io/docs/user-guide/kubectl/v1.7/#rolling-update" target="_blank">&#x6EDA;&#x52A8;&#x5347;&#x7EA7;</a>&#xFF09;&#x3002; 
+&#x6BCF;&#x4E2A; <code>Pod</code> &#x90FD;&#x4F1A;&#x83B7;&#x53D6;&#x5B83;&#x81EA;&#x5DF1;&#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E9B; IP &#x5730;&#x5740;&#x4E0D;&#x603B;&#x662F;&#x7A33;&#x5B9A;&#x53EF;&#x4F9D;&#x8D56;&#x7684;&#x3002;
+&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5728; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x7EC4; <code>Pod</code>&#xFF08;&#x79F0;&#x4E3A; backend&#xFF09;&#x4E3A;&#x5176;&#x5B83; <code>Pod</code> &#xFF08;&#x79F0;&#x4E3A; frontend&#xFF09;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x90A3;&#x4E48;&#x90A3;&#x4E9B; frontend &#x8BE5;&#x5982;&#x4F55;&#x53D1;&#x73B0;&#xFF0C;&#x5E76;&#x8FDE;&#x63A5;&#x5230;&#x8FD9;&#x7EC4; <code>Pod</code> &#x4E2D;&#x7684;&#x54EA;&#x4E9B; backend &#x5462;&#xFF1F;</p>
+<p>&#x5173;&#x4E8E; <code>Service</code></p>
+<p>Kubernetes <code>Service</code> &#x5B9A;&#x4E49;&#x4E86;&#x8FD9;&#x6837;&#x4E00;&#x79CD;&#x62BD;&#x8C61;&#xFF1A;&#x4E00;&#x4E2A; <code>Pod</code> &#x7684;&#x903B;&#x8F91;&#x5206;&#x7EC4;&#xFF0C;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#x7684;&#x7B56;&#x7565; &#x2014;&#x2014; &#x901A;&#x5E38;&#x79F0;&#x4E3A;&#x5FAE;&#x670D;&#x52A1;&#x3002;
+&#x8FD9;&#x4E00;&#x7EC4; <code>Pod</code> &#x80FD;&#x591F;&#x88AB; <code>Service</code> &#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x901A;&#x8FC7; <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors" target="_blank"><code>Label Selector</code></a>&#xFF08;&#x67E5;&#x770B;&#x4E0B;&#x9762;&#x4E86;&#x89E3;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x6CA1;&#x6709; selector &#x7684; <code>Service</code>&#xFF09;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x5904;&#x7406; backend&#xFF0C;&#x5B83;&#x8FD0;&#x884C;&#x4E86;3&#x4E2A;&#x526F;&#x672C;&#x3002;&#x8FD9;&#x4E9B;&#x526F;&#x672C;&#x662F;&#x53EF;&#x4E92;&#x6362;&#x7684; &#x2014;&#x2014; frontend &#x4E0D;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x5B83;&#x4EEC;&#x8C03;&#x7528;&#x4E86;&#x54EA;&#x4E2A; backend &#x526F;&#x672C;&#x3002;
+&#x7136;&#x800C;&#x7EC4;&#x6210;&#x8FD9;&#x4E00;&#x7EC4; backend &#x7A0B;&#x5E8F;&#x7684; <code>Pod</code> &#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;frontend &#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x5E94;&#x8BE5;&#x4E5F;&#x6CA1;&#x5FC5;&#x8981;&#x77E5;&#x9053;&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x8DDF;&#x8E2A;&#x8FD9;&#x4E00;&#x7EC4; backend &#x7684;&#x72B6;&#x6001;&#x3002;
+<code>Service</code> &#x5B9A;&#x4E49;&#x7684;&#x62BD;&#x8C61;&#x80FD;&#x591F;&#x89E3;&#x8026;&#x8FD9;&#x79CD;&#x5173;&#x8054;&#x3002;</p>
+<p>&#x5BF9; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#xFF0C;Kubernetes &#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x5355;&#x7684; <code>Endpoints</code> API&#xFF0C;&#x53EA;&#x8981; <code>Service</code> &#x4E2D;&#x7684;&#x4E00;&#x7EC4; <code>Pod</code> &#x53D1;&#x751F;&#x53D8;&#x66F4;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;&#x3002;
+&#x5BF9;&#x975E; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#xFF0C;Kubernetes &#x63D0;&#x4F9B;&#x4E86;&#x57FA;&#x4E8E; VIP &#x7684;&#x7F51;&#x6865;&#x7684;&#x65B9;&#x5F0F;&#x8BBF;&#x95EE; <code>Service</code>&#xFF0C;&#x518D;&#x7531; <code>Service</code> &#x91CD;&#x5B9A;&#x5411;&#x5230; backend <code>Pod</code>&#x3002;</p>
+<h2 id="&#x5B9A;&#x4E49;-service">&#x5B9A;&#x4E49; Service</h2>
+<p>&#x4E00;&#x4E2A; <code>Service</code> &#x5728; Kubernetes &#x4E2D;&#x662F;&#x4E00;&#x4E2A; REST &#x5BF9;&#x8C61;&#xFF0C;&#x548C; <code>Pod</code> &#x7C7B;&#x4F3C;&#x3002;
+&#x50CF;&#x6240;&#x6709;&#x7684; REST &#x5BF9;&#x8C61;&#x4E00;&#x6837;&#xFF0C; <code>Service</code> &#x5B9A;&#x4E49;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E; POST &#x65B9;&#x5F0F;&#xFF0C;&#x8BF7;&#x6C42; apiserver &#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5B9E;&#x4F8B;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x5047;&#x5B9A;&#x6709;&#x4E00;&#x7EC4; <code>Pod</code>&#xFF0C;&#x5B83;&#x4EEC;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x4E86; 9376 &#x7AEF;&#x53E3;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x88AB;&#x6253;&#x4E0A; <code>&quot;app=MyApp&quot;</code> &#x6807;&#x7B7E;&#x3002;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> MyApp
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - protocol:</span> TCP
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">9376</span>
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x914D;&#x7F6E;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; &#x201C;my-service&#x201D; &#x7684; <code>Service</code> &#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x8BF7;&#x6C42;&#x4EE3;&#x7406;&#x5230;&#x4F7F;&#x7528; TCP &#x7AEF;&#x53E3; 9376&#xFF0C;&#x5E76;&#x4E14;&#x5177;&#x6709;&#x6807;&#x7B7E; <code>&quot;app=MyApp&quot;</code> &#x7684; <code>Pod</code> &#x4E0A;&#x3002;
+&#x8FD9;&#x4E2A; <code>Service</code> &#x5C06;&#x88AB;&#x6307;&#x6D3E;&#x4E00;&#x4E2A; IP &#x5730;&#x5740;&#xFF08;&#x901A;&#x5E38;&#x79F0;&#x4E3A; &#x201C;Cluster IP&#x201D;&#xFF09;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x670D;&#x52A1;&#x7684;&#x4EE3;&#x7406;&#x4F7F;&#x7528;&#xFF08;&#x89C1;&#x4E0B;&#x9762;&#xFF09;&#x3002;
+&#x8BE5; <code>Service</code> &#x7684; selector &#x5C06;&#x4F1A;&#x6301;&#x7EED;&#x8BC4;&#x4F30;&#xFF0C;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x5C06;&#x88AB; POST &#x5230;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; &#x201C;my-service&#x201D; &#x7684; <code>Endpoints</code> &#x5BF9;&#x8C61;&#x4E0A;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C; <code>Service</code> &#x80FD;&#x591F;&#x5C06;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x7AEF;&#x53E3;&#x6620;&#x5C04;&#x5230;&#x4EFB;&#x610F;&#x7684; <code>targetPort</code>&#x3002;
+&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>targetPort</code> &#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E0E; <code>port</code> &#x5B57;&#x6BB5;&#x76F8;&#x540C;&#x7684;&#x503C;&#x3002;
+&#x53EF;&#x80FD;&#x66F4;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;<code>targetPort</code> &#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5F15;&#x7528;&#x4E86; backend <code>Pod</code> &#x7684;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x7684;&#x540D;&#x79F0;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;&#x5B9E;&#x9645;&#x6307;&#x6D3E;&#x7ED9;&#x8BE5;&#x7AEF;&#x53E3;&#x540D;&#x79F0;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A; backend <code>Pod</code> &#x4E2D;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x76F8;&#x540C;&#x3002;
+&#x5BF9;&#x4E8E;&#x90E8;&#x7F72;&#x548C;&#x8BBE;&#x8BA1; <code>Service</code> &#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F1A;&#x63D0;&#x4F9B;&#x66F4;&#x5927;&#x7684;&#x7075;&#x6D3B;&#x6027;&#x3002;
+&#x4F8B;&#x5982;&#xFF0C;&#x53EF;&#x4EE5;&#x5728; backend &#x8F6F;&#x4EF6;&#x4E0B;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x4FEE;&#x6539; Pod &#x66B4;&#x9732;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x4E2D;&#x65AD;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8C03;&#x7528;&#x3002;</p>
+<p>Kubernetes <code>Service</code> &#x80FD;&#x591F;&#x652F;&#x6301; <code>TCP</code> &#x548C; <code>UDP</code> &#x534F;&#x8BAE;&#xFF0C;&#x9ED8;&#x8BA4; <code>TCP</code> &#x534F;&#x8BAE;&#x3002; </p>
+<h3 id="&#x6CA1;&#x6709;-selector-&#x7684;-service">&#x6CA1;&#x6709; selector &#x7684; Service</h3>
+<p>Servcie &#x62BD;&#x8C61;&#x4E86;&#x8BE5;&#x5982;&#x4F55;&#x8BBF;&#x95EE; Kubernetes <code>Pod</code>&#xFF0C;&#x4F46;&#x4E5F;&#x80FD;&#x591F;&#x62BD;&#x8C61;&#x5176;&#x5B83;&#x7C7B;&#x578B;&#x7684; backend&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<ul>
+<li>&#x5E0C;&#x671B;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x7684;&#x6570;&#x636E;&#x5E93;&#x96C6;&#x7FA4;&#xFF0C;&#x4F46;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;</li>
+<li>&#x5E0C;&#x671B;&#x670D;&#x52A1;&#x6307;&#x5411;&#x53E6;&#x4E00;&#x4E2A; <a href="https://kubernetes.io/docs/user-guide/namespaces" target="_blank"><code>Namespace</code></a> &#x4E2D;&#x6216;&#x5176;&#x5B83;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x6B63;&#x5728;&#x5C06;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x8F6C;&#x79FB;&#x5230; Kubernetes &#x96C6;&#x7FA4;&#xFF0C;&#x548C;&#x8FD0;&#x884C;&#x5728; Kubernetes &#x96C6;&#x7FA4;&#x4E4B;&#x5916;&#x7684; backend&#x3002;</li>
+</ul>
+<p>&#x5728;&#x4EFB;&#x4F55;&#x8FD9;&#x4E9B;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x90FD;&#x80FD;&#x591F;&#x5B9A;&#x4E49;&#x6CA1;&#x6709; selector &#x7684; <code>Service</code> &#xFF1A;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - protocol:</span> TCP
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">9376</span>
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x8FD9;&#x4E2A; <code>Service</code> &#x6CA1;&#x6709; selector&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x7684; <code>Endpoints</code> &#x5BF9;&#x8C61;&#x3002;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x5C06; <code>Service</code> &#x6620;&#x5C04;&#x5230;&#x6307;&#x5B9A;&#x7684; <code>Endpoints</code>&#xFF1A;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Endpoints
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">subsets:</span>
+<span class="hljs-attr">  - addresses:</span>
+<span class="hljs-attr">      - ip:</span> <span class="hljs-number">1.2</span><span class="hljs-number">.3</span><span class="hljs-number">.4</span>
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-attr">      - port:</span> <span class="hljs-number">9376</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;Endpoint IP &#x5730;&#x5740;&#x4E0D;&#x80FD;&#x662F; loopback&#xFF08;127.0.0.0/8&#xFF09;&#x3001; link-local&#xFF08;169.254.0.0/16&#xFF09;&#x3001;&#x6216;&#x8005; link-local &#x591A;&#x64AD;&#xFF08;224.0.0.0/24&#xFF09;&#x3002;</p>
+<p>&#x8BBF;&#x95EE;&#x6CA1;&#x6709; selector &#x7684; <code>Service</code>&#xFF0C;&#x4E0E;&#x6709; selector &#x7684; <code>Service</code> &#x7684;&#x539F;&#x7406;&#x76F8;&#x540C;&#x3002;&#x8BF7;&#x6C42;&#x5C06;&#x88AB;&#x8DEF;&#x7531;&#x5230;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684; Endpoint&#xFF08;&#x8BE5;&#x793A;&#x4F8B;&#x4E2D;&#x4E3A; <code>1.2.3.4:9376</code>&#xFF09;&#x3002;</p>
+<p>ExternalName <code>Service</code> &#x662F; <code>Service</code> &#x7684;&#x7279;&#x4F8B;&#xFF0C;&#x5B83;&#x6CA1;&#x6709; selector&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x4EFB;&#x4F55;&#x7684;&#x7AEF;&#x53E3;&#x548C; Endpoint&#x3002;
+&#x76F8;&#x53CD;&#x5730;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD0;&#x884C;&#x5728;&#x96C6;&#x7FA4;&#x5916;&#x90E8;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x8BE5;&#x5916;&#x90E8;&#x670D;&#x52A1;&#x7684;&#x522B;&#x540D;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">  namespace:</span> prod
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> ExternalName
+<span class="hljs-attr">  externalName:</span> my.database.example.com
+</code></pre>
+<p>&#x5F53;&#x67E5;&#x8BE2;&#x4E3B;&#x673A; <code>my-service.prod.svc.CLUSTER</code>&#x65F6;&#xFF0C;&#x96C6;&#x7FA4;&#x7684; DNS &#x670D;&#x52A1;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#x4E3A; <code>my.database.example.com</code> &#x7684; <code>CNAME</code> &#x8BB0;&#x5F55;&#x3002;
+&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x4E0E;&#x5176;&#x5B83;&#x7684;&#x76F8;&#x540C;&#xFF0C;&#x552F;&#x4E00;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x91CD;&#x5B9A;&#x5411;&#x53D1;&#x751F;&#x5728; DNS &#x5C42;&#xFF0C;&#x800C;&#x4E14;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x4EE3;&#x7406;&#x6216;&#x8F6C;&#x53D1;&#x3002;
+&#x5982;&#x679C;&#x540E;&#x7EED;&#x51B3;&#x5B9A;&#x8981;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x8FC1;&#x79FB;&#x5230; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x5BF9;&#x5E94;&#x7684; Pod&#xFF0C;&#x589E;&#x52A0;&#x5408;&#x9002;&#x7684; Selector &#x6216; Endpoint&#xFF0C;&#x4FEE;&#x6539; <code>Service</code> &#x7684; <code>type</code>&#x3002;</p>
+<h2 id="vip-&#x548C;-service-&#x4EE3;&#x7406;">VIP &#x548C; Service &#x4EE3;&#x7406;</h2>
+<p>&#x5728; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A; Node &#x8FD0;&#x884C;&#x4E00;&#x4E2A; <code>kube-proxy</code> &#x8FDB;&#x7A0B;&#x3002;<code>kube-proxy</code> &#x8D1F;&#x8D23;&#x4E3A; <code>Service</code> &#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x79CD; VIP&#xFF08;&#x865A;&#x62DF; IP&#xFF09;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>ExternalName</code> &#x7684;&#x5F62;&#x5F0F;&#x3002;
+&#x5728; Kubernetes v1.0 &#x7248;&#x672C;&#xFF0C;&#x4EE3;&#x7406;&#x5B8C;&#x5168;&#x5728; userspace&#x3002;&#x5728; Kubernetes v1.1 &#x7248;&#x672C;&#xFF0C;&#x65B0;&#x589E;&#x4E86; iptables &#x4EE3;&#x7406;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#x3002;
+&#x4ECE; Kubernetes v1.2 &#x8D77;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x662F; iptables &#x4EE3;&#x7406;&#x3002;</p>
+<p>&#x5728; Kubernetes v1.0 &#x7248;&#x672C;&#xFF0C;<code>Service</code> &#x662F; &#x201C;4&#x5C42;&#x201D;&#xFF08;TCP/UDP over IP&#xFF09;&#x6982;&#x5FF5;&#x3002;
+&#x5728; Kubernetes v1.1 &#x7248;&#x672C;&#xFF0C;&#x65B0;&#x589E;&#x4E86; <code>Ingress</code> API&#xFF08;beta &#x7248;&#xFF09;&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A; &#x201C;7&#x5C42;&#x201D;&#xFF08;HTTP&#xFF09;&#x670D;&#x52A1;&#x3002;</p>
+<h3 id="userspace-&#x4EE3;&#x7406;&#x6A21;&#x5F0F;">userspace &#x4EE3;&#x7406;&#x6A21;&#x5F0F;</h3>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C;kube-proxy &#x4F1A;&#x76D1;&#x89C6; Kubernetes master &#x5BF9; <code>Service</code> &#x5BF9;&#x8C61;&#x548C; <code>Endpoints</code> &#x5BF9;&#x8C61;&#x7684;&#x6DFB;&#x52A0;&#x548C;&#x79FB;&#x9664;&#x3002;
+&#x5BF9;&#x6BCF;&#x4E2A; <code>Service</code>&#xFF0C;&#x5B83;&#x4F1A;&#x5728;&#x672C;&#x5730; Node &#x4E0A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#xFF08;&#x968F;&#x673A;&#x9009;&#x62E9;&#xFF09;&#x3002;
+&#x4EFB;&#x4F55;&#x8FDE;&#x63A5;&#x5230;&#x201C;&#x4EE3;&#x7406;&#x7AEF;&#x53E3;&#x201D;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x4EE3;&#x7406;&#x5230; <code>Service</code> &#x7684;backend <code>Pods</code> &#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x4E0A;&#x9762;&#xFF08;&#x5982; <code>Endpoints</code> &#x6240;&#x62A5;&#x544A;&#x7684;&#x4E00;&#x6837;&#xFF09;&#x3002;
+&#x4F7F;&#x7528;&#x54EA;&#x4E2A; backend <code>Pod</code>&#xFF0C;&#x662F;&#x57FA;&#x4E8E; <code>Service</code> &#x7684; <code>SessionAffinity</code> &#x6765;&#x786E;&#x5B9A;&#x7684;&#x3002;
+&#x6700;&#x540E;&#xFF0C;&#x5B83;&#x5B89;&#x88C5; iptables &#x89C4;&#x5219;&#xFF0C;&#x6355;&#x83B7;&#x5230;&#x8FBE;&#x8BE5; <code>Service</code> &#x7684; <code>clusterIP</code>&#xFF08;&#x662F;&#x865A;&#x62DF; IP&#xFF09;&#x548C; <code>Port</code> &#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x4EE3;&#x7406;&#x7AEF;&#x53E3;&#xFF0C;&#x4EE3;&#x7406;&#x7AEF;&#x53E3;&#x518D;&#x4EE3;&#x7406;&#x8BF7;&#x6C42;&#x5230; backend <code>Pod</code>&#x3002;</p>
+<p>&#x7F51;&#x7EDC;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF0C;&#x4EFB;&#x4F55;&#x5230;&#x8FBE; <code>Service</code> &#x7684; IP:Port &#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x4EE3;&#x7406;&#x5230;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684; backend&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x77E5;&#x9053;&#x5173;&#x4E8E; Kubernetes&#x3001;<code>Service</code>&#x3001;&#x6216; <code>Pod</code> &#x7684;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x7B56;&#x7565;&#x662F;&#xFF0C;&#x901A;&#x8FC7; round-robin &#x7B97;&#x6CD5;&#x6765;&#x9009;&#x62E9; backend <code>Pod</code>&#x3002;
+&#x5B9E;&#x73B0;&#x57FA;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF; IP &#x7684;&#x4F1A;&#x8BDD;&#x4EB2;&#x548C;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E; <code>service.spec.sessionAffinity</code> &#x7684;&#x503C;&#x4E3A; <code>&quot;ClientIP&quot;</code> &#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; <code>&quot;None&quot;</code>&#xFF09;&#x3002;</p>
+<figure id="fig1.2.2.4.1"><img src="https://d33wubrfki0l68.cloudfront.net/b8e1022c2dd815d8dd36b1bc4f0cc3ad870a924f/1dd12/images/docs/services-userspace-overview.svg" alt="userspace&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;Service&#x6982;&#x89C8;&#x56FE;"><figcaption>Figure: userspace&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;Service&#x6982;&#x89C8;&#x56FE;</figcaption></figure>
+<h3 id="iptables-&#x4EE3;&#x7406;&#x6A21;&#x5F0F;">iptables &#x4EE3;&#x7406;&#x6A21;&#x5F0F;</h3>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C;kube-proxy &#x4F1A;&#x76D1;&#x89C6; Kubernetes master &#x5BF9; <code>Service</code> &#x5BF9;&#x8C61;&#x548C; <code>Endpoints</code> &#x5BF9;&#x8C61;&#x7684;&#x6DFB;&#x52A0;&#x548C;&#x79FB;&#x9664;&#x3002;
+&#x5BF9;&#x6BCF;&#x4E2A; <code>Service</code>&#xFF0C;&#x5B83;&#x4F1A;&#x5B89;&#x88C5; iptables &#x89C4;&#x5219;&#xFF0C;&#x4ECE;&#x800C;&#x6355;&#x83B7;&#x5230;&#x8FBE;&#x8BE5; <code>Service</code> &#x7684; <code>clusterIP</code>&#xFF08;&#x865A;&#x62DF; IP&#xFF09;&#x548C;&#x7AEF;&#x53E3;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x8FDB;&#x800C;&#x5C06;&#x8BF7;&#x6C42;&#x91CD;&#x5B9A;&#x5411;&#x5230; <code>Service</code> &#x7684;&#x4E00;&#x7EC4; backend &#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x4E0A;&#x9762;&#x3002;
+&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A; <code>Endpoints</code> &#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x4E5F;&#x4F1A;&#x5B89;&#x88C5; iptables &#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x4E2A;&#x89C4;&#x5219;&#x4F1A;&#x9009;&#x62E9;&#x4E00;&#x4E2A; backend <code>Pod</code>&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x7B56;&#x7565;&#x662F;&#xFF0C;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A; backend&#x3002;
+&#x5B9E;&#x73B0;&#x57FA;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF; IP &#x7684;&#x4F1A;&#x8BDD;&#x4EB2;&#x548C;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06; <code>service.spec.sessionAffinity</code> &#x7684;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; <code>&quot;ClientIP&quot;</code> &#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; <code>&quot;None&quot;</code>&#xFF09;&#x3002;</p>
+<p>&#x548C; userspace &#x4EE3;&#x7406;&#x7C7B;&#x4F3C;&#xFF0C;&#x7F51;&#x7EDC;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF0C;&#x4EFB;&#x4F55;&#x5230;&#x8FBE; <code>Service</code> &#x7684; IP:Port &#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x4EE3;&#x7406;&#x5230;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684; backend&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x77E5;&#x9053;&#x5173;&#x4E8E; Kubernetes&#x3001;<code>Service</code>&#x3001;&#x6216; <code>Pod</code> &#x7684;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#x3002;
+&#x8FD9;&#x5E94;&#x8BE5;&#x6BD4; userspace &#x4EE3;&#x7406;&#x66F4;&#x5FEB;&#x3001;&#x66F4;&#x53EF;&#x9760;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4E0D;&#x50CF; userspace &#x4EE3;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x521D;&#x59CB;&#x9009;&#x62E9;&#x7684; <code>Pod</code> &#x6CA1;&#x6709;&#x54CD;&#x5E94;&#xFF0C;iptables &#x4EE3;&#x7406;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x5730;&#x91CD;&#x8BD5;&#x53E6;&#x4E00;&#x4E2A; <code>Pod</code>&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x9700;&#x8981;&#x4F9D;&#x8D56; <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#defining-readiness-probes" target="_blank">readiness probes</a>&#x3002;</p>
+<figure id="fig1.2.2.4.2"><img src="https://d33wubrfki0l68.cloudfront.net/837afa5715eb31fb9ca6516ec6863e810f437264/42951/images/docs/services-iptables-overview.svg" alt="iptables&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;Service&#x6982;&#x89C8;&#x56FE;"><figcaption>Figure: iptables&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;Service&#x6982;&#x89C8;&#x56FE;</figcaption></figure>
+<h2 id="&#x591A;&#x7AEF;&#x53E3;-service">&#x591A;&#x7AEF;&#x53E3; Service</h2>
+<p>&#x5F88;&#x591A; <code>Service</code> &#x9700;&#x8981;&#x66B4;&#x9732;&#x591A;&#x4E2A;&#x7AEF;&#x53E3;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;Kubernetes &#x652F;&#x6301;&#x5728; <code>Service</code> &#x5BF9;&#x8C61;&#x4E2D;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x7AEF;&#x53E3;&#x3002;
+&#x5F53;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x7AEF;&#x53E3;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x7ED9;&#x51FA;&#x6240;&#x6709;&#x7684;&#x7AEF;&#x53E3;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x8FD9;&#x6837; Endpoint &#x5C31;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x6B67;&#x4E49;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">    selector:</span>
+<span class="hljs-attr">      app:</span> MyApp
+<span class="hljs-attr">    ports:</span>
+<span class="hljs-attr">      - name:</span> http
+<span class="hljs-attr">        protocol:</span> TCP
+<span class="hljs-attr">        port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">        targetPort:</span> <span class="hljs-number">9376</span>
+<span class="hljs-attr">      - name:</span> https
+<span class="hljs-attr">        protocol:</span> TCP
+<span class="hljs-attr">        port:</span> <span class="hljs-number">443</span>
+<span class="hljs-attr">        targetPort:</span> <span class="hljs-number">9377</span>
+</code></pre>
+<h2 id="&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x7684;-ip-&#x5730;&#x5740;">&#x9009;&#x62E9;&#x81EA;&#x5DF1;&#x7684; IP &#x5730;&#x5740;</h2>
+<p>&#x5728; <code>Service</code> &#x521B;&#x5EFA;&#x7684;&#x8BF7;&#x6C42;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E; <code>spec.clusterIP</code> &#x5B57;&#x6BB5;&#x6765;&#x6307;&#x5B9A;&#x81EA;&#x5DF1;&#x7684;&#x96C6;&#x7FA4; IP &#x5730;&#x5740;&#x3002;
+&#x6BD4;&#x5982;&#xFF0C;&#x5E0C;&#x671B;&#x66FF;&#x6362;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x5DF2;&#x5B58;&#x5728;&#x7684; DNS &#x6761;&#x76EE;&#xFF0C;&#x6216;&#x8005;&#x9057;&#x7559;&#x7CFB;&#x7EDF;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x4E86;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684; IP &#x4E14;&#x5F88;&#x96BE;&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x3002;
+&#x7528;&#x6237;&#x9009;&#x62E9;&#x7684; IP &#x5730;&#x5740;&#x5FC5;&#x987B;&#x5408;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A; IP &#x5730;&#x5740;&#x5728; <code>service-cluster-ip-range</code> CIDR &#x8303;&#x56F4;&#x5185;&#xFF0C;&#x8FD9;&#x5BF9; API Server &#x6765;&#x8BF4;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x6765;&#x6307;&#x5B9A;&#x7684;&#x3002;
+&#x5982;&#x679C; IP &#x5730;&#x5740;&#x4E0D;&#x5408;&#x6CD5;&#xFF0C;API Server &#x4F1A;&#x8FD4;&#x56DE; HTTP &#x72B6;&#x6001;&#x7801; 422&#xFF0C;&#x8868;&#x793A;&#x503C;&#x4E0D;&#x5408;&#x6CD5;&#x3002;</p>
+<h3 id="&#x4E3A;&#x4F55;&#x4E0D;&#x4F7F;&#x7528;-round-robin-dns&#xFF1F;">&#x4E3A;&#x4F55;&#x4E0D;&#x4F7F;&#x7528; round-robin DNS&#xFF1F;</h3>
+<p>&#x4E00;&#x4E2A;&#x4E0D;&#x65F6;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x90FD;&#x4F7F;&#x7528; VIP &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x4E0D;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684; round-robin DNS&#xFF0C;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x539F;&#x56E0;&#xFF1A;</p>
+<ul>
+<li>&#x957F;&#x4E45;&#x4EE5;&#x6765;&#xFF0C;DNS &#x5E93;&#x90FD;&#x6CA1;&#x80FD;&#x8BA4;&#x771F;&#x5BF9;&#x5F85; DNS TTL&#x3001;&#x7F13;&#x5B58;&#x57DF;&#x540D;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</li>
+<li>&#x5F88;&#x591A;&#x5E94;&#x7528;&#x53EA;&#x67E5;&#x8BE2;&#x4E00;&#x6B21; DNS &#x5E76;&#x7F13;&#x5B58;&#x4E86;&#x7ED3;&#x679C;<ul>
+<li>&#x5C31;&#x7B97;&#x5E94;&#x7528;&#x548C;&#x5E93;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x67E5;&#x8BE2;&#x89E3;&#x6790;&#xFF0C;&#x6BCF;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x53CD;&#x590D;&#x91CD;&#x89E3;&#x6790;&#x9020;&#x6210;&#x7684;&#x8D1F;&#x8F7D;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x96BE;&#x4EE5;&#x7BA1;&#x7406;&#x7684;</li>
+</ul>
+</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5C3D;&#x529B;&#x963B;&#x6B62;&#x7528;&#x6237;&#x505A;&#x90A3;&#x4E9B;&#x5BF9;&#x4ED6;&#x4EEC;&#x6CA1;&#x6709;&#x597D;&#x5904;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x5982;&#x679C;&#x5F88;&#x591A;&#x4EBA;&#x90FD;&#x6765;&#x95EE;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x9009;&#x62E9;&#x5B9E;&#x73B0;&#x5B83;&#x3002;</p>
+<h2 id="&#x670D;&#x52A1;&#x53D1;&#x73B0;">&#x670D;&#x52A1;&#x53D1;&#x73B0;</h2>
+<p>Kubernetes &#x652F;&#x6301;2&#x79CD;&#x57FA;&#x672C;&#x7684;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x6A21;&#x5F0F; &#x2014;&#x2014; &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x548C; DNS&#x3002;</p>
+<h3 id="&#x73AF;&#x5883;&#x53D8;&#x91CF;">&#x73AF;&#x5883;&#x53D8;&#x91CF;</h3>
+<p>&#x5F53; <code>Pod</code> &#x8FD0;&#x884C;&#x5728; <code>Node</code> &#x4E0A;&#xFF0C;kubelet &#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;&#x6D3B;&#x8DC3;&#x7684; <code>Service</code> &#x6DFB;&#x52A0;&#x4E00;&#x7EC4;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;
+&#x5B83;&#x540C;&#x65F6;&#x652F;&#x6301; <a href="https://docs.docker.com/userguide/dockerlinks/" target="_blank">Docker links &#x517C;&#x5BB9;</a> &#x53D8;&#x91CF;&#xFF08;&#x67E5;&#x770B; <a href="http://releases.k8s.io//pkg/kubelet/envvars/envvars.go#L49" target="_blank">makeLinkVariables</a>&#xFF09;&#x3001;&#x7B80;&#x5355;&#x7684; <code>{SVCNAME}_SERVICE_HOST</code> &#x548C; <code>{SVCNAME}_SERVICE_PORT</code> &#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x91CC; <code>Service</code> &#x7684;&#x540D;&#x79F0;&#x9700;&#x5927;&#x5199;&#xFF0C;&#x6A2A;&#x7EBF;&#x88AB;&#x8F6C;&#x6362;&#x6210;&#x4E0B;&#x5212;&#x7EBF;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; <code>&quot;redis-master&quot;</code> &#x7684; Service &#x66B4;&#x9732;&#x4E86; TCP &#x7AEF;&#x53E3; 6379&#xFF0C;&#x540C;&#x65F6;&#x7ED9;&#x5B83;&#x5206;&#x914D;&#x4E86; Cluster IP &#x5730;&#x5740; 10.0.0.11&#xFF0C;&#x8FD9;&#x4E2A; Service &#x751F;&#x6210;&#x4E86;&#x5982;&#x4E0B;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-shell">REDIS_MASTER_SERVICE_HOST=10.0.0.11
+REDIS_MASTER_SERVICE_PORT=6379
+REDIS_MASTER_PORT=tcp://10.0.0.11:6379
+REDIS_MASTER_PORT_6379_TCP=tcp://10.0.0.11:6379
+REDIS_MASTER_PORT_6379_TCP_PROTO=tcp
+REDIS_MASTER_PORT_6379_TCP_PORT=6379
+REDIS_MASTER_PORT_6379_TCP_ADDR=10.0.0.11
+</code></pre>
+<p><em>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x9700;&#x8981;&#x6709;&#x987A;&#x5E8F;&#x7684;&#x8981;&#x6C42;</em> &#x2014;&#x2014;  <code>Pod</code> &#x60F3;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x4EFB;&#x4F55; <code>Service</code> &#x5FC5;&#x987B;&#x5728; <code>Pod</code> &#x81EA;&#x5DF1;&#x4E4B;&#x524D;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x5426;&#x5219;&#x8FD9;&#x4E9B;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x8D4B;&#x503C;&#x3002;DNS &#x5E76;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x9650;&#x5236;&#x3002;</p>
+<h3 id="dns">DNS</h3>
+<p>&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#xFF08;&#x5C3D;&#x7BA1;&#x5F3A;&#x70C8;&#x63A8;&#x8350;&#xFF09;<a href="http://releases.k8s.io/master/cluster/addons/README.md" target="_blank">&#x96C6;&#x7FA4;&#x63D2;&#x4EF6;</a> &#x662F; DNS &#x670D;&#x52A1;&#x5668;&#x3002;
+DNS &#x670D;&#x52A1;&#x5668;&#x76D1;&#x89C6;&#x7740;&#x521B;&#x5EFA;&#x65B0; <code>Service</code> &#x7684; Kubernetes API&#xFF0C;&#x4ECE;&#x800C;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A; <code>Service</code> &#x521B;&#x5EFA;&#x4E00;&#x7EC4; DNS &#x8BB0;&#x5F55;&#x3002;
+&#x5982;&#x679C;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x7684; DNS &#x4E00;&#x76F4;&#x88AB;&#x542F;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x6240;&#x6709;&#x7684; <code>Pod</code> &#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x5BF9; <code>Service</code> &#x8FDB;&#x884C;&#x540D;&#x79F0;&#x89E3;&#x6790;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; <code>&quot;my-service&quot;</code> &#x7684; <code>Service</code>&#xFF0C;&#x5B83;&#x5728; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#x540D;&#x4E3A; <code>&quot;my-ns&quot;</code> &#x7684; <code>Namespace</code> &#x4E2D;&#xFF0C;&#x4E3A; <code>&quot;my-service.my-ns&quot;</code> &#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x6761; DNS &#x8BB0;&#x5F55;&#x3002;
+&#x5728;&#x540D;&#x79F0;&#x4E3A; <code>&quot;my-ns&quot;</code> &#x7684; <code>Namespace</code> &#x4E2D;&#x7684; <code>Pod</code> &#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x7B80;&#x5355;&#x5730;&#x901A;&#x8FC7;&#x540D;&#x79F0;&#x67E5;&#x8BE2;&#x627E;&#x5230; <code>&quot;my-service&quot;</code>&#x3002;
+&#x5728;&#x53E6;&#x4E00;&#x4E2A; <code>Namespace</code> &#x4E2D;&#x7684; <code>Pod</code> &#x5FC5;&#x987B;&#x9650;&#x5B9A;&#x540D;&#x79F0;&#x4E3A; <code>&quot;my-service.my-ns&quot;</code>&#x3002;
+&#x8FD9;&#x4E9B;&#x540D;&#x79F0;&#x67E5;&#x8BE2;&#x7684;&#x7ED3;&#x679C;&#x662F; Cluster IP&#x3002;</p>
+<p>Kubernetes &#x4E5F;&#x652F;&#x6301;&#x5BF9;&#x7AEF;&#x53E3;&#x540D;&#x79F0;&#x7684; DNS SRV&#xFF08;Service&#xFF09;&#x8BB0;&#x5F55;&#x3002;
+&#x5982;&#x679C;&#x540D;&#x79F0;&#x4E3A; <code>&quot;my-service.my-ns&quot;</code> &#x7684; <code>Service</code> &#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>&quot;http&quot;</code> &#x7684; <code>TCP</code> &#x7AEF;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9; <code>&quot;_http._tcp.my-service.my-ns&quot;</code> &#x6267;&#x884C; DNS SRV &#x67E5;&#x8BE2;&#xFF0C;&#x5F97;&#x5230; <code>&quot;http&quot;</code> &#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x3002;</p>
+<p>Kubernetes DNS &#x670D;&#x52A1;&#x5668;&#x662F;&#x552F;&#x4E00;&#x7684;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x8BBF;&#x95EE; <code>ExternalName</code> &#x7C7B;&#x578B;&#x7684; Service &#x7684;&#x65B9;&#x5F0F;&#x3002;
+&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x67E5;&#x770B; <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/" target="_blank">DNS Pod &#x548C; Service</a>&#x3002;</p>
+<h2 id="headless-service">Headless Service</h2>
+<p>&#x6709;&#x65F6;&#x4E0D;&#x9700;&#x8981;&#x6216;&#x4E0D;&#x60F3;&#x8981;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x4EE5;&#x53CA;&#x5355;&#x72EC;&#x7684; Service IP&#x3002;
+&#x9047;&#x5230;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A; Cluster IP&#xFF08;<code>spec.clusterIP</code>&#xFF09;&#x7684;&#x503C;&#x4E3A; <code>&quot;None&quot;</code> &#x6765;&#x521B;&#x5EFA; <code>Headless</code> Service&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x7531;&#x5BFB;&#x627E;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4ECE;&#x800C;&#x964D;&#x4F4E;&#x4E0E; Kubernetes &#x7CFB;&#x7EDF;&#x7684;&#x8026;&#x5408;&#x6027;&#x3002;
+&#x5E94;&#x7528;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x79CD;&#x81EA;&#x6CE8;&#x518C;&#x7684;&#x6A21;&#x5F0F;&#x548C;&#x9002;&#x914D;&#x5668;&#xFF0C;&#x5BF9;&#x5176;&#x5B83;&#x9700;&#x8981;&#x53D1;&#x73B0;&#x673A;&#x5236;&#x7684;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x57FA;&#x4E8E;&#x8FD9;&#x4E2A; API &#x6765;&#x6784;&#x5EFA;&#x3002;</p>
+<p>&#x5BF9;&#x8FD9;&#x7C7B; <code>Service</code> &#x5E76;&#x4E0D;&#x4F1A;&#x5206;&#x914D; Cluster IP&#xFF0C;kube-proxy &#x4E0D;&#x4F1A;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;&#x800C;&#x4E14;&#x5E73;&#x53F0;&#x4E5F;&#x4E0D;&#x4F1A;&#x4E3A;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x8DEF;&#x7531;&#x3002;
+DNS &#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#xFF0C;&#x4F9D;&#x8D56;&#x4E8E; <code>Service</code> &#x662F;&#x5426;&#x5B9A;&#x4E49;&#x4E86; selector&#x3002;</p>
+<h3 id="&#x914D;&#x7F6E;-selector">&#x914D;&#x7F6E; Selector</h3>
+<p>&#x5BF9;&#x5B9A;&#x4E49;&#x4E86; selector &#x7684; Headless Service&#xFF0C;Endpoint &#x63A7;&#x5236;&#x5668;&#x5728; API &#x4E2D;&#x521B;&#x5EFA;&#x4E86; <code>Endpoints</code> &#x8BB0;&#x5F55;&#xFF0C;&#x5E76;&#x4E14;&#x4FEE;&#x6539; DNS &#x914D;&#x7F6E;&#x8FD4;&#x56DE; A &#x8BB0;&#x5F55;&#xFF08;&#x5730;&#x5740;&#xFF09;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x76F4;&#x63A5;&#x5230;&#x8FBE; <code>Service</code> &#x7684;&#x540E;&#x7AEF;  <code>Pod</code> &#x4E0A;&#x3002;</p>
+<h3 id="&#x4E0D;&#x914D;&#x7F6E;-selector">&#x4E0D;&#x914D;&#x7F6E; Selector</h3>
+<p>&#x5BF9;&#x6CA1;&#x6709;&#x5B9A;&#x4E49; selector &#x7684; Headless Service&#xFF0C;Endpoint &#x63A7;&#x5236;&#x5668;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA; <code>Endpoints</code> &#x8BB0;&#x5F55;&#x3002;
+&#x7136;&#x800C; DNS &#x7CFB;&#x7EDF;&#x4F1A;&#x67E5;&#x627E;&#x548C;&#x914D;&#x7F6E;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#xFF1A;</p>
+<ul>
+<li><code>ExternalName</code> &#x7C7B;&#x578B; Service &#x7684; CNAME &#x8BB0;&#x5F55;<ul>
+<li>&#x8BB0;&#x5F55;&#xFF1A;&#x4E0E; Service &#x5171;&#x4EAB;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x7684;&#x4EFB;&#x4F55; <code>Endpoints</code>&#xFF0C;&#x4EE5;&#x53CA;&#x6240;&#x6709;&#x5176;&#x5B83;&#x7C7B;&#x578B;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x53D1;&#x5E03;&#x670D;&#x52A1;-&#x2014;&#x2014;-&#x670D;&#x52A1;&#x7C7B;&#x578B;">&#x53D1;&#x5E03;&#x670D;&#x52A1; &#x2014;&#x2014; &#x670D;&#x52A1;&#x7C7B;&#x578B;</h2>
+<p>&#x5BF9;&#x4E00;&#x4E9B;&#x5E94;&#x7528;&#xFF08;&#x5982; Frontend&#xFF09;&#x7684;&#x67D0;&#x4E9B;&#x90E8;&#x5206;&#xFF0C;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x5916;&#x90E8;&#xFF08;Kubernetes &#x96C6;&#x7FA4;&#x5916;&#x90E8;&#xFF09;IP &#x5730;&#x5740;&#x66B4;&#x9732; Service&#x3002;</p>
+<p>Kubernetes <code>ServiceTypes</code> &#x5141;&#x8BB8;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x7684;&#x7C7B;&#x578B;&#x7684; Service&#xFF0C;&#x9ED8;&#x8BA4;&#x662F; <code>ClusterIP</code> &#x7C7B;&#x578B;&#x3002;</p>
+<p><code>Type</code> &#x7684;&#x53D6;&#x503C;&#x4EE5;&#x53CA;&#x884C;&#x4E3A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>ClusterIP</code>&#xFF1A;&#x901A;&#x8FC7;&#x96C6;&#x7FA4;&#x7684;&#x5185;&#x90E8; IP &#x66B4;&#x9732;&#x670D;&#x52A1;&#xFF0C;&#x9009;&#x62E9;&#x8BE5;&#x503C;&#xFF0C;&#x670D;&#x52A1;&#x53EA;&#x80FD;&#x591F;&#x5728;&#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x9ED8;&#x8BA4;&#x7684; <code>ServiceType</code>&#x3002;</li>
+<li><code>NodePort</code>&#xFF1A;&#x901A;&#x8FC7;&#x6BCF;&#x4E2A; Node &#x4E0A;&#x7684; IP &#x548C;&#x9759;&#x6001;&#x7AEF;&#x53E3;&#xFF08;<code>NodePort</code>&#xFF09;&#x66B4;&#x9732;&#x670D;&#x52A1;&#x3002;<code>NodePort</code> &#x670D;&#x52A1;&#x4F1A;&#x8DEF;&#x7531;&#x5230; <code>ClusterIP</code> &#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x4E2A; <code>ClusterIP</code> &#x670D;&#x52A1;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x3002;&#x901A;&#x8FC7;&#x8BF7;&#x6C42; <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x96C6;&#x7FA4;&#x7684;&#x5916;&#x90E8;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A; <code>NodePort</code> &#x670D;&#x52A1;&#x3002;</li>
+<li><code>LoadBalancer</code>&#xFF1A;&#x4F7F;&#x7528;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5411;&#x5916;&#x90E8;&#x66B4;&#x9732;&#x670D;&#x52A1;&#x3002;&#x5916;&#x90E8;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x53EF;&#x4EE5;&#x8DEF;&#x7531;&#x5230; <code>NodePort</code> &#x670D;&#x52A1;&#x548C; <code>ClusterIP</code> &#x670D;&#x52A1;&#x3002;</li>
+<li><code>ExternalName</code>&#xFF1A;&#x901A;&#x8FC7;&#x8FD4;&#x56DE; <code>CNAME</code> &#x548C;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x670D;&#x52A1;&#x6620;&#x5C04;&#x5230; <code>externalName</code> &#x5B57;&#x6BB5;&#x7684;&#x5185;&#x5BB9;&#xFF08;&#x4F8B;&#x5982;&#xFF0C; <code>foo.bar.example.com</code>&#xFF09;&#x3002;
+  &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x4EE3;&#x7406;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x8FD9;&#x53EA;&#x6709; Kubernetes 1.7 &#x6216;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x7684; <code>kube-dns</code> &#x624D;&#x652F;&#x6301;&#x3002;</li>
+</ul>
+<h3 id="nodeport-&#x7C7B;&#x578B;">NodePort &#x7C7B;&#x578B;</h3>
+<p>&#x5982;&#x679C;&#x8BBE;&#x7F6E; <code>type</code> &#x7684;&#x503C;&#x4E3A; <code>&quot;NodePort&quot;</code>&#xFF0C;Kubernetes master &#x5C06;&#x4ECE;&#x7ED9;&#x5B9A;&#x7684;&#x914D;&#x7F6E;&#x8303;&#x56F4;&#x5185;&#xFF08;&#x9ED8;&#x8BA4;&#xFF1A;30000-32767&#xFF09;&#x5206;&#x914D;&#x7AEF;&#x53E3;&#xFF0C;&#x6BCF;&#x4E2A; Node &#x5C06;&#x4ECE;&#x8BE5;&#x7AEF;&#x53E3;&#xFF08;&#x6BCF;&#x4E2A; Node &#x4E0A;&#x7684;&#x540C;&#x4E00;&#x7AEF;&#x53E3;&#xFF09;&#x4EE3;&#x7406;&#x5230; <code>Service</code>&#x3002;&#x8BE5;&#x7AEF;&#x53E3;&#x5C06;&#x901A;&#x8FC7; <code>Service</code> &#x7684; <code>spec.ports[*].nodePort</code> &#x5B57;&#x6BB5;&#x88AB;&#x6307;&#x5B9A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x53EF;&#x4EE5;&#x914D;&#x7F6E; <code>nodePort</code> &#x7684;&#x503C;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x5206;&#x914D;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#xFF0C;&#x5426;&#x5219;&#x8C03;&#x7528; API &#x5C06;&#x4F1A;&#x5931;&#x8D25;&#xFF08;&#x6BD4;&#x5982;&#xFF0C;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x7AEF;&#x53E3;&#x51B2;&#x7A81;&#x7684;&#x53EF;&#x80FD;&#x6027;&#xFF09;&#x3002; </p>
+<p>&#x8FD9;&#x53EF;&#x4EE5;&#x8BA9;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x7531;&#x5730;&#x5B89;&#x88C5;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#xFF0C;&#x5E76;&#x914D;&#x7F6E; Kubernetes &#x4E0D;&#x80FD;&#x5B8C;&#x5168;&#x652F;&#x6301;&#x7684;&#x73AF;&#x5883;&#x53C2;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x66B4;&#x9732;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; Node &#x7684; IP &#x5730;&#x5740;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;Service &#x5C06;&#x80FD;&#x591F;&#x901A;&#x8FC7; <code>&lt;NodeIP&gt;:spec.ports[*].nodePort</code> &#x548C; <code>spec.clusterIp:spec.ports[*].port</code> &#x800C;&#x5BF9;&#x5916;&#x53EF;&#x89C1;&#x3002;</p>
+<h3 id="loadbalancer-&#x7C7B;&#x578B;">LoadBalancer &#x7C7B;&#x578B;</h3>
+<p>&#x4F7F;&#x7528;&#x652F;&#x6301;&#x5916;&#x90E8;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x7684;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x8BBE;&#x7F6E; <code>type</code> &#x7684;&#x503C;&#x4E3A; <code>&quot;LoadBalancer&quot;</code>&#xFF0C;&#x5C06;&#x4E3A; <code>Service</code> &#x63D0;&#x4F9B;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x3002;
+&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x662F;&#x5F02;&#x6B65;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x5173;&#x4E8E;&#x88AB;&#x63D0;&#x4F9B;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x7684;&#x4FE1;&#x606F;&#x5C06;&#x4F1A;&#x901A;&#x8FC7; <code>Service</code> &#x7684; <code>status.loadBalancer</code> &#x5B57;&#x6BB5;&#x88AB;&#x53D1;&#x5E03;&#x51FA;&#x53BB;&#x3002;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> MyApp
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - protocol:</span> TCP
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">9376</span>
+<span class="hljs-attr">      nodePort:</span> <span class="hljs-number">30061</span>
+<span class="hljs-attr">  clusterIP:</span> <span class="hljs-number">10.0</span><span class="hljs-number">.171</span><span class="hljs-number">.239</span>
+<span class="hljs-attr">  loadBalancerIP:</span> <span class="hljs-number">78.11</span><span class="hljs-number">.24</span><span class="hljs-number">.19</span>
+<span class="hljs-attr">  type:</span> LoadBalancer
+<span class="hljs-attr">status:</span>
+<span class="hljs-attr">  loadBalancer:</span>
+<span class="hljs-attr">    ingress:</span>
+<span class="hljs-attr">      - ip:</span> <span class="hljs-number">146.148</span><span class="hljs-number">.47</span><span class="hljs-number">.155</span>
+</code></pre>
+<p>&#x6765;&#x81EA;&#x5916;&#x90E8;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x7684;&#x6D41;&#x91CF;&#x5C06;&#x76F4;&#x63A5;&#x6253;&#x5230; backend <code>Pod</code> &#x4E0A;&#xFF0C;&#x4E0D;&#x8FC7;&#x5B9E;&#x9645;&#x5B83;&#x4EEC;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x8FD9;&#x8981;&#x4F9D;&#x8D56;&#x4E8E;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#x3002;
+&#x5728;&#x8FD9;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5C06;&#x6839;&#x636E;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x7684; <code>loadBalancerIP</code> &#x6765;&#x521B;&#x5EFA;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x3002;
+&#x67D0;&#x4E9B;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#x5141;&#x8BB8;&#x8BBE;&#x7F6E; <code>loadBalancerIP</code>&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E; <code>loadBalancerIP</code>&#xFF0C;&#x5C06;&#x4F1A;&#x7ED9;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x6307;&#x6D3E;&#x4E00;&#x4E2A;&#x4E34;&#x65F6; IP&#x3002;
+&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86; <code>loadBalancerIP</code>&#xFF0C;&#x4F46;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x79CD;&#x7279;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x8BBE;&#x7F6E;&#x7684; <code>loadBalancerIP</code> &#x503C;&#x5C06;&#x4F1A;&#x88AB;&#x5FFD;&#x7565;&#x6389;&#x3002;</p>
+<h3 id="aws-&#x5185;&#x90E8;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;">AWS &#x5185;&#x90E8;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;</h3>
+<p>&#x5728;&#x6DF7;&#x5408;&#x4E91;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x6709;&#x65F6;&#x4ECE;&#x865A;&#x62DF;&#x79C1;&#x6709;&#x4E91;&#xFF08;VPC&#xFF09;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x8DEF;&#x7531;&#x6D41;&#x91CF;&#x662F;&#x975E;&#x5E38;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;
+&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728; <code>Service</code> &#x4E2D;&#x589E;&#x52A0; <code>annotation</code> &#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-yaml">[...]
+<span class="hljs-attr">metadata:</span> 
+<span class="hljs-attr">    name:</span> my-service
+<span class="hljs-attr">    annotations:</span> 
+        service.beta.kubernetes.io/aws-load-balancer-internal: <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">0</span>
+[...]
+</code></pre>
+<p>&#x5728;&#x6C34;&#x5E73;&#x5206;&#x5272;&#x7684; DNS &#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x4E24;&#x4E2A; <code>Service</code> &#x6765;&#x5C06;&#x5916;&#x90E8;&#x548C;&#x5185;&#x90E8;&#x7684;&#x6D41;&#x91CF;&#x8DEF;&#x7531;&#x5230; Endpoint &#x4E0A;&#x3002;</p>
+<h3 id="aws-ssl-&#x652F;&#x6301;">AWS SSL &#x652F;&#x6301;</h3>
+<p>&#x5BF9;&#x8FD0;&#x884C;&#x5728; AWS &#x4E0A;&#x90E8;&#x5206;&#x652F;&#x6301; SSL &#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x4ECE; 1.3 &#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A; <code>LoadBalancer</code> &#x7C7B;&#x578B;&#x7684; <code>Service</code> &#x589E;&#x52A0;&#x4E24;&#x4E2A; annotation&#xFF1A;</p>
+<pre><code>    metadata:
+      name: my-service
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A; annotation &#x6307;&#x5B9A;&#x4E86;&#x4F7F;&#x7528;&#x7684;&#x8BC1;&#x4E66;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x662F;&#x7B2C;&#x4E09;&#x65B9;&#x53D1;&#x884C;&#x5546;&#x53D1;&#x884C;&#x7684;&#x8BC1;&#x4E66;&#xFF0C;&#x8FD9;&#x4E2A;&#x8BC1;&#x4E66;&#x6216;&#x8005;&#x88AB;&#x4E0A;&#x4F20;&#x5230; IAM&#xFF0C;&#x6216;&#x8005;&#x7531; AWS &#x7684;&#x8BC1;&#x4E66;&#x7BA1;&#x7406;&#x5668;&#x521B;&#x5EFA;&#x3002;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      name:</span> my-service
+<span class="hljs-attr">      annotations:</span>
+         service.beta.kubernetes.io/aws-load-balancer-backend-protocol: (https|http|ssl|tcp)
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x4E2A; annotation &#x6307;&#x5B9A;&#x4E86; <code>Pod</code> &#x4F7F;&#x7528;&#x7684;&#x534F;&#x8BAE;&#x3002;
+&#x5BF9;&#x4E8E; HTTPS &#x548C; SSL&#xFF0C;ELB &#x5C06;&#x671F;&#x671B;&#x8BE5; <code>Pod</code> &#x57FA;&#x4E8E;&#x52A0;&#x5BC6;&#x7684;&#x8FDE;&#x63A5;&#x6765;&#x8BA4;&#x8BC1;&#x81EA;&#x8EAB;&#x3002;</p>
+<p>HTTP &#x548C; HTTPS &#x5C06;&#x9009;&#x62E9;7&#x5C42;&#x4EE3;&#x7406;&#xFF1A;ELB &#x5C06;&#x4E2D;&#x65AD;&#x4E0E;&#x7528;&#x6237;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5F53;&#x8F6C;&#x53D1;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x4F1A;&#x89E3;&#x6790; Header &#x4FE1;&#x606F;&#x5E76;&#x6DFB;&#x52A0;&#x4E0A;&#x7528;&#x6237;&#x7684; IP &#x5730;&#x5740;&#xFF08;<code>Pod</code> &#x5C06;&#x53EA;&#x80FD;&#x5728;&#x8FDE;&#x63A5;&#x7684;&#x53E6;&#x4E00;&#x7AEF;&#x770B;&#x5230;&#x8BE5; IP &#x5730;&#x5740;&#xFF09;&#x3002;</p>
+<p>TCP &#x548C; SSL &#x5C06;&#x9009;&#x62E9;4&#x5C42;&#x4EE3;&#x7406;&#xFF1A;ELB &#x5C06;&#x8F6C;&#x53D1;&#x6D41;&#x91CF;&#xFF0C;&#x5E76;&#x4E0D;&#x4FEE;&#x6539; Header &#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="&#x5916;&#x90E8;-ip">&#x5916;&#x90E8; IP</h3>
+<p>&#x5982;&#x679C;&#x5916;&#x90E8;&#x7684; IP &#x8DEF;&#x7531;&#x5230;&#x96C6;&#x7FA4;&#x4E2D;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; Node &#x4E0A;&#xFF0C;Kubernetes <code>Service</code> &#x4F1A;&#x88AB;&#x66B4;&#x9732;&#x7ED9;&#x8FD9;&#x4E9B; <code>externalIPs</code>&#x3002;
+&#x901A;&#x8FC7;&#x5916;&#x90E8; IP&#xFF08;&#x4F5C;&#x4E3A;&#x76EE;&#x7684; IP &#x5730;&#x5740;&#xFF09;&#x8FDB;&#x5165;&#x5230;&#x96C6;&#x7FA4;&#xFF0C;&#x6253;&#x5230; <code>Service</code> &#x7684;&#x7AEF;&#x53E3;&#x4E0A;&#x7684;&#x6D41;&#x91CF;&#xFF0C;&#x5C06;&#x4F1A;&#x88AB;&#x8DEF;&#x7531;&#x5230; <code>Service</code> &#x7684; Endpoint &#x4E0A;&#x3002;
+<code>externalIPs</code> &#x4E0D;&#x4F1A;&#x88AB; Kubernetes &#x7BA1;&#x7406;&#xFF0C;&#x5B83;&#x5C5E;&#x4E8E;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5458;&#x7684;&#x804C;&#x8D23;&#x8303;&#x7574;&#x3002;</p>
+<p>&#x6839;&#x636E; <code>Service</code> &#x7684;&#x89C4;&#x5B9A;&#xFF0C;<code>externalIPs</code> &#x53EF;&#x4EE5;&#x540C;&#x4EFB;&#x610F;&#x7684; <code>ServiceType</code> &#x6765;&#x4E00;&#x8D77;&#x6307;&#x5B9A;&#x3002;
+&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<code>my-service</code> &#x53EF;&#x4EE5;&#x5728; 80.11.12.10:80&#xFF08;&#x5916;&#x90E8; IP:&#x7AEF;&#x53E3;&#xFF09;&#x4E0A;&#x88AB;&#x5BA2;&#x6237;&#x7AEF;&#x8BBF;&#x95EE;&#x3002;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> MyApp
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - name:</span> http
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">9376</span>
+<span class="hljs-attr">  externalIPs:</span> 
+<span class="hljs-bullet">    -</span> <span class="hljs-number">80.11</span><span class="hljs-number">.12</span><span class="hljs-number">.10</span>
+</code></pre>
+<h2 id="&#x4E0D;&#x8DB3;&#x4E4B;&#x5904;">&#x4E0D;&#x8DB3;&#x4E4B;&#x5904;</h2>
+<p>&#x4E3A; VIP &#x4F7F;&#x7528; userspace &#x4EE3;&#x7406;&#xFF0C;&#x5C06;&#x53EA;&#x9002;&#x5408;&#x5C0F;&#x578B;&#x5230;&#x4E2D;&#x578B;&#x89C4;&#x6A21;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x4E0D;&#x80FD;&#x591F;&#x6269;&#x5C55;&#x5230;&#x4E0A;&#x5343; <code>Service</code> &#x7684;&#x5927;&#x578B;&#x96C6;&#x7FA4;&#x3002;
+&#x67E5;&#x770B; <a href="http://issue.k8s.io/1107" target="_blank">&#x6700;&#x521D;&#x8BBE;&#x8BA1;&#x65B9;&#x6848;</a> &#x83B7;&#x53D6;&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x3002;</p>
+<p>&#x4F7F;&#x7528; userspace &#x4EE3;&#x7406;&#xFF0C;&#x9690;&#x85CF;&#x4E86;&#x8BBF;&#x95EE; <code>Service</code> &#x7684;&#x6570;&#x636E;&#x5305;&#x7684;&#x6E90; IP &#x5730;&#x5740;&#x3002;
+&#x8FD9;&#x4F7F;&#x5F97;&#x4E00;&#x4E9B;&#x7C7B;&#x578B;&#x7684;&#x9632;&#x706B;&#x5899;&#x65E0;&#x6CD5;&#x8D77;&#x4F5C;&#x7528;&#x3002;
+iptables &#x4EE3;&#x7406;&#x4E0D;&#x4F1A;&#x9690;&#x85CF; Kubernetes &#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x4F46;&#x5374;&#x8981;&#x6C42;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x6216; Node &#x7AEF;&#x53E3;&#x3002;</p>
+<p><code>Type</code> &#x5B57;&#x6BB5;&#x652F;&#x6301;&#x5D4C;&#x5957;&#x529F;&#x80FD; &#x2014;&#x2014; &#x6BCF;&#x4E00;&#x5C42;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230;&#x4E0A;&#x4E00;&#x5C42;&#x91CC;&#x9762;&#x3002;
+&#x4E0D;&#x4F1A;&#x4E25;&#x683C;&#x8981;&#x6C42;&#x6240;&#x6709;&#x4E91;&#x63D0;&#x4F9B;&#x5546;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;GCE &#x5C31;&#x6CA1;&#x5FC5;&#x8981;&#x4E3A;&#x4E86;&#x4F7F;&#x4E00;&#x4E2A; <code>LoadBalancer</code> &#x80FD;&#x5DE5;&#x4F5C;&#x800C;&#x5206;&#x914D;&#x4E00;&#x4E2A; <code>NodePort</code>&#xFF0C;&#x4F46;&#x662F; AWS &#x9700;&#x8981; &#xFF09;&#xFF0C;&#x4F46;&#x5F53;&#x524D; API &#x662F;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x7684;&#x3002;</p>
+<h2 id="&#x672A;&#x6765;&#x5DE5;&#x4F5C;">&#x672A;&#x6765;&#x5DE5;&#x4F5C;</h2>
+<p>&#x672A;&#x6765;&#x6211;&#x4EEC;&#x80FD;&#x9884;&#x89C1;&#x5230;&#xFF0C;&#x4EE3;&#x7406;&#x7B56;&#x7565;&#x53EF;&#x80FD;&#x4F1A;&#x53D8;&#x5F97;&#x6BD4;&#x7B80;&#x5355;&#x7684; round-robin &#x5747;&#x8861;&#x7B56;&#x7565;&#x6709;&#x66F4;&#x591A;&#x7EC6;&#x5FAE;&#x7684;&#x5DEE;&#x522B;&#xFF0C;&#x6BD4;&#x5982; master &#x9009;&#x4E3E;&#x6216;&#x5206;&#x7247;&#x3002;
+&#x6211;&#x4EEC;&#x4E5F;&#x80FD;&#x60F3;&#x5230;&#xFF0C;&#x67D0;&#x4E9B; <code>Service</code> &#x5C06;&#x5177;&#x6709; &#x201C;&#x771F;&#x6B63;&#x201D; &#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B; VIP &#x5C06;&#x7B80;&#x5316;&#x6570;&#x636E;&#x5305;&#x7684;&#x4F20;&#x8F93;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6253;&#x7B97;&#x4E3A; L7&#xFF08;HTTP&#xFF09;<code>Service</code> &#x6539;&#x8FDB;&#x6211;&#x4EEC;&#x5BF9;&#x5B83;&#x7684;&#x652F;&#x6301;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6253;&#x7B97;&#x4E3A; <code>Service</code> &#x5B9E;&#x73B0;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x7684;&#x8BF7;&#x6C42;&#x8FDB;&#x5165;&#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E9B; <code>Service</code> &#x5305;&#x542B;&#x5F53;&#x524D; <code>ClusterIP</code>&#x3001;<code>NodePort</code> &#x548C; <code>LoadBalancer</code> &#x6A21;&#x5F0F;&#xFF0C;&#x6216;&#x8005;&#x66F4;&#x591A;&#x3002;</p>
+<h2 id="vip-&#x7684;&#x90A3;&#x4E9B;&#x9A87;&#x4EBA;&#x542C;&#x95FB;&#x7684;&#x7EC6;&#x8282;">VIP &#x7684;&#x90A3;&#x4E9B;&#x9A87;&#x4EBA;&#x542C;&#x95FB;&#x7684;&#x7EC6;&#x8282;</h2>
+<p>&#x5BF9;&#x5F88;&#x591A;&#x60F3;&#x4F7F;&#x7528; <code>Service</code> &#x7684;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x4FE1;&#x606F;&#x5E94;&#x8BE5;&#x8DB3;&#x591F;&#x4E86;&#x3002;
+&#x7136;&#x800C;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x5185;&#x90E8;&#x539F;&#x7406;&#x6027;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8FD8;&#x662F;&#x503C;&#x53BB;&#x7406;&#x89E3;&#x7684;&#x3002;</p>
+<h3 id="&#x907F;&#x514D;&#x51B2;&#x7A81;">&#x907F;&#x514D;&#x51B2;&#x7A81;</h3>
+<p>Kubernetes &#x6700;&#x4E3B;&#x8981;&#x7684;&#x54F2;&#x5B66;&#x4E4B;&#x4E00;&#xFF0C;&#x662F;&#x7528;&#x6237;&#x4E0D;&#x5E94;&#x8BE5;&#x66B4;&#x9732;&#x90A3;&#x4E9B;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x4ED6;&#x4EEC;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x3001;&#x4F46;&#x53C8;&#x4E0D;&#x662F;&#x4ED6;&#x4EEC;&#x7684;&#x8FC7;&#x9519;&#x7684;&#x573A;&#x666F;&#x3002;
+&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x7F51;&#x7EDC;&#x7AEF;&#x53E3; &#x2014;&#x2014; &#x7528;&#x6237;&#x4E0D;&#x5E94;&#x8BE5;&#x5FC5;&#x987B;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x800C;&#x4E14;&#x8BE5;&#x7AEF;&#x53E3;&#x8FD8;&#x6709;&#x53EF;&#x80FD;&#x4E0E;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x7684;&#x51B2;&#x7A81;&#x3002;
+&#x8FD9;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x5F7C;&#x6B64;&#x9694;&#x79BB;&#x72B6;&#x6001;&#x4E0B;&#x4ECD;&#x7136;&#x4F1A;&#x51FA;&#x73B0;&#x5931;&#x8D25;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x6237;&#x80FD;&#x591F;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684; <code>Service</code> &#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x4E0D;&#x80FD;&#x6709;2&#x4E2A; <code>Service</code> &#x53D1;&#x751F;&#x51B2;&#x7A81;&#x3002;
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E3A;&#x6BCF;&#x4E2A; <code>Service</code> &#x5206;&#x914D;&#x5B83;&#x4EEC;&#x81EA;&#x5DF1;&#x7684; IP &#x5730;&#x5740;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A; <code>Service</code> &#x88AB;&#x5206;&#x914D;&#x5230;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684; IP&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7684;&#x5206;&#x914D;&#x5668;&#x80FD;&#x591F;&#x539F;&#x5B50;&#x5730;&#x66F4;&#x65B0; etcd &#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x5206;&#x914D;&#x6620;&#x5C04;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x8981;&#x5148;&#x4E8E;&#x521B;&#x5EFA;&#x6BCF;&#x4E00;&#x4E2A; <code>Service</code>&#x3002;
+&#x4E3A;&#x4E86;&#x4F7F; <code>Service</code> &#x80FD;&#x591F;&#x83B7;&#x53D6;&#x5230; IP&#xFF0C;&#x8FD9;&#x4E2A;&#x6620;&#x5C04;&#x8868;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x5728;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5B58;&#x5728;&#xFF0C;&#x5426;&#x5219;&#x521B;&#x5EFA; <code>Service</code> &#x5C06;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x6307;&#x793A;&#x4E00;&#x4E2A; IP &#x4E0D;&#x80FD;&#x88AB;&#x5206;&#x914D;&#x3002;
+&#x4E00;&#x4E2A;&#x540E;&#x53F0; Controller &#x7684;&#x804C;&#x8D23;&#x662F;&#x521B;&#x5EFA;&#x6620;&#x5C04;&#x8868;&#xFF08;&#x4ECE; Kubernetes &#x7684;&#x65E7;&#x7248;&#x672C;&#x8FC1;&#x79FB;&#x8FC7;&#x6765;&#xFF0C;&#x65E7;&#x7248;&#x672C;&#x4E2D;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x52A0;&#x9501;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF09;&#xFF0C;&#x5E76;&#x68C0;&#x67E5;&#x7531;&#x4E8E;&#x7BA1;&#x7406;&#x5458;&#x5E72;&#x9884;&#x548C;&#x6E05;&#x9664;&#x4EFB;&#x610F; IP &#x9020;&#x6210;&#x7684;&#x4E0D;&#x5408;&#x7406;&#x5206;&#x914D;&#xFF0C;&#x8FD9;&#x4E9B; IP &#x88AB;&#x5206;&#x914D;&#x4E86;&#x4F46;&#x5F53;&#x524D;&#x6CA1;&#x6709; <code>Service</code> &#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;</p>
+<h3 id="ip-&#x548C;-vip">IP &#x548C; VIP</h3>
+<p>&#x4E0D;&#x50CF; <code>Pod</code> &#x7684; IP &#x5730;&#x5740;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x8DEF;&#x7531;&#x5230;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x76EE;&#x7684;&#x5730;&#xFF0C;<code>Service</code> &#x7684; IP &#x5B9E;&#x9645;&#x4E0A;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x5355;&#x4E2A;&#x4E3B;&#x673A;&#x6765;&#x8FDB;&#x884C;&#x5E94;&#x7B54;&#x3002;
+&#x76F8;&#x53CD;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>iptables</code>&#xFF08;Linux &#x4E2D;&#x7684;&#x6570;&#x636E;&#x5305;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF09;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x865A;&#x62DF;IP&#x5730;&#x5740;&#xFF08;VIP&#xFF09;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x900F;&#x660E;&#x5730;&#x8FDB;&#x884C;&#x91CD;&#x5B9A;&#x5411;&#x3002;
+&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x5230; VIP &#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x6D41;&#x91CF;&#x4F1A;&#x81EA;&#x52A8;&#x5730;&#x4F20;&#x8F93;&#x5230;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684; Endpoint&#x3002;
+&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x548C; DNS&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4F1A;&#x6839;&#x636E; <code>Service</code> &#x7684; VIP &#x548C;&#x7AEF;&#x53E3;&#x6765;&#x8FDB;&#x884C;&#x586B;&#x5145;&#x3002;</p>
+<h4 id="userspace">Userspace</h4>
+<p>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8003;&#x8651;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#x56FE;&#x7247;&#x5904;&#x7406;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;
+&#x5F53;&#x521B;&#x5EFA; backend <code>Service</code> &#x65F6;&#xFF0C;Kubernetes master &#x4F1A;&#x7ED9;&#x5B83;&#x6307;&#x6D3E;&#x4E00;&#x4E2A;&#x865A;&#x62DF; IP &#x5730;&#x5740;&#xFF0C;&#x6BD4;&#x5982; 10.0.0.1&#x3002;
+&#x5047;&#x8BBE; <code>Service</code> &#x7684;&#x7AEF;&#x53E3;&#x662F; 1234&#xFF0C;&#x8BE5; <code>Service</code> &#x4F1A;&#x88AB;&#x96C6;&#x7FA4;&#x4E2D;&#x6240;&#x6709;&#x7684; <code>kube-proxy</code> &#x5B9E;&#x4F8B;&#x89C2;&#x5BDF;&#x5230;&#x3002;
+&#x5F53;&#x4EE3;&#x7406;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Service</code>&#xFF0C; &#x5B83;&#x4F1A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x4ECE;&#x8BE5; VIP &#x91CD;&#x5B9A;&#x5411;&#x5230;&#x65B0;&#x7AEF;&#x53E3;&#x7684; iptables&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#x8FDE;&#x63A5;&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x5230;&#x4E00;&#x4E2A; VIP&#xFF0C;iptables &#x89C4;&#x5219;&#x5F00;&#x59CB;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x5B83;&#x4F1A;&#x91CD;&#x5B9A;&#x5411;&#x8BE5;&#x6570;&#x636E;&#x5305;&#x5230; <code>Service&#x4EE3;&#x7406;</code> &#x7684;&#x7AEF;&#x53E3;&#x3002;
+<code>Service&#x4EE3;&#x7406;</code> &#x9009;&#x62E9;&#x4E00;&#x4E2A; backend&#xFF0C;&#x5E76;&#x5C06;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6D41;&#x91CF;&#x4EE3;&#x7406;&#x5230; backend &#x4E0A;&#x3002;</p>
+<p>&#x8FD9;&#x610F;&#x5473;&#x7740; <code>Service</code> &#x7684;&#x6240;&#x6709;&#x8005;&#x80FD;&#x591F;&#x9009;&#x62E9;&#x4EFB;&#x4F55;&#x4ED6;&#x4EEC;&#x60F3;&#x4F7F;&#x7528;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x800C;&#x4E0D;&#x5B58;&#x5728;&#x51B2;&#x7A81;&#x7684;&#x98CE;&#x9669;&#x3002;
+&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x5730;&#x8FDE;&#x63A5;&#x5230;&#x4E00;&#x4E2A; IP &#x548C;&#x7AEF;&#x53E3;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x4E86;&#x54EA;&#x4E9B; <code>Pod</code>&#x3002;</p>
+<h4 id="iptables">Iptables</h4>
+<p>&#x518D;&#x6B21;&#x8003;&#x8651;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#x56FE;&#x7247;&#x5904;&#x7406;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;
+&#x5F53;&#x521B;&#x5EFA; backend <code>Service</code> &#x65F6;&#xFF0C;Kubernetes master &#x4F1A;&#x7ED9;&#x5B83;&#x6307;&#x6D3E;&#x4E00;&#x4E2A;&#x865A;&#x62DF; IP &#x5730;&#x5740;&#xFF0C;&#x6BD4;&#x5982; 10.0.0.1&#x3002;
+&#x5047;&#x8BBE; <code>Service</code> &#x7684;&#x7AEF;&#x53E3;&#x662F; 1234&#xFF0C;&#x8BE5; <code>Service</code> &#x4F1A;&#x88AB;&#x96C6;&#x7FA4;&#x4E2D;&#x6240;&#x6709;&#x7684; <code>kube-proxy</code> &#x5B9E;&#x4F8B;&#x89C2;&#x5BDF;&#x5230;&#x3002;
+&#x5F53;&#x4EE3;&#x7406;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Service</code>&#xFF0C; &#x5B83;&#x4F1A;&#x5B89;&#x88C5;&#x4E00;&#x7CFB;&#x5217;&#x7684; iptables &#x89C4;&#x5219;&#xFF0C;&#x4ECE; VIP &#x91CD;&#x5B9A;&#x5411;&#x5230; per-<code>Service</code> &#x89C4;&#x5219;&#x3002;
+&#x8BE5; per-<code>Service</code> &#x89C4;&#x5219;&#x8FDE;&#x63A5;&#x5230; per-<code>Endpoint</code> &#x89C4;&#x5219;&#xFF0C;&#x8BE5; per-<code>Endpoint</code> &#x89C4;&#x5219;&#x4F1A;&#x91CD;&#x5B9A;&#x5411;&#xFF08;&#x76EE;&#x6807; NAT&#xFF09;&#x5230; backend&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x5230;&#x4E00;&#x4E2A; VIP&#xFF0C;iptables &#x89C4;&#x5219;&#x5F00;&#x59CB;&#x8D77;&#x4F5C;&#x7528;&#x3002;&#x4E00;&#x4E2A; backend &#x4F1A;&#x88AB;&#x9009;&#x62E9;&#xFF08;&#x6216;&#x8005;&#x6839;&#x636E;&#x4F1A;&#x8BDD;&#x4EB2;&#x548C;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x968F;&#x673A;&#xFF09;&#xFF0C;&#x6570;&#x636E;&#x5305;&#x88AB;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x8FD9;&#x4E2A; backend&#x3002;
+&#x4E0D;&#x50CF; userspace &#x4EE3;&#x7406;&#xFF0C;&#x6570;&#x636E;&#x5305;&#x4ECE;&#x6765;&#x4E0D;&#x62F7;&#x8D1D;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF0C;kube-proxy &#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x4E3A;&#x8BE5; VIP &#x5DE5;&#x4F5C;&#x800C;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x5BA2;&#x6237;&#x7AEF; IP &#x662F;&#x4E0D;&#x53EF;&#x66F4;&#x6539;&#x7684;&#x3002;
+&#x5F53;&#x6D41;&#x91CF;&#x6253;&#x5230; Node &#x7684;&#x7AEF;&#x53E3;&#x4E0A;&#xFF0C;&#x6216;&#x901A;&#x8FC7;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x57FA;&#x672C;&#x6D41;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x90A3;&#x4E9B;&#x6848;&#x4F8B;&#x4E2D;&#x5BA2;&#x6237;&#x7AEF; IP &#x662F;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x7684;&#x3002;</p>
+<h2 id="api-&#x5BF9;&#x8C61;">API &#x5BF9;&#x8C61;</h2>
+<p>&#x5728; Kubernetes REST API &#x4E2D;&#xFF0C;Service &#x662F; top-level &#x8D44;&#x6E90;&#x3002;&#x5173;&#x4E8E; API &#x5BF9;&#x8C61;&#x7684;&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#xFF1A;<a href="https://kubernetes.io/docs/api-reference/v1.7/#service-v1-core" target="_blank">Service API &#x5BF9;&#x8C61;</a>&#x3002;</p>
+<h2 id="&#x66F4;&#x591A;&#x4FE1;&#x606F;">&#x66F4;&#x591A;&#x4FE1;&#x606F;</h2>
+<p>&#x9605;&#x8BFB; <a href="https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/" target="_blank">&#x4F7F;&#x7528; Service &#x8FDE;&#x63A5; Frontend &#x5230; Backend</a>&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">for GitBook</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update">update
+2017-08-03 17:52:06
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="namespace.html" class="navigation navigation-prev " aria-label="Previous page: 2.2.3 Namespace">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="volume.html" class="navigation navigation-next " aria-label="Next page: 2.2.5 Volume和Persistent Volume">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.2.4 Service","level":"1.2.2.4","depth":3,"next":{"title":"2.2.5 Volume和Persistent Volume","level":"1.2.2.5","depth":3,"path":"concepts/volume.md","ref":"concepts/volume.md","articles":[]},"previous":{"title":"2.2.3 Namespace","level":"1.2.2.3","depth":3,"path":"concepts/namespace.md","ref":"concepts/namespace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","page-footer-ex","editlink","-lunr","-search","search-plus","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/rootsongjc/kubernetes-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/rootsongjc/kubernetes-handbook/blob/master/"},"livereload":{},"page-footer-ex":{"copyright":"for GitBook","update_format":"YYYY-MM-DD HH:mm:ss","update_label":"update"},"splitter":{},"codesnippet":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{},"image-captions":{"variable_name":"_pictures"}},"page-footer-ex":{"copyright":"Jimmy Song","update_label":"最后更新：","update_format":"YYYY-MM-DD HH:mm:ss"},"theme":"default","author":"Jimmy Song","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: wercker status","alt":"wercker status","nro":1,"url":"https://app.wercker.com/status/b8b69e593784e17ddcfd1286adfd8f3c/s/master","index":1,"caption_template":"Figure: _CAPTION_","label":"wercker status","attributes":{},"title":"wercker status","skip":false,"key":"1.1.1"},{"backlink":"concepts/index.html#fig1.2.1","level":"1.2","list_caption":"Figure: Borg架构","alt":"Borg架构","nro":2,"url":"../images/borg.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Borg架构","attributes":{},"skip":false,"key":"1.2.1"},{"backlink":"concepts/index.html#fig1.2.2","level":"1.2","list_caption":"Figure: Kubernetes架构","alt":"Kubernetes架构","nro":3,"url":"../images/architecture.png","index":2,"caption_template":"Figure: _CAPTION_","label":"Kubernetes架构","attributes":{},"skip":false,"key":"1.2.2"},{"backlink":"concepts/index.html#fig1.2.3","level":"1.2","list_caption":"Figure: kubernetes整体架构示意图","alt":"kubernetes整体架构示意图","nro":4,"url":"../images/kubernetes-whole-arch.png","index":3,"caption_template":"Figure: _CAPTION_","label":"kubernetes整体架构示意图","attributes":{},"skip":false,"key":"1.2.3"},{"backlink":"concepts/index.html#fig1.2.4","level":"1.2","list_caption":"Figure: Kubernetes master架构示意图","alt":"Kubernetes master架构示意图","nro":5,"url":"../images/kubernetes-master-arch.png","index":4,"caption_template":"Figure: _CAPTION_","label":"Kubernetes master架构示意图","attributes":{},"skip":false,"key":"1.2.4"},{"backlink":"concepts/index.html#fig1.2.5","level":"1.2","list_caption":"Figure: kubernetes node架构示意图","alt":"kubernetes node架构示意图","nro":6,"url":"../images/kubernetes-node-arch.png","index":5,"caption_template":"Figure: _CAPTION_","label":"kubernetes node架构示意图","attributes":{},"skip":false,"key":"1.2.5"},{"backlink":"concepts/index.html#fig1.2.6","level":"1.2","list_caption":"Figure: Kubernetes分层架构示意图","alt":"Kubernetes分层架构示意图","nro":7,"url":"../images/kubernetes-layers-arch.jpg","index":6,"caption_template":"Figure: _CAPTION_","label":"Kubernetes分层架构示意图","attributes":{},"skip":false,"key":"1.2.6"},{"backlink":"concepts/concepts.html#fig1.2.1.1","level":"1.2.1","list_caption":"Figure: 分层架构示意图","alt":"分层架构示意图","nro":8,"url":"../images/kubernetes-layers-arch.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"分层架构示意图","attributes":{},"skip":false,"key":"1.2.1.1"},{"backlink":"concepts/pod-overview.html#fig1.2.2.1.1","level":"1.2.2.1","list_caption":"Figure: pod diagram","alt":"pod diagram","nro":9,"url":"../images/pod-overview.png","index":1,"caption_template":"Figure: _CAPTION_","label":"pod diagram","attributes":{},"skip":false,"key":"1.2.2.1.1"},{"backlink":"concepts/pod.html#fig1.2.2.1.1.1","level":"1.2.2.1.1","list_caption":"Figure: Pod示意图","alt":"Pod示意图","nro":10,"url":"../images/pod-overview.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Pod示意图","attributes":{},"skip":false,"key":"1.2.2.1.1.1"},{"backlink":"concepts/pod.html#fig1.2.2.1.1.2","level":"1.2.2.1.1","list_caption":"Figure: Pod Cheatsheet","alt":"Pod Cheatsheet","nro":11,"url":"../images/kubernetes-pod-cheatsheet.png","index":2,"caption_template":"Figure: _CAPTION_","label":"Pod Cheatsheet","attributes":{},"skip":false,"key":"1.2.2.1.1.2"},{"backlink":"concepts/service.html#fig1.2.2.4.1","level":"1.2.2.4","list_caption":"Figure: userspace代理模式下Service概览图","alt":"userspace代理模式下Service概览图","nro":12,"url":"https://d33wubrfki0l68.cloudfront.net/b8e1022c2dd815d8dd36b1bc4f0cc3ad870a924f/1dd12/images/docs/services-userspace-overview.svg","index":1,"caption_template":"Figure: _CAPTION_","label":"userspace代理模式下Service概览图","attributes":{},"skip":false,"key":"1.2.2.4.1"},{"backlink":"concepts/service.html#fig1.2.2.4.2","level":"1.2.2.4","list_caption":"Figure: iptables代理模式下Service概览图","alt":"iptables代理模式下Service概览图","nro":13,"url":"https://d33wubrfki0l68.cloudfront.net/837afa5715eb31fb9ca6516ec6863e810f437264/42951/images/docs/services-iptables-overview.svg","index":2,"caption_template":"Figure: _CAPTION_","label":"iptables代理模式下Service概览图","attributes":{},"skip":false,"key":"1.2.2.4.2"},{"backlink":"concepts/deployment.html#fig1.2.2.6.1","level":"1.2.2.6","list_caption":"Figure: kubernetes deployment cheatsheet","alt":"kubernetes deployment cheatsheet","nro":14,"url":"../images/deployment-cheatsheet.png","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes deployment cheatsheet","attributes":{},"skip":false,"key":"1.2.2.6.1"},{"backlink":"concepts/horizontal-pod-autoscaling.html#fig1.2.2.16.1","level":"1.2.2.16","list_caption":"Figure: horizontal-pod-autoscaler","alt":"horizontal-pod-autoscaler","nro":15,"url":"../images/horizontal-pod-autoscaler.png","index":1,"caption_template":"Figure: _CAPTION_","label":"horizontal-pod-autoscaler","attributes":{},"skip":false,"key":"1.2.2.16.1"},{"backlink":"concepts/label.html#fig1.2.2.17.1","level":"1.2.2.17","list_caption":"Figure: label示意图","alt":"label示意图","nro":16,"url":"../images/labels.png","index":1,"caption_template":"Figure: _CAPTION_","label":"label示意图","attributes":{},"skip":false,"key":"1.2.2.17.1"},{"backlink":"guide/using-kubectl.html#fig1.3.2.1.1","level":"1.3.2.1","list_caption":"Figure: kubectl cheatsheet","alt":"kubectl cheatsheet","nro":17,"url":"../images/kubernetes-kubectl-cheatsheet.png","index":1,"caption_template":"Figure: _CAPTION_","label":"kubectl cheatsheet","attributes":{},"skip":false,"key":"1.3.2.1.1"},{"backlink":"guide/using-kubectl.html#fig1.3.2.1.2","level":"1.3.2.1","list_caption":"Figure: kube-shell页面","alt":"kube-shell页面","nro":18,"url":"../images/kube-shell.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"kube-shell页面","attributes":{},"skip":false,"key":"1.3.2.1.2"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.1","level":"1.3.5.1","list_caption":"Figure: API","alt":"API","nro":19,"url":"../images/k8s-app-monitor-test-api-doc.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"API","attributes":{},"skip":false,"key":"1.3.5.1.1"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.2","level":"1.3.5.1","list_caption":"Figure: wercker","alt":"wercker","nro":20,"url":"../images/k8s-app-monitor-agent-wercker.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"wercker","attributes":{},"skip":false,"key":"1.3.5.1.2"},{"backlink":"guide/deploy-applications-in-kubernetes.html#fig1.3.5.1.3","level":"1.3.5.1","list_caption":"Figure: 图表","alt":"图表","nro":21,"url":"../images/k8s-app-monitor-agent.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"图表","attributes":{},"skip":false,"key":"1.3.5.1.3"},{"backlink":"practice/node-installation.html#fig1.4.1.6.1","level":"1.4.1.6","list_caption":"Figure: welcome-nginx","alt":"welcome-nginx","nro":22,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-installation-test-nginx.png","index":1,"caption_template":"Figure: _CAPTION_","label":"welcome-nginx","attributes":{},"skip":false,"key":"1.4.1.6.1"},{"backlink":"practice/dashboard-addon-installation.html#fig1.4.1.8.1","level":"1.4.1.8","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":23,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.1.8.1"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.1","level":"1.4.1.9","list_caption":"Figure: dashboard-heapster","alt":"dashboard-heapster","nro":24,"url":"../images/kubernetes-dashboard-with-heapster.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"dashboard-heapster","attributes":{},"skip":false,"key":"1.4.1.9.1"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.2","level":"1.4.1.9","list_caption":"Figure: grafana","alt":"grafana","nro":25,"url":"../images/kubernetes-heapster-grafana.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"grafana","attributes":{},"skip":false,"key":"1.4.1.9.2"},{"backlink":"practice/heapster-addon-installation.html#fig1.4.1.9.3","level":"1.4.1.9","list_caption":"Figure: kubernetes-influxdb-heapster","alt":"kubernetes-influxdb-heapster","nro":26,"url":"../images/kubernetes-influxdb-heapster.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"kubernetes-influxdb-heapster","attributes":{},"skip":false,"key":"1.4.1.9.3"},{"backlink":"practice/efk-addon-installation.html#fig1.4.1.10.1","level":"1.4.1.10","list_caption":"Figure: es-setting","alt":"es-setting","nro":27,"url":"../images/es-setting.png","index":1,"caption_template":"Figure: _CAPTION_","label":"es-setting","attributes":{},"skip":false,"key":"1.4.1.10.1"},{"backlink":"practice/efk-addon-installation.html#fig1.4.1.10.2","level":"1.4.1.10","list_caption":"Figure: es-home","alt":"es-home","nro":28,"url":"../images/kubernetes-efk-kibana.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"es-home","attributes":{},"skip":false,"key":"1.4.1.10.2"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.1","level":"1.4.2.1","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":29,"url":"../images/traefik-dashboard.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.2.1.1"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.2","level":"1.4.2.1","list_caption":"Figure: traefik-nginx","alt":"traefik-nginx","nro":30,"url":"../images/traefik-nginx.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"traefik-nginx","attributes":{},"skip":false,"key":"1.4.2.1.2"},{"backlink":"practice/traefik-ingress-installation.html#fig1.4.2.1.3","level":"1.4.2.1","list_caption":"Figure: traefik-guestbook","alt":"traefik-guestbook","nro":31,"url":"../images/traefik-guestbook.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"traefik-guestbook","attributes":{},"skip":false,"key":"1.4.2.1.3"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.1","level":"1.4.2.2","list_caption":"Figure: traefik-dashboard-locust","alt":"traefik-dashboard-locust","nro":32,"url":"../images/traefik-dashboard-locust.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"traefik-dashboard-locust","attributes":{},"skip":false,"key":"1.4.2.2.1"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.2","level":"1.4.2.2","list_caption":"Figure: locust-start-swarming","alt":"locust-start-swarming","nro":33,"url":"../images/locust-start-swarming.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"locust-start-swarming","attributes":{},"skip":false,"key":"1.4.2.2.2"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.3","level":"1.4.2.2","list_caption":"Figure: sample-webapp-rc","alt":"sample-webapp-rc","nro":34,"url":"../images/sample-webapp-rc.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"sample-webapp-rc","attributes":{},"skip":false,"key":"1.4.2.2.3"},{"backlink":"practice/distributed-load-test.html#fig1.4.2.2.4","level":"1.4.2.2","list_caption":"Figure: locust-dashboard","alt":"locust-dashboard","nro":35,"url":"../images/locust-dashboard.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"locust-dashboard","attributes":{},"skip":false,"key":"1.4.2.2.4"},{"backlink":"practice/network-and-cluster-perfermance-test.html#fig1.4.2.3.1","level":"1.4.2.3","list_caption":"Figure: kubernetes-dashboard","alt":"kubernetes-dashboard","nro":36,"url":"http://olz1di9xf.bkt.clouddn.com/kubenetes-e2e-test.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"kubernetes-dashboard","attributes":{},"skip":false,"key":"1.4.2.3.1"},{"backlink":"practice/network-and-cluster-perfermance-test.html#fig1.4.2.3.2","level":"1.4.2.3","list_caption":"Figure: locust-test","alt":"locust-test","nro":37,"url":"http://olz1di9xf.bkt.clouddn.com/kubernetes-locust-test.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"locust-test","attributes":{},"skip":false,"key":"1.4.2.3.2"},{"backlink":"practice/edge-node-configuration.html#fig1.4.2.4.1","level":"1.4.2.4","list_caption":"Figure: 边缘节点架构","alt":"边缘节点架构","nro":38,"url":"../images/kubernetes-edge-node-architecture.png","index":1,"caption_template":"Figure: _CAPTION_","label":"边缘节点架构","attributes":{},"skip":false,"key":"1.4.2.4.1"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.1","level":"1.4.3.2","list_caption":"Figure: logstash日志收集架构图","alt":"logstash日志收集架构图","nro":39,"url":"../images/filebeat-log-collector.png","index":1,"caption_template":"Figure: _CAPTION_","label":"logstash日志收集架构图","attributes":{},"skip":false,"key":"1.4.3.2.1"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.2","level":"1.4.3.2","list_caption":"Figure: Kibana页面","alt":"Kibana页面","nro":40,"url":"../images/filebeat-docker-test.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"Kibana页面","attributes":{},"skip":false,"key":"1.4.3.2.2"},{"backlink":"practice/app-log-collection.html#fig1.4.3.2.3","level":"1.4.3.2","list_caption":"Figure: filebeat收集的日志详细信息","alt":"filebeat收集的日志详细信息","nro":41,"url":"../images/kubernetes-filebeat-detail.png","index":3,"caption_template":"Figure: _CAPTION_","label":"filebeat收集的日志详细信息","attributes":{},"skip":false,"key":"1.4.3.2.3"},{"backlink":"practice/monitor.html#fig1.4.3.4.1","level":"1.4.3.4","list_caption":"Figure: Kubernetes集群中的监控","alt":"Kubernetes集群中的监控","nro":42,"url":"../images/monitoring-in-kubernetes.png","index":1,"caption_template":"Figure: _CAPTION_","label":"Kubernetes集群中的监控","attributes":{},"skip":false,"key":"1.4.3.4.1"},{"backlink":"practice/monitor.html#fig1.4.3.4.2","level":"1.4.3.4","list_caption":"Figure: kubernetes的容器命名规则示意图","alt":"kubernetes的容器命名规则示意图","nro":43,"url":"../images/kubernetes-container-naming-rule.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"kubernetes的容器命名规则示意图","attributes":{},"skip":false,"key":"1.4.3.4.2"},{"backlink":"practice/monitor.html#fig1.4.3.4.3","level":"1.4.3.4","list_caption":"Figure: Heapster架构图（改进版）","alt":"Heapster架构图（改进版）","nro":44,"url":"../images/kubernetes-heapster-monitoring.png","index":3,"caption_template":"Figure: _CAPTION_","label":"Heapster架构图（改进版）","attributes":{},"skip":false,"key":"1.4.3.4.3"},{"backlink":"practice/monitor.html#fig1.4.3.4.4","level":"1.4.3.4","list_caption":"Figure: 应用监控架构图","alt":"应用监控架构图","nro":45,"url":"../images/kubernetes-app-monitoring.png","index":4,"caption_template":"Figure: _CAPTION_","label":"应用监控架构图","attributes":{},"skip":false,"key":"1.4.3.4.4"},{"backlink":"practice/monitor.html#fig1.4.3.4.5","level":"1.4.3.4","list_caption":"Figure: 应用拓扑图","alt":"应用拓扑图","nro":46,"url":"../images/weave-scope-service-topology.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"应用拓扑图","attributes":{},"skip":false,"key":"1.4.3.4.5"},{"backlink":"practice/jenkins-ci-cd.html#fig1.4.3.5.1","level":"1.4.3.5","list_caption":"Figure: 基于Jenkins的持续集成与发布","alt":"基于Jenkins的持续集成与发布","nro":47,"url":"../images/kubernetes-jenkins-ci-cd.png","index":1,"caption_template":"Figure: _CAPTION_","label":"基于Jenkins的持续集成与发布","attributes":{},"skip":false,"key":"1.4.3.5.1"},{"backlink":"practice/data-persistence-problem.html#fig1.4.3.6.1","level":"1.4.3.6","list_caption":"Figure: 日志持久化收集解决方案示意图","alt":"日志持久化收集解决方案示意图","nro":48,"url":"../images/log-persistence-logstash.png","index":1,"caption_template":"Figure: _CAPTION_","label":"日志持久化收集解决方案示意图","attributes":{},"skip":false,"key":"1.4.3.6.1"},{"backlink":"practice/storage-for-containers-using-glusterfs-with-openshift.html#fig1.4.4.1.2.1","level":"1.4.4.1.2","list_caption":"Figure: Screen Shot 2017-03-23 at 21.50.34","alt":"Screen Shot 2017-03-23 at 21.50.34","nro":49,"url":"https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-23-at-21-50-34.png?w=440","index":1,"caption_template":"Figure: _CAPTION_","label":"Screen Shot 2017-03-23 at 21.50.34","attributes":{},"skip":false,"key":"1.4.4.1.2.1"},{"backlink":"practice/storage-for-containers-using-glusterfs-with-openshift.html#fig1.4.4.1.2.2","level":"1.4.4.1.2","list_caption":"Figure: Screen Shot 2017-03-24 at 11.09.34.png","alt":"Screen Shot 2017-03-24 at 11.09.34.png","nro":50,"url":"https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-24-at-11-09-341.png?w=440","index":2,"caption_template":"Figure: _CAPTION_","label":"Screen Shot 2017-03-24 at 11.09.34.png","attributes":{},"skip":false,"key":"1.4.4.1.2.2"},{"backlink":"usecases/istio.html#fig1.5.1.1.1","level":"1.5.1.1","list_caption":"Figure: Istio架构图","alt":"Istio架构图","nro":51,"url":"../images/istio-arch.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Istio架构图","attributes":{},"skip":false,"key":"1.5.1.1.1"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.1","level":"1.5.1.1.1","list_caption":"Figure: BookInfo Sample应用架构图","alt":"BookInfo Sample应用架构图","nro":52,"url":"../images/bookinfo-sample-arch.png","index":1,"caption_template":"Figure: _CAPTION_","label":"BookInfo Sample应用架构图","attributes":{},"skip":false,"key":"1.5.1.1.1.1"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.2","level":"1.5.1.1.1","list_caption":"Figure: BookInfo Sample页面","alt":"BookInfo Sample页面","nro":53,"url":"../images/bookinfo-sample.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"BookInfo Sample页面","attributes":{},"skip":false,"key":"1.5.1.1.1.2"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.3","level":"1.5.1.1.1","list_caption":"Figure: Istio Grafana界面","alt":"Istio Grafana界面","nro":54,"url":"../images/istio-grafana.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"Istio Grafana界面","attributes":{},"skip":false,"key":"1.5.1.1.1.3"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.4","level":"1.5.1.1.1","list_caption":"Figure: Prometheus页面","alt":"Prometheus页面","nro":55,"url":"../images/istio-prometheus.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"Prometheus页面","attributes":{},"skip":false,"key":"1.5.1.1.1.4"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.5","level":"1.5.1.1.1","list_caption":"Figure: Zipkin页面","alt":"Zipkin页面","nro":56,"url":"../images/istio-zipkin.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"Zipkin页面","attributes":{},"skip":false,"key":"1.5.1.1.1.5"},{"backlink":"usecases/istio-installation.html#fig1.5.1.1.1.6","level":"1.5.1.1.1","list_caption":"Figure: ServiceGraph页面","alt":"ServiceGraph页面","nro":57,"url":"../images/istio-servicegraph.jpg","index":6,"caption_template":"Figure: _CAPTION_","label":"ServiceGraph页面","attributes":{},"skip":false,"key":"1.5.1.1.1.6"},{"backlink":"usecases/linkerd.html#fig1.5.1.2.1","level":"1.5.1.2","list_caption":"Figure: source https://linkerd.io","alt":"source https://linkerd.io","nro":58,"url":"https://linkerd.io/images/diagram-individual-instance.png","index":1,"caption_template":"Figure: _CAPTION_","label":"source https://linkerd.io","attributes":{},"skip":false,"key":"1.5.1.2.1"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.1","level":"1.5.1.2.1","list_caption":"Figure: Jenkins pipeline","alt":"Jenkins pipeline","nro":59,"url":"../images/linkerd-jenkins-pipeline.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"Jenkins pipeline","attributes":{},"skip":false,"key":"1.5.1.2.1.1"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.2","level":"1.5.1.2.1","list_caption":"Figure: Jenkins config","alt":"Jenkins config","nro":60,"url":"../images/linkerd-jenkins.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"Jenkins config","attributes":{},"skip":false,"key":"1.5.1.2.1.2"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.3","level":"1.5.1.2.1","list_caption":"Figure: namerd","alt":"namerd","nro":61,"url":"../images/namerd-internal.jpg","index":3,"caption_template":"Figure: _CAPTION_","label":"namerd","attributes":{},"skip":false,"key":"1.5.1.2.1.3"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.4","level":"1.5.1.2.1","list_caption":"Figure: linkerd监控","alt":"linkerd监控","nro":62,"url":"../images/linkerd-helloworld-outgoing.jpg","index":4,"caption_template":"Figure: _CAPTION_","label":"linkerd监控","attributes":{},"skip":false,"key":"1.5.1.2.1.4"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.5","level":"1.5.1.2.1","list_caption":"Figure: linkerd监控","alt":"linkerd监控","nro":63,"url":"../images/linkerd-helloworld-incoming.jpg","index":5,"caption_template":"Figure: _CAPTION_","label":"linkerd监控","attributes":{},"skip":false,"key":"1.5.1.2.1.5"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.6","level":"1.5.1.2.1","list_caption":"Figure: linkerd性能监控","alt":"linkerd性能监控","nro":64,"url":"../images/linkerd-grafana.png","index":6,"caption_template":"Figure: _CAPTION_","label":"linkerd性能监控","attributes":{},"skip":false,"key":"1.5.1.2.1.6"},{"backlink":"usecases/linkerd-user-guide.html#fig1.5.1.2.1.7","level":"1.5.1.2.1","list_caption":"Figure: Linkerd ingress controller","alt":"Linkerd ingress controller","nro":65,"url":"../images/linkerd-ingress-controller.jpg","index":7,"caption_template":"Figure: _CAPTION_","label":"Linkerd ingress controller","attributes":{},"skip":false,"key":"1.5.1.2.1.7"},{"backlink":"usecases/service-discovery-in-microservices.html#fig1.5.1.3.1","level":"1.5.1.3","list_caption":"Figure: 微服务中的服务发现","alt":"微服务中的服务发现","nro":66,"url":"../images/service-discovery-in-microservices.png","index":1,"caption_template":"Figure: _CAPTION_","label":"微服务中的服务发现","attributes":{},"skip":false,"key":"1.5.1.3.1"},{"backlink":"usecases/spark-on-kubernetes.html#fig1.5.2.1.1","level":"1.5.2.1","list_caption":"Figure: spark master ui","alt":"spark master ui","nro":67,"url":"../images/spark-ui.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"spark master ui","attributes":{},"skip":false,"key":"1.5.2.1.1"},{"backlink":"usecases/spark-on-kubernetes.html#fig1.5.2.1.2","level":"1.5.2.1","list_caption":"Figure: zeppelin ui","alt":"zeppelin ui","nro":68,"url":"../images/zeppelin-ui.jpg","index":2,"caption_template":"Figure: _CAPTION_","label":"zeppelin ui","attributes":{},"skip":false,"key":"1.5.2.1.2"},{"backlink":"develop/client-go-sample.html#fig1.6.3.1","level":"1.6.3","list_caption":"Figure: 使用kubernetes dashboard进行故障排查","alt":"使用kubernetes dashboard进行故障排查","nro":69,"url":"../images/kubernetes-client-go-sample-update.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"使用kubernetes dashboard进行故障排查","attributes":{},"skip":false,"key":"1.6.3.1"},{"backlink":"appendix/issues.html#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: pvc-storage-limit","alt":"pvc-storage-limit","nro":70,"url":"../images/pvc-storage-limit.jpg","index":1,"caption_template":"Figure: _CAPTION_","label":"pvc-storage-limit","attributes":{},"skip":false,"key":"1.7.2.1"}]},"title":"Kubernetes Handbook","language":"zh-cn","gitbook":"*","description":"Let's play fun with kubernetes!","image-captions":{"caption":"图片 - _CAPTION_"}},"file":{"path":"concepts/service.md","mtime":"2017-08-03T09:52:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-13T12:57:08.041Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
