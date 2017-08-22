@@ -12,13 +12,13 @@
 
 GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
 
-Gitbook 在线浏览：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+Gitbook 在线浏览：http://jimmysong.io/kubernetes-handbook/
 
 ## 如何使用本书
 
 **在线浏览**
 
-访问 [gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/)
+访问 [gitbook](http://jimmysong.io/kubernetes-handbook/)
 
 **注意**：<u>文中涉及的配置文件和代码链接在 gitbook 中会无法打开，请下载 github 源码后，在 MarkDown 编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](www.typorai.o)</u>。
 
@@ -95,4 +95,4 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 [贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)
 
-[Jimmy Song](http://rootsongjc.github.io/about)
+[Jimmy Song](http://jimmysong.io/about)
