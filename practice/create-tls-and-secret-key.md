@@ -82,6 +82,8 @@ $ mkdir /root/ssl
 $ cd /root/ssl
 $ cfssl print-defaults config > config.json
 $ cfssl print-defaults csr > csr.json
+# 根据config.json文件的格式创建如下的ca-config.json文件
+# 过期时间设置成了 87600h
 $ cat ca-config.json
 {
   "signing": {
@@ -179,7 +181,7 @@ $ cat kubernetes-csr.json
 }
 ```
 
-+ 如果 hosts 字段不为空则需要指定授权使用该证书的 **IP 或域名列表**，由于该证书后续被 `etcd` 集群和 `kubernetes master` 集群使用，所以上面分别指定了 `etcd` 集群、`kubernetes master` 集群的主机 IP 和 **`kubernetes` 服务的服务 IP**（一般是 `kue-apiserver` 指定的 `service-cluster-ip-range` 网段的第一个IP，如 10.254.0.1。
++ 如果 hosts 字段不为空则需要指定授权使用该证书的 **IP 或域名列表**，由于该证书后续被 `etcd` 集群和 `kubernetes master` 集群使用，所以上面分别指定了 `etcd` 集群、`kubernetes master` 集群的主机 IP 和 **`kubernetes` 服务的服务 IP**（一般是 `kube-apiserver` 指定的 `service-cluster-ip-range` 网段的第一个IP，如 10.254.0.1。
 
 **生成 kubernetes 证书和私钥**
 
