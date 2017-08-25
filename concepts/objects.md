@@ -19,4 +19,6 @@
 - Horizontal Pod Autoscaling
 - Network Policy
 - Ingress
+- ConfigMap
+- Label
 - ThirdPartyResources
