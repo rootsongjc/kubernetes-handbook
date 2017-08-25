@@ -800,7 +800,7 @@ Deployment也需要 [`.spec` section](https://github.com/kubernetes/community/bl
 
 #### Revision
 
-`.spec.rollbackTo.revision`是一个可选配置项，用来指定回退到的revision。默认是0，意味着回退到历史中最老的revision。
+`.spec.rollbackTo.revision`是一个可选配置项，用来指定回退到的revision。默认是0，意味着回退到上一个revision。
 
 ### Revision History Limit
 
