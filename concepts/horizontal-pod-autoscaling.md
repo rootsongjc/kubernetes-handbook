@@ -12,7 +12,7 @@ Horizontal Pod Autoscaling由API server和controller共同实现。
 
 ## Metrics支持
 
-在不同版本得API中，HPA autoscale时可以根据以下指标来判断：
+在不同版本的API中，HPA autoscale时可以根据以下指标来判断：
 
 - autoscaling/v1
   - CPU
