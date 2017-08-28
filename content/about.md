@@ -31,5 +31,9 @@ title = "About Jimmy Song"
 - Twitter: https://twitter.com/rootsongjc
 - Facebook: https://facebook.com/rootsongjc
 - 图虫(Tuchong Photography): http://rootsongjc.tuchong.com
+- 知乎专栏——云原生应用架构：https://zhuanlan.zhihu.com/cloud-native
+- 微信公众号——云原生应用架构(CloudNativeGo)
+
+![微信公众号-云原生应用架构](http://olz1di9xf.bkt.clouddn.com/cloud-native-wechat-public-account.jpg)
 
 ![wechat_qrcode](http://olz1di9xf.bkt.clouddn.com/wechat-qrcode-20170627.jpg)
