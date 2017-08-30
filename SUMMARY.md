@@ -78,6 +78,7 @@
     - [5.1.3 微服务中的服务发现](usecases/service-discovery-in-microservices.md)
   - [5.2 大数据](usecases/big-data.md)
     - [5.2.1 Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
+  - [5.3 Serverless架构](usecases/serverless.md)
 - [6. 开发指南](develop/index.md)
   - [6.1 开发环境搭建](develop/developing-environment.md)
   - [6.2 单元测试和集成测试](develop/testing.md)
