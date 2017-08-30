@@ -2,3 +2,4 @@ languageCode = "en-us"
 title = "Jimmy Song's Blog"
 baseurl = "http://rootsongjc.github.io/"
 disqusShortname = "rootsongjc"
+hasCJKLanguage = true
