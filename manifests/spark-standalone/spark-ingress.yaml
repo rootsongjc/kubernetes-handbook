@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+  namespace: spark-cluster
+spec:
+  rules:
+    - host: spark.traefik.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: spark-ui-proxy
+            servicePort: 80
+    - host: zeppelin.traefik.io
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: zeppelin
+            servicePort: 80

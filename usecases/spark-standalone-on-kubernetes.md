@@ -1,10 +1,8 @@
-# Spark on Kubernetes
+# Spark standalone on Kubernetes
 
-时速云上提供的镜像docker pull index.tenxcloud.com/google_containers/spark:1.5.2_v1都下载不下来。
+该项目是基于 Spark standalone 模式，对资源的分配调度还有作业状态查询的功能实在有限，对于让 spark 使用真正原生的 kubernetes 资源调度推荐大家尝试 https://github.com/apache-spark-on-k8s/
 
-因此我自己编译的spark的镜像。
-
-编译好后上传到了时速云镜像仓库
+本文中使用的镜像我已编译好上传到了时速云上，大家可以直接下载。
 
 ```
 index.tenxcloud.com/jimmy/spark:1.5.2_v1
@@ -12,6 +10,10 @@ index.tenxcloud.com/jimmy/zeppelin:0.7.1
 ```
 
 代码和使用文档见Github地址：https://github.com/rootsongjc/spark-on-kubernetes
+
+本文中用到的 yaml 文件可以在 [../manifests/spark-standalone](../manifests/spark-standalone) 目录下找到，也可以在上面的 https://github.com/rootsongjc/spark-on-kubernetes/ 项目的 manifests 目录下找到。
+
+**注意**：时速云上本来已经提供的镜像 `index.tenxcloud.com/google_containers/spark:1.5.2_v1` ，但是该镜像似乎有问题，下载总是失败。
 
 ## 在Kubernetes上启动spark
 
