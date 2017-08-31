@@ -59,7 +59,7 @@ Error validating pod kube-keepalived-vip-1p62d_default(5d79ccc0-3173-11e7-bfbd-8
 ```
 ## 6.PVC中对Storage的容量设置不生效
 
-[使用glusterfs做持久化存储](17-使用glusterfs做持久化存储.md)文档中我们构建了PV和PVC，当时给`glusterfs-nginx`的PVC设置了8G的存储限额，`nginx-dm`这个Deployment使用了该PVC，进入该Deployment中的Pod执行测试：
+[使用glusterfs做持久化存储](../practice/using-glusterfs-for-persistent-storage.md)文档中我们构建了PV和PVC，当时给`glusterfs-nginx`的PVC设置了8G的存储限额，`nginx-dm`这个Deployment使用了该PVC，进入该Deployment中的Pod执行测试：
 
 ```
 dd if=/dev/zero of=test bs=1G count=10
