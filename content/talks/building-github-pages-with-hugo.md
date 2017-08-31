@@ -126,3 +126,10 @@ $ hugo server -t hyde --buildDrafts
 今天先说到这里，再次声明下，[Jimmy Song's blog](http://rootsongjc.github.io)就是用👆的步骤建立的。
 
 Jimmy Song's blog的页面比较简陋，你可以在[这里](http://themes.gohugo.io)找到更多可爱的模版。另外我给自己翻译的书[Cloude Native Go](http://rootsongjc.github.io/talks/cloud-native-go/)做一个静态页面，[点此查看](http://rootsongjc.github.io/cloud-native-go/)，欢迎大家关注。🙏
+
+---
+
+以下 2017年8月31日更新
+
+如果你对GitHub的域名不满意，想要用自己的域名，那么申请域名的地方有很多，比如万网、GoDaddy、Namecheap，我的域名 [jimmysong.io](http://jimmysong.io) 就是在 Namecheap 上申请的，申请完域名后还需要做域名解析，我使用的是 DNSPod，免费的，然后在 GitHub 中配置下 CNAME 即可。
+
