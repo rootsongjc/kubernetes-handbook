@@ -215,8 +215,8 @@ kubelet 启动时向 kube-apiserver 发送 TLS bootstrapping 请求，需要先�
 然后 kubelet 才能有权限创建认证请求(certificate signing requests)：
 
 ``` bash
-$ cd /etc/kubernetes
-$ kubectl create clusterrolebinding kubelet-bootstrap \
+cd /etc/kubernetes
+kubectl create clusterrolebinding kubelet-bootstrap \
   --clusterrole=system:node-bootstrapper \
   --user=kubelet-bootstrap
 ```
@@ -226,11 +226,11 @@ $ kubectl create clusterrolebinding kubelet-bootstrap \
 ### 下载最新的 kubelet 和 kube-proxy 二进制文件
 
 ``` bash
-$ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
-$ tar -xzvf kubernetes-server-linux-amd64.tar.gz
-$ cd kubernetes
-$ tar -xzvf  kubernetes-src.tar.gz
-$ cp -r ./server/bin/{kube-proxy,kubelet} /usr/local/bin/
+wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
+tar -xzvf kubernetes-server-linux-amd64.tar.gz
+cd kubernetes
+tar -xzvf  kubernetes-src.tar.gz
+cp -r ./server/bin/{kube-proxy,kubelet} /usr/local/bin/
 ```
 
 ### 创建 kubelet 的service配置文件
@@ -306,10 +306,10 @@ KUBELET_ARGS="--cgroup-driver=systemd --cluster-dns=10.254.0.2 --experimental-bo
 ### 启动kublet
 
 ``` bash
-$ systemctl daemon-reload
-$ systemctl enable kubelet
-$ systemctl start kubelet
-$ systemctl status kubelet
+systemctl daemon-reload
+systemctl enable kubelet
+systemctl start kubelet
+systemctl status kubelet
 ```
 
 ### 通过 kublet 的 TLS 证书请求
@@ -399,10 +399,10 @@ KUBE_PROXY_ARGS="--bind-address=172.20.0.113 --hostname-override=172.20.0.113 --
 ### 启动 kube-proxy
 
 ``` bash
-$ systemctl daemon-reload
-$ systemctl enable kube-proxy
-$ systemctl start kube-proxy
-$ systemctl status kube-proxy
+systemctl daemon-reload
+systemctl enable kube-proxy
+systemctl start kube-proxy
+systemctl status kube-proxy
 ```
 ## 验证测试
 

@@ -25,7 +25,27 @@
 
 ## 架构设计
 
+关于 spark standalone 的局限性与 kubernetes native spark 架构之间的区别请参考 Anirudh Ramanathan 在 2016年10月8日提交的 issue [Support Spark natively in Kubernetes #34377](https://github.com/kubernetes/kubernetes/issues/34377)。
 
+简而言之，spark standalone on kubernetes 有如下几个缺点：
+
+- 无法对于多租户做隔离，每个用户都想给 pod 申请 node 节点可用的最大的资源。
+- Spark 的 master／worker 本来不是设计成使用 kubernetes 的资源调度，这样会存在两层的资源调度问题，不利于与 kuberentes 集成。
+
+而 kubernetes native spark 集群中，spark 可以调用 kubernetes API 获取集群资源和调度。要实现 kubernetes native spark 需要为 spark 提供一个集群外部的 manager 可以用来跟 kubernetes API 交互。
+
+## 安装指南
+
+我们可以直接使用官方已编译好的 docker 镜像来部署。
+
+| 组件                         | 镜像                                       |
+| -------------------------- | ---------------------------------------- |
+| Spark Driver Image         | `kubespark/spark-driver:v2.1.0-kubernetes-0.3.1` |
+| Spark Executor Image       | `kubespark/spark-executor:v2.1.0-kubernetes-0.3.1` |
+| Spark Initialization Image | `kubespark/spark-init:v2.1.0-kubernetes-0.3.1` |
+| Spark Staging Server Image | `kubespark/spark-resource-staging-server:v2.1.0-kubernetes-0.3.1` |
+| PySpark Driver Image       | `kubespark/driver-py:v2.1.0-kubernetes-0.3.1` |
+| PySpark Executor Image     | `kubespark/executor-py:v2.1.0-kubernetes-0.3.1` |
 
 ## 参考
 

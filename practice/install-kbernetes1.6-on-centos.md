@@ -56,19 +56,20 @@
 - [2 创建kubeconfig 文件](create-kubeconfig.md)
 - [3 创建高可用etcd集群](etcd-cluster-installation.md)
 - [4 安装kubectl命令行工具](kubectl-installation.md)
-- [5 部署高可用master集群](master-installation.md)
+- [5 部署master节点](master-installation.md)
 - [6 部署node节点](node-installation.md)
 - [7 安装kubedns插件](kubedns-addon-installation.md)
-- [8 安装dashboard插件](dashboard-addon-installation.md.md)
+- [8 安装dashboard插件](dashboard-addon-installation.md)
 - [9 安装heapster插件](heapster-addon-installation.md)
 - [10 安装EFK插件](efk-addon-installation.md)
 
 ## 提醒
 
 1. 由于启用了 TLS 双向认证、RBAC 授权等严格的安全机制，建议**从头开始部署**，而不要从中间开始，否则可能会认证、授权等失败！
-2. 本文档将**随着各组件的更新而更新**，有任何问题欢迎提 issue！
+2. 部署过程中需要有很多证书的操作，请大家耐心操作，不明白的操作可以参考本书中的其他章节的解释。
+3. 该部署操作仅是搭建成了一个可用 kubernetes 集群，而很多地方还需要进行优化，heapster 插件、EFK 插件不一定会用于真实的生产环境中，但是通过部署这些插件，可以让大家了解到如何部署应用到集群上。
 
 ## 关于
 
-[Jimmy Song](http://rootsongjc.github.io/about)
+[Jimmy Song](http://jimmysong.io/about)
 

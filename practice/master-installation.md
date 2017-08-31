@@ -33,12 +33,10 @@ admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem
 从 [github release 页面](https://github.com/kubernetes/kubernetes/releases) 下载发布版 tarball，解压后再执行下载脚本
 
 ``` shell
-$ wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
-$ tar -xzvf kubernetes.tar.gz
-...
-$ cd kubernetes
-$ ./cluster/get-kube-binaries.sh
-...
+wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
+tar -xzvf kubernetes.tar.gz
+cd kubernetes
+./cluster/get-kube-binaries.sh
 ```
 **方式二**
 
@@ -47,17 +45,16 @@ $ ./cluster/get-kube-binaries.sh
 `server` 的 tarball `kubernetes-server-linux-amd64.tar.gz` 已经包含了 `client`(`kubectl`) 二进制文件，所以不用单独下载`kubernetes-client-linux-amd64.tar.gz`文件；
 
 ``` shell
-$ # wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
-$ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
-$ tar -xzvf kubernetes-server-linux-amd64.tar.gz
-...
-$ cd kubernetes
-$ tar -xzvf  kubernetes-src.tar.gz
+# wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
+wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
+tar -xzvf kubernetes-server-linux-amd64.tar.gz
+cd kubernetes
+tar -xzvf  kubernetes-src.tar.gz
 ```
 将二进制文件拷贝到指定路径
 
 ``` bash
-$ cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,kube-proxy,kubelet} /usr/local/bin/
+cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,kube-proxy,kubelet} /usr/local/bin/
 ```
 
 ## 配置和启动 kube-apiserver
@@ -173,10 +170,10 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 **启动kube-apiserver**
 
 ``` bash
-$ systemctl daemon-reload
-$ systemctl enable kube-apiserver
-$ systemctl start kube-apiserver
-$ systemctl status kube-apiserver
+systemctl daemon-reload
+systemctl enable kube-apiserver
+systemctl start kube-apiserver
+systemctl status kube-apiserver
 ```
 
 ## 配置和启动 kube-controller-manager
@@ -238,9 +235,9 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
 ### 启动 kube-controller-manager
 
 ``` bash
-$ systemctl daemon-reload
-$ systemctl enable kube-controller-manager
-$ systemctl start kube-controller-manager
+systemctl daemon-reload
+systemctl enable kube-controller-manager
+systemctl start kube-controller-manager
 ```
 
 ## 配置和启动 kube-scheduler
@@ -288,9 +285,9 @@ KUBE_SCHEDULER_ARGS="--leader-elect=true --address=127.0.0.1"
 ### 启动 kube-scheduler
 
 ``` bash
-$ systemctl daemon-reload
-$ systemctl enable kube-scheduler
-$ systemctl start kube-scheduler
+systemctl daemon-reload
+systemctl enable kube-scheduler
+systemctl start kube-scheduler
 ```
 
 ## 验证 master 节点功能

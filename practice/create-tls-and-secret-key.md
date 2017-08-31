@@ -42,28 +42,28 @@
 **方式一：直接使用二进制源码包安装**
 
 ``` bash
-$ wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
-$ chmod +x cfssl_linux-amd64
-$ sudo mv cfssl_linux-amd64 /root/local/bin/cfssl
+wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+chmod +x cfssl_linux-amd64
+mv cfssl_linux-amd64 /root/local/bin/cfssl
 
-$ wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
-$ chmod +x cfssljson_linux-amd64
-$ sudo mv cfssljson_linux-amd64 /root/local/bin/cfssljson
+wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+chmod +x cfssljson_linux-amd64
+mv cfssljson_linux-amd64 /root/local/bin/cfssljson
 
-$ wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
-$ chmod +x cfssl-certinfo_linux-amd64
-$ sudo mv cfssl-certinfo_linux-amd64 /root/local/bin/cfssl-certinfo
+wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
+chmod +x cfssl-certinfo_linux-amd64
+mv cfssl-certinfo_linux-amd64 /root/local/bin/cfssl-certinfo
 
-$ export PATH=/root/local/bin:$PATH
+export PATH=/root/local/bin:$PATH
 ```
 
 **方式二：使用go命令安装**
 
 我们的系统中安装了Go1.7.5，使用以下命令安装更快捷：
 
-```
-$go get -u github.com/cloudflare/cfssl/cmd/...
-$echo $GOPATH
+```bash
+$ go get -u github.com/cloudflare/cfssl/cmd/...
+$ echo $GOPATH
 /usr/local
 $ls /usr/local/bin/cfssl*
 cfssl cfssl-bundle cfssl-certinfo cfssljson cfssl-newkey cfssl-scan
@@ -78,13 +78,13 @@ cfssl cfssl-bundle cfssl-certinfo cfssljson cfssl-newkey cfssl-scan
 **创建 CA 配置文件**
 
 ``` bash
-$ mkdir /root/ssl
-$ cd /root/ssl
-$ cfssl print-defaults config > config.json
-$ cfssl print-defaults csr > csr.json
+mkdir /root/ssl
+cd /root/ssl
+cfssl print-defaults config > config.json
+cfssl print-defaults csr > csr.json
 # 根据config.json文件的格式创建如下的ca-config.json文件
 # 过期时间设置成了 87600h
-$ cat ca-config.json
+cat > ca-config.json <<EOF
 {
   "signing": {
     "default": {
@@ -103,6 +103,7 @@ $ cat ca-config.json
     }
   }
 }
+EOF
 ```
 字段说明
 
@@ -113,8 +114,9 @@ $ cat ca-config.json
 
 **创建 CA 证书签名请求**
 
-``` bash
-$ cat ca-csr.json
+创建 `ca-csr.json`  文件，内容如下：
+
+``` json
 {
   "CN": "kubernetes",
   "key": {
@@ -146,10 +148,9 @@ ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
 
 ## 创建 kubernetes 证书
 
-创建 kubernetes 证书签名请求
+创建 kubernetes 证书签名请求文件 `kubernetes-csr.json`：
 
-``` bash
-$ cat kubernetes-csr.json
+``` json
 {
     "CN": "kubernetes",
     "hosts": [
@@ -194,15 +195,14 @@ kubernetes.csr  kubernetes-csr.json  kubernetes-key.pem  kubernetes.pem
 或者直接在命令行上指定相关参数：
 
 ``` bash
-$ echo '{"CN":"kubernetes","hosts":[""],"key":{"algo":"rsa","size":2048}}' | cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes -hostname="127.0.0.1,172.20.0.112,172.20.0.113,172.20.0.114,172.20.0.115,kubernetes,kubernetes.default" - | cfssljson -bare kubernetes
+echo '{"CN":"kubernetes","hosts":[""],"key":{"algo":"rsa","size":2048}}' | cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes -hostname="127.0.0.1,172.20.0.112,172.20.0.113,172.20.0.114,172.20.0.115,kubernetes,kubernetes.default" - | cfssljson -bare kubernetes
 ```
 
 ## 创建 admin 证书
 
-创建 admin 证书签名请求
+创建 admin 证书签名请求文件 `admin-csr.json`：
 
-``` bash
-$ cat admin-csr.json
+``` json
 {
   "CN": "admin",
   "hosts": [],
@@ -236,10 +236,9 @@ admin.csr  admin-csr.json  admin-key.pem  admin.pem
 
 ## 创建 kube-proxy 证书
 
-创建 kube-proxy 证书签名请求
+创建 kube-proxy 证书签名请求文件 `kube-proxy-csr.json`：
 
-``` bash
-$ cat kube-proxy-csr.json
+``` json
 {
   "CN": "system:kube-proxy",
   "hosts": [],
@@ -368,8 +367,8 @@ $ cfssl-certinfo -cert kubernetes.pem
 将生成的证书和秘钥文件（后缀名为`.pem`）拷贝到所有机器的 `/etc/kubernetes/ssl` 目录下备用；
 
 ``` bash
-$ sudo mkdir -p /etc/kubernetes/ssl
-$ sudo cp *.pem /etc/kubernetes/ssl
+mkdir -p /etc/kubernetes/ssl
+cp *.pem /etc/kubernetes/ssl
 ```
 
 ## 参考

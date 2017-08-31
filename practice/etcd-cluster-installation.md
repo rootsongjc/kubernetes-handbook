@@ -11,7 +11,7 @@ kuberntes 系统使用 etcd 存储所有数据，本文档介绍部署一个三�
 需要为 etcd 集群创建加密通信的 TLS 证书，这里复用以前创建的 kubernetes 证书
 
 ``` bash
-$ cp ca.pem kubernetes-key.pem kubernetes.pem /etc/kubernetes/ssl
+cp ca.pem kubernetes-key.pem kubernetes.pem /etc/kubernetes/ssl
 ```
 
 + kubernetes 证书的 `hosts` 字段列表中包含上面三台机器的 IP，否则后续证书校验会失败；
@@ -21,9 +21,9 @@ $ cp ca.pem kubernetes-key.pem kubernetes.pem /etc/kubernetes/ssl
 到 `https://github.com/coreos/etcd/releases` 页面下载最新版本的二进制文件
 
 ``` bash
-$ https://github.com/coreos/etcd/releases/download/v3.1.5/etcd-v3.1.5-linux-amd64.tar.gz
-$ tar -xvf etcd-v3.1.5-linux-amd64.tar.gz
-$ sudo mv etcd-v3.1.5-linux-amd64/etcd* /usr/local/bin
+wget https://github.com/coreos/etcd/releases/download/v3.1.5/etcd-v3.1.5-linux-amd64.tar.gz
+tar -xvf etcd-v3.1.5-linux-amd64.tar.gz
+mv etcd-v3.1.5-linux-amd64/etcd* /usr/local/bin
 ```
 
 ## 创建 etcd 的 systemd unit 文件
@@ -93,11 +93,11 @@ ETCD_ADVERTISE_CLIENT_URLS="https://172.20.0.113:2379"
 ## 启动 etcd 服务
 
 ``` bash
-$ sudo mv etcd.service /etc/systemd/system/
-$ sudo systemctl daemon-reload
-$ sudo systemctl enable etcd
-$ sudo systemctl start etcd
-$ systemctl status etcd
+mv etcd.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable etcd
+systemctl start etcd
+stemctl status etcd
 ```
 
 在所有的 kubernetes master 节点重复上面的步骤，直到所有机器的 etcd 服务都已启动。
