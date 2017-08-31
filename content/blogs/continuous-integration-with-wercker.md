@@ -70,7 +70,7 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 这一步是可选的，如果你希望在本地进行wercker构建的话才需要在本地安装命令行程序。本地构建和云端构建都依赖于Docker的使用。基本上，代码会被置于所选择的docker镜像中（在wercker.yml中定义），然后再选择执行的内容和方法。
 
-要在本地运行Wercker构建，需要使用Wercker CLI。有关如何安装和测试CLI的内容，请查看http://devcenter.wercker.com/docs/cli。Wercker更新文档的频率要比本书更高，所以请在本书中做个标记，然后根据Wercker网站的文档安装Wercker CLI。
+要在本地运行Wercker构建，需要使用Wercker CLI。有关如何安装和测试CLI的内容，请查看 http://devcenter.wercker.com/docs/cli 。Wercker更新文档的频率要比本书更高，所以请在本书中做个标记，然后根据Wercker网站的文档安装Wercker CLI。
 
 如果已经正确安装了CLI，应该可以查询到CLI的版本，代码如下所示。
 
