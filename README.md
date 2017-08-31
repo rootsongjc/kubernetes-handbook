@@ -1,5 +1,3 @@
-[![wercker status](https://app.wercker.com/status/b8b69e593784e17ddcfd1286adfd8f3c/s/master "wercker status")](https://app.wercker.com/project/byKey/b8b69e593784e17ddcfd1286adfd8f3c)
-
 # Kubernetes Handbook
 
 [Kubernetes](http://kubernetes.io) 是 Google 基于 [Borg](https://research.google.com/pubs/pub43438.html) 开源的容器编排调度引擎，作为 [CNCF](http://cncf.io)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，它将自动得将系统达到和维持在这个状态。
@@ -18,17 +16,21 @@ Gitbook 在线浏览：http://jimmysong.io/kubernetes-handbook/
 
 **在线浏览**
 
-访问 [gitbook](http://jimmysong.io/kubernetes-handbook/)
+访问 http://jimmysong.io/kubernetes-handbook/
 
-**注意**：<u>文中涉及的配置文件和代码链接在 gitbook 中会无法打开，请下载 github 源码后，在 MarkDown 编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](www.typorai.o)</u>。
+**注意：文中涉及的配置文件和代码链接在网页中将无法访问，请下载 github 源码后，在 Markdown 编辑器中打开，点击链接将跳转到你的本地目录，推荐使用 [typora](www.typorai.o)，或者直接登录 [github](https://github.com/rootsongjc/kubernetes-handbook) 查看。**
 
 **本地查看**
 
 1. 将代码克隆到本地
 2. 安装 gitbook：[Setup and Installation of GitBook](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md)
 3. 执行 gitbook serve
-4. 在浏览器中访问http://localhost:4000
+4. 在浏览器中访问 http://localhost:4000
 5. 生成的文档在 `_book` 目录下
+
+**下载 PDF/ePub/Mobi 格式文档本地查看**
+
+访问 [gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details) 可以看到下载地址，可以下载根据最新文档生成的 **PDF/ePub/Mobi** 格式文档（文档的注脚中注明了更新时间），同时也可以直接在 gitbook 中阅读，不过 gitbook 不太稳定打开速度较慢，建议大家直接在 http://jimmysong.io/kubernetes-handbook/ 浏览。
 
 **生成 pdf**
 
