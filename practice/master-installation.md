@@ -165,7 +165,7 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 + `--service-cluster-ip-range` 指定 Service Cluster IP 地址段，该地址段不能路由可达；
 + 缺省情况下 kubernetes 对象保存在 etcd `/registry` 路径下，可以通过 `--etcd-prefix` 参数进行调整；
 
-完整 unit 见 [kube-apiserver.service](./systemd/kube-apiserver.service)
+完整 unit 见 [kube-apiserver.service](../systemd/kube-apiserver.service)
 
 **启动kube-apiserver**
 
@@ -230,7 +230,7 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
 
     如果有组件report unhealthy请参考：https://github.com/kubernetes-incubator/bootkube/issues/64
 
-完整 unit 见 [kube-controller-manager.service](./systemd/kube-controller-manager.service)
+完整 unit 见 [kube-controller-manager.service](../systemd/kube-controller-manager.service)
 
 ### 启动 kube-controller-manager
 
@@ -280,7 +280,7 @@ KUBE_SCHEDULER_ARGS="--leader-elect=true --address=127.0.0.1"
 
 + `--address` 值必须为 `127.0.0.1`，因为当前 kube-apiserver 期望 scheduler 和 controller-manager 在同一台机器；
 
-完整 unit 见 [kube-scheduler.service](./systemd/kube-scheduler.service)
+完整 unit 见 [kube-scheduler.service](../systemd/kube-scheduler.service)
 
 ### 启动 kube-scheduler
 
