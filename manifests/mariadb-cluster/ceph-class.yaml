@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+   name: ceph-web
+provisioner: kubernetes.io/rbd
+parameters:
+  monitors: 172.28.7.98,172.28.7.99,172.28.7.100
+  adminId: admin
+  adminSecretName: ceph-secret
+  adminSecretNamespace: galera
+  pool: rbd #此处默认是rbd池，生产上建议自己创建存储池隔离
+  userId: admin
+  userSecretName: ceph-secret
