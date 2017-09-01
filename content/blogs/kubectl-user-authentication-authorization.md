@@ -39,9 +39,8 @@ Tags: ["kubernetes"]
 
 执行该命令前请先确保该目录下已经包含如下文件：
 
-```
+```bash
 ca-key.pem  ca.pem ca-config.json  devuser-csr.json
-
 ```
 
 ```bash
@@ -59,9 +58,8 @@ specifically, section 10.2.3 ("Information Requirements").
 
 这将生成如下文件：
 
-```
+```bash
 devuser.csr  devuser-key.pem  devuser.pem
-
 ```
 
 ## 创建 kubeconfig 文件
@@ -104,7 +102,7 @@ CURRENT   NAME              CLUSTER           AUTHINFO        NAMESPACE
 
 显示的用户仍然是 admin，这是因为 kubectl 使用了 `$HOME/.kube/config` 文件作为了默认的 context 配置，我们只需要将其用刚生成的 `devuser.kubeconfig` 文件替换即可。
 
-```
+```bash
 cp -f ./devuser.kubeconfig /root/.kube/config
 ```
 
