@@ -71,7 +71,7 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
     text-shadow: none;
-    background: hsla(0, 0%, 93%, 0.15);
+    background: hsla(115, 47%, 61%);
     /* #EDEDED */
 }
 
@@ -117,7 +117,7 @@ code[class*="language-"] ::selection {
 .token.constant,
 .token.symbol,
 .token.builtin {
-    color: hsl(53, 89%, 79%);
+    color: hsl(104, 50%, 32%);
     /* #F9EE98 */
 }
 
@@ -132,7 +132,7 @@ code[class*="language-"] ::selection {
 .style .token.string,
 .token.variable,
 .token.inserted {
-    color: hsl(76, 21%, 52%);
+    color: hsl(35, 48%, 42%);
     /* #8F9D6A */
 }
 
