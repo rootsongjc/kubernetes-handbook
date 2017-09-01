@@ -13,7 +13,7 @@ Tags: ["kubernetes"]
 
 **创建 devuser-csr.json 文件**
 
-```
+```json
 {
   "CN": "devuser",
   "hosts": [],
@@ -31,7 +31,6 @@ Tags: ["kubernetes"]
     }
   ]
 }
-
 ```
 
 **生成 CA 证书和私钥**
@@ -45,7 +44,7 @@ ca-key.pem  ca.pem ca-config.json  devuser-csr.json
 
 ```
 
-```
+```bash
 $ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes devuser-csr.json | cfssljson -bare devuser
 2017/08/31 13:31:54 [INFO] generate received request
 2017/08/31 13:31:54 [INFO] received CSR
@@ -56,7 +55,6 @@ $ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=ku
 websites. For more information see the Baseline Requirements for the Issuance and Management
 of Publicly-Trusted Certificates, v.1.1.6, from the CA/Browser Forum (https://cabforum.org);
 specifically, section 10.2.3 ("Information Requirements").
-
 ```
 
 这将生成如下文件：
@@ -68,7 +66,7 @@ devuser.csr  devuser-key.pem  devuser.pem
 
 ## 创建 kubeconfig 文件
 
-```
+```bash
 # 设置集群参数
 export KUBE_APISERVER="https://172.20.0.113:6443"
 kubectl config set-cluster kubernetes \
@@ -93,24 +91,21 @@ kubectl config set-context kubernetes \
 
 # 设置默认上下文
 kubectl config use-context kubernetes --kubeconfig=devuser.kubeconfig
-
 ```
 
 我们现在查看 kubectl 的 context：
 
-```
+```bash
 kubectl config get-contexts
 CURRENT   NAME              CLUSTER           AUTHINFO        NAMESPACE
 *         kubernetes        kubernetes        admin
           default-context   default-cluster   default-admin
-
 ```
 
 显示的用户仍然是 admin，这是因为 kubectl 使用了 `$HOME/.kube/config` 文件作为了默认的 context 配置，我们只需要将其用刚生成的 `devuser.kubeconfig` 文件替换即可。
 
 ```
 cp -f ./devuser.kubeconfig /root/.kube/config
-
 ```
 
 关于 kubeconfig 文件的更多信息请参考 [使用 kubeconfig 文件配置跨集群认证](http://jimmysong.io/kubernetes-handbook/guide/authenticate-across-clusters-kubeconfig.html)。
@@ -119,17 +114,16 @@ cp -f ./devuser.kubeconfig /root/.kube/config
 
 如果我们想限制 devuser 用户的行为，需要使用 RBAC 将该用户的行为限制在某个或某几个 namespace 空间范围内，例如：
 
-```
+```bash
 kubectl create rolebinding devuser-admin-binding --clusterrole=admin --user=devuser --namespace=dev
 kubectl create rolebinding devuser-admin-binding --clusterrole=admin --user=devuser --namespace=test
-
 ```
 
 这样 devuser 用户对 dev 和 test 两个 namespace 具有完全访问权限。
 
 让我们来验证以下，现在我们在执行：
 
-```
+```bash
 # 获取当前的 context
 kubectl config get-contexts
 CURRENT   NAME         CLUSTER      AUTHINFO   NAMESPACE
