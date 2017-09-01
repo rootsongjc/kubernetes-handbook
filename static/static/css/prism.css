@@ -71,7 +71,7 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
     text-shadow: none;
-    background: hsla(115, 47%, 61%);
+    background: hsl(115, 47%, 61%);
     /* #EDEDED */
 }
 
