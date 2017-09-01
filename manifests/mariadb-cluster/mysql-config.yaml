@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config-vol
+  namespace: galera
+  labels:
+    app: mysql
+data:
+  mariadb.cnf: |
+    [client]
+    default-character-set = utf8
+    [mysqld]
+    character-set-server  = utf8
+    collation-server      = utf8_general_ci
+    # InnoDB optimizations
+    innodb_log_file_size  = 64M
+  galera.cnf: |
+    [galera]
+    user = mysql
+    bind-address = 0.0.0.0
+    # Optimizations
+    innodb_flush_log_at_trx_commit = 0
+    sync_binlog = 0
+    expire_logs_days = 7
+    # Required settings
+    default_storage_engine = InnoDB
+    binlog_format = ROW
+    innodb_autoinc_lock_mode = 2
+    query_cache_size = 0
+    query_cache_type = 0
+    # MariaDB Galera settings
+    #wsrep_debug=ON
+    wsrep_on=ON
+    wsrep_provider=/usr/lib/galera/libgalera_smm.so
+    wsrep_sst_method=rsync
+    # Cluster settings (automatically updated)
+    wsrep_cluster_address=gcomm://
+    wsrep_cluster_name=galera
+    wsrep_node_address=127.0.0.1

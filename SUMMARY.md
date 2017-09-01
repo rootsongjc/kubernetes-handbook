@@ -71,6 +71,8 @@
      - [4.4.1 GlusterFS](practice/glusterfs.md)
         - [4.4.1.1 使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
         - [4.4.1.2 在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
+     - [4.4.2 CephFS](practice/cephfs.md)
+        - [4.4.2.1 使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
 - [5. 领域应用](usecases/index.md)
   - [5.1 微服务架构](usecases/microservices.md)
     - [5.1.1 Istio](usecases/istio.md)
