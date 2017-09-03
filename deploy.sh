@@ -10,12 +10,15 @@ git add -A
 git commit -m "$msg"
 git push origin master
 
-
 # Build the project. 
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
 
 # Go To Public folder
 cd public
+
+# Add media
+cp -r /media/* media/
+
 # Add changes to git.
 git add -A
 
