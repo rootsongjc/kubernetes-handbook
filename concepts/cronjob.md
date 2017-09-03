@@ -1,6 +1,6 @@
 # CronJob
 
-*Cron Job* 管理基于时间的 [Job](https://k8smeetup.github.io/docs/concepts/jobs/run-to-completion-finite-workloads/)，即：
+*Cron Job* 管理基于时间的 [Job](https://kubernetes.io/docs/concepts/jobs/run-to-completion-finite-workloads/)，即：
 
 - 在给定时间点只运行一次
 - 周期性地在给定时间点运行
@@ -9,7 +9,7 @@
 
 ### 前提条件
 
-当使用的 Kubernetes 集群，版本 >= 1.4（对 ScheduledJob），>= 1.5（对 CronJob），当启动 API Server（参考 [为集群开启或关闭 API 版本](https://k8smeetup.github.io/docs/admin/cluster-management/#turn-on-or-off-an-api-version-for-your-cluster) 获取更多信息）时，通过传递选项 `--runtime-config=batch/v2alpha1=true` 可以开启 batch/v2alpha1 API。
+当使用的 Kubernetes 集群，版本 >= 1.4（对 ScheduledJob），>= 1.5（对 CronJob），当启动 API Server（参考 [为集群开启或关闭 API 版本](https://kubernetes.io/docs/admin/cluster-management/#turn-on-or-off-an-api-version-for-your-cluster) 获取更多信息）时，通过传递选项 `--runtime-config=batch/v2alpha1=true` 可以开启 batch/v2alpha1 API。
 
 典型的用法如下所示：
 
