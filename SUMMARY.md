@@ -25,6 +25,7 @@
     - [2.2.16 Horizontal Pod Autoscaling](concepts/horizontal-pod-autoscaling.md)
     - [2.2.17 Label](concepts/label.md)
     - [2.2.18 垃圾收集](concepts/garbage-collection.md)
+    - [2.2.19 Network Policy](concepts/network-policy.md)
 - [3. 用户指南](guide/index.md)
   - [3.1 资源配置](guide/resource-configuration.md)
     - [3.1.1 配置Pod的liveness和readiness探针](guide/configure-liveness-readiness-probes.md)
