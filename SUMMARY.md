@@ -3,7 +3,7 @@
 - [1. 前言](README.md)
 - [2. 概念原理](concepts/index.md)
   - [2.1 设计理念](concepts/concepts.md)
-  - [2.2 主要概念](concepts/objects.md)
+  - [2.2 Objects](concepts/objects.md)
     - [2.2.1 Pod](concepts/pod-overview.md)
       - [2.2.1.1 Pod解析](concepts/pod.md)
       - [2.2.1.2 Init容器](concepts/init-containers.md)
