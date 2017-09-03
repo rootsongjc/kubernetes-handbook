@@ -5,3 +5,5 @@
 - [Special Interest Groups](https://github.com/kubernetes/community)
 - [Feature Tracking and Backlog](https://github.com/kubernetes/features)
 - [Community Expectations](https://github.com/kubernetes/community/blob/master/contributors/devel/community-expectations.md)
+- [Kubernetes 官方文档汉化项目](https://github.com/k8smeetup/kubernetes.github.io)
+
