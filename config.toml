@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Jimmy Song's Blog"
-baseurl = "http://jimmysong.io/"
+baseurl = "https://jimmysong.io/"
 disqusShortname = "rootsongjc"
 hasCJKLanguage = true
 pygmentsuseclasses = false
