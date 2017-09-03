@@ -84,3 +84,6 @@ spec:
   ingress:
   - {}
 ```
+原文地址：https://k8smeetup.github.io/docs/concepts/services-networking/network-policies/
+
+译者：[shirdrn](https://github.com/shirdrn)
