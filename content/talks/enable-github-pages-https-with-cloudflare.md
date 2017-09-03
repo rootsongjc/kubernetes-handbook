@@ -7,7 +7,7 @@ Tags: ["github-pages"]
 
 实在受不了无耻的运营商劫持，如下图：
 
-![运营商劫持](http://olz1di9xf.bkt.clouddn.com/operator-dns-hijacking-ad-2.png)
+![运营商劫持](../../static/img/operator-dns-hijacking-ad.png)
 
 总是在我的网站页面上植入广告，尤其是在微信中打开我的网站链接然后选择在浏览器中打开的时候，最近总是植入广告，迫不得已我要开启https。
 
@@ -31,5 +31,7 @@ Tags: ["github-pages"]
 
 - 需要在网站代码中名为指定 css 和 js 文件的路径要包含域名，使用相对路径的话仍然会以 http 的形式加载，将导致网站无法加载样式；
 - 第一次使用 https://jimmysong.io 访问的时候可能会提示证书问题，一旦选择信任后在后续访问的过程中就不会再提示。
+- 因为图片保存在七牛云中，没有使用证书，访问包括图片的网址后会自动变回 http，考虑今后将图片直接放到 GitHub 中存储。
 
 暂且这样，以后再继续优化！⛽️
+
