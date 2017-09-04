@@ -4,7 +4,7 @@ title = "About Jimmy Song"
 
 +++
 
-![myself](http://olz1di9xf.bkt.clouddn.com/jimmy.jpg)
+![Jimmy Song](/media/jimmy.jpg)
 
 # About me
 
@@ -34,6 +34,6 @@ title = "About Jimmy Song"
 - 知乎专栏——云原生应用架构：https://zhuanlan.zhihu.com/cloud-native
 - 微信公众号——云原生应用架构(CloudNativeGo)
 
-![微信公众号-云原生应用架构](http://olz1di9xf.bkt.clouddn.com/cloud-native-wechat-public-account.jpg)
+![微信公众号-云原生应用架构](/media/cloud-native-wechat-public-account.jpg)
 
-![wechat_qrcode](http://olz1di9xf.bkt.clouddn.com/wechat-qrcode-20170627.jpg)
+![wechat_qrcode](/media/wechat-qrcode-20170627.jpg)
