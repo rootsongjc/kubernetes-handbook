@@ -8,27 +8,20 @@
 
 ## 使用 kubernetes 集群外部的 Ceph 存储
 
-在部署 kubernetes 之前我们就已经有了 Ceph 集群，因此我们可以直接拿来用。但是 kubernetes 的所有 node 节点上依然需要安装 ceph 客户端。
+在部署 kubernetes 之前我们就已经有了 Ceph 集群，因此我们可以直接拿来用。但是 kubernetes 的所有节点（尤其是 master 节点）上依然需要安装 ceph 客户端。
 
-```
+```bash
 yum install -y ceph-common
 ```
 
-如果没有安装 `ceph-common` 的话，kubernetes 在创建 PVC 的时候会有如下报错信息：
+还需要将 ceph 的配置文件 `ceph.conf` 放在所有节点的 `/etc/ceph` 目录下。
 
-```
-Events:
-  FirstSeen	LastSeen	Count	From				SubObjectPath	Type		Reason			Message
-  ---------	--------	-----	----				-------------	--------	------			-------
-  1h		12s		441	{persistentvolume-controller }			Warning		ProvisioningFailed	Failed to provision volume with StorageClass "ceph-web": failed to create rbd image: executable file not found in $PATH, command output:
-```
-
-Kubenetes 使用 ceph 存储需要用到如下配置：
+Kubernetes 使用 ceph 存储需要用到如下配置：
 
 - Monitors: Ceph montors 列表
 - Path：作为挂载的根路径，默认是 /
 - User：RADOS用户名，默认是 admin
-- secretFile：keyring 文件路径，默认是 /etc/ceph/user.secret，我们 Ceph 集群提供的文件是 ceph.client.admin.keyring，将在下面用到
+- secretFile：keyring 文件路径，默认是 /etc/ceph/user.secret，我们 Ceph 集群提供的文件是 `ceph.client.admin.keyring`，将在下面用到
 - secretRef：Ceph 认证 secret 的引用，如果配置了将会覆盖 secretFile。
 - readOnly：该文件系统是否只读。
 
@@ -330,7 +323,80 @@ kubectl create -f .
 
 ## 验证
 
+存在 issue，参考 [Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)
 
+## 问题记录
+
+如果没有安装 `ceph-common` 的话，kubernetes 在创建 PVC 的时候会有如下报错信息：
+
+```bash
+Events:
+  FirstSeen	LastSeen	Count	From				SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----				-------------	--------	------			-------
+  1h		12s		441	{persistentvolume-controller }			Warning		ProvisioningFailed	Failed to provision volume with StorageClass "ceph-web": failed to create rbd image: executable file not found in $PATH, command output:
+```
+
+检查 `kube-controller-manager` 的日志将看到如下错误信息：
+
+```bash
+journalctl -xe -u kube-controller-manager
+... rbd_util.go:364] failed to create rbd image, output
+... rbd.go:317] rbd: create volume failed, err: failed to create rbd image: executable file not found in $PATH, command output:
+```
+
+这是因为 `kube-controller-manager` 主机上没有安装 `ceph-common` 的缘故。
+
+但是安装了 `ceph-common` 之后依然有问题：
+
+```bash
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032128   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032201   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032252   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: E0904 15:25:36.032276   13211 rbd.go:317] rbd: create volume failed, err: failed to create rbd image: fork/exec /usr/bin/rbd: invalid argument, command output:
+```
+
+该问题尚未解决，参考 [Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)
+
+从日志记录来看追查到  `pkg/volume/rbd/rbd.go` 的 `func (r *rbdVolumeProvisioner) Provision() (*v1.PersistentVolume, error) {` 方法对 `ceph-class.yaml` 中的参数进行了验证和处理后调用了 `pkg/volume/rbd/rdb_utils.go` 文件第 344 行 `CreateImage` 方法（kubernetes v1.6.1版本）：
+
+```go
+func (util *RBDUtil) CreateImage(p *rbdVolumeProvisioner) (r *v1.RBDVolumeSource, size int, err error) {
+	var output []byte
+	capacity := p.options.PVC.Spec.Resources.Requests[v1.ResourceName(v1.ResourceStorage)]
+	volSizeBytes := capacity.Value()
+	// convert to MB that rbd defaults on
+	sz := int(volume.RoundUpSize(volSizeBytes, 1024*1024))
+	volSz := fmt.Sprintf("%d", sz)
+	// rbd create
+	l := len(p.rbdMounter.Mon)
+	// pick a mon randomly
+	start := rand.Int() % l
+	// iterate all monitors until create succeeds.
+	for i := start; i < start+l; i++ {
+		mon := p.Mon[i%l]
+		glog.V(4).Infof("rbd: create %s size %s using mon %s, pool %s id %s key %s", p.rbdMounter.Image, volSz, mon, p.rbdMounter.Pool, p.rbdMounter.adminId, p.rbdMounter.adminSecret)
+		output, err = p.rbdMounter.plugin.execCommand("rbd",
+			[]string{"create", p.rbdMounter.Image, "--size", volSz, "--pool", p.rbdMounter.Pool, "--id", p.rbdMounter.adminId, "-m", mon, "--key=" + p.rbdMounter.adminSecret, "--image-format", "1"})
+		if err == nil {
+			break
+		} else {
+			glog.Warningf("failed to create rbd image, output %v", string(output))
+		}
+	}
+
+	if err != nil {
+		return nil, 0, fmt.Errorf("failed to create rbd image: %v, command output: %s", err, string(output))
+	}
+
+	return &v1.RBDVolumeSource{
+		CephMonitors: p.rbdMounter.Mon,
+		RBDImage:     p.rbdMounter.Image,
+		RBDPool:      p.rbdMounter.Pool,
+	}, sz, nil
+}
+```
+
+该方法调用失败。
 
 
 ## 参考
@@ -342,3 +408,5 @@ https://github.com/kubernetes/examples/blob/master/staging/volumes/cephfs/README
 [Kubernetes persistent storage with Ceph](https://crondev.com/kubernetes-persistent-storage-ceph/)
 
 https://kubernetes.io/docs/concepts/storage/persistent-volumes/#ceph-rbd
+
+[Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)
