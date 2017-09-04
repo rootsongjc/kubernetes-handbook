@@ -7,7 +7,7 @@ Tags: ["github-pages"]
 
 实在受不了无耻的运营商劫持，如下图：
 
-![运营商劫持](/media/operator-dns-hijacking-ad.png)
+![运营商劫持](/media/operator-dns-hijacking-ad.jpg)
 
 总是在我的网站页面上植入广告，尤其是在微信中打开我的网站链接然后选择在浏览器中打开的时候，最近总是植入广告，迫不得已我要开启https。
 
