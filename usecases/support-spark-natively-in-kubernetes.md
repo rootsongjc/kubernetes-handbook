@@ -1,6 +1,8 @@
 # 运行支持kubernetes原生调度的Spark程序
 
-我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 
+我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](spark-standalone-on-kubernetes.md)。
+
+目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，
 
 ## Spark 概念说明
 
@@ -46,6 +48,113 @@
 | Spark Staging Server Image | `kubespark/spark-resource-staging-server:v2.1.0-kubernetes-0.3.1` |
 | PySpark Driver Image       | `kubespark/driver-py:v2.1.0-kubernetes-0.3.1` |
 | PySpark Executor Image     | `kubespark/executor-py:v2.1.0-kubernetes-0.3.1` |
+
+我将这些镜像放到了我的私有镜像仓库中了。
+
+还需要安装支持 kubernetes 的 spark 客户端，在这里下载：https://github.com/apache-spark-on-k8s/spark/releases
+
+根据使用的镜像版本，我下载的是 [v2.1.0-kubernetes-0.3.1](https://github.com/apache-spark-on-k8s/spark/releases/tag/v2.1.0-kubernetes-0.3.1) 
+
+**运行 SparkPi 测试**
+
+```bash
+./bin/spark-submit \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.SparkPi \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-executor:v2.1.0-kubernetes-0.3.1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-init:v2.1.0-kubernetes-0.3.1 \
+local:///opt/spark/examples/jars/spark-examples_2.11-2.1.0-k8s-0.3.1-SNAPSHOT.jar
+```
+
+关于该命令参数的介绍请参考：https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html
+
+**注意：** 该 jar 包实际上是
+
+运行失败，报错信息：
+
+```Ini
+2017-09-05 14:45:52 INFO  Client:54 - Waiting for application spark-pi to finish...
+2017-09-05 14:45:52 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1504593950039-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-81cd1d33adbd4f728f7c609356b54c43, spark-role -> driver
+	 pod uid: dbf66ecf-9205-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-05T06:45:52Z
+	 service account name: default
+	 volumes: default-token-klxp8
+	 node name: N/A
+	 start time: N/A
+	 container images: N/A
+	 phase: Pending
+	 status: []
+2017-09-05 14:45:52 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1504593950039-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-81cd1d33adbd4f728f7c609356b54c43, spark-role -> driver
+	 pod uid: dbf66ecf-9205-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-05T06:45:52Z
+	 service account name: default
+	 volumes: default-token-klxp8
+	 node name: 172.20.0.115
+	 start time: N/A
+	 container images: N/A
+	 phase: Pending
+	 status: []
+2017-09-05 14:45:52 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1504593950039-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-81cd1d33adbd4f728f7c609356b54c43, spark-role -> driver
+	 pod uid: dbf66ecf-9205-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-05T06:45:52Z
+	 service account name: default
+	 volumes: default-token-klxp8
+	 node name: 172.20.0.115
+	 start time: 2017-09-05T06:45:52Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1
+	 phase: Pending
+	 status: [ContainerStatus(containerID=null, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1, imageID=, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=null, waiting=ContainerStateWaiting(message=null, reason=ContainerCreating, additionalProperties={}), additionalProperties={}), additionalProperties={})]
+2017-09-05 14:45:53 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1504593950039-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-81cd1d33adbd4f728f7c609356b54c43, spark-role -> driver
+	 pod uid: dbf66ecf-9205-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-05T06:45:52Z
+	 service account name: default
+	 volumes: default-token-klxp8
+	 node name: 172.20.0.115
+	 start time: 2017-09-05T06:45:52Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1
+	 phase: Running
+	 status: [ContainerStatus(containerID=docker://53de39eb83435a344ef780aae83139229d4d6d78fa4e1655f9f81da95d89f439, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver@sha256:19c3b76a34fee02104de0d859a60d79608ebd0b7ebae33ec3b86a71af777c833, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=true, restartCount=0, state=ContainerState(running=ContainerStateRunning(startedAt=2017-09-05T06:45:53Z, additionalProperties={}), terminated=null, waiting=null, additionalProperties={}), additionalProperties={})]
+2017-09-05 14:45:56 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1504593950039-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-81cd1d33adbd4f728f7c609356b54c43, spark-role -> driver
+	 pod uid: dbf66ecf-9205-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-05T06:45:52Z
+	 service account name: default
+	 volumes: default-token-klxp8
+	 node name: 172.20.0.115
+	 start time: 2017-09-05T06:45:52Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1
+	 phase: Failed
+	 status: [ContainerStatus(containerID=docker://53de39eb83435a344ef780aae83139229d4d6d78fa4e1655f9f81da95d89f439, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver@sha256:19c3b76a34fee02104de0d859a60d79608ebd0b7ebae33ec3b86a71af777c833, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=ContainerStateTerminated(containerID=docker://53de39eb83435a344ef780aae83139229d4d6d78fa4e1655f9f81da95d89f439, exitCode=1, finishedAt=2017-09-05T06:45:55Z, message=null, reason=Error, signal=null, startedAt=null, additionalProperties={}), waiting=null, additionalProperties={}), additionalProperties={})]
+2017-09-05 14:45:56 INFO  LoggingPodStatusWatcherImpl:54 - Container final statuses:
+
+
+	 Container name: spark-kubernetes-driver
+	 Container image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1
+	 Container state: Terminated
+	 Exit code: 1
+2017-09-05 14:45:56 INFO  Client:54 - Application spark-pi finished.
+```
+
+提了个 issue [Failed to run the sample spark-pi test using spark-submit on the doc #478](https://github.com/apache-spark-on-k8s/spark/issues/478) 
 
 ## 参考
 
