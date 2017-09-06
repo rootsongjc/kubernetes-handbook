@@ -81,7 +81,29 @@ options ndots:5
 
 修改 `/etc/kubernetes/kubelet` 文件中的  `––cluster-domain=cluster.local.`  将 local 后面的点去掉后重启所有的 kubelet，这样新创建的 pod 中的 `/etc/resolv.conf`文件的 DNS 配置和解析就正常了。
 
-**参考**
+## 8. kubernetes 集成 ceph 存储 rbd 命令组装问题
+
+kubernetes 使用 ceph 创建 PVC 的时候会有如下报错信息：
+
+```bash
+Events:
+  FirstSeen	LastSeen	Count	From				SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----				-------------	--------	------			-------
+  1h		12s		441	{persistentvolume-controller }			Warning		ProvisioningFailed	Failed to provision volume with StorageClass "ceph-web": failed to create rbd image: executable file not found in $PATH, command output:
+```
+
+检查 `kube-controller-manager` 的日志将看到如下错误信息：
+
+```
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032128   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032201   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: W0904 15:25:36.032252   13211 rbd_util.go:364] failed to create rbd image, output
+Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: E0904 15:25:36.032276   13211 rbd.go:317] rbd: create volume failed, err: failed to create rbd image: fork/exec /usr/bin/rbd: invalid argument, command output:
+```
+
+该问题尚未解决，参考 [Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)
+
+## 参考
 
 [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
