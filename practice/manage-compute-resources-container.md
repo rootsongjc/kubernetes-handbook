@@ -227,7 +227,7 @@ Host: k8s-master:8080
 ]
 ```
 
-```shell
+```shell{% raw %}
 curl --header "Content-Type: application/json-patch+json" \
 --request PATCH \
 --data '[{"op": "add", "path": "/status/capacity/pod.alpha.kubernetes.io~1opaque-int-resource-foo", "value": "5"}]' \
