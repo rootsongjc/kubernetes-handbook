@@ -101,3 +101,162 @@ Pod 的资源使用情况被报告为 Pod 状态的一部分。
 
 ## 疑难解答
 
+### 我的 Pod 处于 pending 状态且事件信息显示 failedScheduling
+
+如果调度器找不到任何该 Pod 可以匹配的节点，则该 Pod 将保持不可调度状态，直到找到一个可以被调度到的位置。每当调度器找不到 Pod 可以调度的地方时，会产生一个事件，如下所示：
+
+```shell
+$ kubectl describe pod frontend | grep -A 3 Events
+Events:
+  FirstSeen LastSeen   Count  From          Subobject   PathReason      Message
+  36s   5s     6      {scheduler }              FailedScheduling  Failed for reason PodExceedsFreeCPU and possibly others
+```
+
+在上述示例中，由于节点上的 CPU 资源不足，名为 “frontend” 的 Pod 将无法调度。由于内存不足（PodExceedsFreeMemory），类似的错误消息也可能会导致失败。一般来说，如果有这种类型的消息而处于 pending 状态，您可以尝试如下几件事情：
+
+```Shell
+$ kubectl describe nodes e2e-test-minion-group-4lw4
+Name:            e2e-test-minion-group-4lw4
+[ ... lines removed for clarity ...]
+Capacity:
+ alpha.kubernetes.io/nvidia-gpu:    0
+ cpu:                               2
+ memory:                            7679792Ki
+ pods:                              110
+Allocatable:
+ alpha.kubernetes.io/nvidia-gpu:    0
+ cpu:                               1800m
+ memory:                            7474992Ki
+ pods:                              110
+[ ... lines removed for clarity ...]
+Non-terminated Pods:        (5 in total)
+  Namespace    Name                                  CPU Requests  CPU Limits  Memory Requests  Memory Limits
+  ---------    ----                                  ------------  ----------  ---------------  -------------
+  kube-system  fluentd-gcp-v1.38-28bv1               100m (5%)     0 (0%)      200Mi (2%)       200Mi (2%)
+  kube-system  kube-dns-3297075139-61lj3             260m (13%)    0 (0%)      100Mi (1%)       170Mi (2%)
+  kube-system  kube-proxy-e2e-test-...               100m (5%)     0 (0%)      0 (0%)           0 (0%)
+  kube-system  monitoring-influxdb-grafana-v4-z1m12  200m (10%)    200m (10%)  600Mi (8%)       600Mi (8%)
+  kube-system  node-problem-detector-v0.1-fj7m3      20m (1%)      200m (10%)  20Mi (0%)        100Mi (1%)
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests    CPU Limits    Memory Requests    Memory Limits
+  ------------    ----------    ---------------    -------------
+  680m (34%)      400m (20%)    920Mi (12%)        1070Mi (14%)
+```
+
+## 我的容器被终结了
+
+您的容器可能因为资源枯竭而被终结了。要查看容器是否因为遇到资源限制而被杀死，请在相关的 Pod 上调用 `kubectl describe pod`：
+
+```shell
+[12:54:41] $ kubectl describe pod simmemleak-hra99
+Name:                           simmemleak-hra99
+Namespace:                      default
+Image(s):                       saadali/simmemleak
+Node:                           kubernetes-node-tf0f/10.240.216.66
+Labels:                         name=simmemleak
+Status:                         Running
+Reason:
+Message:
+IP:                             10.244.2.75
+Replication Controllers:        simmemleak (1/1 replicas created)
+Containers:
+  simmemleak:
+    Image:  saadali/simmemleak
+    Limits:
+      cpu:                      100m
+      memory:                   50Mi
+    State:                      Running
+      Started:                  Tue, 07 Jul 2015 12:54:41 -0700
+    Last Termination State:     Terminated
+      Exit Code:                1
+      Started:                  Fri, 07 Jul 2015 12:54:30 -0700
+      Finished:                 Fri, 07 Jul 2015 12:54:33 -0700
+    Ready:                      False
+    Restart Count:              5
+Conditions:
+  Type      Status
+  Ready     False
+Events:
+  FirstSeen                         LastSeen                         Count  From                              SubobjectPath                       Reason      Message
+  Tue, 07 Jul 2015 12:53:51 -0700   Tue, 07 Jul 2015 12:53:51 -0700  1      {scheduler }                                                          scheduled   Successfully assigned simmemleak-hra99 to kubernetes-node-tf0f
+  Tue, 07 Jul 2015 12:53:51 -0700   Tue, 07 Jul 2015 12:53:51 -0700  1      {kubelet kubernetes-node-tf0f}    implicitly required container POD   pulled      Pod container image "gcr.io/google_containers/pause:0.8.0" already present on machine
+  Tue, 07 Jul 2015 12:53:51 -0700   Tue, 07 Jul 2015 12:53:51 -0700  1      {kubelet kubernetes-node-tf0f}    implicitly required container POD   created     Created with docker id 6a41280f516d
+  Tue, 07 Jul 2015 12:53:51 -0700   Tue, 07 Jul 2015 12:53:51 -0700  1      {kubelet kubernetes-node-tf0f}    implicitly required container POD   started     Started with docker id 6a41280f516d
+  Tue, 07 Jul 2015 12:53:51 -0700   Tue, 07 Jul 2015 12:53:51 -0700  1      {kubelet kubernetes-node-tf0f}    spec.containers{simmemleak}         created     Created with docker id 87348f12526a
+```
+
+在上面的例子中，`Restart Count: 5` 意味着 Pod 中的 `simmemleak` 容器被终止并重启了五次。
+
+您可以使用 `kubectl get pod` 命令加上 `-o go-template=...` 选项来获取之前终止容器的状态。
+
+```Shell
+[13:59:01] $ kubectl get pod -o go-template='{{range.status.containerStatuses}}{{"Container Name: "}}{{.name}}{{"\r\nLastState: "}}{{.lastState}}{{end}}'  simmemleak-60xbc
+Container Name: simmemleak
+LastState: map[terminated:map[exitCode:137 reason:OOM Killed startedAt:2015-07-07T20:58:43Z finishedAt:2015-07-07T20:58:43Z containerID:docker://0e4095bba1feccdfe7ef9fb6ebffe972b4b14285d5acdec6f0d3ae8a22fad8b2]]{% endraw %}
+```
+
+您可以看到容器因为 `reason:OOM killed` 被终止，`OOM` 表示 Out Of Memory。
+
+## 不透明整型资源（Alpha功能）
+
+Kubernetes 1.5 版本中引入不透明整型资源。不透明的整数资源允许集群运维人员发布新的节点级资源，否则系统将不了解这些资源。
+
+用户可以在 Pod 的 spec 中消费这些资源，就像 CPU 和内存一样。调度器负责资源计量，以便在不超过可用量的同时分配给 Pod。
+
+**注意：** 不透明整型资源在 kubernetes 1.5 中还是 Alpha 版本。只实现了资源计量，节点级别的隔离还处于积极的开发阶段。
+
+不透明整型资源是以 `pod.alpha.kubernetes.io/opaque-int-resource-` 为前缀的资源。API server 将限制这些资源的数量为整数。*有效* 数量的例子有 `3`、`3000m` 和 `3Ki`。*无效*数量的例子有 `0.5` 和 `1500m`。
+
+申请使用不透明整形资源需要两步。首先，集群运维人员必须在一个或多个节点上通告每个节点不透明的资源。然后，用户必须在 Pod 中请求不透明资源。
+
+要发布新的不透明整型资源，集群运维人员应向 API server 提交 `PATCH` HTTP请求，以指定集群中节点的`status.capacity` 的可用数量。在此操作之后，节点的 `status.capacity` 将包括一个新的资源。 `status.allocatable` 字段由 kubelet 异步地使用新资源自动更新。请注意，由于调度器在评估 Pod 适应度时使用节点 `status.allocatable` 值，所以在使用新资源修补节点容量和请求在该节点上调度资源的第一个 pod 之间可能会有短暂的延迟。
+
+```http
+PATCH /api/v1/nodes/k8s-node-1/status HTTP/1.1
+Accept: application/json
+Content-Type: application/json-patch+json
+Host: k8s-master:8080
+
+[
+  {
+    "op": "add",
+    "path": "/status/capacity/pod.alpha.kubernetes.io~1opaque-int-resource-foo",
+    "value": "5"
+  }
+]
+```
+
+```shell
+curl --header "Content-Type: application/json-patch+json" \
+--request PATCH \
+--data '[{"op": "add", "path": "/status/capacity/pod.alpha.kubernetes.io~1opaque-int-resource-foo", "value": "5"}]' \
+http://k8s-master:8080/api/v1/nodes/k8s-node-1/status
+```
+
+**注意：** 在前面的请求中，`~1` 是 patch 路径中 `/` 字符的编码。JSON-Patch 中的操作路径值被解释为 JSON-Pointer。更多详细信息请参阅 [IETF RFC 6901, section 3](https://tools.ietf.org/html/rfc6901#section-3)。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: myimage
+    resources:
+      requests:
+        cpu: 2
+        pod.alpha.kubernetes.io/opaque-int-resource-foo: 1
+```
+
+## 计划改进
+
+在 kubernetes 1.5 版本中仅允许在容器上指定资源量。计划改进对所有容器在 Pod 中共享资源的计量，如 [emptyDir volume](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)。
+
+在 kubernetes 1.5 版本中仅支持容器对 CPU 和内存的申请和限制。计划增加新的资源类型，包括节点磁盘空间资源和一个可支持自定义 [资源类型](https://github.com/kubernetes/community/blob/{{page.githubbranch}}/contributors/design-proposals/resources.md) 的框架。
+
+Kubernetes 通过支持通过多级别的 [服务质量](http://issue.k8s.io/168) 来支持资源的过度使用。
+
+在 kubernetes 1.5 版本中，一个 CPU 单位在不同的云提供商和同一云提供商的不同机器类型中的意味都不同。例如，在 AWS 上，节点的容量报告为 [ECU](http://aws.amazon.com/ec2/faqs/)，而在 GCE 中报告为逻辑内核。我们计划修改 cpu 资源的定义，以便在不同的提供商和平台之间保持一致。
