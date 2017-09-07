@@ -38,6 +38,7 @@
     - [3.3.3 TLS bootstrap](guide/tls-bootstrapping.md)
     - [3.3.4 kubectl的用户认证授权](guide/kubectl-user-authentication-authorization.md)
     - [3.3.5 RBAC——基于角色的访问控制](guide/rbac.md)
+    - [3.3.6 IP伪装代理](guide/ip-masq-agent.md)
   - [3.4 访问 Kubernetes 集群](guide/access-kubernetes-cluster.md)
     - [3.4.1 访问集群](guide/access-cluster.md)
     - [3.4.2 使用 kubeconfig 文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
