@@ -32,7 +32,7 @@
     - [3.1.2 配置Pod的Service Account](guide/configure-pod-service-account.md)
   - [3.2 命令使用](guide/command-usage.md)
     - [3.2.1 使用kubectl](guide/using-kubectl.md)
-  - [3.3 集群管理](guide/cluster-management.md)
+  - [3.3 集群安全性管理](guide/cluster-security-management.md)
     - [3.3.1 管理集群中的TLS](guide/managing-tls-in-a-cluster.md)
     - [3.3.2 kubelet的认证授权](guide/kubelet-authentication-authorization.md)
     - [3.3.3 TLS bootstrap](guide/tls-bootstrapping.md)
