@@ -91,6 +91,31 @@ kubectl create rolebinding spark-edit --clusterrole=edit --serviceaccount=spark-
 
 该 Bug 将在新版本中修复。
 
+## 开发文档
+
+Fork 并克隆项目到本地：
+
+```bash
+git clone https://github.com/rootsongjc/spark.git
+```
+
+编译前请确保你的环境中已经安装 Java8 和 Maven3。
+
+```bash
+## 第一次编译前需要安装依赖
+build/mvn install -Pkubernetes -pl resource-managers/kubernetes/core -am -DskipTests
+
+## 编译 spark on kubernetes
+build/mvn compile -Pkubernetes -pl resource-managers/kubernetes/core -am -DskipTests
+
+## 发布
+dev/make-distribution.sh --tgz -Phadoop-2.7 -Pkubernetes
+```
+
+第一次编译和发布的过程耗时可能会比较长，请耐心等待，如果有依赖下载不下来，请自备梯子。
+
+详细的开发指南请见：https://github.com/apache-spark-on-k8s/spark/blob/branch-2.2-kubernetes/resource-managers/kubernetes/README.md
+
 ## 参考
 
 [Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
