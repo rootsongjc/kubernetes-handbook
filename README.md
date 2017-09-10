@@ -90,7 +90,7 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 1. 在该文章相关主题的目录下创建文档；
 2. 在 `SUMMARY.md` 中在相应的章节下添加文章链接；
-3. 执行 `gitbook server` 测试是否报错，访问 http://localhost:4000 查看该文档是否出现在相应主题的目录下；
+3. 执行 `gitbook serve` 测试是否报错，访问 http://localhost:4000 查看该文档是否出现在相应主题的目录下；
 4. 提交PR
 
 ## 关于
