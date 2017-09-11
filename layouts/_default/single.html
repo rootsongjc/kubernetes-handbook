@@ -9,8 +9,6 @@
             <article itemprop="articleBody" id="content">
                 {{ .Content }}
             </article>
-        </div>
-        <div>
             {{ $related := .Site.RegularPages.Related . | first 5 }} {{ with $related }}
             <h2>See Also</h2>
             <ul>
