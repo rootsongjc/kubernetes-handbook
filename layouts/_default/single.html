@@ -10,6 +10,16 @@
                 {{ .Content }}
             </article>
         </div>
+        <div>
+            {{ $related := .Site.RegularPages.Related . | first 5 }} {{ with $related }}
+            <h2>See Also</h2>
+            <ul>
+                {{ range . }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </div>
     </section>
 
     <!--{{ partial "meta_aside.html" . }} {{ partial "disqus.html" . }} {{ partial "footer.html" . }}-->
