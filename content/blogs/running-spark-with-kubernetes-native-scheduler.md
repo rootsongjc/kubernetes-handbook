@@ -8,7 +8,7 @@ Tags: ["kubernetes","spark","big-data"]
 
 我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](https://jimmysong.io/kubernetes-handbook/usecases/spark-standalone-on-kubernetes.html)。
 
-目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，fork 自 spark 的官方代码库，见 https://github.com/apache-spark-on-k8s/spark/ ，属于Big Data SIG。
+目前运行支持 kubernetes 原生调度的 spark 程序项目由 Google 主导，fork 自 spark 的官方代码库，见 https://github.com/apache-spark-on-k8s/spark/ ，属于Big Data SIG。
 
 参与到该项目的公司有：
 
