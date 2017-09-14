@@ -2,7 +2,18 @@
 
 我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](spark-standalone-on-kubernetes.md)。
 
-目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，
+目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，fork 自 spark 的官方代码库，见https://github.com/apache-spark-on-k8s/spark/ ，属于Big Data SIG。
+
+参与到该项目的公司有：
+
+- Bloomberg
+- Google
+- Haiwen
+- Hyperpilot
+- Intel
+- Palantir
+- Pepperdata
+- Red Hat
 
 ## Spark 概念说明
 
