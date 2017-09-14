@@ -38,7 +38,7 @@
 
 ## 安装指南
 
-我们可以直接使用官方已编译好的 docker 镜像来部署。
+我们可以直接使用官方已编译好的 docker 镜像来部署，下面是官方发布的镜像：
 
 | 组件                         | 镜像                                       |
 | -------------------------- | ---------------------------------------- |
@@ -93,6 +93,8 @@ kubectl create rolebinding spark-edit --clusterrole=edit --serviceaccount=spark-
 
 ## 开发文档
 
+### 编译
+
 Fork 并克隆项目到本地：
 
 ```bash
@@ -115,6 +117,157 @@ dev/make-distribution.sh --tgz -Phadoop-2.7 -Pkubernetes
 第一次编译和发布的过程耗时可能会比较长，请耐心等待，如果有依赖下载不下来，请自备梯子。
 
 详细的开发指南请见：https://github.com/apache-spark-on-k8s/spark/blob/branch-2.2-kubernetes/resource-managers/kubernetes/README.md
+
+### 构建镜像
+
+使用该脚本来自动构建容器镜像：https://github.com/apache-spark-on-k8s/spark/pull/488
+
+将该脚本放在 `dist` 目录下，执行：
+
+```bash
+./build-push-docker-images.sh -r sz-pg-oam-docker-hub-001.tendcloud.com/library -t v2.1.0-kubernetes-0.3.1-1 build
+./build-push-docker-images.sh -r sz-pg-oam-docker-hub-001.tendcloud.com/library -t v2.1.0-kubernetes-0.3.1-1 push
+```
+
+**注意：**如果你使用的 MacOS，bash 的版本可能太低，执行改脚本将出错，请检查你的 bash 版本：
+
+```bash
+bash --version
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin16)
+Copyright (C) 2007 Free Software Foundation, Inc.
+```
+
+上面我在升级 bash 之前获取的版本信息，使用下面的命令升级 bash：
+
+```bash
+brew install bash
+```
+
+升级后的 bash 版本为 `4.4.12(1)-release (x86_64-apple-darwin16.3.0)`。
+
+编译并上传镜像到我的私有镜像仓库，将会构建出如下几个镜像：
+
+```bash
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-resource-staging-server:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-shuffle:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor-py:v2.1.0-kubernetes-0.3.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver-py:v2.1.0-kubernetes-0.3.1-1
+```
+
+## 运行测试
+
+在 `dist/bin` 目录下执行 spark-pi 测试：
+
+```bash
+./spark-submit \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.SparkPi \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar
+```
+
+详细的参数说明见：https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html
+
+**注意：**`local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar` 文件是在 `spark-driver` 和 `spark-executor` 镜像里的，在上一步构建镜像时已经构建并上传到了镜像仓库中。
+
+执行日志显示：
+
+```bash
+2017-09-14 14:59:01 INFO  Client:54 - Waiting for application spark-pi to finish...
+2017-09-14 14:59:01 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1505372339796-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-f4d3a5d3ad964a05a51feb6191d50357, spark-role -> driver
+	 pod uid: 304cf440-991a-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-14T06:59:01Z
+	 service account name: spark
+	 volumes: spark-token-zr8wv
+	 node name: N/A
+	 start time: N/A
+	 container images: N/A
+	 phase: Pending
+	 status: []
+2017-09-14 14:59:01 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1505372339796-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-f4d3a5d3ad964a05a51feb6191d50357, spark-role -> driver
+	 pod uid: 304cf440-991a-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-14T06:59:01Z
+	 service account name: spark
+	 volumes: spark-token-zr8wv
+	 node name: 172.20.0.114
+	 start time: N/A
+	 container images: N/A
+	 phase: Pending
+	 status: []
+2017-09-14 14:59:01 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1505372339796-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-f4d3a5d3ad964a05a51feb6191d50357, spark-role -> driver
+	 pod uid: 304cf440-991a-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-14T06:59:01Z
+	 service account name: spark
+	 volumes: spark-token-zr8wv
+	 node name: 172.20.0.114
+	 start time: 2017-09-14T06:59:01Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 phase: Pending
+	 status: [ContainerStatus(containerID=null, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=null, waiting=ContainerStateWaiting(message=null, reason=ContainerCreating, additionalProperties={}), additionalProperties={}), additionalProperties={})]
+2017-09-14 14:59:03 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1505372339796-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-f4d3a5d3ad964a05a51feb6191d50357, spark-role -> driver
+	 pod uid: 304cf440-991a-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-14T06:59:01Z
+	 service account name: spark
+	 volumes: spark-token-zr8wv
+	 node name: 172.20.0.114
+	 start time: 2017-09-14T06:59:01Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 phase: Running
+	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=true, restartCount=0, state=ContainerState(running=ContainerStateRunning(startedAt=2017-09-14T06:59:02Z, additionalProperties={}), terminated=null, waiting=null, additionalProperties={}), additionalProperties={})]
+2017-09-14 14:59:12 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
+	 pod name: spark-pi-1505372339796-driver
+	 namespace: spark-cluster
+	 labels: spark-app-selector -> spark-f4d3a5d3ad964a05a51feb6191d50357, spark-role -> driver
+	 pod uid: 304cf440-991a-11e7-970c-f4e9d49f8ed0
+	 creation time: 2017-09-14T06:59:01Z
+	 service account name: spark
+	 volumes: spark-token-zr8wv
+	 node name: 172.20.0.114
+	 start time: 2017-09-14T06:59:01Z
+	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 phase: Succeeded
+	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=ContainerStateTerminated(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, exitCode=0, finishedAt=2017-09-14T06:59:11Z, message=null, reason=Completed, signal=null, startedAt=null, additionalProperties={}), waiting=null, additionalProperties={}), additionalProperties={})]
+2017-09-14 14:59:12 INFO  LoggingPodStatusWatcherImpl:54 - Container final statuses:
+
+
+	 Container name: spark-kubernetes-driver
+	 Container image: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 Container state: Terminated
+	 Exit code: 0
+2017-09-14 14:59:12 INFO  Client:54 - Application spark-pi finished.
+```
+
+从日志中可以看到任务运行的状态信息。
+
+使用下面的命令可以看到 kubernetes 启动的 Pod 信息：
+
+```bash
+kubectl --namespace spark-cluster get pods -w
+```
+
+将会看到 `spark-driver` 和 `spark-exec` 的 Pod 信息。
 
 ## 参考
 
