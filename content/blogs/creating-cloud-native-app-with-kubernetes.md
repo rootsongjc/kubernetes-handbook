@@ -51,7 +51,7 @@ API文档见 https://github.com/rootsongjc/k8s-app-monitor-test 中的`api.html`
 
 我们知道Kubernetes在启动Pod的时候为容器注入环境变量，这些环境变量在所有的 namespace 中共享（环境变量是不断追加的，新启动的Pod中将拥有老的Pod中所有的环境变量，而老的Pod中的环境变量不变）。但是既然使用这些环境变量就已经可以访问到对应的service，那么获取应用的地址信息，究竟是使用变量呢？还是直接使用DNS解析来发现？
 
-答案是使用DNS，详细说明见[Kubernetes中的服务发现与Docker容器间的环境变量传递源码探究](http://jimmysong.io/blogs/exploring-kubernetes-env-with-docker/)（https://jimmysong.io/blogs/exploring-kubernetes-env-with-docker/）。
+答案是使用DNS，详细说明见[Kubernetes中的服务发现与Docker容器间的环境变量传递源码探究](http://jimmysong.io/blogs/exploring-kubernetes-env-with-docker/)
 
 ### 使用wercker构建镜像
 
@@ -101,7 +101,7 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 选择了GitHub中的repo之后，第二步配置访问权限，最后一步Wercker会尝试生成一个wercker.yml文件（后面会讨论）。不过至少对于Go应用程序来说，这个配置很少会满足要求，所以我们总是需要创建自己的Wercker配置文件。
 
-#### 创建Wercker配置文件Wercker.Yml
+#### 创建Wercker配置文件Wercker.yaml
 
 Wercker配置文件是一个YAML文件，该文件必须在GitHub repo的最顶层目录，该文件主要包含三个部分，对应可用的三个主要管道。
 
@@ -153,7 +153,7 @@ deploy:
        repository: jimmysong/k8s-app-monitor-agent
 ```
 
-其中的`$USERNAME`和`$PASSWORD`是docker hub的用户名和密码，这些是做作为wercker构建的环境变量，在wercker的web端进行配置的。
+其中的`$USERNAME`和`$PASSWORD`是docker hub的用户名和密码，这些是作为wercker构建时候的环境变量，在wercker的web端进行配置的。
 
 此文件包含两个管道：build和deploy。在开发流程中，我们使用Wercker和Docker创建一个干净的Docker镜像，然后将它push到Docker Hub中。Wercker包含一个叫做`Internal/docker-push`的deploy plugin，可以将构建好的docker镜像push到镜像仓库中，默认是Docker Hub，也可以配置成私有镜像仓库。
 
@@ -161,7 +161,7 @@ box键的值是golang。这意味着我们使用的是一个基础的Docker镜�
 
 构建流程见：<https://app.wercker.com/jimmysong/k8s-app-monitor-agent/>
 
-> 当然你还可以使用其他的CI工具，因为wercker的插件比较方便，可以直接构建成docker镜像上传到docker hub中，比较方便，所以我选择了wercker。
+> 当然你还可以使用其他的CI工具，因为wercker的插件比较方便，可以直接构建成docker镜像上传到docker hub中，比较方便，所以我选择了wercker，作为个人项目和开源项目的话可以选择它，企业内部建议选择Jenkins。
 
 生成了如下两个docker镜像：
 
@@ -276,7 +276,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 **边缘节点要考虑两个问题**
 
-- 边缘节点的高可用，不能有单点故障，否则整个kubernetes集群将不可用
+- 边缘节点的高可用，不能有单点故障，否则整个kubernetes集群的外部访问将不可用
 - 对外的一致暴露端口，即只能有一个外网访问IP和端口
 
 为了满足边缘节点的以上需求，我们使用[keepalived](http://www.keepalived.org/)来实现。
