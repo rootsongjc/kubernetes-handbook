@@ -88,7 +88,7 @@
     - [5.1.3 微服务中的服务发现](usecases/service-discovery-in-microservices.md)
   - [5.2 大数据](usecases/big-data.md)
     - [5.2.1 Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
-    - [5.2.2 运行支持kubernetes原生调度的Spark程序](usecases/support-spark-natively-in-kubernetes.md)
+    - [5.2.2 运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
   - [5.3 Serverless架构](usecases/serverless.md)
 - [6. 开发指南](develop/index.md)
   - [6.1 开发环境搭建](develop/developing-environment.md)
