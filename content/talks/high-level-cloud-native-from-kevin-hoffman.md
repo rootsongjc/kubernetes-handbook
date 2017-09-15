@@ -5,7 +5,7 @@ draft: false
 Tags: ["cloud-native"]
 ---
 
-Kevin Hoffman(From Capital One, twitter @KevinHoffman) was making a speech on *TalkingData T11 Smart Data Summit*.
+Kevin Hoffman(From Capital One, twitter [@KevinHoffman](https://twitter.com/KevinHoffman) was making a speech on *TalkingData T11 Smart Data Summit*.
 
 ![Kevin Hoffman Talking on T11](/media/kevin-hoffman-talking-on-t11.jpg)
 
