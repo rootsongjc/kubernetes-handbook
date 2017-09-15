@@ -16,11 +16,9 @@ Let's have a look at the 15 factors of Cloud Native.
 ## 1. One codebase, one App
 
 - Single version-controlled codebase, many deploys
-
 - Multiple apps should not share code
   -  Microservices need separate release schedules
   -  Upgrade, deploy one without impacting others
-
 - Tie build and deploy pipelines to single codebase
 
 
@@ -35,7 +33,7 @@ Let's have a look at the 15 factors of Cloud Native.
 - API First != REST first
   - RPC can be more appropriate in some situations
 
-## 3. Dependency Management 		
+    ## 3. Dependency Management 
 
 - Explicitly declare dependencies
 - Include all dependencies with app release
@@ -47,7 +45,7 @@ Let's have a look at the 15 factors of Cloud Native.
 ## 4. Design, Build, Release, Run
 
 - Design part of iterative cycle
-  - ○Agile doesn’t mean random or undesigned
+  - Agile doesn’t mean random or undesigned
 - Mature CI/CD pipeline and teams
   - Design to production in days not months
 - Build creates immutable artifact
@@ -112,18 +110,10 @@ Let's have a look at the 15 factors of Cloud Native.
 ## 11. Port Binding
 
 - In cloud, infrastructure determines port
-
-
 - App must accept port assigned by platform
-
-
 - Containers have internal/external ports
   - App design must embrace this
-
-
 - Never use reserved ports
-
-
 - Beware of container “host mode” networking
 
 ## 12. Stateless Processes
@@ -145,32 +135,18 @@ Let's have a look at the 15 factors of Cloud Native.
 ## 14. Telemetry
 
 - Monitor apps in the cloud like satellite in orbit
-
-
 - No tether, no live debugger
-
-
 - Application Perf Monitoring (APM)
-
-
 - Domain Telemetry
-
-
 - Health and system logs
 
 ## 15. Authentication & Authorization
 
 - Security should never be an afterthought
-
-
 - Auth should be explicit, documented decision
   - Even if anonymous access is allowed
   - Don’t allow anonymous access
-
-
 - Bearer tokens/OAuth/OIDC best practices
-
-
 - Audit all attempts to access
 
 ## Migrating Monoliths to the Cloud
@@ -191,17 +167,9 @@ After this 15 factors, he also gave us some tips about how to **migrate monolith
 At last, he advise us the programming language Go is the best language to build Cloud Native applications for these reasons below:
 
 - Lightweight
-
-
 - Easily learning curve
-
-
 - Compiles to native binaries
-
-
 - Very fast
-
-
 - Large, thriving, engaged community
   - http://gopherize.me
 
