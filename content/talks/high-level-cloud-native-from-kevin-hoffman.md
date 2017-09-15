@@ -48,7 +48,7 @@ Let's have a look at the 15 factors of Cloud Native.
   - Agile doesn’t mean random or undesigned
 - Mature CI/CD pipeline and teams
   - Design to production in days not months
-- Build creates immutable artifact
+- Build immutable artifacts
 - Release automatically deploys to environment
   - Environments contains config, not release artifact
 
@@ -86,7 +86,7 @@ Let's have a look at the 15 factors of Cloud Native.
   - “Disk as a Service” (e.g. S3, virtual mounts, etc)
 - Every backing service is bound resource
   - URL, credentials, etc-> environment config
-- Hostdoes not satisfy NFRs
+- Host does not satisfy NFRs
   - Backing services and cloud infrastructure
 
 ## 9. Environment Parity
@@ -173,7 +173,7 @@ At last, he advise us the programming language Go is the best language to build 
 - Large, thriving, engaged community
   - http://gopherize.me
 
-Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于Go和React的云原生Web应用与微服务》published by PHEI publisher house. See the site I built for this book https://jimmysong.io/cloud-native-go/
+Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于Go和React的云原生Web应用与微服务》published by PHEI publisher house. See the website I built for this book https://jimmysong.io/cloud-native-go/
 
 Kevin was signing his name on the book
 
