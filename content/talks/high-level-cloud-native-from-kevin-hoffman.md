@@ -33,7 +33,7 @@ Let's have a look at the 15 factors of Cloud Native.
 - API First != REST first
   - RPC can be more appropriate in some situations
 
-    ## 3. Dependency Management 
+## 3. Dependency Management 
 
 - Explicitly declare dependencies
 - Include all dependencies with app release
