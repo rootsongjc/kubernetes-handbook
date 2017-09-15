@@ -286,6 +286,49 @@ kubectl --namespace spark-cluster get pods -w
 
 将会看到 `spark-driver` 和 `spark-exec` 的 Pod 信息。
 
+## 依赖管理
+
+上文中我们在运行测试程序时，命令行中指定的 jar 文件已包含在 docker 镜像中，是不是说我们每次提交任务都需要重新创建一个镜像呢？非也！如果真是这样也太麻烦了。
+
+#### 创建 resource staging server
+
+为了方便用户提交任务，不需要每次提交任务的时候都创建一个镜像，我们使用了 **resource staging server** 。
+
+```
+kubectl create -f conf/kubernetes-resource-staging-server.yaml
+```
+
+我们同样将其部署在 `spark-cluster` namespace 下，该 yaml 文件见 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook) 的 `manifests/spark-with-kubernetes-native-scheduler` 目录。
+
+#### 优化
+
+其中有一点需要优化，在使用下面的命令提交任务时，使用 `--conf spark.kubernetes.resourceStagingServer.uri` 参数指定 *resource staging server* 地址，用户不应该关注 *resource staging server* 究竟运行在哪台宿主机上，可以使用下面两种方式实现：
+
+- 使用 `nodeSelector` 将 *resource staging server* 固定调度到某一台机器上，该地址依然使用宿主机的 IP 地址
+- 改变 `spark-resource-staging-service` service 的 type 为 **ClusterIP**， 然后使用 **Ingress** 将其暴露到集群外部，然后加入的内网 DNS 里，用户使用 DNS 名称指定 *resource staging server* 的地址。
+
+然后可以执行下面的命令来提交本地的 jar 到 kubernetes 上运行。
+
+```bash
+./spark-submit \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.SparkPi \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
+  ../examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar
+```
+
+该命令将提交本地的 `../examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar` 文件到 *resource staging server*，executor 将从该 server 上获取 jar 包并运行，这样用户就不需要每次提交任务都编译一个镜像了。
+
+详见：https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html#dependency-management
+
 ## 参考
 
 [Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
