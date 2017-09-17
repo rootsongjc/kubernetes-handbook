@@ -18,6 +18,8 @@ Tags = ["kubernetes","cloud computing"]
 
 另外还有一个Peter Ma写的[在CentOS上手动安装kubernetes的文档](https://godliness.github.io/2017/03/29/%E5%9C%A8CentOS7%E4%B8%8A%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85Kubernetes/)可以参考。
 
+**注意：本文是在没有启用TLS的情况下安装的kubernetes，还请大家参照 [kubernetes-handbook](https://jimmysong.io/kubernetes-handbook) 安装。**
+
 **角色分配**
 
 下面以在三台主机上安装Kubernetes为例。
