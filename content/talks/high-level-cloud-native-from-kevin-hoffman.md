@@ -162,7 +162,7 @@ After this 15 factors, he also gave us some tips about how to **migrate monolith
   - Fast, agile iterations toward ultimate goal
 - Use multiple strategies and patterns
 
-## Go - the Best Language to Build Cloud Native App
+## Go - the Best Language for Building Cloud Native App
 
 At last, he advise us the programming language Go is the best language to build Cloud Native applications for these reasons below:
 
