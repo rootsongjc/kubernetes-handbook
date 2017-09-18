@@ -28,7 +28,7 @@ title = "About Jimmy Song"
 
 - Wechat: jimmysong
 - Email: rootsongjc@gmail.com
-- Twitter: https://twitter.com/rootsongjc
+- Twitter: https://twitter.com/jimmysongio
 - Facebook: https://facebook.com/rootsongjc
 - 图虫(Tuchong Photography): http://rootsongjc.tuchong.com
 - 知乎专栏——云原生应用架构：https://zhuanlan.zhihu.com/cloud-native
