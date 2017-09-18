@@ -41,7 +41,7 @@ Tags: ["kubernetes","cloud-native"]
 
 ### 定义API
 
-API文档见 https://github.com/rootsongjc/k8s-app-monitor-test 中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio) （https://github.com/danielgtaylor/aglio）生成，打开后如图所示：
+API文档见 https://github.com/rootsongjc/k8s-app-monitor-test 中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio) 生成，打开后如图所示：
 
 ![API文档](/media/k8s-app-monitor-test-api-doc.jpg)
 
