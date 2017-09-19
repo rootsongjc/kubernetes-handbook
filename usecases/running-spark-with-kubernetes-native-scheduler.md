@@ -349,6 +349,28 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
   --conf spark.executorEnv.SPARK_USER=hadoop 
 ```
 
+使用 hadoop 用户提交本地 jar 包的命令示例：
+
+```bash
+./spark-submit \
+  --deploy-mode cluster \
+  --class com.talkingdata.alluxio.hadooptest \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.kubernetes.driverEnv.SPARK_USER=hadoop \
+  --conf spark.kubernetes.driverEnv.HADOOP_USER_NAME=hadoop \
+  --conf spark.executorEnv.HADOOP_USER_NAME=hadoop \
+  --conf spark.executorEnv.SPARK_USER=hadoop \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
+~/Downloads/tendcloud_2.10-1.0.jar
+```
+
 详见：https://github.com/apache-spark-on-k8s/spark/issues/408
 
 ## 参考
