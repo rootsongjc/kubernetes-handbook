@@ -53,6 +53,19 @@ Tags: ["kubernetes","spark","big-data"]
 
 而 kubernetes native spark 集群中，spark 可以调用 kubernetes API 获取集群资源和调度。要实现 kubernetes native spark 需要为 spark 提供一个集群外部的 manager 可以用来跟 kubernetes API 交互。
 
+### 调度器后台
+
+使用 kubernetes 原生调度的 spark 的基本设计思路是将 spark 的 driver 和 executor 都放在 kubernetes 的 pod 中运行，另外还有两个附加的组件：`ResourceStagingServer` 和 `KubernetesExternalShuffleService`。
+
+Spark driver 其实可以运行在 kubernetes 集群内部（cluster mode）可以运行在外部（client mode），executor 只能运行在集群内部，当有 spark 作业提交到 kubernetes 集群上时，调度器后台将会为 executor pod 设置如下属性：
+
+- 使用我们预先编译好的包含 kubernetes 支持的 spark 镜像，然后调用 `CoarseGrainedExecutorBackend` main class 启动 JVM。
+- 调度器后台为 executor pod 的运行时注入环境变量，例如各种 JVM 参数，包括用户在 `spark-submit` 时指定的那些参数。
+- Executor 的 CPU、内存限制根据这些注入的环境变量保存到应用程序的 `SparkConf` 中。
+- 可以在配置中指定 spark 运行在指定的 namespace 中。
+
+参考：[Scheduler backend 文档](https://github.com/apache-spark-on-k8s/spark/blob/branch-2.2-kubernetes/resource-managers/kubernetes/architecture-docs/scheduler-backend.md)
+
 ## 安装指南
 
 我们可以直接使用官方已编译好的 docker 镜像来部署，下面是官方发布的镜像：
@@ -328,6 +341,19 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 该命令将提交本地的 `../examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar` 文件到 **resource staging server**，executor 将从该 server 上获取 jar 包并运行，这样用户就不需要每次提交任务都编译一个镜像了。
 
 详见：https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html#dependency-management
+
+#### 设置 HDFS 用户
+
+如果 Hadoop 集群没有设置 kerbros 安全认证的话，在指定 `spark-submit` 的时候可以通过指定如下四个环境变量， 设置 Spark 与 HDFS 通信使用的用户：
+
+```bash
+  --conf spark.kubernetes.driverEnv.SPARK_USER=hadoop 
+  --conf spark.kubernetes.driverEnv.HADOOP_USER_NAME=hadoop 
+  --conf spark.executorEnv.HADOOP_USER_NAME=hadoop 
+  --conf spark.executorEnv.SPARK_USER=hadoop 
+```
+
+详见：https://github.com/apache-spark-on-k8s/spark/issues/408
 
 ## 参考
 
