@@ -7,10 +7,12 @@
         "github",
         "codesnippet",
         "splitter",
+        "wide-page",
         "page-toc-button",
         "image-captions",
         "page-footer-ex",
         "editlink",
+        "back-to-top-button",
         "-lunr", "-search", "search-plus"
     ],
     "pluginsConfig": {
