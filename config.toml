@@ -1,5 +1,5 @@
-languageCode = "en-us"
-title = "Jimmy Song's Blog - Cloud Native & Big Data"
+languageCode = "zh-hans"
+title = "Jimmy Song - Focus on Big Data & Cloud Native"
 baseurl = "https://jimmysong.io/"
 disqusShortname = "rootsongjc"
 hasCJKLanguage = true
