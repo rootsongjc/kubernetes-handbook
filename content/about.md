@@ -4,7 +4,7 @@ title = "About Jimmy Song"
 
 +++
 
-![Jimmy Song](/media/jimmy.jpg)
+![wechat_qrcode](/media/wechat-qrcode-20170627.jpg)
 
 # About me
 
@@ -35,5 +35,3 @@ title = "About Jimmy Song"
 - 微信公众号——云原生应用架构(CloudNativeGo)
 
 ![微信公众号-云原生应用架构](/media/cloud-native-wechat-public-account.jpg)
-
-![wechat_qrcode](/media/wechat-qrcode-20170627.jpg)
