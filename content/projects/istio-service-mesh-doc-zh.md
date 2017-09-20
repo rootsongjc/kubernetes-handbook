@@ -16,11 +16,11 @@ Tags: ["istio","service-mesh","cloud-native"]
 当前已经完成翻译内容，译文中还有很多需要优化的地方，欢迎大家提Issue和PR：
 
 - [官方文档](https://istio.doczh.cn/docs/)
-  - 概念
+- 概念
     - [Istio是什么?](https://istio.doczh.cn/docs/concepts/what-is-istio/)
     - [概述](https://istio.doczh.cn/docs/concepts/what-is-istio/overview.html)
     - [设计目标](https://istio.doczh.cn/docs/concepts/what-is-istio/goals.html)
-  - 流量管理
+- 流量管理
     - [概述](https://istio.doczh.cn/docs/concepts/traffic-management/overview.html)
     - [Pilot](https://istio.doczh.cn/docs/concepts/traffic-management/pilot.html)
     - [请求路由](https://istio.doczh.cn/docs/concepts/traffic-management/request-routing.html)
@@ -28,9 +28,9 @@ Tags: ["istio","service-mesh","cloud-native"]
     - [处理故障](https://istio.doczh.cn/docs/concepts/traffic-management/handling-failures.html)
     - [故障注入](https://istio.doczh.cn/docs/concepts/traffic-management/fault-injection.html)
     - [规则配置](https://istio.doczh.cn/docs/concepts/traffic-management/rules-configuration.html)
-  - 网络和认证
+- 网络和认证
     - [认证](https://istio.doczh.cn/docs/concepts/network-and-auth/auth.html)
-  - 策略与控制
+- 策略与控制
     - [属性](https://istio.doczh.cn/docs/concepts/policy-and-control/attributes.html)
     - [Mixer](https://istio.doczh.cn/docs/concepts/policy-and-control/mixer.html)
     - [Mixer配置](https://istio.doczh.cn/docs/concepts/policy-and-control/mixer-config.html)
