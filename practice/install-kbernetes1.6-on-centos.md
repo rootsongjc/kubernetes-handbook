@@ -1,7 +1,5 @@
 # 在CentOS上部署kubernetes1.6集群
 
-说明：本安装文档在[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster/)文档的基础上修改、整理而成。
-
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
 
 在部署的过程中，将详细列出各组件的启动参数，给出配置文件，详解它们的含义和可能遇到的问题。
@@ -10,7 +8,9 @@
 
 所以本文档主要适合于那些有一定 kubernetes 基础，想通过一步步部署的方式来学习和了解系统配置、运行原理的人。
 
-*注：本文档中不包括docker和私有镜像仓库的安装。*
+**注：本文档中不包括docker和私有镜像仓库的安装，安装说明中使用的镜像来自 Google Cloud Platform，为了方便国内用户下载，我将其克隆并上传到了 [时速云镜像市场](https://hub.tenxcloud.com/search?q=jimmy&source=tenxcloud)，供大家免费下载。**
+
+**欲下载最新版本的官方镜像请访问 [Google 云平台容器注册表](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL)。**
 
 ## 提供所有的配置文件
 
@@ -69,7 +69,4 @@
 2. 部署过程中需要有很多证书的操作，请大家耐心操作，不明白的操作可以参考本书中的其他章节的解释。
 3. 该部署操作仅是搭建成了一个可用 kubernetes 集群，而很多地方还需要进行优化，heapster 插件、EFK 插件不一定会用于真实的生产环境中，但是通过部署这些插件，可以让大家了解到如何部署应用到集群上。
 
-## 关于
-
-[Jimmy Song](http://jimmysong.io/about)
-
+**注：本安装文档参考 [opsnull 跟我一步步部署 kubernetes 集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster/)**
