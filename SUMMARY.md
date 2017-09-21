@@ -102,4 +102,5 @@
   - [7.1 Docker最佳实践](appendix/docker-best-practice.md)
   - [7.2 问题记录](appendix/issues.md)
   - [7.3 使用技巧](appendix/tricks.md)
+  - [7.4 kubernetes service中的故障排查](appendix/debug-kubernetes-services.md)
 
