@@ -1,5 +1,7 @@
 # 运行支持kubernetes原生调度的Spark程序
 
+TL;DR 这个主题比较大，该开源项目也还在不断进行中，我单独做了一个 web 用来记录 spark on kubernetes 的研究和最新进展见: https://jimmysong.io/spark-on-k8s
+
 我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](spark-standalone-on-kubernetes.md)。
 
 目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，目前运行支持 kubernetes 原生调度的 spark 程序由 Google 主导，fork 自 spark 的官方代码库，见https://github.com/apache-spark-on-k8s/spark/ ，属于Big Data SIG。
@@ -372,6 +374,52 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 ```
 
 详见：https://github.com/apache-spark-on-k8s/spark/issues/408
+
+#### 限制 Driver 和 Executor 的资源使用
+
+在执行 `spark-submit` 时使用如下参数设置内存和 CPU 资源限制：
+
+```bash
+--conf spark.driver.memory=3G
+--conf spark.executor.memory=3G
+--conf spark.driver.cores=2
+--conf spark.executor.cores=10
+```
+
+这几个参数中值如何传递到 Pod 的资源设置中的呢？
+
+比如我们设置在执行 `spark-submit` 的时候传递了这样的两个参数：`--conf spark.driver.cores=2` 和 `--conf spark.driver.memory=100G` 那么查看 driver pod 的 yaml 输出结果将会看到这样的资源设置：
+
+```yaml
+    resources:
+      limits:
+        memory: 110Gi
+      requests:
+        cpu: "2"
+        memory: 100Gi
+```
+
+以上参数是对 `request` 值的设置，那么 `limit` 的资源设置的值又是从何而来？
+
+可以使用 `spark.kubernetes.driver.limit.cores` 和 `spark.kubernetes.executor.limit.cores` 来设置 CPU的 hard limit。
+
+`SPARK_DRIVER_MEMORY` 和 `SPARK_EXECUTOR_MEMORY` 和分别作为 Driver 容器和 Executor 容器启动的环境变量，比如下面这个 Driver 启动的 CMD 中：
+
+```bash
+CMD SPARK_CLASSPATH="${SPARK_HOME}/jars/*" && \
+    env | grep SPARK_JAVA_OPT_ | sed 's/[^=]*=\(.*\)/\1/g' > /tmp/java_opts.txt && \
+    readarray -t SPARK_DRIVER_JAVA_OPTS < /tmp/java_opts.txt && \
+    if ! [ -z ${SPARK_MOUNTED_CLASSPATH+x} ]; then SPARK_CLASSPATH="$SPARK_MOUNTED_CLASSPATH:$SPARK_CLASSPATH"; fi && \
+    if ! [ -z ${SPARK_SUBMIT_EXTRA_CLASSPATH+x} ]; then SPARK_CLASSPATH="$SPARK_SUBMIT_EXTRA_CLASSPATH:$SPARK_CLASSPATH"; fi && \
+    if ! [ -z ${SPARK_EXTRA_CLASSPATH+x} ]; then SPARK_CLASSPATH="$SPARK_EXTRA_CLASSPATH:$SPARK_CLASSPATH"; fi && \
+    if ! [ -z ${SPARK_MOUNTED_FILES_DIR+x} ]; then cp -R "$SPARK_MOUNTED_FILES_DIR/." .; fi && \
+    if ! [ -z ${SPARK_MOUNTED_FILES_FROM_SECRET_DIR} ]; then cp -R "$SPARK_MOUNTED_FILES_FROM_SECRET_DIR/." .; fi && \
+    ${JAVA_HOME}/bin/java "${SPARK_DRIVER_JAVA_OPTS[@]}" -cp $SPARK_CLASSPATH -Xms$SPARK_DRIVER_MEMORY -Xmx$SPARK_DRIVER_MEMORY $SPARK_DRIVER_CLASS $SPARK_DRIVER_ARGS
+```
+
+我们可以看到对 `SPARK_DRIVER_MEMORY` 环境变量的引用。Executor 的设置与 driver 类似。
+
+而我们可以使用这样的参数来传递环境变量的值 `spark.executorEnv.[EnvironmentVariableName]`，只要将 `EnvironmentVariableName` 替换为环境变量名称即可。
 
 ## 参考
 
