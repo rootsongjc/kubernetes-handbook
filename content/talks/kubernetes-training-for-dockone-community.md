@@ -24,7 +24,7 @@ Tags: ["talk"]
 - 这样看投影仪的输出操作真的很累脖子啊！
 
 
-**What I felt and considered that can be described by this song from *Clod Play*:**
+**What I felt and considered that can be described by this song from *Cold Play*:**
 
 When you try your best but you don't succeed 
 当你竭尽所能却只能铩羽而归
