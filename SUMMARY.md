@@ -74,6 +74,7 @@
      - [4.3.5 使用Jenkins进行持续构建与发布](practice/jenkins-ci-cd.md)
      - [4.3.6 数据持久化问题](practice/data-persistence-problem.md)
      - [4.3.7 管理容器的计算资源](practice/manage-compute-resources-container.md)
+     - [4.3.8 使用Prometheus监控kubernetes集群](practice/using-prometheus-to-monitor-kuberentes-cluster.md)
   - [4.4 存储管理](practice/storage.md)
      - [4.4.1 GlusterFS](practice/glusterfs.md)
         - [4.4.1.1 使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
