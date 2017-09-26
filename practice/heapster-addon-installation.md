@@ -195,3 +195,10 @@ monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/T
 
 ![kubernetes-influxdb-heapster](../images/kubernetes-influxdb-heapster.jpg)
 
+## 注意
+
+在安装好 Grafana 之后我们使用的是默认的 template 配置，页面上的 namespace 选择里只有 `default` 和 `kube-system`，并不是说其他的 namespace 里的指标没有得到监控，只是我们没有在 Grafana 中开启他它们的显示而已。见 [Cannot see other namespaces except, kube-system and default #1279](https://github.com/kubernetes/heapster/issues/1279)。
+
+![修改grafana模板](../images/grafana-dashboard-setting.jpg)
+
+将 Templating 中的 namespace 的 Data source 设置为 influxdb-datasource，Refresh 设置为 on Dashboard Load 保存设置，刷新浏览器，即可看到其他 namespace 选项。
