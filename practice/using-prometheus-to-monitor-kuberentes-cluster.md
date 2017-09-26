@@ -26,22 +26,58 @@
 
 ## 部署
 
+我将部署时需要用的的配置文件分成了 namespace、serviceaccount、configmaps、clusterrolebinding 和最后的部署 prometheus、grafana 的过程。
+
 ```yaml
 ## 创建 monitoring namespaece
 kubectl create -f prometheus-monitoring-ns.yaml
-## 创建 RBAC
-kubectl create -f prometheus-monitoring-rbac.yaml
-## 部署 Premetheus
+## 创建 serviceaccount
+kubectl create -f prometheus-monitoring-serviceaccount.yaml
+## 创建 configmaps
+kubectl create -f prometheus-configmaps.yaml
+## 创建 clusterrolebinding
+kubectl create clusterrolebinding kube-state-metrics --clusterrole=cluster-admin --serviceaccount=monitoring:kube-state-metrics
+kubectl create clusterrolebinding prometheus --clusterrole=cluster-admin --serviceaccount=monitoring:prometheus
+## 部署 Prometheus
 kubectl create -f prometheus-monitoring.yaml
 ```
 
-创建 RBAC 的过程考虑替换成下面的命令：
+访问 kubernetes 任何一个 node 上的 Grafana service 的 nodeport：
+
+![Grafana页面](../images/kubernetes-prometheus-monitoring.jpg)
+
+该图中的数据显示明显有问题，还需要修正。
+
+`prometheus-monitoring.yaml` 文件中有一个 Job 就是用来导入 grafana dashboard 配置信息的，如果该 Job 执行失败，可以单独在在 `monitoring` 的 namespace 中启动一个容器，将 `manifests/prometheus` 目录下的 json 文件复制到容器中，然后进入容器 json 文件的目录下执行：
 
 ```bash
-kubectl create clusterrolebinding prometheus-monitoring --clusterrole=cluster-admin --serviceaccount=monitoring:default
+ for file in *-datasource.json ; do
+              if [ -e "$file" ] ; then
+                echo "importing $file" &&
+                curl --silent --fail --show-error \
+                  --request POST http://admin:admin@grafana:3000/api/datasources \
+                  --header "Content-Type: application/json" \
+                  --data-binary "@$file" ;
+                echo "" ;
+              fi
+            done ;
+            for file in *-dashboard.json ; do
+              if [ -e "$file" ] ; then
+                echo "importing $file" &&
+                ( echo '{"dashboard":'; \
+                  cat "$file"; \
+                  echo ',"overwrite":true,"inputs":[{"name":"DS_PROMETHEUS","type":"datasource","pluginId":"prometheus","value":"prometheus"}]}' ) \
+                | jq -c '.' \
+                | curl --silent --fail --show-error \
+                  --request POST http://admin:admin@grafana:3000/api/dashboards/import \
+                  --header "Content-Type: application/json" \
+                  --data-binary "@-" ;
+                echo "" ;
+              fi
+            done
 ```
 
-注意需要修改 YAML 文件中的 serviceaccount 和 clusterrolebinding 目前还未完成。
+这样也可以向 grafana 中导入 dashboard。
 
 ## 存在的问题
 
@@ -56,13 +92,14 @@ kubectl create clusterrolebinding prometheus-monitoring --clusterrole=cluster-ad
 
 在部署 Prometheus 之前应该先创建 serviceaccount、clusterrole、clusterrolebinding 等对象，否则在安装过程中可能因为权限问题而导致各种错误，所以这些配置应该写在一个单独的文件中，而不应该跟其他部署写在一起，即使要写在一个文件中，也应该写在文件的最前面，因为使用 `kubectl` 部署的时候，kubectl 不会判断 YAML 文件中的资源依赖关系，只是简单的从头部开始执行部署，因此写在文件前面的对象会先部署。
 
-也可以绕过复杂的 RBAC 设置，直接使用下面的命令设置为 serviceaccount 设置成 admin 模式。
+**解决方法**
+
+也可以绕过复杂的 RBAC 设置，直接使用下面的命令将对应的 serviceaccount 设置成 admin 权限，如下：
 
 ```bash
-kubectl create clusterrolebinding prometheus-monitoring --clusterrole=cluster-admin --serviceaccount=monitoring:default
+kubectl create clusterrolebinding kube-state-metrics --clusterrole=cluster-admin --serviceaccount=monitoring:kube-state-metrics
+kubectl create clusterrolebinding prometheus --clusterrole=cluster-admin --serviceaccount=monitoring:prometheus
 ```
-
-这需要修改原配置中的 serviceaccount，并去掉原来的 clusterrolebinding。
 
 参考 [RBAC——基于角色的访问控制](../guide/rbac.md)
 
