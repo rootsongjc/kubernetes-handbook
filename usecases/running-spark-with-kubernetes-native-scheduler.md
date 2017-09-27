@@ -403,6 +403,35 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 
 可以使用 `spark.kubernetes.driver.limit.cores` 和 `spark.kubernetes.executor.limit.cores` 来设置 CPU的 hard limit。
 
+memory limit 的值是根据 memory request 的值加上 `spark.kubernetes.executor.memoryOverhead` 的值计算而来的，该配置项用于设置分配给每个 executor 的超过 heap 内存的值（可以使用k、m、g单位）。该值用于虚拟机的开销、其他本地服务开销。根据 executor 的大小设置（通常是 6%到10%）。
+
+我们可以这样来提交一个任务，同时设置 driver 和 executor 的 CPU、内存的资源 request 和 limit 值（driver 的内存 limit 值为 request 值的 110%）。
+
+```bash
+./spark-submit \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.SparkPi \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+  --conf spark.driver.memory=100G \
+  --conf spark.executor.memory=10G \
+  --conf spark.driver.cores=30 \
+  --conf spark.executor.cores=2 \
+  --conf spark.driver.maxResultSize=10240m \
+  --conf spark.kubernetes.driver.limit.cores=32 \
+  --conf spark.kubernetes.executor.limit.cores=3 \
+  --conf spark.kubernetes.executor.memoryOverhead=2g \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar 10000000
+```
+
+这将启动一个包含一千万个 task 的计算 pi 的 spark 任务，任务运行过程中，drvier 的 CPU 实际消耗大约为 3 核，内存 40G，每个 executor 的 CPU 实际消耗大约不到 1 核，内存不到 4G，我们可以根据实际资源消耗不断优化资源的 request 值。
+
 `SPARK_DRIVER_MEMORY` 和 `SPARK_EXECUTOR_MEMORY` 和分别作为 Driver 容器和 Executor 容器启动的环境变量，比如下面这个 Driver 启动的 CMD 中：
 
 ```bash
