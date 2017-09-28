@@ -23,6 +23,7 @@ title = "About Jimmy Song"
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - Awesome cloud native architectures
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
 - [magpie](http://github.com/rootsongjc/magpie) - Magpie is a command line tool for deploying and managing Yarn on Docker cluster also a solution for running Big Data applications with Docker. http://jimmysong.io/projects/yarn-on-docker/
+- [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
 
 ### Contact
 
@@ -30,7 +31,7 @@ title = "About Jimmy Song"
 - Email: rootsongjc@gmail.com
 - Twitter: https://twitter.com/jimmysongio
 - Facebook: https://facebook.com/rootsongjc
-- 图虫(Tuchong Photography): http://rootsongjc.tuchong.com
+- 图虫(Tuchong Photography): https://rootsongjc.tuchong.com
 - 知乎专栏——云原生应用架构：https://zhuanlan.zhihu.com/cloud-native
 - 微信公众号——云原生应用架构(CloudNativeGo)
 
