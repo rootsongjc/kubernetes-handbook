@@ -12,7 +12,7 @@ CPU和内存统称为*计算资源*，也可以称为*资源*。计算资源的�
 
 Pod 中的每个容器都可以指定以下的一个或者多个值：
 
-- spec.containers[].resources.limits.cpu`
+- `spec.containers[].resources.limits.cpu`
 - `spec.containers[].resources.limits.memory`
 - `spec.containers[].resources.requests.cpu`
 - `spec.containers[].resources.requests.memory`
