@@ -30,3 +30,13 @@ spec:
 ```
 
 容器中可以直接使用 `POD_IP` 环境变量获取容器的 IP。
+
+# 2. 指定容器的启动参数
+
+我们可以在 Pod 中为容器使用 command 为容器指定启动参数：
+
+```Bash
+command: ["/bin/bash","-c","bootstrap.sh"]
+```
+
+看似很简单，使用数组的方式定义，所有命令使用跟 Dockerfile 中的 CMD 配置是一样的，但是有一点不同的是，`bootsttap.sh` 必须具有可执行权限，否则容器启动时会出错。
