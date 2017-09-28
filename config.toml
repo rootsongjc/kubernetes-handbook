@@ -3,4 +3,6 @@ title = "Jimmy Song - Focus on Big Data & Cloud Native"
 baseurl = "https://jimmysong.io/"
 disqusShortname = "rootsongjc"
 hasCJKLanguage = true
-pygmentsuseclasses = false
+pygmentsuseclasses = true
+PygmentsCodeFences = true
+PygmentsStyle = "default"
