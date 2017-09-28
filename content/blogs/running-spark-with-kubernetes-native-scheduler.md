@@ -3,8 +3,9 @@ title: "运行支持kubernetes原生调度的spark程序-Spark on Kubernetes"
 date: 2017-09-14T15:55:39+08:00
 draft: false
 Tags: ["kubernetes","spark","big-data"]
-
 ---
+
+TL;DR 关于 Spark on kubernetes 的详细信息和最新进展请见 https://jimmysong.io/spark-on-
 
 我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](https://jimmysong.io/kubernetes-handbook/usecases/spark-standalone-on-kubernetes.html)。
 
@@ -307,7 +308,7 @@ kubectl --namespace spark-cluster get pods -w
 
 为了方便用户提交任务，不需要每次提交任务的时候都创建一个镜像，我们使用了 **resource staging server** 。
 
-```
+```bash
 kubectl create -f conf/kubernetes-resource-staging-server.yaml
 ```
 
