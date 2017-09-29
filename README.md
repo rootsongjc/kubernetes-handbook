@@ -1,7 +1,7 @@
-# Jimmy's blog
+# My blog's source code
 
-This is a project for producing [Jimmy's blog](http://rootsongjc.github.io) powerd by [hugo](https://github.com/spf13/hugo/).
+[Jimmy Song's blog](https://jimmysong.io) source code
 
-Jimmy Song
+Proudly powered by [Hugo](https://github.com/gohugoio/hugo) ❤️
 
-rootsongjc@gmail.com
+Theme [nixon](https://themes.gohugo.io/nixon/)
