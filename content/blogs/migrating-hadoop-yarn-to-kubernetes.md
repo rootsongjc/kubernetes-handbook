@@ -103,7 +103,7 @@ EXPOSE 49707 2122
 
 YARN 依赖的配置在 `artifacts` 目录下，包含以下文件：
 
-```
+```ini
 bootstrap.sh
 capacity-scheduler.xml
 container-executor.cfg
@@ -132,13 +132,12 @@ yarn-site.xml
 - Spark、ResourceManager、NodeManager 的 headless service 和 StatefulSet 配置
 - 需要暴露到 kubernetes 集群外部的 ingress 配置（ResourceManager 的 Web）
 
-```
+```Ini
 kube-yarn-ingress.yaml
 spark-statefulset.yaml
 yarn-cluster-namespace.yaml
 yarn-nm-statefulset.yaml
 yarn-rm-statefulset.yaml
-
 ```
 
 ## 5. Bootstrap 脚本
