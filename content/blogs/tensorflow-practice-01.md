@@ -10,7 +10,7 @@ Tags = ["tensorflow","deep learning","AI","google","machine learning","reading n
 
 *（题图：TensofFlow实战图书封面）*
 
-*🙏电子工业出版社编辑赠书，能够这么快的拿到这本书，也🙏[才云科技](www.caicloud.io)的郑泽宇大哥耐心的写了这本书，能够让我等小白一窥深度学习的真容。另外要强烈推荐下这本书，这是本TensorFlow深度学习很好的入门书。书中提供的代码[下载地址](https://github.com/caicloud/tensorflow-tutorial)，整本书的笔记归档在[这里](http://rootsongjc.github.io/tags/tensorflow-practice-reading-notes)。*
+*🙏电子工业出版社编辑赠书，能够这么快的拿到这本书，也🙏[才云科技](www.caicloud.io)的郑泽宇大哥耐心的写了这本书，能够让我等小白一窥深度学习的真容。另外要强烈推荐下这本书，这是本TensorFlow深度学习很好的入门书。书中提供的代码[下载地址](https://github.com/caicloud/tensorflow-tutorial)，整本书的笔记归档在[这里](https://jimmysong.io/tags/tensorflow-practice-reading-notes)。*
 
 P.S 本书的**官方读者交流微信群（作者也在群里）**已经超过100人，您可以先加我微信后我拉您进去，我的二维码在[这里](rootsongjc.github.io/about)，或者直接搜索我的微信号jimmysong。
 

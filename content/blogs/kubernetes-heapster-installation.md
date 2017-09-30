@@ -12,7 +12,7 @@ Tags = ["kubernetes","cloud computing"]
 
 ## 前言
 
-前面几篇文章中记录了我们[安装好了Kubernetes集群](http://rootsongjc.github.io/blogs/kubernetes-installation-on-centos/)、[配置好了flannel网络](http://rootsongjc.github.io/blogs/kubernetes-network-config/)、[安装了Kubernetes Dashboard](http://rootsongjc.github.io/blogs/kubernetes-dashboard-installation/)，但是还没法查看Pod的监控信息，虽然kubelet默认集成了**cAdvisor**（在每个node的4194端口可以查看到），但是很不方便，因此我们选择安装heapster。
+前面几篇文章中记录了我们[安装好了Kubernetes集群](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)、[配置好了flannel网络](https://jimmysong.io/blogs/kubernetes-network-config/)、[安装了Kubernetes Dashboard](https://jimmysong.io/blogs/kubernetes-dashboard-installation/)，但是还没法查看Pod的监控信息，虽然kubelet默认集成了**cAdvisor**（在每个node的4194端口可以查看到），但是很不方便，因此我们选择安装heapster。
 
 ## 安装
 

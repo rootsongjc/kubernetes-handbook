@@ -16,7 +16,7 @@ Tags = ["microservice","architecture","book"]
 ![微服务设计书皮照片](http://olz1di9xf.bkt.clouddn.com/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E4%B9%A6%E7%9A%AE%E7%85%A7.jpg)
 
 
-**本书读者交流微信群二维码，扫码入群（3月18日前有效）**，如果二维码失效，请移步[这里](http://rootsongjc.github.io/about/)加我微信，拉你入群。
+**本书读者交流微信群二维码，扫码入群（3月18日前有效）**，如果二维码失效，请移步[这里](https://jimmysong.io/about/)加我微信，拉你入群。
 
 ![二维码](http://olz1di9xf.bkt.clouddn.com/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E4%BA%A4%E6%B5%81%E7%BE%A4%E5%BE%AE%E4%BF%A1%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 
@@ -24,7 +24,7 @@ P.S 这本书比较偏理论，另外还有一本中国人写的书，**《微�
 
 **Cloud Native Go - 基于Go和React的web云服务构建指南**
 
-这本书是我最近在翻译的，将由**电子工业出版社**出版，本书根据实际案例教你如何构建一个web微服务，是实践为服务架构的很好的参考。[查看本书介绍](http://rootsongjc.github.io/talks/cloud-native-go/)。
+这本书是我最近在翻译的，将由**电子工业出版社**出版，本书根据实际案例教你如何构建一个web微服务，是实践为服务架构的很好的参考。[查看本书介绍](https://jimmysong.io/talks/cloud-native-go/)。
 
 ## 1.微服务初探
 
@@ -75,7 +75,7 @@ P.S 这本书比较偏理论，另外还有一本中国人写的书，**《微�
 
 ### 架构师应该做什么
 
-- 提供原则指导实践，比如Heroku的[12因素法则](http://rootsongjc.github.io/blogs/12-factor-app/)用来指导SAAS应用架构一样，微服务架构设计也要有一套原则。
+- 提供原则指导实践，比如Heroku的[12因素法则](https://jimmysong.io/blogs/12-factor-app/)用来指导SAAS应用架构一样，微服务架构设计也要有一套原则。
 - 提供要求标准，通过日志功能和监控对服务进行集中式管理，明确接口标准，提供安全性建议。
 - 代码治理。为开发人员提供范例和服务代码模板。
 - 解决技术债务。

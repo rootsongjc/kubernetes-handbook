@@ -10,7 +10,7 @@ Tags = ["docker","docker plugin","network","cisco","contiv"]
 
 *（题图：广州石牌桥 Aug 10,2014）*
 
-前几天写的几篇[关于Contiv的文章](http://rootsongjc.github.io/tags/contiv/)已经把引入坑了😂
+前几天写的几篇[关于Contiv的文章](https://jimmysong.io/tags/contiv/)已经把引入坑了😂
 
 今天这篇文章将带领大家用正确的姿势编译和打包一个**contiv netplugin**。
 

@@ -10,7 +10,7 @@ Tags = ["docker","kubernetes"]
 
 *（题图：河北承德兴隆县雾灵山京郊最佳星空拍摄点 July 9,2016)*
 
-本文是`Docker v.s Kubernetes `第二篇，续接上文[Docker v.s Kuberntes Part1](http://rootsongjc.github.io/blogs/docker-vs-kubernetes-part1/)。
+本文是`Docker v.s Kubernetes `第二篇，续接上文[Docker v.s Kuberntes Part1](https://jimmysong.io/blogs/docker-vs-kubernetes-part1/)。
 
 Kubernetes是典型的**Master/Slave**架构模式，本文简要的介绍kubenetes的架构和组件构成。
 
@@ -35,7 +35,7 @@ Kubernetes是典型的**Master/Slave**架构模式，本文简要的介绍kubene
 
 ### etcd
 
-虽然不是Kubernetes的组件但是有必要提一下，etcd是一个分布式协同数据库，基于Go语言开发，`CoreOS`公司出品，使用[raft一致性算法](http://rootsongjc.github.io/blogs/raft/)协同。Kubernetes的主数据库，在安装kubernetes之前就要先安装它，很多开源下项目都用到，老版本的`docker swarm`也用到了它。目前主要使用的是`2.7.x`版本，`3.0+`版本的API变化太大。
+虽然不是Kubernetes的组件但是有必要提一下，etcd是一个分布式协同数据库，基于Go语言开发，`CoreOS`公司出品，使用[raft一致性算法](https://jimmysong.io/blogs/raft/)协同。Kubernetes的主数据库，在安装kubernetes之前就要先安装它，很多开源下项目都用到，老版本的`docker swarm`也用到了它。目前主要使用的是`2.7.x`版本，`3.0+`版本的API变化太大。
 
 ### APIServer
 

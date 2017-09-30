@@ -10,7 +10,7 @@ Tags = ["docker","plugin","develop","docker plugin"]
 
 *（题图：故宫 Apr 3,2016）*
 
-继续上一篇[Docker17.03-CE插件开发的🌰](http://rootsongjc.github.io/blogs/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
+继续上一篇[Docker17.03-CE插件开发的🌰](https://jimmysong.io/blogs/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
 
 **cli/command/plugin/create.go**
 

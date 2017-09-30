@@ -12,7 +12,7 @@ Tags = ["cloud-native","book","python"]
 
 ![Cloud Native Python 和 Cloud Native Go 合影](http://olz1di9xf.bkt.clouddn.com/cloud-native-python-with-cloud-native-go.JPG)
 
-这本书跟 Cloud Native Go 的内容由很大部分的重合，目录结构也基本一致，所用的技术栈也很类似，不过内容更详实，图片和步骤介绍更多一些，跟我看的另一本由印度人写的 [Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms](http://rootsongjc.github.io/talks/book-kubernetes-management-design-patterns/) 的风格很像。
+这本书跟 Cloud Native Go 的内容由很大部分的重合，目录结构也基本一致，所用的技术栈也很类似，不过内容更详实，图片和步骤介绍更多一些，跟我看的另一本由印度人写的 [Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms](https://jimmysong.io/talks/book-kubernetes-management-design-patterns/) 的风格很像。
 
 ## Cloud Native Python 介绍
 
@@ -69,6 +69,6 @@ Tags = ["cloud-native","book","python"]
 
 ## 更多资料
 
-- 关于 Cloud Native Go 的更多信息请参阅：[Cloud Native Go - 基于Go和React的Web云服务构建指南](http://rootsongjc.github.io/talks/cloud-native-go/)
+- 关于 Cloud Native Go 的更多信息请参阅：[Cloud Native Go - 基于Go和React的Web云服务构建指南](https://jimmysong.io/talks/cloud-native-go/)
 - 关于云原生（Cloud Native）的更多资料请参考我翻译的这本 Pivotal 的小册子 [迁移到云原生应用架构-中文版](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
 - 关于 Cloud Native 生态请参考我整理的 [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)

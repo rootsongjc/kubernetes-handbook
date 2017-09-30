@@ -14,7 +14,7 @@ Tags = ["kubernetes"]
 
 本文已同步更新到Github仓库[kubernetes-handbook](http://github.com/rootsongjc/kubernetes-handbook)中。
 
-昨天写了篇文章[使用Logstash收集Kubernetes的应用日志](http://rootsongjc.github.io/blogs/kubernetes-logstash/)，发现logstash十分消耗内存（大约500M），经人提醒改用filebeat（大约消耗10几M内存），因此重写一篇使用filebeat收集kubernetes中的应用日志。
+昨天写了篇文章[使用Logstash收集Kubernetes的应用日志](https://jimmysong.io/blogs/kubernetes-logstash/)，发现logstash十分消耗内存（大约500M），经人提醒改用filebeat（大约消耗10几M内存），因此重写一篇使用filebeat收集kubernetes中的应用日志。
 
 在进行日志收集的过程中，我们首先想到的是使用Logstash，因为它是ELK stack中的重要成员，但是在测试过程中发现，Logstash是基于JDK的，在没有产生日志的情况单纯启动Logstash就大概要消耗**500M**内存，在每个Pod中都启动一个日志收集组件的情况下，使用logstash有点浪费系统资源，经人推荐我们选择使用**Filebeat**替代，经测试单独启动Filebeat容器大约会消耗**12M**内存，比起logstash相当轻量级。
 
