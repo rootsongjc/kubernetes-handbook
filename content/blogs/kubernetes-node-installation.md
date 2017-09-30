@@ -12,7 +12,7 @@ Tas = ["kubernetes"]
 
 ## 前言
 
-这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目(fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster))中的一篇文章，下文是结合我[之前部署kubernetes的过程](http://rootsongjc.github.io/tags/kubernetes/)产生的kuberentes环境，部署node节点上的`kube-proxy`和`kubelet`，同时对之前部署的flannel改造。
+这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目(fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster))中的一篇文章，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)产生的kuberentes环境，部署node节点上的`kube-proxy`和`kubelet`，同时对之前部署的flannel改造。
 
 **安装环境配置信息**
 
@@ -25,7 +25,7 @@ Tas = ["kubernetes"]
 
 kubernetes node 节点包含如下组件：
 
-- Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
+- Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 - Docker1.12.5：docker的安装很简单，这里也不说了。
 - kubelet
 - kube-proxy
@@ -45,7 +45,7 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 ## 配置Flanneld
 
-参考我之前写的文章[Kubernetes基于Flannel的网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
+参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
 service配置文件`/usr/lib/systemd/system/flanneld.service`。
 

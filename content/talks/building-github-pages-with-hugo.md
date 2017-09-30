@@ -123,9 +123,9 @@ $ hugo server -t hyde --buildDrafts
 - **Tags** 数组，可以设置多个标签，都好隔开，hugo会自动在你博客主页下生成标签的子URL，通过这个URL可以看到所有具有该标签的文章。
 - **Category** 文章分类，跟Tag功能差不多。
 
-今天先说到这里，再次声明下，[Jimmy Song's blog](http://rootsongjc.github.io)就是用👆的步骤建立的。
+今天先说到这里，再次声明下，[Jimmy Song's blog](https://jimmysong.io)就是用👆的步骤建立的。
 
-Jimmy Song's blog的页面比较简陋，你可以在[这里](http://themes.gohugo.io)找到更多可爱的模版。另外我给自己翻译的书[Cloude Native Go](http://rootsongjc.github.io/talks/cloud-native-go/)做一个静态页面，[点此查看](http://rootsongjc.github.io/cloud-native-go/)，欢迎大家关注。🙏
+Jimmy Song's blog的页面比较简陋，你可以在[这里](http://themes.gohugo.io)找到更多可爱的模版。另外我给自己翻译的书[Cloude Native Go](https://jimmysong.io/talks/cloud-native-go/)做一个静态页面，[点此查看](https://jimmysong.io/cloud-native-go/)，欢迎大家关注。🙏
 
 ---
 

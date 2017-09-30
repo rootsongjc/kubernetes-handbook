@@ -35,4 +35,4 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 P.S 本书中也将记录业界动态和经验分享，欢迎分享你的**独到**见解。
 
-加入Kubernetes交流群，请添加我微信[jimmysong](http://rootsongjc.github.io/about)。
+加入Kubernetes交流群，请添加我微信[jimmysong](https://jimmysong.io/about)。

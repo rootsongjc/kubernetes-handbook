@@ -12,7 +12,7 @@ Tags = ["kubernetes","cloud computing","fluentd","elasticsearch","logging"]
 
 ## 前言
 
-在[安装好了Kubernetes集群](http://rootsongjc.github.io/blogs/kubernetes-installation-on-centos/)、[配置好了flannel网络](http://rootsongjc.github.io/blogs/kubernetes-network-config/)、[安装了Kubernetes Dashboard](http://rootsongjc.github.io/blogs/kubernetes-dashboard-installation/)和[配置Heapster监控插件](http://rootsongjc.github.io/blogs/kubernetes-heapster-installation/)后，还有一项重要的工作，为了调试和故障排查，还需要进行日志收集工作。
+在[安装好了Kubernetes集群](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)、[配置好了flannel网络](https://jimmysong.io/blogs/kubernetes-network-config/)、[安装了Kubernetes Dashboard](https://jimmysong.io/blogs/kubernetes-dashboard-installation/)和[配置Heapster监控插件](https://jimmysong.io/blogs/kubernetes-heapster-installation/)后，还有一项重要的工作，为了调试和故障排查，还需要进行日志收集工作。
 
 **官方文档**
 
@@ -271,7 +271,7 @@ fluentd-es-v1.22   3         3         0         3            0           beta.k
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 ```
 
-我们可以使用[ConfigMap](http://rootsongjc.github.io/blogs/kubernetes-configmap-introduction/)，不用重新再build镜像，通过文件挂载的形式替换镜像中已有的td-agent.conf文件。
+我们可以使用[ConfigMap](https://jimmysong.io/blogs/kubernetes-configmap-introduction/)，不用重新再build镜像，通过文件挂载的形式替换镜像中已有的td-agent.conf文件。
 
 [Tony Bai](tonybai.com)给出的两点建议：
 

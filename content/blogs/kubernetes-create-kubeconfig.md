@@ -12,7 +12,7 @@ Tags = ["kubernetes"]
 
 ## 前言
 
-这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目((fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)))中的一篇文章，下文是结合我[之前部署kubernetes的过程](http://rootsongjc.github.io/tags/kubernetes/)产生的kuberentes环境，生成**kubeconfig**文件的过程。
+这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目((fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)))中的一篇文章，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)产生的kuberentes环境，生成**kubeconfig**文件的过程。
 `kubelet`、`kube-proxy` 等 Node 机器上的进程与 Master 机器的 `kube-apiserver` 进程通信时需要认证和授权；
 kubernetes 1.4 开始支持由 `kube-apiserver` 为客户端生成 TLS 证书的 [TLS Bootstrapping](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/) 功能，这样就不需要为每个客户端生成证书了；该功能**当前仅支持为 `kubelet`** 生成证书。
 

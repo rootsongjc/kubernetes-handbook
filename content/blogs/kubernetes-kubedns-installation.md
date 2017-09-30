@@ -12,7 +12,7 @@ Tags = ["kubernetes"]
 
 ## 前言
 
-这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目(fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster))中的一篇文章，下文是结合我[之前部署kubernetes的过程](http://rootsongjc.github.io/tags/kubernetes/)产生的kuberentes环境，使用yaml文件部署**kubedns**。
+这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目(fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster))中的一篇文章，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)产生的kuberentes环境，使用yaml文件部署**kubedns**。
 
 **安装环境配置信息**
 

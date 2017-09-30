@@ -10,9 +10,9 @@ Tags = ["contiv","docker","docker plugin","network","cisco","sdn"]
 
 *(题图：山东荣成滨海风力发电场  Jan 31,2017）*
 
-关于contiv的介绍请看我的上一篇文章[Contiv Intro](http://rootsongjc.github.io/post/contiv_guide/)。
+关于contiv的介绍请看我的上一篇文章[Contiv Intro](https://jimmysong.io/post/contiv_guide/)。
 
-开发环境使用**Vagrant**搭建，昨天试用了下，真不知道它们是怎么想的，即然是docker插件为啥不直接在docker中开发呢，我有篇文章介绍[如何搭建docker开发环境](http://rootsongjc.github.io/post/docker-dev-env/)，可以在docker中开发docker，当然也可以用来开发contiv啊😄，只要下载一个docker镜像`dockercore/docker:latest`即可，不过有点大2.31G，使用阿里云的mirror下载倒是也划算，总比你自己部署一个开发环境节省时间。
+开发环境使用**Vagrant**搭建，昨天试用了下，真不知道它们是怎么想的，即然是docker插件为啥不直接在docker中开发呢，我有篇文章介绍[如何搭建docker开发环境](https://jimmysong.io/post/docker-dev-env/)，可以在docker中开发docker，当然也可以用来开发contiv啊😄，只要下载一个docker镜像`dockercore/docker:latest`即可，不过有点大2.31G，使用阿里云的mirror下载倒是也划算，总比你自己部署一个开发环境节省时间。
 
 ### Contiv概念解析
 

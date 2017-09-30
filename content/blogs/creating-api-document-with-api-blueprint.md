@@ -14,7 +14,7 @@ Tags = ["devops","design","tools"]
 
 另外，配合一些工具，可以直接生成一个 mock data 数据，这样只要和后端的同学约定好接口格式，那么前端再开发的时候可以使用 mock data 数据来做测试，等到后端写好接口之后再做联调就可以了。
 
-我们以[Cloud Native Go](http://rootsongjc.github.io/cloud-native-go)书中的[gogo-service](https://github.com/rootsongjc/gogo-service)示例里的`apiary.apib`文件为例。
+我们以[Cloud Native Go](https://jimmysong.io/cloud-native-go)书中的[gogo-service](https://github.com/rootsongjc/gogo-service)示例里的`apiary.apib`文件为例。
 
 该文件实际上是一个Markdown格式的文件，Github中原生支持该文件，使用[Typora](https://typora.io)打开后是这样子。
 

@@ -11,7 +11,7 @@ Tags = ["kubernetes","cloud computing"]
 
 ## 前言
 
-前几天[在CentOS7.2上安装Kubernetes1.6](http://rootsongjc.github.io/blogs/kubernetes-installation-on-centos/)和安装好[flannel网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，今天我们来安装下kuberentnes的dashboard。
+前几天[在CentOS7.2上安装Kubernetes1.6](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)和安装好[flannel网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，今天我们来安装下kuberentnes的dashboard。
 
 [Dashboard](https://github.com/kubernetes/dashboard)是Kubernetes的一个插件，代码在单独的开源项目里。1年前还是特别简单的一个UI，只能在上面查看pod的信息和部署pod而已，现在已经做的跟[Docker Enterprise Edition](https://www.docker.com/enterprise-edition)的**Docker Datacenter**很像了。
 

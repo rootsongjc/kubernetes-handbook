@@ -13,12 +13,12 @@ Tags = ["kubernetes","traefik","ingress"]
 
 ## 前言
 
-昨天翻了下[Ingress解析](http://rootsongjc.github.io/blogs/kubernetes-ingress-resource/)，然后安装试用了下[traefik](https://traefik.io)，过程已同步到[kubernetes-handbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook)上，Github地址https://github.com/rootsongjc/kubernetes-handbook
+昨天翻了下[Ingress解析](https://jimmysong.io/blogs/kubernetes-ingress-resource/)，然后安装试用了下[traefik](https://traefik.io)，过程已同步到[kubernetes-handbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook)上，Github地址https://github.com/rootsongjc/kubernetes-handbook
 
 
 ## Ingress简介
 
-如果你还不了解，ingress是什么，可以先看下我翻译的Kubernetes官网上ingress的介绍[Kubernetes Ingress解析](http://rootsongjc.github.io/blogs/kubernetes-ingress-resource/)。
+如果你还不了解，ingress是什么，可以先看下我翻译的Kubernetes官网上ingress的介绍[Kubernetes Ingress解析](https://jimmysong.io/blogs/kubernetes-ingress-resource/)。
 
 **理解Ingress**
 
