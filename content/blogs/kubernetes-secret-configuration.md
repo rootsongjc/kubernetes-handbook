@@ -407,7 +407,7 @@ spec:
 
 当容器中的命令运行时，密钥的片段将可在以下目录：
 
-```
+```Ini
 /etc/secret-volume/ssh-publickey
 /etc/secret-volume/ssh-privatekey
 ```
@@ -473,7 +473,7 @@ items:
 
 这两个容器将在其文件系统上显示以下文件，其中包含每个容器环境的值：
 
-```
+```Ini
 /etc/secret-volume/username
 /etc/secret-volume/password
 ```
