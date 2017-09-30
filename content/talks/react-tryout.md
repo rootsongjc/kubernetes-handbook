@@ -12,7 +12,7 @@ Tags = ["react","frontend","tool","web"]
 
 各种前端mvc框架层出不穷，angular js，vue，[React](http://lib.csdn.net/base/react)，前端组件化开发概念已经深入人心。作为开发者，学习下前端设计也是有必要的，一来页面有些小的设计问题可以自己解决，同时还能提高自己的审美，提高网站的ui设计水平。
 
-今天看到一本书《React Up and Running》的中文版本《React快速上手开发》出版了，英文版可以在[这里](http://olz1di9xf.bkt.clouddn.com/React_Up_and_Running.pdf)下载。最近我在翻译的书[Cloud Native Go](rootsongjc.github.io/talks/cloud-native-go/)中的实例也使用了React来构建Web应用程序，因此在网上找了一些React资料学习下。
+今天看到一本书《React Up and Running》的中文版本《React快速上手开发》出版了，英文版可以在[这里](http://olz1di9xf.bkt.clouddn.com/React_Up_and_Running.pdf)下载。最近我在翻译的书[Cloud Native Go](https://jimmysong.io/talks/cloud-native-go/)中的实例也使用了React来构建Web应用程序，因此在网上找了一些React资料学习下。
 
 ## 必备基础技能
 
