@@ -1,8 +1,154 @@
-languageCode = "zh-hans"
-title = "Jimmy Song - Focus on Big Data & Cloud Native"
 baseurl = "https://jimmysong.io/"
-disqusShortname = "rootsongjc"
+DefaultContentLanguage = "en"
 hasCJKLanguage = true
-pygmentsuseclasses = true
-PygmentsCodeFences = true
-PygmentsStyle = "default"
+languageCode = "zh-hans"
+title = "Jimmy Song" 
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+#googleAnalytics = "XXX"
+
+[Params]
+  subtitle = "BUILDING CLOUD NATIVE CONFIDENCE"
+  logo = "img/avatar-icon.png"
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false 
+#  rss = true
+  comments = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#[[Params.bigimg]]
+#src = "img/triangle.jpg"
+#  desc = "Triangle"
+[[Params.bigimg]]
+src = "img/data-analytics-carousel.jpg"
+#desc = "Sphere"
+#[[Params.bigimg]]
+#src = "img/hexagon.jpg"
+#desc = "Hexagon"
+
+[Author]
+  name = "Jimmy Song"
+ # website = "https://jimmysong.io"
+  email = "rootsongjc@gmail.com"
+  facebook = "jimmysongio"
+ # googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
+  github = "rootsongjc"
+  twitter = "jimmysongio"
+  linkedin = "jimmysongio"
+
+[[menu.main]]
+    name = "Posts"
+    url = "posts"
+    weight = 1
+
+[[menu.main]]
+    identifier = "Categories"
+    name = "Categories"
+    url = "categories"
+    weight = 2
+
+[[menu.main]]
+    parent = "Categories"
+    name = "kubernetes"
+    url = "categories/kubernetes"
+    weight = 1
+    
+[[menu.main]]
+    parent = "Categories"
+    name = "Cloud Native"
+    url = "categories/cloud-native"
+    weight = 2
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Github"
+    url = "categories/github"
+    weight = 3
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Programming"
+    url = "categories/programming"
+    weight = 6
+
+[[menu.main]]
+    parent = "Categories"
+    name = "infrustructures"
+    url = "categories/infrustructures/"
+    weight = 7
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Devops"
+    url = "categories/devops"
+    weight = 4
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Containers"
+    url = "categories/containers"
+    weight = 5
+
+[[menu.main]]
+    identifier = "Books"
+    name = "Books"
+    weight = 3
+
+[[menu.main]]
+    parent = "Books"
+    name = "Cloud Native Go"
+    url = "cloud-native-go"
+    weight = 1
+
+[[menu.main]]
+    parent = "Books"
+    name = "Cloud Native Python..."
+    weight = 2
+
+[[menu.main]]
+    identifier = "Projects"
+    name = "Projects"
+    weight = 4
+
+[[menu.main]]
+    parent = "Projects"
+    name = "Spark on kubernetes"
+    url = "spark-on-k8s"
+    weight = 1
+
+[[menu.main]]
+    parent = "Projects"
+    name = "Awesome Cloud Native"
+    url = "awesome-cloud-native"
+    weight = 2
+
+[[menu.main]]
+    parent = "Projects"
+    name = " Migrating to Cloud native"
+    url = "migrating-to-cloud-native-application-architectures"
+    weight = 3
+
+[[menu.main]]
+    parent = "Projects"
+    name = "Istio service mesh"
+    url = "istio.doczh.cn"
+    weight = 4
+
+[[menu.main]]
+    parent = "Projects"
+    name = "Kubernetes handbook"
+    url = "kubernetes-handbook"
+    weight = 5
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 5
+
+[[menu.main]]
+    name = "About"
+    url = "about"
+    weight = 6

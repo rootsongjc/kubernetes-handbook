@@ -1,6 +1,0 @@
-$em: $font-size * 1; // pixel value of an em
-$total_cols: $margin_cols + $content_cols; // total cols 12 + 2 margins
-$line: $font-size * $line_height; // in pixels
-$column: 100% / $total_cols; // width of a column
-$fat_col: 100% / $content_cols;
-

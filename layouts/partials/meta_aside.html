@@ -1,9 +1,0 @@
-{{ $baseurl := .Site.BaseURL }}
-
-<aside id="meta">
-{{ partial "details.html" . }}
-</aside>
-
-<meta itemprop="wordCount" content="{{ .WordCount }}">
-<meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02" }}">
-<meta itemprop="url" content="{{ .Permalink }}">
