@@ -1,6 +1,6 @@
 +++
 date = "2017-03-18T20:53:54+08:00"
-title = "About Jimmy Song"
+title = "About me"
 
 +++
 
@@ -18,8 +18,6 @@ title = "About Jimmy Song"
 ### GitHub
 
 - https://github.com/rootsongjc
-
-
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - Awesome cloud native architectures
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
 - [magpie](http://github.com/rootsongjc/magpie) - Magpie is a command line tool for deploying and managing Yarn on Docker cluster also a solution for running Big Data applications with Docker. http://jimmysong.io/projects/yarn-on-docker/
