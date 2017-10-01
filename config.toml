@@ -134,7 +134,7 @@ src = "img/data-analytics-carousel.jpg"
 [[menu.main]]
     parent = "Projects"
     name = "Istio service mesh"
-    url = "istio.doczh.cn"
+    url = "http://istio.doczh.cn"
     weight = 4
 
 [[menu.main]]
