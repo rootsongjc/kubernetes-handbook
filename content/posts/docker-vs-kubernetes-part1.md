@@ -2,7 +2,7 @@
 date = "2017-03-10T21:09:47+08:00"
 title = "Docker v.s Kubernetes part1"
 draft = false
-categories = "containers"
+categories = "docker"
 Tags = ["docker","kubernetes"]
 +++
 

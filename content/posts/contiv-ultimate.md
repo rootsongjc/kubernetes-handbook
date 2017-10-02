@@ -2,7 +2,7 @@
 date = "2017-03-17T17:52:37+08:00"
 title = "Contiv Ultimate-Docker17.03CE下思科docker网络插件contiv趟坑终极版"
 draft = false
-categories = "containers"
+categories = "docker"
 Tags = ["docker","network","sdn"]
 
 +++

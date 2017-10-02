@@ -2,7 +2,7 @@
 draft = false
 date = "2017-03-23T15:26:11+08:00"
 title = "容器的应用场景"
-categories = "containers"
+categories = "docker"
 Tags = ["container"]
 
 +++

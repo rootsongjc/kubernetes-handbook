@@ -2,7 +2,7 @@
 date = "2017-06-30T18:32:19+08:00"
 draft = false
 title = "微服务中的服务发现方式对比"
-categories = "Infrustructures"
+categories = "Architecture"
 Tags = ["microservices"]
 
 +++
