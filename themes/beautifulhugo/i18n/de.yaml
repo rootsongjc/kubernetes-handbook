@@ -1,0 +1,39 @@
+# Content
+- id: dateFormat
+  translation: "02.01.2006"
+- id: postedOnDate
+  translation: "Gepostet am {{ .Count }}"
+- id: translationsLabel
+  translation: "Andere Sprachen: "
+- id: translationsSeparator
+  translation: ", "
+- id: readMore
+  translation: "Mehr"
+- id: olderPosts
+  translation: "Ältere Posts"
+- id: newerPosts
+  translation: "Neuere Posts"
+- id: previousPost
+  translation: "Letzter Post"
+- id: nextPost
+  translation: "Nächster Post"
+
+# 404 page
+- id: pageNotFound
+  translation: "Ups, diese Seite existiert nicht. (404 Error)"
+
+# Footer
+- id: poweredBy # Accepts HTML
+  translation: '<a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>'
+
+# Navigation
+- id: toggleNavigation
+  translation: "Navigation"
+- id: languageSwitcherLabel
+  translation: "Sprache"
+- id: gcseLabelShort
+  translation: "Suche"
+- id: gcseLabelLong
+  translation: "Suche {{ .Site.Title }}"
+- id: gcseClose
+  translation: "Schließen"

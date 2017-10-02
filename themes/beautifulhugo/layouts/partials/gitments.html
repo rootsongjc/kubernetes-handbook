@@ -1,0 +1,25 @@
+<aside id=comments>
+    <div>
+        <h2> Comments </h2>
+    </div>
+    <!-- 友言评论 BEGIN -->
+    <!--
+    <div id="uyan_frame"></div>
+   <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2126256"></script>
+   -->
+    <!-- 友言评论 END -->
+    <div id="container"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'rootsongjc', //github account
+            repo: 'rootsongjc.github.io', // github repo
+            oauth: {
+                client_id: '93a0df08e0f93ff0c8a3',
+                client_secret: '3bdbf0b42c525f78582600bd38cf7f722ee40541',
+            },
+        })
+        gitment.render('container')
+    </script>
+</aside>

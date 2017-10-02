@@ -1,0 +1,63 @@
+{{ define "main" }}
+  <div role="main" class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ with .Content }}
+          <div class="well">
+            {{.}}
+          </div>
+        {{ end }}
+
+        <div class="posts-list">
+          {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+          {{ range $pag.Pages }}
+            <article class="post-preview">
+              <a href="{{ .Permalink }}">
+                <h2 class="post-title">{{ .Title }}</h2>
+                {{ if .Params.subtitle }}
+                  <h3 class="post-subtitle">
+                  {{ .Params.subtitle }}
+                  </h3>
+                {{ end }}
+              </a>
+
+              {{ partial "post_meta.html" . }}
+              <div class="post-entry">
+                {{ if .Truncated }}
+                  {{ .Summary }}
+                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+                {{ else }}
+                  {{ .Content }}
+                {{ end }}
+              </div>
+
+              {{ if .Params.tags }}
+                <span class="post-meta">
+                {{ range .Params.tags }}
+                  #<a href="{{ $.Site.LanguagePrefix | absURL }}tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+                {{ end }}
+                </span>
+              {{ end }}
+            </article>
+          {{ end }}
+        </div>
+
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+              <li class="previous">
+                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}">&larr; {{ i18n "newerPosts" }}</a>
+              </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <li class="next">
+                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}">{{ i18n "olderPosts" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
+
