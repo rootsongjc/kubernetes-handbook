@@ -160,6 +160,6 @@ spec:
   - 节点控制器将 Pod `phase` 设置为 Failed。
   - 如果是用控制器来运行，Pod 将在别处重建。
 
-原文地址：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
+[原文地址](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 
 翻译：[rootsongjc](https://github.com/rootsongjc)
