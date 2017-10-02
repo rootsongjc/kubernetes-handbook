@@ -34,7 +34,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 
 因为我使用wercker自动构建，构建完成后自动打包成docker镜像并上传到docker hub中（需要提前在docker hub中创建repo），如何使用 wercker 做持续构建与发布，并集成docker hub插件请参考[使用Wercker进行持续构建与发布](https://jimmysong.io/blogs/continuous-integration-with-wercker/)。
 
-构建流程见：https://app.wercker.com/jimmysong/k8s-app-monitor-agent/
+[查看详细构建流程](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
 
 ![wercker](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-agent-wercker.jpg)
 
