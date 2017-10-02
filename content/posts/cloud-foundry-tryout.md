@@ -74,7 +74,7 @@ Regular user => Email: user / Password: pass
 
 **下载代码**
 
-```
+```bash
 $git clone https://github.com/cloudfoundry-samples/spring-music
 $cd ./spring-music
 $cf login -a api.local.pcfdev.io --skip-ssl-validation
@@ -101,7 +101,7 @@ Space:          pcfdev-space
 
 使用gradle来编译。
 
-```
+```bash
 $./gradlew assemble
 :compileJava UP-TO-DATE
 :processResources UP-TO-DATE
@@ -140,7 +140,7 @@ This build could be faster, please consider using the Gradle Daemon: https://doc
 
 设置应用的主机名为spring-music。
 
-```
+```bash
 $cf push --hostname spring-music
 Using manifest file /Users/jimmy/Workspace/github/cloudfoundry-samples/spring-music/manifest.yml
 
@@ -234,7 +234,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 
 ![spring-music](http://olz1di9xf.bkt.clouddn.com/pivotal-cloudfoundry-spring-music.jpg)
 
-```
+```bash
 requested state: started
 instances: 1/1
 usage: 512M x 1 instances
@@ -256,14 +256,14 @@ PCF提供应用的日志聚合功能，你可以查看HTTP请求、对应用操�
 
 查看最近输出：
 
-```
+```bash
 $cf logs spring-music --recent
 2017-03-23T22:34:05.17+0800 [RTR/0]      OUT spring-music.local.pcfdev.io - [23/03/2017:14:34:05.163 +0000] "GET /templates/albumForm.html HTTP/1.1" 200 0 2518 "http://spring-music.local.pcfdev.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36" 192.168.11.1:52097 10.0.2.15:60012 x_forwarded_for:"-" x_forwarded_proto:"http" vcap_request_id:c6b5f34d-bc5a-4c66-77aa-cb768b273f21 response_time:0.007390127 app_id:fdc7a43e-61b8-40e9-b1dc-38b858037da9 app_index:0
 ```
 
 查看实时输出流：
 
-```
+```bash
 $cf logs spring-music
 ```
 
@@ -273,7 +273,7 @@ $cf logs spring-music
 
 **查看可用的数据**
 
-```
+```bash
 $cf marketplace -s p-mysql
 Getting service plan information for service p-mysql as user...
 OK
@@ -285,7 +285,7 @@ service plan   description            free or paid
 
 **创建数据库**
 
-```
+```bash
 $cf create-service p-mysql 512mb my-spring-db
 Creating service instance my-spring-db in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -293,7 +293,7 @@ OK
 
 将它与我们上面的示例应用程序绑定。
 
-```
+```bash
 $cf bind-service spring-music my-spring-db
 Binding service my-spring-db to app spring-music in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -302,7 +302,7 @@ TIP: Use 'cf restage spring-music' to ensure your env variable changes take effe
 
 重启app
 
-```
+```bash
 $cf restart spring-music
 Stopping app spring-music in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -340,7 +340,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 
 现在我们再查看下自己的service。
 
-```
+```bash
 $cf services
 Getting services in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -353,7 +353,7 @@ my-spring-db   p-mysql   512mb   spring-music   create succeeded
 
 扩展应用的示例数。
 
-```
+```bash
 $cf scale spring-music -i 2
 Scaling app spring-music in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -361,7 +361,7 @@ OK
 
 再查看下`spring-music`应用的信息。
 
-```
+```Bash
 $cf app spring-music
 Showing health and status for app spring-music in org pcfdev-org / space pcfdev-space as user...
 OK
@@ -377,12 +377,11 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
      state      since                    cpu    memory         disk             details
 #0   running    2017-03-23 10:44:18 PM   0.5%   451.4M of 1G   165.6M of 512M
 #1   starting   2017-03-23 10:46:19 PM   0.0%   348.3M of 1G   165.6M of 512M
-
 ```
 
 还可以对内存进行扩容。这个操作会重启应用。
 
-```
+```Bash
 $cf scale spring-music -m 1G
 0 of 2 instances running, 1 starting, 1 down
 0 of 2 instances running, 1 starting, 1 down
@@ -417,7 +416,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 
 还可以增加应用的磁盘大小。这个操作也会重启应用。
 
-```
+```bash
 $cf scale spring-music -k 512M
 This will cause the app to restart. Are you sure you want to scale spring-music?> y
 
@@ -460,4 +459,4 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 
 从上面的操作中可以看到，连续性特别强，所有的操作都可以在几秒钟内完成，特别适合**微服务**的部署和**Cloud Native** APP。
 
-关于**Pivotal Cloud Foundry**的更多文档可以访问：https://pivotal.io/cn/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/next-steps
+[更多关于**Pivotal Cloud Foundry**的文档](https://pivotal.io/cn/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/next-steps)

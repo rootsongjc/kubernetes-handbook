@@ -188,7 +188,7 @@ kubectl create -f rolling-update-test.yaml
 
 修改本地的host配置，增加一条配置：
 
-```
+```ini
 172.20.0.119 rolling-update-test.traefik.io
 ```
 
@@ -196,7 +196,7 @@ kubectl create -f rolling-update-test.yaml
 
 打开浏览器访问http://rolling-update-test.traefik.io将会看到以下输出：
 
-```
+```bash
 This is version 1.
 ```
 
@@ -210,7 +210,7 @@ kubectl apply -f rolling-update-test.yaml
 
 也可以参考[Kubernetes Deployment Concept](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)中的方法，直接设置新的镜像。
 
-```
+```bash
 kubectl set image deployment/rolling-update-test rolling-update-test=sz-pg-oam-docker-hub-001.tendcloud.com/library/hello:v2
 ```
 
@@ -218,13 +218,13 @@ kubectl set image deployment/rolling-update-test rolling-update-test=sz-pg-oam-d
 
 使用以下命令查看升级进度：
 
-```
+```bash
 kubectl rollout status deployment/rolling-update-test
 ```
 
 升级完成后在浏览器中刷新http://rolling-update-test.traefik.io将会看到以下输出：
 
-```
+```bash
 This is version 2.
 ```
 

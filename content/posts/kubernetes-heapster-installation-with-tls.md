@@ -104,7 +104,7 @@ $ diff influxdb-deployment.yaml.orig influxdb-deployment.yaml
 
 ## 配置 monitoring-influxdb Service
 
-```
+```bash
 $ diff influxdb-service.yaml.orig influxdb-service.yaml
 12a13
 >   type: NodePort
@@ -198,7 +198,7 @@ monitoring-influxdb-1411048194-lzrpc    1/1       Running   0          2m
 
 获取 influxdb http 8086 映射的 NodePort
 
-```
+```bash
 $ kubectl get svc -n kube-system|grep influxdb
 monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/TCP   9m
 ```

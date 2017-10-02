@@ -42,7 +42,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 ![logstash日志收集架构图](http://olz1di9xf.bkt.clouddn.com/logstash-log-collector.jpg)
 
-我们创建了自己的logstash镜像。创建过程和使用方式见https://github.com/rootsongjc/docker-images
+我们创建了自己的logstash镜像。创建过程和使用方式见 [Github - docker images](https://github.com/rootsongjc/docker-images)
 
 镜像地址：`index.tenxcloud.com/jimmy/logstash:5.3.0`
 
@@ -106,13 +106,13 @@ spec:
 
 部署Deployment
 
-```
+```bash
 kubectl create -f logstash-test.yaml
 ```
 
 查看`http://172.23.5.255:9200/_cat/indices`将可以看到列表有这样的indices：
 
-```
+```bash
 green open logstash-docker-2017.05.16      VkFWx3b_Ss6n4keDmXm-TQ 5 1   2078     0   1.6mb 795.3kb
 ```
 

@@ -90,7 +90,7 @@ Systemd users can use `EnvironmentFile` directive in the .service file to pull i
 
 /run/flannel/subnet.env
 
-```
+```ini
 FLANNEL_NETWORK=172.30.0.0/16
 FLANNEL_SUBNET=172.30.46.1/24
 FLANNEL_MTU=1450
@@ -99,7 +99,7 @@ FLANNEL_IPMASQ=false
 
 /run/docker_opts.env
 
-```
+```ini
 DOCKER_OPT_BIP="--bip=172.30.46.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
@@ -107,7 +107,7 @@ DOCKER_OPT_MTU="--mtu=1450"
 
 现在查询etcd中的内容可以看到：
 
-```
+```bash
 $etcdctl ls /kube-centos/network/subnets
 /kube-centos/network/subnets/172.30.14.0-24
 /kube-centos/network/subnets/172.30.38.0-24
@@ -126,14 +126,14 @@ $etcdctl get /kube-centos/network/subnets/172.30.46.0-24
 
 **设置docker0网桥的IP地址**
 
-```shell
+```bash
 source /run/flannel/subnet.env
 ifconfig docker0 $FLANNEL_SUBNET
 ```
 
 这样docker0和flannel网桥会在同一个子网中，如
 
-```
+```bash
 6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
     link/ether 02:42:da:bf:83:a2 brd ff:ff:ff:ff:ff:ff
     inet 172.30.38.1/24 brd 172.30.38.255 scope global docker0
@@ -148,19 +148,19 @@ ifconfig docker0 $FLANNEL_SUBNET
 
 重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
 
-```
+```bash
 Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
 ```
 
 这是kubelet与docker的**cgroup driver**不一致导致的，kubelet启动的时候有个`—cgroup-driver`参数可以指定为"cgroupfs"或者“systemd”。
 
-```
+```bash
 --cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
 ```
 
 **启动flannel**
 
-```shell
+```bash
 systemctl daemon-reload
 systemctl start flanneld
 systemctl status flanneld
@@ -202,7 +202,7 @@ Events:			<none>
 
 稍等一会在访问ClusterIP + Port也可以访问到nginx。
 
-```
+```bash
 $curl 10.254.180.209:80
 <!DOCTYPE html>
 <html>
@@ -237,7 +237,7 @@ Kubernetes中的Service了使用了虚拟地址；该地址无法ping通过，�
 
 **查看service的iptables**
 
-```
+```bash
 $iptables-save|grep example-service
 -A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 32663 -j KUBE-MARK-MASQ
 -A KUBE-NODEPORTS -p tcp -m comment --comment "default/example-service:" -m tcp --dport 32663 -j KUBE-SVC-BR4KARPIGKMRMN3E
@@ -252,7 +252,7 @@ $iptables-save|grep example-service
 
 **查看clusterIP的iptables**
 
-```
+```Bash
 $iptables -t nat -nL|grep 10.254
 KUBE-SVC-NPX46M4PTMTKRN6Y  tcp  --  0.0.0.0/0            10.254.0.1           /* default/kubernetes:https cluster IP */ tcp dpt:443
 KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.180.209       /* default/example-service: cluster IP */ tcp dpt:80
@@ -262,7 +262,7 @@ KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.180.209       /*
 
 比如：当我们在pod网络curl 10.254.198.44 80时，匹配到下面的KUBE-SVC-BR4KARPIGKMRMN3E target：
 
-```
+```bash
 KUBE-SVC-BR4KARPIGKMRMN3E  tcp  --  0.0.0.0/0            10.254.180.209       /* default/example-service: cluster IP */ tcp dpt:80
 ```
 
@@ -298,7 +298,7 @@ Kube-proxy开放的**NodePort**端口无法访问。即无法使用NodeIP加Node
 
 **出错信息**
 
-```
+```bash
 Apr 01 14:24:08 sz-pg-oam-docker-test-001.tendcloud.com kubelet[103932]: I0401 14:24:08.359839  103932 kubelet.go:1752] skipping pod synchronization - [Failed to start ContainerManager failed to initialise top level QOS containers: failed to create top level Burstable QOS cgroup : Unit kubepods-burstable.slice already exists.]
 ```
 

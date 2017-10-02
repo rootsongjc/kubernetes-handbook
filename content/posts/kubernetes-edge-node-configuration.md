@@ -50,13 +50,13 @@ Tags = ["kubernetes"]
 
 使用keepalived管理VIP，VIP是使用IPVS创建的，[IPVS](http://www.linux-vs.org)已经成为linux内核的模块，不需要安装
 
-LVS的工作原理请参考：http://www.cnblogs.com/codebean/archive/2011/07/25/2116043.html
+[LVS的工作原理参考](http://www.cnblogs.com/codebean/archive/2011/07/25/2116043.html)
 
 不使用镜像方式安装了，直接手动安装，指定三个节点为边缘节点（Edge node）。
 
 因为我们的测试集群一共只有三个node，所有在在三个node上都要安装keepalived和ipvsadmin。
 
-```Shell
+```bash
 yum install keepalived ipvsadm
 ```
 
@@ -78,7 +78,7 @@ keepalived的官方配置文档见：http://keepalived.org/pdf/UserGuide.pdf
 
 配置文件`/etc/keepalived/keepalived.conf`文件内容如下：
 
-```
+```bash
 ! Configuration File for keepalived
 
 global_defs {
@@ -143,7 +143,7 @@ virtual_server 172.20.0.119 80{
 
 **启动keepalived**
 
-```
+```bash
 systemctl start keepalived
 ```
 
@@ -213,7 +213,7 @@ spec:
 
 注意，我们使用了`nodeSelector`选择边缘节点来调度traefik-ingress-lb运行在它上面，所有你需要使用：
 
-```
+```bash
 kubectl label nodes 172.20.0.113 edgenode=true
 kubectl label nodes 172.20.0.114 edgenode=true
 kubectl label nodes 172.20.0.115 edgenode=true

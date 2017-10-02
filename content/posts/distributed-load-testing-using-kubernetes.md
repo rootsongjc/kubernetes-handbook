@@ -13,7 +13,7 @@ Tags = ["kubernetes"]
 
 ## 前言
 
-Github地址https://github.com/rootsongjc/distributed-load-testing-using-kubernetes
+本示例来自 [GitHub - distributed-load-testing-using-kubernetes](https://github.com/rootsongjc/distributed-load-testing-using-kubernetes)。
 
 该教程描述如何在[Kubernetes](http://kubernetes.io)中进行分布式负载均衡测试，包括一个web应用、docker镜像和Kubernetes controllers/services。更多资料请查看[Distributed Load Testing Using Kubernetes](http://cloud.google.com/solutions/distributed-load-testing-using-kubernetes) 。
 
@@ -41,7 +41,7 @@ $ kubectl create -f kubectl create -f sample-webapp-service.yaml
 
 `locust-master`和`locust-work`使用同样的docker镜像，修改cotnroller中`spec.template.spec.containers.env`字段中的value为你`sample-webapp` service的名字。
 
-```
+```yaml
 - name: TARGET_HOST
   value: http://sample-webapp:8000
 ```
@@ -50,7 +50,7 @@ $ kubectl create -f kubectl create -f sample-webapp-service.yaml
 
 `locust-master`和`locust-work` controller使用的都是`locust-tasks` docker镜像。你可以直接下载`gcr.io/cloud-solutions-http://olz1di9xf.bkt.clouddn.com/locust-tasks`，也可以自己编译。自己编译大概要花几分钟时间，镜像大小为820M。
 
-```
+```bash
 $ docker build -t index.tenxcloud.com/jimmy/locust-tasks:latest .
 $ docker push index.tenxcloud.com/jimmy/locust-tasks:latest
 ```
@@ -59,7 +59,7 @@ $ docker push index.tenxcloud.com/jimmy/locust-tasks:latest
 
 每个controller的yaml的`spec.template.spec.containers.image` 字段指定的是我的镜像：
 
-```
+```yaml
 image: index.tenxcloud.com/jimmy/locust-tasks:latest
 ```
 

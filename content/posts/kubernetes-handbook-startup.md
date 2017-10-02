@@ -25,7 +25,9 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 **方式一：在线浏览**
 
-访问gitbook：https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+访问gitbook
+
+https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
 
 **方式二：本地查看**
 

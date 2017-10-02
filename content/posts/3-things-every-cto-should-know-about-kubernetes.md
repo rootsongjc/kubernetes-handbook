@@ -46,13 +46,13 @@ Kubernetes最初是基于Google的borg，borg具有非常丰富的功能集，�
 
 - 加入kubernetes slack channel，现在里面已经有21,000人，http://slack.k8s.io
 - 参与一个SIG（特别兴趣小组），这里面包括从在AWS上运行kubernetes到管理大数据集群。
-- 参加meetup https://www.meetup.com/topics/kubernetes/
-- 关注#kubernetes <https://twitter.com/hashtag/kubernetes> 关注那些主流传道者，有个人要特别关注下那就是Kelsey Hightower https://twitter.com/kelseyhightower
+- [参加meetup](https://www.meetup.com/topics/kubernetes/)
+- [关注#kubernetes](https://twitter.com/hashtag/kubernetes) 关注那些主流传道者，有个人要特别关注下那就是[Kelsey Hightower](https://twitter.com/kelseyhightower)
 
 ## 走向成功
 
 在拥有了坚如磐石的平台，熟练和多样化的团队，以及与Kubernetes社区不断增长的关系后，您将有处理通向成功道路上的遇到的任何问题的资本，克服成长过程中的痛苦。
 
-原文地址：https://www.contino.io/insights/3-things-every-cto-should-know-about-kubernets
+[原文地址](https://www.contino.io/insights/3-things-every-cto-should-know-about-kubernets)
 
 作者: Marcus Maxwell

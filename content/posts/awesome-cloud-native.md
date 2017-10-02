@@ -7,7 +7,7 @@ Tags = ["github-pages","cloud-native"]
 
 +++
 
-这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目，地址是 https://github.com/rootsongjc/awesome-cloud-native，也可以通过 Web 页面浏览：http://jimmysong.io/awesome-cloud-native
+这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目  [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)，同时也可以通过 [Web 页面浏览](http://jimmysong.io/awesome-cloud-native)。
 
 初步划分成以下这些领域：
 

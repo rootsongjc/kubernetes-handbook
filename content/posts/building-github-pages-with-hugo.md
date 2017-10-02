@@ -43,19 +43,19 @@ Hugo是一种通用的网站框架。严格来说，Hugo应该被称作静态网
 
 首先建立自己的网站，mysite是网站的路径
 
-```
+```bash
 $ hugo new site mysite
 ```
 
 然后进入该路径
 
-```
+```bash
 $ cd mysite
 ```
 
 在该目录下你可以看到以下几个目录和`config.toml`文件
 
-```
+```bash
  ▸ archetypes/ 
  ▸ content/
  ▸ layouts/
@@ -74,7 +74,7 @@ $ cd mysite
 
 Hugo提供了一些完整的主题可以使用，下载这些主题：
 
-```
+```bash
 $ git clone --recursive https://github.com/spf13/hugoThemes themes
 ```
 
@@ -82,13 +82,13 @@ $ git clone --recursive https://github.com/spf13/hugoThemes themes
 
 现在我们先熟悉一下Hugo，创建新页面：
 
-```
+```bash
 $ hugo new about.md
 ```
 
 进入`content/`文件夹可以看到，此时多了一个markdown格式的文件`about.md`，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。
 
-```
+```markdown
 ---
 +++
 date = "2015-02-01T18:19:54+08:00"
@@ -105,7 +105,7 @@ Tag = ["blog","post"]
 
 我在页面中加入了一些内容，然后运行Hugo:
 
-```
+```bash
 $ hugo server -t hyde --buildDrafts
 ```
 
@@ -113,7 +113,7 @@ $ hugo server -t hyde --buildDrafts
 
 注意观察当前目录下多了一个文件夹`public/`，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将`public/`里的文件上传就可以，这相当于是Hugo的输出。
 
-详细说明请看这位朋友的文章：http://nanshu.wang/post/2015-01-31/
+详细说明请看这位朋友的文章：[Nanshu Wang - Hugo静态网站生成器中文教程](http://nanshu.wang/post/2015-01-31/)
 
 **说明**
 

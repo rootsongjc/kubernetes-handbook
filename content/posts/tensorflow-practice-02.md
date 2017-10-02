@@ -20,8 +20,8 @@ P.S 本书的**官方读者交流微信群（作者也在群里）**已经超过
 
 TensorFlow主要用到以下两个依赖：
 
-- [Protocol buffer](https://developers.google.com/protocol-buffers/)：数据结构化工具。Google开源的结构化数据格式，用于网络传输数据时候的序列化和反序列化，使用的时候需要先定义schema，github地址https://github.com/google/protobuf。分布式TensorFlow使用到额gRPC也是使用Protocol Buffer来组织的，
-- [Bazel](https://bazel.build/):自动化编译构建工具。Google开源的，github地址https://github.com/bazelbuild/bazel，它支持多语言、多平台、可重复编译和可伸缩，构建大型软件速度也是很快的。Bazel使用**项目空间**的形式管理编译的，每个项目空间需要包含[BUILD文件](https://github.com/tensorflow/tensorflow/blob/master/bower.BUILD)（定义编译目标）和[WORKSPACE](https://github.com/tensorflow/tensorflow/blob/master/WORKSPACE)文件（定义编译的依赖环境）。这两个文件都有点类似python语法。
+- [Protocol buffer](https://developers.google.com/protocol-buffers/)：数据结构化工具。Google开源的结构化数据格式，用于网络传输数据时候的序列化和反序列化，使用的时候需要先定义schema，[github地址](https://github.com/google/protobuf)。分布式TensorFlow使用到额gRPC也是使用Protocol Buffer来组织的，
+- [Bazel](https://bazel.build/):自动化编译构建工具。Google开源的，[github地址](https://github.com/bazelbuild/bazel)，它支持多语言、多平台、可重复编译和可伸缩，构建大型软件速度也是很快的。Bazel使用**项目空间**的形式管理编译的，每个项目空间需要包含[BUILD文件](https://github.com/tensorflow/tensorflow/blob/master/bower.BUILD)（定义编译目标）和[WORKSPACE](https://github.com/tensorflow/tensorflow/blob/master/WORKSPACE)文件（定义编译的依赖环境）。这两个文件都有点类似python语法。
 
 ## 2.2 TensorFlow安装
 
@@ -45,7 +45,7 @@ docker pull cargo.caicloud.io/tensorflow/tensorflow:0.12.0
 
 另外还有个[**nvidia**版本的docker](https://github.com/NVIDIA/nvidia-docker)，可以将你电脑的**GPU**派山用场，我暂时没用到GPU，我电脑装的是`docker17.03-ce`，就不折腾GPU版本的TensorFlow了。
 
-```
+```bash
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 c8a8409297f2        5 weeks ago         /bin/sh -c #(nop)  CMD ["/run_tf.sh"]           0 B                 
 <missing>           5 weeks ago         /bin/sh -c #(nop) COPY file:78332d36244852...   122 B               
@@ -92,7 +92,7 @@ docker run -it -d -p 8888:8888 -p 6006:6006 --name tf-dev cargo.caicloud.io/tens
 
 > 如何获取Jupyter的登录密码书中没有介绍。其实没必要修改镜像活着进入容器中需钙jupyter的配置，直接查看刚启动的`tf-dev`容器的日志即可，里面包含了登录密码。
 
-```
+```Bash
 docker logs tf-dev
 [I 10:52:46.200 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
 [W 10:52:46.244 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using encryption. This is not recommended.

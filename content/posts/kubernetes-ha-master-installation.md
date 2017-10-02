@@ -47,7 +47,7 @@ admin-key.pem  admin.pem  ca-key.pem  ca.pem  kube-proxy-key.pem  kube-proxy.pem
 
 从 [github release 页面](https://github.com/kubernetes/kubernetes/releases) 下载发布版 tarball，解压后再执行下载脚本
 
-```shell
+```bash
 $ wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
 $ tar -xzvf kubernetes.tar.gz
 ...
@@ -61,7 +61,7 @@ $ ./cluster/get-kube-binaries.sh
 
 `server` 的 tarball `kubernetes-server-linux-amd64.tar.gz` 已经包含了 `client`(`kubectl`) 二进制文件，所以不用单独下载`kubernetes-client-linux-amd64.tar.gz`文件；
 
-```shell
+```bash
 $ # wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
 $ wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
 $ tar -xzvf kubernetes-server-linux-amd64.tar.gz
@@ -249,7 +249,7 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
   etcd-1               Healthy     {"health": "true"}  
   ```
 
-  参考：https://github.com/kubernetes-incubator/bootkube/issues/64
+  [参考bootkube - issue](https://github.com/kubernetes-incubator/bootkube/issues/64)
 
 完整 unit 见 [kube-controller-manager.service](./systemd/kube-controller-manager.service)
 

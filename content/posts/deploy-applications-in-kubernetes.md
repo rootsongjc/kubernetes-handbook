@@ -67,7 +67,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 
 修改本机的`/etc/hosts`文件，在其中加入以下一行：
 
-```
+```ini
 172.20.0.119 k8s-app-monitor-agent.jimmysong.io
 ```
 

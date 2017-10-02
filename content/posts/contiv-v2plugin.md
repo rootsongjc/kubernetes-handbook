@@ -139,7 +139,7 @@ Tags = ["docker","network","sdn"]
 
 自动化make
 
-```
+```bash
 $make host-pluginfs-create
 ```
 
@@ -215,7 +215,7 @@ ID                  NAME                     DESCRIPTION                        
 
 至此*contiv plugin*已经创建好了，enable后执行`ip addr`命令可以看到多出一个网络*contivh0*。
 
-```
+```bash
 contivh0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN qlen 1000
 link/ether 02:02:ac:13:ff:fe brd ff:ff:ff:ff:ff:ff
 inet 172.19.255.254/16 scope global contivh0

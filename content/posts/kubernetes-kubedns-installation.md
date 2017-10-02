@@ -29,7 +29,7 @@ Tags = ["kubernetes"]
 
 该插件直接使用kubernetes部署，官方的配置文件中包含以下镜像：
 
-```
+```Ini
 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
@@ -37,7 +37,7 @@ gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
 
 我clone了上述镜像，上传到我的私有镜像仓库：
 
-```
+```Ini
 sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-kube-dns-amd64:1.14.1
 sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-sidecar-amd64:1.14.1
@@ -45,7 +45,7 @@ sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-sidecar-amd64:1.14.1
 
 同时上传了一份到时速云备份：
 
-```
+```ini
 index.tenxcloud.com/jimmy/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 index.tenxcloud.com/jimmy/k8s-dns-kube-dns-amd64:1.14.1
 index.tenxcloud.com/jimmy/k8s-dns-sidecar-amd64:1.14.1

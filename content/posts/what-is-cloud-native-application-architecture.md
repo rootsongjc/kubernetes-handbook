@@ -7,7 +7,7 @@ Tags = ["cloud-native"]
 
 +++
 
-本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一部分，归档到https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures 。
+本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一部分，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
 
 # 第1章 云原生的崛起
 

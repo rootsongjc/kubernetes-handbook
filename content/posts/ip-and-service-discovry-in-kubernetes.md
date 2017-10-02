@@ -21,7 +21,7 @@ Tags = ["kubernetes"]
 
 **默认配置**
 
-```
+```ini
 --service-cluster-ip-range=10.254.0.0/16
 --service-node-port-range=30000-32767
 ```
@@ -32,7 +32,7 @@ Tags = ["kubernetes"]
 
 **默认配置**
 
-```
+```ini
 FLANNEL_NETWORK=172.30.0.0/16
 FLANNEL_SUBNET=172.30.46.1/24
 ```
@@ -47,7 +47,7 @@ Pod的IP地址<u>不固定</u>，当pod重启时IP地址会变化。
 
 物理机的IP地址，即kubernetes管理的物理机的IP地址。
 
-```
+```bash
 $ kubectl get nodes
 NAME           STATUS    AGE       VERSION
 172.20.0.113   Ready     12d       v1.6.0

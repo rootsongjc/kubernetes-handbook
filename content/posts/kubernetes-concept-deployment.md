@@ -15,7 +15,7 @@ Tags = ["kubernetes"]
 
 本文同步更新到Github仓库[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中。
 
-本文翻译自kubernetes官方文档：https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/concepts/workloads/controllers/deployment.md
+[本文翻译自kubernetes官方文档 - Deployement ](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/concepts/workloads/controllers/deployment.md)
 
 本文章根据2017年5月10日的`Commit 8481c02 `翻译。
 
@@ -530,7 +530,7 @@ Kubernetes将包括以下特性的Deployment标记为*complete*状态：
 
 你可以用`kubectl rollout status`命令查看Deployment是否完成。如果rollout成功完成，`kubectl rollout status`将返回一个0值的Exit Code。
 
-```
+```bash
 $ kubectl rollout status deploy/nginx
 Waiting for rollout to finish: 2 of 3 updated replicas are available...
 deployment "nginx" successfully rolled out
@@ -553,7 +553,7 @@ $ echo $?
 
 下面的`kubectl`命令设置`progressDeadlineSeconds` 使controller在Deployment在进度卡住10分钟后报告：
 
-```
+```bash
 $ kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSeconds":600}}'
 "nginx-deployment" patched
 ```
@@ -574,7 +574,7 @@ Once the deadline has been exceeded, the Deployment controller adds a  with the 
 
 你可能在使用Deployment的时候遇到一些短暂的错误，这些可能是由于你设置了太短的timeout，也有可能是因为各种其他错误导致的短暂错误。例如，假设你使用了无效的引用。当你Describe Deployment的时候可能会注意到如下信息：
 
-```
+```bash
 $ kubectl describe deployment nginx-deployment
 <...>
 Conditions:
@@ -618,32 +618,30 @@ status:
 
 最终，一旦超过Deployment进程的deadline，kuberentes会更新状态和导致Progressing状态的原因：
 
-```
+```Bash
 Conditions:
   Type            Status  Reason
   ----            ------  ------
   Available       True    MinimumReplicasAvailable
   Progressing     False   ProgressDeadlineExceeded
   ReplicaFailure  True    FailedCreate
-
 ```
 
 你可以通过缩容Deployment的方式解决配额不足的问题，或者增加你的namespace的配额。如果你满足了配额条件后，Deployment controller就会完成你的Deployment rollout，你将看到Deployment的状态更新为成功状态（`Status=True`并且`Reason=NewReplicaSetAvailable`）。
 
-```
+```bash
 Conditions:
   Type          Status  Reason
   ----          ------  ------
   Available     True    MinimumReplicasAvailable
   Progressing   True    NewReplicaSetAvailable
-
 ```
 
 `Type=Available`、 `Status=True` 以为这你的Deployment有最小可用性。 最小可用性是在Deployment策略中指定的参数。`Type=Progressing` 、 `Status=True`意味着你的Deployment 或者在部署过程中，或者已经成功部署，达到了期望的最少的可用replica数量（查看特定状态的Reason——在我们的例子中`Reason=NewReplicaSetAvailable` 意味着Deployment已经完成）。
 
 你可以使用`kubectl rollout status`命令查看Deployment进程是否失败。当Deployment过程超过了deadline，`kubectl rollout status`将返回非0的exit code。
 
-```
+```bash
 $ kubectl rollout status deploy/nginx
 Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
 error: deployment "nginx" exceeded its progress deadline

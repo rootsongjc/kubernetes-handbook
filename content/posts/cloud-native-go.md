@@ -42,7 +42,7 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 
 **Kevin Hoffman**通过现代化和以多种不同语言构建云原生服务的方式帮助企业将其应用程序引入云端。他10岁时开始编程，在重新组装的CommodoreVIC-20上自习BASIC。从那时起，他已经沉迷于构建软件，并花了很多时间学习语言、框架和模式。他已经构建了从遥控摄影无人机、仿生性安全系统、超低延迟金融应用程序到移动应用程序等一系列软件。他在构建需要与Pivotal Cloud Foundry配合使用的自定义组件时爱上了Go语言。
 
-Kevin 是流行的幻想书系列（The Sigilord Chronicles，http://amzn.to/2fc8iES ）的作者，他热切地期待着最终能够将自己对构建软件的热爱与对构建幻想世界的热爱结合起来。
+Kevin 是流行的幻想书系列（[The Sigilord Chronicles](http://amzn.to/2fc8iES) ）的作者，他热切地期待着最终能够将自己对构建软件的热爱与对构建幻想世界的热爱结合起来。
 
 **Dan Nemeth**目前在Pivotal担任咨询解决方案架构师，负责支持Pivotal Cloud Foundry。他从Commodore 64开始就一直在开发软件，从1995年起开始专业编码，使用ANSIC编写了用于本地ISP的CGI脚本。从那时起，他职业生涯的大部分时间里是作为独立顾问为从金融到制药行业提供解决方案，并使用当时流行的各种语言和框架。Dan最近接受了Go作为自己的归宿，并热情地将它用于所有的项目。
 

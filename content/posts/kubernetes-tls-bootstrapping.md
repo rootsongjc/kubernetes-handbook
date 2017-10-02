@@ -13,7 +13,7 @@ Tags = ["kubernetes"]
 
 Bootstrap 是很多系统中都存在的程序，比如 Linux 的bootstrap，bootstrap 一般都是作为预先配置在开启或者系统启动的时候加载，这可以用来生成一个指定环境。Kubernetes 的 kubelet 的启动时同样可以加载一个这样的配置文件，这个文件的内容类似如下形式：
 
-```
+```ini
 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,"system:kubelet-bootstrap"
 ```
 
@@ -41,7 +41,7 @@ Token 可以是任意的，但应该可以表示为从安全随机数生成器�
 
 Token 文件应该类似于以下示例，其中前三个值可以是任何值，引用的组名称应如下所示：
 
-```
+```ini
 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,"system:kubelet-bootstrap"
 ```
 
@@ -67,7 +67,7 @@ kube-apiserver 通过指定的 `--client-ca-file=FILENAME` 标志来认证和采
 
 Kube-controller-manager 标志为：
 
-```
+```Ini
 --cluster-signing-cert-file="/etc/path/to/kubernetes/ca/ca.crt" --cluster-signing-key-file="/etc/path/to/kubernetes/ca/ca.key"
 ```
 
@@ -85,7 +85,7 @@ Kube-controller-manager 标志为：
 
 当前，确定 CSR 是否为 `selfnodeserver` 请求的检查与 kubelet 的凭据轮换实现（Alpha 功能）相关联。因此，`selfnodeserver` 的定义将来可能会改变，并且需要 Controller Manager 上的`RotateKubeletServerCertificate` feature gate。该功能的进展可以在 [kubernetes/feature/#267](https://github.com/kubernetes/features/issues/267) 上追踪。
 
-```
+```ini
 --feature-gates=RotateKubeletServerCertificate=true
 ```
 
@@ -128,7 +128,7 @@ rules:
 
 这些权力可以授予给凭证，如 bootstrap token。例如，要复制由已被移除的自动批准标志提供的行为，由单个组批准所有的 CSR：
 
-```
+```ini
 # REMOVED: This flag no longer works as of 1.7.
 --insecure-experimental-approve-all-kubelet-csrs-for-group="kubelet-bootstrap-token"
 ```
@@ -182,7 +182,7 @@ kubectl config set-credentials kubelet-bootstrap --token=${BOOTSTRAP_TOKEN} --ku
 
 启动 kubelet 时启用 bootstrap 用到的标志：
 
-```
+```ini
 --experimental-bootstrap-kubeconfig="/path/to/bootstrap/kubeconfig"
 ```
 
@@ -190,7 +190,7 @@ kubectl config set-credentials kubelet-bootstrap --token=${BOOTSTRAP_TOKEN} --ku
 
 可以分别通过 kubelet 中的 `RotateKubeletClientCertificate` 和 `RotateKubeletServerCertificate` 功能标志启用此功能，但在未来版本中可能会以向后兼容的方式发生变化。
 
-```
+```ini
 --feature-gates=RotateKubeletClientCertificate=true,RotateKubeletServerCertificate=true
 ```
 

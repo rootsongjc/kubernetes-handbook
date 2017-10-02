@@ -51,7 +51,7 @@ Tags = ["cloud-native","book","python"]
 
 ## 使用本书您需要哪些工具和环境
 
-您需要在系统上安装Python。一个文本编辑器，最好是Vim、Sublime或者Notepad++。在有一个章节中您需要下载POSTMAN，这是一个功能强大的API测试套件，可以作为作为Chrome扩展插件来安装。您可以从这里下载：<https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en>。
+您需要在系统上安装Python。一个文本编辑器，最好是Vim、Sublime或者Notepad++。在有一个章节中您需要下载POSTMAN，这是一个功能强大的API测试套件，可以作为作为Chrome扩展插件来安装。您可以从[这里下载](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en)。
 
 除此之外，如果您还有如下网站的账号那就更好了：
 

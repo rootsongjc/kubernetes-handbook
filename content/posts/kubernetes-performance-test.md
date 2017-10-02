@@ -166,7 +166,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 ### 场景一、主机之间
 
-```
+```Ini
 [ ID] Interval       Transfer     Bandwidth
 [  3]  0.0- 1.0 sec   598 MBytes  5.02 Gbits/sec
 [  3]  1.0- 2.0 sec   637 MBytes  5.35 Gbits/sec
@@ -185,7 +185,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 ### 场景二、不同主机的Pod之间(使用flannel的vxlan模式)
 
-```
+```ini
 [ ID] Interval       Transfer     Bandwidth
 [  3]  0.0- 1.0 sec   372 MBytes  3.12 Gbits/sec
 [  3]  1.0- 2.0 sec   345 MBytes  2.89 Gbits/sec
@@ -204,7 +204,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 ### 场景三、Node与非同主机的Pod之间（使用flannel的vxlan模式）
 
-```
+```ini
 [ ID] Interval       Transfer     Bandwidth
 [  3]  0.0- 1.0 sec   372 MBytes  3.12 Gbits/sec
 [  3]  1.0- 2.0 sec   420 MBytes  3.53 Gbits/sec
@@ -223,7 +223,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 ### 场景四、不同主机的Pod之间（使用flannel的host-gw模式）
 
-```
+```ini
 [ ID] Interval       Transfer     Bandwidth
 [  5]  0.0- 1.0 sec   530 MBytes  4.45 Gbits/sec
 [  5]  1.0- 2.0 sec   576 MBytes  4.84 Gbits/sec
@@ -240,7 +240,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 ### 场景五、Node与非同主机的Pod之间（使用flannel的host-gw模式）
 
-```
+```ini
 [ ID] Interval       Transfer     Bandwidth
 [  3]  0.0- 1.0 sec   570 MBytes  4.78 Gbits/sec
 [  3]  1.0- 2.0 sec   552 MBytes  4.63 Gbits/sec

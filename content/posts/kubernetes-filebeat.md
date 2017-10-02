@@ -127,19 +127,19 @@ data:
 - Filebeat容器大概需要10M左右内存。
 - 该文件可以在`manifests/test/filebeat-test.yaml`找到。 
 - 我使用了自己的私有镜像仓库，测试时请换成自己的应用镜像。
-- filebeat镜像制作请参考https://github.com/rootsongjc/docker-images
+- [filebeat镜像制作参考](https://github.com/rootsongjc/docker-images)
 
 **创建应用**
 
 部署Deployment
 
-```
+```Bash
 kubectl create -f filebeat-test.yaml
 ```
 
 查看`http://172.23.5.255:9200/_cat/indices`将可以看到列表有这样的indices：
 
-```
+```bash
 green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151     0   1.6mb 841.8kb
 ```
 
