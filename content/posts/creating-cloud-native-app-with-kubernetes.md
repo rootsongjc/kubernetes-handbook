@@ -26,14 +26,14 @@ Tags: ["kubernetes","cloud-native"]
 - kubernetes 1.6.0
 - TLS enabled
 
-详细的部署文档和更多资料请参考 https://github.com/rootsongjc/kubernetes-handbook
+详细的部署文档和更多资料请参考 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
 
 ## 应用示例
 
 我们的这两个示例仅仅是为了演示，开发部署一个伪造的 metric 并显示在 web 页面上，包括两个service：
 
-- [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值，https://github.com/rootsongjc/k8s-app-monitor-test
-- [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表，https://github.com/rootsongjc/k8s-app-monitor-agent
+- [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
+- [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
 
 这两个镜像可以直接从docker hub上下载
 
@@ -42,7 +42,7 @@ Tags: ["kubernetes","cloud-native"]
 
 ### 定义API
 
-API文档见 https://github.com/rootsongjc/k8s-app-monitor-test 中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio) 生成，打开后如图所示：
+API文档见 [https://github.com/rootsongjc/k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test) 中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio) 生成，打开后如图所示：
 
 ![API文档](/media/k8s-app-monitor-test-api-doc.jpg)
 
@@ -114,7 +114,7 @@ Wercker配置文件是一个YAML文件，该文件必须在GitHub repo的最顶�
 
 Wercker中还有**工作流**的概念，通过使用分支、条件构建、多个部署目标和其他高级功能扩展了管道的功能，这些高级功能读着可以自己在wercker的网站中探索。
 
-因为我使用wercker自动构建，构建完成后自动打包成docker镜像并上传到docker hub中（需要先在docker hub中创建repo），如何使用 wercker 做持续构建与发布，并集成docker hub插件请参考：https://jimmysong.io/blogs/continuous-integration-with-wercker/
+因为我使用wercker自动构建，构建完成后自动打包成docker镜像并上传到docker hub中（需要先在docker hub中创建repo），如何使用 wercker 做持续构建与发布，并集成docker hub插件请参考：[wercker构建](https://jimmysong.io/blogs/continuous-integration-with-wercker/)
 
 K8s-app-monitor-agent的wercker配置文件如下：
 
@@ -160,7 +160,7 @@ deploy:
 
 box键的值是golang。这意味着我们使用的是一个基础的Docker镜像，它已经安装了Go环境。这一点至关重要，因为执行Wercker构建的基准Docker镜像需要包含应用程序所需的构建工具。
 
-构建流程见：<https://app.wercker.com/jimmysong/k8s-app-monitor-agent/>
+[查看详细构建流程](https://app.wercker.com/jimmysong/k8s-app-monitor-agent)
 
 > 当然你还可以使用其他的CI工具，因为wercker的插件比较方便，可以直接构建成docker镜像上传到docker hub中，比较方便，所以我选择了wercker，作为个人项目和开源项目的话可以选择它，企业内部建议选择Jenkins。
 
@@ -257,7 +257,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 当然你也可以加入到DNS中，为了简单起见我使用hosts。
 
-在浏览器中访问http://k8s-app-monitor-agent.jimmysong.io
+在浏览器中访问 [http://k8s-app-monitor-agent.jimmysong.io](http://k8s-app-monitor-agent.jimmysong.io)
 
 ![图表](/media/k8s-app-monitor-agent.jpg)
 
@@ -284,17 +284,17 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 在Kubernetes中添加了service的同时，在DNS中增加一个记录，这条记录需要跟ingress中的`host`字段相同，IP地址即VIP的地址，本示例中是`172.20.0.119`，这样集群外部就可以通过service的DNS名称来访问服务了。
 
-详细操作步骤和配置请参考：https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md
+详细操作步骤和配置请参考：[https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
 ## 参考
 
-适用于Kubernetes的应用开发与部署流程详解：https://jimmysong.io/blogs/deploy-applications-in-kubernetes/
+[适用于Kubernetes的应用开发与部署流程详解](https://jimmysong.io/blogs/deploy-applications-in-kubernetes/)
 
-示例的项目代码服务器端：https://app.wercker.com/jimmysong/k8s-app-monitor-agent/
+[示例的项目代码服务器端](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
 
-示例项目代码前端：https://github.com/rootsongjc/k8s-app-monitor-agent
+[示例项目代码前端](https://github.com/rootsongjc/k8s-app-monitor-agent)
 
-kubernetes-handbok：https://jimmysong.io/kubernetes-handbook/
+[kubernetes-handbok](https://jimmysong.io/kubernetes-handbook/)
 
-边缘节点配置：https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md
+[边缘节点配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
