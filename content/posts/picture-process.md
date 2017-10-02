@@ -24,7 +24,7 @@ Tags = ["picture","tools"]
 
 我在Mac上试用了一下，安装很简单，只要一条命令：
 
-```shlell
+```Bash
 brew install guetzli
 ```
 
@@ -36,7 +36,7 @@ brew install guetzli
 
 ![原图](http://olz1di9xf.bkt.clouddn.com/guetzli/IMG_5430.JPG)
 
-```
+```bash
 guetzli --quality 84 --verbose 20160403052.jpg output.jpg
 ```
 

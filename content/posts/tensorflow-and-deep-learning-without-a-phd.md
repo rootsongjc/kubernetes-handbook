@@ -36,7 +36,7 @@ git clone https://github.com/martin-gorner/tensorflow-mnist-tutorial.git
 
 我使用的Mac而且还是python2.7，所以我这样安装：
 
-```
+```bash
 pip install --upgrade tensorflow --user -U
 pip install --upgrade matplotlib --user -U
 ```
@@ -51,7 +51,7 @@ python mnist_1.0_softmax.py
 
 运行过程中你会看到一大段输出：
 
-```
+```bash
 Collecting matplotlib
   Downloading matplotlib-2.0.0-cp27-cp27m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (12.8MB)
     100% |████████████████████████████████| 12.8MB 26kB/s 
@@ -210,7 +210,7 @@ Training digits and labels => loss function => gradient (partial derivatives) =>
 
 为什么交叉熵是在分类问题中合适的定义距离？
 
-　　解答链接：https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/
+[解答链接](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/)
 
 ### 实验：让我们来看看代码
 
@@ -220,9 +220,7 @@ Training digits and labels => loss function => gradient (partial derivatives) =>
 
 你应该看到，在文档中的说明和启动代码只有微小的差别。它们对应于可视化的函数，并且在注释中被标记。此处可忽略。
 
-　　mnist_1.0_softmax.py：
-
-　　https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py
+​	[mnist_1.0_softmax.py](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py)
 
 　　![img](http://img.mp.itc.cn/upload/20170124/b8be8ddc1a9e41d19ddbffe3ed1ddc05_th.png)
 
@@ -233,9 +231,7 @@ Training digits and labels => loss function => gradient (partial derivatives) =>
 - 28, 28, 1: 图像是 28x28 每像素 x 1（灰度）。最后一个数字对于彩色图像是 3 但在这里并非是必须的。
 - None: 这是代表图像在小批量（mini-batch）中的数量。在训练时可以得到。
 
-　　mnist_1.0_softmax.py：
-
-　　https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py
+　　[mnist_1.0_softmax.py](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py)
 
 　　![img](http://img.mp.itc.cn/upload/20170124/71fef16bc66b4939975a236b58dac8ba_th.jpeg)
 
@@ -247,9 +243,7 @@ Training digits and labels => loss function => gradient (partial derivatives) =>
 
 最后两行计算了正确识别数字的百分比。这是留给读者的理解练习，使用 TensorFlow API 参考。你也可以跳过它们。
 
-　　mnist_1.0_softmax.py：
-
-　　https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py)
+　　[mnist_1.0_softmax.py](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py)
 
 　　optimizer = tf.train.GradientDescentOptimizer(0.003)
 
@@ -267,9 +261,7 @@ TensorFlow 的 “延迟执行（deferred execution）” 模型：TensorFlow �
 
 计算需要将实际数据反馈进你在 TensorFlow 代码中定义的占位符。这是以 Python 的 dictionary 的形式给出的，其中的键是占位符的名称。
 
-　　mnist_1.0_softmax.py：
-
-　　https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py
+　　[mnist_1.0_softmax.py](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_1.0_softmax.py)
 
 　　![img](http://img.mp.itc.cn/upload/20170124/a96dcaf397d342e18edb0ec24757f821.png)
 
@@ -523,9 +515,9 @@ TensorFlow 提供一个 dropout 函数可以用在一层神经网络的输出上
 
 你已经建立了你的第一个神经网络，并且训练精度达到了 99%。在这个学习过程中，你所学到的技术，并不局限于 MNIST 数据集。实际上，这些技术在训练神经网络的过程中被广泛使用。作为礼物，下面提供的内容可以用来帮助你回忆已经所学的内容。
 
-- 在完成了完全神经网络和卷积网络后，你应该学习循环神经网络：https://www.tensorflow.org/tutorials/recurrent/。
-- 在本教程中，你已经学习了如何在矩阵层次构建 TensorFlow 模型。Tensorflow 还有更高级的 API，称为 tf.learn：https://www.tensorflow.org/tutorials/tflearn/
-- 要在云上的分布式框架上训练，我们提供 Cloud ML 服务：https://cloud.google.com/ml
+- 在完成了完全神经网络和卷积网络后，你应该学习[循环神经网络](https://www.tensorflow.org/tutorials/recurrent/)
+- 在本教程中，你已经学习了如何在矩阵层次构建 TensorFlow 模型。Tensorflow 还有更高级的 API，称为 [tf.learn](https://www.tensorflow.org/tutorials/tflearn/)
+- 要在云上的分布式框架上训练，我们提供 [Cloud ML 服务](https://cloud.google.com/ml)
 - 最后，我们希望收到你的反馈。如果你在发现了本实验中的些许错误，或者你认为有什么需要改进的地方，请告诉我们。我们通过 GitHub 处理反馈，[反馈链接](https://github.com/googlecodelabs/feedback/issues/new?title=[cloud-tensorflow-mnist]:&labels[]=content-platform&labels[]=cloud)。
 
 ## 后记

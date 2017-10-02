@@ -41,7 +41,7 @@ wget https://github.com/istio/istio/releases/download/0.1.5/istio-0.1.5-linux.ta
 
 解压后，得到的目录结构如下：
 
-```
+```bash
 .
 ├── bin
 │   └── istioctl
@@ -154,7 +154,7 @@ kubectl apply -f install/kubernetes/istio.yaml
 
 用到的镜像有：
 
-```
+```bash
 docker.io/istio/grafana:0.1.5
 quay.io/coreos/prometheus:v1.1.1
 gcr.io/istio-testing/servicegraph:latest
@@ -163,7 +163,7 @@ docker.io/openzipkin/zipkin:latest
 
 为了方便下载，其中两个镜像我备份到了时速云：
 
-```
+```bash
 index.tenxcloud.com/jimmy/prometheus:v1.1.1
 index.tenxcloud.com/jimmy/servicegraph:latest
 ```
@@ -223,7 +223,7 @@ kubectl apply -f install/kubernetes/addons/zipkin.yaml
 
 该微服务用到的镜像有：
 
-```
+```bash
 istio/examples-bookinfo-details-v1
 istio/examples-bookinfo-ratings-v1
 istio/examples-bookinfo-reviews-v1
@@ -238,11 +238,11 @@ istio/examples-bookinfo-productpage-v1
 
 **部署应用**
 
-```
+```bash
 kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 ```
 
-`Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考：https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject
+`Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考 [istio 文档](https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject)
 
 在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息。具体步骤参考：[边缘节点配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 

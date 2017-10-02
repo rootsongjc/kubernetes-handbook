@@ -49,13 +49,13 @@ tutum/dnsutils:latest
 
 首先需要先创建 RBAC，因为使用 namerd 和 ingress 时需要用到。
 
-```
+```bash
 $ kubectl create -f linkerd-rbac-beta.yml
 ```
 
 Linkerd 提供了 Jenkins 示例，在部署的时候使用以下命令：
 
-```
+```bash
 $ kubectl create -f jenkins-rbac-beta.yml
 $ kubectl create -f jenkins.yml
 ```
@@ -70,12 +70,11 @@ $ kubectl create -f jenkins.yml
 
 在 kubernetes 中使用 Jenkins 的时候需要注意 Pipeline 中的配置：
 
-```
+```Ini
     def currentVersion = getCurrentVersion()
     def newVersion = getNextVersion(currentVersion)
     def frontendIp = kubectl("get svc l5d -o jsonpath=\"{.status.loadBalancer.ingress[0].*}\"").trim()
     def originalDst = getDst(getDtab())
-
 ```
 
 `frontendIP` 的地址要配置成 service 的 Cluster IP ，因为我们没有用到LoadBalancer。
@@ -158,11 +157,10 @@ $ kubectl create -f world-v2.yml
 
 在本地`/etc/hosts`中添加如下内容：
 
-```
+```Ini
 172.20.0.119 linkerd.jimmysong.io
 172.20.0.119 linkerd-viz.jimmysong.io
 172.20.0.119 l5d.jimmysong.io
-
 ```
 
 **测试路由功能**

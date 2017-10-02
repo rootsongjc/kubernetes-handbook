@@ -33,13 +33,13 @@ Tags = ["docker","network","sdn"]
 
 在netplugin目录下执行以下命令能够编译出二进制文件。
 
-```
+```bash
 NET_CONTAINER_BUILD=1 make build
 ```
 
 在你的**/$GOPATH/bin**目录下应该会有如下几个文件：
 
-```
+```bash
 contivk8s  github-release  godep  golint  misspell  modelgen  netcontiv  netctl  netmaster  netplugin
 ```
 
@@ -100,7 +100,7 @@ ENTRYPOINT ["/startcontiv.sh"]
 
 创建出了rootfs后，然后执行
 
-```Shell
+```bash
 docker plugin create localhost:5000/contiv/netplugin .
 docker push localhost:5000/contiv/netplugin
 ```
@@ -305,7 +305,7 @@ func (r *pluginReference) Delete(ref reference.Named) (bool, error) {
 
 从非master节点的netplugin启动日志`netplugin_bootup.log`中可以看到：
 
-```
+```bash
 V2 Plugin logs
 Loading OVS
 Starting OVS
@@ -318,7 +318,7 @@ Netplugin启动的时候是正确的解析了**etcd**的配置了。
 
 但是我们再看一下`netplugin.log`的日志后就会发现，启动还是失败了。
 
-```
+```bash
 time="Mar 21 03:20:37.537954358" level=debug msg="Got link list(16): [0xc4203fe200 0xc4203fe300 0xc4203fe400 0xc4203fe500 0xc420420000 0xc420420090 0xc420420120 0xc4204201b0 0xc420420240 0xc4204202d0 0xc420420360 0xc4204203f0 0xc420420480 0xc420420510 0xc4203feb80 0xc4203fec80]"
 time="Mar 21 03:20:37.538576647" level=error msg="Failed to connect to etcd. Err: client: etcd cluster is unavailable or misconfigured"
 time="Mar 21 03:20:37.538599827" level=error msg="Error creating client etcd to url 127.0.0.1:2379. Err: client: etcd cluster is unavailable or misconfigured"

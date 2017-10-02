@@ -16,7 +16,7 @@ Tags = ["vagrant","tools","hashicorp"]
 
 因为今天在看[contiv](https://github.com/contiv/netplugin)正好里面使用vagrant搭建的开发测试环境，所以顺便了解下。它的[Vagrantfile](https://github.com/contiv/netplugin/blob/master/Vagrantfile)文件中定义了三台主机。并安装了很多依赖软件，如consul、etcd、docker、go等，整的比较复杂。
 
-```
+```bash
 ➜  netplugin git:(master) ✗ vagrant status
 Current machine states:
 
@@ -227,7 +227,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-这个比较复杂，详见https://www.vagrantup.com/docs/multi-machine/
+这个比较复杂，[详见 multi-machine](https://www.vagrantup.com/docs/multi-machine/)
 
 还有一些其它功能，如push、plugins、providers按下不表。
 

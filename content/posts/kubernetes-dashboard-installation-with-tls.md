@@ -39,7 +39,7 @@ dashboard-controller.yaml  dashboard-service.yaml dashboard-rbac.yaml
 
 由于 `kube-apiserver` 启用了 `RBAC` 授权，而官方源码目录的 `dashboard-controller.yaml` 没有定义授权的 ServiceAccount，所以后续访问 `kube-apiserver` 的 API 时会被拒绝，web中提示：
 
-```
+```bash
 Forbidden (403)
 
 User "system:serviceaccount:kube-system:default" cannot list jobs.batch in the namespace "default". (get jobs.batch)
@@ -140,7 +140,7 @@ kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namesp
 
 将生成的admin.pem证书转换格式
 
-```
+```bash
 openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 ```
 

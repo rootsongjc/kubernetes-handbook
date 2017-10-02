@@ -64,7 +64,7 @@ $ export PATH=/root/local/bin:$PATH
 
 我们的系统中安装了Go1.7.5，使用以下命令安装更快捷：
 
-```
+```bash
 $go get -u github.com/cloudflare/cfssl/cmd/...
 $echo $GOPATH
 /usr/local

@@ -53,7 +53,7 @@ Docker的代码结构比较清晰，分成的目录比较多，有以下这些�
 - **daemon**：这个包中将docker deamon运行时状态expose出来。
 - **distribution**：负责docker镜像的pull、push和镜像仓库的维护。
 - **dockerversion**：编译的时候自动生成的。
-- **docs**：文档。这个目录已经不再维护，文档在另一个仓库里https://github.com/docker/docker.github.io/。
+- **docs**：文档。这个目录已经不再维护，文档在[另一个仓库里](https://github.com/docker/docker.github.io/)。
 - **experimental**：从docker1.13.0版本起开始增加了实验特性。
 - **hack**：创建docker开发环境和编译打包时用到的脚本和配置文件。
 - **image**：用于构建docker镜像的。

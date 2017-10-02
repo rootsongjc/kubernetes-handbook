@@ -6,11 +6,11 @@ categories: "kubernetes"
 Tags: ["kubernetes","spark","big-data"]
 ---
 
-TL;DR 关于 Spark on kubernetes 的详细信息和最新进展请见 https://jimmysong.io/spark-on-
+TL;DR 关于 Spark on kubernetes 的详细信息和最新进展请见 [jimmysong.io - spark-on-k8s](https://jimmysong.io/spark-on-k8s)
 
 我们之前就在 kubernetes 中运行过 standalone 方式的 spark 集群，见 [Spark standalone on kubernetes](https://jimmysong.io/kubernetes-handbook/usecases/spark-standalone-on-kubernetes.html)。
 
-目前运行支持 kubernetes 原生调度的 spark 程序项目由 Google 主导，fork 自 spark 的官方代码库，见 https://github.com/apache-spark-on-k8s/spark/ ，属于Big Data SIG。
+目前运行支持 kubernetes 原生调度的 spark 程序项目由 Google 主导，fork 自 spark 的官方代码库，见 [GitHub - spark-on-k8s](https://github.com/apache-spark-on-k8s/spark/) ，属于Big Data SIG。
 
 参与到该项目的公司有：
 
@@ -83,7 +83,7 @@ Spark driver 其实可以运行在 kubernetes 集群内部（cluster mode）可�
 
 我将这些镜像放到了我的私有镜像仓库中了。
 
-还需要安装支持 kubernetes 的 spark 客户端，在这里下载：https://github.com/apache-spark-on-k8s/spark/releases
+还需要安装支持 kubernetes 的 spark 客户端，在[这里下载](https://github.com/apache-spark-on-k8s/spark/releases)
 
 根据使用的镜像版本，我下载的是 [v2.1.0-kubernetes-0.3.1](https://github.com/apache-spark-on-k8s/spark/releases/tag/v2.1.0-kubernetes-0.3.1) 
 
@@ -342,13 +342,13 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 
 该命令将提交本地的 `../examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar` 文件到 **resource staging server**，executor 将从该 server 上获取 jar 包并运行，这样用户就不需要每次提交任务都编译一个镜像了。
 
-详见：https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html#dependency-management
+[详见 Dependency](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html#dependency-management)
 
 #### 设置 HDFS 用户
 
 如果 Hadoop 集群没有设置 kerbros 安全认证的话，在指定 `spark-submit` 的时候可以通过指定如下四个环境变量， 设置 Spark 与 HDFS 通信使用的用户：
 
-```bash
+```ini
   --conf spark.kubernetes.driverEnv.SPARK_USER=hadoop 
   --conf spark.kubernetes.driverEnv.HADOOP_USER_NAME=hadoop 
   --conf spark.executorEnv.HADOOP_USER_NAME=hadoop 

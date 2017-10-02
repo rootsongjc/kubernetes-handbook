@@ -60,7 +60,7 @@ Tenant提供contiv中的namespace隔离。一个tenant可以有很多个network�
 
 Contiv的编译安装比较复杂，我们直接下载github上的[release-1.0.0-beta.3-03-08-2017.18-51-20.UTC]([1.0.0-beta.3-03-08-2017.18-51-20.UTC](https://github.com/contiv/netplugin/releases/tag/1.0.0-beta.3-03-08-2017.18-51-20.UTC))文件解压获得二进制文件安装。
 
-> https://github.com/contiv/install/blob/master/README.md这个官方文档已经过时，不要看了。
+**注意**：[这个官方文档](https://github.com/contiv/install/blob/master/README.md)已经过时，不要看了。
 
 如果试用可以的话，我会后续写contiv开发环境搭建的文章。
 
@@ -89,7 +89,7 @@ Contiv依赖于consul或etcd，我们选择使用etcd，slack里的人说只支�
 
 ``contiv master``启动后自动向etcd中注册信息：
 
-```
+```bash
 /contiv.io/oper
 /contiv.io/oper/auto-vlan
 /contiv.io/oper/auto-vlan/global
@@ -139,7 +139,7 @@ $nohup netmaster -cluster-mode docker -cluster-store etcd://172.20.0.113:2379 -d
 
 **查看已有的contiv网络**
 
-```
+```bash
 $netctl --netmaster http://172.20.0.113:9999 network ls
 Tenant  Network  Nw Type  Encap type  Packet tag  Subnet   Gateway  IPv6Subnet  IPv6Gateway
 ------  -------  -------  ----------  ----------  -------  ------   ----------  -----------
@@ -149,7 +149,7 @@ Tenant  Network  Nw Type  Encap type  Packet tag  Subnet   Gateway  IPv6Subnet  
 
 ``export NETMASTER="http://172.20.0.113:9999"``
 
-> netplugin需要使用Open vSwitch，所以你需要先安装**Open vSwitch**。否则你会遇到这个问题[netplugin issue-760](https://github.com/contiv/netplugin/issues/760)
+**注意**：netplugin需要使用Open vSwitch，所以你需要先安装**Open vSwitch**。否则你会遇到这个问题[netplugin issue-760](https://github.com/contiv/netplugin/issues/760)
 
 ### Open vSwitch安装
 
@@ -175,11 +175,15 @@ rpmbuild -bb --nocheck ~/openvswitch-2.5.1/rhel/openvswitch_no_kmod.spec
 
 **启动netplugin**
 
-`nohup netplugin -cluster-store etcd://172.20.0.113:2379 &`
+```bash
+nohup netplugin -cluster-store etcd://172.20.0.113:2379 &
+```
 
 **创建network**
 
-`netctl --netmaster http://172.20.0.113:9999 network create --subnet=10.1.2.0/24 contiv-net`
+```bash
+netctl --netmaster http://172.20.0.113:9999 network create --subnet=10.1.2.0/24 contiv-net
+```
 
 获得以下报错：
 
@@ -189,7 +193,7 @@ ERRO[0000] Error response from daemon: legacy plugin netplugin of type NetworkDr
 
 Creating network default:contiv-net
 
-```
+```bash
 $netctl network ls
 Tenant   Network     Nw Type  Encap type  Packet tag  Subnet       Gateway  IPv6Subnet  IPv6Gateway
 ------   -------     -------  ----------  ----------  -------      ------   ----------  -----------
@@ -198,7 +202,7 @@ default  contiv-net  data     vxlan       0           10.1.2.0/24
 
 查看刚创建的contiv-net网络。
 
-```
+```Bash
 $netctl network inspect contiv-net
 Inspeting network: contiv-net tenant: default
 {
@@ -227,7 +231,7 @@ Inspeting network: contiv-net tenant: default
 
 从**netmaster**日志中可以看到如下报错：
 
-```
+```bash
 time="Mar  9 21:44:14.746627381" level=debug msg="NwInfra type is default, no ACI" 
 time="Mar  9 21:44:14.750278056" level=info msg="Creating docker network: {CheckDuplicate:true Driver:netplugin EnableIPv6:false IPAM:0xc4204d8ea0 Internal:false Attachable:true Options:map[tenant:default encap:vxlan pkt-tag:1] Labels:map[]}" 
 time="Mar  9 21:44:14.752034749" level=error msg="Error creating network contiv-net. Err: Error response from daemon: legacy plugin netplugin of type NetworkDriver is not supported in swarm mode" 
@@ -246,7 +250,7 @@ time="Mar  9 21:44:14.752172138" level=error msg="Handler for POST /api/v1/netwo
 
 `netplugin -h`可以中有两个选项我不明白，不知道怎么设置，有知道的人请告诉我一声。
 
-```
+```bash
   -vlan-if value
     	VLAN uplink interface
   -vtep-ip string

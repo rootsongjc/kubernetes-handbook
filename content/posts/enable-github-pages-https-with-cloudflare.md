@@ -20,9 +20,9 @@ Tags: ["github-pages"]
 
 这一切都是免费的，只需要以下几个步骤：
 
-- 在 https://www.cloudflare.com/ 注册，经过一系列对你的网站自动检测后，获得新的 nameserver 地址；
-- 和我的域名注册机构 https://www.namecheap.com 配置一下，修改 nameservers 记录为刚才在 Cloudflare 上获得的 nameserver 地址；
-- 在 Cloudflare 上配置 Page Rules：加入一条规则 http://jimmysong.io/* 设置为 `Always Use HTTPS`
+- 在 [cloudflare](https://www.cloudflare.com/) 注册，经过一系列对你的网站自动检测后，获得新的 nameserver 地址；
+- 和我的域名注册机构 [namecheap](https://www.namecheap.com) 配置一下，修改 nameservers 记录为刚才在 cloudflare 上获得的 nameserver 地址；
+- 在 Cloudflare 上配置 Page Rules：加入一条规则 ` http://jimmysong.io/*` 设置为 `Always Use HTTPS`
 - 修改网站代码中的 css 和 js 文件地址为 https；
 - 等几分钟访问网站 http://jimmysong.io 后就会跳转为 https://jimmysong.io 。
 

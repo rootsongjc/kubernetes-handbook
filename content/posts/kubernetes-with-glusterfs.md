@@ -19,11 +19,9 @@ Kubernetes集群沿用[跟我一起部署kubernetes1.6集群](https://github.com
 
 我们复用kubernetes集群的这三台主机做[glusterfs](https://github.com/gluster/glusterfs)存储。
 
-以下步骤参考自：https://www.xf80.com/2017/04/21/kubernetes-glusterfs/
-
 ## 安装glusterfs
 
-我们直接在物理机上使用yum安装，如果你选择在kubernetes上安装，请参考：https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md
+我们直接在物理机上使用yum安装，如果你选择在kubernetes上安装，请参考 [glusterfs setup guide](https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md)
 
 ```bash
 # 先安装 gluster 源

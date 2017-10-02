@@ -68,7 +68,7 @@ const defaultAPIVersion string = "1.0"
 
 
 
-```
+```bash
 $ git clone https://github.com/vieux/docker-volume-sshfs
 $ cd docker-volume-sshfs
 $ go get github.com/docker/go-plugins-helpers/volume
@@ -99,7 +99,7 @@ CMD ["docker-volume-sshfs"]
 
 编译rootfsimage镜像的过程。
 
-```
+```bash
 docker build -t rootfsimage .
 Sending build context to Docker daemon 11.71 MB
 Step 1/5 : FROM alpine
@@ -203,13 +203,13 @@ Successfully built 0fd2e3d94860
 
 具体到sshfs插件，在myplugin目录下使用如下命令创建插件：
 
-```shell
+```bash
 docker plugin create jimmmysong/sshfs:latest .
 ```
 
 现在就可以看到刚创建的插件了
 
-```
+```bash
 docker plugin ls
 ID                  NAME                 DESCRIPTION               ENABLED
 8aa1f6098fca        jimmysong/sshfs:latest   sshFS plugin for Docker   true
@@ -221,7 +221,7 @@ ID                  NAME                 DESCRIPTION               ENABLED
 
 目前推送到**harbor**镜像仓库有问题，报错信息：
 
-```
+```bash
 c08c951b53b7: Preparing 
 denied: requested access to the resource is denied
 ```
@@ -244,7 +244,7 @@ docker volume create -d jimmysong/sshfs --name sshvolume -o sshcmd=1.2.3.4:/remo
 
 报错如下：
 
-```
+```bash
 Error response from daemon: create sshvolume: Post http://%2Frun%2Fdocker%2Fplugins%2F8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f%2Fsshfs.sock/VolumeDriver.Create: dial unix /run/docker/plugins/8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f/sshfs.sock: connect: no such file or directory
 ```
 
@@ -370,9 +370,9 @@ Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="20
 Mar 13 17:29:41 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:29:41+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=85760810b4850009fc965f5c20d8534dc9aba085340a2ac0b4b9167a6fef7d53
 ```
 
-我查看了下`github.com/libnetwork/vendor/github.com/opencontainers/run/libcontainer/standard_init_linux.go`文件，这个那个文件只有114行，见这里https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go
+我查看了下`github.com/libnetwork/vendor/github.com/opencontainers/run/libcontainer/standard_init_linux.go`文件，这个那个文件只有114行，见[ standard_init_linux.go](https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go)
 
-但是在**opencontainers**的github项目里才有那么多行，见这里：https://github.com/opencontainers/runc/blob/master/libcontainer/standard_init_linux.go
+但是在**opencontainers**的github项目里才有那么多行，见 [standard_init_linux.go](https://github.com/opencontainers/runc/blob/master/libcontainer/standard_init_linux.go)
 
 这个报错前后的函数是：
 

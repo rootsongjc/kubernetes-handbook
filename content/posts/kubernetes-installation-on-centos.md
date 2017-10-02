@@ -25,7 +25,7 @@ Tags = ["kubernetes"]
 
 下面以在三台主机上安装Kubernetes为例。
 
-```
+```bash
 172.20.0.113 master/node kube-apiserver kube-controller-manager kube-scheduler kubelet kube-proxy etcd flannel
 172.20.0.114 node kubectl kube-proxy flannel
 172.20.0.115 node kubectl kube-proxy flannel
@@ -56,7 +56,7 @@ Tags = ["kubernetes"]
 
 **给yum源增加一个Repo**
 
-```
+```bash
 [virt7-docker-common-release]
 name=virt7-docker-common-release
 baseurl=http://cbs.centos.org/repos/virt7-docker-common-release/x86_64/os/
@@ -65,7 +65,7 @@ gpgcheck=0
 
 **安装docker、kubernetes、etcd、flannel一步到位**
 
-```shell
+```bash
 yum -y install --enablerepo=virt7-docker-common-release kubernetes etcd flannel
 ```
 
@@ -178,7 +178,7 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 ```
 **启动并校验**
-```Shell
+```bash
 systemctl start etcd
 systemctl enable etcd
 systemctl status etcd
@@ -188,7 +188,7 @@ etcdctl ls
 
 若要部署多节点集群也比较简单，只要更改etcd.conf文件以及etcd.service添加相应配置即可
 
-可以参考链接：https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md
+参考 [etcd Clustering Guide](https://github.com/coreos/etcd/blob/master/Documentation/op-guide/clustering.md)
 
 ### 安装flannel
 
@@ -202,7 +202,7 @@ etcdctl ls
 
 执行下面的命令安装。
 
-```shell
+```bash
 wget https://github.com/kubernetes/kubernetes/releases/download/v1.6.0/kubernetes.tar.gz
 tar kubernetes.tar.gz
 cd kubernetes
@@ -218,7 +218,7 @@ mv * /usr/bin
 
 解压完后获得的二进制文件有：
 
-```
+```bash
 cloud-controller-manager
 hyperkube
 kubeadm
@@ -542,7 +542,7 @@ done
 
 在Master节点上运行
 
-```
+```bash
 $kubectl get all
 NAME             CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 svc/kubernetes   10.254.0.1   <none>        443/TCP   1h

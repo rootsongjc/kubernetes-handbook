@@ -21,7 +21,7 @@ Tags = ["kubernetes","heapster"]
 
 直接现在Github上的最新代码。
 
-```Shell
+```bash
 git pull https://github.com/kubernetes/heapster.git
 ```
 
@@ -29,7 +29,7 @@ git pull https://github.com/kubernetes/heapster.git
 
 在`heapster/deploy/kube-config/influxdb`目录下有几个`yaml`文件：
 
-```
+```bash
 grafana-deployment.yaml
 grafana-service.yaml
 heapster-deployment.yaml
@@ -40,7 +40,7 @@ influxdb-service.yaml
 
 我们再看下用了哪些镜像：
 
-```
+```bash
 grafana-deployment.yaml:16:        image: gcr.io/google_containers/heapster-grafana-amd64:v4.0.2
 heapster-deployment.yaml:16:        image: gcr.io/google_containers/heapster-amd64:v1.3.0-beta.1
 influxdb-deployment.yaml:16:        image: gcr.io/google_containers/heapster-influxdb-amd64:v1.1.1
@@ -62,7 +62,7 @@ influxdb-deployment.yaml:16:        image: gcr.io/google_containers/heapster-inf
 
 需要的可以去下载，下载前需要用时速云账户登陆，然后再执行pull操作。
 
-```
+```bash
 docker login index.tendcloud.com
 ```
 
@@ -111,7 +111,7 @@ kubectl create -f deploy/kube-config/influxdb
 
 **查看状态**
 
-```
+```bash
 kubectl get -f deploy/kube-config/influxdb/
 NAME                        DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/monitoring-grafana   1         1         1            1           1h

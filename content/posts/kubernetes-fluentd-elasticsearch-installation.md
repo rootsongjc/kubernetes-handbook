@@ -63,7 +63,7 @@ Fluentd收集的**event**由以下几个方面组成：
 
 查看`cluster/addons/fluentd-elasticsearch`插件目录，获取到需要用到的docker镜像名称。
 
-```
+```Bash
 $grep -rn "gcr.io" *.yaml
 es-controller.yaml:24:      - image: gcr.io/google_containers/elasticsearch:v2.4.1-2
 fluentd-es-ds.yaml:26:        image: gcr.io/google_containers/fluentd-elasticsearch:1.22
@@ -96,7 +96,7 @@ kibana-controller.yaml:22:        image: gcr.io/google_containers/kibana:v4.6.1-
 
 使用刚修改好yaml文件的那个目录启动fluentd-elasticsearch。
 
-```
+```bash
 $kubectl create -f flucentd-elasticsearch
 $kubectl get -f fluentd-elasticsearch/
 NAME                          DESIRED   CURRENT   READY     AGE
@@ -133,7 +133,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 查看启动的pod。
 
-```
+```bash
 $kubectl --namespace=kube-system get all
 NAME                                       READY     STATUS    RESTARTS   AGE
 po/elasticsearch-logging-v1-nshz2          1/1       Running   0          16m
@@ -147,7 +147,7 @@ po/monitoring-influxdb-1411048194-cvxmm    1/1       Running   0          23h
 
 应该在个node节点上启动的**fluentd**没有看到。查看logging pod的日志。
 
-```
+```bash
 $kubectl -n kube-system logs po/elasticsearch-logging-v1-nshz2
 F0406 08:30:05.488197       7 elasticsearch_logging_discovery.go:49] Failed to make client: open /var/run/secrets/kubernetes.io/serviceaccount/token: no such file or directory
 goroutine 1 [running]:
@@ -177,7 +177,7 @@ Caused by: NodeNotConnectedException[[][127.0.0.1:9300] Node not connected]
 
 我们可以看到报错中有这样的描述：
 
-```
+```bash
 discovery.zen.ping.unicast failed to send ping to [{#zen_unicast_1#}{127.0.0.1}{127.0.0.1:9300}]
 SendRequestTransportException[[internal:discovery/zen/unicast]]; nested: NodeNotConnectedException[ Node not connected]
 ```
@@ -209,7 +209,7 @@ DaemonSet能够让所有（或者一些特定）的Node节点运行同一个pod�
 
 **启动fluentd**
 
-```
+```bash
 $kubectl create -f fluentd-es-ds.yaml
 daemonset "fluentd-es-v1.22" created
 $kubectl get -f fluentd-es-ds.yaml 
@@ -221,7 +221,7 @@ fluentd-es-v1.22   0         0         0         0            0           beta.k
 
 我们再来看下**node**的**label**。
 
-```
+```bash
 $kubectl describe node sz-pg-oam-docker-test-001.tendcloud.com
 Name:			sz-pg-oam-docker-test-001.tendcloud.com
 Role:			
@@ -236,7 +236,7 @@ Annotations:		node.alpha.kubernetes.io/ttl=0
 
 我们需要手动给kubernetes集群的三个node添加label。
 
-```
+```bash
 $kubectl label node sz-pg-oam-docker-test-001.tendcloud.com beta.kubernetes.io/fluentd-ds-ready=true
 node "sz-pg-oam-docker-test-001.tendcloud.com" labeled
 ```
@@ -245,7 +245,7 @@ node "sz-pg-oam-docker-test-001.tendcloud.com" labeled
 
 现在再查看下DaemonSet的状态。
 
-```
+```bash
 $kubectl get -f fluentd-es-ds.yaml 
 NAME               DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                              AGE
 fluentd-es-v1.22   3         3         0         3            0           beta.kubernetes.io/fluentd-ds-ready=true   31m
@@ -255,7 +255,7 @@ fluentd-es-v1.22   3         3         0         3            0           beta.k
 
 查看下fluentd的日志`/var/log/fluentd.log`，日志是mount到本地的。
 
-```
+```bash
 2017-04-07 03:53:42 +0000 [info]: adding match pattern="fluent.**" type="null"
 2017-04-07 03:53:42 +0000 [info]: adding filter pattern="kubernetes.**" type="kubernetes_metadata"
 2017-04-07 03:53:42 +0000 [error]: config error file="/etc/td-agent/td-agent.conf" error="Invalid Kubernetes API v1 endpoint https://10.254.0.1:443/api: SSL_connect returned=1 errno=0 state=error: certificate verify failed"
@@ -267,7 +267,7 @@ fluentd-es-v1.22   3         3         0         3            0           beta.k
 
 但是这些配置已经在创建`gcr.io/google_containers/fluentd-elasticsearch:1.22`镜像（该镜像是运行带有elasticsearch插件的fluentd的）的时候就已经copy进去了，从`fluentd-elasticsearch/fluentd-es-image/Dockerfile`文件中就可以看到：
 
-```
+```bash
 # Copy the Fluentd configuration file.
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 ```
@@ -281,7 +281,7 @@ COPY td-agent.conf /etc/td-agent/td-agent.conf
 
 在td-agent.conf的配置文件的<filter kubernetes.**>中增加两条配置配置：
 
-```
+```bash
 <filter kubernetes.**>
   type kubernetes_metadata
   kubernetes_url sz-pg-oam-docker-test-001.tendcloud.com:8080
@@ -291,13 +291,13 @@ COPY td-agent.conf /etc/td-agent/td-agent.conf
 
 **创建ConfigMap**
 
-```
+```bash
 kubectl create configmap td-agent-config --from-file=fluentd-elasticsearch/fluentd-es-image/td-agent.conf -n kube-system
 ```
 
 查看刚创建的ConfigMap
 
-```
+```bash
 $kubectl -n kube-system get configmaps td-agent-config -o yaml
 apiVersion: v1
 data:
@@ -312,7 +312,6 @@ data:
   verify_ssl false
 </filter>
 ...
-
 ```
 
 > ⚠️ kubernetes_url地址要加上**http**。
@@ -321,7 +320,7 @@ data:
 
 该文件的部分内容如下：
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -351,7 +350,7 @@ metadata:
 
 启动日志收集服务
 
-```
+```bash
 kubectl create -f ./fluentd-elasticsearch
 ```
 
@@ -359,7 +358,7 @@ kubectl create -f ./fluentd-elasticsearch
 
 查看下elasticsearch pod日志，发现里面还有错误，跟以前的一样：
 
-```
+```bash
 [2017-04-07 10:54:57,858][WARN ][discovery.zen.ping.unicast] [elasticsearch-logging-v1-wxd5f] failed to send ping to [{#zen_unicast_1#}{127.0.0.1}{127.0.0.1:9300}]
 SendRequestTransportException[[][127.0.0.1:9300][internal:discovery/zen/unicast]]; nested: NodeNotConnectedException[[][127.0.0.1:9300] Node not connected];
 	at org.elasticsearch.transport.TransportService.sendRequest(TransportService.java:340)
@@ -383,7 +382,7 @@ Caused by: NodeNotConnectedException[[][127.0.0.1:9300] Node not connected]
 
 查看下elasticsearch:v2.4.1-2镜像的代码，在`fluentd-elasticsearch/es-image`目录下，该目录结构：
 
-```
+```bash
 config
 Dockerfile
 elasticsearch_logging_discovery.go

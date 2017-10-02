@@ -49,7 +49,7 @@ data:
 
 其实不用看下面的文章，直接从`kubectl create configmap -h`的帮助信息中就可以对ConfigMap究竟如何创建略知一二了。
 
-```
+```Bash
 Examples:
   # Create a new configmap named my-config based on folder bar
   kubectl create configmap my-config --from-file=path/to/bar
@@ -65,7 +65,7 @@ Examples:
 
 可以使用该命令，用给定值、文件或目录来创建ConfigMap。
 
-```
+```bash
 kubectl create configmap
 ```
 
@@ -73,7 +73,7 @@ kubectl create configmap
 
 比如我们已经有个了包含一些配置文件，其中包含了我们想要设置的ConfigMap的值：
 
-```
+```bash
 $ ls docs/user-guide/configmap/kubectl/
 game.properties
 ui.properties
@@ -96,7 +96,7 @@ how.nice.to.look=fairlyNice
 
 使用下面的命令可以创建一个包含目录中所有文件的ConfigMap。
 
-```
+```bash
 $ kubectl create configmap game-config --from-file=docs/user-guide/configmap/kubectl
 ```
 
@@ -104,7 +104,7 @@ $ kubectl create configmap game-config --from-file=docs/user-guide/configmap/kub
 
 让我们来看一下这个命令创建的ConfigMap：
 
-```
+```bash
 $ kubectl describe configmaps game-config
 Name:           game-config
 Namespace:      default
@@ -120,7 +120,7 @@ ui.properties:          83 bytes
 我们可以看到那两个key是从kubectl指定的目录中的文件名。这些key的内容可能会很大，所以在kubectl describe的输出中，只能够看到键的名字和他们的大小。
 如果想要看到键的值的话，可以使用`kubectl get`：
 
-```
+```Bash
 $ kubectl get configmaps game-config -o yaml
 ```
 
@@ -155,7 +155,7 @@ metadata:
 
 刚才**使用目录创建**的时候我们`—from-file`指定的是一个目录，只要指定为一个文件就可以从单个文件中创建ConfigMap。
 
-```
+```bash
 $ kubectl create configmap game-config-2 --from-file=docs/user-guide/configmap/kubectl/game.properties 
 
 $ kubectl get configmaps game-config-2 -o yaml
@@ -188,7 +188,7 @@ metadata:
 
 使用文字值创建，利用`—from-literal`参数传递配置信息，该参数可以使用多次，格式如下；
 
-```
+```bash
 $ kubectl create configmap special-config --from-literal=special.how=very --from-literal=special.type=charm
 
 $ kubectl get configmaps special-config -o yaml
@@ -316,7 +316,7 @@ spec:
 
 运行这个Pod后会输出：
 
-```
+```bash
 very charm
 ```
 

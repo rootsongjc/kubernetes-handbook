@@ -15,7 +15,7 @@ Tags = ["kubernetes","go"]
 
 本文将归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的【开发指南—client-go示例】章节中，最终版本以kubernetes-handbook中为准。
 
-本文中的代码见：https://github.com/rootsongjc/kubernetes-client-go-sample 
+[GitHub - kubernetes-client-go 本文中的代码](https://github.com/rootsongjc/kubernetes-client-go-sample )
 
 
 ## client-go示例
@@ -30,7 +30,7 @@ Tags = ["kubernetes","go"]
 | [client-python](https://github.com/kubernetes-incubator/client-python) | python客户端，kubernetes-incubator           | 官方支持   |
 | [Java client](https://github.com/fabric8io/kubernetes-client) | fabric8中的一部分，kubernetes的java客户端          | redhat |
 
-下面，我们基于[client-go](https://github.com/kubernetes/client-go)，对Deployment升级镜像的步骤进行了定制，通过命令行传递一个Deployment的名字、应用容器名和新image名字的方式来升级。代码和使用方式见 https://github.com/rootsongjc/kubernetes-client-go-sample 。
+下面，我们基于[client-go](https://github.com/kubernetes/client-go)，对Deployment升级镜像的步骤进行了定制，通过命令行传递一个Deployment的名字、应用容器名和新image名字的方式来升级。代码和使用方式见 [github 代码库](https://github.com/rootsongjc/kubernetes-client-go-sample) 。
 
 ## kubernetes-client-go-sample
 

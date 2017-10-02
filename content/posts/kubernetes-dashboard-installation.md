@@ -18,7 +18,7 @@ Tags = ["kubernetes","cloud computing"]
 
 ## 安装Dashboard
 
-官网的安装文档https://kubernetes.io/docs/user-guide/ui/，其实官网是让我们使用现成的image来用kubernetes部署即可。
+[官网的安装文档](https://kubernetes.io/docs/user-guide/ui/)，其实官网是让我们使用现成的image来用kubernetes部署即可。
 
 首先需要一个**kubernetes-dashboard.yaml**的配置文件，可以直接在[Github的src/deploy/kubernetes-dashboard.yaml](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)下载。
 
@@ -112,7 +112,7 @@ spec:
 
 准备好image后就可以部署了。
 
-```
+```bash
 $kubectl create -f kubernetes-dashboard.yaml
 deployment "kubernetes-dashboard" created
 service "kubernetes-dashboard" created
@@ -138,7 +138,7 @@ svc/kubernetes-dashboard   10.254.113.226   <nodes>       80:31370/TCP   8s
 
 启动service的时候出错。
 
-```
+```bash
 kubectl --namespace=kube-system logs kubernetes-dashboard-1680927228-pdv45
 Using HTTP port: 9090
 Error while initializing connection to Kubernetes apiserver. This most likely means that the cluster is misconfigured (e.g., it has invalid apiserver certificates or service accounts configuration) or the --apiserver-host param points to a server that does not exist. Reason: open /var/run/secrets/kubernetes.io/serviceaccount/token: no such file or directory
@@ -151,13 +151,13 @@ Refer to the troubleshooting guide for more information: https://github.com/kube
 
 **启动**
 
-```
+```bash
 kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 ```
 
 报错信息
 
-```
+```Bash
 {
   "kind": "Status",
   "apiVersion": "v1",
@@ -169,7 +169,7 @@ kubectl proxy --address='0.0.0.0' --accept-hosts='^*$'
 }
 ```
 
-```
+```bash
 # start a container that contains curl
 $ kubectl run test --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/curl:latest -- sleep 10000
 $kubectl get pod

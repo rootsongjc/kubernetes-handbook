@@ -7,7 +7,7 @@ Tags = ["kubernetes","cheatsheet"]
 
 +++
 
-参考 https://kubernetes.io/docs/user-guide/kubectl/v1.6/ 绘制。
+参考 [kuberntes API 1.6 版本](https://kubernetes.io/docs/user-guide/kubectl/v1.6/) 绘制。
 
 通过该图可以对kubernetes的客户端命令kubectl有个感性和大体的了解，具体使用方法请参考官方文档。
 
