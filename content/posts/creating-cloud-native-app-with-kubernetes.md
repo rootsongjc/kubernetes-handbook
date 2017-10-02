@@ -284,7 +284,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 在Kubernetes中添加了service的同时，在DNS中增加一个记录，这条记录需要跟ingress中的`host`字段相同，IP地址即VIP的地址，本示例中是`172.20.0.119`，这样集群外部就可以通过service的DNS名称来访问服务了。
 
-详细操作步骤和配置请参考：[https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
+参考[详细操作步骤和配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
 ## 参考
 
