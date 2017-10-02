@@ -70,14 +70,14 @@ src = "img/data-analytics-carousel.jpg"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Programming"
-    url = "categories/programming"
+    name = "Code"
+    url = "categories/code"
     weight = 6
 
 [[menu.main]]
     parent = "Categories"
-    name = "infrustructures"
-    url = "categories/infrustructures/"
+    name = "Architecture"
+    url = "categories/architecture/"
     weight = 7
 
 [[menu.main]]
@@ -88,8 +88,8 @@ src = "img/data-analytics-carousel.jpg"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Containers"
-    url = "categories/containers"
+    name = "Docker"
+    url = "categories/docker"
     weight = 5
 
 [[menu.main]]

@@ -2,7 +2,7 @@
 date = "2017-03-24T08:36:29+08:00"
 title = "Go语言中的并发编程总结"
 draft = false
-categories = "programming"
+categories = "code"
 Tags = ["go"]
 
 +++

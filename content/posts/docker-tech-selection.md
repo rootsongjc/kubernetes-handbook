@@ -2,7 +2,7 @@
 date = "2017-03-08T10:37:01+08:00"
 title = "Docker技术选型"
 draft = false
-categories = "containers"
+categories = "docker"
 Tags = ["docker"]
 
 +++

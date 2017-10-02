@@ -2,7 +2,7 @@
 date = "2017-04-08T12:29:36+08:00"
 Title = "云计算技术架构与实践（第二版）读后感"
 draft = false
-categories = "Infrustructures"
+categories = "Architecture"
 Tags = ["cloud-computing","book","huawei"]
 
 +++

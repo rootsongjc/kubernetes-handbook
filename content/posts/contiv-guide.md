@@ -2,7 +2,7 @@
 date = "2017-03-09T11:28:34+08:00"
 title = "思科开源docker网络插件Contiv简介"
 draft = false
-categories="containers"
+categories="docker"
 Tags = ["contiv","docker","network"]
 
 +++

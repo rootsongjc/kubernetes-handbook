@@ -2,7 +2,7 @@
 date = "2017-03-09T14:23:04+08:00"
 title = "Contiv入坑指南-试用全记录"
 draft = false
-categories = "containers"
+categories = "docker"
 Tags = ["docker","network","sdn"]
 
 +++

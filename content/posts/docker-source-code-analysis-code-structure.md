@@ -2,9 +2,8 @@
 date = "2017-03-19T23:00:29+08:00"
 title = "Docker源码分析第一篇——代码结构"
 draft = false
-categories = "containers"
-Tags = ["docker","docker source code analysis"]
-Catagories=["Docker"]
+categories = "docker"
+Tags = ["docker"]
 
 +++
 ![八达岭长城](http://olz1di9xf.bkt.clouddn.com/20151001042.jpg)

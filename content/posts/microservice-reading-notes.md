@@ -2,7 +2,7 @@
 date = "2017-03-11T15:45:27+08:00"
 title = "微服务设计读书笔记"
 draft = false
-categories = "infrustructures"
+categories = "Architecture"
 Tags = ["microservice","architecture","book"]
 
 +++

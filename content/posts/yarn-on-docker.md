@@ -3,8 +3,8 @@
 date = "2017-04-04T00:19:04+08:00"
 title = "容器技术在大数据场景下的应用——Yarn on Docker"
 draft = false
-categories = "containers"
-Tags = ["docker","big data","cloud computing"]
+categories = "container"
+Tags = ["docker","big data","hadoop","yarn"]
 
 +++
 
