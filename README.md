@@ -4,4 +4,4 @@
 
 Proudly powered by [Hugo](https://github.com/gohugoio/hugo) ❤️
 
-Theme [nixon](https://themes.gohugo.io/nixon/)
+Theme [Beautiful Hugo](https://github.com/halogenica/beautifulhugo)

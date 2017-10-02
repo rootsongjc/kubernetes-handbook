@@ -275,4 +275,4 @@ InfluxDB is running at https://108.59.85.141/api/v1/namespaces/kube-system/servi
 
 本文同时归档到 [kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)。
 
-原文地址：https://github.com/rootsongjc/kubernetes.github.io/blob/master/docs/user-guide/docker-cli-to-kubectl.md
+[阅读原文](https://github.com/rootsongjc/kubernetes.github.io/blob/master/docs/user-guide/docker-cli-to-kubectl.md)
