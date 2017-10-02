@@ -26,11 +26,11 @@ tags: ["github-pages"]
 7. 使用 CDN，优化了网站的加载速度
 8. 删除原有的划分不合理的 `blogs`、`talks`、`projetcs` 路径，所有文章都从 `posts` 路径直接访问
 9. 页面上终于可以看到我的 logo 了，Jimminetes、Kubesong 😂
+10. 将默认的代码高亮插件 highlight 替换为 [prism](http://prismjs.com/download.html)
 
 ## 仍需完善
 
 虽然做出了这么多更新和优化，但是仍然还有一些需要完善的地方：
 
 1. 移动设备页面适配问题，手机中打开有些长代码页面会需要缩放
-2. 默认的 highlight 代码高亮不够美观，无法滚动代码，考虑替换代码高亮插件
-3. 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
+2. 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
