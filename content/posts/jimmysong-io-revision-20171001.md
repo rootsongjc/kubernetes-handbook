@@ -54,7 +54,7 @@ tags: ["github-pages"]
 
 增加了一行 `width: 100%`，问题解决👏
 
-**参考**
+#### 参考
 
 - [CSS3 @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
 - [Try CSS3 media query](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_mediaquery)
