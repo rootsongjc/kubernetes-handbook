@@ -19,15 +19,10 @@ pygmentCodeFences = true
   comments = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
-#[[Params.bigimg]]
-#src = "img/triangle.jpg"
-#  desc = "Triangle"
 [[Params.bigimg]]
 src = "img/data-analytics-carousel.jpg"
-#desc = "Sphere"
-#[[Params.bigimg]]
-#src = "img/hexagon.jpg"
-#desc = "Hexagon"
+#src = "img/data-science-shutterstock.jpg"
+desc = "Shutterstock"
 
 [Author]
   name = "Jimmy Song"
