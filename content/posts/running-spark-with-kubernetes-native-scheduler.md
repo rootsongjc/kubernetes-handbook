@@ -239,7 +239,13 @@ local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.ja
 
 详细的参数说明见 [running on kubernetes](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html)
 
-**注意：**`local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar` 文件是在 `spark-driver` 和 `spark-executor` 镜像里的，在上一步构建镜像时已经构建并上传到了镜像仓库中。
+**注意**
+
+```
+local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar
+```
+
+文件是在spark-driver和spark-executor镜像里的，在上一步构建镜像时已经构建并上传到了镜像仓库中。
 
 执行日志显示：
 
