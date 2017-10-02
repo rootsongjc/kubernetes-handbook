@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes中的Secret配置"
+title: "Kubernetes中的Secret配置详解"
 date: 2017-09-28T21:20:49+08:00
 draft: false
 categories: "kubernetes"
