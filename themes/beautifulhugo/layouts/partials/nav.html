@@ -1,0 +1,96 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">{{ i18n "toggleNavigation" }}</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        {{ range .Site.Menus.main.ByWeight }}
+          {{ if .HasChildren }}
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
+              <div class="navlinks-children">
+                {{ range .Children }}
+                  <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                {{ end }}
+              </div>
+            </li>
+          {{ else }}
+            <li>
+              <a title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
+
+        {{ if .Site.IsMultiLingual }}
+          {{ if ge (len .Site.Languages) 3 }}
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">{{ i18n "languageSwitcherLabel" }}</a>
+              <div class="navlinks-children">
+                {{ range .Site.Languages }}
+                  {{ if not (eq .Lang $.Site.Language.Lang) }}
+                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                  {{ end }}
+                {{ end }}
+              </div>
+            </li>
+          {{ else }}
+            <li>
+              {{ range .Site.Languages }}
+                {{ if not (eq .Lang $.Site.Language.Lang) }}
+                  <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+                {{ end }}
+              {{ end }}
+            </li>
+          {{ end }}
+        {{ end }}
+
+        {{ if isset .Site.Params "gcse" }}
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">{{ i18n "gcseLabelShort" }}</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        {{ if isset .Site.Params "logo" }}
+          <a title="{{ .Site.Title }}" href="{{ "" | absLangURL }}">
+            <img class="avatar-img" src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" />
+          </a>
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Search Modal -->
+{{ if isset .Site.Params "gcse" }}
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{ i18n "gcseLabelLong" . }}</h4>
+        </div>
+        <div class="modal-body">
+          <gcse:search></gcse:search>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{ i18n "gcseClose" }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

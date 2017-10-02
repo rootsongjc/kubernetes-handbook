@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ $data := .Data }}
+  <div class="container" role="main">
+    <article class="post-preview">
+      <div class="list-group col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+      {{ range $key, $value := .Data.Terms.ByCount }}
+      <a href="{{ $.Site.LanguagePrefix | absURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}/" class="list-group-item">
+          {{ $value.Name }}<span class="badge">{{ $value.Count }}</span></a>
+      {{ end }}
+      </div>
+    </article>
+  </div>
+{{ end }}
+

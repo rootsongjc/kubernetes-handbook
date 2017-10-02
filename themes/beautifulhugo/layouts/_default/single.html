@@ -1,0 +1,66 @@
+{{ define "main" }}
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+                {{ .Content }}
+            </article>
+
+            <ul class="pager blog-pager">
+                {{ if .PrevInSection }}
+                <li class="previous">
+                    <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+                </li>
+                {{ end }} {{ if .NextInSection }}
+                <li class="next">
+                    <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+                </li>
+                {{ end }}
+            </ul>
+            <div>
+                {{ $related := .Site.RegularPages.Related . | first 5 }} {{ with $related }}
+                <h2>See Also</h2>
+                <ul>
+                    {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+            </div>
+            {{ $baseurl := .Site.BaseURL }}
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
+                    <h5 id="wc"> {{ .FuzzyWordCount }} Words </h5>
+                    <h5 id="readtime"> Read in about {{ .ReadingTime }} Min </h5>
+                </section>
+                <h5 id="tags">Tags: {{ range .Params.tags }}
+                    <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
+                </h5>
+            </div>
+            <!-- gitcomments -->
+            <aside id=comments>
+                <div>
+                    <h2> Comments </h2>
+                </div>
+                <div id="container"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    var gitment = new Gitment({
+                        owner: 'rootsongjc', //github account
+                        repo: 'rootsongjc.github.io', // github repo
+                        oauth: {
+                            client_id: '93a0df08e0f93ff0c8a3',
+                            client_secret: '3bdbf0b42c525f78582600bd38cf7f722ee40541',
+                        },
+                    })
+                    gitment.render('container')
+                </script>
+            </aside>
+
+        </div>
+    </div>
+    </section>
+</div>
+{{ end }}

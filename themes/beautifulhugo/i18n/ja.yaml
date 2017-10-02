@@ -1,0 +1,38 @@
+# Content
+- id: dateFormat
+  translation: "2006年1月2日"
+- id: postedOnDate
+  translation: "{{ .Count }}に投稿"
+- id: translationsLabel
+  translation: "翻訳："
+- id: translationsSeparator
+  translation: "・"
+- id: readMore
+  translation: "続きを読む"
+- id: olderPosts
+  translation: "古いページ"
+- id: newerPosts
+  translation: "新しいページ"
+- id: previousPost
+  translation: "前ページ"
+- id: nextPost
+  translation: "次ページ"
+
+# 404 page
+- id: pageNotFound
+  translation: "おっと、このページが存在しない。他にあたってください。（404エラー）"
+
+# Footer
+- id: poweredBy # Accepts HTML
+  translation: '起動力に<a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> &nbsp;&bull;&nbsp; テーマに<a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>に基づいている<a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>'
+
+# Navigation
+- id: toggleNavigation
+  translation: "メニューを切り替え"
+- id: gcseLabelShort
+  translation: "検索"
+- id: gcseLabelLong
+  translation: "{{ .Site.Title }}を検索"
+- id: gcseClose
+  translation: "閉じる"
+

@@ -1,0 +1,11 @@
+<span class="post-meta">
+  {{ default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format | i18n "postedOnDate" }}
+  {{ if .IsTranslated -}}
+    {{- $sortedTranslations := sort .Translations "Site.Language.Weight" -}}
+    {{- $links := apply $sortedTranslations "partial" "translation_link.html" "." -}}
+    {{- $cleanLinks := apply $links "chomp" "." -}}
+    {{- $linksOutput := delimit $cleanLinks (i18n "translationsSeparator") -}}
+    &nbsp;&bull;&nbsp; {{ i18n "translationsLabel" }}{{ $linksOutput }}
+  {{- end }}
+</span>
+

@@ -1,0 +1,11 @@
+{{ define "header" }}<!-- No header on 404 pages -->{{ end }}
+{{ define "main" }}
+  <div role="main" class="container main-content">
+    <div class="text-center">
+      <h1>{{ i18n "pageNotFound" }}</h1>
+      <br/>
+      <img src="{{ .Site.BaseURL }}/img/404-southpark.jpg" />
+    </div>
+  </div>
+{{ end }}
+

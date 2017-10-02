@@ -1,0 +1,40 @@
+# Content
+- id: dateFormat
+  translation: "January 2, 2006"
+- id: postedOnDate
+  translation: "发表于 {{ .Count }}"
+- id: translationsLabel
+  translation: "其它语言: "
+- id: translationsSeparator
+  translation: ", "
+- id: readMore
+  translation: "阅读全文"
+- id: olderPosts
+  translation: "下一页"
+- id: newerPosts
+  translation: "上一页"
+- id: previousPost
+  translation: "前一篇"
+- id: nextPost
+  translation: "后一篇"
+
+# 404 page
+- id: pageNotFound
+  translation: "啊哦，这篇文章不存在。 (404 错误)"
+
+# Footer
+- id: poweredBy # Accepts HTML
+  translation: '由 <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+
+# Navigation
+- id: toggleNavigation
+  translation: "切换导航"
+- id: languageSwitcherLabel
+  translation: "语言"
+- id: gcseLabelShort
+  translation: "搜索"
+- id: gcseLabelLong
+  translation: "搜索 {{ .Site.Title }}"
+- id: gcseClose
+  translation: "关闭"
+
