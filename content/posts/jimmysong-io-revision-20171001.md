@@ -8,7 +8,9 @@ tags: ["github-pages"]
 
 经过昨天一天的努力，我的博客(https://jimmysong.io) 成功改版，度过一个十分有意义的国庆节。🎈💐👏
 
-## 更新与优化
+## 更新记录
+
+### 2017-10-01
 
 1. 替换了原来的 [nixon](https://themes.gohugo.io/nixon/) 主题，使用新的 [Beautiful Hugo](https://themes.gohugo.io/beautifulhugo/) 主题
 2. 增加 **categories**，为之前写的所有文章分门别类，并在主页上使用下拉菜单导航
@@ -28,9 +30,31 @@ tags: ["github-pages"]
 9. 页面上终于可以看到我的 logo 了，Jimminetes、Kubesong 😂
 10. 将默认的代码高亮插件 highlight 替换为 [prism](http://prismjs.com/download.html)
 
-## 仍需完善
+### TODO
 
-虽然做出了这么多更新和优化，但是仍然还有一些需要完善的地方：
-
-1. 移动设备页面适配问题，手机中打开有些长代码页面会需要缩放
+1. ~~移动设备页面适配问题，手机中打开有些长代码页面会需要缩放~~
 2. 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
+3. 每篇文章的标题显示还需要优化，对齐方式问题
+
+### 2017-10-02
+
+1. 修复了移动设备适配问题，仅仅在 `main.css` 中增加了一行代码而已。
+
+```css
+.container[role=main] {
+    margin-bottom: 50px;
+    width: 100%;
+    flex: 1 0 auto;
+}
+```
+
+增加了一行 `width: 100%`，问题解决👏
+
+**参考**
+
+[CSS3 @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
+
+[Try CSS3 media query](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_mediaquery)
+
+
+
