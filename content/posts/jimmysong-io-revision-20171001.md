@@ -36,6 +36,10 @@ tags: ["github-pages"]
 2. 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
 3. 每篇文章的标题显示还需要优化，对齐方式问题
 
+### 注意事项
+
+1. 尽量不要在文章中直接用文本显示输入超链接，应该使用链接形式，否则对于移动设备的显示会造成不好的影响
+
 ### 2017-10-02
 
 1. 修复了移动设备适配问题，仅仅在 `main.css` 中增加了一行代码而已。
@@ -52,9 +56,9 @@ tags: ["github-pages"]
 
 **参考**
 
-[CSS3 @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
+- [CSS3 @media Rule](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
 
-[Try CSS3 media query](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_mediaquery)
+- [Try CSS3 media query](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_mediaquery)
 
 
 
