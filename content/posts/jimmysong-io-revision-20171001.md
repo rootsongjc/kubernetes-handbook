@@ -3,7 +3,7 @@ title: "喜迎国庆节jimmysong.io博客盛装改版"
 date: 2017-10-02T09:18:27+08:00
 draft: false
 categories: github
-tags: ["github"]
+tags: ["github-pages"]
 ---
 
 经过昨天一天的努力，我的博客(https://jimmysong.io) 成功改版，度过一个十分有意义的国庆节。🎈💐👏
