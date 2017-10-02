@@ -734,10 +734,12 @@ table tr td :last-child {
 pre {
     font-size: 16px;
     line-height: 1.5em;
+    width: 100%
 }
 
 pre code {
-    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 pre.highlight,
