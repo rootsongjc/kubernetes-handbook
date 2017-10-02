@@ -144,8 +144,23 @@ Secret 可以作为数据卷被挂载，或作为环境变量暴露出来以供 
 在 Pod 中的 volume 里使用 Secret：
 
 1. 创建一个 secret 或者使用已有的 secret。多个 pod 可以引用同一个 secret。
+
 2. 修改您的 pod 的定义在 `spec.volumes[]` 下增加一个 volume。可以给这个 volume 随意命名，它的 `spec.volumes[].secret.secretName` 必须等于 secret 对象的名字。
-3. 将 `spec.containers[].volumeMounts[]` 加到需要用到该 secret 的容器中。指定 `spec.containers[].volumeMounts[].readOnly = true` 和 `spec.containers[].volumeMounts[].mountPath` 为您想要该 secret 出现的尚未使用的目录。
+
+3. 将下面的配置 
+```ini
+spec.containers[].volumeMounts[]
+```
+​	加到需要用到该 secret 的容器中。指定下面的配置
+```ini
+spec.containers[].volumeMounts[].readOnly = true
+```
+​	并设置
+```ini
+spec.containers[].volumeMounts[].mountPath
+```
+​	为您想要该 secret 出现的尚未使用的目录。
+
 4. 修改您的镜像并且／或者命令行让程序从该目录下寻找文件。Secret 的 `data` 映射中的每一个键都成为了 `mountPath` 下的一个文件名。
 
 这是一个在 pod 中使用 volume 挂在 secret 的例子：
