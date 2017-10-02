@@ -25,10 +25,10 @@ title = "About me"
 
 - Wechat: jimmysong
 - Email: rootsongjc@gmail.com
-- Twitter: https://twitter.com/jimmysongio
-- Facebook: https://facebook.com/jimmysongio
-- 图虫(Tuchong Photography): https://jimmysog.tuchong.com
-- 知乎专栏——云原生应用架构：https://zhuanlan.zhihu.com/cloud-native
+- [Twitter@jimmysongio](https://twitter.com/jimmysongio)
+- [Facebook@jimmysongio](https://facebook.com/jimmysongio)
+- [图虫(Tuchong Photography](https://jimmysog.tuchong.com)
+- [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 - 微信公众号——云原生应用架构(CloudNativeGo)
 
 ![微信公众号-云原生应用架构](/media/cloud-native-wechat-public-account.jpg)
