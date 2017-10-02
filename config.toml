@@ -5,7 +5,7 @@ languageCode = "zh-hans"
 title = "Jimmy Song" 
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-pygmentsUseClasses = true
+pygmentsUseClasses = false
 pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
