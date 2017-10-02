@@ -51,11 +51,7 @@ TL;DR 关于 Spark on kubernetes 的详细信息和最新进展请见 [jimmysong
 
 - **Dynamic Allocation（动态资源分配）**：一个配置选项，可以将其打开。从Spark1.2之后，对于On Yarn模式，已经支持动态资源分配（Dynamic Resource Allocation），这样，就可以根据Application的负载（Task情况），动态的增加和减少executors，这种策略非常适合在YARN上使用spark-sql做数据开发和分析，以及将spark-sql作为长服务来使用的场景。Executor 的动态分配需要在 cluster mode 下启用 "external shuffle service"。
 
-- **动态资源分配策略**：开启动态分配策略后，application会在task因没有足够资源被挂起的时候去动态申请资源，这意味着该application现有的executor无法满足所有task并行运行。spark一轮一轮的申请资源，当有task挂起或等待 
-  `spark.dynamicAllocation.schedulerBacklogTimeout`
-  (默认1s)时间的时候，会开始动态资源分配；之后会每隔  
-  `spark.dynamicAllocation.sustainedSchedulerBacklogTimeout`
-  (默认1s)时间申请一次，直到申请到足够的资源。每次申请的资源量是指数增长的，即1,2,4,8等。之所以采用指数增长，出于两方面考虑：其一，开始申请的少是考虑到可能application会马上得到满足；其次要成倍增加，是为了防止application需要很多资源，而该方式可以在很少次数的申请之后得到满足。
+- **动态资源分配策略**：开启动态分配策略后，application会在task因没有足够资源被挂起的时候去动态申请资源，这意味着该application现有的executor无法满足所有task并行运行。spark一轮一轮的申请资源，当有task挂起或等待 `spark.dynamicAllocation.schedulerBacklogTimeout` (默认1s)时间的时候，会开始动态资源分配；之后会每隔 `spark.dynamicAllocation.sustainedSchedulerBacklogTimeout` (默认1s)时间申请一次，直到申请到足够的资源。每次申请的资源量是指数增长的，即1,2,4,8等。之所以采用指数增长，出于两方面考虑：其一，开始申请的少是考虑到可能application会马上得到满足；其次要成倍增加，是为了防止application需要很多资源，而该方式可以在很少次数的申请之后得到满足。
 
 ## 架构设计
 
@@ -394,15 +390,10 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 
 ## 参考
 
-[Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
-
-[Running Spark on Kubernetes](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html)
-
-[Apache Spark Jira Issue - 18278 - SPIP: Support native submission of spark jobs to a kubernetes cluster](https://issues.apache.org/jira/browse/SPARK-18278)
-
-[Kubernetes Github Issue - 34377 Support Spark natively in Kubernetes](https://github.com/kubernetes/kubernetes/issues/34377)
-
-[Kubernetes example spark](https://github.com/kubernetes/kubernetes/tree/master/examples/spark)
-
-https://github.com/rootsongjc/spark-on-kubernetes
+- [Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
+- [Running Spark on Kubernetes](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html)
+- [Apache Spark Jira Issue - 18278 - SPIP: Support native submission of spark jobs to a kubernetes cluster](https://issues.apache.org/jira/browse/SPARK-18278)
+- [Kubernetes Github Issue - 34377 Support Spark natively in Kubernetes](https://github.com/kubernetes/kubernetes/issues/34377)
+- [Kubernetes example spark](https://github.com/kubernetes/kubernetes/tree/master/examples/spark)
+- https://github.com/rootsongjc/spark-on-kubernetes
 

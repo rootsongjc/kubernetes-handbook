@@ -734,7 +734,9 @@ table tr td :last-child {
 pre {
     font-size: 16px;
     line-height: 1.5em;
-    width: 100%
+    width: 100%;
+/*--    white-space: pre-wrap; --*/
+/*--    word-wrap: break-word; --*/
 }
 
 pre code {
