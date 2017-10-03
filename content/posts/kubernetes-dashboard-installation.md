@@ -108,7 +108,16 @@ spec:
     app: kubernetes-dashboard
 ```
 
-⚠️ 官方提供的image名为`gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0`，需要翻墙才能访问，我自己拉下来push到我们的私有镜像仓库了。我将这个镜像push到了docker hub上，如果你无法翻墙的话，可以到下载这个镜像：`index.tenxcloud.com/jimmy/kubernetes-dashboard-amd64:v1.6.0`。时速云的镜像存储，速度就是快。
+⚠️ 官方提供的image名为
+
+```ini
+gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0
+```
+需要翻墙才能访问，我自己拉下来push到我们的私有镜像仓库了。我将这个镜像push到了docker hub上，如果你无法翻墙的话，可以到下载这个镜像：
+```ini
+index.tenxcloud.com/jimmy/kubernetes-dashboard-amd64:v1.6.0
+```
+时速云的镜像存储，速度就是快。
 
 准备好image后就可以部署了。
 
@@ -181,7 +190,11 @@ $kubectl get secrets
 No resources found.
 ```
 
-`/var/run/secrets/kubernetes.io/serviceaccount/`这个目录还是不存在，我们安装的Kubernetes压根就没有设置secret。
+```ini
+/var/run/secrets/kubernetes.io/serviceaccount/
+```
+
+这个目录还是不存在，我们安装的Kubernetes压根就没有设置secret。
 
 [troubleshooting.md](https://github.com/kubernetes/dashboard/blob/master/docs/user-guide/troubleshooting.md)上说需要用`—admission-control`配置API Server，在配置这个之前还要了解下[Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)和[如何管理Service Accounts](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)。
 

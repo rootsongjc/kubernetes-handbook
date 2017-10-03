@@ -2,6 +2,16 @@
 <div class="container" role="main">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{ $baseurl := .Site.BaseURL }}
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }}|{{ .FuzzyWordCount }} Words|Read in about {{ .ReadingTime }} Min</h4>
+                </section>
+                <h5 id="tags">Tags: {{ range .Params.tags }}
+                    <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
+                </h5>
+
+            </div>
             <article role="main" class="blog-post">
                 {{ .Content }}
             </article>
@@ -30,9 +40,7 @@
             {{ $baseurl := .Site.BaseURL }}
             <div>
                 <section id="datecount">
-                    <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-                    <h5 id="wc"> {{ .FuzzyWordCount }} Words </h5>
-                    <h5 id="readtime"> Read in about {{ .ReadingTime }} Min </h5>
+                    <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }}| {{ .FuzzyWordCount }} Words |Read in about {{ .ReadingTime }} Min</h4>
                 </section>
                 <h5 id="tags">Tags: {{ range .Params.tags }}
                     <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}

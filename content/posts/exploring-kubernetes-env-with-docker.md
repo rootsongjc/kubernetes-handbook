@@ -77,7 +77,11 @@ type RunContainerOptions struct {
 }
 ```
 
-Kubelet向容器中注入环境变量的配置是在`pkg/kubelet/kuberuntime/kuberuntime_container.go`的如下方法中：
+Kubelet向容器中注入环境变量的配置是在下面的方法中定义：
+
+```ini
+pkg/kubelet/kuberuntime/kuberuntime_container.go
+```
 
 ```Go
 // generateContainerConfig generates container config for kubelet runtime v1.

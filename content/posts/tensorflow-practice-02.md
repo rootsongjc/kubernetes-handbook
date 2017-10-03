@@ -103,7 +103,11 @@ docker logs tf-dev
 Starting TensorBoard 39 on port 6006
 ```
 
-看到了吗，`tf-dev`容器的日志输出里就包括了密码，我的容器的jupyter的密码是**token后面的那个字符串**e64afc31eec843717733d6e4527aecf833ce18383214dc47。
+看到了吗，`tf-dev`容器的日志输出里就包括了密码，我的容器的jupyter的密码是**token后面的那个字符串**
+
+```ini
+e64afc31eec843717733d6e4527aecf833ce18383214dc47
+```
 
 现在用刚才从日志里看到的密码就可以登录了，Jupyter页面上可以看到本书所有章节的代码了。
 

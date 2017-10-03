@@ -94,7 +94,9 @@ func ParseDockerName(name string) (dockerName *KubeletContainerName, hash uint64
 
 下面的是四个基本字段。
 
-    containerNamePrefix_containerName_PodFullName_PodUID
+```ini
+containerNamePrefix_containerName_PodFullName_PodUID
+```
 
 所有kubernetes启动的容器的containerNamePrefix都是k8s。
 
@@ -130,7 +132,9 @@ spec:
 
 我们选取三个实例中的一个运行php-redis的docker容器。
 
-    k8s_php-redis_frontend-2337258262-154p7_default_d8a2e2dd-3617-11e7-a4b0-ecf4bbe5d414_0
+```ini
+k8s_php-redis_frontend-2337258262-154p7_default_d8a2e2dd-3617-11e7-a4b0-ecf4bbe5d414_0
+```
 
 - containerNamePrefix：k8s
 - containerName：php-redis

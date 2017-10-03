@@ -124,7 +124,13 @@ Downloading images and waiting to open the fabric8 console...
 Waiting, endpoint for service is not ready yet...
 ```
 
-我一看下载下来的`https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml`文件，真是**蔚为壮观**啊，足足有**24712行**(这里面都是实际配置，没有配置充行数)，使用了如下这些docker镜像，足足有**53个docker镜像**：
+我一看下载下来的
+
+```http
+https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml
+```
+
+文件，真是**蔚为壮观**啊，足足有**24712行**(这里面都是实际配置，没有配置充行数)，使用了如下这些docker镜像，足足有**53个docker镜像**：
 
 ```bash
 fabric8/alpine-caddy:2.2.311

@@ -27,7 +27,7 @@ title = "About me"
 - Email: rootsongjc@gmail.com
 - [Twitter@jimmysongio](https://twitter.com/jimmysongio)
 - [Facebook@jimmysongio](https://facebook.com/jimmysongio)
-- [图虫(Tuchong Photography](https://jimmysog.tuchong.com)
+- [图虫(Tuchong Photography)](https://jimmysog.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 - 微信公众号——云原生应用架构(CloudNativeGo)
 

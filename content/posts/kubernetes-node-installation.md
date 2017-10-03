@@ -48,7 +48,13 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
-service配置文件`/usr/lib/systemd/system/flanneld.service`。
+service配置文件为
+
+```ini
+/usr/lib/systemd/system/flanneld.service
+```
+
+文件内容为：
 
 ```ini
 [Unit]
@@ -102,7 +108,11 @@ $ kubectl create clusterrolebinding kubelet-bootstrap \
   --user=kubelet-bootstrap
 ```
 
-- `--user=kubelet-bootstrap` 是在 `/etc/kubernetes/token.csv` 文件中指定的用户名，同时也写入了 `/etc/kubernetes/bootstrap.kubeconfig` 文件；
+`--user=kubelet-bootstrap` 是在 `/etc/kubernetes/token.csv` 文件中指定的用户名，同时也写入了该文件中：
+
+```ini
+/etc/kubernetes/bootstrap.kubeconfig
+```
 
 ### 下载最新的 kubelet 和 kube-proxy 二进制文件
 
@@ -116,7 +126,13 @@ $ cp -r ./server/bin/{kube-proxy,kubelet} /usr/bin/
 
 ### 创建 kubelet 的service配置文件
 
-文件位置`/usr/lib/systemd/system/kubelet.serivce`。
+文件位置在
+
+```ini
+/usr/lib/systemd/system/kubelet.serivce
+```
+
+文件内容为：
 
 ```ini
 [Unit]

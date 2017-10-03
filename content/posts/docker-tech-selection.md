@@ -11,9 +11,9 @@ Tags = ["docker"]
 
 > *多少次我回过头看看走过的路，你还在小村旁。*
 
-去年基于docker1.11对Hadoop yarn进行了docker化改造，详情请看[大数据集群虚拟化-Yarn on docker始末](https://rootsongjc.github.io/docker-practice/docs/td_yarn_on_docker.html)，我将这个事件命名为[magpie](https://github.com/rootsongjc/magpie)，因为它就像是喜鹊一样收集着各种各样的资源搭建自己的小窝。**magpie**还是有很多事情可以做的，大数据集群的虚拟化也不会止步，它仅仅是对其做了初步的探索，对于资源利用率和管理方面的优化还有很长的路要走，**Yarn**本身就是做为大数据集群的资源管理调度角色出现的，一开始是为调度**MapReduce**，后来的``spark``、``hive``、``tensrflow``、``HAWQ``、``slide``等等不一而足陆续出现。但是用它来管理docker似乎还是有点过重，还不如用kubernetes、marathon、nomad、swarm等。
+去年基于docker1.11对Hadoop yarn进行了docker化改造，详情请看[大数据集群虚拟化-Yarn on docker始末](https://rootsongjc.github.io/docker-practice/docs/td_yarn_on_docker.html)，我将这个事件命名为[magpie](https://github.com/rootsongjc/magpie)，因为它就像是喜鹊一样收集着各种各样的资源搭建自己的小窝。**magpie**还是有很多事情可以做的，大数据集群的虚拟化也不会止步，它仅仅是对其做了初步的探索，对于资源利用率和管理方面的优化还有很长的路要走，**Yarn**本身就是做为大数据集群的资源管理调度角色出现的，一开始是为调度**MapReduce**，后来的spark、hive、tensrflow、slide等等不一而足陆续出现。但是用它来管理docker似乎还是有点过重，还不如用kubernetes、marathon、nomad、swarm等。
 
-但是在微服务方面docker1.11的很多弊端或者说缺点就暴露了出来，首先docker1.11原生并不带cluster管理，需要配合·``docker swarm``、``kubernetes``、``marathon``等才能管理docker集群。<u>之前的对于docker的使用方式基本就是按照虚拟机的方式使用的，固定IP有悖于微服务的原则。</u>
+但是在微服务方面docker1.11的很多弊端或者说缺点就暴露了出来，首先docker1.11原生并不带cluster管理，需要配合docker swarm、kubernetes、marathon等才能管理docker集群。<u>之前的对于docker的使用方式基本就是按照虚拟机的方式使用的，固定IP有悖于微服务的原则。</u>
 
 我们基于docker1.11和[shrike](github.com/talkingdata/shrike)二层网络模式，还有[shipyard](https://github.com/shipyard/shipyard)来做集群管理，shipyard只是一个简单的docker集群管理的WebUI，基本都是调用docker API，唯一做了一点docker原生没有的功能就是**scale**容器，而且只支持到docker1.11，早已停止开发。我抛弃了**shipyard**，它的页面功能基本可有可无，我自己开发的[magpie](https://github.com/rootsongjc/magpie)一样可以管理``yarn on docker``集群。
 

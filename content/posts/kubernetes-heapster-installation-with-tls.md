@@ -53,7 +53,19 @@ $ diff grafana-deployment.yaml.orig grafana-deployment.yaml
 >           #value: /
 ```
 
-如果后续使用 kube-apiserver 或者 kubectl proxy 访问 grafana dashboard，则必须将 `GF_SERVER_ROOT_URL` 设置为 `/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/`，否则后续访问grafana时访问时提示找不到`http://10.64.3.7:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/api/dashboards/home` 页面；
+如果后续使用 kube-apiserver 或者 kubectl proxy 访问 grafana dashboard，则必须将 `GF_SERVER_ROOT_URL` 设置为 
+
+```ini
+/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
+```
+
+否则后续访问grafana时访问时提示找不到
+
+```http
+http://10.64.3.7:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/api/dashboards/home
+```
+
+ 页面；
 
 ## 配置 heapster-deployment
 
@@ -163,34 +175,42 @@ monitoring-influxdb-1411048194-lzrpc    1/1       Running   0          2m
 
 ## 访问 grafana
 
-1. 通过 kube-apiserver 访问：
+### 1. 通过 kube-apiserver 访问：
 
-   获取 monitoring-grafana 服务 URL
+获取 monitoring-grafana 服务 URL
 
-   ```bash
-   $ kubectl cluster-info
-   Kubernetes master is running at https://172.20.0.113:6443
-   Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster
-   KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
-   kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
-   monitoring-grafana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
-   monitoring-influxdb is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb
+```bash
+$ kubectl cluster-info
+Kubernetes master is running at https://172.20.0.113:6443
+Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster
+KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
+kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
+monitoring-grafana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+monitoring-influxdb is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb
 
-   To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-   ```
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+```
 
-   浏览器访问 URL： `http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana`
+浏览器访问 URL：
 
-2. 通过 kubectl proxy 访问：
+```http
+http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+```
 
-   创建代理
+### 2. 通过 kubectl proxy 访问：
 
-   ```bash
-   $ kubectl proxy --address='172.20.0.113' --port=8086 --accept-hosts='^*$'
+创建代理
+
+```bash
+$ kubectl proxy --address='172.20.0.113' --port=8086 --accept-hosts='^*$'
    Starting to serve on 172.20.0.113:8086
-   ```
+```
 
-   浏览器访问 URL：`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana`
+浏览器访问 URL：
+
+```http
+http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+```
 
 ![grafana](http://olz1di9xf.bkt.clouddn.com/kubernetes-heapster-grafana.jpg)
 
@@ -203,7 +223,10 @@ $ kubectl get svc -n kube-system|grep influxdb
 monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/TCP   9m
 ```
 
-通过 kube-apiserver 的**非安全端口**访问 influxdb 的 admin UI 界面： `http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb:8083/`
+通过 kube-apiserver 的**非安全端口**访问 influxdb 的 admin UI 界面：
+```http
+http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb:8083/
+```
 
 在页面的 “Connection Settings” 的 Host 中输入 node IP， Port 中输入 8086 映射的 nodePort 如上面的 32299，点击 “Save” 即可（我的集群中的地址是172.20.0.113:32299）：
 

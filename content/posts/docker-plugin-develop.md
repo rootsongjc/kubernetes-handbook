@@ -45,9 +45,11 @@ const defaultAPIVersion string = "1.0"
 
 当你开发好一个插件**docker engine**怎么才能发现它们呢？有三种方式：
 
+```markdown
 - **.sock**，linux下放在/run/docker/plugins目录下，或该目录下的子目录比如[flocker](https://github.com/ClusterHQ/flocker)插件的`.sock`文件放在`/run/docker/plugins/flocker/flocker.sock`下
 - **.spec**，比如**convoy**插件在`/etc/docker/plugins/convoy.spec `定义，内容为`unix:///var/run/convoy/convoy.sock`
 - **.json**，比如**infinit**插件在`/usr/lib/docker/plugins/infinit.json `定义，内容为`{"Addr":"https://infinit.sh","Name":"infinit"}`
+```
 
 文章中的其它部分**貌似都过时**了，新的插件不是作为**systemd**进程运行的，而是完全通过**docker plugin**命令来管理的。
 
@@ -248,7 +250,11 @@ docker volume create -d jimmysong/sshfs --name sshvolume -o sshcmd=1.2.3.4:/remo
 Error response from daemon: create sshvolume: Post http://%2Frun%2Fdocker%2Fplugins%2F8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f%2Fsshfs.sock/VolumeDriver.Create: dial unix /run/docker/plugins/8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f/sshfs.sock: connect: no such file or directory
 ```
 
-Docker daemon在enable这个插件的时候会寻找这个**.sock**文件，然后在自己的plugindb中注册它，相关代码在这个文件里：https://github.com/docker/docker/blob/17.03.x/plugin/manager_linux.go
+Docker daemon在enable这个插件的时候会寻找这个**.sock**文件，然后在自己的plugindb中注册它，相关代码在这个文件里：
+
+```http
+https://github.com/docker/docker/blob/17.03.x/plugin/manager_linux.go
+```
 
 相关代码片段：
 
@@ -354,23 +360,27 @@ Error response from daemon: Unix socket path "/run/docker/plugins/ac34f7b246ac6c
 
 从docker daemon的日志里可以看到详细报错：
 
-```
+```bash
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321277088+08:00" level=error msg="Sending SIGTERM to plugin failed with error: rpc error: code = 2 desc = no such process"
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321488680+08:00" level=error msg="Handler for POST /v1.26/plugins/sshfs/enable returned error: Unix socket path \"/run/docker/plugins/ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7/run/docker/plugins/sshfs.sock\" is too long\ngithub.com/docker/docker/plugin.(*Manager).pluginPostStart\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/manager_linux.go:84\ngithub.com/docker/docker/plugin.(*Manager).enable\n\t/root/rpmbuild/BUILD/docker-
 ```
 
-
-
 正好验证了上面的**enable**代码，docker默认是到`/run/docker/plugins`目录下找**sshfs.sock**这个文件的。
 
 我在docker daemon中发现一个很诡异的错误，
 
-```
+```bash
 Mar 13 17:29:41 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:29:41+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=85760810b4850009fc965f5c20d8534dc9aba085340a2ac0b4b9167a6fef7d53
 ```
 
-我查看了下`github.com/libnetwork/vendor/github.com/opencontainers/run/libcontainer/standard_init_linux.go`文件，这个那个文件只有114行，见[ standard_init_linux.go](https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go)
+我查看了下
+
+```http
+github.com/libnetwork/vendor/github.com/opencontainers/run/libcontainer/standard_init_linux.go
+```
+
+文件，这个那个文件只有114行，见[ standard_init_linux.go](https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go)
 
 但是在**opencontainers**的github项目里才有那么多行，见 [standard_init_linux.go](https://github.com/opencontainers/runc/blob/master/libcontainer/standard_init_linux.go)
 

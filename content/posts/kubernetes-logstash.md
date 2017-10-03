@@ -44,7 +44,11 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 我们创建了自己的logstash镜像。创建过程和使用方式见 [Github - docker images](https://github.com/rootsongjc/docker-images)
 
-镜像地址：`index.tenxcloud.com/jimmy/logstash:5.3.0`
+镜像地址：
+
+```ini
+index.tenxcloud.com/jimmy/logstash:5.3.0
+```
 
 ## 测试
 
@@ -100,7 +104,7 @@ spec:
 - logstash容器大概需要500M以上内存。
 - 该文件可以在`manifests/test/logstash-test.yaml`找到。 
 - 我使用了自己的私有镜像仓库，测试时请换成自己的应用镜像。
-- logstash的环境变量的值配置请参考https://github.com/rootsongjc/docker-images
+- logstash的环境变量的值配置请参考 [Github - docker-images](https://github.com/rootsongjc/docker-images)
 
 **创建应用**
 
@@ -110,7 +114,11 @@ spec:
 kubectl create -f logstash-test.yaml
 ```
 
-查看`http://172.23.5.255:9200/_cat/indices`将可以看到列表有这样的indices：
+查看下面的地址：
+
+```http
+http://172.23.5.255:9200/_cat/indices
+```
 
 ```bash
 green open logstash-docker-2017.05.16      VkFWx3b_Ss6n4keDmXm-TQ 5 1   2078     0   1.6mb 795.3kb

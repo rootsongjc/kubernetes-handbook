@@ -39,9 +39,14 @@ Tags = ["kubernetes"]
 
 ## 使用Label
 
-- 定义 [labels](https://kubernetes.io/docs/user-guide/labels/) 来指定应用或Deployment的 **semantic attributes** 。例如，不是将label附加到一组pod来显式表示某些服务（例如，`service:myservice`），或者显式地表示管理pod的replication controller（例如，`controller:mycontroller`），附加label应该是标示语义属性的标签， 例如`{app:myapp,tier:frontend,phase:test,deployment:v3}`。 这将允许您选择适合上下文的对象组——例如，所有的”tier:frontend“pod的服务或app是“myapp”的所有“测试”阶段组件。 有关此方法的示例，请参阅[guestbook](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/)应用程序。
+- 定义 [labels](https://kubernetes.io/docs/user-guide/labels/) 来指定应用或Deployment的 **semantic attributes** 。例如，不是将label附加到一组pod来显式表示某些服务（例如，`service:myservice`），或者显式地表示管理pod的replication controller（例如，`controller:mycontroller`），附加label应该是标示语义属性的标签， 例如
 
-  可以通过简单地从其service的选择器中省略特定于发行版本的标签，而不是更新服务的选择器来完全匹配replication controller的选择器，来实现跨越多个部署的服务，例如滚动更新。
+```ini
+{app:myapp,tier:frontend,phase:test,deployment:v3}
+```
+
+- 这将允许您选择适合上下文的对象组——例如，所有的”tier:frontend“pod的服务或app是“myapp”的所有“测试”阶段组件。 有关此方法的示例，请参阅[guestbook](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/)应用程序。可以通过简单地从其service的选择器中省略特定于发行版本的标签，而不是更新服务的选择器来完全匹配replication controller的选择器，来实现跨越多个部署的服务，例如滚动更新。
+
 
 - 为了滚动升级的方便，在Replication Controller的名字中包含版本信息，例如作为名字的后缀。设置一个`version`标签页是很有用的。滚动更新创建一个新的controller而不是修改现有的controller。因此，version含混不清的controller名字就可能带来问题。查看[Rolling Update Replication Controller](https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/)文档获取更多关于滚动升级命令的信息。
 

@@ -49,16 +49,18 @@ influxdb-deployment.yaml:16:        image: gcr.io/google_containers/heapster-inf
 **下载镜像**
 
 我们下载好了这些images后，存储到私有镜像仓库里：
-
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-amd64:v1.3.0-beta.1 
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-grafana-amd64:v4.0.2
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-influxdb-amd64:v1.1.1
+```ini
+sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-amd64:v1.3.0-beta.1 
+sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-grafana-amd64:v4.0.2
+sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-influxdb-amd64:v1.1.1
+```
 
 我已经将官方镜像克隆到了[时速云](www.tenxcloud.com)上，镜像地址：
-
-- index.tenxcloud.com/jimmy/heapster-amd64:v1.3.0-beta.1
-- index.tenxcloud.com/jimmy/heapster-influxdb-amd64:v1.1.1
-- index.tenxcloud.com/jimmy/heapster-grafana-amd64:v4.0.2 
+```ini
+index.tenxcloud.com/jimmy/heapster-amd64:v1.3.0-beta.1
+index.tenxcloud.com/jimmy/heapster-influxdb-amd64:v1.1.1
+index.tenxcloud.com/jimmy/heapster-grafana-amd64:v4.0.2 
+```
 
 需要的可以去下载，下载前需要用时速云账户登陆，然后再执行pull操作。
 
@@ -71,7 +73,13 @@ docker login index.tendcloud.com
 参考[Run Heapster in a Kubernetes cluster with an InfluxDB backend and a Grafana UI](https://github.com/kubernetes/heapster/blob/master/docs/influxdb.md)和[Configuring Source](https://github.com/kubernetes/heapster/blob/master/docs/source-configuration.md)，需要修改yaml文件中的几个配置。
 
 - 首先修改三个deployment.yaml文件，将其中的镜像文件地址改成我们自己的私有镜像仓库的
-- 修改heapster-deployment.yaml文件中的`--source`参数为`—source=kubernetes:http://sz-pg-oam-docker-test-001.tendcloud.com:8080?inClusterConfig=false&useServiceAccount=false`。
+
+
+- 修改heapster-deployment.yaml文件中的`--source`参数为
+
+```ini
+—source=kubernetes:http://sz-pg-oam-docker-test-001.tendcloud.com:8080?inClusterConfig=false&useServiceAccount=false
+```
 
 **修改完配置的`heapster-deployment.yaml`文件**
 
