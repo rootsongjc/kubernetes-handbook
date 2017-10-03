@@ -140,32 +140,32 @@ desc = "Data Science"
 
 [[menu.main]]
     parent = "Projects"
+    name = "Kubernetes handbook"
+    url = "kubernetes-handbook"
+    weight = 1
+
+[[menu.main]]
+    parent = "Projects"
     name = "Spark on kubernetes"
     url = "spark-on-k8s"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     parent = "Projects"
     name = "Awesome Cloud Native"
     url = "awesome-cloud-native"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "Projects"
     name = " Migrating to Cloud native"
     url = "migrating-to-cloud-native-application-architectures"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     parent = "Projects"
     name = "Istio service mesh"
     url = "http://istio.doczh.cn"
-    weight = 4
-
-[[menu.main]]
-    parent = "Projects"
-    name = "Kubernetes handbook"
-    url = "kubernetes-handbook"
     weight = 5
 
 [[menu.main]]
