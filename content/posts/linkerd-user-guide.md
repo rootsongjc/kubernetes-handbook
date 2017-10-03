@@ -30,7 +30,7 @@ Linkerd 作为一款 service mesh 与kubernetes 结合后主要有以下几种�
 
 安装测试时需要用到的镜像有：
 
-```
+```ini
 buoyantio/helloworld:0.1.4
 buoyantio/jenkins-plus:2.60.1
 buoyantio/kubectl:v1.4.0
@@ -40,7 +40,6 @@ buoyantio/nginx:1.10.2
 linkerd/namerctl:0.8.6
 openzipkin/zipkin:1.20
 tutum/dnsutils:latest
-
 ```
 
 这些镜像可以直接通过 Docker Hub 获取，我将它们下载下来并上传到了自己的私有镜像仓库 `sz-pg-oam-docker-hub-001.tendcloud.com` 中，下文中用到的镜像皆来自我的私有镜像仓库，yaml 配置见 [linkerd](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/linkerd) 目录，并在使用时将配置中的镜像地址修改为你自己的。
@@ -295,8 +294,6 @@ Linkerd 跟 Istio 一样都是 service mesh，可以在服务间做很多事情�
 
 ## 参考
 
-[https://github.com/linkerd/linkerd-examples/](https://github.com/linkerd/linkerd-examples/)
-
-[A Service Mesh for Kubernetes](https://cdn2.hubspot.net/hubfs/2818724/A%20Service%20Mesh%20for%20Kubernetes_Final.pdf)
-
-[dtab](https://linkerd.io/in-depth/dtabs/)
+- [https://github.com/linkerd/linkerd-examples/](https://github.com/linkerd/linkerd-examples/)
+- [A Service Mesh for Kubernetes](https://cdn2.hubspot.net/hubfs/2818724/A%20Service%20Mesh%20for%20Kubernetes_Final.pdf)
+- [dtab](https://linkerd.io/in-depth/dtabs/)
