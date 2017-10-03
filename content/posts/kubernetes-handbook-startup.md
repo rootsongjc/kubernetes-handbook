@@ -11,15 +11,23 @@ Tags = ["kubernetes","book"]
 
 *（题图：地坛公园 Sep 27,2015）*
 
-玩转Kubernetes，我就看kubernetes handbook！
+[Kubernetes](http://kubernetes.io/) 是 Google 基于 [Borg](https://research.google.com/pubs/pub43438.html) 开源的容器编排调度引擎，作为 [CNCF](http://cncf.io/)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，它将自动得将系统达到和维持在这个状态。
 
-GitHub地址
+本书记录了本人从零开始学习和使用 Kubernetes 的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路。
+
+[jimmysong.io - kubernetes-handbook](https://jimmysong.io/kubernetes-handbook/)
+
+在写作本书时，安装的所有组件、所用示例和操作等皆基于 **Kubernetes1.6.0** 版本。
+
+[GitHub地址](https://github.com/rootsongjc/kubernetes-handbook)
 
 ```http
 https://github.com/rootsongjc/kubernetes-handbook
 ```
 
-文章同步更新到[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
+文章同步更新到 [gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
+
+[文章目录](https://github.com/rootsongjc/kubernetes-handbook/blob/master/SUMMARY.md)
 
 ## 说明
 
