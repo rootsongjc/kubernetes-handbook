@@ -100,7 +100,8 @@ desc = "Shutterstock"
 
 [[menu.main]]
     parent = "Books"
-    name = "Cloud Native Python..."
+    name = "Cloud Native Python"
+    url = "posts/cloud-native-python"
     weight = 2
 
 [[menu.main]]
