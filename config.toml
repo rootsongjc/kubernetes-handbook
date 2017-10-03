@@ -35,9 +35,22 @@ desc = "Shutterstock"
   linkedin = "jimmysongio"
 
 [[menu.main]]
+    identifier = "Articles"
+    name = "Articles"
+    url = "posts"
+    weight = 1
+
+[[menu.main]]
+    parent = "Articles"
     name = "Posts"
     url = "posts"
     weight = 1
+
+[[menu.main]]
+    parent = "Articles"
+    name = "Tags"
+    url = "tags"
+    weight = 2
 
 [[menu.main]]
     identifier = "Categories"
@@ -140,11 +153,6 @@ desc = "Shutterstock"
     weight = 5
 
 [[menu.main]]
-    name = "Tags"
-    url = "tags"
-    weight = 5
-
-[[menu.main]]
     name = "About"
     url = "about"
-    weight = 6
+    weight = 5
