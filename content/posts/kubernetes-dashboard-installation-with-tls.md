@@ -26,7 +26,11 @@ Tags = ["kubernetes"]
 
 ## 配置和安装 dashboard
 
-官方文件目录：`kubernetes/cluster/addons/dashboard`
+官方文件目录：
+
+```ini
+kubernetes/cluster/addons/dashboard
+```
 
 我们使用的文件
 
@@ -121,7 +125,11 @@ Starting to serve on 172.20.0.113:8086
 - 需要指定 `--accept-hosts` 选项，否则浏览器访问 dashboard 页面时提示 “Unauthorized”；
 
 浏览器访问 URL：`http://172.20.0.113:8086/ui`
-自动跳转到：`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/workload?namespace=default`
+自动跳转到：
+
+```http
+http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/workload?namespace=default
+```
 
 ### 通过 kube-apiserver 访问dashboard
 
@@ -134,7 +142,12 @@ KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-sys
 kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
 ```
 
-浏览器访问 URL：`https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard`（浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中）。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
+浏览器访问 URL：
+
+```http
+https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
+```
+浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
 
 **导入证书**
 
@@ -146,7 +159,11 @@ openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 
 将生成的`admin.p12`证书导入的你的电脑，导出的时候记住你设置的密码，导入的时候还要用到。
 
-如果你不想使用**https**的话，可以直接访问insecure port 8080端口:`http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard`
+如果你不想使用**https**的话，可以直接访问insecure port 8080端口:
+
+```http
+http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
+```
 
 ![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg)
 

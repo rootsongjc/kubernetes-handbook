@@ -1,6 +1,6 @@
 +++
 date = "2017-04-11T19:55:56+08:00"
-title = "Kubernetes高可用master节点安装"
+title = "Kubernetes集群master节点安装"
 draft = false
 categories = "kubernetes"
 Tags = ["kubernetes"]
@@ -15,7 +15,9 @@ Tags = ["kubernetes"]
 
 这是[和我一步步部署kubernetes集群](https://github.com/rootsongjc/follow-me-install-kubernetes-cluster)项目((fork自[opsnull](https://github.com/opsnull/follow-me-install-kubernetes-cluster)))中的一篇文章，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)产生的kuberentes环境，部署master节点的`kube-apiserver`、`kube-controller-manager`和`kube-scheduler`的过程。
 
-## 高可用kubernetes master节点安装
+**注意：** 暂时 master 节点还未配置高可用。
+
+## kubernetes master节点安装
 
 kubernetes master 节点包含的组件：
 
@@ -28,7 +30,7 @@ kubernetes master 节点包含的组件：
 - `kube-scheduler`、`kube-controller-manager` 和 `kube-apiserver` 三者的功能紧密相关；
 - 同时只能有一个 `kube-scheduler`、`kube-controller-manager` 进程处于工作状态，如果运行多个，则需要通过选举产生一个 leader；
 
-本文档记录部署一个三个节点的高可用 kubernetes master 集群步骤。（后续创建一个 load balancer 来代理访问 kube-apiserver 的请求）
+本文档记录部署一个三个节点的 kubernetes master 集群步骤。（后续创建一个 load balancer 来代理访问 kube-apiserver 的请求）
 
 ## TLS 证书文件
 
@@ -179,7 +181,12 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 - 如果使用了 kubelet TLS Boostrap 机制，则不能再指定 `--kubelet-certificate-authority`、`--kubelet-client-certificate` 和 `--kubelet-client-key` 选项，否则后续 kube-apiserver 校验 kubelet 证书时出现 ”x509: certificate signed by unknown authority“ 错误；
 - `--admission-control` 值必须包含 `ServiceAccount`；
 - `--bind-address` 不能为 `127.0.0.1`；
-- `runtime-config`配置为`rbac.authorization.k8s.io/v1beta1`，表示运行时的apiVersion；
+- `runtime-config`配置表示运行时的apiVersion；
+
+
+```ini
+rbac.authorization.k8s.io/v1beta1
+```
 - `--service-cluster-ip-range` 指定 Service Cluster IP 地址段，该地址段不能路由可达；
 - 缺省情况下 kubernetes 对象保存在 etcd `/registry` 路径下，可以通过 `--etcd-prefix` 参数进行调整；
 

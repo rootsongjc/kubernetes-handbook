@@ -13,7 +13,11 @@ Tags = ["kubernetes","book"]
 
 玩转Kubernetes，我就看kubernetes handbook！
 
-GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
+GitHub地址
+
+```http
+https://github.com/rootsongjc/kubernetes-handbook
+```
 
 文章同步更新到[gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details)，方便大家浏览和下载PDF。
 
@@ -27,7 +31,7 @@ GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 
 访问gitbook
 
-https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/
+[jimmysong.io - kubernetes-handbook](https://jimmysong.io/kubernetes-handbook/)
 
 **方式二：本地查看**
 

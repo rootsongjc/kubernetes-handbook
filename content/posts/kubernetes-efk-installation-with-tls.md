@@ -132,40 +132,53 @@ server.basePath: /api/v1/proxy/namespaces/kube-system/services/kibana-logging
 
 ## 访问 kibana
 
-1. 通过 kube-apiserver 访问：
+### 1. 通过 kube-apiserver 访问：
 
-   获取 monitoring-grafana 服务 URL
+获取 monitoring-grafana 服务 URL
 
-   ```bash
-   $ kubectl cluster-info
-   Kubernetes master is running at https://172.20.0.113:6443
-   Elasticsearch is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/elasticsearch-logging
-   Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster
-   Kibana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kibana-logging
-   KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
-   kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
-   monitoring-grafana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
-   monitoring-influxdb is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb
-   ```
+```bash
+$ kubectl cluster-info
+Kubernetes master is running at https://172.20.0.113:6443
+Elasticsearch is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/elasticsearch-logging
+Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster
+Kibana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kibana-logging
+KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kube-dns
+kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
+monitoring-grafana is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+monitoring-influxdb is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/monitoring-influxdb
+```
 
-   浏览器访问 URL： `https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kibana-logging/app/kibana`
+浏览器访问 URL： 
 
-2. 通过 kubectl proxy 访问：
+```http
+https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kibana-logging/app/kibana
+```
 
-   创建代理
+### 2. 通过 kubectl proxy 访问：
 
-   ```bash
-   $ kubectl proxy --address='172.20.0.113' --port=8086 --accept-hosts='^*$'
-   Starting to serve on 172.20.0.113:8086
-   ```
+创建代理
 
-   浏览器访问 URL：`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kibana-logging`
+```bash
+$ kubectl proxy --address='172.20.0.113' --port=8086 --accept-hosts='^*$'
+Starting to serve on 172.20.0.113:8086
+```
+
+浏览器访问 URL：
+```http
+http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kibana-logging
+```
 
 在 Settings -> Indices 页面创建一个 index（相当于 mysql 中的一个 database），选中 `Index contains time-based events`，使用默认的 `logstash-*` pattern，点击 `Create` ;
 
 **可能遇到的问题**
 
-如果你在这里发现Create按钮是灰色的无法点击，且Time-filed name中没有选项，fluentd要读取`/var/log/containers/`目录下的log日志，这些日志是从`/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log`链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
+如果你在这里发现Create按钮是灰色的无法点击，且Time-filed name中没有选项，fluentd要读取`/var/log/containers/`目录下的log日志，这些日志是从
+
+```ini
+/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log
+```
+
+链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
 
 ![es-setting](http://olz1di9xf.bkt.clouddn.com/kubernetes-es-setting.png)
 

@@ -150,7 +150,7 @@ $ gluster volume set k8s-volume performance.write-behind-window-size 1024MB
 
 ## Kubernetes中配置glusterfs
 
-官方的文档见：https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs
+[GitHub - glusterfs官方文档](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs)
 
 以下用到的所有yaml和json配置文件可以在[glusterfs](manifests/glusterfs)中找到。注意替换其中私有镜像地址为你自己的镜像地址。
 

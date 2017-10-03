@@ -74,7 +74,7 @@ yum install keepalived ipvsadm
 
 参考[基于keepalived 实现VIP转移，lvs，nginx的高可用](http://limian.blog.51cto.com/7542175/1301776)，配置keepalived。
 
-keepalived的官方配置文档见：http://keepalived.org/pdf/UserGuide.pdf
+参考 [keepalived的官方配置文档 - pdf](http://keepalived.org/pdf/UserGuide.pdf)
 
 配置文件`/etc/keepalived/keepalived.conf`文件内容如下：
 

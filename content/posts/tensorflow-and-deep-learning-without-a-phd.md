@@ -417,7 +417,11 @@ TensorFlow 提供一个 dropout 函数可以用在一层神经网络的输出上
 
 你现在可以在网络中每个中间层以后插入 dropout。如果你没时间深入阅读的话，这是本项目里的可选步骤。
 
-该解决方案可以在 [mnist_2.2_five_layers_relu_lrdecay_dropout.py](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_2.2_five_layers_relu_lrdecay_dropout.py)里找到。如果你被难住了，可以用它。
+该解决方案可以在
+```http
+https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/mnist_2.2_five_layers_relu_lrdecay_dropout.py
+```
+里找到。如果你被难住了，可以用它。
 
 ![img](http://img.mp.itc.cn/upload/20170124/59419fef6dbd401aa484dfb9983712f7_th.jpeg)
 
@@ -502,8 +506,6 @@ TensorFlow 提供一个 dropout 函数可以用在一层神经网络的输出上
 加油吧，去打破 99％的限制。增加 patch 数量和通道的数量，如上图所示，在卷积层中添加 dropout。
 
 　　![img](http://img.mp.itc.cn/upload/20170124/e2e13da25b6146f2b0274a19187e18c0_th.jpeg)
-
-解决方案可以在文件 mnist_3.1_convolutional_bigger_dropout.py 中找到。
 
 使用上图所示的模型，在 10000 个测试的数字中，结果仅仅错误了 72 个。你可以在 MNIST 网站上发现，数字识别准确率的世界纪录大约为 99.7%，这仅比我们用 100 行 Python/TensorFlow 代码构建的模型的准确率高 0.4%。
 

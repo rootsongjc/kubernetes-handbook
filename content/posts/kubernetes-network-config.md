@@ -17,7 +17,13 @@ Tags = ["kubernetes","cloud computing"]
 
 ## 配置flannel
 
-我们直接使用的yum安装的flannle，安装好后会生成`/usr/lib/systemd/system/flanneld.service`配置文件。
+我们直接使用的yum安装的flannle，安装好后会生成
+
+```ini
+/usr/lib/systemd/system/flanneld.service
+```
+
+配置文件。
 
 ```ini
 [Unit]

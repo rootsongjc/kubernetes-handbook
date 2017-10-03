@@ -214,8 +214,10 @@ chmod 755 *
 mv * /usr/bin
 ```
 
-实际下载kubernetes-server-linux-amd64.tar.gz from https://storage.googleapis.com/kubernetes-release/release/v1.6.0
-
+从下面的地址下载kubernetes-server-linux-amd64.tar.gz
+```http
+https://storage.googleapis.com/kubernetes-release/release/v1.6.0
+```
 解压完后获得的二进制文件有：
 
 ```bash
@@ -449,7 +451,12 @@ KUBE_PROXY_ARGS=""
 
 **配置kubelet**
 
-编写`/usr/lib/systemd/system/kubelet.service`文件。
+创建配置
+
+```ini
+/usr/lib/systemd/system/kubelet.service
+```
+文件的内容为：
 
 ```ini
 [Unit]

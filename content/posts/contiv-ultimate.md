@@ -77,7 +77,17 @@ docker rmi contivrootfs
 rm install/v2plugin/netplugin install/v2plugin/netmaster install/v2plugin/netctl
 ```
 
-先把`$GOPATH/bin`下生成的`netplugin`、`netmaster`、`netctl`、`netplugin`这几个二进制文件拷贝到netplugin源码的bin目录下。
+先把`$GOPATH/bin`下生成的
+
+- `netplugin`
+
+- `netmaster`
+
+- `netctl`
+
+- `netplugin`
+
+这几个二进制文件拷贝到netplugin源码的bin目录下。
 
 这里面用语创建contivrootfs镜像的Dockerfile内容：
 
@@ -252,7 +262,11 @@ func (r *pluginReference) Delete(ref reference.Named) (bool, error) {
 
 注意其中有三个方法`AddTag`、`AddDigest`、`Delete`方法都是只读的。在`migrate/v1/migratev1.go`中有引用到了这个。
 
-再看下**Reference**的的定义（vendor/github.com/docker/distribution/reference/reference.go）
+再看下**Reference**的的定义
+
+```ini
+vendor/github.com/docker/distribution/reference/reference.go
+```
 
 ```Go
 // Package reference provides a general type to represent any way of referencing images within the registry.

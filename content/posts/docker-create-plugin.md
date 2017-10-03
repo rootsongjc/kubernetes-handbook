@@ -31,7 +31,11 @@ func runCreate(dockerCli *command.DockerCli, options pluginCreateOptions) error 
 }
 ```
 
-在**api/server/router/plugin/plugin_routes.go**中
+我们再看下下面的这个文件：
+
+```http
+api/server/router/plugin/plugin_routes.go
+```
 
 ```go
 func (pr *pluginRouter) createPlugin(ctx context.Context, w http.ResponseWriter, r *http.Request, vars map[string]string) error {

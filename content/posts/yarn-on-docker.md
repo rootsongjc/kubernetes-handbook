@@ -213,20 +213,15 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 ## Hadoop配置优化 
 
     因为使用docker将原来一台机器一个nodemanager给细化为了多个，会造成nodemanager个数的成倍增加，因此hadoop的一些配置需要相应优化。
-
-• ` yarn.nodemanager.localizer.fetch.thread-count` 随着容器数量增加，需要相应调整该参数
-
-•  `yarn.resourcemanager.amliveliness-monitor.interval-ms` 默认1秒，改为10秒，否则时间太短可能导致有些节点无法注册
-
-•  `yarn.resourcemanager.resource-tracker.client.thread-count` 默认50，改为100，随着容器数量增加，需要相应调整该参数
-
-•  `yarn.nodemanager.pmem-check-enabled` 默认true，改为false，不检查任务正在使用的物理内存量
-
+```ini
+•  yarn.nodemanager.localizer.fetch.thread-count 随着容器数量增加，需要相应调整该参数
+•  yarn.resourcemanager.amliveliness-monitor.interval-ms 默认1秒，改为10秒，否则时间太短可能导致有些节点无法注册
+•  yarn.resourcemanager.resource-tracker.client.thread-count 默认50，改为100，随着容器数量增加，需要相应调整该参数
+•  yarn.nodemanager.pmem-check-enabled 默认true，改为false，不检查任务正在使用的物理内存量
 •  容器中hadoop ulimit值修改，默认4096，改成655350
+```
 
-集群监控
-
- 
+**集群监控** 
 
 如果使用shipyard管理集群会有一个单独的监控页面，可以看到一定时间段内的CPU、内存、IO、网络使用状况。
 
@@ -238,15 +233,11 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
     我们未来规划做的是DC／OS，基于Docker的应用自动打包编译分发系统，让开发人员可以很便捷的申请资源，上下线服务，管理应用。要达到这个目标还有很多事情要做：
 
-•  Service Control Panel：统一的根据服务来管理的web页面
-
-•  Loadbalance：容器根据机器负载情况自动迁移
-
-•  Scheduler：swarm调度策略优化
-
-•  服务配置文件：提供镜像启动参数的配置文件，所有启动参数可通过文件配置
-
-•  监控：服务级别的监控
+-  Service Control Panel：统一的根据服务来管理的web页面
+-  Loadbalance：容器根据机器负载情况自动迁移
+-  Scheduler：swarm调度策略优化
+-  服务配置文件：提供镜像启动参数的配置文件，所有启动参数可通过文件配置
+-  监控：服务级别的监控
 
 ## 后记
 

@@ -80,15 +80,20 @@ kibana-controller.yaml:22:        image: gcr.io/google_containers/kibana:v4.6.1-
 
 **测试环境镜像名称**
 
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/elasticsearch:v2.4.1-2
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/kibana:v4.6.1-1
-- sz-pg-oam-docker-hub-001.tendcloud.com/library/fluentd-elasticsearch:1.22
+
+```ini
+sz-pg-oam-docker-hub-001.tendcloud.com/library/elasticsearch:v2.4.1-2
+sz-pg-oam-docker-hub-001.tendcloud.com/library/kibana:v4.6.1-1
+sz-pg-oam-docker-hub-001.tendcloud.com/library/fluentd-elasticsearch:1.22
+```
 
 **备份到时速云上的镜像名称**
 
-- index.tenxcloud.com/jimmy/elasticsearch:v2.4.1-2
-- index.tenxcloud.com/jimmy/kibana:v4.6.1-1
-- index.tenxcloud.com/jimmy/fluentd-elasticsearch:1.22
+```ini
+index.tenxcloud.com/jimmy/elasticsearch:v2.4.1-2
+index.tenxcloud.com/jimmy/kibana:v4.6.1-1
+index.tenxcloud.com/jimmy/fluentd-elasticsearch:1.22
+```
 
 修改上面的那三个yaml文件，将其中的镜像名称改成我们测试环境中的。
 
@@ -416,13 +421,16 @@ CMD ["/run.sh"]
 
 ```shell
 /elasticsearch_logging_discovery >> /elasticsearch/config/elasticsearch.yml
-
 chown -R elasticsearch:elasticsearch /data
-
 exec gosu elasticsearch /elasticsearch/bin/elasticsearch
 ```
 
-我们再进入到镜像里查看下`/elasticsearch/config/elasticsearch.yml`文件的内容。
+我们再进入到镜像里查看下
+
+```ini
+/elasticsearch/config/elasticsearch.yml
+```
+文件的内容。
 
 ```yaml
 cluster.name: kubernetes-logging
@@ -450,15 +458,11 @@ discovery.zen.ping.multicast.enabled: false
 
 ## 参考
 
-[使用Fluentd和ElasticSearch Stack实现Kubernetes的集群Logging](http://tonybai.com/2017/03/03/implement-kubernetes-cluster-level-logging-with-fluentd-and-elasticsearch-stack/)
-
-[在Kubernetes上搭建EFK（Fluentd＋Elasticsearch＋Kibana）](https://my.oschina.net/newlife111/blog/714574)
-
-[elasticsearch2.2 集群搭建各种坑](http://www.cnblogs.com/muzhiye/p/elasticsearch_set_cluster.html)
-
-[elasticsearch_logging_discovery.go](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/fluentd-elasticsearch/es-image/elasticsearch_logging_discovery.go)
-
-[fluent-plugin-kubernetes_metadata_filter](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)
+- [使用Fluentd和ElasticSearch Stack实现Kubernetes的集群Logging](http://tonybai.com/2017/03/03/implement-kubernetes-cluster-level-logging-with-fluentd-and-elasticsearch-stack/) 
+- [在Kubernetes上搭建EFK（Fluentd＋Elasticsearch＋Kibana）](https://my.oschina.net/newlife111/blog/714574)
+- [elasticsearch2.2 集群搭建各种坑](http://www.cnblogs.com/muzhiye/p/elasticsearch_set_cluster.html)
+- [elasticsearch_logging_discovery.go](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/fluentd-elasticsearch/es-image/elasticsearch_logging_discovery.go)
+- [fluent-plugin-kubernetes_metadata_filter](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)
 
 **To be continued…**
 
