@@ -10,19 +10,35 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-  subtitle = "BUILDING CLOUD NATIVE CONFIDENCE"
-  logo = "img/avatar-icon.png"
-  favicon = "img/favicon.ico"
-  dateFormat = "January 2, 2006"
-  commit = false 
+hello = "Hi,I'm Jimmy"
+subtitle = "I can help you building Cloud Native confidence"
+logo = "img/avatar-icon.png"
+favicon = "img/favicon.ico"
+dateFormat = "January 2, 2006"
+commit = false 
 #  rss = true
-  comments = true
+comments = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
 [[Params.bigimg]]
-src = "img/data-analytics-carousel.jpg"
-#src = "img/data-science-shutterstock.jpg"
-desc = "Shutterstock"
+src = "img/cloud-computing.jpg"
+desc = "Cloud Computing"
+
+[[Params.bigimg]]
+src = "img/big-data-1.jpg"
+desc = "Big Data"
+
+[[Params.bigimg]]
+src = "img/data-science-1.jpg"
+desc = "Data Science"
+
+[[Params.bigimg]]
+src = "img/big-data-2.jpg"
+desc = "Big Data"
+
+[[Params.bigimg]]
+src = "img/data-science-2.jpg"
+desc = "Data Science"
 
 [Author]
   name = "Jimmy Song"
