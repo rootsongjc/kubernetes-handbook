@@ -427,5 +427,5 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
 - [Apache Spark Jira Issue - 18278 - SPIP: Support native submission of spark jobs to a kubernetes cluster](https://issues.apache.org/jira/browse/SPARK-18278)
 - [Kubernetes Github Issue - 34377 Support Spark natively in Kubernetes](https://github.com/kubernetes/kubernetes/issues/34377)
 - [Kubernetes example spark](https://github.com/kubernetes/kubernetes/tree/master/examples/spark)
-- https://github.com/rootsongjc/spark-on-kubernetes
+- [jimysong.io - spark-on-k8s](https://github.com/rootsongjc/spark-on-kubernetes)
 
