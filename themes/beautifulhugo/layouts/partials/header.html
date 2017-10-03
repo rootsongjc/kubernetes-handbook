@@ -20,9 +20,12 @@
         {{ $subtitle := $.Scratch.Get "subtitle" }}
         <div class="container">
           <div class="row">
+              <!--make the head align center
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              -->
+              <div class="col-lg-12 col-md-12 col-md-offset-0">
               <div class="{{ .Type }}-heading">
-                <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
+                <h1 align="center">{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                   {{ if $subtitle }}
                     {{ if eq .Type "page" }}
                       <hr class="small">
@@ -45,9 +48,12 @@
       {{ $subtitle := $.Scratch.Get "subtitle" }}
       <div class="container">
         <div class="row">
+            <!-- make the title align center
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            -->
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="{{ .Type }}-heading">
-              <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
+              <h1 align="center">{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                 {{ if $subtitle }}
                   {{ if eq .Type "page" }}
                     <hr class="small">
