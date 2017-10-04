@@ -4,7 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <!-- Site Title, Description, Author, and Favicon -->
 {{- with .Title | default .Site.Title }}
-  <title>{{ . }} - jimmysong.io building cloud native confidence</title>
+  <title> {{ . }} - {{ $.Site.Params.description }}</title>
+  <meta name="description" content="{{ $.Site.Params.description }}" />
   <meta property="og:title" content="{{ . }}" />
   <meta name="twitter:title" content="{{ . | truncate 70 }}" />
 {{- end }}
@@ -13,7 +14,7 @@
   <meta property="og:description" content="{{ . }}">
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
-  <meta name="author" content="{{ .Site.Author.name }}"/>
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
