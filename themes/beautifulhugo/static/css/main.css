@@ -43,7 +43,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #0085a1;
+    color: #2a55f4;
 }
 
 blockquote {
@@ -145,7 +145,7 @@ img {
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-    color: #0085a1;
+    color: #2a55f4;
 }
 
 .navbar-custom .navbar-brand-logo {
@@ -358,7 +358,7 @@ footer .theme-by {
 .post-preview a:focus,
 .post-preview a:hover {
     text-decoration: none;
-    color: #0085a1;
+    color: #2a55f4;
 }
 
 .post-preview .post-title {
@@ -667,8 +667,8 @@ footer .theme-by {
 .pager li a:hover,
 .pager li a:focus {
     color: #FFF;
-    background: #0085a1;
-    border: 1px solid #0085a1;
+    background: #2a55f4;
+    border: 1px solid #2a55f4;
 }
 
 .pager {
