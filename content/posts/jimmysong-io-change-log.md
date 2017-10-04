@@ -1,5 +1,5 @@
 ---
-title: "jimmysong.io release note"
+title: "jimmysong.io change log"
 date: 2017-10-04T11:18:27+08:00
 draft: false
 categories: github
