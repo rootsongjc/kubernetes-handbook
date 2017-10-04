@@ -11,8 +11,7 @@ pygmentCodeFences = true
 
 [Params]
 hello = "Hi,I'm Jimmy"
-#subtitle = "I can help you building Cloud Native confidence"
-subtitle = "Happy Mid-Autum Festival! 中秋节快乐！"
+subtitle = "I can help you building Cloud Native confidence"
 logo = "img/avatar-icon.png"
 favicon = "img/favicon.ico"
 dateFormat = "January 2, 2006"
@@ -20,31 +19,31 @@ commit = false
 #  rss = true
 comments = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
-description = "Happy Mid-Autumn Festival!"
+description = "Cloud Native all-in-one"
 
 [[Params.bigimg]]
-src = "img/chinese-lanterns.jpg"
-desc = "Mid-autumn Festival"
+src = "img/cloud-computing.jpg"
+desc = "Cloud Computing"
 
-#[[Params.bigimg]]
-#src = "img/cloud-computing.jpg"
-#desc = "Cloud Computing"
-#
-#[[Params.bigimg]]
-#src = "img/big-data-1.jpg"
-#desc = "Big Data"
-#
-#[[Params.bigimg]]
-#src = "img/data-science-1.jpg"
-#desc = "Data Science"
-#
-#[[Params.bigimg]]
-#src = "img/big-data-2.jpg"
-#desc = "Big Data"
-#
-#[[Params.bigimg]]
-#src = "img/data-science-2.jpg"
-#desc = "Data Science"
+[[Params.bigimg]]
+src = "img/great-wall-01.jpg"
+desc = "Great Wall"
+
+[[Params.bigimg]]
+src = "img/big-data-1.jpg"
+desc = "Big Data"
+
+[[Params.bigimg]]
+src = "img/data-science-1.jpg"
+desc = "Data Science"
+
+[[Params.bigimg]]
+src = "img/big-data-2.jpg"
+desc = "Big Data"
+
+[[Params.bigimg]]
+src = "img/data-science-2.jpg"
+desc = "Data Science"
 
 [Author]
   name = "Jimmy Song"
