@@ -287,6 +287,9 @@ img {
         border: 1px solid #eaeaea;
         border-width: 0 1px 1px;
     }
+    .navbar-custom .nav .navlinks-container .navlinks-children a:hover {
+        background: #bddefb;
+    }
 }
 
 
@@ -374,7 +377,7 @@ footer .theme-by {
 
 .post-preview .post-meta,
 .post-heading .post-meta {
-    color: #808080;
+    color: #2d34a0;
     font-size: 18px;
     font-style: italic;
     margin: 0 0 10px;
@@ -382,7 +385,14 @@ footer .theme-by {
 
 .post-preview .post-meta a,
 .post-heading .post-meta a {
-    color: #404040;
+    color: #2d34a0;
+    text-decoration: none;
+}
+
+.post-preview .post-meta a:hover,
+.post-heading .post-meta a:hover {
+    color: #2a55f4;
+    background: rgba(120, 236, 66, 0.74);
     text-decoration: none;
 }
 
