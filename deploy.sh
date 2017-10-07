@@ -12,12 +12,17 @@ git push origin master
 
 # Build the project. 
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
+hugo-algolia
 
 # Go To Public folder
 cd public
 
+# Add algolia search index
+grep -v '"content":' algolia.json>rootsongjc-hugo.json
+rm -f algolia.json
+
 # Add media
-cp -r /media/* media/
+#cp -r /media/* media/
 
 # Add changes to git.
 git add -A

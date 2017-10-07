@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "hugo-algolia": "^1.2.8"
+  }
+  scripts: {
+    "index": "rootsongjc-hugo",
+    "index-and-send": "hugo-algolia -s"
+  }
+}
