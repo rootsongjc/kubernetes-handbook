@@ -69,5 +69,5 @@ tags: ["github-pages"]
 
 ### 2017-10-07
 
-1. 不再使用 maxcdn，切换为 [bootcdn](http://www.bootcdn.cn/)|又拍云，加快国内网站速度更快
+1. ~~不再使用 maxcdn，切换为 [bootcdn](http://www.bootcdn.cn/)|又拍云，加快国内网站速度更快~~，但是用了这个CDN国外用户访问的速度将大大受影响，有的地方网页基本打不开，退而求其次，继续使用maxcdn
 2. 主页 banner 图片使用 [Cloudinary](https://cloudinary.com/) 存储
