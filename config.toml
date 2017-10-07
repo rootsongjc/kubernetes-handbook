@@ -22,27 +22,28 @@ comments = true
 description = "Cloud Native all-in-one"
 
 [[Params.bigimg]]
-src = "img/cloud-computing.jpg"
+#src = "img/cloud-computing.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
 desc = "Cloud Computing"
 
 [[Params.bigimg]]
-src = "img/great-wall-01.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
 desc = "Great Wall"
 
 [[Params.bigimg]]
-src = "img/big-data-1.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
 desc = "Big Data"
 
 [[Params.bigimg]]
-src = "img/data-science-1.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
 desc = "Data Science"
 
 [[Params.bigimg]]
-src = "img/big-data-2.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-2.jpg"
 desc = "Big Data"
 
 [[Params.bigimg]]
-src = "img/data-science-2.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-2.jpg"
 desc = "Data Science"
 
 [Author]

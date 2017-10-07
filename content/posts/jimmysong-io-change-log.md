@@ -66,3 +66,8 @@ tags: ["github-pages"]
 ### 2017-10-04
 
 1. 修改下拉菜单、超链接、tag等的配色，使用蓝色系
+
+### 2017-10-07
+
+1. 不再使用 maxcdn，切换为 [bootcdn](http://www.bootcdn.cn/)|又拍云，加快国内网站速度更快
+2. 主页 banner 图片使用 [Cloudinary](https://cloudinary.com/) 存储
