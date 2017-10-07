@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![WTF](http://olz1di9xf.bkt.clouddn.com/whats-the-fuck.jpg)
+![WTF](https://res.cloudinary.com/jimmysong/image/upload/images/whats-the-fuck.jpg)
 
 按照 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook) 安装 kubernetes 集群的第一步是什么？没错，创建 TLS 证书和秘钥！作为第一步已经这么繁琐和容易出错，很多人就望而却步了，单纯的按照说明执行命令而不了解这样做的目录和命令的含义无法帮助我们进行问题排查和纠错。
 

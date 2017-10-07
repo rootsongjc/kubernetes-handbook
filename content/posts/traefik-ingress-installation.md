@@ -8,7 +8,7 @@ Tags = ["kubernetes","traefik","ingress"]
 
 +++
 
-![fish](http://olz1di9xf.bkt.clouddn.com/20160915046.jpg)
+![fish](https://res.cloudinary.com/jimmysong/image/upload/images/20160915046.jpg)
 
 *（题图：🐟@鱼缸 Sep 15,2016）*
 
@@ -183,7 +183,7 @@ kubectl create -f .
 
 访问该地址`http://172.20.0.115:8580/`将可以看到dashboard。
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/traefik-dashboard.jpg)
+![kubernetes-dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/traefik-dashboard.jpg)
 
 左侧黄色部分部分列出的是所有的rule，右侧绿色部分是所有的backend。
 
@@ -235,11 +235,11 @@ Traefik会解析http请求header里的Host参数将流量转发给Ingress配置�
 
 修改hosts后就就可以在kubernetes集群外访问以上两个service，如下图：
 
-![traefik-nginx](http://olz1di9xf.bkt.clouddn.com/traefik-nginx.jpg)
+![traefik-nginx](https://res.cloudinary.com/jimmysong/image/upload/images/traefik-nginx.jpg)
 
 
 
-![traefik-guestbook](http://olz1di9xf.bkt.clouddn.com/traefik-guestbook.jpg)
+![traefik-guestbook](https://res.cloudinary.com/jimmysong/image/upload/images/traefik-guestbook.jpg)
 
 
 ## 参考

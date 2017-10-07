@@ -7,7 +7,7 @@ Tags = ["book","go","microservices","cloud-native"]
 
 +++
 
-![北京植物园桃花](http://olz1di9xf.bkt.clouddn.com/20160326003.jpg)
+![北京植物园桃花](https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg)
 
 *(题图：北京植物园桃花 Mar 26,2016)*
 
@@ -36,7 +36,7 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 
 章节简介如下图。
 
-![Cloud Native Go各章节简介](http://olz1di9xf.bkt.clouddn.com/cloud-native-go-abstract.png)
+![Cloud Native Go各章节简介](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-go-abstract.png)
 
 ## 关于作者
 

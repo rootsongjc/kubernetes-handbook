@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![大喵](http://olz1di9xf.bkt.clouddn.com/2016080801.jpg)
+![大喵](https://res.cloudinary.com/jimmysong/image/upload/images/2016080801.jpg)
 
 *（题图：大喵 Aug 8,2016）*
 
@@ -171,7 +171,7 @@ monitoring-influxdb-1411048194-lzrpc    1/1       Running   0          2m
 
 检查 kubernets dashboard 界面，看是显示各 Nodes、Pods 的 CPU、内存、负载等利用率曲线图；
 
-![dashboard-heapster](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-with-heapster.jpg)
+![dashboard-heapster](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-dashboard-with-heapster.jpg)
 
 ## 访问 grafana
 
@@ -212,7 +212,7 @@ $ kubectl proxy --address='172.20.0.113' --port=8086 --accept-hosts='^*$'
 http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
 ```
 
-![grafana](http://olz1di9xf.bkt.clouddn.com/kubernetes-heapster-grafana.jpg)
+![grafana](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-heapster-grafana.jpg)
 
 ## 访问 influxdb admin UI
 
@@ -230,6 +230,6 @@ http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/monitoring
 
 在页面的 “Connection Settings” 的 Host 中输入 node IP， Port 中输入 8086 映射的 nodePort 如上面的 32299，点击 “Save” 即可（我的集群中的地址是172.20.0.113:32299）：
 
-![kubernetes-influxdb-heapster](http://olz1di9xf.bkt.clouddn.com/kubernetes-influxdb-heapster.jpg)
+![kubernetes-influxdb-heapster](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-influxdb-heapster.jpg)
 
 到此Heapster已经部署完成。

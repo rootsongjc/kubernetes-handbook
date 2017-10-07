@@ -7,7 +7,7 @@ Tags = ["kubernetes","etcd"]
 
 +++
 
-![西山俯瞰北京夜景](http://olz1di9xf.bkt.clouddn.com/2015091401.jpg)
+![西山俯瞰北京夜景](https://res.cloudinary.com/jimmysong/image/upload/images/2015091401.jpg)
 
 *（题图：北京夜景@西山）*
 

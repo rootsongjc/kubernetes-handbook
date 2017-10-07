@@ -19,7 +19,7 @@ Amazon购买链接：[链接](https://www.amazon.com/Kubernetes-Management-Desig
 
 页数：399
 
-![kubernetes management design patterns 书籍封面](http://olz1di9xf.bkt.clouddn.com/kubernets-management-design-patterns.jpg)
+![kubernetes management design patterns 书籍封面](https://res.cloudinary.com/jimmysong/image/upload/images/kubernets-management-design-patterns.jpg)
 
 ## 简介
 

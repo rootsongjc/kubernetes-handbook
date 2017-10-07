@@ -7,7 +7,7 @@ Tags = ["pivotal","paas"]
 
 +++
 
-![黄山日出](http://olz1di9xf.bkt.clouddn.com/2013100302.jpg)
+![黄山日出](https://res.cloudinary.com/jimmysong/image/upload/images/2013100302.jpg)
 
 *（题图：黄山日出后的云海 Oct 3,2013）*
 
@@ -232,7 +232,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 
 [spring-music.local.pcfdev.io](spring-music.local.pcfdev.io)页面如图：
 
-![spring-music](http://olz1di9xf.bkt.clouddn.com/pivotal-cloudfoundry-spring-music.jpg)
+![spring-music](https://res.cloudinary.com/jimmysong/image/upload/images/pivotal-cloudfoundry-spring-music.jpg)
 
 ```bash
 requested state: started

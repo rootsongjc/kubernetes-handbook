@@ -6,7 +6,7 @@ Tags = ["vagrant","tools","hashicorp"]
 
 +++
 
-![光熙家园夜景](http://olz1di9xf.bkt.clouddn.com/2017030513.jpg)
+![光熙家园夜景](https://res.cloudinary.com/jimmysong/image/upload/images/2017030513.jpg)
 
 *（题图：北京地铁13号线光熙家园夜景 Mar 5,2017）*
 

@@ -6,7 +6,7 @@ Tags = ["tensorflow","AI","book","tensorflow"]
 
 +++
 
-![tensorflow实战图书封面](http://olz1di9xf.bkt.clouddn.com/tensorflow-book-page.jpg)
+![tensorflow实战图书封面](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-book-page.jpg)
 
 *（题图：TensofFlow实战图书封面）*
 

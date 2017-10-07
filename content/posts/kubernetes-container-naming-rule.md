@@ -148,4 +148,4 @@ k8s_php-redis_frontend-2337258262-154p7_default_d8a2e2dd-3617-11e7-a4b0-ecf4bbe5
 
 kubernetes容器命名规则解析，见下图所示。
 
-![kubernetes的容器命名规则示意图](http://olz1di9xf.bkt.clouddn.com/kubernetes-container-naming-rule.jpg)
+![kubernetes的容器命名规则示意图](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-container-naming-rule.jpg)

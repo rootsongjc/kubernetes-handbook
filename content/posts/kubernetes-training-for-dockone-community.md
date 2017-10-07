@@ -8,13 +8,13 @@ Tags: ["talk"]
 
 今天有幸受[DockOne](http://dockone.io/)社区邀请，作为[3 天烧脑式 Kubernetes 实战训练营 | 北京站](https://www.bagevent.com/event/791762?bag_track=bagevent)最后一天培训的讲师，为大家讲解Cloud Native（云原生）和如何开发kubernetes native app。
 
-![授课中](/media/kubernetes-training-for-dockone-1.jpg)
+![授课中](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-training-for-dockone-1.jpg)
 
 *课程间隙拍摄的一张照片，今天讲课最大的感受是脖子好累*
 
 我在大学的时候也参加过培训机构组织的培训，记得是个关于网络知识的培训，免费的，是在暑假的最开始的那几天，反正放假回家也是闲着，不如参加下培训长点知识，现在看来那时真是天真。**学以致用，PRACTICE MAKES PERFECT才是硬道理**！培训对大家初入一个行业或者一个领域的引导，根据前人经验少走弯路，选对方向比努力更重要。
 
-![考试中](/media/kubernetes-training-for-dockone-2.jpg)
+![考试中](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-training-for-dockone-2.jpg)
 
 *同学们正在考试中*
 

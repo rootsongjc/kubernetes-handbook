@@ -7,7 +7,7 @@ Tags = ["docker","network","sdn"]
 
 +++
 
-![黄昏](http://olz1di9xf.bkt.clouddn.com/2017013129.jpg)
+![黄昏](https://res.cloudinary.com/jimmysong/image/upload/images/2017013129.jpg)
 
 *(题图：山东荣成滨海风力发电场  Jan 31,2017）*
 

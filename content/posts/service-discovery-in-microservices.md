@@ -11,7 +11,7 @@ Tags = ["microservices"]
 
 服务发现分为**客户端服务发现**和**服务端服务发现**两种，架构如下图所示。
 
-![微服务中的服务发现](http://olz1di9xf.bkt.clouddn.com/service-discovery-in-microservices.png)
+![微服务中的服务发现](https://res.cloudinary.com/jimmysong/image/upload/images/service-discovery-in-microservices.png)
 
 这两种架构都各有利弊，我们拿客户端服务发现软件Eureka和服务端服务发现架构Kubernetes/SkyDNS+Ingress LB+Traefik+PowerDNS为例说明。
 

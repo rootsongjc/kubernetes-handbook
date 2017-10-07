@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![东直门](http://olz1di9xf.bkt.clouddn.com/2016082001.jpg)
+![东直门](https://res.cloudinary.com/jimmysong/image/upload/images/2016082001.jpg)
 
 *（题图：东直门桥 Aug 20,2016）*
 
@@ -165,6 +165,6 @@ openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
 ```
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg)
+![kubernetes-dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-dashboard-raw.jpg)
 
 由于缺少 Heapster 插件，当前 dashboard 不能展示 Pod、Nodes 的 CPU、内存等 metric 图形。

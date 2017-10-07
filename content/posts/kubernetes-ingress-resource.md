@@ -7,7 +7,7 @@ Tags = ["kubernetes","Ingress"]
 
 +++
 
-![银河soho](http://olz1di9xf.bkt.clouddn.com/20160131054.jpg)
+![银河soho](https://res.cloudinary.com/jimmysong/image/upload/images/20160131054.jpg)
 
 *（题图：朝阳门银河SOHO Jan 31,2016）*
 

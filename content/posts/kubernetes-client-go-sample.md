@@ -7,7 +7,7 @@ Tags = ["kubernetes","go"]
 
 +++
 
-![青岛栈桥](http://olz1di9xf.bkt.clouddn.com/20170526017.jpg)
+![青岛栈桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170526017.jpg)
 
 *(题图：青岛栈桥 May 26,2017)*
 
@@ -261,6 +261,6 @@ Events:
 
 其实在使用该命令的过程中，通过kubernetes dashboard的页面上查看Deployment的状态更直观，更加方便故障排查。
 
-![使用kubernetes dashboard进行故障排查](http://olz1di9xf.bkt.clouddn.com/kubernetes-client-go-sample-update.jpg)
+![使用kubernetes dashboard进行故障排查](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-client-go-sample-update.jpg)
 
 这也是dashboard最大的优势，简单、直接、高效。

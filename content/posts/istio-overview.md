@@ -7,7 +7,7 @@ Tags = ["istio","kubernetes","service-mesh"]
 
 +++
 
-![威海朱口](http://olz1di9xf.bkt.clouddn.com/20170529005.jpg)
+![威海朱口](https://res.cloudinary.com/jimmysong/image/upload/images/20170529005.jpg)
 
 *（题图：威海朱口 May 29,2017）*
 
@@ -36,7 +36,7 @@ Tags = ["istio","kubernetes","service-mesh"]
 
 ## 架构
 
-![Istio架构图](http://olz1di9xf.bkt.clouddn.com/istio-arch.jpg)
+![Istio架构图](https://res.cloudinary.com/jimmysong/image/upload/images/istio-arch.jpg)
 
 Istio架构分为控制层和数据层。
 

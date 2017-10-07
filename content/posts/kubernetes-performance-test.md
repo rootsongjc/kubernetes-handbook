@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![Img](http://olz1di9xf.bkt.clouddn.com/20160618045.jpg)
+![安贞门](https://res.cloudinary.com/jimmysong/image/upload/images/20160618045.jpg)
 
 *（题图：无题@安贞门 Jun 18,2016）*
 
@@ -363,7 +363,7 @@ Test Suite Passed
 
 从`log.txt`日志中还可以看到更多详细请求的测试指标。
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubenetes-e2e-test.jpg)
+![kubernetes-dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/kubenetes-e2e-test.jpg)
 
 ### 注意事项
 
@@ -405,7 +405,7 @@ Sample-webapp起了48个pod。
 
 Locust模拟10万用户，每秒增长100个。
 
-![locust-test](http://olz1di9xf.bkt.clouddn.com/kubernetes-locust-test.jpg)
+![locust-test](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-locust-test.jpg)
 
 ## 参考
 

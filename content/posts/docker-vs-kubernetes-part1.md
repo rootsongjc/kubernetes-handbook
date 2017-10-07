@@ -6,7 +6,7 @@ categories = "docker"
 Tags = ["docker","kubernetes"]
 +++
 
-![杭州西湖](http://olz1di9xf.bkt.clouddn.com/20161016031.jpg)
+![杭州西湖](https://res.cloudinary.com/jimmysong/image/upload/images/20161016031.jpg)
 
 *（题图：杭州西湖 Oct 16,2016）*
 

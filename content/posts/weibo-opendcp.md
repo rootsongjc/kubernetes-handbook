@@ -6,7 +6,7 @@ Tags = ["docker"]
 
 +++
 
-![青海湖](http://olz1di9xf.bkt.clouddn.com/2016062561.jpg)
+![青海湖](https://res.cloudinary.com/jimmysong/image/upload/images/2016062561.jpg)
 
 *（题图：青海湖 Jun 25,2016 ）*
 

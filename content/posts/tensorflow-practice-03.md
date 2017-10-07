@@ -6,7 +6,7 @@ Tags = ["tensorflow","AI","book"]
 
 +++
 
-![扬州东关](http://olz1di9xf.bkt.clouddn.com/2015052401.jpg)
+![扬州东关](https://res.cloudinary.com/jimmysong/image/upload/images/2015052401.jpg)
 
 *（题图：扬州东关 May 24,2015）*
 

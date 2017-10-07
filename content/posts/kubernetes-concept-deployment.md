@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![京广桥](http://olz1di9xf.bkt.clouddn.com/20170430008.jpg)
+![京广桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170430008.jpg)
 
 *（题图：京广桥@北京国贸 Apr 30,2017）*
 

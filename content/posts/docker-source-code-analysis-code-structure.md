@@ -6,7 +6,7 @@ categories = "docker"
 Tags = ["docker"]
 
 +++
-![八达岭长城](http://olz1di9xf.bkt.clouddn.com/20151001042.jpg)
+![八达岭长城](https://res.cloudinary.com/jimmysong/image/upload/images/20151001042.jpg)
 
 *(题图：北京八达岭长城  Oct 1,2015)*
 
@@ -20,7 +20,7 @@ Tags = ["docker"]
 
 ### 下载地址
 
-鉴于这本书已经发行一年半了了，基于的docker版本还是**1.2.0**，而如今都到了**1.13.0**（docker17.03的老版本号），应该很少有人买了吧，可以说这本书的纸质版本的生命周期也差不多了吧。如果有人感兴趣可以下载pdf版本看看，[Docker源码解析-机械工业出版社-孙宏亮著-2015年8月](http://olz1di9xf.bkt.clouddn.com/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE%E8%91%97.pdf)（完整文字版，大小25.86M），[Docker源码解析-看云整理版](http://olz1di9xf.bkt.clouddn.com/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE-%E7%9C%8B%E4%BA%91%E7%89%88.pdf)（文字版，有缩略，大小7.62M）。
+鉴于这本书已经发行一年半了了，基于的docker版本还是**1.2.0**，而如今都到了**1.13.0**（docker17.03的老版本号），应该很少有人买了吧，可以说这本书的纸质版本的生命周期也差不多了吧。如果有人感兴趣可以下载pdf版本看看，[Docker源码解析-机械工业出版社-孙宏亮著-2015年8月](https://res.cloudinary.com/jimmysong/image/upload/images/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE%E8%91%97.pdf)（完整文字版，大小25.86M），[Docker源码解析-看云整理版](https://res.cloudinary.com/jimmysong/image/upload/images/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE-%E7%9C%8B%E4%BA%91%E7%89%88.pdf)（文字版，有缩略，大小7.62M）。
 
 ## Out-of-date
 

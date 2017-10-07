@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![民生美术馆](http://olz1di9xf.bkt.clouddn.com/20170514001.jpg)
+![民生美术馆](https://res.cloudinary.com/jimmysong/image/upload/images/20170514001.jpg)
 
 *（题图：民生现代美术馆 May 14,2017）*
 
@@ -42,7 +42,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 该方案在扩展性、个性化、部署和后期维护方面都能做到均衡，因此选择该方案。
 
-![logstash日志收集架构图](http://olz1di9xf.bkt.clouddn.com/filebeat-log-collector.jpg)
+![logstash日志收集架构图](https://res.cloudinary.com/jimmysong/image/upload/images/filebeat-log-collector.jpg)
 
 我们创建了自己的logstash镜像。创建过程和使用方式见https://github.com/rootsongjc/docker-images
 
@@ -145,4 +145,4 @@ green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151    
 
 访问Kibana的web页面，查看`filebeat-docker-test`的索引，可以看到filebeat收集到了app日志。
 
-![Kibana页面](http://olz1di9xf.bkt.clouddn.com/filebeat-docker-test.jpg)
+![Kibana页面](https://res.cloudinary.com/jimmysong/image/upload/images/filebeat-docker-test.jpg)

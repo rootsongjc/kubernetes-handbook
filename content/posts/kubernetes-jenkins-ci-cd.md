@@ -7,7 +7,7 @@ Tags = ["kubernetes","ci","devops"]
 
 +++
 
-![东直门](http://olz1di9xf.bkt.clouddn.com/20170627001.jpg)
+![东直门](https://res.cloudinary.com/jimmysong/image/upload/images/20170627001.jpg)
 
 *（题图：正午@东直门 Jun 27，2017）*
 
@@ -15,7 +15,7 @@ Tags = ["kubernetes","ci","devops"]
 
 我们基于Jenkins的CI/CD流程如下所示。
 
-![基于Jenkins的持续集成与发布](http://olz1di9xf.bkt.clouddn.com/kubernetes-jenkins-ci-cd-blog.png)
+![基于Jenkins的持续集成与发布](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-jenkins-ci-cd-blog.png)
 
 ## 流程说明
 

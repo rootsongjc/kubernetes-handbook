@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![798](http://olz1di9xf.bkt.clouddn.com/20170514005.jpg)
+![798](https://res.cloudinary.com/jimmysong/image/upload/images/20170514005.jpg)
 
 *（题图：798艺术区 May 14,2017）*
 
@@ -40,7 +40,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 该方案在扩展性、个性化、部署和后期维护方面都能做到均衡，因此选择该方案。
 
-![logstash日志收集架构图](http://olz1di9xf.bkt.clouddn.com/logstash-log-collector.jpg)
+![logstash日志收集架构图](https://res.cloudinary.com/jimmysong/image/upload/images/logstash-log-collector.jpg)
 
 我们创建了自己的logstash镜像。创建过程和使用方式见 [Github - docker images](https://github.com/rootsongjc/docker-images)
 
@@ -126,7 +126,7 @@ green open logstash-docker-2017.05.16      VkFWx3b_Ss6n4keDmXm-TQ 5 1   2078    
 
 访问Kibana的web页面，查看`logstash-docker-2017.05.16`的索引，可以看到logstash收集到了app日志。
 
-![Kibana页面](http://olz1di9xf.bkt.clouddn.com/logstash-test-kibana.jpg)
+![Kibana页面](https://res.cloudinary.com/jimmysong/image/upload/images/logstash-test-kibana.jpg)
 
 ## 后记
 

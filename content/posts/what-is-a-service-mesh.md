@@ -38,7 +38,7 @@ Service mesh 有如下几个特点：
 
 Service mesh 的架构如下图所示：
 
-![Service Mesh 架构图](/media/serivce-mesh-control-plane.png)
+![Service Mesh 架构图](https://res.cloudinary.com/jimmysong/image/upload/images/serivce-mesh-control-plane.png)
 
 图片来自：[Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
 

@@ -7,7 +7,7 @@ Tags = ["docker"]
 
 +++
 
-![故宫博物院](http://olz1di9xf.bkt.clouddn.com/20160403050.jpg)
+![故宫博物院](https://res.cloudinary.com/jimmysong/image/upload/images/20160403050.jpg)
 
 *（题图：故宫 Apr 3,2016）*
 

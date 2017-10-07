@@ -11,7 +11,7 @@ Tags = ["kubernetes","cheatsheet"]
 
 通过该图可以对kubernetes的客户端命令kubectl有个感性和大体的了解，具体使用方法请参考官方文档。
 
-![kubernetes kubectl cheatsheet](http://olz1di9xf.bkt.clouddn.com/kubernetes-kubectl-cheatsheet-blog.png)
+![kubernetes kubectl cheatsheet](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-kubectl-cheatsheet-blog.png)
 
 图片归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/kubernetes-kubectl-cheatsheet.png)，以GitHub中的图片为准。
 

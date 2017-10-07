@@ -7,7 +7,7 @@ Tas = ["kubernetes"]
 
 +++
 
-![东三环](http://olz1di9xf.bkt.clouddn.com/2016121101.jpg)
+![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016121101.jpg)
 
 *（题图：太阳宫桥@北京东北三环 Dec 11,2016）*
 
@@ -347,5 +347,5 @@ Commercial support is available at
 
 访问`172.20.0.113:32724`或`172.20.0.114:32724`或者`172.20.0.115:32724`都可以得到nginx的页面。
 
-![welcome-nginx](http://olz1di9xf.bkt.clouddn.com/kubernetes-installation-test-nginx.png)
+![welcome-nginx](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-installation-test-nginx.png)
 

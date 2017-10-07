@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![古北水镇](http://olz1di9xf.bkt.clouddn.com/20160430004.jpg)
+![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430004.jpg)
 
 *（题图：龙形灯笼@古北水镇 Apr 30,2016）*
 
