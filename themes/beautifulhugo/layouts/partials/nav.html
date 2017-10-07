@@ -9,7 +9,12 @@
       </button>
       <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     </div>
-
+    <!-- add search box -->
+    <!--
+    <div class="">
+        {{ partial "search.html" . }}
+    </div>
+    -->
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
         {{ range .Site.Menus.main.ByWeight }}
