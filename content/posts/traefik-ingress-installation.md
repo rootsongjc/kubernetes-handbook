@@ -1,12 +1,10 @@
-+++
-
-date = "2017-04-20T22:38:40+08:00"
-title = "Kubernetes traefik ingress安装试用"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes","traefik","ingress"]
-
-+++
+---
+date: "2017-04-20T22:38:40+08:00"
+title: "Kubernetes traefik ingress安装试用"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes","traefik","ingress"]
+---
 
 ![fish](https://res.cloudinary.com/jimmysong/image/upload/images/20160915046.jpg)
 

@@ -1,11 +1,10 @@
-+++
-date = "2017-07-11T20:33:21+08:00"
-draft = false
-title = "Kubernetes中的数据持久化问题的一个案例讨论与解决方案探究"
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-07-11T20:33:21+08:00"
+draft: false
+Title: "Kubernetes中的数据持久化问题的一个案例讨论与解决方案探究"
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【最佳实践—运维管理】章节中，一切内容以kubernetes-handbook为准。
 

@@ -1,11 +1,10 @@
-+++
-date = "2017-05-09T12:59:19+08:00"
-draft = false
-title = "Kubernetes的边缘节点配置"
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-05-09T12:59:19+08:00"
+draft: false
+title: "Kubernetes的边缘节点配置"
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![南屏晚钟](https://res.cloudinary.com/jimmysong/image/upload/images/20170506086.jpg)
 

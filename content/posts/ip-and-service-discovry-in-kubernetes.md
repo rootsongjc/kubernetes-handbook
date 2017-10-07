@@ -1,11 +1,10 @@
-+++
-date = "2017-04-24T16:11:16+08:00"
-title = "Kubernetes中的IP和服务发现体系"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-24T16:11:16+08:00"
+title: "Kubernetes中的IP和服务发现体系"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![朝阳公园](https://res.cloudinary.com/jimmysong/image/upload/images/20151108011.jpg)
 

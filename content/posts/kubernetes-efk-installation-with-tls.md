@@ -1,11 +1,10 @@
-+++
-date = "2017-04-13T12:28:10+08:00"
-title = "在开启TLS的Kubernetes1.6集群上安装EFK"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-13T12:28:10+08:00"
+title: "在开启TLS的Kubernetes1.6集群上安装EFK"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![簋街](https://res.cloudinary.com/jimmysong/image/upload/images/2016061706.jpg)
 

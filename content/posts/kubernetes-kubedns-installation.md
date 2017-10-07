@@ -1,11 +1,10 @@
-+++
-draft = false
-date = "2017-04-12T13:04:45+08:00"
-title = "Kubernetes安装之kubedns配置"
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+draft: false
+date: "2017-04-12T13:04:45+08:00"
+title: "Kubernetes安装之kubedns配置"
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016082701.jpg)
 

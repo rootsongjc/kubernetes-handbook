@@ -1,11 +1,10 @@
-+++
-date = "2017-07-19T23:15:01+08:00"
-draft = false
-categories = "kubernetes"
-title = "Kubernetes中的服务发现与docker容器间的环境变量传递源码探究"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-07-19T23:15:01+08:00"
+draft: false
+categories: "kubernetes"
+title: "Kubernetes中的服务发现与docker容器间的环境变量传递源码探究"
+Tags: ["kubernetes"]
+---
 
 ![野三坡](https://res.cloudinary.com/jimmysong/image/upload/images/20170713077.jpg)
 

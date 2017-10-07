@@ -1,10 +1,9 @@
-+++
-date = "2017-08-18T23:48:30+08:00"
-draft = false
-categories = "github"
-title = "即日起更换域名为jimmysong.io"
-
-+++
+---
+date: "2017-08-18T23:48:30+08:00"
+draft: false
+categories: "github"
+title: "即日起更换域名为jimmysong.io"
+---
 
 即日起我有了自己的独立域名 [jimmysong.io](http://jimmysong.io)，网站依然托管在 GitHub 上，原来的网址 https://jimmysong.io 依然可以访问。
 

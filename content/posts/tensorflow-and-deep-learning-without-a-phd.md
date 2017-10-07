@@ -1,10 +1,9 @@
-+++
-date = "2017-04-05T21:52:01+08:00"
-title = "TensorFlow深度学习手写数字识别初体验"
-draft = false
-Tags = ["tensorflow","deep learning"]
-
-+++
+---
+date: "2017-04-05T21:52:01+08:00"
+title: "TensorFlow深度学习手写数字识别初体验"
+draft: false
+Tags: ["tensorflow","deep learning"]
+---
 
 ![禾雀](https://res.cloudinary.com/jimmysong/image/upload/images/201703085.jpg)
 

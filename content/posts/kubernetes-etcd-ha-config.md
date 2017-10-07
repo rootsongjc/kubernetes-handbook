@@ -1,11 +1,10 @@
-+++
-draft = false
-date = "2017-04-11T15:21:39+08:00"
-title = "Kubernetes安装之etcd高可用配置"
-categories = "kubernetes"
-Tags = ["kubernetes","etcd"]
-
-+++
+---
+draft: false
+date: "2017-04-11T15:21:39+08:00"
+title: "Kubernetes安装之etcd高可用配置"
+categories: "kubernetes"
+Tags: ["kubernetes","etcd"]
+---
 
 ![西山俯瞰北京夜景](https://res.cloudinary.com/jimmysong/image/upload/images/2015091401.jpg)
 

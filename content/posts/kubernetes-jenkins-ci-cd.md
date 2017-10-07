@@ -1,11 +1,10 @@
-+++
-date = "2017-06-27T20:52:57+08:00"
-draft = false
-title = "使用Jenkins进行持续构建与发布应用到kubernetes集群中"
-categories = "devops"
-Tags = ["kubernetes","ci","devops"]
-
-+++
+---
+date: "2017-06-27T20:52:57+08:00"
+draft: false
+title: "使用Jenkins进行持续构建与发布应用到kubernetes集群中"
+categories: "devops"
+Tags: ["kubernetes","ci","devops"]
+---
 
 ![东直门](https://res.cloudinary.com/jimmysong/image/upload/images/20170627001.jpg)
 

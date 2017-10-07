@@ -1,11 +1,10 @@
-+++
-date = "2017-06-22T18:08:51+08:00"
-draft = false
-title = "使用Wercker进行持续构建与发布"
-categories="devops"
-Tags = ["wercker","docker","ci"]
-
-+++
+---
+date: "2017-06-22T18:08:51+08:00"
+draft: false
+title: "使用Wercker进行持续构建与发布"
+categories: "devops"
+Tags: ["wercker","docker","ci"]
+---
 
 本文介绍了wercker和它的基本用法，并用我GitHub上的[magpie](https://github.com/rootsongjc/magpie)应用作为示例，讲解如何给GitHub项目增加wercker构建流程，并将生成的镜像自动上传到Docker Hub上。
 

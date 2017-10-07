@@ -1,11 +1,10 @@
-+++
-date = "2017-05-17T17:24:52+08:00"
-draft = false
-title = "使用filebeat收集kubernetes中的应用日志"
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-05-17T17:24:52+08:00"
+draft: false
+title: "使用filebeat收集kubernetes中的应用日志"
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![民生美术馆](https://res.cloudinary.com/jimmysong/image/upload/images/20170514001.jpg)
 

@@ -1,11 +1,10 @@
-+++
-date = "2017-08-15T22:58:37+08:00"
-draft = false
-title = "Cloud Native Python—使用Python和React构建云原生应用"
-categories = "cloud-native"
-Tags = ["cloud-native","book","python"]
-
-+++
+---
+date: "2017-08-15T22:58:37+08:00"
+draft: false
+title: "Cloud Native Python—使用Python和React构建云原生应用"
+categories: "cloud-native"
+Tags: ["cloud-native","book","python"]
+---
 
 继 [Cloud Native Go](https://rootsongjc.github.io/cloud-native-go/) 之后又一本关于 Cloud Native 的力作已经登上了我的写作日程，这次是基于 Python 构建微服务和云原生 Web 应用程序，书名叫作 Cloud Native Python。
 

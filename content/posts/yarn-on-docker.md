@@ -1,12 +1,10 @@
-+++
-
-date = "2017-04-04T00:19:04+08:00"
-title = "容器技术在大数据场景下的应用——Yarn on Docker"
-draft = false
-categories = "container"
-Tags = ["docker","big data","hadoop","yarn"]
-
-+++
+---
+date: "2017-04-04T00:19:04+08:00"
+title: "容器技术在大数据场景下的应用——Yarn on Docker"
+draft: false
+categories: "container"
+Tags: ["docker","big data","hadoop","yarn"]
+---
 
 **作者：[宋净超](https://jimmysong.io/about/) TalkingData云计算及大数据工程师**
 

@@ -1,11 +1,10 @@
-+++
-date = "2017-04-12T20:20:19+08:00"
-title = "在开启TLS的Kubernetes1.6集群上安装heapster"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-12T20:20:19+08:00"
+title: "在开启TLS的Kubernetes1.6集群上安装heapster"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![大喵](https://res.cloudinary.com/jimmysong/image/upload/images/2016080801.jpg)
 

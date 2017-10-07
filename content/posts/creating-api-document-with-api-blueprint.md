@@ -1,11 +1,10 @@
-+++
-date = "2017-06-23T12:24:12+08:00"
-draft = false
-categories = "Devops"
-title = "使用API blueprint创建API文档"
-Tags = ["devops","design","tools"]
-
-+++
+---
+date: "2017-06-23T12:24:12+08:00"
+draft: false
+categories: "Devops"
+title: "使用API blueprint创建API文档"
+Tags: ["devops","design","tools"]
+---
 
 在进行微服务开发的过程中，为了保证最终开发的系统跟最初的设计保持一致，约定RESTful接口之间的调用方法，我们需要将API设计文档化，因此我们引入了API Blueprint。
 
