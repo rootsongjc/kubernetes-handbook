@@ -9,7 +9,8 @@ tags = ["me"]
 
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
-- [Wuhan University of Technology](http://www.whut.edu.cn)
+- [Wuhan University of Technology](http://www.whut.edu.cn) 
+- Major in Software Engineering
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞）
   - [TalkingData](http://www.talkingdata.com)
