@@ -7,7 +7,7 @@ Tags = ["docker"]
 
 +++
 
-![杭州吴山](http://olz1di9xf.bkt.clouddn.com/20161016022.jpg)
+![杭州吴山](https://res.cloudinary.com/jimmysong/image/upload/images/20161016022.jpg)
 
 *（题图：杭州吴山步道旁的墙壁 Oct 16,2016）*
 

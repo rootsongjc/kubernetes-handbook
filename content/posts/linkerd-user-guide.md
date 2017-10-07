@@ -61,9 +61,9 @@ $ kubectl create -f jenkins.yml
 
 访问 [http://jenkins.jimmysong.io](http://jenkins.jimmysong.io/)
 
-[![Jenkins pipeline](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-jenkins-pipeline.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins-pipeline.jpg)
+[![Jenkins pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-jenkins-pipeline.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins-pipeline.jpg)
 
-[![Jenkins config](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-jenkins.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins.jpg)
+[![Jenkins config](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-jenkins.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins.jpg)
 
 **注意**：要访问 Jenkins 需要在 Ingress 中增加配置，下文会提到。
 
@@ -90,7 +90,7 @@ Failed with the following error(s) Error signal	dtab is already marked as being 
 
 访问 [http://namerd.jimmysong.io](http://namerd.jimmysong.io/)
 
-[![namerd](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/namerd-internal.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/namerd-internal.jpg)
+[![namerd](https://res.cloudinary.com/jimmysong/image/upload/images/namerd-internal.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/namerd-internal.jpg)
 
 dtab 保存在 namerd 中，该页面中的更改不会生效，需要使用命令行来操作。
 
@@ -244,15 +244,15 @@ Percentage of the requests served within a certain time (ms)
 
 Outcoming
 
-[![linkerd监控](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-helloworld-outgoing.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-outgoing.jpg)
+[![linkerd监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-helloworld-outgoing.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-outgoing.jpg)
 
 Incoming
 
-[![linkerd监控](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-helloworld-incoming.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-incoming.jpg)
+[![linkerd监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-helloworld-incoming.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-incoming.jpg)
 
 访问 [http://linkerd-viz.jimmysong.io](http://linkerd-viz.jimmysong.io/) 查看应用 metric 监控
 
-[![linkerd性能监控](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-grafana.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-grafana.png)
+[![linkerd性能监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-grafana.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-grafana.png)
 
 ## 测试路由
 
@@ -280,7 +280,7 @@ Hello (172.30.60.14) world (172.30.71.19)!!
 
 架构如下图所示。
 
-[![Linkerd ingress controller](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/linkerd-ingress-controller.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-ingress-controller.jpg)
+[![Linkerd ingress controller](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-ingress-controller.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-ingress-controller.jpg)
 
 *(图片来自 A Service Mesh for Kubernetes - Buoyant.io)*
 

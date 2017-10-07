@@ -7,7 +7,7 @@ Tags = ["kubernetes","fluentd","elasticsearch"]
 
 +++
 
-![古北水镇](http://olz1di9xf.bkt.clouddn.com/20160430080.jpg)
+![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430080.jpg)
 
 *（题图：码头@古北水镇 Apr 30,2016）*
 

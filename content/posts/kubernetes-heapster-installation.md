@@ -7,7 +7,7 @@ Tags = ["kubernetes","heapster"]
 
 +++
 
-![嗑猫薄荷的白化孟加拉虎](http://olz1di9xf.bkt.clouddn.com/20170403064.jpg)
+![嗑猫薄荷的白化孟加拉虎](https://res.cloudinary.com/jimmysong/image/upload/images/20170403064.jpg)
 
 *（题图：嗑猫薄荷的白化孟加拉虎@北京动物园 Apr 3,2017）*
 
@@ -144,7 +144,7 @@ svc/monitoring-influxdb   10.254.151.157   <none>        8086/TCP   1h
 
 现在再打开Dashboard页面就可以看到CPU和Memory的监控信息了。
 
-![kubernetes-heapster](http://olz1di9xf.bkt.clouddn.com/kubernetes-heapster-01.jpg)
+![kubernetes-heapster](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-heapster-01.jpg)
 
 ## 后记
 

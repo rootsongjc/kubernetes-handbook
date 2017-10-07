@@ -6,7 +6,7 @@ categories = "kubernetes"
 Tags = ["kubernetes","cloud computing"]
 +++
 
-![晒太阳的袋鼠](http://olz1di9xf.bkt.clouddn.com/2017040301.jpg)
+![晒太阳的袋鼠](https://res.cloudinary.com/jimmysong/image/upload/images/2017040301.jpg)
 
 *（题图：晒太阳的袋鼠@北京动物园 Apr 3,2017）*
 
@@ -135,7 +135,7 @@ svc/kubernetes-dashboard   10.254.113.226   <nodes>       80:31370/TCP   8s
 
 现在就可以访问http://sz-pg-oam-docker-test-001.tendcloud.com:8080/ui了，效果如图：
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-01.jpg)
+![kubernetes-dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-dashboard-01.jpg)
 
 ## Troubleshooting
 

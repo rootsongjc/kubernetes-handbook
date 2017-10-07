@@ -5,7 +5,7 @@ tags = ["me"]
 
 +++
 
-![wechat_qrcode](/media/wechat-qrcode-20170627.jpg)
+![wechat_qrcode](https://res.cloudinary.com/jimmysong/image/upload/images/jimmysong-wechat-qrcode.jpg)
 
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
@@ -33,4 +33,4 @@ tags = ["me"]
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 - 微信公众号——云原生应用架构(CloudNativeGo)
 
-![微信公众号-云原生应用架构](/media/cloud-native-wechat-public-account.jpg)
+![微信公众号-云原生应用架构](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-wechat-public-account.jpg)

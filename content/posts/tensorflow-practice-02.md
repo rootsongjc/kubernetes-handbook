@@ -6,7 +6,7 @@ Tags = ["tensorflow","AI","book"]
 
 +++
 
-![广州海珠桥](http://olz1di9xf.bkt.clouddn.com/20140810002.jpg)
+![广州海珠桥](https://res.cloudinary.com/jimmysong/image/upload/images/20140810002.jpg)
 
 *（题图：广州海珠桥 Aug 10,2014）*
 
@@ -111,7 +111,7 @@ e64afc31eec843717733d6e4527aecf833ce18383214dc47
 
 现在用刚才从日志里看到的密码就可以登录了，Jupyter页面上可以看到本书所有章节的代码了。
 
-![jupyter页面](http://olz1di9xf.bkt.clouddn.com/tensorflow-practice-chapter2-jupyter-web.jpg)
+![jupyter页面](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-practice-chapter2-jupyter-web.jpg)
 
 **使用pip安装**
 

@@ -7,7 +7,7 @@ Tags = ["cloud-native","book"]
 
 +++
 
-![cover](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-cover.jpg)
+![cover](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-cover.jpg)
 
 # 迁移到云原生应用架构
 
@@ -624,11 +624,11 @@ Evans将隔离层的实施划分为三个子模块，前两个代表着经典设
 
 Spring Cloud 项目中包含的一个可提供这些功能的配置服务器。此配置服务器通过 Git 本地仓库(Repository)支持的 REST API 呈现了应用程序及应用程序配置文件(例如，可用开/关切换的一组配置作为一组，如“deployment”和“staging”配置)(图 3 -1)。
 
-![Spring Cloud Config Server](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-1.jpg)
+![Spring Cloud Config Server](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-1.jpg)
 
 例3-1是示例配置服务器的默认配置文件：
 
-![Example 3-1](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-1.jpg)
+![Example 3-1](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-1.jpg)
 
 1. 该配置中指定了后端Git仓库中的`application.yml`文件。
 
@@ -636,13 +636,13 @@ Spring Cloud 项目中包含的一个可提供这些功能的配置服务器。�
 
    例3-1中的配置是自动生成的，无需手动编码。我们可以看到，通过检查它的/env端点（例3-2），greeting的值被分发到Spring应用中。
 
-![Example 3-2](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-2.jpg)
+![Example 3-2](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-2.jpg)
 
 1. 该应用接收到来自配置服务器的greeting的值：ohai。
 
 现在我们就可以无需重启客户端应用就可以更新greeting的值。该功能由Spring Cloud项目中的一个名为Spring Cloud Bus的组件提供。该项目将分布式系统的节点与轻量级消息代理进行链接，然后可以用于广播状态更改，如我们所需的配置更改（图3-2）。该项目将分布式系统的节点与轻量级消息代理进行链接，然后可以用于广播状态更改，如我们所需的配置更改（图3-2）。
 
-只需通过对参与总线的任何应用程序的/bus/refresh端点执行HTTP POST（这显然应该进行适当的安全性保护），指示总线上的所有应用程序使用配置服务器中的最新的可用值刷新其配置。![Figure 3-2](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-2.jpg)
+只需通过对参与总线的任何应用程序的/bus/refresh端点执行HTTP POST（这显然应该进行适当的安全性保护），指示总线上的所有应用程序使用配置服务器中的最新的可用值刷新其配置。![Figure 3-2](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-2.jpg)
 
 ## 服务注册发现
 
@@ -650,19 +650,19 @@ Spring Cloud 项目中包含的一个可提供这些功能的配置服务器。�
 
 云中的（图3-3）的同样架构模式是有一个前端（应用程序）和后端（业务）服务。后端 服务往往不能直接从互联网访问，而是通过前端服务访问。服务注册提供的所有服务的列表， 使他们可以通过一个客户端库到达前端服务(路由和负载均衡)，客户端库执行负载均衡和路由到后端服务。
 
-![Figure 3-3](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-3.jpg)
+![Figure 3-3](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-3.jpg)
 
 在使用服务定位器和依赖注入模式的各种形式之前，我们已经解决了这个问题，面向服务的架构长期以来一直使用各种形式的服务注册表。我们将采用类似的解决方案，利用Eureka，这是一个Netflix OSS项目，可用于定位服务，以实现中间层服务的负载平衡和故障转移。为了使用Netflix OSS服务，Spring Cloud Netflix项目提供了基于注释的配置模型，这大大简化了开发人员在开发Spring应用程序时对Eureka的心力耗费。
 
 在例3-3中，只需简单得在代码中添加@EnableDiscoveryClient注释，应用程序就可以进行服务注册和发现。
 
-![Example 3-3](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-3.jpg)
+![Example 3-3](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-3.jpg)
 
 1. @EnableDiscoveryClient开启应用程序的服务注册发现。
 
 该应用程序就能够通过利用 DiscoveryClient 与它的依赖组件通信。例3-4是应用 程序查找名为 PRODUCER 的注册服务的一个实例，获得其 URL，然后利用 Spring 的 RestTemplate 与之通信。
 
-![example-3-4](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-4.jpg)
+![example-3-4](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-4.jpg)
 
 1. 开启的DiscoveryClient通过Spring注入。
 2. getNextServerFromEureka方法使用round-robin算法提供服务实例的位置。
@@ -673,7 +673,7 @@ Spring Cloud 项目中包含的一个可提供这些功能的配置服务器。�
 
 云原生的解决方案通常将路由和负载均衡的职责放在客户端。Ribbon Netflix OSS项目就是其中的一种。（图3-4）
 
-![Figure 3-4](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-4.jpg)
+![Figure 3-4](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-4.jpg)
 
 Ribbon提供一组丰富的功能集：
 
@@ -689,16 +689,16 @@ Ribbon提供一组丰富的功能集：
 
 跟Eureka一样，Spring Cloud Netflix项目也大大简化了Spring应用程序开发人员使用Ribbon的心力耗费。开发人员可以注入一个LoadBalancerClient的实例，然后使用它来解析应用程序依赖关系的一个实例（例3-5），而不是注入DiscoveryClient的实例（用于直接从Eureka中消费）。
 
-![Example 3-5-1](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-5-1.jpg)
+![Example 3-5-1](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-5-1.jpg)
 
-![Example-3-5-2](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-5-2.jpg)
+![Example-3-5-2](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-5-2.jpg)
 
 1. 由Spring注入的LoadBalancerClient。
 2. choose方法使用当前负载均衡算法提供了服务的一个示例地址。
 
 Spring Cloud Netflix 通过创建可以注入到 Bean 中的 Ribbon-enabled 的RestTemplate bean 来进一步简化 Ribbon 的配置。RestTemplate 的这个实例被配置为使用Ribbon（示例3-6）自动将实例的逻辑服务名称解析为 instanceURI。
 
-![Example 3-6](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-6.jpg)
+![Example 3-6](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-6.jpg)
 
 1. 注入的是RestTemplate而不是LoadBalancerClient。
 2. 注入的RestTemplate自动将 http://producer 解析为实际的服务实例的URI。
@@ -717,7 +717,7 @@ Spring Cloud Netflix 通过创建可以注入到 Bean 中的 Ribbon-enabled 的R
 
 当服务的依赖被确定为不健康时，使用熔断器来阻绝该服务与其依赖的远程调用，就像电路熔断器可以防止电力使用过度，防止房子被烧毁一样。熔断器实现为状态机（图3-5）。当其处于关闭状态时，服务调用将直接传递给依赖关系。如果任何一个调用失败，则计入这次失败。当故障计数在指定时间内达到指定的阈值时，熔断器进入打开状态。在熔断器为打开状态时，所有调用都会失败。在预定时间段之后，线路转变为“半开”状态。在这种状态下，调用再次尝试远程依赖组件。成功的调用将熔断器转换回关闭状态，而失败的调用将熔断器返回到打开状态。
 
-![Figure 3-5](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-5.jpg)
+![Figure 3-5](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-5.jpg)
 
 **隔板**
 
@@ -725,13 +725,13 @@ Spring Cloud Netflix 通过创建可以注入到 Bean 中的 Ribbon-enabled 的R
 
 Netflix 的 Hystrix 应用了这些和更多的模式，并提供了强大的容错功能。为了包含熔断器的代码，Hystrix 允许代码被包含到 HystrixCommand 对象中。
 
-![Example 3-7](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-7.jpg)
+![Example 3-7](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-7.jpg)
 
 1. run方法中封装了熔断器
 
 Spring Cloud Netflix 通过在 Spring Boot 应用程序中添加 @EnableCircuitBreaker 注解来启用 Hystrix 运行时组件。然后通过另一组注解，使得基于 Spring 和 Hystrix 的编程与我们先前描述的集成一样简单（例3-8）。
 
-![Example 3-8](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-8.jpg)
+![Example 3-8](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-8.jpg)
 
 1. 使用 @HystrixCommand 注解的方法封装了一个熔断器。
 2. 当线路处于打开或者半开状态时，注解中引用的 getProducerFallback 方法，提供了一个优雅的回调操作。
@@ -747,7 +747,7 @@ Hystrix 相较于其他熔断器来说是独一无二的，因为它还通过在
 
 这些 metric 会被发送到事件流中，然后被 Netflix OSS 项目中的另一个叫做 Turbine的组聚合。每个单独的和聚合后的 metric 流都可以在强大的 Hystrix Dashboard（图3-6）中以可视化的方式呈现，该页面提供了很好的分布式系统总体健康状态的可视化效果。
 
-![Figure 3-6](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-6.jpg) 
+![Figure 3-6](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-6.jpg) 
 
 ## API 网关/边缘服务
 
@@ -781,7 +781,7 @@ Hystrix 相较于其他熔断器来说是独一无二的，因为它还通过在
 
 API 网关模式（图 3-7）旨在将客户端的这些需求负担从设备开发者转移到服务器端。API 网关仅仅是一类特殊的满足单个客户端应用程序的微服务(如特定的 iPhone app)，并为其提供一个到后端的入口。每个请求同时访问数十（或数百）个微服务，汇总响应并转化，以满足客户应用的需求。在必要时，他们还进行协议转换（例如，HTTP 到 AMQP）。
 
-![Figure 3-7](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-7.jpg)
+![Figure 3-7](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-figure-3-7.jpg)
 
 API 网关可以使用任何支持 web 编程和并发模式的语言、运行时、框架，和能够目标微服务进行通信的协议来实现。热门的选择包括 Node.js （由于其反应式编程模型）和 GO 编程语言（由于其简单的并发模型）。
 
@@ -795,11 +795,11 @@ API 网关可以使用任何支持 web 编程和并发模式的语言、运行�
 
 我们期望的该移动应用的服务的响应如例3-9所示：
 
-![Example 3-9](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-9.jpg)
+![Example 3-9](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-9.jpg)
 
 例3-10中的代码利用了 RxJava 的 Observable.zip 方法来并发访问每个服务。在接到三个响应后，代码将它们传递给 Java 8 的 Lambada 表达式处理并生成一个 MovieDetails 实例。 该实例可以被序列化并产生入例3-9中的响应。
 
-![figure 3-10](http://olz1di9xf.bkt.clouddn.com/migrating-to-cloud-native-migrating-to-cloud-native-example-3-10.jpg)
+![figure 3-10](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-example-3-10.jpg)
 
 这个例子仅涉及了RxJava所有可用功能的一些皮毛，读者可以在 RxJava的wiki上查看进一步信息。
 

@@ -7,7 +7,7 @@ Tags = ["kubernetes","istio","service-mesh"]
 
 +++
 
-![威海朱口](http://olz1di9xf.bkt.clouddn.com/20170528033.jpg)
+![威海朱口](https://res.cloudinary.com/jimmysong/image/upload/images/20170528033.jpg)
 
 *（题图：威海东部海湾 May 28,2017）*
 
@@ -234,7 +234,7 @@ istio/examples-bookinfo-productpage-v1
 
 该应用架构图如下：
 
-![BookInfo Sample应用架构图](http://olz1di9xf.bkt.clouddn.com/bookinfo-sample-arch.png)
+![BookInfo Sample应用架构图](https://res.cloudinary.com/jimmysong/image/upload/images/bookinfo-sample-arch.png)
 
 **部署应用**
 
@@ -256,19 +256,19 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 http://grafana.istio.io
 
-![Istio Grafana界面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-grafana.jpg)
+![Istio Grafana界面](https://res.cloudinary.com/jimmysong/image/upload/images/istio-bookinfo-grafana.jpg)
 
 **Prometheus页面**
 
 http://prometheus.istio.io
 
-![Prometheus页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-prometheus.jpg)
+![Prometheus页面](https://res.cloudinary.com/jimmysong/image/upload/images/istio-bookinfo-prometheus.jpg)
 
 **Zipkin页面**
 
 http://zipkin.istio.io
 
-![Zipkin页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-zipkin.jpg)
+![Zipkin页面](https://res.cloudinary.com/jimmysong/image/upload/images/istio-bookinfo-zipkin.jpg)
 
 **ServiceGraph页面**
 
@@ -278,7 +278,7 @@ http://servicegraph.istio.io/dotviz
 
 获得json格式的返回结果，访问http://servicegraph.istio.io/graph
 
-![ServiceGraph页面](http://olz1di9xf.bkt.clouddn.com/istio-bookinfo-servicegraph.jpg)
+![ServiceGraph页面](https://res.cloudinary.com/jimmysong/image/upload/images/istio-bookinfo-servicegraph.jpg)
 
 ## 更进一步
 

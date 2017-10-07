@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![无题](http://olz1di9xf.bkt.clouddn.com/20160402017.jpg)
+![无题](https://res.cloudinary.com/jimmysong/image/upload/images/20160402017.jpg)
 
 *（题图：无题 Apr 2,2016）*
 

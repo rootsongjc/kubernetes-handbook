@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![森林公园](http://olz1di9xf.bkt.clouddn.com/20170501005.jpg)
+![森林公园](https://res.cloudinary.com/jimmysong/image/upload/images/20170501005.jpg)
 
 *（题图：无题@北京奥林匹克森林公园 May 1,2017）*
 

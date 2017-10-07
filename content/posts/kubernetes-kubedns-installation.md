@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![东三环](http://olz1di9xf.bkt.clouddn.com/2016082701.jpg)
+![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016082701.jpg)
 
 *（题图：雨过天晴@北京定福庄 Aug 27,2016）*
 

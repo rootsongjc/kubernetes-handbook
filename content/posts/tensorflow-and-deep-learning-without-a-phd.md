@@ -6,7 +6,7 @@ Tags = ["tensorflow","deep learning"]
 
 +++
 
-![禾雀](http://olz1di9xf.bkt.clouddn.com/201703085.jpg)
+![禾雀](https://res.cloudinary.com/jimmysong/image/upload/images/201703085.jpg)
 
 *（题图：禾雀 @北京动物园 Apr 3,2017）*
 
@@ -16,7 +16,7 @@ TensorFlow学习曲线是陡峭的，不是所有的IT从业人员都很容易�
 
 下面我们来跟随**Martin Gorner**的[TensorFlow and Deep Learing Without a PhD](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/#0)来编写我们的第一个TensorFlow程序——手写数字识别，这篇文章的中文版[没有博士学位如何玩转TensorFlow和深度学习](http://www.jiqizhixin.com/article/2458)于2017年3月13日发表在发表在[机器之心](www.jiqizhixin.com)上。这篇文章也是根据3月8日-10日的**Google Cloud NEXT'17**大会上Martin Gorner做的讲解整理而成的，[教程 | 没有博士学位，照样玩转TensorFlow深度学习](http://it.sohu.com/20170124/n479480999.shtml)这篇文章是对Martin Gorner的简易教程的原文翻译，我们暂时不要求了解TensorFlow背后复杂的理论，我们先跟随这篇简易教程玩一把TensorFlow的手写数字识别。
 
-如果你想深入了解这本后的原理的话，可以查看哈尔滨工业大学社会计算与信息检索研究中心翻译的[《神经网络与深度学习》](https://www.gitbook.com/book/hit-scir/neural-networks-and-deep-learning-zh_cn/details)这本书，该书翻译自[Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)的中文翻译，原文作者 Michael Nielsen，而且这还是一本免费的电子书，该书中系统讲解了[使用神经网络识别手写数字](https://hit-scir.gitbooks.io/neural-networks-and-deep-learning-zh_cn/content/chap1/c1s0.html)背后的原理。该书托管在GitBook上，你可以点击[这里](http://olz1di9xf.bkt.clouddn.com/neural-networks-and-deep-learning-zh_cn.pdf)直接下载该书中文版的PDF。
+如果你想深入了解这本后的原理的话，可以查看哈尔滨工业大学社会计算与信息检索研究中心翻译的[《神经网络与深度学习》](https://www.gitbook.com/book/hit-scir/neural-networks-and-deep-learning-zh_cn/details)这本书，该书翻译自[Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/)的中文翻译，原文作者 Michael Nielsen，而且这还是一本免费的电子书，该书中系统讲解了[使用神经网络识别手写数字](https://hit-scir.gitbooks.io/neural-networks-and-deep-learning-zh_cn/content/chap1/c1s0.html)背后的原理。该书托管在GitBook上，你可以点击[这里](https://res.cloudinary.com/jimmysong/image/upload/images/neural-networks-and-deep-learning-zh_cn.pdf)直接下载该书中文版的PDF。
 
 ## 准备
 
@@ -92,7 +92,7 @@ Successfully installed cycler-0.10.0 functools32-3.2.3.post2 matplotlib-2.0.0 py
 
 所有的依赖都下载完成之后，就会弹出一个窗口，同时后台也会在不断滚动显示训练的阶段，直到2001步，如图：
 
-![tensorflow-mnist-01](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-01.jpg)
+![tensorflow-mnist-01](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-01.jpg)
 
 正规的TensorFlow项目会使用**TensorBoard**作可视化，我们用**matplotlib**作为替代。
 
@@ -108,13 +108,13 @@ Successfully installed cycler-0.10.0 functools32-3.2.3.post2 matplotlib-2.0.0 py
 
 上图中白色背景的数字表示识别正确的，红色背景的部分表示识别错误的，每个数字左边下标表示应该被识别成的正确结果，数字右边的下标是识别错误的结果。如下图所示：
 
-![training digits](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-01.jpg)
+![training digits](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-01.jpg)
 
 ### Test Digits
 
 此外也不能光有训练数字吧，MNIST数据集中还有10000个测试数字，此处你能看到每个数字对应的大约 1000 种书写形式，其中所有错误识别的数字列在顶部（有红色背景）。左边的刻度会给你一个粗略的分辨率精确度（正确识别的百分比）。如下图：
 
-![test digits](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-02.jpg)
+![test digits](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-02.jpg)
 
 可以看到经过2000轮的训练后，已经对手写数字的识别率达到了92%。
 
@@ -122,21 +122,21 @@ Successfully installed cycler-0.10.0 functools32-3.2.3.post2 matplotlib-2.0.0 py
 
 为了驱动训练，我们来定义**损失函数**，即<u>一个展示出系统数字识别能力有多糟的值</u>，并且系统会尽力将其最小化。损失函数（loss function，此处为[交叉熵](https://hit-scir.gitbooks.io/neural-networks-and-deep-learning-zh_cn/content/chap3/c3s1.html)）的选择稍后会做出解释。你会看到，随着训练的进行，训练和测试数据的损失会减少，而这个现象是好的，意味着神经网络正在学习。X 轴表示了学习过程中的迭代。如下图：
 
-![cross entropy loss](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-03.jpg)
+![cross entropy loss](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-03.jpg)
 
 ### Accuracy
 
 这个准确度只是正确识别的数字的百分比，是在训练和测试集上计算出的。如果训练顺利，它便会上升。
 
-![accuratcy](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-04.jpg)
+![accuratcy](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-04.jpg)
 
 ### Weight & Biases
 
 最后的两幅图表说明了内部变量所取的所有值的扩展，即随训练进行而变化的权重和偏置。比如偏置从 0 开始，且最终得到的值大致均匀地分布在-1.5 和 1.5 之间。如果系统不能很好地收敛，那么这些图可能有用。倘若你发现权重和偏差扩展到上百或上千，那么就可能有问题了。
 
-![weight](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-05.jpg)
+![weight](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-05.jpg)
 
-![biases](http://olz1di9xf.bkt.clouddn.com/tensorflow-mnist-panel-06.jpg)
+![biases](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-mnist-panel-06.jpg)
 
 剩下的部分就是理论讲解了，先复制过来，期待有朝一日我能看懂吧😄
 

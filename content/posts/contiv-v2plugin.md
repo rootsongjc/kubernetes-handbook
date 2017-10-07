@@ -6,7 +6,7 @@ categories = "docker"
 Tags = ["docker","network","sdn"]
 +++
 
-![上海交通大学](http://olz1di9xf.bkt.clouddn.com/20161022082.jpg)
+![上海交通大学](https://res.cloudinary.com/jimmysong/image/upload/images/20161022082.jpg)
 
 *(题图：上海交通大学 Oct 22,2016)*
 

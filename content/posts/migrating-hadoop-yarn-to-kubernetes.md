@@ -19,7 +19,7 @@ Tags = ["kubernetes","hadoop","yarn"]
 
 下图为整个架构的示意图，代码和详细配置文件请参考 [kube-yarn](https://github.com/rootsongjc/kube-yarn)（不包含 ingress、spark 配置），所有的进程管理和容器扩容直接使用 Makefile，如何使用请参考该项目文档。
 
-[![spark on yarn with kubernetes 架构图](http://olz1di9xf.bkt.clouddn.com//spark-on-yarn-with-kubernetes.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/spark-on-yarn-with-kubernetes.png)
+![spark on yarn with kubernetes 架构图](https://res.cloudinary.com/jimmysong/image/upload/images/spark-on-yarn-with-kubernetes.png)
 
 **注意： 该例子仅用来说明具体的步骤划分和复杂性，在生产环境应用还有待验证，请谨慎使用。**
 
@@ -29,13 +29,13 @@ Tags = ["kubernetes","hadoop","yarn"]
 
 过程中可能用到的概念和术语初步整理如下：
 
-[![Terms](http://olz1di9xf.bkt.clouddn.com//terms-in-kubernetes-app-deployment.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/terms-in-kubernetes-app-deployment.png)
+![Terms](https://res.cloudinary.com/jimmysong/image/upload/images/terms-in-kubernetes-app-deployment.jpg)
 
 为了讲解整改过程和具体细节，我们所有操作都是通过命令手动完成，不使用自动化工具。当您充分了解到其中的细节后可以通过自动化工具来优化该过程，以使其更加自动和高效，同时减少因为人为操作失误导致的迁移失败。
 
 ## 步骤详解
 
-[![分解步骤解析](http://olz1di9xf.bkt.clouddn.com//migrating-hadoop-yarn-to-kubernetes.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/migrating-hadoop-yarn-to-kubernetes.png)
+![分解步骤解析](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-hadoop-yarn-to-kubernetes.png)
 
 整个迁移过程分为如下几个步骤：
 

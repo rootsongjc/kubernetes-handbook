@@ -7,7 +7,7 @@ Tags = ["kubernetes","cloud computing"]
 
 +++
 
-![西安鼓楼](http://olz1di9xf.bkt.clouddn.com/2014100402.jpg)
+![西安鼓楼](https://res.cloudinary.com/jimmysong/image/upload/images/2014100402.jpg)
 
 *（题图：西安鼓楼 Oct 4,2014）*
 

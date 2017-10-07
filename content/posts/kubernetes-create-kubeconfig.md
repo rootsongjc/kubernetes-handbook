@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![北海公园](http://olz1di9xf.bkt.clouddn.com/2016050801.jpg)
+![北海公园](https://res.cloudinary.com/jimmysong/image/upload/images/2016050801.jpg)
 
 *(题图：北海公园 May 8,2016)*
 

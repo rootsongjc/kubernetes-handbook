@@ -7,7 +7,7 @@ Tags = ["hugo","github-pages"]
 
 +++
 
-![鹰](http://olz1di9xf.bkt.clouddn.com/20151005061.jpg)
+![鹰](https://res.cloudinary.com/jimmysong/image/upload/images/20151005061.jpg)
 
 *（题图：🦅 北京动物园 Oct 5,2015）*
 

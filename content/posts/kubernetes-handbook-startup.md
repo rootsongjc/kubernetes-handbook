@@ -7,7 +7,7 @@ Tags = ["kubernetes","book"]
 
 +++
 
-![地坛](http://olz1di9xf.bkt.clouddn.com/2015092726.jpg)
+![地坛](https://res.cloudinary.com/jimmysong/image/upload/images/2015092726.jpg)
 
 *（题图：地坛公园 Sep 27,2015）*
 

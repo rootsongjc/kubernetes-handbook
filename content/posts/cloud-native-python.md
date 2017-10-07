@@ -11,7 +11,7 @@ Tags = ["cloud-native","book","python"]
 
 下面是它的英文原版书（感谢电子工业出版社）跟它已出版的好兄弟 Cloud Native Go 在一起的合影。
 
-![Cloud Native Python 和 Cloud Native Go 合影](http://olz1di9xf.bkt.clouddn.com/cloud-native-python-with-cloud-native-go.JPG)
+![Cloud Native Python 和 Cloud Native Go 合影](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-python-with-cloud-native-go.jpg)
 
 这本书跟 Cloud Native Go 的内容由很大部分的重合，目录结构也基本一致，所用的技术栈也很类似，不过内容更详实，图片和步骤介绍更多一些，跟我看的另一本由印度人写的 [Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms](https://jimmysong.io/talks/book-kubernetes-management-design-patterns/) 的风格很像。
 

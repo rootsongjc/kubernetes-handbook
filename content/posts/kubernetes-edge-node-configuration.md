@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![南屏晚钟](http://olz1di9xf.bkt.clouddn.com/20170506086.jpg)
+![南屏晚钟](https://res.cloudinary.com/jimmysong/image/upload/images/20170506086.jpg)
 
 *（题图：南屏晚钟@圆明园 May 6,2017）*
 
@@ -34,7 +34,7 @@ Tags = ["kubernetes"]
 
 选择Kubernetes的三个node作为边缘节点，并安装keepalived。
 
-![边缘节点架构](http://olz1di9xf.bkt.clouddn.com/node-edge-arch.jpg)
+![边缘节点架构](https://res.cloudinary.com/jimmysong/image/upload/images/node-edge-arch.jpg)
 
 ## 准备
 

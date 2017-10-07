@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![野三坡](http://olz1di9xf.bkt.clouddn.com/20170714048.jpg)
+![野三坡](https://res.cloudinary.com/jimmysong/image/upload/images/20170714048.jpg)
 
 *（题图：风和日丽@野三坡 Jul 14,2017）*
 
@@ -20,7 +20,7 @@ Tags = ["kubernetes"]
 
 API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio)生成，打开后如图所示：
 
-![API文档](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-test-api-doc.jpg)
+![API文档](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-test-api-doc.jpg)
 
 **关于服务发现**
 
@@ -36,7 +36,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 
 [查看详细构建流程](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
 
-![wercker](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-agent-wercker.jpg)
+![wercker](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-agent-wercker.jpg)
 
 生成了如下两个docker镜像：
 
@@ -77,7 +77,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 
 在浏览器中访问http://k8s-app-monitor-agent.jimmysong.io
 
-![图表](http://olz1di9xf.bkt.clouddn.com/k8s-app-monitor-agent.jpg)
+![图表](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-agent.jpg)
 
 刷新页面将获得新的图表。
 

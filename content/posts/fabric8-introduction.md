@@ -13,7 +13,7 @@ Tags = ["fabric8","platform","devops"]
 
 无意中发现[Fabric8](https://github.com/fabric8io/fabric8)这个**对于Java友好的开源微服务管理平台**。
 
-其实这在这里发现的[Achieving CI/CD with Kubernetes](http://blog.sonatype.com/achieving-ci/cd-with-kubernetes)（by Ramit Surana,on February 17, 2017），其实是先在[slideshare](https://www.slideshare.net/ramitsurana/achieving-cicd-with-kubernetes)上看到的，pdf可以[在此下载](http://olz1di9xf.bkt.clouddn.com/achiveving-ci-cd-with-kubernetes-ramit-surana.pdf)，大小2.04M。
+其实这在这里发现的[Achieving CI/CD with Kubernetes](http://blog.sonatype.com/achieving-ci/cd-with-kubernetes)（by Ramit Surana,on February 17, 2017），其实是先在[slideshare](https://www.slideshare.net/ramitsurana/achieving-cicd-with-kubernetes)上看到的。
 
 大家可能以前听过一个叫做[fabric](https://github.com/fabric/fabric/)的工具，那是一个 Python (2.5-2.7) 库和命令行工具，用来流水线化执行 SSH 以部署应用或系统管理任务。所以大家不要把fabric8跟fabric搞混，虽然它们之间有一些共同点，但两者完全不是同一个东西，**fabric8不是fabric的一个版本**。Fabric是用python开发的，fabric8是java开发的。
 

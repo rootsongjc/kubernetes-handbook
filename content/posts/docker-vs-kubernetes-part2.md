@@ -7,7 +7,7 @@ Tags = ["docker","kubernetes"]
 
 +++
 
-![承德兴隆星空](http://olz1di9xf.bkt.clouddn.com/20160709044.jpg)
+![承德兴隆星空](https://res.cloudinary.com/jimmysong/image/upload/images/20160709044.jpg)
 
 *（题图：河北承德兴隆县雾灵山京郊最佳星空拍摄点 July 9,2016)*
 

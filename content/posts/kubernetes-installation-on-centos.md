@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![圆明园](http://olz1di9xf.bkt.clouddn.com/2014082501.jpg)
+![圆明园](https://res.cloudinary.com/jimmysong/image/upload/images/2014082501.jpg)
 
 *（题图：北京圆明园 Aug 25,2014）*
 

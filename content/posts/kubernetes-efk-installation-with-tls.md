@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![簋街](http://olz1di9xf.bkt.clouddn.com/2016061706.jpg)
+![簋街](https://res.cloudinary.com/jimmysong/image/upload/images/2016061706.jpg)
 
 *（题图：簋街 Jun 17,2016）*
 
@@ -180,11 +180,11 @@ http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kibana-log
 
 链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
 
-![es-setting](http://olz1di9xf.bkt.clouddn.com/kubernetes-es-setting.png)
+![es-setting](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-es-setting.png)
 
 创建Index后，可以在 `Discover` 下看到 ElasticSearch logging 中汇聚的日志；
 
-![es-home](http://olz1di9xf.bkt.clouddn.com/kubernetes-efk-kibana.jpg)
+![es-home](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-efk-kibana.jpg)
 
 
 

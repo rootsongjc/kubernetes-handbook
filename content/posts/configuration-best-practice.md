@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![青岛](http://olz1di9xf.bkt.clouddn.com/20170526034.jpg)
+![青岛](https://res.cloudinary.com/jimmysong/image/upload/images/20170526034.jpg)
 
 *（题图：青岛 May 26,2017）*
 

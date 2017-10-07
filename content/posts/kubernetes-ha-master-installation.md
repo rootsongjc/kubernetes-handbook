@@ -7,7 +7,7 @@ Tags = ["kubernetes"]
 
 +++
 
-![北京西山](http://olz1di9xf.bkt.clouddn.com/2015091402.jpg)
+![北京西山](https://res.cloudinary.com/jimmysong/image/upload/images/2015091402.jpg)
 
 *（题图：鬼见愁@北京西山 Sep 14,2015）*
 
