@@ -1,11 +1,10 @@
-+++
-date = "2017-03-11T15:45:27+08:00"
-title = "微服务设计读书笔记"
-draft = false
-categories = "Architecture"
-Tags = ["microservices","architecture","book"]
-
-+++
+---
+date: "2017-03-11T15:45:27+08:00"
+title: "微服务设计读书笔记"
+draft: false
+categories: "Architecture"
+Tags: ["microservices","architecture","book"]
+---
 
 ![青海湖畔](https://res.cloudinary.com/jimmysong/image/upload/images/20160625036.jpg)
 

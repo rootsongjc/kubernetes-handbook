@@ -1,11 +1,10 @@
-+++
-date = "2017-08-21T16:56:45+08:00"
-draft = false
-title = "迁移传统应用到Kubernetes步骤详解——以Hadoop YARN为例"
-categories = "devops"
-Tags = ["kubernetes","hadoop","yarn"]
-
-+++
+---
+date: "2017-08-21T16:56:45+08:00"
+draft: false
+title: "迁移传统应用到Kubernetes步骤详解——以Hadoop YARN为例"
+categories: "devops"
+Tags: ["kubernetes","hadoop","yarn"]
+---
 
 ## 前言
 

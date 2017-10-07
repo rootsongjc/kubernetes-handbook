@@ -1,11 +1,10 @@
-+++
-date = "2017-04-11T19:55:56+08:00"
-title = "Kubernetes集群master节点安装"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-11T19:55:56+08:00"
+title: "Kubernetes集群master节点安装"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![北京西山](https://res.cloudinary.com/jimmysong/image/upload/images/2015091402.jpg)
 

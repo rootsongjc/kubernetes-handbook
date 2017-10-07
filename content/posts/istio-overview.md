@@ -1,11 +1,10 @@
-+++
-date = "2017-06-02T11:27:57+08:00"
-draft = false
-title = "微服务管理框架Istio简介"
-categories = "cloud-native"
-Tags = ["istio","kubernetes","service-mesh"]
-
-+++
+---
+date: "2017-06-02T11:27:57+08:00"
+draft: false
+title: "微服务管理框架Istio简介"
+categories: "cloud-native"
+Tags: ["istio","kubernetes","service-mesh"]
+---
 
 ![威海朱口](https://res.cloudinary.com/jimmysong/image/upload/images/20170529005.jpg)
 

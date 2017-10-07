@@ -1,11 +1,10 @@
-+++
-date = "2017-07-20T19:41:53+08:00"
-draft = false
-Title = "适用于kubernetes的应用开发与部署流程详解"
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-07-20T19:41:53+08:00"
+draft: false
+Title: "适用于kubernetes的应用开发与部署流程详解"
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![野三坡](https://res.cloudinary.com/jimmysong/image/upload/images/20170714048.jpg)
 

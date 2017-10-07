@@ -1,11 +1,10 @@
-+++
-date = "2017-03-09T14:23:04+08:00"
-title = "Contiv入坑指南-试用全记录"
-draft = false
-categories = "docker"
-Tags = ["docker","network","sdn"]
-
-+++
+---
+date: "2017-03-09T14:23:04+08:00"
+title: "Contiv入坑指南-试用全记录"
+draft: false
+categories: "docker"
+Tags: ["docker","network","sdn"]
+---
 
 ![黄昏](https://res.cloudinary.com/jimmysong/image/upload/images/2017013129.jpg)
 

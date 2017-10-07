@@ -1,11 +1,10 @@
-+++
-date = "2017-07-15T16:25:30+08:00"
-draft = false
-categories = "cloud-native"
-title = "什么是云原生应用架构"
-Tags = ["cloud-native"]
-
-+++
+---
+date: "2017-07-15T16:25:30+08:00"
+draft: false
+categories: "cloud-native"
+title: "什么是云原生应用架构"
+Tags: ["cloud-native"]
+---
 
 本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一部分，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
 

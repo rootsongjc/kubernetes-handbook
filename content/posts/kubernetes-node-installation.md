@@ -1,11 +1,10 @@
-+++
-date = "2017-04-11T22:20:31+08:00"
-title = "Kubernetes node节点安装"
-draft = false
-categories = "kubernetes"
-Tas = ["kubernetes"]
-
-+++
+---
+date: "2017-04-11T22:20:31+08:00"
+title: "Kubernetes node节点安装"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016121101.jpg)
 

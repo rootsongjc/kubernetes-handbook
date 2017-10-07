@@ -1,11 +1,10 @@
-+++
-date = "2017-04-21T19:53:18+08:00"
-title = "Kubernetes中的RBAC支持"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-21T19:53:18+08:00"
+title: "Kubernetes中的RBAC支持"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![无题](https://res.cloudinary.com/jimmysong/image/upload/images/20160402017.jpg)
 

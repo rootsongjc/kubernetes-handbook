@@ -1,11 +1,10 @@
-+++
-date = "2017-03-10T22:06:32+08:00"
-title = "Docker v.s Kubernetes part2"
-draft = false
-categories = "docker"
-Tags = ["docker","kubernetes"]
-
-+++
+---
+date: "2017-03-10T22:06:32+08:00"
+title: "Docker v.s Kubernetes part2"
+draft: false
+categories: "docker"
+Tags: ["docker","kubernetes"]
+---
 
 ![承德兴隆星空](https://res.cloudinary.com/jimmysong/image/upload/images/20160709044.jpg)
 

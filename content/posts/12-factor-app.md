@@ -1,12 +1,10 @@
-+++
-date = "2017-02-27T22:32:40+08:00"
-title = "12因素应用简介"
-draft = false
-categories = "cloud-native"
-tags = ["cloud-native","12-factor"]
-+++
-
-
+---
+date: "2017-02-27T22:32:40+08:00"
+title: "12因素应用简介"
+draft: false
+categories: "cloud-native"
+tags: ["cloud-native","12-factor"]
+---
 
 如今，软件通常会作为一种服务来交付，它们被称为网络应用程序，或软件即服务（SaaS）。12-Factor 为构建如下的 SaaS 应用提供了方法论：
 

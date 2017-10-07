@@ -1,11 +1,10 @@
-+++
-date = "2017-06-26T21:02:13+08:00"
-draft = false
-categories = "kubernetes"
-title = "云原生微服务治理框架Linkerd简介"
-Tags = ["linkerd","cloud-native","service-mesh"]
-
-+++
+---
+date: "2017-06-26T21:02:13+08:00"
+draft: false
+categories: "kubernetes"
+title: "云原生微服务治理框架Linkerd简介"
+Tags: ["linkerd","cloud-native","service-mesh"]
+---
 
 ![青岛](https://res.cloudinary.com/jimmysong/image/upload/images/20170526021.jpg)
 

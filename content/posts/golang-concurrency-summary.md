@@ -1,11 +1,10 @@
-+++
-date = "2017-03-24T08:36:29+08:00"
-title = "Go语言中的并发编程总结"
-draft = false
-categories = "code"
-Tags = ["go"]
-
-+++
+---
+date: "2017-03-24T08:36:29+08:00"
+Title: "Go语言中的并发编程总结"
+draft: false
+categories: "code"
+Tags: ["go"]
+---
 
 # Go语言并发编程总结
 

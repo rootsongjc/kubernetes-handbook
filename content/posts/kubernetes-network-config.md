@@ -1,11 +1,10 @@
-+++
-date = "2017-03-31T11:05:18+08:00"
-title = "Kubernetes基于flannel的网络配置"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes","cloud computing"]
-
-+++
+---
+date: "2017-03-31T11:05:18+08:00"
+title: "Kubernetes基于flannel的网络配置"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes","cloud computing"]
+---
 
 ![西安鼓楼](https://res.cloudinary.com/jimmysong/image/upload/images/2014100402.jpg)
 

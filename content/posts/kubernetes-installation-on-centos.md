@@ -1,11 +1,10 @@
-+++
-date = "2017-03-30T20:44:20+08:00"
-title = "在CentOS上安装kubernetes详细指南"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-03-30T20:44:20+08:00"
+title: "在CentOS上安装kubernetes详细指南"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![圆明园](https://res.cloudinary.com/jimmysong/image/upload/images/2014082501.jpg)
 

@@ -1,11 +1,10 @@
-+++
-date = "2017-04-25T22:14:49+08:00"
-title = "Kubernetes网络和集群性能测试"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-25T22:14:49+08:00"
+title: "Kubernetes网络和集群性能测试"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes"]
+---
 
 ![安贞门](https://res.cloudinary.com/jimmysong/image/upload/images/20160618045.jpg)
 

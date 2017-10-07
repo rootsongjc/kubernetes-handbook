@@ -1,10 +1,10 @@
-+++
-date = "2017-04-05T14:28:51+08:00"
-title = "Kubernetes Dashboard/Web UI安装全记录"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes","cloud computing"]
-+++
+---
+date: "2017-04-05T14:28:51+08:00"
+title: "Kubernetes Dashboard/Web UI安装全记录"
+draft: false
+categories: "kubernetes"
+Tags: ["kubernetes","cloud computing"]
+---
 
 ![晒太阳的袋鼠](https://res.cloudinary.com/jimmysong/image/upload/images/2017040301.jpg)
 

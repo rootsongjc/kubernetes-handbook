@@ -1,11 +1,10 @@
-+++
-date = "2017-06-24T14:20:39+08:00"
-draft = false
-categories = "kubernetes"
-title = "Kubernetes Pod Cheat Sheet——Pod数据结构参考图"
-Tags = ["kubernetes","cheatsheet"]
-
-+++
+---
+date: "2017-06-24T14:20:39+08:00"
+draft: false
+categories: "kubernetes"
+title: "Kubernetes Pod Cheat Sheet——Pod数据结构参考图"
+Tags: ["kubernetes","cheatsheet"]
+---
 
 昨天晚上构思，今天花了一上午的时间翻阅了下[kubernetes api reference](https://kubernetes.io/docs/api-reference/v1.6)，画了一个Kubernetes Pod Cheat Sheet。
 

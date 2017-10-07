@@ -1,11 +1,10 @@
-+++
-date = "2017-04-24T21:32:52+08:00"
-title = "运用kubernetes进行分布式负载测试"
-draft = false
-categories = "kubernetes"
-Tags = ["kubernetes"]
-
-+++
+---
+date: "2017-04-24T21:32:52+08:00"
+title: "运用kubernetes进行分布式负载测试"
+draft: false
+categories: "kubernetes"
+Tags:  ["kubernetes"]
+---
 
 ![kubrick](https://res.cloudinary.com/jimmysong/image/upload/images/20160325002.jpg)
 
