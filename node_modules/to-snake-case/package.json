@@ -1,0 +1,19 @@
+{
+  "name": "to-snake-case",
+  "version": "1.0.0",
+  "description": "Convert a string to snake case.",
+  "repository": "git://github.com/ianstormtaylor/to-snake-case.git",
+  "license": "MIT",
+  "dependencies": {
+    "to-space-case": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  },
+  "keywords": [
+    "snake",
+    "case",
+    "snakecase",
+    "string"
+  ]
+}
