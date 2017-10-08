@@ -14,8 +14,9 @@ tags: ["github-pages"]
 - [ ] ⚠️文章正文部分的如果在 `li` 中有超长的使用点号连接起来的长“词”将无法实现分词，将导致移动设备上显示有问题
 - [ ] 在主页中增加受欢迎文章和最新文章的入口，丰富首页功能
 - [x] 增加主页的个性化banner，并添加 description
-- [ ] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
+- [x] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
 - [x] 根据文章需求确定是否显示评论框
+- [ ] 搜索框中的URL高亮标签去除
 
 ### 2017-03-17
 
@@ -78,3 +79,4 @@ tags: ["github-pages"]
 ### 2017-10-08
 
 1. 增加文章头部metadata中的`nocomment`标记，如果有此标记则不显示评论框
+2. 增加搜索框

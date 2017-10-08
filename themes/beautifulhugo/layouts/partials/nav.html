@@ -119,6 +119,7 @@
     </div>
   </div>
 <!-- Algolia search -->
+<!--
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
 <script type="text/javascript">
@@ -132,4 +133,18 @@ docsearch({
   }
 });
 </script>
+-----
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+<script type="text/javascript">
+const search = instantsearch({
+  appId: 'X4YB3WOBNV',
+  apiKey: '{{ .Site.Params.algolia }}',
+  indexName: 'rootsongjc-hugo',
+  urlSync: true
+});
+
+search.start();
+</script>
+-->
 {{ end }}

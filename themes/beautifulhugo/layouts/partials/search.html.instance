@@ -1,0 +1,62 @@
+<div id="search-box">
+  <!-- SearchBox widget will appear here -->
+</div>
+
+<div id="refinement-list">
+  <!-- RefinementList widget will appear here -->
+</div>
+
+<div id="hits">
+  <!-- Hits widget will appear here -->
+</div>
+
+<div id="pagination-container">
+  <!-- Pagination widget appear here -->
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.css">
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+<script type="text/javascript">
+const search = instantsearch({
+  appId: 'X4YB3WOBNV',
+  apiKey: '{{ .Site.Params.algolia }}',
+  indexName: 'rootsongjc-hugo',
+  urlSync: true
+});
+
+search.start();
+
+  // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search...'
+    })
+  );
+
+  // initialize RefinementList
+  search.addWidget(
+    instantsearch.widgets.refinementList({
+      container: '#refinement-list',
+      attributeName: 'title'
+    })
+  );
+  // initialize hits widget
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits'
+    })
+  );
+
+  search.addWidget(
+  instantsearch.widgets.pagination({
+    container: '#pagination-container',
+    maxPages: 20,
+    // default is to scroll to 'body', here we disable this behavior
+    scrollTo: false,
+    showFirstLast: false,
+  })
+);
+  search.start();
+</script>
+
