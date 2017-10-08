@@ -17,6 +17,7 @@ tags: ["github-pages"]
 - [x] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
 - [x] 根据文章需求确定是否显示评论框
 - [ ] 搜索框中的URL高亮标签去除
+- [ ] 搜索框的大小需要调整
 
 ### 2017-03-17
 
