@@ -825,3 +825,7 @@ input.gsc-input,
     box-sizing: content-box;
     line-height: normal;
 }
+
+label {
+    font-weight: 100;
+}
