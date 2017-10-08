@@ -1,6 +1,6 @@
 # Secret
 
-Secret解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者Pod Spec中。Secret可以以Volume或者环境变量的方式使用。
+机密信息Secret解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者Pod Spec中。Secret可以以Volume或者环境变量的方式使用。
 
 Secret有三种类型：
 
@@ -34,7 +34,7 @@ data:
 
 接着，就可以创建secret了：`kubectl create -f secrets.yml`。
 
-创建好secret之后，有两种方式来使用它： 
+创建好secret之后，有两种方式来使用它：
 
 * 以Volume方式
 * 以环境变量方式
@@ -156,5 +156,3 @@ ca.crt
 namespace
 token
 ```
-
-
