@@ -48,27 +48,13 @@
                     <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
                 </h5>
             </div>
-            <!-- gitcomments -->
-            <aside id=comments>
-                <div>
-                    <h2> Comments </h2>
-                </div>
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-                <script>
-                    var gitment = new Gitment({
-                        owner: 'rootsongjc', //github account
-                        repo: 'rootsongjc.github.io', // github repo
-                        oauth: {
-                            client_id: '93a0df08e0f93ff0c8a3',
-                            client_secret: '3bdbf0b42c525f78582600bd38cf7f722ee40541',
-                        },
-                    })
-                    gitment.render('container')
-                </script>
-            </aside>
-
+            <!-- gitments -->
+            {{ if isset .Site.Params "comments" }}
+                {{ if isset .Params "nocomment" }}
+                {{ else }}
+                 {{ partial "gitments.html" . }}
+                {{ end }}
+            {{ end }}
         </div>
     </div>
     </section>

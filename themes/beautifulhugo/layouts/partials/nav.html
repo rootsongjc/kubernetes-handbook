@@ -9,12 +9,6 @@
       </button>
       <a class="navbar-brand" href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
     </div>
-    <!-- add search box -->
-    <!--
-    <div class="">
-        {{ partial "search.html" . }}
-    </div>
-    -->
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
         {{ range .Site.Menus.main.ByWeight }}
@@ -64,6 +58,13 @@
             </a>
           </li>
         {{ end }}
+        {{ if isset .Site.Params "algolia" }}
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">{{ i18n "gcseLabelShort" }}</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          {{ end }}
       </ul>
     </div>
 
@@ -98,4 +99,37 @@
       </div>
     </div>
   </div>
+{{ end }}
+
+{{ if isset .Site.Params "algolia" }}
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search jimmysong.io</h4>
+        </div>
+        <div class="modal-body">
+            {{ partial "search.html" . }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+  appId: 'X4YB3WOBNV',
+  apiKey: '{{ .Site.Params.algolia }}',
+  indexName: 'rootsongjc-hugo',
+  inputSelector: '#search-input',
+  algoliaOptions: {
+    hitsPerPage: 5
+  }
+});
+</script>
 {{ end }}

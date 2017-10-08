@@ -1,9 +1,9 @@
-+++
-date = "2017-03-18T20:53:54+08:00"
-title = "About me"
-tags = ["me"]
-
-+++
+---
+date: "2017-03-18T20:53:54+08:00"
+title:  "About me"
+tags: ["me"]
+nocomment: true
+---
 
 ![wechat_qrcode](https://res.cloudinary.com/jimmysong/image/upload/images/jimmysong-wechat-qrcode.jpg)
 

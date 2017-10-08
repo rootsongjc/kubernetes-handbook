@@ -8,13 +8,14 @@ tags: ["github-pages"]
 
 ### TODO
 
-1. ~~移动设备页面适配问题，手机中打开有些长代码页面会需要缩放~~
-2. 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
-3. ~~每篇文章的标题显示还需要优化，对齐方式问题~~
-4. ⚠️文章正文部分的如果在 `li` 中有超长的使用点号连接起来的长“词”将无法实现分词，将导致移动设备上显示有问题
-5. 在主页中增加受欢迎文章和最新文章的入口，丰富首页功能
-6. ~~增加主页的个性化banner，并添加 description~~
-7. 增加搜索框
+- [x] 移动设备页面适配问题，手机中打开有些长代码页面会需要缩放
+- [ ] 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
+- [x] 每篇文章的标题显示还需要优化，对齐方式问题
+- [ ] ⚠️文章正文部分的如果在 `li` 中有超长的使用点号连接起来的长“词”将无法实现分词，将导致移动设备上显示有问题
+- [ ] 在主页中增加受欢迎文章和最新文章的入口，丰富首页功能
+- [x] 增加主页的个性化banner，并添加 description
+- [ ] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
+- [x] 根据文章需求确定是否显示评论框
 
 ### 2017-03-17
 
@@ -73,3 +74,7 @@ tags: ["github-pages"]
 1. ~~不再使用 maxcdn，切换为 [bootcdn](http://www.bootcdn.cn/)|又拍云，加快国内网站速度更快~~，但是用了这个CDN国外用户访问的速度将大大受影响，有的地方网页基本打不开，退而求其次，继续使用maxcdn
 2. 主页 banner 图片使用 [Cloudinary](https://cloudinary.com/) 存储
 3. 全站https化，将原来在七牛云存储的图片转移到了Cloudinary
+
+### 2017-10-08
+
+1. 增加文章头部metadata中的`nocomment`标记，如果有此标记则不显示评论框
