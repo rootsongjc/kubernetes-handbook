@@ -251,7 +251,7 @@ Incoming
 
 访问 [http://linkerd-viz.jimmysong.io](http://linkerd-viz.jimmysong.io/) 查看应用 metric 监控
 
-[![linkerd性能监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-grafana.png)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-grafana.png)
+![linkerd性能监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-grafana.png)
 
 ## 测试路由
 
