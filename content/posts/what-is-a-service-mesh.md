@@ -73,4 +73,4 @@ Service mesh 并没有给我们带来新功能，它是用于解决其他工具�
 - [Introducing Istio: A robust service mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
-- [Istio官方文档中文版](https://istio.doczh.cn/)w
+- [Istio官方文档中文版](https://istio.doczh.cn/)

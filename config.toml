@@ -15,11 +15,12 @@ subtitle = "I can help you building Cloud Native confidence"
 logo = "img/avatar-icon.png"
 favicon = "img/favicon.ico"
 dateFormat = "January 2, 2006"
-commit = false 
-#  rss = true
+commit = false
+#rss = true
 comments = true
-#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
-description = "Cloud Native🤘Big Data"
+#algolia = "d2134c5a8d250e6d3246594240c45201" # API key
+#gcse = "012737790962522169780:fd1izxsfgrs" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+description = "Cloud Native Expert"
 
 [[Params.bigimg]]
 #src = "img/cloud-computing.jpg"

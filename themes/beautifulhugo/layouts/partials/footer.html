@@ -35,10 +35,11 @@
               {{ .Site.Author.name }}
             {{ end }}          
           {{ end }}
-          
+          <!--
           &nbsp;&bull;&nbsp;
           {{ .Site.LastChange.Format "January 2,2006" }}
           updated
+          -->
           {{ if .Site.Title }}
             &nbsp;&bull;&nbsp;
             <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
@@ -78,7 +79,6 @@
 <script src="{{ "js/load-photoswipe.js" | absURL }}"></script>
 <script src="https://cdn.bootcss.com/photoswipe/4.1.1/photoswipe.min.js"></script>
 <script src="https://cdn.bootcss.com/photoswipe/4.1.1/photoswipe-ui-default.min.js"></script>
-<!-- Google Custom Search Engine -->
 {{ if .Site.Params.gcse }}
 <script>
   (function() {
