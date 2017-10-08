@@ -19,7 +19,7 @@ var index = client.initIndex('rootsongjc-hugo');
 //initialize autocomplete on search input (ID selector must match)
 autocomplete('#aa-search-input',
 { hint: false}, {
-    source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
     //value to be displayed in input control after user's suggestion selection
     displayKey: 'name',
     //hash of templates used when rendering dataset
