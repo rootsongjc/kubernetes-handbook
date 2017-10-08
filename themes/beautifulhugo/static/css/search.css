@@ -3,7 +3,7 @@
   display: inline-block;
   position: relative; }
 .aa-input-search {
-  width: 500px;
+  width: 300px;
   padding: 12px 28px 12px 12px;
   border: 2px solid #e4e4e4;
   border-radius: 4px;
@@ -39,7 +39,7 @@
   border: 2px solid rgba(228, 228, 228, 0.6);
   border-top-width: 1px;
   font-family: "Montserrat", sans-serif;
-  width: 500px;
+  width: 300px;
   margin-top: 10px;
   box-shadow: 4px 4px 0 rgba(241, 241, 241, 0.35);
   font-size: 11px;
