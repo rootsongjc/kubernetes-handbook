@@ -3,16 +3,23 @@
     "description": "Kubernetes中文指南/实践手册",
     "language": "zh-hans",
     "author": "Jimmy Song",
+    "links": {
+    "sidebar": {
+        "Home": "https://jimmysong.io"
+        }
+    },
     "plugins": [
         "github",
         "codesnippet",
         "splitter",
         "page-toc-button",
         "image-captions",
-        "page-footer-ex",
         "editlink",
         "back-to-top-button",
-        "-lunr", "-search", "search-plus"
+        "-lunr", "-search", "search-plus",
+        "github-buttons@2.1.0",
+        "favicon@^0.0.2",
+        "tbfed-pagefooter@^0.0.1"
     ],
     "pluginsConfig": {
         "github": {
@@ -21,14 +28,23 @@
         "editlink": {
             "base": "https://github.com/rootsongjc/kubernetes-handbook/blob/master/",
             "label": "编辑本页"
+        },
+        "image-captions": {
+            "caption": "图片 - _CAPTION_"
+        },
+        "github-buttons": {
+            "repo": "rootsongjc/kubernetes-handbook",
+            "types": ["star"],
+            "size": "small"
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright © jimmysong.io 2017",
+            "modify_label": "Updated:",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "favicon": {
+            "shortcut": "favicon.ico",
+            "bookmark": "favicon.ico"
         }
-    },
-    "page-footer-ex": {
-        "copyright": "Jimmy Song",
-        "update_label": "最后更新于：",
-        "update_format": "YYYY-MM-DD HH:mm:ss"
-    },
-    "image-captions": {
-        "caption": "图片 - _CAPTION_"
     }
 }
