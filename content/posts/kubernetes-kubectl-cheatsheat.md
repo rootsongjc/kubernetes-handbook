@@ -3,7 +3,7 @@ date: "2017-07-01T14:44:23+08:00"
 draft: false
 categories: "kubernetes"
 title: "Kubernetes kubectl cheat sheat——Kubectl命令参考图"
-Tags: ["kubernetes","cheatsheet"]
+tags: ["kubernetes","cheatsheet"]
 ---
 
 参考 [kuberntes API 1.6 版本](https://kubernetes.io/docs/user-guide/kubectl/v1.6/) 绘制。

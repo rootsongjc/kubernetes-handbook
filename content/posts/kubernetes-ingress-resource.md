@@ -3,7 +3,7 @@ title: "Kubernetes ingress解析"
 draft: false
 date: "2017-04-19T21:05:47+08:00"
 categories: "kubernetes"
-Tags: ["kubernetes","Ingress"]
+tags: ["kubernetes","Ingress"]
 ---
 
 ![银河soho](https://res.cloudinary.com/jimmysong/image/upload/images/20160131054.jpg)

@@ -3,7 +3,7 @@ date: "2017-04-02T20:27:00+08:00"
 title: "两款图片处理工具——Google Guetzli和基于AI的Deep Photo Style Transfer"
 draft: false
 categories: "github"
-Tags: ["picture","tools"]
+tags: ["picture","tools"]
 ---
 
 ## 前言

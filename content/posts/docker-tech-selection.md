@@ -3,7 +3,7 @@ date: "2017-03-08T10:37:01+08:00"
 title: "Docker技术选型"
 draft: false
 categories: "docker"
-Tags: ["docker"]
+tags: ["docker"]
 ---
 
 ## 回顾历史

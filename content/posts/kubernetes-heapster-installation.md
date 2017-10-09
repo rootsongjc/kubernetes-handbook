@@ -3,7 +3,7 @@ date: "2017-04-05T18:41:19+08:00"
 title: "Kubernetes heapster监控插件安装文档"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes","heapster"]
+tags: ["kubernetes","heapster"]
 ---
 
 ![嗑猫薄荷的白化孟加拉虎](https://res.cloudinary.com/jimmysong/image/upload/images/20170403064.jpg)

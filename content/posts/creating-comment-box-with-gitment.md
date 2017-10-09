@@ -3,7 +3,7 @@ title: "使用gitment为你的网站添加评论框"
 date: 2017-09-24T10:10:00+08:00
 draft: flase
 categories: github
-Tags: ["github-pages"]
+tags: ["github-pages"]
 ---
 
 强烈推荐一个网站评论插件 [gitment](https://github.com/imsun/gitment) 。该插件不需要服务端交互，使用 GitHub Issue 存储评论内容，直接在你的博客中引入 JS 代码即可。安装步骤参考 [给你的静态博客增加留言系统](https://anttutu.github.io/2017/08/gitment/)。

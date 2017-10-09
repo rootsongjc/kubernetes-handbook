@@ -3,7 +3,7 @@ date: "2017-04-07T20:13:24+08:00"
 title: "使用Fluentd和ElasticSearch收集Kubernetes集群日志"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes","fluentd","elasticsearch"]
+tags: ["kubernetes","fluentd","elasticsearch"]
 ---
 
 ![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430080.jpg)

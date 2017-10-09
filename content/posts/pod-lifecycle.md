@@ -3,7 +3,7 @@ title: "Kubernetes中Pod的生命周期"
 date: 2017-09-19T20:41:40+08:00
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 Pod 的生命周期对于应用的状态查询、故障检测和恢复是十分重要，比如在 [spark on kubernetes](https://jimmysong.io/blogs/running-spark-with-kubernetes-native-scheduler/) 的例子中，spark 任务的状态其实就可以通过查询 driver pod 的状态来获得。这篇文章关注的是 Pod 的状态和在 Pod 中的容器状态变化后，Pod 的状态究竟如何改变（因为不一定所有的 Pod 内都只运行一个容器）。

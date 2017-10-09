@@ -3,7 +3,7 @@ date: "2017-07-27T20:41:55+08:00"
 draft: false
 title: "迁移到云原生应用架构指南"
 categories: "cloud-native"
-Tags: ["cloud-native","book"]
+tags: ["cloud-native","book"]
 ---
 
 ![cover](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-cover.jpg)

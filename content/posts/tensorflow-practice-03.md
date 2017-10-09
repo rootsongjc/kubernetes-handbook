@@ -2,7 +2,7 @@
 date: "2017-03-30T21:34:33+08:00"
 title: "TensorFlow实战（才云郑泽宇著）读书笔记——第三章TensorFlow入门"
 draft: false
-Tags: ["tensorflow","AI","book"]
+tags: ["tensorflow","AI","book"]
 ---
 
 ![扬州东关](https://res.cloudinary.com/jimmysong/image/upload/images/2015052401.jpg)

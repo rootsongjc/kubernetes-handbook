@@ -2,8 +2,8 @@
 date: "2017-07-18T11:21:14+08:00"
 draft: false
 title: "Awesome Cloud Native"
-Categories: "cloud-native"
-Tags: ["github-pages","cloud-native"]
+categories: "cloud-native"
+tags: ["github-pages","cloud-native"]
 ---
 
 这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目  [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)，同时也可以通过 [Web 页面浏览](http://jimmysong.io/awesome-cloud-native)。

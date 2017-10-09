@@ -3,7 +3,7 @@ date: "2017-03-23T22:54:18+08:00"
 title: "Pivotal Cloud foundry快速开始指南"
 draft: false
 categories: "Architecture"
-Tags: ["pivotal","paas"]
+tags: ["pivotal","paas"]
 ---
 
 ![黄山日出](https://res.cloudinary.com/jimmysong/image/upload/images/2013100302.jpg)

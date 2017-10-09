@@ -3,7 +3,7 @@ date: "2017-07-20T18:21:18+08:00"
 draft: false
 title: "记一本关于kubernetes management design patterns的书"
 categories: "kubernetes"
-Tags:  ["kubernetes","book"]
+tags:  ["kubernetes","book"]
 ---
 
 书名： Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms

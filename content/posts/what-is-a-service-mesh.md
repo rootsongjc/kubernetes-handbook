@@ -3,7 +3,7 @@ title: "什么是Service Mesh（服务网格）"
 date: 2017-09-20T21:56:04+08:00
 draft: false
 categories: "cloud-native"
-Tags: ["service-mesh","cloud-native"]
+tags: ["service-mesh","cloud-native"]
 ---
 
 Service mesh 又译作 ”服务网格“，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。

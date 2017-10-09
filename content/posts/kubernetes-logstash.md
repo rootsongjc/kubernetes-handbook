@@ -3,7 +3,7 @@ date: "2017-05-16T17:46:15+08:00"
 draft: false
 title: "使用Logstash收集Kubernetes的应用日志"
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![798](https://res.cloudinary.com/jimmysong/image/upload/images/20170514005.jpg)

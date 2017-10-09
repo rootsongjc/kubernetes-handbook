@@ -3,7 +3,7 @@ title: "DockOne社区Kubernetes实训北京站授课感悟"
 date: 2017-09-23T19:17:08+08:00
 draft: false
 categories: "talks"
-Tags: ["talk"]
+tags: ["talk"]
 ---
 
 今天有幸受[DockOne](http://dockone.io/)社区邀请，作为[3 天烧脑式 Kubernetes 实战训练营 | 北京站](https://www.bagevent.com/event/791762?bag_track=bagevent)最后一天培训的讲师，为大家讲解Cloud Native（云原生）和如何开发kubernetes native app。

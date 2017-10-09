@@ -3,7 +3,7 @@ date: "2017-06-21T19:23:45+08:00"
 draft: false
 title: "kubernetes client-go包使用示例"
 categories: "kubernetes"
-Tags: ["kubernetes","go"]
+tags: ["kubernetes","go"]
 ---
 
 ![青岛栈桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170526017.jpg)

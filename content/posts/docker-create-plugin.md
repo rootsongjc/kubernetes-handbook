@@ -3,7 +3,7 @@ date: "2017-03-15T12:09:26+08:00"
 title: "Docker 17.03-CE create plugin源码解析"
 draft: false
 categories: "docker"
-Tags: ["docker"]
+tags: ["docker"]
 ---
 
 ![故宫博物院](https://res.cloudinary.com/jimmysong/image/upload/images/20160403050.jpg)

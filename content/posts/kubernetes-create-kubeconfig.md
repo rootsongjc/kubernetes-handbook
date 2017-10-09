@@ -3,7 +3,7 @@ date: "2017-04-11T14:34:54+08:00"
 title: "Kubernetes安装之创建kubeconfig文件"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![北海公园](https://res.cloudinary.com/jimmysong/image/upload/images/2016050801.jpg)
