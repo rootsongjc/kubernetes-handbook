@@ -16,7 +16,7 @@ tags: ["github-pages"]
 - [x] 增加主页的个性化banner，并添加 description
 - [x] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
 - [x] 根据文章需求确定是否显示评论框
-- [ ] 搜索框中的URL高亮标签去除
+- [x] 搜索框中的URL高亮标签去除
 - [ ] 搜索框的大小需要调整
 
 ### 2017-03-17
@@ -81,3 +81,7 @@ tags: ["github-pages"]
 
 1. 增加文章头部metadata中的`nocomment`标记，如果有此标记则不显示评论框
 2. 增加搜索框
+
+### 2017-10-09
+
+1. 修复了搜索框中搜索英文内容后增加html标签的问题

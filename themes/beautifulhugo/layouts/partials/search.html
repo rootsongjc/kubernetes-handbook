@@ -27,7 +27,7 @@ autocomplete('#aa-search-input',
         //'suggestion' templating function used to render a single suggestion
         suggestion: function(suggestion) {
             //TODO 需要去除链接中的<em>和</em>高亮的标签
-            return '<span>' + '<a href="/' + suggestion._highlightResult.uri.value + '">' +
+            return '<span>' + '<a href="/' + suggestion.uri+ '">' +
             suggestion._highlightResult.title.value + '</a></span>';
         }
     }
