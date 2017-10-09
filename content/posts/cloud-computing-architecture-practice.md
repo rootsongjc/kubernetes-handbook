@@ -1,9 +1,9 @@
 ---
 date: "2017-04-08T12:29:36+08:00"
-Title: "云计算技术架构与实践（第二版）读后感"
+title: "云计算技术架构与实践（第二版）读后感"
 draft: false
 categories: "Architecture"
-Tags: ["cloud-computing","book","huawei"]
+tags: ["cloud-computing","book","huawei"]
 ---
 
 ![长江三峡](https://res.cloudinary.com/jimmysong/image/upload/images/20150406003.jpg)

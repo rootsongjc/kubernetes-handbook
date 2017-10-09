@@ -3,7 +3,7 @@ title: "docker用户过度到kubectl命令行指南"
 date: 2017-09-16T20:54:06+08:00
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes","docker"]
+tags: ["kubernetes","docker"]
 ---
 
 对于没有使用过 kubernetes 的 docker 用户，如何快速掌握 kubectl 命令？kubectl 跟 docker 命令之间有什么区别和联系？

@@ -2,7 +2,7 @@
 date: "2017-03-23T19:34:33+08:00"
 title: "TensorFlow实战（才云郑泽宇著）读书笔记——第二章TensorFlow环境搭建"
 draft: false
-Tags: ["tensorflow","AI","book"]
+tags: ["tensorflow","AI","book"]
 ---
 
 ![广州海珠桥](https://res.cloudinary.com/jimmysong/image/upload/images/20140810002.jpg)

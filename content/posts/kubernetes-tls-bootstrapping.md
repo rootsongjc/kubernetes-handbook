@@ -3,7 +3,7 @@ date: "2017-08-16T22:27:32+08:00"
 draft: false
 title: "Kubernetes TLS bootstrap引导程序"
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![WTF](https://res.cloudinary.com/jimmysong/image/upload/images/whats-the-fuck.jpg)

@@ -3,7 +3,7 @@ date: "2017-04-12T15:53:39+08:00"
 title: "在开启TLS的Kubernetes1.6集群上安装dashboard"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![东直门](https://res.cloudinary.com/jimmysong/image/upload/images/2016082001.jpg)

@@ -2,8 +2,8 @@
 draft: false
 date: "2017-03-17T22:08:25+08:00"
 title: "零基础使用Hugo和GitHub Pages创建自己的博客"
-Categories: "github"
-Tags: ["hugo","github-pages"]
+categories: "github"
+tags: ["hugo","github-pages"]
 ---
 
 ![鹰](https://res.cloudinary.com/jimmysong/image/upload/images/20151005061.jpg)

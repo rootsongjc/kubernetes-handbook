@@ -3,7 +3,7 @@ date: "2017-06-06T22:23:54+08:00"
 title: "Cloud Native Go - 基于Go和React的web云服务构建指南"
 draft: false
 categories: "cloud-native"
-Tags:  ["book","go","microservices","cloud-native"]
+tags:  ["book","go","microservices","cloud-native"]
 ---
 
 ![北京植物园桃花](https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg)

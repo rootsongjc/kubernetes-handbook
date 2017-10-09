@@ -3,7 +3,7 @@ title: "Kubernetes中的Secret配置详解"
 date: 2017-09-28T21:20:49+08:00
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 `Secret` 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 ssh key。将这些信息放在 `secret` 中比放在 `pod` 的定义中或者 docker 镜像中来说更加安全和灵活。参阅 [Secret 设计文档](https://git.k8s.io/community/contributors/design-proposals/secrets.md) 获取更多详细信息。

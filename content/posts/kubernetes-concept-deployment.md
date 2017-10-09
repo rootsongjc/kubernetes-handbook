@@ -3,7 +3,7 @@ date: "2017-05-13T00:46:37+08:00"
 draft: false
 title: "Kubernete概念解析之Deployment"
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![京广桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170430008.jpg)

@@ -3,7 +3,7 @@ date: "2017-06-15T21:52:38+08:00"
 draft: false
 title: "kubernetes管理的容器命名规则解析"
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 本文将归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的【运维管理-监控】章节中，最终版本以kubernetes-handbook中为准。

@@ -2,8 +2,8 @@
 title: "每位CTO都该知道的关于kubernetes的三件事"
 date: 2017-09-10T16:43:27+08:00
 draft: false
-Categories: "kubernetes"
-Tags: ["kubernetes"]
+categories: "kubernetes"
+tags: ["kubernetes"]
 ---
 
 Kubernetes 是一个自动发布、扩缩容和管理容器化应用的开源软件。

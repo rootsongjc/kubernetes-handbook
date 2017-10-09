@@ -2,7 +2,7 @@
 date: "2017-03-20T22:04:33+08:00"
 title: "TensorFlow实战（才云郑泽宇著）读书笔记——第一章深度学习简介"
 draft: false
-Tags: ["tensorflow","AI","book","tensorflow"]
+tags: ["tensorflow","AI","book","tensorflow"]
 ---
 
 ![tensorflow实战图书封面](https://res.cloudinary.com/jimmysong/image/upload/images/tensorflow-book-page.jpg)

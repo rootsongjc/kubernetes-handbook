@@ -3,7 +3,7 @@ title: "如何开发部署kubernetes native应用"
 date: 2017-09-14T19:45:44+08:00
 draft: false
 categories: "cloud-native"
-Tags: ["kubernetes","cloud-native"]
+tags: ["kubernetes","cloud-native"]
 ---
 
 ## 摘要

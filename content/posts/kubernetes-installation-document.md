@@ -3,7 +3,7 @@ draft: false
 date: "2017-04-13T14:00:04+08:00"
 title: "Kubernetes1.6集群部署完全指南——二进制文件部署开启TLS基于CentOS7发布"
 categories: "github"
-Tags: ["kubernetes","book"]
+tags: ["kubernetes","book"]
 ---
 
 ![首都机场](https://res.cloudinary.com/jimmysong/image/upload/images/2016081309.jpg)

@@ -3,7 +3,7 @@ date: "2017-03-06T17:03:19+08:00"
 title: "Docker源码编译和开发环境搭建"
 draft: false
 categories: "docker"
-Tags: ["docker"]
+tags: ["docker"]
 ---
 
 看了下网上其他人写的docker开发环境搭建，要么是在ubuntu下搭建，要么就是使用官方说明的build docker-dev镜像的方式一步步搭建的，甚是繁琐，docker hub上有一个docker官方推出的**dockercore/docker**镜像，其实这就是官网上所说的docker-dev镜像，不过以前的那个deprecated了，使用目前这个镜像搭建docker开发环境是最快捷的了。

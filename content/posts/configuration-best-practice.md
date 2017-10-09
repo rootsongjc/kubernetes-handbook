@@ -1,9 +1,9 @@
 ---
 date: "2017-06-14T20:03:09+08:00"
 draft: false
-Title: "Kubernetes配置最佳实践"
+title: "Kubernetes配置最佳实践"
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![青岛](https://res.cloudinary.com/jimmysong/image/upload/images/20170526034.jpg)

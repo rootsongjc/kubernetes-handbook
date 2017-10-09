@@ -3,7 +3,7 @@ title: "Istio Service Mesh官方文档中文版"
 date: 2017-09-20T14:37:23+08:00
 draft: false
 categories: "cloud-native"
-Tags: ["istio","service-mesh","cloud-native"]
+tags: ["istio","service-mesh","cloud-native"]
 ---
 
 [Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。官方中文文档地址：https://istio.doczh.cn/ ，Istio 同时也是 [kubernetes-handbook](https://jimmysong.io/kubernetes-handbook) 中领域应用章节重点关注的内容，其跟 [Linkerd](https://linkerd.io) 的对比也是一个很有趣的话题，而就在上个周 Istio 核心组件 [Envoy](https://envoyproxy.github.io/) 也进入了 [CNCF](https://cncf.io) 项目中。

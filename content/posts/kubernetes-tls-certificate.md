@@ -3,7 +3,7 @@ date: "2017-04-10T17:28:41+08:00"
 title: "Kubernetes安装之证书验证"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![颐和园](https://res.cloudinary.com/jimmysong/image/upload/images/2014082502.jpg)

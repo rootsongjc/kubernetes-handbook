@@ -3,7 +3,7 @@ date: "2017-03-09T11:28:34+08:00"
 title: "思科开源docker网络插件Contiv简介"
 draft: false
 categories: "docker"
-Tags: ["contiv","docker","network"]
+tags: ["contiv","docker","network"]
 ---
 
 ![蓝色港湾](https://res.cloudinary.com/jimmysong/image/upload/images/2017021162.jpg)

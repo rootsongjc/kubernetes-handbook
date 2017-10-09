@@ -3,7 +3,7 @@ date: "2017-04-06T21:24:20+08:00"
 title: "Kubernetes的ConfigMap解析"
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 ![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430004.jpg)

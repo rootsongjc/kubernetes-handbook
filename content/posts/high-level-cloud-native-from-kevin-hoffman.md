@@ -3,7 +3,7 @@ title: "High Level Cloud Native From Kevin Hoffman"
 date: 2017-09-15T20:32:47+08:00
 draft: false
 categories: "cloud-native"
-Tags: ["cloud-native"]
+tags: ["cloud-native"]
 ---
 
 Kevin Hoffman(From Capital One, twitter [@KevinHoffman](https://twitter.com/KevinHoffman) was making a speech on *TalkingData T11 Smart Data Summit*.

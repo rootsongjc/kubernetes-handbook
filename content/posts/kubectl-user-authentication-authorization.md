@@ -3,7 +3,7 @@ title: "kubectl的用户认证授权"
 date: 2017-08-31T14:44:32+08:00
 draft: false
 categories: kubernetes
-Tags: ["kubernetes"]
+tags: ["kubernetes"]
 ---
 
 当我们安装好集群后，如果想要把 kubectl 命令交给用户使用，就不得不对用户的身份进行认证和对其权限做出限制。

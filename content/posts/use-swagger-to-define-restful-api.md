@@ -2,7 +2,7 @@
 draft: false
 date: "2017-03-24T10:57:31+08:00"
 title: "使用Swagger定义RESTful API"
-Tags: ["tool","swagger","restful"]
+tags: ["tool","swagger","restful"]
 ---
 
 Swagger不是一个新东西，出来已经好几年了，现在常用的2.0版本是2014年9月发布的，它是用来设计RESTful API的一个常用工具。

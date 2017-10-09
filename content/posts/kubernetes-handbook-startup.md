@@ -3,7 +3,7 @@ draft: false
 date: "2017-04-14T19:33:27+08:00"
 title: "Kubernetes Handbook发起"
 categories: "github"
-Tags: ["kubernetes","book"]
+tags: ["kubernetes","book"]
 ---
 
 ![地坛](https://res.cloudinary.com/jimmysong/image/upload/images/2015092726.jpg)

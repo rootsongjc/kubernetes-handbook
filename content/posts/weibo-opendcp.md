@@ -2,7 +2,7 @@
 draft: false
 date: "2017-03-10T23:54:06+08:00"
 title: "weibo opendcp"
-Tags: ["docker"]
+tags: ["docker"]
 ---
 
 ![青海湖](https://res.cloudinary.com/jimmysong/image/upload/images/2016062561.jpg)

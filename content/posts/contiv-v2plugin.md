@@ -3,7 +3,7 @@ date: "2017-03-10T11:51:09+08:00"
 title: "Contiv入坑指南-v2plugin"
 draft: false
 categories: "docker"
-Tags: ["docker","network","sdn"]
+tags: ["docker","network","sdn"]
 ---
 
 ![上海交通大学](https://res.cloudinary.com/jimmysong/image/upload/images/20161022082.jpg)

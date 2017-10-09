@@ -3,7 +3,7 @@ title: "运行支持kubernetes原生调度的spark程序-Spark on Kubernetes"
 date: 2017-09-14T15:55:39+08:00
 draft: false
 categories: "kubernetes"
-Tags: ["kubernetes","spark","big-data"]
+tags: ["kubernetes","spark","big-data"]
 ---
 
 TL;DR 关于 Spark on kubernetes 的详细信息和最新进展请见 [jimmysong.io - spark-on-k8s](https://jimmysong.io/spark-on-k8s)
