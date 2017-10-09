@@ -1,7 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
 .aa-input-container {
   display: inline-block;
-  position: relative; }
+  position: relative;
+  width: 100%;}
+.aa-input-container span,.aa-input-container input {
+      width: inherit;}
 .aa-input-search {
   width: 300px;
   padding: 12px 28px 12px 12px;
