@@ -32,6 +32,7 @@
     - [3.1.1 配置Pod的liveness和readiness探针](guide/configure-liveness-readiness-probes.md)
     - [3.1.2 配置Pod的Service Account](guide/configure-pod-service-account.md)
     - [3.1.3 Secret配置](guide/secret-configuration.md)
+    - [3.2.3 管理namespace中的资源配额](guide/resource-quota-management.md)
   - [3.2 命令使用](guide/command-usage.md)
     - [3.2.1 使用kubectl](guide/using-kubectl.md)
     - [3.2.2 docker用户过度到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
