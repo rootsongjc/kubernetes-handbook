@@ -2,13 +2,10 @@
 date: "2017-06-26T21:02:13+08:00"
 draft: false
 categories: "kubernetes"
-title: "云原生微服务治理框架Linkerd简介"
+title: "云原生微服务治理框架service mesh——Linkerd简介"
 tags: ["linkerd","cloud-native","service-mesh"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170526021.jpg", desc: "青岛 May 26,2017"}]
 ---
-
-![青岛](https://res.cloudinary.com/jimmysong/image/upload/images/20170526021.jpg)
-
-*（题图：青岛 May 26,2017）*
 
 ## 前言
 

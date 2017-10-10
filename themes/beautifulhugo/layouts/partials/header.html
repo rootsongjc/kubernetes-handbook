@@ -22,23 +22,22 @@
         {{ $hello:= $.Scratch.Get "hello" }}
         <div class="container">
           <div class="row">
-              <!--make the head align center
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-              -->
               <div class="col-lg-12 col-md-12 col-md-offset-0">
-              <div class="{{ .Type }}-heading">
-                  {{ if $hello }}
-                  <h1 align="center">{{ $hello }}</h1>
+              <div class="post-heading">
+                  {{ if .IsHome }}
+                     <h1 align="center">{{ $hello }}</h1>
+                  {{ else }}
+                     <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                   {{ end }}
                   {{ if $subtitle }}
-                    {{ if eq .Type "page" }}
+                    {{ if eq .Type "posts" }}
                       <hr class="small">
-                      <span class="{{ .Type }}-subheading">{{ $subtitle }}</span>
+                      <span class="posts-subheading">{{ $subtitle }}</span>
                     {{ else }}
-                      <h2 class="{{ .Type }}-subheading">{{ $subtitle }}</h2>
+                      <h2 align="center" class="posts-subheading">{{ $subtitle }}</h2>
                     {{ end }}
                   {{ end }}
-                  {{ if eq .Type "post" }}
+                  {{ if eq .Type "posts" }}
                     {{ partial "post_meta.html" . }}
                   {{ end }}
               </div>
@@ -52,9 +51,6 @@
       {{ $subtitle := $.Scratch.Get "subtitle" }}
       <div class="container">
         <div class="row">
-            <!-- make the title align center
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            -->
           <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="{{ .Type }}-heading">
                 <h1 align="center">{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
@@ -63,10 +59,10 @@
                     <hr class="small">
                     <span class="{{ .Type }}-subheading">{{ $subtitle }}</span>
                   {{ else }}
-                    <h2 class="{{ .Type }}-subheading">{{ $subtitle }}</h2>
+                    <h2 align="center" class="{{ .Type }}-subheading">{{ $subtitle }}</h2>
                   {{ end }}
                 {{ end }}
-                {{ if eq .Type "post" }}
+                {{ if eq .Type "page" }}
                   {{ partial "post_meta.html" . }}
                 {{ end }}
             </div>

@@ -18,6 +18,7 @@ tags: ["github-pages"]
 - [x] 根据文章需求确定是否显示评论框
 - [x] 搜索框中的URL高亮标签去除
 - [x] 搜索框的大小需要调整
+- [x] 每个post的`bigimg`显示有问题
 
 ### 2017-03-17
 
@@ -86,3 +87,14 @@ tags: ["github-pages"]
 
 1. 修复了搜索框中搜索英文内容后增加html标签的问题
 2. 修复了搜索框的宽度问题
+
+### 2017-10-10
+
+1. 重新设置了`subtitle`的位置为居中，原先是靠左对齐
+2. 修正了 `header.html` 中的bug，`type`应该设置为posts，而不是默认的post
+3. 可以为每个post设置一个图片，方式在在文章头部添加如下信息
+
+```yaml
+bigimg: [{src: "img/cloud-computing.jpg", desc: "Cloud Computing"}]
+```
+

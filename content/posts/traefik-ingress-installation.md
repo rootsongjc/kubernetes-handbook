@@ -4,11 +4,8 @@ title: "Kubernetes traefik ingress安装试用"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes","traefik","ingress"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160915046.jpg", desc: "🐟@鱼缸 Sep 15,2016"}]
 ---
-
-![fish](https://res.cloudinary.com/jimmysong/image/upload/images/20160915046.jpg)
-
-*（题图：🐟@鱼缸 Sep 15,2016）*
 
 ## 前言
 

@@ -4,11 +4,8 @@ title: "Kubernetes集群master节点安装"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2015091402.jpg", desc: "鬼见愁@北京西山 Sep 14,2015"}]
 ---
-
-![北京西山](https://res.cloudinary.com/jimmysong/image/upload/images/2015091402.jpg)
-
-*（题图：鬼见愁@北京西山 Sep 14,2015）*
 
 ## 前言
 

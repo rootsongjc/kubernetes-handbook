@@ -4,13 +4,10 @@ title: "Cloud Native Go - 基于Go和React的web云服务构建指南"
 draft: false
 categories: "cloud-native"
 tags:  ["book","go","microservices","cloud-native"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg", desc: "北京植物园桃花 Mar 26,2016"}]
 ---
 
-![北京植物园桃花](https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg)
-
-*(题图：北京植物园桃花 Mar 26,2016)*
-
-Kevin Hoffman和Dan Nemeth著的《Cloud Native Go - 基于Go和React的web云原生应用构建指南》将由**电子工业出版社**出版。
+Kevin Hoffman和Dan Nemeth著的《Cloud Native Go - 基于Go和React的web云原生应用构建指南》已由**电子工业出版社**出版。
 
 ## 简介
 

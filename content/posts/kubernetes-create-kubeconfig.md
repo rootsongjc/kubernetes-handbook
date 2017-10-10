@@ -4,11 +4,8 @@ title: "Kubernetes安装之创建kubeconfig文件"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016050801.jpg", desc: "北海公园 May 8,2016"}]
 ---
-
-![北海公园](https://res.cloudinary.com/jimmysong/image/upload/images/2016050801.jpg)
-
-*(题图：北海公园 May 8,2016)*
 
 ## 前言
 

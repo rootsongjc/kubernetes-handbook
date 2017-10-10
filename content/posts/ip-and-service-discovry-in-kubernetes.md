@@ -4,11 +4,8 @@ title: "Kubernetes中的IP和服务发现体系"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151108011.jpg", desc: "路边的野花@朝阳公园 Nov 8,2015"}]
 ---
-
-![朝阳公园](https://res.cloudinary.com/jimmysong/image/upload/images/20151108011.jpg)
-
-*（题图：路边的野花@朝阳公园 Nov 8,2015）*
 
 ## Cluster IP
 

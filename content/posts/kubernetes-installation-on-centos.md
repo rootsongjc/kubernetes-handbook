@@ -4,11 +4,8 @@ title: "在CentOS上安装kubernetes详细指南"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2014082501.jpg", desc: "北京圆明园 Aug 25,2014"}]
 ---
-
-![圆明园](https://res.cloudinary.com/jimmysong/image/upload/images/2014082501.jpg)
-
-*（题图：北京圆明园 Aug 25,2014）*
 
 作者：[Jimmy Song](rootsongjc.github.io/about)，[Peter Ma](https://godliness.github.io/)，2017年3月30日
 

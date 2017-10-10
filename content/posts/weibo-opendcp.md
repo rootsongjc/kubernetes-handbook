@@ -1,13 +1,11 @@
 ---
 draft: false
 date: "2017-03-10T23:54:06+08:00"
-title: "weibo opendcp"
+title: "新浪微博开源的docker管理平台OpenDCP"
 tags: ["docker"]
+categories: "devops"
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016062561.jpg", desc: "青海湖 Jun 25,2016"}]
 ---
-
-![青海湖](https://res.cloudinary.com/jimmysong/image/upload/images/2016062561.jpg)
-
-*（题图：青海湖 Jun 25,2016 ）*
 
 前几天看到微博开源的docker管理平台[opendcp](https://github.com/weibocom/opendcp)，今天抽空研究了一下。
 

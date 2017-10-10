@@ -1,14 +1,11 @@
 ---
 date: "2017-06-02T11:27:57+08:00"
 draft: false
-title: "微服务管理框架Istio简介"
+Title: "微服务管理框架serivce mesh——Istio简介"
 categories: "cloud-native"
 tags: ["istio","kubernetes","service-mesh"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170529005.jpg", desc: "威海朱口 May 29,2017"}]
 ---
-
-![威海朱口](https://res.cloudinary.com/jimmysong/image/upload/images/20170529005.jpg)
-
-*（题图：威海朱口 May 29,2017）*
 
 ## 前言
 

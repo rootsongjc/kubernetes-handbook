@@ -528,6 +528,7 @@ footer .theme-by {
     padding: 100px 0;
     color: #FFF;
     text-shadow: 1px 1px 3px #000;
+    text-align: center;
 }
 
 .intro-header .page-heading h1 {
@@ -538,6 +539,7 @@ footer .theme-by {
 .intro-header .post-heading h1 {
     margin-top: 0;
     font-size: 35px;
+    text-align:center;
 }
 
 .intro-header .page-heading .page-subheading,

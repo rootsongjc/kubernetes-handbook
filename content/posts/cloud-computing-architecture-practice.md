@@ -4,11 +4,8 @@ title: "云计算技术架构与实践（第二版）读后感"
 draft: false
 categories: "Architecture"
 tags: ["cloud-computing","book","huawei"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20150406003.jpg", desc: "长江三峡大坝@湖北宜昌 Apr 6,2015"}]
 ---
-
-![长江三峡](https://res.cloudinary.com/jimmysong/image/upload/images/20150406003.jpg)
-
-*（题图：长江三峡大坝@湖北宜昌 Apr 6,2015）*
 
 ## 前言
 

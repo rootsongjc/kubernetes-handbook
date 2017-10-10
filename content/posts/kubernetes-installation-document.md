@@ -4,11 +4,8 @@ date: "2017-04-13T14:00:04+08:00"
 title: "Kubernetes1.6集群部署完全指南——二进制文件部署开启TLS基于CentOS7发布"
 categories: "github"
 tags: ["kubernetes","book"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081309.jpg", desc: "清晨@首都机场 Aug 13,2016"}]
 ---
-
-![首都机场](https://res.cloudinary.com/jimmysong/image/upload/images/2016081309.jpg)
-
-*（题图：清晨@首都机场 Aug 13,2016）*
 
 **这可能是目前为止最详细的kubernetes安装文档了。**
 

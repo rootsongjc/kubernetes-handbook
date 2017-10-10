@@ -3,11 +3,9 @@ date: "2017-03-08T20:40:08+08:00"
 title: "Vagrant介绍-从使用到放弃完全指南"
 draft: false
 tags: ["vagrant","tools","hashicorp"]
+categories: ["devops"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017030513.jpg", desc: "北京光熙家园夜景"}]
 ---
-
-![光熙家园夜景](https://res.cloudinary.com/jimmysong/image/upload/images/2017030513.jpg)
-
-*（题图：北京地铁13号线光熙家园夜景 Mar 5,2017）*
 
 ## 起源
 

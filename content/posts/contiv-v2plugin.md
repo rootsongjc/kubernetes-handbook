@@ -4,11 +4,8 @@ title: "Contiv入坑指南-v2plugin"
 draft: false
 categories: "docker"
 tags: ["docker","network","sdn"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20161022082.jpg", desc: "上海交通大学 Oct 22,2016"}]
 ---
-
-![上海交通大学](https://res.cloudinary.com/jimmysong/image/upload/images/20161022082.jpg)
-
-*(题图：上海交通大学 Oct 22,2016)*
 
 继续趟昨天挖的坑。
 

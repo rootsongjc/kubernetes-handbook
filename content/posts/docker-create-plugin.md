@@ -3,12 +3,9 @@ date: "2017-03-15T12:09:26+08:00"
 title: "Docker 17.03-CE create plugin源码解析"
 draft: false
 categories: "docker"
-tags: ["docker"]
+tags: ["docker","go"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160403050.jpg", desc: "故宫 Apr 3,2016"}]
 ---
-
-![故宫博物院](https://res.cloudinary.com/jimmysong/image/upload/images/20160403050.jpg)
-
-*（题图：故宫 Apr 3,2016）*
 
 继续上一篇[Docker17.03-CE插件开发的🌰](https://jimmysong.io/blogs/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
 

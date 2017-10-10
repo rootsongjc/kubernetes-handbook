@@ -3,12 +3,9 @@ date: "2017-07-19T23:15:01+08:00"
 draft: false
 categories: "kubernetes"
 title: "Kubernetes中的服务发现与docker容器间的环境变量传递源码探究"
-tags: ["kubernetes"]
+tags: ["kubernetes","docker","go"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170713077.jpg", desc: "雷雨@野三坡  Jul 13,2017"}]
 ---
-
-![野三坡](https://res.cloudinary.com/jimmysong/image/upload/images/20170713077.jpg)
-
-*（题图：雷雨@野三坡  Jul 13,2017）*
 
 ## 前言
 

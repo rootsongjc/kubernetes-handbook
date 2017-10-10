@@ -4,11 +4,8 @@ title: "使用Fluentd和ElasticSearch收集Kubernetes集群日志"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes","fluentd","elasticsearch"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160430080.jpg", desc: "码头@古北水镇 Apr 30,2016"}]
 ---
-
-![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430080.jpg)
-
-*（题图：码头@古北水镇 Apr 30,2016）*
 
 ## 前言
 

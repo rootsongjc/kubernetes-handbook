@@ -4,11 +4,8 @@ title: "Pivotal Cloud foundry快速开始指南"
 draft: false
 categories: "Architecture"
 tags: ["pivotal","paas"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2013100302.jpg", desc: "黄山日出后的云海 Oct 3,2013"}]
 ---
-
-![黄山日出](https://res.cloudinary.com/jimmysong/image/upload/images/2013100302.jpg)
-
-*（题图：黄山日出后的云海 Oct 3,2013）*
 
 ## 前言
 
