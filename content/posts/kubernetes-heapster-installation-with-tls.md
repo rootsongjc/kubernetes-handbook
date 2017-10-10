@@ -4,11 +4,8 @@ title: "在开启TLS的Kubernetes1.6集群上安装heapster"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016080801.jpg", desc: "大喵 Aug 8,2016"}]
 ---
-
-![大喵](https://res.cloudinary.com/jimmysong/image/upload/images/2016080801.jpg)
-
-*（题图：大喵 Aug 8,2016）*
 
 ## 前言
 

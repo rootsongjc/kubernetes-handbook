@@ -3,12 +3,9 @@ date: "2017-05-04T20:06:18+08:00"
 draft: false
 title: "在kubernetes中使用glusterfs做持久化存储"
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","glusterfs","storage"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170501005.jpg", desc: "无题@北京奥林匹克森林公园 May 1,2017"}]
 ---
-
-![森林公园](https://res.cloudinary.com/jimmysong/image/upload/images/20170501005.jpg)
-
-*（题图：无题@北京奥林匹克森林公园 May 1,2017）*
 
 ## 前言
 

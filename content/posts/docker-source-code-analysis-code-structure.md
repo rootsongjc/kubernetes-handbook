@@ -3,12 +3,9 @@ date: "2017-03-19T23:00:29+08:00"
 title: "Docker源码分析第一篇——代码结构"
 draft: false
 categories: "docker"
-tags: ["docker"]
+tags: ["docker","code"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151001042.jpg", desc: "北京八达岭长城  Oct 1,2015"}]
 ---
-
-![八达岭长城](https://res.cloudinary.com/jimmysong/image/upload/images/20151001042.jpg)
-
-*(题图：北京八达岭长城  Oct 1,2015)*
 
 ## 前言
 

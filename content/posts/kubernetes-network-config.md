@@ -3,12 +3,9 @@ date: "2017-03-31T11:05:18+08:00"
 title: "Kubernetes基于flannel的网络配置"
 draft: false
 categories: "kubernetes"
-tags: ["kubernetes","cloud computing"]
+tags: ["kubernetes","flannel"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2014100402.jpg", desc: "西安鼓楼 Oct 4,2014"}]
 ---
-
-![西安鼓楼](https://res.cloudinary.com/jimmysong/image/upload/images/2014100402.jpg)
-
-*（题图：西安鼓楼 Oct 4,2014）*
 
 书接上文[在CentOS中安装Kubernetes详细指南](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)，这是一个系列文章，作为学习Kubernetes的心路历程吧。
 

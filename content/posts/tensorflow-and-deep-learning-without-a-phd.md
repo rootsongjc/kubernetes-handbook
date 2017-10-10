@@ -3,11 +3,8 @@ date: "2017-04-05T21:52:01+08:00"
 title: "TensorFlow深度学习手写数字识别初体验"
 draft: false
 tags: ["tensorflow","deep learning"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/201703085.jpg", desc: "禾雀 @北京动物园 Apr 3,2017"}]
 ---
-
-![禾雀](https://res.cloudinary.com/jimmysong/image/upload/images/201703085.jpg)
-
-*（题图：禾雀 @北京动物园 Apr 3,2017）*
 
 ## 前言
 

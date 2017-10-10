@@ -3,12 +3,9 @@ draft: false
 date: "2017-04-12T13:04:45+08:00"
 title: "Kubernetes安装之kubedns配置"
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","dns"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016082701.jpg", desc: "雨过天晴@北京定福庄 Aug 27,2016"}]
 ---
-
-![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016082701.jpg)
-
-*（题图：雨过天晴@北京定福庄 Aug 27,2016）*
 
 ## 前言
 

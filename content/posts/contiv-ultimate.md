@@ -4,11 +4,8 @@ title: "Contiv Ultimate-Docker17.03CE下思科docker网络插件contiv趟坑终�
 draft: false
 categories: "docker"
 tags: ["docker","network","sdn"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20140810001.jpg", desc: "广州石牌桥 Aug 10,2014"}]
 ---
-
-![广州石牌桥](https://res.cloudinary.com/jimmysong/image/upload/images/20140810001.jpg)
-
-*（题图：广州石牌桥 Aug 10,2014）*
 
 前几天写的几篇[关于Contiv的文章](https://jimmysong.io/tags/contiv/)已经把引入坑了😂
 

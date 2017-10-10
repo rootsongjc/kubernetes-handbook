@@ -3,12 +3,9 @@ date: "2017-03-15T13:57:26+08:00"
 title: "Docker17.03-CE插件开发案例"
 draft: false
 categories: "docker"
-tags: ["docker"]
+tags: ["docker","go"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20161016022.jpg", desc: "杭州吴山步道旁的墙壁 Oct 16,2016"}]
 ---
-
-![杭州吴山](https://res.cloudinary.com/jimmysong/image/upload/images/20161016022.jpg)
-
-*（题图：杭州吴山步道旁的墙壁 Oct 16,2016）*
 
 > 当你看到这篇文章时，如果你也正在进行docker1.13+版本下的plugin开发，恭喜你也入坑了，如果你趟出坑，麻烦告诉你的方法，感恩不尽🙏
 

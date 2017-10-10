@@ -1,16 +1,13 @@
 ---
 date: "2017-03-10T22:06:32+08:00"
-title: "Docker v.s Kubernetes part2"
+title: "Docker对比Kubernetes第二部分"
 draft: false
 categories: "docker"
 tags: ["docker","kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160709044.jpg", desc: "河北承德兴隆县雾灵山京郊最佳星空拍摄点 July 9,2016"}]
 ---
 
-![承德兴隆星空](https://res.cloudinary.com/jimmysong/image/upload/images/20160709044.jpg)
-
-*（题图：河北承德兴隆县雾灵山京郊最佳星空拍摄点 July 9,2016)*
-
-本文是`Docker v.s Kubernetes `第二篇，续接上文[Docker v.s Kuberntes Part1](https://jimmysong.io/blogs/docker-vs-kubernetes-part1/)。
+本文是`Docker v.s Kubernetes `系列第二篇，续接上文[Docker对比Kuberntes第一部分](https://jimmysong.io/blogs/docker-vs-kubernetes-part1/)。
 
 Kubernetes是典型的**Master/Slave**架构模式，本文简要的介绍kubenetes的架构和组件构成。
 

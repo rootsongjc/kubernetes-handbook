@@ -4,11 +4,8 @@ title: "微服务设计读书笔记"
 draft: false
 categories: "Architecture"
 tags: ["microservices","architecture","book"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160625036.jpg", desc: "青海湖畔  Jun 25,2016"}]
 ---
-
-![青海湖畔](https://res.cloudinary.com/jimmysong/image/upload/images/20160625036.jpg)
-
-*(题图：青海湖畔  Jun 25,2016)*
 
 最近在看**《微服务设计（Sam Newman著）》**这本书，[下载本书PDF](https://res.cloudinary.com/jimmysong/image/upload/images/docs/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E4%B8%AD%E6%96%87%E5%AE%8C%E6%95%B4%E7%89%88-Sam%20Newman-%E4%BA%BA%E6%B0%91%E9%82%AE%E7%94%B5%E5%87%BA%E7%89%88%E7%A4%BE.pdf)(扫描版，高清49.17M)。作者是**ThoughtWorks**的Sam Newman。这本书中包括很多业界是用案例，比如**Netflix**和**亚马逊**。有兴趣的话大家一起看看讨论一下。😄
 

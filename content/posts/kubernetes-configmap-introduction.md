@@ -4,11 +4,8 @@ title: "Kubernetes的ConfigMap解析"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160430004.jpg", desc: "龙形灯笼@古北水镇 Apr 30,2016"}]
 ---
-
-![古北水镇](https://res.cloudinary.com/jimmysong/image/upload/images/20160430004.jpg)
-
-*（题图：龙形灯笼@古北水镇 Apr 30,2016）*
 
 ## 前言
 

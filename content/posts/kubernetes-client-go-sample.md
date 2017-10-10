@@ -4,11 +4,8 @@ draft: false
 title: "kubernetes client-go包使用示例"
 categories: "kubernetes"
 tags: ["kubernetes","go"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170526017.jpg", desc: "青岛栈桥 May 26,2017"}]
 ---
-
-![青岛栈桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170526017.jpg)
-
-*(题图：青岛栈桥 May 26,2017)*
 
 ## 前言
 

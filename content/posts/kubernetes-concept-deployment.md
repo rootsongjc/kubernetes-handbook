@@ -4,11 +4,8 @@ draft: false
 title: "Kubernete概念解析之Deployment"
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170430008.jpg", desc: "京广桥@北京国贸 Apr 30,2017"}]
 ---
-
-![京广桥](https://res.cloudinary.com/jimmysong/image/upload/images/20170430008.jpg)
-
-*（题图：京广桥@北京国贸 Apr 30,2017）*
 
 ## 前言
 

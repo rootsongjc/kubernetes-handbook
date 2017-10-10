@@ -4,11 +4,8 @@ title: "运用kubernetes进行分布式负载测试"
 draft: false
 categories: "kubernetes"
 tags:  ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160325002.jpg", desc: "Kubrick Book Store  Mar 25,2016"}]
 ---
-
-![kubrick](https://res.cloudinary.com/jimmysong/image/upload/images/20160325002.jpg)
-
-*（题图：Kubrick Book Store  Mar 25,2016）*
 
 ## 前言
 

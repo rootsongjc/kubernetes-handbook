@@ -3,12 +3,9 @@ date: "2017-04-21T19:53:18+08:00"
 title: "Kubernetes中的RBAC支持"
 draft: false
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","rbac"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160402017.jpg", desc: "无题 Apr 2,2016"}]
 ---
-
-![无题](https://res.cloudinary.com/jimmysong/image/upload/images/20160402017.jpg)
-
-*（题图：无题 Apr 2,2016）*
 
 > 在Kubernetes1.6版本中新增角色访问控制机制（Role-Based Access，RBAC）让集群管理员可以针对特定使用者或服务账号的角色，进行更精确的资源访问控制。在RBAC中，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。这就极大地简化了权限的管理。在一个组织中，角色是为了完成各种工作而创造，用户则依据它的责任和资格来被指派相应的角色，用户可以很容易地从一个角色被指派到另一个角色。
 

@@ -4,11 +4,8 @@ date: "2017-03-17T22:08:25+08:00"
 title: "零基础使用Hugo和GitHub Pages创建自己的博客"
 categories: "github"
 tags: ["hugo","github-pages"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151005061.jpg", desc: "🦅 北京动物园 Oct 5,2015"}]
 ---
-
-![鹰](https://res.cloudinary.com/jimmysong/image/upload/images/20151005061.jpg)
-
-*（题图：🦅 北京动物园 Oct 5,2015）*
 
 > 亲，你还在为虚拟主机、域名、空间而发愁吗？你想拥有自己的网站吗？你想拥有一个分享知识、留住感动，为开源事业而奋斗终身吗？那么赶快拿起你手中的📱拨打~~16899168~~，不对，是看这篇文章吧，不用998，也不用168，这一切都是免费的，是的**你没看错，真的不要钱！**
 

@@ -3,16 +3,11 @@ date: "2017-04-05T14:28:51+08:00"
 title: "Kubernetes Dashboard/Web UI安装全记录"
 draft: false
 categories: "kubernetes"
-tags: ["kubernetes","cloud computing"]
+tags: ["kubernetes","cloud computing","dashboard","frontend"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017040301.jpg", desc: "晒太阳的袋鼠@北京动物园 Apr 3,2017"}]
 ---
 
-![晒太阳的袋鼠](https://res.cloudinary.com/jimmysong/image/upload/images/2017040301.jpg)
-
-*（题图：晒太阳的袋鼠@北京动物园 Apr 3,2017）*
-
-## 前言
-
-前几天[在CentOS7.2上安装Kubernetes1.6](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)和安装好[flannel网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，今天我们来安装下kuberentnes的dashboard。
+几天[在CentOS7.2上安装Kubernetes1.6](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)和安装好[flannel网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，今天我们来安装下kuberentnes的dashboard。
 
 [Dashboard](https://github.com/kubernetes/dashboard)是Kubernetes的一个插件，代码在单独的开源项目里。1年前还是特别简单的一个UI，只能在上面查看pod的信息和部署pod而已，现在已经做的跟[Docker Enterprise Edition](https://www.docker.com/enterprise-edition)的**Docker Datacenter**很像了。
 

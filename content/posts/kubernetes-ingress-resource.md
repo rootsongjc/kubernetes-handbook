@@ -4,11 +4,8 @@ draft: false
 date: "2017-04-19T21:05:47+08:00"
 categories: "kubernetes"
 tags: ["kubernetes","Ingress"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160131054.jpg", desc: "朝阳门银河SOHO Jan 31,2016"}]
 ---
-
-![银河soho](https://res.cloudinary.com/jimmysong/image/upload/images/20160131054.jpg)
-
-*（题图：朝阳门银河SOHO Jan 31,2016）*
 
 ## 前言
 

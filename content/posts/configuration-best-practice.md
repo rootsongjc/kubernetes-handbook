@@ -4,11 +4,8 @@ draft: false
 title: "Kubernetes配置最佳实践"
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170526034.jpg", desc: "青岛 May 26,2017"}]
 ---
-
-![青岛](https://res.cloudinary.com/jimmysong/image/upload/images/20170526034.jpg)
-
-*（题图：青岛 May 26,2017）*
 
 ## 前言
 

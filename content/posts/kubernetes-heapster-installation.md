@@ -4,11 +4,8 @@ title: "Kubernetes heapster监控插件安装文档"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes","heapster"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170403064.jpg", desc: "嗑猫薄荷的白化孟加拉虎@北京动物园 Apr 3,2017"}]
 ---
-
-![嗑猫薄荷的白化孟加拉虎](https://res.cloudinary.com/jimmysong/image/upload/images/20170403064.jpg)
-
-*（题图：嗑猫薄荷的白化孟加拉虎@北京动物园 Apr 3,2017）*
 
 ## 前言
 

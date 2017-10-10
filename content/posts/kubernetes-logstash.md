@@ -3,12 +3,9 @@ date: "2017-05-16T17:46:15+08:00"
 draft: false
 title: "使用Logstash收集Kubernetes的应用日志"
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","logging"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170514005.jpg", desc: "798艺术区 May 14,2017"}]
 ---
-
-![798](https://res.cloudinary.com/jimmysong/image/upload/images/20170514005.jpg)
-
-*（题图：798艺术区 May 14,2017）*
 
 ## 前言
 

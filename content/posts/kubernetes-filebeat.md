@@ -3,12 +3,11 @@ date: "2017-05-17T17:24:52+08:00"
 draft: false
 title: "使用filebeat收集kubernetes中的应用日志"
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","filebeat","logging"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170514001.jpg", desc: "民生现代美术馆 May 14,2017"}]
 ---
 
-![民生美术馆](https://res.cloudinary.com/jimmysong/image/upload/images/20170514001.jpg)
 
-*（题图：民生现代美术馆 May 14,2017）*
 
 ## 前言
 

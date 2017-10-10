@@ -3,11 +3,8 @@ date: "2017-03-23T19:34:33+08:00"
 title: "TensorFlow实战（才云郑泽宇著）读书笔记——第二章TensorFlow环境搭建"
 draft: false
 tags: ["tensorflow","AI","book"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20140810002.jpg", desc: "广州海珠桥 Aug 10,2014"}]
 ---
-
-![广州海珠桥](https://res.cloudinary.com/jimmysong/image/upload/images/20140810002.jpg)
-
-*（题图：广州海珠桥 Aug 10,2014）*
 
 > 这是我阅读[才云科技](caicloud.io)郑泽宇的《TensorFlow实战Google深度学习框架》的读书笔记系列文章，按照文章的章节顺序来写的。整本书的笔记归档在[这里](https://jimmysong.io/tags/tensorflow-practice-reading-notes/)。
 

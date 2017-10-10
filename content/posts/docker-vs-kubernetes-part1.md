@@ -1,14 +1,11 @@
 ---
 date: "2017-03-10T21:09:47+08:00"
-title: "Docker v.s Kubernetes part1"
+title: "Docker对比Kubernetes第一部分"
 draft: false
 categories: "docker"
 tags: ["docker","kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20161016031.jpg", desc: "杭州西湖 Oct 16,2016"}]
 ---
-
-![杭州西湖](https://res.cloudinary.com/jimmysong/image/upload/images/20161016031.jpg)
-
-*（题图：杭州西湖 Oct 16,2016）*
 
 ### 前言
 

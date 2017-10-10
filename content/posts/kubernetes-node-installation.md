@@ -4,11 +4,8 @@ title: "Kubernetes node节点安装"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016121101.jpg", desc: "太阳宫桥@北京东北三环 Dec 11,2016"}]
 ---
-
-![东三环](https://res.cloudinary.com/jimmysong/image/upload/images/2016121101.jpg)
-
-*（题图：太阳宫桥@北京东北三环 Dec 11,2016）*
 
 ## 前言
 

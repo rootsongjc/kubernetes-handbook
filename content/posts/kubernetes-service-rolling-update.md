@@ -4,11 +4,8 @@ draft: false
 title: "Kubernetes中的Rolling Update服务滚动升级"
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170430014.jpg", desc: "后海夜色 Apr 30,2017"}]
 ---
-
-![后海夜色](https://res.cloudinary.com/jimmysong/image/upload/images/20170430014.jpg)
-
-*（题图：后海夜色 Apr 30,2017）*
 
 ## 前言
 

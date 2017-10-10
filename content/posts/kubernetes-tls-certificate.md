@@ -4,11 +4,8 @@ title: "Kubernetes安装之证书验证"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2014082502.jpg", desc: "铜牛@颐和园 Aug 25,2014"}]
 ---
-
-![颐和园](https://res.cloudinary.com/jimmysong/image/upload/images/2014082502.jpg)
-
-*（题图：铜牛@颐和园 Aug 25,2014）*
 
 ## 前言
 

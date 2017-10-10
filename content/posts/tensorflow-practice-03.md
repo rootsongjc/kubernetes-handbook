@@ -3,11 +3,8 @@ date: "2017-03-30T21:34:33+08:00"
 title: "TensorFlow实战（才云郑泽宇著）读书笔记——第三章TensorFlow入门"
 draft: false
 tags: ["tensorflow","AI","book"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2015052401.jpg", desc: "扬州东关 May 24,2015"}]
 ---
-
-![扬州东关](https://res.cloudinary.com/jimmysong/image/upload/images/2015052401.jpg)
-
-*（题图：扬州东关 May 24,2015）*
 
 *这是我阅读[才云科技](caicloud.io)郑泽宇的《TensorFlow实战Google深度学习框架》的读书笔记系列文章，按照文章的章节顺序来写的。整本书的笔记归档在[这里](https://jimmysong.io/tags/tensorflow-practice-reading-notes/)。*
 

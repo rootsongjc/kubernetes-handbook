@@ -4,11 +4,8 @@ title: "Kubernetes网络和集群性能测试"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160618045.jpg", desc: "无题@安贞门 Jun 18,2016"}]
 ---
-
-![安贞门](https://res.cloudinary.com/jimmysong/image/upload/images/20160618045.jpg)
-
-*（题图：无题@安贞门 Jun 18,2016）*
 
 ## 前言
 

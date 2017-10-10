@@ -3,12 +3,9 @@ date: "2017-07-20T19:41:53+08:00"
 draft: false
 title: "适用于kubernetes的应用开发与部署流程详解"
 categories: "kubernetes"
-tags: ["kubernetes"]
+tags: ["kubernetes","go","cloud-native"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170714048.jpg", desc: "风和日丽@野三坡 Jul 14,2017"}]
 ---
-
-![野三坡](https://res.cloudinary.com/jimmysong/image/upload/images/20170714048.jpg)
-
-*（题图：风和日丽@野三坡 Jul 14,2017）*
 
 本文已归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第3章【用户指南】中，一切更新以kubernetes-handbook中为准。
 
