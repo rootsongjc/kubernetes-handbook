@@ -128,5 +128,5 @@ Kubernetes在1.3版本中发布了alpha版的基于角色的访问控制（Role-
 
 按照分布式系统一致性算法Paxos发明人计算机科学家[Leslie Lamport](http://research.microsoft.com/users/lamport/pubs/pubs.html)的理念，一个分布式系统有两类特性：安全性Safety和活性Liveness。安全性保证系统的稳定，保证系统不会崩溃，不会出现业务错误，不会做坏事，是严格约束的；活性使得系统可以提供功能，提高性能，增加易用性，让系统可以在用户“看到的时间内”做些好事，是尽力而为的。Kubernetes系统的设计理念正好与Lamport安全性与活性的理念不谋而合，也正是因为Kubernetes在引入功能和技术的时候，非常好地划分了安全性和活性，才可以让Kubernetes能有这么快版本迭代，快速引入像RBAC、Federation和PetSet这种新功能。
 
-\[1\] [http://www.infoq.com/cn/articles/kubernetes-and-cloud-native-applications-part01](http://www.infoq.com/cn/articles/kubernetes-and-cloud-native-applications-part01)
+原文地址：[《Kubernetes与云原生应用》系列之Kubernetes的系统架构与设计理念](http://www.infoq.com/cn/articles/kubernetes-and-cloud-native-applications-part01)
 
