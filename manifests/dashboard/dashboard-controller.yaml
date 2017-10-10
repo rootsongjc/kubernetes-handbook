@@ -21,7 +21,7 @@ spec:
       serviceAccountName: dashboard
       containers:
       - name: kubernetes-dashboard
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.6.0
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.6.3
         resources:
           limits:
             cpu: 100m
