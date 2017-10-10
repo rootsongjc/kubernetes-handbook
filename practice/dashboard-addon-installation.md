@@ -120,8 +120,54 @@ openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 
 将生成的`admin.p12`证书导入的你的电脑，导出的时候记住你设置的密码，导入的时候还要用到。
 
-如果你不想使用**https**的话，可以直接访问insecure port 8080端口:`http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard`
+如果你不想使用**https**的话，可以直接访问insecure port 8080端口：<http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard>
 
 ![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg)
 
 由于缺少 Heapster 插件，当前 dashboard 不能展示 Pod、Nodes 的 CPU、内存等 metric 图形。
+
+**更新**
+
+Kubernetes 1.6 版本的 dashboard 的镜像已经到了 v1.6.3 版本，我们可以使用下面的方式更新。
+
+修改 `dashboard-controller.yaml` 文件中的镜像的版本将 `v1.6.0` 更改为 `v1.6.3`。
+
+```yaml
+image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.6.3
+```
+
+然后执行下面的命令：
+
+```bash
+kubectl apply -f dashboard-controller.yaml
+```
+
+即可在线更新 dashboard 的版本。
+
+监听 dashboard Pod 的状态可以看到：
+
+```bash
+kubernetes-dashboard-215087767-2jsgd   0/1       Pending   0         0s
+kubernetes-dashboard-3966630548-0jj1j   1/1       Terminating   0         1d
+kubernetes-dashboard-215087767-2jsgd   0/1       Pending   0         0s
+kubernetes-dashboard-3966630548-0jj1j   1/1       Terminating   0         1d
+kubernetes-dashboard-215087767-2jsgd   0/1       ContainerCreating   0         0s
+kubernetes-dashboard-3966630548-0jj1j   0/1       Terminating   0         1d
+kubernetes-dashboard-3966630548-0jj1j   0/1       Terminating   0         1d
+kubernetes-dashboard-215087767-2jsgd   1/1       Running   0         6s
+kubernetes-dashboard-3966630548-0jj1j   0/1       Terminating   0         1d
+kubernetes-dashboard-3966630548-0jj1j   0/1       Terminating   0         1d
+kubernetes-dashboard-3966630548-0jj1j   0/1       Terminating   0         1d
+```
+
+新的 Pod 的启动了，旧的 Pod 被终结了。
+
+Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard>，可以看到新版的界面：
+
+![V1.6.3版本的dashboard界面](../images/dashboard-v163.jpg)
+
+新版本中最大的变化是增加了进入容器内部的入口，可以在页面上进入到容器内部操作，同时又增加了一个搜索框。
+
+## 参考
+
+[WebUI(Dashboard) 文档](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
