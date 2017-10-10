@@ -4,7 +4,7 @@ title: "在开启TLS的Kubernetes1.6集群上安装dashboard"
 draft: false
 categories: "kubernetes"
 tags: ["kubernetes","dashboard"]
-bigimg: [{src: "(https://res.cloudinary.com/jimmysong/image/upload/images/2016082001.jpg", desc: "东直门桥 Aug 20,2016"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016082001.jpg", desc: "东直门桥 Aug 20,2016"}]
 ---
 
 ## 前言
