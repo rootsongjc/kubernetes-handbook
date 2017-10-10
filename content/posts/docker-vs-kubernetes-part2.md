@@ -26,7 +26,7 @@ Kubernetes是典型的**Master/Slave**架构模式，本文简要的介绍kubene
 - kubelet：负责管控docker容器，如启动/停止、监控运行状态等。它会定期从etcd获取分配到本机的Pod，并根据Pod信息启动或停止相应的容器。同时，它也会接收apiserver的HTTP请求，汇报Pod的运行状态。
 - proxy：负责为Pod提供代理。它会定期从etcd获取所有的service，并根据service信息创建代理。当某个客户Pod要访问其他Pod时，访问请求会经过本机proxy做转发。
 
-![img](http://valleylord.github.io/images/201601-kubernetes-concepts/kubernetes-masterslave.png)
+![master slave架构](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-masterslave.png)
 
 ## Kubernetes组件详细介绍
 

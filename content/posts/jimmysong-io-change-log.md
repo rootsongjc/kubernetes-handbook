@@ -92,7 +92,8 @@ tags: ["github-pages"]
 
 1. 重新设置了`subtitle`的位置为居中，原先是靠左对齐
 2. 修正了 `header.html` 中的bug，`type`应该设置为posts，而不是默认的post
-3. 可以为每个post设置一个图片，方式在在文章头部添加如下信息
+3. 增加 [addthis](https://www.addthis.com/) 社交分享按钮
+4. 可以为每个post设置一个图片，方式在在文章头部添加如下信息
 
 ```yaml
 bigimg: [{src: "img/cloud-computing.jpg", desc: "Cloud Computing"}]
