@@ -7,7 +7,7 @@
 - Namespace
 - Service
 - Volume
-- Persistent Volume
+- PersistentVolume
 - Deployment
 - Secret
 - StatefulSet
@@ -18,12 +18,22 @@
 - Job
 - CronJob
 - SecurityContext
-- Resource Quota
-- Horizontal Pod Autoscaling
+- ResourceQuota
+- LimitRange
+- HorizontalPodAutoscaling
 - Ingress
 - ConfigMap
 - Label
 - ThirdPartyResources
+
+我将它们简单的分类为以下几种资源对象：
+
+| 类别   | 名称                                       |
+| :--- | ---------------------------------------- |
+| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling |
+| 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、ThirdPartyResource、   ServiceAccount |
+| 存储对象 | Volume、Persistent Volume                 |
+| 策略对象 | SecurityContext、ResourceQuota、LimitRange |
 
 ## 理解 kubernetes 中的对象
 

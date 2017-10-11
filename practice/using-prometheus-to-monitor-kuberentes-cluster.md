@@ -1,6 +1,6 @@
 # 使用Prometheus监控kubernetes集群
 
-我们使用 Giantswarm 开源的 [kubernetes-promethues](https://github.com/giantswarm/kubernetes-prometheus) 来监控 kubernetes 集群，所有的 YAML 文件可以在 [manifests/prometheus](../manifests/prometheus) 目录下找到。
+我们使用 Giantswarm 开源的 [kubernetes-promethues](https://github.com/giantswarm/kubernetes-prometheus) 来监控 kubernetes 集群，所有的 YAML 文件可以在 [../manifests/prometheus](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/prometheus) 目录下找到。
 
 需要用到的镜像有：
 

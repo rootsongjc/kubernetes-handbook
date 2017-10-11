@@ -27,7 +27,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 该方案在扩展性、个性化、部署和后期维护方面都能做到均衡，因此选择该方案。
 
-![logstash日志收集架构图](../images/filebeat-log-collector.png)
+![filebeat日志收集架构图](../images/filebeat-log-collector.png)
 
 我们创建了自己的filebeat镜像。创建过程和使用方式见https://github.com/rootsongjc/docker-images
 

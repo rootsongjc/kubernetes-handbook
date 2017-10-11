@@ -18,7 +18,7 @@ grafana-deployment.yaml  grafana-service.yaml  heapster-deployment.yaml  heapste
 
 我们自己创建了heapster的rbac配置`heapster-rbac.yaml`。
 
-已经修改好的 yaml 文件见：[heapster](../manifests/heapster/)
+已经修改好的 yaml 文件见：[../manifests/heapster](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/heapster/)
 
 
 ## 配置 grafana-deployment

@@ -9,7 +9,7 @@ $ ls *.yaml
 dashboard-controller.yaml  dashboard-service.yaml dashboard-rbac.yaml
 ```
 
-已经修改好的 yaml 文件见：[dashboard](../manifests/dashboard)
+已经修改好的 yaml 文件见：[../manifests/dashboard](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/dashboard)
 
 由于 `kube-apiserver` 启用了 `RBAC` 授权，而官方源码目录的 `dashboard-controller.yaml` 没有定义授权的 ServiceAccount，所以后续访问 `kube-apiserver` 的 API 时会被拒绝，web中提示：
 
