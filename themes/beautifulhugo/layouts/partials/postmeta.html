@@ -1,0 +1,10 @@
+{{ $baseurl := .Site.BaseURL }}
+<div>
+    <section id="datecount">
+        <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }}</h4>
+    </section>
+    <h5 id="wc">{{ .FuzzyWordCount }} Words|Read in about {{ .ReadingTime }} Min</h5>
+    <h5 id="tags">Tags: {{ range .Params.tags }}
+        <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
+    </h5>
+</div>

@@ -39,6 +39,7 @@ h6 {
 
 a {
     color: #008AFF;
+    word-break: break-all;
 }
 
 a:hover,
@@ -830,4 +831,8 @@ input.gsc-input,
 
 label {
     font-weight: 100;
+}
+
+code {
+    word-break: break-all;
 }

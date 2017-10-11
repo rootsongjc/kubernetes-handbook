@@ -11,7 +11,7 @@ tags: ["github-pages"]
 - [x] 移动设备页面适配问题，手机中打开有些长代码页面会需要缩放
 - [ ] 评论框一直是个问题，现在使用的 `Gitment` 当文章的 URL 改变后需要重新 initial
 - [x] 每篇文章的标题显示还需要优化，对齐方式问题
-- [ ] ⚠️文章正文部分的如果在 `li` 中有超长的使用点号连接起来的长“词”将无法实现分词，将导致移动设备上显示有问题
+- [x] ⚠️文章正文部分的如果在 `li` 中有超长的使用点号连接起来的长“词”将无法实现分词，将导致移动设备上显示有问题
 - [ ] 在主页中增加受欢迎文章和最新文章的入口，丰富首页功能
 - [x] 增加主页的个性化banner，并添加 description
 - [x] 增加搜索框，使用 [algolia](https://www.algolia.com/doc/tutorials/search-ui/instant-search/build-an-instant-search-results-page/instantsearchjs/)
@@ -93,9 +93,11 @@ tags: ["github-pages"]
 1. 重新设置了`subtitle`的位置为居中，原先是靠左对齐
 2. 修正了 `header.html` 中的bug，`type`应该设置为posts，而不是默认的post
 3. 增加 [addthis](https://www.addthis.com/) 社交分享按钮
-4. 可以为每个post设置一个图片，方式在在文章头部添加如下信息
+4. 可以为每个post设置一个图片，方式在在文章头部添加图片地址和描述，可以添加多张轮播
 
-```yaml
-bigimg: [{src: "img/cloud-computing.jpg", desc: "Cloud Computing"}]
-```
+## 2017-10-11
+
+1. 修复了链接和文字的换行问题
+2. 可以在文件头中指定是否显示post meta信息，只要加入`postmeta`就不显示
+3. 在[about](https://jimmysong.io/about)页面中增加封面图片
 
