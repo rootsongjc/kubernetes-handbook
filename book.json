@@ -19,7 +19,8 @@
         "-lunr", "-search", "search-plus",
         "github-buttons@2.1.0",
         "favicon@^0.0.2",
-        "tbfed-pagefooter@^0.0.1"
+        "tbfed-pagefooter@^0.0.1",
+        "3-ba"
     ],
     "pluginsConfig": {
         "github": {
@@ -45,6 +46,9 @@
         "favicon": {
             "shortcut": "favicon.ico",
             "bookmark": "favicon.ico"
+        },
+        "3-ba": {
+            "token": "11f7d254cfa4e0ca44b175c66d379ecc"
         }
     }
 }
