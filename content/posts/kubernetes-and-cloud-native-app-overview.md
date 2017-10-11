@@ -286,21 +286,23 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 当我们有了一个kubernetes集群后，如何在上面开发和部署应用，应该遵循怎样的流程？本次分享将向您展示如何使用go语言开发和部署一个kubernetes native应用，使用wercker进行持续集成与持续发布，我将以一个很简单的前后端访问，获取伪造数据并展示的例子来说明。（本文是我在DockOne社区分享的内容）
 
-详见[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
+详见：[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
 
 ### 云原生应用开发示例
 
-详见[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
+详见：[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
 
 ### 上线与部署流程详解
 
-详见[使用Jenkins进行持续构建与发布应用到kubernetes集群中](https://jimmysong.io/posts/kubernetes-jenkins-ci-cd/)。
+详见：[使用Jenkins进行持续构建与发布应用到kubernetes集群中](https://jimmysong.io/posts/kubernetes-jenkins-ci-cd/)。
 
 ## 如何迁移到云原生应用架构
 
 
 
 ### 迁移到云原生应用架构指南
+
+详见：[]
 
 ### 迁移案例解析
 
