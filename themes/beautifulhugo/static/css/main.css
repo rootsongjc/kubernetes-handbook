@@ -259,6 +259,7 @@ img {
     text-decoration: none !important;
     border-width: 0 1px 1px 1px;
     font-weight: normal;
+    word-break: break-word;
 }
 
 @media only screen and (max-width: 767px) {
