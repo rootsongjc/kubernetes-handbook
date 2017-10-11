@@ -167,7 +167,7 @@ desc = "Data Science"
 [[menu.main]]
     parent = "Projects"
     name = "Migrating to Cloud Native"
-    url = "migrating-to-cloud-natie-application-architectures"
+    url = "migrating-to-cloud-native-application-architectures"
     weight = 4
 
 [[menu.main]]
