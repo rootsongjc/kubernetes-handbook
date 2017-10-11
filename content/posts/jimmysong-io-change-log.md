@@ -101,4 +101,4 @@ tags: ["github-pages"]
 2. 可以在文件头中指定是否显示post meta信息，只要加入`postmeta`就不显示
 3. 在[about](https://jimmysong.io/about)页面中增加封面图片
 4. 首页增加最新文章展示
-
+5. 在配置文件中增加`sharebutton`开关
