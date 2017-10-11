@@ -8,10 +8,12 @@ Theme [Beautiful Hugo](https://github.com/halogenica/beautifulhugo)
 
 ## Acknowledgements
 
+- [AddThis](https://www.addthis.com): social share botton
 - [Algolia](https://www.algolia.com): search platform
 - [autocomplete.js](https://github.com/algolia/autocomplete.js): search frontend
 - [Baidu analysis](http://tongji.baidu.com): website analysis
 - [Beautiful Hugo](https://github.com/halogenica/beautifulhugo): theme
+- [Bitlinks](https://bitly.com) Short links
 - [Cloudfare](https://www.cloudflare.com): DNS and https
 - [Cloudinary](https://www.cloudinary.com): CDN and static images hosting
 - [Github Pages](https://pages.github.com): website hosting

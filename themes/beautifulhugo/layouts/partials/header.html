@@ -23,23 +23,32 @@
         <div class="container">
           <div class="row">
               <div class="col-lg-12 col-md-12 col-md-offset-0">
-              <div class="post-heading">
+                {{ if eq .Type "posts" }}
+                <div class="post-heading">
+                {{ else }}
+                <div class="page-heading">
+                {{ end }}
                   {{ if .IsHome }}
                      <h1 align="center">{{ $hello }}</h1>
                   {{ else }}
                      <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
                   {{ end }}
                   {{ if $subtitle }}
+                  {{if .IsHome}}
+                    <hr class="small">
+                    <span class="page-subheading">{{ $subtitle }}</span>
+                  {{ else }}
                     {{ if eq .Type "posts" }}
                       <hr class="small">
-                      <span class="posts-subheading">{{ $subtitle }}</span>
+                      <span class="post-subheading">{{ $subtitle }}</span>
                     {{ else }}
-                      <h2 align="center" class="posts-subheading">{{ $subtitle }}</h2>
+                      <h2 align="center" class="post-subheading">{{ $subtitle }}</h2>
                     {{ end }}
                   {{ end }}
                   {{ if eq .Type "posts" }}
                     {{ partial "post_meta.html" . }}
                   {{ end }}
+                {{ end }}
               </div>
             </div>
           </div>
