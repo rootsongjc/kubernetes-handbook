@@ -408,6 +408,7 @@ footer .theme-by {
 
 .post-entry {
     width: 100%;
+    word-break: break-all;
 }
 
 .post-image {

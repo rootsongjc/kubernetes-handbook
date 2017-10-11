@@ -3,7 +3,7 @@ date: "2017-03-11T15:45:27+08:00"
 title: "微服务设计读书笔记"
 draft: false
 categories: "Architecture"
-tags: ["microservices","architecture","book"]
+tags: ["micro-services","architecture","book"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160625036.jpg", desc: "青海湖畔  Jun 25,2016"}]
 ---
 
