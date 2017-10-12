@@ -21,9 +21,6 @@ cd public
 grep -v '"content":' algolia.json>rootsongjc-hugo.json
 rm -f algolia.json
 
-# Add media
-#cp -r /media/* media/
-
 # Add changes to git.
 git add -A
 
