@@ -32,13 +32,15 @@ description: "从云计算和容器生态开始引出kubernetes和cloud native�
   - [安全性与权限管理](#安全性与权限管理)
 - [如何开发Kubernetes原生应用步骤介绍](#如何开发Kubernetes原生应用步骤介绍)
   - [云原生应用开发示例](#云原生应用开发示例)
-  - [上线与部署流程详解](#上线与部署流程详解)
 - [如何迁移到云原生应用架构](#如何迁移到云原生应用架构)
   - [迁移到云原生应用架构指南](#迁移到云原生应用架构指南)
   - [迁移案例解析](#迁移案例解析)
 - [Service mesh基本原理和示例介绍](#Service-mesh基本原理和示例介绍)
   - [什么是Service mesh](#什么是Service-mesh)
   - [Service mesh使用指南](#Service-mesh使用指南)
+- [使用案例](#使用案例)
+    - [DevOps](#devops)
+    - [Spark on Kubernetes](#spark-on-kubernetes)
 
 ## 从云计算到微服务再到云原生计算
 
@@ -284,17 +286,31 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 ## 如何开发Kubernetes原生应用步骤介绍
 
-当我们有了一个kubernetes集群后，如何在上面开发和部署应用，应该遵循怎样的流程？本次分享将向您展示如何使用go语言开发和部署一个kubernetes native应用，使用wercker进行持续集成与持续发布，我将以一个很简单的前后端访问，获取伪造数据并展示的例子来说明。（本文是我在DockOne社区分享的内容）
-
-详见：[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
+当我们有了一个kubernetes集群后，如何在上面开发和部署应用，应该遵循怎样的流程？下面我将展示如何使用go语言开发和部署一个kubernetes native应用，使用wercker进行持续集成与持续发布，我将以一个很简单的前后端访问，获取伪造数据并展示的例子来说明。
 
 ### 云原生应用开发示例
 
+我们将按照如下步骤来开发部署一个kubernetes原生应用并将它部署到kubernetes集群上开放给集群外访问：
+
+1. 服务API的定义
+2. 使用Go语言开发kubernetes原生应用
+3. 一个持续构建与发布工具与环境
+4. 使用traefik和VIP做边缘节点提供外部访问路由
+
+我写了两个示例用于演示，开发部署一个伪造的 metric 并显示在 web 页面上，包括两个service：
+
+- [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
+- [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
+
+**定义API生成API文档**
+
+使用`API blueprint`格式，定义API文档，格式类似于markdown，再使用[aglio](https://github.com/danielgtaylor/aglio)生成HTML文档。
+
+![API文档](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-test-api-doc.jpg)
+
+
+
 详见：[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
-
-### 上线与部署流程详解
-
-详见：[使用Jenkins进行持续构建与发布应用到kubernetes集群中](https://jimmysong.io/posts/kubernetes-jenkins-ci-cd/)。
 
 ## 如何迁移到云原生应用架构
 
@@ -302,12 +318,139 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 ### 迁移到云原生应用架构指南
 
-详见：[]
+详见：[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)
+
+
 
 ### 迁移案例解析
 
 ## Service mesh基本原理和示例介绍
 
+Service mesh现在一般被翻译作服务网格，目前主流的Service mesh有如下两款：
+
+- [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档中文版](http://istio.doczh.cn/)
+- [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
+
 ### 什么是Service mesh
 
+如果用一句话来解释什么是 Service Mesh，可以将它比作是应用程序或者说微服务间的 TCP/IP，负责服务之间的网络调用、限流、熔断和监控。对于编写应用程序来说一般无须关心 TCP/IP 这一层（比如通过 HTTP 协议的 RESTful 应用），同样使用 Service Mesh 也就无须关系服务之间的那些原来是通过应用程序或者其他框架实现的事情，比如 Spring Cloud、OSS，现在只要交给 Service Mesh 就可以了。
+
+![service mesh架构图](https://res.cloudinary.com/jimmysong/image/upload/images/serivce-mesh-control-plane.png)
+
+详见[什么是 service mesh - jimmysong.io](https://jimmysong.io/posts/what-is-a-service-mesh/)。
+
 ### Service mesh使用指南
+
+两款Service mesh各有千秋，我分别写了他们的使用案例指南：
+
+- [Linkderd使用指南](https://jimmysong.io/posts/linkerd-user-guide/)
+- ​
+
+## 使用案例
+
+Kubernetes作为云原生计算的基本组件之一，开源2年时间以来热度与日俱增，它可以跟我们的生产结合，擦出很多火花，比如FaaS和Serverless类应用，都很适合运行在kubernetes上。
+
+关于Cloud Native开源软件生态请参考 [Awesome Cloud Native - jimmysong.io](https://jimmysong.io/awesome-cloud-native)。
+
+### DevOps
+
+下面是社区中kubernetes开源爱好者的分享内容，我觉得是对kubernetes在DevOps中应用的很好的形式值得大家借鉴。
+
+真正践行DevOps，让开发人员在掌握自己的开发和测试环境，让环境一致，让开发效率提升，让运维没有堆积如山的tickets，让监控更加精准，从kubernetes平台开始。
+
+**行动指南**
+
+1. 根据环境（比如开发、测试、生产）划分`namespace`，也可以根据项目来划分
+2. 再为每个用户划分一个`namespace`、创建一个`serviceaccount`和`kubeconfig`文件，不同`namespace`间的资源隔离，目前不隔离网络，不同`namespace`间的服务可以互相访问
+3. 创建yaml模板，降低编写kubernetes yaml文件编写难度
+4. 在`kubectl`命令上再封装一层，增加用户身份设置和环境初始化操作，简化`kubectl`命令和常用功能
+5. 管理员通过dashboard查看不同`namespace`的状态，也可以使用它来使操作更便捷
+6. 所有应用的日志统一收集到ElasticSearch中，统一日志访问入口
+7. 可以通过Grafana查看所有namespace中的应用的状态和kubernetes集群本身的状态
+8. 需要持久化的数据保存在分布式存储中，例如GlusterFS或Ceph中
+
+**使用Kibana查看日志**
+
+日志字段中包括了应用的标签、容器名称、主机名称、宿主机名称、IP地址、时间、
+
+![kibana界面](https://res.cloudinary.com/jimmysong/image/upload/images/filebeat-docker-test.jpg)
+
+**使用Grafana查看应用状态**
+
+**注**：以下Grafna页面图片来自社区用户分享。
+
+监控分类示意图：
+
+![Grafana界面示意图1](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-devops-example-grafana-1.png)
+
+Kubernetes集群全局监控图1
+
+该监控图可以看到集群硬件使用情况。
+
+![Grafana界面示意图2](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-devops-example-grafana-2.png)
+
+Kubernetes全局监控图2
+
+该监控可以看到单个用户的namespace下的所有资源的使用情况。
+
+![Grafana界面示意图3](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-devops-example-grafana-3.png)
+
+### Spark on Kubernetes
+
+TL;DR https://jimmysong.io/spark-on-k8s
+
+Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes原生调度，详见[运行支持kubernetes原生调度的spark程序-Spark on Kubernetes](https://jimmysong.io/posts/running-spark-with-kubernetes-native-scheduler/)。
+
+**为何要使用spark on kubernetes**
+
+使用kubernetes原生调度的spark on kubernetes是对原先的spark on yarn和yarn on docker的改变是革命性的，主要表现在以下几点：
+
+1. **Kubernetes原生调度**：不再需要二层调度，直接使用kubernetes的资源调度功能，跟其他应用共用整个kubernetes管理的资源池；
+2. **资源隔离，粒度更细**：原先yarn中的queue在spark on kubernetes中已不存在，取而代之的是kubernetes中原生的namespace，可以为每个用户分别指定一个namespace，限制用户的资源quota；
+3. **细粒度的资源分配**：可以给每个spark任务指定资源限制，实际指定多少资源就使用多少资源，因为没有了像yarn那样的二层调度（圈地式的），所以可以更高效和细粒度的使用资源；
+4. **监控的变革**：因为做到了细粒度的资源分配，所以可以对用户提交的每一个任务做到资源使用的监控，从而判断用户的资源使用情况，所有的metric都记录在数据库中，甚至可以为每个用户的每次任务提交计量；
+5. **日志的变革**：用户不再通过yarn的web页面来查看任务状态，而是通过pod的log来查看，可将所有的kuberentes中的应用的日志等同看待收集起来，然后可以根据标签查看对应应用的日志；
+
+**如何提交任务**
+
+仍然使用`spark-submit`提交spark任务，可以直接指定kubernetes API server地址，下面的命令提交本地jar包到kubernetes集群上运行，同时指定了运行任务的用户、提交命名的用户、运行的excutor实例数、driver和executor的资源限制、使用的spark版本等信息。
+
+详细使用说明见[Apache Spark on Kubernetes用户指南 - jimmysong.io](https://jimmysong.io/spark-on-k8s/user-guide.html)。
+
+```bash
+./spark-submit \
+  --deploy-mode cluster \
+  --class com.talkingdata.alluxio.hadooptest \
+  --master k8s://https://172.20.0.113:6443 \
+  --kubernetes-namespace spark-cluster \
+  --conf spark.kubernetes.driverEnv.SPARK_USER=hadoop \
+  --conf spark.kubernetes.driverEnv.HADOOP_USER_NAME=hadoop \
+  --conf spark.executorEnv.HADOOP_USER_NAME=hadoop \
+  --conf spark.executorEnv.SPARK_USER=hadoop \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+  --conf spark.driver.memory=100G \
+  --conf spark.executor.memory=10G \
+  --conf spark.driver.cores=30 \
+  --conf spark.executor.cores=2 \
+  --conf spark.driver.maxResultSize=10240m \
+  --conf spark.kubernetes.driver.limit.cores=32 \
+  --conf spark.kubernetes.executor.limit.cores=3 \
+  --conf spark.kubernetes.executor.memoryOverhead=2g \
+  --conf spark.executor.instances=5 \
+  --conf spark.app.name=spark-pi \
+  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
+~/Downloads/tendcloud_2.10-1.0.jar
+```
+
+**监控**
+
+下图是从Kubernetes dashboard上看到的spark-cluster这个namespace上运行的应用情况。
+
+![dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/spark-job-on-kubernetes-example-1.jpg)
+
+下图是从Grafana监控页面上查看到的某个executor资源占用情况。
+
+![Grafana](https://res.cloudinary.com/jimmysong/image/upload/images/spark-job-on-kubernetes-example-2.jpg)
