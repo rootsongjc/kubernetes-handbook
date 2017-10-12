@@ -28,7 +28,7 @@ git clone https://github.com/martin-gorner/tensorflow-mnist-tutorial.git
 
 **安装TensorFlow**
 
-我之前写过详细的TensorFlow安装教程[TensorFlow实战（才云郑泽宇著）读书笔记——第二章TensorFlow环境搭建](https://jimmysong.io/blogs/tensorflow-practice-02/)，这篇文章中主要讲怎样在docker里安装TensorFlow。
+我之前写过详细的TensorFlow安装教程[TensorFlow实战（才云郑泽宇著）读书笔记——第二章TensorFlow环境搭建](https://jimmysong.io/posts/tensorflow-practice-02/)，这篇文章中主要讲怎样在docker里安装TensorFlow。
 
 我使用的Mac而且还是python2.7，所以我这样安装：
 

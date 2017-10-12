@@ -9,7 +9,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016043
 
 ## 前言
 
-在[安装好了Kubernetes集群](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)、[配置好了flannel网络](https://jimmysong.io/blogs/kubernetes-network-config/)、[安装了Kubernetes Dashboard](https://jimmysong.io/blogs/kubernetes-dashboard-installation/)和[配置Heapster监控插件](https://jimmysong.io/blogs/kubernetes-heapster-installation/)后，还有一项重要的工作，为了调试和故障排查，还需要进行日志收集工作。
+在[安装好了Kubernetes集群](https://jimmysong.io/posts/kubernetes-installation-on-centos/)、[配置好了flannel网络](https://jimmysong.io/posts/kubernetes-network-config/)、[安装了Kubernetes Dashboard](https://jimmysong.io/posts/kubernetes-dashboard-installation/)和[配置Heapster监控插件](https://jimmysong.io/posts/kubernetes-heapster-installation/)后，还有一项重要的工作，为了调试和故障排查，还需要进行日志收集工作。
 
 **官方文档**
 
@@ -192,7 +192,7 @@ SendRequestTransportException[[internal:discovery/zen/unicast]]; nested: NodeNot
 
 参考[使用Fluentd和ElasticSearch Stack实现Kubernetes的集群Logging](http://tonybai.com/2017/03/03/implement-kubernetes-cluster-level-logging-with-fluentd-and-elasticsearch-stack/)，Tony Bai也遇到了这个问题，我们了解下[ConfigMap](https://kubernetes.io/docs/user-guide/configmap/)还有[fluent-plugin-kubernetes_metadata_filter](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)。
 
-参考我的另一片译文[Kubernetes中ConfigMap解析](rootsongjc.github.io/blogs/kubernetes-configmap-introduction)。
+参考我的另一片译文[Kubernetes中ConfigMap解析](rootsongjc.github.io/posts/kubernetes-configmap-introduction)。
 
 ## 问题排查
 
@@ -273,7 +273,7 @@ fluentd-es-v1.22   3         3         0         3            0           beta.k
 COPY td-agent.conf /etc/td-agent/td-agent.conf
 ```
 
-我们可以使用[ConfigMap](https://jimmysong.io/blogs/kubernetes-configmap-introduction/)，不用重新再build镜像，通过文件挂载的形式替换镜像中已有的td-agent.conf文件。
+我们可以使用[ConfigMap](https://jimmysong.io/posts/kubernetes-configmap-introduction/)，不用重新再build镜像，通过文件挂载的形式替换镜像中已有的td-agent.conf文件。
 
 [Tony Bai](tonybai.com)给出的两点建议：
 

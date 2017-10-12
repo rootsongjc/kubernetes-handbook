@@ -41,7 +41,7 @@ Docker的代码结构比较清晰，分成的目录比较多，有以下这些�
 
 - **api**：定义API，使用了**Swagger2.0**这个工具来生成API，配置文件在`api/swagger.yaml`
 - **builder**：用来build docker镜像的包，看来历史比较悠久了
-- **bundles**：这个包是在进行[docker源码编译和开发环境搭建](https://jimmysong.io/blogs/docker-dev-env/)的时候用到的，编译生成的二进制文件都在这里。
+- **bundles**：这个包是在进行[docker源码编译和开发环境搭建](https://jimmysong.io/posts/docker-dev-env/)的时候用到的，编译生成的二进制文件都在这里。
 - **cli**：使用[cobra](http://www.github.com/spf13/cobra)工具生成的docker客户端命令行解析器。
 - **client**：接收`cli`的请求，调用RESTful API中的接口，向server端发送http请求。
 - **cmd**：其中包括`docker`和`dockerd`两个包，他们分别包含了客户端和服务端的main函数入口。

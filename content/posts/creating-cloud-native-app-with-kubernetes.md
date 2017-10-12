@@ -52,7 +52,7 @@ tags: ["kubernetes","cloud-native"]
 
 我们知道Kubernetes在启动Pod的时候为容器注入环境变量，这些环境变量在所有的 namespace 中共享（环境变量是不断追加的，新启动的Pod中将拥有老的Pod中所有的环境变量，而老的Pod中的环境变量不变）。但是既然使用这些环境变量就已经可以访问到对应的service，那么获取应用的地址信息，究竟是使用变量呢？还是直接使用DNS解析来发现？
 
-答案是使用DNS，详细说明见[Kubernetes中的服务发现与Docker容器间的环境变量传递源码探究](http://jimmysong.io/blogs/exploring-kubernetes-env-with-docker/)
+答案是使用DNS，详细说明见[Kubernetes中的服务发现与Docker容器间的环境变量传递源码探究](http://jimmysong.io/posts/exploring-kubernetes-env-with-docker/)
 
 ### 使用wercker构建镜像
 
@@ -114,7 +114,7 @@ Wercker配置文件是一个YAML文件，该文件必须在GitHub repo的最顶�
 
 Wercker中还有**工作流**的概念，通过使用分支、条件构建、多个部署目标和其他高级功能扩展了管道的功能，这些高级功能读着可以自己在wercker的网站中探索。
 
-因为我使用wercker自动构建，构建完成后自动打包成docker镜像并上传到docker hub中（需要先在docker hub中创建repo），如何使用 wercker 做持续构建与发布，并集成docker hub插件请参考：[wercker构建](https://jimmysong.io/blogs/continuous-integration-with-wercker/)
+因为我使用wercker自动构建，构建完成后自动打包成docker镜像并上传到docker hub中（需要先在docker hub中创建repo），如何使用 wercker 做持续构建与发布，并集成docker hub插件请参考：[wercker构建](https://jimmysong.io/posts/continuous-integration-with-wercker/)
 
 K8s-app-monitor-agent的wercker配置文件如下：
 
@@ -288,7 +288,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 ## 参考
 
-[适用于Kubernetes的应用开发与部署流程详解](https://jimmysong.io/blogs/deploy-applications-in-kubernetes/)
+[适用于Kubernetes的应用开发与部署流程详解](https://jimmysong.io/posts/deploy-applications-in-kubernetes/)
 
 [示例的项目代码服务器端](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
 

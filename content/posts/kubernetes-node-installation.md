@@ -22,7 +22,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016121
 
 kubernetes node 节点包含如下组件：
 
-- Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
+- Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 - Docker1.12.5：docker的安装很简单，这里也不说了。
 - kubelet
 - kube-proxy
@@ -42,7 +42,7 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 ## 配置Flanneld
 
-参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
+参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
 service配置文件为
 
