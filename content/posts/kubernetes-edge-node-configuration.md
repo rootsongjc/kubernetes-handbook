@@ -1,9 +1,9 @@
 ---
 date: "2017-05-09T12:59:19+08:00"
 draft: false
-title: "Kubernetes的边缘节点配置"
+title: "使用traefik和keepalived配置kubernetes的边缘"
 categories: "kubernetes"
-tags: ["kubernetes","treafik","keepalived","ingress"]
+tags: ["kubernetes","traefik","keepalived","ingress"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170506086.jpg", desc: "南屏晚钟@圆明园 May 6,2017"}]
 ---
 
