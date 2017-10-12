@@ -4,12 +4,14 @@
     <div class="text-center">
       <h1>{{ i18n "pageNotFound" }}</h1>
       <br/>
-      <h3>请将域名后的子路径改成posts试一试，或者在搜索框中搜索你的看到的标题</h2>
       {{ if isset .Site.Params "errorpage" }}
       <img src="{{ .Site.Params.errorpage }}" />
       {{ else }}
       <img src="{{ .Site.BaseURL }}/img/404-southpark.jpg" />
       {{ end }}
+      <h2>Advices</h2>
+      <h3>Change the child-path near domain name to posts or search page titles at search box</h3>
+      <h3>请将域名后的子路径改成posts试一试，或者在搜索框中搜索文章标题</h3>
     </div>
   </div>
 {{ end }}

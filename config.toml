@@ -1,5 +1,5 @@
 baseurl = "https://jimmysong.io/"
-DefaultContentLanguage = "zh"
+DefaultContentLanguage = "en"
 hasCJKLanguage = true
 languageCode = "zh-cn"
 title = "Jimmy Song" 
