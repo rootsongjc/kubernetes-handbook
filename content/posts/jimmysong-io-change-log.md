@@ -1,9 +1,9 @@
 ---
-title: "jimmysong.io change log"
+title: "jimmysong.io网站更新日志"
 date: 2017-10-04T11:18:27+08:00
 draft: false
 categories: github
-tags: ["github-pages"]
+tags: ["github-pages","github","website","hugo"]
 ---
 
 ### TODO
@@ -95,7 +95,7 @@ tags: ["github-pages"]
 3. 增加 [addthis](https://www.addthis.com/) 社交分享按钮
 4. 可以为每个post设置一个图片，方式在在文章头部添加图片地址和描述，可以添加多张轮播
 
-## 2017-10-11
+### 2017-10-11
 
 1. 修复了链接和文字的换行问题
 2. 可以在文件头中指定是否显示post meta信息，只要加入`postmeta`就不显示
