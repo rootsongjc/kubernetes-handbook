@@ -1,5 +1,5 @@
 ---
-title: "docker用户过度到kubectl命令行指南"
+title: "docker用户过渡到kubectl命令行指南"
 date: 2017-09-16T20:54:06+08:00
 draft: false
 categories: "kubernetes"
