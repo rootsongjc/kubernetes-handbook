@@ -102,3 +102,7 @@ tags: ["github-pages","github","website","hugo"]
 3. 在[about](https://jimmysong.io/about)页面中增加封面图片
 4. 首页增加最新文章展示
 5. 在配置文件中增加`sharebutton`开关
+
+### 2017-10-12
+
+1. 增加`errorpage`开关，自定义404页面，并增加链接丢失原因说明后给出建议
