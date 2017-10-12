@@ -9,7 +9,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016043
 
 ## 前言
 
-为什么要翻译这篇文章，是因为我在[使用Fluentd和ElasticSearch收集Kubernetes集群日志](rootsongjc.github.io/blogs/kubernetes-fluentd-elasticsearch-installation)的时候遇到了需要修改镜像中配置的问题，[fluent-plugin-kubernetes_metadata](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)里的需要的[td-agent.conf](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/fluentd-elasticsearch/fluentd-es-image/td-agent.conf)文件。
+为什么要翻译这篇文章，是因为我在[使用Fluentd和ElasticSearch收集Kubernetes集群日志](rootsongjc.github.io/posts/kubernetes-fluentd-elasticsearch-installation)的时候遇到了需要修改镜像中配置的问题，[fluent-plugin-kubernetes_metadata](https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter)里的需要的[td-agent.conf](https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/fluentd-elasticsearch/fluentd-es-image/td-agent.conf)文件。
 
 其实ConfigMap功能在Kubernetes1.2版本的时候就有了，许多应用程序会从配置文件、命令行参数或环境变量中读取配置信息。这些配置信息需要与docker image解耦，你总不能每修改一个配置就重做一个image吧？ConfigMap API给我们提供了向容器中注入配置信息的机制，ConfigMap可以被用来保存单个属性，也可以用来保存整个配置文件或者JSON二进制大对象。
 

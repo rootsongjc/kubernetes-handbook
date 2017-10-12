@@ -7,7 +7,7 @@ tags: ["kubernetes","flannel"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2014100402.jpg", desc: "西安鼓楼 Oct 4,2014"}]
 ---
 
-书接上文[在CentOS中安装Kubernetes详细指南](https://jimmysong.io/blogs/kubernetes-installation-on-centos/)，这是一个系列文章，作为学习Kubernetes的心路历程吧。
+书接上文[在CentOS中安装Kubernetes详细指南](https://jimmysong.io/posts/kubernetes-installation-on-centos/)，这是一个系列文章，作为学习Kubernetes的心路历程吧。
 
 本文主要讲解**Kubernetes的网络配置**，👆文中有一个安装**Flannel**的步骤，但是安装好后并没有相应的配置说明。
 

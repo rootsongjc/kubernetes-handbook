@@ -9,7 +9,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2014082
 
 ## 前言
 
-昨晚（Apr 9,2017）金山软件的[opsnull](https://github.com/opsnull)发布了一个开源项目[和我一步步部署kubernetes集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster)，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)打造的kubernetes环境和opsnull的文章[创建 kubernetes 各组件 TLS 加密通信的证书和秘钥](https://github.com/opsnull/follow-me-install-kubernetes-cluster/blob/master/01-TLS%E8%AF%81%E4%B9%A6%E5%92%8C%E7%A7%98%E9%92%A5.md)的实践。之前安装过程中一直使用的是非加密方式，一直到后来[使用Fluentd和ElasticSearch收集Kubernetes集群日志](https://jimmysong.io/blogs/kubernetes-fluentd-elasticsearch-installation/)时发现有权限验证问题，所以为了深入研究kubernentes。
+昨晚（Apr 9,2017）金山软件的[opsnull](https://github.com/opsnull)发布了一个开源项目[和我一步步部署kubernetes集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster)，下文是结合我[之前部署kubernetes的过程](https://jimmysong.io/tags/kubernetes/)打造的kubernetes环境和opsnull的文章[创建 kubernetes 各组件 TLS 加密通信的证书和秘钥](https://github.com/opsnull/follow-me-install-kubernetes-cluster/blob/master/01-TLS%E8%AF%81%E4%B9%A6%E5%92%8C%E7%A7%98%E9%92%A5.md)的实践。之前安装过程中一直使用的是非加密方式，一直到后来[使用Fluentd和ElasticSearch收集Kubernetes集群日志](https://jimmysong.io/posts/kubernetes-fluentd-elasticsearch-installation/)时发现有权限验证问题，所以为了深入研究kubernentes。
 
 ## Kubernentes中的身份验证
 

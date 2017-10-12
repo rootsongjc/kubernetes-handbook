@@ -65,7 +65,7 @@ NAME           STATUS    AGE       VERSION
 
 ## 参考
 
-[Ingress解析](https://jimmysong.io/blogs/kubernetes-ingress-resource/)
+[Ingress解析](https://jimmysong.io/posts/kubernetes-ingress-resource/)
 
-[Kubernetes Traefik Ingress安装试用](https://jimmysong.io/blogs/traefik-ingress-installation/)
+[Kubernetes Traefik Ingress安装试用](https://jimmysong.io/posts/traefik-ingress-installation/)
 

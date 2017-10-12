@@ -7,7 +7,7 @@ tags: ["docker","go"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160403050.jpg", desc: "故宫 Apr 3,2016"}]
 ---
 
-继续上一篇[Docker17.03-CE插件开发的🌰](https://jimmysong.io/blogs/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
+继续上一篇[Docker17.03-CE插件开发的🌰](https://jimmysong.io/posts/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
 
 **cli/command/plugin/create.go**
 
