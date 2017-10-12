@@ -25,14 +25,14 @@ index.tenxcloud.com/jimmy/k8s-dns-sidecar-amd64:1.14.1
 
 以下yaml配置文件中使用的是私有镜像仓库中的镜像。
 
-``` bash
+``` 
 kubedns-cm.yaml  
 kubedns-sa.yaml  
 kubedns-controller.yaml  
 kubedns-svc.yaml
 ```
 
-已经修改好的 yaml 文件见：[../manifests/dns](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/kubedns)
+已经修改好的 yaml 文件见：[../manifests/kubedns](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/kubedns)
 
 ## 系统预定义的 RoleBinding
 
@@ -187,3 +187,5 @@ PING kube-dns.kube-system.svc.cluster.local (10.254.0.2): 56 data bytes
 6 packets transmitted, 0 packets received, 100% packet loss
 ```
 从结果来看，service名称可以正常解析。
+
+**注意**：直接ping ClusterIP是ping不通的，ClusterIP是根据**IPtables**路由到服务的endpoint上，只有结合ClusterIP加端口才能访问到对应的服务。
