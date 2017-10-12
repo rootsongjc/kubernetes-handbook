@@ -1,7 +1,7 @@
 ---
 date: "2017-06-01T20:18:57+08:00"
 draft: false
-title: "微服务管理框架service mesh——istio安装试用笔记"
+title: "微服务管理框架service mesh——Istio安装试用笔记"
 categories: "cloud-native"
 tags: ["kubernetes","istio","service-mesh","cloud-native"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170528033.jpg", desc: "威海东部海湾 May 28,2017"}]
