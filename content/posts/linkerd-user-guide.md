@@ -1,9 +1,10 @@
 ---
 date: "2017-08-01T21:22:55+08:00"
 draft: false
-title: "Linkerd 使用指南"
+title: "微服务管理框架service mesh——Linkerd安装试用笔记"
 categories: "cloud-native"
-tags: ["kubernetes","cloud-native","service-mesh"]
+tags: ["kubernetes","cloud-native","service-mesh","linkerd"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170708036.jpg", desc: "天津之眼 Jul 8,2017"}]
 ---
 
 ## 前言
