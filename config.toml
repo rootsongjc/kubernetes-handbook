@@ -62,7 +62,7 @@ desc = "Data Science"
 [[menu.main]]
     identifier = "Articles"
     name = "Articles"
-    url = "posts"
+    url = "posts
     weight = 1
 
 [[menu.main]]
@@ -103,18 +103,6 @@ desc = "Data Science"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Code"
-    url = "categories/code"
-    weight = 6
-
-[[menu.main]]
-    parent = "Categories"
-    name = "Architecture"
-    url = "categories/architecture/"
-    weight = 7
-
-[[menu.main]]
-    parent = "Categories"
     name = "Devops"
     url = "categories/devops"
     weight = 4
@@ -126,6 +114,18 @@ desc = "Data Science"
     weight = 5
 
 [[menu.main]]
+    parent = "Categories"
+    name = "Code"
+    url = "categories/code"
+    weight = 6
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Architecture"
+    url = "categories/architecture"
+    weight = 7
+
+[[menu.main]]
     identifier = "Books"
     name = "Books"
     weight = 3
@@ -133,7 +133,7 @@ desc = "Data Science"
 [[menu.main]]
     parent = "Books"
     name = "Cloud Native Go"
-    url = "https://jimmysong.io/cloud-native-go"
+    url = "cloud-native-go"
     weight = 1
 
 [[menu.main]]
@@ -150,25 +150,25 @@ desc = "Data Science"
 [[menu.main]]
     parent = "Projects"
     name = "Kubernetes handbook"
-    url = "https://jimmysong.io/kubernetes-handbook"
+    url = "kubernetes-handbook"
     weight = 1
 
 [[menu.main]]
     parent = "Projects"
     name = "Spark on kubernetes"
-    url = "https://jimmysong.io/spark-on-k8s"
+    url = "spark-on-k8s"
     weight = 2
 
 [[menu.main]]
     parent = "Projects"
     name = "Awesome Cloud Native"
-    url = "https://jimmysong.io/awesome-cloud-native"
+    url = "awesome-cloud-native"
     weight = 3
 
 [[menu.main]]
     parent = "Projects"
     name = "Migrating to Cloud Native"
-    url = "https://jimmysong.io/migrating-to-cloud-native-application-architectures"
+    url = "migrating-to-cloud-native-application-architectures"
     weight = 4
 
 [[menu.main]]
