@@ -106,3 +106,8 @@ tags: ["github-pages","github","website","hugo"]
 ### 2017-10-12
 
 1. 增加`errorpage`开关，自定义404页面，并增加链接丢失原因说明后给出建议
+
+### 2017-10-13
+
+1. 增加Gitee站点克隆，http://jimmysong.gitee.io
+2. 取消导航拦链接的`i18n`配置，直接使用`absURL`，并且在`config.toml`中写明URL，不使用相对路径，因为这些链接了的代码不跟该博客在同一个代码库中

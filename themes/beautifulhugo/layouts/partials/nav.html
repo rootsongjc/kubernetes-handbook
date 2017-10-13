@@ -17,13 +17,19 @@
               <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
               <div class="navlinks-children">
                 {{ range .Children }}
+                <!-- 取消i18n URL
                   <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                -->
+                  <a href="{{ .URL | absURL }}">{{ .Name }}</a>
                 {{ end }}
               </div>
             </li>
           {{ else }}
             <li>
+                <!-- 取消i18n URL
               <a title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
+                -->
+              <a title="{{ .Name }}" href="{{ .URL  | absURL }}">{{ .Name }}</a>
             </li>
           {{ end }}
         {{ end }}
