@@ -150,25 +150,25 @@ desc = "Data Science"
 [[menu.main]]
     parent = "Projects"
     name = "Kubernetes handbook"
-    url = "kubernetes-handbook"
+    url = "https://jimmysong.io/kubernetes-handbook"
     weight = 1
 
 [[menu.main]]
     parent = "Projects"
     name = "Spark on kubernetes"
-    url = "spark-on-k8s"
+    url = "https://jimmysong.io/spark-on-k8s"
     weight = 2
 
 [[menu.main]]
     parent = "Projects"
     name = "Awesome Cloud Native"
-    url = "awesome-cloud-native"
+    url = "https://jimmysong.io/awesome-cloud-native"
     weight = 3
 
 [[menu.main]]
     parent = "Projects"
     name = "Migrating to Cloud Native"
-    url = "migrating-to-cloud-native-application-architectures"
+    url = "https://jimmysong.io/migrating-to-cloud-native-application-architectures"
     weight = 4
 
 [[menu.main]]

@@ -31,5 +31,14 @@ git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
+# Sync to gitee
+cp -r * ../../gitee/jimmysong/
+cd ../../gitee/jimmysong/
+git add -A
+git commit -m "$msg"
+git push origin master
+
 # Come Back
-cd ..
+cd ../../rootsongjc-hugo
+
+
