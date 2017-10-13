@@ -5,6 +5,7 @@
     </section>
     <h5 id="wc">{{ .FuzzyWordCount }} Words|Read in about {{ .ReadingTime }} Min</h5>
     <h5 id="tags">Tags: {{ range .Params.tags }}
-        <a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
+        <!--tags前的那个/不要去掉，否则点击链接后无法跳转-->
+        <a href="{{ $baseurl }}/tags/{{ . | urlize }}">{{ . }}</a> &nbsp;{{ end }}
     </h5>
 </div>
