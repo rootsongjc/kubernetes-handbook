@@ -109,6 +109,7 @@ tags: ["github-pages","github","website","hugo"]
 
 ### 2017-10-13
 
-1. 增加Gitee站点克隆，http://jimmysong.gitee.io
+1. 增加Gitee站点克隆，方便百度抓取站点中的链接，http://jimmysong.gitee.io
 2. 取消导航拦链接的`i18n`配置，直接使用`absURL`，并且在`config.toml`中写明URL，不使用相对路径，因为这些链接了的代码不跟该博客在同一个代码库中
 3. 将js文件托管到cloudinary，不使用cloudflare和maxcdn，它们的速度太慢
+4. 优化网站加载速度
