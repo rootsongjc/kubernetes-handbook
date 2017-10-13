@@ -27,7 +27,7 @@
           {{ else }}
             <li>
               <a title="{{ .Name }}" href="{{ .URL  | relLangURL }}">{{ .Name }}</a>
-              <!-- 如果使用absURL的话所有的链接最后面要加还是那个/才能访问，但是使用relLangURL在config.tom里设置https地址就不会生效-->    
+              <!-- 如果使用absURL的话所有的链接最后面要加还是那个/才能访问，但是使用relLangURL在config.tom里设置https地址就不会生效-->
               <!--
               <a title="{{ .Name }}" href="{{ .URL  | absURL }}">{{ .Name }}</a>
               -->
