@@ -34,6 +34,7 @@ git push origin master
 # Sync to gitee
 cp -r * ../../gitee/jimmysong/
 cd ../../gitee/jimmysong/
+rm -f CNAME
 git add -A
 git commit -m "$msg"
 git push origin master
