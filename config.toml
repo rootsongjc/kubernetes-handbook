@@ -62,7 +62,7 @@ desc = "Data Science"
 [[menu.main]]
     identifier = "Articles"
     name = "Articles"
-    url = "posts
+    url = "posts"
     weight = 1
 
 [[menu.main]]
