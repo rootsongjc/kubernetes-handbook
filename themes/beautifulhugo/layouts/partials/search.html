@@ -10,8 +10,12 @@
 <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 -->
+<!--
 <script src="{{ "js/algoliasearch.min.js" | absURL }}"></script>
 <script src="{{ "js/autocomplete.min.js" | absURL }}"></script>
+-->
+<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js" | absURL }}"></script>
+<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js" | absURL }}"></script>
 <!-- Initialize autocomplete menu -->
 <script>
 var client = algoliasearch("X4YB3WOBNV", "{{ .Site.Params.algolia }}");
