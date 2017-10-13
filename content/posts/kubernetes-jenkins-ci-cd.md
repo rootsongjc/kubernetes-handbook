@@ -3,7 +3,7 @@ date: "2017-06-27T20:52:57+08:00"
 draft: false
 title: "使用Jenkins进行持续构建与发布应用到kubernetes集群中"
 categories: "devops"
-tags: ["kubernetes","ci","ci","jenkins"]
+tags: ["kubernetes","ci","jenkins"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170627001.jpg", desc: "正午@东直门 Jun 27，2017"}]
 ---
 
