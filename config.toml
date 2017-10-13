@@ -133,7 +133,7 @@ desc = "Data Science"
 [[menu.main]]
     parent = "Books"
     name = "Cloud Native Go"
-    url = "cloud-native-go"
+    url = "https://jimmysong.io/cloud-native-go"
     weight = 1
 
 [[menu.main]]
