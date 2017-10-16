@@ -32,3 +32,10 @@ git log -p master.. origin/master
 git merge origin/master
 ```
 
+**3. 删除远程分支**
+
+```Bash
+git push origin --delete <branchName>
+git push origin --delete tag <tagName>
+```
+
