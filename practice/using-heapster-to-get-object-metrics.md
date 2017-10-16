@@ -106,7 +106,7 @@ https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster/
 
 注意：Heapster中查询的所有值都是以最小单位为单位，比如CPU为1milicore，内存为B。
 
-1. **第一部分：Heapster API地址**
+**第一部分：Heapster API地址**
 
 `https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster/`
 
@@ -118,19 +118,17 @@ Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-sy
 ...
 ```
 
-2. **第二部分：Heapster API参数**
+**第二部分：Heapster API参数**
 
 `/api/v1/model/namespaces/spark-cluster/metrics/memory/usage`
 
 表示查询的是`spark-cluster` namespace中的`memory/usage`的metrics。
 
-3. **第三部分：时间片**
+**第三部分：时间片**
 
 `?start=2017-10-16T09:14:00Z&end=2017-10-16T09:16:00Z`
 
-查询参数为时间片：包括start和end。
-
-使用`RFC-3339`时间格式，在Linux系统中可以这样获取：
+查询参数为时间片：包括start和end。使用`RFC-3339`时间格式，在Linux系统中可以这样获取：
 
 ```bash
 $ date --rfc-3339="seconds"
