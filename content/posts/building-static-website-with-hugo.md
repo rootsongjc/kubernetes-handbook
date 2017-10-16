@@ -3,7 +3,7 @@ title: "Hugo handbook"
 subtitle: "静态网站构建手册-使用Hugo构建个人博客Gitbook"
 date: 2017-10-16T22:30:35+08:00
 draft: false
-Descrip: "本手册将指导你如何使用Hugo构建静态网站用于个人博客或者项目展示，使用gitbook生成hugo handbook"
+description: "本手册将指导你如何使用Hugo构建静态网站用于个人博客或者项目展示，使用gitbook生成hugo handbook"
 tags: ["hugo","website","blog","gitbook","go"]
 catagories: "github"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017101501.jpg", desc: "杭州萧山机场快速路 Oct 15,2017"}]
