@@ -25,13 +25,13 @@ Node包括如下状态信息：
 
 禁止pod调度到该节点上
 
-```
+```bash
 kubectl cordon <node>
 ```
 
 驱逐该节点上的所有pod
 
-```
+```bash
 kubectl drain <node>
 ```
 

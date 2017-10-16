@@ -29,7 +29,7 @@ Horizontal Pod Autoscaling由API server和controller共同实现。
 
 Horizontal Pod Autoscaling作为API resource也可以像Pod、Deployment一样使用kubeclt命令管理，使用方法跟它们一样，资源名称为`hpa`。
 
-```
+```bash
 kubectl create hpa
 kubebectl get hpa
 kubectl describe hpa
@@ -40,14 +40,14 @@ kubectl delete hpa
 
 用法如下：
 
-```b
+```bash
 kubectl autoscale (-f FILENAME | TYPE NAME | TYPE/NAME) [--min=MINPODS] --max=MAXPODS
 [--cpu-percent=CPU] [flags] [options]
 ```
 
 举个例子：
 
-```
+```bash
 kubectl autoscale deployment foo --min=2 --max=5 --cpu-percent=80
 ```
 

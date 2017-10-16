@@ -202,3 +202,7 @@ monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/T
 ![修改grafana模板](../images/grafana-dashboard-setting.jpg)
 
 将 Templating 中的 namespace 的 Data source 设置为 influxdb-datasource，Refresh 设置为 on Dashboard Load 保存设置，刷新浏览器，即可看到其他 namespace 选项。
+
+## 参考
+
+[使用Heapster获取集群对象的metric数据](../practice/using-heapster-to-get-object-metrics.md)
