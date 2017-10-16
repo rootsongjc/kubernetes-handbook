@@ -14,7 +14,7 @@ Heapster可以收集Node节点上的cAdvisor数据，还可以按照kubernetes�
 
 ## 使用案例
 
-Heapster使用起来很简单，本身就是二进制文件，直接使用命令行启动，也可以放在容器里运行，在作为kubernetes插件运行时，我们是直接放在容器中的，见[安装heapster插件](practice/heapster-addon-installation.md)。
+Heapster使用起来很简单，本身就是二进制文件，直接使用命令行启动，也可以放在容器里运行，在作为kubernetes插件运行时，我们是直接放在容器中的，见[安装heapster插件](../practice/heapster-addon-installation.md)。
 
 ### 运行
 
@@ -108,7 +108,7 @@ https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster/
 
 1. **第一部分：Heapster API地址**
 
-https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster/
+`https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/heapster/`
 
 可以使用下面的命令获取:
 
@@ -126,9 +126,9 @@ Heapster is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-sy
 
 3. **第三部分：时间片**
 
-查询参数为时间片：包括start和end。
-
 `?start=2017-10-16T09:14:00Z&end=2017-10-16T09:16:00Z`
+
+查询参数为时间片：包括start和end。
 
 使用`RFC-3339`时间格式，在Linux系统中可以这样获取：
 
