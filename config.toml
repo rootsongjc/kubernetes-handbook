@@ -25,29 +25,32 @@ description = "jimmysong.io"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 
 [[Params.bigimg]]
-#src = "img/cloud-computing.jpg"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
+desc = "KEUC - China Kubernetes End User Conference 2017"
+
+[[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
-desc = "Cloud Computing"
+desc = "Cloud Computing for every one"
 
 [[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
-desc = "Great Wall"
+desc = "Cross the Great Wall to the world"
 
 [[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
-desc = "Big Data"
+desc = "Big Data for business decision"
 
-[[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
-desc = "Data Science"
+#[[Params.bigimg]]
+#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
+#desc = "Data Science"
 
-[[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-2.jpg"
-desc = "Big Data"
+#[[Params.bigimg]]
+#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-2.jpg"
+#desc = "Big Data"
 
-[[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-2.jpg"
-desc = "Data Science"
+#[[Params.bigimg]]
+#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-2.jpg"
+#desc = "Data Science"
 
 [Author]
   name = "Jimmy Song"
