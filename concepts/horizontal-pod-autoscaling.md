@@ -31,7 +31,7 @@ Horizontal Pod Autoscaling作为API resource也可以像Pod、Deployment一样�
 
 ```bash
 kubectl create hpa
-kubebectl get hpa
+kubectl get hpa
 kubectl describe hpa
 kubectl delete hpa
 ```
