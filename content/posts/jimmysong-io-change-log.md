@@ -21,6 +21,8 @@ tags: ["github-pages","github","website","hugo"]
 - [x] 每个post的`bigimg`显示有问题
 - [ ] 如果使用absURL的话所有的链接最后面要加还是那个/才能访问，但是使用relLangURL在config.tom里设置https地址就不会生效，需要能够在导航栏的列表里直接添加https的地址
 - [ ] 让TODO列表不显示前面的bullet
+- [ ] Table中每列的宽度需要重新调整
+- [ ] 浏览器宽度变小后logo可能遮挡导航栏
 
 ### 2017-03-17
 
