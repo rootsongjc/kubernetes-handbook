@@ -1,4 +1,4 @@
-# Kubernetes相关资料链接
+# Kubernetes相关资讯和情报链接
 
 授人以鱼，不如授人以渔。下面的资料将有助于大家了解kubernetes生态圈当前发展状况和发展趋势，我特此整理相关资料如下。
 
@@ -47,6 +47,7 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [grafana](https://grafana.com/blog/)
 - [gravitational](https://gravitational.com/blog/)
 - [heptio](https://blog.heptio.com/)
+- [istio](https://istio.io/blog/)
 - [jimmysong](https://jimmysong.io)
 - [kubernetes](http://blog.kubernetes.io/)
 - [moby](https://blog.mobyproject.org/)

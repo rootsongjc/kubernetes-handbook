@@ -107,5 +107,5 @@
   - [7.2 问题记录](appendix/issues.md)
   - [7.3 使用技巧](appendix/tricks.md)
   - [7.4 kubernetes service中的故障排查](appendix/debug-kubernetes-services.md)
-  - [7.5 相关资料分享](appendix/material-share.md)
+  - [7.5 Kubernetes相关资讯和情报链接](appendix/material-share.md)
 
