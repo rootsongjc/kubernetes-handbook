@@ -78,6 +78,7 @@
      - [4.3.7 管理容器的计算资源](practice/manage-compute-resources-container.md)
      - [4.3.8 使用Prometheus监控kubernetes集群](practice/using-prometheus-to-monitor-kuberentes-cluster.md)
      - [4.3.9 使用Heapster获取集群和对象的metric数据](practice/using-heapster-to-get-object-metrics.md)
+     - [4.3.10 手动集群升级](practice/manually-upgrade.md)
   - [4.4 存储管理](practice/storage.md)
      - [4.4.1 GlusterFS](practice/glusterfs.md)
         - [4.4.1.1 使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
