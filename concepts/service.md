@@ -129,7 +129,7 @@ spec:
 默认的策略是，通过 round-robin 算法来选择 backend `Pod`。
 实现基于客户端 IP 的会话亲和性，可以通过设置 `service.spec.sessionAffinity` 的值为 `"ClientIP"` （默认值为 `"None"`）。
 
-![userspace代理模式下Service概览图](https://d33wubrfki0l68.cloudfront.net/b8e1022c2dd815d8dd36b1bc4f0cc3ad870a924f/1dd12/images/docs/services-userspace-overview.svg)
+![userspace代理模式下Service概览图](../images/services-userspace-overview.jpg)
 
 
 
@@ -145,7 +145,7 @@ spec:
 和 userspace 代理类似，网络返回的结果是，任何到达 `Service` 的 IP:Port 的请求，都会被代理到一个合适的 backend，不需要客户端知道关于 Kubernetes、`Service`、或 `Pod` 的任何信息。
 这应该比 userspace 代理更快、更可靠。然而，不像 userspace 代理，如果初始选择的 `Pod` 没有响应，iptables 代理能够自动地重试另一个 `Pod`，所以它需要依赖 [readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#defining-readiness-probes)。
 
-![iptables代理模式下Service概览图](https://d33wubrfki0l68.cloudfront.net/837afa5715eb31fb9ca6516ec6863e810f437264/42951/images/docs/services-iptables-overview.svg)
+![iptables代理模式下Service概览图](../images/services-iptables-overview.jpg)
 
 
 
@@ -449,4 +449,4 @@ Kubernetes 最主要的哲学之一，是用户不应该暴露那些能够导致
 
 ## 更多信息
 
-阅读 [使用 Service 连接 Frontend 到 Backend](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)。
+- [使用 Service 连接 Frontend 到 Backend](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)
