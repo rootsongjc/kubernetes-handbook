@@ -553,6 +553,7 @@ footer .theme-by {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
     margin: 10px 0 0;
+    word-break: break-all;
 }
 
 .intro-header .post-heading .post-subheading {
