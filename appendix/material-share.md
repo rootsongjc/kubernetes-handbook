@@ -34,6 +34,7 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [aporeto](https://www.aporeto.com/blog/)
 - [applatix](https://applatix.com/blog/)
 - [apprenda](https://apprenda.com/blog/)
+- [bitnami](https://engineering.bitnami.com/)
 - [buoyant](https://buoyant.io/blog/)
 - [cisco](https://blogs.cisco.com/tag/kubernetes)
 - [cncf](https://www.cncf.io/newsroom/blog/)
