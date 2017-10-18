@@ -122,3 +122,4 @@ tags: ["github-pages","github","website","hugo"]
 
 1. 修复subheading的英文换行问题
 2. 设置body的`word-break`为`break-word`
+3. 修复footer中文字的切分问题
