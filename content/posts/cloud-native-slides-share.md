@@ -26,7 +26,7 @@ GitHub地址：https://github.com/rootsongjc/cloud-native-slides-share
 - [Cloud Native](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/cloud-native)
 - [Istio](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/istio)：Sample code, build and tests and governance material for the Istio project.
 - [Kubernetes](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/kubernetes)：Production-Grade Container Scheduling and Management
-- [L3](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/l3)：LinuxCon+ContainerCon+CloudOpenCon
+- [L3](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/l3)：LinuxCon + ContainerCon + CloudOpenCon
 - [Linkerd](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/linkerd)：Resilient service mesh for cloud native apps
 - [Microservices](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/microservices)
 - [Monitoring](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/monitoring)
