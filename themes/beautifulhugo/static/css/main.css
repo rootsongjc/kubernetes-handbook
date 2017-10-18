@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-flow: column;
     height: 100vh;
+    word-break: break-word;
 }
 
 .container[role=main] {

@@ -121,3 +121,4 @@ tags: ["github-pages","github","website","hugo"]
 ## 2017-10-18
 
 1. 修复subheading的英文换行问题
+2. 设置body的`word-break`为`break-word`
