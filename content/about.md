@@ -18,12 +18,22 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
   - [iFlytek](http://www.iflytek.com) （科大讯飞）
   - [TalkingData](http://www.talkingdata.com)
 
+### Books
+
+**Translations**
+
+- [Cloud Native Go](https://jimmysong.io/cloud-native-go)
+- [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python/)
+
+**Gitbooks**
+
+- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
+- [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - Building static website with hugo
+
 ### GitHub
 
-- https://github.com/rootsongjc
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - Awesome cloud native architectures
-- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
-- [magpie](http://github.com/rootsongjc/magpie) - Magpie is a command line tool for deploying and managing Yarn on Docker cluster also a solution for running Big Data applications with Docker.
+- [magpie](https://github.com/rootsongjc/magpie) - Magpie is a command line tool for deploying and managing Yarn on Docker cluster also a solution for running Big Data applications with Docker.
 - [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
 
 ### Contact
