@@ -10,6 +10,8 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 
 ![wechat_qrcode](https://res.cloudinary.com/jimmysong/image/upload/images/jimmysong-wechat-qrcode.jpg)
 
+### Info
+
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
 - [Wuhan University of Technology](http://www.whut.edu.cn) 
