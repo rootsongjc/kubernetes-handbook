@@ -308,6 +308,7 @@ footer {
 
 footer a {
     color: #404040;
+    word-break: break-word;
 }
 
 footer .list-inline {
