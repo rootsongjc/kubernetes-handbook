@@ -1,4 +1,4 @@
-# Storage for Containers using Gluster – Part II
+# 在OpenShift中使用GlusterFS做持久化存储
 
 ### 概述
 
@@ -29,13 +29,13 @@ GlusterFS是一个分布式文件系统，内置了原生协议（GlusterFS）�
 
 确保你的OpenShift虚拟机可以解析外部域名。编辑`/etc/dnsmasq.conf`文件，增加下面的Google DNS：
 
-```
+```ini
 server=8.8.8.8
 ```
 
 重启：
 
-```
+```bash
 # systemctl restart dnsmasq
 # ping -c1 google.com
 ```
@@ -165,7 +165,7 @@ WantedBy=multi-user.target
 
 Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公钥拷贝到所有3个节点上（包括你登陆的第一个节点）：
 
-```
+```bash
 [root@crs-node1 ~]# ssh-keygen -f /etc/heketi/heketi_key -t rsa -N ''
 [root@crs-node1 ~]# ssh-copy-id -i /etc/heketi/heketi_key.pub root@crs-node1.lab
 [root@crs-node1 ~]# ssh-copy-id -i /etc/heketi/heketi_key.pub root@crs-node2.lab
@@ -175,7 +175,7 @@ Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公�
 
 剩下唯一要做的事情就是配置heketi来使用SSH。 编辑`/etc/heketi/heketi.json`文件使它看起来像下面这个样子（改变的部分突出显示下划线）：
 
-```
+```json
 {
    "_port_comment":"Heketi Server Port Number",
    "port":"8080",
@@ -235,21 +235,21 @@ Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公�
 
 完成。heketi将监听8080端口，我们来确认下防火墙规则允许它监听该端口：
 
-```
+```bash
 # firewall-cmd --add-port=8080/tcp
 # firewall-cmd --runtime-to-permanent
 ```
 
 重启heketi：
 
-```
+```bash
 # systemctl enable heketi
 # systemctl restart heketi
 ```
 
 测试它是否在运行：
 
-```
+```bash
 # curl http://crs-node1.lab:8080/hello
 Hello from Heketi
 ```
@@ -320,7 +320,7 @@ Hello from Heketi
 
 现在将该文件发送给heketi：
 
-```
+```bash
 # export HEKETI_CLI_SERVER=http://crs-node1.lab:8080
 # heketi-cli topology load --json=topology.json
 Creating cluster ... ID: 78cdb57aa362f5284bc95b2549bc7e7d
@@ -375,7 +375,7 @@ parameters:
 
 为你的GlusterFS池创建StorageClass：
 
-```
+```bash
 # oc create -f crs-storageclass.yaml
 ```
 
@@ -383,7 +383,7 @@ parameters:
 
 我们来看下如何在OpenShift中使用GlusterFS。首先在OpenShift虚拟机中创建一个测试项目。
 
-```
+```bash
 # oc new-project crs-storage --display-name="Container-Ready Storage"
 ```
 
@@ -507,13 +507,13 @@ nfs.disable: on
 
 我们将使用MySQL来演示如何在OpenShift上部署具有持久化和弹性存储的有状态应用程序。 Mysql-persistent模板包含一个用于MySQL数据库目录的1G空间的PVC。 为了演示目的，可以直接使用默认值。
 
-```
+```bash
 # oc process mysql-persistent -n openshift | oc create -f -
 ```
 
 等待部署完成。你可以通过UI或者命令行观察部署进度：
 
-```
+```bash
 # oc get pods
 NAME            READY     STATUS    RESTARTS   AGE
 mysql-1-h4afb   1/1       Running   0          2m
@@ -618,7 +618,7 @@ nfs.disable: on
 
 你可以看到数据是如何被复制到3个GlusterFS块的。我们从中挑一个（最好挑选你刚登陆的那台虚拟机并查看目录）：
 
-```
+```bash
 # ll /var/lib/heketi/mounts/vg_67314f879686de975f9b8936ae43c5c5/brick_f264a47aa32be5d595f83477572becf8/brick
 total 180300
 -rw-r-----. 2 1000070000 2001       56 Mar 24 12:11 auto.cnf
@@ -648,7 +648,7 @@ drwxr-s---. 2 1000070000 2001     8192 Mar 24 12:12 sys
 
 在这里我们是在OpenShift之外创建了一个简单但功能强大的GlusterFS存储池。 该池可以独立于应用程序扩展和收缩。 该池的整个生命周期由一个简单的称为heketi的前端管理，你只需要在部署增长时进行手动干预。 对于日常配置操作，使用它的API与OpenShifts动态配置器交互，无需开发人员直接与基础架构团队进行交互。
 
-这就是我们如何将存储带入DevOps世界 - 无痛苦，并在OpenShift PaaS系统的开发人员工具中直接提供。
+o这就是我们如何将存储带入DevOps世界 - 无痛苦，并在OpenShift PaaS系统的开发人员工具中直接提供。
 
 GlusterFS和OpenShift可跨越所有环境：裸机，虚拟机，私有和公共云（Azure，Google Cloud，AWS ...），确保应用程序可移植性，并避免云供应商锁定。
 
