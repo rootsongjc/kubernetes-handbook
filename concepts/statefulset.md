@@ -2,6 +2,8 @@
 
 StatefulSet 作为 Controller 为 Pod 提供唯一的标识。它可以保证部署和 scale 的顺序。
 
+使用案例参考：[kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)，其中包含zookeeper和kakfa的statefulset设置和使用说明。
+
 StatefulSet是为了解决有状态服务的问题（对应Deployments和ReplicaSets是为无状态服务而设计），其应用场景包括：
 
 - 稳定的持久化存储，即Pod重新调度后还是能访问到相同的持久化数据，基于PVC来实现
@@ -473,3 +475,5 @@ kubectl create -f zookeeper.yaml
 ## 参考
 
 https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+
+[kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)
