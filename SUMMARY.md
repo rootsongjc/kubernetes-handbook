@@ -85,6 +85,7 @@
         - [4.4.1.2 在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
      - [4.4.2 CephFS](practice/cephfs.md)
         - [4.4.2.1 使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
+  - [4.5 服务编排管理](practice/services-management-tool.md)
 - [5. 领域应用](usecases/index.md)
   - [5.1 微服务架构](usecases/microservices.md)
     - [5.1.1 微服务中的服务发现](usecases/service-discovery-in-microservices.md)
