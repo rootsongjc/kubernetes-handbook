@@ -123,3 +123,7 @@ tags: ["github-pages","github","website","hugo"]
 1. 修复subheading的英文换行问题
 2. 设置body的`word-break`为`break-word`
 3. 修复footer中文字的切分问题
+
+## 2017-10-19
+
+1. 为文章增加`itemscope itemtype="http://schema.org/Article"`标签方便Google索引
