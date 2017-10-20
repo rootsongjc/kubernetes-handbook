@@ -177,7 +177,7 @@ StatefulSet 中默认使用的是 `OrderedReady` pod 管理。它实现了 [如�
 
 ## 简单示例
 
-以一个简单的nginx服务[web.yaml](../manifests/test/web.yaml)为例：
+以一个简单的nginx服务[web.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/test/web.yaml)为例：
 
 ```yaml
 ---
@@ -297,7 +297,7 @@ $ kubectl delete pvc www-web-0 www-web-1
 
 ## zookeeper
 
-另外一个更能说明StatefulSet强大功能的示例为[zookeeper.yaml](../manifests/test/zookeeper.yaml)。
+另外一个更能说明StatefulSet强大功能的示例为[zookeeper.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/test/zookeeper.yaml)，这个例子仅为讲解，实际可用的配置请使用 https://github.com/kubernetes/contrib/tree/master/statefulsets 中的配置。
 
 ```yaml
 ---
@@ -471,6 +471,32 @@ kubectl create -f zookeeper.yaml
 ```
 
 详细的使用说明见[zookeeper stateful application](https://kubernetes.io/docs/tutorials/stateful-application/zookeeper/)。
+
+关于StatefulSet的更多示例请参阅 [github.com/kubernetes/contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)，其中包括了zookeeper和kafka。
+
+## 集群外部访问StatefulSet的Pod
+
+我们设想一下这样的场景：在kubernetes集群外部调试StatefulSet中有序的Pod，那么如何访问这些的pod呢？
+
+方法是为pod设置label，然后用`kubectl expose`将其以NodePort的方式暴露到集群外部，以上面的zookeeper的例子来说明，下面使用命令的方式来暴露其中的两个zookeeper节点，也可以写一个serivce配置yaml文件。
+
+```bash
+kubectl label pod zk-0 zkInst=0                                                                          
+kubectl label pod zk-1 zkInst=1                                                                         
+kubectl expose po zk-0 --port=2181 --target-port=2181 --name=zk-0 --selector=zkInst=0 --type=NodePort
+kubectl expose po zk-1 --port=2181 --target-port=2181 --name=zk-1 --selector=zkInst=1 --type=NodePort
+```
+
+这样在kubernetes集群外部就可以根据pod所在的主机所映射的端口来访问了。
+
+查看`zk-0`这个service可以看到如下结果：
+
+```
+NAME      CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+zk-0      10.254.98.14   <nodes>       2181:31693/TCP   5m
+```
+
+集群外部就可以使用所有的node中的任何一个IP:31693来访问这个zookeeper实例。
 
 ## 参考
 
