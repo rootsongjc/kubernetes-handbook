@@ -74,4 +74,4 @@ tags: ["cloud-native","book","python"]
 
 - 2017-08-15 完成了序言的翻译
 - 2017-10-19 完成了第一章云原生应用与微服务的翻译
-- 2017-10-23 完成了正本书的markdown文档化并使用gitbook管理，同时备份到gitee
+- 2017-10-23 完成了整本书的markdown文档化并使用gitbook管理，同时备份到gitee
