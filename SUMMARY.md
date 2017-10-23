@@ -107,6 +107,7 @@
   - [6.2 单元测试和集成测试](develop/testing.md)
   - [6.3 client-go示例](develop/client-go-sample.md)
   - [6.4 社区贡献](develop/contribute.md)
+  - [6.5 Minikube](develop/minikube.md)
 - [7. 附录](appendix/index.md)
   - [7.1 Docker最佳实践](appendix/docker-best-practice.md)
   - [7.2 问题记录](appendix/issues.md)
