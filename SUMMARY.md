@@ -52,6 +52,7 @@
   - [3.5 在kubernetes中开发部署应用](guide/application-development-deployment-flow.md)
     - [3.5.1 适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
     - [3.5.2 迁移传统应用到kubernetes中——以Hadoop YARN为例](guide/migrating-hadoop-yarn-to-kubernetes.md)
+    - [3.5.3 使用StatefulSet部署用状态应用](guide/using-statefulset.md)
 - [4. 最佳实践](practice/index.md)
   - [ 4.1 在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
     - [4.1.1 创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
