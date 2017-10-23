@@ -56,11 +56,8 @@ tags: ["cloud-native","book","python"]
 除此之外，如果您还有如下网站的账号那就更好了：
 
 -  Jenkins
-
 -  Docker
-
 -  Amazon Web Services
-
 -  Terraform
 
 ## 目标读者
