@@ -4,9 +4,9 @@
 
 下面以在kubernetes1.6版本中部署zookeeper和kafka为例讲解StatefulSet的使用，其中kafka依赖于zookeeper。
 
-Dockerfile和配置文件见 [zookeeper](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/kafaka)。
+Dockerfile和配置文件见 [zookeeper](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/kafka)。
 
-**注：**所有的镜像基于CentOS系统的JDK制作，为我的私人镜像，外部无法访问。
+**注：**所有的镜像基于CentOS系统的JDK制作，为我的私人镜像，外部无法访问，yaml中没有配置持久化存储。
 
 ## 部署Zookeeper
 
