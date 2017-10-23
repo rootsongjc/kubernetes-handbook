@@ -63,7 +63,7 @@ spec:
       containers:
       - name: k8szk
         imagePullPolicy: Always
-        image: gcr.io/google_samples/k8szk:v2
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/zookeeper:3.4.6 
         resources:
           requests:
             memory: "2Gi"
@@ -135,17 +135,6 @@ spec:
             - "zkOk.sh"
           initialDelaySeconds: 10
           timeoutSeconds: 5
-#        volumeMounts:
-#        - name: datadir
-#          mountPath: /var/lib/zookeeper
-#      securityContext:
-#        runAsUser: 1000
-#        fsGroup: 1000
-#  volumeClaimTemplates:
-#  - metadata:
-#      name: datadir
-#    spec:
-#      accessModes: [ "ReadWriteOnce" ]
-#      resources:
-#        requests:
-#          storage: 10Gi
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
