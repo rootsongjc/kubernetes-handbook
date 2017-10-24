@@ -103,8 +103,35 @@ Sep  4 15:25:36 bj-xg-oam-kubernetes-001 kube-controller-manager: E0904 15:25:36
 
 该问题尚未解决，参考 [Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)
 
+## 9. Helm: Error: no available release name found
+
+在开启了RBAC的kubernetes集群中，当使用helm部署应用，执行`helm install`的时候，会报着个错误：
+
+```
+Error: no available release name found
+Error: the server does not allow access to the requested resource (get configmaps)
+```
+
+这是因为我们使用的`2.3.1`版本的helm init的时候没有为tiller创建`serviceaccount`和`clusterrolebiding`的缘故导致的。
+
+```bash
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+# helm init -i sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-helm-tiller:v2.3.1
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```
+
+**参考**
+
+- [Helm: Error: no available release name found - StackOverflow](https://stackoverflow.com/questions/43499971/helm-error-no-available-release-name-found)
+- [Helm 2.2.3 not working properly with kubeadm 1.6.1 default RBAC rules #2224](https://github.com/kubernetes/helm/issues/2224)
+
+
+
 ## 参考
 
 [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
 [Resource Design Proposals](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md)
+
+[Helm: Error: no available release name found]()
