@@ -1,0 +1,10 @@
+dependencies:
+- condition: ""
+  enabled: false
+  import-values: null
+  name: mongodb
+  repository: http://localhost:8879/
+  tags: null
+  version: 0.4.17
+digest: sha256:955f80c2844df5fb24c06440898df8d3b2143d7081ac11409d8604720e47b814
+generated: 2017-10-24T11:45:19.054114+08:00

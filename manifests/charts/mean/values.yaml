@@ -1,0 +1,81 @@
+## Bitnami node image version
+## ref: https://hub.docker.com/r/bitnami/node/tags/
+##
+image: sz-pg-oam-docker-hub-001.tendcloud.com/library/bitnami-node:7.5.0-r0
+
+## Git repository http/https
+##
+repository:  https://github.com/scotch-io/node-todo.git
+
+## Git repository revision to checkout
+##
+revision: 5750cb4
+
+## Specify a imagePullPolicy
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+imagePullPolicy: IfNotPresent
+
+## Configure the application with a custom config file
+## ref: https://github.com/scotch-io/node-todo#installation
+##
+config: |-
+  module.exports = {
+      remoteUrl: "mongodb://" +  process.env.MONGODB_USERNAME +":" + process.env.MONGODB_PASSWORD + "@" +  process.env.MONGODB_HOST +":"+ process.env.MONGODB_PORT + "/" +  process.env.MONGODB_DATABASE ,
+      localUrl: "mongodb://" +  process.env.MONGODB_USERNAME +":" + process.env.MONGODB_PASSWORD + "@" +  process.env.MONGODB_HOST +":"+ process.env.MONGODB_PORT + "/" +  process.env.MONGODB_DATABASE
+  };
+
+configfile: database.js
+
+##
+## MongoDB chart configuration
+##
+mongodb:
+  ## MongoDB admin password
+  ## ref: https://github.com/bitnami/bitnami-docker-MongoDB/blob/master/README.md#setting-the-root-password-on-first-run
+  # mongodbRootPassword:
+
+  ## MongoDB custom user and database
+  ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
+  ##
+  # mongodbUsername:
+  # mongodbPassword:
+  # mongodbDatabase:
+
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    enabled: false
+    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+    ## Default: volume.alpha.kubernetes.io/storage-class: default
+    ##
+    storageClass: "null"
+    accessMode: ReadWriteOnce
+    size: 8Gi
+
+## Kubernetes configuration
+## For minikube, set this to NodePort, elsewhere use LoadBalancer
+##
+serviceType: ClusterIP
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: false
+  path: /app/data
+  ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+  ## Default: volume.alpha.kubernetes.io/storage-class: default
+  ##
+  storageClass: "null"
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 300m
