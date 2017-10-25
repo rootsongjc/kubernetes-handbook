@@ -10,10 +10,8 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-#hello = "Hi,I'm Jimmy"
-hello = "Hello, programmers!"
-#subtitle = "I can help you building Cloud Native confidence"
-subtitle = "Yor are changing the world! 世界因你而美！"
+hello = "Hi,I'm Jimmy"
+subtitle = "I can help you building Cloud Native confidence"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 dateFormat = "January 2, 2006"
@@ -27,28 +25,24 @@ description = "jimmysong.io"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 
 [[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/screen-triplehead-galois-1.jpg"
-desc = "Oct 24, 1024 China Programmers' Day"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
+desc = "KEUC - China Kubernetes End User Conference 2017"
 
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
-#desc = "KEUC - China Kubernetes End User Conference 2017"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
-#desc = "Cloud Computing for every one"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
-#desc = "Cross the Great Wall to the world"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
-#desc = "Big Data for business decision"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
-#desc = "Data Science for complexity of human society"
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
+desc = "Cloud Computing for every one"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
+desc = "Cross the Great Wall to the world"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
+desc = "Big Data for business decision"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
+desc = "Data Science for complexity of human society"
 
 #[[Params.bigimg]]
 #src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-2.jpg"
