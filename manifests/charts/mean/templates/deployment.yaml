@@ -1,0 +1,136 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+      annotations:
+        pod.beta.kubernetes.io/init-containers: '[
+          {
+            "name": "wait-for-db-service",
+            "image": "{{ .Values.image }}",
+            "imagePullPolicy": "{{ .Values.imagePullPolicy }}",
+            "command": ["/bin/bash", "-c", "for i in {1..100}; do if nc -z -w 1 {{ template "mongodb.fullname" . }} 27017; then exit 0; fi; done; exit 1;"]
+          },
+          {
+            "name": "git-clone-app",
+            "image": "{{ .Values.image }}",
+            "imagePullPolicy": "{{ .Values.imagePullPolicy }}",
+            "command": [ "/bin/sh", "-c" , "git clone {{ .Values.repository }} /app && git checkout {{ .Values.revision }}" ],
+            "volumeMounts": [
+              {
+                "name": "app",
+                "mountPath": "/app"
+              }
+            ]
+          },
+          {
+            "name": "npm-install",
+            "image": "{{ .Values.image }}",
+            "imagePullPolicy": "{{ .Values.imagePullPolicy }}",
+            "command": [ "/bin/sh", "-c" , "npm install" ],
+            "volumeMounts": [
+              {
+                "name": "app",
+                "mountPath": "/app"
+              }
+            ]
+          },
+          {
+            "name": "fixing-permissions",
+            "image": "{{ .Values.image }}",
+            "imagePullPolicy": "{{ .Values.imagePullPolicy }}",
+            "command": [ "/bin/sh", "-c" , "chown bitnami:bitnami -R /app /home/bitnami {{ .Values.persistence.path }}"],
+            "volumeMounts": [
+              {
+                "name": "app",
+                "mountPath": "/app"
+              },
+              {
+                "name": "data",
+                "mountPath": "{{ .Values.persistence.path }}"
+              }
+            ]
+          }
+        ]'
+    spec:
+      containers:
+      - name: {{ template "fullname" . }}
+        securityContext:
+          readOnlyRootFilesystem: true
+        image: "{{ .Values.image }}"
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        env:
+        - name: MONGODB_HOST
+          value: {{ template "mongodb.fullname" . }}
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGODB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "mongodb.fullname" . }}
+              key: mongodb-root-password
+        - name: MONGODB_USERNAME
+          value: {{ default "" .Values.mongodb.mongodbUsername | quote }}
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "mongodb.fullname" . }}
+              key: mongodb-password
+        - name: MONGODB_DATABASE
+          value: {{ default "" .Values.mongodb.mongodbDatabase | quote }}
+        - name: GIT_REPO
+          value: {{ .Values.repository }}
+        command:
+        - /bin/bash
+        - -ec
+        - sudo -HEu bitnami npm start
+        ports:
+        - name: http
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 180
+          timeoutSeconds: 5
+          failureThreshold: 6
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 30
+          timeoutSeconds: 3
+          periodSeconds: 5
+        volumeMounts:
+        - name: app
+          mountPath: /app
+        - name: data
+          mountPath: {{ .Values.persistence.path }}
+        - name: config
+          mountPath: /app/config
+      volumes:
+        - name: app
+          emptyDir: {}
+        - name: data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ template "fullname" . }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: config
+          configMap:
+            name: {{ template "fullname" . }}
+            items:
+            - key: {{ .Values.configfile | quote }}
+              path: {{ .Values.configfile | quote }}

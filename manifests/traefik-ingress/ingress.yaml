@@ -33,3 +33,12 @@ spec:
         backend:
           serviceName: k8s-app-monitor-agent
           servicePort: 8080
+  - host: mean.jimmysong.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: orbiting-platypus-mean
+          servicePort: 80
+
+

@@ -1,0 +1,19 @@
+name: mean
+version: 0.1.3
+description: MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications. The MEAN stack is MongoDB, Express.js, Angular, and Node.js. Because all components of the MEAN stack support programs written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments.
+keywords:
+- node
+- javascript
+- mongodb
+- express
+- angular
+- nodejs
+- git
+home: http://nodejs.org/
+sources:
+- https://github.com/bitnami/bitnami-docker-node
+maintainers:
+- name: Bitnami
+  email: containers@bitnami.com
+engine: gotpl
+icon: https://bitnami.com/assets/stacks/meanstack/img/meanstack-stack-220x234.png
