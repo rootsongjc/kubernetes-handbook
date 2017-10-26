@@ -76,5 +76,10 @@
       </div>
     </div>
   </div>
+        <div align="center">
+        {{ template "_internal/pagination.html" . }}
+        {{ range .Paginator.Pages }}
+        {{ end }}
+      </div>
 {{ end }}
 
