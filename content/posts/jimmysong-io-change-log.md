@@ -127,3 +127,7 @@ tags: ["github-pages","github","website","hugo"]
 ## 2017-10-19
 
 1. 为文章增加`itemscope itemtype="http://schema.org/Article"`标签方便Google索引
+
+## 2017-10-26
+
+1. 为文章列表增加分页导航Pagination
