@@ -70,7 +70,7 @@
      - [4.2.2 分布式负载测试](practice/distributed-load-test.md)
      - [4.2.3 网络和集群性能测试](practice/network-and-cluster-perfermance-test.md)
      - [4.2.4 边缘节点配置](practice/edge-node-configuration.md)
-     - [4.2.5 使用Helm安装Nginx ingress](practice/nginx-ingress-installation.md)
+     - [4.2.5 安装Nginx ingress](practice/nginx-ingress-installation.md)
   - [4.3 运维管理](practice/operation.md)
      - [4.3.1 服务滚动升级](practice/service-rolling-update.md)
      - [4.3.2 应用日志收集](practice/app-log-collection.md)
