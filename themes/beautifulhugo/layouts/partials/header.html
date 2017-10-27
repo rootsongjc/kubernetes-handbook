@@ -32,6 +32,7 @@
                      <h1 align="center">{{ $hello }}</h1>
                   {{ else }}
                      <h1>{{ with $.Scratch.Get "title" }}{{.}}{{ else }}<br/>{{ end }}</h1>
+                    {{ partial "post_meta.html" . }}
                   {{ end }}
                   {{ if $subtitle }}
                   {{if .IsHome}}
