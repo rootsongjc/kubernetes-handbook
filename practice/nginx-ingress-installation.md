@@ -1,4 +1,4 @@
-# 使用Helm安装Nginx ingress
+# 安装Nginx ingress
 
 [Nginx ingress](https://github.com/kubernetes/ingress-nginx) 使用ConfigMap来管理Nginx配置，nginx是大家熟知的代理和负载均衡软件，比起[Traefik](https://traefik.io)来说功能更加强大.
 
