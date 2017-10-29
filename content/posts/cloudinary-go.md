@@ -41,7 +41,7 @@ Usage:
 
 Available Commands:
   help        Help about any command
-  ls          list files
+  ls          List files
   put         Upload file
   rm          Remove file
 
