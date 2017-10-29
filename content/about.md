@@ -36,6 +36,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 ### GitHub
 
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - Awesome cloud native architectures
+- [cloudinary-go](https://github.com/rootsongjc/cloudinary-go) - A Go client library and CLI tool to upload static assets to Cloudinary service.
 - [magpie](https://github.com/rootsongjc/magpie) - Deploying and managing a Hadoop Yarn cluster with Docker Swarm.
 - [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
 
