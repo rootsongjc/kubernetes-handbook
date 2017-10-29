@@ -135,3 +135,7 @@ tags: ["github-pages","github","website","hugo"]
 ## 2017-10-27
 
 1. 修复了有题图的页面，大标题下不显示发布时间的问题
+
+### 2017-10-29
+
+1. 开发[cloudinary-go](https://github.com/rootsongjc/cloudinary-go)命令行工具便于向cloudinary上传图片
