@@ -5,7 +5,7 @@ draft: false
 categories: "kubernetes"
 tags: ["kubernetes"]
 descripton: "授人以鱼，不如授人以渔。下面的资料将有助于大家了解kubernetes生态圈当前发展状况和发展趋势，我特此整理相关资料如下，本文同时归档到kubernetes-handbook。"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/20170630001.jpg", desc: "东直门夜色 Jun 30,2017"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170630001.jpg", desc: "东直门夜色 Jun 30,2017"}]
 ---
 
 授人以鱼，不如授人以渔。下面的资料将有助于大家了解kubernetes生态圈当前发展状况和发展趋势，我特此整理相关资料如下。本文同时归档到[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)。
