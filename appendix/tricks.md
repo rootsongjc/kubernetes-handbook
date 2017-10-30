@@ -1,4 +1,4 @@
-# 1. 在容器中获取 Pod 的IP
+## 1. 在容器中获取 Pod 的IP
 
 通过环境变量来实现，该环境变量直接引用 resource 的状态字段，示例如下：
 
@@ -31,7 +31,7 @@ spec:
 
 容器中可以直接使用 `POD_IP` 环境变量获取容器的 IP。
 
-# 2. 指定容器的启动参数
+## 2. 指定容器的启动参数
 
 我们可以在 Pod 中为容器使用 command 为容器指定启动参数：
 
@@ -77,3 +77,50 @@ spec:
 
 参考：[Architecture Patterns for Microservices in Kubernetes](https://www.infoq.com/presentations/patterns-microservices-kubernetes)
 
+## 4. 使用Init container初始化应用配置
+
+Init container可以在应用程序的容器启动前先按顺序执行一批初始化容器，只有所有Init容器都启动成功后，Pod才算启动成功。看下下面这个例子（来源：[kubernetes: mounting volume from within init container - Stack Overflow](https://stackoverflow.com/questions/44109308/kubernetes-mounting-volume-from-within-init-container)）：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init
+  labels:
+    app: init
+  annotations:
+    pod.beta.kubernetes.io/init-containers: '[
+        {
+            "name": "download",
+            "image": "axeclbr/git",
+            "command": [
+                "git",
+                "clone",
+                "https://github.com/mdn/beginner-html-site-scripted",
+                "/var/lib/data"
+            ],
+            "volumeMounts": [
+                {
+                    "mountPath": "/var/lib/data",
+                    "name": "git"
+                }
+            ]
+        }
+    ]'
+spec:
+  containers:
+  - name: run
+    image: docker.io/centos/httpd
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - mountPath: /var/www/html
+      name: git
+  volumes:
+  - emptyDir: {}
+    name: git
+```
+
+这个例子就是用来再应用程序启动前首先从GitHub中拉取代码并存储到共享目录下。
+
+关于Init容器的更详细说明请参考 [init容器](../concepts/init-containers.md)。
