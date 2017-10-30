@@ -2,9 +2,11 @@
 date: "2017-08-15T22:58:37+08:00"
 draft: false
 descript: "Cloud Native Python - 使用python和react构建云原生应用"
-title: "Cloud Native Python—使用Python和React构建云原生应用"
+title: "Cloud Native Python"
+subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
 tags: ["cloud-native","book","python"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160313011.jpg", desc: "北京大栅栏 Mar 13,2016"}]
 ---
 
 继 [Cloud Native Go](https://rootsongjc.github.io/cloud-native-go/) 之后又一本关于 Cloud Native 的力作已经登上了我的写作日程，这次是基于 Python 构建微服务和云原生 Web 应用程序，书名叫作 Cloud Native Python。
@@ -76,3 +78,4 @@ tags: ["cloud-native","book","python"]
 - 2017-10-19 完成了第一章云原生应用与微服务的翻译
 - 2017-10-23 完成了整本书的markdown文档化并使用gitbook管理，同时备份到gitee
 - 2017-10-26 完成了第二章的翻译，使用Python构建微服务
+- 2017-10-27 完成了第三章的翻译，使用Python构建Web UI
