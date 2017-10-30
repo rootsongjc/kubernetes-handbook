@@ -79,3 +79,4 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016031
 - 2017-10-23 完成了整本书的markdown文档化并使用gitbook管理，同时备份到gitee
 - 2017-10-26 完成了第二章的翻译，使用Python构建微服务
 - 2017-10-27 完成了第三章的翻译，使用Python构建Web UI
+- 2017-10-30 完成了第四章的翻译，与数据服务交互
