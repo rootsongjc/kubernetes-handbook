@@ -139,3 +139,7 @@ tags: ["github-pages","github","website","hugo"]
 ### 2017-10-29
 
 1. 开发[cloudinary-go](https://github.com/rootsongjc/cloudinary-go)命令行工具便于向cloudinary上传图片
+
+## 2017-10-31
+
+1. 修复了分页的css布局问题
