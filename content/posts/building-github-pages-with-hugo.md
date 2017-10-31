@@ -112,13 +112,13 @@ $ hugo server -t hyde --buildDrafts
 
 **说明**
 
-使用`hugo new`命令生成的文章前面的加号中包括的那几行，是用来设置文章属性的。
+使用`hugo new`命令生成的文章前面的加号中包括的那几行，是用来设置文章属性的，这些属性使用的是yaml语法。
 
 - **date** 自动增加时间标签，页面上默认显示n篇最新的文章。
 - **draft** 设置为false的时候会被编译为HTML，true则不会编译和发表，在本地修改文章时候用true。
 - **title** 设置文章标题
 - **tags** 数组，可以设置多个标签，都好隔开，hugo会自动在你博客主页下生成标签的子URL，通过这个URL可以看到所有具有该标签的文章。
-- **category** 文章分类，跟Tag功能差不多。
+- **categories** 文章分类，跟Tag功能差不多，只能设置一个字符串。
 
 今天先说到这里，再次声明下，[Jimmy Song's blog](https://jimmysong.io)就是用👆的步骤建立的。
 
