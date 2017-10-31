@@ -13,18 +13,35 @@ Chart有特定的目录结构，可以打包起来进行版本控制。
 
 ### Chart的组成结构
 
+我们以nginx的chart为例，讲解chart的组成结构。
+
+```bash
+nginx/
+  Chart.yaml          # 必须：一个包含chart的名称、版本和启用条件信息等的YAML文件
+  LICENSE             # 可选: chart的许可证
+  README.md           # 可选: 使用说明
+  requirements.yaml   # 可选: 该chart的依赖配置
+  values.yaml         # 必须：该chart的默认配置值
+  charts/             # 可选: 包含该chart依赖的chart
+  templates/          # 可选：kubernetes manifest文件模板，用于生成kubernetes yaml文件
+  templates/NOTES.txt # 可选: 该chart的使用说明和提示信息文本文件，作为helm install后的提示信息
 ```
-wordpress/
-  Chart.yaml          # A YAML file containing information about the chart
-  LICENSE             # OPTIONAL: A plain text file containing the license for the chart
-  README.md           # OPTIONAL: A human-readable README file
-  requirements.yaml   # OPTIONAL: A YAML file listing dependencies for the chart
-  values.yaml         # The default configuration values for this chart
-  charts/             # OPTIONAL: A directory containing any charts upon which this chart depends.
-  templates/          # OPTIONAL: A directory of templates that, when combined with values,
-                      # will generate valid Kubernetes manifest files.
-  templates/NOTES.txt # OPTIONAL: A plain text file containing short usage notes
-```
+
+### Chart的安装方式
+
+安装chart主要分为安装本地定义的chart和远程chart仓库中的chart两种方式。
+
+**安装本地chart**
+
+- 指定本地chart目录：helm install .
+- 指定本地chart压缩包：helm install nginx-1.2.3.tgz
+
+**安装chart仓库中的chart**
+
+- 使用默认的远程仓库：helm install stable/nginx
+- 使用指定的仓库：helm install localhost:8879/nginx-1.2.3.tgz
+
+实际上可以将chart打包后作为静态文件托管到web服务器上，例如GitHub pages作为chart仓库也可以。
 
 ### 依赖管理
 
@@ -40,7 +57,11 @@ wordpress/
 
 ## Chart仓库
 
+Chart 仓库（repository）是一个用来托管`index.yaml`文件和打包好的chart文件的web服务器。当前chart仓库本身没有设置身份和权限验证，查看[此链接](https://github.com/kubernetes/helm/issues/1038)获取该问题的最新进展。
 
+因为chart仓库只是一个HTTP服务，通过HTTP GET获取YAML文件和chart的压缩包，所以可以将这些文件存储在web服务器中，例如GCS、Amazon S3、GitHub Pages等。
+
+关于chart仓库的更多信息请参考[Helm chart文档](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md)。
 
 ## 构建Monocular UI
 
@@ -108,3 +129,5 @@ $ helm install monocular/monocular
 [Monocular UI]()
 
 [Helm Chart - GitHub](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
+
+[简化Kubernetes应用部署工具-Helm之应用部署](https://www.kubernetes.org.cn/2706.html)

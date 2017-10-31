@@ -124,3 +124,24 @@ spec:
 这个例子就是用来再应用程序启动前首先从GitHub中拉取代码并存储到共享目录下。
 
 关于Init容器的更详细说明请参考 [init容器](../concepts/init-containers.md)。
+
+## 5. 使容器内时间与宿主机同步
+
+我们下载的很多容器内的时区都是格林尼治时间，与北京时间差8小时，这将导致容器内的日志和文件创建时间与实际时区不符，有两种方式解决这个问题：
+
+- 修改镜像中的时区配置文件
+- 将宿主机的时区配置文件`/etc/localtime`使用volume方式挂载到容器中
+
+第二种方式比较简单，不需要重做镜像，只要在应用的yaml文件中增加如下配置：
+
+```yaml
+volumeMounts:
+  - name: host-time
+    mountPath: /etc/localtime
+    readOnly: true
+  volumes:
+  - name: host-time
+    hostPath:
+      path: /etc/localtime
+```
+
