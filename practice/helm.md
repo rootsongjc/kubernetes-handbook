@@ -634,3 +634,4 @@ helm package .
 - [Go template](https://golang.org/pkg/text/template/)
 - [Helm docs](https://github.com/kubernetes/helm/blob/master/docs/index.md)
 - [How To Create Your First Helm Chart](https://docs.bitnami.com/kubernetes/how-to/create-your-first-helm-chart/)
+- [Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
