@@ -7,6 +7,8 @@ subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
 tags: ["cloud-native","book","python"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160313011.jpg", desc: "北京大栅栏 Mar 13,2016"}]
+postmeta: false
+nocomment: true
 ---
 
 继 [Cloud Native Go](https://rootsongjc.github.io/cloud-native-go/) 之后又一本关于 Cloud Native 的力作已经登上了我的写作日程，这次是基于 Python 构建微服务和云原生 Web 应用程序，书名叫作 Cloud Native Python。
@@ -25,31 +27,19 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016031
 
 ## 本书中涵盖哪些内容
 
-第1章  介绍云原生应用架构和微服务，讨论云原生架构的基本概念和构建应用程序开发环境。
-
-第2章  使用Python构建微服务，构建自己的微服务知识体系并根据您的用例进行扩展。
-
-第3章  使用Python构建Web应用程序，构建一个初始的Web应用程序并与微服务集成。
-
-第4章  与数据服务交互，教您如何将应用程序迁移到不同的数据库服务。
-
-第5章  使用React构建Web视图。
-
-第6章  使用Flux创建可扩展UI，帮助您理解如何使用Flux创建可扩展的应用程序。
-
-第7章  事件溯源和CQRS，讨论如何以事件形式存储合约（transaction）。
-
-第8章  保护Web应用程序，让您的应用程序免于受到外部威胁。
-
-第9章  持续交付，应用程序频繁发布的相关知识。
-
-第10章 Docker容器化您的服务，讨论容器服务和在Docker中运行应用程序。
-
-第11章 将应用程序部署到AWS平台上，教您如何在AWS上构建基础设施并建立应用程序的生产环境。
-
-第12章 将应用程序部署到Azure平台上，讨论如何在Azure上构建基础设施并建立应用程序的生产环境。
-
-第13章 监控云应用，了解不同的基础设施和应用的监控工具。
+- 第1章  介绍云原生应用架构和微服务，讨论云原生架构的基本概念和构建应用程序开发环境。
+- 第2章  使用Python构建微服务，构建自己的微服务知识体系并根据您的用例进行扩展。
+- 第3章  使用Python构建Web应用程序，构建一个初始的Web应用程序并与微服务集成。
+- 第4章  与数据服务交互，教您如何将应用程序迁移到不同的数据库服务。
+- 第5章  使用React构建Web视图。
+- 第6章  使用Flux创建可扩展UI，帮助您理解如何使用Flux创建可扩展的应用程序。
+- 第7章  事件溯源和CQRS，讨论如何以事件形式存储合约（transaction）。
+- 第8章  保护Web应用程序，让您的应用程序免于受到外部威胁。
+- 第9章  持续交付，应用程序频繁发布的相关知识。
+- 第10章 Docker容器化您的服务，讨论容器服务和在Docker中运行应用程序。
+- 第11章 将应用程序部署到AWS平台上，教您如何在AWS上构建基础设施并建立应用程序的生产环境。
+- 第12章 将应用程序部署到Azure平台上，讨论如何在Azure上构建基础设施并建立应用程序的生产环境。
+- 第13章 监控云应用，了解不同的基础设施和应用的监控工具。
 
 ## 使用本书您需要哪些工具和环境
 
@@ -81,3 +71,4 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016031
 - 2017-10-27 完成了第三章的翻译，使用Python构建Web UI
 - 2017-10-30 完成了第四章的翻译，与数据服务交互
 - 2017-10-31 完成了第五章的翻译，使用React构建Web视图
+- 2017-11-02 完成了第六章的翻译，使用Flux构建可扩展UI
