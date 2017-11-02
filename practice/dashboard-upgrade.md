@@ -93,6 +93,69 @@ a09bb459d67d876cf1829b4047394a5a,brand,10002,"brand"
 
 这样就可以使用`brand.kubeconfig`文件来登陆dashboard了，而且只能访问和操作`brand`命名空间下的对象。
 
+## admin用户
+
+以上是对普通用户登陆验证，管理员用户如何登陆dashboard呢？
+
+需要创建一个admin用户并授予admin角色绑定，使用下面的yaml文件创建admin用户并赋予他管理员权限，然后可以通过token登陆dashbaord，该文件见[admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。
+
+```yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: admin
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: admin
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin
+  namespace: kube-system
+  labels:
+    kubernetes.io/cluster-service: "true"
+    addonmanager.kubernetes.io/mode: Reconcile
+```
+
+然后执行下面的命令：
+
+```bash
+kubectl create -f admin-role.yaml
+```
+
+创建完成后获取secret和token的值。
+
+```bash
+# 获取admin-token的secret名字
+$ kubectl -n kube-system get secret|grep admin-token
+admin-token-nwphb                          kubernetes.io/service-account-token   3         6m
+# 获取token的值
+$ kubectl -n kube-system describe secret admin-token-nwphb
+Name:		admin-token-nwphb
+Namespace:	kube-system
+Labels:		<none>
+Annotations:	kubernetes.io/service-account.name=admin
+		kubernetes.io/service-account.uid=f37bd044-bfb3-11e7-87c0-f4e9d49f8ed0
+
+Type:	kubernetes.io/service-account-token
+
+Data
+====
+namespace:	11 bytes
+token:		非常长的字符串
+ca.crt:		1310 bytes
+```
+
+在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。
+
 ## 参考
 
 [Dashboard log in mechanism #2093](https://github.com/kubernetes/dashboard/issues/2093)
