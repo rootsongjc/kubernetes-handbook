@@ -2,7 +2,7 @@
 
 官方文件目录：`kubernetes/cluster/addons/dashboard`
 
-我们使用的文件
+我们使用的文件如下：
 
 ``` bash
 $ ls *.yaml
@@ -11,7 +11,7 @@ dashboard-controller.yaml  dashboard-service.yaml dashboard-rbac.yaml
 
 已经修改好的 yaml 文件见：[../manifests/dashboard](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/dashboard)
 
-由于 `kube-apiserver` 启用了 `RBAC` 授权，而官方源码目录的 `dashboard-controller.yaml` 没有定义授权的 ServiceAccount，所以后续访问 `kube-apiserver` 的 API 时会被拒绝，web中提示：
+由于 `kube-apiserver` 启用了 `RBAC` 授权，而官方源码目录的 `dashboard-controller.yaml` 没有定义授权的 ServiceAccount，所以后续访问 API server 的 API 时会被拒绝，web中提示：
 
 ```
 Forbidden (403)
@@ -79,9 +79,9 @@ kubernetes-dashboard-1339745653-pmn6z   1/1       Running   0          4m
 
 有以下三种方式：
 
-- kubernetes-dashboard 服务暴露了 NodePort，可以使用 `http://NodeIP:nodePort` 地址访问 dashboard；
-- 通过 kube-apiserver 访问 dashboard（https 6443端口和http 8080端口方式）；
-- 通过 kubectl proxy 访问 dashboard：
+- kubernetes-dashboard 服务暴露了 NodePort，可以使用 `http://NodeIP:nodePort` 地址访问 dashboard
+- 通过 API server 访问 dashboard（https 6443端口和http 8080端口方式）
+- 通过 kubectl proxy 访问 dashboard
 
 ### 通过 kubectl proxy 访问 dashboard
 
@@ -94,10 +94,10 @@ Starting to serve on 172.20.0.113:8086
 
 + 需要指定 `--accept-hosts` 选项，否则浏览器访问 dashboard 页面时提示 “Unauthorized”；
 
-浏览器访问 URL：`http://172.20.0.113:8086/ui`
-自动跳转到：`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/workload?namespace=default`
+浏览器访问 URL：http://172.20.0.113:8086/ui
+自动跳转到：http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard/#/workload?namespace=default
 
-### 通过 kube-apiserver 访问dashboard
+### 通过 API server 访问dashboard
 
 获取集群服务地址列表
 
@@ -108,7 +108,7 @@ KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-sys
 kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
 ```
 
-浏览器访问 URL：`https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard`（浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中）。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
+浏览器访问 URL：https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard（浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中）。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
 
 **导入证书**
 
@@ -126,7 +126,7 @@ openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 
 由于缺少 Heapster 插件，当前 dashboard 不能展示 Pod、Nodes 的 CPU、内存等 metric 图形。
 
-**更新**
+### 更新
 
 Kubernetes 1.6 版本的 dashboard 的镜像已经到了 v1.6.3 版本，我们可以使用下面的方式更新。
 
@@ -167,6 +167,8 @@ Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/
 ![V1.6.3版本的dashboard界面](../images/dashboard-v163.jpg)
 
 新版本中最大的变化是增加了进入容器内部的入口，可以在页面上进入到容器内部操作，同时又增加了一个搜索框。
+
+关于如何将dashboard从1.6版本升级到1.7版本请参考[升级dashboard](dashboard-upgrade.md)。
 
 ## 参考
 
