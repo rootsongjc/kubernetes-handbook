@@ -17,6 +17,8 @@ Dashboard的升级比较简单，因为它仅仅是一个前端应用，用来�
 
 [dashboard](https://github.com/kubernetes/dashboard)的更新日志请见[release note](https://github.com/kubernetes/dashboard/releases)，当前的最新版本为v1.7.1，下面将介绍将dashboard从v1.6.3升级到v1.7.1并开启用户登陆认证的详细步骤。
 
+本文已归档到[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)中。
+
 ## 升级步骤
 
 **删除原来的版本**
