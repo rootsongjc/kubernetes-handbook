@@ -63,7 +63,7 @@ NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 ```
 
-访问集群中的任何一个节点，即可打开dashboard登陆页面，如[https://172.20.0.113:32324/（请使用https访问）：](https://172.20.0.113:32324/%EF%BC%88%E8%AF%B7%E4%BD%BF%E7%94%A8https%E8%AE%BF%E9%97%AE%EF%BC%89%EF%BC%9A)
+访问集群中的任何一个节点，即可打开dashboard登陆页面，如[https://172.20.0.113:32324/（请使用https访问），支持使用`kubeconfig`和`token`两种的认证方式：
 
 ![登陆界面](https://jimmysong.io/kubernetes-handbook/images/kubernetes-dashboard-1.7.1-login.jpg)
 
@@ -77,7 +77,9 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 修改URL地址中的`namespace`字段为该用户有权限访问的命名空间如brand：<https://172.20.0.113:32324/#!/overview?namespace=brand>：
 
-![用户空间](https://jimmysong.io/kubernetes-handbook/images/kubernetes-dashboard-1.7.1-brand.jpg)登陆dashboard的时候可以指定`kubeconfig`文件来认证用户权限，如何生成登陆dashboard时指定的`kubeconfig`文件请参考[创建用户认证授权的kubeconfig文件](https://jimmysong.io/kubernetes-handbook/guide/kubectl-user-authentication-authorization.html)。
+![用户空间](https://jimmysong.io/kubernetes-handbook/images/kubernetes-dashboard-1.7.1-brand.jpg)
+
+登陆dashboard的时候可以指定`kubeconfig`文件来认证用户权限，如何生成登陆dashboard时指定的`kubeconfig`文件请参考[创建用户认证授权的kubeconfig文件](https://jimmysong.io/kubernetes-handbook/guide/kubectl-user-authentication-authorization.html)。
 
 另外还需要生成用户token，例如为brand用户生成token：
 
@@ -102,7 +104,7 @@ a09bb459d67d876cf1829b4047394a5a,brand,10002,"brand"
 
 这样就可以使用`brand.kubeconfig`文件来登陆dashboard了，而且只能访问和操作`brand`命名空间下的对象。
 
-## admin用户
+### admin用户
 
 以上是对普通用户登陆验证，管理员用户如何登陆dashboard呢？
 
@@ -163,7 +165,7 @@ token:		非常长的字符串
 ca.crt:		1310 bytes
 ```
 
-在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。
+在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串token加到admin用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
 
 ## 参考
 
