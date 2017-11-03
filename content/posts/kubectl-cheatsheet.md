@@ -44,7 +44,7 @@ $ kubectl config set-context gce --user=cluster-admin --namespace=foo \
 
 ## 创建对象
 
-Kubernetes的清单文件可以使用 json 或 yaml 格式定义。可以以 `.yaml`、`.yml`、或者 `.json` 为扩展名。
+Kubernetes 的清单文件可以使用 json 或 yaml 格式定义。可以以 `.yaml`、`.yml`、或者 `.json` 为扩展名。
 
 ```yaml
 $ kubectl create -f ./my-manifest.yaml           # 创建资源
@@ -183,7 +183,7 @@ $ kubectl edit svc/docker-registry                      # 编辑名为 docker-re
 $ KUBE_EDITOR="nano" kubectl edit svc/docker-registry   # 使用其它编辑器
 ```
 
-## Scale资源
+## Scale 资源
 
 ```bash
 $ kubectl scale --replicas=3 rs/foo                                 # Scale a replicaset named 'foo' to 3
@@ -202,7 +202,7 @@ $ kubectl delete pods,services -l name=myLabel --include-uninitialized      # �
 $ kubectl -n my-ns delete po,svc --all                                      # 删除 my-ns namespace 下的所有 pod 和 serivce，包括尚未初始化的
 ```
 
-## 与运行中的Pod交互
+## 与运行中的 Pod 交互
 
 ```bash
 $ kubectl logs my-pod                                 # dump 输出 pod 的日志（stdout）
@@ -234,7 +234,7 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 ## 资源类型
 
-下表列出的是kubernetes中所有支持的类型和缩写的别名。
+下表列出的是 kubernetes 中所有支持的类型和缩写的别名。
 
 | 资源类型                       | 缩写别名     |
 | -------------------------- | -------- |
@@ -272,7 +272,7 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 要以特定的格式向终端窗口输出详细信息，可以在 `kubectl` 命令中添加 `-o` 或者 `-output` 标志。
 
-| 输出格式                                | Description                              |
+| 输出格式                                | 描述                                       |
 | ----------------------------------- | ---------------------------------------- |
 | `-o=custom-columns=<spec>`          | 使用逗号分隔的自定义列列表打印表格                        |
 | `-o=custom-columns-file=<filename>` | 使用 文件中的自定义列模板打印表格                        |
@@ -283,13 +283,13 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 | `-o=wide`                           | 以纯文本格式输出任何附加信息，对于 Pod ，包含节点名称            |
 | `-o=yaml`                           | 输出 YAML 格式的 API 对象                       |
 
-### Kubectl详细输出和调试
+### Kubectl 详细输出和调试
 
 使用 `-v` 或 `--v` 标志跟着一个整数来指定日志级别。[这里](https://github.com/kubernetes/community/blob/master/contributors/devel/logging.md) 描述了通用的 kubernetes 日志约定和相关的日志级别。
 
 | 详细等级    | 描述                                       |
 | ------- | ---------------------------------------- |
-| `--v=0` | 总是对运维人员可见。                               |
+| `--v=0` | 总是对操作人员可见。                               |
 | `--v=1` | 合理的默认日志级别，如果您不需要详细输出。                    |
 | `--v=2` | 可能与系统的重大变化相关的，有关稳定状态的信息和重要的日志信息。这是对大多数系统推荐的日志级别。 |
 | `--v=3` | 有关更改的扩展信息。                               |
