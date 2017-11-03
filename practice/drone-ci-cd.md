@@ -86,3 +86,4 @@ docker-compose up
 
 - [Drone Installation](http://docs.drone.io/installation/)
 - [Github - Drone](https://github.com/drone/drone)
+- [Drone 搭配 Kubernetes 升級應用程式版本 - blog.wu-boy.com](https://blog.wu-boy.com/2017/10/upgrade-kubernetes-container-using-drone/)
