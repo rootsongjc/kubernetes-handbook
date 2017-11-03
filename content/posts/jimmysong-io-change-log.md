@@ -143,3 +143,8 @@ tags: ["github-pages","github","website","hugo"]
 ## 2017-10-31
 
 1. 修复了分页的css布局问题
+
+## 2017-11-03
+
+1. 修复posts列表下的分页显示问题
+2. 去除**ARTICLES**导航页，tags导航放到**CATEGORIES**导航页下
