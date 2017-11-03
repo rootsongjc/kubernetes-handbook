@@ -50,7 +50,7 @@ NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 ```
 
-访问集群中的任何一个节点，即可打开dashboard登陆页面，如https://172.20.0.113:32324/（请使用https访问）：
+访问集群中的任何一个节点，即可打开dashboard登陆页面，如https://172.20.0.113:32324/（请使用https访问），支持使用`kubeconfig`和`token`两种的认证方式：
 
 ![登陆界面](../images/kubernetes-dashboard-1.7.1-login.jpg)
 
@@ -154,7 +154,7 @@ token:		非常长的字符串
 ca.crt:		1310 bytes
 ```
 
-在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。
+在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串token加到admin用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
 
 ## 参考
 
