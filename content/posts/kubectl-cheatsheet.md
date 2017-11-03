@@ -11,6 +11,8 @@ draft: false
 
 Kubctl 命令是操作 kubernetes 集群的最直接和最 skillful 的途径，这个60多MB大小的二进制文件，到底有啥能耐呢？本文是对官方文档的中文翻译，原文地址：https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/。
 
+本文已归档到 [kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)。
+
 ## Kubectl 自动补全
 
 ```bash
