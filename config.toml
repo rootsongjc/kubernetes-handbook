@@ -55,28 +55,9 @@ desc = "Data Science for complexity of human society"
   linkedin = "jimmysongio"
 
 [[menu.main]]
-    identifier = "Articles"
-    name = "Articles"
-    url = "posts"
-    weight = 1
-
-[[menu.main]]
-    parent = "Articles"
-    name = "Posts"
-    url = "posts"
-    weight = 1
-
-[[menu.main]]
-    parent = "Articles"
-    name = "Tags"
-    url = "tags"
-    weight = 2
-
-[[menu.main]]
     identifier = "Categories"
     name = "Categories"
-    url = "categories"
-    weight = 2
+    weight = 1
 
 [[menu.main]]
     parent = "Categories"
@@ -121,9 +102,15 @@ desc = "Data Science for complexity of human society"
     weight = 7
 
 [[menu.main]]
+    parent = "Categories"
+    name = "Tags"
+    url = "tags"
+    weight = 8
+
+[[menu.main]]
     identifier = "Books"
     name = "Books"
-    weight = 3
+    weight = 2
 
 [[menu.main]]
     parent = "Books"
@@ -164,7 +151,7 @@ desc = "Data Science for complexity of human society"
 [[menu.main]]
     identifier = "Projects"
     name = "Projects"
-    weight = 4
+    weight = 3
 
 [[menu.main]]
     parent = "Projects"
@@ -193,4 +180,4 @@ desc = "Data Science for complexity of human society"
 [[menu.main]]
     name = "About"
     url = "about"
-    weight = 5
+    weight = 4
