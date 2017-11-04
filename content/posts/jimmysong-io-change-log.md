@@ -118,21 +118,21 @@ tags: ["github-pages","github","website","hugo"]
 3. 将js文件托管到cloudinary，不使用cloudflare和maxcdn，它们的速度太慢
 4. 优化网站加载速度
 
-## 2017-10-18
+### 2017-10-18
 
 1. 修复subheading的英文换行问题
 2. 设置body的`word-break`为`break-word`
 3. 修复footer中文字的切分问题
 
-## 2017-10-19
+### 2017-10-19
 
 1. 为文章增加`itemscope itemtype="http://schema.org/Article"`标签方便Google索引
 
-## 2017-10-26
+### 2017-10-26
 
 1. 为文章列表增加分页导航Pagination
 
-## 2017-10-27
+### 2017-10-27
 
 1. 修复了有题图的页面，大标题下不显示发布时间的问题
 
@@ -140,11 +140,16 @@ tags: ["github-pages","github","website","hugo"]
 
 1. 开发[cloudinary-go](https://github.com/rootsongjc/cloudinary-go)命令行工具便于向cloudinary上传图片
 
-## 2017-10-31
+### 2017-10-31
 
 1. 修复了分页的css布局问题
 
-## 2017-11-03
+### 2017-11-03
 
 1. 修复posts列表下的分页显示问题
 2. 去除**ARTICLES**导航页，tags导航放到**CATEGORIES**导航页下
+
+### 2017-11-04
+
+1. 使用ELK统计分析博文数据，修复残缺的文件头信息
+

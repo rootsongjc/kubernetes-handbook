@@ -1,7 +1,7 @@
 ---
 title: "使用gitment为你的网站添加评论框"
 date: 2017-09-24T10:10:00+08:00
-draft: flase
+draft: false
 categories: github
 tags: ["github-pages"]
 ---

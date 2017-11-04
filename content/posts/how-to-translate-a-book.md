@@ -4,7 +4,7 @@ date: 2017-10-27T22:55:43+08:00
 draft: false
 subtitle: "从图书引进到翻译出版全攻略"
 tags: ["talk","book"]
-Description: "如何翻译一本外文书，从图书引进到翻译出版全攻略"
+description: "如何翻译一本外文书，从图书引进到翻译出版全攻略"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016062503.jpg", desc: "青海湖畔 Jun 25,2016"}]
 ---
 
