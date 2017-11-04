@@ -1,7 +1,7 @@
 ---
 date: "2017-08-15T22:58:37+08:00"
 draft: false
-descript: "Cloud Native Python - 使用python和react构建云原生应用"
+description: "Cloud Native Python - 使用python和react构建云原生应用"
 title: "Cloud Native Python"
 subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
