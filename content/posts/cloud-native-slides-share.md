@@ -5,7 +5,7 @@ date: 2017-10-17T21:04:21+08:00
 draft: false
 categories: "github"
 tags: ["github","slides","cloud-native"]
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/jimmysong-pepsi-cola.jpg", desc: "冠名百事可乐 Oct 15,2017"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/jimmysong-pepsi-cola.jpg", desc: "冠名百事可乐 Oct 15,2017"}]
 description: "Cloud Native相关的各种meetup、相大会、线上分享的PPT资料、开放图书资料整理和汇总。GitHub：https://github.com/rootsongjc/cloud-native-slides-share"
 ---
 
