@@ -663,7 +663,7 @@ $ echo $?
 
 ## 编写Deployment Spec
 
-在所有的Kubernetes配置中，Deployment也需要`apiVersion`，`kind`和`metadata`这些配置项。配置文件的通用使用说明查看[部署应用](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/tutorials/stateless-application/run-stateless-application-deployment)，配置容器，和[使用kubeclt管理资源](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/tutorials/object-management-kubectl/object-management)文档。
+在所有的Kubernetes配置中，Deployment也需要`apiVersion`，`kind`和`metadata`这些配置项。配置文件的通用使用说明查看[部署应用](https://kubernetes.io/docs/tutorials/stateless-application/run-stateless-application-deployment)，配置容器，和[使用kubeclt管理资源](https://kubernetes.io/docs/tutorials/object-management-kubectl/object-management)文档。
 
 Deployment也需要 [`.spec` section](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status).
 
