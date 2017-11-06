@@ -6,7 +6,7 @@ draft: false
 descripton: "在kubernetes集群上安装istio并测试bookinfo示例微服务，基于Istio0.22版本，kubernetes1.7及以上，翻译自Istio官方文档"
 categories: "microservices"
 tags: ["istio","kubernetes","microservices","cloud-native"]
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160813015.jpg", desc: "Shanghai Pudong Iternational Airport Aug 13,2016"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160813015.jpg", desc: "Shanghai Pudong International Airport Aug 13,2016"}]
 ---
 
 今年来以 [Istio](https://istio.io) 和 [Linkderd](https://linkerd.io) 为代表的 Service Mesh 蓬勃发展，大有成为下一代语言异构微服务架构的王者之范，今天又碰巧看到了 Red Hat 的 [Burr Sutter](https://twitter.com/burrsutter) 提出了**8 Steps to Becoming Awesome with Kubernetes**，整个PPT一共60多页，很有建设性，[点此](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/kubernetes/8-Steps-to-Becoming-Awesome-with-Kubernetes-readhat-burrsutter.pdf)跳转到我的GitHub上下载，我将其归档到[cloud-native-slides-share](https://github.com/rootsongjc/cloud-native-slides-share)中了。
