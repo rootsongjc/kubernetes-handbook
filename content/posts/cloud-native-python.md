@@ -5,7 +5,7 @@ description: "Cloud Native Python - 使用python和react构建云原生应用"
 title: "Cloud Native Python"
 subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
-tags: ["cloud-native","book","python"]
+tags: ["cloud-native","book","python","microservices"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160313011.jpg", desc: "北京大栅栏 Mar 13,2016"}]
 postmeta: false
 nocomment: true

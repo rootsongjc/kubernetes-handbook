@@ -4,7 +4,7 @@ title: "Cloud Native Go - 基于Go和React的web云原生应用构建指南"
 draft: false
 description: "Cloud Native Go 图书 电子工业出版社 Kevin Hoffman Dan Nemeth 云原生 Cloud Native React Web应用"
 categories: "cloud-native"
-tags:  ["book","go","micro-services","cloud-native"]
+tags:  ["book","go","microservices","cloud-native"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg", desc: "北京植物园桃花 Mar 26,2016"}]
 ---
 
