@@ -97,4 +97,6 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 [贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)
 
-[Jimmy Song](http://jimmysong.io/about)
+## 加入K8S🤘Cloud Native实战群
+
+扫描二维码，[Jimmy Song](http://jimmysong.io/about)，或直接搜索微信号**jimmysong**后拉您入群，请增加备注。
