@@ -2,7 +2,7 @@
 date: "2017-03-23T22:54:18+08:00"
 title: "Pivotal Cloud foundry快速开始指南"
 draft: false
-categories: "Architecture"
+categories: "cloud-native"
 tags: ["pivotal","paas"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2013100302.jpg", desc: "黄山日出后的云海 Oct 3,2013"}]
 ---

@@ -73,8 +73,8 @@ desc = "Data Science for complexity of human society"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Github"
-    url = "categories/github"
+    name = "Microservices"
+    url = "categories/microservices"
     weight = 3
 
 [[menu.main]]
@@ -85,20 +85,20 @@ desc = "Data Science for complexity of human society"
 
 [[menu.main]]
     parent = "Categories"
+    name = "Github"
+    url = "categories/github"
+    weight = 5
+
+[[menu.main]]
+    parent = "Categories"
     name = "Docker"
     url = "categories/docker"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     parent = "Categories"
     name = "Code"
     url = "categories/code"
-    weight = 6
-
-[[menu.main]]
-    parent = "Categories"
-    name = "Architecture"
-    url = "categories/architecture"
     weight = 7
 
 [[menu.main]]
