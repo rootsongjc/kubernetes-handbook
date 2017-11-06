@@ -56,6 +56,7 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [platform9](https://platform9.com/blog/)
 - [prometheus](https://prometheus.io/blog/)
 - [rancher](https://rancher.com/blog/)
+- [sysdig](https://sysdig.com/blog/)
 - [spinnaker](https://blog.spinnaker.io)
 - [supergiant](https://supergiant.io/blog)
 - [thecodeteam](https://blog.thecodeteam.com/)
