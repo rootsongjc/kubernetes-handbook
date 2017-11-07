@@ -11,7 +11,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081
 
 今年来以 [Istio](https://istio.io) 和 [Linkderd](https://linkerd.io) 为代表的 Service Mesh 蓬勃发展，大有成为下一代语言异构微服务架构的王者之范，今天又碰巧看到了 Red Hat 的 [Burr Sutter](https://twitter.com/burrsutter) 提出了**8 Steps to Becoming Awesome with Kubernetes**，整个PPT一共60多页，很有建设性，[点此](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/kubernetes/8-Steps-to-Becoming-Awesome-with-Kubernetes-readhat-burrsutter.pdf)跳转到我的GitHub上下载，我将其归档到[cloud-native-slides-share](https://github.com/rootsongjc/cloud-native-slides-share)中了。
 
-![下一代异构微服务架构](https://res.cloudinary.com/jimmysong/image/upload/images/polyglot-microservices-serivce-mesh.png)
+![下一代异构微服务架构](https://res.cloudinary.com/jimmysong/image/upload/images/polyglot-microservices-serivce-mesh.jpg)
 
 自我6月份初接触Istio依赖就发觉service mesh很好的解决了异构语言中的很多问题，而且是kuberentes service 上层不可或缺的服务间代理。关于istio的更多内容请参考 [istio中文文档](http://istio.doczh.cn)。
 
@@ -104,7 +104,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081
 
 5. 安装 Istio 的核心部分。选择面两个 **互斥** 选项中的之一：
 
-   a) 安装 Istio 的时候不启用 sidecar 之间的 [TLS 交互认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.md)：
+   a) 安装 Istio 的时候不启用 sidecar 之间的 [TLS 双向认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.html)：
 
    为具有现在应用程序的集群选择该选项，使用 Istio sidecar 的服务需要能够与非 Istio Kubernetes 服务以及使用 [liveliness 和 readiness 探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)、headless service 和 StatefulSet 的应用程序通信。
 
@@ -114,7 +114,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081
 
    **或者**
 
-   b) 安装 Istio 的时候启用 sidecar 之间的 [TLS 交互认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.md)：
+   b) 安装 Istio 的时候启用 sidecar 之间的 [TLS 双向认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.html)：
 
    ```bash
    kubectl apply -f install/kubernetes/istio-auth.yaml
@@ -171,7 +171,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081
 kubectl create -f <your-app-spec>.yaml
 ```
 
-如果您没有安装 Istio-initializer 的话，您必须使用 [istioctl kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.md#istioctl-kube-inject) 命令在部署应用之前向应用程序的 pod 中手动注入 Envoy 容器：
+如果您没有安装 Istio-initializer 的话，您必须使用 [istioctl kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.html#istioctl-kube-inject) 命令在部署应用之前向应用程序的 pod 中手动注入 Envoy 容器：
 
 ```bash
 kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
@@ -191,7 +191,7 @@ kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 
   不必理会在层级删除过程中的各种报错，因为这些资源可能已经被删除的。
 
-  a) 如果您在安装 Istio 的时候关闭了 TLS 交互认证：
+  a) 如果您在安装 Istio 的时候关闭了 TLS 双向认证：
 
   ```bash
    kubectl delete -f install/kubernetes/istio.yaml
@@ -199,7 +199,7 @@ kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 
   **或者**
 
-  b) 如果您在安装 Istio 的时候启用到了 TLS 交互认证：
+  b) 如果您在安装 Istio 的时候启用到了 TLS 双向认证：
 
   ```bash
    kubectl delete -f install/kubernetes/istio-auth.yaml
@@ -218,7 +218,7 @@ kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 
 ## 手动注入 sidecar
 
-`istioctl` 命令行中有一个称为 [kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.md#istioctl-kube-inject) 的便利工具，使用它可以将 Istio 的 sidecar 规范添加到 kubernetes 工作负载的规范配置中。与 Initializer 程序不同，`kube-inject` 只是将 YAML 规范转换成包含 Istio sidecar 的规范。您需要使用标准的工具如 `kubectl` 来部署修改后的 YAML。例如，以下命令将 sidecar 添加到 sleep.yaml 文件中指定的 pod 中，并将修改后的规范提交给 kubernetes：
+`istioctl` 命令行中有一个称为 [kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.html#istioctl-kube-inject) 的便利工具，使用它可以将 Istio 的 sidecar 规范添加到 kubernetes 工作负载的规范配置中。与 Initializer 程序不同，`kube-inject` 只是将 YAML 规范转换成包含 Istio sidecar 的规范。您需要使用标准的工具如 `kubectl` 来部署修改后的 YAML。例如，以下命令将 sidecar 添加到 sleep.yaml 文件中指定的 pod 中，并将修改后的规范提交给 kubernetes：
 
 ```bash
 kubectl apply -f <(istioctl kube-inject -f samples/sleep/sleep.yaml)
@@ -480,7 +480,272 @@ kubectl delete -f install/kubernetes/istio-initializer.yaml
 
 注意上述命令并不会删除已注入到 Pod 中的 sidecar。要想删除这些 sidecar，需要在不使用 initializer 的情况下重新部署这些 pod。
 
-TBD
+# 拓展 Istio Mesh
+
+将虚拟机或裸机集成到部署在 kubernetes 集群上的 Istio mesh 中的说明。
+
+## 前置条件
+
+- 按照 [安装指南](http://istio.doczh.cn/docs/setup/kubernetes/quick-start.html) 在 kubernetes 集群上安装 Istio service mesh。
+
+- 机器必须具有到 mesh 端点的 IP 地址连接。这通常需要一个 VPC 或者 VPN，以及一个向端点提供直接路由（没有 NAT 或者防火墙拒绝）的容器网络。及其不需要访问有 Kubernetes 分配的 cluster IP。
+
+- 虚拟机必须可以访问到 Istio 控制平面服务（如Pilot、Mixer、CA）和 Kubernetes DNS 服务器。通常使用 [内部负载均衡器](https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer) 来实现。
+
+  您也可以使用 NodePort，在虚拟机上运行 Istio 的组件，或者使用自定义网络配置，有几个单独的文档会涵盖这些高级配置。
+
+## 安装步骤
+
+安装过程包括准备用于拓展的 mesh 和安装和配置虚拟机。
+
+[install/tools/setupMeshEx.sh](https://raw.githubusercontent.com/istio/istio/master/install/tools/setupMeshEx.sh) ：这是一个帮助大家设置 kubernetes 环境的示例脚本。检查脚本内容和支持的环境变量（如 GCP_OPTS）。
+
+[install/tools/setupIstioVM.sh](https://raw.githubusercontent.com/istio/istio/master/install/tools/setupIstioVM.sh)：这是一个用于配置主机环境的示例脚本。
+您应该根据您的配置工具和DNS要求对其进行自定义。
+
+准备要拓展的 Kubernetes 集群：
+
+- 为 Kube DNS、Pilot、Mixer 和 CA 安装内部负载均衡器（ILB）。每个云供应商的配置都有所不同，根据具体情况修改注解。
+
+> 0.2.7 版本的 YAML 文件的 DNS ILB 的 namespace 配置不正确。
+> 使用 [这一个](https://raw.githubusercontent.com/istio/istio/master/install/kubernetes/mesh-expansion.yaml) 替代。
+> `setupMeshEx.sh` 中也有错误。使用上面链接中的最新文件或者从 [GitHub.com/istio/istio](https://github.com/istio/istio/) 克隆。
+
+```
+kubectl apply -f install/kubernetes/mesh-expansion.yaml
+```
+
+- 生成要部署到虚拟机上的 Istio `cluster.env` 配置。该文件中包含要拦截的 cluster IP 地址范围。
+
+```bash
+export GCP_OPTS="--zone MY_ZONE --project MY_PROJECT"
+```
+
+```bash
+install/tools/setupMeshEx.sh generateClusterEnv MY_CLUSTER_NAME
+```
+
+该示例生成的文件：
+
+```bash
+cat cluster.env
+```
+
+```
+ISTIO_SERVICE_CIDR=10.63.240.0/20
+```
+
+- 产生虚拟机使用的 DNS 配置文件。这样可以让虚拟机上的应用程序解析到集群中的服务名称，这些名称将被 sidecar 拦截和转发。
+
+```bash
+# Make sure your kubectl context is set to your cluster
+install/tools/setupMeshEx.sh generateDnsmasq
+```
+
+该示例生成的文件：
+
+```bash
+cat kubedns
+```
+
+```
+server=/svc.cluster.local/10.150.0.7
+address=/istio-mixer/10.150.0.8
+address=/istio-pilot/10.150.0.6
+address=/istio-ca/10.150.0.9
+address=/istio-mixer.istio-system/10.150.0.8
+address=/istio-pilot.istio-system/10.150.0.6
+address=/istio-ca.istio-system/10.150.0.9
+```
+
+### 设置机器
+
+例如，您可以使用下面的“一条龙”脚本复制和安装配置：
+
+```bash
+# 检查该脚本看看它是否满足您的需求
+# 在 Mac 上，使用 brew install base64 或者 set BASE64_DECODE="/usr/bin/base64 -D"
+export GCP_OPTS="--zone MY_ZONE --project MY_PROJECT"
+```
+
+```bash
+install/tools/setupMeshEx.sh machineSetup VM_NAME
+```
+
+或者等效得手动安装步骤如下：
+
+------ 手动安装步骤开始 ------
+
+- 将配置文件和 Istio 的 Debian 文件复制到要加入到集群的每台机器上。重命名为 `/etc/dnsmasq.d/kubedns` 和`/var/lib/istio/envoy/cluster.env`。
+- 配置和验证 DNS 配置。需要安装 `dnsmasq` 或者直接将其添加到 `/etc/resolv.conf` 中，或者通过 DHCP 脚本。验证配置是否有效，检查虚拟机是否可以解析和连接到 pilot，例如：
+
+在虚拟机或外部主机上：
+
+```bash
+host istio-pilot.istio-system
+```
+
+产生的消息示例：
+
+```bash
+# Verify you get the same address as shown as "EXTERNAL-IP" in 'kubectl get svc -n istio-system istio-pilot-ilb'
+istio-pilot.istio-system has address 10.150.0.6
+```
+
+检查是否可以解析  cluster IP。实际地址取决您的 deployment：
+
+```bash
+host istio-pilot.istio-system.svc.cluster.local.
+```
+
+该示例产生的消息：
+
+```
+istio-pilot.istio-system.svc.cluster.local has address 10.63.247.248
+```
+
+同样检查 istio-ingress：
+
+```bash
+host istio-ingress.istio-system.svc.cluster.local.
+```
+
+该示例产生的消息：
+
+```
+istio-ingress.istio-system.svc.cluster.local has address 10.63.243.30
+```
+
+- 验证连接性，检查迅即是否可以连接到 Pilot 的端点：
+
+```bash
+curl 'http://istio-pilot.istio-system:8080/v1/registration/istio-pilot.istio-system.svc.cluster.local|http-discovery'
+```
+
+```json
+{
+  "hosts": [
+   {
+    "ip_address": "10.60.1.4",
+    "port": 8080
+   }
+  ]
+}
+```
+
+```bash
+# 在虚拟机上使用上面的地址。将直接连接到运行 istio-pilot 的 pod。
+curl 'http://10.60.1.4:8080/v1/registration/istio-pilot.istio-system.svc.cluster.local|http-discovery'
+```
+
+- 提取出实话 Istio 认证的 secret 并将它复制到机器上。Istio 的默认安装中包括 CA，即使是禁用了自动 `mTLS` 设置（她为每个 service account 创建 secret，secret 命名为 `istio.<serviceaccount>`）也会生成 Istio secret。建议您执行此步骤，以便日后启用 mTLS，并升级到默认启用 mTLS 的未来版本。
+
+```bash
+# ACCOUNT 默认是 'default'，SERVICE_ACCOUNT 是环境变量
+# NAMESPACE 默认为当前 namespace，SERVICE_NAMESPACE 是环境变量
+# （这一步由 machineSetup 完成）
+# 在 Mac 上执行 brew install base64 或者 set BASE64_DECODE="/usr/bin/base64 -D"
+install/tools/setupMeshEx.sh machineCerts ACCOUNT NAMESPACE
+```
+
+生成的文件（`key.pem`, `root-cert.pem`, `cert-chain.pem`）必须拷贝到每台主机的 /etc/certs 目录，并且让 istio-proxy 可读。 
+
+- 安装 Istio Debian 文件，启动 `istio` 和 `istio-auth-node-agent` 服务。
+  从 [github releases](https://github.com/istio/istio/releases) 获取 Debian 安装包：
+
+  ```bash
+  # 注意：在软件源配置好后，下面的额命令可以使用 'apt-get' 命令替代。
+
+  source istio.VERSION # defines version and URLs env var
+  curl -L ${PILOT_DEBIAN_URL}/istio-agent.deb > ${ISTIO_STAGING}/istio-agent.deb
+  curl -L ${AUTH_DEBIAN_URL}/istio-auth-node-agent.deb > ${ISTIO_STAGING}/istio-auth-node-agent.deb
+  curl -L ${PROXY_DEBIAN_URL}/istio-proxy.deb > ${ISTIO_STAGING}/istio-proxy.deb
+
+  dpkg -i istio-proxy-envoy.deb
+  dpkg -i istio-agent.deb
+  dpkg -i istio-auth-node-agent.deb
+
+  systemctl start istio
+  systemctl start istio-auth-node-agent
+  ```
+
+------ 手动安装步骤结束 ------
+
+安装完成后，机器就能访问运行在 Kubernetes 集群上的服务或者其他的 mesh 拓展的机器。
+
+```bash
+   # Assuming you install bookinfo in 'bookinfo' namespace
+   curl productpage.bookinfo.svc.cluster.local:9080
+```
+
+```
+   ... html content ...
+```
+
+检查进程是否正在运行：
+
+```bash
+ps aux |grep istio
+```
+
+```
+root      6941  0.0  0.2  75392 16820 ?        Ssl  21:32   0:00 /usr/local/istio/bin/node_agent --logtostderr
+root      6955  0.0  0.0  49344  3048 ?        Ss   21:32   0:00 su -s /bin/bash -c INSTANCE_IP=10.150.0.5 POD_NAME=demo-vm-1 POD_NAMESPACE=default exec /usr/local/bin/pilot-agent proxy > /var/log/istio/istio.log istio-proxy
+istio-p+  7016  0.0  0.1 215172 12096 ?        Ssl  21:32   0:00 /usr/local/bin/pilot-agent proxy
+istio-p+  7094  4.0  0.3  69540 24800 ?        Sl   21:32   0:37 /usr/local/bin/envoy -c /etc/istio/proxy/envoy-rev1.json --restart-epoch 1 --drain-time-s 2 --parent-shutdown-time-s 3 --service-cluster istio-proxy --service-node sidecar~10.150.0.5~demo-vm-1.default~default.svc.cluster.local
+```
+
+检查 Istio auth-node-agent 是否健康：
+
+```bash
+sudo systemctl status istio-auth-node-agent
+```
+
+```
+● istio-auth-node-agent.service - istio-auth-node-agent: The Istio auth node agent
+   Loaded: loaded (/lib/systemd/system/istio-auth-node-agent.service; disabled; vendor preset: enabled)
+   Active: active (running) since Fri 2017-10-13 21:32:29 UTC; 9s ago
+     Docs: http://istio.io/
+ Main PID: 6941 (node_agent)
+    Tasks: 5
+   Memory: 5.9M
+      CPU: 92ms
+   CGroup: /system.slice/istio-auth-node-agent.service
+           └─6941 /usr/local/istio/bin/node_agent --logtostderr
+
+Oct 13 21:32:29 demo-vm-1 systemd[1]: Started istio-auth-node-agent: The Istio auth node agent.
+Oct 13 21:32:29 demo-vm-1 node_agent[6941]: I1013 21:32:29.469314    6941 main.go:66] Starting Node Agent
+Oct 13 21:32:29 demo-vm-1 node_agent[6941]: I1013 21:32:29.469365    6941 nodeagent.go:96] Node Agent starts successfully.
+Oct 13 21:32:29 demo-vm-1 node_agent[6941]: I1013 21:32:29.483324    6941 nodeagent.go:112] Sending CSR (retrial #0) ...
+Oct 13 21:32:29 demo-vm-1 node_agent[6941]: I1013 21:32:29.862575    6941 nodeagent.go:128] CSR is approved successfully. Will renew cert in 29m59.137732603s
+```
+
+## 在拓展的 mesh 中的机器上运行服务
+
+- 配置 sidecar 拦截端口。在  `/var/lib/istio/envoy/sidecar.env` 中通过 `ISTIO_INBOUND_PORTS` 环境变量配置。
+
+  例如（运行服务的虚拟机）：
+
+  ```bash
+   echo "ISTIO_INBOUND_PORTS=27017,3306,8080" > /var/lib/istio/envoy/sidecar.env
+   systemctl restart istio
+  ```
+
+- 手动配置 selector-less 的 service 和 endpoint。“selector-less” service 用于那些不依托 Kubernetes pod 的 service。
+
+  例如，在有权限的机器上修改 Kubernetes 中的 service：
+
+  ```bash
+   # istioctl register servicename machine-ip portname:port
+   istioctl -n onprem register mysql 1.2.3.4 3306
+   istioctl -n onprem register svc1 1.2.3.4 http:7000
+  ```
+
+安装完成后，Kubernetes pod 和其它 mesh 扩展将能够访问集群上运行的服务。
+
+## 整合到一起
+
+请参阅 [拓展 BookInfo Mesh](http://istio.doczh.cn/docs/guides/integrating-vms.html) 指南。
 
 ---
 
@@ -513,7 +778,7 @@ BookInfo 应用程序包括四个独立的微服务：
 
 ## 开始之前
 
-如果您还没有这样做，请按照与您的平台 [安装指南](http://istio.doczh.cn/docs/setup/index.md) 对应的说明安装Istio。
+如果您还没有这样做，请按照与您的平台 [安装指南](http://istio.doczh.cn/docs/setup/index.html) 对应的说明安装Istio。
 
 ## 部署应用程序
 
@@ -679,7 +944,7 @@ curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 
 你也可以通过在浏览器中打开 `http://$GATEWAY_URL/productpage` 页面访问 Bookinfo 网页。如果您多次刷新浏览器将在 productpage 中看到评论的不同的版本，它们会按照 round robin（红星、黑星、没有星星）的方式展现，因为我们还没有使用 Istio 来控制版本的路由。
 
-现在，您可以使用此示例来尝试 Istio 的流量路由、故障注入、速率限制等功能。要继续的话，请参阅 [Istio 指南](http://istio.doczh.cn/docs/guides/index.md)，具体取决于您的兴趣。[智能路由](http://istio.doczh.cn/docs/guides/intelligent-routing.md) 是初学者入门的好方式。
+现在，您可以使用此示例来尝试 Istio 的流量路由、故障注入、速率限制等功能。要继续的话，请参阅 [Istio 指南](http://istio.doczh.cn/docs/guides/index.html)，具体取决于您的兴趣。[智能路由](http://istio.doczh.cn/docs/guides/intelligent-routing.html) 是初学者入门的好方式。
 
 ## 清理
 
@@ -722,3 +987,122 @@ curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
    istioctl get routerules   #-- there should be no more routing rules
    docker ps -a              #-- the BookInfo containers should be deleted
    ```
+
+# 集成虚拟机
+
+该示例跨越 Kubernetes 集群和一组虚拟机上部署 Bookinfo 服务，描述如何使用 Istio service mesh 将此基础架构以单一 mesh 的方式操控。
+
+> 注意：本文档还在建设中，并且只在 Google Cloud Platform 上进行过测试。
+> 在 IBM Bluemix 或其它平台上，pod 的 overlay 网络跟虚拟机的网络是隔离的。
+> 即使使用 Istio，虚拟机也不能直接与 Kubernetes Pod 进行通信。
+
+## 概览
+
+![拓展Bookinfo mesh](https://jimmysong.io/kubernetes-handbook/images/istio-mesh-expansion.jpg)
+
+## 开始之前
+
+- 按照 [安装指南](../../../docs/setup/kubernetes/quick-start.md) 上的步骤部署 Istio。
+- 部署 [BookInfo](../../../docs/guides/bookinfo.md) 示例应用程序（在 `bookinfo` namespace 下）。
+- 在 Istio 集群相同的项目下创建名为 `vm-1` 的虚拟机，并 [加入到 Mesh](../../../docs/setup/kubernetes/mesh-expansion.md)。
+
+## 在虚拟机上运行 mysql
+
+我们将首先在虚拟机上安装 mysql，将其配置成评分服务的后台存储。
+
+在虚拟机上执行：
+
+```bash
+sudo apt-get update && sudo apt-get install -y mariadb-server
+sudo mysql
+# 授权 root 用户访问
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+quit;
+sudo systemctl restart mysql
+```
+
+关于 Mysql 的详细配置请见： [Mysql](https://mariadb.com/kb/en/library/download/)。
+
+在虚拟机上执行下面的命令，向 mysql 中添加评分数据库。
+
+```bash
+# 向 mysql 数据库中添加评分数据库
+curl -q https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/src/mysql/mysqldb-init.sql | mysql -u root -ppassword
+```
+
+为了便于直观地查看bookinfo应用程序输出的差异，可以更改使用以下命令生成的评分：
+
+```bash
+ # 查看评分
+ mysql -u root -ppassword test -e "select * from ratings;"
+ +----------+--------+
+ | ReviewID | Rating |
+ +----------+--------+
+ |        1 |      5 |
+ |        2 |      4 |
+ +----------+--------+
+ # 修改评分
+ mysql -u root -ppassword test -e  "update ratings set rating=1 where reviewid=1;select * from ratings;"
++----------+--------+
+| ReviewID | Rating |
++----------+--------+
+|        1 |      1 |
+|        2 |      4 |
++----------+--------+
+```
+
+## 找出将添加到 mesh 中的虚拟机的 IP 地址
+
+在虚拟机上执行：
+
+```bash
+hostname -I
+```
+
+## 将 mysql 服务注册到 mesh 中
+
+在一台可以访问 `istioctl` 命令的主机上，注册该虚拟机和 mysql db service：
+
+```bash
+istioctl register -n vm mysqldb <ip-address-of-vm> 3306
+# 示例输出
+$ istioctl register mysqldb 192.168.56.112 3306
+I1015 22:24:33.846492   15465 register.go:44] Registering for service 'mysqldb' ip '192.168.56.112', ports list [{3306 mysql}]
+I1015 22:24:33.846550   15465 register.go:49] 0 labels ([]) and 1 annotations ([alpha.istio.io/kubernetes-serviceaccounts=default])
+W1015 22:24:33.866410   15465 register.go:123] Got 'services "mysqldb" not found' looking up svc 'mysqldb' in namespace 'default', attempting to create it
+W1015 22:24:33.904162   15465 register.go:139] Got 'endpoints "mysqldb" not found' looking up endpoints for 'mysqldb' in namespace 'default', attempting to create them
+I1015 22:24:33.910707   15465 register.go:180] No pre existing exact matching ports list found, created new subset {[{192.168.56.112  <nil> nil}] [] [{mysql 3306 }]}
+I1015 22:24:33.921195   15465 register.go:191] Successfully updated mysqldb, now with 1 endpoints
+```
+
+### 集群管理
+
+如果你之前在 kubernetes 上运行过 mysql，您需要将 kubernetes 的 mysql service 移除：
+
+```bash
+kubectl delete service mysql
+```
+
+执行 istioctl 来配置 service（在您的 admin 机器上）：
+
+```bash
+istioctl register mysql IP mysql:PORT
+```
+
+注意：`mysqldb` 虚拟机不需要也不应该有特别的 kubernetes 权限。
+
+## 使用 mysql 服务
+
+bookinfo 中的评分服务将使用机器上的数据库。要验证它是否有效，请创建使用虚拟机上的 mysql db 的评分服务的 v2 版本。然后指定强制评论服务使用评分 v2 版本的路由规则。
+
+```bash
+# 创建使用 mysql 后端的评分服务版本
+istioctl kube-inject -n bookinfo -f samples/bookinfo/kube/bookinfo-ratings-v2-mysql-vm.yaml | kubectl apply -n bookinfo -f -
+
+# 强制 bookinfo 使用评分后端的路有规则
+istioctl create -n bookinfo -f samples/bookinfo/kube/route-rule-ratings-mysql-vm.yaml
+```
+
+您可以验证 bookinfo 应用程序的输出结果，显示来自 Reviewer1 的 1 星级和来自 Reviewer2 的 4 星级，或者更改虚拟机上的评分并查看结果。
+
+同时，您还可以在 [RawVM MySQL](https://github.com/istio/istio/blob/master/samples/rawvm/README.md)  的文档中找到一些故障排查和其它信息。
