@@ -1,4 +1,4 @@
-# 安装istio
+# 安装并试用Istio service mesh
 
 本文根据官网的文档整理而成，步骤包括安装`istio 0.1.5`并创建一个bookinfo的微服务来测试istio的功能。
 
