@@ -129,7 +129,7 @@ docker.io/istio/proxy_debug:0.1.5
 
 我们暂时不开启[Istio Auth](https://istio.io/docs/concepts/network-and-auth/auth.html)。
 
-> 本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](practice/traefik-ingress-installation.md)。
+> 本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](../practice/traefik-ingress-installation.md)。
 
 ```bash
 kubectl apply -f install/kubernetes/istio.yaml

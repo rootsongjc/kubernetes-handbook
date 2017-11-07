@@ -261,4 +261,4 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 
 ## 参考
 
-- 关于 [Container Probes](/docs/concepts/workloads/pods/pod-lifecycle/#container-probes) 的更多信息
+- 关于 [Container Probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes) 的更多信息

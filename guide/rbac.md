@@ -342,7 +342,7 @@ API Server会创建一组默认的`ClusterRole`和`ClusterRoleBinding`对象。 
 | ---------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | **system:kube-scheduler**          | **system:kube-scheduler** user           | 允许访问kube-scheduler组件所需要的资源。              |
 | **system:kube-controller-manager** | **system:kube-controller-manager** user  | 允许访问kube-controller-manager组件所需要的资源。 单个控制循环所需要的权限请参阅[控制器（controller）角色](https://k8smeetup.github.io/docs/admin/authorization/rbac/#controller-roles). |
-| **system:node**                    | **system:nodes** group (deprecated in 1.7) | 允许对kubelet组件所需要的资源的访问，**包括读取所有secret和对所有pod的写访问**。 自Kubernetes 1.7开始, 相比较于这个角色，更推荐使用[Node authorizer](/docs/admin/authorization/node/) 以及[NodeRestriction admission plugin](/docs/admin/admission-controllers#NodeRestriction)， 并允许根据调度运行在节点上的pod授予kubelets API访问的权限。 自Kubernetes 1.7开始，当启用`Node`授权模式时，对`system:nodes`用户组的绑定将不会被自动创建。 |
+| **system:node**                    | **system:nodes** group (deprecated in 1.7) | 允许对kubelet组件所需要的资源的访问，**包括读取所有secret和对所有pod的写访问**。 自Kubernetes 1.7开始, 相比较于这个角色，更推荐使用[Node authorizer](https://kubernetes.io/docs/admin/authorization/node/) 以及[NodeRestriction admission plugin](https://kubernetes.io/docs/admin/admission-controllers#NodeRestriction)， 并允许根据调度运行在节点上的pod授予kubelets API访问的权限。 自Kubernetes 1.7开始，当启用`Node`授权模式时，对`system:nodes`用户组的绑定将不会被自动创建。 |
 | **system:node-proxier**            | **system:kube-proxy** user               | 允许对kube-proxy组件所需要资源的访问。                 |
 
 ### 其它组件角色

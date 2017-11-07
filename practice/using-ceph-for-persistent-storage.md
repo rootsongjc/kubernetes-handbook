@@ -37,7 +37,7 @@ Galera是一个MySQL(也支持MariaDB，Percona)的同步多主集群软件。
 
 ### 配置 Ceph
 
-关于 Ceph 的 yaml 文件可以在 [../manifest/cephfs](../manifests/cephfs) 目录下找到。
+关于 Ceph 的 yaml 文件可以在 [../manifest/mariadb-cluster](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/mariadb-cluster) 目录下找到。
 
 #### 1. 生成 Ceph secret
 

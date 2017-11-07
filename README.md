@@ -6,8 +6,6 @@
 
 在写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6.0** 版本。
 
-[文章目录](SUMMARY.md)
-
 GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
 
 Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
@@ -18,7 +16,7 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 
 访问 https://jimmysong.io/kubernetes-handbook/
 
-**注意：文中涉及的配置文件和代码链接在网页中将无法访问，请下载GitHub源码后，在Markdown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](www.typorai.o)，或者直接登录[github](https://github.com/rootsongjc/kubernetes-handbook) 查看。**
+**注意：文中涉及的配置文件和代码链接在网页中将无法访问，请下载GitHub源码后，在Markdown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](https://typora.io)，或者直接登录[github](https://github.com/rootsongjc/kubernetes-handbook) 查看。**
 
 **本地查看**
 
