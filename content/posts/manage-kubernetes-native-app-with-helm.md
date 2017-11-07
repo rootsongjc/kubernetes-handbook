@@ -491,7 +491,7 @@ Get the URL of your Node app  by running:
 kubectl repalce -f ingress.yaml
 ```
 
-关于Ingress配置请参考：[边缘节点配置](../practice/edge-node-configuration.md)
+关于Ingress配置请参考：[边缘节点配置](https://jimmysong.io/kubernetes-handbook/practice/edge-node-configuration.html)
 
 然后在本地的`/etc/hosts`文件中增加一条配置：
 
