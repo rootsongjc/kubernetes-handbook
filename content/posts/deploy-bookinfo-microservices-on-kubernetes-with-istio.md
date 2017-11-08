@@ -122,7 +122,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016081
 
    这两个选项都会创建 `istio-system` 命名空间以及所需的 RBAC 权限，并部署 Istio-Pilot、Istio-Mixer、Istio-Ingress、Istio-Egress 和 Istio-CA（证书颁发机构）。
 
-6. *可选的*：如果您的 kubernetes 集群开启了 alpha 功能，并想要启用 [自动注入 sidecar](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html#automatic-sidecar-injection)，需要安装 Istio-Initializer：
+6. 可选的：如果您的 kubernetes 集群开启了 alpha 功能，并想要启用 [自动注入 sidecar](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html#automatic-sidecar-injection)，需要安装 Istio-Initializer：
 
    ```bash
    kubectl apply -f install/kubernetes/istio-initializer.yaml
@@ -299,7 +299,7 @@ Istio sidecar 可以在部署之前使用 Kubernetes 中一个名为 [Initialize
 Initializer 需要在集群设置期间显示启用，如 [此处](https://kubernetes.io/docs/admin/extensible-admission-controllers/#enable-initializers-alpha-feature) 所述。
 假设集群中已启用RBAC，则可以在不同环境中启用初始化程序，如下所示：
 
-- _GKE_
+- GKE
 
   ```bash
   gcloud container clusters create NAME \
@@ -310,9 +310,9 @@ Initializer 需要在集群设置期间显示启用，如 [此处](https://kuber
       --zone=ZONE
   ```
 
-- _IBM Bluemix_ kubernetes v1.7.4 或更高版本的集群已默认启用 initializer。
+- IBM Bluemix kubernetes v1.7.4 或更高版本的集群已默认启用 initializer。
 
-- _Minikube_
+- Minikube
 
   Minikube v0.22.1 或更高版本需要为 GenericAdmissionWebhook 功能配置适当的证书。获取最新版本： https://github.com/kubernetes/minikube/releases.
 
@@ -511,7 +511,7 @@ kubectl delete -f install/kubernetes/istio-initializer.yaml
 > 使用 [这一个](https://raw.githubusercontent.com/istio/istio/master/install/kubernetes/mesh-expansion.yaml) 替代。
 > `setupMeshEx.sh` 中也有错误。使用上面链接中的最新文件或者从 [GitHub.com/istio/istio](https://github.com/istio/istio/) 克隆。
 
-```
+```bash
 kubectl apply -f install/kubernetes/mesh-expansion.yaml
 ```
 
@@ -531,7 +531,7 @@ install/tools/setupMeshEx.sh generateClusterEnv MY_CLUSTER_NAME
 cat cluster.env
 ```
 
-```
+```bash
 ISTIO_SERVICE_CIDR=10.63.240.0/20
 ```
 
@@ -548,7 +548,7 @@ install/tools/setupMeshEx.sh generateDnsmasq
 cat kubedns
 ```
 
-```
+```bash
 server=/svc.cluster.local/10.150.0.7
 address=/istio-mixer/10.150.0.8
 address=/istio-pilot/10.150.0.6
@@ -600,7 +600,7 @@ host istio-pilot.istio-system.svc.cluster.local.
 
 该示例产生的消息：
 
-```
+```bash
 istio-pilot.istio-system.svc.cluster.local has address 10.63.247.248
 ```
 
@@ -612,7 +612,7 @@ host istio-ingress.istio-system.svc.cluster.local.
 
 该示例产生的消息：
 
-```
+```bash
 istio-ingress.istio-system.svc.cluster.local has address 10.63.243.30
 ```
 
@@ -674,11 +674,11 @@ install/tools/setupMeshEx.sh machineCerts ACCOUNT NAMESPACE
 安装完成后，机器就能访问运行在 Kubernetes 集群上的服务或者其他的 mesh 拓展的机器。
 
 ```bash
-   # Assuming you install bookinfo in 'bookinfo' namespace
-   curl productpage.bookinfo.svc.cluster.local:9080
+# 假设你已经在 bookinfo namespace 下安装了 'bookinfo'
+curl productpage.bookinfo.svc.cluster.local:9080
 ```
 
-```
+```bash
    ... html content ...
 ```
 
@@ -688,7 +688,7 @@ install/tools/setupMeshEx.sh machineCerts ACCOUNT NAMESPACE
 ps aux |grep istio
 ```
 
-```
+```bash
 root      6941  0.0  0.2  75392 16820 ?        Ssl  21:32   0:00 /usr/local/istio/bin/node_agent --logtostderr
 root      6955  0.0  0.0  49344  3048 ?        Ss   21:32   0:00 su -s /bin/bash -c INSTANCE_IP=10.150.0.5 POD_NAME=demo-vm-1 POD_NAMESPACE=default exec /usr/local/bin/pilot-agent proxy > /var/log/istio/istio.log istio-proxy
 istio-p+  7016  0.0  0.1 215172 12096 ?        Ssl  21:32   0:00 /usr/local/bin/pilot-agent proxy
@@ -701,7 +701,7 @@ istio-p+  7094  4.0  0.3  69540 24800 ?        Sl   21:32   0:37 /usr/local/bin/
 sudo systemctl status istio-auth-node-agent
 ```
 
-```
+```bash
 ● istio-auth-node-agent.service - istio-auth-node-agent: The Istio auth node agent
    Loaded: loaded (/lib/systemd/system/istio-auth-node-agent.service; disabled; vendor preset: enabled)
    Active: active (running) since Fri 2017-10-13 21:32:29 UTC; 9s ago
