@@ -1,11 +1,11 @@
 {
     "title": "Kubernetes Handbook",
-    "description": "Kubernetes中文指南/实践手册",
+    "description": "Kubernetes中文指南/实践手册|kubernetes handbook|jimmysong.io|宋净超",
     "language": "zh-hans",
     "author": "Jimmy Song",
     "links": {
-    "sidebar": {
-        "Home": "https://jimmysong.io"
+        "sidebar": {
+            "Home": "https://jimmysong.io"
         }
     },
     "plugins": [
