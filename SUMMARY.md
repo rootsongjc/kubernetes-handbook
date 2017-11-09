@@ -29,6 +29,7 @@
     - [2.2.17 Label](concepts/label.md)
     - [2.2.18 垃圾收集](concepts/garbage-collection.md)
     - [2.2.19 NetworkPolicy](concepts/network-policy.md)
+    - [2.2.20 Annotation](concepts/annotation.md)
 - [3. 用户指南](guide/index.md)
   - [3.1 资源对象配置](guide/resource-configuration.md)
     - [3.1.1 配置Pod的liveness和readiness探针](guide/configure-liveness-readiness-probes.md)
