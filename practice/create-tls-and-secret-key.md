@@ -32,8 +32,7 @@
 + kubelet：使用 ca.pem；
 + kube-proxy：使用 ca.pem、kube-proxy-key.pem、kube-proxy.pem；
 + kubectl：使用 ca.pem、admin-key.pem、admin.pem；
-
-`kube-controller`、`kube-scheduler` 当前需要和 `kube-apiserver` 部署在同一台机器上且使用非安全端口通信，故不需要证书。
++ kube-controller-manager：使用 ca-key.pem、ca.pem
 
 **注意：以下操作都在 master 节点即 172.20.0.113 这台主机上执行，证书只需要创建一次即可，以后在向集群中添加新节点时只要将 /etc/kubernetes/ 目录下的证书拷贝到新节点上即可。**
 
@@ -44,17 +43,17 @@
 ``` bash
 wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
 chmod +x cfssl_linux-amd64
-mv cfssl_linux-amd64 /root/local/bin/cfssl
+mv cfssl_linux-amd64 /usr/local/bin/cfssl
 
 wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
 chmod +x cfssljson_linux-amd64
-mv cfssljson_linux-amd64 /root/local/bin/cfssljson
+mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 
 wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
 chmod +x cfssl-certinfo_linux-amd64
-mv cfssl-certinfo_linux-amd64 /root/local/bin/cfssl-certinfo
+mv cfssl-certinfo_linux-amd64 /usr/local/bin/cfssl-certinfo
 
-export PATH=/root/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 ```
 
 **方式二：使用go命令安装**
@@ -183,6 +182,7 @@ ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
 ```
 
 + 如果 hosts 字段不为空则需要指定授权使用该证书的 **IP 或域名列表**，由于该证书后续被 `etcd` 集群和 `kubernetes master` 集群使用，所以上面分别指定了 `etcd` 集群、`kubernetes master` 集群的主机 IP 和 **`kubernetes` 服务的服务 IP**（一般是 `kube-apiserver` 指定的 `service-cluster-ip-range` 网段的第一个IP，如 10.254.0.1。
++ hosts 中的内容可以为空，即使按照上面的配置，向集群中增加新节点后也不需要重新生成证书。
 
 **生成 kubernetes 证书和私钥**
 
