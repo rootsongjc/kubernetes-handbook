@@ -17,7 +17,7 @@ kubernetes master 节点包含的组件：
 
 ## TLS 证书文件
 
-pem和token.csv证书文件我们在[创建TLS证书和秘钥](create-tls-and-secret-key.md)这一步中已经创建过了。我们再检查一下。
+以下`pem`证书文件我们在[创建TLS证书和秘钥](create-tls-and-secret-key.md)这一步中已经创建过了，`token.csv`文件在[创建kubeconfig文件](create-kubeconfig.md)的时候创建。我们再检查一下。
 
 ``` bash
 $ ls /etc/kubernetes/ssl
