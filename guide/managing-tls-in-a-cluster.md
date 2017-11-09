@@ -1,6 +1,6 @@
 # 管理集群中的TLS
 
-在本书的最佳实践部分，我们在CentOS上部署了kuberentes集群，其中最开始有重要的一步就是创建TLS认证的，查看[创建TLS证书和秘钥](../practice/create-tls-and-secret-key.md)。很多人在进行到这一步是都会遇到各种各样千奇百怪的问题，这一步是创建集群的基础，我们有必要详细了解一下背后的流程和原理。
+在本书的最佳实践部分，我们在CentOS上部署了kuberentes集群，其中最开始又重要的一步就是创建TLS认证的，查看[创建TLS证书和秘钥](../practice/create-tls-and-secret-key.md)。很多人在进行到这一步是都会遇到各种各样千奇百怪的问题，这一步是创建集群的基础，我们有必要详细了解一下背后的流程和原理。
 
 ## 概览
 
@@ -130,4 +130,4 @@ Kubernetes 管理员（具有适当权限）可以使用 `kubectl certificate ap
 
 ## 给集群管理员的一个建议
 
-本教程假设将signer设置为服务证书API。Kubernetes controller manager提供了一个signer的默认实现。 要启用它，请将`--cluster-signature-cert-file`和`—cluster-signing-key-file`参数传递给controller manager，并配置具有证书颁发机构的密钥对的路径。
+本教程假设将signer设置为服务证书API。Kubernetes controller manager提供了一个signer的默认实现。 要启用它，请将`--cluster-signing-cert-file`和`--cluster-signing-key-file`参数传递给controller manager，并配置具有证书颁发机构的密钥对的路径。
