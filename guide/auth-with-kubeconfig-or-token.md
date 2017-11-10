@@ -1,6 +1,6 @@
 ## 使用 kubeconfig 或 token 进行用户身份认证
 
-在开启了 TLS 的集群中，每当与集群交互的时候少不了的是身份认证，kubernetes 同时支持 kubeconfig（即证书） 和 token 两种认证方式。
+在开启了 TLS 的集群中，每当与集群交互的时候少不了的是身份认证，使用 kubeconfig（即证书） 和 token 两种认证方式是最简单也最通用的认证方式，在 dashboard 的登录功能就可以使用这两种登录功能。
 
 下文分两块以示例的方式来讲解两种登陆认证方式：
 
@@ -81,7 +81,14 @@ ca.crt:		1310 bytes
 也可以使用 jsonpath 的方式直接获取 token 的值，如：
 
 ```bash
-kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}
+kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|base64 -d
 ```
 
-关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
+**注意**：yaml 输出里的那个 token 值是进行 base64 编码后的结果，一定要将 kubectl 的输出中的 token 值进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入  `base64` 是进行编码，Linux 中`base64 -d` 表示解码，Mac 中使用 `base64 -D`。
+
+我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](../guide/secret-configuration.md)。关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
+
+## 参考
+
+- [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)
+- [Kubernetes 中的认证](https://kubernetes.io/docs/admin/authentication/)
