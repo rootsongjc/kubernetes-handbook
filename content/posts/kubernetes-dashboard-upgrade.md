@@ -102,7 +102,7 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 ### 生成 token
 
-需要创建一个admin用户并授予admin角色绑定，使用下面的yaml文件创建admin用户并赋予他管理员权限，然后可以通过token登陆dashbaord，该文件见[admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。
+需要创建一个 admin 用户并授予 admin 角色绑定，使用下面的 yaml 文件创建 admin 用户并赋予他管理员权限，然后可以通过 token 登陆 dashbaord，该文件见 [admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。这种认证方式本质上是通过 Service Account 的身份认证加上 Bearer token 请求 API server 的方式实现，参考 [Kubernetes 中的认证](https://kubernetes.io/docs/admin/authentication/)。
 
 ```yaml
 kind: ClusterRoleBinding
@@ -159,18 +159,23 @@ token:		非常长的字符串
 ca.crt:		1310 bytes
 ```
 
-在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，即可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串token加到admin用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
+在 dashboard 登录页面上使用上面输出中的那个**非常长的字符串进行 `base64` 解码后**作为 token 登录，即可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串 token 进行 `base64` 解码后，加到 admin 用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
+
+**注意**：一定要将 kubectl 的输出中的 token 值进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入 `base64` 是进行编码，`base64 -d` 表示解码。
 
 也可以使用 jsonpath 的方式直接获取 token 的值，如：
 
 ```bash
-kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}
+kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|base64 -d
 ```
 
-关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
+注意我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](https://jimmysong.io/kubernetes-handbook/guide/secret-configuration)。关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
 
 ## 参考
 
 - [Dashboard log in mechanism #2093](https://github.com/kubernetes/dashboard/issues/2093)
 - [Accessing Dashboard 1.7.X and above](https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above)
+- [Kubernetes dashboard UX for Role-Based Access Control](https://github.com/kubernetes/dashboard/blob/master/docs/design/access-control.md)
+- [How to sign in kubernetes dashboard? - StackOverflow](https://stackoverflow.com/questions/46664104/how-to-sign-in-kubernetes-dashboard)
 - [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)
+- [Kubernetes 中的认证](https://kubernetes.io/docs/admin/authentication/)
