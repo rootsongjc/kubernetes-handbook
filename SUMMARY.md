@@ -47,6 +47,7 @@
     - [3.3.4 创建用户认证授权的kubeconfig文件](guide/kubectl-user-authentication-authorization.md)
     - [3.3.5 RBAC——基于角色的访问控制](guide/rbac.md)
     - [3.3.6 IP伪装代理](guide/ip-masq-agent.md)
+    - [3.3.7 使用kubeconfig或token进行用户身份认证](guide/auth-with-kubeconfig-or-token.md)
   - [3.4 访问 Kubernetes 集群](guide/access-kubernetes-cluster.md)
     - [3.4.1 访问集群](guide/access-cluster.md)
     - [3.4.2 使用 kubeconfig 文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
