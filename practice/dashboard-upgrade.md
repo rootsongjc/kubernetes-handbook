@@ -66,36 +66,28 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 ![用户空间](../images/kubernetes-dashboard-1.7.1-brand.jpg)
 
-### 登陆凭证
+## 身份认证
+
+登陆 dashboard 的时候支持 kubeconfig 和 token 两种认证方式，kubeconfig 中也依赖 token 字段，所以生成 token 这一步是必不可少的。
+
+下文分两块来讲解两种登陆认证方式：
+
+- 为 brand 命名空间下的 brand 用户创建 kubeconfig 文件
+- 为集群的管理员（拥有所有命名空间的 amdin 权限）创建 token
+
+### 使用 kubeconfig
 
 登陆dashboard的时候可以指定`kubeconfig`文件来认证用户权限，如何生成登陆dashboard时指定的`kubeconfig`文件请参考[创建用户认证授权的kubeconfig文件](../guide/kubectl-user-authentication-authorization.md)。
 
-另外还需要生成用户token，例如为brand用户生成token：
+> 注意我们生成的 kubeconfig 文件中没有 token 字段，需要手动添加该字段。
 
-```bash
-$ head -c 16 /dev/urandom | od -An -t x| tr -d ' '
-a09bb459d67d876cf1829b4047394a5a
-```
-
-将该用户的token追加到kuberentes API启动参数中指定的`token`文件中，我们安装时指定的是`/etc/kubernetes/token.csv`。
-
-```bash
-a09bb459d67d876cf1829b4047394a5a,brand,10002,"brand"
-```
-
-注意：此处Namespace和ServiceAccount相同，都是`brand`。
-
-重启API server也加载最新的配置。
-
-然后在上面生成的`kubeconfig`文件中追加一行`token`的配置，如下所示：
+比如我们为 brand namespace 下的 brand 用户生成了名为 `brand.kubeconfig` 的 kubeconfig 文件，还要再该文件中追加一行 `token` 的配置（如何生成 token 将在下文介绍），如下所示：
 
 ![kubeconfig文件](../images/brand-kubeconfig-yaml.jpg)
 
 这样就可以使用`brand.kubeconfig`文件来登陆dashboard了，而且只能访问和操作`brand`命名空间下的对象。
 
-## admin用户
-
-以上是对普通用户登陆验证，管理员用户如何登陆dashboard呢？
+### 生成 token
 
 需要创建一个admin用户并授予admin角色绑定，使用下面的yaml文件创建admin用户并赋予他管理员权限，然后可以通过token登陆dashbaord，该文件见[admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。
 
@@ -125,7 +117,7 @@ metadata:
     addonmanager.kubernetes.io/mode: Reconcile
 ```
 
-然后执行下面的命令：
+然后执行下面的命令创建 serviceaccount 和角色绑定，对于其他命名空间的其他用户只要修改上述 yaml 中的 `name` 和 `namespace` 字段即可：
 
 ```bash
 kubectl create -f admin-role.yaml
@@ -154,7 +146,15 @@ token:		非常长的字符串
 ca.crt:		1310 bytes
 ```
 
-在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，既可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串token加到admin用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
+在dashboard登录页面上使用上面输出中的那个**非常长的字符串**作为token登录，即可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串token加到admin用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
+
+也可以使用 jsonpath 的方式直接获取 token 的值，如：
+
+```bash
+kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}
+```
+
+关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
 
 ## 参考
 
