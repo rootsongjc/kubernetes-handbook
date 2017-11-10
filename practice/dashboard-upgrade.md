@@ -161,3 +161,5 @@ kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}
 [Dashboard log in mechanism #2093](https://github.com/kubernetes/dashboard/issues/2093)
 
 [Accessing Dashboard 1.7.X and above](https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above)
+
+[JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)
