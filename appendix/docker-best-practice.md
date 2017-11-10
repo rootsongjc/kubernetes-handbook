@@ -5,31 +5,31 @@
 
 ## 环境配置
 
-[Docker1.13环境配置](https://jimmysong.io/docker-practice/docs/docker_env)
+[Docker1.13环境配置](https://jimmysong.io/docker-handbook/docs/docker_env)
 
-[docker源码编译](https://jimmysong.io/docker-practice/docs/docker_compile)
+[docker源码编译](https://jimmysong.io/docker-handbook/docs/docker_compile)
 
 
 ## 网络管理
 
 网络配置和管理是容器使用中的的一个重点和难点，对比我们之前使用的docker版本是1.11.1，docker1.13中网络模式跟之前的变动比较大，我们会花大力气讲解。
 
-[如何创建docker network](https://jimmysong.io/docker-practice/docs/create_network)
+[如何创建docker network](https://jimmysong.io/docker-handbook/docs/create_network)
 
-[Rancher网络探讨和扁平网络实现](https://jimmysong.io/docker-practice/docs/rancher_network)
+[Rancher网络探讨和扁平网络实现](https://jimmysong.io/docker-handbook/docs/rancher_network)
 
-[swarm mode的路由网络](https://jimmysong.io/docker-practice/docs/swarm_mode_routing_mesh)
+[swarm mode的路由网络](https://jimmysong.io/docker-handbook/docs/swarm_mode_routing_mesh)
 
 [docker扁平化网络插件Shrike（基于docker1.11）](https://github.com/TalkingData/shrike)
 
 ## 存储管理
 
-[Docker存储插件](https://jimmysong.io/docker-practice/docs/docker_storage_plugin)
+[Docker存储插件](https://jimmysong.io/docker-handbook/docs/docker_storage_plugin)
 
-- [infinit](https://jimmysong.io/docker-practice/docs/infinit) 被docker公司收购的法国团队开发
-- [convoy](https://jimmysong.io/docker-practice/docs/convoy) rancher开发的docker volume plugin
-- [torus](https://jimmysong.io/docker-practice/docs/torus) **已废弃**
-- [flocker](https://jimmysong.io/docker-practice/docs/flocker) ClusterHQ开发
+- [infinit](https://jimmysong.io/docker-handbook/docs/infinit) 被docker公司收购的法国团队开发
+- [convoy](https://jimmysong.io/docker-handbook/docs/convoy) rancher开发的docker volume plugin
+- [torus](https://jimmysong.io/docker-handbook/docs/torus) **已废弃**
+- [flocker](https://jimmysong.io/docker-handbook/docs/flocker) ClusterHQ开发
 
 
 
@@ -43,34 +43,34 @@ Docker提供了一系列[log drivers](https://docs.docker.com/engine/admin/loggi
 
 官方文档：[Docker swarm sample app overview](https://docs.docker.com/engine/getstarted-voting-app/)
 
-[基于docker1.13手把手教你创建swarm app](https://jimmysong.io/docker-practice/docs/create_swarm_app)
+[基于docker1.13手把手教你创建swarm app](https://jimmysong.io/docker-handbook/docs/create_swarm_app)
 
-[swarm集群应用管理](https://jimmysong.io/docker-practice/docs/swarm_app_manage)
+[swarm集群应用管理](https://jimmysong.io/docker-handbook/docs/swarm_app_manage)
 
-[使用docker-compose创建应用](https://jimmysong.io/docker-practice/docs/docker_compose)
+[使用docker-compose创建应用](https://jimmysong.io/docker-handbook/docs/docker_compose)
 
 ## 集群管理##
 
 我们使用docker内置的swarm来管理docker集群。
 
-[swarm mode介绍](https://jimmysong.io/docker-practice/docs/swarm_mode)
+[swarm mode介绍](https://jimmysong.io/docker-handbook/docs/swarm_mode)
 
 我们推荐使用开源的docker集群管理配置方案：
 
 - [Crane](https://github.com/Dataman-Cloud/crane)：由数人云开源的基于swarmkit的容器管理软件，可以作为docker和go语言开发的一个不错入门项目
 - [Rancher](https://github.com/rancher/rancher):Rancher是一个企业级的容器管理平台，可以使用Kubernetes、swarm和rancher自研的cattle来管理集群。
 
-[Crane的部署和使用](https://jimmysong.io/docker-practice/docs/crane_usage)
+[Crane的部署和使用](https://jimmysong.io/docker-handbook/docs/crane_usage)
 
-[Rancher的部署和使用](https://jimmysong.io/docker-practice/docs/rancher_usage)
+[Rancher的部署和使用](https://jimmysong.io/docker-handbook/docs/rancher_usage)
 
 ## 资源限制
 
-[内存资源限制](https://jimmysong.io/docker-practice/docs/memory_resource_limit)
+[内存资源限制](https://jimmysong.io/docker-handbook/docs/memory_resource_limit)
 
-[CPU资源限制](https://jimmysong.io/docker-practice/docs/cpu_resource_limit)
+[CPU资源限制](https://jimmysong.io/docker-handbook/docs/cpu_resource_limit)
 
-[IO资源限制](https://jimmysong.io/docker-practice/docs/io_resource_limit)
+[IO资源限制](https://jimmysong.io/docker-handbook/docs/io_resource_limit)
 
 ## 服务发现
 
@@ -90,7 +90,7 @@ Docker提供了一系列[log drivers](https://docs.docker.com/engine/admin/loggi
 
 ## 插件开发
 
-[插件开发示例-sshfs](https://jimmysong.io/docker-practice/docs/plugin_developing)
+[插件开发示例-sshfs](https://jimmysong.io/docker-handbook/docs/plugin_developing)
 
 [我的docker插件开发文章](https://jimmysong.io/posts/docker-plugin-develop/)
 
@@ -105,15 +105,15 @@ Docker提供了一系列[log drivers](https://docs.docker.com/engine/admin/loggi
 
 ## 业界使用案例
 
-[京东从OpenStack切换到Kubernetes的经验之谈](https://jimmysong.io/docker-practice/docs/jd_transform_to_kubernetes)
+[京东从OpenStack切换到Kubernetes的经验之谈](https://jimmysong.io/docker-handbook/docs/jd_transform_to_kubernetes)
 
-[美团点评容器平台介绍](https://jimmysong.io/docker-practice/docs/meituan_docker_platform)
+[美团点评容器平台介绍](https://jimmysong.io/docker-handbook/docs/meituan_docker_platform)
 
-[阿里超大规模docker化之路](https://jimmysong.io/docker-practice/docs/ali_docker)
+[阿里超大规模docker化之路](https://jimmysong.io/docker-handbook/docs/ali_docker)
 
 [TalkingData-容器技术在大数据场景下的应用Yarn on Docker](http://rootsongjc.github.io/projects/yarn-on-docker/)
 
-[乐视云基于Kubernetes的PaaS平台建设](https://jimmysong.io/docker-practice/docs/letv_docker)
+[乐视云基于Kubernetes的PaaS平台建设](https://jimmysong.io/docker-handbook/docs/letv_docker)
 
 ## 资源编排
 
@@ -123,9 +123,9 @@ Docker提供了一系列[log drivers](https://docs.docker.com/engine/admin/loggi
 
 ## 相关资源
 
-[容器技术工具与资源](https://jimmysong.io/docker-practice/docs/tech_resource)
+[容器技术工具与资源](https://jimmysong.io/docker-handbook/docs/tech_resource)
 
-[容器技术2016年总结](https://jimmysong.io/docker-practice/docs/container_2016)
+[容器技术2016年总结](https://jimmysong.io/docker-handbook/docs/container_2016)
 
 ## 关于
 
