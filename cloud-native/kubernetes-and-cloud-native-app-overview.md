@@ -151,6 +151,12 @@ Kuberentes可以说是乘着docker和微服务的东风，已经推出便迅速�
 
 Kubernetes通过声明式配置，真正让开发人员能够理解应用的状态，并通过同一份配置可以立马启动一个一模一样的环境，大大提高了应用开发和部署的效率，其中kubernetes设计的多种资源类型可以帮助我们定义应用的运行状态，并使用资源配置来细粒度得明确限制应用的资源使用。
 
+而容器生态的成熟是 Kubernetes 诞生的前提，在谈到容器的设计模式之前我们先来了解下容器生态，请看下图：
+
+![容器生态](../images/container-ecosystem.png)
+
+关于 Docker 容器的更多内容请参考 [Docker最佳实践](../appendix/docker-best-practice.md)。
+
 ### 容器的设计模式
 
 Kubernetes提供了多种资源对象，用户可以根据自己应用的特性加以选择。这些对象有：
@@ -345,6 +351,8 @@ Service mesh现在一般被翻译作服务网格，目前主流的Service mesh�
 
 - [微服务管理框架service mesh——Linkerd安装试用笔记](https://jimmysong.io/posts/linkerd-user-guide/)
 - [微服务管理框架service mesh——Istio安装试用笔记](https://jimmysong.io/posts/istio-installation/)
+
+更多关于 Service Mesh 的内容请访问 [Service Mesh 中文网](http://www.servicemesh.cn)。
 
 ## 使用案例
 

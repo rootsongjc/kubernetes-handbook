@@ -8,7 +8,7 @@
 - [kubelet的认证授权](../guide/kubelet-authentication-authorization.md)：向您描述如何通过认证授权来访问 kubelet 的 HTTPS 端点。
 - [TLS bootstrap](../guide/tls-bootstrapping.md)：介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）。
 
-**注意：**这一步是在安装配置kubernetes的所有步骤中最容易出错也最难于排查问题的一步，而这却刚好是第一步，万事开头难，不要因为这点困难就望而却步。
+**注意**：这一步是在安装配置kubernetes的所有步骤中最容易出错也最难于排查问题的一步，而这却刚好是第一步，万事开头难，不要因为这点困难就望而却步。
 
 **如果您足够有信心在完全不了解自己在做什么的情况下能够成功地完成了这一步的配置，那么您可以尽管跳过上面的几篇文章直接进行下面的操作。**
 
