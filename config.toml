@@ -132,21 +132,27 @@ desc = "Data Science for complexity of human society"
 
 [[menu.main]]
     parent = "Books"
+    name = "Docker handbook"
+    url = "docker-handbook"
+    weight = 4
+
+[[menu.main]]
+    parent = "Books"
     name = "Hugo Handbook"
     url = "hugo-handbook"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     parent = "Books"
     name = "Istio service mesh"
     url = "http://istio.doczh.cn"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     parent = "Books"
     name = "Migrating to Cloud Native"
     url = "migrating-to-cloud-native-application-architectures"
-    weight = 6
+    weight = 7
 
 [[menu.main]]
     identifier = "Projects"
