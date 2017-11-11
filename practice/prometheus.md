@@ -23,9 +23,9 @@
 
 ## 基础架构
 
-一图胜千言，先来张官方的架构图
+一图胜千言，先来张官方的架构图：
 
-![Prometheus 架构图](https://prometheus.io/assets/architecture.svg)
+![Prometheus 架构图](../images/prometheus-architecture.jpg)
 
 从这个架构图，也可以看出 Prometheus 的主要模块包含， Server,  Exporters, Pushgateway, PromQL, Alertmanager, WebUI 等。
 
