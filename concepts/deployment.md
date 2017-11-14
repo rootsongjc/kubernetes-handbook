@@ -351,7 +351,7 @@ REVISION    CHANGE-CAUSE
 3           kubectl set image deployment/nginx-deployment nginx=nginx:1.91
 ```
 
-因为我们创建 Deployment 的时候使用了`--recored`参数可以记录命令，我们可以很方便的查看每次 revision 的变化。
+因为我们创建 Deployment 的时候使用了`--record`参数可以记录命令，我们可以很方便的查看每次 revision 的变化。
 
 查看单个revision 的详细信息：
 
