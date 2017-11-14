@@ -183,7 +183,7 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 
 为了识别用户，认证者使用 OAuth2 [token 响应](https://openid.net/specs/openid-connect-core-1_0.html#TokenResponse) 中的 `id_token`（而不是 `access_token`）作为 bearer token。请参阅 [上面](#putting-a-bearer-token-in-a-request) 的关于将 token 置于请求中。
 
-![Kubernetes OpenID Connect Flow](../images/kubernetes-oidc-login.jpg)
+![Kubernetes OpenID Connect Flow](https://jimmysong.io/kubernetes-handbook/images/kubernetes-oidc-login.jpg)
 
 1. 登陆到您的身份提供商
 2. 您的身份提供商将为您提供一个 `access_token`，一个 `id_token` 和一个 `refresh_token`
