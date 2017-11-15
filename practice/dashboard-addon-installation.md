@@ -122,7 +122,7 @@ openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 
 如果你不想使用**https**的话，可以直接访问insecure port 8080端口：<http://172.20.0.113:8080/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard>
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubernetes-dashboard-raw.jpg)
+![kubernetes dashboard](../images/kubernetes-dashboard-raw.jpg)
 
 由于缺少 Heapster 插件，当前 dashboard 不能展示 Pod、Nodes 的 CPU、内存等 metric 图形。
 

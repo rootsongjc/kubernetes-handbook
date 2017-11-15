@@ -459,7 +459,7 @@ Commercial support is available at
 
 访问`172.20.0.113:32724`或`172.20.0.114:32724`或者`172.20.0.115:32724`都可以得到nginx的页面。
 
-![welcome-nginx](http://olz1di9xf.bkt.clouddn.com/kubernetes-installation-test-nginx.png)
+![welcome nginx](../images/kubernetes-installation-test-nginx.png)
 
 ## 参考
 

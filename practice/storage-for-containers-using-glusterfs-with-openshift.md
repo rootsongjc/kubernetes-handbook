@@ -491,7 +491,7 @@ nfs.disable: on
 
 或者，你也可以使用OpenShift UI来配置存储，这样可以很方便地在系统中的所有已知的StorageClasses中进行选择：
 
-![Screen Shot 2017-03-23 at 21.50.34](https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-23-at-21-50-34.png?w=440)
+![创建存储](../images/create-gluster-storage.png)
 
 ![Screen Shot 2017-03-24 at 11.09.34.png](https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-24-at-11-09-341.png?w=440)
 

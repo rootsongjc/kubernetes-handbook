@@ -344,7 +344,7 @@ Test Suite Passed
 
 从`log.txt`日志中还可以看到更多详细请求的测试指标。
 
-![kubernetes-dashboard](http://olz1di9xf.bkt.clouddn.com/kubenetes-e2e-test.jpg)
+![kubernetes-dashboard](../images/kubenetes-e2e-test.jpg)
 
 ### 注意事项
 
@@ -386,7 +386,7 @@ Sample-webapp起了48个pod。
 
 Locust模拟10万用户，每秒增长100个。
 
-![locust-test](http://olz1di9xf.bkt.clouddn.com/kubernetes-locust-test.jpg)
+![locust测试页面](../images/kubernetes-locust-test.jpg)
 
 关于Locust的使用请参考Github：https://github.com/rootsongjc/distributed-load-testing-using-kubernetes
 
