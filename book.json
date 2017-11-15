@@ -1,11 +1,11 @@
 {
-    "title": "Kubernetes Handbook",
+    "title": "Kubernetes Handbook - jimmysong.io",
     "description": "Kubernetes中文指南/实践手册|kubernetes handbook|jimmysong.io|宋净超",
     "language": "zh-hans",
     "author": "Jimmy Song",
     "links": {
         "sidebar": {
-            "Home": "https://jimmysong.io"
+            "Jimmy Song": "https://jimmysong.io"
         }
     },
     "plugins": [
@@ -20,9 +20,13 @@
         "github-buttons@2.1.0",
         "favicon@^0.0.2",
         "tbfed-pagefooter@^0.0.1",
-        "3-ba"
+        "3-ba",
+        "theme-default"
     ],
     "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        },
         "github": {
             "url": "https://github.com/rootsongjc/kubernetes-handbook"
         },
