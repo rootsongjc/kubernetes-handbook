@@ -570,77 +570,67 @@ rules:
 
 **easyrsa** 可以用来手动为集群生成证书。
 
-1. 下载，解压，并初始化修补版本的easyrsa3。
+**1.** 下载，解压，并初始化修补版本的easyrsa3。
 
-   ```bash
-   curl -L -O https://storage.googleapis.com/kubernetes-release/easy-rsa/easy-rsa.tar.gz
-   tar xzf easy-rsa.tar.gz
-   cd easy-rsa-master/easyrsa3
-   ./easyrsa init-pki
-   ```
+```bash
+curl -L -O https://storage.googleapis.com/kubernetes-release/easy-rsa/easy-rsa.tar.gz
+tar xzf easy-rsa.tar.gz
+cd easy-rsa-master/easyrsa3
+./easyrsa init-pki
+```
+**2.** 生成 CA（使用 `--batch` 设置为自动模式。使用 `--req-cn` 设置默认的 CN）
 
-2. 生成 CA（使用 `--batch` 设置为自动模式。使用 `--req-cn` 设置默认的 CN）
+```bash
+./easyrsa --batch "--req-cn=${MASTER_IP}@`date +%s`" build-ca nopass
+```
+**3.** 生成服务器证书和密钥。（build-server-full [文件名]：生成一个键值对，在本地为客户端和服务器签名。）
 
-   ```bash
-   ./easyrsa --batch "--req-cn=${MASTER_IP}@`date +%s`" build-ca nopass
-   ```
+```bash
+./easyrsa --subject-alt-name="IP:${MASTER_IP}" build-server-full server nopass
+```
+**4.** 复制 `pki/ca.crt`, `pki/issued/server.crt` 和 `pki/private/server.key` 到您的目录下。
 
-3. 生成服务器证书和密钥。（build-server-full [文件名]：生成一个键值对，在本地为客户端和服务器签名。）
+**5.** 将以下参数添加到 API server 的启动参数中：
 
-   ```bash
-   ./easyrsa --subject-alt-name="IP:${MASTER_IP}" build-server-full server nopass
-   ```
-
-4. 复制 `pki/ca.crt`, `pki/issued/server.crt` 和 `pki/private/server.key` 到您的目录下。
-
-5. 将以下参数添加到 API server 的启动参数中：
-
-   ```bash
-   --client-ca-file=/yourdirectory/ca.crt
-   --tls-cert-file=/yourdirectory/server.crt
-   --tls-private-key-file=/yourdirectory/server.key
-   ```
-
+```bash
+--client-ca-file=/yourdirectory/ca.crt
+--tls-cert-file=/yourdirectory/server.crt
+--tls-private-key-file=/yourdirectory/server.key
+```
 #### openssl
 
 **openssl** 可以用来手动为集群生成证书。
 
-1. 生成一个 2048 bit 的 ca.key：
+**1.** 生成一个 2048 bit 的 ca.key：
 
-   ```bash
-   openssl genrsa -out ca.key 2048
-   ```
+```bash
+openssl genrsa -out ca.key 2048
+```
+**2.** 根据 ca.key 生成一个 ca.crt（使用 -days 设置证书的有效时间）：
 
-2. 根据 ca.key 生成一个 ca.crt（使用 -days 设置证书的有效时间）：
+```bash
+openssl req -x509 -new -nodes -key ca.key -subj "/CN=${MASTER_IP}" -days 10000 -out ca.crt
+```
+**3.** 生成一个 2048 bit 的 server.key：
 
-   ```bash
-   openssl req -x509 -new -nodes -key ca.key -subj "/CN=${MASTER_IP}" -days 10000 -out ca.crt
-   ```
+```bash
+openssl genrsa -out server.key 2048
+```
+**4.** 根据 server.key 生成一个 server.csr：
 
-3. 生成一个 2048 bit 的 server.key：
+```bash
+openssl req -new -key server.key -subj "/CN=${MASTER_IP}" -out server.csr
+```
+**5.** 根据 ca.key、ca.crt 和 server.csr 生成 server.crt：
 
-   ```bash
-   openssl genrsa -out server.key 2048
-   ```
+```bash
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 10000
+```
+**6.** 查看证书：
 
-4. 根据 server.key 生成一个 server.csr：
-
-   ```bash
-   openssl req -new -key server.key -subj "/CN=${MASTER_IP}" -out server.csr
-   ```
-
-5. 根据 ca.key、ca.crt 和 server.csr 生成 server.crt：
-
-   ```bash
-   openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 10000
-   ```
-
-6. 查看证书：
-
-   ```bash
-   openssl x509  -noout -text -in ./server.crt
-   ```
-
+```bash
+openssl x509  -noout -text -in ./server.crt
+```
 最后，不要忘了向 API server 的启动参数中增加配置。
 
 #### 认证 API
@@ -648,5 +638,4 @@ rules:
 您可以使用 `certificates.k8s.io` API将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
 
 官方文档地址：https://kubernetes.io/docs/admin/authentication/
-
 译者：[Jimmy Song](https://jimmysong.io)
