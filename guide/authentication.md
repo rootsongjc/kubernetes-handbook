@@ -8,22 +8,22 @@
 
 Kubernetes 集群中包含两类用户：一类是由 Kubernetes 管理的 service account，另一类是普通用户。
 
-普通用户被假定为由外部独立服务管理。管理员分发私钥，用户存储（如 Keystone 或 Google 帐户），甚至包含用户名和密码列表的文件。在这方面，Kubernetes 没有代表普通用户帐户的对象。无法通过 API 调用的方式向集群中添加普通用户。
+普通用户被假定为由外部独立服务管理。管理员分发私钥，用户存储（如 Keystone 或 Google 帐户），甚至包含用户名和密码列表的文件。在这方面，_Kubernetes 没有代表普通用户帐户的对象_。无法通过 API 调用的方式向集群中添加普通用户。
 
-相反，service account 是由 Kubernetes API 管理的帐户。它们都绑定到了特定的 namespace，并由 API server 自动创建，或者通过 API 调用手动创建。Service account 作为凭证而存储在 `Secret`，这些凭证同时被挂载到 pod 中，从而允许 pod 与 kubernetes API 之间的调用。
+相对的，service account 是由 Kubernetes API 管理的帐户。它们都绑定到了特定的 namespace，并由 API server 自动创建，或者通过 API 调用手动创建。Service account 关联了一套凭证，存储在 `Secret`，这些凭证同时被挂载到 pod 中，从而允许 pod 与 kubernetes API 之间的调用。
 
-API 请求被绑定到普通用户或 serivce account 上，或者作为匿名请求对待。这意味着集群内部或外部的每个进程，无论从在工作站上输入 `kubectl` 的人类用户到节点上的 kubelet，到控制平面的成员，都必须在向 API Server 发出请求时进行身份验证，或者被视为匿名用户。
+API 请求被绑定到普通用户或 serivce account 上，或者作为匿名请求对待。这意味着集群内部或外部的每个进程，无论从在工作站上输入 `kubectl` 的人类用户到节点上的 `kubelet`，到控制平面的成员，都必须在向 API Server 发出请求时进行身份验证，或者被视为匿名用户。
 
 ## 认证策略
 
-Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 基本身份验证等身份认证插件来对 API 请求进行身份验证。由于是向 API server 发送 HTTP 请求，插件会尝试将以下属性关联到请求上：
+Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 基本身份验证等身份认证插件来对 API 请求进行身份验证。当有 HTTP 请求发送到 API server 时，插件会尝试将以下属性关联到请求上：
 
 - 用户名：标识最终用户的字符串。常用值可能是 `kube-admin` 或 `jane@example.com`。
 - UID：标识最终用户的字符串，比用户名更加一致且唯一。
-- 组：一组将用户用常用组关联的字符串。
-- 其它字段：包含其他授权人信息的字符串列表的映射。
+- 组：一组将用户和常规用户组相关联的字符串。
+- 额外字段：包含其他有用认证信息的字符串列表的映射。
 
-所有的值对于认证系统都是不透明得，只有 [授权人](https://kubernetes.io/docs/admin/authorization/) 才能解释这些值的重要含义。
+所有的值对于认证系统都是不透明的，只有 [授权人](https://kubernetes.io/docs/admin/authorization/) 才能解释这些值的重要含义。
 
 您可以一次性启用多种身份验证方式。通常使用至少以下两种认证方式：
 
@@ -38,21 +38,21 @@ Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 
 
 ### X509 客户端证书
 
-通过将 `--client-ca-file=SOMEFILE` 选项传递给 API server 来启用客户端证书认证。引用的文件必须包含一个或多个证书颁发机构，用于验证呈现给 API server 的客户端证书。如果客户端证书已提交并验证，则使用主题的公用名称作为请求的用户名。从 Kubernetes 1.4开始，客户端证书还可以使用证书的组织字段来指示用户的组成员身份。要为用户包含多个组成员身份，请在证书中包含多个组织字段。
+通过将 `--client-ca-file=SOMEFILE` 选项传递给 API server 来启用客户端证书认证。引用的文件必须包含一个或多个证书颁发机构，用于验证提交给 API server 的客户端证书。如果客户端证书已提交并验证，则使用 subject 的 Common Name（CN）作为请求的用户名。从 Kubernetes 1.4开始，客户端证书还可以使用证书的 organization 字段来指示用户的组成员身份。要为用户包含多个组成员身份，请在证书中包含多个 organization 字段。
 
-例如，试用 `openssl` 命令工具生成认证签名请求：
+例如，使用 `openssl` 命令工具生成用于签名认证请求的证书：
 
 ```bash
 openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app2"
 ```
 
-这将为一个用户名为”jbeda“的 CSR，属于两个组“app1”和“app2”。
+这将为一个用户名为 ”jbeda“ 的 CSR，属于两个组“app1”和“app2”。
 
 如何生成客户端证书请参阅 [附录](#appendix)。
 
 ### 静态 Token 文件
 
-当在命令行上指定 `--token-auth-file=SOMEFILE` 选项时，API  server 从文件读取 bearer token。目前，token 会无限期地持续下去，并且不重新启动 API server 的话就无法更改令牌列表。
+当在命令行上指定 `--token-auth-file=SOMEFILE` 选项时，API server 从文件读取 bearer token。目前，token 会无限期地持续下去，并且不重新启动 API server 的话就无法更改令牌列表。
 
 token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的组名。请注意，如果您有多个组，则该列必须使用双引号。
 
@@ -197,7 +197,7 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 | `--oidc-issuer-url`     | 允许 API server 发现公共签名密钥的提供者的 URL。只接受使用 `https://` 的方案。通常是提供商的 URL 地址，不包含路径，例如“https://accounts.google.com” 或者 “https://login.salesforce.com”。这个 URL 应该指向下面的 .well-known/openid-configuration | 如果发现 URL 是 `https://accounts.google.com/.well-known/openid-configuration`，值应该是`https://accounts.google.com` | 是    |
 | `--oidc-client-id`      | 所有的 token 必须为其颁发的客户端 ID                  | kubernetes                               | 是    |
 | `--oidc-username-claim` | JWT声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如` email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                      | 否    |
-| `--oidc-groups-claim`   | JWT声明试用的用户组。如果生命存在，它必须是一个字符串数组。          | groups                                   | 否    |
+| `--oidc-groups-claim`   | JWT声明使用的用户组。如果生命存在，它必须是一个字符串数组。          | groups                                   | 否    |
 | `--oidc-ca-file`        | 用来签名您的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。      | `/etc/kubernetes/ssl/kc-ca.pem`          | 否    |
 
 如果为 `--oidc-username-claim` 选择了除 `email` 以外的其他声明，则该值将以 `--oidc-issuer-url` 作为前缀，以防止与现有 Kubernetes 名称（例如 `system:users`）冲突。例如，如果提供商网址是 https://accounts.google.com，而用户名声明映射到 `jane`，则插件会将用户身份验证为：
