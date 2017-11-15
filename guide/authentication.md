@@ -54,7 +54,7 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 
 当在命令行上指定 `--token-auth-file=SOMEFILE` 选项时，API  server 从文件读取 bearer token。目前，token 会无限期地持续下去，并且不重新启动 API server 的话就无法更改令牌列表。
 
-token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的祖名。请注意，如果您有多个组，则该列必须使用双引号。
+token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的组名。请注意，如果您有多个组，则该列必须使用双引号。
 
 ```conf
 token,user,uid,"group1,group2,group3"
