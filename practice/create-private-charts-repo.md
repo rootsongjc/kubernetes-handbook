@@ -1,6 +1,10 @@
 # 构建私有Chart仓库
 
-使用Chart便于封装和管理kubernetes中的应用，因此当企业内部的应用多了以后，互相依赖、部署环境复杂之后，原先的直接使用yaml文件的管理方式已经不再适应生产的需要，因此我们有必要构建自己的chart仓库。
+使用Chart便于封装和管理kubernetes中的应用，因此当企业内部的应用多了以后，互相依赖、部署环境复杂之后，原先的直接使用yaml文件的管理方式已经不再适应生产的需要，因此我们有必要构建自己的chart仓库。本文中我们将使用 GitHub Pages 来构建我们自己的 chart 仓库。
+
+## 目的
+
+我们需要构建一个GitHub pages存储所有chart的压缩文件，最好还要有一个前端来展示和搜索chart。
 
 ## 什么是Chart
 
@@ -63,6 +67,10 @@ Chart 仓库（repository）是一个用来托管`index.yaml`文件和打包好�
 
 关于chart仓库的更多信息请参考[Helm chart文档](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md)。
 
+## 使用GitHub pages托管charts
+
+我们在上文中说到，chart可以使用GitHub pages做存储，接下来我们将会把之前够够构建的chart上传到GitHub pages并在helm中新增一个repo。
+
 ## 构建Monocular UI
 
 参考 [Monocular UI](Monocular UI) 构建UI。
@@ -122,7 +130,7 @@ $ helm install monocular/monocular
 
 ![Helm monocular界面](../images/helm-monocular-jimmysong.jpg)
 
-因为nginx ingress配置问题，因为官方的chart中api与ui使用的是同样的domain name，我使用的是traefik ingress，`api`访问不到，所以加载不了chart。
+因为nginx ingress配置问题，官方的chart中api与ui使用的是同样的domain name，我使用的是traefik ingress，`api`访问不到，所以加载不了chart。
 
 ## 参考
 
@@ -131,3 +139,7 @@ $ helm install monocular/monocular
 [Helm Chart - GitHub](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
 
 [简化Kubernetes应用部署工具-Helm之应用部署](https://www.kubernetes.org.cn/2706.html)
+
+[Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
+
+[Using a private github repo as helm chart repo (https access)](https://medium.com/@kavehmz/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c)
