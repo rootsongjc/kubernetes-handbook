@@ -10,6 +10,10 @@
 
 ![云计算演进历程](../images/cloud-computing-evolution-road.jpg)
 
+云原生应用到2020年将比目前至少翻一番，下图是Marc Wilczek的调查报告。
+
+![来自Twitter @MarcWilczek](../images/cloud-native-comes-of-age.jpg)
+
 ### 云计算介绍
 
 云计算包含的内容十分繁杂，也有很多技术和公司牵强赴会说自己是云计算公司，说自己是做云的，实际上可能风马牛不相及。说白了，云计算就是一种配置资源的方式，根据资源配置方式的不同我们可以把云计算从宏观上分为以下三种类型：
