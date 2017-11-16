@@ -16,7 +16,7 @@
 
 ### 云计算介绍
 
-云计算包含的内容十分繁杂，也有很多技术和公司牵强赴会说自己是云计算公司，说自己是做云的，实际上可能风马牛不相及。说白了，云计算就是一种配置资源的方式，根据资源配置方式的不同我们可以把云计算从宏观上分为以下三种类型：
+云计算包含的内容十分繁杂，也有很多技术和公司牵强附会说自己是云计算公司，说自己是做云的，实际上可能风马牛不相及。说白了，云计算就是一种配置资源的方式，根据资源配置方式的不同我们可以把云计算从宏观上分为以下三种类型：
 
 - IaaS：这是为了想要建立自己的商业模式并进行自定义的客户，例如亚马逊的EC2、S3存储、Rackspace虚拟机等都是IaaS。
 - PaaS：工具和服务的集合，对于想用它来构建自己的应用程序或者想快速得将应用程序部署到生产环境而不必关心底层硬件的用户和开发者来说是特别有用的，比如Cloud Foundry、Google App Engine、Heroku等。
@@ -466,3 +466,10 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 下图是从Grafana监控页面上查看到的某个executor资源占用情况。
 
 ![Grafana](../images/spark-job-on-kubernetes-example-2.jpg)
+
+## 参考
+
+- [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
+- [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
+- [Cloud Native Python - 将由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
+- [Istio Service Mesh 中文文档](http://istio.doczh.cn/)
