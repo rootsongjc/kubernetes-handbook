@@ -14,7 +14,7 @@ Service是对一组提供相同功能的Pods的抽象，并为它们提供一个
 Service有三种类型：
 
 - ClusterIP：默认类型，自动分配一个仅cluster内部可以访问的虚拟IP
-- NodePort：在ClusterIP基础上为Service在每台机器上绑定一个端口，这样就可以通过`<NodeIP>:NodePort`来访问改服务
+- NodePort：在ClusterIP基础上为Service在每台机器上绑定一个端口，这样就可以通过`<NodeIP>:NodePort`来访问该服务
 - LoadBalancer：在NodePort的基础上，借助cloud provider创建一个外部的负载均衡器，并将请求转发到`<NodeIP>:NodePort`
 
 另外，也可以将已有的服务以Service的形式加入到Kubernetes集群中来，只需要在创建Service的时候不指定Label selector，而是在Service创建好后手动为其添加endpoint。
