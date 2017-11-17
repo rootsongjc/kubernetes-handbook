@@ -543,7 +543,7 @@ rules:
 
 **已有的部署脚本** 在 `cluster/saltbase/salt/generate-cert/make-ca-cert.sh`。
 
-执行该脚本时需要船体两个参数。第一个参数是 API server 的 IP地址。第二个参数是 IP 形式的主题备用名称列表： `IP:<ip-address>` 或 `DNS:<dns-name>`。
+执行该脚本时需要传递两个参数。第一个参数是 API server 的 IP地址。第二个参数是 IP 形式的主题备用名称列表： `IP:<ip-address>` 或 `DNS:<dns-name>`。
 
 该脚本将生成三个文件： `ca.crt`、`server.crt` 和 `server.key`。
 
@@ -634,6 +634,7 @@ rules:
 
 您可以使用 `certificates.k8s.io` API将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
 
-官方文档地址：https://kubernetes.io/docs/admin/authentication/
+官方v1.6文档地址：https://v1-6.docs.kubernetes.io/docs/admin/authentication/
+官方最新文档地址：https://kubernetes.io/docs/admin/authentication/
 
 译者：[Jimmy Song](https://jimmysong.io)
