@@ -69,4 +69,4 @@
 2. 部署过程中需要有很多证书的操作，请大家耐心操作，不明白的操作可以参考本书中的其他章节的解释。
 3. 该部署操作仅是搭建成了一个可用 kubernetes 集群，而很多地方还需要进行优化，heapster 插件、EFK 插件不一定会用于真实的生产环境中，但是通过部署这些插件，可以让大家了解到如何部署应用到集群上。
 
-**注：本安装文档参考 [opsnull 跟我一步步部署 kubernetes 集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster/)**
+**注：本安装文档参考了 [opsnull 跟我一步步部署 kubernetes 集群](https://github.com/opsnull/follow-me-install-kubernetes-cluster/)**
