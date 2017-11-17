@@ -100,7 +100,7 @@ password,user,uid,"group1,group2,group3"
 
 ### Service Account Token
 
-Service account 是使用签名的 bearer token 来验证请求的额自动启用的验证器。该插件包括两个可选的标志：
+Service account 是一个自动启用的验证器，它使用签名的 bearer token 来验证请求。该插件包括两个可选的标志：
 
 - `--service-account-key-file`  一个包含签名 bearer token 的 PEM 编码文件。如果为指定，将使用 API server 的 TLS 私钥。
 - `--service-account-lookup` 如果启用，从 API 中删除掉的 token 将被撤销。
