@@ -10,6 +10,15 @@
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native/) - A curated list for awesome cloud native architectures <https://jimmysong.io/awesome-cloud-native/>
 - [cloud native landscape](https://github.com/cncf/landscape) - Cloud Native Landscape [https://cncf.io](https://cncf.io/)
 
+## 开源书籍和教程
+
+- [arun-gupta/kubernetes-aws-workshop](https://github.com/arun-gupta/kubernetes-aws-workshop)
+- [arun-gupta/kubernetes-java-sample](https://github.com/arun-gupta/kubernetes-java-sample)
+- [feiskyer/kubernetes-handbook](https://github.com/feiskyer/kubernetes-handbook)
+- [kelseyhightower/kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+- [opsnull/follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)
+- [rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
+
 ## 幻灯片、图书和情报资料分享
 
 - [cloud-native-slides-share](https://github.com/rootsongjc/cloud-native-slides-share)  - Cloud Native 相关meetup、会议PPT、图书资料分享
