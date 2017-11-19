@@ -73,7 +73,7 @@ Pod也可以用于垂直应用栈（例如LAMP），这样使用的主要动机�
 
 Pod在设计支持就不是作为持久化实体的。在调度失败、节点故障、缺少资源或者节点维护的状态下都会死掉会被驱逐。
 
-通常，用户不需要手动直接创建Pod，而是应该使用controller（例如[Deployments](./deployment.md)），即使时创建单个Pod的情况下。Controller可以提供集群级别的自愈功能、复制和升级管理。
+通常，用户不需要手动直接创建Pod，而是应该使用controller（例如[Deployments](./deployment.md)），即使是在创建单个Pod的情况下。Controller可以提供集群级别的自愈功能、复制和升级管理。
 
 The use of collective APIs as the primary user-facing primitive is relatively common among cluster scheduling systems, including [Borg](https://research.google.com/pubs/pub43438.html), [Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html), [Aurora](http://aurora.apache.org/documentation/latest/reference/configuration/#job-schema), and [Tupperware](http://www.slideshare.net/Docker/aravindnarayanan-facebook140613153626phpapp02-37588997).
 
