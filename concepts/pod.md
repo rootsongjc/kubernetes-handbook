@@ -38,7 +38,7 @@ Pod是一个服务的多个进程的聚合单位，pod提供这种模型能够�
 
 Pod中的应用可以共享网络空间（IP地址和端口），因此可以通过`localhost`互相发现。因此，pod中的应用必须协调端口占用。每个pod都有一个唯一的IP地址，跟物理机和其他pod都处于一个扁平的网络空间中，它们之间可以直接连通。
 
-Pod中应用容器的hostname被被设置成Pod的名字。
+Pod中应用容器的hostname被设置成Pod的名字。
 
 Pod中的应用容器可以共享volume。Volume能够保证pod重启时使用的数据不丢失。
 
@@ -73,7 +73,7 @@ Pod也可以用于垂直应用栈（例如LAMP），这样使用的主要动机�
 
 Pod在设计支持就不是作为持久化实体的。在调度失败、节点故障、缺少资源或者节点维护的状态下都会死掉会被驱逐。
 
-通常，用户不需要手动直接创建Pod，而是应该使用controller（例如[Deployments](./deployment.md)），即使时创建单个Pod的情况下。Controller可以提供集群级别的自愈功能、复制和升级管理。
+通常，用户不需要手动直接创建Pod，而是应该使用controller（例如[Deployments](./deployment.md)），即使是在创建单个Pod的情况下。Controller可以提供集群级别的自愈功能、复制和升级管理。
 
 The use of collective APIs as the primary user-facing primitive is relatively common among cluster scheduling systems, including [Borg](https://research.google.com/pubs/pub43438.html), [Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html), [Aurora](http://aurora.apache.org/documentation/latest/reference/configuration/#job-schema), and [Tupperware](http://www.slideshare.net/Docker/aravindnarayanan-facebook140613153626phpapp02-37588997).
 
