@@ -184,6 +184,12 @@ desc = "Data Science for complexity of human society"
     weight = 4
 
 [[menu.main]]
+    parent = "Projects"
+    name = "Cheatsheets"
+    url = "cheatsheets"
+    weight = 5
+
+[[menu.main]]
     name = "About"
     url = "about"
     weight = 4
