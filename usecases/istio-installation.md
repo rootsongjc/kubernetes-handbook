@@ -331,13 +331,13 @@ http://servicegraph.istio.io/dotviz
 
 可以用来查看服务间的依赖关系。
 
-访问http://servicegraph.istio.io/graph可以获得json格式的返回结果。
+访问 http://servicegraph.istio.io/graph 可以获得json格式的返回结果。
 
 ![ServiceGraph页面](../images/istio-servicegraph.jpg)
 
 ## 更进一步
 
-BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由请求，将流量分摊到不同版本的应用上。参考[Configuring Request Routing](https://istio.io/docs/tasks/request-routing.html)。
+BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由请求，将流量分发到不同版本的应用上。参考[Configuring Request Routing](https://istio.io/docs/tasks/request-routing.html)。
 
 还有一些更高级的功能，我们后续将进一步探索。
 
