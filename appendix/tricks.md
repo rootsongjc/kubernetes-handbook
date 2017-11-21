@@ -184,3 +184,21 @@ spec:
               fieldPath: spec.serviceAccountName
   restartPolicy: Never
 ```
+## 7. 配置Pod使用外部DNS
+
+修改kube-dns的使用的ConfigMap。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-dns
+  namespace: kube-system
+data:
+  stubDomains: |
+    {"k8s.com": ["192.168.10.10"]}
+  upstreamNameservers: |
+    ["8.8.8.8", "8.8.4.4"]
+```
+
+`upstreamNameservers` 即使用的外部DNS，参考：[Configuring Private DNS Zones and Upstream Nameservers in Kubernetes](http://blog.kubernetes.io/2017/04/configuring-private-dns-zones-upstream-nameservers-kubernetes.html)
