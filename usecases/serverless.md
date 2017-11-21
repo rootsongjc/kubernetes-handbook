@@ -34,16 +34,24 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 
 ## Kubernetes上的serverless 架构
 
-目前已经有一批优秀的基于 kubernetes 的 serverless 架构开源项目如下：
+目前已经有一批优秀的基于 kubernetes 的 serverless 架构（FaaS）开源项目如下：
 
 - [faas](https://github.com/alexellis/faas) - 🐳 Functions as a Service - a serverless framework for Docker & Kubernetes [https://blog.alexellis.io/introducing…](https://blog.alexellis.io/introducing-functions-as-a-service/)
 - [faas-netes](https://github.com/alexellis/faas-netes) - Enable Kubernetes as a backend for Functions as a Service (OpenFaaS) <https://github.com/alexellis/faas>
+- [fn](https://github.com/fnproject/fn) - The container native, cloud agnostic serverless platform. [http://fnproject.io](http://fnproject.io/)
 - [funktion](https://github.com/funktionio/funktion/) - a CLI tool for working with funktion <https://funktion.fabric8.io/>
+- [fx](https://github.com/metrue/fx) - Poor man's serverless framework based on Docker, Function as a Service with painless.
 - [IronFunctions](https://github.com/iron-io/functions) - IronFunctions - the serverless microservices platform. [http://iron.io](http://iron.io/)
 - [kubeless](https://github.com/kubeless/kubeless) - Kubernetes Native Serverless Framework [http://kubeless.io](http://kubeless.io/)
 - [OpenWhisk](http://openwhisk.incubator.apache.org/) -  Apache OpenWhisk (Incubating) is a [serverless](http://openwhisk.incubator.apache.org/serverless), open source cloud platform that executes functions in response to events at any scale.
 
 以上项目收录于 [awsome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)
+
+## FaaS
+
+Function-as-a-Service 全景图（图片来自<https://github.com/amyers1793/FunctionasaServiceLandscape>)
+
+![FaaS Landscape](../images/redpoint-faas-landscape.jpg)
 
 ## 参考
 
@@ -54,3 +62,5 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 [2017年会是Serverless爆发之年吗？](http://www.infoq.com/cn/news/2017/04/2017-Serverless)
 
 [从IaaS到FaaS—— Serverless架构的前世今生](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
+
+[Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
