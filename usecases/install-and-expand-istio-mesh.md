@@ -129,7 +129,7 @@
 
    注意：如果您运行的集群不支持外部负载均衡器（如 minikube）， `istio-ingress` 服务的 `EXTERNAL-IP` 显示`<pending>`。你必须改为使用 NodePort service 或者 端口转发方式来访问应用程序。
 
-2. 确人对应的 Kubernetes pod 已部署并且所有的容器都启动并运行： `istio-pilot-*`、 `istio-mixer-*`、 `istio-ingress-*`、 `istio-egress-*`、`istio-ca-*`， `istio-initializer-*` 是可以选的。
+2. 确认对应的 Kubernetes pod 已部署并且所有的容器都启动并运行： `istio-pilot-*`、 `istio-mixer-*`、 `istio-ingress-*`、 `istio-egress-*`、`istio-ca-*`， `istio-initializer-*` 是可以选的。
 
    ```bash
    kubectl get pods -n istio-system
@@ -146,7 +146,7 @@
 
 ## 部署应用
 
-您可以部署自己的应用或者示例应用程序如 [BookInfo](http://istio.doczh.cn/docs/guides/bookinfo.html)。 注意：应用程序必须使用 HTTP/1.1 或 HTTP/2.0 协议来传递 HTTP 流量，因为 HTTP/1.0 已经不再支持。
+您可以部署自己的应用或者示例应用程序如 [BookInfo](http://istio.doczh.cn/docs/guides/bookinfo.html)。 注意：应用程序必须使用 HTTP/1.1 或 HTTP/2.0 协议来传输 HTTP 流量，因为 HTTP/1.0 已经不再支持。
 
 如果您启动了 [Istio-Initializer](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html)，如上所示，您可以使用 `kubectl create` 直接部署应用。Istio-Initializer 会向应用程序的 pod 中自动注入 Envoy 容器：
 
@@ -197,7 +197,7 @@ kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 1. **Service 注解**：每个 pod 都必须只属于某**一个** [Kubernetes Service](https://kubernetes.io/docs/concepts/services-networking/service/) （当前不支持一个 pod 同时属于多个 service）。
 2. **命名的端口**：Service 的端口必须命名。端口的名字必须遵循如下格式 `<protocol>[-<suffix>]`，可以是http、http2、 grpc、 mongo、 或者 redis 作为 `<protocol>` ，这样才能使用 Istio 的路由功能。例如`name: http2-foo` 和 `name: http` 都是有效的端口名称，而 `name: http2foo` 不是。如果端口的名称是不可识别的前缀或者未命名，那么该端口上的流量就会作为普通的 TCP 流量（除非使用 `Protocol: UDP` 明确声明使用 UDP 端口）。
 3. **带有 app label 的 Deployment**：我们建议 kubernetes 的`Deploymenet` 资源的配置文件中为 Pod 明确指定 `app` label。每个Deployment 的配置中都需要有个不同的有意义的 `app` 标签。`app` label 用于在分布式坠重中添加上下文信息。
-4. **Mesh 中的每个 pod 里都有一个 Sidecar**： 最后，Mesh 中的每个 pod 都必须运行与 Istio 兼容的sidecar。遗爱部分介绍了将 sidecar 注入到 pod 中的两种方法：使用`istioctl` 命令行工具手动注入，或者使用 istio initializer 自动注入。注意 sidecar 不涉及到容器间的流量，因为他们都在同一个 pod 中。
+4. **Mesh 中的每个 pod 里都有一个 Sidecar**： 最后，Mesh 中的每个 pod 都必须运行与 Istio 兼容的sidecar。下面部分介绍了将 sidecar 注入到 pod 中的两种方法：使用`istioctl` 命令行工具手动注入，或者使用 istio initializer 自动注入。注意 sidecar 不涉及到容器间的流量，因为它们都在同一个 pod 中。
 
 ## 手动注入 sidecar
 
