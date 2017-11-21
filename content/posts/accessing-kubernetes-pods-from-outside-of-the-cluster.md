@@ -2,6 +2,7 @@
 title: "从外部访问Kubernetes中的Pod"
 subtitle: "你需要知道的访问Pod的5种方式"
 date: 2017-11-21T20:13:01+08:00
+description: "关于在kubenretes中暴露Pod及服务的5种方式"
 draft: false
 tags: ["kubernetes"]
 categories: "kubernetes"
@@ -22,7 +23,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2015112
 
 这是一种直接定义Pod网络的方式。
 
-如果在Pod中使用`hostNotwork:true`配置的话，在这种pod中运行的应用程序可以直接看到pod启动的主机的网络接口。在主机的所有网络接口上都可以访问到该应用程序。以下是使用主机网络的pod的示例定义：
+如果在Pod中使用`hostNetwork:true`配置的话，在这种pod中运行的应用程序可以直接看到pod启动的主机的网络接口。在主机的所有网络接口上都可以访问到该应用程序。以下是使用主机网络的pod的示例定义：
 
 ```yaml
 apiVersion: v1
