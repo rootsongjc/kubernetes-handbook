@@ -16,6 +16,7 @@
 - [arun-gupta/kubernetes-java-sample](https://github.com/arun-gupta/kubernetes-java-sample)
 - [feiskyer/kubernetes-handbook](https://github.com/feiskyer/kubernetes-handbook)
 - [kelseyhightower/kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+- [ks](https://github.com/red-gate/ks) - A series of Kubernetes walk-throughs
 - [opsnull/follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)
 - [rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
 
