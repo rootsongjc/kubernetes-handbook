@@ -398,6 +398,44 @@ func (util *RBDUtil) CreateImage(p *rbdVolumeProvisioner) (r *v1.RBDVolumeSource
 
 该方法调用失败。
 
+## 问题解决
+
+再细细track一下整个过程，日志报错的组件是kube-controller-manager，代码分析可知，它会调用rbd模块，rbd模块就是ceph的一个组件，但我们已经在host中安装了ceph-common，在host中执行以下命令确认一下：
+```bash
+[root@seed ~]# which rbd
+/usr/bin/rbd
+```
+rbd模块是存在的，且在环境变量$PATH中，按道理来说应该不会报错。不过我们忽略了一个地方，那就是我们的k8s集群是采用kubeadm方式创建的，所有的k8s组件都是运行在static pod中，也就是说，我们的kube-controller-manager也是运行在一个static pod中，kube-controller-manager调用的是它所在pod中的环境，我们进入 kube-controller-manager所在pod，验证一下果然不存在rbd模块。
+```
+[root@seed]# docker ps | grep kube-controller
+b550620a2eb8        2c00535aa296                                                                                                                                           "kube-controller-mana"   3 days ago          Up 3 days                               k8s_kube-controller-manager_kube-controller-manager-seed.econe.com_kube-system_04c56614d8890759089515f7b8d000f8_18
+7552f134737e        gcr.io/google_containers/pause-amd64:3.0                                                                                                               "/pause"                 3 days ago          Up 3 days                               k8s_POD_kube-controller-manager-seed.econe.com_kube-system_04c56614d8890759089515f7b8d000f8_11
+[root@seed]# docker  exec -it b550620a2eb8 "/bin/sh"
+/ # which rbd
+```
+问题的根源已经找到了，怎么解决呢？最先想到的自然是构造一个新的kube-controller-manager image，在该image中安装rbd模块就可以了。但这样并不优雅，对k8s有侵入。经过搜索后，在该[issue](https://github.com/kubernetes/kubernetes/issues/38923)中找到了最佳解决方案，社区开发人员新建了一个叫做rbd-provisioner 的pod，该pod环境有ceph rbd，从而将Volume Provisioning的工作放在该环境下执行。具体解决方案如下：
+
+rbd-provisioner-deployment.yaml
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rbd-provisioner
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rbd-provisioner
+    spec:
+      containers:
+      - name: rbd-provisioner
+        image: "quay.io/external_storage/rbd-provisioner:v0.1.0"
+```
+
+执行该dp后，就可以直接创建PVC进行rbd与pod的绑定了。
+
 
 ## 参考
 
