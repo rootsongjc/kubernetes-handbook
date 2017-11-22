@@ -63,6 +63,7 @@
   - [通过端口转发访问集群中的应用程序](guide/connecting-to-applications-port-forward.md)
   - [使用service访问群集中的应用程序](guide/service-access-application-cluster.md)
   - [从外部访问Kubernetes中的Pod](guide/accessing-kubernetes-pods-from-outside-of-the-cluster.md)
+  - [Carbin - Kuberentes手机客户端](guide/carbin-mobile-dashboard-for-kubernetes.md)
 - [在kubernetes中开发部署应用](guide/application-development-deployment-flow.md)
   - [适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
   - [迁移传统应用到kubernetes中——以Hadoop YARN为例](guide/migrating-hadoop-yarn-to-kubernetes.md)
