@@ -24,7 +24,7 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 ## 配置Flanneld
 
-参考我之前写的文章[Kubernetes基于Flannel的网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
+参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
 直接使用yum安装flanneld即可。
 
