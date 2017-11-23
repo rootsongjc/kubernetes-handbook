@@ -48,6 +48,7 @@
     - [docker用户过度到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
     - [kubectl命令概览](guide/using-kubectl.md)
     - [kubectl命令技巧大全](guide/kubectl-cheatsheet.md)
+    - [使用etcdctl访问kuberentes数据](guide/using-etcdctl-to-access-kubernetes-data.md)
 - [集群安全性管理](guide/cluster-security-management.md)
   - [管理集群中的TLS](guide/managing-tls-in-a-cluster.md)
   - [kubelet的认证授权](guide/kubelet-authentication-authorization.md)
@@ -134,6 +135,7 @@
   - [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   - [运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
 - [Serverless架构](usecases/serverless.md)
+  - [理解Serverless](usecases/understanding-serverless.md)
 - [边缘计算](usecases/edge-computing.md)
 
 ### 开发指南
