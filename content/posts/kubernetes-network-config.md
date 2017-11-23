@@ -75,9 +75,9 @@ etcdctl mk /kube-centos/network/config "{ \"Network\": \"172.30.0.0/16\", \"Subn
 
 Flannel的[文档](https://github.com/coreos/flannel/blob/master/Documentation/running.md)中有写**Docker Integration**：
 
-Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
+> Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
 
-```
+```bash
 source /run/flannel/subnet.env
 docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &
 ```
@@ -123,8 +123,6 @@ $etcdctl get /kube-centos/network/subnets/172.30.38.0-24
 $etcdctl get /kube-centos/network/subnets/172.30.46.0-24
 {"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
 ```
-
-
 
 **设置docker0网桥的IP地址**
 
