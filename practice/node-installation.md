@@ -2,7 +2,7 @@
 
 kubernetes node 节点包含如下组件：
 
-+ Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](http://rootsongjc.github.io/blogs/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
++ Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在service配置文件中增加TLS配置。
 + Docker1.12.5：docker的安装很简单，这里也不说了。
 + kubelet
 + kube-proxy
@@ -96,13 +96,15 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
 
 如果你要使用`host-gw`模式，可以直接将vxlan改成`host-gw`即可。
 
+**注**：参考[网络和集群性能测试](network-and-cluster-perfermance-test.md)那节，最终我们使用的`host-gw`模式。
+
 **配置Docker**
 
 Flannel的[文档](https://github.com/coreos/flannel/blob/master/Documentation/running.md)中有写**Docker Integration**：
 
-Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
+> Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
 
-```
+```bash
 source /run/flannel/subnet.env
 docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &
 ```
@@ -115,18 +117,18 @@ Systemd users can use `EnvironmentFile` directive in the .service file to pull i
 
 执行`./mk-docker-opts.sh -i`将会生成如下两个文件环境变量文件。
 
-/run/flannel/subnet.env
+- /run/flannel/subnet.env
 
-```
+```ini
 FLANNEL_NETWORK=172.30.0.0/16
 FLANNEL_SUBNET=172.30.46.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=false
 ```
 
-/run/docker_opts.env
+- /run/docker_opts.env
 
-```
+```ini
 DOCKER_OPT_BIP="--bip=172.30.46.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
@@ -141,7 +143,7 @@ ifconfig docker0 $FLANNEL_SUBNET
 
 这样docker0和flannel网桥会在同一个子网中，如
 
-```
+```ini
 6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
     link/ether 02:42:da:bf:83:a2 brd ff:ff:ff:ff:ff:ff
     inet 172.30.38.1/24 brd 172.30.38.255 scope global docker0
@@ -166,13 +168,13 @@ EnvironmentFile=-/run/flannel/subnet.env
 
 重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
 
-```
+```bash
 Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
 ```
 
 这是kubelet与docker的**cgroup driver**不一致导致的，kubelet启动的时候有个`—cgroup-driver`参数可以指定为"cgroupfs"或者“systemd”。
 
-```
+```bash
 --cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
 ```
 
