@@ -15,6 +15,7 @@
     - [Init容器](concepts/init-containers.md)
     - [Pod安全策略](concepts/pod-security-policy.md)
     - [Pod的生命周期](concepts/pod-lifecycle.md)
+    - [Pod hook](concepts/pod-hook.md)
   - [Node](concepts/node.md)
   - [Namespace](concepts/namespace.md)
   - [Service](concepts/service.md)
