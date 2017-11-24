@@ -157,3 +157,6 @@ tags: ["github-pages","github","website","hugo"]
 
 1. 修复非主页中的最下面多出来的留白
 
+### 2017-11-25
+
+1. 修复在pages页面中打开about链接的错误anchor
