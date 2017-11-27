@@ -1,0 +1,74 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - services
+  - endpoints
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: default
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: Prometheus
+metadata:
+  name: sample-metrics-prom
+  labels:
+    app: sample-metrics-prom
+    prometheus: sample-metrics-prom
+spec:
+  replicas: 1
+  baseImage: prom/prometheus
+  version: v1.7.1
+  serviceAccountName: prometheus
+  serviceMonitorSelector:
+    matchLabels:
+      service-monitor: function
+  resources:
+    requests:
+      memory: 300Mi
+  #storage:
+  #  resources:
+  #    requests:
+  #      storage: 3Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-metrics-prom
+  labels:
+    app: sample-metrics-prom
+    prometheus: sample-metrics-prom
+spec:
+  type: NodePort
+  ports:
+  - name: web
+    nodePort: 30999
+    port: 9090
+    targetPort: web
+  selector:
+    prometheus: sample-metrics-prom
