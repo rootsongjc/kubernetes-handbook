@@ -32,10 +32,12 @@
   - [ConfigMap](concepts/configmap.md)
     - [ConfigMap的热更新](concepts/configmap-hot-update.md)
   - [Horizontal Pod Autoscaling](concepts/horizontal-pod-autoscaling.md)
+    - [自定义指标HPA](concepts/custom-metrics-hpa.md)
   - [Label](concepts/label.md)
   - [垃圾收集](concepts/garbage-collection.md)
   - [NetworkPolicy](concepts/network-policy.md)
   - [Annotation](concepts/annotation.md)
+  - [Aggregated API Server](concepts/aggregated-api-server.md)
 
 ### 用户指南
 
