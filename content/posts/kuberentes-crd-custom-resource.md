@@ -1,5 +1,5 @@
 ---
-title: "Kuberentes中的自定义资源"
+title: "Kubernetes中的自定义资源"
 subtitle: "使用CRD扩展kubernetes API"
 tags: ["kubernetes"]
 categories: "kubernetes"
