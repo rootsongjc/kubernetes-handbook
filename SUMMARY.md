@@ -38,6 +38,7 @@
   - [NetworkPolicy](concepts/network-policy.md)
   - [Annotation](concepts/annotation.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
+  - [自定义资源](concepts/custom-resource.md)
 
 ### 用户指南
 
@@ -118,7 +119,7 @@
   - [使用Jenkins进行持续集成与发布](practice/jenkins-ci-cd.md)
   - [使用Drone进行持续集成与发布](practice/drone-ci-cd.md)
 - [更新与升级](practice/update-and-upgrade.md)
-  - [ 手动升级kubernetes集群](practice/manually-upgrade.md)
+  - [手动升级kubernetes集群](practice/manually-upgrade.md)
   - [升级dashboard](practice/dashboard-upgrade.md)
 
 ### 领域应用
