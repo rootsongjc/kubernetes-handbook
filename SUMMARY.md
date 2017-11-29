@@ -38,7 +38,7 @@
   - [NetworkPolicy](concepts/network-policy.md)
   - [Annotation](concepts/annotation.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
-  - [自定义资源](concepts/custom-resource.md)
+  - [CRD-自定义资源](concepts/custom-resource.md)
 
 ### 用户指南
 
@@ -69,6 +69,7 @@
   - [使用service访问群集中的应用程序](guide/service-access-application-cluster.md)
   - [从外部访问Kubernetes中的Pod](guide/accessing-kubernetes-pods-from-outside-of-the-cluster.md)
   - [Carbin - Kuberentes手机客户端](guide/carbin-mobile-dashboard-for-kubernetes.md)
+  - [Kubernetic - Kubernetes桌面客户端](guide/kubernetes-desktop-client.md)
 - [在kubernetes中开发部署应用](guide/application-development-deployment-flow.md)
   - [适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
   - [迁移传统应用到kubernetes中——以Hadoop YARN为例](guide/migrating-hadoop-yarn-to-kubernetes.md)

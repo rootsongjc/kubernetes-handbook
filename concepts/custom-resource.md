@@ -1,4 +1,4 @@
-# 自定义资源
+# CRD-自定义资源
 
 自定义资源是对Kubernetes API的扩展，kubernetes中的每个资源都是一个API对象的集合，例如我们在YAML文件里定义的那些spec都是对kubernetes中的资源对象的定义，所有的自定义资源可以跟kubernetes中内建的资源一样使用kubectl操作。
 
@@ -78,6 +78,8 @@ metadata:
 删除自定义对象前，异步执行的钩子。对于具有终止器的一个对象，删除请求仅仅是为`metadata.deletionTimestamp`字段设置一个值，而不是删除它，这将触发监控该对象的控制器执行他们所能处理的任意终止器。
 
 详情参考：[Extend the Kubernetes API with CustomResourceDefinitions](https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/)
+
+使用kubernetes1.7及以上版本请参考[Migrate a ThirdPartyResource to CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)。
 
 ## 自定义控制器
 
