@@ -29,6 +29,7 @@
   - [Job](concepts/job.md)
   - [CronJob](concepts/cronjob.md)
   - [Ingress](concepts/ingress.md)
+    - [Traefik Ingress Controller](concepts/traefik-ingress-controller.md)
   - [ConfigMap](concepts/configmap.md)
     - [ConfigMap的热更新](concepts/configmap-hot-update.md)
   - [Horizontal Pod Autoscaling](concepts/horizontal-pod-autoscaling.md)
