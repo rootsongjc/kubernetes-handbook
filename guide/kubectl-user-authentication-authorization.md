@@ -134,4 +134,6 @@ No resources found.
 
 现在 kubectl 命令默认使用的 context 就是 devuser 了，且该用户只能操作 dev 和 test 这两个 namespace，并拥有完全的访问权限。
 
+可以使用我写的[create-user.sh脚本](https://github.com/rootsongjc/kubernetes-handbook/blob/master/tools/create-user/create-user.sh)来创建namespace和用户并授权，参考[说明](../tools/create-user/README.md)。
+
 关于角色绑定的更多信息请参考 [RBAC——基于角色的访问控制](rbac.md)。
