@@ -1,7 +1,7 @@
 #!/bin/bash
 # Count Chinese characters
 total=0
-basedir="../"
+basedir="../../"
 for x in `cd $basedir;fd -e md`
 do
     i=`cnwordcount -f $basedir/$x|cut -d " " -f2`
