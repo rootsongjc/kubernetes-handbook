@@ -1,10 +1,29 @@
-# CRD-自定义资源
+# 使用自定义资源扩展API
 
 自定义资源是对Kubernetes API的扩展，kubernetes中的每个资源都是一个API对象的集合，例如我们在YAML文件里定义的那些spec都是对kubernetes中的资源对象的定义，所有的自定义资源可以跟kubernetes中内建的资源一样使用kubectl操作。
 
 ## 自定义资源
 
-Kubernetes1.6版本中包含一个内建的资源叫做CRD（CustomResourceDefinition），可以用它来创建自定义资源，但该资源在kubernetes1.7中版本已被TRD（ThirdPartyResource）取代。
+Kubernetes1.6版本中包含一个内建的资源叫做TPR（ThirdPartyResource），可以用它来创建自定义资源，但该资源在kubernetes1.7中版本已被CRD（CustomResourceDefinition）取代。
+
+## 扩展API
+
+自定义资源实际上是为了扩展kubernetes的API，向kubenetes API中增加新类型，可以使用以下三种方式：
+
+- 修改kubenetes的源码，显然难度比较高，也不太合适
+- 创建自定义API server并聚合到API中
+- 1.7以下版本编写CRD，kubernetes1.7及以上版本用CRD
+
+编写自定义资源是扩展kubernetes API的最简单的方式，是否编写自定义资源来扩展API请参考[Should I add a custom resource to my Kubernetes Cluster?](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)，行动前请先考虑以下几点：
+
+- 你的API是否属于[声明式的](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#declarative-apis)
+- 是否想使用kubectl命令来管理
+- 是否要作为kubenretes中的对象类型来管理，同时显示在kuberetes dashboard上
+- 是否可以遵守kubernetes的API规则限制，例如URL和API group、namespace限制
+- 是否可以接受该API只能作用于集群或者namespace范围
+- 想要复用kubernetes API的公共功能，比如CRUD、watch、内置的认证和授权等
+
+如果这些都不是你想要的，那么你可以开发一个独立的API。
 
 ### CRD
 

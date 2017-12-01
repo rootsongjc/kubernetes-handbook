@@ -39,7 +39,7 @@
   - [NetworkPolicy](concepts/network-policy.md)
   - [Annotation](concepts/annotation.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
-  - [CRD-自定义资源](concepts/custom-resource.md)
+  - [使用自定义资源扩展API](concepts/custom-resource.md)
 
 ### 用户指南
 
