@@ -56,7 +56,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - Aug 26,2017 | Beijing | 技术·线下沙龙：云原生和微服务 | [云原生与微服务](http://www.huodongxing.com/event/8401246554100)
 - Sept 23,2017 | Beijing | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
 - Oct  15,2017 | Hangzhou | KEUC 2017（Kubernetes中国用户大会）| [k8smeetup最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
-- Dec 8,2017 | Beijing | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native](http://bj2017.archsummit.com/)
+- Dec 8,2017 | Beijing | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native——云原生应用之路](http://bj2017.archsummit.com/presentation/306)
 - Dec 16,2017 (🎂 My birthday)| Beijing | 下一代微服务： Service Mesh is Coming | [IT大咖说 数人云&TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
 
 ### Contact
