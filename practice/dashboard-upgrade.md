@@ -66,6 +66,18 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 ![用户空间](../images/kubernetes-dashboard-1.7.1-brand.jpg)
 
+**设置界面的语言**
+
+我们看到现在 dashboard 的页面都已经被汉化了，当前支持英文、中文简体、中文繁体、日语，根据浏览器的语言自动切换的。如果想要强制设置 dashboard 中显示的语言，需要在 dahsboard 的 Deployment yaml 配置中增加如下配置：
+
+```yaml
+env:
+  - name: ACCEPT_LANGUAGE
+    value: english
+```
+
+关于 i18n 的设计文档请参考：<https://github.com/kubernetes/dashboard/blob/master/docs/design/i18n.md>
+
 ## 身份认证
 
 登陆 dashboard 的时候支持 kubeconfig 和 token 两种认证方式，kubeconfig 中也依赖 token 字段，所以生成 token 这一步是必不可少的。
