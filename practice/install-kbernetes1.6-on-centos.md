@@ -16,12 +16,13 @@
 
 集群安装时所有组件用到的配置文件，包含在以下目录中：
 
-- **etc**： service的环境变量配置文件
-- **manifest**： kubernetes应用的yaml文件
+- **etc**：service的环境变量配置文件
+- **manifest**：kubernetes应用的yaml文件
 - **systemd** ：systemd serivce配置文件
 
 ## 集群详情
 
++ OS：CentOS Linux release 7.3.1611 (Core)  3.10.0-514.16.1.el7.x86_64
 + Kubernetes 1.6.0
 + Docker  1.12.5（使用yum安装）
 + Etcd 3.1.5
