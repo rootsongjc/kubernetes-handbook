@@ -52,7 +52,7 @@ ExecStart=/usr/local/bin/etcd \
   --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \
   --initial-advertise-peer-urls ${ETCD_INITIAL_ADVERTISE_PEER_URLS} \
   --listen-peer-urls ${ETCD_LISTEN_PEER_URLS} \
-  --listen-client-urls ${ETCD_LISTEN_CLIENT_URLS},https://127.0.0.1:2379 \
+  --listen-client-urls ${ETCD_LISTEN_CLIENT_URLS},http://127.0.0.1:2379 \
   --advertise-client-urls ${ETCD_ADVERTISE_CLIENT_URLS} \
   --initial-cluster-token ${ETCD_INITIAL_CLUSTER_TOKEN} \
   --initial-cluster infra1=https://172.20.0.113:2380,infra2=https://172.20.0.114:2380,infra3=https://172.20.0.115:2380 \
