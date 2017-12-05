@@ -19,7 +19,7 @@ ExecStart=/usr/bin/etcd \
   --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \
   --initial-advertise-peer-urls https://172.20.0.113:2380 \
   --listen-peer-urls https://172.20.0.113:2380 \
-  --listen-client-urls https://172.20.0.113:2379,https://127.0.0.1:2379 \
+  --listen-client-urls https://172.20.0.113:2379,http://127.0.0.1:2379 \
   --advertise-client-urls https://172.20.0.113:2379 \
   --initial-cluster-token etcd-cluster-0 \
   --initial-cluster etcd-host0=https://172.20.0.113:2380,etcd-host1=https://172.20.0.114:2380,etcd-host2=https://172.20.0.115:2380 \
