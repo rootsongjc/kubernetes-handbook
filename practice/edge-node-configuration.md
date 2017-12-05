@@ -128,6 +128,12 @@ virtual_server 172.20.0.119 80{
 
 我们使用转发效率最高的`lb_kind DR`直接路由方式转发，使用TCP_CHECK来检测real_server的health。
 
+设置keepalived为开机自启动：
+
+```bash
+chkconfig keepalived on
+```
+
 **启动keepalived**
 
 ```
