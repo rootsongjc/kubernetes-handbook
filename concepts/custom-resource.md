@@ -46,7 +46,6 @@ versions:
 然后使用`kubectl create`命令创建该资源，这样就可以创建出一个API端点`/apis/stable.example.com/v1/namespaces/<namespace>/crontabs/...`。
 
 下面是在[Linkerd](https://linkerd.io)中的一个实际应用，Linkerd中的一个名为namerd的组件使用了TPR，定义如下：
-
 ```yaml
 ---
 kind: ThirdPartyResource
