@@ -10,8 +10,8 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-hello = "Hi,我是宋净超"
-subtitle = "ArchSummit2017北京站见！9:30 am Dec 9, Sat, Meetring Room 5"
+hello = "Hi,I'm Jimmy"
+subtitle = "I can help you building Cloud Native confidence"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 dateFormat = "January 2, 2006"
@@ -28,25 +28,25 @@ errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-fo
 src = "https://res.cloudinary.com/jimmysong/image/upload/images/beijing-national-conversation-center.jpg"
 desc = "北京国家会议中心"
 
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
-#desc = "KEUC - China Kubernetes End User Conference 2017"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
-#desc = "Cloud Computing for every one"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
-#desc = "Cross the Great Wall to the world"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
-#desc = "Big Data for business decision"
-#
-#[[Params.bigimg]]
-#src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
-#desc = "Data Science for complexity of human society"
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
+desc = "KEUC - China Kubernetes End User Conference 2017"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
+desc = "Cloud Computing for every one"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
+desc = "Cross the Great Wall to the world"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
+desc = "Big Data for business decision"
+
+[[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
+desc = "Data Science for complexity of human society"
 
 [Author]
   name = "Jimmy Song"
