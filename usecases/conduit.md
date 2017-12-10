@@ -1,4 +1,4 @@
-# Conduit - 基于Kuberentes的轻量级Service Mesh
+# Conduit - 基于Kubernetes的轻量级Service Mesh
 
 2017年12月在得克萨斯州的Asdin，KubeCon和CloudNativeCon上，创造了Service Mesh这个词汇并开源了[Linkerd](https://linkerd.io)的公司[Buoyant](https://buoyant.io)，又开源了一款针对Kubernetes的超轻量Service Sesh——[Conduit](https://github.com/runconduit/conduit)。它可以透明得管理服务运行时之间的通信，使得在Kubernetes上运行服务更加安全和可靠；它还具有不用修改任何应用程序代码即可改进应用程序的可观测性、可靠性及安全性等方面的特性。
 
