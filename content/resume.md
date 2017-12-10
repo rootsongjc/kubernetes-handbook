@@ -51,7 +51,7 @@ PaaS平台、Kubernetes、DevOps、微服务架构、Cloud Native
 - 从0到1推动了TalkingData容器技术落地、包括技术选型、研发、社区参与、布道与落地
 - 熟悉kubernetes社区和云原生计算基金会（CNCF），并在社区内拥有良好的口碑、kubernetes最佳专栏作者（KEUC2017）
 - 参与了北京互联网企业基础架构从业人员联合的DCI（Deep Communication Institute）社区的创建并担任轮值主席
-- 个人博客https://jimmysong.io月活跃用户达几万名，并构建了kubernetes与云原生应用微信群，当前人数接近800人且异常活跃，并参与了k8smeetup、kubernetes中文社区，创办了[Cloud Native](https://zhuanlan.zhihu.com/cloud-native)知乎专栏（当前关注人数达300多人）
+- 个人博客<https://jimmysong.io>月活跃用户达几万名，并构建了kubernetes与云原生应用微信群，当前人数接近800人且异常活跃，并参与了k8smeetup、kubernetes中文社区，创办了[Cloud Native](https://zhuanlan.zhihu.com/cloud-native)知乎专栏（当前关注人数达300多人）
 
 ### 图书
 
@@ -95,7 +95,7 @@ PaaS平台、Kubernetes、DevOps、微服务架构、Cloud Native
 
 ### TalkingData
 
-<u>大数据及云计算工程师、Cloud Native布道师</u>
+<u>大数据及云计算工程师、Cloud Native布道师、KOL</u>
 
 2015.07至今
 
@@ -178,6 +178,6 @@ PaaS平台、Kubernetes、DevOps、微服务架构、Cloud Native
 
 ## 兴趣爱好
 
-- 专业摄影师（工会首席摄影师）、视频剪辑、影像后期、街拍与人像摄影，图虫地址https://jimmysongio.tuchong.com/
+- 专业摄影师（工会首席摄影师）、视频剪辑、影像后期、街拍与人像摄影，[请访问我的图虫](https://jimmysongio.tuchong.com/)
 - 逛GitHub、参与开源社区、折腾新东西
 - 后摇、电影、旅游
