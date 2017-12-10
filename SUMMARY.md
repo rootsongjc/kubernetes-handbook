@@ -137,6 +137,7 @@
     - [集成虚拟机](usecases/integrating-vms.md)
   - [Linkerd](usecases/linkerd.md)
     - [Linkerd 使用指南](usecases/linkerd-user-guide.md)
+  - [Conduit](usecases/conduit.md)
 - [大数据](usecases/big-data.md)
   - [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   - [运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
