@@ -46,6 +46,7 @@ PaaS平台、Kubernetes、DevOps、微服务架构、Cloud Native
 
 - 211高校毕业，软件专业基础扎实，爱折腾，大学起开始使用Linux系统学习和办公
 - 从事过大数据平台的构建、熟悉Hadoop生态圈，对Cloudra Hadoop十分熟悉
+- 熟悉Java、Python、Shell、Go（当前）
 - 主导过Hadoop集群的安全性设置、大数据集群的迁移和容器化改造
 - GitHub铁粉、开源项目簇拥、开源图书写作、英文图书翻译出版
 - 从0到1推动了TalkingData容器技术落地、包括技术选型、研发、社区参与、布道与落地
