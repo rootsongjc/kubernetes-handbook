@@ -22,6 +22,8 @@
                 </li>
                 {{ end }}
             </ul>
+            {{ if isset .Params "seealso" }}
+            {{ else }}
             <div>
                 {{ $related := .Site.RegularPages.Related . | first 5 }} {{ with $related }}
                 <h2>See Also</h2>
@@ -32,6 +34,7 @@
                 </ul>
                 {{ end }}
             </div>
+            {{ end }}
             <!-- post metadata-->
             {{ if isset .Params "postmeta" }}
               {{ else }}

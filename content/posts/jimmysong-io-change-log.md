@@ -160,3 +160,7 @@ tags: ["github-pages","github","website","hugo"]
 ### 2017-11-25
 
 1. 修复在pages页面中打开about链接的错误anchor
+
+### 2017-12-10
+
+1. 博客文章中增加 `seealso` 开关，meta信息中若设置了 `seealso: false` 该文章下方将不显示See Also
