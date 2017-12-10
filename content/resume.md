@@ -1,11 +1,12 @@
 ---
 date: "2017-03-18T20:53:54+08:00"
-title:  "About me"
+title:  "Jimmy Song"
 tags: ["me"]
 subtitle: "宋净超"
 description: "Jimmy Song(宋净超) - Cloud Native and Big Data"
 nocomment: true
 postmeta: false
+seealso: false
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-side-of-the-moon.jpg", desc: "Dark Side of the Moon-Pink Floyd"}]
 ---
 
