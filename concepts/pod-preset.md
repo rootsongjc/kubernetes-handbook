@@ -10,7 +10,7 @@ Preset 就是预设，有时候想要让一批容器在启动的时候就注入�
 
 `Pod Preset` 是用来在 Pod 被创建的时候向其中注入额外的运行时需求的 API 资源。
 
-您可以使用 [label selector](https://github.com/rootsongjc/kubernetes-docs-cn/blob/4e24a87ea5c5d0cbd29919bec6861ec4ceaa9c72/docs/concepts/overview/working-with-objects/labels/#label-selectors) 来指定为哪些 Pod 应用 Pod Preset。
+您可以使用 [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) 来指定为哪些 Pod 应用 Pod Preset。
 
 使用 Pod Preset 可以运行 pod 模板的作者可以不必为每个 Pod 明确提供所有信息。这样一来，pod 模板的作者就不需要知道关于该服务的所有细节。
 
@@ -44,4 +44,8 @@ Kubernetes 提供了一个准入控制器（`PodPreset`），当其启用时，P
 
 ## 更多资料
 
-- [使用 PodPreset 向 Pod 中注入数据](https://github.com/rootsongjc/kubernetes-docs-cn/blob/4e24a87ea5c5d0cbd29919bec6861ec4ceaa9c72/docs/tasks/inject-data-application/podpreset)
+- [使用 PodPreset 向 Pod 中注入数据](https://kubernetes.io/docs/tasks/inject-data-application/podpreset)
+
+本文为 Kubernetes 官方中文文档，地址：https://kubernetes.io/cn/docs/concepts/workloads/pods/podpreset/
+
+翻译: [rootsongjc](https://github.com/rootsongjc)
