@@ -165,3 +165,5 @@
 - [Docker最佳实践](appendix/docker-best-practice.md)
 - [使用技巧](appendix/tricks.md)
 - [问题记录](appendix/issues.md)
+- [kubernetes版本更新日志](appendix/kubernetes-changelog.md)
+  - [Kubernetes1.7更新日志](appendix/kubernetes-1.7-changelog.md)
