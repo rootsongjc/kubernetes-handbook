@@ -15,8 +15,8 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2015092
 
 另外，自kubernetes1.6版本之后发布的1.7和1.8版本又增加了一些新特性，参考：
 
-- [Kubernetes1.7更新日志](../appendix/kubernetes-1.7-changelog.md)
-- [Kubernetes1.8更新日志](../appendix/kubernetes-1.8-changelog.md)
+- [Kubernetes1.7更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.7-changelog.html)
+- [Kubernetes1.8更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.8-changelog.html)
 
 目前kubernetes的官方文档上并没有详细的手动安装的集群如何升级的参考资料，只有两篇关于kubernetes集群升级的文档。
 
