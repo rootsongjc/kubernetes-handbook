@@ -1,0 +1,300 @@
+### Namespace ###
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: conduit
+
+### Controller ###
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: api
+  namespace: conduit
+  labels:
+    app: controller
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  type: ClusterIP
+  selector:
+    app: controller
+  ports:
+  - name: http
+    port: 8085
+    targetPort: 8085
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: proxy-api
+  namespace: conduit
+  labels:
+    app: controller
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  type: ClusterIP
+  selector:
+    app: controller
+  ports:
+  - name: grpc
+    port: 8086
+    targetPort: 8086
+
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: controller
+  namespace: conduit
+  labels:
+    app: controller
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: controller
+        conduit.io/plane: control
+      annotations:
+        conduit.io/created-by: "conduit/cli v0.1.0"
+    spec:
+      containers:
+      - name: public-api
+        ports:
+        - name: http
+          containerPort: 8085
+        - name: admin-http
+          containerPort: 9995
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-controller:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "public-api"
+        - "-addr=:8085"
+        - "-metrics-addr=:9995"
+        - "-telemetry-addr=127.0.0.1:8087"
+        - "-tap-addr=127.0.0.1:8088"
+      - name: destination
+        ports:
+        - name: grpc
+          containerPort: 8089
+        - name: admin-http
+          containerPort: 9999
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-controller:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "destination"
+        - "-addr=:8089"
+        - "-metrics-addr=:9999"
+      - name: proxy-api
+        ports:
+        - name: grpc
+          containerPort: 8086
+        - name: admin-http
+          containerPort: 9996
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-controller:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "proxy-api"
+        - "-addr=:8086"
+        - "-metrics-addr=:9996"
+        - "-destination-addr=:8089"
+        - "-telemetry-addr=:8087"
+      - name: tap
+        ports:
+        - name: grpc
+          containerPort: 8088
+        - name: admin-http
+          containerPort: 9998
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-controller:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "tap"
+        - "-addr=:8088"
+        - "-metrics-addr=:9998"
+      - name: telemetry
+        ports:
+        - name: grpc
+          containerPort: 8087
+        - name: admin-http
+          containerPort: 9997
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-controller:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "telemetry"
+        - "-addr=:8087"
+        - "-metrics-addr=:9997"
+        - "-ignore-namespaces=kube-system"
+        - "-prometheus-url=http://prometheus:9090"
+
+### Web ###
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  namespace: conduit
+  labels:
+    app: web
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  type: ClusterIP
+  selector:
+    app: web
+  ports:
+  - name: http
+    port: 8084
+    targetPort: 8084
+  - name: admin-http
+    port: 9994
+    targetPort: 9994
+
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: web
+  namespace: conduit
+  labels:
+    app: web
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+        conduit.io/plane: control
+      annotations:
+        conduit.io/created-by: "conduit/cli v0.1.0"
+    spec:
+      containers:
+      - name: web
+        ports:
+        - name: http
+          containerPort: 8084
+        - name: admin-http
+          containerPort: 9994
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-web:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - "-addr=:8084"
+        - "-metrics-addr=:9994"
+        - "-api-addr=api:8085"
+        - "-static-dir=/dist"
+        - "-template-dir=/templates"
+        - "-uuid=174a42d2-c480-4da0-8d28-8171fbb0fca3"
+        - "-namespace=conduit"
+
+### Prometheus ###
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: prometheus
+  namespace: conduit
+  labels:
+    app: prometheus
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  type: ClusterIP
+  selector:
+    app: prometheus
+  ports:
+  - name: http
+    port: 9090
+    targetPort: 9090
+
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: prometheus
+  namespace: conduit
+  labels:
+    app: prometheus
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+        conduit.io/plane: control
+      annotations:
+        conduit.io/created-by: "conduit/cli v0.1.0"
+    spec:
+      volumes:
+      - name: prometheus-config
+        configMap:
+          name: prometheus-config
+      containers:
+      - name: prometheus
+        ports:
+        - name: http
+          containerPort: 9090
+        volumeMounts:
+        - name: prometheus-config
+          mountPath: /etc/prometheus
+          readOnly: true
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus:v1.8.1
+        imagePullPolicy: IfNotPresent
+        args:
+        - "-storage.local.retention=6h"
+        - "-storage.local.memory-chunks=500000"
+        - "-config.file=/etc/prometheus/prometheus.yml"
+
+      # TODO remove/replace?
+      - name: kubectl
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.6.2
+        args: ["proxy", "-p", "8001"]
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: prometheus-config
+  namespace: conduit
+  labels:
+    app: prometheus
+    conduit.io/plane: control
+  annotations:
+    conduit.io/created-by: "conduit/cli v0.1.0"
+data:
+  prometheus.yml: |-
+    global:
+      scrape_interval: 10s
+      evaluation_interval: 10s
+
+    scrape_configs:
+    - job_name: 'prometheus'
+      static_configs:
+      - targets: ['localhost:9090']
+
+    - job_name: 'controller'
+      kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names: ['conduit']
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_container_port_name]
+        action: keep
+        regex: ^admin-http$
+      - source_labels: [__meta_kubernetes_pod_container_name]
+        action: replace
+        target_label: job
