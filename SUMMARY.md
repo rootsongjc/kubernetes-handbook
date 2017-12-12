@@ -167,3 +167,4 @@
 - [问题记录](appendix/issues.md)
 - [kubernetes版本更新日志](appendix/kubernetes-changelog.md)
   - [Kubernetes1.7更新日志](appendix/kubernetes-1.7-changelog.md)
+  - [Kubernetes1.8更新日志](appendix/kubernetes-1.8-changelog.md)
