@@ -1,0 +1,128 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: emojivoto
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: emoji-svc
+  namespace: emojivoto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emoji-svc
+  template:
+    metadata:
+      labels:
+        app: emoji-svc
+    spec:
+      containers:
+      - name: emoji-svc
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-emoji-svc:v1
+        env:
+        - name: GRPC_PORT
+          value: "8080"
+        ports:
+        - name: grpc
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emoji-svc
+  namespace: emojivoto
+spec:
+  selector:
+    app: emoji-svc
+  clusterIP: None
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: voting-svc
+  namespace: emojivoto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: voting-svc
+  template:
+    metadata:
+      labels:
+        app: voting-svc
+    spec:
+      containers:
+      - name: voting-svc
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-voting-svc:v1
+        env:
+        - name: GRPC_PORT
+          value: "8080"
+        ports:
+        - name: grpc
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-svc
+  namespace: emojivoto
+spec:
+  selector:
+    app: voting-svc
+  clusterIP: None
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  namespace: emojivoto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: emoji-svc
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-web:v1
+        env:
+        - name: WEB_PORT
+          value: "80"
+        - name: EMOJISVC_HOST
+          value: "emoji-svc.emojivoto:8080"
+        - name: VOTINGSVC_HOST
+          value: "voting-svc.emojivoto:8080"
+        - name: INDEX_BUNDLE
+          value: "dist/index_bundle.js"
+        ports:
+        - name: http
+          containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-svc
+  namespace: emojivoto
+spec:
+  type: ClusterIP
+  selector:
+    app: web
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
