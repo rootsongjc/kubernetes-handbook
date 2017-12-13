@@ -71,8 +71,8 @@ vim /etc/fstab
 停止node节点上的kubernetes进程：
 
 ```bash
-kubectl stop kubelet
-kubectl stop kube-proxy
+systemctl stop kubelet
+systemctl stop kube-proxy
 ```
 
 使用新版本的kubernetes二进制文件替换原来老版本的文件，然后启动node节点上的进程：
