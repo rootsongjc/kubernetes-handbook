@@ -3,7 +3,39 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: conduit
-
+### RBAC ###
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: conduit-controller
+  namespace: conduit
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: conduit-controller
+rules:
+- apiGroups: ["extensions"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["list", "get", "watch"]
+- apiGroups: [""]
+  resources: ["pods","services","endpoints"]
+  verbs: ["list", "get", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: conduit-controller
+  namespace: conduit
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: conduit-controller
+subjects:
+- kind: ServiceAccount
+  name: conduit-controller
+  namespace: conduit
 ### Controller ###
 ---
 kind: Service
@@ -66,6 +98,7 @@ spec:
       annotations:
         conduit.io/created-by: "conduit/cli v0.1.0"
     spec:
+      serviceAccount: conduit-controller
       containers:
       - name: public-api
         ports:
@@ -179,6 +212,7 @@ spec:
       annotations:
         conduit.io/created-by: "conduit/cli v0.1.0"
     spec:
+      serviceAccount: conduit-controller
       containers:
       - name: web
         ports:
@@ -239,6 +273,7 @@ spec:
       annotations:
         conduit.io/created-by: "conduit/cli v0.1.0"
     spec:
+      serviceAccount: conduit-controller
       volumes:
       - name: prometheus-config
         configMap:
