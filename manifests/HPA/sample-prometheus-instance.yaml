@@ -33,7 +33,7 @@ subjects:
   name: prometheus
   namespace: default
 ---
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: sample-metrics-prom
@@ -42,7 +42,7 @@ metadata:
     prometheus: sample-metrics-prom
 spec:
   replicas: 1
-  baseImage: prom/prometheus
+  baseImage: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus
   version: v1.7.1
   serviceAccountName: prometheus
   serviceMonitorSelector:
