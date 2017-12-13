@@ -34,6 +34,8 @@ kubectl apply -f conduit-0.1.0.yaml
 
 修改后的yaml文件见：[conduit-0.1.0.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/conduit-0.1.0.yaml)。
 
+**注意：**Conduit官方给出的yaml文件中不包括RBAC授权，我重新修改了，增加了RBAC和ServiceAccount。
+
 使用`kubectl proxy`来开放外网访问conduit dashboard：
 
 ```bash
@@ -205,8 +207,6 @@ curl https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/man
 ```
 
 **注意：**其中使用的镜像地址已经改为我的私有镜像仓库地址，大家使用时请注意修改。
-
-TODO
 
 ## 参考
 
