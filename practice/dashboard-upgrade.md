@@ -78,6 +78,8 @@ env:
 
 关于 i18n 的设计文档请参考：<https://github.com/kubernetes/dashboard/blob/master/docs/design/i18n.md>
 
+更简单的方式是，如果您使用的Chrome浏览器，则在浏览器中的配置中设置语言的顺序后刷新网页，dashboard将以您在Chrome中配置的首选语言显示。
+
 ## 身份认证
 
 登陆 dashboard 的时候支持 kubeconfig 和 token 两种认证方式，kubeconfig 中也依赖 token 字段，所以生成 token 这一步是必不可少的。
