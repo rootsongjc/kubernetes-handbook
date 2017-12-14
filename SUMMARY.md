@@ -41,6 +41,7 @@
   - [Annotation](concepts/annotation.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
   - [使用自定义资源扩展API](concepts/custom-resource.md)
+  - [APIService](concepts/apiservice.md)
 
 ### 用户指南
 
