@@ -29,9 +29,9 @@ Kubernetes1.6版本中包含一个内建的资源叫做TPR（ThirdPartyResource�
 
 ## TPR
 
-**注意：**TPR已经停止维护，kubernetes 1.7及以上版本请使用CRD。
+> **注意：**TPR已经停止维护，kubernetes 1.7及以上版本请使用CRD。
 
-假如我们要创建一个名为`cron-tab.stable.example.com`的CRD，yaml文件定义如下：
+假如我们要创建一个名为`cron-tab.stable.example.com`的TPR，yaml文件定义如下：
 
 ```yaml
 apiVersion: extensions/v1beta1
