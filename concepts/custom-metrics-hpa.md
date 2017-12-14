@@ -49,117 +49,16 @@ spec:
 
 **部署Prometheus**
 
-使用下面的yaml文件部署Prometheus operator：
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: prometheus-operator
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: prometheus-operator
-subjects:
-- kind: ServiceAccount
-  name: prometheus-operator
-  namespace: default
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRole
-metadata:
-  name: prometheus-operator
-rules:
-- apiGroups:
-  - extensions
-  resources:
-  - thirdpartyresources
-  verbs:
-  - "*"
-- apiGroups:
-  - apiextensions.k8s.io
-  resources:
-  - customresourcedefinitions
-  verbs:
-  - "*"
-- apiGroups:
-  - monitoring.coreos.com
-  resources:
-  - alertmanagers
-  - prometheuses
-  - servicemonitors
-  verbs:
-  - "*"
-- apiGroups:
-  - apps
-  resources:
-  - statefulsets
-  verbs: ["*"]
-- apiGroups: [""]
-  resources:
-  - configmaps
-  - secrets
-  verbs: ["*"]
-- apiGroups: [""]
-  resources:
-  - pods
-  verbs: ["list", "delete"]
-- apiGroups: [""]
-  resources:
-  - services
-  - endpoints
-  verbs: ["get", "create", "update"]
-- apiGroups: [""]
-  resources:
-  - nodes
-  verbs: ["list", "watch"]
-- apiGroups: [""]
-  resources:
-  - namespaces
-  verbs: ["list"]
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: prometheus-operator
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    k8s-app: prometheus-operator
-  name: prometheus-operator
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        k8s-app: prometheus-operator
-    spec:
-      containers:
-      - args:
-        - --kubelet-service=kube-system/kubelet
-        - --config-reloader-image=sz-pg-oam-docker-hub-001.tendcloud.com/library/configmap-reload:v0.0.1
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus-operator:v0.15.0
-        name: prometheus-operator
-        ports:
-        - containerPort: 8080
-          name: http
-        resources:
-          limits:
-            cpu: 200m
-            memory: 100Mi
-          requests:
-            cpu: 100m
-            memory: 50Mi
-      serviceAccountName: prometheus-operator
-```
+使用[prometheus-operator.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/HPA/prometheus-operator.yaml)文件部署Prometheus operator。
 
 **注意：**将镜像修改为你自己的镜像仓库地址。
 
-这产生一个自定义的API：http://172.20.0.113:8080/apis/custom-metrics.metrics.k8s.io/v1alpha1
+这产生一个自定义的API：<http://172.20.0.113:8080/apis/custom-metrics.metrics.k8s.io/v1alpha1>，可以通过浏览器访问，还可以使用下面的命令可以检查该API：
 
-TODO
+```bash
+$ kubectl get --raw=apis/custom-metrics.metrics.k8s.io/v1alpha1
+{"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom-metrics.metrics.k8s.io/v1alpha1","resources":[{"name":"jobs.batch/http_requests","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"namespaces/http_requests","singularName":"","namespaced":false,"kind":"MetricValueList","verbs":["get"]},{"name":"jobs.batch/up","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/up","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"services/scrape_samples_scraped","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"namespaces/scrape_samples_scraped","singularName":"","namespaced":false,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/scrape_duration_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"services/scrape_duration_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/http_requests","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/scrape_samples_post_metric_relabeling","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"jobs.batch/scrape_samples_scraped","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"jobs.batch/scrape_duration_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"namespaces/scrape_duration_seconds","singularName":"","namespaced":false,"kind":"MetricValueList","verbs":["get"]},{"name":"namespaces/scrape_samples_post_metric_relabeling","singularName":"","namespaced":false,"kind":"MetricValueList","verbs":["get"]},{"name":"services/scrape_samples_post_metric_relabeling","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"services/up","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/scrape_samples_scraped","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"services/http_requests","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"jobs.batch/scrape_samples_post_metric_relabeling","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"namespaces/up","singularName":"","namespaced":false,"kind":"MetricValueList","verbs":["get"]}]}
+```
 
 ## 参考
 
@@ -172,4 +71,3 @@ TODO
 [Kubernetes 1.8: Now with 100% Daily Value of Custom Metrics](https://blog.openshift.com/kubernetes-1-8-now-custom-metrics/)
 
 [Arbitrary/Custom Metrics in the Horizontal Pod Autoscaler#117](https://github.com/kubernetes/features/issues/117)
-
