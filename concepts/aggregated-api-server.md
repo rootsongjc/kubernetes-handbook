@@ -16,18 +16,13 @@ Aggregated（聚合的）API  server是为了将原来的API server这个巨石�
 
 ### 安装配置聚合的API server
 
-**编译**
+有两种方式来启用`kube-aggregator`：
 
-下载kubernetes的源码到`$GOPATH/src/k8s.io/`目录，在`$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/kube-aggregator`目录下编译生成Linux add64的二进制文件：
+- 使用**test mode/single-user mode**，作为一个独立的进程来运行
+- 使用**gateway mode**，`kube-apiserver`将嵌入到`kbe-aggregator`组件中，它将作为一个集群的gateway，用来聚合所有apiserver。
 
-```bash
-GOOS=linux GOARCH=amd64 go build
-```
+`kube-aggregator`二进制文件已经包含在kubernetes release里面了。
 
-将在当前目录下生成`kube-aggregator`二进制文件。
+## 参考
 
-**配置**
-
-将该二进制文件上传到kubernetes的node节点上。
-
-TBD
+[Aggregated API Servers - kuberentes design-proposals](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md)
