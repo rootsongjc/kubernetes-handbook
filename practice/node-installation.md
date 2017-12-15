@@ -7,9 +7,14 @@ kubernetes node 节点包含如下组件：
 + kubelet
 + kube-proxy
 
-下面着重讲`kubelet`和`kube-proxy`的安装，同时还要将之前安装的flannel集成TLS验证。
-
 **注意**：每台 node 上都需要安装 flannel，master 节点上可以不必安装。
+
+**步骤简介**
+
+1. 使用yum安装配置网络插件flannel后启动
+2. 安装配置docker后启动
+3. 安装配置kubelet、kube-proxy后启动
+4. 验证
 
 ## 目录和文件
 
@@ -26,7 +31,7 @@ apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy
 
 参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
 
-直接使用yum安装flanneld即可。
+建议直接使用yum安装flanneld，除非对版本有特殊需求，默认安装的是0.7.1版本的flannel。
 
 ```shell
 yum install -y flannel
@@ -59,7 +64,7 @@ WantedBy=multi-user.target
 RequiredBy=docker.service
 ```
 
-`/etc/sysconfig/flanneld`配置文件。
+`/etc/sysconfig/flanneld`配置文件：
 
 ```ini
 # Flanneld configuration options  
@@ -74,8 +79,6 @@ ETCD_PREFIX="/kube-centos/network"
 # Any additional options that you want to pass
 FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"
 ```
-
-在FLANNEL_OPTIONS中增加TLS的配置。
 
 **在etcd中创建网络配置**
 
@@ -100,22 +103,13 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
 
 **配置Docker**
 
-Flannel的[文档](https://github.com/coreos/flannel/blob/master/Documentation/running.md)中有写**Docker Integration**：
+> 如果您使用yum的方式安装的flannel则不需要执行这一步，参考Flannel官方文档中的[Docker Integration](https://github.com/coreos/flannel/blob/master/Documentation/running.md)。
 
-> Docker daemon accepts `--bip` argument to configure the subnet of the docker0 bridge. It also accepts `--mtu` to set the MTU for docker0 and veth devices that it will be creating. Since flannel writes out the acquired subnet and MTU values into a file, the script starting Docker can source in the values and pass them to Docker daemon:
-
-```bash
-source /run/flannel/subnet.env
-docker daemon --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} &
-```
-
-Systemd users can use `EnvironmentFile` directive in the .service file to pull in `/run/flannel/subnet.env`
-
-如果你不是使用yum安装的flanneld，那么需要下载flannel github release中的tar包，解压后会获得一个**mk-docker-opts.sh**文件。
+如果你不是使用yum安装的flannel，那么需要下载flannel github release中的tar包，解压后会获得一个**mk-docker-opts.sh**文件，到[flannel release](https://github.com/coreos/flannel/releases)页面下载对应版本的安装包，该脚本见[mk-docker-opts.sh](https://github.com/rootsongjc/kubernetes-handbook/tree/master/tools/flannel/mk-docker-opts.sh)，因为我们使用yum安装所以不需要执行这一步。
 
 这个文件是用来`Generate Docker daemon options based on flannel env file`。
 
-执行`./mk-docker-opts.sh -i`将会生成如下两个文件环境变量文件。
+使用`systemctl`命令启动flanneld后，会自动执行`./mk-docker-opts.sh -i`生成如下两个文件环境变量文件：
 
 - /run/flannel/subnet.env
 
@@ -134,35 +128,7 @@ DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
 ```
 
-**设置docker0网桥的IP地址**
-
-```shell
-source /run/flannel/subnet.env
-ifconfig docker0 $FLANNEL_SUBNET
-```
-
-这样docker0和flannel网桥会在同一个子网中，如
-
-```ini
-6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
-    link/ether 02:42:da:bf:83:a2 brd ff:ff:ff:ff:ff:ff
-    inet 172.30.38.1/24 brd 172.30.38.255 scope global docker0
-       valid_lft forever preferred_lft forever
-7: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN 
-    link/ether 9a:29:46:61:03:44 brd ff:ff:ff:ff:ff:ff
-    inet 172.30.38.0/32 scope global flannel.1
-       valid_lft forever preferred_lft forever
-```
-
-同时在 docker 的配置文件 [docker.service](../systemd/docker.service) 中增加环境变量配置：
-
-```ini
-EnvironmentFile=-/run/flannel/docker
-EnvironmentFile=-/run/docker_opts.env
-EnvironmentFile=-/run/flannel/subnet.env
-```
-
-防止主机重启后 docker 自动启动时加载不到上述环境变量。
+Docker将会读取这两个环境变量文件作为容器启动参数。
 
 **启动docker**
 
@@ -178,10 +144,13 @@ Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: f
 --cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
 ```
 
+配置docker的service配置文件`/usr/lib/systemd/system/docker.service`，设置`ExecStart`中的`--exec-opt native.cgroupdriver=systemd`。
+
 **启动flannel**
 
 ```shell
 systemctl daemon-reload
+systemctl enable flanneld
 systemctl start flanneld
 systemctl status flanneld
 ```
@@ -212,6 +181,16 @@ $etcdctl get /kube-centos/network/subnets/172.30.46.0-24
 ```
 
 ## 安装和配置 kubelet
+
+**kubernets1.8**
+
+相对于kubernetes1.6集群必须进行的配置有：
+
+对于kuberentes1.8集群，必须关闭swap，否则kubelet启动将失败。
+
+修改`/etc/fstab`将，swap系统注释掉。
+
+---
 
 kubelet 启动时向 kube-apiserver 发送 TLS bootstrapping 请求，需要先将 bootstrap token 文件中的 kubelet-bootstrap 用户赋予 system:node-bootstrapper cluster 角色(role)，
 然后 kubelet 才能有权限创建认证请求(certificate signing requests)：
@@ -268,7 +247,16 @@ WantedBy=multi-user.target
 
 kubelet的配置文件`/etc/kubernetes/kubelet`。其中的IP地址更改为你的每台node节点的IP地址。
 
-注意：`/var/lib/kubelet`需要手动创建。
+**注意：**在启动kubelet之前，需要先手动创建`/var/lib/kubelet`目录。
+
+下面是kubelet的配置文件`/etc/kubernetes/kubelet`:
+
+**kubernetes1.8**
+
+相对于kubenrete1.6的配置变动：
+
+- 对于kuberentes1.8集群中的kubelet配置，取消了`KUBELET_API_SERVER`的配置，而改用kubeconfig文件来定义master地址。
+- ​
 
 ``` bash
 ###
@@ -351,7 +339,9 @@ $ ls -l /etc/kubernetes/ssl/kubelet*
 -rw------- 1 root root 1675 Apr  7 02:07 /etc/kubernetes/ssl/kubelet.key
 ```
 
-注意：假如你更新kubernetes的证书，只要没有更新`token.csv`，当重启kubelet后，该node就会自动加入到kuberentes集群中，而不会重新发送`certificaterequest`，也不需要在master节点上执行`kubectl certificate approve`操作。前提是不要删除node节点上的`/etc/kubernetes/ssl/kubelet*`和`/etc/kubernetes/kubelet.kubeconfig`文件。否则kubelet启动时会提示找不到证书而失败。
+假如你更新kubernetes的证书，只要没有更新`token.csv`，当重启kubelet后，该node就会自动加入到kuberentes集群中，而不会重新发送`certificaterequest`，也不需要在master节点上执行`kubectl certificate approve`操作。前提是不要删除node节点上的`/etc/kubernetes/ssl/kubelet*`和`/etc/kubernetes/kubelet.kubeconfig`文件。否则kubelet启动时会提示找不到证书而失败。
+
+**注意：**如果启动kubelet的时候见到证书相关的报错，有个trick可以解决这个问题，可以将master节点上的`~/.kube/config`文件（该文件在[安装kubectl命令行工具](kubectl-installation.md)这一步中将会自动生成）拷贝到node节点的`/etc/kubernetes/kubelet.kubeconfig`位置，这样就不需要通过CSR，当kubelet启动后就会自动加入的集群中。
 
 ## 配置 kube-proxy
 
@@ -409,7 +399,7 @@ systemctl status kube-proxy
 ```
 ## 验证测试
 
-我们创建一个niginx的service试一下集群是否可用。
+我们创建一个nginx的service试一下集群是否可用。
 
 ```bash
 $ kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9  --port=80
