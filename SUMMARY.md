@@ -81,7 +81,7 @@
 ### 最佳实践
 
 - [最佳实践概览](practice/index.md)
-- [在CentOS上部署kubernetes1.6集群](practice/install-kbernetes1.6-on-centos.md)
+- [在CentOS上部署kubernetes集群](practice/install-kbernetes1.6-on-centos.md)
   - [创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
   - [创建kubeconfig文件](practice/create-kubeconfig.md)
   - [创建高可用etcd集群](practice/etcd-cluster-installation.md)

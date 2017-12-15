@@ -1,4 +1,6 @@
-# 在CentOS上部署kubernetes1.6集群
+# 在CentOS上部署kubernetes集群
+
+> 本文档最初是基于kubenetes1.6版本编写的，对于kuberentes1.8版本同样适用，这是个别位置有稍许变动，变动的地方我将特别注明。
 
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
 
@@ -48,8 +50,26 @@
 ## 安装前的准备
 
 1. 在node节点上安装docker1.12.5
+
+   直接使用`yum install docker`
+
 2. 关闭所有节点的SELinux
+
+   **永久方法 – 需要重启服务器**
+
+   修改`/etc/selinux/config`文件中设置SELINUX=disabled ，然后重启服务器。
+
+   **临时方法 – 设置系统参数**
+
+   使用命令`setenforce 0`
+
+   **附：**
+   setenforce 1 设置SELinux 成为enforcing模式
+   setenforce 0 设置SELinux 成为permissive模式
+
 3. 准备harbor私有镜像仓库
+
+   参考：https://github.com/vmware/harbor
 
 ## 步骤介绍
 
