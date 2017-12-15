@@ -35,3 +35,10 @@ kubectl config use-context kubernetes
 
 + `admin.pem` 证书 OU 字段值为 `system:masters`，`kube-apiserver` 预定义的 RoleBinding `cluster-admin` 将 Group `system:masters` 与 Role `cluster-admin` 绑定，该 Role 授予了调用`kube-apiserver` 相关 API 的权限；
 + 生成的 kubeconfig 被保存到 `~/.kube/config` 文件；
+
+**注意：**`~/.kube/config`文件拥有对该集群的最高权限，请妥善保管。
+
+## 更多资料
+
+- [kubectl命令概览](../guide/using-kubectl.md)
+- [kubectl命令技巧大全](../guide/kubectl-cheatsheet.md)
