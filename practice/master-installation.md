@@ -64,7 +64,7 @@ cp -r server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler,kubectl,
 
 **创建 kube-apiserver的service配置文件**
 
-serivce配置文件`/usr/lib/systemd/system/kube-apiserver.service`内容：
+service配置文件`/usr/lib/systemd/system/kube-apiserver.service`内容：
 
 ```ini
 [Unit]
