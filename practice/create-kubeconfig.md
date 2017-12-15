@@ -40,6 +40,8 @@ cp token.csv /etc/kubernetes/
 
 ## 创建 kubelet bootstrapping kubeconfig 文件
 
+执行下面的命令时需要先安装kubectl命令，请参考[安装kubectl命令行工具](kubectl-installation.md)。
+
 ``` bash
 cd /etc/kubernetes
 export KUBE_APISERVER="https://172.20.0.113:6443"
