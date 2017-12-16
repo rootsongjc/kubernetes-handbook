@@ -345,6 +345,12 @@ $ ls -l /etc/kubernetes/ssl/kubelet*
 
 ## 配置 kube-proxy
 
+**安装conntrack**
+
+```bash
+yum install -y conntrack-tools
+```
+
 **创建 kube-proxy 的service配置文件**
 
 文件路径`/usr/lib/systemd/system/kube-proxy.service`。
