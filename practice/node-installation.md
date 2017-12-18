@@ -99,7 +99,7 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
 
 如果你要使用`host-gw`模式，可以直接将vxlan改成`host-gw`即可。
 
-**注**：参考[网络和集群性能测试](network-and-cluster-perfermance-test.md)那节，最终我们使用的`host-gw`模式。
+**注**：参考[网络和集群性能测试](network-and-cluster-perfermance-test.md)那节，最终我们使用的`host-gw`模式，关于flannel支持的backend模式见：<https://github.com/coreos/flannel/blob/master/Documentation/backends.md>。
 
 **配置Docker**
 
