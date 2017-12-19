@@ -148,6 +148,8 @@
   - [运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
 - [Serverless架构](usecases/serverless.md)
   - [理解Serverless](usecases/understanding-serverless.md)
+  - [FaaS-函数即服务](usecases/faas.md)
+    - [OpenFaaS](usecases/openfaas.md)
 - [边缘计算](usecases/edge-computing.md)
 
 ### 开发指南
