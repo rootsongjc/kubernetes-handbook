@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  type: NodePort
+  ports:
+    - port: 9090
+      protocol: TCP
+      targetPort: 9090
+      nodePort: 31119
+  selector:
+    app: prometheus
+---
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus:latest-k8s
+        command: ["prometheus","-config.file=/etc/prometheus/prometheus.yml", "-storage.local.path=/prometheus", "-storage.local.memory-chunks=10000", "--alertmanager.url=http://alertmanager.default:9093"]
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        resources:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: 512Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager
+  labels:
+    app: alertmanager
+spec:
+  type: NodePort
+  ports:
+    - port: 9093
+      protocol: TCP
+      targetPort: 9093
+      nodePort: 31113
+  selector:
+    app: alertmanager
+---
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: alertmanager
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: alertmanager
+    spec:
+      containers:
+      - name: alertmanager
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/alertmanager:latest-k8s
+        command: ["/bin/alertmanager","-config.file=/alertmanager.yml", "-storage.path=/alertmanager"]
+        ports:
+        - containerPort: 9003
+          protocol: TCP
+        resources:
+          requests:
+            memory: 20Mi
+          limits:
+            memory: 30Mi
