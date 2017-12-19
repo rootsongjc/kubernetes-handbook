@@ -1,17 +1,17 @@
 # 部署node节点
 
-kubernetes node 节点包含如下组件：
+Kubernetes node节点包含如下组件：
 
-+ Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在service配置文件中增加TLS配置。
-+ Docker1.12.5：docker的安装很简单，这里也不说了。
-+ kubelet
-+ kube-proxy
++ Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在service配置文件中增加TLS配置，安装过程请参考上一节[安装flannel网络插件](flannel-installation.md)。
++ Docker1.12.5：docker的安装很简单，这里也不说了，但是需要注意docker的配置。
++ kubelet：直接用二进制文件安装
++ kube-proxy：直接用二进制文件安装
 
-**注意**：每台 node 上都需要安装 flannel，master 节点上可以不必安装。
+**注意**：每台 node 上都需要安装 flannel，master 节点上可以不安装。
 
 **步骤简介**
 
-1. 使用yum安装配置网络插件flannel后启动
+1. 确认在上一步中我们安装配置的网络插件flannel已启动且运行正常
 2. 安装配置docker后启动
 3. 安装配置kubelet、kube-proxy后启动
 4. 验证
@@ -27,83 +27,9 @@ $ ls /etc/kubernetes/
 apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy.kubeconfig  proxy  scheduler  ssl  token.csv
 ```
 
-## 配置Flanneld
+## 配置Docker
 
-参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在serivce配置文件中增加TLS配置。
-
-建议直接使用yum安装flanneld，除非对版本有特殊需求，默认安装的是0.7.1版本的flannel。
-
-```shell
-yum install -y flannel
-```
-
-service配置文件`/usr/lib/systemd/system/flanneld.service`。
-
-```ini
-[Unit]
-Description=Flanneld overlay address etcd agent
-After=network.target
-After=network-online.target
-Wants=network-online.target
-After=etcd.service
-Before=docker.service
-
-[Service]
-Type=notify
-EnvironmentFile=/etc/sysconfig/flanneld
-EnvironmentFile=-/etc/sysconfig/docker-network
-ExecStart=/usr/bin/flanneld-start \
-  -etcd-endpoints=${ETCD_ENDPOINTS} \
-  -etcd-prefix=${ETCD_PREFIX} \
-  $FLANNEL_OPTIONS
-ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-RequiredBy=docker.service
-```
-
-`/etc/sysconfig/flanneld`配置文件：
-
-```ini
-# Flanneld configuration options  
-
-# etcd url location.  Point this to the server where etcd runs
-ETCD_ENDPOINTS="https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379"
-
-# etcd config key.  This is the configuration key that flannel queries
-# For address range assignment
-ETCD_PREFIX="/kube-centos/network"
-
-# Any additional options that you want to pass
-FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"
-```
-
-**在etcd中创建网络配置**
-
-执行下面的命令为docker分配IP地址段。
-
-```shell
-etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  mkdir /kube-centos/network
-etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  mk /kube-centos/network/config '{"Network":"172.30.0.0/16","SubnetLen":24,"Backend":{"Type":"vxlan"}}'
-```
-
-如果你要使用`host-gw`模式，可以直接将vxlan改成`host-gw`即可。
-
-**注**：参考[网络和集群性能测试](network-and-cluster-perfermance-test.md)那节，最终我们使用的`host-gw`模式，关于flannel支持的backend模式见：<https://github.com/coreos/flannel/blob/master/Documentation/backends.md>。
-
-**配置Docker**
-
-> 如果您使用yum的方式安装的flannel则不需要执行这一步，参考Flannel官方文档中的[Docker Integration](https://github.com/coreos/flannel/blob/master/Documentation/running.md)。
+> 如果您使用yum的方式安装的flannel则不需要执行mk-docker-opts.sh文件这一步，参考Flannel官方文档中的[Docker Integration](https://github.com/coreos/flannel/blob/master/Documentation/running.md)。
 
 如果你不是使用yum安装的flannel，那么需要下载flannel github release中的tar包，解压后会获得一个**mk-docker-opts.sh**文件，到[flannel release](https://github.com/coreos/flannel/releases)页面下载对应版本的安装包，该脚本见[mk-docker-opts.sh](https://github.com/rootsongjc/kubernetes-handbook/tree/master/tools/flannel/mk-docker-opts.sh)，因为我们使用yum安装所以不需要执行这一步。
 
@@ -130,7 +56,44 @@ DOCKER_OPT_MTU="--mtu=1450"
 
 Docker将会读取这两个环境变量文件作为容器启动参数。
 
-**启动docker**
+**注意：**不论您用什么方式安装的flannel，下面这一步是必不可少的。
+
+**yum方式安装的flannel**
+
+修改docker的配置文件`/usr/lib/systemd/system/docker.service`，增加一条环境变量配置：
+
+```ini
+EnvironmentFile=-/run/flannel/docker
+```
+
+`/run/flannel/docker`文件是flannel启动后自动生成的，其中包含了docker启动时需要的参数。
+
+**二进制方式安装的flannel**
+
+修改docker的配置文件`/usr/lib/systemd/system/docker.service`，增加如下几条环境变量配置：
+
+```ini
+EnvironmentFile=-/run/docker_opts.env
+EnvironmentFile=-/run/flannel/subnet.env
+```
+
+这两个文件是`mk-docker-opts.sh`脚本生成环境变量文件默认的保存位置，docker启动的时候需要加载这几个配置文件才可以加入到flannel创建的虚拟网络里。
+
+所以不论您使用何种方式安装的flannel，将以下配置加入到`docker.service`中可确保万无一失。
+
+```ini
+EnvironmentFile=-/run/flannel/docker
+EnvironmentFile=-/run/docker_opts.env
+EnvironmentFile=-/run/flannel/subnet.env
+EnvironmentFile=-/etc/sysconfig/docker
+EnvironmentFile=-/etc/sysconfig/docker-storage
+EnvironmentFile=-/etc/sysconfig/docker-network
+EnvironmentFile=-/run/docker_opts.env
+```
+
+请参考[docker.service](https://github.com/rootsongjc/kubernetes-handbook/blob/master/systemd/docker.service)中的配置。
+
+### 启动docker
 
 重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
 
@@ -146,41 +109,7 @@ Mar 31 16:44:41 sz-pg-oam-docker-test-002.tendcloud.com kubelet[81047]: error: f
 
 配置docker的service配置文件`/usr/lib/systemd/system/docker.service`，设置`ExecStart`中的`--exec-opt native.cgroupdriver=systemd`。
 
-**启动flannel**
-
-```shell
-systemctl daemon-reload
-systemctl enable flanneld
-systemctl start flanneld
-systemctl status flanneld
-```
-
-现在查询etcd中的内容可以看到：
-
-```bash
-$etcdctl --endpoints=${ETCD_ENDPOINTS} \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  ls /kube-centos/network/subnets
-/kube-centos/network/subnets/172.30.14.0-24
-/kube-centos/network/subnets/172.30.38.0-24
-/kube-centos/network/subnets/172.30.46.0-24
-$etcdctl --endpoints=${ETCD_ENDPOINTS} \
-  --ca-file=/etc/kubernetes/ssl/ca.pem \
-  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
-  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
-  get /kube-centos/network/config
-{ "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
-$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
-{"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
-$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
-{"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
-$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
-{"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
-```
-
-## 安装和配置 kubelet
+## 安装和配置kubelet
 
 **kubernets1.8**
 
@@ -204,7 +133,7 @@ kubectl create clusterrolebinding kubelet-bootstrap \
 
 + `--user=kubelet-bootstrap` 是在 `/etc/kubernetes/token.csv` 文件中指定的用户名，同时也写入了 `/etc/kubernetes/bootstrap.kubeconfig` 文件；
 
-### 下载最新的 kubelet 和 kube-proxy 二进制文件
+### 下载最新的kubelet和kube-proxy二进制文件
 
 ``` bash
 wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
@@ -214,7 +143,7 @@ tar -xzvf  kubernetes-src.tar.gz
 cp -r ./server/bin/{kube-proxy,kubelet} /usr/local/bin/
 ```
 
-### 创建 kubelet 的service配置文件
+### 创建kubelet的service配置文件
 
 文件位置`/usr/lib/systemd/system/kubelet.service`。
 
@@ -256,7 +185,6 @@ kubelet的配置文件`/etc/kubernetes/kubelet`。其中的IP地址更改为你�
 相对于kubenrete1.6的配置变动：
 
 - 对于kuberentes1.8集群中的kubelet配置，取消了`KUBELET_API_SERVER`的配置，而改用kubeconfig文件来定义master地址。
-- ​
 
 ``` bash
 ###

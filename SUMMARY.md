@@ -81,12 +81,13 @@
 ### 最佳实践
 
 - [最佳实践概览](practice/index.md)
-- [在CentOS上部署kubernetes集群](practice/install-kbernetes1.6-on-centos.md)
+- [在CentOS上部署kubernetes集群](practice/install-kubernetes-on-centos.md)
   - [创建TLS证书和秘钥](practice/create-tls-and-secret-key.md)
   - [创建kubeconfig文件](practice/create-kubeconfig.md)
   - [创建高可用etcd集群](practice/etcd-cluster-installation.md)
   - [安装kubectl命令行工具](practice/kubectl-installation.md)
   - [部署master节点](practice/master-installation.md)
+  - [安装flannel网络插件](practice/flannel-installation.md)
   - [部署node节点](practice/node-installation.md)
   - [安装kubedns插件](practice/kubedns-addon-installation.md)
   - [安装dashboard插件](practice/dashboard-addon-installation.md)

@@ -2,7 +2,7 @@
 
 > 本文档最初是基于kubenetes1.6版本编写的，对于kuberentes1.8版本同样适用，只是个别位置有稍许变动，变动的地方我将特别注明。
 
-本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证；
+本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，该安装步骤适用于所有bare metal环境、on-premise环境和公有云环境。
 
 在部署的过程中，将详细列出各组件的启动参数，给出配置文件，详解它们的含义和可能遇到的问题。
 
@@ -28,10 +28,10 @@
 + Kubernetes 1.6.0
 + Docker  1.12.5（使用yum安装）
 + Etcd 3.1.5
-+ Flanneld 0.7 vxlan 网络
++ Flannel 0.7.1 vxlan或者host-gw 网络
 + TLS 认证通信 (所有组件，如 etcd、kubernetes master 和 node)
 + RBAC 授权
-+ kublet TLS BootStrapping
++ kubelet TLS BootStrapping
 + kubedns、dashboard、heapster(influxdb、grafana)、EFK(elasticsearch、fluentd、kibana) 集群插件
 + 私有docker镜像仓库[harbor](https://github.com/vmware/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
 
@@ -73,16 +73,17 @@
 
 ## 步骤介绍
 
-- [1 创建 TLS 证书和秘钥](create-tls-and-secret-key.md)
-- [2 创建kubeconfig 文件](create-kubeconfig.md)
-- [3 创建高可用etcd集群](etcd-cluster-installation.md)
-- [4 安装kubectl命令行工具](kubectl-installation.md)
-- [5 部署master节点](master-installation.md)
-- [6 部署node节点](node-installation.md)
-- [7 安装kubedns插件](kubedns-addon-installation.md)
-- [8 安装dashboard插件](dashboard-addon-installation.md)
-- [9 安装heapster插件](heapster-addon-installation.md)
-- [10 安装EFK插件](efk-addon-installation.md)
+1. [创建 TLS 证书和秘钥](create-tls-and-secret-key.md)
+2. [创建kubeconfig 文件](create-kubeconfig.md)
+3. [创建高可用etcd集群](etcd-cluster-installation.md)
+4. [安装kubectl命令行工具](kubectl-installation.md)
+5. [部署master节点](master-installation.md)
+6. [安装flannel网络插件](flannel-installation.md)
+7. [部署node节点](node-installation.md)
+8. [安装kubedns插件](kubedns-addon-installation.md)
+9. [安装dashboard插件](dashboard-addon-installation.md)
+10. [安装heapster插件](heapster-addon-installation.md)
+11. [安装EFK插件](efk-addon-installation.md)
 
 ## 提醒
 
