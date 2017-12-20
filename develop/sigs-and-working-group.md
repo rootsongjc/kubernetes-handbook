@@ -4,6 +4,8 @@ Kubernetes的社区是以SIG（Special Interest Group特别兴趣小组）和工
 
 所有的SIG和工作组都使用slack和邮件列表沟通。
 
+![Kubernetes SIG](../images/kubernetes-sigs.jpg)
+
 ## 主要SIG列表
 
 - **api-machinery**：所有API级别的功能，包括了API server、API注册和发现、通用的API CRUD语义，准入控制，编码/解码，转换，默认值，持久化层（etcd），OpenAPI，第三方资源，垃圾手机和客户端库的方方面面。
