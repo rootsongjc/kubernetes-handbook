@@ -3,6 +3,7 @@ title: "云原生应用之路"
 date: 2017-12-20T15:08:02+08:00
 subtitle: "From Kubernetes to Cloud Native"
 draft: false
+description: "本文简要介绍了容器技术发展的路径，为何Kubernetes的出现是容器技术发展到这一步的必然选择，而为何Kuberentes又将成为云原生应用的基石。"
 tags: ["kubernetes","cloud-native"]
 categories: "cloud-native"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20171216017.jpg", desc: "On the meetup - Service Mesh is comming@Beijing Dec 16,2017"}]
