@@ -215,16 +215,17 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 **步骤介绍**
 
-- [1 创建 TLS 证书和秘钥](https://jimmysong.io/kubernetes-handbook/practice/create-tls-and-secret-key.html)
-- [2 创建kubeconfig 文件](https://jimmysong.io/kubernetes-handbook/practice/create-kubeconfig.html)
-- [3 创建高可用etcd集群](https://jimmysong.io/kubernetes-handbook/practice/etcd-cluster-installation.html)
-- [4 安装kubectl命令行工具](https://jimmysong.io/kubernetes-handbook/practice/kubectl-installation.html)
-- [5 部署master节点](https://jimmysong.io/kubernetes-handbook/practice/master-installation.html)
-- [6 部署node节点](https://jimmysong.io/kubernetes-handbook/practice/node-installation.html)
-- [7 安装kubedns插件](https://jimmysong.io/kubernetes-handbook/practice/kubedns-addon-installation.html)
-- [8 安装dashboard插件](https://jimmysong.io/kubernetes-handbook/practice/dashboard-addon-installation.html)
-- [9 安装heapster插件](https://jimmysong.io/kubernetes-handbook/practice/heapster-addon-installation.html)
-- [10 安装EFK插件](https://jimmysong.io/kubernetes-handbook/practice/efk-addon-installation.html)
+1. [创建 TLS 证书和秘钥](../practice/create-tls-and-secret-key.md)
+2. [创建kubeconfig文件](../practice/create-kubeconfig.md)
+3. [创建高可用etcd集群](../practice/etcd-cluster-installation.md)
+4. [安装kubectl命令行工具](../practice/kubectl-installation.md)
+5. [部署master节点](../practice/master-installation.md)
+6. [安装flannel网络插件](../practice/flannel-installation.md)
+7. [部署node节点](../practice/node-installation.md)
+8. [安装kubedns插件](../practice/kubedns-addon-installation.md)
+9. [安装dashboard插件](../practice/dashboard-addon-installation.md)
+10. [安装heapster插件](../practice/heapster-addon-installation.md)
+11. [安装EFK插件](../practice/efk-addon-installation.md)
 
 ### 服务发现与负载均衡
 
