@@ -22,7 +22,7 @@ es-controller.yaml  es-service.yaml  fluentd-es-ds.yaml  kibana-controller.yaml 
 
 同样EFK服务也需要一个`efk-rbac.yaml`文件，配置serviceaccount为`efk`。
 
-已经修改好的 yaml 文件见：[EFK](./manifests/EFK)
+已经修改好的 yaml 文件见：[EFK](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/EFK)
 
 ## 配置 es-controller.yaml
 
