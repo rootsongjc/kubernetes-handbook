@@ -22,6 +22,19 @@
 
 大体上的升级步骤是，先升级master节点，然后再一次升级每台node节点。
 
+## 升级建议
+
+下图来自[@ahmetb](https://twitter.com/ahmetb)的Twitter，这是他对于0宕机时间的kubernetes集群升级建议。
+
+![Kubernetes零宕机时间升级建议](../images/zero-downtime-kubernetes-upgrade-tips.jpg)
+
+主要包括以下建议：
+
+- 应用使用高级对象定义，如支持滚动更新的`Deployment`对象
+- 应用要部署成多个实例
+- 使用pod的preStop hook，加强pod的生命周期管理
+- 使用就绪和健康检查探针来确保应用存活和及时阻拦应用流量的分发
+
 ### 准备
 
 1. 备份kubernetes原先的二进制文件和配置文件。
