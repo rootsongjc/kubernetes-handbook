@@ -51,6 +51,8 @@ ETCD_PREFIX="/kube-centos/network"
 FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"
 ```
 
+如果是多网卡（例如vagrant环境），则需要在FLANNEL_OPTIONS中增加指定的外网出口的网卡，例如-iface=eth2
+
 **在etcd中创建网络配置**
 
 执行下面的命令为docker分配IP地址段。
