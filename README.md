@@ -97,4 +97,5 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 
 ## 加入K8S🤘Cloud Native实战群
 
-扫描二维码，[Jimmy Song](http://jimmysong.io/about)，或直接搜索微信号**jimmysong**后拉您入群，请增加备注。
+- 微信群：扫描二维码，[Jimmy Song](http://jimmysong.io/about)，或直接搜索微信号**jimmysong**后拉您入群，请增加备注。
+- Slack：全球中文用户可以加入[Kubernetes官方Slack](http://slack.k8s.io)中文频道**cn-users channel**
