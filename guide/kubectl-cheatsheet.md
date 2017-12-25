@@ -296,4 +296,4 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 - [JsonPath 手册](https://kubernetes.io/docs/user-guide/jsonpath)
 
-本文是对官方文档的中文翻译，原文地址：https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/。
+本文是对官方文档的中文翻译，原文地址：<https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/>
