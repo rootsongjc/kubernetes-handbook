@@ -31,7 +31,14 @@ YAML文件见官方仓库：https://github.com/openfaas/faas-netes
 - monitoring.yml
 - rbac.yml
 
-OpenFaaS安装好后会启动一个Prometheus。
+**访问端口**
+
+| 服务             | TCP端口 |
+| -------------- | ----- |
+| API Gateway/UI | 31112 |
+| Prometheus     | 31119 |
+
+OpenFaaS安装好后会启动一个Prometheus，使用31119端口，通过任意一个node可以访问UI：http://172.20.0.113:31119
 
 ![OpenFaaS Prometheus](../images/openfaas-prometheus.jpg)
 
@@ -45,6 +52,8 @@ OpenFaaS安装好后会启动一个Prometheus。
 
 OpenFaaS提供了便捷的UI，在部署完成后就可以通过NodePort方式访问。
 
+使用API Gateway的端口，通过任意一个node可以访问UI：http://172.20.0.113:31112
+
 ![OpenFaas Dashboard](../images/openfaas-deploy-a-function.jpg)
 
 其中已经内置了一些函数应用可供我们试用，还可以创建自己的函数。
@@ -54,3 +63,44 @@ OpenFaaS提供了便捷的UI，在部署完成后就可以通过NodePort方式�
 ![NodeInfo执行结果](../images/openfaas-nodeinfo.jpg)
 
 **注意：**有一些js和css文件需要翻墙才能访问，否则页面将出现格式错误。
+
+### 命令行工具
+
+OpenFaaS提供了命令行工具[faas-cli](https://github.com/openfaas/faas-cli)，使用该工具可以管理OpenFaaS中的函数。
+
+可以到[openfaas GitHub release](https://github.com/openfaas/faas-cli/releases)下载对应操作系统的命令行工具。或者使用下面的命令安装最新faas-cli：
+
+```bash
+curl -sL cli.openfaas.com | sudo sh
+```
+
+### faas-cli命令说明
+
+下面是`faas-cli`命令的几个使用案例。
+
+获取当前部署的函数状态：
+
+```bash
+faas-cli list --gateway http://172.20.0.113:31112
+Function                      	Invocations    	Replicas
+hubstats                      	0              	1
+nodeinfo                      	0              	1
+```
+
+调用函数nodeinfo：
+
+```bash
+echo ""|faas-cli invoke nodeinfo --gateway http://172.20.0.113:31112
+Hostname: nodeinfo-699d4bdcbc-s2jfz
+
+Platform: linux
+Arch: x64
+CPU count: 40
+Uptime: 1728200
+```
+
+OpenFaaS的命令行工具`faas-cli`的详细使用说明见：https://github.com/openfaas/faas-cli
+
+## 参考
+
+[Deployment guide for Kubernetes - GitHub openfaas/faas](Deployment guide for Kubernetes)
