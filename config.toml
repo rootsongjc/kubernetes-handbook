@@ -91,8 +91,8 @@ desc = "Data Science for complexity of human society"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Docker"
-    url = "categories/docker"
+    name = "Serverless"
+    url = "categories/serverless"
     weight = 6
 
 [[menu.main]]
