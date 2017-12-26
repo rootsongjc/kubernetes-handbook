@@ -153,7 +153,7 @@
 - [Serverless架构](usecases/serverless.md)
   - [理解Serverless](usecases/understanding-serverless.md)
   - [FaaS-函数即服务](usecases/faas.md)
-    - [OpenFaaS](usecases/openfaas.md)
+    - [OpenFaaS快速入门指南](usecases/openfaas-quick-start.md)
 - [边缘计算](usecases/edge-computing.md)
 
 ### 开发指南

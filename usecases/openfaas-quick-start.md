@@ -1,6 +1,6 @@
-# OpenFaaS
+# OpenFaaS快速入门指南
 
-OpenFaaS一款高人气的开源的faas框架，可以在
+[OpenFaaS](https://github.com/openfaas/faas)一款高人气的开源的faas框架，可以直接在Kubernetes上运行，也可以基于Swarm或容器运行。
 
 在Kubernetes上部署OpenFaaS十分简单，用到的镜像如下：
 
