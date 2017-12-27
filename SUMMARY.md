@@ -77,6 +77,7 @@
   - [从外部访问Kubernetes中的Pod](guide/accessing-kubernetes-pods-from-outside-of-the-cluster.md)
   - [Carbin - Kubernetes手机客户端](guide/carbin-mobile-dashboard-for-kubernetes.md)
   - [Kubernetic - Kubernetes桌面客户端](guide/kubernetes-desktop-client.md)
+  - [Kubernator - 更底层的Kubernetes UI](guide/kubernator-kubernetes-ui.md)
 - [在kubernetes中开发部署应用](guide/application-development-deployment-flow.md)
   - [适用于kubernetes的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
   - [迁移传统应用到kubernetes中——以Hadoop YARN为例](guide/migrating-hadoop-yarn-to-kubernetes.md)
