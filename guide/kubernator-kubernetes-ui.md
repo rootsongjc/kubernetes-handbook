@@ -17,6 +17,11 @@ kubectl proxy
 
 然后就可以通过<http://localhost:8001/api/v1/namespaces/kubernator/services/kubernator/proxy/>来访问了。
 
+Catalog页面可以看到Kubernetes中资源对象的树形结构，还可以在该页面中对资源对象的配置进行更改和操作。
+
 ![Kubernator catalog页面](../images/kubernator-catalog.jpg)
 
+Rbac页面可以看到集群中RBAC关系及结构。
+
 ![Kubernator rbac页面](../images/kubernator-rbac.jpg)
+
