@@ -202,3 +202,37 @@ data:
 ```
 
 `upstreamNameservers` 即使用的外部DNS，参考：[Configuring Private DNS Zones and Upstream Nameservers in Kubernetes](http://blog.kubernetes.io/2017/04/configuring-private-dns-zones-upstream-nameservers-kubernetes.html)
+
+## 8. 创建一个CentOS测试容器
+
+有时我们可能需要在Kubernetes集群中创建一个容器来测试集群的状态或对其它容器进行操作，这时候我们需要一个操作节点，可以使用一个普通的CentOS容器来实现。YAML文件见[manifests/test/centos.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/test/centos.yaml)。
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+        name: test
+        command: ["/bin/bash","-c","while true; do sleep 1000; done"]
+        imagePullPolicy: IfNotPresent
+```
+
+即使用一个`while`循环保证容器启动时拥有一个前台进程。
+
+也可以直接使用`kubectl run`的方式来创建：
+
+```bash
+kubectl run --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511 --command '/bin/bash -c "while true;do sleep 1000;done"' centos-test
+```
+

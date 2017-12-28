@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+        name: test
+        command: ["/bin/bash","-c","while true; do sleep 1000; done"]
+        imagePullPolicy: IfNotPresent
