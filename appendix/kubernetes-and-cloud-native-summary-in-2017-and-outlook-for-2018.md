@@ -56,7 +56,7 @@ Kubernetes的架构做的足够开放，通过系列的接口，如CRI（Contain
 
 ### 下一代云计算标准
 
-Google通过将云应用进行抽象简化出的Kubernetes中的各种概念对象，如Pod、Deployment、Job、StatefulSet等，形成了Cloud Native应用的通用的可移植的模型，Kubernetes作为云应用的部署标准，直接面向业务应用，将大大提高云应用的可移植性，解决云厂商锁定的问题，让云应用可以在夸云之间无缝迁移，甚至用来管理混合云，成为企业IT云平台的新标准。
+Google通过将云应用进行抽象简化出的Kubernetes中的各种概念对象，如Pod、Deployment、Job、StatefulSet等，形成了Cloud Native应用的通用的可移植的模型，Kubernetes作为云应用的部署标准，直接面向业务应用，将大大提高云应用的可移植性，解决云厂商锁定的问题，让云应用可以在跨云之间无缝迁移，甚至用来管理混合云，成为企业IT云平台的新标准。
 
 ## 现状及影响
 
