@@ -104,7 +104,7 @@
   - [网络和集群性能测试](practice/network-and-cluster-perfermance-test.md)
   - [边缘节点配置](practice/edge-node-configuration.md)
   - [安装Nginx ingress](practice/nginx-ingress-installation.md)
-  - [配置DNS](practice/configuring-dns.md)
+  - [配置内置DNS（kube-dns）](practice/configuring-dns.md)
 - [运维管理](practice/operation.md)
    - [服务滚动升级](practice/service-rolling-update.md)
    - [应用日志收集](practice/app-log-collection.md)
