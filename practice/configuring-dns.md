@@ -23,7 +23,7 @@ kube-dns是Kubernetes中的一个内置插件，目前作为一个独立的开�
 
 ## kube-dns 介绍
 
-从 Kubernetes v1.3 版本开始，使用 [cluster add-on 插件管理器回自动启动内置的 DNS。
+从 Kubernetes v1.3 版本开始，使用 cluster add-on 插件管理器回自动启动内置的 DNS。
 
 Kubernetes DNS pod 中包括 3 个容器：
 
@@ -297,7 +297,7 @@ kube-dns      10.0.0.10      <none>        53/UDP,53/TCP        1h
 ...
 ```
 
-如果您已经创建了该服务或它本应该默认创建但没有出现，参考[调试服务](/docs/tasks/debug-application-cluster/debug-service/)获取更多信息。
+如果您已经创建了该服务或它本应该默认创建但没有出现，参考[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)获取更多信息。
 
 ### DNS 端点暴露出来了吗？
 
@@ -309,18 +309,7 @@ NAME       ENDPOINTS                       AGE
 kube-dns   10.180.3.17:53,10.180.3.17:53    1h
 ```
 
-<!--
-
-If you do not see the endpoints, see endpoints section in the
-[debugging services](/docs/tasks/debug-application-cluster/debug-service/) documentation.
-
-For additional Kubernetes DNS examples, see the
-[cluster-dns examples](https://github.com/kubernetes/examples/tree/master/staging/cluster-dns)
-in the Kubernetes GitHub repository.
-
--->
-
-如果您没有看到端点，查看[调试服务](/docs/tasks/debug-application-cluster/debug-service/)文档中的端点部分。
+如果您没有看到端点，查看[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)文档中的端点部分。
 
 获取更多的 Kubernetes DNS 示例，请参考 Kubernetes GitHub 仓库中的[cluster-dns示例](https://github.com/kubernetes/examples/tree/master/staging/cluster-dns)。
 
@@ -334,15 +323,11 @@ Linux 的 libc 不可思议的卡住（[查看该2005年起暴出来的bug](http
 
 ## Kubernetes 集群联邦（多可用区支持）
 
-Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联邦支持。这需要对 Kubernetes 集群 DNS 服务器处理 DNS 查询的方式进行一些小的（向后兼容的）更改，以便于查找联邦服务（跨多个 Kubernetes 集群）。有关集群联邦和多站点支持的更多详细信息，请参阅[集群联邦管理员指南](/docs/concepts/cluster-administration/federation/)。
+Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联邦支持。这需要对 Kubernetes 集群 DNS 服务器处理 DNS 查询的方式进行一些小的（向后兼容的）更改，以便于查找联邦服务（跨多个 Kubernetes 集群）。有关集群联邦和多站点支持的更多详细信息，请参阅[集群联邦管理员指南](https://kubernetes.io/docs/concepts/cluster-administration/federation/)。
 
 ## 参考
 
 - [Configure DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-
 - [Service 和 Pod 的 DNS](/docs/concepts/services-networking/dns-pod-service/)
-- [DNS 集群插件文档](http://releases.k8s.io/{{page.githubbranch}}/cluster/addons/dns/README.md)
-
-
 - [自动扩容集群中的 DNS 服务](/docs/tasks/administer-cluster/dns-horizontal-autoscaling/)
 - [Using CoreDNS for Service Discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)
