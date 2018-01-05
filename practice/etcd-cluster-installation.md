@@ -101,7 +101,7 @@ ETCD_ADVERTISE_CLIENT_URLS="https://172.20.0.113:2379"
 ## 启动 etcd 服务
 
 ``` bash
-mv etcd.service /usr/lib/system/systemd/
+mv etcd.service /usr/lib/systemd/system/
 systemctl daemon-reload
 systemctl enable etcd
 systemctl start etcd
