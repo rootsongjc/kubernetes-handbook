@@ -1,0 +1,51 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jenkins-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: openebs-standard
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5G
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: jenkins
+spec:
+ replicas: 1
+ template:
+  metadata:
+   labels:
+    app: jenkins-app
+  spec:
+   securityContext:
+     fsGroup: 1000
+   containers:
+   - name: jenkins
+     imagePullPolicy: IfNotPresent
+     image: sz-pg-oam-docker-hub-001.tendcloud.com/library/jenkins:lts
+     ports:
+     - containerPort: 8080
+     volumeMounts:
+       - mountPath: /var/jenkins_home
+         name: jenkins-home
+   volumes:
+     - name: jenkins-home
+       persistentVolumeClaim:
+         claimName: jenkins-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-svc
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: jenkins-app
+  type: NodePort
