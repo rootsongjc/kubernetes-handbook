@@ -1,0 +1,184 @@
+# Define the Service Account
+# Define the RBAC rules for the Service Account
+# Launch the maya-apiserver ( deployment )
+# Launch the maya-storagemanager ( deameon set )
+
+# Create Maya Service Account 
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: openebs-maya-operator
+  namespace: default
+---
+# Define Role that allows operations on K8s pods/deployments
+#  in "default" namespace
+# TODO : change to new namespace, for isolated data network
+# TODO : the rules should be updated with required group/resources/verb
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: default
+  name: openebs-maya-operator
+rules:
+- apiGroups: ["*"]
+  resources: ["nodes","nodes/proxy"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["*"]
+  resources: ["services","pods","deployments", "events", "endpoints"]
+  verbs: ["*"]
+- apiGroups: ["*"]
+  resources: ["persistentvolumes","persistentvolumeclaims"]
+  verbs: ["*"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["*"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
+---
+# Bind the Service Account with the Role Privileges.
+# TODO: Check if default account also needs to be there
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: openebs-maya-operator
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: openebs-maya-operator
+  namespace: default
+- kind: User
+  name: system:serviceaccount:default:default
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: openebs-maya-operator
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: maya-apiserver
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: maya-apiserver
+    spec:
+      serviceAccountName: openebs-maya-operator
+      containers:
+      - name: maya-apiserver
+        imagePullPolicy: Always
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-m-apiserver:0.5.1-RC1
+        ports:
+        - containerPort: 5656
+        env:
+        - name: OPENEBS_IO_JIVA_CONTROLLER_IMAGE
+          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-jiva:0.5.1-RC1"
+        - name: OPENEBS_IO_JIVA_REPLICA_IMAGE
+          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-jiva:0.5.1-RC1"
+        - name: OPENEBS_IO_VOLUME_MONITOR_IMAGE
+          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-m-exporter:0.5.0"
+        - name: OPENEBS_IO_JIVA_REPLICA_COUNT
+          value: "2"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: maya-apiserver-service
+spec:
+  ports:
+  - name: api
+    port: 5656
+    protocol: TCP
+    targetPort: 5656
+  selector:
+    name: maya-apiserver
+  sessionAffinity: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: openebs-provisioner
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: openebs-provisioner
+    spec:
+      serviceAccountName: openebs-maya-operator
+      containers:
+      - name: openebs-provisioner
+        imagePullPolicy: Always
+        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-k8s-provisioner:0.5.1-RC2
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: OPENEBS_MONITOR_URL
+          value: "http://127.0.0.1:32515/dashboard/db/openebs-volume-stats?orgId=1"
+        - name: OPENEBS_MONITOR_VOLKEY
+          value: "&var-OpenEBS"
+        - name: MAYA_PORTAL_URL
+          value: "https://mayaonline.io/"
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: storagepoolclaims.openebs.io
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  group: openebs.io
+  # version name to use for REST API: /apis/<group>/<version>
+  version: v1alpha1
+  # either Namespaced or Cluster
+  scope: Cluster
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: storagepoolclaims
+    # singular name to be used as an alias on the CLI and for display
+    singular: storagepoolclaim
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: StoragePoolClaim
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+    - spc
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: storagepools.openebs.io
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  group: openebs.io
+  # version name to use for REST API: /apis/<group>/<version>
+  version: v1alpha1
+  # either Namespaced or Cluster
+  scope: Cluster
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: storagepools
+    # singular name to be used as an alias on the CLI and for display
+    singular: storagepool
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: StoragePool
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+    - sp
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+   name: openebs-standard
+provisioner: openebs.io/provisioner-iscsi
+parameters:
+  openebs.io/storage-pool: "default"
+  openebs.io/jiva-replica-count: "2"
+  openebs.io/volume-monitor: "true"
+  openebs.io/capacity: 5G
