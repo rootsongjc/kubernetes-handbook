@@ -74,7 +74,7 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 如果已经正确安装了CLI，应该可以查询到CLI的版本，代码如下所示。
 
-```
+```ini
 Version: 1.0.882
 Compiled at: 2017-06-02 06:49:39 +0800 CST
 Git commit: da8bc056ed99e27b4b7a1b608078ddaf025a9dc4
@@ -170,12 +170,8 @@ Deploy管道中配置的docker镜像的repo、tag和cmd命令，其他容器配�
 
 ## 参考
 
-[容器化应用开发部署平台Wercker获450万美元A轮融资](http://36kr.com/p/5042850.html)
-
-[甲骨文收购创业公司Wercker 为开发人员自动化代码测试部署]([http://www.admin5.com/article/20170418/737167.shtml)
-
-[Wercker docs](http://devcenter.wercker.com/docs/home)
-
-[Wercker workflow](http://devcenter.wercker.com/docs/workflows)
-
-[magpie](https://github.com/rootsongjc/magpie)
+- [容器化应用开发部署平台Wercker获450万美元A轮融资](http://36kr.com/p/5042850.html)
+- [甲骨文收购创业公司Wercker 为开发人员自动化代码测试部署]([http://www.admin5.com/article/20170418/737167.shtml)
+- [Wercker docs](http://devcenter.wercker.com/docs/home)
+- [Wercker workflow](http://devcenter.wercker.com/docs/workflows)
+- [magpie](https://github.com/rootsongjc/magpie)
