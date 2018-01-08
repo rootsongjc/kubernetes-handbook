@@ -25,6 +25,7 @@
   - [Namespace](concepts/namespace.md)
   - [Service](concepts/service.md)
   - [Volume和Persistent Volume](concepts/volume.md)
+    - [Persistent Volume（持久化卷）](concepts/persistent-volume.md)
   - [Deployment](concepts/deployment.md)
   - [Secret](concepts/secret.md)
   - [StatefulSet](concepts/statefulset.md)
