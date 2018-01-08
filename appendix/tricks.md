@@ -178,6 +178,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: HOST_IP
+          valueFrom:
+           fieldRef:
+             fieldPath: status.hostIP
         - name: MY_POD_SERVICE_ACCOUNT
           valueFrom:
             fieldRef:
