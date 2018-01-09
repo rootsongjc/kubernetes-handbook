@@ -4,7 +4,7 @@
 
 本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关于关注kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。
 
-起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6.0** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的kubernetes版本和示例也将随之更新。
+起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的kubernetes版本和示例也将随之更新。
 
 GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
 

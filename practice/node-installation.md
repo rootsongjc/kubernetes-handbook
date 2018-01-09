@@ -135,6 +135,8 @@ kubectl create clusterrolebinding kubelet-bootstrap \
 
 ### 下载最新的kubelet和kube-proxy二进制文件
 
+注意请下载对应的Kubernetes版本的安装包。
+
 ``` bash
 wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
 tar -xzvf kubernetes-server-linux-amd64.tar.gz

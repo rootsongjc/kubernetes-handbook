@@ -4,6 +4,8 @@
 
 ## 下载 kubectl
 
+注意请下载对应的Kubernetes版本的安装包。
+
 ``` bash
 wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
 tar -xzvf kubernetes-client-linux-amd64.tar.gz
