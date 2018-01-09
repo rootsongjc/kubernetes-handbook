@@ -110,6 +110,14 @@ NAME           STATUS    ROLES     AGE       VERSION
 
 所有节点的状态都正常，再检查下原先的运行在kubernetes之上的服务是否正常，如果服务正常的话说明这次升级无误。
 
+## API版本变更适配
+
+对于不同版本的Kubernetes，许多资源对象的API的版本可能会变更，下表列出了kubernetes1.5至1.9的API资源对象的版本演进：
+
+![Kuberentes API对象的版本演进](../images/kubernetes-apversions-changes.jpg)
+
+当我们升级过后，可能出现资源对象的API变更后，原先的YAML文件无法使用的情况，因此需要对新版本的Kubernetes进行适配。对应的API版本转换工具：<https://github.com/fleeto/kube-version-converter>，可以将Kuberntes API对象转换到指定版本。
+
 ## 参考
 
 - [Cluster Upgrade #2524](https://github.com/kubernetes/kubernetes/issues/2524)
