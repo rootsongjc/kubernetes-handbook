@@ -168,6 +168,7 @@
 - [开发环境搭建](develop/developing-environment.md)
 - [单元测试和集成测试](develop/testing.md)
 - [client-go示例](develop/client-go-sample.md)
+- [Operator](develop/operator.md)
 - [社区贡献](develop/contribute.md)
 - [Minikube](develop/minikube.md)
 
