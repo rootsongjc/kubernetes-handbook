@@ -184,7 +184,7 @@ kubelet的配置文件`/etc/kubernetes/kubelet`。其中的IP地址更改为你�
 
 相对于kubenrete1.6的配置变动：
 
-- 对于kuberentes1.8集群中的kubelet配置，取消了`KUBELET_API_SERVER`的配置，而改用kubeconfig文件来定义master地址。
+- 对于kuberentes1.8集群中的kubelet配置，取消了`KUBELET_API_SERVER`的配置，而改用kubeconfig文件来定义master地址，所以请注释掉`KUBELET_API_SERVER`配置。
 
 ``` bash
 ###
@@ -200,6 +200,7 @@ KUBELET_ADDRESS="--address=172.20.0.113"
 KUBELET_HOSTNAME="--hostname-override=172.20.0.113"
 #
 ## location of the api-server
+## COMMENT THIS ON KUBERNETES 1.8+
 KUBELET_API_SERVER="--api-servers=http://172.20.0.113:8080"
 #
 ## pod infrastructure container

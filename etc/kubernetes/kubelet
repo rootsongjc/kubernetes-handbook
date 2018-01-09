@@ -11,6 +11,7 @@ KUBELET_ADDRESS="--address=172.20.0.113"
 KUBELET_HOSTNAME="--hostname-override=172.20.0.113"
 #
 ## location of the api-server
+## COMMENT THIS ON KUBERNETES 1.8+
 KUBELET_API_SERVER="--api-servers=http://172.20.0.113:8080"
 #
 ## pod infrastructure container
