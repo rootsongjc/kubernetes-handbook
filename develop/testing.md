@@ -187,6 +187,16 @@ make test_e2e_node TEST_ARGS="--experimental-cgroups-per-qos=true"
 kubectl get pods nginx-4263166205-ggst4 -o template '--template={{if (exists . "status" "containerStatuses")}}{{range .status.containerStatuses}}{{if eq .name "nginx"}}{{.image}}{{end}}{{end}}{{end}}'
 ```
 
+## kubernetes测试工具集test-infra
+
+[test-infra](https://github.com/kubernetes/test-infra)是由kubernetes官方开源的测试框架，其中包括了Kubernetes测试工具集和测试结果展示。下图展示了test-infra的架构：
+
+![test-infra架构图（图片来自官方GitHub）](../images/kubernetes-test-architecture.jpg)
+
+
+
+该测试框架主要是真多Google公有云做的，支持kubernetes1.6以上版本的测试。详见<https://github.com/kubernetes/test-infra>。
+
 ## 参考文档
 
 * [Kubernetes testing](https://github.com/kubernetes/community/blob/master/contributors/devel/testing.md)
@@ -194,3 +204,4 @@ kubectl get pods nginx-4263166205-ggst4 -o template '--template={{if (exists . "
 * [Node e2e test](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-node-tests.md)
 * [How to write e2e test](https://github.com/kubernetes/community/blob/master/contributors/devel/writing-good-e2e-tests.md)
 * [Coding Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/coding-conventions.md#testing-conventions)
+* https://github.com/kubernetes/test-infra
