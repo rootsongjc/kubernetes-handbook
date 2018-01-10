@@ -55,6 +55,8 @@ tolerations:
 - `value` 的值可以为 `NoSchedule`、` PreferNoSchedule` 或 `NoExecute`。
 - `tolerationSeconds` 是当 pod 需要被驱逐时，可以继续在 node 上运行的时间。
 
+详细使用方法请参考[官方文档](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)。
+
 ## 参考
 
 - [Taints and Tolerations - kuberentes.io](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
