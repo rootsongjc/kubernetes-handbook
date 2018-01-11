@@ -160,9 +160,9 @@ token:		非常长的字符串
 ca.crt:		1310 bytes
 ```
 
-在 dashboard 登录页面上使用上面输出中的那个**非常长的字符串进行 `base64` 解码后**作为 token 登录，即可以拥有管理员权限操作整个kubernetes集群中的对象。当然您也可以将这串 token 进行 `base64` 解码后，加到 admin 用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，两种认证方式任您选择。
+在 dashboard 登录页面上有两种登录方式，`kubeconfig` 文件和 token （令牌），使用 token 登录可以直接使用上面输出中的那个**非常长的字符串**作为 token 登录，即可以拥有管理员权限操作整个kubernetes集群中的对象。对于 `kubeconfig` 文件登录方式，不能直接使用之前给 kubectl 生成的 `kubeconfig` 文件(`~/.kube/config`) 需要给它加一个 token 字段，您可以将这串 token 加到 admin 用户的`kubeconfig`文件中，继续使用`kubeconfig`登录，具体加的位置可以参考`bootstrap-kubeconfig` 文件，两种认证方式任您选择。
 
-**注意**：一定要将 kubectl 的输出中的 token 值进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入  `base64` 是进行编码，Linux 中`base64 -d` 表示解码，Mac 中使用 `base64 -D`。
+**注意**：通过 `kubectl get secret xxx` 输出中的 token 值需要进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入  `base64` 是进行编码，Linux 中`base64 -d` 表示解码，Mac 中使用 `base64 -D`；通过 `kubectl describe secret xxx` 输出中的 token 不需要 `base64` 解码。
 
 也可以使用 jsonpath 的方式直接获取 token 的值，如：
 
