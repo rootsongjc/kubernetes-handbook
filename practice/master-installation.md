@@ -156,6 +156,7 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 ```
 
 + `--experimental-bootstrap-token-auth` Bootstrap Token Authentication在1.9版本已经变成了正式feature，参数名称改为`--enable-bootstrap-token-auth`
++ 如果中途修改过`--service-cluster-ip-range`地址，则必须将default命名空间的`kubernetes`的service给删除，使用命令：`kubectl delete service kubernetes`，然后系统会自动用新的ip重建这个service，不然apiserver的log有报错`the cluster IP x.x.x.x for service kubernetes/default is not within the service CIDR x.x.x.x/16; please recreate`
 + `--authorization-mode=RBAC` 指定在安全端口使用 RBAC 授权模式，拒绝未通过授权的请求；
 + kube-scheduler、kube-controller-manager 一般和 kube-apiserver 部署在同一台机器上，它们使用**非安全端口**和 kube-apiserver通信;
 + kubelet、kube-proxy、kubectl 部署在其它 Node 节点上，如果通过**安全端口**访问 kube-apiserver，则必须先通过 TLS 证书认证，再通过 RBAC 授权；
