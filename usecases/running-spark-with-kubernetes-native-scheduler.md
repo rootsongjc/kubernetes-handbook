@@ -464,17 +464,16 @@ CMD SPARK_CLASSPATH="${SPARK_HOME}/jars/*" && \
 
 ## 参考
 
-[Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
-
-[Running Spark on Kubernetes](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html)
-
-[Apache Spark Jira Issue - 18278 - SPIP: Support native submission of spark jobs to a kubernetes cluster](https://issues.apache.org/jira/browse/SPARK-18278)
-
-[Kubernetes Github Issue - 34377 Support Spark natively in Kubernetes](https://github.com/kubernetes/kubernetes/issues/34377)
-
-[Kubernetes example spark](https://github.com/kubernetes/kubernetes/tree/master/examples/spark)
-
-https://github.com/rootsongjc/spark-on-kubernetes
-
-[Scheduler backend](https://github.com/apache-spark-on-k8s/spark/blob/branch-2.2-kubernetes/resource-managers/kubernetes/architecture-docs/scheduler-backend.md)
-
+- [Spark动态资源分配-Dynamic Resource Allocation](http://lxw1234.com/archives/2015/12/593.htm)
+- [Running Spark on Kubernetes](https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html)
+- [Apache Spark Jira Issue - 18278 - SPIP: Support native submission of spark jobs to a kubernetes cluster](https://issues.apache.org/jira/browse/SPARK-18278)
+- [Kubernetes Github Issue - 34377 Support Spark natively in Kubernetes](https://github.com/kubernetes/kubernetes/issues/34377)
+- [Kubernetes example spark](https://github.com/kubernetes/kubernetes/tree/master/examples/spark)
+- https://github.com/rootsongjc/spark-on-kubernetes
+- [Scheduler backend](https://github.com/apache-spark-on-k8s/spark/blob/branch-2.2-kubernetes/resource-managers/kubernetes/architecture-docs/scheduler-backend.md)
+- [Introduction to Spark on Kubernetes - banzaicloud.com](https://banzaicloud.github.io/blog/spark-k8s/)
+- [Scaling Spark made simple on Kubernetes - banzaicloud.com](https://banzaicloud.com/blog/scaling-spark-k8s/)
+- [The anatomy of Spark applications on Kubernetes - banzaicloud.com](https://banzaicloud.com/blog/spark-k8s-internals/)
+- [Monitoring Apache Spark with Prometheus - banzaicloud.com](https://banzaicloud.com/blog/spark-monitoring/)
+- [Running Zeppelin Spark notebooks on Kubernetes - banzaicloud.com](https://banzaicloud.com/blog/zeppelin-spark-k8/)
+- [Apache Spark CI/CD workflow howto - banzaicloud.com](https://banzaicloud.com/blog/pipeline-howto/)
