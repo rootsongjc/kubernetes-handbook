@@ -8,7 +8,7 @@
 
 **1. 在Github上创建一个新的OAtuh应用**
 
-访问https://github.com/settings/applications/new，创建新的OAuth应用。
+访问[此頁面](https://github.com/settings/applications/new)，创建新的OAuth应用。
 
 ![OAuth注册](../images/github-oauth-register.jpg)
 
@@ -31,22 +31,25 @@ version: '2'
 
 services:
   drone-server:
-    image: drone/drone:0.7
+    image: drone/drone:0.8
+
     ports:
       - 80:8000
+      - 9000
     volumes:
       - /var/lib/drone:/var/lib/drone/
     restart: always
     environment:
       - DRONE_OPEN=true
-      - DRONE_ADMIN=jimmy
-      - DRONE_HOST=localhost
+      - DRONE_HOST=${DRONE_HOST}
       - DRONE_GITHUB=true
       - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT}
       - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET}
-      - DRONE_SECRET=admin
+      - DRONE_SECRET=${DRONE_SECRET}
+
   drone-agent:
-    image: drone/drone:0.7
+    image: drone/agent:0.8
+
     command: agent
     restart: always
     depends_on:
@@ -54,8 +57,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_SERVER=ws://drone-server:8000/ws/broker
-      - DRONE_SECRET=admin
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=${DRONE_SECRET}
 ```
 
 - `/var/lib/drone`是在本地挂载的目录，请确保该目录已存在，且可以被docker访问到，Mac下可以在docker的共享目录中配置。
@@ -72,7 +75,7 @@ docker-compose up
 
 这样是在前台启动，加上`-d`参数就可以在后台启动。
 
-访问http://localhost可以看到登陆画面。
+访问 `http://localhost` 可以看到登陆画面。
 
 ![Drone登陆界面](../images/drone-login-github.jpg)
 
