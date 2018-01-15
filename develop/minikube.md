@@ -24,14 +24,25 @@ chmod +x /usr/local/bin/minikube
 
 参考[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)，直接使用二进制文件安装即可。
 
+
+
 ```bash
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/darwin/amd64/kubectl
+或者：
+先访问https://storage.googleapis.com/kubernetes-release/release/stable.txt
+得到返回值，假设为:v1.9.1，然后拼接网址，直接在浏览器访问：
+https://storage.googleapis.com/kubernetes-release/release/v1.9.1/bin/darwin/amd64/kubectl
+直接下载kubectl文件
 ```
+
+若第一种方式访问多次超时，可以使用上述的第二种方式访问。
 
 ## 启动Minikube
 
+假设使用xhyve-driver虚拟技术，则需要在minikube start加入参数 `--vm-driver=xhyve`
+
 ```bash
-minikube start
+minikube start --vm-driver=xhyve
 Starting local Kubernetes v1.7.5 cluster...
 Starting VM...
 Downloading Minikube ISO
