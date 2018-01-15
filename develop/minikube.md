@@ -5,10 +5,10 @@ Minikube用于在本地运行kubernetes环境，用来开发和测试。
 ## 在Mac上安装xhyve-driver
 
 ```bash
-docker-machine-driver-xhyve
+brew install docker-machine-driver-xhyve
 # docker-machine-driver-xhyve need root owner and uid
-$ sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-$ sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 ```
 
 到 https://github.com/kubernetes/minikube/releases 下载 minikube，我安装的是minikube v0.22.3
