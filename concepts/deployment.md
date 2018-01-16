@@ -250,7 +250,7 @@ Events:
 
 ### Label selector 更新
 
-我们通常不鼓励更新 label selector，我们建议实现规划好您的 selector。
+我们通常不鼓励更新 label selector，我们建议事先规划好您的 selector。
 
 任何情况下，只要您想要执行 label selector 的更新，请一定要谨慎并确认您已经预料到所有可能因此导致的后果。
 
@@ -591,7 +591,7 @@ Kubernetes 将包括以下特性的 Deployment 标记为 *complete* 状态：
 
 您可以用`kubectl rollout status`命令查看 Deployment 是否完成。如果 rollout 成功完成，`kubectl rollout status`将返回一个0值的 Exit Code。
 
-```
+```bash
 $ kubectl rollout status deploy/nginx
 Waiting for rollout to finish: 2 of 3 updated replicas are available...
 deployment "nginx" successfully rolled out
@@ -614,7 +614,7 @@ $ echo $?
 
 下面的`kubectl`命令设置`progressDeadlineSeconds` 使 controller 在 Deployment 在进度卡住10分钟后报告：
 
-```
+```bash
 $ kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSeconds":600}}'
 "nginx-deployment" patched
 ```
@@ -633,7 +633,7 @@ $ kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSecond
 
 您可能在使用 Deployment 的时候遇到一些短暂的错误，这些可能是由于您设置了太短的 timeout，也有可能是因为各种其他错误导致的短暂错误。例如，假设您使用了无效的引用。当您 Describe Deployment 的时候可能会注意到如下信息：
 
-```
+```bash
 $ kubectl describe deployment nginx-deployment
 <...>
 Conditions:
@@ -677,7 +677,7 @@ status:
 
 最终，一旦超过 Deployment 进程的 deadline，kuberentes 会更新状态和导致 Progressing 状态的原因：
 
-```
+```bash
 Conditions:
   Type            Status  Reason
   ----            ------  ------
@@ -689,7 +689,7 @@ Conditions:
 
 您可以通过缩容 Deployment的方式解决配额不足的问题，或者增加您的 namespace 的配额。如果您满足了配额条件后，Deployment controller 就会完成您的 Deployment rollout，您将看到 Deployment 的状态更新为成功状态（`Status=True`并且`Reason=NewReplicaSetAvailable`）。
 
-```
+```bash
 Conditions:
   Type          Status  Reason
   ----          ------  ------
@@ -702,7 +702,7 @@ Conditions:
 
 您可以使用`kubectl rollout status`命令查看Deployment进程是否失败。当Deployment过程超过了deadline，`kubectl rollout status`将返回非0的exit code。
 
-```
+```bash
 $ kubectl rollout status deploy/nginx
 Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
 error: deployment "nginx" exceeded its progress deadline
