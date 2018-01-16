@@ -79,11 +79,13 @@ spec:
 
 我们现在集群中已经有两个service了，一个是nginx，另一个是官方的`guestbook`例子。
 
-**创建Depeloyment**
+**创建DaemonSet**
+
+我们使用DaemonSet类型来部署Traefik，并使用`nodeSelector`来限定Traefik所部署的主机。
 
 ```Yaml
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: traefik-ingress-lb
   namespace: kube-system
@@ -121,11 +123,25 @@ spec:
         - --web
         - --web.address=:8580
         - --kubernetes
+      nodeSelector:
+        edgenode: "true"
 ```
 
-注意我们这里用的是Deploy类型，没有限定该pod运行在哪个主机上。Traefik的端口是8580。
+**注意**：我们使用了`nodeSelector`选择边缘节点来调度traefik-ingress-lb运行在它上面，所有你需要使用：
+
+```ini
+kubectl label nodes 172.20.0.113 edgenode=true
+kubectl label nodes 172.20.0.114 edgenode=true
+kubectl label nodes 172.20.0.115 edgenode=true
+```
+
+给三个node打标签，这样traefik的pod才会调度到这几台主机上，否则会一直处于`pending`状态。
+
+关于使用Traefik作为边缘节点请参考[边缘节点配置](../practice/edge-node-configuration.md)。
 
 **Traefik UI**
+
+使用下面的YAML配置来创建Traefik的Web UI。
 
 ```yaml
 apiVersion: v1
