@@ -65,7 +65,7 @@ keepalived的官方配置文档见：http://keepalived.org/pdf/UserGuide.pdf
 
 配置文件`/etc/keepalived/keepalived.conf`文件内容如下：
 
-```
+```ini
 ! Configuration File for keepalived
 
 global_defs {
@@ -223,6 +223,19 @@ traefik-ingress-lb   3         3         3         3            3           edge
 ```
 
 现在就可以在外网通过172.20.0.119:80来访问到traefik ingress了。
+
+## 使用域名访问Kubernetes中的服务
+
+现在我们已经部署了以下服务：
+
+- 三个边缘节点，使用Traefik作为Ingress controller
+- 使用keepalived做的VIP（虚拟IP）172.20.0.119
+
+这样在访问该IP的时候通过指定不同的`Host`来路由到kubernetes后端服务。这种方式访问每个Service时都需要指定`Host`，而同一个项目中的服务一般会在同一个Ingress中配置，使用`Path`来区分Service已经足够，这时候只要为VIP（172.20.0.119）来配置一个域名，所有的外部访问直接通过该域名来访问即可。
+
+如下图所示：
+
+![使用域名来访问Kubernetes中的服务](../images/accessing-kubernetes-services-with-dns-name.png)
 
 ## 参考
 
