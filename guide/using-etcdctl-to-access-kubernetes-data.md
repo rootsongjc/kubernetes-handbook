@@ -116,6 +116,41 @@ $ echo L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs|base64 -d
 /registry/namespaces/automodel
 ```
 
+## etcd中kubernetes的元数据
+
+我们使用kubectl命令获取的kubernetes的对象状态实际上是保存在etcd中的，使用下面的脚本可以获取etcd中的所有kubernetes对象的key：
+
+> 注意，我们使用了ETCD v3版本的客户端命令来访问etcd。
+
+```bash
+#!/bin/bash
+# Get kubernetes keys from etcd
+export ETCDCTL_API=3
+keys=`etcdctl get /registry --prefix -w json|python -m json.tool|grep key|cut -d ":" -f2|tr -d '"'|tr -d ","`
+for x in $keys;do
+  echo $x|base64 -d|sort
+done
+```
+
+通过输出的结果我们可以看到kubernetes的原数据是按何种结构包括在kuberentes中的，输出结果如下所示：
+
+```ini
+/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-details-default
+/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-productpage-default
+/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-ratings-default
+...
+/registry/configmaps/default/namerctl-script
+/registry/configmaps/default/namerd-config
+/registry/configmaps/default/nginx-config
+...
+/registry/deployments/default/sdmk-page-sdmk
+/registry/deployments/default/sdmk-payment-web
+/registry/deployments/default/sdmk-report
+...
+```
+
+我们可以看到所有的Kuberentes的所有元数据都保存在`/registry`目录下，下一层就是API对象类型（复数形式），再下一层是`namespace`，最后一层是对象的名字。
+
 ## 参考
 
 - [etcd中文文档](https://github.com/doczhcn/etcd)
