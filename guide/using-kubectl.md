@@ -1,4 +1,4 @@
-# Kubctl命令概览
+# Kubectl命令概览
 
 Kubernetes提供的kubectl命令是与集群交互最直接的方式，v1.6版本的kubectl命令参考图如下：
 
