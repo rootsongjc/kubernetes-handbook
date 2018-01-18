@@ -151,6 +151,44 @@ done
 
 我们可以看到所有的Kuberentes的所有元数据都保存在`/registry`目录下，下一层就是API对象类型（复数形式），再下一层是`namespace`，最后一层是对象的名字。
 
+以下是etcd中存储的kubernetes所有的元数据类型：
+
+```ini
+ThirdPartyResourceData
+apiextensions.k8s.io
+apiregistration.k8s.io
+certificatesigningrequests
+clusterrolebindings
+clusterroles
+configmaps
+controllerrevisions
+controllers
+daemonsets
+deployments
+events
+horizontalpodautoscalers
+ingress
+limitranges
+minions
+monitoring.coreos.com
+namespaces
+persistentvolumeclaims
+persistentvolumes
+poddisruptionbudgets
+pods
+ranges
+replicasets
+resourcequotas
+rolebindings
+roles
+secrets
+serviceaccounts
+services
+statefulsets
+storageclasses
+thirdpartyresources
+```
+
 ## 参考
 
 - [etcd中文文档](https://github.com/doczhcn/etcd)
