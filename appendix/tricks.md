@@ -240,3 +240,28 @@ spec:
 kubectl run --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511 --command '/bin/bash -c "while true;do sleep 1000;done"' centos-test
 ```
 
+## 9. 强制删除一直处于Terminating状态的Pod
+
+有时候当我们直接删除Deployment/DaemonSets/StatefulSet等最高级别的Kubernetes资源对象时，会发现有些改对象管理的Pod一直处于Terminating而没有被删除的情况，这时候我们可以使用如下方式来强制删除它：
+
+**一、使用kubectl中的强制删除命令**
+
+```bash
+kubectl delete pod $POD_ID --force --grace-period=0
+```
+
+如果这种方式有效，那么恭喜你！如果仍然无效的话，请尝试下面第二种方法。
+
+**二、直接删除etcd中的数据**
+
+> 这是一种最暴力的方式，我们不建议直接操作etcd中的数据，在操作前请确认知道你是在做什么。
+
+假如要删除`default` namespace下的pod名为`pod-to-be-deleted-0`，在etcd所在的节点上执行下面的命令，删除etcd中保存的该pod的元数据：
+
+```bash
+ETCDCTL_API=3 etcdctl del /registry/pods/default/pod-to-be-deleted-0
+```
+
+这时API server就不会再看到该pod的信息。
+
+如何使用etcdctl查看etcd中包括的kubernetes元数据，请参考：[使用etcdctl访问kubernetes数据](../guide/using-etcdctl-to-access-kubernetes-data.md)
