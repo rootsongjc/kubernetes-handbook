@@ -48,6 +48,7 @@
   - [使用自定义资源扩展API](concepts/custom-resource.md)
   - [APIService](concepts/apiservice.md)
   - [Taint和Toleration（污点和容忍）](concepts/taint-and-toleration.md)
+  - [Pod中断与PDB（Pod中断预算）](concepts/pod-disruption-budget.md)
 
 ### 用户指南
 
