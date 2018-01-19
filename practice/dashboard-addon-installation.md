@@ -1,5 +1,7 @@
 # 安装dashboard插件
 
+> 注意：本文档中安装的是kubernetes dashboard v1.6.0，安装新版的dashboard请参考[升级dashboard](dashboard-upgrade.md)。
+
 官方文件目录：`kubernetes/cluster/addons/dashboard`
 
 我们使用的文件如下：
@@ -108,7 +110,7 @@ KubeDNS is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-sys
 kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
 ```
 
-浏览器访问 URL：https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard（浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中）。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
+浏览器访问 URL：<https://172.20.0.113:6443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard>（浏览器会提示证书验证，因为通过加密通道，以改方式访问的话，需要提前导入证书到你的计算机中）。这是我当时在这遇到的坑：[通过 kube-apiserver 访问dashboard，提示User "system:anonymous" cannot proxy services in the namespace "kube-system". #5](https://github.com/opsnull/follow-me-install-kubernetes-cluster/issues/5)，已经解决。
 
 **导入证书**
 
