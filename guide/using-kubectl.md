@@ -51,3 +51,12 @@ pip install kube-shell --user -U
 
 ![kube-shell页面](../images/kube-shell.jpg)
 
+## kubectl的身份认证
+
+Kubernetes中存在三种安全认证方式：
+
+- **CA证书**：API server与其它几个组件之间都是通过这种方式认证的
+- **HTTP base**：即在API server的启动参数中指定的`--token-auth-file=/etc/kubernetes/token.csv`文件中明文的用户、组、密码和UID配置
+- **bearer token**：HTTP请求中`header`中传递的`Autorization:Bearer token`，这个token通常保存在创建角色跟`serviceaccount`绑定的时候生成的secret中。
+
+kubectl通过读取`kubeconfig`文件中的配置信息在向API server发送请求的时候同时传递认证信息，同时支持CA证书和bearer token的认证方式，请参考[使用kubeconfig文件配置跨集群认证](../guide/authenticate-across-clusters-kubeconfig.md)。
