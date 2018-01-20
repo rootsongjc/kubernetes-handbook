@@ -1,5 +1,5 @@
 ---
-title: "使用OpenEBS作Kubernetes持久化存储"
+title: "使用OpenEBS作为Kubernetes持久化存储"
 date: 2018-01-05T16:33:45+08:00
 description: "本文将指导您如何在Kubernetes集群上安装OpenEBS作为kubernetes持久化存储"
 tags: ["kubernetes","openebs"]
