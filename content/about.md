@@ -63,7 +63,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 ### Contact
 
 - Wechat: jimmysong
-- Email: rootsongjc@gmail.com
+- Email: jimmysong@jimmysong.io
 - [Twitter@jimmysongio](https://twitter.com/jimmysongio)
 - [Facebook@jimmysongio](https://facebook.com/jimmysongio)
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
