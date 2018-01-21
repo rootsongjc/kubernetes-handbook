@@ -29,20 +29,20 @@ src = "https://res.cloudinary.com/jimmysong/image/upload/banners/keuc-cncf.jpg"
 desc = "KEUC - China Kubernetes End User Conference 2017"
 
 [[Params.bigimg]]
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/kubernetes-meetup-china-20170826.jpg"
+desc = "Kubernetes Beijing fans meetup - Aug 28,2017"
+
+[[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/cloud-computing.jpg"
-desc = "Cloud Computing for every one"
+desc = "Democratizing the Cloud Computing for every one"
 
 [[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.jpg"
-desc = "Cross the Great Wall to the world"
+desc = "Insight throught the Great Wall to the world"
 
 [[Params.bigimg]]
 src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
-desc = "Big Data for business decision"
-
-[[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/data-science-1.jpg"
-desc = "Data Science for complexity of human society"
+desc = "Using Big Data to make business decision"
 
 [Author]
   name = "Jimmy Song"
