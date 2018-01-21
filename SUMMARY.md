@@ -6,6 +6,7 @@
 
 ### 云原生
 
+- [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 - [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 - [云原生应用之路——从Kubernetes到Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
 
