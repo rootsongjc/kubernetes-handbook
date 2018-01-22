@@ -13,6 +13,7 @@
 ### 概念与原理
 
 - [Kubernetes架构](concepts/index.md)
+  - [Etcd解析](concepts/etcd.md)
 - [设计理念](concepts/concepts.md)
 - [资源对象与基本概念解析](concepts/objects.md)
   - [Pod](concepts/pod-overview.md)	
