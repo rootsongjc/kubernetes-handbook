@@ -16,6 +16,7 @@
   - [Etcd解析](concepts/etcd.md)
   - [开放接口](concepts/open-interfaces.md)
     - [CRI - Container Runtime Interface（容器运行时接口）](concepts/cri.md)
+    - [CNI - Container Network Interface（容器网络接口）](concepts/cni.md)
 - [设计理念](concepts/concepts.md)
 - [资源对象与基本概念解析](concepts/objects.md)
   - [Pod](concepts/pod-overview.md)	
