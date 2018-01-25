@@ -1,6 +1,6 @@
 # Volume
 
-容器磁盘上的文件的生命周期是短暂的，这就使得在容器中运行重要应用时会出现一些问题。首先，让容器崩溃时，kubelet 会重启它，但是容器中的文件讲丢失——容器以干净的状态（镜像最初的状态）重新启动。其次，在 `Pod` 中同时运行多个容器时，这些容器之间通常需要共享文件。Kubernetes 中的 `Volume` 抽象就很好的解决了这些问题。
+容器磁盘上的文件的生命周期是短暂的，这就使得在容器中运行重要应用时会出现一些问题。首先，当容器崩溃时，kubelet 会重启它，但是容器中的文件将丢失——容器以干净的状态（镜像最初的状态）重新启动。其次，在 `Pod` 中同时运行多个容器时，这些容器之间通常需要共享文件。Kubernetes 中的 `Volume` 抽象就很好的解决了这些问题。
 
 建议先熟悉 [pod](https://kubernetes.io/docs/user-guide/pods)。
 
@@ -8,13 +8,13 @@
 
 Docker 中也有一个 [volume](https://docs.docker.com/engine/admin/volumes/) 的概念，尽管它稍微宽松一些，管理也很少。在 Docker 中，卷就像是磁盘或是另一个容器中的一个目录。它的生命周期不受管理，直到最近才有了 local-disk-backed 卷。Docker 现在提供了卷驱动程序，但是功能还非常有限（例如Docker1.7只允许每个容器使用一个卷驱动，并且无法给卷传递参数）。
 
-另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所以，卷的生命比 Pod 中的所有容器都长，但个容器重启时数据仍然得意保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是， Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
+另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所以，卷的生命比 Pod 中的所有容器都长，但个容器重启时数据仍然得以保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是，Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
 
-卷的核心是目录，可能还包含了一些数据，可以通过 pod 中的容器来访问。该目录是如何形成的，支持该目录的介质以及其内容取决于所使用的特定卷类型。
+卷的核心是目录，可能还包含了一些数据，可以通过 pod 中的容器来访问。该目录是如何形成的、支持该目录的介质以及其内容取决于所使用的特定卷类型。
 
 要使用卷，需要为 pod 指定为卷（`spec.volumes` 字段）以及将它挂载到容器的位置（`spec.containers.volumeMounts` 字段）。
 
-容器中的进程看到由其 Docker 镜像和卷组成的文件系统视图。 [Docker 镜像](https://docs.docker.com/userguide/dockerimages/)位于文件系统层次结构的根目录，任何卷都被挂载在镜像的指定路径中。卷无法挂载到其他卷上或与其他卷有硬连接。 Pod 中的每个容器都必须独立指定每个卷的挂载位置。
+容器中的进程看到的是由其 Docker 镜像和卷组成的文件系统视图。 [Docker 镜像](https://docs.docker.com/userguide/dockerimages/)位于文件系统层次结构的根目录，任何卷都被挂载在镜像的指定路径中。卷无法挂载到其他卷上或与其他卷有硬连接。Pod 中的每个容器都必须独立指定每个卷的挂载位置。
 
 ## 卷的类型
 
@@ -51,7 +51,7 @@ Kubernetes 支持以下类型的卷：
 
 ### awsElasticBlockStore
 
-`awsElasticBlockStore` 卷将Amazon Web Services（AWS）[EBS Volume](http://aws.amazon.com/ebs/) 挂载到您的容器中。不像 `emptyDir`，删除 Pod 时删除 EBS 卷的内容，只是卸载卷。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
+`awsElasticBlockStore` 卷将Amazon Web Services（AWS）[EBS Volume](http://aws.amazon.com/ebs/) 挂载到您的容器中。与 `emptyDir` 类型会在删除 Pod 时被清除不同，EBS 卷的的内容会保留下来，仅仅是被卸载。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
 
 **重要提示**：您必须使用 `aws ec2 create-volume` 或 AWS API 创建 EBS 卷，才能使用它。
 
@@ -61,7 +61,7 @@ Kubernetes 支持以下类型的卷：
 - 这些实例需要与 EBS 卷位于相同的区域和可用区域
 - EBS 仅支持卷和 EC2 实例的一对一的挂载
 
-#### 创建一个EBS卷
+#### 创建 EBS 卷
 
 在 pod 中使用的 EBS 卷之前，您需要先创建它。
 
@@ -101,7 +101,7 @@ spec:
 
 ### azureFile
 
-`azureFile` 用于将 Microsoft Azure FIle Volume（SMB 2.1 和 3.0）挂载到 Pod 中。
+`azureFile` 用于将 Microsoft Azure File Volume（SMB 2.1 和 3.0）挂载到 Pod 中。
 
 更多细节可以在[这里](https://github.com/kubernetes/examples/tree/ master/staging/volumes/azure_file/README.md)找到。
 
@@ -123,13 +123,13 @@ CSI 持久化卷支持是在 Kubernetes v1.9 中引入的，作为一个 alpha �
 
 CSI 持久化卷具有以下字段可供用户指定：
 
-- `driver`：一个字符串值，指定要使用的卷驱动程序的名称。必须少于 63 个字符，并以一个字符开头。驱动程序名称可以包含 “。”、“ - ”、“_” 或数字。
+- `driver`：一个字符串值，指定要使用的卷驱动程序的名称。必须少于 63 个字符，并以一个字符开头。驱动程序名称可以包含 “`.`”、“`-` ”、“`_`” 或数字。
 - `volumeHandle`：一个字符串值，唯一标识从 CSI 卷插件的 `CreateVolume` 调用返回的卷名。随后在卷驱动程序的所有后续调用中使用卷句柄来引用该卷。
 - `readOnly`：一个可选的布尔值，指示卷是否被发布为只读。默认是 false。
 
 ### downwardAPI
 
-`downwardAPI` 卷用于使应用程序可用的 API 数据下沉。它挂载一个目录，并将请求的数据写入纯文本文件。
+`downwardAPI` 卷用于使应用程序可用的向下 API 数据（downward API data）对应用程序可用。它挂载一个目录，并将请求的数据写入纯文本文件。
 
 参考 [`downwardAPI` 卷示例](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)查看详细信息。
 
@@ -168,7 +168,7 @@ spec:
 
 fc 卷允许将现有的 `fc` 卷挂载到 pod 中。您可以使用卷配置中的 `targetWWN` 参数指定单个或多个目标全球通用名称（World Wide Name）。如果指定了多个 WWN，则 targetWWN 期望这些 WWN 来自多路径连接。
 
-**重要提示**：您必须配置 FC SAN 区域划分，以便将这些 LUN（卷）预先分配给目标 WWN，以便 Kubernetes 主机可以访问它们。
+**重要提示**：您必须配置 FC SAN 区域划分，并预先将这些 LUN（卷）分配并屏蔽到目标 WWN，以便 Kubernetes 主机可以访问它们。
 
 参考 [FC  示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/fibre_channel)获取详细信息。
 
@@ -228,7 +228,7 @@ spec:
 
 ### gitRepo
 
-`gitRepo` 卷是一个可以做为卷插件的例子。它会挂载一个空目录并将 git 存储库克隆到您的容器中。将来，这样的卷可能会转移到一个更加分离的模型，而不是为每个这样的用例扩展 Kubernetes API。
+`gitRepo` 卷是一个可以演示卷插件功能的示例。它会挂载一个空目录并将 git 存储库克隆到您的容器中。将来，这样的卷可能会转移到一个更加分离的模型，而不是为每个这样的用例扩展 Kubernetes API。
 
 下面是 gitRepo 卷示例：
 
@@ -253,15 +253,15 @@ spec:
 
 ### glusterfs
 
-`glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到您的群集中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。 GlusterFS 可以同时由多个写入挂载。
+`glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到您的集群中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。 GlusterFS 可以同时由多个写入挂载。
 
-**重要提示**：您必须先运行自己的 GlusterFS 安装，才能使用它。
+**重要提示**：您必须先自行安装 GlusterFS，才能使用它。
 
 有关更多详细信息，请参阅 [GlusterFS](https://github.com/kubernetes/examples/tree/master/staging/volumes/glusterfs) 示例。
 
 ### hostPath
 
-`hostPath` 卷将主机节点的文件系统中的文件或目录挂载到集群中。该功能大多数 Pod 都用不到，但它为某些应用程序提供了一个强大的退出方法。
+`hostPath` 卷将主机节点的文件系统中的文件或目录挂载到集群中。该功能大多数 Pod 都用不到，但它为某些应用程序提供了一个强大的解决方法。
 
 例如，`hostPath` 的用途如下：
 
@@ -282,9 +282,9 @@ spec:
 | `File`              | 给定的路径下必须存在文件                             |
 | `Socket`            | 给定的路径下必须存在 UNIX 套接字                      |
 | `CharDevice`        | 给定的路径下必须存在字符设备                           |
-| `BlockDevice`       | 给的路径下必须窜爱块设备                             |
+| `BlockDevice`       | 给的路径下必须存在块设备                             |
 
-注意使用卷的类型，因为：
+使用这种卷类型是请注意，因为：
 
 - 由于每个节点上的文件都不同，具有相同配置（例如从 podTemplate 创建的）的 pod 在不同节点上的行为可能会有所不同
 - 当 Kubernetes 按照计划添加资源感知调度时，将无法考虑 `hostPath` 使用的资源
@@ -325,15 +325,15 @@ iSCSI 的一个特点是它可以同时被多个用户以只读方式安装。�
 
 ### local
 
-这个 alpha 功能要求启用 `PersistentLocalVolumes` 功能门。
+这个 alpha 功能要求启用 `PersistentLocalVolumes` feature gate。
 
-**注意**：从 1.9 开始，`VolumeScheduling` 功能门也必须启用。
+**注意**：从 1.9 开始，`VolumeScheduling` feature gate 也必须启用。
 
 `local` 卷表示挂载的本地存储设备，如磁盘、分区或目录。
 
 本地卷只能用作静态创建的 PersistentVolume。
 
-与 HostPath 卷相比，local 卷可以以持久的方式使用，而无需手动将 pod 调度到节点上，因为系统通过查看 PersistentVolume 上的节点关联性来了解卷的节点约束。
+与 HostPath 卷相比，local 卷可以以持久的方式使用，而无需手动将 pod 调度到节点上，因为系统会通过查看 PersistentVolume 上的节点关联性来了解卷的节点约束。
 
 但是，local 卷仍然受底层节点的可用性影响，并不适用于所有应用程序。
 
@@ -397,7 +397,7 @@ spec:
 - [`downwardAPI`](#downwardapi)
 - `configMap`
 
-所有来源都必须在与 pod 相同的命名空间中。有关更多详细信息，请参阅[ all-in-one 卷设计文档](https://github.com/kubernetes/community/blob/ master/contributors/design-suggestions/node/all-in-one-volume.md)。
+所有来源都必须在与 pod 相同的命名空间中。有关更多详细信息，请参阅 [all-in-one 卷设计文档](https://github.com/kubernetes/community/blob/ master/contributors/design-suggestions/node/all-in-one-volume.md)。
 
 #### 带有 secret、downward API 和 configmap 的 pod
 
@@ -478,11 +478,11 @@ spec:
 
 ### portworxVolume
 
-`portworxVolume `是一个弹性块存储层，与 Kubernetes 超级聚合。Portwork 指纹存储在服务器中，基于功能的分层，以及跨多个服务器聚合容量。 Portworx 在虚拟机或裸机 Linux 节点上运行。
+`portworxVolume` 是一个与 Kubernetes 一起，以超融合模式运行的弹性块存储层。Portwork 指纹存储在服务器中，基于功能的分层，以及跨多个服务器聚合容量。 Portworx 在虚拟机或裸机 Linux 节点上运行。
 
 `portworxVolume` 可以通过 Kubernetes 动态创建，也可以在 Kubernetes pod 中预先设置和引用。
 
-以下是一个引用预先配置的 PortworxVolume 的示例窗格：
+以下是一个引用预先配置的 PortworxVolume 的示例 pod：
 
 ```yaml
 apiVersion: v1
@@ -520,7 +520,7 @@ spec:
 
 `rbd` 卷允许将 [Rados Block Device](http://ceph.com/docs/master/rbd/rbd/) 卷挂载到容器中。不像 `emptyDir`，删除 Pod 时 `rbd `卷的内容被保留，卷仅仅被卸载。这意味着 RBD 卷可以预先填充数据，并且可以在 pod 之间“切换”数据。
 
-**重要提示**：您必须先运行自己的 Ceph 安装，然后才能使用 RBD。
+**重要提示**：您必须先自行安装 Ceph，然后才能使用 RBD。
 
 RBD 的一个特点是它可以同时为多个用户以只读方式挂载。这意味着可以预先使用您的数据集填充卷，然后根据需要同时为多个 pod 并行提供。不幸的是，RBD 卷只能由单个用户以读写模式安装——不允许同时写入。
 
@@ -530,7 +530,7 @@ RBD 的一个特点是它可以同时为多个用户以只读方式挂载。这�
 
 ScaleIO 是一个基于软件的存储平台，可以使用现有的硬件来创建可扩展的共享块网络存储集群。`scaleIO` 卷插件允许已部署的 pod 访问现有的 ScaleIO 卷（或者它可以为持久性卷声明动态调配新卷，请参阅 [ScaleIO 持久卷](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#scaleio)）。
 
-**重要提示**：您必须先安装现有的 ScaleIO 集群，并使用创建的卷运行，然后才能使用它们。
+**重要提示**：您必须有一个已经配置好的 ScaleIO 集群，并和创建的卷一同运行，然后才能使用它们。
 
 以下是使用 ScaleIO 的示例 pod 配置：
 
@@ -563,7 +563,7 @@ spec:
 
 ### secret
 
-`秘密` 卷用于将敏感信息（如密码）传递到 pod。您可以将 secret 存储在 Kubernetes API 中，并将它们挂载为文件，以供 Pod 使用，而无需直接连接到 Kubernetes。 `secret` 卷由 tmpfs（一个 RAM 支持的文件系统）支持，所以它们永远不会写入非易失性存储器。
+`secret` 卷用于将敏感信息（如密码）传递到 pod。您可以将 secret 存储在 Kubernetes API 中，并将它们挂载为文件，以供 Pod 使用，而无需直接连接到 Kubernetes。 `secret` 卷由 tmpfs（一个 RAM 支持的文件系统）支持，所以它们永远不会写入非易失性存储器。
 
 **重要提示**：您必须先在 Kubernetes API 中创建一个 secret，然后才能使用它。
 
@@ -579,7 +579,7 @@ StorageOS 的核心是为容器提供块存储，可以通过文件系统访问�
 
 StorageOS 容器需要 64 位 Linux，没有额外的依赖关系。可以使用免费的开发者许可证。
 
-**重要提示**：您必须在每个要访问 StorageOS 卷的节点上运行 StorageOS 容器，或者为该池提供存储容量。有关安装说明，请参阅 [StorageOS文档](https://docs.storageos.com)。
+**重要提示**：您必须在每个要访问 StorageOS 卷的节点上运行 StorageOS 容器，或者为该池提供存储容量。相关的安装说明，请参阅 [StorageOS文档](https://docs.storageos.com)。
 
 ```yaml
 apiVersion: v1
@@ -697,7 +697,7 @@ spec:
 
 `emptyDir` 卷的存储介质（磁盘、SSD 等）由保存在 kubelet 根目录的文件系统的介质（通常是 `/var/lib/kubelet`）决定。 `emptyDir` 或 `hostPath` 卷可占用多少空间并没有限制，容器之间或 Pod 之间也没有隔离。
 
-在将来，我们预计 `emptyDir` 和 `hostPath` 卷将能够使用 [resource](https://kubernetes.io/docs/user-guide/compute-resources) 规范请求一定的空间，并选择要使用的介质，适用于具有多种媒体类型的群集。
+在将来，我们预计 `emptyDir` 和 `hostPath` 卷将能够使用 [resource](https://kubernetes.io/docs/user-guide/compute-resources) 规范请求一定的空间，并选择要使用的介质，适用于具有多种媒体类型的集群。
 
 ## Out-of-Tree 卷插件
 
@@ -715,7 +715,7 @@ spec:
 
 如果禁用 MountPropagation 功能，则不会传播 pod 中的卷挂载。也就是说，容器按照 [Linux内核文档](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt)中所述的 `private` 挂载传播运行。
 
-要启用此功能，请在 `--feature-gates` 命令行选项中指定 `MountPropagation = true`。启用时，容器的 `volumeMounts` 字段有一个新的 `mountPropagation` 子字段。它的价值是：
+要启用此功能，请在 `--feature-gates` 命令行选项中指定 `MountPropagation = true`。启用时，容器的 `volumeMounts` 字段有一个新的 `mountPropagation` 子字段。它的值为：
 
 - `HostToContainer`：此卷挂载将接收所有后续挂载到此卷或其任何子目录的挂载。这是 MountPropagation 功能启用时的默认模式。
 
@@ -735,4 +735,4 @@ spec:
 
 - https://kubernetes.io/docs/concepts/storage/volumes/
 
-- 以[使用持久化卷来部署 WordPress 和 MySQL](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) 为例。
+- [使用持久化卷来部署 WordPress 和 MySQL](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
