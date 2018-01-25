@@ -49,7 +49,7 @@ Kubernetes 支持以下类型的卷：
 
 我们欢迎额外贡献。
 
-## awsElasticBlockStore
+### awsElasticBlockStore
 
 `awsElasticBlockStore` 卷将Amazon Web Services（AWS）[EBS Volume](http://aws.amazon.com/ebs/) 挂载到您的容器中。不像 `emptyDir`，删除 Pod 时删除 EBS 卷的内容，只是卸载卷。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
 
