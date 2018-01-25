@@ -17,6 +17,7 @@
   - [开放接口](concepts/open-interfaces.md)
     - [CRI - Container Runtime Interface（容器运行时接口）](concepts/cri.md)
     - [CNI - Container Network Interface（容器网络接口）](concepts/cni.md)
+    - [CSI - Container Storage Interface（容器存储接口）](concepts/csi.md)
 - [设计理念](concepts/concepts.md)
 - [资源对象与基本概念解析](concepts/objects.md)
   - [Pod](concepts/pod-overview.md)	
