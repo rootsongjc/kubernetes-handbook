@@ -8,7 +8,7 @@
 
 Docker 中也有一个 [volume](https://docs.docker.com/engine/admin/volumes/) 的概念，尽管它稍微宽松一些，管理也很少。在 Docker 中，卷就像是磁盘或是另一个容器中的一个目录。它的生命周期不受管理，直到最近才有了 local-disk-backed 卷。Docker 现在提供了卷驱动程序，但是功能还非常有限（例如Docker1.7只允许每个容器使用一个卷驱动，并且无法给卷传递参数）。
 
-另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所以，卷的生命比 Pod 中的所有容器都长，但个容器重启时数据仍然得以保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是，Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
+另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所以，卷的生命比 Pod 中的所有容器都长，当这个容器重启时数据仍然得以保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是，Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
 
 卷的核心是目录，可能还包含了一些数据，可以通过 pod 中的容器来访问。该目录是如何形成的、支持该目录的介质以及其内容取决于所使用的特定卷类型。
 
@@ -129,7 +129,7 @@ CSI 持久化卷具有以下字段可供用户指定：
 
 ### downwardAPI
 
-`downwardAPI` 卷用于使应用程序可用的向下 API 数据（downward API data）对应用程序可用。它挂载一个目录，并将请求的数据写入纯文本文件。
+`downwardAPI` 卷用于使向下 API 数据（downward API data）对应用程序可用。它挂载一个目录，并将请求的数据写入纯文本文件。
 
 参考 [`downwardAPI` 卷示例](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)查看详细信息。
 
@@ -282,7 +282,7 @@ spec:
 | `File`              | 给定的路径下必须存在文件                             |
 | `Socket`            | 给定的路径下必须存在 UNIX 套接字                      |
 | `CharDevice`        | 给定的路径下必须存在字符设备                           |
-| `BlockDevice`       | 给的路径下必须存在块设备                             |
+| `BlockDevice`       | 给定的路径下必须存在块设备                            |
 
 使用这种卷类型是请注意，因为：
 
