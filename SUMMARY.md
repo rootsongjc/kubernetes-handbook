@@ -59,6 +59,7 @@
       - [ConfigMap的热更新](concepts/configmap-hot-update.md)
     - [Volume](concepts/volume.md)
     - [Persistent Volume（持久化卷）](concepts/persistent-volume.md)
+    - [Storage Class](concepts/storageclass.md)
   - [扩展](concepts/extension.md)
     - [使用自定义资源扩展API](concepts/custom-resource.md)
     - [Aggregated API Server](concepts/aggregated-api-server.md)
