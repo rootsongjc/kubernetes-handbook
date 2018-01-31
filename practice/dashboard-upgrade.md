@@ -50,7 +50,7 @@ NAME                   CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 ```
 
-访问集群中的任何一个节点，即可打开dashboard登陆页面，如https://172.20.0.113:32324/（请使用https访问），支持使用`kubeconfig`和`token`两种的认证方式：
+访问集群中的任何一个节点，即可打开dashboard登陆页面，如<https://172.20.0.113:32324/>（请使用https访问），支持使用`kubeconfig`和`token`两种的认证方式：
 
 ![登陆界面](../images/kubernetes-dashboard-1.7.1-login.jpg)
 
