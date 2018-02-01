@@ -169,6 +169,10 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 + 缺省情况下 kubernetes 对象保存在 etcd `/registry` 路径下，可以通过 `--etcd-prefix` 参数进行调整；
 + 如果需要开通http的无认证的接口，则可以增加以下两个参数：`--insecure-port=8080 --insecure-bind-address=127.0.0.1`。注意，生产上不要绑定到非127.0.0.1的地址上
 
+**Kubernetes 1.9**
+
+对于Kubernetes1.9集群，需要注意配置`KUBE_API_ARGS`环境变量中的`--authorization-mode=Node,RBAC`，增加对`Node`授权的模式，否则将无法注册node。
+
 完整 unit 见 [kube-apiserver.service](../systemd/kube-apiserver.service)
 
 **启动kube-apiserver**
