@@ -98,6 +98,23 @@ Events:
 
 启动成功。Jenkins配置使用的是**NodePort**方式访问，现在访问集群中任何一个节点的Jenkins service的NodePort即可。
 
+## 存储策略
+
+OpenEBS的存储策略使用StorageClaass实现，包括如下的StorageClass：
+
+- openebs-cassandra
+- openebs-es-data-sc
+- openebs-jupyter
+- openebs-kafka
+- openebs-mongodb
+- openebs-percona
+- openebs-redis
+- openebs-standalone
+- openebs-standard
+- openebs-zk
+
+每个[Storage Class](../concepts/storageclass.md)都对应与某种应用的存储模式，使用方式请参考[OpenEBS Storage Policies](http://openebs.readthedocs.io/en/latest/Policies/storage_policy.html)。
+
 ## 参考
 
 - [OpenEBS Documentation](http://openebs.readthedocs.io/)
