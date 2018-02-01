@@ -182,6 +182,7 @@
 - [开发指南概览](develop/index.md)
 - [SIG和工作组](develop/sigs-and-working-group.md)
 - [开发环境搭建](develop/developing-environment.md)
+- [本地分布式开发环境搭建（使用Vagrant和Virtualbox）](develop/using-vagrant-and-virtualbox-for-development.md)
 - [单元测试和集成测试](develop/testing.md)
 - [client-go示例](develop/client-go-sample.md)
 - [Operator](develop/operator.md)
