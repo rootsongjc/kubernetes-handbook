@@ -53,11 +53,44 @@ vagrant up
 
 ## 访问kubernetes集群
 
+访问Kubernetes集群的方式有三种：
+
+**通过本地访问**
+
+可以直接在你自己的本地环境中操作该kubernetes集群，而无需登录到虚拟机中，执行以下步骤：
+
+将`conf/admin.kubeconfig`文件放到`~/.kube/config`目录下即可在本地使用`kubectl`命令操作集群。
+
+**在虚拟机内部访问**
+
+如果有任何问题可以登录到虚拟机内部调试：
+
 ```bash
 vagrant ssh node1
-sudo -i
 kubectl get nodes
 ```
+
+**Kubernetes dashboard**
+
+还可以直接通过dashboard UI来访问：
+
+URL为：
+
+https://172.17.8.101
+
+端口为:
+
+```bash
+kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
+```
+
+token为：
+
+```bash
+kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
+```
+
+通过URL加端口，使用token认证访问。
 
 ## 清理
 
