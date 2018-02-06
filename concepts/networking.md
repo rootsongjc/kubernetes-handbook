@@ -42,11 +42,22 @@ kube-system   monitoring-influxdb-grafana-v4-54b7854697-tw9cd   2/2       Runnin
 
 - Node IP：宿主机的IP地址
 - Pod IP：使用网络插件创建的IP（如flannel），使夸主机的Pod可以互通
-- Service IP：虚拟IP，通过iptabes转发访问服务
+- Cluster IP：虚拟IP，通过iptables规则访问服务
 
 在安装node节点的时候，节点上的进程是按照flannel -> docker -> kubelet -> kube-proxy的顺序启动的，我们下面也会按照该顺序来讲解，flannel的网络划分和如何与docker交互，如何通过iptables访问service。
 
 ### Flannel
+
+Flannel是作为一个二进制文件的方式部署在每个node上，主要实现两个功能：
+
+- 为每个node分配subnet，容器将自动从该子网中获取IP地址
+- 当有node加入到网络中时，为每个node增加路由配置
+
+下面是使用`host-gw` backend的flannel网络架构图：
+
+![flannel网络架构（图片来自openshift）](../images/flannel-networking.png)
+
+**注意**：以上IP非本示例中的IP，但是不影响读者理解。
 
 Node1上的flannel配置如下:
 
@@ -375,7 +386,9 @@ target     prot opt source               destination
 
 ## 参考
 
+- [coreos/flannel - github.com](https://github.com/coreos/flannel)
 - [linux 网络虚拟化： network namespace 简介](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)
 - [Linux虚拟网络设备之veth](https://segmentfault.com/a/1190000009251098)
 - [iptables 规则](https://www.cnyunwei.cc/archives/393)
 - [flannel host-gw network](http://hustcat.github.io/flannel-host-gw-network/)
+- [flannel - openshift.com](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)
