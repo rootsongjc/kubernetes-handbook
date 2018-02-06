@@ -36,7 +36,7 @@ yum install etcd
 
 ## 创建 etcd 的 systemd unit 文件
 
-注意替换IP地址为你自己的etcd集群的主机IP。
+在/usr/lib/systemd/system/目录下创建文件etcd.service，内容如下。注意替换IP地址为你自己的etcd集群的主机IP。
 
 ``` bash
 [Unit]
