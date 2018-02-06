@@ -40,6 +40,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - [cheatsheets](https://jimmysong.io/cheatsheets) -  A modest collection of cheatsheets I've written.
 - [cloudinary-go](https://github.com/rootsongjc/cloudinary-go) - A Go client library and CLI tool to upload static assets to Cloudinary service.
 - [magpie](https://github.com/rootsongjc/magpie) - Deploying and managing a Hadoop Yarn cluster with Docker Swarm.
+- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - Setting up a Kubernetes cluster with Vagrant and VirtualBox
 - [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
 
 ### Activities
