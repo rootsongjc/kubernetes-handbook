@@ -92,6 +92,28 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 通过URL加端口，使用token认证访问。
 
+**Heapster监控**
+
+创建Heapster监控：
+
+```bash
+kubectl apply addon/heapster/
+```
+
+访问Grafana
+
+使用NodePort方式暴露的服务，因此要访问Grafana需要先获取`monitoring-grafana`服务的映射端口，然后访问任意节点上的该端口即可。
+
+**EFK**
+
+使用EFK做日志收集。
+
+```bash
+kubectl apply addon/efk/
+```
+
+**注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
+
 ## 清理
 
 ```bash
