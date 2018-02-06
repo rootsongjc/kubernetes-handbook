@@ -21,7 +21,7 @@
     - [CSI - Container Storage Interface（容器存储接口）](concepts/csi.md)
   - [Kubernetes中的网络解析——以flannel为例](concepts/networking.md)
 - [资源对象与基本概念解析](concepts/objects.md)
-  - [Pod状态与生命周期管理](concepts/pod-basic.md)
+  - [Pod状态与生命周期管理](concepts/pod-state-and-lifecycle.md)
     - [Pod概览](concepts/pod-overview.md)
     - [Pod解析](concepts/pod.md)
     - [Init容器](concepts/init-containers.md)
