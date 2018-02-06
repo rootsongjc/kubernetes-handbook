@@ -1,8 +1,10 @@
 # 在CentOS上部署kubernetes集群
 
-> 本文档最初是基于kubenetes1.6版本编写的，对于kuberentes1.8版本同样适用，只是个别位置有稍许变动，变动的地方我将特别注明。
+> 本文档最初是基于kubenetes1.6版本编写的，对于kuberentes1.8及以上版本同样适用，只是个别位置有稍许变动，变动的地方我将特别注明版本要求。
 
 本系列文档介绍使用二进制部署 `kubernetes` 集群的所有步骤，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，该安装步骤适用于所有bare metal环境、on-premise环境和公有云环境。
+
+>  如果您想快速的在自己电脑的本地环境下使用虚拟机来搭建kubernetes集群，可以参考[本地分布式开发环境搭建（使用Vagrant和Virtualbox）](../develop/using-vagrant-and-virtualbox-for-development.md)。
 
 在部署的过程中，将详细列出各组件的启动参数，给出配置文件，详解它们的含义和可能遇到的问题。
 
