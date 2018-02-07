@@ -220,21 +220,8 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
 + `--service-cluster-ip-range` 参数指定 Cluster 中 Service 的CIDR范围，该网络在各 Node 间必须路由不可达，必须和 kube-apiserver 中的参数一致；
 + `--cluster-signing-*` 指定的证书和私钥文件用来签名为 TLS BootStrap 创建的证书和私钥；
 + `--root-ca-file` 用来对 kube-apiserver 证书进行校验，**指定该参数后，才会在Pod 容器的 ServiceAccount 中放置该 CA 证书文件**；
-+ `--address` 值必须为 `127.0.0.1`，因为当前 kube-apiserver 期望 scheduler 和 controller-manager 在同一台机器，否则：
++ `--address` 值必须为 `127.0.0.1`，kube-apiserver 期望 scheduler 和 controller-manager 在同一台机器；
 
-    ``` bash
-    $ kubectl get componentstatuses
-    NAME                 STATUS      MESSAGE                                                                                        ERROR
-    scheduler            Unhealthy   Get http://127.0.0.1:10251/healthz: dial tcp 127.0.0.1:10251: getsockopt: connection refused   
-    controller-manager   Healthy     ok                                                                                             
-    etcd-2               Healthy     {"health": "true"} 
-    etcd-0               Healthy     {"health": "true"}                                                                             
-    etcd-1               Healthy     {"health": "true"}  
-    ```
-
-    如果有组件report unhealthy请参考：https://github.com/kubernetes-incubator/bootkube/issues/64
-
-完整 unit 见 [kube-controller-manager.service](../systemd/kube-controller-manager.service)
 
 ### 启动 kube-controller-manager
 
@@ -242,7 +229,24 @@ KUBE_CONTROLLER_MANAGER_ARGS="--address=127.0.0.1 --service-cluster-ip-range=10.
 systemctl daemon-reload
 systemctl enable kube-controller-manager
 systemctl start kube-controller-manager
+systemctl status kube-controller-manager
 ```
+
+我们启动每个组件后可以通过执行命令`kubectl get componentstatuses`，来查看各个组件的状态;
+
+```bash
+$ kubectl get componentstatuses
+NAME                 STATUS      MESSAGE                                                                                        ERROR
+scheduler            Unhealthy   Get http://127.0.0.1:10251/healthz: dial tcp 127.0.0.1:10251: getsockopt: connection refused   
+controller-manager   Healthy     ok                                                                                             
+etcd-2               Healthy     {"health": "true"} 
+etcd-0               Healthy     {"health": "true"}                                                                             
+etcd-1               Healthy     {"health": "true"}  
+```
+
+- 如果有组件report unhealthy请参考：https://github.com/kubernetes-incubator/bootkube/issues/64
+
+完整 unit 见 [kube-controller-manager.service](../systemd/kube-controller-manager.service)
 
 ## 配置和启动 kube-scheduler
 
