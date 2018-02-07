@@ -296,6 +296,7 @@ KUBE_SCHEDULER_ARGS="--leader-elect=true --address=127.0.0.1"
 systemctl daemon-reload
 systemctl enable kube-scheduler
 systemctl start kube-scheduler
+systemctl status kube-scheduler
 ```
 
 ## 验证 master 节点功能

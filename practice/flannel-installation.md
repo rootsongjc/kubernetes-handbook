@@ -24,8 +24,8 @@ Type=notify
 EnvironmentFile=/etc/sysconfig/flanneld
 EnvironmentFile=-/etc/sysconfig/docker-network
 ExecStart=/usr/bin/flanneld-start \
-  -etcd-endpoints=${ETCD_ENDPOINTS} \
-  -etcd-prefix=${ETCD_PREFIX} \
+  -etcd-endpoints=${FLANNEL_ETCD_ENDPOINTS} \
+  -etcd-prefix=${FLANNEL_ETCD_PREFIX} \
   $FLANNEL_OPTIONS
 ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
 Restart=on-failure
@@ -41,11 +41,11 @@ RequiredBy=docker.service
 # Flanneld configuration options  
 
 # etcd url location.  Point this to the server where etcd runs
-ETCD_ENDPOINTS="https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379"
+FLANNEL_ETCD_ENDPOINTS="https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379"
 
 # etcd config key.  This is the configuration key that flannel queries
 # For address range assignment
-ETCD_PREFIX="/kube-centos/network"
+FLANNEL_ETCD_PREFIX="/kube-centos/network"
 
 # Any additional options that you want to pass
 FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem -etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem"
