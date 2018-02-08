@@ -25,8 +25,8 @@ We will create a Kubernetes 1.9.1+ cluster with 3 nodes which contains the compo
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
-| 172.17.8.101 | node1    | kube-apiserver, kube-controller-manager, kube-scheduler, etcd, kubelet, docker, flannel |
-| 172.17.8.102 | node2    | kubelet, docker, flannel                 |
+| 172.17.8.101 | node1    | kube-apiserver, kube-controller-manager, kube-scheduler, etcd, kubelet, docker, flannel, dashboard |
+| 172.17.8.102 | node2    | kubelet, docker, flannel、traefik         |
 | 172.17.8.103 | node3    | kubelet, docker, flannel                 |
 
 The default setting will create the private network from 172.17.8.101 to 172.17.8.103 for nodes, and it will use the host's DHCP for the public ip.
@@ -34,6 +34,8 @@ The default setting will create the private network from 172.17.8.101 to 172.17.
 The kubernetes service's vip range is `10.254.0.0/16`.
 
 The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` backend.
+
+`kube-proxy` will use `ipvs` mode.
 
 ### Usage
 
@@ -50,10 +52,12 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 - CoreDNS
 - Dashboard
+- Traefik
 
 **Optional**
 
 - Heapster + InfluxDB + Grafana
+- ElasticSearch + Fluentd + Kibana
 
 #### Setup
 
@@ -71,7 +75,7 @@ There are 3 ways to access the kubernetes cluster.
 
 **local**
 
-Copy `conf/admin.kubeconfig` to `～/.kube/config`, using `kubectl` CLI to access the cluster.
+Copy `conf/admin.kubeconfig` to `~/.kube/config`, using `kubectl` CLI to access the cluster.
 
 We recommend this way.
 
@@ -81,30 +85,63 @@ Login to the virtual machine to access and debug the cluster.
 
 ```bash
 vagrant ssh node1
+sudo -i
 kubectl get nodes
 ```
 
-**dashbaord**
+**Kubernetes dashbaord**
 
-Through the kubernetes dashboard to access the cluster.
+Kubernetes dashboard URL: <https://172.17.8.101:8443>
 
-URL
-
-https://172.17.8.101
-
-Port
-
-```bash
-kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
-```
-
-token
+Get the token:
 
 ```bash
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-Using `URL:Port` to access the cluster and input the token to login.
+**Note**: You can see the token message from `vagrant up` logs.
+
+**Heapster monitoring**
+
+Run this command on you local machine.
+
+```bash
+kubectl apply addon/heapster/
+```
+
+Append the following item to you local `/etc/hosts` file.
+
+```ini
+172.17.8.102 grafana.jimmysong.io
+```
+
+Open the URL in your browser: <http://grafana.jimmysong.io>
+
+**Treafik ingress**
+
+Run this command on you local machine.
+
+```bash
+kubectl apply addon/traefik-ingress
+```
+
+Append the following item to you local `/etc/hosts` file.
+
+```ini
+172.17.8.102 traefik.jimmysong.io
+```
+
+Traefik UI URL: <http://traefik.jimmysong.io>
+
+**EFK**
+
+Run this command on your local machine.
+
+```bash
+kubectl apply addon/heapster/
+```
+
+**Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
 
 #### Clean
 
@@ -121,3 +158,4 @@ Don't use it in production environment.
 
 - [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
+- [kubernetes ipvs](https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs)
