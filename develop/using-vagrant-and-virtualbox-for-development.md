@@ -4,6 +4,8 @@
 
 部署时需要使用的配置文件和`vagrantfile`请见：https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
 
+**注意**：kube-proxy使用ipvs模式。
+
 ## 准备环境
 
 需要准备以下软件和环境：
@@ -67,49 +69,62 @@ vagrant up
 
 ```bash
 vagrant ssh node1
+sudo -i
 kubectl get nodes
 ```
 
 **Kubernetes dashboard**
 
-还可以直接通过dashboard UI来访问：
+还可以直接通过dashboard UI来访问：https://172.17.8.101:8443
 
-URL为：
-
-https://172.17.8.101
-
-端口为:
-
-```bash
-kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
-```
-
-token为：
+可以在本地执行以下命令获取token的值（需要提前安装kubectl）：
 
 ```bash
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-通过URL加端口，使用token认证访问。
+**注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
 **Heapster监控**
 
 创建Heapster监控：
 
 ```bash
-kubectl apply addon/heapster/
+kubectl apply -f addon/heapster/
 ```
 
 访问Grafana
 
-使用NodePort方式暴露的服务，因此要访问Grafana需要先获取`monitoring-grafana`服务的映射端口，然后访问任意节点上的该端口即可。
+使用Ingress方式暴露的服务，在本地`/etc/hosts`中增加一条配置：
+
+```ini
+172.17.8.102 grafana.jimmysong.io
+```
+
+访问Grafana：<http://grafana.jimmysong.io>
+
+**Traefik**
+
+部署Traefik ingress controller和增加ingress配置：
+
+```bash
+kubectl apply -f addon/traefik-ingress
+```
+
+在本地`/etc/hosts`中增加一条配置：
+
+```ini
+172.17.8.102 traefik.jimmysong.io
+```
+
+访问Traefik UI：<http://traefik.jimmysong.io>
 
 **EFK**
 
 使用EFK做日志收集。
 
 ```bash
-kubectl apply addon/efk/
+kubectl apply -f addon/efk/
 ```
 
 **注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
@@ -128,3 +143,4 @@ rm -rf .vagrant
 - [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)
 - [vagrant系列二：Vagrant的配置文件vagrantfile详解](https://helei112g.github.io/2016/10/30/vagrant%E7%B3%BB%E5%88%97%E4%BA%8C%EF%BC%9AVagrant%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6vagrantfile%E8%AF%A6%E8%A7%A3/)
 - [vagrant网络配置](https://blog.hedzr.com/2017/05/02/vagrant-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/)
+- [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
