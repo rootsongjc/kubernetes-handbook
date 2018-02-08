@@ -60,3 +60,18 @@ Kubernetes中存在三种安全认证方式：
 - **bearer token**：HTTP请求中`header`中传递的`Autorization:Bearer token`，这个token通常保存在创建角色跟`serviceaccount`绑定的时候生成的secret中。
 
 kubectl通过读取`kubeconfig`文件中的配置信息在向API server发送请求的时候同时传递认证信息，同时支持CA证书和bearer token的认证方式，请参考[使用kubeconfig文件配置跨集群认证](../guide/authenticate-across-clusters-kubeconfig.md)。
+
+## 终端下kubectl命令自动补全
+
+建议使用[oh-my-zsh](http://ohmyz.sh/)，增加对kubectl命令自动补全支持。
+
+修改`~/.zshrc`文件，增加如下两行：
+
+```bash
+plugins=(kubectl)
+source <(kubectl completion zsh)
+```
+
+保存后重启终端即可生效。
+
+参考：[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#using-zsh)
