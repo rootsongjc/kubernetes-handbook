@@ -120,10 +120,10 @@ service ImageService {
 
 ## 当前支持的CRI后端
 
-我们最初在使用Kubernetes时通常会默认使用Docker作为容器运行时，其实从Kubernetes1.5开始已经开始支持CRI，目前是处于Alpha版本，通过CRI接口可以指定使用其它容器运行时作为Pod的后端，目前支持CNI的后端有：
+我们最初在使用Kubernetes时通常会默认使用Docker作为容器运行时，其实从Kubernetes1.5开始已经开始支持CRI，目前是处于Alpha版本，通过CRI接口可以指定使用其它容器运行时作为Pod的后端，目前支持 CRI 的后端有：
 
 - [cri-o](https://github.com/kubernetes-incubator/cri-o)：同时兼容OCI和CRI的容器运行时
-- [cri-containerd](https://github.com/containerd/cri-containerd)：基于[Containerd](https://github.com/containerd/containerd)的Kubernetes CNI实现
+- [cri-containerd](https://github.com/containerd/cri-containerd)：基于[Containerd](https://github.com/containerd/containerd)的Kubernetes CRI 实现
 - [rkt](https://coreos.com/rkt/)：由于CoreOS主推的用来跟docker抗衡的容器运行时
 - [frakti](https://github.com/kubernetes/frakti)：基于hypervisor的CRI
 - [docker](https://www.docker.com)：kuberentes最初就开始支持的容器运行时，目前还没完全从kubelet中解耦，docker公司同时推广了[OCI](https://www.opencontainers.org/)标准
