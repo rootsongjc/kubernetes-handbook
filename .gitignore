@@ -17,3 +17,4 @@ _book
 
 # Github Pages
 deploy.sh
+.DS_Store
