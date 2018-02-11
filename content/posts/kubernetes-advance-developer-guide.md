@@ -4,7 +4,7 @@ subtitle: "Pod高级配置与Kubernetes API扩展"
 tags: ["kubernetes"]
 categories: "kubernetes"
 description: "Kubernetes高级开发者指南，涵盖Pod的高级配置和Kubernetes的扩展等。"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018021002.jpg", desc: "Twilight in the Forbidden City@Beijing Jan 10,2018"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018021002.jpg", desc: "Twilight in the Forbidden City|Beijing|Feb 10,2018"}]
 date: 2018-02-11T10:32:46+08:00
 draft: false
 
