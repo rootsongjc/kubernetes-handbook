@@ -23,6 +23,7 @@ tags: ["github-pages","github","website","hugo"]
 - [ ] 让TODO列表不显示前面的bullet
 - [ ] Table中每列的宽度需要重新调整
 - [ ] 浏览器宽度变小后logo可能遮挡导航栏
+- [ ] 不支持斜体显示的问题
 
 ### 2017-03-17
 
