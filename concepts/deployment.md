@@ -266,7 +266,7 @@ Events:
 
 **注意：** 只要 Deployment 的 rollout 被触发就会创建一个 revision。也就是说当且仅当 Deployment 的 Pod template（如`.spec.template`）被更改，例如更新template 中的 label 和容器镜像时，就会创建出一个新的 revision。
 
-其他的更新，比如扩容 Deployment 不会创建 revision——因此我们可以很方便的手动或者自动扩容。这意味着当您回退到历史 revision 是，直有 Deployment 中的 Pod template 部分才会回退。
+其他的更新，比如扩容 Deployment 不会创建 revision——因此我们可以很方便的手动或者自动扩容。这意味着当您回退到历史 revision 时，只有 Deployment 中的 Pod template 部分才会回退。
 
 假设我们在更新 Deployment 的时候犯了一个拼写错误，将镜像的名字写成了`nginx:1.91`，而正确的名字应该是`nginx:1.9.1`：
 
@@ -601,7 +601,7 @@ $ echo $?
 
 ### 失败的 Deployment
 
-您的 Deployment 在尝试部署新的 ReplicaSet 的时候可能卡住，用于也不会完成。这可能是因为以下几个因素引起的：
+您的 Deployment 在尝试部署新的 ReplicaSet 的时候可能卡住，用于（永远？）也不会完成。这可能是因为以下几个因素引起的：
 
 - 无效的引用
 - 不可读的 probe failure
