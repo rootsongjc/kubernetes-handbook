@@ -54,7 +54,7 @@ Pod 除了必须字段外，在 DaemonSet 中的 Pod 模板必须指定合理的
 类似这种情况，可以指定 `.spec.template.spec.affinity`，然后 DaemonSet Controller 将在能够匹配上 [Node Affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) 的 Node 上创建 Pod。
 如果根本就没有指定，则 DaemonSet Controller 将在所有 Node 上创建 Pod。
 
-## 如果调度 Daemon Pod
+## 如何调度 Daemon Pod
 
 正常情况下，Pod 运行在哪个机器上是由 Kubernetes 调度器进行选择的。然而，由 Daemon Controller 创建的 Pod 已经确定了在哪个机器上（Pod 创建时指定了 `.spec.nodeName`），因此：
 
