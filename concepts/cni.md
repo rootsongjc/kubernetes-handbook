@@ -104,7 +104,7 @@ CNI插件的详细说明请参考：[CNI SPEC](https://github.com/containernetwo
 
 ### Main：接口创建
 
-- **bridge**：创建网桥，并添加主机和容器到该往桥
+- **bridge**：创建网桥，并添加主机和容器到该网桥
 - **ipvlan**：在容器中添加一个[ipvlan](https://www.kernel.org/doc/Documentation/networking/ipvlan.txt)接口
 - **loopback**：创建一个回环接口
 - **macvlan**：创建一个新的MAC地址，将所有的流量转发到容器
