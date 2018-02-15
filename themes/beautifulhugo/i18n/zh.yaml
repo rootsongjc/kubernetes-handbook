@@ -24,7 +24,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: '由 <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: '由 <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a> 移植自 <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
