@@ -53,12 +53,16 @@ desc = "Happy Dog Year!"
 [Author]
   name = "Jimmy Song"
  # website = "https://jimmysong.io"
-  email = "rootsongjc@gmail.com"
+  email = "jimmysong@jimmysong.io"
   facebook = "jimmysongio"
- # googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
+  googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
   github = "rootsongjc"
   twitter = "jimmysongio"
   linkedin = "jimmysongio"
+  500px = "jimmysongio"
+  medium = "jimmysongio"
+  instagram = "jimmysongio"
+  weibo = "jimmysongio"
 
 [[menu.main]]
     identifier = "Categories"
