@@ -41,7 +41,7 @@ kube-system   monitoring-influxdb-grafana-v4-54b7854697-tw9cd   2/2       Runnin
 我们知道Kubernetes集群内部存在三类IP，分别是：
 
 - Node IP：宿主机的IP地址
-- Pod IP：使用网络插件创建的IP（如flannel），使夸主机的Pod可以互通
+- Pod IP：使用网络插件创建的IP（如flannel），使跨主机的Pod可以互通
 - Cluster IP：虚拟IP，通过iptables规则访问服务
 
 在安装node节点的时候，节点上的进程是按照flannel -> docker -> kubelet -> kube-proxy的顺序启动的，我们下面也会按照该顺序来讲解，flannel的网络划分和如何与docker交互，如何通过iptables访问service。
@@ -117,7 +117,7 @@ DOCKER_OPT_MTU="--mtu=1500"
 DOCKER_NETWORK_OPTIONS=" --bip=172.33.68.1/24 --ip-masq=true --mtu=1500"
 ```
 
-如果你使用`systemctl`命令先启动flannel后启动docker的话，docker讲会读取以上环境变量。
+如果你使用`systemctl`命令先启动flannel后启动docker的话，docker将会读取以上环境变量。
 
 我们再来看下`/run/flannel/subnet.env`的配置。
 
