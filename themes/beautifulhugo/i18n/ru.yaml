@@ -24,7 +24,7 @@
 
 # Footer
 - id: poweredBy # Accepts HTML
-  translation: 'На базе <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> на базе <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
+  translation: 'На базе <a href="http://gohugo.io">Hugo v{{ .Hugo.Version }}</a> &nbsp;&bull;&nbsp; Тема <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a> на базе <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>'
 
 # Navigation
 - id: toggleNavigation
