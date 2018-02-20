@@ -56,7 +56,7 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 
 token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的组名。请注意，如果您有多个组，则该列必须使用双引号。
 
-```conf
+```ini
 token,user,uid,"group1,group2,group3"
 ```
 
@@ -471,7 +471,7 @@ Impersonate-Extra-scopes: development
 
 当使用 `kubectl` 的 `--as` 标志来配置 `Impersonate-User` header 时，可以使用 `--as-group` 标志来配置 `Impersonate-Group` header。
 
-```shell
+```bash
 $ kubectl drain mynode
 Error from server (Forbidden): User "clark" cannot get nodes at the cluster scope. (get nodes mynode)
 

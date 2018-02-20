@@ -54,7 +54,7 @@ PVC 保护的目的是确保由 pod 正在使用的 PVC 不会从系统中移除
 
 您可以看到，当 PVC 的状态为 `Teminatiing` 时，PVC 受到保护，`Finalizers` 列表中包含 `kubernetes.io/pvc-protection`：
 
-```shell
+```bash
 kubectl described pvc hostpath
 Name:          hostpath
 Namespace:     default

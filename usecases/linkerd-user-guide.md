@@ -148,7 +148,7 @@ $ kubectl create -f world-v2.yml
 
 在本地`/etc/hosts`中添加如下内容：
 
-```i
+```
 172.20.0.119 linkerd.jimmysong.io
 172.20.0.119 linkerd-viz.jimmysong.io
 172.20.0.119 l5d.jimmysong.io

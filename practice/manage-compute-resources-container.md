@@ -38,7 +38,7 @@ CPU 总是要用绝对数量，不可以使用相对数量；0.1 的 CPU 在单�
 
 内存的限制和请求以字节为单位。您可以使用以下后缀之一作为平均整数或定点整数表示内存：E，P，T，G，M，K。您还可以使用两个字母的等效的幂数：Ei，Pi，Ti ，Gi，Mi，Ki。例如，以下代表大致相同的值：
 
-```shell
+```bash
 128974848, 129e6, 129M, 123Mi
 ```
 
@@ -107,7 +107,7 @@ Pod 的资源使用情况被报告为 Pod 状态的一部分。
 
 如果调度器找不到任何该 Pod 可以匹配的节点，则该 Pod 将保持不可调度状态，直到找到一个可以被调度到的位置。每当调度器找不到 Pod 可以调度的地方时，会产生一个事件，如下所示：
 
-```shell
+```bash
 $ kubectl describe pod frontend | grep -A 3 Events
 Events:
   FirstSeen LastSeen   Count  From          Subobject   PathReason      Message
@@ -116,7 +116,7 @@ Events:
 
 在上述示例中，由于节点上的 CPU 资源不足，名为 “frontend” 的 Pod 将无法调度。由于内存不足（PodExceedsFreeMemory），类似的错误消息也可能会导致失败。一般来说，如果有这种类型的消息而处于 pending 状态，您可以尝试如下几件事情：
 
-```Shell
+```bash
 $ kubectl describe nodes e2e-test-minion-group-4lw4
 Name:            e2e-test-minion-group-4lw4
 [ ... lines removed for clarity ...]
@@ -150,7 +150,7 @@ Allocated resources:
 
 您的容器可能因为资源枯竭而被终结了。要查看容器是否因为遇到资源限制而被杀死，请在相关的 Pod 上调用 `kubectl describe pod`：
 
-```shell
+```bash
 [12:54:41] $ kubectl describe pod simmemleak-hra99
 Name:                           simmemleak-hra99
 Namespace:                      default
@@ -192,7 +192,7 @@ Events:
 
 您可以使用 `kubectl get pod` 命令加上 `-o go-template=...` 选项来获取之前终止容器的状态。
 
-```Shell
+```bash
 [13:59:01] $ kubectl get pod -o go-template='{{range.status.containerStatuses}}{{"Container Name: "}}{{.name}}{{"\r\nLastState: "}}{{.lastState}}{{end}}'  simmemleak-60xbc
 Container Name: simmemleak
 LastState: map[terminated:map[exitCode:137 reason:OOM Killed startedAt:2015-07-07T20:58:43Z finishedAt:2015-07-07T20:58:43Z containerID:docker://0e4095bba1feccdfe7ef9fb6ebffe972b4b14285d5acdec6f0d3ae8a22fad8b2]]
@@ -233,7 +233,7 @@ Host: k8s-master:8080
 ]
 ```
 
-```shell{% raw %}
+```bash{% raw %}
 curl --header "Content-Type: application/json-patch+json" \
 --request PATCH \
 --data '[{"op": "add", "path": "/status/capacity/pod.alpha.kubernetes.io~1opaque-int-resource-foo", "value": "5"}]' \

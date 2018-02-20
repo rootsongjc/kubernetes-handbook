@@ -45,7 +45,7 @@ cd kubernetes
 
 `server` 的 tarball `kubernetes-server-linux-amd64.tar.gz` 已经包含了 `client`(`kubectl`) 二进制文件，所以不用单独下载`kubernetes-client-linux-amd64.tar.gz`文件；
 
-``` shell
+```bash
 # wget https://dl.k8s.io/v1.6.0/kubernetes-client-linux-amd64.tar.gz
 wget https://dl.k8s.io/v1.6.0/kubernetes-server-linux-amd64.tar.gz
 tar -xzvf kubernetes-server-linux-amd64.tar.gz

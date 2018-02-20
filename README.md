@@ -60,7 +60,7 @@ gitbook pdf . ./kubernetes-handbook.pdf
 
 使用`pandoc`和`latex`来生成pdf格式文档。
 
-```shell
+```bash
 pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 ```
 

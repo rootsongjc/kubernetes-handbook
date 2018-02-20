@@ -21,7 +21,8 @@
         "favicon@^0.0.2",
         "tbfed-pagefooter@^0.0.1",
         "3-ba",
-        "theme-default"
+        "theme-default",
+        "-highlight", "prism", "prism-themes"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -53,6 +54,11 @@
         },
         "3-ba": {
             "token": "11f7d254cfa4e0ca44b175c66d379ecc"
+        },
+        "prism": {
+            "css": [
+            "prism-themes/themes/prism-ghcolors.css"
+            ]
         }
     }
 }

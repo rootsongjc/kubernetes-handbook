@@ -43,7 +43,7 @@ LVS的工作原理请参考：http://www.cnblogs.com/codebean/archive/2011/07/25
 
 因为我们的测试集群一共只有三个node，所有在在三个node上都要安装keepalived和ipvsadmin。
 
-```Shell
+```bash
 yum install keepalived ipvsadm
 ```
 

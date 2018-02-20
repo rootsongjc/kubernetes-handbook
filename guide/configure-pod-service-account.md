@@ -104,7 +104,7 @@ $ kubectl delete serviceaccount/build-robot
 
 假设我们已经有了一个如上文提到的名为 ”build-robot“ 的 service account，我们手动创建一个新的 secret。
 
-```shell
+```bash
 $ cat > /tmp/build-robot-secret.yaml <<EOF
 apiVersion: v1
 kind: Secret

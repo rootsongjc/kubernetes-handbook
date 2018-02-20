@@ -201,7 +201,7 @@ Kubernetes 支持2种基本的服务发现模式 —— 环境变量和 DNS。
 
 举个例子，一个名称为 `"redis-master"` 的 Service 暴露了 TCP 端口 6379，同时给它分配了 Cluster IP 地址 10.0.0.11，这个 Service 生成了如下环境变量：
 
-```shell
+```bash
 REDIS_MASTER_SERVICE_HOST=10.0.0.11
 REDIS_MASTER_SERVICE_PORT=6379
 REDIS_MASTER_PORT=tcp://10.0.0.11:6379

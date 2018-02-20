@@ -4,7 +4,7 @@
 
 建议直接使用yum安装flanneld，除非对版本有特殊需求，默认安装的是0.7.1版本的flannel。
 
-```shell
+```bash
 yum install -y flannel
 ```
 
@@ -57,7 +57,7 @@ FLANNEL_OPTIONS="-etcd-cafile=/etc/kubernetes/ssl/ca.pem -etcd-certfile=/etc/kub
 
 执行下面的命令为docker分配IP地址段。
 
-```shell
+```bash
 etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://172.20.0.115:2379 \
   --ca-file=/etc/kubernetes/ssl/ca.pem \
   --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
@@ -76,7 +76,7 @@ etcdctl --endpoints=https://172.20.0.113:2379,https://172.20.0.114:2379,https://
 
 **启动flannel**
 
-```shell
+```bash
 systemctl daemon-reload
 systemctl enable flanneld
 systemctl start flanneld

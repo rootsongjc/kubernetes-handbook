@@ -18,7 +18,7 @@
 
 下载Linux版本的当前最新版安装包
 
-```Shell
+```bash
 wget https://github.com/istio/istio/releases/download/0.1.5/istio-0.1.5-linux.tar.gz
 ```
 

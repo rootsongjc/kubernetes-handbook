@@ -67,7 +67,7 @@ func main() {
 
 **创建Dockerfile**
 
-```Dockerfile
+```dockerfile
 FROM alpine:3.5
 MAINTAINER Jimmy Song<rootsongjc@gmail.com>
 ADD hellov2 /
@@ -82,7 +82,7 @@ ENTRYPOINT ["/hellov2"]
 
 修改`Makefile`中的`TAG`为新的版本号。
 
-```cmake
+```makefile
 all: build push clean
 .PHONY: build push clean
 
@@ -104,7 +104,7 @@ clean:
 
 **编译**
 
-```Shell
+```bash
 make all
 ```
 
@@ -151,7 +151,7 @@ spec:
 
 **部署service**
 
-```shell
+```bash
 kubectl create -f rolling-update-test.yaml
 ```
 
@@ -187,7 +187,7 @@ This is version 1.
 
 只需要将`rolling-update-test.yaml`文件中的`image`改成新版本的镜像名，然后执行：
 
-```shell
+```bash
 kubectl apply -f rolling-update-test.yaml
 ```
 

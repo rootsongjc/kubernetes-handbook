@@ -65,7 +65,7 @@ Kubernetes 支持以下类型的卷：
 
 在 pod 中使用的 EBS 卷之前，您需要先创建它。
 
-```shell
+```bash
 aws ec2 create-volume --availability-zone=eu-west-1a --size=10 --volume-type=gp2
 ```
 
@@ -200,7 +200,7 @@ PD 的一个特点是它们可以同时被多个用户以只读方式挂载。�
 
 在您在 pod 中使用 GCE PD 之前，需要先创建它。
 
-```shell
+```bash
 gcloud compute disks create --size=500GB --zone=us-central1-a my-data-disk
 ```
 
@@ -625,13 +625,13 @@ spec:
 
 首先进入 ESX，然后使用以下命令创建一个 VMDK：
 
-```shell
+```bash
 vmkfstools -c 2G /vmfs/volumes/DatastoreName/volumes/myDisk.vmdk
 ```
 
 使用下列命令创建一个 VMDK：
 
-```shell
+```bash
 vmware-vdiskmanager -c -t 0 -s 40GB -a lsilogic myDisk.vmdk
 ```
 

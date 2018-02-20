@@ -40,7 +40,7 @@ Welcome to the "Distributed Load Testing Using Kubernetes" sample web app
 
 **测试命令**
 
-```shell
+```bash
 curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer} %{time_total}' "http://10.254.149.31:8000/"
 ```
 
@@ -75,7 +75,7 @@ time_total：完成请求所用的时间
 
 **测试命令**
 
-```Shell
+```bash
 curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer} %{time_total}' "http://sample-webapp:8000/"
 ```
 
@@ -100,7 +100,7 @@ curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer} %{time_total}' "h
 
 **测试命令**
 
-```Shell
+```bash
 curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer} %{time_total}' "http://traefik.sample-webapp.io" >>result
 ```
 
@@ -139,13 +139,13 @@ curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer} %{time_total}' "h
 
 服务端命令：
 
-```shell
+```bash
 iperf -s -p 12345 -i 1 -M
 ```
 
 客户端命令：
 
-```shell
+```bash
 iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 ```
 
