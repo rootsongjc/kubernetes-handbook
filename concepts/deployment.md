@@ -601,7 +601,7 @@ $ echo $?
 
 ### 失败的 Deployment
 
-您的 Deployment 在尝试部署新的 ReplicaSet 的时候可能卡住，用于（永远？）也不会完成。这可能是因为以下几个因素引起的：
+您的 Deployment 在尝试部署新的 ReplicaSet 的时候可能卡住，永远也不会完成。这可能是因为以下几个因素引起的：
 
 - 无效的引用
 - 不可读的 probe failure
