@@ -112,56 +112,67 @@ desc = "Using Big Data to make business decision"
     weight = 8
 
 [[menu.main]]
-    identifier = "Books"
-    name = "Books"
+    identifier = "Gitbooks"
+    name = "Gitbooks"
     weight = 2
 
 [[menu.main]]
-    parent = "Books"
+    parent = "Gitbooks"
+    name = "Kubernetes handbook"
+    url = "kubernetes-handbook"
+    weight = 1
+
+[[menu.main]]
+    parent = "Gitbooks"
+    name = "Docker handbook"
+    url = "docker-handbook"
+    weight = 2
+
+[[menu.main]]
+    parent = "Gitbooks"
+    name = "Hugo Handbook"
+    url = "hugo-handbook"
+    weight = 3
+
+[[menu.main]]
+    parent = "Gitbooks"
+    name = "Istio service mesh"
+    url = "http://istio.doczh.cn"
+    weight = 4
+
+[[menu.main]]
+    parent = "Gitbooks"
+    name = "Migrating to Cloud Native"
+    url = "migrating-to-cloud-native-application-architectures"
+    weight = 5
+
+[[menu.main]]
+    identifier = "Publications"
+    name = "Publications"
+    weight = 3
+
+[[menu.main]]
+    parent = "Publications"
     name = "Cloud Native Go"
     url = "cloud-native-go"
     weight = 1
 
 [[menu.main]]
-    parent = "Books"
+    parent = "Publications"
     name = "Cloud Native Python"
     url = "posts/cloud-native-python"
     weight = 2
 
 [[menu.main]]
-    parent = "Books"
-    name = "Kubernetes handbook"
-    url = "kubernetes-handbook"
+    parent = "Publications"
+    name = "Cloud Native Java"
+    url = "posts/cloud-native-java"
     weight = 3
-
-[[menu.main]]
-    parent = "Books"
-    name = "Docker handbook"
-    url = "docker-handbook"
-    weight = 4
-
-[[menu.main]]
-    parent = "Books"
-    name = "Hugo Handbook"
-    url = "hugo-handbook"
-    weight = 5
-
-[[menu.main]]
-    parent = "Books"
-    name = "Istio service mesh"
-    url = "http://istio.doczh.cn"
-    weight = 6
-
-[[menu.main]]
-    parent = "Books"
-    name = "Migrating to Cloud Native"
-    url = "migrating-to-cloud-native-application-architectures"
-    weight = 7
 
 [[menu.main]]
     identifier = "Projects"
     name = "Projects"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     parent = "Projects"
@@ -185,15 +196,15 @@ desc = "Using Big Data to make business decision"
     parent = "Projects"
     name = "Magpie"
     url = "posts/yarn-on-docker"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     parent = "Projects"
     name = "Cheatsheets"
     url = "cheatsheets"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     name = "About"
     url = "about"
-    weight = 4
+    weight = 7
