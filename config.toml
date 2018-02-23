@@ -2,7 +2,7 @@ baseurl = "https://jimmysong.io/"
 DefaultContentLanguage = "en"
 hasCJKLanguage = true
 languageCode = "zh-cn"
-title = "Jimmy Song" 
+title = "Jimmy Song"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
 pygmentsUseClasses = false
@@ -46,7 +46,7 @@ desc = "Using Big Data to make business decision"
 
 [Author]
   name = "Jimmy Song(宋净超)"
- # website = "https://jimmysong.io"
+  website = "https://jimmysong.io"
   email = "jimmysong@jimmysong.io"
   facebook = "jimmysongio"
   googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
