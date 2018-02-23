@@ -28,9 +28,9 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 
 **Translations**
 
-- [Cloud Native Go 构建基于Go和React的云原生Web应用与微服务](https://jimmysong.io/cloud-native-go)
-- [Cloud Native Python 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
-- Cloud Native Java
+- [Cloud Native Go - 构建基于Go和React的云原生Web应用与微服务](https://jimmysong.io/cloud-native-go)
+- [Cloud Native Python - 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
+- [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
 **Gitbooks**
 
@@ -52,7 +52,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 
 ### Activities
 
-#### Comming soom
+**Coming soon**
 
 - Mar 23 - Mar 25,2018 | Beijing | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
