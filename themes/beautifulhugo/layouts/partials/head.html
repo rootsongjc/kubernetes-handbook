@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
 {{- with .Site.Author.name }}
-  <meta name="author" content="{{ .  }}"/>
+  <meta name="author" content="{{ . }}"/>
 {{- end }}
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
