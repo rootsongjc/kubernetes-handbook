@@ -45,7 +45,7 @@ src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
 desc = "Using Big Data to make business decision"
 
 [Author]
-  name = "Jimmy Song"
+  name = "Jimmy Song(宋净超)"
  # website = "https://jimmysong.io"
   email = "jimmysong@jimmysong.io"
   facebook = "jimmysongio"

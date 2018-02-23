@@ -14,7 +14,9 @@
   <meta property="og:description" content="{{ . }}">
   <meta name="twitter:description" content="{{ . | truncate 200 }}">
 {{- end }}
-  <meta name="author" content="{Description { .Site.Author.name }}"/>
+{{- with .Site.Author.name }}
+  <meta name="author" content="{{ .  }}"/>
+{{- end }}
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
