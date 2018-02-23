@@ -20,7 +20,9 @@ nocomment: true
 
 ## 目录
 
-### 1. The Cloud Native Application 
+### Part I. Basics
+
+#### 1. The Cloud Native Application 
 
 1.1. Amazon’s Story
 
@@ -96,7 +98,7 @@ nocomment: true
 
 1.9. Summary
 
-### 2. Bootcamp: Introducing Spring Boot and Cloud Foundry
+#### 2. Bootcamp: Introducing Spring Boot and Cloud Foundry
 
 2.1. What Is Spring Boot?
 
@@ -118,7 +120,7 @@ nocomment: true
 
 2.7. Summary
 
-### 3. Twelve-Factor Application Style Configuration
+#### 3. Twelve-Factor Application Style Configuration
 
 3.1. The Confusing Conflation of "Configuration"
 
@@ -144,7 +146,7 @@ nocomment: true
 
 3.6. Summary
 
-### 4. Testing
+#### 4. Testing
 
 4.1. The Makeup of a Test
 
@@ -178,7 +180,7 @@ nocomment: true
 
 4.5. Summary
 
-### 5. The Forklifted Application
+#### 5. The Forklifted Application
 
 5.1. The Contract
 
@@ -214,7 +216,9 @@ nocomment: true
 
 5.4. Summary
 
-### 6. REST APIs
+### Part II. Web Services
+
+#### 6. REST APIs
 
 6.1. Leonard Richardson’s Maturity Model
 
@@ -244,7 +248,7 @@ nocomment: true
 
 6.9. Summary
 
-### 7. Routing
+#### 7. Routing
 
 7.1. The DiscoveryClient Abstraction
 
@@ -252,7 +256,7 @@ nocomment: true
 
 7.3. Summary
 
-### 8. Edge Services
+#### 8. Edge Services
 
 8.1. The Greetings Service
 
@@ -288,7 +292,9 @@ nocomment: true
 
 ​    8.8.4. Summary
 
-### 9. Managing Data
+### Part III. Data Integration
+
+#### 9. Managing Data
 
 9.1. Modeling Data
 
@@ -352,7 +358,7 @@ nocomment: true
 
 9.10. Summary
 
-### 10. Messaging
+#### 10. Messaging
 
 10.1. Event-Driven Architectures with Spring Integration
 
@@ -374,7 +380,7 @@ nocomment: true
 
 10.4. Summary
 
-### 11. Batch Processes and Tasks
+#### 11. Batch Processes and Tasks
 
 11.1. Batch Workloads
 
@@ -394,7 +400,7 @@ nocomment: true
 
 11.8. Summary
 
-### 12. Data Integration
+#### 12. Data Integration
 
 12.1. Distributed Transactions
 
@@ -426,7 +432,9 @@ nocomment: true
 
 12.6. Summary
 
-### 13. The Observable System
+### IV. Production
+
+#### 13. The Observable System
 
 13.1. You Build It, You Run It
 
@@ -486,7 +494,7 @@ nocomment: true
 
 13.16. Summary
 
-### 14. Service Brokers
+#### 14. Service Brokers
 
 14.1. The Life of a Backing Service
 
@@ -522,7 +530,7 @@ nocomment: true
 
 14.9. Summary
 
-### 15. Continuous Delivery
+#### 15. Continuous Delivery
 
 15.1. Beyond Continuous Integration
 
@@ -560,7 +568,9 @@ nocomment: true
 
 15.10. To Production!
 
-### Appendix A
+#### Part V. Appendix A
+
+A. Using Spring Boot with Java EE
 
 ​    A.1. Compatibility and Stability
 
