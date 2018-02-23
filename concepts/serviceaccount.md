@@ -16,7 +16,7 @@ Service account为Pod中的进程提供身份信息。
 
 Service account 是否能够取得访问 API 的许可取决于您使用的 [授权插件和策略](https://kubernetes.io/docs/admin/authorization/#a-quick-note-on-service-accounts)。
 
-在 1.6 以上版本中，您可以选择取消为 serivce account 自动挂载 API 凭证，只需在 service account 中设置 `automountServiceAccountToken: false`：
+在 1.6 以上版本中，您可以选择取消为 service account 自动挂载 API 凭证，只需在 service account 中设置 `automountServiceAccountToken: false`：
 
 ```yaml
 apiVersion: v1
