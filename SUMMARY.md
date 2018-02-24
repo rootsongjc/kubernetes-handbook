@@ -140,6 +140,7 @@
     - [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
   - [OpenEBS](practice/openebs.md)
     - [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
+  - [Rook](practice/rook.md)
 - [集群与应用监控](practice/monitoring.md)
   - [Heapster](practice//heapster.md)
     - [使用Heapster获取集群和对象的metric数据](practice/using-heapster-to-get-object-metrics.md)
