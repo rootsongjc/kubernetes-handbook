@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+    name: rookagent-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: rook-agent
+    namespace: rook-system
+roleRef:
+    kind: ClusterRole
+    name: cluster-admin
+    apiGroup: ""

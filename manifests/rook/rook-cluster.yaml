@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rook
+---
+apiVersion: rook.io/v1alpha1
+kind: Cluster
+metadata:
+  name: rook
+  namespace: rook
+spec:
+  versionTag: v0.6.2
+  dataDirHostPath: /var/lib/rook
+  storage:
+    useAllNodes: true
+    useAllDevices: false
+    storeConfig:
+      storeType: bluestore
+      databaseSizeMB: 512
+      journalSizeMB: 512
