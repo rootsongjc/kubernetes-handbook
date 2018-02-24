@@ -87,7 +87,7 @@ $ kubectl create configmap game-config --from-file=docs/user-guide/configmap/kub
 
 让我们来看一下这个命令创建的ConfigMap：
 
-```Yaml
+```yaml
 $ kubectl describe configmaps game-config
 Name:           game-config
 Namespace:      default
@@ -144,7 +144,7 @@ $ kubectl create configmap game-config-2 --from-file=docs/user-guide/configmap/k
 $ kubectl get configmaps game-config-2 -o yaml
 ```
 
-```Yaml
+```yaml
 apiVersion: v1
 data:
   game-special-key: |
@@ -198,7 +198,7 @@ metadata:
 
 ConfigMap可以被用来填入环境变量。看下下面的ConfigMap。
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -221,7 +221,7 @@ data:
 
 我们可以在Pod中这样使用ConfigMap：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -254,14 +254,13 @@ spec:
 SPECIAL_LEVEL_KEY=very
 SPECIAL_TYPE_KEY=charm
 log_level=INFO
-
 ```
 
 **用ConfigMap设置命令行参数**
 
 ConfigMap也可以被使用来设置容器中的命令或者参数值。它使用的是Kubernetes的$(VAR_NAME)替换语法。我们看下下面这个ConfigMap。
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -274,7 +273,7 @@ data:
 
 为了将ConfigMap中的值注入到命令行的参数里面，我们还要像前面那个例子一样使用环境变量替换语法`${VAR_NAME)`。（其实这个东西就是给Docker容器设置环境变量，以前我创建镜像的时候经常这么玩，通过docker run的时候指定-e参数修改镜像里的环境变量，然后docker的CMD命令再利用该$(VAR_NAME)通过sed来修改配置文件或者作为命令行启动参数。）
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -302,14 +301,13 @@ spec:
 
 ```
 very charm
-
 ```
 
 **通过数据卷插件使用ConfigMap**
 
 ConfigMap也可以在数据卷里面被使用。还是这个ConfigMap。
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -322,7 +320,7 @@ data:
 
 在数据卷里面使用这个ConfigMap，有不同的选项。最基本的就是将文件填入数据卷，在这个文件中，键就是文件名，键值就是文件内容：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -346,7 +344,7 @@ spec:
 
 我们也可以在ConfigMap值被映射的数据卷里控制路径。
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
