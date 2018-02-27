@@ -506,7 +506,7 @@ subjects:
      --namespace=my-namespace
    ```
 
-   目前，许多[加载项（addon）]（/ docs / concepts / cluster-administration / addons /）作为”kube-system”命名空间中的”default”服务帐户运行。 要允许这些加载项使用超级用户访问权限，请将cluster-admin权限授予”kube-system”命名空间中的”default”服务帐户。 注意：启用上述操作意味着”kube-system”命名空间将包含允许超级用户访问API的秘钥。
+   目前，许多[加载项（addon）](https://kubernetes.io/docs/concepts/cluster-administration/addons/)作为”kube-system”命名空间中的”default”服务帐户运行。 要允许这些加载项使用超级用户访问权限，请将cluster-admin权限授予”kube-system”命名空间中的”default”服务帐户。 注意：启用上述操作意味着”kube-system”命名空间将包含允许超级用户访问API的秘钥。
 
    ```bash
    kubectl create clusterrolebinding add-on-cluster-admin \
@@ -565,7 +565,6 @@ subjects:
 
 ```
 --authorization-mode=RBAC,ABAC --authorization-policy-file=mypolicy.jsonl
-
 ```
 
 RBAC授权器将尝试首先授权请求。如果RBAC授权器拒绝API请求，则ABAC授权器将被运行。这意味着RBAC策略*或者*ABAC策略所允许的任何请求都是可通过的。
