@@ -95,7 +95,7 @@ kubectl config use-context kubernetes --kubeconfig=${USER}.kubeconfig
 kubectl create ns $USER
 
 # 绑定角色
-kubectl create rolebinding ${USER}-admin-binding --clusterrole=admin --user=$USER --namespace=$USER
+kubectl create rolebinding ${USER}-admin-binding --clusterrole=admin --user=$USER --namespace=$USER --serviceaccount=$USER:default
 
 kubectl config get-contexts
 
