@@ -103,7 +103,7 @@ cp -f ./devuser.kubeconfig /root/.kube/config
 
 关于 kubeconfig 文件的更多信息请参考 [使用 kubeconfig 文件配置跨集群认证](../guide/authenticate-across-clusters-kubeconfig.md)。
 
-## ClusterRoleBinding
+## ClRoleBinding
 
 如果我们想限制 devuser 用户的行为，需要使用 RBAC 将该用户的行为限制在某个或某几个 namespace 空间范围内，例如：
 

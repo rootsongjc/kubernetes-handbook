@@ -101,7 +101,9 @@ env:
 
 这样就可以使用`brand.kubeconfig`文件来登陆dashboard了，而且只能访问和操作`brand`命名空间下的对象。
 
-### 生成 token
+### 生成集群管理员的token
+
+以下是为集群最高权限的管理员（可以任意操作所有namespace中的所有资源）生成token的步骤详解。
 
 > 注意：登陆dashboard的时候token值是必须的，而kubeconfig文件是kubectl命令所必须的，kubectl命令使用的kubeconfig文件中可以不包含token信息。
 
@@ -183,6 +185,8 @@ kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|ba
 ```
 
 注意我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](../guide/secret-configuration.md)。关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
+
+**注意**：关于如何给其它namespace的管理员生成token请参考[使用kubeconfig或token进行用户身份认证](../guide/auth-with-kubeconfig-or-token.md)。
 
 ## 参考
 
