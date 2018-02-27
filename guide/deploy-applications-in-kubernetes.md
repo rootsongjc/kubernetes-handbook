@@ -40,7 +40,7 @@ API文档见[k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor
 
 服务启动后需要更新ingress配置，在[ingress.yaml](../manifests/traefik-ingress/ingress.yaml)文件中增加以下几行：
 
-```Yaml
+```yaml
   - host: k8s-app-monitor-agent.jimmysong.io
     http:
       paths:

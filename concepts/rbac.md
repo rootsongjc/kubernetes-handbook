@@ -38,7 +38,7 @@ rules:
 
 下面示例中的`ClusterRole`定义可用于授予用户对某一特定命名空间，或者所有命名空间中的secret（取决于其[绑定](https://k8smeetup.github.io/docs/admin/authorization/rbac/#rolebinding-and-clusterrolebinding)方式）的读访问权限：
 
-```Yaml
+```yaml
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
@@ -56,7 +56,7 @@ rules:
 
 `RoleBinding`可以引用在同一命名空间内定义的`Role`对象。 下面示例中定义的`RoleBinding`对象在”default”命名空间中将”pod-reader”角色授予用户”jane”。 这一授权将允许用户”jane”从”default”命名空间中读取pod。
 
-```Yaml
+```yaml
 # 以下角色绑定定义将允许用户"jane"从"default"命名空间中读取pod。
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -158,7 +158,7 @@ rules:
 
 允许读取core API Group中定义的资源”pods”：
 
-```Yaml
+```yaml
 rules:
 - apiGroups: [""]
   resources: ["pods"]

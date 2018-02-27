@@ -21,7 +21,7 @@ MWYyZDFlMmU2N2Rm
 
 secrets.yml
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
@@ -41,7 +41,7 @@ data:
 
 ### 将Secret挂载到Volume中
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

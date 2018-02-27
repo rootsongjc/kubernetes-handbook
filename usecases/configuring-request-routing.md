@@ -24,7 +24,7 @@
  istioctl get route-rules -o yaml
  ```
 
- ```Yaml
+ ```yaml
  type: route-rule
  name: details-default
  namespace: default
@@ -85,7 +85,7 @@
    istioctl get route-rule reviews-test-v2
    ```
 
-   ```Yaml
+   ```yaml
    destination: reviews.default.svc.cluster.local
    match:
      httpHeaders:

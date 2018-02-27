@@ -66,7 +66,7 @@ selector:
 
 在`Job`、`Deployment`、`ReplicaSet`和`DaemonSet`这些object中，支持*set-based*的过滤，例如：
 
-```Yaml
+```yaml
 selector:
   matchLabels:
     component: redis
@@ -81,7 +81,7 @@ selector:
 
 另外在node affinity和pod affinity中的label selector的语法又有些许不同，示例如下：
 
-```Yaml
+```yaml
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:

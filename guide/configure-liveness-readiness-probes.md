@@ -14,7 +14,7 @@ Kubelet使用readiness probe（就绪探针）来确定容器是否已经就绪�
 
 在本次练习将基于 `gcr.io/google_containers/busybox`镜像创建运行一个容器的Pod。以下是Pod的配置文件`exec-liveness.yaml`：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

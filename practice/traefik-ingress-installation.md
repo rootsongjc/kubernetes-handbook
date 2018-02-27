@@ -24,7 +24,7 @@ Ingress Controller 实质上可以理解为是个监视器，Ingress Controller 
 
 将用于service account验证。
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -83,7 +83,7 @@ spec:
 
 我们使用DaemonSet类型来部署Traefik，并使用`nodeSelector`来限定Traefik所部署的主机。
 
-```Yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -141,7 +141,7 @@ kubectl label nodes 172.20.0.115 edgenode=true
 
 **Traefik UI**
 
-使用下面的YAML配置来创建Traefik的Web UI。
+使用下面的yaml配置来创建Traefik的Web UI。
 
 ```yaml
 apiVersion: v1

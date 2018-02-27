@@ -94,7 +94,7 @@ Kubernetes中已经存在一些概念可以暴露单个service（查看[替代�
 
 ingress.yaml定义文件：
 
-```Yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -171,7 +171,7 @@ bar.foo.com --|                 |-> bar.foo.com s2:80
 
 下面这个ingress说明基于[Host header](https://tools.ietf.org/html/rfc7230#section-5.4)的后端loadbalancer的路由请求：
 
-```Yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -198,7 +198,7 @@ spec:
 
 你可以通过指定包含TLS私钥和证书的[secret](https://kubernetes.io/docs/user-guide/secrets)来加密Ingress。 目前，Ingress仅支持单个TLS端口443，并假定TLS termination。 如果Ingress中的TLS配置部分指定了不同的主机，则它们将根据通过SNI TLS扩展指定的主机名（假如Ingress controller支持SNI）在多个相同端口上进行复用。 TLS secret中必须包含名为`tls.crt`和`tls.key`的密钥，这里面包含了用于TLS的证书和私钥，例如：
 
-```Yaml
+```yaml
 apiVersion: v1
 data:
   tls.crt: base64 encoded cert

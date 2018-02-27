@@ -160,7 +160,7 @@ $ ip addr show eth0
 
 配置文件`traefik.yaml`内容如下：
 
-```Yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:

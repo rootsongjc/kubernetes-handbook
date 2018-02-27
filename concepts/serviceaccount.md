@@ -29,7 +29,7 @@ automountServiceAccountToken: false
 
 在 1.6 以上版本中，您也可以选择只取消单个 pod 的 API 凭证自动挂载：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

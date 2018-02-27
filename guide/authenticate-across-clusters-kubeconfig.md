@@ -115,7 +115,7 @@ contexts:
 
 #### current-context
 
-```Yaml
+```yaml
 current-context: federal-context
 ```
 

@@ -53,7 +53,7 @@ kubectl -n spark-cluster describe resourcequota compute-resources
 
 配置文件：`spark-object-counts.yaml`
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ResourceQuota
 metadata:

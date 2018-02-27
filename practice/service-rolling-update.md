@@ -116,7 +116,7 @@ make all
 
 配置文件`rolling-update-test.yaml`：
 
-```Yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -159,7 +159,7 @@ kubectl create -f rolling-update-test.yaml
 
 在`ingress.yaml`文件中增加新service的配置。
 
-```Yaml
+```yaml
   - host: rolling-update-test.traefik.io
     http:
       paths:

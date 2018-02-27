@@ -69,7 +69,7 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 参考[kubernetes的traefik ingress安装](http://rootsongjc.github.io/blogs/traefik-ingress-installation/)，在`ingress.yaml`中加入如下配置：
 
-```Yaml
+```yaml
   - host: traefik.locust.io
     http:
       paths:

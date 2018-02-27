@@ -2,7 +2,7 @@
 
 通过环境变量来实现，该环境变量直接引用 resource 的状态字段，示例如下：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -45,7 +45,7 @@ command: ["/bin/bash","-c","bootstrap.sh"]
 
 我们可以想象一下这样的场景，让 Pod 来调用宿主机的 docker 能力，只需要将宿主机的 `docker` 命令和 `docker.sock` 文件挂载到 Pod 里面即可，如下：
 
-```Yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -209,7 +209,7 @@ data:
 
 ## 8. 创建一个CentOS测试容器
 
-有时我们可能需要在Kubernetes集群中创建一个容器来测试集群的状态或对其它容器进行操作，这时候我们需要一个操作节点，可以使用一个普通的CentOS容器来实现。YAML文件见[manifests/test/centos.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/test/centos.yaml)。
+有时我们可能需要在Kubernetes集群中创建一个容器来测试集群的状态或对其它容器进行操作，这时候我们需要一个操作节点，可以使用一个普通的CentOS容器来实现。yaml文件见[manifests/test/centos.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/test/centos.yaml)。
 
 ```yaml
 apiVersion: extensions/v1beta1

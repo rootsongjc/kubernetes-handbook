@@ -164,7 +164,7 @@ kubectl apply -f install/kubernetes/addons/zipkin.yaml
 
 在traefik ingress中增加增加以上几个服务的配置，同时增加istio-ingress配置。
 
-```Yaml
+```yaml
     - host: grafana.istio.io
       http:
         paths:

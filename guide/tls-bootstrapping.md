@@ -72,7 +72,7 @@ Kube-controller-manager 标志为：
 
 以下 RBAC `ClusterRoles` 代表 `nodeClient`、`selfnodeclient` 和 `selfnodeserver` 功能。在以后的版本中可能会自动创建类似的角色。
 
-```Yaml
+```yaml
 # A ClusterRole which instructs the CSR approver to approve a user requesting
 # node client credentials.
 kind: ClusterRole
@@ -117,7 +117,7 @@ rules:
 
 管理员将创建一个 `ClusterRoleBinding` 来定位该组。
 
-```Yaml
+```yaml
 # Approve all CSRs for the group "kubelet-bootstrap-token"
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
