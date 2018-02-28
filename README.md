@@ -108,4 +108,6 @@ pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
 - **知乎专栏**：[云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 - **微信公众号**：扫描下面的二维码关注微信公众号CloudNativeGo（云原生应用架构）
 
-![CloudNativeGo微信公众号二维码](images/cloud-native-go-wechat-qr-code.jpg)
+<p align="center">
+  <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cloud-native-go-wechat-qr-code.jpg?raw=true" alt="CloudNativeGo微信公众号二维码"/>
+</p>
