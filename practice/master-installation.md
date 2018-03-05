@@ -171,7 +171,8 @@ KUBE_API_ARGS="--authorization-mode=RBAC --runtime-config=rbac.authorization.k8s
 
 **Kubernetes 1.9**
 
-对于Kubernetes1.9集群，需要注意配置`KUBE_API_ARGS`环境变量中的`--authorization-mode=Node,RBAC`，增加对`Node`授权的模式，否则将无法注册node。
+- 对于Kubernetes1.9集群，需要注意配置`KUBE_API_ARGS`环境变量中的`--authorization-mode=Node,RBAC`，增加对`Node`授权的模式，否则将无法注册node。
+- `--experimental-bootstrap-token-auth` Bootstrap Token Authentication在kubernetes 1.9版本已经废弃，参数名称改为`--enable-bootstrap-token-auth`
 
 完整 unit 见 [kube-apiserver.service](../systemd/kube-apiserver.service)
 
