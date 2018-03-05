@@ -45,6 +45,19 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 
 ![CNCF项目成熟度级别](../images/cncf-graduation-criteria.jpg)
 
+## TOC（技术监督委员会）
+
+TOC（Technical Oversight Committee）作为CNCF中的一个重要组织，它的作用是：
+
+- 定义和维护技术视野
+- 审批新项目加入组织，为项目设定概念架构
+- 接受最终用户的反馈并映射到项目中
+- 调整组件见的访问接口，协调组件之间兼容性
+
+TOC成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/blob/master/process/election-schedule.md)。
+
+参考CNCF TOC：https://github.com/cncf/toc
+
 ## 参考
 
 - https://www.cncf.io
