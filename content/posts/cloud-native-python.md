@@ -58,9 +58,9 @@ nocomment: true
 
 ## 更多资料
 
-- 关于 Cloud Native Go 的更多信息请参阅：[Cloud Native Go - 基于Go和React的Web云服务构建指南](https://jimmysong.io/talks/cloud-native-go/)
-- 关于云原生（Cloud Native）的更多资料请参考我翻译的这本 Pivotal 的小册子 [迁移到云原生应用架构-中文版](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
-- 关于 Cloud Native 生态请参考我整理的 [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)
+- 关于 Cloud Native Go 的更多信息请参阅：[Cloud Native Go - 基于Go和React的Web云服务构建指南](https://jimmysong.io/posts/cloud-native-go/)
+- 关于云原生（Cloud Native）的更多资料请参考我翻译的这本 Pivotal 的小册子 [迁移到云原生应用架构-中文版](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
+- 关于 Cloud Native 生态请参考我整理的 [awesome-cloud-native](https://jimmysong.io/awesome-cloud-native)
 
 ## 翻译日志
 
