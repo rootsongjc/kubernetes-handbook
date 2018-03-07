@@ -46,13 +46,15 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 - incubating（孵化中）
 - graduated（毕业）
 
-是否可以成为CNCF项目需要通过Technical Oversight Committee (技术监督委员会）简称[TOC](https://github.com/cncf/toc)，投票采取fallback策略，即**回退策略**，先从最高级别（graduated）开始，如果2/3多数投票通过的话则确认为该级别，如果没通过的话，则进行下一低级别的投票，如果一直到inception级别都没得到2/3多数投票通过的话，则拒绝其进入CNCF项目。
+是否可以成为CNCF项目需要通过Technical Oversight Committee （技术监督委员会）简称[TOC](https://github.com/cncf/toc)，投票采取fallback策略，即**回退策略**，先从最高级别（graduated，目前是从incubating）开始，如果2/3多数投票通过的话则确认为该级别，如果没通过的话，则进行下一低级别的投票，如果一直到inception级别都没得到2/3多数投票通过的话，则拒绝其进入CNCF项目。一般一个项目处于孵化阶段不会超过2年。
 
 当前所有的CNCF项目可以访问[https://www.cncf.io/projects/。](https://www.cncf.io/projects/%E3%80%82)
 
-项目所达到相应成熟度需要满足的条件和投票机制见下图：
+项目所达到相应成熟度需要满足的条件和投票机制见下图（请按照逆时针来看）：
 
 [![CNCF项目成熟度级别](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/cncf-graduation-criteria.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cncf-graduation-criteria.jpg)
+
+在太平洋时间3月6日，Kubernetes成为了CNCF的第一个毕业项目！
 
 ## TOC（技术监督委员会）
 
