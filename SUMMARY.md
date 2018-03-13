@@ -164,6 +164,7 @@
 - [领域应用概览](usecases/index.md)
 - [微服务架构](usecases/microservices.md)
   - [微服务中的服务发现](usecases/service-discovery-in-microservices.md)
+  - [使用Java构建微服务并发布到Kubernetes平台](usecases/microservices-for-java-developers.md)
 - [Service Mesh 服务网格](usecases/service-mesh.md)
   - [Istio](usecases/istio.md)
     - [安装并试用Istio service mesh](usecases/istio-installation.md)
