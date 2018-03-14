@@ -13,7 +13,23 @@ Spring Boot已成为当今最流行的微服务开发框架，本文是如何使
 
 传统的Spring应用程序需要配置大量的XML文件才能运行，而使用Spring Boot只需极少的配置，就可以快速获得一个正常运行的Spring应用程序，而这些配置使用的都是注解的形式，不需要再配置XML。
 
-与Go语言的应用不同，我们知道所有的Java Web应用都必须放在servlet容器（不是像docker容器的那种容器），如Tomcat、Jetty等。Servlet容器被定位为托管web应用程序的高可用组件。
+与Go语言的应用不同，我们知道所有的Java Web应用都必须放在servlet容器（不是像docker容器的那种容器），如Tomcat、Jetty等。Servlet容器被定位为托管web应用程序的高可用组件。关于Servlet的教程请参考[Servlet教程 | runoob.com](http://www.runoob.com/servlet/servlet-tutorial.html)。
+
+## 使用Java构建微服务并发布到Kubernetes平台
+
+Java作为多年的编程语言届的No.1（使用人数最多，最流行），使用它来构建微服务的人也不计其数，Java的微服务框架Spring中的Spring Boot和Spring Cloud已成为当前最流行的微服务框架。
+
+下面是Sping技术栈所包含的技术框架图。
+
+![Spring技术栈](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/spring-stack.png)
+
+
+
+当然如果在Kubernetes中运行Java语言构建的微服务应用，我们不会使用上图中所有的技术，本节将主要讲解如何使用Spring Boot构建微服务应用。
+
+## Spring的基本原理
+
+Spring是一套Java开发框架，框架的作用就是为了减少代码的冗余和模块之间的偶尔，使代码逻辑更加清晰，主要是用了[AOP](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)（Aspect Oriented Programming，面向切面编程）和[IoC](http://blog.xiaohansong.com/2015/10/21/IoC-and-DI/)（Inversion of Control，控制反转）容器的思想，其中AOP是利用了Java的反射机制实现的。为了便于理解AOP可以参考[一个简单的Spring的AOP例子](http://www.blogjava.net/javadragon/archive/2006/12/03/85115.html)。
 
 ## 准备环境
 
@@ -388,8 +404,11 @@ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 # 参考
 
 - [Spring官方网站](https://spring.io/)
+- [Spring core technologies | spring.io](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html)
 - [Spring Boot——开发新一代Spring Java应用](https://www.tianmaying.com/tutorial/spring-boot-overview)
 - [Spring MVC快速入门教程](https://www.tianmaying.com/tutorial/spring-mvc-quickstart)
 - [Spring Boot Reference Guide中文翻译 -《Spring Boot参考指南》](https://github.com/qibaoguang/Spring-Boot-Reference-Guide)
 - [使用 Spring Boot 快速构建 Spring 框架应用](https://www.ibm.com/developerworks/cn/java/j-lo-spring-boot/)
 - [maven3常用命令、java项目搭建、web项目搭建详细图解](http://blog.csdn.net/edward0830ly/article/details/8748986)
+- [Servlet教程 | runoob.com](http://www.runoob.com/servlet/servlet-tutorial.html)
+- [AOP - Aspect Oriented Programming | spring.io](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)
