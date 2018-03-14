@@ -22,7 +22,7 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 
 [查看文档的组织结构与使用方法](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)
 
-以下是主要贡献者，所有的贡献者名单，请[查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)。感谢它们所做出的贡献！
+以下是主要贡献者，所有的贡献者名单，请[查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)。感谢大家所做出的贡献！
 
 | Name                                            | Avatar                                                       | Name                                            | Avatar                                                       | Name                                      | Avatar                                                       |
 | ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
