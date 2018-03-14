@@ -2,7 +2,7 @@
 
 > 注意：本文档中安装的是kubernetes dashboard v1.6.0，安装新版的dashboard请参考[升级dashboard](dashboard-upgrade.md)。
 
-官方文件目录：`kubernetes/cluster/addons/dashboard`
+官方文件目录：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dashboard
 
 我们使用的文件如下：
 
@@ -116,7 +116,7 @@ kubernetes-dashboard is running at https://172.20.0.113:6443/api/v1/proxy/namesp
 
 将生成的admin.pem证书转换格式
 
-```
+```bash
 openssl pkcs12 -export -in admin.pem  -out admin.p12 -inkey admin-key.pem
 ```
 
