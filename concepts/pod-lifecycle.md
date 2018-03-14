@@ -16,6 +16,10 @@ Pod 相位的数量和含义是严格指定的。除了本文档中列举的状�
 - 失败（Failed）：Pod 中的所有容器都已终止了，并且至少有一个容器是因为失败终止。也就是说，容器以非0状态退出或者被系统终止。
 - 未知（Unkonwn）：因为某些原因无法取得 Pod 的状态，通常是因为与 Pod 所在主机通信失败。
 
+下图是Pod的生命周期示意图，从图中可以看到Pod状态的变化。
+
+![Pod的生命周期示意图（图片来自网络）](../images/kubernetes-pod-life-cycle.jpg)
+
 ## Pod 状态
 
 Pod 有一个 PodStatus 对象，其中包含一个 [PodCondition](https://kubernetes.io/docs/resources-reference/v1.7/#podcondition-v1-core) 数组。 PodCondition 数组的每个元素都有一个 `type` 字段和一个 `status` 字段。`type` 字段是字符串，可能的值有 PodScheduled、Ready、Initialized 和 Unschedulable。`status` 字段是一个字符串，可能的值有 True、False 和 Unknown。
