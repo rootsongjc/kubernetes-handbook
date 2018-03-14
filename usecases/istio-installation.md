@@ -1,14 +1,16 @@
 # 安装并试用Istio service mesh
 
-本文根据官网的文档整理而成，步骤包括安装`istio 0.1.5`并创建一个bookinfo的微服务来测试istio的功能。
+官方文档地址 [快速开始](https://istio.io/docs/setup/kubernetes/)
 
-文中使用的yaml文件可以在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的`manifests/istio`目录中找到，所有的镜像都换成了我的私有镜像仓库地址，请根据官网的镜像自行修改。
+本文根据官网的文档整理而成，步骤包括安装**istio 0.5.1**并创建一个bookinfo的微服务来测试istio的功能。
+
+文中使用的yaml文件可以在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)的`manifests/istio`目录中找到，如果镜像pull失败，请根据官网的镜像自行修改。
 
 ## 安装环境
 
-- CentOS 7.3.1611
-- Docker 1.12.6
-- Kubernetes 1.6.0
+- CentOS 7.4.1708
+- Docker 17.12.0-ce
+- Kubernetes 1.8.5
 
 ## 安装
 
@@ -19,139 +21,189 @@
 下载Linux版本的当前最新版安装包
 
 ```bash
-wget https://github.com/istio/istio/releases/download/0.1.5/istio-0.1.5-linux.tar.gz
+wget https://github.com/istio/istio/releases/download/0.5.1/istio-0.5.1-linux.tar.gz
 ```
 
 **2.解压**
 
 解压后，得到的目录结构如下：
 
-```
-.
+```bash
 ├── bin
 │   └── istioctl
 ├── install
-│   └── kubernetes
-│       ├── addons
-│       │   ├── grafana.yaml
-│       │   ├── prometheus.yaml
-│       │   ├── servicegraph.yaml
-│       │   └── zipkin.yaml
-│       ├── istio-auth.yaml
-│       ├── istio-rbac-alpha.yaml
-│       ├── istio-rbac-beta.yaml
-│       ├── istio.yaml
-│       ├── README.md
-│       └── templates
-│           ├── istio-auth
-│           │   ├── istio-auth-with-cluster-ca.yaml
-│           │   ├── istio-cluster-ca.yaml
-│           │   ├── istio-egress-auth.yaml
-│           │   ├── istio-ingress-auth.yaml
-│           │   └── istio-namespace-ca.yaml
-│           ├── istio-egress.yaml
-│           ├── istio-ingress.yaml
-│           ├── istio-manager.yaml
-│           └── istio-mixer.yaml
+│   ├── ansible
+│   ├── consul
+│   ├── eureka
+│   ├── gcp
+│   ├── kubernetes
+│   ├── README.md
+│   └── tools
 ├── istio.VERSION
 ├── LICENSE
-└── samples
-    ├── apps
-    │   ├── bookinfo
-    │   │   ├── bookinfo.yaml
-    │   │   ├── cleanup.sh
-    │   │   ├── destination-ratings-test-delay.yaml
-    │   │   ├── loadbalancing-policy-reviews.yaml
-    │   │   ├── mixer-rule-additional-telemetry.yaml
-    │   │   ├── mixer-rule-empty-rule.yaml
-    │   │   ├── mixer-rule-ratings-denial.yaml
-    │   │   ├── mixer-rule-ratings-ratelimit.yaml
-    │   │   ├── README.md
-    │   │   ├── route-rule-all-v1.yaml
-    │   │   ├── route-rule-delay.yaml
-    │   │   ├── route-rule-reviews-50-v3.yaml
-    │   │   ├── route-rule-reviews-test-v2.yaml
-    │   │   ├── route-rule-reviews-v2-v3.yaml
-    │   │   └── route-rule-reviews-v3.yaml
-    │   ├── httpbin
-    │   │   ├── httpbin.yaml
-    │   │   └── README.md
-    │   └── sleep
-    │       ├── README.md
-    │       └── sleep.yaml
-    └── README.md
-
-11 directories, 41 files
+├── README.md
+├── samples
+│   ├── bookinfo
+│   ├── CONFIG-MIGRATION.md
+│   ├── helloworld
+│   ├── httpbin
+│   ├── kubernetes-blog
+│   ├── rawvm
+│   ├── README.md
+│   └── sleep
+└── tools
+    ├── cache_buster.yaml
+    ├── deb
+    ├── githubContrib
+    ├── minikube.md
+    ├── perf_istio_rules.yaml
+    ├── perf_k8svcs.yaml
+    ├── README.md
+    ├── rules.yml
+    ├── setup_perf_cluster.sh
+    ├── setup_run
+    ├── update_all
+    └── vagrant
 ```
 
 从文件里表中可以看到，安装包中包括了kubernetes的yaml文件，示例应用和安装模板。
 
-**3.安装istioctl**
+**3.先决条件**
 
-将`./bin/istioctl`拷贝到你的`$PATH`目录下。
+以下说明要求您可以访问启用了RBAC（基于角色的访问控制）的Kubernetes1.7.3或更新的群集。您还需要安装1.7.3或更高版本。如果您希望启用automatic sidecar injection，则需要Kubernetes 1.9或更高版本。kubectl
 
-**4.检查RBAC**
+注意：如果您安装了Istio 0.1.x，请在安装新版本之前彻底卸载它（包括适用于所有启用Istio的应用程序窗口的Istio支架）。
+安装或升级Kubernetes CLIkubectl以匹配群集支持的版本（CRD支持版本为1.7或更高版本）。
 
-因为我们安装的kuberentes版本是1.6.0默认支持RBAC，这一步可以跳过。如果你使用的其他版本的kubernetes，请参考[官方文档](https://istio.io/docs/tasks/installing-istio.html)操作。
+根据您的Kubernetes提供者：
 
-执行以下命令，正确的输出是这样的：
+要在本地安装Istio，请安装最新版本的Minikube（版本0.22.1或更高版本）。
+
+**4.安装步骤**
+
+从0.2版本开始，Istio安装在它自己的istio-system命名空间中，并且可以管理来自所有其他命名空间的服务。
+
+转至Istio发布页面以下载与您的操作系统相对应的安装文件。如果您使用的是MacOS或Linux系统，以下命令自动下载并提取最新版本：
+
+```bash 
+curl -L https://git.io/getLatestIstio | sh -
+```
+
+解压缩安装文件并将目录更改为文件位置。
+
+*安装目录包含*：
+
+    Installation .yaml Kubernetes的安装文件
+    Sample/ 示例应用程序
+    bin/istioctl 二进制bin/文件 在手动注入Envoy作为附属代理并创建路由规则和策略时使用.
+    istio.VERSION配置文件
+例如，如果包是istio-0.5（初步）
+
+```bash 
+cd istio-0.5 (preliminary)
+```
+将istioctl客户端添加到您的PATH。例如，在MacOS或Linux系统上运行以下命令：
 
 ```bash
-$ kubectl api-versions | grep rbac
-rbac.authorization.k8s.io/v1alpha1
-rbac.authorization.k8s.io/v1beta1
+export PATH=$PWD/bin:$PATH
 ```
 
-**5.创建角色绑定**
+安装Istio的核心组件。从下面两个互相排斥的选项中选择一个，或者用Helm Chart交替安装：
+a）安装Istio而不启用侧车间的相互TLS认证。为具有现有应用程序的群集，使用Istio辅助车的服务需要能够与其他非Istio Kubernetes服务以及使用活动性和准备就绪探测器，无头服务或StatefulSets的应用程序通信的应用程序选择此选项。
 
-```bash
-$ kubectl create -f install/kubernetes/istio-rbac-beta.yaml
-clusterrole "istio-manager" created
-clusterrole "istio-ca" created
-clusterrole "istio-sidecar" created
-clusterrolebinding "istio-manager-admin-role-binding" created
-clusterrolebinding "istio-ca-role-binding" created
-clusterrolebinding "istio-ingress-admin-role-binding" created
-clusterrolebinding "istio-sidecar-role-binding" created
-```
-
-注意：官网的安装包中的该文件中存在RoleBinding错误，应该是集群级别的`clusterrolebinding`，而release里的代码只是普通的`rolebinding`，查看该Issue [Istio manager cannot list of create k8s TPR when RBAC enabled #327](https://github.com/istio/istio/issues/327)。
-
-**6.安装istio核心组件**
-
-用到的镜像有：
-
-```
-docker.io/istio/mixer:0.1.5
-docker.io/istio/manager:0.1.5
-docker.io/istio/proxy_debug:0.1.5
-```
-
-我们暂时不开启[Istio Auth](https://istio.io/docs/concepts/network-and-auth/auth.html)。
-
-> 本文中用到的所有yaml文件中的`type: LoadBalancer`去掉，使用默认的ClusterIP，然后配置Traefik ingress，就可以在集群外部访问。请参考[安装Traefik ingress](../practice/traefik-ingress-installation.md)。
-
-```bash
+```bash 
 kubectl apply -f install/kubernetes/istio.yaml
+```
+
+**要么**
+
+b）安装Istio并启用侧柜之间的相互TLS认证：
+
+```bash 
+kubectl apply -f install/kubernetes/istio-auth.yaml
+```
+
+这两个选项都会创建istio-system命名空间以及所需的RBAC权限，并部署Istio-Pilot，Istio-Mixer，Istio-Ingress和Istio-CA（证书颁发机构）。
+
+可选：如果您的群集的Kubernetes版本是1.9或更高，并且您希望启用自动代理注入，请安装sidecar injector webhook。
+验证安装
+请确保以下Kubernetes服务部署：istio-pilot，istio-mixer，istio-ingress。
+
+```bash 
+kubectl get svc -n istio-system
+```
+
+```bash 
+NAME            CLUSTER-IP      EXTERNAL-IP       PORT(S)                       AGE
+istio-ingress   10.83.245.171   35.184.245.62     80:32730/TCP,443:30574/TCP    5h
+istio-pilot     10.83.251.173   <none>            8080/TCP,8081/TCP             5h
+istio-mixer     10.83.244.253   <none>            9091/TCP,9094/TCP,42422/TCP   5h
+```
+
+**注意：如果您的集群中不支持外部负载平衡（例如，MINIKUBE）的环境中运行，该EXTERNAL-IP的ISTIO-INGRESS说<PENDING>。您必须使用服务NODEPORT访问应用程序，或使用端口转发.**
+
+**注意：修改ISTIO.YAML或者ISTIO.YAML中的ISTIO-INGRESS SERVER的TYPE为CLUSTERIP****
+
+确保相应Kubernetes容器都运行起来：istio-pilot-*，istio-mixer-*，istio-ingress-*，istio-ca-*，和可选的istio-sidecar-injector-*。
+    
+
+```bash 
+kubectl get pods -n istio-system
+```
+```bash 
+istio-ca-3657790228-j21b9                1/1       Running   0          5h
+istio-ingress-1842462111-j3vcs           1/1       Running   0          5h
+istio-sidecar-injector-184129454-zdgf5   1/1       Running   0          5h
+istio-pilot-2275554717-93c43             1/1       Running   0          5h
+istio-mixer-2104784889-20rm8             2/2       Running   0          5h
+```
+部署您的应用程序
+您现在可以部署您自己的应用程序或者像Bookinfo一样随安装提供的示例应用程序之一。注意：应用程序必须对所有HTTP通信使用HTTP / 1.1或HTTP / 2.0协议，因为HTTP / 1.0不受支持。
+
+如果您启动了Istio-sidecar-injector，如上所示，您可以直接使用应用程序部署应用程序kubectl create。
+
+Istio Sidecar注入器会自动将Envoy容器注入到您的应用程序窗格中，假设运行在标有名称空间的名称空间中istio-injection=enabled
+
+```bash 
+kubectl label namespace <namespace> istio-injection=enabled
+```
+
+```bash
+kubectl create -n <namspace> -f <your-app-spec>.yaml
+```
+
+如果您没有安装Istio-sidecar-injector，则在部署它们之前，必须使用istioctl kube-inject将Envoy容器手动注入应用程序窗格中：
+
+```bash 
+kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
+```
+
+ **卸载** 
+
+卸载Istio sidecar进样器：
+
+如果您启用Istio-sidecar-injector，请将其卸载：
+
+kubectl delete -f install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
+
+卸载Istio核心组件。对于0.6（初始）发行版，卸载将删除RBAC权限，istio-system命名空间和分层下的所有资源。忽略不存在资源的错误是安全的，因为它们可能已被分层删除。
+
+a）如果您在禁用相互TLS身份验证的情况下安装了Istio：
+
+```bash 
+kubectl delete -f install/kubernetes/istio.yaml
+```
+
+要么
+
+b）如果您在启用相互TLS身份验证的情况下安装了Istio：
+
+```bash 
+kubectl delete -f install/kubernetes/istio-auth.yaml
 ```
 
 **7.安装监控插件**
 
-用到的镜像有：
-
-```
-docker.io/istio/grafana:0.1.5
-quay.io/coreos/prometheus:v1.1.1
-gcr.io/istio-testing/servicegraph:latest
-docker.io/openzipkin/zipkin:latest
-```
-
-为了方便下载，其中两个镜像我备份到了时速云：
-
-```
-index.tenxcloud.com/jimmy/prometheus:v1.1.1
-index.tenxcloud.com/jimmy/servicegraph:latest
-```
 
 安装插件
 
@@ -345,4 +397,4 @@ BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由�
 
 [Installing Istio](https://istio.io/docs/tasks/installing-istio.html)
 
-[BookInfo sample](https://istio.io/docs/samples/bookinfo.html)
+[BookInfo sample](https://istio.io/docs/guides/bookinfo.html)
