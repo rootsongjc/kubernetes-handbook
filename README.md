@@ -18,18 +18,13 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 
 ## 贡献与致谢
 
+感谢大家对本书做出的贡献！
+
+[查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)
+
 [查看如何贡献](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CONTRIBUTING.md)
 
 [查看文档的组织结构与使用方法](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)
-
-以下是主要贡献者，所有的贡献者名单，请[查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)。感谢大家所做出的贡献！
-
-| Name                                            | Avatar                                                       | Name                                            | Avatar                                                       | Name                                      | Avatar                                                       |
-| ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
-| [rootsongjc](https://github.com/rootsongjc)     | [![img](https://avatars3.githubusercontent.com/u/3328185?v=3&s=60)](https://avatars3.githubusercontent.com/u/3328185?v=3&s=60) | [feiskyer](https://github.com/feiskyer)         | [![img](https://avatars3.githubusercontent.com/u/676637?v=3&s=60)](https://avatars3.githubusercontent.com/u/676637?v=3&s=60) | [zhangmx](https://github.com/zhangmx)     | [![img](https://avatars2.githubusercontent.com/u/1308646?v=3&s=60)](https://avatars2.githubusercontent.com/u/1308646?v=3&s=60) |
-| [ResolveWang](https://github.com/ResolveWang)   | [![img](https://avatars3.githubusercontent.com/u/8018776?v=3&s=60)](https://avatars3.githubusercontent.com/u/8018776?v=3&s=60) | [duffqiu](https://github.com/duffqiu)           | [![img](https://avatars1.githubusercontent.com/u/5739682?v=3&s=60)](https://avatars1.githubusercontent.com/u/5739682?v=3&s=60) | [neuwzm](https://github.com/neuwzm)       | [![img](https://avatars1.githubusercontent.com/u/17195865?v=3&s=60)](https://avatars1.githubusercontent.com/u/17195865?v=3&s=60) |
-| [Michael2008S](https://github.com/Michael2008S) | [![img](https://avatars3.githubusercontent.com/u/1240769?v=3&s=60)](https://avatars3.githubusercontent.com/u/1240769?v=3&s=60) | [dangzhiqiang](https://github.com/dangzhiqiang) | [![img](https://avatars3.githubusercontent.com/u/5242135?v=3&s=60)](https://avatars3.githubusercontent.com/u/5242135?v=3&s=60) | [imroc](https://github.com/imroc)         | [![img](https://avatars3.githubusercontent.com/u/7448852?v=3&s=60)](https://avatars3.githubusercontent.com/u/7448852?v=3&s=60) |
-| [liubin](https://github.com/liubin)             | [![img](https://avatars3.githubusercontent.com/u/1212008?v=3&s=60)](https://avatars3.githubusercontent.com/u/1212008?v=3&s=60) | [JinsYin](https://github.com/JinsYin)           | [![img](https://avatars3.githubusercontent.com/u/12714609?v=3&s=60)](https://avatars3.githubusercontent.com/u/12714609?v=3&s=60) | [recall704](https://github.com/recall704) | [![img](https://avatars3.githubusercontent.com/u/7451408?v=3&s=60)](https://avatars3.githubusercontent.com/u/7451408?v=3&s=60) |
 
 ## Stargazers over time
 
