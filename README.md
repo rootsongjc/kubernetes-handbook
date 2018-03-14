@@ -4,73 +4,32 @@
 
 本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关于关注kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。
 
+本书的主题不仅限于Kubernetes，还包括以下几大主题：
+
+- 云原生应用与微服务架构
+- 将微服务与Service mesh架构的代码级呈现
+- Kubernetes与微服务结合实践
+
 起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的kubernetes版本和示例也将随之更新。
 
 GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
 
 Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 
-## 如何使用本书
-
-**在线浏览**
-
-访问 https://jimmysong.io/kubernetes-handbook/
-
-**注意：文中涉及的配置文件和代码链接在网页中将无法访问，请下载GitHub源码后，在Markdown编辑器中打开，点击链接将跳转到你的本地目录，推荐使用[typora](https://typora.io)，或者直接登录[github](https://github.com/rootsongjc/kubernetes-handbook) 查看。**
-
-**本地查看**
-
-1. 将代码克隆到本地
-2. 安装 gitbook：[Setup and Installation of GitBook](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md)
-3. 执行 gitbook serve
-4. 在浏览器中访问 http://localhost:4000
-5. 生成的文档在 `_book` 目录下
-
-**下载 PDF/ePub/Mobi 格式文档本地查看**
-
-访问 [gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details) 可以看到下载地址，可以下载根据最新文档生成的 **PDF/ePub/Mobi** 格式文档（文档的注脚中注明了更新时间），同时也可以直接在 gitbook 中阅读，不过 gitbook 不太稳定打开速度较慢，建议大家直接在 https://jimmysong.io/kubernetes-handbook/ 浏览。
-
-**生成 pdf**
-
-[下载Calibre](http://calibre-ebook.com/download)
-
-- **On Mac**
-
-在Mac下安装后，使用该命令创建链接
-
-```
-ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
-```
-
-在该项目目录下执行以下命令生成`kubernetes-handbook.pdf`文档。
-
-```
-gitbook pdf . ./kubernetes-handbook.pdf
-```
-
-- **On Windows**
-
-需要用到的工具：[calibre](http://calibre-ebook.com/)，[phantomjs](http://phantomjs.org/download.html)
-
-1. 将上述2个安装，calibre 默认安装的路径 `C:\Program Files\Calibre2` 为你解压路径；
-2. 并将其目录均加入到系统变量 path 中,参考:目录添加到系统变量 path 中；
-3. 在 cmd 打开你需要转 pdf 的文件夹,输入`gitbook pdf`即可；
-
-**生成单个章节的pdf**
-
-使用`pandoc`和`latex`来生成pdf格式文档。
-
-```bash
-pandoc --latex-engine=xelatex --template=pm-template input.md -o output.pdf
-```
-
-## 关于
-
-感谢以下所有的贡献者！
-
-[贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)
+## 贡献与致谢
 
 [查看如何贡献](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CONTRIBUTING.md)
+
+[查看文档的组织结构与使用方法](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)
+
+以下是主要贡献者，所有的贡献者名单，请[查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)。感谢它们所做出的贡献！
+
+| Name                                            | Avatar                                                       | Name                                            | Avatar                                                       | Name                                      | Avatar                                                       |
+| ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
+| [rootsongjc](https://github.com/rootsongjc)     | [![img](https://avatars3.githubusercontent.com/u/3328185?v=3&s=60)](https://avatars3.githubusercontent.com/u/3328185?v=3&s=60) | [feiskyer](https://github.com/feiskyer)         | [![img](https://avatars3.githubusercontent.com/u/676637?v=3&s=60)](https://avatars3.githubusercontent.com/u/676637?v=3&s=60) | [zhangmx](https://github.com/zhangmx)     | [![img](https://avatars2.githubusercontent.com/u/1308646?v=3&s=60)](https://avatars2.githubusercontent.com/u/1308646?v=3&s=60) |
+| [ResolveWang](https://github.com/ResolveWang)   | [![img](https://avatars3.githubusercontent.com/u/8018776?v=3&s=60)](https://avatars3.githubusercontent.com/u/8018776?v=3&s=60) | [duffqiu](https://github.com/duffqiu)           | [![img](https://avatars1.githubusercontent.com/u/5739682?v=3&s=60)](https://avatars1.githubusercontent.com/u/5739682?v=3&s=60) | [neuwzm](https://github.com/neuwzm)       | [![img](https://avatars1.githubusercontent.com/u/17195865?v=3&s=60)](https://avatars1.githubusercontent.com/u/17195865?v=3&s=60) |
+| [Michael2008S](https://github.com/Michael2008S) | [![img](https://avatars3.githubusercontent.com/u/1240769?v=3&s=60)](https://avatars3.githubusercontent.com/u/1240769?v=3&s=60) | [dangzhiqiang](https://github.com/dangzhiqiang) | [![img](https://avatars3.githubusercontent.com/u/5242135?v=3&s=60)](https://avatars3.githubusercontent.com/u/5242135?v=3&s=60) | [imroc](https://github.com/imroc)         | [![img](https://avatars3.githubusercontent.com/u/7448852?v=3&s=60)](https://avatars3.githubusercontent.com/u/7448852?v=3&s=60) |
+| [liubin](https://github.com/liubin)             | [![img](https://avatars3.githubusercontent.com/u/1212008?v=3&s=60)](https://avatars3.githubusercontent.com/u/1212008?v=3&s=60) | [JinsYin](https://github.com/JinsYin)           | [![img](https://avatars3.githubusercontent.com/u/12714609?v=3&s=60)](https://avatars3.githubusercontent.com/u/12714609?v=3&s=60) | [recall704](https://github.com/recall704) | [![img](https://avatars3.githubusercontent.com/u/7451408?v=3&s=60)](https://avatars3.githubusercontent.com/u/7451408?v=3&s=60) |
 
 ## Stargazers over time
 
