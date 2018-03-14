@@ -8,6 +8,10 @@ Spring Boot旨在简化创建产品级的Spring应用和服务，简化了配置
 
 与Go语言的应用不同，我们知道所有的Java Web应用都必须放在servlet容器（不是像docker容器的那种容器），如Tomcat、Jetty等。Servlet容器被定位为托管web应用程序的高可用组件。关于Servlet的教程请参考[Servlet教程 | runoob.com](http://www.runoob.com/servlet/servlet-tutorial.html)。
 
+## Spring的基本原理
+
+Spring是一套Java开发框架，框架的作用就是为了减少代码的冗余和模块之间的偶尔，使代码逻辑更加清晰，主要是用了[AOP](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)（Aspect Oriented Programming，面向切面编程）和[IoC](http://blog.xiaohansong.com/2015/10/21/IoC-and-DI/)（Inversion of Control，控制反转）容器的思想，其中AOP是利用了Java的反射机制实现的。为了便于理解AOP可以参考[一个简单的Spring的AOP例子](http://www.blogjava.net/javadragon/archive/2006/12/03/85115.html)。
+
 ## 准备环境
 
 在开始Spring Boot开发之前，需要先确认您的电脑上已经有以下环境：
@@ -381,9 +385,11 @@ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 # 参考
 
 - [Spring官方网站](https://spring.io/)
+- [Spring core technologies | spring.io](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html)
 - [Spring Boot——开发新一代Spring Java应用](https://www.tianmaying.com/tutorial/spring-boot-overview)
 - [Spring MVC快速入门教程](https://www.tianmaying.com/tutorial/spring-mvc-quickstart)
 - [Spring Boot Reference Guide中文翻译 -《Spring Boot参考指南》](https://github.com/qibaoguang/Spring-Boot-Reference-Guide)
 - [使用 Spring Boot 快速构建 Spring 框架应用](https://www.ibm.com/developerworks/cn/java/j-lo-spring-boot/)
 - [maven3常用命令、java项目搭建、web项目搭建详细图解](http://blog.csdn.net/edward0830ly/article/details/8748986)
 - [Servlet教程 | runoob.com](http://www.runoob.com/servlet/servlet-tutorial.html)
+- [AOP - Aspect Oriented Programming | spring.io](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)
