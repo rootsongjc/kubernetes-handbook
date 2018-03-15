@@ -27,6 +27,12 @@ Java作为多年的编程语言届的No.1（使用人数最多，最流行），
 
 当然如果在Kubernetes中运行Java语言构建的微服务应用，我们不会使用上图中所有的技术，本节将主要讲解如何使用Spring Boot构建微服务应用。
 
+下图是Spring Boot的一些知识点。
+
+![Spring Boot的知识点](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/spring-boot-note-spots.png)
+
+Spring Boot是Spring框架的一部分，关于Spring的核心技术请参考[Spring core technologies - spring.io](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html)。
+
 ## Spring的基本原理
 
 Spring是一套Java开发框架，框架的作用就是为了减少代码的冗余和模块之间的偶尔，使代码逻辑更加清晰，主要是用了[AOP](https://docs.spring.io/spring/docs/2.5.x/reference/aop.html)（Aspect Oriented Programming，面向切面编程）和[IoC](http://blog.xiaohansong.com/2015/10/21/IoC-and-DI/)（Inversion of Control，控制反转）容器的思想，其中AOP是利用了Java的反射机制实现的。为了便于理解AOP可以参考[一个简单的Spring的AOP例子](http://www.blogjava.net/javadragon/archive/2006/12/03/85115.html)。
