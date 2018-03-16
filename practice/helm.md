@@ -41,10 +41,12 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 然后安装helm服务端tiller
 
 ```bash
-helm init -i jimmysong/kubernetes-helm-tiller:v2.3.1
+helm init -i jimmysong/kubernetes-helm-tiller:v2.8.1 
 ```
+(目前最新版v2.8.1，可以使用阿里云镜像，如：
+helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.5.1 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts）
 
-我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.3.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.3.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
+我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.8.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.8.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
 
 为应用程序设置`serviceAccount`：
 
