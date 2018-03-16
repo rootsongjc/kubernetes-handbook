@@ -330,6 +330,19 @@ dependencies:
 
 ### 安装源
 
+#####################################################################
+使用第三方chat库
+
+。添加fabric8库
+
+    $helm repo add fabric8 https://fabric8.io/helm
+
+。搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI,CD的全套工具）
+
+    $helm search fabric8
+
+#####################################################################
+
 我们在前面安装chart可以通过HTTP server的方式提供。
 
 ```bash
