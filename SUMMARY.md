@@ -28,6 +28,7 @@
   - [Pod概览](concepts/pod-overview.md)
   - [Pod解析](concepts/pod.md)
   - [Init容器](concepts/init-containers.md)
+  - [Pause容器](concepts/pause-container.md)
   - [Pod安全策略](concepts/pod-security-policy.md)
   - [Pod的生命周期](concepts/pod-lifecycle.md)
   - [Pod Hook](concepts/pod-hook.md)
