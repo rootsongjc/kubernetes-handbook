@@ -79,6 +79,16 @@ thirdpartyresources
 
 如果你还创建了CRD（自定义资源定义），则在此会出现CRD的API。
 
+### 查看集群中所有的Pod信息
+
+例如我们直接从etcd中查看kubernetes集群中所有的pod的信息，可以使用下面的命令：
+
+```bash
+ETCDCTL_API=3 etcdctl get /registry/pods --prefix -w json|python -m json.tool
+```
+
+此时将看到json格式输出的结果，其中的`key`使用了`base64`编码，关于etcdctl命令的详细用法请参考[使用etcdctl访问kubernetes数据](../guide/using-etcdctl-to-access-kubernetes-data.md)。
+
 ## Etcd V2与V3版本API的区别
 
 Etcd V2和V3之间的数据结构完全不同，互不兼容，也就是说使用V2版本的API创建的数据只能使用V2的API访问，V3的版本的API创建的数据只能使用V3的API访问。这就造成我们访问etcd中保存的flannel的数据需要使用`etcdctl`的V2版本的客户端，而访问kubernetes的数据需要设置`ETCDCTL_API=3`环境变量来指定V3版本的API。
