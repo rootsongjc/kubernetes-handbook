@@ -1,10 +1,12 @@
 ---
 date: "2017-03-08T20:40:08+08:00"
-title: "Vagrant介绍-从使用到放弃完全指南"
+title: "Vagrant介绍-从使用到放弃再到掌握完全指南"
+subtitle: "我在一年内使用Vagrant的心路历程"
+description: "我使用Vagrant的心路历程"
 draft: false
-tags: ["vagrant","tools","hashicorp"]
+tags: ["vagrant"]
 categories: ["devops"]
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017030513.jpg", desc: "北京光熙家园夜景"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017030513.jpg", desc: "光熙家园夜景,Beijing|Mar 05,2017"}]
 ---
 
 ## 起源
@@ -231,3 +233,17 @@ end
 ## 总结
 
 总的来说说Vagrant没有Docker好用，但是对于协同开发，用它来定义分布式开发环境还可以，ruby的语法看着有点不习惯，好在也不复杂，如果是团队几个人开发，弄几个虚拟机大家互相拷贝一下也没那么复杂吧？
+
+---
+
+以上内容写于2017年3月8日，下面是更新。
+
+一年前初次接触Vagrant感觉它很繁琐，为了创建几个隔离的环境要费好大的功夫，要直接从启动虚拟机起开始安装各种软件，跟docker比自然是不能比的，但是最近我又需要一个kubernetes的分布式开发环境：<https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster>，因此又把vagrant捡起来了，用了也有几个月，有一点心得分享给大家。
+
+- 首先Vagrant并不是那么难用，对于需要一个纯粹的隔离的从纯净的操作系统级别开始部署的分布式应用来说，用它来启动和做虚拟机配置还是比较方便的。
+- Vagrantfile中支持多种格式的脚本，我使用的是shell，在写脚本的时候要特别注意格式，比如用`cat`或者`echo`输入文本命令内容到文件中时候一定要注意每行开头不要有空格。
+- Vagrant会把`Vagrantfile`文件所在目录下的所有文件同步复制到虚拟机中的`/vagrant`目录下，所有命令都是使用vagrant用户执行的。
+
+---
+
+更新于2018年3月18日
