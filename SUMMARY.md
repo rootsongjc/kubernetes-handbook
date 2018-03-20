@@ -129,6 +129,7 @@
   - [安装Nginx ingress](practice/nginx-ingress-installation.md)
   - [配置内置DNS（kube-dns）](practice/configuring-dns.md)
 - [运维管理](practice/operation.md)
+   - [Master节点高可用](practice/master-ha.md)
    - [服务滚动升级](practice/service-rolling-update.md)
    - [应用日志收集](practice/app-log-collection.md)
    - [配置最佳实践](practice/configuration-best-practice.md)
