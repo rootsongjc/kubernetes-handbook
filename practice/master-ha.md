@@ -5,9 +5,14 @@
 
 在大神gzmzj的ansible创建kubernetes集群神作中有讲到如何配置多个Master，但是在实践过程中还是遇到不少坑。需要将坑填上才能工作。
 神作链接地址：
+```
 https://github.com/mendickxiao/kubeasz/blob/master/docs/00-%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%82%E6%95%B0%E8%AE%BE%E5%AE%9A.md
+```
 
 按照神作的描述，实际上是通过keepalived + haproxy实现的，其中keepalived是提供一个VIP，通过VIP关联所有的Master节点；然后haproxy提供端口转发功能。由于VIP还是存在Master的机器上的，默认配置API Server的端口是6443，所以我们需要将另外一个端口关联到这个VIP上，一般用8443。
+
+![Image of Yaktocat](https://github.com/mendickxiao/kubernetes-handbook/blob/patch-1/practice/master-ha.JPG)
+
 
 根据神作的实践，我发现需要在Master手工安装keepalived, haproxy。
 ```
