@@ -21,7 +21,30 @@ Forbidden (403)
 User "system:serviceaccount:kube-system:default" cannot list jobs.batch in the namespace "default". (get jobs.batch)
 ```
 
-增加了一个`dashboard-rbac.yaml`文件，定义一个名为 dashboard 的 ServiceAccount，然后将它和 Cluster Role view 绑定。
+增加了一个`dashboard-rbac.yaml`文件，定义一个名为 dashboard 的 ServiceAccount，然后将它和 Cluster Role view 绑定，如下：
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dashboard
+  namespace: kube-system
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: dashboard
+subjects:
+  - kind: ServiceAccount
+    name: dashboard
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+```
+
+然后使用`kubectl apply -f dashboard-rbac.yaml`创建。
 
 ## 配置dashboard-service
 
