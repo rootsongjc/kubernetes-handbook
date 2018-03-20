@@ -11,7 +11,7 @@ https://github.com/mendickxiao/kubeasz/blob/master/docs/00-%E9%9B%86%E7%BE%A4%E8
 
 按照神作的描述，实际上是通过keepalived + haproxy实现的，其中keepalived是提供一个VIP，通过VIP关联所有的Master节点；然后haproxy提供端口转发功能。由于VIP还是存在Master的机器上的，默认配置API Server的端口是6443，所以我们需要将另外一个端口关联到这个VIP上，一般用8443。
 
-![Image of Yaktocat](https://github.com/mendickxiao/kubernetes-handbook/blob/patch-1/practice/master-ha.JPG)
+![Image of Yaktocat](https://github.com/mendickxiao/kubernetes-handbook/blob/patch-1/images/master-ha.JPG)
 
 
 根据神作的实践，我发现需要在Master手工安装keepalived, haproxy。
