@@ -344,6 +344,68 @@ Now serving you on 127.0.0.1:8879
 
 点击链接即可以下载chart的压缩包。
 
+## 注意事项
+
+下面列举一些常见问题，和在解决这些问题时候的注意事项。
+
+### 服务依赖管理
+
+所有使用helm部署的应用中如果没有特别指定chart的名字都会生成一个随机的`Release name`，例如`romping-frog`、`sexy-newton`等，跟启动docker容器时候容器名字的命名规则相同，而真正的资源对象的名字是在YAML文件中定义的名字，我们成为`App name`，两者连接起来才是资源对象的实际名字：`Release name`-`App name`。
+
+而使用helm chart部署的包含依赖关系的应用，都会使用同一套`Release name`，在配置YAML文件的时候一定要注意在做服务发现时需要配置的服务地址，如果使用环境变量的话，需要像下面这样配置。
+
+```yaml
+env:
+ - name: SERVICE_NAME
+   value: "{{ .Release.Name }}-{{ .Values.image.env.SERVICE_NAME }}"
+```
+
+这是使用了Go template的语法。至于`{{ .Values.image.env.SERVICE_NAME }}`的值是从`values.yaml`文件中获取的，所以需要在`values.yaml`中增加如下配置：
+
+```yaml
+image:
+  env:
+    SERVICE_NAME: k8s-app-monitor-test
+```
+
+### 解决本地chart依赖
+
+在本地当前chart配置的目录下启动helm server，我们不指定任何参数，直接使用默认端口启动。
+
+```bash
+helm serve
+```
+
+将该repo加入到repo list中。
+
+```bash
+helm repo add local http://localhost:8879
+```
+
+在浏览器中访问<http://localhost:8879>可以看到所有本地的chart。
+
+然后下载依赖到本地。
+
+```bash
+helm dependency update
+```
+
+这样所有的chart都会下载到本地的`charts`目录下。
+
+### 设置helm命令自动补全
+
+为了方便helm命令的使用，helm提供了自动补全功能，如果使用zsh请执行：
+
+```bash
+source <(helm completion zsh)
+```
+
+如果使用bash请执行：
+
+```bash
+source <(helm completion bash)
+```
+
 ## 部署MEAN测试案例
 
 MEAN是用来构建网站和web应用的免费开源的JavaScript软件栈，该软件栈包括MongoDB、Express.js、Angular和Node.js。
