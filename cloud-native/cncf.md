@@ -10,7 +10,7 @@ CNCF作为一个厂商中立的基金会，致力于Github上的快速成长的�
 
 其中包含了CNCF中托管的项目，还有很多是非CNCF项目。 
 
-关于CNCF的使命与组织方式请参考[CNCF宪章](https://www.cncf.io/about/charter/)，概括的讲CNCF的使命宝库以下三点：
+关于CNCF的使命与组织方式请参考[CNCF宪章](https://www.cncf.io/about/charter/)，概括的讲CNCF的使命包括以下三点：
 
 - 容器化包装。
 - 通过中心编排系统的动态资源管理。
