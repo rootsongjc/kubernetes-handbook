@@ -2,7 +2,7 @@
 
 本书的主角是Kubernetes，在开始后面几章的长篇大论之前让大家可以零基础上手，揭开Kubernetes的神秘面纱。
 
-本文不是讲解Kubernetes的高深原理也不是讲Kuberentes的具体用法，而是通过[Play with Kubernetes](https://labs.play-with-k8s.com/)来带您进入Kubernetes的世界，相当于Kubernetes世界的“Hello World”！而且除了一台可以上网的电脑和浏览器之外不需要再准备任何东西，甚至（至少目前为止）都需要注册账号，上手即玩。
+本文不是讲解Kubernetes的高深原理也不是讲Kuberentes的具体用法，而是通过[Play with Kubernetes](https://labs.play-with-k8s.com/)来带您进入Kubernetes的世界，相当于Kubernetes世界的“Hello World”！而且除了一台可以上网的电脑和浏览器之外不需要再准备任何东西，甚至（至少目前为止）不需要注册账号，上手即玩。
 
 当然免费使用也是有限制的，当前的限制如下：
 
