@@ -1,14 +1,23 @@
 ---
-title: "如何开发部署kubernetes native应用"
-date: 2017-09-14T19:45:44+08:00
+title: "适用于kubernetes的应用开发部署流程同时集成Istio service mesh"
+date: 2018-03-26T22:48:44+08:00
+subtitle: "如何开发部署kubernetes native应用"
+description: "本文讲解了如何开发容器化应用，并使用Wercker持续集成工具构建docker镜像上传到docker镜像仓库中，然后在本地使用docker-compose测试后，再使用kompose自动生成kubernetes的yaml文件，再将注入Envoy sidecar容器，集成Istio service mesh中的详细过程。"
 draft: false
 categories: "cloud-native"
-tags: ["kubernetes","cloud-native"]
+tags: ["kubernetes","cloud-native","istio","service-mesh","wercker"]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018032501.jpg", desc: "Bird's-eye view of a Chinese city|Tianjin|Mar 25,2018"}]
 ---
 
-## 摘要
+本文讲解了如何开发容器化应用，并使用Wercker持续集成工具构建docker镜像上传到docker镜像仓库中，然后在本地使用`docker-compose`测试后，再使用`kompose`自动生成kubernetes的yaml文件，再将注入Envoy sidecar容器，集成Istio service mesh中的详细过程。
 
-当我们有了一个kubernetes集群后，如何在上面开发和部署应用，应该遵循怎样的流程？本次分享将向您展示如何使用go语言开发和部署一个kubernetes native应用，使用wercker进行持续集成与持续发布，我将以一个很简单的前后端访问，获取伪造数据并展示的例子来说明。（本文是我在DockOne社区分享的内容）
+当我们有了一个kubernetes集群后，如何在上面开发和部署应用，应该遵循怎样的流程？本次分享将向您展示如何使用go语言开发和部署一个kubernetes native应用，使用wercker进行持续集成与持续发布，我将以一个很简单的前后端访问，获取伪造数据并展示的例子来说明。
+
+**注**：本文部分内容曾是我2017年9月14日在DockOne社区分享的内容，本文同时归档到[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)中。
+
+整个过程如下图所示。
+
+![流程图](https://jimmysong.io/kubernetes-handbook/images/how-to-use-kubernetes-with-istio.jpg)
 
 **主要内容**
 
@@ -16,6 +25,7 @@ tags: ["kubernetes","cloud-native"]
 - 使用Go语言开发kubernetes原生应用
 - 使用wercker做持续构建与发布
 - 使用traefik和VIP做边缘节点提供外部访问路由
+- 集成Istio Service Mesh
 
 ## 环境声明
 
@@ -23,7 +33,7 @@ tags: ["kubernetes","cloud-native"]
 
 - Docker1.12.5
 - flannel network host-gw
-- kubernetes 1.6.0
+- kubernetes 1.6.0+
 - TLS enabled
 
 详细的部署文档和更多资料请参考 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
@@ -54,9 +64,7 @@ tags: ["kubernetes","cloud-native"]
 
 答案是使用DNS，详细说明见[Kubernetes中的服务发现与Docker容器间的环境变量传递源码探究](http://jimmysong.io/posts/exploring-kubernetes-env-with-docker/)
 
-### 使用wercker构建镜像
-
-#### CI工具
+## 持续集成
 
 开源项目的构建离不开CI工具，你可能经常会在很多GitHub的开源项目首页上看到这样的东西：
 
@@ -106,11 +114,11 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 Wercker配置文件是一个YAML文件，该文件必须在GitHub repo的最顶层目录，该文件主要包含三个部分，对应可用的三个主要管道。
 
- **Dev**：定义了开发管道的步骤列表。与所有管道一样，可以选定一个**box**用于构建，也可以全局指定一个box应用于所有管道。box可以是Wercker内置的预制Docker镜像之一，也可以是Docker Hub托管的任何Docker镜像。
+ **Dev**：定义了开发管道的步骤列表。与所有管道一样，可以选定一个**box**用于构建，也可以全局指定一个box应用于所有管道。box可以是Wercker内置的预制Docker镜像之一，也可以是Docker Hub托管的任何Docker镜像。
 
- **Build**：定义了在Wercker构建期间要执行的步骤和脚本的列表。与许多其他服务（如Jenkins和TeamCity）不同，构建步骤位于代码库的配置文件中，而不是隐藏在服务配置里。
+**Build**：定义了在Wercker构建期间要执行的步骤和脚本的列表。与许多其他服务（如Jenkins和TeamCity）不同，构建步骤位于代码库的配置文件中，而不是隐藏在服务配置里。
 
- **Deploy**：在这里可以定义构建的部署方式和位置。
+**Deploy**：在这里可以定义构建的部署方式和位置。
 
 Wercker中还有**工作流**的概念，通过使用分支、条件构建、多个部署目标和其他高级功能扩展了管道的功能，这些高级功能读着可以自己在wercker的网站中探索。
 
@@ -169,7 +177,38 @@ box键的值是golang。这意味着我们使用的是一个基础的Docker镜�
 - jimmysong/k8s-app-monitor-test:latest
 - jimmysong/k8s-app-monitor-agent:latest
 
-### 启动服务
+## 本地测试
+
+在将服务发布到线上之前，我们可以先使用`docker-compose`在本地测试一下，这两个应用的`docker-compose.yaml`文件如下：
+
+```yaml
+version: '2'
+services:
+  k8s-app-monitor-agent:
+    image: jimmysong/k8s-app-monitor-agent:234d51c
+    container_name: monitor-agent
+    depends_on:
+      - k8s-app-monitor-test
+    ports:
+      - 8888:8888
+    environment:
+      - SERVICE_NAME=k8s-app-monitor-test
+  k8s-app-monitor-test:
+    image: jimmysong/k8s-app-monitor-test:9c935dd
+    container_name: monitor-test
+    ports:
+      - 3000:3000
+```
+
+执行下面的命令运行测试。
+
+```bash
+docker-compose up
+```
+
+在浏览器中访问<http://localhost:8888/k8s-app-monitor-test>就可以看到监控页面。
+
+## 启动服务
 
 所有的kubernetes应用启动所用的yaml配置文件都保存在那两个GitHub仓库的`manifest.yaml`文件中。
 
@@ -233,37 +272,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 分别在两个GitHub目录下执行`kubectl create -f manifest.yaml`即可启动服务。
 
-**外部访问**
-
-服务启动后需要更新ingress配置，在[ingress.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/traefik-ingress/ingress.yaml)文件中增加以下几行：
-
-```yaml
-  - host: k8s-app-monitor-agent.jimmysong.io
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: k8s-app-monitor-agent
-          servicePort: 8080
-```
-
-保存后，然后执行`kubectl replace -f ingress.yaml`即可刷新ingress。
-
-修改本机的`/etc/hosts`文件，在其中加入以下一行：
-
-```ini
-172.20.0.119 k8s-app-monitor-agent.jimmysong.io
-```
-
-当然你也可以加入到DNS中，为了简单起见我使用hosts。
-
-在浏览器中访问 [http://k8s-app-monitor-agent.jimmysong.io](http://k8s-app-monitor-agent.jimmysong.io)
-
-![图表](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-agent.jpg)
-
-刷新页面将获得新的图表。
-
-#### 边缘节点配置
+## 边缘节点配置
 
 边缘节点架构图
 
@@ -286,15 +295,101 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 参考[详细操作步骤和配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
+## 发布
+
+所有的kubernetes应用启动所用的yaml配置文件都保存在那两个GitHub仓库的`manifest.yaml`文件中。也可以使用[kompose](https://github.com/kubernetes/kompose)这个工具，可以将*docker-compose*的YAML文件转换成kubernetes规格的YAML文件。
+
+分别在两个GitHub目录下执行`kubectl create -f manifest.yaml`即可启动服务。也可以直接在*k8s-app-monitor-agent*代码库的`k8s`目录下执行`kubectl apply -f kompose`。
+
+在以上YAML文件中有包含了Ingress配置，是为了将*k8s-app-monitor-agent*服务暴露给集群外部访问。
+
+**方式一**
+
+服务启动后需要更新ingress配置，在[ingress.yaml](https://jimmysong.io/kubernetes-handbook/manifests/traefik-ingress/ingress.yaml)文件中增加以下几行：
+
+```yaml
+  - host: k8s-app-monitor-agent.jimmysong.io
+    http:
+      paths:
+      - path: /k8s-app-monitor-agent
+        backend:
+          serviceName: k8s-app-monitor-agent
+          servicePort: 8888
+```
+
+保存后，然后执行`kubectl replace -f ingress.yaml`即可刷新ingress。
+
+修改本机的`/etc/hosts`文件，在其中加入以下一行：
+
+```ini
+172.20.0.119 k8s-app-monitor-agent.jimmysong.io
+```
+
+当然你也可以将该域名加入到内网的DNS中，为了简单起见我使用hosts。
+
+**方式二**
+
+或者不修改已有的Ingress，而是为该队外暴露的服务单独创建一个Ingress，如下：
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-app-monitor-agent-ingress
+  annotations:
+    kubernetes.io/ingress.class: "treafik"
+spec:
+  rules:
+  - host: k8s-app-monitor-agent.jimmysong.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: k8s-app-monitor-agent
+          servicePort: 8888
+```
+
+详见[边缘节点配置](https://jimmysong.io/kubernetes-handbook/practice/edge-node-configuration.html)。
+
+## 集成Istio service mesh
+
+上一步中我们生成了kubernetes可读取的应用的YAML配置文件，我们可以将所有的YAML配置和并到同一个YAML文件中假如文件名为`k8s-app-monitor-istio-all-in-one.yaml`，如果要将其集成到Istio service mesh，只需要执行下面的命令。
+
+```bash
+kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-in-one.yaml)
+```
+
+这样就会在每个Pod中注入一个sidecar容器。
+
+## 验证
+
+如果您使用的是Traefik ingress来暴露的服务，那么在浏览器中访问<http://k8s-app-monitor-agent.jimmysong.io/k8s-app-monitor-agent>，可以看到如下的画面，每次刷新页面将看到新的柱状图。
+
+![图表](https://jimmysong.io/kubernetes-handbook/images/k8s-app-monitor-agent.jpg)
+
+使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)来部署的kubernetes集群，该应用集成了Istio service mesh后可以通过<http://172.17.8.101:32000/k8s-app-monitor-agent>来访问。
+
+在对*k8s-app-monitor-agent*服务进行了N此访问之后，再访问[http://grafana.istio.jimmysong.io](http://grafana.istio.jimmysong.io/)可以看到Service Mesh的监控信息。
+
+![Grafana页面](https://jimmysong.io/kubernetes-handbook/images/k8s-app-monitor-istio-grafana.png)
+
+访问<http://servicegraph.istio.jimmysong.io/dotviz>可以看到服务的依赖和QPS信息。
+
+![servicegraph页面](https://jimmysong.io/kubernetes-handbook/images/k8s-app-monitor-istio-servicegraph-dotviz.png)
+
+访问[http://zipkin.istio.jimmysong.io](http://zipkin.istio.jimmysong.io/)可以选择查看`k8s-app-monitor-agent`应用的追踪信息。
+
+![Zipkin页面](https://jimmysong.io/kubernetes-handbook/images/k8s-app-monitor-istio-zipkin.png)
+
+至此从代码提交到上线到Kubernetes集群上并集成Istio service mesh的过程就全部完成了。
+
+> 本文首发于2017年9月14日，更新于2018年3月26日。
+
 ## 参考
 
-[适用于Kubernetes的应用开发与部署流程详解](https://jimmysong.io/posts/deploy-applications-in-kubernetes/)
-
-[示例的项目代码服务器端](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
-
-[示例项目代码前端](https://github.com/rootsongjc/k8s-app-monitor-agent)
-
-[kubernetes-handbok](https://jimmysong.io/kubernetes-handbook/)
-
-[边缘节点配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
+- [适用于Kubernetes的应用开发与部署流程详解](https://jimmysong.io/posts/deploy-applications-in-kubernetes/)
+- [示例的项目代码服务器端](https://app.wercker.com/jimmysong/k8s-app-monitor-agent/)
+- [示例项目代码前端](https://github.com/rootsongjc/k8s-app-monitor-agent)
+- [kubernetes-handbok](https://jimmysong.io/kubernetes-handbook/)
+- [边缘节点配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)
 
