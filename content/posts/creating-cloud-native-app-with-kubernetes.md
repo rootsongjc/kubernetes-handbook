@@ -369,7 +369,7 @@ kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-
 
 使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)来部署的kubernetes集群，该应用集成了Istio service mesh后可以通过<http://172.17.8.101:32000/k8s-app-monitor-agent>来访问。
 
-在对*k8s-app-monitor-agent*服务进行了N此访问之后，再访问[http://grafana.istio.jimmysong.io](http://grafana.istio.jimmysong.io/)可以看到Service Mesh的监控信息。
+在对`k8s-app-monitor-agent`服务进行了N此访问之后，再访问[http://grafana.istio.jimmysong.io](http://grafana.istio.jimmysong.io/)可以看到Service Mesh的监控信息。
 
 ![Grafana页面](https://jimmysong.io/kubernetes-handbook/images/k8s-app-monitor-istio-grafana.png)
 
