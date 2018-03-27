@@ -174,6 +174,7 @@
     - [配置请求的路由规则](usecases/configuring-request-routing.md)
     - [安装和拓展Istio service mesh](usecases/install-and-expand-istio-mesh.md)
     - [集成虚拟机](usecases/integrating-vms.md)
+    - [Istio中sidecar的注入规范及示例](usecases/sidecar-spec-in-istio.md)
   - [Linkerd](usecases/linkerd.md)
     - [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   - [Conduit](usecases/conduit.md)
