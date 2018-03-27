@@ -47,7 +47,7 @@ kubeadm join --token 513212.cfea0165b8988d18 192.168.0.13:6443 --discovery-token
 
 再添加几个实例，重复执行第四步，即可向Kubernetes集群中增加节点。
 
-此时在master几点上执行`kubectl get nodes`查看节点所有节点状态，并创建nginx deployment，如下图所示：
+此时在master节点上执行`kubectl get nodes`查看节点所有节点状态，并创建nginx deployment，如下图所示：
 
 ![Play with Kubernetes网页截图](../images/play-with-kubernetes.jpg)
 
