@@ -1,0 +1,104 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.10.0 ()
+  creationTimestamp: null
+  labels:
+    app: k8s-app-monitor-agent
+  name: k8s-app-monitor-agent
+spec:
+  replicas: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: k8s-app-monitor-agent
+    spec:
+      containers:
+      - env:
+        - name: SERVICE_NAME
+          value: k8s-app-monitor-test
+        image: jimmysong/k8s-app-monitor-agent:749f547
+        name: monitor-agent
+        ports:
+        - containerPort: 8888
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.10.0 ()
+  creationTimestamp: null
+  labels:
+    app: k8s-app-monitor-agent
+  name: k8s-app-monitor-agent
+spec:
+  ports:
+  - name: "http"
+    port: 8888
+    targetPort: 8888
+  selector:
+    app: k8s-app-monitor-agent
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.10.0 ()
+  creationTimestamp: null
+  labels:
+    app: k8s-app-monitor-test
+  name: k8s-app-monitor-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: k8s-app-monitor-test
+    spec:
+      containers:
+      - image: jimmysong/k8s-app-monitor-test:9c935dd
+        name: monitor-test
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.10.0 ()
+  creationTimestamp: null
+  labels:
+    app: k8s-app-monitor-test
+  name: k8s-app-monitor-test
+spec:
+  ports:
+  - name: "http"
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: k8s-app-monitor-test
+---
+## Istio ingress
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-app-monitor-agent-ingress
+  annotations:
+    kubernetes.io/ingress.class: "istio"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /k8s-app-monitor-agent
+        backend:
+          serviceName: k8s-app-monitor-agent
+          servicePort: 8888
