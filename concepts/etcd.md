@@ -5,13 +5,13 @@ Etcd是Kubernetes集群中的一个十分重要的组件，用于保存集群所
 - 网络插件flannel、对于其它网络插件也需要用到etcd存储网络的配置信息
 - kubernetes本身，包括各种对象的状态和元信息配置
 
-**注意**：flannel操作etcd使用的是v2的API，而kubernetes操作kubernetes使用的v3的API，所以在下面我们执行`ectdctl`的时候需要设置`ECTDCTL_API`环境变量，该变量默认值为2。
+**注意**：flannel操作etcd使用的是v2的API，而kubernetes操作etcd使用的v3的API，所以在下面我们执行`etcdctl`的时候需要设置`ETCDCTL_API`环境变量，该变量默认值为2。
 
 ## 原理
 
-Etcd使用的是raft一致性算法来实现的，是一款分布式的一致性KV存储，只要用于共享配置和服务发现。关于raft一致性算法请参考[该动画演示](http://thesecretlivesofdata.com/raft/)。
+Etcd使用的是raft一致性算法来实现的，是一款分布式的一致性KV存储，主要用于共享配置和服务发现。关于raft一致性算法请参考[该动画演示](http://thesecretlivesofdata.com/raft/)。
 
-关于Ectd的原理解析请参考[Etcd 架构与实现解析](http://jolestar.com/etcd-architecture/)。
+关于Etcd的原理解析请参考[Etcd 架构与实现解析](http://jolestar.com/etcd-architecture/)。
 
 ## 使用Etcd存储Flannel网络信息
 
