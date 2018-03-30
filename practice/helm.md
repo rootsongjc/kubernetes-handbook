@@ -41,10 +41,12 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 然后安装helm服务端tiller
 
 ```bash
-helm init -i jimmysong/kubernetes-helm-tiller:v2.3.1
+helm init -i jimmysong/kubernetes-helm-tiller:v2.8.1 
 ```
+(目前最新版v2.8.2，可以使用阿里云镜像，如：
+helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.8.2 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts）
 
-我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.3.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.3.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
+我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.8.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.8.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
 
 为应用程序设置`serviceAccount`：
 
@@ -329,6 +331,20 @@ dependencies:
 使用`helm lint . `命令可以检查依赖和模板配置是否正确。
 
 ### 安装源
+
+#####################################################################
+
+使用第三方chat库
+
+。添加fabric8库
+
+    $helm repo add fabric8 https://fabric8.io/helm
+
+。搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI,CD的全套工具）
+
+    $helm search fabric8
+
+#####################################################################
 
 我们在前面安装chart可以通过HTTP server的方式提供。
 
