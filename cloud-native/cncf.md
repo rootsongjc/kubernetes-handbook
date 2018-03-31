@@ -1,6 +1,6 @@
 # CNCF - 云原生计算基金会简介
 
-CNCF，全称Cloud Native Computing Foundation（云原生计算基金会），口号是**坚持和整合开源技术来编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论您是云原生应用的开发者、管理者还是研究人员都有必要了解。
+CNCF，全称Cloud Native Computing Foundation（云原生计算基金会），口号是**坚持和整合开源技术来让编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论您是云原生应用的开发者、管理者还是研究人员都有必要了解。
 
 CNCF作为一个厂商中立的基金会，致力于Github上的快速成长的开源技术的推广，如Kubernetes、Prometheus、Envoy等，帮助开发人员更快更好的构建出色的产品。
 
@@ -10,7 +10,7 @@ CNCF作为一个厂商中立的基金会，致力于Github上的快速成长的�
 
 其中包含了CNCF中托管的项目，还有很多是非CNCF项目。 
 
-关于CNCF的使命与组织方式请参考[CNCF宪章](https://www.cncf.io/about/charter/)，概括的讲CNCF的使命宝库以下三点：
+关于CNCF的使命与组织方式请参考[CNCF宪章](https://www.cncf.io/about/charter/)，概括的讲CNCF的使命包括以下三点：
 
 - 容器化包装。
 - 通过中心编排系统的动态资源管理。
@@ -39,7 +39,7 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 
 是否可以成为CNCF项目需要通过Technical Oversight Committee (技术监督委员会）简称[TOC](https://github.com/cncf/toc)，投票采取fallback策略，即**回退策略**，先从最高级别（graduated）开始，如果2/3多数投票通过的话则确认为该级别，如果没通过的话，则进行下一低级别的投票，如果一直到inception级别都没得到2/3多数投票通过的话，则拒绝其进入CNCF项目。
 
-当前所有的CNCF项目可以访问https://www.cncf.io/projects/。
+当前所有的CNCF项目可以访问https://www.cncf.io/projects/ 。
 
 项目所达到相应成熟度需要满足的条件和投票机制见下图：
 

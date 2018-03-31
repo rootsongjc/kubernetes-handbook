@@ -1,8 +1,10 @@
 # Istio简介
 
-## 前言
+[Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。关于Istio的详细信息请参考[Istio官方文档](https://istio.io)和[Istio中文文档](http://istio.doczh.cn)。
 
-[Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
+**TL;DR** 关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
+
+![Istio的mindmap](../images/istio-mindmap.png)
 
 ## 简介
 
@@ -35,12 +37,18 @@ Amalgam8是一款基于内容和版本的路由布局，用于集成多语言异
 
 ## 架构
 
-![Istio架构图](../images/istio-arch.jpg)
+下面是Istio的架构图。
 
-Istio架构分为控制层和数据层。
+![Istio架构图](../images/istio-arch-v0.1.jpg)
 
-- **数据层**：由一组智能代理（Envoy）作为sidecar部署，协调和控制所有microservices之间的网络通信。
-- **控制层**：负责管理和配置代理路由流量，以及在运行时执行的政策。
+下图是Istio中控制平面与数据平面的交互流程图。
+
+![Istio的控制平面和数据平面](../images/istio-arch.jpg)
+
+Istio架构分为控制平面和数据平面。
+
+- **数据平面**：由一组智能代理（Envoy）作为sidecar部署，协调和控制所有microservices之间的网络通信。
+- **控制平面**：负责管理和配置代理路由流量，以及在运行时执行的政策。
 
 ## Envoy
 

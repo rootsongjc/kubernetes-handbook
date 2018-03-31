@@ -1,4 +1,4 @@
-# 使用etcdctl访问kuberentes数据
+# 使用etcdctl访问kubernetes数据
 
 Kubenretes1.6中使用etcd V3版本的API，使用`etcdctl`直接`ls`的话只能看到`/kube-centos`一个路径。需要在命令前加上`ETCDCTL_API=3`这个环境变量才能看到kuberentes在etcd中保存的数据。
 

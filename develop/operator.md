@@ -36,7 +36,7 @@ Operator本质上是与应用息息相关的，因为这是特定领域的知识
 
 ## 参考
 
-- [Operators - coreos.com](develop/operator.md)
+- [Operators - coreos.com](https://coreos.com/operators)
 - [Writing a Kubernetes Operator in Golang](https://medium.com/@mtreacher/writing-a-kubernetes-operator-a9b86f19bfb9)
 - [Introducing Operators: Putting Operational Knowledge into Software](https://coreos.com/blog/introducing-operators.html)
 - [Automating Kubernetes Cluster Operations with Operators](https://thenewstack.io/automating-kubernetes-cluster-operations-operators/)

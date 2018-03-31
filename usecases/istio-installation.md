@@ -140,12 +140,11 @@ istio-pilot     10.83.251.173   <none>            8080/TCP,8081/TCP             
 istio-mixer     10.83.244.253   <none>            9091/TCP,9094/TCP,42422/TCP   5h
 ```
 
-**注意：如果您的集群中不支持外部负载平衡（例如，MINIKUBE）的环境中运行，该EXTERNAL-IP的ISTIO-INGRESS说<PENDING>。您必须使用服务NODEPORT访问应用程序，或使用端口转发.**
+> **注意**：如果您的集群中不支持外部负载平衡（例如，Minikube）的环境中运行，该external-ip的istio-ingress会显示<pending>。您必须使用NodePort访问应用程序，或使用端口转发。
 
-**注意：修改ISTIO.YAML或者ISTIO.YAML中的ISTIO-INGRESS SERVER的TYPE为CLUSTERIP****
+修改istio.yaml中的istio-ingress service的type为ClusterIP，并设置`nodePort`，默认为32000。
 
-确保相应Kubernetes容器都运行起来：istio-pilot-*，istio-mixer-*，istio-ingress-*，istio-ca-*，和可选的istio-sidecar-injector-*。
-    
+确保相应Kubernetes容器都运行起来：`istio-pilot-*`、`istio-mixer-*`、`istio-ingress-*`、`istio-ca-*`，和可选的`istio-sidecar-injector-*`。
 
 ```bash 
 kubectl get pods -n istio-system
@@ -157,12 +156,13 @@ istio-sidecar-injector-184129454-zdgf5   1/1       Running   0          5h
 istio-pilot-2275554717-93c43             1/1       Running   0          5h
 istio-mixer-2104784889-20rm8             2/2       Running   0          5h
 ```
-部署您的应用程序
-您现在可以部署您自己的应用程序或者像Bookinfo一样随安装提供的示例应用程序之一。注意：应用程序必须对所有HTTP通信使用HTTP / 1.1或HTTP / 2.0协议，因为HTTP / 1.0不受支持。
+**部署您的应用程序**
+
+您现在可以部署您自己的应用程序或者像Bookinfo一样随安装提供的示例应用程序之一。注意：应用程序必须对所有HTTP通信使用HTTP/1.1或HTTP/2.0协议，因为HTTP/1.0不受支持。
 
 如果您启动了Istio-sidecar-injector，如上所示，您可以直接使用应用程序部署应用程序kubectl create。
 
-Istio Sidecar注入器会自动将Envoy容器注入到您的应用程序窗格中，假设运行在标有名称空间的名称空间中istio-injection=enabled
+Istio Sidecar注入器会自动将Envoy容器注入到您的应用程序窗格中，假设运行在标有名称空间的名称空间中`istio-injection=enabled`
 
 ```bash 
 kubectl label namespace <namespace> istio-injection=enabled
@@ -178,13 +178,15 @@ kubectl create -n <namspace> -f <your-app-spec>.yaml
 kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 ```
 
- **卸载** 
+**卸载** 
 
 卸载Istio sidecar进样器：
 
 如果您启用Istio-sidecar-injector，请将其卸载：
 
+```bash
 kubectl delete -f install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
+```
 
 卸载Istio核心组件。对于0.6（初始）发行版，卸载将删除RBAC权限，istio-system命名空间和分层下的所有资源。忽略不存在资源的错误是安全的，因为它们可能已被分层删除。
 
@@ -281,9 +283,9 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 
 `Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考：https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject
 
-在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息。具体步骤参考：[边缘节点配置](../practice/edge-node-configuration.md)
+在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息，具体步骤参考：[边缘节点配置](../practice/edge-node-configuration.md)，或者使用gateway ingress来访问服务，
 
-在浏览器中访问http://ingress.istio.io/productpage
+如果将`productpage`配置在了ingress里了，那么在浏览器中访问<http://ingress.istio.io/productpage>，如果使用了istio默认的`gateway` ingress配置的话，ingress service使用`nodePort`方式暴露的默认使用32000端口，那么可以使用<http://任意节点的IP:32000/productpage>来访问。
 
 ![BookInfo Sample页面](../images/bookinfo-sample.jpg)
 
@@ -292,7 +294,7 @@ kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 查看部署的bookinfo应用中的`productpage-v1` service和deployment，查看`productpage-v1`的pod的详细json信息可以看到这样的结构：
 
 ```bash
-$ kubectl get productpage-v1-944450470-bd530 -o json
+$ kubectl get pod productpage-v1-944450470-bd530 -o json
 ```
 
 见[productpage-v1-istio.json](../manifests/istio/productpage-v1-istio.json)文件。从详细输出中可以看到这个Pod中实际有两个容器，这里面包括了`initContainer`，作为istio植入到kubernetes deployment中的sidecar。
@@ -395,6 +397,5 @@ BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由�
 
 ## 参考
 
-[Installing Istio](https://istio.io/docs/tasks/installing-istio.html)
-
-[BookInfo sample](https://istio.io/docs/guides/bookinfo.html)
+- [Installing Istio](https://istio.io/docs/tasks/installing-istio.html)
+- [BookInfo sample](https://istio.io/docs/guides/bookinfo.html)
