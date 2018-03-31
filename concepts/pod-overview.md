@@ -2,13 +2,12 @@
 
 ## 理解Pod
 
-Pod是kubernetes中你可以创建和部署的最小也是最简单位。一个Pod代表着集群中运行的一个进程。
+Pod是kubernetes中你可以创建和部署的最小也是最简的单位。一个Pod代表着集群中运行的一个进程。
 
 Pod中封装着应用的容器（有的情况下是好几个容器），存储、独立的网络IP，管理容器如何运行的策略选项。Pod代表着部署的一个单位：kubernetes中应用的一个实例，可能由一个或者多个容器组合在一起共享资源。
 
 > [Docker](https://www.docker.com)是kubernetes中最常用的容器运行时，但是Pod也支持其他容器运行时。
 
-Pods are employed a number of ways in a Kubernetes cluster, including:
 
 在Kubrenetes集群中Pod有如下两种使用方式：
 
