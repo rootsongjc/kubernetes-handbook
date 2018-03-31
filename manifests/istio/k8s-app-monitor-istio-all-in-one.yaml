@@ -15,6 +15,7 @@ spec:
       creationTimestamp: null
       labels:
         app: k8s-app-monitor-agent
+        version: v1
     spec:
       containers:
       - env:
@@ -53,6 +54,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: k8s-app-monitor-test
+    version: v1
   name: k8s-app-monitor-test
 spec:
   replicas: 1
