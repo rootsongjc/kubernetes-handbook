@@ -13,7 +13,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018032
 
 > SOFA Boot 是蚂蚁金服即将开源的一套微服务框架中的一个组件，开源地址：https://github.com/alipay/sofa-boot
 
-关于 Spring Boot 请参考 [Spring Boot 快速开始指南](spring-boot-quick-start-guide.md)。
+关于 Spring Boot 请参考 [Spring Boot 快速开始指南](https://jimmysong.io/posts/spring-boot-quick-start-guide)。
 
 ## SOFA boot 简介
 
