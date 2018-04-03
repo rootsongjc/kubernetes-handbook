@@ -6,6 +6,7 @@ subtitle: "宋净超"
 description: "Jimmy Song(宋净超) - Cloud Native and Big Data"
 nocomment: true
 postmeta: false
+notoc: true
 seealso: false
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-side-of-the-moon.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
