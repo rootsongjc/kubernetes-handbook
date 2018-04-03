@@ -9,8 +9,6 @@ date: 2018-03-27T19:58:48+08:00
 draft: false
 ---
 
-# Istio 中 sidecar 的注入及示例
-
 我们知道 Istio 通过向 Pod 中注入一个 sidecar 容器来将 Pod 纳入到 Istio service mesh 中的，那么这些 sidecar 容器的注入遵循什么样的规范，需要给每个 Pod 增加哪些配置信息才能纳入 Istio service mesh 中呢？这篇文章将给您答案。
 
 本文同时归档到[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)中，更新请以handbook为准。

@@ -842,3 +842,19 @@ label {
 code {
     word-break: break-all;
 }
+
+aside.toc{
+  float: right;
+  padding: 4px;
+  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: solid 1px lightgray;
+}
+
+.toc ul{
+  list-style-type: none;
+  padding: 0;
+  padding-left: 12px;
+  margin: 0;
+}
