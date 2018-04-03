@@ -8,6 +8,7 @@
             {{ partial "postmeta.html" . }}
             {{ end }}
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                {{ partial "toc.html" . }}
                 {{ .Content }}
             </article>
 

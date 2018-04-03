@@ -165,3 +165,7 @@ tags: ["github-pages","github","website","hugo"]
 ### 2017-12-10
 
 1. 博客文章中增加 `seealso` 开关，meta信息中若设置了 `seealso: false` 该文章下方将不显示See Also
+
+### 2018--04-03
+
+1. 增加目录显示，放在侧边栏，浮动显示
