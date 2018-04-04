@@ -199,7 +199,7 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 ### 部署Kubernetes集群
 
-使用二进制部署 `kubernetes` 集群的所有组件和插件，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，这样可以帮助我们解系统各组件的交互原理，进而能快速解决实际问题。详见[Kubernetes Handbook - 在CentOS上部署kubernetes1.6集群](https://jimmysong.io/kubernetes-handbook/practice/install-kbernetes1.6-on-centos.html)。
+使用二进制部署 `kubernetes` 集群的所有组件和插件，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，这样可以帮助我们解系统各组件的交互原理，进而能快速解决实际问题。详见[在CentOS上部署Kubernetes集群](../practice/install-kubernetes-on-centos.md)。
 
 **集群详情**
 
