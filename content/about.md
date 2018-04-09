@@ -17,7 +17,6 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
-- [Wuhan University of Technology（武汉理工大学）](http://www.whut.edu.cn) 
 - Major in Software Engineering
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)

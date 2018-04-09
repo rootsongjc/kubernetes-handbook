@@ -1,7 +1,7 @@
 ---
 title: "金融级开源分布式中间件 SOFA Boot 快速开始"
 subtitle: "基于 Spring Boot"
-date: 2018-04-10T18:14:59+08:00
+date: 2018-04-09T21:14:59+08:00
 draft: false
 tags: ["sofa","microservices","middleware"]
 categories: "microservices"
@@ -11,7 +11,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018032
 
 在微服务开发中，Java 一直都是一门被广泛使用的语言，而 Java 的微服务框架如 Spring Boot 和 Spring Cloud 也具有广泛的受众，在蚂蚁金服内部长期的生产实践中创建了一套名为 SOFA（Scalable Open Financial Architecture），本文讲解如何使用 SOFA Boot 快速开发分布式 Web 应用程序。
 
-> SOFA Boot 是蚂蚁金服即将开源的一套微服务框架中的一个组件，开源地址：https://github.com/alipay/sofa-boot
+> SOFA Boot 是蚂蚁金服开源的一套微服务框架中的一个组件，开源地址：https://github.com/alipay/sofa-boot
 
 关于 Spring Boot 请参考 [Spring Boot 快速开始指南](https://jimmysong.io/posts/spring-boot-quick-start-guide)。
 
