@@ -140,6 +140,7 @@
 - [存储管理](practice/storage.md)
   - [GlusterFS](practice/glusterfs.md)
     - [使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
+	- [使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner](practice/using-heketi-gluster-for-persistent-storage.md)
     - [在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
   - [CephFS](practice/cephfs.md)
     - [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
