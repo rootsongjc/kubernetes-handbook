@@ -1,4 +1,4 @@
-本文翻译自https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
+本文翻译自heketi的github网址官方文档https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
 本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例。
 
 heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
@@ -7,7 +7,7 @@ heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes�
 
 * glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
 * 内核模块：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
-* 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群
+* 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群，并且这3个slave节点每个节点需要至少一个空余的磁盘
 
 
 ## 概述
@@ -126,9 +126,6 @@ Hello from heketi
 * 接下来，我们将向heketi提供有关要管理的GlusterFS集群的信息。通过拓扑文件提供这些信息。克隆的repo中有一个示例拓扑文件，名为topology-sample.json。拓扑指定运行GlusterFS容器的Kubernetes节点以及每个节点的相应原始块设备。
 
 确保hostnames/manage指向如下所示的确切名称kubectl get nodes得到的主机名（如ubuntu-1），并且hostnames/storage是存储网络的IP地址（对应ubuntu-1的ip地址）。
-
-
-
 
   **IMPORTANT**: 重要提示，目前，必须使用与服务器版本匹配的heketi-cli版本加载拓扑文件。另外，heketi pod 带有可以通过  `kubectl exec ...`访问的heketi-cli副本。
  
