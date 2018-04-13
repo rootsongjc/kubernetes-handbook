@@ -1,13 +1,16 @@
-本文翻译自heketi的github网址官方文档https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
-本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例。
+# 使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner（kubernetes集成GlusterFS集群和Heketi）
 
-heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
+本文翻译自heketi的github网址官方文档https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
+本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例。本文介绍的heketi，GlusterFS这2个组件与kubernetes集成只适合用于测试验证环境，并不适合生产环境，请注意这一点。
+
+Heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
+“Heketi提供了一个RESTful管理界面，可用于管理GlusterFS卷的生命周期。借助Heketi，像OpenStack Manila，Kubernetes和OpenShift这样的云服务可以动态地配置GlusterFS卷和任何支持的持久性类型。Heketi将自动确定整个集群的brick位置，确保将brick及其副本放置在不同的故障域中。Heketi还支持任意数量的GlusterFS集群，允许云服务提供网络文件存储，而不受限于单个GlusterFS集群。”
 
 ## 注意事项
 
-* 安装Glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
-* 加载内核模块：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
-* 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群，并且这3个slave节点每个节点需要至少一个空余的磁盘
+* 安装Glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的`apt-get install glusterfs-client`。
+* 加载内核模块：每个kubernetes集群的节点运行`modprobe dm_thin_pool`，加载内核模块。
+* 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群，并且这3个slave节点每个节点需要至少一个空余的磁盘。
 
 
 ## 概述
@@ -17,11 +20,10 @@ heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes�
 跟这个话题相关的另一个重要资源是
 [gluster-kubernetes](https://github.com/gluster/gluster-kubernetes) 项目。
 它专注于在Kubernetes集群中部署GlusterFS，并提供简化的工具来完成此任务。它包含一个安装指南 [setup guide](https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md).
-它还包括一个样例 [Hello World](https://github.com/gluster/gluster-kubernetes/tree/master/docs/examples/hello_world)
-其中包含一个使用动态配置（dynamically-provisioned）的GlusterFS卷进行存储的Web server pod示例。对于那些想要测试或学习更多关于此主题的人，请按照主
-[README](https://github.com/gluster/gluster-kubernetes) 的快速入门说明 进行操作。
+它还包括一个样例 [Hello World](https://github.com/gluster/gluster-kubernetes/tree/master/docs/examples/hello_world)。
+其中包含一个使用动态配置（dynamically-provisioned）的GlusterFS卷进行存储的Web server pod示例。对于那些想要测试或学习更多关于此主题的人，请按照主[README](https://github.com/gluster/gluster-kubernetes) 的快速入门说明 进行操作。
 
-本指南旨在展示heketi在Kubernetes环境中管理Gluster的最简单示例。这是为了强调这种配置的主要组成组件，因此并不适合生产环境。
+本指南旨在展示Heketi在Kubernetes环境中管理Gluster的最简单示例。这是为了强调这种配置的主要组成组件，因此并不适合生产环境。
 
 ## 基础设施要求
 
@@ -38,10 +40,10 @@ service iptables save
 
 ## 客户端安装
 
-heketi提供了一个CLI客户端，为用户提供了一种管理Kubernetes中GlusterFS的部署和配置的方法。 在客户端机器上下载并安装[Download and install the heketi-cli](https://github.com/heketi/heketi/releases)。
+Heketi提供了一个CLI客户端，为用户提供了一种管理Kubernetes中GlusterFS的部署和配置的方法。 在客户端机器上下载并安装[Download and install the heketi-cli](https://github.com/heketi/heketi/releases)。
 
 
-## Glusterfs和heketi在Kubernetes集群中的部署过程
+## Glusterfs和Heketi在Kubernetes集群中的部署过程
 以下所有文件都位于下方extras/kubernetes  (git clone https://github.com/heketi/heketi.git)。
 
 * 部署 GlusterFS DaemonSet
@@ -68,7 +70,7 @@ $ kubectl label node <...node...> storagenode=glusterfs
 $ kubectl get pods
 ```
 
-* 接下来，我们将为heketi创建一个服务帐户（service-account）:
+* 接下来，我们将为Heketi创建一个服务帐户（service-account）:
 
 ```
 $ kubectl create -f heketi-service-account.json
@@ -80,7 +82,7 @@ $ kubectl create -f heketi-service-account.json
 $ kubectl create clusterrolebinding heketi-gluster-admin --clusterrole=edit --serviceaccount=default:heketi-service-account
 ```
 
-* 现在我们需要创建一个Kubernetes secret来保存我们heketi实例的配置。必须将配置文件的执行程序设置为 kubernetes才能让heketi server控制gluster pod（配置文件的默认配置）。除此这些，可以尝试配置的其他选项。
+* 现在我们需要创建一个Kubernetes secret来保存我们Heketi实例的配置。必须将配置文件的执行程序设置为 kubernetes才能让Heketi server控制gluster pod（配置文件的默认配置）。除此这些，可以尝试配置的其他选项。
 
 ```
 $ kubectl create secret generic heketi-config-secret --from-file=./heketi.json
@@ -103,7 +105,7 @@ glusterfs-ip-172-20-0-218.ec2.internal-2001140516-i9dw9   1/1       Running   0 
 glusterfs-ip-172-20-0-219.ec2.internal-2785213222-q3hba   1/1       Running   0          1h
 ```
 
-* 当Bootstrap heketi服务正在运行，我们配置端口转发，以便我们可以使用heketi CLI与服务进行通信。使用heketi pod的名称，运行下面的命令：
+* 当Bootstrap heketi服务正在运行，我们配置端口转发，以便我们可以使用Heketi CLI与服务进行通信。使用heketi pod的名称，运行下面的命令：
 
 `kubectl port-forward deploy-heketi-1211581626-2jotm :8080`
 
@@ -111,7 +113,7 @@ glusterfs-ip-172-20-0-219.ec2.internal-2785213222-q3hba   1/1       Running   0 
 
 `kubectl port-forward deploy-heketi-1211581626-2jotm 8080:8080`
 
-现在通过对heketi服务运行示例查询来验证端口转发是否正常。该命令应该已经打印了将从其转发的本地端口。将其合并到URL中以测试服务，如下所示：
+现在通过对Heketi服务运行示例查询来验证端口转发是否正常。该命令应该已经打印了将从其转发的本地端口。将其合并到URL中以测试服务，如下所示：
 
 ```
 curl http://localhost:8080/hello
@@ -119,15 +121,15 @@ Handling connection for 8080
 Hello from heketi
 ```
 
-最后，为heketi CLI客户端设置一个环境变量，以便它知道heketi服务器的地址。
+最后，为Heketi CLI客户端设置一个环境变量，以便它知道Heketi服务器的地址。
 
-`export heketi_CLI_SERVER=http://localhost:8080`
+`export HEKETI_CLI_SERVER=http://localhost:8080`
 
-* 接下来，我们将向heketi提供有关要管理的GlusterFS集群的信息。通过拓扑文件提供这些信息。克隆的repo中有一个示例拓扑文件，名为topology-sample.json。拓扑指定运行GlusterFS容器的Kubernetes节点以及每个节点的相应原始块设备。
+* 接下来，我们将向Heketi提供有关要管理的GlusterFS集群的信息。通过拓扑文件提供这些信息。克隆的repo中有一个示例拓扑文件，名为topology-sample.json。拓扑指定运行GlusterFS容器的Kubernetes节点以及每个节点的相应原始块设备。
 
 确保hostnames/manage指向如下所示的确切名称kubectl get nodes得到的主机名（如ubuntu-1），并且hostnames/storage是存储网络的IP地址（对应ubuntu-1的ip地址）。
 
-  **IMPORTANT**: 重要提示，目前，必须使用与服务器版本匹配的heketi-cli版本加载拓扑文件。另外，heketi pod 带有可以通过  `kubectl exec ...`访问的heketi-cli副本。
+  **IMPORTANT**: 重要提示，目前，必须使用与服务器版本匹配的Heketi-cli版本加载拓扑文件。另外，Heketi pod 带有可以通过  `kubectl exec ...`访问的heketi-cli副本。
  
 
   修改拓扑文件以反映您所做的选择，然后如下所示部署它（修改主机名，IP，block 设备的名称 如xvdg）：
@@ -152,13 +154,13 @@ Handling connection for 57598
 
 > Pitfall: 注意，如果在运行setup-openshift-heketi-storage子命令时heketi-cli报告“无空间”错误，则可能无意中运行topology load命令的时候服务端和heketi-cli的版本不匹配造成的。停止正在运行的heketi pod（kubectl scale deployment deploy-heketi --replicas=0），手动删除存储块设备中的任何签名，然后继续运行heketi pod（kubectl scale deployment deploy-heketi --replicas=1）。然后用匹配版本的heketi-cli重新加载拓扑，然后重试该步骤。
 
-* 等到作业完成后，删除bootstrap heketi实例相关的组件：
+* 等到作业完成后，删除bootstrap Heketi实例相关的组件：
 
 ```
 # kubectl delete all,service,jobs,deployment,secret --selector="deploy-heketi"
 ```
 
-* 创建长期使用的heketi实例：
+* 创建长期使用的Heketi实例（存储持久化的）：
 
 ```
 # kubectl create -f heketi-deployment.json
@@ -171,7 +173,7 @@ deployment "heketi" created
 使用诸如heketi-cli cluster list和的命令heketi-cli volume list 来确认先前建立的集群存在，并且heketi可以列出在bootstrap阶段创建的db存储卷。
 
 
-# Usage Example
+# 使用样例
 
 有两种方法来调配存储。常用的方法是设置一个StorageClass，让Kubernetes为提交的PersistentVolumeClaim自动配置存储。或者，可以通过Kubernetes手动创建和管理卷（PVs），或直接使用heketi-cli中的卷。
 
