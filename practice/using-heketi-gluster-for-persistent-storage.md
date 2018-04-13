@@ -9,4 +9,11 @@
 # 基础设施要求
 - **至少三个slave节点，且有可用的存储磁盘**:正在运行的Kubernetes集群，至少有三个Kubernetes工作节点，每个节点至少有一个可用的裸块设备（如EBS卷或本地磁盘）。
 - **防火墙开启对应的端口**:用于运行GlusterFS Pod的三个Kubernetes节点必须为GlusterFS通信打开相应的端口（如果开启了防火墙的情况下，没开防火墙就不需要这些操作）。在每个节点上运行以下命令。
+```bash
+iptables -N HEKETI
+iptables -A HEKETI -p tcp -m state --state NEW -m tcp --dport 24007 -j ACCEPT
+iptables -A HEKETI -p tcp -m state --state NEW -m tcp --dport 24008 -j ACCEPT
+iptables -A HEKETI -p tcp -m state --state NEW -m tcp --dport 2222 -j ACCEPT
+iptables -A HEKETI -p tcp -m state --state NEW -m multiport --dports 49152:49251 -j ACCEPT
+service iptables save
 
