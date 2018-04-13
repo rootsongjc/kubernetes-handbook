@@ -5,8 +5,8 @@ heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes�
 
 ## 注意事项
 
-* glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
-* 内核模块：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
+* 安装Glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
+* 加载内核模块：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
 * 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群，并且这3个slave节点每个节点需要至少一个空余的磁盘
 
 
@@ -41,7 +41,7 @@ service iptables save
 heketi提供了一个CLI客户端，为用户提供了一种管理Kubernetes中GlusterFS的部署和配置的方法。 在客户端机器上下载并安装[Download and install the heketi-cli](https://github.com/heketi/heketi/releases)。
 
 
-## 在Kubernetes中的部署过程
+## glusterfs和heketi在Kubernetes集群中的部署过程
 以下所有文件都位于下方extras/kubernetes  (git clone https://github.com/heketi/heketi.git)。
 
 * 部署 GlusterFS DaemonSet
@@ -107,7 +107,7 @@ glusterfs-ip-172-20-0-219.ec2.internal-2785213222-q3hba   1/1       Running   0 
 
 `kubectl port-forward deploy-heketi-1211581626-2jotm :8080`
 
-如果在运行命令的系统上本地端口8080是空闲的，则可以运行port-forward命令，以便绑定到8080以方便使用（2个命令二选一即可）：
+如果在运行命令的系统上本地端口8080是空闲的，则可以运行port-forward命令，以便绑定到8080以方便使用（2个命令二选一即可，我选择第二个）：
 
 `kubectl port-forward deploy-heketi-1211581626-2jotm 8080:8080`
 
@@ -143,7 +143,7 @@ Handling connection for 57598
 		Adding device /dev/xvdg ... OK
 ```
 
-* 接下来，我们将使用heketi为其存储其数据库提供一个卷（不要怀疑，就是使用这个命令，openshift和kubernetes通用）：
+* 接下来，我们将使用heketi为其存储其数据库提供一个卷（不要怀疑，就是使用这个命令，openshift和kubernetes通用，此命令生成heketi-storage.json文件）：
 
 ```
 # heketi-client/bin/heketi-cli setup-openshift-heketi-storage
@@ -152,7 +152,7 @@ Handling connection for 57598
 
 > Pitfall: 注意，如果在运行setup-openshift-heketi-storage子命令时heketi-cli报告“无空间”错误，则可能无意中运行topology load命令的时候服务端和heketi-cli的版本不匹配造成的。停止正在运行的heketi pod（kubectl scale deployment deploy-heketi --replicas=0），手动删除存储块设备中的任何签名，然后继续运行heketi pod（kubectl scale deployment deploy-heketi --replicas=1）。然后用匹配版本的heketi-cli重新加载拓扑，然后重试该步骤。
 
-* 等到作业完成后，删除bootstrap heketi相关的组件：
+* 等到作业完成后，删除bootstrap heketi实例相关的组件：
 
 ```
 # kubectl delete all,service,jobs,deployment,secret --selector="deploy-heketi"
