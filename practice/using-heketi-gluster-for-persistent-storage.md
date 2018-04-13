@@ -41,7 +41,7 @@ service iptables save
 heketi提供了一个CLI客户端，为用户提供了一种管理Kubernetes中GlusterFS的部署和配置的方法。 在客户端机器上下载并安装[Download and install the heketi-cli](https://github.com/heketi/heketi/releases)。
 
 
-## glusterfs和heketi在Kubernetes集群中的部署过程
+## Glusterfs和heketi在Kubernetes集群中的部署过程
 以下所有文件都位于下方extras/kubernetes  (git clone https://github.com/heketi/heketi.git)。
 
 * 部署 GlusterFS DaemonSet
@@ -166,7 +166,7 @@ service "heketi" created
 deployment "heketi" created
 ```
 
-* 这样做了以后，heketi db将使用GlusterFS卷，并且每当heketi pod重新启动时都不会重置。
+* 这样做了以后，heketi db将使用GlusterFS卷，并且每当heketi pod重新启动时都不会重置（数据不会丢失，存储持久化）。
 
 使用诸如heketi-cli cluster list和的命令heketi-cli volume list 来确认先前建立的集群存在，并且heketi可以列出在bootstrap阶段创建的db存储卷。
 
