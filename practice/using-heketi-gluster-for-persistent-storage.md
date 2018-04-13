@@ -187,6 +187,9 @@ deployment "heketi" created
 
 ```
 # cat topology-sample.json
+```
+
+```
 {
   "clusters": [
     {
@@ -263,7 +266,9 @@ heketi-5c8ffcc756-x9gnv                                   1/1       Running   5 
 
 ```
 # cat storage-class-slow.yaml
+```
 
+```
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -282,6 +287,9 @@ parameters:
 
 ```
 # cat pvc-sample.yaml
+```
+
+```
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -300,11 +308,11 @@ spec:
 查看创建的pvc和pv
 
 ```
-# kubectl get pvc
+# kubectl get pvc|grep myclaim
 NAME                        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 myclaim                     Bound     pvc-e98e9117-3ed7-11e8-b61d-08002795cb26   1Gi        RWO            slow           28s
 
-# kubectl get pv
+# kubectl get pv|grep myclaim
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS        CLAIM                               STORAGECLASS   REASON    AGE
 pvc-e98e9117-3ed7-11e8-b61d-08002795cb26   1Gi        RWO            Delete           Bound     default/myclaim                     slow                     1m
 
