@@ -147,7 +147,7 @@
   - [OpenEBS](practice/openebs.md)
     - [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
   - [Rook](practice/rook.md)
-  - [NFS] (practice/nfs.md)
+  - [NFS](practice/nfs.md)
     - [利用NFS动态提供Kubernetes后端存储卷](practice/using-nfs-for-persistent-storage.md)
 - [集群与应用监控](practice/monitoring.md)
   - [Heapster](practice//heapster.md)
