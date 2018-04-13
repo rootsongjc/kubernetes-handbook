@@ -345,7 +345,6 @@ pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            Delete     
 
 ```
 
-
 查看mysql的pod
 
 ```
@@ -374,7 +373,7 @@ shm                                                  64M     0   64M   0% /dev/s
 tmpfs                                               1.5G   12K  1.5G   1% /run/secrets/kubernetes.io/serviceaccount
 tmpfs                                               1.5G     0  1.5G   0% /sys/firmware
 ```
-使用dd写入数据
+使用dd写入数据，写入一段时间以后，空间满了，会报错（报错信息有bug，不是报空间满了，而是报文件系统只读，应该是glusterfs和docker配合的问题）
 
 ```
 root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# dd if=/dev/zero of=test.img bs=8M count=300 
@@ -421,4 +420,4 @@ tmpfs                                               1.5G     0  1.5G   0% /sys/f
 496K	./sys
 2.0G	.
 ```
-如上说明glusterfs的限额作用是起效的
+如上说明glusterfs的限额作用是起效的，限制在2G的空间大小。
