@@ -1,5 +1,7 @@
 本文翻译自https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为人人注解）其中注意事项部分为其他网上查询所得。
-本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例
+本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例。
+
+heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
 
 ## 注意事项
 
@@ -347,18 +349,9 @@ pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            Delete     
 查看mysql的pod
 
 ```
-# kubectl get pod
-NAME                                                      READY     STATUS    RESTARTS   AGE
-glusterfs-gf5zc                                           1/1       Running   2          20h
-glusterfs-ngc55                                           1/1       Running   2          20h
-glusterfs-zncjs                                           1/1       Running   0          14h
-heketi-5c8ffcc756-x9gnv                                   1/1       Running   5          19h
-jenkins-5b8db5b45d-7spr4                                  1/1       Running   4          1d
-my-nginx-nginx-ingress-controller-9f6749bb7-dntcv         1/1       Running   0          14h
-my-nginx-nginx-ingress-default-backend-6c4bcf675b-l2s7r   1/1       Running   4          1d
-mysql-mysql-74798cbf57-7zjgw                              1/1       Running   7          1d
+# kubectl get pod|grep mysql2
 mysql2-mysql-56d64f5b77-j2v84                             1/1       Running   2          19h
-nfs-client-provisioner-7ffcdf5585-l8ts5                   1/1       Running   9          2d
+
 ```
 进入mysql所在容器
 
@@ -389,7 +382,7 @@ root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# dd if=/dev/zero of=test.img b
 dd: error writing 'test.img': Read-only file system
 dd: closing output file 'test.img': Input/output error
 ```
-查看写满以后的文件大小和挂载信息（挂载信息显示bug，应该是glusterfs的bug）
+查看写满以后的文件大小
 
 ```
 root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# ls -l
@@ -404,6 +397,10 @@ drwxr-s--- 2 mysql mysql       8192 Apr 12 07:27 mysql
 drwxr-s--- 2 mysql mysql       8192 Apr 12 07:27 performance_schema
 drwxr-s--- 2 mysql mysql       8192 Apr 12 07:27 sys
 -rw-r--r-- 1 root  mysql 1880887296 Apr 13 02:47 test.img
+```
+
+查看挂载信息（挂载信息显示bug，应该是glusterfs的bug）
+```
 root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# df -h
 Filesystem                                          Size  Used Avail Use% Mounted on
 none                                                 48G  9.2G   37G  21% /
