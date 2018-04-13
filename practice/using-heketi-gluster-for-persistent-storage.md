@@ -303,11 +303,11 @@ spec:
 ```
 # kubectl get pvc
 NAME                        STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-mysql2-mysql                Bound     pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            slow           19h
+myclaim                     Bound     pvc-e98e9117-3ed7-11e8-b61d-08002795cb26   1Gi        RWO            slow           28s
 
 # kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS        CLAIM                               STORAGECLASS   REASON    AGE
-pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            Delete           Bound         default/mysql2-mysql                slow                     19h
+pvc-e98e9117-3ed7-11e8-b61d-08002795cb26   1Gi        RWO            Delete           Bound     default/myclaim                     slow                     1m
 
 ```
 
