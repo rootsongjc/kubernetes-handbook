@@ -1,6 +1,6 @@
 # 利用NFS动态提供Kubernetes后端存储卷
 本文将介绍使用nfs-client-provisioner这个应用，利用NFS Server给Kubernetes作为持久存储的后端，并且动态提供PV。前提条件是有已经安装好的NFS服务器，并且NFS服务器与Kubernetes的Slave节点都能网络连通。
-所有下午用到的文件来自于`git clone  https://github.com/kubernetes-incubator/external-storage.git`的nfs-client目录。
+所有下文用到的文件来自于`git clone  https://github.com/kubernetes-incubator/external-storage.git`的nfs-client目录。
 ## nfs-client-provisioner
 nfs-client-provisioner 是一个Kubernetes的简易NFS的外部provisioner，本身不提供NFS，需要现有的NFS服务器提供存储
 [![Docker Repository on Quay](https://quay.io/repository/external_storage/nfs-client-provisioner/status "Docker Repository on Quay")](https://quay.io/repository/external_storage/nfs-client-provisioner)
@@ -88,6 +88,15 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 在NFS服务器上的共享目录下查看NFS的PV卷回收以后是否名字以archived开头。
 
 ## 我的示例
+
+* NFS服务器配置
+```
+# cat /etc/exports 
+```
+```
+/media/docker		*(no_root_squash,rw,sync,no_subtree_check)
+
+```
 
 * nfs-deployment.yaml示例
 NFS服务器的地址是ubuntu-master,共享出来的路径是/media/docker，其他不需要修改。
