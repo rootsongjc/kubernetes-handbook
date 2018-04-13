@@ -1,13 +1,13 @@
-本文翻译自https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为人人注解）其中注意事项部分为其他网上查询所得。
+本文翻译自https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
 本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在示例部分有StorageClass和PVC的样例。
 
 heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
 
 ## 注意事项
 
-- **glusterfs客户端**：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
-- **内核模块**：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
-- **至少三个slave节点**：至少需要3个kubernetes slave节点用来部署glusterfs集群
+* glusterfs客户端：每个kubernetes集群的节点需要安装gulsterfs的客户端，如ubuntu系统的apt-get install glusterfs-client
+* 内核模块：每个kubernetes集群的节点运行modprobe dm_thin_pool，加载内核模块
+* 至少三个slave节点：至少需要3个kubernetes slave节点用来部署glusterfs集群
 
 
 ## 概述
