@@ -1,5 +1,5 @@
 # 利用NFS动态提供Kubernetes后端存储卷
-本文将介绍使用nfs-client-provisioner这个应用，利用NFS Server给Kubernetes作为持久存储的后端，并且动态提供PV。前提条件是有已经安装好的NFS服务器，并且NFS服务器与Kubernetes的Slave节点都能网络连通。
+本文翻译自nfs-client-provisioner的[说明文档](https://github.com/kubernetes-incubator/external-storage/tree/master/nfs-client)，本文将介绍使用nfs-client-provisioner这个应用，利用NFS Server给Kubernetes作为持久存储的后端，并且动态提供PV。前提条件是有已经安装好的NFS服务器，并且NFS服务器与Kubernetes的Slave节点都能网络连通。
 所有下文用到的文件来自于`git clone  https://github.com/kubernetes-incubator/external-storage.git`的nfs-client目录。
 ## nfs-client-provisioner
 nfs-client-provisioner 是一个Kubernetes的简易NFS的外部provisioner，本身不提供NFS，需要现有的NFS服务器提供存储
@@ -78,13 +78,18 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 ##  测试
 测试创建PVC
 - `kubectl create -f deploy/test-claim.yaml`
+
 测试创建POD
 - `kubectl create -f deploy/test-pod.yaml`
+
 在NFS服务器上的共享目录下的卷子目录中检查创建的NFS PV卷下是否有"SUCCESS" 文件。
+
 删除测试POD
 - `kubectl delete -f deploy/test-pod.yaml`
+
 删除测试PVC
 - `kubectl delete -f deploy/test-claim.yaml`
+
 在NFS服务器上的共享目录下查看NFS的PV卷回收以后是否名字以archived开头。
 
 ## 我的示例
@@ -99,6 +104,7 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 ```
 
 * nfs-deployment.yaml示例
+
 NFS服务器的地址是ubuntu-master,共享出来的路径是/media/docker，其他不需要修改。
 ```
 # cat nfs-deployment.yaml 
@@ -136,6 +142,7 @@ spec:
             path: /media/docker
 ```
 * StorageClass示例
+
 可以修改Class的名字，我的改成了default。
 
 ```
@@ -166,6 +173,7 @@ NAME                PROVISIONER               AGE
 default (default)   fuseim.pri/ifs            2d
 
 ```
+
 * 测试创建PVC
 
 查看pvc文件
@@ -220,7 +228,9 @@ spec:
       persistentVolumeClaim:
         claimName: test-claim
 ```
+
 启动POD，一会儿POD就是completed状态，说明执行完毕。
+
 ```
 # kubectl apply -f test-pod.yaml 
 pod "test-pod" created
@@ -235,4 +245,5 @@ test-pod                                                  0/1       Completed   
 # ls
 SUCCESS
 ```
+
 说明部署正常，并且可以动态分配NFS的共享卷。
