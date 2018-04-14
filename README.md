@@ -48,6 +48,6 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 使用微信扫一扫请贡献者喝一杯🍺
 
 <p align="center">
-<img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/wechat-appreciate-code.jpg?raw=true" alt="微信赞赏码"/>
+<img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/wechat-appreciate-qrcode.jpg?raw=true" alt="微信赞赏码"/>
 </p>
 
