@@ -3,7 +3,6 @@
 所有下文用到的文件来自于`git clone  https://github.com/kubernetes-incubator/external-storage.git`的nfs-client目录。
 ## nfs-client-provisioner
 nfs-client-provisioner 是一个Kubernetes的简易NFS的外部provisioner，本身不提供NFS，需要现有的NFS服务器提供存储
-[![Docker Repository on Quay](https://quay.io/repository/external_storage/nfs-client-provisioner/status "Docker Repository on Quay")](https://quay.io/repository/external_storage/nfs-client-provisioner)
 
 - PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上）
 - PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName}的命名格式（在NFS服务器上）
@@ -95,20 +94,21 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 ## 我的示例
 
 * NFS服务器配置
-```
+```bash
 # cat /etc/exports
 ```
 ```
 /media/docker		*(no_root_squash,rw,sync,no_subtree_check)
-
 ```
 
 * nfs-deployment.yaml示例
 
 NFS服务器的地址是ubuntu-master,共享出来的路径是/media/docker，其他不需要修改。
+
 ```bash
 # cat nfs-deployment.yaml
 ```
+
 ```yaml
 kind: Deployment
 apiVersion: extensions/v1beta1
