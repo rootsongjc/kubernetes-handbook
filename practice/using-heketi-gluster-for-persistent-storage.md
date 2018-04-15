@@ -329,7 +329,7 @@ slow (default)   kubernetes.io/glusterfs   6h
 ```bash
 # helm list
 NAME    	REVISION	UPDATED                 	STATUS  	CHART               	NAMESPACE
-mysql2  	1       	Thu Apr 12 15:27:11 2018	DEPLOYED	mysql-0.3.7         	default 
+mysql2  	1       	Thu Apr 12 15:27:11 2018	DEPLOYED	mysql-0.3.7         	default
 ```
 
 查看PVC和PV，大小2G，mysql2-mysql

@@ -121,6 +121,8 @@
   - [安装dashboard插件](practice/dashboard-addon-installation.md)
   - [安装heapster插件](practice/heapster-addon-installation.md)
   - [安装EFK插件](practice/efk-addon-installation.md)
+- [使用kubeadm快速构建测试集群](practice/install-kubernetes-with-kubeadm.md)
+  - [使用kubeadm在Ubuntu Server 16.04上快速构建测试集群](practice/install-kubernetes-on-ubuntu-server-16.04-with-kubeadm.md)
 - [服务发现与负载均衡](practice/service-discovery-and-loadbalancing.md)
   - [安装Traefik ingress](practice/traefik-ingress-installation.md)
   - [分布式负载测试](practice/distributed-load-test.md)
@@ -142,7 +144,7 @@
     - [使用GlusterFS做持久化存储](practice/using-glusterfs-for-persistent-storage.md)
     - [使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner](practice/using-heketi-gluster-for-persistent-storage.md)
     - [在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
-  - [CephFS](practice/cephfs.md)
+  - [Ceph](practice/ceph.md)
     - [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
   - [OpenEBS](practice/openebs.md)
     - [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
@@ -220,4 +222,3 @@
   - [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
 - [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   - [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
-

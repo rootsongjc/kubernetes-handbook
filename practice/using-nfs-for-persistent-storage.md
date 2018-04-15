@@ -104,8 +104,12 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 * nfs-deployment.yaml示例
 
 NFS服务器的地址是ubuntu-master,共享出来的路径是/media/docker，其他不需要修改。
+
+```bash
+# cat nfs-deployment.yaml
+```
+
 ```yaml
-# cat nfs-deployment.yaml 
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
@@ -201,8 +205,10 @@ pvc-fe3cb938-3f15-11e8-b61d-08002795cb26   1Mi        RWX            Delete     
 * 启动测试POD
 
 POD文件如下，作用就是在test-claim的PV里touch一个SUCCESS文件。
+```bash
+# cat test-pod.yaml
+```
 ```yaml
-# cat test-pod.yaml 
 kind: Pod
 apiVersion: v1
 metadata:
