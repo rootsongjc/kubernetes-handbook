@@ -1,6 +1,6 @@
 # 使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner（Kubernetes集成GlusterFS集群和Heketi）
 
-本文翻译自heketi的github网址官方文档https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md （大部分为google翻译,少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
+本文翻译自[heketi的github网址官方文档](https://github.com/heketi/heketi/blob/master/docs/admin/install-kubernetes.md )（大部分为google翻译，少许人工调整，括号内为个人注解）其中注意事项部分为其他网上查询所得。
 本文的整个过程将在kubernetes集群上的3个或以上节点安装glusterfs的服务端集群（DaemonSet方式），并将heketi以deployment的方式部署到kubernetes集群。在我的示例部分有StorageClass和PVC的样例。本文介绍的Heketi，GlusterFS这2个组件与kubernetes集成只适合用于测试验证环境，并不适合生产环境，请注意这一点。
 
 Heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes的Storage存储的external provisioner。
@@ -17,11 +17,7 @@ Heketi是一个具有resetful接口的glusterfs管理程序，作为kubernetes�
 
 本指南支持在Kubernetes集群中集成，部署和管理GlusterFS 容器化的存储节点。这使得Kubernetes管理员可以为其用户提供可靠的共享存储。
 
-跟这个话题相关的另一个重要资源是
-[gluster-kubernetes](https://github.com/gluster/gluster-kubernetes) 项目。
-它专注于在Kubernetes集群中部署GlusterFS，并提供简化的工具来完成此任务。它包含一个安装指南 [setup guide](https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md).
-它还包括一个样例 [Hello World](https://github.com/gluster/gluster-kubernetes/tree/master/docs/examples/hello_world)。
-其中包含一个使用动态配置（dynamically-provisioned）的GlusterFS卷进行存储的Web server pod示例。对于那些想要测试或学习更多关于此主题的人，请按照主[README](https://github.com/gluster/gluster-kubernetes) 的快速入门说明 进行操作。
+跟这个话题相关的另一个重要资源是[gluster-kubernetes](https://github.com/gluster/gluster-kubernetes) 项目。它专注于在Kubernetes集群中部署GlusterFS，并提供简化的工具来完成此任务。它包含一个安装指南 [setup guide](https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md)。它还包括一个样例 [Hello World](https://github.com/gluster/gluster-kubernetes/tree/master/docs/examples/hello_world)。其中包含一个使用动态配置（dynamically-provisioned）的GlusterFS卷进行存储的Web server pod示例。对于那些想要测试或学习更多关于此主题的人，请按照主[README](https://github.com/gluster/gluster-kubernetes) 的快速入门说明 进行操作。
 
 本指南旨在展示Heketi在Kubernetes环境中管理Gluster的最简单示例。这是为了强调这种配置的主要组成组件，因此并不适合生产环境。
 
@@ -44,7 +40,7 @@ Heketi提供了一个CLI客户端，为用户提供了一种管理Kubernetes中G
 
 
 ## Glusterfs和Heketi在Kubernetes集群中的部署过程
-以下所有文件都位于下方extras/kubernetes  (git clone https://github.com/heketi/heketi.git)。
+以下所有文件都位于下方extras/kubernetes  (`git clone https://github.com/heketi/heketi.git`)。
 
 * 部署 GlusterFS DaemonSet
 
@@ -135,7 +131,7 @@ Hello from heketi
   修改拓扑文件以反映您所做的选择，然后如下所示部署它（修改主机名，IP，block 设备的名称 如xvdg）：
 
 ```bash
-#./heketi-client/bin/heketi-cli topology load --json=topology-sample.json
+heketi-client/bin/heketi-cli topology load --json=topology-sample.json
 Handling connection for 57598
 	Found node ip-172-20-0-217.ec2.internal on cluster e6c063ba398f8e9c88a6ed720dc07dd2
 		Adding device /dev/xvdg ... OK
@@ -249,20 +245,19 @@ deployment "heketi" created
     }
   ]
 }
-
 ```
 
 * 确认glusterfs和heketi的pod运行正常
 
 ```bash
-# kubectl get pod
+# kubectl get pod 
 NAME                                                      READY     STATUS    RESTARTS   AGE
 glusterfs-gf5zc                                           1/1       Running   2          8h
 glusterfs-ngc55                                           1/1       Running   2          8h
 glusterfs-zncjs                                           1/1       Running   0          2h
 heketi-5c8ffcc756-x9gnv                                   1/1       Running   5          7h
 ```
-* StorageClass  ymal文件示例
+* StorageClass  yaml文件示例
 
 ```bash
 # cat storage-class-slow.yaml
@@ -315,7 +310,6 @@ myclaim                     Bound     pvc-e98e9117-3ed7-11e8-b61d-08002795cb26  
 # kubectl get pv|grep myclaim
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS        CLAIM                               STORAGECLASS   REASON    AGE
 pvc-e98e9117-3ed7-11e8-b61d-08002795cb26   1Gi        RWO            Delete           Bound     default/myclaim                     slow                     1m
-
 ```
 
 * 可以将slow的sc设置为默认，这样平台分配存储的时候可以自动从glusterfs集群分配pv
@@ -328,7 +322,6 @@ storageclass.storage.k8s.io "slow" patched
 NAME             PROVISIONER               AGE
 default          fuseim.pri/ifs            1d
 slow (default)   kubernetes.io/glusterfs   6h
-
 ```
 # 容量限额测试
 已经通过Helm 部署的一个mysql2 实例，使用存储2G，信息查看如下：
@@ -349,7 +342,6 @@ mysql2-mysql                Bound     pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26  
 # kubectl get pv
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS        CLAIM                               STORAGECLASS   REASON    AGE
 pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            Delete           Bound         default/mysql2-mysql                slow                     19h
-
 ```
 
 查看mysql的pod
@@ -357,7 +349,6 @@ pvc-ea4ae3e0-3e22-11e8-8bb6-08002795cb26   2Gi        RWO            Delete     
 ```bash
 # kubectl get pod|grep mysql2
 mysql2-mysql-56d64f5b77-j2v84                             1/1       Running   2          19h
-
 ```
 进入mysql所在容器
 
@@ -383,7 +374,7 @@ tmpfs                                               1.5G     0  1.5G   0% /sys/f
 使用dd写入数据，写入一段时间以后，空间满了，会报错（报错信息有bug，不是报空间满了，而是报文件系统只读，应该是glusterfs和docker配合的问题）
 
 ```bash
-root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# dd if=/dev/zero of=test.img bs=8M count=300
+root@mysql2-mysql-56d64f5b77-j2v84:/var/lib/mysql# dd if=/dev/zero of=test.img bs=8M count=300 
 
 dd: error writing 'test.img': Read-only file system
 dd: closing output file 'test.img': Input/output error

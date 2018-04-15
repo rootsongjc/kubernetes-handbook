@@ -4,13 +4,13 @@
 ## nfs-client-provisioner
 nfs-client-provisioner 是一个Kubernetes的简易NFS的外部provisioner，本身不提供NFS，需要现有的NFS服务器提供存储
 
-- PV以 ${namespace}-${pvcName}-${pvName}的命名格式提供（在NFS服务器上）
-- PV回收的时候以 archieved-${namespace}-${pvcName}-${pvName}的命名格式（在NFS服务器上）
+- PV以 `${namespace}-${pvcName}-${pvName}`的命名格式提供（在NFS服务器上）
+- PV回收的时候以 `archieved-${namespace}-${pvcName}-${pvName}` 的命名格式（在NFS服务器上）
 
 ## 安装部署
 - 修改deployment文件并部署 `deploy/deployment.yaml`
 
-需要修改的地方只有NFS服务器所在的IP地址（10.10.10.60），以及NFS服务器共享的路径（/ifs/kubernetes），两处都需要修改为你实际的NFS服务器和共享目录
+需要修改的地方只有NFS服务器所在的IP地址（10.10.10.60），以及NFS服务器共享的路径（`/ifs/kubernetes`），两处都需要修改为你实际的NFS服务器和共享目录
 ```yaml
 kind: Deployment
 apiVersion: extensions/v1beta1
@@ -95,9 +95,9 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 
 * NFS服务器配置
 ```bash
-# cat /etc/exports
+# cat /etc/exports 
 ```
-```
+```ini
 /media/docker		*(no_root_squash,rw,sync,no_subtree_check)
 ```
 
@@ -148,7 +148,7 @@ spec:
 可以修改Class的名字，我的改成了default。
 
 ```bash
-# cat class.yaml
+# cat class.yaml 
 ```
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -173,14 +173,13 @@ storageclass.storage.k8s.io "default" patched
 # kubectl get sc
 NAME                PROVISIONER               AGE
 default (default)   fuseim.pri/ifs            2d
-
 ```
 
 * 测试创建PVC
 
 查看pvc文件
 ```bash
-# cat test-claim.yaml
+# cat test-claim.yaml 
 ```
 ```yaml
 kind: PersistentVolumeClaim
@@ -196,7 +195,7 @@ spec:
 ```
 创建PVC
 ```bash
-# kubectl apply -f test-claim.yaml
+# kubectl apply -f test-claim.yaml 
 persistentvolumeclaim "test-claim" created
 root@Ubuntu-master:~/kubernetes/nfs# kubectl get pvc|grep test
 test-claim                  Bound     pvc-fe3cb938-3f15-11e8-b61d-08002795cb26   1Mi        RWX            default        10s
@@ -236,7 +235,7 @@ spec:
 启动POD，一会儿POD就是completed状态，说明执行完毕。
 
 ```bash
-# kubectl apply -f test-pod.yaml
+# kubectl apply -f test-pod.yaml 
 pod "test-pod" created
 kubectl get pod|grep test
 test-pod                                                  0/1       Completed   0          40s
