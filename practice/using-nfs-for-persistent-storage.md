@@ -12,7 +12,7 @@ nfs-client-provisioner 是一个Kubernetes的简易NFS的外部provisioner，本
 - 修改deployment文件并部署 `deploy/deployment.yaml`
 
 需要修改的地方只有NFS服务器所在的IP地址（10.10.10.60），以及NFS服务器共享的路径（/ifs/kubernetes），两处都需要修改为你实际的NFS服务器和共享目录
-```
+```yaml
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
@@ -50,7 +50,7 @@ spec:
 - 修改StorageClass文件并部署 `deploy/class.yaml`
 
 此处可以不修改，或者修改provisioner的名字，需要与上面的deployment的PROVISIONER_NAME名字一致。
-```
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -65,7 +65,7 @@ provisioner: fuseim.pri/ifs
 ### 如果启用了RBAC
 
 需要执行如下的命令来授权。
-```console
+```bash
 $ kubectl create -f deploy/auth/serviceaccount.yaml
 serviceaccount "nfs-client-provisioner" created
 $ kubectl create -f deploy/auth/clusterrole.yaml
@@ -96,7 +96,7 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 
 * NFS服务器配置
 ```
-# cat /etc/exports 
+# cat /etc/exports
 ```
 ```
 /media/docker		*(no_root_squash,rw,sync,no_subtree_check)
@@ -106,8 +106,10 @@ $ kubectl patch deployment nfs-client-provisioner -p '{"spec":{"template":{"spec
 * nfs-deployment.yaml示例
 
 NFS服务器的地址是ubuntu-master,共享出来的路径是/media/docker，其他不需要修改。
+```bash
+# cat nfs-deployment.yaml
 ```
-# cat nfs-deployment.yaml 
+```yaml
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
@@ -145,10 +147,10 @@ spec:
 
 可以修改Class的名字，我的改成了default。
 
+```bash
+# cat class.yaml
 ```
-# cat class.yaml 
-```
-```
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -157,7 +159,7 @@ provisioner: fuseim.pri/ifs
 ```
 * 查看StorageClass
 
-```
+```bash
 # kubectl get sc
 NAME             PROVISIONER               AGE
 default          fuseim.pri/ifs            2d
@@ -165,7 +167,7 @@ default          fuseim.pri/ifs            2d
 
 * 设置这个default名字的SC为Kubernetes的默认存储后端
 
-```
+```bash
 # kubectl patch storageclass default -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 storageclass.storage.k8s.io "default" patched
 # kubectl get sc
@@ -177,10 +179,10 @@ default (default)   fuseim.pri/ifs            2d
 * 测试创建PVC
 
 查看pvc文件
+```bash
+# cat test-claim.yaml
 ```
-# cat test-claim.yaml 
-```
-```
+```yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -193,8 +195,8 @@ spec:
       storage: 1Mi
 ```
 创建PVC
-```
-# kubectl apply -f test-claim.yaml 
+```bash
+# kubectl apply -f test-claim.yaml
 persistentvolumeclaim "test-claim" created
 root@Ubuntu-master:~/kubernetes/nfs# kubectl get pvc|grep test
 test-claim                  Bound     pvc-fe3cb938-3f15-11e8-b61d-08002795cb26   1Mi        RWX            default        10s
@@ -204,8 +206,10 @@ pvc-fe3cb938-3f15-11e8-b61d-08002795cb26   1Mi        RWX            Delete     
 * 启动测试POD
 
 POD文件如下，作用就是在test-claim的PV里touch一个SUCCESS文件。
+```bash
+# cat test-pod.yaml
 ```
-# cat test-pod.yaml 
+```yaml
 kind: Pod
 apiVersion: v1
 metadata:
@@ -231,8 +235,8 @@ spec:
 
 启动POD，一会儿POD就是completed状态，说明执行完毕。
 
-```
-# kubectl apply -f test-pod.yaml 
+```bash
+# kubectl apply -f test-pod.yaml
 pod "test-pod" created
 kubectl get pod|grep test
 test-pod                                                  0/1       Completed   0          40s
@@ -240,7 +244,7 @@ test-pod                                                  0/1       Completed   
 
 我们去NFS共享目录查看有没有SUCCESS文件。
 
-```
+```bash
 # cd default-test-claim-pvc-fe3cb938-3f15-11e8-b61d-08002795cb26
 # ls
 SUCCESS

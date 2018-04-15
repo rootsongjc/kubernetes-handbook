@@ -19,7 +19,7 @@
 * 配置主机名映射，每个节点
 
 
-```console
+```bash
 # cat /etc/hosts
 127.0.0.1	localhost
 192.168.0.200   Ubuntu-master
@@ -32,8 +32,11 @@
 ## 在所有节点上安装kubeadm
 查看apt安装源如下配置，使用阿里云的系统和kubernetes的源。
 
-```console
+```bash
 # cat /etc/apt/sources.list
+```
+
+```
 #系统安装源
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
@@ -47,7 +50,7 @@ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 ```
 
 安装docker，可以使用系统源的的docker.io软件包，版本1.13.1，我的系统里是已经安装好最新的版本了。
-```console
+```bash
 # apt-get install docker.io
 Reading package lists... Done
 Building dependency tree       
@@ -57,7 +60,7 @@ docker.io is already the newest version (1.13.1-0ubuntu1~16.04.2).
 
 ```
 更新源，可以不理会gpg的报错信息。
-```console
+```bash
 # apt-get update
 Hit:1 http://mirrors.aliyun.com/ubuntu xenial InRelease
 Hit:2 http://mirrors.aliyun.com/ubuntu xenial-updates InRelease
@@ -72,7 +75,7 @@ N: Data from such a repository can't be authenticated and is therefore potential
 N: See apt-secure(8) manpage for repository creation and user configuration details.
 ```
 强制安装kubeadm，kubectl，kubelet软件包。
-```console
+```bash
 # apt-get install -y kubelet kubeadm kubectl --allow-unauthenticated
 Reading package lists... Done
 Building dependency tree
@@ -114,7 +117,7 @@ kubeadm安装完以后，就可以使用它来快速安装部署Kubernetes集群
 
 如果有能够连接gcr站点的网络，那么整个安装过程非常简单。
 
-```console
+```bash
 # kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.0.200
 [init] Using Kubernetes version: v1.10.1
 [init] Using Authorization modes: [Node RBAC]
@@ -180,18 +183,18 @@ as root:
 
 执行如下命令来配置kubectl。
 
-```console
+```bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-这样master的节点就配置好了，并且可以使用kubectl来进行各种操作了，根据上面的提示接着往下做，将slave节点加入到集群
+这样master的节点就配置好了，并且可以使用kubectl来进行各种操作了，根据上面的提示接着往下做，将slave节点加入到集群。
 
 ### Slave节点加入集群
 
 在slave节点执行如下的命令,将slave节点加入集群，正常的返回信息如下：
 
-```console
+```bash
 #kubeadm join 192.168.0.200:6443 --token rw4enn.mvk547juq7qi2b5f --discovery-token-ca-cert-hash sha256:ba260d5191213382a806a9a7d92c9e6bb09061847c7914b1ac584d0c69471579
 [preflight] Running pre-flight checks.
 	[WARNING FileExisting-crictl]: crictl not found in system path
@@ -209,8 +212,9 @@ This node has joined the cluster:
 
 Run 'kubectl get nodes' on the master to see this node join the cluster.
 ```
-等待节点加入完毕。加入中状态
-```console
+等待节点加入完毕。加入中状态。
+
+```bash
 # kubectl get node
 NAME            STATUS     ROLES     AGE       VERSION
 ubuntu-1        NotReady   <none>    6m        v1.10.1
@@ -218,9 +222,8 @@ ubuntu-2        NotReady   <none>    6m        v1.10.1
 ubuntu-3        NotReady   <none>    6m        v1.10.1
 ubuntu-master   NotReady   master    10m       v1.10.1
 ```
-
-在master节点查看信息如下状态为节点加入完毕
-```console
+在master节点查看信息如下状态为节点加入完毕。
+```bash
 root@Ubuntu-master:~# kubectl get pod -n kube-system -o wide
 NAME                                    READY     STATUS    RESTARTS   AGE       IP              NODE
 etcd-ubuntu-master                      1/1       Running   0          21m       192.168.0.200   ubuntu-master
@@ -234,13 +237,13 @@ kube-proxy-rh4lq                        1/1       Running   0          18m      
 kube-scheduler-ubuntu-master            1/1       Running   0          21m       192.168.0.200   ubuntu-master
 ```
 
-kubedns组件需要在网络插件完成安装以后会自动安装完成
+kubedns组件需要在网络插件完成安装以后会自动安装完成。
 
 ## 安装网络插件canal
 
 从[canal官方文档参考](https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/canal/)，如下网址下载2个文件并且安装，其中一个是配置canal的RBAC权限，一个是部署canal的DaemonSet。
 
-```console
+```bash
 # kubectl apply -f  https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/canal/rbac.yaml
 clusterrole.rbac.authorization.k8s.io "calico" created
 clusterrole.rbac.authorization.k8s.io "flannel" created
@@ -248,7 +251,7 @@ clusterrolebinding.rbac.authorization.k8s.io "canal-flannel" created
 clusterrolebinding.rbac.authorization.k8s.io "canal-calico" created
 ```
 
-```console
+```bash
 # kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/canal/canal.yaml
 configmap "canal-config" created
 daemonset.extensions "canal" created
@@ -261,8 +264,8 @@ customresourcedefinition.apiextensions.k8s.io "networkpolicies.crd.projectcalico
 serviceaccount "canal" created
 ```
 
-查看canal的安装状态
-```console
+查看canal的安装状态。
+```bash
 # kubectl get pod -n kube-system -o wide
 NAME                                    READY     STATUS    RESTARTS   AGE       IP              NODE
 canal-fc94k                             3/3       Running   10         4m        192.168.0.201   ubuntu-1
@@ -282,8 +285,8 @@ kube-scheduler-ubuntu-master            1/1       Running   0          28m      
 
 可以看到canal和kube-dns都已经运行正常，一个基本功能正常的测试环境就部署完毕了。
 
-此时查看集群的节点状态，版本为最新的版本v1.10.1
-```console
+此时查看集群的节点状态，版本为最新的版本v1.10.1。
+```bash
 # kubectl get node
 NAME            STATUS    ROLES     AGE       VERSION
 ubuntu-1        Ready     <none>    27m       v1.10.1
@@ -292,8 +295,8 @@ ubuntu-3        Ready     <none>    27m       v1.10.1
 ubuntu-master   Ready     master    31m       v1.10.1
 ```
 
-让master也运行pod（默认master不运行pod）,这样在测试环境做是可以的，不建议在生产环境如此操作
-```console
+让master也运行pod（默认master不运行pod）,这样在测试环境做是可以的，不建议在生产环境如此操作。
+```bash
 #kubectl taint nodes --all node-role.kubernetes.io/master-
 node "ubuntu-master" untainted
 taint "node-role.kubernetes.io/master:" not found
