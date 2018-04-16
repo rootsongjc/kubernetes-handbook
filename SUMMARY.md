@@ -180,6 +180,7 @@
     - [安装和拓展Istio service mesh](usecases/install-and-expand-istio-mesh.md)
     - [集成虚拟机](usecases/integrating-vms.md)
     - [Istio中sidecar的注入规范及示例](usecases/sidecar-spec-in-istio.md)
+    - [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
   - [Linkerd](usecases/linkerd.md)
     - [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   - [Conduit](usecases/conduit.md)
@@ -193,6 +194,7 @@
   - [FaaS-函数即服务](usecases/faas.md)
     - [OpenFaaS快速入门指南](usecases/openfaas-quick-start.md)
 - [边缘计算](usecases/edge-computing.md)
+- [人工智能](usecases/ai.md)
 
 ### 开发指南
 
