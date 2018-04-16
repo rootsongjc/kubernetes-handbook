@@ -55,6 +55,9 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 
 #### 2018
 
+- May 20,2018 | Nanjing | [Global Tech Week 2018, 4th NJSD Global Conference](http://njsd-china.org/NJSDGlobal2018/)【2018全球技术周暨第四届南京（全球）软件大会】 | The next stop of Cloud Native apps
+
+
 - Mar 23 - Mar 25,2018 | Beijing | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
 #### 2017
