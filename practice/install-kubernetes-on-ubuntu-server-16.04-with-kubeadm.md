@@ -1,4 +1,4 @@
-# 用kubeadm在Ubuntu上快速构建Kubernetes基础集群
+# 用kubeadm在Ubuntu上快速构建Kubernetes测试集群
 
 本文将介绍如何在Ubuntu server 16.04版本上安装kubeadm，并利用kubeadm快速的在Ubuntu server 版本 16.04上构建一个kubernetes的基础的测试集群，用来做学习和测试用途，当前（2018-04-14）最新的版本是1.10.1。参考文档包括kubernetes官方网站的[kubeadm安装文档](https://kubernetes.io/docs/setup/independent/install-kubeadm/)以及[利用kubeadm创建集群](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)这两个文档。
 
@@ -33,11 +33,8 @@
 查看apt安装源如下配置，使用阿里云的系统和kubernetes的源。
 
 ```bash
-# cat /etc/apt/sources.list
-```
-
-```
-#系统安装源
+$ cat /etc/apt/sources.list
+# 系统安装源
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted
 deb http://mirrors.aliyun.com/ubuntu/ xenial universe
@@ -45,7 +42,7 @@ deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe
 deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse
 deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-#kubeadm及kubernetes组件安装源
+# kubeadm及kubernetes组件安装源
 deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 ```
 
@@ -57,7 +54,6 @@ Building dependency tree
 Reading state information... Done
 docker.io is already the newest version (1.13.1-0ubuntu1~16.04.2).
 0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
-
 ```
 更新源，可以不理会gpg的报错信息。
 ```bash
