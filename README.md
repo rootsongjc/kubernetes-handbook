@@ -40,3 +40,14 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
 <p align="center">
   <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cloud-native-go-wechat-qr-code.jpg?raw=true" alt="CloudNativeGo微信公众号二维码"/>
 </p>
+
+## 支持本书
+
+为贡献者加油⛽️！为云原生干杯🍻！
+
+使用微信扫一扫请贡献者喝一杯🍺
+
+<p align="center">
+<img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/wechat-appreciate-qrcode.jpg?raw=true" alt="微信赞赏码"/>
+</p>
+
