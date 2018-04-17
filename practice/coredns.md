@@ -1,6 +1,6 @@
 # Kubernetes中CoreDNS安装实践
 
-CoreDNSc可以具有标准的Kube-DNS的Kubernetes集群中运行。作为* Kubernetes *的插件使用，CoreDNS将从
+CoreDNSc可以在具有标准的Kube-DNS的Kubernetes集群中运行。作为* Kubernetes *的插件使用，CoreDNS将从
 Kubernetes集群中读取区（zone）数据。它实现了为Kubernetes的DNS服务发现定义的规范：
 
    https://github.com/kubernetes/dns/blob/master/docs/specification.md
