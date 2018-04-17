@@ -1,12 +1,12 @@
 # Kubernetes中CoreDNS安装实践
 
-CoreDNSc可以在具有标准的Kube-DNS的Kubernetes集群中运行。作为* Kubernetes *的插件使用，CoreDNS将从
+CoreDNS可以在具有标准的Kube-DNS的Kubernetes集群中运行。作为* Kubernetes *的插件使用，CoreDNS将从
 Kubernetes集群中读取区（zone）数据。它实现了为Kubernetes的DNS服务发现定义的规范：
 
    https://github.com/kubernetes/dns/blob/master/docs/specification.md
 
 
-## 部署CoreDNS需要使用到官方的提供的两个文件 [deploy.sh](https://github.com/coredns/deployment/blob/master/kubernetes/deploy.sh)和[coredns.yaml.sed](https://github.com/coredns/deployment/blob/master/kubernetes/coredns.yaml.sed)
+## 部署CoreDNS需要使用到官方提供的两个文件 [deploy.sh](https://github.com/coredns/deployment/blob/master/kubernetes/deploy.sh)和[coredns.yaml.sed](https://github.com/coredns/deployment/blob/master/kubernetes/coredns.yaml.sed)
 
 (这两个文件已经放入manifest的[coredns](/manifests/coredns)中)
 
