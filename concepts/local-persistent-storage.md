@@ -83,14 +83,13 @@ export KUBE_FEATURE_GATES ="BlockVolume = true"
 
    ```bash
    mkdir/mnt/disks
-   vol for vol1 vol2 vol3;做
+   vol for vol1 vol2 vol3;do
    mkdir/mnt/disks/$vol
    mount -t tmpfs $vol/mnt/disks/$vol
    DONE
    ```
 
-
-1. 运行本地集群。
+2. 运行本地集群。
 
    ```bash
    $ALLOW_PRIVILEGED = true LOG_LEVEL = 5 FEATURE_GATES = $KUBE_FEATURE_GATES hack/local-up-cluster.sh
