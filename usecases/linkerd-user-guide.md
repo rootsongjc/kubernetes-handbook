@@ -1,5 +1,7 @@
 # Linkerd 使用指南
 
+本文是 Linkerd 使用指南，我们着重讲解在 kubernetes 中如何使用 linkerd 作为 kubernetes 的 Ingress controller。
+
 ## 前言
 
 Linkerd 作为一款 service mesh 与kubernetes 结合后主要有以下几种用法：
@@ -19,7 +21,7 @@ Linkerd 作为一款 service mesh 与kubernetes 结合后主要有以下几种�
 
 安装测试时需要用到的镜像有：
 
-```
+```ini
 buoyantio/helloworld:0.1.4
 buoyantio/jenkins-plus:2.60.1
 buoyantio/kubectl:v1.4.0
@@ -60,7 +62,7 @@ $ kubectl create -f jenkins.yml
 
 在 kubernetes 中使用 Jenkins 的时候需要注意 Pipeline 中的配置：
 
-```
+```python
     def currentVersion = getCurrentVersion()
     def newVersion = getNextVersion(currentVersion)
     def frontendIp = kubectl("get svc l5d -o jsonpath=\"{.status.loadBalancer.ingress[0].*}\"").trim()
@@ -148,7 +150,7 @@ $ kubectl create -f world-v2.yml
 
 在本地`/etc/hosts`中添加如下内容：
 
-```
+```ini
 172.20.0.119 linkerd.jimmysong.io
 172.20.0.119 linkerd-viz.jimmysong.io
 172.20.0.119 l5d.jimmysong.io
@@ -280,8 +282,8 @@ Hello (172.30.60.14) world (172.30.71.19)!!
 
 ## 参考
 
-https://github.com/linkerd/linkerd-examples/
+- https://github.com/linkerd/linkerd-examples
 
-[A Service Mesh for Kubernetes](https://cdn2.hubspot.net/hubfs/2818724/A%20Service%20Mesh%20for%20Kubernetes_Final.pdf)
+- [A Service Mesh for Kubernetes](https://cdn2.hubspot.net/hubfs/2818724/A%20Service%20Mesh%20for%20Kubernetes_Final.pdf)
 
-[dtab](https://linkerd.io/in-depth/dtabs/)
+- [dtab](https://linkerd.io/in-depth/dtabs/)
