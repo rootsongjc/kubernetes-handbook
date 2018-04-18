@@ -12,8 +12,6 @@
 - Vagrant 2.0+
 - Virtualbox 5.0 +
 - 提前下载 kubernetes1.9.1 的 release 压缩包
-
-
 - docker 1.12+
 - kubectl 1.9.1+
 - maven 3.5.2+
