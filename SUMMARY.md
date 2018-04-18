@@ -146,6 +146,7 @@
     - [使用Heketi作为kubernetes的持久存储GlusterFS的external provisioner](practice/using-heketi-gluster-for-persistent-storage.md)
     - [在OpenShift中使用GlusterFS做持久化存储](practice/storage-for-containers-using-glusterfs-with-openshift.md)
   - [Ceph](practice/ceph.md)
+    - [用Helm托管安装Ceph集群并提供后端存储](practice/ceph-helm-install-guide-zh.md)
     - [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
   - [OpenEBS](practice/openebs.md)
     - [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
