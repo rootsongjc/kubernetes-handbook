@@ -1,4 +1,4 @@
-# 在Kubernetes集群中用Helm托管安装Ceph集群并提供后端存储
+# 用Helm托管安装Ceph集群并提供后端存储
 本文翻译自Ceph[官方文档](http://docs.ceph.com/docs/master/start/kube-helm/)，括号内的内容为注释。
 ## 安装
  [ceph-helm ](https://github.com/ceph/ceph-helm/)项目可让你在Kubernetes 环境以托管方式部署Ceph . 本文档假定Kubernetes 环境已经可用。
