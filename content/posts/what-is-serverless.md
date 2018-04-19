@@ -1,7 +1,7 @@
 ---
 title: "什么是serverless架构？"
 tags: ["serverless","faas"]
-catagories: "cloud-native"
+categories: "serverless"
 subtitle: "理解Serverless和FaaS"
 description: "本文带您了解serverless架构和以亚马逊AWS Lambda为代表的FaaS函数即服务，分析其来历和要解决的问题以及处境"
 date: 2017-11-24T23:46:35+08:00
