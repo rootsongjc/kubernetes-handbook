@@ -1,4 +1,4 @@
-# 配置内置DNS（kube-dns）
+# 安装配置kube-dns
 
 在我们安装Kubernetes集群的时候就已经安装了kube-dns插件，这个插件也是官方推荐安装的。通过将 Service 注册到 DNS 中，Kuberentes 可以为我们提供一种简单的服务注册发现与负载均衡方式。
 
@@ -146,7 +146,7 @@ kube-dns `kube-system:kube-dns` ConfigMap 的选项如下所示：
 
 #### 示例：存根域
 
-在这个例子中，用户有一个 Consul DNS 服务发现系统，他们希望能够与 kube-dns 集成起来。 Consul 域名服务器地址为 10.150.0.1，所有的 Consul 名字具有后缀 “.consul.local”。 要配置 Kubernetes，集群管理员只需要简单地创建一个 ConfigMap 对象，如下所示：
+在这个例子中，用户有一个 Consul DNS 服务发现系统，他们希望能够与 kube-dns 集成起来。 Consul 域名服务器地址为 10.150.0.1，所有的 Consul 名字具有后缀 `.consul.local`。 要配置 Kubernetes，集群管理员只需要简单地创建一个 ConfigMap 对象，如下所示：
 
 ```yaml
 apiVersion: v1
@@ -201,14 +201,13 @@ spec:
 
 使用该文件创建 Pod 并验证其状态：
 
-```bash
 $ kubectl create -f busybox.yaml
 pod "busybox" created
 
 $ kubectl get pods busybox
 NAME      READY     STATUS    RESTARTS   AGE
 busybox   1/1       Running   0          <some-time>
-​```
+```
 
 该 Pod 运行后，您可以在它的环境中执行 `nslookup`。如果您看到类似如下的输出，表示 DNS 正在正确工作。
 
@@ -219,7 +218,7 @@ Address 1: 10.0.0.10
 
 Name:      kubernetes.default
 Address 1: 10.0.0.1
-​```
+```
 
 如果 `nslookup` 命令失败，检查如下内容：
 
@@ -227,49 +226,49 @@ Address 1: 10.0.0.1
 
 查看下 resolv.conf 文件。（参考[集成节点的 DNS](inheriting-dns-from-the-node)和 下面的[已知问题](#known-issues)获取更多信息）
 
-​```bash
+```bash
 $ kubectl exec busybox cat /etc/resolv.conf
-​```
+```
 
 验证搜索路径和名称服务器设置如下（请注意，搜索路径可能因不同的云提供商而异）：
 
-​```
+```
 search default.svc.cluster.local svc.cluster.local cluster.local google.internal c.gce_project_id.internal
 nameserver 10.0.0.10
 options ndots:5
-​```
+```
 
 如果看到如下错误表明错误来自 kube-dns 或相关服务：
 
-​```
+```
 $ kubectl exec -ti busybox -- nslookup kubernetes.default
 Server:    10.0.0.10
 Address 1: 10.0.0.10
 
 nslookup: can't resolve 'kubernetes.default'
-​```
+```
 
 或者
 
-​```
+```
 $ kubectl exec -ti busybox -- nslookup kubernetes.default
 Server:    10.0.0.10
 Address 1: 10.0.0.10 kube-dns.kube-system.svc.cluster.local
 
 nslookup: can't resolve 'kubernetes.default'
-​```
+```
 
 ### 检查 DNS pod 是否在运行
 
 使用 `kubectl get pods` 命令验证 DNS pod 是否正在运行。
 
-​```bash
+```bash
 $ kubectl get pods --namespace=kube-system -l k8s-app=kube-dns
 NAME                    READY     STATUS    RESTARTS   AGE
 ...
 kube-dns-v19-ezo1y      3/3       Running   0           1h
 ...
-​```
+```
 
 如果您看到没有 Pod 运行或者 Pod 处于 失败/完成 状态，DNS 插件可能没有部署到您的当前环境中，您需要手动部署。
 
@@ -277,11 +276,11 @@ kube-dns-v19-ezo1y      3/3       Running   0           1h
 
 使用 `kubectl logs` 命令查看 DNS 守护进程的日志。
 
-​```bash
+```bash
 $ kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c kubedns
 $ kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c dnsmasq
 $ kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name) -c sidecar
-​```
+```
 
 看看有没有可疑的日志。以字母“`W`”，“`E`”，“`F`”开头的代表警告、错误和失败。请搜索具有这些日志级别的条目，并使用 [kubernetes issues](https://github.com/kubernetes/kubernetes/issues)来报告意外错误。
 
@@ -289,13 +288,13 @@ $ kubectl logs --namespace=kube-system $(kubectl get pods --namespace=kube-syste
 
 使用 `kubectl get service` 命令验证 DNS 服务是否启动。
 
-​```bash
+```bash
 $ kubectl get svc --namespace=kube-system
 NAME          CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE
 ...
 kube-dns      10.0.0.10      <none>        53/UDP,53/TCP        1h
 ...
-​```
+```
 
 如果您已经创建了该服务或它本应该默认创建但没有出现，参考[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)获取更多信息。
 
@@ -303,11 +302,11 @@ kube-dns      10.0.0.10      <none>        53/UDP,53/TCP        1h
 
 您可以使用`kubectl get endpoints`命令验证 DNS 端点是否被暴露。
 
-​```bash
+```bash
 $ kubectl get ep kube-dns --namespace=kube-system
 NAME       ENDPOINTS                       AGE
 kube-dns   10.180.3.17:53,10.180.3.17:53    1h
-​```
+```
 
 如果您没有看到端点，查看[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)文档中的端点部分。
 
@@ -331,4 +330,3 @@ Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联�
 - [Service 和 Pod 的 DNS](/docs/concepts/services-networking/dns-pod-service/)
 - [自动扩容集群中的 DNS 服务](/docs/tasks/administer-cluster/dns-horizontal-autoscaling/)
 - [Using CoreDNS for Service Discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)
-````
