@@ -191,6 +191,8 @@
   - [Conduit](usecases/conduit.md)
     - [Condiut概览](usecases/conduit-overview.md)
     - [安装Conduit](usecases/conduit-installation.md)
+  - [Envoy](usecases/envoy.md)
+    - [Envoy作为前端代理](usecases/envoy-front-proxy.md)
 - [大数据](usecases/big-data.md)
   - [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   - [运行支持Kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
