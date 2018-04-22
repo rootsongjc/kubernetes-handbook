@@ -1,5 +1,3 @@
-本文翻译自[官方文档](https://kubernetes.io/docs/concepts/service-catalog/)
-
 # 服务目录（Service Catalog）
 
 服务目录（Service Catalog）是Kubernetes的扩展API，它使运行在Kubernetes集群中的应用程序可以轻松使用外部托管软件产品，例如由云提供商提供的数据存储服务。
@@ -24,7 +22,7 @@ Service Catalog使用[Open Service Broker API](https://github.com/openservicebro
 
 Service Catalog通过扩展API服务器和控制器实现，使用etcd进行存储。它还使用Kubernetes 1.7+中提供的聚合层来呈现其API。
 
-![Service Catalog Architecture](../images/service-catalog-architecture.svg)
+![Service Catalog Architecture](../images/service-catalog-architecture.jpg)
 
 
 ### API资源
@@ -76,7 +74,7 @@ spec:
 ```
 以下是说明从一个service broker列出托管服务和套餐所涉及步骤的顺序图：
 
-![List Services](../images/service-catalog-list.svg)
+![List Services](../images/service-catalog-list.jpg)
 
 1. 将ClusterServiceBroker资源添加到Service catalog中，它会触发对外部Service Broker的调用以获取可用服务的清单。
 2. Service Broker返回可用托管服务的清单和服务套餐的列表，它们分别在本地缓存为`ClusterServiceClass`资源和`ClusterServicePlan`资源。
@@ -124,7 +122,7 @@ spec:
 ```
 以下序列图说明了提供一个新的托管服务的实例所涉及的步骤：
 
-![Provision a Service](../images/service-catalog-provision.svg)
+![Provision a Service](../images/service-catalog-provision.jpg)
 
 1. 当`ServiceInstance`资源创建后，Service Catalog发起到外部service broker来提供服务的一个实例。
 2. service broker创建托管服务的新实例并返回HTTP响应。
@@ -153,7 +151,7 @@ spec:
 
 以下序列图说明了绑定到托管服务实例所涉及的步骤：
 
-![Bind to a managed service](../images/service-catalog-bind.svg)
+![Bind to a managed service](../images/service-catalog-bind.jpg)
 
 1. 在ServiceBinding创建后，Service Catalog给外部service broker发一个调用请求，获取与服务实例绑定所需的信息。
 
@@ -165,7 +163,7 @@ spec:
 
 绑定后，最后一步是将连接凭证和服务特定的信息映射到应用程序中。这些信息存储在secret中，应用程序可以用来访问并与托管服务连接。
 
-![Map connection credentials](../images/service-catalog-map.svg)
+![Map connection credentials](../images/service-catalog-map.jpg)
 
 #### Pod配置文件
 
@@ -202,8 +200,10 @@ spec:
                    key: topic
 ```
 
-# 下一步
+## 下一步
 
 * 如果熟悉Helm Charts ，使用Helm将Service Catalog安装到Kubernetes集群中。或者，可以使用SC工具安装服务目录。
 * 查看 [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers).
 * 探索[kubernetes-incubator/service-catalog](https://github.com/kubernetes-incubator/service-catalog) 项目。
+
+本文翻译自[官方文档](https://kubernetes.io/docs/concepts/service-catalog/)
