@@ -70,6 +70,7 @@
   - [使用自定义资源扩展API](concepts/custom-resource.md)
   - [Aggregated API Server](concepts/aggregated-api-server.md)
   - [APIService](concepts/apiservice.md)
+  - [Service Catalog](concepts/service-catalog.md)
 - [资源调度](concepts/scheduling.md)
 
 ### 用户指南

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-1 -1 841 457" width="841pt" height="457pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.5 
+    <dc:date>2017-11-17 22:47:47 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Arial" font-size="16" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="500">
+      <font-face-src>
+        <font-face-name name="ArialMT"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Arial" font-size="16" panose-1="2 11 7 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="104.98047" slope="0" x-height="518.5547" cap-height="715.8203" ascent="905.2734" descent="-211.91406" font-weight="bold">
+      <font-face-src>
+        <font-face-name name="Arial-BoldMT"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Arial" font-size="14" panose-1="2 11 7 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="104.98047" slope="0" x-height="518.5547" cap-height="715.8203" ascent="905.2734" descent="-211.91406" font-weight="bold">
+      <font-face-src>
+        <font-face-name name="Arial-BoldMT"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Arial" font-size="14" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="500">
+      <font-face-src>
+        <font-face-name name="ArialMT"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Arial" font-size="12" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="500">
+      <font-face-src>
+        <font-face-name name="ArialMT"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="gray">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" viewBox="-6 -3 7 6" markerWidth="7" markerHeight="6" color="gray">
+      <g>
+        <path d="M -4.8 0 L 0 1.8 L 0 -1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_3" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="gray">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_4" viewBox="-6 -3 7 6" markerWidth="7" markerHeight="6" color="gray">
+      <g>
+        <path d="M -4.8 0 L 0 1.8 L 0 -1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Arial" font-size="12" panose-1="2 11 7 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="104.98047" slope="0" x-height="518.5547" cap-height="715.8203" ascent="905.2734" descent="-211.91406" font-weight="bold">
+      <font-face-src>
+        <font-face-name name="Arial-BoldMT"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>architecture</title>
+    <g>
+      <title>Layer 1</title>
+      <path d="M 0 0 L 600 0 L 600 420 L 0 420 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <rect x="640" y="0" width="200" height="280" fill="#d9d9d9"/>
+      <text transform="translate(650 30)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" fill="black" x="30.421875" y="14" textLength="109.36719">Service Broker </tspan>
+        <tspan font-family="Arial" font-size="16" font-weight="500" fill="black" x="138.90625" y="14" textLength="10.671875">A</tspan>
+      </text>
+      <rect x="10" y="10" width="170" height="400" fill="#4285f5"/>
+      <text transform="translate(20 30)" fill="white">
+        <tspan font-family="Arial" font-size="16" font-weight="bold" fill="white" x="34.53125" y="14" textLength="80.9375">API Server</tspan>
+      </text>
+      <rect x="215" y="10" width="170" height="190" fill="#4285f5"/>
+      <text transform="translate(227 30)" fill="white">
+        <tspan font-family="Arial" font-size="16" font-weight="bold" fill="white" x="12.972656" y="14" textLength="120.05469">Service Catalog</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="bold" fill="white" x=".23828125" y="62.52344" textLength="145.52344">servicecatalog.k8s.io:</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="500" fill="white" x="0" y="94.98145" textLength="132.26172">ClusterServiceBroker</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="500" fill="white" x="0" y="111.43945" textLength="126.03418">ClusterServiceClass</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="500" fill="white" x="0" y="127.89746" textLength="119.04785">ClusterServicePlan</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="500" fill="white" x="0" y="144.35547" textLength="99.60645">ServiceInstance</tspan>
+        <tspan font-family="Arial" font-size="14" font-weight="500" fill="white" x="0" y="160.81348" textLength="93.38574">ServiceBinding</tspan>
+      </text>
+      <rect x="420" y="220" width="170" height="190" fill="#4285f5"/>
+      <text transform="translate(430 240)" fill="white">
+        <tspan font-family="Arial" font-size="16" font-weight="bold" fill="white" x="31.445312" y="14" textLength="87.10938">Application</tspan>
+      </text>
+      <rect x="640" y="300" width="200" height="40" fill="#d9d9d9"/>
+      <text transform="translate(650 311.23828)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" fill="black" x="82" y="14" textLength="16">…</tspan>
+      </text>
+      <rect x="640" y="360" width="200" height="60" fill="#d9d9d9"/>
+      <text transform="translate(650 381.2383)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x="30.429688" y="14" textLength="119.14062">Service Broker Z</tspan>
+      </text>
+      <rect x="650" y="150" width="180" height="40" fill="white"/>
+      <text transform="translate(660 161.23828)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x="11.070312" y="14" textLength="137.85938">Managed Service 2</tspan>
+      </text>
+      <rect x="650" y="230" width="180" height="40" fill="white"/>
+      <text transform="translate(660 241.23828)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x="9.742188" y="14" textLength="140.51562">Managed Service N</tspan>
+      </text>
+      <rect x="650" y="100" width="180" height="40" fill="white"/>
+      <text transform="translate(660 111.23828)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x="11.070312" y="14" textLength="137.85938">Managed Service 1</tspan>
+      </text>
+      <path d="M 384.9481 39.49993 L 410.0271 19.566032 L 410.00054 29.631994 L 614.9472 30.172747 L 614.9738 20.106784 L 639.9472 40.172747 L 614.86825 60.106645 L 614.8948 50.040683 L 409.9481 49.49993 L 409.92156 59.56589 Z" fill="gray"/>
+      <text transform="translate(421.804 32.87919) rotate(-.1511748)" fill="white">
+        <tspan font-family="Arial" font-size="12" font-weight="500" fill="white" x="23.927734" y="11" textLength="114.71484">Open Service Broker </tspan>
+        <tspan font-family="Arial" font-size="12" font-weight="500" fill="white" x="137.98047" y="11" textLength="19.341797">API</tspan>
+      </text>
+      <text transform="translate(455 58.91113)" fill="black">
+        <tspan font-family="Arial" font-size="12" font-weight="500" x="0" y="11" textLength="68.021484">List Services</tspan>
+        <tspan font-family="Arial" font-size="12" font-weight="500" x="0" y="25.392578" textLength="98.05078">Provision Instance</tspan>
+        <tspan font-family="Arial" font-size="12" font-weight="500" x="0" y="39.785156" textLength="72.71484">Bind Instance</tspan>
+      </text>
+      <line x1="602.9" y1="249.5" x2="637.1" y2="249.5" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <rect x="650" y="200" width="180" height="20" fill="white"/>
+      <text transform="translate(655 201.23828)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x="77" y="14" textLength="16">…</tspan>
+      </text>
+      <line x1="192.9" y1="39.33634" x2="202.1" y2="39.33634" marker-end="url(#FilledArrow_Marker_3)" marker-start="url(#FilledArrow_Marker_4)" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path d="M 300 212.9 L 300 215.9 L 300 315.5 L 369.5 315.5 L 404.1 315 L 407.1 315" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <text transform="translate(307.63672 323.3037)" fill="black">
+        <tspan font-family="Arial" font-size="12" font-weight="500" fill="black" x=".14257812" y="11" textLength="72.71484">Bind Instance</tspan>
+      </text>
+      <rect x="430" y="285" width="150" height="60" fill="white"/>
+      <text transform="translate(440 293.41113)" fill="#383838">
+        <tspan font-family="Arial" font-size="12" font-weight="bold" fill="#383838" x="0" y="11" textLength="40.6875">Secret:</tspan>
+        <tspan font-family="Arial" font-size="12" font-weight="500" fill="#383838" x="0" y="25.392578" textLength="124.74023">Connection Credentials</tspan>
+        <tspan font-family="Arial" font-size="12" font-weight="500" fill="#383838" x="0" y="39.785156" textLength="80.02734">Service Details</tspan>
+      </text>
+      <text transform="translate(259 432.2383)" fill="black">
+        <tspan font-family="Arial" font-size="16" font-weight="500" x=".08203125" y="14" textLength="81.83594">Kubernetes</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
