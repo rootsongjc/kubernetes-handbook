@@ -1,4 +1,5 @@
 本文翻译自[官方文档](https://kubernetes.io/docs/concepts/service-catalog/)
+
 # 服务目录（Service Catalog）
 
 服务目录（Service Catalog）是Kubernetes的扩展API，它使运行在Kubernetes集群中的应用程序可以轻松使用外部托管软件产品，例如由云提供商提供的数据存储服务。
@@ -10,9 +11,6 @@
 托管服务可以是Microsoft Azure Cloud Queue，Amazon Simple Queue Service和Google Cloud Pub/Sub等，它们可以是应用可以使用的提供的各种软件。
 
 通过Service Catalog，集群运营者可以浏览由Service Broker提供的托管服务列表，提供的托管服务实例，并与其绑定，使其可被Kubernetes集群中的应用程序所使用。
-
-
-
 
 ## 场景样例
 
@@ -157,17 +155,15 @@ spec:
 
 ![Bind to a managed service](../images/service-catalog-bind.svg)
 
-在ServiceBinding创建后，Service Catalog给外部service broker发一个调用请求，获取与服务实例绑定所需的信息。
+1. 在ServiceBinding创建后，Service Catalog给外部service broker发一个调用请求，获取与服务实例绑定所需的信息。
 
-service broker为相应的服务帐户启用应用程序权限/角色。
+2. service broker为相应的服务帐户启用应用程序权限/角色。
 
-service broker返回连接和访问托管服务实例所需的信息。根据不同的提供商和不同的服务，返回的信息可能在服务提供商和其管理服务之间有所不同。
+3. service broker返回连接和访问托管服务实例所需的信息。根据不同的提供商和不同的服务，返回的信息可能在服务提供商和其管理服务之间有所不同。
 
 ### 映射连接凭证
 
 绑定后，最后一步是将连接凭证和服务特定的信息映射到应用程序中。这些信息存储在secret中，应用程序可以用来访问并与托管服务连接。
-
-<br>
 
 ![Map connection credentials](../images/service-catalog-map.svg)
 
