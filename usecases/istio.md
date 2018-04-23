@@ -70,8 +70,6 @@ Istio-Auth提供强大的服务间和最终用户认证，使用相互TLS，内�
 
 ## 参考
 
-[Istio开源平台发布，Google、IBM和Lyft分别承担什么角色？](http://www.leiphone.com/news/201705/RwRlyAs7Mi8pqhSb.html)
-
-[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio?utm_source=news_about_opensource&utm_medium=link&utm_campaign=opensource)
-
-[Istio Overview](https://istio.io/docs/concepts/what-is-istio/overview.html)
+- [Istio开源平台发布，Google、IBM和Lyft分别承担什么角色？](http://www.leiphone.com/news/201705/RwRlyAs7Mi8pqhSb.html)
+- [Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio?utm_source=news_about_opensource&utm_medium=link&utm_campaign=opensource)
+- [Istio Overview](https://istio.io/docs/concepts/what-is-istio/overview.html)
