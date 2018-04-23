@@ -12,6 +12,14 @@
 - Docker 17.12.0-ce
 - Kubernetes 1.8.5
 
+## 部署结构
+
+Istio 的控制平面部署在 Kubernetes 中的部署架构如下图所示。
+
+![Istio 在 Kubernetes 中的部署架构图](../images/istio-deployment-architecture-diagram.png)
+
+我们可以清楚的看到 Istio 控制平面的几个组件的部署运行的命令与开发的端口，以及端口与服务之间的映射的关系。
+
 ## 安装
 
 **1.下载安装包**
