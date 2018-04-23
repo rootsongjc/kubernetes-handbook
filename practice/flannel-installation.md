@@ -94,17 +94,33 @@ $etcdctl --endpoints=${ETCD_ENDPOINTS} \
 /kube-centos/network/subnets/172.30.14.0-24
 /kube-centos/network/subnets/172.30.38.0-24
 /kube-centos/network/subnets/172.30.46.0-24
+
 $etcdctl --endpoints=${ETCD_ENDPOINTS} \
   --ca-file=/etc/kubernetes/ssl/ca.pem \
   --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
   --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
   get /kube-centos/network/config
 { "Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "vxlan" } }
-$etcdctl get /kube-centos/network/subnets/172.30.14.0-24
+
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/subnets/172.30.14.0-24
 {"PublicIP":"172.20.0.114","BackendType":"vxlan","BackendData":{"VtepMAC":"56:27:7d:1c:08:22"}}
-$etcdctl get /kube-centos/network/subnets/172.30.38.0-24
+
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/subnets/172.30.38.0-24
 {"PublicIP":"172.20.0.115","BackendType":"vxlan","BackendData":{"VtepMAC":"12:82:83:59:cf:b8"}}
-$etcdctl get /kube-centos/network/subnets/172.30.46.0-24
+
+$etcdctl --endpoints=${ETCD_ENDPOINTS} \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --key-file=/etc/kubernetes/ssl/kubernetes-key.pem \
+  get /kube-centos/network/subnets/172.30.46.0-24
 {"PublicIP":"172.20.0.113","BackendType":"vxlan","BackendData":{"VtepMAC":"e6:b2:fd:f6:66:96"}}
 ```
 
