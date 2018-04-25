@@ -22,8 +22,17 @@ Envoy 包括如下特性：
 - 服务发现
 - 支持 DynamoDB L7
 
-## 更多
-
 Envoy 本身无法构成一个完整的 Service Mesh，但是它可以作为 service mesh 中的应用间流量的代理，负责 service mesh 中的数据层。
 
-更多信息请参考 [Envoy 官网](https://www.envoyproxy.io/)。
+## 负载均衡与代理
+
+在 Matt Klein（Envoy 的作者） 的 [Introduction to modern network load balancing and proxying](https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236) 文章详细描述了现代的网络负载均衡与代理的特性与模式，L4 与 L7 负载均衡的区别以及 L7 负载均衡的现状，总结如下图。
+
+![负载均衡器的特性以及拓扑类型](../images/load-balancing-and-proxing.png)
+
+Matt Klein 是在他的文章中指出 sidecar 模式的 proxy 将取代另外三种模式而成为服务间通信的负载均衡器。
+
+## 参考
+
+- [Introduction to modern network load balancing and proxying](https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236)
+- 更多信息请参考 [Envoy 官网](https://www.envoyproxy.io/)。
