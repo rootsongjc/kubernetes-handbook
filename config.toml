@@ -41,8 +41,8 @@ src = "https://res.cloudinary.com/jimmysong/image/upload/banners/great-wall-01.j
 desc = "Insight throught the Great Wall to the world"
 
 [[Params.bigimg]]
-src = "https://res.cloudinary.com/jimmysong/image/upload/banners/big-data-1.jpg"
-desc = "Using Big Data to make business decision"
+src = "https://res.cloudinary.com/jimmysong/image/upload/banners/istio-meetup-gdg-beijing.jpg"
+desc = "1st Istio meetup in Beijing GDG"
 
 [Author]
   name = "Jimmy Song(宋净超)"
