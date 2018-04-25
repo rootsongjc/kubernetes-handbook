@@ -11,7 +11,7 @@ pygmentCodeFences = true
 
 [Params]
 hello = "Hi,I'm Jimmy"
-subtitle = "I can help you building Cloud Native confidence"
+subtitle = "I can help you build Cloud Native confidence"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 dateFormat = "January 2, 2006"
