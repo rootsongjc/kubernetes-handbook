@@ -44,6 +44,108 @@ xDS 是一个关键概念，它是一类发现服务的统称，其包括如下�
 
 正是通过对 xDS 的请求来动态更新 Envoy 配置。
 
+## Envoy Mesh
+
+Envoy Mesh 指的是由 envoy 做负载均衡和代理的 mesh。该 Mesh 中会包含两类 envoy：
+
+- Edge envoy：即流量进出 mesh 时候的 envoy，相当于 kubernetes 中的 ingress。
+- Service envoy：服务 envoy 是跟每个 serivce 实例一起运行的，应用程序无感知的进程外工具，在 kubernetes 中会与应用容器以 sidecar 形式运行在同一个 pod 中。
+
+Envoy 即可以单独作为 edge envoy，也可以仅做 service envoy 使用，也可以两者同时使用。Mesh 中的所有 envoy 会共享路由信息。
+
+## Envoy 配置
+
+Envoy 中的配置包括两大类：listenner 配置和 cluster 配置。
+
+### Listener 配置
+
+我们知道 Envoy 中可以配置一组 listener 以实现复杂的处理逻辑。Listener 中设置监听的 TCP 端口，还有一组 filter 对这些端口上的数据流进行处理。如下所示，该示例来自[使用Envoy 作为前端代理](envoy-front-proxy.md)。
+
+```yaml
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 80
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        config:
+          codec_type: auto
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: backend
+              domains:
+              - "*"
+              routes:
+              - match:
+                  prefix: "/service/1"
+                route:
+                  cluster: service1
+              - match:
+                  prefix: "/service/2"
+                route:
+                  cluster: service2
+```
+
+这是一个 `http_connection_manager` 例子，其中必须包含 `virtual_hosts` 配置，而 `virtual_hosts` 配置中必须包含以下几项配置：
+
+- `name`：服务名称
+- `domains`：DNS 域名，必须能跟 `virtual_host` 的 URL 匹配 
+- `routes`：路由列表
+
+每个路由中还可以包含以下配置：
+
+- `prefix`：URL 路径前缀
+- `cluster`：处理该请求的 envoy cluster
+- `timeout_ms`：当出错时的超时时间
+
+如上面的例子中，我们还需要定义 `service1` cluster 和 `service2` cluster。
+
+### Cluster 配置
+
+Cluster 是一组逻辑相似的主机配置，定义哪些主机属于一个服务，cluster 的配置中包含了服务发现和负载均衡方式配置。依然是参考[使用Envoy 作为前端代理](envoy-front-proxy.md)中的配置：
+
+```yaml
+ clusters:
+  - name: service1
+    connect_timeout: 0.25s
+    type: strict_dns
+    lb_policy: round_robin
+    http2_protocol_options: {}
+    hosts:
+    - socket_address:
+        address: service1
+        port_value: 80
+  - name: service2
+    connect_timeout: 0.25s
+    type: strict_dns
+    lb_policy: round_robin
+    http2_protocol_options: {}
+    hosts:
+    - socket_address:
+        address: service2
+        port_value: 80
+```
+
+Cluster 的配置中至少包含以下信息：
+
+- `name`：cluster 名称，就是服务名称
+- `type`：该 cluster 怎么知道主机是否启动？即服务发现类型，有以下方式：
+  - `static`：监听 cluster 中的所有主机
+  - `strict_dns`：envoy 会监听 DNS，每个匹配的 A 记录都会认定为有效
+  - `logical_dns`：envoy 将使用 DNS 来增加主机，如果 DNS 不再返回该主机也不会删除这些主机信息
+  - `sds`：即 Serivce Discovery Serivce，envoy 访问外部的 REST 获取 cluster 成员信息
+- `lb_type`：cluster 的负载均衡类型，有以下方式：
+  - `round_robin`：轮询主机
+  - `weighted_least_request`：最近获得最少请求的主机
+  - `random`：随机
+- `hosts`：能够定义 cluster 中主机的 URL 地址，通常是`tcp://` URL
+
 ## 参考
 
 - [Terminology - www.envoyproxy.io](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/terminology)
+- [Part 1: Getting started with Envoy Proxy for microservices resilience](https://www.datawire.io/envoyproxy/getting-started-envoyproxy-microservices-resilience/)
+- [Envoy作为前端代理](envoy-front-proxy.md)
