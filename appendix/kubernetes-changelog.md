@@ -9,3 +9,7 @@
 - 2017年6月29日 [Kubernetes1.7发布](kubernetes-1.7-changelog.md)
 - 2017年9月28日 [Kubernetes1.8发布](kubernetes-1.8-changelog.md)
 - 2017年12月15日 [Kubernetes1.9发布](kubernetes-1.9-changelog.md)
+
+## 更多
+
+追踪 Kubernetes 最新特性，请访问互动教学网站提供商 [Katacoda.com](https://katacoda.com) 创建的 [kubernetesstatus.com](http://kubernetesstatus.com/)。
