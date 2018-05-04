@@ -88,7 +88,7 @@ spec:
           name: nginx-config
       containers:
       - name: nginx
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-nginx:1.10.2
+        image: harbor-001.jimmysong.io/library/buoyantio-nginx:1.10.2
         ports:
         - containerPort: 80
         volumeMounts:

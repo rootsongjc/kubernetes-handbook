@@ -83,7 +83,7 @@ spec:
           name: "l5d-config"
       containers:
       - name: l5d
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-linkerd:1.1.2
+        image: harbor-001.jimmysong.io/library/buoyantio-linkerd:1.1.2
         env:
         - name: POD_IP
           valueFrom:
@@ -105,7 +105,7 @@ spec:
           readOnly: true
 
       - name: kubectl
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        image: harbor-001.jimmysong.io/library/buoyantio-kubectl:v1.4.0
         args:
         - "proxy"
         - "-p"

@@ -82,7 +82,7 @@ spec:
       serviceAccountName: custom-metrics-apiserver
       containers:
       - name: custom-metrics-server
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-prometheus-adapter
+        image: harbor-001.jimmysong.io/library/k8s-prometheus-adapter
         args:
         - --prometheus-url=http://sample-metrics-prom.default.svc:9090
         - --metrics-relist-interval=30s

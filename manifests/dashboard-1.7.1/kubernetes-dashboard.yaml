@@ -101,13 +101,13 @@ spec:
     spec:
       initContainers:
       - name: kubernetes-dashboard-init
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-init-amd64:v1.0.1
+        image: harbor-001.jimmysong.io/library/kubernetes-dashboard-init-amd64:v1.0.1
         volumeMounts:
         - name: kubernetes-dashboard-certs
           mountPath: /certs
       containers:
       - name: kubernetes-dashboard
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.7.1
+        image: harbor-001.jimmysong.io/library/kubernetes-dashboard-amd64:v1.7.1
         ports:
         - containerPort: 8443
           protocol: TCP

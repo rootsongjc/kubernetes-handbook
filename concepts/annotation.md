@@ -50,7 +50,7 @@ spec:
       serviceAccountName: istio-manager-service-account
       containers:
       - name: discovery
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/manager:0.1.5
+        image: harbor-001.jimmysong.io/library/manager:0.1.5
         imagePullPolicy: Always
         args: ["discovery", "-v", "2"]
         ports:
@@ -62,7 +62,7 @@ spec:
               apiVersion: v1
               fieldPath: metadata.namespace
       - name: apiserver
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/manager:0.1.5
+        image: harbor-001.jimmysong.io/library/manager:0.1.5
         imagePullPolicy: Always
         args: ["apiserver", "-v", "2"]
         ports:

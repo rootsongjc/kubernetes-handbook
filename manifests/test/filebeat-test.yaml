@@ -11,14 +11,14 @@ spec:
         k8s-app: filebeat-test
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/filebeat:5.4.0
+      - image: harbor-001.jimmysong.io/library/filebeat:5.4.0
         name: filebeat
         volumeMounts:
         - name: app-logs
           mountPath: /log
         - name: filebeat-config
           mountPath: /etc/filebeat/
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
+      - image: harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
         name : app
         ports:
         - containerPort: 80

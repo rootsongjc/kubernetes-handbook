@@ -52,7 +52,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus:v1.1.1
+        image: harbor-001.jimmysong.io/library/prometheus:v1.1.1
         args:
           - '-storage.local.retention=6h'
           - '-storage.local.memory-chunks=500000'

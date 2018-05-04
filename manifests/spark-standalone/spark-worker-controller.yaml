@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spark-worker
-          image: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark:1.5.2_v1
+          image: harbor-001.jimmysong.io/library/spark:1.5.2_v1
           command: ["/start-worker"]
           ports:
             - containerPort: 8081

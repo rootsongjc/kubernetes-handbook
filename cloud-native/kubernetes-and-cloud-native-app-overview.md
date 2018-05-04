@@ -451,9 +451,9 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
   --conf spark.kubernetes.executor.memoryOverhead=2g \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
   --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
 ~/Downloads/tendcloud_2.10-1.0.jar
 ```

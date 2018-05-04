@@ -117,7 +117,7 @@ KUBE_LOG_LEVEL="--v=0"
 KUBE_ALLOW_PRIV="--allow-privileged=true"
 
 # How the controller-manager, scheduler, and proxy find the apiserver
-#KUBE_MASTER="--master=http://sz-pg-oam-docker-test-001.tendcloud.com:8080"
+#KUBE_MASTER="--master=http://test-001.jimmysong.io:8080"
 KUBE_MASTER="--master=http://172.20.0.113:8080"
 ```
 
@@ -133,7 +133,7 @@ apiserver配置文件`/etc/kubernetes/apiserver`内容为：
 ##
 #
 ## The address on the local server to listen to.
-#KUBE_API_ADDRESS="--insecure-bind-address=sz-pg-oam-docker-test-001.tendcloud.com"
+#KUBE_API_ADDRESS="--insecure-bind-address=test-001.jimmysong.io"
 KUBE_API_ADDRESS="--advertise-address=172.20.0.113 --bind-address=172.20.0.113 --insecure-bind-address=172.20.0.113"
 #
 ## The port on the local server to listen on.

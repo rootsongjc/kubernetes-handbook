@@ -90,8 +90,8 @@ Events:
   Warning  FailedMount            27m                kubelet, 172.20.0.115  Unable to mount volumes for pod "jenkins-668dfbd847-vhg4c_default(8e2ad467-f1e5-11e7-aa47-f4e9d49f8ed0)": timeout expired waiting for volumes to attach/mount for pod "default"/"jenkins-668dfbd847-vhg4c". list of unattached/unmounted volumes=[jenkins-home]
   Warning  FailedSync             27m                kubelet, 172.20.0.115  Error syncing pod
   Normal   SuccessfulMountVolume  26m                kubelet, 172.20.0.115  MountVolume.SetUp succeeded for volume "pvc-8e203e86-f1e5-11e7-aa47-f4e9d49f8ed0"
-  Normal   Pulling                26m                kubelet, 172.20.0.115  pulling image "sz-pg-oam-docker-hub-001.tendcloud.com/library/jenkins:lts"
-  Normal   Pulled                 26m                kubelet, 172.20.0.115  Successfully pulled image "sz-pg-oam-docker-hub-001.tendcloud.com/library/jenkins:lts"
+  Normal   Pulling                26m                kubelet, 172.20.0.115  pulling image "harbor-001.jimmysong.io/library/jenkins:lts"
+  Normal   Pulled                 26m                kubelet, 172.20.0.115  Successfully pulled image "harbor-001.jimmysong.io/library/jenkins:lts"
   Normal   Created                26m                kubelet, 172.20.0.115  Created container
   Normal   Started                26m                kubelet, 172.20.0.115  Started container
 ```

@@ -1,7 +1,7 @@
 ## Bitnami node image version
 ## ref: https://hub.docker.com/r/bitnami/node/tags/
 ##
-image: sz-pg-oam-docker-hub-001.tendcloud.com/library/bitnami-node:7.5.0-r0
+image: harbor-001.jimmysong.io/library/bitnami-node:7.5.0-r0
 
 ## Git repository http/https
 ##

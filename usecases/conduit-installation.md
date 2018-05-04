@@ -61,7 +61,7 @@ Conduit注入的时候需要用到如下两个镜像：
 查看conduit向yaml文件中注入了哪些配置，我们使用my-nginx.yaml为例：
 
 ```bash
-conduit inject --init-image sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy-init --proxy-image sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy my-nginx.yaml|kubectl apply -f -
+conduit inject --init-image harbor-001.jimmysong.io/library/runconduit-proxy-init --proxy-image harbor-001.jimmysong.io/library/runconduit-proxy my-nginx.yaml|kubectl apply -f -
 ```
 
 **注意：**只需要指定镜像名称即可，tag与使用的conduit server版本相同，会自动注入。
@@ -82,7 +82,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+        image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
 ---
@@ -124,7 +124,7 @@ spec:
         run: my-nginx
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+      - image: harbor-001.jimmysong.io/library/nginx:1.9
         name: my-nginx
         ports:
         - containerPort: 80
@@ -152,7 +152,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy:v0.1.0
+        image: harbor-001.jimmysong.io/library/runconduit-proxy:v0.1.0
         imagePullPolicy: IfNotPresent
         name: conduit-proxy
         ports:
@@ -171,7 +171,7 @@ spec:
         - "4190"
         - -u
         - "2102"
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy-init:v0.1.0
+        image: harbor-001.jimmysong.io/library/runconduit-proxy-init:v0.1.0
         imagePullPolicy: IfNotPresent
         name: conduit-init
         resources: {}
@@ -203,7 +203,7 @@ spec:
 使用下面的命令部署官方提供的示例应用：
 
 ```bash
-curl https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/manifests/conduit/emojivoto.yml | conduit inject --init-image sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy-init --proxy-image sz-pg-oam-docker-hub-001.tendcloud.com/library/runconduit-proxy - --skip-inbound-ports=80 | kubectl apply -f -
+curl https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/manifests/conduit/emojivoto.yml | conduit inject --init-image harbor-001.jimmysong.io/library/runconduit-proxy-init --proxy-image harbor-001.jimmysong.io/library/runconduit-proxy - --skip-inbound-ports=80 | kubectl apply -f -
 ```
 
 **注意：**其中使用的镜像地址已经改为我的私有镜像仓库地址，大家使用时请注意修改。

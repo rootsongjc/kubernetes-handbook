@@ -24,7 +24,7 @@ spec:
       serviceAccountName: efk
       containers:
       - name: fluentd-es
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/fluentd-elasticsearch:1.22
+        image: harbor-001.jimmysong.io/library/fluentd-elasticsearch:1.22
         command:
           - '/bin/sh'
           - '-c'

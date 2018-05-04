@@ -75,7 +75,7 @@ kubelet 的配置文件 `/etc/kubernetes/kubelet` 中的配置中将集群 DNS �
 
 ```
 nameserver 10.0.254.2
-search default.svc.cluster.local. svc.cluster.local. cluster.local. tendcloud.com
+search default.svc.cluster.local. svc.cluster.local. cluster.local. jimmysong.io
 options ndots:5
 ```
 
@@ -117,7 +117,7 @@ Error: the server does not allow access to the requested resource (get configmap
 ```bash
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-# helm init -i sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-helm-tiller:v2.3.1
+# helm init -i harbor-001.jimmysong.io/library/kubernetes-helm-tiller:v2.3.1
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 

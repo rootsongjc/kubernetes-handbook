@@ -305,7 +305,7 @@ spec:
     spec:
       containers:
       - name: alertmanager
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus-alertmanager:v0.7.1
+        image: harbor-001.jimmysong.io/library/prometheus-alertmanager:v0.7.1
         args:
           - '-config.file=/etc/alertmanager/config.yml'
           - '-storage.path=/alertmanager'
@@ -366,7 +366,7 @@ spec:
         component: core
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/grafana:4.2.0
+      - image: harbor-001.jimmysong.io/library/grafana:4.2.0
         name: grafana-core
         imagePullPolicy: IfNotPresent
         # env:
@@ -421,7 +421,7 @@ spec:
         pod.beta.kubernetes.io/init-containers: '[
           {
             "name": "wait-for-endpoints",
-            "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+            "image": "harbor-001.jimmysong.io/library/centos:7.2.1511
             "imagePullPolicy": "IfNotPresent",
             "command": ["bash", "-c", "echo \"waiting for endpoints...\"; while true; set endpoints (curl -sX GET -H \"Authorization:bearer `cat /var/run/secrets/kubernetes.io/serviceaccount/token`\" -k https://kubernetes.default/api/v1/namespaces/monitoring/endpoints/grafana); echo $endpoints | jq \".\"; if test (echo $endpoints | jq -r \".subsets[]?.addresses // [] | length\") -gt 0; exit 0; end; echo \"waiting...\";sleep 1; end"],
             "args": ["monitoring", "grafana"]
@@ -431,7 +431,7 @@ spec:
       serviceAccountName: prometheus-k8s
       containers:
       - name: grafana-import-dashboards
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+        image: harbor-001.jimmysong.io/library/centos:7.2.1511
         command: ["/bin/sh", "-c"]
         workingDir: /opt/grafana-import-dashboards
         args:
@@ -673,7 +673,7 @@ spec:
       serviceAccountName: prometheus-k8s
       containers:
       - name: prometheus
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prom-prometheus:v1.7.0
+        image: harbor-001.jimmysong.io/library/prom-prometheus:v1.7.0
         args:
           - '-storage.local.retention=12h'
           - '-storage.local.memory-chunks=500000'
@@ -717,7 +717,7 @@ spec:
       serviceAccountName: kube-state-metrics
       containers:
       - name: kube-state-metrics
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kube-state-metrics:v1.0.1
+        image: harbor-001.jimmysong.io/library/kube-state-metrics:v1.0.1
         ports:
         - containerPort: 8080
 ---
@@ -804,7 +804,7 @@ spec:
     spec:
       containers:
       - name: read-du
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/giantswarm-tiny-tools
+        image: harbor-001.jimmysong.io/library/giantswarm-tiny-tools
         imagePullPolicy: Always
         # FIXME threshold via env var
         # The
@@ -829,7 +829,7 @@ spec:
         - name: metrics
           mountPath: /tmp
       - name: caddy
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/dockermuenster-caddy:0.9.3
+        image: harbor-001.jimmysong.io/library/dockermuenster-caddy:0.9.3
         command:
         - "caddy"
         - "-port=9102"
@@ -864,7 +864,7 @@ spec:
         component: node-exporter
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prom-node-exporter:v0.14.0
+      - image: harbor-001.jimmysong.io/library/prom-node-exporter:v0.14.0
         name: prometheus-node-exporter
         ports:
         - name: prom-node-exp

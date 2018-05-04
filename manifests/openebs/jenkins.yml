@@ -27,7 +27,7 @@ spec:
    containers:
    - name: jenkins
      imagePullPolicy: IfNotPresent
-     image: sz-pg-oam-docker-hub-001.tendcloud.com/library/jenkins:lts
+     image: harbor-001.jimmysong.io/library/jenkins:lts
      ports:
      - containerPort: 8080
      volumeMounts:

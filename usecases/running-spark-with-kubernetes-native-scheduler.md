@@ -105,9 +105,9 @@ Spark driver 其实可以运行在 kubernetes 集群内部（cluster mode）可�
   --kubernetes-namespace spark-cluster \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-executor:v2.1.0-kubernetes-0.3.1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/kubespark-spark-init:v2.1.0-kubernetes-0.3.1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/kubespark-spark-driver:v2.1.0-kubernetes-0.3.1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/kubespark-spark-executor:v2.1.0-kubernetes-0.3.1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/kubespark-spark-init:v2.1.0-kubernetes-0.3.1 \
 local:///opt/spark/examples/jars/spark-examples_2.11-2.1.0-k8s-0.3.1-SNAPSHOT.jar
 ```
 
@@ -165,8 +165,8 @@ dev/make-distribution.sh --tgz -Phadoop-2.7 -Pkubernetes
 将该脚本放在 `dist` 目录下，执行：
 
 ```bash
-./build-push-docker-images.sh -r sz-pg-oam-docker-hub-001.tendcloud.com/library -t v2.1.0-kubernetes-0.3.1-1 build
-./build-push-docker-images.sh -r sz-pg-oam-docker-hub-001.tendcloud.com/library -t v2.1.0-kubernetes-0.3.1-1 push
+./build-push-docker-images.sh -r harbor-001.jimmysong.io/library -t v2.1.0-kubernetes-0.3.1-1 build
+./build-push-docker-images.sh -r harbor-001.jimmysong.io/library -t v2.1.0-kubernetes-0.3.1-1 push
 ```
 
 **注意：**如果你使用的 MacOS，bash 的版本可能太低，执行改脚本将出错，请检查你的 bash 版本：
@@ -188,13 +188,13 @@ brew install bash
 编译并上传镜像到我的私有镜像仓库，将会构建出如下几个镜像：
 
 ```bash
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-resource-staging-server:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-shuffle:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor-py:v2.1.0-kubernetes-0.3.1-1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver-py:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-resource-staging-server:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-shuffle:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-executor-py:v2.1.0-kubernetes-0.3.1-1
+harbor-001.jimmysong.io/library/spark-driver-py:v2.1.0-kubernetes-0.3.1-1
 ```
 
 ## 运行测试
@@ -210,9 +210,9 @@ sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver-py:v2.1.0-kubernetes
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
 local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar
 ```
 
@@ -260,9 +260,9 @@ local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.ja
 	 volumes: spark-token-zr8wv
 	 node name: 172.20.0.114
 	 start time: 2017-09-14T06:59:01Z
-	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 container images: harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
 	 phase: Pending
-	 status: [ContainerStatus(containerID=null, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=null, waiting=ContainerStateWaiting(message=null, reason=ContainerCreating, additionalProperties={}), additionalProperties={}), additionalProperties={})]
+	 status: [ContainerStatus(containerID=null, image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=null, waiting=ContainerStateWaiting(message=null, reason=ContainerCreating, additionalProperties={}), additionalProperties={}), additionalProperties={})]
 2017-09-14 14:59:03 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
 	 pod name: spark-pi-1505372339796-driver
 	 namespace: spark-cluster
@@ -273,9 +273,9 @@ local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.ja
 	 volumes: spark-token-zr8wv
 	 node name: 172.20.0.114
 	 start time: 2017-09-14T06:59:01Z
-	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 container images: harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
 	 phase: Running
-	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=true, restartCount=0, state=ContainerState(running=ContainerStateRunning(startedAt=2017-09-14T06:59:02Z, additionalProperties={}), terminated=null, waiting=null, additionalProperties={}), additionalProperties={})]
+	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://harbor-001.jimmysong.io/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=true, restartCount=0, state=ContainerState(running=ContainerStateRunning(startedAt=2017-09-14T06:59:02Z, additionalProperties={}), terminated=null, waiting=null, additionalProperties={}), additionalProperties={})]
 2017-09-14 14:59:12 INFO  LoggingPodStatusWatcherImpl:54 - State changed, new state:
 	 pod name: spark-pi-1505372339796-driver
 	 namespace: spark-cluster
@@ -286,14 +286,14 @@ local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.ja
 	 volumes: spark-token-zr8wv
 	 node name: 172.20.0.114
 	 start time: 2017-09-14T06:59:01Z
-	 container images: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 container images: harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
 	 phase: Succeeded
-	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=ContainerStateTerminated(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, exitCode=0, finishedAt=2017-09-14T06:59:11Z, message=null, reason=Completed, signal=null, startedAt=null, additionalProperties={}), waiting=null, additionalProperties={}), additionalProperties={})]
+	 status: [ContainerStatus(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1, imageID=docker-pullable://harbor-001.jimmysong.io/library/spark-driver@sha256:beb92a3e3f178e286d9e5baebdead88b5ba76d651f347ad2864bb6f8eda26f94, lastState=ContainerState(running=null, terminated=null, waiting=null, additionalProperties={}), name=spark-kubernetes-driver, ready=false, restartCount=0, state=ContainerState(running=null, terminated=ContainerStateTerminated(containerID=docker://5c5c821c482a1e35552adccb567020532b79244392374f25754f0050e6cd4c62, exitCode=0, finishedAt=2017-09-14T06:59:11Z, message=null, reason=Completed, signal=null, startedAt=null, additionalProperties={}), waiting=null, additionalProperties={}), additionalProperties={})]
 2017-09-14 14:59:12 INFO  LoggingPodStatusWatcherImpl:54 - Container final statuses:
 
 
 	 Container name: spark-kubernetes-driver
-	 Container image: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
+	 Container image: harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1
 	 Container state: Terminated
 	 Exit code: 0
 2017-09-14 14:59:12 INFO  Client:54 - Application spark-pi finished.
@@ -341,9 +341,9 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
   --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
   ../examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar
 ```
@@ -378,9 +378,9 @@ kubectl create -f conf/kubernetes-resource-staging-server.yaml
   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
   --conf spark.kubernetes.resourceStagingServer.uri=http://172.20.0.114:31000 \
 ~/Downloads/tendcloud_2.10-1.0.jar
 ```
@@ -436,9 +436,9 @@ memory limit 的值是根据 memory request 的值加上 `spark.kubernetes.execu
   --conf spark.kubernetes.executor.memoryOverhead=2g \
   --conf spark.executor.instances=5 \
   --conf spark.app.name=spark-pi \
-  --conf spark.kubernetes.driver.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.executor.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
-  --conf spark.kubernetes.initcontainer.docker.image=sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.driver.docker.image=harbor-001.jimmysong.io/library/spark-driver:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.executor.docker.image=harbor-001.jimmysong.io/library/spark-executor:v2.1.0-kubernetes-0.3.1-1 \
+  --conf spark.kubernetes.initcontainer.docker.image=harbor-001.jimmysong.io/library/spark-init:v2.1.0-kubernetes-0.3.1-1 \
 local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.4.0-SNAPSHOT.jar 10000000
 ```
 

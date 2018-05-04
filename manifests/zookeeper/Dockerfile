@@ -1,4 +1,4 @@
-FROM sz-pg-oam-docker-hub-001.tendcloud.com/library/jdk:7u80
+FROM harbor-001.jimmysong.io/library/jdk:7u80
 
 ENV ZK_USER=zookeeper \
     ZK_DATA_DIR=/var/lib/zookeeper/data \
@@ -10,7 +10,7 @@ ARG ZK_DIST=zookeeper-3.4.6
 
 RUN set -x \
     && yum install -y wget nc \
-    && wget -q "http://repo.tendcloud.com/td-configuration/deploy/zookeeper/$ZK_DIST.tar.gz" \
+    && wget -q "http://repo.jimmysong.io/configuration/deploy/zookeeper/$ZK_DIST.tar.gz" \
     && export GNUPGHOME="$(mktemp -d)" \
     && tar -xzf "$ZK_DIST.tar.gz" -C /opt \
     && rm -r "$GNUPGHOME" "$ZK_DIST.tar.gz" \

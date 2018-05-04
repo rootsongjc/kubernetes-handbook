@@ -11,7 +11,7 @@ spec:
         k8s-app: logstash-test
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/logstash:5.3.0
+      - image: harbor-001.jimmysong.io/library/logstash:5.3.0
         name: logstash
         resources:
           requests:
@@ -29,7 +29,7 @@ spec:
           value: logstash-docker
         - name: CODEC
           value: plain 
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
+      - image: harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
         name : app
         ports:
         - containerPort: 80

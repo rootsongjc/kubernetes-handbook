@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-grafana-amd64:v4.0.2
+        image: harbor-001.jimmysong.io/library/heapster-grafana-amd64:v4.0.2
         ports:
           - containerPort: 3000
             protocol: TCP

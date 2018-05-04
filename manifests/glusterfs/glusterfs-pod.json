@@ -8,7 +8,7 @@
         "containers": [
             {
                 "name": "glusterfs",
-                "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/pause-amd64:3.0",
+                "image": "harbor-001.jimmysong.io/library/pause-amd64:3.0",
                 "volumeMounts": [
                     {
                         "mountPath": "/mnt/glusterfs",

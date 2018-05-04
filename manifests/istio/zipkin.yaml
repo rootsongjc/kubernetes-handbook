@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: zipkin
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/zipkin:latest
+        image: harbor-001.jimmysong.io/library/zipkin:latest
         ports:
         - containerPort: 9411
         env:

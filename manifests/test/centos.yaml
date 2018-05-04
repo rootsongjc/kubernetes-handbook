@@ -12,7 +12,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+      - image: harbor-001.jimmysong.io/library/centos:7.2.1511
         name: test
         command: ["/bin/bash","-c","while true; do sleep 1000; done"]
         imagePullPolicy: IfNotPresent

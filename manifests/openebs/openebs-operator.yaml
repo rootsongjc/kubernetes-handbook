@@ -70,16 +70,16 @@ spec:
       containers:
       - name: maya-apiserver
         imagePullPolicy: Always
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-m-apiserver:0.5.1-RC1
+        image: harbor-001.jimmysong.io/library/openebs-m-apiserver:0.5.1-RC1
         ports:
         - containerPort: 5656
         env:
         - name: OPENEBS_IO_JIVA_CONTROLLER_IMAGE
-          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-jiva:0.5.1-RC1"
+          value: "harbor-001.jimmysong.io/library/openebs-jiva:0.5.1-RC1"
         - name: OPENEBS_IO_JIVA_REPLICA_IMAGE
-          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-jiva:0.5.1-RC1"
+          value: "harbor-001.jimmysong.io/library/openebs-jiva:0.5.1-RC1"
         - name: OPENEBS_IO_VOLUME_MONITOR_IMAGE
-          value: "sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-m-exporter:0.5.0"
+          value: "harbor-001.jimmysong.io/library/openebs-m-exporter:0.5.0"
         - name: OPENEBS_IO_JIVA_REPLICA_COUNT
           value: "2"
 ---
@@ -113,7 +113,7 @@ spec:
       containers:
       - name: openebs-provisioner
         imagePullPolicy: Always
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openebs-k8s-provisioner:0.5.1-RC2
+        image: harbor-001.jimmysong.io/library/openebs-k8s-provisioner:0.5.1-RC2
         env:
         - name: NODE_NAME
           valueFrom:

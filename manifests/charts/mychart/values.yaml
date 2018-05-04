@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx
+  repository: harbor-001.jimmysong.io/library/nginx
   tag: 1.9
   pullPolicy: IfNotPresent
 service:

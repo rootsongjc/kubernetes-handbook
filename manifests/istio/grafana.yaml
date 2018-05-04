@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/grafana:0.1.5
+        image: harbor-001.jimmysong.io/library/grafana:0.1.5
         imagePullPolicy: Always
         ports:
           - containerPort: 3000

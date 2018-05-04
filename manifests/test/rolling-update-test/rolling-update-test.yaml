@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: rolling-update-test
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/hello:v1
+        image: harbor-001.jimmysong.io/library/hello:v1
         ports:
         - containerPort: 9090
 ---

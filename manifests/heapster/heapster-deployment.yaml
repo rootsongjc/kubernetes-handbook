@@ -14,8 +14,8 @@ spec:
       serviceAccountName: heapster
       containers:
       - name: heapster
-        #image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-amd64:v1.3.0-beta.1
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-amd64:v1.4.3
+        #image: harbor-001.jimmysong.io/library/heapster-amd64:v1.3.0-beta.1
+        image: harbor-001.jimmysong.io/library/heapster-amd64:v1.4.3
         imagePullPolicy: IfNotPresent
         command:
         - /heapster

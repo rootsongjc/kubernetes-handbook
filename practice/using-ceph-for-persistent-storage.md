@@ -222,7 +222,7 @@ spec:
         pod.beta.kubernetes.io/init-containers: '[
           {
             "name": "galera-init",    
-            "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-galera-init:latest",
+            "image": "harbor-001.jimmysong.io/library/k8s-galera-init:latest",
             "args": ["-service=mysql"],
             "env": [
               {
@@ -256,7 +256,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: mysql
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/mariadb:10.1
+        image: harbor-001.jimmysong.io/library/mariadb:10.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306

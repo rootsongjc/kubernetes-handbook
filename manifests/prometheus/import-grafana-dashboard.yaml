@@ -14,6 +14,6 @@ spec:
     spec:
       serviceAccountName: prometheus-k8s
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+      - image: harbor-001.jimmysong.io/library/centos:7.2.1511
         name: test
         imagePullPolicy: IfNotPresent

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: linkerd-viz
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-linkerd-viz:latest
+        image: harbor-001.jimmysong.io/library/buoyantio-linkerd-viz:latest
         args: ["k8s"]
         imagePullPolicy: Always
         env:
@@ -33,7 +33,7 @@ spec:
           containerPort: 9191
 
       - name: kubectl
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        image: harbor-001.jimmysong.io/library/buoyantio-kubectl:v1.4.0
         args:
         - "proxy"
         - "-p"

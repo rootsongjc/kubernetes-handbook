@@ -22,7 +22,7 @@ spec:
     spec:
       serviceAccountName: efk
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/elasticsearch:v2.4.1-2
+      - image: harbor-001.jimmysong.io/library/elasticsearch:v2.4.1-2
         name: elasticsearch-logging
         resources:
           # need more cpu upon initialization, therefore burstable class

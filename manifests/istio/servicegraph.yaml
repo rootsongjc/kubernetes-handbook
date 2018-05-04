@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: servicegraph
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/servicegraph:latest
+        image: harbor-001.jimmysong.io/library/servicegraph:latest
         ports:
           - containerPort: 8088
         args:

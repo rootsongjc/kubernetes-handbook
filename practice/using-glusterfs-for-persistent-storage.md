@@ -37,9 +37,9 @@ $ systemctl status glusterd.service
 # 配置 hosts
 
 $ vi /etc/hosts
-172.20.0.113   sz-pg-oam-docker-test-001.tendcloud.com 
-172.20.0.114   sz-pg-oam-docker-test-002.tendcloud.com 
-172.20.0.115   sz-pg-oam-docker-test-003.tendcloud.com 
+172.20.0.113   test-001.jimmysong.io 
+172.20.0.114   test-002.jimmysong.io 
+172.20.0.115   test-003.jimmysong.io 
 ```
 
 ```bash
@@ -53,19 +53,19 @@ $ mkdir /opt/gfs_data
 ```bash
 # 添加节点到 集群
 # 执行操作的本机不需要probe 本机
-[root@sz-pg-oam-docker-test-001 ~]#
-gluster peer probe sz-pg-oam-docker-test-002.tendcloud.com
-gluster peer probe sz-pg-oam-docker-test-003.tendcloud.com
+[root@test-001 ~]#
+gluster peer probe test-002.jimmysong.io
+gluster peer probe test-003.jimmysong.io
 
 # 查看集群状态
 $ gluster peer status
 Number of Peers: 2
 
-Hostname: sz-pg-oam-docker-test-002.tendcloud.com
+Hostname: test-002.jimmysong.io
 Uuid: f25546cc-2011-457d-ba24-342554b51317
 State: Peer in Cluster (Connected)
 
-Hostname: sz-pg-oam-docker-test-003.tendcloud.com
+Hostname: test-003.jimmysong.io
 Uuid: 42b6cad1-aa01-46d0-bbba-f7ec6821d66d
 State: Peer in Cluster (Connected)
 ```
@@ -88,7 +88,7 @@ GlusterFS中的volume的模式有很多中，包括以下几种：
 
 ```bash
 # 创建分布卷
-$ gluster volume create k8s-volume transport tcp sz-pg-oam-docker-test-001.tendcloud.com:/opt/gfs_data sz-pg-oam-docker-test-002.tendcloud.com:/opt/gfs_data sz-pg-oam-docker-test-003.tendcloud.com:/opt/gfs_data force
+$ gluster volume create k8s-volume transport tcp test-001.jimmysong.io:/opt/gfs_data test-002.jimmysong.io:/opt/gfs_data test-003.jimmysong.io:/opt/gfs_data force
 
 # 查看volume状态
 $ gluster volume info
@@ -100,9 +100,9 @@ Snapshot Count: 0
 Number of Bricks: 3
 Transport-type: tcp
 Bricks:
-Brick1: sz-pg-oam-docker-test-001.tendcloud.com:/opt/gfs_data
-Brick2: sz-pg-oam-docker-test-002.tendcloud.com:/opt/gfs_data
-Brick3: sz-pg-oam-docker-test-003.tendcloud.com:/opt/gfs_data
+Brick1: test-001.jimmysong.io:/opt/gfs_data
+Brick2: test-002.jimmysong.io:/opt/gfs_data
+Brick3: test-003.jimmysong.io:/opt/gfs_data
 Options Reconfigured:
 transport.address-family: inet
 nfs.disable: on
@@ -151,9 +151,9 @@ $ yum install -y glusterfs glusterfs-fuse
 
 $ vi /etc/hosts
 
-172.20.0.113   sz-pg-oam-docker-test-001.tendcloud.com
-172.20.0.114   sz-pg-oam-docker-test-002.tendcloud.com
-172.20.0.115   sz-pg-oam-docker-test-003.tendcloud.com
+172.20.0.113   test-001.jimmysong.io
+172.20.0.114   test-002.jimmysong.io
+172.20.0.115   test-003.jimmysong.io
 ```
 
 因为我们glusterfs跟kubernetes集群复用主机，因为此这一步可以省去。
@@ -342,15 +342,14 @@ $ kubectl exec -it nginx-dm-3698525684-g0mvt -- ls -lt /usr/share/nginx/html/ind
 
 # 验证 glusterfs
 # 因为我们使用分布卷，所以可以看到某个节点中有文件
-[root@sz-pg-oam-docker-test-001 ~] ls /opt/gfs_data/
-[root@sz-pg-oam-docker-test-002 ~] ls /opt/gfs_data/
+[root@test-001 ~] ls /opt/gfs_data/
+[root@test-002 ~] ls /opt/gfs_data/
 index.html
-[root@sz-pg-oam-docker-test-003 ~] ls /opt/gfs_data/
+[root@test-003 ~] ls /opt/gfs_data/
 ```
 
 ## 参考
 
-[CentOS 7 安装 GlusterFS](http://www.cnblogs.com/jicki/p/5801712.html)
-
-[GlusterFS with kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs)
+- [CentOS 7 安装 GlusterFS](http://www.cnblogs.com/jicki/p/5801712.html)
+- [GlusterFS with kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs)
 

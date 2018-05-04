@@ -33,7 +33,7 @@ spec:
       serviceAccountName: faas-controller
       containers:
       - name: faas-netesd
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/faas-netesd:0.3.4
+        image: harbor-001.jimmysong.io/library/faas-netesd:0.3.4
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -72,7 +72,7 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/gateway:0.6.14
+        image: harbor-001.jimmysong.io/library/gateway:0.6.14
         env:
         - name: functions_provider_url
           value: "http://faas-netesd.default.svc.cluster.local:8080/"

@@ -1,4 +1,4 @@
-FROM sz-pg-oam-docker-hub-001.tendcloud.com/library/jdk:8u45
+FROM harbor-001.jimmysong.io/library/jdk:8u45
 ENV KAFKA_USER=kafka \
 KAFKA_DATA_DIR=/var/lib/kafka/data \
 JAVA_HOME=/usr/local/java \
@@ -8,7 +8,7 @@ PATH=$PATH:/opt/kafka/bin
 ARG KAFKA_DIST=kafka_2.10-0.8.2.1
 RUN set -x \
     && yum install -y wget tar \
-    && wget -q "http://repo.tendcloud.com/td-configuration/deploy/kafka/$KAFKA_DIST.tgz" \
+    && wget -q "http://repo.jimmysong.io/configuration/deploy/kafka/$KAFKA_DIST.tgz" \
     && export GNUPGHOME="$(mktemp -d)" \
     && tar -xzf "$KAFKA_DIST.tgz" -C /opt \
     && rm -r "$GNUPGHOME" "$KAFKA_DIST.tgz"

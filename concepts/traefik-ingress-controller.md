@@ -34,7 +34,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: "*.tendcloud.com"
+  - host: "*.jimmysong.io"
     http:
       paths:
       - path: /docGenerate

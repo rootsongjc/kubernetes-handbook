@@ -10,9 +10,9 @@
 我clone了上述镜像，上传到我的私有镜像仓库：
 
 ```
-sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-dnsmasq-nanny-amd64:1.14.1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-kube-dns-amd64:1.14.1
-sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-sidecar-amd64:1.14.1
+harbor-001.jimmysong.io/library/k8s-dns-dnsmasq-nanny-amd64:1.14.1
+harbor-001.jimmysong.io/library/k8s-dns-kube-dns-amd64:1.14.1
+harbor-001.jimmysong.io/library/k8s-dns-sidecar-amd64:1.14.1
 ```
 
 同时上传了一份到时速云备份：
@@ -87,7 +87,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 58c58
 <         image: gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-kube-dns-amd64:v1.14.1
+>         image: harbor-001.jimmysong.io/library/k8s-dns-kube-dns-amd64:v1.14.1
 88c88
 <         - --domain=__PILLAR__DNS__DOMAIN__.
 ---
@@ -99,7 +99,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 110c110
 <         image: gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-dnsmasq-nanny-amd64:v1.14.1
+>         image: harbor-001.jimmysong.io/library/k8s-dns-dnsmasq-nanny-amd64:v1.14.1
 129c129
 <         - --server=/__PILLAR__DNS__DOMAIN__/127.0.0.1#10053
 ---
@@ -107,7 +107,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 148c148
 <         image: gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/k8s-dns-sidecar-amd64:v1.14.1
+>         image: harbor-001.jimmysong.io/library/k8s-dns-sidecar-amd64:v1.14.1
 161,162c161,162
 <         - --probe=kubedns,127.0.0.1:10053,kubernetes.default.svc.__PILLAR__DNS__DOMAIN__,5,A
 <         - --probe=dnsmasq,127.0.0.1:53,kubernetes.default.svc.__PILLAR__DNS__DOMAIN__,5,A
@@ -147,7 +147,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+        image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
 $ kubectl create -f my-nginx.yaml
@@ -168,7 +168,7 @@ $ kubectl create -f nginx-pod.yaml
 $ kubectl exec  nginx -i -t -- /bin/bash
 root@nginx:/# cat /etc/resolv.conf
 nameserver 10.254.0.2
-search default.svc.cluster.local. svc.cluster.local. cluster.local. tendcloud.com
+search default.svc.cluster.local. svc.cluster.local. cluster.local. jimmysong.io
 options ndots:5
 
 root@nginx:/# ping my-nginx

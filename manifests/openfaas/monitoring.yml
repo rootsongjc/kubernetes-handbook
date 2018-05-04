@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus:latest-k8s
+        image: harbor-001.jimmysong.io/library/prometheus:latest-k8s
         command: ["prometheus","-config.file=/etc/prometheus/prometheus.yml", "-storage.local.path=/prometheus", "-storage.local.memory-chunks=10000", "--alertmanager.url=http://alertmanager.default:9093"]
         ports:
         - containerPort: 9090
@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
       - name: alertmanager
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/alertmanager:latest-k8s
+        image: harbor-001.jimmysong.io/library/alertmanager:latest-k8s
         command: ["/bin/alertmanager","-config.file=/alertmanager.yml", "-storage.path=/alertmanager"]
         ports:
         - containerPort: 9003

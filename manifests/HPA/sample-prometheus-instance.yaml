@@ -42,7 +42,7 @@ metadata:
     prometheus: sample-metrics-prom
 spec:
   replicas: 1
-  baseImage: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus
+  baseImage: harbor-001.jimmysong.io/library/prometheus
   version: v1.7.1
   serviceAccountName: prometheus
   serviceMonitorSelector:

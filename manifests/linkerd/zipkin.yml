@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: zipkin
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/openzipkin-zipkin:1.20
+        image: harbor-001.jimmysong.io/library/openzipkin-zipkin:1.20
         env:
         - name: SCRIBE_ENABLED
           value: "true"

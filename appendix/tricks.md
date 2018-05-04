@@ -226,7 +226,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511
+      - image: harbor-001.jimmysong.io/library/centos:7.2.1511
         name: test
         command: ["/bin/bash","-c","while true; do sleep 1000; done"]
         imagePullPolicy: IfNotPresent
@@ -237,7 +237,7 @@ spec:
 也可以直接使用`kubectl run`的方式来创建：
 
 ```bash
-kubectl run --image=sz-pg-oam-docker-hub-001.tendcloud.com/library/centos:7.2.1511 --command '/bin/bash -c "while true;do sleep 1000;done"' centos-test
+kubectl run --image=harbor-001.jimmysong.io/library/centos:7.2.1511 --command '/bin/bash -c "while true;do sleep 1000;done"' centos-test
 ```
 
 ## 9. 强制删除一直处于Terminating状态的Pod

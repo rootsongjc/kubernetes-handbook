@@ -4,13 +4,13 @@
 
 需要用到的镜像有：
 
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus-alertmanager:v0.7.1
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/grafana:4.2.0
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/giantswarm-tiny-tools:latest
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/prom-prometheus:v1.7.0
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/kube-state-metrics:v1.0.1
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/dockermuenster-caddy:0.9.3
--  sz-pg-oam-docker-hub-001.tendcloud.com/library/prom-node-exporter:v0.14.0
+-  harbor-001.jimmysong.io/library/prometheus-alertmanager:v0.7.1
+-  harbor-001.jimmysong.io/library/grafana:4.2.0
+-  harbor-001.jimmysong.io/library/giantswarm-tiny-tools:latest
+-  harbor-001.jimmysong.io/library/prom-prometheus:v1.7.0
+-  harbor-001.jimmysong.io/library/kube-state-metrics:v1.0.1
+-  harbor-001.jimmysong.io/library/dockermuenster-caddy:0.9.3
+-  harbor-001.jimmysong.io/library/prom-node-exporter:v0.14.0
 
 同时备份到时速云：
 

@@ -20,7 +20,7 @@ spec:
       serviceAccountName: efk
       containers:
       - name: kibana-logging
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kibana:v4.6.1-1
+        image: harbor-001.jimmysong.io/library/kibana:v4.6.1-1
         resources:
           # keep request = limit to keep this container in guaranteed class
           limits:

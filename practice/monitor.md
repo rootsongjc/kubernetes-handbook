@@ -134,7 +134,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: bj-xg-oam-docker-hub-001.tendcloud.com/library/gb-frontend:v4
+        image: harbor-001.jimmysong.io/library/gb-frontend:v4
         resources:
           requests:
             cpu: 100m
@@ -235,4 +235,4 @@ spec:
 
 ## 参考
 
-[Monitoring in the Kubernetes Era](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
+- [Monitoring in the Kubernetes Era](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)

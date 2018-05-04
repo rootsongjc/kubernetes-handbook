@@ -85,8 +85,8 @@ spec:
       containers:
       - args:
         - --kubelet-service=kube-system/kubelet
-        - --config-reloader-image=sz-pg-oam-docker-hub-001.tendcloud.com/library/configmap-reload:v0.0.1
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/prometheus-operator:v0.15.0
+        - --config-reloader-image=harbor-001.jimmysong.io/library/configmap-reload:v0.0.1
+        image: harbor-001.jimmysong.io/library/prometheus-operator:v0.15.0
         name: prometheus-operator
         ports:
         - containerPort: 8080

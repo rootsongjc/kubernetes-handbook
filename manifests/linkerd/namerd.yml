@@ -56,7 +56,7 @@ spec:
           name: namerd-config
       containers:
       - name: namerd
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-namerd:1.1.2
+        image: harbor-001.jimmysong.io/library/buoyantio-namerd:1.1.2
         args:
         - /io.buoyant/namerd/config/config.yml
         ports:
@@ -71,7 +71,7 @@ spec:
           mountPath: "/io.buoyant/namerd/config"
           readOnly: true
       - name: kubectl
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-kubectl:v1.4.0
+        image: harbor-001.jimmysong.io/library/buoyantio-kubectl:v1.4.0
         args:
         - "proxy"
         - "-p"
@@ -139,7 +139,7 @@ spec:
           defaultMode: 0755
       containers:
       - name: namerctl
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/linkerd-namerctl:0.8.6
+        image: harbor-001.jimmysong.io/library/linkerd-namerctl:0.8.6
         env:
         - name: NAMERCTL_BASE_URL
           value: http://namerd.default.svc.cluster.local:4180

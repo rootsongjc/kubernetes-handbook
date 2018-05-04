@@ -12,7 +12,7 @@ spec:
         app: sample-metrics-app
     spec:
       containers:
-      - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/autoscale-demo:v0.1.2
+      - image: harbor-001.jimmysong.io/library/autoscale-demo:v0.1.2
         name: sample-metrics-app
         ports:
         - name: web

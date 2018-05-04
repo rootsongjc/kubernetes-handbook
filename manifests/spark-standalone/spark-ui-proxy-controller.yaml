@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spark-ui-proxy
-          image: sz-pg-oam-docker-hub-001.tendcloud.com/library/spark-ui-proxy:1.0
+          image: harbor-001.jimmysong.io/library/spark-ui-proxy:1.0
           ports:
             - containerPort: 80
           resources:

@@ -154,7 +154,7 @@ resources:
 
 以上两个变量值是在create chart的时候自动生成的默认值。
 
-我们将默认的镜像地址和tag改成我们自己的镜像`sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9`。
+我们将默认的镜像地址和tag改成我们自己的镜像`harbor-001.jimmysong.io/library/nginx:1.9`。
 
 ### 检查配置和模板是否有效
 
@@ -177,7 +177,7 @@ USER-SUPPLIED VALUES:
 COMPUTED VALUES:
 image:
   pullPolicy: IfNotPresent
-  repository: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx
+  repository: harbor-001.jimmysong.io/library/nginx
   tag: 1.9
 replicaCount: 1
 resources:
@@ -231,7 +231,7 @@ spec:
     spec:
       containers:
       - name: mychart
-        image: "sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9"
+        image: "harbor-001.jimmysong.io/library/nginx:1.9"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -471,7 +471,7 @@ Downloading mongodb from repo https://kubernetes-charts.storage.googleapis.com/
 将刚才下载的`charts/mongodb-0.4.17.tgz`给解压后，修改其中的配置：
 
 - 将`persistence`下的`enabled`设置为false
-- 将image修改为我们的私有镜像：sz-pg-oam-docker-hub-001.tendcloud.com/library/bitnami-mongodb:3.4.9-r1
+- 将image修改为我们的私有镜像：harbor-001.jimmysong.io/library/bitnami-mongodb:3.4.9-r1
 
 执行`helm install --dry-run --debug .`确定模板无误。
 

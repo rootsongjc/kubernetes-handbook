@@ -37,7 +37,7 @@
     "spec": {
         "containers": [
             {
-                "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1",
+                "image": "harbor-001.jimmysong.io/library/examples-bookinfo-productpage-v1",
                 "imagePullPolicy": "IfNotPresent",
                 "name": "productpage",
                 "ports": [
@@ -208,8 +208,8 @@
         "containerStatuses": [
             {
                 "containerID": "docker://686c609d0343b73f2e9fac39f6439203de776810c409546571f411301db2f164",
-                "image": "sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1:latest",
-                "imageID": "docker-pullable://sz-pg-oam-docker-hub-001.tendcloud.com/library/examples-bookinfo-productpage-v1@sha256:fceb387d10815a5be86322335e07358ce5398c686947e510c2454cfbb98c4c46",
+                "image": "harbor-001.jimmysong.io/library/examples-bookinfo-productpage-v1:latest",
+                "imageID": "docker-pullable://harbor-001.jimmysong.io/library/examples-bookinfo-productpage-v1@sha256:fceb387d10815a5be86322335e07358ce5398c686947e510c2454cfbb98c4c46",
                 "lastState": {},
                 "name": "productpage",
                 "ready": true,

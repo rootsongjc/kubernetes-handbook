@@ -1,5 +1,5 @@
 #!/bin/bash
-repo=sz-pg-oam-docker-hub-001.tendcloud.com/library/
+repo=harbor-001.jimmysong.io/library/
 cat $1|while read line
 do
     docker pull $line

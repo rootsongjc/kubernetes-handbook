@@ -1,10 +1,10 @@
 # 创建高可用 etcd 集群
 
-kuberntes 系统使用 etcd 存储所有数据，本文档介绍部署一个三节点高可用 etcd 集群的步骤，这三个节点复用 kubernetes master 机器，分别命名为`sz-pg-oam-docker-test-001.tendcloud.com`、`sz-pg-oam-docker-test-002.tendcloud.com`、`sz-pg-oam-docker-test-003.tendcloud.com`：
+kuberntes 系统使用 etcd 存储所有数据，本文档介绍部署一个三节点高可用 etcd 集群的步骤，这三个节点复用 kubernetes master 机器，分别命名为`test-001.jimmysong.io`、`test-002.jimmysong.io`、`test-003.jimmysong.io`：
 
-+ sz-pg-oam-docker-test-001.tendcloud.com：172.20.0.113
-+ sz-pg-oam-docker-test-002.tendcloud.com：172.20.0.114
-+ sz-pg-oam-docker-test-003.tendcloud.com：172.20.0.115
++ test-001.jimmysong.io：172.20.0.113
++ test-002.jimmysong.io：172.20.0.114
++ test-003.jimmysong.io：172.20.0.115
 
 ## TLS 认证文件
 

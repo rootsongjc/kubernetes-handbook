@@ -259,7 +259,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+        image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
         envFrom:
@@ -317,7 +317,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/nginx:1.9
+        image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
       volumeMounts:

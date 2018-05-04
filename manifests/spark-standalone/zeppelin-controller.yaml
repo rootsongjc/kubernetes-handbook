@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: zeppelin
-          image: sz-pg-oam-docker-hub-001.tendcloud.com/library/zeppelin:0.7.1
+          image: harbor-001.jimmysong.io/library/zeppelin:0.7.1
           ports:
             - containerPort: 8080
           resources:

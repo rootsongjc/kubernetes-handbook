@@ -60,7 +60,7 @@ spec:
       containers:
       - name: k8skafka
         imagePullPolicy: Always
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kafka:2.10-0.8.2.1 
+        image: harbor-001.jimmysong.io/library/kafka:2.10-0.8.2.1 
         resources:
           requests:
             memory: "1Gi"

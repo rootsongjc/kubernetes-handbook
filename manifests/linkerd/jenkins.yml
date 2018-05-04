@@ -15,7 +15,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
       - name: jenkins
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/buoyantio-jenkins-plus:2.60.1
+        image: harbor-001.jimmysong.io/library/buoyantio-jenkins-plus:2.60.1
         ports:
         - name: http
           containerPort: 8080

@@ -21,7 +21,7 @@ $ diff es-controller.yaml.orig es-controller.yaml
 24c24
 <       - image: gcr.io/google_containers/elasticsearch:v2.4.1-2
 ---
->       - image: sz-pg-oam-docker-hub-001.tendcloud.com/library/elasticsearch:v2.4.1-2
+>       - image: harbor-001.jimmysong.io/library/elasticsearch:v2.4.1-2
 ```
 
 ## 配置 es-service.yaml
@@ -35,7 +35,7 @@ $ diff fluentd-es-ds.yaml.orig fluentd-es-ds.yaml
 26c26
 <         image: gcr.io/google_containers/fluentd-elasticsearch:1.22
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/fluentd-elasticsearch:1.22
+>         image: harbor-001.jimmysong.io/library/fluentd-elasticsearch:1.22
 ```
 
 ## 配置 kibana-controller.yaml
@@ -45,7 +45,7 @@ $ diff kibana-controller.yaml.orig kibana-controller.yaml
 22c22
 <         image: gcr.io/google_containers/kibana:v4.6.1-1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kibana:v4.6.1-1
+>         image: harbor-001.jimmysong.io/library/kibana:v4.6.1-1
 ```
 
 ## 给 Node 设置标签

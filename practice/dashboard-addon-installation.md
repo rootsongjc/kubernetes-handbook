@@ -63,7 +63,7 @@ $ diff dashboard-controller.yaml.orig dashboard-controller.yaml
 23c23
 <         image: gcr.io/google_containers/kubernetes-dashboard-amd64:v1.6.0
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.6.0
+>         image: harbor-001.jimmysong.io/library/kubernetes-dashboard-amd64:v1.6.0
 ```
 
 ## 执行所有定义文件
@@ -158,7 +158,7 @@ Kubernetes 1.6 版本的 dashboard 的镜像已经到了 v1.6.3 版本，我们�
 修改 `dashboard-controller.yaml` 文件中的镜像的版本将 `v1.6.0` 更改为 `v1.6.3`。
 
 ```yaml
-image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kubernetes-dashboard-amd64:v1.6.3
+image: harbor-001.jimmysong.io/library/kubernetes-dashboard-amd64:v1.6.3
 ```
 
 然后执行下面的命令：

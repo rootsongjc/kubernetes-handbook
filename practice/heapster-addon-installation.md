@@ -38,7 +38,7 @@ $ diff grafana-deployment.yaml.orig grafana-deployment.yaml
 16c16
 <         image: gcr.io/google_containers/heapster-grafana-amd64:v4.0.2
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-grafana-amd64:v4.0.2
+>         image: harbor-001.jimmysong.io/library/heapster-grafana-amd64:v4.0.2
 40,41c40,41
 <           # value: /api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
 <           value: /
@@ -57,7 +57,7 @@ $ diff heapster-deployment.yaml.orig heapster-deployment.yaml
 16c16
 <         image: gcr.io/google_containers/heapster-amd64:v1.3.0-beta.1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-amd64:v1.3.0-beta.1
+>         image: harbor-001.jimmysong.io/library/heapster-amd64:v1.3.0-beta.1
 ```
 
 ## 配置 influxdb-deployment
@@ -87,7 +87,7 @@ $ diff influxdb-deployment.yaml.orig influxdb-deployment.yaml
 16c16
 <         image: gcr.io/google_containers/heapster-influxdb-amd64:v1.1.1
 ---
->         image: sz-pg-oam-docker-hub-001.tendcloud.com/library/heapster-influxdb-amd64:v1.1.1
+>         image: harbor-001.jimmysong.io/library/heapster-influxdb-amd64:v1.1.1
 19a20,21
 >         - mountPath: /etc/
 >           name: influxdb-config

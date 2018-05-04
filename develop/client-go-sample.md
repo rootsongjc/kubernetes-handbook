@@ -145,11 +145,11 @@ Usage of ./update-deployment-image:
 **使用不存在的image更新**
 
 ```bash
- $ ./update-deployment-image -deployment filebeat-test -image sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_9 
+ $ ./update-deployment-image -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_9 
 Found deployment
 name -> filebeat-test
-Old image -> sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
-New image -> sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_9
+Old image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
+New image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_9
 ```
 
 查看Deployment的event。
@@ -200,11 +200,11 @@ filebeat-test-2470325483-gc14k   1/2       ImagePullBackOff   0          4m
 将image设置为原来的镜像。
 
 ```bash
-$ ./update-deployment-image -deployment filebeat-test -image sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
+$ ./update-deployment-image -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
 Found deployment
 name -> filebeat-test
-Old image -> sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_9
-New image -> sz-pg-oam-docker-hub-001.tendcloud.com/library/analytics-docker-test:Build_8
+Old image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_9
+New image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
 ```
 
 现在再查看Deployment的状态。

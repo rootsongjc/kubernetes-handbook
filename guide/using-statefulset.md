@@ -121,7 +121,7 @@ spec:
       containers:
       - name: k8szk
         imagePullPolicy: Always
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/zookeeper:3.4.6
+        image: harbor-001.jimmysong.io/library/zookeeper:3.4.6
         resources:
           requests:
             memory: "2Gi"
@@ -293,7 +293,7 @@ spec:
       containers:
       - name: k8skafka
         imagePullPolicy: Always
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/kafka:2.10-0.8.2.1
+        image: harbor-001.jimmysong.io/library/kafka:2.10-0.8.2.1
         resources:
           requests:
             memory: "1Gi"

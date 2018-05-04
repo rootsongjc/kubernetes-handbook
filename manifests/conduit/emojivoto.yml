@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: emoji-svc
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-emoji-svc:v1
+        image: harbor-001.jimmysong.io/library/emojivoto-emoji-svc:v1
         env:
         - name: GRPC_PORT
           value: "8080"
@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: voting-svc
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-voting-svc:v1
+        image: harbor-001.jimmysong.io/library/emojivoto-voting-svc:v1
         env:
         - name: GRPC_PORT
           value: "8080"
@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
       - name: emoji-svc
-        image: sz-pg-oam-docker-hub-001.tendcloud.com/library/emojivoto-web:v1
+        image: harbor-001.jimmysong.io/library/emojivoto-web:v1
         env:
         - name: WEB_PORT
           value: "80"
