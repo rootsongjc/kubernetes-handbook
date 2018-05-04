@@ -215,6 +215,7 @@
 - [单元测试和集成测试](develop/testing.md)
 - [client-go示例](develop/client-go-sample.md)
 - [Operator](develop/operator.md)
+- [operator-sdk](develop/operator-sdk.md)
 - [高级开发指南](develop/advance-developer.md)
 - [社区贡献](develop/contribute.md)
 - [Minikube](develop/minikube.md)
