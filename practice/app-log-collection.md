@@ -161,7 +161,7 @@ green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151    
 
 ![Kibana页面](../images/filebeat-docker-test.jpg)
 
-点开没个日志条目，可以看到以下详细字段：
+点开每个日志条目，可以看到以下详细字段：
 
 ![filebeat收集的日志详细信息](../images/kubernetes-filebeat-detail.png)
 
@@ -170,4 +170,3 @@ green open filebeat-docker-test            7xPEwEbUQRirk8oDX36gAA 5 1   2151    
 - source表示filebeat容器中的日志目录
 
 我们可以通过人为得使`index` = `service name`，这样就可以方便的收集和查看每个service的日志。
-

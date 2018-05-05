@@ -29,4 +29,4 @@
 
 ## 参考
 
-[谈服务发现的背景、架构以及落地方案](http://www.infoq.com/cn/articles/background-architecture-and-solutions-of-service-discovery)
+- [谈服务发现的背景、架构以及落地方案](http://www.infoq.com/cn/articles/background-architecture-and-solutions-of-service-discovery)

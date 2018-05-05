@@ -197,4 +197,4 @@ Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/
 
 ## 参考
 
-[WebUI(Dashboard) 文档](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+- [WebUI(Dashboard) 文档](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)

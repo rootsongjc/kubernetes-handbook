@@ -170,4 +170,4 @@ spec:
 
 ## 参考
 
-[Accessing Kubernetes Pods from Outside of the Cluster - alesnosek.com](http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/)
+- [Accessing Kubernetes Pods from Outside of the Cluster - alesnosek.com](http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/)

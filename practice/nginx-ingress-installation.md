@@ -173,8 +173,6 @@ helm delete --purge nginx-ingress
 
 ## 参考
 
-[Ingress-nginx github](https://github.com/kubernetes/ingress-nginx)
-
-[Nginx chart configuration](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
-
-[使用Helm管理kubernetes应用](helm.md)
+- [Ingress-nginx github](https://github.com/kubernetes/ingress-nginx)
+- [Nginx chart configuration](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
+- [使用Helm管理kubernetes应用](helm.md)

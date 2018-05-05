@@ -210,4 +210,4 @@ curl https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/man
 
 ## 参考
 
-[Getting started - conduit.io](https://conduit.io/getting-started/)
+- [Getting started - conduit.io](https://conduit.io/getting-started/)

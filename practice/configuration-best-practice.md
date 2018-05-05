@@ -53,4 +53,4 @@
 
 ## 参考
 
-[Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)
+- [Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)

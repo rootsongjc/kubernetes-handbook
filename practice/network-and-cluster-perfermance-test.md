@@ -392,20 +392,12 @@ Locust模拟10万用户，每秒增长100个。
 
 ## 参考
 
-[基于 Python 的性能测试工具 locust (与 LR 的简单对比)](https://testerhome.com/topics/4839)
-
-[Locust docs](http://docs.locust.io/en/latest/what-is-locust.html)
-
-[python用户负载测试工具：locust](http://timd.cn/2015/09/17/locust/)
-
-[Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
-
-[CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
-
-[Kubernetes 1.3 的性能和弹性 —— 2000 节点，60,0000 Pod 的集群](http://blog.fleeto.us/translation/updates-performance-and-scalability-kubernetes-13-2000-node-60000-pod-clusters)
-
-[运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
-
-[Kubemark User Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/kubemark-guide.md)
-
-[Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)
+- [基于 Python 的性能测试工具 locust (与 LR 的简单对比)](https://testerhome.com/topics/4839)
+- [Locust docs](http://docs.locust.io/en/latest/what-is-locust.html)
+- [python用户负载测试工具：locust](http://timd.cn/2015/09/17/locust/)
+- [Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
+- [CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
+- [Kubernetes 1.3 的性能和弹性 —— 2000 节点，60,0000 Pod 的集群](http://blog.fleeto.us/translation/updates-performance-and-scalability-kubernetes-13-2000-node-60000-pod-clusters)
+- [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
+- [Kubemark User Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/kubemark-guide.md)
+- [Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

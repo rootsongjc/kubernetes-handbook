@@ -234,10 +234,7 @@ replicationcontroller "zeppelin-controller" rolling updated
 
 ## 参考
 
-[Rolling update机制解析](http://dockone.io/article/328)
-
-[Running a Stateless Application Using a Deployment](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
-
-[Simple Rolling Update](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/simple-rolling-update.md)
-
-[使用kubernetes的deployment进行RollingUpdate](https://segmentfault.com/a/1190000008232770)
+- [Rolling update机制解析](http://dockone.io/article/328)
+- [Running a Stateless Application Using a Deployment](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
+- [Simple Rolling Update](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/simple-rolling-update.md)
+- [使用kubernetes的deployment进行RollingUpdate](https://segmentfault.com/a/1190000008232770)

@@ -244,8 +244,6 @@ Traefik会解析http请求header里的Host参数将流量转发给Ingress配置�
 
 ## 参考
 
-[Traefik-kubernetes 初试](http://www.colabug.com/thread-1703745-1-1.html)
-
-[Traefik简介](http://www.tuicool.com/articles/ZnuEfay)
-
-[Guestbook example](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook)
+- [Traefik-kubernetes 初试](http://www.colabug.com/thread-1703745-1-1.html)
+- [Traefik简介](http://www.tuicool.com/articles/ZnuEfay)
+- [Guestbook example](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook)

@@ -94,8 +94,6 @@ spec:
 
 ## 参考
 
-[资源配额](https://k8smeetup.github.io/docs/concepts/policy/resource-quotas/)
-
-[为命名空间配置默认的内存请求与限额](https://k8smeetup.github.io/docs/tasks/administer-cluster/memory-default-namespace/)
-
-[在命名空间中配置默认的CPU请求与限额](https://k8smeetup.github.io/docs/tasks/administer-cluster/cpu-default-namespace/)
+- [资源配额](https://k8smeetup.github.io/docs/concepts/policy/resource-quotas/)
+- [为命名空间配置默认的内存请求与限额](https://k8smeetup.github.io/docs/tasks/administer-cluster/memory-default-namespace/)
+- [在命名空间中配置默认的CPU请求与限额](https://k8smeetup.github.io/docs/tasks/administer-cluster/cpu-default-namespace/)
