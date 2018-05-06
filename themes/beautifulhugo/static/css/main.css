@@ -213,6 +213,7 @@ img {
 
 .navbar-custom.top-nav-short .avatar-container {
     opacity: 0;
+    visibility: hidden;
 }
 
 .navbar-custom.top-nav-expanded .avatar-container {

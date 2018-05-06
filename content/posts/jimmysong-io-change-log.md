@@ -173,3 +173,4 @@ tags: ["github-pages","github","website","hugo"]
 ### 2018-05-06
 
 1. 使用[来必力](https://livere.com)提供评论功能
+2. 修复了当滚动页面时导航栏中间的avatar虽然隐藏但是仍可以点击的问题
