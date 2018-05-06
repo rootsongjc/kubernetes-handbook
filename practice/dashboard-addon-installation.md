@@ -13,6 +13,12 @@ dashboard-controller.yaml  dashboard-service.yaml dashboard-rbac.yaml
 
 已经修改好的 yaml 文件见：[../manifests/dashboard](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/dashboard)
 
+文件中的kubernetes-dashboard-amd64镜像为本地镜像地址需要修改为对应的镜像地址和版本：
+
+kubernetes 1.7.11 可以使用此镜像地址： registry.cn-qingdao.aliyuncs.com/haitao/kubernetes-dashboard-amd64:v1.7.0   替换 dashboard-controller.yaml 文件中的镜像地址
+
+
+
 由于 `kube-apiserver` 启用了 `RBAC` 授权，而官方源码目录的 `dashboard-controller.yaml` 没有定义授权的 ServiceAccount，所以后续访问 API server 的 API 时会被拒绝，web中提示：
 
 ```
