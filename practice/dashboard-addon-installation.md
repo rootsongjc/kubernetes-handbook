@@ -1,7 +1,3 @@
----
-typora-root-url: ../images
----
-
 # 安装dashboard插件
 
 > 注意：本文档中安装的是kubernetes dashboard v1.6.0，安装新版的dashboard请参考[升级dashboard](dashboard-upgrade.md)。
