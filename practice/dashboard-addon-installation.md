@@ -1,3 +1,7 @@
+---
+typora-root-url: ../images
+---
+
 # 安装dashboard插件
 
 > 注意：本文档中安装的是kubernetes dashboard v1.6.0，安装新版的dashboard请参考[升级dashboard](dashboard-upgrade.md)。
@@ -200,6 +204,20 @@ Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/
 新版本中最大的变化是增加了进入容器内部的入口，可以在页面上进入到容器内部操作，同时又增加了一个搜索框。
 
 关于如何将dashboard从1.6版本升级到1.7版本请参考[升级dashboard](dashboard-upgrade.md)。
+
+
+
+## 问题
+
+1. 按照教程按照，发现dashboard pod 无法启动
+
+   kubectl -n kube-system describe pod dashboard-xxxxxxx
+
+   ![image-20180506230011172](../images/dashboard-addon-installation001.png)
+
+   可以尝试删除所有相关“资源”再重试一次，如：secret、serviceaccount、service、pod、deployment
+
+   
 
 ## 参考
 
