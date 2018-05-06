@@ -11,7 +11,7 @@ pygmentCodeFences = true
 
 [Params]
 hello = "Hi,I'm Jimmy"
-subtitle = "I can help you build Cloud Native confidence"
+subtitle = "I can help you to build Cloud Native confidence"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 dateFormat = "January 2, 2006"
@@ -49,14 +49,14 @@ desc = "1st Istio meetup in Beijing GDG"
   website = "https://jimmysong.io"
   email = "jimmysong@jimmysong.io"
   facebook = "jimmysongio"
-  googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
+  #googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
   github = "rootsongjc"
   twitter = "jimmysongio"
   linkedin = "jimmysongio"
-  500px = "jimmysongio"
-  medium = "jimmysongio"
+  #500px = "jimmysongio"
+  #medium = "jimmysongio"
   instagram = "jimmysongio"
-  weibo = "jimmysongio"
+  #weibo = "jimmysongio"
 
 [[menu.main]]
     identifier = "Categories"
