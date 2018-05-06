@@ -169,3 +169,7 @@ tags: ["github-pages","github","website","hugo"]
 ### 2018--04-03
 
 1. 增加目录显示，放在侧边栏，浮动显示
+
+### 2018-05-06
+
+1. 使用[来必力](https://livere.com)提供评论功能
