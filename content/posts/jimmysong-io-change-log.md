@@ -3,6 +3,7 @@ title: "jimmysong.io网站更新日志"
 date: 2017-10-04T11:18:27+08:00
 draft: false
 categories: github
+notoc: true
 tags: ["github-pages","github","website","hugo"]
 ---
 
