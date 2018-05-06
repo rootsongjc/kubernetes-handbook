@@ -175,3 +175,4 @@ tags: ["github-pages","github","website","hugo"]
 
 1. 使用[来必力](https://livere.com)提供评论功能
 2. 修复了当滚动页面时导航栏中间的avatar虽然隐藏但是仍可以点击的问题
+3. 在主页下方选择了不同的页面后不再显示个人简介栏目
