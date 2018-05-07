@@ -201,6 +201,22 @@ Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/
 
 关于如何将dashboard从1.6版本升级到1.7版本请参考[升级dashboard](dashboard-upgrade.md)。
 
+
+
+## 问题
+
+1. 按照教程安装后，发现dashboard pod 无法启动
+
+   ```
+   kubectl -n kube-system describe pod dashboard-xxxxxxx
+   ```
+
+   ![pod无法正常启动](../images/dashboard-addon-installation001.png)
+
+   可以尝试删除所有相关“资源”再重试一次，如：secret、serviceaccount、service、pod、deployment
+
+   
+
 ## 参考
 
 - [WebUI(Dashboard) 文档](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
