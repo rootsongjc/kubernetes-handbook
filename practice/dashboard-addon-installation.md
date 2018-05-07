@@ -205,7 +205,7 @@ Dashboard 的访问地址不变，重新访问 <http://172.20.0.113:8080/api/v1/
 
 ## 问题
 
-1. 按照教程按照，发现dashboard pod 无法启动
+1. 按照教程安装后，发现dashboard pod 无法启动
 
    kubectl -n kube-system describe pod dashboard-xxxxxxx
 
