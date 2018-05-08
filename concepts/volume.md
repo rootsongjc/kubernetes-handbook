@@ -379,7 +379,7 @@ spec:
 
 **重要提示**：您必须先拥有自己的 NFS 服务器才能使用它，然后才能使用它。
 
-有关更多详细信息，请参见[NFS示例](https://github.com/kubernetes/examples/tree/ master/staging/volumes/nfs)。
+有关更多详细信息，请参见 [NFS 示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs)。
 
 ### persistentVolumeClaim
 
