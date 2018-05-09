@@ -235,3 +235,4 @@
   - [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
 - [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   - [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
+- [Kubernetes CKA认证说明](appendix/about-CKA-Candidate.md)
