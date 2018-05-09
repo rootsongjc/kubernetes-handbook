@@ -1,17 +1,8 @@
-# Kubernetes认证服务提供商（KCSP）
-
-云原生计算基金会（CNCF）负责维护并整合Kubernetes和Prometheus之类的开源技术，今天它在开源峰会上宣布了22多家Kubernetes认证服务提供商（KCSP）的创始成员名单。KCSP是通过初审的企业组织，它们在帮助企业成功地采用Kubernetes方面有着丰富经验。此外，专业人员个人现在可以注册报名新的认证Kubernetes管理员（CKA）计划和[考试](https://www.cncf.io/certification/expert/)。
-KCSP的创始成员包括CNCF和Linux基金会的下列成员：埃森哲、博思艾伦、Bitnami、Canonical、Container Solutions、CoreOS、Ghostcloud、Giant Swarm、Heptio、华为、IBM、inwinSTACKInc.、LiveWyer、Mirantis、RX- M LLC、三星SDS、Stackpointcloud、Supergiant和Treasure Data。
-KCSP计划的适用对象是通过初审的服务提供商，它们为踏上Kubernetes之旅的公司企业提供Kubernetes支持、咨询、专业服务和培训。KCSP计划确保企业得到它们在寻求的支持，从而比以前更迅速、更高效地部署新的应用程序，同时确保有一家值得信赖、经过审查的合作伙伴可以支持其生产和运营方面的要求。
-想成为KCSP，**需要至少三名工程师通过认证Kubernetes管理员** [CKA](https://www.cncf.io/certification/expert/) 考试，能够证明在Kubernetes社区从事活动（包括积极贡献代码），以及支持企业最终用户的商业模式，包括将工程师派驻客户现场。
-
->  参考 [CNCF 宣布首批 Kubernetes 认证服务提供商](https://mp.weixin.qq.com/s?__biz=MjM5MzM3NjM4MA==&mid=2654684649&idx=2&sn=4bd259d40d4eb33fc07340c07281e6cf)
-
 # 认证Kubernetes管理员（CKA）
 
-这是CNCF的官方认证,详情请看[官方介绍](https://www.cncf.io/certification/expert/ )
+这是CNCF的官方认证，详情请看[官方介绍](https://www.cncf.io/certification/expert/ )。
 
-## 认证详情：
+## 认证详情
 
 在3~4小时内用命令行进行排障， 解决问题， 相关知识点和权重
 - Installation, Configuration & Validation 安装，配置和验证12%
@@ -152,19 +143,15 @@ kubectl   get   no   −l   name=hk8s−node−1   −−context=hk8s
 
 ## 复习资料
 
-[Kubernetes-Learning-Resources](https://github.com/kubernauts/Kubernetes-Learning-Resources)
-
-[Kubernetes-Certified-Administrator](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
-
-[培训课程导图](https://www.mindmeister.com/zh/920845833/kubernauts-training-plan)
-
-[新手训练营](https://kubernetesbootcamp.github.io/kubernetes-bootcamp/index.html)
-
-[Linux Foundation 提供的免费入门课程]( https://training.linuxfoundation.org/linux-courses/system-administration-training/introduction-to-kubernetes)
+- [Kubernetes-Learning-Resources](https://github.com/kubernauts/Kubernetes-Learning-Resources)
+- [Kubernetes-Certified-Administrator](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+- [培训课程导图](https://www.mindmeister.com/zh/920845833/kubernauts-training-plan)
+- [新手训练营](https://kubernetesbootcamp.github.io/kubernetes-bootcamp/index.html)
+- [Linux Foundation 提供的免费入门课程]( https://training.linuxfoundation.org/linux-courses/system-administration-training/introduction-to-kubernetes)
 
 有个CNCF网站提供了免费的[分级课程](https://kubernauts.io/en/become-a-kubernaut/) 和 [课程文档]( https://www.gitbook.com/@kubernauts)
 
-除了认证大纲内容外， 还可以看看 [feisky的kubernetes指南](https://feisky.gitbooks.io/kubernetes/) 里面包含了上述认证的大部分内容
+除了认证大纲内容外， 还可以看看 [feisky的kubernetes指南](https://feisky.gitbooks.io/kubernetes/) 里面包含了上述认证的大部分内容。
 
 该课程的课程大纲：
 
@@ -215,8 +202,6 @@ ps： 个人觉得这个课程太贵了，为了省点钱 ，  仔细研究下�
 
 [培训体系](https://www.mindmeister.com/zh/920845833/kubernauts-training-pla)
 
-![cka-mindmap](../images/cka-mindmap.png)
-
-
+![CKA mindmap](../images/cka-mindmap.png)
 
 From: [Github_hackstoic](https://github.com/hackstoic/kubernetes_practice/blob/master/%E5%85%B3%E4%BA%8EK8S%E7%9B%B8%E5%85%B3%E8%AE%A4%E8%AF%81%E7%9A%84%E8%AF%B4%E6%98%8E.md)
