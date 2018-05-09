@@ -103,4 +103,4 @@ OpenFaaS的命令行工具`faas-cli`的详细使用说明见：https://github.co
 
 ## 参考
 
-- [Deployment guide for Kubernetes - GitHub openfaas/faas](Deployment guide for Kubernetes)
+- [Deployment guide for Kubernetes - GitHub openfaas/faas](http://docs.openfaas.com/deployment/kubernetes/)
