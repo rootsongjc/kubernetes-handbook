@@ -176,14 +176,14 @@ desc = "1st Istio meetup in Beijing GDG"
 
 [[menu.main]]
     parent = "Projects"
-    name = "Spark on kubernetes"
-    url = "spark-on-k8s"
+    name = "k8s all-in-one"
+    url = "https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster"
     weight = 1
 
 [[menu.main]]
     parent = "Projects"
-    name = "Awesome Cloud Native"
-    url = "awesome-cloud-native"
+    name = "Spark on kubernetes"
+    url = "spark-on-k8s"
     weight = 2
 
 [[menu.main]]
@@ -196,15 +196,22 @@ desc = "1st Istio meetup in Beijing GDG"
     parent = "Projects"
     name = "Magpie"
     url = "posts/yarn-on-docker"
-    weight = 5
+    weight = 4
 
 [[menu.main]]
     parent = "Projects"
     name = "Cheatsheets"
     url = "cheatsheets"
+    weight = 5
+
+[[menu.main]]
+    parent = "Projects"
+    name = "Beautifulhugo"
+    url = "https://github.com/rootsongjc/beautifulhugo"
     weight = 6
+
 
 [[menu.main]]
     name = "About"
     url = "about"
-    weight = 7
+    weight = 5
