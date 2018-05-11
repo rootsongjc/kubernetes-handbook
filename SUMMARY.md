@@ -94,6 +94,7 @@
   - [IP伪装代理](guide/ip-masq-agent.md)
   - [使用kubeconfig或token进行用户身份认证](guide/auth-with-kubeconfig-or-token.md)
   - [Kubernetes中的用户与身份认证授权](guide/authentication.md)
+  - [Kubernetes集群安全性配置最佳实践](guide/kubernetes-security-best-practice.md)
 - [访问Kubernetes集群](guide/access-kubernetes-cluster.md)
   - [访问集群](guide/access-cluster.md)
   - [使用kubeconfig文件配置跨集群认证](guide/authenticate-across-clusters-kubeconfig.md)
