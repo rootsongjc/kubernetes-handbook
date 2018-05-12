@@ -8,8 +8,6 @@ tags: ["cloud-native","ballerina"]
 categories: "cloud native"
 ---
 
-# 云原生编程语言 Ballerina
-
 当我第一眼看到 [Ballerina](https://ballerina.io) 还真有点惊艳的感觉。Ballerina 这个单词的意思是“芭蕾舞女演员”。我想他们之所以给公司和这们语言起这个名字，可能是希望它成为云原生这个大舞台中，Ballerina 能像一个灵活的芭蕾舞者一样轻松自如吧！
 
 Ballerina 是一款开源的编译式的强类型语言，该语言本身的代码可以通过 [GitHub](https://github.com/ballerina-platform/ballerina-lang) 上获取。我们可以通过 Ballerina 官网上的[设计哲学](https://ballerina.io/philosophy/)页面来对这门云原生编程语言一探究竟。
