@@ -6,7 +6,7 @@
 
 ## 先决条件
 
-OpenEBS依赖与iSCSI做存储管理，因此需要先确保您的集群上已有安装OpenEBS。
+OpenEBS依赖与iSCSI做存储管理，因此需要先确保您的集群上已有安装openiscsi。
 
 **注意**：如果您使用kubeadm，容器方式安装的kublet，那么其中会自带iSCSI，不需要再手动安装，如果是直接使用二进制形式在裸机上安装的kubelet，则需要自己安装iSCSI。
 
