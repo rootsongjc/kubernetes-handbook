@@ -4,7 +4,7 @@ date: 2018-01-05T16:33:45+08:00
 description: "本文将指导您如何在Kubernetes集群上安装OpenEBS作为kubernetes持久化存储"
 tags: ["kubernetes","openebs"]
 categories: "kubernetes"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20171231072.jpg", desc: "沈园@浙江绍兴 Dec 31,2017"}]
+bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20171231072.jpg", desc: "沈园|Shaoxing,Zhejiang|Dec 31,2017"}]
 draft: false
 ---
 
@@ -85,7 +85,7 @@ OpenEBS的控制平面也是基于微服务的，它的服务可以分成以下�
 
 ## 先决条件
 
-OpenEBS依赖与iSCSI做存储管理，因此需要先确保您的集群上已有安装OpenEBS。
+OpenEBS依赖与iSCSI做存储管理，因此需要先确保您的集群上已有安装openiscsi。
 
 **注意**：如果您使用kubeadm，容器方式安装的kublet，那么其中会自带iSCSI，不需要再手动安装，如果是直接使用二进制形式在裸机上安装的kubelet，则需要自己安装iSCSI。
 
