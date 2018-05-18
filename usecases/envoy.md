@@ -2,6 +2,8 @@
 
 [Envoy](https://github.com/envoyproxy/envoy) 是一款由 Lyft 开源的，使用 C++ 编写的 L7 代理和通信总线，目前是 [CNCF](https://cncf.io) 旗下的开源项目，代码托管在 GitHub 上，它也是 [Istio](https://istio.io) service mesh 中默认的 data plane。
 
+Service Mesh 爱好者们联合翻译了 [Envoy 最新版本的官方文档](https://www.envoyproxy.io/docs/envoy/latest/)，翻译的代码托管在 <https://github.com/servicemesher/envoy>，如果你也是 Service Mesh 爱好者可以加入到 [SerivceMesher GitHub 组织](https://github.com/servicemesher) 里共同参与。
+
 ## 特性
 
 Envoy 包括如下特性：
