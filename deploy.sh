@@ -10,9 +10,9 @@ git add -A
 git commit -m "$msg"
 git push origin master
 
-# Build the project. 
+# Build the project.
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
-hugo-algolia
+hugo-algolia --config algolia.yaml
 
 # Go To Public folder
 cd public

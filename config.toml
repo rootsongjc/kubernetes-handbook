@@ -1,7 +1,7 @@
 baseurl = "https://jimmysong.io/"
 DefaultContentLanguage = "en"
 hasCJKLanguage = true
-languageCode = "zh-cn"
+languageCode = "zh"
 title = "Jimmy Song"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
