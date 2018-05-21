@@ -7,6 +7,7 @@ description: "SerivceMesher serivce mesh 爱好者共同参与翻译 Envoy 最�
 categories: "service-mesh"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20180513009.jpg", desc: "Zhonghe overpass|Hangzhou|Apr 13,2018"}]
 draft: false
+notoc: true
 ---
 
 [Envoy](https://envoyproxy.io) 是一款由 Lyft 开源的，使用 C++ 编写的 L7 代理和通信总线，目前是 [CNCF](https://cncf.io) 旗下的开源项目，代码托管在 GitHub 上，它也是 [Istio](https://istio.io) service mesh 中默认的 data plane。我们发现它有很好的性能，同时也不断有基于 Envoy 的开源项目出现，如 [Ambassador](https://github.com/envoy/Ambassador)、[Gloo](https://github.com/solo-io/gloo) 等，而目前 Envoy 的官方文档还没有得到很好的汉化，因此我们 Service Mesh 爱好者们觉得发动社区的力量共同翻译 Enovy 最新的（1.7 版本）的官方文档，并通过 GitHub 组织。
