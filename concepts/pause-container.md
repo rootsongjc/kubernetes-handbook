@@ -93,5 +93,5 @@ root        87  0.0  0.0  17500  2080 pts/0    R+   14:10   0:00 ps aux
 ## 参考
 
 - [The Almighty Pause Container](https://www.ianlewis.org/en/almighty-pause-container)
-- [Kubernetes只Pause容器](https://o-my-chenjian.com/2017/10/17/The-Pause-Container-Of-Kubernetes/)
+- [Kubernetes之Pause容器](https://o-my-chenjian.com/2017/10/17/The-Pause-Container-Of-Kubernetes/)
 
