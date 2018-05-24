@@ -2,8 +2,11 @@
 date: "2017-07-15T16:25:30+08:00"
 draft: false
 categories: "cloud-native"
+subtitle: "《迁移至云原生应用架构》第一章"
 title: "什么是云原生应用架构"
+description: "什么是云原生应用架构，《迁移至云原生应用架构的第一章》"
 tags: ["cloud-native"]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Cloud|May 24,2018"}]
 ---
 
 本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一部分，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
