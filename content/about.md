@@ -33,7 +33,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - [Cloud Native Python - 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
 - [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
-**![Cloud Native Series 云原生系列书籍](https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg)** 
+![Cloud Native Series 云原生系列书籍](https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg)
 
 **Gitbooks**
 
@@ -59,8 +59,6 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 #### 2018
 
 - May 20,2018 | Nanjing | [Global Tech Week 2018, 4th NJSD Global Conference](http://njsd-china.org/NJSDGlobal2018/)【2018全球技术周暨第四届南京（全球）软件大会】 | The next stage of Cloud Native apps
-
-
 - Mar 23 - Mar 25,2018 | Beijing | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
 #### 2017
@@ -91,7 +89,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
-  
+---
 
 <center>微信公众号——云原生应用架构（CloudNativeGo）</center>
 
