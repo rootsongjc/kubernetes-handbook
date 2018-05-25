@@ -11,7 +11,7 @@ seealso: false
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-side-of-the-moon.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
 
-![wechat_qrcode](https://res.cloudinary.com/jimmysong/image/upload/images/jimmysong-wechat-qrcode.jpg)
+![wechat_qrcode](https://ws1.sinaimg.cn/large/00704eQkgy1frnpzcnia1j30c40g20wi.jpg)
 
 ### Info
 
@@ -33,10 +33,13 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - [Cloud Native Python - 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
 - [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
+**![Cloud Native Series 云原生系列书籍](https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg)** 
+
 **Gitbooks**
 
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - Building static website with hugo
+- [envoy](https://servicemesher.github.io/envoy) - Envoy proxy 官方文档中文版
 
 ---
 
@@ -87,6 +90,13 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - [500px](https://500px.com/jimmysongio)
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
-- 微信公众号——云原生应用架构(CloudNativeGo)
 
-![微信公众号-云原生应用架构](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-wechat-public-account.jpg)
+  
+
+<center>微信公众号——云原生应用架构（CloudNativeGo）</center>
+
+![微信公众号-云原生应用架构](https://ws1.sinaimg.cn/large/00704eQkgy1frnpro3wcjj3076076aar.jpg) 
+
+<center>微信公众号——Service Mesh爱好者（ServiceMesher）</center>
+
+![微信公众号 - ServiceMesher Service Mesh 爱好者](https://ws1.sinaimg.cn/large/00704eQkgy1frnpp5hl3tj3076076mxu.jpg)
