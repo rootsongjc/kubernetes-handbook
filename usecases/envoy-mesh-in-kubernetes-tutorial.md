@@ -249,7 +249,7 @@ Kubernetes 中的 DNS 可以发现所有 serivce 的 ClusterIP，但是 DNS 中�
 
 执行下面的命令部署 SDS。
 
-```bassh
+```bash
 kubectl apply -f usersvc-sds
 ```
 
