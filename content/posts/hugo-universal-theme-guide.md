@@ -320,4 +320,4 @@ avatar: "https://ws1.sinaimg.cn/large/00704eQkgy1frmobjwmuoj31z21z61ky.jpg"
 
 ### 其它配置
 
-其它配置都在 `config.toml` 中，请参考[hugo-universal主题模块说明](hugo-universal-templates.md)。
+其它配置都在 `config.toml` 中，请参考[hugo-universal主题模块说明](#hugo-universal主题模块说明)。
