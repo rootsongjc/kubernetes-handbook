@@ -12,7 +12,7 @@
 
 `StorageClass` 对象的名称很重要，用户使用该类来请求一个特定的方法。 当创建 `StorageClass` 对象时，管理员设置名称和其他参数，一旦创建了对象就不能再对其更新。
 
-管理员可以为没有申请绑定到特定 class 的 PVC 指定一个默认的 `StorageClass` ： 更多详情请参阅 [`PersistentVolumeClaim` 章节](https://kubernetes.io/docs/concepts/storage/storage-classes.md#persistentvolumeclaims)。
+管理员可以为没有申请绑定到特定 class 的 PVC 指定一个默认的 `StorageClass` ： 更多详情请参阅 [`PersistentVolumeClaim` 章节](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)。
 
 ```yaml
 kind: StorageClass
@@ -33,25 +33,25 @@ Storage class 有一个分配器，用来决定使用哪个卷插件分配 PV。
 
 | Volume Plugin        | Internal Provisioner | Config Example                           |
 | -------------------- | -------------------- | ---------------------------------------- |
-| AWSElasticBlockStore | ✓                    | [AWS](https://kubernetes.io/docs/concepts/storage/storage-classes.md#aws) |
-| AzureFile            | ✓                    | [Azure File](https://kubernetes.io/docs/concepts/storage/storage-classes.md#azure-file) |
-| AzureDisk            | ✓                    | [Azure Disk](https://kubernetes.io/docs/concepts/storage/storage-classes.md#azure-disk) |
+| AWSElasticBlockStore | ✓                    | [AWS](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws) |
+| AzureFile            | ✓                    | [Azure File](https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file) |
+| AzureDisk            | ✓                    | [Azure Disk](https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-disk) |
 | CephFS               | -                    | -                                        |
-| Cinder               | ✓                    | [OpenStack Cinder](https://kubernetes.io/docs/concepts/storage/storage-classes.md#openstack-cinder) |
+| Cinder               | ✓                    | [OpenStack Cinder](https://kubernetes.io/docs/concepts/storage/storage-classes/#openstack-cinder) |
 | FC                   | -                    | -                                        |
 | FlexVolume           | -                    | -                                        |
 | Flocker              | ✓                    | -                                        |
-| GCEPersistentDisk    | ✓                    | [GCE](https://kubernetes.io/docs/concepts/storage/storage-classes.md#gce) |
-| Glusterfs            | ✓                    | [Glusterfs](https://kubernetes.io/docs/concepts/storage/storage-classes.md#glusterfs) |
+| GCEPersistentDisk    | ✓                    | [GCE](https://kubernetes.io/docs/concepts/storage/storage-classes/#gce) |
+| Glusterfs            | ✓                    | [Glusterfs](https://kubernetes.io/docs/concepts/storage/storage-classes/#glusterfs) |
 | iSCSI                | -                    | -                                        |
 | PhotonPersistentDisk | ✓                    | -                                        |
-| Quobyte              | ✓                    | [Quobyte](https://kubernetes.io/docs/concepts/storage/storage-classes.md#quobyte) |
+| Quobyte              | ✓                    | [Quobyte](https://kubernetes.io/docs/concepts/storage/storage-classes/#quobyte) |
 | NFS                  | -                    | -                                        |
-| RBD                  | ✓                    | [Ceph RBD](https://kubernetes.io/docs/concepts/storage/storage-classes.md#ceph-rbd) |
-| VsphereVolume        | ✓                    | [vSphere](https://kubernetes.io/docs/concepts/storage/storage-classes.md#vsphere) |
-| PortworxVolume       | ✓                    | [Portworx Volume](https://kubernetes.io/docs/concepts/storage/storage-classes.md#portworx-volume) |
-| ScaleIO              | ✓                    | [ScaleIO](https://kubernetes.io/docs/concepts/storage/storage-classes.md#scaleio) |
-| StorageOS            | ✓                    | [StorageOS](https://kubernetes.io/docs/concepts/storage/storage-classes.md#storageos) |
+| RBD                  | ✓                    | [Ceph RBD](https://kubernetes.io/docs/concepts/storage/storage-classes/#ceph-rbd) |
+| VsphereVolume        | ✓                    | [vSphere](https://kubernetes.io/docs/concepts/storage/storage-classes/#vsphere) |
+| PortworxVolume       | ✓                    | [Portworx Volume](https://kubernetes.io/docs/concepts/storage/storage-classes/#portworx-volume) |
+| ScaleIO              | ✓                    | [ScaleIO](https://kubernetes.io/docs/concepts/storage/storage-classes/#scaleio) |
+| StorageOS            | ✓                    | [StorageOS](https://kubernetes.io/docs/concepts/storage/storage-classes/#storageos) |
 
 您不限于指定此处列出的"内置"分配器（其名称前缀为 kubernetes.io 并打包在 Kubernetes 中）。 您还可以运行和指定外部分配器，这些独立的程序遵循由 Kubernetes 定义的 [规范](https://git.k8s.io/community/contributors/design-proposals/storage/volume-provisioning.md)。 外部供应商的作者完全可以自由决定他们的代码保存于何处、打包方式、运行方式、使用的插件（包括Flex）等。 代码仓库 [kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage) 包含一个用于为外部分配器编写功能实现的类库，以及各种社区维护的外部分配器。
 
