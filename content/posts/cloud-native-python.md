@@ -83,3 +83,7 @@ nocomment: true
 ---
 
 致此全书第一遍完整翻译完成，接下来就是要等待编辑的修改后我再对文章进行修正。
+
+本书将于 2018 年 6 月份由**电子工业出版社**出版。
+
+![Cloud Native Python 云原生 Python(宋净超 译)](https://ws1.sinaimg.cn/large/00704eQkgy1fruogrylm6j30gf0lkjxn.jpg)
