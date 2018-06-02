@@ -7,7 +7,7 @@
 本书的主题不仅限于Kubernetes，还包括以下几大主题：
 
 - 云原生应用与微服务架构
-- 将微服务与Service mesh架构的代码级呈现
+- 将微服务与Service Mesh架构
 - Kubernetes与微服务结合实践
 
 起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的kubernetes版本和示例也将随之更新。
