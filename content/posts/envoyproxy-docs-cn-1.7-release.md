@@ -16,7 +16,7 @@ TL;DR——[https://servicemesher.github.io/envoy/](https://servicemesher.github
 
 PDF 下载地址：[servicemesher/envoy](https://github.com/servicemesher/envoy/releases)
 
-![img](https://pic4.zhimg.com/80/v2-d05d08f41279edce334fb74cd447a253_hd.jpg)
+![Envoy中文文档](https://ws1.sinaimg.cn/large/00704eQkgy1frsezb8wzkj31e01tkdqn.jpg)       
 
 这是 Service Mesh 爱好者社群第一次集体活动，该文档基于 Envoy 最新（1.7 版本）官方文档 [https://www.envoyproxy.io/docs/envoy/latest/](https://www.envoyproxy.io/docs/envoy/latest/)。共 120 篇，26 人参与，耗时 13 天，共 65148 个汉字。
 
