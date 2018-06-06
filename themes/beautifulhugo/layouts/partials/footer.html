@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
+        <img src="https://ws1.sinaimg.cn/large/00704eQkly1fs0lebokxaj30a004gq44.jpg">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- if isset $.Site.Author .id }}
               <li>
@@ -26,7 +27,6 @@
           </li>
           {{ end }}
         </ul>
-        <img src="https://ws1.sinaimg.cn/large/00704eQkly1fs0lebokxaj30a004gq44.jpg">
         <p class="credits copyright text-muted">
         &copy;2017-2018
           {{ if .Site.Author.name }}
