@@ -21,7 +21,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/dark-si
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)
   - [TalkingData](http://www.talkingdata.com)
-  - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）current
+  - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）current➡️[招贤纳士](https://mp.weixin.qq.com/s/dIV_dElINMV4I0Ro2GnbOg)
 
 ---
 
