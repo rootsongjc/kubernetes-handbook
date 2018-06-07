@@ -8,9 +8,4 @@ theme: "beautifulhugo"
 metaDataFormat: "yaml"
 subtitle: "I can help you building Cloud Native confidence"
 dateFormat: "January 2, 2006"
-description: "Cloud Native🤘 Big Data"
-algolia:
-  index: "rootsonjgc-hugo"
-  key: "061f6cd08c1f001f39ea2dd918330b58"
-  appID: "X4YB3WOBNV"
 ---
