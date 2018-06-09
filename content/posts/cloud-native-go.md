@@ -10,6 +10,12 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016032
 
 Kevin Hoffman和Dan Nemeth著的《Cloud Native Go - 基于Go和React的web云原生应用构建指南》已由**电子工业出版社**出版。
 
+![Cloud Native Go 宋净超](https://ws1.sinaimg.cn/large/00704eQkgy1fs4t18v1vyj30m80t0tm3.jpg)
+
+**扫码购买**
+
+![Cloud Native Go购买地址](https://ws1.sinaimg.cn/large/00704eQkly1fs1e91nn4pj308c08cmx7.jpg)
+
 ## 简介
 
 Cloud Native Go向开发人员展示如何构建大规模云应用程序，在满足当今客户的强大需求的同时还可以动态扩展来处理几乎任何规模的数据量、流量或用户。
