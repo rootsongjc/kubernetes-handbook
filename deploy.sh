@@ -32,3 +32,6 @@ git commit -m "$msg"
 git push origin master
 
 cd ../
+
+# Update algolia index
+python hugo_algolia.py ALGOLIA_API_KEY="061f6cd08c1f001f39ea2dd918330b58"

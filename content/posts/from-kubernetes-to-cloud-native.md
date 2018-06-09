@@ -6,7 +6,7 @@ draft: false
 description: "本文简要介绍了容器技术发展的路径，为何Kubernetes的出现是容器技术发展到这一步的必然选择，而为何Kuberentes又将成为云原生应用的基石。"
 tags: ["kubernetes","cloud-native"]
 categories: "cloud-native"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20171216017.jpg", desc: "On the meetup - Service Mesh is comming@Beijing Dec 16,2017"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4rqxpo26j30ti0aqwxy.jpg", desc: "On the meetup - Service Mesh is comming@Beijing Dec 16,2017"}]
 ---
 
 **从Kubernetes到Cloud Native——云原生应用之路**，这是我最近在 [ArchSummit2017北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云&TalkingData合办的Service Mesh is comming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题。
@@ -19,13 +19,13 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017121
 
 > 容器——Cloud Native的基石
 
-![Cloud Native容器实验室](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-container-lab.jpg)
+![Cloud Native容器实验室](https://ws1.sinaimg.cn/large/00704eQkly1fs4rrgmbyej31m012o4qq.jpg)
 
 容器最初是通过开发者工具而流行，可以使用它来做隔离的开发测试环境和持续集成环境，这些都是因为容器轻量级，易于配置和使用带来的优势，docker和docker-compose这样的工具极大的方便的了应用开发环境的搭建，开发者就像是化学家一样在其中小心翼翼的进行各种调试和开发。
 
 随着容器的在开发者中的普及，已经大家对CI流程的熟悉，容器周边的各种工具蓬勃发展，俨然形成了一个小生态，在2016年达到顶峰，下面这张是我画的容器生态图：
 
-![容器生态图 Container ecosystem](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/container-ecosystem.png)
+![容器生态图 Container ecosystem](https://ws1.sinaimg.cn/large/00704eQkly1fs4rs0crhxj32fa3h64qp.jpg)
 
 该生态涵盖了容器应用中从镜像仓库、服务编排、安全管理、持续集成与发布、存储和网络管理等各个方面，随着在单主机中运行容器的成熟，集群管理和容器编排成为容器技术亟待解决的问题。譬如化学家在实验室中研究出来的新产品，如何推向市场，进行大规模生产，成了新的议题。
 
@@ -33,7 +33,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017121
 
 > Kubernetes——让容器应用进入大规模工业生产。
 
-![Cloud Native油井](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-oil-well.jpg)
+![Cloud Native油井](https://ws1.sinaimg.cn/large/00704eQkly1fs4rsfbmv7j31ow0y8qv5.jpg)
 
 **Kubernetes是容器编排系统的事实标准**
 
@@ -41,27 +41,27 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017121
 
 下面这张图是Kubernetes的架构图（图片来自网络），其中显示了组件之间交互的接口CNI、CRI、OCI等，这些将Kubernetes与某款具体产品解耦，给用户最大的定制程度，使得Kubernetes有机会成为跨云的真正的云原生应用的操作系统。
 
-![Kuberentes架构](https://jimmysong.io/kubernetes-handbook/images/kubernetes-high-level-component-archtecture.jpg)
+![Kuberentes架构](https://ws1.sinaimg.cn/large/00704eQkgy1fs4rterd8aj31fm0vawyz.jpg)
 
 随着Kubernetes的日趋成熟，“Kubernetes is becoming boring”，基于该“操作系统”之上构建的适用于不同场景的应用将成为新的发展方向，就像我们将石油开采出来后，提炼出汽油、柴油、沥青等等，所有的材料都将找到自己的用途，Kubernetes也是，毕竟我们谁也不是为了部署和管理容器而用Kubernetes，承载其上的应用才是价值之所在。
 
 **云原生的核心目标**
 
-![Cloud Native Core target](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-core-target.jpg)
+![Cloud Native Core target](https://ws1.sinaimg.cn/large/00704eQkly1fs4rtwuvdtj30r30lvqdo.jpg)
 
 云已经可以为我们提供稳定可以唾手可得的基础设施，但是业务上云成了一个难题，Kubernetes的出现与其说是从最初的容器编排解决方案，倒不如说是为了解决应用上云（即云原生应用）这个难题。
 
 包括微服务和FaaS/Serverless架构，都可以作为云原生应用的架构。
 
-![FaaS Landscape](https://jimmysong.io/kubernetes-handbook/images/redpoint-faas-landscape.jpg)
+![FaaS Landscape](https://ws1.sinaimg.cn/large/00704eQkly1fs4ruiu9gxj30zk0k0dto.jpg)
 
 但就2017年为止，kubernetes的主要使用场景也主要作为应用开发测试环境、CI/CD和运行Web应用这几个领域，如下图[TheNewStack](http://thenewstack.io)的Kubernetes生态状况调查报告所示。
 
-![Workloads running on Kubernetes](https://res.cloudinary.com/jimmysong/image/upload/images/workloads-running-on-kubernetes-2017-thenewstack.jpg)
+![Workloads running on Kubernetes](https://ws1.sinaimg.cn/large/00704eQkly1fs4ruydq43j31um186e81.jpg)
 
 另外基于Kubernetes的构建PaaS平台和Serverless也处于爆发的准备的阶段，如下图中Gartner的报告中所示：
 
-![Gartner技术爆发趋势图2017](https://res.cloudinary.com/jimmysong/image/upload/images/gartner-hype-cycle-for-emerging-technologies-2017.jpg)
+![Gartner技术爆发趋势图2017](https://ws1.sinaimg.cn/large/00704eQkly1fs4rvg9u6mj315o0z8h1p.jpg)
 
 当前各大公有云如Google GKE、微软Azure ACS、亚马逊EKS（2018年上线）、VmWare、Pivotal、腾讯云、阿里云等都提供了Kuberentes服务。
 
@@ -71,7 +71,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017121
 
 下图是[Bilgin Ibryam](https://developers.redhat.com/blog/author/bibryam/)给出的微服务中应该关心的主题，图片来自[RedHat Developers](https://developers.redhat.com/blog/2016/12/09/spring-cloud-for-microservices-compared-to-kubernetes/)。
 
-![Microservices concerns](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/microservices-concerns.jpg)
+![Microservices concerns](https://ws1.sinaimg.cn/large/00704eQkly1fs4rvwbdhqj31am18u1kx.jpg)
 
 微服务带给我们很多开发和部署上的灵活性和技术多样性，但是也增加了服务调用的开销、分布式系统管理、调试与服务治理方面的难题。
 
@@ -85,7 +85,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2017121
 
 > DevOps——通向云原生的云梯
 
-![Cloud Native Pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-natvie-pipeline.jpg)
+![Cloud Native Pipeline](https://ws1.sinaimg.cn/large/00704eQkly1fs4rwg2lrsj31ta10q7wi.jpg)
 
 CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
@@ -99,7 +99,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 [CNCF](https://cncf.io)所托管的应用（目前已达12个），即朝着这个目标发展，其公布的[Cloud Native Landscape](https://github.com/cncf/landscape)，给出了云原生生态的参考体系。
 
-![Cloud Native Landscape v1.0](https://raw.githubusercontent.com/cncf/landscape/master/landscape/CloudNativeLandscape_v1.0.jpg)
+![Cloud Native Landscape v1.0](https://ws1.sinaimg.cn/large/00704eQkgy1fs4rx0ej8nj33pc230u0z.jpg)
 
 **使用Kubernetes构建云原生应用**
 
@@ -126,11 +126,11 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 如果落实的具体的工具，请看下图，使用Kubernetes构建云原生架构：
 
-![Building a Cloud Native Architecture with Kubernetes followed 12 factor app](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/building-cloud-native-architecture-with-kubernetes.png)
+![Building a Cloud Native Architecture with Kubernetes followed 12 factor app](https://ws1.sinaimg.cn/large/00704eQkgy1fs4rxl0qdgj31pc12kk95.jpg)
 
 结合这12因素对开发或者改造后的应用适合部署到Kubernetes之上，基本流程如下图所示：
 
-![Creating Kubernetes native app](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/creating-kubernetes-native-app.jpg)
+![Creating Kubernetes native app](https://ws1.sinaimg.cn/large/00704eQkgy1fs4rxzyradj321e1861eh.jpg)
 
 **迁移到云架构**
 
@@ -140,7 +140,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 > Services for show, meshes for a pro.
 
-![Service Mesh中国社区slogan](https://res.cloudinary.com/jimmysong/image/upload/images/service-meshes-pro.jpg)
+![Service Mesh中国社区slogan](https://ws1.sinaimg.cn/large/00704eQkgy1fs4ryjdaeyj30no0dcdxg.jpg)
 
 Kubernetes中的应用将作为微服务运行，但是Kuberentes本身并没有给出微服务治理的解决方案，比如服务的限流、熔断、良好的灰度发布支持等。
 
@@ -182,7 +182,7 @@ Linkerd和Istio是最早开源的Service Mesh，它们都支持Kubernetes，下�
 
 关于两者的架构可以参考各自的官方文档，我只从其在kubernetes上的部署结构来说明其区别。
 
-![istio vs linkerd](https://jimmysong.io/kubernetes-handbook/images/istio-vs-linkerd.jpg)
+![istio vs linkerd](https://ws1.sinaimg.cn/large/00704eQkly1fs4s3dolzfj30e30i4mzj.jpg)
 
 Istio的组件复杂，可以分别部署的kubernetes集群中，但是作为核心路由组件**Envoy**是以**Sidecar**形式与应用运行在同一个Pod中的，所有进入该Pod中的流量都需要先经过Envoy。
 
@@ -194,13 +194,13 @@ Linker的部署十分简单，本身就是一个镜像，使用Kubernetes的[Dae
 
 > Cloud Native的大规模工业生产
 
-![Cloud Native factory](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-factory.jpg)
+![Cloud Native factory](https://ws1.sinaimg.cn/large/00704eQkly1fs4rz1cj5gj31la0z0kjm.jpg)
 
 **GitOps**
 
 给开发者带来最大配置和上线的灵活性，践行DevOps流程，改善研发效率，下图这样的情况将更少发生。
 
-![Deployment pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/deployment-pipeline-comic.jpg)
+![Deployment pipeline](https://ws1.sinaimg.cn/large/00704eQkly1fs4s1aw5a0j318g1ewnoy.jpg)
 
 我们知道Kubernetes中的所有应用的部署都是基于YAML文件的，这实际上就是一种**Infrastructure as code**，完全可以通过Git来管控基础设施和部署环境的变更。
 
@@ -265,11 +265,11 @@ Spark现在已经非官方支持了基于Kuberentes的原生调度，其具有�
 
 下图是我们刚调研准备使用Kubernetes时候的调研方案选择。
 
-![Kubernetes solutions](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-solutions-choices.jpg)
+![Kubernetes solutions](https://ws1.sinaimg.cn/large/00704eQkly1fs4s26okfoj31fk1i8e81.jpg)
 
 对于一个初次接触Kubernetes的人来说，看到这样一个庞大的架构选型时会望而生畏，但是Kubernetes的开源社区帮助了我们很多。
 
-![Kubernetes SIG](https://raw.githubusercontent.com/rootsongjc/kubernetes-handbook/master/images/kubernetes-sigs.jpg)
+![Kubernetes SIG](https://ws1.sinaimg.cn/large/00704eQkly1fs4s2ltqvej31nm1fwhdt.jpg)
 
 我组建了**K8S&Cloud Native实战**微信群，参与了k8smeetup、KEUC2017、[kubernetes-docs-cn](https://github.com/kubernetes/kubernetes-docs-cn) Kubernetes官方中文文档项目。
 
