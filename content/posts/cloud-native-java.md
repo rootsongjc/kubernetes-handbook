@@ -1,12 +1,12 @@
 ---
-title: "Cloud Native Java"
+title: "Cloud Native Java（云原生Java）"
 subtitle: "使用Java构建云原生应用"
 date: 2018-02-23T18:25:37+08:00
 draft: false
 tags: ["cloud-native","book"]
 categories: "cloud-native"
 description: "Cloud Native Java中文版（译者：张若飞、宋净超）原书目录和翻译日志"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20180218066.jpg", desc: "Swan lake in Rongcheng|Feb 18,2018"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4rlgav4pj30ls06ygsa.jpg", desc: "Swan lake in Rongcheng|Feb 18,2018"}]
 postmeta: false
 nocomment: true
 ---
@@ -15,6 +15,8 @@ nocomment: true
 
 - [Cloud Native Go](https://jimmysong.io/cloud-native-go/)
 - [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python/)
+
+![Cloud Native Java 云原生 Java 宋净超 张若飞 译](https://ws1.sinaimg.cn/large/00704eQkgy1fs4ro65klwj30al0dwjvm.jpg)
 
 至今网上都还没有该书的详细目录，翻译过程中我顺便整理了下该书的详细目录信息，精确到section，以供大家参考：
 

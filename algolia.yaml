@@ -1,9 +1,9 @@
 ---
 baseurl: "https://jimmysong.io/"
-DefaultContentLanguage: "zh-cn"
+DefaultContentLanguage: "zh"
 hasCJKLanguage: true
-languageCode: "zh-cn"
-title: "Jimmy Song" 
+languageCode: "zh"
+title: "Jimmy Song"
 theme: "beautifulhugo"
 metaDataFormat: "yaml"
 subtitle: "I can help you building Cloud Native confidence"
