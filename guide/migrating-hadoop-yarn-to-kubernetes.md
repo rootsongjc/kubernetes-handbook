@@ -4,6 +4,10 @@
 
 本文旨在说明如何将已有的应用程序尤其是传统的分布式应用程序迁移到 kubernetes 中。如果该类应用程序符合云原生应用规范（如12因素法则）的话，那么迁移会比较顺利，否则会遇到一些麻烦甚至是阻碍。具体请参考 [迁移至云原生应用架构](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)。
 
+下图是将单体应用迁移到云原生的步骤。
+
+![将单体应用迁移到云原生(图片来自DevOpsDay Toronto)](../images/migrating-monolith-to-kubernetes.jpg)
+
 接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去，代码和配置文件可以在 [这里](https://github.com/rootsongjc/kube-yarn) 找到（本文中加入 Spark 的配置，代码中并没有包含，读者可以自己配置）。
 
 下图即整个架构的示意图，代码和详细配置文件请参考 [kube-yarn](https://github.com/rootsongjc/kube-yarn)（不包含 ingress、spark 配置），所有的进程管理和容器扩容直接使用 Makefile。
