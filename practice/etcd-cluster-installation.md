@@ -110,6 +110,14 @@ systemctl status etcd
 
 在所有的 kubernetes master 节点重复上面的步骤，直到所有机器的 etcd 服务都已启动。
 
+注意：如果日志中出现连接异常信息，请确认所有节点防火墙是否开放2379,2380端口。
+以centos7为例：
+``` bash
+firewall-cmd --zone=public --add-port=2380/tcp --permanent
+firewall-cmd --zone=public --add-port=2379/tcp --permanent
+firewall-cmd --reload
+```
+
 ## 验证服务
 
 在任一 kubernetes master 机器上执行如下命令：
