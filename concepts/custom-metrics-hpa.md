@@ -62,12 +62,8 @@ $ kubectl get --raw=apis/custom-metrics.metrics.k8s.io/v1alpha1
 
 ## 参考
 
-[1.6以前版本的kubernetes中开启自定义HPA](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)
-
-[1.7版本的kubernetes中启用自定义HPA](https://docs.bitnami.com/kubernetes/how-to/configure-autoscaling-custom-metrics/)
-
-[Horizontal Pod Autoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
-
-[Kubernetes 1.8: Now with 100% Daily Value of Custom Metrics](https://blog.openshift.com/kubernetes-1-8-now-custom-metrics/)
-
-[Arbitrary/Custom Metrics in the Horizontal Pod Autoscaler#117](https://github.com/kubernetes/features/issues/117)
+- [1.6以前版本的kubernetes中开启自定义HPA](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)
+- [1.7版本的kubernetes中启用自定义HPA](https://docs.bitnami.com/kubernetes/how-to/configure-autoscaling-custom-metrics/)
+- [Horizontal Pod Autoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [Kubernetes 1.8: Now with 100% Daily Value of Custom Metrics](https://blog.openshift.com/kubernetes-1-8-now-custom-metrics/)
+- [Arbitrary/Custom Metrics in the Horizontal Pod Autoscaler#117](https://github.com/kubernetes/features/issues/117)
