@@ -90,21 +90,21 @@ Pod is exposed as a primitive in order to facilitate:
 
 ## Pod的终止
 
-因为Pod作为在集群的节点上运行的进程，所以在不再需要的时候能够优雅的终止掉是十分必要的（比起使用发送KILL信号这种暴力的方式）。用户需要能够放松删除请求，并且知道它们何时会被终止，是否被正确的删除。用户想终止程序时发送删除pod的请求，在pod可以被强制删除前会有一个优雅删除的时间，会发送一个TERM请求到每个容器的主进程。一旦超时，将向主进程发送KILL信号并从API server中删除。如果kubelet或者container manager在等待进程终止的过程中重启，在重启后仍然会重试完整的优雅删除阶段。
+因为Pod作为在集群的节点上运行的进程，所以在不再需要的时候能够优雅的终止掉是十分必要的（比起使用发送KILL信号这种暴力的方式）。用户需要能够放松删除请求，并且知道它们何时会被终止，是否被正确的删除。用户想终止程序时发送删除pod的请求，在pod可以被强制删除前会有一个宽限期，会发送一个TERM请求到每个容器的主进程。一旦超时，将向主进程发送KILL信号并从API server中删除。如果kubelet或者container manager在等待进程终止的过程中重启，在重启后仍然会重试完整的宽限期。
 
 示例流程如下：
 
-1. 用户发送删除pod的命令，默认优雅删除时期是30秒；
-2. 在Pod超过该优雅删除期限后API server就会更新Pod的状态为“dead”；
+1. 用户发送删除pod的命令，默认宽限期是30秒；
+2. 在Pod超过该宽限期后API server就会更新Pod的状态为“dead”；
 3. 在客户端命令行上显示的Pod状态为“terminating”；
 4. 跟第三步同时，当kubelet发现pod被标记为“terminating”状态时，开始停止pod进程：
-   1. 如果在pod中定义了preStop hook，在停止pod前会被调用。如果在优雅删除期限过期后，preStop hook依然在运行，第二步会再增加2秒的优雅时间；
+   1. 如果在pod中定义了preStop hook，在停止pod前会被调用。如果在宽限期过后，preStop hook依然在运行，第二步会再增加2秒的宽限期；
    2. 向Pod中的进程发送TERM信号；
 5. 跟第三步同时，该Pod将从该service的端点列表中删除，不再是replication controller的一部分。关闭的慢的pod将继续处理load balancer转发的流量；
-6. 过了优雅周期后，将向Pod中依然运行的进程发送SIGKILL信号而杀掉进程。
+6. 过了宽限期后，将向Pod中依然运行的进程发送SIGKILL信号而杀掉进程。
 7. Kublete会在API server中完成Pod的的删除，通过将优雅周期设置为0（立即删除）。Pod在API中消失，并且在客户端也不可见。
 
-删除优雅周期默认是30秒。 `kubectl delete`命令支持 `—grace-period=<seconds>` 选项，允许用户设置自己的优雅周期时间。如果设置为0将强制删除pod。在kubectl>=1.5版本的命令中，你必须同时使用 `--force` 和 `--grace-period=0` 来强制删除pod。
+删除宽限期默认是30秒。 `kubectl delete`命令支持 `—grace-period=<seconds>` 选项，允许用户设置自己的宽限期。如果设置为0将强制删除pod。在kubectl>=1.5版本的命令中，你必须同时使用 `--force` 和 `--grace-period=0` 来强制删除pod。
 
 ### 强制删除Pod
 
@@ -114,7 +114,7 @@ Pod的强制删除是通过在集群和etcd中将其定义为删除状态。当�
 
 ## Pod中容器的特权模式
 
-从kubernetes1.1版本开始，pod中的容器就可以开启previleged模式，在容器定义文件的 `SecurityContext` 下使用 `privileged` flag。 这在使用Linux的网络操作和访问设备的能力时是很用的。同时开启的特权模式的Pod中的容器也可以访问到容器外的进程和应用。在不需要修改和重新编译kubelet的情况下就可以使用pod来开发节点的网络和存储插件。
+从kubernetes1.1版本开始，pod中的容器就可以开启previleged模式，在容器定义文件的 `SecurityContext` 下使用 `privileged` flag。 这在使用Linux的网络操作和访问设备的能力时是很有用的。容器内进程可获得近乎等同于容器外进程的权限。在不需要修改和重新编译kubelet的情况下就可以使用pod来开发节点的网络和存储插件。
 
 如果master节点运行的是kuberentes1.1或更高版本，而node节点的版本低于1.1版本，则API server将也可以接受新的特权模式的pod，但是无法启动，pod将处于pending状态。
 
