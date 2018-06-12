@@ -186,6 +186,7 @@ kubectl apply -f addon/istio/
 
 ```bash
 kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
+istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 在您自己的本地主机的`/etc/hosts`文件中增加如下配置项。
@@ -202,9 +203,9 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 | grafana      | http://grafana.istio.jimmysong.io                            |
 | servicegraph | http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
 | tracing      | http://172.17.8.101:$JAEGER_PORT                             |
-| productpage  | http://172.17.8.101:32000/productpage                        |
+| productpage  | http://172.17.8.101:$GATEWAY_PORT/productpage                |
 
-**注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取。
+**注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
