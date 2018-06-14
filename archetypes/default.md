@@ -1,7 +1,10 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ .Date }}
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018040501.jpg", desc: "Flowers|Hangzhou|Apr 5,2018"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fsazo12js7j30xc0c5auf.jpg", desc: "Flowers|Hangzhou|Apr 5,2018"}]
 draft: true
+notoc: true
+tags: [""]
+categories: ["kubernetes"]
 ---
 
