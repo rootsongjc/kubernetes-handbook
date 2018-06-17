@@ -43,7 +43,7 @@ desc = "1st Istio meetup in Beijing GDG"
 [Author]
   name = "Jimmy Song(宋净超)"
   website = "https://jimmysong.io"
-  email = "jimmysong@jimmysong.io"
+  #email = "jimmysong@jimmysong.io"
   facebook = "jimmysongio"
   #googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
   github = "rootsongjc"
@@ -52,7 +52,7 @@ desc = "1st Istio meetup in Beijing GDG"
   #500px = "jimmysongio"
   #medium = "jimmysongio"
   #instagram = "jimmysongio"
-  #weibo = "jimmysongio"
+  weibo = "jimmysongio"
 
 [[menu.main]]
     identifier = "Categories"
@@ -64,7 +64,7 @@ desc = "1st Istio meetup in Beijing GDG"
     name = "kubernetes"
     url = "categories/kubernetes"
     weight = 1
-    
+
 [[menu.main]]
     parent = "Categories"
     name = "Cloud Native"
