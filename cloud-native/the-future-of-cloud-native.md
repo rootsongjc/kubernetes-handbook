@@ -112,7 +112,7 @@ Kubernetes始于12因素应用的PaaS平台，它是微服务的绝佳部署管�
 
 当前出现了一系列的基于Kubernetes的CI/CD工具，如Jenkins-x、Gitkube，它提供了从代码提交、自动编译、打包镜像、配置注入、发布部署到kubernetes平台的一系列自动化流程。
 
-设置出现了像ballerina这样的云原生编程语言，它的出现就是为了解决应用开发到服务集成之间的鸿沟的。它有以下几个特点。
+甚至出现了像ballerina这样的云原生编程语言，它的出现就是为了解决应用开发到服务集成之间的鸿沟的。它有以下几个特点。
 
 ![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5c8bwmtj31ou152qc3.jpg)
 
