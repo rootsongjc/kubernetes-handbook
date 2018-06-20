@@ -1,0 +1,208 @@
+---
+# Source: vistio/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vistio-api-config
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio
+    release: vistio
+data:
+  vistio.yaml: |-
+    clusterLevel:
+    - cluster: istio-mesh
+      maxVolume: 100
+      serviceConnections:
+      - notices:
+        - name: HighErrorRate
+          severityThreshold:
+            error: 0.05
+            warning: 0.01
+          statusType: danger
+          title: '[{{ .value }}] High Error Rate'
+        prometheusURL: http://prometheus.istio-system:9090
+        query: sum(rate(istio_request_count[1m])) by (source_service,destination_service,response_code)
+        source:
+          label: source_service
+        status:
+          dangerRegex: ^5..$
+          label: response_code
+          warningRegex: ^4..$
+        target:
+          label: destination_service
+    globalLevel:
+      clusterConnections:
+      - prometheusURL: http://prometheus.istio-system:9090
+        query: sum(rate(istio_request_count[1m])) by (response_code)
+        source:
+          replacement: Total Mesh Requests
+        status:
+          dangerRegex: ^5..$
+          label: response_code
+          warningRegex: ^4..$
+        target:
+          replacement: istio-mesh
+      maxVolume: 100
+    graphName: Vistio
+    
+---
+# Source: vistio/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: vistio-api
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-api
+    release: vistio
+spec:
+  type: ClusterIP
+  selector:
+    app: vistio-api
+    release: vistio
+  ports:
+    - name: http
+      port: 9091
+      targetPort: 9091
+      protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vistio-web
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-web
+    release: vistio
+spec:
+  type: ClusterIP
+  selector:
+    app: vistio-web
+    release: vistio
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+---
+# Source: vistio/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vistio-web
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-web
+    release: vistio
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vistio-web
+        release: vistio
+    spec:
+      containers:
+        - name: vistio
+          image: "nmnellis/vistio-web:v0.1.0"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: UPDATE_URL
+              value: http://localhost:9091/graph
+            - name: INTERVAL
+              value: "1000"
+            - name: MAX_REPLAY_OFFSET
+              value: "43200"
+          resources:
+            {}
+            
+
+---
+# Source: vistio/templates/statefulset.yaml
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: vistio-api
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-api
+    release: vistio
+spec:
+  replicas: 1
+  serviceName: vistio
+  template:
+    metadata:
+      labels:
+        app: vistio-api
+        release: vistio
+    spec:
+      containers:
+        - name: vistio-api
+          image: nmnellis/vistio-api:v0.1.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - --config.file=/etc/vistio/vistio.yaml
+            - --log.level=info
+            - --storage.path=/var/vistio/data
+            - --storage.retention=24h
+            - --cache.size=100
+            - --retrieval.scrape-interval=10s
+            - --retrieval.scrape-timeout=8s
+            - --api.port=9091
+          ports:
+            - containerPort: 9091
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9091
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9091
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          resources:
+            {}
+            
+          volumeMounts:
+            - name: config
+              mountPath: /etc/vistio
+            - name: vistio-db
+              mountPath: /var/vistio/data
+              subPath: vistio-db
+        - name: reloader
+          image: nghialv2607/k8s-config-reloader:v0.1.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - --config.promviz-reload-url=http://localhost:9091/reload
+            - --config.promviz-config-dir=/etc/vistio
+            - --config.log-level=info
+          resources:
+            limits:
+              cpu: 50m
+              memory: 64Mi
+            requests:
+              cpu: 20m
+              memory: 32Mi
+            
+          volumeMounts:
+            - name: config
+              mountPath: /etc/vistio
+      volumes:
+        - name: config
+          configMap:
+            name: vistio-api-config
+        - name: vistio-db
+          emptyDir: {}
+

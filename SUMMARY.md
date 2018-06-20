@@ -165,6 +165,7 @@
     - [使用Heapster获取集群和对象的metric数据](practice/using-heapster-to-get-object-metrics.md)
   - [Prometheus](practice/prometheus.md)
     - [使用Prometheus监控kubernetes集群](practice/using-prometheus-to-monitor-kuberentes-cluster.md)
+  - [使用Vistio监控Istio服务网格中的流量](practice/vistio-visualize-your-istio-mesh.md)
 - [服务编排管理](practice/services-management-tool.md)
   - [使用Helm管理kubernetes应用](practice/helm.md)
   - [构建私有Chart仓库](practice/create-private-charts-repo.md)
