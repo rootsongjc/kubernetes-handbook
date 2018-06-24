@@ -10,7 +10,9 @@
 - [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 - [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 - [云原生应用之路——从Kubernetes到Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
-- [云原生编程语言Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
+- [云原生编程语言](cloud-native/cloud-native-programming-languages.md)
+  - [云原生编程语言Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
+  - [云原生编程语言Pulumi](cloud-native/cloud-native-programming-language-pulumi.md)
 - [云原生的未来](cloud-native/the-future-of-cloud-native.md)
 
 ### 概念与原理
