@@ -250,7 +250,7 @@ Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载�
 4. Jenkins的CI流水线自动编译代码并打包成docker镜像推送到Harbor镜像仓库
 5. Jenkins的CI流水线中包括了自定义脚本，根据我们已准备好的Kubernetes的YAML模板，将其中的变量替换成用户输入的选项
 6. 生成应用的Kubernetes YAML配置文件
-7. 更新Ingress的配置，根据新部署的应用的名称，在ingress的配置文件中增加一条路由信息
+7. 更新Ingress的配置，根据新部署的应用的名称，在Ingress的配置文件中增加一条路由信息
 8. 更新PowerDNS，向其中插入一条DNS记录，IP地址是边缘节点的IP地址。关于边缘节点，请查看[边缘节点配置](https://jimmysong.io/kubernetes-handbook/practice/edge-node-configuration.html)
 9. Jenkins调用kubernetes的API，部署应用
 
