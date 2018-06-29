@@ -42,7 +42,7 @@
 
 也可以有平台提供以上所有功能，还可以有提供可观测性、分析和扩展应用。
 
-看到这个景观图，大家觉得kubernetes真的还只做了容器编排吗？实际上它是制定了一个标准。就像一个系统一样，所有的应用和插件都是基于它来构建的。
+看到这个景观图，大家觉得Kubernetes真的还只做了容器编排吗？实际上它是制定了一个标准。就像一个系统一样，所有的应用和插件都是基于它来构建的。
 
 ## Kubernetes的现状与未来
 
@@ -54,7 +54,7 @@ Kubernetes发展已经有3年多的时间了，它已经基本成为了容器编
 
 ![KubeVirt架构图](https://ws1.sinaimg.cn/large/00704eQkgy1frr54de5oyj31qw14qn2x.jpg)
 
-我们看到图中有两个是kubernetes原生的组件，API server和kubelet，我们创建了virt-controller就是为了创建CRD的controller，它扩展了kube-controller的功能，用于管理虚拟机的生命周期，同时在每个节点上都用DaemonSet的方式运行一个virt-handler，这个handler是用于创建虚拟机的处理器，每个节点上即可用运行虚拟机也可以运行容器，只要这个节点上有virt-handler就可以运行和调度虚拟机。
+我们看到图中有两个是Kubernetes原生的组件，API server和kubelet，我们创建了virt-controller就是为了创建CRD的controller，它扩展了kube-controller的功能，用于管理虚拟机的生命周期，同时在每个节点上都用DaemonSet的方式运行一个virt-handler，这个handler是用于创建虚拟机的处理器，每个节点上即可用运行虚拟机也可以运行容器，只要这个节点上有virt-handler就可以运行和调度虚拟机。
 
 ### Kubernetes做了什么？
 
@@ -74,7 +74,7 @@ Kubernetes的资源隔离也能保证对集群资源的最大化和最优利用�
 
 Kubernetes中的基本资源类型分成了三类：
 
-- 部署：Deploymnt、StatefulSet、DaemonSet、Job、CronJob
+- 部署：Deploymnt、ReplicaSet、StatefulSet、DaemonSet、Job、CronJob
 - 服务：Service、Ingress
 - 存储：PV、PVC、ConfigMap、Secret
 
@@ -110,7 +110,7 @@ Kubernetes始于12因素应用的PaaS平台，它是微服务的绝佳部署管�
 
 为了实现上述的各种能力，急需解决的就是基于Kubernetes的持续集成和发布问题。
 
-当前出现了一系列的基于Kubernetes的CI/CD工具，如Jenkins-x、Gitkube，它提供了从代码提交、自动编译、打包镜像、配置注入、发布部署到kubernetes平台的一系列自动化流程。
+当前出现了一系列的基于Kubernetes的CI/CD工具，如Jenkins-x、Gitkube，它提供了从代码提交、自动编译、打包镜像、配置注入、发布部署到Kubernetes平台的一系列自动化流程。
 
 甚至出现了像ballerina这样的云原生编程语言，它的出现就是为了解决应用开发到服务集成之间的鸿沟的。它有以下几个特点。
 
@@ -155,7 +155,7 @@ Pilot和控制平面是为了运维人员准备的。
 
 数据平面是为开发人员准备的。
 
-Isito在每个上下游服务之间部署一个Envoy，Envoy中有几个基本的服务发现服务，监听器即Envoy要转发的流量端口，Endpoint是要转发的目的地，Cluster是一些列Endpoint用来做负载均衡，Route是定义各种路由规则，每个Envoy进程里可以设置多个Listener。
+Isito在每个上下游服务之间部署一个Envoy，Envoy中有几个基本的服务发现服务，监听器即Envoy要转发的流量端口，Endpoint是要转发的目的地，Cluster是一系列Endpoint用来做负载均衡，Route是定义各种路由规则，每个Envoy进程里可以设置多个Listener。
 
 ![Envoy proxy架构图](https://ws1.sinaimg.cn/large/00704eQkgy1frr5gloob0j31vi18017p.jpg)
 
