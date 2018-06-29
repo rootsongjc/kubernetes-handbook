@@ -1,6 +1,6 @@
 # Kubernetes与云原生应用概览
 
-几个月前Mesos已经宣布支持kubernetes，而在2017年10月份的DockerCon EU上Docker公司宣布同时官方支持Swarm和Kubernetes容器编排，kubernetes已然成为容器编排调度的标准。
+几个月前Mesos已经宣布支持Kubernetes，而在2017年10月份的DockerCon EU上Docker公司宣布同时官方支持Swarm和Kubernetes容器编排，kubernetes已然成为容器编排调度的标准。
 
 作为全书的开头，首先从历史、生态和应用角度介绍一下kubernetes与云原生应用，深入浅出，高屋建瓴，没有深入到具体细节，主要是为了给初次接触kubernetes的小白扫盲，具体细节请参考链接。
 
@@ -18,9 +18,9 @@
 
 云计算包含的内容十分繁杂，也有很多技术和公司牵强附会说自己是云计算公司，说自己是做云的，实际上可能风马牛不相及。说白了，云计算就是一种配置资源的方式，根据资源配置方式的不同我们可以把云计算从宏观上分为以下三种类型：
 
-- IaaS：这是为了想要建立自己的商业模式并进行自定义的客户，例如亚马逊的EC2、S3存储、Rackspace虚拟机等都是IaaS。
-- PaaS：工具和服务的集合，对于想用它来构建自己的应用程序或者想快速得将应用程序部署到生产环境而不必关心底层硬件的用户和开发者来说是特别有用的，比如Cloud Foundry、Google App Engine、Heroku等。
-- SaaS：终端用户可以直接使用的应用程序。这个就太多，我们生活中用到的很多软件都是SaaS服务，只要基于互联网来提供的服务基本都是SaaS服务，有的服务是免费的，比如Google Docs，还有更多的是根据我们购买的Plan和使用量付费，比如GitHub、各种云存储。
+* IaaS：这是为了想要建立自己的商业模式并进行自定义的客户，例如亚马逊的EC2、S3存储、Rackspace虚拟机等都是IaaS。
+* PaaS：工具和服务的集合，对于想用它来构建自己的应用程序或者想快速得将应用程序部署到生产环境而不必关心底层硬件的用户和开发者来说是特别有用的，比如Cloud Foundry、Google App Engine、Heroku等。
+* SaaS：终端用户可以直接使用的应用程序。这个就太多，我们生活中用到的很多软件都是SaaS服务，只要基于互联网来提供的服务基本都是SaaS服务，有的服务是免费的，比如Google Docs，还有更多的是根据我们购买的Plan和使用量付费，比如GitHub、各种云存储。
 
 ### 微服务介绍
 
@@ -46,12 +46,12 @@
 
 综上所述，云原生应用应该具备以下几个关键词：
 
-- 敏捷
-- 可靠
-- 高弹性
-- 易扩展
-- 故障隔离保护
-- 不中断业务持续更新
+* 敏捷
+* 可靠
+* 高弹性
+* 易扩展
+* 故障隔离保护
+* 不中断业务持续更新
 
 以上特性也是云原生区别于传统云应用的优势特点。
 
@@ -129,25 +129,25 @@ Kuberentes可以说是乘着docker和微服务的东风，一经推出便迅速�
 
 **API优先**
 
-- 服务间的合约
-- 团队协作的规约
-- 文档化、规范化
-- RESTful或RPC
+* 服务间的合约
+* 团队协作的规约
+* 文档化、规范化
+* RESTful或RPC
 
 **监控**
 
-- 实时监控远程应用
-- 应用性能监控（APM）
-- 应用健康监控
-- 系统日志
-- 不建议在线Debug
+* 实时监控远程应用
+* 应用性能监控（APM）
+* 应用健康监控
+* 系统日志
+* 不建议在线Debug
 
 **认证授权**
 
-- 不要等最后才去考虑应用的安全性
-- 详细设计、明确声明、文档化
-- Bearer token、OAuth、OIDC认证
-- 操作审计
+* 不要等最后才去考虑应用的安全性
+* 详细设计、明确声明、文档化
+* Bearer token、OAuth、OIDC认证
+* 操作审计
 
 详见[High Level Cloud Native From Kevin Hoffman](https://jimmysong.io/posts/high-level-cloud-native-from-kevin-hoffman/)。
 
@@ -165,18 +165,18 @@ Kubernetes通过声明式配置，真正让开发人员能够理解应用的状�
 
 Kubernetes提供了多种资源对象，用户可以根据自己应用的特性加以选择。这些对象有：
 
-| 类别   | 名称                                       |
-| :--- | ---------------------------------------- |
+| 类别 | 名称 |
+| :--- | --- |
 | 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling |
 | 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、ThirdPartyResource、   ServiceAccount |
-| 存储对象 | Volume、Persistent Volume                 |
+| 存储对象 | Volume、Persistent Volume |
 | 策略对象 | SecurityContext、ResourceQuota、LimitRange |
 
-在 Kubernetes 系统中，*Kubernetes 对象* 是持久化的条目。Kubernetes 使用这些条目去表示整个集群的状态。特别地，它们描述了如下信息：
+在 Kubernetes 系统中，_Kubernetes 对象_ 是持久化的条目。Kubernetes 使用这些条目去表示整个集群的状态。特别地，它们描述了如下信息：
 
-- 什么容器化应用在运行（以及在哪个 Node 上）
-- 可以被应用使用的资源
-- 关于应用如何表现的策略，比如重启策略、升级策略，以及容错策略
+* 什么容器化应用在运行（以及在哪个 Node 上）
+* 可以被应用使用的资源
+* 关于应用如何表现的策略，比如重启策略、升级策略，以及容错策略
 
 Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernetes 系统将持续工作以确保对象存在。通过创建对象，可以有效地告知 Kubernetes 系统，所需要的集群工作负载看起来是什么样子的，这就是 Kubernetes 集群的 **期望状态**。
 
@@ -186,8 +186,8 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 两层的资源限制与配置
 
-- Pod级别，最小的资源调度单位
-- Namespace级别，限制资源配额和每个Pod的资源使用区间
+* Pod级别，最小的资源调度单位
+* Namespace级别，限制资源配额和每个Pod的资源使用区间
 
 请参考[Kubernetes中的ResourceQuota和LimitRange配置资源限额](https://jimmysong.io/posts/kubernetes-resourcequota-limitrange-management/)
 
@@ -203,15 +203,15 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 **集群详情**
 
-- Kubernetes 1.6.0
-- Docker 1.12.5（使用yum安装）
-- Etcd 3.1.5
-- Flanneld 0.7 vxlan 网络
-- TLS 认证通信 (所有组件，如 etcd、kubernetes master 和 node)
-- RBAC 授权
-- kublet TLS BootStrapping
-- kubedns、dashboard、heapster(influxdb、grafana)、EFK(elasticsearch、fluentd、kibana) 集群插件
-- 私有docker镜像仓库[harbor](https://github.com/vmware/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
+* Kubernetes 1.6.0
+* Docker 1.12.5（使用yum安装）
+* Etcd 3.1.5
+* Flanneld 0.7 vxlan 网络
+* TLS 认证通信 \(所有组件，如 etcd、kubernetes master 和 node\)
+* RBAC 授权
+* kublet TLS BootStrapping
+* kubedns、dashboard、heapster\(influxdb、grafana\)、EFK\(elasticsearch、fluentd、kibana\) 集群插件
+* 私有docker镜像仓库[harbor](https://github.com/vmware/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
 
 **步骤介绍**
 
@@ -231,10 +231,10 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载均衡机制，提供了Service资源，并通过kube-proxy配合cloud provider来适应不同的应用场景。随着kubernetes用户的激增，用户场景的不断丰富，又产生了一些新的负载均衡机制。目前，kubernetes中的负载均衡大致可以分为以下几种机制，每种机制都有其特定的应用场景：
 
-- **Service**：直接用Service提供cluster内部的负载均衡，并借助cloud provider提供的LB提供外部访问
-- **Ingress**：还是用Service提供cluster内部的负载均衡，但是通过自定义LB提供外部访问
-- **Service Load Balancer**：把load balancer直接跑在容器中，实现Bare Metal的Service Load Balancer
-- **Custom Load Balancer**：自定义负载均衡，并替代kube-proxy，一般在物理部署Kubernetes时使用，方便接入公司已有的外部服务
+* **Service**：直接用Service提供cluster内部的负载均衡，并借助cloud provider提供的LB提供外部访问
+* **Ingress**：还是用Service提供cluster内部的负载均衡，但是通过自定义LB提供外部访问
+* **Service Load Balancer**：把load balancer直接跑在容器中，实现Bare Metal的Service Load Balancer
+* **Custom Load Balancer**：自定义负载均衡，并替代kube-proxy，一般在物理部署Kubernetes时使用，方便接入公司已有的外部服务
 
 详见[Kubernetes Handbook - 服务发现与负载均衡](https://jimmysong.io/kubernetes-handbook/practice/service-discovery-and-loadbalancing.html)。
 
@@ -266,9 +266,9 @@ Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载�
 
 Kubernetes是一个多租户的云平台，因此必须对用户的权限加以限制，对用户空间进行隔离。Kubernetes中的隔离主要包括这几种：
 
-- 网络隔离：需要使用网络插件，比如[calico](https://www.projectcalico.org/)。
-- 资源隔离：kubernetes原生支持资源隔离，pod就是资源就是隔离和调度的最小单位，同时使用[namespace](https://jimmysong.io/kubernetes-handbook/concepts/namespace.html)限制用户空间和资源限额。
-- 身份隔离：使用[RBAC-基于角色的访问控制](https://jimmysong.io/kubernetes-handbook/guide/rbac.html)，多租户的身份认证和权限控制。
+* 网络隔离：需要使用网络插件，比如[calico](https://www.projectcalico.org/)。
+* 资源隔离：kubernetes原生支持资源隔离，pod就是资源就是隔离和调度的最小单位，同时使用[namespace](https://jimmysong.io/kubernetes-handbook/concepts/namespace.html)限制用户空间和资源限额。
+* 身份隔离：使用[RBAC-基于角色的访问控制](https://jimmysong.io/kubernetes-handbook/guide/rbac.html)，多租户的身份认证和权限控制。
 
 ## 如何开发Kubernetes原生应用步骤介绍
 
@@ -285,16 +285,14 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 我写了两个示例用于演示，开发部署一个伪造的 metric 并显示在 web 页面上，包括两个service：
 
-- [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
-- [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
+* [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，发送http请求，获取json返回值
+* [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控数据并绘图，访问浏览器获取图表
 
 **定义API生成API文档**
 
 使用`API blueprint`格式，定义API文档，格式类似于markdown，再使用[aglio](https://github.com/danielgtaylor/aglio)生成HTML文档。
 
 ![API文档](../images/k8s-app-monitor-test-api-doc.jpg)
-
-
 
 详见：[如何开发部署kubernetes native应用](https://jimmysong.io/posts/creating-cloud-native-app-with-kubernetes/)。
 
@@ -310,11 +308,11 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 主要讨论的应用程序架构包括：
 
-- 十二因素应用程序：云原生应用程序架构模式的集合
-- 微服务：独立部署的服务，只做一件事情
-- 自助服务的敏捷基础设施：快速，可重复和一致地提供应用环境和后台服务的平台
-- 基于API的协作：发布和版本化的API，允许在云原生应用程序架构中的服务之间进行交互
-- 抗压性：根据压力变强的系统
+* 十二因素应用程序：云原生应用程序架构模式的集合
+* 微服务：独立部署的服务，只做一件事情
+* 自助服务的敏捷基础设施：快速，可重复和一致地提供应用环境和后台服务的平台
+* 基于API的协作：发布和版本化的API，允许在云原生应用程序架构中的服务之间进行交互
+* 抗压性：根据压力变强的系统
 
 详见：[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)
 
@@ -339,8 +337,8 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 Service mesh现在一般被翻译作服务网格，目前主流的Service mesh有如下两款：
 
-- [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档中文版](http://istio.doczh.cn/)
-- [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
+* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档中文版](http://istio.doczh.cn/)
+* [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
 
 ### 什么是Service mesh
 
@@ -354,8 +352,8 @@ Service mesh现在一般被翻译作服务网格，目前主流的Service mesh�
 
 两款Service mesh各有千秋，我分别写了他们的使用案例指南：
 
-- [微服务管理框架service mesh——Linkerd安装试用笔记](https://jimmysong.io/posts/linkerd-user-guide/)
-- [微服务管理框架service mesh——Istio安装试用笔记](https://jimmysong.io/posts/istio-installation/)
+* [微服务管理框架service mesh——Linkerd安装试用笔记](https://jimmysong.io/posts/linkerd-user-guide/)
+* [微服务管理框架service mesh——Istio安装试用笔记](https://jimmysong.io/posts/istio-installation/)
 
 更多关于 Service Mesh 的内容请访问 [Service Mesh 中文网](http://www.servicemesh.cn)。
 
@@ -410,7 +408,7 @@ Kubernetes全局监控图2
 
 ### Spark on Kubernetes
 
-TL;DR https://jimmysong.io/spark-on-k8s
+TL;DR [https://jimmysong.io/spark-on-k8s](https://jimmysong.io/spark-on-k8s)
 
 Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes原生调度，详见[运行支持kubernetes原生调度的spark程序-Spark on Kubernetes](https://jimmysong.io/posts/running-spark-with-kubernetes-native-scheduler/)。
 
@@ -470,7 +468,10 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 
 ## 参考
 
-- [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
-- [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
-- [Cloud Native Python - 将由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
-- [Istio Service Mesh 中文文档](http://istio.doczh.cn/)
+* [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
+* [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
+* [Cloud Native Python - 将由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
+* [Istio Service Mesh 中文文档](http://istio.doczh.cn/)
+
+
+
