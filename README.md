@@ -10,7 +10,7 @@
 - 将微服务与Service Mesh架构
 - Kubernetes与微服务结合实践
 
-起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的kubernetes版本和示例也将随之更新。
+起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
 
 GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
 
