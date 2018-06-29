@@ -83,11 +83,11 @@ Kuberentes可以说是乘着Docker和微服务的东风，一经推出便迅速�
 
 **2.依赖**
 
-显式得声明代码中的依赖，使用软件包管理工具声明，比如Go中的Glide。
+显式的声明代码中的依赖，使用软件包管理工具声明，比如Go中的Glide。
 
 **3.配置**
 
-将配置与代码分离，应用部署到kubernetes中可以使用容器的环境变量或ConfigMap挂载到容器中。
+将配置与代码分离，应用部署到Kubernetes中可以使用容器的环境变量或ConfigMap挂载到容器中。
 
 **4.后端服务**
 
@@ -103,7 +103,7 @@ Kuberentes可以说是乘着Docker和微服务的东风，一经推出便迅速�
 
 **7.端口绑定**
 
-在kubernetes中每个Pod都有独立的IP，每个运行在Pod中的应用不必关心端口是否重复，只需在service中指定端口，集群内的service通过配置互相发现。
+在Kubernetes中每个Pod都有独立的IP，每个运行在Pod中的应用不必关心端口是否重复，只需在service中指定端口，集群内的service通过配置互相发现。
 
 **8.并发**
 
@@ -111,11 +111,11 @@ Kuberentes可以说是乘着Docker和微服务的东风，一经推出便迅速�
 
 **9.易处理**
 
-快速启动和优雅终止可最大化健壮性，kuberentes优秀的[Pod生存周期控制](https://jimmysong.io/posts/pod-lifecycle/)。
+快速启动和优雅终止可最大化健壮性，Kuberentes优秀的[Pod生存周期控制](https://jimmysong.io/posts/pod-lifecycle/)。
 
 **10.开发环境与线上环境等价**
 
-在kubernetes中可以创建多个namespace，使用相同的镜像可以很方便的复制一套环境出来，镜像的使用可以很方便的部署一个后端服务。
+在Kubernetes中可以创建多个namespace，使用相同的镜像可以很方便的复制一套环境出来，镜像的使用可以很方便的部署一个后端服务。
 
 **11.日志**
 
@@ -153,7 +153,7 @@ Kuberentes可以说是乘着Docker和微服务的东风，一经推出便迅速�
 
 ## Kubernetes中的资源管理与容器设计模式
 
-Kubernetes通过声明式配置，真正让开发人员能够理解应用的状态，并通过同一份配置可以立马启动一个一模一样的环境，大大提高了应用开发和部署的效率，其中kubernetes设计的多种资源类型可以帮助我们定义应用的运行状态，并使用资源配置来细粒度得明确限制应用的资源使用。
+Kubernetes通过声明式配置，真正让开发人员能够理解应用的状态，并通过同一份配置可以立马启动一个一模一样的环境，大大提高了应用开发和部署的效率，其中Kubernetes设计的多种资源类型可以帮助我们定义应用的运行状态，并使用资源配置来细粒度的明确限制应用的资源使用。
 
 而容器生态的成熟是 Kubernetes 诞生的前提，在谈到容器的设计模式之前我们先来了解下容器生态，请看下图：
 
@@ -168,7 +168,7 @@ Kubernetes提供了多种资源对象，用户可以根据自己应用的特性�
 | 类别 | 名称 |
 | :--- | --- |
 | 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling |
-| 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、ThirdPartyResource、   ServiceAccount |
+| 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、CustomResourceDefinition、   ServiceAccount |
 | 存储对象 | Volume、Persistent Volume |
 | 策略对象 | SecurityContext、ResourceQuota、LimitRange |
 
