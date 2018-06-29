@@ -28,7 +28,7 @@
 
 要想了解微服务的详细内容推荐阅读《微服务设计》（Sam Newman著），我写过这本书的读书笔记 - [微服务设计读书笔记](https://jimmysong.io/posts/microservice-reading-notes/)。
 
-下文中会谈到kubernetes与微服务的关系，其中kubernetes的service天生就适合于微服务。
+下文中会谈到Kubernetes与微服务的关系，其中Kubernetes的service天生就适合于微服务。
 
 ### 云原生概念介绍
 
