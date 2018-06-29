@@ -247,7 +247,7 @@ Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载�
 1. 用户向Gitlab提交代码，代码中必须包含`Dockerfile`
 2. 将代码提交到远程仓库
 3. 用户在发布应用时需要填写git仓库地址和分支、服务类型、服务名称、资源数量、实例个数，确定后触发Jenkins自动构建
-4. Jenkins的CI流水线自动编译代码并打包成docker镜像推送到Harbor镜像仓库
+4. Jenkins的CI流水线自动编译代码并打包成Docker镜像推送到Harbor镜像仓库
 5. Jenkins的CI流水线中包括了自定义脚本，根据我们已准备好的Kubernetes的YAML模板，将其中的变量替换成用户输入的选项
 6. 生成应用的Kubernetes YAML配置文件
 7. 更新Ingress的配置，根据新部署的应用的名称，在Ingress的配置文件中增加一条路由信息
