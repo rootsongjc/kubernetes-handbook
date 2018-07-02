@@ -240,6 +240,7 @@
   * [Kubernetes1.8更新日志](appendix/kubernetes-1.8-changelog.md)
   * [Kubernetes1.9更新日志](appendix/kubernetes-1.9-changelog.md)
   * [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
+  * [Kubernetes1.11更新日志](appendix/kubernetes-1.11-changelog.md)
 * [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   * [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
