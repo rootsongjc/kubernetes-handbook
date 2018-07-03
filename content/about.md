@@ -97,4 +97,4 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 
 <center>微信公众号——Service Mesh爱好者（ServiceMesher）</center>
 
-![微信公众号 - ServiceMesher Service Mesh 爱好者](https://ws1.sinaimg.cn/large/00704eQkgy1frnpp5hl3tj3076076mxu.jpg)
+![微信公众号 - ServiceMesher Service Mesh 爱好者](https://ws1.sinaimg.cn/large/00704eQkly1fswhfttyooj3076076q3r.jpg)
