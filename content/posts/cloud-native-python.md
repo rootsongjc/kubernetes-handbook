@@ -1,8 +1,8 @@
 ---
 date: "2017-08-15T22:58:37+08:00"
 draft: false
-description: "Cloud Native Python - 使用python和react构建云原生应用"
-title: "Cloud Native Python"
+description: "Cloud Native Python 中文版 - 使用python和react构建云原生应用"
+title: "Cloud Native Python中文版（Python云原生）"
 subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
 tags: ["cloud-native","book","python","microservices"]

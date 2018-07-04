@@ -1,6 +1,6 @@
 ---
-title: "Cloud Native Java（云原生Java）"
-subtitle: "使用Java构建云原生应用"
+title: "Cloud Native Java中文版（云原生Java）"
+subtitle: "Josh Long & Kenny Bastani著，张若飞 宋净超译 "
 date: 2018-02-23T18:25:37+08:00
 draft: false
 tags: ["cloud-native","book"]
@@ -13,586 +13,55 @@ nocomment: true
 
 这是我翻译的第三本Cloud Native技术书，前两本分别是：
 
-- [Cloud Native Go](https://jimmysong.io/cloud-native-go/)
-- [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python/)
+- [Cloud Native Go中文版](https://jimmysong.io/cloud-native-go/)
+- [Cloud Native Python中文版](https://jimmysong.io/posts/cloud-native-python/)
 
-![Cloud Native Java 云原生 Java 宋净超 张若飞 译](https://ws1.sinaimg.cn/large/00704eQkgy1fs4ro65klwj30al0dwjvm.jpg)
+![Cloud Native Java 云原生 Java 宋净超 张若飞 译](https://ws1.sinaimg.cn/large/00704eQkly1fsxnwm5cicj31ui16jqv5.jpg)
 
-至今网上都还没有该书的详细目录，翻译过程中我顺便整理了下该书的详细目录信息，精确到section，以供大家参考：
+## 本书介绍
+
+传统企业与如亚马逊、Netflix和Etsy这类企业之间的区别是什么？这些公司有完善云原生开发方法，这些方法使得他们能够保持优势并领先于竞争对手。本实践指南向Java/JVM开发人员展示如何使用Spring Boot、Spring Cloud和Cloud Foundry更快更好得构建软件。
+
+很多组织都已踏足云计算、测试驱动开发、微服务与持续集成和交付领域。本书作者Josh Long和Kenny Bastani将带您深入研究这些工具和方法，并帮助您将传统应用程序转变为真正的云原生应用程序。
+
+本书中包含以下四大部分：
+
+- **基础知识**：了解云原生思维背后的动机；配置和测试Spring Boot应用程序；将您的传统应用程序迁移至云端
+- **微服务**：使用Spring构建HTTP和RESTful服务；在分布式系统中路由请求；建立更接近数据的边缘服务
+- **数据整合**：使用Spring Data管理数据，并将分布式服务与Spring支持的事件驱动的，以消息传递为中心的架构集成
+- **生产**：让您的系统可观测；使用服务代理来连接有状态的服务；了解持续交付背后的重要思想
+
+如果您正在构建云原生应用程序，这本书将是使用Java生态系统的基本指南。本书中包含了所有内容——构建弹性服务、管理数据流（通过REST和异步事件）、测试、部署和可观察性的关键任务。
+
+**——Daniel Bryant**，SpectoLabs的软件开发者和CTO
+
+我预测无论是刚开始云原生之旅还是已经接近云原生的目标，所有参与其中的人都将从这本云原生Java的洞察和经验中受益。
+
+**——Dava Syer博士**，Spring框架的贡献者，Spring Boot和Spring Cloud的贡献者和联合创始人
+
+## 作者信息
+
+**Josh Long**是一名Spring布道师，同时也是InfoQ.com的Java queue编辑，以及包括Spring Recipes第二版（Apress出版社出版）在内的多本书籍的主要作者。Josh在许多国际行业会议上发表过演讲，包括TheServiceSide Java Symposium、SpringOne、OSCON、JavaZone、Devoxx、Java2Days等。当他没在编写SpringSource的代码的时候，不是泡在Java用户组就是在咖啡店里喝咖啡。Josh喜欢能够推动技术发展的解决方案。他的兴趣包括可扩展性、BPM、网格计算、移动计算和所谓的“智能”系统等。您可以在<http://blog.springsource.org>或<http://joshlong.com>上浏览他的博客。
+
+**Kenny Bastani**是Pivotal的Spring布道师。作为一名开源贡献者和博客作者，Kenny关注图数据库、微服务等，并喜欢吸引一群充满热情的软件开发人员。Kenny还是OSCON、SpringOne Platform和GOTO等行业会议的常客。他维护了一个关于软件架构的[个人博客](http://kennybastani.com)，并提供用于构建事件驱动的微服务和无服务器架构的教程和开源参考示例。
 
 ## 目录
 
-### Part I. Basics
+![Cloud Native Java中文版目录1](https://ws1.sinaimg.cn/large/00704eQkly1fsxnrwg0whj30t712778y.jpg)
 
-#### 1. The Cloud Native Application 
+![Cloud Native Java中文版目录2](https://ws1.sinaimg.cn/large/00704eQkly1fsxnsiggsvj30t712746z.jpg)
 
-1.1. Amazon’s Story
+![Cloud Native Java中文版目录3](https://ws1.sinaimg.cn/large/00704eQkly1fsxnsyrnbuj30t7127th9.jpg)
 
-1.2. The Promise of a Platform
+![Cloud Native Java中文版目4](https://ws1.sinaimg.cn/large/00704eQkly1fsxnte34q5j30t712747e.jpg)
 
-1.3. The Patterns
+![Cloud Native Java中文版目录5](https://ws1.sinaimg.cn/large/00704eQkly1fsxntipaq8j30t7127jzy.jpg)
 
-1.4. Scalability
+![Cloud Native Java中文版目录6](https://ws1.sinaimg.cn/large/00704eQkly1fsxntn3b1jj30t712710y.jpg)
 
-1.5. Reliability
+![Cloud Native Java中文版目录7](https://ws1.sinaimg.cn/large/00704eQkly1fsxntr6gpuj30t7127gv2.jpg)
 
-1.6. Agility
-
-1.7. Netflix’s Story
-
-​    1.7.1. Microservices
-
-​    1.7.2. Splitting the Monolith
-
-​    1.7.3. Netflix OSS
-
-​    1.7.4. Cloud Native Java
-
-1.8. The Twelve Factors
-
-​    1.8.1. Codebase
-
-​         One codebase tracked in revision control, many deploys
-
-​    1.8.2. Dependencies
-
-​         Explicitly declare and isolate dependencies
-
-​    1.8.3. Config
-
-​         Store config in the environment
-
-​     1.8.4. Backing Services
-
-​         Treat backing services as attached resources
-
-​     1.8.5. Build, Release, Run
-
-​         Strictly separate build and run stages
-
-​     1.8.6. Processes
-
-​         Execute the app as one or more stateless processes
-
-​     1.8.7. Port Bindings
-
-​         Export services via port binding
-
-​     1.8.8. Concurrency
-
-​         Scale out via the process model
-
-​     1.8.9. Disposability
-
-​         Maximize robustness with fast startup and graceful shutdown
-
-​     1.8.10. Dev/Prod Parity
-
-​         Keep development, staging, and production as similar as possible
-
-​     1.8.11. Logs
-
-​         Treat logs as event streams
-
-​     1.8.12. Admin Processes
-
-​         Run admin/management tasks as one-off processes
-
-1.9. Summary
-
-#### 2. Bootcamp: Introducing Spring Boot and Cloud Foundry
-
-2.1. What Is Spring Boot?
-
-2.2. Getting Started with the Spring Initializr
-
-2.3. Getting Started with the Spring Tool Suite
-
-2.3.1. Installing Spring Tool Suite (STS)
-
-2.3.2. Creating a New Project with the Spring Initializr
-
-2.4. The Spring Guides
-
-​    2.4.1. Following the Guides in STS
-
-2.5. Configuration
-
-2.6. Cloud Foundry
-
-2.7. Summary
-
-#### 3. Twelve-Factor Application Style Configuration
-
-3.1. The Confusing Conflation of "Configuration"
-
-3.2. Support in Spring Framework
-
-​    3.2.1. The PropertyPlaceholderConfigurer
-
-​    3.2.2. The Environment Abstraction and @Value
-
-​    3.2.3. Profiles
-
-3.3. Bootiful Configuration
-
-3.4. Centralized, Journaled Configuration with the Spring Cloud Configuration Server
-
-​    3.4.1. The Spring Cloud Config Server
-
-​    3.4.2. Spring Cloud Config Clients
-
-​    3.4.3. Security
-
-3.5. Refreshable Configuration
-
-3.6. Summary
-
-#### 4. Testing
-
-4.1. The Makeup of a Test
-
-4.2. Testing in Spring Boot
-
-4.3. Integration Testing
-
-4.3.1. Test Slices
-
-4.3.2. Mocking in Tests
-
-4.3.3. Working with the Servlet Container in @SpringBootTest
-
-4.3.4. Slices
-
-​    @JsonTest
-
-​    @WebMvcTest
-
-​    @DataJpaTest
-
-​    @RestClientTest
-
-4.4. End-to-End Testing
-
-​    4.4.1. Testing Distributed Systems
-
-​    4.4.2. Consumer-Driven Contract Testing
-
-​    4.4.3. Spring Cloud Contract
-
-4.5. Summary
-
-#### 5. The Forklifted Application
-
-5.1. The Contract
-
-5.2. Migrating Application Environments
-
-​    5.2.1. The Out-of-the-Box Buildpacks
-
-​    5.2.2. Custom(ized) Buildpacks
-
-​    5.2.3. Containerized Applications
-
-5.3. Soft-Touch Refactoring to Get Your Application into the Cloud
-
-​    5.3.1. Talking to Backing Services
-
-​    5.3.2. Achieving Service Parity with Spring
-
-​        Remote Procedure Calls
-
-​        HTTP sessions with Spring Session
-
-​        The Java Message Service
-
-​        Distributed transactions using the X/Open XA Protocol and JTA
-
-​        Cloud filesystems
-
-​        HTTPS
-
-​        Email
-
-​        Identity management
-
-5.4. Summary
-
-### Part II. Web Services
-
-#### 6. REST APIs
-
-6.1. Leonard Richardson’s Maturity Model
-
-6.2. Simple REST APIs with Spring MVC
-
-6.3. Content Negotiation
-
-​    6.3.1. Reading and Writing Binary Data
-
-​    6.3.2. Google Protocol Buffers
-
-6.4. Error Handling
-
-6.5. Hypermedia
-
-6.5.1. Media Type and Schema
-
-6.6. API Versioning
-
-6.7. Documenting REST APIs
-
-6.8. The Client Side
-
-​    6.8.1. REST Clients for Ad Hoc Exploration and Interaction
-
-​    6.8.2. The RestTemplate
-
-6.9. Summary
-
-#### 7. Routing
-
-7.1. The DiscoveryClient Abstraction
-
-7.2. Cloud Foundry Route Services
-
-7.3. Summary
-
-#### 8. Edge Services
-
-8.1. The Greetings Service
-
-8.2. A Simple Edge Service
-
-8.3. Netflix Feign
-
-8.4. Filtering and Proxying with Netflix Zuul
-
-​    8.4.1. A Custom Zuul Filter
-
-​    8.5. Security on the Edge
-
-8.6. OAuth
-
-​    8.6.1. Service-Side Applications
-
-​    8.6.2. HTML5 and JavaScript Single-Page Applications
-
-​    8.6.3. Applications Without Users
-
-​    8.6.4. Trusted Clients
-
-8.7. Spring Security
-
-8.8. Spring Cloud Security
-
-​    8.8.1. A Spring Security OAuth Authorization Server
-
-​    8.8.2. Securing the Greetings Resource Server
-
-​    8.8.3. Build an OAuth-Secured Single-Page Application
-
-​    8.8.4. Summary
-
-### Part III. Data Integration
-
-#### 9. Managing Data
-
-9.1. Modeling Data
-
-​    9.1.1. Relational Database Management Systems (RDBMS)
-
-​    9.1.2. NoSQL
-
-9.2. Spring Data
-
-​    9.2.1. Structure of a Spring Data Application
-
-​    9.2.2. Domain Class
-
-​    9.2.3. Repositories
-
-​    9.2.4. Organizing Java Packages for Domain Data
-
-​        Supported repositories
-
-9.3. Getting Started with RDBMS Data Access on JDBC
-
-9.4. Spring’s JDBC Support
-
-9.5. Spring Data Examples
-
-9.6. Spring Data JPA
-
-​    9.6.1. Account Service
-
-​        Using profiles for different data sources
-
-​        Describing the Account Service’s domain with JPA
-
-​        Auditing with JPA
-
-​    9.6.2. Integration Tests
-
-9.7. Spring Data MongoDB
-
-​    9.7.1. Order Service
-
-​        Document classes with MongoDB
-
-​        Auditing with MongoDB
-
-​    9.7.2. Integration Tests
-
-9.8. Spring Data Neo4j
-
-​    9.8.1. Inventory Service
-
-​        Configuring Neo4j
-
-​        Graph data modeling with Neo4j
-
-​    9.8.2. Integration Tests
-
-9.9. Spring Data Redis
-
-​    9.9.1. Caching
-
-9.10. Summary
-
-#### 10. Messaging
-
-10.1. Event-Driven Architectures with Spring Integration
-
-​    10.1.1. Messaging Endpoints
-
-​    10.1.2. From Simple Components, Complex Systems
-
-10.2. Message Brokers, Bridges, the Competing Consumer Pattern, and Event Sourcing
-
-​    10.2.1. Publish-Subscribe Destination
-
-​    10.2.2. Point-to-Point Destination
-
-10.3. Spring Cloud Stream
-
-​    10.3.1. A Stream Producer
-
-​    10.3.2. A Stream Consumer
-
-10.4. Summary
-
-#### 11. Batch Processes and Tasks
-
-11.1. Batch Workloads
-
-11.2. Spring Batch
-
-​    11.2.1. Our First Batch Job
-
-11.3. Scheduling
-
-11.4. Remote Partitioning a Spring Batch Job with Messaging
-
-11.5. Task Management
-
-11.6. Process-Centric Integration with Workflow
-
-11.7. Distribution with Messaging
-
-11.8. Summary
-
-#### 12. Data Integration
-
-12.1. Distributed Transactions
-
-12.2. Isolating Failures and Graceful Degradation
-
-12.3. The Saga Pattern
-
-12.4. CQRS (Command Query Responsibility Segregation)
-
-​    12.4.1. The Complaints API
-
-​    12.4.2. The Complaint Statistics API
-
-12.5. Spring Cloud Data Flow
-
-​    12.5.1. Streams
-
-​    12.5.2. Tasks
-
-​    12.5.3. The REST API
-
-​    12.5.4. Meet the Data Flow Clients
-
-​        The Dashboard
-
-​        The Spring Cloud Data Flow shell
-
-​        The DataFlowTemplate
-
-12.6. Summary
-
-### IV. Production
-
-#### 13. The Observable System
-
-13.1. You Build It, You Run It
-
-13.2. Murder Mystery Microservices
-
-13.3. Twelve-Factor Operations
-
-13.4. The New Deal
-
-13.5. Observability
-
-13.6. Push Versus Pull Observability and Resolution
-
-13.7. Capturing an Application’s Present Status with Spring Boot Actuator
-
-13.8. Metrics
-
-​    Joined-up views of metrics
-
-​    Metric data dimensions
-
-​    Shipping metrics from a Spring Boot application
-
-13.9. Identifying Your Service with the /info Endpoint
-
-13.10. Health Checks
-
-13.11. Audit Events
-
-13.12. Application Logging
-
-​    13.12.1. Specifying Log Output
-
-​    13.12.2. Specifying Log Levels
-
-13.13. Distributed Tracing
-
-​    13.13.1. Finding Clues with Spring Cloud Sleuth
-
-​    13.13.2. How Much Data Is Enough?
-
-​    13.13.3. OpenZipkin: A Picture Is Worth a Thousand Traces
-
-​    13.13.4. Tracing Other Platforms and Technologies
-
-13.14. Dashboards
-
-​    13.14.1. Monitoring Downstream Services with the Hystrix Dashboard
-
-​    13.14.2. Codecentric’s Spring Boot Admin
-
-​    13.14.3. Ordina Microservices Dashboard
-
-​    13.14.4. Pivotal Cloud Foundry’s AppsManager
-
-13.15. Remediation
-
-13.16. Summary
-
-#### 14. Service Brokers
-
-14.1. The Life of a Backing Service
-
-14.2. The View from the Platform
-
-14.3. Implementing a Service Broker with Spring Cloud Cloud Foundry Service Broker
-
-​    14.3.1. A Simple Amazon S3 Service Broker
-
-​    14.3.2. The Service Catalog
-
-​    14.3.3. Managing Service Instances
-
-​    14.3.4. Service Bindings
-
-​    14.3.5. Securing the Service Broker
-
-14.4. Deployment
-
-​    14.4.1. Releasing with BOSH
-
-​    14.4.2. Releasing with Cloud Foundry
-
-14.5. Registering the Amazon S3 Service Broker
-
-14.6. Creating Amazon S3 Service Instances
-
-​    14.6.1. Consuming Service Instances
-
-14.7. An S3 Client Application
-
-14.8. Seeing It All Come Together
-
-14.9. Summary
-
-#### 15. Continuous Delivery
-
-15.1. Beyond Continuous Integration
-
-​    15.1.1. John Allspaw at Flickr and then Etsy
-
-​    15.1.2. Adrian Cockroft at Netflix
-
-​    15.1.3. Continuous Delivery at Amazon
-
-15.2. The Pipeline
-
-15.3. Testing
-
-15.4. Continuous Delivery for Microservices
-
-15.5. Tools
-
-15.6. Concourse
-
-​    15.6.1. Containers
-
-15.7. Continuously Delivering Microservices
-
-​    15.7.1. Installing Concourse
-
-​    15.7.2. Basic Pipeline Design
-
-​    15.7.3. Continuous Integration
-
-15.8. Consumer-Driven Contract Testing
-
-​    15.8.1. User Microservice Pipeline
-
-15.9. Data
-
-15.10. To Production!
-
-#### Part V. Appendix A
-
-A. Using Spring Boot with Java EE
-
-​    A.1. Compatibility and Stability
-
-​    A.2. Dependency Injection with JSR 330 (and JSR 250)
-
-​    A.3. Using Servlet APIs in a Spring Boot Application
-
-​    A.4. Building REST APIs with JAX-RS (Jersey)
-
-​    A.5. JTA and XA Transaction Management
-
-​        A.5.1. Resource-Local Transactions with Spring’s PlatformTransactionManager
-
-​        A.5.2. Global Transactions with the Java Transaction API (JTA)
-
-​    A.6. Deployment in a Java EE Environment
-
-​    A.7. Summary
-
----
+![Cloud Native Java中文版目录8](https://ws1.sinaimg.cn/large/00704eQkly1fsxntx2sx0j30t712710o.jpg)
 
 ## 翻译进度日志
 
@@ -608,3 +77,8 @@ A. Using Spring Boot with Java EE
 - 2018-05-02，完成了附录的翻译
 
 至此全书翻译完成。
+
+---
+
+本书将于2018年7月第一次印刷。
+
