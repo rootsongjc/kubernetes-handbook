@@ -238,7 +238,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 If everything up until now is working you should be able to load the Vistio UI  in your browser http://localhost:8080
 
-![vistio global view](https://ws1.sinaimg.cn/large/00704eQkgy1fshi98duzgj318g0l2406.jpg)
+![vistio global view](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/vistio-animation.gif)
 
 More details see [Vistio — Visualize your Istio Mesh Using Netflix’s Vizceral](https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e).
 
