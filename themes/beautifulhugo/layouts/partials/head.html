@@ -21,7 +21,7 @@
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
 <!-- Social Media Tags -->
-{{- with .Params.share_img | default .Params.image | default .Site.Params.logo }}
+{{- with .Params.share_img | default .Params.image | default .Site.Params.share_img }}
   <meta property="og:image" content="{{ . | absURL }}" />
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
