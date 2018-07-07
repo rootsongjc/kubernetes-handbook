@@ -14,6 +14,7 @@ hello = "Hi,I'm Jimmy"
 subtitle = "I can help you to build Cloud Native confidence"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
+share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
 dateFormat = "January 2, 2006"
 commit = false
 rss = true
