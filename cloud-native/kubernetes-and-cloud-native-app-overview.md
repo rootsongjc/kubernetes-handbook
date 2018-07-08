@@ -476,6 +476,3 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 * [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
 * [Cloud Native Python - 将由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
 * [Istio Service Mesh 中文文档](http://istio.doczh.cn/)
-
-
-

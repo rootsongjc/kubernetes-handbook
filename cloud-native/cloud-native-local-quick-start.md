@@ -1,23 +1,19 @@
-# 本地分布式开发环境搭建（使用Vagrant和Virtualbox）
+# 快速部署一个云原生本地实验环境
 
-**注意：本文停止更新，请直接转到[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)仓库浏览最新版本。**
+本文旨在帮助您快速部署一个云原生本地实验环境，让您可以基本不需要任何Kubernetes和云原生技术的基础就可以对云原生环境一探究竟。
 
----
+另外本环境也可以作为一个Kubernetes及其它云原生应用的测试与演示环境。
 
-当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
 
-部署时需要使用的配置文件和`vagrantfile`请见：https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
-
-**注意**：kube-proxy使用ipvs模式。
 
 ## 准备环境
 
 需要准备以下软件和环境：
 
 - 8G以上内存
-- Vagrant 2.0+
-- Virtualbox 5.0 +
-- 提前下载kubernetes1.9.1以上版本的release压缩包
+- [Vagrant 2.0+](https://www.vagrantup.com/)
+- [VirtualBox 5.0 +](https://www.virtualbox.org/wiki/Downloads)
+- 提前下载kubernetes1.9.1以上版本的release压缩包，[至百度网盘下载](https://pan.baidu.com/s/1zkg2xEAedvZHObmTHDFChg)
 - Mac/Linux，**不支持Windows**
 
 ## 集群
@@ -213,6 +209,27 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
+### Vistio
+
+[Vizceral](https://github.com/Netflix/vizceral)是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。它利用Istio Mixer生成的指标，然后将其输入Prometheus。Vistio查询Prometheus并将数据存储在本地以允许重播流量。
+
+```bash
+# Deploy vistio via kubectl
+kubectl apply -f addon/vistio/
+
+# Expose vistio-api
+kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-api -o jsonpath='{.items[0].metadata.name}') 9091:9091 &
+
+# Expose vistio in another terminal window
+kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -o jsonpath='{.items[0].metadata.name}') 8080:8080 &
+```
+
+如果一切都已经启动并准备就绪，您就可以访问Vistio UI，开始探索服务网格网络，访问[http://localhost:8080](http://localhost:8080/) 您将会看到类似下图的输出。
+
+![vistio视图动画](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/vistio-animation.gif)
+
+更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
+
 ## 管理
 
 除了特别说明，以下命令都在当前的repo目录下操作。
@@ -287,7 +304,4 @@ rm -rf .vagrant
 
 - [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
-- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)
-- [vagrant系列二：Vagrant的配置文件vagrantfile详解](https://helei112g.github.io/2016/10/30/vagrant%E7%B3%BB%E5%88%97%E4%BA%8C%EF%BC%9AVagrant%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6vagrantfile%E8%AF%A6%E8%A7%A3/)
-- [vagrant网络配置](https://blog.hedzr.com/2017/05/02/vagrant-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/)
 - [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
