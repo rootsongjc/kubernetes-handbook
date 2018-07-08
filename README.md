@@ -41,11 +41,19 @@ Gitbook 在线浏览：https://jimmysong.io/kubernetes-handbook/
   <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cloud-native-go-wechat-qr-code.jpg?raw=true" alt="CloudNativeGo微信公众号二维码"/>
 </p>
 
+## 云原生出版物
+
+以下为本人翻译出版的图书。
+
+- [Cloud Native Go](https://jimmysong.io/posts/cloud-native-go/) - 基于Go和React的web云原生应用构建指南（Kevin Hoffman & Dan Nemeth著 宋净超 吴迎松 徐蓓 马超 译），电子工业出版社，2017年6月出版
+- [Python云原生](https://jimmysong.io/posts/cloud-native-python/) - 使用Python和React构建云原生应用（Manish Sethi著，宋净超译），电子工业出版社，2018年6月出版
+- [云原生Java](https://jimmysong.io/posts/cloud-native-java/) - Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计（Josh Long & Kenny Bastani著，张若飞 宋净超译 ），电子工业出版社，2018年7月出版
+
 ## 支持本书
 
-为贡献者加油⛽️！为云原生干杯🍻！
+为贡献者加油！为云原生干杯🍻！
 
-使用微信扫一扫请贡献者喝一杯🍺
+使用微信扫一扫请贡献者喝一杯☕️
 
 <p align="center">
 <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/wechat-appreciate-qrcode.jpg?raw=true" alt="微信赞赏码"/>
