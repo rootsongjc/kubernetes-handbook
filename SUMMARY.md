@@ -9,7 +9,7 @@
 
 * [云原生的定义](cloud-native/cloud-native-definition.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
-* [快速部署一个云原生本地实验环境](cloud-native/kubernetes-quick-start.md)
+* [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
 * [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 * [云原生应用之路——从Kubernetes到Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
 * [云原生编程语言](cloud-native/cloud-native-programming-languages.md)
