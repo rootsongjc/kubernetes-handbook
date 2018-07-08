@@ -1,9 +1,11 @@
 ---
 date: "2017-06-06T22:23:54+08:00"
 title: "Cloud Native Go - 基于Go和React的web云原生应用构建指南"
+subtitle: "Kevin Hoffman & Dan Nemeth著 宋净超 吴迎松 徐蓓 马超 译"
 draft: false
 description: "Cloud Native Go 图书 电子工业出版社 Kevin Hoffman Dan Nemeth 云原生 Cloud Native React Web应用"
 categories: "cloud-native"
+notoc: true
 tags:  ["book","go","microservices","cloud-native"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20160326003.jpg", desc: "北京植物园桃花 Mar 26,2016"}]
 ---
@@ -28,8 +30,6 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 -  了解为什么使用Go语言是云本地微服务开发的理想选择
 -  规划支持持续交付和部署的云应用程序
 -  设计服务生态系统，然后以test-first的方式构建它们
-
-
 -  将正在进行的工作推送到云
 -  使用事件源和CQRS模式来响应大规模和高吞吐量
 -  安全的基于云的Web应用程序：做与不做的选择
