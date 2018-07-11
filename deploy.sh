@@ -1,6 +1,6 @@
 #/bin/bash
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
-
+des="../rootsongjc.github.io"
 msg="rebuilding site `date`"
 if [ $# -eq 1  ]
     then msg="$1"
@@ -14,8 +14,9 @@ git push origin master
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
 hugo-algolia --config algolia.yaml
 
+cp public/* $des
 # Go To Public folder
-cd public
+cd $des
 
 # Add algolia search index
 grep -v '"content":' algolia.json>rootsongjc-hugo.json
@@ -31,7 +32,7 @@ git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
-cd ../
+cd ../rootsongjc-hugo
 
 # Update algolia index
 python hugo_algolia.py ALGOLIA_API_KEY="061f6cd08c1f001f39ea2dd918330b58"
