@@ -11,7 +11,7 @@ categories: ["service mesh"]
 
 [SOFAMesh](https://github.com/alipay/sofa-mesh) is an solution for large-scale Service Mesh based on [Istio](https://istio.io) open-sourced by [Ant Financial](http://antfin.com). At the same time it is also as one of components in SOFA(Scalable Open Financial Architecture)  which is open sourced by [Ant Financial](http://www.antfin.com). On the basis of inheriting the powerful functions and rich features of Istio, in order to meet the performance requirements under large-scale deployment and to deal with the actual situation in the practice, the following improvements have been made:
 
-1. Replace [Envoy](https://github.com/envoyproxy/envoy) with [MOSN](https://github.com/alipay/mosn) written in Golang.
+1. Replace [Envoy](https://github.com/envoyproxy/envoy) with [MOSN](https://github.com/alipay/sofa-mosn) written in Golang.
 2. Merge Mixer to the data plane to resolve performance bottlenecks/
 3. Enhance Pilot for a more flexible service discovery mechanism.
 4. Increase support for [SOFA RPC](https://github.com/alipay/sofa-rpc), [Dubbo](https://dubbo.incubator.apache.org/), etc.
@@ -19,7 +19,7 @@ categories: ["service mesh"]
 You can find them on GitHub:
 
 - SOFAMesh: https://github.com/alipay/sofa-mesh
-- MOSN: https://github.com/alipay/mosn
+- MOSN: https://github.com/alipay/sofa-mosn
 
 Our goal is to create a more pragmatic Istio version!
 
@@ -42,7 +42,7 @@ In addition, we will increase support for other protocols such as SOFA RPC, Dubb
 
 <img width="100%" src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft75ot24lzj31ec18479s.jpg" alt="SOFAMesh MOSN">
 
-Because of Sidecar is a relatively independent modular, and we also expect to have a separate scenario to use MOSN, we have made a independent repository from SOFAMesh for it, you can find it on https://github.com/alipay/mosn. Welcome everyone to use, asks for requirements and feedbacks.
+Because of Sidecar is a relatively independent modular, and we also expect to have a separate scenario to use MOSN, we have made a independent repository from SOFAMesh for it, you can find it on https://github.com/alipay/sofa-mosn. Welcome everyone to use, asks for requirements and feedbacks.
 
 ### Pilot
 
@@ -62,6 +62,6 @@ We put the Pilot, Mixer, Auth and other Istio modules in the same code repositor
 
 ## Furthermore
 
-- MOSN: https://github.com/alipay/mosn
+- MOSN: https://github.com/alipay/sofa-mosn
 - SOFAMesh: https://github.com/alipay/sofa-mesh
 - SOFA official website: http://www.sofastack.tech
