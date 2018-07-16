@@ -33,7 +33,7 @@ git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
-cd ../rootsongjc-hugo
+cd ../
 
 # Update algolia index
 python hugo_algolia.py ALGOLIA_API_KEY="061f6cd08c1f001f39ea2dd918330b58"

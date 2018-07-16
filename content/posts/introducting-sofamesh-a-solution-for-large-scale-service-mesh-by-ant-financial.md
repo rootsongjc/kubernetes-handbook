@@ -32,7 +32,7 @@ SOFAMesh is logically split into a **data plane** and a **control plane** whi
 
 The following diagram shows the different components that make up each plane:
 
-![SOFAMesh architecture](https://ws3.sinaimg.cn/large/006tKfTcgy1ft798kjr0mj31kw1biagi.jpg)
+<img width="60%" src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft798kjr0mj31kw1biagi.jpg" alt="SOFAMesh architecture">
 
 ### MOSN
 
@@ -40,7 +40,7 @@ MOSN(Modular Observable Smart Net-stub) is a sidecar written in Golang. The shor
 
 In addition, we will increase support for other protocols such as SOFA RPC, Dubbo and HSF to better cater to Chinese users, including our own actual needs.
 
-![SOFAMesh MOSN](https://ws1.sinaimg.cn/large/006tKfTcgy1ft75ot24lzj31ec18479s.jpg)
+<img width="60%" src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft75ot24lzj31ec18479s.jpg" alt="SOFAMesh MOSN">
 
 Because of Sidecar is a relatively independent modular, and we also expect to have a separate scenario to use MOSN, we have made a independent repository from SOFAMesh for it, you can find it on https://github.com/alipay/mosn. Welcome everyone to use, asks for requirements and feedbacks.
 
@@ -52,7 +52,7 @@ We will greatly expand and enhance the Pilot module in Istio:
 - A data synchronization module is added to enable data exchange between multiple service registration centers.
 - Add Open Service Registry APIs to provide standardized service registration.
 
-![SOFAMesh Pilot架构图](https://ws1.sinaimg.cn/large/006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg)
+<img width="60%" src="https://ws1.sinaimg.cn/large/006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg" alt="SOFAMesh Pilot architecutre">
 
 ## Future
 
