@@ -82,3 +82,10 @@ nocomment: true
 
 本书将于2018年7月第一次印刷。
 
+![云原生Java(张若飞 宋净超译)](https://ws4.sinaimg.cn/large/006tKfTcgy1ft66coozmaj30m80m8mzq.jpg)
+
+购买地址：https://item.jd.com/12398618.html
+
+或者扫描下面的二维码跳转到[京东商城](https://item.jd.com/12398618.html)。
+
+![Cloud Native Java 云原生购买二维码](https://ws1.sinaimg.cn/large/006tKfTcgy1ft69u13f12j307s07s0sm.jpg)
