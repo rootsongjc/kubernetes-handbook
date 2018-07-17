@@ -1,15 +1,15 @@
 ---
 title: "Introducing SOFAMesh - A Solution for Large Scale Service Mesh based on Istio"
 subtitle: "Open sourced by Ant Financial"
-description: "SOFAMesh is a solution for large-scale Service Mesh based on Istio open-sourced by Ant Financial. At the same time it is also as one of components in SOFA(Scalable Open Financial Architecture)  which is open sourced by Ant Financial."
+description: "SOFAMesh is a solution for large-scale Service Mesh based on Istio open-sourced by Ant Financial. At the same time it is also a part of SOFA(Scalable Open Financial Architecture)  which is open sourced by Ant Financial too."
 date: 2018-07-16T12:02:17+08:00
 bigimg: [{src: "https://ws1.sinaimg.cn/large/006tKfTcly1ftbkn25cm5j31kw0pyu0z.jpg", desc: "Naval fleet|From Wikipedia|Jul 16,2018"}]
 draft: false
-tags: ["istio","SOFAMesh","MOSN","Ant Financial","service mesh"]
+tags: ["Istio","SOFAMesh","MOSN","Ant Financial","Service Mesh"]
 categories: ["service mesh"]
 ---
 
-[SOFAMesh](https://github.com/alipay/sofa-mesh) is a solution for large-scale Service Mesh based on [Istio](https://istio.io) open-sourced by [Ant Financial](http://antfin.com). At the same time it is also as one of components in SOFA(Scalable Open Financial Architecture)  which is open sourced by [Ant Financial](http://www.antfin.com) too. On the basis of inheriting the powerful functions and rich features of Istio, in order to meet the performance requirements under large-scale deployment and to deal with the actual situation in the practice, the following improvements have been made:
+[SOFAMesh](https://github.com/alipay/sofa-mesh) is a solution for large-scale Service Mesh based on [Istio](https://istio.io) open-sourced by [Ant Financial](http://antfin.com). At the same time it is also a part of SOFA(Scalable Open Financial Architecture)  which is open sourced by [Ant Financial](http://www.antfin.com) too. On the basis of inheriting the powerful functions and rich features of Istio, in order to meet the performance requirements under large-scale deployment and to deal with the actual situation in the practice, the following improvements have been made:
 
 1. Replace [Envoy](https://github.com/envoyproxy/envoy) with [MOSN](https://github.com/alipay/sofa-mosn) written in Go.
 2. Merge Mixer to the data plane to resolve performance bottlenecks.
