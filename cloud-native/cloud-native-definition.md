@@ -40,4 +40,4 @@
 
 云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式普惠，让这些创新为大众所用。
 
-**注**：该定义的中文译本还为正式确定，详见[Cloud Native Definition in Chinese](https://docs.google.com/document/d/1-QhD9UeOqEBxaEiXrFP89EhG5K-MFJ4vsfNZOg6E9co/)。
+**注**：该定义的中文译本还未正式确定，详见[Cloud Native Definition in Chinese](https://docs.google.com/document/d/1-QhD9UeOqEBxaEiXrFP89EhG5K-MFJ4vsfNZOg6E9co/)。
