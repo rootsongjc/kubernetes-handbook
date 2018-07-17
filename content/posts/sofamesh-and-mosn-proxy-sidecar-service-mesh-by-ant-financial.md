@@ -1,11 +1,11 @@
 ---
 title: "SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案"
 subtitle: "兼容Istio的控制平面，使用Go语言版的Sidecar替换Envoy数据平面—由蚂蚁金服开源"
-description: "蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用），期待通过社区贡献。"
+description: "蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用）。"
 date: 2018-07-16T17:48:18+08:00
 bigimg: [{src: "https://ws4.sinaimg.cn/large/006tKfTcgy1ftbur3klh0j30zk0k0ad0.jpg", desc: "Networks|From Internet|Jul 16,2018"}]
 draft: false
-tags: ["istio","SOFAMesh","MOSN","Ant Financial","service mesh"]
+tags: ["Istio","SOFAMesh","MOSN","Ant Financial","Service Mesh"]
 categories: ["service mesh"]
 ---
 
