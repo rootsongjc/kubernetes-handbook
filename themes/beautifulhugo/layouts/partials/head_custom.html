@@ -4,15 +4,18 @@ Do not put anything in this file - it's only here so that hugo won't throw an er
 -->
 <!-- baidu analysis -->
 <meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<!-- Baidu analytics -->
+{{ with .Site.Params.baiduKey }}
 <script>
-    var _hmt = _hmt || [];
-    (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-    })();
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?{{ . }}";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
+{{ end }}
 <!-- prism highlight -->
 <link rel="stylesheet" href="{{ "css/prism.css" | absURL }}" />
 <!--
