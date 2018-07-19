@@ -45,7 +45,7 @@ SOFAMesh将在兼容Istio整体架构和协议的基础上，做出部分调整�
 
 我们的目标：打造一个更加务实的Istio落地版本！
 
-> 备注：以上架构调整的细节以及我们做调整的出发点和原因，请浏览 [蚂蚁金服大规模微服务架构下的Service Mesh探索之路](http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/)（可点击查看） 一文，有非常详尽的解释。
+> 备注：以上架构调整的细节以及我们做调整的出发点和原因，请浏览 [蚂蚁金服大规模微服务架构下的Service Mesh探索之路](http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/) 一文，有非常详尽的解释。
 
 ## 开源内容
 
@@ -79,7 +79,7 @@ MOSN和SOFAPilot配合，将可以提供让传统侵入式框架（如Spring Clo
 
 ## 附录
 
-本文中提到的链接地址合辑：
+本文中提到的链接地址集合：
 
 - [SOFA MOSN](https://github.com/alipay/sofa-mosn)
 - [SOFAMesh](https://github.com/alipay/sofa-mesh)
