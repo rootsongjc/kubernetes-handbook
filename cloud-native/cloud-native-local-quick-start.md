@@ -4,7 +4,7 @@
 
 另外本环境也可以作为一个Kubernetes及其它云原生应用的测试与演示环境。
 
-
+在GitHub上该repo：https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
 
 ## 准备环境
 
@@ -15,6 +15,7 @@
 - [VirtualBox 5.0 +](https://www.virtualbox.org/wiki/Downloads)
 - 提前下载kubernetes1.9.1以上版本的release压缩包，[至百度网盘下载](https://pan.baidu.com/s/1zkg2xEAedvZHObmTHDFChg)
 - Mac/Linux，**不支持Windows**
+- 支持Kubernetes1.9以上版本（支持当前Kubernetes最新版本1.11.1）
 
 ## 集群
 
@@ -37,7 +38,7 @@ Kubernetes service IP范围：10.254.0.0/16
 安装完成后的集群包含以下组件：
 
 - flannel（`host-gw`模式）
-- kubernetes dashboard 1.8.2
+- kubernetes dashboard
 - etcd（单节点）
 - kubectl
 - CoreDNS
@@ -120,6 +121,14 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 **注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
+也可以直接使用下面的token：
+
+```ini
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
+```
+
+![Kubernetes dashboard](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/dashboard-animation.gif)
+
 **Heapster监控**
 
 创建Heapster监控：
@@ -137,6 +146,8 @@ kubectl apply -f addon/heapster/
 ```
 
 访问Grafana：<http://grafana.jimmysong.io>
+
+![Grafana](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/grafana-animation.gif)
 
 **Traefik**
 
@@ -305,3 +316,4 @@ rm -rf .vagrant
 - [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
 - [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)
