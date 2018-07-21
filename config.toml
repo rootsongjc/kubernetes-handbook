@@ -156,7 +156,7 @@ desc = "1st Istio meetup in Beijing GDG"
 [[menu.main]]
     parent = "Publications"
     name = "Cloud Native Go"
-    url = "cloud-native-go"
+    url = "posts/cloud-native-go"
     weight = 1
 
 [[menu.main]]
