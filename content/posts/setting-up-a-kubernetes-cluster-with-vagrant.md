@@ -9,13 +9,13 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018020
 draft: false
 ---
 
-# Setting up a kubernetes cluster with Vagrant and Virtualbox
+**This doc is out-of-date, see at GitHub: https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster**
 
-[使用Vagrant和Virtualbox搭建Kubernetes集群 - 中文](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md)
+[使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群 - 中文](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md)
 
-Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
+Using vagrant file to build a Kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
-### Why don't do that with kubeadm
+### Why not kubeadm?
 
 Because I want to setup the etcd, apiserver, controller, scheduler without docker container.
 
@@ -130,6 +130,16 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 **Note**: You can see the token message from `vagrant up` logs.
 
+You can use the token below directly:
+
+```ini
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
+```
+
+![Kubernetes dashboard](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/dashboard-animation.gif)
+
+Only if you install the heapter addon bellow that you can see the metrics.
+
 ## Components
 
 **Heapster monitoring**
@@ -147,6 +157,8 @@ Append the following item to you local `/etc/hosts` file.
 ```
 
 Open the URL in your browser: <http://grafana.jimmysong.io>
+
+![Grafana animation](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/grafana-animation.gif)
 
 **Treafik ingress**
 
