@@ -34,7 +34,7 @@ Horizontal Pod Autoscaling由API server和controller共同实现。
       - `--horizontal-pod-autoscaler-use-rest-clients=true`
       - `--api-server`指向[kube-aggregator](https://github.com/kubernetes/kube-aggregator)，也可以使用heapster来实现，通过在启动heapster的时候指定`--api-server=true`。查看[kubernetes metrics](https://github.com/kubernetes/metrics)
   - 多种metrics组合
-    - HPA会根据每个metric的值计算出scale的值，并将最大的那个指作为扩容的最终结果。
+    - HPA会根据每个metric的值计算出scale的值，并将最大的那个值作为扩容的最终结果。
 
 ## 使用kubectl管理
 
