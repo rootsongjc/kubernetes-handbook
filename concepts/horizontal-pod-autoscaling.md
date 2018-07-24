@@ -13,7 +13,7 @@ Kubernetes自1.2版本引入HPA机制，到1.6版本之前一直是通过kubelet
 
 ## HPA解析
 
-Horizontal Pod Autoscaling仅适用于Deployment和ReplicationController，在V1版本中仅支持根据Pod的CPU利用率扩所容，在v1alpha版本中，支持根据内存和用户自定义的metric扩缩容。
+Horizontal Pod Autoscaling仅适用于Deployment和ReplicaSet，在V1版本中仅支持根据Pod的CPU利用率扩所容，在v1alpha版本中，支持根据内存和用户自定义的metric扩缩容。
 
 如果你不想看下面的文章可以直接看下面的示例图，组件交互、组件的配置、命令示例，都画在图上了。
 
@@ -27,7 +27,7 @@ Horizontal Pod Autoscaling由API server和controller共同实现。
 
 - autoscaling/v1
   - CPU
-- autoscaling/v2alpha1
+- autoscaling/v1alpha1
   - 内存
   - 自定义metrics
     - kubernetes1.6起支持自定义metrics，但是必须在kube-controller-manager中配置如下两项：
