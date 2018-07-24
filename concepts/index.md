@@ -46,7 +46,7 @@ Kubernetes主要由以下几个核心组件组成：
 
 ### 整体架构
 
-下图清晰表明了kubernetes的架构设计以及组件之间的通信协议。
+下图清晰表明了Kubernetes的架构设计以及组件之间的通信协议。
 
 ![Kuberentes架构（图片来自于网络）](../images/kubernetes-high-level-component-archtecture.jpg)
 
@@ -76,7 +76,7 @@ Kubernetes设计理念和功能其实就是一个类似Linux的分层架构，�
   * Kubernetes外部：日志、监控、配置管理、CI、CD、Workflow、FaaS、OTS应用、ChatOps等
   * Kubernetes内部：CRI、CNI、CVI、镜像仓库、Cloud Provider、集群自身的配置和管理等
 
-> 关于分层架构，可以关注下Kubernetes社区正在推进的[Kbernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o)和[slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)。
+> 关于分层架构，可以关注下Kubernetes社区正在推进的[Kubernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o)和[slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)。
 
 ## 参考文档
 
@@ -84,5 +84,5 @@ Kubernetes设计理念和功能其实就是一个类似Linux的分层架构，�
 - <http://queue.acm.org/detail.cfm?id=2898444>
 - <http://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/43438.pdf>
 - <http://thenewstack.io/kubernetes-an-overview>
-- [Kbernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o)和[slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)
+- [Kubernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o)和[slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)
 

@@ -239,12 +239,8 @@ traefik-ingress-lb   3         3         3         3            3           edge
 
 ## 参考
 
-[kube-keepalived-vip](https://github.com/kubernetes/contrib/tree/master/keepalived-vip)
-
-http://www.keepalived.org/
-
-[keepalived工作原理与配置说明](http://outofmemory.cn/wiki/keepalived-configuration)
-
-[LVS简介及使用](http://www.cnblogs.com/codebean/archive/2011/07/25/2116043.html)
-
-[基于keepalived 实现VIP转移，lvs，nginx的高可用](http://limian.blog.51cto.com/7542175/1301776)
+- [kube-keepalived-vip](https://github.com/kubernetes/contrib/tree/master/keepalived-vip)
+- http://www.keepalived.org/
+- [keepalived工作原理与配置说明](http://outofmemory.cn/wiki/keepalived-configuration)
+- [LVS简介及使用](http://www.cnblogs.com/codebean/archive/2011/07/25/2116043.html)
+- [基于keepalived 实现VIP转移，lvs，nginx的高可用](http://limian.blog.51cto.com/7542175/1301776)

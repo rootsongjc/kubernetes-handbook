@@ -113,6 +113,8 @@ spec:
 在 Kubernetes v1.0 版本，代理完全在 userspace。在 Kubernetes v1.1 版本，新增了 iptables 代理，但并不是默认的运行模式。
 从 Kubernetes v1.2 起，默认就是 iptables 代理。
 
+在Kubernetes v1.8.0-beta.0中，添加了ipvs代理。
+
 在 Kubernetes v1.0 版本，`Service` 是 “4层”（TCP/UDP over IP）概念。
 在 Kubernetes v1.1 版本，新增了 `Ingress` API（beta 版），用来表示 “7层”（HTTP）服务。
 
@@ -148,6 +150,23 @@ spec:
 ![iptables代理模式下Service概览图](../images/services-iptables-overview.jpg)
 
 
+
+### ipvs 代理模式
+
+这种模式，kube-proxy会监视Kubernetes `Service`对象和`Endpoints`，调用`netlink`接口以相应地创建ipvs规则并定期与Kubernetes `Service`对象和`Endpoints`对象同步ipvs规则，以确保ipvs状态与期望一致。访问服务时，流量将被重定向到其中一个后端Pod。
+
+与iptables类似，ipvs基于netfilter 的 hook 功能，但使用哈希表作为底层数据结构并在内核空间中工作。这意味着ipvs可以更快地重定向流量，并且在同步代理规则时具有更好的性能。此外，ipvs为负载均衡算法提供了更多选项，例如：
+
+- `rr`：轮询调度
+- `lc`：最小连接数
+- `dh`：目标哈希
+- `sh`：源哈希
+- `sed`：最短期望延迟
+- `nq`： 不排队调度
+
+**注意：** ipvs模式假定在运行kube-proxy之前在节点上都已经安装了IPVS内核模块。当kube-proxy以ipvs代理模式启动时，kube-proxy将验证节点上是否安装了IPVS模块，如果未安装，则kube-proxy将回退到iptables代理模式。
+
+![ipvs代理模式下Service概览图](../images/service-ipvs-overview.png)
 
 ## 多端口 Service
 
