@@ -13,7 +13,7 @@ Kubernetes自1.2版本引入HPA机制，到1.6版本之前一直是通过kubelet
 
 ## HPA解析
 
-Horizontal Pod Autoscaling仅适用于Deployment和ReplicationController，在V1版本中仅支持根据Pod的CPU利用率扩所容，在v1alpha版本中，支持根据内存和用户自定义的metric扩缩容。
+Horizontal Pod Autoscaling仅适用于Deployment和ReplicaSet，在V1版本中仅支持根据Pod的CPU利用率扩所容，在v1alpha版本中，支持根据内存和用户自定义的metric扩缩容。
 
 如果你不想看下面的文章可以直接看下面的示例图，组件交互、组件的配置、命令示例，都画在图上了。
 
@@ -27,14 +27,14 @@ Horizontal Pod Autoscaling由API server和controller共同实现。
 
 - autoscaling/v1
   - CPU
-- autoscaling/v2alpha1
+- autoscaling/v1alpha1
   - 内存
   - 自定义metrics
     - kubernetes1.6起支持自定义metrics，但是必须在kube-controller-manager中配置如下两项：
       - `--horizontal-pod-autoscaler-use-rest-clients=true`
       - `--api-server`指向[kube-aggregator](https://github.com/kubernetes/kube-aggregator)，也可以使用heapster来实现，通过在启动heapster的时候指定`--api-server=true`。查看[kubernetes metrics](https://github.com/kubernetes/metrics)
   - 多种metrics组合
-    - HPA会根据每个metric的值计算出scale的值，并将最大的那个指作为扩容的最终结果。
+    - HPA会根据每个metric的值计算出scale的值，并将最大的那个值作为扩容的最终结果。
 
 ## 使用kubectl管理
 
@@ -64,7 +64,7 @@ kubectl autoscale deployment foo --min=2 --max=5 --cpu-percent=80
 
 为Deployment foo创建 一个autoscaler，当Pod的CPU利用率达到80%的时候，RC的replica数在2到5之间。该命令的详细使用文档见https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale 。
 
-**注意** ：如果为ReplicationController创建HPA的话，无法使用rolling update，但是对于Deployment来说是可以的，因为Deployment在执行rolling update的时候会自动创建新的ReplicationController。
+**注意** ：如果为ReplicaSet创建HPA的话，无法使用rolling update，但是对于Deployment来说是可以的，因为Deployment在执行rolling update的时候会自动创建新的ReplicationController。
 
 ## 什么是 Horizontal Pod Autoscaling？
 
