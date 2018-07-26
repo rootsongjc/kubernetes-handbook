@@ -17,13 +17,16 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
-- Major in Software Engineering
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)
   - [TalkingData](http://www.talkingdata.com)
   - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）current➡️[招贤纳士](https://mp.weixin.qq.com/s/dIV_dElINMV4I0Ro2GnbOg)
 
----
+### Bio
+
+Jimmy Song is a Developer Advocate on Cloud Native at [Ant Financial](http:///antfin.com). He has organized a few Special Interest Groups in China for years that covering Kubernetes, Cloud Native and Service Mesh, and is the co-founder of the [ServiceMesher](http://www.servicemesher.com) community.
+
+He has been blogging and coding for years on Cloud Native, also translated Cloud Native Go & Python & Java books into Chinese. Jimmy lives in Beijing and spends his free time on photographing and traveling.
 
 ### Books
 
@@ -55,6 +58,11 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 ---
 
 ### Activities
+
+#### Service Mesh Meetup
+
+- Jul 29,2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
+- Jun 30,2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
 
 #### 2018
 
