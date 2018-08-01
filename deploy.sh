@@ -1,7 +1,6 @@
 #/bin/bash
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
-#des="../rootsongjc.github.io"
-des="public"
+des="../rootsongjc.github.io"
 msg="rebuilding site `date`"
 if [ $# -eq 1  ]
     then msg="$1"
@@ -15,7 +14,7 @@ git push origin master
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
 hugo-algolia --config algolia.yaml
 
-#cp -r public/* $des
+cp -r public/* $des
 # Go To Public folder
 cd $des
 
