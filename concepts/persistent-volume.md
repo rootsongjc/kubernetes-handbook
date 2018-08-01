@@ -493,6 +493,6 @@ spec:
     - 这将导致使用集群中默认的 StorageClass 为用户自动配置 PV。许多集群环境都有默认的 StorageClass，或者管理员可以创建自己的默认 StorageClass。
 - 在您的工具中，请注意一段时间之后仍未绑定的 PVC，并向用户展示它们，因为这表示集群可能没有动态存储支持（在这种情况下用户应创建匹配的 PV），或集群没有存储系统（在这种情况下用户不能部署需要 PVC 的配置）。
 
-原文地址：https://kubernetes.iohttps://kubernetes.io/docs/concepts/storage/persistent-volumes/
+原文地址：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 译者：[rootsongjc](https://github.com/rootsongjc)
