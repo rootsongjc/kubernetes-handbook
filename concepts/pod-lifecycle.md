@@ -127,14 +127,14 @@ spec:
     - Always：重启容器；Pod `phase` 仍为 Running。
     - OnFailure：重启容器；Pod `phase` 仍为 Running。
     - Never：Pod `phase` 变成 Failed。
-- Pod 中有两个容器并且正在运行。有一个容器退出失败。
+- Pod 中有两个容器并且正在运行。容器1退出失败。
   - 记录失败事件。
   - 如果 restartPolicy 为：
     - Always：重启容器；Pod `phase` 仍为 Running。
     - OnFailure：重启容器；Pod `phase` 仍为 Running。
     - Never：不重启容器；Pod `phase` 仍为 Running。
 
-  - 如果有一个容器没有处于运行状态，并且两个容器退出：
+  - 如果有容器1没有处于运行状态，并且容器2退出：
     - 记录失败事件。
     - 如果 `restartPolicy` 为：
       - Always：重启容器；Pod `phase` 仍为 Running。
