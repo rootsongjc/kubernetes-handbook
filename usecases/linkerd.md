@@ -1,5 +1,7 @@
 # Linkerd简介
 
+> **注意**：Linkerd最初版本是使用Scala开发的，现在已开始开发Linkerd2，使用Go语言开发，该公司的另一款轻量级Service Mesh conduit也寿终正寝，合并入Linkerd 2.0，详见[Conduit 0.5发布—以及R.I.P. Conduit](http://www.servicemesher.com/blog/rip-conduit/)。
+
 Linkerd是一个用于云原生应用的开源、可扩展的service mesh（一般翻译成服务网格，还有一种说法叫”服务啮合层“，见[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)）。
 
 ## Linkerd是什么

@@ -1,6 +1,8 @@
 # Istio简介
 
-[Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。关于Istio的详细信息请参考[Istio官方文档](https://istio.io)和[Istio中文文档](http://istio.doczh.cn)。
+> **注意**：Istio 1.10于2018年8月1日发布1.0，关于Istio的更多信息请见Istio官方文档:<https://istio.io>，中文版：<https://istio.io/zh>。
+
+[Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
 
 **TL;DR** 关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
 
