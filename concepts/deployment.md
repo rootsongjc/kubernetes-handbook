@@ -812,8 +812,3 @@ Deployment revision history存储在它控制的ReplicaSets中。
 
 `.spec.paused`是可以可选配置项，boolean值。用来指定暂停和恢复Deployment。Paused和没有paused的Deployment之间的唯一区别就是，所有对paused deployment中的PodTemplateSpec的修改都不会触发新的rollout。Deployment被创建之后默认是非paused。
 
-## Deployment 的替代选择
-
-### kubectl rolling update
-
-[Kubectl rolling update](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#rolling-update) 虽然使用类似的方式更新Pod和ReplicationController。但是我们推荐使用Deployment，因为它是声明式的，客户端侧，具有附加特性，例如即使滚动升级结束后也可以回滚到任何历史版本。
