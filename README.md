@@ -6,14 +6,19 @@
 
 本书的主题不仅限于Kubernetes，还包括以下几大主题：
 
+- 云原生开源组件
 - 云原生应用与微服务架构
-- 将微服务与Service Mesh架构
+- 基于Kubernete的Service Mesh架构
 - Kubernetes与微服务结合实践
 
 起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
 
 - GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - Gitbook在线浏览：https://jimmysong.io/kubernetes-handbook/
+
+## 快速开始
+
+如果您想要学习Kubernetes和云原生应用架构但是又不想自己从头开始搭建和配置一个集群，那么可以直接使用[**kubernetes-vagrant-centos-cluster**](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)项目直接在本地部署一个3节点的分布式集群及其他如Heapster、EFK、Istio等可选组件。
 
 ## 贡献与致谢
 

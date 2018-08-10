@@ -206,7 +206,7 @@ KUBELET_HOSTNAME="--hostname-override=172.20.0.113"
 KUBELET_API_SERVER="--api-servers=http://172.20.0.113:8080"
 #
 ## pod infrastructure container
-KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=harbor-001.jimmysong.io/library/pod-infrastructure:rhel7"
+KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=jimmysong/pause-amd64:3.0"
 #
 ## Add your own!
 KUBELET_ARGS="--cgroup-driver=systemd --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --kubeconfig=/etc/kubernetes/kubelet.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
@@ -236,7 +236,7 @@ systemctl start kubelet
 systemctl status kubelet
 ```
 
-### 通过 kublet 的 TLS 证书请求
+### 通过kublet的TLS证书请求
 
 kubelet 首次启动时向 kube-apiserver 发送证书签名请求，必须通过后 kubernetes 系统才会将该 Node 加入到集群。
 
@@ -341,7 +341,7 @@ systemctl status kube-proxy
 我们创建一个nginx的service试一下集群是否可用。
 
 ```bash
-$ kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=harbor-001.jimmysong.io/library/nginx:1.9  --port=80
+$ kubectl run nginx --replicas=2 --labels="run=load-balancer-example" --image=nginx  --port=80
 deployment "nginx" created
 $ kubectl expose deployment nginx --type=NodePort --name=example-service
 service "example-service" exposed
@@ -386,12 +386,14 @@ Commercial support is available at
 </html>
 ```
 
-提示：上面的测试示例中使用的nginx是我的私有镜像仓库中的镜像`harbor-001.jimmysong.io/library/nginx:1.9`，大家在测试过程中请换成自己的nginx镜像地址。
+访问以下任何一个地址都可以得到nginx的页面。
 
-访问`172.20.0.113:32724`或`172.20.0.114:32724`或者`172.20.0.115:32724`都可以得到nginx的页面。
+- 172.20.0.113:32724
+- 172.20.0.114:32724
+- 172.20.0.115:32724
 
-![welcome nginx](../images/kubernetes-installation-test-nginx.png)
+![nginx欢迎页面](../images/kubernetes-installation-test-nginx.png)
 
 ## 参考
 
-[Kubelet 的认证授权](../guide/kubelet-authentication-authorization.md)
+- [Kubelet 的认证授权](../guide/kubelet-authentication-authorization.md)

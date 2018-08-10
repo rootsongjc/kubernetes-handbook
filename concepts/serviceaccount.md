@@ -1,16 +1,16 @@
 # Service Account
 
-Service account为Pod中的进程提供身份信息。
+Service Account为Pod中的进程提供身份信息。
 
-*本文是关于 Service Account 的用户指南，管理指南另见 Service Account 的集群管理指南 。*
+**注意**：**本文是关于 Service Account 的用户指南，管理指南另见 Service Account 的集群管理指南 。**
 
-*注意：本文档描述的关于 Serivce Account 的行为只有当您按照 Kubernetes 项目建议的方式搭建起集群的情况下才有效。您的集群管理员可能在您的集群中有自定义配置，这种情况下该文档可能并不适用。*
+> 本文档描述的关于 Serivce Account 的行为只有当您按照 Kubernetes 项目建议的方式搭建起集群的情况下才有效。您的集群管理员可能在您的集群中有自定义配置，这种情况下该文档可能并不适用。
 
 当您（真人用户）访问集群（例如使用`kubectl`命令）时，apiserver 会将您认证为一个特定的 User Account（目前通常是`admin`，除非您的系统管理员自定义了集群配置）。Pod 容器中的进程也可以与 apiserver 联系。 当它们在联系 apiserver 的时候，它们会被认证为一个特定的 Service Account（例如`default`）。
 
 ## 使用默认的 Service Account 访问 API server
 
-当您创建 pod 的时候，如果您没有指定一个 service account，系统会自动得在与该pod 相同的 namespace 下为其指派一个`default` service account。如果您获取刚创建的 pod 的原始 json 或 yaml 信息（例如使用`kubectl get pods/podename -o yaml`命令），您将看到`spec.serviceAccountName`字段已经被设置为 [automatically set](https://kubernetes.io/docs/user-guide/working-with-resources/#resources-are-automatically-modified) 。
+当您创建 pod 的时候，如果您没有指定一个 service account，系统会自动得在与该pod 相同的 namespace 下为其指派一个`default` service account。如果您获取刚创建的 pod 的原始 json 或 yaml 信息（例如使用`kubectl get pods/podename -o yaml`命令），您将看到`spec.serviceAccountName`字段已经被设置为 `default`。
 
 您可以在 pod 中使用自动挂载的 service account 凭证来访问 API，如 [Accessing the Cluster](https://kubernetes.io/docs/user-guide/accessing-the-cluster/#accessing-the-api-from-a-pod) 中所描述。
 
@@ -138,7 +138,7 @@ token: ...
 namespace: 7 bytes
 ```
 
-> 注意该内容中的`token`被省略了。
+> **注意**：该内容中的`token`被省略了。
 
 ## 为 service account 添加 ImagePullSecret
 
@@ -154,7 +154,7 @@ myregistrykey    kubernetes.io/.dockerconfigjson   1       1d
 
 然后，修改 namespace 中的默认 service account 使用该 secret 作为 imagePullSecret。
 
-```
+```bash
 kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "myregistrykey"}]}'
 ```
 
@@ -205,4 +205,4 @@ spec:
 
 ## 参考
 
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+- [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)

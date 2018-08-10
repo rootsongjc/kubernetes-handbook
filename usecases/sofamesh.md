@@ -2,7 +2,7 @@
 
 SOFAMesh由蚂蚁金服开源，在兼容Istio整体架构和协议的基础上，做出部分调整：
 
-![SOFAMesh architecture](https://ws3.sinaimg.cn/large/006tKfTcgy1ft798kjr0mj31kw1biagi.jpg)
+![SOFAMesh architecture](https://ws4.sinaimg.cn/large/0069RVTdgy1fu08m7p22kj31kw1biq98.jpg)
 
 1. **使用Go语言开发全新的Sidecar，替代Envoy**
 2. **为了避免Mixer带来的性能瓶颈，合并Mixer部分功能进入Sidecar**
@@ -40,12 +40,15 @@ SOFAMesh中Golang版本的Sidecar，是一个名为MOSN(Modular Observable Smart
 
 MOSN和SOFAPilot配合，将可以提供让传统侵入式框架（如Spring Cloud，Dubbo，SOFA RPC等）和Service Mesh产品可以相互通讯的功能，以便可以平滑的向Service Mesh产品演进和过渡。
 
-**Pilot和后面会陆续开放的Mixer，Citadel等Istio模块**，会统一存放在同一个从Istio Fork出来的代码仓库中。未来会持续更新Istio最新代码，以保持和Istio的一致。
+**Pilot和后面会陆续开放的Mixer\Citadel等Istio模块**，会统一存放在同一个从Istio Fork出来的代码仓库中。未来会持续更新Istio最新代码，以保持和Istio的一致。
+
+## Roadmap
+
+![SOFA Mesh roadmap](https://ws2.sinaimg.cn/large/0069RVTdgy1fu08liarftj31kw0spkeg.jpg)
 
 ## 参考
 
 - [SOFA MOSN](https://github.com/alipay/sofa-mosn)
 - [SOFAMesh](https://github.com/alipay/sofa-mesh)
-- [SOFAMesh官方网站](http://www.sofastack.tech/)
-- [SOFAMesh官方文档](http://www.sofastack.tech/sofa-mesh/docs/Hom)
+- [SOFAMesh官方文档](http://www.sofastack.tech/sofa-mesh/docs/Home)
 - [蚂蚁金服大规模微服务架构下的Service Mesh探索之路](http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/)

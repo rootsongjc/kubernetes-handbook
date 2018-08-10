@@ -196,7 +196,7 @@
     * [集成虚拟机](usecases/integrating-vms.md)
     * [Istio中sidecar的注入规范及示例](usecases/sidecar-spec-in-istio.md)
     * [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
-    * [Istio 教程](usecases/istio-tutorial.md)
+    * [Istio教程](usecases/istio-tutorial.md)
   * [Linkerd](usecases/linkerd.md)
     * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   * [Conduit](usecases/conduit.md)
