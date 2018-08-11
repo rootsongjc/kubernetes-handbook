@@ -1,6 +1,6 @@
 #/bin/bash
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
-des="../rootsongjc.github.io"
+des="public"
 msg="rebuilding site `date`"
 if [ $# -eq 1  ]
     then msg="$1"
