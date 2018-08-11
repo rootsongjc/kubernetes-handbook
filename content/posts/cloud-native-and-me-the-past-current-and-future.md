@@ -1,6 +1,6 @@
 ---
-title: "Joined the CNCF Ambassador program"
-subtitle: "Honored to be a CNCF Ambassador"
+title: "Cloud Native and me - the past, current and future"
+subtitle: "Since I became a CNCF Ambassador"
 date: 2018-08-11T11:37:36+08:00
 bigimg: [{src: "https://ws4.sinaimg.cn/large/0069RVTdly1fu5o2o62prj31e00jw46d.jpg", desc: "West Lake | Hangzhou | Aug 5,2018"}]
 draft: false
@@ -9,7 +9,7 @@ tags: ["cloud native"]
 categories: ["cloud native"]
 ---
 
-Today I am honored to announce that I have become a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/).
+Today I am honored to announce that I have become a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/). Here is my story with Cloud Native.
 
 ## Origin
 
