@@ -14,7 +14,7 @@ git push origin master
 hugo # if using a theme, replace by `hugo -t <yourtheme>`
 hugo-algolia --config algolia.yaml
 
-cp -r public/* $des
+#cp -r public/* $des
 # Go To Public folder
 cd $des
 

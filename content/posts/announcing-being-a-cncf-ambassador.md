@@ -59,7 +59,7 @@ More than 300 people participated in the scene and more than 20,000 people watch
 
 ![img](https://ws1.sinaimg.cn/large/00704eQkgy1fsuaql8gjaj318w0u0qv6.jpg)
 
-_Service Mesh Meetup Hangzhou June 30, 2018
+_Service Mesh Meetup Hangzhou June 30, 2018_
 
 ![Service Mesh Meetup](https://ws1.sinaimg.cn/large/006tNc79gy1fts3o06igyj30sg0j0afk.jpg)
 
