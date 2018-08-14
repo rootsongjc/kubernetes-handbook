@@ -18,7 +18,7 @@ Pause容器，是可以自己来定义，官方使用的`gcr.io/google_container
 
 ## Pause容器的作用
 
-我们检查nod节点的时候会发现每个node上都运行了很多的pause容器，例如如下。
+我们检查node节点的时候会发现每个node上都运行了很多的pause容器，例如如下。
 
 ```bash
 $ docker ps
