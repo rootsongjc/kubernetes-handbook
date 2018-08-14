@@ -62,7 +62,7 @@ kubectl rollout undo deployment/nginx-deployment
 
 ## Deployment 概念详细解析
 
-本文翻译自kubernetes官方文档：https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md
+本文翻译自kubernetes官方文档：https://kubernetes.io/docs/concepts/workloads/controllers/deployment
 
 根据2017年5月10日的Commit 8481c02 翻译。
 
