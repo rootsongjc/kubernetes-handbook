@@ -155,7 +155,7 @@ kubectl   get   no   −l   name=hk8s−node−1   −−context=hk8s
 
 该课程的课程大纲：
 
-```text
+```
 Welcome & Introduction
 Container Orchestration
 Kubernetes
@@ -179,7 +179,7 @@ ps： 个人觉得这个课程可以不用学， 直接看文档就行了 。
 
 该课程的课程大纲：
 
-```text
+```
 Kubernetes Fundamentals
 Chapter 1. Course Introduction
 Chapter 2. Basics of Kubernetes

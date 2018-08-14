@@ -57,7 +57,7 @@
 
    Hadoop YARN 的 Dockerfile 参考如下配置。
 
-   ```dockerfile
+   ```docker
    FROM my-docker-repo/jdk:7u80
 
    # Add native libs
