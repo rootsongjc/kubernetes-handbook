@@ -98,7 +98,7 @@ v1beta2.apps                             2d
 v2beta1.autoscaling                      2d
 ```
 
-另外查看当前kubernetes集群支持的API版本还可以使用`kubectl api-version`：
+另外查看当前kubernetes集群支持的API版本还可以使用`kubectl api-versions`：
 
 ```bash
 $ kubectl api-versions
