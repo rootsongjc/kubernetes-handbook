@@ -136,7 +136,7 @@ spec:
 
 任何大于200小于400的返回码都会认定是成功的返回码。其他返回码都会被认为是失败的返回码。
 
-查看该server的源码：[server.go](http://k8s.io/docs/user-guide/liveness/image/server.go).
+查看该server的源码：[server.go](https://github.com/kubernetes/kubernetes/blob/master/test/images/liveness/server.go).
 
 最开始的10秒该容器是活着的， `/healthz` handler返回200的状态码。这之后将返回500的返回码。
 
