@@ -20,6 +20,8 @@ categories: ["service mesh"]
 
 ![The Enterprise Path to Service Mesh Architectures](https://ws2.sinaimg.cn/large/006tNbRwly1fu93bicdlfj30fs0nq464.jpg)
 
+*图书封面*
+
 下面看下本书目录，大体了解下本书讲了哪些内容。
 
 ## 目录
@@ -144,7 +146,7 @@ Service Mesh中服务是一等公民，它提供L5的网络流量管理，并提
 
 ![](https://ws3.sinaimg.cn/large/0069RVTdly1fuanez4qbtj30v4183n7p.jpg)
 
-_OSI模型-图片来自[CSDN](https://blog.csdn.net/yaopeng_2005/article/details/7064869)_
+*OSI模型（图片来自[CSDN](https://blog.csdn.net/yaopeng_2005/article/details/7064869)）*
 
 Service Mesh是在开发和运维之间植入的一个基础设施层。它将服务通信的关注点分离出来，在TCP/IP层之上抽象出一层通用功能。Service Mesh的引入直接导致生产关系的改变进而提高生产效率。具体表现在：
 
