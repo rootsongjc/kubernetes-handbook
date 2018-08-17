@@ -27,6 +27,10 @@ description = "宋净超的博客|Cloud Native Developer Advocate|jimmysong.io"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 
 [[Params.bigimg]]
+src = "https://ws3.sinaimg.cn/large/0069RVTdly1fu5luiuruvj31kw0kukjw.jpg"
+desc = "Service Mesh Meetup Beijing - Jul 29,2018"
+
+[[Params.bigimg]]
 src = "https://ws3.sinaimg.cn/large/006tNc79gy1ftifwoqziaj31in0pbqav.jpg"
 desc = "I ❤️  #Kubernetes - Jul 21,2018"
 

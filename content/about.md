@@ -3,7 +3,7 @@ date: "2017-03-18T20:53:54+08:00"
 title:  "About me"
 tags: ["me"]
 subtitle: "宋净超"
-description: "Jimmy Song(宋净超) - Cloud Native and Big Data"
+description: "Jimmy Song(宋净超) - Developer Advocate on Cloud Native, CNCF Ambassador, co-founder of ServiceMesher community"
 nocomment: true
 postmeta: false
 notoc: true
@@ -17,6 +17,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 
 - Jimmy Song（宋净超）
 - Beijing, China 🇨🇳
+- [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)
   - [TalkingData](http://www.talkingdata.com)
@@ -40,7 +41,7 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 **Gitbooks**
 
-- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - kubernetes中文指南/实践手册
+- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - Building static website with hugo
 - [envoy](https://servicemesher.github.io/envoy) - Envoy proxy 官方文档中文版
 
@@ -61,8 +62,9 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 #### Service Mesh Meetup
 
-- Jul 29,2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
-- Jun 30,2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
+- Aug 25, 2018 #3 | Shenzhen | [See details](http://www.huodongxing.com/event/3453378014200)
+- Jul 29, 2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
+- Jun 30, 2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
 
 #### 2018
 
