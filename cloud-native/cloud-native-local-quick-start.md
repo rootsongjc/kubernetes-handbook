@@ -121,12 +121,6 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 **注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
-也可以直接使用下面的token：
-
-```ini
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
-```
-
 ![Kubernetes dashboard](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/dashboard-animation.gif)
 
 **Heapster监控**
@@ -164,6 +158,8 @@ kubectl apply -f addon/traefik-ingress
 ```
 
 访问Traefik UI：<http://traefik.jimmysong.io>
+
+![Traefik dashboard](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/traefik-ingress.gif)
 
 **EFK**
 
@@ -220,6 +216,8 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
+![bookinfo示例](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
+
 ### Vistio
 
 [Vizceral](https://github.com/Netflix/vizceral)是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。它利用Istio Mixer生成的指标，然后将其输入Prometheus。Vistio查询Prometheus并将数据存储在本地以允许重播流量。
@@ -240,6 +238,40 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 ![vistio视图动画](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/vistio-animation.gif)
 
 更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
+
+### Kiali
+
+Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请查看[https://kiali.io](https://kiali.io/)。
+
+在本地该项目的根路径下执行下面的命令：
+
+```bash
+kubectl apply -n istio-system -f addon/kiali
+```
+
+![Kiali动画](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/kiali.gif)
+
+**注意**：当前还不支持jeager追踪，请使用上文中提到的jeager地址。
+
+### Weave scope
+
+[Weave scope](https://github.com/weaveworks/scope)可用于监控、可视化和管理Docker&Kubernetes集群，详情见<https://www.weave.works/oss/scope/> 
+
+在本地该项目的根路径下执行下面的命令：
+
+```bash
+kubectl apply -f addon/weave-scope
+```
+
+在本地的`/etc/hosts`下增加一条记录。
+
+```
+172.17.8.102 scope.weave.jimmysong.io
+```
+
+现在打开浏览器，访问http://scope.weave.jimmysong.io/
+
+![Kiali动画](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/weave-scope-animation.gif)
 
 ## 管理
 
@@ -315,5 +347,6 @@ rm -rf .vagrant
 
 - [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
+- [coredns/deployment](https://github.com/coredns/deployment)
 - [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
 - [Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)
