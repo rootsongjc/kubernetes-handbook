@@ -255,7 +255,7 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 - `scheme`：连接使用的schema，默认HTTP。
 - `path`: 访问的HTTP server的path。
 - `httpHeaders`：自定义请求的header。HTTP运行重复的header。
-- `port`：访问的容器的端口名字或者端口号。端口号必须介于1和65525之间。
+- `port`：访问的容器的端口名字或者端口号。端口号必须介于1和65535之间。
 
 对于HTTP探测器，kubelet向指定的路径和端口发送HTTP请求以执行检查。 Kubelet将probe发送到容器的IP地址，除非地址被`httpGet`中的可选`host`字段覆盖。 在大多数情况下，你不想设置主机字段。 有一种情况下你可以设置它。 假设容器在127.0.0.1上侦听，并且Pod的`hostNetwork`字段为true。 然后，在`httpGet`下的`host`应该设置为127.0.0.1。 如果你的pod依赖于虚拟主机，这可能是更常见的情况，你不应该是用`host`，而是应该在`httpHeaders`中设置`Host`头。
 
