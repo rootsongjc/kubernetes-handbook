@@ -96,7 +96,7 @@ spec:
   containers:
   - args:
     - /server
-    image: gcr.io/google_containers/liveness
+    image: k8s.gcr.io/liveness
     livenessProbe:
       httpGet:
         # when "host" is not defined, "PodIP" will be used
@@ -106,8 +106,8 @@ spec:
         path: /healthz
         port: 8080
         httpHeaders:
-          - name: X-Custom-Header
-            value: Awesome
+        - name: X-Custom-Header
+          value: Awesome
       initialDelaySeconds: 15
       timeoutSeconds: 1
     name: liveness
