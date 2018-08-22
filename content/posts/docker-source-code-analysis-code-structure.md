@@ -3,13 +3,14 @@ date: "2017-03-19T23:00:29+08:00"
 title: "Docker源码分析第一篇——代码结构"
 draft: false
 categories: "docker"
+notoc: true
 tags: ["docker","code"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151001042.jpg", desc: "北京八达岭长城  Oct 1,2015"}]
 ---
 
 ## 前言
 
-之前陆陆续续看过一点**docker**的源码，都未成体系，最近在研究**Docker-17.03-CE**，趁此机会研究下docker的源码，在网上找到一些相关资料，都比较过时了，发现*孙宏亮*大哥写过一本书叫《Docker源码分析》，而且之前也在**InfoQ**上陆续发过一些文章，虽然文章都比较老了，基于老的docker版本，但我认为依然有阅读的价值。起码能有这三方面收获：
+之前陆陆续续看过一点**docker**的源码，都未成体系，最近在研究**Docker-17.03-CE**，趁此机会研究下docker的源码，在网上找到一些相关资料，都比较过时了，发现**孙宏亮**写过一本书叫《Docker源码分析》，而且之前也在**InfoQ**上陆续发过一些文章，虽然文章都比较老了，基于老的docker版本，但我认为依然有阅读的价值。起码能有这三方面收获：
 
 - 一是培养阅读源码的思维方式，为自己阅读docker源码提供借鉴。
 - 二是可以了解docker版本的来龙去脉。
@@ -17,7 +18,7 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2015100
 
 ### 下载地址
 
-鉴于这本书已经发行一年半了了，基于的docker版本还是**1.2.0**，而如今都到了**1.13.0**（docker17.03的老版本号），应该很少有人买了吧，可以说这本书的纸质版本的生命周期也差不多了吧。如果有人感兴趣可以下载pdf版本看看，[Docker源码解析-机械工业出版社-孙宏亮著-2015年8月](https://res.cloudinary.com/jimmysong/image/upload/images/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE%E8%91%97.pdf)（完整文字版，大小25.86M），[Docker源码解析-看云整理版](https://res.cloudinary.com/jimmysong/image/upload/images/Docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E5%AD%99%E5%AE%8F%E4%BA%AE-%E7%9C%8B%E4%BA%91%E7%89%88.pdf)（文字版，有缩略，大小7.62M）。
+鉴于截止本文发稿时这本书已经发行一年半了了，基于的docker版本还是**1.2.0**，而如今都到了**1.13.0**（docker17.03的老版本号），应该很少有人买了吧，可以说这本书的纸质版本的生命周期也差不多了吧。如果有人感兴趣可以到网上找找看看，Docker源码解析-机械工业出版社-孙宏亮著-2015年8月（完整文字版，大小25.86M），Docker源码解析-看云整理版（文字版，有缩略，大小7.62M）。
 
 ## Out-of-date
 
