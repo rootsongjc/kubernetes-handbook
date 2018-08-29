@@ -483,7 +483,7 @@ spec:
 
 ## 编写可移植配置
 
-如果您正在编写在多种群集上运行并需要持久存储的配置模板或示例，我们建议您使用以下模式：
+如果您正在编写在多种集群上运行并需要持久存储的配置模板或示例，我们建议您使用以下模式：
 
 - 要在您的在配置组合中包含 `PersistentVolumeClaim` 对象（与 Deployment、ConfigMap等一起）。
 - 不要在配置中包含 `PersistentVolume` 对象，因为用户实例化配置可能没有创建 `PersistentVolume` 的权限。
