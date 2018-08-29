@@ -4,6 +4,8 @@
 
 本文中的代码和 YAML 文件见 <https://github.com/rootsongjc/istio-tutorial>。
 
+**注意：本教程基于 Istio 0.7.1，2018年8月1日，Isito 1.0 发布，本教程已过时。**
+
 ## 准备环境
 
 在进行本教程前需要先准备以下工具和环境。
