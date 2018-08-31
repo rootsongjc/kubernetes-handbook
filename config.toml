@@ -202,14 +202,14 @@ desc = "Istio Meetup in Beijing GDG"
 
 [[menu.main]]
     parent = "Projects"
-    name = "Magpie"
-    url = "posts/yarn-on-docker"
+    name = "sofa-mesh"
+    url = "https://github.com/alipay/sofa-mesh"
     weight = 3
 
 [[menu.main]]
     parent = "Projects"
-    name = "Cheatsheets"
-    url = "cheatsheets"
+    name = "sofa-mosn"
+    url = "https://github.com/alipay/sofa-mosn"
     weight = 4
 
 [[menu.main]]
