@@ -5,6 +5,7 @@ date: 2018-08-31T20:59:34+08:00
 bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwgy1fut7l89g7kj30go09ft9j.jpg", desc: "Kubernetes|Beijing|Aug 31,2018"}]
 draft: false
 notoc: true
+description: "Kubernetes"
 tags: ["cloud native","kubernetes"]
 categories: ["kubernetes"]
 ---

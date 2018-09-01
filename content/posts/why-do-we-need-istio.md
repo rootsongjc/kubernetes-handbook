@@ -9,7 +9,7 @@ subtitle: "为什么有了kubernetes我们还需要service mesh？"
 draft: false
 ---
 
-> 本文翻译自[Istio Why do I need it?](https://medium.com/google-cloud/istio-why-do-i-need-it-18d122838ee3)
+> 本文译自[Istio Why do I need it?](https://medium.com/google-cloud/istio-why-do-i-need-it-18d122838ee3)
 >
 > 译者[Jimmy Song](https://jimmysong.io/about)
 
@@ -48,7 +48,7 @@ Istio是**Service Mesh（服务网格）**。我认为的service mesh定义就�
 
 对于我来说，要真正理解Istio的价值，所以我使用了[codelab](https://codelabs.developers.google.com/codelabs/cloud-hello-istio/#0)。编写code lab的人真是太棒了！
 
-Code lb向我介绍了Istio控制平面的四个主要组件：
+Code lab向我介绍了Istio控制平面的四个主要组件：
 
 - **Pilot**：处理代理sidecar的配置和编程。
 - **Mixer**：为您的流量处理决策并收集遥测数据。
@@ -82,13 +82,7 @@ GKE结合使用[IAM](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-
 
 #### 服务身份标识
 
-GKE可以使用service account来管理[GKE上运行的应用程序](https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform)可以使用哪些GCP服务。这些service accout的密钥使用secret存储。Pod中运行的进程的身份标识是由[k8s service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)与RBAC一起决定的。Istio使用[istio-auth](https://istio.io/docs/concepts/security/mutual-tls.html)，它使用双向TLS提供强大的服务间和最终用户身份验证，内置身份和凭证管理。Istio-auth使用k8s service account。
-
-这些文档在解释其工作原理方面做得非常好，所以我只想在这里复制架构图的小图。去[阅读文字](https://istio.io/docs/concepts/security/mutual-tls.html)
-
-![istio auth](https://istio.io/docs/concepts/security/img/mutual-tls/auth.svg)
-
-istio-auth架构的小图
+GKE可以使用service account来管理[GKE上运行的应用程序](https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform)可以使用哪些GCP服务。这些service accout的密钥使用secret存储。Pod中运行的进程的身份标识是由[k8s service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)与RBAC一起决定的。Istio使用[istio-auth](https://istio.io/docs/concepts/security/mutual-tls.html)，它使用双向TLS提供强大的服务间和最终用户身份验证，内置身份和凭证管理。Istio-auth使用Kubernetes service account。
 
 Itsio不提供任何使用GCP service account帮助。这还很早，但是它正在制定未来发展计划的路线图。
 
@@ -147,11 +141,3 @@ Istio还处于发展的早期阶段，所以它不会做你期望的所有事情
 Dashboard是可视化网格配置的一种很好的方式，因为编写YAML会让人很快疲惫！是的，您可以设置仪表板上的控制面板来可视化度量指标，但我希望看到它与StackDriver集成。
 
 因此，在总体了解Istio之后，我实际上很喜欢它所承诺的内容。
-
-------
-
-原文地址：https://medium.com/google-cloud/istio-why-do-i-need-it-18d122838ee3
-
-翻译：[Jimmy Song(宋净超)](https://jimmysong.io/about)
-
-转载请注明出处
