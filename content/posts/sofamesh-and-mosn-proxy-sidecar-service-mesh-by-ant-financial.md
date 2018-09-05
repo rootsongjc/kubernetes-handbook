@@ -37,7 +37,7 @@ SOFAMesh在产品路线上，选择了跟随社区主流，我们选择了目前
 
 SOFAMesh将在兼容Istio整体架构和协议的基础上，做出部分调整：
 
-![SOFAMesh architecture](https://ws3.sinaimg.cn/large/006tKfTcgy1ft798kjr0mj31kw1biagi.jpg)
+![SOFAMesh架构](https://ws4.sinaimg.cn/large/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg)
 
 1. **使用Golang语言开发全新的Sidecar，替代Envoy**
 2. **为了避免Mixer带来的性能瓶颈，合并Mixer部分功能进入Sidecar**
@@ -67,7 +67,7 @@ SOFAMesh中Golang版本的Sidecar，是一个名为MOSN(Modular Observable Smart
 
 我们将大幅扩展和增强Istio中的Pilot模块：
 
-![SOFAMesh Pilot architecture](https://ws1.sinaimg.cn/large/006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg)
+![SOFAMesh Pilot 架构](https://ws1.sinaimg.cn/large/006tKfTcgy1ft75pq8rplj31kw19sn5q.jpg)
 
 1. **增加SOFARegistry的Adapter，提供超大规模服务注册和发现的解决方案**
 2. **增加数据同步模块，以实现多个服务注册中心之间的数据交换。**
@@ -81,7 +81,7 @@ MOSN和SOFAPilot配合，将可以提供让传统侵入式框架（如Spring Clo
 
 本文中提到的链接地址集合：
 
-- [SOFA MOSN](https://github.com/alipay/sofa-mosn)
+- [SOFAMosn](https://github.com/alipay/sofa-mosn)
 - [SOFAMesh](https://github.com/alipay/sofa-mesh)
 - [SOFAMesh官方网站](http://www.sofastack.tech/)
 - [SOFAMesh官方文档](http://www.sofastack.tech/sofa-mesh/docs/Hom)
