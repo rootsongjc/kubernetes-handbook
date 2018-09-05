@@ -32,7 +32,7 @@ SOFAMesh is logically split into a **data plane** and a **control plane** whi
 
 The following diagram shows the different components that make up each plane:
 
-<img width="100%" src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft798kjr0mj31kw1biagi.jpg" alt="SOFAMesh architecture">
+<img width="100%" src="https://ws4.sinaimg.cn/large/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg" alt="SOFAMesh architecture">
 
 ### MOSN
 
