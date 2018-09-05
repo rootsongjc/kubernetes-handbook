@@ -52,7 +52,7 @@
         },
         "tbfed-pagefooter": {
             "copyright": "Copyright © jimmysong.io 2017-2018",
-            "modify_label": "Updated at ",
+            "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
         "favicon": {
