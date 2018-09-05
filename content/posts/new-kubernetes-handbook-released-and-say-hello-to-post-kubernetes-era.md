@@ -46,7 +46,10 @@ categories: ["kubernetes"]
 ## 浏览与下载
 
 - 在线浏览 <https://jimmysong.io/kubernetes-handbook>
+
 - 为了方便大家下载，我放了一份在[微云](https://share.weiyun.com/5YbhTIG)上，提供PDF（108MB）、MOBI（42MB）、EPUB（53MB）格式下载。
+
+本书中更多的是实践教程，为了大家更好的理解 Kubernetes 原理，我推荐学习**[深入剖析Kubernetes by 张磊，极客时间出品](https://jimmysong.io/posts/kubernetes-tutorial-recommendation/)**。
 
 感谢 Kubernetes 热心用户对本书的支持，感谢各位[Contributors](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)，在该版本发布之前的几个月内又合作成立了[ServiceMesher社区](http://www.servicemesher.com/)，作为**后Kubernetes时代**的一支生力军，欢迎[联系我](http://www.servicemesher.com/contact)加入社区，共同开创**云原生新时代**。
 
