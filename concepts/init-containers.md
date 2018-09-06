@@ -55,7 +55,7 @@ Init 容器支持应用容器的全部字段和特性，包括资源限制、数
 
 - 将配置值放到配置文件中，运行模板工具为主应用容器动态地生成配置文件。例如，在配置文件中存放 POD_IP 值，并使用 Jinja 生成主应用配置文件。
 
-更多详细用法示例，可以在 [StatefulSet 文档](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) 和 [生产环境 Pod 指南](https://kubernetes.io/docs/user-guide/production-pods.md#handling-initialization) 中找到。
+更多详细用法示例，可以在 [StatefulSet 文档](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) 和 [生产环境 Pod 指南](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) 中找到。
 
 ### 使用 Init 容器
 
