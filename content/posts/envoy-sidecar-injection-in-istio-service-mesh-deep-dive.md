@@ -2,7 +2,7 @@
 title: "理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持"
 subtitle: "by Jimmy Song"
 date: 2018-09-11T10:39:42+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/0069RVTdly1fv5et0keqyj31i61047qt.jpg", desc: "Photo by Christopher"}]
+bigimg: [{src: "https://ws2.sinaimg.cn/large/0069RVTdly1fv5et0keqyj31i61047qt.jpg", desc: "Photo by Christopher Burns"}]
 draft: false
 notoc: true
 description: ""
@@ -350,6 +350,10 @@ $ sudo -i
 
 在了解 Init 容器初始化的 iptables 之前，我们先来了解下 iptables 和规则配置。
 
+下图展示了 iptables 调用链。
+
+![iptables 调用链](https://ws4.sinaimg.cn/large/0069RVTdly1fv5hukl647j30k6145gnt.jpg)
+
 ### iptables 中的表
 
 Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
@@ -358,7 +362,7 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 2. `filter` 是用于存放所有与防火墙相关操作的默认表。
 3. `nat` 用于 [网络地址转换](https://en.wikipedia.org/wiki/Network_address_translation)（例如：端口转发）。
 4. `mangle` 用于对特定数据包的修改（参考[损坏数据包](https://en.wikipedia.org/wiki/Mangled_packet)）。
-5. `security` 用于[强制访问控制](https://wiki.archlinux.org/index.php/Security#Mandatory_access_control) 网络规则
+5. `security` 用于[强制访问控制](https://wiki.archlinux.org/index.php/Security#Mandatory_access_control) 网络规则。
 
 **注**：在本示例中只用到了 `nat` 表。
 
