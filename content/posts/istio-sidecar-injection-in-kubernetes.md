@@ -4,12 +4,14 @@ subtitle: "如何编写Kubernetes的YAML文件才能符合Istio service mesh的�
 description: "我们知道 Istio 通过向 Pod 中注入一个 sidecar 容器来将 Pod 纳入到 Istio service mesh 中的，那么这些 sidecar 容器的注入遵循什么样的规范，需要给每个 Pod 增加哪些配置信息才能纳入 Istio service mesh 中呢？这篇文章将给您答案。"
 tags: ["kubernetes","istio","service-mesh"]
 categories: "service-mesh"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018032502.jpg", desc: "Bird's-eye view of a Chinese city|Hangzhou|Mar 25,2018"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fv92bwe55tj30w80a8n2a.jpg", desc: "Bird's-eye city view|Hangzhou|Mar 25,2018"}]
 date: 2018-03-27T19:58:48+08:00
 draft: false
 ---
 
 我们知道 Istio 通过向 Pod 中注入一个 sidecar 容器来将 Pod 纳入到 Istio service mesh 中的，那么这些 sidecar 容器的注入遵循什么样的规范，需要给每个 Pod 增加哪些配置信息才能纳入 Istio service mesh 中呢？这篇文章将给您答案。
+
+关于Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的请查看我的另一篇文章[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive)。
 
 本文同时归档到[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)中，更新请以handbook为准。
 
@@ -168,4 +170,4 @@ kubectl apply -n default -f <(istioctl kube-inject -f manifests/istio/k8s-app-mo
 
 ## 参考
 
-- [Installing Istio Sidecar](https://istio.io/docs/setup/kubernetes/sidecar-injection.html)
+- [注入 Istio sidecar](https://istio.io/zh/docs/setup/kubernetes/sidecar-injection/)

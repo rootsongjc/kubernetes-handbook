@@ -5,12 +5,10 @@ date: 2018-09-11T10:39:42+08:00
 bigimg: [{src: "https://ws2.sinaimg.cn/large/0069RVTdly1fv5et0keqyj31i61047qt.jpg", desc: "Photo by Christopher Burns"}]
 draft: false
 notoc: true
-description: ""
+description: "以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。"
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
 categories: ["service mesh"]
 ---
-
-## 理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持
 
 > 以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。
 
@@ -499,7 +497,8 @@ Chain ISTIO_REDIRECT (2 references)
 `ISTIO_OUTPUT` 链规则匹配的详细过程如下：
 
 - 如果目的地非 localhost 就跳转到 ISTIO_REDIRECT 链
-- 所有来自 istio-proxy 用户空间的流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
+- 所有来自 istio-proxy 用户空间的非 localhost 流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
+- 如果流量不是来自 istio-proxy 用户空间，又是对 localhost 的访问，那么就跳出 iptables，直接访问目的地
 - 如果目的地是 localhost 但是流量又不是来自 istio-proxy 用户空间的就跳转到 `ISTIO_REDIRECT` 链
 
 以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh) 脚本生成的，详细过程可以查看该脚本。
