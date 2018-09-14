@@ -6,14 +6,14 @@ subtitle: "理解Serverless（无服务器）和FaaS（函数即服务）"
 description: "本文带您了解serverless架构和以亚马逊AWS Lambda为代表的FaaS函数即服务，分析其来历和要解决的问题以及处境"
 date: 2017-11-24T23:46:35+08:00
 draft: false
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/google-data-center.jpg", desc: "Data Center"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Data Center"}]
 ---
 
 Serverless（无服务器架构）指的是由开发者实现的服务端逻辑运行在无状态的计算容器中，它由事件触发， 完全被第三方管理，其业务层面的状态则被开发者使用的数据库和存储资源所记录。
 
 下图来自谷歌云平台官网，是对云计算的一个很好的分层概括，其中 serverless 就是构建在虚拟机和容器之上的一层，与应用本身的关系更加密切。
 
-![从物理机到函数计算](https://jimmysong.io/kubernetes-handbook/images/from-bare-metal-to-functions.jpg)
+![从物理机到函数计算](https://ws4.sinaimg.cn/large/006tNbRwgy1fv8y3128tfj30ja0dywf3.jpg)
 
 ### Serverless架构的优点
 
@@ -61,7 +61,7 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 
 Function-as-a-Service 全景图（图片来自<https://github.com/amyers1793/FunctionasaServiceLandscape>)
 
-![FaaS Landscape](https://jimmysong.io/kubernetes-handbook/images/redpoint-faas-landscape.jpg)
+![FaaS Landscape](https://ws3.sinaimg.cn/large/006tNbRwgy1fv8y3cx0kuj30zk0k0wjh.jpg)
 
 ## 理解Serverless
 
@@ -113,11 +113,11 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 
 现在当大家讨论Serverless的时候首先想到的就是FaaS，有点甚嚣尘上了。FaaS本质上是一种事件驱动的由消息触发的服务，FaaS供应商一般会集成各种同步和异步的事件源，通过订阅这些事件源，可以突发或者定期的触发函数运行。
 
-![服务端软件的运行环境](https://jimmysong.io/kubernetes-handbook/images/serverless-server-side-software.jpg)
+![服务端软件的运行环境](https://ws3.sinaimg.cn/large/006tNbRwgy1fv8y3p7v04j30n60bowff.jpg)
 
 传统的服务器端软件不同是经应用程序部署到拥有操作系统的虚拟机或者容器中，一般需要长时间驻留在操作系统中运行，而FaaS是直接将程序部署上到平台上即可，当有事件到来时触发执行，执行完了就可以卸载掉。
 
-![FaaS应用架构](https://jimmysong.io/kubernetes-handbook/images/serverless-faas-platform.jpg)
+![FaaS应用架构](https://ws1.sinaimg.cn/large/006tNbRwly1fv8y41b37rj30860bo74s.jpg)
 
 ### 总结
 
@@ -137,7 +137,7 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 
 传统的应用程序架构可能是这样的：
 
-![传统应用程序架构](https://jimmysong.io/kubernetes-handbook/images/non-serverless-game-arch.jpg)
+![传统应用程序架构](https://ws2.sinaimg.cn/large/006tNbRwly1fv8y4dlfrrj30g104n74i.jpg)
 
 - 一个app前端，iOS后者安卓
 - 用Java写的后端，使用JBoss或者Tomcat做server运行
@@ -147,7 +147,7 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 
 这样的架构开发起来比较容易，但是维护起来确十分复杂，前端开发、后端的开发都需要十分专业的人员、环境的配置，还要有人专门维护数据库、应用的更新和升级。
 
-![Serverless架构](https://jimmysong.io/kubernetes-handbook/images/serverless-game-arch.jpg)
+![Serverless架构](https://ws1.sinaimg.cn/large/006tNbRwly1fv8y4plly1j30fx0b4gm7.jpg)
 
 而在serverless架构中，我们不再需要在服务器端代码中存储任何会话状态，而是直接将它们存储在NoSQL中，这样将使应用程序无状态，有助于弹性扩展。前端可以直接利用BaaS而减少后端的编码需求，这样架构的本质上是减少了应用程序开发的人力成本，降低了自己维护基础设施的风险，而且利用云的能力更便于扩展和快速迭代。
 
