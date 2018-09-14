@@ -2,16 +2,15 @@
 date: "2017-07-15T16:25:30+08:00"
 draft: false
 categories: "cloud-native"
-subtitle: "《迁移至云原生应用架构》第一章"
-title: "什么是云原生应用架构"
-description: "什么是云原生应用架构，《迁移至云原生应用架构的第一章》"
+subtitle: "Cloud Native的定义"
+title: "什么是云原生应用架构？"
+notoc: true
+description: "什么是云原生应用架构，《迁移至云原生应用架构》第一章"
 tags: ["cloud-native"]
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Cloud|May 24,2018"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Foggy cloud"}]
 ---
 
-本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一部分，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
-
-# 第1章 云原生的崛起
+> 本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一章，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)，阅读全书请访问[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
 
 *软件正在吞噬这个世界。—Mark Andreessen*
 
@@ -22,7 +21,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jp
 - 弹性可扩展的Web
 - 以移动为核心的用户体验
 
-将软件迁移到云上是一种自演化，使用了云原生应用架构是这些公司能够如此具有破坏性的核心原因。通过云，任何能够按需、自助弹性提供和释放计算、网络和存储资源的计算环境。云的定义包括公有云(例如 Amazon Web Services、Google Cloud和Microsoft Azure)和私有云(例如 VMware vSphere和 OpenStack)。
+将软件迁移到云上是一种自演化，使用了云原生应用架构是这些公司能够如此具有破坏性的核心原因。通过云，任何能够按需、自助弹性提供和释放计算、网络和存储资源的计算环境。云的定义包括公有云（例如 Amazon Web Services、Google Cloud和Microsoft Azure）和私有云（例如 VMware vSphere和 OpenStack）。
 
 本章中我们将探讨云原生应用架构的创新性，然后论证云原生应用架构的主要特性。
 
@@ -253,3 +252,7 @@ Nassim Taleb在他的Antifragile（Random House）一书中介绍了抗脆弱性
 随着速度和规模扩大，系统的压力随之增加，系统的响应能力和安全性也随之提高。
 
 在下一章中，我们将探讨大多数企业为采用云原生应用程序架构而需要做出哪些改变。
+
+---
+
+阅读本书剩余部分，请访问：[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
