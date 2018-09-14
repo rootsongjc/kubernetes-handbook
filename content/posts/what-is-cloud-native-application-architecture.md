@@ -3,7 +3,7 @@ date: "2017-07-15T16:25:30+08:00"
 draft: false
 categories: "cloud-native"
 subtitle: "Cloud Native的定义"
-title: "什么是云原生应用架构？"
+title: "什么是Cloud Native（云原生）应用架构？"
 notoc: true
 description: "什么是云原生应用架构，《迁移至云原生应用架构》第一章"
 tags: ["cloud-native"]

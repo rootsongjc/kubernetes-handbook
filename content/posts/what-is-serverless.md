@@ -1,15 +1,13 @@
 ---
-title: "什么是serverless架构？"
+title: "什么是Serverless（无服务器）架构？"
 tags: ["serverless","faas"]
 categories: "serverless"
-subtitle: "理解Serverless和FaaS"
+subtitle: "理解Serverless（无服务器）和FaaS（函数即服务）"
 description: "本文带您了解serverless架构和以亚马逊AWS Lambda为代表的FaaS函数即服务，分析其来历和要解决的问题以及处境"
 date: 2017-11-24T23:46:35+08:00
 draft: false
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/google-data-center.jpg", desc: "Data Center"}]
 ---
-
-# Serverless架构
 
 Serverless（无服务器架构）指的是由开发者实现的服务端逻辑运行在无状态的计算容器中，它由事件触发， 完全被第三方管理，其业务层面的状态则被开发者使用的数据库和存储资源所记录。
 
@@ -52,6 +50,7 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 - [fn](https://github.com/fnproject/fn) - The container native, cloud agnostic serverless platform. [http://fnproject.io](http://fnproject.io/)
 - [funktion](https://github.com/funktionio/funktion/) - a CLI tool for working with funktion <https://funktion.fabric8.io/>
 - [fx](https://github.com/metrue/fx) - Poor man's serverless framework based on Docker, Function as a Service with painless.
+- [knative](https://github.com/knative) - Kubernetes-based platform to build, deploy, and manage modern serverless workloads
 - [IronFunctions](https://github.com/iron-io/functions) - IronFunctions - the serverless microservices platform. [http://iron.io](http://iron.io/)
 - [kubeless](https://github.com/kubeless/kubeless) - Kubernetes Native Serverless Framework [http://kubeless.io](http://kubeless.io/)
 - [OpenWhisk](http://openwhisk.incubator.apache.org/) -  Apache OpenWhisk (Incubating) is a [serverless](http://openwhisk.incubator.apache.org/serverless), open source cloud platform that executes functions in response to events at any scale.
@@ -64,9 +63,9 @@ Function-as-a-Service 全景图（图片来自<https://github.com/amyers1793/Fun
 
 ![FaaS Landscape](https://jimmysong.io/kubernetes-handbook/images/redpoint-faas-landscape.jpg)
 
-# 理解Serverless
+## 理解Serverless
 
-No silver bullet. - The Mythical Man-Month
+> No silver bullet. - The Mythical Man-Month
 
 许多年前，我们开发的软件还是C/S（客户端/服务器）和MVC（模型-试图-控制器）的形式，再后来有了SOA，最近几年又出现了微服务架构，更新一点的有Cloud Native（云原生）应用，企业应用从单体架构，到服务化，再到更细粒度的微服务化，应用开发之初就是为了应对互联网的特有的高并发、不间断的特性，需要很高的性能和可扩展性，人们对软件开发的追求孜孜不倦，希望力求在软件开发的复杂度和效率之间达到一个平衡。但可惜的是，NO SILVER BULLET！几十年前（1975年）Fred Brooks就在The Mythical Man-Month中就写到了这句话。那么Serverlss会是那颗银弹吗？
 
