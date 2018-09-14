@@ -499,7 +499,11 @@ Chain ISTIO_REDIRECT (2 references)
 - 如果目的地非 localhost 就跳转到 ISTIO_REDIRECT 链
 - 所有来自 istio-proxy 用户空间的非 localhost 流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
 - 如果流量不是来自 istio-proxy 用户空间，又是对 localhost 的访问，那么就跳出 iptables，直接访问目的地
-- 如果目的地是 localhost 但是流量又不是来自 istio-proxy 用户空间的就跳转到 `ISTIO_REDIRECT` 链
+- 其它所有情况都跳转到 `ISTIO_REDIRECT` 链
+
+其实在最后这条规则前还可以增加 IP 地址过滤，让某些 IP 地址段不通过 Envoy 代理。
+
+![istio sidecar iptables 注入](https://ws3.sinaimg.cn/large/006tNbRwly1fv92uvxu4dj31320giq6u.jpg)
 
 以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh) 脚本生成的，详细过程可以查看该脚本。
 
