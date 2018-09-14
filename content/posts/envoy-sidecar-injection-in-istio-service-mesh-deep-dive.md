@@ -474,7 +474,7 @@ Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
     2   120 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere             tcp dpt:9080
 
-# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15001 端口，至此成功的拦截了流量懂啊 Envoy 
+# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15001 端口，至此成功的拦截了流量到 Envoy 
 Chain ISTIO_IN_REDIRECT (1 references)
  pkts bytes target     prot opt in     out     source               destination
     2   120 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
