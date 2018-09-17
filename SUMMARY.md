@@ -204,6 +204,7 @@
     * [如何参与Istio社区及注意事项](usecases/istio-community-tips.md)
     * [Istio教程](usecases/istio-tutorial.md)
     * [Istio免费学习资源汇总](usecases/istio-tutorials-collection.md)
+    * [深入理解Istio中的Sidecar注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
   * [Linkerd](usecases/linkerd.md)
     * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   * [Conduit](usecases/conduit.md)
