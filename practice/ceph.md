@@ -34,7 +34,7 @@ Ceph中的分布式块存储（Ceph RDB）实现为对象存储顶部的薄层�
 Ceph文件系统（CephFS）是一个符合POSIX的文件系统，使用Ceph集群来存储其数据。所述Ceph的文件系统要求Ceph的集群中的至少一个Ceph的元数据服务器（MDS）。MDS处理所有文件操作，例如文件和目录列表，属性，所有权等。MDS利用RADOS对象来存储文件系统数据和属性。它可以水平扩展，因此您可以将更多的Ceph元数据服务器添加到您的群集中，以支持更多的文件系统操作客户端。
 
 ## Kubernetes和Ceph
-Kubernetes支持Ceph的块存储（Ceph RDB)和文件存储（CephFS）作为Kubernetes的持久存储后端。Kubernetes自带Ceph RDB的internal provisioner，可以配置动态提供，如果要使用CephFS作为动态存储提供，需要安装外置的provisioner。
+Kubernetes支持Ceph的块存储（Ceph RBD）和文件存储（CephFS）作为Kubernetes的持久存储后端。Kubernetes自带Ceph RBD的internal provisioner，可以配置动态提供，如果要使用CephFS作为动态存储提供，需要安装外置的provisioner。
 
 与Ceph相关的Kubernetes StorageClass的[官方文档介绍](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 
