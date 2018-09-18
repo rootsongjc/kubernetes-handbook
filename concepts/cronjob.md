@@ -7,9 +7,9 @@
 
 一个 CronJob 对象类似于 *crontab* （cron table）文件中的一行。它根据指定的预定计划周期性地运行一个 Job，格式可以参考 [Cron](https://en.wikipedia.org/wiki/Cron) 。
 
-### 前提条件
+## 前提条件
 
-当使用的 Kubernetes 集群，版本 >= 1.4（对 ScheduledJob），>= 1.5（对 CronJob），当启动 API Server（参考 [为集群开启或关闭 API 版本](https://kubernetes.io/docs/admin/cluster-management/#turn-on-or-off-an-api-version-for-your-cluster) 获取更多信息）时，通过传递选项 `--runtime-config=batch/v2alpha1=true` 可以开启 batch/v2alpha1 API。
+当前使用的 Kubernetes 集群，版本 >= 1.8（对 CronJob）。对于先前版本的集群，版本 < 1.8，启动 API Server（参考 [为集群开启或关闭 API 版本](https://kubernetes.io/docs/admin/cluster-management/#turn-on-or-off-an-api-version-for-your-cluster) 获取更多信息）时，通过传递选项 `--runtime-config=batch/v2alpha1=true` 可以开启 batch/v2alpha1 API。
 
 典型的用法如下所示：
 
@@ -36,10 +36,10 @@
 
 - `.spec.successfulJobsHistoryLimit` 和 `.spec.failedJobsHistoryLimit` ：**历史限制**，是可选的字段。它们指定了可以保留多少完成和失败的 Job。
 
-  默认没有限制，所有成功和失败的 Job 都会被保留。然而，当运行一个 Cron Job 时，Job 可以很快就堆积很多，推荐设置这两个字段的值。设置限制的值为 `0`，相关类型的 Job 完成后将不会被保留。
+  默认情况下，它们分别设置为 `3` 和 `1`。设置限制的值为 `0`，相关类型的 Job 完成后将不会被保留。
 
 ```yaml
-apiVersion: batch/v2alpha1
+apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: hello
@@ -77,12 +77,12 @@ hello     */1 * * * *   False     0         <none>
 $ kubectl get jobs
 NAME               DESIRED   SUCCESSFUL   AGE
 hello-1202039034   1         1            49s
-$ pods=$(kubectl get pods --selector=job-name=hello-1202039034 --output=jsonpath={.items..metadata.name} -a)
+$ pods=$(kubectl get pods --selector=job-name=hello-1202039034 --output=jsonpath={.items..metadata.name})
 $ kubectl logs $pods
 Mon Aug 29 21:34:09 UTC 2016
 Hello from the Kubernetes cluster
 
-# 注意，删除cronjob的时候不会自动删除job，这些job可以用kubectl delete job来删除
+# 注意，删除 cronjob 的时候不会自动删除 job，这些 job 可以用 kubectl delete job 来删除
 $ kubectl delete cronjob hello
 cronjob "hello" deleted
 ```
