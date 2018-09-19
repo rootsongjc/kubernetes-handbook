@@ -33,7 +33,7 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 
 成熟度级别（Maturity Level）包括以下三种：
 
-* inception（初级）
+* sandbox（初级）
 * incubating（孵化中）
 * graduated（毕业）
 
@@ -43,7 +43,7 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 
 项目所达到相应成熟度需要满足的条件和投票机制见下图：
 
-![CNCF项目成熟度级别](../images/cncf-graduation-criteria.jpg)
+![CNCF项目成熟度级别](../images/cncf-graduation-criteria-v2.jpg)
 
 ## TOC（技术监督委员会）
 
@@ -65,6 +65,3 @@ TOC成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/b
 * [https://www.cncf.io/about/charter/](https://www.cncf.io/about/charter/)
 * [https://github.com/cncf/landscape](https://github.com/cncf/landscape)
 * [https://github.com/cncf/toc](https://github.com/cncf/toc)
-
-
-
