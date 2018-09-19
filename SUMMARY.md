@@ -215,6 +215,8 @@
     * [Envoy作为前端代理](usecases/envoy-front-proxy.md)
     * [Envoy mesh教程](usecases/envoy-mesh-in-kubernetes-tutorial.md)
   * [SOFAMesh](usecases/sofamesh.md)
+    * [SOFAMesh中的Dubbo on x-protocol](usecases/dubbo-on-x-protocol-in-sofa-mesh.md)
+  * [SOFAMosn](usecases/sofamosn.md)
 * [大数据](usecases/big-data.md)
   * [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   * [运行支持Kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
