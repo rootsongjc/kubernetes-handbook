@@ -156,15 +156,9 @@ desc = "Istio Meetup in Beijing GDG"
 
 [[menu.main]]
     parent = "Gitbooks"
-    name = "Envoy proxy中文文档"
-    url = "https://servicemesher.github.io/envoy"
-    weight = 5
-
-[[menu.main]]
-    parent = "Gitbooks"
     name = "Migrating to Cloud Native"
     url = "migrating-to-cloud-native-application-architectures"
-    weight = 6
+    weight = 5
 
 [[menu.main]]
     identifier = "Publications"
