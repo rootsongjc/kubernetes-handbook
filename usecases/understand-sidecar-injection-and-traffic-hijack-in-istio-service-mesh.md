@@ -81,7 +81,7 @@ spec:
 
 再查看下 `productpage` 容器的 [Dockerfile](https://github.com/istio/istio/blob/master/samples/bookinfo/src/productpage/Dockerfile)。
 
-```dockerfile
+```docker
 FROM python:2.7-slim
 
 COPY requirements.txt ./
@@ -256,7 +256,7 @@ Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Isti
 
 我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxy_init) 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
 
-```dockerfile
+```docker
 FROM ubuntu:xenial
 RUN apt-get update && apt-get install -y \
     iproute2 \
@@ -494,7 +494,7 @@ Chain ISTIO_REDIRECT (2 references)
 
 首先查看 `proxyv2` 镜像的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2)。
 
-```dockerfile
+```docker
 FROM istionightly/base_debug
 ARG proxy_version
 ARG istio_version
