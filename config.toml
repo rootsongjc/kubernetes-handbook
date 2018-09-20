@@ -132,33 +132,39 @@ desc = "Istio Meetup in Beijing GDG"
 
 [[menu.main]]
     parent = "Gitbooks"
+    name = "Istio handbook"
+    url = "istio-handbook"
+    weight = 1
+
+[[menu.main]]
+    parent = "Gitbooks"
     name = "Kubernetes handbook"
     url = "kubernetes-handbook"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     parent = "Gitbooks"
     name = "Docker handbook"
     url = "docker-handbook"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "Gitbooks"
     name = "Hugo Handbook"
     url = "hugo-handbook"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     parent = "Gitbooks"
     name = "Envoy proxy中文文档"
     url = "https://servicemesher.github.io/envoy"
-    weight = 4
+    weight = 5
 
 [[menu.main]]
     parent = "Gitbooks"
     name = "Migrating to Cloud Native"
     url = "migrating-to-cloud-native-application-architectures"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     identifier = "Publications"
