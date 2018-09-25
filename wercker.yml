@@ -4,6 +4,6 @@ build:
     - script:
         name: build
         code: |
-            gitbook install
-            gitbook build
-
+            make install
+            make build
+            make lint
