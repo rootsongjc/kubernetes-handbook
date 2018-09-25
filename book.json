@@ -29,7 +29,8 @@
         "3-ba",
         "theme-default",
         "-highlight", "prism", "prism-themes",
-        "sitemap-general"
+        "sitemap-general",
+        "lightbox"
     ],
     "pluginsConfig": {
         "theme-default": {
