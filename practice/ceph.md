@@ -40,25 +40,25 @@ Kubernetes支持Ceph的块存储（Ceph RBD）和文件存储（CephFS）作为K
 
 | Volume Plugin        | Internal Provisioner| Config Example                       |
 | :---                 |     :---:           |    :---:                             |
-| AWSElasticBlockStore | &#x2713;            | [AWS](#aws)                          |
-| AzureFile            | &#x2713;            | [Azure File](#azure-file)            |
-| AzureDisk            | &#x2713;            | [Azure Disk](#azure-disk)            |
+| AWSElasticBlockStore | &#x2713;            | AWS                      |
+| AzureFile            | &#x2713;            | Azure File            |
+| AzureDisk            | &#x2713;            | Azure Disk            |
 | CephFS               | -                   | -                                    |
-| Cinder               | &#x2713;            | [OpenStack Cinder](#openstack-cinder)|
+| Cinder               | &#x2713;            | OpenStack Cinder |
 | FC                   | -                   | -                                    |
 | FlexVolume           | -                   | -                                    |
 | Flocker              | &#x2713;            | -                                    |
-| GCEPersistentDisk    | &#x2713;            | [GCE](#gce)                          |
-| Glusterfs            | &#x2713;            | [Glusterfs](#glusterfs)              |
+| GCEPersistentDisk    | &#x2713;            | GCE                          |
+| Glusterfs            | &#x2713;            | Glusterfs              |
 | iSCSI                | -                   | -                                    |
 | PhotonPersistentDisk | &#x2713;            | -                                    |
-| Quobyte              | &#x2713;            | [Quobyte](#quobyte)                  |
+| Quobyte              | &#x2713;            | Quobyte                  |
 | NFS                  | -                   | -                                    |
-| RBD                  | &#x2713;            | [Ceph RBD](#ceph-rbd)                |
-| VsphereVolume        | &#x2713;            | [vSphere](#vsphere)                  |
-| PortworxVolume       | &#x2713;            | [Portworx Volume](#portworx-volume)  |
-| ScaleIO              | &#x2713;            | [ScaleIO](#scaleio)                  |
-| StorageOS            | &#x2713;            | [StorageOS](#storageos)              |
-| Local                | -                   | [Local](#local)              |
+| RBD                  | &#x2713;            | Ceph RBD                |
+| VsphereVolume        | &#x2713;            | vSphere                  |
+| PortworxVolume       | &#x2713;            | Portworx Volume  |
+| ScaleIO              | &#x2713;            | ScaleIO                  |
+| StorageOS            | &#x2713;            | StorageOS              |
+| Local                | -                   | Local     |
 
 后续文档将介绍Kubernetes如何与Ceph RDB 和 CephFS集成。

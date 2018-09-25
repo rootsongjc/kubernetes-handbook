@@ -241,7 +241,7 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 
 ## 配置Probe
 
-[Probe](https://kubernetes.io/docs/api-reference/v1.6/#probe-v1-core)中有很多精确和详细的配置，通过它们你能准确的控制liveness和readiness检查：
+Probe 中有很多精确和详细的配置，通过它们你能准确的控制liveness和readiness检查：
 
 - `initialDelaySeconds`：容器启动后第一次执行探测是需要等待多少秒。
 - `periodSeconds`：执行探测的频率。默认是10秒，最小1秒。
@@ -249,7 +249,7 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 - `successThreshold`：探测失败后，最少连续探测成功多少次才被认定为成功。默认是1。对于liveness必须是1。最小值是1。 
 - `failureThreshold`：探测成功后，最少连续探测失败多少次才被认定为失败。默认是3。最小值是1。
 
-[HTTP probe](https://kubernetes.io/docs/api-reference/v1.6/#httpgetaction-v1-core)中可以给 `httpGet`设置其他配置项：
+HTTP probe 中可以给 `httpGet`设置其他配置项：
 
 - `host`：连接的主机名，默认连接到pod的IP。你可能想在http header中设置"Host"而不是使用IP。
 - `scheme`：连接使用的schema，默认HTTP。

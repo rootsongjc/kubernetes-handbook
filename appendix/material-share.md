@@ -40,7 +40,6 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 
 ### 博客
 
-- [apcera](https://www.apcera.com/blog)
 - [aporeto](https://www.aporeto.com/blog/)
 - [applatix](https://applatix.com/blog/)
 - [apprenda](https://apprenda.com/blog/)
@@ -52,7 +51,6 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [containership](https://blog.containership.io/)
 - [coreos](https://coreos.com/blog/)
 - [coscale](https://www.coscale.com/blog)
-- [deis](https://deis.com/blog/)
 - [fabric8](https://blog.fabric8.io/)
 - [grafana](https://grafana.com/blog/)
 - [gravitational](https://gravitational.com/blog/)

@@ -108,7 +108,7 @@ data:
 
 **说明**
 
-该文件中包含了配置文件filebeat的配置文件的[ConfigMap](http://rootsongjc.github.io/blogs/kubernetes-configmap-introduction/)，因此不需要再定义环境变量。
+该文件中包含了配置文件filebeat的配置文件的[ConfigMap](https://jimmysong.io/posts/kubernetes-configmap-introduction/)，因此不需要再定义环境变量。
 
 当然你也可以不同ConfigMap，通过传统的传递环境变量的方式来配置filebeat。
 

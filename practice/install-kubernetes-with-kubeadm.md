@@ -1,6 +1,6 @@
 # kubeadm
 ## 基本介绍
-**kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](/docs/admin/bootstrap-tokens/)并升级/降级群集。
+**kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/)并升级/降级群集。
 
 kubeadm的目标是建立一个通过Kubernetes一致性测试[Kubernetes Conformance tests](http://blog.kubernetes.io/2017/10/software-conformance-certification)的最小可行集群 ，但不会安装其他功能插件。
 

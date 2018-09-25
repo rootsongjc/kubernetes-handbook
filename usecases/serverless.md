@@ -44,13 +44,13 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 - [IronFunctions](https://github.com/iron-io/functions) - IronFunctions - the serverless microservices platform. [http://iron.io](http://iron.io/)
 - [knative](https://github.com/knative) - Kubernetes-based platform to build, deploy, and manage modern serverless workloads
 - [kubeless](https://github.com/kubeless/kubeless) - Kubernetes Native Serverless Framework [http://kubeless.io](http://kubeless.io/)
-- [OpenWhisk](http://openwhisk.incubator.apache.org/) -  Apache OpenWhisk (Incubating) is a [serverless](http://openwhisk.incubator.apache.org/serverless), open source cloud platform that executes functions in response to events at any scale.
+- [OpenWhisk](http://openwhisk.incubator.apache.org/) -  Apache OpenWhisk (Incubating) is a serverless, open source cloud platform that executes functions in response to events at any scale.
 
 以上项目收录于 [awsome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)。
 
 ## FaaS
 
-Function-as-a-Service景观图（图片来自<https://github.com/amyers1793/FunctionasaServiceLandscape>)
+Function-as-a-Service景观图（图片来自`https://github.com/amyers1793/FunctionasaServiceLandscape`)
 
 ![FaaS Landscape](../images/redpoint-faas-landscape.jpg)
 

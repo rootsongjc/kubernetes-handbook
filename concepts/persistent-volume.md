@@ -42,7 +42,7 @@ PV 属于集群中的资源。PVC 是对这些资源的请求，也作为对资�
 
 Pod 使用声明作为卷。集群检查声明以查找绑定的卷并为集群挂载该卷。对于支持多种访问模式的卷，用户指定在使用声明作为容器中的卷时所需的模式。
 
-用户进行了声明，并且该声明是绑定的，则只要用户需要，绑定的 PV 就属于该用户。用户通过在 Pod 的 volume 配置中包含 `persistentVolumeClaim` 来调度 Pod 并访问用户声明的 PV。[请参阅下面的语法细节](#claims-as-volumes)。
+用户进行了声明，并且该声明是绑定的，则只要用户需要，绑定的 PV 就属于该用户。用户通过在 Pod 的 volume 配置中包含 `persistentVolumeClaim` 来调度 Pod 并访问用户声明的 PV。
 
 ### 持久化卷声明的保护
 
@@ -50,7 +50,7 @@ PVC 保护的目的是确保由 pod 正在使用的 PVC 不会从系统中移除
 
 注意：当 pod 状态为 `Pending` 并且 pod 已经分配给节点或 pod 为 `Running` 状态时，PVC 处于活动状态。
 
-当启用[PVC 保护 alpha 功能](https://kubernetes.io/docs/tasks/administer-cluster/pvc-protection/)时，如果用户删除了一个 pod 正在使用的 PVC，则该 PVC 不会被立即删除。PVC 的删除将被推迟，直到 PVC 不再被任何 pod 使用。
+当启用PVC 保护 alpha 功能时，如果用户删除了一个 pod 正在使用的 PVC，则该 PVC 不会被立即删除。PVC 的删除将被推迟，直到 PVC 不再被任何 pod 使用。
 
 您可以看到，当 PVC 的状态为 `Teminatiing` 时，PVC 受到保护，`Finalizers` 列表中包含 `kubernetes.io/pvc-protection`：
 
@@ -111,7 +111,7 @@ spec:
 
 #### 删除
 
-对于支持删除回收策略的卷插件，删除操作将从 Kubernetes 中删除 `PersistentVolume` 对象，并删除外部基础架构（如 AWS EBS、GCE PD、Azure Disk 或 Cinder 卷）中的关联存储资产。动态配置的卷继承其 [`StorageClass` 的回收策略](#reclaim-policy)，默认为 Delete。管理员应该根据用户的期望来配置 `StorageClass`，否则就必须要在 PV 创建后进行编辑或修补。请参阅[更改 PersistentVolume 的回收策略](https://kubernetes.iohttps://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/)。
+对于支持删除回收策略的卷插件，删除操作将从 Kubernetes 中删除 `PersistentVolume` 对象，并删除外部基础架构（如 AWS EBS、GCE PD、Azure Disk 或 Cinder 卷）中的关联存储资产。动态配置的卷继承其 `StorageClass`，默认为 Delete。管理员应该根据用户的期望来配置 `StorageClass`，否则就必须要在 PV 创建后进行编辑或修补。请参阅[更改 PersistentVolume 的回收策略](https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/)。
 
 ### 扩展持久化卷声明
 

@@ -68,7 +68,7 @@ spec:
 
 这样做有个缺点，因为Pod重新调度的时候该Pod被调度到的宿主机可能会变动，这样<hostIP>就变化了，用户必须自己维护一个Pod与所在宿主机的对应关系。
 
-这种网络方式可以用来做 nginx [Ingress controller](https://github.com/kubernetes/ingress/tree/master/controllers/nginx)。外部流量都需要通过kubenretes node节点的80和443端口。
+这种网络方式可以用来做 nginx ingress controller。外部流量都需要通过kubenretes node节点的80和443端口。
 
 ## NodePort
 
@@ -143,7 +143,7 @@ influxdb   10.97.121.42   10.13.242.236   8086:30051/TCP   39s
 
 ## Ingress
 
-`Ingress`是自kubernetes1.1版本后引入的资源类型。必须要部署[Ingress controller](https://github.com/kubernetes/ingress/tree/master/controllers/nginx)才能创建Ingress资源，Ingress controller是以一种插件的形式提供。Ingress controller 是部署在Kubernetes之上的Docker容器。它的Docker镜像包含一个像nginx或HAProxy的负载均衡器和一个控制器守护进程。控制器守护程序从Kubernetes接收所需的Ingress配置。它会生成一个nginx或HAProxy配置文件，并重新启动负载平衡器进程以使更改生效。换句话说，Ingress controller是由Kubernetes管理的负载均衡器。
+`Ingress`是自kubernetes1.1版本后引入的资源类型。必须要部署 Ingress controller 才能创建Ingress资源，Ingress controller是以一种插件的形式提供。Ingress controller 是部署在Kubernetes之上的Docker容器。它的Docker镜像包含一个像nginx或HAProxy的负载均衡器和一个控制器守护进程。控制器守护程序从Kubernetes接收所需的Ingress配置。它会生成一个nginx或HAProxy配置文件，并重新启动负载平衡器进程以使更改生效。换句话说，Ingress controller是由Kubernetes管理的负载均衡器。
 
 Kubernetes Ingress提供了负载平衡器的典型特性：HTTP路由，粘性会话，SSL终止，SSL直通，TCP和UDP负载平衡等。目前并不是所有的Ingress controller都实现了这些功能，需要查看具体的Ingress controller文档。
 
@@ -162,7 +162,7 @@ spec:
               servicePort: 8086
 ```
 
-外部访问URL http://influxdb.kube.example.com/ping 访问该服务，入口就是80端口，然后Ingress controller直接将流量转发给后端Pod，不需再经过kube-proxy的转发，比LoadBalancer方式更高效。
+外部访问URL `http://influxdb.kube.example.com/ping` 访问该服务，入口就是80端口，然后Ingress controller直接将流量转发给后端Pod，不需再经过kube-proxy的转发，比LoadBalancer方式更高效。
 
 ## 总结
 

@@ -33,7 +33,7 @@ openzipkin/zipkin:1.20
 tutum/dnsutils:latest
 ```
 
-这些镜像可以直接通过 Docker Hub 获取，我将它们下载下来并上传到了自己的私有镜像仓库 `harbor-001.jimmysong.io` 中，下文中用到的镜像皆来自我的私有镜像仓库，yaml 配置见 [linkerd](../manifests/linkerd) 目录，并在使用时将配置中的镜像地址修改为你自己的。
+这些镜像可以直接通过 Docker Hub 获取，我将它们下载下来并上传到了自己的私有镜像仓库 `harbor-001.jimmysong.io` 中，下文中用到的镜像皆来自我的私有镜像仓库，yaml 配置见 linkerd目录，并在使用时将配置中的镜像地址修改为你自己的。
 
 ## 部署
 
@@ -82,7 +82,7 @@ Error signal	dtab is already marked as being deployed!
 
 因为该 dtab entry 已经存在，需要删除后再运行。
 
-访问 http://namerd.jimmysong.io
+访问 `http://namerd.jimmysong.io`
 
 ![namerd](../images/namerd-internal.jpg)
 
@@ -113,7 +113,7 @@ $ kubectl create -f api.yml
 $ kubectl create -f world-v2.yml
 ```
 
-为了在本地调试 linkerd，我们将 linkerd 的 service 加入到 ingress 中，详见 [边缘节点配置](practice/edge-node-configuration.md)。
+为了在本地调试 linkerd，我们将 linkerd 的 service 加入到 ingress 中，详见 [边缘节点配置](../practice/edge-node-configuration.md)。
 
 在 Ingress 中增加如下内容：
 
@@ -234,7 +234,7 @@ Percentage of the requests served within a certain time (ms)
 
 ## 监控 kubernets 中的服务与实例
 
-访问 http://linkerd.jimmysong.io 查看流量情况
+访问 `http://linkerd.jimmysong.io` 查看流量情况
 
 Outcoming 
 
@@ -244,7 +244,7 @@ Incoming
 
 ![linkerd监控](../images/linkerd-helloworld-incoming.jpg)
 
-访问 http://linkerd-viz.jimmysong.io 查看应用 metric 监控
+访问 `http://linkerd-viz.jimmysong.io` 查看应用 metric 监控
 
 ![linkerd性能监控](../images/linkerd-grafana.png)
 

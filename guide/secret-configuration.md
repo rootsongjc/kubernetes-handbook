@@ -1,6 +1,6 @@
 # Secret 配置
 
-`Secret` 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 ssh key。将这些信息放在 `secret` 中比放在 `pod` 的定义中或者 docker 镜像中来说更加安全和灵活。参阅 [Secret 设计文档](https://git.k8s.io/community/contributors/design-proposals/secrets.md) 获取更多详细信息。
+`Secret` 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 ssh key。将这些信息放在 `secret` 中比放在 `pod` 的定义中或者 docker 镜像中来说更加安全和灵活。
 
 ## Secret 概览
 
@@ -62,7 +62,7 @@ username.txt:    5 bytes
 
 请注意，默认情况下，`get` 和 `describe` 命令都不会显示文件的内容。这是为了防止将 secret 中的内容被意外暴露给从终端日志记录中刻意寻找它们的人。
 
-请参阅 [解码 secret](https://kubernetes.io/docs/concepts/configuration/secret.md#decoding-a-secret) 了解如何查看它们的内容。
+请参阅 [解码 secret](https://kubernetes.io/docs/concepts/configuration/secret#decoding-a-secret) 了解如何查看它们的内容。
 
 #### 手动创建 Secret
 
@@ -90,9 +90,9 @@ data:
   password: MWYyZDFlMmU2N2Rm
 ```
 
-数据字段是一个映射。它的键必须匹配 [DNS_SUBDOMAIN](https://git.k8s.io/community/contributors/design-proposals/identifiers.md)，前导点也是可以的。这些值可以是任意数据，使用 base64 进行编码。
+数据字段是一个映射。它的键必须匹配 DNS_SUBDOMAIN，前导点也是可以的。这些值可以是任意数据，使用 base64 进行编码。
 
-使用 [`kubectl create`](https://kubernetes.io/docs/user-guide/kubectl/v1.7/#create) 创建 secret：
+使用 `kubectl create`创建 secret：
 
 ```bash
 $ kubectl create -f ./secret.yaml
@@ -549,7 +549,7 @@ Secret 的重要性通常不尽相同，其中许多可能只对 Kubernetes 集�
 
 需要访问 secrets API 的应用程序应该根据他们需要的 secret 执行 `get` 请求。这允许管理员限制对所有 secret 的访问，同时设置 [白名单访问](https://kubernetes.io/docs/admin/authorization/rbac/#referring-to-resources) 应用程序需要的各个实例。
 
-为了提高循环获取的性能，客户端可以设计引用 secret 的资源，然后 `watch` 资源，在引用更改时重新请求 secret。此外，还提出了一种 [”批量监控“ API](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/bulk_watch.md) 来让客户端 `watch` 每个资源，该功能可能会在将来的 Kubernetes 版本中提供。
+为了提高循环获取的性能，客户端可以设计引用 secret 的资源，然后 `watch` 资源，在引用更改时重新请求 secret。
 
 ## 安全属性
 
@@ -565,7 +565,7 @@ Secret 的重要性通常不尽相同，其中许多可能只对 Kubernetes 集�
 
 同一节点上的很多个 pod 可能拥有多个 secret。但是，只有 pod 请求的 secret 在其容器中才是可见的。因此，一个 pod 不能访问另一个 Pod 的 secret。
 
-Pod 中有多个容器。但是，pod 中的每个容器必须请求其挂载卷中的 secret 卷才能在容器内可见。这可以用于 [在 Pod 级别构建安全分区](https://kubernetes.io/docs/concepts/configuration/secret.md#use-case-secret-visible-to-one-container-in-a-pod)。
+Pod 中有多个容器。但是，pod 中的每个容器必须请求其挂载卷中的 secret 卷才能在容器内可见。这可以用于 [在 Pod 级别构建安全分区](https://kubernetes.io/docs/concepts/configuration/secret#use-case-secret-visible-to-one-container-in-a-pod)。
 
 ### 风险
 

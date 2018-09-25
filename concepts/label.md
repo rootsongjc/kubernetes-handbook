@@ -102,4 +102,3 @@ selector:
             - another-node-label-value
 ```
 
-详见[node selection](https://github.com/kubernetes/kubernetes.github.io/tree/master/docs/user-guide/node-selection)。

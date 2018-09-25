@@ -5,7 +5,7 @@ Kubernetes集群中读取区（zone）数据。它实现了为Kubernetes的DNS�
 
 ## 部署CoreDNS
 
-部署 CoreDNS 需要使用到官方提供的两个文件 [deploy.sh](https://github.com/coredns/deployment/blob/master/kubernetes/deploy.sh)和[coredns.yaml.sed](https://github.com/coredns/deployment/blob/master/kubernetes/coredns.yaml.sed)（这两个文件已经放入manifest的[coredns](/manifests/coredns)中）
+部署 CoreDNS 需要使用到官方提供的两个文件 [deploy.sh](https://github.com/coredns/deployment/blob/master/kubernetes/deploy.sh)和[coredns.yaml.sed](https://github.com/coredns/deployment/blob/master/kubernetes/coredns.yaml.sed)（这两个文件已经放入manifest的coredns目录中）
 
 `deploy.sh` 是一个用于在已经运行kube-dns的集群中生成运行CoreDNS部署文件（manifest）的工具脚本。它使用 `coredns.yaml.sed`文件作为模板，创建一个ConfigMap和CoreDNS的deployment，然后更新集群中已有的kube-dns
 服务的selector使用CoreDNS的deployment。重用已有的服务并不会在服务的请求中发生冲突。

@@ -177,7 +177,7 @@ kubectl create -f rolling-update-test.yaml
 
 注意：172.20.0.119是我们之前使用keepalived创建的VIP。
 
-打开浏览器访问http://rolling-update-test.traefik.io将会看到以下输出：
+打开浏览器访问 `http://rolling-update-test.traefik.io` 将会看到以下输出：
 
 ```
 This is version 1.
@@ -205,7 +205,7 @@ kubectl set image deployment/rolling-update-test rolling-update-test=harbor-001.
 kubectl rollout status deployment/rolling-update-test
 ```
 
-升级完成后在浏览器中刷新http://rolling-update-test.traefik.io将会看到以下输出：
+升级完成后在浏览器中刷新`http://rolling-update-test.traefik.io`将会看到以下输出：
 
 ```
 This is version 2.
@@ -236,5 +236,4 @@ replicationcontroller "zeppelin-controller" rolling updated
 
 - [Rolling update机制解析](http://dockone.io/article/328)
 - [Running a Stateless Application Using a Deployment](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)
-- [Simple Rolling Update](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/simple-rolling-update.md)
 - [使用kubernetes的deployment进行RollingUpdate](https://segmentfault.com/a/1190000008232770)

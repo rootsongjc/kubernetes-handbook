@@ -75,7 +75,7 @@ Pod在设计支持就不是作为持久化实体的。在调度失败、节点�
 
 通常，用户不需要手动直接创建Pod，而是应该使用controller（例如[Deployments](./deployment.md)），即使是在创建单个Pod的情况下。Controller可以提供集群级别的自愈功能、复制和升级管理。
 
-使用集合API作为主要的面向用户的原语在集群调度系统中相对常见，包括[Borg](https://research.google.com/pubs/pub43438.html)、[Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)、[Aurora](http://aurora.apache.org/documentation/latest/reference/configuration/#job-schema)和[Tupperware](http://www.slideshare.net/Docker/aravindnarayanan-facebook140613153626phpapp02-37588997)。
+使用集合API作为主要的面向用户的原语在集群调度系统中相对常见，包括[Borg](https://research.google.com/pubs/pub43438.html)、[Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)、[Aurora](http://aurora.apache.org/documentation/latest/reference/configuration/#job-schema)和[Tupperware](https://www.slideshare.net/Docker/aravindnarayanan-facebook140613153626phpapp02-37588997)。
 
 Pod 原语有利于：
 

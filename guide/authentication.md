@@ -34,7 +34,7 @@ Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 
 
 `system:authenticated` 组包含在所有已验证用户的组列表中。
 
-与其他身份验证协议（LDAP、SAML、Kerberos、x509 方案等）的集成可以使用 [身份验证代理](#authenticating-proxy) 或 [身份验证 webhook](#webhook-token-authentication) 来实现。
+与其他身份验证协议（LDAP、SAML、Kerberos、x509 方案等）的集成可以使用身份验证代理或身份验证 webhook来实现。
 
 ### X509 客户端证书
 
@@ -47,8 +47,6 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 ```
 
 这将为一个用户名为 ”jbeda“ 的 CSR，属于两个组“app1”和“app2”。
-
-如何生成客户端证书请参阅 [附录](#appendix)。
 
 ### 静态 Token 文件
 
@@ -158,7 +156,7 @@ type: kubernetes.io/service-account-token
 
 注意：所有值是基于 base64 编码的，因为 secret 总是基于 base64 编码。
 
-经过签名的 JWT 可以用作 bearer token 与给定的 service account 进行身份验证。请参阅 [上面](#putting-a-bearer-token-in-a-request) 关于如何在请求中放置 bearer token。通常情况下，这些 secret 被挂载到 pod 中，以便对集群内的 API server 进行访问，但也可以从集群外访问。
+经过签名的 JWT 可以用作 bearer token 与给定的 service account 进行身份验证。请参阅上面关于如何在请求中放置 bearer token。通常情况下，这些 secret 被挂载到 pod 中，以便对集群内的 API server 进行访问，但也可以从集群外访问。
 
 Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEACCOUNT)`，被指定到组 `system:serviceaccounts` 和 `system:serviceaccounts:(NAMESPACE)`。
 
@@ -168,7 +166,7 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 
 [OpenID Connect](https://openid.net/connect/) 是由 OAuth2 供应商提供的 OAuth2，特别是 Azure Active Directory、Salesforce 和 Google。对 OAuth2 协议的主要扩展是返回一个称作 [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) 的格外字段。该 token 是一个 JSON Web Token (JWT) ，有服务器签名，具有众所周知的字段，如用户的电子邮件。
 
-为了识别用户，认证者使用 OAuth2 [token 响应](https://openid.net/specs/openid-connect-core-1_0.html#TokenResponse) 中的 `id_token`（而不是 `access_token`）作为 bearer token。请参阅 [上面](#putting-a-bearer-token-in-a-request) 的关于将 token 置于请求中。
+为了识别用户，认证者使用 OAuth2 [token 响应](https://openid.net/specs/openid-connect-core-1_0.html#TokenResponse) 中的 `id_token`（而不是 `access_token`）作为 bearer token。请参阅上面的关于将 token 置于请求中。
 
 ![Kubernetes OpenID Connect Flow](../images/kubernetes-oidc-login.jpg)
 
@@ -192,13 +190,13 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 
 要启用该插件，需要在 API server 中配置如下标志：
 
-| 参数                      | 描述                                       | 示例                                       | 是否必需 |
-| ----------------------- | ---------------------------------------- | ---------------------------------------- | ---- |
-| `--oidc-issuer-url`     | 允许 API server 发现公共签名密钥的提供者的 URL。只接受使用 `https://` 的方案。通常是提供商的 URL 地址，不包含路径，例如“https://accounts.google.com” 或者 “https://login.salesforce.com”。这个 URL 应该指向下面的 .well-known/openid-configuration | 如果发现 URL 是 `https://accounts.google.com/.well-known/openid-configuration`，值应该是`https://accounts.google.com` | 是    |
-| `--oidc-client-id`      | 所有的 token 必须为其颁发的客户端 ID                  | kubernetes                               | 是    |
-| `--oidc-username-claim` | JWT声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如` email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                      | 否    |
-| `--oidc-groups-claim`   | JWT声明使用的用户组。如果生命存在，它必须是一个字符串数组。          | groups                                   | 否    |
-| `--oidc-ca-file`        | 用来签名您的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。      | `/etc/kubernetes/ssl/kc-ca.pem`          | 否    |
+| 参数                    | 描述                                                         | 示例                                                         | 是否必需 |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
+| `--oidc-issuer-url`     | 允许 API server 发现公共签名密钥的提供者的 URL。只接受使用 `https://` 的方案。通常是提供商的 URL 地址，不包含路径，例如“<https://accounts.google.com>” 或者 “<https://login.salesforce.com>”。这个 URL 应该指向下面的 .well-known/openid-configuration | 如果发现 URL 是 `https://accounts.google.com/.well-known/openid-configuration`，值应该是`https://accounts.google.com` | 是       |
+| `--oidc-client-id`      | 所有的 token 必须为其颁发的客户端 ID                         | kubernetes                                                   | 是       |
+| `--oidc-username-claim` | JWT声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如` email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                                          | 否       |
+| `--oidc-groups-claim`   | JWT声明使用的用户组。如果生命存在，它必须是一个字符串数组。  | groups                                                       | 否       |
+| `--oidc-ca-file`        | 用来签名您的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。 | `/etc/kubernetes/ssl/kc-ca.pem`                              | 否       |
 
 如果为 `--oidc-username-claim` 选择了除 `email` 以外的其他声明，则该值将以 `--oidc-issuer-url` 作为前缀，以防止与现有 Kubernetes 名称（例如 `system:users`）冲突。例如，如果提供商网址是 https://accounts.google.com，而用户名声明映射到 `jane`，则插件会将用户身份验证为：
 
@@ -218,11 +216,9 @@ Kubernetes不提供 OpenID Connect 身份提供商。您可以使用现有的公
 
 有关上述要求3的说明，需要 CA 签名证书。如果您部署自己的身份提供商（而不是像 Google 或 Microsoft 之类的云提供商），则必须让您的身份提供商的 Web 服务器证书由 CA 标志设置为 TRUE 的证书签名，即使是自签名的。这是由于 GoLang 的 TLS 客户端实现对证书验证的标准非常严格。如果您没有 `CA`，可以使用 `CoreOS` 团队的 [这个脚本](https://github.com/coreos/dex/blob/1ee5920c54f5926d6468d2607c728b71cfe98092/examples/k8s/gencert.sh) 创建一个简单的 CA 和一个签名的证书和密钥对。
 
-或者你可以使用 [这个类似的脚本](https://raw.githubusercontent.com/TremoloSecurity/openunison-qs-kubernetes/master/makecerts.sh) 来生成更长寿命和更长的 SHA256 证书密钥。
-
 针对特定系统的安装说明：
 
-- [UAA](http://apigee.com/about/blog/engineering/kubernetes-authentication-enterprise)
+- [UAA](https://apigee.com/about/blog/engineering/kubernetes-authentication-enterprise)
 - [Dex](https://speakerdeck.com/ericchiang/kubernetes-access-control-with-dex)
 - [OpenUnison](https://github.com/TremoloSecurity/openunison-qs-kubernetes)
 
@@ -319,7 +315,7 @@ contexts:
   name: webhook
 ```
 
-当客户端尝试使用 bearer token 与API server 进行认证是，如 [上](#putting-a-bearer-token-in-a-request) 论述，认证 webhook 用饱含该 token 的对象查询远程服务。Kubernetes 不会挑战缺少该 header 的请求。
+当客户端尝试使用 bearer token 与API server 进行认证是，如上论述，认证 webhook 用饱含该 token 的对象查询远程服务。Kubernetes 不会挑战缺少该 header 的请求。
 
 请注意，webhook API对象与其他 Kubernetes API 对象具有相同的 [版本控制兼容性规则](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。实现者应该意识到 Beta 对象的宽松兼容性承诺，并检查请求的 “apiVersion” 字段以确保正确的反序列化。此外，API server 必须启用 `authentication.k8s.io/v1beta1` API 扩展组（`--runtime config =authentication.k8s.io/v1beta1=true`）。
 
@@ -633,8 +629,6 @@ rules:
 #### 认证 API
 
 您可以使用 `certificates.k8s.io` API将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
-
-官方v1.6文档地址：https://v1-6.docs.kubernetes.io/docs/admin/authentication/
 官方最新文档地址：https://kubernetes.io/docs/admin/authentication/
 
 译者：[Jimmy Song](https://jimmysong.io)

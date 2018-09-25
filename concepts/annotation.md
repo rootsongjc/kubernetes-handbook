@@ -75,4 +75,4 @@ spec:
               fieldPath: metadata.namespace
 ```
 
-`alpha.istio.io/sidecar` 注解就是用来控制是否自动向 pod 中注入 sidecar 的。参考：[安装 Istio sidecar - istio.doczh.cn](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html)。
+`alpha.istio.io/sidecar` 注解就是用来控制是否自动向 pod 中注入 sidecar 的。

@@ -28,7 +28,7 @@ Spark原生支持standalone、mesos和YARN的调度方式，当前kubernetes社�
 
 ### Spark on Kubernetes
 
-Spark on kubernetes，使用kubernetes作为调度引擎，spark的任务直接调度到node节点上。参考：[运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
+Spark on kubernetes，使用kubernetes作为调度引擎，spark的任务直接调度到node节点上。参考：[运行支持kubernetes原生调度的Spark程序](running-spark-with-kubernetes-native-scheduler.md)。
 
 ### 调度方式总结
 

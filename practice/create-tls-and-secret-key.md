@@ -405,7 +405,6 @@ cp *.pem /etc/kubernetes/ssl
 ## 参考
 
 + [Generate self-signed certificates](https://coreos.com/os/docs/latest/generate-self-signed-certificates.html)
-+ [Setting up a Certificate Authority and Creating TLS Certificates](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-certificate-authority.md)
 + [Client Certificates V/s Server Certificates](https://blogs.msdn.microsoft.com/kaushal/2012/02/17/client-certificates-vs-server-certificates/)
 + [数字证书及 CA 的扫盲介绍](http://blog.jobbole.com/104919/)
 + [TLS bootstrap 引导程序](../guide/tls-bootstrapping.md)

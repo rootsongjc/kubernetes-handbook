@@ -6,7 +6,7 @@
 
 Kubernetes1.8的[基于角色的访问控制（RBAC）](https://en.wikipedia.org/wiki/Role-based_access_control)成为stable支持。RBAC允许集群管理员[动态定义角色](https://kubernetes.io/docs/admin/authorization/rbac/)对于Kubernetes API的访问策略。通过[网络策略](https://kubernetes.io/docs/concepts/services-networking/network-policies/)筛选出站流量的Beta支持，增强了对入站流量进行过滤的现有支持。 RBAC和网络策略是强化Kubernetes内组织和监管安全要求的两个强大工具。
 
-Kubelet的传输层安全性（TLS）[证书轮换](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/)成为beta版。自动证书轮换减轻了集群安全性运维的负担。
+Kubelet的传输层安全性（TLS）证书轮换成为beta版。自动证书轮换减轻了集群安全性运维的负担。
 
 ## 聚焦工作负载支持
 

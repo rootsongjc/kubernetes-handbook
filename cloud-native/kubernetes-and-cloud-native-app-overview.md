@@ -359,7 +359,7 @@ Service Mesh现在一般被翻译作服务网格，目前主流的Service Mesh�
 * [微服务管理框架Service Mesh——Linkerd安装试用笔记](https://jimmysong.io/posts/linkerd-user-guide/)
 * [微服务管理框架Service Mesh——Istio安装试用笔记](https://jimmysong.io/posts/istio-installation/)
 
-更多关于 Service Mesh 的内容请访问 [Service Mesh 中文网](http://www.servicemesh.cn)。
+更多关于 Service Mesh 的内容请访问 [ServiceMesher 社区网站](http://www.servicemesher.com)。
 
 ## 使用案例
 

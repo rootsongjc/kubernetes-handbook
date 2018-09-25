@@ -16,7 +16,7 @@
    kubectl run hello-world --replicas=2 --labels="run=load-balancer-example" --image=gcr.io/google-samples/node-hello:1.0  --port=8080
    ```
 
-   上述命令创建一个 [Deployment](https://github.com/rootsongjc/kubernetes.github.io/blob/0d907997e57e046bda9c4f5b5d615619181d571f/docs/concepts/workloads/controllers/deployment) 对象和一个相关联的 [ReplicaSet](https://github.com/rootsongjc/kubernetes.github.io/blob/0d907997e57e046bda9c4f5b5d615619181d571f/docs/concepts/workloads/controllers/replicaset) 对象。该 ReplicaSet 有两个 [Pod](https://github.com/rootsongjc/kubernetes.github.io/blob/0d907997e57e046bda9c4f5b5d615619181d571f/docs/concepts/workloads/pods/pod)，每个 Pod 中都运行一个 Hello World 应用程序。
+   上述命令创建一个 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment) 对象和一个相关联的 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset) 对象。该 ReplicaSet 有两个 [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod)，每个 Pod 中都运行一个 Hello World 应用程序。
 
 2. 显示关于该 Deployment 的信息：
 
@@ -97,7 +97,7 @@
 
 ## 使用 Service 配置文件
 
-作为使用 `kubectl expose` 的替代方法，您可以使用 [service 配置文件](https://github.com/rootsongjc/kubernetes.github.io/blob/0d907997e57e046bda9c4f5b5d615619181d571f/docs/user-guide/services/operations) 来创建 Service。
+作为使用 `kubectl expose` 的替代方法，您可以使用 [service 配置文件](https://kubernetes.io/docs/user-guide/services/operations) 来创建 Service。
 
 要删除 Service，输入以下命令：
 
@@ -111,5 +111,5 @@ kubectl delete services example-service
 kubectl delete deployment hello-world
 ```
 
-了解更多关于 [使用 service 连接应用程序](https://github.com/rootsongjc/kubernetes.github.io/blob/0d907997e57e046bda9c4f5b5d615619181d571f/docs/concepts/services-networking/connect-applications-service)。
+了解更多关于 [使用 service 连接应用程序](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service)。
 

@@ -12,8 +12,6 @@
 $ kubectl config view
 ```
 
-关于 kubectl 命令使用的更多 [示例](https://github.com/kubernetes/kubernetes/tree/%7B%7Bpage.githubbranch%7D%7D/examples/) 和完整文档可以在这里找到：[kubectl 手册](https://kubernetes.io/docs/user-guide/kubectl/index)
-
 ### 直接访问 REST API
 
 Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST API，可以使用像 curl、wget 或浏览器这样的 http 客户端，有以下几种方式来定位和认证：
@@ -38,8 +36,6 @@ Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST A
 ```bash
 $ kubectl proxy --port=8080 &
 ```
-
-查看关于 [kubectl proxy](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#proxy) 的更多细节。
 
 然后您可以使用 curl、wget 或者浏览器来访问 API，如下所示：
 
@@ -128,7 +124,7 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
 
 在 pod 中，连接到 API 的推荐方法是：
 
-- 将 kubectl proxy 作为 pod 中的一个容器来运行，或作为在容器内运行的后台进程。它将 Kubernetes API 代理到 pod 的本地主机接口，以便其他任何 pod 中的容器内的进程都可以访问它。请参阅 [在 pod 中使用 kubectl proxy 的示例](https://github.com/kubernetes/kubernetes/tree/%7B%7Bpage.githubbranch%7D%7D/examples/kubectl-container/)。
+- 将 kubectl proxy 作为 pod 中的一个容器来运行，或作为在容器内运行的后台进程。它将 Kubernetes API 代理到 pod 的本地主机接口，以便其他任何 pod 中的容器内的进程都可以访问它。
 
 - 使用 Go 客户端库，并使用 `rest.InClusterConfig()` 和 `kubernetes.NewForConfig()` 函数创建一个客户端。
 
@@ -145,7 +141,7 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
 您可以选择以下几种方式从集群外部连接到 node、pod 和 service：
 
 - 通过 public IP 访问 service。
-  - 使用 `NodePort` 和 `LoadBalancer` 类型的 service，以使 service 能够在集群外部被访问到。请查看 [service](https://kubernetes.io/docs/user-guide/services) 和 [kubectl expose](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#expose) 文档。
+  - 使用 `NodePort` 和 `LoadBalancer` 类型的 service，以使 service 能够在集群外部被访问到。
   - 根据您的群集环境，这可能会将服务暴露给您的公司网络，或者可能会将其暴露在互联网上。想想暴露的服务是否安全。它是否自己进行身份验证？
   - 将 pod 放在服务后面。 要从一组副本（例如为了调试）访问一个特定的 pod，请在 pod 上放置一个唯一的 label，并创建一个选择该 label 的新服务。
   - 在大多数情况下，应用程序开发人员不需要通过 node IP 直接访问节点。
@@ -155,7 +151,7 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
   - 仅适用于 HTTP/HTTPS。
   - [见此描述](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#manually-constructing-apiserver-proxy-urls)。
 - 在集群内访问 node 和 pod。
-  - 运行一个 pod，然后使用 [kubectl exec](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#exec) 命令连接到 shell。从该 shell 中连接到其他 node、pod 和 service。
+  - 运行一个 pod，然后使用 kubectl exec 命令连接到 shell。从该 shell 中连接到其他 node、pod 和 service。
   - 有些集群可能允许 ssh 到集群上的某个节点。 从那个节点您可以访问到集群中的服务。这是一个非标准的方法，它可能将在某些集群上奏效，而在某些集群不行。这些节点上可能安装了浏览器和其他工具也可能没有。群集 DNS 可能无法正常工作。
 
 ### 访问内置服务

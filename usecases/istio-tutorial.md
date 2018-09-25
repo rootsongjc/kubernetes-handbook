@@ -899,7 +899,7 @@ istioctl delete -f istiofiles/recommendation_cb_policy_pool_ejection.yml -n isti
 
 Egress 是用来配置 Istio serivce mesh 中的服务对外部服务的访问策略。
 
-具体配置请参考 [控制 Egress 流量](http://istio.doczh.cn/docs/tasks/traffic-management/egress.html)。
+具体配置请参考控制 Egress 流量。
 
 以下示例还有问题，无法正常工作。
 

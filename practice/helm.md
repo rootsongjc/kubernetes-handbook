@@ -43,8 +43,8 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 ```bash
 helm init -i jimmysong/kubernetes-helm-tiller:v2.8.1 
 ```
-(目前最新版v2.8.2，可以使用阿里云镜像，如：
-helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.8.2 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts）
+（目前最新版v2.8.2，可以使用阿里云镜像，如：
+`helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.8.2 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts`）
 
 我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.8.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.8.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
 
@@ -332,19 +332,19 @@ dependencies:
 
 ### 安装源
 
-#####################################################################
-
 使用第三方chat库
 
-。添加fabric8库
+- 添加fabric8库
 
-    $helm repo add fabric8 https://fabric8.io/helm
+```bash
+$ helm repo add fabric8 https://fabric8.io/helm
+```
 
-。搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI,CD的全套工具）
+- 搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI、CD的全套工具）
 
-    $helm search fabric8
-
-#####################################################################
+```bash
+$ helm search fabric8
+```
 
 我们在前面安装chart可以通过HTTP server的方式提供。
 
@@ -710,6 +710,5 @@ helm package .
 - [Deploy, Scale And Upgrade An Application On Kubernetes With Helm](https://docs.bitnami.com/kubernetes/how-to/deploy-application-kubernetes-helm/)
 - [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
 - [Go template](https://golang.org/pkg/text/template/)
-- [Helm docs](https://github.com/kubernetes/helm/blob/master/docs/index.md)
 - [How To Create Your First Helm Chart](https://docs.bitnami.com/kubernetes/how-to/create-your-first-helm-chart/)
 - [Speed deployment on Kubernetes with Helm Chart – Quick yaml example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)

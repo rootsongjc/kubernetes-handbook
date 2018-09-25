@@ -1,10 +1,12 @@
 # 安装和拓展 Istio mesh
 
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)**。
+
 ## 前置条件
 
-下面的操作说明需要您可以访问 kubernetes **1.7.3 后更高版本** 的集群，并且启用了 [RBAC (基于角色的访问控制)](https://kubernetes.io/docs/admin/authorization/rbac/)。您需要安装了 **1.7.3 或更高版本** 的 `kubectl` 命令。如果您希望启用 [自动注入 sidecar](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html#自动注入-sidecar)，您需要启用 kubernetes 集群的 alpha 功能。
+下面的操作说明需要您可以访问 kubernetes **1.7.3 后更高版本** 的集群，并且启用了 [RBAC (基于角色的访问控制)](https://kubernetes.io/docs/admin/authorization/rbac/)。您需要安装了 **1.7.3 或更高版本** 的 `kubectl` 命令。如果您希望启用自动注入 sidecar，您需要启用 kubernetes 集群的 alpha 功能。
 
-> 注意：如果您安装了 Istio 0.1.x，在安装新版本前请先 [卸载](http://istio.doczh.cn/docs/setup/kubernetes/quick-start.html#卸载) 它们（包括已启用 Istio 应用程序 Pod 中的 sidecar）。
+> 注意：如果您安装了 Istio 0.1.x，在安装新版本前请先卸载它们（包括已启用 Istio 应用程序 Pod 中的 sidecar）。
 
 - 取决于您的 kubernetes 提供商：
 
@@ -87,7 +89,7 @@
 
 5. 安装 Istio 的核心部分。选择面两个 **互斥** 选项中的之一：
 
-   a) 安装 Istio 的时候不启用 sidecar 之间的 [TLS 双向认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.html)：
+   a) 安装 Istio 的时候不启用 sidecar 之间的 TLS 双向认证：
 
    为具有现在应用程序的集群选择该选项，使用 Istio sidecar 的服务需要能够与非 Istio Kubernetes 服务以及使用 [liveliness 和 readiness 探针](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)、headless service 和 StatefulSet 的应用程序通信。
 
@@ -97,7 +99,7 @@
 
    **或者**
 
-   b) 安装 Istio 的时候启用 sidecar 之间的 [TLS 双向认证](http://istio.doczh.cn/docs/concepts/security/mutual-tls.html)：
+   b) 安装 Istio 的时候启用 sidecar 之间的 TLS 双向认证：
 
    ```bash
    kubectl apply -f install/kubernetes/istio-auth.yaml
@@ -105,7 +107,7 @@
 
    这两个选项都会创建 `istio-system` 命名空间以及所需的 RBAC 权限，并部署 Istio-Pilot、Istio-Mixer、Istio-Ingress、Istio-Egress 和 Istio-CA（证书颁发机构）。
 
-6. *可选的*：如果您的 kubernetes 集群开启了 alpha 功能，并想要启用 [自动注入 sidecar](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html#automatic-sidecar-injection)，需要安装 Istio-Initializer：
+6. *可选的*：如果您的 kubernetes 集群开启了 alpha 功能，并想要启用自动注入 sidecar，需要安装 Istio-Initializer：
 
    ```bash
    kubectl apply -f install/kubernetes/istio-initializer.yaml
@@ -146,15 +148,15 @@
 
 ## 部署应用
 
-您可以部署自己的应用或者示例应用程序如 [BookInfo](http://istio.doczh.cn/docs/guides/bookinfo.html)。 注意：应用程序必须使用 HTTP/1.1 或 HTTP/2.0 协议来传输 HTTP 流量，因为 HTTP/1.0 已经不再支持。
+您可以部署自己的应用或者示例应用程序如 BookInfo。 注意：应用程序必须使用 HTTP/1.1 或 HTTP/2.0 协议来传输 HTTP 流量，因为 HTTP/1.0 已经不再支持。
 
-如果您启动了 [Istio-Initializer](http://istio.doczh.cn/docs/setup/kubernetes/sidecar-injection.html)，如上所示，您可以使用 `kubectl create` 直接部署应用。Istio-Initializer 会向应用程序的 pod 中自动注入 Envoy 容器：
+如果您启动了 Istio-Initializer，如上所示，您可以使用 `kubectl create` 直接部署应用。Istio-Initializer 会向应用程序的 pod 中自动注入 Envoy 容器：
 
 ```bash
 kubectl create -f <your-app-spec>.yaml
 ```
 
-如果您没有安装 Istio-initializer 的话，您必须使用 [istioctl kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.html#istioctl-kube-inject) 命令在部署应用之前向应用程序的 pod 中手动注入 Envoy 容器：
+如果您没有安装 Istio-initializer 的话，您必须使用 istioctl kube-inject 命令在部署应用之前向应用程序的 pod 中手动注入 Envoy 容器：
 
 ```bash
 kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
@@ -201,7 +203,7 @@ kubectl create -f <(istioctl kube-inject -f <your-app-spec>.yaml)
 
 ## 手动注入 sidecar
 
-`istioctl` 命令行中有一个称为 [kube-inject](http://istio.doczh.cn/docs/reference/commands/istioctl.html#istioctl-kube-inject) 的便利工具，使用它可以将 Istio 的 sidecar 规范添加到 kubernetes 工作负载的规范配置中。与 Initializer 程序不同，`kube-inject` 只是将 YAML 规范转换成包含 Istio sidecar 的规范。您需要使用标准的工具如 `kubectl` 来部署修改后的 YAML。例如，以下命令将 sidecar 添加到 sleep.yaml 文件中指定的 pod 中，并将修改后的规范提交给 kubernetes：
+`istioctl` 命令行中有一个称为 kube-inject 的便利工具，使用它可以将 Istio 的 sidecar 规范添加到 kubernetes 工作负载的规范配置中。与 Initializer 程序不同，`kube-inject` 只是将 YAML 规范转换成包含 Istio sidecar 的规范。您需要使用标准的工具如 `kubectl` 来部署修改后的 YAML。例如，以下命令将 sidecar 添加到 sleep.yaml 文件中指定的 pod 中，并将修改后的规范提交给 kubernetes：
 
 ```bash
 kubectl apply -f <(istioctl kube-inject -f samples/sleep/sleep.yaml)
@@ -316,7 +318,7 @@ kubectl apply -f install/kubernetes/istio-initializer.yaml
 将会创建下列资源：
 
 1. `istio-sidecar` InitializerConfiguration 资源，指定 Istio sidecar 注入的资源。默认情况下  Istio sidecar 将被注入到 `deployment`、 `statefulset`、 `job` 和 `daemonset`中。
-2. `istio-inject` ConfigMap，initializer 的默认注入策略，一组初始化 namespace，以及注入时使用的模版参数。这些配置的详细说明请参考 [配置选项](#configuration-options)。
+2. `istio-inject` ConfigMap，initializer 的默认注入策略，一组初始化 namespace，以及注入时使用的模版参数。这些配置的详细说明请参考配置选项。
 3. `istio-initializer` Deployment，运行 initializer 控制器。
 4. `istio-initializer-service-account` ServiceAccount，用于 `istio-initializer` deployment。`ClusterRole` 和 `ClusterRoleBinding` 在 `install/kubernetes/istio.yaml` 中定义。注意所有的资源类型都需要有 `initialize` 和 `patch` 。正式处于这个原因，initializer 要作为 deployment 的一部分来运行而不是嵌入到其它控制器中，例如 istio-pilot。
 
@@ -352,7 +354,7 @@ kubectl get deployment sleep -o yaml
 
 2) istio-initializer 控制器观察到有一个新的未初始化的工作负载被创建了。pending initializer 列表中的第一个个将作为 `sidecar.initializer.istio.io` 的名称。
 
-3) istio-initializer 检查它是否负责初始化 namespace 中的工作负载。如果没有为该 namespace 配置 initializer，则不需要做进一步的工作，而且 initializer 会忽略工作负载。默认情况下，initializer 负责所有的 namespace（参考 [配置选项](#配置选项)）。
+3) istio-initializer 检查它是否负责初始化 namespace 中的工作负载。如果没有为该 namespace 配置 initializer，则不需要做进一步的工作，而且 initializer 会忽略工作负载。默认情况下，initializer 负责所有的 namespace。
 
 4) istio-initializer 将自己从  pending initializer 中移除。如果 pending initializer 列表非空，则 Kubernetes 不回结束工作负载的创建。错误配置的 initializer 意味着破损的集群。
 
@@ -469,7 +471,7 @@ kubectl delete -f install/kubernetes/istio-initializer.yaml
 
 ## 前置条件
 
-- 按照 [安装指南](http://istio.doczh.cn/docs/setup/kubernetes/quick-start.html) 在 kubernetes 集群上安装 Istio service mesh。
+- 按照安装指南在 kubernetes 集群上安装 Istio service mesh。
 
 - 机器必须具有到 mesh 端点的 IP 地址连接。这通常需要一个 VPC 或者 VPN，以及一个向端点提供直接路由（没有 NAT 或者防火墙拒绝）的容器网络。及其不需要访问有 Kubernetes 分配的 cluster IP。
 
@@ -729,7 +731,7 @@ Oct 13 21:32:29 demo-vm-1 node_agent[6941]: I1013 21:32:29.862575    6941 nodeag
 
 ## 整合到一起
 
-请参阅 [拓展 BookInfo Mesh](http://istio.doczh.cn/docs/guides/integrating-vms.html) 指南。
+请参阅拓展 BookInfo Mesh 指南。
 
 ------
 
@@ -762,7 +764,7 @@ BookInfo 应用程序包括四个独立的微服务：
 
 ## 开始之前
 
-如果您还没有这样做，请按照与您的平台 [安装指南](http://istio.doczh.cn/docs/setup/index.html) 对应的说明安装Istio。
+如果您还没有这样做，请按照与您的平台安装指南对应的说明安装Istio。
 
 ## 部署应用程序
 
@@ -902,9 +904,7 @@ BookInfo 应用程序包括四个独立的微服务：
 
 3. 确认所有容器都在运行：
 
-   ```bash
    docker ps -a
-   ```
 
    > 如果 Istio Pilot 容器终止了，重新执行上面的命令重新运行。
 
@@ -928,7 +928,7 @@ curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 
 你也可以通过在浏览器中打开 `http://$GATEWAY_URL/productpage` 页面访问 Bookinfo 网页。如果您多次刷新浏览器将在 productpage 中看到评论的不同的版本，它们会按照 round robin（红星、黑星、没有星星）的方式展现，因为我们还没有使用 Istio 来控制版本的路由。
 
-现在，您可以使用此示例来尝试 Istio 的流量路由、故障注入、速率限制等功能。要继续的话，请参阅 [Istio 指南](http://istio.doczh.cn/docs/guides/index.html)，具体取决于您的兴趣。[智能路由](http://istio.doczh.cn/docs/guides/intelligent-routing.html) 是初学者入门的好方式。
+现在，您可以使用此示例来尝试 Istio 的流量路由、故障注入、速率限制等功能。要继续的话，请参阅 Istio 指南，具体取决于您的兴趣。智能路由 是初学者入门的好方式。
 
 ## 清理
 

@@ -32,7 +32,7 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 
 ![Kubernetes中的CI/CD](https://ws1.sinaimg.cn/large/00704eQkgy1fsayfzk3ezj31bu0tkdky.jpg)
 
-有了基于Kubernetes的CI/CD流程后，又诞生了GitOps（<http://weave.works>的博客中有很多相关文章）和SecOps（Security Operation）。
+有了基于Kubernetes的CI/CD流程后，又诞生了GitOps（<https://www.weave.works>的博客中有很多相关文章）和SecOps（Security Operation）。
 
 ### 云原生应用模式
 

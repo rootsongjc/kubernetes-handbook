@@ -6,4 +6,3 @@
 - 其次可以使用 `kubeconfig` 文件来认证授权访问 API server。
 - 通过各种 proxy 经过端口转发访问 kubernetes 集群中的服务
 - 使用 Ingress，在集群外访问 kubernetes 集群内的 service
-

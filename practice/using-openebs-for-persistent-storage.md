@@ -19,7 +19,7 @@ iSCSI中包括两种类型的角色：
 - **target**：用来提供存储（server）
 - **initiator**：使用存储的客户端（client）
 
-下图在Kubernetes中使用iSCSI的架构图（图片来源：http://rootfs.github.io/iSCSI-Kubernetes/）。
+下图在Kubernetes中使用iSCSI的架构图（图片来源：`http://rootfs.github.io/iSCSI-Kubernetes/`）。
 
 ![Kubernetes iSCSI架构](../images/iscsi-on-kubernetes.png)
 
@@ -58,7 +58,7 @@ kubectl apply -f openebs-storageclasses.yaml
 
 ## 测试
 
-下面使用OpenEBS官方文档中的[示例]()，安装Jenkins测试
+下面使用OpenEBS官方文档中的示例，安装Jenkins测试
 
 ```bash
 wget https://raw.githubusercontent.com/openebs/openebs/master/k8s/demo/jenkins/jenkins.yml
@@ -113,11 +113,8 @@ OpenEBS的存储策略使用StorageClaass实现，包括如下的StorageClass：
 - openebs-standard
 - openebs-zk
 
-每个[Storage Class](../concepts/storageclass.md)都对应与某种应用的存储模式，使用方式请参考[OpenEBS Storage Policies](http://openebs.readthedocs.io/en/latest/Policies/storage_policy.html)。
-
 ## 参考
 
-- [OpenEBS Documentation](http://openebs.readthedocs.io/)
 - [CentOS 7.x 下配置iSCSI网络存储](http://blog.csdn.net/wh211212/article/details/52981305)
 - [Configure iSCSI Initiator](https://www.server-world.info/en/note?os=CentOS_7&p=iscsi&f=2)
 - [RHEL7: Configure a system as either an iSCSI target or initiator that persistently mounts an iSCSI target.](https://www.certdepot.net/rhel7-configure-iscsi-target-initiator-persistently/)

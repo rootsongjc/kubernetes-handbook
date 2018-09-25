@@ -11,7 +11,7 @@ index.tenxcloud.com/jimmy/zeppelin:0.7.1
 
 代码和使用文档见Github地址：https://github.com/rootsongjc/spark-on-kubernetes
 
-本文中用到的 yaml 文件可以在 [../manifests/spark-standalone](../manifests/spark-standalone) 目录下找到，也可以在上面的 https://github.com/rootsongjc/spark-on-kubernetes/ 项目的 manifests 目录下找到。
+本文中用到的 yaml 文件可以在 `manifests/spark-standalone` 目录下找到，也可以在上面的 https://github.com/rootsongjc/spark-on-kubernetes/ 项目的 manifests 目录下找到。
 
 **注意**：时速云上本来已经提供的镜像 `index.tenxcloud.com/google_containers/spark:1.5.2_v1` ，但是该镜像似乎有问题，下载总是失败。
 
@@ -44,12 +44,12 @@ $ kubectl create -f manifests/
 
 **spark ui**
 
-访问http://spark.traefik.io
+访问 `http://spark.traefik.io`
 
 ![spark master ui](../images/spark-ui.jpg)
 
 **zeppelin ui**
 
-访问http://zepellin.treafik.io
+访问 `http://zepellin.treafik.io`
 
 ![zeppelin ui](../images/zeppelin-ui.jpg)
