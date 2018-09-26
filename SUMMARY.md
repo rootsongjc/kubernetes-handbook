@@ -9,6 +9,7 @@
 * [云原生的定义](cloud-native/cloud-native-definition.md)
 * [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
 * [CNCF章程](cloud-native/cncf-charter.md)
+* [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 * [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
 * [Kubernetes与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
