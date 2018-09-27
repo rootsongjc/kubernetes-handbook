@@ -8,6 +8,7 @@
             "Jimmy Song": "https://jimmysong.io",
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
             "ServiceMesher社区": "http://www.servicemesher.com",
+            "Istio handbook": "https://jimmysong.io/istio-handbok",
             "Awesome Service Mesh": "http://www.servicemesher.com/awesome-servicemesh",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
@@ -32,8 +33,7 @@
         "theme-default",
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
-        "lightbox",
-        "ad"
+        "lightbox"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -55,7 +55,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "Copyright © jimmysong.io 2017-2018",
+            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p>Copyright © jimmysong.io 2017-2018",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -73,9 +73,6 @@
         },
         "sitemap-general": {
             "prefix": "https://jimmysong.io/kubernetes-handbook/"
-        },
-        "ad": {
-           "contentBottom": "<div>开源项目 <a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于Istio的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang版的高性能Service Mesh Sidecar代理</a></div>"
         }
     }
 }
