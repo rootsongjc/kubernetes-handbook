@@ -1,7 +1,7 @@
 ---
 date: "2017-03-18T20:53:54+08:00"
 title:  "About me"
-tags: ["me"]
+tags: ["Jimmy Song"]
 subtitle: "宋净超"
 description: "Jimmy Song(宋净超) - Developer Advocate on Cloud Native, CNCF Ambassador, co-founder of ServiceMesher community"
 nocomment: true
@@ -11,7 +11,7 @@ seealso: false
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
 
-![wechat_qrcode](https://ws1.sinaimg.cn/large/00704eQkgy1frnpzcnia1j30c40g20wi.jpg)
+![wechat_qrcode](https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg)
 
 ### Info
 
@@ -41,9 +41,10 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 **Gitbooks**
 
-- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
-- [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - Building static website with hugo
 - [envoy](https://servicemesher.github.io/envoy) - Envoy proxy 官方文档中文版
+- [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
+- [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
+- [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio中文指南/服务网格实践手册
 
 ---
 
@@ -54,6 +55,8 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 - [cloudinary-go](https://github.com/rootsongjc/cloudinary-go) - A Go client library and CLI tool to upload static assets to Cloudinary service.
 - [magpie](https://github.com/rootsongjc/magpie) - Deploying and managing a Hadoop Yarn cluster with Docker Swarm.
 - [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - Setting up a Kubernetes cluster with Vagrant and VirtualBox
+- [sofa-mesh](https://github.com/alipay/sofa-mesh) - A solution for large-scale Service Mesh based on Istio. <http://www.sofastack.tech/>
+- [sofa-mosn](https://github.com/alipay/sofa-mosn) - SOFAMosn is a modular observable smart network which can be used in service mesh deployed as a data plane sidecar.
 - [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
 
 ---
@@ -99,6 +102,8 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
+<!--
+
 ---
 
 <center>微信公众号——云原生应用架构（CloudNativeGo）</center>
@@ -108,3 +113,5 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 <center>微信公众号——Service Mesh爱好者（ServiceMesher）</center>
 
 ![微信公众号 - ServiceMesher Service Mesh 爱好者](https://ws1.sinaimg.cn/large/00704eQkly1fswhfttyooj3076076q3r.jpg)
+
+-->
