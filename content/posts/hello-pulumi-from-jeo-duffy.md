@@ -1,11 +1,12 @@
 ---
 title: "云原生编程语言Pulumi开源宣言"
-subtitle: "Hello, Pulumi!"
+subtitle: "解决臃肿的Kubernetes YAML配置的终极奥义!"
+description: "2018年6月18日 Joe Duffy在他的博客中宣布开源了云原生编程语言Pulumi。这是继Ballerina之后我看到的另一款云原生编程语言，他们之间有一些共同的特点，例如都是为了支持多种云环境，基于不可变基础设施和基础设施即代码的理念构建，使云原生应用的集成更加方便，但也有一些不同，Ballerina是直接创建了一个基于JVM的语言，而Pulumi是为不同编程语言构建了SDK。"
 date: 2018-06-24T11:38:30+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fsm4ki5qd4j30xc0cr1kx.jpg", desc: "Qinhuai River|Nanjing|May 20,2018"}]
+bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwgy1fvg4mc0yogj30zk0jcgte.jpg", desc: "Everest|May 20,2018"}]
 draft: false
 notoc: true
-tags: ["pulumi","cloud native"]
+tags: ["pulumi","cloud native","kubernetes"]
 categories: ["cloud native"]
 ---
 
