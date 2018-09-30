@@ -1,12 +1,13 @@
 ---
 date: "2017-07-16T15:04:18+08:00"
 draft: false
+notoc: true
+bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1fvrts2o1nlj316o0kqjys.jpg", desc: "Picture ©mckinsey.com"}]
 categories: "cloud-native"
-title: "企业迁移到云生应用架构时所需做出的变革"
+title: "企业迁移到云原生应用架构时所需做出的变革"
+subtitle: "转型到云原生应用架构"
 tags: ["cloud-native"]
 ---
-
-本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第二部分，归档到 [Github - migrating-to-cloud-native-application-architectures](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
 
 # 在变革中前行
 
@@ -232,3 +233,7 @@ IT运营传统上通过各种基于单据的系统与客户进行互动。由于
 所有这些变化造就了无数的自治单元，辅助我们以期望的创新速度安全前行。
 
 在最后一章中，我们将通过一组操作手册，深入研究迁移到云原生应用程序架构的技术细节。
+
+---
+
+本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第二部分，归档到 [Github - migrating-to-cloud-native-application-architectures](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures) 。
