@@ -1,9 +1,11 @@
 ---
 title: "jimmysong.io网站更新日志"
+subtitle: "2018年国庆节重装改版"
 date: 2017-10-04T11:18:27+08:00
 draft: false
 categories: github
 notoc: true
+bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1fvrtt1dtz0j31kw0ns7wj.jpg", desc: "Picture ©changenow-summit.com"}]
 tags: ["github-pages","github","website","hugo"]
 ---
 

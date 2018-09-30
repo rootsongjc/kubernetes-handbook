@@ -4,15 +4,12 @@ draft: false
 categories: "cloud-native"
 subtitle: "Cloud Native的定义"
 title: "什么是Cloud Native（云原生）应用架构？"
-notoc: true
 description: "什么是云原生应用架构，《迁移至云原生应用架构》第一章"
 tags: ["cloud-native"]
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Foggy cloud"}]
 ---
 
-> 本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一章，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)，阅读全书请访问[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
-
-*软件正在吞噬这个世界。—Mark Andreessen*
+*软件正在吞噬世界。—Mark Andreessen*
 
 近些年来，在一些长期由领导者支配的行业中，这些领导者的领先地位已经岌岌可危，这都是由以这些行业为核心业务的软件公司造成的。像Square、Uber、Netflix、Airbnb和特斯拉这样的公司能够持续快速增长，并并拥有傲人的市场估值，成为它们所在行业的新领导者。这些创新公司有什么共同点？
 
@@ -254,5 +251,7 @@ Nassim Taleb在他的Antifragile（Random House）一书中介绍了抗脆弱性
 在下一章中，我们将探讨大多数企业为采用云原生应用程序架构而需要做出哪些改变。
 
 ---
+
+本文译自[Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)第一章，归档到 [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)，阅读全书请访问[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
 
 阅读本书剩余部分，请访问：[迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
