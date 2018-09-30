@@ -1,6 +1,6 @@
 ---
 title: "jimmysong.io网站更新日志"
-subtitle: "2018年国庆节重装改版"
+subtitle: "Beautifulhugo主题变更记录"
 date: 2017-10-04T11:18:27+08:00
 draft: false
 categories: github
