@@ -19,7 +19,7 @@ Federation 对于单个集群没有用处。基于下面这些原因您可能会
 - 低延迟：通过在多个区域部署集群可以最大限度减少区域近端用户的延迟。
 - 故障隔离：拥有多个小集群可能比单个大集群更利于故障隔离（例如：在云服务提供商的不同可用区中的多个集群）。详情请参考 [多集群指南](https://kubernetes.io/docs/concepts/cluster-administration/federation)。
 - 可伸缩性：单个集群有可伸缩性限制（对于大多数用户这不是典型场景。更多细节请参考 [Kubernetes 弹性伸缩与性能目标](https://git.k8s.io/community/sig-scalability/goals.md)）。
-- [混合云](https://kubernetes.io/docs/concepts/cluster-administration/federation.md#%E6%B7%B7%E5%90%88%E4%BA%91%E8%83%BD%E5%8A%9B)：您可以在不同的云服务提供商或本地数据中心中拥有多个集群。
+- [混合云](https://kubernetes.io/docs/concepts/cluster-administration/federation/)：您可以在不同的云服务提供商或本地数据中心中拥有多个集群。
 
 ### 警告
 
@@ -31,9 +31,9 @@ Federation 对于单个集群没有用处。基于下面这些原因您可能会
 
 ### 混合云能力
 
-Kubernetes 集群 federation 可以包含运行在不同云服务提供商（例如 Google Cloud、AWS）及本地（例如在 OpenStack 上）的集群。您只需要按需在适合的云服务提供商和/或地点上简单的创建集群，然后向 Federation API Server 注册每个集群的 API endpoint 和凭据即可。（详细信息请参阅 [federation 管理指南](https://kubernetes.io/docs/admin/federation)）。
+Kubernetes 集群 federation 可以包含运行在不同云服务提供商（例如 Google Cloud、AWS）及本地（例如在 OpenStack 上）的集群。您只需要按需在适合的云服务提供商和/或地点上简单的创建集群，然后向 Federation API Server 注册每个集群的 API endpoint 和凭据即可。
 
-此后，您的 [API 资源](https://kubernetes.io/docs/concepts/cluster-administration/federation.md#API-%E8%B5%84%E6%BA%90) 就可以跨越不同的集群和云服务提供商。
+此后，您的 [API 资源](https://kubernetes.io/docs/concepts/cluster-administration/federation/) 就可以跨越不同的集群和云服务提供商。
 
 ## 设置 federation
 
@@ -95,7 +95,7 @@ Kubernetes 集群数量的选择可能是一个相对静态的选择，只是偶
 
 如果在集群故障的情形下允许负载均衡将流量引导到任何区域，则至少需要有比 `R` 或 `U + 1` 数量更大的集群。如果不行的话（例如希望在集群发生故障时对所有用户确保低延迟），那么您需要有数量为 `R * (U + 1)` 的集群（`R` 个区域，每个中有 `U + 1` 个集群）。无论如何，请尝试将每个集群放在不同的区域中。
 
-最后，如果您的任何集群需要比 Kubernetes 集群最大建议节点数更多的节点，那么您可能需要更多的集群。 Kubernetes v1.3 支持最多 1000 个节点的集群。 Kubernetes v1.8 支持最多 5000 个节点的集群。更多的指导请参见 [构建大型集群](https://kubernetes.io/docs/admin/cluster-large)。
+最后，如果您的任何集群需要比 Kubernetes 集群最大建议节点数更多的节点，那么您可能需要更多的集群。 Kubernetes v1.3 支持最多 1000 个节点的集群。 Kubernetes v1.8 支持最多 5000 个节点的集群。
 
 ---
 

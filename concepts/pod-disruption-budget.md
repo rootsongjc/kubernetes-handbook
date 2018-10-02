@@ -39,7 +39,7 @@ Pod 不会消失，直到有人（人类或控制器）将其销毁，或者当�
 
 - 确保您的 pod [请求所需的资源](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-ram-container)。
 - 如果您需要更高的可用性，请复制您的应用程序。 （了解有关运行复制的[无状态](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment)和[有状态](https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application)应用程序的信息。）
-- 为了在运行复制应用程序时获得更高的可用性，请跨机架（使用[反亲和性](https://kubernetes.io/docs/user-guide/node-selection/#inter-pod-affinity-and-anti-affinity-beta-feature)）或跨区域（如果使用[多区域集群](https://kubernetes.io/docs/admin/multiple-zones)）分布应用程序。
+- 为了在运行复制应用程序时获得更高的可用性，请跨机架（使用[反亲和性](https://kubernetes.io/docs/user-guide/node-selection/#inter-pod-affinity-and-anti-affinity-beta-feature)）或跨区域（如果使用多区域集群）分布应用程序。
 
 自愿中断的频率各不相同。在 Kubernetes 集群上，根本没有自愿的中断。但是，您的集群管理员或托管提供商可能会运行一些导致自愿中断的附加服务。例如，节点软件更新可能导致自愿更新。另外，集群（节点）自动缩放的某些实现可能会导致碎片整理和紧缩节点的自愿中断。您的集群管理员或主机提供商应该已经记录了期望的自愿中断级别（如果有的话）。
 
@@ -63,7 +63,7 @@ PDB 不能阻止[非自愿中断](https://kubernetes.io/docs/concepts/workloads/
 
 由于应用程序的滚动升级而被删除或不可用的 Pod 确实会计入中断预算，但控制器（如 Deployment 和 StatefulSet）在进行滚动升级时不受 PDB 的限制——在应用程序更新期间的故障处理是在控制器的规格（spec）中配置（了解[更新 Deployment](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#updating-your-application-without-a-service-outage)）。
 
-使用驱逐 API 驱逐 pod 时，pod 会被优雅地终止（请参阅 [PodSpec](https://kubernetes.io/docs/resources-reference/v1.6/#podspec-v1-core) 中的 `terminationGracePeriodSeconds`）。
+使用驱逐 API 驱逐 pod 时，pod 会被优雅地终止（请参阅 PodSpec） 中的 `terminationGracePeriodSeconds`）。
 
 ## PDB 示例
 
@@ -153,7 +153,7 @@ Pod Disruption Budget（Pod 中断预算） 通过在角色之间提供接口来
 
 ## 参考
 
-- [Disruptions - kubernetes.io](https://kubernetes.iohttps://kubernetes.io/docs/concepts/workloads/pods/disruptions/)
+- [Disruptions - kubernetes.io](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)
 
 - 通过配置[Pod Disruption Budget（Pod 中断预算）](https://kubernetes.io/docs/tasks/run-application//configure-pdb)来执行保护应用程序的步骤。
 - 了解更多关于[排空节点](https://kubernetes.io/docs/tasks/administer-cluster//safely-drain-node)的信息。

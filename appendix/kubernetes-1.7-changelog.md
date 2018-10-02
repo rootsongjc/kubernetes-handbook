@@ -15,7 +15,7 @@
 - [Network Policy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) 提升为稳定版本。用户可以通过使用网络插件实现的网络策略来控制哪些Pod之间能够互相通信。
 - [节点授权](https://kubernetes.io/docs/admin/authorization/node/)和准入控制插件是新增加的功能，可以用于限制kubelet可以访问的secret、pod和其它基于节点的对象。
 - [加密的Secret](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)和etcd中的其它资源，现在是alpha版本。
-- [Kubelet TLS bootstrapping](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/)现在支持客户端和服务器端的证书轮换。
+- Kubelet TLS bootstrapping 现在支持客户端和服务器端的证书轮换。
 - 由API server存储的[审计日志](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/)现在更具可定制性和可扩展性，支持事件过滤和webhook。它们还为系统审计提供更丰富的数据。
 
 **有状态负载**

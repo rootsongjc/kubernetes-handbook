@@ -41,7 +41,7 @@ StatefulSet 适用于有以下某个或多个需求的应用：
 
 - StatefulSet 是 beta 资源，Kubernetes 1.5 以前版本不支持。
 - 对于所有的 alpha/beta 的资源，您都可以通过在 apiserver 中设置 `--runtime-config` 选项来禁用。
-- 给定 Pod 的存储必须由 [PersistentVolume Provisioner](http://releases.k8s.io/%7B%7Bpage.githubbranch%7D%7D/examples/persistent-volume-provisioning/README.md) 根据请求的 `storage class` 进行配置，或由管理员预先配置。
+- 给定 Pod 的存储必须由 PersistentVolume Provisioner 根据请求的 `storage class` 进行配置，或由管理员预先配置。
 - 删除或 scale StatefulSet 将_不会_删除与 StatefulSet 相关联的 volume。 这样做是为了确保数据安全性，这通常比自动清除所有相关 StatefulSet 资源更有价值。
 - StatefulSets 目前要求 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 负责 Pod 的网络身份。 您有责任创建此服务。
 
@@ -114,7 +114,7 @@ StatefulSet Pod 具有唯一的身份，包括序数，稳定的网络身份和�
 
 StatefulSet 中的每个 Pod 从 StatefulSet 的名称和 Pod 的序数派生其主机名。构造的主机名的模式是`$（statefulset名称)-$(序数)`。 上面的例子将创建三个名为`web-0，web-1，web-2`的 Pod。
 
-StatefulSet 可以使用 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 来控制其 Pod 的域。此服务管理的域的格式为：`$(服务名称).$(namespace).svc.cluster.local`，其中 “cluster.local” 是 [集群域](http://releases.k8s.io/%7B%7Bpage.githubbranch%7D%7D/cluster/addons/dns/README.md)。
+StatefulSet 可以使用 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 来控制其 Pod 的域。此服务管理的域的格式为：`$(服务名称).$(namespace).svc.cluster.local`，其中 “cluster.local” 是集群域。
 
 在创建每个Pod时，它将获取一个匹配的 DNS 子域，采用以下形式：`$(pod 名称).$(管理服务域)`，其中管理服务由 StatefulSet 上的 `serviceName` 字段定义。
 
@@ -126,7 +126,7 @@ StatefulSet 可以使用 [Headless Service](https://kubernetes.io/docs/concepts/
 | cluster.local  | foo/nginx         | foo/web               | nginx.foo.svc.cluster.local     | web-{0..N-1}.nginx.foo.svc.cluster.local | web-{0..N-1} |
 | kube.local     | foo/nginx         | foo/web               | nginx.foo.svc.kube.local        | web-{0..N-1}.nginx.foo.svc.kube.local    | web-{0..N-1} |
 
-注意 Cluster Domain 将被设置成 `cluster.local` 除非进行了 [其他配置](http://releases.k8s.io/%7B%7Bpage.githubbranch%7D%7D/cluster/addons/dns/README.md)。
+注意 Cluster Domain 将被设置成 `cluster.local` 除非进行了其他配置。
 
 ### 稳定存储
 

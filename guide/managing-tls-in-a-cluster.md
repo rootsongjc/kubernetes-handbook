@@ -72,7 +72,7 @@ spec:
 EOF
 ```
 
-请注意，在步骤1中创建的`server.csr`文件是base64编码并存储在`.spec.request`字段中。 我们还要求提供“数字签名”，“密钥加密”和“服务器身份验证”密钥用途的证书。 我们[这里](https://godoc.org/k8s.io/client-go/pkg/apis/certificates/v1beta1#KeyUsage)支持列出的所有关键用途和扩展的关键用途，以便您可以使用相同的API请求客户端证书和其他证书。
+请注意，在步骤1中创建的`server.csr`文件是base64编码并存储在`.spec.request`字段中。 我们还要求提供“数字签名”，“密钥加密”和“服务器身份验证”密钥用途的证书。
 
 在API server中可以看到这些CSR处于pending状态。执行下面的命令你将可以看到：
 

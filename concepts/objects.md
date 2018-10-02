@@ -24,16 +24,18 @@
 - Ingress
 - ConfigMap
 - Label
-- ThirdPartyResources
+- CustomResourceDefinition
+- Role
+- ClusterRole
 
 我将它们简单的分类为以下几种资源对象：
 
-| 类别   | 名称                                       |
-| :--- | ---------------------------------------- |
-| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling |
-| 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、ThirdPartyResource、   ServiceAccount |
-| 存储对象 | Volume、Persistent Volume                 |
-| 策略对象 | SecurityContext、ResourceQuota、LimitRange |
+| 类别     | 名称                                                         |
+| :------- | ------------------------------------------------------------ |
+| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling、Node、Namespace、Service、Ingress、Label、CustomResourceDefinition |
+| 存储对象 | Volume、PersistentVolume、Secret、ConfigMap                  |
+| 策略对象 | SecurityContext、ResourceQuota、LimitRange                   |
+| 身份对象 | ServiceAccount、Role、ClusterRole                            |
 
 ## 理解 kubernetes 中的对象
 
@@ -80,7 +82,7 @@ spec:
         - containerPort: 80
 ```
 
-一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 [`kubectl create`](https://kubernetes.io/docs/user-guide/kubectl/v1.7/#create) 命令，传递 `.yaml` 作为参数。下面是一个示例：
+一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 `kubectl create` 命令，传递 `.yaml` 作为参数。下面是一个示例：
 
 ```bash
 $ kubectl create -f docs/user-guide/nginx-deployment.yaml --record

@@ -12,7 +12,7 @@ Kubernetes是谷歌根据其内部使用的Borg改造成一个通用的容器编
 
 ### Kubernetes发展历史
 
-相信凡是关注容器生态圈的人都不会否认，Kubernetes已经成为容器编排调度的实际标准，不论Docker官方还是Mesos都已经支持Kubernetes，Docker公司在今年10月16日至19日举办的DockerCon EU 2017大会上宣布支持Kubernetes调度，就在这不久前Mesos的商业化公司Mesosphere的CTO Tobi Knaup也在官方博客中宣布[Kubernetes on DC/OS](kubectl get --raw=apis/|python -m json.tool)。而回想下2016年时，我们还在为Swarm、Mesos、Kubernetes谁能够在容器编排调度大战中胜出而猜测时，而经过不到一年的发展，Kubernetes就以超过70%的市场占有率（据[TheNewStack](https://www.thenewstack.io)的调研报告）将另外两者遥遥的甩在了身后，其已经在大量的企业中落地，还有一些重量级的客户也宣布将服务迁移到Kubernetes上，比如GitHub（见[Kubernetes at GitHub](https://githubengineering.com/kubernetes-at-github/)），还有eBay、彭博社等。
+相信凡是关注容器生态圈的人都不会否认，Kubernetes已经成为容器编排调度的实际标准，不论Docker官方还是Mesos都已经支持Kubernetes，Docker公司在今年10月16日至19日举办的DockerCon EU 2017大会上宣布支持Kubernetes调度，就在这不久前Mesos的商业化公司Mesosphere的CTO Tobi Knaup也在官方博客中宣布Kubernetes on DC/OS。而回想下2016年时，我们还在为Swarm、Mesos、Kubernetes谁能够在容器编排调度大战中胜出而猜测时，而经过不到一年的发展，Kubernetes就以超过70%的市场占有率（据[TheNewStack](https://www.thenewstack.io)的调研报告）将另外两者遥遥的甩在了身后，其已经在大量的企业中落地，还有一些重量级的客户也宣布将服务迁移到Kubernetes上，比如GitHub（见[Kubernetes at GitHub](https://githubengineering.com/kubernetes-at-github/)），还有eBay、彭博社等。
 
 Kubernetes自2014年由Google开源以来，至今已经发展到了1.9版本，下面是Kubernetes的版本发布路线图：
 

@@ -139,7 +139,7 @@ kubectl apply -f addon/heapster/
 172.17.8.102 grafana.jimmysong.io
 ```
 
-访问Grafana：<http://grafana.jimmysong.io>
+访问Grafana：`http://grafana.jimmysong.io`
 
 ![Grafana](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/grafana-animation.gif)
 
@@ -207,14 +207,14 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
-| grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
-| tracing      | http://172.17.8.101:$JAEGER_PORT                             |
-| productpage  | http://172.17.8.101:$GATEWAY_PORT/productpage                |
+| grafana      | `http://grafana.istio.jimmysong.io`                          |
+| servicegraph | `http://servicegraph.istio.jimmysong.io/dotviz`, `http://servicegraph.istio.jimmysong.io/graph`, `http://servicegraph.istio.jimmysong.io/force/forcegraph.htm` |
+| tracing      | `http://172.17.8.101:$JAEGER_PORT`                           |
+| productpage  | `http://172.17.8.101:$GATEWAY_PORT/productpage`              |
 
 **注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
-详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
+详细信息请参阅 https://istio.io/zh/docs/examples/bookinfo/
 
 ![bookinfo示例](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
 
@@ -241,7 +241,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 ### Kiali
 
-Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请查看[https://kiali.io](https://kiali.io/)。
+Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请查看 [https://kiali.io](https://kiali.io/)。
 
 在本地该项目的根路径下执行下面的命令：
 
@@ -255,7 +255,7 @@ kubectl apply -n istio-system -f addon/kiali
 
 ### Weave scope
 
-[Weave scope](https://github.com/weaveworks/scope)可用于监控、可视化和管理Docker&Kubernetes集群，详情见<https://www.weave.works/oss/scope/> 
+[Weave scope](https://github.com/weaveworks/scope)可用于监控、可视化和管理Docker&Kubernetes集群，详情见 https://www.weave.works/oss/scope/ 
 
 在本地该项目的根路径下执行下面的命令：
 
@@ -269,7 +269,7 @@ kubectl apply -f addon/weave-scope
 172.17.8.102 scope.weave.jimmysong.io
 ```
 
-现在打开浏览器，访问http://scope.weave.jimmysong.io/
+现在打开浏览器，访问 `http://scope.weave.jimmysong.io/`
 
 ![Kiali动画](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/weave-scope-animation.gif)
 

@@ -12,7 +12,7 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes-incubator/ip-masq
 
 关于 ip-masq-agent 的更多信息请参考 [该文档](https://github.com/kubernetes-incubator/ip-masq-agent)。
 
-在大多数情况下，默认的一套规则应该是足够的；但是，如果内置的规则不适用于您的集群，您可以创建并应用 [ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configmap/) 来自定义受影响的 IP 范围。例如，为了仅允许 ip-masq-agent 考虑 10.0.0.0/8，您可以在名为 “config” 的文件中创建以下 [ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configmap)。
+在大多数情况下，默认的一套规则应该是足够的；但是，如果内置的规则不适用于您的集群，您可以创建并应用 ConfigMap 来自定义受影响的 IP 范围。例如，为了仅允许 ip-masq-agent 考虑 10.0.0.0/8，您可以在名为 “config” 的文件中创建以下 ConfigMap。
 
 ```yaml
 nonMasqueradeCIDRs:

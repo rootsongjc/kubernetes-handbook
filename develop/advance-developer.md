@@ -90,7 +90,7 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 以下主题对构建更复杂的应用程序也很有用：
 
 - [Kubernetes 中的其他扩展点](https://kubernetes.io/docs/concepts/overview/extending/) - 在哪里可以挂勾到 Kubernetes 架构的概念性的概述
-- [Kubernetes 客户端库](https://kubernetes.io/docs/reference/client-libraries/) - 用于构建需要与 Kubernetes API 大量交互的应用程序。
+- Kubernetes 客户端库 - 用于构建需要与 Kubernetes API 大量交互的应用程序。
 
 #### 下一步
 
@@ -99,4 +99,4 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 - 如果您想推荐新功能或跟上Kubernetes应用开发的最新进展，请考虑加入 SIG，如 [SIG Apps](https://github.com/kubernetes/community/tree/master/sig-apps)。
 - 如果您有兴趣详细了解 Kubernetes 的内部运作（例如网络），请考虑查看[集群运维之旅](https://kubernetes.io/docs/user-journeys/users/cluster-operator/foundational/)。
 
-原文：https://kubernetes.iohttps://kubernetes.io/docs/user-journeys/users/application-developer/advanced
+原文：https://kubernetes.io/docs/user-journeys/users/application-developer/advanced

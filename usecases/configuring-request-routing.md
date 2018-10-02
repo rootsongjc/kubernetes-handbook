@@ -69,7 +69,7 @@
 
  由于对代理的规则传播是异步的，因此在尝试访问应用程序之前，需要等待几秒钟才能将规则传播到所有pod。
 
-2. 在浏览器中打开BookInfo URL（http://$GATEWAY_URL/productpage ，我们在上一节中使用的是 http://ingress.istio.io/productpage ）您应该会看到BookInfo应用程序的产品页面显示。 注意，产品页面上没有评分星，因为`reviews:v1`不访问评级服务。
+2. 在浏览器中打开BookInfo URL（`http://$GATEWAY_URL/productpage` ，我们在上一节中使用的是 `http://ingress.istio.io/productpage`）您应该会看到BookInfo应用程序的产品页面显示。 注意，产品页面上没有评分星，因为`reviews:v1`不访问评级服务。
 
 3. 将特定用户路由到`reviews:v2`。
 

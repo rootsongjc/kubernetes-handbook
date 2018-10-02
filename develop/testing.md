@@ -203,5 +203,4 @@ kubectl get pods nginx-4263166205-ggst4 -o template '--template={{if (exists . "
 * [End-to-End Testing](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
 * [Node e2e test](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-node-tests.md)
 * [How to write e2e test](https://github.com/kubernetes/community/blob/master/contributors/devel/writing-good-e2e-tests.md)
-* [Coding Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/coding-conventions.md#testing-conventions)
 * https://github.com/kubernetes/test-infra

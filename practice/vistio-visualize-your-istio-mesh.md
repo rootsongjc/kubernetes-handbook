@@ -21,7 +21,7 @@ Vizceral有两个可视化级别，全局可视化和集群级别可视化。在
 
 以下Demo使得这些假设更容易部署。如果您的环境设置不同，则可能需要将代码下载到本地并编辑一些文件。
 
-- Prometheus部署在`istio-system` namespace下，可以通过[http://prometheus.istio-system:9090](http://prometheus.istio-system:9090/)地址访问
+- Prometheus部署在`istio-system` namespace下，可以通过`http://prometheus.istio-system:9090`地址访问
 - Istio mixer启用了`istio_request_count` metric
 - Kubernetes集群包含有`standard` StorageClass
 - 为了便于部署已安装了Helm（可选）

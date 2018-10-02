@@ -80,13 +80,13 @@ Kubernetes中的基本资源类型分成了三类：
 
 在最近一届的KubeCon & CloudNativeCon上Operator已经变得越来越流行。下面是OpenEBS的一个使用Operator的例子。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr56m7z2sj31y010y17y.jpg)
+![OpenEBS 控制平面架构](https://ws1.sinaimg.cn/large/00704eQkgy1frr56m7z2sj31y010y17y.jpg)
 
 OpenEBS是一款容器化存储，它基于Ceph构建，容器化存储最大的好处就是复用Kubernetes的资源类型，简化存储应用的部署，将单体的存储拆分为“微服务化”的存储，即每个应用在声明PV的时候才会创建存储，并与PV的生命周期一样都是独立于应用的。
 
 OpenEBS的存储也是分控制平面和数据平面的，下图是OpenEBS的架构图。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr57nm2mnj31xk11qqej.jpg)
+![OpenEBS 的存储卷管理](https://ws1.sinaimg.cn/large/00704eQkgy1frr57nm2mnj31xk11qqej.jpg)
 
 黄色部分是OpenEBS的组件（除了kube-dashboard），它是使用Kubernetes的各种原语和CRD来创建的，架构跟Kubernetes本身也很类似。
 
@@ -94,13 +94,13 @@ OpenEBS的存储也是分控制平面和数据平面的，下图是OpenEBS的架
 
 上面说到了Operator的一个应用，下面再来看一个我们之前在Kubernetes中部署Hadoop YARN和Spark的例子。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr58ebf2lj323o11219r.jpg)
+![Hadoop YARN 迁移到 Kubernetes的示例](https://ws1.sinaimg.cn/large/00704eQkgy1frr58ebf2lj323o11219r.jpg)
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr59gzzwsj32gg16k4qp.jpg)
+![Spark on Yarn with Kubernetes](https://ws1.sinaimg.cn/large/00704eQkgy1frr59gzzwsj32gg16k4qp.jpg)
 
 Kubernetes始于12因素应用的PaaS平台，它是微服务的绝佳部署管理平台，基于它可以应用多种设计模式。它的未来将变成什么样呢？
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5arzvetj31no12mdre.jpg)
+![云原生与12因素应用](https://ws1.sinaimg.cn/large/00704eQkgy1frr5arzvetj31no12mdre.jpg)
 
 - Service Mesh：解决微服务治理问题
 - Auto Pilot：自动驾驭能力，服务自动扩展，智能运维
@@ -114,7 +114,7 @@ Kubernetes始于12因素应用的PaaS平台，它是微服务的绝佳部署管�
 
 甚至出现了像ballerina这样的云原生编程语言，它的出现就是为了解决应用开发到服务集成之间的鸿沟的。它有以下几个特点。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5c8bwmtj31ou152qc3.jpg)
+![云原生编程语言](https://ws1.sinaimg.cn/large/00704eQkgy1frr5c8bwmtj31ou152qc3.jpg)
 
 - 使用云原生语义的DSL
 - 注解式配置
@@ -123,13 +123,13 @@ Kubernetes始于12因素应用的PaaS平台，它是微服务的绝佳部署管�
 
 要完成云的集成CI/CD，或者用一个词代替来说就是GitOps的需求越来越强烈。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5bulhuhj329m10iwua.jpg)
+![Gitkube](https://ws1.sinaimg.cn/large/00704eQkgy1frr5bulhuhj329m10iwua.jpg)
 
 ### Kubernetes没有做什么
 
 看下这张图中的两个服务，它们使用的是kube-proxy里基于iptables的原生的负载均衡，并且服务间的流量也没有任何控制。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5dsurx6j320i140tpf.jpg)
+![Kuberentes中的流量管理](https://ws1.sinaimg.cn/large/00704eQkgy1frr5dsurx6j320i140tpf.jpg)
 
 Kubernetes缺少的最重要的一个功能就是微服务的治理，微服务比起单体服务来说使得部署和运维起来更加复杂，对于微服务的可观测性也有更高的要求，同时CI/CD流程Kubernetes本身也没有提供。
 
@@ -149,7 +149,7 @@ Service Mesh是一个专用的基础设施层，它能够将微服务的治理�
 
 Service Mesh实际上为了解决社会分工问题，它本身是为了解决微服务的治理。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1frr5fxzoltj32f81akqr2.jpg)
+![Service Mesh架构](https://ws1.sinaimg.cn/large/00704eQkgy1frr5fxzoltj32f81akqr2.jpg)
 
 Pilot和控制平面是为了运维人员准备的。
 

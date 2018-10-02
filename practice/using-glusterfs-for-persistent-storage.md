@@ -2,7 +2,7 @@
 
 我们复用kubernetes的三台主机做glusterfs存储。
 
-以下步骤参考自：https://www.xf80.com/2017/04/21/kubernetes-glusterfs/（该网站已无法访问）
+以下步骤参考自：`https://www.xf80.com/2017/04/21/kubernetes-glusterfs/`（该网站已无法访问）
 
 ## 安装glusterfs
 
@@ -134,8 +134,6 @@ $ gluster volume set k8s-volume performance.write-behind-window-size 1024MB
 ```
 
 ## Kubernetes中配置glusterfs
-
-官方的文档见：https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs
 
 以下用到的所有yaml和json配置文件可以在[../manifests/glusterfs](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/glusterfs)中找到。注意替换其中私有镜像地址为你自己的镜像地址。
 
@@ -351,5 +349,3 @@ index.html
 ## 参考
 
 - [CentOS 7 安装 GlusterFS](http://www.cnblogs.com/jicki/p/5801712.html)
-- [GlusterFS with kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/glusterfs)
-

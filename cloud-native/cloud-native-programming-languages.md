@@ -1,6 +1,6 @@
 # 云原生编程语言
 
-> 以下内容来自Joe Duffy的博客，[Hello, Pulumi!](joeduffyblog.com/2018/06/18/hello-pulumi/)。他说这些是为了说明为什么要创造Pulumi，在此我引用它说明为什么会有云原生编程语言。
+> 以下内容来自Joe Duffy的博客，[Hello, Pulumi!](http://joeduffyblog.com/2018/06/18/hello-pulumi/)。他说这些是为了说明为什么要创造Pulumi，在此我引用它说明为什么会有云原生编程语言。
 
 对于每一个serverless函数来说，我都要写几十行的JSON或者YAML配置。要链接到一个API端点，我还要学习晦涩的概念，执行一系列复制-粘贴的低级工作。如果我想在本机上运行一个小的集群的话，那么Docker还是很棒的，但是如果要在生产上使用的话，那么就要手动管理etcd集群，配置网络和iptables路由表，还有一系列与我的应用程序本身不相干的事情。不过Kubernetes的出现至少让我可以配置一次下次就可以跨云平台重用，但这还是会分散开发人员的精力。
 

@@ -73,8 +73,6 @@ Chart 仓库（repository）是一个用来托管`index.yaml`文件和打包好�
 
 ## 构建Monocular UI
 
-参考 [Monocular UI](Monocular UI) 构建UI。
-
 克隆项目到本地
 
 ```bash

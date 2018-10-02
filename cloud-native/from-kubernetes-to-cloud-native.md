@@ -10,8 +10,6 @@
 
 > 容器——Cloud Native的基石
 
-![Cloud Native容器实验室](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-container-lab.jpg)
-
 容器最初是通过开发者工具而流行，可以使用它来做隔离的开发测试环境和持续集成环境，这些都是因为容器轻量级，易于配置和使用带来的优势，docker和docker-compose这样的工具极大的方便的了应用开发环境的搭建，开发者就像是化学家一样在其中小心翼翼的进行各种调试和开发。
 
 随着容器的在开发者中的普及，已经大家对CI流程的熟悉，容器周边的各种工具蓬勃发展，俨然形成了一个小生态，在2016年达到顶峰，下面这张是我画的容器生态图：
@@ -23,8 +21,6 @@
 ## 为什么使用Kubernetes
 
 > Kubernetes——让容器应用进入大规模工业生产。
-
-![Cloud Native油井](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-oil-well.jpg)
 
 **Kubernetes是容器编排系统的事实标准**
 
@@ -48,11 +44,11 @@
 
 但就2017年为止，Kubernetes的主要使用场景也主要作为应用开发测试环境、CI/CD和运行Web应用这几个领域，如下图[TheNewStack](http://thenewstack.io)的Kubernetes生态状况调查报告所示。
 
-![Workloads running on Kubernetes](https://res.cloudinary.com/jimmysong/image/upload/images/workloads-running-on-kubernetes-2017-thenewstack.jpg)
+![Workloads running on Kubernetes](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5mxr6fxtj31kw11q484.jpg)
 
 另外基于Kubernetes的构建PaaS平台和Serverless也处于爆发的准备的阶段，如下图中Gartner的报告中所示：
 
-![Gartner技术爆发趋势图2017](https://res.cloudinary.com/jimmysong/image/upload/images/gartner-hype-cycle-for-emerging-technologies-2017.jpg)
+![Gartner技术爆发趋势图2017](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5my2jtxzj315o0z8dkr.jpg)
 
 当前各大公有云如Google GKE、微软Azure ACS、亚马逊EKS（2018年上线）、VMWare、Pivotal、腾讯云、阿里云等都提供了Kubernetes服务。
 
@@ -76,8 +72,6 @@
 
 > DevOps——通向云原生的云梯
 
-![Cloud Native Pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-natvie-pipeline.jpg)
-
 CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 - **容器化包装**：软件应用的进程应该包装在容器中独立运行。
@@ -90,7 +84,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 [CNCF](https://cncf.io)所托管的应用（目前已达12个），即朝着这个目标发展，其公布的[Cloud Native Landscape](https://github.com/cncf/landscape)，给出了云原生生态的参考体系。
 
-![Cloud Native Landscape v1.0](https://raw.githubusercontent.com/cncf/landscape/master/landscape/CloudNativeLandscape_v1.0.jpg)
+![Cloud Native Landscape v1.0](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5myp6ednj31kw0w0u0x.jpg)
 
 **使用Kubernetes构建云原生应用**
 
@@ -130,8 +124,6 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 ## Service Mesh
 
 > Services for show, meshes for a pro.
-
-![Service Mesh中国社区slogan](https://res.cloudinary.com/jimmysong/image/upload/images/service-meshes-pro.jpg)
 
 Kubernetes中的应用将作为微服务运行，但是Kubernetes本身并没有给出微服务治理的解决方案，比如服务的限流、熔断、良好的灰度发布支持等。
 
@@ -185,13 +177,11 @@ Linker的部署十分简单，本身就是一个镜像，使用Kubernetes的[Dae
 
 > Cloud Native的大规模工业生产
 
-![Cloud Native factory](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-factory.jpg)
-
 **GitOps**
 
 给开发者带来最大的配置和上线的灵活性，践行DevOps流程，改善研发效率，下图这样的情况将更少发生。
 
-![Deployment pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/deployment-pipeline-comic.jpg)
+![Deployment pipeline](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5mzj8rj6j318g1ewtfc.jpg)
 
 我们知道Kubernetes中的所有应用的部署都是基于YAML文件的，这实际上就是一种**Infrastructure as code**，完全可以通过Git来管控基础设施和部署环境的变更。
 
@@ -256,19 +246,19 @@ Spark现在已经非官方支持了基于Kubernetes的原生调度，其具有�
 
 下图是我们刚调研准备使用Kubernetes时候的调研方案选择。
 
-![Kubernetes solutions](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-solutions-choices.jpg)
+![Kubernetes solutions](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5mzywc83j31fk1i8qg4.jpg)
 
 对于一个初次接触Kubernetes的人来说，看到这样一个庞大的架构选型时会望而生畏，但是Kubernetes的开源社区帮助了我们很多。
 
 ![Kubernetes SIG](../images/kubernetes-sigs.jpg)
 
-我组建了**K8S&Cloud Native实战**微信群，参与了k8smeetup、KEUC2017、[kubernetes-docs-cn](https://github.com/kubernetes/kubernetes-docs-cn) Kubernetes官方中文文档项目。
+我组建了**K8S&Cloud Native实战**、**ServiceMesher**微信群，参与了k8smeetup、KEUC2017、[kubernetes-docs-cn](https://github.com/kubernetes/kubernetes-docs-cn) Kubernetes官方中文文档项目。
 
 **有用的资料和链接**
 
 - 我的博客： <https://jimmysong.io>
-- 微信群：k8s&cloud native实战群（见：<https://jimmysong.io/about>）
-- Meetup：k8smeetup
+- 微信群：k8s&cloud native实战群、ServiceMesher（见：<https://jimmysong.io/about>）
+- Meetup：k8smeetup、[ServiceMesher](http://www.servicemesher.com)
 - Cloud Native Go - 基于Go和React云原生Web应用开发：https://jimmysong.io/cloud-native-go
 - Gitbook：<https://jimmysong.io/kubernetes-handbook>
 - Cloud native开源生态：<https://jimmysong.io/awesome-cloud-native/>

@@ -56,8 +56,6 @@ kubectl rollout undo deployment/nginx-deployment
 
 ## Deployment 结构示意图
 
-参考：https://kubernetes.io/docs/api-reference/v1.6/#deploymentspec-v1beta1-apps
-
 ![kubernetes deployment cheatsheet](../images/deployment-cheatsheet.png)
 
 ## Deployment 概念详细解析
@@ -386,8 +384,6 @@ $ kubectl rollout undo deployment/nginx-deployment --to-revision=2
 deployment "nginx-deployment" rolled back
 ```
 
-与 rollout 相关的命令详细文档见[kubectl rollout](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#rollout)。
-
 该 Deployment 现在已经回退到了先前的稳定版本。如您所见，Deployment controller产生了一个回退到revison 2的`DeploymentRollback`的 event。
 
 ```bash
@@ -568,7 +564,7 @@ nginx-3926361531   3         3         3         28s
 
 ## Deployment 状态
 
-Deployment 在生命周期中有多种状态。在创建一个新的 ReplicaSet 的时候它可以是 [progressing](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#progressing-deployment) 状态， [complete](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#complete-deployment) 状态，或者 [fail to progress ](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#failed-deployment)状态。
+Deployment 在生命周期中有多种状态。在创建一个新的 ReplicaSet 的时候它可以是 [progressing](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#progressing-deployment) 状态， [complete](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#complete-deployment) 状态，或者 [fail to progress ](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#failed-deployment)状态。
 
 ### 进行中的 Deployment
 
@@ -610,7 +606,7 @@ $ echo $?
 - 范围限制
 - 程序运行时配置错误
 
-探测这种情况的一种方式是，在您的 Deployment spec 中指定[`spec.progressDeadlineSeconds`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#progress-deadline-seconds)。`spec.progressDeadlineSeconds` 表示 Deployment controller 等待多少秒才能确定（通过 Deployment status）Deployment进程是卡住的。
+探测这种情况的一种方式是，在您的 Deployment spec 中指定[`spec.progressDeadlineSeconds`](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#progress-deadline-seconds)。`spec.progressDeadlineSeconds` 表示 Deployment controller 等待多少秒才能确定（通过 Deployment status）Deployment进程是卡住的。
 
 下面的`kubectl`命令设置`progressDeadlineSeconds` 使 controller 在 Deployment 在进度卡住10分钟后报告：
 
@@ -624,8 +620,6 @@ $ kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSecond
 - Type=Progressing
 - Status=False
 - Reason=ProgressDeadlineExceeded
-
-浏览 [Kubernetes API conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#typical-status-properties) 查看关于status conditions的更多信息。
 
 **注意：** kubernetes除了报告`Reason=ProgressDeadlineExceeded`状态信息外不会对卡住的 Deployment 做任何操作。更高层次的协调器可以利用它并采取相应行动，例如，回滚 Deployment 到之前的版本。
 
@@ -730,15 +724,13 @@ $ echo $?
 
 在所有的 Kubernetes 配置中，Deployment 也需要`apiVersion`，`kind`和`metadata`这些配置项。配置文件的通用使用说明查看 [部署应用](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)，配置容器，和 [使用 kubectl 管理资源 ](https://kubernetes.io/docs/tutorials/object-management-kubectl/object-management/) 文档。
 
-Deployment也需要 [`.spec` section](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status).
-
 ### Pod Template
 
  `.spec.template` 是 `.spec`中唯一要求的字段。
 
 `.spec.template` 是 [pod template](https://kubernetes.io/docs/user-guide/replication-controller/#pod-template). 它跟 [Pod](https://kubernetes.io/docs/user-guide/pods)有一模一样的schema，除了它是嵌套的并且不需要`apiVersion` 和 `kind`字段。
 
-另外为了划分Pod的范围，Deployment中的pod template必须指定适当的label（不要跟其他controller重复了，参考[selector](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#selector)）和适当的重启策略。
+另外为了划分Pod的范围，Deployment中的pod template必须指定适当的label（不要跟其他controller重复了，参考[selector](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#selector)）和适当的重启策略。
 
 [`.spec.template.spec.restartPolicy`](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle) 可以设置为 `Always` , 如果不指定的话这就是默认配置。
 
@@ -784,7 +776,7 @@ Deployment也需要 [`.spec` section](https://github.com/kubernetes/community/bl
 
 ### Progress Deadline Seconds
 
-`.spec.progressDeadlineSeconds` 是可选配置项，用来指定在系统报告Deployment的[failed progressing](https://kubernetes.io/docs/concepts/workloads/controllers/deployment.md#failed-deployment) ——表现为resource的状态中`type=Progressing`、`Status=False`、 `Reason=ProgressDeadlineExceeded`前可以等待的Deployment进行的秒数。Deployment controller会继续重试该Deployment。未来，在实现了自动回滚后， deployment controller在观察到这种状态时就会自动回滚。
+`.spec.progressDeadlineSeconds` 是可选配置项，用来指定在系统报告Deployment的[failed progressing](https://kubernetes.io/docs/concepts/workloads/controllers/deployment#failed-deployment) ——表现为resource的状态中`type=Progressing`、`Status=False`、 `Reason=ProgressDeadlineExceeded`前可以等待的Deployment进行的秒数。Deployment controller会继续重试该Deployment。未来，在实现了自动回滚后， deployment controller在观察到这种状态时就会自动回滚。
 
 如果设置该参数，该值必须大于 `.spec.minReadySeconds`。
 

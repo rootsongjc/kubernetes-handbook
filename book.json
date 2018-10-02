@@ -7,11 +7,14 @@
         "sidebar": {
             "Jimmy Song": "https://jimmysong.io",
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
-            "ServiceMesher": "http://www.servicemesher.com",
+            "ServiceMesher社区": "http://www.servicemesher.com",
+            "Istio handbook - Istio 中文指南/服务网格实践手册": "https://jimmysong.io/istio-handbok",
             "Awesome Service Mesh": "http://www.servicemesher.com/awesome-servicemesh",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
-            "Cloud Native Java（云原生Java）-  Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java"
+            "Cloud Native Java（云原生Java）-  Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java",
+            "SOFAMesh - 基于Istio的大规模服务网格解决方案": "https://github.com/alipay/sofa-mesh",
+            "SOFAMosn - Golang版的高性能Service Mesh Sidecar代理": "https://github.com/alipay/sofa-mosn"
         }
     },
     "plugins": [
@@ -29,7 +32,8 @@
         "3-ba",
         "theme-default",
         "-highlight", "prism", "prism-themes",
-        "sitemap-general"
+        "sitemap-general",
+        "lightbox"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -51,7 +55,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "Copyright © jimmysong.io 2017-2018",
+            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p>Copyright © jimmysong.io 2017-2018",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },

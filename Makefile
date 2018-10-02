@@ -4,6 +4,11 @@ BOOK_OUTPUT := _book
 .PHONY: build
 build:
 	gitbook build . $(BOOK_OUTPUT)
+	cp images/apple-touch-icon-precomposed-152.png $(BOOK_OUTPUT)/gitbook/images
+
+.PHONY: lint
+lint:
+	htmlproofer --url-ignore "/localhost/,/172.17.8.101/,/172.20.0.113/,/slideshare.net/,/grpc.io/,/kiali.io/,/condiut.io/,/twitter.com/,/facebook.com/,/medium.com/,/google.com/,/jimmysong.io/" $(BOOK_OUTPUT)
 
 .PHONY: serve
 serve:
@@ -25,6 +30,7 @@ mobi:
 install:
 	npm install gitbook-cli -g
 	gitbook install
+	gem install html-proofer
 
 .PHONY: clean
 clean:

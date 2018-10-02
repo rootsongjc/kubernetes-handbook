@@ -36,8 +36,6 @@ kubelet启动时报错systemd版本不支持start a slice as transient unit。
 
 与[kubeadm init waiting for the control plane to become ready on CentOS 7.2 with kubeadm 1.6.1 #228](https://github.com/kubernetes/kubeadm/issues/228)类似。
 
-另外有一个使用systemd管理kubelet的[proposal](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/kubelet-systemd.md)。
-
 ## 4.kube-proxy报错kube-proxy[2241]: E0502 15:55:13.889842    2241 conntrack.go:42] conntrack returned error: error looking for path of conntrack: exec: "conntrack": executable file not found in $PATH
 
 **导致的现象**
@@ -126,12 +124,6 @@ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"templat
 - [Helm: Error: no available release name found - StackOverflow](https://stackoverflow.com/questions/43499971/helm-error-no-available-release-name-found)
 - [Helm 2.2.3 not working properly with kubeadm 1.6.1 default RBAC rules #2224](https://github.com/kubernetes/helm/issues/2224)
 
-
-
 ## 参考
 
-[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-
-[Resource Design Proposals](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/resources.md)
-
-[Helm: Error: no available release name found]()
+- [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)

@@ -14,7 +14,7 @@ Docker 中也有一个 [volume](https://docs.docker.com/engine/admin/volumes/) �
 
 要使用卷，需要为 pod 指定为卷（`spec.volumes` 字段）以及将它挂载到容器的位置（`spec.containers.volumeMounts` 字段）。
 
-容器中的进程看到的是由其 Docker 镜像和卷组成的文件系统视图。 [Docker 镜像](https://docs.docker.com/userguide/dockerimages/)位于文件系统层次结构的根目录，任何卷都被挂载在镜像的指定路径中。卷无法挂载到其他卷上或与其他卷有硬连接。Pod 中的每个容器都必须独立指定每个卷的挂载位置。
+容器中的进程看到的是由其 Docker 镜像和卷组成的文件系统视图。[Docker 镜像](https://docs.docker.com/userguide/dockerimages/)位于文件系统层次结构的根目录，任何卷都被挂载在镜像的指定路径中。卷无法挂载到其他卷上或与其他卷有硬连接。Pod 中的每个容器都必须独立指定每个卷的挂载位置。
 
 ## 卷的类型
 
@@ -51,7 +51,7 @@ Kubernetes 支持以下类型的卷：
 
 ### awsElasticBlockStore
 
-`awsElasticBlockStore` 卷将Amazon Web Services（AWS）[EBS Volume](http://aws.amazon.com/ebs/) 挂载到您的容器中。与 `emptyDir` 类型会在删除 Pod 时被清除不同，EBS 卷的的内容会保留下来，仅仅是被卸载。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
+`awsElasticBlockStore` 卷将Amazon Web Services（AWS）EBS Volume 挂载到您的容器中。与 `emptyDir` 类型会在删除 Pod 时被清除不同，EBS 卷的的内容会保留下来，仅仅是被卸载。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
 
 **重要提示**：您必须使用 `aws ec2 create-volume` 或 AWS API 创建 EBS 卷，才能使用它。
 
@@ -97,13 +97,9 @@ spec:
 
 `AzureDisk` 用于将 Microsoft Azure [Data Disk](https://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-linux-about-disks-vhds) 挂载到 Pod 中。
 
-更多细节可以在[这里](https://github.com/kubernetes/examples/tree/master/staging/volumes/azure_disk/README.md)找到。
-
 ### azureFile
 
 `azureFile` 用于将 Microsoft Azure File Volume（SMB 2.1 和 3.0）挂载到 Pod 中。
-
-更多细节可以在[这里](https://github.com/kubernetes/examples/tree/ master/staging/volumes/azure_file/README.md)找到。
 
 ### cephfs
 
@@ -174,7 +170,7 @@ fc 卷允许将现有的 `fc` 卷挂载到 pod 中。您可以使用卷配置中
 
 ### flocker
 
-[Flocker](https://clusterhq.com/flocker) 是一款开源的集群容器数据卷管理器。它提供了由各种存储后端支持的数据卷的管理和编排。
+Flocker 是一款开源的集群容器数据卷管理器。它提供了由各种存储后端支持的数据卷的管理和编排。
 
 `flocker` 允许将 Flocker 数据集挂载到 pod 中。如果数据集在 Flocker 中不存在，则需要先使用 Flocker CLI 或使用 Flocker API 创建数据集。如果数据集已经存在，它将被 Flocker 重新连接到 pod 被调度的节点上。这意味着数据可以根据需要在数据包之间“切换”。
 
@@ -288,7 +284,7 @@ spec:
 
 - 由于每个节点上的文件都不同，具有相同配置（例如从 podTemplate 创建的）的 pod 在不同节点上的行为可能会有所不同
 - 当 Kubernetes 按照计划添加资源感知调度时，将无法考虑 `hostPath` 使用的资源
-- 在底层主机上创建的文件或目录只能由 root 写入。您需要在[特权容器](/docs/user-guide/security-context)中以 root 身份运行进程，或修改主机上的文件权限以便写入 `hostPath` 卷
+- 在底层主机上创建的文件或目录只能由 root 写入。您需要在特权容器中以 root 身份运行进程，或修改主机上的文件权限以便写入 `hostPath` 卷
 
 #### Pod 示例
 
@@ -320,8 +316,6 @@ spec:
 **重要提示**：必须先创建自己的 iSCSI 服务器，然后才能使用它。
 
 iSCSI 的一个特点是它可以同时被多个用户以只读方式安装。这意味着您可以预先使用您的数据集填充卷，然后根据需要向多个额 pod 同时提供。不幸的是，iSCSI 卷只能由单个使用者以读写模式挂载——不允许同时写入。
-
-有关更多详细信息，请参见 [iSCSI示例](https://github.com/kubernetes/examples/tree/ master/staging/volumes/iscsi)。
 
 ### local
 
@@ -369,7 +363,7 @@ spec:
 
 **注意**：本地 PersistentVolume 清理和删除需要手动干预，无外部提供程序。
 
-从 1.9 开始，本地卷绑定可以被延迟，直到通过具有 StorageClass 中的 `WaitForFirstConsumer` 设置为`volumeBindingMode` 的 pod 开始调度。请参阅[示例](storage-classes.md＃local)。延迟卷绑定可确保卷绑定决策也可以使用任何其他节点约束（例如节点资源需求，节点选择器，pod 亲和性和 pod 反亲和性）进行评估。
+从 1.9 开始，本地卷绑定可以被延迟，直到通过具有 StorageClass 中的 `WaitForFirstConsumer` 设置为`volumeBindingMode` 的 pod 开始调度。请参阅示例。延迟卷绑定可确保卷绑定决策也可以使用任何其他节点约束（例如节点资源需求，节点选择器，pod 亲和性和 pod 反亲和性）进行评估。
 
 有关 `local` 卷类型的详细信息，请参见[本地持久化存储用户指南](https://github.com/kubernetes-incubator/external-storage/tree/master/local-volume)。
 
@@ -397,7 +391,7 @@ spec:
 - [`downwardAPI`](#downwardapi)
 - `configMap`
 
-所有来源都必须在与 pod 相同的命名空间中。有关更多详细信息，请参阅 [all-in-one 卷设计文档](https://github.com/kubernetes/community/blob/ master/contributors/design-suggestions/node/all-in-one-volume.md)。
+所有来源都必须在与 pod 相同的命名空间中。
 
 #### 带有 secret、downward API 和 configmap 的 pod
 
@@ -506,15 +500,11 @@ spec:
 
 **重要提示**：在 pod 中使用之前，请确保您有一个名为 `pxvol` 的现有 PortworxVolume。
 
-更多的细节和例子可以在[这里](https://github.com/kubernetes/examples/tree/ master /staging/volumes/portworx/README.md)找到。
-
 ### quobyte
 
 `quobyte` 卷允许将现有的 [Quobyte](http://www.quobyte.com) 卷挂载到容器中。
 
 **重要提示**：您必须先创建自己的 Quobyte 安装程序，然后才能使用它。
-
-有关更多详细信息，请参见 [Quobyte示例](https://github.com/kubernetes/examples/tree/ master/staging/volumes/quobyte)。
 
 ### rbd
 
@@ -523,8 +513,6 @@ spec:
 **重要提示**：您必须先自行安装 Ceph，然后才能使用 RBD。
 
 RBD 的一个特点是它可以同时为多个用户以只读方式挂载。这意味着可以预先使用您的数据集填充卷，然后根据需要同时为多个 pod 并行提供。不幸的是，RBD 卷只能由单个用户以读写模式安装——不允许同时写入。
-
-有关更多详细信息，请参阅 [RBD示例](https://github.com/kubernetes/examples/tree/ master/staging/volumes/rbd)。
 
 ### scaleIO
 
@@ -567,8 +555,6 @@ spec:
 
 **重要提示**：您必须先在 Kubernetes API 中创建一个 secret，然后才能使用它。
 
-Secret 在[这里](/docs/user-guide/secrets)被更详细地描述。
-
 ### storageOS
 
 `storageos` 卷允许将现有的 [StorageOS](https://www.storageos.com) 卷挂载到容器中。
@@ -608,8 +594,6 @@ spec:
         volumeName: redis-vol01
         fsType: ext4
 ```
-
-有关更多信息，包括动态配置和持久化卷声明，请参阅 [StorageOS 示例](https://github.com/kubernetes/kubernetes/tree/master/examples/volumes/storageos)。
 
 ### vsphereVolume
 

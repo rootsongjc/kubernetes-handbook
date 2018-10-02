@@ -1,12 +1,12 @@
 # 管理容器的计算资源
 
-当您定义 [Pod](http://kubernetes.io/docks/user-guide/pods) 的时候可以选择为每个容器指定需要的 CPU 和内存（RAM）大小。当为容器指定了资源请求后，调度器就能够更好的判断出将容器调度到哪个节点上。如果您还为容器指定了资源限制，节点上的资源就可以按照指定的方式做竞争。关于资源请求和限制的不同点和更多资料请参考 [Resource QoS](https://git.k8s.io/community/contributors/design-proposals/resource-qos.md)。
+当您定义 [Pod](http://kubernetes.io/docs/user-guide/pods) 的时候可以选择为每个容器指定需要的 CPU 和内存（RAM）大小。当为容器指定了资源请求后，调度器就能够更好的判断出将容器调度到哪个节点上。如果您还为容器指定了资源限制，节点上的资源就可以按照指定的方式做竞争。
 
 ## 资源类型
 
 *CPU* 和 *memory* 都是 *资源类型*。资源类型具有基本单位。CPU 的单位是 core，memory 的单位是 byte。
 
-CPU和内存统称为*计算资源*，也可以称为*资源*。计算资源的数量是可以被请求、分配和消耗的可测量的。它们与 [API 资源](https://kubernetes.io/docks/api/) 不同。 API 资源（如 Pod 和 [Service](https://kubernetes.io/docks/user-guide/services)）是可通过 Kubernetes API server 读取和修改的对象。
+CPU和内存统称为*计算资源*，也可以称为*资源*。计算资源的数量是可以被请求、分配和消耗的可测量的。它们与 [API 资源](https://kubernetes.io/docs/api/) 不同。 API 资源（如 Pod 和 [Service](https://kubernetes.io/docs/user-guide/services)）是可通过 Kubernetes API server 读取和修改的对象。
 
 ## Pod 和 容器的资源请求和限制
 
@@ -93,13 +93,13 @@ spec:
 
 容器可能被允许也可能不被允许超过其 CPU 限制时间。但是，由于 CPU 使用率过高，不会被杀死。
 
-要确定容器是否由于资源限制而无法安排或被杀死，请参阅 [疑难解答](#troubleshooting) 部分。
+要确定容器是否由于资源限制而无法安排或被杀死，请参阅疑难解答]部分。
 
 ## 监控计算资源使用
 
 Pod 的资源使用情况被报告为 Pod 状态的一部分。
 
-如果为集群配置了 [可选监控](http://releases.k8s.io/{{page.githubbranch}}/cluster/addons/cluster-monitoring/README.md)，则可以从监控系统检索 Pod 资源的使用情况。
+如果为集群配置了可选监控，则可以从监控系统检索 Pod 资源的使用情况。
 
 ## 疑难解答
 
@@ -261,7 +261,7 @@ spec:
 
 在 kubernetes 1.5 版本中仅允许在容器上指定资源量。计划改进对所有容器在 Pod 中共享资源的计量，如 [emptyDir volume](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)。
 
-在 kubernetes 1.5 版本中仅支持容器对 CPU 和内存的申请和限制。计划增加新的资源类型，包括节点磁盘空间资源和一个可支持自定义 [资源类型](https://github.com/kubernetes/community/blob/{{page.githubbranch}}/contributors/design-proposals/resources.md) 的框架。
+在 kubernetes 1.5 版本中仅支持容器对 CPU 和内存的申请和限制。计划增加新的资源类型，包括节点磁盘空间资源和一个可支持自定义资源类型的框架。
 
 Kubernetes 通过支持通过多级别的 [服务质量](http://issue.k8s.io/168) 来支持资源的过度使用。
 

@@ -1,5 +1,7 @@
 # 安装并试用Istio service mesh
 
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)**。
+
 官方文档地址 [快速开始](https://istio.io/docs/setup/kubernetes/)
 
 本文根据官网的文档整理而成，步骤包括安装**istio 0.5.1**并创建一个bookinfo的微服务来测试istio的功能。
@@ -289,11 +291,11 @@ istio/examples-bookinfo-productpage-v1
 kubectl create -f <(istioctl kube-inject -f samples/apps/bookinfo/bookinfo.yaml)
 ```
 
-`Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考：https://istio.io/docs/reference/commands/istioctl.html#istioctl-kube-inject
+`Istio kube-inject`命令会在`bookinfo.yaml`文件中增加Envoy sidecar信息。参考 https://istio.io/docs/reference/commands/istioctl/#istioctl-kube-inject
 
 在本机的`/etc/hosts`下增加VIP节点和`ingress.istio.io`的对应信息，具体步骤参考：[边缘节点配置](../practice/edge-node-configuration.md)，或者使用gateway ingress来访问服务，
 
-如果将`productpage`配置在了ingress里了，那么在浏览器中访问<http://ingress.istio.io/productpage>，如果使用了istio默认的`gateway` ingress配置的话，ingress service使用`nodePort`方式暴露的默认使用32000端口，那么可以使用<http://任意节点的IP:32000/productpage>来访问。
+如果将`productpage`配置在了ingress里了，那么在浏览器中访问`http://ingress.istio.io/productpage`，如果使用了istio默认的`gateway` ingress配置的话，ingress service使用`nodePort`方式暴露的默认使用32000端口，那么可以使用 `http://任意节点的IP:32000/productpage` 来访问。
 
 ![BookInfo Sample页面](../images/bookinfo-sample.jpg)
 
@@ -371,29 +373,29 @@ $ kubectl get pod productpage-v1-944450470-bd530 -o json
 
 **Grafana页面**
 
-http://grafana.istio.io
+`http://grafana.istio.io`
 
 ![Istio Grafana界面](../images/istio-grafana.jpg)
 
 **Prometheus页面**
 
-http://prometheus.istio.io
+`http://prometheus.istio.io`
 
 ![Prometheus页面](../images/istio-prometheus.jpg)
 
 **Zipkin页面**
 
-http://zipkin.istio.io
+`http://zipkin.istio.io`
 
 ![Zipkin页面](../images/istio-zipkin.jpg)
 
 **ServiceGraph页面**
 
-http://servicegraph.istio.io/dotviz
+`http://servicegraph.istio.io/dotviz`
 
 可以用来查看服务间的依赖关系。
 
-访问 http://servicegraph.istio.io/graph 可以获得json格式的返回结果。
+访问` http://servicegraph.istio.io/graph` 可以获得json格式的返回结果。
 
 ![ServiceGraph页面](../images/istio-servicegraph.jpg)
 
@@ -405,5 +407,5 @@ BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由�
 
 ## 参考
 
-- [Installing Istio](https://istio.io/docs/tasks/installing-istio.html)
-- [BookInfo sample](https://istio.io/docs/guides/bookinfo.html)
+- [安装 Istio](https://istio.io/zh/docs/setup/kubernetes/)
+- [BookInfo 应用](https://istio.io/zh/docs/examples/bookinfo/)

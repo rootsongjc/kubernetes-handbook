@@ -70,9 +70,6 @@
   - 排查工作节点（work node）故障
   - 排查网络故障
 
-
->  参考[课程大纲](https://github.com/cncf/curriculum/blob/master/certified_kubernetes_administrator_exam_V0.9.pdf)
-
 ## 考试说明和checklist
 
 - 注册考试
@@ -138,8 +135,6 @@ kubectl   get   no   −l   name=hk8s−node−1   −−context=hk8s
 
 10. 取消和重订
 >  在预定考试日期前24小时外，取消或重订， 可以获得完整退费
-
-> 参考 [CNCF_FAQ](https://www.cncf.io/certification/expert/faq/)
 
 ## 复习资料
 

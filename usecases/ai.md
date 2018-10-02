@@ -4,4 +4,4 @@ Kubernetes 在人工智能领域的应用。
 
 ## TBD
 
-- [kubeflow](Machine Learning Toolkit for Kubernetes) - Kubernetes 机器学习工具箱
+- [kubeflow](https://github.com/kubeflow/kubeflow) - Kubernetes 机器学习工具箱
