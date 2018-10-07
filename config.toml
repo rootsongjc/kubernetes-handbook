@@ -121,9 +121,15 @@ desc = "Istio Meetup in Beijing GDG"
 
 [[menu.main]]
     parent = "Categories"
+    name = "Drone"
+    url = "categories/drone"
+    weight = 8
+
+[[menu.main]]
+    parent = "Categories"
     name = "Tags"
     url = "tags"
-    weight = 8
+    weight = 9
 
 [[menu.main]]
     identifier = "Gitbooks"
