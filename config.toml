@@ -18,6 +18,10 @@ share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
 dateFormat = "January 2, 2006"
 commit = false
 rss = true
+# ad section, comment this to disable it
+ad = true
+# reward button, comment this to disable it
+reward = true
 baiduKey = "11f7d254cfa4e0ca44b175c66d379ecc"
 #comments = false
 #sharebutton = true
