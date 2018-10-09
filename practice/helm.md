@@ -319,7 +319,7 @@ helm package .
 
 ### 依赖
 
-我们可以在`requirement.yaml`中定义应用所依赖的chart，例如定义对`mariadb`的依赖：
+我们可以在`requirements.yaml`中定义应用所依赖的chart，例如定义对`mariadb`的依赖：
 
 ```yaml
 dependencies:
