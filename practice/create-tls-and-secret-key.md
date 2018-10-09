@@ -290,7 +290,7 @@ admin.csr  admin-csr.json  admin-key.pem  admin.pem
 ```
 
 + CN 指定该证书的 User 为 `system:kube-proxy`；
-+ `kube-apiserver` 预定义的 RoleBinding `cluster-admin` 将User `system:kube-proxy` 与 Role `system:node-proxier` 绑定，该 Role 授予了调用 `kube-apiserver` Proxy 相关 API 的权限；
++ `kube-apiserver` 预定义的 RoleBinding `system:node-proxier` 将User `system:kube-proxy` 与 Role `system:node-proxier` 绑定，该 Role 授予了调用 `kube-apiserver` Proxy 相关 API 的权限；
 
 生成 kube-proxy 客户端证书和私钥
 
