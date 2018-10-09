@@ -80,6 +80,7 @@
   * [APIService](concepts/apiservice.md)
   * [Service Catalog](concepts/service-catalog.md)
 * [资源调度](concepts/scheduling.md)
+  * [QoS（服务质量等级）](concepts/qos.md)
 
 ## 用户指南
 
@@ -90,7 +91,7 @@
   * [Secret配置](guide/secret-configuration.md)
   * [管理namespace中的资源配额](guide/resource-quota-management.md)
 * [命令使用](guide/command-usage.md)
-  * [docker用户过度到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
+  * [Docker用户过度到kubectl命令行指南](guide/docker-cli-to-kubectl.md)
   * [kubectl命令概览](guide/using-kubectl.md)
   * [kubectl命令技巧大全](guide/kubectl-cheatsheet.md)
   * [使用etcdctl访问kubernetes数据](guide/using-etcdctl-to-access-kubernetes-data.md)
