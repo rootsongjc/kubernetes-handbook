@@ -58,6 +58,7 @@
   * [CronJob](concepts/cronjob.md)
   * [Horizontal Pod Autoscaling](concepts/horizontal-pod-autoscaling.md)
     * [自定义指标HPA](concepts/custom-metrics-hpa.md)
+  * [准入控制器（Admission Controller）](concepts/admission-controller.md)
 * [服务发现](concepts/service-discovery.md)
   * [Service](concepts/service.md)
   * [Ingress](concepts/ingress.md)
