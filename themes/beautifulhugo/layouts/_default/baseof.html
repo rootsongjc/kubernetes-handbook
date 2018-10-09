@@ -5,6 +5,9 @@
     {{ partial "nav.html" . }}
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
     {{ block "main" . }}{{ end }}
+    {{ if isset .Site.Params "ad" }}
+        {{ partial "ad.html" . }}
+    {{ end }}
     {{ partial "footer.html" . }}
   </body>
 </html>

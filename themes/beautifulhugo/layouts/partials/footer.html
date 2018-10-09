@@ -3,7 +3,6 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
-        <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1ftndnxw6b2j30a004gdgb.jpg">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
             {{- if isset $.Site.Author .id }}
               <li>
@@ -77,6 +76,7 @@
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/main.js" | absURL }}"></script>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.js" | absURL }}"></script>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/katex.min.js" | absURL }}"></script>
+<script src="{{ "js/reward.js" | absURL }}"></script>
 <script> renderMathInElement(document.body); </script>
 {{ if .Site.Params.gcse }}
 <script>
