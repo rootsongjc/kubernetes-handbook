@@ -21,6 +21,7 @@ Istio 的核心功能包括：流量管理、安全性、可观察性、多平�
 
 ![Istio是什么](https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg)
 
+
 该图中描绘了以下内容：
 
 - Istio 可以在虚拟机和容器中运行
@@ -95,7 +96,11 @@ reviews-v3-67877d687c-fj56n.default                   SYNCED     SYNCED     SYNC
 
 下图展示了官方的 Bookinfo 示例的部署结构及其与 Istio 各组件之间的关系。
 
-![Bookinfo 示例部署结构图](https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png)
+<div id="lightgallery">
+    <a href="https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png">
+    <img src="https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png">
+    </a>
+</div>
 
 Istio 中负责流量管理的核心组件是：
 
@@ -153,7 +158,11 @@ kubectl get customresourcedefinition|grep istio.io
 
 下图来是 Istio 创建的 50 个 CRD 分类图（原图来自沈旭光）。
 
-![Istio 中创建的 CRD](https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg)
+<div id="lightgallery">
+    <a href="https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg">
+    <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg">
+    </a>
+</div>
 
 CRD 详细列表如下：
 
