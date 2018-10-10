@@ -22,6 +22,8 @@ rss = true
 ad = true
 # reward button, comment this to disable it
 reward = true
+# baguettebox gallery, comment this to disable it
+baguettebox = true
 baiduKey = "11f7d254cfa4e0ca44b175c66d379ecc"
 #comments = false
 #sharebutton = true
