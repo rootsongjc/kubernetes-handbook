@@ -53,8 +53,16 @@
   -->
   <link rel="stylesheet" href="{{ "css/main.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/search.css" | absURL }}" />
+  {{ if .Site.Params.reward }}
   <link rel="stylesheet" href="{{ "css/reward.css" | absURL }}" />
+  {{ end }}
+  {{ if isset .Params "lightgallery" }}
   <link rel="stylesheet" href="{{ "css/lightgallery.css" | absURL }}" />
+  {{ end }}
+  {{ if .Site.Params.baguettebox }}
+  <link rel="stylesheet" href="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/baguetteBox.css" />
+  {{ end }}
+  <!--
   <!--
   <link rel="stylesheet" href="{{ "css/pygment_highlights.css" | absURL }}" />
   <link rel="stylesheet" href="{{ "css/highlight.min.css" | absURL }}" />

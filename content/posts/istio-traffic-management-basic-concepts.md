@@ -19,8 +19,11 @@ Istio 的核心功能包括：流量管理、安全性、可观察性、多平�
 
 下面是以漫画的形式说明 Istio 是什么。
 
-![Istio是什么](https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg)
-
+<div class="gallery">
+    <a href="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg" title="Istio 是什么？">
+    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg">
+    </a>
+</div>
 
 该图中描绘了以下内容：
 
@@ -96,8 +99,8 @@ reviews-v3-67877d687c-fj56n.default                   SYNCED     SYNCED     SYNC
 
 下图展示了官方的 Bookinfo 示例的部署结构及其与 Istio 各组件之间的关系。
 
-<div id="lightgallery">
-    <a href="https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png">
+<div class="gallery">
+    <a href="https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png" title="官方的 Bookinfo 示例的部署结构及其与 Istio 各组件之间的关系">
     <img src="https://jimmysong.io/istio-handbook/images/bookinfo-application-traffic-route-and-connections-within-istio-service-mesh.png">
     </a>
 </div>
@@ -158,8 +161,8 @@ kubectl get customresourcedefinition|grep istio.io
 
 下图来是 Istio 创建的 50 个 CRD 分类图（原图来自沈旭光）。
 
-<div id="lightgallery">
-    <a href="https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg">
+<div class="gallery">
+    <a href="https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg" title="Isito 中的 CRD">
     <img src="https://ws2.sinaimg.cn/large/006tNc79gy1fvn341amlfj31kw1v1hdt.jpg">
     </a>
 </div>
@@ -412,7 +415,11 @@ spec:
 
 上面的例子中 `bookinfo` 这个 `VirtualService` 中绑定到了 `bookinfo-gateway`。`bookinfo-gateway` 使用了标签选择器选择对应的 Kubernetes pod，即下图中的 pod。
 
-![istio ingress gateway pod](https://ws4.sinaimg.cn/large/0069RVTdgy1fv7xh71h8fj31fn0dyq9g.jpg)
+<div class="gallery">
+    <a href="https://ws4.sinaimg.cn/large/0069RVTdgy1fv7xh71h8fj31fn0dyq9g.jpg" title="Isito Ingress Gateway pod">
+    <img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fv7xh71h8fj31fn0dyq9g.jpg">
+    </a>
+</div>
 
 我们再看下 `istio-ingressgateway` 的 YAML 安装配置。
 
@@ -778,7 +785,11 @@ reviews.default.svc.cluster.local                           9080      v3        
 
 本文讲解了 Istio 的流量配置的基本概念及其如何转换为 Pod 的配置，接下来读者需要了解服务之间是如何调用的，Pilot 是如何下发配置给 Sidecar 的以及 Sidecar 是如何处理流量的，下图展示了 `productpage` 服务调用 `details` 服务的请求流程图（图片来自[赵化冰的博客](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)），详细信息请参考 [Istio 流量管理实现机制深度解析](http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/)。
 
-![Productpage 服务调用 Details 服务的请求流程图](https://ws4.sinaimg.cn/large/006tNbRwly1fw27rvdflvj30gy0e80uk.jpg)
+<div class="gallery">
+<a href="https://ws4.sinaimg.cn/large/006tNbRwly1fw27rvdflvj30gy0e80uk.jpg" title="Productpage 服务调用 Details 服务的请求流程图">
+<img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw27rvdflvj30gy0e80uk.jpg">
+</a>
+</div>
 
 ## 参考
 

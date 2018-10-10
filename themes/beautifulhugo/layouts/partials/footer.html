@@ -76,7 +76,10 @@
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/main.js" | absURL }}"></script>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.js" | absURL }}"></script>
 <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/katex.min.js" | absURL }}"></script>
+{{ if .Site.Params.reward }}
 <script src="{{ "js/reward.js" | absURL }}"></script>
+{{ end }}
+{{ if isset .Params "lightgallery" }}
 <!-- lightgallery image plugin -->
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/picturefill.min.js"></script>
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lightgallery.js"></script>
@@ -87,6 +90,11 @@
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-hash.js"></script>
 <script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-share.js"></script>
 <script>lightGallery(document.getElementById('lightgallery'));</script>
+{{ end }}
+{{ if .Site.Params.baguettebox }}
+<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/baguetteBox.js"></script>
+<script> baguetteBox.run('.gallery');</script>
+{{ end }}
 <script> renderMathInElement(document.body); </script>
 {{ if .Site.Params.gcse }}
 <script>
