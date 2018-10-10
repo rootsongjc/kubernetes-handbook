@@ -13,7 +13,7 @@ body {
 }
 
 .container[role=main] {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     width: 100%;
     flex: 1 0 auto;
 }
@@ -858,4 +858,24 @@ aside.toc{
   padding: 0;
   padding-left: 12px;
   margin: 0;
+}
+
+.gallery-text {
+ text-align: center;
+ margin : 0px 1em 0px 1em;
+}
+
+.gallery-text a{
+ font-size: 15px;
+}
+
+.gallery-text table tr td{
+    border: 0;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
 }

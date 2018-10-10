@@ -11,7 +11,11 @@ seealso: false
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
 
-![wechat_qrcode](https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg)
+<div class="gallery">
+<a href="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" title="我的微信二维码">
+<img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" alt="我的微信二维码">
+</img>
+</div>
 
 ### Info
 
@@ -37,7 +41,11 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 - [Cloud Native Python - 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
 - [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
-![Cloud Native Series 云原生系列书籍](https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg)
+<div class="gallery">
+<a href="https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg" title="Cloud Native Series 云原生系列书籍">
+<img src="https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg" alt="我的微信二维码">
+</img>
+</div>
 
 **Gitbooks**
 
