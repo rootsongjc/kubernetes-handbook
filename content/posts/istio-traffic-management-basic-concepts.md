@@ -258,6 +258,12 @@ No resources found.
 
 在安装完 Istio 后我只创建了 `bookinfo-gateway` gateway 资源和 `bookinfo` 一个 `VirtualService` 资源。我们接下来要解析的就是以上几个 CRD。
 
+管理员可以直接使用 Helm Chart 来部署以上服务，参考[伪架构师](https://blog.fleeto.us)博客中对 Istio Helm Chart 的介绍：
+
+- [Istio Helm Chart 详解 - 概述](https://blog.fleeto.us/post/istio-helm-deep-dive-overview/)
+- [Istio Helm Chart 详解 - 全局变量](https://blog.fleeto.us/post/istio-helm-deep-dive-global-var/)
+- [Istio Helm Chart 详解 - Ingress](https://blog.fleeto.us/post/istio-helm-deep-dive-ingress/)
+
 ## 流量管理资源配置
 
 下面将带您了解 Istio 流量管理相关的基础概念与配置示例。
@@ -531,33 +537,26 @@ spec:
     app: istio-ingressgateway
     istio: ingressgateway
   ports:
-    -
-      name: http2 # 将 ingressgateway 的 80 端口映射到节点的 31380 端口以代理 HTTP 请求
+    - name: http2 # 将 ingressgateway 的 80 端口映射到节点的 31380 端口以代理 HTTP 请求
       nodePort: 31380
       port: 80
       targetPort: 80
-    -
-      name: https
+    - name: https
       nodePort: 31390
       port: 443
-    -
-      name: tcp
+    - name: tcp
       nodePort: 31400
       port: 31400
-    -
-      name: tcp-pilot-grpc-tls
+    - name: tcp-pilot-grpc-tls
       port: 15011
       targetPort: 15011
-    -
-      name: tcp-citadel-grpc-tls
+    - name: tcp-citadel-grpc-tls
       port: 8060
       targetPort: 8060
-    -
-      name: http2-prometheus
+    - name: http2-prometheus
       port: 15030
       targetPort: 15030
-    -
-      name: http2-grafana
+    - name: http2-grafana
       port: 15031
       targetPort: 15031
 ```
@@ -800,3 +799,6 @@ reviews.default.svc.cluster.local                           9080      v3        
 - [Envoy v2 API 概览 - servicemesher.com](http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)
 - [Envoy 中的 xDS REST 和 gRPC 协议详解 - servicemesher.com](http://www.servicemesher.com/blog/envoy-xds-protocol/)
 - [Istio 流量管理实现机制深度解析 - servicemesher.com](http://www.servicemesher.com/blog/istio-traffic-management-impl-intro/)
+- [Istio Helm Chart 详解 - 概述 - blog.fleeto.us](https://blog.fleeto.us/post/istio-helm-deep-dive-overview/)
+- [Istio Helm Chart 详解 - 全局变量 - blog.fleeto.us](https://blog.fleeto.us/post/istio-helm-deep-dive-global-var/)
+- [Istio Helm Chart 详解 - Ingress - blog.fleeto.us](https://blog.fleeto.us/post/istio-helm-deep-dive-ingress/)
