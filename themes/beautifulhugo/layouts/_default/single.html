@@ -7,6 +7,10 @@
               {{ else }}
             {{ partial "postmeta.html" . }}
             {{ end }}
+            <!-- Google AdSense-->
+            {{ if isset .Site.Params "adsense" }}
+                {{ partial "adsense.html" }}
+            {{ end }}
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
                 {{ partial "toc.html" . }}
                 {{ .Content }}
