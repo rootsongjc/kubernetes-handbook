@@ -2,19 +2,17 @@
 date: "2017-07-27T20:41:55+08:00"
 draft: false
 title: "迁移到云原生应用架构指南"
+subtitle: "Migrating to Cloud Native Application Architectures 中文版"
+bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fw5ihvx7m9j30jc0aw40m.jpg", desc: "Photo: saxonsgroup.com.au"}]
 categories: "cloud-native"
+description: "原书作于2015年，其中的示例主要针对 Java 应用，实际上也适用于任何应用类型，云原生应用架构适用于异构语言的程序开发，不仅仅是针对 Java 语言的程序开发。截止到本人翻译本书时，云原生应用生态系统已经初具规模，CNCF 成员不断发展壮大，基于 Cloud Native 的创业公司不断涌现，kubernetes 引领容器编排潮流，和 Service Mesh 技术（如 Linkerd 和 Istio） 的出现，Go 语言的兴起（参考另一本书 Cloud Native Go）等为我们将应用迁移到云原生架构的提供了更多的方案选择。"
 tags: ["cloud-native","book"]
 ---
 
-![cover](https://res.cloudinary.com/jimmysong/image/upload/images/migrating-to-cloud-native-migrating-to-cloud-native-cover.jpg)
-
-# 迁移到云原生应用架构
-
 本书是 [Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures) 的中文版。
 
-[本书托管地址 - Github](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
-
-[Gitbook 阅读地址](https://rootsongjc.gitbooks.io/moving-to-cloud-native-archtecture)
+- [本书托管地址 - Github](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
+- [Gitbook 阅读地址](https://jimmysong.io/moving-to-cloud-native-archtecture)
 
 ## 译者序
 
@@ -26,7 +24,9 @@ tags: ["cloud-native","book"]
 
 原书作于2015年，其中的示例主要针对 Java 应用，实际上也适用于任何应用类型，云原生应用架构适用于异构语言的程序开发，不仅仅是针对 Java 语言的程序开发。截止到本人翻译本书时，云原生应用生态系统已经初具规模，[CNCF](https://cncf.io) 成员不断发展壮大，基于 Cloud Native 的创业公司不断涌现，[kubernetes](https://kubernetes.io) 引领容器编排潮流，和 Service Mesh 技术（如 [Linkerd](https://linkerd.io) 和 [Istio](https://istio.io)） 的出现，Go 语言的兴起（参考另一本书 [Cloud Native Go](https://jimmysong.io/cloud-native-go)）等为我们将应用迁移到云原生架构的提供了更多的方案选择。
 
-[Jimmy Song](https:/github.com/rootsongjc)
+——[Jimmy Song](https:/github.com/rootsongjc)
+
+![迁移到云原生应用架构](https://ws3.sinaimg.cn/large/006tNbRwly1fw5iex6hp9j30ci0irglu.jpg)
 
 ## 简介
 
