@@ -4,6 +4,8 @@
 
 问题来自gcr.io提供的kube-controller-manager docker镜像里缺少了rbd命令，因此无法通过rbd命令为pod创建ceph rbd image，查了github的相关文章，目前官方在kubernetes-incubator/external-storage项目通过External Provisioners的方式来解决此类问题。
 
+本文主要针对该问题，通过rbd-provisioner的方式，配置ceph rbd的dynamic provisioning问题。
+
 * 参考链接[RBD Volume Provisioner for Kubernetes 1.5+](https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd)；
 
 ## 部署rbd-provisioner
