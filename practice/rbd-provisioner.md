@@ -1,4 +1,4 @@
-# 使用rbd-provisioner提供rbd持久化存储动态配置
+# 使用rbd-provisioner提供rbd持久化存储
 
 rbd-provisioner为kubernetes 1.5+版本提供了类似于`kubernetes.io/rbd`的ceph rbd持久化存储动态配置实现。
 
