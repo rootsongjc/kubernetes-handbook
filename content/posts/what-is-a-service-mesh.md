@@ -1,28 +1,34 @@
 ---
 title: "什么是Service Mesh（服务网格）"
+subtitle: "服务网格（Service Mesh）简介"
+description: “本文是Service Mesh（服务网格）简介是什么及其工作原理和一些有用的链接。"
 date: 2017-09-20T21:56:04+08:00
 draft: false
-categories: "cloud-native"
+categories: "Service Mesh"
 tags: ["service-mesh","cloud-native"]
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fswh96ij3gj30jq09ldqh.jpg", desc: "Service Mesh|Sept 20,2017"}]
 ---
 
-Service mesh 又译作 “服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
+Service Mesh 又译作 “服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A Service Mesh? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
 
 下面是 [Willian Morgan](https://twitter.com/wm) 对 Service Mesh 的解释。
 
-> A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.
+> A Service Mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the Service Mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.
 
-## Service mesh的特点
+翻译成中文是：
 
-Service mesh 有如下几个特点：
+> 服务网格（Service Mesh）是致力于解决服务间通讯的基础设施层。它负责在现代云原生应用程序的复杂服务拓扑来可靠地传递请求。实际上，Service Mesh 通常是通过一组轻量级网络代理（Sidecar proxy），与应用程序代码部署在一起来实现，而无需感知应用程序本身。
+
+## Service Mesh的特点
+
+Service Mesh 有如下几个特点：
 
 - 应用程序间通讯的中间层
 - 轻量级网络代理
 - 应用程序无感知
 - 解耦应用程序的重试/超时、监控、追踪和服务发现
 
-目前两款流行的 service mesh 开源软件 [Istio](https://istio.io) 和 [Linkerd](https://linkerd.io) 都可以直接在 kubernetes 中集成，其中 Linkerd 已经成为 CNCF 成员。
+目前两款流行的 Service Mesh 开源软件 [Istio](https://istio.io) 和 [Linkerd](https://linkerd.io) 都可以直接在 kubernetes 中集成，其中 Linkerd 已经成为 CNCF 成员。
 
 ## 理解 Service Mesh
 
@@ -37,19 +43,19 @@ Service mesh 有如下几个特点：
 5. 应用程序的中集成服务发现和断路器
 6. 出现了专门用于服务发现和断路器的软件包/库，如 [Twitter 的 Finagle](https://finagle.github.io/) 和 [Facebook  的 Proxygen](https://code.facebook.com/posts/1503205539947302)，这时候还是集成在应用程序内部
 7. 出现了专门用于服务发现和断路器的开源软件，如 [Netflix OSS](http://netflix.github.io/)、Airbnb 的 [synapse](https://github.com/airbnb/synapse) 和 [nerve](https://github.com/airbnb/nerve)
-8. 最后作为微服务的中间层 service mesh 出现
+8. 最后作为微服务的中间层 Service Mesh 出现
 
-Service mesh 的架构如下图所示：
+Service Mesh 的架构如下图所示：
 
 ![Service Mesh 架构图](https://ws1.sinaimg.cn/large/00704eQkly1fswh7dbs1pj30id0bpmxl.jpg)
 
 图片来自：[Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
 
-Service mesh 作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 serivce mesh 中实现。
+Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 serivce mesh 中实现。
 
-## Service mesh如何工作？
+## Service Mesh如何工作？
 
-下面以 Linkerd 为例讲解 service mesh 如何工作，Istio 作为 service mesh 的另一种实现原理与 linkerd 基本类似，后续文章将会详解 Istio 和 Linkerd 如何在 kubernetes 中工作。
+下面以 Linkerd 为例讲解 Service Mesh 如何工作，Istio 作为 Service Mesh 的另一种实现原理与 linkerd 基本类似，后续文章将会详解 Istio 和 Linkerd 如何在 kubernetes 中工作。
 
 1. Linkerd 将服务请求路由到目的地址，根据中的参数判断是到生产环境、测试环境还是 staging 环境中的服务（服务可能同时部署在这三个环境中），是路由到本地环境还是公有云环境？所有的这些路由信息可以动态配置，可以是全局配置也可以为某些服务单独配置。
 2. 当 Linkerd 确认了目的地址后，将流量发送到相应服务发现端点，在 kubernetes 中是 service，然后 service 会将服务转发给后端的实例。
@@ -60,27 +66,27 @@ Service mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 7. 如果请求的截止时间已过，Linkerd 主动失败该请求，而不是再次尝试添加负载。
 8. Linkerd 以 metric 和分布式追踪的形式捕获上述行为的各个方面，这些追踪信息将发送到集中 metric 系统。
 
-## 为何使用 service mesh？
+## 为何使用 Service Mesh？
 
-Service mesh 并没有给我们带来新功能，它是用于解决其他工具已经解决过的问题，只不过这次是在 Cloud Native 的 kubernetes 环境下的实现。
+Service Mesh 并没有给我们带来新功能，它是用于解决其他工具已经解决过的问题，只不过这次是在 Cloud Native 的 kubernetes 环境下的实现。
 
-在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的 “胖客户端” 库，这些就是早期的 service mesh，但是它们都近适用于特定的环境和特定的开发语言，并不能作为平台级的 service mesh 支持。
+在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的 “胖客户端” 库，这些就是早期的 Service Mesh，但是它们都近适用于特定的环境和特定的开发语言，并不能作为平台级的 Service Mesh 支持。
 
 在 Cloud Native 架构下，容器的使用给予了异构应用程序的更多可行性，kubernetes 增强的应用的横向扩容能力，用户可以快速的编排出复杂环境、复杂依赖关系的应用程序，同时开发者又无须过分关心应用程序的监控、扩展性、服务发现和分布式追踪这些繁琐的事情而专注于程序开发，赋予开发者更多的创造性。
 
 ---
 
-关于 Service Mesh 的更多咨询请访问 [Service Mesh 爱好者社区网站](http://www.servicemesher.com) 和关注ServiceMesher 的微信公众号。
+关于 Service Mesh 的更多资讯请访问 [ServiceMesher 服务网格社区网站](http://www.servicemesher.com) 或关注 ServiceMesher 的微信公众号。
 
 ![Service Mesh微信公众号](https://ws1.sinaimg.cn/large/00704eQkly1fswhfttyooj3076076q3r.jpg)
 
 ## 参考
 
-- [WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/)
+- [What's a Service Mesh? And why do I need one?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/)
 - [So what even is a Service Mesh? Hot take on Istio and Linkerd](http://redmonk.com/jgovernor/2017/05/31/so-what-even-is-a-service-mesh-hot-take-on-istio-and-linkerd)
-- [linkerd: A service mesh for AWS ECS](https://medium.com/attest-engineering/linkerd-a-service-mesh-for-aws-ecs-937f201f847a)
-- [Introducing Istio: A robust service mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
+- [linkerd: A Service Mesh for AWS ECS](https://medium.com/attest-engineering/linkerd-a-service-mesh-for-aws-ecs-937f201f847a)
+- [Introducing Istio: A robust Service Mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
 - [Envoy 官方文档中文版](http://www.servicemesher.com/envoy/)
-- [Istio 官方文档](https://preliminary.istio.io/zh/)
+- [Istio 官方文档](https://istio.io/zh/)
