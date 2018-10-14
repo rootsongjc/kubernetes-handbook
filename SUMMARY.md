@@ -163,6 +163,8 @@
   * [Ceph](practice/ceph.md)
     * [用Helm托管安装Ceph集群并提供后端存储](practice/ceph-helm-install-guide-zh.md)
     * [使用Ceph做持久化存储](practice/using-ceph-for-persistent-storage.md)
+    * [使用rbd-provisioner提供ceph rbd存储服务](practice/rbd-provisioner.md)
+
   * [OpenEBS](practice/openebs.md)
     * [使用OpenEBS做持久化存储](practice/using-openebs-for-persistent-storage.md)
   * [Rook](practice/rook.md)
