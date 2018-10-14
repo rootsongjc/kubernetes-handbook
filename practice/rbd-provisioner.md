@@ -1,14 +1,18 @@
-# rbd-provisioner
+# 使用rbd-provisioner提供rbd持久化存储动态配置
 
-一些用户会使用kubeadm来部署集群，或者将kube-controller-manager以容器的方式运行。这种方式下，使用ceph rbd pv/pvc没任何问题，但使用dynamic provisioning来自动管理存储生命周期时会报错。提示`"rbd: create volume failed, err: failed to create rbd image: executable file not found in $PATH:"`。
+rbd-provisioner为kubernetes 1.5+版本提供了类似于`kubernetes.io/rbd`的ceph rbd持久化存储动态配置实现。
 
-问题来自gcr.io提供的kube-controller-manager docker镜像里缺少了rbd命令，因此无法通过rbd命令为pod创建ceph rbd image，查了github的相关文章，目前官方在kubernetes-incubator/external-storage项目通过External Provisioners的方式来解决此类问题。
+一些用户会使用kubeadm来部署集群，或者将kube-controller-manager以容器的方式运行。这种方式下，kubernetes在创建使用ceph rbd pv/pvc时没任何问题，但使用dynamic provisioning自动管理存储生命周期时会报错。提示`"rbd: create volume failed, err: failed to create rbd image: executable file not found in $PATH:"`。
 
-本文主要针对该问题，通过rbd-provisioner的方式，配置ceph rbd的dynamic provisioning问题。
+问题来自gcr.io提供的kube-controller-manager容器镜像未打包ceph-common组件，缺少了rbd命令，因此无法通过rbd命令为pod创建rbd image，查了github的相关文章，目前kubernetes官方在kubernetes-incubator/external-storage项目通过External Provisioners的方式来解决此类问题。
+
+本文主要针对该问题，通过rbd-provisioner的方式，解决ceph rbd的dynamic provisioning问题。
 
 * 参考链接[RBD Volume Provisioner for Kubernetes 1.5+](https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd)；
 
 ## 部署rbd-provisioner
+
+首先得在kubernetes集群中安装rbd-provisioner，github仓库链接[https://github.com/kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage]
 
 ```bash
 [root@k8s01 ~]# git clone https://github.com/kubernetes-incubator/external-storage.git
@@ -18,7 +22,9 @@
 [root@k8s01 deploy]# kubectl -n $NAMESPACE apply -f ./rbac
 ```
 
-*根据自己需要，修改rbd-provisioner的namespace；
+* 根据自己需要，修改rbd-provisioner的namespace；
+
+部署完成后检查rbd-provisioner deployment，确保已经正常部署；
 
 ```bash
 [root@k8s01 ~]# kubectl describe deployments.apps -n kube-system rbd-provisioner
@@ -54,9 +60,9 @@ NewReplicaSet:   rbd-provisioner-db574c5c (1/1 replicas created)
 Events:          <none>
 ```
 
-* 检查rbd-provisioner deployment，确保部署正常；
-
 ## 创建storageclass
+
+部署完rbd-provisioner，还需要创建StorageClass。创建SC前，我们还需要创建相关用户的secret；
 
 ```bash
 [root@k8s01 ~]# vi secrets.yaml
@@ -128,6 +134,8 @@ parameters:
 
 ## 测试ceph rbd自动分配
 
+在kube-system和default namespace分别创建pod，通过启动一个busybox实例，将ceph rbd镜像挂载到`/usr/share/busybox`；
+
 ```bash
 [root@k8s01 ~]# vi test-pod.yaml
 apiVersion: v1
@@ -167,7 +175,7 @@ pod/ceph-pod1 created
 persistentvolumeclaim/ceph-claim created
 ```
 
-* 在kube-system和default namespace分别创建pod，通过启动一个busybox镜像，将ceph rbd镜像挂载到`/usr/share/busybox`；
+检查pv和pvc的创建状态，是否都已经创建；
 
 ```bash
 [root@k8s01 ~]# kubectl get pvc
@@ -182,7 +190,7 @@ pvc-ea377cad-cef7-11e8-8484-005056a33f16   2Gi        RWO            Delete     
 pvc-ee0f1c35-cef7-11e8-8484-005056a33f16   2Gi        RWO            Delete           Bound    default/ceph-claim       ceph-rbd                32s
 ```
 
-* 检查pv和pvc的创建状态，是否都已经创建；
+在ceph服务器上，检查rbd镜像创建情况和镜像的信息；
 
 ```bash
 [root@k8s01 ~]# rbd ls --pool rbd
@@ -209,7 +217,7 @@ rbd image 'kubernetes-dynamic-pvc-eef5814f-cef7-11e8-aa22-0a580af40202':
     create_timestamp: Sat Oct 13 22:54:49 2018
 ```
 
-* 在ceph服务器上，检查rbd镜像创建情况和镜像的信息；
+检查busybox内的文件系统挂载和使用情况，确认能正常工作；
 
 ```bash
 [root@k8s01 ~]# kubectl exec -it ceph-pod1 mount |grep rbd
@@ -223,7 +231,7 @@ rbd image 'kubernetes-dynamic-pvc-eef5814f-cef7-11e8-aa22-0a580af40202':
 /dev/rbd0              1998672      6144   1976144   0% /usr/share/busybox
 ```
 
-* 检查busybox内的文件系统挂载和使用情况，确认能正常工作；
+测试删除pod能否自动删除pv和pvc，生产环境中谨慎，设置好回收策略；
 
 ```bash
 [root@k8s01 ~]# kubectl delete -f test-pod.yaml
@@ -242,10 +250,14 @@ No resources found.
 No resources found.
 ```
 
-* 测试删除pod能否自动删除pv和pvc，生产环境中谨慎，设置好回收策略；
+ceph服务器上的rbd image也已清除，自动回收成功；
 
 ```bash
 [root@k8s01 ~]# rbd ls --pool rbd
 ```
 
-* ceph服务器上的rbd image也已清楚，自动回收成功。
+* 确认之前创建的rbd images都已经删除；
+
+## 总结
+
+大部分情况下，我们无需使用rbd provisioner来提供ceph rbd的dynamic provisioning能力。经测试，在openShift、Rancher、SUSE CaaS以及本Handbook的二进制文件方式部署，在安装好ceph-common软件包的情况下，定义StorageClass时使用`kubernetes.io/rbd`即可正常使用ceph rbd provisioning功能。
