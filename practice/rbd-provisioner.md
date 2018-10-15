@@ -12,7 +12,7 @@ rbd-provisioner为kubernetes 1.5+版本提供了类似于`kubernetes.io/rbd`的c
 
 ## 部署rbd-provisioner
 
-首先得在kubernetes集群中安装rbd-provisioner，github仓库链接[https://github.com/kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage]
+首先得在kubernetes集群中安装rbd-provisioner，github仓库链接[https://github.com/kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage)
 
 ```bash
 [root@k8s01 ~]# git clone https://github.com/kubernetes-incubator/external-storage.git
