@@ -2,7 +2,7 @@
 date: "2017-03-18T20:53:54+08:00"
 title:  "About me"
 tags: ["Jimmy Song"]
-subtitle: "宋净超"
+subtitle: "Jimmy Song(宋净超)"
 description: "Jimmy Song(宋净超) - Developer Advocate on Cloud Native, CNCF Ambassador, co-founder of ServiceMesher community"
 nocomment: true
 postmeta: false
@@ -14,7 +14,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 <div class="gallery">
 <a href="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" title="我的微信二维码">
 <img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" alt="我的微信二维码">
-</img>
+</a>
 </div>
 
 ### Info
