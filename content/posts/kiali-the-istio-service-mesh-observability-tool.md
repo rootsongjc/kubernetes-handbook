@@ -1,10 +1,10 @@
 ---
-title: "Kiali——Istio Service Mesh的可观察性工具"
+title: "Kiali——Istio Service Mesh 的可观察性工具"
 subtitle: "解决服务网格中微服务的可观察性问题的利器"
+description: "本文介绍了 Istio Service Mesh 中的可观察性工具 Kiali 的功能、架构和部分代码。"
 date: 2018-10-16T20:05:28+08:00
 bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNbRwly1fwabqycy9gj30hg08qdhy.jpg", desc: "Photo via Getty Images"}]
 draft: false
-description: ""
 tags: ["istio","service mesh","kiali"]
 categories: ["service mesh"]
 ---
