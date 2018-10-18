@@ -56,6 +56,7 @@ $ vagrant up
 $ kubectl apply -f addon/istio/
 
 # 部署 bookinfo 示例
+$ kubectl label namespace default istio-injection=enabled
 $ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
 $ istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
