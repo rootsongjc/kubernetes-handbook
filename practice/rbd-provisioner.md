@@ -8,7 +8,7 @@ rbd-provisioner为kubernetes 1.5+版本提供了类似于`kubernetes.io/rbd`的c
 
 本文主要针对该问题，通过rbd-provisioner的方式，解决ceph rbd的dynamic provisioning问题。
 
-* 参考链接[RBD Volume Provisioner for Kubernetes 1.5+](https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd)；
+* 参考链接[RBD Volume Provisioner for Kubernetes 1.5+](https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd)
 
 ## 部署rbd-provisioner
 
@@ -260,4 +260,8 @@ ceph服务器上的rbd image也已清除，自动回收成功；
 
 ## 总结
 
-大部分情况下，我们无需使用rbd provisioner来提供ceph rbd的dynamic provisioning能力。经测试，在openShift、Rancher、SUSE CaaS以及本Handbook的二进制文件方式部署，在安装好ceph-common软件包的情况下，定义StorageClass时使用`kubernetes.io/rbd`即可正常使用ceph rbd provisioning功能。
+大部分情况下，我们无需使用rbd provisioner来提供ceph rbd的dynamic provisioning能力。经测试，在OpenShift、Rancher、SUSE CaaS以及本Handbook的二进制文件方式部署，在安装好ceph-common软件包的情况下，定义StorageClass时使用`kubernetes.io/rbd`即可正常使用ceph rbd provisioning功能。
+
+## 参考
+
+- [RBD Volume Provisioner for Kubernetes 1.5+](https://github.com/kubernetes-incubator/external-storage/tree/master/ceph/rbd)
