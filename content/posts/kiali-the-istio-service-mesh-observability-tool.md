@@ -54,7 +54,7 @@ external_services:
 
 ## Kiali 中的基本概念
 
-在了解 Kilia 如何提供 Service Mesh 中微服务可观察性之前，我们需要先了解下 Kilia 如何划分监控类别的。
+在了解 Kiali 如何提供 Service Mesh 中微服务可观察性之前，我们需要先了解下 Kiali 如何划分监控类别的。
 
 - **Application**：使用运行的工作负载，必须使用 Istio 的将 Label 标记为 `app` 才算。注意，如果一个应用有多个版本，只要 `app` 标签的值相同就是属于同一个应用。
 - **Deployment**：即 Kubernetes 中的 Deployment。
