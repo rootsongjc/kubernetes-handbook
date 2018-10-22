@@ -222,6 +222,7 @@
   * [SOFAMesh](usecases/sofamesh.md)
     * [SOFAMesh中的Dubbo on x-protocol](usecases/dubbo-on-x-protocol-in-sofa-mesh.md)
   * [SOFAMosn](usecases/sofamosn.md)
+    * [使用 SOFAMosn 构建 SOFAMesh](usecases/sofamosn-in-sofamesh.md)
 * [大数据](usecases/big-data.md)
   * [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   * [运行支持Kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
