@@ -349,3 +349,4 @@ type Edge struct {
 - [QUERY EXAMPLES - prometheus.io](https://prometheus.io/docs/prometheus/latest/querying/examples/)
 - [replace Service Graph with Kiali #9066 - github.com](https://github.com/istio/istio/issues/9066)
 - [rootsongjc/kubernetes-vagrant-centos-cluster - github.com](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)
+
