@@ -179,7 +179,7 @@ $ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm
 }
 ```
 
-该值中包含了每个 `node` 和 `edege` 的信息，Node 即图中的每个节点，其中包含了节点的配置信息，Edge 即节点间的关系还有流量情况。前端可以根据该信息绘制服务拓扑图，我们下面将查看下 kiali 的后端，看看它是如何生成以上格式的 JSON 信息的。
+该值中包含了每个 `node` 和 `edge` 的信息，Node 即图中的每个节点，其中包含了节点的配置信息，Edge 即节点间的关系还有流量情况。前端可以根据该信息绘制服务拓扑图，我们下面将查看下 kiali 的后端，看看它是如何生成以上格式的 JSON 信息的。
 
 **注**：详细的 REST API 使用和字段说明请查看 swagger 生成的 API 文档。
 
