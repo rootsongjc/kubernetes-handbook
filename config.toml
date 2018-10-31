@@ -175,27 +175,33 @@ desc = "Istio Meetup in Beijing GDG"
     weight = 5
 
 [[menu.main]]
-    identifier = "Publications"
-    name = "Publications"
+    identifier = "Books"
+    name = "Books"
     weight = 3
 
 [[menu.main]]
-    parent = "Publications"
-    name = "Cloud Native Go"
-    url = "posts/cloud-native-go"
+    parent = "Books"
+    name = "未来架构 - 从服务化到云原生"
+    url = "posts/future-architecture-from-soa-to-cloud-native"
     weight = 1
 
 [[menu.main]]
-    parent = "Publications"
-    name = "Cloud Native Python"
-    url = "posts/cloud-native-python"
+    parent = "Books"
+    name = "Cloud Native Go"
+    url = "posts/cloud-native-go"
     weight = 2
 
 [[menu.main]]
-    parent = "Publications"
+    parent = "Books"
+    name = "Cloud Native Python"
+    url = "posts/cloud-native-python"
+    weight = 3
+
+[[menu.main]]
+    parent = "Books"
     name = "Cloud Native Java"
     url = "posts/cloud-native-java"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     identifier = "Projects"

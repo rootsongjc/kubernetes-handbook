@@ -35,6 +35,10 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 ### Books
 
+**Original**
+
+- [未来架构——从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著](/posts/future-architecture-from-soa-to-cloud-native/)
+
 **Translations**
 
 - [Cloud Native Go - 构建基于Go和React的云原生Web应用与微服务](https://jimmysong.io/cloud-native-go)
