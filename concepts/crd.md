@@ -43,7 +43,7 @@ kubectl create -f resourcedefinition.yaml
 
 访问 RESTful API 端点如 <http://172.20.0.113:8080> 将看到如下 API 端点已创建：
 
-```ba'sh
+```bash
 /apis/stable.example.com/v1/namespaces/*/crontabs/...
 ```
 
@@ -96,7 +96,7 @@ kubectl get ct -o yaml
 
 您应该看到它的 yaml 中的自定义 `cronSpec` 和 `image` 字段：
 
-```yam&#39;l
+```yaml
 apiVersion: v1
 items:
 - apiVersion: stable.example.com/v1
@@ -124,7 +124,7 @@ metadata:
 
 删除 CustomResourceDefinition 时，服务器将删除 RESTful API 端点并**删除存储在其中的所有自定义对象**。
 
-```shell
+```bash
 kubectl delete -f resourcedefinition.yaml
 kubectl get crontabs
 Error from server (NotFound): Unable to list "crontabs": the server could not find the requested resource (get crontabs.stable.example.com)
