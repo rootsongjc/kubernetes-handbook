@@ -18,6 +18,8 @@ nocomment: true
 
 ![Cloud Native Java 云原生 Java 宋净超 张若飞 译](https://ws1.sinaimg.cn/large/00704eQkly1fsxnwm5cicj31ui16jqv5.jpg)
 
+![Cloud Native Java Josh Long & Jimmy Song at SpringTour Beijing ](https://ws2.sinaimg.cn/large/006tNbRwly1fwvuai4i9nj31860mce81.jpg)
+
 ## 本书介绍
 
 传统企业与如亚马逊、Netflix和Etsy这类企业之间的区别是什么？这些公司有完善云原生开发方法，这些方法使得他们能够保持优势并领先于竞争对手。本实践指南向Java/JVM开发人员展示如何使用Spring Boot、Spring Cloud和Cloud Foundry更快更好得构建软件。
