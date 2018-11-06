@@ -144,6 +144,7 @@ kubectl create clusterrolebinding kubelet-nodes \
   --group=system:nodes
 ```
 
+
 ### 下载最新的kubelet和kube-proxy二进制文件
 
 注意请下载对应的Kubernetes版本的安装包。
