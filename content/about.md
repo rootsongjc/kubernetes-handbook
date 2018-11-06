@@ -61,24 +61,24 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 ### GitHub
 
-- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - Awesome cloud native architectures
+- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - A curated list for awesome cloud native tools, software and tutorials.  - https://jimmysong.io/awesome-cloud-native/
 - [cheatsheets](https://jimmysong.io/cheatsheets) -  A modest collection of cheatsheets I've written.
 - [cloudinary-go](https://github.com/rootsongjc/cloudinary-go) - A Go client library and CLI tool to upload static assets to Cloudinary service.
 - [magpie](https://github.com/rootsongjc/magpie) - Deploying and managing a Hadoop Yarn cluster with Docker Swarm.
-- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - Setting up a Kubernetes cluster with Vagrant and VirtualBox
+- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox for PoC or Demo use cases
 - [sofa-mesh](https://github.com/alipay/sofa-mesh) - A solution for large-scale Service Mesh based on Istio. <http://www.sofastack.tech/>
 - [sofa-mosn](https://github.com/alipay/sofa-mosn) - SOFAMosn is a modular observable smart network which can be used in service mesh deployed as a data plane sidecar.
-- [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on kubernetes with native kubernetes scheduler
+- [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on Kubernetes with native Kubernetes scheduler
 
 ---
 
 ### Activities
 
-The activities I attended or hosted by me.
+The activities I attended or organized.
 
 #### Service Mesh Meetup
 
-- Nov 24, 2018 #4 | Shanghai |
+- Nov 25 2018 #4 | Shanghai |
 - Aug 25, 2018 #3 | Shenzhen | [See details](http://www.huodongxing.com/event/3453378014200)
 - Jul 29, 2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
 - Jun 30, 2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
