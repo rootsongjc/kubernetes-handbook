@@ -46,14 +46,13 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 - [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
 <div class="gallery">
-<a href="https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg" title="Cloud Native Series 云原生系列书籍">
-<img src="https://ws1.sinaimg.cn/large/00704eQkgy1frnpjmx3lyj31bc12xe2v.jpg" alt="我的微信二维码">
-</img>
+<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="Jimmy Song's Cloud Native Book Series">
+<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="宋净超的云原生书籍系列">
+</a>
 </div>
 
 **Gitbooks**
 
-- [envoy](https://servicemesher.github.io/envoy) - Envoy proxy 官方文档中文版
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
 - [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio中文指南/服务网格实践手册
@@ -75,8 +74,11 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 ### Activities
 
+The activities I attended or hosted by me.
+
 #### Service Mesh Meetup
 
+- Nov 24, 2018 #4 | Shanghai |
 - Aug 25, 2018 #3 | Shenzhen | [See details](http://www.huodongxing.com/event/3453378014200)
 - Jul 29, 2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
 - Jun 30, 2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
@@ -108,22 +110,9 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 - Wechat: jimmysong
 - Email: jimmysong@jimmysong.io
-- [Twitter@jimmysongio](https://twitter.com/jimmysongio)
-- [Facebook@jimmysongio](https://facebook.com/jimmysongio)
+- Twitter：[jimmysongio](https://twitter.com/jimmysongio)
+- Facebook：[jimmysongio](https://facebook.com/jimmysongio)
 - [500px](https://500px.com/jimmysongio)
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
-<!--
-
----
-
-<center>微信公众号——云原生应用架构（CloudNativeGo）</center>
-
-![微信公众号-云原生应用架构](https://ws1.sinaimg.cn/large/00704eQkgy1frnpro3wcjj3076076aar.jpg) 
-
-<center>微信公众号——Service Mesh爱好者（ServiceMesher）</center>
-
-![微信公众号 - ServiceMesher Service Mesh 爱好者](https://ws1.sinaimg.cn/large/00704eQkly1fswhfttyooj3076076q3r.jpg)
-
--->
