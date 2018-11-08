@@ -32,6 +32,7 @@
   * [Kubernetes中的网络解析——以flannel为例](concepts/flannel.md)
   * [Kubernetes中的网络解析——以calico为例](concepts/calico.md)
   * [具备API感知的网络和安全性管理开源软件Cilium](concepts/cilium.md)
+    * [Cilium架构设计与概念解析](concepts/cilium-concepts.md)
 * [资源对象与基本概念解析](concepts/objects.md)
 * [Pod状态与生命周期管理](concepts/pod-state-and-lifecycle.md)
   * [Pod概览](concepts/pod-overview.md)
