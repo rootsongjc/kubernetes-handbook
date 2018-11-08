@@ -23,7 +23,7 @@ categories: ["kubernetes"]
     <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwiggklt0xj30ni0uugpr.jpg"></a>
 </div>
 
-Kubernetes 项目的另外两位联合创始人目前都就职在 [Heptio](https://heptio.com)。
+Kubernetes 项目的另外两位联合创始人目前都就职在 [Heptio](https://heptio.com)，该公司于 2018 年 11 月 6 日被 VMWare 收购，详见[Kubernetes两位联合创始人创办的Heptio公司被VMWare收购](https://mp.weixin.qq.com/s/8_DDCOAk1spYHPB7LsLe5Q)。
 
 <div class="gallery">
     <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwigl7mv8fj31kw14e7wh.jpg" title="Kubernetes 项目联合创始人">
