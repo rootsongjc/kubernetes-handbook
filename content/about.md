@@ -85,30 +85,30 @@ The activities I attended or organized.
 
 #### 2018
 
-- May 20,2018 | Nanjing | [Global Tech Week 2018, 4th NJSD Global Conference](http://njsd-china.org/NJSDGlobal2018/)【2018全球技术周暨第四届南京（全球）软件大会】 | The next stage of Cloud Native apps
+- Nov 14, 2018 | Shanghai | [CNCF Interview](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/)
+- May 20, 2018 | Nanjing | [Global Tech Week 2018, 4th NJSD Global Conference](http://njsd-china.org/NJSDGlobal2018/)【2018全球技术周暨第四届南京（全球）软件大会】 | The next stage of Cloud Native apps
 - Mar 23 - Mar 25,2018 | Beijing | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
 #### 2017
 
-- Dec 16,2017 (🎂 My birthday)| Beijing | 下一代微服务： Service Mesh is Coming | [IT大咖说 数人云&TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
-- Dec 8,2017 | Beijing | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native——云原生应用之路](http://bj2017.archsummit.com/presentation/306)
-- Oct  15,2017 | Hangzhou | KEUC 2017（Kubernetes中国用户大会）| [k8smeetup最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
-- Sept 23,2017 | Beijing | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
-- Aug 26,2017 | Beijing | 技术·线下沙龙：云原生和微服务 | [云原生与微服务](http://www.huodongxing.com/event/8401246554100)
-- Jul 7,2017 | Shenzhen | ArchSummit（全球架构师峰会）| [使用kubernetes的微服务和云原生应用实践](http://sz2017.archsummit.com/presentation/1080)
+- Dec 16, 2017 (🎂 My birthday)| Beijing | 下一代微服务： Service Mesh is Coming | [IT大咖说 数人云&TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
+- Dec 8, 2017 | Beijing | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native——云原生应用之路](http://bj2017.archsummit.com/presentation/306)
+- Oct  15, 2017 | Hangzhou | KEUC 2017（Kubernetes中国用户大会）| [k8smeetup最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
+- Sept 23, 2017 | Beijing | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
+- Aug 26, 2017 | Beijing | 技术·线下沙龙：云原生和微服务 | [云原生与微服务](http://www.huodongxing.com/event/8401246554100)
+- Jul 7, 2017 | Shenzhen | ArchSummit（全球架构师峰会）| [使用kubernetes的微服务和云原生应用实践](http://sz2017.archsummit.com/presentation/1080)
 
 #### 2016
 
-- Oct 20,2016 | Shanghai | Qcon | [Yarn on Docker——容器技术在大数据场景下的应用](http://2016.qconshanghai.com/speakers/202253)
-- Oct 13,2016 | Hangzhou | The Computing Conference（云栖大会）| [大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.7cdb1f673uSp7Q)
-- Aug 15,2016 | Shanghai | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](http://msa-summit.com/)
-- Jun 19,2016 | Beijing | Ghostcloud四城联动大型巡讲活动 | [让Docker听到中国的声音](https://www.bagevent.com/event/97318)
+- Oct 20, 2016 | Shanghai | Qcon | [Yarn on Docker——容器技术在大数据场景下的应用](http://2016.qconshanghai.com/speakers/202253)
+- Oct 13, 2016 | Hangzhou | The Computing Conference（云栖大会）| [大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.7cdb1f673uSp7Q)
+- Aug 15, 2016 | Shanghai | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](http://msa-summit.com/)
+- Jun 19, 2016 | Beijing | Ghostcloud四城联动大型巡讲活动 | [让Docker听到中国的声音](https://www.bagevent.com/event/97318)
 
 ---
 
 ### Contact
 
-- Wechat: jimmysong
 - Email: jimmysong@jimmysong.io
 - Twitter：[jimmysongio](https://twitter.com/jimmysongio)
 - Facebook：[jimmysongio](https://facebook.com/jimmysongio)
