@@ -45,13 +45,15 @@ categories: ["kubernetes"]
 
 我们就 Service Mesh 的现状，存在的问题后未来进行了广泛的探讨。
 
+## PPT
+
+KubeCon China 会议的很多 PPT 在[大会的官网](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/schedule-chinese/)上都可以下载，或者通过[百度网盘](https://pan.baidu.com/s/1oihwETA063WSFyigWsn8Mw)下载 zip 包，提取码：**5vn0**。或者通过[GitHub](https://github.com/bbotte/cncf-presentations/tree/master/KubeCon%2BCloudNativeCon-2018)下载单个 PPT。
+
 ## 飞行
 
 在会场随便一坐，就能遇到熟人。还有很多我都叫不上名字的人来打招呼，不能一一道谢了，感谢晚餐以及收到的Prometheus飞行袜。
 
 ![Prometheus drone](https://ws2.sinaimg.cn/large/006tNbRwly1fx9ur8opozj31400u0n82.jpg)
-
-会议的很多 PPT 在[大会的官网](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/schedule-chinese/)上都可以下载。
 
 11月12日晚在上海静安寺上空飞行，航拍的南京西路夜景。
 
