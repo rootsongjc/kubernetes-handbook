@@ -2,6 +2,7 @@
 title: "配置Kubernetes DNS服务kube-dns"
 date: 2018-01-03T16:16:01+08:00
 draft: false
+notoc: true
 subtitle: "kube-dns解析"
 tags: ["kubernetes"]
 description: "本文中给出了配置 Kubernetes DNS Pod 的提示和定义 DNS 解析过程以及诊断 DNS 问题的指南。"
@@ -138,9 +139,9 @@ data:
 
 2. 从缓存层，检查请求的后缀，并转发到合适的 DNS 上，基于如下的示例：
 
-   - *具有集群后缀的名字*（例如 “.cluster.local”）：请求被发送到 kube-dns。
-   - *具有存根域后缀的名字*（例如 “.acme.local”）：请求被发送到配置的自定义 DNS 解析器（例如：监听在 1.2.3.4）。
-   - *不具有能匹配上后缀的名字*（例如 “widget.com”）：请求被转发到上游 DNS（例如：Google 公共 DNS 服务器，8.8.8.8 和 8.8.4.4）。
+   -  *具有集群后缀的名字* （例如 “.cluster.local”）：请求被发送到 kube-dns。
+   -  *具有存根域后缀的名字* （例如 “.acme.local”）：请求被发送到配置的自定义 DNS 解析器（例如：监听在 1.2.3.4）。
+   -  *不具有能匹配上后缀的名字* （例如 “widget.com”）：请求被转发到上游 DNS（例如：Google 公共 DNS 服务器，8.8.8.8 和 8.8.4.4）。
 
    ![DNS lookup flow](https://d33wubrfki0l68.cloudfront.net/340889cb80e81dcd19a16bc34697a7907e2b229a/24ad0/docs/tasks/administer-cluster/dns-custom-nameservers/dns.png)
 
