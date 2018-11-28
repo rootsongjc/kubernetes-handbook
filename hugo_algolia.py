@@ -37,7 +37,7 @@ def get_all_objectID(index_name):
 
 def update_index_of_mysite():
     # your json filename
-    filename = 'public/rootsongjc-hugo.json'
+    filename = 'public/algolia.json'
     rows = json.load(open(filename))
     print('update algolia index')
 
