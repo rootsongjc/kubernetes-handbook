@@ -2,17 +2,17 @@
 draft: false
 date: "2017-04-10T21:39:00+08:00"
 title: "开源微服务管理平台fabric8简介"
+bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fxq51714opj31es0m840q.jpg", desc: "Via Unsplash"}]
+description: “本文介绍了开源的微服务管理平台 Fabric8。"
 categories: "devops"
 tags: ["fabric8","platform","devops"]
 ---
 
-![fabric8](https://fabric8.io/images/fabric8_logo.svg)
-
-## 前言
-
 无意中发现[Fabric8](https://github.com/fabric8io/fabric8)这个**对于Java友好的开源微服务管理平台**。
 
 其实这在这里发现的[Achieving CI/CD with Kubernetes](http://blog.sonatype.com/achieving-ci/cd-with-kubernetes)（by Ramit Surana,on February 17, 2017），其实是先在[slideshare](https://www.slideshare.net/ramitsurana/achieving-cicd-with-kubernetes)上看到的。
+
+![fabric8](https://fabric8.io/images/fabric8_logo.svg)
 
 大家可能以前听过一个叫做[fabric](https://github.com/fabric/fabric/)的工具，那是一个 Python (2.5-2.7) 库和命令行工具，用来流水线化执行 SSH 以部署应用或系统管理任务。所以大家不要把fabric8跟fabric搞混，虽然它们之间有一些共同点，但两者完全不是同一个东西，**fabric8不是fabric的一个版本**。Fabric是用python开发的，fabric8是java开发的。
 
@@ -59,15 +59,10 @@ Fabric8提供了一个完全集成的开源微服务平台，可在任何的[Kub
 
 ## 参考
 
-[fabric8：容器集成平台——伯乐在线](http://hao.jobbole.com/fabric8/)
-
-[Kubernetes部署微服务速成指南——*2017-03-09* *徐薛彪* 容器时代微信公众号](http://mp.weixin.qq.com/s?__biz=MzI0NjI4MDg5MQ==&mid=2715290731&idx=1&sn=f1fcacb9aa4f1f3037918f03c29c0465&chksm=cd6d0bbffa1a82a978ccc0405afa295bd9265bd9f89f2217c80f48e1c497b25d1f24090108af&mpshare=1&scene=1&srcid=0410RTk3PKkxlFlLbCVlOKMK#rd)
-
-上面那篇文章是翻译的，英文原文地址：[Quick Guide to Developing Microservices on Kubernetes and Docker](http://www.eclipse.org/community/eclipse_newsletter/2017/january/article2.php)
-
-[fabric8官网](https://fabric8.io/)
-
-[fabric8 get started](http://fabric8.io/guide/getStarted/gofabric8.html)
+- [fabric8：容器集成平台——伯乐在线](http://hao.jobbole.com/fabric8/)
+- [Kubernetes部署微服务速成指南——*2017-03-09* *徐薛彪* 容器时代微信公众号](http://mp.weixin.qq.com/s?__biz=MzI0NjI4MDg5MQ==&mid=2715290731&idx=1&sn=f1fcacb9aa4f1f3037918f03c29c0465&chksm=cd6d0bbffa1a82a978ccc0405afa295bd9265bd9f89f2217c80f48e1c497b25d1f24090108af&mpshare=1&scene=1&srcid=0410RTk3PKkxlFlLbCVlOKMK#rd)
+- [fabric8官网](https://fabric8.io/)
+- [fabric8 get started](http://fabric8.io/guide/getStarted/gofabric8.html)
 
 ## 后记
 
