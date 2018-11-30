@@ -35,6 +35,10 @@ description = "宋净超的博客|Cloud Native|云原生布道师"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 
 [[Params.bigimg]]
+src = "https://ws1.sinaimg.cn/large/006tNbRwly1fxpvv5xakij32470u0npf.jpg"
+desc = "Service Mesh Meetup #4 Shanghai - Nov 25, 2018"
+
+[[Params.bigimg]]
 src = "https://ws2.sinaimg.cn/large/006tNbRwly1fx80odnismj31jk0lm7wh.jpg"
 desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
 
