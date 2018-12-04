@@ -1,4 +1,7 @@
-# kubeadm
+# 生产级的Kubernetes简化管理工具kubeadm
+
+Kubeadm 在2018年12月3日发布的 [Kubernetes 1.13](https://kubernetes.io/blog/2018/12/03/kubernetes-1-13-release-announcement/) 版本中已经宣布 GA，可以支持生产。本文是对 kubeadmin 的先关介绍，详细信息请参考 [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)。
+
 ## 基本介绍
 **kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/)并升级/降级群集。
 
@@ -38,3 +41,7 @@ Kubernetes版本通常支持九个月，在此期间，如果发现严重的错�
 | v1.8.x             | September 2017 | June 2018         |
 | v1.9.x             | December 2017  | September 2018    |
 | v1.10.x            | March 2018     | December 2018     |
+
+## 参考
+
+- [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)
