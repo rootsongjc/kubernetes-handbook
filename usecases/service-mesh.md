@@ -8,7 +8,7 @@ Service mesh 又译作 ”服务网格“，作为服务间通信的基础设施
 
 ![下一代异构微服务架构](../images/polyglot-microservices-serivce-mesh.png)
 
-自我6月份初接触Istio依赖就发觉service mesh很好的解决了异构语言中的很多问题，而且是kuberentes service 上层不可或缺的服务间代理。关于istio的更多内容请参考 [istio中文文档](http://istio.doczh.cn)。
+自我6月份初接触Istio依赖就发觉service mesh很好的解决了异构语言中的很多问题，而且是kuberentes service 上层不可或缺的服务间代理。关于istio的更多内容请参考 [istio中文文档](https://istio.io/zh/)。
 
 ## 什么是 service mesh？
 
@@ -93,4 +93,4 @@ Service mesh 并没有给我们带来新功能，它是用于解决其他工具�
 - [Introducing Istio: A robust service mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
-- [Istio官方文档中文版](http://istio.doczh.cn/)
+- [Istio官方中文文档](https://istio.io/zh/)

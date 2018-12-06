@@ -320,9 +320,9 @@ spec:
         image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
-      volumeMounts:
-      - name: config-volume
-        mountPath: /etc/config
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
       volumes:
         - name: config-volume
           configMap:
@@ -338,7 +338,7 @@ data:
 ```
 
 ```bash
-$ kubectl exec `kubectl get pods -l run=my-nginx  -o=name|cut -d "/" -f2` cat /tmp/log_level
+$ kubectl exec `kubectl get pods -l run=my-nginx  -o=name|cut -d "/" -f2` cat /etc/config/log_level
 INFO
 ```
 
@@ -358,6 +358,10 @@ DEBUG
 ```
 
 我们可以看到使用 ConfigMap 方式挂载的 Volume 的文件中的内容已经变成了 `DEBUG`。
+
+Known Issue：
+如果使用ConfigMap的**subPath**挂载为Container的Volume，Kubernetes不会做自动热更新:
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#mounted-configmaps-are-updated-automatically
 
 ## ConfigMap 更新后滚动更新 Pod
 

@@ -12,9 +12,9 @@
 
 ## 开始之前
 
-- 按照 [安装指南](http://istio.doczh.cn/docs/setup/kubernetes/quick-start.md) 上的步骤部署 Istio。
-- 部署 [BookInfo](http://istio.doczh.cn/docs/guides/bookinfo.md) 示例应用程序（在 `bookinfo` namespace 下）。
-- 在 Istio 集群相同的项目下创建名为 `vm-1` 的虚拟机，并 [加入到 Mesh](http://istio.doczh.cn/docs/setup/kubernetes/mesh-expansion.md)。
+- 按照 [安装指南](https://istio.io/zh/docs/setup/kubernetes/) 上的步骤部署 Istio。
+- 部署 [BookInfo](https://istio.io/zh/docs/examples/bookinfo/) 示例应用程序（在 `bookinfo` namespace 下）。
+- 在 Istio 集群相同的项目下创建名为 `vm-1` 的虚拟机，并 [加入到 Mesh](https://istio.io/zh/docs/setup/kubernetes/mesh-expansion/)。
 
 ## 在虚拟机上运行 mysql
 

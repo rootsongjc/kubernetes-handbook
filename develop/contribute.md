@@ -1,7 +1,10 @@
 # Kubernetes社区贡献
 
-- [Contributing guidelines](https://github.com/kubernetes/kubernetes/blob/master/CONTRIBUTING.md)
+如果您想参与 Kubernetes 社区，请先阅读下[Kubernetes Community](https://github.com/kubernetes/community)这个 GitHub Repo中的文档，该文档中包括社区的治理形式、社区成员资格申请、提交 Issue、查找问题和提交 PR 的指导等。
+
+## 参考
+
+- [Kubernetes Community](https://github.com/kubernetes/community)
 - [Kubernetes Developer Guide](https://github.com/kubernetes/community/tree/master/contributors/devel)
-- [Special Interest Groups](https://github.com/kubernetes/community)
-- [Feature Tracking and Backlog](https://github.com/kubernetes/features)
-- [Kubernetes 官方文档汉化项目](https://github.com/k8smeetup/kubernetes.github.io)
+- [Enhencement Tracking and Backlog](https://github.com/kubernetes/features)
+- [Kubernetes 官方网站项目](https://github.com/kubernetes/website)

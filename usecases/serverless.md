@@ -2,6 +2,10 @@
 
 就像无线互联网实际有的地方也需要用到有线连接一样，无服务器架构仍然在某处有服务器。Serverless（无服务器架构）指的是由开发者实现的服务端逻辑运行在无状态的计算容器中，它由事件触发， 完全被第三方管理，其业务层面的状态则被开发者使用的数据库和存储资源所记录。
 
+CNCF 的[云原生 landscape](https://github.com/cncf/landscape) 中就包括 Serverless 附图，这也是云原生发展到更高阶段的面向特定应用场景的简易抽象。
+
+![Serverless Landscape](https://ws2.sinaimg.cn/large/006tNbRwly1fx0ie2kb90j31kw0ynha3.jpg)
+
 下图来自谷歌云平台官网，是对云计算的一个很好的分层概括，其中 serverless 就是构建在虚拟机和容器之上的一层，与应用本身的关系更加密切。
 
 ![从物理机到函数计算](../images/from-bare-metal-to-functions.jpg)

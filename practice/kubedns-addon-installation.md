@@ -133,7 +133,7 @@ $ kubectl create -f .
 新建一个 Deployment
 
 ``` bash
-$ cat  my-nginx.yaml
+$ cat >> my-nginx.yaml << EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -150,6 +150,7 @@ spec:
         image: harbor-001.jimmysong.io/library/nginx:1.9
         ports:
         - containerPort: 80
+EOF
 $ kubectl create -f my-nginx.yaml
 ```
 

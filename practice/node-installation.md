@@ -133,6 +133,17 @@ kubectl create clusterrolebinding kubelet-bootstrap \
 
 + `--user=kubelet-bootstrap` 是在 `/etc/kubernetes/token.csv` 文件中指定的用户名，同时也写入了 `/etc/kubernetes/bootstrap.kubeconfig` 文件；
 
+---
+
+kubelet 通过认证后向 kube-apiserver 发送 register node 请求，需要先将 `kubelet-nodes` 用户赋予 `system:node` cluster角色(role) 和 `system:nodes` 组(group)，
+然后 kubelet 才能有权限创建节点请求：
+
+``` bash
+kubectl create clusterrolebinding kubelet-nodes \
+  --clusterrole=system:node \
+  --group=system:nodes
+```
+
 ### 下载最新的kubelet和kube-proxy二进制文件
 
 注意请下载对应的Kubernetes版本的安装包。

@@ -8,7 +8,7 @@
             "Jimmy Song": "https://jimmysong.io",
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
             "ServiceMesher社区": "http://www.servicemesher.com",
-            "Istio handbook - Istio 中文指南/服务网格实践手册": "https://jimmysong.io/istio-handbok",
+            "Istio Handbook - Istio 中文指南/服务网格实践手册": "https://jimmysong.io/istio-handbook",
             "Awesome Service Mesh": "http://www.servicemesher.com/awesome-servicemesh",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
@@ -33,7 +33,8 @@
         "theme-default",
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
-        "lightbox"
+        "lightbox",
+        "adsense"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -55,7 +56,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p>Copyright © jimmysong.io 2017-2018",
+            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p><p><a href=https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a> | <a href=https://ws1.sinaimg.cn/large/006tNbRwly1fw3fzx37obj30yi1pdk1r.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a33>深入剖析 Kubernetes by 张磊</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2018",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -73,6 +74,13 @@
         },
         "sitemap-general": {
             "prefix": "https://jimmysong.io/kubernetes-handbook/"
+        },
+        "adsense": {
+            "client": "ca-pub-4029167986768912",
+            "slot": "2445941692",
+            "format": "auto",
+            "element": ".page-inner section",
+            "position": "bottom"
         }
     }
 }
