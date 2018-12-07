@@ -16,6 +16,8 @@
 - GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
 - Gitbook在线浏览：https://jimmysong.io/kubernetes-handbook/
 
+**注意：本书中的 Service Mesh 相关内容已不再维护，请转至 [istio-handbook](https://jimmysong.io/istio-handbook) 浏览。**
+
 ## 快速开始
 
 如果您想要学习Kubernetes和云原生应用架构但是又不想自己从头开始搭建和配置一个集群，那么可以直接使用[**kubernetes-vagrant-centos-cluster**](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)项目直接在本地部署一个3节点的分布式集群及其他如Heapster、EFK、Istio等可选组件。
