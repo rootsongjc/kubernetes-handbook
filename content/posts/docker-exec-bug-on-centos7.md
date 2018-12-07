@@ -53,7 +53,9 @@ categories: ["kubernetes"]
 
 根据 [RedHat 的 Bug 报告](https://bugzilla.redhat.com/show_bug.cgi?id=1655214)，导致该 Bug 的原因是：
 
-CentOS7 发行版中的 Docker 使用的 docker-runc 二进制文件使用旧版本的 golang 构建的，这里面一些可能导致  FIPS 模式崩溃的错误。
+CentOS7 发行版中的 Docker 使用的 docker-runc 二进制文件使用旧版本的 golang 构建的，这里面一些可能导致  [FIPS 模式](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/FIPS_Mode_-_an_explanation)崩溃的错误。
+
+至于该 Bug 是如何触发的官方只是说因为某些镜像导致的。
 
 ## 发现过程
 
@@ -109,3 +111,5 @@ docker-client-1.13.1-75.git8633870.el7.centos.x86_64
 - [配置Pod的liveness和readiness探针 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html)
 - [Bug 1655214 - docker exec does not work with registry.access.redhat.com/rhel7:7.3 - redhat.com](https://bugzilla.redhat.com/show_bug.cgi?id=1655214)
 - [kubernetes-vagrant-centos-cluster - github.com](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)
+- [FIPS Mode - an explanation - mozilla.org](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/FIPS_Mode_-_an_explanation)
+
