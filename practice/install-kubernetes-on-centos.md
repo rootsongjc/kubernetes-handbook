@@ -26,9 +26,9 @@
 
 ## 集群详情
 
-+ OS：CentOS Linux release 7.3.1611 (Core)  3.10.0-514.16.1.el7.x86_64
++ OS：CentOS Linux release 7.4.1708 (Core) 3.10.0-693.11.6.el7.x86_64
 + Kubernetes 1.6.0+（最低的版本要求是1.6）
-+ Docker  1.12.5（使用yum安装）
++ Docker：建议使用 Docker CE，**请勿使用 docker-1.13.1-84.git07f3374.el7.centos.x86_64 版本**，[查看详情](https://jimmysong.io/posts/docker-exec-bug-on-centos7/)
 + Etcd 3.1.5
 + Flannel 0.7.1 vxlan或者host-gw 网络
 + TLS 认证通信 (所有组件，如 etcd、kubernetes master 和 node)
