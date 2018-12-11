@@ -1,5 +1,7 @@
 # Envoy mesh 教程
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 本文是在 Kubernetes 集群中，使用 Envoy 来做 mesh，来为一个简单的使用 Python 编写的 Flask 应用程序做反向代理和负载均衡。
 
 **注**：本教程中的示例来自 [envoy-steps](https://github.com/datawire/envoy-steps)，本文中使用的所有的代码和 YAML 配置见 [envoy-tutorial](https://github.com/rootsongjc/envoy-tutorial)。

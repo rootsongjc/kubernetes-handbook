@@ -1,5 +1,7 @@
 ## SOFAMesh
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 SOFAMesh由蚂蚁金服开源，在兼容Istio整体架构和协议的基础上，做出部分调整：
 
 ![SOFAMesh architecture](https://ws4.sinaimg.cn/large/0069RVTdgy1fu08m7p22kj31kw1biq98.jpg)

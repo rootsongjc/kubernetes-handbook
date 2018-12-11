@@ -1,6 +1,6 @@
 # 安装并试用Istio service mesh
 
-**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)**。
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
 
 官方文档地址 [快速开始](https://istio.io/docs/setup/kubernetes/)
 

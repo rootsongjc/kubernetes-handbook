@@ -1,5 +1,7 @@
 # 使用 SOFAMosn 构建 SOFAMesh
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 本文介绍的内容将包括 : 
 
 - [SOFAMosn](https://github.com/alipay/sofa-mosn) 与 [SOFAMesh](https://github.com/alipay/sofa-mesh) 的关系

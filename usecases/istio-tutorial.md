@@ -1,5 +1,7 @@
 # Istio 教程
 
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 [redhat-developer-demos/istio-tutorial](https://github.com/redhat-developer-demos/istio-tutorial) 中的 minishift 环境，使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。
 
 本文中的代码和 YAML 文件见 <https://github.com/rootsongjc/istio-tutorial>。

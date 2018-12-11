@@ -1,5 +1,7 @@
 # 定制和集成
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 例如Istio这样的Service Mesh中有很多地方可以给大家定制，例如作为数据平面的sidecar，虽然默认使用的是Envoy，但是你可以开发自己的sidecar代理；还有Mixer中的各种adpater，你也可以开发自己的adapter来扩展遥测和鉴权功能，[Consul Connect](http://www.servicemesher.com/blog/consul-1-2-service-mesh/)就是个例子。
 
 当前可选择的开源的代理可以在[landscape](http://layer5.io/landscape/)里找到，例如使用nginMesh替代Envoy作为数据平面。下图是使用nginMesh作为sidecar的架构图。

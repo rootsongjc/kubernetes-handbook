@@ -1,6 +1,6 @@
 # Istio简介
 
-**注意：Istio 1.10于2018年8月1日发布1.0，关于Istio的更多信息请见Istio官方文档:<https://istio.io>，中文版：<https://istio.io/zh>**。
+**注意：Istio 1.10于2018年8月1日发布1.0，关于Istio的更多信息请见Istio官方文档:<https://istio.io>，中文版：<https://istio.io/zh>，本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
 
 [Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
 
@@ -41,11 +41,7 @@ Amalgam8是一款基于内容和版本的路由布局，用于集成多语言异
 
 下面是Istio的架构图。
 
-![Istio架构图](../images/istio-arch-v0.1.jpg)
-
-下图是Istio中控制平面与数据平面的交互流程图。
-
-![Istio的控制平面和数据平面](../images/istio-arch.jpg)
+![Istio架构图](../images/istio-arch.jpg)
 
 Istio架构分为控制平面和数据平面。
 

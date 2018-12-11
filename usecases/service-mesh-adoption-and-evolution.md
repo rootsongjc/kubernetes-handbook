@@ -1,5 +1,7 @@
 ## 采纳和演进
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 没有人会一下子采纳Service Mesh架构的所有组件，或者一次性将所有的应用都改造成Service Mesh的，都是渐渐式采纳，从非核心系统开始改造。采纳Service Mesh就两种路径：
 
 - 全盘采纳：通常对于新应用来说才会这样做，也叫做Greenfiled项目

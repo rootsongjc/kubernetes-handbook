@@ -1,5 +1,7 @@
 # 配置请求的路由规则
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 在上一节[安装istio](istio-installation.md)中我们创建[BookInfo](https://istio.io/docs/samples/bookinfo.html)的示例，熟悉了Istio的基本功能，现在我们再来看一下istio的高级特性——配置请求的路由规则。
 
 使用istio我们可以根据**权重**和**HTTP headers**来动态配置请求路由。

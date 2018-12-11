@@ -1,6 +1,6 @@
 # 安装和拓展 Istio mesh
 
-**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)**。
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
 
 ## 前置条件
 

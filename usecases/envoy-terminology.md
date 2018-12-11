@@ -1,12 +1,14 @@
 # Envoy 的架构与基本术语
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+
 在了解一门技术之前一开始就要了解其中的基本概念和术语，只有融入了该语境才能理解这门技术。本文将为大家介绍 Envoy 中的基本术语和重点概念。
 
 ## 架构
 
 下图是 Envoy proxy 的架构图，显示了 host B 经过 Envoy 访问 host A 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
 
-![Envoy proxy 架构图](../images/envoy-arch-v0.1.png)
+![Envoy proxy 架构图](../images/envoy-arch.png)
 
 其中的基本术语将在下面解释。
 
