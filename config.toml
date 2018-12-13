@@ -10,8 +10,10 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-hello = "Hi,I'm Jimmy"
-subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
+#hello = "Hi,I'm Jimmy"
+#subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
+hello = "Hi, Jimmy"
+subtitle = "Happy birthday to you!"
 logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
@@ -35,52 +37,56 @@ description = "宋净超的博客|Cloud Native|云原生布道师"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 
 [[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/006tNbRwly1fxpvv5xakij32470u0npf.jpg"
-desc = "Service Mesh Meetup #4 Shanghai - Nov 25, 2018"
+src = "https://ws4.sinaimg.cn/large/006tNbRwly1fy5d2botwfj31970p4e82.jpg"
+desc = "打开支付宝搜索 616635364 为他送上生日祝福吧"
 
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tNbRwly1fx80odnismj31jk0lm7wh.jpg"
-desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
-
-[[Params.bigimg]]
-src = "https://ws4.sinaimg.cn/large/006tNbRwly1fx80jwyftkj31jk0w5x6p.jpg"
-desc = "Envoy,Istio and ServiceMesher community members at KubeCon Shanghai - Nov 14, 2018"
-
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tNbRwly1fwvuai4i9nj31860mce81.jpg"
-desc = "Josh Long&Me with his book translated by me at SpringTour Beijing - Nov 3, 2018"
-
-[[Params.bigimg]]
-src = "https://ws4.sinaimg.cn/large/006tNbRwgy1fvlxgaxyj0j30xc0g7n4u.jpg"
-desc = "At CNCF booth, the Computing Conference in Hangzhou - Sept 21, 2018"
-
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/0069RVTdly1fuoclagh35j318g0iz1kx.jpg"
-desc = "Service Mesh Meetup Shenzhen - Aug 25, 2018"
-
-[[Params.bigimg]]
-src = "https://ws3.sinaimg.cn/large/0069RVTdly1fu5luiuruvj31kw0kukjw.jpg"
-desc = "Service Mesh Meetup Beijing - Jul 29, 2018"
-
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tKfTcly1ft1mp16tllj31b00loe82.jpg"
-desc = "Service Mesh Meetup Hangzhou - Jun 30, 2018"
-
-#[[Params.bigimg]]
-#src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gtlybnzj32ke0osu0z.jpg"
-#desc = "KEUC - China Kubernetes End User Conference 2017"
-
-[[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gsumgt0j31kq0j4qv5.jpg"
-desc = "Kubernetes Meetup Beijing - Aug 28, 2017"
-
-#[[Params.bigimg]]
-#src = "https://ws1.sinaimg.cn/large/00704eQkgy1fs1gv1sjguj31hc0u0qv6.jpg"
-#desc = "Insight throught the Great Wall to the world"
-
-[[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gwrkdp4j33070xgnpe.jpg"
-desc = "Istio Meetup in Beijing GDG"
+# [[Params.bigimg]]
+# src = "https://ws1.sinaimg.cn/large/006tNbRwly1fxpvv5xakij32470u0npf.jpg"
+# desc = "Service Mesh Meetup #4 Shanghai - Nov 25, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws2.sinaimg.cn/large/006tNbRwly1fx80odnismj31jk0lm7wh.jpg"
+# desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws4.sinaimg.cn/large/006tNbRwly1fx80jwyftkj31jk0w5x6p.jpg"
+# desc = "Envoy,Istio and ServiceMesher community members at KubeCon Shanghai - Nov 14, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws2.sinaimg.cn/large/006tNbRwly1fwvuai4i9nj31860mce81.jpg"
+# desc = "Josh Long&Me with his book translated by me at SpringTour Beijing - Nov 3, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws4.sinaimg.cn/large/006tNbRwgy1fvlxgaxyj0j30xc0g7n4u.jpg"
+# desc = "At CNCF booth, the Computing Conference in Hangzhou - Sept 21, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws2.sinaimg.cn/large/0069RVTdly1fuoclagh35j318g0iz1kx.jpg"
+# desc = "Service Mesh Meetup Shenzhen - Aug 25, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws3.sinaimg.cn/large/0069RVTdly1fu5luiuruvj31kw0kukjw.jpg"
+# desc = "Service Mesh Meetup Beijing - Jul 29, 2018"
+# 
+# [[Params.bigimg]]
+# src = "https://ws2.sinaimg.cn/large/006tKfTcly1ft1mp16tllj31b00loe82.jpg"
+# desc = "Service Mesh Meetup Hangzhou - Jun 30, 2018"
+# 
+# #[[Params.bigimg]]
+# #src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gtlybnzj32ke0osu0z.jpg"
+# #desc = "KEUC - China Kubernetes End User Conference 2017"
+# 
+# [[Params.bigimg]]
+# src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gsumgt0j31kq0j4qv5.jpg"
+# desc = "Kubernetes Meetup Beijing - Aug 28, 2017"
+# 
+# #[[Params.bigimg]]
+# #src = "https://ws1.sinaimg.cn/large/00704eQkgy1fs1gv1sjguj31hc0u0qv6.jpg"
+# #desc = "Insight throught the Great Wall to the world"
+# 
+# [[Params.bigimg]]
+# src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gwrkdp4j33070xgnpe.jpg"
+# desc = "Istio Meetup in Beijing GDG"
 
 [Author]
   name = "Jimmy Song(宋净超)"
