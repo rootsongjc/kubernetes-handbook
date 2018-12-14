@@ -1,11 +1,11 @@
 ---
 title: "Envoy 的架构与基本术语"
 subtitle: "Envoy 基本配置解析"
-tags: ["envoy","service-mesh"]
+tags: ["envoy","service-mesh","xds"]
 categories: "service-mesh"
 description: "本文介绍了 Envoy proxy 中的基本概念、配置与架构解析"
 date: 2018-04-27T17:16:50+08:00
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20180425009.jpg", desc: "EAC Hotel square|Hangzhou|Apr 25,2018"}]
+bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fy6b34ad6aj31ii0sy4qq.jpg", desc: "Via unsplash"}]
 draft: false
 ---
 
@@ -15,7 +15,7 @@ draft: false
 
 下图是 Envoy proxy 的架构图，显示了 host B 经过 Envoy 访问 host A 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
 
-![Envoy proxy 架构图](https://jimmysong.io/kubernetes-handbook/images/envoy-arch-v0.1.png)
+![Envoy proxy 架构图](https://ws4.sinaimg.cn/large/006tNbRwly1fy6b76edxsj314k0tsjwq.jpg)
 
 其中的基本术语将在下面解释。
 
@@ -47,11 +47,11 @@ xDS 是一个关键概念，它是一类发现服务的统称，其包括如下�
 
 - CDS：Cluster Discovery Service
 - EDS：Endpoint Discovery Service
-- SDS：Service Discovery Service
+- SDS：Secret Discovery Service
 - RDS：Route Discovery Service
 - LDS：Listener Discovery Service
 
-正是通过对 xDS 的请求来动态更新 Envoy 配置。
+正是通过对 xDS 的请求来动态更新 Envoy 配置，另外还有个 ADS（Aggregated Discovery Service）通过聚合的方式解决以上 xDS 的更新顺序问题。
 
 ## Envoy Mesh
 
@@ -153,8 +153,10 @@ Cluster 的配置中至少包含以下信息：
   - `random`：随机
 - `hosts`：能够定义 cluster 中主机的 URL 地址，通常是`tcp://` URL
 
+Envoy 作为 Istio 中默认的数据平面，关于 Istio 和 Envoy 的更多详细介绍请参考：[Istio handbook](https://jimmysong.io/istio-hanbdook) 和 [ServiceMesher 社区官网](https://www.servicemesher.com)。
+
 ## 参考
 
 - [Terminology - www.envoyproxy.io](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/terminology)
 - [Part 1: Getting started with Envoy Proxy for microservices resilience](https://www.datawire.io/envoyproxy/getting-started-envoyproxy-microservices-resilience/)
-- [Envoy作为前端代理](envoy-front-proxy.md)
+- [Istio Handbook——Istio中文指南/服务网格实践手册](https://jimmysong.io/istio-handbook)
