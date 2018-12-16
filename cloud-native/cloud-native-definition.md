@@ -16,7 +16,7 @@
 
 ## CNCF最初的定义
 
-到了2015年Google主导成了云原生计算基金会（CNCF），起初CNCF对云原生（Cloud Native）的定义包含以下三个方面：
+到了2015年Google主导成立了云原生计算基金会（CNCF），起初CNCF对云原生（Cloud Native）的定义包含以下三个方面：
 
 - 应用容器化
 - 面向微服务架构

@@ -4,17 +4,17 @@
 
 本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关于关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/posts/what-is-a-service-mesh/)、Cloud Native等领域。
 
-本书的主题不仅限于Kubernetes，还包括以下几大主题：
+本书的主题不局限于Kubernetes，还包括以下几大主题：
 
 - 云原生开源组件
 - 云原生应用与微服务架构
-- 基于Kubernete的Service Mesh架构
+- 基于Kubernetes的Service Mesh架构
 - Kubernetes与微服务结合实践
 
-起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes1.6+** 版本，同时我们也将密切关注kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
+起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes 1.6+** 版本，同时我们也将密切关注Kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
 
 - GitHub地址：https://github.com/rootsongjc/kubernetes-handbook
-- Gitbook在线浏览：https://jimmysong.io/kubernetes-handbook/
+- GitBook在线浏览：https://jimmysong.io/kubernetes-handbook/
 
 **注意：本书中的 Service Mesh 相关内容已不再维护，请转至 [istio-handbook](https://jimmysong.io/istio-handbook) 浏览。**
 
