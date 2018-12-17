@@ -137,8 +137,8 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
 
 [[menu.main]]
     parent = "Categories"
-    name = "Drone"
-    url = "categories/drone"
+    name = "Istio"
+    url = "categories/istio"
     weight = 8
 
 [[menu.main]]
