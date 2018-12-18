@@ -1,20 +1,18 @@
 ---
-title: "Kubernetes中的自定义资源"
+title: "Kubernetes中的CRD（自定义资源）"
 subtitle: "使用CRD扩展kubernetes API"
 tags: ["kubernetes"]
 categories: "kubernetes"
 date: 2017-11-28T11:52:40+08:00
 draft: false
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151107010.jpg", desc: " 三里屯@北京 Nov 7,2015"}]
+bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fyb6ie95x2j318i0mwanw.jpg", desc: "Via unsplash"}]
 ---
-
-# CRD-自定义资源
 
 自定义资源是对Kubernetes API的扩展，kubernetes中的每个资源都是一个API对象的集合，例如我们在YAML文件里定义的那些spec都是对kubernetes中的资源对象的定义，所有的自定义资源可以跟kubernetes中内建的资源一样使用kubectl操作。
 
 ## 自定义资源
 
-Kubernetes1.6版本中包含一个内建的资源叫做CRD（CustomResourceDefinition），可以用它来创建自定义资源，但该资源在kubernetes1.7中版本已被TRD（ThirdPartyResource）取代。
+Kubernetes1.6版本中包含一个内建的资源叫做TPR（ThirdPartyResource），可以用它来创建自定义资源，但该资源在kubernetes1.7版本中已被CRD（CustomResourceDefinition）取代。
 
 ### CRD
 
