@@ -18,6 +18,12 @@ categories: ["istio"]
 
 因为 Istio 基本就是绑定在 Kubernetes 上，下面是我们熟知的 Kubernetes 及 Istio 中共有的服务模型。
 
+![](https://ws2.sinaimg.cn/large/006tNbRwly1fya24ci2x8j30go0b4ta3.jpg)
+
+上图是 Kubernetes 中 iptables 代理模式（另外还有 IPVS 模式）下的 service 概念图，管理员可以在 kube-proxy 中配置简单的负载均衡，对整个 node 生效，无法配置到单个服务的负载均衡和其他微服务的高级功能，例如熔断、限流、追踪等，这些功能只能在应用中实现了，而在 Istio 的概念模型中完全去掉了 `kube-proxy`  这个组件，将其分散到每个应用 Pod 中同时部署的 Envoy 中实现。
+
+下面列举的是 Kubernetes 和 Istio 中共有的模型。
+
 ### Service
 
 这实际上跟 Kubernetes 中的 service 概念是一致的，请参考 [Kubernetes 中的 service](https://jimmysong.io/kubernetes-handbook/concepts/service.html)。Istio 推出了比 service 更复杂的模型 `VirtualService`，这不单纯是定义一个服务定义了，而是在服务之上定义了路由规则。
@@ -61,13 +67,35 @@ spec:
 
 当然服务的 label 可以设置任意多个，这样的好处是在做路由的时候可以根据标签匹配来做细粒度的流量划分。
 
+## 控制面板 Envoy
+
+Envoy 是 Istio 中默认的 proxy sidecar，负责服务间的流量管控、认证与安全加密、可观察性等。Envoy 中有如下几个重要概念。
+
+![Envoy proxy 架构图](https://ws4.sinaimg.cn/large/006tNbRwly1fy9qkff5nij314k0ts43z.jpg)
+
+上图是 Envoy 的架构图。
+
+### Cluster
+
+集群（cluster）是 Envoy 连接到的一组逻辑上相似的上游主机。Envoy 通过[服务发现](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/service_discovery#arch-overview-service-discovery)发现集群中的成员。Envoy 可以通过[主动运行状况检查](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/health_checking#arch-overview-health-checking)来确定集群成员的健康状况。Envoy 如何将请求路由到集群成员由[负载均衡策略](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/load_balancing#arch-overview-load-balancing)确定。
+
+这个与 Kubernetes 中的 Service 概念类似，只不过 Kubernetes 中的服务发现中并不包含健康状况检查，而是通过[配置 Pod 的 liveness 和 readiness 探针](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html)来实现，服务发现默认也是通过 DNS 来实现。
+
+### Listener
+
+监听器（listener）是可以由下游客户端连接的命名网络位置（例如，端口、unix域套接字等）。Envoy 公开一个或多个下游主机连接的侦听器。一般是每台主机运行一个 Envoy，使用单进程运行，但是每个进程中可以启动任意数量的 Listener（监听器），目前只监听 TCP，每个监听器都独立配置一定数量的（L3/L4）网络过滤器。Listenter 也可以通过 Listener Discovery Service（**LDS**）动态获取。
+
+### Listener filter
+
+Listener 使用 listener filter（监听器过滤器）来操作链接的元数据。它的作用是在不更改 Envoy 的核心功能的情况下添加更多的集成功能。Listener filter 的 API 相对简单，因为这些过滤器最终是在新接受的套接字上运行。在链中可以互相衔接以支持更复杂的场景，例如调用速率限制。Envoy 已经包含了多个监听器过滤器。
+
 ## Istio 中增加的流量模型
 
 `VirtualService`、`DestinationRule`、`Gateway`、`ServiceEntry` 和 `EnvoyFilter` 都是 Istio 中为流量管理所创建的 CRD，这些概念其实是做路由管理，而 Kubernetes 中的 service 只是用来做服务发现，所以以上其实也不能成为 Istio 中的服务模型，但其实它们也是用来管理服务的，如果流量不能路由的创建的服务上面去，那服务的存在又有何意义？在 Service Mesh 真正的服务模型还是得从 Envoy 的 [xDS 协议](http://www.servicemesher.com/blog/envoy-xds-protocol/)来看，其中包括了服务的流量治理，服务的断点是通过 EDS 来配置的。
 
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya24ci2x8j30go0b4ta3.jpg)
+![Istio pilot 架构图](https://ws3.sinaimg.cn/large/006tKfTcgy1ftczrqzgw5j31kw0t1q7o.jpg)
 
-上图是 Kubernetes 中 iptables 代理模式下的 service 概念图，在 Istio 的概念模型中完全去掉了 `kube-proxy`  这个组件，下面才是 Istio 在 Kubernetes 基础之上增加的功能。
+上图是 Pilot 设计图，来自[Istio Pilot design overview](https://github.com/istio/old_pilot_repo/blob/master/doc/design.md)。
 
 ### Routing
 
