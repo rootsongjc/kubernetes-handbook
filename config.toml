@@ -7,7 +7,7 @@ theme = "beautifulhugo"
 metaDataFormat = "yaml"
 pygmentsUseClasses = false
 pygmentCodeFences = true
-#googleAnalytics = "XXX"
+googleAnalytics = "UA-93485976-1"
 
 [Params]
 hello = "Hi,I'm Jimmy"
