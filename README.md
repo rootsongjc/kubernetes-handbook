@@ -41,6 +41,16 @@ postmeta: false
 
 **nocomment**: whether show the comment box
 
+**Lightbox effect**
+
+```html
+<div class="gallery">
+    <a href="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg" title="What is Istio?">
+    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg">
+    </a>
+</div>
+```
+
 ### 3. Preview and debug
 
 Execute this command the build a preview:
