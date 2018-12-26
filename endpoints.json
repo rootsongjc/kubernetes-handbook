@@ -1,0 +1,1299 @@
+[
+{
+  "clusterName": "outbound|9090||prometheus.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.5",
+                "portValue": 9090
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://prometheus-76b7745b64-vv4pj.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15011||istio-pilot.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.4",
+                "portValue": 15011
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-pilot-6fbd5b7bdd-dbz68.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|80||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 80
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|31400||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 31400
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8060||istio-citadel.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.6",
+                "portValue": 8060
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-citadel-f476b6c45-95s6k.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9091||istio-policy.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.4",
+                "portValue": 9091
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-policy-65b775cff6-jtkbc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9080||reviews.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.3",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://reviews-v2-7fc9bb6dcf-pqsmp.default"
+                }
+            }
+          }
+        },
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.6",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://reviews-v3-c995979bc-8w7ts.default"
+                }
+            }
+          }
+        },
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.3",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://reviews-v1-cb8655c75-b97zc.default"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15010||istio-pilot.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.4",
+                "portValue": 15010
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-pilot-6fbd5b7bdd-dbz68.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15011||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 15011
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|3000||grafana.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.6",
+                "portValue": 3000
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://grafana-78cf556b9c-kxccp.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9093||istio-telemetry.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.4",
+                "portValue": 9093
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-telemetry-676d6c7c49-8zkpc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15004||istio-policy.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.4",
+                "portValue": 15004
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-policy-65b775cff6-jtkbc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15004||istio-telemetry.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.4",
+                "portValue": 15004
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-telemetry-676d6c7c49-8zkpc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15030||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 15030
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9411||zipkin.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.8",
+                "portValue": 9411
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-tracing-6b994895fd-26wt8.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9080||details.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.8",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://details-v1-68c7c8666d-l22ln.default"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9080||productpage.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.9",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://productpage-v1-54d799c966-bcssc.default"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|15031||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 15031
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|443||istio-egressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.7",
+                "portValue": 443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-egressgateway-978c876fb-nwvkm.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|443||istio-galley.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.5",
+                "portValue": 443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-galley-7dd9c54cdd-vhv6q.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9093||istio-citadel.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.6",
+                "portValue": 9093
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-citadel-f476b6c45-95s6k.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9080||ratings.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.2",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://ratings-v1-8558d4458d-ns6lk.default"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8088||servicegraph.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.5",
+                "portValue": 8088
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://servicegraph-59c69d7977-vv62w.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|443||kubernetes.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.17.8.101",
+                "portValue": 6443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://kubernetes-dashboard-6cbfcb69b8-lz2hr.kube-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|53||kube-dns.kube-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.2",
+                "portValue": 53
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://coredns-f5cf6c6fd-tbzzv.kube-system"
+                }
+            }
+          }
+        },
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.2",
+                "portValue": 53
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://coredns-f5cf6c6fd-v7gtl.kube-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9093||istio-pilot.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.4",
+                "portValue": 9093
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-pilot-6fbd5b7bdd-dbz68.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8080||istio-pilot.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.4",
+                "portValue": 8080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-pilot-6fbd5b7bdd-dbz68.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|80||istio-egressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.7",
+                "portValue": 80
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-egressgateway-978c876fb-nwvkm.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|80||tracing.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.8",
+                "portValue": 16686
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-tracing-6b994895fd-26wt8.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|80||traefik-ingress-service.kube-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.17.8.102",
+                "portValue": 80
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://traefik-ingress-controller-2v9fm.kube-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8443||kubernetes-dashboard.kube-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.17.8.101",
+                "portValue": 8443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://kubernetes-dashboard-6cbfcb69b8-lz2hr.kube-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|443||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8060||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 8060
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9093||istio-policy.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.4",
+                "portValue": 9093
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-policy-65b775cff6-jtkbc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|14267||jaeger-collector.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.8",
+                "portValue": 14267
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-tracing-6b994895fd-26wt8.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|16686||jaeger-query.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.8",
+                "portValue": 16686
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-tracing-6b994895fd-26wt8.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|853||istio-ingressgateway.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.3",
+                "portValue": 853
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-ingressgateway-6d6694648f-2wvjg.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9091||istio-telemetry.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.4",
+                "portValue": 9091
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-telemetry-676d6c7c49-8zkpc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|42422||istio-telemetry.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.4",
+                "portValue": 42422
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-telemetry-676d6c7c49-8zkpc.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|443||istio-sidecar-injector.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.3.7",
+                "portValue": 443
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-sidecar-injector-b484dfcbb-njfgv.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|9093||istio-galley.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.18.5",
+                "portValue": 9093
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-galley-7dd9c54cdd-vhv6q.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|14268||jaeger-collector.istio-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.8",
+                "portValue": 14268
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://istio-tracing-6b994895fd-26wt8.istio-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "clusterName": "outbound|8080||traefik-ingress-service.kube-system.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.17.8.102",
+                "portValue": 8080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://traefik-ingress-controller-2v9fm.kube-system"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}]
