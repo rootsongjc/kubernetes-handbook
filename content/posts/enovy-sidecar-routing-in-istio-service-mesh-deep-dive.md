@@ -1,10 +1,10 @@
 ---
 title: "理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发"
-subtitle: "by Jimmy Song"
+subtitle: "Sidecar proxy 中 Indbound/Outbound 流量处理过程详解"
 date: 2018-12-26T18:32:27+08:00
 bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fykbvcftfzj31la0pmx6q.jpg", desc: "Via unsplash"}]
 draft: false
-notoc: true
+notoc: false
 description: "本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。"
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
 categories: ["istio"]
@@ -30,7 +30,7 @@ categories: ["istio"]
 
 可以在 [Google Drive](https://drive.google.com/open?id=19ed3_tkjf6RgGboxllMdt_Ytd5_cocib) 上下载原图。
 
-## Sidecar 注入及流量劫持步骤
+## Sidecar 注入及流量劫持步骤概述
 
 下面是从 Sidecar 注入、Pod 启动到 Sidecar proxy 拦截流量及 Envoy 处理路由的步骤概览。
 
@@ -39,6 +39,8 @@ categories: ["istio"]
 **2.** 应用 YAML 配置部署应用，此时 Kubernetes API server 接收到的服务创建配置文件中已经包含了 Init 容器及 sidecar proxy。
 
 **3.** 在 sidecar proxy 容器和应用容器启动之前，首先运行 Init 容器，Init 容器用于设置 iptables（Istio 中默认的流量拦截方式，还可以使用 BPF、IPVS 等方式） 将进入 pod 的流量劫持到 Envoy sidecar proxy。所有 TCP 流量（Envoy 目前只支持 TCP 流量）将被 sidecar 劫持，其他协议的流量将按原来的目的地请求。
+
+**4.** 启动 Pod 中的 Envoy sidecar proxy 和应用程序容器。这一步的过程请参考[通过管理接口获取完整配置](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#%E9%80%9A%E8%BF%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E8%8E%B7%E5%8F%96%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE)。
 
 > **Sidecar proxy 与应用容器的启动顺序问题**
 >
@@ -54,13 +56,13 @@ categories: ["istio"]
 
 **问题**：如果为 sidecar proxy 和应用程序容器添加[就绪和存活探针](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html)是否可以解决该问题呢？
 
-**4.** 不论是进入还是从 Pod 发出的 TCP 请求都会被 iptables 劫持，inbound 流量被劫持后经 Inbound Handler 处理后转交给应用程序容器处理，outbound 流量被 iptables 劫持后转交给 Outbound Handler 处理，并确定转发的 upstream 和 Endpoint。
+**5.** 不论是进入还是从 Pod 发出的 TCP 请求都会被 iptables 劫持，inbound 流量被劫持后经 Inbound Handler 处理后转交给应用程序容器处理，outbound 流量被 iptables 劫持后转交给 Outbound Handler 处理，并确定转发的 upstream 和 Endpoint。
 
-**5.** Sidecar proxy 请求 Pilot 使用 xDS 协议同步 Envoy 配置，其中包括 LDS、EDS、CDS 等，不过为了保证更新的顺序，Envoy 会直接使用 ADS 向 Pilot 请求配置更新。
+**6.** Sidecar proxy 请求 Pilot 使用 xDS 协议同步 Envoy 配置，其中包括 LDS、EDS、CDS 等，不过为了保证更新的顺序，Envoy 会直接使用 ADS 向 Pilot 请求配置更新。
 
 ## Envoy 如何处理路由转发
 
- 下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/10Z5kWIhrUilrDHqF00rIHsmKyun_d7mR/view?usp=sharing) 上下载原图。
+ 下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1oZ_fZIlndSHe4iBQz4JeEATtnmmqc1W_/view?usp=sharing) 上下载原图。
 
 <div class="gallery">
     <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fykbrirc7gj31c70u0art.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
@@ -152,7 +154,7 @@ ADDRESS            PORT      TYPE
 }
 ```
 
-从配置中可以看出 `use_original_dst` 配置指定为 `true`，这是一个布尔值，缺省为 false，使用 iptables 重定向连接时，proxy 接收的端口可能与[原始目的地址](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的端口不一样，如此处 proxy 接收的端口为 15001，而原始目的地端口为 9080。当此标志设置为 true 时，Listener 将连接重定向到与原始目的地址关联的 Listener，此处为 `172.33.3.3:9080`。如果没有与原始目的地址关联的 Listener，则连接由接收它的 Listener 处理，即该 `virtual` Listener，经过 `envoy.tcp_proxy` 过滤器处理转发给 `BlackHoleCluster`，这个 Cluster 的作用正如它的名字，当 Envoy 找不到匹配的虚拟监听器时，就会将请求发送给它，并返回 404。
+**UseOriginalDst**：从配置中可以看出 `useOriginalDst` 配置指定为 `true`，这是一个布尔值，缺省为 false，使用 iptables 重定向连接时，proxy 接收的端口可能与[原始目的地址](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的端口不一样，如此处 proxy 接收的端口为 15001，而原始目的地端口为 9080。当此标志设置为 true 时，Listener 将连接重定向到与原始目的地址关联的 Listener，此处为 `172.33.3.3:9080`。如果没有与原始目的地址关联的 Listener，则连接由接收它的 Listener 处理，即该 `virtual` Listener，经过 `envoy.tcp_proxy` 过滤器处理转发给 `BlackHoleCluster`，这个 Cluster 的作用正如它的名字，当 Envoy 找不到匹配的虚拟监听器时，就会将请求发送给它，并返回 404。这个将于下文提到的 Listener 中设置 `bindToPort` 相呼应。
 
 **注意**：该参数将被废弃，请使用[原始目的地址](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的 Listener filter 替代。该参数的主要用途是：Envoy 通过监听 15001 端口将 iptables 拦截的流量经由其他 Listener 处理而不是直接转发出去，详情见 [Virtual Listener](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#virtual-listener)。
 
@@ -207,7 +209,11 @@ ADDRESS            PORT      TYPE
                         ...
                     }
                 }
-            ]
+            ]，
+            "deprecatedV1": {
+                "bindToPort": false
+            }
+        ...
         },
         {
             "filterChainMatch": {
@@ -223,7 +229,7 @@ ADDRESS            PORT      TYPE
 }]
 ```
 
-我们看其中的 filterChains.filters 中的 `envoy.http_connection_manager` 配置部分：
+**bindToPort**：注意其中有一个 [`bindToPort`](https://www.envoyproxy.io/docs/envoy/v1.6.0/api-v1/listeners/listeners) 的配置，其值为 `false`，该配置的缺省值为 `true`，表示将 Listener 绑定到端口上，此处设置为 `false` 则该 Listener 只能处理其他 Listener 转移过来的流量，即上文所说的 `virtual` Listener，我们看其中的 filterChains.filters 中的 `envoy.http_connection_manager` 配置部分：
 
 ```json
 "route_config": {
@@ -250,7 +256,7 @@ ADDRESS            PORT      TYPE
                         }
 ```
 
-该配置表示流量将转交给 Cluster `inbound|9080||reviews.default.svc.cluster.local` 处理，
+该配置表示流量将转交给 Cluster `inbound|9080||reviews.default.svc.cluster.local` 处理。
 
 **Cluster `inbound|9080||reviews.default.svc.cluster.local`**
 
@@ -332,39 +338,44 @@ ADDRESS            PORT      TYPE
 
 **Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
 
-Istio 1.1 以前版本不支持使用 `istioctl` 命令直接查询 Cluster 的 Endpoint，可以使用查询 Envoy Sidecar 的 HTTP 管理断点的方式折中。
+Istio 1.1 以前版本不支持使用 `istioctl` 命令直接查询 Cluster 的 Endpoint，可以使用查询 Pilot 的 debug 端点的方式折中。
 
 ```bash
-kubectl exec reviews-v1-cb8655c75-b97zc -c istio-proxy curl http://localhost:15000/clusters |grep 'outbound|9080||ratings.default.svc.cluster.local'
+kubectl exec reviews-v1-cb8655c75-b97zc -c istio-proxy curl http://istio-pilot.istio-system.svc.cluster.local:9093/debug/edsz > endpoints.json
 ```
 
-结果如下，其中包含了该 Cluster 的所有 Endpoint 信息。
+`endpoints.json` 文件中包含了所有 Cluster 的 Endpoint 信息，我们只选取其中的 `outbound|9080||ratings.default.svc.cluster.local` Cluster 的结果如下。
 
-```ini
-outbound|9080||ratings.default.svc.cluster.local::default_priority::max_connections::1024
-outbound|9080||ratings.default.svc.cluster.local::default_priority::max_pending_requests::1024
-outbound|9080||ratings.default.svc.cluster.local::default_priority::max_requests::1024
-outbound|9080||ratings.default.svc.cluster.local::default_priority::max_retries::3
-outbound|9080||ratings.default.svc.cluster.local::high_priority::max_connections::1024
-outbound|9080||ratings.default.svc.cluster.local::high_priority::max_pending_requests::1024
-outbound|9080||ratings.default.svc.cluster.local::high_priority::max_requests::1024
-outbound|9080||ratings.default.svc.cluster.local::high_priority::max_retries::3
-outbound|9080||ratings.default.svc.cluster.local::added_via_api::true
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::cx_active::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::cx_connect_fail::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::cx_total::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::rq_active::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::rq_error::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::rq_success::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::rq_timeout::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::rq_total::0
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::health_flags::healthy
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::weight::1
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::region::
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::zone::
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::sub_zone::
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::canary::false
-outbound|9080||ratings.default.svc.cluster.local::172.33.100.2:9080::success_rate::-1
+```json
+{
+  "clusterName": "outbound|9080||ratings.default.svc.cluster.local",
+  "endpoints": [
+    {
+      "locality": {
+
+      },
+      "lbEndpoints": [
+        {
+          "endpoint": {
+            "address": {
+              "socketAddress": {
+                "address": "172.33.100.2",
+                "portValue": 9080
+              }
+            }
+          },
+          "metadata": {
+            "filterMetadata": {
+              "istio": {
+                  "uid": "kubernetes://ratings-v1-8558d4458d-ns6lk.default"
+                }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
 ```
 
 Endpoint 可以是一个或多个，Envoy 将根据一定规则选择适当的 Endpoint 来路由。
@@ -375,4 +386,5 @@ Endpoint 可以是一个或多个，Envoy 将根据一定规则选择适当的 E
 
 - [调试 Envoy 和 Pilot - istio.io](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/)
 - [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
+- [Istio流量管理实现机制深度解析 - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 
