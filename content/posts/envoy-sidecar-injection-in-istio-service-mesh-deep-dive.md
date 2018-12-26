@@ -7,7 +7,7 @@ draft: false
 notoc: true
 description: "以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。"
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
-categories: ["service mesh"]
+categories: ["istio"]
 ---
 
 > 以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。
@@ -442,7 +442,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持 Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](https://ws1.sinaimg.cn/large/006tNbRwly1fyhwekzo94j31d10u0k3y.jpg)
+![Envoy sidecar 流量劫持与路由转发 traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](https://ws1.sinaimg.cn/large/006tNbRwly1fykbrirc7gj31c70u0art.jpg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
