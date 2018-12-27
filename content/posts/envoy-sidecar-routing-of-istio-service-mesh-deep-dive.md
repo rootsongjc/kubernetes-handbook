@@ -12,6 +12,8 @@ categories: ["istio"]
 
 本文以 Istio 官方的 [bookinfo 示例](https://preliminary.istio.io/zh/docs/examples/bookinfo)来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)。
 
+**[Read the English version](/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/)**
+
 下面是 Istio 官方提供的 bookinfo 的请求流程图，假设 bookinfo 应用的所有服务中没有配置 DestinationRule。
 
 <div class="gallery">
@@ -62,11 +64,11 @@ categories: ["istio"]
 
 ## Envoy 如何处理路由转发
 
- 下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1oZ_fZIlndSHe4iBQz4JeEATtnmmqc1W_/view?usp=sharing) 上下载原图。
+ 下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1n-h235tm8DnL_RqxTTA95rgGtrLkBsyr/view?usp=sharing) 上下载原图。
 
 <div class="gallery">
-    <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fykbrirc7gj31c70u0art.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
-    <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fykbrirc7gj31c70u0art.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
+    <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
+    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
     </a>
 </div>
 
