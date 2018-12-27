@@ -76,6 +76,10 @@ Service Mesh 并没有给我们带来新功能，它是用于解决其他工具�
 
 ---
 
+**[Istio Handbook - Istio服务网格实践指南](https://jimmysong.io/istio-handbook)**
+
+![Istio handbook by Jimmy Song 宋净超](https://ws2.sinaimg.cn/large/006tNbRwly1fyczkt7rpzj30go0lvgo4.jpg)
+
 关于 Service Mesh 的更多资讯请访问 [ServiceMesher 服务网格社区网站](http://www.servicemesher.com) 或关注 ServiceMesher 的微信公众号。
 
 ![Service Mesh微信公众号](https://ws1.sinaimg.cn/large/00704eQkly1fswhfttyooj3076076q3r.jpg)
