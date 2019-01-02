@@ -1,7 +1,5 @@
-{{ if not .Params.notoc }}
-  {{ if or .Params.toc (and (gt .WordCount 400 ) (ne .Params.toc "false")) }}
-  <aside class="toc">
-    {{ .TableOfContents }}
-  </aside>
-  {{ end }}
+{{ if or .Params.toc (and (gt .WordCount 400 ) (ne .Params.toc "false")) }}
+<aside class="toc">
+  {{ .TableOfContents }}
+</aside>
 {{ end }}
