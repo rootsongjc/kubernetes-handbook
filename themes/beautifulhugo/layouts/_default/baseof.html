@@ -6,7 +6,7 @@
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
     {{ block "main" . }}{{ end }}
     {{ if isset .Site.Params "ad" }}
-    <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 size=3>
+        <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 size=3>
         {{ partial "ad.html" . }}
     {{ end }}
     {{ partial "footer.html" . }}
