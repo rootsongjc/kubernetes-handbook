@@ -6,7 +6,7 @@
 
 ## 云原生
 
-* [云原生的定义](cloud-native/cloud-native-definition.md)
+* [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
 * [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
 * [CNCF章程](cloud-native/cncf-charter.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
