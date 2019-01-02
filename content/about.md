@@ -7,6 +7,7 @@ description: "Jimmy Song(宋净超) - Developer Advocate on Cloud Native, CNCF A
 nocomment: true
 postmeta: false
 notoc: true
+noreward: true
 seealso: false
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
@@ -25,7 +26,8 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)
   - [TalkingData](http://www.talkingdata.com)
-  - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）current➡️[招贤纳士](https://mp.weixin.qq.com/s/dIV_dElINMV4I0Ro2GnbOg)
+  - [Ant Financial](https://www.antfin.com/)
+  - [蚂蚁金服云原生相关职位正在火热招聘中🔥](/jobs)
 
 ### Bio
 

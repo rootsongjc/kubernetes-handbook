@@ -22,8 +22,6 @@ rss = true
 ad = true
 # GoogleAdsense
 adsense = true
-# reward button, comment this to disable it
-reward = true
 # baguettebox gallery, comment this to disable it
 baguettebox = true
 baiduKey = "11f7d254cfa4e0ca44b175c66d379ecc"
@@ -101,51 +99,45 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
 
 [[menu.main]]
     parent = "Categories"
+    name = "Istio"
+    url = "categories/istio"
+    weight = 2
+
+[[menu.main]]
+    parent = "Categories"
     name = "Cloud Native"
     url = "categories/cloud-native"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "Categories"
     name = "Microservices"
     url = "categories/microservices"
-    weight = 3
-
-[[menu.main]]
-    parent = "Categories"
-    name = "Devops"
-    url = "categories/devops"
     weight = 4
-
-[[menu.main]]
-    parent = "Categories"
-    name = "Github"
-    url = "categories/github"
-    weight = 5
-
-[[menu.main]]
-    parent = "Categories"
-    name = "Serverless"
-    url = "categories/serverless"
-    weight = 6
 
 [[menu.main]]
     parent = "Categories"
     name = "Service Mesh"
     url = "categories/service-mesh"
-    weight = 7
+    weight = 5
 
 [[menu.main]]
     parent = "Categories"
-    name = "Istio"
-    url = "categories/istio"
-    weight = 8
+    name = "Devops"
+    url = "categories/devops"
+    weight = 6
+
+[[menu.main]]
+    parent = "Categories"
+    name = "Serverless"
+    url = "categories/serverless"
+    weight = 7
 
 [[menu.main]]
     parent = "Categories"
     name = "Tags"
     url = "tags"
-    weight = 9
+    weight = 8
 
 [[menu.main]]
     identifier = "Gitbooks"
@@ -212,40 +204,9 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
     weight = 4
 
 [[menu.main]]
-    identifier = "Projects"
-    name = "Projects"
+    name = "Hiring"
+    url = "jobs"
     weight = 4
-
-[[menu.main]]
-    parent = "Projects"
-    name = "k8s all-in-one"
-    url = "https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster"
-    weight = 1
-
-[[menu.main]]
-    parent = "Projects"
-    name = "Spark on kubernetes"
-    url = "spark-on-k8s"
-    weight = 2
-
-[[menu.main]]
-    parent = "Projects"
-    name = "sofa-mesh"
-    url = "https://github.com/alipay/sofa-mesh"
-    weight = 3
-
-[[menu.main]]
-    parent = "Projects"
-    name = "sofa-mosn"
-    url = "https://github.com/alipay/sofa-mosn"
-    weight = 4
-
-[[menu.main]]
-    parent = "Projects"
-    name = "Beautifulhugo"
-    url = "https://github.com/rootsongjc/beautifulhugo"
-    weight = 5
-
 
 [[menu.main]]
     name = "About"
