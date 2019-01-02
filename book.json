@@ -57,7 +57,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p><p><a href=https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a> | <a href=https://ws1.sinaimg.cn/large/006tNbRwly1fw3fzx37obj30yi1pdk1r.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a33>深入剖析 Kubernetes by 张磊</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2018",
+            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p><p><a href=https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a> | <a href=https://ws1.sinaimg.cn/large/006tNbRwly1fw3fzx37obj30yi1pdk1r.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a33>深入剖析 Kubernetes by 张磊</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2019",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
