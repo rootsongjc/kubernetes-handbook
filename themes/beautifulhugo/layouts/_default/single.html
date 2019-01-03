@@ -9,7 +9,9 @@
             {{ end }}
             <!-- Google AdSense-->
             {{ if isset .Site.Params "adsense" }}
-                {{ partial "adsense.html" }}
+                {{ if not .Params.noadsense }}
+                    {{ partial "adsense.html" }}
+                {{ end }}
             {{ end }}
             <article role="main" class="blog-post" itemprop="articleBody" id="content">
                 {{ if not .Params.notoc }}

@@ -8,6 +8,7 @@ nocomment: true
 postmeta: false
 notoc: true
 noreward: true
+noadsense: true
 seealso: false
 bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fyscuwsgq0j30ku0cijsf.jpg", desc: "Uncle Sam wants you"}]
 ---

@@ -29,6 +29,11 @@ title: "微服务管理框架service mesh——istio安装笔记"
 subtitle: "手把手教你安装Istio service mesh"
 categories: "cloud-native"
 tags: ["kubernetes","istio","service-mesh"]
+noreward: true
+notoc: true
+noadsense: true
+noad: true
+seealso: false
 description: "对文章的简要描述 SEO used for description"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170528033.jpg", desc: "威海东部海湾 May 28,2017"}]
 nocomment: true
