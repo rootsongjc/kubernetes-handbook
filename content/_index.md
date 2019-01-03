@@ -1,7 +1,3 @@
----
-noadsense: true
----
-
 [Jimmy Song(宋净超)](/about) is a Developer Advocate at [Ant Financial](http:///antfin.com)（[蚂蚁金服 We are hiring!🔥](/jobs)) and [CNCF Ambassador](https://www.cncf.io/people/ambassadors/). He has organized a few Special Interest Groups in China for years that covering Kubernetes, Cloud Native and Service Mesh, and is the co-founder of the [ServiceMesher](http://www.servicemesher.com) community(服务网格社区). Watch his [schedule](https://jimmysong.io/about/#activities). He has been blogging and coding for years on Cloud Native, also translated Cloud Native Go & Python & Java books into Chinese. Jimmy lives in Beijing and spends his free time on photographing and traveling.  Watch his amazing videos on [bilibili](http://space.bilibili.com/31004924) with drone [DJI Mavic 2 Pro](https://click.dji.com/AD4wNIOV0G1e2vAqBDwVuQ?dji_from=dji-pilot-app&pm=dji-pilot-app) and pictures on [图虫](https://jimmysongio.tuchong.com/)。
 
 加入我们一起构架金融级云原生基础设施，[蚂蚁金服云原生职位正在火热招聘中🔥](/jobs)！
