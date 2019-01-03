@@ -407,6 +407,10 @@ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
 在`target`目录下，你应该还能看到一个很小的名为`myproject-0.0.1-SNAPSHOT.jar.original`的文件，这是在Spring Boot重新打包前，Maven创建的原始jar文件。实际上可运行jar包中包含了这个小的jar包。
 
+## SOFABoot
+
+[SOFABoot](https://github.com/alipay/sofa-boot) 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等等能力。在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFA 中间件的能力。请参考 [SOFABoot 官方文档](http://www.sofastack.tech/sofa-boot/docs/Home)。
+
 # 参考
 
 - [Spring官方网站](https://spring.io/)
