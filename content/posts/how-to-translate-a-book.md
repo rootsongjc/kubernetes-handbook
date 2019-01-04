@@ -8,7 +8,7 @@ description: "如何翻译一本外文书，从图书引进到翻译出版全攻
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016062503.jpg", desc: "青海湖畔 Jun 25,2016"}]
 ---
 
-我是以下两本Cloud Native图书的译者：
+截止本文发稿时，我是以下两本Cloud Native图书的译者：
 
 - [Cloud Native Go](https://jimmysong.io/cloud-native-go)：已由电子工业出版社出版
 - [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python)：正在翻译中
