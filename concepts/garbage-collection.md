@@ -88,6 +88,8 @@ metadata:
 
 对很多 Controller 资源，包括 ReplicationController、ReplicaSet、StatefulSet、DaemonSet 和 Deployment，默认的垃圾收集策略是 `orphan`。因此，除非指定其它的垃圾收集策略，否则所有 Dependent 对象使用的都是 `orphan` 策略。
 
+**注意**：本段所指的默认值是指 REST API 的默认值，并非 kubectl 命令的默认值，kubectl 默认为级联删除，后面会讲到。
+
 下面是一个在后台删除 Dependent 对象的例子：
 
 ```bash
