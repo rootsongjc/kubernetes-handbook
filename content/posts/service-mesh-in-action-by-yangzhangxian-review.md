@@ -9,7 +9,7 @@ tags: ["book","linkerd","service mesh"]
 categories: ["service mesh"]
 ---
 
-最近在回顾 Service Mesh 技术在2018年的发展，想再看看 Linkerd，正好**杨彰显**的这本《Service Mesh 实战——基于 Linkerd 和 Kubernetes 的微服务实践》上市发售了，**机械工业出版社**的编辑送了我一本，🙏**杨福川**编辑，我看了下抽空写了点读后感，其实也说不上是读后感，就当是自己的一点感悟吧。
+最近在回顾 Service Mesh 技术在2018年的发展，想再看看 Linkerd，正好**杨彰显**的这本《Service Mesh 实战——基于 Linkerd 和 Kubernetes 的微服务实践》上市发售了，**机械工业出版社**的编辑送了我一本，🙏**杨福川**编辑，我看了下抽空写了点读后感，我看了下抽空写了点读后感，其实也说不上是读后感，就当是自己的一点感悟吧，就当拿此书借题发挥吧，这个知识爆炸的年代，技术发展如此迅速，可以说是 IT 人员的幸运，也是不幸！有多少写开源软件的书推出一版后能撑过三年的？如果软件红得发紫，持续迭代 N 个版本，例如 Kubernetes，最近两年以每三个月一个版本的速度迭代，之前的书早就跟不上节奏，要么就要不断推出新版，直到软件稳定后不再有大的改动。还有种可能就是软件推广和发展的不理想，无人问津，写这样软件的书就不会有再版了。
 
 ![Service Mesh 实战——基于 Linkerd 和 Kubernetes 的微服务实践](https://ws1.sinaimg.cn/large/006tNc79ly1fyzgoqr5odj30u013px6p.jpg)
 
