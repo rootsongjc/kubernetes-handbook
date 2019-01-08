@@ -2,12 +2,11 @@
 date: "2017-08-01T21:22:55+08:00"
 draft: false
 title: "微服务管理框架service mesh——Linkerd安装试用笔记"
-categories: "cloud-native"
+categories: "service-mesh"
+description: “本文是 Linkerd service mesh 的安装试用笔记。 "
 tags: ["kubernetes","cloud-native","service-mesh","linkerd"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170708036.jpg", desc: "天津之眼 Jul 8,2017"}]
 ---
-
-## 前言
 
 该文章已归档到 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook) 第五章【领域应用】中，一切内容以 kubernetes-handbook 为准，该文档可能不会及时更新。
 
@@ -24,7 +23,7 @@ Linkerd 作为一款 service mesh 与kubernetes 结合后主要有以下几种�
 7. 作为 Ingress controller
 8. 使用 gRPC 更方便
 
-以下我们着重讲解在 kubernetes 中如何使用 linkerd 作为 kubernetes 的 Ingress controller，并作为边缘节点代替 [Traefik](https://traefik.io/)的功能，详见 [边缘节点的配置](https://github.com/rootsongjc/kubernetes-handbook/blob/master/practice/edge-node-configuration.md)。
+以下我们着重讲解在 kubernetes 中如何使用 linkerd 作为 kubernetes 的 Ingress controller，并作为边缘节点代替 [Traefik](https://traefik.io/)的功能，详见 [边缘节点的配置](https://jimmysong.io/kubernetes-handbook/practice/edge-node-configuration.html)。
 
 ## 准备
 
@@ -61,9 +60,9 @@ $ kubectl create -f jenkins.yml
 
 访问 [http://jenkins.jimmysong.io](http://jenkins.jimmysong.io/)
 
-[![Jenkins pipeline](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-jenkins-pipeline.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins-pipeline.jpg)
+![](https://ws2.sinaimg.cn/large/006tNc79ly1fyzdsw7jyrj31g80hctc1.jpg)
 
-[![Jenkins config](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-jenkins.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-jenkins.jpg)
+![](https://ws1.sinaimg.cn/large/006tNc79ly1fyzdt0n45hj31g70ten23.jpg)
 
 **注意**：要访问 Jenkins 需要在 Ingress 中增加配置，下文会提到。
 
@@ -90,7 +89,7 @@ Failed with the following error(s) Error signal	dtab is already marked as being 
 
 访问 [http://namerd.jimmysong.io](http://namerd.jimmysong.io/)
 
-[![namerd](https://res.cloudinary.com/jimmysong/image/upload/images/namerd-internal.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/namerd-internal.jpg)
+![](https://ws2.sinaimg.cn/large/006tNc79ly1fyzdtj7t0rj30qu0cjdhi.jpg)
 
 dtab 保存在 namerd 中，该页面中的更改不会生效，需要使用命令行来操作。
 
@@ -244,15 +243,15 @@ Percentage of the requests served within a certain time (ms)
 
 Outcoming
 
-[![linkerd监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-helloworld-outgoing.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-outgoing.jpg)
+![](https://ws3.sinaimg.cn/large/006tNc79ly1fyzdtp8zv8j31g70te44h.jpg)
 
 Incoming
 
-[![linkerd监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-helloworld-incoming.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-helloworld-incoming.jpg)
+![](https://ws3.sinaimg.cn/large/006tNc79ly1fyzdu00wqsj31g70tdtdv.jpg)
 
 访问 [http://linkerd-viz.jimmysong.io](http://linkerd-viz.jimmysong.io/) 查看应用 metric 监控
 
-![linkerd性能监控](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-grafana.png)
+![](https://ws2.sinaimg.cn/large/006tNc79ly1fyzdu7kcgej30u014dgw5.jpg)
 
 ## 测试路由
 
@@ -280,7 +279,7 @@ Hello (172.30.60.14) world (172.30.71.19)!!
 
 架构如下图所示。
 
-[![Linkerd ingress controller](https://res.cloudinary.com/jimmysong/image/upload/images/linkerd-ingress-controller.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/linkerd-ingress-controller.jpg)
+![](https://ws4.sinaimg.cn/large/006tNc79ly1fyzduf1sqkj30m00iwdhe.jpg)
 
 *(图片来自 A Service Mesh for Kubernetes - Buoyant.io)*
 
