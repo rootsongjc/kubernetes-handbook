@@ -1,15 +1,14 @@
 ---
 date: "2017-06-26T21:02:13+08:00"
 draft: false
-categories: "kubernetes"
+categories: "service-mesh"
 title: "云原生微服务治理框架service mesh——Linkerd简介"
+description: "Linkerd是一个用于云原生应用的开源、可扩展的service mesh。同时，Linkerd也是CNCF（云原生计算基金会）中的组件之一。"
 tags: ["linkerd","cloud-native","service-mesh"]
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20170526021.jpg", desc: "青岛 May 26,2017"}]
 ---
 
-## 前言
-
-[Linkerd](https://linkerd.io)是一个用于云原生应用的开源、可扩展的service mesh（一般翻译成服务网格，还有一种说法叫”服务啮合层“，见[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)）。同时，Linkerd也是[CNCF](https://cncf.io)（云原生计算基金会）中的组件之一。
+[Linkerd](https://linkerd.io)是一个用于云原生应用的开源、可扩展的service mesh。同时，Linkerd也是[CNCF](https://cncf.io)（云原生计算基金会）中的组件之一。
 
 P.S 本文已归档到[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/)中的【领域应用—微服务架构】章节中。
 
@@ -39,9 +38,9 @@ Linkerd实例可以作为sidecar（既为每个应用实体或每个主机部署
 
 ## 参考
 
-[Buoyant发布服务网格Linkerd的1.0版本](http://www.infoq.com/cn/news/2017/05/buoyant-release-ver-1-of-linkerd)
+- [Buoyant发布服务网格Linkerd的1.0版本](http://www.infoq.com/cn/news/2017/05/buoyant-release-ver-1-of-linkerd)
 
-[Linkerd documentation](https://linkerd.io/documentation/)
+- [Linkerd documentation](https://linkerd.io/documentation/)
 
-[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)
+- [Istio：一个用于微服务间通信的服务网格开源项目](http://www.infoq.com/cn/news/2017/05/istio)
 
