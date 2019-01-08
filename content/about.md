@@ -27,7 +27,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 - Career
   - [iFlytek](http://www.iflytek.com) （科大讯飞)
   - [TalkingData](http://www.talkingdata.com)
-  - [Ant Financial](https://www.antfin.com/)
+  - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）
   - [蚂蚁金服云原生相关职位正在火热招聘中🔥](/jobs)
 
 ### Bio
