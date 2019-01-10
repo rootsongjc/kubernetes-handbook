@@ -58,7 +58,7 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
-- [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio中文指南/服务网格实践手册
+- [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio服务网格实践指南
 
 ---
 
