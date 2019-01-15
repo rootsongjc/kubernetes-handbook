@@ -13,7 +13,7 @@ categories: ["service mesh"]
 
 Envoy 对于 Service Mesh 或者说  Cloud Native 最大的贡献就是定义了 xDS，Envoy 虽然本质上是一个 proxy，但是它的配置协议被众多开源软件所支持，如 [Istio](https://github.com/istio/istio)、[Linkerd](https://linkerd.io)、[AWS App Mesh](https://aws.amazon.com/app-mesh/)、[SOFAMesh](https://github.com/alipay/sofa-mesh) 等。
 
-**关于本书标题**
+**关于本文标题**
 
 2018年9月1日，[Bilgin Ibryam](https://twitter.com/bibryam) 在 InfoQ 发表了一篇文章 [Microservices in a Post-Kubernetes Era](https://www.infoq.com/articles/microservices-post-kubernetes)，中文版见[后 Kubernetes 时代的微服务](https://www.infoq.cn/article/microservices-post-kubernetes)（译文有些错误，仅供参考）。本文标题中虽然没有明确指明”后 Kubernetes 时代的微服务“是什么，但是从文中可以看出作者的观点是：在后 Kubernetes 时代，服务网格（Service Mesh）技术已完全取代了使用软件库实现网络运维（例如 Hystrix 断路器）的方式。本文索性就借用该标题。
 
