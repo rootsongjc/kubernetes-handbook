@@ -443,8 +443,8 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
 <div class="gallery">
-    <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
-    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
+    <a href="https://ws1.sinaimg.cn/large/006tNc79ly1fz7eti85ojj31c70u0qkt.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
+    <img src="https://ws1.sinaimg.cn/large/006tNc79ly1fz7eti85ojj31c70u0qkt.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
     </a>
 </div>
 

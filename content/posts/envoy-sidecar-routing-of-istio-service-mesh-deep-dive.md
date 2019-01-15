@@ -67,8 +67,8 @@ categories: ["istio"]
  下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1n-h235tm8DnL_RqxTTA95rgGtrLkBsyr/view?usp=sharing) 上下载原图。
 
 <div class="gallery">
-    <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
-    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
+    <a href="https://ws1.sinaimg.cn/large/006tNc79ly1fz7eti85ojj31c70u0qkt.jpg" title="Envoy sidecar 流量劫持与路由转发示意图">
+    <img src="https://ws1.sinaimg.cn/large/006tNc79ly1fz7eti85ojj31c70u0qkt.jpg" alt="Envoy sidecar 流量劫持与路由转发  traffic intercept Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh">
     </a>
 </div>
 
