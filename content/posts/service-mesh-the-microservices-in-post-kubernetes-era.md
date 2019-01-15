@@ -5,8 +5,8 @@ date: 2019-01-15T17:49:37+08:00
 bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79gy1fz7fb4zcklj31mm0s4x6p.jpg", desc: "Photo via unsplash"}]
 draft: false
 description: "本文假定您已经对 Kubernetes 有比较全面的了解，同时还使用过 Istio service mesh，但是对于 Kubernetes、Envoy 及 Istio 之间的关系不甚了解，及 Istio 如何使用 xDS 协议控制所有的 Sidecar 有浓厚的兴趣，那么推荐您继续阅读。"
-tags: ["service-mesh","istio","microservices","kubernetes"]
-categories: ["service-mesh"]
+tags: ["service mesh","istio","microservices","kubernetes"]
+categories: ["service mesh"]
 ---
 
 这不是一篇教程，本文试图带您梳理清楚 Kubernetes、Envoy（xDS 协议）以及 Istio Service Mesh 之间的关系及内在联系。本文介绍了 Kubernetes 中的负载均衡方式，Envoy 的 xDS 协议对于 Service Mesh 的意义以及为什么说有了 Kubernetes 还需要 Istio。

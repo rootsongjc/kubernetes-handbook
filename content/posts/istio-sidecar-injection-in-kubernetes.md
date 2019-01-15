@@ -2,9 +2,9 @@
 title: "Istio中sidecar的注入及示例"
 subtitle: "如何编写Kubernetes的YAML文件才能符合Istio service mesh的规范？"
 description: "我们知道 Istio 通过向 Pod 中注入一个 sidecar 容器来将 Pod 纳入到 Istio service mesh 中的，那么这些 sidecar 容器的注入遵循什么样的规范，需要给每个 Pod 增加哪些配置信息才能纳入 Istio service mesh 中呢？这篇文章将给您答案。"
-tags: ["kubernetes","istio","service-mesh"]
-categories: "service-mesh"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fv92bwe55tj30w80a8n2a.jpg", desc: "Bird's-eye city view|Hangzhou|Mar 25,2018"}]
+tags: ["kubernetes","istio","service mesh"]
+categories: "service mesh"
+bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNc79ly1fz7hzf2pu5j31mk0pyqv6.jpg", desc: "Photo via unsplash"}]
 date: 2018-03-27T19:58:48+08:00
 draft: false
 ---
