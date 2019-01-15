@@ -210,7 +210,7 @@ Istio 中定义了如下的 [CRD](https://jimmysong.io/kubernetes-handbook/conce
 
 如果说 Kubernetes 管理的对象是 Pod，那么 Service Mesh 中管理的对象就是一个个 Service，所以说使用 Kubernetes 管理微服务后再应用 Service Mesh 就是水到渠成了，如果连 Service 你也不像管了，那就用如 [knative](https://github.com/knative/) 这样的 serverless 平台，这就是后话了。
 
-Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 Kubernetes 之上新增一层抽象层中的冰山一角，但因为流量管理是服务网格最基础也是最重要的功能，所以本文从这里开始，以后将给大家介绍更多关于服务网格的细节，请关注我的博客 [jimmysong.io](https://jimmysong.io) 和 [istio-handbook](https://jimmysong.io/isito-handbook/)。
+Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 Kubernetes 之上新增一层抽象层中的冰山一角，但因为流量管理是服务网格最基础也是最重要的功能，所以本文从这里开始，以后将给大家介绍更多关于服务网格的细节，请关注我的博客 [jimmysong.io](https://jimmysong.io) 和 [istio-handbook](https://jimmysong.io/istio-handbook/)。
 
 ## 参考
 
@@ -230,3 +230,4 @@ Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 
 - [Istio 流量管理实现机制深度解析 - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 - [企业级服务网格架构之路解读 - jimmysong.io](https://jimmysong.io/posts/the-enterprise-path-to-service-mesh-architectures/)
 - [调试 Envoy 和 Pilot - istio.io](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/)
+
