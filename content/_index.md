@@ -43,7 +43,8 @@ Setting up a distributed [Kubernetes](https://kubernetes.io) cluster along with 
 <a class="github-button" href="https://github.com/rootsongjc/istio-handbook/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork rootsongjc/istio-handbook on GitHub">Fork</a>
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fyczkt7rpzj30go0lvgo4.jpg" title="Istio Handbook - Istio 服务网格实践指南">
-<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fyczkt7rpzj30go0lvgo4.jpg" alt="Istio Handbook - Istio 服务网格实践指南">
+<a href="https://ws2.sinaimg.cn/large/006tNc79ly1fz8958vq3zj30go0lvgor.jpg" title="Istio Handbook - Istio 服务网格进阶实战">
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz8958vq3zj30go0lvgor.jpg" alt="Istio Handbook - Istio 服务网格进阶实战">
 </a>
 </div>
+
