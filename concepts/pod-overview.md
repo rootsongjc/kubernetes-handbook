@@ -16,8 +16,8 @@ Pod中封装着应用的容器（有的情况下是好几个容器），存储�
 
 [Kubernetes Blog](http://blog.kubernetes.io) 有关于Pod用例的详细信息，查看：
 
-- [The Distributed System Toolkit: Patterns for Composite Containers](http://blog.kubernetes.io/2015/06/the-distributed-system-toolkit-patterns.html)
-- [Container Design Patterns](http://blog.kubernetes.io/2016/06/container-design-patterns.html)
+- [The Distributed System Toolkit: Patterns for Composite Containers](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/)
+- [Container Design Patterns](https://kubernetes.io/blog/2016/06/container-design-patterns/)
 
 每个Pod都是应用的一个实例。如果你想平行扩展应用的话（运行多个实例），你应该运行多个Pod，每个Pod都是一个应用实例。在Kubernetes中，这通常被称为replication。
 
