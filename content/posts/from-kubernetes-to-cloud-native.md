@@ -148,7 +148,7 @@ Kubernetes中的应用将作为微服务运行，但是Kuberentes本身并没有
 
 - Traffic Management：API网关
 - Observability：服务调用和性能分析
-- Policy Enforcment：控制服务访问策略
+- Policy Enforcement：控制服务访问策略
 - Service Identity and Security：安全保护
 
 **Service mesh的特点**
