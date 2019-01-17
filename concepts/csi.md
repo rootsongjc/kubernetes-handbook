@@ -116,9 +116,17 @@ Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范
 
   监听 Kubernetes PersistentVolumeClaim 对象的 sidecar 容器，并触发对 CSI 端点的 CreateVolume 和DeleteVolume 操作；
 
-- [Driver-registrar](https://github.com/kubernetes-csi/driver-registrar)
+- [Driver-registrar](https://github.com/kubernetes-csi/driver-registrar)(DEPRECATED)
 
   使用 Kubelet（将来）注册 CSI 驱动程序的 sidecar 容器，并将 `NodeId` （通过 `GetNodeID` 调用检索到 CSI endpoint）添加到 Kubernetes Node API 对象的 annotation 里面。
+
+- [Cluster Driver Registrar](https://github.com/kubernetes-csi/cluster-driver-registrar)
+
+  创建 CSIDriver 这个集群范围的 CRD 对象。
+
+- [Node Driver Registrar](https://github.com/kubernetes-csi/node-driver-registrar)
+
+  替代 Driver-registrar。
 
 存储供应商完全可以使用这些组件来为其插件构建 Kubernetes Deployment，同时让它们的 CSI 驱动程序完全意识不到 Kubernetes 的存在。
 
