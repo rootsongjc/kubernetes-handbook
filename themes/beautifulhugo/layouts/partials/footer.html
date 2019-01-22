@@ -38,14 +38,15 @@
           &nbsp;&bull;&nbsp;
           {{ .Site.LastChange.Format "January 2,2006" }}
           updated
+          </br>
           {{ if .Site.Title }}
-            &nbsp;&bull;&nbsp;
-            <a href="{{ "" | absLangURL }}">jimmysong.io<a>
+            <a href="{{ "" | absLangURL }}">jimmysong.io</a>
           {{ end }}
           &nbsp;&bull;&nbsp;
           <a href="http://www.servicemesher.com">servicemesher.com</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://www.sofastack.tech">sofastack.tech</a>
         </p>
-
         <!-- Please don't remove this, keep my open source work credited :) -->
         <p class="credits theme-by text-muted">
           {{ i18n "poweredBy" . | safeHTML }}
