@@ -2,9 +2,9 @@
 
 本文旨在帮助您快速部署一个云原生本地实验环境，让您可以基本不需要任何Kubernetes和云原生技术的基础就可以对云原生环境一探究竟。
 
-另外本环境也可以作为一个Kubernetes及其它云原生应用的测试与演示环境。
+本文中使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)在本地使用 Vagrant 启动三个虚拟机部署分布式的Kubernetes集群。
 
-在GitHub上该repo：https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
+如仅需要体验云原生环境和测试服务功能，可以使用更加轻量级的[cloud-native-sandbox](https://github.com/rootsongjc/cloud-native-sandbox)，通过个人电脑的Docker部署单节点的Kubernetes、Istio等云原生环境。
 
 ## 准备环境
 
