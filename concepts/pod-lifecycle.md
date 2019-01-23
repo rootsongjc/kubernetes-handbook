@@ -2,7 +2,7 @@
 
 ## Pod phase
 
-Pod 的 `status` 在信息保存在 PodStatus 中定义，其中有一个 `phase` 字段。
+Pod 的 `status` 字段是一个 PodStatus 对象，PodStatus中有一个 `phase` 字段。
 
 Pod 的相位（phase）是 Pod 在其生命周期中的简单宏观概述。该阶段并不是对容器或 Pod 的综合汇总，也不是为了做为综合状态机。
 
@@ -22,7 +22,7 @@ Pod 相位的数量和含义是严格指定的。除了本文档中列举的状�
 
 ## Pod 状态
 
-Pod 有一个 PodStatus 对象，其中包含一个 PodCondition 数组。 PodCondition 数组的每个元素都有一个 `type` 字段和一个 `status` 字段。`type` 字段是字符串，可能的值有 PodScheduled、Ready、Initialized 和 Unschedulable。`status` 字段是一个字符串，可能的值有 True、False 和 Unknown。
+Pod 有一个 PodStatus 对象，其中包含一个 PodCondition 数组。 PodCondition 数组的每个元素都有一个 `type` 字段和一个 `status` 字段。`type` 字段是字符串，可能的值有 PodScheduled、Ready、Initialized、Unschedulable和ContainersReady。`status` 字段是一个字符串，可能的值有 True、False 和 Unknown。
 
 ## 容器探针
 
