@@ -2,13 +2,26 @@
 
 授人以鱼，不如授人以渔。下面的资料将有助于大家了解kubernetes生态圈当前发展状况和发展趋势，我特此整理相关资料如下。
 
+## 社区资源
+
+Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在 <https://github.com/kubernetes/community> 这个 repo 中，建议参与 Kubernetes 社区前先阅读该 repo 中的资料。
+
+在这里你可以找到：
+
+- Kubernetes 的各个 SIG 联系方式、会议记录等
+- 社区贡献指南
+- 社区成员的角色分类与职责
+- 社区贡献的 Kubernetes 资源图标
+
+![Kubernetes 资源图标示例](https://ws1.sinaimg.cn/large/006tNc79ly1fzmnolp5ghj30z90u0gwf.jpg)
+
 ## 生态环境
 
 包括kubernetes和cloud native相关的开源软件、工具和全景图。
 
-- [awesome-kubernetes](https://github.com/ramitsurana/awesome-kubernetes) - A curated list for awesome kubernetes sources 🚢🎉 [https://ramitsurana.github.io/awesome…](https://ramitsurana.github.io/awesome-kubernetes)
+- [awesome-kubernetes](https://github.com/ramitsurana/awesome-kubernetes) - A curated list for awesome kubernetes sources 🚢🎉 [https://ramitsurana.github.io/awesome-kubernetes](https://ramitsurana.github.io/awesome-kubernetes)
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native/) - A curated list for awesome cloud native architectures <https://jimmysong.io/awesome-cloud-native/>
-- [cloud native landscape](https://github.com/cncf/landscape) - Cloud Native Landscape [https://cncf.io](https://cncf.io/)
+- [cloud native landscape](https://github.com/cncf/landscape) - Cloud Native Landscape [https://landscape.cncf.io](https://landscape.cncf.io/)
 
 ## 开源书籍和教程
 
