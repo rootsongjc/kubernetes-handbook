@@ -46,10 +46,10 @@ categories: ["cloud native"]
 
 一年里按计划发布了4个版本，详见以下更新日志：
 
-- [Kubernetes1.10更新日志](https://jimmysong.io/kubernetes-handbook/appendix/appendix/kubernetes-1.10-changelog.md)
-- [Kubernetes1.11更新日志](https://jimmysong.io/kubernetes-handbook/appendix/appendix/kubernetes-1.11-changelog.md)
-- [Kubernetes1.12更新日志](https://jimmysong.io/kubernetes-handbook/appendix/appendix/kubernetes-1.12-changelog.md)
-- [Kubernetes1.13更新日志](https://jimmysong.io/kubernetes-handbook/appendix/appendix/kubernetes-1.13-changelog.md)
+- [Kubernetes1.10更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.10-changelog)
+- [Kubernetes1.11更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.11-changelog)
+- [Kubernetes1.12更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.12-changelog)
+- [Kubernetes1.13更新日志](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.13-changelog)
 
 早在2017年的北美 KubeCon 上就有一种论调说 Kubernetes 正变得 boring，因为它已经越来越成熟，在未来不会出现大的变动，从以上更新日志中也可以看到，大多是一些功能进入 beta 或者 stable 状态，很少有新的功能出现。
 
