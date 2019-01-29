@@ -12,8 +12,6 @@
 
 ## `NetworkPolicy` 资源
 
-查看 [API参考](https://kubernetes.io/docs/api-reference/v1.7/#networkpolicy-v1-networking) 可以获取该资源的完整定义。
-
 下面是一个 `NetworkPolicy` 的例子：
 
 ```yaml

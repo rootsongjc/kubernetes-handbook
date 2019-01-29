@@ -205,7 +205,7 @@ data:
     ["8.8.8.8", "8.8.4.4"]
 ```
 
-`upstreamNameservers` 即使用的外部DNS，参考：[Configuring Private DNS Zones and Upstream Nameservers in Kubernetes](http://blog.kubernetes.io/2017/04/configuring-private-dns-zones-upstream-nameservers-kubernetes.html)
+`upstreamNameservers` 即使用的外部DNS。
 
 ## 8. 创建一个CentOS测试容器
 

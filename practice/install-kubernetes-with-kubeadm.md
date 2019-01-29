@@ -5,7 +5,7 @@ Kubeadm 在2018年12月3日发布的 [Kubernetes 1.13](https://kubernetes.io/blo
 ## 基本介绍
 **kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/)并升级/降级群集。
 
-kubeadm的目标是建立一个通过Kubernetes一致性测试[Kubernetes Conformance tests](http://blog.kubernetes.io/2017/10/software-conformance-certification)的最小可行集群 ，但不会安装其他功能插件。
+kubeadm的目标是建立一个通过Kubernetes一致性测试Kubernetes Conformance tests的最小可行集群 ，但不会安装其他功能插件。
 
 它在设计上并未为您安装网络解决方案，需要用户自行安装第三方符合CNI的网络解决方案（如flanal，calico，canal等）。
 

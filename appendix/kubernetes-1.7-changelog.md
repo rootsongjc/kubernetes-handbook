@@ -41,7 +41,3 @@
 - 第三方资源（TPR）已被自定义资源定义（Custom Resource Definitions，CRD）取代，后者提供了一个更清晰的API，并解决了TPR测试期间引发的问题和案例。如果您使用TPR测试版功能，则建议您[迁移](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)，因为它将在Kubernetes 1.8中被移除。
 
 以上是Kubernetes1.7中的主要新特性，详细更新文档请查看[Changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md)。
-
-## 参考
-
-[Kuberentes 1.7: Security Hardening, Stateful Application Updates and Extensibility](http://blog.kubernetes.io/2017/06/kubernetes-1.7-security-hardening-stateful-application-extensibility-updates.html)

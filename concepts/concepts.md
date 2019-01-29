@@ -1,5 +1,7 @@
 # Kubernetes的设计理念
 
+这一章将介绍 Kubernetes 的设计理念及基本概念。
+
 ### Kubernetes设计理念与分布式系统
 
 分析和理解Kubernetes的设计理念可以使我们更深入地了解Kubernetes系统，更好地利用它管理分布式部署的云原生应用，另一方面也可以让我们借鉴其在分布式系统设计方面的经验。
@@ -8,7 +10,7 @@
 
 Kubernetes设计理念和功能其实就是一个类似Linux的分层架构，如下图所示
 
-![分层架构示意图](../images/kubernetes-layers-arch.jpg)
+![Kubernetes 分层架构示意图](https://ws4.sinaimg.cn/large/006tNc79ly1fzniqvmi51j31gq0s0q5u.jpg)
 
 * 核心层：Kubernetes最核心的功能，对外提供API构建高层的应用，对内提供插件式应用执行环境
 * 应用层：部署（无状态应用、有状态应用、批处理任务、集群应用等）和路由（服务发现、DNS解析等）

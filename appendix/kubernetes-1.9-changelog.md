@@ -37,7 +37,3 @@ kube-proxy的IPVS模式进入beta版，为大型集群提供更好的可扩展�
 ## 获取
 
 Kubernetes1.9已经可以通过[GitHub下载](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.0)。
-
-## 参考
-
-[Kubernetes 1.9: Apps Workloads GA and Expanded Ecosystem](http://blog.kubernetes.io/2017/12/kubernetes-19-workloads-expanded-ecosystem.html)

@@ -25,7 +25,3 @@ Volume快照、PV调整大小、自动taint、pod优先级、kubectl插件等！
 除了稳定现有的功能，Kubernetes 1.8还提供了许多预览新功能的alpha版本。
 
 社区中的每个特别兴趣小组（SIG）都在继续为所在领域的用户提供更多的功能。有关完整列表，请访问[发行说明](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md)。
-
-## 参考
-
-[Kubernetes 1.8: Security, Workloads and Feature Depth](http://blog.kubernetes.io/2017/09/kubernetes-18-security-workloads-and.html)

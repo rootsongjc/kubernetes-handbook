@@ -134,5 +134,4 @@ Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范
 
 ## 参考
 
-- [Introducing Container Storage Interface (CSI) Alpha for Kubernetes](http://blog.kubernetes.io/2018/01/introducing-container-storage-interface.html)
 - [Container Storage Interface (CSI)](https://github.com/container-storage-interface/spec/blob/master/spec.md)

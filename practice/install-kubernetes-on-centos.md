@@ -12,7 +12,7 @@
 
 所以本文档主要适合于那些有一定 kubernetes 基础，想通过一步步部署的方式来学习和了解系统配置、运行原理的人。
 
-**注：本文档中不包括docker和私有镜像仓库的安装，安装说明中使用的镜像来自 Google Cloud Platform，为了方便国内用户下载，我将其克隆并上传到了 [时速云镜像市场](https://hub.tenxcloud.com/search?q=jimmy&source=tenxcloud)，供大家免费下载。**
+**注：本文档中不包括docker和私有镜像仓库的安装，安装说明中使用的镜像来自 Google Cloud Platform，为了方便国内用户下载，我将其克隆并上传到了 [时速云镜像市场](https://tenxcloud.com/)，搜索”Jimmy“，供大家免费下载。**
 
 **欲下载最新版本的官方镜像请访问 [Google 云平台容器注册表](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL)。**
 

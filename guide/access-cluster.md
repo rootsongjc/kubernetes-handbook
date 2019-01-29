@@ -110,7 +110,7 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
 
 #### 其他语言
 
-还有更多的 [客户端库](https://git.k8s.io/community/contributors/devel/client-libraries.md) 可以用来访问 API。有关其他库的验证方式，请参阅文档。
+还有更多的客户端库可以用来访问 API。有关其他库的验证方式，请参阅文档。
 
 ### 在 Pod 中访问 API
 

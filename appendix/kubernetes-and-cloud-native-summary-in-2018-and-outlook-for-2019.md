@@ -37,10 +37,10 @@
 
 一年里按计划发布了4个版本，详见以下更新日志：
 
-- [Kubernetes1.10更新日志](appendix/kubernetes-1.10-changelog.md)
-- [Kubernetes1.11更新日志](appendix/kubernetes-1.11-changelog.md)
-- [Kubernetes1.12更新日志](appendix/kubernetes-1.12-changelog.md)
-- [Kubernetes1.13更新日志](appendix/kubernetes-1.13-changelog.md)
+- [Kubernetes1.10更新日志](../appendix/kubernetes-1.10-changelog.md)
+- [Kubernetes1.11更新日志](../appendix/kubernetes-1.11-changelog.md)
+- [Kubernetes1.12更新日志](../appendix/kubernetes-1.12-changelog.md)
+- [Kubernetes1.13更新日志](../appendix/kubernetes-1.13-changelog.md)
 
 早在2017年的北美 KubeCon 上就有一种论调说 Kubernetes 正变得 boring，因为它已经越来越成熟，在未来不会出现大的变动，从以上更新日志中也可以看到，大多是一些功能进入 beta 或者 stable 状态，很少有新的功能出现。
 
@@ -58,7 +58,7 @@
 
 ## Kubernetes Operator
 
-以 Kubernetes 为核心来运维上层应用，诞生了一种名为”Kubernetes Native“的新型运维方式，真正践行 DevOps 理念的产物，开发者将于软件的运维逻辑写成代码，利用 Kubernetes 的**控制器模式（Controller Pattern）**和 [CRD](../concepts/crd.md) 来扩展 Kubernetes 的 API，各种 Operator 层出不穷，[awesome-operators](https://github.com/operator-framework/awesome-operators) 列举了目前所有的 Operator。例如我们熟悉的 [Istio](https://isito.io) 中就有50个 CRD。
+以 Kubernetes 为核心来运维上层应用，诞生了一种名为”Kubernetes Native“的新型运维方式，真正践行 DevOps 理念的产物，开发者将于软件的运维逻辑写成代码，利用 Kubernetes 的**控制器模式（Controller Pattern）**和 [CRD](../concepts/crd.md) 来扩展 Kubernetes 的 API，各种 Operator 层出不穷，[awesome-operators](https://github.com/operator-framework/awesome-operators) 列举了目前所有的 Operator。例如我们熟悉的 [Istio](https://istio.io) 中就有50个 CRD。
 
 ![Istio 中的 CRD](https://ws2.sinaimg.cn/large/006tNc79ly1fzna87wmfij30u00zc4qp.jpg)
 
