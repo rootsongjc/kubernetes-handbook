@@ -23,7 +23,7 @@ kubectl delete -f dashboard/
 我们使用官方的配置文件来安装，首先下载官方配置：
 
 ```bash
-wget https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
 修改其中的两个镜像地址为我们的私有地址。
@@ -58,13 +58,13 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 登陆之后首先看到的界面是这样的：
 
-![首页](../images/kubernetes-dashboard-1.7.1-default-page.jpg)
+![Dashboard首页](../images/kubernetes-dashboard-1.7.1-default-page.jpg)
 
 这是因为该用户没有对`default`命名空间的访问权限。
 
 修改URL地址中的`namespace`字段为该用户有权限访问的命名空间如brand：<https://172.20.0.113:32324/#!/overview?namespace=brand>：
 
-![用户空间](../images/kubernetes-dashboard-1.7.1-brand.jpg)
+![Dashboard用户空间页面](../images/kubernetes-dashboard-1.7.1-brand.jpg)
 
 **设置界面的语言**
 
