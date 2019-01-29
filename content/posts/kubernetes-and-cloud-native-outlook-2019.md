@@ -67,7 +67,7 @@ categories: ["cloud native"]
 
 ## Kubernetes Operator
 
-以 Kubernetes 为核心来运维上层应用，诞生了一种名为”Kubernetes Native“的新型运维方式，真正践行 DevOps 理念的产物，开发者将于软件的运维逻辑写成代码，利用 Kubernetes 的**控制器模式（Controller Pattern）**和 [CRD](https://jimmysong.io/kubernetes-handbook/concepts/crd.html) 来扩展 Kubernetes 的 API，各种 Operator 层出不穷，[awesome-operators](https://github.com/operator-framework/awesome-operators) 列举了目前所有的 Operator。例如我们熟悉的 [Istio](https://isito.io/) 中就有50个 CRD。
+以 Kubernetes 为核心来运维上层应用，诞生了一种名为”Kubernetes Native“的新型运维方式，真正践行 DevOps 理念的产物，开发者将于软件的运维逻辑写成代码，利用 Kubernetes 的**控制器模式（Controller Pattern）**和 [CRD](https://jimmysong.io/kubernetes-handbook/concepts/crd.html) 来扩展 Kubernetes 的 API，各种 Operator 层出不穷，[awesome-operators](https://github.com/operator-framework/awesome-operators) 列举了目前所有的 Operator。例如我们熟悉的 [Istio](https://istio.io/) 中就有50个 CRD。
 
 ![Istio 中的 CRD](https://ws2.sinaimg.cn/large/006tNc79ly1fzna87wmfij30u00zc4qp.jpg)
 
