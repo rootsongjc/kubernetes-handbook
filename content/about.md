@@ -106,7 +106,7 @@ The activities I attended or organized.
 
 - Oct 20, 2016 | Shanghai | Qcon | [Yarn on Docker——容器技术在大数据场景下的应用](http://2016.qconshanghai.com/speakers/202253)
 - Oct 13, 2016 | Hangzhou | The Computing Conference（云栖大会）| [大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.7cdb1f673uSp7Q)
-- Aug 15, 2016 | Shanghai | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](http://msa-summit.com/)
+- Aug 15, 2016 | Shanghai | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](https://www.oschina.net/event/2185859)
 - Jun 19, 2016 | Beijing | Ghostcloud四城联动大型巡讲活动 | [让Docker听到中国的声音](https://www.bagevent.com/event/97318)
 
 ---
