@@ -66,6 +66,10 @@ CNCF 生态中的诸多应用都已支持 Kubernetes Operator，可以说 Operat
 
 ## ServiceMesher社区
 
+下图展示的是 2019 Q1 的软件架构趋势，（图片来自 [Architecture and Design InfoQ Trends Report - January 2019](https://www.infoq.com/articles/architecture-trends-2019)）我们可以看到 Service Mesh 还处于创新者阶段，如果从软件生命周期的全阶段来看，它还只是刚刚进入很多人的眼帘，对于这张的新兴技术，在蚂蚁金服的支持的下创办了 [ServiceMesher 社区](http://www.servicemesher.com)。
+
+![2019 Q1 软件架构趋势 - 来自 InfoQ](https://ws4.sinaimg.cn/large/006tNc79ly1fzor2k6f7wj313j0u0dl3.jpg)
+
 ![ServiceMesher 社区 Logo](https://ws2.sinaimg.cn/large/006tNc79ly1fznadbp63qj31jt0beq9s.jpg)
 
 既然 Kubernetes 已经开始变得无聊，2018年落地 Kubernetes 已经不是初创公司的事情了，很多大公司甚至传统企业都开始试水或者大规模落地，在 Kubernetes 进一步成熟之时，以 Kubernetes 为基础向上发展，开辟新的战场就能收获更多的业务场景和需求。
@@ -87,40 +91,26 @@ Kubernetes 并不直接对外提供业务能力，而是作为应用运行的底
 - 2018年11月25日，举办了第四届 Service Mesh Meetup 上海站，见[第四届 Service Mesh Meetup 上海站活动回顾与资料下载](http://www.servicemesher.com/blog/service-mesh-meetup-shanghai-20181125/)。
 - 2019年1月6日，举办了第五届 Service Mesh Meetup 广州站，见[第五届 Service Mesh Meetup 广州站活动回顾与资料下载](http://www.servicemesher.com/blog/service-mesh-meetup-guangzhou-20190106/)。
 
+
 ## Service Mesh Meetup
 
 这一年 [ServiceMesher 社区](http://www.servicemesher.com)为大家带来5次 Meetup 共 20 次 Topic 分享：
 
 - 敖小剑（蚂蚁金服）：大规模微服务架构下的 Service Mesh 探索之路
-
 - 刘超（网易）：网易云的 Service Mesh 产品架构和实现
-
 - 唐鹏程（才云科技）：在 Kubernetes 上搭建高可用 Service Mesh 监控
-
 - 徐运元（谐云科技）：Service Mesh 结合容器云平台的思考与实践
-
 - 张亮（京东金融数据研发负责人）：Service Mesh的延伸 —— 论道Database Mesh
-
 - 吴晟（Apache SkyWalking创始人）：Observability on Service Mesh —— Apache SkyWalking 6.0
-
 - 朵晓东（蚂蚁金服，高级技术专家）：蚂蚁金服开源的Service Mesh数据平面SOFA MOSN深层揭秘
-
 - 丁振凯（新浪微博，微博搜索架构师）：微博Service Mesh实践 - WeiboMesh
-
 - 张超盟（华为）：Kubernetes容器应用基于Istio的灰度发布实践
-
 - 朱经惠 （联邦车网）：Istio控制平面组件原理解析
-
 - 邵俊雄（蚂蚁金服）：SOFAMesh 的通用协议扩展
-
 - 杨文（JEX）：Kubernetes、Service Mesh、CI/CD 实践
-
 - 吴晟（Apache SkyWalking 创始人）：Observability and Istio telemetry
-
 - 敖小剑&张瑜标（蚂蚁金服）：蚂蚁金服 Service Mesh 渐进式迁移方案
-
 - 徐运元（谐云科技）：探讨和实践基于Isito的微服务治理事件监控
-
 - 冯玮（七牛容器云平台产品架构师）：Envoy、Contour与Kubernetes实践
 - 郑德惠（唯品会Java资深开发工程师）：唯品会的Service Mesh 实践与分享
 - 陈逸凡（蚂蚁金服）：SOFAMosn 持续演进路径及实践案例
