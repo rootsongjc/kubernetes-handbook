@@ -4,8 +4,8 @@ subtitle: "七牛云 VS Cloudinary"
 date: 2017-10-17T22:33:34+08:00
 draft: false
 tags: ["website","storage","cloudinary"]
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/20170701002.jpg", desc: "北京东直门 Jul 10,2017"}]
-description: "网站中的静态文件云储存免费方案选择cloudinary与七牛云对比"
+bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1fzpl8tq8cij31ba0peb2a.jpg", desc: "Photo via unsplash"}]
+description: "网站中的静态文件云储存免费方案选择cloudinary与七牛云对比，推荐微博图床。"
 ---
 
 我推荐将静态文件跟网站的代码、主题、主体文件分开存储，这样的好处是：
@@ -69,3 +69,25 @@ Extra的资源是通过facebook和Twitter给他们分享后获得的，这些免
 | 文件操作    | 没有文件的历史版本信息                              | 保留文件的历史版本，提供免费的图片转换额度                    |
 
 因为cloudinary保存的文件默认支持https并且月流量为26G，远远大于七牛云，并且提供很很友好的图片引用和调用统计功能，因此我将原来在七牛云中的存储的文件迁移到了cloudinary中。
+
+## 微博图床
+
+另外除了以上两款工具可以作为图床之外，我还推荐新浪微博图床，该图床免费，没有存储大小限制，甚至不需要登陆微博账号。可以上传原图（所有图片会被转换成JPG格式）、GIF动图。
+
+下面给大家推荐几款支持新浪微博图床的软件。
+
+**iPic**⭑⭑⭑⭑⭑
+
+Mac用户可以直接到App Store中搜索**iPic**就可以免费下载和使用了，与Typora结合使用更佳。安装了iPic后可以在typora中直接上传Markdown中引用的本地图片的新浪微博图床。
+
+**PicGo**⭑⭑⭑⭑
+
+[下载PicGo](https://github.com/Molunerfinn/PicGo/releases)。PicGo是一款开源的微博图床工具，使用起来十分简便。可以通过设置微博的用户名密码方式登录，也可以通过设置 Cookie 来登录。
+
+如果选择使用 Cookie 来认证，需要打开 <https://weibo.com/minipublish> 页面，在 Chrome 中打开调试模式，然后选择【网络】标签页，刷新页面，看到有对 minipublish 的请求，在 Headers 里找到 Cookie，复制它的值填写到 PicGo 的微博设置中即可。
+
+因为需要设置Cookie而且Cookie每隔一段时间就会过期，需要重新设置，所以PicGo用起来比较麻烦。
+
+**Chrome 插件**⭑⭑⭑
+
+在 Chrome store 中搜索 “微博图床” 就可以安装了，在 Chrome 浏览器中登陆新浪微博后就可以使用该插件上传图片了。
