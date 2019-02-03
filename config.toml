@@ -14,7 +14,7 @@ googleAnalytics = "UA-93485976-1"
 #subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
 hello = "新年快乐"
 subtitle = "Happy Chinese New Year!"
-logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
+#logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
 dateFormat = "January 2, 2006"
@@ -216,18 +216,12 @@ desc = "Chinese Spring Festival Holiday during Feb 4 - 10, 2019"
     weight = 4
 
 [[menu.main]]
+    name = "Career"
+    url = "jobs"
+    weight = 4
+
+[[menu.main]]
     name = "About"
     url = "about"
     weight = 5
 
-[[menu.main]]
-    parent = "About"
-    name = "招聘信息"
-    url = "jobs"
-    weight = 1
-
-[[menu.main]]
-    parent = "About"
-    name = "About me"
-    url = "about"
-    weight = 2
