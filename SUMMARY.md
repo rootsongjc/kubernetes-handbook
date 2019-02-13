@@ -273,5 +273,7 @@
 * [Kubernetes及云原生年度总结及展望](appendix/summary-and-outlook.md)
   * [Kubernetes与云原生2017年年终总结及2018年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
   * [Kubernetes与云原生2018年年中总结及2019年展望](appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.md)
+* [CNCF年度报告解读](appendix/cncf-annual-report.md)
+  * [CNCF 2018年年度报告解读](appendix/cncf-annual-report-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
 * [认证Kubernetes管理员（CKA）说明](appendix/about-cka-candidate.md)
