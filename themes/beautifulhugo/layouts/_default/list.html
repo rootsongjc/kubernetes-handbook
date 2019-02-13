@@ -40,7 +40,9 @@
                 {{ default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format | i18n "postedOnDate" }}
               </p>
               <div class="post-entry">
-                {{ if .Truncated }}
+                {{ if .Params.description }}
+                  {{ .Params.description }}
+                {{ else if .Truncated }}
                   {{ .Summary }}
                   <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
                 {{ else }}
