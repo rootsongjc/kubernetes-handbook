@@ -4,7 +4,7 @@
 
 ## 概览
 
-每个Kubernetes集群都有一个集群根证书颁发机构（CA）。 集群中的组件通常使用CA来验证API server的证书，由API服务器验证kubelet客户端证书等。为了支持这一点，CA证书包被分发到集群中的每个节点，并作为一个sercret附加分发到默认service account上。 或者，你的workload可以使用此CA建立信任。 你的应用程序可以使用类似于[ACME草案](https://github.com/ietf-wg-acme/acme/)的协议，使用`certificates.k8s.io` API请求证书签名。
+每个Kubernetes集群都有一个集群根证书颁发机构（CA）。 集群中的组件通常使用CA来验证API server的证书，由API服务器验证kubelet客户端证书等。为了支持这一点，CA证书包被分发到集群中的每个节点，并作为一个secret附加分发到默认service account上。 或者，你的workload可以使用此CA建立信任。 你的应用程序可以使用类似于[ACME草案](https://github.com/ietf-wg-acme/acme/)的协议，使用`certificates.k8s.io` API请求证书签名。
 
 ## 集群中的TLS信任
 
@@ -42,7 +42,7 @@ EOF
 
  `172.168.0.24` 是 service 的 cluster IP，`my-svc.my-namespace.svc.cluster.local` 是 service 的 DNS 名称， `10.0.34.2` 是 Pod 的 IP， `my-pod.my-namespace.pod.cluster.local` 是pod 的 DNS 名称，你可以看到以下输出：
 
-```
+```ini
 2017/03/21 06:48:17 [INFO] generate received request
 2017/03/21 06:48:17 [INFO] received CSR
 2017/03/21 06:48:17 [INFO] generating key: ecdsa-256
