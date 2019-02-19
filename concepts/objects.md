@@ -55,7 +55,7 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 例如，Kubernetes Deployment 对象能够表示运行在集群中的应用。当创建 Deployment 时，可能需要设置 Deployment 的 spec，以指定该应用需要有 3 个副本在运行。Kubernetes 系统读取 Deployment spec，启动我们所期望的该应用的 3 个实例 —— 更新状态以与 spec 相匹配。如果那些实例中有失败的（一种状态变更），Kubernetes 系统通过修正来响应 spec 和状态之间的不一致 —— 这种情况，启动一个新的实例来替换。
 
-关于对象 spec、status 和 metadata 更多信息，查看 [Kubernetes API Conventions](https://git.k8s.io/community/contributors/devel/api-conventions.md)。
+关于对象 spec、status 和 metadata 更多信息，查看 [Kubernetes API Conventions]( https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md)。
 
 ### 描述 Kubernetes 对象
 
