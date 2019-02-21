@@ -19,6 +19,8 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 </a>
 </div>
 
+**注意**：添加我为微信好友时请备注`姓名-公司`，否则可能不予同意，谢谢配合。
+
 ### Info
 
 - Jimmy Song（宋净超）
