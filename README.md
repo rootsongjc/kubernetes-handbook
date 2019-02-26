@@ -51,7 +51,7 @@ postmeta: false
 ```html
 <div class="gallery">
     <a href="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg" title="What is Istio?">
-    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg">
+    <img src="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg" alt="What is Istio?">
     </a>
 </div>
 ```
