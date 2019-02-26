@@ -48,6 +48,14 @@ postmeta: false
 
 **Lightbox effect**
 
+With [shortcodes](https://gohugo.io/templates/shortcode-templates/):
+
+```html
+{{< gallery link="https://ws4.sinaimg.cn/large/006tKfTcly1g0isiw4qmij30u013ce02.jpg" title="Istio handbook" >}}
+```
+
+With HTML:
+
 ```html
 <div class="gallery">
     <a href="https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg" title="What is Istio?">

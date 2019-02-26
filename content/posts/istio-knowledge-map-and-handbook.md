@@ -12,29 +12,17 @@ categories: ["istio"]
 
 2019年2月15日晚，我在朋友圈里发起了 **Istio 知识图谱**项目。
 
-<div class="gallery">
-    <a href="https://ws3.sinaimg.cn/large/006tKfTcly1g0iqgbgzu3j30ku1124hd.jpg" title="Istio 知识图谱发起">
-    <img src="https://ws3.sinaimg.cn/large/006tKfTcly1g0iqgbgzu3j30ku1124hd.jpg" alt="Istio 知识图谱发起">
-    </a>
-</div>
+{{< gallery link="https://ws3.sinaimg.cn/large/006tKfTcly1g0iqgbgzu3j30ku1124hd.jpg" title="Istio 知识图谱发起" >}}
 
 而后获得 ServiceMesher 社区成员的热烈响应，在此后的一周内陆续有151参与进来。
 
-<div class="gallery">
-    <a href="https://ws1.sinaimg.cn/large/006tKfTcly1g0iqj8vnq1j319o0rm40r.jpg" title="Istio 知识图谱参与人员">
-    <img src="https://ws1.sinaimg.cn/large/006tKfTcly1g0iqj8vnq1j319o0rm40r.jpg" alt="Istio 知识图谱参与人员">
-    </a>
-</div>
+{{< gallery link="https://ws1.sinaimg.cn/large/006tKfTcly1g0iqj8vnq1j319o0rm40r.jpg" title="Istio 知识图谱参与人员" >}}
 
 经过10天的孵化，Istio 知识图谱 v0.1发布了，该版本作为 Istio 知识图谱的启动版本，未来将会进一步细化甚至推出一本开源书籍。
 
 ## Istio 知识图谱阅览
 
-<div class="gallery">
-    <a href="https://ws4.sinaimg.cn/large/006tKfTcly1g0iqyg8j72j30u01m4kjl.jpg" title="Istio 知识图谱">
-    <img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0iqyg8j72j30u01m4kjl.jpg" alt="Istio 知识图谱">
-    </a>
-</div>
+{{< gallery link="https://ws4.sinaimg.cn/large/006tKfTcly1g0iqyg8j72j30u01m4kjl.jpg" title="Istio 知识图谱" >}}
 
 Istio 知识图谱提供以下格式，点击下面的链接可以查看：
 
@@ -79,11 +67,7 @@ Istio 知识图谱 v0.1 在 [Google docs](https://docs.google.com/document/d/1nM
 
 下图为本书封面样图，目前该书籍地址：https://github.com/rootsongjc/istio-handbook
 
-<div class="gallery">
-    <a href="https://ws4.sinaimg.cn/large/006tKfTcly1g0isiw4qmij30u013ce02.jpg" title="Istio handbook">
-    <img src="https://ws4.sinaimg.cn/large/006tKfTcly1g0isiw4qmij30u013ce02.jpg" alt="Istio handbook">
-    </a>
-</div>
+{{< gallery link="https://ws4.sinaimg.cn/large/006tKfTcly1g0isiw4qmij30u013ce02.jpg" title="Istio handbook" >}}
 
 **注**：书籍名称和封面仅为参考，非最终式样。本书纸质出版物版权归电子工业出版社所有。本文档最终解释权归 [ServiceMesher 社区](http://www.servicemesher.com)所有。
 
