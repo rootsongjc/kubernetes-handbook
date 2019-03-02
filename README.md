@@ -77,6 +77,7 @@
 <p align="center">
   <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshv989hhqj309k09k0t6.jpg" alt="ServiceMesher微信公众号二维码"/>
 </p>
+
 ## 读者反馈
 
 以下是部分读者反馈，希望更多人[加入我们](http://www.servicemesher.com)，共同打造中国质量最高的云原生社区！
