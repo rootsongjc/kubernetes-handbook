@@ -82,7 +82,7 @@
 
 以下是部分读者反馈，希望更多人[加入我们](http://www.servicemesher.com)，共同打造中国质量最高的云原生社区！
 
-![Kubernetes handbook 读者反馈](https://ws1.sinaimg.cn/large/00704eQkgy1g0owgpvr24j31rw14i4qp.jpg)
+![Kubernetes handbook 读者反馈](https://ws2.sinaimg.cn/large/006tKfTcgy1g0oxheyjxfj31bc0u0kej.jpg)
 
 ## 云原生出版物
 
