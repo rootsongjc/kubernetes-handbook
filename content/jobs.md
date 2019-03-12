@@ -21,4 +21,5 @@ bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1fythjweakyj31bo0pke81.jp
 4. [蚂蚁金融科技PaaS产品测试开发专家，*15-50k/月*](https://maimai.cn/job?webjid=PBzwdbfq&srcu=t0oWDOSw&src=app&fr=tab3recruit_job)
 5. [蚂蚁金服金融科技云计算产品专家，上海](http://antfin.tupu360.com/social/position?pid=299704)
 6. [蚂蚁金服Java服务框架开发工程师/专家，杭州/上海](https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP049882)
-7. [蚂蚁金服中间件Go语言专家，杭州 🔥](https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP051754)
+7. [蚂蚁金服中间件Go语言专家，杭州/上海 🔥](https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP051754)
+8. [蚂蚁金服Kubernetes、Service Mesh、Serverless等云原生技术实习生，杭州/广州 🔥](mailto:bin.zengb@alibaba-inc.com)
