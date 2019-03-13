@@ -10,7 +10,10 @@ tags: ["istio","book"]
 categories: ["istio"]
 ---
 
-Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.io/isito-handbook>）在捐献给 ServiceMesher 社区之前已经撰写了8个月，为了进一步普及 Istio 和 Service Mesh 技术将次书捐献给社区共同撰写。2019年3月10日完成了原书内容的迁移至  <https://github.com/servicemesher/istio-handbook>，原书将不再更新。
+Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.io/istio-handbook>）在捐献给 ServiceMesher 社区之前已经撰写了8个月，为了进一步普及 Istio 和 Service Mesh 技术将次书捐献给社区共同撰写。2019年3月10日完成了原书内容的迁移至  <https://github.com/servicemesher/istio-handbook>，原书将不再更新。
+
+- GitHub 地址：https://github.com/servicemesher/istio-handbook
+- 在线阅读地址：<http://www.servicemesher.com/istio-handbook/>
 
 {{< gallery link="https://ws4.sinaimg.cn/large/006tKfTcly1g0xsvrqllzj30u013cqn6.jpg" title="Istio handbook - Istio 服务网格进阶实战 Istio Service Mesh Advanced Practical" >}}
 
