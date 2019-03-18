@@ -54,7 +54,7 @@ kubectl create configmap
 
 ### 使用目录创建
 
-比如我们已经有个了包含一些配置文件，其中包含了我们想要设置的ConfigMap的值：
+比如我们已经有了一些配置文件，其中包含了我们想要设置的ConfigMap的值：
 
 ```bash
 $ ls docs/user-guide/configmap/kubectl/
