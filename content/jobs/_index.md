@@ -24,3 +24,4 @@ bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1fythjweakyj31bo0pke81.jp
 7. [蚂蚁金服中间件Go语言专家，杭州/上海 🔥](https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP051754)
 8. [蚂蚁金服Kubernetes、Service Mesh、Serverless等云原生技术实习生，杭州/广州 🔥](mailto:bin.zengb@alibaba-inc.com)
 9. [蚂蚁金服微服务开发工程师/专家，杭州/广州 ☸](https://job.alibaba.com/zhaopin/position_detail.htm?trace=jimmysong&positionCode=GP519906)
+10. [蚂蚁金服容器与服务创新组毕业生招聘，广州 🔥](/jobs/antfin-container-serverless/)
