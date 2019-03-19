@@ -216,6 +216,7 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
     weight = 4
 
 [[menu.main]]
+[[menu.main]]
     name = "About"
     url = "about"
     weight = 5
