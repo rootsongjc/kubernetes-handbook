@@ -123,7 +123,7 @@ Kubernetes 并不直接对外提供业务能力，而是作为应用运行的底
 
 ![CNCF Landscape 中的 Serverless 单元](https://ws4.sinaimg.cn/large/006tNc79ly1fznbh3vfbwj310f0jxgxj.jpg)
 
-我们再看下 Kubernetes、Service Mesh、Istio 三者之间的关系：
+我们再看下 Kubernetes、Service Mesh、Serviceless 三者之间的关系：
 
 - Kubernetes 负责应用的生命周期管理，最小的治理单元是 Pod；
 - Service Mesh 解决服务间的流量治理，最小的治理单元是 Service（可以类比为 Kubernetes 中 Service 资源）；
