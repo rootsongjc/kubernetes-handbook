@@ -34,7 +34,7 @@ Pod 除了必须字段外，在 DaemonSet 中的 Pod 模板必须指定合理的
 
 ### Pod Selector
 
-`.spec.selector` 字段表示 Pod Selector，它与 [Job](https://kubernetes.io/docs/concepts/jobs/run-to-completion-finite-workloads/) 或其它资源的 `.sper.selector` 的原理是相同的。
+`.spec.selector` 字段表示 Pod Selector，它与 [Job](https://kubernetes.io/docs/concepts/jobs/run-to-completion-finite-workloads/) 或其它资源的 `.spec.selector` 的原理是相同的。
 
 `spec.selector` 表示一个对象，它由如下两个字段组成：
 
