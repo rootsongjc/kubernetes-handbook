@@ -20,7 +20,7 @@ Kubernetes1.6版本中包含一个内建的资源叫做TPR（ThirdPartyResource�
 
 - 你的API是否属于[声明式的](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#declarative-apis)
 - 是否想使用kubectl命令来管理
-- 是否要作为kubenretes中的对象类型来管理，同时显示在kuberetes dashboard上
+- 是否要作为kubenretes中的对象类型来管理，同时显示在kubernetes dashboard上
 - 是否可以遵守kubernetes的API规则限制，例如URL和API group、namespace限制
 - 是否可以接受该API只能作用于集群或者namespace范围
 - 想要复用kubernetes API的公共功能，比如CRUD、watch、内置的认证和授权等
@@ -138,7 +138,7 @@ metadata:
 
 ## API server聚合
 
-Aggregated（聚合的）API  server是为了将原来的API server这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的API server集成进来，而不用直接修改kubernetes官方仓库的代码，这样一来也能将API server解耦，方便用户使用实验特性。这些API server可以跟core API server无缝衔接，试用kubectl也可以管理它们。
+Aggregated（聚合的）API  server是为了将原来的API server这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的API server集成进来，而不用直接修改kubernetes官方仓库的代码，这样一来也能将API server解耦，方便用户使用实验特性。这些API server可以跟core API server无缝衔接，使用kubectl也可以管理它们。
 
 详情参考[Aggregated API Server](aggregated-api-server.md)。
 
