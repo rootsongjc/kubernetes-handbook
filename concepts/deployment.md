@@ -669,7 +669,7 @@ status:
   unavailableReplicas: 2
 ```
 
-最终，一旦超过 Deployment 进程的 deadline，kuberentes 会更新状态和导致 Progressing 状态的原因：
+最终，一旦超过 Deployment 进程的 deadline，kubernetes 会更新状态和导致 Progressing 状态的原因：
 
 ```bash
 Conditions:
