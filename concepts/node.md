@@ -13,8 +13,8 @@ Node包括如下状态信息：
 - Condition
   - OutOfDisk：磁盘空间不足时为`True`
   - Ready：Node controller 40秒内没有收到node的状态报告为`Unknown`，健康为`True`，否则为`False`。
-  - MemoryPressure：当node没有内存压力时为`True`，否则为`False`。
-  - DiskPressure：当node没有磁盘压力时为`True`，否则为`False`。
+  - MemoryPressure：当node有内存压力时为`True`，否则为`False`。
+  - DiskPressure：当node有磁盘压力时为`True`，否则为`False`。
 - Capacity
   - CPU
   - 内存
