@@ -63,7 +63,7 @@ PDB 不能阻止[非自愿中断](https://kubernetes.io/docs/concepts/workloads/
 
 由于应用程序的滚动升级而被删除或不可用的 Pod 确实会计入中断预算，但控制器（如 Deployment 和 StatefulSet）在进行滚动升级时不受 PDB 的限制——在应用程序更新期间的故障处理是在控制器的规格（spec）中配置（了解[更新 Deployment](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#updating-your-application-without-a-service-outage)）。
 
-使用驱逐 API 驱逐 pod 时，pod 会被优雅地终止（请参阅 PodSpec） 中的 `terminationGracePeriodSeconds`）。
+使用驱逐 API 驱逐 pod 时，pod 会被优雅地终止（请参阅 PodSpec 中的 `terminationGracePeriodSeconds`）。
 
 ## PDB 示例
 
