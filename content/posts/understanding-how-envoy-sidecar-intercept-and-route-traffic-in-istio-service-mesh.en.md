@@ -4,14 +4,13 @@ date: 2018-12-27T10:01:22+08:00
 bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fyl2yw6im1j31cg0imqv5.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: true
+translationKey: "understandingEnvoySidecarIntercept"
 description: ""
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
 categories: ["istio"]
 ---
 
 This article uses Istio's official [bookinfo example](https://preliminary.istio.io/zh/docs/examples/bookinfo) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) .
-
-**NOTE: This blog is mostly translated with *Google Translate*, you can forward to read the original [Chinese version(中文版)](/posts/envoy-sidecar-routing-of-istio-service-mesh-deep-dive/)。**
 
 The following is a request flow diagram for bookinfo officially provided by Istio, assuming that the DestinationRule is not configured in all services of the bookinfo application.
 

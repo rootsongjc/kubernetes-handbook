@@ -18,8 +18,10 @@
                     {{ partial "toc.html" . }}
                 {{ end }}
                 {{ .Content }}
-                {{ if not .Params.noreward }}
-                    {{ partial "reward.html" }}
+                {{ if eq .Site.Language.Lang "zh" }}
+                    {{ if not .Params.noreward }}
+                        {{ partial "reward.html" }}
+                    {{ end }}
                 {{ end }}
             </article>
 
