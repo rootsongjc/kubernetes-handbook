@@ -3,6 +3,7 @@ title: "Introducing SOFAMesh - A Solution for Large Scale Service Mesh based on 
 subtitle: "Open sourced by Ant Financial"
 description: "SOFAMesh is a solution for large-scale Service Mesh based on Istio open-sourced by Ant Financial. At the same time it is also a part of SOFA(Scalable Open Financial Architecture)  which is open sourced by Ant Financial too."
 date: 2018-07-16T12:02:17+08:00
+aliases: "/posts/introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial/"
 bigimg: [{src: "https://ws1.sinaimg.cn/large/006tKfTcly1ftbkn25cm5j31kw0pyu0z.jpg", desc: "Naval fleet|From Wikipedia|Jul 16,2018"}]
 draft: false
 tags: ["Istio","SOFAMesh","MOSN","Ant Financial","Service Mesh"]

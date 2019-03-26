@@ -5,6 +5,7 @@ date: 2019-01-18T19:06:14+08:00
 bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1fzay4e75ftj31cq0kwhdu.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
+aliases: "/posts/cloud-native-sandbox/"
 description: "Cloud Native Sandbox can help you setup a standalone Kubernetes environment with Docker on you own laptop."
 tags: ["cloud native","kubernetes","istio","docker"]
 categories: ["cloud native"]
