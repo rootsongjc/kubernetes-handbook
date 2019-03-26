@@ -1,16 +1,16 @@
 ---
 date: "2017-03-18T20:53:54+08:00"
-title:  "About me"
+title:  "关于我"
 tags: ["Jimmy Song"]
-subtitle: "Jimmy Song(宋净超)"
-description: "Jimmy Song(宋净超) - Developer Advocate on Cloud Native, CNCF Ambassador, co-founder of ServiceMesher community"
+subtitle: "宋净超（Jimmy Song）"
+description: "宋净超(Jimmy Song) - 云原生布道师和 CNCF 大使，ServiceMesher 社区联合创始人。"
 nocomment: true
 postmeta: false
 notoc: true
 noadsense: true
 noreward: true
 seealso: false
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
+bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月之暗面 - Pink Floyd"}]
 ---
 
 <div class="gallery">
@@ -21,30 +21,27 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 
 **注意**：添加我为微信好友时请备注`姓名-公司`，否则可能不予同意，谢谢配合。
 
-### Info
+### 基本信息
 
 - Jimmy Song（宋净超）
-- Beijing, China 🇨🇳
+- 长居北京 🇨🇳
 - [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)
-- Career
-  - [iFlytek](http://www.iflytek.com) （科大讯飞)
+- 履历
+  - [科大讯飞](http://www.iflytek.com)
   - [TalkingData](http://www.talkingdata.com)
-  - [Ant Financial](https://www.antfin.com/)（蚂蚁金服）
-  - [蚂蚁金服云原生相关职位正在火热招聘中🔥](/jobs)
+  - [蚂蚁金服](https://www.antfin.com/)
 
-### Bio
+### 简介
 
-Jimmy Song is a Developer Advocate on Cloud Native at [Ant Financial](http:///antfin.com). He has organized a few Special Interest Groups in China for years that covering Kubernetes, Cloud Native and Service Mesh, and is the co-founder of the [ServiceMesher](http://www.servicemesher.com) community.
+宋净超（Jimmy Song），[蚂蚁金服](http:///antfin.com)云原生布道师和 [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)。[ServiceMesher 社区](http://www.servicemesher.com)联合创始人。翻译了多本云原生编程书籍，并参与了一些技术图书的写作。
 
-He has been blogging and coding for years on Cloud Native, also translated Cloud Native Go & Python & Java books into Chinese. Jimmy lives in Beijing and spends his free time on photographing and traveling.
+### 著作
 
-### Books
-
-**Original**
+**原创**
 
 - [未来架构——从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著](/posts/future-architecture-from-soa-to-cloud-native/)
 
-**Translations**
+**译本**
 
 - [Cloud Native Go - 构建基于Go和React的云原生Web应用与微服务](https://jimmysong.io/cloud-native-go)
 - [Cloud Native Python - 使用Python和React构建云原生应用](https://jimmysong.io/posts/cloud-native-python/)
@@ -55,8 +52,7 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="宋净超的云原生书籍系列">
 </a>
 </div>
-
-**Gitbooks**
+**电子书**
 
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
@@ -66,59 +62,56 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 ### GitHub
 
-- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - A curated list for awesome cloud native tools, software and tutorials.  - https://jimmysong.io/awesome-cloud-native/
-- [cheatsheets](https://jimmysong.io/cheatsheets) -  A modest collection of cheatsheets I've written.
-- [cloudinary-go](https://github.com/rootsongjc/cloudinary-go) - A Go client library and CLI tool to upload static assets to Cloudinary service.
-- [magpie](https://github.com/rootsongjc/magpie) - Deploying and managing a Hadoop Yarn cluster with Docker Swarm.
-- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox for PoC or Demo use cases
-- [sofa-mesh](https://github.com/alipay/sofa-mesh) - A solution for large-scale Service Mesh based on Istio. <http://www.sofastack.tech/>
-- [sofa-mosn](https://github.com/alipay/sofa-mosn) - SOFAMosn is a modular observable smart network which can be used in service mesh deployed as a data plane sidecar.
-- [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - Running spark on Kubernetes with native Kubernetes scheduler
+- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - 云原生相关的软件、工具和教程列表汇总。  - https://jimmysong.io/awesome-cloud-native/
+- [magpie](https://github.com/rootsongjc/magpie) - 部署和管理基于 Docker Swarm 运行的 Hadoop 集群。
+- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - [使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群和Istio Service Mesh](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md)
+- [sofa-mosn](https://github.com/alipay/sofa-mosn) - SOFAMosn 是用 Go 语言编写的高性能 proxy，既可单独使用也可以作为 sidecar 在 service mesh 中运行。
+- [Spark on kubernetes](https://jimmysong.io/spark-on-k8s) - 使用 Kubernetes 原生调度运行 Spark 任务
 
 ---
 
-### Activities
+### 日程表{#schedule}
 
-The activities I attended or organized.
+我参加或组织的活动。
 
-#### 2019
+#### 2019年
 
-- Jun 24-26, 2019 | Shanghai | [KubeCon + CloudNativeCon + Open Source Summit](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/) | Coming soon...
-- Jun 21-23, 2019 | Shenzhen | [GIAC(全球互联网架构大会)](http://giac.msup.com.cn/index.php) | Service Mesh Subject Producer
+- 2019年6月24-26日 | 上海 | [KubeCon + CloudNativeCon + Open Source Summit](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/) | 待公布
+- 2019年6月21-23日 | 深圳 | [GIAC(全球互联网架构大会)](http://giac.msup.com.cn/index.php) | Service Mesh 专题出品人
 
 #### Service Mesh Meetup
 
-- Jan 6, 2019 #5 | Guangzhou | [See details](https://tech.antfin.com/activities/72)
-- Nov 25, 2018 #4 | Shanghai | [See details](https://tech.antfin.com/activities/2)
-- Aug 25, 2018 #3 | Shenzhen | [See details](http://www.huodongxing.com/event/3453378014200)
-- Jul 29, 2018 #2 | Beijing | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
-- Jun 30, 2018 #1 | Hangzhou | [See details](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
+- 2019年1月6日，第5届 Service Mesh Meetup | 广州 | [查看详情](https://tech.antfin.com/activities/72)
+- 2018年11月25日，第4届 Service Mesh Meetup| 上海 | [查看详情](https://tech.antfin.com/activities/2)
+- 2018年8月25日，第3届 Service Mesh Meetup | 深圳 | [查看详情](http://www.huodongxing.com/event/3453378014200)
+- 2018年7月29日，第2届 Service Mesh Meetup| 北京 | [查看详情](https://github.com/servicemesher/meetup-slides/tree/master/2018/07/beijing)
+- 2018年6月30日，第1届 Service Mesh Meetup | 杭州 | [查看详情](https://github.com/servicemesher/meetup-slides/tree/master/2018/06/hangzhou)
 
-#### 2018
+#### 2018年
 
-- Nov 14, 2018 | Shanghai | [CNCF Interview](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/)
-- May 20, 2018 | Nanjing | [Global Tech Week 2018, 4th NJSD Global Conference](http://njsd-china.org/NJSDGlobal2018/)【2018全球技术周暨第四届南京（全球）软件大会】 | The next stage of Cloud Native apps
-- Mar 23 - Mar 25,2018 | Beijing | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
+- 2018年11月14日 | 上海 | [KubeCon + CloudNativeCon China](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/)
+- 2018年5月20日 | 南京 | [2018全球技术周暨第四届南京（全球）软件大会](http://njsd-china.org/NJSDGlobal2018/)  | 云原生应用的下一步
+- 2018年3月23-25 | 北京 | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
-#### 2017
+#### 2017年
 
-- Dec 16, 2017 (🎂 My birthday)| Beijing | 下一代微服务： Service Mesh is Coming | [IT大咖说 数人云&TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
-- Dec 8, 2017 | Beijing | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native——云原生应用之路](http://bj2017.archsummit.com/presentation/306)
-- Oct  15, 2017 | Hangzhou | KEUC 2017（Kubernetes中国用户大会）| [k8smeetup最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
-- Sept 23, 2017 | Beijing | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
-- Aug 26, 2017 | Beijing | 技术·线下沙龙：云原生和微服务 | [云原生与微服务](http://www.huodongxing.com/event/8401246554100)
-- Jul 7, 2017 | Shenzhen | ArchSummit（全球架构师峰会）| [使用kubernetes的微服务和云原生应用实践](http://sz2017.archsummit.com/presentation/1080)
+- 2017年12月16日（🎂 我的生日）| 北京 | 下一代微服务： Service Mesh is Coming | [IT大咖说 数人云&TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
+- 2017年12月8日 | 北京 | ArchSummit（全球架构师峰会）| [从Kubernetes到Cloud Native——云原生应用之路](http://bj2017.archsummit.com/presentation/306)
+- 2017年10月15日 | 杭州 | KEUC 2017（Kubernetes中国用户大会）| [k8smeetup最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
+- 2017年9月23日 | 北京 | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
+- 2017年8月26日 | 北京 | 技术·线下沙龙：云原生和微服务 | [云原生与微服务](http://www.huodongxing.com/event/8401246554100)
+- 2017年7月7日 | 深圳 | ArchSummit（全球架构师峰会）| [使用kubernetes的微服务和云原生应用实践](http://sz2017.archsummit.com/presentation/1080)
 
-#### 2016
+#### 2016年
 
-- Oct 20, 2016 | Shanghai | Qcon | [Yarn on Docker——容器技术在大数据场景下的应用](http://2016.qconshanghai.com/speakers/202253)
-- Oct 13, 2016 | Hangzhou | The Computing Conference（云栖大会）| [大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.7cdb1f673uSp7Q)
-- Aug 15, 2016 | Shanghai | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](https://www.oschina.net/event/2185859)
-- Jun 19, 2016 | Beijing | Ghostcloud四城联动大型巡讲活动 | [让Docker听到中国的声音](https://www.bagevent.com/event/97318)
+- 2016年10月20日 | 上海 | Qcon | [Yarn on Docker——容器技术在大数据场景下的应用](http://2016.qconshanghai.com/speakers/202253)
+- 2016年10月13日 | 杭州 | 云栖大会 | [大规模容器集群的管理与调度](https://yunqi.aliyun.com/2016/hangzhou/schedule?spm=5176.8098788.535884.3.7cdb1f673uSp7Q)
+- 2016年8月15日 | 上海 | MSA-summit（全球微服务架构技术大会） | [基于Docker的大数据集群虚拟化实践](https://www.oschina.net/event/2185859)
+- 2016年6月19日 | 北京 | Ghostcloud四城联动大型巡讲活动 | [让Docker听到中国的声音](https://www.bagevent.com/event/97318)
 
 ---
 
-### Contact
+### 联系方式
 
 - Email: jimmysong@jimmysong.io
 - Twitter：[jimmysongio](https://twitter.com/jimmysongio)

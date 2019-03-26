@@ -38,3 +38,5 @@
 - id: gcseClose
   translation: "Close"
 
+- id: hello
+  translation: "你好"
