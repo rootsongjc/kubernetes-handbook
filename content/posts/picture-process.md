@@ -3,10 +3,9 @@ date: "2017-04-02T20:27:00+08:00"
 title: "两款图片处理工具——Google Guetzli和基于AI的Deep Photo Style Transfer"
 draft: false
 categories: "github"
+bigimg: [{src: "https://ws1.sinaimg.cn/large/006tKfTcly1g1bddn706uj31rk0tkb2a.jpg", desc: "Photo via unsplash"}]
 tags: ["picture","tools"]
 ---
-
-## 前言
 
 如果你看过美剧「硅谷」会记得剧中主角们所在的创业公司[PiedPipper](www.piedpiper.com)，他们就是靠自己发明的视频压缩算法来跟大公司Hooli竞争的，这部剧现在已经发展到第4季，在[腾讯视频](http://v.qq.com/detail/d/dr2zn76oez8tyt4.html?ptag=baidu.aladdin.tv)上可以免费观看。
 

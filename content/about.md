@@ -60,7 +60,7 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
-- [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio服务网格实践指南
+- [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio服务网格进阶实战（已贡献给 ServiceMesher 社区）
 
 ---
 
@@ -80,6 +80,11 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 ### Activities
 
 The activities I attended or organized.
+
+#### 2019
+
+- Jun 24-26, 2019 | Shanghai | [KubeCon + CloudNativeCon + Open Source Summit](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/) | Coming soon...
+- Jun 21-23, 2019 | Shenzhen | [GIAC(全球互联网架构大会)](http://giac.msup.com.cn/index.php) | Service Mesh Subject Producer
 
 #### Service Mesh Meetup
 
