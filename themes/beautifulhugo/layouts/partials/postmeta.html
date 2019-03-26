@@ -3,6 +3,7 @@
     <h5 id="wc">{{ .FuzzyWordCount }} {{ i18n "words" }} | {{ i18n "readInAbout" }} {{ .ReadingTime }} {{ i18n "minutes" }}</h5>
     <h5 id="tags">{{ i18n "tags" }}: {{ range .Params.tags }}
         <!--tags前的那个/不要去掉，否则点击链接后无法跳转-->
-        <a href="{{ $baseurl }}tags/{{ . | urlize }}/">{{ . }}</a> &nbsp;{{ end }}
+        <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+        {{ end }}
     </h5>
 </div>
