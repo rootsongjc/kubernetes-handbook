@@ -17,6 +17,14 @@
   translation: "Previous Post"
 - id: nextPost
   translation: "Next Post"
+- id: words
+  translation: "Words"
+- id: readInAbout
+  translation: "Read in about "
+- id: minutes
+  translation: "Min"
+- id: tags
+  translation: "Tags"
 
 # 404 page
 - id: pageNotFound
@@ -38,5 +46,8 @@
 - id: gcseClose
   translation: "Close"
 
+# Homepage
 - id: hello
-  translation: "你好"
+  translation: "I'm Jimmy"
+- id: subHello
+  translation: 'A CNCF Ambassador and Developer Advocate on Cloud Native'

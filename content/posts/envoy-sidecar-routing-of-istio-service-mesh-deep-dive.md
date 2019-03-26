@@ -5,14 +5,13 @@ date: 2018-12-26T18:32:27+08:00
 bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fykbvcftfzj31la0pmx6q.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: false
+translationKey: "understandingEnvoySidecarIntercept"
 description: "本文以 Istio 官方的 bookinfo 示例来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。"
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
 categories: ["istio"]
 ---
 
 本文以 Istio 官方的 [bookinfo 示例](https://preliminary.istio.io/zh/docs/examples/bookinfo)来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)。
-
-**[Read the English version](/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/)**
 
 下面是 Istio 官方提供的 bookinfo 的请求流程图，假设 bookinfo 应用的所有服务中没有配置 DestinationRule。
 

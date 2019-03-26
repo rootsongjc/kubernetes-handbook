@@ -24,7 +24,6 @@ subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
 logo = "https://ws4.sinaimg.cn/large/006tNc79ly1g054j11379j303k03kq2y.jpg"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
 share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
-dateFormat = "2006年1月2日"
 commit = false
 rss = true
 # ad section, comment this to disable it
@@ -270,7 +269,7 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
 
 [[languages.en.menu.main]]
     parent = "Books"
-    name = "未来架构 - 从服务化到云原生"
+    name = "Future Architecture"
     url = "posts/future-architecture-from-soa-to-cloud-native"
     weight = 1
 

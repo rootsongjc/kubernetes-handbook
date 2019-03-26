@@ -1,6 +1,6 @@
 # Content
 - id: dateFormat
-  translation: "January 2, 2006"
+  translation: "2006年1月2日"
 - id: postedOnDate
   translation: "发表于 {{ .Count }}"
 - id: translationsLabel
@@ -17,6 +17,14 @@
   translation: "前一篇"
 - id: nextPost
   translation: "后一篇"
+- id: words
+  translation: "字"
+- id: readInAbout
+  translation: "阅读需要"
+- id: minutes
+  translation: "分钟"
+- id: tags
+  translation: "标签"
 
 # 404 page
 - id: pageNotFound
@@ -38,3 +46,8 @@
 - id: gcseClose
   translation: "关闭"
 
+# Homepage
+- id: hello
+  translation: '云原生🤘'
+- id: subHello
+  translation: '我是Jimmy，云原生布道师和CNCF大使'

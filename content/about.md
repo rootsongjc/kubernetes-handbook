@@ -8,10 +8,13 @@ nocomment: true
 postmeta: false
 notoc: true
 noadsense: true
+translationKey: about
 noreward: true
 seealso: false
 bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月之暗面 - Pink Floyd"}]
 ---
+
+[English](/en/about/)
 
 <div class="gallery">
 <a href="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" title="我的微信二维码">
