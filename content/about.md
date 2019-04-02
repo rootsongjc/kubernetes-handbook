@@ -94,7 +94,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 
 - 2018年11月14日 | 上海 | [KubeCon + CloudNativeCon China](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2018/)
 - 2018年5月20日 | 南京 | [2018全球技术周暨第四届南京（全球）软件大会](http://njsd-china.org/NJSDGlobal2018/)  | 云原生应用的下一步
-- 2018年3月23-25 | 北京 | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
+- 2018年3月23-25日 | 北京 | Kubernetes 实战培训 | [Kubernetes实战培训|北京站](http://dockone.io/article/2626)
 
 #### 2017年
 
