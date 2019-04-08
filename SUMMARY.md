@@ -278,3 +278,4 @@
   * [CNCF 2018年年度报告解读](appendix/cncf-annual-report-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
 * [认证Kubernetes管理员（CKA）说明](appendix/about-cka-candidate.md)
+* [CNCF特别兴趣小组（SIG）说明](appendix/cncf-sig.md)
