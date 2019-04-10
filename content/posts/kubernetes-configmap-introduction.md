@@ -16,7 +16,8 @@ bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016043
 ## ConfigMap概览
 
 **ConfigMap API**资源用来保存**key-value pair**配置数据，这个数据可以在**pods**里使用，或者被用来为像**controller**一样的系统组件存储配置数据。虽然ConfigMap跟[Secrets](https://kubernetes.io/docs/user-guide/secrets/)类似，但是ConfigMap更方便的处理不含敏感信息的字符串。
-注意：<u>ConfigMaps不是属性配置文件的替代品。</u>ConfigMaps只是作为多个properties文件的引用。你可以把它理解为Linux系统中的`/etc`目录，专门用来存储配置文件的目录。下面举个例子，使用ConfigMap配置来创建Kuberntes Volumes，ConfigMap中的每个data项都会成为一个新文件。
+
+注意：<u>ConfigMaps不是属性配置文件的替代品。</u>ConfigMaps只是作为多个properties文件的引用。你可以把它理解为Linux系统中的`/etc`目录，专门用来存储配置文件的目录。下面举个例子，使用ConfigMap配置来创建Kubernetes Volumes，ConfigMap中的每个data项都会成为一个新文件。
 
 ```yaml
 kind: ConfigMap
@@ -35,6 +36,7 @@ data:
 ```
 
 `data`一栏包括了配置数据，ConfigMap可以被用来保存单个属性，也可以用来保存一个配置文件。
+
 配置数据可以通过很多种方式在Pods里被使用。ConfigMaps可以被用来：
 
 1. 设置环境变量的值
