@@ -11,7 +11,7 @@
 ## 具体目标
 
 - 加强项目生态系统建设以满足最终用户和项目贡献者的需求。
-- 识别CNCF项目组合中的空白（gap），寻找并吸引项目填补这些空白。
+- 识别CNCF项目组合中的鸿沟（gap），寻找并吸引项目填补这些鸿沟。
 - 教育和指导用户，为用户提供无偏见、有效且实用的信息。
 - 将注意力和资源集中在促进CNCF项目的成熟度上。
 - 明确项目、CNCF项目人员和社区志愿者之间的关系。
@@ -32,7 +32,7 @@ CNCF SIG以Kubernetes SIG为模型，旨在最小化差异以避免混淆——[
 
 CNCF SIG在TOC的指导下，提供高质量的专业技术知识、无偏见的信息及其领域内的领导力。TOC作为知情方和高效的执行委员会，利用这一输入来选择和推广适当的CNCF项目与实践，并向最终用户和云原生社区传播高质量的信息。可以很明确的说，SIG对CNCF项目没有直接的权力。特别是，CNCF SIG的创建并没有改变现有已成功实施的[章程](https://github.com/cncf/foundation/blob/master/charter.md)目标，即“项目......轻松地受技术监督委员会管辖”。
 
-SIG应努力向TOC提供易于理解和可投票的“提议（proposition）”，提议需要有明确的书面证据支持。这些提议可以是：“基于此[书面尽职调查](https://github.com/cncf/toc/blob/master/process/due-diligence-guidelines.mdguidelines.md)“或”根据明确的目标和证据来批准这个landscape文件“。SIG提供给TOC的信息和建议必须高度准确和公正，这一点至关重要，这也是受整体上改进CNCF的目标所驱动，而不是使一个项目或公司受益于其他项目或公司。我们相信涨潮会抬升所有船只，这是我们的目标。
+SIG应努力向TOC提供易于理解和可投票的“提议（proposition）”，提议需要有明确的书面证据支持。这些提议可以是：“基于此[书面尽职调查](https://github.com/cncf/toc/blob/master/process/due-diligence-guidelines.md)“或”根据明确的目标和证据来批准这个landscape文件“。SIG提供给TOC的信息和建议必须高度准确和公正，这一点至关重要，这也是受整体上改进CNCF的目标所驱动，而不是使一个项目或公司受益于其他项目或公司。我们相信涨潮会抬升所有船只，这是我们的目标。
 
 之所以这样设计是考虑到：
 

@@ -368,8 +368,6 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 
 ![iptables 调用链](https://ws1.sinaimg.cn/large/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
 
-关于 iptables 的详细介绍请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
-
 ### iptables 命令
 
 `iptables` 命令的主要用途是修改这些表中的规则。`iptables` 命令格式如下：
@@ -419,8 +417,6 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 - **destination**：流量的目的地 IP 地址或子网，或者是 `anywhere`。
 
 还有一列没有表头，显示在最后，表示规则的选项，作为规则的扩展匹配条件，用来补充前面的几列中的配置。`prot`、`opt`、`in`、`out`、`source` 和 `destination` 和显示在 `destination` 后面的没有表头的一列扩展条件共同组成匹配规则。当流量匹配这些规则后就会执行 `target`。
-
-关于 iptables 规则请参考[常见iptables使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
 
 **target 支持的类型**
 

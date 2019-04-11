@@ -287,8 +287,6 @@ SOFAMesh Github 地址：https://github.com/alipay/sofa-mesh
 ## 参考文档
 
 - [蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析 - servicemesher.com](http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/)
-- [在 Kubernetes 中快速开始 - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/quick-start/)
-- [注入 Istio sidecar - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/sidecar-injection/)
 - [Dubbo quick start - dubbo.incubator.apache.org](https://dubbo.incubator.apache.org/en-us/docs/user/quick-start.html)
 
-- 关于SOFAMesh的更多信息请访问 http://www.sofastack.tech
+- 关于SOFAMesh的更多信息请访问 https://www.sofastack.tech

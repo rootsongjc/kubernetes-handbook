@@ -7,8 +7,6 @@
 ## 云原生
 
 * [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
-* [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
-* [CNCF章程](cloud-native/cncf-charter.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 * [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
@@ -254,6 +252,13 @@
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)
 
+## CNCF
+
+* [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
+* [CNCF章程](cloud-native/cncf-charter.md)
+* [CNCF特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
+* [CNCF中的项目治理](cloud-native/cncf-project-governing.md)
+
 ## 附录
 
 * [附录说明](appendix/index.md)
@@ -278,4 +283,3 @@
   * [CNCF 2018年年度报告解读](appendix/cncf-annual-report-2018.md)
 * [Kubernetes认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
 * [认证Kubernetes管理员（CKA）说明](appendix/about-cka-candidate.md)
-* [CNCF特别兴趣小组（SIG）说明](appendix/cncf-sig.md)
