@@ -22,6 +22,7 @@ var _hmt = _hmt || [];
 <link rel="stylesheet" href="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.css" | absURL }}" />
 -->
 <!-- Google AdSense -->
+{{ if isset .Site.Params "adsense" }}
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({
@@ -29,6 +30,7 @@ var _hmt = _hmt || [];
           enable_page_level_ads: true
      });
 </script>
+{{ end }}
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
