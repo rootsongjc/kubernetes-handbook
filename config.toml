@@ -29,7 +29,7 @@ rss = true
 # ad section, comment this to disable it
 ad = true
 # GoogleAdsense
-adsense = true
+#adsense = true
 # reward button, comment this to disable it
 reward = true
 # baguettebox gallery, comment this to disable it
