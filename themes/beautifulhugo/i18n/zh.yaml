@@ -25,6 +25,8 @@
   translation: "分钟"
 - id: tags
   translation: "标签"
+- id: seeAlso
+  translation: "相关推荐"
 
 # 404 page
 - id: pageNotFound

@@ -25,6 +25,8 @@
   translation: "Min"
 - id: tags
   translation: "Tags"
+- id: seeAlso
+  translation: "See Also"
 
 # 404 page
 - id: pageNotFound
