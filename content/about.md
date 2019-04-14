@@ -17,8 +17,8 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 [English](/en/about/)
 
 <div class="gallery">
-<a href="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" title="我的微信二维码">
-<img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fvg55z3xfgj306q08zgm6.jpg" alt="我的微信二维码">
+<a href="https://ws4.sinaimg.cn/large/006tNc79ly1g21yaqvloxj308c0b3js6.jpg" title="Jimmy Song 宋净超 的微信二维码">
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1g21yaqvloxj308c0b3js6.jpg" alt="Jimmy Song 宋净超 的微信二维码">
 </a>
 </div>
 
@@ -27,7 +27,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 ### 基本信息
 
 - Jimmy Song（宋净超）
-- 长居北京 🇨🇳
+- 北京 🇨🇳
 - [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)
 - 履历
   - [科大讯飞](http://www.iflytek.com)
