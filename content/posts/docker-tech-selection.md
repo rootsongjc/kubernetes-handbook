@@ -1,9 +1,11 @@
 ---
 date: "2017-03-08T10:37:01+08:00"
 title: "Docker技术选型"
+description: "本文讲述如何做 Docker 的技术选型。"
 draft: false
 categories: "docker"
 tags: ["docker"]
+bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1g22ijkeepuj31bu0oib29.jpg", desc: "Photo via Unsplash"}]
 ---
 
 ## 回顾历史
