@@ -1,6 +1,64 @@
-<footer>
-  <div class="container">
-    <div class="row">
+<footer id="footer">
+    <div class="container">
+
+        {{ if isset .Site.Params "about_me" }}
+        <div class="col-md-4 col-sm-6">
+            <h4>{{ i18n "aboutMe" }}</h4>
+
+            {{ .Site.Params.about_me | markdownify }}
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        <!-- /.col-md-4 -->
+        {{ end }}
+
+        <div class="col-md-4 col-sm-6">
+
+            {{ if isset .Site.Params "recent_posts" }}
+            <h4>{{ i18n "recentPosts" }}</h4>
+
+            <div class="blog-entries">
+                {{ range first 3 (where .Site.Pages "Type" "posts") }}
+                <div class="item same-height-row clearfix">
+                    <div class="name same-height-always">
+                        <u><h5><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5></u>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+            {{ end }}
+
+        </div>
+        <!-- /.col-md-4 -->
+
+        {{ if isset .Site.Params "contact_me" }}
+        <div class="col-md-4 col-sm-6">
+
+          <h4>{{ i18n "contactTitle" }}</h4>
+
+            {{ .Site.Params.contact_me | markdownify }}
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        <!-- /.col-md-4 -->
+        {{ end }}
+
+    </div>
+    <!-- /.container -->
+<!-- /#footer -->
+
+<!-- *** FOOTER END *** -->
+
+<!-- *** COPYRIGHT ***
+_________________________________________________________ -->
+
+<div id="copyright">
+<!-- /#copyright -->
+<div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <ul class="list-inline text-center footer-links">
           {{ range .Site.Data.beautifulhugo.social.social_icons }}
@@ -56,56 +114,5 @@
     </div>
   </div>
 </footer>
-
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
-<script src="{{ "js/prism.js" | absURL }}"></script>
-<script src="{{ "js/main.js" | absURL }}"></script>
--->
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/bootstrap.min.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe-ui-default.min.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/photoswipe.min.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/auto-render.min.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/main.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/prism.js" | absURL }}"></script>
-<script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/katex.min.js" | absURL }}"></script>
-{{ if .Site.Params.reward }}
-<script src="{{ "js/reward.js" | absURL }}"></script>
-{{ end }}
-{{ if isset .Params "lightgallery" }}
-<!-- lightgallery image plugin -->
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/picturefill.min.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lightgallery.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-pager.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-autoplay.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-fullscreen.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-zoom.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-hash.js"></script>
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/lg-share.js"></script>
-<script>lightGallery(document.getElementById('lightgallery'));</script>
-{{ end }}
-{{ if .Site.Params.baguettebox }}
-<script src="https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/baguetteBox.js"></script>
-<script> baguetteBox.run('.gallery');</script>
-{{ end }}
-<script> renderMathInElement(document.body); </script>
-{{ if .Site.Params.gcse }}
-<script>
-  (function() {
-    var cx = '{{ .Site.Params.gcse }}';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-{{ end }}
-
-{{- partial "footer_custom.html" . }}
+<!-- *** COPYRIGHT END *** -->
+{{- partial "scripts.html" . }}

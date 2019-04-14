@@ -41,6 +41,9 @@ algolia = "d2134c5a8d250e6d3246594240c45201" # API key
 #gcse = "012737790962522169780:fd1izxsfgrs" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 description = "宋净超的博客|Cloud Native|云原生布道师"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
+about_me = """关注Kubernetes/Service Mesh/Serverless/Cloud Native/Open Source，关注微信公众号获取最新资讯。![ServiceMesher公众号二维码](https://ws4.sinaimg.cn/large/006tNc79ly1g22czrtxkgj303k03kq30.jpg)"""
+recent_posts = true
+contact_me = """获取我的时间表，与我联系或加入微信交流群，参与社区活动，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](https://ws1.sinaimg.cn/large/006tNc79ly1g22fhwrig4j303k03kwei.jpg)"""
 
 [[Params.bigimg]]
 src = "https://ws1.sinaimg.cn/large/006tNc79ly1fyzhvztw7ij31i40u0u10.jpg"

@@ -27,6 +27,12 @@
   translation: "Tags"
 - id: seeAlso
   translation: "See Also"
+- id: aboutMe
+  translation: "About This Site"
+- id: recentPosts
+  translation: "Resent Posts"
+- id: contactTitle
+  translation: "Contact"
 
 # 404 page
 - id: pageNotFound
