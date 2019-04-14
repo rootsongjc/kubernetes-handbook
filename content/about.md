@@ -17,8 +17,8 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 [English](/en/about/)
 
 <div class="gallery">
-<a href="https://ws4.sinaimg.cn/large/006tNc79ly1g21yaqvloxj308c0b3js6.jpg" title="Jimmy Song 宋净超 的微信二维码">
-<img src="https://ws4.sinaimg.cn/large/006tNc79ly1g21yaqvloxj308c0b3js6.jpg" alt="Jimmy Song 宋净超 的微信二维码">
+<a href="https://ws1.sinaimg.cn/large/006tNc79ly1g22d2feexwj303k03kwei.jpg" title="Jimmy Song 宋净超 的微信二维码">
+<img src="https://ws1.sinaimg.cn/large/006tNc79ly1g22d2feexwj303k03kwei.jpg" alt="Jimmy Song 宋净超 的微信二维码">
 </a>
 </div>
 
@@ -55,6 +55,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="宋净超的云原生书籍系列">
 </a>
 </div>
+
 **电子书**
 
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
@@ -123,3 +124,21 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 - [图虫(Tuchong Photography)](https://jimmysong.tuchong.com)
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
+<div class="gallery gallery-text">
+    <h4>扫码关注微信公众号，获取每日推送，回复【加群】入群学习</h4>
+    <table frame="void" align="center">
+    <tr>
+        <td>
+            <a href="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" title="云原生应用架构">
+            <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" alt="云原生赢家架构微信公众号">
+            </a>
+        </td>
+        <td>
+            <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fw3l1sxoijj304g0563z7.jpg" title="ServiceMesher">
+            <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw3l1sxoijj304g0563z7.jpg" alt="ServiceMesher 微信公众号">
+            </a>
+        </td>
+    </tr>
+    </table>
+</div>
+</div>
