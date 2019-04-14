@@ -63,7 +63,7 @@
 
 ## 社区&读者交流
 
-- **微信群**：K8S&Cloud Native实战，扫描我的微信二维码，[Jimmy Song](http://jimmysong.io/about)，或直接搜索微信号*jimmysong*后拉您入群，请增加备注（姓名-公司/学校/博客/社区/研究所/机构等）。
+- **微信群**：K8S&Cloud Native实战，扫描我的微信二维码，[Jimmy Song](http://jimmysong.io/about)，添加时请备注姓名-公司/学校/组织/机构等。
 - **Slack**：全球中文用户可以加入[Kubernetes官方Slack](http://slack.k8s.io)中文频道**cn-users channel**
 - **知乎专栏**：[云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 - **与我联系**：扫描下面的二维码关注Jimmy Song 的<u>个人微信公众号</u>CloudNativeGo（云原生应用架构）
