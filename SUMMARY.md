@@ -252,11 +252,12 @@
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)
 
-## CNCF
+## CNCF（云原生计算基金会）
 
 * [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
 * [CNCF章程](cloud-native/cncf-charter.md)
 * [CNCF特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
+* [开源项目加入CNCF Sandbox的要求](cloud-native/cncf-sandbox-criteria.md)
 * [CNCF中的项目治理](cloud-native/cncf-project-governing.md)
 
 ## 附录

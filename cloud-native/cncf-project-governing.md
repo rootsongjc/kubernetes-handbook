@@ -66,7 +66,7 @@ CNCF 的开源项目遵循如下图所示的成熟度演进。
 
 - 外部依赖（包括 license）
 
-- 成熟度模型评估（参考 [CNCF Graduation Criteria](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc)）
+- 成熟度模型评估（参考 [开源项目加入CNCF Sandbox的要求](cncf-sandbox-criteria.md)）
 - 创始 committer（贡献项目的时长）
 - 基础设施需求（CI/CNCF集群）
 - 沟通渠道（slack、irc、邮件列表）
