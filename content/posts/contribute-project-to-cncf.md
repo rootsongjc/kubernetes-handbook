@@ -5,7 +5,7 @@ date: 2019-04-15T19:37:02+08:00
 bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1g23kjk23y4j310j0f2aqr.jpg", desc: "雁门关 by Jimmy Song"}]
 draft: false
 notoc: true
-description: "前段时间看了一篇文章《为什么中国没有 Apache 基金会这样的组织？》收到启发，结合自己最近对 CNCF 的研究，给大家分享下 CNCF 基金会的开源项目治理规则和组织架构，还有如何将一个开源项目加入到 CNCF。"
+description: "前段时间看了一篇文章《为什么中国没有 Apache 基金会这样的组织？》受到启发，结合自己最近对 CNCF 的研究，给大家分享下 CNCF 基金会的开源项目治理规则和组织架构，还有如何将一个开源项目加入到 CNCF。"
 tags: ["cncf","open source"]
 categories: ["open source"]
 ---
