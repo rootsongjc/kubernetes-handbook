@@ -17,9 +17,9 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 [English](/en/about/)
 
 <div class="gallery">
-<a href="https://ws1.sinaimg.cn/large/006tNc79ly1g22d2feexwj303k03kwei.jpg" title="Jimmy Song 宋净超 的微信二维码">
-<img src="https://ws1.sinaimg.cn/large/006tNc79ly1g22d2feexwj303k03kwei.jpg" alt="Jimmy Song 宋净超 的微信二维码">
-</a>
+    <a href="https://ws4.sinaimg.cn/large/006tNc79ly1g24cd92tafj30u00za409.jpg" title="扫描二维码加我微信">
+    <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cd92tafj30u00za409.jpg " alt="Jimmy Son 的微信" width="30%" height="30%">
+    </a>
 </div>
 
 **注意**：添加我为微信好友时请备注`姓名-公司`，否则可能不予同意，谢谢配合。
