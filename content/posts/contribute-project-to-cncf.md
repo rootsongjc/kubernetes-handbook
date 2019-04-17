@@ -20,6 +20,8 @@ CNCF 根据“[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”将其托
 
 {{< gallery link="https://ws1.sinaimg.cn/large/006tNc79ly1g1yzc5xre6j30o20a8q3t.jpg" title="CNCF 项目的成熟度分类" >}}
 
+*图片来自 <https://www.cncf.io/projects/>*
+
 ## 开源项目如何加入 CNCF
 
 1. 开源项目所支持的公司成为 CNCF 会员
@@ -38,6 +40,13 @@ CNCF 根据“[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”将其托
 CNCF 的开源项目遵循如下图所示的成熟度演进。
 
 {{< gallery link="https://ws4.sinaimg.cn/large/006tNc79ly1g23kf7tfhwj30tc0judir.jpg" title="CNCF项目成熟度级别" >}}
+
+关于上图的一些说明：
+
+- 加入Sandbox只需要2个TOC成员赞成
+- 成熟一点的项目可以直接进入incubating阶段，但是 CNCF 会控制不同阶段的项目比例
+- 晋级到Incubating或Graduated 需要至少2/3的 TOC成员（6名或以上）投票赞成
+- 每年将评审一次
 
 目前处于沙箱、孵化中、已毕业项目的数量比例为5：16：13，详见 <https://cncf.io/projects>。其中沙箱（sandbox）项目因为其处于早期阶段并没有直接在上面的链接页面中列出，而是一个单独的 [Sandbox](https://www.cncf.io/sandbox-projects/) 页面，因为 CNCF 为 sandbox 阶段的项目会谨慎背书。
 
@@ -67,17 +76,6 @@ CNCF 中托管的开源项目要符合云原生定义：
 8. CNCF 安排博客撰写、PR等
 9. 每年一次评审，晋升到 incubating需要2/3的 TOC 成员投票赞成；至少3家用户成功在生产上使用；通过TOC的尽职调查；贡献者数量健康稳定
 10. Sandbox 中的项目没有时效性质，可能永远都无法进入incubating 状态，被CNCF谨慎宣传
-
-## CNCF 开源项目成熟度演进
-
-CNCF 的开源项目遵循如下图所示的成熟度演进。
-
- {{< gallery link="https://ws4.sinaimg.cn/large/006tNc79ly1g23kf7tfhwj30tc0judir.jpg" title="CNCF项目成熟度级别" >}}
-
-- 加入Sandbox只需要2个TOC成员赞成
-- 成熟一点的项目可以直接进入incubating阶段，但是 CNCF 会控制不同阶段的项目比例
-- 晋级到Incubating或Graduated 需要至少2/3的 TOC成员（6名或以上）投票赞成
-- 每年将评审一次
 
 ## 开源项目加入 CNCF 的最低要求（Sandbox）
 
