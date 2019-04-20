@@ -122,14 +122,14 @@ desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
 
 [[menu.main]]
     parent = "Categories"
-    name = "云原生"
+    name = "Cloud Native"
     url = "categories/cloud-native"
     weight = 3
 
 [[menu.main]]
     parent = "Categories"
-    name = "微服务"
-    url = "categories/microservices"
+    name = "Open Source"
+    url = "categories/open-source"
     weight = 4
 
 [[menu.main]]
