@@ -4,7 +4,7 @@
 
 ## Workloads API GA
 
-[apps/v1 Workloads API](https://kubernetes.io/docs/reference/workloads-18-19/)成为GA（General Availability），且默认启用。 Apps Workloads API将**DaemonSet**、**Deployment**、**ReplicaSet**和**StatefulSet** API组合在一起，作为Kubernetes中长时间运行的无状态和有状态工作负载的基础。
+apps/v1 Workloads API成为GA（General Availability），且默认启用。 Apps Workloads API将**DaemonSet**、**Deployment**、**ReplicaSet**和**StatefulSet** API组合在一起，作为Kubernetes中长时间运行的无状态和有状态工作负载的基础。
 
 Deployment和ReplicaSet是Kubernetes中最常用的两个对象，经过一年多的实际使用和反馈后，现在已经趋于稳定。[SIG apps](https://github.com/kubernetes/community/tree/master/sig-apps)同时将这些经验应用到另外的两个对象上，使得DaemonSet和StatefulSet也能顺利毕业走向成熟。v1（GA）意味着已经生产可用，并保证长期的向后兼容。
 

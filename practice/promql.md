@@ -1,6 +1,6 @@
 # Prometheus 查询语言 PromQL 使用说明
 
-目前很多云原生应用使用了 Prometheus 作为监控，例如在 [Istio 中查询 Prometheus 指标](https://istio.io/zh/docs/tasks/telemetry/querying-metrics/)。
+目前很多云原生应用使用了 Prometheus 作为监控，例如在 Istio 中查询 Prometheus 指标。
 
 Prometheus 提供了一种功能表达式语言，允许用户实时选择和汇总时间序列数据。表达式的结果可以显示为图形、表格数据或者由外部系统通过 [RESTful API](https://prometheus.io/docs/prometheus/latest/querying/api/) 消费。
 

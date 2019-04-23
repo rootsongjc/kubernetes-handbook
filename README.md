@@ -1,6 +1,6 @@
 # Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册
 
-[Kubernetes](http://kubernetes.io)是Google基于[Borg](https://research.google.com/pubs/pub43438.html)开源的容器编排调度引擎，作为[CNCF](http://cncf.io)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。
+[Kubernetes](http://kubernetes.io)是Google基于[Borg](https://research.google.com/pubs/pub43438.html)开源的容器编排调度引擎，作为[CNCF](https://cncf.io)（Cloud Native Computing Foundation）最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes可以帮你将系统自动地达到和维持在这个状态。Kubernetes作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。
 
 ## 关于本书
 
@@ -43,7 +43,7 @@
 - 按照[说明](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)自行编译成离线版本
 - Fork 一份添加你自己的笔记自行维护，有余力者可以一起参与进来
 
-**注意：本书中的 Service Mesh 相关内容已不再维护，请转至 [istio-handbook](https://jimmysong.io/istio-handbook) 浏览。**
+**注意：本书中的 Service Mesh 相关内容已不再维护，请转至 [istio-handbook](http://www.servicemesher.com/istio-handbook) 浏览。**
 
 ## 快速开始
 
@@ -63,10 +63,10 @@
 
 ## 社区&读者交流
 
-- **微信群**：K8S&Cloud Native实战，扫描我的微信二维码，[Jimmy Song](http://jimmysong.io/about)，或直接搜索微信号*jimmysong*后拉您入群，请增加备注（姓名-公司/学校/博客/社区/研究所/机构等）。
+- **微信群**：K8S&Cloud Native实战，扫描我的微信二维码，[Jimmy Song](http://jimmysong.io/about)，添加时请备注姓名-公司/学校/组织/机构等。
 - **Slack**：全球中文用户可以加入[Kubernetes官方Slack](http://slack.k8s.io)中文频道**cn-users channel**
 - **知乎专栏**：[云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
-- **微信公众号**：扫描下面的二维码关注Jimmy Song 的<u>个人微信公众号</u>CloudNativeGo（云原生应用架构）
+- **与我联系**：扫描下面的二维码关注Jimmy Song 的<u>个人微信公众号</u>CloudNativeGo（云原生应用架构）
 
 <p align="center">
   <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cloud-native-go-wechat-qr-code.jpg?raw=true" alt="云原生应用架构微信公众号二维码"/>
