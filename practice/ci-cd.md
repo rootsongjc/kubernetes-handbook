@@ -4,7 +4,7 @@
 
 众所周知Kubernetes并不提供代码构建、发布和部署，所有的这些工作都是由CI/CD工作流完成的，最近TheNewStack又出了本小册子（117页）介绍了Kubernetes中CI/CD的现状。下载本书的PDF请访问：https://thenewstack.io/ebooks/kubernetes/ci-cd-with-kubernetes/
 
-![CI/CD with Kubernetes](https://ws1.sinaimg.cn/large/00704eQkgy1fsaxszh01vj30da0j2jvn.jpg)
+![CI/CD with Kubernetes](../images/00704eQkgy1fsaxszh01vj30da0j2jvn.jpg)
 
 本书的作者有：
 
@@ -24,13 +24,13 @@
 
 这一章从一些流行的自动化运维工具讲起，比如Chef、Puppet等，引申出CI/CD流水线，进而引出Docker和DevOps，将容器如何解除开发和运维之间的隔阂，但同时也带来了一些挑战，比如频繁的发布变更如何控制，如何控制容器集群的行为，如何拆分应用到容器之中等。这是一个专门用于容器编排调度的工具呼之欲出，Kubernetes的出现彻底改变了局面，可以说它直接改变了应用的基础架构。
 
-![Kubernetes改变了应用的基础架构](https://ws1.sinaimg.cn/large/00704eQkgy1fsayashxz3j31c00w6aed.jpg)
+![Kubernetes改变了应用的基础架构](../images/00704eQkgy1fsayashxz3j31c00w6aed.jpg)
 
 Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置管理、负载均衡和健康检查等作为基础设施的功能，简化了应用程序的开发。
 
 而Kubernetes这种声明式配置尤其适合CI/CD流程，况且现在还有如Helm、Draft、Spinnaker、Skaffold等开源工具可以帮助我们发布Kuberentes应用。
 
-![Kubernetes中的CI/CD](https://ws1.sinaimg.cn/large/00704eQkgy1fsayfzk3ezj31bu0tkdky.jpg)
+![Kubernetes中的CI/CD](../images/00704eQkgy1fsayfzk3ezj31bu0tkdky.jpg)
 
 有了基于Kubernetes的CI/CD流程后，又诞生了GitOps（<https://www.weave.works>的博客中有很多相关文章）和SecOps（Security Operation）。
 
@@ -53,11 +53,11 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 
 作者然后将应用程序架构中的不同组件映射到云原生的工作负载中，如下图所示：
 
-![云原生工作负载](https://ws1.sinaimg.cn/large/00704eQkgy1fsayrk6vppj31bu0w0gsd.jpg)
+![云原生工作负载](../images/00704eQkgy1fsayrk6vppj31bu0w0gsd.jpg)
 
 这也是DevOps需要关注的部分，如何将云原生的组件映射为Kubernetes的原语（即Kubernetes里的各种资源对象和概念组合）呢？如下图所示。
 
-![云原生工作负载映射到Kuberentes原语](https://ws1.sinaimg.cn/large/00704eQkgy1fsaytbabxgj31c00w2n4r.jpg)
+![云原生工作负载映射到Kuberentes原语](../images/00704eQkgy1fsaytbabxgj31c00w2n4r.jpg)
 
 总结概括为以下10条：
 
@@ -78,15 +78,15 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 
 下图是Spinnaker中的组件和角色的交互关系。
 
-![spinnaker中的组件及角色交互关系](https://ws1.sinaimg.cn/large/00704eQkgy1fsaz2wirz9j31bs0vygsb.jpg)
+![spinnaker中的组件及角色交互关系](../images/00704eQkgy1fsaz2wirz9j31bs0vygsb.jpg)
 
 下图是Spinnaker的几种不同环境的流水线。
 
-![Spinnaker部署流水线](https://ws1.sinaimg.cn/large/00704eQkgy1fsaz3yo227j31c60mgdim.jpg)
+![Spinnaker部署流水线](../images/00704eQkgy1fsaz3yo227j31c60mgdim.jpg)
 
-![Spinnaker的预发布流水线](https://ws1.sinaimg.cn/large/00704eQkgy1fsaz50k2atj31bs0mitbn.jpg)
+![Spinnaker的预发布流水线](../images/00704eQkgy1fsaz50k2atj31bs0mitbn.jpg)
 
-![Spinnaker的生产流水线](https://ws1.sinaimg.cn/large/00704eQkgy1fsaz5n5qs9j31by0motbm.jpg)
+![Spinnaker的生产流水线](../images/00704eQkgy1fsaz5n5qs9j31by0motbm.jpg)
 
 总之作者就是想说Spinnaker很好很强大啦，足以满足您对云原生应用CI/CD的需求。
 
@@ -101,10 +101,10 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 
 要把其中任何一个方面做好都不容器。
 
-![可观察性](https://ws1.sinaimg.cn/large/00704eQkgy1fsazabn0b9j31by0w6791.jpg)
+![可观察性](../images/00704eQkgy1fsazabn0b9j31by0w6791.jpg)
 
 作者主要讲述的Prometheus和Grafana的开源监控方案。
 
-![Prometheus生态系统中的组件](https://ws1.sinaimg.cn/large/00704eQkgy1fsazcclee6j31c20w6n5y.jpg)
+![Prometheus生态系统中的组件](../images/00704eQkgy1fsazcclee6j31c20w6n5y.jpg)
 
 这一章我不详述，感兴趣大家可以查看报告原文。

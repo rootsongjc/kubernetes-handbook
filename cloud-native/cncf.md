@@ -6,7 +6,7 @@ CNCF作为一个厂商中立的基金会，致力于Github上的快速成长的�
 
 下图是CNCF的全景图。
 
-![CNCF landscape](https://ws3.sinaimg.cn/large/006tNbRwly1fxmx633ymqj31dp0u0kjn.jpg)
+![CNCF landscape](../images/006tNbRwly1fxmx633ymqj31dp0u0kjn.jpg)
 
 该全景图不断更新中，原图请见：https://github.com/cncf/landscape
 

@@ -6,11 +6,11 @@
 
 下面是 Istio 官方提供的 bookinfo 的请求流程图，假设 bookinfo 应用的所有服务中没有配置 DestinationRule。
 
-![Bookinfo 示例](https://ws1.sinaimg.cn/large/006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
+![Bookinfo 示例](../images/006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
 
 下面是 Istio 自身组件与 Bookinfo 示例的连接关系图，我们可以看到所有的 HTTP 连接都在 9080 端口监听。
 
-![Bookinfo 示例与 Istio 组件连接关系图](https://ws4.sinaimg.cn/large/006tNbRwly1fyitp0jsghj31o70u0x6p.jpg)
+![Bookinfo 示例与 Istio 组件连接关系图](../images/006tNbRwly1fyitp0jsghj31o70u0x6p.jpg)
 
 可以在 [Google Drive](https://drive.google.com/open?id=19ed3_tkjf6RgGboxllMdt_Ytd5_cocib) 上下载原图。
 
@@ -48,7 +48,7 @@
 
  下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1n-h235tm8DnL_RqxTTA95rgGtrLkBsyr/view?usp=sharing) 上下载原图。
 
-![Envoy sidecar 流量劫持与路由转发示意图](https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg)
+![Envoy sidecar 流量劫持与路由转发示意图](../images/006tNbRwly1fyl39icd27j31c70u04gc.jpg)
 
 第一步开始时，`productpage` Pod 中的 Envoy sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
 

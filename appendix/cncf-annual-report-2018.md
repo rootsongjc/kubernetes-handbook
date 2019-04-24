@@ -130,7 +130,7 @@ CNCF 年度报告的原文主要是汇报了 CNCF 一年来的所展开的活动
 
 自2015年底 CNCF 创立之初 Kubernetes 成为其首个托管项目以来，截止到2018年底，CNCF 已经托管了[32个开源项目](https://www.cncf.io/projects/)，随着越来越多的项目加入到 CNCF，为了更好的管理这些项目，为这些项目划分不同的成熟度等级就成了迫在眉睫的事情。
 
-![CNCF 项目成熟度级别](https://ws2.sinaimg.cn/large/006tNc79ly1g04s0oznytj31tg0ok7ca.jpg)
+![CNCF 项目成熟度级别](../images/006tNc79ly1g04s0oznytj31tg0ok7ca.jpg)
 
 根据《Crossing the Chasm》一书中的技术采用生命周期理论，CNCF 将其托管的项目划分为三个等级：
 
@@ -146,7 +146,7 @@ CNCF 通过为项目设置成熟度水平是来建议企业应该采用哪些项
 
 通过 [KCSP](https://www.cncf.io/certification/kcsp/) 意味着企业具有为其他企业或组织提供 Kubernetes 支持、咨询、专业服务和培训的资质。 2018年又有46家企业通过了[KCSP](https://www.cncf.io/certification/kcsp/)，通过该认证的企业累计达到76家。
 
-![KCSP](https://ws3.sinaimg.cn/large/006tNc79ly1g04tl97vm4j318v0h7dpt.jpg)
+![KCSP](../images/006tNc79ly1g04tl97vm4j318v0h7dpt.jpg)
 
 **如何通过 KCSP**
 

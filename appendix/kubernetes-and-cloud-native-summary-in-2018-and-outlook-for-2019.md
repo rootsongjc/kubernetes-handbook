@@ -46,13 +46,13 @@
 
 下图是 Google trend 中过去一年来全球搜索 Kubernetes 的趋势图。
 
-![Kubernetes 搜索趋势(来自 Google trends)](https://ws2.sinaimg.cn/large/006tNc79ly1fzne6y4f2ej31q60fedho.jpg)
+![Kubernetes 搜索趋势(来自 Google trends)](../images/006tNc79ly1fzne6y4f2ej31q60fedho.jpg)
 
 从图中可以看出 Kubernetes 在全球搜索趋势在2018年底已经达到了最巅峰，2019年可能会开始走下降趋势。
 
 下图是最近5年来 Kubernetes 关键词的百度指数。
 
-![Kubernetes 的百度指数](https://ws1.sinaimg.cn/large/006tNc79ly1fznegoocmvj31y00hmgon.jpg)
+![Kubernetes 的百度指数](../images/006tNc79ly1fznegoocmvj31y00hmgon.jpg)
 
 上图来自百度指数，可以大体概括 Kubernetes 关键字在中国的搜索情况，同 Kubernetes 在全球的搜索情况一样，可能已经过了巅峰期。
 
@@ -60,7 +60,7 @@
 
 以 Kubernetes 为核心来运维上层应用，诞生了一种名为”Kubernetes Native“的新型运维方式，真正践行 DevOps 理念的产物，开发者将于软件的运维逻辑写成代码，利用 Kubernetes 的**控制器模式（Controller Pattern）**和 [CRD](../concepts/crd.md) 来扩展 Kubernetes 的 API，各种 Operator 层出不穷，[awesome-operators](https://github.com/operator-framework/awesome-operators) 列举了目前所有的 Operator。例如我们熟悉的 [Istio](https://istio.io) 中就有50个 CRD。
 
-![Istio 中的 CRD](https://ws2.sinaimg.cn/large/006tNc79ly1fzna87wmfij30u00zc4qp.jpg)
+![Istio 中的 CRD](../images/006tNc79ly1fzna87wmfij30u00zc4qp.jpg)
 
 CNCF 生态中的诸多应用都已支持 Kubernetes Operator，可以说 Operator 将成为云原生中默认的软件动态运行时管理工具，参考 CoreOS（已被 RedHat 收购，RedHat 已被 IBM 收购） CTO Brandon Philips 的这篇文章 [Introducing the Operator Framework: Building Apps on Kubernetes](https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes)。
 
@@ -68,15 +68,15 @@ CNCF 生态中的诸多应用都已支持 Kubernetes Operator，可以说 Operat
 
 下图展示的是 2019 Q1 的软件架构趋势，（图片来自 [Architecture and Design InfoQ Trends Report - January 2019](https://www.infoq.com/articles/architecture-trends-2019)）我们可以看到 Service Mesh 还处于创新者阶段，如果从软件生命周期的全阶段来看，它还只是刚刚进入很多人的眼帘，对于这张的新兴技术，在蚂蚁金服的支持的下创办了 [ServiceMesher 社区](http://www.servicemesher.com)。
 
-![2019 Q1 软件架构趋势 - 来自 InfoQ](https://ws4.sinaimg.cn/large/006tNc79ly1fzor2k6f7wj313j0u0dl3.jpg)
+![2019 Q1 软件架构趋势 - 来自 InfoQ](../images/006tNc79ly1fzor2k6f7wj313j0u0dl3.jpg)
 
-![ServiceMesher 社区 Logo](https://ws2.sinaimg.cn/large/006tNc79ly1fznadbp63qj31jt0beq9s.jpg)
+![ServiceMesher 社区 Logo](../images/006tNc79ly1fznadbp63qj31jt0beq9s.jpg)
 
 既然 Kubernetes 已经开始变得无聊，2018年落地 Kubernetes 已经不是初创公司的事情了，很多大公司甚至传统企业都开始试水或者大规模落地，在 Kubernetes 进一步成熟之时，以 Kubernetes 为基础向上发展，开辟新的战场就能收获更多的业务场景和需求。
 
 Kubernetes 并不直接对外提供业务能力，而是作为应用运行的底层平台，在应用和平台间还有一个 Gap，这需要中间件的能力来补充。
 
-![ServiceMesher社区2018年活动一览](https://ws4.sinaimg.cn/large/006tNc79ly1fzm9vs4o3aj31s00u0x6p.jpg)
+![ServiceMesher社区2018年活动一览](../images/006tNc79ly1fzm9vs4o3aj31s00u0x6p.jpg)
 
 - 2018年5月，ServiceMesher 社区由蚂蚁金服发起成立。
 - 2018年5月30日，[Envoy最新官方文档中文版发布——由Service Mesh爱好者倾情奉献](http://www.servicemesher.com/envoy/)。
@@ -121,7 +121,7 @@ Kubernetes 并不直接对外提供业务能力，而是作为应用运行的底
 
 我们再看 CNCF 的 [Landscape](https://landscape.cncf.io/)，其中右下部分有一个单列的 Serverless 单元，详见 <https://landscape.cncf.io/>。
 
-![CNCF Landscape 中的 Serverless 单元](https://ws4.sinaimg.cn/large/006tNc79ly1fznbh3vfbwj310f0jxgxj.jpg)
+![CNCF Landscape 中的 Serverless 单元](../images/006tNc79ly1fznbh3vfbwj310f0jxgxj.jpg)
 
 我们再看下 Kubernetes、Service Mesh、Serviceless 三者之间的关系：
 

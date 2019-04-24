@@ -4,7 +4,7 @@
 
 下文部分来自Joe Duffy的博客[Hello, Pulumi](http://joeduffyblog.com/2018/06/18/hello-pulumi/)！
 
-![云原生编程语言Pulumi](https://ws1.sinaimg.cn/large/00704eQkgy1fsm4v0a6qwj30xc0m8t9d.jpg)
+![云原生编程语言Pulumi](../images/00704eQkgy1fsm4v0a6qwj30xc0m8t9d.jpg)
 
 TL;DR 有了Pulumi，38页的手动操作说明将变成了38行代码。25000行YAML配置变成了使用真实编程语言的500行语句。
 

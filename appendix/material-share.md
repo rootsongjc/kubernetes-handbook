@@ -13,7 +13,7 @@ Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在 <h
 - 社区成员的角色分类与职责
 - 社区贡献的 Kubernetes 资源图标
 
-![Kubernetes 资源图标示例](https://ws1.sinaimg.cn/large/006tNc79ly1fzmnolp5ghj30z90u0gwf.jpg)
+![Kubernetes 资源图标示例](../images/006tNc79ly1fzmnolp5ghj30z90u0gwf.jpg)
 
 ## 生态环境
 

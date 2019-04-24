@@ -25,7 +25,7 @@ productpage istio-proxy
 
 例如下图 [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)的架构图中描述的，MOSN 作为 Sidecar 的方式和应用运行在同一个 Pod 中，拦截所有进出应用容器的流量，[SOFAMesh](https://github.com/alipay/sofa-mesh) 兼容 Istio，其中使用 Go 语言开发的 [SOFAMosn](https://github.com/alipay/sofa-mosn) 替换了 Envoy。
 
-![SOFAMesh架构图](https://ws4.sinaimg.cn/large/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg)
+![SOFAMesh架构图](../images/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg)
 
 **注意**：下文中所指的 Sidecar 都是指的 Envoy 代理容器。
 
@@ -340,7 +340,7 @@ $ sudo -i
 
 下图展示了 iptables 调用链。
 
-![iptables 调用链](https://ws4.sinaimg.cn/large/0069RVTdly1fv5hukl647j30k6145gnt.jpg)
+![iptables 调用链](../images/0069RVTdly1fv5hukl647j30k6145gnt.jpg)
 
 ### iptables 中的表
 
@@ -366,7 +366,7 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 
 下图是 iptables 的调用链顺序。
 
-![iptables 调用链](https://ws1.sinaimg.cn/large/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
+![iptables 调用链](../images/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
 
 ### iptables 命令
 
@@ -398,7 +398,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
 
-![iptables结构图](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5dm4a9ygj30w50czdi3.jpg)
+![iptables结构图](../images/0069RVTdgy1fv5dm4a9ygj30w50czdi3.jpg)
 
 图片来自[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)
 
@@ -428,7 +428,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持 Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](https://ws1.sinaimg.cn/large/0069RVTdgy1fv5doj8fuij31kw0ytn7h.jpg)
+![Envoy sidecar 流量劫持 Istio iptables 宋净超 Jimmy Song 服务网格 Service Mesh](../images/0069RVTdgy1fv5doj8fuij31kw0ytn7h.jpg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
@@ -686,7 +686,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 
 
-![Istio bookinfo](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
+![Istio bookinfo](../images/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
 
 图片来自 [Istio 官方网站](https://istio.io/zh/docs/examples/bookinfo/)
 

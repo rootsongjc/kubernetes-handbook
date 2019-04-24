@@ -6,7 +6,7 @@ CNCF（云原生计算基金会）是Linux基金会旗下的一个基金会，�
 
 下图是我根据CNCF章程绘制的组织架构图。
 
-![CNCF组织架构图](https://ws2.sinaimg.cn/large/006tKfTcgy1ft5pe433f6j31kw0s3nnl.jpg)
+![CNCF组织架构图](../images/006tKfTcgy1ft5pe433f6j31kw0s3nnl.jpg)
 
 ## 1. CNCF的使命
 
@@ -345,7 +345,7 @@ CNCF社区坚信云原生计算包含三个核心属性：
 - 在标准化子系统的边界处定义良好的API
 - 应用程序生命周期管理的最小障碍
 
-![云原生的理想分层架构](https://ws2.sinaimg.cn/large/006tKfTcly1ft3zgjlisxj30n70ffjth.jpg)
+![云原生的理想分层架构](../images/006tKfTcly1ft3zgjlisxj30n70ffjth.jpg)
 
 因为上述时间表已经有些过时了，CNCF成立已经有三年时间了，正在规划新的方案。
 
