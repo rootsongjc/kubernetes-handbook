@@ -3,7 +3,7 @@ title: "Istio 1.0发布，生态逐步壮大，且可用于生产！"
 subtitle: "中文文档同时释出!"
 date: 2018-08-01T14:42:36+08:00
 description: "今天，我们很高兴地宣布 Istio 1.0。这距离最初的 0.1 版本发布以来已经过了一年多时间了。从 0.1 起，Istio 就在蓬勃发展的社区、贡献者和用户的帮助下迅速发展。现在已经有许多公司成功将 Istio 应用于生产，并通过 Istio 提供的洞察力和控制力获得了真正的价值。"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/0069RVTdgy1ftu78sxhs1j31jk0s5alf.jpg", desc: "NA|Hangzhou|Aug 1,2018"}]
+bigimg: [{src: "/img/banners/0069RVTdgy1ftu78sxhs1j31jk0s5alf.jpg", desc: "NA|Hangzhou|Aug 1,2018"}]
 draft: false
 notoc: true
 tags: ["istio","service mesh"]

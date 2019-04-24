@@ -1,7 +1,7 @@
 ---
 title: "云原生编程语言Ballerina公司征求中国大使一枚"
 date: 2018-06-13T21:23:13+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs9vinrebvj30rs0kue81.jpg", desc: "Siri Lanka"}]
+bigimg: [{src: "/img/banners/00704eQkgy1fs9vinrebvj30rs0kue81.jpg", desc: "Siri Lanka"}]
 draft: false
 tags: ["ballerina"]
 categories: "cloud native"

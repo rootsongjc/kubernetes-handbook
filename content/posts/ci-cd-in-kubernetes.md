@@ -2,7 +2,7 @@
 title: "Kubernetes中的CI/CD"
 subtitle: "TheNewStack的报告解读"
 date: 2018-06-14T20:33:24+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fsazo12js7j30xc0c5auf.jpg", desc: "CBD|Beijing|Jun 12,2018"}]
+bigimg: [{src: "/img/banners/00704eQkgy1fsazo12js7j30xc0c5auf.jpg", desc: "CBD|Beijing|Jun 12,2018"}]
 tags: ["kubernetes","cicd","devops"]
 categories: ["kubernetes"]
 draft: false

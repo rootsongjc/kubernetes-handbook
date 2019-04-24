@@ -2,7 +2,7 @@
 title: "开源社区贡献者协议介绍"
 subtitle: "开源社区 CLA 简介"
 date: 2019-04-20T15:16:09+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1g294msngvgj31cs0m0qv5.jpg", desc: "Photo via pexels"}]
+bigimg: [{src: "/img/banners/006tNc79ly1g294msngvgj31cs0m0qv5.jpg", desc: "Photo via pexels"}]
 draft: false
 notoc: true
 description: "很多从事开源人可能会注意到有些开源项目要求贡献者在提交 PR 前首先签署 CLA，只有签署了 CLA 之后 PR 才可以合并，本文将介绍开源贡献协议包括 CLA 和 DCO。"

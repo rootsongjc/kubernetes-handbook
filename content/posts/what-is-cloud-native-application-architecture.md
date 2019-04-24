@@ -6,7 +6,7 @@ subtitle: "Cloud Native的定义"
 title: "什么是Cloud Native（云原生）应用架构？"
 description: "什么是云原生应用架构，《迁移至云原生应用架构》第一章"
 tags: ["cloud-native"]
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Foggy cloud"}]
+bigimg: [{src: "/img/banners/00704eQkgy1frmha852q7j31hc0u0k5u.jpg", desc: "Foggy cloud"}]
 ---
 
 *软件正在吞噬世界。—Mark Andreessen*

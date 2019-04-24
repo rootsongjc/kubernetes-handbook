@@ -6,7 +6,7 @@ draft: false
 tags: ["cloud-native","book"]
 categories: "cloud-native"
 description: "Cloud Native Java中文版（译者：张若飞、宋净超）原书目录和翻译日志"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4rlgav4pj30ls06ygsa.jpg", desc: "Swan lake in Rongcheng|Feb 18,2018"}]
+bigimg: [{src: "/img/banners/00704eQkly1fs4rlgav4pj30ls06ygsa.jpg", desc: "Swan lake in Rongcheng|Feb 18,2018"}]
 postmeta: false
 nocomment: true
 ---

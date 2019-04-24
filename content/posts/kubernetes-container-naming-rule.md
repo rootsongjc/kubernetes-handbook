@@ -4,7 +4,7 @@ draft: false
 title: "kubernetes管理的容器命名规则解析"
 subtitle: "一个Pod名字的由来"
 description: "本文带您详细了解Kubernetes中Pod的命名规则"
-bigimg: [{src: "https://ws3.sinaimg.cn/large/0069RVTdly1fv6npwu2qyj30i5081jsc.jpg", desc: "© nombra.com|Apr 5,2018"}]
+bigimg: [{src: "/img/banners/0069RVTdly1fv6npwu2qyj30i5081jsc.jpg", desc: "© nombra.com|Apr 5,2018"}]
 categories: "kubernetes"
 tags: ["kubernetes"]
 ---

@@ -2,7 +2,7 @@
 title: "Service Mesh Meetup杭州站回顾"
 subtitle: "首战告捷"
 date: 2018-07-02T12:01:40+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fsuaww0pkjj318w0u0hdu.jpg", desc: "九重宫阙|Hangzhou|Apr 30,2018"}]
+bigimg: [{src: "/img/banners/00704eQkgy1fsuaww0pkjj318w0u0hdu.jpg", desc: "九重宫阙|Hangzhou|Apr 30,2018"}]
 draft: false
 notoc: true
 tags: ["service mesh","meetup"]
@@ -39,7 +39,7 @@ Service Mesh meetup顺利落幕，感谢到场的小伙伴，线上观众，IT�
 
 因为天气原因很多人来迟了，我们推迟了半个小时在1:30正式开始。
 
-![](https://ws1.sinaimg.cn/large/00704eQkgy1fsuaww0pkjj318w0u0hdu.jpg)
+![](/img/banners/00704eQkgy1fsuaww0pkjj318w0u0hdu.jpg)
 
 第一场**敖小剑（蚂蚁金服）：大规模微服务架构下的 Service Mesh 探索之路**
 

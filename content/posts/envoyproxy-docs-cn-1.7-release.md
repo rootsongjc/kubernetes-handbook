@@ -6,7 +6,7 @@ description: "Envoy——为云原生应用而设计、开源的边缘和服务�
 tags: ["envoy","gitbook"]
 categories: "service mesh"
 notoc: true
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frt88wynpvj30xc0fy4qp.jpg", desc: "Laomendong|Nanjing|May 20,2018"}]
+bigimg: [{src: "/img/banners/00704eQkgy1frt88wynpvj30xc0fy4qp.jpg", desc: "Laomendong|Nanjing|May 20,2018"}]
 draft: false
 ---
 

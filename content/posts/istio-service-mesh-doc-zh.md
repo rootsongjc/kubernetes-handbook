@@ -5,7 +5,7 @@ description: "ServiceMesher社区负责翻译和维护了Istio Service Mesh官�
 draft: false
 categories: "service mesh"
 tags: ["istio","service-mesh","cloud-native"]
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fswhnpm91wj30go08yn5p.jpg", desc: "Service Mesh|Sept 20,2017"}]
+bigimg: [{src: "/img/banners/00704eQkly1fswhnpm91wj30go08yn5p.jpg", desc: "Service Mesh|Sept 20,2017"}]
 notoc: true
 ---
 

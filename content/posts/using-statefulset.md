@@ -6,7 +6,7 @@ draft: false
 categories: "kubernetes"
 description: "以在kubernetes1.6版本中部署zookeeper和kafka为例讲解StatefulSet的使用，其中kafka依赖于zookeeper"
 tags: ["kubernetes"]
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1g22bqshexhj30ku112gmu.jpg", desc: "Beijing May 14,2017"}]
+bigimg: [{src: "/img/banners/006tNc79ly1g22bqshexhj30ku112gmu.jpg", desc: "Beijing May 14,2017"}]
 ---
 
 [StatefulSet](https://jimmysong.io/kubernetes-handbook/concepts/statefulset) 这个对象是专门用来部署用状态应用的，可以为Pod提供稳定的身份标识，包括hostname、启动顺序、DNS名称等。

@@ -2,7 +2,7 @@
 title: "CentOS7官方Docker发行版现重大Bug可致Kubernetes中的健康检测探针失败并影响容器交互"
 subtitle: "附临时解决方案"
 date: 2018-12-06T21:08:02+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxxcvfcgawj31k90u07wk.jpg", desc: "via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fxxcvfcgawj31k90u07wk.jpg", desc: "via unsplash"}]
 draft: false
 notoc: true
 description: "CentOS7官方Docker版本docker 1.13现Bug导致docker exec失败，可致Kubernetes中的检测探针失败，官方推荐降级docker版本解决。"

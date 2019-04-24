@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes和Istio服务网格（Service Mesh）云原生本地视频Demo演示"
 date: 2019-01-02T20:57:22+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fysjqrng45j31ji0u0u0x.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fysjqrng45j31ji0u0u0x.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: true
 description: "本视频为本人在2018年最后一天录制，演示使用 rootsongjc/kubernetes-vagrant-centos-cluster 自动部署 Kubernetes 集群和 Istio Service Mesh。"

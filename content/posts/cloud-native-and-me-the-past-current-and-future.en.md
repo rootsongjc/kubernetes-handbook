@@ -2,7 +2,7 @@
 title: "Cloud Native and me - the past, current and future"
 subtitle: "Since I became a CNCF Ambassador"
 date: 2018-08-11T11:37:36+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/0069RVTdly1fu5o2o62prj31e00jw46d.jpg", desc: "West Lake | Hangzhou | Aug 5,2018"}]
+bigimg: [{src: "/img/banners/0069RVTdly1fu5o2o62prj31e00jw46d.jpg", desc: "West Lake | Hangzhou | Aug 5,2018"}]
 draft: false
 notoc: true
 tags: ["cloud native"]

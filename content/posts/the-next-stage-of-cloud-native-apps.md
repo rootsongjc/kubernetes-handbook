@@ -3,7 +3,7 @@ title: "云原生应用的下一站"
 subtitle: "第四届南京全球技术周演讲文字版"
 date: 2018-05-28T16:52:30+08:00
 description: "第四届南京全球技术周互联网技术架构专场云原生应用的下一站演讲文字版实录"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1frr5ptapnwj30xc0c04qp.jpg", desc: "Qinhuai River|Nanjing|May 20,2018"}]
+bigimg: [{src: "/img/banners/00704eQkgy1frr5ptapnwj30xc0c04qp.jpg", desc: "Qinhuai River|Nanjing|May 20,2018"}]
 draft: false
 tags: ["cloud-native"]
 categories: "cloud native"

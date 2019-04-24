@@ -2,7 +2,7 @@
 title: "蚂蚁金服容器与服务创新组毕业生招聘"
 subtitle: "蚂蚁金服2019年春招"
 date: 2019-03-19T15:35:18+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tKfTcly1g185lwdca0j30xc0k0q58.jpg", desc: "蚂蚁金服吉祥物"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g185lwdca0j30xc0k0q58.jpg", desc: "蚂蚁金服吉祥物"}]
 draft: false
 noreward: true
 description: "蚂蚁金服容器与服务创新组招聘优秀毕业生啦，欢迎致力于云原生微服务研发的同学投递简历。容器与服务创新组负责金融级云原生微服务基础设施的研发与创新，招聘的岗位包括：【微服务架构研发工程师】、【Serverless架构研发工程师】。我们会提前进行面试，加速你们的面试进程。"

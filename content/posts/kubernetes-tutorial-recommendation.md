@@ -2,7 +2,7 @@
 title: "Kubernetes精品教程推荐——深入剖析Kubernetes"
 subtitle: "by 张磊，极客时间出品"
 date: 2018-08-31T20:59:34+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwgy1fut7l89g7kj30go09ft9j.jpg", desc: "Kubernetes|Beijing|Aug 31,2018"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fut7l89g7kj30go09ft9j.jpg", desc: "Kubernetes|Beijing|Aug 31,2018"}]
 draft: false
 notoc: true
 description: "本文推荐了张磊在极客时间上的Kubernetes课程。"

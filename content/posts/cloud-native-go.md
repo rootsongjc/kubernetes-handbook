@@ -7,7 +7,7 @@ description: "Cloud Native Go 图书 电子工业出版社 Kevin Hoffman Dan Nem
 categories: "cloud-native"
 notoc: true
 tags:  ["book","go","microservices","cloud-native"]
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79gy1fthu6lgbqoj31kw0m5e81.jpg", desc: "北京植物园桃花 Mar 26,2016"}]
+bigimg: [{src: "/img/banners/006tNc79gy1fthu6lgbqoj31kw0m5e81.jpg", desc: "北京植物园桃花 Mar 26,2016"}]
 ---
 
 Kevin Hoffman和Dan Nemeth著的《Cloud Native Go - 基于Go和React的web云原生应用构建指南》已由**电子工业出版社**出版。

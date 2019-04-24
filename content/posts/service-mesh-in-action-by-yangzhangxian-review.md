@@ -1,7 +1,7 @@
 ---
 title: "《Service Mesh 实战—基于 Linkerd 和 Kubernetes 的微服务实践》读后感"
 date: 2019-01-08T20:50:44+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1fyzh65bll4j31h60qunb2.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fyzh65bll4j31h60qunb2.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 description: "《Service Mesh 实战——基于 Linkerd 和 Kubernetes 的微服务实战》的观后感，顺便对比了下 Linkerd 和 Envoy，给读者一些我自己的建议。"

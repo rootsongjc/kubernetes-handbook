@@ -2,7 +2,7 @@
 date: "2017-07-16T15:04:18+08:00"
 draft: false
 notoc: true
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1fvrts2o1nlj316o0kqjys.jpg", desc: "Picture ©mckinsey.com"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fvrts2o1nlj316o0kqjys.jpg", desc: "Picture ©mckinsey.com"}]
 categories: "cloud-native"
 title: "企业迁移到云原生应用架构时所需做出的变革"
 subtitle: "转型到云原生应用架构"

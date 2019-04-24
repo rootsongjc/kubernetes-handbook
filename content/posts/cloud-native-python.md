@@ -6,7 +6,7 @@ title: "Cloud Native Python中文版（Python云原生）"
 subtitle: "使用Python和React构建云原生应用"
 categories: "cloud-native"
 tags: ["cloud-native","book","python","microservices"]
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4sw7kgs4j30mo0aj46b.jpg", desc: "北京大栅栏 Mar 13,2016"}]
+bigimg: [{src: "/img/banners/00704eQkly1fs4sw7kgs4j30mo0aj46b.jpg", desc: "北京大栅栏 Mar 13,2016"}]
 postmeta: false
 nocomment: true
 ---

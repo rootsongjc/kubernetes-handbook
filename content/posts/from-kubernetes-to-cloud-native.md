@@ -6,7 +6,7 @@ draft: false
 description: "本文简要介绍了容器技术发展的路径，为何Kubernetes的出现是容器技术发展到这一步的必然选择，而为何Kuberentes又将成为云原生应用的基石。"
 tags: ["kubernetes","cloud-native"]
 categories: "cloud-native"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4rqxpo26j30ti0aqwxy.jpg", desc: "On the meetup - Service Mesh is comming@Beijing Dec 16,2017"}]
+bigimg: [{src: "/img/banners/00704eQkly1fs4rqxpo26j30ti0aqwxy.jpg", desc: "On the meetup - Service Mesh is comming@Beijing Dec 16,2017"}]
 ---
 
 **从Kubernetes到Cloud Native——云原生应用之路**，这是我最近在 [ArchSummit2017北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云&TalkingData合办的Service Mesh is comming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题。

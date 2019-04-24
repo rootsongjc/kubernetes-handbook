@@ -6,7 +6,7 @@ subtitle: "理解Serverless（无服务器）和FaaS（函数即服务）"
 description: "本文带您了解serverless架构和以亚马逊AWS Lambda为代表的FaaS函数即服务，分析其来历和要解决的问题以及处境"
 date: 2017-11-24T23:46:35+08:00
 draft: false
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Data Center"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Data Center"}]
 ---
 
 Serverless（无服务器架构）指的是由开发者实现的服务端逻辑运行在无状态的计算容器中，它由事件触发， 完全被第三方管理，其业务层面的状态则被开发者使用的数据库和存储资源所记录。

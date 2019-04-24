@@ -11,7 +11,7 @@ noadsense: true
 translationKey: about
 noreward: true
 seealso: false
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月之暗面 - Pink Floyd"}]
+bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月之暗面 - Pink Floyd"}]
 ---
 
 [English](/en/about/)

@@ -2,7 +2,7 @@
 title: "Istio中的服务和流量的抽象模型"
 subtitle: "Kubernetes service存在的意义仅剩下做服务发现"
 date: 2018-12-17T21:37:35+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fya2os1iyzj30uz0c3b29.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fya2os1iyzj30uz0c3b29.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: true
 description: "本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Kubernetes，本文仅以 Kubernetes 说明。另外在 ServiceMesher 社区中最近有很多关于 Istio、Envoy、Kubernetes 之中的服务模型关系的讨论，本文作为一个开篇说明，Kubernetes 和 Isito 之间有哪些共有的服务模型，Istio 在 Kubernetes 的服务模型之上又增加了什么。"

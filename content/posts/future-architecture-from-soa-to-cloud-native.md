@@ -2,7 +2,7 @@
 title: "未来架构——从服务化到云原生"
 subtitle: "张亮 吴晟 敖小剑 宋净超 著"
 date: 2018-10-31T20:38:33+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fwrpgpal4ej31dc0jyqv5.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fwrpgpal4ej31dc0jyqv5.jpg", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
 description: "《未来架构——从服务化到云原生》张亮 吴晟 敖小剑 宋净超 著，电子工业出版社出版。"

@@ -2,7 +2,7 @@
 title: "Vistio—使用Netflix的Vizceral可视化Istio service mesh"
 subtitle: "Vistio部署使用教程"
 date: 2018-06-21T12:21:36+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fsioqftq09j30xc0ff7wh.jpg", desc: "CBD|Beijing|Jun 15,2018"}]
+bigimg: [{src: "/img/banners/00704eQkly1fsioqftq09j30xc0ff7wh.jpg", desc: "CBD|Beijing|Jun 15,2018"}]
 draft: false
 notoc: false
 tags: ["istio","vistio","vizceral"]

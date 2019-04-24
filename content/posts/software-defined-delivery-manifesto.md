@@ -1,7 +1,7 @@
 ---
 title: "软件定义交付（SDD）宣言"
 date: 2018-11-30T19:06:35+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNbRwly1fxqb2hrj9wj31op0u012q.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fxqb2hrj9wj31op0u012q.jpg", desc: "Via unsplash"}]
 draft: false
 description: "今天给大家分享的是《软件定义交付宣言》，该宣言发出已经有一周多时间了，目前该宣言的官方网站（https://sdd-manifesto.org/）还在联署签名中。"
 tags: ["sdd","cloud native"]

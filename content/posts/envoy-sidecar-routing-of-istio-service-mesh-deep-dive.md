@@ -2,7 +2,7 @@
 title: "理解 Istio Service Mesh 中 Envoy Sidecar 代理的路由转发"
 subtitle: "Sidecar proxy 中 Indbound/Outbound 流量处理过程详解"
 date: 2018-12-26T18:32:27+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fykbvcftfzj31la0pmx6q.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fykbvcftfzj31la0pmx6q.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: false
 translationKey: "understandingEnvoySidecarIntercept"

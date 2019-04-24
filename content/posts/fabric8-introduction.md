@@ -2,7 +2,7 @@
 draft: false
 date: "2017-04-10T21:39:00+08:00"
 title: "开源微服务管理平台fabric8简介"
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fxq51714opj31es0m840q.jpg", desc: "Via Unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fxq51714opj31es0m840q.jpg", desc: "Via Unsplash"}]
 description: “本文介绍了开源的微服务管理平台 Fabric8。"
 categories: "devops"
 tags: ["fabric8","platform","devops"]
