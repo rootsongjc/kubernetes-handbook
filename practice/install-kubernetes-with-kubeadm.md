@@ -39,8 +39,11 @@ Kubernetes版本通常支持九个月，在此期间，如果发现严重的错�
 | v1.6.x             | March 2017     | December 2017     |
 | v1.7.x             | June 2017      | March 2018        |
 | v1.8.x             | September 2017 | June 2018         |
-| v1.9.x             | December 2017  | September 2018    |
-| v1.10.x            | March 2018     | December 2018     |
+| v1.9.x             | December 2017  | September 2018    |
+| v1.10.x            | March 2018     | December 2018     |
+| v1.11.x            | June 2018      | March 2019        |
+| v1.12.x            | September 2018 | June 2019         |
+| v1.13.x            | December 2018  | September 2019    |
 
 ## 参考
 

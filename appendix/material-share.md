@@ -44,7 +44,6 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 ### 网站与专栏
 
 - [thenewstack.io](https://thenewstack.io/)
-- [k8sport.org](http://k8sport.org/)
 - [giantswarm blog](https://blog.giantswarm.io/)
 - [k8smeetup.com](http://www.k8smeetup.com)
 - [dockone.io](http://www.dockone.io)
