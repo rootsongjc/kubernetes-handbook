@@ -10,7 +10,7 @@ notoc: true
 noadsense: true
 noreward: true
 seealso: false
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
+bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
 ---
 
 [中文](/about/)

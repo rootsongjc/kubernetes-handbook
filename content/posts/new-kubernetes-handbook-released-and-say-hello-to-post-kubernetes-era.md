@@ -2,7 +2,7 @@
 title: "Kubernetes Handbook v1.4发布同时后Kubernetes时代大幕拉启"
 subtitle: "这是一篇后Kubernetes时代的檄文"
 date: 2018-09-04T10:23:23+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwgy1fuxayjq7oej30n30ammzp.jpg", desc: "Breaking Chains|Beijing|Sept 4,2018"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fuxayjq7oej30n30ammzp.jpg", desc: "Breaking Chains|Beijing|Sept 4,2018"}]
 draft: false
 notoc: true
 description: "这是一篇后Kubernetes时代的檄文，Kubernetes handbook by Jimmy Song v1.4发布，云原生的下一个重心是Service Mesh！"

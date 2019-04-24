@@ -5,7 +5,7 @@ tags: ["envoy","service-mesh","xds"]
 categories: "service-mesh"
 description: "本文介绍了 Envoy proxy 中的基本概念、配置与架构解析"
 date: 2018-04-27T17:16:50+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fy6b34ad6aj31ii0sy4qq.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fy6b34ad6aj31ii0sy4qq.jpg", desc: "Via unsplash"}]
 draft: false
 ---
 

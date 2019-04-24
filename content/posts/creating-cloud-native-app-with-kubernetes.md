@@ -6,7 +6,7 @@ description: "本文讲解了如何开发容器化应用，并使用Wercker持�
 draft: false
 categories: "cloud-native"
 tags: ["kubernetes","cloud-native","istio","service-mesh","wercker"]
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fs4rqa9pwhj315c0coe81.jpg", desc: "Bird's-eye view of a Chinese city|Tianjin|Mar 25,2018"}]
+bigimg: [{src: "/img/banners/00704eQkly1fs4rqa9pwhj315c0coe81.jpg", desc: "Bird's-eye view of a Chinese city|Tianjin|Mar 25,2018"}]
 ---
 
 本文讲解了如何开发容器化应用，并使用Wercker持续集成工具构建docker镜像上传到docker镜像仓库中，然后在本地使用`docker-compose`测试后，再使用`kompose`自动生成kubernetes的yaml文件，再将注入Envoy sidecar容器，集成Istio service mesh中的详细过程。

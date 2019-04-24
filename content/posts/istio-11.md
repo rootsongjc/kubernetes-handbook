@@ -2,7 +2,7 @@
 title: "写在 Istio 1.1发布时"
 subtitle: "历时8个月，中文文档同时发布"
 date: 2019-03-20T07:44:44+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tKfTcly1g18x9cci1vj31bi0ny4qq.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g18x9cci1vj31bi0ny4qq.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 description: "北京时间3月20日凌晨4点 Istio 1.1发布了，该版本历时8个月！ServiceMesher 社区同时推出了 Istio 中文文档。"

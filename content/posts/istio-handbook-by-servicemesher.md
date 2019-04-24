@@ -2,7 +2,7 @@
 title: "捐献Istio Handbook给ServiceMesher社区"
 subtitle: "原书内容已迁移完成"
 date: 2019-03-10T16:55:11+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tKfTcly1g0xt7w9vf3j31p80pex6q.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g0xt7w9vf3j31p80pex6q.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 description: "Istio handbook 原是 Jimmy Song 创作的一本开源电子书，在捐献给 ServiceMesher 社区之前已经撰写了8个月，为了进一步普及 Istio 和 Service Mesh 技术将此书捐献给社区共同撰写，原有内容已迁移完成。"

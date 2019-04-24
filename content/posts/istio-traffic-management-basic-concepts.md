@@ -2,7 +2,7 @@
 title: "Istio 流量管理的基本概念详解"
 subtitle: "以 Bookinfo 为例详解其如何作用于 Kubernetes 中的 Pod"
 date: 2018-10-09T20:00:02+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fw2899vaawj30pk0h142o.jpg", desc: "Photo: Ekaterina Minaeva/Getty Images"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fw2899vaawj30pk0h142o.jpg", desc: "Photo: Ekaterina Minaeva/Getty Images"}]
 draft: false
 description: "本文是对 Istio 中流量管理的基本概念的解析，并以 Istio 官方文档中的部署在 Kubernetes 上的 bookinfo 示例服务来说明 Istio 流量管理的基本概念及其如何作用于 Kubernetes 中的 Pod，更多高级功能和配置请参考 Istio 官方文档。关于 Istio 如何实现流量管理的详细实现机制请参考赵化冰写的 Istio 流量管理实现机制深度解析。"
 tags: ["istio","service mesh"]

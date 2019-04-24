@@ -2,7 +2,7 @@
 title: "Kubernetes与云原生2018年终总结及2019年展望"
 subtitle: "Kubernetes 尘埃落定，Istio 蓄势待发，knative 红日初升"
 date: 2019-01-29T13:54:50+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1fznffr5x7zj324k0u0npd.jpg", desc: "浙江安吉江南天池 by Jimmy Song"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fznffr5x7zj324k0u0npd.jpg", desc: "浙江安吉江南天池 by Jimmy Song"}]
 draft: false
 description: "本文将回顾 Kubernetes 与云原生在2018年的进展，可以说2018年是 Kubernetes 大规模落地，Service Mesh 蓄势待发的一年。"
 tags: ["kubernetes","cloud native","istio","service mesh","serverless"]

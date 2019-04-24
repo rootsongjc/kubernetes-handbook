@@ -2,7 +2,7 @@
 title: "Cloud Native Sandbox"
 subtitle: "A standalone Kubernetes and Istio environment with Docker on you own laptop"
 date: 2019-01-18T19:06:14+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNc79ly1fzay4e75ftj31cq0kwhdu.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fzay4e75ftj31cq0kwhdu.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 aliases: "/posts/cloud-native-sandbox/"

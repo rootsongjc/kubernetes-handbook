@@ -2,7 +2,7 @@
 title: "Istio 的数据平面 Envoy Proxy 配置详解"
 subtitle: "你该了解的那些 Envoy 配置"
 date: 2019-01-07T16:11:27+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1fyy3et9btqj31d80nane1.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fyy3et9btqj31d80nane1.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 description: "本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。"

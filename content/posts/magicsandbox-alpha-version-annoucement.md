@@ -2,7 +2,7 @@
 title: "MagicSandbox Alpha 版本发布"
 subtitle: "在线实践式软件工程教育平台"
 date: 2018-06-19T12:35:47+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkly1fsgdwu63a2j315k0hg7wh.jpg", desc: "WFC|Beijing|Jun 15,2018"}]
+bigimg: [{src: "/img/banners/00704eQkly1fsgdwu63a2j315k0hg7wh.jpg", desc: "WFC|Beijing|Jun 15,2018"}]
 draft: false
 notoc: true
 tags: ["kubernetes","startups"]

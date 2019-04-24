@@ -3,7 +3,7 @@ title: "Hugo Universal主题使用指南"
 subtitle: "一套适用于产品展示的最佳主题"
 date: 2018-05-25T18:43:51+08:00
 description: "一套适用于产品展示的最佳主题 hugo-universal 主题使用说明"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1friw07in66j30rs0am75f.jpg", desc: "On the overpass|Hangzhou|May 13,2018"}]
+bigimg: [{src: "/img/banners/00704eQkgy1friw07in66j30rs0am75f.jpg", desc: "On the overpass|Hangzhou|May 13,2018"}]
 tags: ["hugo","website"]
 categories: "github"
 draft: false

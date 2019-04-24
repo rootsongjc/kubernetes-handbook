@@ -2,7 +2,7 @@
 title: "Istio知识图谱 v0.1 发布及 Istio Handbook 社区图书启动孵化"
 subtitle: "联署签名进行中"
 date: 2019-02-26T14:09:04+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tKfTcly1g0jsrjl78yj31k20u0qv8.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g0jsrjl78yj31k20u0qv8.jpg", desc: "Photo via unsplash"}]
 draft: false
 notoc: true
 description: "Istio知识图谱 v0.1 发布了，趁此契机我想把我写了有五个月的 Istio Handbook 捐献给 ServiceMesher 社区孵化，目前正在联署签名中。"

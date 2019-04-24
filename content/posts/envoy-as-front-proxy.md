@@ -5,7 +5,7 @@ subtitle: "Envoy 作为 Service Mesh 的数据平面示例"
 description: "本文是使用 Envoy 作为前端代理的介绍，仅使用 docker 容器和 docker-compose 做编排在单机中运行，帮助我们从更底层了解 Envoy，当我们将 Envoy 作为 Istio Service Mesh 的 data panel 的时候将更加游刃有余。"
 tags: ["envoy","service-mesh"]
 categories: "service-mesh"
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tKfTcly1g1gnwqj5hmj31cg0meqv5.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g1gnwqj5hmj31cg0meqv5.jpg", desc: "Photo via unsplash"}]
 draft: false
 ---
 

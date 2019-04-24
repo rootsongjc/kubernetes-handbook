@@ -10,7 +10,7 @@ notoc: true
 noreward: true
 noadsense: true
 seealso: false
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1fythjweakyj31bo0pke81.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fythjweakyj31bo0pke81.jpg", desc: "Via unsplash"}]
 ---
 
 友情推广！以下岗位正在火热招聘中，一起来构建金融级云原生基础设施！点击下面的链接了解详情，如果暂时没有合适你的也没关系，可以直接[联系我](/about)。

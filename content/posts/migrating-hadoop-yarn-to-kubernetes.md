@@ -5,7 +5,7 @@ title: "迁移传统应用到Kubernetes步骤详解——以Hadoop YARN为例"
 categories: "devops"
 description: "本文旨在说明如何将已有的应用程序尤其是传统的分布式应用程序迁移到 kubernetes 中。如果该类应用程序符合云原生应用规范（如12因素法则）的话，那么迁移会比较顺利，否则会遇到一些麻烦甚至是阻碍。"
 tags: ["kubernetes","hadoop","yarn"]
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwgy1fx9wx6fdz3j31tc0qqu0y.jpg"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fx9wx6fdz3j31tc0qqu0y.jpg" }]
 ---
 
 ## 前言

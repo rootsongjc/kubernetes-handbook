@@ -2,7 +2,7 @@
 title: "理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持"
 subtitle: "by Jimmy Song"
 date: 2018-09-11T10:39:42+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/0069RVTdly1fv5et0keqyj31i61047qt.jpg", desc: "Photo by Christopher Burns"}]
+bigimg: [{src: "/img/banners/0069RVTdly1fv5et0keqyj31i61047qt.jpg", desc: "Photo by Christopher Burns"}]
 draft: false
 notoc: true
 description: "以往有很多文章讲解 Istio 是如何做 Sidecar 注入的，但是没有讲解注入之后 Sidecar 工作的细节。本文将带大家详细了解 Istio 是如何将 Envoy 作为 Sidecar 的方式注入到应用程序 Pod 中，及 Sidecar 是如何做劫持流量的。"

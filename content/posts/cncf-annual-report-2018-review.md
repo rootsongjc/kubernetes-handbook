@@ -2,7 +2,7 @@
 title: "CNCF年度报告解读（2018年）"
 subtitle: "云原生计算基金会2018年度报告解读"
 date: 2019-02-13T17:23:01+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNc79ly1g04x9xd8jhj30yc0eg4qp.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1g04x9xd8jhj30yc0eg4qp.jpg", desc: "Photo via unsplash"}]
 draft: false
 description: "本文是对 CNCF（云原生计算基金会）2018年年度报告的解读。"
 tags: ["cloud native","cncf"]

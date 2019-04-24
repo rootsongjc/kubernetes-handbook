@@ -5,7 +5,7 @@ description: "本文讲述如何做 Docker 的技术选型。"
 draft: false
 categories: "docker"
 tags: ["docker"]
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNc79ly1g22ijkeepuj31bu0oib29.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1g22ijkeepuj31bu0oib29.jpg", desc: "Photo via Unsplash"}]
 ---
 
 ## 回顾历史

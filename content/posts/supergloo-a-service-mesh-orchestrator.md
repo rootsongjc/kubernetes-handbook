@@ -2,7 +2,7 @@
 title: "SuperGloo—服务网格编排平台"
 subtitle: "多网格是混合云环境下云原生应用的必然选择"
 date: 2019-01-03T15:40:11+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1fytfvccjqij31kk0ty4qs.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fytfvccjqij31kk0ty4qs.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: true
 noreward: true

@@ -5,7 +5,7 @@ draft: false
 description: "开源镜像定义工具Packer简介。"
 categories: "devops"
 tags: ["packer","hashicorp"]
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1g22iky0n18j31i60n84qp.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1g22iky0n18j31i60n84qp.jpg", desc: "Photo via Unsplash"}]
 ---
 
 昨天研究了下[**Vagrant**](https://github.com/mitchellh/vagrant)，感觉它的虚拟机ruby格式定义很麻烦，经人指点还有一个叫做[**packer**](https://github.com/mitchellh/packer)的东西，也是Hashicorp这家公司出品的，今天看了下。

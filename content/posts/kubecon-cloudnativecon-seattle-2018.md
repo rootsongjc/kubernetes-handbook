@@ -2,7 +2,7 @@
 title: "Kubecon&CloudNativeCon Seattle 2018"
 subtitle: "附PPT资料分享"
 date: 2018-12-16T15:47:05+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fy8nxbj1noj31hf0u0h06.jpg", desc: " via linbit.com"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fy8nxbj1noj31hf0u0h06.jpg", desc: " via linbit.com"}]
 draft: false
 notoc: true
 description: "KubeCon&CloudNativeCon 西雅图2018资料分享。"

@@ -5,7 +5,7 @@ tags: ["kubernetes"]
 categories: "kubernetes"
 date: 2017-11-28T11:52:40+08:00
 draft: false
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fyb6ie95x2j318i0mwanw.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fyb6ie95x2j318i0mwanw.jpg", desc: "Via unsplash"}]
 ---
 
 自定义资源是对Kubernetes API的扩展，kubernetes中的每个资源都是一个API对象的集合，例如我们在YAML文件里定义的那些spec都是对kubernetes中的资源对象的定义，所有的自定义资源可以跟kubernetes中内建的资源一样使用kubectl操作。

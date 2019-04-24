@@ -2,7 +2,7 @@
 title: "Kubernetes项目联合创始人Brendan Burns新书Managing Kubernetes介绍及评论"
 subtitle: "本书作者Brendan Burns & Craig Tracey"
 date: 2018-10-23T21:21:07+08:00
-bigimg: [{src: "https://ws4.sinaimg.cn/large/006tNbRwly1fwihjc8qbaj30ku0afdjf.jpg", desc: "Photo Kubernetes"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fwihjc8qbaj30ku0afdjf.jpg", desc: "Photo Kubernetes"}]
 draft: false
 description: "本文是Kubernetes项目联合创始人Brendan Burns新书Managing Kubernetes介绍并发表了我个人对本书的评论。"
 tags: ["kubernetes","book"]

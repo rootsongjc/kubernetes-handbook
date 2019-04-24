@@ -2,7 +2,7 @@
 title: "KubeCon&CloudNativeCon China 2018"
 subtitle: "千人面基大会"
 date: 2018-11-16T13:40:38+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fx9vimals2j31o40u0u0y.jpg"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fx9vimals2j31o40u0u0y.jpg" }]
 draft: false
 notoc: true
 description: "KubeCon&CloudNativeCon China 2018参会回顾。"

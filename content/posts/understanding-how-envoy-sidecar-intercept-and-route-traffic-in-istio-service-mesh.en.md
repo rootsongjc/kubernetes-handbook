@@ -1,7 +1,7 @@
 ---
 title: "Understanding How Envoy Sidecar Intercept and Route Traffic in Istio Service Mesh"
 date: 2018-12-27T10:01:22+08:00
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNbRwly1fyl2yw6im1j31cg0imqv5.jpg", desc: "Via unsplash"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fyl2yw6im1j31cg0imqv5.jpg", desc: "Via unsplash"}]
 draft: false
 notoc: true
 aliases: "/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/"

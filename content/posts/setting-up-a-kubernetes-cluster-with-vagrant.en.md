@@ -6,7 +6,7 @@ description: "Setting Up a Kubernetes Cluster With Vagrant and Virtualbox with o
 translationKey: "kubernetesvagrant"
 tags: ["kubernetes","vagrant"]
 categories: "kubernetes"
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tKfTcly1g1gm6t4qmvj31fi0o0h2b.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tKfTcly1g1gm6t4qmvj31fi0o0h2b.jpg", desc: "Photo via unsplash"}]
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: "企业级服务网格架构之路解读"
 subtitle: "The Enterprise Path to Service Mesh Architectures"
 description: "本文是对Lee Calcote的The Enterprise path to Service Mesh Architectures一书的解读。"
 date: 2018-08-17T18:05:08+08:00
-bigimg: [{src: "https://ws2.sinaimg.cn/large/006tNbRwly1fucv39c8dgj31540iw1kx.jpg", desc: "NA|Bejing|Aug 17,2018"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fucv39c8dgj31540iw1kx.jpg", desc: "NA|Bejing|Aug 17,2018"}]
 draft: false
 notoc: false
 tags: ["service mesh","istio"]

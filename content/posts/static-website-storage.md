@@ -4,7 +4,7 @@ subtitle: "七牛云 VS Cloudinary"
 date: 2017-10-17T22:33:34+08:00
 draft: false
 tags: ["website","storage","cloudinary"]
-bigimg: [{src: "https://ws3.sinaimg.cn/large/006tNc79ly1fzpl8tq8cij31ba0peb2a.jpg", desc: "Photo via unsplash"}]
+bigimg: [{src: "/img/banners/006tNc79ly1fzpl8tq8cij31ba0peb2a.jpg", desc: "Photo via unsplash"}]
 description: "网站中的静态文件云储存免费方案选择cloudinary与七牛云对比，推荐微博图床。"
 ---
 

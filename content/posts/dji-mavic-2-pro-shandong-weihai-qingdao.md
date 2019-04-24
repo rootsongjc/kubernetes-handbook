@@ -2,7 +2,7 @@
 title: "无人机飞行50公里航拍山东半岛东部海滨"
 subtitle: "使用DJI Mavic 2 Pro鸟瞰山东半岛威海、青岛海滨，DJI飞行员等级达LV16"
 date: 2018-10-07T08:59:45+08:00
-bigimg: [{src: "https://ws1.sinaimg.cn/large/006tNbRwly1fvze14w44ej31870izq8o.jpg", desc: "DJI Mavic 2 Pro,Zhukou,©Jimmy Song"}]
+bigimg: [{src: "/img/banners/006tNbRwly1fvze14w44ej31870izq8o.jpg", desc: "DJI Mavic 2 Pro,Zhukou,©Jimmy Song"}]
 draft: false
 notoc: true
 description: "国庆假期期间在山东半岛威海、荣成航拍，使用DJI Mavic 2 Pro拍摄，累计飞行约50公里。"
