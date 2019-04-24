@@ -20,10 +20,9 @@ googleAnalytics = "UA-93485976-1"
 [Params]
 hello = "Hi,I'm Jimmy"
 subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
-#logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
-logo = "https://ws4.sinaimg.cn/large/006tNc79ly1g054j11379j303k03kq2y.jpg"
+logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
 favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
-share_img = "https://ws4.sinaimg.cn/large/006tKfTcly1ft1oje0atgj31kw1kzk1j.jpg"
+share_img = "/img/jimmysong.jpg"
 commit = false
 rss = true
 # ad section, comment this to disable it
@@ -46,24 +45,8 @@ recent_posts = true
 contact_me = """获取我的时间表，与我联系或加入微信交流群，参与社区活动，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
 
 [[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/006tNc79ly1fyzhvztw7ij31i40u0u10.jpg"
-desc = "Service Mesh Meetup #5 Guangzhou - Jan 6, 2019"
-
-[[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/006tNbRwly1fxpvv5xakij32470u0npf.jpg"
-desc = "Service Mesh Meetup #4 Shanghai - Nov 25, 2018"
-
-[[Params.bigimg]]
 src = "https://ws2.sinaimg.cn/large/006tNbRwly1fx80odnismj31jk0lm7wh.jpg"
 desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
-
-[[Params.bigimg]]
-src = "https://ws4.sinaimg.cn/large/006tNbRwly1fx80jwyftkj31jk0w5x6p.jpg"
-desc = "Envoy,Istio and ServiceMesher community members at KubeCon Shanghai - Nov 14, 2018"
-
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tNbRwly1fwvuai4i9nj31860mce81.jpg"
-desc = "Josh Long&Me with his book translated by me at SpringTour Beijing - Nov 3, 2018"
 
 [[Params.bigimg]]
 src = "https://ws4.sinaimg.cn/large/006tNbRwgy1fvlxgaxyj0j30xc0g7n4u.jpg"
@@ -76,18 +59,6 @@ desc = "Service Mesh Meetup #3 Shenzhen - Aug 25, 2018"
 [[Params.bigimg]]
 src = "https://ws3.sinaimg.cn/large/0069RVTdly1fu5luiuruvj31kw0kukjw.jpg"
 desc = "Service Mesh Meetup #2 Beijing - Jul 29, 2018"
-
-[[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tKfTcly1ft1mp16tllj31b00loe82.jpg"
-desc = "Service Mesh Meetup #1 Hangzhou - Jun 30, 2018"
-
-[[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gsumgt0j31kq0j4qv5.jpg"
-desc = "Kubernetes Meetup Beijing - Aug 28, 2017"
-
-[[Params.bigimg]]
-src = "https://ws1.sinaimg.cn/large/00704eQkly1fs1gwrkdp4j33070xgnpe.jpg"
-desc = "Istio Meetup in Beijing GDG - Apr 24, 2018"
 
 [Author]
   name = "Jimmy Song(宋净超)"
