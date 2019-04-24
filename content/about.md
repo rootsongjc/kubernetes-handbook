@@ -17,8 +17,8 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
 [English](/en/about/)
 
 <div class="gallery">
-    <a href="https://ws4.sinaimg.cn/large/006tNc79ly1g24cd92tafj30u00za409.jpg" title="扫描二维码加我微信">
-    <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g24cd92tafj30u00za409.jpg " alt="Jimmy Son 的微信" width="30%" height="30%">
+    <a href="/img/jimmy-song-wechat.jpg" title="扫描二维码加我微信">
+    <img src="/img/jimmy-song-wechat.jpg" alt="Jimmy Son 的微信" width="30%" height="30%">
     </a>
 </div>
 
@@ -130,7 +130,7 @@ bigimg: [{src: "https://ws1.sinaimg.cn/large/00704eQkgy1fs4rhvpm6bj30x30im1kx.jp
     <tr>
         <td>
             <a href="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" title="云原生应用架构">
-            <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" alt="云原生赢家架构微信公众号">
+            <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" alt="云原生应用架构微信公众号">
             </a>
         </td>
         <td>
