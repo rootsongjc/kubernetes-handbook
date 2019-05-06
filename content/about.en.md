@@ -75,7 +75,7 @@ The activities I attended or organized.
 
 #### 2019
 
-- Jun 24-26, 2019 | Shanghai | [KubeCon + CloudNativeCon + Open Source Summit](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/) | Coming soon...
+- Jun 24, 2019 | Shanghai |  [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/)  | SOFAStack Cloud Native Workshop Producer 🔥🔥🔥
 - Jun 21-23, 2019 | Shenzhen | [GIAC](http://giac.msup.com.cn/index.php) | Service Mesh Subject Producer
 
 #### Service Mesh Meetup

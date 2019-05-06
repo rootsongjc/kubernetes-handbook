@@ -42,22 +42,22 @@ description = "宋净超的博客|Cloud Native|云原生布道师"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 about_me = """关注Kubernetes/Service Mesh/Serverless/Cloud Native/Open Source，关注微信公众号获取最新资讯。![ServiceMesher公众号二维码](/img/servicemesher-wechat-public-account-tiny.jpg)"""
 recent_posts = true
-contact_me = """获取我的时间表，与我联系或加入微信交流群，参与社区活动，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
+contact_me = """请扫描下面的微信二维码联系我加入微信交流群，获取KubeCon China 2019门票折扣优惠，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
 
 [[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/006tNbRwly1fx80odnismj31jk0lm7wh.jpg"
+src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*iPmbR6QP_EAAAAAAAAAAAABjARQnAQ"
 desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
 
 [[Params.bigimg]]
-src = "https://ws4.sinaimg.cn/large/006tNbRwgy1fvlxgaxyj0j30xc0g7n4u.jpg"
+src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*Naq4R5jxlY4AAAAAAAAAAABjARQnAQ"
 desc = "At CNCF booth, the Computing Conference in Hangzhou - Sept 21, 2018"
 
 [[Params.bigimg]]
-src = "https://ws2.sinaimg.cn/large/0069RVTdly1fuoclagh35j318g0iz1kx.jpg"
+src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*2QKzTpOfHw0AAAAAAAAAAABjARQnAQ"
 desc = "Service Mesh Meetup #3 Shenzhen - Aug 25, 2018"
 
 [[Params.bigimg]]
-src = "https://ws3.sinaimg.cn/large/0069RVTdly1fu5luiuruvj31kw0kukjw.jpg"
+src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*F_qxRoBZXlEAAAAAAAAAAABjARQnAQ"
 desc = "Service Mesh Meetup #2 Beijing - Jul 29, 2018"
 
 [Author]
