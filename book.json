@@ -34,7 +34,6 @@
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
         "lightbox",
-        "adsense",
         "ga"
     ],
     "pluginsConfig": {
