@@ -1,6 +1,6 @@
 # 从外部访问Kubernetes中的Pod
 
-前面几节讲到如何访问kubneretes集群，本文主要讲解访问kubenretes中的Pod和Serivce的集中方式，包括如下几种：
+前面几节讲到如何访问kubneretes集群，本文主要讲解访问kubenretes中的Pod和Serivce的几种方式，包括如下几种：
 
 - hostNetwork
 - hostPort
