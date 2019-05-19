@@ -9,6 +9,7 @@ notoc: true
 translationKey: "kubernetesvagrant"
 bigimg: [{src: "/img/banners/006tKfTcly1g1gm6t4qmvj31fi0o0h2b.jpg", desc: "Photo via unsplash"}]
 draft: false
+translationKey: "setting-up-a-kubernetes-cluster-with-vagrant"
 ---
 
 当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。

@@ -13,9 +13,11 @@ googleAnalytics = "UA-93485976-1"
   [languages.zh]
     languageName = "中文"
     weight = 1
+    contentDir = "content/zh"
   [languages.en]
     languageName = "English"
     weight = 2
+    contentDir = "content/en"
 
 [Params]
 hello = "Hi,I'm Jimmy"

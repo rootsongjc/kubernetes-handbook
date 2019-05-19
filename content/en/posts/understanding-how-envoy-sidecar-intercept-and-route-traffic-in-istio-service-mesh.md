@@ -5,10 +5,10 @@ bigimg: [{src: "/img/banners/006tNbRwly1fyl2yw6im1j31cg0imqv5.jpg", desc: "Via u
 draft: false
 notoc: true
 aliases: "/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/"
-translationKey: "understandingEnvoySidecarIntercept"
 description: ""
 tags: ["envoy","sidecar","istio","iptables","service mesh"]
 categories: ["istio"]
+translationKey: "understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh"
 ---
 
 This article uses Istio's official [bookinfo example](https://preliminary.istio.io/zh/docs/examples/bookinfo) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) .

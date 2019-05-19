@@ -8,6 +8,7 @@ tags: ["kubernetes","vagrant"]
 categories: "kubernetes"
 bigimg: [{src: "/img/banners/006tKfTcly1g1gm6t4qmvj31fi0o0h2b.jpg", desc: "Photo via unsplash"}]
 draft: false
+translationKey: "setting-up-a-kubernetes-cluster-with-vagrant"
 ---
 
 **This doc is out-of-date, see at GitHub: https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster**

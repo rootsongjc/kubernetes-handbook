@@ -7,6 +7,7 @@ bigimg: [{src: "/img/banners/006tKfTcgy1ftbur3klh0j30zk0k0ad0.jpg", desc: "Netwo
 draft: false
 tags: ["Istio","SOFAMesh","MOSN","Ant Financial","Service Mesh"]
 categories: ["service mesh"]
+translationKey: "introducing-sofamesh-a-solution-for-large-scale-service-mesh-by-ant-financial"
 ---
 
 4月，蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点击链接阅读《[开源 |蚂蚁金服启动分布式中间件开源计划，用于快速构建金融级云原生架构](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247484729&idx=1&sn=0d8dbee2739fb0eef3e4ad699661fd13&chksm=e9abbd49dedc345fd5d6898fd1989710f249d6386bf3d52ae1603365a4a1c3696538bc8b9a8f&scene=21#wechat_redirect)》、《[开源 | 蚂蚁金服分布式中间件开源第二弹：丰富微服务架构体系](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247485026&idx=1&sn=0a367bc67d5fe3a268e3715b17e020ab&chksm=e9abbe12dedc370489102d9307b832457891fdb0530eec5c35c0fb82bc2a3e6dbbc7db8436c4&scene=21#wechat_redirect)》），这一系列的动作受到大家的关注和支持，SOFA社区也日益壮大。

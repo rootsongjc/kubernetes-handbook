@@ -11,6 +11,7 @@ noadsense: true
 noreward: true
 seealso: false
 bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "Dark Side of the Moon - Pink Floyd"}]
+translationKey: "about"
 ---
 
 [中文](/about/)
