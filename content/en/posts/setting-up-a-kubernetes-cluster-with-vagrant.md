@@ -3,7 +3,6 @@ title: "Setting Up a Kubernetes Cluster With Vagrant and Virtualbox"
 subtitle: "With one master and 3 node, Dashboard, CoreDNS and Heapster monitoring"
 date: 2018-02-04T09:55:58+08:00
 description: "Setting Up a Kubernetes Cluster With Vagrant and Virtualbox with one master and 3 node, Dashboard, CoreDNS and Heapster monitoring"
-translationKey: "kubernetesvagrant"
 tags: ["kubernetes","vagrant"]
 categories: "kubernetes"
 bigimg: [{src: "/img/banners/006tKfTcly1g1gm6t4qmvj31fi0o0h2b.jpg", desc: "Photo via unsplash"}]
