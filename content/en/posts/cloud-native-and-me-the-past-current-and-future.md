@@ -7,6 +7,7 @@ draft: false
 notoc: true
 tags: ["cloud native"]
 categories: ["cloud native"]
+translationKey: "cloud-native-and-me-the-past-current-and-future"
 ---
 
 Today I am honored to announce that I have become a [CNCF Ambassador](https://www.cncf.io/people/ambassadors/). Here is my story with Cloud Native.

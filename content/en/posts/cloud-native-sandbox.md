@@ -9,6 +9,7 @@ aliases: "/posts/cloud-native-sandbox/"
 description: "Cloud Native Sandbox can help you setup a standalone Kubernetes environment with Docker on you own laptop."
 tags: ["cloud native","kubernetes","istio","docker"]
 categories: ["cloud native"]
+translationKey: "cloud-native-sandbox"
 ---
 
 Github: https://github.com/rootsongjc/cloud-native-sandbox
