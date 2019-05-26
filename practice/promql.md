@@ -18,7 +18,7 @@ Prometheus 查询语言简称 PromQL，其中包含以下四类数据类型：
 
 可以通过 Prometheus web 页面查询。
 
-![Prometheus 的查询页面](https://ws2.sinaimg.cn/large/006tNbRwly1fwcl7v28rhj30xl0onadv.jpg)
+![Prometheus 的查询页面](../images/006tNbRwly1fwcl7v28rhj30xl0onadv.jpg)
 
 还可以使用 HTTP API 直接请求查询，例如你使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 部署了 [Istio](https://istio.io/zh)，会默认安装 Prometheus，你可以在浏览器中请求 <http://prometheus.istio.jimmysong.io/api/v1/query?query=http_requests_total{job=%22kubernetes-nodes%22}>，将会看到如下格式的 json 返回值。
 

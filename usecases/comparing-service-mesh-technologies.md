@@ -24,6 +24,6 @@
 
 下图是一个使用**客户端库**将应用与服务治理紧耦合的示意图。
 
-![客户端库](https://ws4.sinaimg.cn/large/006tNbRwly1fubnx0q9bpj30vq0pq465.jpg)
+![客户端库](../images/006tNbRwly1fubnx0q9bpj30vq0pq465.jpg)
 
 从图中我们可以看到，应用程序代码与客户端度库紧耦合在一起，不同的服务团队需要一起协调超时和重试机制等。容器编排更适用于分布式应用，API Gateway通常只需要部署在系统边缘即可，不需要在每个应用中都部署，而Service Mesh却需要在每个服务或者说节点中部署。

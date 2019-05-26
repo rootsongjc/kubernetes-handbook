@@ -2,7 +2,7 @@
 
 [Calico](https://www.projectcalico.org/) 原意为”有斑点的“，如果说一只猫为 calico cat 的话，就是说这是只花猫，也叫三色猫，所以 calico 的 logo 是只三色猫。
 
-![Calico](https://ws1.sinaimg.cn/large/006tNc79gy1fz65bt7ieej30c90bsgn2.jpg)
+![Calico](../images/006tNc79gy1fz65bt7ieej30c90bsgn2.jpg)
 
 ## 概念
 

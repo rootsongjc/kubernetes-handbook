@@ -69,20 +69,22 @@
 - **与我联系**：扫描下面的二维码关注Jimmy Song 的<u>个人微信公众号</u>CloudNativeGo（云原生应用架构）
 
 <p align="center">
-  <img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cloud-native-go-wechat-qr-code.jpg?raw=true" alt="云原生应用架构微信公众号二维码"/>
+  <img src="images/cloud-native-go-wechat-qr-code.jpg" alt="云原生应用架构微信公众号二维码"/>
 </p>
+
 
 - **ServiceMesher**：ServiceMesher 社区公众号，下承 Kubernetes、上接 Serverless，云原生应用的通信层，旨在加强行业内部交流，促进开源文化构建，推动 Kubernetes、Service Mesh、Serverless 等云原生技术在企业落地，发布活动及业界最前沿资讯。[加入组织](http://www.servicemesher.com/contact/)。
 
 <p align="center">
-  <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshv989hhqj309k09k0t6.jpg" alt="ServiceMesher微信公众号二维码"/>
+  <img src="images/servicemesher-wechat-public.jpg" alt="ServiceMesher微信公众号二维码"/>
 </p>
+
 
 ## 读者反馈
 
 以下是部分读者反馈，希望更多人[加入我们](http://www.servicemesher.com)，共同打造中国质量最高的云原生社区！
 
-![Kubernetes handbook 读者反馈](https://ws2.sinaimg.cn/large/006tKfTcgy1g0oxheyjxfj31bc0u0kej.jpg)
+![Kubernetes handbook 读者反馈](images/feedback.jpg)
 
 ## 云原生出版物
 
@@ -98,6 +100,7 @@
 为云原生干杯🍻！使用微信扫一扫请我喝一杯☕️
 
 <p align="center">
-<img src="https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/wechat-appreciate-qrcode.jpg?raw=true" alt="微信赞赏码"/>
+<img src="images/wechat-appreciate-qrcode.jpg" alt="微信赞赏码"/>
 </p>
+
 

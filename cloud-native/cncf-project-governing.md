@@ -4,7 +4,7 @@ CNCF 根据“[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”将其托
 
 > “[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”是由Geoffrey A. Moore提出的高科技产品的市场营销理论。新技术要想跨越鸿沟，必须能够实现一些跨越式的发展，**拥有某一些以前不可能实现的功能**，具有某种内在价值并能够**赢得非技术人员的**青睐。
 
-![CNCF 项目的成熟度分类](https://ws1.sinaimg.cn/large/006tNc79ly1g1yzc5xre6j30o20a8q3t.jpg)
+![CNCF 项目的成熟度分类](../images/cncf-graduation.jpg)
 
 目前处于沙箱、孵化中、已毕业项目的数量比例为5：16：13，详见 <https://cncf.io/projects>。其中沙箱（sandbox）项目因为其处于早期阶段并没有直接在上面的链接页面中列出，而是一个单独的 [Sandbox](https://www.cncf.io/sandbox-projects/) 页面，因为 CNCF 为 sandbox 阶段的项目会谨慎背书。
 
@@ -20,7 +20,7 @@ CNCF 中托管的开源项目要符合云原生定义：
 
 下图演示了开源项目加入 CNCF 后的整个运作流程。
 
-![CNCF中的项目运作](https://ws4.sinaimg.cn/large/006tNc79ly1g1yz80ag98j31cs0n2gr7.jpg)
+![CNCF中的项目运作](../images/006tNc79ly1g1yz80ag98j31cs0n2gr7.jpg)
 
 ## 开源项目如何加入 CNCF
 
@@ -99,3 +99,4 @@ CNCF 的开源项目遵循如下图所示的成熟度演进。
 
 - [鸿沟理论 - jianshu.com](https://www.jianshu.com/p/a305fa93580b)
 - [CNCF Graduation Criteria v1.2 - github.com](https://github.com/cncf/toc/blob/master/process/graduation_criteria.adoc)
+

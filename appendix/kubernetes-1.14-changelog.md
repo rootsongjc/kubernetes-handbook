@@ -5,9 +5,9 @@
 - 对于管理 Windows node 的生产级支持。
 - 重写了 kubectl 的文档，并为其专门启用新域名 <https://kubectl.docs.kubernetes.io/>，该文档本身类似 Gitbook 的形式，使用 Resource Config 的形式组织，集成了 [kustomize](https://github.com/kubernetes-sigs/kustomize)，还有了自己的 logo 和吉祥物 kubee-cuddle。
 
-![大鱿鱼：kubectl log](https://ws2.sinaimg.cn/large/006tKfTcly1g1gbdpsdbgj303c03cwel.jpg)
+![大鱿鱼：kubectl log](../images/006tKfTcly1g1gbdpsdbgj303c03cwel.jpg)
 
-![Kubernetes 吉祥物 kubee-cuddle](https://ws1.sinaimg.cn/large/006tKfTcly1g1gbjvx2ugj305k05mmx9.jpg)
+![Kubernetes 吉祥物 kubee-cuddle](../images/006tKfTcly1g1gbjvx2ugj305k05mmx9.jpg)
 
 - kubectl 插件机制发布稳定版本。
 - Persistent Local Volume GA。

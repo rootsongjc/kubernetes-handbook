@@ -6,7 +6,7 @@
 
 Jaeger 是遵循 OpenTracing 的一种实现。
 
-![Jaeger UI](https://ws4.sinaimg.cn/large/006tNbRwly1fwjg48fh7xj31kw0wedrg.jpg)
+![Jaeger UI](../images/006tNbRwly1fwjg48fh7xj31kw0wedrg.jpg)
 
 关于 OpenTracing 的详细约定请参考：
 
@@ -25,7 +25,7 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 
 每个 trace 都由一系列 Span 组成，一个 span 可以理解为两个微服务之间的调用，如同 Chrome 检查器中查看网络访问瀑布一样。
 
-![Chrome Inspector](https://ws2.sinaimg.cn/large/006tNbRwly1fwjkfbvfluj30y70hf0y9.jpg)
+![Chrome Inspector](../images/006tNbRwly1fwjkfbvfluj30y70hf0y9.jpg)
 
 根据 OpenTracing 的规格约定，每个 Span 都要包含以下状态：
 

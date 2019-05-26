@@ -21,13 +21,13 @@ Katacoda已支持Istio 1.0的学习环境。
 
 地址：https://www.katacoda.com/courses/istio/deploy-istio-on-kubernetes
 
-![katacoda](https://ws4.sinaimg.cn/large/006tNc79gy1ftwe77v4u5j31kw0ziwtw.jpg)
+![katacoda](../images/006tNc79gy1ftwe77v4u5j31kw0ziwtw.jpg)
 
-![weavescope](https://ws3.sinaimg.cn/large/006tNc79gy1ftwhtmzhfej31kw0ziww1.jpg)
+![weavescope](../images/006tNc79gy1ftwhtmzhfej31kw0ziww1.jpg)
 
 只要傻瓜式操作就可以部署一个Istio出来，同时还提供了Weave scope可以对service mesh的中的服务关系做可视化呈现。
 
-![weavescope](https://ws2.sinaimg.cn/large/006tNc79gy1ftwhvtu1vxj31kw0zitvc.jpg)
+![weavescope](../images/006tNc79gy1ftwhvtu1vxj31kw0zitvc.jpg)
 
 同时还能提供部分监控功能，比如服务状态，CPU和内存使用情况。
 
@@ -37,9 +37,9 @@ Katacoda已支持Istio 1.0的学习环境。
 
 推荐原因：教程topic划分简洁得当，RedHat大力加持，未来的频繁更新可以预期。
 
-![Red Hat](https://ws2.sinaimg.cn/large/006tNc79gy1ftwiolw1tyj31kw0zib29.jpg)
+![Red Hat](../images/006tNc79gy1ftwiolw1tyj31kw0zib29.jpg)
 
-![Red Hat developers](https://ws2.sinaimg.cn/large/006tNc79gy1ftwjyxiw1pj31kw0zi4qp.jpg)
+![Red Hat developers](../images/006tNc79gy1ftwjyxiw1pj31kw0zi4qp.jpg)
 
 ## IBM的Istio示例教程
 
@@ -49,9 +49,9 @@ Katacoda已支持Istio 1.0的学习环境。
 
 https://developer.ibm.com/code/patterns/manage-microservices-traffic-using-istio
 
-![IBM developerWorks](https://ws3.sinaimg.cn/large/006tNc79gy1ftweryj0zrj31kw0zix6q.jpg)
+![IBM developerWorks](../images/006tNc79gy1ftweryj0zrj31kw0zix6q.jpg)
 
-![IBM developers](https://ws2.sinaimg.cn/large/006tNc79gy1ftwesjg1e2j31kw0s8woq.jpg)
+![IBM developers](../images/006tNc79gy1ftwesjg1e2j31kw0s8woq.jpg)
 
 最后更新于2018年5月10号，是基于Istio 0.8的。
 

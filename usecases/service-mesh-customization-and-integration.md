@@ -1,3 +1,7 @@
+---
+typora-root-url: ../images
+---
+
 # 定制和集成
 
 **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
@@ -8,20 +12,20 @@
 
 **nginMesh**
 
-![nginMesh架构图](https://ws4.sinaimg.cn/large/006tNbRwly1fucp8yralaj30vu0sijx8.jpg)
+![nginMesh架构图](../images/006tNbRwly1fucp8yralaj30vu0sijx8.jpg)
 
 通过扩展Istio Mixer adapter来对接不同的监控后端。
 
-![Mixer adapter](https://ws3.sinaimg.cn/large/006tNbRwly1fucplat3l9j30vo0lw43l.jpg)
+![Mixer adapter](../images/006tNbRwly1fucplat3l9j30vo0lw43l.jpg)
 
 **SOFAMosn**
 
 还有蚂蚁金服开源的Go语言版的数据平面[SOFAMosn](https://github.com/alipay/sofa-mosn)，这是也兼容Istio的SOFAMesh的一部分，也可以单独作为代理使用，详见：[SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)。
 
-![SOFAMesh](https://ws4.sinaimg.cn/large/006tNbRwly1fucpano6gsj31kw1biq98.jpg)
+![SOFAMesh](../images/006tNbRwly1fucpano6gsj31kw1biq98.jpg)
 
 [SOFAMosn](https://github.com/alipay/sofa-mosn)的模块架构图。
 
-![SOFAMosn模块架构图](https://ws3.sinaimg.cn/large/006tNbRwly1fucpc5fn8wj31kw0sfdnu.jpg)
+![SOFAMosn模块架构图](../images/006tNbRwly1fucpc5fn8wj31kw0sfdnu.jpg)
 
 在未来我们会看到更多定制的数据平面和Mixer适配器出现。

@@ -16,7 +16,7 @@ Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的�
 
 本章主要介绍Service Mesh的定义和组成，为什么要使用Service Mesh，它可以带来哪些好处。
 
-![Service Mesh模型对比](https://ws1.sinaimg.cn/large/0069RVTdly1fuafvbnuc7j310a0oqdm9.jpg)
+![Service Mesh模型对比](../images/0069RVTdly1fuafvbnuc7j310a0oqdm9.jpg)
 
 Service Mesh与传统网络的区别就是**硬件或者虚拟网络**与**软件定义网络（SDN）**的区别，我们从上图中可以看到物理和虚拟网络中比起SDN还多了**管理平面**。
 
@@ -26,13 +26,13 @@ Service Mesh与传统网络的区别就是**硬件或者虚拟网络**与**软�
 
 下图是网状拓扑，所谓网状拓扑就是每个节点都可以跟所有其他节点直接互联，这样而这也是链接数最多一种拓扑，如果有n个节点的话，链接数就是n(n-1)。
 
-![网状网络拓扑](https://ws1.sinaimg.cn/large/0069RVTdly1fuaie8jan8j310a0kitem.jpg)
+![网状网络拓扑](../images/0069RVTdly1fuaie8jan8j310a0kitem.jpg)
 
 ### Service Mesh架构
 
 下图是[Conduit](https://condiut.io) Service Mesh（现在已合并到Linkerd2中了）的架构图，这是Service Mesh的一种典型的架构。
 
-![Service Mesh架构图](https://ws2.sinaimg.cn/large/0069RVTdly1fuail4d24jj31080rkgr7.jpg)
+![Service Mesh架构图](../images/0069RVTdly1fuail4d24jj31080rkgr7.jpg)
 
 Service Mesh中分为**控制平面**和**数据平面**，当前流行的两款开源的Service Mesh Istio和Linkerd实际上都是这种构造，只不过Istio的划分更清晰，而且部署更零散，很多组件都被拆分，控制平面中包括Mixer、Pilot、Citadel，数据平面默认是用Envoy；而Linkerd中只分为linkerd做数据平面，namerd作为控制平面。
 
@@ -61,7 +61,7 @@ Service Mesh中服务是一等公民，它提供L5的网络流量管理，并提
 
 还是拿Istio做例子，Mixer通过适配器将应用的遥测数据发送给后端监控、日志、认证和份额管理系统。
 
-![Istio Mixer](https://ws1.sinaimg.cn/large/0069RVTdly1fuam4ln45jj30yu0o6wkc.jpg)
+![Istio Mixer](../images/0069RVTdly1fuam4ln45jj30yu0o6wkc.jpg)
 
 从上图可以看到Mixer适配器可以对接多种监控和日志后端。
 
@@ -73,7 +73,7 @@ Service Mesh中服务是一等公民，它提供L5的网络流量管理，并提
 
 下图是Istio中安全通信路径的示意图。
 
-![Istio架构图](https://ws3.sinaimg.cn/large/0069RVTdly1fuamvq97cuj30yu0wg7cr.jpg)
+![Istio架构图](../images/0069RVTdly1fuamvq97cuj30yu0wg7cr.jpg)
 
 一般的安全性都是通过证书的方式实现的。Sidecar代理负责证书生命周期的管理，包括证书的生成、分发、刷新和注销。从图中还可以看到，在Pod内部sidecar会与应用容器之间建立本地TCP连接，其中使用mTLS（双向传输层加密）。这一点是非常重要的，因为一个节点上甚至一个Pod内都不一定运行一个容器，容器可能会被暴露到外部访问，保证传输层的双向加密，可以保证流量传输的安全。
 
@@ -85,7 +85,7 @@ Service Mesh中服务是一等公民，它提供L5的网络流量管理，并提
 
 这是本书最有重要的一个观点，重要到要放到副标题，熟悉OSI模型的人都知道L5是什么。
 
-![OSI模型](https://ws3.sinaimg.cn/large/0069RVTdly1fuanez4qbtj30v4183n7p.jpg)
+![OSI模型](../images/0069RVTdly1fuanez4qbtj30v4183n7p.jpg)
 
 *OSI模型（图片来自[CSDN](https://blog.csdn.net/yaopeng_2005/article/details/7064869)）*
 
@@ -96,6 +96,6 @@ Service Mesh是在开发和运维之间植入的一个基础设施层。它将�
 - **产品Owner**可以针对特定服务，根据用户选择的套餐执行配额管理。
 - **开发人员**可随时将新版本功能重定向到beta版本，不需要**运维人员**干涉。
 
-![在L5解耦](https://ws3.sinaimg.cn/large/006tNbRwly1fubfiiryirj30w20ayjui.jpg)
+![在L5解耦](../images/006tNbRwly1fubfiiryirj30w20ayjui.jpg)
 
 这种职责的解耦大大加速了软件的迭代速度，总之你可以把Service Mesh作为OSI模型中的会话层。

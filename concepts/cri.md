@@ -124,7 +124,7 @@ service ImageService {
 
 - [cri-o](https://github.com/kubernetes-incubator/cri-o)：同时兼容OCI和CRI的容器运行时
 - [cri-containerd](https://github.com/containerd/cri-containerd)：基于[Containerd](https://github.com/containerd/containerd)的Kubernetes CRI 实现
-- [rkt](https://coreos.com/rkt/)：由于CoreOS主推的用来跟docker抗衡的容器运行时
+- [rkt](https://coreos.com/rkt/)：由CoreOS主推的用来跟docker抗衡的容器运行时
 - [frakti](https://github.com/kubernetes/frakti)：基于hypervisor的CRI
 - [docker](https://www.docker.com)：kuberentes最初就开始支持的容器运行时，目前还没完全从kubelet中解耦，docker公司同时推广了[OCI](https://www.opencontainers.org/)标准
 - [Clear Containers](https://github.com/clearcontainers)：由Intel推出的同时兼容OCI和CRI的容器运行时

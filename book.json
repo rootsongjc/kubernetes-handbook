@@ -34,7 +34,6 @@
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
         "lightbox",
-        "adsense",
         "ga"
     ],
     "pluginsConfig": {
@@ -57,7 +56,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://github.com/alipay/sofa-mesh>SOFAMesh - 基于 Istio 的大规模服务网格解决方案</a> | <a href=https://github.com/alipay/sofa-mosn>SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理</a></p><p><a href=https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a> | <a href=https://jimmysong.io/jobs/>加入蚂蚁金服金融科技，构建金融级云原生基础设施</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2019",
+            "copyright": "<p><a href=https://jimmysong.io/about>私信我获取KubeCon China 2019门票折扣码和报名SOFAStack Cloud Native Workshop</a></p><p><a href=https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*HA0uRIfs6UIAAAAAAAAAAABjARQnAQ data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a> | <a href=https://jimmysong.io/jobs/>加入蚂蚁金服金融科技，构建金融级云原生基础设施</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2019",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -75,13 +74,6 @@
         },
         "sitemap-general": {
             "prefix": "https://jimmysong.io/kubernetes-handbook/"
-        },
-        "adsense": {
-            "client": "ca-pub-4029167986768912",
-            "slot": "2445941692",
-            "format": "auto",
-            "element": ".page-inner section",
-            "position": "bottom"
         },
         "ga": {
             "token": "UA-93485976-1"

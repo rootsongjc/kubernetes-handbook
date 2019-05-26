@@ -8,7 +8,7 @@ Vizceral有两个可视化级别，全局可视化和集群级别可视化。在
 
 在集群级别（如下所示），您可以可视化内部网格的流量。通过设置警告和错误级别警报，当应用程序出现问题时可以被快速检测出来。
 
-![Vistio的集群级别可视化](https://ws1.sinaimg.cn/large/00704eQkgy1fshft5oxlwj318g0pe0wp.jpg)
+![Vistio的集群级别可视化](../images/00704eQkgy1fshft5oxlwj318g0pe0wp.jpg)
 
 ### 在Istio服务网格中安装Vistio
 
@@ -30,7 +30,7 @@ Vizceral有两个可视化级别，全局可视化和集群级别可视化。在
 
 如果您还尚未部署服务网格，可以按照此[Istio Bookinfo Demo](https://istio.io/docs/guides/bookinfo/)中的说明部署Istio及其示例应用程序。您需要能够在应用程序之间生成流量。要测试指标是否从Mixer正确发送到Prometheus，您可以运行以下Prometheus查询`istio_request_count`，应该会看到多个条目。
 
-![Prometheus查询](https://ws1.sinaimg.cn/large/00704eQkgy1fshg0vw25ij318g0jzqjq.jpg)
+![Prometheus查询](../images/00704eQkgy1fshg0vw25ij318g0jzqjq.jpg)
 
 ### 部署Vistio
 
@@ -78,7 +78,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-api -
 
 vistio-web调用vistio-api来渲染服务网格。访问<http://localhost:9091/graph>您应该会看到类似下列的输出。
 
-![vistio-api的期望输出](https://ws1.sinaimg.cn/large/00704eQkgy1fshi61t04oj310q17c0y1.jpg)
+![vistio-api的期望输出](../images/00704eQkgy1fshi61t04oj310q17c0y1.jpg)
 
 **暴露Vistio**
 
@@ -92,7 +92,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 如果一切都已经启动并准备就绪，您就可以访问Vistio UI，开始探索服务网格网络，访问[http://localhost:8080](http://localhost:8080/)您将会看到类似下图的输出。
 
-![Vistio主页面](https://ws1.sinaimg.cn/large/00704eQkgy1fshi98duzgj318g0l2406.jpg)
+![Vistio主页面](../images/00704eQkgy1fshi98duzgj318g0l2406.jpg)
 
 ### 探索
 
@@ -100,11 +100,11 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 如果您点击istio-mesh气泡，您将能够查看您的网状网络。
 
-![istio mesh的网络流量](https://ws1.sinaimg.cn/large/00704eQkgy1fshibdwcj3j318g0p8th1.jpg)
+![istio mesh的网络流量](../images/00704eQkgy1fshibdwcj3j318g0p8th1.jpg)
 
 在您的Istio网格中，您可以使用许多可视化工具来帮助您查明故障的应用程序。
 
-![查明网络问题](https://ws1.sinaimg.cn/large/00704eQkgy1fshicc7or1j318g0p8ahr.jpg)
+![查明网络问题](../images/00704eQkgy1fshicc7or1j318g0p8ahr.jpg)
 
 使用屏幕右上方的过滤器可以快速过滤出错误率较高的应用程序。通过高级配置，当错误率超过特定值时，也可以触发警报。警报将显示给定应用程序的当前错误率趋势。
 
@@ -112,7 +112,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 访问<http://localhost:9091/graph>，如果您从vistio-api中看到以下输出，表示某些功能无法正常工作。正确的输出显示在教程上面。
 
-![vistio api的不正确输出](https://ws1.sinaimg.cn/large/00704eQkgy1fshie7wxkyj30ks0f4myd.jpg)
+![vistio api的不正确输出](../images/00704eQkgy1fshie7wxkyj30ks0f4myd.jpg)
 
 **1.** 检查vistio-api日志中是否有错误——在大多数情况下，vistio-api将记录与Prometheus通信时遇到的任何问题。
 

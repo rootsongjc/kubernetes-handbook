@@ -1,4 +1,4 @@
-#  docker用户过度到kubectl命令行指南
+#  docker用户过渡到kubectl命令行指南
 
 对于没有使用过 kubernetes 的 docker 用户，如何快速掌握 kubectl 命令？
 
