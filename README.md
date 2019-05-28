@@ -31,7 +31,7 @@
 - 基于Kubernetes的Service Mesh架构
 - Kubernetes与微服务结合实践
 
-起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes 1.6+** 版本，同时我们也将密切关注Kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
+起初写作本书时，安装的所有组件、所用示例和操作等皆基于 **Kubernetes 1.6+** 版本，同时我们也将密切关注Kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
 
 ### 使用方式
 
