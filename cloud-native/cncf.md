@@ -54,7 +54,7 @@ TOC（Technical Oversight Committee）作为CNCF中的一个重要组织，它�
 * 定义和维护技术视野
 * 审批新项目加入组织，为项目设定概念架构
 * 接受最终用户的反馈并映射到项目中
-* 调整组件见的访问接口，协调组件之间兼容性
+* 调整组件间的访问接口，协调组件之间兼容性
 
 TOC成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/blob/master/process/election-schedule.md)。
 

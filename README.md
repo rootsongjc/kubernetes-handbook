@@ -10,7 +10,7 @@
   </a>
 </p>
 
-本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关于关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/posts/what-is-a-service-mesh/)、Cloud Native等领域。
+本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/posts/what-is-a-service-mesh/)、Cloud Native等领域。
 
 ### 开始之前
 
@@ -31,7 +31,7 @@
 - 基于Kubernetes的Service Mesh架构
 - Kubernetes与微服务结合实践
 
-起初写作本书时，安装的所有组件、所用示例和操作等皆基于**Kubernetes 1.6+** 版本，同时我们也将密切关注Kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
+起初写作本书时，安装的所有组件、所用示例和操作等皆基于 **Kubernetes 1.6+** 版本，同时我们也将密切关注Kubernetes的版本更新，随着它的版本更新升级，本书中的Kubernetes版本和示例也将随之更新。
 
 ### 使用方式
 
