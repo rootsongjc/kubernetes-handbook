@@ -7,7 +7,6 @@ description: "本书是 TheNewStack 编辑集结 DevOps 领域的专家在各种
 categories: "cloud-native"
 bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*olCyTqe3ASoAAAAAAAAAAABkARQnAQ", desc: "Cover of the book Guide to Cloud Native DevOps"}]
 draft: false
-notoc: true
 ---
 
 本书的主旨是：如果没有成熟的 DevOps 实践，云原生是玩转不起来的。DevOps 已经不是什么新鲜的话题，但到底什么是 "Cloud Native DevOps” 及如何实践 Cloud Native DevOps，这正是本书要探讨的内容。
@@ -16,7 +15,7 @@ DevOps 正在经历一次转型，从自动化构建到声明式基础设施、�
 
 ## 关于本书
 
-{{< gallery link="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*e_KzSpKFnpUAAAAAAAAAAABkARQnAQ" title="云原生 DevOps 封面" >}}
+![云原生DevOps 封面](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*e_KzSpKFnpUAAAAAAAAAAABkARQnAQ)
 
 本书是由 [TheNewStack](https://thenewstack.com) 出品的免费电子书，可以在 [TheNewStack 网站](https://thenewstack.io/ebooks/devops/cloud-native-devops-2019/) 上获取本书的电子版，同时推荐 [TheNewStack 的电子书系列](https://thenewstack.io/ebooks)，囊括了容器、微服务、Kubernetes、云原生诸多主题，可以作为企业决策的参考读物。
 
@@ -24,7 +23,7 @@ DevOps 正在经历一次转型，从自动化构建到声明式基础设施、�
 
 下面是本书目录，一共分为三大部分：构建、部署和管理，其中前两个部分还给出了参考书目、示例研究等。
 
-{{< gallery link="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*rORSQID9zM0AAAAAAAAAAABkARQnAQ" title="云原生 DevOps 目录" >}}
+![云原生 DevOps 目录](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*rORSQID9zM0AAAAAAAAAAABkARQnAQ)
 
 ## 谁适合读这本书
 
@@ -38,15 +37,15 @@ IT 经理、CIO、团队领导者，希望规划自己公司或团队的云原�
 
 AWS 的 Serverless 布道师 Chris Munns 早已甚至预测到 2025 年非云供应商的运维人员将不复存在，虽然听上去有点危言耸听，但这也是为传统 IT 运维人员的职业生涯敲响的警钟。
 
-{{< gallery link="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*9uY4QKqehB0AAAAAAAAAAABkARQnAQ" title="云原生 DevOps 高亮部分" >}}
+![云原生 DevOps 高亮部分](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*9uY4QKqehB0AAAAAAAAAAABkARQnAQ)
 
 开发接手了原来传统运维的一些职责，如配置和发布，减少了每次发布的成本，而运维的职责向管理整个系统的复杂性转变，例如转变为 SRE（Site Reliability Engineer）。	
 
-## Workflow Automation 的价值
+## 工作流自动化的价值
 
 DevOps 的原始教义：DevOps 不是一种工具或流程，而是一种重视整个组织的持续沟通、协作、集成和自动化的实践。
 
-{{< gallery link="https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*qZGBRquxV5kAAAAAAAAAAABkARQnAQ" title="工作流自动化的五个案例" >}}
+![工作流自动化的五个案例](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*qZGBRquxV5kAAAAAAAAAAABkARQnAQ)
 
 根据自动化的驱动力及持续时间的长短，将 Workflow Automation 划分为五个类别。
 
@@ -56,7 +55,7 @@ DevOps 的原始教义：DevOps 不是一种工具或流程，而是一种重视
 - 编排
 - 决策自动化
 
-## 云原生 DevOps 需要对运维做出的转变
+## 运维需要做出的转变
 
 Damon Edwards 提出于运维需要面对的四个灾难（[圣经启示录中的四骑士](https://zh.wikipedia.org/wiki/启示录中的四骑士)）：
 
@@ -78,6 +77,6 @@ Damon Edwards 提出于运维需要面对的四个灾难（[圣经启示录中�
 - 运行时的威胁检测
 - 日志分析
 
-## 更多
+## 参与共读
 
 以上是本书前两张的部分阅读笔记，欢迎[联系我](https://jimmysong.io/about)加入本书共读群（暗号 `云原生 DevOps 共读`），共同讨论云原生 DevOps。
