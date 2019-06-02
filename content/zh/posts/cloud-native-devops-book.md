@@ -79,4 +79,4 @@ Damon Edwards 提出于运维需要面对的四个灾难（[圣经启示录中�
 
 ## 参与共读
 
-以上是本书前两张的部分阅读笔记，欢迎[联系我](https://jimmysong.io/about)加入本书共读群（暗号 `云原生 DevOps 共读`），共同讨论云原生 DevOps。
+以上是本书前两章的部分阅读笔记，欢迎[联系我](https://jimmysong.io/about)加入本书共读群（暗号 `云原生 DevOps 共读`），共同讨论云原生 DevOps。

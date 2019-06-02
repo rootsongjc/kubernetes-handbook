@@ -8,6 +8,7 @@ metaDataFormat = "yaml"
 pygmentsUseClasses = false
 pygmentCodeFences = true
 googleAnalytics = "UA-93485976-1"
+defaultContentLanguageInSubdir= false
 
 [languages]
   [languages.zh]
