@@ -160,6 +160,12 @@ desc = "Service Mesh Meetup #2 Beijing - Jul 29, 2018"
     weight = 4
 
 [[menu.main]]
+    parent = "Gitbooks"
+    name = "迁移到云原生应用架构"
+    url = "migrating-to-cloud-native-application-architectures"
+    weight = 5
+
+[[menu.main]]
     identifier = "Books"
     name = "出版物"
     weight = 3
@@ -189,9 +195,22 @@ desc = "Service Mesh Meetup #2 Beijing - Jul 29, 2018"
     weight = 4
 
 [[menu.main]]
+    name = "活动"
+    identifier = "Activity"
+    url = "activity"
+    weight = 4
+
+[[menu.main]]
+    parent = "Activity"
+    name = "SOFAStack Cloud Native Workshop"
+    url = "sofastack-cloud-native-workshop"
+    weight = 1
+
+[[menu.main]]
+    parent = "Activity"
     name = "招聘"
     url = "jobs"
-    weight = 4
+    weight = 2
 
 [[menu.main]]
     name = "关于"
