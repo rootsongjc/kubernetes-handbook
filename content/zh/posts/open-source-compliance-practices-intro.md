@@ -22,6 +22,11 @@ draft: false
 这篇文章是该电子书的中文连载第一篇。
 
 - [开源软件合规实践1：总体概述](/posts/open-source-compliance-practices-intro)
+- [开源软件合规实践2：成立开源审查委员会（OSRB）](/posts/open-source-compliance-osrb)
+- [开源软件合规实践3：开源代码审查](/posts/open-source-compliance-identify)
+- [开源软件合规实践4：开源代码溯源](/posts/open-source-compliance-sourcing)
+- [开源软件合规实践5：开源法务支持](/posts/open-source-compliance-legal-support)
+- [开源软件合规实践6：开源合规流程中的检查点及发布清单](/posts/open-source-compliance-checkpoints)
 
 ## 开源合规审查组
 
@@ -32,17 +37,17 @@ draft: false
 1. 遵守第三方商业软件的许可条款
 1. 保护您的产品/服务差异化（知识产权/IP）
 
-![开源促进及合规计划](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*j6i1R7LOWvsAAAAAAAAAAABkARQnAQ)
+{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unqmzuawj30yy0fmgnv.jpg" title="图 1. 开源促进及合规计划">}}
 
 ## 开源合规流程
 
-下图是开源合规流程闭环。
+图 2 是开源合规流程闭环。
 
-![开源合规流程闭环](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*Awd9SqjQHJkAAAAAAAAAAABkARQnAQ)
+{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unru4rl8j31300qkmz8.jpg" title="图 2. 开源合规流程闭环">}}
 
 该流程中分为以下三步：确认（Identify）、批准（Approve）和确知（Satisfy）。
 
-![开源合规步骤产出](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*DodtR5wLIcEAAAAAAAAAAABkARQnAQ)
+{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unvsqmmrj31zy0fu0w8.jpg" title="图 3. 开源合规步骤产出">}}
 
 ### 确认（Identify）
 
@@ -72,3 +77,15 @@ draft: false
 - 开发和部署支持清单
 - 建立开源合规活动基准（benchmark）
 - 参与关键合规性开源合规性计划
+
+---
+
+### 开源合规实践专栏
+
+- [开源软件合规实践1：总体概述](/posts/open-source-compliance-practices-intro)
+- [开源软件合规实践2：成立开源审查委员会（OSRB）](/posts/open-source-compliance-osrb)
+- [开源软件合规实践3：开源代码审查](/posts/open-source-compliance-identify)
+- [开源软件合规实践4：开源代码溯源](/posts/open-source-compliance-sourcing)
+- [开源软件合规实践5：开源法务支持](/posts/open-source-compliance-legal-support)
+- [开源软件合规实践6：开源合规流程中的检查点及发布清单](/posts/open-source-compliance-checkpoints)
+

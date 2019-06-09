@@ -8,12 +8,17 @@ categories: "open source"
 bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*xwISSZF3Aa0AAAAAAAAAAABkARQnAQ", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
+seealso: false
 ---
 
 这篇文章是 *Recommended Open Source Compliance Practices for the Enterprise* 电子书（可从 [Linux Foundation](https://www.linuxfoundation.org/publications/2019/06/recommended-open-source-compliance-practices/) 网站免费下载）的中文连载第二篇。
 
 - [开源软件合规实践1：总体概述](/posts/open-source-compliance-practices-intro)
 - [开源软件合规实践2：成立开源审查委员会（OSRB）](/posts/open-source-compliance-osrb)
+- [开源软件合规实践3：开源代码审查](/posts/open-source-compliance-identify)
+- [开源软件合规实践4：开源代码溯源](/posts/open-source-compliance-sourcing)
+- [开源软件合规实践5：开源法务支持](/posts/open-source-compliance-legal-support)
+- [开源软件合规实践6：开源合规流程中的检查点及发布清单](/posts/open-source-compliance-checkpoints)
 
 ## 成立开源审查委员会
 
@@ -52,9 +57,9 @@ notoc: true
 - 有助于促进开源软件的自动化和发现。
 - 从开源合规性角度签署产品发布。
 
-除了 OSRB 的成员之外，实现开源合规是一项跨学科活动，涉及到组织内的各个部门和个人，如下图所示。
+除了 OSRB 的成员之外，实现开源合规是一项跨学科活动，涉及到组织内的各个部门和个人，如图 4 所示。
 
-![开源项目办公室组成](https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*mkDNTJXc3W4AAAAAAAAAAABkARQnAQ)
+{{< gallery link="http://ww2.sinaimg.cn/large/006tNc79ly1g3unxxety2j31ik0li0v5.jpg" title="图 4. 开源项目办公室组成" >}}
 
 下面是对支持团队帮助 OSRB 确保开源合规性的核心职责的描述。
 
@@ -80,3 +85,15 @@ notoc: true
 
 - 授权第三方软件提供商在许可或购买的软件组件中披露开源
 - 协助引入包含（或不包含）开源软件的第三方软件
+
+---
+
+### 开源合规实践专栏
+
+- [开源软件合规实践1：总体概述](/posts/open-source-compliance-practices-intro)
+- [开源软件合规实践2：成立开源审查委员会（OSRB）](/posts/open-source-compliance-osrb)
+- [开源软件合规实践3：开源代码审查](/posts/open-source-compliance-identify)
+- [开源软件合规实践4：开源代码溯源](/posts/open-source-compliance-sourcing)
+- [开源软件合规实践5：开源法务支持](/posts/open-source-compliance-legal-support)
+- [开源软件合规实践6：开源合规流程中的检查点及发布清单](/posts/open-source-compliance-checkpoints)
+
