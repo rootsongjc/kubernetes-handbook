@@ -7,6 +7,8 @@ description: "本文是开源软件合规实践的开篇，从总体上介绍开
 categories: "open source"
 bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*mIa5TLcoz3sAAAAAAAAAAABkARQnAQ", desc: "Photo via Unsplash"}]
 draft: false
+notoc: true
+seealso: false
 ---
 
 开源软件合规（Compliance）实践，从狭义上讲就是企业使用开源软件许可证（License）的合规。*Recommended Open Source Compliance Practices for the Enterprise* 电子书（共32 页）由 *Ibrahim Haddad* 博士撰写（可从 [Linux Foundation](https://www.linuxfoundation.org/publications/2019/06/recommended-open-source-compliance-practices/) 网站免费下载），本书从以下几个角度为你的公司的进行开源合规实践以指导：
