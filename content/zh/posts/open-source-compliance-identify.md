@@ -28,7 +28,7 @@ seealso: false
 
 图 6 简要描述了每个步骤中发生的情况。
 
-{{< gallery link="http://ww2.sinaimg.cn/large/006tNc79ly1g3up02ysl9j327i0kugpp.jpg" title="图 6. 开源合规代码确认步骤详解" >}}
+{{< gallery link="http://ww3.sinaimg.cn/large/006tNc79ly1g3uzfnj1lzj327i0kuq71.jpg" title="图 6. 开源合规代码确认步骤详解" >}}
 
 ---
 
