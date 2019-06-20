@@ -134,7 +134,7 @@ CNCF 年度报告的原文主要是汇报了 CNCF 一年来的所展开的活动
 
 根据《Crossing the Chasm》一书中的技术采用生命周期理论，CNCF 将其托管的项目划分为三个等级：
 
-- Graduated：对应于早期成熟项目。截止到本文发稿时只有 [Kubernetes](https://kubernetes.io/)、[Prometheus](https://prometheus.io/)、[Envoy](https://www.envoyproxy.io/) 和 https://coredns.io/ 毕业。
+- Graduated：对应于早期成熟项目。截止到本文发稿时只有 [Kubernetes](https://kubernetes.io/)、[Prometheus](https://prometheus.io/)、[Envoy](https://www.envoyproxy.io/) 和 [CoreDNS](https://coredns.io/) 毕业。
 - Incubating：对应于早期采用者阶段。截止到本文发稿时有 16 个项目。
 - Sandbox：对应于创新者阶段。截止到本文发稿时有 12 个项目。
 
