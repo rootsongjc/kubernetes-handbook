@@ -187,22 +187,10 @@ desc = "ServiceMesher at KubeCon China 2019 Shanghai - Jun 25, 2019"
     weight = 4
 
 [[menu.main]]
-    name = "活动"
-    identifier = "Activity"
-    url = "activity"
-    weight = 4
-
-[[menu.main]]
-    parent = "Activity"
-    name = "SOFAStack Cloud Native Workshop"
-    url = "sofastack-cloud-native-workshop"
-    weight = 1
-
-[[menu.main]]
-    parent = "Activity"
     name = "招聘"
+    identifier = "jobs"
     url = "jobs"
-    weight = 2
+    weight = 4
 
 [[menu.main]]
     name = "关于"
