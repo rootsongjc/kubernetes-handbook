@@ -48,20 +48,12 @@ recent_posts = true
 contact_me = """请扫描下面的微信二维码联系我加入微信交流群，获取KubeCon China 2019门票折扣优惠，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
 
 [[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*iPmbR6QP_EAAAAAAAAAAAABjARQnAQ"
-desc = "ServiceMesher community members at KubeCon Shanghai - Nov 13, 2018"
+src = "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*cr5NRICPMPwAAAAAAAAAAABkARQnAQ"
+desc = "SOFAStack Cloud Native Workshop at KubeCon China 2019 Shanghai - Jun 24, 2019"
 
 [[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*Naq4R5jxlY4AAAAAAAAAAABjARQnAQ"
-desc = "At CNCF booth, the Computing Conference in Hangzhou - Sept 21, 2018"
-
-[[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*2QKzTpOfHw0AAAAAAAAAAABjARQnAQ"
-desc = "Service Mesh Meetup #3 Shenzhen - Aug 25, 2018"
-
-[[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*F_qxRoBZXlEAAAAAAAAAAABjARQnAQ"
-desc = "Service Mesh Meetup #2 Beijing - Jul 29, 2018"
+src = "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*ClY-RacU9u4AAAAAAAAAAABkARQnAQ"
+desc = "ServiceMesher at KubeCon China 2019 Shanghai - Jun 25, 2019"
 
 [Author]
   name = "Jimmy Song(宋净超)"
