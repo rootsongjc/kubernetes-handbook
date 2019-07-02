@@ -55,7 +55,7 @@ Code lab向我介绍了Istio控制平面的四个主要组件：
 - **Ingress**：处理来自群集外部的传入请求。
 - **CA**：证书颁发机构。
 
-查看[Istio架构概念](https://istio.io/docs/concepts/what-is-istio/overview.html#architecture)页面了解这些组件如何协同工作的。
+查看[Istio架构概念](https://istio.io/docs/concepts/what-is-istio/#architecture)页面了解这些组件如何协同工作的。
 
 Code lab提供了[路由规则](https://istio.io/docs/concepts/traffic-management/rules-configuration.html#route-rules)——流量管理部分
 
