@@ -45,7 +45,7 @@ description = "宋净超的博客|Cloud Native|云原生布道师"
 errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
 about_me = """关注Kubernetes/Service Mesh/Serverless/Cloud Native/Open Source，关注微信公众号获取最新资讯。![ServiceMesher公众号二维码](/img/servicemesher-wechat-public-account-tiny.jpg)"""
 recent_posts = true
-contact_me = """请扫描下面的微信二维码联系我加入微信交流群，获取KubeCon China 2019门票折扣优惠，详见<u>[关于](/about)</u>页面。![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
+contact_me = """请扫描下面的微信二维码联系我加入微信交流群，请备注姓名-公司，否则可能不予通过![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
 
 [[Params.bigimg]]
 src = "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*cr5NRICPMPwAAAAAAAAAAABkARQnAQ"
