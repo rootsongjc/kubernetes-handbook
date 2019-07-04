@@ -5,7 +5,7 @@ date: 2019-06-09T10:23:19+08:00
 tags: ["open source","book","compliance"]
 description: "本文是开源软件合规实践的第四篇，关于软件的多源开发模型及供应链更新实践。"
 categories: "open source"
-bigimg: [{src: "https://ww4.sinaimg.cn/large/006tNc79ly1g3up4d9wapj31f20l4nfm.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*dkB5SJuRsoQAAAAAAAAAAABkARQnAQ", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
 seealso: false
