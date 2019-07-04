@@ -5,7 +5,7 @@ date: 2019-06-09T09:13:19+08:00
 tags: ["open source","book","compliance"]
 description: "本文是开源软件合规实践的第三篇，关于如何进行代码扫描以识别开源组件及片段引用的建议。"
 categories: "open source"
-bigimg: [{src: "http://ww4.sinaimg.cn/large/006tNc79ly1g3unmazj3sj31mi0u04qq.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "https://ww4.sinaimg.cn/large/006tNc79ly1g3unmazj3sj31mi0u04qq.jpg", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
 seealso: false

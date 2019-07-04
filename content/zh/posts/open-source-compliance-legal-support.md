@@ -5,7 +5,7 @@ date: 2019-06-09T11:13:19+08:00
 tags: ["open source","book","compliance"]
 description: "本文是开源软件合规实践的第五篇，关于开源 License 使用及法务支持的建议。"
 categories: "open source"
-bigimg: [{src: "http://ww2.sinaimg.cn/large/006tNc79ly1g3uqftlpthj31f20o0h33.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "https://ww2.sinaimg.cn/large/006tNc79ly1g3uqftlpthj31f20o0h33.jpg", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
 seealso: false
