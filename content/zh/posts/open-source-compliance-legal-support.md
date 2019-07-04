@@ -36,7 +36,7 @@ seealso: false
 
 为了减少开源法律顾问收到的问题数量并增加许可和合规流程教育，一些公司选择在几个类别下对其产品中最常用的许可进行分类。图11显示了许可证分类系统的一个简单示例，其中大多数使用的开源许可证分为四类。
 
-{{< gallery link="http://ww3.sinaimg.cn/large/006tNc79ly1g3ur9rfeqaj310c0gkdip.jpg" title="图 8. 开源许可证分类（仅供参考）" >}}
+{{< gallery link="https://ww3.sinaimg.cn/large/006tNc79ly1g3ur9rfeqaj310c0gkdip.jpg" title="图 8. 开源许可证分类（仅供参考）" >}}
 
 上述许可证类别是对许可证进行分类的简单方法，使开发人员在根据这些许可证集成代码时更容易了解操作过程。下面这个例子是开发人员想要使用在以下许可下的开源软件包的：
 

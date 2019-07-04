@@ -24,11 +24,11 @@ seealso: false
 
 图 5 提供了端到端合规流程的详细示例，其中包括软件组件被 OSRB 批准在构建系统中与软件产品集成之前经历的各个步骤。
 
-{{< gallery link="http://ww2.sinaimg.cn/large/006tNc79ly1g3unjbh5amj31900fuac7.jpg" title="图 5. 端到端开源合规流程示例" >}}
+{{< gallery link="https://ww2.sinaimg.cn/large/006tNc79ly1g3unjbh5amj31900fuac7.jpg" title="图 5. 端到端开源合规流程示例" >}}
 
 图 6 简要描述了每个步骤中发生的情况。
 
-{{< gallery link="http://ww3.sinaimg.cn/large/006tNc79ly1g3uzfnj1lzj327i0kuq71.jpg" title="图 6. 开源合规代码确认步骤详解" >}}
+{{< gallery link="https://ww3.sinaimg.cn/large/006tNc79ly1g3uzfnj1lzj327i0kuq71.jpg" title="图 6. 开源合规代码确认步骤详解" >}}
 
 ---
 

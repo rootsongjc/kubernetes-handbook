@@ -59,7 +59,7 @@ seealso: false
 
 除了 OSRB 的成员之外，实现开源合规是一项跨学科活动，涉及到组织内的各个部门和个人，如图 4 所示。
 
-{{< gallery link="http://ww2.sinaimg.cn/large/006tNc79ly1g3unxxety2j31ik0li0v5.jpg" title="图 4. 开源项目办公室组成" >}}
+{{< gallery link="https://ww2.sinaimg.cn/large/006tNc79ly1g3unxxety2j31ik0li0v5.jpg" title="图 4. 开源项目办公室组成" >}}
 
 下面是对支持团队帮助 OSRB 确保开源合规性的核心职责的描述。
 

@@ -22,7 +22,7 @@ seealso: false
 
 让您的软件提供商参与开源合规中至关重要。软件提供商必须披露其可交付成果中包含的开源代码，并提供包括适用源代码在内的所有通知（notice）。
 
-{{< gallery link="http://ww4.sinaimg.cn/large/006tNc79ly1g3upmcjnl5j31di0ncdjd.jpg" title="图 7. 多源开发模型" >}}
+{{< gallery link="https://ww4.sinaimg.cn/large/006tNc79ly1g3upmcjnl5j31di0ncdjd.jpg" title="图 7. 多源开发模型" >}}
 
 图 7 描绘了多源开发模型和传入源代码的各种源组合。在此模型下，产品或软件堆栈可以包含专有软件、第三方商业和第三方开源软件的任意组合。例如，除了第三方专有源代码之外，软件组件 A 可以包括专有源代码，而软件组件 B 除了可以包含来自开源项目的源代码之外还可以包括专有源代码。
 
