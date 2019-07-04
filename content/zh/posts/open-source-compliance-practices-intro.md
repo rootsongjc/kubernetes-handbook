@@ -39,17 +39,17 @@ seealso: false
 1. 遵守第三方商业软件的许可条款
 1. 保护您的产品/服务差异化（知识产权/IP）
 
-{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unqmzuawj30yy0fmgnv.jpg" title="图 1. 开源促进及合规计划">}}
+{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unqmzuawj30yy0fmgnv.jpg" title="图 1. 开源促进及合规计划">}}
 
 ## 开源合规流程
 
 图 2 是开源合规流程闭环。
 
-{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unru4rl8j31300qkmz8.jpg" title="图 2. 开源合规流程闭环">}}
+{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unru4rl8j31300qkmz8.jpg" title="图 2. 开源合规流程闭环">}}
 
 该流程中分为以下三步：确认（Identify）、批准（Approve）和确知（Satisfy）。
 
-{{< gallery link="http://ww1.sinaimg.cn/large/006tNc79ly1g3unvsqmmrj31zy0fu0w8.jpg" title="图 3. 开源合规步骤产出">}}
+{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unvsqmmrj31zy0fu0w8.jpg" title="图 3. 开源合规步骤产出">}}
 
 ### 确认（Identify）
 
