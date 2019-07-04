@@ -5,7 +5,7 @@ date: 2019-06-09T14:01:19+08:00
 tags: ["open source","book","compliance"]
 description: "本文是开源软件合规实践的第六篇，关于如何在开源合规流程中纳入检查点，在软件发布前检查清单。"
 categories: "open source"
-bigimg: [{src: "https://ww2.sinaimg.cn/large/006tNc79ly1g3uve2p1l2j31d40o87ca.jpg", desc: "Photo via Unsplash"}]
+bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*XM3SRJFETWEAAAAAAAAAAABkARQnAQ", desc: "Photo via Unsplash"}]
 draft: false
 notoc: true
 ---
