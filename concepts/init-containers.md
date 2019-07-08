@@ -186,7 +186,7 @@ $ kubectl logs myapp-pod -c init-mydb      # Inspect the second init container
 
 一旦我们启动了 `mydb` 和 `myservice` 这两个 Service，我们能够看到 Init 容器完成，并且 `myapp-pod` 被创建：
 
-```Bash
+```bash
 $ kubectl create -f services.yaml
 service "myservice" created
 service "mydb" created

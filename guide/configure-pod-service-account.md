@@ -271,7 +271,7 @@ namespace: 7 bytes
 
 然后，确认已创建。如：
 
-```Bash
+```bash
 $ kubectl get secrets myregistrykey
 NAME             TYPE                              DATA    AGE
 myregistrykey    kubernetes.io/.dockerconfigjson   1       1d

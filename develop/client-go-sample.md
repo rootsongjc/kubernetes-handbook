@@ -16,7 +16,7 @@
 
 代码如下：
 
-```Go
+```go
 package main
 
 import (
@@ -154,7 +154,7 @@ New image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_9
 
 查看Deployment的event。
 
-```Bash
+```bash
 $ kubectl describe deployment filebeat-test   
 Name:			filebeat-test
 Namespace:		default

@@ -240,7 +240,7 @@ Ingress controller启动时附带一些适用于所有Ingress的负载平衡策�
 
 假如你想要向已有的ingress中增加一个新的Host，你可以编辑和更新该ingress：
 
-```Bash
+```bash
 $ kubectl get ing
 NAME      RULE          BACKEND   ADDRESS
 test      -                       178.91.123.132

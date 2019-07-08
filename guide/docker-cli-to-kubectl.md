@@ -257,7 +257,7 @@ WARNING: No swap limit support
 
 使用 kubectl 命令：
 
-```Bash
+```bash
 $ kubectl cluster-info
 Kubernetes master is running at https://108.59.85.141
 KubeDNS is running at https://108.59.85.141/api/v1/namespaces/kube-system/services/kube-dns/proxy

@@ -216,7 +216,7 @@ kubectl label nodes 172.20.0.115 edgenode=true
 
 查看DaemonSet的启动情况：
 
-```Bash
+```bash
 $ kubectl -n kube-system get ds
 NAME                 DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                              AGE
 traefik-ingress-lb   3         3         3         3            3           edgenode=true                              2h

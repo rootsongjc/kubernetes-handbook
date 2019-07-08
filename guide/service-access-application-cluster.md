@@ -27,7 +27,7 @@
 
 3. 显示 ReplicaSet 的信息：
 
-   ```
+   ```bash
    kubectl get replicasets
    kubectl describe replicasets
 
@@ -35,7 +35,7 @@
 
 4. 创建一个暴露该 Deployment 的 Service 对象：
 
-   ```Bash
+   ```bash
    kubectl expose deployment hello-world --type=NodePort --name=example-service
    ```
 
@@ -101,13 +101,13 @@
 
 要删除 Service，输入以下命令：
 
-```
+```bash
 kubectl delete services example-service
 ```
 
 删除 Deployment、ReplicaSet 和正运行在 Pod 中的 Hello World 应用程序，输入以下命令：
 
-```
+```bash
 kubectl delete deployment hello-world
 ```
 

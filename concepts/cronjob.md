@@ -59,7 +59,7 @@ spec:
           restartPolicy: OnFailure
 ```
 
-```Bash
+```bash
 $ kubectl create -f cronjob.yaml
 cronjob "hello" created
 ```

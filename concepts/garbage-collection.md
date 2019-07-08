@@ -121,7 +121,7 @@ kubectl 也支持级联删除。 通过设置 `--cascade` 为 true，可以使�
 
 下面是一个例子，使一个 ReplicaSet 的 Dependent 对象成为孤儿 Dependent：
 
-```Bash
+```bash
 kubectl delete replicaset my-repset --cascade=false
 ```
 

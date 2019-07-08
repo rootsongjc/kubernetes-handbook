@@ -35,7 +35,7 @@ spec:
 
 我们可以在 Pod 中为容器使用 command 为容器指定启动参数：
 
-```Bash
+```bash
 command: ["/bin/bash","-c","bootstrap.sh"]
 ```
 

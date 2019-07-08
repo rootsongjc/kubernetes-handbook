@@ -22,7 +22,7 @@
 
 通过运行以下命令生成私钥和证书签名请求（或CSR）：
 
-```Bash
+```bash
 $ cat <<EOF | cfssl genkey - | cfssljson -bare server
 {
   "hosts": [

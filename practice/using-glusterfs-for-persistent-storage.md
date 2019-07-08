@@ -33,7 +33,7 @@ $ systemctl status glusterd.service
 
 ## 配置 glusterfs
 
-```Bash
+```bash
 # 配置 hosts
 
 $ vi /etc/hosts
@@ -268,7 +268,7 @@ PVC属性
 
 ## 配置PVC
 
-```Bash
+```bash
 $ cat glusterfs-pvc.yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -293,7 +293,7 @@ glusterfs-nginx   Bound     gluster-dev-volume   8Gi        RWX                 
 
 ## 创建 nginx deployment 挂载 volume
 
-```Bash
+```bash
 $ vi nginx-deployment.yaml
 apiVersion: extensions/v1beta1 
 kind: Deployment 

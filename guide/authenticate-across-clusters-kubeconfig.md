@@ -266,7 +266,7 @@ users:
 
 #### 示例文件相关操作命令
 
-```Bash
+```bash
 $ kubectl config set preferences.colors true
 $ kubectl config set-cluster cow-cluster --server=http://cow.org:8080 --api-version=v1
 $ kubectl config set-cluster horse-cluster --server=https://horse.org:4443 --certificate-authority=path/to/my/cafile

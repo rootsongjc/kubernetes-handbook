@@ -29,7 +29,7 @@ Ingress Host：traefik.sample-webapp.io
 
 通过向`sample-webapp`发送curl请求获取响应时间，直接curl后的结果为：
 
-```Bash
+```bash
 $ curl "http://10.254.149.31:8000/"
 Welcome to the "Distributed Load Testing Using Kubernetes" sample web app
 ```
