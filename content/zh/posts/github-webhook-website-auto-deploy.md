@@ -33,7 +33,7 @@ cp -r $input/public/* $output
 
 ## 依赖安装
 
-该网站部署在阿里云上，操作系统为 CentOS 7.6.1810，并配置好了 [HTTPS](free-certificates-with-certbot.md)	。
+该网站部署在阿里云上，操作系统为 CentOS 7.6.1810，并配置好了 [HTTPS](/posts/free-certificates-with-certbot)	。
 
 安装后端服务配置所需的组件。
 
