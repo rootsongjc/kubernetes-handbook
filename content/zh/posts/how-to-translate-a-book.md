@@ -3,7 +3,7 @@ title: "如何翻译一本外文书"
 date: 2017-10-27T22:55:43+08:00
 draft: false
 subtitle: "从图书引进到翻译出版全攻略"
-tags: ["talk","book"]
+tags: ["book"]
 description: "如何翻译一本外文书，从图书引进到翻译出版全攻略"
 bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*wwyaRIdLTGwAAAAAAAAAAABkARQnAQ", desc: "青海湖畔 Jun 25,2016"}]
 ---
@@ -14,6 +14,8 @@ bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*wwyaRIdLT
 - [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python)：正在翻译中
 
 同时我还参与了[kubernetes](https://kubernetes.io/)、[Istio](http://istio.doczh.cn)的文档翻译，撰写了开源电子书[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)，下面是我本人在翻译过程中的的一些心得。
+
+**说明：本文中使用的方法仅供参考，机器翻译有助您快速了解全书或文章的梗概，请勿直接使用机器翻译结果输出。**
 
 ## 图书引进
 
