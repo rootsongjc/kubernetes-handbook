@@ -5,7 +5,7 @@ draft: false
 subtitle: "从图书引进到翻译出版全攻略"
 tags: ["talk","book"]
 description: "如何翻译一本外文书，从图书引进到翻译出版全攻略"
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2016062503.jpg", desc: "青海湖畔 Jun 25,2016"}]
+bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*wwyaRIdLTGwAAAAAAAAAAABkARQnAQ", desc: "青海湖畔 Jun 25,2016"}]
 ---
 
 截止本文发稿时，我是以下两本Cloud Native图书的译者：
