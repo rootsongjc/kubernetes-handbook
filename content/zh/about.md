@@ -85,7 +85,7 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 
 #### Service Mesh Meetup
 
-- 2019年8月11日，第6届 Service Mesh Meetup|广州 |[查看详情](https://tech.antfin.com/community/activities/781)
+- 2019年8月11日，第6届 Service Mesh Meetup|广州 | [查看详情](https://tech.antfin.com/community/activities/781)
 - 2019年1月6日，第5届 Service Mesh Meetup | 广州 | [查看详情](https://tech.antfin.com/activities/72)
 - 2018年11月25日，第4届 Service Mesh Meetup| 上海 | [查看详情](https://tech.antfin.com/activities/2)
 - 2018年8月25日，第3届 Service Mesh Meetup | 深圳 | [查看详情](http://www.huodongxing.com/event/3453378014200)

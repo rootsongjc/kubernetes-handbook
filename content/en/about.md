@@ -81,6 +81,7 @@ The activities I attended or organized.
 
 #### Service Mesh Meetup
 
+- Aug 11, 2019 #6 | Guangzhou | [See details](https://tech.antfin.com/community/activities/781)
 - Jan 6, 2019 #5 | Guangzhou | [See details](https://tech.antfin.com/activities/72)
 - Nov 25, 2018 #4 | Shanghai | [See details](https://tech.antfin.com/activities/2)
 - Aug 25, 2018 #3 | Shenzhen | [See details](http://www.huodongxing.com/event/3453378014200)
