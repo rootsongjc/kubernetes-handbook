@@ -41,6 +41,56 @@ yum install certbot python2-certbot-nginx
 
 ```bash
 certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org
+
+Which names would you like to activate HTTPS for?
+1：servicemesher.com
+2: www.servicemsher.com
+# 这里直接回车选择所有的域名
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel):
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+You have an existing certificate that contains a portion of the domains you
+requested (ref: /etc/letsencrypt/renewal/servicemesher.com.conf)
+
+It contains these names: servicemesher.com, www.servicemesher.com
+
+You requested these names for the new certificate: servicemesher.com,
+prow.servicemesher.com, www.servicemesher.com.
+
+Do you want to expand and replace this existing certificate with the new
+certificate?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(E)xpand/(C)ancel: E
+Renewing an existing certificate
+Performing the following challenges:
+http-01 challenge for prow.servicemesher.com
+Waiting for verification...
+Cleaning up challenges
+Deploying Certificate to VirtualHost /etc/nginx/nginx.conf
+Deploying Certificate to VirtualHost /etc/nginx/nginx.conf
+Deploying Certificate to VirtualHost /etc/nginx/nginx.conf
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
+# 这里是为了扩展证书支持更多的域名，所有输入 2 回车
+Traffic on port 80 already redirecting to ssl in /etc/nginx/nginx.conf
+Redirecting all traffic on port 80 to ssl in /etc/nginx/nginx.conf
+Traffic on port 80 already redirecting to ssl in /etc/nginx/nginx.conf
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Your existing certificate has been successfully renewed, and the new certificate
+has been installed.
 ```
 
 然后重新加载配置。
