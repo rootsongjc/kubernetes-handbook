@@ -31,4 +31,4 @@ RUN apk add --no-cache --virtual build-dependencies \
 
 # Install gitbook
 RUN npm install gitbook-cli -g && \
-  npm install gitbook -g
+  gitbook -V
