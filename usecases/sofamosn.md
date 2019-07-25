@@ -1,8 +1,8 @@
 # SOFAMosn
 
- **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
-GitHub地址：https://github.com/alipay/sofa-mosn
+GitHub地址：https://github.com/sofastack/sofa-mosn
 
 MOSN 是一款采用 Golang 开发的 Service Mesh 数据平面代理，功能和定位类似 Envoy，旨在提供分布式，模块化，可观察，智能化的代理能力。MOSN 支持 Envoy 和 Istio 的 API，可以和 Istio 集成。Sofa Mesh 中，我们使用 MOSN 替代 Envoy。
 
@@ -48,4 +48,4 @@ MOSN 是一款采用 Golang 开发的 Service Mesh 数据平面代理，功能�
 
 ## 参考
 
-- 详细信息请参考[SOFAMosn GitHub仓库](https://github.com/alipay/sofa-mosn)
+- 详细信息请参考[SOFAMosn GitHub仓库](https://github.com/sofastack/sofa-mosn)

@@ -1,6 +1,6 @@
 # 企业级服务网格架构之路
 
-**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 本节是根据由Nginx赞助，O’Reilly出版社出品的关于服务网格的书籍总结而来，本书标题是 _The Enterprise Path to Service Mesh_ ，还有个副标题 _Decoupling at Layer 5_ ，第一版发行于2018年8月8日。这本书一共61页，本文是我对该书的一些解读，读者可以在[Nginx的网站](https://www.nginx.com/resources/library/the-enterprise-path-to-service-mesh-architectures/)上免费下载阅读完整内容。
 

@@ -1,6 +1,6 @@
 # SOFAMesh中运行Dubbo on x-protocol
 
- **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 原文作者：彭泽文，阿里巴巴UC事业部高级开发工程师，有改动。
 
@@ -58,7 +58,7 @@ kubectl get pods --namespace=kube-system
 从 GitHub 拉取最新代码：
 
 ```bash
-git clone https://github.com/alipay/sofa-mesh.git
+git clone https://github.com/sofastack/sofa-mesh.git
 cd sofa-mesh
 ```
 
@@ -282,7 +282,7 @@ istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.destinationrul
 istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.weight.vs.yaml
 ```
 
-SOFAMesh Github 地址：https://github.com/alipay/sofa-mesh
+SOFAMesh Github 地址：https://github.com/sofastack/sofa-mesh
 
 ## 参考文档
 

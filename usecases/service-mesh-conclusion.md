@@ -1,6 +1,6 @@
 # 总结
 
-**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 最后是对全书的总结，2018年必然是一场服务网格或者说Proxy的战争。
 

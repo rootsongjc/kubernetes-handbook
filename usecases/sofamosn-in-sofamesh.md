@@ -1,10 +1,10 @@
 # 使用 SOFAMosn 构建 SOFAMesh
 
- **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 本文介绍的内容将包括 : 
 
-- [SOFAMosn](https://github.com/alipay/sofa-mosn) 与 [SOFAMesh](https://github.com/alipay/sofa-mesh) 的关系
+- [SOFAMosn](https://github.com/sofastack/sofa-mosn) 与 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 的关系
 - 部署 SOFAMesh
 
 至于 SOFAMesh 的使用跟 Istio 没有区别，只是截止本文发稿时 SOFAMosn 的流量管理只支持：
@@ -68,5 +68,5 @@ prometheus                 ClusterIP   10.254.17.234    <none>        9090/TCP  
 
 ## 参考
 
-- [SOFAMesh - github.com](https://github.com/alipay/sofa-mesh)
-- [SOFAMosn - github.com](https://github.com/alipay/sofa-mosn)
+- [SOFAMesh - github.com](https://github.com/sofastack/sofa-mesh)
+- [SOFAMosn - github.com](https://github.com/sofastack/sofa-mosn)

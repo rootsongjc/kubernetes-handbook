@@ -1,10 +1,6 @@
----
-typora-root-url: ../images
----
-
 # 定制和集成
 
-**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 例如Istio这样的Service Mesh中有很多地方可以给大家定制，例如作为数据平面的sidecar，虽然默认使用的是Envoy，但是你可以开发自己的sidecar代理；还有Mixer中的各种adpater，你也可以开发自己的adapter来扩展遥测和鉴权功能，[Consul Connect](http://www.servicemesher.com/blog/consul-1-2-service-mesh/)就是个例子。
 
@@ -20,11 +16,11 @@ typora-root-url: ../images
 
 **SOFAMosn**
 
-还有蚂蚁金服开源的Go语言版的数据平面[SOFAMosn](https://github.com/alipay/sofa-mosn)，这是也兼容Istio的SOFAMesh的一部分，也可以单独作为代理使用，详见：[SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)。
+还有蚂蚁金服开源的Go语言版的数据平面[SOFAMosn](https://github.com/sofastack/sofa-mosn)，这是也兼容Istio的SOFAMesh的一部分，也可以单独作为代理使用，详见：[SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)。
 
 ![SOFAMesh](../images/006tNbRwly1fucpano6gsj31kw1biq98.jpg)
 
-[SOFAMosn](https://github.com/alipay/sofa-mosn)的模块架构图。
+[SOFAMosn](https://github.com/sofastack/sofa-mosn)的模块架构图。
 
 ![SOFAMosn模块架构图](../images/006tNbRwly1fucpc5fn8wj31kw0sfdnu.jpg)
 

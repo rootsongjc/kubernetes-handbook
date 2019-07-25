@@ -1,6 +1,6 @@
 # Service Mesh基础
 
-**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://jimmysong.io/istio-handbook) 中浏览。**
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 > 本文是对[The Enterprise Path to Service Mesh Architecutures](https://www.nginx.com/resources/library/the-enterprise-path-to-service-mesh-architectures/)一书的解读。
 
