@@ -7,14 +7,13 @@
         "sidebar": {
             "Jimmy Song": "https://jimmysong.io",
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
-            "ServiceMesher社区": "http://www.servicemesher.com",
-            "Istio Handbook - Istio服务网格进阶实战": "https://jimmysong.io/istio-handbook",
-            "Awesome Service Mesh": "http://www.servicemesher.com/awesome-servicemesh",
+            "ServiceMesher社区": "https://www.servicemesher.com",
+            "Istio Handbook - Istio服务网格进阶实战": "https://www.servicemesher.com/istio-handbook",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
             "Cloud Native Java（云原生Java）-  Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java",
-            "SOFAMesh - 基于Istio的大规模服务网格解决方案": "https://github.com/alipay/sofa-mesh",
-            "SOFAMosn - Golang版的高性能Service Mesh Sidecar代理": "https://github.com/alipay/sofa-mosn"
+            "SOFAMesh - 基于Istio的大规模服务网格解决方案": "https://github.com/sofastack/sofa-mesh",
+            "SOFAMosn - Golang版的高性能Service Mesh Sidecar代理": "https://github.com/sofastack/sofa-mosn"
         }
     },
     "plugins": [
@@ -56,7 +55,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=http://gk.link/a/104bw>极客时间·专享福利通道：199元礼包限时放送</a> | <a href=https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*HA0uRIfs6UIAAAAAAAAAAABjARQnAQ data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a></p>Copyright © <a href=https://jimmysong.io>jimmysong.io</a> 2017-2019",
+            "copyright": "<p><a href=http://gk.link/a/104bw>极客时间·专享福利通道：199元礼包限时放送</a> | <a href=https://gw.alipayobjects.com/mdn/site_comm/afts/img/A*HA0uRIfs6UIAAAAAAAAAAABjARQnAQ data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a></p>Copyright © 2017-2019 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
