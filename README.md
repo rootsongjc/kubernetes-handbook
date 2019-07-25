@@ -4,6 +4,8 @@
 
 ## 关于本书
 
+[![CircleCI](https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master.svg?style=svg)](https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master)
+
 <p align="center">
   <a href="https://jimmysong.io/kubernetes-handbook">
     <img src="cover.jpg" width="50%" height="50%" alt="Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超）">
