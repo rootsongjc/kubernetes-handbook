@@ -483,7 +483,7 @@ nginx-deployment-618515232    11        11        11        7m
 
 ## 暂停和恢复Deployment
 
-您可以在发出一次或多次更新前暂停一个 Deployment，然后再恢复它。这样您就能多次暂停和恢复 Deployment，在此期间进行一些修复工作，而不会发出不必要的 rollout。
+您可以在发出一次或多次更新前暂停一个 Deployment，然后再恢复它。这样您就能在Deployment暂停期间进行多次修复工作，而不会发出不必要的 rollout。
 
 例如使用刚刚创建 Deployment：
 
