@@ -22,7 +22,6 @@ GitHub地址：https://github.com/rootsongjc/cloud-native-slides-share
 - [DevOps](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/devops)
 - [Etcd](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/etcd)：Distributed reliable key-value store for the most critical data of a distributed system
 - [FaaS](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/faas)：Function as a Service
-- [Grafana](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/grafana)：The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More
 - [Cloud Native](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/cloud-native)
 - [Istio](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/istio)：Sample code, build and tests and governance material for the Istio project.
 - [Kubernetes](https://github.com/rootsongjc/cloud-native-slides-share/blob/master/kubernetes)：Production-Grade Container Scheduling and Management

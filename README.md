@@ -102,3 +102,4 @@ As the  new post created there should be a new record added to this file `public
 - [Hugo-algolia](https://www.npmjs.com/package/hugo-algolia): index json builder
 - [Namecheap](https://namecheap.com/): domain name registry
 - [Prism](http://prism.com/): code highlight
+
