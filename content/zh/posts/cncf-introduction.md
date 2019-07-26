@@ -54,10 +54,6 @@ CNCF这个角色的作用是推广技术，形成社区，开源项目管理与�
 
 当前所有的CNCF项目可以访问 https://www.cncf.io/projects/
 
-项目所达到相应成熟度需要满足的条件和投票机制见下图（请按照逆时针来看）：
-
-[![CNCF项目成熟度级别](https://github.com/rootsongjc/kubernetes-handbook/raw/master/images/cncf-graduation-criteria.jpg)](https://github.com/rootsongjc/kubernetes-handbook/blob/master/images/cncf-graduation-criteria.jpg)
-
 在太平洋时间3月6日，Kubernetes成为了CNCF的第一个毕业项目！
 
 ## TOC（技术监督委员会）
@@ -418,7 +414,6 @@ CNCF社区坚信云原生计算包含三个核心属性：
 ## 参考
 
 - [https://www.cncf.io](https://www.cncf.io/)
-- <https://www.cncf.io/projects/graduation-criteria/>
 - <https://www.cncf.io/about/charter/>
 - <https://github.com/cncf/landscape>
 - <https://github.com/cncf/toc>

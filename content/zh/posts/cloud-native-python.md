@@ -17,7 +17,7 @@ nocomment: true
 
 ![Cloud Native Python 和 Cloud Native Go 合影](https://ws1.sinaimg.cn/large/00704eQkly1fs4swoeyzxj334022o4qw.jpg)
 
-这本书跟 Cloud Native Go 的内容由很大部分的重合，目录结构也基本一致，所用的技术栈也很类似，不过内容更详实，图片和步骤介绍更多一些，跟我看的另一本由印度人写的 [Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms](https://jimmysong.io/talks/book-kubernetes-management-design-patterns/) 的风格很像。
+这本书跟 Cloud Native Go 的内容由很大部分的重合，目录结构也基本一致，所用的技术栈也很类似，不过内容更详实，图片和步骤介绍更多一些，跟我看的另一本由印度人写的 [Kubernetes Management Design Patterns: With Docker, CoreOS Linux, and Other Platforms](https://jimmysong.io/posts/book-kubernetes-management-design-patterns/) 的风格很像。
 
 ## Cloud Native Python 介绍
 
