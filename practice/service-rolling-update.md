@@ -42,7 +42,7 @@ Deployment同样为Kubernetes的一个核心内容，主要职责同样是为了
 
 **Web服务的代码main.go**
 
-```Go
+```go
 package main
 
 import (

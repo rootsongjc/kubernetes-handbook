@@ -55,9 +55,9 @@ spec:
 
 *将上面配置 POST 到 API Server 将不起任何作用，除非选择的网络方案支持网络策略。*
 
-**必选字段**：像所有其它 Kubernetes 配置一样， `NetworkPolicy` 需要 `apiVersion`、`kind` 和 `metadata` 这三个字段，关于如何使用配置文件的基本信息，可以查看 [这里](https://kubernetes.io/docs/user-guide/configuring-containers) 和 [这里](https://kubernetes.io/docs/user-guide/working-with-resources)。
+**必选字段**：像所有其它 Kubernetes 配置一样， `NetworkPolicy` 需要 `apiVersion`、`kind` 和 `metadata` 这三个字段，关于如何使用配置文件的基本信息，可以查看 [这里](https://kubernetes.io/docs/user-guide/configuring-containers)。
 
-**spec**：`NetworkPolicy` [spec](https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status) 具有在给定 Namespace 中定义特定网络的全部信息。
+**spec**：`NetworkPolicy` spec 具有在给定 Namespace 中定义特定网络的全部信息。
 
 **podSelector**：每个 `NetworkPolicy` 包含一个 `podSelector`，它可以选择一组应用了网络策略的 Pod。由于 `NetworkPolicy` 当前只支持定义 `ingress` 规则，这个 `podSelector` 实际上为该策略定义了一组 “目标Pod”。示例中的策略选择了标签为 “role=db” 的 Pod。一个空的 `podSelector` 选择了该 Namespace 中的所有 Pod。
 

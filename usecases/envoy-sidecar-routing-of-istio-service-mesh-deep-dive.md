@@ -52,7 +52,7 @@
 
 第一步开始时，`productpage` Pod 中的 Envoy sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
 
-Istio 官网中的 [Envoy 配置深度解析](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/#envoy-%E9%85%8D%E7%BD%AE%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90)中是以发起 HTTP 请求的一方来详述 Envoy 做流量转发的过程，而本文中考虑的是接受 downstream 的流量的一方，它既要接收 downstream 发来的请求，自己还需要请求其他服务，例如 `reviews` 服务中的 Pod 还需要请求 `ratings` 服务。
+Istio 官网中的 Envoy 配置深度解析中是以发起 HTTP 请求的一方来详述 Envoy 做流量转发的过程，而本文中考虑的是接受 downstream 的流量的一方，它既要接收 downstream 发来的请求，自己还需要请求其他服务，例如 `reviews` 服务中的 Pod 还需要请求 `ratings` 服务。
 
 `reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 sidecar 工作步骤类似，下文只以 `reviews-v1-cb8655c75-b97zc` 这一个 Pod 中的 Sidecar 流量转发步骤来说明。
 
@@ -270,7 +270,7 @@ ADDRESS            PORT      TYPE
 
 因为 `reviews` 会向 `ratings` 服务发送 HTTP 请求，请求的地址是：`http://ratings.default.svc.cluster.local:9080/`，Outbound handler 的作用是将 iptables 拦截到的本地应用程序发出的流量，经由 Envoy 判断如何路由到 upstream。
 
-应用程序容器发出的请求为 Outbound 流量，被 iptables 劫持后转移给 Envoy  Outbound handler 处理，然后经过 `virtual` Listener、`0.0.0.0_9080` Listener，然后通过 Route 9080 找到 upstream 的 cluster，进而通过 EDS 找到 Endpoint 执行路由动作。这一部分可以参考 Istio 官网中的 [Envoy 深度配置解析](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/#envoy-%E9%85%8D%E7%BD%AE%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90)。
+应用程序容器发出的请求为 Outbound 流量，被 iptables 劫持后转移给 Envoy  Outbound handler 处理，然后经过 `virtual` Listener、`0.0.0.0_9080` Listener，然后通过 Route 9080 找到 upstream 的 cluster，进而通过 EDS 找到 Endpoint 执行路由动作。
 
 **Route 9080**
 

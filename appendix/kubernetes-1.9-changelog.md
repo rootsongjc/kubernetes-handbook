@@ -10,7 +10,7 @@ Deployment和ReplicaSet是Kubernetes中最常用的两个对象，经过一年�
 
 ## Windows支持（beta）
 
-Kubernetes最初是为Linux系统开发的，但是用户逐渐意识到容器编排的好处，我们看到有人需要在Kubernetes上运行Windows工作负载。在12个月前，我们开始认真考虑在Kubernetes上支持Windows Server的工作。 [SIG-Windows](https://github.com/kubernetes/community/tree/master/sig-windows)现在已经将这个功能推广到beta版本，这意味着我们可以评估它的[使用情况](https://kubernetes.io/docs/getting-started-guides/windows/)。
+Kubernetes最初是为Linux系统开发的，但是用户逐渐意识到容器编排的好处，我们看到有人需要在Kubernetes上运行Windows工作负载。在12个月前，我们开始认真考虑在Kubernetes上支持Windows Server的工作。 [SIG-Windows](https://github.com/kubernetes/community/tree/master/sig-windows)现在已经将这个功能推广到beta版本，这意味着我们可以评估它的使用情况。
 
 ## 增强存储
 

@@ -1,4 +1,4 @@
-## 深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持
+# 深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持
 
 **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
@@ -269,7 +269,7 @@ ADD istio-iptables.sh /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/istio-iptables.sh"]
 ```
 
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables.sh` 脚本，再按图索骥看看这个脚本里到底写的什么，该脚本的位置在 Istio 源码仓库的 [tools/deb/istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh)，一共 300 多行，就不贴在这里了。下面我们就来解析下这个启动脚本。
+我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables.sh` 脚本，再按图索骥看看这个脚本里到底写的什么，该脚本的位置在 Istio 源码仓库的 `tools/deb/istio-iptables.sh`，一共 300 多行，就不贴在这里了。下面我们就来解析下这个启动脚本。
 
 ### Init 容器启动入口
 
@@ -399,10 +399,6 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
 
 ![iptables结构图](../images/0069RVTdgy1fv5dm4a9ygj30w50czdi3.jpg)
-
-图片来自[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)
-
-
 
 每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
 

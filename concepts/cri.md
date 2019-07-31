@@ -14,8 +14,6 @@ Container Runtime实现了CRI gRPC Server，包括`RuntimeService`和`ImageServi
 
 要想启用CRI只需要在kubelet的启动参数重传入此参数：`--container-runtime-endpoint`远程运行时服务的端点。当前Linux上支持unix socket，windows上支持tcp。例如：`unix:///var/run/dockershim.sock`、 `tcp://localhost:373`，默认是`unix:///var/run/dockershim.sock`，即默认使用本地的docker作为容器运行时。
 
-关于CRI的详细进展请参考[CRI: the Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)。
-
 ## CRI接口
 
 Kubernetes 1.9中的CRI接口在`api.proto`中的定义如下：

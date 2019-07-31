@@ -28,7 +28,7 @@ Vizceral有两个可视化级别，全局可视化和集群级别可视化。在
 
 **前言**
 
-如果您还尚未部署服务网格，可以按照此[Istio Bookinfo Demo](https://istio.io/docs/guides/bookinfo/)中的说明部署Istio及其示例应用程序。您需要能够在应用程序之间生成流量。要测试指标是否从Mixer正确发送到Prometheus，您可以运行以下Prometheus查询`istio_request_count`，应该会看到多个条目。
+如果您还尚未部署服务网格，可以按照Istio Bookinfo Demo 中的说明部署Istio及其示例应用程序。您需要能够在应用程序之间生成流量。要测试指标是否从Mixer正确发送到Prometheus，您可以运行以下Prometheus查询`istio_request_count`，应该会看到多个条目。
 
 ![Prometheus查询](../images/00704eQkgy1fshg0vw25ij318g0jzqjq.jpg)
 

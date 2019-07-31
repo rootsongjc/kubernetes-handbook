@@ -560,7 +560,7 @@ kubectl repalce -f ingress.yaml
 
 然后在本地的`/etc/hosts`文件中增加一条配置：
 
-```Ini
+```ini
 172.20.0.119 mean.jimmysong.io
 ```
 

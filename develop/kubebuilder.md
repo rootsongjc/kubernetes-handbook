@@ -2,8 +2,6 @@
 
 Kubebuilder 是一个基于 [CRD](../concepts/crd.md) 来构建 Kubernetes API 的框架，可以使用 CRD 来构建 API、Controller 和 Admission Webhook。
 
-请参考 [Kubebuilder quick start](https://book.kubebuilder.io/quick_start.html) 来安装 kubebuilder。
-
 ## 动机
 
 目前扩展 Kubernetes 的 API 的方式有创建 [CRD](../concepts/crd.md)、使用 [Operator](operator.md) SDK 等方式，都需要写很多的样本文件（boilerplate），使用起来十分麻烦。为了能够更方便构建 Kubernetes API 和工具，就需要一款能够事半功倍的工具，与其他 Kubernetes API 扩展方案相比，kubebuilder 更加简单易用，并获得了社区的广泛支持。

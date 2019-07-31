@@ -1,4 +1,4 @@
-### Kubernetes中的网络解析——以flannel为例
+# Kubernetes中的网络解析——以flannel为例
 
 我们当初使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)安装了拥有三个节点的kubernetes集群，节点的状态如下所述。
 
@@ -382,13 +382,12 @@ Chain KUBE-SERVICES (2 references)
 target     prot opt source               destination
 ```
 
-从上面的iptables中可以看到注入了很多Kuberentes service的规则，请参考[iptables 规则](https://www.cnyunwei.cc/archives/393)获取更多详细信息。
+从上面的iptables中可以看到注入了很多Kuberentes service的规则。
 
 ## 参考
 
 - [coreos/flannel - github.com](https://github.com/coreos/flannel)
 - [linux 网络虚拟化： network namespace 简介](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)
 - [Linux虚拟网络设备之veth](https://segmentfault.com/a/1190000009251098)
-- [iptables 规则](https://www.cnyunwei.cc/archives/393)
 - [flannel host-gw network](http://hustcat.github.io/flannel-host-gw-network/)
 - [flannel - openshift.com](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

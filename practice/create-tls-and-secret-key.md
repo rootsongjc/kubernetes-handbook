@@ -406,5 +406,4 @@ cp *.pem /etc/kubernetes/ssl
 
 + [Generate self-signed certificates](https://coreos.com/os/docs/latest/generate-self-signed-certificates.html)
 + [Client Certificates V/s Server Certificates](https://blogs.msdn.microsoft.com/kaushal/2012/02/17/client-certificates-vs-server-certificates/)
-+ [数字证书及 CA 的扫盲介绍](http://blog.jobbole.com/104919/)
 + [TLS bootstrap 引导程序](../guide/tls-bootstrapping.md)

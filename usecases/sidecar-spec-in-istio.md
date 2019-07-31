@@ -156,7 +156,3 @@ kubectl apply -n default -f <(istioctl kube-inject -f manifests/istio/k8s-app-mo
 - 系统得进行 deployment 滚动更新
 
 手动或者自动注入都使用同样的模板配置。自动注入会从 `istio-system` 命名空间下获取 `istio-inject` 的 ConfigMap。手动注入可以通过本地文件或者 Configmap 。
-
-## 参考
-
-- [Installing Istio Sidecar](https://istio.io/docs/setup/kubernetes/sidecar-injection.html)

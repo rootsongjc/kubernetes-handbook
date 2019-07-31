@@ -124,10 +124,7 @@ curl -sX GET -H "Authorization:bearer `cat /var/run/secrets/kubernetes.io/servic
 
 不需要指定 csr 文件，只需要 token 即可。
 
-参考 [wait-for-endpoints init-containers fails to load with k8s 1.6.0 #56](https://github.com/giantswarm/kubernetes-prometheus/issues/56)
-
 ## 参考
 
 - [Kubernetes Setup for Prometheus and Grafana](https://github.com/giantswarm/kubernetes-prometheus)
 - [RBAC——基于角色的访问控制](../guide/rbac.md)
-- [wait-for-endpoints init-containers fails to load with k8s 1.6.0 #56](https://github.com/giantswarm/kubernetes-prometheus/issues/56)

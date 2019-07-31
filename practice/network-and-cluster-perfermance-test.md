@@ -397,5 +397,4 @@ Locust模拟10万用户，每秒增长100个。
 - [Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
 - [CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
 - [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
-- [Kubemark User Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/kubemark-guide.md)
 - [Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

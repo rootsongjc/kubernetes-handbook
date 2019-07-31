@@ -689,8 +689,6 @@ spec:
 
 `FlexVolume`使用户能够将供应商卷挂载到容器中。供应商插件是使用驱动程序实现的，该驱动程序支持由 `FlexVolume` API定义的一系列卷命令。驱动程序必须安装在每个节点的预定义卷插件路径中。
 
-更多细节可以在[这里](https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md)找到。
-
 ## 挂载传播
 
 **注意**：挂载传播是 Kubernetes 1.8 中的一个 alpha 特性，在将来的版本中可能会重新设计甚至删除。

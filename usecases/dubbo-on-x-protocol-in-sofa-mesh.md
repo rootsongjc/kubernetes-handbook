@@ -21,7 +21,7 @@ X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mes
 
 先看部署效果图：
 
-![Mosn x-protocol部署图.png | left | 747x382](https://cdn.nlark.com/yuque/0/2018/png/151172/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png "")
+![Mosn x-protocol部署图](../images/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png)
 
 本示例中dubbo-consumer的部署方式采用直连模式，即不走注册中心，完全依托kubernetes平台提供的服务注册及服务发现能力。
 

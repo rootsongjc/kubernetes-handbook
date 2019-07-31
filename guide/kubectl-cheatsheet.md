@@ -276,7 +276,7 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 ### Kubectl 详细输出和调试
 
-使用 `-v` 或 `--v` 标志跟着一个整数来指定日志级别。[这里](https://github.com/kubernetes/community/blob/master/contributors/devel/logging.md) 描述了通用的 kubernetes 日志约定和相关的日志级别。
+使用 `-v` 或 `--v` 标志跟着一个整数来指定日志级别。
 
 | 详细等级    | 描述                                       |
 | ------- | ---------------------------------------- |

@@ -29,7 +29,7 @@
 **可扩展性**
 
 - 运行时的[API聚合](https://kubernetes.io/docs/concepts/api-extension/apiserver-aggregation/)是此版本中最强大的扩展功能，允许高级用户将Kubernetes风格的预先构建的第三方或用户创建的API添加到其集群中。
-- [容器运行时接口](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)（CRI）已经增强，可以使用新的RPC调用从运行时检索容器度量。 [CRI的验证测试](https://github.com/kubernetes/community/blob/master/contributors/devel/cri-validation.md)已经发布，与[containerd](http://containerd.io/)进行了Alpha集成，现在支持基本的生命周期和镜像管理。参考[深入介绍CRI](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)的文章。
+- [容器运行时接口](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)（CRI）已经增强，可以使用新的RPC调用从运行时检索容器度量。 CRI的验证测试已经发布，与[containerd](http://containerd.io/)进行了Alpha集成，现在支持基本的生命周期和镜像管理。参考[深入介绍CRI](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)的文章。
 
 **其它功能**
 

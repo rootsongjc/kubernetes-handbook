@@ -1,10 +1,10 @@
-## 访问集群
+# 访问集群
 
-### 第一次使用 kubectl 访问
+## 第一次使用 kubectl 访问
 
 如果您是第一次访问 Kubernetes API 的话，我们建议您使用 Kubernetes 命令行工具：`kubectl`。
 
-为了访问集群，您需要知道集群的地址，并且需要有访问它的凭证。通常，如果您完成了 [入门指南](https://kubernetes.io/docs/getting-started-guides) 那么这些将会自动设置，或者其他人为您部署的集群提供并给您凭证和集群地址。
+为了访问集群，您需要知道集群的地址，并且需要有访问它的凭证。通常，如果您完成了入门指南那么这些将会自动设置，或者其他人为您部署的集群提供并给您凭证和集群地址。
 
 使用下面的命令检查 kubectl 已知的集群的地址和凭证：
 
@@ -12,7 +12,7 @@
 $ kubectl config view
 ```
 
-### 直接访问 REST API
+## 直接访问 REST API
 
 Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST API，可以使用像 curl、wget 或浏览器这样的 http 客户端，有以下几种方式来定位和认证：
 
@@ -27,7 +27,7 @@ Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST A
   - 适用于通过使用代理而混淆的某些类型的客户端代码。
   - 需要将根证书导入浏览器以防止 MITM。
 
-#### 使用 kubectl proxy
+### 使用 kubectl proxy
 
 以下命令作为反向代理的模式运行 kubectl。 它处理对 apiserver 的定位并进行认证。
 
@@ -48,7 +48,7 @@ $ curl http://localhost:8080/api/
 }
 ```
 
-#### 不使用 kubectl proxy（1.3.x 以前版本）
+### 不使用 kubectl proxy（1.3.x 以前版本）
 
 通过将认证 token 直接传递给 apiserver 的方式，可以避免使用 kubectl proxy，如下所示：
 
@@ -63,7 +63,7 @@ $ curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 }
 ```
 
-#### 不使用 kubectl proxy（1.3.x 以后版本）
+### 不使用 kubectl proxy（1.3.x 以后版本）
 
 在 Kubernetes 1.3 或更高版本中，`kubectl config view` 不再显示 token。 使用 `kubectl describe secret …` 获取 default service account 的 token，如下所示：
 
@@ -89,11 +89,11 @@ $ curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 
 对于某些群集，apiserver 可能不需要身份验证；可以选择在本地主机上服务，或者使用防火墙保护。 对此还没有一个标准。[配置对API的访问](https://kubernetes.io/docs/admin/accessing-the-api) 描述了群集管理员如何配置此操作。 这种方法可能与未来的高可用性支持相冲突。
 
-### 编程访问 API
+## 编程访问 API
 
 Kubernetes 支持 [Go](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#go-client) 和 [Python](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#python-client) 客户端库。
 
-#### Go 客户端
+### Go 客户端
 
 - 要获取该库，请运行以下命令：`go get k8s.io/client-go/<version number>/kubernetes` 请参阅 [https://github.com/kubernetes/client-go](https://github.com/kubernetes/client-go) 以查看支持哪些版本。
 - 使用 client-go 客户端编程。请注意，client-go 定义了自己的 API 对象，因此如果需要，请从 client-go 而不是从主存储库导入 API 定义，例如导入 `k8s.io/client-go/1.4/pkg/api/v1` 是正确的。
@@ -102,17 +102,17 @@ Go 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文件]
 
 如果应用程序在群集中以 Pod 的形式部署，请参考 [下一节](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#accessing-the-api-from-a-pod)。
 
-#### Python 客户端
+### Python 客户端
 
 要使用 [Python client](https://github.com/kubernetes-incubator/client-python)，请运行以下命令：`pip install kubernetes`。查看 [Python 客户端库页面](https://github.com/kubernetes-incubator/client-python) 获取更多的安装选择。
 
 Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文件](https://kubernetes.io/docs/concepts/cluster-administration/authenticate-across-clusters-kubeconfig) 来定位和验证 apiserver。参考该 [示例](https://github.com/kubernetes-incubator/client-python/tree/master/examples/example1.py)。
 
-#### 其他语言
+### 其他语言
 
 还有更多的客户端库可以用来访问 API。有关其他库的验证方式，请参阅文档。
 
-### 在 Pod 中访问 API
+## 在 Pod 中访问 API
 
 在 Pod 中访问 API 时，定位和认证到 API server 的方式有所不同。在 Pod 中找到 apiserver 地址的推荐方法是使用kubernetes DNS 名称，将它解析为服务 IP，后者又将被路由到 apiserver。
 
@@ -183,7 +183,7 @@ $ kubectl cluster-info
 
 如果您没有指定 port 的名字，那么您不必在 URL 里指定 port_name。
 
-##### 示例
+#### 示例
 
 - 要想访问 Elasticsearch 的服务端点 `_search?q=user:kimchy`，您需要使用：`http://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_search?q=user:kimchy`
 - 要想访问 Elasticsearch 的集群健康信息 `_cluster/health?pretty=true`，您需要使用：`https://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_cluster/health?pretty=true`

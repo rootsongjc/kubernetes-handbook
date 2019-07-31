@@ -386,8 +386,6 @@ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
 - [Spring官方网站](https://spring.io/)
 - [Spring core technologies - spring.io](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html)
-- [Spring Boot——开发新一代Spring Java应用](https://www.tianmaying.com/tutorial/spring-boot-overview)
-- [Spring MVC快速入门教程](https://www.tianmaying.com/tutorial/spring-mvc-quickstart)
 - [Spring Boot Reference Guide中文翻译 -《Spring Boot参考指南》](https://github.com/qibaoguang/Spring-Boot-Reference-Guide)
 - [使用 Spring Boot 快速构建 Spring 框架应用](https://www.ibm.com/developerworks/cn/java/j-lo-spring-boot/)
 - [maven3常用命令、java项目搭建、web项目搭建详细图解](http://blog.csdn.net/edward0830ly/article/details/8748986)
