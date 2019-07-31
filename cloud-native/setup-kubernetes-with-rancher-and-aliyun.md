@@ -11,7 +11,17 @@
 - 开通了公网 IP 的 ECS
 - ECS 规格建议至少 4C8G
 - ECS 使用的阿里云的经典网络
-- 为 ECS 设置安全组规则，开放 UDP/8472 端口（阿里云默认禁止了 UDP，我们使用的 flannel 网络插件的VXLAN 模式，需要将 ECS 的安全组设置 UDP/8472 端口开放）
+
+### 安全组规则
+
+组成 Kubenretes 集群的 ECS 位于阿里云经典网络中，需要为集群配置安全组规则如下：
+
+- UDP/8472 端口：阿里云默认禁止了 UDP，我们使用的 flannel 网络插件的VXLAN 模式，需要将 ECS 的安全组设置 UDP/8472 端口开放
+- TCP/6443：Kubernetes API Server
+- TCP/2379：etcd
+- TCP/2380：etcd
+- TCP/80：http
+- TCP/443：https
 
 ## 步骤
 
