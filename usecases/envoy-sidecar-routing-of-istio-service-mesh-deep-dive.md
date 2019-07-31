@@ -364,7 +364,6 @@ Endpoint 可以是一个或多个，Envoy 将根据一定规则选择适当的 E
 
 ## 参考
 
-- [调试 Envoy 和 Pilot - istio.io](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/)
 - [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
 - [Istio流量管理实现机制深度解析 - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 

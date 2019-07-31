@@ -19,7 +19,7 @@
 
 和其它所有 Kubernetes 配置一样，DaemonSet 需要 `apiVersion`、`kind` 和 `metadata`字段。有关配置文件的通用信息，详见文档 [部署应用](https://kubernetes.io/docs/user-guide/deploying-applications/)、[配置容器](https://kubernetes.io/docs/user-guide/configuring-containers/) 和资源管理。
 
-DaemonSet 也需要一个 [`.spec`](https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status) 配置段。
+DaemonSet 也需要一个 `.spec`配置段。
 
 ### Pod 模板
 

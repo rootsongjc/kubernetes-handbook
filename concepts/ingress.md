@@ -66,7 +66,7 @@ GCE/GKE会在master节点上部署一个ingress controller。你可以在一个p
 
 **配置说明**
 
-**1-4行**：跟Kubernetes的其他配置一样，ingress的配置也需要`apiVersion`，`kind`和`metadata`字段。配置文件的详细说明请查看[部署应用](https://kubernetes.io/docs/user-guide/deploying-applications), [配置容器](https://kubernetes.io/docs/user-guide/configuring-containers)和 [使用resources](https://kubernetes.io/docs/user-guide/working-with-resources).
+**1-4行**：跟Kubernetes的其他配置一样，ingress的配置也需要`apiVersion`，`kind`和`metadata`字段。配置文件的详细说明请查看[部署应用](https://kubernetes.io/docs/user-guide/deploying-applications), [配置容器](https://kubernetes.io/docs/user-guide/configuring-containers)和使用resources。
 
 **5-7行**: Ingress spec 中包含配置一个loadbalancer或proxy server的所有信息。最重要的是，它包含了一个匹配所有入站请求的规则列表。目前ingress只支持http规则。
 

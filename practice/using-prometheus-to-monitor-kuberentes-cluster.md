@@ -112,7 +112,7 @@ kubectl create clusterrolebinding prometheus --clusterrole=cluster-admin --servi
 - *v1beta1.StatefulSet
 - *v2alpha1.CronJob
 
-而在我们使用的 kubernetes 1.6.0 版本的集群中 API 路径跟 `kube-state-metrics` 中不同，无法 list 以上三种资源对象的资源。详情见：https://github.com/giantswarm/kubernetes-prometheus/issues/77
+而在我们使用的 kubernetes 1.6.0 版本的集群中 API 路径跟 `kube-state-metrics` 中不同，无法 list 以上三种资源对象的资源。
 
 ### 3. Job 中的权限认证问题 
 
