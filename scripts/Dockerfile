@@ -2,7 +2,7 @@ FROM alpine:3.9
 
 MAINTAINER Jimmy Song <rootsongjc@gmail.com>
 
-RUN apk add --no-cache bash git curl jq tar libc6-compat g++
+RUN apk add --no-cache bash git curl jq tar libc6-compat g++ openssh
 
 RUN apk add --no-cache nodejs-current-npm && npm install -g markdown-spellcheck webpack webpack-cli
 
