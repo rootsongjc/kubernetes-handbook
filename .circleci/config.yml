@@ -11,7 +11,7 @@ jobs:
         command: scripts/lint-gitbook.sh
   markdown-spell-check:
     docker:
-    - image: jimmysong/gitbook-builder:2019-07-25
+    - image: jimmysong/gitbook-builder:2019-07-31
     working_directory: ~/gitbook
     steps:
     - checkout
@@ -20,7 +20,7 @@ jobs:
         command: scripts/mdspell-check.sh
   markdown-style-check:
     docker:
-    - image: jimmysong/gitbook-builder:2019-07-25
+    - image: jimmysong/gitbook-builder:2019-07-31
     working_directory: ~/gitbook
     steps:
     - checkout
