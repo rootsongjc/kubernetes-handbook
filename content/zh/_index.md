@@ -2,8 +2,6 @@
 
 如果你觉得[云原生](/awesome-cloud-native)的工作很酷，可以加入我们，[蚂蚁金服云原生职位正在火热招聘中🔥](/jobs)！
 
-欢迎大家 6 月 24 来上海参加 KubeCon China 2019 同场活动[由蚂蚁金服主办的 SOFAStack Cloud Native Workshop](sofastack-cloud-native-workshop)，我将在现场恭候大家的光临！
-
 ---
 
 ### [我的云原生图书系列](/tags/book)

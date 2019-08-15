@@ -1,7 +1,5 @@
 [Jimmy Song(宋净超)](/about) is a Developer Advocate at [Ant Financial](http:///antfin.com) and [CNCF Ambassador](https://www.cncf.io/people/ambassadors/). He has organized a few Special Interest Groups in China for years that covering Kubernetes, [Cloud Native](/awesome-cloud-native) and Service Mesh, and is the co-founder of the [ServiceMesher Community](http://www.servicemesher.com). Watch his [schedule](/en/about/#schedule). He has been blogging and coding for years on Cloud Native, also translated Cloud Native Go & Python & Java books into Chinese. Jimmy lives in Beijing and spends his free time on photographing and traveling.  Watch his amazing videos shot with drone [DJI Mavic 2 Pro](https://click.dji.com/AD4wNIOV0G1e2vAqBDwVuQ?dji_from=dji-pilot-app&pm=dji-pilot-app) on [bilibili](http://space.bilibili.com/31004924) and pictures on [Tuchong](https://jimmysongio.tuchong.com/).
 
-Welcome to Shanghai to join our [SOFAStack Cloud Native Workshop hosted by Ant Financial](sofastack-cloud-native-workshop) on June 24, 2019.
-
 ---
 
 ### [Jimmy Song’s Cloud Native Book Series](/tags/book)
