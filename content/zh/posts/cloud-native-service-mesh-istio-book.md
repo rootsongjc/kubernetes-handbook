@@ -6,6 +6,7 @@ draft: false
 tags: ["cloud-native","book","service-mesh"]
 categories: "service-mesh"
 description: "云原生服务网格 Istio（华为云原生技术丛书）图书读后感，原理、实践、架构与源码解析（张超盟、章鑫、徐中虎、徐飞编著）。"
+notoc: true
 bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*okX2TLyEYIYAAAAAAAAAAABkARQnAQ", desc: "Photo via unsplash"}]
 ---
 
@@ -32,6 +33,8 @@ bigimg: [{src: "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*okX2TLyEY
 这本书是目前（2019年08月15日）市面上能买到的最全的一本 Istio 相关的图书了，话说国外还一本 Istio 的书也出来，国内到现在都出了四本了，是不是有种墙外开花墙内香的感觉？
 
 建议大家结合 [Istio 官方文档](https://istio.io)一起来看这本书，Istio 版本更新虽然没有 Kubernetes 那么快，但是在本书发行一个多月后也要发布 1.2 版本了，欢迎大家[加入 ServiceMesher 社区](https://www.servicemesher.com)一起来共读！
+
+读后感 TBD...
 
 ## 关于 ServiceMesher 社区
 
