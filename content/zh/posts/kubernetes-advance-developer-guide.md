@@ -109,4 +109,4 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 - 如果您想推荐新功能或跟上Kubernetes应用开发的最新进展，请考虑加入 SIG，如 [SIG Apps](https://github.com/kubernetes/community/tree/master/sig-apps)。
 - 如果您有兴趣详细了解 Kubernetes 的内部运作（例如网络），请考虑查看[集群运维之旅](https://kubernetes.io/docs/user-journeys/users/cluster-operator/foundational/)。
 
-原文：https://kubernetes.iohttps://kubernetes.io/docs/user-journeys/users/application-developer/advanced
+原文：<https://kubernetes.io/docs/user-journeys/users/application-developer/advanced/>
