@@ -57,11 +57,11 @@ Kubernetic是一款kubernetes桌面客户端，支持windows和mac，当前beta�
 
 ![Kubernetic客户端](https://jimmysong.io/kubernetes-handbook/images/kubernetic-desktop-ui.jpg)
 
-## 手机客户端Carbin
+## 手机客户端Cabin
 
-Carbin是由[bitnami](https://bitnami.com/)开源的手机管理Kubernetes集群的客户端，目前提供iOS和安卓版本，代码开源在GitHub上：<https://bitnami.com/>
+Cabin是由[bitnami](https://bitnami.com/)开源的手机管理Kubernetes集群的客户端，目前提供iOS和安卓版本，代码开源在GitHub上：<https://bitnami.com/>
 
-为了方便移动办公，可以使用Carbin这个kuberntes手机客户端，可以链接GKE和任何Kubernetes集群，可以使用以下三种认证方式：
+为了方便移动办公，可以使用Cabin这个kuberntes手机客户端，可以链接GKE和任何Kubernetes集群，可以使用以下三种认证方式：
 
 - 证书
 - token
@@ -69,7 +69,7 @@ Carbin是由[bitnami](https://bitnami.com/)开源的手机管理Kubernetes集群
 
 所有功能跟kubernetes dashboard相同，还可以支持使用Helm chart部署应用，可以配置自定义的chart仓库地址。
 
-iPhone用户可以在App Store中搜索**Carbin**即可找到。
+iPhone用户可以在App Store中搜索**Cabin**即可找到。
 
 ![App Store](https://jimmysong.io/kubernetes-handbook/images/carbin-kubernetes-mobile-dashboard-1.jpg)图片 - App Store
 
