@@ -29,7 +29,7 @@ share_img = "/img/jimmysong.jpg"
 commit = false
 rss = true
 # ad section, comment this to disable it
-ad = true
+#ad = true
 # GoogleAdsense
 #adsense = true
 # reward button, comment this to disable it
