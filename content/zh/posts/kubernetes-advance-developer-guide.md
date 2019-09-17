@@ -7,7 +7,6 @@ description: "Kubernetes高级开发者指南，涵盖Pod的高级配置和Kuber
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018021002.jpg", desc: "Twilight in the Forbidden City|Beijing|Feb 10,2018"}]
 date: 2018-02-11T10:32:46+08:00
 draft: false
-
 ---
 
 本文假定您已经熟悉 Kubernetes 的核心概念并可以轻松的部署自己的应用程序。如果还不能的话，您需要先查看下[中级应用开发者](https://kubernetes.io/docs/user-journeys/users/application-developer/intermediate/)主题。
