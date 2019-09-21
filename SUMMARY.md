@@ -260,6 +260,7 @@
 * [CNCF特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
 * [开源项目加入CNCF Sandbox的要求](cloud-native/cncf-sandbox-criteria.md)
 * [CNCF中的项目治理](cloud-native/cncf-project-governing.md)
+* [CNCF Ambassador](cloud-native/cncf-ambassador.md)
 
 ## 附录
 

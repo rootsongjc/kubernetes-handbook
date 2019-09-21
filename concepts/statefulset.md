@@ -491,7 +491,7 @@ kubectl expose po zk-1 --port=2181 --target-port=2181 --name=zk-1 --selector=zkI
 
 查看`zk-0`这个service可以看到如下结果：
 
-```
+```bash
 NAME      CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 zk-0      10.254.98.14   <nodes>       2181:31693/TCP   5m
 ```
@@ -500,6 +500,6 @@ zk-0      10.254.98.14   <nodes>       2181:31693/TCP   5m
 
 ## 参考
 
-https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+- https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
 
-[kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)
+- [kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)
