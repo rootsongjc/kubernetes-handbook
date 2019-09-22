@@ -408,4 +408,3 @@ BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由�
 ## 参考
 
 - [安装 Istio](https://istio.io/docs/setup/)
-- [BookInfo 应用](https://istio.io/zh/docs/examples/bookinfo/)

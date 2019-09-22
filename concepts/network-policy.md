@@ -2,7 +2,7 @@
 
 网络策略说明一组 `Pod` 之间是如何被允许互相通信，以及如何与其它网络 Endpoint 进行通信。 `NetworkPolicy` 资源使用标签来选择 `Pod`，并定义了一些规则，这些规则指明允许什么流量进入到选中的 `Pod` 上。关于 Network Policy 的详细用法请参考 [Kubernetes 官网](https://kubernetes.io/docs/concepts/services-networking/network-policies/)。
 
-Network Policy 的作用对象是 Pod，也可以应用到 Namespace 和集群的 Ingress、Egress 流量。Network Policy 是作用在 L3/4 层的，即限制的是对 IP 地址和端口的访问，如果需要对应用层做访问限制需要使用如 [Istio](https://istio.io/zh) 这类 Service Mesh。
+Network Policy 的作用对象是 Pod，也可以应用到 Namespace 和集群的 Ingress、Egress 流量。Network Policy 是作用在 L3/4 层的，即限制的是对 IP 地址和端口的访问，如果需要对应用层做访问限制需要使用如 [Istio](https://istio.io) 这类 Service Mesh。
 
 ## 前提条件
 

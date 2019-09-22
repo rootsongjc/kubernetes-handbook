@@ -338,7 +338,7 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 Service Mesh现在一般被翻译作服务网格，目前主流的Service Mesh有如下几款：
 
-* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方中文文档](https://istio.io/zh/)
+* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档](https://istio.io)
 * [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
 * [Envoy](https://www.envoyproxy.io/)：Lyft开源的，可以在Istio中使用Sidecar模式运行
 * [Conduit](https://conduit.io)：同样由Buoyant开源的轻量级的基于Kubernetes的Service Mesh

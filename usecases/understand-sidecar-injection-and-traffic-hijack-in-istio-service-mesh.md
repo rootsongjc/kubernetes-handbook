@@ -684,8 +684,6 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 ![Istio bookinfo](../images/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
 
-图片来自 [Istio 官方网站](https://istio.io/zh/docs/examples/bookinfo/)
-
 对照 bookinfo 示例的 productpage 的查看建立的连接。在 `productpage-v1-745ffc55b7-2l2lw` Pod 的 `istio-proxy` 容器中使用 root 用户查看打开的端口。
 
 ```bash

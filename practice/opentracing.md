@@ -19,7 +19,7 @@ Jaeger 是遵循 OpenTracing 的一种实现。
 
 **Trace**
 
-Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是 Istio 官方提供的 [Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/) 的追踪中对 `productpage` 的调用链分析。
+Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是 Istio 官方提供的 Bookinfo 示例 的追踪中对 `productpage` 的调用链分析。
 
 **Span**
 
@@ -37,7 +37,7 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 
 **示例**
 
-下面是 Jaeger 收集的来自 [Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/) 中的 `productpage` 的调用链追踪数据。
+下面是 Jaeger 收集的来自 Bookinfo 示例 中的 `productpage` 的调用链追踪数据。
 
 ```json
 {
