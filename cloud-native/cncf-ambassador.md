@@ -17,10 +17,10 @@ CNCF Ambassador（CNCF 大使），人员名单详见 <https://www.cncf.io/peopl
 
 1. 在 [meetup.com](https://www.meetup.com) 上创建一个 group（费用大概半年$42）
 1. 以策展人名义组织与 CNCF 提倡的云原生主题相关的 meetup
-1. 将活动加入到 CNCF group（https://www.meetup.com/pro/cncf）和为活动申请使用 CNCF logo（https://github.com/cncf/meetups#how-to-apply）
-1. 申请成为 CNCF Ambassador：https://github.com/cncf/ambassadors 附上自己最近三个月内举办的 meetup 链接（CNCF 只认 meetup.com 里的活动）
+1. 将活动加入到 CNCF group（<https://www.meetup.com/pro/cncf>）和为活动申请使用 CNCF logo（<https://github.com/cncf/meetups#how-to-apply>）
+1. 申请成为 CNCF Ambassador：<https://github.com/cncf/ambassadors> 附上自己最近三个月内举办的 meetup 链接（CNCF 只认 meetup.com 里的活动）
 
-关于 CNCF meetup 的更多信息请访问：https://github.com/cncf/meetups/
+关于 CNCF meetup 的更多信息请访问：<https://github.com/cncf/meetups/>
 
 ## 成为 CNCF 大使有什么好处？
 

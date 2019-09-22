@@ -100,7 +100,7 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 }
 ```
 
-在开发应用时需要使用兼容 OpenTracing API 的 Tracing 实现库，例如 [Jaeger](https://www.jaegertracing.io) 来实现自动的分布式追踪。参考[在 Istio 中使用分布式追踪](https://istio.io/zh/docs/tasks/telemetry/distributed-tracing/)。
+在开发应用时需要使用兼容 OpenTracing API 的 Tracing 实现库，例如 [Jaeger](https://www.jaegertracing.io) 来实现自动的分布式追踪。
 
 ## 参考
 

@@ -214,8 +214,6 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 **注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
-详细信息请参阅 https://istio.io/zh/docs/examples/bookinfo/
-
 ![bookinfo示例](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
 
 ### Vistio

@@ -15,7 +15,7 @@ X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mes
 1. 部署 Kubernetes 集群，建议使用 https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
 2. 安装 kubectl 命令行工具，请参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
 3. 安装 VM Driver，推荐安装 Virtual Box、Mac 用户也可以选择 hyperkit
-4. 了解 Istio Traffic Management 相关概念，相关链接：[https://istio.io/zh/docs/tasks/traffic-management/](https://istio.io/zh/docs/tasks/traffic-management/)
+4. 了解 Istio Traffic Management 相关概念
 
 ## 部署
 

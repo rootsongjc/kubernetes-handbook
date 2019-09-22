@@ -39,9 +39,9 @@ Ingress是授权入站连接到达集群服务的规则集合。
 
 在使用Ingress resource之前，有必要先了解下面几件事情。Ingress是beta版本的resource，在kubernetes1.1之前还没有。你需要一个`Ingress Controller`来实现`Ingress`，单纯的创建一个`Ingress`没有任何意义。
 
-GCE/GKE会在master节点上部署一个ingress controller。你可以在一个pod中部署任意个自定义的ingress controller。你必须正确地annotate每个ingress，比如 [运行多个ingress controller](https://git.k8s.io/ingress#running-multiple-ingress-controllers) 和 [关闭glbc](https://git.k8s.io/ingress-gce/BETA_LIMITATIONS.md#disabling-glbc).
+GCE/GKE会在master节点上部署一个ingress controller。你可以在一个pod中部署任意个自定义的ingress controller。你必须正确地annotate每个ingress，比如 [运行多个ingress controller](https://git.k8s.io/ingress#running-multiple-ingress-controllers) 和 关闭glbc。
 
-确定你已经阅读了Ingress controller的[beta版本限制](https://github.com/kubernetes/ingress-gce/blob/master/BETA_LIMITATIONS.md#glbc-beta-limitations)。在非GCE/GKE的环境中，你需要在pod中[部署一个controller](https://git.k8s.io/ingress-nginx/README.md)。
+确定你已经阅读了Ingress controller的 beta版本限制。在非GCE/GKE的环境中，你需要在pod中[部署一个controller](https://git.k8s.io/ingress-nginx/README.md)。
 
 ## Ingress Resource
 
@@ -315,4 +315,3 @@ test      -                       178.91.123.132
 - [Kubernetes : Ingress Controller with Træfɪk and Let's Encrypt](https://blog.osones.com/en/kubernetes-ingress-controller-with-traefik-and-lets-encrypt.html)
 - [Kubernetes : Træfɪk and Let's Encrypt at scale](https://blog.osones.com/en/kubernetes-traefik-and-lets-encrypt-at-scale.html)
 - [Kubernetes Ingress Controller-Træfɪk](https://docs.traefik.io/user-guide/kubernetes/)
-- [使用Istio控制Ingress流量](https://istio.io/zh/docs/tasks/traffic-management/ingress/)

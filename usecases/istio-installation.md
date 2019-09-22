@@ -1,8 +1,8 @@
 # 安装并试用Istio service mesh
 
-**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/zh)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io/)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
-官方文档地址 [快速开始](https://istio.io/docs/setup/kubernetes/)
+官方文档地址 [快速开始](https://istio.io/docs/setup/kubernetes/)。
 
 本文根据官网的文档整理而成，步骤包括安装**istio 0.5.1**并创建一个bookinfo的微服务来测试istio的功能。
 
@@ -407,5 +407,5 @@ BookInfo示例中有三个版本的`reviews`，可以使用istio来配置路由�
 
 ## 参考
 
-- [安装 Istio](https://istio.io/zh/docs/setup/kubernetes/)
+- [安装 Istio](https://istio.io/docs/setup/)
 - [BookInfo 应用](https://istio.io/zh/docs/examples/bookinfo/)

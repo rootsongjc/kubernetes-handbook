@@ -58,8 +58,3 @@ upstream docGenerate {
 ```
 
 172.20.0.119是我们的边缘节点的VIP，见[边缘节点配置](../practice/edge-node-configuration.md)。
-
-## 参考
-
-- [Kubernetes Ingress Backend - traefik.io](https://docs.traefik.io/configuration/backends/kubernetes/)
-- [Kubernetes Ingress Controller - traefik.io](http://docs.traefik.io/user-guide/kubernetes/)

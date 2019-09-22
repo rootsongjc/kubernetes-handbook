@@ -1,6 +1,6 @@
 # Istio简介
 
-**注意：Istio 1.10于2018年8月1日发布1.0，关于Istio的更多信息请见Istio官方文档:<https://istio.io>，中文版：<https://istio.io/zh>，本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+**注意：Istio 1.10于2018年8月1日发布1.0，关于Istio的更多信息请见Istio官方文档:<https://istio.io>，本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 [Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
 
@@ -14,7 +14,7 @@
 
 目前版本的istio只支持kubernetes，未来计划支持其他其他环境。
 
-另外，Istio的前身是IBM开源的[Amalgam8](https://www.amalgam8.io)，追本溯源，我们来看下它的特性。
+另外，Istio的前身是IBM开源的Amalgam8，追本溯源，我们来看下它的特性。
 
 ### Amalgam8
 
@@ -69,4 +69,4 @@ Istio-Auth提供强大的服务间和最终用户认证，使用相互TLS，内�
 ## 参考
 
 - [Istio：一个用于微服务间通信的服务网格开源项目](https://www.infoq.cn/article/2017/05/istio)
-- [Istio 是什么？](https://istio.io/zh/docs/concepts/what-is-istio/)
+- [Istio 是什么？](https://istio.io/docs/concepts/what-is-istio/)

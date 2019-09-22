@@ -49,6 +49,7 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [dockone.io](http://www.dockone.io)
 - [Cloud Native知乎专栏](https://zhuanlan.zhihu.com/cloud-native)
 - [kubernetes.org.cn](https://www.kubernetes.org.cn/)
+- [servicemesher.com](https://www.servicemesher.com)
 
 ### 博客
 
@@ -79,7 +80,6 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [sysdig](https://sysdig.com/blog/)
 - [spinnaker](https://blog.spinnaker.io)
 - [supergiant](https://supergiant.io/blog)
-- [thecodeteam](https://blog.thecodeteam.com/)
 - [twistlock](https://www.twistlock.com/blog/)
 - [vamp](https://medium.com/vamp-io)
 - [weave](https://www.weave.works/blog/)
