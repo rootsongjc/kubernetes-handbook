@@ -259,6 +259,7 @@ Karl Marx说的好，生产力决定生产关系，云计算的概念层出不�
 
 ## 参考
 
+- [CNCF Serverless Whitepaper v1.0](https://gw.alipayobjects.com/os/basement_prod/24ec4498-71d4-4a60-b785-fa530456c65b.pdf)
 - [Serverless Architectures - Martin Fowler](https://martinfowler.com/articles/serverless.html)
 - [Serverless架构综述](http://dockone.io/article/1460)
 - [2017年会是Serverless爆发之年吗？](http://www.infoq.com/cn/news/2017/04/2017-Serverless)
