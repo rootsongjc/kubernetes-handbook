@@ -153,9 +153,15 @@ desc = "ServiceMesher at KubeCon China 2019 Shanghai - Jun 25, 2019"
 
 [[menu.main]]
     parent = "Gitbooks"
+    name = "谷歌工程实践"
+    url = "eng-practices"
+    weight = 5
+
+[[menu.main]]
+    parent = "Gitbooks"
     name = "迁移到云原生应用架构"
     url = "migrating-to-cloud-native-application-architectures"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     identifier = "Books"
