@@ -4,7 +4,11 @@
 
 ## 关于本书
 
-[![CircleCI](https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master.svg?style=svg)](https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master)
+<p align="left">
+  <a href="https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master">
+    <img src="https://circleci.com/gh/rootsongjc/kubernetes-handbook/tree/master.svg?style=svg" alt="CircleCI"/>
+  </a>
+</p>
 
 <p align="center">
   <a href="https://jimmysong.io/kubernetes-handbook">
@@ -112,5 +116,3 @@
 <p align="center">
 <img src="images/wechat-appreciate-qrcode.jpg" alt="微信赞赏码"/>
 </p>
-
-
