@@ -3,7 +3,7 @@ title: "什么是Serverless（无服务器）架构？"
 tags: ["serverless","faas"]
 categories: "serverless"
 subtitle: "理解Serverless（无服务器）和FaaS（函数即服务）"
-description: "本文带您了解serverless架构和以亚马逊AWS Lambda为代表的FaaS函数即服务，分析其来历和要解决的问题以及处境"
+description: "本文向您介绍 Serverless 架构，分析其来历和要解决的问题以及处境。"
 date: 2017-11-24T23:46:35+08:00
 draft: false
 bigimg: [{src: "/img/banners/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Data Center"}]
@@ -100,6 +100,18 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 下面是 Function-as-a-Service 全景图（图片来自<https://github.com/amyers1793/FunctionasaServiceLandscape>)
 
 ![FaaS Landscape](https://ws3.sinaimg.cn/large/006tNbRwgy1fv8y3cx0kuj30zk0k0wjh.jpg)
+
+### Serverless 中的函数
+
+下图是 Serverless 中的（FaaS）函数定义，从图中可以看出与容器、12 要素及 Kubernetes 的运行时设计十分契合。
+
+![Serverless 中的函数定义](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ldey3l7gj31ti0mwta9.jpg)
+
+下图 FaaS 中函数输入、context 及输出。
+
+![FaaS 中的函数](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ldhm7bxyj31040u0q5n.jpg)
+
+以上两张图片根据 CNCF Serverless Whitepaper v1.0 绘制。
 
 ### 总结
 
@@ -253,7 +265,7 @@ Kubernetes 的蓬勃发展由催生了一系列以它为基础的 Serverless 应
 
 ## 总结
 
-Karl Marx说的好，生产力决定生产关系，云计算的概念层出不穷，其本质上还是对生产关系和生产力的配置与优化，生产者抛开场景意味追求高大上的技术将譬如“大炮打蚊子”，小题大做，鼓励大家为了满足大家的好奇心进行折腾，毕竟那么多科学发现和重大发明都是因为折腾出来的，不想要一匹跑的更快的马，而是发明汽车的福特，捣鼓炸药的诺贝尔，种豌豆的孟德尔。。。同时还是要考虑将技术产业化（或许能改变生产关系），提高生产力。
+Karl Marx说的好，生产力决定生产关系，云计算的概念层出不穷，其本质上还是对生产关系和生产力的配置与优化，生产者抛开场景意味追求高大上的技术将譬如“大炮打蚊子”，小题大做，鼓励大家为了满足大家的好奇心进行折腾，毕竟那么多科学发现和重大发明都是因为折腾出来的，不想要一匹跑的更快的马，而是发明汽车的福特，捣鼓炸药的诺贝尔，种豌豆的孟德尔……同时还是要考虑将技术产业化（或许能改变生产关系），提高生产力。
 
 本文同时归档于[kubernetes-handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)。
 
@@ -266,3 +278,4 @@ Karl Marx说的好，生产力决定生产关系，云计算的概念层出不�
 - [从IaaS到FaaS—— Serverless架构的前世今生](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
 - [Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
 - [What is serverless free ebook- oreilly.com](http://www.oreilly.com/programming/free/what-is-serverless.csp)
+- [Serverless Architectures - martinfowler.com](https://martinfowler.com/articles/serverless.html)
