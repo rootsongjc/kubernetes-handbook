@@ -6,7 +6,7 @@ subtitle: "理解Serverless（无服务器）和FaaS（函数即服务）"
 description: "本文向您介绍 Serverless 架构，分析其来历和要解决的问题以及处境。"
 date: 2017-11-24T23:46:35+08:00
 draft: false
-bigimg: [{src: "/img/banners/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: “Photo via splash"}]
+bigimg: [{src: "/img/banners/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Photo via splash"}]
 notoc: true
 ---
 
