@@ -88,7 +88,7 @@ BaaS（Backend as a Service）后端即服务，一般是一个个的API调用�
 
 ### FaaS
 
-FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的额一种形式，当前使用最广泛的是AWS的Lambada。
+FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的一种形式，当前使用最广泛的是AWS的Lambada。
 
 现在当大家讨论Serverless的时候首先想到的就是FaaS，有点甚嚣尘上了。FaaS本质上是一种事件驱动的由消息触发的服务，FaaS供应商一般会集成各种同步和异步的事件源，通过订阅这些事件源，可以突发或者定期的触发函数运行。
 
