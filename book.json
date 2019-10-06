@@ -12,7 +12,7 @@
             "Serverless Handbook - 无服务器架构实践手册": "https://jimmysong.io/serverless-handbook",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
-            "Cloud Native Java（云原生Java）- Spring Boot、Spring Cloud与CloudFoundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java",
+            "Cloud Native Java（云原生Java）- Spring Boot、Spring Cloud与CloudFoundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java"
         }
     },
     "plugins": [
