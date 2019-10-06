@@ -9,11 +9,10 @@
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
             "ServiceMesher社区": "https://www.servicemesher.com",
             "Istio Handbook - Istio服务网格进阶实战": "https://www.servicemesher.com/istio-handbook",
+            "Serverless Handbook - 无服务器架构实践手册": "https://jimmysong.io/serverless-handbook",
             "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
             "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
-            "Cloud Native Java（云原生Java）-  Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java",
-            "SOFAMesh - 基于Istio的大规模服务网格解决方案": "https://github.com/sofastack/sofa-mesh",
-            "SOFAMosn - Golang版的高性能Service Mesh Sidecar代理": "https://github.com/sofastack/sofa-mosn"
+            "Cloud Native Java（云原生Java）- Spring Boot、Spring Cloud与CloudFoundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java",
         }
     },
     "plugins": [
