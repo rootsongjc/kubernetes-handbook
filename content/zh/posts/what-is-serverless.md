@@ -10,6 +10,8 @@ bigimg: [{src: "/img/banners/006tNbRwgy1fv8y2179hmj31kw0rdnpg.jpg", desc: "Photo
 notoc: true
 ---
 
+> 本文节选自 [Serverless Handbook - 服务器架构实践手册](/serverless-handbook)。
+
 Serverless（无服务器架构）是指服务端逻辑由开发者实现，运行在无状态的计算容器中，由事件触发，完全被第三方管理，其业务层面的状态则存储在数据库或其他介质中。
 
 Serverless 是云原生技术发展的高级阶段，可以使开发者更聚焦在业务逻辑，而减少对基础设施的关注。
@@ -280,3 +282,4 @@ Karl Marx说的好，生产力决定生产关系，云计算的概念层出不�
 - [Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
 - [What is serverless free ebook- oreilly.com](http://www.oreilly.com/programming/free/what-is-serverless.csp)
 - [Serverless Architectures - martinfowler.com](https://martinfowler.com/articles/serverless.html)
+- [Serverless Handbook - 无服务器架构实践手册 - jimmysong.io](/serverless-handbook)
