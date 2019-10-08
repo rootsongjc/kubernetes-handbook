@@ -355,13 +355,6 @@ Test Suite Passed
 - gcr.io/google_containers/pause-amd64:3.0
 - gcr.io/google_containers/serve_hostname:v1.4
 
-时速云镜像地址：
-
-- index.tenxcloud.com/jimmy/pause-amd64:3.0
-- index.tenxcloud.com/jimmy/serve_hostname:v1.4
-
-将镜像pull到本地后重新打tag。
-
 ## Locust测试
 
 请求统计

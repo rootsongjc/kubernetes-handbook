@@ -12,16 +12,6 @@
 -  harbor-001.jimmysong.io/library/dockermuenster-caddy:0.9.3
 -  harbor-001.jimmysong.io/library/prom-node-exporter:v0.14.0
 
-同时备份到时速云：
-
-- index.tenxcloud.com/jimmy/prometheus-alertmanager:v0.7.1
-- index.tenxcloud.com/jimmy/grafana:4.2.0
-- index.tenxcloud.com/jimmy/giantswarm-tiny-tools:latest
-- index.tenxcloud.com/jimmy/prom-prometheus:v1.7.0
-- index.tenxcloud.com/jimmy/kube-state-metrics:v1.0.1
-- index.tenxcloud.com/jimmy/dockermuenster-caddy:0.9.3
-- index.tenxcloud.com/jimmy/prom-node-exporter:v0.14.0
-
 **注**：所有镜像都是从官方镜像仓库下载下。
 
 ## 部署

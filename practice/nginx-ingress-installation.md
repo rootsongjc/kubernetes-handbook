@@ -12,12 +12,7 @@
 - gcr.io/google_containers/nginx-ingress-controller:0.9.0-beta.15
 - gcr.io/google_containers/defaultbackend:1.3
 
-gcr.io中的那个两个镜像我复制了一份到时速云，可供大家下载：
-
-- index.tenxcloud.com/jimmy/defaultbackend:1.3
-- index.tenxcloud.com/jimmy/nginx-ingress-controller:0.9.0-beta.15
-
-Docker hub上的那个镜像可以直接下载，所有的安装时需要的配置保存在[../manifests/nginx-ingress](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/nginx-ingress)目录下。
+所有的安装时需要的配置保存在[../manifests/nginx-ingress](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/nginx-ingress)目录下。
 
 ## 步骤详解
 

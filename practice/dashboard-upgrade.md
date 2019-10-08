@@ -26,15 +26,10 @@ kubectl delete -f dashboard/
 wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
-修改其中的两个镜像地址为我们的私有地址。
+注意：其中两个镜像使用 `gcr.io` 仓库，若您无法访问该仓库请换用其他仓库。
 
 - gcr.io/google_containers/kubernetes-dashboard-init-amd64:v1.0.1
 - gcr.io/google_containers/kubernetes-dashboard-amd64:v1.7.1
-
-这个两个镜像可以同时从**时速云**上获取：
-
-- index.tenxcloud.com/jimmy/kubernetes-dashboard-amd64:v1.7.1
-- index.tenxcloud.com/jimmy/kubernetes-dashboard-init-amd64:v1.0.1
 
 将service type设置为`NodePort`，修改后的yaml文件见[kubernetes-dashboard.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/kubernetes-dashboard.yaml)，然后就可以部署新版本的dashboard了。
 

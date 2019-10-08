@@ -4,28 +4,22 @@
 
 该插件直接使用kubernetes部署，官方的配置文件中包含以下镜像：
 
-    gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
-    gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
-    gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
+```ini
+gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
+gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
+gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
+```
 我clone了上述镜像，上传到我的私有镜像仓库：
 
-```
+```ini
 harbor-001.jimmysong.io/library/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 harbor-001.jimmysong.io/library/k8s-dns-kube-dns-amd64:1.14.1
 harbor-001.jimmysong.io/library/k8s-dns-sidecar-amd64:1.14.1
 ```
 
-同时上传了一份到时速云备份：
-
-```
-index.tenxcloud.com/jimmy/k8s-dns-dnsmasq-nanny-amd64:1.14.1
-index.tenxcloud.com/jimmy/k8s-dns-kube-dns-amd64:1.14.1
-index.tenxcloud.com/jimmy/k8s-dns-sidecar-amd64:1.14.1
-```
-
 以下yaml配置文件中使用的是私有镜像仓库中的镜像。
 
-``` 
+``` ini
 kubedns-cm.yaml  
 kubedns-sa.yaml  
 kubedns-controller.yaml  
