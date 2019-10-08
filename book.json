@@ -32,7 +32,9 @@
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
         "lightbox",
-        "ga"
+        "ga",
+        "copy-code-button",
+        "alerts"
     ],
     "pluginsConfig": {
         "theme-default": {
