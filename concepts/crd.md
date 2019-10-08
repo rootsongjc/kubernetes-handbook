@@ -2,7 +2,7 @@
 
 本文是如何创建 CRD 来扩展 Kubernetes API 的教程。CRD 是用来扩展 Kubernetes 最常用的方式，在 Service Mesh 和 Operator 中也被大量使用。因此读者如果想在 Kubernetes 上做扩展和开发的话，是十分有必要了解 CRD 的。
 
-在阅读本文前您需要先了解[使用自定义资源扩展 API](custom-resource.md)， 以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](http://www.servicemesher.com/blog/kubernetes-crd-quick-start/)。
+在阅读本文前您需要先了解[使用自定义资源扩展 API](custom-resource.md)， 以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](https://www.servicemesher.com/blog/kubernetes-crd-quick-start/)。
 
 ## 创建 CRD（CustomResourceDefinition）
 
@@ -11,7 +11,7 @@
 参考下面的 CRD，将其配置保存在 `resourcedefinition.yaml` 文件中：
 
 ```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   # 名称必须符合下面的格式：<plural>.<group>
@@ -20,7 +20,25 @@ spec:
   # REST API使用的组名称：/apis/<group>/<version>
   group: stable.example.com
   # REST API使用的版本号：/apis/<group>/<version>
-  version: v1
+  versions:
+    - name: v1
+      # 可以通过 served 来开关每个 version
+      served: true
+      # 有且仅有一个 version 开启存储
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                cronSpec:
+                  type: string
+                image:
+                  type: string
+                replicas:
+                  type: integer
   # Namespaced或Cluster
   scope: Namespaced
   names:
@@ -34,6 +52,8 @@ spec:
     shortNames:
     - ct
 ```
+
+> 此处使用的 apiVersion 版本是 `apiextensions.k8s.io/v1`，跟上一版 `apiextensions.k8s.io/v1beta1` 的最主要区别是改用了 [OpenAPI v3.0 validation schema](https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/#validation)。
 
 创建该 CRD：
 
@@ -55,7 +75,7 @@ kubectl create -f resourcedefinition.yaml
 
 创建 CustomResourceDefinition 对象后，您可以创建自定义对象。自定义对象可包含自定义字段。这些字段可以包含任意  JSON。在以下示例中， `cronSpec` 和 `image` 自定义字段在自定义对象中设置 `CronTab`。`CronTab` 类型来自您在上面创建的 CustomResourceDefinition 对象的规范。
 
-如果您将以下 YAML 保存到`my-crontab.yaml`：
+如果您将以下 YAML 保存到 `my-crontab.yaml`：
 
 ```yaml
 apiVersion: "stable.example.com/v1"
@@ -286,7 +306,7 @@ crontab "my-new-cron-object" created
 
 从 Kubernetes 1.11 开始，kubectl 使用服务器端打印。服务器决定 `kubectl get` 命令显示哪些列。您可以使用 CustomResourceDefinition 自定义这些列。下面的示例将输出 `Spec`、`Replicas` 和 `Age`  列。
 
-1. 将 CustomResourceDefinition保存到 `resourcedefinition.yaml`。
+1. 将 CustomResourceDefinition 保存到 `resourcedefinition.yaml`。
 
    ```yaml
      apiVersion: apiextensions.k8s.io/v1beta1
@@ -597,4 +617,4 @@ crontabs/my-new-cron-object   3s
 ## 参考
 
 - [Extend the Kubernetes API with CustomResourceDefinitions - kubernetes.io](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)
-- [如何从零开始编写一个Kubernetes CRD - servicemesher.com](http://www.servicemesher.com/blog/kubernetes-crd-quick-start/)
+- [如何从零开始编写一个Kubernetes CRD - servicemesher.com](https://www.servicemesher.com/blog/kubernetes-crd-quick-start/)
