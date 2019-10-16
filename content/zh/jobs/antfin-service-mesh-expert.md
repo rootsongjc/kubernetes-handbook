@@ -18,7 +18,7 @@ categories: ["jobs"]
 要求：
 
 1. 至少熟悉 Java 或者 Golang 中的一门语言。
-1. 熟悉云原生的技术，包括但不限于 Kubernetes，CoreDNS，KNative，Istio，Linkered，至少对其中的一项技术有深刻的了解。
+1. 熟悉云原生的技术，包括但不限于 Kubernetes，CoreDNS，KNative，Istio，Linkerd，至少对其中的一项技术有深刻的了解。
 1. 熟悉网络编程，有网络框架开发者经验者优先。
 1. 有技术热情和较强的学习能力，对于新技术有浓烈的好奇心，有很好的问题分析和技术攻关能力，具有良好的团队合作能力、沟通能力、抗压能力。
 简历投递或者意向沟通
