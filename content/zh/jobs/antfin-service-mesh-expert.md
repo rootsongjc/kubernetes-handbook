@@ -15,6 +15,8 @@ categories: ["jobs"]
 
 加入我们，你将参与 Service Mesh 在蚂蚁金服全站的实施落地，享受 Service Mesh 在大规模场景下带来的挑战，真正地将业界的先进理念进行落地。你将负责将蚂蚁金服的 Service Mesh 实现打造成对外的产品，帮助用户完成从传统架构向云架构的转型。
 
+Base：杭州、上海、广州
+
 要求：
 
 1. 至少熟悉 Java 或者 Golang 中的一门语言。
