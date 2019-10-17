@@ -35,7 +35,7 @@ productpage istio-proxy
 
 例如下图 [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)的架构图中描述的，MOSN 作为 Sidecar 的方式和应用运行在同一个 Pod 中，拦截所有进出应用容器的流量，[SOFAMesh](https://github.com/alipay/sofa-mesh) 兼容 Istio，其中使用 Go 语言开发的 [SOFAMosn](https://github.com/alipay/sofa-mosn) 替换了 Envoy。
 
-![SOFAMesh架构图](https://ws4.sinaimg.cn/large/006tNbRwgy1fuyr4vizzwj31kw1biq98.jpg)
+![SOFAMesh架构图](https://tva1.sinaimg.cn/large/006y8mN6ly1g81hmkxqxaj30va0qg758.jpg)
 
 **注意**：下文中所指的 Sidecar 都是指的 Envoy 代理容器。
 
