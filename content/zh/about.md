@@ -36,7 +36,7 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 
 ### 简介
 
-宋净超（Jimmy Song），[蚂蚁金服](http:///antfin.com)云原生布道师和 [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)。[ServiceMesher 社区](http://www.servicemesher.com)联合创始人。翻译了多本云原生编程书籍，并参与了一些技术图书的写作。
+宋净超（Jimmy Song），[蚂蚁金服](http:///antfin.com)云原生布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[ServiceMesher 社区](https://www.servicemesher.com)联合创始人、电子工业出版社优秀译者、出品人。
 
 ### 著作
 
@@ -61,12 +61,14 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - 使用Hugo构建静态网站手册
 - [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook/) - Kubernetes中文指南/云原生应用架构实践手册
 - [istio-handbook](https://github.com/rootsongjc/istio-handbook) - Istio服务网格进阶实战（已贡献给 ServiceMesher 社区）
+- [serverless-handbook](https://github.com/rootsongjc/serverless-handbook) - Serverless Handbook 无服务架构实践手册
 
 ---
 
 ### GitHub
 
 - [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native) - 云原生相关的软件、工具和教程列表汇总。  - https://jimmysong.io/awesome-cloud-native/
+- [cloud-native-sandbox](https://github.com/rootsongjc/cloud-native-sandbox) - Cloud Native Sandbox can help you setup a standalone Kubernetes and Istio environment with Docker on you own laptop.
 - [magpie](https://github.com/rootsongjc/magpie) - 部署和管理基于 Docker Swarm 运行的 Hadoop 集群。
 - [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) - [使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群和Istio Service Mesh](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md)
 - [sofa-mosn](https://github.com/alipay/sofa-mosn) - SOFAMosn 是用 Go 语言编写的高性能 proxy，既可单独使用也可以作为 sidecar 在 service mesh 中运行。
@@ -80,7 +82,7 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 
 #### 2019年
 
-- 2019年6月24日 | 上海 | [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/) | SOFAStack Cloud Native Workshop 活动出品人（联系我获取大会报名折扣码，享受七折优惠！亦可咨询关于 Workshop 的相关信息）🔥🔥🔥
+- 2019年6月24日 | 上海 | [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/) |出品人
 - 2019年6月21-23日 | 深圳 | [GIAC(全球互联网架构大会)](http://giac.msup.com.cn/index.php) | Service Mesh 专题出品人
 
 #### Service Mesh Meetup
