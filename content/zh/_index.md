@@ -1,6 +1,8 @@
 [宋净超（Jimmy Song）](/about)，[蚂蚁金服](http:///antfin.com)云原生布道师和 [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)。[ServiceMesher 社区](http://www.servicemesher.com)联合创始人。你可能会在一些活动上见到我，请查看我的[日程表](/about/#schedule)。我翻译过多本云原生编程书籍，并参与了一些技术图书的写作。我还喜欢使用[无人机](https://click.dji.com/AD4wNIOV0G1e2vAqBDwVuQ?dji_from=dji-pilot-app&pm=dji-pilot-app)航拍和微单摄影，你可以在 [bilibili](http://space.bilibili.com/31004924) 和[图虫](https://jimmysongio.tuchong.com/)上看到我的作品。
 
-如果你觉得[云原生](/awesome-cloud-native)的工作很酷，可以加入我们，[蚂蚁金服云原生职位正在火热招聘中🔥](/jobs)！
+**活动报名：[10 月 26 日星期六，Service Mesh Meetup 成都站](https://www.huodongxing.com/event/2514724877500)**
+
+加入我们构建[云原生](/awesome-cloud-native)基础设施，[蚂蚁金服云原生职位正在火热招聘中🔥](/jobs)！
 
 ---
 
