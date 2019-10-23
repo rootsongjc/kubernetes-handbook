@@ -2,17 +2,18 @@
 title: "云原生编程语言Ballerina介绍"
 subtitle: "编译式强类型基于序列图理念的开源编程语言"
 date: 2018-05-12T23:27:49+08:00
-bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/2018042901.jpg", desc: "Taxis Queue|Jinnan|Apr 29,2018"}]
+bigimg: [{src: "https://tva1.sinaimg.cn/large/006y8mN6ly1g88c4a0lc1j30xc0m8gnl.jpg", desc: "Photo via wikipedia"}]
 draft: false
 tags: ["cloud-native","ballerina"]
 categories: "cloud native"
+notoc: true
 ---
 
 当我第一眼看到 [Ballerina](https://ballerina.io) 还真有点惊艳的感觉。Ballerina 这个单词的意思是“芭蕾舞女演员”。我想他们之所以给公司和这们语言起这个名字，可能是希望它成为云原生这个大舞台中，Ballerina 能像一个灵活的芭蕾舞者一样轻松自如吧！
 
 Ballerina 是一款开源的编译式的强类型语言，该语言本身的代码可以通过 [GitHub](https://github.com/ballerina-platform/ballerina-lang) 上获取。我们可以通过 Ballerina 官网上的[设计哲学](https://ballerina.io/philosophy/)页面来对这门云原生编程语言一探究竟。
 
-![云原生编程语言ballerina](https://jimmysong.io/kubernetes-handbook/images/philosophy-page-diagrams-top.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88c8tj7gxj30ws0u0774.jpg" width="50%" title="云原生编程语言 Ballerina">
 
 未来的应用程序应该是基于 API 的，而众多 API 之间的通讯和集成就成了关键问题。Ballerina 是一款使用文本和图形语法编译的、事务的、静态和强类型编程语言。Ballerina 包含分布式系统集成到语言的基本概念，并提供类型安全，并发环境下实现的分布式事务，可靠的消息传递，流处理和工作流。
 
@@ -28,7 +29,7 @@ ESB、EAI、BPM 和 DSL 需要 XML 和配置来中断迭代开发流程：编辑
 
 ### 序列图
 
-![云原生编程语言Ballerina的序列图设计理念](https://jimmysong.io/kubernetes-handbook/images/philosophy-principle-diagrams-01.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88c8ji2zdj30u00wwdgm.jpg" width="50%" title="云原生编程语言Ballerina的序列图设计理念">
 
 **语言灵感**
 
@@ -44,7 +45,7 @@ Ballerina 的语言语义模型旨在定义独立的各方如何通过结构化�
 
 ### 并发
 
-![云原生编程语言Ballerina的并发理念](https://jimmysong.io/kubernetes-handbook/images/philosophy-principle-diagrams-02.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88c99h584j30u00ww752.jpg" width="50%" title="云原生编程语言Ballerina的并发理念">
 
 **序列图和并发**
 
@@ -108,7 +109,7 @@ Ballerina 的语法、代码和编译器创建了运行时服务和部署构件�
 
 ### 运行时架构
 
-![云原生编程语言ballerina运行时架构](https://jimmysong.io/kubernetes-handbook/images/philosophy-diagrams-for-site-02.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88cazdfcnj30u00wxjsr.jpg" width="50%" title="云原生编程语言ballerina运行时架构">
 
 **Ballerina API 网关**
 
@@ -128,7 +129,7 @@ Ballerina 的语法、代码和编译器创建了运行时服务和部署构件�
 
 ### 部署架构
 
-![云原生编程语言ballerina部署架构图](https://jimmysong.io/kubernetes-handbook/images/philosophy-diagrams-for-site-03.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88cbr5hquj30u00wxq46.jpg" width="50%" title="云原生编程语言ballerina部署架构图">
 
 **IaaS**
 
@@ -144,7 +145,7 @@ Ballerina 可以选择断路器和事务流程逻辑委托给像 Istio 或 Envoy
 
 ### 生命周期
 
-![云原生编程语言ballerina生命周期架构图](https://jimmysong.io/kubernetes-handbook/images/philosophy-diagrams-for-site-04.png)
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g88cck2s8xj30u00wtgni.jpg" width="50%" title="云原生编程语言ballerina生命周期架构图">
 
 **Ballerina 工具**
 
@@ -190,5 +191,5 @@ Ballerina 是一种旨在**集成简化**的语言。基于顺序图的交互，
 
 ## 参考
 
-- https://ballerina.io
+- [Ballerina官网](https://ballerina.io)
 - [Microservices, Docker, Kubernetes, Serverless, Service Mesh, and Beyond](https://dzone.com/articles/microservices-docker-kubernetes-serverless-service)
