@@ -9,7 +9,9 @@ categories: "kubernetes"
 bigimg: [{src: "https://res.cloudinary.com/jimmysong/image/upload/images/20151122051.jpg", desc: "The Forbidden City Nov 22,2015"}]
 ---
 
-前面几节讲到如何访问kubneretes集群，本文主要讲解访问kubenretes中的Pod和Serivce的集中方式，包括如下几种：
+> 本文已归档到 [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/guide/accessing-kubernetes-pods-from-outside-of-the-cluster.html)。
+
+前面几节讲到如何访问kubneretes集群，本文主要讲解访问kubenretes中的Pod和Serivce的几种方式，包括如下几种：
 
 - hostNetwork
 - hostPort
@@ -179,4 +181,4 @@ spec:
 
 ## 参考
 
-[Accessing Kubernetes Pods from Outside of the Cluster - alesnosek.com](http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/)
+- [Accessing Kubernetes Pods from Outside of the Cluster - alesnosek.com](http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/)
