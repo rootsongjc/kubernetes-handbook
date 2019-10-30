@@ -302,9 +302,9 @@ kube-proxy.csr  kube-proxy-csr.json  kube-proxy-key.pem  kube-proxy.pem
 
 ## 校验证书
 
-以 kubernetes 证书为例
+以 Kubernetes 证书为例。
 
-### 使用 `opsnssl` 命令
+### 使用 `openssl` 命令
 
 ``` bash
 $ openssl x509  -noout -text -in  kubernetes.pem
