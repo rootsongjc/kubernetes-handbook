@@ -256,7 +256,7 @@ Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Isti
 -p 15001 -u 1337 -m REDIRECT -i '*' -x "" -b 9080 -d ""
 ```
 
-我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxy_init) 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
+我们再检查下该容器的 Dockerfile 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
 
 ```docker
 FROM ubuntu:xenial

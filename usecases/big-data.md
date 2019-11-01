@@ -18,7 +18,7 @@ Spark原生支持standalone、mesos和YARN的调度方式，当前kubernetes社�
 
 ## Spark on Yarn
 
-使用StatefulSet和Headless serverless来实现，请参考 [Spark on Yarn](https://github.com/rootsongjc/kube-yarn/tree/sz-test)
+使用StatefulSet和Headless serverless来实现。
 
 这种模式中kubernetes依然不负责spark应用的调度，而只是将Yarn换了一个部署环境而已。
 

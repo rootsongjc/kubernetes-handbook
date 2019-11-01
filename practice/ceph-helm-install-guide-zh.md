@@ -13,7 +13,7 @@
 
 Helm通过从本地读取Kubernetes配置文件来查找Kubernetes集群; 确保文件已下载和且helm客户端可以访问。
 
-Kubernetes群集必须配置并运行Tiller服务器，并且须将本地Helm客户端网络可达。查看[init](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_init.md)的Helm文档获取帮助。要在本地运行Tiller并将Helm连接到它，请运行如下命令（此命令会在Kubernetes集群部署一个tiller实例）：
+Kubernetes群集必须配置并运行Tiller服务器，并且须将本地Helm客户端网络可达。要在本地运行Tiller并将Helm连接到它，请运行如下命令（此命令会在Kubernetes集群部署一个tiller实例）：
 
 ```bash
 $ helm init

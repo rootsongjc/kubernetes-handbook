@@ -79,7 +79,6 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [rancher](https://rancher.com/blog/)
 - [sysdig](https://sysdig.com/blog/)
 - [spinnaker](https://blog.spinnaker.io)
-- [supergiant](https://supergiant.io/blog)
 - [twistlock](https://www.twistlock.com/blog/)
 - [vamp](https://medium.com/vamp-io)
 - [weave](https://www.weave.works/blog/)

@@ -8,9 +8,9 @@
 
 ![将单体应用迁移到云原生(图片来自DevOpsDay Toronto)](../images/migrating-monolith-to-kubernetes.jpg)
 
-接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去，代码和配置文件可以在 [这里](https://github.com/rootsongjc/kube-yarn) 找到（本文中加入 Spark 的配置，代码中并没有包含，读者可以自己配置）。
+接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去。
 
-下图即整个架构的示意图，代码和详细配置文件请参考 [kube-yarn](https://github.com/rootsongjc/kube-yarn)（不包含 ingress、spark 配置），所有的进程管理和容器扩容直接使用 Makefile。
+下图即整个架构的示意图，所有的进程管理和容器扩容直接使用 Makefile。
 
 ![spark on yarn with kubernetes](../images/spark-on-yarn-with-kubernetes.png)
 

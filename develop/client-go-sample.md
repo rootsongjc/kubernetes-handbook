@@ -10,7 +10,7 @@
 | [client-python](https://github.com/kubernetes-incubator/client-python) | python客户端，kubernetes-incubator           | 官方支持   |
 | [Java client](https://github.com/fabric8io/kubernetes-client) | fabric8中的一部分，kubernetes的java客户端          | redhat |
 
-下面，我们基于[client-go](https://github.com/kubernetes/client-go)，对Deployment升级镜像的步骤进行了定制，通过命令行传递一个Deployment的名字、应用容器名和新image名字的方式来升级。代码和使用方式见 https://github.com/rootsongjc/kubernetes-client-go-sample 。
+下面，我们基于[client-go](https://github.com/kubernetes/client-go)，对Deployment升级镜像的步骤进行了定制，通过命令行传递一个Deployment的名字、应用容器名和新image名字的方式来升级。
 
 ## kubernetes-client-go-sample
 
