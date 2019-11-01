@@ -1,9 +1,0 @@
-box: billryan/gitbook:base
-build:
-  steps:
-    - script:
-        name: build
-        code: |
-            make install
-            make build
-            make lint

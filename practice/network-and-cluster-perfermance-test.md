@@ -29,7 +29,7 @@ Ingress Host：traefik.sample-webapp.io
 
 通过向`sample-webapp`发送curl请求获取响应时间，直接curl后的结果为：
 
-```Bash
+```bash
 $ curl "http://10.254.149.31:8000/"
 Welcome to the "Distributed Load Testing Using Kubernetes" sample web app
 ```
@@ -355,13 +355,6 @@ Test Suite Passed
 - gcr.io/google_containers/pause-amd64:3.0
 - gcr.io/google_containers/serve_hostname:v1.4
 
-时速云镜像地址：
-
-- index.tenxcloud.com/jimmy/pause-amd64:3.0
-- index.tenxcloud.com/jimmy/serve_hostname:v1.4
-
-将镜像pull到本地后重新打tag。
-
 ## Locust测试
 
 请求统计
@@ -397,5 +390,4 @@ Locust模拟10万用户，每秒增长100个。
 - [Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
 - [CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
 - [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
-- [Kubemark User Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/kubemark-guide.md)
 - [Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

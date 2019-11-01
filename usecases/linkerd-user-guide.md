@@ -283,5 +283,4 @@ Hello (172.30.60.14) world (172.30.71.19)!!
 ## 参考
 
 - https://github.com/linkerd/linkerd-examples
-- [A Service Mesh for Kubernetes](https://cdn2.hubspot.net/hubfs/2818724/A%20Service%20Mesh%20for%20Kubernetes_Final.pdf)
 - [dtab](https://linkerd.io/in-depth/dtabs/)

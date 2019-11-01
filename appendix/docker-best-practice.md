@@ -20,7 +20,6 @@
 
 - [swarm mode的路由网络](https://jimmysong.io/docker-handbook/docs/swarm_mode_routing_mesh)
 
-- [docker扁平化网络插件Shrike（基于docker1.11）](https://github.com/TalkingData/shrike)
 
 ## 存储管理
 

@@ -11,6 +11,9 @@
 - 2017年12月15日，[Kubernetes1.9发布](kubernetes-1.9-changelog.md)
 - 2018年3月26日，[Kubernetes1.10发布](kubernetes-1.10-changelog.md)
 - 2018年6月27日，[Kubernetes1.11发布](kubernetes-1.11-changelog.md)
+- 2018年9月27日，[Kubernetes1.12发布](kubernetes-1.12-changelog.md)
+- 2018年12月3日，[Kubernetes1.13发布](kubernetes-1.13-changelog.md)
+- 2019年3月26日，[Kubernetes 1.14发布](kubernetes-1.14-changelog.md)
 
 ## 更多
 

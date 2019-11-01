@@ -3,7 +3,9 @@
 本文将介绍如何在Ubuntu server 16.04版本上安装kubeadm，并利用kubeadm快速的在Ubuntu server 版本 16.04上构建一个kubernetes的基础的测试集群，用来做学习和测试用途，当前（2018-04-14）最新的版本是1.10.1。参考文档包括kubernetes官方网站的[kubeadm安装文档](https://kubernetes.io/docs/setup/independent/install-kubeadm/)以及[利用kubeadm创建集群](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)这两个文档。
 
 生产用途的环境，需要考虑各个组件的高可用，建议参考Kubernetes的官方的相关的安装文档。
+
 ## 概述
+
 本次安装建议至少4台服务器或者虚拟机，每台服务器4G内存，2个CPU核心以上，基本架构为1台master节点，3台slave节点。整个安装过程将在Ubuntu服务器上安装完kubeadm，以及安装kubernetes的基本集群，包括canal网络，另后台存储可参考本书的最佳实践中的存储管理内容。
 本次安装一共4个节点，节点信息如下:
 
@@ -15,9 +17,9 @@
 | Slave      | ubuntu-3       | 192.168.5.203      |
 
 ## 准备工作
-* 默认方式安装Ubuntu Server 版本 16.04
-* 配置主机名映射，每个节点
 
+- 默认方式安装Ubuntu Server 版本 16.04
+- 配置主机名映射，每个节点
 
 ```bash
 # cat /etc/hosts
@@ -47,6 +49,7 @@ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 ```
 
 安装docker，可以使用系统源的的docker.io软件包，版本1.13.1，我的系统里是已经安装好最新的版本了。
+
 ```bash
 # apt-get install docker.io
 Reading package lists... Done
@@ -56,6 +59,7 @@ docker.io is already the newest version (1.13.1-0ubuntu1~16.04.2).
 0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
 ```
 更新源，可以不理会gpg的报错信息。
+
 ```bash
 # apt-get update
 Hit:1 http://mirrors.aliyun.com/ubuntu xenial InRelease
@@ -71,6 +75,7 @@ N: Data from such a repository can't be authenticated and is therefore potential
 N: See apt-secure(8) manpage for repository creation and user configuration details.
 ```
 强制安装kubeadm，kubectl，kubelet软件包。
+
 ```bash
 # apt-get install -y kubelet kubeadm kubectl --allow-unauthenticated
 Reading package lists... Done
@@ -105,6 +110,9 @@ Unpacking ....
 kubeadm安装完以后，就可以使用它来快速安装部署Kubernetes集群了。
 
 ## 使用kubeadm安装Kubernetes集群
+
+在做好了准备工作之后，下面介绍如何使用 kubeadm 安装 Kubernetes 集群，我们将首先安装 master 节点，然后将 slave 节点一个个加入到集群中去。
+
 ### 使用kubeadmin初始化master节点
 
 因为使用要使用canal，因此需要在初始化时加上网络配置参数,设置kubernetes的子网为10.244.0.0/16，注意此处不要修改为其他地址，因为这个值与后续的canal的yaml值要一致，如果修改，请一并修改。
@@ -175,7 +183,6 @@ as root:
 
   kubeadm join 192.168.0.200:6443 --token rw4enn.mvk547juq7qi2b5f --discovery-token-ca-cert-hash sha256:ba260d5191213382a806a9a7d92c9e6bb09061847c7914b1ac584d0c69471579
 ```
-
 
 执行如下命令来配置kubectl。
 
@@ -300,3 +307,7 @@ taint "node-role.kubernetes.io/master:" not found
 taint "node-role.kubernetes.io/master:" not found
 ```
 后续如果想要集群其他功能启用，请参考后续文章。
+
+## 参考
+
+- [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)

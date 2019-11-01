@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  lint-gitbook:
+    docker:
+    - image: jimmysong/gitbook-builder:2019-07-31
+    working_directory: ~/gitbook
+    steps:
+    - checkout
+    - run:
+        name: Linting the gitbook
+        command: scripts/lint-gitbook.sh
+  markdown-spell-check:
+    docker:
+    - image: jimmysong/gitbook-builder:2019-07-31
+    working_directory: ~/gitbook
+    steps:
+    - checkout
+    - run:
+        name: Running markdown spell check
+        command: scripts/mdspell-check.sh
+  markdown-style-check:
+    docker:
+    - image: jimmysong/gitbook-builder:2019-07-31
+    working_directory: ~/gitbook
+    steps:
+    - checkout
+    - run:
+        name: Running markdown style check
+        command: scripts/mdl-check.sh
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - lint-gitbook
+    - markdown-spell-check
+    - markdown-style-check

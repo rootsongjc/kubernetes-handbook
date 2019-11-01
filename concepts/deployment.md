@@ -483,7 +483,7 @@ nginx-deployment-618515232    11        11        11        7m
 
 ## 暂停和恢复Deployment
 
-您可以在发出一次或多次更新前暂停一个 Deployment，然后再恢复它。这样您就能多次暂停和恢复 Deployment，在此期间进行一些修复工作，而不会发出不必要的 rollout。
+您可以在发出一次或多次更新前暂停一个 Deployment，然后再恢复它。这样您就能在Deployment暂停期间进行多次修复工作，而不会发出不必要的 rollout。
 
 例如使用刚刚创建 Deployment：
 
@@ -669,7 +669,7 @@ status:
   unavailableReplicas: 2
 ```
 
-最终，一旦超过 Deployment 进程的 deadline，kuberentes 会更新状态和导致 Progressing 状态的原因：
+最终，一旦超过 Deployment 进程的 deadline，kubernetes 会更新状态和导致 Progressing 状态的原因：
 
 ```bash
 Conditions:
@@ -692,7 +692,7 @@ Conditions:
 
 ```
 
-`Type=Available`、 `Status=True` 以为这您的Deployment有最小可用性。 最小可用性是在Deployment策略中指定的参数。`Type=Progressing` 、 `Status=True`意味着您的Deployment 或者在部署过程中，或者已经成功部署，达到了期望的最少的可用replica数量（查看特定状态的Reason——在我们的例子中`Reason=NewReplicaSetAvailable` 意味着Deployment已经完成）。
+`Type=Available`、 `Status=True` 意味着您的Deployment有最小可用性。 最小可用性是在Deployment策略中指定的参数。`Type=Progressing` 、 `Status=True`意味着您的Deployment 或者在部署过程中，或者已经成功部署，达到了期望的最少的可用replica数量（查看特定状态的Reason——在我们的例子中`Reason=NewReplicaSetAvailable` 意味着Deployment已经完成）。
 
 您可以使用`kubectl rollout status`命令查看Deployment进程是否失败。当Deployment过程超过了deadline，`kubectl rollout status`将返回非0的exit code。
 
@@ -722,7 +722,7 @@ $ echo $?
 
 ## 编写 Deployment Spec
 
-在所有的 Kubernetes 配置中，Deployment 也需要`apiVersion`，`kind`和`metadata`这些配置项。配置文件的通用使用说明查看 [部署应用](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)，配置容器，和 [使用 kubectl 管理资源 ](https://kubernetes.io/docs/tutorials/object-management-kubectl/object-management/) 文档。
+在所有的 Kubernetes 配置中，Deployment 也需要`apiVersion`，`kind`和`metadata`这些配置项。配置文件的通用使用说明查看 [部署应用](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)，配置容器，和使用 kubectl 管理资源文档。
 
 ### Pod Template
 

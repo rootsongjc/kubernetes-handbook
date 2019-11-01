@@ -45,7 +45,3 @@ Kubernetes 提供了一个准入控制器（`PodPreset`），当其启用时，P
 ## 更多资料
 
 - [使用 PodPreset 向 Pod 中注入数据](https://kubernetes.io/docs/tasks/inject-data-application/podpreset)
-
-本文为 Kubernetes 官方中文文档，地址：https://kubernetes.io/cn/docs/concepts/workloads/pods/podpreset/
-
-翻译: [rootsongjc](https://github.com/rootsongjc)

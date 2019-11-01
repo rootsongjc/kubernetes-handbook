@@ -1,6 +1,6 @@
 # Prometheus 查询语言 PromQL 使用说明
 
-目前很多云原生应用使用了 Prometheus 作为监控，例如在 [Istio 中查询 Prometheus 指标](https://istio.io/zh/docs/tasks/telemetry/querying-metrics/)。
+目前很多云原生应用使用了 Prometheus 作为监控，例如在 Istio 中查询 Prometheus 指标。
 
 Prometheus 提供了一种功能表达式语言，允许用户实时选择和汇总时间序列数据。表达式的结果可以显示为图形、表格数据或者由外部系统通过 [RESTful API](https://prometheus.io/docs/prometheus/latest/querying/api/) 消费。
 
@@ -18,9 +18,9 @@ Prometheus 查询语言简称 PromQL，其中包含以下四类数据类型：
 
 可以通过 Prometheus web 页面查询。
 
-![Prometheus 的查询页面](https://ws2.sinaimg.cn/large/006tNbRwly1fwcl7v28rhj30xl0onadv.jpg)
+![Prometheus 的查询页面](../images/006tNbRwly1fwcl7v28rhj30xl0onadv.jpg)
 
-还可以使用 HTTP API 直接请求查询，例如你使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 部署了 [Istio](https://istio.io/zh)，会默认安装 Prometheus，你可以在浏览器中请求 <http://prometheus.istio.jimmysong.io/api/v1/query?query=http_requests_total{job=%22kubernetes-nodes%22}>，将会看到如下格式的 json 返回值。
+还可以使用 HTTP API 直接请求查询，例如你使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 部署了 [Istio](https://istio.io)，会默认安装 Prometheus，你可以在浏览器中请求 <http://prometheus.istio.jimmysong.io/api/v1/query?query=http_requests_total{job=%22kubernetes-nodes%22}>，将会看到如下格式的 json 返回值。
 
 ```json
 {

@@ -24,7 +24,3 @@
 ## 获取
 
 Kubernetes1.10已经可以通过[GitHub下载](https://github.com/kubernetes/kubernetes/releases/tag/v1.10.0)。
-
-## 参考
-
-[Kubernetes 1.10: Stabilizing Storage, Security, and Networking](http://blog.kubernetes.io/2018/03/kubernetes-1.10-stabilizing-storage-security-networking.html)

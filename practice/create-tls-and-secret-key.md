@@ -302,9 +302,9 @@ kube-proxy.csr  kube-proxy-csr.json  kube-proxy-key.pem  kube-proxy.pem
 
 ## 校验证书
 
-以 kubernetes 证书为例
+以 Kubernetes 证书为例。
 
-### 使用 `opsnssl` 命令
+### 使用 `openssl` 命令
 
 ``` bash
 $ openssl x509  -noout -text -in  kubernetes.pem
@@ -406,5 +406,4 @@ cp *.pem /etc/kubernetes/ssl
 
 + [Generate self-signed certificates](https://coreos.com/os/docs/latest/generate-self-signed-certificates.html)
 + [Client Certificates V/s Server Certificates](https://blogs.msdn.microsoft.com/kaushal/2012/02/17/client-certificates-vs-server-certificates/)
-+ [数字证书及 CA 的扫盲介绍](http://blog.jobbole.com/104919/)
 + [TLS bootstrap 引导程序](../guide/tls-bootstrapping.md)

@@ -1,6 +1,6 @@
 # CRI - Container Runtime Interface（容器运行时接口）
 
-CRI中定义了**容器**和**镜像**的服务的接口，因为容器运行时与镜像的生命周期是彼此隔离的，因此需要定义两个服务。该接口使用[Protocol Buffer](https://developers.google.com/protocol-buffers/)，基于[gRPC](https://grpc.io/)，在Kubernetes v1.10+版本中是在[pkg/kubelet/apis/cri/runtime/v1alpha2](https://github.com/kubernetes/kubernetes/tree/master/pkg/kubelet/apis/cri/runtime/v1alpha2)的`api.proto`中定义的。
+CRI中定义了**容器**和**镜像**的服务的接口，因为容器运行时与镜像的生命周期是彼此隔离的，因此需要定义两个服务。该接口使用[Protocol Buffer](https://developers.google.com/protocol-buffers/)，基于[gRPC](https://grpc.io/)，在Kubernetes v1.10+版本中是在`pkg/kubelet/apis/cri/runtime/v1alpha2`的`api.proto`中定义的。
 
 ## CRI架构
 
@@ -13,8 +13,6 @@ Container Runtime实现了CRI gRPC Server，包括`RuntimeService`和`ImageServi
 除非集成了rktnetes，否则CRI都是被默认启用了，从Kubernetes1.7版本开始，旧的预集成的docker CRI已经被移除。
 
 要想启用CRI只需要在kubelet的启动参数重传入此参数：`--container-runtime-endpoint`远程运行时服务的端点。当前Linux上支持unix socket，windows上支持tcp。例如：`unix:///var/run/dockershim.sock`、 `tcp://localhost:373`，默认是`unix:///var/run/dockershim.sock`，即默认使用本地的docker作为容器运行时。
-
-关于CRI的详细进展请参考[CRI: the Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)。
 
 ## CRI接口
 
@@ -124,7 +122,7 @@ service ImageService {
 
 - [cri-o](https://github.com/kubernetes-incubator/cri-o)：cri-o是Kubernetes的CRI标准的实现，并且允许Kubernetes间接使用OCI兼容的容器运行时，可以把cri-o看成Kubernetes使用OCI兼容的容器运行时的中间层。
 - [cri-containerd](https://github.com/containerd/cri-containerd)：基于[Containerd](https://github.com/containerd/containerd)的Kubernetes CRI 实现
-- [rkt](https://coreos.com/rkt/)：由于CoreOS主推的用来跟docker抗衡的容器运行时
+- [rkt](https://coreos.com/rkt/)：由CoreOS主推的用来跟docker抗衡的容器运行时
 - [frakti](https://github.com/kubernetes/frakti)：基于hypervisor的CRI
 - [docker](https://www.docker.com)：kuberentes最初就开始支持的容器运行时，目前还没完全从kubelet中解耦，docker公司同时推广了[OCI](https://www.opencontainers.org/)标准
 

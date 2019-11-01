@@ -2,9 +2,9 @@
 
 本文旨在帮助您快速部署一个云原生本地实验环境，让您可以基本不需要任何Kubernetes和云原生技术的基础就可以对云原生环境一探究竟。
 
-另外本环境也可以作为一个Kubernetes及其它云原生应用的测试与演示环境。
+本文中使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)在本地使用 Vagrant 启动三个虚拟机部署分布式的Kubernetes集群。
 
-在GitHub上该repo：https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
+如仅需要体验云原生环境和测试服务功能，可以使用更加轻量级的[cloud-native-sandbox](https://github.com/rootsongjc/cloud-native-sandbox)，通过个人电脑的Docker部署单节点的Kubernetes、Istio等云原生环境。
 
 ## 准备环境
 
@@ -214,8 +214,6 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 **注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
-详细信息请参阅 https://istio.io/zh/docs/examples/bookinfo/
-
 ![bookinfo示例](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
 
 ### Vistio
@@ -352,5 +350,4 @@ rm -rf .vagrant
 - [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
 - [coredns/deployment](https://github.com/coredns/deployment)
-- [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
-- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)
+- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)

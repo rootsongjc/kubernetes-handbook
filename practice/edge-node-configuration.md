@@ -35,7 +35,7 @@
 
 ## 安装
 
-使用keepalived管理VIP，VIP是使用IPVS创建的，[IPVS](http://www.linux-vs.org)已经成为linux内核的模块，不需要安装
+使用keepalived管理VIP，VIP是使用IPVS创建的，IPVS 已经成为linux内核的模块，不需要安装
 
 LVS的工作原理请参考：http://www.cnblogs.com/codebean/archive/2011/07/25/2116043.html
 
@@ -216,7 +216,7 @@ kubectl label nodes 172.20.0.115 edgenode=true
 
 查看DaemonSet的启动情况：
 
-```Bash
+```bash
 $ kubectl -n kube-system get ds
 NAME                 DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                              AGE
 traefik-ingress-lb   3         3         3         3            3           edgenode=true                              2h

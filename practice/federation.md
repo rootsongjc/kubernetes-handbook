@@ -39,25 +39,6 @@ Kubernetes 集群 federation 可以包含运行在不同云服务提供商（例
 
 为了能够联合（federate）多个集群，首先需要建立一个 federation 控制平面。请按照 [设置指南](https://kubernetes.io/docs/tutorials/federation/set-up-cluster-federation-kubefed) 设置 federation 控制平面。
 
-## API 资源
-
-一旦设置了控制平面，您就可以开始创建 federation API 资源。 以下指南详细介绍了一些资源：
-
-- [Cluster](https://kubernetes.io/docs/tasks/administer-federation/cluster)
-- [ConfigMap](https://kubernetes.io/docs/tasks/administer-federation/configmap)
-- [DaemonSets](https://kubernetes.io/docs/tasks/administer-federation/daemonset)
-- [Deployment](https://kubernetes.io/docs/tasks/administer-federation/deployment)
-- [Events](https://kubernetes.io/docs/tasks/administer-federation/events)
-- [Hpa](https://kubernetes.io/docs/tasks/administer-federation/hpa)
-- [Ingress](https://kubernetes.io/docs/tasks/administer-federation/ingress)
-- [Jobs](https://kubernetes.io/docs/tasks/administer-federation/job)
-- [Namespaces](https://kubernetes.io/docs/tasks/administer-federation/namespaces)
-- [ReplicaSets](https://kubernetes.io/docs/tasks/administer-federation/replicaset)
-- [Secrets](https://kubernetes.io/docs/tasks/administer-federation/secret)
-- [Services](https://kubernetes.io/docs/concepts/cluster-administration/federation-service-discovery)
-
-[API 参考文档](https://kubernetes.io/docs/reference/federation) 列举了 federation apiserver 支持的所有资源。
-
 ## 级联删除
 
 Kubernetes 1.6 版本包括了对联邦资源（federated resources）级联删除的支持。通过级联删除，当您从 federation 控制平面删除一个资源时，会同时删除所有底层集群中对应的资源。

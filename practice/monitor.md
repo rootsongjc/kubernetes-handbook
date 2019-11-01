@@ -198,7 +198,7 @@ Kubernetes中应用的监控架构如图：
 
 使用[scope.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/weave/scope.yaml)文件安装scope，该服务安装在`kube-system` namespace下。
 
-```Bash
+```bash
 $ kubectl apply -f scope.yaml
 ```
 

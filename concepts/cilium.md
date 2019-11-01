@@ -4,7 +4,7 @@ Cilium是一个纯开源软件，没有哪家公司提供商业化支持，也�
 
 Cilium的基础是一种名为BPF的新Linux内核技术，它可以在Linux本身动态插入强大的安全可见性和控制逻辑。由于BPF在Linux内核中运行，因此可以应用和更新Cilium安全策略，而无需对应用程序代码或容器配置进行任何更改。
 
-![Cilium](https://ws4.sinaimg.cn/large/006tNbRwly1fwqi98i51ij30sc0j80zn.jpg)
+![Cilium](../images/006tNbRwly1fwqi98i51ij30sc0j80zn.jpg)
 
 基于微服务的应用程序分为小型独立服务，这些服务使用**HTTP**、**gRPC**、**Kafka**等轻量级协议通过API相互通信。但是，现有的Linux网络安全机制（例如iptables）仅在网络和传输层（即IP地址和端口）上运行，并且缺乏对微服务层的可见性。
 

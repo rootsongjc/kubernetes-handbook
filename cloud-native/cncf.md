@@ -1,12 +1,12 @@
 # CNCF - 云原生计算基金会简介
 
-CNCF，全称Cloud Native Computing Foundation（云原生计算基金会），口号是**坚持和整合开源技术来让编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论您是云原生应用的开发者、管理者还是研究人员都有必要了解。
+CNCF，全称Cloud Native Computing Foundation（云原生计算基金会），成立于 2015 年7月21日（[于美国波特兰OSCON 2015上宣布](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)），其最初的口号是**坚持和整合开源技术来让编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论您是云原生应用的开发者、管理者还是研究人员都有必要了解。
 
 CNCF作为一个厂商中立的基金会，致力于Github上的快速成长的开源技术的推广，如Kubernetes、Prometheus、Envoy等，帮助开发人员更快更好的构建出色的产品。
 
 下图是CNCF的全景图。
 
-![CNCF landscape](https://ws3.sinaimg.cn/large/006tNbRwly1fxmx633ymqj31dp0u0kjn.jpg)
+![CNCF landscape](../images/006tNbRwly1fxmx633ymqj31dp0u0kjn.jpg)
 
 该全景图不断更新中，原图请见：https://github.com/cncf/landscape
 
@@ -54,7 +54,7 @@ TOC（Technical Oversight Committee）作为CNCF中的一个重要组织，它�
 * 定义和维护技术视野
 * 审批新项目加入组织，为项目设定概念架构
 * 接受最终用户的反馈并映射到项目中
-* 调整组件见的访问接口，协调组件之间兼容性
+* 调整组件间的访问接口，协调组件之间兼容性
 
 TOC成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/blob/master/process/election-schedule.md)。
 
@@ -66,3 +66,4 @@ TOC成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/b
 * [https://www.cncf.io/about/charter/](https://www.cncf.io/about/charter/)
 * [https://github.com/cncf/landscape](https://github.com/cncf/landscape)
 * [https://github.com/cncf/toc](https://github.com/cncf/toc)
+* [AT&T, Box, Cisco, Cloud Foundry Foundation, CoreOS, Cycle Computing, Docker, eBay, Goldman Sachs, Google, Huawei, IBM, Intel, Joyent, Kismatic, Mesosphere, Red Hat, Switch SUPERNAP, Twitter, Univa, VMware and Weaveworks join new effort to build and maintain cloud native distributed systems - cncf.io](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)

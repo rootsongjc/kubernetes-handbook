@@ -58,8 +58,6 @@ spec:
 
 **注意：** Ingress本身并不会自动创建负载均衡器，cluster中需要运行一个ingress controller来根据Ingress的定义来管理负载均衡器。目前社区提供了nginx和gce的参考实现。
 
-[Traefik](https://traefik.io)提供了易用的Ingress Controller，使用方法见<https://docs.traefik.io/user-guide/kubernetes/>。
-
 ## Service Load Balancer
 
 在Ingress出现以前，Service Load Balancer是推荐的解决Service局限性的方式。Service Load Balancer将haproxy跑在容器中，并监控service和endpoint的变化，通过容器IP对外提供4层和7层负载均衡服务。

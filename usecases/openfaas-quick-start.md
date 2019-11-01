@@ -17,8 +17,6 @@ OpenFaaS的架构如下图：
 
 ## 部署
 
-参考[Deployment guide for Kubernetes](https://github.com/openfaas/faas/blob/master/guide/deployment_k8s.md)部署OpenFaaS。
-
 如果您的Kuberentes集群可以访问DockerHub那么直接使用官方提供的YAML文件即可。
 
 YAML文件见官方仓库：https://github.com/openfaas/faas-netes

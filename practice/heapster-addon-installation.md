@@ -2,11 +2,7 @@
 
 ## 准备镜像
 
-官方镜像保存在 gcr.io 中需要翻墙才能下载，为了方便大家使用，我下载后放到了[时速云](http://www.tenxcloud.com)中，为公有镜像供大家下载。
-
-- index.tenxcloud.com/jimmy/heapster-amd64:v1.3.0-beta.1
-- index.tenxcloud.com/jimmy/heapster-influxdb-amd64:v1.1.1
-- index.tenxcloud.com/jimmy/heapster-grafana-amd64:v4.0.2
+官方镜像保存在 gcr.io 中需要翻墙才能下载，请自行拷贝到私有仓库。
 
 ## 准备YAML文件
 

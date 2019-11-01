@@ -44,11 +44,11 @@
 
 但就2017年为止，Kubernetes的主要使用场景也主要作为应用开发测试环境、CI/CD和运行Web应用这几个领域，如下图[TheNewStack](http://thenewstack.io)的Kubernetes生态状况调查报告所示。
 
-![Workloads running on Kubernetes](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5mxr6fxtj31kw11q484.jpg)
+![Workloads running on Kubernetes](../images/0069RVTdgy1fv5mxr6fxtj31kw11q484.jpg)
 
 另外基于Kubernetes的构建PaaS平台和Serverless也处于爆发的准备的阶段，如下图中Gartner的报告中所示：
 
-![Gartner技术爆发趋势图2017](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5my2jtxzj315o0z8dkr.jpg)
+![Gartner技术爆发趋势图2017](../images/0069RVTdgy1fv5my2jtxzj315o0z8dkr.jpg)
 
 当前各大公有云如Google GKE、微软Azure ACS、亚马逊EKS（2018年上线）、VMWare、Pivotal、腾讯云、阿里云等都提供了Kubernetes服务。
 
@@ -84,7 +84,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 [CNCF](https://cncf.io)所托管的应用（目前已达12个），即朝着这个目标发展，其公布的[Cloud Native Landscape](https://github.com/cncf/landscape)，给出了云原生生态的参考体系。
 
-![Cloud Native Landscape v1.0](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5myp6ednj31kw0w0u0x.jpg)
+![Cloud Native Landscape v1.0](../images/0069RVTdgy1fv5myp6ednj31kw0w0u0x.jpg)
 
 **使用Kubernetes构建云原生应用**
 
@@ -181,7 +181,7 @@ Linker的部署十分简单，本身就是一个镜像，使用Kubernetes的[Dae
 
 给开发者带来最大的配置和上线的灵活性，践行DevOps流程，改善研发效率，下图这样的情况将更少发生。
 
-![Deployment pipeline](https://ws4.sinaimg.cn/large/0069RVTdgy1fv5mzj8rj6j318g1ewtfc.jpg)
+![Deployment pipeline](../images/0069RVTdgy1fv5mzj8rj6j318g1ewtfc.jpg)
 
 我们知道Kubernetes中的所有应用的部署都是基于YAML文件的，这实际上就是一种**Infrastructure as code**，完全可以通过Git来管控基础设施和部署环境的变更。
 
@@ -246,7 +246,7 @@ Spark现在已经非官方支持了基于Kubernetes的原生调度，其具有�
 
 下图是我们刚调研准备使用Kubernetes时候的调研方案选择。
 
-![Kubernetes solutions](https://ws3.sinaimg.cn/large/0069RVTdgy1fv5mzywc83j31fk1i8qg4.jpg)
+![Kubernetes solutions](../images/0069RVTdgy1fv5mzywc83j31fk1i8qg4.jpg)
 
 对于一个初次接触Kubernetes的人来说，看到这样一个庞大的架构选型时会望而生畏，但是Kubernetes的开源社区帮助了我们很多。
 

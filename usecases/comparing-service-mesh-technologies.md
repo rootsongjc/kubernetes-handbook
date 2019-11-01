@@ -1,5 +1,7 @@
 # Service Mesh技术对比
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 这一章主要讲解Service Mesh技术之间的区别，Service Mesh与其他相关技术之间的区别，读者可以直接浏览该网站来查看对比：http://layer5.io/service-meshes/
 
 为什么有了如Kubernetes这样的容器编排我们还需要Service Mesh呢，下表是对容器编排调度器的核心功能和缺少的服务级别能力对比。
@@ -22,6 +24,6 @@
 
 下图是一个使用**客户端库**将应用与服务治理紧耦合的示意图。
 
-![客户端库](https://ws4.sinaimg.cn/large/006tNbRwly1fubnx0q9bpj30vq0pq465.jpg)
+![客户端库](../images/006tNbRwly1fubnx0q9bpj30vq0pq465.jpg)
 
 从图中我们可以看到，应用程序代码与客户端度库紧耦合在一起，不同的服务团队需要一起协调超时和重试机制等。容器编排更适用于分布式应用，API Gateway通常只需要部署在系统边缘即可，不需要在每个应用中都部署，而Service Mesh却需要在每个服务或者说节点中部署。

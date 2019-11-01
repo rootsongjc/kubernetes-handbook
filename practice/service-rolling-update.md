@@ -42,7 +42,7 @@ Deployment同样为Kubernetes的一个核心内容，主要职责同样是为了
 
 **Web服务的代码main.go**
 
-```Go
+```go
 package main
 
 import (
@@ -93,7 +93,6 @@ build:
 	GOOS=linux GOARCH=amd64 go build -o hello${TAG} main.go
 	docker build -t harbor-001.jimmysong.io/library/hello:${TAG} .
 
-# Push to tenxcloud
 push:
 	docker push harbor-001.jimmysong.io/library/hello:${TAG}
 

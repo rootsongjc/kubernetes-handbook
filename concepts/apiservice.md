@@ -126,9 +126,3 @@ storage.k8s.io/v1
 storage.k8s.io/v1beta1
 v1
 ```
-
-## 参考
-
-[API  Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#resources)
-
-[Kuberentes1.8 reference doc](https://kubernetes.io/docs/api-reference/v1.8/#apiservicespec-v1beta1-apiregistration)

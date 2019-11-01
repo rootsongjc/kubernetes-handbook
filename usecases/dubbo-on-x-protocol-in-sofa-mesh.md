@@ -1,5 +1,7 @@
 # SOFAMesh中运行Dubbo on x-protocol
 
+ **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 原文作者：彭泽文，阿里巴巴UC事业部高级开发工程师，有改动。
 
 X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服务发现机制，支持各种私有 RPC 协议低成本、易扩展的接入，快速享受 Service Mesh 所带来的红利。
@@ -13,13 +15,13 @@ X-protocol 的定位是云原生、高性能、低侵入性的通用 Service Mes
 1. 部署 Kubernetes 集群，建议使用 https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster
 2. 安装 kubectl 命令行工具，请参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
 3. 安装 VM Driver，推荐安装 Virtual Box、Mac 用户也可以选择 hyperkit
-4. 了解 Istio Traffic Management 相关概念，相关链接：[https://istio.io/zh/docs/tasks/traffic-management/](https://istio.io/zh/docs/tasks/traffic-management/)
+4. 了解 Istio Traffic Management 相关概念
 
 ## 部署
 
 先看部署效果图：
 
-![Mosn x-protocol部署图.png | left | 747x382](https://cdn.nlark.com/yuque/0/2018/png/151172/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png "")
+![Mosn x-protocol部署图](../images/1536291419546-2aa160de-69cd-497f-a280-fae20a1f87a3.png)
 
 本示例中dubbo-consumer的部署方式采用直连模式，即不走注册中心，完全依托kubernetes平台提供的服务注册及服务发现能力。
 
@@ -56,7 +58,7 @@ kubectl get pods --namespace=kube-system
 从 GitHub 拉取最新代码：
 
 ```bash
-git clone https://github.com/alipay/sofa-mesh.git
+git clone https://github.com/sofastack/sofa-mesh.git
 cd sofa-mesh
 ```
 
@@ -280,13 +282,11 @@ istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.destinationrul
 istioctl delete -f samples/e2e-dubbo/platform/kube/dubbo-consumer.weight.vs.yaml
 ```
 
-SOFAMesh Github 地址：https://github.com/alipay/sofa-mesh
+SOFAMesh Github 地址：https://github.com/sofastack/sofa-mesh
 
 ## 参考文档
 
 - [蚂蚁金服开源的 SOFAMesh 的通用协议扩展解析 - servicemesher.com](http://www.servicemesher.com/blog/ant-financial-sofamesh-common-protocol-extension/)
-- [在 Kubernetes 中快速开始 - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/quick-start/)
-- [注入 Istio sidecar - istio.io](https://preliminary.istio.io/zh/docs/setup/kubernetes/sidecar-injection/)
 - [Dubbo quick start - dubbo.incubator.apache.org](https://dubbo.incubator.apache.org/en-us/docs/user/quick-start.html)
 
-- 关于SOFAMesh的更多信息请访问 http://www.sofastack.tech
+- 关于SOFAMesh的更多信息请访问 https://www.sofastack.tech

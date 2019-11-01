@@ -8,7 +8,7 @@
 
 Docker 中也有一个 [volume](https://docs.docker.com/engine/admin/volumes/) 的概念，尽管它稍微宽松一些，管理也很少。在 Docker 中，卷就像是磁盘或是另一个容器中的一个目录。它的生命周期不受管理，直到最近才有了 local-disk-backed 卷。Docker 现在提供了卷驱动程序，但是功能还非常有限（例如Docker1.7只允许每个容器使用一个卷驱动，并且无法给卷传递参数）。
 
-另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所以，卷的生命比 Pod 中的所有容器都长，当这个容器重启时数据仍然得以保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是，Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
+另一方面，Kubernetes 中的卷有明确的寿命——与封装它的 Pod 相同。所f以，卷的生命比 Pod 中的所有容器都长，当这个容器重启时数据仍然得以保存。当然，当 Pod 不再存在时，卷也将不复存在。也许更重要的是，Kubernetes 支持多种类型的卷，Pod 可以同时使用任意数量的卷。
 
 卷的核心是目录，可能还包含了一些数据，可以通过 pod 中的容器来访问。该目录是如何形成的、支持该目录的介质以及其内容取决于所使用的特定卷类型。
 
@@ -106,8 +106,6 @@ spec:
 `cephfs` 卷允许将现有的 CephFS 卷挂载到您的容器中。不像 `emptyDir`，当删除 Pod 时被删除，`cephfs` 卷的内容将被保留，卷仅仅是被卸载。这意味着 CephFS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。 CephFS 可以被多个写设备同时挂载。
 
 **重要提示**：您必须先拥有自己的 Ceph 服务器，然后才能使用它。
-
-有关更多详细信息，请参见[CephFS示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/cephfs/)。
 
 ### csi
 
@@ -252,8 +250,6 @@ spec:
 `glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到您的集群中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。 GlusterFS 可以同时由多个写入挂载。
 
 **重要提示**：您必须先自行安装 GlusterFS，才能使用它。
-
-有关更多详细信息，请参阅 [GlusterFS](https://github.com/kubernetes/examples/tree/master/staging/volumes/glusterfs) 示例。
 
 ### hostPath
 
@@ -597,7 +593,7 @@ spec:
 
 ### vsphereVolume
 
-**先决条件**：配置了 vSphere Cloud Provider 的 Kubernetes。有关云提供商的配置，请参阅 [vSphere 入门指南](https://kubernetes.io/docs/getting-started-guides/vsphere/)。
+**先决条件**：配置了 vSphere Cloud Provider 的 Kubernetes。有关云提供商的配置，请参阅 [vSphere 入门指南](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/)。
 
 `vsphereVolume` 用于将 vSphere VMDK 卷挂载到 Pod 中。卷的内容在卸载时会被保留。支持 VMFS 和 VSAN 数据存储。
 
@@ -688,8 +684,6 @@ spec:
 除了之前列出的卷类型之外，存储供应商可以创建自定义插件而不将其添加到 Kubernetes 存储库中。可以通过使用 `FlexVolume` 插件来实现。
 
 `FlexVolume`使用户能够将供应商卷挂载到容器中。供应商插件是使用驱动程序实现的，该驱动程序支持由 `FlexVolume` API定义的一系列卷命令。驱动程序必须安装在每个节点的预定义卷插件路径中。
-
-更多细节可以在[这里](https://github.com/kubernetes/community/blob/master/contributors/devel/flexvolume.md)找到。
 
 ## 挂载传播
 

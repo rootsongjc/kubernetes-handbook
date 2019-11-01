@@ -9,8 +9,6 @@
 
 目前kubernetes的官方文档上并没有详细的手动安装的集群如何升级的参考资料，只有两篇关于kubernetes集群升级的文档。
 
-- 在ubuntu上如何使用juju升级：https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/
-
 手动升级的还没有详细的方案，大多是基于管理工具部署和升级，比如juju、kubeadm、kops、kubespray等。
 
 [manual upgrade/downgrade testing for Kubernetes 1.6 - google group](https://groups.google.com/forum/#!topic/kubernetes-dev/jDbGKAsfo4Q)，在这个Google group中讨论了kubernetes手动升级的问题，并给出了参考建议。

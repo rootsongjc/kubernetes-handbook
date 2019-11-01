@@ -29,9 +29,7 @@ Kubernetes官方提供了EFK的日志收集解决方案，但是这种方案并�
 
 ![filebeat日志收集架构图](../images/filebeat-log-collector.png)
 
-我们创建了自己的filebeat镜像。创建过程和使用方式见https://github.com/rootsongjc/docker-images
-
-镜像地址：`index.tenxcloud.com/jimmy/filebeat:5.4.0`
+我们创建了自己的filebeat镜像。创建过程和使用方式见 <https://github.com/rootsongjc/docker-images>，您可以使用该仓库中的源码创建镜像。
 
 ## 测试
 

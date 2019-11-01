@@ -1,6 +1,6 @@
 # Kubernetes与云原生应用概览
 
-几个月前Mesos已经宣布支持Kubernetes，而在2017年10月份的DockerCon EU上，Docker公司宣布官方同时支持Swarm和Kubernetes容器编排，Kubernetes已然成为容器编排调度的标准。
+2017年9月，Mesos宣布支持Kubernetes，而在2017年10月份的DockerCon EU上，Docker公司宣布官方同时支持Swarm和Kubernetes容器编排，Kubernetes已然成为容器编排调度的标准。
 
 作为全书的开头，首先从历史、生态和应用角度介绍一下Kubernetes与云原生应用，深入浅出，高屋建瓴，没有深入到具体细节，主要是为了给初次接触Kubernetes的小白扫盲，具体细节请参考链接。
 
@@ -338,7 +338,7 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 Service Mesh现在一般被翻译作服务网格，目前主流的Service Mesh有如下几款：
 
-* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方中文文档](https://istio.io/zh/)
+* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档](https://istio.io)
 * [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
 * [Envoy](https://www.envoyproxy.io/)：Lyft开源的，可以在Istio中使用Sidecar模式运行
 * [Conduit](https://conduit.io)：同样由Buoyant开源的轻量级的基于Kubernetes的Service Mesh
@@ -387,7 +387,7 @@ Kubernetes作为云原生计算的基本组件之一，开源2年时间以来热
 
 **使用Kibana查看日志**
 
-日志字段中包括了应用的标签、容器名称、主机名称、宿主机名称、IP地址、时间、
+日志字段中包括了应用的标签、容器名称、主机名称、宿主机名称、IP地址、时间。
 
 ![kibana界面](../images/filebeat-docker-test.jpg)
 
@@ -476,4 +476,4 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 * [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
 * [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
 * [Cloud Native Python - 已由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
-* [Istio Service Mesh 中文文档](https://istio.io/zh/)
+* [Istio Service Mesh 中文文档 v1.2](https://archive.istio.io/v1.2/zh/)

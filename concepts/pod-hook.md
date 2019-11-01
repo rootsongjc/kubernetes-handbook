@@ -33,7 +33,7 @@ spec:
 
 ## 调试hook
 
-Hook调用的日志没有暴露个给Pod的event，所以只能通过`describe`命令来获取，如果有错误将可以看到`FailedPostStartHook`或`FailedPreStopHook`这样的event。
+Hook调用的日志没有暴露给Pod的event，所以只能通过`describe`命令来获取，如果有错误将可以看到`FailedPostStartHook`或`FailedPreStopHook`这样的event。
 
 ## 参考
 

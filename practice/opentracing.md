@@ -6,7 +6,7 @@
 
 Jaeger 是遵循 OpenTracing 的一种实现。
 
-![Jaeger UI](https://ws4.sinaimg.cn/large/006tNbRwly1fwjg48fh7xj31kw0wedrg.jpg)
+![Jaeger UI](../images/006tNbRwly1fwjg48fh7xj31kw0wedrg.jpg)
 
 关于 OpenTracing 的详细约定请参考：
 
@@ -19,13 +19,13 @@ Jaeger 是遵循 OpenTracing 的一种实现。
 
 **Trace**
 
-Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是 Istio 官方提供的 [Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/) 的追踪中对 `productpage` 的调用链分析。
+Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是 Istio 官方提供的 Bookinfo 示例 的追踪中对 `productpage` 的调用链分析。
 
 **Span**
 
 每个 trace 都由一系列 Span 组成，一个 span 可以理解为两个微服务之间的调用，如同 Chrome 检查器中查看网络访问瀑布一样。
 
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fwjkfbvfluj30y70hf0y9.jpg)
+![Chrome Inspector](../images/006tNbRwly1fwjkfbvfluj30y70hf0y9.jpg)
 
 根据 OpenTracing 的规格约定，每个 Span 都要包含以下状态：
 
@@ -37,7 +37,7 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 
 **示例**
 
-下面是 Jaeger 收集的来自 [Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/) 中的 `productpage` 的调用链追踪数据。
+下面是 Jaeger 收集的来自 Bookinfo 示例 中的 `productpage` 的调用链追踪数据。
 
 ```json
 {
@@ -100,7 +100,7 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 }
 ```
 
-在开发应用时需要使用兼容 OpenTracing API 的 Tracing 实现库，例如 [Jaeger](https://www.jaegertracing.io) 来实现自动的分布式追踪。参考[在 Istio 中使用分布式追踪](https://istio.io/zh/docs/tasks/telemetry/distributed-tracing/)。
+在开发应用时需要使用兼容 OpenTracing API 的 Tracing 实现库，例如 [Jaeger](https://www.jaegertracing.io) 来实现自动的分布式追踪。
 
 ## 参考
 

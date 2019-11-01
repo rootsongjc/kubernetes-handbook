@@ -13,15 +13,15 @@ Kubernetes集群中读取区（zone）数据。它实现了为Kubernetes的DNS�
 `deploy.sh`文件并不会删除kube-dns的deployment或者replication controller。如果要删除kube-dns，你必须在部署CoreDNS后手动的删除kube-dns。
 
 你需要仔细测试manifest文件，以确保它能够对你的集群正常运行。这依赖于你的怎样构建你的集群以及你正在运行的集群版本。
+
 对manifest文件做一些修改是有比要的。
 
 在最佳的案例场景中，使用CoreDNS替换Kube-DNS只需要使用下面的两个命令：
 
-~~~bash
+```bash
 $ ./deploy.sh | kubectl apply -f -
 $ kubectl delete --namespace=kube-system deployment kube-dns
-~~~
-
+```
 
 注意：我们建议在部署CoreDNS后删除kube-dns。否则如果CoreDNS和kube-dns同时运行，服务查询可能会随机的在CoreDNS和kube-dns之间产生。
 

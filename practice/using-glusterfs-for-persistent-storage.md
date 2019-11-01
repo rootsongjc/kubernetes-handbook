@@ -33,7 +33,7 @@ $ systemctl status glusterd.service
 
 ## 配置 glusterfs
 
-```Bash
+```bash
 # 配置 hosts
 
 $ vi /etc/hosts
@@ -74,7 +74,7 @@ State: Peer in Cluster (Connected)
 
 GlusterFS中的volume的模式有很多中，包括以下几种：
 
-- **分布卷（默认模式）**：即DHT, 也叫 分布卷: 将文件已hash算法随机分布到 一台服务器节点中存储。
+- **分布卷（默认模式）**：即DHT, 也叫 分布卷: 将文件以hash算法随机分布到 一台服务器节点中存储。
 - **复制模式**：即AFR, 创建volume 时带 replica x 数量: 将文件复制到 replica x 个节点中。
 - **条带模式**：即Striped, 创建volume 时带 stripe x 数量： 将文件切割成数据块，分别存储到 stripe x 个节点中 ( 类似raid 0 )。
 - **分布式条带模式**：最少需要4台服务器才能创建。 创建volume 时 stripe 2 server = 4 个节点： 是DHT 与 Striped 的组合型。
@@ -268,7 +268,7 @@ PVC属性
 
 ## 配置PVC
 
-```Bash
+```bash
 $ cat glusterfs-pvc.yaml
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -293,7 +293,7 @@ glusterfs-nginx   Bound     gluster-dev-volume   8Gi        RWX                 
 
 ## 创建 nginx deployment 挂载 volume
 
-```Bash
+```bash
 $ vi nginx-deployment.yaml
 apiVersion: extensions/v1beta1 
 kind: Deployment 

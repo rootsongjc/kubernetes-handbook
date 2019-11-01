@@ -29,6 +29,19 @@
 4. 在浏览器中访问 http://localhost:4000
 5. 生成的文档在 `_book` 目录下
 
+**Docker**
+
+本书提供了 Docker 构建方式。
+
+```bash
+make install
+make build
+```
+
+继续运行 `make serve` 即可渲染 gitbook，通过 <http://localhost:4000> 查看。
+
+注：使用 `docker ps` 找到该容器 ID 后，使用  `docker kill $ID`  可以关掉网站。
+
 **下载 PDF/ePub/Mobi 格式文档本地查看**
 
 访问 [gitbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook/details) 可以看到下载地址，可以下载根据最新文档生成的 **PDF/ePub/Mobi** 格式文档（文档的注脚中注明了更新时间），同时也可以直接在 gitbook 中阅读，不过 gitbook 不太稳定打开速度较慢，建议大家直接在 https://jimmysong.io/kubernetes-handbook/ 浏览。
@@ -39,7 +52,7 @@
 
 - **On Mac**
 
-在Mac下安装后，使用该命令创建链接
+在Mac下安装后，使用该命令创建链接：
 
 ```bash
 ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
@@ -50,6 +63,8 @@ ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
 ```bash
 gitbook pdf . ./kubernetes-handbook.pdf
 ```
+
+**注：因为各种依赖问题，通过 docker 方式暂时无法构建 PDF。**
 
 - **On Windows**
 

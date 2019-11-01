@@ -401,8 +401,6 @@ func (util *RBDUtil) CreateImage(p *rbdVolumeProvisioner) (r *v1.RBDVolumeSource
 
 ## 参考
 
-- https://github.com/kubernetes/examples/blob/master/staging/volumes/cephfs/README.md
-
 - [k8s-ceph-statefulsets-storageclass-nfs 动态卷有状态应用实践](http://blog.csdn.net/idea77/article/details/72842723)
 
 - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#ceph-rbd
