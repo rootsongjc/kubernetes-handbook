@@ -120,19 +120,28 @@ service ImageService {
 
 我们最初在使用Kubernetes时通常会默认使用Docker作为容器运行时，其实从Kubernetes 1.5开始已经开始支持CRI，目前是处于Alpha版本，通过CRI接口可以指定使用其它容器运行时作为Pod的后端，目前支持 CRI 的后端有：
 
-- [cri-o](https://github.com/kubernetes-incubator/cri-o)：同时兼容OCI和CRI的容器运行时
+- [cri-o](https://github.com/kubernetes-incubator/cri-o)：cri-o是Kubernetes的CRI标准的实现，并且允许Kubernetes间接使用OCI兼容的容器运行时，可以把cri-o看成Kubernetes使用OCI兼容的容器运行时的中间层。
 - [cri-containerd](https://github.com/containerd/cri-containerd)：基于[Containerd](https://github.com/containerd/containerd)的Kubernetes CRI 实现
 - [rkt](https://coreos.com/rkt/)：由CoreOS主推的用来跟docker抗衡的容器运行时
 - [frakti](https://github.com/kubernetes/frakti)：基于hypervisor的CRI
 - [docker](https://www.docker.com)：kuberentes最初就开始支持的容器运行时，目前还没完全从kubelet中解耦，docker公司同时推广了[OCI](https://www.opencontainers.org/)标准
-- [Clear Containers](https://github.com/clearcontainers)：由Intel推出的同时兼容OCI和CRI的容器运行时
-- [Kata Containers](https://katacontainers.io/)：符合OCI规范同时兼容CRI
-- [gVisor](https://github.com/google/gvisor)：由谷歌推出的容器运行时沙箱(Experimental)
 
 CRI是由[SIG-Node](https://kubernetes.slack.com/archives/sig-node)来维护的。
+
+## 当前通过CRI-O间接支持CRI的后端
+
+当前同样存在一些只实现了[OCI](https://www.opencontainers.org/)标准的容器，但是它们可以通过CRI-O来作为Kubernetes的容器运行时。CRI-O是Kubernetes的CRI标准的实现，并且允许Kubernetes间接使用OCI兼容的容器运行时。
+
+- [Clear Containers](https://github.com/clearcontainers)：由Intel推出的兼容OCI容器运行时，可以通过CRI-O来兼容CRI。
+- [Kata Containers](https://katacontainers.io/)：符合OCI规范，可以通过CRI-O或[Containerd CRI Plugin](https://github.com/containerd/cri)来兼容CRI。。
+- [gVisor](https://github.com/google/gvisor)：由谷歌推出的容器运行时沙箱(Experimental)，可以通过CRI-O来兼容CRI。
+
 
 ## 参考
 
 - [Kubernetes CRI and Minikube](https://sreeninet.wordpress.com/2017/02/11/kubernetes-cri-and-minikube/)
 - [CRI-O and Alternative Runtimes in Kubernetes](https://www.projectatomic.io/blog/2017/02/crio-runtimes/)
 - [Docker、Containerd、RunC...：你应该知道的所有](http://www.infoq.com/cn/news/2017/02/Docker-Containerd-RunC)
+- [Introducing Container Runtime Interface (CRI) in Kubernetes](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)
+- [cri-o](https://cri-o.io/)
+- [Kata Containers Architecture](https://github.com/kata-containers/documentation/blob/master/design/architecture.md#kubernetes-support)
