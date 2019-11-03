@@ -83,7 +83,7 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 #### 2019年
 
 - 2019年6月24日 | 上海 | [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/) |出品人
-- 2019年6月21-23日 | 深圳 | [GIAC(全球互联网架构大会)](http://giac.msup.com.cn/index.php) | Service Mesh 专题出品人
+- 2019年6月21-23日 | 深圳 | [GIAC（全球互联网架构大会）](http://giac.msup.com.cn/index.php) | Service Mesh 专题出品人
 
 #### Service Mesh Meetup
 
@@ -144,5 +144,4 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
         </td>
     </tr>
     </table>
-</div>
 </div>

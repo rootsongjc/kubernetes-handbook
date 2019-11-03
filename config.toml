@@ -170,6 +170,12 @@ desc = "ServiceMesher at KubeCon China 2019 Shanghai - Jun 25, 2019"
     weight = 7
 
 [[menu.main]]
+    parent = "Gitbooks"
+    name = "云原生基础架构"
+    url = "cloud-native-infra"
+    weight = 8
+
+[[menu.main]]
     identifier = "Books"
     name = "出版物"
     weight = 3
