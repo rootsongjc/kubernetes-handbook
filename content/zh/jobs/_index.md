@@ -15,6 +15,7 @@ bigimg: [{src: "/img/banners/006tNc79ly1fythjweakyj31bo0pke81.jpg", desc: "Via u
 
 友情推广！以下岗位正在火热招聘中，一起来构建金融级云原生基础设施！点击下面的链接了解详情，如果暂时没有合适你的也没关系，可以直接[联系我](/about)。
 
+1. [蚂蚁金服网络研发专家🔥](/jobs/antfin-network-expert)
 1. [蚂蚁金服Service Mesh技术专家🔥](/jobs/antfin-service-mesh-expert)
 1. [蚂蚁金服Service Mesh高级产品专家🔥](/jobs/antfin-container-serverless)
 1. [蚂蚁金服容器云开发技术专家，*25-45k/月*](https://m.zhipin.com/weijd/v2/job/5095416d1f1e275f1XN539W5EFs~?aid=07b5df7e131fbe2e1w~~&sid=wxs-154028559485753591) 
