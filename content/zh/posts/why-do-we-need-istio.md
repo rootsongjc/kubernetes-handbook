@@ -84,7 +84,7 @@ GKE结合使用[IAM](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-
 
 GKE可以使用service account来管理[GKE上运行的应用程序](https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform)可以使用哪些GCP服务。这些service accout的密钥使用secret存储。Pod中运行的进程的身份标识是由[k8s service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)与RBAC一起决定的。Istio使用[istio-auth](https://istio.io/docs/concepts/security/mutual-tls.html)，它使用双向TLS提供强大的服务间和最终用户身份验证，内置身份和凭证管理。Istio-auth使用Kubernetes service account。
 
-Itsio不提供任何使用GCP service account帮助。这还很早，但是它正在制定未来发展计划的路线图。
+Istio不提供任何使用GCP service account帮助。这还很早，但是它正在制定未来发展计划的路线图。
 
 Istio-auth很好，计划中的增强功能将值得等待。我对安全的复杂性感到厌烦，因为这不可避免地导致配置错误，所以我希望它与service account类型之间进行更加无缝的对齐！
 
