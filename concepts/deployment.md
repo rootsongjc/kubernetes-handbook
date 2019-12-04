@@ -480,6 +480,12 @@ NAME                          DESIRED   CURRENT   READY     AGE
 nginx-deployment-1989198191   7         7         0         7m
 nginx-deployment-618515232    11        11        11        7m
 ```
+## 删除autoscale
+
+```bash
+kubectl get hpa
+kubectl delete hpa ${name of hpa}
+```
 
 ## 暂停和恢复Deployment
 
