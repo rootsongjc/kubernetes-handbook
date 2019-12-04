@@ -706,7 +706,6 @@ helm package .
 ## 参考
 
 - [Deploy, Scale And Upgrade An Application On Kubernetes With Helm](https://docs.bitnami.com/kubernetes/how-to/deploy-application-kubernetes-helm/)
-- [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
 - [Go template](https://golang.org/pkg/text/template/)
 - [How To Create Your First Helm Chart](https://docs.bitnami.com/kubernetes/how-to/create-your-first-helm-chart/)
 - [Speed deployment on Kubernetes with Helm Chart – Quick yaml example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)

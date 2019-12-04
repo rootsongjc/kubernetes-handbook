@@ -9,7 +9,7 @@
 * ceph-mgr只能运行1个replica
 
 ## 安装并使用Helm
-可以按照此说明[instructions](https://github.com/kubernetes/helm/blob/master/docs/install.md)安装Helm。
+请访问Helm官网的说明安装Helm。
 
 Helm通过从本地读取Kubernetes配置文件来查找Kubernetes集群; 确保文件已下载和且helm客户端可以访问。
 

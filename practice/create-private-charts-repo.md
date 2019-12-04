@@ -65,7 +65,7 @@ Chart 仓库（repository）是一个用来托管`index.yaml`文件和打包好�
 
 因为chart仓库只是一个HTTP服务，通过HTTP GET获取YAML文件和chart的压缩包，所以可以将这些文件存储在web服务器中，例如GCS、Amazon S3、GitHub Pages等。
 
-关于chart仓库的更多信息请参考[Helm chart文档](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md)。
+关于chart仓库的更多信息请参考Helm chart文档。
 
 ## 使用GitHub pages托管charts
 
