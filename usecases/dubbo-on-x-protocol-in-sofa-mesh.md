@@ -92,7 +92,7 @@ make istioctl-install
 kubectl apply -f samples/e2e-dubbo/platform/kube/e2e-dubbo-ns.yaml
 ```
 
-### 4. 注入 SOFAMosn
+### 4. 注入 MOSN
 
 部署 dubbo-consumer 和 dubbo-provider，部署前需要先使用 istioctl 进行 sidecar 注入，以下示例采用手动注入方式，也可以通过 istio namespace inject 功能来自动注入。
 
@@ -131,7 +131,7 @@ e2e-dubbo-provider   ClusterIP   192.168.1.62    <none>        12345/TCP   10s
 ```
 
 e2e-dubbo-consumer 是一个 Dubbo 客户端应用，它暴露了一个 8080 端口的 HTTP 服务，方便我们进行验证，e2e-dubbo-provider 是一个 Dubbo 应用。
-当 e2e-dubbo-consumer 通过 12345 端口调用 e2e-dubbo-provider 时，流量会被 IPtable 规则拦截，导流给 SOFAMosn。
+当 e2e-dubbo-consumer 通过 12345 端口调用 e2e-dubbo-provider 时，流量会被 IPtable 规则拦截，导流给 MOSN。
 
 ## 验证路由能力
 

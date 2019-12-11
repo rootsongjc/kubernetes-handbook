@@ -1,13 +1,13 @@
-# 使用 SOFAMosn 构建 SOFAMesh
+# 使用 MOSN 构建 SOFAMesh
 
  **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 本文介绍的内容将包括 : 
 
-- [SOFAMosn](https://github.com/sofastack/sofa-mosn) 与 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 的关系
+- [MOSN](https://github.com/sofastack/sofa-mosn) 与 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 的关系
 - 部署 SOFAMesh
 
-至于 SOFAMesh 的使用跟 Istio 没有区别，只是截止本文发稿时 SOFAMosn 的流量管理只支持：
+至于 SOFAMesh 的使用跟 Istio 没有区别，只是截止本文发稿时 MOSN 的流量管理只支持：
 
 - 按 version 路由
 - 按 weight 路由
@@ -15,11 +15,11 @@
 
 其他更高级功能仍在进一步开发中。
 
-## SOFAMosn 与 SOFAMesh 的关系
+## MOSN 与 SOFAMesh 的关系
 
-**SOFAMosn 是使用 Go 语言开发的 Service Mesh 数据平面代理**，而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案， SOFAMosn **是** SOFAMesh 的关键组件。目前由于 SOFAMosn 相比 Envoy 做了一些改造，无法在 Istio 下直接使用，所以本文的实验需要在 SOFAMesh 体系中进行。下图是 SOFAMesh 整体框架下，SOFAMosn 的工作示意图。
+**MOSN 是使用 Go 语言开发的 Service Mesh 数据平面代理**，而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案， MOSN **是** SOFAMesh 的关键组件。目前由于 MOSN 相比 Envoy 做了一些改造，无法在 Istio 下直接使用，所以本文的实验需要在 SOFAMesh 体系中进行。下图是 SOFAMesh 整体框架下，MOSN 的工作示意图。
 
-![SOFAMosn 架构图](../images/006tNbRwly1fwdlx22rv9j31ec184dlr.jpg)
+![MOSN 架构图](../images/006tNbRwly1fwdlx22rv9j31ec184dlr.jpg)
 
 ## 部署 SOFAMesh
 
@@ -31,7 +31,7 @@
 $ kubectl create -f manifests/sofa-mesh
 ```
 
-# SOFAMosn in SOFAMesh
+# MOSN in SOFAMesh
 
 部署完成后，我们再检查下在 `istio-system` 命名空间下启动的 pod 和 service。
 
@@ -69,4 +69,4 @@ prometheus                 ClusterIP   10.254.17.234    <none>        9090/TCP  
 ## 参考
 
 - [SOFAMesh - github.com](https://github.com/sofastack/sofa-mesh)
-- [SOFAMosn - github.com](https://github.com/sofastack/sofa-mosn)
+- [MOSN - github.com](https://github.com/sofastack/sofa-mosn)

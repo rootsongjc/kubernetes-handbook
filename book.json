@@ -57,7 +57,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573rfe>极客时间专栏推荐《深入剖析 Kubernetes》</a> | <a href=https://tva1.sinaimg.cn/large/006y8mN6ly1g7vew6rqmvj304g056weg.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a></p>Copyright © 2017-2019 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "copyright": "<p><a href=https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573rfe>极客时间专栏推荐《深入剖析 Kubernetes》</a> | <a href=https://github.com/sofastack/sofa-mosn>MOSN - 开源代理</a> | <a href=https://tva1.sinaimg.cn/large/006y8mN6ly1g7vew6rqmvj304g056weg.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【云原生应用架构】公众号回复【加群】加入学习群</a></p>Copyright © 2017-2019 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },

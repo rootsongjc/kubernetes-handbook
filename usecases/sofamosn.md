@@ -1,12 +1,10 @@
-# SOFAMosn
+# MOSN
 
  **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
 GitHub地址：https://github.com/sofastack/sofa-mosn
 
-MOSN 是一款采用 Golang 开发的 Service Mesh 数据平面代理，功能和定位类似 Envoy，旨在提供分布式，模块化，可观察，智能化的代理能力。MOSN 支持 Envoy 和 Istio 的 API，可以和 Istio 集成。Sofa Mesh 中，我们使用 MOSN 替代 Envoy。
-
-初始版本由蚂蚁金服和阿里大文娱UC事业部的技术团队携手贡献，期待社区一起来参与 MOSN 项目的后续开发，共建一个开源精品项目。
+MOSN 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。MOSN 是 Modular Observable Smart Network 的简称。MOSN 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡使用。未来 MOSN 将支持更多云原生场景，并支持 Nginx 的核心转发功能。
 
 ## 核心能力
 
@@ -48,4 +46,4 @@ MOSN 是一款采用 Golang 开发的 Service Mesh 数据平面代理，功能�
 
 ## 参考
 
-- 详细信息请参考[SOFAMosn GitHub仓库](https://github.com/sofastack/sofa-mosn)
+- 详细信息请参考[MOSN GitHub仓库](https://github.com/sofastack/sofa-mosn)
