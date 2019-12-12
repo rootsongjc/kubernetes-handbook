@@ -1,7 +1,7 @@
 ---
-title: "SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案"
+title: "SOFAMesh & MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案"
 subtitle: "兼容Istio的控制平面，使用Go语言版的Sidecar替换Envoy数据平面—由蚂蚁金服开源"
-description: "蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—SOFA MOSN（可单独使用）。"
+description: "蚂蚁金服开源SOFAMesh—一款基于Istio改进和扩展而来的Service Mesh大规模落地实践方案，同时开源了Go语言版的Sidecar—MOSN（可单独使用）。"
 date: 2018-07-16T17:48:18+08:00
 bigimg: [{src: "/img/banners/006tKfTcgy1ftbur3klh0j30zk0k0ad0.jpg", desc: "Networks|From Internet|Jul 16,2018"}]
 draft: false
@@ -60,7 +60,7 @@ SOFAMesh中Golang版本的Sidecar，是一个名为MOSN(Modular Observable Smart
 
 此外，我们会增加对SOFARPC、Dubbo等通讯协议的支持，以便更好的迎合国内用户包括我们自身的实际需求。
 
-由于Sidecar相对独立，而且我们也预期会有单独使用MOSN的场景，因此MOSN的代码仓库是独立于SOFAMesh的，地址为： https://github.com/alipay/sofa-mosn 
+由于Sidecar相对独立，而且我们也预期会有单独使用MOSN的场景，因此MOSN的代码仓库是独立于SOFAMesh的，地址为： https://github.com/sofastack/sofa-mosn 
 
 欢迎大家使用，提供需求、反馈问题、贡献代码或者合作开发。
 
@@ -82,8 +82,5 @@ MOSN和SOFAPilot配合，将可以提供让传统侵入式框架（如Spring Clo
 
 本文中提到的链接地址集合：
 
-- [SOFAMosn](https://github.com/alipay/sofa-mosn)
-- [SOFAMesh](https://github.com/alipay/sofa-mesh)
-- [SOFAMesh官方网站](http://www.sofastack.tech/)
-- [SOFAMesh官方文档](http://www.sofastack.tech/sofa-mesh/docs/Hom)
-- [蚂蚁金服大规模微服务架构下的Service Mesh探索之路](http://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/)
+- [SOFAMosn](https://github.com/sofastack/sofa-mosn)
+- [蚂蚁金服大规模微服务架构下的Service Mesh探索之路](https://www.servicemesher.com/blog/the-way-to-service-mesh-in-ant-financial/)
