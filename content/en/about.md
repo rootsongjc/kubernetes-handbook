@@ -76,11 +76,14 @@ The activities I attended or organized.
 
 #### 2019
 
-- Jun 24, 2019 | Shanghai |  [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/)  | SOFAStack Cloud Native Workshop Producer 🔥🔥🔥
+- Jun 24, 2019 | Shanghai |  [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/)  | SOFAStack Cloud Native Workshop Producer
 - Jun 21-23, 2019 | Shenzhen | [GIAC](http://giac.msup.com.cn/index.php) | Service Mesh Subject Producer
 
 #### Service Mesh Meetup
 
+- Dec 28, 2019 #9 | Hangzhou | [See details](https://tech.antfin.com/community/activities/1056)
+- Nov 24, 2019 #8 | Beijing | [See details](https://tech.antfin.com/community/activities/985)
+- Oct 26, 2019 #7 | Chengdu | [See details](https://tech.antfin.com/community/activities/949)
 - Aug 11, 2019 #6 | Guangzhou | [See details](https://tech.antfin.com/community/activities/781)
 - Jan 6, 2019 #5 | Guangzhou | [See details](https://tech.antfin.com/activities/72)
 - Nov 25, 2018 #4 | Shanghai | [See details](https://tech.antfin.com/activities/2)
