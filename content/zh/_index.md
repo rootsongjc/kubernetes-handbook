@@ -1,9 +1,5 @@
 [宋净超（Jimmy Song）](/about)，[蚂蚁金服](http:///antfin.com)云原生布道师和 [CNCF Ambassador](https://www.cncf.io/people/ambassadors/)。[ServiceMesher 社区](http://www.servicemesher.com)联合创始人。你可能会在一些活动上见到我，请查看我的[日程表](/about/#schedule)。我翻译过多本云原生编程书籍，并参与了一些技术图书的写作。我还喜欢使用[无人机](https://click.dji.com/AD4wNIOV0G1e2vAqBDwVuQ?dji_from=dji-pilot-app&pm=dji-pilot-app)航拍和微单摄影，你可以在 [bilibili](http://space.bilibili.com/31004924) 和[图虫](https://jimmysongio.tuchong.com/)上看到我的作品。
 
-**活动报名：[10 月 26 日星期六，Service Mesh Meetup 成都站](https://www.huodongxing.com/event/2514724877500)**
-
-加入我们构建[云原生](/awesome-cloud-native)基础设施，[蚂蚁金服云原生职位正在火热招聘中🔥](/jobs)！
-
 ---
 
 ### [我的云原生图书系列](/tags/book)
@@ -11,8 +7,8 @@
 我的云原生系列书籍，点击图片可以查看大图，点击导航栏上的**出版物**列表了解详情。
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="Jimmy Song's Cloud Native Book Series">
-<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" alt="宋净超的云原生书籍系列">
+<a href="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" title="Jimmy Song's Cloud Native Book Series">
+<img src="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" alt="宋净超的云原生书籍系列">
 </a>
 </div>
 
@@ -31,8 +27,8 @@
 <a class="github-button" href="https://github.com/rootsongjc/kubernetes-handbook/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork rootsongjc/kubernetes-handbook on GitHub">Fork</a>
 
 <div class="gallery">
-<a href="https://ws1.sinaimg.cn/large/006tNbRwly1fwzugm22epj30go0lvwgu.jpg" title="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
-<img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwzugm22epj30go0lvwgu.jpg" alt="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
+<a href="https://ae01.alicdn.com/kf/Ud5931b37eb5841fea1ecc743401d7d2eD.jpg" title="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
+<img src="https://ae01.alicdn.com/kf/Ud5931b37eb5841fea1ecc743401d7d2eD.jpg" alt="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
 </a>
 </div>
 
@@ -55,8 +51,8 @@
 <a class="github-button" href="https://github.com/rootsongjc/serverless-handbook/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork rootsongjc/serverless-handbook on GitHub">Fork</a>
 
 <div class="gallery">
-<a href="https://tva1.sinaimg.cn/large/006y8mN6ly1g7ot6poyu0j30go0lvwf2.jpg" title="Serverless Handbook - 无服务器架构实践指南">
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7ot6poyu0j30go0lvwf2.jpg" alt="Serverless Handbook - 无服务器架构实践指南">
+<a href="https://ae01.alicdn.com/kf/U472ed8e07ac4402ea422c0d5c6333319o.jpg" title="Serverless Handbook - 无服务器架构实践指南">
+<img src="https://ae01.alicdn.com/kf/U472ed8e07ac4402ea422c0d5c6333319o.jpg" alt="Serverless Handbook - 无服务器架构实践指南">
 </a>
 </div>
 

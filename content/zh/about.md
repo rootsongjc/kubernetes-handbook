@@ -51,8 +51,8 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 - [Cloud Native Java - 使用Java构建云原生应用](https://jimmysong.io/posts/cloud-native-java)
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="Jimmy Song's Cloud Native Book Series">
-<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="宋净超的云原生书籍系列">
+<a href="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" title="Jimmy Song's Cloud Native Book Series">
+<img src="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" title="宋净超的云原生书籍系列">
 </a>
 </div>
 
@@ -131,19 +131,7 @@ bigimg: [{src: "/img/banners/00704eQkgy1fs4rhvpm6bj30x30im1kx.jpg", desc: "月�
 - [知乎专栏——云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
 <div class="gallery gallery-text">
-    <h4>扫码关注微信公众号，获取每日推送，回复【加群】入群学习</h4>
-    <table frame="void" align="center">
-    <tr>
-        <td>
-            <a href="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" title="云原生应用架构">
-            <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw3ku0cwuhj304g056dgk.jpg" alt="云原生应用架构微信公众号">
+            <a href="https://ae01.alicdn.com/kf/Ubffcfbf8fd434f719988319c094d2a4fd.jpg" title="ServiceMesher">
+            <img src="https://ae01.alicdn.com/kf/Ubffcfbf8fd434f719988319c094d2a4fd.jpg" alt="ServiceMesher 微信公众号">
             </a>
-        </td>
-        <td>
-            <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fw3l1sxoijj304g0563z7.jpg" title="ServiceMesher">
-            <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw3l1sxoijj304g0563z7.jpg" alt="ServiceMesher 微信公众号">
-            </a>
-        </td>
-    </tr>
-    </table>
 </div>

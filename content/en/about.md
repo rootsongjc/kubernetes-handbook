@@ -45,10 +45,11 @@ He has been blogging and coding for years on Cloud Native, also translated Cloud
 - [Cloud Native Java](https://jimmysong.io/posts/cloud-native-java)
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="Jimmy Song's Cloud Native Book Series">
-<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="宋净超的云原生书籍系列">
+<a href="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" title="Jimmy Song's Cloud Native Book Series">
+<img src="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" alt="宋净超的云原生书籍系列">
 </a>
 </div>
+
 **Gitbooks**
 
 - [hugo-handbook](https://github.com/rootsongjc/hugo-handbook) - Building static website with hugo(Chinese)
