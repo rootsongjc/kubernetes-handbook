@@ -5,8 +5,8 @@
 ### [Jimmy Song’s Cloud Native Book Series](/tags/book)
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" title="Jimmy Song's Cloud Native Book Series">
-<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fwyq2o106pj31kw0lq4qq.jpg" alt="宋净超的云原生书籍系列">
+<a href="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" title="Jimmy Song's Cloud Native Book Series">
+<img src="https://ae01.alicdn.com/kf/U9c87205a396c4a94adeaae2a21540349z.png" alt="宋净超的云原生书籍系列">
 </a>
 </div>
 
@@ -25,8 +25,8 @@ Setting up a distributed [Kubernetes](https://kubernetes.io) cluster along with 
 <a class="github-button" href="https://github.com/rootsongjc/kubernetes-handbook/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork rootsongjc/kubernetes-handbook on GitHub">Fork</a>
 
 <div class="gallery">
-<a href="https://ws1.sinaimg.cn/large/006tNbRwly1fwzugm22epj30go0lvwgu.jpg" title="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
-<img src="https://ws1.sinaimg.cn/large/006tNbRwly1fwzugm22epj30go0lvwgu.jpg" alt="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
+<a href="https://ae01.alicdn.com/kf/Ud5931b37eb5841fea1ecc743401d7d2eD.jpg" title="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
+<img src="https://ae01.alicdn.com/kf/Ud5931b37eb5841fea1ecc743401d7d2eD.jpg" alt="Kubernetes Handbook - Kubernetes 中文指南/云原生应用架构实践手册">
 </a>
 </div>
 
@@ -37,8 +37,8 @@ Setting up a distributed [Kubernetes](https://kubernetes.io) cluster along with 
 <a class="github-button" href="https://github.com/rootsongjc/istio-handbook/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork rootsongjc/istio-handbook on GitHub">Fork</a>
 
 <div class="gallery">
-<a href="https://ws2.sinaimg.cn/large/006tNc79ly1fz8958vq3zj30go0lvgor.jpg" title="Istio Handbook - Istio 服务网格进阶实战">
-<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fz8958vq3zj30go0lvgor.jpg" alt="Istio Handbook - Istio 服务网格进阶实战">
+<a href="/img/istio-handbook-cover.jpg" title="Istio Handbook - Istio 服务网格进阶实战">
+<img src="/img/istio-handbook-cover.jpg" alt="Istio Handbook - Istio 服务网格进阶实战">
 </a>
 </div>
 
