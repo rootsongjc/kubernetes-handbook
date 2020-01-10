@@ -15,7 +15,7 @@ draft: false
 
 下图是 Envoy proxy 的架构图，显示了 host B 经过 Envoy 访问 host A 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
 
-![Envoy proxy 架构图](https://ws4.sinaimg.cn/large/006tNbRwly1fy6b76edxsj314k0tsjwq.jpg)
+![Envoy proxy 架构图](https://ae01.alicdn.com/kf/U587b3a8535474a2abcbe93fa069341c0A.png)
 
 其中的基本术语将在下面解释。
 
