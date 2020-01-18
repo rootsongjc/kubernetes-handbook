@@ -20,7 +20,7 @@ aliases:
 
 ##  总体概述
 
-开源软件合规（Compliance）实践，从狭义上讲就是企业使用开源软件许可证（License）的合规。*Recommended Open Source Compliance Practices for the Enterprise* 电子书（共32 页）由 *Ibrahim Haddad* 博士撰写（可从 [Linux Foundation](https://www.linuxfoundation.org/publications/2019/06/recommended-open-source-compliance-practices/) 网站免费下载），本书从以下几个角度为你的公司的进行开源合规实践以指导：
+开源软件合规（Compliance）实践，从狭义上讲就是企业使用开源软件许可证（License）的合规。*Recommended Open Source Compliance Practices for the Enterprise* 电子书（共32 页）由 *Ibrahim Haddad* 博士撰写，本书从以下几个角度为你的公司的进行开源合规实践以指导：
 
 - 创建开源审查委员会（Open Source Review Committee）
 - 代码扫描
