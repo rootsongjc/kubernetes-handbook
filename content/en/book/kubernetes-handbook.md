@@ -27,8 +27,6 @@ type: "book"
 
 This book started in March 2017. It records my journey of learning and using Kubernetes from scratch. It focuses on experience sharing and summary. At the same time, it also has related concept analysis. I hope to help everyone step less and pit. The detour will also guide everyone to pay attention to the Kubernetes ecological surroundings, such as microservices construction, DevOps, big data applications, Service Mesh, Cloud Native and other fields.
 
-![Feedback](https://jimmysong.io/kubernetes-handbook/images/feedback.jpg)
-
 ### Before the start
 
 Before reading this book, I hope you have the following knowledge and prepared the following environment:
