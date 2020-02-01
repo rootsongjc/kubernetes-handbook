@@ -178,7 +178,7 @@ contentDir = "content/zh"
 weight = 2
 home = "主页"
 # copyright
-copyright = "Copyright &copy; 2020 Jimmy Song All Right Reserved; Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
+copyright = "Copyright &copy; 2020 Jimmy Song 保留所有权利；基于 Hugo [educenter](https://github.com/themefisher/educenter-hugo)  主题构建"
 
 # main menu
 [[Languages.zh.menu.main]]
