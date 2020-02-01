@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+<!-- notice -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-unstyled">
+          <!-- notice item -->
+          {{ range .Data.Pages }}
+          {{ .Render "notice" }}
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /notice -->
+
+{{ end }}

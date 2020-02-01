@@ -1,0 +1,155 @@
+################################# Slider #####################################
+slider:
+  enable : true
+  bg_image : "images/banner/kubecon-2019-shanghai.jpg"
+  slider_item:
+    # slider item loop
+    - title : "Cloud Native is eating the world"
+      content : "New technologies such as containers, Kubernetes, Service Mesh, and serverless have emerged endlessly. Cloud computing has developed into an application-centric cloud-native stage. The cloud on the enterprise is unstoppable. What should ordinary developers do?"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "Learn"
+        link : "/book"
+
+    # slider item loop
+    - title : "Start your Cloud Native journey"
+      content : "The momentum of the cloud is unstoppable. Developers should conform to and embrace cloud native, make the cloud work for ourslef, maximize the advantages of the cloud, and well realize the business value for developers. Let's start with Kubernetes."
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "Start"
+        link : "book/kubernetes-handbook"
+
+    # slider item loop
+    - title : "Open Source Community"
+      content : "As the initiator and witness of cloud native activities in China since 2016, I have started to organize Kubernetes, Service Mesh and cloud native communities, and always stand by the developers. I am convinced that open source activities and communities will be the lead software development style."
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "Join"
+        link : "contact"
+
+
+############################### Banner feature ###############################
+banner_feature:
+  enable : true
+  image : "images/banner/cloud-landscape.jpg"
+  feature_item:
+    # feature item loop
+    - name : "Containers"
+      icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/containers.png"
+      content : "The smallest building unit of cloud native applications, built once and run everywhere."
+
+    # feature item loop
+    - name : "Kubernetes"
+      icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/kubernetes.png"
+      content : "Cloud native operating system, declarative API is its core, Operator framework controls everything."
+
+    # feature item loop
+    - name : "Service Mesh"
+      icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/service-mesh.png"
+      content : "As a cloud native network infrastructure, the service mesh is responsible for all aspects of communication between services."
+
+    # feature item loop
+    - name : "Serverless"
+      icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/serverless.png"
+      content : "The ultimate form of cloud native in the foreseeable time, true on-demand use and pay-as-you-go."
+
+
+############################## about ##################################
+about:
+  enable : true
+  title : "About Me"
+  image : "images/about/about-me.jpg"
+  content : "Jimmy is a cloud native developer advocate, CNCF ambassador, co-founder of [ServiceMesher](https://www.servicemesher.com) community, spearker, writer and hotographer."
+  button:
+    enable : true
+    label : "Learn more"
+    link : "about"
+
+
+############################# Course ################################
+book:
+  enable : true
+  title : "My books"
+  # book item comes from "content/**/book" folder.
+
+########################## Call to action ############################
+cta:
+  enable : true
+  subtitle : "Click to Join the Community"
+  title : "Get Invovloed in Cloud Native"
+  button:
+    enable : true
+    label : "join now"
+    link : "contact"
+
+
+######################## Success story #############################
+success_story:
+  enable : true
+  bg_image : "images/backgrounds/success-story.jpg"
+  title : "Quick Start"
+  content : "When we need to develop cloud native apps locally, 
+  we prefer to have a distributed development environment that is ready to use and easy to customize, 
+  so that we can better test Kubernetes itself and applications. 
+  Now we use Vagrant and VirtualBox to create such an environment. 
+  [Click for details ...](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)"
+  # video link
+  video_link : "https://www.youtube.com/watch?v=ResipmZmpDU"
+
+
+############################# event ################################
+event:
+  enable : true
+  title : "Events"
+  # event item comes from "content/**/event" folder.
+
+########################### funfacts ############################
+funfacts:
+  enable : true
+  funfact_item:
+    # funfact item loop
+    - name : "Published Books"
+      count : "5"
+
+    # funfact item loop
+    - name : "Sponsored Events"
+      count : "10"
+
+    # funfact item loop
+    - name : "Talks"
+      count : "12"
+
+    # funfact item loop
+    - name : "Community Members"
+      count : "5828"
+
+# funfact is for about page
+
+
+
+############################# blog ################################
+blog:
+  enable : true
+  title : "Latest Blog"
+  # blog item comes from "content/**/blog" folder.
+
+############################# footer ##############################
+footer:
+  contact: "Follow Me on Twitter"
+  link : "https://twitter.com/jimmysongio"
+  image : "images/jimmysong-twitter-qr-code.jpg"
+  address : "Beijing, China"
+  email : "jimmysong@jimmysong.io"

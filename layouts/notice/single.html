@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<!-- notice details -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- event info -->
+        <div class="row align-items-center mb-2">
+          <div class="col-lg-12">
+            <ul class="list-inline">
+              <li class="list-inline-item mr-4 mb-3 mb-lg-3">
+                <div class="d-flex align-items-center">
+                  <i class="ti-calendar text-primary icon-md mr-2"></i>
+                  <div class="text-left">
+                    <p class="mb-0">{{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- notice content -->
+        <div class="content">
+          {{ .Content }}
+          {{ with .Params.Link }} <a href="{{ . | relURL }}" class="btn btn-primary">{{ i18n "read_more" }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+<!-- /notice details -->
+
+{{ end }}

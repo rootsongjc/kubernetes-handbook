@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{ $data := index .Site.Data .Site.Language.Lang }}
+<!-- contact -->
+<section class="section bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="section-title">{{ i18n "contact_us" }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <form action="{{ .Site.Params.contact_form_action | safeURL }}" method="POST">
+            <input type="text" class="form-control mb-3" id="name" name="name" placeholder="{{ i18n "yourName" }}">
+            <input type="email" class="form-control mb-3" id="mail" name="mail" placeholder="{{ i18n "yourEmail" }}">
+            <input type="text" class="form-control mb-3" id="subject" name="subject" placeholder="{{ i18n "subject" }}">
+            <textarea name="message" id="message" class="form-control mb-3" placeholder="{{ i18n "yourMessage"}}"></textarea>
+          <button type="submit" value="send" class="btn btn-primary">{{ i18n "send" }}</button>
+        </form>
+      </div>
+      <div class="col-lg-5 content">
+        {{ .Content }}
+        {{ with $data.homepage.footer }}
+        <img src="{{ .image | relURL }}" width="128px">
+        <a href="mailto:{{ .Site.Params.email }}" class="mb-5 text-color h5 d-block">{{ .email }}</a>
+        <p>{{ .address | markdownify }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /contact -->
+
+<!-- gmap -->
+{{ if .Site.Params.map.enable }}
+<section class="section pt-0">
+  <div id="map_canvas"
+  data-latitude="{{ .Site.Params.map.map_latitude }}"
+  data-longitude="{{ .Site.Params.map.map_longitude }}"
+  data-marker="{{ .Site.Params.map.map_marker | relURL }}"
+  data-marker-name="{{ .Site.Title }}"></div>
+</section>
+{{ end }}
+<!-- /gmap -->
+
+{{ end }}

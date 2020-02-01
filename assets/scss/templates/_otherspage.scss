@@ -1,0 +1,13 @@
+.filter-controls{
+  li{
+    cursor: pointer;
+    transition: .1s ease;
+    &.active{
+      font-weight: 600;
+      color: $primary-color;
+    }
+    &:hover{
+      color: $primary-color;
+    }
+  }
+}

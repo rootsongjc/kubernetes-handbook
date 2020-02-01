@@ -1,0 +1,64 @@
+.hero-section {
+  padding: 250px 0 290px;
+}
+
+.hero-slider {
+
+  .prevArrow,
+  .nextArrow {
+    position: absolute;
+    bottom: -123px;
+    z-index: 9;
+    padding: 15px;
+    color: rgba($color: $white, $alpha: .5);
+    border: 0;
+    font-size: 30px;
+    transition: all linear .2s;
+    background: transparent;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  .prevArrow {
+    right: 60px;
+  }
+
+  .nextArrow {
+    right: 0;
+  }
+
+  .slick-dots {
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      margin: 0 6px;
+
+      &.slick-active {
+        button {
+          background: $primary-color;
+        }
+      }
+
+      button {
+        color: transparent;
+        padding: 0;
+        overflow: hidden;
+        height: 10px;
+        width: 10px;
+        background: rgba($color: $white, $alpha: .5);
+        border: 0;
+        outline: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="card rounded-0 hover-shadow border-top-0 border-left-0 border-right-0">
+  <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
+  <div class="card-body">
+    <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+    <p class="card-text">{{ .Summary | truncate 100 }}</p>
+  </div>
+</div>

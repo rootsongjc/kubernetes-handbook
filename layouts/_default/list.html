@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<!-- blogs -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 order-2 order-lg-1">
+        <div class="row">
+          <!-- blog post -->
+          {{ $paginator := .Paginate ( where .Data.Pages "Type" "post") }}
+          {{ range $paginator.Pages }}
+          <div class="col-sm-6 mb-5">
+            <article
+              class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+              <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
+              <div class="card-body">
+                <!-- post meta -->
+                <ul class="list-inline mb-3">
+                  <!-- post date -->
+                  <li class="list-inline-item mr-3 ml-0"><i class="ti-calendar"></i>
+                    {{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</li>
+                  <!-- author -->
+                  <!--
+                  <li class="list-inline-item mr-3 ml-0"><i class="ti-user"></i> <a
+                      href="{{ `author/` | relLangURL }}{{ .Params.Author | urlize }}">{{ .Params.Author | title }}</a>
+                  </li>
+                  -->
+                  <li class="list-inline-item mr-3 ml-0 text-light"><i class="ti-tag"></i>
+                  {{ range $index, $elements:= .Params.Categories }}<a
+                  href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"> {{ if ne $index 0 }}, {{ end }}
+                  {{ . | title }}</a> {{ end}}
+                  </li>
+                </ul>
+                <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+                <p class="card-text">{{ .Params.Description | truncate 100 }}</p>
+                <a href="{{ .Permalink | relURL }}" class="btn btn-primary btn-sm">{{ i18n "read_more" }}</a>
+              </div>
+            </article>
+          </div>
+          {{ end }}
+          <div class="col-12 mt-4">
+            {{ template "_internal/pagination.html" . }}
+          </div>
+        </div>
+      </div>
+      {{ partial "blog-sidebar.html" . }}
+    </div>
+  </div>
+</section>
+<!-- /blogs -->
+
+{{ end }}

@@ -1,0 +1,116 @@
+{{ define "main" }}
+
+<!-- section -->
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <!-- book thumb -->
+        <img style="height: 500px;width: 100%;object-fit: cover;" src="{{ .Params.Banner | relURL }}"
+          class="img-fluid w-100">
+      </div>
+    </div>
+    <!-- book info -->
+    <div class="row align-items-center mb-5">
+      <!--
+      <div class="col-xl-3 order-1 col-sm-6 mb-4 mb-xl-0">
+        <h2>{{ .Title }}</h2>
+      </div>
+      -->
+      <div class="col-xl-6 order-sm-3 order-xl-2 col-12 order-2">
+        <ul class="list-inline text-xl-center">
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-calendar text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">{{ i18n "publishedAt" | upper }}</h6>
+                <p class="mb-0">{{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-file text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">{{ i18n "pageCount" | upper }}</h6>
+                <p class="mb-0">{{ .Params.pages }}</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-wallet text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">{{ i18n "price" | upper }}</h6>
+                <p class="mb-0">{{ .Params.price }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xl-3 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
+        <a href="{{ .Params.Apply_url | safeURL }}" class="btn btn-primary">{{ i18n "apply_now" }}</a>
+      </div>
+      <!-- border -->
+      <div class="col-12 mt-4 order-4">
+        <div class="border-bottom border-primary"></div>
+      </div>
+    </div>
+    <!-- book details -->
+    <div class="row">
+      <div class="col-12 mb-4 content">
+        {{ .Content }}
+      </div>
+      <!-- partner -->
+      {{ if .Params.aurthor }}
+      <div class="col-12">
+        <h5 class="mb-3">{{ i18n "partner" }}</h5>
+        {{ range where .Site.RegularPages "Title" (.Params.author | title) }}
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div class="media mb-2 mb-sm-0 align-items-center">
+            <img class="mr-4 img-fluid partner-thumb-sm" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
+            <div class="media-body">
+              <h4 class="mt-0"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+              {{ .Params.author }}
+            </div>
+          </div>
+          <div class="social-link">
+            <h6 class="d-none d-sm-block text-right">{{ i18n "contact_info" }}</h6>
+            <ul class="list-inline">
+              {{ range .Params.Contact }}
+              <li class="list-inline-item"><a class="d-inline-block text-light p-1" href="{{ .link | safeURL }}"><i class="{{ .icon }}"></i></a></li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+        {{ end }}
+        {{ end }}
+        <div class="border-bottom border-primary mt-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /section -->
+
+<!-- related book -->
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title">{{ i18n "related_book" }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <!-- book item -->
+      {{ $related := (where .Site.RegularPages "Type" "book") | intersect (where .Site.Pages ".Title" "!=" .Title) | union (.Site.RegularPages.Related . ) | shuffle | first 3}}
+      {{ range first 3 $related }}
+      <div class="col-lg-4 col-sm-6 mb-5">
+        {{ .Render "book"}}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+<!-- /related book -->
+
+{{ end }}

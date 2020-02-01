@@ -1,0 +1,11 @@
+<li class="d-md-table mb-4 w-100 border-bottom hover-shadow">
+  <!--
+  <div class="d-md-table-cell text-center p-4 bg-primary text-white mb-4 mb-md-0 notice-cell-left"><span class="d-block"> {{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</span></div>
+-->
+  <div class="d-md-table-cell px-4 vertical-align-middle mb-4 mb-md-0 notice-cell-center">
+    <a href="{{ .Permalink | relURL }}" class="h4 mb-3 d-block">{{ .Title }}</a>
+    <span class="d-block font-secondary"> {{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</span>
+    <p class="mb-0">{{ .Params.Description | truncate 40 }}</p>
+  </div>
+  <div class="d-md-table-cell text-right pr-0 pr-md-4 notice-cell-right"><a href="{{ .Permalink | relURL }}" class="btn btn-primary">{{ i18n "read_more"}}</a></div>
+</li>
