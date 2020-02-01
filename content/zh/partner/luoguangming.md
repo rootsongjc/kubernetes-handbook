@@ -20,9 +20,9 @@ contact:
     icon : "ti-email" # icon pack : https://themify.me/themify-icons
     link : "mailto:guangmingluo@gmail.com"
   # contact item loop
-  - name : "Guangming Luo"
+  - name : "Ivan Luo"
     icon : "ti-twitter-alt" # icon pack : https://themify.me/themify-icons
-    link : "https://twitter.com/674531927"
+    link : "https://twitter.com/IvanLuo10"
   # contact item loop
   - name : "Guangming Luo"
     icon : "ti-github" # icon pack : https://themify.me/themify-icons
