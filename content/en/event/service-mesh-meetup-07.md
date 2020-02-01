@@ -24,8 +24,8 @@ speaker:
     designation : "中兴通讯网管软件资深专家"
 
   # speaker loop
-  - name : "肖涵 "
-    image : "images/event-speakers/pengzewen.jpg"
+  - name : "肖涵"
+    image : "images/event-speakers/xiaohan.png"
     designation : "蚂蚁金服高级开发工程师"
 
   # speaker loop
