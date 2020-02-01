@@ -18,7 +18,7 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: influxdb-storage
-        - mountPath: /etc/config.toml
+        - mountPath: /etc/
           name: influxdb-config
       volumes:
       - name: influxdb-storage
