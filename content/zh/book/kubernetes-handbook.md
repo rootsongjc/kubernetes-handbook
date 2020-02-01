@@ -96,8 +96,6 @@ aliases:
 
 本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。
 
-![读者反馈](https://jimmysong.io/kubernetes-handbook/images/feedback.jpg)
-
 ### 开始之前
 
 在阅读本书之前希望您掌握以下知识和准备以下环境：
