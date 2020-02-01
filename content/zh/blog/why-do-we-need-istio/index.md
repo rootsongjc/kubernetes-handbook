@@ -68,7 +68,7 @@ Code lab提供了[路由规则](https://istio.io/docs/concepts/traffic-managemen
 
 **集群最终用户/开发人员访问**
 
-GKE结合使用[IAM](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration)和[RBAC](https://cloud.google.com/kubernetes-引擎/文档/如何/基于角色的访问控制)，是的，这里面有很多东西需要你了解。
+GKE结合使用[IAM](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration)和RBAC，是的，这里面有很多东西需要你了解。
 
 要为您的集群用户授予比Cloud IAM更细粒度的权限，您可以使用namespace和RBAC来限制对特定pod的访问或排除对secret的访问。
 

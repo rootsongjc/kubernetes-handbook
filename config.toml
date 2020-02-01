@@ -1,5 +1,6 @@
 ######################## default configuration ####################
-baseURL = "https://jimmysong.io"
+#baseURL = "https://jimmysong.io"
+baseURL = "http://localhost:1313"
 title = "Jimmy Song - Cloud Native | Open Source | Community"
 # post pagination
 paginate = "10"
@@ -167,7 +168,7 @@ URL = "/notice"
 
 [[menu.footer]]
 name = "Awesome Cloud Native"
-URL = "/awesome-cloud-native"
+URL = "https://jimmysong.io/awesome-cloud-native"
 
 ################################### Chinese language #####################################
 [Languages.zh]
