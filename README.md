@@ -77,42 +77,28 @@
 
 ## 社区&读者交流
 
-- **微信群**：K8S&Cloud Native实战，扫描我的微信二维码，[Jimmy Song](http://jimmysong.io/about)，添加时请备注姓名-公司/学校/组织/机构等。
+- **与我联系**：加入云原生社区群，扫描[我的微信二维码](https://jimmysong.io/about)，添加时请备注姓名-公司/学校/组织/机构等。
 - **Slack**：全球中文用户可以加入[Kubernetes官方Slack](http://slack.k8s.io)中文频道**cn-users channel**
 - **知乎专栏**：[云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
-- **与我联系**：扫描下面的二维码关注Jimmy Song 的<u>个人微信公众号</u>CloudNativeGo（云原生应用架构）
-
-<p align="center">
-  <img src="images/cloud-native-go-wechat-qr-code.jpg" alt="云原生应用架构微信公众号二维码"/>
-</p>
-
 
 - **ServiceMesher社区**：ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。社区关注领域有：Kubernetes、微服务、Service Mesh、Serverless，拥抱开源和云原生，致力于推动 Service Mesh 在中国的蓬勃发展。[加入组织](https://www.servicemesher.com/contact/)。
 
 <p align="center">
   <img src="images/servicemesher-wechat-public.jpg" alt="ServiceMesher微信公众号二维码"/>
 </p>
-
-
-## 读者反馈
-
-以下是部分读者反馈，希望更多人[加入我们](https://www.servicemesher.com)，共同打造中国质量最高的云原生社区！
-
-![Kubernetes handbook 读者反馈](images/feedback.jpg)
-
 ## 云原生出版物
 
 以下为本人参与出版云原生相关的图书。
 
-- [Cloud Native Go](https://jimmysong.io/posts/cloud-native-go/) - 基于Go和React的web云原生应用构建指南（Kevin Hoffman & Dan Nemeth著 宋净超 吴迎松 徐蓓 马超 译），电子工业出版社，2017年6月出版
-- [Python云原生](https://jimmysong.io/posts/cloud-native-python/) - 使用Python和React构建云原生应用（Manish Sethi著，宋净超译），电子工业出版社，2018年6月出版
-- [云原生Java](https://jimmysong.io/posts/cloud-native-java/) - Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计（Josh Long & Kenny Bastani著，张若飞 宋净超译 ），电子工业出版社，2018年7月出版
-- [未来架构——从服务化到云原生](https://jimmysong.io/posts/future-architecture-from-soa-to-cloud-native/) - 张亮 吴晟 敖小剑 宋净超 著，电子工业出版社，2019年3月出版
+- [Cloud Native Go](https://jimmysong.io/book/cloud-native-go/) - 基于Go和React的web云原生应用构建指南（Kevin Hoffman & Dan Nemeth著 宋净超 吴迎松 徐蓓 马超 译），电子工业出版社，2017年6月出版
+- [Python云原生](https://jimmysong.io/book/cloud-native-python/) - 使用Python和React构建云原生应用（Manish Sethi著，宋净超译），电子工业出版社，2018年6月出版
+- [云原生Java](https://jimmysong.io/book/cloud-native-java/) - Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计（Josh Long & Kenny Bastani著，张若飞 宋净超译 ），电子工业出版社，2018年7月出版
+- [未来架构——从服务化到云原生](https://jimmysong.io/book/future-architecture-from-soa-to-cloud-native/) - 张亮 吴晟 敖小剑 宋净超 著，电子工业出版社，2019年3月出版
 
 ## 推荐
 
 - [极客时间专栏《深入剖析 Kubernetes》](https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg)
-- [MOSN](https://github.com/sofastack/sofa-mosn) - 一款使用 Go 语言开发的开源的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。
+- [MOSN](https://github.com/mosn/mosn) - 一款使用 Go 语言开发的开源的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。
 
 ## 支持本书
 
