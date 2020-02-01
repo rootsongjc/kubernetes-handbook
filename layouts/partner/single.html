@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<!-- partner details -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 mb-5">
+        <img class="img-fluid w-100" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
+      </div>
+      <div class="col-md-6 mb-5">
+        <h3>{{ .Title }}</h3>
+        <h6 class="text-color">{{ .Params.Book }}</h6>
+        <p class="mb-5">{{ .Params.Bio | markdownify }}</p>
+        <div class="row">
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h4 class="mb-4">{{ i18n "contact_info" | upper}}</h4>
+            <ul class="list-unstyled">
+              {{ range .Params.Contact }}
+              <li class="mb-3"><a class="text-color" href="{{ .link | safeURL }}"><i class="{{ .icon }} mr-2"></i>{{ .name }}</a></li>
+              {{ end }}
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4 class="mb-4">{{ i18n "interest" | upper }}</h4>
+            <ul class="list-unstyled">
+              {{ range .Params.Interest }}
+              <li class="mb-3">{{ . | title }}</li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 content">
+        {{ .Content }}
+      </div>
+    </div>
+</section>
+<!-- /partner details -->
+
+{{ end }}

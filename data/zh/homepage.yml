@@ -1,0 +1,152 @@
+################################# Slider #####################################
+slider:
+  enable : true
+  bg_image : "images/banner/kubecon-2019-shanghai.jpg"
+  slider_item:
+    # slider item loop
+    - title : "云原生势不可挡"
+      content : "容器、Kubernetes、Service Mesh、Serverless 等新技术层出不穷，云计算发展到以应用为中心的云原生阶段，企业上云势不可挡，普通开发者应何去何从？"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "开始了解"
+        link : "book"
+
+    # slider item loop
+    - title : "开启云原生之旅"
+      content : "云的之势不可阻挡，开发者应该顺应云原生，积极接纳云原生，让云为我所用，最大限度发挥云的优势，又快又好的实现开发者的业务价值。让我们先从了解 Kubernetes 开始。"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "开始"
+        link : "book/kubernetes-handbook"
+
+    # slider item loop
+    - title : "开发者共同体——开源社区"
+      content : "作为中国云原生活动的开创者和见证者，自 2016 年起，我开始组织 Kubernetes、Service Mesh 及云原生社区，始终与开发者站在一起，我深信开源活动及开源社区必将成为软件开发的终极形式。"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "加入"
+        link : "contact"
+
+
+############################### Banner feature ###############################
+banner_feature:
+  enable : true
+  image : "images/banner/cloud-landscape-zh.jpg"
+  feature_item:
+    # feature item loop
+    - name : "容器"
+      icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/containers.png"
+      content : "云原生应用的最小的构建单元，一次构建，到处运行。"
+
+    # feature item loop
+    - name : "Kubernetes"
+      icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/kubernetes.png"
+      content : "云原生操作系统，声明式 API 是它的核心，Operator 操控万物。"
+
+    # feature item loop
+    - name : "Service Mesh"
+      icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/service-mesh.png"
+      content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面。"
+
+    # feature item loop
+    - name : "Serverless"
+      icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
+      image : "images/banner/serverless.png"
+      content : "可预见时间内的云原生的终极形式，真正的按需使用和按量付费。"
+
+
+############################## about ##################################
+about:
+  enable : true
+  title : "关于"
+  image : "images/about/about-me-zh.jpg"
+  content : "Jimmy Song（宋净超），云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区联合创始人，讲师，作者，摄影师。"
+  button:
+    enable : true
+    label : "了解详情"
+    link : "about"
+
+
+############################# Book ################################
+book:
+  enable : true
+  title : "图书"
+  # book item comes from "content/**/book" folder.
+
+########################## Call to action ############################
+cta:
+  enable : true
+  subtitle : "参与各种线上活动并获取线下活动信息"
+  title : "点击加入云原生社区"
+  button:
+    enable : true
+    label : "加入我们"
+    link : "contact"
+
+
+######################## Success story #############################
+success_story:
+  enable : true
+  bg_image : "images/backgrounds/success-story.jpg"
+  title : "快速开始"
+  content : "当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用Vagrant和VirtualBox来创建一个这样的环境。[点击了解详情...](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)"
+  # video link
+  video_link : "https://youtu.be/26kbaZxcB4A"
+
+
+############################# event ################################
+event:
+  enable : true
+  title : "活动信息"
+  # event item comes from "content/**/event" folder.
+
+
+########################### funfacts ############################
+funfacts:
+  enable : true
+  funfact_item:
+    # funfact item loop
+    - name : "出版图书"
+      count : "5"
+
+    # funfact item loop
+    - name : "举办活动"
+      count : "10"
+
+    # funfact item loop
+    - name : "参与演讲"
+      count : "12"
+
+    # funfact item loop
+    - name : "社区成员"
+      count : "5828"
+
+# funfact is for about page
+
+
+
+############################# blog ################################
+blog:
+  enable : true
+  title : "最新博客"
+  # blog item comes from "content/**/blog" folder.
+
+############################ footer ###############################
+footer:
+  contact: "扫描下面的二维码加我微信"
+  link: "/contact"
+  image: "images/jimmysong-wechat-qr-code.jpg"
+  address : "中国，北京"
+  email : "jimmysong@jimmysong.io"

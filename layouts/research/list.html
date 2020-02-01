@@ -1,0 +1,17 @@
+{{ define "main" }}
+
+<!-- research -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      {{ range .Data.Pages}}
+      <!-- recharch item -->
+      <div class="col-lg-4 col-sm-6 mb-4">
+        {{ .Render "research" }}</div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+<!-- /research -->
+
+{{ end }}

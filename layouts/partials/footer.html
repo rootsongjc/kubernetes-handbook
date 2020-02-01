@@ -1,0 +1,155 @@
+<!-- footer -->
+{{ $data := index .Site.Data .Site.Language.Lang }}
+<footer>
+  <!-- newsletter -->
+  {{ if .Site.Params.subscription.enable }}
+  {{ with .Site.Params.subscription }}
+  <div class="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 ml-auto bg-primary py-5 newsletter-block">
+          <h3 class="text-white">{{ i18n "subscribe_newsletter" }}</h3>
+          <form action="{{ .mailchimp_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div class="input-wrapper">
+                <input type="email" class="form-control border-0" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="{{ i18n "yourEmail" }}" required>
+              <button type="submit" value="Subscribe" name="subscribe" class="btn btn-primary">{{ i18n "join" }}</button>
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="{{ .mailchimp_form_name }}" tabindex="-1">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+  {{ end }}
+  <!-- footer content -->
+  <div class="footer bg-footer section border-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
+          <!-- logo -->
+          <a class="logo-footer" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid mb-4" width="50%" src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}"></a>
+          <ul class="list-unstyled">
+            {{ with $data.homepage.footer }}
+            <!--
+            <li class="mb-4">{{ i18n "addWechat" }}</li>
+            <li class="mb=4"><img src="{{ .Site.Params.wechatCode }}" width="128px"></li>
+            -->
+            <li class="mb-4"><a class="text-color" href="{{ .link | relLangURL }}">{{ .contact }}</a></li>
+            <li class="mb=4"><img src="{{ .image | relURL }}" width="128px"></li>
+            {{ end }}
+          </ul>
+          </ul>
+        </div>
+        <!-- company -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+          <h4 class="text-white mb-5 text-uppercase">{{ i18n "company" }}</h4>
+          <ul class="list-unstyled">
+            {{ range .Site.Menus.main }}
+            {{ if not .HasChildren }}
+            <li class="mb-3"><a class="text-color" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+        <!-- links -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+          <h4 class="text-white mb-5 text-uppercase">{{ i18n "links" }}</h4>
+          <ul class="list-unstyled">
+            {{ range .Site.Menus.footer }}
+            <li class="mb-3"><a class="text-color" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+        <!-- support -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+          <h4 class="text-white mb-5 text-uppercase">{{ i18n "books" }}</h4>
+          <ul class="list-unstyled">
+            {{ range first 5 (where .Site.RegularPages "Type" "book")}}
+            <li class="mb-3"><a class="text-color" href="{{ .Permalink | relURL }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+        <!-- support -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+          <h4 class="text-white mb-5 text-uppercase">{{ i18n "new_notice" }}</h4>
+          <ul class="list-unstyled">
+            {{ range first 3 (where .Site.RegularPages "Type" "notice")}}
+            <li class="mb-3"><a class="text-color" href="{{ .Permalink | relURL }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- copyright -->
+  <div class="copyright py-4 bg-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 text-sm-left text-center">
+          <p class="mb-0">{{ .Site.Params.copyright | markdownify }}</p>
+        </div>
+        <div class="col-sm-3 text-sm-right text-center">
+          <ul class="list-inline">
+            {{ range .Site.Params.social }}
+            <li class="list-inline-item"><a class="d-inline-block p-2" href="{{ .link | safeURL }}"><i class="{{ .icon }} text-primary"></i></a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+{{ if .Site.Params.map.enable }}
+{{ "<!-- Google Map API -->" | safeHTML }}
+{{ with .Site.Params.map.gmap_api }}
+<script src="{{ . | safeURL }}"></script>
+{{ end }}
+{{ end }}
+
+{{ "<!-- JS Plugins -->" | safeHTML }}
+{{ range .Site.Params.plugins.js}}
+<script src="{{ .link | relURL }}"></script>
+{{ end }}
+
+{{ "<!-- Main Script -->" | safeHTML }}
+{{ $script := resources.Get "js/script.js" | minify}}
+<script src="{{ $script.Permalink | relURL }}"></script>
+
+{{ "<!-- google analitycs -->" | safeHTML }}
+{{ with .Site.Params.google_analitycs_id}}
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', '{{ . }}', 'auto');
+  ga('send', 'pageview');
+</script>
+{{ end }}
+
+<!-- baidu analysis -->
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<!-- Baidu analytics -->
+{{ with .Site.Params.baidu_key }}
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?{{ . }}";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+{{ end }}

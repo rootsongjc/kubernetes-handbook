@@ -1,291 +1,239 @@
-baseurl = "https://jimmysong.io/"
-DefaultContentLanguage = "zh"
-hasCJKLanguage = true
-languageCode = "zh"
-title = "Jimmy Song"
-theme = "beautifulhugo"
+######################## default configuration ####################
+baseURL = "https://jimmysong.io"
+title = "Jimmy Song - Cloud Native | Open Source | Community"
+# post pagination
+paginate = "10"
+# post excerpt
+summaryLength = "6"
 metaDataFormat = "yaml"
-pygmentsUseClasses = false
-pygmentCodeFences = true
-googleAnalytics = "UA-93485976-1"
-defaultContentLanguageInSubdir= false
+hasCJKLanguage = true
+DefaultContentLanguage = "zh"
+# disqus short name
+#disqusShortname = "jimmysong" # get your shortname form here : https://disqus.com
+# disable language
+disableLanguages = [] # desable language from here
 
-[languages]
-  [languages.zh]
-    languageName = "中文"
-    weight = 1
-    contentDir = "content/zh"
-  [languages.en]
-    languageName = "English"
-    weight = 2
-    contentDir = "content/en"
+############################# Plugins ##############################
 
-[Params]
-hello = "Hi,I'm Jimmy"
-subtitle = "A CNCF Ambassador and Developer Advocate on Cloud Native"
-logo = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/avatar-icon.png"
-favicon = "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/favicon.ico"
-share_img = "/img/jimmysong.jpg"
-commit = false
-rss = true
-# ad section, comment this to disable it
-# ad = true
-# GoogleAdsense
-#adsense = true
-# reward button, comment this to disable it
-reward = true
-# baguettebox gallery, comment this to disable it
-baguettebox = true
-baiduKey = "11f7d254cfa4e0ca44b175c66d379ecc"
-#comments = false
-#sharebutton = true
-algolia = "d2134c5a8d250e6d3246594240c45201" # API key
-#gcse = "012737790962522169780:fd1izxsfgrs" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
-description = "宋净超的博客|Cloud Native|云原生布道师"
-errorpage = "https://res.cloudinary.com/jimmysong/image/upload/images/404-not-found-cat.png"
-about_me = """关注Kubernetes/Service Mesh/Serverless/Cloud Native/Open Source，关注微信公众号获取最新资讯。![ServiceMesher公众号二维码](/img/servicemesher-wechat-public-account-tiny.jpg)"""
-recent_posts = true
-contact_me = """请扫描下面的微信二维码联系我加入微信交流群，请备注姓名-公司，否则可能不予通过![Jimmy Song的微信](/img/jimmy-song-wechat-tiny.jpg)"""
+# CSS Plugins
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.css"
+[[params.plugins.css]]
+link = "plugins/animate/animate.css"
+[[params.plugins.css]]
+link = "plugins/venobox/venobox.css"
+[[params.plugins.css]]
+link = "plugins/themify-icons/themify-icons.css"
 
-[[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*cr5NRICPMPwAAAAAAAAAAABkARQnAQ"
-desc = "SOFAStack Cloud Native Workshop at KubeCon China 2019 Shanghai - Jun 24, 2019"
+# JS Plugins
+[[params.plugins.js]]
+link = "plugins/jQuery/jquery.min.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
+[[params.plugins.js]]
+link = "plugins/venobox/venobox.min.js"
+[[params.plugins.js]]
+link = "plugins/filterizr/jquery.filterizr.min.js"
+[[params.plugins.js]]
+link = "plugins/google-map/gmap.js"
 
-[[Params.bigimg]]
-src = "https://gw.alipayobjects.com/mdn/rms_91f3e6/afts/img/A*ClY-RacU9u4AAAAAAAAAAABkARQnAQ"
-desc = "ServiceMesher at KubeCon China 2019 Shanghai - Jun 25, 2019"
+#################### default parameters ################################
+[params]
+logo = "images/logo.png"
+# Meta data
+description = "Jimmy Song's Blog"
+author = "Jimmy Song"
+# contact info
+address = "Beijing, China"
+email = "jimmysong@jimmysong.io"
+wechat = "jimmysongio"
+wechatCode = "/images/jimmysong-wechat-qr-code.jpg"
+twitterCode = "/images/jimmysong-wechat-qr-code.jpg"
+# contact form action
+contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with https://formspree.io
+# Google Analitycs
+google_analitycs_id = "UA-93485976-1" # your id
+# Baidu tongji
+baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
+# top header
+top_header = true
 
-[Author]
-  name = "Jimmy Song(宋净超)"
-  website = "https://jimmysong.io/about"
-  #email = "jimmysong@jimmysong.io"
-  facebook = "jimmysongio"
-  #googleplus = "+jimmysong" # or xxxxxxxxxxxxxxxxxxxxx
-  github = "rootsongjc"
-  twitter = "jimmysongio"
-  linkedin = "jimmysongio"
-  #500px = "jimmysongio"
-  #medium = "jimmysongio"
-  #instagram = "jimmysongio"
-  weibo = "jimmysongio"
+# Preloader
+[params.preloader]
+enable = false
+preloader = "images/preloader.gif" # use jpg, png, svg or gif format.
+
+# Subscription
+[params.subscription]
+enable = true
+# mailchimp subsciption
+mailchimp_form_action = "https://jimmysong.us20.list-manage.com/subscribe/post?u=cca519d8764547a389f52c57f&amp;id=e8e9e07dcc"
+mailchimp_form_name = "b_cca519d8764547a389f52c57f_e8e9e07dcc"
+
+# google map
+[params.map]
+enable = false
+gmap_api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
+map_latitude = "51.5223477"
+map_longitude = "-0.1622023"
+map_marker = "images/marker.png"
+
+############################# social site ########################
+[[params.social]]
+title = "twitter"
+icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
+link = "https://twitter.com/jimmysongio"
+
+[[params.social]]
+title = "github"
+icon = "ti-github" # themify icon : https://themify.me/themify-icons
+link = "https://github.com/rootsongjc"
+
+[[params.social]]
+title = "linkedin"
+icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
+link = "https://linkedin.com/in/jimmysongio"
+
+
+################################### English language #####################################
+[Languages.en]
+languageName = "English"
+languageCode = "en-us"
+contentDir = "content/en"
+weight = 1
+home = "Home"
+# copyright
+copyright = "Copyright &copy; 2020 Jimmy Song All Right Reserved; Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
+
+# main menu
+[[menu.main]]
+name = "About"
+URL = "about"
+weight = 1
 
 [[menu.main]]
-    identifier = "Categories"
-    name = "文章分类"
-    weight = 1
+name = "Book"
+URL = "book"
+weight = 2
 
 [[menu.main]]
-    parent = "Categories"
-    name = "kubernetes"
-    url = "categories/kubernetes"
-    weight = 1
+weight = 3
+name = "More"
+hasChildren = true
+
+  [[menu.main]]
+  parent = "More"
+  name = "Partner"
+  URL = "partner"
+
+  [[menu.main]]
+  parent = "More"
+  name = "Notice"
+  URL = "notice"
+
+  [[menu.main]]
+  parent = "More"
+  name = "Event"
+  URL = "event"
 
 [[menu.main]]
-    parent = "Categories"
-    name = "Istio"
-    url = "categories/istio"
-    weight = 2
+name = "Blog"
+URL = "blog"
+weight = 4
 
 [[menu.main]]
-    parent = "Categories"
-    name = "Cloud Native"
-    url = "categories/cloud-native"
-    weight = 3
+name = "Contact"
+URL = "contact"
+weight = 5
 
-[[menu.main]]
-    parent = "Categories"
-    name = "Open Source"
-    url = "categories/open-source"
-    weight = 4
 
-[[menu.main]]
-    parent = "Categories"
-    name = "Service Mesh"
-    url = "categories/service-mesh"
-    weight = 5
+# footer menu
 
-[[menu.main]]
-    parent = "Categories"
-    name = "Devops"
-    url = "categories/devops"
-    weight = 6
+[[menu.footer]]
+name = "Partner"
+URL = "/partner"
 
-[[menu.main]]
-    parent = "Categories"
-    name = "Serverless"
-    url = "categories/serverless"
-    weight = 7
+[[menu.footer]]
+name = "Event"
+URL = "/event"
 
-[[menu.main]]
-    parent = "Categories"
-    name = "Tags"
-    url = "tags"
-    weight = 8
+[[menu.footer]]
+name = "Notice"
+URL = "/notice"
 
-[[menu.main]]
-    identifier = "Gitbooks"
-    name = "电子书"
-    weight = 2
+[[menu.footer]]
+name = "Awesome Cloud Native"
+URL = "/awesome-cloud-native"
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "Istio handbook"
-    url = "istio-handbook"
-    weight = 1
+################################### Chinese language #####################################
+[Languages.zh]
+languageName = "中文"
+languageCode = "zh"
+contentDir = "content/zh"
+weight = 2
+home = "主页"
+# copyright
+copyright = "Copyright &copy; 2020 Jimmy Song All Right Reserved; Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "Kubernetes handbook"
-    url = "kubernetes-handbook"
-    weight = 2
+# main menu
+[[Languages.zh.menu.main]]
+name = "关于"
+URL = "about"
+weight = 1
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "Serverless handbook"
-    url = "serverless-handbook"
-    weight = 3
+[[Languages.zh.menu.main]]
+name = "图书"
+URL = "book"
+weight = 2
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "Docker handbook"
-    url = "docker-handbook"
-    weight = 4
+[[Languages.zh.menu.main]]
+weight = 3
+name = "更多"
+hasChildren = true
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "Hugo Handbook"
-    url = "hugo-handbook"
-    weight = 5
+  [[Languages.zh.menu.main]]
+  parent = "更多"
+  name = "伙伴"
+  URL = "partner"
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "谷歌工程实践"
-    url = "eng-practices"
-    weight = 6
+  [[Languages.zh.menu.main]]
+  parent = "更多"
+  name = "通知"
+  URL = "notice"
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "迁移到云原生应用架构"
-    url = "migrating-to-cloud-native-application-architectures"
-    weight = 7
+  [[Languages.zh.menu.main]]
+  parent = "更多"
+  name = "活动"
+  URL = "event"
 
-[[menu.main]]
-    parent = "Gitbooks"
-    name = "云原生基础架构"
-    url = "cloud-native-infra"
-    weight = 8
+[[Languages.zh.menu.main]]
+name = "博客"
+URL = "blog"
+weight = 4
 
-[[menu.main]]
-    identifier = "Books"
-    name = "出版物"
-    weight = 3
+[[Languages.zh.menu.main]]
+name = "联系"
+URL = "contact"
+weight = 5
 
-[[menu.main]]
-    parent = "Books"
-    name = "未来架构 - 从服务化到云原生"
-    url = "posts/future-architecture-from-soa-to-cloud-native"
-    weight = 1
+# footer menu
 
-[[menu.main]]
-    parent = "Books"
-    name = "Cloud Native Go"
-    url = "posts/cloud-native-go"
-    weight = 2
+[[Languages.zh.menu.footer]]
+name = "伙伴"
+URL = "partner"
 
-[[menu.main]]
-    parent = "Books"
-    name = "Cloud Native Python"
-    url = "posts/cloud-native-python"
-    weight = 3
+[[Languages.zh.menu.footer]]
+name = "通知"
+URL = "notice"
 
-[[menu.main]]
-    parent = "Books"
-    name = "Cloud Native Java"
-    url = "posts/cloud-native-java"
-    weight = 4
+[[Languages.zh.menu.footer]]
+name = "活动"
+URL = "event"
 
-#[[menu.main]]
-#    name = "招聘"
-#    identifier = "jobs"
-#    url = "jobs"
-#    weight = 4
-
-[[menu.main]]
-    name = "关于"
-    url = "about"
-    weight = 5
-
-[[languages.en.menu.main]]
-    identifier = "Blog"
-    name = "Blog"
-    url = "/posts/"
-    weight = 1
-
-[[languages.en.menu.main]]
-    identifier = "Gitbooks"
-    name = "Gitbooks"
-    weight = 2
-
-[[languages.en.menu.main]]
-    parent = "Gitbooks"
-    name = "Istio handbook"
-    url = "istio-handbook"
-    weight = 1
-
-[[languages.en.menu.main]]
-    parent = "Gitbooks"
-    name = "Kubernetes handbook"
-    url = "kubernetes-handbook"
-    weight = 2
-
-[[languages.en.menu.main]]
-    parent = "Gitbooks"
-    name = "Docker handbook"
-    url = "docker-handbook"
-    weight = 3
-
-[[languages.en.menu.main]]
-    parent = "Gitbooks"
-    name = "Hugo Handbook"
-    url = "hugo-handbook"
-    weight = 4
-
-[[languages.en.menu.main]]
-    parent = "Gitbooks"
-    name = "Migrating to Cloud Native"
-    url = "migrating-to-cloud-native-application-architectures"
-    weight = 5
-
-[[languages.en.menu.main]]
-    identifier = "Books"
-    name = "Books"
-    weight = 3
-
-[[languages.en.menu.main]]
-    parent = "Books"
-    name = "Future Architecture"
-    url = "posts/future-architecture-from-soa-to-cloud-native"
-    weight = 1
-
-[[languages.en.menu.main]]
-    parent = "Books"
-    name = "Cloud Native Go"
-    url = "posts/cloud-native-go"
-    weight = 2
-
-[[languages.en.menu.main]]
-    parent = "Books"
-    name = "Cloud Native Python"
-    url = "posts/cloud-native-python"
-    weight = 3
-
-[[languages.en.menu.main]]
-    parent = "Books"
-    name = "Cloud Native Java"
-    url = "posts/cloud-native-java"
-    weight = 4
-
-[[languages.en.menu.main]]
-    name = "About"
-    url = "about"
-    weight = 5
+[[Languages.zh.menu.footer]]
+name = "Awesome Cloud Native"
+URL = "/awesome-cloud-native"

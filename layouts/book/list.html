@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+<!-- books -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- book category list -->
+        <ul class="list-inline text-center filter-controls mb-5">
+          <li class="list-inline-item m-3 text-uppercase active" data-filter="all">{{ i18n "all" }}</li>
+          {{ $categories := slice }}
+          {{ range .Data.Pages }}
+          {{ $categories = $categories | append .Params.category }}
+          {{ end }}
+          {{ range ( $categories | uniq ) }}
+          <li class="list-inline-item m-3 text-uppercase" data-filter="{{ . | urlize }}">{{ . | humanize }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    <!-- book list -->
+      <div class="row filtr-container">
+      <!-- book -->
+      {{ range .Data.Pages }}
+      <div data-category="{{ .Params.category | urlize }}" class="col-lg-4 col-sm-6 filtr-item">
+        {{ .Render "book" }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+<!-- /books -->
+
+{{ end }}

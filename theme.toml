@@ -1,0 +1,16 @@
+name = "Educenter Hugo"
+license = "CC BY 3.0"
+licenselink = "https://creativecommons.org/licenses/by/3.0/"
+description = "Hugo port of the Themefisher’s Educenter theme"
+homepage = "https://gethugothemes.com/products/educenter-hugo/"
+tags = ["blog",'google-analytics', 'fast', 'modern', 'minimal', 'minimalistic', 'business', 'education', 'white', 'light', 'multilingual', "bootstrap", "company", "portfolio", "projects", "responsive", "themefisher"]
+features = ["blog", "company", "responsive", "seo-friendly"]
+min_version = "0.60.0"
+
+[author]
+  name = "Themefisher"
+  homepage = "https://themefisher.com/"
+
+[original]
+  name = "Educenter"
+  homepage = "https://themefisher.com/products/education-template/"

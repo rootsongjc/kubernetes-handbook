@@ -1,0 +1,152 @@
+- id: read_more
+  translation: 查看详情
+
+- id: contact_form
+  translation: 联系表
+
+- id: send
+  translation: 发送信息
+
+- id: contact_info
+  translation: 联系方式
+
+- id: subscribe_newsletter
+  translation: 订阅动态
+
+- id: subscribe
+  translation: 订阅
+
+- id: contact_us
+  translation: 联系
+
+- id: latest_article
+  translation: 最新文章
+
+- id: categories
+  translation: 分类
+
+- id: tags
+  translation: 标签
+
+- id: see_all
+  translation: 查看全部
+
+- id: apply_now
+  translation: 查看详情
+
+- id: posted_by
+  translation: 作者
+
+- id: date
+  translation: 日期
+
+- id: time
+  translation: 时间
+
+- id: category
+  translation: 分类
+
+- id: related_book
+  translation: 相关图书
+
+- id: duration
+  translation: 持续
+
+- id: weekly
+  translation: 月刊
+
+- id: fee
+  translation: 费用
+
+- id: partner
+  translation: 伙伴
+
+- id: location
+  translation: 位置
+
+- id: entry_fee
+  translation: 申请费
+
+- id: event_speaker
+  translation: 活动讲师
+
+- id: more_event
+  translation: 更多活动
+
+- id: join
+  translation: 订阅
+
+- id: company
+  translation: 我的
+
+- id: links
+  translation: 链接
+
+- id: books
+  translation: 图书
+
+- id: new_notice
+  translation: 通知
+
+- id: wechat
+  translation: 微信
+
+- id: email
+  translation: 邮箱
+
+- id: all
+  translation: 所有
+
+- id: interest
+  translation: 关注领域
+
+- id: our_partners
+  translation: 伙伴
+
+- id: download
+  translation: 下载
+
+- id: dateFormat
+  translation: "2006年1月2日"
+
+- id: monthFormat
+  translation: "01月"
+
+- id: yearFormat
+  translation: "2006年"
+
+- id: dayFormat
+  translation: "2日"
+
+- id: yourName
+  translation: "怎么称呼您"
+
+- id: yourEmail
+  translation: "您的电子邮箱"
+
+- id: subject
+  translation: "邮件主题"
+
+- id: yourMessage
+  translation: "邮件正文"
+
+- id: publishedAt
+  translation: "出版时间"
+
+- id: price
+  translation: "售价"
+
+- id: pageCount
+  translation: "页数"
+
+- id: author
+  translation: "作者"
+
+- id: translators
+  translation: "译者"
+
+- id: sponsor
+  translation: "主办方"
+
+- id: addWechat
+  translation: "扫描下面的二维码加我微信"

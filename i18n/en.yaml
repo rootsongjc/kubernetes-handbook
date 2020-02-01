@@ -1,0 +1,149 @@
+- id: read_more
+  translation: Read More
+
+- id: contact_form
+  translation: Contact Form
+
+- id: send
+  translation: send message
+
+- id: contact_info
+  translation: Contact Info
+
+- id: subscribe_newsletter
+  translation: Subscribe Newsletter
+
+- id: subscribe
+  translation: Subscribe
+
+- id: contact_us
+  translation: Contact Me
+
+- id: latest_article
+  translation: Latest Article
+
+- id: categories
+  translation: Categories
+
+- id: tags
+  translation: Tags
+
+- id: see_all
+  translation: See all
+
+- id: apply_now
+  translation: Learn
+
+- id: posted_by
+  translation: Posted by
+
+- id: date
+  translation: Date
+
+- id: time
+  translation: time
+
+- id: category
+  translation: Category
+
+- id: related_book
+  translation: Related Book
+
+- id: duration
+  translation: duration
+
+- id: weekly
+  translation: weekly
+
+- id: fee
+  translation: fee
+
+- id: partner
+  translation: partner
+
+- id: location
+  translation: location
+
+- id: entry_fee
+  translation: entry fee
+
+- id: event_speaker
+  translation: Event Speakers
+
+- id: more_event
+  translation: More Events
+
+- id: join
+  translation: Join
+
+- id: company
+  translation: Mine
+
+- id: links
+  translation: links
+
+- id: books
+  translation: Books
+
+- id: new_notice
+  translation: new notice
+
+- id: wechat
+  translation: wechat
+
+- id: email
+  translation: email
+
+- id: all
+  translation: All
+
+- id: interest
+  translation: SUMMARY OF ACTIVITIES/INTERESTS
+
+- id: our_partners
+  translation: My partners
+
+- id: download
+  translation: Download
+
+- id: dateFormat
+  translation: "January 2, 2006"
+
+- id: monthFormat
+  translation: "JANUNARY"
+
+- id: yearFormat
+  translation: "2006"
+
+- id: dayFormat
+  translation: "02"
+
+- id: yourName
+  translation: "Your name"
+
+- id: yourEmail
+  translation: "Your email address"
+
+- id: subject
+  translation: "Subject"
+
+- id: yourMessage
+  translation: "Messages"
+
+- id: publishedAt
+  translation: "Published At"
+
+- id: price
+  translation: "Price"
+
+- id: pageCount
+  translation: "Pages"
+
+- id: author
+  translation: "authors"
+
+- id: translators
+  translation: "translators"
+
+- id: sponsor
+  translation: "sponsor"

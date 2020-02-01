@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+<!-- about -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 content">
+        {{ with .Params.Image }}
+        <img class="img-fluid w-100 mb-4" src="{{ . | relURL }}" alt="about image">
+        {{ end }}
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /about -->
+
+<!-- funfacts -->
+{{ if $data.homepage.funfacts.enable }}
+{{ with $data.homepage.funfacts }}
+<section class="section-sm bg-primary">
+  <div class="container">
+    <div class="row">
+      <!-- funfacts item -->
+      {{ range .funfact_item }}
+      <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+        <div class="text-center">
+          <h2 class="count text-white" data-count="{{ .count }}">0</h2>
+          <h5 class="text-white">{{ .name }}</h5>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /funfacts -->
+
+<!-- partner -->
+{{ if $data.homepage.blog.enable }}
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title">{{ i18n "our_partners" }}</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <!-- partner -->
+      {{ range first 3 (where .Site.RegularPages "Type" "partner")}}
+      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+        {{ .Render "partner" }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /partner -->
+
+{{ end }}
