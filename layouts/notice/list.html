@@ -4,13 +4,17 @@
 <section class="section">
   <div class="container">
     <div class="row">
+      {{ $paginator := .Paginate ( where .Data.Pages "Type" "notice") }}
+      {{ range $paginator.Pages }}
       <div class="col-12">
         <ul class="list-unstyled">
           <!-- notice item -->
-          {{ range .Data.Pages }}
           {{ .Render "notice" }}
-          {{ end }}
         </ul>
+      </div>
+       {{ end }}
+      <div class="col-12 mt-4">
+        {{ template "_internal/pagination.html" . }}
       </div>
     </div>
   </div>
