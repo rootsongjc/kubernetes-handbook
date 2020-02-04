@@ -12,5 +12,5 @@ link: "https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books
 
 本书长达 121 页，详细描述了Operator 架构，如何构建和部署 Kubernetes Operator，如何使用 Go SDK，并给出了示例，是学习 Kubernetes Operator 的很好的参考资料。
 
-下载地址：https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf
+下载地址：<https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf>
 

@@ -12,5 +12,5 @@ Share an eBook (free) by O'Reilly, Kubernetes Operators - Automating the Contain
 
 This book is 121 pages long, describes in detail the Operator architecture, how to build and deploy Kubernetes Operator, how to use the Go SDK, and gives examples. It is a good reference for learning Kubernetes Operator.
 
-Download address: https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf
+Download address: <https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf>
 
