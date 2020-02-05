@@ -147,3 +147,6 @@
 
 - id: sponsor
   translation: "sponsor"
+
+- id: go_home
+  translation: "Go Home"
