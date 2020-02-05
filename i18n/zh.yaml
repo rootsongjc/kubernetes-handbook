@@ -150,3 +150,6 @@
 
 - id: addWechat
   translation: "扫描下面的二维码加我微信"
+
+- id: go_home
+  translation: "返回主页"
