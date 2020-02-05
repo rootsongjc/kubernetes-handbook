@@ -1,5 +1,5 @@
 ---
-title: "吴君泽"
+title: "吴钧泽"
 draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
@@ -10,7 +10,7 @@ image: "images/partners/wujunze.jpg"
 # company
 company: "好未来"
 # biography
-bio: "吴君泽是云原生技术爱好者，热爱开源。对高可用、高性能的分布式系统架构有浓厚兴趣，目前致力于云原生技术的推广实践。"
+bio: "吴钧泽是云原生技术爱好者，热爱开源。对高可用、高性能的分布式系统架构有浓厚兴趣，目前致力于云原生技术的推广实践。"
 # interest
 interest: ["Cloud Native"]
 # contact info
