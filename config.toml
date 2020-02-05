@@ -167,7 +167,7 @@ URL = "/notice"
 
 [[menu.footer]]
 name = "Awesome Cloud Native"
-URL = "https://jimmysong.io/awesome-cloud-native"
+URL = "/awesome-cloud-native"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -236,4 +236,4 @@ URL = "event"
 
 [[Languages.zh.menu.footer]]
 name = "Awesome Cloud Native"
-URL = "https://jimmysong.io/awesome-cloud-native"
+URL = "/awesome-cloud-native"
