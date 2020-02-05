@@ -2,7 +2,7 @@
 
 **注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 
-8月1日0点，[Istio 1.0发布，已生产就绪！](http://www.servicemesher.com/blog/announcing-istio-1.0/)大家都已经跃跃欲试了，几天前我发布了[一键在本地搭建运行Istio 1.0的分布式Kubernetes集群](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)教程，在本地搭建起来还是有些门槛，稍显复杂，现在我推荐几个可以在线上学习的地方。这是目前搜集的比较完整的Isito学习环境和包含代码的示例教程有如下几个：
+2018年8月1日0点，[Istio 1.0发布，已生产就绪！](http://www.servicemesher.com/blog/announcing-istio-1.0/)大家都已经跃跃欲试了，几天前我发布了[一键在本地搭建运行Istio 1.0的分布式Kubernetes集群](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)教程，在本地搭建起来还是有些门槛，稍显复杂，现在我推荐几个可以在线上学习的地方。这是目前搜集的比较完整的Isito学习环境和包含代码的示例教程有如下几个：
 
 目前搜集的比较完整的Isito学习环境和包含代码的示例教程有如下几个：
 
@@ -68,10 +68,7 @@ GitHub地址：https://github.com/IBM/microservices-traffic-management-using-ist
 
 ## ServiceMesher社区
 
-网址：http://www.servicemesher.com/
-
-GitHub：https://github.com/servicemesher
-
-微信群：入群请[联系我](https://jimmysong.io/about)
-
-Twitter: https://twitter.com/servicemesher
+- 网址：https://www.servicemesher.com/
+- GitHub：https://github.com/servicemesher
+- 微信群：入群请[联系我](https://jimmysong.io/about)
+- Twitter: https://twitter.com/servicemesher

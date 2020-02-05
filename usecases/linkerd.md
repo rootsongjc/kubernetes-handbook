@@ -120,4 +120,4 @@ Linkerd 自己最令人称道的是它在每台主机上只安装一个 Pod，�
 - [Squeezing blood from a stone: small-memory JVM techniques for microservice sidecars](https://buoyant.io/2016/06/17/small-memory-jvm-techniques-for-microservice-sidecars/)
 - [Buoyant发布服务网格Linkerd的1.0版本](http://www.infoq.com/cn/news/2017/05/buoyant-release-ver-1-of-linkerd)
 - [Linkerd documentation](https://linkerd.io/documentation/)
-- [Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)
+- [Istio：一个用于微服务间通信的服务网格开源项目](http://www.infoq.com/cn/news/2017/05/istio)
