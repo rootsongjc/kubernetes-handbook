@@ -6,7 +6,7 @@
     "links": {
         "sidebar": {
             "回到主页": "https://jimmysong.io",
-            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
+            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native"
         }
     },
     "plugins": [
