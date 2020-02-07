@@ -1,5 +1,5 @@
 ---
-title: "云原生服务网格 Istio 图书读后感"
+title: "云原生服务网格 Istio 图书"
 date: 2019-08-03T15:24:37+08:00
 draft: false
 tags: ["istio","图书"]
@@ -33,5 +33,5 @@ image: "images/banner/cloud-native-service-mesh-istio.jpg"
 
 这本书是目前（2019年08月15日）市面上能买到的最全的一本 Istio 相关的图书了，话说国外还一本 Istio 的书也出来，国内到现在都出了四本了，是不是有种墙外开花墙内香的感觉？
 
-建议大家结合 [Istio 官方文档](https://istio.io)一起来看这本书，Istio 版本更新虽然没有 Kubernetes 那么快，但是在本书发行一个多月后也要发布 1.2 版本了，欢迎大家[加入 ServiceMesher 社区](https://www.servicemesher.com)一起来共读！
+建议大家结合 [Istio 官方文档](https://istio.io)一起来看这本书，Istio 版本更新虽然没有 Kubernetes 那么快，但是在本书发行一个多月后也要发布 1.2 版本了，欢迎大家[加入 ServiceMesher 社区](https://www.servicemesher.com)来学习 Istio！
 
