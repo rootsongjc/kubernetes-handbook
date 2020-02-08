@@ -141,7 +141,7 @@ CRI是由[SIG-Node](https://kubernetes.slack.com/archives/sig-node)来维护的�
 
 - [Kubernetes CRI and Minikube](https://sreeninet.wordpress.com/2017/02/11/kubernetes-cri-and-minikube/)
 - [CRI-O and Alternative Runtimes in Kubernetes](https://www.projectatomic.io/blog/2017/02/crio-runtimes/)
-- [Docker、Containerd、RunC...：你应该知道的所有](http://www.infoq.com/cn/news/2017/02/Docker-Containerd-RunC)
+- [Docker、Containerd、RunC...：你应该知道的所有](https://www.infoq.cn/article/2017/02/Docker-Containerd-RunC/)
 - [Introducing Container Runtime Interface (CRI) in Kubernetes](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)
 - [cri-o](https://cri-o.io/)
 - [Kata Containers Architecture](https://github.com/kata-containers/documentation/blob/master/design/architecture.md#kubernetes-support)

@@ -401,8 +401,5 @@ func (util *RBDUtil) CreateImage(p *rbdVolumeProvisioner) (r *v1.RBDVolumeSource
 
 ## 参考
 
-- [k8s-ceph-statefulsets-storageclass-nfs 动态卷有状态应用实践](http://blog.csdn.net/idea77/article/details/72842723)
-
 - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#ceph-rbd
-
 - [Error creating rbd image: executable file not found in $PATH#38923](https://github.com/kubernetes/kubernetes/issues/38923)

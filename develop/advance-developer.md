@@ -1,8 +1,6 @@
 # 高级开发指南
 
-本页假定您已经熟悉 Kubernetes 的核心概念并可以轻松的部署自己的应用程序。如果还不能，您需要先查看下[中级应用开发者](https://kubernetes.io/docs/user-journeys/users/application-developer/intermediate/)主题。
-
-在浏览了本页面及其链接的内容后，您将会更好的理解如下部分：
+本页假定您已经熟悉 Kubernetes 的核心概念并可以轻松的部署自己的应用程序。在浏览了本页面及其链接的内容后，您将会更好的理解如下部分：
 
 - 可以在应用程序中使用的高级功能
 - 扩展 Kubernetes API 的各种方法
@@ -97,6 +95,3 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 恭喜您完成了应用开发者之旅！您已经了解了 Kubernetes 提供的大部分功能。现在怎么办？
 
 - 如果您想推荐新功能或跟上Kubernetes应用开发的最新进展，请考虑加入 SIG，如 [SIG Apps](https://github.com/kubernetes/community/tree/master/sig-apps)。
-- 如果您有兴趣详细了解 Kubernetes 的内部运作（例如网络），请考虑查看[集群运维之旅](https://kubernetes.io/docs/user-journeys/users/cluster-operator/foundational/)。
-
-原文：https://kubernetes.io/docs/user-journeys/users/application-developer/advanced

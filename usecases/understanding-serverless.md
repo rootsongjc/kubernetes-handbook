@@ -12,11 +12,9 @@ Serverless（无服务器架构）指的是由开发者实现的服务端逻辑�
 
 Serverless 是云原生技术发展的高级阶段，使开发者更聚焦在业务逻辑，而减少对基础架构的关注。
 
-![Serverless 在云原生技术中的地位](https://tva1.sinaimg.cn/large/006y8mN6ly1g7gkigih88j30ix0dw74a.jpg)
+![Serverless 在云原生技术中的地位](../images/cloud-landscape-zh.jpg)
 
 下图来自谷歌云平台官网，是对云计算的一个很好的分层概括，其中 serverless 就是构建在虚拟机和容器之上的一层，与应用本身的关系更加密切。
-
-![从物理机到函数计算](https://ws4.sinaimg.cn/large/006tNbRwgy1fv8y3128tfj30ja0dywf3.jpg)
 
 Serverless架构是云的自然延伸，为了理解serverless，我们有必要回顾一下云计算的发展。
 
@@ -90,11 +88,11 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 
 下图是 Serverless 中的（FaaS）函数定义，从图中可以看出与容器、12 要素及 Kubernetes 的运行时设计十分契合。
 
-![Serverless 中的函数定义](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ldey3l7gj31ti0mwta9.jpg)
+![Serverless 中的函数定义](../images/006y8mN6ly1g7ldey3l7gj31ti0mwta9.jpg)
 
 下图 FaaS 中函数输入、context 及输出。
 
-![FaaS 中的函数](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ldhm7bxyj31040u0q5n.jpg)
+![FaaS 中的函数](../images/006y8mN6ly1g7ldhm7bxyj31040u0q5n.jpg)
 
 以上两张图片根据 CNCF Serverless Whitepaper v1.0 绘制。
 
@@ -260,5 +258,4 @@ Karl Marx说的好，生产力决定生产关系，云计算的概念层出不�
 - [2017年会是Serverless爆发之年吗？](http://www.infoq.com/cn/news/2017/04/2017-Serverless)
 - [从IaaS到FaaS—— Serverless架构的前世今生](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
 - [Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
-- [What is serverless free ebook- oreilly.com](http://www.oreilly.com/programming/free/what-is-serverless.csp)
 - [Serverless Architectures - martinfowler.com](https://martinfowler.com/articles/serverless.html)
