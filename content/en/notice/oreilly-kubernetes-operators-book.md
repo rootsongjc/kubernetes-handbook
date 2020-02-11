@@ -10,7 +10,7 @@ link: "https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books
 
 Share an eBook (free) by O'Reilly, Kubernetes Operators - Automating the Container Orchestration Platform, sponsored by Red Hat OpenShift by Jason Dobies & Joshua Wood.
 
-This book is 121 pages long, describes in detail the Operator architecture, how to build and deploy Kubernetes Operator, how to use the Go SDK, and gives examples. It is a good reference for learning Kubernetes Operator.
+![Kubernetes Operators](/images/books/kubernetes-operators-cover.jpg)
 
-Download address: <https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf>
+This book is 121 pages long, describes in detail the Operator architecture, how to build and deploy Kubernetes Operator, how to use the Go SDK, and gives examples. It is a good reference for learning Kubernetes Operator.
 
