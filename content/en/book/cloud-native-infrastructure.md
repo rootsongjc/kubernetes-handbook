@@ -14,7 +14,7 @@ banner: "images/banner/cloud-native.jpg"
 # taxonomy
 category: "Ebook"
 # page count
-pages : "8"
+pages : "80"
 # book price
 price : "Free"
 # apply url

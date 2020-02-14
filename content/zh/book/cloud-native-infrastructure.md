@@ -14,7 +14,7 @@ banner: "images/banner/cloud-native.jpg"
 # taxonomy
 category: "电子书"
 # page count
-pages : "8"
+pages : "80"
 # book price
 price : "免费"
 # apply url
