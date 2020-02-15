@@ -10,7 +10,7 @@ description : "本书是本人业余时间翻译的Cloud Native Infrastructure �
 # book thumbnail
 image: "images/books/cloud-native-infrastructure.jpg"
 # page banner
-banner: "images/banner/cloud-native.jpg"
+banner: "images/banner/infrastructure.jpg"
 # taxonomy
 category: "电子书"
 # page count
@@ -23,7 +23,7 @@ apply_url : "/cloud-native-infra"
 type: "book"
 ---
 
-本书为*Cloud Native Infrastructure*中文版，作者*Justin Garrison*和*Kris Nova*，英文版发行于 2017 年 11 月，已可以在网上免费获得，本书是关于创建和管理基础架构，以适用于云原生应用全生命周期管理的模式和实践。
+本书为 *Cloud Native Infrastructure* 中文版，作者 *Justin Garrison* 和 *Kris Nova* ，英文版发行于 2017 年 11 月，已可以在网上免费获得，本书是关于创建和管理基础架构，以适用于云原生应用全生命周期管理的模式和实践。
 
 阅读完这本书后，您将会有如下收获：
 

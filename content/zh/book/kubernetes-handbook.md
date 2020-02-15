@@ -10,7 +10,7 @@ description : "本书从 2017 年初开始撰写，历时近两年完成了20多
 # book thumbnail
 image: "images/books/kubernetes-handbook.jpg"
 # page banner
-banner: "images/banner/java.jpg"
+banner: "images/banner/kubernetes-banner.png"
 # taxonomy
 category: "电子书"
 # page count

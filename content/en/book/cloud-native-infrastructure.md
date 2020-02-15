@@ -10,7 +10,7 @@ description : "Translated from Cloud Native Infrastructure."
 # book thumbnail
 image: "images/books/cloud-native-infrastructure.jpg"
 # page banner
-banner: "images/banner/cloud-native.jpg"
+banner: "images/banner/infrastructure.jpg"
 # taxonomy
 category: "Ebook"
 # page count

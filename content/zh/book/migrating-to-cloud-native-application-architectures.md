@@ -10,7 +10,7 @@ description : "本书是 Migrating to Cloud Native Application Architectures 的
 # book thumbnail
 image: "images/books/migrating-to-cloud-native-application-architectures.jpg"
 # page banner
-banner: "images/banner/cloud-native.jpg"
+banner: "images/banner/migrating.jpg"
 # taxonomy
 category: "电子书"
 # page count

@@ -10,7 +10,7 @@ description : "This book has been written since the beginning of 2017. It has co
 # book thumbnail
 image: "images/books/kubernetes-handbook.jpg"
 # page banner
-banner: "images/banner/java.jpg"
+banner: "images/banner/kubernetes-banner.png"
 # taxonomy
 category: "Ebook"
 # page count

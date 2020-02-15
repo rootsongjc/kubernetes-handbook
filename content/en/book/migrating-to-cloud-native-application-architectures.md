@@ -10,7 +10,7 @@ description : "This book is the Chinese version of Migrating to Cloud Native App
 # book thumbnail
 image: "images/books/migrating-to-cloud-native-application-architectures.jpg"
 # page banner
-banner: "images/banner/cloud-native.jpg"
+banner: "images/banner/migrating.jpg"
 # taxonomy
 category: "Ebook"
 # page count
