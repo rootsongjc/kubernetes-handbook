@@ -38,17 +38,17 @@ aliases:
 1. 遵守第三方商业软件的许可条款
 1. 保护您的产品/服务差异化（知识产权/IP）
 
-{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unqmzuawj30yy0fmgnv.jpg" title="图 1. 开源促进及合规计划">}}
+![开源促进及合规计划](006tNc79ly1g3unqmzuawj30yy0fmgnv.jpg)
 
 ### 开源合规流程
 
 图 2 是开源合规流程闭环。
 
-{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unru4rl8j31300qkmz8.jpg" title="图 2. 开源合规流程闭环">}}
+![图 2. 开源合规流程闭环](006tNc79ly1g3unru4rl8j31300qkmz8.jpg)
 
 该流程中分为以下三步：确认（Identify）、批准（Approve）和确知（Satisfy）。
 
-{{< gallery link="https://ww1.sinaimg.cn/large/006tNc79ly1g3unvsqmmrj31zy0fu0w8.jpg" title="图 3. 开源合规步骤产出">}}
+![图 3. 开源合规步骤产出](006tNc79ly1g3unvsqmmrj31zy0fu0w8.jpg)
 
 #### 确认（Identify）
 
@@ -118,7 +118,7 @@ aliases:
 
 除了 OSRB 的成员之外，实现开源合规是一项跨学科活动，涉及到组织内的各个部门和个人，如图 4 所示。
 
-{{< gallery link="https://ww2.sinaimg.cn/large/006tNc79ly1g3unxxety2j31ik0li0v5.jpg" title="图 4. 开源项目办公室组成" >}}
+![图 4. 开源项目办公室组成](006tNc79ly1g3unxxety2j31ik0li0v5.jpg)
 
 下面是对支持团队帮助 OSRB 确保开源合规性的核心职责的描述。
 
@@ -151,17 +151,17 @@ aliases:
 
 图 5 提供了端到端合规流程的详细示例，其中包括软件组件被 OSRB 批准在构建系统中与软件产品集成之前经历的各个步骤。
 
-{{< gallery link="https://ww2.sinaimg.cn/large/006tNc79ly1g3unjbh5amj31900fuac7.jpg" title="图 5. 端到端开源合规流程示例" >}}
+![图 5. 端到端开源合规流程示例](006tNc79ly1g3unjbh5amj31900fuac7.jpg)
 
 图 6 简要描述了每个步骤中发生的情况。
 
-{{< gallery link="https://ww3.sinaimg.cn/large/006tNc79ly1g3uzfnj1lzj327i0kuq71.jpg" title="图 6. 开源合规代码确认步骤详解" >}}
+![图 6. 开源合规代码确认步骤详解](006tNc79ly1g3uzfnj1lzj327i0kuq71.jpg)
 
 ## 开源代码溯源
 
 让您的软件提供商参与开源合规中至关重要。软件提供商必须披露其可交付成果中包含的开源代码，并提供包括适用源代码在内的所有通知（notice）。
 
-{{< gallery link="https://ww4.sinaimg.cn/large/006tNc79ly1g3upmcjnl5j31di0ncdjd.jpg" title="图 7. 多源开发模型" >}}
+![图 7. 多源开发模型](006tNc79ly1g3upmcjnl5j31di0ncdjd.jpg)
 
 图 7 描绘了多源开发模型和传入源代码的各种源组合。在此模型下，产品或软件堆栈可以包含专有软件、第三方商业和第三方开源软件的任意组合。例如，除了第三方专有源代码之外，软件组件 A 可以包括专有源代码，而软件组件 B 除了可以包含来自开源项目的源代码之外还可以包括专有源代码。
 
@@ -188,7 +188,7 @@ aliases:
 
 为了减少开源法律顾问收到的问题数量并增加许可和合规流程教育，一些公司选择在几个类别下对其产品中最常用的许可进行分类。图11显示了许可证分类系统的一个简单示例，其中大多数使用的开源许可证分为四类。
 
-{{< gallery link="https://ww3.sinaimg.cn/large/006tNc79ly1g3ur9rfeqaj310c0gkdip.jpg" title="图 8. 开源许可证分类（仅供参考）" >}}
+![图 8. 开源许可证分类（仅供参考）](006tNc79ly1g3ur9rfeqaj310c0gkdip.jpg)
 
 上述许可证类别是对许可证进行分类的简单方法，使开发人员在根据这些许可证集成代码时更容易了解操作过程。下面这个例子是开发人员想要使用在以下许可下的开源软件包的：
 
