@@ -238,7 +238,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 使用Flannel的**vxlan**模式实现每个pod一个IP的方式，会比宿主机直接互联的网络性能损耗30%～40%，符合网上流传的测试结论。而flannel的host-gw模式比起宿主机互连的网络性能损耗大约是10%。
 
-Vxlan会有一个封包解包的过程，所以会对网络性能造成较大的损耗，而host-gw模式是直接使用路由信息，网络损耗小，关于host-gw的架构请访问[Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)。
+Vxlan会有一个封包解包的过程，所以会对网络性能造成较大的损耗，而host-gw模式是直接使用路由信息，网络损耗小。
 
 ## Kubernete的性能测试
 
@@ -390,4 +390,3 @@ Locust模拟10万用户，每秒增长100个。
 - [Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
 - [CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
 - [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
-- [Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

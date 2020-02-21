@@ -13,5 +13,3 @@
 ## 参考
 
 - [Kubernetes 1.15: Extensibility and Continuous Improvement](https://kubernetes.io/blog/2019/06/19/kubernetes-1-15-release-announcement/)
-
-- [Kubernetes 1.15 Changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.15.md)

@@ -35,7 +35,7 @@
 ### 准备
 
 1. 备份kubernetes原先的二进制文件和配置文件。
-2. 下载最新版本的kubernetes二进制包，如1.8.5版本，查看[changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md)，下载二进制包，我们使用的是[kubernetes-server-linux-amd64.tar.gz](https://dl.k8s.io/v1.8.5/kubernetes-server-linux-amd64.tar.gz)，分发到集群的每个节点上。
+2. 下载最新版本的kubernetes二进制包，如1.8.5版本，下载二进制包，我们使用的是[kubernetes-server-linux-amd64.tar.gz](https://dl.k8s.io/v1.8.5/kubernetes-server-linux-amd64.tar.gz)，分发到集群的每个节点上。
 
 ### 升级master节点
 
