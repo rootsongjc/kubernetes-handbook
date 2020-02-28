@@ -34,7 +34,7 @@ spec:
 $ kubectl create -f ./job.yaml
 job "pi" created
 $ pods=$(kubectl get pods --selector=job-name=pi --output=jsonpath={.items..metadata.name})
-$ kubectl logs $pods
+$ kubectl logs $pods -c pi
 3.141592653589793238462643383279502...
 ```
 
