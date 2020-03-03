@@ -78,9 +78,8 @@
 
 ## 社区&读者交流
 
-- **云原生社区**：添加 *jimmysongio* 微信，备注姓名-公司/学校/组织/机构等，并注明加入云原生社区。
-- **知乎专栏**：[云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
-- **与我联系**：<https://jimmysong.io/contact/>
+- [云原生社区](https://jimmysong.io/contact/)：备注姓名-公司/学校/组织/机构等，并注明加入云原生社区。
+- [云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)：知乎专栏
 
 
 ## 云原生出版物
@@ -94,8 +93,8 @@
 
 ## 推荐
 
-- 快速入门学习 Kubernetes，请阅读[极客时间专栏《深入剖析 Kubernetes》](https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg)
-- 学习 Service Mesh，请加入 [ServiceMesher 社区](https://www.servicemesher.com)
+- [极客时间专栏《深入剖析 Kubernetes》](https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg)：快速入门学习 Kubernetes
+- [深入浅出云计算](https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster)：云原生时代给开发者和架构师的云计算指南
 
 ## 支持本书
 

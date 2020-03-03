@@ -13,13 +13,15 @@
 - DevOps：开发与运维之间的协同，上升到一种文化的层次，能够让应用快速的部署和发布
 - 微服务：这是应用开发的一种理念，将单体应用拆分为微服务才能更好的实现云原生，才能独立的部署、扩展和更新
 
-一句话解释什么是云原生应用：云原生应用就是为了在云上运行而开发的应用
+一句话解释什么是云原生应用：云原生应用就是为了在云上运行而开发的应用。
+
+## Kubernetes：云原生操作系统
 
 ![Kubernetes 云原生的操作系统](../images/00704eQkgy1frr4z08j6oj31p20w2n6n.jpg)
 
 要运行这样的应用必须有一个操作系统，就像我们运行PC或手机应用一样，而Kubernetes就是一个这样的操作系统。
 
-我们再来看下操作系统宝库哪些层次。
+我们再来看下操作系统包括哪些层次。
 
 ![操作系统层次](../images/00704eQkgy1frr52hl4eaj31qy15en74.jpg)
 
@@ -157,8 +159,6 @@ Pilot和控制平面是为了运维人员准备的。
 
 Isito在每个上下游服务之间部署一个Envoy，Envoy中有几个基本的服务发现服务，监听器即Envoy要转发的流量端口，Endpoint是要转发的目的地，Cluster是一系列Endpoint用来做负载均衡，Route是定义各种路由规则，每个Envoy进程里可以设置多个Listener。
 
-![Envoy proxy架构图](../images/00704eQkgy1frr5gloob0j31vi18017p.jpg)
+![Envoy proxy架构图](../images/envoy-arch.png)
 
----
-
-本文根据 [Jimmy Song](https://jimmysong.io) 于2018年5月20日在[第四届南京全球技术周](http://njsd-china.org/)上【互联网技术专场】上的题为【云原生应用的下一站】的演讲的部分内容的文字整理而成。
+本文根据 [Jimmy Song](https://jimmysong.io) 于2018年5月20日在[第四届南京全球技术周](https://www.bagevent.com/event/1233659)上【互联网技术专场】上的题为【云原生应用的下一站】的演讲的部分内容的文字整理而成。
