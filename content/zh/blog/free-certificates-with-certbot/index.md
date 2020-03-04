@@ -36,7 +36,7 @@ yum install certbot python2-certbot-nginx
 ```
 下图是在 Certbot 中选择服务器和操作系统的页面。
 
-{{< gallery link="https://ww3.sinaimg.cn/large/006tNc79ly1g4oqftr4fdj31e20u0gn8.jpg" title="CertBot 页面" >}}
+![CertBot 页面](006tNc79ly1g4oqftr4fdj31e20u0gn8.jpg)
 
 执行下面的命令，根据提示会自动配置 nginx。
 
