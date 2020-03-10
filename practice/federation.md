@@ -1,4 +1,10 @@
+
 # 集群联邦
+**Deprecated**
+>
+Federation 的V1版本已经归档不再维护和更新，且官方也不再推荐继续使用。故以下内容仅作为历史存档，如果需要了解更多的Federation资料，请参考：[Kubernetes Federation v2](https://github.com/kubernetes-sigs/federation-v2).
+
+ -----
 
 Kubernetes v1.9声称单集群最多可支持5000个节点和15万个Pod，我相信很少有公司会部署如此庞大的一个单集群，总有很多情况下因为各种各样的原因我们可能会部署多个集群，但是有时候有想将他们统一起来管理，这时候就需要用到集群联邦（Federation）。
 
