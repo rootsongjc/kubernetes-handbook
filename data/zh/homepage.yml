@@ -72,7 +72,7 @@ about:
   enable : true
   title : "关于"
   image : "images/about/about-me-zh.jpg"
-  content : "Jimmy Song（宋净超），云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区联合创始人，讲师，作者，摄影师。"
+  content : "Jimmy Song（宋净超），蚂蚁金服云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区联合创始人，讲师，作者，摄影师。"
   button:
     enable : true
     label : "了解详情"
