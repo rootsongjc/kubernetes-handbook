@@ -216,9 +216,14 @@ URL = "blog"
 weight = 4
 
 [[Languages.zh.menu.main]]
+name = "招聘"
+URL = "job"
+weight = 5
+
+[[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
-weight = 5
+weight = 6
 
 # footer menu
 
