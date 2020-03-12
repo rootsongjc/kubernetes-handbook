@@ -71,7 +71,9 @@ preloader = "images/preloader.gif" # use jpg, png, svg or gif format.
 [params.subscription]
 enable = true
 # mailchimp subsciption
-mailchimp_form_action = "https://jimmysong.us20.list-manage.com/subscribe/post?u=cca519d8764547a389f52c57f&amp;id=e8e9e07dcc"
+#mailchimp_form_action = "https://jimmysong.us20.list-manage.com/subscribe/post?u=cca519d8764547a389f52c57f&amp;id=e8e9e07dcc"
+# Use RSS instead
+mailchimp_form_action = "/blog/index.xml"
 mailchimp_form_name = "b_cca519d8764547a389f52c57f_e8e9e07dcc"
 
 # google map

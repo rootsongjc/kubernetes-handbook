@@ -11,7 +11,7 @@
   translation: Contact Info
 
 - id: subscribe_newsletter
-  translation: Subscribe Newsletter
+  translation: Blogs RSS Feeds
 
 - id: subscribe
   translation: Subscribe
@@ -74,7 +74,7 @@
   translation: More Events
 
 - id: join
-  translation: Join
+  translation: Subscribe
 
 - id: company
   translation: Mine

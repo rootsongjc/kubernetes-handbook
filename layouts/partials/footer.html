@@ -9,12 +9,9 @@
       <div class="row">
         <div class="col-md-9 ml-auto bg-primary py-5 newsletter-block">
           <h3 class="text-white">{{ i18n "subscribe_newsletter" }}</h3>
-          <form action="{{ .mailchimp_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <form action="{{ .mailchimp_form_action | relLangURL }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div class="input-wrapper">
-                <input type="email" class="form-control border-0" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="{{ i18n "yourEmail" }}" required>
-              <button type="submit" value="Subscribe" name="subscribe" class="btn btn-primary">{{ i18n "join" }}</button>
-              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="{{ .mailchimp_form_name }}" tabindex="-1">
+              <button type="submit" value="Subscribe" name="subscribe" class="btn btn-secondary">{{ i18n "join" }}</button>
               </div>
             </div>
           </form>
