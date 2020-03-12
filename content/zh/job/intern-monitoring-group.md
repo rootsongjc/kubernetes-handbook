@@ -1,5 +1,5 @@
 ---
-title: "[实习生] 蚂蚁金服云原生团队智能监控组"
+title: "[实习生招聘] 蚂蚁金服云原生团队智能监控组"
 date: 2020-03-11T11:28:20+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"

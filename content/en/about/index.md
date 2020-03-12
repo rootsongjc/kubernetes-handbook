@@ -48,7 +48,6 @@ Please scan the QR code at the bottom of the website and add Jimmy Song to apply
 #### 2019
 
 - June 24, 2019 | Shanghai | [KubeCon + CloudNativeCon + Open Source Summit Pre-Conference Co-Located Events](https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/) | Producer
-- June 21-23, 2019 | Shenzhen | [GIAC (Global Internet Architecture Conference)](http://giac.msup.com.cn/index.php) | Service Mesh Special Producer
 
 #### 2018
 
