@@ -1,0 +1,8 @@
+{{ if or .Site.Params.gcs_engine_id .Site.Params.algolia_docsearch }}
+<input type="search" class="form-control td-search-input" placeholder="&#xf002 {{ T "ui_search" }}" aria-label="{{ T "ui_search" }}" autocomplete="off">
+{{ else if .Site.Params.offlineSearch }}
+<div id="search-nav-container">
+<input type="search" id="search-input" autocomplete="off" class="form-control td-search-input" placeholder="&#xf002 {{ T "ui_search" }}" autocomplete="on">
+<div id="search-results" class="container"></div>
+</div>
+{{ end }}
