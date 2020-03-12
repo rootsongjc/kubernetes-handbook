@@ -1,5 +1,5 @@
 ---
-title: "[实习生] 蚂蚁金服云原生团队容器与服务组"
+title: "[实习生招聘] 蚂蚁金服云原生团队容器与服务组"
 date: 2020-03-11T11:28:18+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
