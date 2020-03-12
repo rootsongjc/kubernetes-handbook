@@ -4,6 +4,6 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "蚂蚁金服云原生相关职位招聘。"
+description : "蚂蚁金服|阿里巴巴云原生相关职位招聘。"
 type: "notice"
 ---
