@@ -37,9 +37,11 @@
 
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">
+            <!-- hide the home link
             <li class="nav-item">
               <a class="nav-link" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Params.Home }}</a>
             </li>
+              -->
             {{ range .Site.Menus.main }}
             {{ if .HasChildren }}
             <li class="nav-item dropdown">

@@ -27,11 +27,11 @@ Jimmy Song has published several books since 2017, see the [book page](/en/book)
 - [Cloud Native Python - Build cloud native applications with Python and React](/en/book/cloud-native-python/)
 - [Cloud Native Java - Build cloud native applications with Java](/en/book/cloud-native-java)
 
-### Area of focus
+### Focused domains
 
 He mainly focuses on cloud native fields, including containers, microservices, service mesh, serverless and other technologies, and is keen to participate in open source software and open source communities.
 
-### community
+### Community
 
 Jimmy Song is [ServiceMesher](https://www.servicemesher.com/) co-founder of the community, ServiceMesher community by a group with the same values and ideals of volunteers co-sponsored, was established in April 2018.
 
@@ -43,7 +43,7 @@ The ServiceMesher community has hosted multiple meetups across the country since
 
 Please scan the QR code at the bottom of the website and add Jimmy Song to apply to join the ServiceMesher community.
 
-### Participate
+### Participatation
 
 #### 2019
 
