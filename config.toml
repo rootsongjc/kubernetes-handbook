@@ -123,35 +123,30 @@ URL = "book"
 weight = 2
 
 [[menu.main]]
-weight = 3
-name = "More"
-hasChildren = true
-
-  [[menu.main]]
-  parent = "More"
-  name = "Partner"
-  URL = "partner"
-
-  [[menu.main]]
-  parent = "More"
-  name = "Notice"
-  URL = "notice"
-
-  [[menu.main]]
-  parent = "More"
-  name = "Event"
-  URL = "event"
-
-[[menu.main]]
 name = "Blog"
 URL = "blog"
+weight = 3
+
+[[menu.main]]
+[[menu.main]]
+name = "Partner"
+URL = "partner"
 weight = 4
+
+[[menu.main]]
+name = "Notice"
+URL = "notice"
+weight = 5
+
+[[menu.main]]
+name = "Event"
+URL = "event"
+weight = 6
 
 [[menu.main]]
 name = "Contact"
 URL = "contact"
-weight = 5
-
+weight = 7
 
 # footer menu
 
@@ -170,6 +165,10 @@ URL = "/notice"
 [[menu.footer]]
 name = "Awesome Cloud Native"
 URL = "/awesome-cloud-native"
+
+[[menu.footer]]
+name = "MosnProxy"
+URL = "https://mosn.io"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -193,54 +192,50 @@ URL = "book"
 weight = 2
 
 [[Languages.zh.menu.main]]
-weight = 3
-name = "更多"
-hasChildren = true
-
-  [[Languages.zh.menu.main]]
-  parent = "更多"
-  name = "伙伴"
-  URL = "partner"
-
-  [[Languages.zh.menu.main]]
-  parent = "更多"
-  name = "通知"
-  URL = "notice"
-
-  [[Languages.zh.menu.main]]
-  parent = "更多"
-  name = "活动"
-  URL = "event"
-
-[[Languages.zh.menu.main]]
 name = "博客"
 URL = "blog"
+weight = 3
+
+[[Languages.zh.menu.main]]
+name = "伙伴"
+URL = "partner"
 weight = 4
+
+[[Languages.zh.menu.main]]
+name = "通知"
+URL = "notice"
+weight = 5
+
+[[Languages.zh.menu.main]]
+name = "活动"
+URL = "event"
+weight = 6
 
 [[Languages.zh.menu.main]]
 name = "招聘"
 URL = "job"
-weight = 5
+weight = 7
 
 [[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
-weight = 6
+weight = 8
 
 # footer menu
 
 [[Languages.zh.menu.footer]]
-name = "伙伴"
-URL = "partner"
-
-[[Languages.zh.menu.footer]]
-name = "通知"
-URL = "notice"
-
-[[Languages.zh.menu.footer]]
-name = "活动"
-URL = "event"
-
-[[Languages.zh.menu.footer]]
 name = "Awesome Cloud Native"
 URL = "/awesome-cloud-native"
+
+[[Languages.zh.menu.footer]]
+name = "云原生网络代理 MOSN"
+URL = "https://mosn.io"
+
+[[Languages.zh.menu.footer]]
+name = "金融级云原生架构 SOFAStack"
+URL = "https://www.sofastack.tech"
+
+[[Languages.zh.menu.footer]]
+name = "ServiceMesher 社区"
+URL = "https://www.servicemesher.com"
+
