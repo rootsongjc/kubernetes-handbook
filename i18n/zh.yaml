@@ -156,3 +156,6 @@
 
 - id: blog
   translation: "博客"
+
+- id: website_search
+  translation: "站内搜索"
