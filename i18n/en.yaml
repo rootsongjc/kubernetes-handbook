@@ -89,7 +89,7 @@
   translation: new notice
 
 - id: wechat
-  translation: wechat
+  translation: Twitter
 
 - id: email
   translation: email
@@ -153,3 +153,6 @@
 
 - id: blog
   translation: "Blog"
+
+- id: website_search
+  translation: "In-site Search"

@@ -101,6 +101,12 @@ title = "linkedin"
 icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
 link = "https://linkedin.com/in/jimmysongio"
 
+[[params.social]]
+title = "Search"
+icon = "ti-search" # themify icon : https://themify.me/themify-icons
+link = "/search"
+
+
 
 ################################### English language #####################################
 [Languages.en]

@@ -34,6 +34,7 @@
             <li class="mb-4">{{ i18n "addWechat" }}</li>
             <li class="mb=4"><img src="{{ .Site.Params.wechatCode }}" width="128px"></li>
             -->
+            <li class="mb-4"><a href="{{ "/search" | relLangURL }}" class="ti-search"></i> {{ i18n "website_search" }}</a></li>
             <li class="mb-4"><a class="text-color" href="{{ .link | relLangURL }}">{{ .contact }}</a></li>
             <li class="mb=4"><img src="{{ .image | relURL }}" width="128px"></li>
             {{ end }}
@@ -112,8 +113,6 @@
       </div>
     </div>
   </div>
-
-  <gcse:search queryParameterName="q" linktarget="_parent"></gcse:search>
 </footer>
 <!-- /footer -->
 
