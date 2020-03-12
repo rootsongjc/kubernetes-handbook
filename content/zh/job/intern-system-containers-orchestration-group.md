@@ -1,6 +1,6 @@
 ---
 title: "[实习生招聘] 蚂蚁金服云系统部容器编排组"
-date: 2020-03-12T08、:28:20+08:00
+date: 2020-03-12T08:28:20+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Base 地：北京、杭州"
