@@ -34,7 +34,7 @@ type: "notice"
 
 ### 投递简历
 
-请跳转到[联系](/contact/)页面，填写表格，或者扫描二维码添加微信与我联系，欢迎[邮件简历](mailto:jingchao.sjc@antfin.com)并说明对应的组，我们将尽快安排面试。
+请跳转到[联系](/contact/)页面，填写表格，或者扫描二维码添加微信与我联系，欢迎[邮件简历](mailto:xiaoyun.maoxy@antfin.com)并说明对应的组，我们将尽快安排面试。
 
 ### 关于蚂蚁金服云原生团队
 
