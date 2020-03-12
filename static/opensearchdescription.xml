@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>Search in Jimmy Song Website</ShortName>
+    <Description>Search Jimmy Song website via OpenSearch</Description>
+    <Tags>Jimmy Song</Tags>
+    <Contact>jimmysong@jimmysong.io</Contact>
+    <Url type="text/html" template="https://jimmysong.io/search?q={searchTerms}"/>
+</OpenSearchDescription>

@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 content">
+        <h3>搜索</h3>
+        <!-- Google custom search -->
+        {{ "<!-- Google custom search -->" | safeHTML }}
+        {{ with .Site.Params.gcs_engine_id }}
+        <script type="text/javascript">
+          (function () {
+            var cx = '{{ . }}';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search queryParameterName="q"></gcse:search>
+      </div>
+      {{ end  }}
+    </div>
+  </div>
+</section>
+{{ end }}

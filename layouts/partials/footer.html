@@ -112,6 +112,8 @@
       </div>
     </div>
   </div>
+
+  <gcse:search queryParameterName="q" linktarget="_parent"></gcse:search>
 </footer>
 <!-- /footer -->
 
@@ -151,6 +153,7 @@
 {{ end }}
 
 <!-- baidu analysis -->
+{{ "<!-- Baidu analysis -->" | safeHTML }}
 <meta name="baidu-site-verification" content="g8IYR9SNLF" />
 <!-- Baidu analytics -->
 {{ with .Site.Params.baidu_key }}
