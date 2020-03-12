@@ -8,6 +8,9 @@ summaryLength = "6"
 metaDataFormat = "yaml"
 hasCJKLanguage = true
 DefaultContentLanguage = "zh"
+gcs_engine_id=""
+algolia_docsearch = true
+offlineSearch=false
 # disqus short name
 #disqusShortname = "jimmysong" # get your shortname form here : https://disqus.com
 # disable language

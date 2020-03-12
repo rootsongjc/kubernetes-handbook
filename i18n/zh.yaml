@@ -153,3 +153,6 @@
 
 - id: go_home
   translation: "返回主页"
+
+- id: blog
+  translation: "博客"

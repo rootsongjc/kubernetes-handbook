@@ -150,3 +150,6 @@
 
 - id: go_home
   translation: "Go Home"
+
+- id: blog
+  translation: "Blog"
