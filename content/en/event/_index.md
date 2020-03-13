@@ -1,8 +1,8 @@
 ---
-title: "活动"
+title: "Events"
 draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Jimmy Song 组织的活动信息。"
+description : "Event information organized by Jimmy Song."
 ---
