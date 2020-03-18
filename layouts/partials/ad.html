@@ -1,0 +1,9 @@
+{{ with .Site.Params.ad }}
+<div class="footer section border-bottom">
+     <div class="container">
+         <div style="text-align: center;">
+             <img src="{{ .image | relURL }}" alt="{{ .title }}" title="{{ .title }}" width="100%" style="display: inline-block;">
+         </div>
+     </div>
+ </div>
+ {{ end }}
