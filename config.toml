@@ -77,6 +77,12 @@ enable = true
 mailchimp_form_action = "/blog/index.xml"
 mailchimp_form_name = "b_cca519d8764547a389f52c57f_e8e9e07dcc"
 
+# Ads
+[params.ad]
+enable= true
+image = "images/lago-edu-cloud-native.jpg"
+title = "云原生微服务架构实战精讲-拉钩教育"
+
 # google map
 [params.map]
 enable = false
