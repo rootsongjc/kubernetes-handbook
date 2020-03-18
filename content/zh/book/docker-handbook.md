@@ -18,7 +18,7 @@ pages : "26"
 # book price
 price : "免费"
 # apply url
-apply_url : "docker-handbook"
+apply_url : "/docker-handbook"
 # type
 type: "book"
 ---
