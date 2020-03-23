@@ -17,10 +17,12 @@ KUBELET_POD_INFRA_CONTAINER=--pod-infra-container-image=gcr.io/google_containers
 Pause容器，是可以自己来定义，官方使用的`gcr.io/google_containers/pause-amd64:3.0`容器的代码见[Github](https://github.com/kubernetes/kubernetes/tree/master/build/pause)，使用C语言编写。
 
 ## Pause容器特点
+
 - 镜像非常小，目前在700KB左右
 - 永远处于Pause(暂停)状态
 
 ## Pause容器背景
+
 像 Pod 这样一个东西，本身是一个逻辑概念。那在机器上，它究竟是怎么实现的呢？这就是我们要解释的一个问题。
 
 既然说 Pod 要解决这个问题，核心就在于如何让一个 Pod 里的多个容器之间最高效的共享某些资源和数据。
@@ -32,6 +34,7 @@ Pause容器，是可以自己来定义，官方使用的`gcr.io/google_container
 Pause容器就是为解决Pod中的网络问题而生的。
 
 ## Pause容器实现
+
 Pod 里的多个容器怎么去共享网络？下面是个例子：
 
 比如说现在有一个 Pod，其中包含了一个容器 A 和一个容器 B，它们两个就要共享 Network Namespace。在 Kubernetes 里的解法是这样的：它会在每个 Pod 里，额外起一个 Infra container 小容器来共享整个 Pod 的 Network Namespace。
