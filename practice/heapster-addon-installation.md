@@ -2,11 +2,7 @@
 
 ## 准备镜像
 
-官方镜像保存在 gcr.io 中需要翻墙才能下载，为了方便大家使用，我下载后放到了[时速云](http://www.tenxcloud.com)中，为公有镜像供大家下载。
-
-- index.tenxcloud.com/jimmy/heapster-amd64:v1.3.0-beta.1
-- index.tenxcloud.com/jimmy/heapster-influxdb-amd64:v1.1.1
-- index.tenxcloud.com/jimmy/heapster-grafana-amd64:v4.0.2
+官方镜像保存在 gcr.io 中需要翻墙才能下载，请自行拷贝到私有仓库。
 
 ## 准备YAML文件
 
@@ -66,7 +62,7 @@ influxdb 官方建议使用命令行或 HTTP API 接口来查询数据库，从 
 
 开启镜像中 admin UI的办法如下：先导出镜像中的 influxdb 配置文件，开启 admin 插件后，再将配置文件内容写入 ConfigMap，最后挂载到镜像中，达到覆盖原始配置的目的：
 
-注意：manifests 目录已经提供了 [修改后的 ConfigMap 定义文件](https://github.com/opsnull/follow-me-install-kubernetes-cluster/blob/master/manifests/heapster/influxdb-cm.yaml)
+注意：manifests 目录已经提供了修改后的 ConfigMap 定义文件。
 
 ``` bash
 $ # 导出镜像中的 influxdb 配置文件

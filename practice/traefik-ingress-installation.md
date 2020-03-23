@@ -2,7 +2,7 @@
 
 ## Ingress简介
 
-如果你还不了解，ingress是什么，可以先看下我翻译的Kubernetes官网上ingress的介绍[Kubernetes Ingress解析](http://rootsongjc.github.io/blogs/kubernetes-ingress-resource/)。
+如果你还不了解，ingress是什么，可以先看下我翻译的Kubernetes官网上ingress的介绍[Kubernetes Ingress解析](https://jimmysong.io/posts/kubernetes-ingress-resource/)。
 
 **理解Ingress**
 
@@ -244,6 +244,4 @@ Traefik会解析http请求header里的Host参数将流量转发给Ingress配置�
 
 ## 参考
 
-- [Traefik-kubernetes 初试](http://www.colabug.com/thread-1703745-1-1.html)
 - [Traefik简介](http://www.tuicool.com/articles/ZnuEfay)
-- [Guestbook example](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook)

@@ -4,7 +4,7 @@
 
 ## ConfigMap概览
 
-**ConfigMap API**资源用来保存**key-value pair**配置数据，这个数据可以在**pods**里使用，或者被用来为像**controller**一样的系统组件存储配置数据。虽然ConfigMap跟[Secrets](https://kubernetes.io/docs/user-guide/secrets/)类似，但是ConfigMap更方便的处理不含敏感信息的字符串。 注意：ConfigMaps不是属性配置文件的替代品。ConfigMaps只是作为多个properties文件的引用。你可以把它理解为Linux系统中的`/etc`目录，专门用来存储配置文件的目录。下面举个例子，使用ConfigMap配置来创建Kuberntes Volumes，ConfigMap中的每个data项都会成为一个新文件。
+**ConfigMap API**资源用来保存**key-value pair**配置数据，这个数据可以在**pods**里使用，或者被用来为像**controller**一样的系统组件存储配置数据。虽然ConfigMap跟[Secrets](https://kubernetes.io/docs/user-guide/secrets/)类似，但是ConfigMap更方便的处理不含敏感信息的字符串。 注意：ConfigMaps不是属性配置文件的替代品。ConfigMaps只是作为多个properties文件的引用。你可以把它理解为Linux系统中的`/etc`目录，专门用来存储配置文件的目录。下面举个例子，使用ConfigMap配置来创建Kubernetes Volumes，ConfigMap中的每个data项都会成为一个新文件。
 
 ```yaml
 kind: ConfigMap
@@ -54,7 +54,7 @@ kubectl create configmap
 
 ### 使用目录创建
 
-比如我们已经有个了包含一些配置文件，其中包含了我们想要设置的ConfigMap的值：
+比如我们已经有了一些配置文件，其中包含了我们想要设置的ConfigMap的值：
 
 ```bash
 $ ls docs/user-guide/configmap/kubectl/

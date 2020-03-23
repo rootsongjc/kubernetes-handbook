@@ -24,7 +24,7 @@
 
 我们在本地环境，使用docker-compose，按照[Drone官方安装文档](http://docs.drone.io/installation/)安装配置Drone。
 
-我们将代码托管在Github上，需要Drone可以持续集成和发布Github的代码，因此需要修改`docker-compoe.yaml`文件中的GitHub配置。
+我们将代码托管在GitHub上，需要Drone可以持续集成和发布GitHub的代码，因此需要修改`docker-compose.yaml`文件中的GitHub配置。
 
 ```yaml
 version: '2'

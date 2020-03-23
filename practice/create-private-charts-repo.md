@@ -65,15 +65,13 @@ Chart 仓库（repository）是一个用来托管`index.yaml`文件和打包好�
 
 因为chart仓库只是一个HTTP服务，通过HTTP GET获取YAML文件和chart的压缩包，所以可以将这些文件存储在web服务器中，例如GCS、Amazon S3、GitHub Pages等。
 
-关于chart仓库的更多信息请参考[Helm chart文档](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md)。
+关于chart仓库的更多信息请参考Helm chart文档。
 
 ## 使用GitHub pages托管charts
 
 我们在上文中说到，chart可以使用GitHub pages做存储，接下来我们将会把之前够够构建的chart上传到GitHub pages并在helm中新增一个repo。
 
 ## 构建Monocular UI
-
-参考 [Monocular UI](Monocular UI) 构建UI。
 
 克隆项目到本地
 
@@ -135,7 +133,6 @@ $ helm install monocular/monocular
 ## 参考
 
 - [Monocular UI](https://github.com/kubernetes-helm/monocular)
-- [Helm Chart - GitHub](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
 - [简化Kubernetes应用部署工具-Helm之应用部署](https://www.kubernetes.org.cn/2706.html)
 - [Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
 - [Using a private github repo as helm chart repo (https access)](https://medium.com/@kavehmz/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c)

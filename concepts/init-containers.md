@@ -1,8 +1,8 @@
 # Init 容器
 
-该特性在 1.6 版本已经推出 beta 版本。Init 容器可以在 PodSpec 中同应用程序的 `containers` 数组一起来指定。 beta 注解的值将仍需保留，并覆盖 PodSpec 字段值。
+该特性在自 Kubernetes 1.6 版本推出 beta 版本。Init 容器可以在 PodSpec 中同应用程序的 `containers` 数组一起来指定。此前 beta 注解的值仍将保留，并覆盖 PodSpec 字段值。
 
-本文讲解 Init 容器的基本概念，它是一种专用的容器，在应用程序容器启动之前运行，并包括一些应用镜像中不存在的实用工具和安装脚本。
+本文讲解 Init 容器的基本概念，这是一种专用的容器，在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
 
 ## 理解 Init 容器
 
@@ -15,13 +15,13 @@ Init 容器与普通的容器非常像，除了如下两点：
 
 如果 Pod 的 Init 容器失败，Kubernetes 会不断地重启该 Pod，直到 Init 容器成功为止。然而，如果 Pod 对应的 `restartPolicy` 为 Never，它不会重新启动。
 
-指定容器为 Init 容器，在 PodSpec 中添加 `initContainers` 字段，以 [v1.Container](https://kubernetes.io/docs/api-reference/v1.6/#container-v1-core) 类型对象的 JSON 数组的形式，还有 app 的 `containers` 数组。 Init 容器的状态在 `status.initContainerStatuses` 字段中以容器状态数组的格式返回（类似 `status.containerStatuses` 字段）。
+指定容器为 Init 容器，在 PodSpec 中添加 `initContainers` 字段，以 v1.Container 类型对象的 JSON 数组的形式，还有 app 的 `containers` 数组。 Init 容器的状态在 `status.initContainerStatuses` 字段中以容器状态数组的格式返回（类似 `status.containerStatuses` 字段）。
 
 ### 与普通容器的不同之处
 
 Init 容器支持应用容器的全部字段和特性，包括资源限制、数据卷和安全设置。 然而，Init 容器对资源请求和限制的处理稍有不同，在下面 [资源](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#resources) 处有说明。 而且 Init 容器不支持 Readiness Probe，因为它们必须在 Pod 就绪之前运行完成。
 
-如果为一个 Pod 指定了多个 Init 容器，那些容器会按顺序一次运行一个。 每个 Init 容器必须运行成功，下一个才能够运行。 当所有的 Init 容器运行完成时，Kubernetes 初始化 Pod 并像平常一样运行应用容器。
+如果为一个 Pod 指定了多个 Init 容器，那些容器会按顺序一次运行一个。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 Pod 和运行应用容器。
 
 ## Init 容器能做什么？
 
@@ -35,20 +35,18 @@ Init 容器支持应用容器的全部字段和特性，包括资源限制、数
 
 ### 示例
 
-下面是一些如何使用 Init 容器的想法：
+下面列举了 Init 容器的一些用途：
 
 - 等待一个 Service 创建完成，通过类似如下 shell 命令：
 
-  ```
-    for i in {1..100}; do sleep 1; if dig myservice; then exit 0; fi; exit 1
-
+  ```bash
+  for i in {1..100}; do sleep 1; if dig myservice; then exit 0; fi; exit 1
   ```
 
 - 将 Pod 注册到远程服务器，通过在命令中调用 API，类似如下：
 
-  ```
-    curl -X POST http://$MANAGEMENT_SERVICE_HOST:$MANAGEMENT_SERVICE_PORT/register -d 'instance=$(<POD_NAME>)&ip=$(<POD_IP>)'
-
+  ```bash
+  curl -X POST http://$MANAGEMENT_SERVICE_HOST:$MANAGEMENT_SERVICE_PORT/register -d 'instance=$(<POD_NAME>)&ip=$(<POD_IP>)'
   ```
 
 - 在启动应用容器之前等一段时间，使用类似 `sleep 60` 的命令。
@@ -57,7 +55,7 @@ Init 容器支持应用容器的全部字段和特性，包括资源限制、数
 
 - 将配置值放到配置文件中，运行模板工具为主应用容器动态地生成配置文件。例如，在配置文件中存放 POD_IP 值，并使用 Jinja 生成主应用配置文件。
 
-更多详细用法示例，可以在 [StatefulSet 文档](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) 和 [生产环境 Pod 指南](https://kubernetes.io/docs/user-guide/production-pods.md#handling-initialization) 中找到。
+更多详细用法示例，可以在 [StatefulSet 文档](https://kubernetes.io/docs/concepts/abstractions/controllers/statefulsets/) 和 [生产环境 Pod 指南](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) 中找到。
 
 ### 使用 Init 容器
 
@@ -113,9 +111,11 @@ spec:
     command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
 ```
 
-1.5 版本的语法在 1.6 版本仍然可以使用，但是我们推荐使用 1.6 版本的新语法。 在 Kubernetes 1.6 版本中，Init 容器在 API 中新建了一个字段。 虽然期望使用 beta 版本的 annotation，但在未来发行版将会被废弃掉。
+> **注意：版本兼容性问题**
+>
+> 1.5 版本的语法在 1.6 和 1.7 版本中仍然可以使用，但是我们推荐使用 1.6 版本的新语法。Kubernetes 1.8 以后的版本只支持新语法。在 Kubernetes 1.6 版本中，Init 容器在 API 中新建了一个字段。 虽然期望使用 beta 版本的 annotation，但在未来发行版将会被废弃掉。
 
-下面的 yaml 文件展示了 `mydb` 和 `myservice` 两个 Service：
+下面的 YAML 文件展示了 `mydb` 和 `myservice` 两个 Service：
 
 ```yaml
 kind: Service
@@ -186,7 +186,7 @@ $ kubectl logs myapp-pod -c init-mydb      # Inspect the second init container
 
 一旦我们启动了 `mydb` 和 `myservice` 这两个 Service，我们能够看到 Init 容器完成，并且 `myapp-pod` 被创建：
 
-```Bash
+```bash
 $ kubectl create -f services.yaml
 service "myservice" created
 service "mydb" created
@@ -199,17 +199,17 @@ myapp-pod   1/1       Running   0          9m
 
 ## 具体行为
 
-在 Pod 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。 每个容器必须在下一个容器启动之前成功退出。 如果由于运行时或失败退出，导致容器启动失败，它会根据 Pod 的 `restartPolicy` 指定的策略进行重试。 然而，如果 Pod 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
+在 Pod 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
 
-在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。 Init 容器的端口将不会在 Service 中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将条件 `Initializing` 设置为 true。
+在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service 中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。
 
 如果 Pod [重启](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/#pod-restart-reasons)，所有 Init 容器必须重新执行。
 
-对 Init 容器 spec 的修改，被限制在容器 image 字段中。 更改 Init 容器的 image 字段，等价于重启该 Pod。
+对 Init 容器 spec 的修改被限制在容器 image 字段，修改其他字段都不会生效。更改 Init 容器的 image 字段，等价于重启该 Pod。
 
-因为 Init 容器可能会被重启、重试或者重新执行，所以 Init 容器的代码应该是幂等的。 特别地，被写到 `EmptyDirs` 中文件的代码，应该对输出文件可能已经存在做好准备。
+因为 Init 容器可能会被重启、重试或者重新执行，所以 Init 容器的代码应该是幂等的。特别地当写到 `EmptyDirs` 文件中的代码，应该对输出文件可能已经存在做好准备。
 
-Init 容器具有应用容器的所有字段。 除了 `readinessProbe`，因为 Init 容器无法定义不同于完成（completion）的就绪（readiness）的之外的其他状态。 这会在验证过程中强制执行。
+Init 容器具有应用容器的所有字段。除了 `readinessProbe`，因为 Init 容器无法定义不同于完成（completion）的就绪（readiness）之外的其他状态。这会在验证过程中强制执行。
 
 在 Pod 上使用 `activeDeadlineSeconds`，在容器上使用 `livenessProbe`，这样能够避免 Init 容器一直失败。 这就为 Init 容器活跃设置了一个期限。
 
@@ -229,11 +229,11 @@ Init 容器具有应用容器的所有字段。 除了 `readinessProbe`，因为
 
 - Pod 的 *有效 QoS 层*，是 Init 容器和应用容器相同的 QoS 层。
 
-基于有效 Pod 请求和限制来应用配额和限制。 Pod 级别的 cgroups 是基于有效 Pod 请求和限制，和调度器相同。
+基于有效 Pod 请求和限制来应用配额和限制。Pod 级别的 cgroups 是基于有效 Pod 请求和限制，和调度器相同。
 
 ### Pod 重启的原因
 
-Pod 能够重启，会导致 Init 容器重新执行，主要有如下几个原因：
+Pod 重启，会导致 Init 容器重新执行，主要有如下几个原因：
 
 - 用户更新 PodSpec 导致 Init 容器镜像发生改变。应用容器镜像的变更只会重启应用容器。
 - Pod 基础设施容器被重启。这不多见，但某些具有 root 权限可访问 Node 的人可能会这样做。
@@ -241,8 +241,12 @@ Pod 能够重启，会导致 Init 容器重新执行，主要有如下几个原�
 
 ## 支持与兼容性
 
-Apiserver 版本为 1.6 或更高版本的集群，通过使用 `spec.initContainers` 字段来支持 Init 容器。 之前的版本可以使用 alpha 和 beta 注解支持 Init 容器。 `spec.initContainers` 字段也被加入到 alpha 和 beta 注解中，所以 Kubernetes 1.3.0 版本或更高版本可以执行 Init 容器，并且 1.6 版本的 apiserver 能够安全地回退到 1.5.x 版本，而不会使存在的已创建 Pod 失去 Init 容器的功能。
+API Server 版本为 1.6 或更高版本的集群，通过使用 `spec.initContainers` 字段来支持 Init 容器。之前的版本可以使用 alpha 和 beta 注解支持 Init 容器。`spec.initContainers` 字段也被加入到 alpha 和 beta 注解中，所以 Kubernetes 1.3.0 版本或更高版本可以执行 Init 容器，并且 1.6 版本的 API Server 能够安全地回退到 1.5.x 版本，而不会使已创建的 Pod 失去 Init 容器的功能。
 
-原文地址：https://k8smeetup.github.io/docs/concepts/workloads/pods/init-containers/
+---
 
-译者：[shirdrn](https://github.com/shirdrn)
+> 原文地址：https://k8smeetup.github.io/docs/concepts/workloads/pods/init-containers/
+>
+> 译者：[shirdrn](https://github.com/shirdrn)
+>
+> 校对：[Jimmy Song](https://github.com/rootsongjc)

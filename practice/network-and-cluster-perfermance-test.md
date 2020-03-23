@@ -29,7 +29,7 @@ Ingress Host：traefik.sample-webapp.io
 
 通过向`sample-webapp`发送curl请求获取响应时间，直接curl后的结果为：
 
-```Bash
+```bash
 $ curl "http://10.254.149.31:8000/"
 Welcome to the "Distributed Load Testing Using Kubernetes" sample web app
 ```
@@ -238,7 +238,7 @@ iperf -c ${server-ip} -p 12345 -i 1 -t 10 -w 20K
 
 使用Flannel的**vxlan**模式实现每个pod一个IP的方式，会比宿主机直接互联的网络性能损耗30%～40%，符合网上流传的测试结论。而flannel的host-gw模式比起宿主机互连的网络性能损耗大约是10%。
 
-Vxlan会有一个封包解包的过程，所以会对网络性能造成较大的损耗，而host-gw模式是直接使用路由信息，网络损耗小，关于host-gw的架构请访问[Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)。
+Vxlan会有一个封包解包的过程，所以会对网络性能造成较大的损耗，而host-gw模式是直接使用路由信息，网络损耗小。
 
 ## Kubernete的性能测试
 
@@ -355,13 +355,6 @@ Test Suite Passed
 - gcr.io/google_containers/pause-amd64:3.0
 - gcr.io/google_containers/serve_hostname:v1.4
 
-时速云镜像地址：
-
-- index.tenxcloud.com/jimmy/pause-amd64:3.0
-- index.tenxcloud.com/jimmy/serve_hostname:v1.4
-
-将镜像pull到本地后重新打tag。
-
 ## Locust测试
 
 请求统计
@@ -394,10 +387,6 @@ Locust模拟10万用户，每秒增长100个。
 
 - [基于 Python 的性能测试工具 locust (与 LR 的简单对比)](https://testerhome.com/topics/4839)
 - [Locust docs](http://docs.locust.io/en/latest/what-is-locust.html)
-- [python用户负载测试工具：locust](http://timd.cn/2015/09/17/locust/)
 - [Kubernetes集群性能测试](https://supereagle.github.io/2017/03/09/kubemark/)
 - [CoreOS是如何将Kubernetes的性能提高10倍的](http://dockone.io/article/1050)
-- [Kubernetes 1.3 的性能和弹性 —— 2000 节点，60,0000 Pod 的集群](http://blog.fleeto.us/translation/updates-performance-and-scalability-kubernetes-13-2000-node-60000-pod-clusters)
 - [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
-- [Kubemark User Guide](https://github.com/kubernetes/community/blob/master/contributors/devel/kubemark-guide.md)
-- [Flannel host-gw architecture](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

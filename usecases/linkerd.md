@@ -2,7 +2,7 @@
 
 > **注意**：Linkerd最初版本是使用Scala开发的，现在已开始开发Linkerd2，使用Go语言开发，该公司的另一款轻量级Service Mesh conduit也寿终正寝，合并入Linkerd 2.0，详见[Conduit 0.5发布—以及R.I.P. Conduit](http://www.servicemesher.com/blog/rip-conduit/)。
 
-Linkerd是一个用于云原生应用的开源、可扩展的service mesh（一般翻译成服务网格，还有一种说法叫”服务啮合层“，见[Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)）。
+Linkerd是一个用于云原生应用的开源、可扩展的service mesh（服务网格）。
 
 ## Linkerd是什么
 
@@ -120,4 +120,3 @@ Linkerd 自己最令人称道的是它在每台主机上只安装一个 Pod，�
 - [Squeezing blood from a stone: small-memory JVM techniques for microservice sidecars](https://buoyant.io/2016/06/17/small-memory-jvm-techniques-for-microservice-sidecars/)
 - [Buoyant发布服务网格Linkerd的1.0版本](http://www.infoq.com/cn/news/2017/05/buoyant-release-ver-1-of-linkerd)
 - [Linkerd documentation](https://linkerd.io/documentation/)
-- [Istio：用于微服务的服务啮合层](http://www.infoq.com/cn/news/2017/05/istio)

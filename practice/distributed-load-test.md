@@ -12,7 +12,7 @@
 
 本文中使用的镜像、kubernetes应用的yaml配置来自我的另一个项目，请参考：https://github.com/rootsongjc/distributed-load-testing-using-kubernetes
 
- `sample-webapp` 目录下包含一个简单的web测试应用。我们将其构建为docker镜像，在kubernetes中运行。你可以自己构建，也可以直接用这个我构建好的镜像`index.tenxcloud.com/jimmy/k8s-sample-webapp:latest`。
+ `sample-webapp` 目录下包含一个简单的web测试应用。我们将其构建为docker镜像，在kubernetes中运行。
 
 在kubernetes上部署sample-webapp。
 
@@ -27,21 +27,25 @@ $ kubectl create -f sample-webapp-service.yaml
 
 `locust-master`和`locust-work`使用同样的docker镜像，修改cotnroller中`spec.template.spec.containers.env`字段中的value为你`sample-webapp` service的名字。
 
-    - name: TARGET_HOST
-      value: http://sample-webapp:8000
+```yaml
+- name: TARGET_HOST
+  value: http://sample-webapp:8000
+```
 
 ### 创建Controller Docker镜像（可选）
 
 `locust-master`和`locust-work` controller使用的都是`locust-tasks` docker镜像。你可以直接下载`gcr.io/cloud-solutions-images/locust-tasks`，也可以自己编译。自己编译大概要花几分钟时间，镜像大小为820M。
 
-    $ docker build -t index.tenxcloud.com/jimmy/locust-tasks:latest .
-    $ docker push index.tenxcloud.com/jimmy/locust-tasks:latest
-
-**注意**：我使用的是时速云的镜像仓库。
+```bash
+$ docker build -t jimmysong/locust-tasks:latest .
+$ docker push jimmysong/locust-tasks:latest
+```
 
 每个controller的yaml的`spec.template.spec.containers.image` 字段指定的是我的镜像：
 
-    image: index.tenxcloud.com/jimmy/locust-tasks:latest
+```ini
+image: jimmysong/locust-tasks:latest
+```
 ### 部署locust-master
 
 ```bash
@@ -67,7 +71,7 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 ### 配置Traefik
 
-参考[kubernetes的traefik ingress安装](http://rootsongjc.github.io/blogs/traefik-ingress-installation/)，在`ingress.yaml`中加入如下配置：
+参考[kubernetes的traefik ingress安装](https://jimmysong.io/posts/traefik-ingress-installation/)，在`ingress.yaml`中加入如下配置：
 
 ```yaml
   - host: traefik.locust.io

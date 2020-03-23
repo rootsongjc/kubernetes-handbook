@@ -12,16 +12,6 @@
 -  harbor-001.jimmysong.io/library/dockermuenster-caddy:0.9.3
 -  harbor-001.jimmysong.io/library/prom-node-exporter:v0.14.0
 
-同时备份到时速云：
-
-- index.tenxcloud.com/jimmy/prometheus-alertmanager:v0.7.1
-- index.tenxcloud.com/jimmy/grafana:4.2.0
-- index.tenxcloud.com/jimmy/giantswarm-tiny-tools:latest
-- index.tenxcloud.com/jimmy/prom-prometheus:v1.7.0
-- index.tenxcloud.com/jimmy/kube-state-metrics:v1.0.1
-- index.tenxcloud.com/jimmy/dockermuenster-caddy:0.9.3
-- index.tenxcloud.com/jimmy/prom-node-exporter:v0.14.0
-
 **注**：所有镜像都是从官方镜像仓库下载下。
 
 ## 部署
@@ -112,7 +102,7 @@ kubectl create clusterrolebinding prometheus --clusterrole=cluster-admin --servi
 - *v1beta1.StatefulSet
 - *v2alpha1.CronJob
 
-而在我们使用的 kubernetes 1.6.0 版本的集群中 API 路径跟 `kube-state-metrics` 中不同，无法 list 以上三种资源对象的资源。详情见：https://github.com/giantswarm/kubernetes-prometheus/issues/77
+而在我们使用的 kubernetes 1.6.0 版本的集群中 API 路径跟 `kube-state-metrics` 中不同，无法 list 以上三种资源对象的资源。
 
 ### 3. Job 中的权限认证问题 
 
@@ -124,10 +114,7 @@ curl -sX GET -H "Authorization:bearer `cat /var/run/secrets/kubernetes.io/servic
 
 不需要指定 csr 文件，只需要 token 即可。
 
-参考 [wait-for-endpoints init-containers fails to load with k8s 1.6.0 #56](https://github.com/giantswarm/kubernetes-prometheus/issues/56)
-
 ## 参考
 
 - [Kubernetes Setup for Prometheus and Grafana](https://github.com/giantswarm/kubernetes-prometheus)
 - [RBAC——基于角色的访问控制](../guide/rbac.md)
-- [wait-for-endpoints init-containers fails to load with k8s 1.6.0 #56](https://github.com/giantswarm/kubernetes-prometheus/issues/56)

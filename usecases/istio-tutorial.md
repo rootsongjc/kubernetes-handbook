@@ -1,8 +1,12 @@
 # Istio 教程
 
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 本文是 Istio 管理 Java 微服务的案例教程，使用的所有工具和软件全部基于开源方案，替换了 [redhat-developer-demos/istio-tutorial](https://github.com/redhat-developer-demos/istio-tutorial) 中的 minishift 环境，使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 替代，沿用了原有的微服务示例，使用 Zipkin 做分布式追踪而不是 Jaeger。
 
 本文中的代码和 YAML 文件见 <https://github.com/rootsongjc/istio-tutorial>。
+
+**注意：本教程基于 Istio 0.7.1，2018年8月1日，Isito 1.0 发布，本教程已过时。**
 
 ## 准备环境
 
@@ -897,7 +901,7 @@ istioctl delete -f istiofiles/recommendation_cb_policy_pool_ejection.yml -n isti
 
 Egress 是用来配置 Istio serivce mesh 中的服务对外部服务的访问策略。
 
-具体配置请参考 [控制 Egress 流量](http://istio.doczh.cn/docs/tasks/traffic-management/egress.html)。
+具体配置请参考控制 Egress 流量。
 
 以下示例还有问题，无法正常工作。
 

@@ -34,11 +34,10 @@ spec:
 $ kubectl create -f ./job.yaml
 job "pi" created
 $ pods=$(kubectl get pods --selector=job-name=pi --output=jsonpath={.items..metadata.name})
-$ kubectl logs $pods
+$ kubectl logs $pods -c pi
 3.141592653589793238462643383279502...
 ```
 
 ## Bare Pods
 
 所谓Bare Pods是指直接用PodSpec来创建的Pod（即不在ReplicaSets或者ReplicationController的管理之下的Pods）。这些Pod在Node重启后不会自动重启，但Job则会创建新的Pod继续任务。所以，推荐使用Job来替代Bare Pods，即便是应用只需要一个Pod。
-

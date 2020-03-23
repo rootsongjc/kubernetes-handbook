@@ -1,6 +1,6 @@
 # Kubernetes与云原生应用概览
 
-几个月前Mesos已经宣布支持Kubernetes，而在2017年10月份的DockerCon EU上，Docker公司宣布官方同时支持Swarm和Kubernetes容器编排，Kubernetes已然成为容器编排调度的标准。
+2017年9月，Mesos宣布支持Kubernetes，而在2017年10月份的DockerCon EU上，Docker公司宣布官方同时支持Swarm和Kubernetes容器编排，Kubernetes已然成为容器编排调度的标准。
 
 作为全书的开头，首先从历史、生态和应用角度介绍一下Kubernetes与云原生应用，深入浅出，高屋建瓴，没有深入到具体细节，主要是为了给初次接触Kubernetes的小白扫盲，具体细节请参考链接。
 
@@ -199,7 +199,7 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 ### 部署Kubernetes集群
 
-使用二进制部署 `kubernetes` 集群的所有组件和插件，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，这样可以帮助我们解系统各组件的交互原理，进而能快速解决实际问题。详见[在CentOS上部署Kubernetes集群](../practice/install-kubernetes-on-centos.md)。
+使用二进制部署 `kubernetes` 集群的所有组件和插件，而不是使用 `kubeadm` 等自动化方式来部署集群，同时开启了集群的TLS安全认证，这样可以帮助我们了解系统各组件的交互原理，进而能快速解决实际问题。详见[在CentOS上部署Kubernetes集群](../practice/install-kubernetes-on-centos.md)。
 
 **集群详情**
 
@@ -267,7 +267,7 @@ Kubernetes在设计之初就充分考虑了针对容器的服务发现与负载�
 Kubernetes是一个多租户的云平台，因此必须对用户的权限加以限制，对用户空间进行隔离。Kubernetes中的隔离主要包括这几种：
 
 * 网络隔离：需要使用网络插件，比如[flannel](https://coreos.com/flannel/), [calico](https://www.projectcalico.org/)。
-* 资源隔离：kubernetes原生支持资源隔离，pod就是资源就是隔离和调度的最小单位，同时使用[namespace](https://jimmysong.io/kubernetes-handbook/concepts/namespace.html)限制用户空间和资源限额。
+* 资源隔离：kubernetes原生支持资源隔离，pod就是资源隔离和调度的最小单位，同时使用[namespace](https://jimmysong.io/kubernetes-handbook/concepts/namespace.html)限制用户空间和资源限额。
 * 身份隔离：使用[RBAC-基于角色的访问控制](https://jimmysong.io/kubernetes-handbook/guide/rbac.html)，多租户的身份认证和权限控制。
 
 ## 如何开发Kubernetes原生应用步骤介绍
@@ -325,11 +325,12 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 步骤说明：
 
 1. 将原有应用拆解为服务
-2. 容器化、制作镜像
-3. 准备应用配置文件
-4. 准备Kubernetes YAML文件
-5. 编写bootstarp脚本
-6. 创建ConfigMaps
+2.  定义服务的接口/API通信方式
+3.  编写启动脚本作为容器的进程入口
+4.  准备应用配置文件
+5.  容器化、制作镜像
+6.  准备Kubernetes YAML文件
+7.  如果有外置配置文件需要创建ConfigMap或Secret存储
 
 详见：[迁移传统应用到Kubernetes步骤详解——以Hadoop YARN为例](https://jimmysong.io/posts/migrating-hadoop-yarn-to-kubernetes/)。
 
@@ -337,7 +338,7 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 Service Mesh现在一般被翻译作服务网格，目前主流的Service Mesh有如下几款：
 
-* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档中文版](http://istio.doczh.cn/)
+* [Istio](https://istio.io)：IBM、Google、Lyft共同开源，详细文档见[Istio官方文档](https://istio.io)
 * [Linkerd](https://linkerd.io)：原Twitter工程师开发，现为[CNCF](https://cncf.io)中的项目之一
 * [Envoy](https://www.envoyproxy.io/)：Lyft开源的，可以在Istio中使用Sidecar模式运行
 * [Conduit](https://conduit.io)：同样由Buoyant开源的轻量级的基于Kubernetes的Service Mesh
@@ -359,7 +360,7 @@ Service Mesh现在一般被翻译作服务网格，目前主流的Service Mesh�
 * [微服务管理框架Service Mesh——Linkerd安装试用笔记](https://jimmysong.io/posts/linkerd-user-guide/)
 * [微服务管理框架Service Mesh——Istio安装试用笔记](https://jimmysong.io/posts/istio-installation/)
 
-更多关于 Service Mesh 的内容请访问 [Service Mesh 中文网](http://www.servicemesh.cn)。
+更多关于 Service Mesh 的内容请访问 [ServiceMesher 社区网站](http://www.servicemesher.com)。
 
 ## 使用案例
 
@@ -386,7 +387,7 @@ Kubernetes作为云原生计算的基本组件之一，开源2年时间以来热
 
 **使用Kibana查看日志**
 
-日志字段中包括了应用的标签、容器名称、主机名称、宿主机名称、IP地址、时间、
+日志字段中包括了应用的标签、容器名称、主机名称、宿主机名称、IP地址、时间。
 
 ![kibana界面](../images/filebeat-docker-test.jpg)
 
@@ -474,5 +475,5 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 
 * [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
 * [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
-* [Cloud Native Python - 将由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
-* [Istio Service Mesh 中文文档](http://istio.doczh.cn/)
+* [Cloud Native Python - 已由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
+* [Istio Service Mesh 中文文档 v1.2](https://archive.istio.io/v1.2/zh/)

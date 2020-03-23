@@ -290,7 +290,7 @@ admin.csr  admin-csr.json  admin-key.pem  admin.pem
 ```
 
 + CN 指定该证书的 User 为 `system:kube-proxy`；
-+ `kube-apiserver` 预定义的 RoleBinding `cluster-admin` 将User `system:kube-proxy` 与 Role `system:node-proxier` 绑定，该 Role 授予了调用 `kube-apiserver` Proxy 相关 API 的权限；
++ `kube-apiserver` 预定义的 RoleBinding `system:node-proxier` 将User `system:kube-proxy` 与 Role `system:node-proxier` 绑定，该 Role 授予了调用 `kube-apiserver` Proxy 相关 API 的权限；
 
 生成 kube-proxy 客户端证书和私钥
 
@@ -302,9 +302,9 @@ kube-proxy.csr  kube-proxy-csr.json  kube-proxy-key.pem  kube-proxy.pem
 
 ## 校验证书
 
-以 kubernetes 证书为例
+以 Kubernetes 证书为例。
 
-### 使用 `opsnssl` 命令
+### 使用 `openssl` 命令
 
 ``` bash
 $ openssl x509  -noout -text -in  kubernetes.pem
@@ -405,7 +405,5 @@ cp *.pem /etc/kubernetes/ssl
 ## 参考
 
 + [Generate self-signed certificates](https://coreos.com/os/docs/latest/generate-self-signed-certificates.html)
-+ [Setting up a Certificate Authority and Creating TLS Certificates](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-certificate-authority.md)
 + [Client Certificates V/s Server Certificates](https://blogs.msdn.microsoft.com/kaushal/2012/02/17/client-certificates-vs-server-certificates/)
-+ [数字证书及 CA 的扫盲介绍](http://blog.jobbole.com/104919/)
 + [TLS bootstrap 引导程序](../guide/tls-bootstrapping.md)

@@ -1,30 +1,36 @@
 BOOK_NAME := kubernetes-handbook
 BOOK_OUTPUT := _book
+image := jimmysong/gitbook-builder:2019-07-31
+docker := docker run -t -i --sig-proxy=true --rm -v $(shell pwd):/gitbook -w /gitbook -p 4000:4000 $(image)
 
 .PHONY: build
 build:
-	gitbook build . $(BOOK_OUTPUT)
+	@$(docker) scripts/build-gitbook.sh
 
-.PHONY: serve
-serve:
-	gitbook serve . $(BOOK_OUTPUT)
-
-.PHONY: epub
-epub:
-	gitbook epub . $(BOOK_NAME).epub
-
-.PHONY: pdf
-pdf:
-	gitbook pdf . $(BOOK_NAME).pdf
-
-.PHONY: mobi
-mobi:
-	gitbook mobi . $(BOOK_NAME).mobi
+.PHONY: lint
+lint:
+	@$(docker) scripts/lint-gitbook.sh
+	htmlproofer --url-ignore "/localhost/,/172.17.8.101/,/172.20.0.113/,/slideshare.net/,/grpc.io/,/kiali.io/,/condiut.io/,/twitter.com/,/facebook.com/,/medium.com/,/google.com/,/jimmysong.io/,/openfaas.com/,/linkerd.io/,/layer5.io/,/thenewstack.io/,/blog.envoyproxy.io/,/blog.openebs.io/,/k8smeetup.github.io/,/blog.heptio.com/,/apigee.com/,/speakerdeck.com/,/download.svcat.sh/,/blog.fabric8.io/,/blog.heptio.com/,/blog.containership.io/,/blog.mobyproject.org/,/blog.spinnaker.io/,/coscale.com/,/zh.wikipedia.org/,/labs.play-with-k8s.com/,/cilium.readthedocs.io/,/azure.microsoft.com/,/storageos.com/,/openid.net/,/prometheus.io/,/coreos.com/,/openwhisk.incubator.apache.org/" $(BOOK_OUTPUT)
 
 .PHONY: install
 install:
-	npm install gitbook-cli -g
-	gitbook install
+	@$(docker) gitbook install
+
+.PHONY: serve
+serve:
+	@$(docker) gitbook serve . $(BOOK_OUTPUT)
+
+.PHONY: epub
+epub:
+	@$(docker) gitbook epub . $(BOOK_NAME).epub
+
+.PHONY: pdf
+pdf:
+	@$(docker) gitbook pdf . $(BOOK_NAME).pdf
+
+.PHONY: mobi
+mobi:
+	@$(docker) gitbook mobi . $(BOOK_NAME).mobi
 
 .PHONY: clean
 clean:

@@ -8,5 +8,5 @@ Kubernetes中的众多资源类型，例如Deployment、DaemonSet、StatefulSet�
 
 考虑以下两种情况：
 
-- 集群中有新增节点，想要让集群中的节点的资源利用率比较均衡一些，想要将一些高负载的节点上的pod驱逐到新增节点上，这是kuberentes的scheduer所不支持的，需要使用如[rescheduler](https://github.com/kubernetes-incubator/descheduler)这样的插件来实现。
-- 想要运行一些大数据应用，设计到资源分片，pod需要与数据分布达到一致均衡，避免个别节点处理大量数据，而其它节点闲置导致整个作业延迟，这时候可以考虑使用[kube-arbitritor](https://github.com/kubernetes-incubator/kube-arbitrator)。
+- 集群中有新增节点，想要让集群中的节点的资源利用率比较均衡一些，想要将一些高负载的节点上的pod驱逐到新增节点上，这是kuberentes的scheduler所不支持的，需要使用如[descheduler](https://github.com/kubernetes-incubator/descheduler)这样的插件来实现。
+- 想要运行一些大数据应用，设计到资源分片，pod需要与数据分布达到一致均衡，避免个别节点处理大量数据，而其它节点闲置导致整个作业延迟，这时候可以考虑使用[kube-batch](https://github.com/kubernetes-incubator/kube-batch)。

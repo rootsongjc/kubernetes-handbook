@@ -2,7 +2,7 @@
 
 > **注意：**PodPreset 资源对象只有 kubernetes 1.8 以上版本才支持。
 
-Preset 就是预设，有时候想要让一批容器在启动的时候就注入一些信息，比如 secret、volume、volume mount 和环境变量，而又不想一个一个的改这些 Pod 的 tmeplate，这时候就可以用到 PodPreset 这个资源对象了。
+Preset 就是预设，有时候想要让一批容器在启动的时候就注入一些信息，比如 secret、volume、volume mount 和环境变量，而又不想一个一个的改这些 Pod 的 template，这时候就可以用到 PodPreset 这个资源对象了。
 
 本页是关于 PodPreset 的概述，该对象用来在 Pod 创建的时候向 Pod 中注入某些特定信息。该信息可以包括 secret、volume、volume mount 和环境变量。
 
@@ -45,7 +45,3 @@ Kubernetes 提供了一个准入控制器（`PodPreset`），当其启用时，P
 ## 更多资料
 
 - [使用 PodPreset 向 Pod 中注入数据](https://kubernetes.io/docs/tasks/inject-data-application/podpreset)
-
-本文为 Kubernetes 官方中文文档，地址：https://kubernetes.io/cn/docs/concepts/workloads/pods/podpreset/
-
-翻译: [rootsongjc](https://github.com/rootsongjc)

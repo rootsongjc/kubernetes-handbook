@@ -59,9 +59,10 @@ listen kube-master
 
 **注意**
 
-- priority决定哪个Master是主，哪个Master是次。数字小的是主，数字大的是次。数字越小优先级越高。
+- priority决定哪个Master是主，哪个Master是次。数字大的是主，数字小的是次。数字越大优先级越高。
 - `virtual_router_id`决定当前VIP的路由号，实际上VIP提供了一个虚拟的路由功能，该VIP在同一个子网内必须是唯一。
 - virtual_ipaddress提供的就是VIP的地址，该地址在子网内必须是空闲未必分配的。
+- `state` 决定初始化时节点的状态, 建议 `priority` 最高的节点设置为 `MASTER`。
 
 ```ini
 # keepalived.cfg sample

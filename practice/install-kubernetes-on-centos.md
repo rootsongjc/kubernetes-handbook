@@ -12,7 +12,7 @@
 
 所以本文档主要适合于那些有一定 kubernetes 基础，想通过一步步部署的方式来学习和了解系统配置、运行原理的人。
 
-**注：本文档中不包括docker和私有镜像仓库的安装，安装说明中使用的镜像来自 Google Cloud Platform，为了方便国内用户下载，我将其克隆并上传到了 [时速云镜像市场](https://hub.tenxcloud.com/search?q=jimmy&source=tenxcloud)，供大家免费下载。**
+**注：本文档中不包括docker和私有镜像仓库的安装，安装说明中使用的镜像来自 Google Cloud Platform，中国大陆用户若无法访问请自行选择其他镜像仓库备份。**
 
 **欲下载最新版本的官方镜像请访问 [Google 云平台容器注册表](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL)。**
 
@@ -26,9 +26,9 @@
 
 ## 集群详情
 
-+ OS：CentOS Linux release 7.3.1611 (Core)  3.10.0-514.16.1.el7.x86_64
++ OS：CentOS Linux release 7.4.1708 (Core) 3.10.0-693.11.6.el7.x86_64
 + Kubernetes 1.6.0+（最低的版本要求是1.6）
-+ Docker  1.12.5（使用yum安装）
++ Docker：建议使用 Docker CE，**请勿使用 docker-1.13.1-84.git07f3374.el7.centos.x86_64 版本**，[查看详情](https://jimmysong.io/posts/docker-exec-bug-on-centos7/)
 + Etcd 3.1.5
 + Flannel 0.7.1 vxlan或者host-gw 网络
 + TLS 认证通信 (所有组件，如 etcd、kubernetes master 和 node)

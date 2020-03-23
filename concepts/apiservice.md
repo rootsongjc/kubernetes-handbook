@@ -98,7 +98,7 @@ v1beta2.apps                             2d
 v2beta1.autoscaling                      2d
 ```
 
-另外查看当前kubernetes集群支持的API版本还可以使用`kubectl api-version`：
+另外查看当前kubernetes集群支持的API版本还可以使用`kubectl api-versions`：
 
 ```bash
 $ kubectl api-versions
@@ -126,9 +126,3 @@ storage.k8s.io/v1
 storage.k8s.io/v1beta1
 v1
 ```
-
-## 参考
-
-[API  Conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#resources)
-
-[Kuberentes1.8 reference doc](https://kubernetes.io/docs/api-reference/v1.8/#apiservicespec-v1beta1-apiregistration)

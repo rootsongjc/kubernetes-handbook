@@ -1,5 +1,5 @@
 # 用Helm托管安装Ceph集群并提供后端存储
-本文翻译自Ceph[官方文档](http://docs.ceph.com/docs/master/start/kube-helm/)，括号内的内容为注释。
+
 ## 安装
  [ceph-helm ](https://github.com/ceph/ceph-helm/)项目可让你在Kubernetes 环境以托管方式部署Ceph . 本文档假定Kubernetes 环境已经可用。
 
@@ -9,11 +9,11 @@
 * ceph-mgr只能运行1个replica
 
 ## 安装并使用Helm
-可以按照此说明[instructions](https://github.com/kubernetes/helm/blob/master/docs/install.md)安装Helm。
+请访问Helm官网的说明安装Helm。
 
 Helm通过从本地读取Kubernetes配置文件来查找Kubernetes集群; 确保文件已下载和且helm客户端可以访问。
 
-Kubernetes群集必须配置并运行Tiller服务器，并且须将本地Helm客户端网络可达。查看[init](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_init.md)的Helm文档获取帮助。要在本地运行Tiller并将Helm连接到它，请运行如下命令（此命令会在Kubernetes集群部署一个tiller实例）：
+Kubernetes群集必须配置并运行Tiller服务器，并且须将本地Helm客户端网络可达。要在本地运行Tiller并将Helm连接到它，请运行如下命令（此命令会在Kubernetes集群部署一个tiller实例）：
 
 ```bash
 $ helm init

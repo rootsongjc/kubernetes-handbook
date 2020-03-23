@@ -15,7 +15,7 @@
 - [Network Policy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) 提升为稳定版本。用户可以通过使用网络插件实现的网络策略来控制哪些Pod之间能够互相通信。
 - [节点授权](https://kubernetes.io/docs/admin/authorization/node/)和准入控制插件是新增加的功能，可以用于限制kubelet可以访问的secret、pod和其它基于节点的对象。
 - [加密的Secret](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)和etcd中的其它资源，现在是alpha版本。
-- [Kubelet TLS bootstrapping](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/)现在支持客户端和服务器端的证书轮换。
+- Kubelet TLS bootstrapping 现在支持客户端和服务器端的证书轮换。
 - 由API server存储的[审计日志](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/)现在更具可定制性和可扩展性，支持事件过滤和webhook。它们还为系统审计提供更丰富的数据。
 
 **有状态负载**
@@ -29,7 +29,7 @@
 **可扩展性**
 
 - 运行时的[API聚合](https://kubernetes.io/docs/concepts/api-extension/apiserver-aggregation/)是此版本中最强大的扩展功能，允许高级用户将Kubernetes风格的预先构建的第三方或用户创建的API添加到其集群中。
-- [容器运行时接口](https://github.com/kubernetes/community/blob/master/contributors/devel/container-runtime-interface.md)（CRI）已经增强，可以使用新的RPC调用从运行时检索容器度量。 [CRI的验证测试](https://github.com/kubernetes/community/blob/master/contributors/devel/cri-validation.md)已经发布，与[containerd](http://containerd.io/)进行了Alpha集成，现在支持基本的生命周期和镜像管理。参考[深入介绍CRI](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)的文章。
+- 容器运行时接口（CRI）已经增强，可以使用新的RPC调用从运行时检索容器度量。 CRI的验证测试已经发布，与[containerd](http://containerd.io/)进行了Alpha集成，现在支持基本的生命周期和镜像管理。参考[深入介绍CRI](http://blog.kubernetes.io/2016/12/container-runtime-interface-cri-in-kubernetes.html)的文章。
 
 **其它功能**
 
@@ -38,10 +38,4 @@
 
 **弃用** 
 
-- 第三方资源（TPR）已被自定义资源定义（Custom Resource Definitions，CRD）取代，后者提供了一个更清晰的API，并解决了TPR测试期间引发的问题和案例。如果您使用TPR测试版功能，则建议您[迁移](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)，因为它将在Kubernetes 1.8中被移除。
-
-以上是Kubernetes1.7中的主要新特性，详细更新文档请查看[Changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.7.md)。
-
-## 参考
-
-[Kuberentes 1.7: Security Hardening, Stateful Application Updates and Extensibility](http://blog.kubernetes.io/2017/06/kubernetes-1.7-security-hardening-stateful-application-extensibility-updates.html)
+- 第三方资源（TPR）已被自定义资源定义（Custom Resource Definitions，CRD）取代，后者提供了一个更清晰的API，并解决了TPR测试期间引发的问题和案例。如果您使用TPR测试版功能，则建议您迁移，因为它将在Kubernetes 1.8中被移除。

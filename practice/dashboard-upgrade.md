@@ -23,18 +23,13 @@ kubectl delete -f dashboard/
 我们使用官方的配置文件来安装，首先下载官方配置：
 
 ```bash
-wget https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
 
-修改其中的两个镜像地址为我们的私有地址。
+注意：其中两个镜像使用 `gcr.io` 仓库，若您无法访问该仓库请换用其他仓库。
 
 - gcr.io/google_containers/kubernetes-dashboard-init-amd64:v1.0.1
 - gcr.io/google_containers/kubernetes-dashboard-amd64:v1.7.1
-
-这个两个镜像可以同时从**时速云**上获取：
-
-- index.tenxcloud.com/jimmy/kubernetes-dashboard-amd64:v1.7.1
-- index.tenxcloud.com/jimmy/kubernetes-dashboard-init-amd64:v1.0.1
 
 将service type设置为`NodePort`，修改后的yaml文件见[kubernetes-dashboard.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/kubernetes-dashboard.yaml)，然后就可以部署新版本的dashboard了。
 
@@ -58,13 +53,13 @@ kubernetes-dashboard   10.254.177.181   <nodes>       443:32324/TCP   49m
 
 登陆之后首先看到的界面是这样的：
 
-![首页](../images/kubernetes-dashboard-1.7.1-default-page.jpg)
+![Dashboard首页](../images/kubernetes-dashboard-1.7.1-default-page.jpg)
 
 这是因为该用户没有对`default`命名空间的访问权限。
 
 修改URL地址中的`namespace`字段为该用户有权限访问的命名空间如brand：<https://172.20.0.113:32324/#!/overview?namespace=brand>：
 
-![用户空间](../images/kubernetes-dashboard-1.7.1-brand.jpg)
+![Dashboard用户空间页面](../images/kubernetes-dashboard-1.7.1-brand.jpg)
 
 **设置界面的语言**
 
@@ -75,8 +70,6 @@ env:
   - name: ACCEPT_LANGUAGE
     value: english
 ```
-
-关于 i18n 的设计文档请参考：<https://github.com/kubernetes/dashboard/blob/master/docs/design/i18n.md>
 
 更简单的方式是，如果您使用的Chrome浏览器，则在浏览器中的配置中设置语言的顺序后刷新网页，dashboard将以您在Chrome中配置的首选语言显示。
 

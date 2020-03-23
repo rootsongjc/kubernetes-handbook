@@ -93,7 +93,7 @@ enabled=1
 
 验证源已经被激活。
 
-```Bash
+```bash
 # yum repolist
 ```
 
@@ -357,7 +357,7 @@ State: Peer in Cluster (Connected)
 
 就像OpenShift中的其他组件一样，StorageClass也简单的用YAML文件定义：
 
-```Bash
+```bash
 # cat crs-storageclass.yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
@@ -533,7 +533,7 @@ sh-4.2$ mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -h $HOSTNAME $MYSQL_DATABASE
 
 这点很方便，所有重要的配置，如MySQL凭据，数据库名称等都是pod模板中的环境变量的一部分，因此可以在pod中作为shell的环境变量。 我们来创建一些数据：
 
-```Bash
+```bash
 mysql> show databases;
 +--------------------+
 | Database           |

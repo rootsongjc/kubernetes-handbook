@@ -265,7 +265,7 @@ chmod +x ./kubectl
 
 如果不是， 请安装[更新版本的helm CLI](https://github.com/kubernetes/helm#install)并运行`helm init --upgrade`。
 
-有关安装的更多详细信息，请参阅 [Helm安装说明](https://github.com/kubernetes/helm/blob/master/docs/install.md)。
+有关安装的更多详细信息，请参阅 Helm安装说明。
 
 #### Tiller 权限
 Tiller是Helm的服务端组件。默认情况下， helm init将Tiller pod安装到kube-system名称空间中，并将Tiller配置为使用default服务帐户（service account）。
@@ -278,9 +278,9 @@ kubectl create clusterrolebinding tiller-cluster-admin \
     --serviceaccount=kube-system:default
 ```
 ### Helm Repository设置
-Service Catalog很容易通过[Helm chart](https://github.com/kubernetes/helm/blob/master/docs/charts.md)安装 。
+Service Catalog很容易通过 Helm chart 安装 。
 
-此chart位于 [chart repository](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md)中。将此repository添加到本地计算机：
+此chart位于 chart repository 中。将此repository添加到本地计算机：
 
 ```bash
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com

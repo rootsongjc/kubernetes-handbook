@@ -1,4 +1,4 @@
-# FaaS-函数即服务
+# FaaS（函数即服务）
 
 FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的一种形式，当前使用最广泛的是AWS的Lambada。
 
@@ -14,6 +14,7 @@ FaaS（Functions as a Service）函数即服务，FaaS是无服务器计算的�
 - [kubeless](https://github.com/kubeless/kubeless) - Kubernetes Native Serverless Framework [http://kubeless.io](http://kubeless.io/)
 - [nuclio](https://github.com/nuclio/nuclio) - High-Performance Serverless event and data processing platform
 - [OpenFaaS](https://github.com/openfaas/faas) - OpenFaaS - Serverless Functions Made Simple for Docker & Kubernetes [https://blog.alexellis.io/introducing-functions-as-a-service/](https://blog.alexellis.io/introducing-functions-as-a-service/) 
-- [OpenWhisk](http://openwhisk.incubator.apache.org/) - Apache OpenWhisk (Incubating) is a [serverless](http://openwhisk.incubator.apache.org/serverless), open source cloud platform that executes functions in response to events at any scale.
+- [OpenWhisk](http://openwhisk.incubator.apache.org/) - Apache OpenWhisk (Incubating) is a serverless, open source cloud platform that executes functions in response to events at any scale.
+- [Knative](https://knative.dev/) - Kubernetes-based platform to deploy and manage modern serverless workloads.
 
 关于整个Cloud Native开源生态，请参考[awesome-cloud-native](https://jimmysong.io/awesome-cloud-native)。

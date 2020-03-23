@@ -4,7 +4,7 @@
 
 ## 概览
 
-每个Kubernetes集群都有一个集群根证书颁发机构（CA）。 集群中的组件通常使用CA来验证API server的证书，由API服务器验证kubelet客户端证书等。为了支持这一点，CA证书包被分发到集群中的每个节点，并作为一个sercret附加分发到默认service account上。 或者，你的workload可以使用此CA建立信任。 你的应用程序可以使用类似于[ACME草案](https://github.com/ietf-wg-acme/acme/)的协议，使用`certificates.k8s.io` API请求证书签名。
+每个Kubernetes集群都有一个集群根证书颁发机构（CA）。 集群中的组件通常使用CA来验证API server的证书，由API服务器验证kubelet客户端证书等。为了支持这一点，CA证书包被分发到集群中的每个节点，并作为一个secret附加分发到默认service account上。 或者，你的workload可以使用此CA建立信任。 你的应用程序可以使用类似于[ACME草案](https://github.com/ietf-wg-acme/acme/)的协议，使用`certificates.k8s.io` API请求证书签名。
 
 ## 集群中的TLS信任
 
@@ -22,7 +22,7 @@
 
 通过运行以下命令生成私钥和证书签名请求（或CSR）：
 
-```Bash
+```bash
 $ cat <<EOF | cfssl genkey - | cfssljson -bare server
 {
   "hosts": [
@@ -42,7 +42,7 @@ EOF
 
  `172.168.0.24` 是 service 的 cluster IP，`my-svc.my-namespace.svc.cluster.local` 是 service 的 DNS 名称， `10.0.34.2` 是 Pod 的 IP， `my-pod.my-namespace.pod.cluster.local` 是pod 的 DNS 名称，你可以看到以下输出：
 
-```
+```ini
 2017/03/21 06:48:17 [INFO] generate received request
 2017/03/21 06:48:17 [INFO] received CSR
 2017/03/21 06:48:17 [INFO] generating key: ecdsa-256
@@ -72,7 +72,7 @@ spec:
 EOF
 ```
 
-请注意，在步骤1中创建的`server.csr`文件是base64编码并存储在`.spec.request`字段中。 我们还要求提供“数字签名”，“密钥加密”和“服务器身份验证”密钥用途的证书。 我们[这里](https://godoc.org/k8s.io/client-go/pkg/apis/certificates/v1beta1#KeyUsage)支持列出的所有关键用途和扩展的关键用途，以便您可以使用相同的API请求客户端证书和其他证书。
+请注意，在步骤1中创建的`server.csr`文件是base64编码并存储在`.spec.request`字段中。 我们还要求提供“数字签名”，“密钥加密”和“服务器身份验证”密钥用途的证书。
 
 在API server中可以看到这些CSR处于pending状态。执行下面的命令你将可以看到：
 

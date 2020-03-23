@@ -7,8 +7,8 @@
 - 定义配置文件的时候，指定最新的稳定API版本（目前是V1）。
 - 在配置文件push到集群之前应该保存在版本控制系统中。这样当需要的时候能够快速回滚，必要的时候也可以快速的创建集群。
 - 使用YAML格式而不是JSON格式的配置文件。在大多数场景下它们都可以作为数据交换格式，但是YAML格式比起JSON更易读和配置。
-- 尽量将相关的对象放在同一个配置文件里。这样比分成多个文件更容易管理。参考[guestbook-all-in-one.yaml](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/all-in-one/guestbook-all-in-one.yaml)文件中的配置（注意，尽管你可以在使用`kubectl`命令时指定配置文件目录，你也可以在配置文件目录下执行`kubectl create`——查看下面的详细信息）。
-- 为了简化和最小化配置，也为了防止错误发生，不要指定不必要的默认配置。例如，省略掉`ReplicationController`的selector和label，如果你希望它们跟`podTemplate`中的label一样的话，因为那些配置默认是`podTemplate`的label产生的。更多信息请查看 [guestbook app](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/) 的yaml文件和 [examples](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/frontend-deployment.yaml) 。
+- 尽量将相关的对象放在同一个配置文件里。这样比分成多个文件更容易管理。
+- 为了简化和最小化配置，也为了防止错误发生，不要指定不必要的默认配置。例如，省略掉`ReplicationController`的selector和label，如果你希望它们跟`podTemplate`中的label一样的话，因为那些配置默认是`podTemplate`的label产生的。
 - 将资源对象的描述放在一个annotation中可以更好的内省。
 
 
@@ -26,7 +26,7 @@
 
 ## 使用Label
 
-- 定义 [labels](https://kubernetes.io/docs/user-guide/labels/) 来指定应用或Deployment的 **semantic attributes** 。例如，不是将label附加到一组pod来显式表示某些服务（例如，`service:myservice`），或者显式地表示管理pod的replication controller（例如，`controller:mycontroller`），附加label应该是标示语义属性的标签， 例如`{app:myapp,tier:frontend,phase:test,deployment:v3}`。 这将允许您选择适合上下文的对象组——例如，所有的”tier:frontend“pod的服务或app是“myapp”的所有“测试”阶段组件。 有关此方法的示例，请参阅[guestbook](https://github.com/kubernetes/kubernetes/tree/master/examples/guestbook/)应用程序。
+- 定义 [labels](https://kubernetes.io/docs/user-guide/labels/) 来指定应用或Deployment的 **semantic attributes** 。例如，不是将label附加到一组pod来显式表示某些服务（例如，`service:myservice`），或者显式地表示管理pod的replication controller（例如，`controller:mycontroller`），附加label应该是标示语义属性的标签， 例如`{app:myapp,tier:frontend,phase:test,deployment:v3}`。 这将允许您选择适合上下文的对象组——例如，所有的”tier:frontend“pod的服务或app是“myapp”的所有“测试”阶段组件。 
 
   可以通过简单地从其service的选择器中省略特定于发行版本的标签，而不是更新服务的选择器来完全匹配replication controller的选择器，来实现跨越多个部署的服务，例如滚动更新。
 

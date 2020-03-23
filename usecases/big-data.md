@@ -1,6 +1,6 @@
 # 大数据
 
-Kubernetes community中已经有了一个[Big data SIG](https://github.com/kubernetes/community/tree/master/sig-big-data)，大家可以通过这个SIG了解kubernetes结合大数据的应用。
+Kubernetes community中已经有了一个Big data SIG，大家可以通过这个SIG了解kubernetes结合大数据的应用。
 
 在Swarm、Mesos、kubernetes这三种流行的容器编排调度架构中，Mesos对于大数据应用支持是最好的，spark原生就是运行在mesos上的，当然也可以容器化运行在kubernetes上。当前在kubernetes上运行大数据应用主要是spark应用。
 
@@ -18,7 +18,7 @@ Spark原生支持standalone、mesos和YARN的调度方式，当前kubernetes社�
 
 ## Spark on Yarn
 
-使用StatefulSet和Headless serverless来实现，请参考 [Spark on Yarn](https://github.com/rootsongjc/kube-yarn/tree/sz-test)
+使用StatefulSet和Headless serverless来实现。
 
 这种模式中kubernetes依然不负责spark应用的调度，而只是将Yarn换了一个部署环境而已。
 
@@ -28,7 +28,7 @@ Spark原生支持standalone、mesos和YARN的调度方式，当前kubernetes社�
 
 ### Spark on Kubernetes
 
-Spark on kubernetes，使用kubernetes作为调度引擎，spark的任务直接调度到node节点上。参考：[运行支持kubernetes原生调度的Spark程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
+Spark on kubernetes，使用kubernetes作为调度引擎，spark的任务直接调度到node节点上。参考：[运行支持kubernetes原生调度的Spark程序](running-spark-with-kubernetes-native-scheduler.md)。
 
 ### 调度方式总结
 

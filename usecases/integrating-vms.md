@@ -1,5 +1,7 @@
 # 集成虚拟机
 
+**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 该示例跨越 Kubernetes 集群和一组虚拟机上部署 Bookinfo 服务，描述如何使用 Istio service mesh 将此基础架构以单一 mesh 的方式操控。
 
 > 注意：本文档还在建设中，并且只在 Google Cloud Platform 上进行过测试。
@@ -12,9 +14,9 @@
 
 ## 开始之前
 
-- 按照 [安装指南](http://istio.doczh.cn/docs/setup/kubernetes/quick-start.md) 上的步骤部署 Istio。
-- 部署 [BookInfo](http://istio.doczh.cn/docs/guides/bookinfo.md) 示例应用程序（在 `bookinfo` namespace 下）。
-- 在 Istio 集群相同的项目下创建名为 `vm-1` 的虚拟机，并 [加入到 Mesh](http://istio.doczh.cn/docs/setup/kubernetes/mesh-expansion.md)。
+- 按照 [安装指南](https://istio.io/docs/setup/) 上的步骤部署 Istio。
+- 部署 BookInfo 示例应用程序（在 `bookinfo` namespace 下）。
+- 在 Istio 集群相同的项目下创建名为 `vm-1` 的虚拟机，并加入到 Mesh。
 
 ## 在虚拟机上运行 mysql
 

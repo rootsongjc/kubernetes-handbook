@@ -2,7 +2,7 @@
 
 CSI 代表[容器存储接口](https://github.com/container-storage-interface/spec/blob/master/spec.md)，CSI 试图建立一个行业标准接口的规范，借助 CSI 容器编排系统（CO）可以将任意存储系统暴露给自己的容器工作负载。有关详细信息，请查看[设计方案](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)。
 
-`csi` 卷类型是一种 in-tree（即跟其它存储插件在同一个代码路径下，随 Kubernetes 的代码同时编译的） 的 CSI 卷插件，用于 Pod 与在同一节点上运行的外部 CSI 卷驱动程序交互。部署 CSI 兼容卷驱动后，用户可以使用 `csi` 作为卷类型来挂载驱动提供的存储。
+`csi` 卷类型是一种 out-tree（即跟其它存储插件在同一个代码路径下，随 Kubernetes 的代码同时编译的） 的 CSI 卷插件，用于 Pod 与在同一节点上运行的外部 CSI 卷驱动程序交互。部署 CSI 兼容卷驱动后，用户可以使用 `csi` 作为卷类型来挂载驱动提供的存储。
 
 CSI 持久化卷支持是在 Kubernetes v1.9 中引入的，作为一个 alpha 特性，必须由集群管理员明确启用。换句话说，集群管理员需要在 apiserver、controller-manager 和 kubelet 组件的 “`--feature-gates =`” 标志中加上 “`CSIPersistentVolume = true`”。
 
@@ -116,9 +116,17 @@ Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范
 
   监听 Kubernetes PersistentVolumeClaim 对象的 sidecar 容器，并触发对 CSI 端点的 CreateVolume 和DeleteVolume 操作；
 
-- [Driver-registrar](https://github.com/kubernetes-csi/driver-registrar)
+- [Driver-registrar](https://github.com/kubernetes-csi/driver-registrar)(DEPRECATED)
 
   使用 Kubelet（将来）注册 CSI 驱动程序的 sidecar 容器，并将 `NodeId` （通过 `GetNodeID` 调用检索到 CSI endpoint）添加到 Kubernetes Node API 对象的 annotation 里面。
+
+- [Cluster Driver Registrar](https://github.com/kubernetes-csi/cluster-driver-registrar)
+
+  创建 CSIDriver 这个集群范围的 CRD 对象。
+
+- [Node Driver Registrar](https://github.com/kubernetes-csi/node-driver-registrar)
+
+  替代 Driver-registrar。
 
 存储供应商完全可以使用这些组件来为其插件构建 Kubernetes Deployment，同时让它们的 CSI 驱动程序完全意识不到 Kubernetes 的存在。
 
@@ -126,5 +134,4 @@ Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范
 
 ## 参考
 
-- [Introducing Container Storage Interface (CSI) Alpha for Kubernetes](http://blog.kubernetes.io/2018/01/introducing-container-storage-interface.html)
 - [Container Storage Interface (CSI)](https://github.com/container-storage-interface/spec/blob/master/spec.md)

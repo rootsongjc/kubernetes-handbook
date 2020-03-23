@@ -92,7 +92,7 @@ networks:
 
 其中 `front-envoy` 是前端（边缘）Envoy 服务，用来做反向代理，它使用的是 `Dockerfile-frontenvoy` 文件来构建镜像的，我们来看下该 `Dockerfile` 的内容。
 
-```dockerfile
+```docker
 FROM envoyproxy/envoy:latest
 
 RUN apt-get update && apt-get -q install -y \
@@ -188,7 +188,7 @@ example_front-envoy_1   /bin/sh -c /usr/local/bin/ ... Up       0.0.0.0:8000->80
 
 ```bash
 $ curl -v localhost:8000/service/1
-* 
+*
 Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 8000 (#0)

@@ -1,17 +1,12 @@
 {
     "title": "Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超)",
-    "description": "Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册，本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关于关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。",
+    "description": "Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册，本书记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。",
     "language": "zh-hans",
     "author": "Jimmy Song（宋净超）",
     "links": {
         "sidebar": {
-            "Jimmy Song": "https://jimmysong.io",
-            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
-            "ServiceMesher": "http://www.servicemesher.com",
-            "Awesome Service Mesh": "http://www.servicemesher.com/awesome-servicemesh",
-            "Cloud Native Go - 基于Go和React的web云原生应用构建指南": "https://jimmysong.io/posts/cloud-native-go",
-            "Cloud Native Python（Python云原生） - 使用Python和React构建云原生应用": "https://jimmysong.io/posts/cloud-native-python",
-            "Cloud Native Java（云原生Java）-  Spring Boot、Spring Cloud与Cloud Foundry弹性系统设计": "https://jimmysong.io/posts/cloud-native-java"
+            "回到主页": "https://jimmysong.io",
+            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native"
         }
     },
     "plugins": [
@@ -29,7 +24,11 @@
         "3-ba",
         "theme-default",
         "-highlight", "prism", "prism-themes",
-        "sitemap-general"
+        "sitemap-general",
+        "lightbox",
+        "ga",
+        "copy-code-button",
+        "alerts"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -51,8 +50,8 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "Copyright © jimmysong.io 2017-2018",
-            "modify_label": "Updated at ",
+            "copyright": "<p><a href=https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster>给开发者和架构师的云计算指南 - 极客时间专栏《深入浅出云计算》</a> | <a href=https://jimmysong.io/contact/>加入云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
         "favicon": {
@@ -69,6 +68,9 @@
         },
         "sitemap-general": {
             "prefix": "https://jimmysong.io/kubernetes-handbook/"
+        },
+        "ga": {
+            "token": "UA-93485976-1"
         }
     }
 }

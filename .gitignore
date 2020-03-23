@@ -18,3 +18,7 @@ _book
 # Github Pages
 deploy.sh
 .DS_Store
+
+# IDEA
+*.iml
+.idea

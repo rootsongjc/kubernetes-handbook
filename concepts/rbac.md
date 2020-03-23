@@ -347,15 +347,15 @@ API Server会创建一组默认的`ClusterRole`和`ClusterRoleBinding`对象。 
 
 ### 其它组件角色
 
-| 默认ClusterRole                            | 默认ClusterRoleBinding                     | 描述                                       |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| **system:auth-delegator**                | None                                     | 允许委托认证和授权检查。 通常由附加API Server用于统一认证和授权。   |
-| **system:heapster**                      | None                                     | [Heapster](https://github.com/kubernetes/heapster)组件的角色。 |
-| **system:kube-aggregator**               | None                                     | [kube-aggregator](https://github.com/kubernetes/kube-aggregator)组件的角色。 |
+| 默认ClusterRole                          | 默认ClusterRoleBinding                                       | 描述                                                         |
+| ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **system:auth-delegator**                | None                                                         | 允许委托认证和授权检查。 通常由附加API Server用于统一认证和授权。 |
+| **system:heapster**                      | None                                                         | [Heapster](https://github.com/kubernetes/heapster)组件的角色。 |
+| **system:kube-aggregator**               | None                                                         | [kube-aggregator](https://github.com/kubernetes/kube-aggregator)组件的角色。 |
 | **system:kube-dns**                      | **kube-dns** service account in the **kube-system**namespace | [kube-dns](https://k8smeetup.github.io/docs/admin/dns/)组件的角色。 |
-| **system:node-bootstrapper**             | None                                     | 允许对执行[Kubelet TLS引导（Kubelet TLS bootstrapping）](https://k8smeetup.github.io/docs/admin/kubelet-tls-bootstrapping/)所需要资源的访问. |
-| **system:node-problem-detector**         | None                                     | [node-problem-detector](https://github.com/kubernetes/node-problem-detector)组件的角色。 |
-| **system:persistent-volume-provisioner** | None                                     | 允许对大部分[动态存储卷创建组件（dynamic volume provisioner）](https://k8smeetup.github.io/docs/user-guide/persistent-volumes/#provisioner)所需要资源的访问。 |
+| **system:node-bootstrapper**             | None                                                         | 允许对执行[Kubelet TLS引导（Kubelet TLS bootstrapping）](https://k8smeetup.github.io/docs/admin/kubelet-tls-bootstrapping/)所需要资源的访问. |
+| **system:node-problem-detector**         | None                                                         | [node-problem-detector](https://github.com/kubernetes/node-problem-detector)组件的角色。 |
+| **system:persistent-volume-provisioner** | None                                                         | 允许对大部分动态存储卷创建组件（dynamic volume provisioner）所需要资源的访问。 |
 
 ### 控制器（Controller）角色
 

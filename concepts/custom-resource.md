@@ -20,7 +20,7 @@ Kubernetes1.6版本中包含一个内建的资源叫做TPR（ThirdPartyResource�
 
 - 你的API是否属于[声明式的](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#declarative-apis)
 - 是否想使用kubectl命令来管理
-- 是否要作为kubenretes中的对象类型来管理，同时显示在kuberetes dashboard上
+- 是否要作为kubenretes中的对象类型来管理，同时显示在kubernetes dashboard上
 - 是否可以遵守kubernetes的API规则限制，例如URL和API group、namespace限制
 - 是否可以接受该API只能作用于集群或者namespace范围
 - 想要复用kubernetes API的公共功能，比如CRUD、watch、内置的认证和授权等
@@ -92,9 +92,9 @@ spec:
 kubectl create -f resourcedefinition.yaml
 ```
 
-访问RESTful API端点如http://172.20.0.113:8080将看到如下API端点已创建：
+访问RESTful API端点如<http://172.20.0.113:8080>将看到如下API端点已创建：
 
-```
+```bash
 /apis/stable.example.com/v1/namespaces/*/crontabs/...
 ```
 
@@ -130,8 +130,6 @@ metadata:
 
 详情参考：[Extend the Kubernetes API with CustomResourceDefinitions](https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/)
 
-使用kubernetes1.7及以上版本请参考[Migrate a ThirdPartyResource to CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)。
-
 ## 自定义控制器
 
 单纯设置了自定义资源，并没有什么用，只有跟自定义控制器结合起来，才能将资源对象中的声明式API翻译成用户所期望的状态。自定义控制器可以用来管理任何资源类型，但是一般是跟自定义资源结合使用。
@@ -140,7 +138,7 @@ metadata:
 
 ## API server聚合
 
-Aggregated（聚合的）API  server是为了将原来的API server这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的API server集成进来，而不用直接修改kubernetes官方仓库的代码，这样一来也能将API server解耦，方便用户使用实验特性。这些API server可以跟core API server无缝衔接，试用kubectl也可以管理它们。
+Aggregated（聚合的）API  server是为了将原来的API server这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的API server集成进来，而不用直接修改kubernetes官方仓库的代码，这样一来也能将API server解耦，方便用户使用实验特性。这些API server可以跟core API server无缝衔接，使用kubectl也可以管理它们。
 
 详情参考[Aggregated API Server](aggregated-api-server.md)。
 

@@ -1,8 +1,11 @@
-# kubeadm
-## 基本介绍
-**kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](/docs/admin/bootstrap-tokens/)并升级/降级群集。
+# 生产级的Kubernetes简化管理工具kubeadm
 
-kubeadm的目标是建立一个通过Kubernetes一致性测试[Kubernetes Conformance tests](http://blog.kubernetes.io/2017/10/software-conformance-certification)的最小可行集群 ，但不会安装其他功能插件。
+Kubeadm 在2018年12月3日发布的 [Kubernetes 1.13](https://kubernetes.io/blog/2018/12/03/kubernetes-1-13-release-announcement/) 版本中已经宣布 GA，可以支持生产。本文是对 kubeadmin 的先关介绍，详细信息请参考 [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)。
+
+## 基本介绍
+**kubeadm** 是一个工具包，可帮助您以简单，合理安全和可扩展的方式引导最佳实践Kubernetes群集。它还支持为您管理[Bootstrap Tokens](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/)并升级/降级群集。
+
+kubeadm的目标是建立一个通过Kubernetes一致性测试Kubernetes Conformance tests的最小可行集群 ，但不会安装其他功能插件。
 
 它在设计上并未为您安装网络解决方案，需要用户自行安装第三方符合CNI的网络解决方案（如flanal，calico，canal等）。
 
@@ -36,5 +39,12 @@ Kubernetes版本通常支持九个月，在此期间，如果发现严重的错�
 | v1.6.x             | March 2017     | December 2017     |
 | v1.7.x             | June 2017      | March 2018        |
 | v1.8.x             | September 2017 | June 2018         |
-| v1.9.x             | December 2017  | September 2018    |
-| v1.10.x            | March 2018     | December 2018     |
+| v1.9.x             | December 2017  | September 2018    |
+| v1.10.x            | March 2018     | December 2018     |
+| v1.11.x            | June 2018      | March 2019        |
+| v1.12.x            | September 2018 | June 2019         |
+| v1.13.x            | December 2018  | September 2019    |
+
+## 参考
+
+- [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)

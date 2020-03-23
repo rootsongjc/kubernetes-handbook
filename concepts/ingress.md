@@ -1,8 +1,6 @@
 # Ingress解析
 
-## 前言
-
-这是kubernete官方文档中[Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)的翻译，后面的章节会讲到使用[Traefik](https://github.com/containous/traefik)来做Ingress controller，文章末尾给出了几个相关链接。
+Ingress 是从Kubernetes集群外部访问集群内部服务的入口，这篇文章部分译自Kubernetes官方文档[Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)，后面的章节会讲到使用[Traefik](https://github.com/containous/traefik)来做Ingress controller，文章末尾给出了几个相关链接。
 
 **术语**
 
@@ -11,7 +9,7 @@
 - 节点：Kubernetes集群中的一台物理机或者虚拟机。
 - 集群：位于Internet防火墙后的节点，这是kubernetes管理的主要计算资源。
 - 边界路由器：为集群强制执行防火墙策略的路由器。 这可能是由云提供商或物理硬件管理的网关。
-- 集群网络：一组逻辑或物理链接，可根据Kubernetes[网络模型](https://kubernetes.io/docs/admin/networking/)实现群集内的通信。 集群网络的实现包括Overlay模型的 [flannel](https://github.com/coreos/flannel#flannel) 和基于SDN的[OVS](https://kubernetes.io/docs/admin/ovs-networking/)。
+- 集群网络：一组逻辑或物理链接，可根据Kubernetes[网络模型](https://kubernetes.io/docs/admin/networking/)实现群集内的通信。 集群网络的实现包括Overlay模型的 [flannel](https://github.com/coreos/flannel#flannel) 和基于SDN的OVS。
 - 服务：使用标签选择器标识一组pod成为的Kubernetes[服务](https://kubernetes.io/docs/user-guide/services/)。 除非另有说明，否则服务假定在集群网络内仅可通过虚拟IP访问。
 
 ## 什么是Ingress？
@@ -41,9 +39,9 @@ Ingress是授权入站连接到达集群服务的规则集合。
 
 在使用Ingress resource之前，有必要先了解下面几件事情。Ingress是beta版本的resource，在kubernetes1.1之前还没有。你需要一个`Ingress Controller`来实现`Ingress`，单纯的创建一个`Ingress`没有任何意义。
 
-GCE/GKE会在master节点上部署一个ingress controller。你可以在一个pod中部署任意个自定义的ingress controller。你必须正确地annotate每个ingress，比如 [运行多个ingress controller](https://git.k8s.io/ingress#running-multiple-ingress-controllers) 和 [关闭glbc](https://git.k8s.io/ingress-gce/BETA_LIMITATIONS.md#disabling-glbc).
+GCE/GKE会在master节点上部署一个ingress controller。你可以在一个pod中部署任意个自定义的ingress controller。你必须正确地annotate每个ingress，比如 [运行多个ingress controller](https://git.k8s.io/ingress#running-multiple-ingress-controllers) 和 关闭glbc。
 
-确定你已经阅读了Ingress controller的[beta版本限制](https://github.com/kubernetes/ingress-gce/blob/master/BETA_LIMITATIONS.md#glbc-beta-limitations)。在非GCE/GKE的环境中，你需要在pod中[部署一个controller](https://git.k8s.io/ingress-nginx/README.md)。
+确定你已经阅读了Ingress controller的 beta版本限制。在非GCE/GKE的环境中，你需要在pod中[部署一个controller](https://git.k8s.io/ingress-nginx/README.md)。
 
 ## Ingress Resource
 
@@ -68,9 +66,9 @@ GCE/GKE会在master节点上部署一个ingress controller。你可以在一个p
 
 **配置说明**
 
-**1-4行**：跟Kubernetes的其他配置一样，ingress的配置也需要`apiVersion`，`kind`和`metadata`字段。配置文件的详细说明请查看[部署应用](https://kubernetes.io/docs/user-guide/deploying-applications), [配置容器](https://kubernetes.io/docs/user-guide/configuring-containers)和 [使用resources](https://kubernetes.io/docs/user-guide/working-with-resources).
+**1-4行**：跟Kubernetes的其他配置一样，ingress的配置也需要`apiVersion`，`kind`和`metadata`字段。配置文件的详细说明请查看[部署应用](https://kubernetes.io/docs/user-guide/deploying-applications), [配置容器](https://kubernetes.io/docs/user-guide/configuring-containers)和使用resources。
 
-**5-7行**: Ingress [spec](https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md#spec-and-status) 中包含配置一个loadbalancer或proxy server的所有信息。最重要的是，它包含了一个匹配所有入站请求的规则列表。目前ingress只支持http规则。
+**5-7行**: Ingress spec 中包含配置一个loadbalancer或proxy server的所有信息。最重要的是，它包含了一个匹配所有入站请求的规则列表。目前ingress只支持http规则。
 
 **8-9行**：每条http规则包含以下信息：一个`host`配置项（比如for.bar.com，在这个例子中默认是*），`path`列表（比如：/testpath），每个path都关联一个`backend`(比如test:80)。在loadbalancer将流量转发到backend之前，所有的入站请求都要先匹配host和path。
 
@@ -85,6 +83,7 @@ GCE/GKE会在master节点上部署一个ingress controller。你可以在一个p
 - F5（公司）[支持并维护](https://support.f5.com/csp/article/K86859508) [F5 BIG-IP Controller for Kubernetes](http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest).
 - [Kong](https://konghq.com/) 同时支持并维护[社区版](https://discuss.konghq.com/c/kubernetes)与[企业版](https://konghq.com/api-customer-success/)的 [Kong Ingress Controller for Kubernetes](https://konghq.com/blog/kubernetes-ingress-controller-for-kong/).
 - [Traefik](https://github.com/containous/traefik) 是功能齐全的 ingress controller([Let’s Encrypt](https://letsencrypt.org/), secrets, http2, websocket…), [Containous](https://containo.us/services) 也对其提供商业支持。
+- [Istio](https://istio.io) 使用CRD Gateway来[控制Ingress流量](https://istio.io/docs/tasks/traffic-management/ingress/)。
 
 
 ## 在你开始前
@@ -123,7 +122,7 @@ test-ingress        -             testsvc:80     107.178.254.228
 
 ### 简单展开
 
-如前面描述的那样，kubernete pod中的IP只在集群网络内部可见，我们需要在边界设置一个东西，让它能够接收ingress的流量并将它们转发到正确的端点上。这个东西一般是高可用的loadbalancer。使用Ingress能够允许你将loadbalancer的个数降低到最少，例如，假如你想要创建这样的一个设置：
+如前面描述的那样，kubernetes pod中的IP只在集群网络内部可见，我们需要在边界设置一个东西，让它能够接收ingress的流量并将它们转发到正确的端点上。这个东西一般是高可用的loadbalancer。使用Ingress能够允许你将loadbalancer的个数降低到最少，例如，假如你想要创建这样的一个设置：
 
 ```
 foo.bar.com -> 178.91.123.132 -> / foo    s1:80
@@ -233,7 +232,7 @@ spec:
 
 请注意，各种Ingress controller支持的TLS功能之间存在差距。 请参阅有关[nginx](https://git.k8s.io/ingress-nginx/README.md#https)，[GCE](https://git.k8s.io/ingress-gce/README.md#frontend-https)或任何其他平台特定Ingress controller的文档，以了解TLS在你的环境中的工作原理。
 
-Ingress controller启动时附带一些适用于所有Ingress的负载平衡策略设置，例如负载均衡算法，后端权重方案等。更高级的负载平衡概念（例如持久会话，动态权重）尚未在Ingress中公开。 你仍然可以通过[service loadbalancer](https://github.com/kubernetes/ingress-nginx/blob/master/docs/ingress-controller-catalog.md)获取这些功能。 随着时间的推移，我们计划将适用于跨平台的负载平衡模式加入到Ingress资源中。
+Ingress controller启动时附带一些适用于所有Ingress的负载平衡策略设置，例如负载均衡算法，后端权重方案等。更高级的负载平衡概念（例如持久会话，动态权重）尚未在Ingress中公开。 你仍然可以通过service loadbalancer获取这些功能。 随着时间的推移，我们计划将适用于跨平台的负载平衡模式加入到Ingress资源中。
 
 还值得注意的是，尽管健康检查不直接通过Ingress公开，但Kubernetes中存在并行概念，例如[准备探查](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)，可以使你达成相同的最终结果。 请查看特定控制器的文档，以了解他们如何处理健康检查（[nginx](https://git.k8s.io/ingress-nginx/README.md)，[GCE](https://git.k8s.io/ingress-gce/README.md#health-checks)）。
 
@@ -241,7 +240,7 @@ Ingress controller启动时附带一些适用于所有Ingress的负载平衡策�
 
 假如你想要向已有的ingress中增加一个新的Host，你可以编辑和更新该ingress：
 
-```Bash
+```bash
 $ kubectl get ing
 NAME      RULE          BACKEND   ADDRESS
 test      -                       178.91.123.132
@@ -288,7 +287,7 @@ test      -                       178.91.123.132
 
 ## 跨可用域故障
 
-在不通云供应商之间，跨故障域的流量传播技术有所不同。 有关详细信息，请查看相关Ingress controller的文档。 有关在federation集群中部署Ingress的详细信息，请参阅[federation文档]()。
+在不同云供应商之间，跨故障域的流量传播技术有所不同。 有关详细信息，请查看相关Ingress controller的文档。 有关在federation集群中部署Ingress的详细信息，请参阅federation文档。
 
 ## 未来计划
 
@@ -310,16 +309,6 @@ test      -                       178.91.123.132
 
 ## 参考
 
-[Kubernetes Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-
-[使用NGINX Plus负载均衡Kubernetes服务](http://dockone.io/article/957)
-
-[使用 NGINX 和 NGINX Plus 的 Ingress Controller 进行 Kubernetes 的负载均衡](http://www.cnblogs.com/276815076/p/6407101.html)
-
-[Kubernetes : Ingress Controller with Træfɪk and Let's Encrypt](https://blog.osones.com/en/kubernetes-ingress-controller-with-traefik-and-lets-encrypt.html)
-
-[Kubernetes : Træfɪk and Let's Encrypt at scale](https://blog.osones.com/en/kubernetes-traefik-and-lets-encrypt-at-scale.html)
-
-[Kubernetes Ingress Controller-Træfɪk](https://docs.traefik.io/user-guide/kubernetes/)
-
-[Kubernetes 1.2 and simplifying advanced networking with Ingress](http://blog.kubernetes.io/2016/03/Kubernetes-1.2-and-simplifying-advanced-networking-with-Ingress.html)
+- [Kubernetes Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [使用NGINX Plus负载均衡Kubernetes服务](http://dockone.io/article/957)
+- [使用 NGINX 和 NGINX Plus 的 Ingress Controller 进行 Kubernetes 的负载均衡](http://www.cnblogs.com/276815076/p/6407101.html)

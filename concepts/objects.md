@@ -24,16 +24,18 @@
 - Ingress
 - ConfigMap
 - Label
-- ThirdPartyResources
+- CustomResourceDefinition
+- Role
+- ClusterRole
 
 我将它们简单的分类为以下几种资源对象：
 
-| 类别   | 名称                                       |
-| :--- | ---------------------------------------- |
-| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling |
-| 配置对象 | Node、Namespace、Service、Secret、ConfigMap、Ingress、Label、ThirdPartyResource、   ServiceAccount |
-| 存储对象 | Volume、Persistent Volume                 |
-| 策略对象 | SecurityContext、ResourceQuota、LimitRange |
+| 类别     | 名称                                                         |
+| :------- | ------------------------------------------------------------ |
+| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling、Node、Namespace、Service、Ingress、Label、CustomResourceDefinition |
+| 存储对象 | Volume、PersistentVolume、Secret、ConfigMap                  |
+| 策略对象 | SecurityContext、ResourceQuota、LimitRange                   |
+| 身份对象 | ServiceAccount、Role、ClusterRole                            |
 
 ## 理解 kubernetes 中的对象
 
@@ -45,7 +47,7 @@
 
 Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernetes 系统将持续工作以确保对象存在。通过创建对象，可以有效地告知 Kubernetes 系统，所需要的集群工作负载看起来是什么样子的，这就是 Kubernetes 集群的 **期望状态**。
 
-与 Kubernetes 对象工作 —— 是否创建、修改，或者删除 —— 需要使用 [Kubernetes API](https://git.k8s.io/community/contributors/devel/api-conventions.md)。当使用 `kubectl` 命令行接口时，比如，CLI 会使用必要的 Kubernetes API 调用，也可以在程序中直接使用 Kubernetes API。为了实现该目标，Kubernetes 当前提供了一个 `golang` [客户端库](https://github.com/kubernetes/client-go) ，其它语言库（例如[Python](https://github.com/kubernetes-incubator/client-python)）也正在开发中。
+与 Kubernetes 对象工作 —— 是否创建、修改，或者删除 —— 需要使用 Kubernetes API。当使用 `kubectl` 命令行接口时，比如，CLI 会使用必要的 Kubernetes API 调用，也可以在程序中直接使用 Kubernetes API。为了实现该目标，Kubernetes 当前提供了一个 `golang` [客户端库](https://github.com/kubernetes/client-go) ，其它语言库（例如[Python](https://github.com/kubernetes-incubator/client-python)）也正在开发中。
 
 ### 对象 Spec 与状态
 
@@ -53,7 +55,7 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 
 例如，Kubernetes Deployment 对象能够表示运行在集群中的应用。当创建 Deployment 时，可能需要设置 Deployment 的 spec，以指定该应用需要有 3 个副本在运行。Kubernetes 系统读取 Deployment spec，启动我们所期望的该应用的 3 个实例 —— 更新状态以与 spec 相匹配。如果那些实例中有失败的（一种状态变更），Kubernetes 系统通过修正来响应 spec 和状态之间的不一致 —— 这种情况，启动一个新的实例来替换。
 
-关于对象 spec、status 和 metadata 更多信息，查看 [Kubernetes API Conventions](https://git.k8s.io/community/contributors/devel/api-conventions.md)。
+关于对象 spec、status 和 metadata 更多信息，查看 [Kubernetes API Conventions]( https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md)。
 
 ### 描述 Kubernetes 对象
 
@@ -80,7 +82,7 @@ spec:
         - containerPort: 80
 ```
 
-一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 [`kubectl create`](https://kubernetes.io/docs/user-guide/kubectl/v1.7/#create) 命令，传递 `.yaml` 作为参数。下面是一个示例：
+一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 `kubectl create` 命令，传递 `.yaml` 作为参数。下面是一个示例：
 
 ```bash
 $ kubectl create -f docs/user-guide/nginx-deployment.yaml --record

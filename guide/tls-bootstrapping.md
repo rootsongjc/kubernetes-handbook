@@ -21,8 +21,10 @@ Token 可以是任意的，但应该可以表示为从安全随机数生成器�
 Token 文件应该类似于以下示例，其中前三个值可以是任何值，引用的组名称应如下所示：
 
 ```bash
-02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,"system:kubelet-bootstrap"
+02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,system:kubelet-bootstrap
 ```
+
+注意：`system:kubelet-bootstrap` 的配置，当只有一个组时，不需要加引号。
 
 在 kube-apiserver 命令中添加 `--token-auth-file=FILENAME` 标志（可能在您的 systemd unit 文件中）来启用 token 文件。
 

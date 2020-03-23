@@ -1,5 +1,7 @@
 # Service Mesh 服务网格
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 Service mesh 又译作 ”服务网格“，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
 
 > A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.
@@ -8,7 +10,7 @@ Service mesh 又译作 ”服务网格“，作为服务间通信的基础设施
 
 ![下一代异构微服务架构](../images/polyglot-microservices-serivce-mesh.png)
 
-自我6月份初接触Istio依赖就发觉service mesh很好的解决了异构语言中的很多问题，而且是kuberentes service 上层不可或缺的服务间代理。关于istio的更多内容请参考 [istio中文文档](http://istio.doczh.cn)。
+自我6月份初接触Istio依赖就发觉service mesh很好的解决了异构语言中的很多问题，而且是kuberentes service 上层不可或缺的服务间代理。关于istio的更多内容请参考 [istio 官方文档](https://istio.io)。
 
 ## 什么是 service mesh？
 
@@ -93,4 +95,4 @@ Service mesh 并没有给我们带来新功能，它是用于解决其他工具�
 - [Introducing Istio: A robust service mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
-- [Istio官方文档中文版](http://istio.doczh.cn/)
+- [Istio官方文档](https://istio.io)

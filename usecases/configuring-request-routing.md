@@ -1,5 +1,7 @@
 # 配置请求的路由规则
 
+**注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+
 在上一节[安装istio](istio-installation.md)中我们创建[BookInfo](https://istio.io/docs/samples/bookinfo.html)的示例，熟悉了Istio的基本功能，现在我们再来看一下istio的高级特性——配置请求的路由规则。
 
 使用istio我们可以根据**权重**和**HTTP headers**来动态配置请求路由。
@@ -69,7 +71,7 @@
 
  由于对代理的规则传播是异步的，因此在尝试访问应用程序之前，需要等待几秒钟才能将规则传播到所有pod。
 
-2. 在浏览器中打开BookInfo URL（http://$GATEWAY_URL/productpage ，我们在上一节中使用的是 http://ingress.istio.io/productpage ）您应该会看到BookInfo应用程序的产品页面显示。 注意，产品页面上没有评分星，因为`reviews:v1`不访问评级服务。
+2. 在浏览器中打开BookInfo URL（`http://$GATEWAY_URL/productpage` ，我们在上一节中使用的是 `http://ingress.istio.io/productpage`）您应该会看到BookInfo应用程序的产品页面显示。 注意，产品页面上没有评分星，因为`reviews:v1`不访问评级服务。
 
 3. 将特定用户路由到`reviews:v2`。
 

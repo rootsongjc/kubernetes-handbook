@@ -1,8 +1,8 @@
 # 配置Pod的liveness和readiness探针
 
-当你使用kuberentes的时候，有没有遇到过Pod在启动后一会就挂掉然后又重新启动这样的恶性循环？你有没有想过kubernetes是如何检测pod是否还存活？虽然容器已经启动，但是kubernetes如何知道容器的进程是否准备好对外提供服务了呢？让我们通过kuberentes官网的这篇文章[Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)，来一探究竟。
+当你使用kubernetes的时候，有没有遇到过Pod在启动后一会就挂掉然后又重新启动这样的恶性循环？你有没有想过kubernetes是如何检测pod是否还存活？虽然容器已经启动，但是kubernetes如何知道容器的进程是否准备好对外提供服务了呢？让我们通过kubernetes官网的这篇文章[Configure Liveness and Readiness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)，来一探究竟。
 
-本文将向展示如何配置容器的存活和可读性探针。
+本文将展示如何配置容器的存活和可读性探针。
 
 Kubelet使用liveness probe（存活探针）来确定何时重启容器。例如，当应用程序处于运行状态但无法做进一步操作，liveness探针将捕获到deadlock，重启处于该状态下的容器，使应用程序在存在bug的情况下依然能够继续运行下去（谁的程序还没几个bug呢）。
 
@@ -132,11 +132,9 @@ spec:
       periodSeconds: 3
 ```
 
-该配置文件只定义了一个容器，`livenessProbe` 指定kubelete需要每隔3秒执行一次liveness probe。`initialDelaySeconds` 指定kubelet在该执行第一次探测之前需要等待3秒钟。该探针将向容器中的server的8080端口发送一个HTTP GET请求。如果server的`/healthz`路径的handler返回一个成功的返回码，kubelet就会认定该容器是活着的并且很健康。如果返回失败的返回码，kubelet将杀掉该容器并重启它。
+该配置文件只定义了一个容器，`livenessProbe` 指定kubelet需要每隔3秒执行一次liveness probe。`initialDelaySeconds` 指定kubelet在该执行第一次探测之前需要等待3秒钟。该探针将向容器中的server的8080端口发送一个HTTP GET请求。如果server的`/healthz`路径的handler返回一个成功的返回码，kubelet就会认定该容器是活着的并且很健康。如果返回失败的返回码，kubelet将杀掉该容器并重启它。
 
 任何大于200小于400的返回码都会认定是成功的返回码。其他返回码都会被认为是失败的返回码。
-
-查看该server的源码：[server.go](http://k8s.io/docs/user-guide/liveness/image/server.go).
 
 最开始的10秒该容器是活着的， `/healthz` handler返回200的状态码。这之后将返回500的返回码。
 
@@ -241,7 +239,7 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 
 ## 配置Probe
 
-[Probe](https://kubernetes.io/docs/api-reference/v1.6/#probe-v1-core)中有很多精确和详细的配置，通过它们你能准确的控制liveness和readiness检查：
+Probe 中有很多精确和详细的配置，通过它们你能准确的控制liveness和readiness检查：
 
 - `initialDelaySeconds`：容器启动后第一次执行探测是需要等待多少秒。
 - `periodSeconds`：执行探测的频率。默认是10秒，最小1秒。
@@ -249,13 +247,13 @@ Readiness和livenss probe可以并行用于同一容器。 使用两者可以确
 - `successThreshold`：探测失败后，最少连续探测成功多少次才被认定为成功。默认是1。对于liveness必须是1。最小值是1。 
 - `failureThreshold`：探测成功后，最少连续探测失败多少次才被认定为失败。默认是3。最小值是1。
 
-[HTTP probe](https://kubernetes.io/docs/api-reference/v1.6/#httpgetaction-v1-core)中可以给 `httpGet`设置其他配置项：
+HTTP probe 中可以给 `httpGet`设置其他配置项：
 
 - `host`：连接的主机名，默认连接到pod的IP。你可能想在http header中设置"Host"而不是使用IP。
 - `scheme`：连接使用的schema，默认HTTP。
 - `path`: 访问的HTTP server的path。
 - `httpHeaders`：自定义请求的header。HTTP运行重复的header。
-- `port`：访问的容器的端口名字或者端口号。端口号必须介于1和65525之间。
+- `port`：访问的容器的端口名字或者端口号。端口号必须介于1和65535之间。
 
 对于HTTP探测器，kubelet向指定的路径和端口发送HTTP请求以执行检查。 Kubelet将probe发送到容器的IP地址，除非地址被`httpGet`中的可选`host`字段覆盖。 在大多数情况下，你不想设置主机字段。 有一种情况下你可以设置它。 假设容器在127.0.0.1上侦听，并且Pod的`hostNetwork`字段为true。 然后，在`httpGet`下的`host`应该设置为127.0.0.1。 如果你的pod依赖于虚拟主机，这可能是更常见的情况，你不应该是用`host`，而是应该在`httpHeaders`中设置`Host`头。
 

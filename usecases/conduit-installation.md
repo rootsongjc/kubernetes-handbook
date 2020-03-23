@@ -32,8 +32,6 @@ conduit install>conduit-0.1.0.yaml
 kubectl apply -f conduit-0.1.0.yaml
 ```
 
-修改后的yaml文件见：[conduit-0.1.0.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/conduit-0.1.0.yaml)。
-
 **注意：**Conduit官方给出的yaml文件中不包括RBAC授权，我重新修改了，增加了RBAC和ServiceAccount。
 
 使用`kubectl proxy`来开放外网访问conduit dashboard：

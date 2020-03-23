@@ -324,4 +324,3 @@ spec:
 
 - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
 - [kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)
-- http://blog.kubernetes.io/2017/01/running-mongodb-on-kubernetes-with-statefulsets.html

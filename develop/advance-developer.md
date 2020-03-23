@@ -1,8 +1,6 @@
 # 高级开发指南
 
-本页假定您已经熟悉 Kubernetes 的核心概念并可以轻松的部署自己的应用程序。如果还不能，您需要先查看下[中级应用开发者](https://kubernetes.io/docs/user-journeys/users/application-developer/intermediate/)主题。
-
-在浏览了本页面及其链接的内容后，您将会更好的理解如下部分：
+本页假定您已经熟悉 Kubernetes 的核心概念并可以轻松的部署自己的应用程序。在浏览了本页面及其链接的内容后，您将会更好的理解如下部分：
 
 - 可以在应用程序中使用的高级功能
 - 扩展 Kubernetes API 的各种方法
@@ -33,7 +31,7 @@
 在设置以下资源之前，请检查这是否属于您组织的集群管理员的责任。
 
 - **Horizontal Pod Autoscaler (HPA)** ：这些资源是在CPU使用率或其他[自定义度量](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/instrumentation/custom-metrics-api.md)标准“秒杀”时自动化扩展应用程序的好方法。*[查看示例](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)*以了解如何设置HPA。
-- **联合集群对象**：如果使用 *federation* 在多个 Kubernetes 集群上运行应用程序，则需要部署标准 Kubernetes API 对象的联合版本。有关参考，请查看设置 [联合 ConfigMap](https://kubernetes.io/docs/tasks/administer-federation/configmap/) 和[联合 Deployment](https://kubernetes.io/docs/tasks/administer-federation/deployment/) 的指南。
+- **联合集群对象**：如果使用 *federation* 在多个 Kubernetes 集群上运行应用程序，则需要部署标准 Kubernetes API 对象的联合版本。
 
 ## 扩展 Kubernetes API
 
@@ -90,13 +88,10 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 以下主题对构建更复杂的应用程序也很有用：
 
 - [Kubernetes 中的其他扩展点](https://kubernetes.io/docs/concepts/overview/extending/) - 在哪里可以挂勾到 Kubernetes 架构的概念性的概述
-- [Kubernetes 客户端库](https://kubernetes.io/docs/reference/client-libraries/) - 用于构建需要与 Kubernetes API 大量交互的应用程序。
+- Kubernetes 客户端库 - 用于构建需要与 Kubernetes API 大量交互的应用程序。
 
 #### 下一步
 
 恭喜您完成了应用开发者之旅！您已经了解了 Kubernetes 提供的大部分功能。现在怎么办？
 
 - 如果您想推荐新功能或跟上Kubernetes应用开发的最新进展，请考虑加入 SIG，如 [SIG Apps](https://github.com/kubernetes/community/tree/master/sig-apps)。
-- 如果您有兴趣详细了解 Kubernetes 的内部运作（例如网络），请考虑查看[集群运维之旅](https://kubernetes.io/docs/user-journeys/users/cluster-operator/foundational/)。
-
-原文：https://kubernetes.iohttps://kubernetes.io/docs/user-journeys/users/application-developer/advanced

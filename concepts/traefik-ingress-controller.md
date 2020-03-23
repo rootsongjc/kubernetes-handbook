@@ -48,8 +48,6 @@ spec:
 - `traefik.frontend.rule.type: PathPrefixStrip`：表示将截掉URL中的`path`
 - `kubernetes.io/ingress.class`：表示使用的ingress类型
 
-关于Ingress annotation的更多信息请参考：[Ingress Annotations - kubernetes.io](https://github.com/kubernetes/ingress-nginx/blob/master/docs/annotations.md)。
-
 在nginx中增加配置：
 
 ```ini
@@ -60,8 +58,3 @@ upstream docGenerate {
 ```
 
 172.20.0.119是我们的边缘节点的VIP，见[边缘节点配置](../practice/edge-node-configuration.md)。
-
-## 参考
-
-- [Kubernetes Ingress Backend - traefik.io](https://docs.traefik.io/configuration/backends/kubernetes/)
-- [Kubernetes Ingress Controller - traefik.io](http://docs.traefik.io/user-guide/kubernetes/)

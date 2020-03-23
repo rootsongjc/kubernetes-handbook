@@ -38,15 +38,13 @@ kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 ```
 
-然后安装helm服务端tiller
+然后安装helm服务端tiller，目前最新版 v2.14.2，若无法访问 `gcr.io`，可以使用阿里云镜像，如：
 
 ```bash
-helm init -i jimmysong/kubernetes-helm-tiller:v2.8.1 
+helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.12.2 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 ```
-(目前最新版v2.8.2，可以使用阿里云镜像，如：
-helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.8.2 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts）
 
-我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.8.1`，我在DockerHub上放了一个备份`jimmysong/kubernetes-helm-tiller:v2.8.1`，该镜像的版本与helm客户端的版本相同，使用`helm version`可查看helm客户端版本。
+我们使用`-i`指定自己的镜像，因为官方的镜像因为某些原因无法拉取，官方镜像地址是：`gcr.io/kubernetes-helm/tiller:v2.14.2`，使用`helm version`可查看helm客户端版本。
 
 为应用程序设置`serviceAccount`：
 
@@ -60,8 +58,8 @@ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"templat
 $ kubectl -n kube-system get pods|grep tiller
 tiller-deploy-2372561459-f6p0z         1/1       Running   0          1h
 $ helm version
-Client: &version.Version{SemVer:"v2.3.1", GitCommit:"32562a3040bb5ca690339b9840b6f60f8ce25da4", GitTreeState:"clean"}
-Server: &version.Version{SemVer:"v2.3.1", GitCommit:"32562a3040bb5ca690339b9840b6f60f8ce25da4", GitTreeState:"clean"}
+Client: &version.Version{SemVer:"v2.14.2", GitCommit:"a8b13cc5ab6a7dbef0a58f5061bcc7c0c61598e7", GitTreeState:"clean"}
+Server: &version.Version{SemVer:"v2.12.2", GitCommit:"7d2b0c73d734f6586ed222a567c5d103fed435be", GitTreeState:"clean"}
 ```
 
 ## 创建自己的chart
@@ -319,7 +317,7 @@ helm package .
 
 ### 依赖
 
-我们可以在`requirement.yaml`中定义应用所依赖的chart，例如定义对`mariadb`的依赖：
+我们可以在`requirements.yaml`中定义应用所依赖的chart，例如定义对`mariadb`的依赖：
 
 ```yaml
 dependencies:
@@ -332,19 +330,19 @@ dependencies:
 
 ### 安装源
 
-#####################################################################
-
 使用第三方chat库
 
-。添加fabric8库
+- 添加fabric8库
 
-    $helm repo add fabric8 https://fabric8.io/helm
+```bash
+$ helm repo add fabric8 https://fabric8.io/helm
+```
 
-。搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI,CD的全套工具）
+- 搜索fabric8提供的工具（主要就是fabric8-platform工具包，包含了CI、CD的全套工具）
 
-    $helm search fabric8
-
-#####################################################################
+```bash
+$ helm search fabric8
+```
 
 我们在前面安装chart可以通过HTTP server的方式提供。
 
@@ -562,7 +560,7 @@ kubectl repalce -f ingress.yaml
 
 然后在本地的`/etc/hosts`文件中增加一条配置：
 
-```Ini
+```ini
 172.20.0.119 mean.jimmysong.io
 ```
 
@@ -708,8 +706,6 @@ helm package .
 ## 参考
 
 - [Deploy, Scale And Upgrade An Application On Kubernetes With Helm](https://docs.bitnami.com/kubernetes/how-to/deploy-application-kubernetes-helm/)
-- [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md)
 - [Go template](https://golang.org/pkg/text/template/)
-- [Helm docs](https://github.com/kubernetes/helm/blob/master/docs/index.md)
 - [How To Create Your First Helm Chart](https://docs.bitnami.com/kubernetes/how-to/create-your-first-helm-chart/)
 - [Speed deployment on Kubernetes with Helm Chart – Quick yaml example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
