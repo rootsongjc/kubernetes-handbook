@@ -2,7 +2,7 @@
 title: "OAM（开放应用模型）——定义云原生应用标准的野望"
 description: "本文是对 OAM 及 Rudr 的初探，主要介绍了 OAM 诞生的背景和要解决的问题，同时介绍了它在云原生生态中的作用。"
 date: 2020-03-22T14:34:40+08:00
-draft: false
+draft: true
 tags: ["oam"]
 categories: ["cloud native"]
 type: "post"
