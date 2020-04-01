@@ -70,7 +70,7 @@ preloader = "images/preloader.gif" # use jpg, png, svg or gif format.
 
 # Subscription
 [params.subscription]
-enable = true
+enable = false
 # mailchimp subsciption
 #mailchimp_form_action = "https://jimmysong.us20.list-manage.com/subscribe/post?u=cca519d8764547a389f52c57f&amp;id=e8e9e07dcc"
 # Use RSS instead
@@ -107,6 +107,11 @@ link = "https://github.com/rootsongjc"
 title = "linkedin"
 icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
 link = "https://linkedin.com/in/jimmysongio"
+
+[[params.social]]
+title = "RSS"
+icon = "ti-rss" # themify icon : https://themify.me/themify-icons
+link = "/blog/index.xml"
 
 [[params.social]]
 title = "Search"

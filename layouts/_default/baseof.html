@@ -9,6 +9,10 @@
 	{{ partial "page-header.html" . }}
 	{{ end }}
 	{{- block "main" . }}{{- end }}
+      <!-- ad -->
+    {{ if .Site.Params.ad.enable }}
+    {{ partial "ad.html" . }}
+    {{ end }}
 	{{- partial "footer.html" . -}}
 </body>
 
