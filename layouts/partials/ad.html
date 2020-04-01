@@ -1,11 +1,13 @@
 {{ with .Site.Params.ad }}
-<div class="footer section border-bottom">
-     <div class="container">
+<div class="container">
+    <div class="row">
+     <div class="col-12">
          <div style="text-align: center;">
              <a href="{{ .url }}">
              <img src="{{ .image | relURL }}" alt="{{ .title }}" title="{{ .title }}" width="100%" style="display: inline-block;">
              </a>
          </div>
      </div>
- </div>
+    </div>
+</div>
  {{ end }}
