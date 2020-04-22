@@ -20,10 +20,8 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: rootsongjc/rootsongjc.github.io
           publish_dir: ./public
         #   keep_files: true
           publish_branch: master
-          user_name: rootsongjc
-          user_email: rootsongjc@gmail.com
