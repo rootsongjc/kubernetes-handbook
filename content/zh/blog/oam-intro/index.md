@@ -10,7 +10,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/oam.png"
 ---
 
-[OAM（Open Application Model）](https://oam.dev/)是阿里巴巴和微软共同开源的云原生应用规范模型，同时开源了基于 OAM 的实现 [Rudr](https://github.com/oam-dev/rudr)。自 2019 年 10 月宣布开源以来截止本文发稿已经有快半年时间了，除了官方文档及 GitHub 外很少看到有关它的详细资料，可能是开发者社区还发展起来。
+[OAM（Open Application Model）](https://oam.dev/)是阿里巴巴和微软共同开源的云原生应用规范模型，同时开源了基于 OAM 的实现 [Rudr](https://github.com/oam-dev/rudr)，自 2019 年 10 月宣布开源以来截止本文发稿已经有快半年时间了。
 
 当前可能大部分人才刚刚开始了解 OAM，所以这篇文章将从最基础出发，为大家介绍 OAM 的诞生背景和要解决的问题，以及它在云原生生态中的作用。
 
