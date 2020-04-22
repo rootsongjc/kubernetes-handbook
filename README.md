@@ -1,6 +1,8 @@
 # Jimmy Song's Blog
 
-Hugo version 0.60+
+![build-and-deploy](https://github.com/rootsongjc/rootsongjc-hugo/workflows/build-and-deploy/badge.svg)
+
+Hugo version 0.55+
 
 Theme [educenter-hugo](https://github.com/themefisher/educenter-hugo) by themefisher.
 
