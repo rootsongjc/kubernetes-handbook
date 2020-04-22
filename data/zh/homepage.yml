@@ -4,15 +4,26 @@ slider:
   bg_image : "images/banner/kubecon-2019-shanghai.jpg"
   slider_item:
     # slider item loop
-    - title : "云原生势不可挡"
-      content : "容器、Kubernetes、Service Mesh、Serverless 等新技术层出不穷，云计算发展到以应用为中心的云原生阶段，企业上云势不可挡，普通开发者应何去何从？"
+    #    - title : "云原生势不可挡"
+    #      content : "容器、Kubernetes、Service Mesh、Serverless 等新技术层出不穷，云计算发展到以应用为中心的云原生阶段，企业上云势不可挡，普通开发者应何去何从？"
+    #      animation_in : "left"
+    #      animation_out : "right"
+    #      # available animation : left, right, up, down
+    #      button:
+    #        enable : true
+    #        label : "开始了解"
+    #        link : "book"
+
+    # slider item loop
+    - title : "云原生社区"
       animation_in : "left"
       animation_out : "right"
+      content: "云原生社区由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)发起于 2020 年 2 月，经过几个月时间的筹备，现在我们要向全世界宣布，云原生社区正式成立了！这是一个有温度的开源社区，我们希望借助开源打破公司的边界，我们关注技术人的成长，促进社区之间的交流。让我们一起关注开源，回馈开源。"
       # available animation : left, right, up, down
       button:
         enable : true
-        label : "开始了解"
-        link : "book"
+        label : "加入"
+        link : "https://cloudnative.to/contact"
 
     # slider item loop
     - title : "开启云原生之旅"
@@ -24,18 +35,6 @@ slider:
         enable : true
         label : "开始"
         link : "book/kubernetes-handbook"
-
-    # slider item loop
-    - title : "开发者共同体——开源社区"
-      content : "作为中国云原生活动的开创者和见证者，自 2016 年起，我开始组织 Kubernetes、Service Mesh 及云原生社区，始终与开发者站在一起，我深信开源活动及开源社区必将成为软件开发的终极形式。"
-      animation_in : "left"
-      animation_out : "right"
-      # available animation : left, right, up, down
-      button:
-        enable : true
-        label : "加入"
-        link : "contact"
-
 
 ############################### Banner feature ###############################
 banner_feature:
@@ -72,7 +71,7 @@ about:
   enable : true
   title : "关于"
   image : "images/about/about-me-zh.jpg"
-  content : "Jimmy Song（宋净超），蚂蚁金服云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区联合创始人，讲师，作者，摄影师。"
+  content : "Jimmy Song（宋净超），蚂蚁金服云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区和[云原生社区](https://cloudnative.to)联合创始人，讲师，作者，摄影师。"
   button:
     enable : true
     label : "了解详情"
@@ -88,12 +87,11 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  subtitle : "参与各种线上活动并获取线下活动信息"
-  title : "点击加入云原生社区"
+  title : "中国最具影响力的云原生中立社区"
   button:
     enable : true
     label : "加入我们"
-    link : "contact"
+    link : "https://cloudnative.to/contact"
 
 
 ######################## Success story #############################

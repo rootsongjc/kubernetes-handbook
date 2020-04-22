@@ -19,7 +19,7 @@ image: "images/banner/oam.png"
 如果你没有兴趣或者时间阅读下面的全文，那么建议阅读下面这些核心观点：
 
 - OAM 的本质是根据软件设计的“兴趣点分离”原则对负责的 DevOps 流程的高度抽象和封装，这背后还是“**康威定律**”在起作用。
-- OAM 仅定义云原生应用的规范，目前推出的的 [Rudr](https://github.com/oam-dev/rudr) 可以看做是 OAM 规范的 Kubernetes 解释器，将云原生应用定义翻译成 Kubernetes 的资源对象。
+- OAM 仅定义云原生应用的规范，目前推出的 [Rudr](https://github.com/oam-dev/rudr) 可以看做是 OAM 规范的 Kubernetes 解释器（实验实现），将云原生应用定义翻译成 Kubernetes 的资源对象。
 - OAM 与 [Crossplane](https://crossplane.io/) 将展开合作，就 Kubernetes 式以 API 为中心的应用定义发扬光大，并深度参与 [CNCF SIG App Delivery](https://github.com/cncf/sig-app-delivery)，以共同定义云原生应用标准。
 
 > **康威定律（Conway’s Law）**
@@ -41,7 +41,7 @@ OAM 全称是 Open Application Model，从名称上来看它所定义的就是�
 - [TUF](https://github.com/theupdateframework/specification)：更新框架标准
 - [SPIFFE](https://github.com/spiffe/spiffe)：身份安全标准
 
-这其中唯独没有应用定义标准，[CNCF SIG App delivery](https://github.com/cncf/sig-app-delivery) 即是要做这个的。当然既然要指定标准，自然要对不同平台和场景的逻辑做出更高级别的抽象（这也意味着你在掌握了底层逻辑的情况下还要学习更多的概念），这样才能屏蔽底层差异。本文将默认底层平台为 Kubernetes。
+这其中唯独没有应用标准的定义，[CNCF SIG App delivery](https://github.com/cncf/sig-app-delivery) 即是要做这个的。当然既然要制定标准，自然要对不同平台和场景的逻辑做出更高级别的抽象（这也意味着你在掌握了底层逻辑的情况下还要学习更多的概念），这样才能屏蔽底层差异。本文将默认底层平台为 Kubernetes。
 
 - 是从管理大量 CRD 中汲取的经验。
 - 业务和研发的沟通成本，比如 YAML 配置中很多字段是开发人员不关心的。
@@ -70,7 +70,7 @@ OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `
 
 ### OAM 工作原理
 
-下图来自阿里云原生应用平台团队孙健波在**《OAM:云原生时代的应用模型与 下一代 DevOps 技术》**中的分享，OAM 的工作原理如下图所示，OAM Spec 定义了云原生应用的规范（使用一些列 CRD 定义）， Rudr 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。
+下图来自阿里云原生应用平台团队孙健波在 **《OAM:云原生时代的应用模型与 下一代 DevOps 技术》** 中的分享，OAM 的工作原理如下图所示，OAM Spec 定义了云原生应用的规范（使用一些列 CRD 定义）， Rudr 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。
 
 ![OAM 的原理](oam-principle.png)
 
@@ -214,7 +214,7 @@ Forwarding from [::1]:9999 -> 9999
 
 ## 未来
 
-从以上描述中可以看出 OAM 对于定义云原生应用标准的野望，其目标不仅限于 Kubernetes 之上的又一上层抽象，而是对于一切云服务，在基于资源对象的基础上，Trait 来控制 Kubernetes 中的一众高层次非可调度的资源对象，如 AutoScaler、Volume、Ingress，Istio 中的流量配置对象 VirtualService、DestinationRule 等，还可容纳更多的云服务，对于 Serverless 时代的去基础设施化的思想不谋而合，未来可期。
+从以上描述中可以看出 OAM 对于定义云原生应用标准的野望，其目标不仅限于 Kubernetes 之上的又一上层抽象，而是对于一切云服务，在基于资源对象的基础上，Trait 来控制 Kubernetes 中的一众高层次非可调度的资源对象，如 AutoScaler、Volume、Ingress，Istio 中的流量配置对象 VirtualService、DestinationRule 等，还可容纳更多的云服务，对于 Serverless 时代的去基础设施化的思想不谋而合，OAM 与 Crossplane 的合作及 CNCF SIG App Delivery 的未来可期。
 
 ## 参考
 

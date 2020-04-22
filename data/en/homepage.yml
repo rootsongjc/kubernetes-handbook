@@ -4,15 +4,26 @@ slider:
   bg_image : "images/banner/kubecon-2019-shanghai.jpg"
   slider_item:
     # slider item loop
-    - title : "Cloud Native is eating the world"
-      content : "New technologies such as containers, Kubernetes, Service Mesh, and serverless have emerged endlessly. Cloud computing has developed into an application-centric cloud-native stage. The cloud on the enterprise is unstoppable. What should ordinary developers do?"
+    # - title : "Cloud Native is eating the world"
+    #   content : "New technologies such as containers, Kubernetes, Service Mesh, and serverless have emerged endlessly. Cloud computing has developed into an application-centric cloud-native stage. The cloud on the enterprise is unstoppable. What should ordinary developers do?"
+    #   animation_in : "left"
+    #   animation_out : "right"
+    #   # available animation : left, right, up, down
+    #   button:
+    #     enable : true
+    #     label : "Learn"
+    #     link : "/book"
+
+    # slider item loop
+    - title : "Cloud Native Community"
       animation_in : "left"
       animation_out : "right"
+      content: "The cloud native community was launched by [Jimmy and his partners](https://cloudnative.to/team) in February 2020. After several months of preparation, we are now announcing to the world that the Cloud Native Community is officially established! This is an open source community with a temperature, and we hope to use the concept of open source to break down the boundaries of the company. We focus on the growth of technical people and facilitate the communication between the communities. Let's focus on open source and give feedback to open source."
       # available animation : left, right, up, down
       button:
         enable : true
-        label : "Learn"
-        link : "/book"
+        label : "Join"
+        link : "https://cloudnative.to/contact"
 
     # slider item loop
     - title : "Start your Cloud Native journey"
@@ -24,18 +35,6 @@ slider:
         enable : true
         label : "Start"
         link : "book/kubernetes-handbook"
-
-    # slider item loop
-    - title : "Open Source Community"
-      content : "As the initiator and witness of cloud native activities in China since 2016, I have started to organize Kubernetes, Service Mesh and cloud native communities, and always stand by the developers. I am convinced that open source activities and communities will be the lead software development style."
-      animation_in : "left"
-      animation_out : "right"
-      # available animation : left, right, up, down
-      button:
-        enable : true
-        label : "Join"
-        link : "contact"
-
 
 ############################### Banner feature ###############################
 banner_feature:
@@ -72,7 +71,7 @@ about:
   enable : true
   title : "About Me"
   image : "images/about/about-me.jpg"
-  content : "Jimmy is a cloud native developer advocate, CNCF ambassador, co-founder of [ServiceMesher](https://www.servicemesher.com) community, spearker, writer and hotographer."
+  content : "Jimmy is a cloud native developer advocate, CNCF ambassador, co-founder of [ServiceMesher Community](https://www.servicemesher.com) and [Cloud Native Community](https://cloudnative.to/en), spearker, writer and hotographer."
   button:
     enable : true
     label : "Learn more"
@@ -88,12 +87,11 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  subtitle : "Click to Join the Community"
-  title : "Get Invovloed in Cloud Native"
+  title : "Join our Cloud Native Community"
   button:
     enable : true
     label : "join now"
-    link : "contact"
+    link : "https://cloudnative.to/contact"
 
 
 ######################## Success story #############################
