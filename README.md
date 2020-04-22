@@ -2,7 +2,7 @@
 
 ![build-and-deploy](https://github.com/rootsongjc/rootsongjc-hugo/workflows/build-and-deploy/badge.svg)
 
-Hugo version 0.55+
+Hugo version 0.62.2
 
 Theme [educenter-hugo](https://github.com/themefisher/educenter-hugo) by themefisher.
 
