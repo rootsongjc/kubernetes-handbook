@@ -10,7 +10,7 @@ jobs:
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.55.5'
+          hugo-version: '0.62.2'
           extended: true
 
       - name: Build
