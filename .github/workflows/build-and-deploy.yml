@@ -20,7 +20,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.TOKEN }}
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: rootsongjc/rootsongjc.github.io
           publish_dir: ./public
         #   keep_files: true
