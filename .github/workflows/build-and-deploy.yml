@@ -1,0 +1,28 @@
+name: build-and-deploy
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.55.5'
+          extended: true
+
+      - name: Build
+        # remove --minify tag if you do not need it
+        # docs: https://gohugo.io/hugo-pipes/minification/
+        run: hugo
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.TOKEN }}
+          external_repository: rootsongjc/rootsongjc.github.io
+          publish_dir: ./public
+        #   keep_files: true
+          publish_branch: master
+          cname: jimmysong.io
