@@ -229,6 +229,8 @@
   * [FaaS（函数即服务）](usecases/faas.md)
     * [OpenFaaS快速入门指南](usecases/openfaas-quick-start.md)
   * [Knative](usecases/knative.md)
+* [云原生应用标准](usecases/cloud-native-app-standard.md)
+  * [OAM（开放应用模型）](usecases/oam.md)
 * [边缘计算](usecases/edge-computing.md)
 * [人工智能](usecases/ai.md)
 

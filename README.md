@@ -78,8 +78,8 @@
 
 ## 社区&读者交流
 
-- [云原生社区](https://jimmysong.io/contact/)：备注姓名-公司/学校/组织/机构等，并注明加入云原生社区。
-- [云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)：知乎专栏
+- [云原生社区](https://cloudnative.to/contact/)
+- [知乎专栏：云原生应用架构](https://zhuanlan.zhihu.com/cloud-native)
 
 
 ## 云原生出版物
