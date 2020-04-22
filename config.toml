@@ -13,6 +13,7 @@ gcs_engine_id="012737790962522169780:fd1izxsfgrs"
 #disqusShortname = "jimmysong" # get your shortname form here : https://disqus.com
 # disable language
 disableLanguages = [] # desable language from here
+pygmentsUseClasses=true
 
 ############################# Plugins ##############################
 
@@ -27,7 +28,8 @@ link = "plugins/animate/animate.css"
 link = "plugins/venobox/venobox.css"
 [[params.plugins.css]]
 link = "plugins/themify-icons/themify-icons.css"
-
+[[params.plugins.css]]
+link = "plugins/hightlight/syntax.css"
 # JS Plugins
 [[params.plugins.js]]
 link = "plugins/jQuery/jquery.min.js"
@@ -268,3 +270,14 @@ URL = "https://www.sofastack.tech"
 name = "ServiceMesher 社区"
 URL = "https://www.servicemesher.com"
 
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "github"
+    tabWidth = 4
