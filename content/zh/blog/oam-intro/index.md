@@ -133,6 +133,7 @@ rudr-c648c9b7b-knj9b                              1/1     Running   7          7
 
 ```bash
 # 部署 Component
+
 kubectl apply -f examples/helloworld-python-component.yaml
 ```
 
@@ -210,6 +211,10 @@ Forwarding from [::1]:9999 -> 9999
 ```
 
 在浏览器中访问 <http://127.0.0.1:9999> 将看到 `Hello Rudr!` 的输出，这表示测试成功。
+
+## 未来
+
+从以上描述中可以看出 OAM 对于定义云原生应用标准的野望，其目标不仅限于 Kubernetes 之上的又一上层抽象，而是对于一切云服务，在基于资源对象的基础上，Trait 来控制 Kubernetes 中的一众高层次非可调度的资源对象，如 AutoScaler、Volume、Ingress，Istio 中的流量配置对象 VirtualService、DestinationRule 等，还可容纳更多的云服务，对于 Serverless 时代的去基础设施化的思想不谋而合，未来可期。
 
 ## 参考
 
