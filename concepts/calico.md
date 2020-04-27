@@ -42,6 +42,10 @@ wget  https://github.com/projectcalico/calicoctl/releases/download/v2.0.0/calico
 
 mv calicoctl /usr/loca/bin && chmod +x /usr/local/bin/calicoctl
 
+export CALICO_DATASTORE_TYPE=kubernetes
+
+export CALICO_KUBECONFIG=~/.kube/config 
+
 calicoctl get ippool
 
 calicoctl get node
