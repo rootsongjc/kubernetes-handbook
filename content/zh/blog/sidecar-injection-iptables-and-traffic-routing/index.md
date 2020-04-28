@@ -26,7 +26,7 @@ type: "post"
 
 ## Sidecar 模式
 
-将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod)）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
+将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
 
 ![Sidecar 模式示意图](sidecar-pattern.jpg)
 
@@ -34,7 +34,7 @@ type: "post"
 
 ### 使用 Sidecar 模式的优势
 
-使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器（如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)），这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod) 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod) 理解为一台主机，两个容器共享主机资源。
+使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器（如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)），这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod 理解为一台主机，两个容器共享主机资源。
 
 因其独特的部署结构，使得 sidecar 模式具有以下优势：
 
@@ -63,19 +63,19 @@ istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
 
 该命令会使用 Istio 内置的 sidecar 配置来注入，下面使用 Istio详细配置请参考 [Istio 官网](https://istio.io/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
 
-注入完成后您将看到 Istio 为原有 pod) template 注入了 `initContainer` 及 sidecar proxy相关的配置。
+注入完成后您将看到 Istio 为原有 pod template 注入了 `initContainer` 及 sidecar proxy相关的配置。
 
 ### Init 容器
 
 Init 容器是一种专用容器，它在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
 
-一个 Pod) 中可以指定多个 Init 容器，如果指定了多个，那么 Init 容器将会按顺序依次运行。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 Pod) 和运行应用容器。
+一个 Pod 中可以指定多个 Init 容器，如果指定了多个，那么 Init 容器将会按顺序依次运行。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 Pod 和运行应用容器。
 
 Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有不同的文件系统视图。因此，它们能够具有访问 Secret 的权限，而应用程序容器则不能。
 
-在 Pod) 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod) 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod) 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
+在 Pod 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
 
-在所有的 Init 容器没有成功之前，Pod) 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service中进行聚集。 正在初始化中的 Pod) 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
+在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
 
 关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)。
 
@@ -231,16 +231,16 @@ $ istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
         name: istio-init
 ```
 
-Istio 给应用 Pod) 注入的配置主要包括：
+Istio 给应用 Pod 注入的配置主要包括：
 
-- Init 容器 `istio-init`：用于 pod) 中设置 iptables 端口转发
+- Init 容器 `istio-init`：用于 pod 中设置 iptables 端口转发
 - Sidecar 容器 `istio-proxy`：运行 sidecar 代理，如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)
 
 接下来将分别解析下这两个容器。
 
 ## Init 容器解析
 
-Istio 在 pod) 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动命令是：
+Istio 在 pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动命令是：
 
 ```bash
 istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 15090,15020
@@ -279,7 +279,7 @@ $ istio-iptables [flags]
 
 以上传入的参数都会重新组装成 [`iptables` ](https://wangchujiang.com/linux-command/c/iptables.html)规则，关于该命令的详细用法请访问 [tools/istio-iptables/pkg/cmd/root.go](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
 
-该容器存在的意义就是让 sidecar 代理可以拦截所有的进出 pod) 的流量，15090 端口（Mixer 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（sidecar），再拦截应用容器的出站（outbound）流量经过 sidecar 处理（通过 15001 端口监听）后再出站。关于 Istio 中端口用途请参考 [Istio 官方文档](https://istio.io/zh/docs/ops/deployment/requirements/)。
+该容器存在的意义就是让 sidecar 代理可以拦截所有的进出 pod 的流量，15090 端口（Mixer 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（sidecar），再拦截应用容器的出站（outbound）流量经过 sidecar 处理（通过 15001 端口监听）后再出站。关于 Istio 中端口用途请参考 [Istio 官方文档](https://istio.io/zh/docs/ops/deployment/requirements/)。
 
 **命令解析**
 
@@ -294,7 +294,7 @@ $ istio-iptables [flags]
 
 ## iptables 注入解析
 
-为了查看 iptables 配置，我们需要登陆到 sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` pod) 所在的主机上使用 `docker` 命令登陆容器中查看。
+为了查看 iptables 配置，我们需要登陆到 sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` pod 所在的主机上使用 `docker` 命令登陆容器中查看。
 
 如果您使用 minikube 部署的 Kubernetes，可以直接登录到 minikube 的虚拟机中并切换为 root 用户。查看 iptables 配置，列出 NAT（网络地址转换）表的所有规则，因为在 Init 容器启动的时候选择给 `istio-iptables` 传递的参数中指定将入站流量重定向到 sidecar 的模式为 `REDIRECT`，因此在 iptables 中将只有 NAT 表的规格配置，如果选择 `TPROXY` 还会有 `mangle` 表配置。`iptables` 命令的详细用法请参考 [iptables](https://wangchujiang.com/linux-command/c/iptables.html) 命令。
 
@@ -374,9 +374,9 @@ Chain ISTIO_REDIRECT (1 references)
 
 ![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-jimmysong-blog.png)
 
-第一步开始时，`productpage` Pod) 中的 sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod)，知晓了其 IP 地址，发送 TCP 连接请求。
+第一步开始时，`productpage` Pod 中的 sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
 
-`reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 sidecar 工作步骤类似，下文只以其中一个 Pod) 中的 sidecar 流量转发步骤来说明。
+`reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 sidecar 工作步骤类似，下文只以其中一个 Pod 中的 sidecar 流量转发步骤来说明。
 
 ### 理解 iptables
 
@@ -460,7 +460,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 ### 理解 Inbound Handler
 
-Inbound handler 的作用是将 iptables 拦截到的 downstream 的流量转交给 localhost，与 Pod) 内的应用程序容器建立连接。假设其中一个 Pod) 的名字是 `reviews-v1-54b8794ddf-jxksn`，运行 `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` 查看该 Pod) 中的具有哪些 Listener。
+Inbound handler 的作用是将 iptables 拦截到的 downstream 的流量转交给 localhost，与 Pod 内的应用程序容器建立连接。假设其中一个 Pod 的名字是 `reviews-v1-54b8794ddf-jxksn`，运行 `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` 查看该 Pod 中的具有哪些 Listener。
 
 ```ini
 ADDRESS            PORT      TYPE
@@ -503,11 +503,11 @@ ADDRESS            PORT      TYPE
 0.0.0.0            15006     TCP <--- 接收所有经 iptables 拦截的 Inbound 流量并转交给虚拟监听器处理
 ```
 
-当来自 `productpage` 的流量抵达 `reviews` Pod) 的时候，downstream 已经明确知道 Pod) 的 IP 地址为 `172.17.0.16` 所以才会访问该 Pod)，所以该请求是 `172.17.0.15:9080`。
+当来自 `productpage` 的流量抵达 `reviews` Pod 的时候，downstream 已经明确知道 Pod 的 IP 地址为 `172.17.0.16` 所以才会访问该 Pod，所以该请求是 `172.17.0.15:9080`。
 
 **`virtualInbound` Listener**
 
-从该 Pod) 的 Listener 列表中可以看到，`0.0.0.0:15006/TCP` 的 Listener（其实际名字是 `virtualInbound`）监听所有的 Inbound 流量，下面是该 Listener 的详细配置。
+从该 Pod 的 Listener 列表中可以看到，`0.0.0.0:15006/TCP` 的 Listener（其实际名字是 `virtualInbound`）监听所有的 Inbound 流量，下面是该 Listener 的详细配置。
 
 ```json
 {
