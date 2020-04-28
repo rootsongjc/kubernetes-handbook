@@ -12,9 +12,9 @@ type: "post"
 
 本文基于 Istio 1.5.1 版本，将为大家介绍以下内容：
 
-- 什么是 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式和它的优势在哪里。
-- [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 中是如何做 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 注入的？
-- [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) proxy 是如何做透明流量劫持的？
+- 什么是 sidecar 模式和它的优势在哪里。
+- Istio 中是如何做 sidecar 注入的？
+- Sidecar proxy 是如何做透明流量劫持的？
 - 流量是如何路由到 upstream 的？
 
 在此之前我曾写过基于 Istio 1.1 版本的[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，Istio 1.5 与 Istio 1.1 中的 sidecar 注入和流量劫持环节最大的变化是：
@@ -26,66 +26,66 @@ type: "post"
 
 ## Sidecar 模式
 
-将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod)）可以被视为 **[sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式**。如下图所示，[sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
+将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod)）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
 
 ![Sidecar 模式示意图](sidecar-pattern.jpg)
 
-就像连接了 [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的三轮摩托车一样，在软件架构中， [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 连接到父应用并且为其添加扩展或者增强功能。[Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 应用与主应用程序松散耦合。它可以屏蔽不同编程语言的差异，统一实现微服务的可观察性、监控、日志记录、配置、断路器等功能。
+就像连接了 Sidecar 的三轮摩托车一样，在软件架构中， Sidecar 连接到父应用并且为其添加扩展或者增强功能。Sidecar 应用与主应用程序松散耦合。它可以屏蔽不同编程语言的差异，统一实现微服务的可观察性、监控、日志记录、配置、断路器等功能。
 
 ### 使用 Sidecar 模式的优势
 
-使用 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 副本。在 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 部署方式中，每个应用的容器旁都会部署一个伴生容器（如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)），这个容器称之为 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器。[Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 接管进出应用容器的所有流量。在 Kubernetes 的 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中，在原有的应用容器旁边注入一个 [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器的 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 理解为一台主机，两个容器共享主机资源。
+使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器（如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)），这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod) 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod) 理解为一台主机，两个容器共享主机资源。
 
-因其独特的部署结构，使得 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式具有以下优势：
+因其独特的部署结构，使得 sidecar 模式具有以下优势：
 
 - 将与应用业务逻辑无关的功能抽象到共同基础设施，降低了微服务代码的复杂度。
 - 因为不再需要编写相同的第三方组件配置文件和代码，所以能够降低微服务架构中的代码重复度。
-- [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 可独立升级，降低应用程序代码和底层平台的耦合度。
+- Sidecar 可独立升级，降低应用程序代码和底层平台的耦合度。
 
 ## Istio 中的 sidecar 注入
 
-[Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 中提供了以下两种 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 注入方式：
+Istio 中提供了以下两种 sidecar 注入方式：
 
 - 使用 `istioctl` 手动注入。
-- 基于 Kubernetes 的 [突变 webhook 入驻控制器（mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) 的自动 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 注入方式。
+- 基于 Kubernetes 的 [突变 webhook 入驻控制器（mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) 的自动 sidecar 注入方式。
 
-不论是手动注入还是自动注入，[sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的注入过程都需要遵循如下步骤：
+不论是手动注入还是自动注入，sidecar 的注入过程都需要遵循如下步骤：
 
-1. Kubernetes 需要了解待注入的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 所连接的 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 集群及其配置；
-1. Kubernetes 需要了解待注入的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器本身的配置，如镜像地址、启动参数等；
-1. Kubernetes 根据 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 注入模板和以上配置填充 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的配置参数，将以上配置注入到应用容器的一侧；
+1. Kubernetes 需要了解待注入的 sidecar 所连接的 Istio 集群及其配置；
+1. Kubernetes 需要了解待注入的 sidecar 容器本身的配置，如镜像地址、启动参数等；
+1. Kubernetes 根据 sidecar 注入模板和以上配置填充 sidecar 的配置参数，将以上配置注入到应用容器的一侧；
 
-使用下面的命令可以手动注入 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar)。
+使用下面的命令可以手动注入 sidecar。
 
 ```bash
 istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
 ```
 
-该命令会使用 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 内置的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 配置来注入，下面使用 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio)详细配置请参考 [Istio 官网](https://istio.io/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
+该命令会使用 Istio 内置的 sidecar 配置来注入，下面使用 Istio详细配置请参考 [Istio 官网](https://istio.io/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
 
-注入完成后您将看到 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 为原有 [pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) template 注入了 `initContainer` 及 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) proxy相关的配置。
+注入完成后您将看到 Istio 为原有 pod) template 注入了 `initContainer` 及 sidecar proxy相关的配置。
 
 ### Init 容器
 
 Init 容器是一种专用容器，它在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
 
-一个 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中可以指定多个 Init 容器，如果指定了多个，那么 Init 容器将会按顺序依次运行。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 和运行应用容器。
+一个 Pod) 中可以指定多个 Init 容器，如果指定了多个，那么 Init 容器将会按顺序依次运行。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 Pod) 和运行应用容器。
 
 Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有不同的文件系统视图。因此，它们能够具有访问 Secret 的权限，而应用程序容器则不能。
 
-在 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的 `restartPolicy` 指定的策略进行重试。然而，如果 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
+在 Pod) 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod) 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod) 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
 
-在所有的 Init 容器没有成功之前，[Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 将不会变成 `Ready` 状态。Init 容器的端口将不会在 [Service](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#service) 中进行聚集。 正在初始化中的 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
+在所有的 Init 容器没有成功之前，Pod) 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service中进行聚集。 正在初始化中的 Pod) 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
 
 关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)。
 
 ## Sidecar 注入示例分析
 
-以 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 官方提供的 `bookinfo` 中 `productpage` 的 YAML 为例，关于 `bookinfo` 应用的详细 YAML 配置请参考 [bookinfo.yaml](https://github.com/istio/istio/blob/master/samples/bookinfo/platform/kube/bookinfo.yaml)。
+以 Istio 官方提供的 `bookinfo` 中 `productpage` 的 YAML 为例，关于 `bookinfo` 应用的详细 YAML 配置请参考 [bookinfo.yaml](https://github.com/istio/istio/blob/master/samples/bookinfo/platform/kube/bookinfo.yaml)。
 
 下文将从以下几个方面讲解：
 
-- [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器的注入
+- Sidecar 容器的注入
 - iptables 规则的创建
 - 路由的详细过程
 
@@ -153,7 +153,7 @@ USER 1
 CMD ["python", "productpage.py", "9080"]
 ```
 
-我们看到 `Dockerfile` 中没有配置 `ENTRYPOINT`，所以 `CMD` 的配置 `python productpage.py 9080` 将作为默认的 `ENTRYPOINT`，记住这一点，再看下注入 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 之后的配置。
+我们看到 `Dockerfile` 中没有配置 `ENTRYPOINT`，所以 `CMD` 的配置 `python productpage.py 9080` 将作为默认的 `ENTRYPOINT`，记住这一点，再看下注入 sidecar 之后的配置。
 
 ```bash
 $ istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
@@ -231,16 +231,16 @@ $ istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
         name: istio-init
 ```
 
-[Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 给应用 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 注入的配置主要包括：
+Istio 给应用 Pod) 注入的配置主要包括：
 
-- Init 容器 `istio-init`：用于 [pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中设置 iptables 端口转发
-- [Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器 `istio-proxy`：运行 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 代理，如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)
+- Init 容器 `istio-init`：用于 pod) 中设置 iptables 端口转发
+- Sidecar 容器 `istio-proxy`：运行 sidecar 代理，如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)
 
 接下来将分别解析下这两个容器。
 
 ## Init 容器解析
 
-[Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 在 [pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中注入的 Init 容器名为 `istio-init`，我们在上面 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 注入完成后的 YAML 文件中看到了该容器的启动命令是：
+Istio 在 pod) 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动命令是：
 
 ```bash
 istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 15090,15020
@@ -254,9 +254,9 @@ istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 1509
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables` 命令行，该命令行工具的代码的位置在 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 源码仓库的 [tools/istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 目录。
+我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables` 命令行，该命令行工具的代码的位置在 Istio 源码仓库的 [tools/istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 目录。
 
-注意：在 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 1.1 版本时还是使用 `isito-iptables.sh` 命令行来操作 IPtables。
+注意：在 Istio 1.1 版本时还是使用 `isito-iptables.sh` 命令行来操作 IPtables。
 
 ### Init 容器启动入口
 
@@ -279,24 +279,24 @@ $ istio-iptables [flags]
 
 以上传入的参数都会重新组装成 [`iptables` ](https://wangchujiang.com/linux-command/c/iptables.html)规则，关于该命令的详细用法请访问 [tools/istio-iptables/pkg/cmd/root.go](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
 
-该容器存在的意义就是让 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 代理可以拦截所有的进出 [pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的流量，15090 端口（[Mixer](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mixer) 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（[sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar)），再拦截应用容器的出站（outbound）流量经过 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 处理（通过 15001 端口监听）后再出站。关于 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 中端口用途请参考 [Istio 官方文档](https://istio.io/zh/docs/ops/deployment/requirements/)。
+该容器存在的意义就是让 sidecar 代理可以拦截所有的进出 pod) 的流量，15090 端口（Mixer 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（sidecar），再拦截应用容器的出站（outbound）流量经过 sidecar 处理（通过 15001 端口监听）后再出站。关于 Istio 中端口用途请参考 [Istio 官方文档](https://istio.io/zh/docs/ops/deployment/requirements/)。
 
 **命令解析**
 
 这条启动命令的作用是：
 
-- 将应用容器的所有流量都转发到 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的 15006 端口。
-- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
+- 将应用容器的所有流量都转发到 sidecar 的 15006 端口。
+- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 sidecar 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
 - 使用默认的 `REDIRECT` 模式来重定向流量。
-- 将所有出站流量都重定向到 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 代理（通过 15001 端口）。
+- 将所有出站流量都重定向到 sidecar 代理（通过 15001 端口）。
 
-因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器中。
+因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 sidecar 容器中。
 
 ## iptables 注入解析
 
-为了查看 iptables 配置，我们需要登陆到 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` [pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 所在的主机上使用 `docker` 命令登陆容器中查看。
+为了查看 iptables 配置，我们需要登陆到 sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` pod) 所在的主机上使用 `docker` 命令登陆容器中查看。
 
-如果您使用 minikube 部署的 Kubernetes，可以直接登录到 minikube 的虚拟机中并切换为 root 用户。查看 iptables 配置，列出 NAT（网络地址转换）表的所有规则，因为在 Init 容器启动的时候选择给 `istio-iptables` 传递的参数中指定将入站流量重定向到 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的模式为 `REDIRECT`，因此在 iptables 中将只有 NAT 表的规格配置，如果选择 `TPROXY` 还会有 `mangle` 表配置。`iptables` 命令的详细用法请参考 [iptables](https://wangchujiang.com/linux-command/c/iptables.html) 命令。
+如果您使用 minikube 部署的 Kubernetes，可以直接登录到 minikube 的虚拟机中并切换为 root 用户。查看 iptables 配置，列出 NAT（网络地址转换）表的所有规则，因为在 Init 容器启动的时候选择给 `istio-iptables` 传递的参数中指定将入站流量重定向到 sidecar 的模式为 `REDIRECT`，因此在 iptables 中将只有 NAT 表的规格配置，如果选择 `TPROXY` 还会有 `mangle` 表配置。`iptables` 命令的详细用法请参考 [iptables](https://wangchujiang.com/linux-command/c/iptables.html) 命令。
 
 我们仅查看与 `productpage` 有关的 iptables 规则如下。
 
@@ -370,13 +370,13 @@ Chain ISTIO_REDIRECT (1 references)
     0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
 ```
 
-下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) proxy 是如何做流量拦截和路由转发的。
+下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 sidecar proxy 是如何做流量拦截和路由转发的。
 
 ![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-jimmysong-blog.png)
 
-第一步开始时，`productpage` [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod)，知晓了其 IP 地址，发送 TCP 连接请求。
+第一步开始时，`productpage` Pod) 中的 sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod)，知晓了其 IP 地址，发送 TCP 连接请求。
 
-`reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 工作步骤类似，下文只以其中一个 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中的 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 流量转发步骤来说明。
+`reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 sidecar 工作步骤类似，下文只以其中一个 Pod) 中的 sidecar 流量转发步骤来说明。
 
 ### 理解 iptables
 
@@ -456,11 +456,11 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 ## 流量路由过程详解
 
-流量路由分为 Inbound 和 Outbound 两个过程，下面将根据上文中的示例及 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 的配置为读者详细分析此过程。
+流量路由分为 Inbound 和 Outbound 两个过程，下面将根据上文中的示例及 sidecar 的配置为读者详细分析此过程。
 
 ### 理解 Inbound Handler
 
-Inbound handler 的作用是将 iptables 拦截到的 downstream 的流量转交给 localhost，与 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 内的应用程序容器建立连接。假设其中一个 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的名字是 `reviews-v1-54b8794ddf-jxksn`，运行 `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` 查看该 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 中的具有哪些 Listener。
+Inbound handler 的作用是将 iptables 拦截到的 downstream 的流量转交给 localhost，与 Pod) 内的应用程序容器建立连接。假设其中一个 Pod) 的名字是 `reviews-v1-54b8794ddf-jxksn`，运行 `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` 查看该 Pod) 中的具有哪些 Listener。
 
 ```ini
 ADDRESS            PORT      TYPE
@@ -503,11 +503,11 @@ ADDRESS            PORT      TYPE
 0.0.0.0            15006     TCP <--- 接收所有经 iptables 拦截的 Inbound 流量并转交给虚拟监听器处理
 ```
 
-当来自 `productpage` 的流量抵达 `reviews` [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的时候，downstream 已经明确知道 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的 IP 地址为 `172.17.0.16` 所以才会访问该 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod)，所以该请求是 `172.17.0.15:9080`。
+当来自 `productpage` 的流量抵达 `reviews` Pod) 的时候，downstream 已经明确知道 Pod) 的 IP 地址为 `172.17.0.16` 所以才会访问该 Pod)，所以该请求是 `172.17.0.15:9080`。
 
 **`virtualInbound` Listener**
 
-从该 [Pod](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#pod) 的 Listener 列表中可以看到，`0.0.0.0:15006/TCP` 的 Listener（其实际名字是 `virtualInbound`）监听所有的 Inbound 流量，下面是该 Listener 的详细配置。
+从该 Pod) 的 Listener 列表中可以看到，`0.0.0.0:15006/TCP` 的 Listener（其实际名字是 `virtualInbound`）监听所有的 Inbound 流量，下面是该 Listener 的详细配置。
 
 ```json
 {
@@ -656,11 +656,11 @@ Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_90
 }]
 ```
 
-我们看其中的 `filterChains.filters` 中的 `envoy.http_connection_manager` 配置部分，该配置表示流量将转交给 [Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) `inbound|9080|http|reviews.default.svc.cluster.local` 处理。
+我们看其中的 `filterChains.filters` 中的 `envoy.http_connection_manager` 配置部分，该配置表示流量将转交给Cluster`inbound|9080|http|reviews.default.svc.cluster.local` 处理。
 
 **[Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) `inbound|9080|http|reviews.default.svc.cluster.local`**
 
-运行 `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json` 查看该 [Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) 的配置如下。
+运行 `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json` 查看该Cluster的配置如下。
 
 ```json
 [
@@ -701,17 +701,17 @@ Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_90
 ]
 ```
 
-可以看到该 [Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) 的 Endpoint 直接对应的就是 localhost，再经过 iptables 转发流量就被应用程序容器消费了。
+可以看到该Cluster的 Endpoint 直接对应的就是 localhost，再经过 iptables 转发流量就被应用程序容器消费了。
 
 ### 理解 Outbound Handler
 
-因为 `reviews` 会向 `ratings` 服务发送 HTTP 请求，请求的地址是：`http://ratings.default.svc.cluster.local:9080/`，Outbound handler 的作用是将 iptables 拦截到的本地应用程序发出的流量，经由 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 判断如何路由到 upstream。
+因为 `reviews` 会向 `ratings` 服务发送 HTTP 请求，请求的地址是：`http://ratings.default.svc.cluster.local:9080/`，Outbound handler 的作用是将 iptables 拦截到的本地应用程序发出的流量，经由 sidecar 判断如何路由到 upstream。
 
-应用程序容器发出的请求为 Outbound 流量，被 iptables 劫持后转移给 Outbound handler 处理，然后经过 `virtualOutbound` Listener、`0.0.0.0_9080` Listener，然后通过 Route 9080 找到 upstream 的 [cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster)，进而通过 EDS 找到 Endpoint 执行路由动作。
+应用程序容器发出的请求为 Outbound 流量，被 iptables 劫持后转移给 Outbound handler 处理，然后经过 `virtualOutbound` Listener、`0.0.0.0_9080` Listener，然后通过 Route 9080 找到 upstream 的 cluster，进而通过 EDS 找到 Endpoint 执行路由动作。
 
 **Route `ratings.default.svc.cluster.local:9080`**
 
-`reviews` 会请求 `ratings` 服务，运行 `istioctl proxy-config routes reviews-v1-54b8794ddf-jxksn --name 9080 -o json` 查看 route 配置，因为 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 会根据 HTTP header 中的 domains 来匹配 VirtualHost，所以下面只列举了 `ratings.default.svc.cluster.local:9080` 这一个 VirtualHost。
+`reviews` 会请求 `ratings` 服务，运行 `istioctl proxy-config routes reviews-v1-54b8794ddf-jxksn --name 9080 -o json` 查看 route 配置，因为 sidecar 会根据 HTTP header 中的 domains 来匹配 VirtualHost，所以下面只列举了 `ratings.default.svc.cluster.local:9080` 这一个 VirtualHost。
 
 ```json
 [{
@@ -764,11 +764,11 @@ Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_90
 ..]
 ```
 
-从该 Virtual Host 配置中可以看到将流量路由到 [Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) `outbound|9080||ratings.default.svc.cluster.local`。
+从该 Virtual Host 配置中可以看到将流量路由到Cluster`outbound|9080||ratings.default.svc.cluster.local`。
 
 **Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
 
-运行 `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 -o json` 查看 Endpoint 配置，我们只选取其中的 `outbound|9080||ratings.default.svc.cluster.local` [Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) 的结果如下。
+运行 `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 -o json` 查看 Endpoint 配置，我们只选取其中的 `outbound|9080||ratings.default.svc.cluster.local`Cluster的结果如下。
 
 ```json
 {
@@ -802,11 +802,11 @@ Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_90
 }
 ```
 
-Endpoint 可以是一个或多个，[sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 将根据一定规则选择适当的 Endpoint 来路由。至此 Review 服务找到了它 upstream 服务 Rating 的 Endpoint。
+Endpoint 可以是一个或多个，sidecar 将根据一定规则选择适当的 Endpoint 来路由。至此 Review 服务找到了它 upstream 服务 Rating 的 Endpoint。
 
 ## 小结
 
-本文使用了 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 官方提供的 bookinfo 示例，按图索骥得带领读者了解了 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 注入、iptables 透明流量劫持及 [sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 中流量路由背后的实现细节。[Sidecar](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#sidecar) 模式和流量透明劫持是 [Istio](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#istio) 服务网格的特色和基础功能，理解该功能的背后过程及实现细节，将有助于大家理解 [service mesh](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#service-mesh) 的原理和 [Istio Handbook](https://www.servicemesher.com/istio-handbook/) 后面章节中的内容，因此希望读者可以在自己的环境中从头来试验一遍以加深理解。
+本文使用了 Istio 官方提供的 bookinfo 示例，按图索骥得带领读者了解了 sidecar 注入、iptables 透明流量劫持及 sidecar 中流量路由背后的实现细节。Sidecar 模式和流量透明劫持是 Istio 服务网格的特色和基础功能，理解该功能的背后过程及实现细节，将有助于大家理解 Service Mesh 的原理和 [Istio Handbook](https://www.servicemesher.com/istio-handbook/) 后面章节中的内容，因此希望读者可以在自己的环境中从头来试验一遍以加深理解。
 
 使用 iptables 做流量劫持只是 service mesh 的数据平面中做流量劫持的方式之一，还有更多的流量劫持方案，下面引用自 [云原生网络代理 MOSN 官网中给出的流量劫持](https://mosn.io/zh/docs/concept/traffic-hijack/)部分的描述。
 

@@ -375,6 +375,10 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 | POSTROUTING |      |        | ✓    | ✓      |          |
 | FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
 
+下图是 iptables 的调用链顺序。
+
+![iptables 调用链顺序](iptables-chains.jpg)
+
 关于 iptables 的详细介绍请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
 
 ### iptables 命令
@@ -404,8 +408,6 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 ```
 
 我们看到三个默认的链，分别是 INPUT、FORWARD 和 OUTPUT，每个链中的第一行输出表示链名称（在本例中为INPUT/FORWARD/OUTPUT），后跟默认策略（ACCEPT）。
-
-下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
 
 每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
 
