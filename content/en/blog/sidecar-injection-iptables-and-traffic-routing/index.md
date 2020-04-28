@@ -30,7 +30,7 @@ Read the Chinese version: [阅读中文版](/blog/sidecar-injection-iptables-and
 
 Dividing the functionality of an application into separate processes running in the same minimal scheduling unit (e.g. Pod in Kubernetes) can be considered sidecar mode. As shown in the figure below, Sidecar pattern allows you to add more features next to your application without additional third-party component configuration or modifications to the application code.
 
-![Sidecar pattern](sidecar-pattern.jpg)
+![Sidecar pattern](sidecar-pattern.png)
 
 The Sidecar application is loosely coupled to the main application. It can shield the differences of different programming languages and unify the functions of microservices such as observability, monitoring, logging, configuration, circuit breaker, etc.
 
