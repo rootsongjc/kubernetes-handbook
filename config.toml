@@ -101,6 +101,11 @@ icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
 link = "https://twitter.com/jimmysongio"
 
 [[params.social]]
+title = "facebook"
+icon = "ti-facebook" # themify icon : https://themify.me/themify-icons
+link = "https://facebook.com/jimmysongio"
+
+[[params.social]]
 title = "github"
 icon = "ti-github" # themify icon : https://themify.me/themify-icons
 link = "https://github.com/rootsongjc"

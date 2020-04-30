@@ -3,7 +3,7 @@ title: "Sidecar injection and transparent traffic hijacking process in Istio exp
 date: 2020-04-27T21:08:59+08:00
 draft: false
 tags: ["istio","iptables"]
-description: "Based on Istio version 1.5.1, this blog describes the sidecar pattern and its advantages sidecar injection into the data plane, how traffic hijacking and forwarding is done, and how traffic is routed to upstream."
+description: "Based on Istio version 1.5.1, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and forwarding is done, and how traffic is routed to upstream."
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
@@ -12,12 +12,12 @@ type: "post"
 
 Based on Istio version 1.5.1, this article will present the following.
 
-- What is the sidecar model and where are its advantages.
+- What is the sidecar pattern and what advantages does it have?
 - How are sidecar injections done in Istio?
 - How does Sidecar proxy do transparent traffic hijacking?
 - How is the traffic routed to upstream?
 
-Previously I wrote about [understanding Envoy proxy Sidecar injection and traffic hijacking in Istio Service Mesh](/en/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) based on Istio version 1.1. The biggest changes in the sidecar injection and traffic hijacking link between Istio 1.5 and Istio 1.1 are:
+A year ago, I have written about [understanding Envoy proxy Sidecar injection and traffic hijacking in Istio Service Mesh](/en/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) which was based on Istio version 1.1. The biggest changes in the sidecar injection and traffic hijacking link between Istio 1.5 and Istio 1.1 are:
 
 - iptables switched to a command-line tool and no longer uses shell scripts.
 - The sidecar inbound and outbound specify the ports separately, whereas previously the same port (15001) was used.
@@ -49,13 +49,13 @@ Due to its unique deployment architecture, the sidecar model offers the followin
 The following two sidecar injection methods are available in Istio.
 
 - Manual injection using `istioctl`.
-- Kubernetes-based [mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) automatic sidecar injection method.
+- Kubernetes-based [mutating webhook admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) automatic sidecar injection method.
 
 Whether injected manually or automatically, SIDECAR's injection process follows the following steps.
 
 1. Kubernetes needs to know the Istio cluster to which the sidecar to be injected is connected and its configuration.
 2. Kubernetes needs to know the configuration of the sidecar container itself to be injected, such as the image address, boot parameters, etc.
-3. Kubernetes injects the above configuration into the side of the application container in accordance with the sidecar injection template and the configuration parameters of the above configuration-filled sidecar.
+3. Kubernetes injects the above configuration into the side of the application container by the sidecar injection template and the configuration parameters of the above configuration-filled sidecar.
 
 The sidecar can be injected manually using the following command.
 
@@ -75,13 +75,13 @@ Multiple Init containers can be specified in a Pod, and if more than one is spec
 
 The Init container uses Linux Namespace, so it has a different view of the file system than the application container. As a result, they can have access to Secret in a way that application containers cannot.
 
-During Pod startup, the Init container starts sequentially after the network and data volumes are initialized. Each container must be successfully exited before the next container can be started. If exiting due to a runtime or failure will result in a container startup failure, it will retry according to the policy specified in the Pod's restartPolicy. However, if the Pod's restartPolicy is set to Always, the RestartPolicy policy is used when the Init container fails.
+During Pod startup, the Init container starts sequentially after the network and data volumes are initialized. Each container must be successfully exited before the next container can be started. If exiting due to a error will result in a container startup failure, it will retry according to the policy specified in the Pod's restartPolicy. However, if the Pod's restartPolicy is set to Always, the restartPolicy is used when the Init container failed.
 
-The Pod will not become Ready until all Init containers are successful. the ports of the Init containers will not be aggregated in the Service. The Pod that is being initialized is in the Pending state, but should set the Initializing state to true. the Init container will automatically terminate once it is run.
+The Pod will not become Ready until all Init containers are successful. The ports of the Init containers will not be aggregated in the Service. The Pod that is being initialized is in the Pending state, but should set the Initializing state to true. The Init container will automatically terminate once it is run.
 
 ## Sidecar injection example analysis
 
-For a detailed YAML configuration for bookinfo applications, see bookinfo.yaml for the official Istio YAML for productpage in bookinfo.
+For a detailed YAML configuration for bookinfo applications, see bookinfo.yaml for the official Istio YAML of productpage in bookinfo sample.
 
 The following will be explained in the following terms.
 
@@ -231,7 +231,7 @@ We intercept only a portion of the YAML configuration that is part of the Deploy
         name: istio-init
 ```
 
-Istio's configuration for application Pod injection mainly includes.
+Istio's configuration for application Pod injection mainly includes:
 
 - Init container `istio-init`: for setting iptables port forwarding in pod
 - Sidecar container `istio-proxy`: running a sidecar proxy, such as Envoy or MOSN
@@ -254,13 +254,13 @@ Let's check the container's Dockerfile again to see how `ENTRYPOINT` determines 
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-We see that the entrance to the istio-init container is the `/usr/local/bin/istio-iptables` command line, and the location of the code for this command line tool is in the `tools/istio-iptables` directory of the Istio source code repository.
+We see that the entrypoint of the istio-init container is the `/usr/local/bin/istio-iptables` command line, and the location of the code for this command line tool is in the `tools/istio-iptables` directory of the Istio source code repository.
 
 Note: In Istio version 1.1, the `isito-iptables.sh` command line is still used to operate IPtables.
 
 ### Init container initiation
 
-The Init container's startup portal is the `istio-iptables` command line, which is used as follows.
+The Init container's entrypoint is the `istio-iptables` command line, which is used as follows.
 
 ```bash
 Usage:
@@ -295,7 +295,7 @@ The significance of the container's existence is that it allows the sidecar agen
 
 **Command analysis**
 
-The purpose of this start-up command is to.
+Here is the purpose of this start-up command.
 
 - Forward all traffic from the application container to port 15006 of the sidecar.
 - Run with the istio-proxy user identity, with a UID of 1337, the user space where the sidecar is located, which is the default user used by the istio-proxy container, see the runAsUser field of the YAML configuration.
@@ -306,7 +306,7 @@ Because the Init container is automatically terminated after initialization, sin
 
 ## iptables manipulation analysis
 
-In order to view the iptables configuration, we need to log into the sidecar container using the root user to view it, because kubectl cannot use privileged mode to remotely manipulate the docker container, so we need to log into the docker command on the host where the productpage pod is located.
+In order to view the iptables configuration, we need to `nsente`r the sidecar container using the root user to view it, because kubectl cannot use privileged mode to remotely manipulate the docker container, so we need to log on the host where the productpage pod is located.
 
 If you use Kubernetes deployed by minikube, you can log directly into the minikube's virtual machine and switch to root. View the iptables configuration that lists all the rules for the NAT (Network Address Translation) table because the mode for redirecting inbound traffic to the sidecar is REDIRECT in the parameters passed to the istio-iptables when the Init container is selected for startup, so there will only be NAT table specifications in the iptables and mangle table configurations if TPROXY is selected. See the iptables command for detailed usage.
 
