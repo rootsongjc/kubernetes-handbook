@@ -87,7 +87,7 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  title : "中国最具影响力的云原生中立社区"
+  title : "中国最具影响力的企业中立的云原生开源社区"
   button:
     enable : true
     label : "加入我们"
