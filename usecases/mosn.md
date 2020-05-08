@@ -2,9 +2,7 @@
 
 MOSN 是蚂蚁金服开源的，使用 Go 语言开发的网络代理软件，作为云原生的网络数据平面，旨在为服务提供多协议，模块化，智能化，安全的代理能力。MOSN 是 Modular Open Smart Network-proxy 的简称。MOSN 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡，API Gateway，云原生 Ingress 等使用。
 
-- MOSN 开源地址：<https://github.com/mosn/mosn>
-
-- MOSN 官网：<https://mosn.io>
+MOSN 开源地址：<https://github.com/mosn/mosn>
 
 ## 特点
 
@@ -73,4 +71,10 @@ MOSN 使用 Go 语言编写，Go 语言在生产效率，内存安全上有比�
 
 - MOSN 支持多协议框架，用户可以比较容易的接入私有协议，具有统一的路由框架；
 - 多进程的插件机制，可以通过插件框架很方便的扩展独立 MOSN 进程的插件，做一些其他管理，旁路等的功能模块扩展；
-- 具备中国密码合规的传输层国密算法支持；
+
+## 参考
+
+- [MOSN - github.com](https://github.com/mosn/mosn)
+- [MOSN 官网 - mosn.io](https://mosn.io/zh)
+
+

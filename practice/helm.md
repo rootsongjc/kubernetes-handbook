@@ -1,5 +1,7 @@
 # 使用Helm管理kubernetes应用
 
+**本文基于 Helm v2，待更新 Helm v3 的说明。**
+
 读完本文后您应该可以自己创建chart，并创建自己的私有chart仓库。
 
 [Helm](http://helm.sh)是一个kubernetes应用的包管理工具，用来管理[charts](https://github.com/kubernetes/charts)——预先配置好的安装包资源，有点类似于Ubuntu的APT和CentOS中的yum。
