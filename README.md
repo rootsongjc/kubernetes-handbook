@@ -54,7 +54,7 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 
 ## 快速开始
 
-如果您想要学习Kubernetes和云原生应用架构但是又不想自己从头开始搭建和配置一个集群，那么可以直接使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)项目直接在本地部署一个3节点的分布式集群及其他如Heapster、EFK、Istio等可选组件，或者使用更加轻量级的[cloud-native-sandbox](https://github.com/rootsongjc/cloud-native-sandbox)在个人电脑上使用Docker运行单节点的Kubernetes、Istio等组件。
+如果您想要学习Kubernetes和云原生应用架构但是又不想自己从头开始搭建和配置一个集群，那么可以直接使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)项目直接在本地部署一个3节点的分布式集群及其他如Heapster、EFK、Istio等可选组件，或者使用更加轻量级的[cloud-native-sandbox](https://github.com/rootsongjc/cloud-native-sandbox)在个人电脑上使用Docker运行单节点的Kubernetes、Istio等组件。您还可以使用在线学习平台 [Katacoda 的环境](https://katacoda.com/kubernetes)，无需注册，免费在线学习！
 
 ## 贡献与致谢
 
@@ -78,9 +78,7 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 
 ## 云原生社区
 
-云原生社区是一个有技术、有温度、有情怀的开源社区，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)发起与 2020 年 2 月，秉持“共识、共治、共建、共享”的原则。立足中国，面向世界，企业中立，旨在借助开源打破企业的边界，关注技术人的成长，促进中国云原生开源的发展。
-
-如果您也有志于投身云原生的历史洪流中，不要犹豫，[加入我们](https://cloudnative.to/contact/)！
+云原生社区是一个有技术、有温度、有情怀的开源社区，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)成立于 2020 年 5 月 12 日，秉持“共识、共治、共建、共享”的原则。立足中国，面向世界，企业中立，旨在借助开源打破企业的边界，关注技术人的成长，面向全球华人，促进中国云原生开源的发展。欢迎[加入我们](https://cloudnative.to/contact/)！
 
 
 ## 云原生出版物
@@ -94,7 +92,8 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 
 ## 推荐
 
-- [深入剖析 Kubernetes](https://tva1.sinaimg.cn/large/006y8mN6ly1g7vf4p12rpj30u01hdjwp.jpg)：极客时间推出的 Kubernetes 专栏
+- [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native) - 云原生开源项目大全
+- [深入剖析 Kubernetes](https://time.geekbang.org/column/intro/116?code=IRLmmVKgTghcFr5iafwl9kZezb48Uhf4Pjdf13-W3ko%3D&utm_term=SPoster)：极客时间推出的 Kubernetes 专栏
 - [深入浅出云计算](https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster)：云原生时代给开发者和架构师的云计算指南
 - [《Istio Handbook——Istio 服务网格进阶实战》](https://www.servicemesher.com/istio-handbook/)：ServiceMesher 社区出品的开源电子书
 
