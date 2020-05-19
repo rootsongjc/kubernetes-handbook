@@ -80,6 +80,11 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 
 云原生社区是一个有技术、有温度、有情怀的开源社区，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)成立于 2020 年 5 月 12 日，秉持“共识、共治、共建、共享”的原则。立足中国，面向世界，企业中立，旨在借助开源打破企业的边界，关注技术人的成长，面向全球华人，促进中国云原生开源的发展。欢迎[加入我们](https://cloudnative.to/contact/)！
 
+<p align="center">
+<img src="images/cloud-native-wechat.jpg" alt="云原生社区微信公众号" title="云原生社区微信公众号"/>
+</p>
+
+
 
 ## 云原生出版物
 
@@ -96,11 +101,3 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 - [深入剖析 Kubernetes](https://time.geekbang.org/column/intro/116?code=IRLmmVKgTghcFr5iafwl9kZezb48Uhf4Pjdf13-W3ko%3D&utm_term=SPoster)：极客时间推出的 Kubernetes 专栏
 - [深入浅出云计算](https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster)：云原生时代给开发者和架构师的云计算指南
 - [《Istio Handbook——Istio 服务网格进阶实战》](https://www.servicemesher.com/istio-handbook/)：ServiceMesher 社区出品的开源电子书
-
-## 支持本书
-
-如果您觉得本书给您带来帮助，可以使用微信扫一扫请我喝杯☕️，谢谢！
-
-<p align="center">
-<img src="images/wechat-appreciate-qrcode.jpg" alt="微信赞赏码"/>
-</p>
