@@ -11,7 +11,7 @@ description : "Jimmy Song's profile."
 
 ### Introduction
 
-宋净超 (Jimmy Song), Cloud Native developer advocate of [Ant Financial](http://antfin.com/) , [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) , co-founder of [ServiceMesher community](https://www.servicemesher.com/) , outstanding translator and producer of PHEI. Early adopters and promoters of technologies such as Kubernetes, Istio.
+Jimmy Song(宋净超) is a cloud native developer advocate worked for [Ant Financial](http://antfin.com/) , [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) , co-founder of [ServiceMesher community](https://www.servicemesher.com/) and [Cloud Native Community](https://cloudnative.to/en). He is an outstanding translator, author and producer of PHEI. Early adopters and evangelis of Kubernetes and Istio.
 
 ### Publications
 
