@@ -84,8 +84,6 @@ Kubernetes Handbook开源于2017年3月并在其后不断完善，是第一本�
 <img src="images/cloud-native-wechat.jpg" alt="云原生社区微信公众号" title="云原生社区微信公众号"/>
 </p>
 
-
-
 ## 云原生出版物
 
 以下为本人参与出版的云原生相关图书。
