@@ -6,3 +6,4 @@ CNCF成立于2015年12月11日，自2018年开始每年年初都会发布一次 
 
 - [CNCF Annual Report 2017 pdf](https://www.cncf.io/wp-content/uploads/2018/03/CNCF-Annual-Report-2017.pdf)
 - [CNCF Annual Report 2018 pdf](https://www.cncf.io/wp-content/uploads/2019/02/CNCF_Annual_Report_2018_FInal.pdf)
+- [CNCF Annual Report 2019 pdf](https://www.cncf.io/wp-content/uploads/2020/02/CNCF-Annual-Report-2019.pdf)
