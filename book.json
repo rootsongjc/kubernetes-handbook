@@ -6,7 +6,8 @@
     "links": {
         "sidebar": {
             "回到主页": "https://jimmysong.io",
-            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native"
+            "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
+            "云原生社区": "https://cloudnative.to"
         }
     },
     "plugins": [
@@ -50,7 +51,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster>给开发者和架构师的云计算指南 - 极客时间专栏《深入浅出云计算》</a> | <a href=https://jimmysong.io/contact/>加入云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "copyright": "<a href=https://jimmysong.io/contact/>加入中国最大的有技术、有温度、有情怀的云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
