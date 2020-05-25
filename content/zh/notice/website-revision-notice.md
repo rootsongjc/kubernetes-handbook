@@ -23,9 +23,10 @@ type: "notice"
 - 重新梳理网站内容，结构更加合理
 - 支持邮件订阅
 - 图片使用 Github 存储
+- 更换 Hugo 主题为 [educenter-hugo](https://github.com/themefisher/educenter-hugo)，并做了大量修改
 - 响应式静态网站，卡片式设计，用户体验更好
-
-欢迎大家在页面最下方的邮件输入框中输入您的邮箱地址，本站一旦有重要内容更新将第一时间通过邮件推送给您。
+- 增加了 Google 自定义搜索
+- 增加了 RSS 订阅，见页面底部
 
 
 
