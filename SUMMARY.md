@@ -245,6 +245,7 @@
 * [Operator](develop/operator.md)
   * [operator-sdk](develop/operator-sdk.md)
 * [kubebuilder](develop/kubebuilder.md)
+  * [使用 kubebuilder 创建 operator 示例](develop/kubebuilder-example.md)
 * [高级开发指南](develop/advance-developer.md)
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)

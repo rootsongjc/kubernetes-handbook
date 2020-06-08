@@ -6,6 +6,8 @@
 
 - 官方网站：<https://kubeedge.io>
 
+另外还有很多其他边缘计算相关的 Kubernetes 生态开源项目请见 [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native/#edge-computing)。
+
 ## KubeEdge
 
 ![KubeEdge logo](https://tva1.sinaimg.cn/large/006y8mN6ly1g7vfsugr2fj306y06yjra.jpg)

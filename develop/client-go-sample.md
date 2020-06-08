@@ -2,19 +2,17 @@
 
 访问kubernetes集群有几下几种方式：
 
-| 方式                                       | 特点                                       | 支持者    |
-| ---------------------------------------- | ---------------------------------------- | ------ |
-| Kubernetes dashboard                     | 直接通过Web UI进行操作，简单直接，可定制化程度低              | 官方支持   |
-| kubectl                                  | 命令行操作，功能最全，但是比较复杂，适合对其进行进一步的分装，定制功能，版本适配最好 | 官方支持   |
-| [client-go](https://github.com/kubernetes/client-go) | 从kubernetes的代码中抽离出来的客户端包，简单易用，但需要小心区分kubernetes的API版本 | 官方支持   |
-| [client-python](https://github.com/kubernetes-incubator/client-python) | python客户端，kubernetes-incubator           | 官方支持   |
-| [Java client](https://github.com/fabric8io/kubernetes-client) | fabric8中的一部分，kubernetes的java客户端          | redhat |
+| 方式                                                         | 特点                                                         | 支持者   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
+| Kubernetes dashboard                                         | 直接通过Web UI进行操作，简单直接，可定制化程度低             | 官方支持 |
+| kubectl                                                      | 命令行操作，功能最全，但是比较复杂，适合对其进行进一步的分装，定制功能，版本适配最好 | 官方支持 |
+| [client-go](https://github.com/kubernetes/client-go)         | 从kubernetes的代码中抽离出来的客户端包，简单易用，但需要小心区分kubernetes的API版本 | 官方支持 |
+| [client-python](https://github.com/kubernetes-incubator/client-python) | python客户端，kubernetes-incubator                           | 官方支持 |
+| [Java client](https://github.com/fabric8io/kubernetes-client) | fabric8中的一部分，kubernetes的java客户端                    | Red Hat  |
 
 下面，我们基于[client-go](https://github.com/kubernetes/client-go)，对Deployment升级镜像的步骤进行了定制，通过命令行传递一个Deployment的名字、应用容器名和新image名字的方式来升级。
 
-## kubernetes-client-go-sample
-
-代码如下：
+[kubernetes-client-go-sample](https://github.com/rootsongjc/kubernetes-client-go-sample)  项目的 `main.go` 代码如下：
 
 ```go
 package main
@@ -106,20 +104,22 @@ func homeDir() string {
 }
 ```
 
-我们使用`kubeconfig`文件认证连接kubernetes集群，该文件默认的位置是`$HOME/.kube/config`。
+我们使用`kubeconfig`文件认证连接Kubernetes集群，该文件默认的位置是`$HOME/.kube/config`。
 
-该代码编译后可以直接在kubernetes集群之外，任何一个可以连接到API server的机器上运行。
+该代码编译后可以直接在Kubernetes集群之外，任何一个可以连接到API server的机器上运行。
 
 **编译运行**
 
 ```bash
 $ go get github.com/rootsongjc/kubernetes-client-go-sample
 $ cd $GOPATH/src/github.com/rootsongjc/kubernetes-client-go-sample
-$ make
-$ ./update-deployment-image -h
-Usage of ./update-deployment-image:
-  -alsologtostderr
-    	log to standard error as well as files
+$ go build main.go
+```
+
+该命令的用法如下。
+
+```bash
+ $ ./main
   -app string
     	application name (default "app")
   -deployment string
@@ -128,24 +128,12 @@ Usage of ./update-deployment-image:
     	new image name
   -kubeconfig string
     	(optional) absolute path to the kubeconfig file (default "/Users/jimmy/.kube/config")
-  -log_backtrace_at value
-    	when logging hits line file:N, emit a stack trace
-  -log_dir string
-    	If non-empty, write log files in this directory
-  -logtostderr
-    	log to standard error instead of files
-  -stderrthreshold value
-    	logs at or above this threshold go to stderr
-  -v value
-    	log level for V logs
-  -vmodule value
-    	comma-separated list of pattern=N settings for file-filtered logging
 ```
 
 **使用不存在的image更新**
 
 ```bash
- $ ./update-deployment-image -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_9 
+ $ ./main -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_9 
 Found deployment
 name -> filebeat-test
 Old image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
@@ -200,7 +188,7 @@ filebeat-test-2470325483-gc14k   1/2       ImagePullBackOff   0          4m
 将image设置为原来的镜像。
 
 ```bash
-$ ./update-deployment-image -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
+$ ./main -deployment filebeat-test -image harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
 Found deployment
 name -> filebeat-test
 Old image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_9
