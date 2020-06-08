@@ -26,7 +26,7 @@ Kubernetes中不仅支持CPU、内存为指标的HPA，还支持自定义指标�
 
 确认您的kubernetes版本在1.7或以上，修改以下配置：
 
-- 将kube-controller-manager的启动参数中`--horizontal-pod-autoscaler-use-rest-clients`设置为true，并指定`--master`为API server地址，如`--master=http://172.20.0.113:8080
+- 将kube-controller-manager的启动参数中`--horizontal-pod-autoscaler-use-rest-clients`设置为true，并指定`--master`为API server地址，如`--master=http://172.20.0.113:8080`
 - 修改kube-apiserver的配置文件apiserver，增加一条配置`--requestheader-client-ca-file=/etc/kubernetes/ssl/ca.pem --requestheader-allowed-names=aggregator --requestheader-extra-headers-prefix=X-Remote-Extra- --requestheader-group-headers=X-Remote-Group --requestheader-username-headers=X-Remote-User --proxy-client-cert-file=/etc/kubernetes/ssl/kubernetes.pem --proxy-client-key-file=/etc/kubernetes/ssl/kubernetes-key.pem`，用来配置aggregator的CA证书。
 
 已经内置了`apiregistration.k8s.io/v1beta1` API，可以直接定义APIService，如：

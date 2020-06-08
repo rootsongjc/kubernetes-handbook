@@ -1,8 +1,8 @@
-## Aggregated API Server
+# Aggregated API Server
 
 Aggregated（聚合的）API  server是为了将原来的API server这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的API server集成进来，而不用直接修改kubernetes官方仓库的代码，这样一来也能将API server解耦，方便用户使用实验特性。这些API server可以跟core API server无缝衔接，使用kubectl也可以管理它们。
 
-### 架构
+## 架构
 
 我们需要创建一个新的组件，名为`kube-aggregator`，它需要负责以下几件事：
 
@@ -14,7 +14,7 @@ Aggregated（聚合的）API  server是为了将原来的API server这个巨石�
 
 关于聚合的API server的更多信息请参考：[Aggregated API Server](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md)
 
-### 安装配置聚合的API server
+## 安装配置聚合的API server
 
 有两种方式来启用`kube-aggregator`：
 
