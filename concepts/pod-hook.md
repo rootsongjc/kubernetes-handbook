@@ -27,7 +27,7 @@ spec:
           command: ["/usr/sbin/nginx","-s","quit"]
 ```
 
-在容器创建之后，容器的 Entrypoint 执行之前，这时候 Pod 已经被调度到某台 node 上，被某个 kubelet 管理了，这时候 kubelet 会调用 postStart 操作，该操作跟容器的启动命令是在异步执行的，也就是说在 postStart 操作执行完成之前，kubelet 会锁住容器，不让应用程序的进程启动，只有在 postStart 操作完成之后容器的状态才会被设置成为 RUNNING。
+在容器创建之后，容器的 Entrypoint 执行之前，这时候 Pod 已经被调度到某台 node 上，被某个 kubelet 管理了，这时候 kubelet 会调用 postStart 操作，该操作跟容器的启动命令是在同步执行的，也就是说在 postStart 操作执行完成之前，kubelet 会锁住容器，不让应用程序的进程启动，只有在 postStart 操作完成之后容器的状态才会被设置成为 RUNNING。
 
 如果 postStart 或者 preStop hook 失败，将会终止容器。
 

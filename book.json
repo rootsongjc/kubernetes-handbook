@@ -51,7 +51,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<a href=https://jimmysong.io/contact/>加入中国最大的有技术、有温度、有情怀的云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "copyright": "<a href=https://cloudnative.to/contact/>加入中国最大的有技术、有温度、有情怀的云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
