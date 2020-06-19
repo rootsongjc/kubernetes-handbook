@@ -1,3 +1,5 @@
+# Application Scope
+
 本文基于 OAM v1alpha2 版本。
 
 `ApplicationScope` 根据 `Component` 中的应用逻辑或共同行为划定作用域，将其分组以便于管理。
