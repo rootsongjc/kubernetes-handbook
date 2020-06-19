@@ -7,7 +7,9 @@
         "sidebar": {
             "回到主页": "https://jimmysong.io",
             "Awesome Cloud Native": "https://jimmysong.io/awesome-cloud-native",
-            "云原生社区": "https://cloudnative.to"
+            "云原生社区": "https://cloudnative.to",
+            "中国云原生发展白皮书2020": "https://cloudnativeindustryalliance.github.io/whitepaper2020/",
+            "云原生应用白皮书": "https://jimmysong.io/guide-to-cloud-native-app/"
         }
     },
     "plugins": [
