@@ -195,6 +195,8 @@
 * [更新与升级](practice/update-and-upgrade.md)
   * [手动升级 Kubernetes 集群](practice/manually-upgrade.md)
   * [升级 dashboard](practice/dashboard-upgrade.md)
+* [扩展控制器](practice/controller-extended.md)
+  * [OpenKruise](practice/openkruise.md)
 
 ## 领域应用
 
