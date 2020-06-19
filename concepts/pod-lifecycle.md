@@ -1,5 +1,7 @@
 # Pod 的生命周期
 
+本文讲解的是 Kubernetes  中 Pod 的生命周期，包括生命周期的不同阶段、存活和就绪探针、重启策略等。
+
 ## Pod phase
 
 Pod 的 `status` 字段是一个 PodStatus 对象，PodStatus中有一个 `phase` 字段。
@@ -54,6 +56,42 @@ Kubelet 可以选择是否执行在容器上运行的两种探针执行和做出
 如果您希望容器能够自行维护，您可以指定一个就绪探针，该探针检查与存活探针不同的端点。
 
 请注意，如果您只想在 Pod 被删除时能够排除请求，则不一定需要使用就绪探针；在删除 Pod 时，Pod 会自动将自身置于未完成状态，无论就绪探针是否存在。当等待 Pod 中的容器停止时，Pod 仍处于未完成状态。
+
+### readinessGates
+
+自 Kubernetes 1.14（该版本 `readinessGates` GA，在1.11 版本是为 alpha）起默认支持 Pod 就绪检测机制扩展。
+
+应用程序可以向 PodStatus 注入额外的反馈或信号：Pod readiness。要使用这个功能，请在 PodSpec 中设置 `readinessGates` 来指定 kubelet 评估 Pod readiness 的附加条件列表。
+
+Readiness gates 由 Pod 的 `status.condition` 字段的当前状态决定。如果 Kubernetes 在 Pod 的 `status.conditions` 字段中找不到这样的条件，则该条件的状态默认为 "False"。
+
+下面是一个例子。
+
+```yaml
+kind: Pod
+...
+spec:
+  readinessGates:
+    - conditionType: "www.example.com/feature-1"
+status:
+  conditions:
+    - type: Ready                              # 内置的 Pod 状态
+      status: "False"
+      lastProbeTime: null
+      lastTransitionTime: 2018-01-01T00:00:00Z
+    - type: "www.example.com/feature-1"        # 附加的额外的 Pod 状态
+      status: "False"
+      lastProbeTime: null
+      lastTransitionTime: 2018-01-01T00:00:00Z
+  containerStatuses:
+    - containerID: docker://abcd...
+      ready: true
+...
+```
+
+您添加的 Pod 条件的名称必须符合 Kubernetes 的 [label key 格式](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
+
+只有到 Pod 中的所有容器状态都是 Ready，且 Pod 附加的额外状态检测的 `readinessGates` 条件也是 Ready 的时候，Pod 的状态才是 Ready。
 
 ## Pod 和容器状态
 
@@ -157,6 +195,8 @@ spec:
   - 节点控制器将 Pod `phase` 设置为 Failed。
   - 如果是用控制器来运行，Pod 将在别处重建。
 
-原文地址：https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
+## 参考
 
-翻译：[rootsongjc](https://github.com/rootsongjc)
+- [Pod lifecycle - kubernetes.io](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
+
+
