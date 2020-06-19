@@ -17,19 +17,19 @@
 
 启动第一个实例作为Master节点，在web终端上执行：
 
-1. 初始化master节点：
+**1.** 初始化master节点：
 
 ```bash
 kubeadm init --apiserver-advertise-address $(hostname -i)
 ```
 
-2. 初始化集群网络：
+**2.** 初始化集群网络：
 
 ```bash
 kubectl apply -n kube-system -f  "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
-3. 执行下列初始化命令：
+**3.** 执行下列初始化命令：
 
 ```bash
 mkdir -p $HOME/.kube
@@ -37,7 +37,7 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-4. 启动新的实例作为node节点，根据master节点上的提示，在新的web终端上执行：
+**4.** 启动新的实例作为node节点，根据master节点上的提示，在新的web终端上执行：
 
 ```bash
 kubeadm join --token 513212.cfea0165b8988d18 192.168.0.13:6443 --discovery-token-ca-cert-hash sha256:b7b6dcc98f3ead3f9e363cb3928fbc04774ee0d63e8eb2897ae30e05aebf8070
