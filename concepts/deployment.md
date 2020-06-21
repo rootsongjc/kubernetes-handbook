@@ -1,7 +1,5 @@
 # Deployment
 
-## 简述
-
 Deployment 为 Pod 和 ReplicaSet 提供了一个声明式定义（declarative）方法，用来替代以前的 ReplicationController 来方便的管理应用。典型的应用场景包括：
 
 - 定义 Deployment 来创建 Pod 和 ReplicaSet
@@ -28,13 +26,29 @@ spec:
         image: nginx:1.7.9
         ports:
         - containerPort: 80
-​```扩容：```
+```
+
+扩容：
+
+```bash
 kubectl scale deployment nginx-deployment --replicas 10
-​```如果集群支持 horizontal pod autoscaling 的话，还可以为 Deployment 设置自动扩展：```
+```
+
+如果集群支持 horizontal pod autoscaling 的话，还可以为 Deployment 设置自动扩展：
+
+```bash
 kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80
-​```更新镜像也比较简单:```
+```
+
+更新镜像也比较简单：
+
+```bash
 kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1
-​```回滚：```
+```
+
+回滚：
+
+```bash
 kubectl rollout undo deployment/nginx-deployment
 ```
 
