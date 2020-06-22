@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: food-trucks
+spec:
+  selector:
+    app: food-trucks
+  type: NodePort
+  ports:
+    - port: 5000
+      targetPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food-trucks-deployment
+  labels:
+    app: food-trucks
+spec:
+  selector:
+    matchLabels:
+      app: food-trucks
+  template:
+    metadata:
+      labels:
+        app: food-trucks
+    spec:
+      containers:
+      - name: food-trucks-web
+        image: zzxwill/foodtrucks-web:0.1.1
+        env:
+        - name: discovery.type
+          value: single-node
+        ports:
+        - containerPort: 5000
+      - name: es
+        image: jimmysong/elasticsearch:6.3.2
+        ports:
+        - containerPort: 9200
+        - containerPort: 9300

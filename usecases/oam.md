@@ -65,7 +65,7 @@ OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `
 
 ## Rudr
 
-Rudr 是对  [OAM v1alpha1](https://github.com/oam-dev/spec/releases/tag/v1.0.0-alpha.1) 在 Kubernetes 环境下的实现，OAM 正在与 [Crossplane](https://github.com/crossplane/) 合作
+Rudr 是对  [OAM v1alpha1](https://github.com/oam-dev/spec/releases/tag/v1.0.0-alpha.1) 在 Kubernetes 环境下的实现，OAM 正在与 [Crossplane](https://github.com/crossplane/) 合作，Rudr 不建议再使用。
 
 > **Crossplane**
 >
