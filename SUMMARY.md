@@ -197,6 +197,7 @@
   * [升级 dashboard](practice/dashboard-upgrade.md)
 * [扩展控制器](practice/controller-extended.md)
   * [OpenKruise](practice/openkruise.md)
+    * [原地升级](practice/in-place-update.md)
 
 ## 领域应用
 
