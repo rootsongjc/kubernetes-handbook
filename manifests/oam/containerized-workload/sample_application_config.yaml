@@ -1,0 +1,20 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: ApplicationConfiguration
+metadata:
+  name: example-appconfig
+spec:
+  components:
+    - componentName: example-component
+      parameterValues:
+        - name: instance-name
+          value: example-appconfig-workload
+        - name: image
+          value: wordpress:php7.2
+      traits:
+        - trait:
+            apiVersion: core.oam.dev/v1alpha2
+            kind: ManualScalerTrait
+            metadata:
+              name:  example-appconfig-trait
+            spec:
+              replicaCount: 3

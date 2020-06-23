@@ -1,0 +1,12 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: WorkloadDefinition
+metadata:
+  name: containerizedworkloads.core.oam.dev
+spec:
+  definitionRef:
+    name: containerizedworkloads.core.oam.dev
+  childResourceKinds:
+    - apiVersion: apps/v1
+      kind: Deployment
+    - apiVersion: v1
+      kind: Service

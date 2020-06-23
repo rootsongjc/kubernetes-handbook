@@ -1,0 +1,7 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: TraitDefinition
+metadata:
+  name: manualscalertraits.core.oam.dev
+spec:
+  definitionRef:
+    name: manualscalertraits.core.oam.dev

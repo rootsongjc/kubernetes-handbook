@@ -1,0 +1,107 @@
+{{- if .Values.useWebhook -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "oam-core-resources.fullname" . }}
+  labels:
+    {{- include "oam-core-resources.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 9443
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "oam-core-resources.selectorLabels" . | nindent 4 }}
+
+---
+# The following manifests contain a self-signed issuer CR and a certificate CR.
+# More document can be found at https://docs.cert-manager.io
+# WARNING: Targets CertManager 0.11 check https://docs.cert-manager.io/en/latest/tasks/upgrading/index.html for breaking changes
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: {{ .Values.certificate.issuerName | quote  }}
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ .Values.certificate.certificateName }}
+spec:
+  dnsNames:
+  - {{ include "oam-core-resources.fullname" . }}.{{ .Release.Namespace }}.svc
+  - {{ include "oam-core-resources.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+  issuerRef:
+    kind: Issuer
+    name: {{ .Values.certificate.issuerName  | default "selfsigned-issuer" | quote  }}
+  secretName: {{ .Values.certificate.secretName | quote }}
+
+
+---
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: validating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ .Values.certificate.certificateName }}
+webhooks:
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "oam-core-resources.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /validate-core-oam-dev-v1alpha2-manualscalertrait
+      port: {{ .Values.service.port }}
+  name: manualscalertrait.validate.core.oam.dev
+  rules:
+  - apiGroups:
+    - core.oam.dev
+    apiVersions:
+    - v1alpha2
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - manualscalertraits
+  failurePolicy: Fail
+  sideEffects: None
+  admissionReviewVersions: ["v1", "v1beta1"]
+  timeoutSeconds: 5
+
+---
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: mutating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ .Values.certificate.certificateName }}
+webhooks:
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "oam-core-resources.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /mutate-core-oam-dev-v1alpha2-manualscalertrait
+      port: {{ .Values.service.port }}
+  name: manualscalertrait.mutate.core.oam.dev
+  rules:
+    - apiGroups:
+        - core.oam.dev
+      apiVersions:
+        - v1alpha2
+      operations:
+        - CREATE
+        - UPDATE
+      resources:
+        - manualscalertraits
+  failurePolicy: Fail
+  sideEffects: None
+  admissionReviewVersions: ["v1", "v1beta1"]
+  timeoutSeconds: 5
+{{- end -}}

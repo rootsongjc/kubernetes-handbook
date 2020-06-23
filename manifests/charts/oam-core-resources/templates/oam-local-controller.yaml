@@ -1,0 +1,141 @@
+---
+{{- if .Values.serviceAccount.create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "oam-core-resources.serviceAccountName" . }}
+  labels:
+  {{ include "oam-core-resources.labels" . | nindent 4 }}
+  {{- end }}
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: manager-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: "cluster-admin"
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "oam-core-resources.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+
+---
+# permissions to do leader election.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: leader-election-role
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps/status
+    verbs:
+      - get
+      - update
+      - patch
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: leader-election-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: leader-election-role
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "oam-core-resources.serviceAccountName" . }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "oam-core-resources.fullname" . }}
+  labels:
+    {{- include "oam-core-resources.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "oam-core-resources.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        {{- include "oam-core-resources.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "oam-core-resources.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Release.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          args:
+            - "--metrics-addr=:8080"
+            - "--enable-leader-election"
+            - {{ include "oam-core-resources.use-webhook" . | quote }}
+          image: {{ .Values.image.repository }}
+          imagePullPolicy: {{ quote .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{ if .Values.useWebhook }}
+          ports:
+            - containerPort: 9443
+              name: webhook-server
+              protocol: TCP
+          volumeMounts:
+            - mountPath: {{ .Values.certificate.mountPath }}
+              name: tls-cert
+              readOnly: true
+          {{ end }}
+        - name: kube-rbac-proxy
+          image: jimmysong/kubebuilder-kube-rbac-proxy:v0.4.1
+          args:
+            - "--secure-listen-address=0.0.0.0:8443"
+            - "--upstream=http://127.0.0.1:8080/"
+            - "--logtostderr=true"
+            - "--v=10"
+          ports:
+            - containerPort: 8443
+              name: https
+      volumes:
+        - name: tls-cert
+          secret:
+            defaultMode: 420
+            secretName: {{ .Values.certificate.secretName | quote }}
+      terminationGracePeriodSeconds: 10
+    {{- with .Values.nodeSelector }}
+    nodeSelector:
+      {{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+    affinity:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+    tolerations:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}

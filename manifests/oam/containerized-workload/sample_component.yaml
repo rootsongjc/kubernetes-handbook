@@ -1,0 +1,23 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: Component
+metadata:
+  name: example-component
+spec:
+  workload:
+    apiVersion: core.oam.dev/v1alpha2
+    kind: ContainerizedWorkload
+    spec:
+      containers:
+        - name: wordpress
+          image: wordpress:4.6.1-apache
+          ports:
+            - containerPort: 80
+              name: wordpress
+  parameters:
+    - name: instance-name
+      required: true
+      fieldPaths:
+        - metadata.name
+    - name: image
+      fieldPaths:
+        - spec.containers[0].image

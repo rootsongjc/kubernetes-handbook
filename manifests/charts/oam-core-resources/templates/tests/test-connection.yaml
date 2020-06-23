@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "oam-core-resources.fullname" . }}-test-connection"
+  labels:
+{{ include "oam-core-resources.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "oam-core-resources.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
