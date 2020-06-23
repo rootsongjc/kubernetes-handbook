@@ -15,10 +15,10 @@ slider:
     #        link : "book"
 
     # slider item loop
-    - title : "云原生社区"
+    - title : "云原生 · 开源 · 社区"
       animation_in : "left"
       animation_out : "right"
-      content: "云原生社区成立于 2020 年 5 月 12 日， 由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)共同发起。这是一个服务全球华人开发者的，有温度、有技术、有情怀的开源社区，我们希望借助开源的力量打破企业边界，共同致力于云原生的应用和推广。"
+      content: "[云原生社区](https://cloudnative.to)成立于 2020 年 5 月 12 日， 由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)共同发起。这是一个服务全球华人开发者的，有温度、有技术、有情怀的开源社区，我们希望借助开源的力量打破企业边界，共同致力于云原生的应用和推广。"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -27,14 +27,14 @@ slider:
 
     # slider item loop
     - title : "开启云原生之旅"
-      content : "云的之势不可阻挡，开发者应该顺应云原生，积极接纳云原生，让云为我所用，最大限度发挥云的优势，又快又好的实现开发者的业务价值。让我们先从了解 Kubernetes 开始。"
+      content : "云原生是一种行为方式和设计理念，如今它正在遭遇过度地市场化包装。究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。"
       animation_in : "left"
       animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "开始"
-        link : "book/kubernetes-handbook"
+        link : "https://jimmysong.io/kubernetes-handbook"
 
 ############################### Banner feature ###############################
 banner_feature:
