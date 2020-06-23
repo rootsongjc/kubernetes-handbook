@@ -15,26 +15,26 @@ slider:
     #     link : "/book"
 
     # slider item loop
-    - title : "Cloud Native Community"
+    - title : "Cloud Native, Open Source and Community"
       animation_in : "left"
       animation_out : "right"
-      content: "The cloud native community was launched by [Jimmy and his partners](https://cloudnative.to/team) in February 2020. After several months of preparation, we are now announcing to the world that the Cloud Native Community is officially established! This is an open source community with a temperature, and we hope to use the concept of open source to break down the boundaries of the company. We focus on the growth of technical people and facilitate the communication between the communities. Let's focus on open source and give feedback to open source."
+      content: "The [Cloud Native Community](https://cloudnative.to/en/) was launched by [Jimmy and his partners](https://cloudnative.to/team) in February 2020. After several months of preparation, we are now announcing to the world that the Cloud Native Community is officially established! This is an open source community with a temperature, and we hope to use the concept of open source to break down the boundaries of the company. We focus on the growth of technical people and facilitate the communication between the communities. Let's focus on open source and give feedback to open source."
       # available animation : left, right, up, down
       button:
         enable : true
         label : "Join"
-        link : "https://cloudnative.to/contact"
+        link : "https://cloudnative.to/contact/"
 
     # slider item loop
     - title : "Start your Cloud Native journey"
-      content : "The momentum of the cloud is unstoppable. Developers should conform to and embrace cloud native, make the cloud work for ourslef, maximize the advantages of the cloud, and well realize the business value for developers. Let's start with Kubernetes."
+      content : "Cloud Native is a behavior and design philosophy that is now experiencing over-marketed. At its essence, any behavior or approach that improves resource utilization and application delivery efficiency in the cloud is Cloud Native. The history of cloud computing is a history of Cloud Native biochemistry."
       animation_in : "left"
       animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "Start"
-        link : "book/kubernetes-handbook"
+        link : "https://github.com/rootsongjc/kubernetes-handbook"
 
 ############################### Banner feature ###############################
 banner_feature:
