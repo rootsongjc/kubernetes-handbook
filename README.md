@@ -1,5 +1,7 @@
 # Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册
 
+> 云原生是一种行为方式和设计理念，如今它正在遭受过度地市场化包装。究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。—— [Jimmy Song](https://jimmysong.io)
+
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/memo/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
 Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用以描述集群的架构，定义服务的最终状态，使系统自动地达到和维持该状态。Kubernetes 作为云原生应用的基石，相当于一个云操作系统，其重要性不言而喻。
