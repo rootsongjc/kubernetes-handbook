@@ -29,6 +29,22 @@ OAM 全称是 Open Application Model，从名称上来看它所定义的就是�
 - 是从管理大量 CRD 中汲取的经验。
 - 业务和研发的沟通成本，比如 YAML 配置中很多字段是开发人员不关心的。
 
+## 设计原则
+
+OAM 规范的设计遵循了以下[原则](https://github.com/oam-dev/spec/blob/master/9.design_principles.md)：
+
+- 关注点分离：根据功能和行为来定义模型，以此划分不同角色的职责，
+- 平台中立：OAM 的实现不绑定到特定平台；
+- 优雅：尽量减少设计复杂性；
+- 复用性：可移植性好，同一个应用程序可以在不同的平台上不加改动地执行；
+- 不作为编程模型：OAM 提供的是应用程序模型，描述了应用程序的组成和组件的拓扑结构，而不关注应用程序的具体实现。
+
+下图是 OAM 规范示意图。
+
+![OAM 规范示意图](../images/oam-spec.png)
+
+图片来自 [oam/spec issue #346](https://github.com/oam-dev/spec/issues/346)。
+
 ### OAM 基本对象
 
 OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `core.oam.dev/v1alpha2` 为准：
@@ -65,11 +81,11 @@ OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `
 
 ## Rudr
 
-Rudr 是对  [OAM v1alpha1](https://github.com/oam-dev/spec/releases/tag/v1.0.0-alpha.1) 在 Kubernetes 环境下的实现，OAM 正在与 [Crossplane](https://github.com/crossplane/) 合作，Rudr 不建议再使用。
+> 注意：Rudr 是对  [OAM v1alpha1](https://github.com/oam-dev/spec/releases/tag/v1.0.0-alpha.1) 在 Kubernetes 环境下的实现，OAM 正在与 [Crossplane](https://github.com/crossplane/) 合作，不建议再使用 Rudr。
 
-> **Crossplane**
->
-> 使用 Kubernetes 社区开创的以 API 为中心的声明式配置和自动化方法，使基础设施和应用管理标准化。官方网站：<https://crossplane.io/>。
+**Crossplane**
+
+[Crossplane](./crossplane.md) 使用 Kubernetes 社区开创的以 API 为中心的声明式配置和自动化方法，使基础设施和应用管理标准化。官方网站：<https://crossplane.io/>。
 
 ### 安装 Rudr
 

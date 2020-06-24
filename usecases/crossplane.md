@@ -6,7 +6,7 @@
 
 [Crossplane](https://crossplane.io/) 是一个开源的 Kubernetes 插件，可以使用 kubectl 配置和管理基础设施、服务和应用。它的意义在使用 Kubernetes 风格的 API 统一了云基础设施和应用程序的管理。
 
-该项目是由 [Upbound](https://upbound.io/) 公司于 2018 年发起，开源社区主要参与者有微软、阿里巴巴、Gitlab、红帽等。
+该项目是由 [Upbound](https://upbound.io/) 公司和 [Rook](https://rook.io) 项目的创始人于 2018 年 12 月发起，开源社区主要参与者来自微软、阿里巴巴、Gitlab、红帽等。
 
 ## Crossplane 的特性
 
@@ -133,3 +133,4 @@ example-appconfig-workload   NodePort   10.99.30.250   <none>        80:31557/TC
 
 - [crossplane/addon-oam-kubernetes-local - github.com](https://github.com/crossplane/addon-oam-kubernetes-local)
 - [Traits and workloads interaction mechanism in OAM - github.com](https://github.com/crossplane/oam-kubernetes-runtime/blob/master/design/one-pager-trait-workload-interaction-mechanism.md)
+- [Crossplane CNCF Sandbox - docs.google.com](https://docs.google.com/presentation/d/1HEQtVMwQxrpkQg2UWUNi0RPdjmJ6TaZLr50Cr_anNeQ/edit#slide=id.g8801599ecb_0_72)
