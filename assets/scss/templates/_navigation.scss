@@ -26,6 +26,10 @@
   }
 }
 
+#navigation {
+  background: #3d87d6;
+}
+
 .navbar-nav {
   padding-left: 50px;
   background: $primary-color;
@@ -219,7 +223,7 @@ link:focus,
 .search-close {
   position: absolute;
   right: 5px;
-  top: 40px;
+  top: 35px;
   border: 0;
   background: transparent;
   page-break-after: 10px;
