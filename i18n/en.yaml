@@ -156,3 +156,6 @@
 
 - id: website_search
   translation: "In-site Search"
+
+- id: search_placeholder
+  translation: "Input the keyword"

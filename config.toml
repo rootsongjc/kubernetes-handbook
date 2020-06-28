@@ -30,6 +30,9 @@ link = "plugins/venobox/venobox.css"
 link = "plugins/themify-icons/themify-icons.css"
 [[params.plugins.css]]
 link = "plugins/hightlight/syntax.css"
+[[params.plugins.css]]
+link = "plugins/fontawesome/font-awesome.min.css"
+
 # JS Plugins
 [[params.plugins.js]]
 link = "plugins/jQuery/jquery.min.js"
@@ -42,7 +45,11 @@ link = "plugins/venobox/venobox.min.js"
 [[params.plugins.js]]
 link = "plugins/filterizr/jquery.filterizr.min.js"
 [[params.plugins.js]]
-link = "plugins/google-map/gmap.js"
+link = "plugins/search/fuse.min.js"
+[[params.plugins.js]]
+link = "plugins/search/mark.js"
+[[params.plugins.js]]
+link = "plugins/search/search.js"
 
 #################### default parameters ################################
 [params]
@@ -64,6 +71,7 @@ google_analitycs_id = "UA-93485976-1" # your id
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 # top header
 top_header = true
+search = true
 
 # Preloader
 [params.preloader]
