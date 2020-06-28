@@ -2,9 +2,20 @@
 
 <section class="section">
   <div class="container">
-      <!-- change gcse code to your own -->
-      <script async src="https://cse.google.com/cse.js?cx=012737790962522169780:fd1izxsfgrs"></script>
-      <div class="gcse-search"></div>
+    <div class="row">
+      <div class="col-12">
+          <div id="search-results"></div>
+          <script id="search-result-template" type="text/x-js-template">
+            <div class="search-result" id="summary-${key}">
+              <h4><a href="${link}">${title}</a></h4>
+              <p>${snippet}</p>
+              ${ isset tags }<p>Tags: ${tags}</p>${ end }
+              ${ isset categories }<p>Categories: ${categories}</p>${ end }
+            </div>
+          </script>
+      </div>
+    </div>
   </div>
 </section>
+
 {{ end }}

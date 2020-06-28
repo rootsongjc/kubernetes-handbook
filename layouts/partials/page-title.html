@@ -1,0 +1,21 @@
+{{ "<!-- page title -->" | safeHTML }}
+<section class="section bg-cover overlay" style="background-image: url('{{ .Params.Bg_image_webp | relURL }}'),url('{{ .Params.Bg_image | relURL }}'),url('{{ `images/backgrounds/page-title.jpg` | relURL }}');">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-3">{{ .Title }}</h2>
+        {{ "<!-- breadcrumb -->" | safeHTML }}
+        <!--
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item font-weight-semebold"><a class="text-white" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Params.home }}</a></li>
+            <li class="breadcrumb-item font-weight-semebold active text-primary" aria-current="page">{{ .Title }}</li>
+          </ol>
+        </nav>
+        -->
+        <p class="text-white">{{ .Params.Description | markdownify }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ "<!-- /page title -->" | safeHTML }}
