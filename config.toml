@@ -70,7 +70,7 @@ google_analitycs_id = "UA-93485976-1" # your id
 # Baidu tongji
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 # top header
-top_header = true
+top_header = false
 search = true
 
 # Preloader
@@ -105,7 +105,7 @@ map_marker = "images/marker.png"
 ############################# social site ########################
 [[params.social]]
 title = "twitter"
-icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
+icon = "fa-twitter" # themify icon : https://themify.me/themify-icons
 link = "https://twitter.com/jimmysongio"
 
 [[params.social]]
