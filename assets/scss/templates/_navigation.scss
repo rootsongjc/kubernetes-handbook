@@ -26,10 +26,6 @@
   }
 }
 
-#navigation {
-  background: #3d87d6;
-}
-
 .navbar-nav {
   padding-left: 50px;
   background: $primary-color;
@@ -233,4 +229,10 @@ link:focus,
 .algolia-autocomplete{
   width: 100%;
   left: 0;
+}
+
+select.nav-item {
+  color: white;
+  background-color: $primary-color;
+  font-weight: 600;
 }

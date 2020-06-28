@@ -15,7 +15,7 @@ slider:
     #        link : "book"
 
     # slider item loop
-    - title : "云原生 · 开源 · 社区"
+    - title : "专注于云原生、开源与社区"
       animation_in : "left"
       animation_out : "right"
       content: "[云原生社区](https://cloudnative.to)成立于 2020 年 5 月 12 日， 由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)共同发起。这是一个服务全球华人开发者的，有温度、有技术、有情怀的开源社区，我们希望借助开源的力量打破企业边界，共同致力于云原生的应用和推广。"
