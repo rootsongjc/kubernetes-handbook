@@ -167,3 +167,15 @@ var _hmt = _hmt || [];
 })();
 </script>
 {{ end }}
+
+{{ "<!-- Algolia -->" | safeHTML }}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    apiKey: '5bad3ecca604fe041dd79b5236020563',
+    indexName: 'DocSearch',
+    appId: 'G3FZ18C6OT',
+    inputSelector: '#js-algolia-btn',
+    debug: false,
+  });
+</script>

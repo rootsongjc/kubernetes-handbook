@@ -84,6 +84,18 @@
             {{ end }}
           </select>
           {{ end }}
+          {{ if .Site.Params.search }}
+          {{ "<!-- search -->" | safeHTML }}
+          <div class="search px-4">
+            <button id="searchOpen" class="search-btn"><i class="fa fa-search text-dark"></i></button>
+            <div class="search-wrapper">
+              <form action="{{ `search`| relLangURL }}">
+                <input class="search-box form-control" id="js-algolia-btn" name="s" type="search" placeholder="{{ i18n `search_placeholder`}}">
+              </form>
+              <button id="searchClose" class="search-close"><i class="fa fa-close text-dark"></i></button>
+            </div>
+          </div>
+          {{ end }}
         </div>
       </nav>
     </div>

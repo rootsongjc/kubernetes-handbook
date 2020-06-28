@@ -1,6 +1,7 @@
 ---
-title: "搜索"
+title: "搜索结果"
+# meta description
+description: "搜索结果"
+# page title background image
 bg_image: "images/backgrounds/page-title.jpg"
-description : "站内搜索（由 Google Custom Search 强力驱动）。"
-type: "search"
 ---

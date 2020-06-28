@@ -159,3 +159,6 @@
 
 - id: website_search
   translation: "站内搜索"
+
+- id: search_placeholder
+  translation: "输入搜索词"
