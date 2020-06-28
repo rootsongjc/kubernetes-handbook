@@ -110,30 +110,23 @@ link = "https://twitter.com/jimmysongio"
 
 [[params.social]]
 title = "facebook"
-icon = "ti-facebook" # themify icon : https://themify.me/themify-icons
+icon = "fa-facebook" # themify icon : https://themify.me/themify-icons
 link = "https://facebook.com/jimmysongio"
 
 [[params.social]]
 title = "github"
-icon = "ti-github" # themify icon : https://themify.me/themify-icons
+icon = "fa-github" # themify icon : https://themify.me/themify-icons
 link = "https://github.com/rootsongjc"
 
 [[params.social]]
 title = "linkedin"
-icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
+icon = "fa-linkedin" # themify icon : https://themify.me/themify-icons
 link = "https://linkedin.com/in/jimmysongio"
 
 [[params.social]]
 title = "RSS"
-icon = "ti-rss" # themify icon : https://themify.me/themify-icons
+icon = "fa-rss" # themify icon : https://themify.me/themify-icons
 link = "/blog/index.xml"
-
-[[params.social]]
-title = "Search"
-icon = "ti-search" # themify icon : https://themify.me/themify-icons
-link = "/search"
-
-
 
 ################################### English language #####################################
 [Languages.en]
