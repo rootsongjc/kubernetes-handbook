@@ -1,7 +1,7 @@
 (function ($) {
   'use strict';
 
-  // Preloader js    
+  // Preloader js
   $(window).on('load', function () {
     $('.preloader').fadeOut(100);
   });
@@ -24,6 +24,17 @@
     $(this).css({
       'background-image': 'url(' + $(this).data('background') + ')'
     });
+  });
+
+  //  Search Form Open
+  $('#searchOpen').on('click', function () {
+    $('.search-wrapper').addClass('open');
+    setTimeout(function () {
+      $('.search-box').focus();
+    }, 500);
+  });
+  $('#searchClose').on('click', function () {
+    $('.search-wrapper').removeClass('open');
   });
 
   //Hero Slider
