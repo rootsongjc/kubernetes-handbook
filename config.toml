@@ -72,6 +72,8 @@ baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 # top header
 top_header = false
 search = true
+# Gitalk
+enableGitalk = true
 
 # Preloader
 [params.preloader]
@@ -93,6 +95,19 @@ enable= false
 image = "images/mosn-banner.png"
 url = "https://mosn.io"
 title = "MOSN - 蚂蚁金服开源的云原生网络代理"
+
+[params.gitalk]
+clientID = "93a0df08e0f93ff0c8a3" # Your client ID
+clientSecret = "89f20e962982401489bc9339dea437161ea44c68" # Your client secret
+repo = "rootsongjc.github.io" # The repo to store comments
+owner = "rootsongjc" # Your GitHub ID
+admin= "rootsongjc" # Required. Github repository owner and collaborators. (Users who having write access to this repository)
+id= "location.pathname" # The unique id of the page.
+labels= "gitalk" # Github issue labels. If you used to use Gitment, you can change it
+perPage= 15 # Pagination size, with maximum 100.
+pagerDirection= "last" # Comment sorting direction, available values are 'last' and 'first'.
+createIssueManually= false # If it is 'false', it is auto to make a Github issue when the administrators login.
+distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit comment.
 
 # google map
 [params.map]
