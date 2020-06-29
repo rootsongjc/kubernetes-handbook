@@ -251,27 +251,27 @@ name = "招聘"
 URL = "job"
 weight = 6
 
-#[[Languages.zh.menu.main]]
-#name = "更多"
-#weight = 7
-#
-#[[Languages.zh.menu.main]]
-#parent = "更多"
-#name = "伙伴"
-#URL = "partner"
-#weight = 1
-#
-#[[Languages.zh.menu.main]]
-#parent = "更多"
-#name = "通知"
-#URL = "notice"
-#weight = 2
-#
-#[[Languages.zh.menu.main]]
-#parent = "更多"
-#name = "活动"
-#URL = "event"
-#weight = 3
+[[Languages.zh.menu.main]]
+name = "更多"
+weight = 7
+
+[[Languages.zh.menu.main]]
+parent = "更多"
+name = "伙伴"
+URL = "partner"
+weight = 1
+
+[[Languages.zh.menu.main]]
+parent = "更多"
+name = "通知"
+URL = "notice"
+weight = 2
+
+[[Languages.zh.menu.main]]
+parent = "更多"
+name = "活动"
+URL = "event"
+weight = 3
 
 # footer menu
 

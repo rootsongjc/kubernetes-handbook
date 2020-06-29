@@ -37,5 +37,5 @@ This book is the material compiled during my learning and practice of Serverless
 
 You can use this book in the following ways:
 
-- GitHub address: https://github.com/rootsongjc/serverless-handbook
-- GitBook Online: https://jimmysong.io/serverless-handbook/
+- [GitHub](https://github.com/rootsongjc/serverless-handbook)
+- [GitBook Online](https://jimmysong.io/serverless-handbook)
