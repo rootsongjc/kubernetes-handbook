@@ -1,13 +1,21 @@
-# Kubernetic - Kubernetes桌面客户端
+# Lens - Kubernetes IDE/桌面客户端
 
-Kubernetic - 一款kubenretes桌面客户端，<https://kubernetic.com/>，支持以下特性：
+[Lens](https://k8slens.dev/) 是一款开源的 Kubenretes IDE，也可以作为桌面客户端，官方网站 <https://k8slens.dev>，具有以下特性：
 
+- 完全开源，GitHub 地址 <https://github.com/lensapp/lens>
 - 实时展示集群状态
-- 多集群，多个namespace管理
-- 原生kubernetes支持
-- 支持使用chart安装应用
-- 使用kubeconfig登陆认证
+- 内置 Prometheus 监控
+- 多集群，多个 namespace 管理
+- 原生 Kubernetes 支持
+- 支持使用 chart 安装应用
+- 使用 kubeconfig 登陆认证
+- 支持多平台，Windows、Mac、Linux
+- Visual Studio Code 友好的风格设计
 
-![Kubernetic客户端](../images/kubernetic-desktop-ui.jpg)
+Lens 界面图下图所示。
 
-该客户端支持Mac和Windows系统，beta版本免费使用，stable版本需要付费。beta版本某些功能不完善，比如无法在应用内修改ingress配置，无法监控应用的状态等。
+![Lens Kubernetes IDE 界面](../images/lens.jpg)
+
+## 参考
+
+- [Lens, Kubernetes IDE - k8slens.dev](https://k8slens.dev/)

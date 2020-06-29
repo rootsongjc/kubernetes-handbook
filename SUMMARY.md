@@ -122,7 +122,7 @@
   * [使用 service 访问群集中的应用程序](guide/service-access-application-cluster.md)
   * [从外部访问 Kubernetes 中的 Pod](guide/accessing-kubernetes-pods-from-outside-of-the-cluster.md)
   * [Cabin - Kubernetes 手机客户端](guide/cabin-mobile-dashboard-for-kubernetes.md)
-  * [Kubernetic - Kubernetes 桌面客户端](guide/kubernetes-desktop-client.md)
+  * [Lens - Kubernetes IDE/桌面客户端](guide/kubernetes-desktop-client.md)
   * [Kubernator - 更底层的 Kubernetes UI](guide/kubernator-kubernetes-ui.md)
 * [在 Kubernetes 中开发部署应用](guide/application-development-deployment-flow.md)
   * [适用于 kubernetes 的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
