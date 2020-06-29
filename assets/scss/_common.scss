@@ -292,6 +292,8 @@ textarea.form-control{
 
 /* pagination */
 .pagination {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   .page-item {
     margin: 0 10px;

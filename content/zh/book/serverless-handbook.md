@@ -39,5 +39,5 @@ Serverless 是云原生技术发展的高级阶段，可以使开发者更聚焦
 
 您可以通过以下方式使用本书：
 
-- GitHub地址：<https://github.com/rootsongjc/serverless-handbook>
-- GitBook 在线浏览：<https://jimmysong.io/serverless-handbook/>
+- [GitHub](https://github.com/rootsongjc/serverless-handbook)
+- [GitBook 在线浏览](https://jimmysong.io/serverless-handbook)
