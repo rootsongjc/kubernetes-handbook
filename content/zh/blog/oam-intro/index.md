@@ -4,7 +4,7 @@ description: "本文是对 OAM 及 Rudr 的初探，主要介绍了 OAM 诞生�
 date: 2020-04-22T14:18:40+08:00
 draft: false
 tags: ["oam"]
-categories: ["cloud native"]
+categories: ["云原生"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/oam.png"

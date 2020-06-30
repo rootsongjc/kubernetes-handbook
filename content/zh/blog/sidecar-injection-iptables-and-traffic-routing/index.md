@@ -4,7 +4,7 @@ date: 2020-04-27T21:08:59+08:00
 draft: false
 tags: ["istio","iptables"]
 description: "本文基于 Istio 1.5.1 版本，介绍了 sidecar 模式及其优势 sidecar 注入到数据平面，如何做流量劫持和转发的，以及流量是怎样路由到 upstream 的。"
-categories: ["Istio"]
+categories: ["Service Mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
 type: "post"
