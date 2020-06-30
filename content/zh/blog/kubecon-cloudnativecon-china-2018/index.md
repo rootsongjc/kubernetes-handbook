@@ -3,7 +3,7 @@ title: "KubeCon&CloudNativeCon China 2018"
 date: 2018-11-16T13:40:38+08:00
 draft: false
 description: "KubeCon&CloudNativeCon China 2018参会回顾。"
-categories: ["活动"]
+categories: ["其他"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/kubecon-cloudnativecon-china-2018"

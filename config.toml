@@ -237,6 +237,42 @@ URL = "blog"
 weight = 3
 
 [[Languages.zh.menu.main]]
+parent = "博客"
+name = "容器"
+URL = "/categories/容器"
+weight = 1
+
+[[Languages.zh.menu.main]]
+parent = "博客"
+name = "Kubernetes"
+URL = "/categories/kubernetes"
+weight = 2
+
+[[Languages.zh.menu.main]]
+parent = "博客"
+name = "service mesh"
+URL = "/categories/service-mesh"
+weight = 3
+
+[[Languages.zh.menu.main]]
+parent = "博客"
+name = "云原生"
+URL = "/categories/cloud-native"
+weight = 4
+
+[[Languages.zh.menu.main]]
+parent = "博客"
+name = "开源"
+URL = "/categories/开源"
+weight = 5
+
+[[Languages.zh.menu.main]]
+parent = "博客"
+name = "其他"
+URL = "/categories/其他"
+weight = 6
+
+[[Languages.zh.menu.main]]
 name = "招聘"
 URL = "job"
 weight = 4
