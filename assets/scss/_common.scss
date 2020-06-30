@@ -445,3 +445,11 @@ textarea.form-control{
     color: #fff !important;
   }
 }
+
+.search-wrapper {
+  .algolia-autocomplete {
+    .ds-dropdown-menu {
+      min-width: auto;
+    }
+  }
+}
