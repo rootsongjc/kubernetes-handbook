@@ -21,7 +21,7 @@ speaker:
   # speaker loop
   - name : "敖小剑"
     image : "images/event-speakers/aoxiaojian.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
 
   # speaker loop
   - name : "刘超"
@@ -56,7 +56,7 @@ PPT下载：https://github.com/servicemesher/meetup-slides
 
 本次 meetup 分享了以下四个主题。
 
-**敖小剑（蚂蚁金服）：大规模微服务架构下的 Service Mesh 探索之路**
+**敖小剑（蚂蚁集团）：大规模微服务架构下的 Service Mesh 探索之路**
 
 敖小剑，资深码农，十六年软件开发经验，微服务专家，Service Mesh布道师。专注于基础架构，Cloud Native 拥护者，敏捷实践者，坚守开发一线打磨匠艺的架构师。曾在亚信、爱立信、唯品会、ppmoney和数人云任职，机缘巧合下对基础架构和微服务有过深入研究和实践。
 

@@ -28,8 +28,8 @@ aliases:
 
 本书是 [Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures) 的中文版，本书英文版发布于 2015 年 2 月，中文版由 [Jimmy Song](https://jimmysong.io/) 翻译，发布于 2017 年 7 月。
 
-- 本书GitHub托管地址：<https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures>
-- Gitbook 阅读地址：<https://jimmysong.io/migrating-to-cloud-native-application-architectures>
+- [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
+- [Gitbook 阅读](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
 
 ### 译者序
 

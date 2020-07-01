@@ -13,7 +13,7 @@ location: "中国上海"
 # entry fee
 fee: "免费"
 topic: "sofastack"
-sponsor : "[蚂蚁金服](https://www.antfin.com)"
+sponsor : "[蚂蚁集团](https://www.antfin.com)"
 # apply url
 apply_url : "https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop"
 # event speaker
@@ -21,36 +21,36 @@ speaker:
   # speaker loop
   - name : "敖小剑"
     image : "images/event-speakers/aoxiaojian.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
   # speaker loop
   - name : "余淮"
     image : "images/event-speakers/zhanggeng.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
   # speaker loop
   - name : "隐秀"
     image : "images/event-speakers/dongyitao.jpg"
-    designation : "蚂蚁金服高级产品经理"
+    designation : "蚂蚁集团高级产品经理"
   # speaker loop
   - name : "卫恒"
     image : "images/event-speakers/songguolei.jpg"
-    designation : "蚂蚁金服开发工程师"
+    designation : "蚂蚁集团开发工程师"
   # speaker loop
   - name : "玄北"
     image : "images/event-speakers/caojie.jpg"
-    designation : "蚂蚁金服技术专家"
+    designation : "蚂蚁集团技术专家"
   # speaker loop
   - name : "首仁"
     image : "images/event-speakers/yurenjie.jpg"
-    designation : "蚂蚁金服高级产品专家"
+    designation : "蚂蚁集团高级产品专家"
   # speaker loop
   - name : "屹远"
     image : "images/event-speakers/chenlong.jpg"
-    designation : "蚂蚁金服技术专家"
+    designation : "蚂蚁集团技术专家"
 # type
 type: "event"
 ---
 
-### 蚂蚁金服 SOFAStack Cloud Native Workshop（KubeCon China 2019 同场活动）
+### 蚂蚁集团 SOFAStack Cloud Native Workshop（KubeCon China 2019 同场活动）
 
 - 日期：2019年6月24日，星期一
 - 时间：9:00 – 16:00
@@ -59,7 +59,7 @@ type: "event"
 - 注册地址：https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop
 - 备注：本次活动为动手实践，请携带个人电脑。本沙龙沟通语言为中文。
 
-SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发并开源的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。SOFAStack 官方网站：https://www.sofastack.tech/
+SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主研发并开源的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。SOFAStack 官方网站：https://www.sofastack.tech/
 
 参加此次 Meetup 您将获得：
 
@@ -91,7 +91,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **12:00 - 13:00 午餐时间**
 
-**13:00 - 13:30 蚂蚁金服的云原生探索与实践 by 首仁**
+**13:00 - 13:30 蚂蚁集团的云原生探索与实践 by 首仁**
 
 **13:30 - 14:40 通过 Serverless 快速上云 by 隐秀**
 

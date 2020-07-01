@@ -25,8 +25,8 @@ type: "book"
 
 This book is the Chinese version of [Migrating to Cloud Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures) . The English version of this book was released in February 2015. The Chinese version was translated by [Jimmy Song](https://jimmysong.io/) and published in July 2017.
 
-- GitHub hosting address for this book: https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures
-- Gitbook reading address: https://jimmysong.io/migrating-to-cloud-native-application-architectures
+- [GitHub](https://github.com/rootsongjc/migrating-to-cloud-native-application-architectures)
+- [Gitbook](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
 
 ### Translator order
 

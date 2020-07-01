@@ -14,7 +14,7 @@ image: "images/banner/kubecon-shanghai-2018-banner.jpg"
 
 ![KubeCon&CloudNativeCon China 上海 2018](kubecon-shanghai-2018-group.jpg)
 
-*图中由上自下的大合影是：ServiceMesher 社区上海聚首合影；中美日的Kubernetes、Envoy、Istio、Apache Skywalking、ServiceMesher社区在KubeCon上海；Yahoo Japan 与蚂蚁金服团队在上海中心办公室合影。*
+*图中由上自下的大合影是：ServiceMesher 社区上海聚首合影；中美日的Kubernetes、Envoy、Istio、Apache Skywalking、ServiceMesher社区在KubeCon上海；Yahoo Japan 与蚂蚁集团团队在上海中心办公室合影。*
 
 ## 活动
 
@@ -24,7 +24,7 @@ image: "images/banner/kubecon-shanghai-2018-banner.jpg"
 
 - Jiayao (Julia) Han, Caicloud
 - Jia Xuan, China Mobile Research Institute
-- Jimmy Song, Ant Financial
+- Jimmy Song, Ant Group
 - Jessie Qian, Alauda
 
 我们的名字不约而同的都是 J 字头。
@@ -33,7 +33,7 @@ image: "images/banner/kubecon-shanghai-2018-banner.jpg"
 
 然后参加了一场 Service Mesh Roundtable，参加人员有：
 
-- Jimmy Song, Developer Advocate on Cloud Native at Ant Financial 
+- Jimmy Song, Developer Advocate on Cloud Native at Ant Group 
 - Yulin Son, Principal Architect at Huawei 
 - George Miranda, PagerDuty 
 - Nic Jackson, Developer Advocate at HashiCorp 

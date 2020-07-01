@@ -36,8 +36,8 @@ Google 代码审查指南，实则两套指南：
 
 此仓库翻译自 [google/eng-practices](https://github.com/google/eng-practices)，目前为止的主要内容为 Google 总结的如何进行 **Code Review（代码审查）** 指南，根据原 Github 仓库的标题判断以后会追加更多 Google 工程实践的内容。
 
-- 本文档的 Github 地址：https://github.com/rootsongjc/eng-practices，点击页面底部的 `Edit this page` 链接可以编辑页面。
-- 其他语言的版本请访问 https://github.com/eng-practices/eng-practices。
+- 本文档的 [Github 地址](https://github.com/rootsongjc/eng-practices)，点击页面底部的 `Edit this page` 链接可以编辑页面。
+- [其他语言的版本](https://github.com/eng-practices/eng-practices)。
 - 感谢 [Ta-Ching Chen](https://github.com/life1347) 的审阅。
 - 译者：[Jimmy Song](https://jimmysong.io/)
 - 本网站使用 [Hugo](https://gohugo.io/) 构建。
@@ -45,4 +45,5 @@ Google 代码审查指南，实则两套指南：
 
 ### License
 
-本项目中的文档适用于 CC-By 3.0 许可证，该许可证鼓励您共享这些文档。有关详细信息，请参阅 https://creativecommons.org/licenses/by/3.0/。
+本项目中的文档适用于 [CC-By 3.0](https://creativecommons.org/licenses/by/3.0/) 许可证，该许可证鼓励您共享这些文档。
+

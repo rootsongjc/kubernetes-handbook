@@ -26,7 +26,7 @@ speaker:
   # speaker loop
   - name : "敖小剑"
     image : "images/event-speakers/liuchao.png"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
 
   # speaker loop
   - name : "冯玮"
@@ -56,9 +56,9 @@ type: "event"
 
 吴晟 Apache SkyWalking创始人、Apache Sharding-Sphere原型作者、比特大陆资深技术专家、CNCF OpenTracing标准化委员会成员
 
-#### 蚂蚁金服 Service Mesh 渐进式迁移方案
+#### 蚂蚁集团 Service Mesh 渐进式迁移方案
 
-敖小剑 蚂蚁金服高级技术专家，十六年软件开发经验，微服务专家，Service Mesh布道师，Servicemesher社区联合创始人
+敖小剑 蚂蚁集团高级技术专家，十六年软件开发经验，微服务专家，Service Mesh布道师，Servicemesher社区联合创始人
 
 张瑜标 阿里巴巴技术专家、前京东Hadoop负责人、Hadoop代码贡献者、现负责UC 基于Kubernetes自研的PaaS平台整体的稳定性
 

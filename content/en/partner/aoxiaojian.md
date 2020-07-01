@@ -8,9 +8,9 @@ description : "Service Mesh developer advocate, co-founder of ServiceMeshser com
 # partner portrait
 image: "images/partners/aoxiaojian.jpg"
 # company
-company: "Ant Financial"
+company: "Ant Group"
 # biography
-bio: "Sky Ao, senior coder, sixteen years of software development experience, microservices expert, Service Mesh evangelist, and co-founder of Servicemesher community. Focusing on infrastructure, Cloud Native advocates, agile practitioners, and architects who adhere to the development of front-line polishing craftsmanship. He has worked in AsiaInfo, Ericsson, Vipshop, etc., and has conducted in-depth research and practice on infrastructure and microservices. Currently working for Ant Financial, he is engaged in service mesh and serverless product development in the middleware team."
+bio: "Sky Ao, senior coder, sixteen years of software development experience, microservices expert, Service Mesh evangelist, and co-founder of Servicemesher community. Focusing on infrastructure, Cloud Native advocates, agile practitioners, and architects who adhere to the development of front-line polishing craftsmanship. He has worked in AsiaInfo, Ericsson, Vipshop, etc., and has conducted in-depth research and practice on infrastructure and microservices. Currently working for Ant Group, he is engaged in service mesh and serverless product development in the middleware team."
 # interest
 interest: ["Service Mesh","Microservices","Serverless", "Cloud Native"]
 # contact info

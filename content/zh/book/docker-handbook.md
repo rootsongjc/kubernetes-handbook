@@ -27,8 +27,8 @@ type: "book"
 
 此书是 [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/) 的前传，本书中主要介绍 Docker 1.13 新特性和帮助大家了解 Docker 集群的管理和使用。
 
-- GitHub地址：<https://github.com/rootsongjc/docker-handbook>
-- 在线访问地址：<https://jimmysong.io/docker-handbook>
+- [GitHub](https://github.com/rootsongjc/docker-handbook)
+- [在线访问地址](https://jimmysong.io/docker-handbook)
 
 容器是微服务的最佳载体，Kubernetes 是微服务的最佳运行平台，[Istio](https://istio.io) 是 Kubernetes 上最佳的 service mesh。
 

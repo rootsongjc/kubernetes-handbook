@@ -52,9 +52,9 @@ At the time of writing this book, all installed components, examples and operati
 
 You can use this book in the following ways:
 
-- GitHub address: https://github.com/rootsongjc/kubernetes-handbook
-- GitBook Online: https://jimmysong.io/kubernetes-handbook/
-- Download the distribution of this book: https://github.com/rootsongjc/kubernetes-handbook/releases
+- [GitHub](https://github.com/rootsongjc/kubernetes-handbook)
+- [GitBook Online](https://jimmysong.io/kubernetes-handbook/)
+- [Download the distribution of this book](https://github.com/rootsongjc/kubernetes-handbook/releases)
 - Follow the [instructions to](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md) compile it offline
 - Fork a copy of your own notes to maintain it yourself, and those who have the power can join in together
 

@@ -1,7 +1,7 @@
 ---
 title: "云原生网络代理 MOSN 弥补 Istio 进入中国的鸿沟"
 date: 2020-03-11T18:13:15+08:00
-description: "蚂蚁金服开源的 MOSN 让 Istio 的数据平面又多了一个选择。"
+description: "蚂蚁集团开源的 MOSN 让 Istio 的数据平面又多了一个选择。"
 categories: ["Service Mesh"]
 tags: ["MOSN"]
 draft: true

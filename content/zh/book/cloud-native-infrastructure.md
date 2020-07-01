@@ -37,14 +37,9 @@ type: "book"
 
 您可以通过以下方式使用本书：
 
-- GitHub地址：<https://github.com/rootsongjc/cloud-native-infra>
-- GitBook在线浏览：<https://jimmysong.io/cloud-native-infra>
-
-英文原版下载地址：<https://go.heptio.com/cloud-native-infrastructure>
-
-### 鸣谢
-
-本仓库基于 https://github.com/CloudNativeInfra/cni 编写，感谢原仓库贡献者的内容组织和翻译。
+- [GitHub](https://github.com/rootsongjc/cloud-native-infra)
+- [GitBook 在线浏览](https://jimmysong.io/cloud-native-infra)
+- [英文原版下载](https://go.heptio.com/cloud-native-infrastructure)
 
 ### License
 
