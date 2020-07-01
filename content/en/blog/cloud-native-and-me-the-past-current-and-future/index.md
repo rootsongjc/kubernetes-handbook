@@ -27,7 +27,7 @@ Since the the book Cloud Native Go completed, the publisher recommended another 
 
 And the book [Cloud Native Java](/en/book/cloud-native-java/) by Josh Long and Kenny Bastani.
 
-In March 2018, with the hope that `Bring the world equal opportunities` and `Building a Financial Cloud Native Infrastructure`, I joined the [Ant Financial](http://antfin.com).
+In March 2018, with the hope that `Bring the world equal opportunities` and `Building a Financial Cloud Native Infrastructure`, I joined the [Ant Group](http://antfin.com).
 
 ## ServiceMesher Community
 

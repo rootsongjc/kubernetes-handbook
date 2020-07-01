@@ -26,7 +26,7 @@ speaker:
   # speaker loop
   - name : "肖涵"
     image : "images/event-speakers/xiaohan.png"
-    designation : "蚂蚁金服高级开发工程师"
+    designation : "蚂蚁集团高级开发工程师"
 
   # speaker loop
   - name : "杨川胡"
@@ -52,9 +52,9 @@ type: "event"
 
 PPT下载：https://github.com/servicemesher/meetup-slides
 
-Service Mesh Meetup 是由蚂蚁金服联合 CNCF 官方共同出品，ServiceMesher 社区主办，主题围绕服务网格、Kubernetes 及云原生，在全国各地循环举办的技术沙龙。
+Service Mesh Meetup 是由蚂蚁集团联合 CNCF 官方共同出品，ServiceMesher 社区主办，主题围绕服务网格、Kubernetes 及云原生，在全国各地循环举办的技术沙龙。
 
-本期 Meetup 邀请社区大咖，从服务网格下微服务架构设计、在 5G 时代的应用、如何使用开源的 Traefik 构建云原生边缘路由及蚂蚁金服的服务网格代理演进角度给大家带来精彩分享。
+本期 Meetup 邀请社区大咖，从服务网格下微服务架构设计、在 5G 时代的应用、如何使用开源的 Traefik 构建云原生边缘路由及蚂蚁集团的服务网格代理演进角度给大家带来精彩分享。
 
 ### 讲师与演讲话题
 
@@ -64,11 +64,11 @@ Service Mesh Meetup 是由蚂蚁金服联合 CNCF 官方共同出品，ServiceMe
 
 在通信网络向5G演进的过程中，电信行业借鉴了IT行业的微服务架构和云原生相关技术对5G网络功能进行重构，以提供敏捷、灵活、易于扩展的业务能力。 本演讲主题将介绍在5G网络管理平台的微服务架构中落地微服务网格的产品实践，包括多网络平面支持、API网关和网格Ingress的定位、Consul Registry的性能增强等等。
 
-#### 蚂蚁金服网络代理的演进之路
+#### 蚂蚁集团网络代理的演进之路
 
-肖涵（蚂蚁金服高级技术专家）
+肖涵（蚂蚁集团高级技术专家）
 
-从网络硬件设备到自研平台，从传统服务治理到 Service Mesh，本次分享将介绍蚂蚁金服网络代理在接入层以及 Service Mesh 化道路上是如何一步步支撑秒级百万支付，千万红包请求的。
+从网络硬件设备到自研平台，从传统服务治理到 Service Mesh，本次分享将介绍蚂蚁集团网络代理在接入层以及 Service Mesh 化道路上是如何一步步支撑秒级百万支付，千万红包请求的。
 
 #### 进击的Traefik——云原生边缘路由探秘
 

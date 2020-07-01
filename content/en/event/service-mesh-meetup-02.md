@@ -31,7 +31,7 @@ speaker:
   # speaker loop
   - name : "朵晓东"
     image : "images/event-speakers/duoxiaodong.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
 
   # speaker loop
   - name : "丁振凯"
@@ -72,9 +72,9 @@ SkyWalking和Tetrate Inc. Istio核心团队合作，从Mixer接口提取遥感�
 
 ---
 
-**朵晓东（蚂蚁金服，高级技术专家）：蚂蚁金服开源的Service Mesh数据平面SOFA MOSN深层揭秘**
+**朵晓东（蚂蚁集团，高级技术专家）：蚂蚁集团开源的Service Mesh数据平面SOFA MOSN深层揭秘**
 
-个人简介：蚂蚁金服高级技术专家，专注云计算技术及产品。Apache Kylin创始团队核心成员；蚂蚁金融云PaaS创始团队核心成员，Antstack网络产品负责人；SOFAMesh创始团队核心成员。
+个人简介：蚂蚁集团高级技术专家，专注云计算技术及产品。Apache Kylin创始团队核心成员；蚂蚁金融云PaaS创始团队核心成员，Antstack网络产品负责人；SOFAMesh创始团队核心成员。
 
 Service Mesh技术体系在蚂蚁落地过程中，我们意识到Mesh结合云原生在多语言，流量调度等各方面的优势，同时面对蚂蚁内部语言体系与运维构架深度融合，7层流量调度规则方式复杂多样，金融级安全要求等诸多特征带来的问题和挑战，最终选择结合蚂蚁自身情况自研Golang版本数据平面MOSN，同时拥抱开源社区，支持作为Envoy替代方案与Istio集成工作。本次session将从功能、构架、跨语言、安全、性能、开源等多方面分享Service Mesh在蚂蚁落地过程中在数据平面的思考和阶段成果。
 

@@ -31,7 +31,7 @@ speaker:
   # speaker loop
   - name : "邵俊雄"
     image : "images/event-speakers/shaojunxiong.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
 
   # speaker loop
   - name : "杨文"
@@ -66,11 +66,11 @@ Topic摘要：网上有很多关于Istio的介绍，但主要的关注是数据�
 
 讲师简介：朱经惠，ETC车宝平台工程师。喜欢开源，个人开源项目《Jaeger PHP Client》；喜欢研究源码，对NSQ，Jaeger，Istio（控制平面）等go语言开源项目进行过研究。除了代码还喜欢爬山和第二天睡醒后全身酸疼的感觉。
 
-**邵俊雄（蚂蚁金服）——SOFAMesh 的通用协议扩展**
+**邵俊雄（蚂蚁集团）——SOFAMesh 的通用协议扩展**
 
-Topic摘要：介绍蚂蚁金服在SOFAMesh上开发对SOFA RPC与HSF这两个RPC框架的支持过程中总结出来的一个通用协议扩展方案。
+Topic摘要：介绍蚂蚁集团在SOFAMesh上开发对SOFA RPC与HSF这两个RPC框架的支持过程中总结出来的一个通用协议扩展方案。
 
-讲师介绍：蚂蚁金服中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。
+讲师介绍：蚂蚁集团中间件团队高级技术专家，目前主要负责 SOFAMesh 的开发工作。
 
 **杨文（JEX）——Kubernetes、Service Mesh、CI/CD 实践**
 

@@ -140,7 +140,7 @@ Here are the basic terms in Enovy you should know:
 
 Envoy can set multiple Listeners, and each Listener can also set a filter chain, and the filters are extensible, which can make it easier for us to manipulate traffic behavior, such as setting encryption, private RPC, and so on.
 
-The xDS protocol was proposed by Envoy and is now the default sidecar proxy in Istio. However, as long as the xDS protocol is implemented, it can theoretically be used as a sidecar proxy in Istio, such as the open source proxy [MOSN](https://github.com/mosn/mosn) by [Ant Financial](https://www.antfin.com) .
+The xDS protocol was proposed by Envoy and is now the default sidecar proxy in Istio. However, as long as the xDS protocol is implemented, it can theoretically be used as a sidecar proxy in Istio, such as the open source proxy [MOSN](https://github.com/mosn/mosn) by [Ant Group](https://www.antfin.com) .
 
 ## Istio Service Mesh
 

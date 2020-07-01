@@ -121,9 +121,9 @@ aliases:
 
 您可以通过以下方式使用本书：
 
-- GitHub地址：<https://github.com/rootsongjc/kubernetes-handbook>
-- GitBook在线浏览：<https://jimmysong.io/kubernetes-handbook/>
-- 下载本书的发行版：<https://github.com/rootsongjc/kubernetes-handbook/releases>
+- [GitHub](https://github.com/rootsongjc/kubernetes-handbook)
+- [GitBook 在线浏览](https://jimmysong.io/kubernetes-handbook)
+- [下载本书的发行版](https://github.com/rootsongjc/kubernetes-handbook/releases)
 - 按照[说明](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)自行编译成离线版本
 - Fork 一份添加你自己的笔记自行维护，有余力者可以一起参与进来
 

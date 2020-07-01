@@ -37,10 +37,9 @@ After reading this book, you will have the following gains:
 
 You can use this book in the following ways:
 
-- GitHub address: https://github.com/rootsongjc/cloud-native-infra
-- GitBook Online: https://jimmysong.io/cloud-native-infra
-
-English original download address: https://go.heptio.com/cloud-native-infrastructure
+- [GitHub](https://github.com/rootsongjc/cloud-native-infra)
+- [GitBook Online](https://jimmysong.io/cloud-native-infra)
+- [English original download](https://go.heptio.com/cloud-native-infrastructure)
 
 ### Thanks
 

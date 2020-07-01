@@ -26,7 +26,7 @@ speaker:
   # speaker loop
   - name : "彭泽文 "
     image : "images/event-speakers/pengzewen.jpg"
-    designation : "蚂蚁金服高级开发工程师"
+    designation : "蚂蚁集团高级开发工程师"
 
   # speaker loop
   - name : "涂小刚"
@@ -36,7 +36,7 @@ speaker:
   # speaker loop
   - name : "敖小剑"
     image : "images/event-speakers/aoxiaojian.jpg"
-    designation : "蚂蚁金服高级技术专家"
+    designation : "蚂蚁集团高级技术专家"
 
 # type
 type: "event"
@@ -60,9 +60,9 @@ PPT下载：https://github.com/servicemesher/meetup-slides
 
 本次主要分享虎牙注册中心、名字服务、DNS 的改造实践，以及如何通过 Nacos 实现与 istio 打通实现，使微服务平滑过渡到 service mesh。
 
-#### Service Mesh 在蚂蚁金服的生产级安全实践
+#### Service Mesh 在蚂蚁集团的生产级安全实践
 
-彭泽文 蚂蚁金服高级开发工程师
+彭泽文 蚂蚁集团高级开发工程师
 
 介绍通过 Envoy SDS（Secret Discovery Service）实现 Sidecar 证书管理的落地方案；分享如何为可信身份服务构建敏感信息数据下发通道，以及 Service Mesh Sidecar 的 TLS 生产级落地实践。
 
@@ -74,6 +74,6 @@ PPT下载：https://github.com/servicemesher/meetup-slides
 
 #### Service Mesh 发展趋势（续）：棋到中盘路往何方
 
-敖小剑 蚂蚁金服高级技术专家
+敖小剑 蚂蚁集团高级技术专家
 
 继续探讨 Service Mesh 发展趋势：深度分析 Istio 的重大革新 Mixer v2，Envoy 支持 Web Assembly 的意义所在，以及在 Mixer v2 出来之前的权宜之计; 深入介绍 Google Traffic Director 对虚拟机模式的创新支持方式，以及最近围绕 SMI 发生的故事。

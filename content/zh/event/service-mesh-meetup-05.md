@@ -26,7 +26,7 @@ speaker:
   # speaker loop
   - name : "陈逸凡 "
     image : "images/event-speakers/chenyifan.png"
-    designation : "蚂蚁金服资深开发工程师"
+    designation : "蚂蚁集团资深开发工程师"
 
   # speaker loop
   - name : "崔秀龙"
@@ -55,7 +55,7 @@ PPT下载：https://github.com/servicemesher/meetup-slides
 
 #### SOFAMosn 持续演进路径及实践案例
 
-陈逸凡 花名无钩，蚂蚁金服资深开发工程师。专注于网络接入层，高性能服务器研发，SOFAMosn团队核心成员
+陈逸凡 花名无钩，蚂蚁集团资深开发工程师。专注于网络接入层，高性能服务器研发，SOFAMosn团队核心成员
 
 #### 在网格的边缘试探——企业 Istio 试水指南
 

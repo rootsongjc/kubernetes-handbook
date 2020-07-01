@@ -140,7 +140,7 @@ Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上
 
 Envoy 中可以设置多个 Listener，每个 Listener 中又可以设置 filter chain（过滤器链表），而且过滤器是可扩展的，这样就可以更方便我们操作流量的行为，例如设置加密、私有 RPC 等。
 
-xDS 协议是由 Envoy 提出的，现在是 Istio 中默认的 sidecar proxy，但只要实现 xDS 协议理论上都是可以作为 Istio 中的 sidecar proxy 的，例如蚂蚁金服开源的 [MOSN](https://github.com/mosn/mosn)。
+xDS 协议是由 Envoy 提出的，现在是 Istio 中默认的 sidecar proxy，但只要实现 xDS 协议理论上都是可以作为 Istio 中的 sidecar proxy 的，例如蚂蚁集团开源的 [MOSN](https://github.com/mosn/mosn)。
 
 ## Istio Service Mesh
 

@@ -31,8 +31,8 @@ Istio Service Mesh Advanced Practical - Master the Services in Post Kubernetes E
 
 You can read or participate in this book at:
 
-- GitHub address: https://github.com/servicemesher/istio-handbook
-- Gitbook online: https://www.servicemesher.com/istio-handbook
+- [GitHub](https://github.com/servicemesher/istio-handbook)
+- [Gitbook online](https://www.servicemesher.com/istio-handbook)
 
 ### About this book
 

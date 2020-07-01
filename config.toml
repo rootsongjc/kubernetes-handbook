@@ -94,7 +94,7 @@ mailchimp_form_name = "b_cca519d8764547a389f52c57f_e8e9e07dcc"
 enable= false
 image = "images/mosn-banner.png"
 url = "https://mosn.io"
-title = "MOSN - 蚂蚁金服开源的云原生网络代理"
+title = "MOSN - 蚂蚁集团开源的云原生网络代理"
 
 [params.gitalk]
 clientID = "93a0df08e0f93ff0c8a3" # Your client ID
