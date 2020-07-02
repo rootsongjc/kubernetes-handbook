@@ -50,6 +50,10 @@ link = "plugins/search/fuse.min.js"
 link = "plugins/search/mark.js"
 [[params.plugins.js]]
 link = "plugins/search/search.js"
+[[params.plugins.js]]
+link = "plugins/bigPicture/bigPicture.js"
+[[params.plugins.js]]
+link = "plugins/hex_md5/hex_md5.js"
 
 #################### default parameters ################################
 [params]
@@ -257,7 +261,7 @@ weight = 3
 [[Languages.zh.menu.main]]
 parent = "博客"
 name = "云原生"
-URL = "/categories/cloud-native"
+URL = "/categories/云原生"
 weight = 4
 
 [[Languages.zh.menu.main]]
