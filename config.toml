@@ -277,6 +277,12 @@ URL = "/categories/其他"
 weight = 6
 
 [[Languages.zh.menu.main]]
+parent = "博客"
+name = "所有"
+URL = "/blog"
+weight = 7
+
+[[Languages.zh.menu.main]]
 name = "招聘"
 URL = "job"
 weight = 4
