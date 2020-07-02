@@ -162,3 +162,9 @@
 
 - id: search_placeholder
   translation: "输入搜索词"
+
+- id: related_article
+  translation: "相关文章"
+
+- id: toc
+  translation: "目录"

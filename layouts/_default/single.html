@@ -46,7 +46,17 @@
         {{ end }}
         </div>
       </div>
+      {{ "<!-- sidebar -->" | safeHTML }}
+      <aside class="col-lg-4 order-1 order-lg-2">
       {{ partial "blog-sidebar.html" . }}
+      {{ "<!-- recommend -->" | safeHTML }}
+      {{ partial "related.html" . }}
+      {{ "<!-- /recommend -->" | safeHTML }}
+      {{ "<!-- toc -->" | safeHTML }}
+      {{ partial "toc.html" . }}
+      {{ "<!-- /toc -->" | safeHTML }}
+      </aside>
+      {{ "<!-- /sidebar -->" | safeHTML }}
     </div>
   </div>
 </section>

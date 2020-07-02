@@ -159,3 +159,9 @@
 
 - id: search_placeholder
   translation: "Input the keyword"
+
+- id: related_article
+  translation: "Related article"
+
+- id: toc
+  translation: "Table of content"
