@@ -32,7 +32,7 @@ spec:
     name: manualscalertrait.core.oam.dev
 ```
 
-> CR  即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。`definitionRef` 将 `Trait` shcema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的）。
+> CR  即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。`definitionRef` 将 `Trait` shcema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是所有 CRD 都是面向应用开发者的）。
 
 OAM 中将 `Trait` 分成了 `core.oam.dev`（核心）、`standard.oam.dev`（标准）及自定义扩展类别。一个 `Trait` 具体适用于哪些 `workload` 可以在 `Trait` 的 `TraitDefinition` 中定义。目前 OAM 中支持的核心 `Trait` 有 [`ManualScalerTrait`](https://github.com/oam-dev/spec/blob/master/core/traits/manual_scaler_trait.md)。
 
