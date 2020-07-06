@@ -3,20 +3,14 @@
 .blog {
   .content {
     img {
-      cursor: pointer;
+      cursor: zoom-in;
     }
   }
 }
 
-.zoom-in{
-    cursor: -moz-zoom-in;
-    cursor: -webkit-zoom-in;
-    cursor: zoom-in;
-}
-.zoom-out{
-    cursor: -moz-zoom-out;
-    cursor: -webkit-zoom-out;
-    cursor: zoom-out;
+// Blog post image enlargement with masking layer
+#bp_container {
+  cursor: zoom-out;
 }
 
 .card-type {
