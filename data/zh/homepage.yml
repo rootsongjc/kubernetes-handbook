@@ -15,10 +15,10 @@ slider:
     #        link : "book"
 
     # slider item loop
-    - title : "专注于云原生、开源与社区"
+    - title : "专注于云原生开源与社区"
       animation_in : "left"
       animation_out : "right"
-      content: "[云原生社区](https://cloudnative.to)成立于 2020 年 5 月 12 日， 由 [Jimmy 和他的伙伴们](https://cloudnative.to/team)共同发起。这是一个服务全球华人开发者的，有温度、有技术、有情怀的开源社区，我们希望借助开源的力量打破企业边界，共同致力于云原生的应用和推广。"
+      content: "Jimmy Song 作为国内最早的云原生布道者，在 2016 年创建的了**Kubernetes&云原生讨论群**，汇聚了上千名顶尖的云原生早期开发者。2020 年初改组为企业中立的**云原生社区**，旨在为广大云原生爱好者构建一个自由交流和分享的平台，让云原生技术为大众所用。"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -34,7 +34,7 @@ slider:
       button:
         enable : true
         label : "开始"
-        link : "https://jimmysong.io/kubernetes-handbook"
+        link : "/kubernetes-handbook"
 
 ############################### Banner feature ###############################
 banner_feature:

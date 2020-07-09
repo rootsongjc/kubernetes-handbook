@@ -330,12 +330,16 @@ name = "云原生网络代理 MOSN"
 URL = "https://mosn.io"
 
 [[Languages.zh.menu.footer]]
-name = "金融级云原生架构 SOFAStack"
+name = "SOFAStack"
 URL = "https://www.sofastack.tech"
 
 [[Languages.zh.menu.footer]]
-name = "ServiceMesher 社区"
+name = "ServiceMesher"
 URL = "https://www.servicemesher.com"
+
+[[Languages.zh.menu.footer]]
+name = "云原生社区"
+URL = "https://cloudnative.to"
 
 [markup]
   [markup.highlight]

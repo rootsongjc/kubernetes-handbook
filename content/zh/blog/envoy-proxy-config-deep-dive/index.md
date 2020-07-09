@@ -15,7 +15,7 @@ Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上
 
 ![Envoy proxy 架构图](https://ae01.alicdn.com/kf/U587b3a8535474a2abcbe93fa069341c0A.png)
 
-### 基本术语
+## 基本术语
 
 下面是您应该了解的 Enovy 里的基本术语：
 

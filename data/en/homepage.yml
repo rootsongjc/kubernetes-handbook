@@ -18,7 +18,7 @@ slider:
     - title : "Cloud Native, Open Source and Community"
       animation_in : "left"
       animation_out : "right"
-      content: "The [Cloud Native Community](https://cloudnative.to/en/) was launched by [Jimmy and his partners](https://cloudnative.to/team) in February 2020. After several months of preparation, we are now announcing to the world that the Cloud Native Community is officially established! This is an open source community with a temperature, and we hope to use the concept of open source to break down the boundaries of the company. We focus on the growth of technical people and facilitate the communication between the communities. Let's focus on open source and give feedback to open source."
+      content: "Jimmy Song, one of China's earliest developer advocate focused on cloud native, created *Kubernetes & Cloud Native Discussion Group* in 2016, bringed together thousands of top cloud native early developers. In 2020, we reorganized into an enterprise-neutral organization called *Cloud Native Community*, which aims to build a free communication and sharing platform for all cloud native enthusiasts, making cloud native technology available to the public."
       # available animation : left, right, up, down
       button:
         enable : true
