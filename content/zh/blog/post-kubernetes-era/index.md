@@ -66,9 +66,7 @@ Kubernetes 作为云原生基础设施设计之初遵循了以下原则：
 
 根据声明式 API 可以做应用编排，定义组件间的依赖，通常使用人类易读的 YAML 文件来表示。但是，YAML 文件声明的字段真的就是最终的状态吗？有没有可能动态改变？
 
-我们在创建 `Deployment` 时会指定 Pod 的副本数，但是其实际副本数并不一定是一成不变的。假如集群中还有定义 HPA，那么 Pod 的副本数就可能随着一些外界因素（比如内存、CPU 使用率或者自定义 metric）而改变，而且如果集群中还有运行自定义的控制器话，那么也有可能修改应用的实例数量。在有多个控制器同时控制某个资源对象时，如何确保控制器之间不会发生冲突，资源对象的状态可预期？
-
-一个办法是使用[动态准入控制](https://kubernetes.io/zh/docs/reference/access-authn-authz/extensible-admission-controllers/#monitoring-admission-webhooks)，
+我们在创建 `Deployment` 时会指定 Pod 的副本数，但是其实际副本数并不一定是一成不变的。假如集群中还有定义 HPA，那么 Pod 的副本数就可能随着一些外界因素（比如内存、CPU 使用率或者自定义 metric）而改变，而且如果集群中还有运行自定义的控制器话，那么也有可能修改应用的实例数量。在有多个控制器同时控制某个资源对象时，如何确保控制器之间不会发生冲突，资源对象的状态可预期？可以使用[动态准入控制](https://kubernetes.io/zh/docs/reference/access-authn-authz/extensible-admission-controllers/#monitoring-admission-webhooks)来达到这一点。
 
 ### Kubernetes 原生应用
 
@@ -94,7 +92,7 @@ Kubernetes 本身的原语、资源对象、配置、常用的 CRD 扩展有几�
 - **调度层**：各种调度控制器，这也是 Kubernetes 原生应用的主要扩展层；
 - **资源层**：提供网络、存储和其他平台资源；
 
-而这些不同的层，完全可以将其职责分配给相应的人员，比如核心层是由应用程序开发者负责，将其职责分离，可以很大程度上降低
+而这些不同的层，完全可以将其职责分配给相应的人员，比如核心层是由应用程序开发者负责，将其职责分离，可以很大程度上降低开发和运维的复杂度。
 
 云原生应用落实到 Kubernetes 平台之上，仅仅利用 Kubernetes 的对象原语已很难描述一个复杂的应用程序，所以诞生了各种各样的 Operator，但这也仅仅解决了单个应用的定义，对于应用的打包封装则无能为力。
 
