@@ -11,8 +11,6 @@ aliases: "/posts/install-nginx-ingress-with-helm"
 type: "post"
 ---
 
-# 使用Helm安装Nginx ingress
-
 [Nginx ingress](https://github.com/kubernetes/ingress-nginx) 使用ConfigMap来管理Nginx配置，nginx是大家熟知的代理和负载均衡软件，比起[Traefik](https://traefik.io)来说功能更加强大，我们使用[helm](http://helm.sh)来部署，[chart](https://github.com/kubernetes/charts)保存在私有的仓库中，helm安装使用见[使用Helm管理kubernetes应用](https://jimmysong.io/kubernetes-handbook/practice/helm.html)。
 
 安装时需要用到的镜像有：
