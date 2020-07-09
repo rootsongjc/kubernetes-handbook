@@ -1,6 +1,6 @@
 ---
 title: "吴钧泽"
-draft: false
+draft: true
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
