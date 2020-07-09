@@ -5,6 +5,7 @@
 <!-- hero slider -->
 {{ if $data.homepage.slider.enable }}
 {{ with $data.homepage.slider }}
+<link rel="preload" href="{{ .bg_image | relURL }}" as="image">
 <section class="hero-section overlay bg-cover" data-background="{{ .bg_image | relURL }}">
   <div class="container">
     <div class="hero-slider">
