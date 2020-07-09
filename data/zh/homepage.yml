@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "images/banner/kubecon-2019-shanghai.jpg"
+  bg_image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296584/images/kubecon-2019-shanghai.jpg"
   slider_item:
     # slider item loop
     #    - title : "云原生势不可挡"
@@ -39,30 +39,30 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  image : "images/banner/cloud-landscape-zh.jpg"
+  image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296652/images/cloud-landscape-zh.jpg"
   feature_item:
     # feature item loop
     - name : "容器"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/containers.png"
+      image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296833/images/containers.png"
       content : "云原生应用的最小的构建单元，一次构建，到处运行。"
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/kubernetes.png"
+      image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296877/images/kubernetes.png"
       content : "云原生操作系统，声明式 API 是它的核心，Operator 操控万物。"
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/service-mesh.png"
+      image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296927/images/service-mesh.png"
       content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面。"
 
     # feature item loop
     - name : "Serverless"
       icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/serverless.png"
+      image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296956/images/serverless.png"
       content : "可预见时间内的云原生的终极形式，真正的按需使用和按量付费。"
 
 
@@ -70,7 +70,7 @@ banner_feature:
 about:
   enable : true
   title : "关于"
-  image : "images/about/about-me-zh.jpg"
+  image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296714/images/about-me-zh.jpg"
   content : "Jimmy Song（宋净超），蚂蚁集团云原生布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区和[云原生社区](https://cloudnative.to)联合创始人，讲师，作者，摄影师。"
   button:
     enable : true
@@ -97,7 +97,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/success-story.jpg"
+  bg_image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296295/images/success-story.jpg"
   title : "快速开始"
   content : "当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用Vagrant和VirtualBox来创建一个这样的环境。[点击了解详情...](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)"
   # video link
@@ -145,6 +145,6 @@ blog:
 footer:
   contact: "扫描下面的二维码加我微信"
   link: "/contact"
-  image: "images/jimmysong-wechat-qr-code.jpg"
+  image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
