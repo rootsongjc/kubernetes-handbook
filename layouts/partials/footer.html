@@ -59,7 +59,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
           <h4 class="text-white mb-5 text-uppercase">{{ i18n "blog" }}</h4>
           <ul class="list-unstyled">
-            {{ range first 3 (where .Site.RegularPages "Type" "post")}}
+            {{ range first 5 (where .Site.RegularPages "Type" "post")}}
             <li class="mb-3"><a class="text-color" href="{{ .Permalink | relURL }}">{{ .Title }}</a></li>
             {{ end }}
           </ul>
@@ -88,7 +88,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
           <h4 class="text-white mb-5 text-uppercase">{{ i18n "new_notice" }}</h4>
           <ul class="list-unstyled">
-            {{ range first 3 (where .Site.RegularPages "Type" "notice")}}
+            {{ range first 5 (where .Site.RegularPages "Type" "notice")}}
             <li class="mb-3"><a class="text-color" href="{{ .Permalink | relURL }}">{{ .Title }}</a></li>
             {{ end }}
           </ul>
