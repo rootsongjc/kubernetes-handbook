@@ -87,7 +87,7 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  title : "Join our Cloud Native Community"
+  title : "Welcome to join the Cloud Native Community with thousands of the most earliest adopters."
   button:
     enable : true
     label : "join now"

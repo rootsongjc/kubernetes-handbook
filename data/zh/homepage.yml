@@ -87,10 +87,10 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  title : "中国最具影响力的企业中立的云原生开源社区"
+  title : "欢迎与几千名云原生早期采纳者一起加入云原生社区！"
   button:
     enable : true
-    label : "加入我们"
+    label : "点此申请"
     link : "https://cloudnative.to/contact"
 
 
