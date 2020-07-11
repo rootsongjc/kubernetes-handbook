@@ -12,6 +12,14 @@
       margin-top: -98px;
       padding-top: 98px;
     }
+    @include mobile {
+    h2,
+    h3,
+    h4{
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    }
   }
 }
 

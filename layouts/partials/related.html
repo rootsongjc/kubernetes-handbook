@@ -1,7 +1,7 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
 <div class="bg-white">
-  <h4 class="">{{ i18n "related_article" }}</h4>
+  <h4 class="mb-4">{{ i18n "related_article" }}</h4>
   {{ "<!-- post-item -->" | safeHTML }}
   {{ range . }}
   <div class="media border-bottom border-color pb-3 mb-3">
