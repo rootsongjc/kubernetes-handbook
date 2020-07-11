@@ -16,7 +16,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #3d87d6;
+  background-color: #0a55a7;
   z-index: 999999;
   display: flex;
   align-items: center;
@@ -346,6 +346,10 @@ textarea.form-control{
   ol {
     padding-left: 20px;
     list-style-type: decimal;
+
+    li {
+        margin-bottom: 10px;
+    }
   }
 
   ul {
@@ -452,4 +456,16 @@ textarea.form-control{
       min-width: auto;
     }
   }
+}
+
+.aside-toc {
+    top: 60px;
+    line-height: 1.9;
+    ul {
+            padding-inline-start: 10px;
+    }
+}
+
+footer .text-color {
+    color: #9ca3c1;
 }
