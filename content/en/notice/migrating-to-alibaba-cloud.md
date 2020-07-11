@@ -12,6 +12,7 @@ Just tonight, the [jimmysong.io](https://jimmysong.io/) website was moved to the
 
 Meanwhile, the blog has also done a lot to improve the site, thanks to [Bai Jun away @baijunyao](https://github.com/baijunyao) strong support, a lot of work for the revision of the site, including:
 
+- Changed the theme color scheme and deepened the contrast
 - Use aligolia to support full site search
 - Optimized mobile display
 - Articles in the blog have added zoom function
