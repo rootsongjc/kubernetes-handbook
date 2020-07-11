@@ -464,8 +464,13 @@ textarea.form-control{
     ul {
             padding-inline-start: 10px;
     }
+    a:hover
+    {
+        background-color:yellow;
+    }
+
 }
 
 footer .text-color {
-    color: #9ca3c1;
+    color: #d1d6e8;
 }
