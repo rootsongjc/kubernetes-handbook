@@ -198,5 +198,3 @@ spec:
 ## 参考
 
 - [Pod lifecycle - kubernetes.io](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
-
-

@@ -128,9 +128,4 @@ kubectl delete replicaset my-repset --cascade=false
 ## 已知的问题
 
 - 1.7 版本，垃圾收集不支持 [自定义资源](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)，比如那些通过 CustomResourceDefinition 新增，或者通过 API server 聚集而成的资源对象。
-
-[其它已知的问题](https://github.com/kubernetes/kubernetes/issues/26120)
-
-原文地址：https://k8smeetup.github.io/docs/concepts/workloads/controllers/garbage-collection/
-
-译者：[shirdrn](https://github.com/shirdrn)
+- [其它已知的问题](https://github.com/kubernetes/kubernetes/issues/26120)。

@@ -242,11 +242,3 @@ Pod 重启，会导致 Init 容器重新执行，主要有如下几个原因：
 ## 支持与兼容性
 
 API Server 版本为 1.6 或更高版本的集群，通过使用 `spec.initContainers` 字段来支持 Init 容器。之前的版本可以使用 alpha 和 beta 注解支持 Init 容器。`spec.initContainers` 字段也被加入到 alpha 和 beta 注解中，所以 Kubernetes 1.3.0 版本或更高版本可以执行 Init 容器，并且 1.6 版本的 API Server 能够安全地回退到 1.5.x 版本，而不会使已创建的 Pod 失去 Init 容器的功能。
-
----
-
-> 原文地址：https://k8smeetup.github.io/docs/concepts/workloads/pods/init-containers/
->
-> 译者：[shirdrn](https://github.com/shirdrn)
->
-> 校对：[Jimmy Song](https://github.com/rootsongjc)
