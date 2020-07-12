@@ -2,9 +2,15 @@
 
 > 云原生是一种行为方式和设计理念，如今它正在遭受过度地市场化包装。究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。—— [Jimmy Song](https://jimmysong.io)
 
-![加入云原生社区](https://res.cloudinary.com/jimmysong/image/upload/v1594445787/images/github-banner.jpg)
+<p align="center">
+  <a href="https://cloudnative.to">
+    <img src="https://res.cloudinary.com/jimmysong/image/upload/v1594445787/images/github-banner.jpg" alt="加入云原生社区" title="加入云原生社区">
+  </a>
+</p>
 
 👉 [https://cloudnative.to](https://cloudnative.to)
+
+---
 
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/memo/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
