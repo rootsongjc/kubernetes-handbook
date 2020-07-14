@@ -1,6 +1,6 @@
 <div class="card p-0 border-primary rounded-0 hover-shadow mb-5">
   <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
-  <div class="book-card-body">
+  <div class="book-card-body ml-4">
     <ul class="list-inline mb-3">
       <li class="list-inline-item"><i class="ti-calendar"></i><span class="ml-1">{{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</span></li>
       <li class="list-inline-item"><i class="ti-tag"></i><span class="ml-1">{{ .Params.Category }}</span></li>

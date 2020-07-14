@@ -3,7 +3,7 @@
     <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
     <div class="card-date">{{ default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}</div>
   </div>
-  <div class="card-body">
+  <div class="event-card-body">
     <!-- location and sponsor -->
     <p><i class="list-inline-item ti-location-pin text-primary mr-2"></i>{{ .Params.Location | markdownify }}
     <i class="list-inline-item mr-2 text-light"></i><i class="ti-user"></i> {{ .Params.sponsor | markdownify }}
