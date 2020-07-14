@@ -6,7 +6,7 @@ subtitle: "从服务化到云原生"
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "未来架构：从服务化到云原生，张亮、吴晟、敖小剑、宋净超 著，电子工业出版社出版，2019 年 4 月第一版"
+description : "未来架构：从服务化到云原生，张亮、吴晟、敖小剑、宋净超 著，电子工业出版社出版，2019 年 4 月第一版。"
 # book thumbnail
 image: "images/books/future-architecture.jpg"
 # page banner
@@ -40,7 +40,7 @@ aliases: "/posts/future-architecture-from-soa-to-cloud-native"
 
 这本书里既有我多年深思熟虑的见解和沉淀良久的经验，也有我弃笔又拾笔的挣扎，因为我需要让书的内容对读者负责……
 
-这本书里更有这些资深大咖的精彩章节叙述：Apache孵化器项目SkyWalking创始人&APM专家吴晟、CNCF Ambassador&云原生布道师&云原生社区创始人[宋净超](https://jimmysong.io/)、ServiceMesher社区联合创始人&ServiceMesh布道师[敖小剑](https://skyao.io/)……
+这本书里更有这些资深大咖的精彩章节叙述：Apache孵化器项目SkyWalking创始人&APM专家吴晟、CNCF Ambassador&云原生布道师&云原生社区创始人[宋净超](https://jimmysong.io/)、Service Mesh布道师[敖小剑](https://skyao.io/)。
 
 ### 目录
 
