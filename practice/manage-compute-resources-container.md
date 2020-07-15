@@ -202,7 +202,7 @@ LastState: map[terminated:map[exitCode:137 reason:OOM Killed startedAt:2015-07-0
 
 ## 不透明整型资源（Alpha功能）
 
-Kubernetes 1.5 版本中引入不透明整型资源。不透明的整数资源允许集群运维人员发布新的节点级资源，否则系统将不了解这些资源。
+Kubernetes 1.5 版本中引入不透明整型资源。不透明的整型资源允许集群运维人员发布新的节点级资源，否则系统将不了解这些资源。
 
 用户可以在 Pod 的 spec 中消费这些资源，就像 CPU 和内存一样。调度器负责资源计量，以便在不超过可用量的同时分配给 Pod。
 
