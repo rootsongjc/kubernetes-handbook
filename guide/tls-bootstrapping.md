@@ -50,7 +50,6 @@ Kube-controller-manager 标志为：
 
 ```
 --cluster-signing-cert-file="/etc/path/to/kubernetes/ca/ca.crt" --cluster-signing-key-file="/etc/path/to/kubernetes/ca/ca.key"
-
 ```
 
 ### 审批控制器
@@ -69,7 +68,6 @@ Kube-controller-manager 标志为：
 
 ```
 --feature-gates=RotateKubeletServerCertificate=true
-
 ```
 
 以下 RBAC `ClusterRoles` 代表 `nodeClient`、`selfnodeclient` 和 `selfnodeserver` 功能。在以后的版本中可能会自动创建类似的角色。
@@ -114,7 +112,6 @@ rules:
 ```
 # REMOVED: This flag no longer works as of 1.7.
 --insecure-experimental-approve-all-kubelet-csrs-for-group="kubelet-bootstrap-token"
-
 ```
 
 管理员将创建一个 `ClusterRoleBinding` 来定位该组。

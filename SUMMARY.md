@@ -109,7 +109,7 @@
 * [集群安全性管理](guide/cluster-security-management.md)
   * [管理集群中的 TLS](guide/managing-tls-in-a-cluster.md)
   * [kubelet 的认证授权](guide/kubelet-authentication-authorization.md)
-  * [TLS bootstrap](guide/tls-bootstrapping.md)
+  * [TLS Bootstrap](guide/tls-bootstrapping.md)
   * [创建用户认证授权的 kubeconfig 文件](guide/kubectl-user-authentication-authorization.md)
   * [IP 伪装代理](guide/ip-masq-agent.md)
   * [使用 kubeconfig 或 token 进行用户身份认证](guide/auth-with-kubeconfig-or-token.md)
