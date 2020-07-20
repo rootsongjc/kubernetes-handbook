@@ -112,7 +112,7 @@
   });
 
     // Blog image maximize
-	$('.blog .content img').on('click', function (e) {
+	$('.content img').on('click', function (e) {
 		BigPicture({
 			el: e.target,
 		})
