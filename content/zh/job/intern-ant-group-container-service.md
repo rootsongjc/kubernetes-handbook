@@ -30,4 +30,4 @@ type: "notice"
 
 ## 简历投递
 
-如果您对工作岗位有兴趣，希望来工作，欢迎投递简历到邮箱：[bin.zengb@alibaba-inc.com](mailto:bin.zengb@alibaba-inc.com) 我们会在3个工作日内回复您，信中请注明您希望从事的工作方向。
+如果您对工作岗位有兴趣，希望来工作，欢迎投递简历到邮箱：[bin.zengb@alibaba-inc.com](mailto:bin.zengb@alibaba-inc.com) 我们会在3个工作日内回复您，信中请注明您希望从事的工作方向，并注明来自 `jimmysong.io`。
