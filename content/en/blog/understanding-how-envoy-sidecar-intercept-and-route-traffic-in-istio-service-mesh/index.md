@@ -61,7 +61,7 @@ The [Envoy configuration](https://preliminary.istio.io/zh/help/ops/traffic-manag
 
 `reviews`, there are three versions of the service, there is one instance of each version, three versions sidecar similar working steps, only to later `reviews-v1-cb8655c75-b97zc` Sidecar flow Pod forwarding this step will be described.
 
-## Understand the Inbound Handler
+## Understanding the Inbound Handler
 
 The role of the inbound handler is to transfer the traffic from the downstream intercepted by iptables to localhost to establish a connection with the application container inside the Pod.
 
@@ -109,7 +109,7 @@ ADDRESS            PORT      TYPE
 
 As from `productpage` traffic arriving `reviews` Pods, downstream must clearly know the IP address of the Pod which is `172.33.3.3`, so the request is `172.33.3.3:9080`.
 
-**virtual Listener**
+**irtual Listener**
 
 As you can see from the Pod's Listener list, the 0.0.0.0:15001/TCP Listener (the actual name is `virtual`) listens for all inbound traffic, and the following is the detailed configuration of the Listener.
 
@@ -243,7 +243,7 @@ Run `istioctl pc listener reviews-v1-cb8655c75-b97zc --address 172.33.3.3 --port
 
 This configuration indicates that traffic will be handed off to the Cluster for `inbound|9080||reviews.default.svc.cluster.local` processing.
 
-**Cluster inbound|9080||reviews.default.svc.cluster.local**
+**Cluster `inbound|9080||reviews.default.svc.cluster.local`**
 
 Run `istioctl pc cluster reviews-v1-cb8655c75-b97zc --fqdn reviews.default.svc.cluster.local --direction inbound -o json` to see the Cluster configuration is as follows.
 
@@ -271,7 +271,7 @@ Run `istioctl pc cluster reviews-v1-cb8655c75-b97zc --fqdn reviews.default.svc.c
 
 You can see that the Endpoint of the Cluster directly corresponds to localhost, and then the traffic is forwarded by the application container after iptables.
 
-## Understand the Outbound Handler
+## Understanding the Outbound Handler
 
 Because the `reviews` will to `ratings` send an HTTP request service, request address are: `http://ratings.default.svc.cluster.local:9080/` the role of Outbound handler is to intercept traffic to iptables to native applications sent via Envoy to determine how to route to the upstream.
 
@@ -321,7 +321,7 @@ The request sent by the application container is outbound traffic. After being h
 
 You can see the routing of traffic to the Cluster from this Virtual Host configuration `outbound|9080||ratings.default.svc.cluster.local`.
 
-**Endpoint outbound|9080||ratings.default.svc.cluster.local**
+**Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
 
 Istio 1.1 previous versions do not support the use of `istioctl` commands to directly query Endpoint Cluster, you can use the debug queries Pilot endpoint way compromise.
 
