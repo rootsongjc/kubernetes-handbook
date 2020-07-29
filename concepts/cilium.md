@@ -14,7 +14,7 @@ Cilium 为 Linux 容器框架（如 [**Docker**](https://www.docker.com/) 和 [*
 
 ## BPF
 
-**柏克莱封包过滤器**（Berkeley Packet Filter，缩写 BPF），是 [类 Unix](https://zh.wikipedia.org/wiki/% E7% B1% BBUnix) 系统上 [数据链路层](https://zh.wikipedia.org/wiki/% E6%95% B0% E6%8D% AE% E9%93% BE% E8% B7% AF% E5% B1%82) 的一种原始接口，提供原始链路层 [封包](https://zh.wikipedia.org/wiki/% E5% B0%81% E5%8C%85) 的收发，除此之外，如果网卡驱动支持 [洪泛](https://zh.wikipedia.org/wiki/% E6% B4% AA% E6% B3%9B) 模式，那么它可以让网卡处于此种模式，这样可以收到 [网络](https://zh.wikipedia.org/wiki/% E7% BD%91% E7% BB%9C) 上的所有包，不管他们的目的地是不是所在 [主机](https://zh.wikipedia.org/wiki/% E4% B8% BB% E6% A9%9F)。参考 [维基百科](https://zh.wikipedia.org/wiki/BPF) 和 [eBPF 简史](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)。
+**柏克莱封包过滤器**（Berkeley Packet Filter，缩写 BPF），是 [类 Unix](https://zh.wikipedia.org/wiki/%E7%B1%BBUnix) 系统上 [数据链路层](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82) 的一种原始接口，提供原始链路层 [封包](https://zh.wikipedia.org/wiki/%E5%B0%81%E5%8C%85) 的收发，除此之外，如果网卡驱动支持 [洪泛](https://zh.wikipedia.org/wiki/%E6%B4%AA%E6%B3%9B) 模式，那么它可以让网卡处于此种模式，这样可以收到 [网络](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C) 上的所有包，不管他们的目的地是不是所在 [主机](https://zh.wikipedia.org/wiki/%E4%B8%BB%E6%A9%9F)。参考 [维基百科](https://zh.wikipedia.org/wiki/BPF) 和 [eBPF 简史](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)。
 
 ## 特性
 
