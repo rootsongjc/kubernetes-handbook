@@ -129,7 +129,7 @@ Kubernetes 并不直接对外提供业务能力，而是作为应用运行的底
 - Service Mesh 解决服务间的流量治理，最小的治理单元是 Service（可以类比为 Kubernetes 中 Service 资源）；
 - 而 Serviceless 是更高一层的抽象，最小的治理单元是 APP；
 
-越向上层就越不关心应用的底层实现，到了 Serverless 开发者只需要关心代码逻辑，其他的一起都是配置，因此 Google 联合 Pivotal 等其他公司于2018年7月创建了 [knative](https://github.com/knative) 这个基于 Kubernetes 和 Istio 的 Serverless 的开源项目。
+越向上层就越不关心应用的底层实现，到了 Serverless 开发者只需要关心代码逻辑，其他的一切都是配置，因此 Google 联合 Pivotal 等其他公司于2018年7月创建了 [knative](https://github.com/knative) 这个基于 Kubernetes 和 Istio 的 Serverless 的开源项目。
 
 ## 出版物
 

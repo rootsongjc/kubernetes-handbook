@@ -68,7 +68,7 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 5. 使用Deployment history来回滚到历史版本。
 6. 使用ConfigMap和Secret来存储配置。
 7. 在Pod里增加Readiness和Liveness探针。
-8. 给Pod这只CPU和内存资源限额。
+8. 给Pod设置CPU和内存资源限额。
 9. 定义多个namespace来限制默认service范围的可视性。
 10. 配置HPA来动态扩展无状态工作负载。
 
