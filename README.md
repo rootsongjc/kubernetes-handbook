@@ -106,6 +106,7 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 - [Python 云原生](https://jimmysong.io/book/cloud-native-python/) - 使用 Python 和 React 构建云原生应用（Manish Sethi 著，宋净超译），电子工业出版社，2018 年 6 月出版
 - [云原生 Java](https://jimmysong.io/book/cloud-native-java/) - Spring Boot、Spring Cloud 与 Cloud Foundry 弹性系统设计（Josh Long & Kenny Bastani 著，张若飞 宋净超译 ），电子工业出版社，2018 年 7 月出版
 - [未来架构 —— 从服务化到云原生](https://jimmysong.io/book/future-architecture/) - 张亮 吴晟 敖小剑 宋净超 著，电子工业出版社，2019 年 3 月出版
+- [云原生模式](https://jimmysong.io/book/cloud-native-patterns) - 设计拥抱变化的软件（Cornelia Davis 著，张若飞 宋净超 译），电子工业出版社，2020 年 8 月出版
 
 ## 推荐
 
