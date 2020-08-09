@@ -1,6 +1,6 @@
 ---
 title: "云原生模式"
-date: 2019-08-09T08:00:00+08:00
+date: 2020-08-09T08:00:00+08:00
 draft: false
 subtitle: "设计拥抱变化的软件"
 # page title background image
