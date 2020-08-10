@@ -18,7 +18,7 @@ pages : "396"
 # book price
 price : "￥109"
 # apply url
-apply_url : "https://item.jd.com/72281595098.html"
+apply_url : "https://item.jd.com/12704245.html"
 # type
 type: "book"
 aliases: "/posts/future-architecture-from-soa-to-cloud-native"
