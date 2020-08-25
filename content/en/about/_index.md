@@ -19,13 +19,14 @@ Jimmy Song has published several books since 2017, see the [book page](/en/book)
 
 **Copyright**
 
-- [Future Architecture - From SOA to Cloud Native, Zhang Liang,Wu Sheng, Ao Xiaojian, Song Jingchao](/en/book/future-architecture-from-soa-to-cloud-native/)
+- [Future Architecture - From SOA to Cloud Native, Zhang Liang,Wu Sheng, Ao Xiaojian, Song Jingchao, 2019.04](/en/book/future-architecture/)
 
 **Translation**
 
-- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React](/en/book/cloud-native-go)
-- [Cloud Native Python - Build cloud native applications with Python and React](/en/book/cloud-native-python/)
-- [Cloud Native Java - Build cloud native applications with Java](/en/book/cloud-native-java)
+- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React, 2017.08](/en/book/cloud-native-go)
+- [Cloud Native Python - Build cloud native applications with Python and React, 2018.07](/en/book/cloud-native-python/)
+- [Cloud Native Java - Build cloud native applications with Java, 2018.07](/en/book/cloud-native-java)
+- [Cloud Native Patterns, 2020.08](/en/book/cloud-native-patterns)
 
 **Reviewed**
 

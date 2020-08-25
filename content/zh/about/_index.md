@@ -19,7 +19,7 @@ description : "Jimmy Song（宋净超）的简介。"
 
 **著作**
 
-- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2018 年 4 月，电子工业出版社](/book/future-architecture-from-soa-to-cloud-native/)
+- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2019 年 4 月，电子工业出版社](/book/future-architecture/)
 
 **译本**
 
