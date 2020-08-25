@@ -4,7 +4,7 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Contact Jimmy Song."
+description : "Contact with Jimmy Song."
 ---
 
 You can contact Jimmy Song in the following ways.
