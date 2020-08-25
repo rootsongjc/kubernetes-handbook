@@ -19,13 +19,14 @@ description : "Jimmy Song（宋净超）的简介。"
 
 **著作**
 
-- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著](/book/future-architecture-from-soa-to-cloud-native/)
+- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2018 年 4 月，电子工业出版社](/book/future-architecture-from-soa-to-cloud-native/)
 
 **译本**
 
-- [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务](/book/cloud-native-go)
-- [Cloud Native Python - 使用 Python 和 React 构建云原生应用](/book/cloud-native-python/)
-- [Cloud Native Java - 使用 Java 构建云原生应用](/book/cloud-native-java)
+- [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务，2017 年 8 月，电子工业出版社](/book/cloud-native-go)
+- [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-python/)
+- [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-java)
+- [云原生模式，2020 年 8 月，电子工业出版社](/book/cloud-native-patterns)
 
 **审阅**
 
@@ -37,11 +38,11 @@ description : "Jimmy Song（宋净超）的简介。"
 
 ### 社区
 
-Jimmy Song 是 [ServiceMesher](https://www.servicemesher.com) 社区及 [云原生社区](https://cloudnative.to) 的联合创始人。
+Jimmy Song 是 [ServiceMesher](https://www.servicemesher.com) 社区及 [云原生社区](https://cloudnative.to) 的创始人。
 
 **ServiceMesher 社区**
 
-ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。ServiceMesher 社区的使命是传播 Service Mesh 技术，构建开源文化，加强行业交流，推动 Service Mesh 在企业中落地。社区官网 <https://www.servicemehser.com>。
+ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。ServiceMesher 社区的使命是传播 Service Mesh 技术，构建开源文化，加强行业交流，推动 Service Mesh 在企业中落地。社区官网 <https://www.servicemesher.com>。
 
 **云原生社区**
 
