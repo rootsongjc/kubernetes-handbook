@@ -283,19 +283,26 @@ URL = "/blog"
 weight = 7
 
 [[Languages.zh.menu.main]]
-name = "招聘"
-URL = "job"
+name = "社区"
+URL = "community"
 weight = 4
+
+[[Languages.zh.menu.main]]
+parent = "社区"
+name = "云原生社区"
+URL = "https://cloudnative.to"
+weight = 1
+
+[[Languages.zh.menu.main]]
+parent = "社区"
+name = "服务网格社区"
+URL = "https://wwww.servicemesher.com"
+weight = 2
 
 [[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
 weight = 5
-
-[[Languages.zh.menu.main]]
-name = "招聘"
-URL = "job"
-weight = 6
 
 [[Languages.zh.menu.main]]
 name = "更多"
@@ -318,6 +325,12 @@ parent = "更多"
 name = "活动"
 URL = "event"
 weight = 3
+
+[[Languages.zh.menu.main]]
+parent = "更多"
+name = "招聘"
+URL = "job"
+weight = 4
 
 # footer menu
 
