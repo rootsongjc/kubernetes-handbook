@@ -41,7 +41,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 
 安装完成后将生成默认的 `~/.kube/config` 文件，自动指向 minikube 集群。
 
-注意：在安装过程中建议配置代理，否则将会有的镜像无法下载。
+注意：在安装过程中建议[配置代理](https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/)，否则将会有的镜像无法下载。
 
 ## 常用命令
 
