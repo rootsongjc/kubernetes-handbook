@@ -30,3 +30,4 @@ Kubebuilder 提供基于简洁的精心设计的示例 godoc 来提供整洁的�
 
 - [kubebuilder - github.com](https://github.com/kubernetes-sigs/kubebuilder/)
 - [kubebuilder book - book.kubebuilder.io](https://book.kubebuilder.io)
+- [Kubebuilder 中文文档 - cloudnative.to](https://cloudnative.to/kubebuilder/)
