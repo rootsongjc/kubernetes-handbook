@@ -149,7 +149,7 @@
   translation: "主办方"
 
 - id: addWechat
-  translation: "扫描下面的二维码加我微信"
+  translation: "扫码添加 Jimmy 微信"
 
 - id: go_home
   translation: "返回主页"
