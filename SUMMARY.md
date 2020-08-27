@@ -286,6 +286,8 @@
   * [Kubernetes1.13 更新日志](appendix/kubernetes-1.13-changelog.md)
   * [Kubernetes1.14 更新日志](appendix/kubernetes-1.14-changelog.md)
   * [Kubernetes1.15 更新日志](appendix/kubernetes-1.15-changelog.md)
+  * [Kubernetes1.16 更新日志](appendix/kubernetes-1.16-changelog.md)
+  * [Kubernetes1.17 更新日志](appendix/kubernetes-1.17-changelog.md)
 * [Kubernetes 及云原生年度总结及展望](appendix/summary-and-outlook.md)
   * [Kubernetes 与云原生 2017 年年终总结及 2018 年展望](appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.md)
   * [Kubernetes 与云原生 2018 年年终总结及 2019 年展望](appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.md)
