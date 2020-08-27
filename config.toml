@@ -196,24 +196,24 @@ weight = 7
 # footer menu
 
 [[menu.footer]]
-name = "Partner"
-URL = "/partner"
+name = "Service Mesh Community(China)"
+URL = "https://www.servicemesher.com.com"
 
 [[menu.footer]]
-name = "Event"
-URL = "/event"
-
-[[menu.footer]]
-name = "Notice"
-URL = "/notice"
+name = "Cloud Native Community(China)"
+URL = "https://cloudnative.to"
 
 [[menu.footer]]
 name = "Awesome Cloud Native"
 URL = "/awesome-cloud-native"
 
 [[menu.footer]]
-name = "MosnProxy"
-URL = "https://mosn.io"
+name = "Jimmy's YouTube Channel"
+URL = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
+
+[[menu.footer]]
+name = "Jimmy's Photography"
+URL = "https://jimmysongio.tuchong.com"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -232,8 +232,25 @@ weight = 1
 
 [[Languages.zh.menu.main]]
 name = "图书"
-URL = "book"
 weight = 2
+
+[[Languages.zh.menu.main]]
+parent = "图书"
+name = "Kubernetes Handbook"
+URL = "/kubernetes-handbook/"
+weight = 1
+
+[[Languages.zh.menu.main]]
+parent = "图书"
+name = "Istio Handbook"
+URL = "/istio-handbook/"
+weight = 2
+
+[[Languages.zh.menu.main]]
+parent = "图书"
+name = "全部图书"
+URL = "/book/"
+weight = 3
 
 [[Languages.zh.menu.main]]
 name = "博客"
@@ -278,7 +295,7 @@ weight = 6
 
 [[Languages.zh.menu.main]]
 parent = "博客"
-name = "所有"
+name = "全部博客"
 URL = "/blog"
 weight = 7
 
@@ -335,19 +352,19 @@ weight = 4
 # footer menu
 
 [[Languages.zh.menu.footer]]
-name = "Awesome Cloud Native"
+name = "云原生开源技术大全"
 URL = "/awesome-cloud-native"
 
 [[Languages.zh.menu.footer]]
-name = "云原生网络代理 MOSN"
-URL = "https://mosn.io"
+name = "Jimmy 的图虫摄影频道"
+URL = "https://jimmysongio.tuchong.com"
 
 [[Languages.zh.menu.footer]]
-name = "SOFAStack"
-URL = "https://www.sofastack.tech"
+name = "Jimmy 的 B 站视频"
+URL = "https://space.bilibili.com/31004924/"
 
 [[Languages.zh.menu.footer]]
-name = "ServiceMesher"
+name = "ServiceMesher 社区"
 URL = "https://www.servicemesher.com"
 
 [[Languages.zh.menu.footer]]
