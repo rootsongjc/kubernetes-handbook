@@ -10,6 +10,10 @@ Font: https://www.font-generator.com/fonts/StarkillerOutlineItalic/?size=34&bg=n
 
 ## Images size
 
+### Blog
+
+Blog banner: 3:2
+
 ### Event 
 
 Event image: 3:2
