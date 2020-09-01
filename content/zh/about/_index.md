@@ -11,7 +11,7 @@ description : "Jimmy Song（宋净超）的简介。"
 
 ### 简介
 
-宋净超（Jimmy Song），[蚂蚁集团](https://www.antfin.com/) 云原生布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[ServiceMesher 社区](https://www.servicemesher.com/) 和 [云原生社区](http://cloudnative.to) 联合创始人、电子工业出版社优秀译者、出品人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等技术的早期推广者。
+宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[ServiceMesher 社区](https://www.servicemesher.com/) 和 [云原生社区](http://cloudnative.to) 联合创始人、电子工业出版社优秀译者、出品人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等技术的早期使用及推广者。
 
 ### 出版物
 

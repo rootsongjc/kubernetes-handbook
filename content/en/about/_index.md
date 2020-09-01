@@ -11,7 +11,7 @@ description : "Jimmy Song's profile."
 
 ### Introduction
 
-Jimmy Song(宋净超) is a developer advocate worked for [Ant Group](http://antfin.com/) , [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) , co-founder of [ServiceMesher community](https://www.servicemesher.com/) and [Cloud Native Community](https://cloudnative.to/en). He is an outstanding translator, author and producer of PHEI. Early adopters and evangelis of Kubernetes and Istio.
+Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/) , co-founder of [ServiceMesher community](https://www.servicemesher.com/) and [Cloud Native Community](https://cloudnative.to/en). He is an outstanding translator, author and producer of PHEI. Early adopters and evangelis of Kubernetes and Istio.
 
 ### Publications
 
@@ -38,7 +38,7 @@ He mainly focuses on cloud native fields, including containers, microservices, s
 
 ### Community
 
-Jimmy Song is the co-founder of [ServiceMesher](https://www.servicemesher.com/) and [Cloud Native](https://cloudnative.to) community,
+Jimmy Song is the co-founder of [ServiceMesher](https://www.servicemesher.com/) and [Cloud Native Communtiy](https://cloudnative.to).
 
 #### ServiceMesher Community
 
@@ -52,7 +52,7 @@ Cloud Native Community is founded on May 12, 2020 by [Jimmy and his friends](htt
 
 #### 2020
 
-- July 4, 2020 | Shenzhen | [GIAC](http://giac.msup.com.cn/Giac/schedule/index) | Producer
+- August 14, 2020 | Shenzhen | [GIAC](http://giac.msup.com.cn/Giac/schedule/index) | Producer
 
 #### 2019
 
