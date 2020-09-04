@@ -4,7 +4,7 @@
 
 ## 架构
 
-下图是 Envoy proxy 的架构图，显示了 host B 经过 Envoy 访问 host A 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
+下图是 Envoy proxy 的架构图，显示了 host A 经过 Envoy 访问 host B 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
 
 ![Envoy proxy 架构图](../images/envoy-arch.png)
 
