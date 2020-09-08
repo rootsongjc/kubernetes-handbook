@@ -33,7 +33,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 
 ## 启动 Minikube
 
-执行 `minikube start` 即可自动下载依赖文件，开始安装和启动 minikube。该过程中将自动执行以下步骤：
+对于 macOS，执行 `minikube start --vm-driver=hyperkit` （使用 hyperkit 作为虚拟机，不需要安装 docker）即可自动下载依赖文件，开始安装和启动 minikube。该过程中将自动执行以下步骤：
 
 1. 下载 `docker-machine-driver-hyperkit`（10.9 M）
 1. 下载虚拟机镜像（近 200M）
