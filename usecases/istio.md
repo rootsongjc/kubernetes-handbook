@@ -1,8 +1,8 @@
 # Istio简介
 
-[Istio](https://istio.io)是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。Istio为希腊语，意思是”起航“。
+[Istio](https://istio.io) 是由 Google、IBM 和 Lyft 开源的微服务管理、保护和监控框架。Istio 为希腊语，意思是”起航“。
 
-**TL;DR** 关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
+关于Istio中的各个组件和一些关键信息请参考下面的mindmap。
 
 ![Istio的mindmap](../images/istio-mindmap.png)
 
@@ -55,16 +55,16 @@ Istio 服务网格从逻辑上分为数据平面和控制平面。
 
 下图展示了组成每个平面的不同组件：
 
-![Istio架构图](../images/istio-arch.png)
+![Istio架构图](../images/istio-mesh-arch.png)
 
-Istio架构分为控制平面和数据平面。
+Istio 的架构分为控制平面和数据平面。
 
-- **数据平面**：由一组智能代理（Envoy）作为sidecar部署，协调和控制所有microservices之间的网络通信。
+- **数据平面**：由一组智能代理（Envoy）以 sidecar 模式部署，协调和控制所有服务之间的网络通信。
 - **控制平面**：负责管理和配置代理路由流量，以及在运行时执行的政策。
 
 ### Envoy
 
-Istio使用Envoy代理的扩展版本，该代理是以C++开发的高性能代理，用于调解service mesh中所有服务的所有入站和出站流量。
+Istio 使用 Envoy 代理的扩展版本，该代理是以 C++ 开发的高性能代理，用于调解服务网格中所有服务的所有入站和出站流量。
 
 Envoy 代理被部署为服务的 sidecar，在逻辑上为服务增加了 Envoy 的许多内置特性，例如:
 
@@ -78,7 +78,7 @@ Envoy 代理被部署为服务的 sidecar，在逻辑上为服务增加了 Envoy
 - 故障注入
 - 丰富的指标
 
-Envoy在kubernetes中作为pod的sidecar来部署。 这允许Istio将大量关于流量行为的信号作为属性提取出来，这些属性又可以在Mixer中用于执行策略决策，并发送给监控系统以提供有关整个mesh的行为的信息。 Sidecar代理模型还允许你将Istio功能添加到现有部署中，无需重新构建或重写代码。
+Envoy 在 Pod 中以 sidecar 模式部署。 这允许 Istio 将大量关于流量行为的信号作为属性提取出来，这些属性又可以在 Mixer 中用于执行策略决策，并发送给监控系统以提供有关整个服务网格的行为信息。Sidecar 代理模型还允许你将 Istio 功能添加到现有部署中，无需重新构建或重写代码。
 
 ### Mixer
 
@@ -104,3 +104,4 @@ Galley 是 Istio 的配置验证、提取、处理和分发组件。它负责将
 
 - [Istio：一个用于微服务间通信的服务网格开源项目](https://www.infoq.cn/article/2017/05/istio)
 - [Istio 是什么？](https://istio.io/docs/concepts/what-is-istio/)
+- [Istio Handbook —— Istio 服务网格进阶实战](https://www.servicemesher.com/istio-handbook)
