@@ -128,9 +128,9 @@ icon = "fa-twitter" # themify icon : https://themify.me/themify-icons
 link = "https://twitter.com/jimmysongio"
 
 [[params.social]]
-title = "facebook"
-icon = "fa-facebook" # themify icon : https://themify.me/themify-icons
-link = "https://facebook.com/jimmysongio"
+title = "youtube"
+icon = "fa-youtube" # themify icon : https://themify.me/themify-icons
+link = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
 [[params.social]]
 title = "github"
