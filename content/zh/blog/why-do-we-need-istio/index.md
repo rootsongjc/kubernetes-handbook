@@ -107,8 +107,6 @@ Istio有个非常酷的功能是[mixer适配器](https://istio.io/docs/concepts/
 
 我认为[mixer适配器模型](https://istio.io/blog/2017/adapter-model.html)博客文章中的这张图片解释了mixer适配器中的全部要点。
 
-![mixer适配器模型](https://istio.io/docs/concepts/policy-and-control/img/mixer-config/machine.svg)
-
 有一个[早期demo](https://istio.io/docs/guides/integrating-vms.html)，我认为它是istio最有用的特性之一，它实际上使用虚拟机来承载codelab中使用的评分dbase MySQL数据库，并将其作为GKE集群所属网格的一部分。使用一个网格来管理它们！
 
 #### 流量管理
