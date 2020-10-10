@@ -1,8 +1,8 @@
 # Prometheus
 
-[Prometheus](https://prometheus.io) 是由 SoundCloud 开源监控告警解决方案，从 2012 年开始编写代码，再到 2015 年 GitHub 上开源以来，已经吸引了 9k+ 关注，以及很多大公司的使用；2016 年 Prometheus 成为继 Kubernetes 之后，成为 CNCF （[Cloud Native Computing Foundation](https://cncf.io/)）中的第二个项目成员。
+[Prometheus](https://prometheus.io) 是由 SoundCloud 开源监控告警解决方案，从 2012 年开始编写代码，2015 年 GitHub 上开源，2016 年 Prometheus 成为继 Kubernetes 之后，成为 CNCF （[Cloud Native Computing Foundation](https://cncf.io/)）中的第二个项目成员，也是第二个正式毕业的项目。作为新一代开源解决方案，Prometheus 的很多设计理念与 Google SRE 运维之道不谋而合。
 
-作为新一代开源解决方案，很多理念与 Google SRE 运维之道不谋而合。
+监控作为可观察性实践（监控、日志、追踪）中的关键一环，相较以往的系统监控，在云原生时代产生了诸多变化。一是微服务和容器化，导致监控对象和指标的指数级增加；二是监控对象的生命周期更加短暂，导致监控数据量和复杂度的成倍增加。这就需要一款统一监控指标和数据查询语言的工具，Prometheus 应运而生了。Pemetheus 可以很方便的与众多开源项目集成，帮助我们了解系统和服务的运行状态，另一方面分析其收集的大数据，可以帮助我们进行系统优化和作出决策。它不仅是可以应用在 IT 领域，对于任何需要收集指标数据的情形下都可以使用。
 
 ## 主要功能
 
