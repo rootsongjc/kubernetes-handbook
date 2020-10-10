@@ -1,0 +1,14 @@
+<div class="col-12 link-article">
+  <div class="pre-article">
+    {{ with .PrevInSection }}
+    <div><i class="fa fa-arrow-left"></i> {{ i18n "previous_article" }}</div>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    {{ end }}
+  </div>
+  <div class="next-article">
+    {{ with .NextInSection }}
+    <div>{{ i18n "next_article" }} <i class="fa fa-arrow-right"></i></div>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  {{ end }}
+  </div>
+</div>
