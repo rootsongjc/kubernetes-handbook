@@ -168,3 +168,9 @@
 
 - id: toc
   translation: "目录"
+
+- id: previous_article
+  translation: 上一篇
+
+- id: next_article
+  translation: 下一篇

@@ -174,3 +174,25 @@ blockquote {
 }
 
 /* /blog */
+
+/* paging */
+
+.link-article {
+  .pre-article {
+    display: inline-block;
+
+    i {
+      position: relative;
+      top: -1px;
+    }
+  }
+  .next-article {
+    float: right;
+    text-align: right;
+
+    i {
+      position: relative;
+      top: -1px;
+    }
+  }
+}

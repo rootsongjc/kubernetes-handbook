@@ -36,6 +36,10 @@
           <div class="col-12 content">
             {{ .Content }}
           </div>
+
+          <!-- paging -->
+          {{ partial "paging.html" . }}
+
           <!-- comments -->
           {{ if .Site.DisqusShortname }}
           <div class="col-12">
