@@ -64,7 +64,7 @@ type: "notice"
 
 ## 投递简历
 
-请将展示你代码风格的 GitHub 或在线链接与你的简历一起发送至：[careers@tetrate.io](mailto:careers@tetrate.io) 或联系 [Jimmy Song](https://jimmysong.io/contact) 了解详情。
+请将展示你代码风格的 GitHub 或在线链接与你的**英文简历**一起发送至：[careers@tetrate.io](mailto:careers@tetrate.io) 或联系 [Jimmy Song](https://jimmysong.io/contact) 了解详情。
 
 ## Tetrate 介绍
 
