@@ -4,13 +4,13 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Senior R&D Engineer at Baidu, Member of ServiceMeshser Community Management Committee"
+description : "Baidu Cloud expert, Cloud Native Community committee member"
 # partner portrait
 image: "images/partners/luoguangming.jpg"
 # company
 company: "Baidu"
 # biography
-bio: "Guangming Luo is a senior R&D engineer at Baidu, dedicated to microservices architecture, governance, and cloud-native research, open source project enthusiasts, DevOps and agile development supporters and practitioners."
+bio: "Guangming Luo is a cloud native technology expert at Baidu, dedicated to microservices architecture, governance, and cloud-native research, open source project enthusiasts, DevOps and agile development supporters and practitioners."
 # interest
 interest: ["Service Mesh","Java","DevOps", "Agile"]
 # contact info
