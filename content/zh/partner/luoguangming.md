@@ -4,13 +4,13 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "百度高级研发工程师，ServiceMeshser 社区管理委员会成员"
+description : "百度云原生技术专家，云原生社区管委会成员"
 # partner portrait
 image: "images/partners/luoguangming.jpg"
 # company
 company: "百度"
 # biography
-bio: "罗广明是百度高级研发工程师，致力于微服务构架、治理以及云原生相关的研究，开源项目爱好者，DevOps与敏捷开发支持者与实践者。"
+bio: "罗广明是百度云原生技术专家，致力于微服务架构、治理以及云原生相关的研究，开源项目爱好者，DevOps与敏捷开发支持者与实践者。"
 # interest
 interest: ["Service Mesh","Java","DevOps", "Agile"]
 # contact info
