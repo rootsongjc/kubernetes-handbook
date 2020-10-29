@@ -7,6 +7,8 @@ description : "Base 地：全球远程办公"
 type: "notice"
 ---
 
+![Tetrate logo](https://tva1.sinaimg.cn/large/0081Kckwly1gk5c40l07ej30r009t746.jpg)
+
 你想要加入由世界级工程师组成的团队吗？使用 [Istio](https://istio.io)、[Envoy](https://envoyproxy.io)、[Apache SkyWalking](https://skywalking.apache.org/) 等开源项目来定义下一代云原生网络。下面是我们正在招聘的部分职位。
 
 ## Istio 上游贡献者（Go 语言）
@@ -85,3 +87,7 @@ Tetrate 是数学术语 [Tetration](https://en.wikipedia.org/wiki/Tetration)（�
 [Varun](https://loxo.co/email_tracking/click?id=9840111&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fvaruntalwar%2F)，联合创始人，在任职 Google 时发起了 Istio 和 gRPC。我们是一个开业两年的初创公司，致力于开发高效的网络产品和服务，因为我们相信这会为行业带来飞跃式的改变。
 
 [JJ](https://loxo.co/email_tracking/click?id=9840111&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fpragashjj%2F)，联合创始人，在任职 Twitter 时组建了云基础设施团队（联合 Mesos、VM、OS 和供应架构团队，在平台团队中工作）。而驱使他离开 Twitter、创立我司的原因是，希望改变企业服务开发的方式。
+
+扫描下面的公众号关注 Tetrate，获取 Istio、Envoy、Apache SkyWalking 的最新信息和 Tetrate 动态，也可以在公众号后台留言，与我们联系。
+
+![Tetrate 公众号](https://tva1.sinaimg.cn/large/0081Kckwly1gk5c4ja4pdj30b40b474o.jpg)
