@@ -70,3 +70,4 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 - [Virtual Machines in Single-Network Meshes](https://istio.io/latest/docs/examples/virtual-machines/single-network/)
 - [Istio: Bringing VMs into the Mesh (with Cynthia Coan)](https://www.tetrate.io/blog/istio-bringing-vms-into-the-mesh-with-cynthia-coan/)
 - [Bridging Traditional and Modern Workloads](https://www.tetrate.io/blog/bridging-traditional-and-modern-workloads/)
+

@@ -4,11 +4,11 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Software Architect, ZTE, Member of ServiceMeshser Community Management Committee"
+description : "Software Architect,  Member of ServiceMeshser Community Management Committee"
 # partner portrait
 image: "images/partners/zhaohuabing.jpg"
 # company
-company: "ZTE"
+company: "Tencent"
 # biography
 bio: "Huabing Zhao is a software architect, open source enthusiast, member of the Istio community, and ONAP community PTL. He is interested in cloud native, blockchain, and artificial intelligence. His current work focuses on microservice architecture and service grid related technologies."
 # interest

@@ -18,12 +18,12 @@ slider:
     - title : "Cloud Native, Open Source and Community"
       animation_in : "left"
       animation_out : "right"
-      content: "Jimmy Song, one of China's earliest developer advocate focused on cloud native, created *Kubernetes & Cloud Native Discussion Group* in 2016, bringed together thousands of top cloud native early developers. In 2020, we reorganized into an enterprise-neutral organization called *Cloud Native Community*, which aims to build a free communication and sharing platform for all cloud native enthusiasts, making cloud native technology available to the public."
+      content: "Jimmy Song is the founder of Cloud Native Community and has authored or translated several books on cloud native since 2016. He is committed to promoting cloud native technologies and trying to build a developer ecosystem based on containers, Kubernetes, Service Mesh, and Serverless in order to help Chinese developers get involved in the global cloud native trend. Cloud Native Community he's assembled covers almost all the stalwarts of cloud native in China, join the community and walk alongside them!"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "Join"
-        link : "https://cloudnative.to/contact/"
+        link : "https://cloudnative.to/en/"
 
     # slider item loop
     - title : "Start your Cloud Native journey"
@@ -132,7 +132,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "5881"
+      count : "7669"
 
 # funfact is for about page
 
