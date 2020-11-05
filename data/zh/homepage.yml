@@ -18,12 +18,12 @@ slider:
     - title : "专注于云原生开源与社区"
       animation_in : "left"
       animation_out : "right"
-      content: "Jimmy Song 作为中国最早的云原生布道者，在 2016 年创建的了**Kubernetes&云原生讨论群**，汇聚了上千名顶尖的云原生早期开发者。2020 年初改组为企业中立的**云原生社区**，旨在为广大云原生爱好者构建一个自由交流和分享的平台，让云原生技术为大众所用。"
+      content: "Jimmy Song 是云原生社区创始人，从 2016 年起，他参与撰写或翻译了多部云原生相关书籍，他致力于推广云原生技术，力图构建以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的开发者生态，以帮助中国开发者融入全球云原生的趋势中去。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
       # available animation : left, right, up, down
       button:
         enable : true
-        label : "加入"
-        link : "https://cloudnative.to/contact"
+        label : "加入社区"
+        link : "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
 
     # slider item loop
     - title : "开启云原生之旅"
@@ -33,7 +33,7 @@ slider:
       # available animation : left, right, up, down
       button:
         enable : true
-        label : "开始"
+        label : "开启旅程"
         link : "/kubernetes-handbook"
 
 ############################### Banner feature ###############################
@@ -71,7 +71,7 @@ about:
   enable : true
   title : "关于"
   image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296714/images/about-me-zh.jpg"
-  content : "Jimmy Song（宋净超），[Tetrate](https://tetrate.io)布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区和[云原生社区](https://cloudnative.to)联合创始人，讲师，作者，摄影师。"
+  content : "Jimmy Song（宋净超），[Tetrate](https://tetrate.io)布道师，CNCF Ambassador，[ServiceMesher](https://www.servicemesher.com) 社区和[云原生社区](https://cloudnative.to)创始人，云原生活动家，讲师，作家，摄影师。"
   button:
     enable : true
     label : "了解详情"
@@ -129,7 +129,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区成员"
-      count : "5881"
+      count : " 7669"
 
 # funfact is for about page
 
@@ -143,7 +143,7 @@ blog:
 
 ############################ footer ###############################
 footer:
-  contact: "扫描下面的二维码加我微信"
+  contact: "微信（申请好友时请备注姓名公司）"
   link: "/contact"
   image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"

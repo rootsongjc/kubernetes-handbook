@@ -4,13 +4,13 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "中兴通讯软件架构师，ServiceMeshser 社区管理委员会成员"
+description : "腾讯云高级工程师，Istio contributor，ServiceMesher 管理委员，热衷于开源、网络和云计算。目前主要从事服务网格的开源和研发工作。"
 # partner portrait
 image: "images/partners/zhaohuabing.jpg"
 # company
-company: "中兴通讯"
+company: "腾讯"
 # biography
-bio: "赵化冰是软件架构师，开源爱好者，Istio社区成员，ONAP社区PTL，对云原生，区块链以及人工智能等领域很有兴趣，目前的工作重点为微服务架构和服务网格相关的技术。"
+bio: "赵化冰是开源爱好者，Istio社区成员，ONAP社区PTL，对云原生，区块链以及人工智能等领域很有兴趣。目前主要从事服务网格的开源和研发工作。"
 # interest
 interest: ["Service Mesh","Istio","ONAP", "Hugo"]
 # contact info

@@ -124,27 +124,32 @@ map_marker = "images/marker.png"
 ############################# social site ########################
 [[params.social]]
 title = "twitter"
-icon = "fa-twitter" # themify icon : https://themify.me/themify-icons
+icon = "fa-twitter"
 link = "https://twitter.com/jimmysongio"
 
 [[params.social]]
 title = "youtube"
-icon = "fa-youtube" # themify icon : https://themify.me/themify-icons
+icon = "fa-youtube"
 link = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
 [[params.social]]
 title = "github"
-icon = "fa-github" # themify icon : https://themify.me/themify-icons
+icon = "fa-github"
 link = "https://github.com/rootsongjc"
 
 [[params.social]]
 title = "linkedin"
-icon = "fa-linkedin" # themify icon : https://themify.me/themify-icons
+icon = "fa-linkedin"
 link = "https://linkedin.com/in/jimmysongio"
 
 [[params.social]]
+title = "mail"
+icon = "fa-envelope"
+link = "mailto:jimmysong@jimmysong.io"
+
+[[params.social]]
 title = "RSS"
-icon = "fa-rss" # themify icon : https://themify.me/themify-icons
+icon = "fa-rss"
 link = "/blog/index.xml"
 
 ################################### English language #####################################
@@ -317,6 +322,12 @@ URL = "https://www.servicemesher.com"
 weight = 2
 
 [[Languages.zh.menu.main]]
+parent = "社区"
+name = "伙伴"
+URL = "/partner"
+weight = 3
+
+[[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
 weight = 5
@@ -356,7 +367,7 @@ name = "云原生开源技术大全"
 URL = "/awesome-cloud-native"
 
 [[Languages.zh.menu.footer]]
-name = "Jimmy 的图虫摄影频道"
+name = "Jimmy 的图虫影集"
 URL = "https://jimmysongio.tuchong.com"
 
 [[Languages.zh.menu.footer]]
@@ -370,6 +381,10 @@ URL = "https://www.servicemesher.com"
 [[Languages.zh.menu.footer]]
 name = "云原生社区"
 URL = "https://cloudnative.to"
+
+[[Languages.zh.menu.footer]]
+name = "云原生百科"
+URL = "/cloud-native"
 
 [markup]
   [markup.highlight]

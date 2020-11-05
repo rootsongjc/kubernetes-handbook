@@ -4,13 +4,13 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Service Mesh 布道师，ServiceMeshser 社区联合创始人。"
+description : "微服务架构师"
 # partner portrait
 image: "images/partners/aoxiaojian.jpg"
 # company
-company: "蚂蚁集团"
+company: "阿里巴巴"
 # biography
-bio: "敖小剑，资深码农，十六年软件开发经验，微服务专家，Service Mesh布道师，Servicemesher社区联合创始人。专注于基础架构，Cloud Native 拥护者，敏捷实践者，坚守开发一线打磨匠艺的架构师。曾在亚信、爱立信、唯品会等任职，对基础架构和微服务有过深入研究和实践。目前就职蚂蚁集团，在中间件团队从事Service Mesh、Serverless产品开发。"
+bio: "敖小剑，资深码农，十六年软件开发经验，微服务专家。专注于基础架构，Cloud Native 拥护者，敏捷实践者，坚守开发一线打磨匠艺的架构师。曾在亚信、爱立信、唯品会等任职，对基础架构和微服务有过深入研究和实践。目前就职蚂蚁集团，在中间件团队从事Service Mesh、Serverless产品开发。"
 # interest
 interest: ["Service Mesh","Microservices","Serverless", "Cloud Native"]
 # contact info
