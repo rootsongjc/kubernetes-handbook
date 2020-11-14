@@ -168,7 +168,7 @@
 
 <!-- blog -->
 {{ if $data.homepage.blog.enable }}
-<section class="section">
+<section class="section bg-gray">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -184,9 +184,9 @@
         <div class="row justify-content-center">
             <!-- blog post -->
             {{ range first 3 (where .Site.RegularPages "Type" "post")}}
-            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                 {{ .Render "post" }}
-            </article>
+            </div>
             {{ end }}
         </div>
         <!-- mobile see all button -->
