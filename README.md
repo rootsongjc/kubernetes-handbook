@@ -38,6 +38,7 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 
 在阅读本书之前希望您掌握以下知识和准备以下环境：
 
+- 阅读[云原生新手指南](cloud-native/quick-start.md)
 - Linux 操作系统原理
 - Linux 常用命令
 - Docker 容器原理及基本操作
@@ -96,7 +97,7 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 
 云原生社区始与作者于 2016 年成立的 Kubernetes & CloudNative 实战群，覆盖了上千名早期云原生拥护者。在此基础上于 2020 年 5 月，由 CNCF 大使、开源领域意见领袖共同发起将原社群升级为云原生社区，旨在构建一个开放、包容的沟通环境，促进云原生技术的传播和普及。
 
-官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，申请加入社区。
+官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，[申请加入社区](https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg)。
 
 <p align="center">
 <img src="images/cloud-native-wechat.jpg" alt="云原生社区微信公众号" title="云原生社区微信公众号"/>

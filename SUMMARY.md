@@ -8,6 +8,7 @@
 
 * [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
+* [云原生新手入门指南](cloud-native/quick-start.md)
 * [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
 * [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
 * [使用 Rancher 在阿里云上部署 Kubenretes 集群](cloud-native/setup-kubernetes-with-rancher-and-aliyun.md)
