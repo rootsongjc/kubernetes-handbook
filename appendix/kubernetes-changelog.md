@@ -17,5 +17,7 @@
 - 2019 年 6 月 20 日，[Kubernetes 1.15 发布](kubernetes-1.15-changelog.md)
 - 2019 年 9 月 19 日，[Kubernetes 1.16 发布](kubernetes-1.16-changelog.md)
 - 2019 年 12 月 10 日，[Kubernetes 1.17 发布](kubernetes-1.17-changelog.md)
+- 2020 年 3 月 25 日，[Kubernetes 1.18 发布](kubernetes-1.18-changelog.md)
+- 2020 年 8 月 26 日，[Kubernetes 1.19 发布](kubernetes-1.19-changelog.md)
 
 注：以上时间皆为北京时间。
