@@ -222,6 +222,7 @@
     * [Istio 免费学习资源汇总](usecases/istio-tutorials-collection.md)
     * [Sidecar 的注入与流量劫持](usecases/understand-sidecar-injection-and-traffic-hijack-in-istio-service-mesh.md)
     * [Envoy Sidecar 代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
+    * [Istio 如何支持虚拟机](usecases/how-to-integrate-istio-with-vm.md)
   * [Linkerd](usecases/linkerd.md)
     * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
   * [Conduit](usecases/conduit.md)
