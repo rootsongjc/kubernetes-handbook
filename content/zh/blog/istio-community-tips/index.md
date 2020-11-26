@@ -81,4 +81,5 @@ Istio 的 feature 分为四大类：
 - 安全性：各种 checker 和安全性配置
 - Core：核心功能
 
-功能划分与各种功能的状态详情请见：https://istio.io/about/feature-stages.html
+功能划分与各种功能的状态详情请见：<https://istio.io/latest/about/feature-stages/>
+
