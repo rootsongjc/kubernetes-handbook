@@ -1,44 +1,44 @@
 ---
-title: "云原生社区 meetup 第一期上海站"
+title: "Cloud Native Community Meetup #1 Shanghai"
 date: 2020-11-28T18:00:00+08:00
 draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "云原生社区 meetup 第一期，上海站，2020 年 11 月 28 日，上海虹桥万科中心。"
+description : "November 28, 2020, Shanghai."
 # Event image
 image: "images/events/cloud-native-meetup-shanghai-01.jpg"
 # location
-location: "中国上海"
+location: "Shanghai, China"
 # entry fee
-fee: "免费"
+fee: "Free"
 topic: "Cloud Native"
-sponsor : "[云原生社区](https://cloudnative.to)"
+sponsor : "[Cloud Native Community(China)](https://cloudnative.to)"
 # apply url
 apply_url : "https://cloudnative.huodongxing.com/event/9571346308700"
 # event speaker
 speaker:
   # speaker loop
-  - name : "宋净超"
+  - name : "Jimmy"
     image : "images/event-speakers/jimmysong.jpg"
-    designation : "Tetrate 布道师，云原生社区创始人"
+    designation : "Developer Advocate at Tetrate, Cloud Native Community founder"
 
   # speaker loop
-  - name : "高洪涛 "
+  - name : "Hongtao Gao "
     image : "images/event-speakers/gaohongtao.jpg"
-    designation : "Tetrate 创始工程师"
+    designation : "Tetrate founder engineer"
 
   # speaker loop
-  - name : "杨可奥"
+  - name : "Keao Yang"
     image : "images/event-speakers/yangkeao.jpg"
     designation : "PingCAP"
 
   # speaker loop
-  - name : "侯诗军"
+  - name : "Shijun Hou"
     image : "images/event-speakers/houshijun.jpg"
-    designation : "同盾科技"
+    designation : "Tongdun Technology"
   # speaker loop
-  - name : "程亮"
+  - name : "Liang Cheng"
     image : "images/event-speakers/chengliang.jpg"
     designation : "VIPKID"
 # type

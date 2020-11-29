@@ -78,9 +78,9 @@ type: "event"
 
 地点：北京望京东浦项中心
 
-视频回放：https://tech.antfin.com/community/activities/985
+视频回放：<https://tech.antfin.com/community/activities/985>
 
-PPT下载：https://github.com/servicemesher/meetup-slides
+PPT下载：<https://github.com/servicemesher/meetup-slides>
 
 Service Mesh Meetup 是由蚂蚁集团联合 CNCF 官方共同出品，ServiceMesher 社区主办，主题围绕服务网格、Kubernetes 及云原生，在全国各地循环举办的技术沙龙。
 
