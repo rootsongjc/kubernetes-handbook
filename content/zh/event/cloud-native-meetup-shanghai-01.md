@@ -5,7 +5,7 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "云原生社区技术沙龙贝壳专场，2020 年 11 月 22 日，中国北京。"
+description : "云原生社区 meetup 第一期，上海站，2020 年 11 月 28 日，上海虹桥万科中心。"
 # Event image
 image: "images/events/cloud-native-meetup-shanghai-01.jpg"
 # location
