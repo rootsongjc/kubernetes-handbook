@@ -1,6 +1,6 @@
 # Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册
 
-> 云原生是一种行为方式和设计理念，如今它正在遭受过度地市场化包装。究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。—— [Jimmy Song](https://jimmysong.io)
+> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生 1.0 的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生 2.0 的新时代。—— [Jimmy Song](https://jimmysong.io)
 
 <p align="center">
   <a href="https://cloudnative.to">
