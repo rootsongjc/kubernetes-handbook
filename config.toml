@@ -216,9 +216,13 @@ URL = "/awesome-cloud-native"
 name = "Jimmy's YouTube Channel"
 URL = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
+#[[menu.footer]]
+#name = "Jimmy's Photography"
+#URL = "https://jimmysongio.tuchong.com"
+
 [[menu.footer]]
-name = "Jimmy's Photography"
-URL = "https://jimmysongio.tuchong.com"
+name = "Tetrate - Service Mesh Company"
+URL = "https://tetrate.io/?jimmysong"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -363,15 +367,15 @@ weight = 4
 # footer menu
 
 [[Languages.zh.menu.footer]]
-name = "云原生开源技术大全"
+name = "云原生开源项目大全"
 URL = "/awesome-cloud-native"
 
 [[Languages.zh.menu.footer]]
-name = "Jimmy 的图虫影集"
+name = "Jimmy Song | 图虫"
 URL = "https://jimmysongio.tuchong.com"
 
 [[Languages.zh.menu.footer]]
-name = "Jimmy 的 B 站视频"
+name = "几米宋 | Bilibli"
 URL = "https://space.bilibili.com/31004924/"
 
 [[Languages.zh.menu.footer]]
@@ -382,9 +386,13 @@ URL = "https://www.servicemesher.com"
 name = "云原生社区"
 URL = "https://cloudnative.to"
 
+#[[Languages.zh.menu.footer]]
+#name = "云原生百科"
+#URL = "/cloud-native"
+
 [[Languages.zh.menu.footer]]
-name = "云原生百科"
-URL = "/cloud-native"
+name = "Tetrate | 服务网格初创公司"
+URL = "https://tetrate.io/?jimmysong"
 
 [markup]
   [markup.highlight]
