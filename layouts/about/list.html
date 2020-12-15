@@ -45,7 +45,13 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2 class="section-title">{{ i18n "our_partners" }}</h2>
+        <div class="d-flex align-items-center section-title justify-content-between">
+        <h2 class="mb-0 text-nowrap mr-3">{{ i18n "our_partners" }}</h2>
+        <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+        <div>
+        <a href="{{`partner` | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ i18n "see_all" }}</a>
+        </div>
+      </div>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -55,6 +61,12 @@
         {{ .Render "partner" }}
       </div>
       {{ end }}
+    </div>
+    <!-- mobile see all button -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="{{`partner` | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ i18n "see_all" }}</a>
+        </div>
     </div>
   </div>
 </section>
