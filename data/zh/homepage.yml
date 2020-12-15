@@ -71,7 +71,7 @@ about:
   enable : true
   title : "关于"
   image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296714/images/about-me-zh.jpg"
-  content : "Jimmy Song（宋净超），[Tetrate](https://tetrate.io)布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)创始人，作家，摄影师。"
+  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)创始人，独立撰稿人，摄影师。"
   button:
     enable : true
     label : "了解详情"
@@ -90,7 +90,7 @@ cta:
   button:
     enable : true
     label : "点此申请"
-    link : "https://cloudnative.to/contact"
+    link : "https://wj.qq.com/s2/5479026/bf82/"
 
 
 ######################## Success story #############################
