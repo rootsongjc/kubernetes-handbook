@@ -39,7 +39,7 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296652/images/cloud-landscape-zh.jpg"
+  image : "https://res.cloudinary.com/jimmysong/image/upload/q_48/v1608046944/images/cloud-landscape-zh.jpg"
   feature_item:
     # feature item loop
     - name : "容器"
@@ -70,7 +70,7 @@ banner_feature:
 about:
   enable : true
   title : "关于"
-  image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296714/images/about-me-zh.jpg"
+  image : "https://res.cloudinary.com/jimmysong/image/upload/c_scale,q_49,w_1356/v1594296714/images/about-me-zh.jpg"
   content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)创始人，独立撰稿人，摄影师。"
   button:
     enable : true

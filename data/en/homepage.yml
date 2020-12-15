@@ -39,7 +39,7 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  image : "images/banner/cloud-landscape.jpg"
+  image : "https://res.cloudinary.com/jimmysong/image/upload/c_scale,q_53,w_1206/v1608048342/cloud-landscape-en.jpg"
   feature_item:
     # feature item loop
     - name : "Containers"
@@ -87,10 +87,10 @@ book:
 ########################## Call to action ############################
 cta:
   enable : true
-  title : "Welcome to join the Cloud Native Community with thousands of the most earliest adopters."
+  title : "Welcome to join the Cloud Native Community"
   button:
     enable : true
-    label : "join now"
+    label : "Apply now"
     link : "https://cloudnative.to/contact"
 
 
