@@ -109,6 +109,6 @@ type: "event"
 
 ## 活动回顾
 
-本次活动的 PPT 见：https://github.com/cloudnativeto/academy
+本次活动的 PPT 见：<https://github.com/cloudnativeto/academy>
 
-视频回放见：https://space.bilibili.com/515485124
+视频回放见：<https://space.bilibili.com/515485124>
