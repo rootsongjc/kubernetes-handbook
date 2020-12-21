@@ -332,6 +332,12 @@ URL = "/partner"
 weight = 3
 
 [[Languages.zh.menu.main]]
+parent = "社区"
+name = "活动"
+URL = "event"
+weight = 3
+
+[[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
 weight = 5
@@ -354,15 +360,9 @@ weight = 2
 
 [[Languages.zh.menu.main]]
 parent = "更多"
-name = "活动"
-URL = "event"
-weight = 3
-
-[[Languages.zh.menu.main]]
-parent = "更多"
 name = "招聘"
 URL = "job"
-weight = 4
+weight = 3
 
 # footer menu
 
