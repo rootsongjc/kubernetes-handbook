@@ -24,7 +24,7 @@
 
 - Taint（污点）和 Toleration（容忍）：这些为节点“吸引”或“排斥” Pod 提供了一种方法。当需要将应用程序部署到特定硬件（例如用于科学计算的 GPU）时，经常使用它们。[阅读更多](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)。
 - **向下 API**：这允许您的容器使用有关自己或集群的信息，而不会过度耦合到 Kubernetes API server。这可以通过[环境变量](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/) 或者 [DownwardAPIVolumeFiles](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)。
-- **Pod 预设**：通常，要将运行时需求（例如环境变量、ConfigMap 和 Secret）安装到资源中，可以在资源的配置文件中指定它们。*[PodPresets](https://kubernetes.io/docs/concepts/workloads/pods/podpreset/)允许您在创建资源时动态注入这些需求。例如，这允许团队 A 将任意数量的新Secret 安装到团队 B 和 C 创建的资源中，而不需要 B 和 C 的操作。[请参阅示例](https://kubernetes.io/docs/tasks/inject-data-application/podpreset/)*。
+- **Pod 预设**：通常，要将运行时需求（例如环境变量、ConfigMap 和 Secret）安装到资源中，可以在资源的配置文件中指定它们。PodPresets 允许您在创建资源时动态注入这些需求。例如，这允许团队 A 将任意数量的新Secret 安装到团队 B 和 C 创建的资源中，而不需要 B 和 C 的操作。[请参阅示例](https://kubernetes.io/docs/tasks/inject-data-application/podpreset/)。
 
 #### 其他 API 对象
 

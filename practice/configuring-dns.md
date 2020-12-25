@@ -322,7 +322,7 @@ Linux 的 libc 不可思议的卡住（[查看该2005年起暴出来的bug](http
 
 ## Kubernetes 集群联邦（多可用区支持）
 
-Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联邦支持。这需要对 Kubernetes 集群 DNS 服务器处理 DNS 查询的方式进行一些小的（向后兼容的）更改，以便于查找联邦服务（跨多个 Kubernetes 集群）。有关集群联邦和多站点支持的更多详细信息，请参阅[集群联邦管理员指南](https://kubernetes.io/docs/concepts/cluster-administration/federation/)。
+Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联邦支持。这需要对 Kubernetes 集群 DNS 服务器处理 DNS 查询的方式进行一些小的（向后兼容的）更改，以便于查找联邦服务（跨多个 Kubernetes 集群）。
 
 ## 参考
 

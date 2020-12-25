@@ -82,7 +82,7 @@ GCE/GKE会在master节点上部署一个ingress controller。你可以在一个p
 - kubernetes当前支持并维护[GCE](https://git.k8s.io/ingress-gce/README.md)和[nginx](https://git.k8s.io/ingress-nginx/README.md)两种controller.
 - F5（公司）[支持并维护](https://support.f5.com/csp/article/K86859508) [F5 BIG-IP Controller for Kubernetes](http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest).
 - [Kong](https://konghq.com/) 同时支持并维护[社区版](https://discuss.konghq.com/c/kubernetes)与[企业版](https://konghq.com/api-customer-success/)的 [Kong Ingress Controller for Kubernetes](https://konghq.com/blog/kubernetes-ingress-controller-for-kong/).
-- [Traefik](https://github.com/containous/traefik) 是功能齐全的 ingress controller([Let’s Encrypt](https://letsencrypt.org/), secrets, http2, websocket…), [Containous](https://containo.us/services) 也对其提供商业支持。
+- [Traefik](https://github.com/containous/traefik) 是功能齐全的 ingress controller（[Let’s Encrypt](https://letsencrypt.org/), secrets, http2, websocket…）, Containous 也对其提供商业支持。
 - [Istio](https://istio.io) 使用CRD Gateway来[控制Ingress流量](https://istio.io/docs/tasks/traffic-management/ingress/)。
 
 

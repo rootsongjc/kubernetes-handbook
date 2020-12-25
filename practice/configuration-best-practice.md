@@ -20,7 +20,7 @@
 ## Services
 
 - 通常最好在创建相关的[replication controllers](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/)之前先创建[service](https://kubernetes.io/docs/concepts/services-networking/service/) ，你也可以在创建Replication Controller的时候不指定replica数量（默认是1），创建service后，在通过Replication Controller来扩容。这样可以在扩容很多个replica之前先确认pod是正常的。
-- 除非十分必要的情况下（如运行一个node daemon），不要使用`hostPort`（用来指定暴露在主机上的端口号）。当你给Pod绑定了一个`hostPort`，该pod可被调度到的主机的受限了，因为端口冲突。如果是为了调试目的来通过端口访问的话，你可以使用 [kubectl proxy and apiserver proxy](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/) 或者 [kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)。你可使用 [Service](https://kubernetes.io/docs/concepts/services-networking/service/) 来对外暴露服务。如果你确实需要将pod的端口暴露到主机上，考虑使用 [NodePort](https://kubernetes.io/docs/user-guide/services/#type-nodeport) service。
+- 除非十分必要的情况下（如运行一个node daemon），不要使用`hostPort`（用来指定暴露在主机上的端口号）。当你给Pod绑定了一个`hostPort`，该pod可被调度到的主机的受限了，因为端口冲突。如果是为了调试目的来通过端口访问的话，你可以使用 kubectl proxy 和 apiserver proxy 或者 [kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)。你可使用 [Service](https://kubernetes.io/docs/concepts/services-networking/service/) 来对外暴露服务。如果你确实需要将pod的端口暴露到主机上，考虑使用 [NodePort](https://kubernetes.io/docs/user-guide/services/#type-nodeport) service。
 - 跟`hostPort`一样的原因，避免使用 `hostNetwork`。
 - 如果你不需要kube-proxy的负载均衡的话，可以考虑使用使用[headless services](https://kubernetes.io/docs/user-guide/services/#headless-services)。
 

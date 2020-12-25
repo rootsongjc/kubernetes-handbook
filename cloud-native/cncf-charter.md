@@ -2,7 +2,7 @@
 
 CNCF（云原生计算基金会）是 Linux 基金会旗下的一个基金会，加入 CNCF 等于同时加入 Linux 基金会（也意味着你还要交 Linux 基金会的份子钱），对于想加入 CNCF 基金会的企业或者组织首先要做的事情就是要了解 CNCF 的章程（charter），就像是作为一个国家的公民，必须遵守该国家的宪法一样。CNCF 之所以能在短短三年的时间内发展壮大到如此规模，很大程度上是与它出色的社区治理和运作模式有关。了解该章程可以帮助我们理解 CNCF 是如何运作的，当我们自己进行开源项目治理时也可以派上用场。
 
-该章程最后更新于 2018 年 5 月 15 日，详见 <https://www.cncf.io/about/charter/>。下文中关于 CNCF 章程的介绍部分引用自 [CNCF 是如何工作的](http://www.ocselected.org/posts/foundation_introduce/how_cncf_works/)，有改动。
+该章程最后更新于 2018 年 5 月 15 日，详见 <https://www.cncf.io/about/charter/>。下文中关于 CNCF 章程的介绍部分引用自 CNCF 是如何工作的，有改动。
 
 下图是我根据 CNCF 章程绘制的组织架构图。
 
@@ -347,5 +347,4 @@ CNCF 社区坚信云原生计算包含三个核心属性：
 
 ## 参考
 
-- [CNCF 是如何工作的](http://www.ocselected.org/posts/foundation_introduce/how_cncf_works/)
 - https://www.cncf.io/about/charter/

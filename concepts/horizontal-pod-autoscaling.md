@@ -9,7 +9,7 @@ HPA属于Kubernetes中的**autoscaling** SIG（Special Interest Group），其�
 
 Kubernetes自1.2版本引入HPA机制，到1.6版本之前一直是通过kubelet来获取监控指标来判断是否需要扩缩容，1.6版本之后必须通过API server、Heapseter或者kube-aggregator来获取监控指标。
 
-对于1.6以前版本中开启自定义HPA请参考[Kubernetes autoscaling based on custom metrics without using a host port](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)，对于1.7及以上版本请参考[Configure Kubernetes Autoscaling With Custom Metrics in Kubernetes 1.7 - Bitnami](https://docs.bitnami.com/kubernetes/how-to/configure-autoscaling-custom-metrics/)。
+对于1.6以前版本中开启自定义HPA请参考[Kubernetes autoscaling based on custom metrics without using a host port](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)。
 
 ## HPA解析
 
@@ -112,7 +112,7 @@ Horizontal Pod Autoscaler 和其他的所有 API 资源一样，通过 `kubectl`
 
 ## 滚动更新期间的自动扩缩容
 
-目前在Kubernetes中，可以通过直接管理 replication controller 或使用 deployment 对象来执行 [滚动更新](https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller)，该 deployment 对象为您管理基础 replication controller。
+目前在Kubernetes中，可以通过直接管理 replication controller 或使用 deployment 对象来执行 滚动更新，该 deployment 对象为您管理基础 replication controller。
 
 Horizontal Pod Autoscaler 仅支持后一种方法：Horizontal Pod Autoscaler 被绑定到 deployment 对象，它设置 deployment 对象的大小，deployment 负责设置底层 replication controller 的大小。
 

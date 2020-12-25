@@ -154,7 +154,7 @@ Error from server (NotFound): Unable to list "crontabs": the server could not fi
 
 ## 提供 CRD 的多个版本
 
-有关提供 CustomResourceDefinition 的多个版本以及将对象从一个版本迁移到另一个[版本](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/)的详细信息，请参阅[自定义资源定义版本控制](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/)。
+有关提供 CustomResourceDefinition 的多个版本以及将对象从一个版本迁移到另一个版本的详细信息，请参阅[自定义资源定义版本控制](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/)。
 
 ## 高级主题
 

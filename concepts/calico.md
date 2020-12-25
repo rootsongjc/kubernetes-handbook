@@ -55,6 +55,5 @@ calicoctl get node
 
 ## 参考
 
-- [安装Calico - docs.projectcalico.org](https://docs.projectcalico.org/v3.4/usage/calicoctl/install)
 - [calicoctl命令参考 - docs.projectcalico.org](https://docs.projectcalico.org/v3.4/reference/calicoctl/commands/)
 - [Calico架构 - docs.projectcalico.org](https://docs.projectcalico.org/v3.4/reference/architecture/)

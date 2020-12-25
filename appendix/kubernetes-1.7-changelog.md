@@ -34,7 +34,7 @@
 **其它功能**
 
 - 引入了对[外部准入控制器](https://kubernetes.io/docs/admin/extensible-admission-controllers/)的Alpha支持，提供了两个选项，用于向API server添加自定义业务逻辑，以便在创建对象和验证策略时对其进行修改。
-- [基于策略的联合资源布局](https://kubernetes.io/docs/tasks/federation/set-up-placement-policies-federation/)提供Alpha版本，用于根据自定义需求（如法规、定价或性能）为联合（federated）集群提供布局策略。
+- 基于策略的联合资源布局提供Alpha版本，用于根据自定义需求（如法规、定价或性能）为联合（federated）集群提供布局策略。
 
 **弃用** 
 

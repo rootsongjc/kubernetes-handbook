@@ -8,8 +8,6 @@ Deployment已经内置了RollingUpdate strategy，因此不用再调用`kubectl 
 
 Rolling Update适用于`Deployment`、`Replication Controller`，官方推荐使用Deployment而不再使用Replication Controller。
 
-使用ReplicationController时的滚动升级请参考官网说明：https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/
-
 ## ReplicationController与Deployment的关系
 
 ReplicationController和Deployment的RollingUpdate命令有些不同，但是实现的机制是一样的，关于这两个kind的关系我引用了[ReplicationController与Deployment的区别](https://segmentfault.com/a/1190000008232770)中的部分内容如下，详细区别请查看原文。

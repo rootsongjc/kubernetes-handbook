@@ -6,7 +6,7 @@
 
 ## CNCF 年度报告涵盖的范围
 
-在解读 CNCF 的2018年度报告之前，我们先简单回顾下[2017年度的报告](https://www.cncf.io/wp-content/uploads/2018/03/CNCF-Annual-Report-2017.pdf)，因为2017年度报告是 CNCF 的首份年度报告，这样我们也能更好的了解 CNCF 的来龙去脉。
+在解读 CNCF 的2018年度报告之前，我们先简单回顾下2017年度的报告，因为2017年度报告是 CNCF 的首份年度报告，这样我们也能更好的了解 CNCF 的来龙去脉。
 
 2017年度报告已经基本确定了 CNCF 每个年度报告所包含的主题：
 
@@ -51,7 +51,7 @@ CNCF（云原生计算基金会）成立于2015年12月11日，每届年度报�
 
 ### CNCF 的2017年度定位
 
-[2017年度报告](https://www.cncf.io/wp-content/uploads/2018/03/CNCF-Annual-Report-2017.pdf)中是这样正式介绍自己的：
+2017年度报告中是这样正式介绍自己的：
 
 The Cloud Native Computing Foundation (CNCF) is an open source software foundation dedicated to making cloud-native computing universal and sustainable. Cloud-native computing uses an **open source** software stack to deploy applications as **microservices**, packaging each part into its own **container**, and **dynamically orchestrating** those containers to optimize resource utilization. Cloud-native technologies enable software developers to build great products faster. 
 
@@ -180,7 +180,7 @@ CNCF 在2019年的战略将更聚焦于开发者社区，协助尤其是来自�
 
 ## 参考
 
-- [CNCF Annual Report 2017 pdf](https://www.cncf.io/wp-content/uploads/2018/03/CNCF-Annual-Report-2017.pdf)
+- CNCF Annual Report 2017 pdf
 - [CNCF Annual Report 2018 pdf](https://www.cncf.io/wp-content/uploads/2019/02/CNCF_Annual_Report_2018_FInal.pdf)
 - [CNCF  Projects](https://www.cncf.io/projects/)
 - [CNCF Landscape](https://landscape.cncf.io)
