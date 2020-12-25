@@ -95,7 +95,7 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 
 ## 云原生社区
 
-云原生社区始与作者于 2016 年成立的 Kubernetes & CloudNative 实战群，覆盖了上千名早期云原生拥护者。在此基础上于 2020 年 5 月，由 CNCF 大使、开源领域意见领袖共同发起将原社群升级为云原生社区，旨在构建一个开放、包容的沟通环境，促进云原生技术的传播和普及。
+云原生社区是一个中立的云原生终端用户社区，始与作者于 2016 年成立的 Kubernetes & CloudNative 实战群，覆盖了上千名早期云原生拥护者。在此基础上于 2020 年 5 月，由 CNCF 大使、开源领域意见领袖共同发起将原社群升级为云原生社区，旨在推广云原生技术，构建开发者生态。
 
 官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，[申请加入社区](https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg)。
 
@@ -119,4 +119,4 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 - [深入剖析 Kubernetes](https://time.geekbang.org/column/intro/116?code=IRLmmVKgTghcFr5iafwl9kZezb48Uhf4Pjdf13-W3ko%3D&utm_term=SPoster)：极客时间推出的 Kubernetes 专栏
 - [深入浅出云计算](https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster)：云原生时代给开发者和架构师的云计算指南
 - [《Istio Handbook——Istio 服务网格进阶实战》](https://www.servicemesher.com/istio-handbook/)：ServiceMesher 社区出品的开源电子书
-- [Kubernetes 源码研习社](https://github.com/cloudnativeto/sig-k8s-source-code) - 云原生社区组织的 Kubernetes 学习小组
+- [云原生社区 Kubernetes SIG](https://i.cloudnative.to/kubernetes/) - 云原生社区组织的 Kubernetes 兴趣小组
