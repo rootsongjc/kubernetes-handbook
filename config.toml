@@ -95,10 +95,10 @@ mailchimp_form_name = "b_cca519d8764547a389f52c57f_e8e9e07dcc"
 
 # Ads
 [params.ad]
-enable= false
-image = "images/mosn-banner.png"
-url = "https://mosn.io"
-title = "MOSN - 蚂蚁集团开源的云原生网络代理"
+enable= true
+image = "images/jksj.jpg"
+url = "https://time.geekbang.org/column/intro/100015201?tab=catalog&code=IRLmmVKgTghcFr5iafwl9kZezb48Uhf4Pjdf13-W3ko%3D"
+title = "深入剖析 Kubernetes"
 
 [params.gitalk]
 clientID = "93a0df08e0f93ff0c8a3" # Your client ID
