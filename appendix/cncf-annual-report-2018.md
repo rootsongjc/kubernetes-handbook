@@ -180,8 +180,8 @@ CNCF 在2019年的战略将更聚焦于开发者社区，协助尤其是来自�
 
 ## 参考
 
-- CNCF Annual Report 2017 pdf
-- [CNCF Annual Report 2018 pdf](https://www.cncf.io/wp-content/uploads/2019/02/CNCF_Annual_Report_2018_FInal.pdf)
+- [CNCF Annual Report 2017 pdf](https://share.weiyun.com/U5UbBOhQ)
+- [CNCF Annual Report 2018 pdf](https://share.weiyun.com/TS12v0NU)
 - [CNCF  Projects](https://www.cncf.io/projects/)
 - [CNCF Landscape](https://landscape.cncf.io)
 - [CNCF Ambassadors](https://www.cncf.io/people/ambassadors/)
