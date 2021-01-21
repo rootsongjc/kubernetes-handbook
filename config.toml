@@ -160,7 +160,7 @@ contentDir = "content/en"
 weight = 1
 home = "Home"
 # copyright
-copyright = "Copyright &copy; 2020 Jimmy Song All Right Reserved;</br> Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
+copyright = "Copyright &copy; 2021 Jimmy Song All Right Reserved;</br> Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
 
 # main menu
 [[menu.main]]
@@ -231,7 +231,7 @@ languageCode = "zh"
 contentDir = "content/zh"
 home = "主页"
 # copyright
-copyright = "Copyright &copy; 2020 Jimmy Song 保留所有权利；</br>基于 Hugo [educenter](https://github.com/themefisher/educenter-hugo)  主题构建"
+copyright = "Copyright &copy; 2021 Jimmy Song 保留所有权利；</br>基于 Hugo [educenter](https://github.com/themefisher/educenter-hugo)  主题构建"
 
 # main menu
 [[Languages.zh.menu.main]]
