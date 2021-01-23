@@ -4,7 +4,7 @@ description: "本文将为你介绍 Istio 历史上对虚拟机负载的支持�
 date: 2020-12-25T14:18:40+08:00
 draft: false
 tags: ["Istio"]
-categories: ["Istio"]
+categories: ["service mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/vm.jpg"

@@ -127,10 +127,10 @@ title = "twitter"
 icon = "fa-twitter"
 link = "https://twitter.com/jimmysongio"
 
-[[params.social]]
-title = "youtube"
-icon = "fa-youtube"
-link = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
+#[[params.social]]
+#title = "youtube"
+#icon = "fa-youtube"
+#link = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
 [[params.social]]
 title = "github"
@@ -141,6 +141,11 @@ link = "https://github.com/rootsongjc"
 title = "linkedin"
 icon = "fa-linkedin"
 link = "https://linkedin.com/in/jimmysongio"
+
+[[params.social]]
+title = "WeChat"
+icon = "fa-weixin"
+link = "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
 
 [[params.social]]
 title = "mail"
@@ -379,11 +384,11 @@ name = "jimmysongio | Bilibli"
 URL = "https://space.bilibili.com/31004924/"
 
 [[Languages.zh.menu.footer]]
-name = "ServiceMesher 社区"
+name = "ServiceMesher"
 URL = "https://www.servicemesher.com"
 
 [[Languages.zh.menu.footer]]
-name = "云原生社区"
+name = "云原生社区（中国）"
 URL = "https://cloudnative.to"
 
 #[[Languages.zh.menu.footer]]
