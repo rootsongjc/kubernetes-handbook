@@ -52,8 +52,29 @@
 </section>
 {{ end }} {{ end }}
 <!-- /banner-feature -->
+<!-- funfacts -->
+{{ if $data.homepage.funfacts.enable }}
+{{ with $data.homepage.funfacts }}
+<section class="section-sm bg-primary">
+  <div class="container">
+    <div class="row">
+      <!-- funfacts item -->
+      {{ range .funfact_item }}
+      <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+        <div class="text-center">
+          <h2 class="count text-white" data-count="{{ .count }}">0</h2>
+          <a href="{{ .link }}"><h5 class="text-white">{{ .name }}</h5></a>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+<!-- /funfacts -->
 
-<!-- about us -->
+<!-- about -->
 {{ if $data.homepage.about.enable }} {{ with $data.homepage.about }}
 <section class="section">
     <div class="container">
@@ -73,7 +94,7 @@
     </div>
 </section>
 {{ end }} {{ end }}
-<!-- /about us -->
+<!-- /about -->
 
 <!-- books -->
 {{ if $data.homepage.books.enable }}

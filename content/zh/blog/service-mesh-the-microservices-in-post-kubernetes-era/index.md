@@ -3,6 +3,7 @@ title: "Service Mesh——后 Kubernetes 时代的微服务"
 description: "本文是以前所写内容的重新修订并收录于 ServiceMesher 社区的 Istio Handbook 中，其他章节仍在编纂中。"
 date: 2020-04-01T11:56:04+08:00
 draft: false
+tags: ["istio"]
 categories: ["Service Mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"

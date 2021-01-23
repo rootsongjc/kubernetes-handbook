@@ -3,6 +3,7 @@ title: "什么是Service Mesh（服务网格）？"
 description: "本文介绍了 Service Mesh 是什么，其工作原理并提供了一些有用的链接。"
 date: 2017-09-20T21:56:04+08:00
 draft: false
+tags: ["istio"]
 categories: ["Service Mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"

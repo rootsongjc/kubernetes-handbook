@@ -4,7 +4,7 @@ description: "本文将为你解析 EKS-D 的战略意义，说明它是如何�
 date: 2020-12-28T14:18:40+08:00
 draft: false
 tags: ["Istio","AWS"]
-categories: ["Istio"]
+categories: ["service mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/aws-istio.jpg"

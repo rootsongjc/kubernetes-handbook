@@ -71,7 +71,7 @@ about:
   enable : true
   title : "About Me"
   image : "images/about/about-me.jpg"
-  content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador,[Cloud Native Community](https://cloudnative.to/en) founder, independent writer and photographer."
+  content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador, [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder, independent writer and photographer."
   button:
     enable : true
     label : "Learn more"
@@ -86,7 +86,7 @@ book:
 
 ########################## Call to action ############################
 cta:
-  enable : true
+  enable : false
   title : "Welcome to join the Cloud Native Community"
   button:
     enable : true
@@ -124,15 +124,15 @@ funfacts:
 
     # funfact item loop
     - name : "Hosted Events"
-      count : "12"
+      count : "13"
 
     # funfact item loop
     - name : "Talks"
-      count : "12"
+      count : "13"
 
     # funfact item loop
     - name : "Community Members"
-      count : "8134"
+      count : "8286"
 
 # funfact is for about page
 

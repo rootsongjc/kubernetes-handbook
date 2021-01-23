@@ -11,7 +11,7 @@ description : "Jimmy Song（宋净超）的简介。"
 
 ### 简介
 
-宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[云原生社区](http://cloudnative.to) 创始人、电子工业出版社优秀译者、出品人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)（前身为蚂蚁金服）。
+宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[云原生社区](http://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人、电子工业出版社优秀译者、出品人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)（前身为蚂蚁金服）。
 
 ### 出版物
 
@@ -46,13 +46,14 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 
 **云原生社区**
 
-云原生社区始于 2016 年成立的 `K8S&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。社区官网 <https://cloudnative.to>。
+云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team/) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。社区官网 <https://cloudnative.to>。
 
 ### 参与与组织的活动
 
 #### 2020 年
 
-- 2020 年 11 月 28 日 | 线下 | [云原生社区 Meetup 第一期上海站](https://www.huodongxing.com/event/9571346308700)
+- 2020 年 12 月 20 日 | 线下 | [云原生社区 meetup 第二期北京站](https://www.huodongxing.com/event/5574970282500)
+- 2020 年 11 月 28 日 | 线下 | [云原生社区 meetup 第一期上海站](https://www.huodongxing.com/event/9571346308700)
 - 2020 年 9 月 24 日 | 线上 | [CSDI 中国软件研发管理行业技术峰会云原生专场](https://www.bagevent.com/event/csdisummit/p/412889) | 出品人
 - 2020 年 9 月 18 日 | 南京 |[NJSD 南京全球软件开发大会云原生专场](https://www.bagevent.com/event/1233659) | 出品人
 - 2020 年 8 月 14 日 | 深圳 | [GIAC 全球互联网架构大会云原生专场](http://giac.msup.com.cn/Giac/schedule/index) | 出品人
