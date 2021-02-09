@@ -73,6 +73,7 @@
   * [Service](concepts/service.md)
   * [Ingress](concepts/ingress.md)
     * [Traefik Ingress Controller](concepts/traefik-ingress-controller.md)
+  * [Kubernetes Service API](concepts/kubernetes-service-api.md)
 * [身份与权限控制](concepts/authentication-and-permission.md)
   * [ServiceAccount](concepts/serviceaccount.md)
   * [RBAC—— 基于角色的访问控制](concepts/rbac.md)
@@ -91,6 +92,7 @@
   * [Aggregated API Server](concepts/aggregated-api-server.md)
   * [APIService](concepts/apiservice.md)
   * [Service Catalog](concepts/service-catalog.md)
+  * [多集群管理](concepts/multicluster.md)
 * [资源调度](concepts/scheduling.md)
   * [QoS（服务质量等级）](concepts/qos.md)
 
