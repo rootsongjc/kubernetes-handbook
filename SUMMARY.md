@@ -74,6 +74,7 @@
   * [Ingress](concepts/ingress.md)
     * [Traefik Ingress Controller](concepts/traefik-ingress-controller.md)
   * [Kubernetes Service API](concepts/kubernetes-service-api.md)
+    * [Service API 简介](concepts/service-api-overview.md)
 * [身份与权限控制](concepts/authentication-and-permission.md)
   * [ServiceAccount](concepts/serviceaccount.md)
   * [RBAC—— 基于角色的访问控制](concepts/rbac.md)
