@@ -25,7 +25,7 @@ speaker:
 
   # speaker loop
   - name : "敖小剑"
-    image : "images/event-speakers/liuchao.png"
+    image : "images/event-speakers/aoxiaojian.png"
     designation : "蚂蚁集团高级技术专家"
 
   # speaker loop
