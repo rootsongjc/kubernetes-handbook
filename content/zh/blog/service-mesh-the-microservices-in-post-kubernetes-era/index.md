@@ -77,7 +77,7 @@ Istio 可以沿用 Kubernetes 中的 service 做服务注册，还可以通过�
 
 [kube-proxy 的不足之处](https://cizixs.com/2017/03/30/kubernetes-introduction-service-and-kube-proxy/)：
 
-首先，如果转发的 pod 不能正常提供服务，它不会自动尝试另一个 pod，当然这个可以通过 [`liveness probes`](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html) 来解决。每个 pod 都有一个健康检查的机制，当有 pod 健康状况有问题时，kube-proxy 会删除对应的转发规则。另外，`nodePort` 类型的服务也无法添加 TLS 或者更复杂的报文路由机制。
+首先，如果转发的 pod 不能正常提供服务，它不会自动尝试另一个 pod，每个 pod 都有一个健康检查的机制，当有 pod 健康状况有问题时，kubelet 会重启对应的 pod，kube-proxy 会删除对应的转发规则。另外，`nodePort` 类型的服务也无法添加 TLS 或者更复杂的报文路由机制。
 
 Kube-proxy 实现了流量在 Kubernetes service 多个 pod 实例间的负载均衡，但是如何对这些 service 间的流量做细粒度的控制，比如按照百分比划分流量到不同的应用版本（这些应用都属于同一个 service，但位于不同的 deployment 上），做金丝雀发布（灰度发布）和蓝绿发布？Kubernetes 社区给出了 [使用 Deployment 做金丝雀发布的方法](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#canary-deployments)，该方法本质上就是通过修改 pod 的 [label](https://jimmysong.io/kubernetes-handbook/concepts/label.html) 来将不同的 pod 划归到 Deployment 的 Service 上。
 
