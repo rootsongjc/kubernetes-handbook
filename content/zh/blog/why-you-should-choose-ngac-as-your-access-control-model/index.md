@@ -71,7 +71,7 @@ NIST 的 David Ferraiolo 和 [Tetrate](https://www.tetrate.io/) 的 Ignasi Barre
 
 NGAC 是基于这样一个假设：你可以用一个图来表示你要保护的系统，这个图代表了你要保护的资源和你的组织结构，这个图对你有意义，并且符合你的组织语义。在这个对你的组织非常特殊的模型之上，你可以叠加策略。在资源模型和用户模型之间，定义了权限。这样 NGAC 提供了一种优雅的方式来表示你要保护的资源，系统中的不同角色，以及如何用权限把这两个世界联系在一起。
 
-![NGAC 模型中的 DAG](https://tva1.sinaimg.cn/large/008eGmZEly1gnu26nral2j30ke0ay0ue.jpg)
+![NGAC 模型中的 DAG](008eGmZEly1gnu26nral2j30ke0ay0ue.jpg)
 
 图片来自于 [Linear Time Algorithms to Restrict Insider Access using Multi-Policy Access Control Systems](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=922390)
 
@@ -79,7 +79,7 @@ NGAC 是基于这样一个假设：你可以用一个图来表示你要保护的
 
 下面的例子展示了一个简单的 NGAC 图，其中有一个代表组织结构的用户 DAG，一个代表文件系统中的文件和文件夹的对象 DAG，一个文件的分类，以及两个不同的策略 —— 文件系统和范围，可以结合起来做出访问决策。两个 DAG 之间的关联边定义了行为者对目标资源的权限。
 
-![NGAC 示例图](https://tva1.sinaimg.cn/large/008eGmZEly1gnu27wttcnj30lx0f7my9.jpg)
+![NGAC 示例图](008eGmZEly1gnu27wttcnj30lx0f7my9.jpg)
 
 在这张图中，我们可以看到 `/hr-docs` 文件夹中的两个文件 `resume` 和 `contract` 的表示，每个文件都链接到一个类别（`public`/`confidential`）。还有两个策略类，`File System` 和 `Scope`，图中的对象被连接在这里 —— 需要满足这些条件才能获得对每个文件的访问权。
 
