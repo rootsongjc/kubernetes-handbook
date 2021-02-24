@@ -30,7 +30,7 @@ Service Mesh 有如下几个特点：
 - 应用程序无感知
 - 解耦应用程序的重试/超时、监控、追踪和服务发现
 
-目前两款流行的 Service Mesh 开源软件 [Istio](https://istio.io) 和 [Linkerd](https://linkerd.io) 都可以直接在 Kubernetes 中集成，其中 Linkerd 已经成为 CNCF 成员。
+目前两款流行的 Service Mesh 开源软件 [Istio](https://istio.io) 和 [Linkerd](https://linkerd.io) 都可以直接在 Kubernetes 中集成，其中 Linkerd 已经成为 CNCF 中的项目。
 
 ## 理解 Service Mesh
 
@@ -57,24 +57,24 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 ## Service Mesh如何工作？
 
-下面以 Linkerd 为例讲解 Service Mesh 如何工作，Istio 作为 Service Mesh 的另一种实现原理与 linkerd 基本类似，后续文章将会详解 Istio 和 Linkerd 如何在 Kubernetes 中工作。
+下面以 Istio 为例讲解 Service Mesh 如何工作，后续文章将会详解 Istio 如何在 Kubernetes 中工作。
 
-1. Linkerd 将服务请求路由到目的地址，根据中的参数判断是到生产环境、测试环境还是 staging 环境中的服务（服务可能同时部署在这三个环境中），是路由到本地环境还是公有云环境？所有的这些路由信息可以动态配置，可以是全局配置也可以为某些服务单独配置。
-2. 当 Linkerd 确认了目的地址后，将流量发送到相应服务发现端点，在 kubernetes 中是 service，然后 service 会将服务转发给后端的实例。
-3. Linkerd 根据它观测到最近请求的延迟时间，选择出所有应用程序的实例中响应最快的实例。
-4. Linkerd 将请求发送给该实例，同时记录响应类型和延迟数据。
-5. 如果该实例挂了、不响应了或者进程不工作了，Linkerd 将把请求发送到其他实例上重试。
-6. 如果该实例持续返回 error，Linkerd 会将该实例从负载均衡池中移除，稍后再周期性得重试。
-7. 如果请求的截止时间已过，Linkerd 主动失败该请求，而不是再次尝试添加负载。
-8. Linkerd 以 metric 和分布式追踪的形式捕获上述行为的各个方面，这些追踪信息将发送到集中 metric 系统。
+1. Sidecar（Istio 中使用 [Envoy](https://envoyproxy.io) 作为 sidecar 代理）将服务请求路由到目的地址，根据请求中的参数判断是到生产环境、测试环境还是 staging 环境中的服务（服务可能同时部署在这三个环境中），是路由到本地环境还是公有云环境？所有的这些路由信息可以动态配置，可以是全局配置也可以为某些服务单独配置。这些配置是由服务网格的控制平面推送给各个 sidecar 的，
+2. 当 sidecar 确认了目的地址后，将流量发送到相应服务发现端点，在 Kubernetes 中是 service，然后 service 会将服务转发给后端的实例。
+3. Sidecar 根据它观测到最近请求的延迟时间，选择出所有应用程序的实例中响应最快的实例。
+4. Sidecar 将请求发送给该实例，同时记录响应类型和延迟数据。
+5. 如果该实例挂了、不响应了或者进程不工作了，sidecar 会将把请求发送到其他实例上重试。
+6. 如果该实例持续返回 error，sidecar 会将该实例从负载均衡池中移除，稍后再周期性得重试。
+7. 如果请求的截止时间已过，sidecar 主动标记该请求为失败，而不是再次尝试添加负载。
+8. SIdecar 以 metric 和分布式追踪的形式捕获上述行为的各个方面，这些追踪信息将发送到集中 metric 系统。
 
 ## 为何使用 Service Mesh？
 
 Service Mesh 并没有给我们带来新功能，它是用于解决其他工具已经解决过的问题，只不过这次是在以 Kubernetes 为基础的云原生生态环境下的实现。
 
-在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的 “胖客户端” 库，这些就是早期的 Service Mesh，但是它们都近适用于特定的环境和特定的开发语言，并不能作为平台级的 Service Mesh 支持。
+在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的 “胖客户端” 库，这些就是早期的 Service Mesh，但是它们都仅适用于特定的环境和特定的开发语言，并不能作为平台级的 Service Mesh 支持。
 
-在 Cloud Native 架构下，容器的使用赋予了异构应用程序更多的可能性，Kubernetes 增强的应用的横向扩容能力，用户可以快速的编排出复杂环境、复杂依赖关系的应用程序，同时开发者又无须过分关心应用程序的监控、扩展性、服务发现和分布式追踪这些繁琐的事情，进而专注于程序开发，赋予开发者更多的创造性。
+在 Cloud Native 架构下，容器的使用赋予了异构应用程序更多的可能性，Kubernetes 增强了应用的横向扩容能力，用户可以快速的编排出复杂环境、复杂依赖关系的应用程序，同时开发者又无须过分关心应用程序的监控、扩展性、服务发现和分布式追踪这些繁琐的事情，进而专注于程序开发，赋予开发者更多的创造性。
 
 ## 参考
 
@@ -84,7 +84,7 @@ Service Mesh 并没有给我们带来新功能，它是用于解决其他工具�
 - [Introducing Istio: A robust Service Mesh for microservices](https://istio.io/blog/istio-service-mesh-for-microservices.html)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
-- [Envoy 官方文档中文版](http://www.servicemesher.com/envoy/)
+- [Envoy 官方文档](https://envoyproxy.io)
 - [Istio 官方文档](https://istio.io/)
 - [Istio Handbook - Istio 服务网格进阶实战](https://www.servicemesher.com/istio-handbook/)
 
