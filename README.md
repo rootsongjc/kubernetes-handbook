@@ -118,5 +118,5 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 - [Awesome Cloud Native](https://github.com/rootsongjc/awesome-cloud-native)：云原生开源项目大全
 - [深入剖析 Kubernetes](https://time.geekbang.org/column/intro/116?code=IRLmmVKgTghcFr5iafwl9kZezb48Uhf4Pjdf13-W3ko%3D&utm_term=SPoster)：极客时间推出的 Kubernetes 专栏
 - [深入浅出云计算](https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster)：云原生时代给开发者和架构师的云计算指南
-- [《Istio Handbook——Istio 服务网格进阶实战》](https://www.servicemesher.com/istio-handbook/)：ServiceMesher 社区出品的开源电子书
+- [《Istio Handbook——Istio 服务网格进阶实战》](https://www.servicemesher.com/istio-handbook/)：ServiceMesher 出品的开源电子书
 - [云原生社区 Kubernetes SIG](https://i.cloudnative.to/kubernetes/) - 云原生社区组织的 Kubernetes 兴趣小组
