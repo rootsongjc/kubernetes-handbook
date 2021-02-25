@@ -1,5 +1,5 @@
 ---
-title: "Istio中的服务和流量的抽象模型"
+title: "Istio 中的服务和流量的抽象模型"
 date: 2018-12-17T21:37:35+08:00
 draft: false
 notoc: true
@@ -14,7 +14,7 @@ image: "images/banner/istio-logo.jpg"
 
 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Kubernetes，本文仅以 Kubernetes 说明。另外在 [ServiceMesher 社区](http://www.servicemesher.com)中最近有很多关于 Istio、Envoy、Kubernetes 之中的服务模型关系的讨论，本文作为一个开篇说明，Kubernetes 和 Isito 之间有哪些共有的服务模型，Istio 在 Kubernetes 的服务模型之上又增加了什么。
 
-**服务具有多个版本。**在 CI/CD 过程中，同一个服务可能同时部署在多个环境中，如开发、生产和测试环境等，这些服务版本不一定具有不同的 API，可能只是一些小的更改导致的迭代版本。在 A/B 测试和灰度发布中经常遇到这种情况。
+**服务具有多个版本。** 在 CI/CD 过程中，同一个服务可能同时部署在多个环境中，如开发、生产和测试环境等，这些服务版本不一定具有不同的 API，可能只是一些小的更改导致的迭代版本。在 A/B 测试和灰度发布中经常遇到这种情况。
 
 ## Kubernetes 与 Istio 中共有的模型
 
@@ -26,11 +26,11 @@ Kubernetes 中 iptables 代理模式（另外还有 IPVS 模式）下的 service
 
 ### Service
 
-这实际上跟 Kubernetes 中的 service 概念是一致的，请参考 [Kubernetes 中的 service](https://jimmysong.io/kubernetes-handbook/concepts/service.html)。Istio 推出了比 service 更复杂的模型 `VirtualService`，这不单纯是定义一个服务定义了，而是在服务之上定义了路由规则。
+这实际上跟 Kubernetes 中的 service 概念是一致的，请参考 [Kubernetes 中的 service](https://jimmysong.io/kubernetes-handbook/concepts/service.html)。Istio 推出了比 service 更复杂的模型 `VirtualService`，这不单纯是定义一个服务了，而是在服务之上定义了路由规则。
 
 每个服务都有一个完全限定的域名（FQDN），监听一个或多个端口。服务还可以有与其相关联的单个负载均衡器或虚拟 IP 地址。针对 FQDN 的 DNS 查询将解析为该负载均衡器或者虚拟 IP 的地址。
 
-例如 Kubernetes 中一个服务为 `foo.default.svc.cluster.local hostname`，虚拟 IP /ClusterIP 是 10.0.1.1，监听的端口是 80 和 8080。
+例如 Kubernetes 中一个服务为 `foo.default.svc.cluster.local` ，虚拟 IP /ClusterIP 是 10.0.1.1，监听的端口是 80 和 8080。
 
 ### Endpoint
 
@@ -67,13 +67,15 @@ spec:
 
 当然服务的 label 可以设置任意多个，这样的好处是在做路由的时候可以根据标签匹配来做细粒度的流量划分。
 
-## 控制面板 Envoy
+## 数据平面 Envoy
 
-Envoy 是 Istio 中默认的 proxy sidecar，负责服务间的流量管控、认证与安全加密、可观察性等。
+Envoy 是 Istio 中默认的 sidecar proxy，负责服务间的流量管控、认证与安全加密、可观察性等。
+
+下面是 Envoy 的架构图。
 
 ![Envoy架构图](envoy-arch-20190114.png)
 
-上图是 Envoy 的架构图，我再给大家介绍 Envoy 中的如下几个重要概念。
+我再给大家介绍 Envoy 中的如下几个重要概念。
 
 ### Cluster
 
@@ -91,7 +93,7 @@ Listener 使用 listener filter（监听器过滤器）来操作链接的元数�
 
 ## Istio 中增加的流量模型
 
-`VirtualService`、`DestinationRule`、`Gateway`、`ServiceEntry` 和 `EnvoyFilter` 都是 Istio 中为流量管理所创建的 CRD，这些概念其实是做路由管理，而 Kubernetes 中的 service 只是用来做服务发现，所以以上其实也不能成为 Istio 中的服务模型，但其实它们也是用来管理服务的，如果流量不能路由的创建的服务上面去，那服务的存在又有何意义？在 Service Mesh 真正的服务模型还是得从 Envoy 的 [xDS 协议](http://www.servicemesher.com/blog/envoy-xds-protocol/)来看，其中包括了服务的流量治理，服务的断点是通过 EDS 来配置的。
+`VirtualService`、`DestinationRule`、`Gateway`、`ServiceEntry` 和 `EnvoyFilter` 都是 Istio 中为流量管理所创建的 CRD，这些概念其实是做路由配置和流量管理的，而 Kubernetes 中的 service 只是用来做服务发现。Service Mesh 中真正的服务模型应该是 Envoy 的 [xDS 协议](https://cloudnative.to/blog/envoy-xds-protocol/)，其中包括了服务的流量治理，服务的端点是通过 EDS 来配置的。
 
 ![Istio pilot 架构图](istio-pilot.png)
 
@@ -103,17 +105,17 @@ Kubernetes 中的 service 是没有任何路由属性可以配置的，Istio 在
 
 ### VirtualService
 
-`VirtualService` 定义针对指定服务流量的路由规则。每个路由规则都针对特定协议的匹配规则。如果流量符合这些特征，就会根据规则发送到服务注册表中的目标服务（或者目标服务的子集或版本）。对于 A/B 测试和灰度发布等场景，通常需要使用划分 `subset`，VirtualService 中根据 destination 中的 subset 配置来选择路由，但是这些 subset 究竟对应哪些服务示例，这就需要 `DestionationRule`。详情请参考 [VirtualService](https://preliminary.istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#virtualservice)。
+`VirtualService` 定义针对指定服务流量的路由规则。每个路由规则都针对特定协议的匹配规则。如果流量符合这些特征，就会根据规则发送到服务注册表中的目标服务（或者目标服务的子集或版本）。对于 A/B 测试和灰度发布等场景，通常需要使用划分 `subset`，VirtualService 中根据 destination 中的 subset 配置来选择路由，但是这些 subset 究竟对应哪些服务示例，这就需要 `DestionationRule`。
 
 ### DestinationRule
 
-`DestinationRule` 所定义的策略，决定了经过路由处理之后的流量的访问策略。这些策略中可以定义负载均衡配置、连接池尺寸以及外部检测（用于在负载均衡池中对不健康主机进行识别和驱逐）配置。详情请参考 [DestinationRule](https://preliminary.istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#destinationrule)。
+`DestinationRule` 所定义的策略，决定了经过路由处理之后的流量的访问策略。这些策略中可以定义负载均衡配置、连接池尺寸以及外部检测（用于在负载均衡池中对不健康主机进行识别和驱逐）配置。
 
 ### Gateway
 
 `Gateway` 描述了一个负载均衡器，用于承载网格边缘的进入和发出连接。这一规范中描述了一系列开放端口，以及这些端口所使用的协议、负载均衡的 SNI 配置等内容。
 
-这个实际上就是定义服务网格的边缘路由。详情请参考 [Gateway](https://preliminary.istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#gateway)。
+这个实际上就是定义服务网格的边缘路由。
 
 ### ServiceEntry
 
@@ -123,7 +125,7 @@ Kubernetes 中的 service 是没有任何路由属性可以配置的，Istio 在
 
 ### EnvoyFilter
 
-`EnvoyFilter` 对象描述了针对代理服务的过滤器，这些过滤器可以定制由 Istio Pilot 生成的代理配置。这一功能一定要谨慎使用。错误的配置内容一旦完成传播，可能会令整个服务网格进入瘫痪状态。详情请参考 [EnvoyFilter](https://preliminary.istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#envoyfilter)。
+`EnvoyFilter` 对象描述了针对代理服务的过滤器，这些过滤器可以定制由 Istio Pilot 生成的代理配置。这一功能一定要谨慎使用。错误的配置内容一旦完成传播，可能会令整个服务网格进入瘫痪状态。
 
 Envoy 中的 listener 可以配置多个 [filter](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listener_filters)，这也是一种通过 Istio 来扩展 Envoy 的机制。
 
@@ -131,4 +133,4 @@ Envoy 中的 listener 可以配置多个 [filter](https://www.envoyproxy.io/docs
 
 - [Kubernetes 中的 service - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/service.html)
 - [Istio services model - github.com](https://github.com/istio/old_pilot_repo/blob/master/doc/service-registry.md)
-- [流量路由 - istio.io](https://istio.io/zh/docs/reference/config/istio.networking.v1alpha3)
+- [Istio 文档 - istio.io](https://istio.io)
