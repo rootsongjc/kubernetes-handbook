@@ -1,4 +1,4 @@
-# 安装并试用Istio service mesh
+# 安装并试用Istio
 
 **注意：本文基于 Istio 1.0。**
 
