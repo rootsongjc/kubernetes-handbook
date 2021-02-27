@@ -206,8 +206,8 @@ weight = 7
 # footer menu
 
 [[menu.footer]]
-name = "Service Mesh Community(China)"
-URL = "https://www.servicemesher.com.com"
+name = "GetIstio"
+URL = "https://getistio.io"
 
 [[menu.footer]]
 name = "Cloud Native Community(China)"
@@ -326,8 +326,8 @@ weight = 1
 
 [[Languages.zh.menu.main]]
 parent = "社区"
-name = "服务网格社区"
-URL = "https://www.servicemesher.com"
+name = "GetIstio"
+URL = "https://getistio.io"
 weight = 2
 
 [[Languages.zh.menu.main]]
@@ -384,8 +384,8 @@ name = "jimmysongio | Bilibli"
 URL = "https://space.bilibili.com/31004924/"
 
 [[Languages.zh.menu.footer]]
-name = "ServiceMesher"
-URL = "https://www.servicemesher.com"
+name = "GetIstio"
+URL = "https://getistio.io"
 
 [[Languages.zh.menu.footer]]
 name = "云原生社区（中国）"
