@@ -27,4 +27,13 @@
 
   {{ "<!--Algolia-->" | safeHTML }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css">
+    {{ "<!--Twitter card-->" | safeHTML }}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="jimmysong.io" />
+  <meta name="twitter:creator" content="@jimmysongio" />
+  <meta property="og:url" content="{{ with .Permalink }}{{ . }}{{ end }}" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ end }}" />
+  <meta property="og:image" content="{{ with .Params.image }} {{.| absURL}}{{ end }}" />
+
 </head>
