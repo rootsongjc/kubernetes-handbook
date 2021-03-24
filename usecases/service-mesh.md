@@ -1,4 +1,4 @@
-# Service Mesh 服务网格
+# 服务网格（Service Mesh ）
 
 **注意：本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
 

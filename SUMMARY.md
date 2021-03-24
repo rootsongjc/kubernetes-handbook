@@ -213,7 +213,7 @@
   * [使用 Java 构建微服务并发布到 Kubernetes 平台](usecases/microservices-for-java-developers.md)
     * [Spring Boot 快速开始指南](usecases/spring-boot-quick-start-guide.md)
 * [可观察性](usecases/observability.md)
-* [Service Mesh 服务网格](usecases/service-mesh.md)
+* [服务网格（Service Mesh）](usecases/service-mesh.md)
   * [企业级服务网格架构](usecases/the-enterprise-path-to-service-mesh-architectures.md)
     * [Service Mesh 基础](usecases/service-mesh-fundamental.md)
     * [Service Mesh 技术对比](usecases/comparing-service-mesh-technologies.md)
