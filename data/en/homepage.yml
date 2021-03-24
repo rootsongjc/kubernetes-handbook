@@ -71,7 +71,7 @@ about:
   enable : true
   title : "About Me"
   image : "images/about/about-me.jpg"
-  content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador, [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder, independent writer and photographer."
+  content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador, [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder, former cloud native advocate and head of OSS office at Ant Group, independent writer and photographer."
   button:
     enable : true
     label : "Learn more"

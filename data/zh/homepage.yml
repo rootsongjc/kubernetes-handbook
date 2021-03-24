@@ -71,7 +71,7 @@ about:
   enable : true
   title : "关于"
   image : "https://res.cloudinary.com/jimmysong/image/upload/c_scale,q_49,w_1356/v1594296714/images/about-me-zh.jpg"
-  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，独立撰稿人，摄影师。"
+  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，前蚂蚁集团云原生布道师及开源管理负责人，独立撰稿人，摄影师。"
   button:
     enable : true
     label : "了解详情"

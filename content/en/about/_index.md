@@ -11,7 +11,7 @@ description : "Jimmy Song's profile."
 
 ### Introduction
 
-Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder. He is an outstanding translator, author and producer of PHEI. Early adopters and evangelis of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com)(formerly Ant Financial).
+Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder. He is an outstanding translator, author and producer of PHEI.  Former cloud native advocate and head of OSS office at Ant Group. Early adopters and evangelist of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com)(Ant Financial).
 
 ### Publications
 
