@@ -5,6 +5,7 @@ description: "翻译自 Google 于 Github 上开源的文档"
 link: "https://jimmysong.io/eng-practices"
 type: "notice"
 aliases: "/posts/google-engineering-practices-zh"
+image: "images/backgrounds/notification.jpg"
 ---
 
 在前几天中秋节期间我翻译了一遍 Google 于 Github 上开源的 [Google's Engineering Practices documentation](https://github.com/google/eng-practices)，原文档 Github 地址： [https://github.com/google/eng-practices](https://github.com/google/eng-practices)，目前为止的主要内容为 Google 总结的如何进行 **Code Review（代码审查）** 指南，根据原 Github 仓库的标题判断以后会追加更多 Google 工程实践的内容。

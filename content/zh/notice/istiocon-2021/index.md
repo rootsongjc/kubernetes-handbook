@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "IstioCon 2021，我将发表闪电演讲，北京时间 2 月 22 日上午 10 点。"
 link: "https://events.istio.io/istiocon-2021/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 ![IstioCon 海报（Jimmy Song）](istio-con-jimmysong.png)

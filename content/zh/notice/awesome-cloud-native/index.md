@@ -7,6 +7,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 link: "https://jimmysong.io/awesome-cloud-native"
 aliases: "/posts/awesome-cloud-native"
+image: "images/backgrounds/notification.jpg"
 ---
 
 这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目  [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)，同时也可以通过 [Web 页面浏览](http://jimmysong.io/awesome-cloud-native)。

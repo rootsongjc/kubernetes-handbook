@@ -7,6 +7,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 link: "https://github.com/rootsongjc/cloudinary-go"
 aliases: "/posts/cloudinary-go"
+image: "images/backgrounds/notification.jpg"
 ---
 
 [Cloudinary-go](https://github.com/rootsongjc/cloudinary-go) is a Go client library and CLI tool to upload static assets to the [Cloudinary](http://www.cloudinary.com) service.

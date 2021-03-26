@@ -7,6 +7,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 link: "https://github.com/rootsongjc/cloud-native-slides-share"
 aliases: "/posts/cloud-native-slides-share"
+image: "images/backgrounds/notification.jpg"
 ---
 
 很多人抱怨网上能够找到的关于Cloud Native云原生的资料匮乏，因此我专门整理了目前我所保存的资料到这样一个GitHub库中，日后会不断更新和完善。

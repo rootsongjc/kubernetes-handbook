@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "即日起我有了自己的独立域名jimmysong.io。"
 link: "https://jimmysong.io"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 即日起我有了自己的独立域名 [jimmysong.io](http://jimmysong.io)，网站依然托管在 GitHub 上，原来的网址 https://jimmysong.io 依然可以访问。

@@ -5,6 +5,7 @@ draft: false
 description: "本书由 D2IQ 公司赞助，这家公司之前的名字容器圈的人一定都听过 Mesosphere，作者是 Boris Scholl, Trent Swanson & Peter Jausovec。"
 type: "notice"
 link: "https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-cloud-native-using-containers-functions-data-next-gen-apps-jimmysong.pdf"
+image: "images/backgrounds/notification.jpg"
 ---
 
 分享一本 O‘Reilly 出品的电子书（免费），*Cloud Native - Using Containers, Functions, and Data to Build Next-Generation Applications* ，本书由 D2IQ 公司赞助（其前身是 Mesosphere），作者是 Boris Scholl, Trent Swanson & Peter Jausovec。

@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "带您探索后 Kubernetes 时代的云原生应用发展路径"
 link: "https://jimmysong.io/guide-to-cloud-native-app/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gf65jqq5oog30go03vjt9.gif)

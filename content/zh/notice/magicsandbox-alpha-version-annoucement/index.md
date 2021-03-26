@@ -6,6 +6,7 @@ draft: false
 type: "notice"
 link: "https://magicsandbox.com/"
 aliases: "/posts/magicsandbox-alpha-version-annoucement"
+image: "images/backgrounds/notification.jpg"
 ---
 
 > 如果有一个可视化的，提供基础设施集群给你操作的学习模式和平台，你会为此买单吗？
