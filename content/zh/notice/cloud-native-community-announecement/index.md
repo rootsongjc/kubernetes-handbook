@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "我和我的朋友们发起了有技术、有温度、有情怀的云原生社区。"
 link: "https://cloudnative.to/blog/cnc-announcement/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 云原生领域近几年来群英荟萃，但缺乏一个企业中立的有组织有纪律的团体把大家团结在一起。我和我的朋友们在疫情期间，利用业余时间共同发起了这个云原生社区，希望能服务于全球华人群体，共同致力于云原生事业。社区官网 <https://cloudnative.to>。

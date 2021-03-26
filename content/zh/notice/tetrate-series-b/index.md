@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "这笔钱将用于扩大全球市场，增大工程投入，以及基于 Istio 的完全托管的服务网格平台 SaaS 服务 Tetrate Cloud。"
 link: "https://www.tetrate.io/blog/series-b-journey-next-steps/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 我所任职的公司 Tetrate，今日宣布获得 4000 万美元 B 轮融资。下面的公告来自 Tetrate 的 CEO Varun Talwar，[点击阅读原文](https://www.tetrate.io/blog/series-b-journey-next-steps/)。

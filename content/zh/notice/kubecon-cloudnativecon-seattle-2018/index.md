@@ -6,6 +6,7 @@ description: "KubeCon&CloudNativeCon 西雅图2018资料分享。"
 type: "notice"
 aliases: "/posts/istio-tutorial"
 link: "https://github.com/warmchang/KubeCon-North-America-2018"
+image: "images/backgrounds/notification.jpg"
 ---
 
 北美的KubeCon&CloudNative是每年最值得参加的云原生盛会，这次在西雅图举行，为期四天，从12月10号到13号，参考[大会官网](https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2018/)。今年 **8000** 人参加，你应该留意到了Kubernetes已经越来越底层，云原生应用开发者不需要过多关注它，各大公司都在发布自己的云原生技术栈布局，包括IBM、VMware、SAP等，围绕该生态的创业公司还在不断涌现。本地大会的 PPT 分享地址：<https://github.com/warmchang/KubeCon-North-America-2018>，**感谢William Zhang 对本次会议幻灯片的整理和分享**。

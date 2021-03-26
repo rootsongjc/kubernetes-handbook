@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "将网站迁移到阿里云香港节点，提高网站访问速度，并获取公网 IP、子域名的便利。"
 link: "https://jimmysong.io"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 就在今晚，[jimmysong.io](https://jimmysong.io) 网站迁移到了阿里云香港节点，此举是为了进一步优化用户体验，提升访问速度。我在阿里云香港节点上购买了一台 ECS，现在我拥有一个公网 IP 还可以设置子域名了，之前网站是部署在 GitHub Pages 上，访问速度一般，而且还要承受 GitHub 不稳定带来的影响（近年来 GitHub 的宕机事件时有发生）。

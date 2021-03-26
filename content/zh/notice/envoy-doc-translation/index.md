@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "Envoy 文档翻译由云原生社区 Envoy SIG 发起，即将完成，欢迎大家加入！"
 link: "https://cloudnative.to/envoy/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 Envoy 中文文档地址：**https://cloudnative.to/envoy**

@@ -7,6 +7,7 @@ link: "https://jimmysong.io/hugo-handbook"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/building-static-website-with-hugo"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 很多人问我 [jimmysong.io](https://jimmysong.io) 这个网站是怎么做出来的，我想有必要写本书给大家普及下静态网站构建的知识还有Hugo这个利器。

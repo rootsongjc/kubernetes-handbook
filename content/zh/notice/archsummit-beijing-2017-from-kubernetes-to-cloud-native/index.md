@@ -7,6 +7,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 link: "http://bj2017.archsummit.com/"
 aliases: "/posts/archsummit-beijing-2017-from-kubernetes-to-cloud-native"
+image: "images/backgrounds/notification.jpg"
 ---
 
 2017年，我们面临着架构变革的大时代，例如Kubernetes结束容器编排之争、Kafka发布1.0、Serverless逐渐发力、边缘计算要取代云计算、Service Mesh蓄势待发，另外人工智能为业务赋能，也给架构带来了新的挑战。

@@ -7,6 +7,7 @@ aliases: "/posts/istio-handbook-by-servicemesher"
 link: "http://www.servicemesher.com/istio-handbook"
 type: "notice"
 bg_image: "images/backgrounds/page-title.jpg"
+image: "images/backgrounds/notification.jpg"
 ---
 
 Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.io/istio-handbook>）在捐献给 ServiceMesher 社区之前已经撰写了8个月，为了进一步普及 Istio 和 Service Mesh 技术将次书捐献给社区共同撰写。2019年3月10日完成了原书内容的迁移至  <https://github.com/servicemesher/istio-handbook>，原书将不再更新。

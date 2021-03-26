@@ -6,6 +6,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "2020年的第一个月最后几天，我决定将网站改版。"
 link: "https://jimmysong.io"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 > 在这个最孤独的春节里，进行一场最深刻的修行。

@@ -6,6 +6,7 @@ description: "这是一篇后Kubernetes时代的檄文，Kubernetes handbook by 
 aliase: "/posts/new-kubernetes-handbook-released-and-say-hello-to-post-kubernetes-era"
 type: "notice"
 link: "https://jimmysong.io/kubernetes-handbook"
+image: "images/backgrounds/notification.jpg"
 ---
 
 这是一篇后**Kubernetes**时代的檄文。就在今天傍晚我看到了一篇 Bilgin Ibryam的文章 *[Microservices in a Post-Kuberentes Era](https://www.infoq.com/articles/microservices-post-kubernetes)* 有感而发。

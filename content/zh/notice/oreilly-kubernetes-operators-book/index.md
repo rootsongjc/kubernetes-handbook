@@ -5,6 +5,7 @@ draft: false
 description: "本书由 Red Hat OpenShift 赞助，作者是 Jason Dobies & Joshua Wood。"
 type: "notice"
 link: "https://github.com/rootsongjc/cloud-native-slides-share/blob/master/books/oreilly-kubernetes-operators-jimmysong.pdf"
+image: "images/backgrounds/notification.jpg"
 ---
 
 分享一本 O‘Reilly 出品的电子书（免费），Kubernetes Operators - Automating the Container Orchestration Platform，本书由 Red Hat OpenShift 赞助，作者是 Jason Dobies & Joshua Wood。

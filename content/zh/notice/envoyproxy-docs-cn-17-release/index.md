@@ -7,6 +7,7 @@ aliases: "/posts/envoyproxy-docs-cn-1.7-release"
 link: "http://www.servicemesher.com/envoy"
 type: "notice"
 bg_image: "images/backgrounds/page-title.jpg"
+image: "images/backgrounds/notification.jpg"
 ---
 
 Envoy ——为云原生应用而设计、开源的边缘和服务代理、Istio Service Mesh 默认的数据平面，最新官方文档中文版，由 ServiceMesher社区倾情奉献，欢迎大家共同学习和分享。

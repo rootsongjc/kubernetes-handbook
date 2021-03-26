@@ -7,6 +7,7 @@ draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 aliases: "/posts/container-networking-from-docker-to-kubernetes-nginx"
+image: "images/backgrounds/notification.jpg"
 ---
 
 TL;DR [点此下载本书 PDF](https://share.weiyun.com/5tGG1ya)。

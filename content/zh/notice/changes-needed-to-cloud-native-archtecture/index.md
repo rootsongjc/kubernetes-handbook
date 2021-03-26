@@ -7,6 +7,7 @@ description: "本书译自 Matt Stine 2015 年 2 月发表的电子书。"
 link: "https://jimmysong.io/migrating-to-cloud-native-application-architectures"
 aliases: "/posts/changes-needed-to-cloud-native-archtecture"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 本书是 Migrating to Cloud Native Application Architectures 的中文版，本书英文版发布于 2015 年 2 月，中文版由 Jimmy Song 翻译，发布于 2017 年 7 月。

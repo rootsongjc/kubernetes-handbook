@@ -6,4 +6,5 @@ bg_image: "images/backgrounds/page-title.jpg"
 # meta description
 description : "重要信息通知。"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---

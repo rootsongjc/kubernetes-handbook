@@ -7,6 +7,7 @@ aliases: "/posts/a-ballerina-china-ambassador-required"
 description: "经Ballerina公司官方授权，现在我需要帮他们在中国找一位大使。"
 link: "https://ballerina.io/"
 type: "notice"
+image: "images/backgrounds/notification.jpg"
 ---
 
 还记得我之前分享的[云原生编程语言终于出现！一文带你了解 Ballerina！](http://mp.weixin.qq.com/s?__biz=MzI1NTE2NDE2MA==&mid=2649381257&idx=1&sn=e3c3fc1ed4c9099b95fffd22ff576629&chksm=f224d3e6c5535af0db1b7f6c9fa85390b3e5d41f6b18d46ac8edce9304b3db2ae88c9de04bf6&scene=21#wechat_redirect)吗？他们准备来参加KubeCon&CloudNativeCon中国大会了！
