@@ -146,7 +146,7 @@ blog:
 
 ############################ footer ###############################
 footer:
-  contact: "微信（申请好友时请备注姓名公司）"
+  contact: "联系微信（请备注姓名公司并说明来意）"
   link: "/contact"
   image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"

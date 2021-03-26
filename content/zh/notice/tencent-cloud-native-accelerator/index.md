@@ -1,5 +1,5 @@
 ---
-title: "宋净超（Jimmy Song）担任「腾讯云原生加速器」开源社区及行业导师"
+title: "Jimmy 担任「腾讯云原生加速器」开源社区及行业导师"
 date: 2021-03-10T23:27:17+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
