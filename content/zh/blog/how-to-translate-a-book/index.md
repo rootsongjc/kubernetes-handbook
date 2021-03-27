@@ -10,12 +10,12 @@ aliases: "/posts/how-to-translate-a-book"
 type: "post"
 ---
 
-截止本文发稿时，我是以下两本Cloud Native图书的译者：
+截止本文发稿时，笔者是以下两本云原生图书的译者：
 
-- [Cloud Native Go](https://jimmysong.io/cloud-native-go)：已由电子工业出版社出版
-- [Cloud Native Python](https://jimmysong.io/posts/cloud-native-python)：正在翻译中
+- [Cloud Native Go](/book/cloud-native-go)：已由电子工业出版社出版
+- [Cloud Native Python](/book/cloud-native-python)：正在翻译中
 
-同时我还参与了[kubernetes](https://kubernetes.io/)、[Istio](http://istio.doczh.cn)的文档翻译，撰写了开源电子书[kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)，下面是我本人在翻译过程中的的一些心得。
+同时我还参与了 [Kubernetes](https://kubernetes.io/)、[Istio](https://istio.io) 的文档翻译，撰写了开源电子书 [kubernetes-handbook](https://jimmysong.io/kubernetes-handbook)，下面是我本人在翻译过程中的的一些心得。
 
 **说明：本文中使用的方法仅供参考，机器翻译有助您快速了解全书或文章的梗概，请勿直接使用机器翻译结果输出。**
 
@@ -27,17 +27,17 @@ type: "post"
 
 ### 2. 取得图书引进的版权
 
-如果很幸运的，这本书可以引进到国内，而且还没有人来翻译，可以跟出版社编辑要求翻译这本书，如果书籍内容适当可以一个人翻译，如果内容较多可以分多个人翻译，建议人数不要超过4人。
+如果很幸运的，这本书可以引进到国内，而且还没有人来翻译，可以跟出版社编辑要求翻译这本书，如果书籍内容适当可以一个人翻译，如果内容较多可以分多个人翻译，建议人数不要超过 4 人。
 
 ## 环境准备
 
 首先需要准备如下环境：
 
-- **Git**：用户版本管理，也方便在线查看，我使用[码云](https://gitee.com)私有代码库管理。
-- **Markdown编辑器**：我推荐使用[typora](https://typora.io)。
-- **Gitbook**：使用[Gitbook](https://gitbook.com)生成web页面便于阅读和查看，注意不要公开发布到Github上。
-- **Word**：虽然我们使用markdown编辑器来编辑，但是word还是需要的，因为编辑会在word中批注，再返回给你修改。
-- **Translation-shell**：命令行翻译工具，https://github.com/soimort/translate-shell
+- **Git**：用户版本管理，也方便在线查看，我使用 [码云](https://gitee.com) 私有代码库管理。
+- **Markdown 编辑器 **：我推荐使用 [typora](https://typora.io)。
+- **Gitbook**：使用 [Gitbook](https://gitbook.com) 生成 web 页面便于阅读和查看，注意不要公开发布到 Github 上。
+- **Word**：虽然我们使用 markdown 编辑器来编辑，但是 word 还是需要的，因为编辑会在 word 中批注，再返回给你修改。
+- **Translation-shell**：命令行翻译工具，见 [Github](https://github.com/soimort/translate-shell)。
 
 ## 翻译过程
 
@@ -45,23 +45,23 @@ type: "post"
 
 ### 1. 分析原版压缩包的结构
 
-以[Cloud Native Python](https://jimmysong.io/posts/cloud-native-python)这本书为例，原文的压缩包里包含以下目录：
+以 [Cloud Native Python](/book/cloud-native-python) 这本书为例，原文的压缩包里包含以下目录：
 
 - **Code**：书中的代码示例
 - **Cover**：本书的封面图片
-- **E-Book**：本书的完成PDF文档（一个文件）
+- **E-Book**：本书的完成 PDF 文档（一个文件）
 - **Graphics**：书中的图片，按照章节和顺序编号，放在一个目录下，不一定与图片在书中出现的顺序相同，有些后来补充的图片会另外编号
-- **Printers**：用于印刷的PDF文档，分为封面和正文
+- **Printers**：用于印刷的 PDF 文档，分为封面和正文
 
 ### 2. 初始化翻译项目
 
-我们使用Git来管理，使用Gitbook来预览，需要先初始化一些目录结构和gitbook配置。
+我们使用 Git 来管理，使用 Gitbook 来预览，需要先初始化一些目录结构和 gitbook 配置。
 
-**初始化的目录和文件**
+** 初始化的目录和文件 **
 
 - **LANGS.md**：语言配置文件
 - **README.md**：项目说明
-- **book.json**：gitbook配置文件
+- **book.json**：gitbook 配置文件
 - **cn**：中文翻译（按章节划分成不同的文件）
 - **corrigendum.md**：勘误表
 - **cover.jpg**：书籍封面
@@ -69,7 +69,7 @@ type: "post"
 - **glossary.md**：术语表
 - **images**：保存书中的图片
 
-让Gitbook支持多语言的`book.json`配置如下：
+让 Gitbook 支持多语言的 `book.json` 配置如下：
 
 ```json
 {
@@ -78,9 +78,7 @@ type: "post"
     "language": "zh-hans",
     "author": "Jimmy Song",
     "links": {
-    "sidebar": {
-        "Home": "https://jimmysong.io"
-        }
+    "sidebar": {"Home": "https://jimmysong.io"}
     },
     "plugins": [
         "codesnippet",
@@ -92,32 +90,30 @@ type: "post"
     ],
     "pluginsConfig": {
         "tbfed-pagefooter": {
-            "copyright": "Copyright © jimmysong.io 2017 ",
+            "copyright": "Copyright © jimmysong.io 2017",
             "modify_label": "Updated:",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         }
     }
 }
-```
+​````LANG.md` 文件中定义不同语言的文件目录：
 
-`LANG.md`文件中定义不同语言的文件目录：
-
-```markdown
+​```markdown
 # Languages
 
 * [中文](cn/)
 * [English](en/)
 ```
 
-### 3. 原文Markdown化
+### 3. 原文 Markdown 化
 
-之所以将原文Markdown化一是便于我们后续翻译的时候对照英文和引用其中的原文，二是为了生成gitbook便于浏览。将每一章的内容都划分成一个Markdown文件，按照章节的名字为文档命名，分别在`cn`和`en`目录下都放一份。
+之所以将原文 Markdown 化一是便于我们后续翻译的时候对照英文和引用其中的原文，二是为了生成 gitbook 便于浏览。将每一章的内容都划分成一个 Markdown 文件，按照章节的名字为文档命名，分别在 `cn` 和 `en` 目录下都放一份。
 
-![中英文目录](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-python-cn-en.jpg)
+![中英文目录](cloud-native-python-cn-en.jpg)
 
 ### 4. 开始正文的翻译
 
-建议从头开始按顺序翻译，如果前后章节联系不大的可以跳跃翻译，翻译的过程中将一些关键的术语，包括翻译不明确的，需要后续参考的数据记录在`glossary.md`文档中。
+建议从头开始按顺序翻译，如果前后章节联系不大的可以跳跃翻译，翻译的过程中将一些关键的术语，包括翻译不明确的，需要后续参考的数据记录在 `glossary.md` 文档中。
 
 格式如下所示：
 
@@ -133,43 +129,45 @@ type: "post"
 
 可以不断向其中追加新的术语。
 
-翻译的过程中需要用到翻译工具，我使用的是[translation-shell](https://github.com/soimort/translate-shell)，一款基于命令行的翻译工具，可以使用Google、bing或者Yandex翻译，十分方便快捷。
+翻译的过程中需要用到翻译工具，我使用的是 [translation-shell](https://github.com/soimort/translate-shell)，一款基于命令行的翻译工具，可以使用 Google、bing 或者 Yandex 翻译，十分方便快捷。也推荐大家使用 [DeepL](https://www.deepl.com/)，翻译效果更好。
 
-**Translation-shell**
+注：使用翻译工具是为了将书籍快速汉化，减少大量的人工输入，但是因为机器翻译比较生硬，而且其中难免有错误，需要译者投入大量心思去优化。
 
-使用`trans :zh -b -shell`进入translation-shell交互式界面，拷贝英文段落进去翻译成中文。
+#### Translation-shell
 
-![Translation-shell](https://res.cloudinary.com/jimmysong/image/upload/images/translation-trans-terminal.jpg)
+使用 `trans :zh -b -shell` 进入 translation-shell 交互式界面，拷贝英文段落进去翻译成中文。
 
-**使用Typora编辑中文翻译**
+![Translation-shell](translation-trans-terminal.jpg)
 
-同时打开`en`和`cn`目录下的同一章节开始翻译。
+#### 使用 Typora 编辑中文翻译
 
-![中英文翻译界面](https://res.cloudinary.com/jimmysong/image/upload/images/translation-typora-multi-language.jpg)
+同时打开 `en` 和 `cn` 目录下的同一章节开始翻译。
 
-**在Gitbook中查看**
+![中英文翻译界面](translation-typora-multi-language.jpg)
 
-使用`gitbook serve`启用gitbook服务，在http://localhost:4000页面上查看内容。
+#### 在 Gitbook 中查看
 
-首先会出来语言选择页面，我们可以分别选择中文和英文内容浏览，语言是在`LAGNS.md`文件中定义的。
+使用 `gitbook serve` 启用 gitbook 服务，在 http://localhost:4000 页面上查看内容。
 
-![Gitbook](https://res.cloudinary.com/jimmysong/image/upload/images/translation-gitbook-cn-en.jpg)
+首先会出来语言选择页面，我们可以分别选择中文和英文内容浏览，语言是在 `LAGNS.md` 文件中定义的。
 
-**导出为不同格式**
+![Gitbook](translation-gitbook-cn-en.jpg)
 
-使用typora编辑完中文翻译后，可以导出为pdf、word等其它格式，我们导出为word格式后发送给编辑批阅。
+#### 导出为不同格式
 
-生成的word内容格式是这样的：
+使用 typora 编辑完中文翻译后，可以导出为 pdf、word 等其它格式，我们导出为 word 格式后发送给编辑批阅。
 
-![word文档格式](https://res.cloudinary.com/jimmysong/image/upload/images/translation-word-cn.jpg)
+生成的 word 内容格式是这样的：
 
-我们可以看到生产的word文档仍然保留了代码的高亮，而且可读性也很好。
+![word 文档格式](translation-word-cn.jpg)
+
+我们可以看到生产的 word 文档仍然保留了代码的高亮，而且可读性也很好。
 
 ### 5. 审校
 
-每当翻译完一章内容后就发送给编辑，编辑会使用word进行审校批注，根据编辑的批注修改后再发回给编辑。
+每当翻译完一章内容后就发送给编辑，编辑会使用 word 进行审校批注，根据编辑的批注修改后再发回给编辑。
 
-![word review界面](https://res.cloudinary.com/jimmysong/image/upload/images/translation-word-review.jpg)
+![word review 界面](translation-word-review.jpg)
 
 ### 6. 二审
 
@@ -183,15 +181,16 @@ type: "post"
 
 书籍印刷后后续事宜主要包括：
 
-- **出版社支付稿费**：翻译图书稿费=图书销量x定价x4%，著作一般为8%
-- **配合图书宣传**：一些meetup、大会、线上交流时推荐图书
-- **读者交流**：可以开设社区、微信群、网站等交流
+- 出版社支付稿费：翻译图书稿费 = 图书销量 x 定价 x4%，著作一般为 8%
+- 配合图书宣传：一些 meetup、大会、线上交流时推荐图书
+- 读者交流：可以开设社区、微信群、网站等交流
 
 ## 贴士
 
-图书翻译耗时费力，倾注了原作者和译者的很多心力，**打击盗版，维护正版**！
+图书翻译耗时费力，倾注了原作者和译者的很多心力，打击盗版，维护正版！
 
 ## 有用的链接
 
 - [术语在线](http://www.termonline.cn/index.htm)
 - [非文学翻译理论与实践 - 王长栓](https://book.douban.com/subject/1289408/)
+
