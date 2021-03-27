@@ -34,7 +34,7 @@ type: "post"
 首先需要准备如下环境：
 
 - **Git**：用户版本管理，也方便在线查看，我使用 [码云](https://gitee.com) 私有代码库管理。
-- **Markdown 编辑器 **：我推荐使用 [typora](https://typora.io)。
+- **Markdown 编辑器**：我推荐使用 [typora](https://typora.io)。
 - **Gitbook**：使用 [Gitbook](https://gitbook.com) 生成 web 页面便于阅读和查看，注意不要公开发布到 Github 上。
 - **Word**：虽然我们使用 markdown 编辑器来编辑，但是 word 还是需要的，因为编辑会在 word 中批注，再返回给你修改。
 - **Translation-shell**：命令行翻译工具，见 [Github](https://github.com/soimort/translate-shell)。
@@ -57,7 +57,7 @@ type: "post"
 
 我们使用 Git 来管理，使用 Gitbook 来预览，需要先初始化一些目录结构和 gitbook 配置。
 
-** 初始化的目录和文件 **
+初始化的目录和文件：
 
 - **LANGS.md**：语言配置文件
 - **README.md**：项目说明
