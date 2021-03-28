@@ -8,10 +8,6 @@
 
 * [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
-* [云原生新手入门指南](cloud-native/quick-start.md)
-* [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
-* [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
-* [使用 Rancher 在阿里云上部署 Kubenretes 集群](cloud-native/setup-kubernetes-with-rancher-and-aliyun.md)
 * [Kubernetes 与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 * [云原生应用之路 —— 从 Kubernetes 到 Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
 * [定义云原生应用](cloud-native/define-cloud-native-app.md)
@@ -26,6 +22,13 @@
   * [云原生编程语言 Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
   * [云原生编程语言 Pulumi](cloud-native/cloud-native-programming-language-pulumi.md)
 * [云原生的未来](cloud-native/the-future-of-cloud-native.md)
+
+## 快速入门
+
+* [云原生新手入门指南](cloud-native/quick-start.md)
+* [Play with Kubernetes](cloud-native/play-with-kubernetes.md)
+* [快速部署一个云原生本地实验环境](cloud-native/cloud-native-local-quick-start.md)
+* [使用 Rancher 在阿里云上部署 Kubenretes 集群](cloud-native/setup-kubernetes-with-rancher-and-aliyun.md)
 
 ## 概念与原理
 
@@ -190,7 +193,7 @@
     * [使用 Prometheus 监控 kubernetes 集群](practice/using-prometheus-to-monitor-kuberentes-cluster.md)
     * [Prometheus 查询语言 PromQL 使用说明](practice/promql.md)
   * [使用 Vistio 监控 Istio 服务网格中的流量](practice/vistio-visualize-your-istio-mesh.md)
-* [分布式跟踪](practice/distributed-tracing.md)
+* [分布式追踪](practice/distributed-tracing.md)
   * [OpenTracing](practice/opentracing.md)
 * [服务编排管理](practice/services-management-tool.md)
   * [使用 Helm 管理 Kubernetes 应用](practice/helm.md)
@@ -212,7 +215,6 @@
   * [微服务中的服务发现](usecases/service-discovery-in-microservices.md)
   * [使用 Java 构建微服务并发布到 Kubernetes 平台](usecases/microservices-for-java-developers.md)
     * [Spring Boot 快速开始指南](usecases/spring-boot-quick-start-guide.md)
-* [可观察性](usecases/observability.md)
 * [服务网格（Service Mesh）](usecases/service-mesh.md)
   * [企业级服务网格架构](usecases/the-enterprise-path-to-service-mesh-architectures.md)
     * [Service Mesh 基础](usecases/service-mesh-fundamental.md)
@@ -229,16 +231,10 @@
     * [Envoy Sidecar 代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
     * [Istio 如何支持虚拟机](usecases/how-to-integrate-istio-with-vm.md)
     * [Istio 支持虚拟机的历史](usecases/istio-vm-support.md)
-  * [Linkerd](usecases/linkerd.md)
-    * [Linkerd 使用指南](usecases/linkerd-user-guide.md)
-  * [Conduit](usecases/conduit.md)
-    * [Condiut 概览](usecases/conduit-overview.md)
-    * [安装 Conduit](usecases/conduit-installation.md)
   * [Envoy](usecases/envoy.md)
     * [Envoy 的架构与基本术语](usecases/envoy-terminology.md)
     * [Envoy 作为前端代理](usecases/envoy-front-proxy.md)
     * [Envoy mesh 教程](usecases/envoy-mesh-in-kubernetes-tutorial.md)
-  * [MOSN](usecases/mosn.md)
 * [大数据](usecases/big-data.md)
   * [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   * [运行支持 Kubernetes 原生调度的 Spark 程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
@@ -249,6 +245,7 @@
   * [Knative](usecases/knative.md)
 * [边缘计算](usecases/edge-computing.md)
 * [人工智能](usecases/ai.md)
+* [可观察性](usecases/observability.md)
 
 ## 开发指南
 
@@ -266,14 +263,15 @@
 * [社区贡献](develop/contribute.md)
 * [Minikube](develop/minikube.md)
 
-## CNCF（云原生计算基金会）
+## 社区及生态
 
-* [CNCF - 云原生计算基金会简介](cloud-native/cncf.md)
-* [CNCF 章程](cloud-native/cncf-charter.md)
-* [CNCF 特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
-* [开源项目加入 CNCF Sandbox 的要求](cloud-native/cncf-sandbox-criteria.md)
-* [CNCF 中的项目治理](cloud-native/cncf-project-governing.md)
-* [CNCF Ambassador](cloud-native/cncf-ambassador.md)
+* [云原生计算基金会（CNCF）](cloud-native/cncf.md)
+  * [CNCF 章程](cloud-native/cncf-charter.md)
+  * [CNCF 特别兴趣小组（SIG）说明](cloud-native/cncf-sig.md)
+  * [开源项目加入 CNCF Sandbox 的要求](cloud-native/cncf-sandbox-criteria.md)
+  * [CNCF 中的项目治理](cloud-native/cncf-project-governing.md)
+  * [CNCF Ambassador](cloud-native/cncf-ambassador.md)
+* [云原生社区](cloud-native/cnc.md)
 
 ## 附录
 
