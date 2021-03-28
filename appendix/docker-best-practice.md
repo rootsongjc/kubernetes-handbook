@@ -46,7 +46,7 @@ Docker提供了一系列[log drivers](https://docs.docker.com/engine/admin/loggi
 
 - [使用docker-compose创建应用](https://jimmysong.io/docker-handbook/docs/docker_compose)
 
-## 集群管理##
+## 集群管理
 
 我们使用docker内置的swarm来管理docker集群。
 

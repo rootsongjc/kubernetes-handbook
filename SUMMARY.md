@@ -8,6 +8,7 @@
 
 * [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
+* [Kubernetes 的诞生](cloud-native/kubernetes-history.md)
 * [Kubernetes 与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
 * [云原生应用之路 —— 从 Kubernetes 到 Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
 * [定义云原生应用](cloud-native/define-cloud-native-app.md)
@@ -102,7 +103,7 @@
 
 ## 用户指南
 
-* [用户指南](guide/index.md)
+* [用户指南概览](guide/index.md)
 * [资源对象配置](guide/resource-configuration.md)
   * [配置 Pod 的 liveness 和 readiness 探针](guide/configure-liveness-readiness-probes.md)
   * [配置 Pod 的 Service Account](guide/configure-pod-service-account.md)
@@ -272,6 +273,9 @@
   * [CNCF 中的项目治理](cloud-native/cncf-project-governing.md)
   * [CNCF Ambassador](cloud-native/cncf-ambassador.md)
 * [云原生社区](cloud-native/cnc.md)
+* [认证及培训](cloud-native/certification.md)
+  * [认证 Kubernetes 服务提供商（KCSP）说明](appendix/about-kcsp.md)
+  * [认证 Kubernetes 管理员（CKA）说明](appendix/about-cka-candidate.md)
 
 ## 附录
 
@@ -288,6 +292,5 @@
 * [CNCF 年度报告解读](appendix/cncf-annual-report.md)
   * [CNCF 2018 年年度报告解读](appendix/cncf-annual-report-2018.md)
   * [CNCF 2020 年年度报告解读](appendix/cncf-annual-report-2020.md)
-* [Kubernetes 认证服务提供商（KCSP）说明](appendix/about-kcsp.md)
-* [认证 Kubernetes 管理员（CKA）说明](appendix/about-cka-candidate.md)
+
 

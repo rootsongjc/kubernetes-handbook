@@ -1,6 +1,6 @@
-# 认证Kubernetes管理员（CKA）
+# 认证 Kubernetes 管理员（CKA）
 
-这是CNCF的官方认证，详情请看[官方介绍](https://www.cncf.io/certification/expert/ )。
+这是 CNCF 的官方认证，详情请看[官方介绍](https://www.cncf.io/certification/CKA/ )。
 
 ## 认证详情
 
@@ -170,7 +170,7 @@ Kubernetes Community
 Final Exam
 ps： 个人觉得这个课程可以不用学， 直接看文档就行了 。
 ```
-还有一个[收费的课程](https://training.linuxfoundation.org/linux-courses/system-administration-training/kubernetes-fundamentals) ($299)
+还有一个[收费的课程](https://training.linuxfoundation.org/linux-courses/system-administration-training/kubernetes-fundamentals) ($299)。
 
 该课程的课程大纲：
 
@@ -195,8 +195,11 @@ Chapter 16. Security
 ps： 个人觉得这个课程太贵了，为了省点钱 ，  仔细研究下文档就行了 。
 ```
 
-[培训体系](https://www.mindmeister.com/zh/920845833/kubernauts-training-pla)
+[培训体系](https://www.mindmeister.com/zh/920845833/kubernauts-training-pla)如下图所示。
 
 ![CKA mindmap](../images/cka-mindmap.png)
 
-From: [Github_hackstoic](https://github.com/hackstoic/kubernetes_practice/blob/master/%E5%85%B3%E4%BA%8EK8S%E7%9B%B8%E5%85%B3%E8%AE%A4%E8%AF%81%E7%9A%84%E8%AF%B4%E6%98%8E.md)
+## 参考
+
+- [Kubernetes认证服务提供商（KCSP） - github.com](https://github.com/hackstoic/kubernetes_practice/blob/master/%E5%85%B3%E4%BA%8EK8S%E7%9B%B8%E5%85%B3%E8%AE%A4%E8%AF%81%E7%9A%84%E8%AF%B4%E6%98%8E.md)
+- [Certified Kubernetes Administrator (CKA) - cncf.io](https://www.cncf.io/certification/CKA/)
