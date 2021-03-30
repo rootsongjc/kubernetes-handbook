@@ -171,7 +171,7 @@
   * [集群及应用监控](practice/monitor.md)
   * [数据持久化问题](practice/data-persistence-problem.md)
   * [管理容器的计算资源](practice/manage-compute-resources-container.md)
-  * [集群联邦](practice/federation.md)
+  * [集群联邦（Cluster Federation）](practice/federation.md)
 * [存储管理](practice/storage.md)
   * [GlusterFS](practice/glusterfs.md)
     * [使用 GlusterFS 做持久化存储](practice/using-glusterfs-for-persistent-storage.md)

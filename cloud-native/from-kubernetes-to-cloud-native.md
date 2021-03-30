@@ -252,16 +252,6 @@ Spark现在已经非官方支持了基于Kubernetes的原生调度，其具有�
 
 ![Kubernetes SIG](../images/kubernetes-sigs.jpg)
 
-我组建了**K8S&Cloud Native实战**、**ServiceMesher**微信群，参与了k8smeetup、KEUC2017、[kubernetes-docs-cn](https://github.com/kubernetes/kubernetes-docs-cn) Kubernetes官方中文文档项目。
+## 更多
 
-**有用的资料和链接**
-
-- 我的博客： <https://jimmysong.io>
-- 微信群：k8s&cloud native实战群、ServiceMesher（见：<https://jimmysong.io/about>）
-- Meetup：k8smeetup、[ServiceMesher](http://www.servicemesher.com)
-- Cloud Native Go - 基于Go和React云原生Web应用开发：https://jimmysong.io/cloud-native-go
-- Gitbook：<https://jimmysong.io/kubernetes-handbook>
-- Cloud native开源生态：<https://jimmysong.io/awesome-cloud-native/>
-- 资料分享整理：<https://github.com/rootsongjc/cloud-native-slides-share>
-- 迁移到云原生架构：<https://jimmysong.io/migrating-to-cloud-native-application-architectures/>
-- KubeCon + CloudNativeCon 2018年11月14-15日 上海
+Bilgin Ibryam 写了这篇《[分布式系统在 Kubernetes 上的进化](https://cloudnative.to/blog/distributed-systems-kubernetes/)》，可以帮助大家更好的理解基于 Kubernetes 的分布式系统的演进。

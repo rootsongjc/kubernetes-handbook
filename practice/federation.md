@@ -1,8 +1,8 @@
-# 集群联邦
+# 集群联邦（Cluster Federation）
 
 Kubernetes 从 1.8 版本起就声称单集群最多可支持 5000 个节点和 15 万个 Pod，我相信很少有公司会部署如此庞大的一个单集群，总有很多情况下因为各种各样的原因我们可能会部署多个集群，但是有时候有想将他们统一起来管理，这时候就需要用到集群联邦（Federation）。
 
-## 为什么要使用 federation
+## 为什么要使用集群联邦
 
 Federation 使管理多个集群变得简单。它通过提供两个主要构建模块来实现：
 
@@ -66,6 +66,203 @@ Kubernetes 集群数量的选择可能是一个相对静态的选择，只是偶
 
 最后，如果你的任何集群需要比 Kubernetes 集群最大建议节点数更多的节点，那么你可能需要更多的集群。 Kubernetes v1.3 支持最多 1000 个节点的集群。 Kubernetes v1.8 支持最多 5000 个节点的集群。
 
----
+## Kubernetes 集群联邦的演进
 
-注意：Federation V1 版本已经归档不再维护和更新，且官方也不再推荐继续使用。如果需要了解更多的 Federation 资料，请参考：[Kubernetes Federation v2](https://github.com/kubernetes-sigs/kubefed)。
+[Kubernetes 官方博客的文章](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)中介绍了 Kubernetes 集群联邦的演进，该项目是在 SIG Multicluster 中进行的，Federation 是 Kubernetes 的一个子项目，社区对这个项目的兴趣很浓，该项目最初重用 Kubernetes API，以消除现有 Kubernetes 用户的任何附加使用复杂性。但由于以下原因，此方式行不通：
+
+- 在集群层面重新实施 Kubernetes API 的困难，因为 Federation 的特定扩展存储在注释中。
+- 由于 Kubernetes API 的1:1仿真，Federation 类型、放置（placement）和调节（reconciliation）的灵活性有限。
+- 没有固定的 GA 路径，API 成熟度普遍混乱；例如，Deployment 在Kubernetes 中是 GA，但在 Federation v1 中甚至不是Beta。
+
+随着 Federation 特定的 API 架构和社区的努力，这些想法有了进一步的发展，改进为 Federation v2。请注意，Federation V1 版本已经归档不再维护和更新，且官方也不再推荐继续使用。如果需要了解更多的 Federation 资料，请参考：[Kubernetes Federation v2](https://github.com/kubernetes-sigs/kubefed)。
+
+下面将带你了解 Federation v2 背后的考量。
+
+### 将任意资源联合起来
+
+联邦的主要目标之一是能够定义 API 和 API 组，其中包含联邦任何给定 Kubernetes 资源所需的基本原则。这是至关重要的，因为 CRD 已经成为扩展 Kubernetes API 的一种主流方式。
+
+Multicluster SIG 得出了 Federation API 和 API 组的共同定义，即 "一种将`规范的` Kubernetes API 资源分配到不同集群的机制"。最简单的分布形式可以想象为这种'规范的 Kubernetes API 资源'在联邦集群中的简单传播。除了这种简单的 Kubernetes 资源传播之外，有心的读者当然可以看出更复杂的机制。
+
+在定义 Federation API 的构建模块的历程中，最早期的目标也演化为 "能够创建一个简单的联邦，也就是任何 Kubernetes 资源或 CRD 的简单传播，几乎不需要编写代码"。随后，核心 API 组进一步定义了构件，即每个给定的 Kubernetes 资源有一个 `Template` 资源、一个 `Placement` 资源和一个 `Override` 资源，一个 `TypeConfig` 来指定给定资源的同步或不同步，以及执行同步的相关控制器。更多细节将在后文中介绍。进一步的章节还将谈到能够遵循分层行为，更高级别的 Federation API 消耗这些核心构件的行为，而用户能够消耗整个或部分 API 和相关控制器。最后，这种架构还允许用户编写额外的控制器或用自己的控制器替换现有的参考控制器（reference controller），以执行所需的行为。
+
+能够 "轻松地联合任意 Kubernetes 资源"，以及一个解耦的 API，分为构件 API、更高层次的 API 和可能的用户预期类型，这样的呈现方式使得不同的用户可以消费部分和编写控制器组成特定的解决方案，这为 Federation v2 提供了一个令人信服的案例。
+
+## 架构概览
+
+Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Federation v1 基础之上，简化扩展 Federated API 过程，并加强跨集群服务发现与编排的功能。另外 KubeFed 在设计之初，有两个最重要核心理念是 KubeFed 希望实现的，分别为 Modularization（模块化）与 Customizable (定制化)，这两个理念大概是希望 KubeFed 能够跟随着 Kubernetes 生态发展，并持续保持相容性与扩展性。
+
+由于 Federation 试图解决一系列复杂的问题，因此需要将这些问题的不同部分分解开来。Federation 中涉及的概念和架构图如下所示。
+
+![Kubernetes 集群联邦架构图](../images/federation-concepts.png)
+
+上图中展示了集群联邦的过程：
+
+- 配置需要联邦的集群
+- 配置需要在集群中传播的 API 资源
+- 配置 API 资源如何分配到不同的集群
+- 对集群中 DNS 记录注册
+
+相较于 v1，v2 在组件上最大改变是将 API Server 移除，并通过 CRD 机制来完成 Federated Resources 的扩充。而 KubeFed Controller 则管理这些 CRD，并实现同步资源、跨集群编排等功能。
+
+
+目前 KubeFed 通过 CRD 方式新增了四种 API 群组来实现联邦机制的核心功能：
+
+| API Group                      | 用途                                                  |
+| ------------------------------ | ----------------------------------------------------- |
+| core.kubefed.k8s.io            | 集群组态、联邦资源组态、KubeFed Controller 设定档等。 |
+| types.kubefed.k8s.io           | 被联邦的 Kubernetes API 资源。                        |
+| scheduling.kubefed.k8s.io      | 副本编排策略。                                        |
+| multiclusterdns.kubefed.k8s.io | 跨集群服务发现设定。                                  |
+
+在这些核心功能中，我们必须先了解一些 KebeFed 提出的基础概念后，才能更清楚知道 KubeFed 是如何运作的。
+
+###  Cluster Configuration
+
+用来定义哪些 Kubernetes 集群要被联邦。可通过 kubefedctl join/unjoin 来加入/删除集群，当成功加入时，会建立一个 KubeFedCluster 组件来储存集群相关信息，如 API Endpoint、CA Bundle 等。这些信息会被用在 KubeFed Controller 存取不同 Kubernetes 集群上，以确保能够建立 Kubernetes API 资源，示意图如下所示。
+
+![KubeFed 基础架构](../images/sync-controller.png)
+
+在 Federation 中，会区分 Host 与 Member 两种类型集群。
+
+- Host : 用于提供 KubeFed API 与控制平面的集群。
+- Member : 通过 KubeFed API 注册的集群，并提供相关身份凭证来让 KubeFed Controller 能够存取集群。Host 集群也可以作为 Member 被加入。
+
+### Type Configuration
+
+定义了哪些 Kubernetes API 资源要被用于联邦管理。比如说想将 ConfigMap 资源通过联邦机制建立在不同集群上时，就必须先在 Federation Host 集群中，通过 CRD 建立新资源 FederatedConfigMap，接着再建立名称为 configmaps 的 Type configuration（FederatedTypeConfig）资源，然后描述 ConfigMap 要被 FederatedConfigMap 所管理，这样 KubeFed Controllers 才能知道如何建立 Federated 资源。以下为简单范例：
+
+```yaml
+apiVersion: core.kubefed.k8s.io/v1beta1
+kind: FederatedTypeConfig
+metadata:
+  name: configmaps
+  namespace: kube-federation-system
+spec:
+  federatedType:
+    group: types.kubefed.k8s.io
+    kind: FederatedConfigMap
+    pluralName: federatedconfigmaps
+    scope: Namespaced
+    version: v1beta1
+  propagation: Enabled
+  targetType:
+    kind: ConfigMap
+    pluralName: configmaps
+    scope: Namespaced
+    version: v1
+```
+
+若想新增 CRD 的 Federated API 的话，可通过 `kubefedctl enable <res>` 指令来建立，如下:
+
+```sh
+$ kubefedctl enable etcdclusters
+$ kubectl api-resources | grep etcd
+etcdclusters                      etcd         etcd.database.coreos.com         true         EtcdCluster
+federatedetcdclusters             fetcd        types.kubefed.k8s.io             true         FederatedEtcdCluster
+
+$ kubectl -n kube-federation-system get federatedtypeconfigs | grep etcd
+etcdclusters.etcd.database.coreos.com    3m16s
+```
+
+而一个 Federated 资源一般都会具备三个主要功能，这些信息能够在 spec 中由使用者自行定义，如下范例：
+
+```yaml
+apiVersion: types.kubefed.k8s.io/v1beta1
+kind: FederatedDeployment
+metadata:
+  name: test-deployment
+  namespace: test-namespace
+spec:
+  template: # 定义 Deployment 的所有內容，可理解成 Deployment 与 Pod 之间的关联。
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      ...
+  placement:
+    clusters:
+    - name: cluster2
+    - name: cluster1
+  overrides: 
+  - clusterName: cluster2
+    clusterOverrides:
+    - path: spec.replicas
+      value: 5
+```
+
+- Placement：定义 Federated 资源要分散到哪些集群上，若没有该文件，则不会分散到任何集群中。如 FederatedDeployment 中的 `spec.placement` 定义了两个集群时，这些集群将被同步建立相同的 Deployment。另外也支持用 `spec.placement.clusterSelector` 的方式来选择要放置的集群。
+- Override：定义修改指定集群的 Federated 资源中的 `spec.template` 内容。如部署 FederatedDeployment 到不同公有云上的集群时，就能通过 `spec.overrides` 来调整 Volume 或副本数。
+
+注意：目前 Override 不支持 List（Array）。比如说无法修改 `spec.template.spec.containers [0].image`。
+
+### Scheduling
+
+KubeFed 提供了一种自动化机制来将工作负载实例分散到不同的集群中，这能够基于总副本数与集群的定义策略来将 Deployment 或 ReplicaSet 资源进行编排。编排策略是通过建立 `ReplicaSchedulingPreference`（RSP）文件，再由 KubeFed RSP Controller 监听与撷取 RSP 内容来将工作负载实例建立到指定的集群上。
+
+以下为一个 RSP 范例。假设有三个集群被联邦，名称分别为 ap-northeast、us-east 与 us-west。
+
+```yaml
+apiVersion: scheduling.kubefed.k8s.io/v1alpha1
+kind: ReplicaSchedulingPreference
+metadata:
+  name: test-deployment
+  namespace: test-ns
+spec:
+  targetKind: FederatedDeployment
+  totalReplicas: 15 
+  clusters: 
+    "*":
+      weight: 2
+      maxReplicas: 12
+    ap-northeast:
+      minReplicas: 1
+      maxReplicas: 3
+      weight: 1
+```
+
+该配置示意图如下所示。
+
+![RSP](../images/kubefed-rsp.png)
+
+当该范例建立后，RSP Controller 会收到资源，并匹配对应 namespace/name 的 FederatedDeployment 与 FederatedReplicaSet 是否存在，若存在的话，会根据设定的策略计算出每个集群预期的副本数，之后覆写 Federated 资源中的 `spec.overrides` 内容以修改每个集群的副本数，最后再由 KubeFed Sync Controller 来同步至每个集群的 Deployment。以上面为例，结果会是 ap-northeast 集群会拥有 3 个 Pod，us-east 跟 us-west 则分别会有 6 个 Pod。
+
+注意：
+
+- 若 `spec.clusters` 未定义的话，则预设为 `{“*”:{Weight: 1}}`。
+- 若有定义 `spec.replicas` 的 overrides 时，副本会以 RSP 为优先考量。
+- 分配的计算机制可以参考 kubefed/pkg/controller/util/planner/planner.go。
+
+### Multi-cluster DNS
+
+KubeFed 提供了一组 API 资源，以及 Controllers 来实现跨集群 Service/Ingress 的 DNS records 自动产生机制，并结合 ExternalDNS 来同步更新至 DNS 服务供应商。以下为简单例子：
+
+```yaml
+apiVersion: multiclusterdns.kubefed.k8s.io/v1alpha1
+kind: Domain
+metadata:
+  name: test
+  namespace: kube-federation-system
+domain: k8s.example.com
+---
+apiVersion: multiclusterdns.kubefed.k8s.io/v1alpha1
+kind: ServiceDNSRecord
+metadata:
+  name: nginx
+  namespace: development
+spec:
+  domainRef: test
+  recordTTL: 300
+```
+
+首先假设已建立一个名称为 nginx 的 FederatedDeployment，然后放到 development namespace 中，并且也建立了对应的 FederatedService 提供 LoadBalancer。这时当建立上述 Domain 与 ServiceDNSRecord 后，KubeFed 的 Service DNS Controller 会依据 ServiceDNSRecord 文件内容，去收集不同集群的 Service 信息，并将这些信息更新至 ServiceDNSRecord 状态中，接着 DNS Endpoint Controller 会依据该 ServiceDNSRecord 的状态内容，建立一个 DNSEndpoint 文件，并产生 DNS records 资源，最后再由 ExternalDNS 来同步更新 DNS records 至 DNS 供应商。下图是 Service DNS 建立的架构。
+
+![DNS](../images/kubefed-service-dns.png)
+
+若是 Ingress 的话，会由 IngressDNSRecord 文件取代，并由 Ingress DNS Controller 收集信息。
+
+## 参考
+
+- [Kubernetes Federation v2 - github.com](https://github.com/kubernetes-sigs/kubefed)
+- [Kubernetes Federation Evolution - kuberentes.io](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)
+- [KubeFed: Kubernetes Federation v2 详解 - kuberentes.org.cn](https://www.kubernetes.org.cn/5702.html)
