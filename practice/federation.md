@@ -88,6 +88,40 @@ Multicluster SIG 得出了 Federation API 和 API 组的共同定义，即 "一�
 
 能够 "轻松地联合任意 Kubernetes 资源"，以及一个解耦的 API，分为构件 API、更高层次的 API 和可能的用户预期类型，这样的呈现方式使得不同的用户可以消费部分和编写控制器组成特定的解决方案，这为 Federation v2 提供了一个令人信服的案例。
 
+### 联邦服务与跨集群服务发现
+
+Kubernetes 服务在构建微服务架构时非常有用。人们明显希望跨越集群、可用区、区域和云的边界来部署服务。跨集群的服务提供了地理分布，实现了混合和多云场景，并提高了超越单一集群部署的高可用性水平。希望其服务跨越一个或多个（可能是远程）集群的客户，需要在集群内外以一致的方式提供服务。
+
+Federated Service 的核心是包含一个 Template（Kubernetes服务的定义）、一个 Placement（部署到哪个集群）、一个 Override（在特定集群中的可选变化）和一个 ServiceDNSRecord（指定如何发现它的细节）。
+
+注意：联邦服务必须是 LoadBalancer 类型，以便它可以跨集群发现。
+
+### Pod 如何发现联邦服务
+
+默认情况下，Kubernetes 集群预先配置了集群本地 DNS 服务器，以及智能构建的 DNS 搜索路径，它们共同确保了由 pod 内部运行的软件发出的 myservice、`myservice.mynamespace `或 `some-other-service.other-namespace` 等 DNS 查询会自动扩展并正确解析到本地集群中运行的服务的相应 IP。
+
+随着联邦服务和跨集群服务发现的引入，这个概念被扩展到全局覆盖在你的集群联邦中所有集群中运行的 Kubernetes 服务。为了利用这个扩展的范围，我们需要使用一个稍微不同的 DNS 名称（例如 `myservice.mynamespace.myfederation`）来解析联邦服务。使用不同的 DNS 名还可以避免现有的应用意外地穿越区域网络而会产生不必要的网络费用或延迟。
+
+让我们看一个例子，使用一个名为 nginx 的服务。
+
+在 `us-central1-a` 可用区的集群中的一个 pod 需要联系我们的 nginx 服务。它现在可以使用服务的联邦 DNS 名，即 `nginx.mynamespace.myfederation` ，而不是使用服务的传统集群本地 DNS 名（即  `nginx.mynamespace` 自动扩展为 `nginx.mynamespace.svc.cluster.local`）。这将被自动扩展并解析到离我的 nginx 服务最近的健康 shard。如果本地集群中存在一个健康的 shard，那么该服务的集群本地 IP 地址将被返回（通过集群本地 DNS）。这完全等同于非联邦服务解析。
+
+如果服务在本地集群中不存在（或者存在但没有健康的后端 pod），DNS 查询会自动扩展到 `nginx.mynamespace.myfederation.svc.us-central1-a.example.com`。在幕后，这可以找到离我们的可用区最近的一个 shard 的外部 IP。这个扩展是由集群本地 DNS 服务器自动执行的，它返回相关的 CNAME 记录。这就导致了对 DNS 记录的层次结构的遍历，并最终找到附近联邦服务的一个外部 IP。
+
+也可以通过明确指定适当的 DNS 名称，而不是依赖自动的DNS扩展，将目标锁定在 pod 本地以外的可用性区域和地区的服务 shard。例如，`nginx.mynamespace.myfederation.svc.europe-west1.example.com` 将解析到欧洲所有当前健康的服务 shard，即使发布查询的 pod 位于美国，也不管美国是否有健康的服务 shard，这对远程监控和其他类似的应用很有用。
+
+### 从联邦集群之外的其他客户端发现联邦服务
+
+对于外部客户端，目前还不能实现所述自动 DNS 扩展。外部客户需要指定联邦服务的一个完全限定的 DNS 名称，无论是区域、可用区还是全局名称。为了方便起见，通常情况下，在服务中手动配置额外的静态 CNAME 记录是一个好主意，例如：
+
+| 短名称            | CNAME                                                       |
+| ----------------- | ----------------------------------------------------------- |
+| eu.nginx.acme.com | nginx.mynamespace.myfederation.svc.europe-west1.example.com |
+| us.nginx.acme.com | nginx.mynamespace.myfederation.svc.us-central1.example.com  |
+| nginx.acme.com    | nginx.mynamespace.myfederation.svc.example.com              |
+
+这样一来，你的客户就可以始终使用左边的短名称，并始终自动路由到离他们位置最近的健康 shard。所有所需的故障转移都由 Kubernetes 集群联邦为你自动处理。
+
 ## 架构概览
 
 Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Federation v1 基础之上，简化扩展 Federated API 过程，并加强跨集群服务发现与编排的功能。另外 KubeFed 在设计之初，有两个最重要核心理念是 KubeFed 希望实现的，分别为 Modularization（模块化）与 Customizable (定制化)，这两个理念大概是希望 KubeFed 能够跟随着 Kubernetes 生态发展，并持续保持相容性与扩展性。
@@ -198,7 +232,7 @@ spec:
 
 ### Scheduling
 
-KubeFed 提供了一种自动化机制来将工作负载实例分散到不同的集群中，这能够基于总副本数与集群的定义策略来将 Deployment 或 ReplicaSet 资源进行编排。编排策略是通过建立 `ReplicaSchedulingPreference`（RSP）文件，再由 KubeFed RSP Controller 监听与撷取 RSP 内容来将工作负载实例建立到指定的集群上。
+KubeFed 提供了一种自动化机制来将工作负载实例分散到不同的集群中，这能够基于总副本数与集群的定义策略来将 Deployment 或 ReplicaSet 资源进行编排。编排策略是通过建立 `ReplicaSchedulingPreference`（RSP）文件，再由 KubeFed RSP Controller 监听与撷取 RSP 内容来将工作负载实例建立到指定的集群上。这是基于用户给出的高级用户偏好。这些偏好包括加权分布的语义和分布副本的限制（最小和最大）。这些还包括允许动态重新分配副本的语义，以防某些副本 Pod 仍然没有被调度到某些集群上，例如由于该集群资源不足。更多细节可以在 [`ReplicaSchedulingPreferences` 的用户指南](https://github.com/kubernetes-sigs/kubefed/blob/master/docs/userguide.md#replicaschedulingpreference)中找到。
 
 以下为一个 RSP 范例。假设有三个集群被联邦，名称分别为 ap-northeast、us-east 与 us-west。
 
@@ -231,7 +265,7 @@ spec:
 
 - 若 `spec.clusters` 未定义的话，则预设为 `{“*”:{Weight: 1}}`。
 - 若有定义 `spec.replicas` 的 overrides 时，副本会以 RSP 为优先考量。
-- 分配的计算机制可以参考 kubefed/pkg/controller/util/planner/planner.go。
+- 分配的计算机制可以参考 `kubefed/pkg/controller/util/planner/planner.go`。
 
 ### Multi-cluster DNS
 
