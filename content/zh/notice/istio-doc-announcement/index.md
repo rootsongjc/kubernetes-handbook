@@ -15,7 +15,7 @@ image: "images/backgrounds/notification.jpg"
 
 - [马哥教育网站下载链接](https://ke.magedu.com/detail/i_60543b9ce4b05a6195c16606/1?fromH5=true)
 - [公众号宣传文章](https://mp.weixin.qq.com/s/BnLN6QB1MWvukjS6PiAluQ)
-- [知乎宣传文章](https://zhuanlan.zhihu.com/p/358538413)
+- 知乎宣传文章（已删除）
 
 下面是相关的网页截图。
 
@@ -36,3 +36,7 @@ image: "images/backgrounds/notification.jpg"
 最后 Istio 官方文档的翻译仍在进行中，欢迎大家参与进来，[点击查看详情](https://i.cloudnative.to/istio/event/istio-doc-translation)。
 
 —— ServiceMesher，2021 年 3 月 31 日
+
+## 更新
+
+在 3 月 31 日，以上公告发布后，马哥教育第一时间联系了我，并承认错误，积极改正，并发布了公告（[关于 Istio官方文档使用声明](https://mp.weixin.qq.com/s?__biz=MzAxMTkwODIyNA==&mid=2247529088&idx=1&sn=3464684b245073d0f3641a37918e57f9&chksm=9bbbd76faccc5e794e2711cace08e77b7e63983448db65a9fb62891c567fd143c5f4431edc15&mpshare=1&scene=1&srcid=0331NBhdQ74wQn7Sxfjn6YmA&sharer_sharetime=1617170742413&sharer_shareid=6ebbb87f840417a73f21a9535bf0aa28#rd)）给马哥教育诚恳的态度点个赞，本次事件并非针对马哥教育，而是希望能够唤醒大家的版权保护意识，以正某些“利用”开源的不正之风。
