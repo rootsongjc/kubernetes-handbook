@@ -120,7 +120,7 @@ funfacts:
   funfact_item:
     # funfact item loop
     - name : "Published Books"
-      count : "5"
+      count : "6"
 
     # funfact item loop
     - name : "Hosted Events"

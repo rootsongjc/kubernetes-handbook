@@ -116,7 +116,7 @@ funfacts:
   funfact_item:
     # funfact item loop
     - name : "出版图书"
-      count : "5"
+      count : "6"
       link : "/book"
 
     # funfact item loop
