@@ -1,23 +1,24 @@
-# Istio 免费学习资源汇总
+# Istio 学习资源汇总
 
-**注意：本文档已失效，请浏览 [Istio 官方文档](https://istio.io)。本书中的 Service Mesh 章节已不再维护，请转到 [istio-handbook](https://www.servicemesher.com/istio-handbook) 中浏览。**
+在本地搭建起来还是有些门槛，稍显复杂，本文中将向你推荐几个可以在线上学习 Istio 的地方。
 
-2018年8月1日0点，[Istio 1.0发布，已生产就绪！](http://www.servicemesher.com/blog/announcing-istio-1.0/)大家都已经跃跃欲试了，几天前我发布了[一键在本地搭建运行Istio 1.0的分布式Kubernetes集群](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)教程，在本地搭建起来还是有些门槛，稍显复杂，现在我推荐几个可以在线上学习的地方。这是目前搜集的比较完整的Isito学习环境和包含代码的示例教程有如下几个：
-
-目前搜集的比较完整的Isito学习环境和包含代码的示例教程有如下几个：
-
-- Katacoda的学习环境
-- Istio官方的bookinfo教程
-- IBM的Istio示例教程
-- 我Fork的RedHat的Demo，Christian Posta在OSCON上的Istio workshop
-
-## Katacode上的Istio学习环境
+## Tetrate 提供的 Istio 基础课程
 
 推荐指数：⭑⭑⭑⭑⭑
 
+推荐原因：Tetrate 是企业级服务网格提供商，是 Istio 的核心贡献者之一，Tetrate 提供的免费的 Istio 基础课程，其中包括文字加视频讲解，覆盖全面，课后还有自主测试，内容最新最完整。
+
+![Tetrate Istio 基础教程](../images/tetrate-istio-fundamentals.png)
+
+地址：https://academy.tetrate.io/courses/istio-fundamentals
+
+## Katacode上的Istio学习环境
+
+推荐指数：⭑⭑⭑⭑
+
 推荐原因：使用简单，使用官方示例，免费，快速，无需注册，可直接通过互联网访问示例应用页面，支持最新版的Istio。
 
-Katacoda已支持Istio 1.0的学习环境。
+Katacoda已支持Istio的学习环境。
 
 地址：https://www.katacoda.com/courses/istio/deploy-istio-on-kubernetes
 
@@ -53,22 +54,10 @@ https://developer.ibm.com/code/patterns/manage-microservices-traffic-using-istio
 
 ![IBM developers](../images/006tNc79gy1ftwesjg1e2j31kw0s8woq.jpg)
 
-最后更新于2018年5月10号，是基于Istio 0.8的。
-
 GitHub地址：https://github.com/IBM/microservices-traffic-management-using-istio/
 
-## 其他
+## Istio Handbook
 
-推荐指数：⭑⭑⭑
+推荐指数：⭑⭑⭑⭑⭑
 
-推荐原因：个人演示项目，方便定制和修改代码。
-
-- 我个人Fork的RedHat的Java微服务中使用Isito的教程的demo（中文），目前基于Istio 0.8，未来将支持1.0：https://github.com/rootsongjc/istio-tutorial
-- Christian Posta在OSCON上的使用的Istio workshop：https://github.com/christian-posta/istio-workshop
-
-## ServiceMesher社区
-
-- 网址：https://www.servicemesher.com/
-- GitHub：https://github.com/servicemesher
-- 微信群：入群请[联系我](https://jimmysong.io/about)
-- Twitter: https://twitter.com/servicemesher
+推荐原因：由 ServiceMesher 共同撰写的开源 Istio 电子书，作为国内最早最大最专业的服务网格社区，这本书是社区共同经验的结晶。阅读地址 https://www.servicemesher.com/istio-handbook/
