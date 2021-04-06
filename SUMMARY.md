@@ -209,21 +209,18 @@
   * [OpenKruise](practice/openkruise.md)
     * [原地升级](practice/in-place-update.md)
 
-## 领域应用
+## 服务网格
 
-* [领域应用概览](usecases/index.md)
-* [微服务架构](usecases/microservices.md)
-  * [微服务中的服务发现](usecases/service-discovery-in-microservices.md)
-  * [使用 Java 构建微服务并发布到 Kubernetes 平台](usecases/microservices-for-java-developers.md)
-    * [Spring Boot 快速开始指南](usecases/spring-boot-quick-start-guide.md)
 * [服务网格（Service Mesh）](usecases/service-mesh.md)
-  * [企业级服务网格架构](usecases/the-enterprise-path-to-service-mesh-architectures.md)
-    * [Service Mesh 基础](usecases/service-mesh-fundamental.md)
-    * [Service Mesh 技术对比](usecases/comparing-service-mesh-technologies.md)
-    * [采纳和演进](usecases/service-mesh-adoption-and-evolution.md)
-    * [定制和集成](usecases/service-mesh-customization-and-integration.md)
-    * [总结](usecases/service-mesh-conclusion.md)
-  * [Istio](usecases/istio.md)
+* [企业级服务网格架构](usecases/the-enterprise-path-to-service-mesh-architectures.md)
+  * [服务网格基础](usecases/service-mesh-fundamental.md)
+  * [服务网格技术对比](usecases/comparing-service-mesh-technologies.md)
+  * [服务网格对比 API 网关](usecases/service-mesh-vs-api-gateway.md)
+  * [采纳和演进](usecases/service-mesh-adoption-and-evolution.md)
+  * [定制和集成](usecases/service-mesh-customization-and-integration.md)
+  * [总结](usecases/service-mesh-conclusion.md)
+* [Istio](usecases/istio.md)
+    * [使用 Istio 前需要考虑的问题](usecases/before-using-istio.md)
     * [安装并试用 Istio](usecases/istio-installation.md)
     * [Istio 中 sidecar 的注入规范及示例](usecases/sidecar-spec-in-istio.md)
     * [如何参与 Istio 社区及注意事项](usecases/istio-community-tips.md)
@@ -232,10 +229,19 @@
     * [Envoy Sidecar 代理的路由转发](usecases/envoy-sidecar-routing-of-istio-service-mesh-deep-dive.md)
     * [Istio 如何支持虚拟机](usecases/how-to-integrate-istio-with-vm.md)
     * [Istio 支持虚拟机的历史](usecases/istio-vm-support.md)
-  * [Envoy](usecases/envoy.md)
+* [Envoy](usecases/envoy.md)
     * [Envoy 的架构与基本术语](usecases/envoy-terminology.md)
     * [Envoy 作为前端代理](usecases/envoy-front-proxy.md)
     * [Envoy mesh 教程](usecases/envoy-mesh-in-kubernetes-tutorial.md)
+
+## 领域应用
+
+* [领域应用概览](usecases/index.md)
+* [微服务架构](usecases/microservices.md)
+  * [微服务中的服务发现](usecases/service-discovery-in-microservices.md)
+  * [使用 Java 构建微服务并发布到 Kubernetes 平台](usecases/microservices-for-java-developers.md)
+    * [Spring Boot 快速开始指南](usecases/spring-boot-quick-start-guide.md)
+
 * [大数据](usecases/big-data.md)
   * [Spark standalone on Kubernetes](usecases/spark-standalone-on-kubernetes.md)
   * [运行支持 Kubernetes 原生调度的 Spark 程序](usecases/running-spark-with-kubernetes-native-scheduler.md)
