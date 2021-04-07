@@ -1,5 +1,5 @@
 ---
-title: "为什么在使用了 Kubernetes 后你还需要 Istio？"
+title: "为什么在使用了 Kubernetes 后你可能还需要 Istio？"
 date: 2021-04-07T08:27:17+08:00
 draft: false
 type: "post"
@@ -7,7 +7,7 @@ categories: ["service mesh"]
 image: "/images/banner/istio-kubernetes.jpg"
 tags: ["kubernetes","istio","service mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
-description : "本文将带大家了解Kubernetes和Istio的内部工作原理。此外，我会介绍Kubernetes中的负载均衡方法，并解释为什么有了Kubernetes后还需要Istio。"
+description : "本文将带大家了解 Kubernetes 和 Istio 的内部工作原理。此外，我会介绍 Kubernetes 中的负载均衡方法，并解释为什么有了 Kubernetes 后可能还需要 Istio。"
 ---
 
 如果你听说过服务网格，并尝试过 [Istio](https://istio.io/)，你可能有以下问题。
