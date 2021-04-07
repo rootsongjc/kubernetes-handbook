@@ -7,10 +7,10 @@
           {{ if .IsPage }}
             {{$section_heading := .Site.GetPage "section" .Section }}
             {{with $section_heading}}
-          <li class="list-inline-item h2"><a class="text-primary font-secondary" href="{{ .Section | relLangURL }}">{{ .Title }}</a></li>
+          <li class="list-inline-item h2"><a class="text-primary font-secondary text-lighten" href="{{ .Section | relLangURL }}">{{ .Title }}</a></li>
             {{ end }}
           {{ else }}
-          <li class="list-inline-item h2"><a class="text-primary font-secondary" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Params.home }}</a></li>
+          <li class="list-inline-item h2"><a class="text-primary font-secondary text-lighten" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Params.home }}</a></li>
          {{end}}
           <li class="list-inline-item h5"><i class="ti-angle-right text-white"></i></li>
           <li class="list-inline-item text-white h3 font-secondary">{{ .Title }}</li>
