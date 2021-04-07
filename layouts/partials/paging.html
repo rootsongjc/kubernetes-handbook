@@ -1,14 +1,14 @@
-<div class="col-12 link-article">
-  <div class="pre-article">
-    {{ with .PrevInSection }}
-    <div><i class="fa fa-arrow-left"></i> {{ i18n "previous_article" }}</div>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-    {{ end }}
-  </div>
-  <div class="next-article">
-    {{ with .NextInSection }}
-    <div>{{ i18n "next_article" }} <i class="fa fa-arrow-right"></i></div>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-  {{ end }}
-  </div>
+<!-- page navigate -->
+<div class="col-12">
+<ul class="pager blog-pager">
+{{ if .PrevInSection }}
+<li class="previous">
+<a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+</li>
+{{ end }} {{ if .NextInSection }}
+<li class="next">
+<a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+</li>
+{{ end }}
+</ul>
 </div>
