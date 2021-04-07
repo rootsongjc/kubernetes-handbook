@@ -166,8 +166,8 @@
 - id: toc
   translation: "Table of content"
 
-- id: previous_article
-  translation: Previous post
+- id: previousPost
+  translation: Previous Post
 
-- id: next_article
-  translation: Next post
+- id: nextPost
+  translation: Next Post
