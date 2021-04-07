@@ -384,7 +384,7 @@ Chain ISTIO_REDIRECT (1 references)
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-![Sidecar traffic injection](envoy-sidecar-traffic-interception-jimmysong-blog-en.png)
+![Sidecar traffic injection](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210407.png)
 
 At the beginning of the first step, the sidecar in the productpage pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 

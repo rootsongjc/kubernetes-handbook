@@ -372,7 +372,7 @@ Chain ISTIO_REDIRECT (1 references)
 
 下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 sidecar proxy 是如何做流量拦截和路由转发的。
 
-![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-jimmysong-blog.png)
+![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh-20210407.png)
 
 第一步开始时，`productpage` Pod 中的 sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
 
