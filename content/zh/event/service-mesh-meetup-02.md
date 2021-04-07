@@ -13,7 +13,7 @@ location: "中国北京"
 # entry fee
 fee: "免费"
 topic: "Service Mesh"
-sponsor : "[ServiceMesher 社区](https://www.servicemesher.com)"
+sponsor : "[ServiceMesher](https://www.servicemesher.com)"
 # apply url
 apply_url : "http://www.itdks.com/eventlist/detail/2455"
 # event speaker
