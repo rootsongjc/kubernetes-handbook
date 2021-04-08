@@ -4,7 +4,7 @@ description: "本文为应 CSDN《云原生人物志》栏目约稿，知微见�
 date: 2021-01-28T08:34:40+08:00
 draft: false
 tags: ["云原生"]
-categories: ["cloud native"]
+categories: ["云原生"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/2021.jpg"
