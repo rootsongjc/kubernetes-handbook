@@ -171,3 +171,15 @@
 
 - id: nextPost
   translation: Next Post
+
+- id: word
+  translation: "words"
+
+- id: word_count
+  translation: "Word Count"
+
+- id: reading_time
+  translation: "Reading Time"
+
+- id: minute
+  translation: "Minute"
