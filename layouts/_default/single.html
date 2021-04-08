@@ -25,7 +25,10 @@
                   :</span>{{ range $index, $elements:= .Params.Categories }}<a
                   href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"> {{ if ne $index 0 }}, {{ end }}
                   {{ . | title }}</a> {{ end}}</li>
-
+              <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">{{ i18n "word_count" }}
+                  :</span>{{ .WordCount }} {{ i18n "word" }}</li>
+              <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">{{ i18n "reading_time" }}
+                  :</span>{{ math.Round (div (countwords .Content) 220.0) }} {{ i18n "minute" }}</li>
             </ul>
           </div>
           <!-- border -->
