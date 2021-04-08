@@ -3,7 +3,7 @@ title: "新的开始——告别蚂蚁，加入 Tetrate"
 date: 2020-08-31T08:27:17+08:00
 draft: false
 type: "post"
-categories: ["个人"]
+categories: ["其他"]
 image: "/images/banner/new-beginning.jpg"
 bg_image: "images/backgrounds/page-title.jpg"
 description : "今天是我在蚂蚁的最后一天，明天我就要在 Tetrate 开始新的学期了。"

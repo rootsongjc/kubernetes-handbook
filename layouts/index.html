@@ -153,40 +153,6 @@
 {{ if $data.homepage.success_story.enable }} {{ partial "success-story.html" . }} {{ end }}
 <!-- /success story -->
 
-<!-- events -->
-{{ if $data.homepage.event.enable }}
-<section class="section-sm bg-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="d-flex align-items-center section-title justify-content-between">
-                    <h2 class="mb-0 text-nowrap mr-3">{{ $data.homepage.event.title }}</h2>
-                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-                    <div>
-                        <a href="{{`event` | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ i18n "see_all" }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <!-- event -->
-            {{ range first 3 (where .Site.RegularPages "Type" "event")}}
-            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                {{ .Render "event" }}
-            </div>
-            {{ end }}
-        </div>
-        <!-- mobile see all button -->
-        <div class="row">
-            <div class="col-12 text-center">
-                <a href="{{`event` | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ i18n "see_all" }}</a>
-            </div>
-        </div>
-    </div>
-</section>
-{{ end }}
-<!-- /events -->
-
 <!-- blog -->
 {{ if $data.homepage.blog.enable }}
 <section class="section-sm bg-gray">
@@ -220,5 +186,39 @@
 </section>
 {{ end }}
 <!-- /blog -->
+
+<!-- events -->
+{{ if $data.homepage.event.enable }}
+<section class="section-sm bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3">{{ $data.homepage.event.title }}</h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    <div>
+                        <a href="{{`event` | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ i18n "see_all" }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- event -->
+            {{ range first 3 (where .Site.RegularPages "Type" "event")}}
+            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                {{ .Render "event" }}
+            </div>
+            {{ end }}
+        </div>
+        <!-- mobile see all button -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{{`event` | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ i18n "see_all" }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+<!-- /events -->
 
 {{ end }}
