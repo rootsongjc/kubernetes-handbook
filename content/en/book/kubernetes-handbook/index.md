@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Handbook"
-date: 2017-03-14T12:00:00+08:00
+date: 2021-04-09T12:00:00+08:00
 draft: false
 subtitle : "Guide to Cloud Native from Kubernetes"
 # page title background image
@@ -26,6 +26,8 @@ type: "book"
 ### Kubernetes Handbook——Kubernetes Chinese Guide/Cloud Native Application Architecture Practice Manual
 
 This book started in March 2017. It records my journey of learning and using Kubernetes from scratch. It focuses on experience sharing and summary. At the same time, it also has related concept analysis. I hope to help everyone step less and pit. The detour will also guide everyone to pay attention to the Kubernetes ecological surroundings, such as microservices construction, DevOps, big data applications, Service Mesh, Cloud Native and other fields.
+
+![Kubernetes Handbook by Jimmy Song](kubernetes-handbook.jpg)
 
 ### Before the start
 

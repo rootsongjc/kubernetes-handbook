@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Handbook"
-date: 2017-03-14T12:00:00+08:00
+date: 2021-04-09T12:00:00+08:00
 draft: false
 subtitle : "从Kubernetes起开始实践云原生"
 # page title background image
@@ -94,7 +94,9 @@ aliases:
 
 ### Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册
 
-本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、Service Mesh、Cloud Native等领域。
+本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、服务网格（Service Mesh）、云原生等领域。
+
+![Kubernetes Handbook 封面 作者 Jimmy Song](kubernetes-handbook.jpg)
 
 ### 开始之前
 
