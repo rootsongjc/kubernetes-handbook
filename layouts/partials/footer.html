@@ -1,27 +1,6 @@
 <!-- footer -->
 {{ $data := index .Site.Data .Site.Language.Lang }}
 <footer>
-  <!-- newsletter -->
-  {{ if .Site.Params.subscription.enable }}
-  {{ with .Site.Params.subscription }}
-  <div class="newsletter">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9 ml-auto bg-primary py-5 newsletter-block">
-          <h3 class="text-white">{{ i18n "subscribe_newsletter" }}</h3>
-          <form action="{{ .mailchimp_form_action | relLangURL }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-            <div class="input-wrapper">
-              <button type="submit" value="Subscribe" name="subscribe" class="btn btn-secondary">{{ i18n "join" }}</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{ end }}
-  {{ end }}
-
   <!-- footer content -->
   <div class="footer bg-footer section-sm border-bottom">
     <div class="container">
@@ -36,10 +15,20 @@
             <li class="mb=4"><img src="{{ .Site.Params.wechatCode }}" width="128px"></li>
             -->
             <li class="mb-4"><a class="text-color" href="{{ .link | relLangURL }}">{{ .contact }}</a></li>
-            <li class="mb=4"><img src="{{ .image | relURL }}" width="128px"></li>
+            <li class="mb-4"><img src="{{ .image | relURL }}" width="128px"></li>
             {{ end }}
-          </ul>
-          </ul>
+       <!-- newsletter -->
+       {{ if .Site.Params.subscription.enable }}
+       {{ with .Site.Params.subscription }}
+               <!-- logo -->
+               <form action="{{ .mailchimp_form_action | relLangURL }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                 <div class="mb-4">
+                   <button type="submit" value="Subscribe" name="subscribe" class="btn btn-secondary">{{ i18n "blog_subscribe" }}</button>
+                   </div>
+               </form>
+               </ul>
+       {{ end }}
+       {{ end }}
         </div>
         <!-- company -->
         <!--
