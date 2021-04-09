@@ -298,5 +298,3 @@
 * [CNCF 年度报告解读](appendix/cncf-annual-report.md)
   * [CNCF 2018 年年度报告解读](appendix/cncf-annual-report-2018.md)
   * [CNCF 2020 年年度报告解读](appendix/cncf-annual-report-2020.md)
-
-

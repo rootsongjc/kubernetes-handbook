@@ -89,10 +89,6 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 
 [署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
 
-## Stargazers over time
-
-[![Stargazers over time](https://starcharts.herokuapp.com/rootsongjc/kubernetes-handbook.svg)](https://starcharts.herokuapp.com/rootsongjc/kubernetes-handbook)
-
 ## 云原生社区
 
 云原生社区是一个中立的云原生终端用户社区，始与作者于 2016 年成立的 Kubernetes & CloudNative 实战群，覆盖了上千名早期云原生拥护者。在此基础上于 2020 年 5 月，由 CNCF 大使、开源领域意见领袖共同发起将原社群升级为云原生社区，旨在推广云原生技术，构建开发者生态。

@@ -8,7 +8,7 @@
 
 谈到 [Kuberentes](https://kubernetes.io/) 就不得不谈到容器，容器从几年前的大热到现在的归于平淡，之前大家说容器通常是指 Docker 容器，甚至很多人就将容器等同于 Docker，还有很多人像操作虚拟机一样得使用容器。
 
-Kubernetes 是谷歌根据其内部使用的 Borg 改造成一个通用的容器编排调度器，于 2014 年将其发布到开源社区，并于 2015 年将其捐赠给 Linux 基金会的下属的[云原生计算基金会（CNCF）](https://cncf.io/)，也是 GIFEE（Google Infrastructure For Everyone Else）中的一员，其他还包括 HDFS、Hbase、Zookeeper 等，见 https://github.com/GIFEE/GIFEE，下面就让我们来回顾一下 Kubernetes 的技术发展史。
+Kubernetes 是谷歌根据其内部使用的 Borg 改造成一个通用的容器编排调度器，于 2014 年将其发布到开源社区，并于 2015 年将其捐赠给 Linux 基金会的下属的[云原生计算基金会（CNCF）](https://cncf.io/)，也是 GIFEE（Google Infrastructure For Everyone Else）中的一员，其他还包括 HDFS、Hbase、Zookeeper 等，见 <https://github.com/GIFEE/GIFEE>，下面就让我们来回顾一下 Kubernetes 的技术发展史。
 
 ### Kubernetes 发展历史
 
