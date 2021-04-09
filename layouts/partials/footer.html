@@ -21,9 +21,9 @@
        {{ if .Site.Params.subscription.enable }}
        {{ with .Site.Params.subscription }}
                <!-- logo -->
-               <form action="{{ .mailchimp_form_action | relLangURL }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+               <form action="{{ .subscribe_form_action | relLangURL }}" method="get" class="" target="_blank" novalidate>
                  <div class="mb-4">
-                   <button type="submit" value="Subscribe" name="subscribe" class="btn btn-secondary">{{ i18n "blog_subscribe" }}</button>
+                   <button type="submit" class="btn btn-secondary">{{ i18n "subscribe" }}</button>
                    </div>
                </form>
                </ul>
