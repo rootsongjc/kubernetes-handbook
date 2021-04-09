@@ -11,6 +11,8 @@ image: "images/backgrounds/kubernetes-handbook.jpg"
 
 很高兴的通知大家，《Kubernetes Handbook——Kubernetes 中文指南/云原生架构实践手册》四周年纪念版发布了，你可以[在线浏览](https://jimmysong.io/kubernetes-handbook)或者[下载 PDF](https://github.com/rootsongjc/kubernetes-handbook/releases/tag/v20210409)。
 
+![Kubernetes Handbook——Kubernetes 中文指南/云原生架构实践手册 by Jimmy Song 封面](kubernetes-handbook-cover.jpg)
+
 ### 感想
 
 最近有两条新闻在朋友圈里刷屏：
