@@ -183,3 +183,6 @@
 
 - id: minute
   translation: "Minute"
+
+- id: blog_subscribe
+  translation: "Blog Subscribe"

@@ -186,3 +186,6 @@
 
 - id: minute
   translation: "分钟"
+
+- id: blog_subscribe
+  translation: "博客订阅"

@@ -59,7 +59,7 @@ link = "plugins/hex_md5/hex_md5.js"
 [params]
 logo = "images/logo.png"
 # Meta data
-description = "Jimmy Song's Blog"
+description = "Jimmy Song Personal Website"
 author = "Jimmy Song"
 # contact info
 address = "Beijing, China"
@@ -86,7 +86,7 @@ preloader = "images/preloader.gif" # use jpg, png, svg or gif format.
 
 # Subscription
 [params.subscription]
-enable = false
+enable = true
 # mailchimp subsciption
 #mailchimp_form_action = "https://jimmysong.us20.list-manage.com/subscribe/post?u=cca519d8764547a389f52c57f&amp;id=e8e9e07dcc"
 # Use RSS instead
