@@ -9,7 +9,7 @@ type: "notice"
 image: "images/backgrounds/cnc-logo.jpg"
 ---
 
-在刚刚过去的清明节，我去了趟苏州（[见我的航拍视频](https://www.bilibili.com/video/BV1qy4y1x7n4)）和南京，还在南京跟南京站的朋友们吃了饭，聊了下南京站的发展。
+在刚刚过去的清明节，我去了趟苏州（[视频](https://www.bilibili.com/video/BV1qy4y1x7n4)）和南京（[视频](https://www.bilibili.com/video/BV1AV411H72e/)），还在南京跟南京站的朋友们吃了饭，聊了下南京站的发展。
 
 ### 南京站
 
