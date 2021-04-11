@@ -51,9 +51,9 @@ Below is an overview of the steps from Sidecar injection, Pod startup to Sidecar
 
 ## How Envoy handles route forwarding
 
-The following figure shows a `productpage`service access request `http://reviews.default.svc.cluster.local:9080/`, when traffic enters `reviews` the internal services, `reviews` internal services Envoy Sidecar is how to do traffic blocked the route forward. The original image can be downloaded on [Google Drive](https://drive.google.com/file/d/1n-h235tm8DnL_RqxTTA95rgGtrLkBsyr/view?usp=sharing) .
+The following figure shows a `productpage`service access request `http://reviews.default.svc.cluster.local:9080/`, when traffic enters `reviews` the internal services, `reviews` internal services Envoy Sidecar is how to do traffic blocked the route forward.
 
-![istio iptables](istio-envoy-sidecar-traffic-injection.jpg)
+![istio iptables](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210407.png)
 
 Before the first step, `productpage` Envoy Sidecar Pod has been selected by EDS of a request to `reviews` a Pod service of its IP address, it sends a TCP connection request.
 
@@ -369,7 +369,7 @@ The Endpoint can be one or more, and Envoy will route it according to certain ru
 
 ## Reference
 
-- [Debug Envoy and Pilot - istio.io](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/)
-- [Understanding Envoy Agent Sidecar Injection and Traffic Interception in Istio Service Mesh - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
+- [Debugging Envoy and Pilot - istio.io](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/)
+- [Understanding Envoy Agent Sidecar Injection and Traffic Interception in Istio Service Mesh - jimmysong.io](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
 - [Istio traffic management implementation mechanism deep analysis - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 
