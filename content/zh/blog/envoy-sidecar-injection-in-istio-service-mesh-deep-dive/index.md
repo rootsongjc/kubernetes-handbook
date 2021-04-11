@@ -435,7 +435,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持与路由转发示意图](istio-envoy-sidecar-traffic-injection.jpg)
+![Envoy sidecar 流量劫持与路由转发示意图](envoy-sidecar-traffic-interception-zh-20210407.png)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
@@ -720,7 +720,7 @@ envoy    11 istio-proxy   63u  IPv4 338525      0t0  TCP productpage-v1-745ffc55
 
 ## 参考
 
-- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial)
+- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/blog/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial)
 - [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)
 - [JSONPath Support - kubernetes.io](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 - [iptables 命令使用说明 - wangchujiang.com](https://wangchujiang.com/linux-command/c/iptables.html)
