@@ -1,0 +1,15 @@
+{% extends template.self %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {{ config.pluginsConfig['github-buttons']|dump|safe }};
+    </script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{
+  "_args": [
+    [
+      {
+        "name": "generate-function",
+        "raw": "generate-function@^2.0.0",
+        "rawSpec": "^2.0.0",
+        "scope": null,
+        "spec": ">=2.0.0 <3.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/is-my-json-valid"
+    ]
+  ],
+  "_from": "generate-function@>=2.0.0 <3.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "generate-function@2.3.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/generate-function",
+  "_nodeVersion": "10.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/generate-function_2.3.1_1535726781175_0.7685665533040811"
+  },
+  "_npmUser": {
+    "email": "mathiasbuus@gmail.com",
+    "name": "mafintosh"
+  },
+  "_npmVersion": "6.2.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "generate-function",
+    "raw": "generate-function@^2.0.0",
+    "rawSpec": "^2.0.0",
+    "scope": null,
+    "spec": ">=2.0.0 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/is-my-json-valid"
+  ],
+  "_resolved": "https://registry.npmjs.org/generate-function/-/generate-function-2.3.1.tgz",
+  "_shasum": "f069617690c10c868e73b8465746764f97c3479f",
+  "_shrinkwrap": null,
+  "_spec": "generate-function@^2.0.0",
+  "_where": "/gitbook/node_modules/is-my-json-valid",
+  "author": {
+    "name": "Mathias Buus"
+  },
+  "bugs": {
+    "url": "https://github.com/mafintosh/generate-function/issues"
+  },
+  "dependencies": {
+    "is-property": "^1.0.2"
+  },
+  "description": "Module that helps you write generated functions in Node",
+  "devDependencies": {
+    "tape": "^4.9.1"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 7,
+    "integrity": "sha512-eeB5GfMNeevm/GRYq20ShmsaGcmI81kIX2K9XQx5miC8KdHaC6Jm0qQ8ZNeGOi7wYB8OsdxKs+Y2oVuTFuVwKQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbiVS9CRA9TVsSAnZWagAAz9MP/0dABEez3UvcrA4MM2M1\nL1GpVcOokTcnKzNPOH/fgNHR635xGF5F54HOgWSbzEKVvOu8wtwTeCG9ZOrG\n7xL7O315dN8N1OjfzoevA2Y5tqVjGmrEaz4yX+x/zgXHQkH19SGHbmSQ64wi\nlpBF7W9OpdGOGreE1mGyeXFpNIwdL+Zfq01H5nCAk4eFIU4r9K8s27Pw/CmK\nueeKfl+0XbpUQ1dEk77ixwVw0JH0/oupKlejg3jshpDpHCfsnDbBD8D0YjLW\nwxSUVPeFvIyZJlNyMVuD3B9fpL1xV/EhGuJ8EbbHWFdxg5cWQj+WurJpVduc\n5CCFYhimHhY0sbnc8XPfEfccC1Kba3VqpbfLDnZ3kDVDs/tMrYJTA4XpKNZq\nHFIsXWsDp1TU65DtdSmFWclrj2zB/j/yi7KerZ3crG4qyUKDqpzjNjYwUzqw\nSNjoliE9c+dABUUVtAZ7wiq48uYPXGoAJdC6Uic7N5V3jHhTVPf0YQJ4ALaW\nUtig2v1t4xKtYOc+hPdLlbIzl3WUuS7Nm/lFIo1/y+1MlheRkD+XD2v5LeFg\ncUeu67CSBtLc876IdyHLLUyY/566R/yJW64Sgxcpnf+LE1KmHyfjbWrkBYgP\ntXO7DFoY8vsWOvoIhPN5IzBqfJjhNbiQ9wpHtlhmvmicAxPfZVtEbQqaUCdS\n+xoQ\r\n=iuGb\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "f069617690c10c868e73b8465746764f97c3479f",
+    "tarball": "https://registry.npmjs.org/generate-function/-/generate-function-2.3.1.tgz",
+    "unpackedSize": 9036
+  },
+  "gitHead": "240c6ef0f243fa8e37d2656f880c7145c9f6d12d",
+  "homepage": "https://github.com/mafintosh/generate-function",
+  "keywords": [
+    "generate",
+    "code",
+    "generation",
+    "function",
+    "performance"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "mathiasbuus@gmail.com",
+      "name": "mafintosh"
+    }
+  ],
+  "name": "generate-function",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mafintosh/generate-function.git"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "version": "2.3.1"
+}

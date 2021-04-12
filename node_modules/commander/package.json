@@ -1,0 +1,126 @@
+{
+  "_args": [
+    [
+      {
+        "name": "commander",
+        "raw": "commander@^2.9.0",
+        "rawSpec": "^2.9.0",
+        "scope": null,
+        "spec": ">=2.9.0 <3.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/har-validator"
+    ]
+  ],
+  "_from": "commander@>=2.9.0 <3.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "commander@2.20.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/commander",
+  "_nodeVersion": "12.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/commander_2.20.3_1570772424007_0.3931389310307576"
+  },
+  "_npmUser": {
+    "email": "abe@enzou.tokyo",
+    "name": "abetomo"
+  },
+  "_npmVersion": "6.11.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "commander",
+    "raw": "commander@^2.9.0",
+    "rawSpec": "^2.9.0",
+    "scope": null,
+    "spec": ">=2.9.0 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/har-validator"
+  ],
+  "_resolved": "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz",
+  "_shasum": "fd485e84c03eb4881c20722ba48035e8531aeb33",
+  "_shrinkwrap": null,
+  "_spec": "commander@^2.9.0",
+  "_where": "/gitbook/node_modules/har-validator",
+  "author": {
+    "email": "tj@vision-media.ca",
+    "name": "TJ Holowaychuk"
+  },
+  "bugs": {
+    "url": "https://github.com/tj/commander.js/issues"
+  },
+  "dependencies": {},
+  "description": "the complete solution for node.js command-line programs",
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "eslint": "^6.4.0",
+    "should": "^13.2.3",
+    "sinon": "^7.5.0",
+    "standard": "^14.3.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 6,
+    "integrity": "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdoBXICRA9TVsSAnZWagAAxZoQAJuUZ2avRahPhSmn15Vt\nRrnyt/EzaZaR9jGpwPpdSVKEyEypyKO21zsrFKg+3TjJGLQVb6gd6eXvY3Rs\nTG1JeNQKYyqcrvH+q94ZIDTMT4tzUv50MVBuSdVCAQB2liHKzcay2aMbd0bW\nFbb56rVEfixabLoYJGhpsHAamzAD51CpxwjpeKuVIYe2LDTxcDOAsMvrjxwK\nB1vsuQe4EqcuMWE0a7jtGJTHqxxqQxcvZLloxgO+kr6TGMZQ1oMtwhRUayNO\nPbN9R97nhOoV9J9AZu28O98yJXiz6p7TQ11JeN/mWF8F4LT1N5Nv227OHP/a\nVh6EtM6YPMLQU6lQTWUVa9BF6mqCMREBY9QRmh8wfRhrrCfD9oOez1qmGsx6\nnz6zqiqabuy8KlULmhyXA2ixHcKgEimlQOVDGJLy4EJIv84o+GCdVJNiP9qd\nrB7qTVbiNm9TiY22OehPADtx9QhcavZuju6xftjXllvjKN3lJFx+jbyenfR5\nBonTnPuqx4+dmUyFnmfHSM7pHO7NtzpLuEx7N/SGDtUfI6KPRBSEt7DpoaFu\nF7lABbtehgMpcR/gCOMez7BXcNkigDWHQeRqaJ+iedXrd3YLvJMQoaFgUmDU\nMyS3zLW3srq8EsazcsdlmQpVb8lRJjKnki6Bj93v0caKaT+4aAjpMtn2xyCK\nPqC9\r\n=91C8\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "fd485e84c03eb4881c20722ba48035e8531aeb33",
+    "tarball": "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz",
+    "unpackedSize": 62442
+  },
+  "gitHead": "6b8499b24f4f6498ad630c50c8a00c9579a8536b",
+  "homepage": "https://github.com/tj/commander.js#readme",
+  "keywords": [
+    "commander",
+    "command",
+    "option",
+    "parser"
+  ],
+  "license": "MIT",
+  "main": "index",
+  "maintainers": [
+    {
+      "email": "abe@enzou.tokyo",
+      "name": "abetomo"
+    },
+    {
+      "email": "npm_j@ruru.gen.nz",
+      "name": "shadowspawn"
+    },
+    {
+      "email": "rkoutnik@gmail.com",
+      "name": "somekittens"
+    },
+    {
+      "email": "tj@vision-media.ca",
+      "name": "tjholowaychuk"
+    },
+    {
+      "email": "romain.vanesyan@gmail.com",
+      "name": "vanesyan"
+    },
+    {
+      "email": "zhiyelee@gmail.com",
+      "name": "zhiyelee"
+    }
+  ],
+  "name": "commander",
+  "optionalDependencies": {},
+  "readme": "# Commander.js\n\n\n[![Build Status](https://api.travis-ci.org/tj/commander.js.svg?branch=master)](http://travis-ci.org/tj/commander.js)\n[![NPM Version](http://img.shields.io/npm/v/commander.svg?style=flat)](https://www.npmjs.org/package/commander)\n[![NPM Downloads](https://img.shields.io/npm/dm/commander.svg?style=flat)](https://npmcharts.com/compare/commander?minimal=true)\n[![Install Size](https://packagephobia.now.sh/badge?p=commander)](https://packagephobia.now.sh/result?p=commander)\n[![Join the chat at https://gitter.im/tj/commander.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tj/commander.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n  The complete solution for [node.js](http://nodejs.org) command-line interfaces, inspired by Ruby's [commander](https://github.com/commander-rb/commander).  \n  [API documentation](http://tj.github.com/commander.js/)\n\n\n## Installation\n\n    $ npm install commander\n\n## Option parsing\n\nOptions with commander are defined with the `.option()` method, also serving as documentation for the options. The example below parses args and options from `process.argv`, leaving remaining args as the `program.args` array which were not consumed by options.\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .option('-p, --peppers', 'Add peppers')\n  .option('-P, --pineapple', 'Add pineapple')\n  .option('-b, --bbq-sauce', 'Add bbq sauce')\n  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')\n  .parse(process.argv);\n\nconsole.log('you ordered a pizza with:');\nif (program.peppers) console.log('  - peppers');\nif (program.pineapple) console.log('  - pineapple');\nif (program.bbqSauce) console.log('  - bbq');\nconsole.log('  - %s cheese', program.cheese);\n```\n\nShort flags may be passed as a single arg, for example `-abc` is equivalent to `-a -b -c`. Multi-word options such as \"--template-engine\" are camel-cased, becoming `program.templateEngine` etc.\n\nNote that multi-word options starting with `--no` prefix negate the boolean value of the following word. For example, `--no-sauce` sets the value of `program.sauce` to false.\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require('commander');\n\nprogram\n  .option('--no-sauce', 'Remove sauce')\n  .parse(process.argv);\n\nconsole.log('you ordered a pizza');\nif (program.sauce) console.log('  with sauce');\nelse console.log(' without sauce');\n```\n\nTo get string arguments from options you will need to use angle brackets <> for required inputs or square brackets [] for optional inputs. \n\ne.g. ```.option('-m --myarg [myVar]', 'my super cool description')```\n\nThen to access the input if it was passed in.\n\ne.g. ```var myInput = program.myarg```\n\n**NOTE**: If you pass a argument without using brackets the example above will return true and not the value passed in.\n\n\n## Version option\n\nCalling the `version` implicitly adds the `-V` and `--version` options to the command.\nWhen either of these options is present, the command prints the version number and exits.\n\n    $ ./examples/pizza -V\n    0.0.1\n\nIf you want your program to respond to the `-v` option instead of the `-V` option, simply pass custom flags to the `version` method using the same syntax as the `option` method.\n\n```js\nprogram\n  .version('0.0.1', '-v, --version')\n```\n\nThe version flags can be named anything, but the long option is required.\n\n## Command-specific options\n\nYou can attach options to a command.\n\n```js\n#!/usr/bin/env node\n\nvar program = require('commander');\n\nprogram\n  .command('rm <dir>')\n  .option('-r, --recursive', 'Remove recursively')\n  .action(function (dir, cmd) {\n    console.log('remove ' + dir + (cmd.recursive ? ' recursively' : ''))\n  })\n\nprogram.parse(process.argv)\n```\n\nA command's options are validated when the command is used. Any unknown options will be reported as an error. However, if an action-based command does not define an action, then the options are not validated.\n\n## Coercion\n\n```js\nfunction range(val) {\n  return val.split('..').map(Number);\n}\n\nfunction list(val) {\n  return val.split(',');\n}\n\nfunction collect(val, memo) {\n  memo.push(val);\n  return memo;\n}\n\nfunction increaseVerbosity(v, total) {\n  return total + 1;\n}\n\nprogram\n  .version('0.1.0')\n  .usage('[options] <file ...>')\n  .option('-i, --integer <n>', 'An integer argument', parseInt)\n  .option('-f, --float <n>', 'A float argument', parseFloat)\n  .option('-r, --range <a>..<b>', 'A range', range)\n  .option('-l, --list <items>', 'A list', list)\n  .option('-o, --optional [value]', 'An optional value')\n  .option('-c, --collect [value]', 'A repeatable value', collect, [])\n  .option('-v, --verbose', 'A value that can be increased', increaseVerbosity, 0)\n  .parse(process.argv);\n\nconsole.log(' int: %j', program.integer);\nconsole.log(' float: %j', program.float);\nconsole.log(' optional: %j', program.optional);\nprogram.range = program.range || [];\nconsole.log(' range: %j..%j', program.range[0], program.range[1]);\nconsole.log(' list: %j', program.list);\nconsole.log(' collect: %j', program.collect);\nconsole.log(' verbosity: %j', program.verbose);\nconsole.log(' args: %j', program.args);\n```\n\n## Regular Expression\n```js\nprogram\n  .version('0.1.0')\n  .option('-s --size <size>', 'Pizza size', /^(large|medium|small)$/i, 'medium')\n  .option('-d --drink [drink]', 'Drink', /^(coke|pepsi|izze)$/i)\n  .parse(process.argv);\n\nconsole.log(' size: %j', program.size);\nconsole.log(' drink: %j', program.drink);\n```\n\n## Variadic arguments\n\n The last argument of a command can be variadic, and only the last argument.  To make an argument variadic you have to\n append `...` to the argument name.  Here is an example:\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .command('rmdir <dir> [otherDirs...]')\n  .action(function (dir, otherDirs) {\n    console.log('rmdir %s', dir);\n    if (otherDirs) {\n      otherDirs.forEach(function (oDir) {\n        console.log('rmdir %s', oDir);\n      });\n    }\n  });\n\nprogram.parse(process.argv);\n```\n\n An `Array` is used for the value of a variadic argument.  This applies to `program.args` as well as the argument passed\n to your action as demonstrated above.\n\n## Specify the argument syntax\n\n```js\n#!/usr/bin/env node\n\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .arguments('<cmd> [env]')\n  .action(function (cmd, env) {\n     cmdValue = cmd;\n     envValue = env;\n  });\n\nprogram.parse(process.argv);\n\nif (typeof cmdValue === 'undefined') {\n   console.error('no command given!');\n   process.exit(1);\n}\nconsole.log('command:', cmdValue);\nconsole.log('environment:', envValue || \"no environment given\");\n```\nAngled brackets (e.g. `<cmd>`) indicate required input. Square brackets (e.g. `[env]`) indicate optional input.\n\n## Git-style sub-commands\n\n```js\n// file: ./examples/pm\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .command('install [name]', 'install one or more packages')\n  .command('search [query]', 'search with optional query')\n  .command('list', 'list packages installed', {isDefault: true})\n  .parse(process.argv);\n```\n\nWhen `.command()` is invoked with a description argument, no `.action(callback)` should be called to handle sub-commands, otherwise there will be an error. This tells commander that you're going to use separate executables for sub-commands, much like `git(1)` and other popular tools.  \nThe commander will try to search the executables in the directory of the entry script (like `./examples/pm`) with the name `program-command`, like `pm-install`, `pm-search`.\n\nOptions can be passed with the call to `.command()`. Specifying `true` for `opts.noHelp` will remove the subcommand from the generated help output. Specifying `true` for `opts.isDefault` will run the subcommand if no other subcommand is specified.\n\nIf the program is designed to be installed globally, make sure the executables have proper modes, like `755`.\n\n### `--harmony`\n\nYou can enable `--harmony` option in two ways:\n* Use `#! /usr/bin/env node --harmony` in the sub-commands scripts. Note some os version don’t support this pattern.\n* Use the `--harmony` option when call the command, like `node --harmony examples/pm publish`. The `--harmony` option will be preserved when spawning sub-command process.\n\n## Automated --help\n\n The help information is auto-generated based on the information commander already knows about your program, so the following `--help` info is for free:\n\n```  \n$ ./examples/pizza --help\nUsage: pizza [options]\n\nAn application for pizzas ordering\n\nOptions:\n  -h, --help           output usage information\n  -V, --version        output the version number\n  -p, --peppers        Add peppers\n  -P, --pineapple      Add pineapple\n  -b, --bbq            Add bbq sauce\n  -c, --cheese <type>  Add the specified type of cheese [marble]\n  -C, --no-cheese      You do not want any cheese\n```\n\n## Custom help\n\n You can display arbitrary `-h, --help` information\n by listening for \"--help\". Commander will automatically\n exit once you are done so that the remainder of your program\n does not execute causing undesired behaviors, for example\n in the following executable \"stuff\" will not output when\n `--help` is used.\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .option('-f, --foo', 'enable some foo')\n  .option('-b, --bar', 'enable some bar')\n  .option('-B, --baz', 'enable some baz');\n\n// must be before .parse() since\n// node's emit() is immediate\n\nprogram.on('--help', function(){\n  console.log('')\n  console.log('Examples:');\n  console.log('  $ custom-help --help');\n  console.log('  $ custom-help -h');\n});\n\nprogram.parse(process.argv);\n\nconsole.log('stuff');\n```\n\nYields the following help output when `node script-name.js -h` or `node script-name.js --help` are run:\n\n```\nUsage: custom-help [options]\n\nOptions:\n  -h, --help     output usage information\n  -V, --version  output the version number\n  -f, --foo      enable some foo\n  -b, --bar      enable some bar\n  -B, --baz      enable some baz\n\nExamples:\n  $ custom-help --help\n  $ custom-help -h\n```\n\n## .outputHelp(cb)\n\nOutput help information without exiting.\nOptional callback cb allows post-processing of help text before it is displayed.\n\nIf you want to display help by default (e.g. if no command was provided), you can use something like:\n\n```js\nvar program = require('commander');\nvar colors = require('colors');\n\nprogram\n  .version('0.1.0')\n  .command('getstream [url]', 'get stream URL')\n  .parse(process.argv);\n\nif (!process.argv.slice(2).length) {\n  program.outputHelp(make_red);\n}\n\nfunction make_red(txt) {\n  return colors.red(txt); //display the help text in red on the console\n}\n```\n\n## .help(cb)\n\n  Output help information and exit immediately.\n  Optional callback cb allows post-processing of help text before it is displayed.\n\n\n## Custom event listeners\n You can execute custom actions by listening to command and option events.\n\n```js\nprogram.on('option:verbose', function () {\n  process.env.VERBOSE = this.verbose;\n});\n\n// error on unknown commands\nprogram.on('command:*', function () {\n  console.error('Invalid command: %s\\nSee --help for a list of available commands.', program.args.join(' '));\n  process.exit(1);\n});\n```\n\n## Examples\n\n```js\nvar program = require('commander');\n\nprogram\n  .version('0.1.0')\n  .option('-C, --chdir <path>', 'change the working directory')\n  .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')\n  .option('-T, --no-tests', 'ignore test hook');\n\nprogram\n  .command('setup [env]')\n  .description('run setup commands for all envs')\n  .option(\"-s, --setup_mode [mode]\", \"Which setup mode to use\")\n  .action(function(env, options){\n    var mode = options.setup_mode || \"normal\";\n    env = env || 'all';\n    console.log('setup for %s env(s) with %s mode', env, mode);\n  });\n\nprogram\n  .command('exec <cmd>')\n  .alias('ex')\n  .description('execute the given remote cmd')\n  .option(\"-e, --exec_mode <mode>\", \"Which exec mode to use\")\n  .action(function(cmd, options){\n    console.log('exec \"%s\" using %s mode', cmd, options.exec_mode);\n  }).on('--help', function() {\n    console.log('');\n    console.log('Examples:');\n    console.log('');\n    console.log('  $ deploy exec sequential');\n    console.log('  $ deploy exec async');\n  });\n\nprogram\n  .command('*')\n  .action(function(env){\n    console.log('deploying \"%s\"', env);\n  });\n\nprogram.parse(process.argv);\n```\n\nMore Demos can be found in the [examples](https://github.com/tj/commander.js/tree/master/examples) directory.\n\n## License\n\n[MIT](https://github.com/tj/commander.js/blob/master/LICENSE)\n",
+  "readmeFilename": "Readme.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tj/commander.js.git"
+  },
+  "scripts": {
+    "lint": "eslint index.js",
+    "test": "node test/run.js && npm run test-typings",
+    "test-typings": "tsc -p tsconfig.json"
+  },
+  "typings": "typings/index.d.ts",
+  "version": "2.20.3"
+}

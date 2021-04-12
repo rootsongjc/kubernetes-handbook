@@ -1,0 +1,89 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-prism-themes",
+        "raw": "gitbook-plugin-prism-themes@0.0.2",
+        "rawSpec": "0.0.2",
+        "scope": null,
+        "spec": "0.0.2",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-prism-themes@0.0.2",
+  "_id": "gitbook-plugin-prism-themes@0.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-prism-themes",
+  "_nodeVersion": "4.4.7",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-prism-themes-0.0.2.tgz_1479783701452_0.9934710888192058"
+  },
+  "_npmUser": {
+    "email": "btpka3@163.com",
+    "name": "btpka3"
+  },
+  "_npmVersion": "2.15.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-prism-themes",
+    "raw": "gitbook-plugin-prism-themes@0.0.2",
+    "rawSpec": "0.0.2",
+    "scope": null,
+    "spec": "0.0.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-prism-themes/-/gitbook-plugin-prism-themes-0.0.2.tgz",
+  "_shasum": "ff052ce307ecb371b8ff7762cc6a026575a54a4a",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-prism-themes@0.0.2",
+  "_where": "/gitbook",
+  "author": {
+    "name": "btpka3@163.com"
+  },
+  "bugs": {
+    "url": "https://github.com/btpka3/gitbook-plugin-prism-themes/issues"
+  },
+  "dependencies": {
+    "prism-themes": "^1.0.0"
+  },
+  "description": "Gitbook plugin for prism-themes base on gitbook-plugin-prism.",
+  "devDependencies": {
+    "gitbook-tester": "^1.4.3"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "ff052ce307ecb371b8ff7762cc6a026575a54a4a",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-prism-themes/-/gitbook-plugin-prism-themes-0.0.2.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "gitHead": "318cd68e6bcdd2e5407b0d17b722fe70bd38a47f",
+  "homepage": "https://github.com/btpka3/gitbook-plugin-prism-themes#readme",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "btpka3@163.com",
+      "name": "btpka3"
+    }
+  ],
+  "name": "gitbook-plugin-prism-themes",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btpka3/gitbook-plugin-prism-themes.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.2"
+}

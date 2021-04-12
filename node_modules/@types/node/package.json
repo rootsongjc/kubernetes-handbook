@@ -1,0 +1,274 @@
+{
+  "_args": [
+    [
+      {
+        "name": "@types/node",
+        "raw": "@types/node@*",
+        "rawSpec": "*",
+        "scope": "@types",
+        "spec": "*",
+        "type": "range"
+      },
+      "/gitbook/node_modules/parse5"
+    ]
+  ],
+  "_from": "@types/node@*",
+  "_hasShrinkwrap": false,
+  "_id": "@types/node@14.6.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/@types/node",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/node_14.6.0_1597674843774_0.5457027622137991"
+  },
+  "_npmUser": {
+    "email": "ts-npm-types@microsoft.com",
+    "name": "types"
+  },
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "@types/node",
+    "raw": "@types/node@*",
+    "rawSpec": "*",
+    "scope": "@types",
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/parse5"
+  ],
+  "_resolved": "https://registry.npmjs.org/@types/node/-/node-14.6.0.tgz",
+  "_shasum": "7d4411bf5157339337d7cff864d9ff45f177b499",
+  "_shrinkwrap": null,
+  "_spec": "@types/node@*",
+  "_where": "/gitbook/node_modules/parse5",
+  "bugs": {
+    "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/issues"
+  },
+  "contributors": [
+    {
+      "name": "Microsoft TypeScript",
+      "url": "https://github.com/Microsoft"
+    },
+    {
+      "name": "DefinitelyTyped",
+      "url": "https://github.com/DefinitelyTyped"
+    },
+    {
+      "name": "Alberto Schiabel",
+      "url": "https://github.com/jkomyno"
+    },
+    {
+      "name": "Alexander T.",
+      "url": "https://github.com/a-tarasyuk"
+    },
+    {
+      "name": "Alvis HT Tang",
+      "url": "https://github.com/alvis"
+    },
+    {
+      "name": "Andrew Makarov",
+      "url": "https://github.com/r3nya"
+    },
+    {
+      "name": "Benjamin Toueg",
+      "url": "https://github.com/btoueg"
+    },
+    {
+      "name": "Bruno Scheufler",
+      "url": "https://github.com/brunoscheufler"
+    },
+    {
+      "name": "Chigozirim C.",
+      "url": "https://github.com/smac89"
+    },
+    {
+      "name": "David Junger",
+      "url": "https://github.com/touffy"
+    },
+    {
+      "name": "Deividas Bakanas",
+      "url": "https://github.com/DeividasBakanas"
+    },
+    {
+      "name": "Eugene Y. Q. Shen",
+      "url": "https://github.com/eyqs"
+    },
+    {
+      "name": "Flarna",
+      "url": "https://github.com/Flarna"
+    },
+    {
+      "name": "Hannes Magnusson",
+      "url": "https://github.com/Hannes-Magnusson-CK"
+    },
+    {
+      "name": "Hoàng Văn Khải",
+      "url": "https://github.com/KSXGitHub"
+    },
+    {
+      "name": "Huw",
+      "url": "https://github.com/hoo29"
+    },
+    {
+      "name": "Kelvin Jin",
+      "url": "https://github.com/kjin"
+    },
+    {
+      "name": "Klaus Meinhardt",
+      "url": "https://github.com/ajafff"
+    },
+    {
+      "name": "Lishude",
+      "url": "https://github.com/islishude"
+    },
+    {
+      "name": "Mariusz Wiktorczyk",
+      "url": "https://github.com/mwiktorczyk"
+    },
+    {
+      "name": "Mohsen Azimi",
+      "url": "https://github.com/mohsen1"
+    },
+    {
+      "name": "Nicolas Even",
+      "url": "https://github.com/n-e"
+    },
+    {
+      "name": "Nikita Galkin",
+      "url": "https://github.com/galkin"
+    },
+    {
+      "name": "Parambir Singh",
+      "url": "https://github.com/parambirs"
+    },
+    {
+      "name": "Sebastian Silbermann",
+      "url": "https://github.com/eps1lon"
+    },
+    {
+      "name": "Simon Schick",
+      "url": "https://github.com/SimonSchick"
+    },
+    {
+      "name": "Thomas den Hollander",
+      "url": "https://github.com/ThomasdenH"
+    },
+    {
+      "name": "Wilco Bakker",
+      "url": "https://github.com/WilcoBakker"
+    },
+    {
+      "name": "wwwy3y3",
+      "url": "https://github.com/wwwy3y3"
+    },
+    {
+      "name": "Samuel Ainsworth",
+      "url": "https://github.com/samuela"
+    },
+    {
+      "name": "Kyle Uehlein",
+      "url": "https://github.com/kuehlein"
+    },
+    {
+      "name": "Jordi Oliveras Rovira",
+      "url": "https://github.com/j-oliveras"
+    },
+    {
+      "name": "Thanik Bhongbhibhat",
+      "url": "https://github.com/bhongy"
+    },
+    {
+      "name": "Marcin Kopacz",
+      "url": "https://github.com/chyzwar"
+    },
+    {
+      "name": "Trivikram Kamat",
+      "url": "https://github.com/trivikr"
+    },
+    {
+      "name": "Minh Son Nguyen",
+      "url": "https://github.com/nguymin4"
+    },
+    {
+      "name": "Junxiao Shi",
+      "url": "https://github.com/yoursunny"
+    },
+    {
+      "name": "Ilia Baryshnikov",
+      "url": "https://github.com/qwelias"
+    },
+    {
+      "name": "ExE Boss",
+      "url": "https://github.com/ExE-Boss"
+    },
+    {
+      "name": "Surasak Chaisurin",
+      "url": "https://github.com/Ryan-Willpower"
+    },
+    {
+      "name": "Piotr Błażejewicz",
+      "url": "https://github.com/peterblazejewicz"
+    },
+    {
+      "name": "Anna Henningsen",
+      "url": "https://github.com/addaleax"
+    },
+    {
+      "name": "Jason Kwok",
+      "url": "https://github.com/JasonHK"
+    }
+  ],
+  "dependencies": {},
+  "description": "TypeScript definitions for Node.js",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 64,
+    "integrity": "sha512-mikldZQitV94akrc4sCcSjtJfsTKt4p+e/s0AGscVA6XArQ9kFclP+ZiYUMnq987rc6QlYxXv/EivqlfSLxpKA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfOpVcCRA9TVsSAnZWagAACf8P/0ElMZAiLX6w7NXu+x8d\nN3iBXSgdwTQGCuFqGaeZe1yX5mWWs6wNdcXoRAd6Bpf8eKAgQ8iAORTwhvPl\n4myxs3MTzS+j+Dgvx0ousm7pjrkS6ZgRWTDOj8Al1+Uqi3E/Y01n58JcA5a9\nKNl+rJ6cw0hHNZeSii4cmIxxQz8nDerbEPPWdULVSTJ6kviNQSAme6TaBPU4\nLmR4HuVcASe2kXmi71g990BpucuAfgePCXLea0YEPspQODZ8OXFSRP7bVHHI\nUnfJONcu6RZowiHHxCZm0mwTrCPbY4o2Se/B5IalUOJCZQhyhg9iYDNOYERS\nmtg+WL17em7Bvr7wVsxF6cG+NsC0G/uU2PIdbzqzBTh79XwVXrW6JzxD4zZW\nsg7uuHjMimKkl51lcfm20AdY3Ph+5z1NK9GEPE/sssTml/BMkRzHXKaUzba2\ntMJiA2o/Z+t+yUal8h7TpPjhDYYHxULXRn8ApHPCXInpPZERKegGTEuEF48r\nuErJt7fhfgItLVXt296zh2UpEOgm8C8jzOc8TDOHZXiL9vS/C2yzfHoqBwqp\nYIGDOozHPqLmME4oPn1lmliZDEGf2POKA+ISCJNC79v7j8/hQLnK0poiMeg1\nKasIe16s1rkgPKKvjtLPGWm1OwWKkfkoKo7zGFRFYe8ljp9BVHbFeoTm0PQ2\nEo1Z\r\n=J0eO\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "7d4411bf5157339337d7cff864d9ff45f177b499",
+    "tarball": "https://registry.npmjs.org/@types/node/-/node-14.6.0.tgz",
+    "unpackedSize": 713628
+  },
+  "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped#readme",
+  "license": "MIT",
+  "main": "",
+  "maintainers": [
+    {
+      "email": "ts-npm-types@microsoft.com",
+      "name": "types"
+    }
+  ],
+  "name": "@types/node",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "directory": "types/node",
+    "type": "git",
+    "url": "git+https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+  },
+  "scripts": {},
+  "typeScriptVersion": "3.0",
+  "types": "index.d.ts",
+  "typesPublisherContentHash": "9d0f004e6461e52f8fa5badd6efa10f2dc7d2156363fcb7ca879e15a611c96f0",
+  "typesVersions": {
+    ">=3.2.0-0": {
+      "*": [
+        "ts3.2/*"
+      ]
+    },
+    ">=3.5.0-0": {
+      "*": [
+        "ts3.5/*"
+      ]
+    },
+    ">=3.7.0-0": {
+      "*": [
+        "ts3.7/*"
+      ]
+    }
+  },
+  "version": "14.6.0"
+}

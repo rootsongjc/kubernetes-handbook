@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-github-buttons",
+        "raw": "gitbook-plugin-github-buttons@2.1.0",
+        "rawSpec": "2.1.0",
+        "scope": null,
+        "spec": "2.1.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-github-buttons@2.1.0",
+  "_id": "gitbook-plugin-github-buttons@2.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-github-buttons",
+  "_nodeVersion": "7.2.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-github-buttons-2.1.0.tgz_1480203974061_0.2149075479246676"
+  },
+  "_npmUser": {
+    "email": "azuciao@gmail.com",
+    "name": "azu"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-github-buttons",
+    "raw": "gitbook-plugin-github-buttons@2.1.0",
+    "rawSpec": "2.1.0",
+    "scope": null,
+    "spec": "2.1.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-github-buttons/-/gitbook-plugin-github-buttons-2.1.0.tgz",
+  "_shasum": "7993aa1e6c2051e1743ce4e2c373c43db65e8ae4",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-github-buttons@2.1.0",
+  "_where": "/gitbook",
+  "author": {
+    "name": "azu"
+  },
+  "bugs": {
+    "url": "https://github.com/azu/gitbook-plugin-github-buttons/issues"
+  },
+  "dependencies": {},
+  "description": "Gitbook plugin provide GitHub Button.",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dist": {
+    "shasum": "7993aa1e6c2051e1743ce4e2c373c43db65e8ae4",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-github-buttons/-/gitbook-plugin-github-buttons-2.1.0.tgz"
+  },
+  "email": "azuciao@gmail.com",
+  "engines": {
+    "gitbook": "*"
+  },
+  "files": [
+    "_layouts",
+    "index.js",
+    "lib",
+    "src"
+  ],
+  "gitHead": "a86133d1359212db88f64acce3f574cc265feb89",
+  "homepage": "https://github.com/azu/gitbook-plugin-github-buttons",
+  "keywords": [
+    "gitbook",
+    "plugin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "azuciao@gmail.com",
+      "name": "azu"
+    }
+  ],
+  "name": "gitbook-plugin-github-buttons",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azu/gitbook-plugin-github-buttons.git"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps",
+    "prepublish": "npm run --if-present build",
+    "watch": "babel src --out-dir lib --watch --source-maps"
+  },
+  "version": "2.1.0"
+}

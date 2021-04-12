@@ -1,0 +1,164 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-theme-default",
+        "raw": "gitbook-plugin-theme-default@1.0.7",
+        "rawSpec": "1.0.7",
+        "scope": null,
+        "spec": "1.0.7",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-theme-default@1.0.7",
+  "_id": "gitbook-plugin-theme-default@1.0.7",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-theme-default",
+  "_nodeVersion": "8.1.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/gitbook-plugin-theme-default-1.0.7.tgz_1501795455294_0.32261040550656617"
+  },
+  "_npmUser": {
+    "email": "aaron.omullan@gmail.com",
+    "name": "aarono"
+  },
+  "_npmVersion": "5.0.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-theme-default",
+    "raw": "gitbook-plugin-theme-default@1.0.7",
+    "rawSpec": "1.0.7",
+    "scope": null,
+    "spec": "1.0.7",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-theme-default/-/gitbook-plugin-theme-default-1.0.7.tgz",
+  "_shasum": "51f71fbca74a261054e9e9d141c42167afefce88",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-theme-default@1.0.7",
+  "_where": "/gitbook",
+  "author": {
+    "email": "contact@gitbook.com",
+    "name": "FriendCode Inc."
+  },
+  "bugs": {
+    "url": "https://github.com/GitbookIO/theme-default/issues"
+  },
+  "contributors": [
+    {
+      "email": "samy@gitbook.com",
+      "name": "Samy Pessé"
+    }
+  ],
+  "dependencies": {},
+  "description": "Default theme for GitBook",
+  "devDependencies": {
+    "browserify": "13.1.0",
+    "eslint": "3.6.1",
+    "font-awesome": "4.6.3",
+    "gitbook-logos": "git+https://github.com/GitbookIO/logos.git#2.0.2",
+    "gitbook-markdown-css": "1.0.1",
+    "jquery": "3.1.1",
+    "less": "2.7.1",
+    "less-plugin-clean-css": "1.5.1",
+    "mousetrap": "1.6.0",
+    "preboot": "git+https://github.com/mdo/preboot.git#4aab4edd85f076d50609cbe28e4fe66cc0771701",
+    "uglify-js": "2.7.3"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-vY+8Prz58H6iu6c7KHyOISxapKnwU8P1TWNqOzESFAB40ny9D/R7GpNL2IluicrsDvtI6VfpQeCYQbBniamulw==",
+    "shasum": "51f71fbca74a261054e9e9d141c42167afefce88",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-theme-default/-/gitbook-plugin-theme-default-1.0.7.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "gitHead": "a8e920453dc8e4eb522840b61606486622848099",
+  "gitbook": {
+    "properties": {
+      "showLevel": {
+        "default": false,
+        "title": "Show level indicator in TOC",
+        "type": "boolean"
+      },
+      "styles": {
+        "properties": {
+          "ebook": {
+            "default": "styles/ebook.css",
+            "title": "Stylesheet for ebook outputs (PDF, ePub, Mobi)"
+          },
+          "epub": {
+            "default": "styles/epub.css",
+            "title": "Stylesheet for ePub output"
+          },
+          "mobi": {
+            "default": "styles/mobi.css",
+            "title": "Stylesheet for Mobi output"
+          },
+          "pdf": {
+            "default": "styles/pdf.css",
+            "title": "Stylesheet for PDF output"
+          },
+          "print": {
+            "default": "styles/print.css",
+            "title": "Stylesheet to replace default ebook css"
+          },
+          "website": {
+            "default": "styles/website.css",
+            "title": "Stylesheet for website output"
+          }
+        },
+        "title": "Custom Stylesheets",
+        "type": "object"
+      }
+    }
+  },
+  "homepage": "https://github.com/GitbookIO/theme-default#readme",
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "maintainers": [
+    {
+      "email": "johan.preynat@gmail.com",
+      "name": "jpreynat"
+    },
+    {
+      "email": "samypesse@gmail.com",
+      "name": "samypesse"
+    },
+    {
+      "email": "hello@gabinaureche.com",
+      "name": "zhouzi"
+    },
+    {
+      "email": "soreine.plume@gmail.com",
+      "name": "soreine"
+    },
+    {
+      "email": "aaron.omullan@gmail.com",
+      "name": "aarono"
+    },
+    {
+      "email": "contact@gitbook.com",
+      "name": "gitbook-bot"
+    }
+  ],
+  "name": "gitbook-plugin-theme-default",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitbookIO/theme-default.git"
+  },
+  "scripts": {
+    "prepublish": "./src/build.sh"
+  },
+  "version": "1.0.7"
+}

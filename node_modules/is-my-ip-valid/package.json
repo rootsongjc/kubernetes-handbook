@@ -1,0 +1,84 @@
+{
+  "_args": [
+    [
+      {
+        "name": "is-my-ip-valid",
+        "raw": "is-my-ip-valid@^1.0.0",
+        "rawSpec": "^1.0.0",
+        "scope": null,
+        "spec": ">=1.0.0 <2.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/is-my-json-valid"
+    ]
+  ],
+  "_from": "is-my-ip-valid@>=1.0.0 <2.0.0",
+  "_id": "is-my-ip-valid@1.0.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/is-my-ip-valid",
+  "_nodeVersion": "9.4.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/is-my-ip-valid_1.0.0_1518614195217_0.2894613088951574"
+  },
+  "_npmUser": {
+    "email": "linus@folkdatorn.se",
+    "name": "linusu"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "is-my-ip-valid",
+    "raw": "is-my-ip-valid@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/is-my-json-valid"
+  ],
+  "_resolved": "https://registry.npmjs.org/is-my-ip-valid/-/is-my-ip-valid-1.0.0.tgz",
+  "_shasum": "7b351b8e8edd4d3995d4d066680e664d94696824",
+  "_shrinkwrap": null,
+  "_spec": "is-my-ip-valid@^1.0.0",
+  "_where": "/gitbook/node_modules/is-my-json-valid",
+  "bugs": {
+    "url": "https://github.com/LinusU/is-my-ip-valid/issues"
+  },
+  "dependencies": {},
+  "description": "A small lib to validate IP addresses.",
+  "devDependencies": {
+    "safe-regex": "^1.1.0",
+    "standard": "^10.0.3"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 8,
+    "integrity": "sha512-gmh/eWXROncUzRnIa1Ubrt5b8ep/MGSnfAUI3aRp+sqTCs1tv1Isl8d8F6JmkN3dXKc3ehZMrtiPN9eL03NuaQ==",
+    "shasum": "7b351b8e8edd4d3995d4d066680e664d94696824",
+    "tarball": "https://registry.npmjs.org/is-my-ip-valid/-/is-my-ip-valid-1.0.0.tgz",
+    "unpackedSize": 19969
+  },
+  "gitHead": "7341813a69408d3bc8d1ddfbfc89d4f9f8699da7",
+  "homepage": "https://github.com/LinusU/is-my-ip-valid#readme",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "linus@folkdatorn.se",
+      "name": "linusu"
+    }
+  ],
+  "name": "is-my-ip-valid",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinusU/is-my-ip-valid.git"
+  },
+  "scripts": {
+    "test": "standard && node test"
+  },
+  "version": "1.0.0"
+}

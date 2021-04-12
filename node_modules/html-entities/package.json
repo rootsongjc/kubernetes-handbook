@@ -1,0 +1,115 @@
+{
+  "_args": [
+    [
+      {
+        "name": "html-entities",
+        "raw": "html-entities@1.2.0",
+        "rawSpec": "1.2.0",
+        "scope": null,
+        "spec": "1.2.0",
+        "type": "version"
+      },
+      "/gitbook/node_modules/gitbook-plugin-search-plus"
+    ]
+  ],
+  "_from": "html-entities@1.2.0",
+  "_id": "html-entities@1.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/html-entities",
+  "_nodeVersion": "0.12.5",
+  "_npmUser": {
+    "email": "mdevils@yandex.ru",
+    "name": "mdevils"
+  },
+  "_npmVersion": "2.11.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "html-entities",
+    "raw": "html-entities@1.2.0",
+    "rawSpec": "1.2.0",
+    "scope": null,
+    "spec": "1.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/gitbook-plugin-search-plus"
+  ],
+  "_resolved": "https://registry.npmjs.org/html-entities/-/html-entities-1.2.0.tgz",
+  "_shasum": "41948caf85ce82fed36e4e6a0ed371a6664379e2",
+  "_shrinkwrap": null,
+  "_spec": "html-entities@1.2.0",
+  "_where": "/gitbook/node_modules/gitbook-plugin-search-plus",
+  "author": {
+    "email": "mdevils@yandex.ru",
+    "name": "Marat Dulin"
+  },
+  "bugs": {
+    "url": "https://github.com/mdevils/node-html-entities/issues"
+  },
+  "dependencies": {},
+  "description": "Faster HTML entities encode/decode library.",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "coveralls": "^2.11.2",
+    "entities": "*",
+    "mocha": "^1.21.4",
+    "node-html-encoder": "*",
+    "unit-coverage": "^3.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "41948caf85ce82fed36e4e6a0ed371a6664379e2",
+    "tarball": "https://registry.npmjs.org/html-entities/-/html-entities-1.2.0.tgz"
+  },
+  "engines": [
+    "node >= 0.4.0"
+  ],
+  "files": [
+    "index.js",
+    "lib",
+    "LICENSE"
+  ],
+  "gitHead": "3a2cd397697c872325f526bb422bdee74f089cda",
+  "homepage": "https://github.com/mdevils/node-html-entities#readme",
+  "keywords": [
+    "html",
+    "html entities",
+    "html entities encode",
+    "html entities decode",
+    "entities",
+    "entities encode",
+    "entities decode"
+  ],
+  "license": "MIT",
+  "main": "index",
+  "maintainers": [
+    {
+      "email": "mdevils@yandex.ru",
+      "name": "mdevils"
+    }
+  ],
+  "name": "html-entities",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdevils/node-html-entities.git"
+  },
+  "scripts": {
+    "benchmark": "node benchmark/benchmark",
+    "coverage": "unit-coverage run -p common",
+    "coverage-html": "unit-coverage run -p common -r html -o coverage.html",
+    "test": "mocha --recursive -R spec test",
+    "travis": "npm test && unit-coverage run -p common -r lcov -o coverage.lcov && cat coverage.lcov | coveralls"
+  },
+  "unit-coverage": {
+    "common": [
+      "-s",
+      "lib/**/*.js",
+      "-t",
+      "test/**/*.js"
+    ]
+  },
+  "version": "1.2.0"
+}

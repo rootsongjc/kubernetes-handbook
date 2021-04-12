@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ page.title }}{% endblock %}
+{% block description %}{{ page.description }}{% endblock %}
+
+{% block style %}
+    {### Include theme css before plugins css ###}
+    {% if not fileExists(config.styles.print) %}
+        {% if options.format %}
+        <link rel="stylesheet" href="{{ (options.format + ".css")|resolveAsset }}">
+        {% else %}
+        <link rel="stylesheet" href="{{ "ebook.css"|resolveAsset }}">
+        {% endif %}
+    {% endif %}
+
+    {{ super() }}
+
+    {### Custom stylesheets for the book ###}
+
+    {% for type, style in config.styles %}
+        {% if fileExists(style) and (type == "ebook" or type == "print" or type == options.format) %}
+        <link rel="stylesheet" href="{{ style|resolveFile }}">
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="page">
+    {% block page %}
+        <h1 class="book-chapter book-chapter-{{ page.depth }}">{{ page.title }}</h1>
+        <div class="section">
+            {{ page.content|safe }}
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}

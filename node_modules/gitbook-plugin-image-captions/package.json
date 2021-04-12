@@ -1,0 +1,107 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-image-captions",
+        "raw": "gitbook-plugin-image-captions@3.1.0",
+        "rawSpec": "3.1.0",
+        "scope": null,
+        "spec": "3.1.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-image-captions@3.1.0",
+  "_id": "gitbook-plugin-image-captions@3.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-image-captions",
+  "_nodeVersion": "7.0.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-image-captions-3.1.0.tgz_1478261587141_0.4803490506019443"
+  },
+  "_npmUser": {
+    "email": "todvora@gmail.com",
+    "name": "tdvorak"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-image-captions",
+    "raw": "gitbook-plugin-image-captions@3.1.0",
+    "rawSpec": "3.1.0",
+    "scope": null,
+    "spec": "3.1.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-image-captions/-/gitbook-plugin-image-captions-3.1.0.tgz",
+  "_shasum": "806f95f9946e481285ce699623537438c686b04a",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-image-captions@3.1.0",
+  "_where": "/gitbook",
+  "author": {
+    "email": "todvora@gmail.com",
+    "name": "Tomas Dvorak"
+  },
+  "bugs": {
+    "url": "https://github.com/todvora/gitbook-plugin-image-captions/issues"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "q": "^1.4.1"
+  },
+  "description": "Image captions plugin for GitBook",
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-config-standard": "^5.2.0",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "gitbook-tester": "^1.4.1",
+    "mocha": "^3.1.2",
+    "should": "^11.1.1",
+    "should-html": "^1.0.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "806f95f9946e481285ce699623537438c686b04a",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-image-captions/-/gitbook-plugin-image-captions-3.1.0.tgz"
+  },
+  "engines": {
+    "gitbook": "^3"
+  },
+  "gitHead": "f9b4472b41c7ffde7ad4e738e5e10f52576faf5e",
+  "homepage": "https://github.com/todvora/gitbook-plugin-image-captions",
+  "keywords": [
+    "gitbook",
+    "gitbook-plugin",
+    "image",
+    "caption"
+  ],
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "maintainers": [
+    {
+      "email": "todvora@gmail.com",
+      "name": "tdvorak"
+    }
+  ],
+  "name": "gitbook-plugin-image-captions",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/todvora/gitbook-plugin-image-captions.git"
+  },
+  "scripts": {
+    "lint": "eslint src spec",
+    "lint:fix": "eslint src spec --fix",
+    "pretest": "npm run lint",
+    "test": "mocha --reporter spec --timeout 60000 spec"
+  },
+  "version": "3.1.0"
+}

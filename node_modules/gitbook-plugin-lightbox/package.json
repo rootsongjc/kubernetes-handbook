@@ -1,0 +1,141 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-lightbox",
+        "raw": "gitbook-plugin-lightbox@1.2.0",
+        "rawSpec": "1.2.0",
+        "scope": null,
+        "spec": "1.2.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-lightbox@1.2.0",
+  "_hasShrinkwrap": false,
+  "_id": "gitbook-plugin-lightbox@1.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-lightbox",
+  "_nodeVersion": "12.13.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/gitbook-plugin-lightbox_1.2.0_1575016617249_0.857752462799189"
+  },
+  "_npmUser": {
+    "email": "vongola12324@coder.tw",
+    "name": "vongola12324"
+  },
+  "_npmVersion": "6.12.0",
+  "_phantomChildren": {
+    "css-select": "1.2.0",
+    "dom-serializer": "0.1.1",
+    "entities": "1.1.2",
+    "htmlparser2": "3.10.1",
+    "lodash": "4.17.20",
+    "parse5": "3.0.3"
+  },
+  "_requested": {
+    "name": "gitbook-plugin-lightbox",
+    "raw": "gitbook-plugin-lightbox@1.2.0",
+    "rawSpec": "1.2.0",
+    "scope": null,
+    "spec": "1.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-lightbox/-/gitbook-plugin-lightbox-1.2.0.tgz",
+  "_shasum": "c0dc8af006ac66e415d95ec2b5daac5b8809cd2b",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-lightbox@1.2.0",
+  "_where": "/gitbook",
+  "author": {
+    "email": "vongola12324@coder.tw",
+    "name": "Vongola"
+  },
+  "bugs": {
+    "url": "https://github.com/vongola12324/gitbook-plugin-lightbox/issues"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "uuid": "^3.3.2"
+  },
+  "description": " A gitbook plugin to show image by lightbox.",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "copyfiles": "~2.1.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gitbook-cli": "^2.3.2",
+    "jquery": "^3.3.1",
+    "lightbox2": "^2.11.1"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 11,
+    "integrity": "sha512-mZ13srRi9Levq6AnhwDMQbXYBHwSlnG/oasZpBdKfRB+4M18dsd97r+tjnD0dw0sJ/+Jmr1a1twxAem71p5TjA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd4NipCRA9TVsSAnZWagAAH+UP/R/9/ChosxnrMbLEWCa7\nD3OAIUYboMY7Nko2pGkEMF90z8ZS7hmoeXlqolYNkGC5YeqjZLaU+p/gNXTy\nXnE8jhMUT1nJSQeQeBEnjHDM22O1skoKbGJqWkar/zNWF5WVlXcR8tkGg2N+\nIR7VfwsDrTz4Ivxn5g0HY23Z87b8bKAaRlUzdsgzI2CpV/WXkbZkqatkEurq\nz2df6uSiRM+OutkfZPVfyzGrK7BvFt5bhALdlK95b4M/wfwiAE23RbB0eL2a\nACgO9RoIKmBmcHNMfbdpwYgGphzVj+5GnIGFVXkifuPfI+zdydkwngeuDGQB\nwQS/Fh5yjamAHqcSTP0PWbKwLl2oy2hng2cGQnO9Rsi8zlg9gB205VsoS5/6\nv2sBnPrA8brjiJbtUmZ/Mzbsc+IvNv3BI/obcr/xfKbBJeSikXROGjN1Pb9A\nKzx6P5cmarTw1iGINcP+nysnBPf/ip/yby1t9m6FvXVY++AuiCMyTKzz9L9Q\ng28Gngwj0J8uZATyd2IUFz56QBWTEJaKv+K548h+KmWs/v4/6H67pxEOaCGx\niYvKiqwLXSRDtxgKTXRBYCPN2W9x6HK3O3SXHzHsYTQoeOfqPd79HI9P9VXc\nCZlXMY2eKlPhHQhyUuQHQAG1FX19AhJ7DtRuegEsbq63UxBUfdFvLOGUc8nN\nR6cX\r\n=nMgG\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "c0dc8af006ac66e415d95ec2b5daac5b8809cd2b",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-lightbox/-/gitbook-plugin-lightbox-1.2.0.tgz",
+    "unpackedSize": 101106
+  },
+  "engines": {
+    "gitbook": ">2.x.x"
+  },
+  "gitHead": "760e3639f1af89ead38e09e7b73a5059c4e0670e",
+  "gitbook": {
+    "properties": {
+      "jquery": {
+        "default": true,
+        "description": "If you don't want to use plugin built-in jquery, set it to false.",
+        "type": "boolean"
+      }
+    }
+  },
+  "homepage": "https://github.com/vongola12324/gitbook-plugin-lightbox#readme",
+  "keywords": [
+    "gitbook",
+    "plugin",
+    "lightbox",
+    "image"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "maintainers": [
+    {
+      "email": "vongola12324@coder.tw",
+      "name": "vongola12324"
+    }
+  ],
+  "name": "gitbook-plugin-lightbox",
+  "optionalDependencies": {},
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vongola12324/gitbook-plugin-lightbox.git"
+  },
+  "scripts": {
+    "babel": "babel src --out-dir dist --presets=@babel/env",
+    "build": "npm run babel && npm run copy:jquery && npm run copy:lightbox",
+    "copy:jquery": "copyfiles -f node_modules/jquery/dist/jquery.slim.min.js dist/assets/js",
+    "copy:lightbox": "npm run copy:lightbox-css && npm run copy:lightbox-js && npm run copy:lightbox-img",
+    "copy:lightbox-css": "copyfiles -f node_modules/lightbox2/dist/css/lightbox.min.css dist/assets/css",
+    "copy:lightbox-img": "copyfiles -f node_modules/lightbox2/dist/images/* dist/assets/images",
+    "copy:lightbox-js": "copyfiles -f node_modules/lightbox2/dist/js/lightbox.min.js dist/assets/js",
+    "docs": "gitbook install book && gitbook build book docs",
+    "lint": "eslint src/*.js"
+  },
+  "version": "1.2.0"
+}

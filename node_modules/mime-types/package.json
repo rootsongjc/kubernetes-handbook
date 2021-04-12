@@ -1,0 +1,126 @@
+{
+  "_args": [
+    [
+      {
+        "name": "mime-types",
+        "raw": "mime-types@~2.1.7",
+        "rawSpec": "~2.1.7",
+        "scope": null,
+        "spec": ">=2.1.7 <2.2.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/request"
+    ]
+  ],
+  "_from": "mime-types@>=2.1.7 <2.2.0",
+  "_hasShrinkwrap": false,
+  "_id": "mime-types@2.1.27",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/mime-types",
+  "_nodeVersion": "13.12.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/mime-types_2.1.27_1587699372290_0.7009359023949084"
+  },
+  "_npmUser": {
+    "email": "doug@somethingdoug.com",
+    "name": "dougwilson"
+  },
+  "_npmVersion": "6.14.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "mime-types",
+    "raw": "mime-types@~2.1.7",
+    "rawSpec": "~2.1.7",
+    "scope": null,
+    "spec": ">=2.1.7 <2.2.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/form-data",
+    "/request"
+  ],
+  "_resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.27.tgz",
+  "_shasum": "47949f98e279ea53119f5722e0f34e529bec009f",
+  "_shrinkwrap": null,
+  "_spec": "mime-types@~2.1.7",
+  "_where": "/gitbook/node_modules/request",
+  "bugs": {
+    "url": "https://github.com/jshttp/mime-types/issues"
+  },
+  "contributors": [
+    {
+      "email": "doug@somethingdoug.com",
+      "name": "Douglas Christopher Wilson"
+    },
+    {
+      "email": "fishrock123@rocketmail.com",
+      "name": "Jeremiah Senkpiel",
+      "url": "https://searchbeam.jit.su"
+    },
+    {
+      "email": "me@jongleberry.com",
+      "name": "Jonathan Ong",
+      "url": "http://jongleberry.com"
+    }
+  ],
+  "dependencies": {
+    "mime-db": "1.44.0"
+  },
+  "description": "The ultimate javascript content-type utility.",
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-markdown": "1.0.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "mocha": "7.1.1",
+    "nyc": "15.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 5,
+    "integrity": "sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeol6sCRA9TVsSAnZWagAAb7gP/2rhSx5SYxg68mROGmpc\nK4P6pyMxslHCfxYa4EUnJ4NmZAJKoGAeqLNxf/ty5QFlczy2kATAx6Ed/Jo9\nev4jGBiHbZ3WiTCdG9iE43fP4uKRoZ0a19suEC9t4mmx0y3VaBqGNIlEZgQM\nUZKLhbMYu8PEmA4FeFVcKOzEQVmMaNPSek9iaSNgxyD8nL6O+qEhTtH/1BHV\ng59VWglcXaKsK7sQGM4Ljn+bXqDgQhNpZqF4zoONKcxb7TrYp/NESCKk+Qdi\nlEBCaXdT++/UwnRh0p+nffllnurrE7ctt76LCJP8W9ObMqKSpmT4yQmpDp/J\n8hoRyCK+Z2Ktb8ZWkM5chHAiL9hrQVKzhKB2Cbr72itq7E+5Umv0Otis2C6b\nc7vIbbMtuui4fy7ZAo1ywoMT53jyAkqesJHjIlkBMlXoSIm3eyzKuQXDsJ1C\nRjhI6ik8j7rViDQ18TCyFeSZZw6LxB0gqTRuvLz+VbDVSLNoH6+OaY0bl62s\n4iWL4xTqm8xFsyewzt8fl7H7nIEfETjcEwcaKljjyfncjLla5iXVXOAvZ6dR\ncdLA1fMFH3YNEjVgR0g5elVHQNk6+VdN5c4lZ7vRPc3NJCTcljyTegiWCK2U\ni6/aVv6I3FiCSkegYy/E02P0UW6OcmecrMY5gnenMtAG5lqlKBHOL06aegiA\nSD9R\r\n=th56\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "47949f98e279ea53119f5722e0f34e529bec009f",
+    "tarball": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.27.tgz",
+    "unpackedSize": 16721
+  },
+  "engines": {
+    "node": ">= 0.6"
+  },
+  "gitHead": "47b62ac45e9b176a2af35532d0eea4968bb9eb6d",
+  "homepage": "https://github.com/jshttp/mime-types#readme",
+  "keywords": [
+    "mime",
+    "types"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "doug@somethingdoug.com",
+      "name": "dougwilson"
+    },
+    {
+      "email": "jonathanrichardong@gmail.com",
+      "name": "jongleberry"
+    }
+  ],
+  "name": "mime-types",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jshttp/mime-types.git"
+  },
+  "scripts": {
+    "lint": "eslint --plugin markdown --ext js,md .",
+    "test": "mocha --reporter spec test/test.js",
+    "test-cov": "nyc --reporter=html --reporter=text npm test",
+    "test-travis": "nyc --reporter=text npm test"
+  },
+  "version": "2.1.27"
+}

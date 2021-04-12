@@ -1,0 +1,84 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-back-to-top-button",
+        "raw": "gitbook-plugin-back-to-top-button@0.1.4",
+        "rawSpec": "0.1.4",
+        "scope": null,
+        "spec": "0.1.4",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-back-to-top-button@0.1.4",
+  "_id": "gitbook-plugin-back-to-top-button@0.1.4",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-back-to-top-button",
+  "_nodeVersion": "5.0.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-back-to-top-button-0.1.4.tgz_1470320508457_0.030680126044899225"
+  },
+  "_npmUser": {
+    "email": "frank@stueber.de",
+    "name": "fstueber"
+  },
+  "_npmVersion": "3.10.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-back-to-top-button",
+    "raw": "gitbook-plugin-back-to-top-button@0.1.4",
+    "rawSpec": "0.1.4",
+    "scope": null,
+    "spec": "0.1.4",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-back-to-top-button/-/gitbook-plugin-back-to-top-button-0.1.4.tgz",
+  "_shasum": "e6218338b0ef19d58e6f6600994350b76e8035df",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-back-to-top-button@0.1.4",
+  "_where": "/gitbook",
+  "author": {
+    "email": "gitbook@stueber.de",
+    "name": "STÜBER SYSTEMS"
+  },
+  "bugs": {
+    "url": "https://github.com/stuebersystems/gitbook-plugin-back-to-top-button/issues"
+  },
+  "dependencies": {},
+  "description": "Adds a back to top button to your Gitbook",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "e6218338b0ef19d58e6f6600994350b76e8035df",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-back-to-top-button/-/gitbook-plugin-back-to-top-button-0.1.4.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.1.1"
+  },
+  "gitHead": "1f1cc8268e85c5a0f822cbfbc7464adef902b7f1",
+  "homepage": "https://github.com/stuebersystems/gitbook-plugin-back-to-top-button",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "frank@stueber.de",
+      "name": "fstueber"
+    }
+  ],
+  "name": "gitbook-plugin-back-to-top-button",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stuebersystems/gitbook-plugin-back-to-top-button.git"
+  },
+  "scripts": {},
+  "version": "0.1.4"
+}

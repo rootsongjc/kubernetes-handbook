@@ -1,0 +1,70 @@
+/*
+    Search input and results, works in sync with the "search" plugin
+*/
+
+#book-search-input {
+    padding: 6px;
+    background: transparent;
+    transition: top 0.5s ease;
+    background: #fff;
+    border-bottom: 1px solid @header-border;
+    border-top: 1px solid @header-border;
+    margin-bottom: 10px;
+
+    // Move top to hide top border
+    margin-top: -1px;
+
+    input, input:focus, input:hover {
+        width: 100%;
+        background: transparent;
+        border: 1px solid transparent;
+        box-shadow: none;
+        outline: none;
+        line-height: 22px;
+        padding: 7px 7px;
+        color: inherit;
+    }
+}
+
+#book-search-results {
+    opacity: 1;
+
+    .search-results {
+        .search-results-title {
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 200;
+            margin-bottom: 35px;
+            opacity: 0.6;
+        }
+
+        .has-results {
+            .search-results-item {
+                .gitbook-markdown(@md-color: @content-color, @md-line-height: @content-line-height);
+            }
+
+            .search-results-item h3 {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .no-results {
+            padding: 40px 0px;
+        }
+    }
+}
+
+body.search-loading {
+    #book-search-results {
+        opacity: 0.3;
+    }
+}
+
+// When search is enabled, we hide the navigation left/right
+body.with-search {
+    .navigation {
+        display: none;
+    }
+}
+

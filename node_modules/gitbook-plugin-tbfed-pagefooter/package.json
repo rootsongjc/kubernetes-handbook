@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-tbfed-pagefooter",
+        "raw": "gitbook-plugin-tbfed-pagefooter@0.0.1",
+        "rawSpec": "0.0.1",
+        "scope": null,
+        "spec": "0.0.1",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-tbfed-pagefooter@0.0.1",
+  "_id": "gitbook-plugin-tbfed-pagefooter@0.0.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-tbfed-pagefooter",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "email": "zhj3618@gmail.com",
+    "name": "zhj3618"
+  },
+  "_npmVersion": "2.14.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-tbfed-pagefooter",
+    "raw": "gitbook-plugin-tbfed-pagefooter@0.0.1",
+    "rawSpec": "0.0.1",
+    "scope": null,
+    "spec": "0.0.1",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-tbfed-pagefooter/-/gitbook-plugin-tbfed-pagefooter-0.0.1.tgz",
+  "_shasum": "16ee784062dd8504264c477e8765fc49c41bed3d",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-tbfed-pagefooter@0.0.1",
+  "_where": "/gitbook",
+  "author": {
+    "email": "zhj3618@gmail.com",
+    "name": "zhj3618"
+  },
+  "dependencies": {
+    "moment": "^2.10.6"
+  },
+  "description": "定制每篇文章的页脚，可以添加版权和显示文件修改时间",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "16ee784062dd8504264c477e8765fc49c41bed3d",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-tbfed-pagefooter/-/gitbook-plugin-tbfed-pagefooter-0.0.1.tgz"
+  },
+  "engines": {
+    "gitbook": ">=2.4.3"
+  },
+  "gitHead": "079b117b67769fd8c41ac873280c21a3f88d2830",
+  "homepage": "https://github.com/zhj3618/gitbook-plugin-tbfed-pagefooter",
+  "keywords": [
+    "gitbook",
+    "gitbook-plugin",
+    "footer",
+    "modification"
+  ],
+  "license": "Apache 2",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "zhj3618@gmail.com",
+      "name": "zhj3618"
+    }
+  ],
+  "name": "gitbook-plugin-tbfed-pagefooter",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {},
+  "version": "0.0.1"
+}

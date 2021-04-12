@@ -1,0 +1,214 @@
+{
+  "_args": [
+    [
+      {
+        "name": "moment",
+        "raw": "moment@^2.10.6",
+        "rawSpec": "^2.10.6",
+        "scope": null,
+        "spec": ">=2.10.6 <3.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/gitbook-plugin-tbfed-pagefooter"
+    ]
+  ],
+  "_from": "moment@>=2.10.6 <3.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "moment@2.27.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/moment",
+  "_nodeVersion": "14.2.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/moment_2.27.0_1592517655922_0.1742540049654917"
+  },
+  "_npmUser": {
+    "email": "marwahaha@berkeley.edu",
+    "name": "marwahaha"
+  },
+  "_npmVersion": "6.14.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "moment",
+    "raw": "moment@^2.10.6",
+    "rawSpec": "^2.10.6",
+    "scope": null,
+    "spec": ">=2.10.6 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/gitbook-plugin-tbfed-pagefooter"
+  ],
+  "_resolved": "https://registry.npmjs.org/moment/-/moment-2.27.0.tgz",
+  "_shasum": "8bff4e3e26a236220dfe3e36de756b6ebaa0105d",
+  "_shrinkwrap": null,
+  "_spec": "moment@^2.10.6",
+  "_where": "/gitbook/node_modules/gitbook-plugin-tbfed-pagefooter",
+  "author": {
+    "email": "iskren.chernev@gmail.com",
+    "name": "Iskren Ivov Chernev",
+    "url": "https://github.com/ichernev"
+  },
+  "bugs": {
+    "url": "https://github.com/moment/moment/issues"
+  },
+  "contributors": [
+    {
+      "email": "washwithcare@gmail.com",
+      "name": "Tim Wood",
+      "url": "http://timwoodcreates.com/"
+    },
+    {
+      "name": "Rocky Meza",
+      "url": "http://rockymeza.com"
+    },
+    {
+      "email": "mj1856@hotmail.com",
+      "name": "Matt Johnson",
+      "url": "http://codeofmatt.com"
+    },
+    {
+      "email": "isaac@isaaccambron.com",
+      "name": "Isaac Cambron",
+      "url": "http://isaaccambron.com"
+    },
+    {
+      "email": "andre@oire.org",
+      "name": "Andre Polykanine",
+      "url": "https://github.com/oire"
+    }
+  ],
+  "dependencies": {},
+  "description": "Parse, validate, manipulate, and display dates",
+  "devDependencies": {
+    "benchmark": "latest",
+    "coveralls": "latest",
+    "cross-env": "^6.0.3",
+    "es6-promise": "latest",
+    "eslint": "~6",
+    "grunt": "latest",
+    "grunt-benchmark": "latest",
+    "grunt-cli": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-env": "latest",
+    "grunt-exec": "latest",
+    "grunt-karma": "latest",
+    "grunt-nuget": "latest",
+    "grunt-string-replace": "latest",
+    "karma": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-firefox-launcher": "latest",
+    "karma-qunit": "latest",
+    "karma-sauce-launcher": "4.1.4",
+    "load-grunt-tasks": "latest",
+    "node-qunit": "latest",
+    "nyc": "latest",
+    "prettier": "latest",
+    "qunit": "^2.10.0",
+    "rollup": "latest",
+    "typescript": "^1.8.10",
+    "typescript3": "npm:typescript@^3.1.6",
+    "uglify-js": "latest"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 527,
+    "integrity": "sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe6+QYCRA9TVsSAnZWagAAPJ0P/2R+hUAL3QqBSD40Zvi1\nHC8JMzVLWWOO7RTakenJjki0ZUVYP3kCmItzRcOjIR5PK7T+k7QEnVA1G+RL\nbzqg5R0eLzNFB5+xIN72IaVcbN7hOnBbokVTnX7o7udYB1r0HPJWR5pvGeql\nyXr855xHNYiyjZoYodcE5uUuXSnEh8VLXz+vPW0uTPaMuL/+SuNaWAUohOkY\ne/ti88cAdSjIqcvlcCv0y/+qV9cHQVhC6hVceyGSGtGfrwSsy743oa1QkIQc\nJyDVg9XrSi+d4jDYfhVzDh6jtBXD4s4a9D9LaLYNQyq2HAOz0jhjC7xCFJ3P\nzSpj/qRnky70h/mX38EgB5k/8JKchzLLGoBlO1qB9d/Nt25TTooZncnT2+HC\nUqqVRZDWlkaiGV7BBpVL0cRBKQuxmLa7EuVBXI7bxsDxYkfersJWNUlu6FT5\nSTztPiX9eHkfkEQnO1c8snYMQRiNuz7OfIdfB70DnQZsEsZKwGK1AlcMszKl\nnBrWzcaHI01EAaFKtpSIrOpa8A/LlUyPzO8bephWpVwNjMXxz753LrtqvAcv\nz2bL3XvJCcGK/l3lzBHUCbOPF5y/YDzFMbO6rlhWSXgzDXsVoDqu8hkzY6iw\nEG1tsPxL+ja4+ajJlhqL/AKpllHfTJosY2eclC7zMQFqJO7wqKvV9uFPEQZs\nJ2zJ\r\n=nrMp\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "8bff4e3e26a236220dfe3e36de756b6ebaa0105d",
+    "tarball": "https://registry.npmjs.org/moment/-/moment-2.27.0.tgz",
+    "unpackedSize": 4118073
+  },
+  "dojoBuild": "package.js",
+  "ender": "./ender.js",
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "https://momentjs.com",
+  "jsnext:main": "./dist/moment.js",
+  "jspm": {
+    "buildConfig": {
+      "uglify": true
+    },
+    "files": [
+      "moment.js",
+      "moment.d.ts",
+      "locale"
+    ],
+    "map": {
+      "moment": "./moment"
+    }
+  },
+  "keywords": [
+    "moment",
+    "date",
+    "time",
+    "parse",
+    "format",
+    "validate",
+    "i18n",
+    "l10n",
+    "ender"
+  ],
+  "license": "MIT",
+  "main": "./moment.js",
+  "maintainers": [
+    {
+      "email": "iskren.chernev@gmail.com",
+      "name": "ichernev"
+    },
+    {
+      "email": "maggiepint@gmail.com",
+      "name": "maggiepint"
+    },
+    {
+      "email": "marwahaha@berkeley.edu",
+      "name": "marwahaha"
+    },
+    {
+      "email": "mj1856@hotmail.com",
+      "name": "mj1856"
+    },
+    {
+      "email": "washwithcare@gmail.com",
+      "name": "timrwood"
+    }
+  ],
+  "name": "moment",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moment/moment.git"
+  },
+  "scripts": {
+    "coverage": "nyc npm test && nyc report",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "eslint": "eslint Gruntfile.js tasks src",
+    "prettier-check": "prettier --check Gruntfile.js tasks src",
+    "prettier-fmt": "prettier --write Gruntfile.js tasks src",
+    "test": "grunt test",
+    "ts3.1-typescript-test": "cross-env node_modules/typescript3/bin/tsc --project ts3.1-typing-tests",
+    "typescript-test": "cross-env node_modules/typescript/bin/tsc --project typing-tests"
+  },
+  "spm": {
+    "main": "moment.js",
+    "output": [
+      "locale/*.js"
+    ]
+  },
+  "typesVersions": {
+    ">=3.1": {
+      "*": [
+        "ts3.1-typings/*"
+      ]
+    }
+  },
+  "typings": "./moment.d.ts",
+  "version": "2.27.0"
+}
