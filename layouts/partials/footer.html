@@ -10,25 +10,19 @@
           <a class="logo-footer" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid mb-4" width="50%" src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}"></a>
           <ul class="list-unstyled">
             {{ with $data.homepage.footer }}
-            <!--
-            <li class="mb-4">{{ i18n "addWechat" }}</li>
-            <li class="mb=4"><img src="{{ .Site.Params.wechatCode }}" width="128px"></li>
-            -->
-            <li class="mb-4"><a class="text-color" href="{{ .link | relLangURL }}">{{ .contact }}</a></li>
+            <li class="mb-4 text-color">{{ .content | markdownify }}</li>
             <li class="mb-4"><img src="{{ .image | relURL }}" width="128px"></li>
-            {{ end }}
-       <!-- newsletter -->
-       {{ if .Site.Params.subscription.enable }}
-       {{ with .Site.Params.subscription }}
+            <!-- newsletter -->
+            {{ if .subscribe_enable }}
                <!-- logo -->
-               <form action="{{ .subscribe_form_action | relLangURL }}" method="get" class="" target="_blank" novalidate>
+               <form action="{{ .button_link }}" method="get" class="" target="_blank" novalidate>
                  <div class="mb-4">
-                   <button type="submit" class="btn btn-secondary">{{ i18n "subscribe" }}</button>
+                   <button type="submit" class="btn btn-secondary">{{ .button_title }}</button>
                    </div>
                </form>
                </ul>
-       {{ end }}
-       {{ end }}
+            {{ end }}
+          {{ end }}
         </div>
         <!-- company -->
         <!--

@@ -137,8 +137,6 @@ funfacts:
 
 # funfact is for about page
 
-
-
 ############################# blog ################################
 blog:
   enable : true
@@ -147,8 +145,10 @@ blog:
 
 ############################ footer ###############################
 footer:
-  contact: "联系微信（请备注姓名公司并说明来意）"
-  link: "/contact"
+  content : "添加微信请备注姓名公司并说明来意"
   image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
+  subscribe_enable: true
+  button_link: "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
+  button_title: "订阅"
