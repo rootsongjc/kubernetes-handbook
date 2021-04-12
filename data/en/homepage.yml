@@ -147,8 +147,10 @@ blog:
 
 ############################# footer ##############################
 footer:
-  contact: "Follow Me on Twitter"
-  link : "https://twitter.com/jimmysongio"
+  content : "Cloud Native | Open Source | Community"
+  button_link : "https://twitter.com/jimmysongio"
   image : "images/jimmysong-twitter-qr-code.jpg"
   address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
+  subscribe_enable: true
+  button_title: "Follow Me"
