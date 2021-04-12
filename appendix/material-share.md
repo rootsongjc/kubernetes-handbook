@@ -82,4 +82,3 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [twistlock](https://www.twistlock.com/blog/)
 - [vamp](https://medium.com/vamp-io)
 - [weave](https://www.weave.works/blog/)
-- [wercker](http://blog.wercker.com/)

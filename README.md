@@ -82,12 +82,9 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 - [云原生模式](https://jimmysong.io/book/cloud-native-patterns) - 设计拥抱变化的软件（Cornelia Davis 著，张若飞 宋净超 译），电子工业出版社，2020 年 8 月出版
 - [Quarkus 实战](https://jimmysong.io/book/quarkus-cookbook/) - 专为 Kubernetes 而优化的 Java 解决方案（Alex Soto Bueno、Jason Porter 著，张晓宇 刘岩 宋净超 译），机械工业出版社，2021 年 3 月出版
 
-## 许可证
+## 版权与许可证
 
-<p align="left">
-  <img src="images/cc4-license.png" alt="CC4 License"/>
-</p>
-[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
+本书版权归 Jimmy Song 所有， 您可以使用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  协议共享。
 
 ## 云原生社区
 
