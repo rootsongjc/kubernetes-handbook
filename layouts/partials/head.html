@@ -1,6 +1,10 @@
 <head>
   <meta charset="utf-8">
-  <title>{{ .Title }}·{{ .Site.Params.author }}</title>
+  {{ if .IsHome }}
+  <title>{{ .Title }}</title>
+  {{ else }}
+  <title>{{ .Title }} · {{ .Site.Params.author }}</title>
+  {{ end  }}
 
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
