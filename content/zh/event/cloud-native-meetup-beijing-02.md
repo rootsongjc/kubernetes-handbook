@@ -4,7 +4,7 @@ date: 2020-12-20T18:00:00+08:00
 draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
-# meta description
+# meta description,
 description : "云原生社区 meetup 第二期，北京站，2020 年 12 月 20 日，北京市建国路 93 号万达广场 A 座新世界百货 7 层良辉会议室。"
 # Event image
 image: "images/events/cloud-native-meetup-beijing-02.jpg"
