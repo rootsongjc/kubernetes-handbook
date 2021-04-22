@@ -2,7 +2,7 @@
 title: "Cloud Native Go"
 date: 2017-08-01T12:00:00+08:00
 draft: false
-subtitle: "使用 Go 和 Reac t构建云原生 Web 应用"
+subtitle: "使用 Go 和 React 构建云原生 Web 应用"
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
