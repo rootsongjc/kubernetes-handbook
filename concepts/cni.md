@@ -9,9 +9,9 @@ Kubernetes 源码的 `vendor/github.com/containernetworking/cni/libcni` 目录�
 CNI 的接口中包括以下几个方法：
 
 ```go
-type CNI interface {AddNetworkList (net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)
+type CNI interface {
+    AddNetworkList (net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)
 	DelNetworkList (net *NetworkConfigList, rt *RuntimeConf) error
-
 	AddNetwork (net *NetworkConfig, rt *RuntimeConf) (types.Result, error)
 	DelNetwork (net *NetworkConfig, rt *RuntimeConf) error
 }
