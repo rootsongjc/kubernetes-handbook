@@ -74,8 +74,6 @@ Envoy 是 Istio 中默认的 sidecar 代理。Istio 基于 Enovy 的 xDS 协议�
 
 ![Envoy](008eGmZEly1gpb7koah95j31450tetta.jpg)
 
-### 基本术语
-
 ### 基础概念
 
 以下是 Enovy 中你应该知道的基本术语。
