@@ -3,7 +3,7 @@ title: "Why Do You Need Istio When You Already Have Kubernetes?"
 date: 2021-04-07T08:27:17+08:00
 draft: false
 type: "post"
-categories: ["service mesh"]
+categories: ["istio"]
 image: "/images/banner/istio-kubernetes.jpg"
 tags: ["kubernetes","istio","service mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
