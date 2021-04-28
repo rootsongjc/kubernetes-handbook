@@ -80,7 +80,7 @@ Tetrate 创立于硅谷，我们的团队主要来自加拿大、中国、印度
 
 ### Tetrate 公司名称来历
 
-Tetrate 是数学术语 [Tetration](https://en.wikipedia.org/wiki/Tetration)（迭代幂次） 的变体，Tetrate 员工自称 Tetrant。想要了解更多，请访问 [tetrate.io](https://tetrate.io)。
+Tetrate 是数学术语 [Tetration](https://en.wikipedia.org/wiki/Tetration)（迭代幂次） 的变体，Tetrate 员工自称 Tetrand。想要了解更多，请访问 [tetrate.io](https://tetrate.io)。
 
 ### Tetrate 创始团队
 
