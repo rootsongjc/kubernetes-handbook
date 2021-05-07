@@ -45,4 +45,4 @@ Tetrate 的 Istio 认证管理员包括以下内容：
 
 ## 现已上线
 
-CIAT [考试](https://academy.tetrate.io/courses/certified-istio-administrator)现在在 [Tetrate 学院](https://academy.tetrate.io/)上线，任何人都可以参加，费用为 299 美元。
+CIAT [考试](https://academy.tetrate.io/courses/certified-istio-administrator)现在在 [Tetrate 学院](https://academy.tetrate.io/)上线，任何人都可以参加，费用为 299 美元。如果你想获得折扣，请[与我联系](/contact)。
