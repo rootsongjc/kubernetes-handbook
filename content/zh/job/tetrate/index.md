@@ -5,9 +5,10 @@ draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Base 地：全球远程办公"
 type: "notice"
+image: "images/backgrounds/tetrate-logo.png"
 ---
 
-![Tetrate logo](https://tva1.sinaimg.cn/large/0081Kckwly1gk5c40l07ej30r009t746.jpg)
+![Tetrate logo](tetrate-logo.jpg)
 
 你想要加入由世界级工程师组成的团队吗？使用 [Istio](https://istio.io)、[Envoy](https://envoyproxy.io)、[Apache SkyWalking](https://skywalking.apache.org/) 等开源项目来定义下一代云原生网络。下面是我们正在招聘的部分职位。
 
@@ -203,4 +204,4 @@ Tetrate 是数学术语 [Tetration](https://en.wikipedia.org/wiki/Tetration)（�
 
 扫描下面的公众号关注 Tetrate，获取 Istio、Envoy、Apache SkyWalking 的最新信息和 Tetrate 动态，也可以在公众号后台留言，与我们联系。
 
-![Tetrate 公众号](https://tva1.sinaimg.cn/large/0081Kckwly1gk5c4ja4pdj30b40b474o.jpg)
+![Tetrate 公众号](tetrate-wechat.jpg)
