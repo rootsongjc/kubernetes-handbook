@@ -143,7 +143,7 @@ Tetrate 的云服务团队负责建立和运营基于 SaaS 的应用程序。包
 - 如熟悉 WebAssembly 则更佳。
 - 如熟悉 Go 语言、硬件 / 软件负载均衡（F5、NGINX）、HSM module、Active Directory/LDAP 更佳。
 
-## 分布式系统工程师，企业基础架构（数据平面）GoLang 或 C++ 开发者
+## 分布式系统工程师，企业基础架构（数据平面）Go 或 C++ 开发者
 
 我们正在寻找有使用 Golang 和 gRPC 构建分布式系统经验的后端工程师。我们正在为财富 500 强企业的关键业务构建安全、高可用的服务网格（Service Mesh）平台，横跨传统和现代基础设施。您应具备较强的分布式系统和网络的基础知识。熟悉 Kubernetes、Istio 和 Envoy 等技术，有为开源项目做贡献的经验更佳。
 
