@@ -5,6 +5,7 @@ draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Remotely worldwide"
 type: "notice"
+image: "images/backgrounds/tetrate-logo.png"
 ---
 
 Join a team of world-class engineers working on the next generation of networking services using Istio, Envoy, Apache SkyWalking and a few of the open projects to define the next generation of cloud native network service.
