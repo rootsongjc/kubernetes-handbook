@@ -98,10 +98,11 @@ cta:
 success_story:
   enable : true
   bg_image : "https://res.cloudinary.com/jimmysong/image/upload/v1594296295/images/success-story.jpg"
-  title : "快速开始"
-  content : "当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用Vagrant和VirtualBox来创建一个这样的环境。[点击了解详情...](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)"
+  title : "云原生学院"
+  content : "欢迎来到云原生学院，云原生学院由云原生社区主办，致力于云原生知识的传播和普及。云原生学院定期举办线上直播活动， 组织 SIG（特别兴趣小组），直播分享云原生领域的前沿知识和动向。欢迎关注我们的 Bilibili [频道](https://space.bilibili.com/515485124)和[直播间](http://live.bilibili.com/22230973)。"
   # video link
-  video_link : "https://youtu.be/26kbaZxcB4A"
+  # video_link : "https://youtu.be/26kbaZxcB4A"
+  video_link: "https://space.bilibili.com/515485124"
 
 
 ############################# event ################################
