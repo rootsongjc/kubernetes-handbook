@@ -29,7 +29,7 @@ image: "images/backgrounds/notification.jpg"
 
 ### 14:05 - 14:25 开场致辞
 
-讲师：宋净超
+讲师：宋净
 
 个人介绍：Tetrate 布道师、CNCF Ambassador、云原生社区 创始人、电子工业出版社优秀译者、出品人。Kubernetes、Istio 等技术的早期使用及推广者。曾就职于科大讯飞、TalkingData 和蚂蚁集团。
 
