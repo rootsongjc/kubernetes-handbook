@@ -46,7 +46,7 @@ kubectl run [-i] [--tty] --attach <name> --image=<image>
 
 与 `docker run ...` 不同的是，如果指定了 `--attach` ，我们将连接到 `stdin`，`stdout` 和 `stderr`，而不能控制具体连接到哪个输出流（`docker -a ...`）。
 
-因为我们使用 Deployment 启动了容器，如果您终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。 如果想销毁该 Deployment（和它的 pod），您需要运行 `kubeclt delete deployment <name>`。
+因为我们使用 Deployment 启动了容器，如果您终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。 如果想销毁该 Deployment（和它的 pod），您需要运行 `kubectl delete deployment <name>`。
 
 #### docker ps
 
