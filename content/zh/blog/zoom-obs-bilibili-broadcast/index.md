@@ -40,7 +40,7 @@ type: "post"
 
 - Zoom：需要 Pro 版，这样才可以举行超过 45 分钟的线上会议，否则会在超时后打断再重新加入，需要准备好账号，中国大陆用户貌似不能再注册？
 - OBS：用来做推流，到官网下载最新的版本
-- 音频插件 Sumflower：下载地址 https://github.com/mattingalls/Soundflower/releases
+- 音频插件 Sumflower：[点击跳转到下载页面](https://github.com/mattingalls/Soundflower/releases)
 - Bilibili：需要一个 B 站账号，并开通直播间，经过实名认证
 
 ## OBS 配置
