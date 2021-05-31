@@ -8,9 +8,9 @@ description : "Apache ShardingSphere 作者"
 # partner portrait
 image: "images/partners/zhangliang.jpg"
 # company
-company: "京东数科"
+company: "ShardingEx"
 # biography
-bio: "张亮是京东数科数据研发负责人，Apache ShardingSphere发起人兼PPMC成员。热爱分享，拥抱开源，主张代码优雅化，擅长以Java为主的分布式架构以及以Kubernetes和Mesos为主的云平台的构建。ShardingSphere已进入Apache软件基金会，是京东集团首进入Apache的开源项目，也是Apache首分布式数据库中间件。"
+bio: "张亮是 ShardingEx 创始人，前京东数科数据研发负责人，Apache ShardingSphere 发起人兼 PPMC 成员。热爱分享，拥抱开源，主张代码优雅化，擅长以 Java 为主的分布式架构以及以 Kubernetes 和 Mesos 为主的云平台的构建。"
 # interest
 interest: ["Cloud Native","ShardingSphere","Java"]
 # contact info

@@ -10,7 +10,7 @@ image: "images/partners/zhangliang.jpg"
 # company
 company: "Jingdong Finance"
 # biography
-bio: "Liang Zhang is the head of data research and development of JD.com, the founder of Apache ShardingSphere and a member of PPMC. Loves sharing, embraces open source, advocates elegant code, and is good at building distributed architectures based on Java and cloud platforms based on Kubernetes and Mesos. ShardingSphere has entered the Apache Software Foundation. It is the first open source project that Jingdong Group entered into Apache, and it is also the first distributed database middleware for Apache."
+bio: "Liang Zhang is the fonnder of ShardingEx, the ex-head of data research and development of JD.com, the founder of Apache ShardingSphere and a member of PPMC. Loves sharing, embraces open source, advocates elegant code, and is good at building distributed architectures based on Java and cloud platforms based on Kubernetes and Mesos."
 # interest
 interest: ["Cloud Native","ShardingSphere","Java"]
 # contact info
