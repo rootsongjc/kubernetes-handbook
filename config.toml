@@ -59,7 +59,7 @@ link = "plugins/hex_md5/hex_md5.js"
 [params]
 logo = "images/logo.png"
 # Meta data
-description = "Jimmy Song Personal Website"
+description = "宋净超（Jimmy Song）的个人网站，聚焦云原生，开源和社区。 "
 author = "Jimmy Song"
 # contact info
 address = "Beijing, China"
