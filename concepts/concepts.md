@@ -135,3 +135,4 @@ Kubernetes 在 1.3 版本中发布了 alpha 版的基于角色的访问控制（
 ## 参考
 
 - [《Kubernetes 与云原生应用》系列之 Kubernetes 的系统架构与设计理念](https://www.infoq.cn/article/kubernetes-and-cloud-native-applications-part01/)
+- [KUBERNETES DESIGN CONCEPTS FOR DISTRIBUTED SYSTEMS](https://www.linkedin.com/pulse/kubernetes-design-concepts-distributed-systems-ubaidali-sayyed-/)
