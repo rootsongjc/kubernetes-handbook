@@ -125,7 +125,7 @@ funfacts:
 
     # funfact item loop
     - name : "Hosted Events"
-      count : "14"
+      count : "15"
 
     # funfact item loop
     - name : "Talks"
@@ -133,7 +133,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "9048"
+      count : "9120"
 
 # funfact is for about page
 
