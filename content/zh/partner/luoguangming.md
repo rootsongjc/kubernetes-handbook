@@ -4,13 +4,13 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "百度云原生技术专家，云原生社区管委会成员"
+description : "字节跳动高级架构师"
 # partner portrait
 image: "images/partners/luoguangming.jpg"
 # company
-company: "百度"
+company: "字节跳动"
 # biography
-bio: "罗广明是百度云原生技术专家，致力于微服务架构、治理以及云原生相关的研究，开源项目爱好者，DevOps与敏捷开发支持者与实践者。"
+bio: "罗广明是字节跳动基础架构服务框架团队成员、高级架构师、云原生技术专家，ServiceMesher 社区 & 云原生社区管委会成员，对 Spring Cloud、Istio 以及微服务中间件有深入研究。"
 # interest
 interest: ["Service Mesh","Java","DevOps", "Agile"]
 # contact info

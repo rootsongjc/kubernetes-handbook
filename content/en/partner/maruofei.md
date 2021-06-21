@@ -10,7 +10,7 @@ image: "images/partners/maruofei.jpg"
 # company
 company: "FreeWheel"
 # biography
-bio: "Ma Ruofei has a 15-year career as a code farmer and has extensive experience and understanding of microservice architecture. Author of *Istio Practical Guide*, IT professional book consultant of People's Posts and Telecommunications Publishing House, keen on technology exploration and sharing."
+bio: "Ruofei Ma is the author of Istio Practical Guide, columnist of Service Mesh Practical in Geek Time, AWS Container Hero, member of ServiceMesher & Cloud Native Community Management Committee."
 # interest
 interest: ["Service Mesh","Istio","Microservices"]
 # contact info

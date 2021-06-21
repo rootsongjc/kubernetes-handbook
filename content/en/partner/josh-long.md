@@ -8,9 +8,9 @@ description : "Josh Long is the Spring Developer Advocate at Pivotal."
 # partner portrait
 image: "images/partners/josh-long.jpg"
 # company
-company: "Pivotal"
+company: "VMware"
 # biography
-bio: "[Josh (@starbuxman)](http://twitter.com/starbuxman) is the Spring Developer Advocate at Pivotal. Josh is a Java Champion, author of 6 books (including O'Reilly's [Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry](https://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646) and the upcoming [Reactive Spring](http://reactivespring.io/)) and numerous best-selling video trainings (including [Building Microservices with Spring Boot Livelessons](https://www.safaribooksonline.com/library/view/building-microservices-with/9780134192468/) with Spring Boot co-founder Phil Webb), and an open-source contributor (Spring Boot, Spring Integration, Spring Cloud, Activiti and Vaadin), [a podcaster](http://bit.ly/a-bootiful-podcast) and [a screencaster](http://bit.ly/spring-tips-playlist)."
+bio: "[Josh (@starbuxman)](http://twitter.com/starbuxman) is the Spring Developer Advocate at VMware. Josh is a Java Champion, author of 6 books (including O'Reilly's [Cloud Native Java: Designing Resilient Systems with Spring Boot, Spring Cloud, and Cloud Foundry](https://www.amazon.com/Cloud-Native-Java-Designing-Resilient/dp/1449374646) and the upcoming [Reactive Spring](http://reactivespring.io/)) and numerous best-selling video trainings (including [Building Microservices with Spring Boot Livelessons](https://www.safaribooksonline.com/library/view/building-microservices-with/9780134192468/) with Spring Boot co-founder Phil Webb), and an open-source contributor (Spring Boot, Spring Integration, Spring Cloud, Activiti and Vaadin), [a podcaster](http://bit.ly/a-bootiful-podcast) and [a screencaster](http://bit.ly/spring-tips-playlist)."
 # interest
 interest: ["Cloud Native","Java","Spring"]
 # contact info
