@@ -8,9 +8,9 @@ description : "Baidu Cloud expert, Cloud Native Community committee member"
 # partner portrait
 image: "images/partners/luoguangming.jpg"
 # company
-company: "Baidu"
+company: "ByteDance"
 # biography
-bio: "Guangming Luo is a cloud native technology expert at Baidu, dedicated to microservices architecture, governance, and cloud-native research, open source project enthusiasts, DevOps and agile development supporters and practitioners."
+bio: "Guangming Luo is a member of ByteDance Infrastructure Service Framework team, a senior architect, a cloud native technologist, a member of ServiceMesher community & cloud native community management committee, and has in-depth research on Spring Cloud, Istio and microservice middleware."
 # interest
 interest: ["Service Mesh","Java","DevOps", "Agile"]
 # contact info

@@ -10,7 +10,7 @@ image: "images/partners/maruofei.jpg"
 # company
 company: "FreeWheel"
 # biography
-bio: "马若飞有15年码农从业生涯，对微服务架构具有丰富的经验和理解。《Istio实战指南》作者，人民邮电出版社IT专业图书顾问，热衷于技术探索与分享。"
+bio: "马若飞是《Istio 实战指南》作者，极客时间《Service Mesh 实战》专栏作者，AWS Container Hero，ServiceMesher & 云原生社区管委会成员。"
 # interest
 interest: ["Service Mesh","Istio","Microservices"]
 # contact info
