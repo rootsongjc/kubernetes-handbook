@@ -122,18 +122,22 @@ funfacts:
     # funfact item loop
     - name : "Published Books"
       count : "6"
+      link : "/en/book"
 
     # funfact item loop
     - name : "Hosted Events"
       count : "15"
+      link: "/en/event"
 
     # funfact item loop
     - name : "Talks"
       count : "13"
+      link: "/en/about"
 
     # funfact item loop
     - name : "Community Members"
       count : "9120"
+      link : "https://cloudnative.to/en"
 
 # funfact is for about page
 
