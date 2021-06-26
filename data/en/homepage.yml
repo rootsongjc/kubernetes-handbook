@@ -154,6 +154,7 @@ footer:
   content : "Cloud Native | Open Source | Community"
   button_link : "https://twitter.com/jimmysongio"
   image : "images/jimmysong-twitter-qr-code.jpg"
+  #footer_image : "images/jimmysong-twitter-qr-code.jpg"
   address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: true
