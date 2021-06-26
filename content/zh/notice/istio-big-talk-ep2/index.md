@@ -1,5 +1,5 @@
 ---
-title: "《Istio 大咖说》第二期开播提醒"
+title: "《Istio 大咖说》第 2 期开播提醒"
 date: 2021-06-02T08:27:17+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"

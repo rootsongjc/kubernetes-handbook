@@ -1,5 +1,5 @@
 ---
-title: "云原生社区 Meetup 第四期广州站开始报名啦！"
+title: "云原生社区 Meetup 第四期广州站报名"
 date: 2021-05-12T12:27:17+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"

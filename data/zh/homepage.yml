@@ -146,8 +146,9 @@ blog:
 
 ############################ footer ###############################
 footer:
-  content : "添加微信请备注姓名公司并说明来意"
+  content : "专注于云原生开源与社区"
   image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
+  #footer_image: "https://res.cloudinary.com/jimmysong/image/upload/v1594296773/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: true
