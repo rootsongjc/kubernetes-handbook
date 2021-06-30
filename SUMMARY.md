@@ -208,6 +208,8 @@
 * [扩展控制器](practice/controller-extended.md)
   * [OpenKruise](practice/openkruise.md)
     * [原地升级](practice/in-place-update.md)
+* [安全策略](practice/security-policy.md)
+  * [OPA（开放策略代理）](practice/open-policy-agent.md)
 
 ## 服务网格
 
