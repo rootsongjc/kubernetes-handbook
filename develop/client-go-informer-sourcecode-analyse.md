@@ -1,3 +1,5 @@
+# client-go 中的 informer 源码分析
+
 ![image](https://user-images.githubusercontent.com/41672087/116676748-efbbed00-a9d9-11eb-88ff-2b25120b59b3.png)
 
 ## 以deployment controller为例分析其中client-go informer的用法
