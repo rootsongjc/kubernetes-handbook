@@ -1,6 +1,8 @@
 # client-go 中的 informer 源码分析
 
-![image](https://user-images.githubusercontent.com/41672087/116676748-efbbed00-a9d9-11eb-88ff-2b25120b59b3.png)
+本文将以图文并茂的方式对 client-go 中的 informer 的源码分析，其整体流程图如下所示。
+
+![client-go informer](../images/client-go-informer.png)
 
 ## 以deployment controller为例分析其中client-go informer的用法
 
@@ -20,7 +22,7 @@ if err = controller.Run(2, stopCh); err != nil {
 ### SharedInformerFactory结构
 
 使用sharedInformerFactory的好处：比如很多个模块都需要使用pod对象，没必要都创建一个pod informer，用factor存储每种资源的一个informer，这里的informer实现是shareIndexInformer
-NewSharedInformerFactory调用了NewSharedInformerFactoryWithOptions，将返回一个sharedInformerFactory对象
+NewSharedInformerFactory调用了NewSharedInformerFactoryWithOptions，将返回一个sharedInformerFactory对象。
 
 > kubeClient:clientset
 > defaultResync:30s，用于初始化持有的shareIndexInformer的resyncCheckPeriod和defaultEventHandlerResyncPeriod字段
@@ -365,7 +367,8 @@ func (c *controller) processLoop() {
 #### deltaFIFO pop出来的对象处理逻辑
 
 先看看controller怎么处理DeltaFIFO中的对象，需要注意DeltaFIFO中的Deltas的结构，是一个slice，保存同一个对象的所有增量事件
-![image](https://user-images.githubusercontent.com/41672087/116666059-19224c00-a9cd-11eb-945c-955cce9eacd1.png)
+
+![DeltaFIFO](../images/deltafifo.png)
 
 sharedIndexInformer的HandleDeltas处理从deltaFIFO pod出来的增量时，先尝试更新到本地缓存cache，更新成功的话会调用processor.distribute方法向processor中的listener添加notification，listener启动之后会不断获取notification回调用户的EventHandler方法
 
@@ -513,8 +516,6 @@ func (r *Reflector) watchHandler(start time.Time, w watch.Interface, resourceVer
 }
 ```
 
-
-
 ##### 定时触发resync
 
 在ListAndWatch中还起了一个gorouting定时的进行resync动作
@@ -619,7 +620,7 @@ threadSafeMap的结构如下：
 
 通过在向items插入对象的过程中，遍历所有的Indexers中的索引函数，根据索引函数存储索引key到value的集合关系，以下图式结构可以很好的说明
 
-![image](https://user-images.githubusercontent.com/41672087/116666278-5981ca00-a9cd-11eb-9570-8ee6eb447d05.png)
+![threadSafeMap](../images/threadsafemap.png)
 
 ```go
 type threadSafeMap struct {
