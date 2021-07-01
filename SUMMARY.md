@@ -262,7 +262,7 @@
   * [本地分布式开发环境搭建（使用 Vagrant 和 Virtualbox）](develop/using-vagrant-and-virtualbox-for-development.md)
 * [单元测试和集成测试](develop/testing.md)
 * [client-go 示例](develop/client-go-sample.md)
-  * [client-go中的informer源码分析](develop/client-go-informer-sourcecode-analyse.md)
+  * [client-go 中的 informer 源码分析](develop/client-go-informer-sourcecode-analyse.md)
 * [Operator](develop/operator.md)
   * [operator-sdk](develop/operator-sdk.md)
 * [kubebuilder](develop/kubebuilder.md)
