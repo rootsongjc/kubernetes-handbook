@@ -21,7 +21,7 @@ description : "本文将带大家了解 Kubernetes 和 Istio 的内部工作原�
 
 Kubernetes 本质上是通过声明式配置来实现应用生命周期管理，而服务网格本质上是提供应用间的流量、安全管理和可观察性。如果你已经使用 Kubernetes 搭建了一个稳定的应用平台，那么如何设置服务间调用的负载均衡和流量控制？是否有这样一个通用的工具或者说平台（非 SDK），可以实现？这就需要用到服务网格了。
 
-Envoy 引入了 xDS 协议，这个协议得到了各种开源软件的支持，比如 Istio、[MOSN](https://mosn.io/) 等。Envoy 将 xDS 贡献给服务网格或云原生基础设施。Envoy 本质上是一个现代版的代理，可以通过 API 进行配置，在此基础上衍生出许多不同的使用场景–比如 API Gateway、服务网格中的侧车代理和边缘代理。
+Envoy 引入了 xDS 协议，这个协议得到了各种开源软件的支持，比如 Istio、[MOSN](https://mosn.io/) 等。Envoy 将 xDS 贡献给服务网格或云原生基础设施。Envoy 本质上是一个现代版的代理，可以通过 API 进行配置，在此基础上衍生出许多不同的使用场景–比如 API Gateway、服务网格中的 sidecar 代理和边缘代理。
 
 本文包含以下内容。
 
@@ -48,7 +48,7 @@ Istio 可以跟踪 Kubernetes 中的服务注册，也可以在控制平面中�
 
 ### 服务网格的劣势
 
-由于 Kubernetes 的每个节点上都运行着很多 pod，所以在每个 pod 中放入原有的 kube-proxy 路由转发功能，会增加响应延迟–由于侧车拦截流量时跳数更多，消耗更多的资源。为了对流量进行精细化管理，将增加一系列新的抽象功能。这将进一步增加用户的学习成本，但随着技术的普及，这种情况会慢慢得到缓解。
+由于 Kubernetes 的每个节点上都运行着很多 pod，所以在每个 pod 中放入原有的 kube-proxy 路由转发功能，会增加响应延迟–由于 sidecar 拦截流量时跳数更多，消耗更多的资源。为了对流量进行精细化管理，将增加一系列新的抽象功能。这将进一步增加用户的学习成本，但随着技术的普及，这种情况会慢慢得到缓解。
 
 ### 服务网格的优势
 
@@ -64,9 +64,9 @@ Kubernetes 社区给出了一个使用 Deployment 做[金丝雀发布](https://k
 
 ### Kubernetes Ingress vs Istio Gateway
 
-如上所述，kube-proxy 只能在 Kubernetes 集群内路由流量。Kubernetes 集群的 pods 位于 CNI 创建的网络中。一个 ingress—— 一个在 Kubernetes 中创建的资源对象 - 被创建用于集群外部的通信。它由位于 Kubernetes 边缘节点上的入口控制器驱动，负责管理南北向流量。Ingress 必须与各种 Ingress 控制器对接，比如 [nginx ingress 控制器](https://github.com/kubernetes/ingress-nginx)和 [traefik](https://traefik.io/)。Ingress 只适用于 HTTP 流量，使用简单。它只能通过匹配有限的字段来路由流量–如服务、端口、HTTP 路径等。这使得它无法对 TCP 流量进行路由，如 MySQL、Redis 和各种 RPC。这就是为什么你会看到人们在 ingress 资源注释中写 nginx 配置语言的原因。直接路由南北流量的唯一方法是使用服务的 LoadBalancer 或 NodePort，前者需要云厂商支持，后者需要额外的端口管理。
+如上所述，kube-proxy 只能在 Kubernetes 集群内路由流量。Kubernetes 集群的 pod 位于 CNI 创建的网络中。一个 ingress—— 一个在 Kubernetes 中创建的资源对象 - 被创建用于集群外部的通信。它由位于 Kubernetes 边缘节点上的入口控制器驱动，负责管理南北向流量。Ingress 必须与各种 Ingress 控制器对接，比如 [nginx ingress 控制器](https://github.com/kubernetes/ingress-nginx)和 [traefik](https://traefik.io/)。Ingress 只适用于 HTTP 流量，使用简单。它只能通过匹配有限的字段来路由流量–如服务、端口、HTTP 路径等。这使得它无法对 TCP 流量进行路由，如 MySQL、Redis 和各种 RPC。这就是为什么你会看到人们在 ingress 资源注释中写 nginx 配置语言的原因。直接路由南北流量的唯一方法是使用服务的 LoadBalancer 或 NodePort，前者需要云厂商支持，后者需要额外的端口管理。
 
-Istio Gateway 的功能与 Kubernetes Ingress 类似，它负责进出集群的南北流量。Istio Gateway 描述了一个负载平衡器，用于承载进出网状结构边缘的连接。该规范描述了一组开放端口和这些端口所使用的协议，以及用于负载均衡的 SNI 配置等。Gateway 是一个 CRD 扩展，它也重用了 sidecar 代理的功能；详细配置请参见 [Istio 网站](https://istio.io/latest/docs/reference/config/networking/gateway/)。
+Istio Gateway 的功能与 Kubernetes Ingress 类似，它负责进出集群的南北流量。Istio Gateway 描述了一个负载均衡器，用于承载进出服务网格边缘的连接。该规范描述了一组开放端口和这些端口所使用的协议，以及用于负载均衡的 SNI 配置等。Gateway 是一个 CRD 扩展，它也重用了 sidecar 代理的功能；详细配置请参见 [Istio 网站](https://istio.io/latest/docs/reference/config/networking/gateway/)。
 
 ## Envoy
 
@@ -123,7 +123,7 @@ Istio 中定义了以下 CRD 来帮助用户进行流量管理。
 
 - Kubernetes 的本质是应用生命周期管理，具体来说就是部署和管理（伸缩、自动恢复、发布）。
 - Kubernetes 为微服务提供了一个可扩展、高弹性的部署和管理平台。
-- 服务网格是基于透明代理，通过侧车代理拦截服务之间的流量，然后通过控制平面配置管理它们的行为。
+- 服务网格是基于透明代理，通过 sidecar 代理拦截服务之间的流量，然后通过控制平面配置管理它们的行为。
 - 服务网格将流量管理与 Kubernetes 解耦，不需要 kube-proxy 组件来支持服务网格内的流量；通过提供更接近微服务应用层的抽象来管理服务间的流量、安全性和可观察性。
 - xDS 是服务网格的协议标准之一。
 - 服务网格是 Kubernetes 中服务的一个更高层次的抽象。

@@ -15,10 +15,10 @@ slider:
     #        link : "book"
 
     # slider item loop
-    - title : "专注于云原生开源与社区"
+    - title : "致力于构建中国最具影响力的云原生社区"
       animation_in : "left"
       animation_out : "right"
-      content: "Jimmy Song 是云原生社区创始人，从 2016 年起，他参与撰写或翻译了多部云原生相关书籍，他致力于推广云原生技术，力图构建以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的开发者生态，以帮助中国开发者融入全球云原生的趋势中去。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
+      content: "宋净超（Jimmy Song）是云原生社区创始人，从 2016 年起，他参与撰写和翻译了多本云原生领域书籍，他致力于构建中国最具影响力的云原生社区，打造以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的云原生技术体系。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
       # available animation : left, right, up, down
       button:
         enable : true
