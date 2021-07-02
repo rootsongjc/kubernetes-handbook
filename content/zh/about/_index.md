@@ -6,12 +6,12 @@ bg_image: "images/backgrounds/page-title.jpg"
 # about image
 image: "images/about/jimmy-song.jpg"
 # meta description
-description : "Jimmy Song（宋净超）的简介。"
+description : "宋净超（Jimmy Song）的简介。"
 ---
 
 ### 简介
 
-宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师、[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)、[云原生社区](http://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人、电子工业出版社优秀译者、出品人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等技术的早期使用及推广者。前蚂蚁集团云原生布道师及开源管理负责人。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)（蚂蚁金服）。
+宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)（蚂蚁金服）。
 
 ### 出版物
 
@@ -23,6 +23,7 @@ description : "Jimmy Song（宋净超）的简介。"
 
 **译本**
 
+- [Quarkus 实战 - 专为 Kubernetes 而优化的 Java 解决方案，2021 年 3 月，机械工业出版社](/book/quarkus-cookbook)
 - [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务，2017 年 8 月，电子工业出版社](/book/cloud-native-go)
 - [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-python/)
 - [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-java)
@@ -49,6 +50,12 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team/) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。社区官网 <https://cloudnative.to>。
 
 ### 参与与组织的活动
+
+### 2021 年
+
+- 2021 年 7 月 3 日 | 线下 | [云原生社区 meetup 第五期成都站](http://hdxu.cn/8ZH3s)
+- 2021 年 5 月 22 日 | 线下 | [云原生社区 meetup 第四期广州站](http://hdxu.cn/s5IRp)
+- 2021 年 4 月 17 日 | 线下|[云原生社区 meetup 第三期杭州站](http://hdxu.cn/vHGBg)
 
 #### 2020 年
 
