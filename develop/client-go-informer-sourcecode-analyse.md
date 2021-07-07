@@ -1,3 +1,7 @@
+# client-go 中的 informer 源码分析
+
+本文将以图文并茂的方式对 client-go 中的 informer 的源码分析，其整体流程图如下所示。
+
 ## 前言
 
 Kubernetes作为新一代的基础设施系统，其重要性已经不言而喻了。基于控制器模型实现的声明式API支持着集群中各类型的工作负载稳定高效的按照期望状态运转，随着越来越多的用户选择kubernetes，无论是为了深入了解kubernetes这一云原生操作系统的工作逻辑，还是期待能够根据自己的特定业务需求对kubernetes进行二次开发，了解控制器模型的实现机制都是非常重要的。kubernetes提供了client-go以方便使用go语言进行二次快发，本文试图讲述client-go各模块如informer、reflector、cache等实现细节。
