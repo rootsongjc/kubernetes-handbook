@@ -2,14 +2,11 @@
 
 本文将以图文并茂的方式对 client-go 中的 informer 的源码分析，其整体流程图如下所示。
 
+![client-go informer](../images/client-go-informer.png)
+
 ## 前言
 
 Kubernetes作为新一代的基础设施系统，其重要性已经不言而喻了。基于控制器模型实现的声明式API支持着集群中各类型的工作负载稳定高效的按照期望状态运转，随着越来越多的用户选择kubernetes，无论是为了深入了解kubernetes这一云原生操作系统的工作逻辑，还是期待能够根据自己的特定业务需求对kubernetes进行二次开发，了解控制器模型的实现机制都是非常重要的。kubernetes提供了client-go以方便使用go语言进行二次快发，本文试图讲述client-go各模块如informer、reflector、cache等实现细节。
-
-
-
-![自定义控制器](https://user-images.githubusercontent.com/41672087/116676748-efbbed00-a9d9-11eb-88ff-2b25120b59b3.png)
-
 
 
 当我们需要利用client-go来实现自定义控制器时，通常会使用informerFactory来管理控制器需要的多个资源对象的informer实例
