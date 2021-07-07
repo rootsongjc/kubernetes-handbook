@@ -1419,15 +1419,3 @@ func (p *processorListener) pop() {
    }
 }
 ```
-
-
-
-
-
-Ref:
-https://zhuanlan.zhihu.com/p/202611841
-https://cloudnative.to/blog/client-go-study/
-https://gzh.readthedocs.io/en/latest/blogs/Kubernetes/2020-10-11-client-go%E7%B3%BB%E5%88%97%E4%B9%8B1---client-go%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3.html
-https://www.cnblogs.com/f-ck-need-u/p/9994508.html
-
-![image](https://user-images.githubusercontent.com/41672087/116673725-53dcb200-a9d6-11eb-9d67-9e30b6ea33e5.png)
