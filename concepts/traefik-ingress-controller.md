@@ -1,6 +1,6 @@
 # Traefik Ingress Controller
 
-我们在前面部署了 [Traefik](https://traefik.io) 作为Ingress Controller，如果集群外部直接访问Kubenretes内部服务的话，可以直接创建Ingress如下所示：
+我们在前面部署了 [Traefik](https://traefik.io) 作为 Ingress Controller，如果集群外部直接访问 Kubenetes 内部服务的话，可以直接创建 Ingress 如下所示：
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -21,7 +21,7 @@ spec:
 
 ## Traefik Ingress Controller
 
-当我们处于迁移应用到kuberentes上的阶段时，可能有部分服务实例不在kubernetes上，服务的路由使用nginx配置，这时处于nginx和ingress共存的状态。参考下面的配置：
+当我们处于迁移应用到 Kubernetes 上的阶段时，可能有部分服务实例不在 Kubernetes上，服务的路由使用 Nginx 配置，这时处于 nginx 和 ingress 共存的状态。参考下面的配置：
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -43,12 +43,12 @@ spec:
           servicePort: 80
 ```
 
-注意**annotation**的配置：
+注意 **annotation** 的配置：
 
-- `traefik.frontend.rule.type: PathPrefixStrip`：表示将截掉URL中的`path`
-- `kubernetes.io/ingress.class`：表示使用的ingress类型
+- `traefik.frontend.rule.type: PathPrefixStrip`：表示将截掉 URL 中的 `path`
+- `kubernetes.io/ingress.class`：表示使用的 ingress 类型
 
-在nginx中增加配置：
+在 Nginx 中增加配置：
 
 ```ini
 upstream docGenerate {
@@ -57,4 +57,4 @@ upstream docGenerate {
     }
 ```
 
-172.20.0.119是我们的边缘节点的VIP，见[边缘节点配置](../practice/edge-node-configuration.md)。
+172.20.0.119 是我们的边缘节点的 VIP，见[边缘节点配置](../practice/edge-node-configuration.md)。
