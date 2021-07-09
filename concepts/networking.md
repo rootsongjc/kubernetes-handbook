@@ -1,4 +1,4 @@
-# Kubernetes中的网络
+# 网络
 
 Kubernetes中的网络可以说对初次接触Kubernetes或者没有网络方面经验的人来说可能是其中最难的部分。Kubernetes本身并不提供网络功能，只是把网络接口开放出来，通过插件的形式实现。
 
