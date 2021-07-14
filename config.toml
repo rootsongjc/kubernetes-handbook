@@ -173,13 +173,13 @@ URL = "about"
 weight = 1
 
 [[menu.main]]
-name = "Book"
-URL = "book"
+name = "Blog"
+URL = "blog"
 weight = 2
 
 [[menu.main]]
-name = "Blog"
-URL = "blog"
+name = "Book"
+URL = "book"
 weight = 3
 
 [[menu.main]]
@@ -245,13 +245,13 @@ URL = "about"
 weight = 1
 
 [[Languages.zh.menu.main]]
-name = "图书"
-URL = "book"
+name = "博客"
+URL = "blog"
 weight = 2
 
 [[Languages.zh.menu.main]]
-name = "博客"
-URL = "blog"
+name = "图书"
+URL = "book"
 weight = 3
 
 [[Languages.zh.menu.main]]
