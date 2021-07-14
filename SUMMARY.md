@@ -10,7 +10,7 @@
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Kubernetes 的诞生](cloud-native/kubernetes-history.md)
 * [Kubernetes 与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
-* [云原生应用之路 —— 从 Kubernetes 到 Cloud Native](cloud-native/from-kubernetes-to-cloud-native.md)
+* [云原生应用之路 —— 从 Kubernetes 到云原生](cloud-native/from-kubernetes-to-cloud-native.md)
 * [定义云原生应用](cloud-native/define-cloud-native-app.md)
   * [OAM](cloud-native/oam.md)
     * [Workload](cloud-native/workload.md)
