@@ -83,3 +83,6 @@ Istio 的 feature 分为四大类：
 
 功能划分与各种功能的状态详情请见：<https://istio.io/latest/about/feature-stages/>
 
+### 云原生社区 Istio 讨论组
+
+[云原生社区](https://cloudnative.to)专门成立里 Istio SIG（微信讨论群），将原来 ServiceMesher 中关注 Istio 的人群专门集中到一个讨论组中，其中包含了百度、阿里巴巴、腾讯、网易、Tetrate、Intel、字节跳动等公司的服务网格专家及众多的终端用户，欢迎大家[申请加入群聊](https://i.cloudnative.to/istio)。
