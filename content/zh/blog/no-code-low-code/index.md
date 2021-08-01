@@ -2,7 +2,7 @@
 title: "关于低代码和无代码的一些思考"
 description: "阅读了徐晟洋写的两篇文章介绍无代码和低代码的文章有感。"
 date: 2021-07-27T14:18:40+08:00
-draft: false
+draft: true
 tags: ["无代码","低代码"]
 categories: ["文化"]
 type: "post"
