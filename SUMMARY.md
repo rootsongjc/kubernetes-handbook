@@ -114,7 +114,7 @@
   * [Docker 用户过渡到 kubectl 命令行指南](guide/docker-cli-to-kubectl.md)
   * [kubectl 命令概览](guide/using-kubectl.md)
   * [kubectl 命令技巧大全](guide/kubectl-cheatsheet.md)
-  * [使用 etcdctl 访问 kubernetes 数据](guide/using-etcdctl-to-access-kubernetes-data.md)
+  * [使用 etcdctl 访问 Kubernetes 数据](guide/using-etcdctl-to-access-kubernetes-data.md)
 * [集群安全性管理](guide/cluster-security-management.md)
   * [管理集群中的 TLS](guide/managing-tls-in-a-cluster.md)
   * [kubelet 的认证授权](guide/kubelet-authentication-authorization.md)
@@ -134,7 +134,7 @@
   * [Lens - Kubernetes IDE/桌面客户端](guide/kubernetes-desktop-client.md)
   * [Kubernator - 更底层的 Kubernetes UI](guide/kubernator-kubernetes-ui.md)
 * [在 Kubernetes 中开发部署应用](guide/application-development-deployment-flow.md)
-  * [适用于 kubernetes 的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
+  * [适用于 Kubernetes 的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
   * [迁移传统应用到 Kubernetes 中 —— 以 Hadoop YARN 为例](guide/migrating-hadoop-yarn-to-kubernetes.md)
   * [使用 StatefulSet 部署用状态应用](guide/using-statefulset.md)
 
