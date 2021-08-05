@@ -18,7 +18,7 @@ pages : "80"
 # book price
 price : "Free"
 # apply url
-apply_url : "/cloud-native-infra"
+apply_url : "/cloud-native-infra/"
 # type
 type: "book"
 ---
@@ -38,8 +38,8 @@ After reading this book, you will have the following gains:
 You can use this book in the following ways:
 
 - [GitHub](https://github.com/rootsongjc/cloud-native-infra)
-- [GitBook Online](https://jimmysong.io/cloud-native-infra)
-- [English original download](https://go.heptio.com/cloud-native-infrastructure)
+- [Read the book online](https://jimmysong.io/cloud-native-infra/)
+- [English original version](https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/)
 
 ### Thanks
 
