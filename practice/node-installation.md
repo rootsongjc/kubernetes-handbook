@@ -1,19 +1,19 @@
-# 部署node节点
+# 部署 node 节点
 
-Kubernetes node节点包含如下组件：
+Kubernetes node 节点包含如下组件：
 
-+ Flanneld：参考我之前写的文章[Kubernetes基于Flannel的网络配置](https://jimmysong.io/posts/kubernetes-network-config/)，之前没有配置TLS，现在需要在service配置文件中增加TLS配置，安装过程请参考上一节[安装flannel网络插件](flannel-installation.md)。
-+ Docker1.12.5：docker的安装很简单，这里也不说了，但是需要注意docker的配置。
++ Flanneld：需要在 service 配置文件中增加 TLS 配置，安装过程请参考上一节[安装 flannel 网络插件](flannel-installation.md)。
++ Docker1.12.5：Docker 的安装很简单，这里也不说了，但是需要注意 Docker 的配置。
 + kubelet：直接用二进制文件安装
 + kube-proxy：直接用二进制文件安装
 
-**注意**：每台 node 上都需要安装 flannel，master 节点上可以不安装。
+**注意**：每台 node 节点上都需要安装 flannel，master 节点上可以不安装。
 
 **步骤简介**
 
-1. 确认在上一步中我们安装配置的网络插件flannel已启动且运行正常
-2. 安装配置docker后启动
-3. 安装配置kubelet、kube-proxy后启动
+1. 确认在上一步中我们安装配置的网络插件 flannel 已启动且运行正常
+2. 安装配置 Docker 后启动
+3. 安装配置 kubelet、kube-proxy 后启动
 4. 验证
 
 ## 目录和文件
@@ -27,15 +27,15 @@ $ ls /etc/kubernetes/
 apiserver  bootstrap.kubeconfig  config  controller-manager  kubelet  kube-proxy.kubeconfig  proxy  scheduler  ssl  token.csv
 ```
 
-## 配置Docker
+## 配置 Docker
 
-> 如果您使用yum的方式安装的flannel则不需要执行mk-docker-opts.sh文件这一步，参考Flannel官方文档中的[Docker Integration](https://github.com/coreos/flannel/blob/master/Documentation/running.md)。
+> 如果您使用 yum 的方式安装的 flannel 则不需要执行 mk-docker-opts.sh 文件这一步，参考 Flannel 官方文档中的 [Docker Integration](https://github.com/coreos/flannel/blob/master/Documentation/running.md)。
 
-如果你不是使用yum安装的flannel，那么需要下载flannel github release中的tar包，解压后会获得一个**mk-docker-opts.sh**文件，到[flannel release](https://github.com/coreos/flannel/releases)页面下载对应版本的安装包，该脚本见[mk-docker-opts.sh](https://github.com/rootsongjc/kubernetes-handbook/tree/master/tools/flannel/mk-docker-opts.sh)，因为我们使用yum安装所以不需要执行这一步。
+如果你不是使用 yum 安装的 flannel，那么需要下载 flannel github release 中的 tar 包，解压后会获得一个 **mk-docker-opts.sh** 文件，到 [flannel release](https://github.com/coreos/flannel/releases) 页面下载对应版本的安装包，该脚本见 [mk-docker-opts.sh](https://github.com/rootsongjc/kubernetes-handbook/tree/master/tools/flannel/mk-docker-opts.sh)，因为我们使用 yum 安装所以不需要执行这一步。
 
-这个文件是用来`Generate Docker daemon options based on flannel env file`。
+这个文件是用来 `Generate Docker daemon options based on flannel env file`。
 
-使用`systemctl`命令启动flanneld后，会自动执行`./mk-docker-opts.sh -i`生成如下两个文件环境变量文件：
+使用 `systemctl` 命令启动 flanneld 后，会自动执行`./mk-docker-opts.sh -i` 生成如下两个文件环境变量文件：
 
 - /run/flannel/subnet.env
 
@@ -54,11 +54,11 @@ DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1450"
 ```
 
-Docker将会读取这两个环境变量文件作为容器启动参数。
+Docker 将会读取这两个环境变量文件作为容器启动参数。
 
-**注意：**不论您用什么方式安装的flannel，下面这一步是必不可少的。
+**注意：**不论您用什么方式安装的 flannel，下面这一步是必不可少的。
 
-**yum方式安装的flannel**
+**yum 方式安装的 flannel**
 
 修改docker的配置文件`/usr/lib/systemd/system/docker.service`，增加一条环境变量配置：
 
@@ -66,9 +66,9 @@ Docker将会读取这两个环境变量文件作为容器启动参数。
 EnvironmentFile=-/run/flannel/docker
 ```
 
-`/run/flannel/docker`文件是flannel启动后自动生成的，其中包含了docker启动时需要的参数。
+`/run/flannel/docker`文件是 flannel 启动后自动生成的，其中包含了 Docker 启动时需要的参数。
 
-**二进制方式安装的flannel**
+**二进制方式安装的 flannel**
 
 修改docker的配置文件`/usr/lib/systemd/system/docker.service`，增加如下几条环境变量配置：
 
@@ -93,15 +93,15 @@ EnvironmentFile=-/run/docker_opts.env
 
 请参考[docker.service](https://github.com/rootsongjc/kubernetes-handbook/blob/master/systemd/docker.service)中的配置。
 
-### 启动docker
+### 启动 Docker
 
-重启了docker后还要重启kubelet，这时又遇到问题，kubelet启动失败。报错：
+重启了 Docker 后还要重启 kubelet，这时又遇到问题，kubelet 启动失败。报错：
 
 ```bash
 Mar 31 16:44:41 test-002.jimmysong.io kubelet[81047]: error: failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
 ```
 
-这是kubelet与docker的**cgroup driver**不一致导致的，kubelet启动的时候有个`—cgroup-driver`参数可以指定为"cgroupfs"或者“systemd”。
+这是 kubelet 与 docker 的 **cgroup driver** 不一致导致的，kubelet 启动的时候有个 `--cgroup-driver` 参数可以指定为 `cgroupfs` 或者 `systemd`。
 
 ```bash
 --cgroup-driver string                                    Driver that the kubelet uses to manipulate cgroups on the host.  Possible values: 'cgroupfs', 'systemd' (default "cgroupfs")
@@ -223,22 +223,22 @@ KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=jimmysong/pause-amd64:3
 KUBELET_ARGS="--cgroup-driver=systemd --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --kubeconfig=/etc/kubernetes/kubelet.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
 ```
 
-+ 如果使用systemd方式启动，则需要额外增加两个参数`--runtime-cgroups=/systemd/system.slice --kubelet-cgroups=/systemd/system.slice`
-+ `--experimental-bootstrap-kubeconfig` 在1.9版本已经变成了`--bootstrap-kubeconfig`
-+ `--address` 不能设置为 `127.0.0.1`，否则后续 Pods 访问 kubelet 的 API 接口时会失败，因为 Pods 访问的 `127.0.0.1` 指向自己而不是 kubelet；
-+ 如果设置了 `--hostname-override` 选项，则 `kube-proxy` 也需要设置该选项，否则会出现找不到 Node 的情况；
-+ `"--cgroup-driver` 配置成 `systemd`，不要使用`cgroup`，否则在 CentOS 系统中 kubelet 将启动失败（保持docker和kubelet中的cgroup driver配置一致即可，不一定非使用`systemd`）。
-+ `--experimental-bootstrap-kubeconfig` 指向 bootstrap kubeconfig 文件，kubelet 使用该文件中的用户名和 token 向 kube-apiserver 发送 TLS Bootstrapping 请求；
-+ 管理员通过了 CSR 请求后，kubelet 自动在 `--cert-dir` 目录创建证书和私钥文件(`kubelet-client.crt` 和 `kubelet-client.key`)，然后写入 `--kubeconfig` 文件；
-+ 建议在 `--kubeconfig` 配置文件中指定 `kube-apiserver` 地址，如果未指定 `--api-servers` 选项，则必须指定 `--require-kubeconfig` 选项后才从配置文件中读取 kube-apiserver 的地址，否则 kubelet 启动后将找不到 kube-apiserver (日志中提示未找到 API Server），`kubectl get nodes` 不会返回对应的 Node 信息; `--require-kubeconfig` 在1.10版本被移除，参看[PR](https://github.com/kubernetes/kops/pull/4357/commits/30b10cb1c8c9d8d67fdf6371f1fda952a2b02004)；
-+ `--cluster-dns` 指定 kubedns 的 Service IP(可以先分配，后续创建 kubedns 服务时指定该 IP)，`--cluster-domain` 指定域名后缀，这两个参数同时指定后才会生效；
-+ `--cluster-domain` 指定 pod 启动时 `/etc/resolve.conf` 文件中的 `search domain` ，起初我们将其配置成了 `cluster.local.`，这样在解析 service 的 DNS 名称时是正常的，可是在解析 headless service 中的 FQDN pod name 的时候却错误，因此我们将其修改为 `cluster.local`，去掉最后面的 ”点号“ 就可以解决该问题，关于 kubernetes 中的域名/服务名称解析请参见我的另一篇文章。
-+ `--kubeconfig=/etc/kubernetes/kubelet.kubeconfig `中指定的`kubelet.kubeconfig`文件在第一次启动kubelet之前并不存在，请看下文，当通过CSR请求后会自动生成`kubelet.kubeconfig`文件，如果你的节点上已经生成了`~/.kube/config`文件，你可以将该文件拷贝到该路径下，并重命名为`kubelet.kubeconfig`，所有node节点可以共用同一个kubelet.kubeconfig文件，这样新添加的节点就不需要再创建CSR请求就能自动添加到kubernetes集群中。同样，在任意能够访问到kubernetes集群的主机上使用`kubectl --kubeconfig`命令操作集群时，只要使用`~/.kube/config`文件就可以通过权限认证，因为这里面已经有认证信息并认为你是admin用户，对集群拥有所有权限。
-+ `KUBELET_POD_INFRA_CONTAINER` 是基础镜像容器，这里我用的是私有镜像仓库地址，**大家部署的时候需要修改为自己的镜像**。`pod-infrastructure`镜像是Redhat制作的，大小接近80M，下载比较耗时，其实该镜像并不运行什么具体进程，可以使用Google的pause镜像`gcr.io/google_containers/pause-amd64:3.0`，这个镜像只有300多K，或者通过DockerHub下载`jimmysong/pause-amd64:3.0`。
+- 如果使用 systemd 方式启动，则需要额外增加两个参数 `--runtime-cgroups=/systemd/system.slice --kubelet-cgroups=/systemd/system.slice`
+- `--experimental-bootstrap-kubeconfig` 在 1.9 版本已经变成了 `--bootstrap-kubeconfig`
+- `--address` 不能设置为 `127.0.0.1`，否则后续 Pods 访问 kubelet 的 API 接口时会失败，因为 Pods 访问的 `127.0.0.1` 指向自己而不是 kubelet；
+- 如果设置了 `--hostname-override` 选项，则 `kube-proxy` 也需要设置该选项，否则会出现找不到 Node 的情况；
+- `"--cgroup-driver` 配置成 `systemd`，不要使用 `cgroup`，否则在 CentOS 系统中 kubelet 将启动失败（保持 docker 和 kubelet 中的 cgroup driver 配置一致即可，不一定非使用 `systemd`）。
+- `--experimental-bootstrap-kubeconfig` 指向 bootstrap kubeconfig 文件，kubelet 使用该文件中的用户名和 token 向 kube-apiserver 发送 TLS Bootstrapping 请求；
+- 管理员通过了 CSR 请求后，kubelet 自动在 `--cert-dir` 目录创建证书和私钥文件 (`kubelet-client.crt` 和 `kubelet-client.key`)，然后写入 `--kubeconfig` 文件；
+- 建议在 `--kubeconfig` 配置文件中指定 `kube-apiserver` 地址，如果未指定 `--api-servers` 选项，则必须指定 `--require-kubeconfig` 选项后才从配置文件中读取 kube-apiserver 的地址，否则 kubelet 启动后将找不到 kube-apiserver (日志中提示未找到 API Server），`kubectl get nodes` 不会返回对应的 Node 信息；`--require-kubeconfig` 在 1.10 版本被移除，参看 [PR](https://github.com/kubernetes/kops/pull/4357/commits/30b10cb1c8c9d8d67fdf6371f1fda952a2b02004)；
+- `--cluster-dns` 指定 kubedns 的 Service IP (可以先分配，后续创建 kubedns 服务时指定该 IP)，`--cluster-domain` 指定域名后缀，这两个参数同时指定后才会生效；
+- `--cluster-domain` 指定 pod 启动时 `/etc/resolve.conf` 文件中的 `search domain` ，起初我们将其配置成了 `cluster.local.`，这样在解析 service 的 DNS 名称时是正常的，可是在解析 headless service 中的 FQDN pod name 的时候却错误，因此我们将其修改为 `cluster.local`，去掉最后面的 ” 点号 “ 就可以解决该问题，关于 kubernetes 中的域名 / 服务名称解析请参见我的另一篇文章。
+- `--kubeconfig=/etc/kubernetes/kubelet.kubeconfig` 中指定的 `kubelet.kubeconfig` 文件在第一次启动 kubelet 之前并不存在，请看下文，当通过 CSR 请求后会自动生成 `kubelet.kubeconfig` 文件，如果你的节点上已经生成了 `~/.kube/config` 文件，你可以将该文件拷贝到该路径下，并重命名为 `kubelet.kubeconfig`，所有 node 节点可以共用同一个 kubelet.kubeconfig 文件，这样新添加的节点就不需要再创建 CSR 请求就能自动添加到 kubernetes 集群中。同样，在任意能够访问到 kubernetes 集群的主机上使用 `kubectl --kubeconfig` 命令操作集群时，只要使用 `~/.kube/config` 文件就可以通过权限认证，因为这里面已经有认证信息并认为你是 admin 用户，对集群拥有所有权限。
+- `KUBELET_POD_INFRA_CONTAINER` 是基础镜像容器，这里我用的是私有镜像仓库地址，**大家部署的时候需要修改为自己的镜像**。`pod-infrastructure` 镜像是 Redhat 制作的，大小接近 80M，下载比较耗时，其实该镜像并不运行什么具体进程，可以使用 Google 的 pause 镜像 `gcr.io/google_containers/pause-amd64:3.0`，这个镜像只有 300 多 K，或者通过 DockerHub 下载 `jimmysong/pause-amd64:3.0`。
 
 完整 unit 见 [kubelet.service](../systemd/kubelet.service)
 
-### 启动kublet
+### 启动 kubelet
 
 ``` bash
 systemctl daemon-reload
@@ -247,9 +247,9 @@ systemctl start kubelet
 systemctl status kubelet
 ```
 
-### 通过kublet的TLS证书请求
+### 通过 kubelet 的 TLS 证书请求
 
-kubelet 首次启动时向 kube-apiserver 发送证书签名请求，必须通过后 kubernetes 系统才会将该 Node 加入到集群。
+Kubelet 首次启动时向 kube-apiserver 发送证书签名请求，必须通过后 Kubernetes 系统才会将该 Node 加入到集群。
 
 查看未授权的 CSR 请求
 
@@ -283,19 +283,19 @@ $ ls -l /etc/kubernetes/ssl/kubelet*
 -rw------- 1 root root 1675 Apr  7 02:07 /etc/kubernetes/ssl/kubelet.key
 ```
 
-假如你更新kubernetes的证书，只要没有更新`token.csv`，当重启kubelet后，该node就会自动加入到kuberentes集群中，而不会重新发送`certificaterequest`，也不需要在master节点上执行`kubectl certificate approve`操作。前提是不要删除node节点上的`/etc/kubernetes/ssl/kubelet*`和`/etc/kubernetes/kubelet.kubeconfig`文件。否则kubelet启动时会提示找不到证书而失败。
+假如你更新 Kubernetes 的证书，只要没有更新 `token.csv`，当重启 kubelet 后，该 node 就会自动加入到 kuberentes 集群中，而不会重新发送 `certificaterequest`，也不需要在 master 节点上执行 `kubectl certificate approve` 操作。前提是不要删除 node 节点上的 `/etc/kubernetes/ssl/kubelet*` 和 `/etc/kubernetes/kubelet.kubeconfig` 文件。否则 kubelet 启动时会提示找不到证书而失败。
 
-**注意：**如果启动kubelet的时候见到证书相关的报错，有个trick可以解决这个问题，可以将master节点上的`~/.kube/config`文件（该文件在[安装kubectl命令行工具](kubectl-installation.md)这一步中将会自动生成）拷贝到node节点的`/etc/kubernetes/kubelet.kubeconfig`位置，这样就不需要通过CSR，当kubelet启动后就会自动加入的集群中。
+**注意：**如果启动 kubelet 的时候见到证书相关的报错，有个 trick 可以解决这个问题，可以将 master 节点上的`~/.kube/config`文件（该文件在[安装 kubectl 命令行工具](kubectl-installation.md)这一步中将会自动生成）拷贝到node节点的`/etc/kubernetes/kubelet.kubeconfig`位置，这样就不需要通过 CSR，当kubelet启动后就会自动加入的集群中。
 
 ## 配置 kube-proxy
 
-**安装conntrack**
+**安装 conntrack**
 
 ```bash
 yum install -y conntrack-tools
 ```
 
-**创建 kube-proxy 的service配置文件**
+**创建 kube-proxy 的 service 配置文件**
 
 文件路径`/usr/lib/systemd/system/kube-proxy.service`。
 
