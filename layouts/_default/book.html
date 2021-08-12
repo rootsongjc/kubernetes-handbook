@@ -1,14 +1,16 @@
-<div class="card p-0 border-primary rounded-0 hover-shadow mb-5">
+<div class="card border-0 rounded-0 hover-shadow mb-5">
   <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
-  <div class="book-card-body ml-4">
+  <div class="book-card-body">
     <ul class="list-inline mb-3">
       <li class="list-inline-item"><i class="ti-calendar"></i><span class="ml-1">{{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</span></li>
       <li class="list-inline-item"><i class="ti-tag"></i><span class="ml-1">{{ .Params.Category }}</span></li>
     </ul>
     <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
-    <p class="card-text mb-4">{{ .Params.subtitle | truncate 30 }}</p>
+    <ul class="list-inline">
+    <li class="list-in-line-item">{{ .Params.subtitle | truncate 30 }}</li>
     <!-- hide button
     <a href="{{ .Permalink | relURL }}" class="btn btn-primary btn-sm">{{ i18n "apply_now"}}</a>
     -->
+    </ul>
   </div>
 </div>
