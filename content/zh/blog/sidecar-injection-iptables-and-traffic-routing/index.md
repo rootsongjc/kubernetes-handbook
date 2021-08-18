@@ -3,21 +3,21 @@ title: "Istio 中的 Sidecar 注入及透明流量劫持过程详解"
 date: 2020-04-27T21:08:59+08:00
 draft: false
 tags: ["istio","iptables"]
-description: "本文基于 Istio 1.5.1 版本，介绍了 sidecar 模式及其优势 sidecar 注入到数据平面，如何做流量劫持和转发的，以及流量是怎样路由到 upstream 的。"
+description: "本文基于 Istio 1.11 版本，介绍了 sidecar 模式及其优势 sidecar 注入到数据平面，如何做流量劫持和转发的，以及流量是怎样路由到 upstream 的。"
 categories: ["Service Mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-本文基于 Istio 1.5.1 版本，将为大家介绍以下内容：
+本文基于 Istio 1.11 版本，将为大家介绍以下内容：
 
 - 什么是 sidecar 模式和它的优势在哪里。
 - Istio 中是如何做 sidecar 注入的？
 - Sidecar proxy 是如何做透明流量劫持的？
 - 流量是如何路由到 upstream 的？
 
-在此之前我曾写过基于 Istio 1.1 版本的[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，Istio 1.5 与 Istio 1.1 中的 sidecar 注入和流量劫持环节最大的变化是：
+在此之前我曾写过基于 Istio 1.1 版本的[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，Istio 1.11 与 Istio 1.1 中的 sidecar 注入和流量劫持环节最大的变化是：
 
 - iptables 改用命令行工具，不再使用 shell 脚本。
 - sidecar inbound 和 outbound 分别指定了端口，而之前是使用同一个端口（15001）。
@@ -840,4 +840,4 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/docs/ops/diagnostic-tools/proxy-cmd/)
 - [揭开 Istio Sidecar 注入模型的神秘面纱 - istio.io](https://istio.io/zh/blog/2019/data-plane-setup/)
-- [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/zh/docs/concept/traffic-hijack/)
+- [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/docs/concept/traffic-hijack/)

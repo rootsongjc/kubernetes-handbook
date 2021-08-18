@@ -1,23 +1,23 @@
 ---
 title: "Sidecar injection and transparent traffic hijacking process in Istio explained in detail"
-date: 2020-04-27T21:08:59+08:00
+date: 2020-08-18T21:08:59+08:00
 draft: false
 tags: ["istio","iptables"]
-description: "Based on Istio version 1.5.1, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and forwarding is done, and how traffic is routed to upstream."
+description: "Based on Istio version 1.11, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and forwarding is done, and how traffic is routed to upstream."
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-Based on Istio version 1.5.1, this article will present the following.
+Based on Istio version 1.11, this article will present the following.
 
 - What is the sidecar pattern and what advantages does it have?
 - How are sidecar injections done in Istio?
 - How does Sidecar proxy do transparent traffic hijacking?
 - How is the traffic routed to upstream?
 
-A year ago, I have written about [understanding Envoy proxy Sidecar injection and traffic hijacking in Istio Service Mesh](/en/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) which was based on Istio version 1.1. The biggest changes in the sidecar injection and traffic hijacking link between Istio 1.5 and Istio 1.1 are:
+A year ago, I have written about [understanding Envoy proxy Sidecar injection and traffic hijacking in Istio Service Mesh](/en/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) which was based on Istio version 1.1. The biggest changes in the sidecar injection and traffic hijacking link between Istio 1.11 and Istio 1.1 are:
 
 - iptables switched to a command-line tool and no longer uses shell scripts.
 - The sidecar inbound and outbound specify the ports separately, whereas previously the same port (15001) was used.
