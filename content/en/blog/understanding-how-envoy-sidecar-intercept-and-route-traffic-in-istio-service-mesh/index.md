@@ -53,7 +53,7 @@ Below is an overview of the steps from Sidecar injection, Pod startup to Sidecar
 
 The following figure shows a `productpage`service access request `http://reviews.default.svc.cluster.local:9080/`, when traffic enters `reviews` the internal services, `reviews` internal services Envoy Sidecar is how to do traffic blocked the route forward.
 
-![istio iptables](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210407.png)
+![istio iptables](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210818.png)
 
 Before the first step, `productpage` Envoy Sidecar Pod has been selected by EDS of a request to `reviews` a Pod service of its IP address, it sends a TCP connection request.
 
