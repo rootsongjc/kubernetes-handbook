@@ -78,6 +78,7 @@ top_header = false
 search = true
 # Gitalk
 enableGitalk = true
+enableAdSense = true
 
 # Preloader
 [params.preloader]
