@@ -15,7 +15,7 @@ slider:
     #        link : "book"
 
     # slider item loop
-    - title : "云原生社区是国内最大的独立第三方云原生终端用户和泛开发者社区"
+    - title : "云原生社区，国内最大的独立第三方云原生终端用户和泛开发者社区"
       animation_in : "left"
       animation_out : "right"
       content: "宋净超（Jimmy Song）是云原生社区创始人，这里是他的个人博客。从 2016 年起，他参与撰写和翻译了多本云原生领域书籍，他致力于构建中国最具影响力的云原生社区，打造以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的云原生技术体系。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
