@@ -24,7 +24,7 @@ speaker:
     designation : "Tetrate"
 
   # speaker loop
-  - name : "林杨"
+  - name : "Yang Lin"
     image : "images/event-speakers/linyang.jpg"
     designation : "Flomes"
 
@@ -38,7 +38,7 @@ speaker:
     image : "images/event-speakers/zhangweibin.jpg"
     designation : "Jinlan Software"
   # speaker loop
-  - name : "Changgqin He"
+  - name : "Changqin He"
     image : "images/event-speakers/hechangqin.jpg"
     designation : "Line China"
 # type
