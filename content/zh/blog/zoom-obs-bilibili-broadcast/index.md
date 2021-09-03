@@ -77,6 +77,16 @@ type: "post"
 
 ![USB 外置声卡](ugreen.jpg)
 
+## 多路推流（多渠道同步直播）
+
+因为我们在直播时往往有多个渠道，比如多个 B 站直播间、微信视频号等，如何使用 OBS 同步推流到多个渠道呢？可以使用 [sorayuki/obs-multi-rtmp](https://github.com/sorayuki/obs-multi-rtmp) 插件（支持 Windows 和 macOS），注意需要将 OBS 升级到最新版本（至少 27.0.1 版本）。安装完插件，重启 OBS 后就可以看到一个窗口新建多路推流，如下图所示。
+
+![OBS 新建多路推流](https://tva1.sinaimg.cn/large/008i3skNly1gu39v42dlkj60ia0hl0tj02.jpg)
+
+如果没有看到该窗口，请点击【视图】-【停靠部件】-【多路推流】即可显示。
+
+![OBS 多路推流选项](https://tva1.sinaimg.cn/large/008i3skNly1gu39u3zpknj60f3096gmh02.jpg)
+
 ## 直播效果
 
 下面是当晚直播的 zoom 录制的视频直出，已上传到 [B 站](https://www.bilibili.com/video/BV1jK4y1R7Tk)，大家可以感受下画面的清晰度还有声音效果，我还是比较满意的。
