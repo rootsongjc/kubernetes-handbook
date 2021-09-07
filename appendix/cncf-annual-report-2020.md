@@ -50,4 +50,4 @@ CNCF 本年度在终端用户社区中推出了类似于 ThoughtWorks 的[技术
 
 ## 参考
 
-- [CNCF Annual Report 2020](https://share.weiyun.com/n4bdwGZ2)
+- [CNCF Annual Report 2020](https://www.cncf.io/cncf-annual-report-2020-pdf)
