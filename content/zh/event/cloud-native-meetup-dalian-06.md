@@ -26,7 +26,7 @@ speaker:
   # speaker loop
   - name : "林杨"
     image : "images/event-speakers/linyang.jpg"
-    designation : "Flomes"
+    designation : "Flomesh"
 
   # speaker loop
   - name : "白西原"
