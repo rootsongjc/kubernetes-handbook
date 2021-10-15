@@ -303,7 +303,7 @@ usersvc-55b6857d44-s2znk   1/1       Running   0          9m        172.33.10.2 
 
 ## 参考
 
-- [Part 2: Deploying Envoy with a Python Flask webapp and Kubernetes](https://www.datawire.io/envoyproxy/envoy-flask-kubernetes/)
-- [envoy-steps](https://github.com/datawire/envoy-steps)
-- [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 
-- [envoy-tutorial](https://github.com/rootsongjc/envoy-tutorial)
+- [Part 2: Deploying Envoy with a Python Flask webapp and Kubernetes - getambassador.io](https://getambassador.io/resources/envoy-flask-kubernetes/)
+- [envoy-steps - github.com](https://github.com/datawire/envoy-steps)
+- [kubernetes-vagrant-centos-cluster - github.com](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 
+- [envoy-tutorial - github.com](https://github.com/rootsongjc/envoy-tutorial)

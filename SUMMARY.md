@@ -98,7 +98,8 @@
   * [Aggregated API Server](concepts/aggregated-api-server.md)
   * [APIService](concepts/apiservice.md)
   * [Service Catalog](concepts/service-catalog.md)
-  * [多集群管理](concepts/multicluster.md)
+* [多集群管理](concepts/multicluster.md)
+  * [Multi-Cluster Services API（多集群服务 API ）](concepts/multi-cluster-services-api.md)
 * [资源调度](concepts/scheduling.md)
   * [QoS（服务质量等级）](concepts/qos.md)
 

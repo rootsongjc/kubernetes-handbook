@@ -104,7 +104,6 @@ Trace 通常指一次完整的调用链。如上文中的 Jaeger UI 截图就是
 
 ## 参考
 
-- [OpenTracing 官方网站](https://opentracing.io/)
-- [OpenTracing 语义规范（Semantic Specification）](https://github.com/opentracing/specification/blob/master/specification.md)
-- [OpenTracing 语义约定（Semantic Conventions）](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
-- [开放分布式追踪（OpenTracing）入门与 Jaeger 实现](https://yq.aliyun.com/articles/514488#19)
+- [OpenTracing 官方网站 - opentracing.io](https://opentracing.io/)
+- [OpenTracing 语义规范（Semantic Specification）- github.com](https://github.com/opentracing/specification/blob/master/specification.md)
+- [OpenTracing 语义约定（Semantic Conventions）- github.com](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)
