@@ -1,14 +1,12 @@
 # Operator
 
-Operator是由[CoreOS](https://coreos.com)开发的，用来扩展Kubernetes API，特定的应用程序控制器，它用来创建、配置和管理复杂的有状态应用，如数据库、缓存和监控系统。Operator基于Kubernetes的资源和控制器概念之上构建，但同时又包含了应用程序特定的领域知识。创建Operator的关键是CRD（自定义资源）的设计。
+Operator是由[CoreOS](https://coreos.com)开发的，用来扩展Kubernetes API，特定的应用程序控制器，它用来创建、配置和管理复杂的有状态应用，如数据库、缓存和监控系统。Operator基于Kubernetes的资源和控制器概念之上构建，但同时又包含了应用程序特定的领域知识。创建Operator的关键是CRD（自定义资源）的设计。[awesome-operators](https://github.com/operator-framework/awesome-operators) 中罗列了目前已知的 Operator。
 
 ## 工作原理
 
 Operator是将运维人员对软件操作的知识给代码化，同时利用Kubernetes强大的抽象来管理大规模的软件应用。
 
 Operator使用了Kubernetes的自定义资源扩展API机制，如使用[CRD](../concepts/custom-resource.md)（CustomResourceDefinition）来创建。Operator通过这种机制来创建、配置和管理应用程序。
-
-当前CoreOS依靠社区力量创建了众多的 Operator，见：<https://operatorhub.io/>。
 
 Operator基于Kubernetes的以下两个概念构建：
 
@@ -52,17 +50,10 @@ Operator本质上是与应用息息相关的，因为这是特定领域的知识
 6. Operator应该让用户能够根据版本声明来选择所需版本和编排应用程序升级。不升级软件是操作错误和安全问题的常见来源，Operator可以帮助用户更加自信地解决这一问题。
 7. Operator应该进行“Chaos Monkey”测试，以模拟Pod、配置和网络故障的情况下的行为。
 
-## OperatorHub
-
-我们都知道在 Kubernetes 上安装应用可以使用 Helm 直接安装各种打包成 Chart 形式的 Kubernetes 应用，但随着 Kubernetes Operator 的流行，Kubernetes 社区又推出了 [OperatorHub](https://www.operatorhub.io/)，你可以在这里分享或安装 Operator：<https://www.operatorhub.io>。
-
-另外，[awesome-operators](https://github.com/operator-framework/awesome-operators) 中罗列了目前已知的 Operator。
-
 ## 参考
 
 - [Operators - coreos.com](https://coreos.com/operators)
 - [awesome-operators - github.com](https://github.com/operator-framework/awesome-operators)
-- [OperatorHub - operatorhub.io](https://www.operatorhub.io)
 - [Writing a Kubernetes Operator in Golang](https://medium.com/@mtreacher/writing-a-kubernetes-operator-a9b86f19bfb9)
 - [Introducing Operators: Putting Operational Knowledge into Software - coreos.com](https://coreos.com/blog/introducing-operators.html)
 - [Automating Kubernetes Cluster Operations with Operators - thenewstack.io](https://thenewstack.io/automating-kubernetes-cluster-operations-operators/)

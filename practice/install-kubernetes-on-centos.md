@@ -35,7 +35,7 @@
 + RBAC 授权
 + kubelet TLS BootStrapping
 + kubedns、dashboard、heapster(influxdb、grafana)、EFK(elasticsearch、fluentd、kibana) 集群插件
-+ 私有docker镜像仓库[harbor](https://github.com/vmware/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
++ 私有docker镜像仓库[harbor](https://github.com/goharbor/harbor)（请自行部署，harbor提供离线安装包，直接使用docker-compose启动即可）
 
 ## 环境说明
 

@@ -1,6 +1,6 @@
 # 云原生应用之路——从 Kubernetes 到云原生
 
-《从 Kubernetes 到云原生—— 云原生应用之路》，这是我最近在 [ArchSummit 2017 北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云 & TalkingData 合办的 Service Mesh is coming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题。
+注：本文根据笔者在 [ArchSummit 2017 北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云 & TalkingData 合办的 Service Mesh is coming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题《从 Kubernetes 到云原生—— 云原生应用之路》改写而成。
 
 本文简要介绍了容器技术发展的路径，为何 Kubernetes 的出现是容器技术发展到这一步的必然选择，而为何 Kubernetes 又将成为云原生应用的基石。
 
@@ -119,7 +119,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 **迁移到云架构**
 
-迁移到云端架构，相对单体架构来说会带来很多挑战。比如自动的持续集成与发布、服务监控的变革、服务暴露、权限的管控等。这些具体细节请参考 [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook) 中的说明，在此就不细节展开，另外推荐一本我翻译的由 Pivotal 出品的电子书——[《迁移到云原生应用架构》](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)，推荐大家阅读。
+迁移到云端架构，相对单体架构来说会带来很多挑战。比如自动的持续集成与发布、服务监控的变革、服务暴露、权限的管控等。这些具体细节请参考 [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook) 中的说明，在此就不细节展开，另外推荐一本我翻译的由 Pivotal 出品的电子书——[《迁移到云原生应用架构》](https://tanzu.vmware.com/content/ebooks/migrating-to-cloud-native-application-architectures)，推荐大家阅读。
 
 ## 服务网格
 
@@ -142,12 +142,11 @@ Kubernetes 中的应用将作为微服务运行，但是 Kubernetes 本身并没
 - 扩展 kubernetes 的应用负载均衡机制，实现灰度发布
 - 完全解耦于应用，应用可以无感知，加速应用的微服务和云原生转型
 
-使用 Service Mesh 将可以有效的治理 Kubernetes 中运行的服务，当前开源的 Service Mesh 有：
+使用 Service Mesh 将可以有效的治理 Kubernetes 中运行的服务，当前开源的流行的 Service Mesh 有：
 
-- Linkderd：[https://linkerd.io](https://linkerd.io/)，由最早提出 Service Mesh 的公司 [Buoyant](https://buoyant.io/) 开源，创始人来自 Twitter
-- Envoy：https://www.envoyproxy.io/，Lyft 开源的，可以在 Istio 中使用 Sidecar 模式运行
-- Istio：[https://istio.io](https://istio.io/)，由 Google、IBM、Lyft 联合开发并开源
-- Conduit：[https://conduit.io](https://conduit.io/)，同样由 Buoyant 开源的轻量级的基于 Kubernetes 的 Service Mesh
+- [Linkerd](https://linkerd.io/)：由最早提出 Service Mesh 的公司 [Buoyant](https://buoyant.io/) 开源，创始人来自 Twitter
+- [Envoy](https://www.envoyproxy.io/)：由 Lyft 开源，可以在 Istio 中使用 Sidecar 模式运行以作为数据平面，也可以基于它来构建自己的服务网格
+- [Istio](https://istio.io)：由 Google、IBM、Lyft 联合开发并开源
 
 此外还有很多其它的 Service Mesh 鱼贯而出，请参考 [awesome-cloud-native](https://jimmysong.io/awesome-cloud-native)。
 
@@ -155,12 +154,12 @@ Kubernetes 中的应用将作为微服务运行，但是 Kubernetes 本身并没
 
 Linkerd 和 Istio 是最早开源的 Service Mesh，它们都支持 Kubernetes，下面是它们之间的一些特性对比。
 
-| **Feature** | **Istio**     | **Linkerd**                  |
-| ----------- | ------------- | ---------------------------- |
-| 部署架构        | Envoy/Sidecar | DaemonSets                   |
-| 易用性         | 复杂            | 简单                           |
-| 支持平台        | Kubernetes    | Kubernetes/Mesos/Istio/Local |
-| 是否已有生产部署    | 否             | 是                            |
+| **Feature**      | **Istio**     | **Linkerd**                  |
+| ---------------- | ------------- | ---------------------------- |
+| 部署架构         | Envoy/Sidecar | DaemonSets                   |
+| 易用性           | 复杂          | 简单                         |
+| 支持平台         | Kubernetes    | Kubernetes/Mesos/Istio/Local |
+| 是否已有生产部署 | 是            | 是                           |
 
 关于两者的架构可以参考各自的官方文档，我只从其在Kubernetes上的部署结构来说明其区别。
 

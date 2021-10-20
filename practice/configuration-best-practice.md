@@ -30,7 +30,7 @@
 
   可以通过简单地从其service的选择器中省略特定于发行版本的标签，而不是更新服务的选择器来完全匹配replication controller的选择器，来实现跨越多个部署的服务，例如滚动更新。
 
-- 为了滚动升级的方便，在Replication Controller的名字中包含版本信息，例如作为名字的后缀。设置一个`version`标签页是很有用的。滚动更新创建一个新的controller而不是修改现有的controller。因此，version含混不清的controller名字就可能带来问题。查看[Rolling Update Replication Controller](https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/)文档获取更多关于滚动升级命令的信息。
+- 为了滚动升级的方便，在Replication Controller的名字中包含版本信息，例如作为名字的后缀。设置一个`version`标签页是很有用的。滚动更新创建一个新的controller而不是修改现有的controller。
 
   注意 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) 对象不需要再管理 replication controller 的版本名。Deployment 中描述了对象的期望状态，如果对spec的更改被应用了话，Deployment controller 会以控制的速率来更改实际状态到期望状态。（Deployment目前是 [`extensions` API Group](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups)的一部分）。
 

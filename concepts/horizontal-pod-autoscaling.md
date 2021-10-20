@@ -144,10 +144,6 @@ Kubernetes 然后查询新的自定义 metric API 来获取相应自定义 metri
 
 ## 参考
 
-- HPA说明：https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-
-- HPA详解：https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
-
-- 自定义metrics开发：https://github.com/kubernetes/metrics
-
-- 1.7版本的kubernetes中启用自定义HPA：[Configure Kubernetes Autoscaling With Custom Metrics in Kubernetes 1.7 - Bitnami](https://docs.bitnami.com/kubernetes/how-to/configure-autoscaling-custom-metrics/)
+- [HPA说明 - kubernetes.io(https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+- [HPA详解 - kubernetes.io](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [自定义metrics开发 - github.com](https://github.com/kubernetes/metrics)

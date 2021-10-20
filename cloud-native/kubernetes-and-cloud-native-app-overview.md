@@ -211,7 +211,7 @@ Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernete
 * RBAC 授权
 * kubelet TLS BootStrapping
 * kubedns、dashboard、heapster\(influxdb、grafana\)、EFK\(elasticsearch、fluentd、kibana\) 集群插件
-* 私有Docker镜像仓库[Harbor](https://github.com/vmware/harbor)（请自行部署，Harbor提供离线安装包，直接使用docker-compose启动即可）
+* 私有Docker镜像仓库[Harbor](https://github.com/goharbor/harbor)（请自行部署，Harbor提供离线安装包，直接使用docker-compose启动即可）
 
 **步骤介绍**
 
@@ -298,7 +298,7 @@ Kubernetes是一个多租户的云平台，因此必须对用户的权限加以�
 
 ## 如何迁移到云原生应用架构
 
-[Pivotal](https://pivotal.io/) 是云原生应用的提出者，并推出了 [Pivotal Cloud Foundry](https://pivotal.io/platform) 云原生应用平台和 [Spring](https://spring.io/) 开源 Java 开发框架，成为云原生应用架构中先驱者和探路者。
+Pivotal（后被 VMware 收购）是云原生应用的提出者，并推出了 [Pivotal Cloud Foundry](https://pivotal.io/platform) 云原生应用平台和 [Spring](https://spring.io/) 开源 Java 开发框架，成为云原生应用架构中先驱者和探路者。
 
 原书作于2015年，其中的示例主要针对 Java 应用，实际上也适用于任何应用类型，云原生应用架构适用于异构语言的程序开发，不仅仅是针对 Java 语言的程序开发。截止到本人翻译本书时，云原生应用生态系统已经初具规模，[CNCF](https://cncf.io/) 成员不断发展壮大，基于 Cloud Native 的创业公司不断涌现，[kubernetes](https://kubernetes.io/) 引领容器编排潮流，和 Service Mesh 技术（如 [Linkerd](https://linkerd.io/) 和 [Istio](https://istio.io/)） 的出现，Go 语言的兴起（参考另一本书 [Cloud Native Go](http://rootsongjc.github.io/cloud-native-go)）等为我们将应用迁移到云原生架构的提供了更多的方案选择。
 
@@ -473,7 +473,7 @@ Spark原生支持standalone、mesos和YARN资源调度，现已支持Kubernetes�
 
 ## 参考
 
-* [迁移到云原生应用架构指南](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
-* [Cloud Native Go - 已由电子工业出版社出版](https://jimmysong.io/cloud-native-go)
-* [Cloud Native Python - 已由电子工业出版社出版](https://jimmysong.io/posts/cloud-native-python)
-* [Istio Service Mesh 中文文档 v1.2](https://archive.istio.io/v1.2/zh/)
+* [迁移到云原生应用架构指南 - jimmysong.io](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
+* [Cloud Native Go - jimmysong.io](https://jimmysong.io/book/cloud-native-go/)
+* [Cloud Native Python - jimmysong.io](https://jimmysong.io/book/cloud-native-python/)
+* [Istio 官方文档（中文）- istio.io](https://istio.io/zh/)

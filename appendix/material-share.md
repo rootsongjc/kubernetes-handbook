@@ -33,10 +33,6 @@ Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在 <h
 - [opsnull/follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)
 - [rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
 
-## 幻灯片、图书和情报资料分享
-
-- [cloud-native-slides-share](https://github.com/rootsongjc/cloud-native-slides-share)  - Cloud Native 相关meetup、会议PPT、图书资料分享
-
 ## 博客与网站
 
 Kubernetes和Cloud Native相关网站、专栏、博客等。
@@ -73,12 +69,11 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [kubernetes](http://blog.kubernetes.io/)
 - [moby](https://blog.mobyproject.org/)
 - [openshift](https://blog.openshift.com/tag/kubernetes/)
-- [pivotal](https://content.pivotal.io/)
 - [platform9](https://platform9.com/blog/)
 - [prometheus](https://prometheus.io/blog/)
 - [rancher](https://rancher.com/blog/)
 - [sysdig](https://sysdig.com/blog/)
 - [spinnaker](https://blog.spinnaker.io)
-- [twistlock](https://www.twistlock.com/blog/)
+- [tetrate](https://tetrate.io/blog/)
 - [vamp](https://medium.com/vamp-io)
 - [weave](https://www.weave.works/blog/)

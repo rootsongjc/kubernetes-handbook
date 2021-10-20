@@ -1,6 +1,6 @@
 # Istio 如何支持虚拟机
 
-> 本文基于 Istio 1.7 版本撰写。
+注：本文基于 Istio 1.7 版本撰写。
 
 Istio 是目前最流行的服务网格，用于连接、保护、控制和观察服务。当其 2017 年开源时，Kubernetes 已赢得容器编排之战，Istio 为了满足组织转向微服务的需求。虽然 Istio 声称支持异构环境，如 Nomad、Consul、Eureka、Cloud Foundry、Mesos 等，但实际上，它一直与 Kubernetes 合作得最好——它的服务发现就是基于 Kubernetes。
 
@@ -49,17 +49,13 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 7. 将虚拟机中的 MySQL 服务作为 ServiceEntry 引入到 Mesh 中并作为 rating 服务的后端；
 8. 修改 MySQL 表中的数据，验证 bookinfo 中的 rating 相应的行为符合预期；
 
-点击下图[查看 Demo 视频](https://www.bilibili.com/video/bv1Wp4y167QT)。
-
-[![Istio 支持虚拟机 Demo 视频](../images/istio-vm-demo-video.jpg)](https://www.bilibili.com/video/bv1Wp4y167QT)
-
 ## 未来方向
 
 从 [bookinfo](https://istio.io/latest/docs/examples/virtual-machines/bookinfo/) 的演示中可以看出，在这个过程中涉及到的人工工作太多，很容易出错。在未来，Istio 会改进虚拟机测试的可操作性，根据平台身份自动引导，改进 DNS 支持和 istioctl 调试等。大家可以关注 [Istio 环境工作组](https://github.com/istio/community/blob/master/WORKING-GROUPS.md)，了解更多关于虚拟机支持的细节。
 
 ## 参考阅读
 
-- [Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/)
-- [Virtual Machines in Single-Network Meshes](https://istio.io/latest/docs/examples/virtual-machines/single-network/)
-- [Istio: Bringing VMs into the Mesh (with Cynthia Coan)](https://www.tetrate.io/blog/istio-bringing-vms-into-the-mesh-with-cynthia-coan/)
-- [Bridging Traditional and Modern Workloads](https://www.tetrate.io/blog/bridging-traditional-and-modern-workloads/)
+- [Virtual Machine Installation - istio.io](https://istio.io/latest/docs/setup/install/virtual-machine/)
+- [Virtual Machines in Single-Network Meshes - istio.io](https://istio.io/latest/docs/examples/virtual-machines/single-network/)
+- [Istio: Bringing VMs into the Mesh (with Cynthia Coan) - tetrate.io](https://www.tetrate.io/blog/istio-bringing-vms-into-the-mesh-with-cynthia-coan/)
+- [Bridging Traditional and Modern Workloads - tetrate.io](https://www.tetrate.io/blog/bridging-traditional-and-modern-workloads/)
