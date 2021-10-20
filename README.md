@@ -1,6 +1,6 @@
 # Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册
 
-> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生 1.0 的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生 2.0 的新时代。—— [Jimmy Song](https://jimmysong.io)
+> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。—— [Jimmy Song](https://jimmysong.io)
 
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/note/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
@@ -41,7 +41,7 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 
 - 云原生开源组件
 - 云原生应用与微服务架构
-- 基于 Kubernetes 的 Service Mesh 架构
+- 基于 Kubernetes 的服务网格（Service Mesh）架构
 
 本书中的说明、安装的所有组件、所用示例和操作要求至少 **Kubernetes 1.6+** 版本。
 
@@ -71,6 +71,8 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
 - [查看如何贡献](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CONTRIBUTING.md)
 - [查看文档的组织结构与使用方法](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)
 
+关于本书有任何问题，欢迎[提交 Issue](https://github.com/rootsongjc/kubernetes-handbook/issues/new) 或[与作者联系](https://jimmysong.io/contact/)。
+
 ## 云原生出版物
 
 以下为笔者参与出版的云原生相关图书。
@@ -94,6 +96,6 @@ Kubernetes Handbook 开源于 2017 年 3 月并在其后不断完善，是第一
   </a>
 </p>
 
-云原生社区是一个中立的云原生终端用户社区，始与作者于 2016 年成立的 Kubernetes & CloudNative 实战群，覆盖了上千名早期云原生拥护者。在此基础上于 2020 年 5 月，由 CNCF 大使、开源领域意见领袖共同发起将原社群升级为云原生社区，目标成为中国最具影响力的云原生开源社区。
+云原生社区是国内最大的独立第三方云原生终端用户和泛开发者社区，由 CNCF 大使、开源意见领袖共同发起成立于 2020 年 5 月 12 日，提供云原生专业资讯，促进云原生产业发展。
 
 官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，[申请加入社区](https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg)。

@@ -1,6 +1,6 @@
 # 云原生应用之路——从 Kubernetes 到云原生
 
-**从 Kubernetes 到云原生—— 云原生应用之路**，这是我最近在 [ArchSummit 2017 北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云 & TalkingData 合办的 Service Mesh is coming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题。
+《从 Kubernetes 到云原生—— 云原生应用之路》，这是我最近在 [ArchSummit 2017 北京站](http://bj2017.archsummit.com/presentation/306) 和 [数人云 & TalkingData 合办的 Service Mesh is coming meetup](https://www.kubernetes.org.cn/3211.html) 中分享的话题。
 
 本文简要介绍了容器技术发展的路径，为何 Kubernetes 的出现是容器技术发展到这一步的必然选择，而为何 Kubernetes 又将成为云原生应用的基石。
 
@@ -82,7 +82,7 @@ CNCF（云原生计算基金会）给出了云原生应用的三大特征：
 
 ![Cloud Native Features](https://jimmysong.io/kubernetes-handbook/images/cloud-native-architecutre-mindnode.jpg)
 
-[CNCF](https://cncf.io) 所托管的应用（2017 年已达 12 个），即朝着这个目标发展，其公布的 [Cloud Native Landscape](https://github.com/cncf/landscape)，给出了云原生生态的参考体系。
+[CNCF](https://cncf.io) 所托管的应用（即正式捐献给 CNCF 的应用，2017 年已达 12 个），即朝着这个目标发展，其公布的 [Cloud Native Landscape](https://github.com/cncf/landscape)，给出了云原生生态的参考体系。
 
 ![Cloud Native Landscape v1.0](../images/0069RVTdgy1fv5myp6ednj31kw0w0u0x.jpg)
 

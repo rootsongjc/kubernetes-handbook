@@ -1,4 +1,4 @@
-## 问题记录
+## Kubernetes 相关问题记录
 
 安装、使用kubernetes的过程中遇到的所有问题的记录。
 
@@ -79,7 +79,7 @@ options ndots:5
 
 修改 `/etc/kubernetes/kubelet` 文件中的  `––cluster-domain=cluster.local.`  将 local 后面的点去掉后重启所有的 kubelet，这样新创建的 pod 中的 `/etc/resolv.conf`文件的 DNS 配置和解析就正常了。
 
-## 8. kubernetes 集成 ceph 存储 rbd 命令组装问题
+## 8. Kubernetes 集成 ceph 存储 rbd 命令组装问题
 
 kubernetes 使用 ceph 创建 PVC 的时候会有如下报错信息：
 

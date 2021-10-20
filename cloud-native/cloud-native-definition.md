@@ -14,7 +14,7 @@
 - 基于 API 的协作
 - 抗脆弱性
 
-我已于 2017 年翻译了本书，详见 [迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
+笔者已于 2017 年翻译了本书，详见 [迁移到云原生应用架构](https://jimmysong.io/migrating-to-cloud-native-application-architectures/)。
 
 ## CNCF 最初的定义
 
@@ -28,7 +28,7 @@
 
 到了 2018 年，随着近几年来云原生生态的不断壮大，所有主流云计算供应商都加入了该基金会，且从 [Cloud Native Landscape](https://i.cncf.io) 中可以看出云原生有意蚕食原先非云原生应用的部分。CNCF 基金会中的会员以及容纳的项目越来越多，该定义已经限制了云原生生态的发展，CNCF 为云原生进行了重新定位。
 
-以下是 CNCF 对云原生的重新定义（中英对照）：
+以下是 CNCF 对云原生的[重新定义](https://github.com/cncf/toc/blob/main/DEFINITION.md)（中英对照）：
 
 > Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.
 
@@ -44,7 +44,7 @@
 
 ## 总结
 
-关于什么是云原生的争论还在进行中，在笔者看来云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生 1.0 的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生 2.0 的新时代。
+关于什么是云原生的争论还在进行中，在笔者看来云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。
 
 ## 参考
 

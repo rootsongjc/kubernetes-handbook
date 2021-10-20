@@ -10,7 +10,7 @@
 
 ### 应用指标
 
-应用性能指标（Application Performance Metrics，简称 APM）数据与应用性能有关，如加载时间和响应时间，确保应用向客户提供预期性能。像 [Apache Skywalking](https://skywalking.apache.org) 这样的开源技术可以集成到 Istio 服务网格中，既可以作为 APM，也可以作为额外的服务性能管理（Service Performance Management，简称 SPM）系统——一举两得。
+应用性能指标（Application Performance Metrics，简称 APM）数据与应用性能有关，如加载时间和响应时间，确保应用向客户提供预期性能。像 [Apache SkyWalking](https://skywalking.apache.org) 这样的开源技术可以集成到 Istio 服务网格中，既可以作为 APM，也可以作为额外的服务性能管理（Service Performance Management，简称 SPM）系统——一举两得。
 
 ### 运维指标
 
@@ -20,7 +20,7 @@
 
 ## 日志（Logs）
 
-日志是冗长的。包含一个 "事件 "从头到尾的信息。一则日志可以收集（匿名）用户数据。例如，哪个用户发出了请求，这条请求从哪里开始，到达哪些服务等等。
+日志是冗长的。包含一个 "事件"从头到尾的信息。一则日志可以收集（匿名）用户数据。例如，哪个用户发出了请求，这条请求从哪里开始，到达哪些服务等等。
 
 ## 追踪（Tracing）
 
