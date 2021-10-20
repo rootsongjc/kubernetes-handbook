@@ -10,7 +10,9 @@
 
 ![Tetrate Istio 基础教程](../images/tetrate-istio-fundamentals.png)
 
-地址：https://academy.tetrate.io/courses/istio-fundamentals
+- 英文版地址：<https://academy.tetrate.io/courses/istio-fundamentals>
+
+- 中文版地址：<https://academy.tetrate.io/courses/istio-fundamentals-zh>
 
 ## Katacode上的Istio学习环境
 
@@ -60,4 +62,4 @@ GitHub地址：https://github.com/IBM/microservices-traffic-management-using-ist
 
 推荐指数：⭑⭑⭑⭑⭑
 
-推荐原因：由 ServiceMesher 共同撰写的开源 Istio 电子书，作为国内最早最大最专业的服务网格社区，这本书是社区共同经验的结晶。阅读地址 https://www.servicemesher.com/istio-handbook/
+推荐原因：由 ServiceMesher 共同撰写的开源 Istio 电子书，这本书是社区经验的结晶，本书的免费预览版阅读地址 <https://www.servicemesher.com/istio-handbook/>，实体书将于 2022 年春季上市。
