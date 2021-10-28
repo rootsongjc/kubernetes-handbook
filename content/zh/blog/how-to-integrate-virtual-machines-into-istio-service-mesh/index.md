@@ -57,10 +57,6 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 7. 将虚拟机中的 MySQL 服务作为 ServiceEntry 引入到 Mesh 中并作为 rating 服务的后端；
 8. 修改 MySQL 表中的数据，验证 bookinfo 中的 rating 相应的行为符合预期；
 
-点击下图[查看 Demo 视频](https://www.bilibili.com/video/bv1Wp4y167QT)。
-
-[![img](https://tva1.sinaimg.cn/large/0081Kckwly1gkc4lcu37vj318g0p0n0c.jpg)](https://www.bilibili.com/video/bv1Wp4y167QT)
-
 ## 未来方向
 
 从 [bookinfo](https://istio.io/latest/docs/examples/virtual-machines/bookinfo/) 的演示中可以看出，在这个过程中涉及到的人工工作太多，很容易出错。在未来，Istio 会改进虚拟机测试的可操作性，根据平台身份自动引导，改进 DNS 支持和 istioctl 调试等。大家可以关注 [Istio 环境工作组](https://github.com/istio/community/blob/master/WORKING-GROUPS.md)，了解更多关于虚拟机支持的细节。
