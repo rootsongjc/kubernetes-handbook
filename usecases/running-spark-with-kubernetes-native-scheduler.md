@@ -1,5 +1,7 @@
 # 运行支持kubernetes原生调度的Spark程序
 
+**注：该项目已不推荐使用。**
+
 TL;DR 这个主题比较大，该开源项目也还在不断进行中，我单独做了一个 web 用来记录 spark on kubernetes 的研究和最新进展见: https://jimmysong.io/spark-on-k8s
 
 **注意**：本文中的镜像仓库地址 `harbor-001.jimmysong.io` 为的镜像仓库地址为伪装地址，非本文中真正使用的镜像仓库，且该地址也不存在，请替换为您自己的镜像仓库。
