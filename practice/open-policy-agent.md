@@ -1,4 +1,4 @@
-# OPA（开放策略代理）
+# 开放策略代理（OPA）
 
 OPA，全称 Open Policy Agent（开放策略代理），2016 年开源，目前已是 CNCF 中的毕业项目。官网是 [openpolicyagent.org](https://www.openpolicyagent.org/)。
 

@@ -1,4 +1,4 @@
-# Persistent Volume（持久化卷）
+# 持久化卷（Persistent Volume）
 
 本文档介绍了 Kubernetes 中 `PersistentVolume` 的当前状态。建议您在阅读本文档前先熟悉 [volume](https://kubernetes.io/docs/concepts/storage/volumes/)。
 

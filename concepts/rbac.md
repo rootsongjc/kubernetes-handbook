@@ -1,8 +1,8 @@
-# RBAC—— 基于角色的访问控制
+# 基于角色的访问控制（RBAC）
 
-基于角色的访问控制（Role-Based Access Control, 即”RBAC”）使用”rbac.authorization.k8s.io” API Group 实现授权决策，允许管理员通过 Kubernetes API 动态配置策略。
+**注意：本文基于 Kubernetes 1.6 撰写，当时 RBAC 模式处于 beta 版本。**
 
-截至 Kubernetes 1.6，RBAC 模式处于 beta 版本。
+基于角色的访问控制（Role-Based Access Control，即”RBAC”）使用 `rbac.authorization.k8s.io` API Group 实现授权决策，允许管理员通过 Kubernetes API 动态配置策略。
 
 要启用 RBAC，请使用 `--authorization-mode=RBAC` 启动 API Server。
 
@@ -573,3 +573,7 @@ kubectl create clusterrolebinding permissive-binding \
   --user=kubelet \
   --group=system:serviceaccounts
 ```
+
+## 参考
+
+- [使用 RBAC 鉴权 - kubernetes.io](https://kubernetes.io/zh/docs/reference/access-authn-authz/rbac/)
