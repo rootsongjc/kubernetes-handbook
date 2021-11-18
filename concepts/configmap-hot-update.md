@@ -353,7 +353,7 @@ $ kubectl edit configmap special-config
 等待大概10秒钟时间，再次查看环境变量的值。
 
 ```bash
-$ kubectl exec `kubectl get pods -l run=my-nginx  -o=name|cut -d "/" -f2` cat /tmp/log_level
+$ kubectl exec `kubectl get pods -l run=my-nginx  -o=name|cut -d "/" -f2` cat /etc/config/log_level
 DEBUG
 ```
 
