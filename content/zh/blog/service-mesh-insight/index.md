@@ -37,7 +37,7 @@ Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有
 
 ![微服务关注点](https://tva1.sinaimg.cn/large/008i3skNly1gwp7qas2vtj30v70u0whb.jpg)
 
-来源：*https://developers.redhat.com/blog/2016/12/09/spring-cloud-for-microservices-compared-to-kubernetes*
+来源：*<https://developers.redhat.com/blog/2016/12/09/spring-cloud-for-microservices-compared-to-kubernetes>*
 
 服务网格被誉为下一代微服务，从右面这幅图里我们可以看到微服务的一些关注点，这些关注点很多与 Kubernetes 的功能是重合的，既然这些作为平台级的功能 Kubernetes 已经提供了，为什么还要使用服务网格呢？其实 Kubernetes 关注的还是应用的生命周期，它管理的对象是资源和部署，对于服务的管控力度很小。而服务网格正好弥补了这个缺陷。服务网格可以连接、控制、观察和保护微服务。
 
@@ -115,7 +115,7 @@ Istio 有着庞大的社区以及[供应商和用户群体](https://istio.io/lat
 
 ![Istio 中的智能 DNS 代理](https://tva1.sinaimg.cn/large/008i3skNly1gwp81fy0vqj31lq0nq41q.jpg)
 
-来源：https://cloudnative.to/blog/istio-dns-proxy/
+来源：<https://cloudnative.to/blog/istio-dns-proxy/>
 
 还有一种方式，也是[小红书使用的方式](https://cloudnative.to/sig-istio/big-talk/ep08.html)，那就是利用 Istio 1.8 中引入的智能 DNS 代理功能。首先使用 ServiceEntry 定义服务，让所有服务属于一个 VIP 范围，再利用 Istio 的智能 DNS 代理功能，让sidecar只拦截 VIP 网段的流量，这样可以减少 iptables 规则，从而提高性能。如果想深入了解这个做法的细节，大家可以去浏览 [Istio 大咖说第八期的分享视频](https://www.bilibili.com/video/BV12b4y187ae/)。
 
@@ -135,11 +135,11 @@ Istio 在初期是将整个网格内的所有服务的路由信息全量下发�
 
 以下列举的是 Istio 学习资源：
 
-- Istio 官网中文文档：https://istio.io/latest/zh/
+- [Istio 官网中文文档](https://istio.io/latest/zh/)
 - [IstioCon 2021](https://events.istio.io/istiocon-2021/)
 - Istio Meetup China
 - [Istio 大咖说/Istio Weekly](https://github.com/tetratelabs/istio-weekly)
-- 云原生社区 Istio SIG：https://cloudnative.to/sig-istio
+- [云原生社区 Istio SIG](https://cloudnative.to/sig-istio/)
 - [Istio 基础教程（中文）](https://academy.tetrate.io/courses/istio-fundamentals-zh)
 - [Certified Istio Administrator](https://academy.tetrate.io/courses/certified-istio-administrator)
 
@@ -181,7 +181,7 @@ Slime 是由网易数帆微服务团队开源的一款基于 Istio 的智能网�
 Slime 试图解决以下问题：
 
 - 在 Istio 中如何实现高阶扩展的问题，比如扩展 HTTP 插件，限流功能比较单薄，无法根据服务的资源使用率做到自适应限流
-- 解决Sidecar 配置全量下发消耗大量资源导致应用性能变差的问题
+- 解决 Sidecar 配置全量下发消耗大量资源导致应用性能变差的问题
 
 Slime 解决以上问题的答案是构建 Istio 的管理平面，其核心思路是：
 
@@ -247,7 +247,7 @@ Aeraki 是腾讯云在 2021 年 3 月开源的，它的架构与 Slime 类似。
 
 ![Aeraki 架构图](https://tva1.sinaimg.cn/large/008i3skNly1gwp8ytw57sj31f40u0785.jpg)
 
-来源：https://cloudnative.to/blog/istiocon-layer7-traffic/
+来源：<https://cloudnative.to/blog/istiocon-layer7-traffic/>
 
 Aeraki 作为一个独立组件部署，可以很方便地作为一个插件和 Istio 进行集成。
 
