@@ -136,7 +136,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "9693"
+      count : "9801"
       link : "https://cloudnative.to/en"
 
 # funfact is for about page
