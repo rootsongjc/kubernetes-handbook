@@ -27,7 +27,7 @@ image: "images/banner/talk.jpg"
 
 ### 服务网格——容器编排大战后的产物
 
-![Docker Swarm vs Kubernetes vs Mesos](https://tva1.sinaimg.cn/large/008i3skNly1gwp7oq2980j313w0eqq56.jpg)
+![Docker Swarm vs Kubernetes vs Mesos](008i3skNly1gwp7oq2980j313w0eqq56.jpg)
 
 如果你关注云原生领域足够早的话，应该还会对 2015 到 2017 年间的容器编排大战记忆犹新。关于服务网格的起源已经无需多言。2017 年 Kubernetes 获得了容器大战的胜利，微服务的理念已经深入人心，容器化的趋势可谓势不可挡。Kubernetes 架构趋向成熟，慢慢变得无聊，以 Linkerd、Istio 为代表的服务网格技术进入了 CNCF 定义的云原生关键技术视野中。
 
@@ -35,7 +35,7 @@ image: "images/banner/talk.jpg"
 
 Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有个重要概念就是微服务的架构设计，当将单体应用拆分微服务后， 随着服务数量的增多，如何微服务进行管理以保证服务的 SLA 呢？为了从架构层面上解决这个问题，解放程序员的创造性，避免繁琐的服务发现、监控、分布式追踪等事务，服务网格应运而生。
 
-![微服务关注点](https://tva1.sinaimg.cn/large/008i3skNly1gwp7qas2vtj30v70u0whb.jpg)
+![微服务关注点](008i3skNly1gwp7qas2vtj30v70u0whb.jpg)
 
 来源：*<https://developers.redhat.com/blog/2016/12/09/spring-cloud-for-microservices-compared-to-kubernetes>*
 
@@ -43,7 +43,7 @@ Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有
 
 ### Kubernetes vs xDS vs Istio
 
-![Kubernetes vs Istio](https://tva1.sinaimg.cn/large/008i3skNly1gwp7r6q9f9j31lc0tan1i.jpg)
+![Kubernetes vs Istio](008i3skNly1gwp7r6q9f9j31lc0tan1i.jpg)
 
 这幅图展示的是 Kubernetes 和 Istio 的分层架构图。从图中我们可以看到 kube-proxy 的设置是全局的，无法对每个服务进行细粒度的控制，Kubernetes 可以做的只有拓扑感知路由、将流量就近路由，为 Pod 设置进出站的网络策略。
 
@@ -53,7 +53,7 @@ Kube-proxy 实现了一个 Kubernetes 服务的多个 pod 实例之间的流量�
 
 Kubernetes 社区给出了一个使用 Deployment 做金丝雀发布的方法，本质上是通过修改 pod 的标签来给部署的服务分配不同的 pod。
 
-![Envoy vs xDS](https://tva1.sinaimg.cn/large/008i3skNly1gwp7ryybjcj314w0u0wlf.jpg)
+![Envoy vs xDS](008i3skNly1gwp7ryybjcj314w0u0wlf.jpg)
 
 目前在中国最流行的服务网格开源实现是 Istio，也有很多公司对 Istio 进行了二次开发，比如蚂蚁、网易、腾讯等，其实 Istio 是在 Envoy 的基础上开发的，从它开源的第一天起就默认使用了 Envoy 作为它的分布式代理。Envoy 开创性的创造了 xDS 协议，用于分布式网关配置，大大简化了大规模分布式网络的配置。2019 年蚂蚁开源的 MOSN 同样支持了 xDS。Envoy 还是 CNCF 中最早毕业的项目之一，经过大规模的生产应用考验。可以说 Istio 的诞生已经有了很好的基础。
 
@@ -101,7 +101,7 @@ kube-proxy 组件、xDS 和 Istio 对流量管理的抽象后，现在我们仅�
 
 ### Istio 架构稳定，生产可用，生态渐起
 
-![Istio 发布时间表](https://tva1.sinaimg.cn/large/008i3skNly1gwp7wvt1g8j32yo0nk78g.jpg)
+![Istio 发布时间表](008i3skNly1gwp7wvt1g8j32yo0nk78g.jpg)
 
 首先我们来看下 Istio 的发布时间表，1.12 版本在上周刚刚发布，这里列举了从它开源到 1.8 版本发布的时间表。2018 年可以说是服务网格爆发之年，Tetrate 也在这一年成立。自1.5 版本起 Istio 正式确立了当前的架构。Istio 社区也也举办了丰富多彩的活动，2021 年 3 月首届 IstioCon 召开，7 月 Istio Meetup China 在北京举行，2022 年 1 月，Service Mesh Summit 2022 也将在上海举行。
 
@@ -113,7 +113,7 @@ Istio 有着庞大的社区以及[供应商和用户群体](https://istio.io/lat
 
 服务网格为了做到对应用程序透明，默认采用了 iptables 流量劫持的方式，当服务数量大的时候会有大量的 iptables 规则，影响网络性能，你可以使用 [eBPF](https://cloudnative.to/blog/how-ebpf-streamlines-the-service-mesh/) 这样的技术来提供应用性能，但是该技术对操作系统内核的版本要求比较高，很少有企业能够达到。
 
-![Istio 中的智能 DNS 代理](https://tva1.sinaimg.cn/large/008i3skNly1gwp81fy0vqj31lq0nq41q.jpg)
+![Istio 中的智能 DNS 代理](008i3skNly1gwp81fy0vqj31lq0nq41q.jpg)
 
 来源：<https://cloudnative.to/blog/istio-dns-proxy/>
 
@@ -149,7 +149,7 @@ Istio 开源至今已有 4 年时间，2018 年时我和敖小剑一起创建了
 
 下图是 [Istio 基础教程](https://academy.tetrate.io/courses/istio-fundamentals-zh)的首页截图。
 
-![Istio 基础教程（Tetrate 出品）](https://tva1.sinaimg.cn/large/008i3skNly1gwp8rr51ikj31ah0u043i.jpg)
+![Istio 基础教程（Tetrate 出品）](008i3skNly1gwp8rr51ikj31ah0u043i.jpg)
 
 如果你是刚开始接触服务网格和 Istio，可以先从 Istio 基础教程开始学起。这个线上系列课程是图文并茂的中文课程，可以免费参加。
 
@@ -191,7 +191,7 @@ Slime 解决以上问题的答案是构建 Istio 的管理平面，其核心思�
 
 下图是 Istio 作为 Istio 管理平面的流程图。
 
-![Slime 如何作为 Istio 的控制平面](https://tva1.sinaimg.cn/large/008i3skNly1gwp8td6cowj31i90u0aei.jpg)
+![Slime 如何作为 Istio 的控制平面](008i3skNly1gwp8td6cowj31i90u0aei.jpg)
 
 Slime 管理 Istio 的具体步骤如下：
 
@@ -203,7 +203,7 @@ Slime 管理 Istio 的具体步骤如下：
 
 下图展示的 Slime 的内部架构图。
 
-![Slime 内部架构图](https://tva1.sinaimg.cn/large/008i3skNly1gwp8uzsj2wj31ac0oktb4.jpg)
+![Slime 内部架构图](008i3skNly1gwp8uzsj2wj31ac0oktb4.jpg)
 
 作为 Istio 的管理平面，可以将 Slime 的核心看做是 Istio 的一个 Operator。
 
@@ -215,7 +215,7 @@ Slime 内部分为三大组件：
 
 下图展示的是 Slime 自适应限流的架构图。
 
-![Slime 自适应限流架构图](https://tva1.sinaimg.cn/large/008i3skNly1gwp8xghoh2j311k0u0dim.jpg)
+![Slime 自适应限流架构图](008i3skNly1gwp8xghoh2j311k0u0dim.jpg)
 
 Envoy 内置的限流组件功能单一，只能以实例维度配置限流值，无法做到根据应用负载的自适应限流。Slime 通过与 Prometheus metric server 对接，实时的获取监控情况，来动态配置限流值。
 
@@ -245,7 +245,7 @@ Aeraki 是腾讯云在 2021 年 3 月开源的，它的架构与 Slime 类似。
 
 下图是 Aeraki 的架构图。
 
-![Aeraki 架构图](https://tva1.sinaimg.cn/large/008i3skNly1gwp8ytw57sj31f40u0785.jpg)
+![Aeraki 架构图](008i3skNly1gwp8ytw57sj31f40u0785.jpg)
 
 来源：<https://cloudnative.to/blog/istiocon-layer7-traffic/>
 
@@ -263,13 +263,13 @@ Aeraki 可以根据 Istio 版本和 Kubernetes 集群相关信息自动进行调
 
 下图展示的 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 架构图。
 
-![image-20211123181346493](https://tva1.sinaimg.cn/large/008i3skNly1gwp8zzjm0rj314v0u0djy.jpg)
+![image-20211123181346493](008i3skNly1gwp8zzjm0rj314v0u0djy.jpg)
 
 ### API 网关与服务网格的融合
 
 下图展示了使用 Istio Gateway、Kubernetes Ingress、API Gateway 及 NodePort/LB 暴露 Istio mesh 中服务的四种方式。
 
-![访问 Istio 网格中服务的几种方式](https://tva1.sinaimg.cn/large/008i3skNly1gwp935mcd0j31200u0n10.jpg)
+![访问 Istio 网格中服务的几种方式](008i3skNly1gwp935mcd0j31200u0n10.jpg)
 
 其中阴影表示的是 Istio mesh，mesh 中的的流量属于集群内部（东西向）流量，而客户端访问 Kubernetes 集群内服务的流量属于外部（南北向）流量。不过因为 Ingress、Gateway 也是部署在 Kubernetes 集群内的，这些节点访问集群内其他服务的流量就难以归属了。
 
