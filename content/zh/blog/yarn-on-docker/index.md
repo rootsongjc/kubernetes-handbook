@@ -4,7 +4,7 @@ title: "容器技术在大数据场景下的应用——Yarn on Docker"
 description: "基于docker swarm。"
 draft: false
 categories: ["容器"]
-tags: ["hadoop"]
+tags: ["hadoop","docker","swarm","yarn"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/yarn-on-docker"
@@ -26,9 +26,9 @@ image: "images/banner/hadoop.png"
 3. 资源隔离无法动态调整
 4. 无法快速响应业务
 
-## 为何使用Yarnon Docker
+## 为何使用Yarn on Docker
 
-**彻底隔离队列 **
+**彻底隔离队列**
 
 - 为了合理利用Hadoopyarn的资源，队列间会互相抢占计算资源，造成重要任务阻塞
 - 根据部门申请的机器数量划分Yarn集群方便财务管理
@@ -170,8 +170,6 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 通过Docker命令去创建一个自定义的网络起名为“mynet”，同时会产生一个网桥br0，之后通过更改网络配置文件（在/etc/sysconfig/network-scripts/下ifcfg-br0、ifcfg-默认网络接口名）将默认网络接口桥接到br0上，重启网络后，桥接网络就会生效。Docker默认在每次启动容器时都会将容器内的默认网卡桥接到br0上，而且宿主机的物理网卡也同样桥接到了br0上了。其实桥接的原理就好像是一台交换机，Docker 容器和宿主机物理网络接口都是服务器，通过vethpair这个网络设备像一根网线插到交换机上。至此，所有的容器网络已经在同一个网络上可以通信了，每一个Docker容器就好比是一台独立的虚拟机，拥有和宿主机同一网段的IP，可以实现跨主机访问了。
 
- 
-
 ## 性能瓶颈与优化
 
 大家可能会担心自定义网络的性能问题，为此我们用iperf进行了网络性能测试。我们对比了不同主机容器间的网速，同一主机上的不同容器和不同主机间的网速，结果如下表：
@@ -184,7 +182,7 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 因为使用docker将原来一台机器一个nodemanager给细化为了多个，会造成nodemanager个数的成倍增加，因此hadoop的一些配置需要相应优化。
 ```ini
-•  yarn.nodemanager.localizer.fetch.thread-count 随着容器数量增加，需要相应调整该参数
+- yarn.nodemanager.localizer.fetch.thread-count 随着容器数量增加，需要相应调整该参数
 - yarn.resourcemanager.amliveliness-monitor.interval-ms 默认1秒，改为10秒，否则时间太短可能导致有些节点无法注册
 - yarn.resourcemanager.resource-tracker.client.thread-count 默认50，改为100，随着容器数量增加，需要相应调整该参数
 - yarn.nodemanager.pmem-check-enabled 默认true，改为false，不检查任务正在使用的物理内存量
@@ -217,4 +215,4 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 Swarm已死，Swarmkit将继续发展，Docker的Swarm Mode还会在艰难中前行，目前看到的趋势仍然是模仿Kubernentes为主，没有自己鲜明的特色（除了部署管理方便意外，谁让它就集成在了docker里呢，就像当年windows集成IE打败Netscape，不过这不会再此上演了），Kubernentes又是一个通用的资源调度框架，它的最小资源划分是**Pod**而不是docker，它还可以运行rkt、containerd。
 
-上周起我开始将注意力转移到kubernentes，以后请关注我的[Kuberentes实践](https://jimmysong.io/tags/kubernetes/)相关文章。
+上周起我开始将注意力转移到 Kubernentes，以后请关注我的[Kuberentes实践](https://jimmysong.io/tags/kubernetes/)相关文章。
