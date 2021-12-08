@@ -13,7 +13,7 @@ image: "images/banner/hadoop.png"
 
 ## 前言
 
-我已就该话题已在2016年上海Qcon上发表过演讲，[点此观看](http://www.infoq.com/cn/presentations/yarn-on-docker-container-technology-in-big-data-scenarios)。另外InfoQ网站上的文字版[数据中心的Yarn on Docker集群方案](http://www.infoq.com/cn/articles/YarnOnDocker-forDCCluster)，即本文。
+我已就该话题已在2016年上海Qcon上发表过演讲。另外InfoQ网站上的文字版[数据中心的Yarn on Docker集群方案](https://www.infoq.cn/article/YarnOnDocker-forDCCluster/)，即本文。
 
 项目代码开源在Github上：[Magpie](https://github.com/rootsongjc/magpie)
 
@@ -58,13 +58,13 @@ image: "images/banner/hadoop.png"
 
 ## 系统架构
 
-![td_yarn_arch](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_arch.jpg)
+![Yarn 在 swarm 上运行的架构](td_yarn_arch.jpg)
 
 比如数据中心中运行的Hadoop集群，我们将HDFS依然运行在物理机上，即DataNode依然部署在实体机器上，将Yarn计算层运行在Docker容器中，整个系统使用二层资源调度，Spark、Flinek、MapReduce等应用运行在Yarn上。
 
 Swarm调度最底层的主机硬件资源，CPU和内存封装为Docker容器，容器中运行NodeManager，提供给Yarn集群，一个Swarm集群中可以运行多个Yarn集群，形成圈地式的Yarn计算集群。
 
-![td_yarn_arch2](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_arch2.jpg)
+![YARN 在 Swarm 上的架构之资源分配](td_yarn_arch2.jpg)
 
 **具体流程**
 
@@ -76,35 +76,31 @@ Swarm调度最底层的主机硬件资源，CPU和内存封装为Docker容器，
 
 Swarm为数据中心做容器即主机资源调度，每个swarmnode的节点结构如图：
 
-![td_yarn_arch3](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_arch3.jpg)
+![YARN 在 swarm 上的架构之单节点资源分配](td_yarn_arch3.jpg)
 
 一个Swarmnode就是一台物理机，每台主机上可以起多个同类型的dockercontainer，每个container的资源都有限制包括CPU、内存NodeManager容器只需要考虑本身进程占用的资源和需要给主机预留资源。假如主机是24核64G，我们可以分给一个容器5核12G，NodeManager占用4核10G的资源提供给Yarn。
 
-**KubernetesVS Swarm**
+**Kubernetes VS Swarm**
 
 关于容器集群管理系统的选型，用Kubernetes还是Swarm？我们结合自己的经验和业务需求，对比如下：
 
-![td_yarn_compare](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_compare.jpg)
+![Kubernetes vs Swarm](td_yarn_compare.jpg)
 
-基于以上四点，我们最终选择了Swarm，它基本满足我们的需求，掌握和开发时常较短。
-
- 
+基于以上四点，我们当时选择了Swarm，它基本满足我们的需求，掌握和开发时常较短。
 
 ## 镜像制作与发布
 
 镜像制作和发布流程如下图：
 
-![td_yarn_ci](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_ci.jpg)
-
- 
+![CI 流程](td_yarn_ci.jpg)
 
 用户从客户端提交代码到Gitlab中，需要包含Dockerfile文件，通过集成了docker插件的Jenkins的自动编译发布机制，自动build镜像后push到docker镜像仓库中，同一个项目每提交一次代码都会重新build一次镜像，生成不同的tag来标识镜像，Swarm集群使用该镜像仓库就可以直接拉取镜像。
 
 ### Dockerfile的编写技巧
 
-![td_yarn_dockerfile](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_dockerfile.jpg)
+![Dockerfile 编写技巧](td_yarn_dockerfile.jpg)
 
- Dockerfile相当于docker镜像的编译打包流程说明，其中也不乏一些技巧。     
+Dockerfile相当于docker镜像的编译打包流程说明，其中也不乏一些技巧。     
 
 很多应用需要配置文件，如果想为每次启动容器的时候使用不同的配置参数，可以通过传递环境变量的方式来修改配置文件，前提是需要写一个bash脚本，脚本中来处理配置文件，再将这个脚本作为entrypoint入口，每当容器启动时就会执行这个脚本从而替换配置文件中的参数，也可以通过CMD传递参数给该脚本。
 
@@ -136,7 +132,7 @@ docker-registry/library/hadoop-yarn:v0.1 resourcemanager
 
 我开发的命令行工具[magpie](https://github.com/rootsongjc/magpie)，也可以通过其他开源可视化页面来管理集群，比如shipyard。
 
-![td_yarn_shipyard](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_shipyard.jpg)
+![Shipyard](td_yarn_shipyard.jpg)
 
 ## 自定义网络
 
@@ -144,7 +140,7 @@ docker-registry/library/hadoop-yarn:v0.1 resourcemanager
 
 目前Docker跨主机的网络实现方案也有很多种, 主要包括端口映射，ovs,fannel等。但是这些方案都无法满足我们的需求，端口映射服务内的内网IP会映射成外网的IP，这样会给开发带来困惑，因为他们往往在跨网络交互时是不需要内网IP的，而ovs与fannel则是在基础网络协议上又包装了一层自定义协议，这样当网络流量大时，却又无端的增加了网络负载，最后我们采取了自主研发扁平化网络插件，也就是说让所有的容器统统在大二层上互通。架构如下：
 
-![td_yarn_network](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_network.jpg)
+![YARN 网络](td_yarn_network.jpg)
 
  
 
@@ -164,17 +160,17 @@ docker network create
 mynet
 ```
 
-![td_yarn_ipam](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_ipam.jpg)
+![IPAM 插件](td_yarn_ipam.jpg)
 
-IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器都会调用这个驱动提供的IP管理接口，然后IP接口会对存储IP地址的Etcd有一个增删改查的操作。此插件运行时会起一个UnixSocket, 然后会在docker/run/plugins目录下生成一个.sock文件，Dockerdaemon之后会和这个sock 文件进行沟通去调用我们之前实现好的几个接口进行IP管理，以此来达到IP管理的目的，防止IP冲突。 
+IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器都会调用这个驱动提供的IP管理接口，然后IP接口会对存储IP地址的Etcd有一个增删改查的操作。此插件运行时会起一个UnixSocket, 然后会在`docker/run/plugins`目录下生成一个.sock文件，Dockerdaemon之后会和这个sock 文件进行沟通去调用我们之前实现好的几个接口进行IP管理，以此来达到IP管理的目的，防止IP冲突。 
 
-通过Docker命令去创建一个自定义的网络起名为“mynet”，同时会产生一个网桥br0，之后通过更改网络配置文件（在/etc/sysconfig/network-scripts/下ifcfg-br0、ifcfg-默认网络接口名）将默认网络接口桥接到br0上，重启网络后，桥接网络就会生效。Docker默认在每次启动容器时都会将容器内的默认网卡桥接到br0上，而且宿主机的物理网卡也同样桥接到了br0上了。其实桥接的原理就好像是一台交换机，Docker 容器和宿主机物理网络接口都是服务器，通过vethpair这个网络设备像一根网线插到交换机上。至此，所有的容器网络已经在同一个网络上可以通信了，每一个Docker容器就好比是一台独立的虚拟机，拥有和宿主机同一网段的IP，可以实现跨主机访问了。
+通过Docker命令去创建一个自定义的网络起名为`mynet`，同时会产生一个网桥br0，之后通过更改网络配置文件（在`/etc/sysconfig/network-scripts/`下ifcfg-br0、ifcfg-默认网络接口名）将默认网络接口桥接到br0上，重启网络后，桥接网络就会生效。Docker默认在每次启动容器时都会将容器内的默认网卡桥接到br0上，而且宿主机的物理网卡也同样桥接到了br0上了。其实桥接的原理就好像是一台交换机，Docker 容器和宿主机物理网络接口都是服务器，通过vethpair这个网络设备像一根网线插到交换机上。至此，所有的容器网络已经在同一个网络上可以通信了，每一个Docker容器就好比是一台独立的虚拟机，拥有和宿主机同一网段的IP，可以实现跨主机访问了。
 
 ## 性能瓶颈与优化
 
 大家可能会担心自定义网络的性能问题，为此我们用iperf进行了网络性能测试。我们对比了不同主机容器间的网速，同一主机上的不同容器和不同主机间的网速，结果如下表：
 
- ![td_yarn_iperf](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_iperf.jpg)
+![网络性能对比](td_yarn_iperf.jpg)
 
 从表中我们可以看到，在这一组测试中，容器间的网速与容器是在想通主机还是在不同主机上的差别不大，说明我们的网络插件性能还是很优异的。 
 
@@ -193,13 +189,13 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 如果使用shipyard管理集群会有一个单独的监控页面，可以看到一定时间段内的CPU、内存、IO、网络使用状况。
 
-![td_yarn_monitor](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_monitor.jpg)
+![集群监控](td_yarn_monitor.jpg)
 
 ## 关于未来
 
-![td_yarn_os](https://res.cloudinary.com/jimmysong/image/upload/images/td_yarn_os.jpg) 
+![YARN 的未来](td_yarn_os.jpg) 
 
-我们未来规划做的是DC／OS，基于Docker的应用自动打包编译分发系统，让开发人员可以很便捷的申请资源，上下线服务，管理应用。要达到这个目标还有很多事情要做：
+我们未来规划做的是DC/OS，基于Docker的应用自动打包编译分发系统，让开发人员可以很便捷的申请资源，上下线服务，管理应用。要达到这个目标还有很多事情要做：
 
 -  Service Control Panel：统一的根据服务来管理的web页面
 -  Loadbalance：容器根据机器负载情况自动迁移
