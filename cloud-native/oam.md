@@ -1,6 +1,6 @@
 # OAM（开放应用模型）
 
-[OAM（Open Application Model）](https://oam.dev/)是阿里巴巴和微软共同开源的云原生应用规范模型，同时开源了基于 OAM 的实现 [Rudr](https://github.com/oam-dev/rudr)，自 2019 年 10 月宣布开源以来截止本文发稿已经有快半年时间了。
+[OAM（Open Application Model）](https://oam.dev/)是阿里巴巴和微软共同开源的云原生应用规范模型，自 2019 年 10 月宣布开源以来截止本文发稿已经有快半年时间了。
 
 当前可能大部分人才刚刚开始了解 OAM，所以这篇文章将从最基础出发，为大家介绍 OAM 的诞生背景和要解决的问题，以及它在云原生生态中的作用。
 
@@ -9,7 +9,7 @@
 如果你没有兴趣或者时间阅读下面的全文，那么建议阅读下面这些核心观点：
 
 - OAM 的本质是根据软件设计的“兴趣点分离”原则对负责的 DevOps 流程的高度抽象和封装，这背后还是“**康威定律**”在起作用。
-- OAM 仅定义云原生应用的规范，目前推出的 [Rudr](https://github.com/oam-dev/rudr) 可以看做是 OAM 规范的 Kubernetes 解释器，将云原生应用定义翻译成 Kubernetes 的资源对象。
+- OAM 仅定义云原生应用的规范，OAM 开源之初推出的 [Rudr](https://github.com/oam-dev/rudr) 可以看做是 OAM 规范的 Kubernetes 解释器（已停止维护），将云原生应用定义翻译成 Kubernetes 的资源对象。
 - OAM 与 [Crossplane](https://crossplane.io/) 将展开合作，就 Kubernetes 式以 API 为中心的应用定义发扬光大，并深度参与 [CNCF SIG App Delivery](https://github.com/cncf/sig-app-delivery)，以共同定义云原生应用标准。
 
 > **康威定律（Conway’s Law）**
@@ -69,14 +69,14 @@ OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `
 
 ### OAM 工作原理
 
-下图来自阿里云原生应用平台团队孙健波在**《OAM:云原生时代的应用模型与 下一代 DevOps 技术》**中的分享，OAM 的工作原理如下图所示，OAM Spec 定义了云原生应用的规范（使用一些列 CRD 定义）， Rudr 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。
+OAM 的工作原理如下图所示（图片引用自孙健波在《OAM:云原生时代的应用模型与 下一代 DevOps 技术》中的分享）。
 
-![OAM 的原理](../images/oam-principle.png)
+![OAM 的原理](../images/oam-principle.jpg)
 
-可以将上图分为三个层次：
+OAM Spec 定义了云原生应用的规范（使用一些 CRD 定义）， [KubeVela](https://kubevela.io/) 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。可以将上图分为三个层次：
 
 - **汇编层**：即人工或者使用工具来根据 OAM 规范定义汇编出一个云原生应用的定义，其中包含了该应用的工作负载和运维能力配置。
-- **转义层**：汇编好的文件将打包为 YAML 文件，由 Rudr 或其他 OAM 的实现将其转义为 Kubernetes 或其他云服务（例如 Istio）上可运行的资源对象。
+- **转义层**：汇编好的文件将打包为 YAML 文件，由 [KubeVela](https://kubevela.io/) 或其他 OAM 的实现将其转义为 Kubernetes 或其他云服务（例如 Istio）上可运行的资源对象。
 - **执行层**：执行经过转义好的云平台上的资源对象并执行资源配置。
 
 ## 未来

@@ -98,6 +98,6 @@ Istio 目前主要解决的是分布式系统之间服务调用的问题，但�
 
 ## 参考
 
-- [你是否真的需要 Istio？ - i.cloudnative.to](https://i.cloudnative.to/istio/begin/do-you-really-need-istio)
+- [你是否真的需要 Istio？ - cloudnative.to](https://cloudnative.to/sig-istio/begin/do-you-really-need-istio)
 - [在生产环境使用 Istio 前的若干考虑要素 - cloudnative.to](https://cloudnative.to/blog/the-facts-of-using-istio/)
 

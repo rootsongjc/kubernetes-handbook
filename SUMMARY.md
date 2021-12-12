@@ -226,7 +226,6 @@
   * [总结](usecases/service-mesh-conclusion.md)
 * [Istio](usecases/istio.md)
     * [使用 Istio 前需要考虑的问题](usecases/before-using-istio.md)
-    * [安装并试用 Istio](usecases/istio-installation.md)
     * [Istio 中 sidecar 的注入规范及示例](usecases/sidecar-spec-in-istio.md)
     * [如何参与 Istio 社区及注意事项](usecases/istio-community-tips.md)
     * [Istio 免费学习资源汇总](usecases/istio-tutorials-collection.md)
