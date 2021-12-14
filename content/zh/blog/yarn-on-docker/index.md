@@ -1,6 +1,6 @@
 ---
 date: "2017-04-04T00:19:04+08:00"
-title: "容器技术在大数据场景下的应用——Yarn on Docker"
+title: "容器技术在大数据场景下的应用——YARN on Docker"
 description: "基于docker swarm。"
 draft: false
 categories: ["容器"]
@@ -13,7 +13,7 @@ image: "images/banner/hadoop.png"
 
 ## 前言
 
-我已就该话题已在2016年上海Qcon上发表过演讲。另外InfoQ网站上的文字版[数据中心的Yarn on Docker集群方案](https://www.infoq.cn/article/YarnOnDocker-forDCCluster/)，即本文。
+我已就该话题已在2016年上海Qcon上发表过演讲。另外InfoQ网站上的文字版[数据中心的YARN on Docker集群方案](https://www.infoq.cn/article/YARNOnDocker-forDCCluster/)，即本文。
 
 项目代码开源在Github上：[Magpie](https://github.com/rootsongjc/magpie)
 
@@ -26,22 +26,22 @@ image: "images/banner/hadoop.png"
 3. 资源隔离无法动态调整
 4. 无法快速响应业务
 
-## 为何使用Yarn on Docker
+## 为何使用YARN on Docker
 
 **彻底隔离队列**
 
-- 为了合理利用Hadoopyarn的资源，队列间会互相抢占计算资源，造成重要任务阻塞
-- 根据部门申请的机器数量划分Yarn集群方便财务管理
+- 为了合理利用Hadoop YARN的资源，队列间会互相抢占计算资源，造成重要任务阻塞
+- 根据部门申请的机器数量划分YARN集群方便财务管理
 - 更细粒度的资源分配 
 
 **统一的资源分配**
 
 - 每个NodeManager和容器都可以限定CPU、内存资源
-- Yarn资源划分精确到CPU核数和内存大小 
+- YARN资源划分精确到CPU核数和内存大小 
 
 **弹性伸缩性服务**
 
-- 每个容器中运行一个NodeManager，增减yarn资源只需增减容器个数
+- 每个容器中运行一个NodeManager，增减YARN资源只需增减容器个数
 - 可以指定每个NodeManager拥有的计算资源多少，按需申请资源 
 
 ## 给我们带来什么好处？ 
@@ -53,16 +53,17 @@ image: "images/banner/hadoop.png"
 
 **增加Hadoop集群资源利用率**
 
-- Fordatacenter：避免了静态资源隔离
-- Forcluster：加强集群内部资源隔离
+- 对于数据中心：避免了静态资源隔离
+
+- 对于集群：加强集群内部资源隔离
 
 ## 系统架构
 
-![Yarn 在 swarm 上运行的架构](td_yarn_arch.jpg)
+![YARN 在 swarm 上运行的架构](td_yarn_arch.jpg)
 
-比如数据中心中运行的Hadoop集群，我们将HDFS依然运行在物理机上，即DataNode依然部署在实体机器上，将Yarn计算层运行在Docker容器中，整个系统使用二层资源调度，Spark、Flinek、MapReduce等应用运行在Yarn上。
+比如数据中心中运行的Hadoop集群，我们将HDFS依然运行在物理机上，即DataNode依然部署在实体机器上，将YARN计算层运行在Docker容器中，整个系统使用二层资源调度，Spark、Flink、MapReduce等应用运行在YARN上。
 
-Swarm调度最底层的主机硬件资源，CPU和内存封装为Docker容器，容器中运行NodeManager，提供给Yarn集群，一个Swarm集群中可以运行多个Yarn集群，形成圈地式的Yarn计算集群。
+Swarm调度最底层的主机硬件资源，CPU和内存封装为Docker容器，容器中运行NodeManager，提供给YARN集群，一个Swarm集群中可以运行多个YARN集群，形成圈地式的YARN计算集群。
 
 ![YARN 在 Swarm 上的架构之资源分配](td_yarn_arch2.jpg)
 
@@ -78,7 +79,7 @@ Swarm为数据中心做容器即主机资源调度，每个swarmnode的节点结
 
 ![YARN 在 swarm 上的架构之单节点资源分配](td_yarn_arch3.jpg)
 
-一个Swarmnode就是一台物理机，每台主机上可以起多个同类型的dockercontainer，每个container的资源都有限制包括CPU、内存NodeManager容器只需要考虑本身进程占用的资源和需要给主机预留资源。假如主机是24核64G，我们可以分给一个容器5核12G，NodeManager占用4核10G的资源提供给Yarn。
+一个Swarm node就是一台物理机，每台主机上可以起多个同类型的docker container，每个container的资源都有限制包括CPU、内存NodeManager容器只需要考虑本身进程占用的资源和需要给主机预留资源。假如主机是24核64G，我们可以分给一个容器5核12G，NodeManager占用4核10G的资源提供给YARN。
 
 **Kubernetes VS Swarm**
 
@@ -126,7 +127,7 @@ docker run -d
 docker-registry/library/hadoop-yarn:v0.1 resourcemanager
 ```
 
-最后传递resourcemanager或者nodemanager参数指定启动相应的服务。
+最后传递Resource Manager或者Node Manager参数指定启动相应的服务。
 
 ## 集群管理
 
@@ -136,9 +137,9 @@ docker-registry/library/hadoop-yarn:v0.1 resourcemanager
 
 ## 自定义网络
 
- Docker容器跨主机互访一直是一个问题，Docker官方为了避免网络上带来的诸多麻烦，故将跨主机网络开了比较大的口子，而由用户自己去实现。我们开发并开源了Shrike这个docker网络插件，大家可以在这里下载到：[GitHub - docker-ipam-plugin](https://github.com/rootsongjc/docker-ipam-plugin)
+Docker容器跨主机互访一直是一个问题，Docker官方为了避免网络上带来的诸多麻烦，故将跨主机网络开了比较大的口子，而由用户自己去实现。我们开发并开源了Shrike这个docker网络插件，大家可以在这里下载到：[GitHub - docker-ipam-plugin](https://github.com/rootsongjc/docker-ipam-plugin)
 
-目前Docker跨主机的网络实现方案也有很多种, 主要包括端口映射，ovs,fannel等。但是这些方案都无法满足我们的需求，端口映射服务内的内网IP会映射成外网的IP，这样会给开发带来困惑，因为他们往往在跨网络交互时是不需要内网IP的，而ovs与fannel则是在基础网络协议上又包装了一层自定义协议，这样当网络流量大时，却又无端的增加了网络负载，最后我们采取了自主研发扁平化网络插件，也就是说让所有的容器统统在大二层上互通。架构如下：
+目前Docker跨主机的网络实现方案也有很多种，主要包括端口映射、ovs、fannel等。但是这些方案都无法满足我们的需求，端口映射服务内的内网IP会映射成外网的IP，这样会给开发带来困惑，因为他们往往在跨网络交互时是不需要内网IP的，而ovs与fannel则是在基础网络协议上又包装了一层自定义协议，这样当网络流量大时，却又无端的增加了网络负载，最后我们采取了自主研发扁平化网络插件，也就是说让所有的容器统统在大二层上互通。架构如下：
 
 ![YARN 网络](td_yarn_network.jpg)
 
@@ -205,10 +206,10 @@ IPAM驱动是专门管理Docker 容器IP的, Docker 每次启停与删除容器�
 
 ## 后记
 
-这篇文章写好的时候是2016年10月，距离现在我添加**前言**和**后记**的已经快半年时间了，这段时间内业界也发生了很多变化，比如docker推出CE和SE版本，Google的kubernetes发布了1.6版本，人工智能依然大热，在可预见的未来，可以说<u>Kubernetes一定会远远超越Docker成为容器编排领域的王者</u>，这是毋庸置疑的，对于docker 17.03-CE我也研究过了一段时间，其disgusting的plugin让我对于docker的编排已经失去信心。
+这篇文章写好的时候是2016年10月，距离现在我添加**前言**和**后记**的已经快半年时间了，这段时间内业界也发生了很多变化，比如docker推出CE和SE版本，Kubernetes发布了1.6版本，人工智能依然大热，在可预见的未来，可以说<u>Kubernetes一定会远远超越Docker成为容器编排领域的王者</u>，这是毋庸置疑的，对于docker 17.03-CE我也研究过了一段时间，其disgusting的plugin让我对于Docker的编排已经失去信心。
 
-其实容器在大数据场景下的应用并不是很多，毕竟Hadoop那套笨重的东西放在容器下运行，上生产环境? Are you kidding me?如果说做原型验证、研发测试那还可以。这样就大大限制了容器技术在大数据场景下的应用场景。使用容器的编排调度来实现大数据集群的资源优化有点舍本逐末，<u>如果真的要优化集群资源利用率的话，应该让不同的应用混跑，而不应该让集群之间资源隔离，比如Web应用跟大数据应用混布。</u>目前的这种**Yarn on Docker**方案实质上是将原来的整体Hadoop Yarn集群划分成多个不同的Yarn，将存储和计算分离了。其实这跟**Nutanix**的超融合架构有点像，Nutanix是由前Google的工程师创立的，解决虚拟化计算环境下的存储问题，也是将存储和计算分离，共享存储，计算根据需要调度。事实上Yahoo已经有解决Hadoop集群的资源细粒度分配和调度问题的方案，这应该是从Yarn的scheduler层来处理。
+其实当时容器在大数据场景下的应用并不是很多，毕竟Hadoop那套笨重的东西放在容器下运行，上生产环境实属不易。如果说做原型验证、研发测试那还可以。这样就大大限制了容器技术在大数据场景下的应用场景。使用容器的编排调度来实现大数据集群的资源优化有点舍本逐末，<u>如果真的要优化集群资源利用率的话，应该让不同的应用混跑，而不应该让集群之间资源隔离，比如Web应用跟大数据应用混布。</u>目前的这种**YARN on Docker**方案实质上是将原来的整体Hadoop YARN集群划分成多个不同的YARN，将存储和计算分离了。其实这跟**Nutanix**的超融合架构有点像，Nutanix是由前Google的工程师创立的，解决虚拟化计算环境下的存储问题，也是将存储和计算分离，共享存储，计算根据需要调度。事实上Yahoo已经有解决Hadoop集群的资源细粒度分配和调度问题的方案，这应该是从YARN的scheduler层来处理。
 
-Swarm已死，Swarmkit将继续发展，Docker的Swarm Mode还会在艰难中前行，目前看到的趋势仍然是模仿Kubernentes为主，没有自己鲜明的特色（除了部署管理方便意外，谁让它就集成在了docker里呢，就像当年windows集成IE打败Netscape，不过这不会再此上演了），Kubernentes又是一个通用的资源调度框架，它的最小资源划分是**Pod**而不是docker，它还可以运行rkt、containerd。
+Swarm已死，Swarmkit将继续发展，Docker的Swarm Mode还会在艰难中前行，目前看到的趋势仍然是模仿Kubernentes为主，没有自己鲜明的特色（除了部署管理方便意外，谁让它就集成在了Docker里呢，就像当年Windows集成IE打败Netscape，不过这不会再此上演了），Kubernentes又是一个通用的资源调度框架，它的最小资源划分是**Pod**而不是Docker，它还可以运行rkt、containerd。
 
-上周起我开始将注意力转移到 Kubernentes，以后请关注我的[Kuberentes实践](https://jimmysong.io/tags/kubernetes/)相关文章。
+上周起我开始将注意力全部转移到了 Kubernentes，以后请关注我的[Kuberentes实践](https://jimmysong.io/tags/kubernetes/)相关文章。
