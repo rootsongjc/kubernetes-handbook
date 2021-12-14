@@ -43,9 +43,11 @@ Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有
 
 ### Kubernetes vs xDS vs Istio
 
-![Kubernetes vs Istio](008i3skNly1gwp7r6q9f9j31lc0tan1i.jpg)
+这幅图展示的是 Kubernetes 和 Istio 的分层架构图。
 
-这幅图展示的是 Kubernetes 和 Istio 的分层架构图。从图中我们可以看到 kube-proxy 的设置是全局的，无法对每个服务进行细粒度的控制，Kubernetes 可以做的只有拓扑感知路由、将流量就近路由，为 Pod 设置进出站的网络策略。
+![Kubernetes vs Service mesh](008i3skNly1gxdhnnh4lxj31820p0gps.jpg)
+
+从图中我们可以看到 kube-proxy 的设置是全局的，无法对每个服务进行细粒度的控制，Kubernetes 可以做的只有拓扑感知路由、将流量就近路由，为 Pod 设置进出站的网络策略。
 
 而服务网格通过 sidecar proxy 的方式将 Kubernetes 中的流量控制从服务层中抽离出来，为每个 Pod 中注入代理，并通过一个控制平面来操控这些分布式代理。这样可以实现更大的弹性。
 
@@ -53,7 +55,7 @@ Kube-proxy 实现了一个 Kubernetes 服务的多个 pod 实例之间的流量�
 
 Kubernetes 社区给出了一个使用 Deployment 做金丝雀发布的方法，本质上是通过修改 pod 的标签来给部署的服务分配不同的 pod。
 
-![Envoy vs xDS](008i3skNly1gwp7ryybjcj314w0u0wlf.jpg)
+![Envoy 架构图](envoy-arch.jpg)
 
 目前在中国最流行的服务网格开源实现是 Istio，也有很多公司对 Istio 进行了二次开发，比如蚂蚁、网易、腾讯等，其实 Istio 是在 Envoy 的基础上开发的，从它开源的第一天起就默认使用了 Envoy 作为它的分布式代理。Envoy 开创性的创造了 xDS 协议，用于分布式网关配置，大大简化了大规模分布式网络的配置。2019 年蚂蚁开源的 MOSN 同样支持了 xDS。Envoy 还是 CNCF 中最早毕业的项目之一，经过大规模的生产应用考验。可以说 Istio 的诞生已经有了很好的基础。
 
@@ -238,19 +240,30 @@ spec:
     condition: "{cpu}>0.8" # 根据监控项{cpu}的值自动填充该模板
 ```
 
-### Aeraki：非侵入式的 Istio 扩展工具集
+### Aeraki：在 Istio 中管理任何七层协议
 
-Aeraki 是腾讯云在 2021 年 3 月开源的，它的架构与 Slime 类似。它从 Istio 中拉取服务数据，根据 ServiceEntry 和流量规则生成 Envoy 配置，也就是 EnvoyFilter 推送到 Istio 中。简而言之，你可以把 Aeraki 看做 Istio 中管理的七层协议的 Operator。
+Aeraki 是腾讯云在 2021 年 3 月开源的一个服务网格领域的项目。Aeraki 提供了一个端到端的云原生服务网格协议扩展解决方案，以一种非侵入的方式为 Istio 提供了强大的第三方协议扩展能力，支持在 Istio 中对 Dubbo、Thrift、Redis，以及对私有协议进行流量管理。Aeraki 的架构如下图所示：
 
-下图是 Aeraki 的架构图。
+![Aeraki 架构图](008i3skNly1gwp8ytw57sj31f40u0785.png)
 
-![Aeraki 架构图](008i3skNly1gwp8ytw57sj31f40u0785.jpg)
+来源：<https://istio.io/latest/blog/2021/aeraki/>
 
-来源：<https://cloudnative.to/blog/istiocon-layer7-traffic/>
+从 Aeraki 架构图中可以看到，Aeraki 协议扩展解决方案包含了两个组件：
 
-Aeraki 作为一个独立组件部署，可以很方便地作为一个插件和 Istio 进行集成。
+- Aeraki：Aeraki 作为一个 Istio 增强组件运行在控制面，通过自定义 CRD 向运维提供了用户友好的流量规则配置。Aeraki 将这些流量规则配置翻译为 Envoy 配置，通过 Istio 下发到数据面的 sidecar 代理上。Aeraki 还作为一个 RDS 服务器为数据面的 MetaProtocol Proxy 提供动态路由。Aeraki 提供的 RDS 和 Envoy 的 RDS 有所不同，Envoy RDS 主要为 HTTP 协议提供动态路由，而 Aeraki RDS 旨在为所有基于 MetaProtocol 框架开发的七层协议提供动态路由能力。
+- MetaProtocol Proxy：基于 Envoy 实现的一个通用七层协议代理。依托 Envoy 成熟的基础库，MetaProtocol Proxy 是在 Envoy 代码基础上的扩展。它为七层协议统一实现了服务发现、负载均衡、RDS 动态路由、流量镜像、故障注入、本地/全局限流等基础能力，大大降低了在 Envoy 上开发第三方协议的难度，只需要实现编解码的接口，就可以基于 MetaProtocol 快速开发一个第三方协议插件。
 
-Aeraki 可以根据 Istio 版本和 Kubernetes 集群相关信息自动进行调整配置，避免了 EnvoyFilter 的手动创建和维护工作。Aeraki 创建了面向七层协议 CRD 隐藏了 Envoy 的配置细节，屏蔽了不同 Istio 版本生成的缺省 Envoy 配置的差异，对于运维非常友好。
+如果没有使用 MetaProtocol Proxy，要让 Envoy 识别一个七层协议，则需要编写一个完整的 TCP filter，这个 filter 需要实现路由、限流、遥测等能力，需要投入大量的人力。对于大部分的七层协议来说，需要的流量管理能力是类似的，因此没有必要在每个七层协议的 filter 实现中重复这部分工作。Aeraki 项目采用了一个 MetaProtocol Proxy 来统一实现这些能力，如下图所示：
+
+![MetaProtocol Proxy 架构图](metaprotocol-proxy.png)
+
+基于 MetaProtocol Proxy，只需要实现编解码接口部分的代码就可以编写一个新的七层协议 Envoy Filter。除此之外，无需添加一行代码，Aeraki 就可以在控制面提供该七层协议的配置下发和 RDS 动态路由配置。
+
+![采用 MetaProtocol 编写 Envoy Filter 的对比](metaprotocol-proxy-codec.png)
+
+Aeraki + MetaProtocol 套件降低了在 Istio 中管理第三方协议的难度，将 Istio 扩展成为一个支持所有协议的全栈服务网格。目前 Aeraki 项目已经基于 MetaProtocol 实现了 Dubbo 和 Thrift 协议。相对 Envoy 自带的 Dubbo 和 Thrift Filter，基于 MetaProtocol 的 Dubbo 和 Thrift 实现功能更为强大，提供了 RDS 动态路由，可以在不中断存量链接的情况下对流量进行高级的路由管理，并且提供了非常灵活的 Metadata 路由机制，理论上可以采用协议数据包中携带的任意字段进行路由。QQ 音乐和央视频 APP 等业务也正在基于 Aeraki 和 MetaProtocol 进行开发，以将一些私有协议纳入到服务网格中进行管理。
+
+除此之外，[Aeraki Framework](https://github.com/aeraki-framework) 中还提供了 xDS 配置下发优化的 lazyXDS 插件、Consul、etcd、Zookeeper 等各种第三方服务注册表对接适配，Istio 运维实战电子书等工具，旨在解决 Istio 在落地中遇到的各种实际问题，加速服务网格的成熟和产品化。
 
 ## 服务网格的未来发展
 
@@ -262,7 +275,7 @@ Aeraki 可以根据 Istio 版本和 Kubernetes 集群相关信息自动进行调
 
 下图展示的 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 架构图。
 
-![image-20211123181346493](008i3skNly1gwp8zzjm0rj314v0u0djy.jpg)
+![image-20211123181346493](tsb.png)
 
 ### API 网关与服务网格的融合
 
