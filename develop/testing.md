@@ -64,7 +64,7 @@ go test ./pkg/apiserver -benchmem -run=XXX -bench=BenchmarkWatch
 
 ## 集成测试
 
-Kubernetes集成测试需要安装etcd（只要按照即可，不需要启动），比如
+Kubernetes集成测试需要安装etcd（只要安装即可，不需要启动），比如
 
 ```
 hack/install-etcd.sh  # Installs in ./third_party/etcd
