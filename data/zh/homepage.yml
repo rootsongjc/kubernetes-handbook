@@ -128,12 +128,12 @@ funfacts:
 
     # funfact item loop
     - name : "参与演讲"
-      count : "13"
+      count : "14"
       link: "/about"
 
     # funfact item loop
     - name : "社区成员"
-      count : "9801"
+      count : "9910"
       link : "https://cloudnative.to"
 
 # funfact is for about page
