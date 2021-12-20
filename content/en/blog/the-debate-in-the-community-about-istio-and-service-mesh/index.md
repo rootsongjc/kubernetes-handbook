@@ -21,9 +21,7 @@ I will answer each of these questions below.
 
 ### Istio is architecturally stable, production-ready, and ecologically emerging
 
-[Istio 1.12](https://www.tetrate.io/blog/istio-wasm-extensions-and-ecosystem/) was just released in November – and has evolved significantly since the explosion of service mesh in 2018 (the year Istio co-founders established Tetrate). 
-
-Istio has a large community of providers and [users](https://istio.io/latest/about/case-studies/). The Istio SIG of Cloud Native Community has held eight[ Istio Big Talk](https://cloudnative.to/sig-istio/big-talk/overview.html), with Baidu, Tencent, NetEase, Xiaohongshu, and Xiaodian Technology sharing their Istio practices. According to [CNCF Survey Report 2020](https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_Report_2020.pdf), 50% of the companies surveyed are using Istio in production.
+[Istio 1.12](https://www.tetrate.io/blog/istio-wasm-extensions-and-ecosystem/) was just released in November – and has evolved significantly since the explosion of service mesh in 2018 (the year Istio co-founders established Tetrate). Istio has a large community of providers and [users](https://istio.io/latest/about/case-studies/).[ ](https://istio.io/latest/about/case-studies/)The Istio SIG of Cloud Native Community has held eight[ Istio Big Talk](https://cloudnative.to/sig-istio/big-talk/overview.html), with Baidu, Tencent, NetEase, Xiaohongshu, and Xiaodian Technology sharing their Istio practices. According to [CNCF Survey Report 2020](https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_Report_2020.pdf), about 50% of the companies surveyed are using a service mesh in production or planning to in the next year, and about half (47%) of organizations using a service mesh in production are using Istio.
 
 Many companies have developed extensions or plugins for Istio, such as Ant, NetEase, eBay, and Airbnb. Istio’s architecture has been stable since the 1.5 release, and the release cycle is fixed quarterly, with the current project’s main task being Day-2 Operations. 
 

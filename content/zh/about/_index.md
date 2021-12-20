@@ -39,7 +39,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 ### 社区
 
-Jimmy Song 是 [ServiceMesher](https://www.servicemesher.com) 社区及 [云原生社区](https://cloudnative.to) 的创始人。
+Jimmy Song 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人。
 
 **ServiceMesher 社区**
 
@@ -53,6 +53,10 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 
 ### 2021 年
 
+- 2021 年 12 月 15 日 | 线上 | 华为思博论坛 | 云原生未来发展趋势展望
+- 2021 年 10 月 23 日 | 线下 | [云原生社区 meetup 第八期上海站](https://cloudnative.to/academy/meetup/08-shanghai/)
+- 2021 年 9 月 25 日 | 线下 | [云原生社区 meetup 第七期深圳站](https://cloudnative.to/academy/meetup/07-shenzhen/)
+- 2021 年 8 月 22 日 | 线下 | [云原生社区 meetup 第六期大连站](https://cloudnative.to/academy/meetup/06-dalian/)
 - 2021 年 7 月 3 日 | 线下 | [云原生社区 meetup 第五期成都站](http://hdxu.cn/8ZH3s)
 - 2021 年 5 月 22 日 | 线下 | [云原生社区 meetup 第四期广州站](http://hdxu.cn/s5IRp)
 - 2021 年 4 月 17 日 | 线下|[云原生社区 meetup 第三期杭州站](http://hdxu.cn/vHGBg)
