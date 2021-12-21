@@ -111,10 +111,9 @@ Available Commands:
 
 ![Cilium 网络配置策略](../images/006tNbRwly1fwzreaalj6j30dz0dy3z3.jpg)
 
-如图所示，此时 `id` 标签为其他值的容器就无法访问 `id=app1` 容器，策略配置中的 `toPorts` 中还可以配置 HTTP `method` 和 `path`，实现更细粒度的访问策略控制，详见 [Cilium 官方文档](https://cilium.readthedocs.io/en/stable/gettingstarted/docker/)。
+如图所示，此时 `id` 标签为其他值的容器就无法访问 `id=app1` 容器，策略配置中的 `toPorts` 中还可以配置 HTTP `method` 和 `path`，实现更细粒度的访问策略控制。
 
 ## 参考
 
-- [https://cilium.readthedocs.io/en/stable/concepts/](https://cilium.readthedocs.io/en/stable/concepts/)
-- [https://cilium.readthedocs.io/en/stable/gettingstarted/docker/](https://cilium.readthedocs.io/en/stable/gettingstarted/docker/)
-
+- [Cilium Concepts - docs.cilium.io](https://docs.cilium.io/en/stable/concepts/)
+- [Getting Started Guides - docs.cilium.io](https://docs.cilium.io/en/v1.11/gettingstarted/#getting-started-guides)

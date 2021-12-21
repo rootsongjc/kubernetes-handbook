@@ -1,20 +1,32 @@
 # 具备 API 感知的网络和安全性管理的开源软件 Cilium
 
-Cilium 是一个纯开源软件，没有哪家公司提供商业化支持，也不是由某一公司开源，该软件用于透明地保护使用 Linux 容器管理平台（如 Docker 和 Kubernetes）部署的应用程序服务之间的网络连接。
-
-Cilium 的基础是一种名为 BPF 的新 Linux 内核技术，它可以在 Linux 本身动态插入强大的安全可见性和控制逻辑。由于 BPF 在 Linux 内核中运行，因此可以应用和更新 Cilium 安全策略，而无需对应用程序代码或容器配置进行任何更改。
+Cilium 是一款开源软件，也是 CNCF 的孵化项目，目前[已有公司](https://isovalent.com/)提供商业化支持，还有基于 Cilium 实现的服务网格解决方案。最初它仅是作为一个 Kubernetes 网络组件。Cilium 在 1.7 版本后[推出并开源了 Hubble](https://cilium.io/blog/2019/11/19/announcing-hubble)，它是专门为网络可视化设计，能够利用 Cilium 提供的 eBPF 数据路径，获得对 Kubernetes 应用和服务的网络流量的深度可见性。这些网络流量信息可以对接 Hubble CLI、UI 工具，可以通过交互式的方式快速进行问题诊断。除了 Hubble 自身的监控工具，还可以对接主流的云原生监控体系——Prometheus 和 Grafana，实现可扩展的监控策略。
 
 ![Cilium](../images/006tNbRwly1fwqi98i51ij30sc0j80zn.jpg)
 
+本一节将带你了解什么是 Cilium 及选择它的原因。
+
+## Cilium 是什么？
+
+Cilium 为基于 Kubernetes 的 Linux 容器管理平台上部署的服务，透明地提供服务间的网络和 API 连接及安全。
+
+Cilium 底层是基于 Linux 内核的新技术 eBPF，可以在 Linux 系统中动态注入强大的安全性、可见性和网络控制逻辑。 Cilium 基于 eBPF 提供了多集群路由、替代 kube-proxy 实现负载均衡、透明加密以及网络和服务安全等诸多功能。除了提供传统的网络安全之外，eBPF 的灵活性还支持应用协议和 DNS 请求/响应安全。同时，Cilium 与 Envoy 紧密集成，提供了基于 Go 的扩展框架。因为 eBPF 运行在 Linux 内核中，所以应用所有 Cilium 功能，无需对应用程序代码或容器配置进行任何更改。
+
 基于微服务的应用程序分为小型独立服务，这些服务使用 **HTTP**、**gRPC**、**Kafka** 等轻量级协议通过 API 相互通信。但是，现有的 Linux 网络安全机制（例如 iptables）仅在网络和传输层（即 IP 地址和端口）上运行，并且缺乏对微服务层的可见性。
 
-Cilium 为 Linux 容器框架（如 [**Docker**](https://www.docker.com/) 和 [**Kubernetes）**](https://kubernetes.io/) 带来了 API 感知网络安全过滤。使用名为 **BPF** 的新 Linux 内核技术，Cilium 提供了一种基于容器 / 容器标识定义和实施网络层和应用层安全策略的简单而有效的方法。
+Cilium 为 Linux 容器框架（如 [**Docker**](https://www.docker.com/) 和 [**Kubernetes）**](https://kubernetes.io/) 带来了 API 感知网络安全过滤。使用名为 **eBPF** 的新 Linux 内核技术，Cilium 提供了一种基于容器 / 容器标识定义和实施网络层和应用层安全策略的简单而有效的方法。
 
 **注**：Cilium 中文意思是 “纤毛 “，它十分细小而又无处不在。
 
-## BPF
+> ## eBPF
+>
+> **扩展的柏克莱封包过滤器**（extented Berkeley Packet Filter，缩写 eBPF），是 [类 Unix](https://zh.wikipedia.org/wiki/%E7%B1%BBUnix) 系统上 [数据链路层](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82) 的一种原始接口，提供原始链路层 [封包](https://zh.wikipedia.org/wiki/%E5%B0%81%E5%8C%85) 的收发，除此之外，如果网卡驱动支持 [洪泛](https://zh.wikipedia.org/wiki/%E6%B4%AA%E6%B3%9B) 模式，那么它可以让网卡处于此种模式，这样可以收到 [网络](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C) 上的所有包，不管他们的目的地是不是所在 [主机](https://zh.wikipedia.org/wiki/%E4%B8%BB%E6%A9%9F)。参考 [维基百科](https://zh.wikipedia.org/wiki/BPF) 和 [eBPF 简史](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)及[BPF、eBPF、XDP 和 Bpfilter 的区别](https://www.netronome.com/blog/bpf-ebpf-xdp-and-bpfilter-what-are-these-things-and-what-do-they-mean-enterprise/)。
 
-**柏克莱封包过滤器**（Berkeley Packet Filter，缩写 BPF），是 [类 Unix](https://zh.wikipedia.org/wiki/%E7%B1%BBUnix) 系统上 [数据链路层](https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82) 的一种原始接口，提供原始链路层 [封包](https://zh.wikipedia.org/wiki/%E5%B0%81%E5%8C%85) 的收发，除此之外，如果网卡驱动支持 [洪泛](https://zh.wikipedia.org/wiki/%E6%B4%AA%E6%B3%9B) 模式，那么它可以让网卡处于此种模式，这样可以收到 [网络](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C) 上的所有包，不管他们的目的地是不是所在 [主机](https://zh.wikipedia.org/wiki/%E4%B8%BB%E6%A9%9F)。参考 [维基百科](https://zh.wikipedia.org/wiki/BPF) 和 [eBPF 简史](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)。
+## Hubble 是什么？
+
+Hubble 是一个完全分布式的网络和安全可观察性平台。它建立在 Cilium 和 eBPF 之上，以完全透明的方式实现对服务的通信和行为以及网络基础设施的深度可见性（visibility）。
+
+通过建立在 Cilium 之上，Hubble 可以利用 eBPF 实现可见性。依靠 eBPF，所有的可见性都是可编程的，并允许采用一种动态方法，最大限度地减少开销，同时按照用户的要求提供深入和详细的可见性。Hubble 的创建和专门设计是为了最好地利用 eBPF 的能力。
 
 ## 特性
 
@@ -26,7 +38,7 @@ Cilium 可见性和安全策略基于容器编排系统的标识（例如，Kube
 
 **卓越的性能**
 
-BPF 利用 Linux 底层的强大能力，通过提供 Linux 内核的沙盒可编程性来实现数据路径，从而提供卓越的性能。
+eBPF 利用 Linux 底层的强大能力，通过提供 Linux 内核的沙盒可编程性来实现数据路径，从而提供卓越的性能。
 
 **API 协议可见性 + 安全性 **
 
@@ -36,17 +48,17 @@ BPF 利用 Linux 底层的强大能力，通过提供 Linux 内核的沙盒可�
 
 Cilium 是为扩展而设计的，在部署新 pod 时不需要节点间交互，并且通过高度可扩展的键值存储进行所有协调。
 
-## 为什么选择 Cilium？
+## 为什么选择 Cilium 和 Hubble？
 
-现代数据中心应用程序的开发已经转向面向服务的体系结构（SOA），通常称为 * 微服务 *，其中大型应用程序被分成小型独立服务，这些服务使用 HTTP 等轻量级协议通过 API 相互通信。微服务应用程序往往是高度动态的，作为持续交付的一部分部署的滚动更新期间单个容器启动或销毁，应用程序扩展 / 缩小以适应负载变化。
+现代数据中心应用程序的开发已经转向面向服务的体系结构（SOA），通常称为微服务，其中大型应用程序被分成小型独立服务，这些服务使用 HTTP 等轻量级协议通过 API 相互通信。微服务应用程序往往是高度动态的，作为持续交付的一部分部署的滚动更新期间单个容器启动或销毁，应用程序扩展 / 缩小以适应负载变化。
 
 这种向高度动态的微服务的转变过程，给确保微服务之间的连接方面提出了挑战和机遇。传统的 Linux 网络安全方法（例如 iptables）过滤 IP 地址和 TCP/UDP 端口，但 IP 地址经常在动态微服务环境中流失。容器的高度不稳定的生命周期导致这些方法难以与应用程序并排扩展，因为负载均衡表和访问控制列表要不断更新，可能增长成包含数十万条规则。出于安全目的，协议端口（例如，用于 HTTP 流量的 TCP 端口 80）不能再用于区分应用流量，因为该端口用于跨服务的各种消息。
 
 另一个挑战是提供准确的可见性，因为传统系统使用 IP 地址作为主要识别工具，其在微服务架构中的寿命可能才仅仅几秒钟，被大大缩短。
 
-利用 Linux BPF，Cilium 保留了透明地插入安全可视性 + 强制执行的能力，但这种方式基于服务 /pod/ 容器标识（与传统系统中的 IP 地址识别相反），并且可以根据应用层进行过滤 （例如 HTTP）。因此，通过将安全性与寻址分离，Cilium 不仅可以在高度动态的环境中应用安全策略，而且除了提供传统的第 3 层和第 4 层分割之外，还可以通过在 HTTP 层运行来提供更强的安全隔离。 。
+利用 Linux eBPF，Cilium 保留了透明地插入安全可视性 + 强制执行的能力，但这种方式基于服务 /pod/ 容器标识（与传统系统中的 IP 地址识别相反），并且可以根据应用层进行过滤 （例如 HTTP）。因此，通过将安全性与寻址分离，Cilium 不仅可以在高度动态的环境中应用安全策略，而且除了提供传统的第 3 层和第 4 层分割之外，还可以通过在 HTTP 层运行来提供更强的安全隔离。 
 
-BPF 的使用使得 Cilium 能够以高度可扩展的方式实现以上功能，即使对于大规模环境也不例外。
+eBPF 的使用使得 Cilium 能够以高度可扩展的方式实现以上功能，即使对于大规模环境也不例外。
 
 ## 功能概述
 
@@ -90,7 +102,7 @@ BPF 的使用使得 Cilium 能够以高度可扩展的方式实现以上功能�
 
 ### 负载均衡
 
-应用程序容器和外部服务之间的流量的分布式负载均衡。负载均衡使用 BPF 实现，允许几乎无限的规模，并且如果未在源主机上执行负载均衡操作，则支持直接服务器返回（DSR）。 
+应用程序容器和外部服务之间的流量的分布式负载均衡。负载均衡使用 eBPF 实现，允许几乎无限的规模，并且如果未在源主机上执行负载均衡操作，则支持直接服务器返回（DSR）。 
 
 **注意**：负载均衡需要启用连接跟踪。这是默认值。
 
@@ -114,3 +126,4 @@ BPF 的使用使得 Cilium 能够以高度可扩展的方式实现以上功能�
 - [Cilium 官方网站 - cilium.io](https://cilium.io)
 - [eBPF 简史 - ibm.com](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)
 - [网络层拦截可选项 - zhihu.com](https://zhuanlan.zhihu.com/p/25672552)
+- [BPF, eBPF, XDP and Bpfilter… What are These Things and What do They Mean for the Enterprise? - netronome.com](https://www.netronome.com/blog/bpf-ebpf-xdp-and-bpfilter-what-are-these-things-and-what-do-they-mean-enterprise/)
