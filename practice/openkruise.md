@@ -1,26 +1,40 @@
 # OpenKruise
 
-[OpenKruise](http://openkruise.io/) 是阿里云开源的大规模应用自动化管理引擎，在 Kubernetes 原生 Deployment/StatefulSet 等控制器基础上，提供了更多的增强功能如：
+[OpenKruise](https://openkruise.io/) 是阿里云开源的大规模应用自动化管理引擎，在 Kubernetes 原生 Deployment/StatefulSet 等控制器基础上，提供了更多的增强功能如：
 
 - 优雅原地升级
-
 - 发布优先级/打散策略
-
 - 多可用区 workload 抽象管理
-
 - 统一 sidecar 容器注入管理等
+- 应用安全防护
 
 这些控制器可以帮助开发者应对更加多样化的部署环境和需求、为集群维护者和应用开发者带来更加灵活的部署发布组合策略。
 
 ## 扩展控制器
 
-Kruise 是 OpenKruise 中的核心项目之一，它提供一套在 [Kubernetes 核心控制器](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)之外的扩展 workload 管理和实现。目前，Kruise 提供了以下 5 个 Kubernetes 扩展控制器：
+Kruise 是 OpenKruise 中的核心项目之一，它提供一套在 [Kubernetes 核心控制器](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)之外的扩展 workload 管理和实现。目前，Kruise 提供了以下多个 Kubernetes 扩展控制器：
 
-- [CloneSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/cloneset/README.md): 提供了更加高效、确定可控的应用管理和部署能力，支持优雅**原地升级**、指定删除、发布顺序可配置、并行/灰度发布等丰富的策略，可以满足更多样化的应用场景。
-- [AdvancedStatefulSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/astatefulset/README.md)：基于原生 [StatefulSet](../concepts/statefulset.md) 之上的增强版本，默认行为与原生完全一致，在此之外提供了原地升级、并行发布（最大不可用）、发布暂停等功能。
-- [SidecarSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/sidecarSet/README.md)：对 sidecar 容器做统一管理，在满足 selector 条件的 Pod 中注入指定的 sidecar 容器。
-- [UnitedDeployment](https://github.com/openkruise/kruise/blob/master/docs/concepts/uniteddeployment/README.md): 通过多个 subset workload 将应用部署到多个可用区。
-- [BroadcastJob](https://github.com/openkruise/kruise/blob/master/docs/concepts/broadcastJob/README.md): 配置一个 job，在集群中所有满足条件的 Node 上都跑一个 Pod 任务。
+**通用工作负载**
+
+- **CloneSet**: 提供了更加高效、确定可控的应用管理和部署能力，支持优雅**原地升级**、指定删除、发布顺序可配置、并行/灰度发布等丰富的策略，可以满足更多样化的应用场景。
+- **AdvancedStatefulSet**：基于原生 [StatefulSet](../concepts/statefulset.md) 之上的增强版本，默认行为与原生完全一致，在此之外提供了原地升级、并行发布（最大不可用）、发布暂停等功能。
+- **AdvancedDaemonSet**：基于原生 [DaemonSet](../concepts/daemonset.md) 上增强了发布能力，比如灰度分批、按 Node label 选择、暂停、热升级等。
+
+**任务工作负载**
+
+- **BroadcastJob**：配置一个 job，在集群中所有满足条件的 Node 上都跑一个 Pod 任务。
+
+- **AdvancedCronJob**：基于原生 CronJob 的扩展版本。 根据用户设置的 schedule 规则，周期性创建 Job 执行任务，而 AdvancedCronJob 的 template 支持多种不同的 job 资源。
+
+**Sidecar 容器管理**
+
+- **SidecarSet**：对 sidecar 容器做统一管理，在满足 selector 条件的 Pod 中注入指定的 sidecar 容器。
+
+**多区域管理**
+
+- **WorkloadSpread**：将 workload（Pod）按一定规则分布到不同类型的节点上，赋予单一 workload 多区域部署和弹性部署的能力。
+
+- **UnitedDeployment**：通过多个 workload 管理多个区域下的 Pod。
 
 **关于命名规范**
 
@@ -30,9 +44,9 @@ Kruise 中的扩展控制器采用与 Kubernetes 社区一致的命名规范：
 - `Deployment` 后缀：这类 controller 不会直接地操作 Pod，它们通过操作一个或多个 `Set` 类型的 workload 来间接管理 Pod，比如 `Deployment` 管理 `ReplicaSet` 来提供一些额外的滚动策略，以及 `UnitedDeployment` 支持管理多个 `StatefulSet`/`AdvancedStatefulSet` 来将应用部署到不同的可用区。
 - `Job` 后缀：这类 controller 主要管理短期执行的任务，比如 `BroadcastJob` 支持将任务类型的 Pod 分发到集群中所有 Node 上。
 
-### CloneSet
+## CloneSet
 
-[CloneSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/cloneset/README.md) 是对 [Deployment](../concepts/deployment.md) 的增强版，主要用于管理对实例顺序没有要求的无状态应用。
+CloneSet 是对 [Deployment](../concepts/deployment.md) 的增强版，主要用于管理对实例顺序没有要求的无状态应用。
 
 下面是一个 CloneSet 的配置示例。
 
@@ -100,11 +114,11 @@ spec:
 - 支持选择性的删除某个 Pod；
 - 更加高级的升级和发布策略；
 
-关于 CloneSet 的详细描述请见 [Kruise 仓库](https://github.com/openkruise/kruise/blob/master/docs/concepts/cloneset/README.md)。
+关于 CloneSet 的详细描述请见[官方文档](https://openkruise.io/zh/docs/user-manuals/cloneset)。
 
-### AdvancedStatefulSet
+## AdvancedStatefulSet
 
-[AdvancedStatefulSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/astatefulset/README.md) 是对 Kubernetes 原生的 [StatefulSet](../concepts/statefulset.md) 的增强。
+AdvancedStatefulSet 是对 Kubernetes 原生的 [StatefulSet](../concepts/statefulset.md) 的增强。
 
 下面是一个 AdvancedStatefulSet 的配置示例。
 
@@ -159,11 +173,11 @@ AdvancedStatefulSet 基本保留了 Kubernetes 原生的 [StatefulSet](../concep
 - 支持原地升级，同 CloneSet 一样，需要在 `updateStrategy` 中配置，默认的升级策略为 `ReCreate`；
 - 支持更高级的更新策略，例如根据权重按照特定的顺序更新 pod，而不是按照 pod 的名称顺序；
 
-关于 AdvancedStatefulSet 的详细描述请见 [Kruise 仓库](https://github.com/openkruise/kruise/blob/master/docs/concepts/astatefulset/README.md)。
+关于 AdvancedStatefulSet 的详细描述请见[官方文档](https://openkruise.io/zh/docs/user-manuals/advancedstatefulset)。
 
-### SidecarSet
+## SidecarSet
 
-[SidecarSet](https://github.com/openkruise/kruise/blob/master/docs/concepts/sidecarSet/README.md) 利用了 Kubernetes 的 mutating webhook 准入控制器，在 pod 创建时向其中自动注入 sidecar 容器，这个与 [Istio](https://istio.io) 的做法一致。
+SidecarSet 利用了 Kubernetes 的 mutating webhook 准入控制器，在 pod 创建时向其中自动注入 sidecar 容器，这个与 [Istio](https://istio.io) 的做法一致。
 
 下面是一个 SidecarSet 的配置示例。
 
@@ -198,11 +212,11 @@ Sidecar 容器的生命周期独立于整个 Pod，实现如下功能：
 - SidecarSet 可以向指定的 Pod 中注入 Sidecar 容器；
 - Sidecar 容器可以可原地升级（仅当更新镜像时）；
 
-关于 SidecarSet 的详细描述请见 [Kruise 仓库](https://github.com/openkruise/kruise/blob/master/docs/concepts/sidecarSet/README.md)。
+关于 SidecarSet 的详细描述请见[官方文档](https://openkruise.io/zh/docs/user-manuals/sidecarset)。
 
-### UnitedDeployment
+## UnitedDeployment
 
-[UnitedDeployment](https://github.com/openkruise/kruise/blob/master/docs/concepts/uniteddeployment/README.md) 主要用于分组发布，通过定义 subset 将工作负载发布到不同的可用区中。Kubernetes 集群中的不同域由多组由标签识别的节点表示。UnitedDeployment 控制器为每组提供一种类型的工作负载，并提供相应匹配的 NodeSelector，这样各个工作负载创建的 pod 就会被调度到目标域。
+UnitedDeployment 主要用于分组发布，通过定义 subset 将工作负载发布到不同的可用区中。Kubernetes 集群中的不同域由多组由标签识别的节点表示。UnitedDeployment 控制器为每组提供一种类型的工作负载，并提供相应匹配的 NodeSelector，这样各个工作负载创建的 pod 就会被调度到目标域。
 
 UnitedDeployment 管理的每个工作负载称为子集。每个域至少要提供运行 n 个副本数量的 pod 的能力。目前仅支持 StatefulSet 工作负载。下面的示例 YAML 展示了一个 UnitedDeployment，它在三个域中管理三个 StatefulSet 实例。管理的 pod 总数为 6。
 
@@ -273,11 +287,11 @@ spec:
 
 UnitedDeployment 主要功能即分组发布，控制不同可用区中的 StatefulSet 工作负载发布。
 
-关于 UnitedDeployment 的详细描述请见 [Kruise 仓库](https://github.com/openkruise/kruise/blob/master/docs/concepts/uniteddeployment/README.md)。
+关于 UnitedDeployment 的详细描述请见[官方文档](https://openkruise.io/zh/docs/user-manuals/uniteddeployment)。
 
-### BroadcastJob
+## BroadcastJob
 
-[BroadcastJob](https://github.com/openkruise/kruise/blob/master/docs/concepts/broadcastJob/README.md) 控制器在集群中的每个节点上分发一个 Pod。像 DaemonSet 一样，BroadcastJob 确保 Pod 被创建并在集群中的所有选定节点上运行一次。
+BroadcastJob 控制器在集群中的每个节点上分发一个 Pod。像 DaemonSet 一样，BroadcastJob 确保 Pod 被创建并在集群中的所有选定节点上运行一次。
 
 BroadcastJob 在每个节点上的 Pod 运行完成后不会消耗任何资源。当升级一个软件，例如 Kubelet，或者在每个节点上进行验证检查时，BroadcastJob 特别有用，通常在很长一段时间内只需要一次，或者运行一个临时性的完整集群检查脚本。
 
@@ -303,7 +317,7 @@ spec:
     ttlSecondsAfterFinished: 30
 ```
 
-BroadcastJob 的支持多种 `CompletionPolicy`  和 `FailurePolicy` 设置，关于 BroadcastJob 的详细描述请见 [Kruise 仓库](https://github.com/openkruise/kruise/blob/master/docs/concepts/broadcastJob/README.md)。、
+BroadcastJob 的支持多种 `CompletionPolicy`  和 `FailurePolicy` 设置，关于 BroadcastJob 的详细描述请见[官方文档](https://openkruise.io/zh/docs/user-manuals/broadcastjob)。
 
 ## 安装
 
@@ -335,5 +349,4 @@ Kruise 在 Kubernetes 原生控制器基础上进行了扩展，主要增加了�
 
 ## 参考
 
-- [Kruise 中文文档 - github.com](https://github.com/openkruise/kruise/blob/master/README-zh_CN.md)
-- [Kruise 控制器分类指引 - openkruise.io](http://openkruise.io/zh-cn/blog/blog1.html)
+- [Kruise 官网 - openkruise.io](https://openkruise.io/zh/)

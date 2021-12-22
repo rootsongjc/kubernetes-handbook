@@ -4,7 +4,7 @@ Cilium 是一款开源软件，也是 CNCF 的孵化项目，目前[已有公司
 
 ![Cilium](../images/006tNbRwly1fwqi98i51ij30sc0j80zn.jpg)
 
-本一节将带你了解什么是 Cilium 及选择它的原因。
+本节将带你了解什么是 Cilium 及选择它的原因。
 
 ## Cilium 是什么？
 
