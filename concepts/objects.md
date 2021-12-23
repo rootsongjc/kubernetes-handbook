@@ -1,6 +1,6 @@
-# Objects
+# Kubernetes 中的资源对象
 
-以下列举的内容都是 kubernetes 中的 Object，这些对象都可以在 yaml 文件中作为一种 API 类型来配置。
+以下列举的内容都是 Kubernetes 中的对象（Object），这些对象都可以在 YAML 文件中作为一种 API 类型来配置。
 
 - Pod
 - Node
@@ -37,7 +37,7 @@
 | 策略对象 | SecurityContext、ResourceQuota、LimitRange                   |
 | 身份对象 | ServiceAccount、Role、ClusterRole                            |
 
-## 理解 kubernetes 中的对象
+## 理解 Kubernetes 中的对象
 
 在 Kubernetes 系统中，*Kubernetes 对象* 是持久化的条目。Kubernetes 使用这些条目去表示整个集群的状态。特别地，它们描述了如下信息：
 

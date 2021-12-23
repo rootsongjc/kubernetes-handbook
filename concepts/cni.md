@@ -1,8 +1,8 @@
-# CNI - Container Network Interface（容器网络接口）
+# 容器网络接口（CNI）
 
-CNI（Container Network Interface）是 CNCF 旗下的一个项目，由一组用于配置 Linux 容器的网络接口的规范和库组成，同时还包含了一些插件。CNI 仅关心容器创建时的网络分配，和当容器被删除时释放网络资源。通过此链接浏览该项目：<https://github.com/containernetworking/cni>。
+容器网络接口（Container Network Interface），简称 CNI，是 CNCF 旗下的一个项目，由一组用于配置 Linux 容器的网络接口的规范和库组成，同时还包含了一些插件。CNI 仅关心容器创建时的网络分配，和当容器被删除时释放网络资源。有关详情请查看 [GitHub](https://github.com/containernetworking/cni)。
 
-Kubernetes 源码的 `vendor/github.com/containernetworking/cni/libcni` 目录中已经包含了 CNI 的代码，也就是说 kubernetes 中已经内置了 CNI。
+Kubernetes 源码的 `vendor/github.com/containernetworking/cni/libcni` 目录中已经包含了 CNI 的代码，也就是说 Kubernetes 中已经内置了 CNI。
 
 ## 接口定义
 
@@ -75,7 +75,7 @@ CNI 插件必须支持以下操作：
 - 所有参数应与传递给相应的添加操作的参数相同。
 - 删除操作应释放配置的网络中提供的 containerid 拥有的所有资源。
 
-报告版本
+报告版本：
 
 - 参数：无。
 - 结果：插件支持的 CNI 规范版本信息。
@@ -122,7 +122,7 @@ CNI 插件的详细说明请参考：[CNI SPEC](https://github.com/containernetw
 
 ## 参考
 
-- https://github.com/containernetworking/cni
-- https://github.com/containernetworking/plugins
-- [Container Networking Interface Specification](https://github.com/containernetworking/cni/blob/master/SPEC.md#container-networking-interface-specification)
-- [CNI Extension conventions](https://github.com/containernetworking/cni/blob/master/CONVENTIONS.md)
+- [containernetworking/cni - github.com](https://github.com/containernetworking/cni)
+- [containernetworking/plugins - github.com](https://github.com/containernetworking/plugins)
+- [Container Networking Interface Specification - github.com](https://github.com/containernetworking/cni/blob/master/SPEC.md#container-networking-interface-specification)
+- [CNI Extension conventions - github.com](https://github.com/containernetworking/cni/blob/master/CONVENTIONS.md)

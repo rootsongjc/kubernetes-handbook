@@ -1,6 +1,6 @@
-# Kubernetes中的网络解析——以flannel为例
+# 扁平网络 Flannel
 
-我们当初使用[kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)安装了拥有三个节点的kubernetes集群，节点的状态如下所述。
+如果你使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 安装了拥有三个节点的 Kubernetes 集群，节点的状态如下所述。
 
 ```bash
 [root@node1 ~]# kubectl get nodes -o wide
@@ -10,7 +10,7 @@ node2     Ready     <none>    2d        v1.9.1    <none>        CentOS Linux 7 (
 node3     Ready     <none>    2d        v1.9.1    <none>        CentOS Linux 7 (Core)   3.10.0-693.11.6.el7.x86_64   docker://1.12.6
 ```
 
-当前Kubernetes集群中运行的所有Pod信息：
+当前 Kubernetes 集群中运行的所有 Pod 信息：
 
 ```bash
 [root@node1 ~]# kubectl get pods --all-namespaces -o wide
@@ -22,7 +22,7 @@ kube-system   kubernetes-dashboard-6b66b8b96c-mnm2c             1/1       Runnin
 kube-system   monitoring-influxdb-grafana-v4-54b7854697-tw9cd   2/2       Running   2          1h        172.33.96.2   node3
 ```
 
-当前etcd中的注册的宿主机的pod地址网段信息：
+当前 etcd 中的注册的宿主机的 pod 地址网段信息：
 
 ```bash
 [root@node1 ~]# etcdctl ls /kube-centos/network/subnets
@@ -31,35 +31,35 @@ kube-system   monitoring-influxdb-grafana-v4-54b7854697-tw9cd   2/2       Runnin
 /kube-centos/network/subnets/172.33.96.0-24
 ```
 
-而每个node上的Pod子网是根据我们在安装flannel时配置来划分的，在etcd中查看该配置：
+而每个 node 上的 Pod 子网是根据我们在安装 flannel 时配置来划分的，在 etcd 中查看该配置：
 
 ```bash
 [root@node1 ~]# etcdctl get /kube-centos/network/config
 {"Network":"172.33.0.0/16","SubnetLen":24,"Backend":{"Type":"host-gw"}}
 ```
 
-我们知道Kubernetes集群内部存在三类IP，分别是：
+我们知道 Kubernetes 集群内部存在三类 IP，分别是：
 
-- Node IP：宿主机的IP地址
-- Pod IP：使用网络插件创建的IP（如flannel），使跨主机的Pod可以互通
-- Cluster IP：虚拟IP，通过iptables规则访问服务
+- Node IP：宿主机的 IP 地址
+- Pod IP：使用网络插件创建的 IP（如 flannel），使跨主机的 Pod 可以互通
+- Cluster IP：虚拟 IP，通过 iptables 规则访问服务
 
-在安装node节点的时候，节点上的进程是按照flannel -> docker -> kubelet -> kube-proxy的顺序启动的，我们下面也会按照该顺序来讲解，flannel的网络划分和如何与docker交互，如何通过iptables访问service。
+在安装 node 节点的时候，节点上的进程是按照 flannel -> docker -> kubelet -> kube-proxy 的顺序启动的，我们下面也会按照该顺序来讲解，flannel 的网络划分和如何与 docker 交互，如何通过 iptables 访问 service。
 
 ### Flannel
 
-Flannel是作为一个二进制文件的方式部署在每个node上，主要实现两个功能：
+Flannel 是作为一个二进制文件的方式部署在每个 node 上，主要实现两个功能：
 
-- 为每个node分配subnet，容器将自动从该子网中获取IP地址
-- 当有node加入到网络中时，为每个node增加路由配置
+- 为每个 node 分配 subnet，容器将自动从该子网中获取 IP 地址
+- 当有 node 加入到网络中时，为每个 node 增加路由配置
 
-下面是使用`host-gw` backend的flannel网络架构图：
+下面是使用 `host-gw` backend 的 flannel 网络架构图：
 
-![flannel网络架构（图片来自openshift）](../images/flannel-networking.png)
+![flannel 网络架构（图片来自 openshift）](../images/flannel-networking.png)
 
-**注意**：以上IP非本示例中的IP，但是不影响读者理解。
+**注意**：以上 IP 非本示例中的 IP，但是不影响读者理解。
 
-Node1上的flannel配置如下:
+Node1 上的 flannel 配置如下:
 
 ```bash
 [root@node1 ~]# cat /usr/lib/systemd/system/flanneld.service
@@ -94,7 +94,7 @@ FLANNEL_ETCD_PREFIX="/kube-centos/network"
 FLANNEL_OPTIONS="-iface=eth2"
 ```
 
-上面的配置文件仅供flanneld使用。
+上面的配置文件仅供 flanneld 使用。
 
 ```bash
 [root@node1 ~]# cat /etc/sysconfig/docker-network
@@ -102,24 +102,24 @@ FLANNEL_OPTIONS="-iface=eth2"
 DOCKER_NETWORK_OPTIONS=
 ```
 
-还有一个`ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker`，其中的`/usr/libexec/flannel/mk-docker-opts.sh`脚本是在flanneld启动后运行，将会生成两个环境变量配置文件：
+还有一个`ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker`，其中的`/usr/libexec/flannel/mk-docker-opts.sh` 脚本是在 flanneld 启动后运行，将会生成两个环境变量配置文件：
 
 - /run/flannel/docker
 - /run/flannel/subnet.env
 
-我们再来看下`/run/flannel/docker`的配置。
+我们再来看下 `/run/flannel/docker` 的配置。
 
 ```bash
 [root@node1 ~]# cat /run/flannel/docker
 DOCKER_OPT_BIP="--bip=172.33.68.1/24"
 DOCKER_OPT_IPMASQ="--ip-masq=true"
 DOCKER_OPT_MTU="--mtu=1500"
-DOCKER_NETWORK_OPTIONS=" --bip=172.33.68.1/24 --ip-masq=true --mtu=1500"
+DOCKER_NETWORK_OPTIONS="--bip=172.33.68.1/24 --ip-masq=true --mtu=1500"
 ```
 
-如果你使用`systemctl`命令先启动flannel后启动docker的话，docker将会读取以上环境变量。
+如果你使用`systemctl` 命令先启动 flannel 后启动 docker 的话，docker 将会读取以上环境变量。
 
-我们再来看下`/run/flannel/subnet.env`的配置。
+我们再来看下 `/run/flannel/subnet.env` 的配置。
 
 ```bash
 [root@node1 ~]# cat /run/flannel/subnet.env
@@ -129,11 +129,11 @@ FLANNEL_MTU=1500
 FLANNEL_IPMASQ=false
 ```
 
-以上环境变量是flannel向etcd中注册的。
+以上环境变量是 flannel 向 etcd 中注册的。
 
 ### Docker
 
-Node1的docker配置如下：
+Node1 的 docker 配置如下：
 
 ```bash
 [root@node1 ~]# cat /usr/lib/systemd/system/docker.service
@@ -179,7 +179,7 @@ KillMode=process
 WantedBy=multi-user.target
 ```
 
-查看Node1上的docker启动参数：
+查看 Node1 上的 docker 启动参数：
 
 ```bash
 [root@node1 ~]# systemctl status -l docker
@@ -194,9 +194,9 @@ WantedBy=multi-user.target
            ‣ 4334 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --exec-opt native.cgroupdriver=systemd --userland-proxy-path=/usr/libexec/docker/docker-proxy-current --selinux-enabled --log-driver=journald --signature-verification=false --bip=172.33.68.1/24 --ip-masq=true --mtu=1500
 ```
 
-我们可以看到在docker在启动时有如下参数：`--bip=172.33.68.1/24 --ip-masq=true --mtu=1500`。上述参数flannel启动时运行的脚本生成的，通过环境变量传递过来的。
+我们可以看到在 docker 在启动时有如下参数：`--bip=172.33.68.1/24 --ip-masq=true --mtu=1500`。上述参数 flannel 启动时运行的脚本生成的，通过环境变量传递过来的。
 
-我们查看下node1宿主机上的网络接口：
+我们查看下 node1 宿主机上的网络接口：
 
 ```bash
 [root@node1 ~]# ip addr
@@ -237,13 +237,13 @@ WantedBy=multi-user.target
 我们分类来解释下该虚拟机中的网络接口。
 
 - lo：回环网络，127.0.0.1
-- eth0：NAT网络，虚拟机创建时自动分配，仅可以在几台虚拟机之间访问
-- eth1：bridge网络，使用vagrant分配给虚拟机的地址，虚拟机之间和本地电脑都可以访问
-- eth2：bridge网络，使用DHCP分配，用于访问互联网的网卡
-- docker0：bridge网络，docker默认使用的网卡，作为该节点上所有容器的虚拟交换机
-- veth295bef2@if6：veth pair，连接docker0和Pod中的容器。veth pair可以理解为使用网线连接好的两个接口，把两个端口放到两个namespace中，那么这两个namespace就能打通。参考[linux 网络虚拟化： network namespace 简介](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)。
+- eth0：NAT 网络，虚拟机创建时自动分配，仅可以在几台虚拟机之间访问
+- eth1：bridge 网络，使用 vagrant 分配给虚拟机的地址，虚拟机之间和本地电脑都可以访问
+- eth2：bridge 网络，使用 DHCP 分配，用于访问互联网的网卡
+- docker0：bridge 网络，docker 默认使用的网卡，作为该节点上所有容器的虚拟交换机
+- veth295bef2@if6：veth pair，连接 docker0 和 Pod 中的容器。veth pair 可以理解为使用网线连接好的两个接口，把两个端口放到两个 namespace 中，那么这两个 namespace 就能打通。参考 [linux 网络虚拟化： network namespace 简介](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)。
 
-我们再看下该节点的docker上有哪些网络。
+我们再看下该节点的 docker 上有哪些网络。
 
 ```bash
 [root@node1 ~]# docker network ls
@@ -253,7 +253,7 @@ d94c046e105d        host                host                local
 2db7597fd546        none                null                local
 ```
 
-再检查下bridge网络`940bb75e653b`的信息。
+再检查下 bridge 网络`940bb75e653b`的信息。
 
 ```bash
 [root@node1 ~]# docker network inspect 940bb75e653b
@@ -292,14 +292,13 @@ d94c046e105d        host                host                local
             "com.docker.network.bridge.name": "docker0",
             "com.docker.network.driver.mtu": "1500"
         },
-        "Labels": {}
-    }
+        "Labels": {}}
 ]
 ```
 
-我们可以看到该网络中的`Config`与docker的启动配置相符。
+我们可以看到该网络中的`Config` 与 docker 的启动配置相符。
 
-Node1上运行的容器：
+Node1 上运行的容器：
 
 ```bash
 [root@node1 ~]# docker ps
@@ -308,9 +307,9 @@ a37407a234dd        docker.io/coredns/coredns@sha256:adf2e5b4504ef9ffa43f16010bd
 944d4aa660e3        docker.io/openshift/origin-pod                                                                      "/usr/bin/pod"           About an hour ago   Up About an hour                        k8s_POD_coredns-5984fb8cbb-sjqv9_kube-system_c5a2e959-082a-11e8-b4cd-525400005732_0
 ```
 
-我们可以看到当前已经有2个容器在运行。
+我们可以看到当前已经有 2 个容器在运行。
 
-Node1上的路由信息：
+Node1 上的路由信息：
 
 ```bash
 [root@node1 ~]# route -n
@@ -325,9 +324,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 172.33.96.0     172.30.118.65   255.255.255.0   UG    0      0        0 eth2
 ```
 
-以上路由信息是由flannel添加的，当有新的节点加入到Kubernetes集群中后，每个节点上的路由表都将增加。
+以上路由信息是由 flannel 添加的，当有新的节点加入到 Kubernetes 集群中后，每个节点上的路由表都将增加。
 
-我们在node上来`traceroute`下node3上的`coredns-5984fb8cbb-tkfrc`容器，其IP地址是`172.33.96.3`，看看其路由信息。
+我们在 node 上来 `traceroute` 下 node3 上的 `coredns-5984fb8cbb-tkfrc` 容器，其 IP 地址是 `172.33.96.3`，看看其路由信息。
 
 ```bash
 [root@node1 ~]# traceroute 172.33.96.3
@@ -336,9 +335,9 @@ traceroute to 172.33.96.3 (172.33.96.3), 30 hops max, 60 byte packets
  2  172.33.96.3 (172.33.96.3)  0.451 ms  0.352 ms  0.223 ms
 ```
 
-我们看到路由直接经过node3的公网IP后就到达了node3节点上的Pod。
+我们看到路由直接经过 node3 的公网 IP 后就到达了 node3 节点上的 Pod。
 
-Node1的iptables信息：
+Node1 的 iptables 信息：
 
 ```bash
 [root@node1 ~]# iptables -L
@@ -370,24 +369,24 @@ RETURN     all  --  anywhere             anywhere
 
 Chain KUBE-FIREWALL (2 references)
 target     prot opt source               destination
-DROP       all  --  anywhere             anywhere             /* kubernetes firewall for dropping marked packets */ mark match 0x8000/0x8000
+DROP       all  --  anywhere             anywhere             /* kubernetes firewall for dropping marked packets */mark match 0x8000/0x8000
 
 Chain KUBE-FORWARD (1 references)
 target     prot opt source               destination
-ACCEPT     all  --  anywhere             anywhere             /* kubernetes forwarding rules */ mark match 0x4000/0x4000
-ACCEPT     all  --  10.254.0.0/16        anywhere             /* kubernetes forwarding conntrack pod source rule */ ctstate RELATED,ESTABLISHED
-ACCEPT     all  --  anywhere             10.254.0.0/16        /* kubernetes forwarding conntrack pod destination rule */ ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  anywhere             anywhere             /* kubernetes forwarding rules */mark match 0x4000/0x4000
+ACCEPT     all  --  10.254.0.0/16        anywhere             /* kubernetes forwarding conntrack pod source rule */ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  anywhere             10.254.0.0/16        /* kubernetes forwarding conntrack pod destination rule */ctstate RELATED,ESTABLISHED
 
 Chain KUBE-SERVICES (2 references)
 target     prot opt source               destination
 ```
 
-从上面的iptables中可以看到注入了很多Kuberentes service的规则。
+从上面的 iptables 中可以看到注入了很多 Kuberentes service 的规则。
 
 ## 参考
 
 - [coreos/flannel - github.com](https://github.com/coreos/flannel)
-- [linux 网络虚拟化： network namespace 简介](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)
-- [Linux虚拟网络设备之veth](https://segmentfault.com/a/1190000009251098)
-- [flannel host-gw network](http://hustcat.github.io/flannel-host-gw-network/)
+- [Linux 网络虚拟化：network namespace 简介 - cizixs.com](http://cizixs.com/2017/02/10/network-virtualization-network-namespace)
+- [Linux 虚拟网络设备之 veth - segmentfault.com](https://segmentfault.com/a/1190000009251098)
+- [flannel host-gw network - hustcat.github.io](http://hustcat.github.io/flannel-host-gw-network/)
 - [flannel - openshift.com](https://docs.openshift.com/container-platform/3.4/architecture/additional_concepts/flannel.html)

@@ -1,6 +1,6 @@
-# CSI - Container Storage Interface（容器存储接口）
+# 容器存储接口（CSI）
 
-CSI 代表[容器存储接口](https://github.com/container-storage-interface/spec/blob/master/spec.md)，CSI 试图建立一个行业标准接口的规范，借助 CSI 容器编排系统（CO）可以将任意存储系统暴露给自己的容器工作负载。有关详细信息，请查看[设计方案](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)。
+容器存储接口（Container Storage Interface），简称 CSI，CSI 试图建立一个行业标准接口的规范，借助 CSI 容器编排系统（CO）可以将任意存储系统暴露给自己的容器工作负载。有关详细信息，请查看[设计方案](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md)。
 
 `csi` 卷类型是一种 out-tree（即跟其它存储插件在同一个代码路径下，随 Kubernetes 的代码同时编译的） 的 CSI 卷插件，用于 Pod 与在同一节点上运行的外部 CSI 卷驱动程序交互。部署 CSI 兼容卷驱动后，用户可以使用 `csi` 作为卷类型来挂载驱动提供的存储。
 
@@ -134,4 +134,4 @@ Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范
 
 ## 参考
 
-- [Container Storage Interface (CSI)](https://github.com/container-storage-interface/spec/blob/master/spec.md)
+- [Container Storage Interface (CSI) - github.com](https://github.com/container-storage-interface/spec/blob/master/spec.md)
