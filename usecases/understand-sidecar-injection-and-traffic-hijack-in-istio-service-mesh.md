@@ -1,4 +1,4 @@
-# 深入理解Istio Service Mesh中的Envoy Sidecar注入与流量劫持
+# Sidecar 的注入与流量劫持
 
 **本文基于 Istio 1.5。**
 
