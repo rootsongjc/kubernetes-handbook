@@ -9,13 +9,6 @@
 - Sidecar proxy 是如何做透明流量劫持的？
 - 流量是如何路由到 upstream 的？
 
-在此之前我曾写过基于 Istio 1.1 版本的[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，Istio 1.5 与 Istio 1.1 中的 sidecar 注入和流量劫持环节最大的变化是：
-
-- iptables 改用命令行工具，不再使用 shell 脚本。
-- sidecar inbound 和 outbound 分别指定了端口，而之前是使用同一个端口（15001）。
-
-注：本文中部分内容收录于 ServiceMesher 社区出品的 [Istio Handbook](https://www.servicemesher.com/istio-handbook/)。
-
 ## Sidecar 模式
 
 将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
@@ -402,8 +395,6 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 | POSTROUTING |      |        | ✓    | ✓      |          |
 | FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
 
-关于 iptables 的详细介绍请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
-
 ### 理解 iptables 规则
 
 查看 `istio-proxy` 容器中的默认的 iptables 规则，默认查看的是 filter 表中的规则。
@@ -437,8 +428,6 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 - **destination**：流量的目的地 IP 地址或子网，或者是 `anywhere`。
 
 还有一列没有表头，显示在最后，表示规则的选项，作为规则的扩展匹配条件，用来补充前面的几列中的配置。`prot`、`opt`、`in`、`out`、`source` 和 `destination` 和显示在 `destination` 后面的没有表头的一列扩展条件共同组成匹配规则。当流量匹配这些规则后就会执行 `target`。
-
-关于 iptables 规则请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
 
 **target 支持的类型**
 

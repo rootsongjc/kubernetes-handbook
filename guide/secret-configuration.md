@@ -335,7 +335,7 @@ imagePullSecret 的使用在 [镜像文档](https://kubernetes.io/docs/concepts/
 
 #### 自动挂载手动创建的 Secret
 
-手动创建的 secret（例如包含用于访问 github 帐户的令牌）可以根据其服务帐户自动附加到 pod。请参阅 [使用 PodPreset 向 Pod 中注入信息](https://kubernetes.io/docs/tasks/run-application/podpreset) 以获取该进程的详细说明。
+手动创建的 secret（例如包含用于访问 github 帐户的令牌）可以根据其服务帐户自动附加到 pod。
 
 ## 详细
 

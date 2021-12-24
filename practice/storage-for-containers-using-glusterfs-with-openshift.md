@@ -1,33 +1,20 @@
-# 在OpenShift中使用GlusterFS做持久化存储
+# 在 OpenShift 中使用 GlusterFS 做持久化存储
 
-### 概述
+在本文中，我们将介绍容器存储的首选以及如何部署它。 Kusternet 和 OpenShift 支持 GlusterFS 已经有一段时间了。 GlusterFS 的适用性很好，可用于所有的部署场景：裸机、虚拟机、内部部署和公共云。 在容器中运行 GlusterFS 的新特性将在本系列后面讨论。
 
-本文由Daniel Messer（Technical Marketing Manager Storage @RedHat）和Keith Tenzer（Solutions Architect @RedHat）共同撰写。
+GlusterFS 是一个分布式文件系统，内置了原生协议（GlusterFS）和各种其他协议（NFS，SMB，...）。 为了与 OpenShift 集成，节点将通过 FUSE 使用原生协议，将 GlusterFS 卷挂在到节点本身上，然后将它们绑定到目标容器中。 OpenShift / Kubernetes 具有实现请求、释放和挂载、卸载 GlusterFS 卷的原生程序。
 
-- [Storage for Containers Overview – Part I](https://keithtenzer.com/2017/03/07/storage-for-containers-overview-part-i/)
-- [Storage for Containers using Gluster – Part II](https://keithtenzer.com/2017/03/24/storage-for-containers-using-gluster-part-ii/)
-- [Storage for Containers using Container Native Storage – Part III](https://keithtenzer.com/2017/03/29/storage-for-containers-using-container-native-storage-part-iii/)
-- [Storage for Containers using Ceph – Part IV](https://keithtenzer.com/2017/04/07/storage-for-containers-using-ceph-rbd-part-iv/)
-- [Storage for Containers using NetApp ONTAP NAS – Part V](https://keithtenzer.com/2017/04/05/storage-for-containers-using-netapp-ontap-nas-part-v/)
-- [Storage for Containers using NetApp SolidFire – Part VI](https://keithtenzer.com/2017/04/05/storage-for-containers-using-netapp-solidfire-part-vi/)
+### CRS 概述
 
-### Gluster作为Container-Ready Storage(CRS)
+在存储方面，根据 OpenShift / Kubernetes 的要求，还有一个额外的组件管理集群，称为 “heketi”。 这实际上是一个用于 GlusterFS 的 REST API，它还提供 CLI 版本。 在以下步骤中，我们将在 3 个 GlusterFS 节点中部署 heketi，使用它来部署 GlusterFS 存储池，将其连接到 OpenShift，并使用它来通过 PersistentVolumeClaims 为容器配置存储。 我们将总共部署 4 台虚拟机。 一个用于 OpenShift（实验室设置），另一个用于 GlusterFS。
 
-在本文中，我们将介绍容器存储的首选以及如何部署它。 Kusternet和OpenShift支持GlusterFS已经有一段时间了。 GlusterFS的适用性很好，可用于所有的部署场景：裸机、虚拟机、内部部署和公共云。 在容器中运行GlusterFS的新特性将在本系列后面讨论。
+注意：您的系统应至少需要有四核 CPU，16GB RAM 和 20 GB 可用磁盘空间。
 
-GlusterFS是一个分布式文件系统，内置了原生协议（GlusterFS）和各种其他协议（NFS，SMB，...）。 为了与OpenShift集成，节点将通过FUSE使用原生协议，将GlusterFS卷挂在到节点本身上，然后将它们绑定到目标容器中。 OpenShift / Kubernetes具有实现请求、释放和挂载、卸载GlusterFS卷的原生程序。
+### 部署 OpenShift
 
-### CRS概述
+首先你需要先部署 OpenShift。最有效率的方式是直接在虚拟机中部署一个 All-in-One 环境，部署指南见 [the “OpenShift Enterprise 3.4 all-in-one Lab Environment” article.](https://keithtenzer.com/2017/03/13/openshift-enterprise-3-4-all-in-one-lab-environment/)。
 
-在存储方面，根据OpenShift / Kubernetes的要求，还有一个额外的组件管理集群，称为“heketi”。 这实际上是一个用于GlusterFS的REST API，它还提供CLI版本。 在以下步骤中，我们将在3个GlusterFS节点中部署heketi，使用它来部署GlusterFS存储池，将其连接到OpenShift，并使用它来通过PersistentVolumeClaims为容器配置存储。 我们将总共部署4台虚拟机。 一个用于OpenShift（实验室设置），另一个用于GlusterFS。
-
-注意：您的系统应至少需要有四核CPU，16GB RAM和20 GB可用磁盘空间。
-
-### 部署OpenShift
-
-首先你需要先部署OpenShift。最有效率的方式是直接在虚拟机中部署一个All-in-One环境，部署指南见 [the “OpenShift Enterprise 3.4 all-in-one Lab Environment” article.](https://keithtenzer.com/2017/03/13/openshift-enterprise-3-4-all-in-one-lab-environment/)。
-
-确保你的OpenShift虚拟机可以解析外部域名。编辑`/etc/dnsmasq.conf`文件，增加下面的Google DNS：
+确保你的 OpenShift 虚拟机可以解析外部域名。编辑 `/etc/dnsmasq.conf` 文件，增加下面的 Google DNS：
 
 ```ini
 server=8.8.8.8
@@ -40,17 +27,17 @@ server=8.8.8.8
 # ping -c1 google.com
 ```
 
-### 部署Gluster
+### 部署 Gluster
 
-GlusterFS至少需要有以下配置的3台虚拟机：
+GlusterFS 至少需要有以下配置的 3 台虚拟机：
 
 - RHEL 7.3
 - 2 CPUs
-- 2 GB内存
-- 30 GB磁盘存储给操作系统
-- 10 GB磁盘存储给GlusterFS bricks
+- 2 GB 内存
+- 30 GB 磁盘存储给操作系统
+- 10 GB 磁盘存储给 GlusterFS bricks
 
-修改/etc/hosts文件，定义三台虚拟机的主机名。
+修改 /etc/hosts 文件，定义三台虚拟机的主机名。
 
 例如（主机名可以根据你自己的环境自由调整）
 
@@ -64,23 +51,23 @@ GlusterFS至少需要有以下配置的3台虚拟机：
 172.16.128.9   crs-node3.lab crs-node3
 ```
 
-**在3台GlusterFS虚拟机上都执行以下步骤**：
+**在 3 台 GlusterFS 虚拟机上都执行以下步骤**：
 
 ```bash
 # subscription-manager repos --disable="*"
 # subscription-manager repos --enable=rhel-7-server-rpms
 ```
 
-如果你已经订阅了GlusterFS那么可以直接使用，开启`rh-gluster-3-for-rhel-7-server-rpms`的yum源。
+如果你已经订阅了 GlusterFS 那么可以直接使用，开启 `rh-gluster-3-for-rhel-7-server-rpms` 的 yum 源。
 
-如果你没有的话，那么可以通过EPEL使用非官方支持的GlusterFS的社区源。
+如果你没有的话，那么可以通过 EPEL 使用非官方支持的 GlusterFS 的社区源。
 
 ```bash
 # yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 # rpm --import http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 ```
 
-在`/etc/yum.repos.d/`目录下创建`glusterfs-3.10.repo`文件：
+在 `/etc/yum.repos.d/` 目录下创建 `glusterfs-3.10.repo` 文件：
 
 ```ini
 [glusterfs-3.10]
@@ -97,37 +84,37 @@ enabled=1
 # yum repolist
 ```
 
-现在可以开始安装GlusterFS了。
+现在可以开始安装 GlusterFS 了。
 
 ```bash
 # yum -y install glusterfs-server
 ```
 
-需要为GlusterFS peers打开几个基本TCP端口，以便与OpenShift进行通信并提供存储：
+需要为 GlusterFS peers 打开几个基本 TCP 端口，以便与 OpenShift 进行通信并提供存储：
 
 ```bash
 # firewall-cmd --add-port=24007-24008/tcp --add-port=49152-49664/tcp --add-port=2222/tcp
 # firewall-cmd --runtime-to-permanent
 ```
 
-现在我们可以启动GlusterFS的daemon进程了：
+现在我们可以启动 GlusterFS 的 daemon 进程了：
 
 ```bash
 # systemctl enable glusterd
 # systemctl start glusterd
 ```
 
-完成。GlusterFS已经启动并正在运行。其他配置将通过heketi完成。
+完成。GlusterFS 已经启动并正在运行。其他配置将通过 heketi 完成。
 
-**在GlusterFS的一台虚拟机上安装heketi**
+**在 GlusterFS 的一台虚拟机上安装 heketi**
 
 ```bash
 [root@crs-node1 ~]# yum -y install heketi heketi-client
 ```
 
-### 更新EPEL
+### 更新 EPEL
 
-如果你没有Red Hat Gluster Storage订阅的话，你可以从EPEL中获取heketi。 在撰写本文时，2016年10月那时候还是3.0.0-1.el7版本，它不适用于OpenShift 3.4。 你将需要更新到更新的版本：
+如果你没有 Red Hat Gluster Storage 订阅的话，你可以从 EPEL 中获取 heketi。 在撰写本文时，2016 年 10 月那时候还是 3.0.0-1.el7 版本，它不适用于 OpenShift 3.4。 你将需要更新到更新的版本：
 
 ```bash
 [root@crs-node1 ~]# yum -y install wget
@@ -138,7 +125,7 @@ enabled=1
 [root@crs-node1 ~]# chown heketi:heketi /usr/bin/heketi*
 ```
 
-在`/etc/systemd/system/heketi.service`中创建v4版本的heketi二进制文件的更新语法文件：
+在 `/etc/systemd/system/heketi.service` 中创建 v4 版本的 heketi 二进制文件的更新语法文件：
 
 ```ini
 [Unit]
@@ -156,14 +143,11 @@ StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
-```
-
-```bash
 [root@crs-node1 ~]# systemctl daemon-reload
 [root@crs-node1 ~]# systemctl start heketi
 ```
 
-Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公钥拷贝到所有3个节点上（包括你登陆的第一个节点）：
+Heketi 使用 SSH 来配置 GlusterFS 的所有节点。创建 SSH 密钥对，将公钥拷贝到所有 3 个节点上（包括你登陆的第一个节点）：
 
 ```bash
 [root@crs-node1 ~]# ssh-keygen -f /etc/heketi/heketi_key -t rsa -N ''
@@ -173,7 +157,7 @@ Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公�
 [root@crs-node1 ~]# chown heketi:heketi /etc/heketi/heketi_key*
 ```
 
-剩下唯一要做的事情就是配置heketi来使用SSH。 编辑`/etc/heketi/heketi.json`文件使它看起来像下面这个样子（改变的部分突出显示下划线）：
+剩下唯一要做的事情就是配置 heketi 来使用 SSH。 编辑 `/etc/heketi/heketi.json` 文件使它看起来像下面这个样子（改变的部分突出显示下划线）：
 
 ```json
 {
@@ -233,14 +217,14 @@ Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公�
 }
 ```
 
-完成。heketi将监听8080端口，我们来确认下防火墙规则允许它监听该端口：
+完成。heketi 将监听 8080 端口，我们来确认下防火墙规则允许它监听该端口：
 
 ```bash
 # firewall-cmd --add-port=8080/tcp
 # firewall-cmd --runtime-to-permanent
 ```
 
-重启heketi：
+重启 heketi：
 
 ```bash
 # systemctl enable heketi
@@ -254,7 +238,7 @@ Heketi使用SSH来配置GlusterFS的所有节点。创建SSH密钥对，将公�
 Hello from Heketi
 ```
 
-很好。heketi上场的时候到了。 我们将使用它来配置我们的GlusterFS存储池。 该软件已经在我们所有的虚拟机上运行，但并未被配置。 要将其改造为满足我们需求的存储系统，需要在拓扑文件中描述我们所需的GlusterFS存储池，如下所示：
+很好。heketi 上场的时候到了。 我们将使用它来配置我们的 GlusterFS 存储池。 该软件已经在我们所有的虚拟机上运行，但并未被配置。 要将其改造为满足我们需求的存储系统，需要在拓扑文件中描述我们所需的 GlusterFS 存储池，如下所示：
 
 ```bash
 # vi topology.json
@@ -316,9 +300,9 @@ Hello from Heketi
 }
 ```
 
-该文件格式比较简单，基本上是告诉heketi要创建一个3节点的集群，其中每个节点包含的配置有FQDN，IP地址以及至少一个将用作GlusterFS块的备用块设备。
+该文件格式比较简单，基本上是告诉 heketi 要创建一个 3 节点的集群，其中每个节点包含的配置有 FQDN，IP 地址以及至少一个将用作 GlusterFS 块的备用块设备。
 
-现在将该文件发送给heketi：
+现在将该文件发送给 heketi：
 
 ```bash
 # export HEKETI_CLI_SERVER=http://crs-node1.lab:8080
@@ -332,7 +316,7 @@ Creating cluster ... ID: 78cdb57aa362f5284bc95b2549bc7e7d
  Adding device /dev/sdb ... OK
 ```
 
-现在heketi已经配置了3个节点的GlusterFS存储池。很简单！你现在可以看到3个虚拟机都已经成功构成了GlusterFS中的可信存储池（Trusted Stroage Pool）。
+现在 heketi 已经配置了 3 个节点的 GlusterFS 存储池。很简单！你现在可以看到 3 个虚拟机都已经成功构成了 GlusterFS 中的可信存储池（Trusted Stroage Pool）。
 
 ```bash
 [root@crs-node1 ~]# gluster peer status
@@ -349,13 +333,13 @@ Uuid: e3c1f9b0-be97-42e5-beda-f70fc05f47ea
 State: Peer in Cluster (Connected)
 ```
 
-现在回到OpenShift！
+现在回到 OpenShift！
 
-### 将Gluster与OpenShift集成
+### 将 Gluster 与 OpenShift 集成
 
-为了集成OpenShift，需要两样东西：一个动态的Kubernetes Storage Provisioner和一个StorageClass。 Provisioner在OpenShift中开箱即用。 实际上关键的是如何将存储挂载到容器上。 StorageClass是OpenShift中的用户可以用来实现的PersistentVolumeClaims的实体，它反过来能够触发一个Provisioner实现实际的配置，并将结果表示为Kubernetes PersistentVolume（PV）。
+为了集成 OpenShift，需要两样东西：一个动态的 Kubernetes Storage Provisioner 和一个 StorageClass。 Provisioner 在 OpenShift 中开箱即用。 实际上关键的是如何将存储挂载到容器上。 StorageClass 是 OpenShift 中的用户可以用来实现的 PersistentVolumeClaims 的实体，它反过来能够触发一个 Provisioner 实现实际的配置，并将结果表示为 Kubernetes PersistentVolume（PV）。
 
-就像OpenShift中的其他组件一样，StorageClass也简单的用YAML文件定义：
+就像 OpenShift 中的其他组件一样，StorageClass 也简单的用 YAML 文件定义：
 
 ```bash
 # cat crs-storageclass.yaml
@@ -371,23 +355,23 @@ parameters:
  restauthenabled: "false"
 ```
 
-我们的provisioner是kubernetes.io/glusterfs，将它指向我们的heketi实例。 我们将类命名为“container-ready-storage”，同时使其成为所有没有显示指定StorageClass的PersistentVolumeClaim的默认StorageClass。
+我们的 provisioner 是 kubernetes.io/glusterfs，将它指向我们的 heketi 实例。 我们将类命名为 “container-ready-storage”，同时使其成为所有没有显示指定 StorageClass 的 PersistentVolumeClaim 的默认 StorageClass。
 
-为你的GlusterFS池创建StorageClass：
+为你的 GlusterFS 池创建 StorageClass：
 
 ```bash
 # oc create -f crs-storageclass.yaml
 ```
 
-### 在OpenShift中使用Gluster
+### 在 OpenShift 中使用 Gluster
 
-我们来看下如何在OpenShift中使用GlusterFS。首先在OpenShift虚拟机中创建一个测试项目。
+我们来看下如何在 OpenShift 中使用 GlusterFS。首先在 OpenShift 虚拟机中创建一个测试项目。
 
 ```bash
 # oc new-project crs-storage --display-name="Container-Ready Storage"
 ```
 
-这会向Kubernetes/OpenShift发出storage请求，请求一个PersistentVolumeClaim（PVC）。 这是一个简单的对象，它描述最少需要多少容量和应该提供哪种访问模式（非共享，共享，只读）。 它通常是应用程序模板的一部分，但我们只需创建一个独立的PVC：
+这会向 Kubernetes/OpenShift 发出 storage 请求，请求一个 PersistentVolumeClaim（PVC）。 这是一个简单的对象，它描述最少需要多少容量和应该提供哪种访问模式（非共享，共享，只读）。 它通常是应用程序模板的一部分，但我们只需创建一个独立的 PVC：
 
 ```bash
 # cat crs-claim.yaml
@@ -410,7 +394,7 @@ spec:
 # oc create -f crs-claim.yaml
 ```
 
-观察在OpenShfit中，PVC正在以动态创建volume的方式实现：
+观察在 OpenShfit 中，PVC 正在以动态创建 volume 的方式实现：
 
 ```bash
 # oc get pvc
@@ -418,31 +402,29 @@ NAME             STATUS    VOLUME                                     CAPACITY  
 my-crs-storage   Bound     pvc-41ad5adb-107c-11e7-afae-000c2949cce7   1Gi        RWO           58s
 ```
 
-太棒了！ 你现在可以在OpenShift中使用存储容量，而不需要直接与存储系统进行任何交互。 我们来看看创建的volume：
+太棒了！ 你现在可以在 OpenShift 中使用存储容量，而不需要直接与存储系统进行任何交互。 我们来看看创建的 volume：
 
 ```bash
 # oc get pv/pvc-41ad5adb-107c-11e7-afae-000c2949cce7
-Name:		pvc-41ad5adb-107c-11e7-afae-000c2949cce7
-Labels:		
-StorageClass:	container-ready-storage
-Status:		Bound
-Claim:		crs-storage/my-crs-storage
-Reclaim Policy:	Delete
-Access Modes:	RWO
-Capacity:	1Gi
+Name:        pvc-41ad5adb-107c-11e7-afae-000c2949cce7
+Labels:        
+StorageClass:    container-ready-storage
+Status:        Bound
+Claim:        crs-storage/my-crs-storage
+Reclaim Policy:    Delete
+Access Modes:    RWO
+Capacity:    1Gi
 Message:
 Source:
-    Type:		Glusterfs (a Glusterfs mount on the host that shares a pod's lifetime)
-    EndpointsName:	gluster-dynamic-my-crs-storage
-    Path:		vol_85e444ee3bc154de084976a9aef16025
-    ReadOnly:		false
+    Type:        Glusterfs (a Glusterfs mount on the host that shares a pod's lifetime)
+    EndpointsName:    gluster-dynamic-my-crs-storage
+    Path:        vol_85e444ee3bc154de084976a9aef16025
+    ReadOnly:        false
 ```
 
-What happened in the background was that when the PVC reached the system, our default StorageClass reached out to the GlusterFS Provisioner with the volume specs from the PVC. The provisioner in turn communicates with our heketi instance which facilitates the creation of the GlusterFS volume, which we can trace in it’s log messages:
+该 volume 是根据 PVC 中的定义特别创建的。 在 PVC 中，我们没有明确指定要使用哪个 StorageClass，因为 heketi 的 GlusterFS StorageClass 已经被定义为系统范围的默认值。
 
-该volume是根据PVC中的定义特别创建的。 在PVC中，我们没有明确指定要使用哪个StorageClass，因为heketi的GlusterFS StorageClass已经被定义为系统范围的默认值。
-
-在后台发生的情况是，当PVC到达系统时，默认的StorageClass请求具有该PVC中volume声明规格的GlusterFS Provisioner。 Provisioner又与我们的heketi实例通信，这有助于创建GlusterFS volume，我们可以在其日志消息中追踪：
+在后台发生的情况是，当 PVC 到达系统时，默认的 StorageClass 请求具有该 PVC 中 volume 声明规格的 GlusterFS Provisioner。 Provisioner 又与我们的 heketi 实例通信，这有助于创建 GlusterFS volume，我们可以在其日志消息中追踪：
 
 ```bash
 [root@crs-node1 ~]# journalctl -l -u heketi.service
@@ -462,9 +444,9 @@ Mar 24 11:25:55 crs-node1.lab heketi[2598]: [asynchttp] INFO 2017/03/24 11:25:55
 ...
 ```
 
-成功！ 大约用了3秒钟，GlusterFS池就配置完成了，并配置了一个volume。 默认值是replica 3，这意味着数据将被复制到3个不同节点的3个块上（用GlusterFS作为后端存储）。 该过程是通过Heketi在OpenShift进行编排的。
+成功！ 大约用了 3 秒钟，GlusterFS 池就配置完成了，并配置了一个 volume。 默认值是 replica 3，这意味着数据将被复制到 3 个不同节点的 3 个块上（用 GlusterFS 作为后端存储）。 该过程是通过 Heketi 在 OpenShift 进行编排的。
 
-你也可以从GlusterFS的角度看到有关volume的信息：
+你也可以从 GlusterFS 的角度看到有关 volume 的信息：
 
 ```bash
 [root@crs-node1 ~]# gluster volume list
@@ -487,31 +469,31 @@ transport.address-family: inet
 nfs.disable: on
 ```
 
-请注意，GlusterFS中的卷名称如何对应于OpenShift中Kubernetes Persistent Volume的“路径”。
+请注意，GlusterFS 中的卷名称如何对应于 OpenShift 中 Kubernetes Persistent Volume 的 “路径”。
 
-或者，你也可以使用OpenShift UI来配置存储，这样可以很方便地在系统中的所有已知的StorageClasses中进行选择：
+或者，你也可以使用 OpenShift UI 来配置存储，这样可以很方便地在系统中的所有已知的 StorageClasses 中进行选择：
 
 ![创建存储](../images/create-gluster-storage.png)
 
-![Screen Shot 2017-03-24 at 11.09.34.png](https://keithtenzer.files.wordpress.com/2017/03/screen-shot-2017-03-24-at-11-09-341.png?w=440)
+![容器存储](../images/container-storage.png)
 
-让我们做点更有趣的事情，在OpenShift中运行工作负载。
+让我们做点更有趣的事情，在 OpenShift 中运行工作负载。
 
-在仍运行着crs-storage项目的OpenShift虚拟机中执行：
+在仍运行着 crs-storage 项目的 OpenShift 虚拟机中执行：
 
 ```bash
 # oc get templates -n openshift
 ```
 
-你应该可以看到一个应用程序和数据库模板列表，这个列表将方便你更轻松的使用OpenShift来部署你的应用程序项目。
+你应该可以看到一个应用程序和数据库模板列表，这个列表将方便你更轻松的使用 OpenShift 来部署你的应用程序项目。
 
-我们将使用MySQL来演示如何在OpenShift上部署具有持久化和弹性存储的有状态应用程序。 Mysql-persistent模板包含一个用于MySQL数据库目录的1G空间的PVC。 为了演示目的，可以直接使用默认值。
+我们将使用 MySQL 来演示如何在 OpenShift 上部署具有持久化和弹性存储的有状态应用程序。 Mysql-persistent 模板包含一个用于 MySQL 数据库目录的 1G 空间的 PVC。 为了演示目的，可以直接使用默认值。
 
 ```bash
 # oc process mysql-persistent -n openshift | oc create -f -
 ```
 
-等待部署完成。你可以通过UI或者命令行观察部署进度：
+等待部署完成。你可以通过 UI 或者命令行观察部署进度：
 
 ```bash
 # oc get pods
@@ -519,19 +501,19 @@ NAME            READY     STATUS    RESTARTS   AGE
 mysql-1-h4afb   1/1       Running   0          2m
 ```
 
-好了。我们已经使用这个模板创建了一个service，secrets、PVC和pod。我们来使用它（你的pod名字将跟我的不同）：
+好了。我们已经使用这个模板创建了一个 service，secrets、PVC 和 pod。我们来使用它（你的 pod 名字将跟我的不同）：
 
 ```bash
 # oc rsh mysql-1-h4afb
 ```
 
-你已经成功的将它挂载到MySQL的pod上。我们连接一下数据库试试：
+你已经成功的将它挂载到 MySQL 的 pod 上。我们连接一下数据库试试：
 
 ```bash
 sh-4.2$ mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -h $HOSTNAME $MYSQL_DATABASE
 ```
 
-这点很方便，所有重要的配置，如MySQL凭据，数据库名称等都是pod模板中的环境变量的一部分，因此可以在pod中作为shell的环境变量。 我们来创建一些数据：
+这点很方便，所有重要的配置，如 MySQL 凭据，数据库名称等都是 pod 模板中的环境变量的一部分，因此可以在 pod 中作为 shell 的环境变量。 我们来创建一些数据：
 
 ```bash
 mysql> show databases;
@@ -572,30 +554,30 @@ mysql> SELECT * FROM equipment;
 
 很好，数据库运行正常。
 
-你想看下数据存储在哪里吗？很简单！查看刚使用模板创建的mysql volume：
+你想看下数据存储在哪里吗？很简单！查看刚使用模板创建的 mysql volume：
 
 ```bash
 # oc get pvc/mysql
 NAME      STATUS    VOLUME                                     CAPACITY   ACCESSMODES   AGE
 mysql     Bound     pvc-a678b583-1082-11e7-afae-000c2949cce7   1Gi        RWO           11m
 # oc describe pv/pvc-a678b583-1082-11e7-afae-000c2949cce7
-Name:		pvc-a678b583-1082-11e7-afae-000c2949cce7
-Labels:		
-StorageClass:	container-ready-storage
-Status:		Bound
-Claim:		crs-storage/mysql
-Reclaim Policy:	Delete
-Access Modes:	RWO
-Capacity:	1Gi
+Name:        pvc-a678b583-1082-11e7-afae-000c2949cce7
+Labels:        
+StorageClass:    container-ready-storage
+Status:        Bound
+Claim:        crs-storage/mysql
+Reclaim Policy:    Delete
+Access Modes:    RWO
+Capacity:    1Gi
 Message:
 Source:
-    Type:		Glusterfs (a Glusterfs mount on the host that shares a pod's lifetime)
-    EndpointsName:	gluster-dynamic-mysql
-    Path:		vol_6299fc74eee513119dafd43f8a438db1
-    ReadOnly:		false
+    Type:        Glusterfs (a Glusterfs mount on the host that shares a pod's lifetime)
+    EndpointsName:    gluster-dynamic-mysql
+    Path:        vol_6299fc74eee513119dafd43f8a438db1
+    ReadOnly:        false
 ```
 
-GlusterFS的volume名字是vol_6299fc74eee513119dafd43f8a438db1。回到你的GlusterFS虚拟机中，输入：
+GlusterFS 的 volume 名字是 vol_6299fc74eee513119dafd43f8a438db1。回到你的 GlusterFS 虚拟机中，输入：
 
 ```bash
 # gluster volume info vol_6299fc74eee513119dafd43f8a438db
@@ -616,7 +598,7 @@ transport.address-family: inet
 nfs.disable: on
 ```
 
-你可以看到数据是如何被复制到3个GlusterFS块的。我们从中挑一个（最好挑选你刚登陆的那台虚拟机并查看目录）：
+你可以看到数据是如何被复制到 3 个 GlusterFS 块的。我们从中挑一个（最好挑选你刚登陆的那台虚拟机并查看目录）：
 
 ```bash
 # ll /var/lib/heketi/mounts/vg_67314f879686de975f9b8936ae43c5c5/brick_f264a47aa32be5d595f83477572becf8/brick
@@ -642,18 +624,16 @@ drwxr-s---. 2 1000070000 2001       62 Mar 24 12:20 sampledb
 drwxr-s---. 2 1000070000 2001     8192 Mar 24 12:12 sys
 ```
 
-你可以在这里看到MySQL数据库目录。 它使用GlusterFS作为后端存储，并作为绑定挂载给MySQL容器使用。 如果你检查OpenShift VM上的mount表，你将会看到GlusterFS的mount。
+你可以在这里看到 MySQL 数据库目录。 它使用 GlusterFS 作为后端存储，并作为绑定挂载给 MySQL 容器使用。 如果你检查 OpenShift VM 上的 mount 表，你将会看到 GlusterFS 的 mount。
 
 ### 总结
 
-在这里我们是在OpenShift之外创建了一个简单但功能强大的GlusterFS存储池。 该池可以独立于应用程序扩展和收缩。 该池的整个生命周期由一个简单的称为heketi的前端管理，你只需要在部署增长时进行手动干预。 对于日常配置操作，使用它的API与OpenShifts动态配置器交互，无需开发人员直接与基础架构团队进行交互。
+在这里我们是在 OpenShift 之外创建了一个简单但功能强大的 GlusterFS 存储池。 该池可以独立于应用程序扩展和收缩。 该池的整个生命周期由一个简单的称为 heketi 的前端管理，你只需要在部署增长时进行手动干预。 对于日常配置操作，使用它的 API 与 OpenShifts 动态配置器交互，无需开发人员直接与基础架构团队进行交互。
 
-o这就是我们如何将存储带入DevOps世界 - 无痛苦，并在OpenShift PaaS系统的开发人员工具中直接提供。
+o 这就是我们如何将存储带入 DevOps 世界 - 无痛苦，并在 OpenShift PaaS 系统的开发人员工具中直接提供。
 
-GlusterFS和OpenShift可跨越所有环境：裸机，虚拟机，私有和公共云（Azure，Google Cloud，AWS ...），确保应用程序可移植性，并避免云供应商锁定。
+GlusterFS 和 OpenShift 可跨越所有环境：裸机，虚拟机，私有和公共云（Azure，Google Cloud，AWS ...），确保应用程序可移植性，并避免云供应商锁定。
 
-祝你愉快在容器中使用GlusterFS！
+---
 
-(c) 2017 Keith Tenzer
-
-原文链接：https://keithtenzer.com/2017/03/24/storage-for-containers-using-gluster-part-ii/
+本文由译自 Daniel Messer（Technical Marketing Manager Storage @RedHat）和Keith Tenzer（Solutions Architect @RedHat）共同撰写文章，原文已无法访问。

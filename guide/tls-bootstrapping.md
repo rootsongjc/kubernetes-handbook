@@ -1,4 +1,4 @@
-## TLS Bootstrap
+# TLS Bootstrap
 
 本文档介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）。
 

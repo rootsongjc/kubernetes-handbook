@@ -32,7 +32,7 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 
 ## Demo
 
-在下面这个 demo 中我们将使在 GKE 中部署 Istio 并运行 bookinfo 示例，其中 ratings 服务的后端使用的是部署在虚拟机上的 MySQL，该示例可以在 [Istio 官方文档](https://istio.io/latest/docs/examples/virtual-machines/bookinfo/)中找到，我作出了部分改动，最终的流量路由如下图所示。
+在下面这个 demo 中我们将使在 GKE 中部署 Istio 并运行 bookinfo 示例，其中 ratings 服务的后端使用的是部署在虚拟机上的 MySQL，流量路由如下图所示。
 
 ![Bookinfo 示例中的流量示意图](../images/istio-bookinfo-vm-traffic.jpg)
 
@@ -56,6 +56,5 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 ## 参考阅读
 
 - [Virtual Machine Installation - istio.io](https://istio.io/latest/docs/setup/install/virtual-machine/)
-- [Virtual Machines in Single-Network Meshes - istio.io](https://istio.io/latest/docs/examples/virtual-machines/single-network/)
 - [Istio: Bringing VMs into the Mesh (with Cynthia Coan) - tetrate.io](https://www.tetrate.io/blog/istio-bringing-vms-into-the-mesh-with-cynthia-coan/)
 - [Bridging Traditional and Modern Workloads - tetrate.io](https://www.tetrate.io/blog/bridging-traditional-and-modern-workloads/)

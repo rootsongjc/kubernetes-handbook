@@ -19,11 +19,11 @@ Envoy 官方提供了以下打包用例：
 - [Jaeger Tracing](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/jaeger_tracing)
 - [gRPC Bridge](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/grpc_bridge)
 
-全部可以使用 `docker-compose` 运行，代码可以在 https://github.com/envoyproxy/envoy/tree/master/examples 找到。
+全部可以使用 `docker-compose` 运行，代码可以在 [GitHub](https://github.com/envoyproxy/envoy/tree/master/examples) 找到。
 
 ## Front proxy
 
-Envoy 在 envoymesh 的边缘做反向代理，详细使用方式见 <https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy>，在此我将解说下以下问题：
+Envoy 在 Envoy mesh 的边缘做反向代理，详细使用方式见 [Envoy 文档](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy)，在此我将解说下以下问题：
 
 - Envoy 是如何作为进程外架构运行的？
 - 为何说 Envoy 是无侵入式架构？
@@ -292,8 +292,8 @@ Hello from behind Envoy (service 1)! hostname: c5b9f1289e0f resolvedhostname: 17
 | /stats               | 打印服务器状态统计信息                   |
 | /stats/prometheus    | 打印 prometheus 格式的服务器状态统计信息 |
 
-Envoy 提供了 API 管理端点，可以对 Envoy 进行动态配置，参考 [v2 API reference](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api)。
+Envoy 提供了 API 管理端点，可以对 Envoy 进行动态配置。
 
 ## 参考
 
-- [Front proxy](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy)
+- [Front proxy - envoyproxy.io](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy)

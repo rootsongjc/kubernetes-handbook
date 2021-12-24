@@ -42,7 +42,7 @@ Kubernetes 的架构做的足够开放，通过系列的接口，如 CRI（Conta
 
 - 2017 年 6 月 19 日 - 20 日，北京，[L3 大会](https://www.bagevent.com/event/561769)（LinuxCon+ContainerCon+CloudOpen China）。CNCF（Cloud Native Computing Foundation）作为云原生应用的联合推广团体，也是由 Google 一手培植起来的强大 “市场媒体”（Kubernetes 是第一个入选该基金会的项目），第一次进入中国，华为、Google、Rancher、红帽等公司分别做了关于 Kubernetes 及 Cloud Native 的演讲。
 - 2017 年 7 月 25 日，北京、上海，[k8smeetup](http://www.k8smeetup.com/)，Kubernetes 二周年北京 - 上海 Meetup 双城庆生。
-- 2017 年 9 月 12 日，北京，[T11 大会](https://www.talkingdata.com/activity/T11-2017/index.html)，前 Pivotal 技术专家，现 CapitalOne 高级专家 Kevin Hoffman 做了 [High Level Cloud Native Concepts](https://jimmysong.io/posts/high-level-cloud-native-from-kevin-hoffman/) 的演讲。
+- 2017 年 9 月 12 日，北京，T11 大会，前 Pivotal 技术专家，现 CapitalOne 高级专家 Kevin Hoffman 做了 [High Level Cloud Native Concepts](https://jimmysong.io/posts/high-level-cloud-native-from-kevin-hoffman/) 的演讲。
 - 2017 年 10 月 15 日，杭州，[KEUC 2017- Kubernetes 中国用户大会](https://www.bagevent.com/event/827437)。由才云科技（Caicloud）、美国 The Linux Foundation 基金会旗下 Cloud Native Computing Foundation (CNCF)、「K8sMeetup 中国社区」联合主办的聚焦 Kubernetes 中国行业应用与技术落地的盛会。
 - 2017 年 12 月 13 日 - 15 日，杭州，[云原生技术大会 ——CNTC](https://www.huodongjia.com/event-5854212.html)。这次会议由谐云科技与网易云共同主办，主要探讨云原生技术与应用，同时还进行了云原生集训。
 

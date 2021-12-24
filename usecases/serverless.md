@@ -1,4 +1,4 @@
-# Serverless架构
+# Serverless 架构
 
 就像无线互联网实际有的地方也需要用到有线连接一样，无服务器架构仍然在某处有服务器。Serverless（无服务器架构）指的是由开发者实现的服务端逻辑运行在无状态的计算容器中，它由事件触发， 完全被第三方管理，其业务层面的状态则被开发者使用的数据库和存储资源所记录。
 
@@ -36,7 +36,7 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 
 按照《福布斯》杂志的统计，在商业和企业数据中心的典型服务器仅提供5%～15%的平均最大处理能力的输出。这无疑是一种资源的巨大浪费。随着Serverless架构的出现，让服务提供商提供我们的计算能力最大限度满足实时需求。这将使我们更有效地利用计算资源。
 
-## Kubernetes上的serverless 架构
+## Kubernetes 上的 serverless 架构
 
 目前已经有一批优秀的基于 kubernetes 的 serverless 架构（FaaS）开源项目如下：
 
@@ -50,7 +50,7 @@ Serverless架构明显比其他架构更简单。更少的组件，就意味着�
 - [kubeless](https://github.com/kubeless/kubeless) - Kubernetes Native Serverless Framework [http://kubeless.io](http://kubeless.io/)
 - [OpenWhisk](http://openwhisk.incubator.apache.org/) -  Apache OpenWhisk (Incubating) is a serverless, open source cloud platform that executes functions in response to events at any scale.
 
-以上项目收录于 [awsome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)。
+更多 Serverless 项目请见 [awsome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)。
 
 ## FaaS
 
@@ -60,9 +60,8 @@ Function-as-a-Service景观图（图片来自`https://github.com/amyers1793/Func
 
 ## 参考
 
-- [Why Serverless? - serverless.com](https://serverless.com/learn/)
-- [Serverless Architectures - Martin Fowler](https://martinfowler.com/articles/serverless.html)
-- [Serverless架构综述](http://dockone.io/article/1460)
-- [2017年会是Serverless爆发之年吗？](http://www.infoq.com/cn/news/2017/04/2017-Serverless)
-- [从IaaS到FaaS—— Serverless架构的前世今生](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
-- [Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
+- [Serverless Architectures - martinfowler.com](https://martinfowler.com/articles/serverless.html)
+- [Serverless 架构综述 - dockone.io](http://dockone.io/article/1460)
+- [2017 年会是 Serverless 爆发之年吗？- infoq.cn](https://www.infoq.cn/news/2017/04/2017-Serverless/)
+- [从 IaaS 到 FaaS—— Serverless 架构的前世今生 - aws.amazon.com](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
+- [Introducing Redpoint's FaaS Landscape - medium.com](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
