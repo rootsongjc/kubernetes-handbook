@@ -1,16 +1,16 @@
 # Secret
 
-Secret解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者Pod Spec中。Secret可以以Volume或者环境变量的方式使用。
+Secret 解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者 Pod Spec 中。Secret 可以以 Volume 或者环境变量的方式使用。
 
-Secret有三种类型：
+Secret 有三种类型：
 
-* **Service Account** ：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的`/run/secrets/kubernetes.io/serviceaccount`目录中；
-* **Opaque** ：base64编码格式的Secret，用来存储密码、密钥等；
-* **kubernetes.io/dockerconfigjson** ：用来存储私有docker registry的认证信息。
+- **Service Account** ：用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的 `/run/secrets/kubernetes.io/serviceaccount` 目录中；
+- **Opaque** ：base64 编码格式的 Secret，用来存储密码、密钥等；
+- **kubernetes.io/dockerconfigjson** ：用来存储私有 docker registry 的认证信息。
 
 ## Opaque Secret
 
-Opaque类型的数据是一个map类型，要求value是base64编码格式：
+Opaque 类型的数据是一个 map 类型，要求 value 是 base64 编码格式：
 
 ```sh
 $ echo -n "admin" | base64
@@ -32,14 +32,14 @@ data:
   username: YWRtaW4=
 ```
 
-接着，就可以创建secret了：`kubectl create -f secrets.yml`。
+接着，就可以创建 secret 了：`kubectl create -f secrets.yml`。
 
-创建好secret之后，有两种方式来使用它： 
+创建好 secret 之后，有两种方式来使用它：
 
-* 以Volume方式
-* 以环境变量方式
+- 以 Volume 方式
+- 以环境变量方式
 
-### 将Secret挂载到Volume中
+### 将 Secret 挂载到 Volume 中
 
 ```yaml
 apiVersion: v1
@@ -66,7 +66,7 @@ spec:
       hostPort: 5432
 ```
 
-### 将Secret导出到环境变量中
+### 将 Secret 导出到环境变量中
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -103,14 +103,14 @@ spec:
 
 ## kubernetes.io/dockerconfigjson
 
-可以直接用`kubectl`命令来创建用于docker registry认证的secret：
+可以直接用 `kubectl` 命令来创建用于 docker registry 认证的 secret：
 
 ```sh
 $ kubectl create secret docker-registry myregistrykey --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL
 secret "myregistrykey" created.
 ```
 
-也可以直接读取`~/.docker/config.json`的内容来创建：
+也可以直接读取 `~/.docker/config.json` 的内容来创建：
 
 ```sh
 $ cat ~/.docker/config.json | base64
@@ -126,7 +126,7 @@ EOF
 $ kubectl create -f myregistrykey.yaml
 ```
 
-在创建Pod的时候，通过`imagePullSecrets`来引用刚创建的`myregistrykey`:
+在创建 Pod 的时候，通过 `imagePullSecrets` 来引用刚创建的 `myregistrykey`:
 
 ```yaml
 apiVersion: v1
@@ -143,7 +143,7 @@ spec:
 
 ### Service Account
 
-Service Account用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的`/run/secrets/kubernetes.io/serviceaccount`目录中。
+Service Account 用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的 `/run/secrets/kubernetes.io/serviceaccount` 目录中。
 
 ```sh
 $ kubectl run nginx --image nginx
@@ -156,5 +156,3 @@ ca.crt
 namespace
 token
 ```
-
-

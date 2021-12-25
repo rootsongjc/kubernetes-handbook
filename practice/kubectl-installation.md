@@ -1,6 +1,6 @@
-# 安装kubectl命令行工具
+# 安装 kubectl 命令行工具
 
-本文档介绍下载和配置 kubernetes 集群命令行工具 kubelet 的步骤。
+本文介绍下载和配置 kubernetes 集群命令行工具 kubelet 的步骤。
 
 ## 下载 kubectl
 
@@ -39,8 +39,3 @@ kubectl config use-context kubernetes
 + 生成的 kubeconfig 被保存到 `~/.kube/config` 文件；
 
 **注意：**`~/.kube/config`文件拥有对该集群的最高权限，请妥善保管。
-
-## 更多资料
-
-- [kubectl命令概览](../guide/using-kubectl.md)
-- [kubectl命令技巧大全](../guide/kubectl-cheatsheet.md)

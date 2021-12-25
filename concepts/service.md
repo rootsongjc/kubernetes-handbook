@@ -435,4 +435,4 @@ Kubernetes 最主要的哲学之一，是用户不应该暴露那些能够导致
 
 ## 更多信息
 
-- [使用 Service 连接 Frontend 到 Backend](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)
+- [使用 Service 连接 Frontend 到 Backend - kubernetes.io](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)

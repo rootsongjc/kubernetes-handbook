@@ -711,6 +711,6 @@ spec:
 
 ## 参考
 
-- https://kubernetes.io/docs/concepts/storage/volumes/
+- [Volumes - kubernetes.io](https://kubernetes.io/docs/concepts/storage/volumes/)
 
-- [使用持久化卷来部署 WordPress 和 MySQL](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+- [使用持久化卷来部署 WordPress 和 MySQL - kubernetes.io](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)

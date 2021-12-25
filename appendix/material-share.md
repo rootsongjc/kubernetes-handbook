@@ -4,7 +4,7 @@
 
 ## 社区资源
 
-Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在 <https://github.com/kubernetes/community> 这个 repo 中，建议参与 Kubernetes 社区前先阅读该 repo 中的资料。
+Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在[这个 repo](https://github.com/kubernetes/community)  中，建议参与 Kubernetes 社区前先阅读该 repo 中的资料。
 
 在这里你可以找到：
 
@@ -43,9 +43,8 @@ Kubernetes和Cloud Native相关网站、专栏、博客等。
 - [giantswarm blog](https://blog.giantswarm.io/)
 - [k8smeetup.com](http://www.k8smeetup.com)
 - [dockone.io](http://www.dockone.io)
-- [Cloud Native知乎专栏](https://zhuanlan.zhihu.com/cloud-native)
+- [Cloud Native 知乎专栏](https://zhuanlan.zhihu.com/cloud-native)
 - [kubernetes.org.cn](https://www.kubernetes.org.cn/)
-- [servicemesher.com](https://www.servicemesher.com)
 
 ### 博客
 

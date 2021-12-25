@@ -1,4 +1,4 @@
-# 云原生编程语言 Pulumi
+# Pulumi
 
 2018 年 6 月 18 日 Joe Duffy 在[他的博客](http://joeduffyblog.com/2018/06/18/hello-pulumi/)中宣布开源了云原生编程语言 [Pulumi](https://www.pulumi.com/)。这是继 [Ballerina](https://ballerina.io/) 之后我看到的另一款云原生编程语言，他们之间有一些共同的特点，例如都是为了支持多种云环境，基于不可变基础设施和基础设施即代码的理念构建，使云原生应用的集成更加方便，但也有一些不同，Ballerina 是直接创建了一个基于 JVM 的语言，而 Pulumi 是为不同编程语言构建了 SDK。
 

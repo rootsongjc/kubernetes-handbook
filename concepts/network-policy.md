@@ -1,4 +1,4 @@
-# Network Policy
+# NetworkPolicy
 
 网络策略说明一组 `Pod` 之间是如何被允许互相通信，以及如何与其它网络 Endpoint 进行通信。 `NetworkPolicy` 资源使用标签来选择 `Pod`，并定义了一些规则，这些规则指明允许什么流量进入到选中的 `Pod` 上。关于 Network Policy 的详细用法请参考 [Kubernetes 官网](https://kubernetes.io/docs/concepts/services-networking/network-policies/)。
 
@@ -102,5 +102,4 @@ spec:
 ```
 ## 参考
 
-- [Network Policies - k8smeetup.github.io](https://k8smeetup.github.io/docs/concepts/services-networking/network-policies/)
 - [Network Policies - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

@@ -6,7 +6,7 @@
 
 Condiut与[Linkerd](https://linkerd.io)的设计方式不同，它跟[Istio](https://istio.io)一样使用的是Sidecar模式，但架构又没Istio那么复杂。Conduit只支持Kubernetes，且只支持HTTP2（包括gRPC）协议。
 
-Conduit使用Rust和Go语言开发，GitHub地址https://github.com/runconduit/conduit
+Conduit使用Rust和Go语言开发，GitHub地址 https://github.com/runconduit/conduit
 
 安装Conduit必须使用Kubernetes1.8以上版本。
 
@@ -14,5 +14,3 @@ Conduit使用Rust和Go语言开发，GitHub地址https://github.com/runconduit/c
 
 - Conduit GitHub：https://github.com/runconduit/conduit
 - 关于Conduit的更多资源请参考官方网站：https://conduit.io/
-- Conduit的官方文档中文版：https://github.com/doczhcn/conduit
-- 关于Service Mesh的更多内容请访问ServiceMesher：http://www.servicemesher.com

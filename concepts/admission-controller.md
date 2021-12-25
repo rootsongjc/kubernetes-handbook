@@ -2,9 +2,10 @@
 
 准入控制器（Admission Controller）位于 API Server 中，在对象被持久化之前，准入控制器拦截对 API Server 的请求，一般用来做身份验证和授权。其中包含两个特殊的控制器：`MutatingAdmissionWebhook` 和 `ValidatingAdmissionWebhook`。分别作为配置的变异和验证[准入控制 webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)。
 
-**变更（Mutating）准入控制**：修改请求的对象
+准入控制器包括以下两种：
 
-**验证（Validating）准入控制**：验证请求的对象
+- **变更（Mutating）准入控制**：修改请求的对象
+- **验证（Validating）准入控制**：验证请求的对象
 
 准入控制器是在 API Server 的启动参数重配置的。一个准入控制器可能属于以上两者中的一种，也可能两者都属于。当请求到达 API Server 的时候首先执行变更准入控制，然后再执行验证准入控制。
 

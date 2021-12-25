@@ -1,5 +1,7 @@
 # 访问集群
 
+本文列举了集中访问 Kubernetes 集群的方式。
+
 ## 第一次使用 kubectl 访问
 
 如果您是第一次访问 Kubernetes API 的话，我们建议您使用 Kubernetes 命令行工具：`kubectl`。

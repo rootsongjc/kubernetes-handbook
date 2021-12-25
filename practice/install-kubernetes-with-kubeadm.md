@@ -47,4 +47,4 @@ Kubernetes版本通常支持九个月，在此期间，如果发现严重的错�
 
 ## 参考
 
-- [Overview of kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)
+- [Overview of kubeadm - kubernetes.io](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)

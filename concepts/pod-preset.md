@@ -1,6 +1,6 @@
 # Pod Preset
 
-> **注意：**PodPreset 资源对象只有 kubernetes 1.8 以上版本才支持。
+> **注意：**PodPreset 资源对象只有 Kubernetes 1.8 以上版本才支持。
 
 Preset 就是预设，有时候想要让一批容器在启动的时候就注入一些信息，比如 secret、volume、volume mount 和环境变量，而又不想一个一个的改这些 Pod 的 template，这时候就可以用到 PodPreset 这个资源对象了。
 

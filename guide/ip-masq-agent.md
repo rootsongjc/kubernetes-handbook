@@ -93,6 +93,7 @@ MASQUERADE  all  --  anywhere             anywhere             /* ip-masq-agent:
 
 默认情况下，在 GCE/GKE 中将启动 kubernetes 1.7.0 版本，ip-masq-agent 已经在集群中运行。如果您在其他环境中运行 kubernetes，那么您可以将 ip-masq-agent 以 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 的方式在集群中运行。
 
-原文地址：https://k8smeetup.github.io/docs/tasks/administer-cluster/ip-masq-agent/
+## 参考
 
-译者：[rootsongjc](https://github.com/rootsongjc)
+- [IP Masquerade Agent User Guide - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/ip-masq-agent/)
+

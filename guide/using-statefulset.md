@@ -1,26 +1,24 @@
 # 使用StatefulSet部署有状态应用
 
-[StatefulSet](../concepts/statefulset.md) 这个对象是专门用来部署用状态应用的，可以为Pod提供稳定的身份标识，包括hostname、启动顺序、DNS名称等。
+[StatefulSet](../concepts/statefulset.md) 这个对象是专门用来部署用状态应用的，可以为 Pod 提供稳定的身份标识，包括 hostname、启动顺序、DNS 名称等。
 
-下面以在kubernetes1.6版本中部署zookeeper和kafka为例讲解StatefulSet的使用，其中kafka依赖于zookeeper。
+下面以在 kubernetes1.6 版本中部署 zookeeper 和 kafka 为例讲解 StatefulSet 的使用，其中 kafka 依赖于 zookeeper。
 
-Dockerfile和配置文件见 [zookeeper](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/kafka)。
+Dockerfile 和配置文件见 [zookeeper](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/kafka)。
 
-**注：**所有的镜像基于CentOS系统的JDK制作，为我的私人镜像，外部无法访问，yaml中没有配置持久化存储。
+**注：**所有的镜像基于 CentOS 系统的 JDK 制作，为我的私人镜像，外部无法访问，yaml 中没有配置持久化存储。
 
-## 部署Zookeeper
+## 部署 Zookeeper
 
-Dockerfile中从远程获取zookeeper的安装文件，然后在定义了三个脚本：
+Dockerfile 中从远程获取 zookeeper 的安装文件，然后在定义了三个脚本：
 
-- zkGenConfig.sh：生成zookeeper配置文件
-- zkMetrics.sh：获取zookeeper的metrics
-- zkOk.sh：用来做ReadinessProb
+- zkGenConfig.sh：生成 zookeeper 配置文件
+- zkMetrics.sh：获取 zookeeper 的 metrics
+- zkOk.sh：用来做 ReadinessProb
 
-我们在来看下这三个脚本的执行结果：
+我们在来看下这三个脚本的执行结果。
 
-zkGenConfig.sh
-
-zkMetrics.sh脚本实际上执行的是下面的命令：
+zkMetrics.sh 脚本实际上执行的是下面的命令：
 
 ```bash
 $ echo mntr | nc localhost $ZK_CLIENT_PORT >& 1
@@ -44,7 +42,7 @@ zk_synced_followers	1
 zk_pending_syncs	0
 ```
 
-zkOk.sh脚本实际上执行的是下面的命令：
+zkOk.sh 脚本实际上执行的是下面的命令：
 
 ```bash
 $ echo ruok | nc 127.0.0.1 $ZK_CLIENT_PORT
@@ -53,7 +51,7 @@ imok
 
 **zookeeper.yaml**
 
-下面是启动三个zookeeper实例的yaml配置文件：
+下面是启动三个 zookeeper 实例的 YAML 配置文件：
 
 ```yaml
 ---
@@ -200,11 +198,11 @@ spec:
 
 我们再主要下上面那三个脚本的用途。
 
-## 部署kafka
+## 部署 kafka
 
-Kafka的docker镜像制作跟zookeeper类似，都是从远程下载安装包后，解压安装。
+Kafka 的 docker 镜像制作跟 zookeeper 类似，都是从远程下载安装包后，解压安装。
 
-与zookeeper不同的是，只要一个脚本，但是又依赖于我们上一步安装的zookeeper，kafkaGenConfig.sh用来生成kafka的配置文件。
+与 zookeeper 不同的是，只要一个脚本，但是又依赖于我们上一步安装的 zookeeper，kafkaGenConfig.sh 用来生成 kafka 的配置文件。
 
 我们来看下这个脚本。
 
@@ -224,11 +222,11 @@ sed -i s"/broker.id=0/broker.id=$MY_ID/g" /opt/kafka/config/server.properties
 sed -i s'/zookeeper.connect=localhost:2181/zookeeper.connect=zk-0.zk-svc.brand.svc:2181,zk-1.zk-svc.brand.svc:2181,zk-2.zk-svc.brand.svc:2181/g' /opt/kafka/config/server.properties
 ```
 
-该脚本根据statefulset生成的pod的hostname的后半截数字部分作为broker ID，同时再替换zookeeper的地址。
+该脚本根据 statefulset 生成的 pod 的 hostname 的后半截数字部分作为 broker ID，同时再替换 zookeeper 的地址。
 
 **Kafka.yaml**
 
-下面是创建3个kafka实例的yaml配置。
+下面是创建 3 个 kafka 实例的 YAML 配置。
 
 ```yaml
 ---
@@ -322,5 +320,4 @@ spec:
 
 ## 参考
 
-- https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
-- [kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)
+- [StatefulSet - kubernetes.i](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)

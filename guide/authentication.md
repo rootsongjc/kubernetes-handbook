@@ -629,6 +629,7 @@ rules:
 #### 认证 API
 
 您可以使用 `certificates.k8s.io` API将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
-官方最新文档地址：https://kubernetes.io/docs/admin/authentication/
 
-译者：[Jimmy Song](https://jimmysong.io)
+## 参考
+
+- [Authenticating - kubernetes.io](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)

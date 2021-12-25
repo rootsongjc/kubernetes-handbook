@@ -613,4 +613,4 @@ crontabs/my-new-cron-object   3s
 ## 参考
 
 - [Extend the Kubernetes API with CustomResourceDefinitions - kubernetes.io](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)
-- [如何从零开始编写一个Kubernetes CRD - servicemesher.com](https://www.servicemesher.com/blog/kubernetes-crd-quick-start/)
+- [如何从零开始编写一个 Kubernetes CRD - cloudnative.to](https://cloudnative.to/blog/kubernetes-crd-quick-start/)

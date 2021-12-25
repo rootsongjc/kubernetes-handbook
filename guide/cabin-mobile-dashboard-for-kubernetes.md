@@ -1,4 +1,4 @@
-# Cabin - Kubernetes手机客户端
+# Cabin - Kubernetes 手机客户端
 
 cabin是由[bitnami](https://bitnami.com/)开源的手机管理Kubernetes集群的客户端，目前提供iOS和安卓版本，代码开源在GitHub上：<https://bitnami.com/>
 

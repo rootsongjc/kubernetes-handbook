@@ -1,6 +1,6 @@
-# 使用etcdctl访问kubernetes数据
+# 使用 etcdctl 访问 Kubernetes 数据
 
-Kubenretes1.6中使用etcd V3版本的API，使用`etcdctl`直接`ls`的话只能看到`/kube-centos`一个路径。需要在命令前加上`ETCDCTL_API=3`这个环境变量才能看到kuberentes在etcd中保存的数据。
+Kubenretes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 kuberentes 在 etcd 中保存的数据。
 
 ```bash
 ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json|python -m json.tool
@@ -15,9 +15,9 @@ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
 get /registry/namespaces/default -w=json | jq .
 ```
 
-- `-w`指定输出格式
+- `-w` 指定输出格式
 
-将得到这样的json的结果：
+将得到这样的 json 的结果：
 
 ```json
 {
@@ -40,13 +40,13 @@ get /registry/namespaces/default -w=json | jq .
 }
 ```
 
-使用`--prefix`可以看到所有的子目录，如查看集群中的namespace：
+使用 `--prefix` 可以看到所有的子目录，如查看集群中的 namespace：
 
 ```bash
 ETCDCTL_API=3 etcdctl get /registry/namespaces --prefix -w=json|python -m json.tool
 ```
 
-输出结果中可以看到所有的namespace。
+输出结果中可以看到所有的 namespace。
 
 ```bash
 {
@@ -118,18 +118,18 @@ ETCDCTL_API=3 etcdctl get /registry/namespaces --prefix -w=json|python -m json.t
 }
 ```
 
-key的值是经过base64编码，需要解码后才能看到实际值，如：
+key 的值是经过 base64 编码，需要解码后才能看到实际值，如：
 
 ```bash
 $ echo L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs|base64 -d
 /registry/namespaces/automodel
 ```
 
-## etcd中kubernetes的元数据
+## etcd 中 kubernetes 的元数据
 
-我们使用kubectl命令获取的kubernetes的对象状态实际上是保存在etcd中的，使用下面的脚本可以获取etcd中的所有kubernetes对象的key：
+我们使用 kubectl 命令获取的 kubernetes 的对象状态实际上是保存在 etcd 中的，使用下面的脚本可以获取 etcd 中的所有 kubernetes 对象的 key：
 
-> 注意，我们使用了ETCD v3版本的客户端命令来访问etcd。
+> 注意，我们使用了 ETCD v3 版本的客户端命令来访问 etcd。
 
 ```bash
 #!/bin/bash
@@ -141,7 +141,7 @@ for x in $keys;do
 done
 ```
 
-通过输出的结果我们可以看到kubernetes的原数据是按何种结构包括在kuberentes中的，输出结果如下所示：
+通过输出的结果我们可以看到 kubernetes 的原数据是按何种结构包括在 kuberentes 中的，输出结果如下所示：
 
 ```ini
 /registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-details-default
@@ -158,9 +158,9 @@ done
 ...
 ```
 
-我们可以看到所有的Kuberentes的所有元数据都保存在`/registry`目录下，下一层就是API对象类型（复数形式），再下一层是`namespace`，最后一层是对象的名字。
+我们可以看到所有的 Kuberentes 的所有元数据都保存在 `/registry` 目录下，下一层就是 API 对象类型（复数形式），再下一层是 `namespace`，最后一层是对象的名字。
 
-以下是etcd中存储的kubernetes所有的元数据类型：
+以下是 etcd 中存储的 kubernetes 所有的元数据类型：
 
 ```ini
 ThirdPartyResourceData
@@ -197,8 +197,3 @@ statefulsets
 storageclasses
 thirdpartyresources
 ```
-
-## 参考
-
-- [etcd中文文档](https://github.com/doczhcn/etcd)
-- [etcd官方文档](https://coreos.com/etcd/docs/latest/)

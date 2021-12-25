@@ -1,6 +1,6 @@
-# 安装EFK插件
+# 安装 EFK 插件
 
-我们通过在每台node上部署一个以DaemonSet方式运行的fluentd来收集每台node上的日志。Fluentd将docker日志目录`/var/lib/docker/containers`和`/var/log`目录挂载到Pod中，然后Pod会在node节点的`/var/log/pods`目录中创建新的目录，可以区别不同的容器日志输出，该目录下有一个日志文件链接到`/var/lib/docker/contianers`目录下的容器日志输出。
+我们通过在每台 node 上部署一个以 DaemonSet 方式运行的 fluentd 来收集每台 node 上的日志。Fluentd 将 docker 日志目录 `/var/lib/docker/containers` 和 `/var/log` 目录挂载到 Pod 中，然后 Pod 会在 node 节点的 `/var/log/pods` 目录中创建新的目录，可以区别不同的容器日志输出，该目录下有一个日志文件链接到 `/var/lib/docker/contianers` 目录下的容器日志输出。
 
 官方文件目录：`cluster/addons/fluentd-elasticsearch`
 
@@ -9,9 +9,9 @@ $ ls *.yaml
 es-controller.yaml  es-service.yaml  fluentd-es-ds.yaml  kibana-controller.yaml  kibana-service.yaml efk-rbac.yaml
 ```
 
-同样EFK服务也需要一个`efk-rbac.yaml`文件，配置serviceaccount为`efk`。
+同样 EFK 服务也需要一个`efk-rbac.yaml`文件，配置 serviceaccount 为 `efk`。
 
-已经修改好的 yaml 文件见：[../manifests/EFK](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/EFK)
+已经修改好的 YAML 文件见：[../manifests/EFK](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/EFK)
 
 
 ## 配置 es-controller.yaml
@@ -26,7 +26,7 @@ $ diff es-controller.yaml.orig es-controller.yaml
 
 ## 配置 es-service.yaml
 
-无需配置；
+无需配置。
 
 ## 配置 fluentd-es-ds.yaml
 
@@ -61,7 +61,7 @@ $ kubectl label nodes 172.20.0.113 beta.kubernetes.io/fluentd-ds-ready=true
 node "172.20.0.113" labeled
 ```
 
-给其他两台node打上同样的标签。
+给其他两台 node 打上同样的标签。
 
 ## 执行定义文件
 
@@ -96,7 +96,7 @@ elasticsearch-logging   10.254.77.62    <none>        9200/TCP                  
 kibana-logging          10.254.8.113    <none>        5601/TCP                        2m
 ```
 
-kibana Pod 第一次启动时会用较长时间(10-20分钟)来优化和 Cache 状态页面，可以 tailf 该 Pod 的日志观察进度：
+Kibana Pod 第一次启动时会用较长时间(10-20分钟)来优化和 Cache 状态页面，可以 tailf 该 Pod 的日志观察进度：
 
 ``` bash
 $ kubectl logs kibana-logging-1432287342-0gdng -n kube-system -f
@@ -152,10 +152,10 @@ server.basePath: /api/v1/proxy/namespaces/kube-system/services/kibana-logging
 
 **可能遇到的问题**
 
-如果你在这里发现Create按钮是灰色的无法点击，且Time-filed name中没有选项，fluentd要读取`/var/log/containers/`目录下的log日志，这些日志是从`/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log`链接过来的，查看你的docker配置，`—log-dirver`需要设置为**json-file**格式，默认的可能是**journald**，参考[docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
+如果你在这里发现 Create 按钮是灰色的无法点击，且 Time-filed name 中没有选项，fluentd 要读取 `/var/log/containers/` 目录下的 log 日志，这些日志是从 `/var/lib/docker/containers/${CONTAINER_ID}/${CONTAINER_ID}-json.log` 链接过来的，查看你的 docker 配置，`—log-dirver` 需要设置为 **json-file** 格式，默认的可能是 **journald**，参考 [docker logging](https://docs.docker.com/engine/admin/logging/overview/#examples)。
 
 ![es-setting](../images/es-setting.png)
 
-创建Index后，可以在 `Discover` 下看到 ElasticSearch logging 中汇聚的日志；
+创建 Index 后，可以在 `Discover` 下看到 ElasticSearch logging 中汇聚的日志；
 
 ![es-home](../images/kubernetes-efk-kibana.jpg)

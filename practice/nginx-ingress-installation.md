@@ -1,8 +1,8 @@
 # 安装Nginx ingress
 
-[Nginx ingress](https://github.com/kubernetes/ingress-nginx) 使用ConfigMap来管理Nginx配置，nginx是大家熟知的代理和负载均衡软件，比起[Traefik](https://traefik.io)来说功能更加强大.
+[Nginx ingress](https://github.com/kubernetes/ingress-nginx) 使用 ConfigMap 来管理 Nginx 配置，nginx 是大家熟知的代理和负载均衡软件，比起 [Traefik](https://traefik.io/) 来说功能更加强大.
 
-我们使用[helm](http://helm.sh)来部署，[chart](https://github.com/kubernetes/charts)保存在私有的仓库中，请确保您已经安装和配置好helm，helm安装使用见[使用Helm管理kubernetes应用](helm.md)。
+我们使用 [helm](http://helm.sh/) 来部署，[chart](https://github.com/kubernetes/charts) 保存在私有的仓库中，请确保您已经安装和配置好 helm，helm 安装使用见[使用 Helm 管理 kubernetes 应用](helm.md)。
 
 ## 镜像准备
 
@@ -164,10 +164,9 @@ curl -v --insecure http://172.20.0.113:30484/
 helm delete --purge nginx-ingress
 ```
 
-使用`--purge`参数可以彻底删除release不留下记录，否则下一次部署的时候不能使用重名的release。
+使用 `--purge` 参数可以彻底删除 release 不留下记录，否则下一次部署的时候不能使用重名的 release。
 
 ## 参考
 
-- [Ingress-nginx github](https://github.com/kubernetes/ingress-nginx)
-- [Nginx chart configuration](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
-- [使用Helm管理kubernetes应用](helm.md)
+- [Ingress-nginx - github.com](https://github.com/kubernetes/ingress-nginx)
+- [Nginx chart configuration - github.com](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)

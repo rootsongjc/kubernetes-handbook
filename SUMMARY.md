@@ -19,9 +19,9 @@
     * [Application Scope](cloud-native/application-scope.md)
     * [Application Configuration](cloud-native/application-configuration.md)
   * [Crossplane](cloud-native/crossplane.md)
-* [云原生编程语言](cloud-native/cloud-native-programming-languages.md)
-  * [云原生编程语言 Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
-  * [云原生编程语言 Pulumi](cloud-native/cloud-native-programming-language-pulumi.md)
+* [云原生平台配置语言](cloud-native/cloud-native-programming-languages.md)
+  * [Ballerina](cloud-native/cloud-native-programming-language-ballerina.md)
+  * [Pulumi](cloud-native/cloud-native-programming-language-pulumi.md)
 * [云原生的未来](cloud-native/the-future-of-cloud-native.md)
 
 ## 快速入门
@@ -34,7 +34,7 @@
 ## 概念与原理
 
 * [Kubernetes 架构](concepts/index.md)
-  * [设计理念](concepts/concepts.md)
+  * [Kubernetes 的设计理念](concepts/concepts.md)
   * [Etcd 解析](concepts/etcd.md)
   * [开放接口](concepts/open-interfaces.md)
     * [容器运行时接口（CRI）](concepts/cri.md)
@@ -96,7 +96,7 @@
   * [使用 CRD 扩展 Kubernetes API](concepts/crd.md)
   * [Aggregated API Server](concepts/aggregated-api-server.md)
   * [APIService](concepts/apiservice.md)
-  * [Service Catalog](concepts/service-catalog.md)
+  * [服务目录（Service Catalog）](concepts/service-catalog.md)
 * [多集群管理](concepts/multicluster.md)
   * [多集群服务 API（Multi-Cluster Services API）](concepts/multi-cluster-services-api.md)
   * [集群联邦（Cluster Federation）](practice/federation.md)
@@ -131,8 +131,7 @@
   * [通过端口转发访问集群中的应用程序](guide/connecting-to-applications-port-forward.md)
   * [使用 service 访问群集中的应用程序](guide/service-access-application-cluster.md)
   * [从外部访问 Kubernetes 中的 Pod](guide/accessing-kubernetes-pods-from-outside-of-the-cluster.md)
-  * [Cabin - Kubernetes 手机客户端](guide/cabin-mobile-dashboard-for-kubernetes.md)
-  * [Lens - Kubernetes IDE/桌面客户端](guide/kubernetes-desktop-client.md)
+  * [Lens - Kubernetes IDE](guide/kubernetes-desktop-client.md)
   * [Kubernator - 更底层的 Kubernetes UI](guide/kubernator-kubernetes-ui.md)
 * [在 Kubernetes 中开发部署应用](guide/application-development-deployment-flow.md)
   * [适用于 Kubernetes 的应用开发部署流程](guide/deploy-applications-in-kubernetes.md)
@@ -194,7 +193,6 @@
   * [Prometheus](practice/prometheus.md)
     * [使用 Prometheus 监控 Kubernetes 集群](practice/using-prometheus-to-monitor-kuberentes-cluster.md)
     * [Prometheus 查询语言 PromQL 使用说明](practice/promql.md)
-  * [使用 Vistio 监控 Istio 服务网格中的流量](practice/vistio-visualize-your-istio-mesh.md)
 * [分布式追踪](practice/distributed-tracing.md)
   * [OpenTracing](practice/opentracing.md)
 * [服务编排管理](practice/services-management-tool.md)

@@ -1,15 +1,16 @@
-# 安装kubedns插件
+# 安装 kubedns 插件
 
-官方的yaml文件目录：`kubernetes/cluster/addons/dns`。
+官方的 yaml 文件目录：`kubernetes/cluster/addons/dns`。
 
-该插件直接使用kubernetes部署，官方的配置文件中包含以下镜像：
+该插件直接使用 kubernetes 部署，官方的配置文件中包含以下镜像：
 
 ```ini
 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
 ```
-我clone了上述镜像，上传到我的私有镜像仓库：
+
+我 clone 了上述镜像，上传到我的私有镜像仓库：
 
 ```ini
 harbor-001.jimmysong.io/library/k8s-dns-dnsmasq-nanny-amd64:1.14.1
@@ -17,9 +18,9 @@ harbor-001.jimmysong.io/library/k8s-dns-kube-dns-amd64:1.14.1
 harbor-001.jimmysong.io/library/k8s-dns-sidecar-amd64:1.14.1
 ```
 
-以下yaml配置文件中使用的是私有镜像仓库中的镜像。
+以下 yaml 配置文件中使用的是私有镜像仓库中的镜像。
 
-``` ini
+```ini
 kubedns-cm.yaml  
 kubedns-sa.yaml  
 kubedns-controller.yaml  
@@ -180,7 +181,6 @@ root@nginx:/# ping kube-dns.kube-system.svc.cluster.local
 PING kube-dns.kube-system.svc.cluster.local (10.254.0.2): 56 data bytes
 ^C--- kube-dns.kube-system.svc.cluster.local ping statistics ---
 6 packets transmitted, 0 packets received, 100% packet loss
+从结果来看，service 名称可以正常解析。
 ```
-从结果来看，service名称可以正常解析。
-
-**注意**：直接ping ClusterIP是ping不通的，ClusterIP是根据**IPtables**路由到服务的endpoint上，只有结合ClusterIP加端口才能访问到对应的服务。
+**注意**：直接 ping ClusterIP 是 ping 不通的，ClusterIP 是根据 **IPtables** 路由到服务的 endpoint 上，只有结合 ClusterIP 加端口才能访问到对应的服务。

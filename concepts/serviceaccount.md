@@ -1,6 +1,6 @@
-# Service Account
+# ServiceAccount
 
-Service Account为Pod中的进程提供身份信息。
+ServiceAccount 为 Pod 中的进程提供身份信息。
 
 **注意**：**本文是关于 Service Account 的用户指南，管理指南另见 Service Account 的集群管理指南 。**
 
@@ -205,4 +205,4 @@ spec:
 
 ## 参考
 
-- [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+- [Configure Service Accounts for Pods - kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)

@@ -2,13 +2,13 @@
 
 Kubernetes 中不仅支持 CPU、内存为指标的 HPA，还支持自定义指标的 HPA，例如 QPS。
 
-本文中使用的 yaml 文件见 [manifests/HPA](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/HPA)。
+本文中使用的 YAML 文件见 [manifests/HPA](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/HPA)。
 
 ## 设置自定义指标
 
-**kubernetes1.6**
+**Kubernetes1.6**
 
-> 在 kubernetes1.6 集群中配置自定义指标的 HPA 的说明已废弃。
+> 在 Kubernetes1.6 集群中配置自定义指标的 HPA 的说明已废弃。
 
 在设置定义指标 HPA 之前需要先进行如下配置：
 
@@ -18,13 +18,13 @@ Kubernetes 中不仅支持 CPU、内存为指标的 HPA，还支持自定义指�
 - 启用 custom metric API
 - 将 kube-controller-manager 的启动参数中 `--horizontal-pod-autoscaler-use-rest-clients` 设置为 true，并指定 `--master` 为 API server 地址，如 `--master=http://172.20.0.113:8080`
 
-在 kubernetes1.5 以前很容易设置，参考 [1.6 以前版本的 kubernetes 中开启自定义 HPA](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)，而在 1.6 中因为取消了原来的 annotation 方式设置 custom metric，只能通过 API server 和 kube-aggregator 来获取 custom metric，因为只有两种方式来设置了，一是直接通过 API server 获取 heapster 的 metrics，二是部署 [kube-aggragator](https://github.com/kubernetes/kube-aggregator) 来实现。
+在 Kubernetes1.5 以前很容易设置，参考 [1.6 以前版本的 kubernetes 中开启自定义 HPA](https://medium.com/@marko.luksa/kubernetes-autoscaling-based-on-custom-metrics-without-using-a-host-port-b783ed6241ac)，而在 1.6 中因为取消了原来的 annotation 方式设置 custom metric，只能通过 API server 和 kube-aggregator 来获取 custom metric，因为只有两种方式来设置了，一是直接通过 API server 获取 heapster 的 metrics，二是部署 [kube-aggragator](https://github.com/kubernetes/kube-aggregator) 来实现。
 
-我们将在 kubernetes1.8 版本的 kubernetes 中，使用聚合的 API server 来实现自定义指标的 HPA。
+我们将在 Kubernetes1.8 版本的 Kubernetes 中，使用聚合的 API server 来实现自定义指标的 HPA。
 
-**kuberentes1.7+**
+**Kuberentes1.7+**
 
-确认您的 kubernetes 版本在 1.7 或以上，修改以下配置：
+确认您的 Kubernetes 版本在 1.7 或以上，修改以下配置：
 
 - 将 kube-controller-manager 的启动参数中 `--horizontal-pod-autoscaler-use-rest-clients` 设置为 true，并指定 `--master` 为 API server 地址，如 `--master=http://172.20.0.113:8080`
 - 修改 kube-apiserver 的配置文件 apiserver，增加一条配置 `--requestheader-client-ca-file=/etc/kubernetes/ssl/ca.pem --requestheader-allowed-names=aggregator --requestheader-extra-headers-prefix=X-Remote-Extra- --requestheader-group-headers=X-Remote-Group --requestheader-username-headers=X-Remote-User --proxy-client-cert-file=/etc/kubernetes/ssl/kubernetes.pem --proxy-client-key-file=/etc/kubernetes/ssl/kubernetes-key.pem`，用来配置 aggregator 的 CA 证书。

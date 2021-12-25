@@ -1,6 +1,6 @@
-#  docker用户过渡到kubectl命令行指南
+#  Docker 用户过渡到 kubectl 命令行指南
 
-对于没有使用过 kubernetes 的 docker 用户，如何快速掌握 kubectl 命令？
+对于没有使用过 Kubernetes 的 Docker 用户，如何快速掌握 kubectl 命令？
 
 在本文中，我们将向 docker-cli 用户介绍 Kubernetes 命令行如何与 api 进行交互。该命令行工具——kubectl，被设计成 docker-cli 用户所熟悉的样子，但是它们之间又存在一些必要的差异。该文档将向您展示每个 docker 子命令和 kubectl 与其等效的命令。
 
@@ -266,4 +266,3 @@ Grafana is running at https://108.59.85.141/api/v1/namespaces/kube-system/servic
 Heapster is running at https://108.59.85.141/api/v1/namespaces/kube-system/services/monitoring-heapster/proxy
 InfluxDB is running at https://108.59.85.141/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
 ```
-原文地址：https://github.com/rootsongjc/kubernetes.github.io/blob/master/docs/user-guide/docker-cli-to-kubectl.md

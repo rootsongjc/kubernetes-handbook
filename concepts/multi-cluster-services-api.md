@@ -9,4 +9,3 @@ Kubernetes 用户可能希望将他们的部署分成多个集群，但仍然保
 ## 参考
 
 - [KEP-1645: Multi-Cluster Services API - github.com](https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api)
-

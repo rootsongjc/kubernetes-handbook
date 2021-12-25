@@ -1,14 +1,16 @@
-# 安装heapster插件
+# 安装 heapster 插件
+
+注：Heapster 已不再维护。
 
 ## 准备镜像
 
 官方镜像保存在 gcr.io 中需要翻墙才能下载，请自行拷贝到私有仓库。
 
-## 准备YAML文件
+## 准备 YAML 文件
 
 到 [heapster release 页面](https://github.com/kubernetes/heapster/releases) 下载最新版本的 heapster。
 
-``` bash
+```bash
 wget https://github.com/kubernetes/heapster/archive/v1.3.0.zip
 unzip v1.3.0.zip
 mv v1.3.0.zip heapster-1.3.0
@@ -16,13 +18,13 @@ mv v1.3.0.zip heapster-1.3.0
 
 文件目录： `heapster-1.3.0/deploy/kube-config/influxdb`
 
-``` bash
+```bash
 $ cd heapster-1.3.0/deploy/kube-config/influxdb
 $ ls *.yaml
 grafana-deployment.yaml  grafana-service.yaml  heapster-deployment.yaml  heapster-service.yaml  influxdb-deployment.yaml  influxdb-service.yaml heapster-rbac.yaml
 ```
 
-我们自己创建了heapster的rbac配置`heapster-rbac.yaml`。
+我们自己创建了 heapster 的 rbac 配置 `heapster-rbac.yaml`。
 
 已经修改好的 yaml 文件见：[../manifests/heapster](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/heapster/)
 
@@ -43,7 +45,7 @@ $ diff grafana-deployment.yaml.orig grafana-deployment.yaml
 >           #value: /
 ```
 
-+ 如果后续使用 kube-apiserver 或者 kubectl proxy 访问 grafana dashboard，则必须将 `GF_SERVER_ROOT_URL` 设置为 `/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/`，否则后续访问grafana时访问时提示找不到`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/api/dashboards/home` 页面；
+如果后续使用 kube-apiserver 或者 kubectl proxy 访问 grafana dashboard，则必须将 `GF_SERVER_ROOT_URL` 设置为 `/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/`，否则后续访问grafana时访问时提示找不到`http://172.20.0.113:8086/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/api/dashboards/home` 页面；
 
 
 ## 配置 heapster-deployment
@@ -106,7 +108,7 @@ $ diff influxdb-service.yaml.orig influxdb-service.yaml
 >     name: admin
 ```
 
-- 定义端口类型为 NodePort，额外增加了 admin 端口映射，用于后续浏览器访问 influxdb 的 admin UI 界面；
+定义端口类型为 NodePort，额外增加了 admin 端口映射，用于后续浏览器访问 influxdb 的 admin UI 界面；
 
 ## 执行所有定义文件
 
@@ -190,7 +192,7 @@ monitoring-influxdb-1411048194-lzrpc    1/1       Running   0          2m
 
 获取 influxdb http 8086 映射的 NodePort
 
-```
+```sh
 $ kubectl get svc -n kube-system|grep influxdb
 monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/TCP   9m
 ```
@@ -199,7 +201,7 @@ monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/T
 
 在页面的 “Connection Settings” 的 Host 中输入 node IP， Port 中输入 8086 映射的 nodePort 如上面的 32299，点击 “Save” 即可（我的集群中的地址是172.20.0.113:32299）：
 
-![kubernetes-influxdb-heapster](../images/kubernetes-influxdb-heapster.jpg)
+![Influxdb 页面](../images/kubernetes-influxdb-heapster.jpg)
 
 ## 注意
 
@@ -208,7 +210,3 @@ monitoring-influxdb    10.254.22.46    <nodes>       8086:32299/TCP,8083:30269/T
 ![修改grafana模板](../images/grafana-dashboard-setting.jpg)
 
 将 Templating 中的 namespace 的 Data source 设置为 influxdb-datasource，Refresh 设置为 on Dashboard Load 保存设置，刷新浏览器，即可看到其他 namespace 选项。
-
-## 参考
-
-[使用Heapster获取集群对象的metric数据](../practice/using-heapster-to-get-object-metrics.md)

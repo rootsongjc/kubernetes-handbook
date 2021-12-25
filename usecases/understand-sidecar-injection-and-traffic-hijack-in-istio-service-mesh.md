@@ -19,7 +19,7 @@
 
 ### 使用 Sidecar 模式的优势
 
-使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器（如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)），这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod 理解为一台主机，两个容器共享主机资源。
+使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器，这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod 理解为一台主机，两个容器共享主机资源。
 
 因其独特的部署结构，使得 sidecar 模式具有以下优势：
 
@@ -219,7 +219,7 @@ $ istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
 Istio 给应用 Pod 注入的配置主要包括：
 
 - Init 容器 `istio-init`：用于 pod 中设置 iptables 端口转发
-- Sidecar 容器 `istio-proxy`：运行 sidecar 代理，如 [Envoy](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#envoy) 或 [MOSN](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#mosn)
+- Sidecar 容器 `istio-proxy`：运行 sidecar 代理
 
 接下来将分别解析下这两个容器。
 
@@ -639,7 +639,7 @@ Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_90
 
 我们看其中的 `filterChains.filters` 中的 `envoy.http_connection_manager` 配置部分，该配置表示流量将转交给Cluster`inbound|9080|http|reviews.default.svc.cluster.local` 处理。
 
-**[Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) `inbound|9080|http|reviews.default.svc.cluster.local`**
+**Cluster `inbound|9080|http|reviews.default.svc.cluster.local`**
 
 运行 `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json` 查看该Cluster的配置如下。
 
@@ -789,7 +789,7 @@ Endpoint 可以是一个或多个，sidecar 将根据一定规则选择适当的
 
 本文使用了 Istio 官方提供的 bookinfo 示例，按图索骥得带领读者了解了 sidecar 注入、iptables 透明流量劫持及 sidecar 中流量路由背后的实现细节。Sidecar 模式和流量透明劫持是 Istio 服务网格的特色和基础功能，理解该功能的背后过程及实现细节，将有助于大家理解 Service Mesh 的原理和 [Istio Handbook](https://www.servicemesher.com/istio-handbook/) 后面章节中的内容，因此希望读者可以在自己的环境中从头来试验一遍以加深理解。
 
-使用 iptables 做流量劫持只是 service mesh 的数据平面中做流量劫持的方式之一，还有更多的流量劫持方案，下面引用自 [云原生网络代理 MOSN 官网中给出的流量劫持](https://mosn.io/zh/docs/concept/traffic-hijack/)部分的描述。
+使用 iptables 做流量劫持只是 service mesh 的数据平面中做流量劫持的方式之一，还有更多的流量劫持方案，下面引用自 [云原生网络代理 MOSN 官网中给出的流量劫持](https://mosn.io/docs/concept/traffic-hijack/)部分的描述。
 
 ### 使用 iptables 做流量劫持时存在的问题
 
@@ -821,4 +821,4 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/docs/ops/diagnostic-tools/proxy-cmd/)
 - [揭开 Istio Sidecar 注入模型的神秘面纱 - istio.io](https://istio.io/zh/blog/2019/data-plane-setup/)
-- [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/zh/docs/concept/traffic-hijack/)
+- [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/docs/concept/traffic-hijack/)

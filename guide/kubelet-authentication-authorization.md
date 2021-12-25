@@ -1,6 +1,4 @@
-# Kublet的认证授权
-
-## 概览
+# Kublet 的认证授权
 
 Kubelet 的 HTTPS 端点对外暴露了用于访问不同敏感程度数据的 API，并允许您在节点或者容器内执行不同权限级别的操作。
 
@@ -46,17 +44,17 @@ kubelet 使用与 apiserver 相同的 [请求属性](https://kubernetes.io/docs/
 
 Verb（动词）是根据传入的请求的 HTTP 动词确定的：
 
-| HTTP 动词   | request 动词 |
-| --------- | ---------- |
-| POST      | create     |
-| GET, HEAD | get        |
-| PUT       | update     |
-| PATCH     | patch      |
-| DELETE    | delete     |
+| HTTP 动词 | request 动词 |
+| --------- | ------------ |
+| POST      | create       |
+| GET, HEAD | get          |
+| PUT       | update       |
+| PATCH     | patch        |
+| DELETE    | delete       |
 
 资源和子资源根据传入请求的路径确定：
 
-| Kubelet API  | 资源    | 子资源     |
+| Kubelet API  | 资源  | 子资源  |
 | ------------ | ----- | ------- |
 | /stats/*     | nodes | stats   |
 | /metrics/*   | nodes | metrics |

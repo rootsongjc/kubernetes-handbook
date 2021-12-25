@@ -27,4 +27,3 @@
 
 - [Multicluster Special Interest Group - github.com](https://github.com/kubernetes/community/blob/master/sig-multicluster/README.md)
 - [配置对多集群的访问 - kubernetes.io](https://kubernetes.io/zh/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
-

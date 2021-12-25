@@ -1,4 +1,4 @@
-# Cilium架构设计与概念解析
+# Cilium 架构设计与概念解析
 
 Cilium 要求 Linux kernel 版本在 4.8.0 以上，Cilium 官方建议 kernel 版本至少在 4.9.17 以上，高版本的 Ubuntu 发行版中 Linux 内核版本一般在 4.12 以上，如使用 CentOS7 需要升级内核才能运行 Cilium。
 

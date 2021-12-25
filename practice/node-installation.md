@@ -405,6 +405,3 @@ Commercial support is available at
 
 ![nginx欢迎页面](../images/kubernetes-installation-test-nginx.png)
 
-## 参考
-
-- [Kubelet 的认证授权](../guide/kubelet-authentication-authorization.md)

@@ -1,4 +1,4 @@
-# Lens - Kubernetes IDE/桌面客户端
+# Lens - Kubernetes IDE
 
 [Lens](https://k8slens.dev/) 是一款开源的 Kubenretes IDE，也可以作为桌面客户端，官方网站 <https://k8slens.dev>，具有以下特性：
 

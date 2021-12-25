@@ -1,6 +1,6 @@
 # Label
 
-Label是附着到object上（例如Pod）的键值对。可以在创建object的时候指定，也可以在object创建后随时指定。Labels的值对系统本身并没有什么含义，只是对用户才有意义。
+Label 是附着到 object 上（例如 Pod）的键值对。可以在创建 object 的时候指定，也可以在 object 创建后随时指定。Labels 的值对系统本身并没有什么含义，只是对用户才有意义。
 
 ```json
 "labels": {
@@ -9,11 +9,11 @@ Label是附着到object上（例如Pod）的键值对。可以在创建object的
 }
 ```
 
-Kubernetes最终将对labels最终索引和反向索引用来优化查询和watch，在UI和命令行中会对它们排序。不要在label中使用大型、非标识的结构化数据，记录这样的数据应该用annotation。
+Kubernetes 最终将对 labels 最终索引和反向索引用来优化查询和 watch，在 UI 和命令行中会对它们排序。不要在 label 中使用大型、非标识的结构化数据，记录这样的数据应该用 annotation。
 
 ## 动机
 
-Label能够将组织架构映射到系统架构上（就像是康威定律），这样能够更便于微服务的管理，你可以给object打上如下类型的label：
+Label 能够将组织架构映射到系统架构上（就像是康威定律），这样能够更便于微服务的管理，你可以给 object 打上如下类型的 label：
 
 - `"release" : "stable"`, `"release" : "canary"`
 - `"environment" : "dev"`, `"environment" : "qa"`, `"environment" : "production"`
@@ -24,27 +24,27 @@ Label能够将组织架构映射到系统架构上（就像是康威定律），
 
 ## 语法和字符集
 
-Label key的组成：
+Label key 的组成：
 
-- 不得超过63个字符
-- 可以使用前缀，使用/分隔，前缀必须是DNS子域，不得超过253个字符，系统中的自动化组件创建的label必须指定前缀，`kubernetes.io/`由kubernetes保留
+- 不得超过 63 个字符
+- 可以使用前缀，使用 / 分隔，前缀必须是 DNS 子域，不得超过 253 个字符，系统中的自动化组件创建的 label 必须指定前缀，`kubernetes.io/` 由 kubernetes 保留
 - 起始必须是字母（大小写都可以）或数字，中间可以有连字符、下划线和点
 
-Label value的组成：
+Label value 的组成：
 
-- 不得超过63个字符
+- 不得超过 63 个字符
 - 起始必须是字母（大小写都可以）或数字，中间可以有连字符、下划线和点
 
 ## Label selector
 
-Label不是唯一的，很多object可能有相同的label。
+Label 不是唯一的，很多 object 可能有相同的 label。
 
-通过label selector，客户端／用户可以指定一个object集合，通过label selector对object的集合进行操作。
+通过 label selector，客户端／用户可以指定一个 object 集合，通过 label selector 对 object 的集合进行操作。
 
-Label  selector有两种类型：
+Label selector 有两种类型：
 
-- *equality-based*  ：可以使用`=`、`==`、`!=`操作符，可以使用逗号分隔多个表达式
-- *set-based* ：可以使用`in`、`notin`、`!`操作符，另外还可以没有操作符，直接写出某个label的key，表示过滤有某个key的object而不管该key的value是何值，`!`表示没有该label的object
+- *equality-based* ：可以使用 `=`、`==`、`!=` 操作符，可以使用逗号分隔多个表达式
+- *set-based* ：可以使用 `in`、`notin`、`!` 操作符，另外还可以没有操作符，直接写出某个 label 的 key，表示过滤有某个 key 的 object 而不管该 key 的 value 是何值，`!` 表示没有该 label 的 object
 
 ## 示例
 
@@ -55,16 +55,16 @@ $ kubectl get pods -l 'environment in (production, qa)'
 $ kubectl get pods -l 'environment,environment notin (frontend)'
 ```
 
-## 在API object中设置label selector
+## 在 API object 中设置 label selector
 
-在`service`、`replicationcontroller`等object中有对pod的label selector，使用方法只能使用等于操作，例如：
+在 `service`、`replicationcontroller` 等 object 中有对 pod 的 label selector，使用方法只能使用等于操作，例如：
 
 ```yaml
 selector:
     component: redis
 ```
 
-在`Job`、`Deployment`、`ReplicaSet`和`DaemonSet`这些object中，支持*set-based*的过滤，例如：
+在 `Job`、`Deployment`、`ReplicaSet` 和 `DaemonSet` 这些 object 中，支持 *set-based* 的过滤，例如：
 
 ```yaml
 selector:
@@ -75,11 +75,11 @@ selector:
     - {key: environment, operator: NotIn, values: [dev]}
 ```
 
-如Service通过label selector将同一类型的pod作为一个服务expose出来。
+如 Service 通过 label selector 将同一类型的 pod 作为一个服务 expose 出来。
 
 ![label示意图](../images/labels.png)
 
-另外在node affinity和pod affinity中的label selector的语法又有些许不同，示例如下：
+另外在 node affinity 和 pod affinity 中的 label selector 的语法又有些许不同，示例如下：
 
 ```yaml
   affinity:

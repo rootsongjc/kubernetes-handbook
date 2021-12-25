@@ -1,4 +1,4 @@
-# 安装配置kube-dns
+# 安装配置 kube-dns
 
 在我们安装Kubernetes集群的时候就已经安装了kube-dns插件，这个插件也是官方推荐安装的。通过将 Service 注册到 DNS 中，Kuberentes 可以为我们提供一种简单的服务注册发现与负载均衡方式。
 
@@ -326,7 +326,7 @@ Kubernetes 1.3 版本起引入了支持多站点 Kubernetes 安装的集群联�
 
 ## 参考
 
-- [Configure DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-- [Service 和 Pod 的 DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-- [自动扩容集群中的 DNS 服务](https://kubernetes.io/docs/tasks/administer-cluster/dns-horizontal-autoscaling/)
-- [Using CoreDNS for Service Discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)
+- [Configure DNS Service - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
+- [Service 和 Pod 的 DNS - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+- [自动扩容集群中的 DNS 服务 - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/dns-horizontal-autoscaling/)
+- [Using CoreDNS for Service Discovery - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)
