@@ -1,4 +1,4 @@
-## 使用 kubeconfig 或 token 进行用户身份认证
+# 使用 kubeconfig 或 token 进行用户身份认证
 
 在开启了 TLS 的集群中，每当与集群交互的时候少不了的是身份认证，使用 kubeconfig（即证书） 和 token 两种认证方式是最简单也最通用的认证方式，在 dashboard 的登录功能就可以使用这两种登录功能。
 
@@ -7,7 +7,7 @@
 - 为 brand 命名空间下的 brand 用户创建 kubeconfig 文件
 - 为集群的管理员（拥有所有命名空间的 amdin 权限）创建 token
 
-### 使用 kubeconfig
+## 使用 kubeconfig
 
 如何生成`kubeconfig`文件请参考[创建用户认证授权的kubeconfig文件](../guide/kubectl-user-authentication-authorization.md)。
 
@@ -19,11 +19,11 @@
 
 对于访问 dashboard 时候的使用 kubeconfig 文件如`brand.kubeconfig` 必须追到 `token` 字段，否则认证不会通过。而使用 kubectl 命令时的用的 kubeconfig 文件则不需要包含 `token` 字段。
 
-### 生成 token
+## 生成 token
 
 需要创建一个admin用户并授予admin角色绑定，使用下面的yaml文件创建admin用户并赋予他管理员权限，然后可以通过token访问kubernetes，该文件见[admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。
 
-#### 生成kubernetes集群最高权限admin用户的token
+### 生成kubernetes集群最高权限admin用户的token
 
 ```yaml
 kind: ClusterRoleBinding
@@ -96,7 +96,7 @@ kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|ba
 kubectl describe secret admin-token-nwphb 
 ```
 
-#### 为普通用户生成token
+### 为普通用户生成token
 
 为指定namespace分配该namespace的最高权限，这通常是在为某个用户（组织或者个人）划分了namespace之后，需要给该用户创建token登陆kubernetes dashboard或者调用kubernetes API的时候使用。
 
@@ -112,5 +112,5 @@ kubectl create rolebinding $ROLEBINDING_NAME --clusterrole=admin --serviceaccoun
 
 ## 参考
 
-- [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)
-- [Kubernetes 中的认证](https://kubernetes.io/docs/admin/authentication/)
+- [JSONPath 手册 - kubernetes.io](https://kubernetes.io/docs/user-guide/jsonpath/)
+- [Kubernetes 中的认证 - kubernetes.io](https://kubernetes.io/docs/admin/authentication/)

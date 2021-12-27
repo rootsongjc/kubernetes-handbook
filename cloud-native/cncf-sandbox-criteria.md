@@ -1,4 +1,4 @@
-## 开源项目加入CNCF Sandbox的要求
+# 开源项目加入CNCF Sandbox的要求
 
 [CNCF Project Proposal Process](https://github.com/cncf/toc/blob/master/process/project_proposals.adoc) 中指出开源项目要想加入 CNCF 必须满足以下条件：
 

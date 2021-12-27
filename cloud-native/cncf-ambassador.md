@@ -1,4 +1,4 @@
-## CNCF Ambassador
+# CNCF Ambassador
 
 CNCF Ambassador（CNCF 大使），人员名单详见 <https://www.cncf.io/people/ambassadors/>，笔者很荣幸作为第二位成为 CNCF Ambassador 的中国人。
 

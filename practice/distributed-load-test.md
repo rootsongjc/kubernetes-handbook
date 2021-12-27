@@ -1,4 +1,4 @@
-## 分布式负载测试
+# 分布式负载测试
 
 该教程描述如何在 [Kubernetes](https://kubernetes.io/) 中进行分布式负载均衡测试，包括一个 web 应用、docker 镜像和 Kubernetes controllers/services。关于分布式负载测试的更多资料请查看 [Distributed Load Testing Using Kubernetes](https://cloud.google.com/solutions/distributed-load-testing-using-kubernetes) 。
 

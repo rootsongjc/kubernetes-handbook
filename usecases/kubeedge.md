@@ -1,4 +1,4 @@
-## KubeEdge
+# KubeEdge
 
 以 Kubernetes 为基础的开源项目：[KubeEdge](https://kubeedge.io/zh/)。
 
