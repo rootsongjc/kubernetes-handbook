@@ -39,7 +39,7 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  image : "https://res.cloudinary.com/jimmysong/image/upload/c_scale,q_53,w_1206/v1608048342/cloud-landscape-en.jpg"
+  image : "/images/banner/cloud-landscape-en.jpg"
   feature_item:
     # feature item loop
     - name : "Containers"
