@@ -5,7 +5,7 @@ draft: false
 tags: ["istio","service mesh","cloud native"]
 categories: ["Service Mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
-description: "There is no shortage of debate in the community about the practicability of service mesh and Istio– here’s a list of common questions and concerns, and how to address them."
+description: "There is no shortage of debate in the community about the practicability of service mesh and Istio – here’s a list of common questions and concerns, and how to address them."
 type: "post"
 image: "images/banner/sm-debate.jpg"
 ---
