@@ -21,7 +21,7 @@ I will answer each of these questions below.
 
 ### Istio is architecturally stable, production-ready, and ecologically emerging
 
-[Istio 1.12](https://www.tetrate.io/blog/istio-wasm-extensions-and-ecosystem/) was just released in November – and has evolved significantly since the explosion of service mesh in 2018 (the year Istio co-founders established Tetrate). Istio has a large community of providers and [users](https://istio.io/latest/about/case-studies/).[ ](https://istio.io/latest/about/case-studies/)The Istio SIG of Cloud Native Community has held eight[ Istio Big Talk](https://cloudnative.to/sig-istio/big-talk/overview.html), with Baidu, Tencent, NetEase, Xiaohongshu, and Xiaodian Technology sharing their Istio practices. According to [CNCF Survey Report 2020](https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_Report_2020.pdf), about 50% of the companies surveyed are using a service mesh in production or planning to in the next year, and about half (47%) of organizations using a service mesh in production are using Istio.
+[Istio 1.12](https://www.tetrate.io/blog/istio-wasm-extensions-and-ecosystem/) was just released in November – and has evolved significantly since the explosion of service mesh in 2018 (the year Istio co-founders established Tetrate). Istio has a large community of providers and [users](https://istio.io/latest/about/case-studies/). The Istio SIG of Cloud Native Community has held eight [Istio Big Talks](https://cloudnative.to/sig-istio/big-talk/overview.html), with Baidu, Tencent, NetEase, Xiaohongshu, and Xiaodian Technology sharing their Istio practices. According to [CNCF Survey Report 2020](https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_Report_2020.pdf), about 50% of the companies surveyed are using a service mesh in production or planning to in the next year, and about half (47%) of organizations using a service mesh in production are using Istio.
 
 Many companies have developed extensions or plugins for Istio, such as Ant, NetEase, eBay, and Airbnb. Istio’s architecture has been stable since the 1.5 release, and the release cycle is fixed quarterly, with the current project’s main task being Day-2 Operations. 
 
@@ -31,15 +31,15 @@ So we can say that the Istio architecture is stable and production-ready, and th
 
 ### The impact of service mesh on application performance
 
-A service mesh uses iptables to do traffic hijacking by default to be transparent to applications. When the number of services is large, there are a lot of iptables rules that affect network performance. You can use techniques like[ eBPF](https://cloudnative.to/blog/how-ebpf-streamlines-the-service-mesh/) to provide application performance, but the method requires a high version of the operating system kernel, which few enterprises can achieve.
+A service mesh uses iptables to do traffic hijacking by default to be transparent to applications. When the number of services is large, there are a lot of iptables rules that affect network performance. You can use techniques like [eBPF](https://cloudnative.to/blog/how-ebpf-streamlines-the-service-mesh/) to provide application performance, but the method requires a high version of the operating system kernel, which few enterprises can achieve.
 
 ![Istio DNS](008i3skNly1gxgyfcfm5oj30sg0djmxt.jpg)
 
-In the early days, Istio distributed the routing information of all services in the mesh to all proxy sidecars, which caused[ sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/)s to take up a lot of resources.[ Aeraki](https://github.com/aeraki-framework/aeraki) and[ Slime](https://github.com/slime-io/slime) can achieve configuration lazy loading. We will introduce these two open-source projects in the Istio open-source ecosystem.
+In the early days, Istio distributed the routing information of all services in the mesh to all proxy sidecars, which caused [sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/)s to take up a lot of resources. [Aeraki](https://github.com/aeraki-framework/aeraki) and [Slime](https://github.com/slime-io/slime) can achieve configuration lazy loading. We will introduce these two open-source projects in the Istio open-source ecosystem.
 
-Finally, there is a problem related to Sidecar proxy operation and maintenance: upgrading all Envoy proxies while ensuring constant traffic. A solution is using the[ SidecarSet](https://xie.infoq.cn/article/23ae6d3f0d0260b4797a708a0) resource in the open-source project[ OpenKruise.](https://github.com/openkruise/kruise)
+Finally, there is a problem related to Sidecar proxy operation and maintenance: upgrading all Envoy proxies while ensuring constant traffic. A solution is using the [SidecarSet](https://xie.infoq.cn/article/23ae6d3f0d0260b4797a708a0) resource in the open-source project [OpenKruise](https://github.com/openkruise/kruise).
 
-The resource consumption and network latency associated with the introduction of Sidecar are also within reasonable limits, as you can see from the[ service mesh benchmark performance tests](https://istio.io/latest/zh/blog/2019/performance-best-practices/).
+The resource consumption and network latency associated with the introduction of Sidecar are also within reasonable limits, as you can see from the [service mesh benchmark performance tests](https://istio.io/latest/blog/2019/performance-best-practices/).
 
 ### Extending the Istio service mesh
 
