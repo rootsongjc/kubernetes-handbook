@@ -17,7 +17,7 @@ image: "images/banner/envoyproxy.jpg"
 
 下图是 Envoy proxy 的架构图，显示了 host B 经过 Envoy 访问 host A 的过程。每个 host 上都可能运行多个 service，Envoy 中也可能有多个 Listener，每个 Listener 中可能会有多个 filter 组成了 chain。
 
-![Envoy proxy 架构图](U587b3a8535474a2abcbe93fa069341c0A.png)
+![Envoy proxy 架构图](envoy-arch.jpg)
 
 其中的基本术语将在下面解释。
 
@@ -155,10 +155,6 @@ Cluster 的配置中至少包含以下信息：
   - `random`：随机
 - `hosts`：能够定义 cluster 中主机的 URL 地址，通常是`tcp://` URL
 
-Envoy 作为 Istio 中默认的数据平面，关于 Istio 和 Envoy 的更多详细介绍请参考：[Istio handbook](https://jimmysong.io/istio-hanbdook) 和 [ServiceMesher 社区官网](https://www.servicemesher.com)。
-
 ## 参考
 
-- [Terminology - www.envoyproxy.io](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/terminology)
-- [Part 1: Getting started with Envoy Proxy for microservices resilience](https://www.datawire.io/envoyproxy/getting-started-envoyproxy-microservices-resilience/)
-- [Istio Handbook——Istio中文指南/服务网格实践手册](https://jimmysong.io/istio-handbook)
+- [Part 1: Getting started with Envoy Proxy for microservices resilience - getambassador.io](https://www.getambassador.io/resources/getting-started-envoyproxy-microservices-resilience//)
