@@ -15,7 +15,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 ### 出版物
 
-自 2017 年以来 Jimmy Song 已陆续出版了多本图书，详见 [图书页面](/book)。
+自 2017 年以来 Jimmy 已陆续出版了多本图书，详见 [图书页面](/book)。
 
 **著作**
 
@@ -39,7 +39,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 ### 社区
 
-Jimmy Song 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人。
+Jimmy 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人。
 
 **ServiceMesher 社区**
 
