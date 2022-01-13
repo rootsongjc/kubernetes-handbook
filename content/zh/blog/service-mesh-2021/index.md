@@ -22,11 +22,11 @@ image: "images/banner/y2021.jpg"
 
 如果根据[“跨越鸿沟”理论](https://thinkinsights.net/strategy/crossing-the-chasm/)，服务网格已经跨越了“鸿沟”，处于“早期大众”和“晚期大众”阶段之间。根据[《Istio 大咖说》](https://cloudnative.to/sig-istio/big-talk/overview.html)观众中的反馈来看，用户已不再盲从于新技术，开始辩证的考虑[是否真的需要引入服务网格](https://cloudnative.to/sig-istio/begin/before-you-begin.html)。
 
-![跨越鸿沟理论](https://tva1.sinaimg.cn/large/008i3skNly1gyc468pf0sj318g0p0tax.jpg) 
+![跨越鸿沟理论](008i3skNly1gyc468pf0sj318g0p0tax.jpg) 
 
 云原生的发展方兴未艾，虽然不断有新的技术和产品出现，但作为整个云原生技术栈的一部分，服务网格在过去一年里不断夯实了它作为“云原生网络基础设施”的定位。下图展示了云原生技术栈模型，其中每一层有一些代表性的技术来定义标准。作为新时代的中间件，服务网格与其他云原生技术交相辉映，如 Dapr（分布式应用程序运行时）定义云原生中间件的能力模型，OAM 定义云原生应用程序模型等，而服务网格定义的是云原生七层网络模型。
 
-![云原生技术栈](https://tva1.sinaimg.cn/large/008i3skNly1gyc4698fi8j30w40u0adk.jpg) 
+![云原生技术栈](008i3skNly1gyc4698fi8j30w40u0adk.jpg) 
 
 图：云原生技术栈
 
@@ -61,7 +61,7 @@ Istio 使用的是 Envoy 作为数据平面，扩展 Istio 本质上就是对 En
 
 在服务网格概念兴起之初就有 Per-node 和 Sidecar 模式之争，他们的代表分别是 Linkerd 和 Istio。后来 eBPF 提出将服务网格下沉的内核，从而演化出了更多的服务网格部署模式，如下图所示。
 
-![服务网格的部署模式](https://tva1.sinaimg.cn/large/008i3skNly1gyc469mwgnj30u00vnadn.jpg) 
+![服务网格的部署模式](008i3skNly1gyc469mwgnj30u00vnadn.jpg) 
 
 图：服务网格的部署模式
 
