@@ -39,7 +39,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 ### 社区
 
-Jimmy 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人。
+Jimmy 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人，[2021 年中国开源先锋](https://segmentfault.com/a/1190000041270720)。
 
 **ServiceMesher 社区**
 
