@@ -38,7 +38,7 @@ He mainly focuses on cloud native fields, including containers, microservices, s
 
 ### Community
 
-Jimmy Song is the founder of [ServiceMesher](https://www.servicemesher.com/) and [Cloud Native Communtiy](https://cloudnative.to).
+Jimmy Song is the founder of [ServiceMesher](https://www.servicemesher.com/) and [Cloud Native Communtiy](https://cloudnative.to), [China open source pioneer 2021](https://segmentfault.com/a/1190000041270720).
 
 #### ServiceMesher Community
 
