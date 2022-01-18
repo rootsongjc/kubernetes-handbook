@@ -1,4 +1,4 @@
-# 云原生（Cloud Native）的定义
+# 云原生的定义
 
 云原生（Cloud Native）这个词汇由来已久，以致于何时出现已无据可考。云原生开始大规模出现在受众视线中，与 Pivotal 提出的云原生应用的理念有着莫大的关系。我们现在谈到云原生，更多的指的是[一种文化](https://cloudnative.to/blog/cloud-native-culture-not-container/)，而不具象为哪些技术体系。
 

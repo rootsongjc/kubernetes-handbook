@@ -6,7 +6,7 @@
 
 ## 云原生
 
-* [云原生（Cloud Native）的定义](cloud-native/cloud-native-definition.md)
+* [云原生的定义](cloud-native/cloud-native-definition.md)
 * [云原生的设计哲学](cloud-native/cloud-native-philosophy.md)
 * [Kubernetes 的诞生](cloud-native/kubernetes-history.md)
 * [Kubernetes 与云原生应用概览](cloud-native/kubernetes-and-cloud-native-app-overview.md)
