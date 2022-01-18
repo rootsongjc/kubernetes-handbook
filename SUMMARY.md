@@ -198,7 +198,7 @@
 * [服务编排管理](practice/services-management-tool.md)
   * [使用 Helm 管理 Kubernetes 应用](practice/helm.md)
   * [构建私有 Chart 仓库](practice/create-private-charts-repo.md)
-* [持续集成与发布](practice/ci-cd.md)
+* [持续集成与发布（CI/CD）](practice/ci-cd.md)
   * [使用 Jenkins 进行持续集成与发布](practice/jenkins-ci-cd.md)
   * [使用 Drone 进行持续集成与发布](practice/drone-ci-cd.md)
 * [更新与升级](practice/update-and-upgrade.md)
