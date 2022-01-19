@@ -40,10 +40,10 @@ type: "post"
 
 ## 软件准备
 
-- Zoom：需要 Pro 版，这样才可以举行超过 45 分钟的线上会议，否则会在超时后打断再重新加入，需要准备好账号，中国大陆用户貌似不能再注册？
-- OBS：用来做推流，到官网下载最新的版本
-- 音频插件 Sunflower：[点击跳转到下载页面](https://github.com/mattingalls/Soundflower/releases)，如果安装时遇到系统权限问题，请在命令行中执行 `sudo spctl --master-disable` 并在电脑的 `系统首选项` 的 `安全与隐私` 中批准来自任意途径的软件安装，如果看到有详情页面，点击进去批准软件发行商
-- Bilibili：需要一个 B 站账号，并开通直播间，经过实名认证
+- Zoom：需要 Pro 版，这样才可以举行超过 45 分钟的线上会议，否则会在超时后打断再重新加入，需要准备好账号，中国大陆用户貌似不能再注册？如果没有 zoom，换成其他任何一个会议软件都可以，比如腾讯会议。
+- OBS：用来做推流，到[官网](https://obsproject.com/)下载最新的版本。
+- 音频插件 Sunflower：[点击跳转到下载页面](https://github.com/mattingalls/Soundflower/releases)，如果安装时遇到系统权限问题，请在命令行中执行 `sudo spctl --master-disable` 并在电脑的 `系统首选项` 的 `安全与隐私` 中批准来自任意途径的软件安装，如果看到有详情页面，点击进去批准软件发行商。
+- Bilibili：需要一个 B 站账号，并开通直播间，经过实名认证。
 
 ## OBS 配置
 
