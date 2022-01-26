@@ -25,9 +25,6 @@ Kubernetes 中的网络可以说对初次接触 Kubernetes 或者没有网络方
 - cilium
 - canal
 
-还有很多就不一一列举了（请见 [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native/#network)），只要实现 Kubernetes 官方的设计的 [CNI - Container Network Interface（容器网络接口）](cni.md) 就可以自己写一个网络插件。
+还有很多就不一一列举了（请见 [云原生开源项目大全](https://jimmysong.io/awesome-cloud-native/#network)），只要实现 Kubernetes 官方的设计的 [CNI - Container Network Interface（容器网络接口）](cni.md) 就可以自己写一个网络插件。
 
-下面仅以当前最常用的 flannel 和 calico 插件为例解析。
-
-- [Kubernetes 中的网络：flannel](flannel.md)
-- [Kubernetes 中的网络：calico](calico.md)
+本章将以当前最常用的 flannel、calico 和 cilium 等插件为例解析。

@@ -91,7 +91,7 @@ kubectl create clusterrolebinding kube-state-metrics --clusterrole=cluster-admin
 kubectl create clusterrolebinding prometheus --clusterrole=cluster-admin --serviceaccount=monitoring:prometheus
 ```
 
-参考 [RBAC——基于角色的访问控制](../guide/rbac.md)
+参考 [基于角色的访问控制](../concepts/rbac.md)。
 
 ### 2. API 兼容问题
 
@@ -116,5 +116,4 @@ curl -sX GET -H "Authorization:bearer `cat /var/run/secrets/kubernetes.io/servic
 
 ## 参考
 
-- [Kubernetes Setup for Prometheus and Grafana](https://github.com/giantswarm/kubernetes-prometheus)
-- [RBAC——基于角色的访问控制](../guide/rbac.md)
+- [Kubernetes prometheus operator chart for Giant Swarm clusters - github.com](https://github.com/giantswarm/kubernetes-prometheus)

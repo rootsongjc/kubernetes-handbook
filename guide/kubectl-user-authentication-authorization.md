@@ -136,4 +136,4 @@ No resources found.
 
 可以使用我写的 [create-user.sh 脚本](https://github.com/rootsongjc/kubernetes-handbook/blob/master/tools/create-user/create-user.sh)来创建 namespace 和用户并授权，参考[说明](../tools/create-user/README.md)。
 
-关于角色绑定的更多信息请参考 [RBAC——基于角色的访问控制](rbac.md)。
+关于角色绑定的更多信息请参考 [基于角色的访问控制](../concepts/rbac.md)。
