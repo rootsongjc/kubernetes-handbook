@@ -19,7 +19,7 @@ image: "images/banner/contiv.jpg"
 
 ## 环境准备
 
-我使用的是docker17.03-CE、安装了open vSwitch(这个包redhat的源里没有，需要自己的编译安装)，如果你懒得编译可以用我编译的rpm包，[点这里下载](https://res.cloudinary.com/jimmysong/image/upload/images/openvswitch-2.5.0-2.el7.x86_64.rpm)。
+我使用的是docker17.03-CE、安装了open vSwitch(这个包redhat的源里没有，需要自己的编译安装)。
 
 ## 编译
 

@@ -56,7 +56,7 @@ image: "images/banner/kubernetes.jpg"
 
 [API文档](https://github.com/rootsongjc/k8s-app-monitor-test) 中的`api.html`文件，该文档在API blueprint中定义，使用[aglio](https://github.com/danielgtaylor/aglio) 生成，打开后如图所示：
 
-![API文档](https://res.cloudinary.com/jimmysong/image/upload/images/k8s-app-monitor-test-api-doc.jpg)
+![API文档](k8s-app-monitor-test-api-doc.jpg)
 
 ### 关于服务发现
 
@@ -70,11 +70,11 @@ image: "images/banner/kubernetes.jpg"
 
 开源项目的构建离不开CI工具，你可能经常会在很多GitHub的开源项目首页上看到这样的东西：
 
-![wercker status badge](https://res.cloudinary.com/jimmysong/image/upload/images/wercker-budget.jpg)
+![wercker status badge](wercker-budget.jpg)
 
 这些图标都是CI工具提供的，可以直观的看到当前的构建状态，例如wercker中可以在`Application`-`magpie`-`options`中看到：
 
-![wercker status badge设置](https://res.cloudinary.com/jimmysong/image/upload/images/wercker-status-budge-setting.jpg)
+![wercker status badge设置](wercker-status-budge-setting.jpg)
 
 将文本框中的代码复制到你的项目的`README`文件中，就可以在项目主页上看到这样的标志了。
 
@@ -108,7 +108,7 @@ Wercker于2017年4月被Oracle甲骨文于收购。
 
 一旦拥有了账户，那么只需简单地点击位于顶部的**应用程序**菜单，然后选择**创建**选项即可。如果系统提示是否要创建组织或应用程序，请选择**应用程序**。Wercker组织允许多个Wercker用户之间进行协作，而无须提供信用卡。下图为设置新应用程序的向导页面。
 
-![向导页面](https://res.cloudinary.com/jimmysong/image/upload/images/wercker-create-application.jpg)
+![向导页面](wercker-create-application.jpg)
 
 选择了GitHub中的repo之后，第二步配置访问权限，最后一步Wercker会尝试生成一个wercker.yml文件（后面会讨论）。不过至少对于Go应用程序来说，这个配置很少会满足要求，所以我们总是需要创建自己的Wercker配置文件。
 
@@ -278,7 +278,7 @@ func drawChart(res http.ResponseWriter, req *http.Request) {
 
 边缘节点架构图
 
-![边缘节点架构图](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-edge-node-architecture.png)
+![边缘节点架构图](kubernetes-edge-node-architecture.png)
 
 选择Kubernetes的三个node作为边缘节点，并安装keepalived，上图展示了边缘节点的配置，同时展示了向Kubernetes中添加服务的过程。
 

@@ -35,7 +35,7 @@ brew install guetzli
 
 原图是这个样子的，拍摄地点在景山上的，俯瞰紫禁城的绝佳位置。
 
-![原图](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5430.JPG)
+![原图](IMG_5430.JPG)
 
 ```bash
 guetzli --quality 84 --verbose 20160403052.jpg output.jpg
@@ -43,11 +43,11 @@ guetzli --quality 84 --verbose 20160403052.jpg output.jpg
 
 为什么quality要设置成84呢？因为只能设置为84+的quality，如果要设置的更低的话需要自己修改代码。
 
-![process](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5429.JPG)
+![process](IMG_5429.JPG)
 
 耗时了一个小时，后台进程信息。
 
-![后台进程](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5428.JPG)
+![后台进程](IMG_5428.JPG)
 
 这个是使用**Squash**压缩后的大小效果，压缩每张照片差不多只要3秒钟。
 
@@ -55,21 +55,21 @@ guetzli --quality 84 --verbose 20160403052.jpg output.jpg
 
 压缩比分别为`70%`和`30%`。
 
-![Img](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5434.JPG)
+![Img](IMG_5434.JPG)
 
 **压缩比70%后的细节放大图**
 
-![70](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5432.JPG)
+![70](IMG_5432.JPG)
 
 **压缩比30%的细节放大图**
 
-![30](https://res.cloudinary.com/jimmysong/image/upload/images/IMG_5433.JPG)
+![30](IMG_5433.JPG)
 
 你看出什么区别了吗？反正我是没有。
 
 下面再来看看耗时一个小时，千呼万唤始出来的guetzli压缩后的效果和使用squash压缩比为30%的效果对比。
 
-![对比](https://res.cloudinary.com/jimmysong/image/upload/images/FullSizeRender.jpg)
+![对比](FullSizeRender.jpg)
 
 左面是使用guetzli压缩后（4.1M），右面使用的squash压缩后（3.1M）的照片。
 

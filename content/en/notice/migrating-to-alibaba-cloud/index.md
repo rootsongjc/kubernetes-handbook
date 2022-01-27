@@ -18,9 +18,7 @@ Meanwhile, the blog has also done a lot to improve the site, thanks to [Bai Jun 
 - Articles in the blog have added zoom function
 - Added table of contents to blog post
 
-This site is built on the theme of [educenter](https://github.com/themefisher/educenter-hugo) . The following is the technical architecture used on the front end of the website.
-
-![website tech](https://res.cloudinary.com/jimmysong/image/upload/c_scale,w_674/v1594370153/images/007S8ZIlly1gglyo7jil7j30p20j0dhy.jpg)
+This site is built on the theme of [educenter](https://github.com/themefisher/educenter-hugo) . 
 
 Thanks to the majority of netizens who have supported this website for several years. The website has been in use for more than three years and has millions of visits. It has undergone two major revisions before and after, [on January 31, 2020](http://localhost:1313/notice/website-revision-notice/) and October 8, 2017, respectively. And changed the theme of the website. In the future, I will share more cloud-native content with you as always, welcome to collect, forward, and join the [cloud-native community](https://cloudnative.to/) to communicate with the majority of cloud-native developers.
 

@@ -13,7 +13,7 @@ image: "images/banner/microservices-book.jpg"
 
 最近在看 **《微服务设计（Sam Newman著）》** 这本书。作者是 **ThoughtWorks** 的Sam Newman。这本书中包括很多业界是用案例，比如 **Netflix** 和 **亚马逊**。有兴趣的话大家一起看看讨论一下。😄
 
-P.S 这本书比较偏理论，另外还有一本中国人写的书，**《微服务架构与实践，王磊著，电子工业出版社》** ，[下载本书的pdf](https://res.cloudinary.com/jimmysong/image/upload/images/docs/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E7%8E%8B%E7%A3%8A%E8%91%97-%E7%94%B5%E5%AD%90%E5%B7%A5%E4%B8%9A%E5%87%BA%E7%89%88%E7%A4%BE.pdf)，文字版，大小28.08M。这个人同样也是 **ThoughtWorks** 的，两个人的观点不谋而合，依然是便理论的东西。
+P.S 这本书比较偏理论，另外还有一本中国人写的书，**《微服务架构与实践，王磊著，电子工业出版社》** 。这个人同样也是 **ThoughtWorks** 的，两个人的观点不谋而合，依然是便理论的东西。
 
 **Cloud Native Go - 基于Go和React的web云服务构建指南**
 
@@ -55,7 +55,7 @@ P.S 这本书比较偏理论，另外还有一本中国人写的书，**《微�
 
 终于看到了我翻译的*Cloud Native Go*第14章中引用的这本书的原话了。
 
-![原话](https://res.cloudinary.com/jimmysong/image/upload/images/building-microservices-reference.jpg)
+![原话](building-microservices-reference.jpg)
 
 软件的需求变更是**来的那么快来的那么直接**，不像建筑那样可以在设计好后按照设计图纸一步步的去建设。
 

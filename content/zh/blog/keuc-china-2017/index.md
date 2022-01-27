@@ -30,10 +30,10 @@ image: "images/banner/keuc-2017.jpg"
 
 今天不小心获得了k8smeetup最佳技术专栏作者和社区最佳译者奖，感谢CNCF和k8smeetup社区。
 
-![k8smeetup译者](https://res.cloudinary.com/jimmysong/image/upload/images/kubc-translator.jpg)
+![k8smeetup译者](kubc-translator.jpg)
 
 然后跟CNCF执行副总裁探讨了下Cloud Native在中国的推广，明年在中国会有Cloud Native相关大会。
 
-![with Dan Kohn](https://res.cloudinary.com/jimmysong/image/upload/images/keuc-with-dan-kohn.JPG)
+![Jimmy Song with Dan Kohn](keuc-with-dan-kohn.JPG)
 
 欢迎大家持续关注Cloud Native的发展。

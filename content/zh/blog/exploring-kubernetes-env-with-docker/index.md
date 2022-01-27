@@ -37,7 +37,7 @@ K8S_APP_MONITOR_TEST_SERVICE_PORT=3000
 
 如果不想看下面的文字，可以直接看图。
 
-![kubernetes中传递ENV的探索过程](https://res.cloudinary.com/jimmysong/image/upload/images/kubernetes-service-discovery-with-dns-or-env.png)
+![kubernetes中传递ENV的探索过程](kubernetes-service-discovery-with-dns-or-env.png)
 
 ## 探索
 

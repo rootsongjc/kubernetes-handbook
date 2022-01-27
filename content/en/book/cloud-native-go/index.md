@@ -1,4 +1,3 @@
----
 title: "Cloud Native Go"
 date: 2017-08-01T12:00:00+08:00
 draft: false
@@ -24,7 +23,6 @@ apply_url : "https://item.m.jd.com/product/12123347.html"
 # type
 type: "book"
 aliases: "/posts/cloud-native-go"
----
 
 - Author: Kevin Hoffman & Dan Nemeth
 - Translators: Song Jingchao, Wu Yingsong, Xu Bei, Ma Chao
@@ -55,10 +53,6 @@ In this book you will use Go to create microservices, use ReactJS and Flux to ad
 - Create a responsive cloud application with a third-party messaging vendor
 - Build large-scale, cloud-friendly GUIs with React and Flux
 - Monitor dynamic scaling, failover and fault tolerance in the cloud
-
-The chapter introduction is as follows.
-
-![Cloud Native Go各章节简介](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-go-abstract.png)
 
 ## About the author
 

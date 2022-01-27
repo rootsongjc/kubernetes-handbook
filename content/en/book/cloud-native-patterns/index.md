@@ -24,7 +24,7 @@ type: "book"
 aliases: "/posts/future-architecture-from-soa-to-cloud-native"
 ---
 
-![Cloud Native Patterns translated by Jimmy Song](https://res.cloudinary.com/jimmysong/image/upload/v1596934111/images/cloud-native-patterns-jimmysong.jpg)
+![Cloud Native Patterns translated by Jimmy Song](/images/books/cloud-native-patterns-jimmysong.jpg)
 
 What exactly are we talking about when we discuss cloud native? I've been pondering this question over the years, and we may have different perspectives. Three years ago, I translated my first book on cloud native, and have been involved in the translation and creation of a series of cloud native works, as well as through participation in and observation of open source projects, communities, foundations, and application clouding in the cloud native space, I have come to the following conclusion: cloud native is a behavior and design philosophy, in essence, any behavior that can improve resource utilization and application delivery efficiency in the cloud or ways are cloud native. The history of cloud computing is a history of cloud-native biochemistry. Cloud native is the inevitable result of cloud computing adapting to the social division of labor, leaving system resources, underlying infrastructure, and application choreography to the cloud platform, and allowing developers to focus on business logic, which is exactly what cloud computing has been seeking for a long time. Cloud native applications, which seek to quickly build highly fault-tolerant and elastic distributed applications, the ultimate in R&D efficiency and a friendly go-live and maintenance experience, were born with the idea of cloud native, and they are inherently suited to be deployed in the cloud to maximize the dividends of cloud computing.
 

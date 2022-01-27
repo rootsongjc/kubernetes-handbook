@@ -85,7 +85,7 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 当然你也可以通过WebUI：Dashboard - Workloads - Replication Controllers - **ServiceName** - Scale来扩容。
 
-![dashboard-scale](https://res.cloudinary.com/jimmysong/image/upload/images/dashbaord-scale.jpg)
+![dashboard-scale](dashbaord-scale.jpg)
 
 ### 配置Traefik
 
@@ -105,26 +105,25 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 通过Traefik的dashboard就可以看到刚增加的`traefik.locust.io`节点。
 
-![traefik-dashboard-locust](https://res.cloudinary.com/jimmysong/image/upload/images/traefik-dashboard-locust.jpg)
+![traefik-dashboard-locust](traefik-dashboard-locust.jpg)
 
 ## 执行测试
 
 打开`http://traefik.locust.io`页面，点击`Edit`输入伪造的用户数和用户每秒发送的请求个数，点击`Start Swarming`就可以开始测试了。
 
-![locust-start-swarming](https://res.cloudinary.com/jimmysong/image/upload/images/locust-start-swarming.jpg)
+![locust-start-swarming](locust-start-swarming.jpg)
 
 在测试过程中调整`sample-webapp`的pod个数（默认设置了1个pod），观察pod的负载变化情况。
 
-![sample-webapp-rc](https://res.cloudinary.com/jimmysong/image/upload/images/sample-webapp-rc.jpg)
+![sample-webapp-rc](sample-webapp-rc.jpg)
 
 从一段时间的观察中可以看到负载被平均分配给了3个pod。
 
 在locust的页面中可以实时观察也可以下载测试结果。
 
-![locust-dashboard](https://res.cloudinary.com/jimmysong/image/upload/images/locust-dashboard.jpg)
+![locust-dashboard](locust-dashboard.jpg)
 
 ## 参考
 
-[Distributed Load Testing Using Kubernetes](https://cloud.google.com/solutions/distributed-load-testing-using-kubernetes)
-
-[运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)
+- [Distributed Load Testing Using Kubernetes](https://cloud.google.com/solutions/distributed-load-testing-using-kubernetes)
+- [运用Kubernetes进行分布式负载测试](http://www.csdn.net/article/2015-07-07/2825155)

@@ -19,11 +19,6 @@ image: "images/backgrounds/notification.jpg"
 - 博客中的文章增加了放大功能
 - 在博客文章中增加了目录
 
-本站是基于 [educenter](https://github.com/themefisher/educenter-hugo) 主题构建，以下是网站前端使用的技术架构。
-
-![网站使用的技术](https://res.cloudinary.com/jimmysong/image/upload/c_scale,w_674/v1594370153/images/007S8ZIlly1gglyo7jil7j30p20j0dhy.jpg)
+本站是基于 [educenter](https://github.com/themefisher/educenter-hugo) 主题构建。
 
 感谢广大网友几年来对本网站的支持，网站自上线以来已三年有余，拥有几百万的访问量，前后做过两次重大改版，分别是 [2020 年 1 月 31 日](/notice/website-revision-notice/) 和 2017 年 10 月 8 日，更换了网站的主题。将来我会一如既往给大家分享更多云原生内容，欢迎大家收藏，转发，也欢迎加入[云原生社区](https://cloudnative.to)和广大云原生开发者一起交流。
-
-
-

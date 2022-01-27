@@ -22,7 +22,7 @@ aliases: "/posts/creating-api-document-with-api-blueprint"
 
 该文件实际上是一个Markdown格式的文件，Github中原生支持该文件，使用[Typora](https://typora.io)打开后是这样子。
 
-![apiary.apib文件](https://res.cloudinary.com/jimmysong/image/upload/images/apiary-api-blueprint.jpg)
+![apiary.apib文件](apiary-api-blueprint.jpg)
 
 在Visual Studio Code中有个API Element extension对于API Blueprint文件的支持也比较好。
 
@@ -43,7 +43,7 @@ $ aglio -i apiary.apib -o api.html
 
 打开api.html文件后，如图：
 
-![使用aglio生成的API文档](https://res.cloudinary.com/jimmysong/image/upload/images/api-blueprint-html.jpg)
+![使用aglio生成的API文档](api-blueprint-html.jpg)
 
 安装和使用drakov。
 
@@ -82,4 +82,4 @@ $ curl http://localhost:3000/matches
 ```
 另外通过[Apiary](https://apiary.io)这个网站，我们可以直接以上的所有功能，还可以同时在页面上进行mock test，生成多种语言的code example。如图：
 
-![Apiary页面](https://res.cloudinary.com/jimmysong/image/upload/images/apiary-gogo-service.jpg)
+![Apiary页面](apiary-gogo-service.jpg)

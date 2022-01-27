@@ -12,7 +12,7 @@ type: "post"
 
 Kevin Hoffman(From Capital One, twitter [@KevinHoffman](https://twitter.com/KevinHoffman)) was making a speech on *TalkingData T11 Smart Data Summit*.
 
-![Kevin Hoffman Talking on T11](https://res.cloudinary.com/jimmysong/image/upload/images/kevin-hoffman-talking-on-t11.jpg)
+![Kevin Hoffman Talking on T11](kevin-hoffman-talking-on-t11.jpg)
 
 He addressed that **15 Factors of Cloud Native** which based on Heroku's original [Twelve-Factor App](https://12factor.net), but he add more 3 another factors on it.
 
@@ -182,8 +182,8 @@ Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applic
 
 Kevin was signing his name on the book
 
-![kevin siging on the book](https://res.cloudinary.com/jimmysong/image/upload/images/kevin-hoffman-siging-on-the-book.jpg)
+![kevin siging on the book](kevin-hoffman-siging-on-the-book.jpg)
 
 This is his first visit to China, as a main translator of this book I an honored to be with him to take this photo.
 
-![kevin hoffman with me](https://res.cloudinary.com/jimmysong/image/upload/images/kevin-hoffman-with-me.jpg)
+![kevin Hoffman with Jimmy Song](kevin-hoffman-with-me.jpg)

@@ -18,7 +18,7 @@ image: "images/banner/kubernetes.jpg"
 
 下面以一个应用的日志收集为例，该日志需要持久化收集到ElasticSearch集群中，如果不考虑数据丢失的情形，可以直接使用[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中【应用日志收集】一节中的方法，但考虑到Pod挂掉时logstash（或filebeat）并没有收集完该pod内日志的情形，我们想到了如下这种解决方案，示意图如下：
 
-![日志持久化收集解决方案示意图](https://res.cloudinary.com/jimmysong/image/upload/images/log-persistence-logstash.png)
+![日志持久化收集解决方案示意图](log-persistence-logstash.png)
 
 1. 首先需要给数据落盘的应用划分node，即这些应用只调用到若干台主机上
 2. 给这若干台主机增加label
