@@ -15,7 +15,7 @@ Today is my 914th day and also the last day with [Ant Group](https://www.antgrou
 
 To date, Ant/Alibaba Group has had a profound impact on my career, especially its corporate culture and values, and the Alibaba recruiting philosophy of "finding like-minded people", and isn't the process of creating the Cloud Native Community also a process of finding like-minded people? [Cloud Native Community](https://cloudnative.to) is like a small society, I don't want it to have much social value, but only want it to make a small but beautiful change to individuals, to enterprises and to society. I constantly think about myself as an individual and as an employee, especially as an initiator of the community. What is my mission as an individual, an employee, and especially as an initiator of a community? What role should I play in the company? Where is this community going? I'm fumbling along, but because of your support, it makes me stronger and more committed to the adoption and application of cloud native technology in China, outside of me I may have gone faster, but now with the community together we will go further!
 
-![24 June 2019, Shanghai, KubeCon China 2019](https://res.cloudinary.com/jimmysong/image/upload/v1598752226/images/20190624.jpg)
+![24 June 2019, Shanghai, KubeCon China 2019](20190624.jpg)
 *June 24, 2019, Shanghai, KubeCon China 2019*
 
 ## Joining Tetrate

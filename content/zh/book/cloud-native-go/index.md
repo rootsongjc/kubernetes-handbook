@@ -58,7 +58,7 @@ Kevin Hoffman和Dan Nemeth详细描述了现代云原生应用程序，阐明了
 
 章节简介如下图。
 
-![Cloud Native Go各章节简介](https://res.cloudinary.com/jimmysong/image/upload/images/cloud-native-go-abstract.png)
+![Cloud Native Go各章节简介](cloud-native-go-abstract.png)
 
 ## 关于作者
 

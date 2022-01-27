@@ -176,12 +176,12 @@ At last, he advise us the programming language Go is the best language to build 
 - Large, thriving, engaged community
   - http://gopherize.me
 
-Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于Go和React的云原生Web应用与微服务》published by PHEI publisher house. See the website I built for this book https://jimmysong.io/cloud-native-go/
+Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于Go和React的云原生Web应用与微服务》published by PHEI publisher house. 
 
 Kevin was signing his name on the book
 
-![kevin siging on the book](https://res.cloudinary.com/jimmysong/image/upload/images/kevin-hoffman-siging-on-the-book.jpg)
+![kevin siging on the book](kevin-hoffman-siging-on-the-book.jpg)
 
 This is his first visit to China, as a main translator of this book I an honored to be with him to take this photo.
 
-![kevin hoffman with me](https://res.cloudinary.com/jimmysong/image/upload/images/kevin-hoffman-with-me.jpg)
+![kevin hoffman with me](kevin-hoffman-with-me.jpg)
