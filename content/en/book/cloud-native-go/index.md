@@ -1,3 +1,4 @@
+---
 title: "Cloud Native Go"
 date: 2017-08-01T12:00:00+08:00
 draft: false
@@ -23,6 +24,7 @@ apply_url : "https://item.m.jd.com/product/12123347.html"
 # type
 type: "book"
 aliases: "/posts/cloud-native-go"
+---
 
 - Author: Kevin Hoffman & Dan Nemeth
 - Translators: Song Jingchao, Wu Yingsong, Xu Bei, Ma Chao
