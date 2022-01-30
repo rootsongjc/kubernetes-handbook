@@ -206,8 +206,8 @@ weight = 7
 # footer menu
 
 [[menu.footer]]
-name = "GetIstio"
-URL = "https://getistio.io"
+name = "Tetrate Istio Distro"
+URL = "https://istio.tetratelabs.io/"
 
 [[menu.footer]]
 name = "Cloud Native Community(China)"
@@ -257,13 +257,13 @@ weight = 3
 
 [[Languages.zh.menu.main]]
 parent = "图书"
-name = "Kubernetes 中文指南：云原生应用架构实践手册"
+name = "Kubernetes Handbook"
 URL = "kubernetes-handbook/"
 weight = 1
 
 [[Languages.zh.menu.main]]
 parent = "图书"
-name = "Istio 服务网格：云原生应用网络构建指南"
+name = "Istio Handbook"
 URL = "istio-handbook/"
 weight = 2
 
@@ -338,8 +338,8 @@ name = "Jimmy 频道 | Bilibli"
 URL = "https://space.bilibili.com/31004924/"
 
 [[Languages.zh.menu.footer]]
-name = "GetIstio"
-URL = "https://getistio.io"
+name = "Tetrate Istio 发行版"
+URL = "https://istio.tetratelabs.io/"
 
 [[Languages.zh.menu.footer]]
 name = "云原生社区（中国）"
