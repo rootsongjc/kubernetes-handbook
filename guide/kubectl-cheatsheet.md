@@ -1,6 +1,6 @@
 # kubectl 命令技巧大全
 
-Kubctl 命令是操作 kubernetes 集群的最直接和最 skillful 的途径，这个60多MB大小的二进制文件，到底有啥能耐呢？请看下文：
+`kubectl` 命令是操作 Kubernetes 集群的最直接和最高效的途径，这个60多 MB 大小的二进制文件，到底有啥能耐呢？
 
 ## Kubectl 自动补全
 
@@ -292,7 +292,5 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 ## 参考
 
 - [Kubectl 概览 - kubernetes.io](https://kubernetes.io/docs/user-guide/kubectl-overview)
-
-
 - [JsonPath 手册 - kubernetes.io](https://kubernetes.io/docs/user-guide/jsonpath)
 - [Cheatsheet - kubernetes.io](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
