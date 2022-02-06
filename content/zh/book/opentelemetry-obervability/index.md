@@ -16,7 +16,7 @@ category: "电子书"
 # author
 author: "Ted Young"
 # page count
-pages : "324"
+pages : "46"
 # book price
 price : "免费"
 # apply url
