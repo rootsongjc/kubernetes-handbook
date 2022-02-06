@@ -5,7 +5,7 @@ date: 2022-02-06T10:27:49+08:00
 description: "本书将帮助你理解可观测性、OpenTelemetry 及如何在企业内推广它。"
 type: "notice"
 link: "https://jimmysong.io/opentelemetry-obervability/"
-image: "images/backgrounds/opentelemetry-logo.jpg"
+image: "images/backgrounds/opentelemetry-logo.png"
 ---
 
 虎年春节期间，我翻译了 O'Reilly 出品的报告 [The Future of Observablity with OpeTelemetry](https://www.oreilly.com/library/view/the-future-of/9781098118433/)，作者 Ted Young。现在中文版已翻译完成，可以下载和在线阅读。
