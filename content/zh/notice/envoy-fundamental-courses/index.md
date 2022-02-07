@@ -10,9 +10,9 @@ image: "images/backgrounds/envoy-logo.png"
 
 ![Envoy 基础教程](008i3skNly1gz4q1qdqvuj30xc0goq4h.jpg)
 
-Envoy 代理是一个开源的边缘和服务代理，是当今现代云原生应用的重要组成部分，Booking.com、Pinterest 和 Airbnb 等大公司都在生产中使用了它。[Tetrate](https://www.tetrate.io/) 是 Envoy 的顶级贡献者，开发了 [Envoy 基础教程](https://academy.tetrate.io/courses/envoy-fundamentals)，这是一个免费的培训，有结业证书，以帮助企业更快地采用该技术。它将使 DevOps、SRE、开发人员和其他社区成员能够通过概念文本、实际实验和测验轻松学习 Envoy。Tetrate 也是受欢迎的 [Istio 基础教程](http://academy.tetrate.io/)和开源项目 [Func-e](https://www.func-e.io/) 的创建者，这使得采用 Envoy 更加容易。
+Envoy 代理是一个开源的边缘和服务代理，是当今现代云原生应用的重要组成部分，Booking.com、Pinterest 和 Airbnb 等大公司都在生产中使用了它。[Tetrate](https://www.tetrate.io/) 是 Envoy 的顶级贡献者，开发了 [Envoy 基础教程](https://academy.tetrate.io/courses/envoy-fundamentals)，这是一个免费的培训，有结业证书，以帮助企业更快地采用该技术。DevOps、SRE、开发人员和其他社区成员能够通过概念文本、实际实验和测验轻松学习 Envoy。Tetrate 也是受欢迎的 [Istio 基础教程](http://academy.tetrate.io/)和开源项目 [Func-e](https://www.func-e.io/) 的创建者，这使得采用 Envoy 更加容易。
 
-“我对 Tetrate 的 Envoy 基础教程和认证感到兴奋”。Envoy Proxy 的创建者、Lyft 的高级工程师 Matt Klein 说。“该课程组织的很好，有关于 Envoy 应用的信息，以及带有逐步说明和测验的实验。完成全部课程后，你将获得一份证书的奖励。最重要的是，培训是完全免费的。我向想学习和使用 Envoy Proxy 的人强烈推荐这个课程”。
+“我对 Tetrate 的 Envoy 基础教程和认证感到兴奋”，Envoy Proxy 的创建者、Lyft 的高级工程师 Matt Klein 说。“该课程组织的很好，有关于 Envoy 应用的信息，以及带有逐步说明和测验的实验。完成全部课程后，你将获得一份证书的奖励。最重要的是，培训是完全免费的。我向想学习和使用 Envoy Proxy 的人强烈推荐这个课程”。
 
 ![Envoy 基础教程结业证书](008i3skNly1gz4q1qx3ruj318g0ro76d.jpg)
 
@@ -61,6 +61,6 @@ Envoy 具有丰富的网络相关功能，如重试、超时、流量路由和�
 
 ![学员反馈](008i3skNly1gz4q1r9yr4j318g0nhtav.jpg)
 
-## 关于Tetrate
+## 关于 Tetrate
 
-Tetrate由Istio创始人和Envoy维护者创办，旨在重新构想应用网络，是一家管理现代混合云应用基础设施复杂性的企业级服务网格公司。其旗舰产品[Tetrate Service Bridge](https://tetrate.io/tetrate-service-bridge)为多集群、多租户和多云部署提供了一个全面的、企业就绪的服务网格平台。客户在任何环境下都能获得一致的、内嵌的可观察性、运行时的安全性和流量管理。Tetrate仍然是开源项目Istio和Envoy Proxy的主要贡献者，其团队包括Envoy的高级维护人员。了解更多信息，请访问[tetrate.io](https://tetrate.io)。
+Tetrate 由 Istio 创始人和 Envoy 维护者创办，旨在重新构想应用网络，是一家管理现代混合云应用基础设施复杂性的企业级服务网格公司。其旗舰产品 [Tetrate Service Bridge](https://tetrate.io/tetrate-service-bridge) 为多集群、多租户和多云部署提供了一个全面的、企业就绪的服务网格平台。客户在任何环境下都能获得一致的、内嵌的可观察性、运行时的安全性和流量管理。Tetrate 仍然是开源项目 Istio 和 Envoy Proxy 的主要贡献者，其团队包括 Envoy 的高级维护人员。了解更多信息，请访问 [tetrate.io](https://tetrate.io/)。
