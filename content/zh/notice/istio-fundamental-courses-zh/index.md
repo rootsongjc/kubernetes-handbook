@@ -4,12 +4,12 @@ draft: false
 date: 2021-09-26T09:27:49+08:00
 description: "本教程有企业级服务网格提供商 Tetrate 出品。"
 type: "notice"
-link: "https://tetrate-academy.thinkific.com/courses/istio-fundamentals-zh"
+link: "https://academy.tetrate.io/courses/istio-fundamentals-zh"
 ---
 
 业界首个在线的免费中文多媒体的 Istio 教程来了，在 9 月 25 日周六的云原生社区 meetup 第七期深圳站上，Tetrate 布道师、云原生社区创始人宋净超（Jimmy Song）发布了 Istio 中文基础教程。
 
-该教程由企业级服务网格供应商 Tetrate 出品，该课程已上线，可免费报名学习。报名地址：<https://tetrate-academy.thinkific.com/courses/istio-fundamentals-zh>
+该教程由企业级服务网格供应商 Tetrate 出品，该课程已上线，可免费报名学习。报名地址：<https://academy.tetrate.io/courses/istio-fundamentals-zh>
 
 ![Istio 基础教程页面](https://tva1.sinaimg.cn/large/008i3skNly1gvb4ffykbrj60u00gwgn002.jpg)
 
