@@ -1,10 +1,10 @@
-# Kubernetes相关资讯和情报链接
+# Kubernetes 参考资源
 
-授人以鱼，不如授人以渔。下面的资料将有助于大家了解kubernetes生态圈当前发展状况和发展趋势，我特此整理相关资料如下。
+授人以鱼，不如授人以渔。下面的资料将有助于大家了解 Kubernetes 生态圈发展趋势，笔者特此整理相关资料如下。
 
 ## 社区资源
 
-Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在[这个 repo](https://github.com/kubernetes/community)  中，建议参与 Kubernetes 社区前先阅读该 repo 中的资料。
+Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在[这个仓库](https://github.com/kubernetes/community)中，建议参与 Kubernetes 社区前先阅读该 repo 中的资料。
 
 在这里你可以找到：
 
@@ -13,40 +13,17 @@ Kubernetes 社区的贡献、交流和治理方式相关的内容都保存在[�
 - 社区成员的角色分类与职责
 - 社区贡献的 Kubernetes 资源图标
 
-![Kubernetes 资源图标示例](../images/006tNc79ly1fzmnolp5ghj30z90u0gwf.jpg)
+## 生态系统
 
-## 生态环境
+包括 Kubernetes 和云原生相关的开源软件、工具和全景图。
 
-包括kubernetes和cloud native相关的开源软件、工具和全景图。
-
-- [awesome-kubernetes](https://github.com/ramitsurana/awesome-kubernetes) - A curated list for awesome kubernetes sources 🚢🎉 [https://ramitsurana.github.io/awesome-kubernetes](https://ramitsurana.github.io/awesome-kubernetes)
-- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native/) - A curated list for awesome cloud native architectures <https://jimmysong.io/awesome-cloud-native/>
-- [cloud native landscape](https://github.com/cncf/landscape) - Cloud Native Landscape [https://landscape.cncf.io](https://landscape.cncf.io/)
-
-## 开源书籍和教程
-
-- [arun-gupta/kubernetes-aws-workshop](https://github.com/arun-gupta/kubernetes-aws-workshop)
-- [arun-gupta/kubernetes-java-sample](https://github.com/arun-gupta/kubernetes-java-sample)
-- [feiskyer/kubernetes-handbook](https://github.com/feiskyer/kubernetes-handbook)
-- [kelseyhightower/kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
-- [ks](https://github.com/red-gate/ks) - A series of Kubernetes walk-throughs
-- [opsnull/follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)
-- [rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
-
-## 博客与网站
-
-Kubernetes和Cloud Native相关网站、专栏、博客等。
-
-### 网站与专栏
-
-- [thenewstack.io](https://thenewstack.io/)
-- [giantswarm blog](https://blog.giantswarm.io/)
-- [k8smeetup.com](http://www.k8smeetup.com)
-- [dockone.io](http://www.dockone.io)
-- [Cloud Native 知乎专栏](https://zhuanlan.zhihu.com/cloud-native)
-- [kubernetes.org.cn](https://www.kubernetes.org.cn/)
+- [awesome-kubernetes](https://github.com/ramitsurana/awesome-kubernetes) - Kubernetes 相关资源大全
+- [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native/) - 云原生开源项目和教程大全
+- [Cloud Native Landscape](https://github.com/cncf/landscape) - CNCF 维护的云原生全景图
 
 ### 博客
+
+下面列举了一些云原生领域的公司、项目或个人撰写的高质量博客。
 
 - [aporeto](https://www.aporeto.com/blog/)
 - [applatix](https://applatix.com/blog/)

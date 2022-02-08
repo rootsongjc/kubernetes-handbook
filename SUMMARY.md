@@ -288,8 +288,7 @@
 
 * [附录说明](appendix/index.md)
 * [Kubernetes 中的应用故障排查](appendix/debug-kubernetes-services.md)
-* [Kubernetes 相关资讯和情报链接](appendix/material-share.md)
-* [Docker 最佳实践](appendix/docker-best-practice.md)
+* [Kubernetes 参考资源](appendix/material-share.md)
 * [Kubernetes 使用技巧](appendix/tricks.md)
 * [Kubernetes 相关问题记录](appendix/issues.md)
 * [Kubernetes 及云原生年度总结及展望](appendix/summary-and-outlook.md)
