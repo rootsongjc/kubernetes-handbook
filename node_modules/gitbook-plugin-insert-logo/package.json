@@ -1,0 +1,106 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-insert-logo",
+        "raw": "gitbook-plugin-insert-logo@0.1.5",
+        "rawSpec": "0.1.5",
+        "scope": null,
+        "spec": "0.1.5",
+        "type": "version"
+      },
+      "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-insert-logo@0.1.5",
+  "_id": "gitbook-plugin-insert-logo@0.1.5",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-insert-logo",
+  "_nodeVersion": "6.11.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/gitbook-plugin-insert-logo_0.1.5_1521716276866_0.7489566873105806"
+  },
+  "_npmUser": {
+    "email": "matusnov@gmail.com",
+    "name": "matusnov"
+  },
+  "_npmVersion": "3.5.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-insert-logo",
+    "raw": "gitbook-plugin-insert-logo@0.1.5",
+    "rawSpec": "0.1.5",
+    "scope": null,
+    "spec": "0.1.5",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-insert-logo/-/gitbook-plugin-insert-logo-0.1.5.tgz",
+  "_shasum": "daae8dda41a236d54f13931e570b26729557885a",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-insert-logo@0.1.5",
+  "_where": "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook",
+  "author": {
+    "email": "matusnov@gmail.com",
+    "name": "matusnovak"
+  },
+  "bugs": {
+    "url": "https://github.com/matusnovak/gitbook-plugin-insert-logo/issues"
+  },
+  "dependencies": {},
+  "description": "GitBook Plugin to insert (url or file or base64) into the navigation above search input.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 6,
+    "shasum": "daae8dda41a236d54f13931e570b26729557885a",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-insert-logo/-/gitbook-plugin-insert-logo-0.1.5.tgz",
+    "unpackedSize": 3785
+  },
+  "engines": {
+    "gitbook": ">1.x.x"
+  },
+  "gitHead": "fba26154a69508a0a84898423749f7dbea433485",
+  "gitbook": {
+    "properties": {
+      "style": {
+        "default": "background: none;",
+        "title": "Custom CSS",
+        "type": "string"
+      },
+      "url": {
+        "default": "http://www.example.com/my-logo.png",
+        "title": "Logo URL",
+        "type": "string"
+      }
+    }
+  },
+  "homepage": "https://github.com/matusnovak/gitbook-plugin-insert-logo#readme",
+  "keywords": [
+    "gitbook",
+    "plugin",
+    "insert-logo",
+    "logo",
+    "github"
+  ],
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "matusnov@gmail.com",
+      "name": "matusnov"
+    }
+  ],
+  "name": "gitbook-plugin-insert-logo",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matusnovak/gitbook-plugin-insert-logo.git"
+  },
+  "scripts": {},
+  "version": "0.1.5"
+}

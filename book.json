@@ -29,7 +29,8 @@
         "ga",
         "sitemap-general",
         "hide-element",
-        "expandable-chapters-small"
+        "expandable-chapters-small",
+        "insert-logo"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -75,6 +76,10 @@
         },
         "hide-element": {
             "elements": [".gitbook-link"]
+        },
+        "insert-logo": {
+            "url": "https://jimmysong.io/images/logo-black-text.png",
+            "style": "background: none; max-height: 100px; min-height: 30px"
         }
     }
 }
