@@ -165,7 +165,7 @@ contentDir = "content/en"
 weight = 1
 home = "Home"
 # copyright
-copyright = "Copyright &copy; 2021 Jimmy Song All Right Reserved;</br> Powerd by Hugo with [educenter](https://github.com/themefisher/educenter-hugo) theme"
+copyright = "Copyright &copy; 2017-2022 Jimmy Song All Right Reserved"
 
 # main menu
 [[menu.main]]
@@ -237,7 +237,7 @@ contentDir = "content/zh"
 home = "主页"
 title = "Jimmy Song - 云原生|开源|社区"
 # copyright
-copyright = "Copyright &copy; 2017-2021 Jimmy Song 保留所有权利"
+copyright = "Copyright &copy; 2017-2022 Jimmy Song 保留所有权利"
 
 # main menu
 [[Languages.zh.menu.main]]
