@@ -64,15 +64,15 @@ Kubernetes 社区给出了一个使用 Deployment 做[金丝雀发布](https://k
 
 ### Kubernetes Ingress vs Istio Gateway
 
-如上所述，kube-proxy 只能在 Kubernetes 集群内路由流量。Kubernetes 集群的 pod 位于 CNI 创建的网络中。一个 ingress—— 一个在 Kubernetes 中创建的资源对象 - 被创建用于集群外部的通信。它由位于 Kubernetes 边缘节点上的入口控制器驱动，负责管理南北向流量。Ingress 必须与各种 Ingress 控制器对接，比如 [nginx ingress 控制器](https://github.com/kubernetes/ingress-nginx)和 [traefik](https://traefik.io/)。Ingress 只适用于 HTTP 流量，使用简单。它只能通过匹配有限的字段来路由流量–如服务、端口、HTTP 路径等。这使得它无法对 TCP 流量进行路由，如 MySQL、Redis 和各种 RPC。这就是为什么你会看到人们在 ingress 资源注释中写 nginx 配置语言的原因。直接路由南北流量的唯一方法是使用服务的 LoadBalancer 或 NodePort，前者需要云厂商支持，后者需要额外的端口管理。
+如上所述，kube-proxy 只能在 Kubernetes 集群内路由流量。Kubernetes 集群的 pod 位于 CNI 创建的网络中。Ingress 是在 Kubernetes 中创建的资源对象，用于集群外部的通信。它由位于 Kubernetes 边缘节点上的入口控制器驱动，负责管理南北向流量。Ingress 必须与各种 Ingress 控制器对接，比如 [nginx ingress 控制器](https://github.com/kubernetes/ingress-nginx)和 [traefik](https://traefik.io/)。Ingress 只适用于 HTTP 流量，使用简单。它只能通过匹配有限的字段来路由流量——如服务、端口、HTTP 路径等。这使得它无法对 TCP 流量进行路由，如 MySQL、Redis 和各种 RPC。这就是为什么你会看到人们在 ingress 资源注释中写 Nginx 配置语言的原因（注：使用 Nginx Ingress Controller 可以通过 [配置 ConfigMap 和 Service 的方式](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)来变通支持 TCP 和 UDP  流量转发）。直接路由南北流量的唯一通行方法是使用服务的 LoadBalancer 或 NodePort，前者需要云厂商支持，后者需要额外的端口管理。
 
 Istio Gateway 的功能与 Kubernetes Ingress 类似，它负责进出集群的南北流量。Istio Gateway 描述了一个负载均衡器，用于承载进出服务网格边缘的连接。该规范描述了一组开放端口和这些端口所使用的协议，以及用于负载均衡的 SNI 配置等。Gateway 是一个 CRD 扩展，它也重用了 sidecar 代理的功能；详细配置请参见 [Istio 网站](https://istio.io/latest/docs/reference/config/networking/gateway/)。
 
 ## Envoy
 
-Envoy 是 Istio 中默认的 sidecar 代理。Istio 基于 Enovy 的 xDS 协议扩展了其控制平面。在讨论 Envoy 的 xDS 协议之前，我们需要先熟悉 Envoy 的基本术语。以下是 Envoy 中的基本术语及其数据结构的列表，更多细节请参考 [Envoy 文档](https://envoyproxy.io/)。
+Envoy 是 Istio 中默认的 sidecar 代理。Istio 基于 Enovy 的 xDS 协议扩展了其控制平面。在讨论 Envoy 的 xDS 协议之前，我们需要先熟悉 Envoy 的基本术语。下面是 Envoy 的架构图。
 
-![Envoy](008eGmZEly1gpb7koah95j31450tetta.jpg)
+![Envoy 架构图](envoy-arch.jpg)
 
 ### 基础概念
 
