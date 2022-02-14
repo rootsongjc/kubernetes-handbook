@@ -27,7 +27,7 @@ slider:
 
     # slider item loop
     - title : "Start your Cloud Native journey"
-      content : "Cloud Native is a behavior and design philosophy. At its essence, any behavior or approach that improves resource utilization and application delivery efficiency in the cloud is Cloud Native. The history of cloud computing is a history of Cloud Native biochemistry. Kubernetes kicked off the prelude of cloud native 1.0, and the emergence of Istio, a service mesh, led the way for microservices in the post-Kubernetes era. The re-emergence of serverless makes cloud native move from the infrastructure layer to the application architecture layer, and we are now in a new era of cloud native 2.0."
+      content : "Cloud Native is a behavior and design philosophy. At its essence, any behavior or approach that improves resource utilization and application delivery efficiency in the cloud is Cloud Native. The history of cloud computing is a history of Cloud Native biochemistry. Kubernetes kicked off the prelude of cloud native 1.0, and the emergence of Istio, a service mesh, led the way for microservices in the post-Kubernetes era. The re-emergence of serverless makes cloud native move from the infrastructure layer to the application architecture layer, and we are now in a new era of cloud native."
       animation_in : "left"
       animation_out : "right"
       # available animation : left, right, up, down
@@ -136,7 +136,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "10091"
+      count : "10107"
       link : "https://cloudnative.to/en"
 
 # funfact is for about page
