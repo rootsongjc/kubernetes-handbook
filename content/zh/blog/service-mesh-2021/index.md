@@ -61,7 +61,7 @@ Istio 使用的是 Envoy 作为数据平面，扩展 Istio 本质上就是对 En
 
 在服务网格概念兴起之初就有 Per-node 和 Sidecar 模式之争，他们的代表分别是 Linkerd 和 Istio。后来 eBPF 提出将服务网格下沉的内核，从而演化出了更多的服务网格部署模式，如下图所示。
 
-![服务网格的部署模式](008i3skNly1gyc469mwgnj30u00vnadn.jpg) 
+![服务网格的部署模式](service-mesh-arch.png) 
 
 图：服务网格的部署模式
 
