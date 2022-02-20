@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
           <!-- logo -->
-          <a class="logo-footer" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid mb-4" width="50%" src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}"></a>
+          <a class="logo-footer" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid mb-4" width="50%" src="{{ .Site.Params.footer_image | relURL }}" alt="{{ .Site.Title }}"></a>
           <ul class="list-unstyled">
             {{ with $data.homepage.footer }}
             {{ if .content }}

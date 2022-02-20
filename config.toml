@@ -57,7 +57,8 @@ link = "plugins/hex_md5/hex_md5.js"
 
 #################### default parameters ################################
 [params]
-logo = "images/logo.png"
+logo = "images/jimmysong-logo.png"
+footer_image = "images/logo.png"
 # Meta data
 description = "宋净超（Jimmy Song）的个人博客"
 author = "Jimmy Song"
