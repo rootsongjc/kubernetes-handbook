@@ -1,7 +1,0 @@
-root = true
-
-# Set default charset for HTML, CSS & JS
-[*.{js,html,css}]
-charset = utf-8
-indent_style = space
-indent_size = 2
