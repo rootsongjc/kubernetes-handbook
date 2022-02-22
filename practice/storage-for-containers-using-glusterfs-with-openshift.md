@@ -12,7 +12,7 @@ GlusterFS 是一个分布式文件系统，内置了原生协议（GlusterFS）�
 
 ### 部署 OpenShift
 
-首先你需要先部署 OpenShift。最有效率的方式是直接在虚拟机中部署一个 All-in-One 环境，部署指南见 [the “OpenShift Enterprise 3.4 all-in-one Lab Environment” article.](https://keithtenzer.com/2017/03/13/openshift-enterprise-3-4-all-in-one-lab-environment/)。
+首先你需要先部署 OpenShift。最有效率的方式是直接在虚拟机中部署一个 All-in-One 环境。
 
 确保你的 OpenShift 虚拟机可以解析外部域名。编辑 `/etc/dnsmasq.conf` 文件，增加下面的 Google DNS：
 

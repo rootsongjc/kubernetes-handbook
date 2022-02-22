@@ -51,7 +51,7 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 
 ## 未来方向
 
-从 [bookinfo](https://istio.io/latest/docs/examples/virtual-machines/bookinfo/) 的演示中可以看出，在这个过程中涉及到的人工工作太多，很容易出错。在未来，Istio 会改进虚拟机测试的可操作性，根据平台身份自动引导，改进 DNS 支持和 istioctl 调试等。大家可以关注 [Istio 环境工作组](https://github.com/istio/community/blob/master/WORKING-GROUPS.md)，了解更多关于虚拟机支持的细节。
+从 Bookinfo 的演示中可以看出，在这个过程中涉及到的人工工作太多，很容易出错。在未来，Istio 会改进虚拟机测试的可操作性，根据平台身份自动引导，改进 DNS 支持和 istioctl 调试等。大家可以关注 [Istio 环境工作组](https://github.com/istio/community/blob/master/WORKING-GROUPS.md)，了解更多关于虚拟机支持的细节。
 
 ## 参考阅读
 

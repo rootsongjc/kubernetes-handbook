@@ -593,7 +593,7 @@ spec:
 
 ### vsphereVolume
 
-**先决条件**：配置了 vSphere Cloud Provider 的 Kubernetes。有关云提供商的配置，请参阅 [vSphere 入门指南](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/)。
+**先决条件**：配置了 vSphere Cloud Provider 的 Kubernetes。
 
 `vsphereVolume` 用于将 vSphere VMDK 卷挂载到 Pod 中。卷的内容在卸载时会被保留。支持 VMFS 和 VSAN 数据存储。
 

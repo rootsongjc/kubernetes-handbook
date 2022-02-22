@@ -46,7 +46,7 @@ EndpointSlice 中的每个端点都可以包含一定的拓扑信息。 拓扑�
 
 ## 启用拓扑感知
 
-请参考[启用拓扑感知提示](https://kubernetes.io/zh/docs/tasks/administer-cluster/enabling-topology-aware-hints/)开启此功能。请启用 kube-apiserver、kube-controller-manager、和 kube-proxy 的[特性门控](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/feature-gates/) `TopologyAwareHints`。通过把 Service 中的注解 `service.kubernetes.io/topology-aware-hints` 的值设置为 `auto`， 来激活服务的拓扑感知提示功能。 这告诉 EndpointSlice 控制器在它认为安全的时候来设置拓扑提示。kube-proxy 组件依据 EndpointSlice 控制器设置的提示，过滤由它负责路由的端点。
+请启用 kube-apiserver、kube-controller-manager、和 kube-proxy 的[特性门控](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/feature-gates/) `TopologyAwareHints`。通过把 Service 中的注解 `service.kubernetes.io/topology-aware-hints` 的值设置为 `auto`， 来激活服务的拓扑感知提示功能。 这告诉 EndpointSlice 控制器在它认为安全的时候来设置拓扑提示。kube-proxy 组件依据 EndpointSlice 控制器设置的提示，过滤由它负责路由的端点。
 
 由 EndpointSlice 控制器提供提示信息后 EndpointSlice 的示例如下：
 
@@ -88,6 +88,5 @@ endpoints:
 
 - [使用拓扑键实现拓扑感知的流量路由 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/service-topology/)
 - [端点切片 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/endpoint-slices/)
-- [启用拓扑感知提示 - kubernetes.io](https://kubernetes.io/zh/docs/tasks/administer-cluster/enabling-topology-aware-hints/)
 - [拓扑感知提示 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/topology-aware-hints/)
 

@@ -385,15 +385,11 @@ Kubernetes 作为云原生计算的基本组件之一，自开源以来热度与
 
 监控分类示意图：
 
-![Grafana 界面示意图 1](../images/kubernetes-devops-example-grafana-1.png)
-
-Kubernetes 集群全局监控图 1
+![Kubernetes 集群全局监控图 1](../images/kubernetes-devops-example-grafana-1.png)
 
 该监控图可以看到集群硬件使用情况。
 
-![Grafana 界面示意图 2](../images/kubernetes-devops-example-grafana-2.png)
-
-Kubernetes 全局监控图 2
+![Kubernetes 全局监控图 2](../images/kubernetes-devops-example-grafana-2.png)
 
 该监控可以看到单个用户的 namespace 下的所有资源的使用情况。
 

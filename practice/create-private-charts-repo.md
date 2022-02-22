@@ -1,4 +1,4 @@
-# 构建私有Chart仓库
+# 构建私有 Chart 仓库
 
 使用Chart便于封装和管理kubernetes中的应用，因此当企业内部的应用多了以后，互相依赖、部署环境复杂之后，原先的直接使用yaml文件的管理方式已经不再适应生产的需要，因此我们有必要构建自己的chart仓库。本文中我们将使用 GitHub Pages 来构建我们自己的 chart 仓库。
 
@@ -132,7 +132,6 @@ $ helm install monocular/monocular
 
 ## 参考
 
-- [Monocular UI](https://github.com/kubernetes-helm/monocular)
-- [简化Kubernetes应用部署工具-Helm之应用部署](https://www.kubernetes.org.cn/2706.html)
-- [Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
-- [Using a private github repo as helm chart repo (https access)](https://medium.com/@kavehmz/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c)
+- [Monocular UI - github.com](https://github.com/kubernetes-helm/monocular)
+- [Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch - ibm.com](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
+- [Using a private github repo as helm chart repo (https access) - medium.com](https://medium.com/@kavehmz/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c)

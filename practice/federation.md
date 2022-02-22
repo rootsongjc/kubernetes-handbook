@@ -299,4 +299,3 @@ spec:
 
 - [Kubernetes Federation v2 - github.com](https://github.com/kubernetes-sigs/kubefed)
 - [Kubernetes Federation Evolution - kuberentes.io](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)
-- [KubeFed: Kubernetes Federation v2 详解 - kuberentes.org.cn](https://www.kubernetes.org.cn/5702.html)
