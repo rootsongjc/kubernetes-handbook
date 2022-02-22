@@ -96,9 +96,11 @@ type: "post"
         }
     }
 }
-​````LANG.md` 文件中定义不同语言的文件目录：
+```
 
-​```markdown
+`LANG.md` 文件中定义不同语言的文件目录：
+
+```markdown
 # Languages
 
 * [中文](cn/)
@@ -138,6 +140,8 @@ type: "post"
 使用 `trans :zh -b -shell` 进入 translation-shell 交互式界面，拷贝英文段落进去翻译成中文。
 
 ![Translation-shell](translation-trans-terminal.jpg)
+
+注：推荐使用翻译质量更高的工具 [DeepL](https://deepl.com/)（更新于 2022年02月22日）。
 
 #### 使用 Typora 编辑中文翻译
 
@@ -193,4 +197,3 @@ type: "post"
 
 - [术语在线](http://www.termonline.cn/index.htm)
 - [非文学翻译理论与实践 - 王长栓](https://book.douban.com/subject/1289408/)
-
