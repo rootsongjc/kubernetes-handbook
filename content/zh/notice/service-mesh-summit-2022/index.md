@@ -35,7 +35,7 @@ Service Mesh Summit 2022 首届服务网格峰会，将于 2022 年 3 月 19 日
 **听众收获**
 
 - 了解跨集群网络通信的整体架构及实现原理
-- 了解可编程的统一数据面 Pipy 在方案中角色
+- 了解可编程的统一数据面 Pipy 在方案中的角色
 - 了解跨集群的服务治理方案及相关功能
 
 ### Apache APISIX 借助 Service Mesh 实现统一技术栈的全流量管理
@@ -44,7 +44,7 @@ Service Mesh Summit 2022 首届服务网格峰会，将于 2022 年 3 月 19 日
 
 **讲师介绍**
 
-张晋涛，API7.ai 云原生技术专家，Apache APISIX PMC， Kubernetes ingress-nginx reviewer，containerd/Docker/Helm/Kubernetes/KIND 等众多开源项目 contributor， 『K8S 生态周报』的维护者，微软 MVP。对 Docker 和 Kubernetes 等容器化技术有大量实践和深入源码的研究，业内多个知名大会讲师，PyCon China 核心组织者，写有 《Kubernetes 上手实践》、《Docker 核心知识必知必会》和《Kubernetes 安全原理与实践》等专栏。 公众号：MoeLove。
+张晋涛，API7.ai 云原生技术专家，Apache APISIX PMC， Kubernetes ingress-nginx reviewer，containerd/Docker/Helm/Kubernetes/KIND 等众多开源项目 contributor， 『K8S 生态周报』的维护者，微软 MVP。对 Docker 和 Kubernetes 等容器化技术有大量实践和深入源码的研究，业内多个知名大会讲师，PyCon China 核心组织者，著有 《Kubernetes 上手实践》、《Docker 核心知识必知必会》和《Kubernetes 安全原理与实践》等专栏。 公众号：MoeLove。
 
 **话题大纲**
 
