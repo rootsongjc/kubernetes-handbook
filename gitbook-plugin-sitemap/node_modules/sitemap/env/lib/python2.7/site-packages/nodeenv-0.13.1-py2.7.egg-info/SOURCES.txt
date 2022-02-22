@@ -1,0 +1,17 @@
+AUTHORS
+CHANGES
+LICENSE
+MANIFEST.in
+Makefile
+README
+README.rst
+README.ru.rst
+nodeenv.py
+setup.cfg
+setup.py
+nodeenv.egg-info/PKG-INFO
+nodeenv.egg-info/SOURCES.txt
+nodeenv.egg-info/dependency_links.txt
+nodeenv.egg-info/entry_points.txt
+nodeenv.egg-info/not-zip-safe
+nodeenv.egg-info/top_level.txt

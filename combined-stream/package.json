@@ -1,0 +1,109 @@
+{
+  "_args": [
+    [
+      {
+        "name": "combined-stream",
+        "raw": "combined-stream@~1.0.5",
+        "rawSpec": "~1.0.5",
+        "scope": null,
+        "spec": ">=1.0.5 <1.1.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/request"
+    ]
+  ],
+  "_from": "combined-stream@>=1.0.5 <1.1.0",
+  "_hasShrinkwrap": false,
+  "_id": "combined-stream@1.0.8",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/combined-stream",
+  "_nodeVersion": "11.10.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/combined-stream_1.0.8_1557683385167_0.16390415386060164"
+  },
+  "_npmUser": {
+    "email": "iam@alexindigo.com",
+    "name": "alexindigo"
+  },
+  "_npmVersion": "6.7.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "combined-stream",
+    "raw": "combined-stream@~1.0.5",
+    "rawSpec": "~1.0.5",
+    "scope": null,
+    "spec": ">=1.0.5 <1.1.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/form-data",
+    "/request"
+  ],
+  "_resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+  "_shasum": "c3d45a8b34fd730631a110a8a2520682b31d5a7f",
+  "_shrinkwrap": null,
+  "_spec": "combined-stream@~1.0.5",
+  "_where": "/gitbook/node_modules/request",
+  "author": {
+    "email": "felix@debuggable.com",
+    "name": "Felix Geisendörfer",
+    "url": "http://debuggable.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/felixge/node-combined-stream/issues"
+  },
+  "dependencies": {
+    "delayed-stream": "~1.0.0"
+  },
+  "description": "A stream that emits multiple other streams one after another.",
+  "devDependencies": {
+    "far": "~0.0.7"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 5,
+    "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc2Fy6CRA9TVsSAnZWagAATdgP/jWKhLQFryvRCwoCinwZ\ndUb4hAUSB6aXMAVQWXTkK1udLiIz/LqmbcaUJQEQ3pNaDWWGrDAu9g33CmE2\nnu0spvkbANFO+ofHjP6Iz/ksSxeN4q/w24dcbMoBR8tuLZ+D0W9AgS15a4EF\n3cl13keIvZumC7292r8L8uHgx/1zHqCNBCtEIfIiaq1EsI8mZnfRS+K5mVdV\n3qo0Aqp1lOpfrVOG4dejc+HvN1bbSs6nz/BUilqtF2NmUqxkkrIGBf28DJck\nY7LVMjPRGHnXJkeAHkiLt0Mb6R2nrkBEnhuhxVkTuHVHkP+QRmlIN6ZEOVri\n2FFEPUVLrW/qb3PLUUG6EZLsHwaLX/g1j5Jsl+WdlC4vhSpzfMui+VBYcaG/\ncUMa+i9qKWIBwFMDzcqB/tU1oDFSfeeHw9K4FCnpRUl1nFfww0hqkMMxfXYu\nLrZ6TrbZpmmheUyzm8f5xLVOK4HML3HYgiww3kQ5c/AXMFvGojC7HV0xuiKU\nY9SBRF8Gv2t07GD/nAOj/dF6UlyVWCiToHRlLeHVikpqbgW4DeZ3VWmjtFTY\noU9YhCMxLD9nqkJ5BXVP31y6aFsUDghdD+ovWTZZoDWx00za4RwBXfm2LApQ\nuCw57cAw5NIbTTV3xY9SUnYm0ulV7bxSam6gslwAk4CuQCgyIYeKbkil48jB\nxgxh\r\n=Gn9i\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "c3d45a8b34fd730631a110a8a2520682b31d5a7f",
+    "tarball": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+    "unpackedSize": 11514
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "gitHead": "5298bece5aba2cf4d2f5ec84c4fc128572c41cee",
+  "homepage": "https://github.com/felixge/node-combined-stream",
+  "license": "MIT",
+  "main": "./lib/combined_stream",
+  "maintainers": [
+    {
+      "email": "iam@alexindigo.com",
+      "name": "alexindigo"
+    },
+    {
+      "email": "apeherder@gmail.com",
+      "name": "apechimp"
+    },
+    {
+      "email": "dtyree77@gmail.com",
+      "name": "celer"
+    },
+    {
+      "email": "felix@debuggable.com",
+      "name": "felixge"
+    }
+  ],
+  "name": "combined-stream",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/felixge/node-combined-stream.git"
+  },
+  "scripts": {
+    "test": "node test/run.js"
+  },
+  "version": "1.0.8"
+}

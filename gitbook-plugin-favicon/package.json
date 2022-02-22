@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-favicon",
+        "raw": "gitbook-plugin-favicon@0.0.2",
+        "rawSpec": "0.0.2",
+        "scope": null,
+        "spec": "0.0.2",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-favicon@0.0.2",
+  "_id": "gitbook-plugin-favicon@0.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-favicon",
+  "_nodeVersion": "6.6.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-favicon-0.0.2.tgz_1477360816321_0.46113694040104747"
+  },
+  "_npmUser": {
+    "email": "shimenduo@gmail.com",
+    "name": "menduo"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-favicon",
+    "raw": "gitbook-plugin-favicon@0.0.2",
+    "rawSpec": "0.0.2",
+    "scope": null,
+    "spec": "0.0.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-favicon/-/gitbook-plugin-favicon-0.0.2.tgz",
+  "_shasum": "b3e41642f152afc6c4535fd9b635dfe31b4c8772",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-favicon@0.0.2",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/menduo/gitbook-plugin-favicon/issues"
+  },
+  "dependencies": {},
+  "description": "add favicon to gitbook site",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b3e41642f152afc6c4535fd9b635dfe31b4c8772",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-favicon/-/gitbook-plugin-favicon-0.0.2.tgz"
+  },
+  "engines": {
+    "gitbook": "*"
+  },
+  "gitHead": "6453d8a227219087dfa8f764dc1dd104b2c54a47",
+  "homepage": "https://github.com/menduo/gitbook-plugin-favicon",
+  "keywords": [
+    "gitbook",
+    "favicon",
+    "apple-touch-icon"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "shimenduo@gmail.com",
+      "name": "menduo"
+    }
+  ],
+  "name": "gitbook-plugin-favicon",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menduo/gitbook-plugin-favicon.git"
+  },
+  "scripts": {},
+  "version": "0.0.2"
+}

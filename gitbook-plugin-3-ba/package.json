@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-3-ba",
+        "raw": "gitbook-plugin-3-ba@0.9.0",
+        "rawSpec": "0.9.0",
+        "scope": null,
+        "spec": "0.9.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-3-ba@0.9.0",
+  "_id": "gitbook-plugin-3-ba@0.9.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-3-ba",
+  "_nodeVersion": "7.2.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-3-ba-0.9.0.tgz_1482980591902_0.3139143995940685"
+  },
+  "_npmUser": {
+    "email": "frankfang1990@gmail.com",
+    "name": "frankfang"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-3-ba",
+    "raw": "gitbook-plugin-3-ba@0.9.0",
+    "rawSpec": "0.9.0",
+    "scope": null,
+    "spec": "0.9.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-3-ba/-/gitbook-plugin-3-ba-0.9.0.tgz",
+  "_shasum": "b91dd0edf087612782fe17739177ee2434a3d57e",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-3-ba@0.9.0",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/FrankFang/gitbook3-plugin-ba/issues"
+  },
+  "dependencies": {},
+  "description": "Baidu Analytics tracking for your gitbook version 3",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b91dd0edf087612782fe17739177ee2434a3d57e",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-3-ba/-/gitbook-plugin-3-ba-0.9.0.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "gitHead": "971d12c0e9231e8bdbe7d917441c91794328e040",
+  "gitbook": {
+    "properties": {
+      "configuration": {
+        "default": "auto",
+        "title": "Configuration mode",
+        "type": [
+          "string",
+          "object"
+        ]
+      },
+      "token": {
+        "required": true,
+        "title": "Baidu Analytics Token",
+        "type": "string"
+      }
+    }
+  },
+  "homepage": "https://github.com/frankfang/gitbook3-plugin-ba",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "frankfang1990@gmail.com",
+      "name": "frankfang"
+    }
+  ],
+  "name": "gitbook-plugin-3-ba",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankFang/gitbook3-plugin-ba.git"
+  },
+  "scripts": {},
+  "version": "0.9.0"
+}

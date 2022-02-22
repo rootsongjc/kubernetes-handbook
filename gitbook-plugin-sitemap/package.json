@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-sitemap",
+        "raw": "gitbook-plugin-sitemap@1.0.2",
+        "rawSpec": "1.0.2",
+        "scope": null,
+        "spec": "1.0.2",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-sitemap@1.0.2",
+  "_id": "gitbook-plugin-sitemap@1.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-sitemap",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "email": "samypesse@gmail.com",
+    "name": "samypesse"
+  },
+  "_npmVersion": "2.14.5",
+  "_phantomChildren": {
+    "underscore": "1.10.2"
+  },
+  "_requested": {
+    "name": "gitbook-plugin-sitemap",
+    "raw": "gitbook-plugin-sitemap@1.0.2",
+    "rawSpec": "1.0.2",
+    "scope": null,
+    "spec": "1.0.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-sitemap/-/gitbook-plugin-sitemap-1.0.2.tgz",
+  "_shasum": "97b7442de64472a8cb179ec625ef7a6079e4f131",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-sitemap@1.0.2",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/plugin-sitemap/issues"
+  },
+  "dependencies": {
+    "sitemap": "1.1.0"
+  },
+  "description": "Generate a sitemap for a GitBook",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "97b7442de64472a8cb179ec625ef7a6079e4f131",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-sitemap/-/gitbook-plugin-sitemap-1.0.2.tgz"
+  },
+  "engines": {
+    "gitbook": ">=2.0.0"
+  },
+  "gitHead": "23373654ed1444c989905222bbd10f0a1a2b6d22",
+  "gitbook": {
+    "properties": {
+      "hostname": {
+        "required": true,
+        "title": "Hostname for the book",
+        "type": "string"
+      }
+    }
+  },
+  "homepage": "https://github.com/GitbookIO/plugin-sitemap",
+  "keywords": [
+    "seo"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "samypesse@gmail.com",
+      "name": "samypesse"
+    }
+  ],
+  "name": "gitbook-plugin-sitemap",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitbookIO/plugin-sitemap.git"
+  },
+  "scripts": {},
+  "version": "1.0.2"
+}

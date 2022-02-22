@@ -1,0 +1,107 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-adsense",
+        "raw": "gitbook-plugin-adsense@1.0.3",
+        "rawSpec": "1.0.3",
+        "scope": null,
+        "spec": "1.0.3",
+        "type": "version"
+      },
+      "/Users/jimmy/Workspace/github/rootsongjc/istio-handbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-adsense@1.0.3",
+  "_id": "gitbook-plugin-adsense@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-adsense",
+  "_nodeVersion": "7.9.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/gitbook-plugin-adsense-1.0.3.tgz_1496915835377_0.439407167956233"
+  },
+  "_npmUser": {
+    "email": "karlsson@jeremy.se",
+    "name": "karlsson"
+  },
+  "_npmVersion": "5.0.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-adsense",
+    "raw": "gitbook-plugin-adsense@1.0.3",
+    "rawSpec": "1.0.3",
+    "scope": null,
+    "spec": "1.0.3",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-adsense/-/gitbook-plugin-adsense-1.0.3.tgz",
+  "_shasum": "3ca1d940f016ad88321f6797e852c9ed837c94e9",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-adsense@1.0.3",
+  "_where": "/Users/jimmy/Workspace/github/rootsongjc/istio-handbook",
+  "bugs": {
+    "url": "https://github.com/Vufuzi/plugin-google-adsense/issues"
+  },
+  "dependencies": {},
+  "description": "Google Adsense tracking for your GitBook",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-tidal": "^1.1.3"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-z/TQusPFzyhIhIOA4QteU4kMb3OFmsMQbHp/PQWumEX+ltqCRv3PiV1SG/2gpxCrWObXzmw+N62GPGFWWNGjaA==",
+    "shasum": "3ca1d940f016ad88321f6797e852c9ed837c94e9",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-adsense/-/gitbook-plugin-adsense-1.0.3.tgz"
+  },
+  "engines": {
+    "gitbook": ">=2.5.1"
+  },
+  "gitHead": "1fced9a3db064d3a533c2fd2a45adf077c8e7aa9",
+  "gitbook": {
+    "properties": {
+      "client": {
+        "required": true,
+        "title": "Google Adsense client id",
+        "type": "string"
+      },
+      "element": {
+        "required": false,
+        "title": "Element to append the ad to",
+        "type": "string"
+      },
+      "format": {
+        "required": true,
+        "title": "Google Adsense format type",
+        "type": "string"
+      },
+      "slot": {
+        "required": true,
+        "title": "Google Adsense slot id",
+        "type": "string"
+      }
+    }
+  },
+  "homepage": "https://github.com/Vufuzi/plugin-google-adsense",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "karlsson@jeremy.se",
+      "name": "karlsson"
+    }
+  ],
+  "name": "gitbook-plugin-adsense",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vufuzi/plugin-google-adsense.git"
+  },
+  "version": "1.0.3"
+}

@@ -1,0 +1,58 @@
+{% extends "./page.html" %}
+
+{% block title %}{{ "SUMMARY"|t }}{% endblock %}
+
+{% macro articles(_articles) %}
+    {% for article in _articles %}
+        <li>
+            <span class="inner">
+                {% if article.path or article.url %}
+                    {% if article.path %}
+                        <a href="{{ article.path|contentURL }}{{ article.anchor }}">{{ article.title }}</a>
+                    {% else %}
+                        <a target="_blank" href="{{ article.url }}">{{ article.title }}</a>
+                    {% endif %}
+                {% else %}
+                    <span>{{ article.title }}</span>
+                {% endif %}
+                {% if 1 %}
+                <span class="page">{{ article.level }}</span>
+                {% endif %}
+            </span>
+            {% if article.articles.length > 0 %}
+            <ol>
+                {{ articles(article.articles) }}
+            </ol>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% block page %}
+<div class="section toc">
+    <h1>{{ "SUMMARY"|t }}</h1>
+    <ol>
+        {% for part in summary.parts %}
+            {% if part.title %}
+            <li class="part-title">
+                <h2>{{ part.title }}</h2>
+            </li>
+            {% endif %}
+            {{ articles(part.articles) }}
+
+            {% if not loop.last %}
+            <li class="divider"></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if glossary.path %}
+        <li>
+            <span class="inner">
+                <a href="{{ ('/' + glossary.path)|contentURL }}">{{ "GLOSSARY"|t }}</a>
+            </span>
+        </li>
+        {% endif %}
+    </ol>
+</div>
+{% endblock %}
+

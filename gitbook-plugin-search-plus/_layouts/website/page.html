@@ -1,0 +1,28 @@
+{% extends template.self %}
+
+{% block search_input %}
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="{{ 'SEARCH_PLACEHOLDER'|t }}" />
+</div>
+{% endblock %}
+
+{% block search_results %}
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    {{ super() }}
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            {% block search_has_results %}
+            <h1 class="search-results-title">{{ 'SEARCH_RESULTS_TITLE'|t|safe }}</h1>
+            <ul class="search-results-list"></ul>
+            {% endblock %}
+        </div>
+        <div class="no-results">
+            {% block search_no_results %}
+            <h1 class="search-results-title">{{ 'SEARCH_NO_RESULTS_TITLE'|t|safe }}</h1>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

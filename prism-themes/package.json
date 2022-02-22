@@ -1,0 +1,94 @@
+{
+  "_args": [
+    [
+      {
+        "name": "prism-themes",
+        "raw": "prism-themes@^1.0.0",
+        "rawSpec": "^1.0.0",
+        "scope": null,
+        "spec": ">=1.0.0 <2.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/gitbook-plugin-prism-themes"
+    ]
+  ],
+  "_from": "prism-themes@>=1.0.0 <2.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "prism-themes@1.4.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/prism-themes",
+  "_nodeVersion": "13.11.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/prism-themes_1.4.0_1585965067387_0.9176617071283393"
+  },
+  "_npmUser": {
+    "email": "jamesorodig@gmail.com",
+    "name": "jamesdigioia"
+  },
+  "_npmVersion": "6.13.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "prism-themes",
+    "raw": "prism-themes@^1.0.0",
+    "rawSpec": "^1.0.0",
+    "scope": null,
+    "spec": ">=1.0.0 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/gitbook-plugin-prism-themes"
+  ],
+  "_resolved": "https://registry.npmjs.org/prism-themes/-/prism-themes-1.4.0.tgz",
+  "_shasum": "2f93a33450532577c7962928655d7b4305fa843d",
+  "_shrinkwrap": null,
+  "_spec": "prism-themes@^1.0.0",
+  "_where": "/gitbook/node_modules/gitbook-plugin-prism-themes",
+  "author": {
+    "name": "Lea Verou"
+  },
+  "bugs": {
+    "url": "https://github.com/prismjs/prism-themes/issues"
+  },
+  "dependencies": {},
+  "description": "Additional themes for the Prism syntax highlighting library.",
+  "devDependencies": {
+    "capture-website": "^0.4.0",
+    "gulp": "^4.0.2",
+    "stylelint": "^12.0.0",
+    "stylelint-config-standard": "^19.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 27,
+    "integrity": "sha512-VTy6t69sS1FavspBsodoF/x/eduPydUXyZH+++Jkun0VQ4X7lCZVvsfGsYKzkUan2PJNcV2mA4lAFcr7KKXD1g==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeh+gMCRA9TVsSAnZWagAA1UsQAJofvUlsEEQbmarh2qxM\nQOnxuhiSeuKBhIEnfryzlMHEEeisEBubFqK0YNTzIZ53937lPXh13eGXfLnv\nGfYBpCKjKEzzntgsLFzzvQW5evMoJtwsDvqCxnLp1suK6alDXrhDRMj4kTec\niTWFCuj4hTItCZPTIfBqu6d3VuqDm/yzjIGluIzBKdfphx8LzLi2Wrn4W69S\nF9tHk30SU07HXplHyG70ZvGgqI3HMv3ZlLRsJbUVNfSjWN6oL/Ho1lIfF3zB\nCI2euKHZtPHHcBoaOu0GfqqZ22tuEO2ZckkWdBkmEHn9HqtI9xH4SvYnJ4P+\nMQ2d6uW9+2LoLjknDXq/zBiT787zmuDcx/uHJrvyE/4g80oGGgLnHN0eOs7R\nJeqrZhwGq27gR266DP9NgSFhAtvJxF13UWu09+dNZUOlH9JXPNe6tPa6larJ\nypa89VcTJ/KBVIdl0vq/eZXqOtdM3gDm+IenWPPDZmFIfOZzYsIM3s1v7c3G\nQEe1DlddOpR04gYGNc/VJ5QUoUD9/N4CPzawFvDIpJJK4ulxYBgGQomVlnPB\nF0GCXNO4hv50v/UTVtt4R8wiieUHAB76POuvESGfqeFJlc3kKqTzNFeKOGtj\nmd2Wp2nJfapv2pMZ9Qr8NVah9SyI9LwUdkRdYVJ8ILNaEoj7sdiiL7DI0uch\nr4q+\r\n=KF4C\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "2f93a33450532577c7962928655d7b4305fa843d",
+    "tarball": "https://registry.npmjs.org/prism-themes/-/prism-themes-1.4.0.tgz",
+    "unpackedSize": 76186
+  },
+  "gitHead": "3c08290e35b57628dccfaae10b951029c63b3977",
+  "homepage": "https://github.com/prismjs/prism-themes#readme",
+  "license": "MIT",
+  "main": "README.md",
+  "maintainers": [
+    {
+      "email": "lea@verou.me",
+      "name": "leaverou"
+    }
+  ],
+  "name": "prism-themes",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prismjs/prism-themes.git"
+  },
+  "scripts": {
+    "lint": "stylelint \"themes/*.css\"",
+    "lint-fix": "stylelint \"themes/*.css\" --fix",
+    "test": "npm run lint && gulp check"
+  },
+  "version": "1.4.0"
+}

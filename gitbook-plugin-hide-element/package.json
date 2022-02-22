@@ -1,0 +1,80 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-hide-element",
+        "raw": "gitbook-plugin-hide-element@0.0.4",
+        "rawSpec": "0.0.4",
+        "scope": null,
+        "spec": "0.0.4",
+        "type": "version"
+      },
+      "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-hide-element@0.0.4",
+  "_id": "gitbook-plugin-hide-element@0.0.4",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-hide-element",
+  "_nodeVersion": "5.4.1",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-hide-element-0.0.4.tgz_1464164609752_0.010888839606195688"
+  },
+  "_npmUser": {
+    "email": "assyer@gmail.com",
+    "name": "gonjay"
+  },
+  "_npmVersion": "3.8.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-hide-element",
+    "raw": "gitbook-plugin-hide-element@0.0.4",
+    "rawSpec": "0.0.4",
+    "scope": null,
+    "spec": "0.0.4",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-hide-element/-/gitbook-plugin-hide-element-0.0.4.tgz",
+  "_shasum": "93a3de76aeebd535261597d257f71876f0d1dc34",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-hide-element@0.0.4",
+  "_where": "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook",
+  "bugs": {
+    "url": "https://github.com/gonjay/gitbook-plugin-hide-element/issues"
+  },
+  "dependencies": {},
+  "description": "Hide the element that you don't want to see.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "93a3de76aeebd535261597d257f71876f0d1dc34",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-hide-element/-/gitbook-plugin-hide-element-0.0.4.tgz"
+  },
+  "engines": {
+    "gitbook": "*"
+  },
+  "gitHead": "a5080bcd7552eedc4b36335e0f4ba77172e1acf1",
+  "homepage": "https://github.com/gonjay/gitbook-plugin-hide-element",
+  "license": "ISC",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "assyer@gmail.com",
+      "name": "gonjay"
+    }
+  ],
+  "name": "gitbook-plugin-hide-element",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonjay/gitbook-plugin-hide-element.git"
+  },
+  "scripts": {},
+  "version": "0.0.4"
+}

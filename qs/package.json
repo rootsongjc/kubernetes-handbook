@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "name": "qs",
+        "raw": "qs@~5.2.0",
+        "rawSpec": "~5.2.0",
+        "scope": null,
+        "spec": ">=5.2.0 <5.3.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/request"
+    ]
+  ],
+  "_from": "qs@>=5.2.0 <5.3.0",
+  "_id": "qs@5.2.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/qs",
+  "_nodeVersion": "6.3.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/qs-5.2.1.tgz_1469043460945_0.553046926856041"
+  },
+  "_npmUser": {
+    "email": "ljharb@gmail.com",
+    "name": "ljharb"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "qs",
+    "raw": "qs@~5.2.0",
+    "rawSpec": "~5.2.0",
+    "scope": null,
+    "spec": ">=5.2.0 <5.3.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/request"
+  ],
+  "_resolved": "https://registry.npmjs.org/qs/-/qs-5.2.1.tgz",
+  "_shasum": "801fee030e0b9450d6385adc48a4cc55b44aedfc",
+  "_shrinkwrap": null,
+  "_spec": "qs@~5.2.0",
+  "_where": "/gitbook/node_modules/request",
+  "bugs": {
+    "url": "https://github.com/hapijs/qs/issues"
+  },
+  "dependencies": {},
+  "description": "A querystring parser that supports nesting and arrays, with a depth limit",
+  "devDependencies": {
+    "browserify": "^10.2.1",
+    "code": "1.x.x",
+    "lab": "5.x.x"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "801fee030e0b9450d6385adc48a4cc55b44aedfc",
+    "tarball": "https://registry.npmjs.org/qs/-/qs-5.2.1.tgz"
+  },
+  "engines": ">=0.10.40",
+  "gitHead": "872da25efd167985c153898a06277ef34ce97a63",
+  "homepage": "https://github.com/hapijs/qs",
+  "keywords": [
+    "querystring",
+    "qs"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "lib/index.js",
+  "maintainers": [
+    {
+      "email": "eran@hammer.io",
+      "name": "hueniverse"
+    },
+    {
+      "email": "ljharb@gmail.com",
+      "name": "ljharb"
+    },
+    {
+      "email": "quitlahok@gmail.com",
+      "name": "nlf"
+    }
+  ],
+  "name": "qs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hapijs/qs.git"
+  },
+  "scripts": {
+    "dist": "browserify --standalone Qs lib/index.js > dist/qs.js",
+    "test": "lab -a code -t 100 -L",
+    "test-cov-html": "lab -a code -r html -o coverage.html",
+    "test-tap": "lab -a code -r tap -o tests.tap"
+  },
+  "version": "5.2.1"
+}

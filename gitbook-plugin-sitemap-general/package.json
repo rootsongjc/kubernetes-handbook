@@ -1,0 +1,94 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-sitemap-general",
+        "raw": "gitbook-plugin-sitemap-general@0.1.1",
+        "rawSpec": "0.1.1",
+        "scope": null,
+        "spec": "0.1.1",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-sitemap-general@0.1.1",
+  "_id": "gitbook-plugin-sitemap-general@0.1.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-sitemap-general",
+  "_nodeVersion": "6.3.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-sitemap-general-0.1.1.tgz_1477966268827_0.6683338680304587"
+  },
+  "_npmUser": {
+    "email": "CyberZHG@gmail.com",
+    "name": "cyberzhg"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-sitemap-general",
+    "raw": "gitbook-plugin-sitemap-general@0.1.1",
+    "rawSpec": "0.1.1",
+    "scope": null,
+    "spec": "0.1.1",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-sitemap-general/-/gitbook-plugin-sitemap-general-0.1.1.tgz",
+  "_shasum": "9ff32eef90f7b5276390bb026e9a81af100c2d55",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-sitemap-general@0.1.1",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/CyberZHG/gitbook-plugin-sitemap-general/issues"
+  },
+  "dependencies": {
+    "sitemap": "1.5.0"
+  },
+  "description": "Generate a sitemap for a GitBook with a prefix.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "9ff32eef90f7b5276390bb026e9a81af100c2d55",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-sitemap-general/-/gitbook-plugin-sitemap-general-0.1.1.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0-pre.0"
+  },
+  "gitHead": "b358a422ba4ce97c01249c328568750c2d4401ce",
+  "gitbook": {
+    "properties": {
+      "prefix": {
+        "required": true,
+        "title": "Prefix of the root url",
+        "type": "string"
+      }
+    }
+  },
+  "homepage": "https://github.com/CyberZHG/gitbook-plugin-sitemap-general",
+  "keywords": [
+    "seo"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "CyberZHG@gmail.com",
+      "name": "cyberzhg"
+    }
+  ],
+  "name": "gitbook-plugin-sitemap-general",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberZHG/gitbook-plugin-sitemap-general.git"
+  },
+  "scripts": {},
+  "version": "0.1.1"
+}

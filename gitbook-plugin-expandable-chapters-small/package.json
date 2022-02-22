@@ -1,0 +1,80 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-expandable-chapters-small",
+        "raw": "gitbook-plugin-expandable-chapters-small@0.1.7",
+        "rawSpec": "0.1.7",
+        "scope": null,
+        "spec": "0.1.7",
+        "type": "version"
+      },
+      "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-expandable-chapters-small@0.1.7",
+  "_id": "gitbook-plugin-expandable-chapters-small@0.1.7",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-expandable-chapters-small",
+  "_nodeVersion": "5.0.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-expandable-chapters-small-0.1.7.tgz_1474698327522_0.1834029087331146"
+  },
+  "_npmUser": {
+    "email": "cjdbarlow@gmail.com",
+    "name": "chrisjake"
+  },
+  "_npmVersion": "3.3.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-expandable-chapters-small",
+    "raw": "gitbook-plugin-expandable-chapters-small@0.1.7",
+    "rawSpec": "0.1.7",
+    "scope": null,
+    "spec": "0.1.7",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-expandable-chapters-small/-/gitbook-plugin-expandable-chapters-small-0.1.7.tgz",
+  "_shasum": "afc9e597b6851156fa7b00231ff8ab93f4feba4c",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-expandable-chapters-small@0.1.7",
+  "_where": "/Users/jimmy/Workspace/github/rootsongjc/kubernetes-handbook",
+  "bugs": {
+    "url": "https://github.com/chrisjake/gitbook-plugin-expandable-chapters-small/issues"
+  },
+  "dependencies": {},
+  "description": "Expandable chapters for convenient navigation within a gitbook",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "afc9e597b6851156fa7b00231ff8ab93f4feba4c",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-expandable-chapters-small/-/gitbook-plugin-expandable-chapters-small-0.1.7.tgz"
+  },
+  "engines": {
+    "gitbook": ">=0.4.6"
+  },
+  "gitHead": "ae1fdd00a387be786715fdb1e08c948cd3a78c17",
+  "homepage": "https://github.com/chrisjake/gitbook-plugin-expandable-chapters-small",
+  "license": "Apache 2",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "cjdbarlow@gmail.com",
+      "name": "chrisjake"
+    }
+  ],
+  "name": "gitbook-plugin-expandable-chapters-small",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisjake/gitbook-plugin-expandable-chapters-small.git"
+  },
+  "scripts": {},
+  "version": "0.1.7"
+}

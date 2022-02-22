@@ -1,0 +1,123 @@
+{
+  "_args": [
+    [
+      {
+        "name": "jsonpointer",
+        "raw": "jsonpointer@^4.0.0",
+        "rawSpec": "^4.0.0",
+        "scope": null,
+        "spec": ">=4.0.0 <5.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/is-my-json-valid"
+    ]
+  ],
+  "_from": "jsonpointer@>=4.0.0 <5.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "jsonpointer@4.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/jsonpointer",
+  "_nodeVersion": "12.18.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/jsonpointer_4.1.0_1593772545226_0.04037904840055839"
+  },
+  "_npmUser": {
+    "email": "jan@apache.org",
+    "name": "jan"
+  },
+  "_npmVersion": "6.14.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "jsonpointer",
+    "raw": "jsonpointer@^4.0.0",
+    "rawSpec": "^4.0.0",
+    "scope": null,
+    "spec": ">=4.0.0 <5.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/is-my-json-valid"
+  ],
+  "_resolved": "https://registry.npmjs.org/jsonpointer/-/jsonpointer-4.1.0.tgz",
+  "_shasum": "501fb89986a2389765ba09e6053299ceb4f2c2cc",
+  "_shrinkwrap": null,
+  "_spec": "jsonpointer@^4.0.0",
+  "_where": "/gitbook/node_modules/is-my-json-valid",
+  "author": {
+    "email": "jan@apache.org",
+    "name": "Jan Lehnardt"
+  },
+  "bugs": {
+    "url": "http://github.com/janl/node-jsonpointer/issues"
+  },
+  "contributors": [
+    {
+      "email": "joe-github@cursive.net",
+      "name": "Joe Hildebrand"
+    },
+    {
+      "email": "marc.brookman@gmail.com",
+      "name": "Marc Bachmann"
+    }
+  ],
+  "dependencies": {},
+  "description": "Simple JSON Addressing.",
+  "devDependencies": {
+    "semantic-release": "^17.1.1",
+    "standard": "^14.3.4"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 5,
+    "integrity": "sha512-CXcRvMyTlnR53xMcKnuMzfCA5i/nfblTnnr74CZb6C4vG39eu6w51t7nKmU5MfLfbTgGItliNyjO/ciNPDqClg==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe/woBCRA9TVsSAnZWagAAUKMP/AghetGkOv5NgY9D6nTo\n40LOUym54wvOx03hXvO5HWGlJWtR0JrdOdbpiEkXvo3h7qNgnLR0/4ppMNYV\njW8bjSv32B2DwwE5DmexSEzd3YiuUHD5w7jL/41DseAj8cHweFguNFxYNcEV\n9P1sXgeibA4mzYheC14np3+sQPb2Wbo05sj9org6dthuCL3UY1pQOFc/LUKP\n5sajfHt2McdvYBzjZH3ehSogu0GCEQfSSHbXmi1M2r0urYZJAY+5mj2EvOQs\nUhKI6rv2fnxIKnLlFyODd49jQEtVmCPEbC8rZznuXOfeTJJScB1nmg226X/i\nWBaN7aXXdEr6ssoru8I3/wQRhDnvwgrkccD3aiP1vmS6KpPJ7dCBHpFzZM+K\ncwaZqBEIGZ9WwSHAal3fSFSeGYu0QWDHO2LFpxuYOnbaSbmDZDl7bPb6R48h\nIpl+RuFACQvtDjXJ2VzzfBCv31ntcaTiBVnbaXrzJcgPynzPDaKFYDdVxOvu\nsJtRxKFEpAU3YPjGCreqJtewAIM2W6X3dITGzBS6qi72mh3sUs/PKz2y6eq8\nIxY7XZ0rGVIIXCt7JPgv224lInpJwzM4YcYFGqJL5gy6soLh2ep0kB4ubQHS\nV5uhc6Tz+5YeeAoi4KpoksgD7DcoREXFToMnxAF783h80m2vJrz+FNzZJdVV\nt1iE\r\n=TDZ+\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "501fb89986a2389765ba09e6053299ceb4f2c2cc",
+    "tarball": "https://registry.npmjs.org/jsonpointer/-/jsonpointer-4.1.0.tgz",
+    "unpackedSize": 6540
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "gitHead": "b67e4026a102fe98ed896b4ad271db3c131a944b",
+  "homepage": "https://github.com/janl/node-jsonpointer#readme",
+  "license": "MIT",
+  "main": "./jsonpointer",
+  "maintainers": [
+    {
+      "email": "jan@apache.org",
+      "name": "jan"
+    },
+    {
+      "email": "marc.brookman@gmail.com",
+      "name": "marcbachmann"
+    }
+  ],
+  "name": "jsonpointer",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janl/node-jsonpointer.git"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "npm run test:standard && npm run test:all",
+    "test:all": "node test.js",
+    "test:standard": "standard"
+  },
+  "standard": {
+    "ignore": [
+      "test.js"
+    ]
+  },
+  "tags": [
+    "util",
+    "simple",
+    "util",
+    "utility"
+  ],
+  "typings": "jsonpointer.d.ts",
+  "version": "4.1.0"
+}

@@ -1,0 +1,18 @@
+{
+  "root": "./",
+  "author": "btpka3@163.com",
+  "language": "en",
+  "gitbook": ">=3.0.0",
+  "plugins": [
+    "-highlight",
+    "prism",
+    "prism-themes"
+  ],
+  "pluginsConfig": {
+    "prism": {
+      "css": [
+        "prism-themes/themes/prism-duotone-dark.css"
+      ]
+    }
+  }
+}

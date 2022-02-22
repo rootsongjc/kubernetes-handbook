@@ -1,0 +1,32 @@
+.info {
+    background: #eff5ff;
+    border-color: #42acf3;
+    color: #444;
+}
+.info strong {
+    color: #42acf3;
+}
+.warning {
+    background: #fcf8f2;
+    border-color: #f0ad4e;
+    color: #444;
+}
+.warning strong {
+    color: #f0ad4e;
+}
+.danger {
+    background: #fdf7f7;
+    border-color: #d9534f;
+    color: #444;
+}
+.danger strong {
+    color: #d9534f;
+}
+.success {
+    background: #f3f8f3;
+    border-color: #50af51;
+    color: #444;
+}
+.success strong {
+    color: #50af51;
+}

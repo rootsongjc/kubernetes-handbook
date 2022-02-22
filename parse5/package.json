@@ -1,0 +1,130 @@
+{
+  "_args": [
+    [
+      {
+        "name": "parse5",
+        "raw": "parse5@^3.0.1",
+        "rawSpec": "^3.0.1",
+        "scope": null,
+        "spec": ">=3.0.1 <4.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/gitbook-plugin-lightbox/node_modules/cheerio"
+    ]
+  ],
+  "_from": "parse5@>=3.0.1 <4.0.0",
+  "_id": "parse5@3.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/parse5",
+  "_nodeVersion": "8.4.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/parse5-3.0.3.tgz_1509843822001_0.3522953314241022"
+  },
+  "_npmUser": {
+    "email": "ifaaan@gmail.com",
+    "name": "inikulin"
+  },
+  "_npmVersion": "5.5.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "parse5",
+    "raw": "parse5@^3.0.1",
+    "rawSpec": "^3.0.1",
+    "scope": null,
+    "spec": ">=3.0.1 <4.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/gitbook-plugin-lightbox/cheerio"
+  ],
+  "_resolved": "https://registry.npmjs.org/parse5/-/parse5-3.0.3.tgz",
+  "_shasum": "042f792ffdd36851551cf4e9e066b3874ab45b5c",
+  "_shrinkwrap": null,
+  "_spec": "parse5@^3.0.1",
+  "_where": "/gitbook/node_modules/gitbook-plugin-lightbox/node_modules/cheerio",
+  "author": {
+    "email": "ifaaan@gmail.com",
+    "name": "Ivan Nikulin",
+    "url": "https://github.com/inikulin"
+  },
+  "bugs": {
+    "url": "https://github.com/inikulin/parse5/issues"
+  },
+  "contributors": "https://github.com/inikulin/parse5/graphs/contributors",
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "description": "HTML parsing/serialization toolset for Node.js. WHATWG HTML Living Standard (aka HTML5)-compliant.",
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-benchmark": "^1.1.1",
+    "gulp-download": "0.0.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-install": "^0.6.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-typedoc": "^2.0.0",
+    "gulp-typescript": "^3.1.2",
+    "publish-please": "^2.2.0",
+    "through2": "^2.0.0",
+    "typedoc": "^0.5.1",
+    "typescript": "^2.0.6"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-rgO9Zg5LLLkfJF9E6CCmXlSE4UVceloys8JrFqCcHloC3usd/kJCyPDwH2SOlzix2j3xaP9sUX3e8+kvkuleAA==",
+    "shasum": "042f792ffdd36851551cf4e9e066b3874ab45b5c",
+    "tarball": "https://registry.npmjs.org/parse5/-/parse5-3.0.3.tgz"
+  },
+  "files": [
+    "lib"
+  ],
+  "gitHead": "723d782abee65aaab9c50f92e73ac2029ae853df",
+  "homepage": "https://github.com/inikulin/parse5",
+  "keywords": [
+    "html",
+    "parser",
+    "html5",
+    "WHATWG",
+    "specification",
+    "fast",
+    "html parser",
+    "html5 parser",
+    "htmlparser",
+    "parse5",
+    "serializer",
+    "html serializer",
+    "htmlserializer",
+    "sax",
+    "simple api",
+    "parse",
+    "tokenize",
+    "serialize",
+    "tokenizer"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "maintainers": [
+    {
+      "email": "ifaaan@gmail.com",
+      "name": "inikulin"
+    }
+  ],
+  "name": "parse5",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/inikulin/parse5.git"
+  },
+  "scripts": {
+    "prepublish": "publish-please guard",
+    "publish-please": "publish-please",
+    "test": "gulp test"
+  },
+  "types": "./lib/index.d.ts",
+  "version": "3.0.3"
+}

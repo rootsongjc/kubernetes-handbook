@@ -1,0 +1,84 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-codesnippet",
+        "raw": "gitbook-plugin-codesnippet@1.2.0",
+        "rawSpec": "1.2.0",
+        "scope": null,
+        "spec": "1.2.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-codesnippet@1.2.0",
+  "_id": "gitbook-plugin-codesnippet@1.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-codesnippet",
+  "_nodeVersion": "5.1.0",
+  "_npmUser": {
+    "email": "samypesse@gmail.com",
+    "name": "samypesse"
+  },
+  "_npmVersion": "3.3.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-codesnippet",
+    "raw": "gitbook-plugin-codesnippet@1.2.0",
+    "rawSpec": "1.2.0",
+    "scope": null,
+    "spec": "1.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-codesnippet/-/gitbook-plugin-codesnippet-1.2.0.tgz",
+  "_shasum": "60347f7bf80117f8d6d945a2ea1664a0e3820172",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-codesnippet@1.2.0",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/GitbookIO/plugin-codesnippet/issues"
+  },
+  "dependencies": {
+    "q": "~1.4.1",
+    "request": "~2.67.0"
+  },
+  "description": "Easily include code snippets in your gitbook",
+  "devDependencies": {
+    "gitbook-tester": "1.2.0",
+    "mocha": "^2.3.4"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "60347f7bf80117f8d6d945a2ea1664a0e3820172",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-codesnippet/-/gitbook-plugin-codesnippet-1.2.0.tgz"
+  },
+  "engines": {
+    "gitbook": ">=2.5.0"
+  },
+  "gitHead": "ca155234109cd5dd843be7e89afa2bd18665455b",
+  "homepage": "https://github.com/GitbookIO/plugin-codesnippet",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "samypesse@gmail.com",
+      "name": "samypesse"
+    }
+  ],
+  "name": "gitbook-plugin-codesnippet",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitbookIO/plugin-codesnippet.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --timeout 15000"
+  },
+  "version": "1.2.0"
+}

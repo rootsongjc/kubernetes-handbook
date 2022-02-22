@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      {
+        "name": "stringstream",
+        "raw": "stringstream@~0.0.4",
+        "rawSpec": "~0.0.4",
+        "scope": null,
+        "spec": ">=0.0.4 <0.1.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/request"
+    ]
+  ],
+  "_from": "stringstream@>=0.0.4 <0.1.0",
+  "_id": "stringstream@0.0.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/stringstream",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/stringstream_0.0.6_1526552557136_0.20062352033275022"
+  },
+  "_npmUser": {
+    "email": "michael.hart.au@gmail.com",
+    "name": "hichaelmart"
+  },
+  "_npmVersion": "6.0.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "stringstream",
+    "raw": "stringstream@~0.0.4",
+    "rawSpec": "~0.0.4",
+    "scope": null,
+    "spec": ">=0.0.4 <0.1.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/request"
+  ],
+  "_resolved": "https://registry.npmjs.org/stringstream/-/stringstream-0.0.6.tgz",
+  "_shasum": "7880225b0d4ad10e30927d167a1d6f2fd3b33a72",
+  "_shrinkwrap": null,
+  "_spec": "stringstream@~0.0.4",
+  "_where": "/gitbook/node_modules/request",
+  "author": {
+    "email": "michael.hart.au@gmail.com",
+    "name": "Michael Hart",
+    "url": "http://github.com/mhart"
+  },
+  "bugs": {
+    "url": "https://github.com/mhart/StringStream/issues"
+  },
+  "dependencies": {},
+  "description": "Encode and decode streams into string streams",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 6,
+    "integrity": "sha512-87GEBAkegbBcweToUrdzf3eLhWNg06FJTebl4BVJz/JgWy8CvEr9dRtX5qWphiynMSQlxxi+QqN0z5T32SLlhA==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa/VftCRA9TVsSAnZWagAA6KMP/ieCrg0R0w4OF+ptEu5Z\nMatSI7T+xoZAKA+/dHPcLuEBfBT5Dilim5ryW6l7iqnQpBxfLnmSaqLJo5Jg\n9hBb4ojhblFC1FKmL1tSwqCQt9yQN/PHLi5+iWpRSfSubaqSMG5Ryi2HP4Ek\nssanBMdfB++umdRa6KzXHvyxrUnJ2qK1wDV55qnsVR2tBm4H8TO38mRryedE\n4WMd+XQrTICRvGiAsxOBNYylajvZdAKVdP59yNP5C0EzFpXLxd5wtyHYaewL\nVwdUNNYiRkRXSSeV7IWBzaVCf7m/NF7hm9pRXm7k1He3XBeMzlUiLe3h9rw3\nadrGevZdIkuxuddOV57q6bE2ZSWLZjY/7hmuXMPlGxLMxY2sz8UdT5XHS2Ej\nZfmLexQHr+b83I0xkLTDZrV/Ul+xV2gXa+OdFDMakupsB9lOMUlwzt+drE6G\nEKUBnQ8gtXq00z8EWJiPK2s72I4m/3MWztyHKLU7Xh9wOjaZE0YbsUEBZrOD\ndFdkcyU8BwJVpTHR1pnfwMx8xPzeXGsozQkdnCz9MCe8slrI2zGJiaO8WX1h\nLZlUbTGkmQdow1Tr16KMroipZr4Occ9ywvcdRJZ82ZMbK6mZQVPxPOiTM2is\nlHgSChWwuEO/HDwuSJVU02VFEyQAsYdly7EBD2ghYprVFvb9qYJnsINwU2LF\nuIDd\r\n=TTH/\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "7880225b0d4ad10e30927d167a1d6f2fd3b33a72",
+    "tarball": "https://registry.npmjs.org/stringstream/-/stringstream-0.0.6.tgz",
+    "unpackedSize": 6242
+  },
+  "gitHead": "fee31c5c4a5efc7c7cc2fde4aee633dedefd6d67",
+  "homepage": "https://github.com/mhart/StringStream#readme",
+  "keywords": [
+    "string",
+    "stream",
+    "base64",
+    "gzip"
+  ],
+  "license": "MIT",
+  "main": "stringstream.js",
+  "maintainers": [
+    {
+      "email": "michael.hart.au@gmail.com",
+      "name": "hichaelmart"
+    }
+  ],
+  "name": "stringstream",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhart/StringStream.git"
+  },
+  "version": "0.0.6"
+}

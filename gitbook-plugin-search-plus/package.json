@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-search-plus",
+        "raw": "gitbook-plugin-search-plus@1.0.3",
+        "rawSpec": "1.0.3",
+        "scope": null,
+        "spec": "1.0.3",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-search-plus@1.0.3",
+  "_id": "gitbook-plugin-search-plus@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-search-plus",
+  "_nodeVersion": "7.7.3",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gitbook-plugin-search-plus-1.0.3.tgz_1492781802377_0.8977543767541647"
+  },
+  "_npmUser": {
+    "email": "1127622940@qq.com",
+    "name": "lwdgit"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-search-plus",
+    "raw": "gitbook-plugin-search-plus@1.0.3",
+    "rawSpec": "1.0.3",
+    "scope": null,
+    "spec": "1.0.3",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-search-plus/-/gitbook-plugin-search-plus-1.0.3.tgz",
+  "_shasum": "a32ec6099e5641390224cbf75c8c77e0f8ae315c",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-search-plus@1.0.3",
+  "_where": "/gitbook",
+  "author": {
+    "name": "lwdgit"
+  },
+  "bugs": {
+    "url": "https://github.com/lwdgit/gitbook-plugin-search-plus/issues"
+  },
+  "dependencies": {
+    "html-entities": "1.2.0"
+  },
+  "description": "gitbook powerful search plugin",
+  "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "standard": "^9.0.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "a32ec6099e5641390224cbf75c8c77e0f8ae315c",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-search-plus/-/gitbook-plugin-search-plus-1.0.3.tgz"
+  },
+  "engines": {
+    "gitbook": ">=3.0.0"
+  },
+  "gitHead": "bd0d080bb41650a6966190412a3de1f4c2830ddd",
+  "homepage": "https://github.com/lwdgit/gitbook-plugin-search-plus#readme",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "1127622940@qq.com",
+      "name": "lwdgit"
+    }
+  ],
+  "name": "gitbook-plugin-search-plus",
+  "optionalDependencies": {},
+  "pre-commit": {
+    "run": [
+      "standard",
+      "pages:build",
+      "add"
+    ],
+    "silent": true
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwdgit/gitbook-plugin-search-plus.git"
+  },
+  "scripts": {
+    "add": "git add -A",
+    "pages:build": "cd examples&&npm install&&npm run build",
+    "pages:push": "git subtree --prefix=examples push pages gh-pages",
+    "standard": "standard --fix assets/search.js, index.js",
+    "start": "cd examples&&npm install&&npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}

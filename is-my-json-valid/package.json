@@ -1,0 +1,123 @@
+{
+  "_args": [
+    [
+      {
+        "name": "is-my-json-valid",
+        "raw": "is-my-json-valid@^2.12.4",
+        "rawSpec": "^2.12.4",
+        "scope": null,
+        "spec": ">=2.12.4 <3.0.0",
+        "type": "range"
+      },
+      "/gitbook/node_modules/har-validator"
+    ]
+  ],
+  "_from": "is-my-json-valid@>=2.12.4 <3.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "is-my-json-valid@2.20.5",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/is-my-json-valid",
+  "_nodeVersion": "12.18.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/is-my-json-valid_2.20.5_1595449094780_0.3734192127130942"
+  },
+  "_npmUser": {
+    "email": "linus@folkdatorn.se",
+    "name": "linusu"
+  },
+  "_npmVersion": "6.14.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "is-my-json-valid",
+    "raw": "is-my-json-valid@^2.12.4",
+    "rawSpec": "^2.12.4",
+    "scope": null,
+    "spec": ">=2.12.4 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/har-validator"
+  ],
+  "_resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.20.5.tgz",
+  "_shasum": "5eca6a8232a687f68869b7361be1612e7512e5df",
+  "_shrinkwrap": null,
+  "_spec": "is-my-json-valid@^2.12.4",
+  "_where": "/gitbook/node_modules/har-validator",
+  "bugs": {
+    "url": "https://github.com/mafintosh/is-my-json-valid/issues"
+  },
+  "dependencies": {
+    "generate-function": "^2.0.0",
+    "generate-object-property": "^1.1.0",
+    "is-my-ip-valid": "^1.0.0",
+    "jsonpointer": "^4.0.0",
+    "xtend": "^4.0.0"
+  },
+  "description": "A [JSONSchema](https://json-schema.org/) validator that uses code generation to be extremely fast.",
+  "devDependencies": {
+    "safe-regex": "^1.1.0",
+    "tape": "^2.13.4",
+    "typescript": "^3.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 7,
+    "integrity": "sha512-VTPuvvGQtxvCeghwspQu1rBgjYUT6FGxPlvFKbYuFtgc4ADsX3U5ihZOYN0qyU6u+d4X9xXb0IT5O6QpXKt87A==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfGJ8HCRA9TVsSAnZWagAAKAwQAIysopZmZ14JPyHC5Sxm\nLb09PFoyZWwboWwyUQooD9aT2XUTW+96rBiWXHcAI+cHDG46sI+TwOGIlXsE\nza9b+HwIut1dClf0yohO0mgl/C23nww3Jpbdh+4WT2Tsk70IEPVl1XUQdJ7t\nlLwrFgDrPQttyYGa6U/ik3+D4Bbi65I701/o85NESxZA/fX7wt7l30c9PG0n\n5nSX7fdzcOqo2tvtm0HPISeEtg7X5xFzvY7y7RyfsstPWtuv8PBnLjerLPuQ\nPjAmyWtN5HLZeHfH23/tD0D5Ka504s9oRS4D6gS5mkkzx5+GOxV8xKi7IxPl\npb7u6iPmDY8Ut8KSh3kO1q89BOjSdM+WKqy+YWU4ADopV/boGKg8OYHFQmLs\nOD8ryoPbkHr0gEUzmtVqbLMNZJe3c01oYS07ZDbFuQSbgxq1txCYE+sYInsR\nnnIXnkEYi5cpzeSU6AtOGBIA1E++WBAGyXuoHWBffC1q5dqf16opshVx6o5W\nxju3i61634qiOvugrtskz7us0Ruam66Nkztw9cg9renKqLSaMMH5ZwknPkmE\nBpcYOtUKplUb7/Cskjq4GoI6XwKQhAQC3lbUuI//LIKMCV1eKPdHKzJ1nqY0\n3gYKPALtJwt1L1T9FKcMCQk7Nz0MgXgcVsowc8j0NqeyM3WhGzLVOT+6s925\nUzir\r\n=c6vk\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "5eca6a8232a687f68869b7361be1612e7512e5df",
+    "tarball": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.20.5.tgz",
+    "unpackedSize": 40182
+  },
+  "gitHead": "441f812eefa95ee5e0c1c9b4cba45021d2e72cfb",
+  "homepage": "https://github.com/mafintosh/is-my-json-valid#readme",
+  "keywords": [
+    "json",
+    "schema",
+    "orderly",
+    "jsonschema"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "github@tixz.dk",
+      "name": "emilbay"
+    },
+    {
+      "email": "github@tixz.dk",
+      "name": "emilbayes"
+    },
+    {
+      "email": "freeall@gmail.com",
+      "name": "freeall"
+    },
+    {
+      "email": "linus@folkdatorn.se",
+      "name": "linusu"
+    },
+    {
+      "email": "mathiasbuus@gmail.com",
+      "name": "mafintosh"
+    },
+    {
+      "email": "w@tson.dk",
+      "name": "watson"
+    },
+    {
+      "email": "i@yoshuawuyts.com",
+      "name": "yoshuawuyts"
+    }
+  ],
+  "name": "is-my-json-valid",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mafintosh/is-my-json-valid.git"
+  },
+  "scripts": {
+    "test": "tape test/*.js && tsc"
+  },
+  "version": "2.20.5"
+}

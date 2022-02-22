@@ -1,0 +1,83 @@
+{
+  "_args": [
+    [
+      {
+        "name": "gitbook-plugin-alerts",
+        "raw": "gitbook-plugin-alerts@0.2.0",
+        "rawSpec": "0.2.0",
+        "scope": null,
+        "spec": "0.2.0",
+        "type": "version"
+      },
+      "/gitbook"
+    ]
+  ],
+  "_from": "gitbook-plugin-alerts@0.2.0",
+  "_id": "gitbook-plugin-alerts@0.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/gitbook-plugin-alerts",
+  "_nodeVersion": "7.0.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/gitbook-plugin-alerts-0.2.0.tgz_1508993102406_0.0781113994307816"
+  },
+  "_npmUser": {
+    "email": "arjunattam@gmail.com",
+    "name": "arjun27"
+  },
+  "_npmVersion": "5.4.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "gitbook-plugin-alerts",
+    "raw": "gitbook-plugin-alerts@0.2.0",
+    "rawSpec": "0.2.0",
+    "scope": null,
+    "spec": "0.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gitbook-plugin-alerts/-/gitbook-plugin-alerts-0.2.0.tgz",
+  "_shasum": "c8c778b41798f808b03beb908822e928a4fbe137",
+  "_shrinkwrap": null,
+  "_spec": "gitbook-plugin-alerts@0.2.0",
+  "_where": "/gitbook",
+  "bugs": {
+    "url": "https://github.com/hypertrack/gitbook-plugin-alerts/issues"
+  },
+  "dependencies": {},
+  "description": "Info, warning, alert, success blockquotes for your gitbook",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-jpjsGBgr9dpafIOriK/QFbx+NLCdLnwAFDg95lrA7k5UDhRuisgzAadnxJfpNamUdLLBKYRLou9n7KY9euL4Pw==",
+    "shasum": "c8c778b41798f808b03beb908822e928a4fbe137",
+    "tarball": "https://registry.npmjs.org/gitbook-plugin-alerts/-/gitbook-plugin-alerts-0.2.0.tgz"
+  },
+  "engines": {
+    "gitbook": ">=2.5.1"
+  },
+  "gitHead": "e9ccde5ceab3a937af74daf9a504f056819c6af5",
+  "gitbook": {
+    "properties": {}
+  },
+  "homepage": "https://github.com/hypertrack/gitbook-plugin-alerts",
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "arjunattam@gmail.com",
+      "name": "arjun27"
+    }
+  ],
+  "name": "gitbook-plugin-alerts",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypertrack/gitbook-plugin-alerts.git"
+  },
+  "version": "0.2.0"
+}
