@@ -1,6 +1,6 @@
 # 云原生应用之路——从 Kubernetes 到云原生
 
-注：本文根据笔者在 [ArchSummit 2017 北京站](http://bj2017.archsummit.com/presentation/306) 和数人云 & TalkingData 合办的 Service Mesh is coming meetup 中分享的话题《从 Kubernetes 到云原生—— 云原生应用之路》改写而成。
+注：本文根据笔者在 [ArchSummit 2017 北京站](https://archsummit.infoq.cn/2017/beijing/presentation/306) 和数人云 & TalkingData 合办的 Service Mesh is coming meetup 中分享的话题《从 Kubernetes 到云原生—— 云原生应用之路》改写而成。
 
 本文简要介绍了容器技术发展的路径，为何 Kubernetes 的出现是容器技术发展到这一步的必然选择，而为何 Kubernetes 又将成为云原生应用的基石。
 

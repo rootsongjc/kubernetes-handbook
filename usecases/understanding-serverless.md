@@ -255,7 +255,7 @@ Karl Marx说的好，生产力决定生产关系，云计算的概念层出不�
 - [CNCF Serverless Whitepaper v1.0](https://gw.alipayobjects.com/os/basement_prod/24ec4498-71d4-4a60-b785-fa530456c65b.pdf)
 - [Serverless Architectures - Martin Fowler](https://martinfowler.com/articles/serverless.html)
 - [Serverless架构综述](http://dockone.io/article/1460)
-- [2017年会是Serverless爆发之年吗？](http://www.infoq.com/cn/news/2017/04/2017-Serverless)
+- [2017年会是Serverless爆发之年吗？](https://www.infoq.cn/news/2017/04/2017-Serverless/)
 - [从IaaS到FaaS—— Serverless架构的前世今生](https://aws.amazon.com/cn/blogs/china/iaas-faas-serverless/)
 - [Introducing Redpoint's FaaS Landscape](https://medium.com/memory-leak/this-year-gartner-added-serverless-to-its-hype-cycle-of-emerging-technologies-reflecting-the-5dfe43d818f0)
 - [Serverless Architectures - martinfowler.com](https://martinfowler.com/articles/serverless.html)

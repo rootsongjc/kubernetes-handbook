@@ -545,5 +545,4 @@ Operator 的核心逻辑都在 controller 的 `Reconcile` 函数中，请参考 
 ## 参考
 
 - [如何使用 KubeBuilder 开发一个 Operator - chenshaowen.com](https://chenshaowen.com/blog/how-to-develop-a-operator-using-kubebuilder.html)
-- [Kubernetes CRD 如何简单 - sealyun.com](https://sealyun.com/blog/2019/07/20/crd/)
 - [Kubebuilder book - kubebuilder.io](https://kubebuilder.io/quick-start.html)
