@@ -310,45 +310,30 @@ status:
 
 如果设置了 `loadBalancerIP`，但云提供商并不支持这种特性，那么设置的 `loadBalancerIP` 值将会被忽略掉。
 
-### AWS 内部负载均衡器
-在混合云环境中，有时从虚拟私有云（VPC）环境中的服务路由流量是非常有必要的。
-可以通过在 `Service` 中增加 `annotation` 来实现，如下所示：
+## ExternalName
+
+ExternalName 类型的服务将服务映射到一个 DNS 名称，而不是典型的选择器，如 `my-service` 或 `cassandra`。使用 `spec.externalName` 参数指定这些服务。
+
+例如，这个服务定义将 prod 命名空间中的 `my-service` 映射到 `my.database.example.com`。
 
 ```yaml
-[...]
-metadata: 
-    name: my-service
-    annotations: 
-        service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
-[...]
-```
-在水平分割的 DNS 环境中，需要两个 `Service` 来将外部和内部的流量路由到 Endpoint 上。
-
-### AWS SSL 支持
-对运行在 AWS 上部分支持 SSL 的集群，从 1.3 版本开始，可以为 `LoadBalancer` 类型的 `Service` 增加两个 annotation：
-
-```yaml
-    metadata:
-      name: my-service
-      annotations:
-        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
 ```
 
-第一个 annotation 指定了使用的证书。它可以是第三方发行商发行的证书，这个证书或者被上传到 IAM，或者由 AWS 的证书管理器创建。
+注意：ExternalName 接受 IPv4 地址字符串，但它是由数字组成的 DNS 名称，而不是 IP 地址。类似于 IPv4 地址的 ExternalNames 不能被 CoreDNS 或 ingress-nginx 解析，因为 ExternalName 的目的是指定一个规范的 DNS 名称。要硬编码一个 IP 地址，请考虑使用 Headless Service。
 
-```yaml
-    metadata:
-      name: my-service
-      annotations:
-         service.beta.kubernetes.io/aws-load-balancer-backend-protocol: (https|http|ssl|tcp)
-```
-第二个 annotation 指定了 `Pod` 使用的协议。
+**警告**
 
-对于 HTTPS 和 SSL，ELB 将期望该 `Pod` 基于加密的连接来认证自身。
+对于一些常见的协议，包括 HTTP 和 HTTPS，你使用 ExternalName 可能会有问题。如果使用 ExternalName，那么你集群内的客户端使用的主机名与 ExternalName 引用的名称不同。
 
-HTTP 和 HTTPS 将选择7层代理：ELB 将中断与用户的连接，当转发请求时，会解析 Header 信息并添加上用户的 IP 地址（`Pod` 将只能在连接的另一端看到该 IP 地址）。
-
-TCP 和 SSL 将选择4层代理：ELB 将转发流量，并不修改 Header 信息。
+对于使用主机名的协议，这种差异可能导致错误或意外的响应。HTTP请求将有一个源服务器不承认的 `Host: header`，TLS 服务器将不能提供与客户端连接的主机名相匹配的证书。
 
 ### 外部 IP
 
