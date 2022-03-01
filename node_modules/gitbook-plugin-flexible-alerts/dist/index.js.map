@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/index.js"],"sourcesContent":["module.exports = {\n  book: {\n    assets: './dist/book',\n    js: [\n      'plugin.js'\n    ],\n    css: [\n      'style.css'\n    ]\n  }\n};\n"],"names":["module","exports","book","assets","js","css"],"mappings":";;;;;;;aAAAA,OAAOC,QAAU,CACfC,KAAM,CACJC,OAAQ,cACRC,GAAI,CACF,aAEFC,IAAK,CACH"}

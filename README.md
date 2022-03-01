@@ -16,13 +16,12 @@ Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用
   </a>
 </p>
 <p align="center">
-  <a href="https://jimmysong.io/kubernetes-handbook">
+  <a href="https://jimmysong.io/kubernetes-handbook/">
     <img src="cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册 by Jimmy Song (宋净超）">
   </a>
 </p>
 
-
-Kubernetes Handbook 始于 2016 年底，开源于 2017 年 3 月并在其后不断完善，是第一本系统介绍 Kubernetes 的中文书籍。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
+Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月并在其后不断完善，这是第一本系统介绍 Kubernetes 的中文电子书。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
 
 ### 开始之前
 
