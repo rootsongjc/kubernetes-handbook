@@ -270,21 +270,27 @@ weight = 2
 
 [[Languages.zh.menu.main]]
 parent = "图书"
+name = "Envoy Handbook"
+URL = "envoy-handbook/"
+weight = 3
+
+[[Languages.zh.menu.main]]
+parent = "图书"
 name = "迁移到云原生应用架构"
 URL = "migrating-to-cloud-native-application-architectures/"
-weight = 3
+weight = 4
 
 [[Languages.zh.menu.main]]
 parent = "图书"
 name = "Kubernetes 加固指南"
 URL = "kubernetes-hardening-guidance/"
-weight = 4
+weight = 5
 
 [[Languages.zh.menu.main]]
 parent = "图书"
 name = "所有图书"
 URL = "book/"
-weight = 5
+weight = 6
 
 [[Languages.zh.menu.main]]
 name = "社区"
