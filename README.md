@@ -1,6 +1,6 @@
-# Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册
+# Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册
 
-> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。—— [Jimmy Song](https://jimmysong.io)
+> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，Serverless 的兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。—— [Jimmy Song](https://jimmysong.io)
 
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/note/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
@@ -17,11 +17,11 @@ Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用
 </p>
 <p align="center">
   <a href="https://jimmysong.io/kubernetes-handbook/">
-    <img src="cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册 by Jimmy Song (宋净超）">
+    <img src="cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song (宋净超）">
   </a>
 </p>
 
-Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月并在其后不断完善，这是第一本系统介绍 Kubernetes 的中文电子书。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
+Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，其后经过不断完善。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
 
 ### 开始之前
 
@@ -64,7 +64,7 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月并在其
 
 ## 贡献与致谢
 
-感谢大家对本书做出的贡献！
+本项目已集成 CircleCI，在每次提交后会自动扫描书中链接及 MarkDown 样式，并编译为 Gitbook 通过 GitHub Pages 发布。因本书写作时间跨度大，其中难免有过时和遗漏的地方，感谢大家的贡献和指正！
 
 - [查看贡献者列表](https://github.com/rootsongjc/kubernetes-handbook/graphs/contributors)
 - [查看如何贡献](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CONTRIBUTING.md)
@@ -83,9 +83,9 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月并在其
 - [云原生模式](https://jimmysong.io/book/cloud-native-patterns) - 设计拥抱变化的软件（Cornelia Davis 著，张若飞 宋净超 译），电子工业出版社，2020 年 8 月出版
 - [Quarkus 实战](https://jimmysong.io/book/quarkus-cookbook/) - 专为 Kubernetes 而优化的 Java 解决方案（Alex Soto Bueno、Jason Porter 著，张晓宇 刘岩 宋净超 译），机械工业出版社，2021 年 3 月出版
 
-## 版权与许可证
+## 许可证
 
-本书版权归 Jimmy Song 所有， 您可以使用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  协议共享。
+您可以使用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  协议共享。
 
 ## 云原生社区
 
