@@ -5,7 +5,7 @@
 - Ballerina
 - Pulumi
 - Cue
-- KSL
+- KCL
 - Kusion
 
 以下内容引用自 [Joe Duffy 的博客](http://joeduffyblog.com/2018/06/18/hello-pulumi/)。他说这些是为了说明为什么要创造 Pulumi，在此我引用它说明为什么会有云原生编程语言。
