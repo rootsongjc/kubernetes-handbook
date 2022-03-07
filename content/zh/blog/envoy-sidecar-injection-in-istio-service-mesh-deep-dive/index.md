@@ -19,14 +19,14 @@ image: "images/banner/istio-logo.jpg"
 - Init 容器：Pod 中的一种专用的容器，在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
 - iptables：流量劫持是通过 iptables 转发实现的。
 
-查看目前 `productpage-v1-745ffc55b7-2l2lw` Pod 中运行的容器：
+查看目前 `reviews-v1-745ffc55b7-2l2lw` Pod 中运行的容器：
 
 ```bash
-$ kubectl -n default get pod productpage-v1-745ffc55b7-2l2lw -o=jsonpath='{..spec.containers[*].name}'
-productpage istio-proxy
+$ kubectl -n default get pod reviews-v1-745ffc55b7-2l2lw -o=jsonpath='{..spec.containers[*].name}'
+reviews istio-proxy
 ```
 
-`productpage` 即应用容器，`istio-proxy` 即 Envoy 代理的 sidecar 容器。另外该 Pod 中实际上还运行过一个 Init 容器，因为它执行结束就自动终止了，所以我们看不到该容器的存在。关注 `jsonpath` 的用法请参考 [JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)。
+`reviews` 即应用容器，`istio-proxy` 即 Envoy 代理的 sidecar 容器。另外该 Pod 中实际上还运行过一个 Init 容器，因为它执行结束就自动终止了，所以我们看不到该容器的存在。关注 `jsonpath` 的用法请参考 [JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)。
 
 ## Sidecar 模式
 
@@ -56,238 +56,49 @@ Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有�
 
 ## Sidecar 注入示例分析
 
-我们看下 Istio 官方示例 `bookinfo` 中 `productpage`  的 YAML 配置，关于 `bookinfo` 应用的详细 YAML 配置请参考 [bookinfo.yaml](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/yaml/istio-bookinfo/bookinfo.yaml)。
+本文我们将以 Istio 官方示例 `bookinfo` 中 `reivews` 服务为例，来接讲解 Sidecar 容器注入的额流程，每个注入了 Sidecar 的 Pod 中除了原先应用的应用本身的容器外，都会多出来这样两个容器：
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: productpage
-  labels:
-    app: productpage
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: productpage
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: productpage-v1
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: productpage
-        version: v1
-    spec:
-      containers:
-      - name: productpage
-        image: istio/examples-bookinfo-productpage-v1:1.8.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 9080
-```
-
-再查看下 `productpage` 容器的 [Dockerfile](https://github.com/istio/istio/blob/master/samples/bookinfo/src/productpage/Dockerfile)。
-
-```dockerfile
-FROM python:2.7-slim
-
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY productpage.py /opt/microservices/
-COPY templates /opt/microservices/templates
-COPY requirements.txt /opt/microservices/
-EXPOSE 9080
-WORKDIR /opt/microservices
-CMD python productpage.py 9080
-```
-
-我们看到 `Dockerfile` 中没有配置 `ENTRYPOINT`，所以 `CMD` 的配置 `python productpage.py 9080`  将作为默认的 `ENTRYPOINT`，记住这一点，再看下注入 sidecar 之后的配置。
-
-```bash
-$ istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml
-```
-
-我们只截取其中与 `productpage` 相关的 `Service` 和 `Deployment` 配置部分。
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: productpage
-  labels:
-    app: productpage
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: productpage
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  creationTimestamp: null
-  name: productpage-v1
-spec:
-  replicas: 1
-  strategy: {}
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/status: '{"version":"fde14299e2ae804b95be08e0f2d171d466f47983391c00519bbf01392d9ad6bb","initContainers":["istio-init"],"containers":["istio-proxy"],"volumes":["istio-envoy","istio-certs"],"imagePullSecrets":null}'
-      creationTimestamp: null
-      labels:
-        app: productpage
-        version: v1
-    spec:
-      containers:
-      - image: istio/examples-bookinfo-productpage-v1:1.8.0
-        imagePullPolicy: IfNotPresent
-        name: productpage
-        ports:
-        - containerPort: 9080
-        resources: {}
-      - args:
-        - proxy
-        - sidecar
-        - --configPath
-        - /etc/istio/proxy
-        - --binaryPath
-        - /usr/local/bin/envoy
-        - --serviceCluster
-        - productpage
-        - --drainDuration
-        - 45s
-        - --parentShutdownDuration
-        - 1m0s
-        - --discoveryAddress
-        - istio-pilot.istio-system:15007
-        - --discoveryRefreshDelay
-        - 1s
-        - --zipkinAddress
-        - zipkin.istio-system:9411
-        - --connectTimeout
-        - 10s
-        - --statsdUdpAddress
-        - istio-statsd-prom-bridge.istio-system:9125
-        - --proxyAdminPort
-        - "15000"
-        - --controlPlaneAuthPolicy
-        - NONE
-        env:
-        - name: POD_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: INSTANCE_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
-        - name: ISTIO_META_POD_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: ISTIO_META_INTERCEPTION_MODE
-          value: REDIRECT
-        image: jimmysong/istio-release-proxyv2:1.0.0
-        imagePullPolicy: IfNotPresent
-        name: istio-proxy
-        resources:
-          requests:
-            cpu: 10m
-        securityContext:
-          privileged: false
-          readOnlyRootFilesystem: true
-          runAsUser: 1337
-        volumeMounts:
-        - mountPath: /etc/istio/proxy
-          name: istio-envoy
-        - mountPath: /etc/certs/
-          name: istio-certs
-          readOnly: true
-      initContainers:
-      - args:
-        - -p
-        - "15001"
-        - -u
-        - "1337"
-        - -m
-        - REDIRECT
-        - -i
-        - '*'
-        - -x
-        - ""
-        - -b
-        - 9080,
-        - -d
-        - ""
-        image: jimmysong/istio-release-proxy_init:1.0.0
-        imagePullPolicy: IfNotPresent
-        name: istio-init
-        resources: {}
-        securityContext:
-          capabilities:
-            add:
-            - NET_ADMIN
-          privileged: true
-      volumes:
-      - emptyDir:
-          medium: Memory
-        name: istio-envoy
-      - name: istio-certs
-        secret:
-          optional: true
-          secretName: istio.default
-status: {}
-```
-
-我们看到 Service 的配置没有变化，所有的变化都在 `Deployment` 里，Istio 给应用 Pod 注入的配置主要包括：
-
-- Init 容器 `istio-init`：用于给 Sidecar 容器即 Envoy 代理做初始化，设置 iptables 端口转发
-- Envoy sidecar 容器 `istio-proxy`：运行 Envoy 代理
+- `istio-init`：用于给 Sidecar 容器即 Envoy 代理做初始化，设置 iptables 端口转发
+- `istio-proxy`：Envoy 代理容器，运行 Envoy 代理
 
 接下来将分别解析下这两个容器。
 
 ### Init 容器解析
 
-Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动参数：
+Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，如果你查看 `reviews` Deployment 配置，你将看到其中 `initContaienrs` 的启动参数：
 
 ```bash
--p 15001 -u 1337 -m REDIRECT -i '*' -x "" -b 9080 -d ""
+      initContainers:
+        - name: istio-init
+          image: docker.io/istio/proxyv2:1.13.1
+          args:
+            - istio-iptables
+            - '-p'
+            - '15001'
+            - '-z'
+            - '15006'
+            - '-u'
+            - '1337'
+            - '-m'
+            - REDIRECT
+            - '-i'
+            - '*'
+            - '-x'
+            - ''
+            - '-b'
+            - '*'
+            - '-d'
+            - 15090,15021,15020
 ```
 
-我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxy_init) 看看 `ENTRYPOINT` 是什么以确定启动时执行的命令。
-
-```dockerfile
-FROM ubuntu:xenial
-RUN apt-get update && apt-get install -y \
-    iproute2 \
-    iptables \
- && rm -rf /var/lib/apt/lists/*
-
-ADD istio-iptables.sh /usr/local/bin/
-ENTRYPOINT ["/usr/local/bin/istio-iptables.sh"]
-```
-
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables.sh` 脚本，再按图索骥看看这个脚本里到底写的什么，该脚本的位置在 Istio 源码仓库的 [tools/deb/istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh)，一共 300 多行，就不贴在这里了。下面我们就来解析下这个启动脚本。
+我们看到 `istio-init` 容器的入口是 `istio-iptables` 命令，该命令是用于初始化路由表的。
 
 ### Init 容器启动入口
 
-Init 容器的启动入口是 `/usr/local/bin/istio-iptables.sh` 脚本，该脚本的用法如下：
+Init 容器的启动入口是 `/usr/local/bin/istio-iptable` 命令，该命令的用法如下：
 
 ```bash
-$ istio-iptables.sh -p PORT -u UID -g GID [-m mode] [-b ports] [-d ports] [-i CIDR] [-x CIDR] [-h]
+$ istio-iptables -p PORT -u UID -g GID [-m mode] [-b ports] [-d ports] [-i CIDR] [-x CIDR] [-h]
   -p: 指定重定向所有 TCP 流量的 Envoy 端口（默认为 $ENVOY_PORT = 15001）
   -u: 指定未应用重定向的用户的 UID。通常，这是代理容器的 UID（默认为 $ENVOY_USER 的 uid，istio_proxy 的 uid 或 1337）
   -g: 指定未应用重定向的用户的 GID。（与 -u param 相同的默认值）
@@ -296,16 +107,15 @@ $ istio-iptables.sh -p PORT -u UID -g GID [-m mode] [-b ports] [-d ports] [-i CI
   -d: 指定要从重定向到 Envoy 中排除（可选）的入站端口列表，以逗号格式分隔。使用通配符“*” 表示重定向所有入站流量（默认为 $ISTIO_LOCAL_EXCLUDE_PORTS）
   -i: 指定重定向到 Envoy（可选）的 IP 地址范围，以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量。空列表将禁用所有出站重定向（默认为 $ISTIO_SERVICE_CIDR）
   -x: 指定将从重定向中排除的 IP 地址范围，以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量（默认为 $ISTIO_SERVICE_EXCLUDE_CIDR）。
-
-环境变量位于 $ISTIO_SIDECAR_CONFIG（默认在：/var/lib/istio/envoy/sidecar.env）
+  -z: 所有入站 TCP 流量重定向端口（默认为 $INBOUND_CAPTURE_PORT 15006）
 ```
 
-通过查看该脚本你将看到，以上传入的参数都会重新组装成 [`iptables` 命令](https://wangchujiang.com/linux-command/c/iptables.html)的参数。
+关于该命令的详细代码请[查看 GitHub：`tools/istio-iptables/pkg/cmd/root.go`](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
 
 再参考 `istio-init` 容器的启动参数，完整的启动命令如下：
 
 ```bash
-$ /usr/local/bin/istio-iptables.sh -p 15001 -u 1337 -m REDIRECT -i '*' -x "" -b 9080 -d ""
+$ /usr/local/bin/istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b * -d "15090,15201,15020"
 ```
 
 该容器存在的意义就是让 Envoy 代理可以拦截所有的进出 Pod 的流量，即将入站流量重定向到 Sidecar，再拦截应用容器的出站流量经过 Sidecar 处理后再出站。
@@ -314,24 +124,24 @@ $ /usr/local/bin/istio-iptables.sh -p 15001 -u 1337 -m REDIRECT -i '*' -x "" -b 
 
 这条启动命令的作用是：
 
-- 将应用容器的所有流量都转发到 Envoy 的 15001 端口。
+- 将应用容器的所有流量都转发到 Envoy 的 15006 端口。
 - 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 Envoy 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
 - 使用默认的 `REDIRECT` 模式来重定向流量。
 - 将所有出站流量都重定向到 Envoy 代理。
-- 将所有访问 9080 端口（即应用容器 `productpage` 的端口）的流量重定向到 Envoy 代理。
+- 将除了 15090、15201、15020 端口以外的所有端口的流量重定向到 Envoy 代理。
 
 因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 Sidecar 容器中。
 
 ### istio-proxy 容器解析
 
-为了查看 iptables 配置，我们需要登陆到 Sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` Pod 所在的主机上使用 `docker` 命令登陆容器中查看。
+为了查看 iptables 配置，我们需要登陆到 Sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `reviews` Pod 所在的主机上使用 `docker` 命令登陆容器中查看。
 
-查看 `productpage` Pod 所在的主机。
+查看 `reviews` Pod 所在的主机。
 
 ```bash
-$ kubectl -n default get pod -l app=productpage -o wide
+$ kubectl -n default get pod -l app=reviews -o wide
 NAME                              READY     STATUS    RESTARTS   AGE       IP             NODE
-productpage-v1-745ffc55b7-2l2lw   2/2       Running   0          1d        172.33.78.10   node3
+reviews-v1-745ffc55b7-2l2lw   2/2       Running   0          1d        172.33.78.10   node3
 ```
 
 从输出结果中可以看到该 Pod 运行在 `node3` 上，使用 `vagrant` 命令登陆到 `node3` 主机中并切换为 root 用户。
@@ -433,11 +243,27 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 ## 查看 iptables nat 表中注入的规则
 
-Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
+Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是三个 reviews 服务示例中的某一个 Pod，其中有 init 容器、应用容器和 sidecar 容器，图中展示了 iptables 流量劫持的详细过程。
 
 ![Envoy sidecar 流量劫持与路由转发示意图](envoy-sidecar-traffic-interception-zh-20210818.png)
 
-Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
+Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。
+
+### 进入到 reviews pod
+
+Reviews 服务有三个版本，我们进入到其中任意一个版本，例如 reviews-1，首先你需要搞清楚这个 pod 运行在哪个节点上，知道那个容器的具体 ID，然后使用 SSH 登录那个节点，使用 `ps` 命令查看到那个容器的具体 IP，使用 `nsenter` 命令进入该容器。
+
+```sh
+nsenter -t{PID} -n
+```
+
+**为什么不直接使用 kubectl 进入容器？**
+
+Istio 向 pod 中自动注入的 sidecar 容器（名为 `istio-proxy`）其中默认的用户是 `istio-proxy`，该用户没有权限查看路由表规则，即当你在该容器中运行 `iptabes` 命令时会得到 `iptables -t nat -L -v` 这样的结果，而且你又没有 root 权限。对于 reviews 容器也是一样，默认用户的 UID 是 `1000`，而且这个用户又没有名字，一样也无法切换为 root 用户，系统中默认没有安装 iptabels 命令。所以我们只能登录到 Pod 的宿主节点上，使用 `nsenter` 命令进入容器内部。
+
+### 查看路由表
+
+下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
 ```bash
 # 查看 NAT 表中规则配置的详细信息
@@ -465,10 +291,10 @@ Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
     2   120 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere             tcp dpt:9080
 
-# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15001 端口，至此成功的拦截了流量到 Envoy 
+# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15006 端口，至此成功的拦截了流量到 Envoy 
 Chain ISTIO_IN_REDIRECT (1 references)
  pkts bytes target     prot opt in     out     source               destination
-    2   120 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
+    2   120 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
 
 # ISTIO_OUTPUT 链：选择需要重定向到 Envoy（即本地） 的出站流量，所有非 localhost 的流量全部转发到 ISTIO_REDIRECT。为了避免流量在该 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 ISTIO_OUTPUT 规则之后就进入下一条链 POSTROUTING。如果目的地非 localhost 就跳转到 ISTIO_REDIRECT；如果流量是来自 istio-proxy 用户空间的，那么就跳出该链，返回它的调用链继续执行下一条规则（OUPT 的下一条规则，无需对流量进行处理）；所有的非 istio-proxy 用户空间的目的地是 localhost 的流量就跳转到 ISTIO_REDIRECT
 Chain ISTIO_OUTPUT (1 references)
@@ -496,234 +322,12 @@ Chain ISTIO_REDIRECT (2 references)
 
 其实在最后这条规则前还可以增加 IP 地址过滤，让某些 IP 地址段不通过 Envoy 代理。
 
-以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables.sh](https://github.com/istio/istio/blob/master/tools/deb/istio-iptables.sh) 脚本生成的，详细过程可以查看该脚本。
-
-## 查看 Envoy 运行状态
-
-首先查看 `proxyv2` 镜像的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2)。
-
-```dockerfile
-FROM istionightly/base_debug
-ARG proxy_version
-ARG istio_version
-
-# 安装 Envoy
-ADD envoy /usr/local/bin/envoy
-
-# 使用环境变量的方式明文指定 proxy 的版本/功能
-ENV ISTIO_META_ISTIO_PROXY_VERSION "1.1.0"
-# 使用环境变量的方式明文指定 proxy 明确的 sha，用于指定版本的配置和调试
-ENV ISTIO_META_ISTIO_PROXY_SHA $proxy_version
-# 环境变量，指定明确的构建号，用于调试
-ENV ISTIO_META_ISTIO_VERSION $istio_version
-
-ADD pilot-agent /usr/local/bin/pilot-agent
-
-ADD envoy_pilot.yaml.tmpl /etc/istio/proxy/envoy_pilot.yaml.tmpl
-ADD envoy_policy.yaml.tmpl /etc/istio/proxy/envoy_policy.yaml.tmpl
-ADD envoy_telemetry.yaml.tmpl /etc/istio/proxy/envoy_telemetry.yaml.tmpl
-ADD istio-iptables.sh /usr/local/bin/istio-iptables.sh
-
-COPY envoy_bootstrap_v2.json /var/lib/istio/envoy/envoy_bootstrap_tmpl.json
-
-RUN chmod 755 /usr/local/bin/envoy /usr/local/bin/pilot-agent
-
-# 将 istio-proxy 用户加入 sudo 权限以允许执行 tcpdump 和其他调试命令
-RUN useradd -m --uid 1337 istio-proxy && \
-    echo "istio-proxy ALL=NOPASSWD: ALL" >> /etc/sudoers && \
-    chown -R istio-proxy /var/lib/istio
-
-# 使用 pilot-agent 来启动 Envoy
-ENTRYPOINT ["/usr/local/bin/pilot-agent"]
-```
-
-该容器的启动入口是 `pilot-agent` 命令，根据 YAML 配置中传递的参数，详细的启动命令入下：
-
-```bash
-/usr/local/bin/pilot-agent proxy sidecar --configPath /etc/istio/proxy --binaryPath /usr/local/bin/envoy --serviceCluster productpage --drainDuration 45s --parentShutdownDuration 1m0s --discoveryAddress istio-pilot.istio-system:15007 --discoveryRefreshDelay 1s --zipkinAddress zipkin.istio-system:9411 --connectTimeout 10s --statsdUdpAddress istio-statsd-prom-bridge.istio-system:9125 --proxyAdminPort 15000 --controlPlaneAuthPolicy NONE
-```
-
-主要配置了 Envoy 二进制文件的位置、服务发现地址、服务集群名、监控指标上报地址、Envoy 的管理端口、热重启时间等，详细用法请参考 [Istio官方文档 pilot-agent 的用法](https://istio.io/docs/reference/commands/pilot-agent/)。
-
-`pilot-agent` 是容器中 PID 为 1 的启动进程，它启动时又创建了一个 Envoy 进程，如下：
-
-```bash
-/usr/local/bin/envoy -c /etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --parent-shutdown-time-s 60 --service-cluster productpage --service-node sidecar~172.33.78.10~productpage-v1-745ffc55b7-2l2lw.default~default.svc.cluster.local --max-obj-name-len 189 -l warn --v2-config-only
-```
-
-我们分别解释下以上配置的意义。
-
-- `-c /etc/istio/proxy/envoy-rev0.json`：配置文件，支持 `.json`、`.yaml`、`.pb` 和 `.pb_text` 格式，`pilot-agent` 启动的时候读取了容器的环境变量后创建的。
-- `--restart-epoch 0`：Envoy 热重启周期，第一次启动默认为 0，每热重启一次该值加 1。
-- `--drain-time-s 45`：热重启期间 Envoy 将耗尽连接的时间。
-- `--parent-shutdown-time-s 60`： Envoy 在热重启时关闭父进程之前等待的时间。
-- `--service-cluster productpage`：Envoy 运行的本地服务集群的名字。
-- `--service-node sidecar~172.33.78.10~productpage-v1-745ffc55b7-2l2lw.default~default.svc.cluster.local`：定义 Envoy 运行的本地服务节点名称，其中包含了该 Pod 的名称、IP、DNS 域等信息，根据容器的环境变量拼出来的。
-- `-max-obj-name-len 189`：cluster/route_config/listener 中名称字段的最大长度（以字节为单位）
-- `-l warn`：日志级别
-- `--v2-config-only`：只解析 v2 引导配置文件
-
-详细配置请参考 [Envoy 的命令行选项](http://www.servicemesher.com/envoy/operations/cli.html)。
-
-查看 Envoy 的配置文件 `/etc/istio/proxy/envoy-rev0.json`。
-
-```json
-{
-  "node": {
-    "id": "sidecar~172.33.78.10~productpage-v1-745ffc55b7-2l2lw.default~default.svc.cluster.local",
-    "cluster": "productpage",
-
-    "metadata": {
-          "INTERCEPTION_MODE": "REDIRECT",
-          "ISTIO_PROXY_SHA": "istio-proxy:6166ae7ebac7f630206b2fe4e6767516bf198313",
-          "ISTIO_PROXY_VERSION": "1.0.0",
-          "ISTIO_VERSION": "1.0.0",
-          "POD_NAME": "productpage-v1-745ffc55b7-2l2lw",
-      "istio": "sidecar"
-    }
-  },
-  "stats_config": {
-    "use_all_default_tags": false
-  },
-  "admin": {
-    "access_log_path": "/dev/stdout",
-    "address": {
-      "socket_address": {
-        "address": "127.0.0.1",
-        "port_value": 15000
-      }
-    }
-  },
-  "dynamic_resources": {
-    "lds_config": {
-        "ads": {}
-    },
-    "cds_config": {
-        "ads": {}
-    },
-    "ads_config": {
-      "api_type": "GRPC",
-      "refresh_delay": {"seconds": 1, "nanos": 0},
-      "grpc_services": [
-        {
-          "envoy_grpc": {
-            "cluster_name": "xds-grpc"
-          }
-        }
-      ]
-    }
-  },
-  "static_resources": {
-    "clusters": [
-    {
-    "name": "xds-grpc",
-    "type": "STRICT_DNS",
-    "connect_timeout": {"seconds": 10, "nanos": 0},
-    "lb_policy": "ROUND_ROBIN",
-
-    "hosts": [
-    {
-    "socket_address": {"address": "istio-pilot.istio-system", "port_value": 15010}
-    }
-    ],
-    "circuit_breakers": {
-        "thresholds": [
-      {
-        "priority": "default",
-        "max_connections": "100000",
-        "max_pending_requests": "100000",
-        "max_requests": "100000"
-      },
-      {
-        "priority": "high",
-        "max_connections": "100000",
-        "max_pending_requests": "100000",
-        "max_requests": "100000"
-      }]
-    },
-    "upstream_connection_options": {
-      "tcp_keepalive": {
-        "keepalive_time": 300
-      }
-    },
-    "http2_protocol_options": { }
-    }
-
-
-    ,
-      {
-        "name": "zipkin",
-        "type": "STRICT_DNS",
-        "connect_timeout": {
-          "seconds": 1
-        },
-        "lb_policy": "ROUND_ROBIN",
-        "hosts": [
-          {
-            "socket_address": {"address": "zipkin.istio-system", "port_value": 9411}
-          }
-        ]
-      }
-
-    ]
-  },
-
-  "tracing": {
-    "http": {
-      "name": "envoy.zipkin",
-      "config": {
-        "collector_cluster": "zipkin"
-      }
-    }
-  },
-
-
-  "stats_sinks": [
-    {
-      "name": "envoy.statsd",
-      "config": {
-        "address": {
-          "socket_address": {"address": "10.254.109.175", "port_value": 9125}
-        }
-      }
-    }
-  ]
-
-}
-```
-
-下图是使用 Istio 管理的 bookinfo 示例的访问请求路径图。
-
-![Istio bookinfo](006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
-
-对照 bookinfo 示例的 productpage 的查看建立的连接。在 `productpage-v1-745ffc55b7-2l2lw` Pod 的 `istio-proxy` 容器中使用 root 用户查看打开的端口。
-
-```bash
-$ lsof -i
-COMMAND PID        USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-envoy    11 istio-proxy    9u  IPv4  73951      0t0  TCP localhost:15000 (LISTEN) # Envoy admin 端口
-envoy    11 istio-proxy   17u  IPv4  74320      0t0  TCP productpage-v1-745ffc55b7-2l2lw:46862->istio-pilot.istio-system.svc.cluster.local:15010 (ESTABLISHED) # 15010：istio-pilot 的 grcp-xds 端口
-envoy    11 istio-proxy   18u  IPv4  73986      0t0  UDP productpage-v1-745ffc55b7-2l2lw:44332->istio-statsd-prom-bridge.istio-system.svc.cluster.local:9125 # 给 Promethues 发送 metric 的端口
-envoy    11 istio-proxy   52u  IPv4  74599      0t0  TCP *:15001 (LISTEN) # Envoy 的监听端口
-envoy    11 istio-proxy   53u  IPv4  74600      0t0  UDP productpage-v1-745ffc55b7-2l2lw:48011->istio-statsd-prom-bridge.istio-system.svc.cluster.local:9125 # 给 Promethues 发送 metric 端口
-envoy    11 istio-proxy   54u  IPv4 338551      0t0  TCP productpage-v1-745ffc55b7-2l2lw:15001->172.17.8.102:52670 (ESTABLISHED) # 52670：Ingress gateway 端口
-envoy    11 istio-proxy   55u  IPv4 338364      0t0  TCP productpage-v1-745ffc55b7-2l2lw:44046->172.33.78.9:9091 (ESTABLISHED) # 9091：istio-telemetry 服务的 grpc-mixer 端口
-envoy    11 istio-proxy   56u  IPv4 338473      0t0  TCP productpage-v1-745ffc55b7-2l2lw:47210->zipkin.istio-system.svc.cluster.local:9411 (ESTABLISHED) # 9411: zipkin 端口
-envoy    11 istio-proxy   58u  IPv4 338383      0t0  TCP productpage-v1-745ffc55b7-2l2lw:41564->172.33.84.8:9080 (ESTABLISHED) # 9080：details-v1 的 http 端口
-envoy    11 istio-proxy   59u  IPv4 338390      0t0  TCP productpage-v1-745ffc55b7-2l2lw:54410->172.33.78.5:9080 (ESTABLISHED) # 9080：reivews-v2 的 http 端口
-envoy    11 istio-proxy   60u  IPv4 338411      0t0  TCP productpage-v1-745ffc55b7-2l2lw:35200->172.33.84.5:9091 (ESTABLISHED) # 9091:istio-telemetry 服务的 grpc-mixer 端口
-envoy    11 istio-proxy   62u  IPv4 338497      0t0  TCP productpage-v1-745ffc55b7-2l2lw:34402->172.33.84.9:9080 (ESTABLISHED) # reviews-v1 的 http 端口
-envoy    11 istio-proxy   63u  IPv4 338525      0t0  TCP productpage-v1-745ffc55b7-2l2lw:50592->172.33.71.5:9080 (ESTABLISHED) # reviews-v3 的 http 端口
-```
-
-从输出级过上可以验证 Sidecar 是如何接管流量和与 istio-pilot 通信，及向 Mixer 做遥测数据汇聚的。感兴趣的读者可以再去看看其他几个服务的 istio-proxy 容器中的 iptables 和端口信息。
+以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 命令生成的，详细过程可以查看该命令行程序。
 
 ## 参考
 
-- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/blog/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial)
 - [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)
 - [JSONPath Support - kubernetes.io](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 - [iptables 命令使用说明 - wangchujiang.com](https://wangchujiang.com/linux-command/c/iptables.html)
 - [How To List and Delete Iptables Firewall Rules - digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules)
 - [一句一句解说 iptables的详细中文手册 - cnblog.com](https://www.cnblogs.com/fhefh/archive/2011/04/04/2005249.html)
-- [常见iptables使用规则场景整理 - aliang.org](https://www.aliang.org/Linux/iptables.html)
