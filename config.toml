@@ -337,12 +337,12 @@ name = "云原生开源项目大全"
 URL = "/awesome-cloud-native"
 
 [[Languages.zh.menu.footer]]
-name = "Jimmy 摄影集 | 图虫"
-URL = "https://jimmysongio.tuchong.com"
+name = "Istio 基础教程|Tetrate 学院"
+URL = "https://academy.tetrate.io/courses/istio-fundamentals-zh"
 
 [[Languages.zh.menu.footer]]
-name = "Jimmy 频道 | Bilibli"
-URL = "https://space.bilibili.com/31004924/"
+name = "云原生学院|Bilibili"
+URL = "https://space.bilibili.com/515485124"
 
 [[Languages.zh.menu.footer]]
 name = "Tetrate Istio 发行版"
