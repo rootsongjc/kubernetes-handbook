@@ -10,6 +10,8 @@ image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
+Updated at March 8, 2022
+
 Based on Istio version 1.11, this article will present the following.
 
 - What is the sidecar pattern and what advantages does it have?
@@ -22,7 +24,7 @@ A year ago, I have written about [understanding Envoy proxy Sidecar injection an
 - iptables switched to a command-line tool and no longer uses shell scripts.
 - The sidecar inbound and outbound specify the ports separately, whereas previously the same port (15001) was used.
 
-Note: Portions of this article are included in the [Istio Handbook](https://www.servicemesher.com/istio-handbook/) from the ServiceMesher community.
+Note: Portions of this article are included in the [Istio Handbook](https://jimmysong.io/istio-handbook/) from the ServiceMesher community.
 
 Read the Chinese version: [阅读中文版](/blog/sidecar-injection-iptables-and-traffic-routing)
 
@@ -668,7 +670,7 @@ Run `istioctl pc listener reviews-v1-54b8794ddf-jxksn --address 172.17.0.15 --po
 
 Let's look at the envoy.http_connection_manager configuration section in filterChains.filters, which indicates that traffic is forwarded to Cluster `inbound|9080|http|reviews.default.svc.cluster.local` for processing.
 
-**[Cluster](https://www.servicemesher.com/istio-handbook/GLOSSARY.html#cluster) `inbound|9080|http|reviews.default.svc.cluster.local`**
+**Cluster `inbound|9080|http|reviews.default.svc.cluster.local`**
 
 Run `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json`  to see the config of cluster.
 
@@ -814,7 +816,7 @@ Running `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 
 
 Endpoints can be one or more, and sidecar will select the appropriate Endpoint to route according to certain rules. At this point the `Review` service has found its upstream service `Rating`'s Endpoint.
 
-## Conclusion
+## Summary
 
 This article uses the bookinfo example provided by Istio to guide readers through the implementation details behind sidecar injection, iptables transparent traffic hijacking, and traffic routing in sidecar. sidecar mode and traffic transparent hijacking are the features and basic functions of Istio service mesh, understanding the process behind this function and the implementation details will help you understand the principle of service mesh and the content in the later chapters of the [Istio Handbook](https://www.servicemesher.com/istio-handbook), so I hope readers can try it from scratch in their own environment to deepen their understanding.
 

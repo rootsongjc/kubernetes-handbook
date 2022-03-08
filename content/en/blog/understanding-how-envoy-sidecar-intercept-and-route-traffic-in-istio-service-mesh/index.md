@@ -9,11 +9,12 @@ bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
 categories: ["service mesh"]
 aliases: 
-- "/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/"
 - "/en/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/"
 ---
 
-This article uses Istio's official [bookinfo example](https://preliminary.istio.io/zh/docs/examples/bookinfo) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) .
+Updated at Mar 8, 2022
+
+This article uses Istio's official [bookinfo sample](https://istio.io/latest/docs/examples/bookinfo/) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) .
 
 The following is a request flow diagram for bookinfo officially provided by Istio, assuming that the DestinationRule is not configured in all services of the bookinfo application.
 
@@ -43,7 +44,7 @@ Below is an overview of the steps from Sidecar injection, Pod startup to Sidecar
 >
 > In this case, the request will certainly fail. As for the step at which the failure begins, the reader is left to think.
 
-**Question** : If adding a [readiness and living probe](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html) for the sidecar proxy and application container can solve the problem?
+**Question** : If adding a readiness and living probe for the sidecar proxy and application container can solve the problem?
 
 **5.** TCP requests that are sent or received from the Pod will be hijacked by iptables. After the inbound traffic is hijacked, it is processed by the Inbound Handler and then forwarded to the application container for processing. The outbound traffic is hijacked by iptables and then forwarded to the Outbound Handler for processing. Upstream and Endpoint.
 
@@ -57,7 +58,7 @@ The following figure shows a `productpage`service access request `http://reviews
 
 Before the first step, `productpage` Envoy Sidecar Pod has been selected by EDS of a request to `reviews` a Pod service of its IP address, it sends a TCP connection request.
 
-The [Envoy configuration](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/#envoy-%E9%85%8D%E7%BD%AE%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90) in the official website of Istio is to describe the process of Envoy doing traffic forwarding. The party considering the traffic of the downstream is to receive the request sent by the downstream. You need to request additional services, such as `reviews` service requests need Pod `ratings` service.
+The Envoy configuration in the official website of Istio is to describe the process of Envoy doing traffic forwarding. The party considering the traffic of the downstream is to receive the request sent by the downstream. You need to request additional services, such as `reviews` service requests need Pod `ratings` service.
 
 `reviews`, there are three versions of the service, there is one instance of each version, three versions sidecar similar working steps, only to later `reviews-v1-cb8655c75-b97zc` Sidecar flow Pod forwarding this step will be described.
 
@@ -71,7 +72,7 @@ Run `istioctl pc listener reviews-v1-cb8655c75-b97zc` to see what the Pod has a 
 
 ```ini
 ADDRESS            PORT      TYPE 
-172.33.3.3         9080      HTTP <---  Receives all inbound traffic on 9080 from listener 0.0.0.0_15001
+172.33.3.3         9080      HTTP <---  Receives all inbound traffic on 9080 from listener 0.0.0.0_15006
 10.254.0.1         443       TCP  <--+
 10.254.4.253       80        TCP     |
 10.254.4.253       8080      TCP     |
@@ -104,12 +105,12 @@ ADDRESS            PORT      TYPE
 0.0.0.0            3000      HTTP    |
 0.0.0.0            8060      HTTP    |
 0.0.0.0            9091      HTTP <--+    
-0.0.0.0            15001     TCP  <--- Receives all inbound and outbound traffic to the pod from IP tables and hands over to virtual listener
+0.0.0.0            15006     TCP  <--- Receives all inbound and outbound traffic to the pod from IP tables and hands over to virtual listener
 ```
 
 As from `productpage` traffic arriving `reviews` Pods, downstream must clearly know the IP address of the Pod which is `172.33.3.3`, so the request is `172.33.3.3:9080`.
 
-**irtual Listener**
+**Virtual Listener**
 
 As you can see from the Pod's Listener list, the 0.0.0.0:15001/TCP Listener (the actual name is `virtual`) listens for all inbound traffic, and the following is the detailed configuration of the Listener.
 
@@ -119,7 +120,7 @@ As you can see from the Pod's Listener list, the 0.0.0.0:15001/TCP Listener (the
     "address": {
         "socketAddress": {
             "address": "0.0.0.0",
-            "portValue": 15001
+            "portValue": 15006
         }
     },
     "filterChains": [
@@ -139,7 +140,7 @@ As you can see from the Pod's Listener list, the 0.0.0.0:15001/TCP Listener (the
 }
 ```
 
-**UseOriginalDst** : As can be seen from the configuration in `useOriginalDst`the configuration as specified `true`, which is a Boolean value, the default is false, using iptables redirect connections, the proxy may receive port [original destination address](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html) is not the same port, thus received at the proxy port It is 15001 and the original destination port is 9080. When this flag is set to true, the Listener redirects the connection to the Listener associated with the original destination address, here `172.33.3.3:9080`. Listener If no relationship to the original destination address, the connection processing by the Listener to receive it, i.e. the `virtual`Listener, after `envoy.tcp_proxy`forwarded to a filter process `BlackHoleCluster`, as the name implies, when no matching Envoy virtual listener when the effect of Cluster , will send the request to it and return 404. This will be referred to below Listener provided `bindToPort`echoes.
+**UseOriginalDst** : As can be seen from the configuration in `useOriginalDst`the configuration as specified `true`, which is a Boolean value, the default is false, using iptables redirect connections, the proxy may receive port [original destination address](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html) is not the same port, thus received at the proxy port It is 15001 and the original destination port is 9080. When this flag is set to true, the Listener redirects the connection to the Listener associated with the original destination address, here `172.33.3.3:9080`. Listener If no relationship to the original destination address, the connection processing by the Listener to receive it, i.e. the `virtual`Listener, after `envoy.tcp_proxy`forwarded to a filter process `BlackHoleCluster`, as the name implies, when no matching Envoy virtual listener when the effect of Cluster , will send the request to it and return 404. This will be referred to below Listener provided `bindToPort` echoes.
 
 **Note** : This parameter will be discarded, please use the Listener filter of the [original destination address](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html) instead. The main purpose of this parameter is: Envoy listens to the 15201 port to intercept the traffic intercepted by iptables via other Listeners instead of directly forwarding it. See the [Virtual Listener](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#virtual-listener) for details .
 
@@ -214,7 +215,7 @@ Run `istioctl pc listener reviews-v1-cb8655c75-b97zc --address 172.33.3.3 --port
 }]
 ```
 
-**bindToPort** : Note that there are a [`bindToPort`](https://www.envoyproxy.io/docs/envoy/v1.6.0/api-v1/listeners/listeners)configuration that is `false`, the default value of the configuration `true`, showing Listener bind to the port, set here to `false` the process flow can Listener Listener transferred from the other, i.e., above said `virtual` Listener, where we see filterChains.filters in the `envoy.http_connection_manager` configuration section:
+**bindToPort** : Note that there are a [`bindToPort`](https://www.envoyproxy.io/docs/envoy/v1.6.0/api-v1/listeners/listeners) configuration that is `false`, the default value of the configuration `true`, showing Listener bind to the port, set here to `false` the process flow can Listener Listener transferred from the other, i.e., above said `virtual` Listener, where we see filterChains.filters in the `envoy.http_connection_manager` configuration section:
 
 ```json
 "route_config": {
@@ -275,7 +276,7 @@ You can see that the Endpoint of the Cluster directly corresponds to localhost, 
 
 Because the `reviews` will to `ratings` send an HTTP request service, request address are: `http://ratings.default.svc.cluster.local:9080/` the role of Outbound handler is to intercept traffic to iptables to native applications sent via Envoy to determine how to route to the upstream.
 
-The request sent by the application container is outbound traffic. After being hijacked by iptables, it is transferred to the Envoy Outbound handler for processing, then passed through `virtual` Listener and `0.0.0.0_9080` Listener, and then finds the cluster of upstream through Route 9080, and then finds Endpoint through EDS to perform routing action. This section can refer to the [Envoy depth configuration resolution](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/#envoy-%E9%85%8D%E7%BD%AE%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90) in the official Istio website .
+The request sent by the application container is outbound traffic. After being hijacked by iptables, it is transferred to the Envoy Outbound handler for processing, then passed through `virtual` Listener and `0.0.0.0_9080` Listener, and then finds the cluster of upstream through Route 9080, and then finds Endpoint through EDS to perform routing action. 
 
 **Route 9080**
 
