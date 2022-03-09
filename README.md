@@ -91,7 +91,7 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 <p align="center">
   <a href="https://cloudnative.to">
-    <img src="https://res.cloudinary.com/jimmysong/image/upload/v1594445787/images/github-banner.jpg" alt="加入云原生社区" title="加入云原生社区">
+    <img src="./images/github-banner.jpg" alt="加入云原生社区" title="加入云原生社区">
   </a>
 </p>
 

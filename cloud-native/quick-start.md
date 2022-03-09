@@ -116,7 +116,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 如果没有服务网格，对容器来说这项工作将十分繁琐，因为这涉及到逐一更改所有其他容器上的配置，将它们所包含的服务从 Container1 指向 Container2，然后在测试失败后，将它们全部改回来。
 
-在前面这部分 Kubernetes 指南中，我们介绍了一些与 Kubernetes 网络相关的概念。Kubernetes 中的网络可能很棘手，很难理解，如果你刚刚开始，你可能需要一些实践来理解这里。关于服务网格的更多内容请参考 [Istio Handbook——Istio 服务网格进阶实战](https://www.servicemesher.com/istio-handbook)。
+在前面这部分 Kubernetes 指南中，我们介绍了一些与 Kubernetes 网络相关的概念。Kubernetes 中的网络可能很棘手，很难理解，如果你刚刚开始，你可能需要一些实践来理解这里。关于服务网格的更多内容请参考 [《Istio 服务网格》](https://jimmysong.io/istio-handbook/)。
 
 在下一部分中，我们将展开更多关于 Kubernetes 的话题：如何开始学习 Kubernetes，如何在本地安装和测试 Kubernetes，以及 Kubernetes 的一些优秀的监控工具。
 

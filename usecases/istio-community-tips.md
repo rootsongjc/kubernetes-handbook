@@ -35,7 +35,7 @@ Istio 的代码规范沿用 [CNCF 社区的代码规范](https://github.com/cncf
 
 ### 设计文档
 
-所有的设计文档都保存在 [Google Drive](https://drive.google.com/drive/u/0/folders/0AIS5p3eW9BCtUk9PVA) 中，其中包括以下资源：
+所有的设计文档都保存在 [Google Drive](https://drive.google.com/drive/folders/0ADmbrU7ueGOUUk9PVA) 中，其中包括以下资源：
 
 - Technical Oversight Committee：ToC管理的文档
 - Misc：一些杂项

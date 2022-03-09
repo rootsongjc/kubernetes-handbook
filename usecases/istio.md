@@ -1,4 +1,4 @@
-# Istio简介
+# Istio
 
 [Istio](https://istio.io) 是由 Google、IBM 和 Lyft 开源的微服务管理、保护和监控框架。Istio 为希腊语，意思是”起航“。
 
@@ -112,6 +112,6 @@ Galley 是 Istio 的配置验证、提取、处理和分发组件。它负责将
 
 ## 参考
 
-- [Istio：一个用于微服务间通信的服务网格开源项目](https://www.infoq.cn/article/2017/05/istio)
-- [Istio 是什么？](https://istio.io/docs/concepts/what-is-istio/)
-- [Istio Handbook —— Istio 服务网格进阶实战](https://www.servicemesher.com/istio-handbook)
+- [Istio：一个用于微服务间通信的服务网格开源项目 - infoq.cn](https://www.infoq.cn/article/2017/05/istio)
+- [Istio 是什么？- istio.io](https://istio.io/docs/concepts/what-is-istio/)
+- [Istio 服务网格—— 云原生应用网络构建指南 - jimmysong.io](https://jimmysong.io/istio-handbook/)

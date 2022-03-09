@@ -36,3 +36,4 @@ Matt Klein 是在他的文章中指出 sidecar 模式的 proxy 将取代另外�
 
 - [Introduction to modern network load balancing and proxying - blog.envoyproxy.io](https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236)
 - [Envoy 官方文档中文版 - cloudnative.to](https://cloudnative.to/envoy/)
+- [Envoy 基础教程 - jimmysong.io](https://jimmysong.io/envoy-handbook/)

@@ -2,7 +2,7 @@
 
 本文是如何创建 CRD 来扩展 Kubernetes API 的教程。CRD 是用来扩展 Kubernetes 最常用的方式，在 Service Mesh 和 Operator 中也被大量使用。因此读者如果想在 Kubernetes 上做扩展和开发的话，是十分有必要了解 CRD 的。
 
-在阅读本文前您需要先了解[使用自定义资源扩展 API](custom-resource.md)， 以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](https://www.servicemesher.com/blog/kubernetes-crd-quick-start/)。
+在阅读本文前您需要先了解[使用自定义资源扩展 API](custom-resource.md)， 以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](https://cloudnative.to/blog/kubernetes-crd-quick-start/)。
 
 ## 创建 CRD（CustomResourceDefinition）
 
