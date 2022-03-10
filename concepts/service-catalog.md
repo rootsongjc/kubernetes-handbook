@@ -39,7 +39,7 @@ Service Catalog 安装 servicecatalog.k8s.ioAPI 并提供以以下 Kubernetes �
 Service Catalog 支持这些认证方法：
 
 - Basic (username/password)
-- [OAuth 2.0 Bearer Token](https://tools.ietf.org/html/rfc6750)
+- OAuth 2.0 Bearer Token
 
 ## 用法
 

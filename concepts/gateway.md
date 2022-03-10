@@ -185,7 +185,7 @@ spec:
 
 - 客户端向 `http://foo.example.com` 发出请求。
 - DNS 将该名称解析为网关地址。
-- 反向代理在 `Listener` 上接收请求，并使用 [`Host` 头](https://tools.ietf.org/html/rfc7230#section-5.4) 来匹配 `HTTPRoute`。
+- 反向代理在 `Listener` 上接收请求，并使用 `Host` 头 来匹配 `HTTPRoute`。
 - 可选地，反向代理可以根据 `HTTPRoute` 的匹配规则执行请求头和 / 或路径匹配。
 - 可选地，反向代理可以根据 `HTTPRoute` 的过滤规则修改请求，即添加 / 删除头。
 - 最后，反向代理可以根据 `HTTPRoute` 的 `forwardTo` 规则，将请求转发到集群中的一个或多个对象，即 `Service`。

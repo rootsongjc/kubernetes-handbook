@@ -49,7 +49,7 @@ EOF
 2017/03/21 06:48:17 [INFO] encoded CSR
 ```
 
-此命令生成两个文件；它生成包含 PEM 编码的 [pkcs #10](https://tools.ietf.org/html/rfc2986) 认证请求的 `server.csr`，以及包含仍然要创建的证书的 PEM 编码密钥的 `server-key.pem`。
+此命令生成两个文件；它生成包含 PEM 编码的 [pkcs #10](https://datatracker.ietf.org/doc/html/rfc2986) 认证请求的 `server.csr`，以及包含仍然要创建的证书的 PEM 编码密钥的 `server-key.pem`。
 
 ### 创建证书签名请求对象以发送到 Kubernetes API
 

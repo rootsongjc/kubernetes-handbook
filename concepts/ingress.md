@@ -176,7 +176,7 @@ foo.bar.com --|                 |-> foo.bar.com s1:80
 bar.foo.com --|                 |-> bar.foo.com s2:80
 ```
 
-下面这个 ingress 说明基于 [Host header](https://tools.ietf.org/html/rfc7230#section-5.4) 的后端 loadbalancer 的路由请求：
+下面这个 ingress 说明基于 [Host header](https://datatracker.ietf.org/doc/html/rfc7230#section-5.4) 的后端 loadbalancer 的路由请求：
 
 ```yaml
 apiVersion: extensions/v1beta1

@@ -240,7 +240,7 @@ curl --header "Content-Type: application/json-patch+json" \
 http://k8s-master:8080/api/v1/nodes/k8s-node-1/status
 ```
 
-**注意：** 在前面的请求中，`~1` 是 patch 路径中 `/` 字符的编码。JSON-Patch 中的操作路径值被解释为 JSON-Pointer。更多详细信息请参阅 [IETF RFC 6901, section 3](https://tools.ietf.org/html/rfc6901#section-3)。
+**注意：** 在前面的请求中，`~1` 是 patch 路径中 `/` 字符的编码。JSON-Patch 中的操作路径值被解释为 JSON-Pointer。更多详细信息请参阅 [IETF RFC 6901, section 3](https://datatracker.ietf.org/doc/html/rfc6901#section-3)。
 
 ```yaml
 apiVersion: v1

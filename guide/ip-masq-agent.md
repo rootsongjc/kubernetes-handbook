@@ -70,7 +70,7 @@ ip-masq-agent 用户配置 iptables 规则将 Pod 的 IP 地址隐藏在集群 n
 
   本地链路地址是仅能在主机连接的网段或广播域内进行有效通信的网络地址。IPv4 的链路本地地址在 CIDR 表示法定义的地址块是 169.254.0.0/16。
 
-Ip-masq-agent 在将流量发送到集群 node 节点的 IP 和 Cluster IP 范围之外的目的地时，会配置 iptables 规则来处理伪装的 node/pod IP 地址。这基本上将 pod 的 IP 地址隐藏在了集群 node 节点的 IP 地址后面。在某些环境中，到 “外部” 地址的流量必须来自已知的机器地址。例如，在 Google Cloud 中，到互联网的任何流量必须来自虚拟机的 IP。当使用容器时，如在GKE中，Pod IP 将被拒绝作为出口。为了避免这种情况，我们必须将 Pod IP 隐藏在 VM 自己的 IP 地址之后——通常被称为 “伪装”。默认情况下，配置代理将 [RFC 1918](https://tools.ietf.org/html/rfc1918)指定的三个专用 IP 范围视为非伪装 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。范围包括 10.0.0.0/8、172.16.0.0/12 和 192.168.0.0/16。默认情况下，代理还将本地链路（169.254.0.0/16）视为非伪装 CIDR。代理配置为每隔60秒从 */etc/config/ip-masq-agent* 位置重新加载其配置，这也是可配置的。
+Ip-masq-agent 在将流量发送到集群 node 节点的 IP 和 Cluster IP 范围之外的目的地时，会配置 iptables 规则来处理伪装的 node/pod IP 地址。这基本上将 pod 的 IP 地址隐藏在了集群 node 节点的 IP 地址后面。在某些环境中，到 “外部” 地址的流量必须来自已知的机器地址。例如，在 Google Cloud 中，到互联网的任何流量必须来自虚拟机的 IP。当使用容器时，如在GKE中，Pod IP 将被拒绝作为出口。为了避免这种情况，我们必须将 Pod IP 隐藏在 VM 自己的 IP 地址之后——通常被称为 “伪装”。默认情况下，配置代理将指定的三个专用 IP 范围视为非伪装 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。范围包括 10.0.0.0/8、172.16.0.0/12 和 192.168.0.0/16。默认情况下，代理还将本地链路（169.254.0.0/16）视为非伪装 CIDR。代理配置为每隔60秒从 */etc/config/ip-masq-agent* 位置重新加载其配置，这也是可配置的。
 
 ![IP伪装代理示意图](../images/ip-masq.png)
 
