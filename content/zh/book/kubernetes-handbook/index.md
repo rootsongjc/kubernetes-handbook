@@ -1,8 +1,8 @@
 ---
-title: "Kubernetes Handbook"
-date: 2021-04-09T12:00:00+08:00
+title: "Kubernetes 中文指南"
+date: 2022-03-09T08:00:00+08:00
 draft: false
-subtitle : "从Kubernetes起开始实践云原生"
+subtitle : "云原生应用架构实战手册"
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
@@ -91,8 +91,6 @@ aliases:
 - "/posts/the-next-stage-of-cloud-native-apps"
 - "/posts/running-spark-with-kubernetes-native-scheduler"
 ---
-
-### Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册
 
 本书起始于2017年3月，记录了本人从零开始学习和使用Kubernetes的心路历程，着重于经验分享和总结，同时也会有相关的概念解析，希望能够帮助大家少踩坑，少走弯路，还会指引大家关注Kubernetes生态周边，如微服务构建、DevOps、大数据应用、服务网格（Service Mesh）、云原生等领域。
 

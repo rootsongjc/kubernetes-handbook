@@ -1,12 +1,12 @@
 ---
-title: "Istio Handbook"
-date: 2017-03-04T12:00:00+08:00
+title: "Istio 服务网格"
+date: 2022-03-09T12:00:00+08:00
 draft: false
-subtitle : "Istio 服务网格进阶实战"
+subtitle : "云原生应用网络构建指南"
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "本书起源于 [rootsongjc/istio-handbook](https://github.com/rootsongjc/istio-handbook) 及 ServiceMesher 社区创作的 [Istio 知识图谱](https://github.com/servicemesher/istio-knowledge-map)，集结社区力量合作创作而成。"
+description : "云原生应用网络构建指南"
 # book thumbnail
 image: "images/books/istio-handbook.jpg"
 # page banner
@@ -14,7 +14,7 @@ banner: "images/banner/istio.jpg"
 # taxonomy
 category: "电子书"
 # page count
-pages : "1000+"
+pages : "256"
 # book price
 price : "免费"
 # apply url
@@ -33,27 +33,34 @@ aliases:
 - "/posts/the-enterprise-path-to-service-mesh-architectures"
 ---
 
-### Istio Handbook——Istio 服务网格进阶实战
+## 关于本书
 
-Istio Service Mesh Advanced Practical - Master the Services in Post Kubernetes Era
+本书的主题包括：
 
-[Istio](https://istio.io/zh) 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于2017年初开始进入大众视野，作为云原生时代下承 Kubernetes、上接 Serverless 架构的重要基础设施层，地位至关重要。[ServiceMesher 社区](https://www.servicemesher.com/)作为中国最早的一批在研究和推广 Service Mesh 技术的开源社区决定整合社区资源，合作撰写一本开源电子书作为服务网格智库。
+- 服务网格概念解析
+- 控制平面和数据平面的原理
+- Istio 架构详解
+- 基于 Istio 的自定义扩展
+- 迁移到 Istio 服务网格
+- 构建云原生应用网络
 
-您可以通过以下地址阅读或参与本书：
+## 如何阅读本书
 
-- [GitHub](https://github.com/servicemesher/istio-handbook)
-- [Gitbook 在线浏览](https://www.servicemesher.com/istio-handbook)
+本书基于 Istio 1.11+ 版本编写，您可以通过以下地址参与到本书的编写或阅读本书：
 
-### 关于本书
+- [自行构建](https://github.com/rootsongjc/istio-handbook)
+- [在线浏览](https://jimmysong.io/istio-handbook/)（推荐）
 
-本书起源于 [rootsongjc/istio-handbook](https://github.com/rootsongjc/istio-handbook) 及 ServiceMesher 社区创作的 [Istio 知识图谱](https://github.com/servicemesher/istio-knowledge-map)，集结社区力量合作创作而成。
+书中部分内容来自 Tetrate 出品的 [Istio 基础教程](https://academy.tetrate.io/courses/istio-fundamentals-zh)，请访问 [Tetrate 学院](https://academy.tetrate.io/)，解锁全部教程及测试，获得 Tetrate 认证的 Istio 认证。
 
-本书基于 Istio 1.0+ 版本编写，包含但不限于 [Istio 知识图谱](https://github.com/servicemesher/istio-knowledge-map)中的主题。
+## 致谢
 
-### 版权
+感谢 [ServiceMesher](https://www.servicemesher.com) 及[云原生社区](https://cloudnative.to/)先后负责翻译了 [Envoy](https://cloudnative.to/envoy/) 及 [Istio](https://istio.io/latest/zh/) 官方文档，为本书的成书提供了大量参考资料。
 
-本书发行版权归属于电子工业出版社博文视点，未经授权请勿私自印刷发行。
+## 许可证
 
-### 参与本书
+本书所有内容支持使用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  协议共享。
 
-请参阅[本书写作规范](https://github.com/servicemesher/istio-handbook/blob/master/CODE_OF_CONDUCT.md)，加入 ServiceMesher 后进入 Slack channel 讨论。
+## 参与本书
+
+请参考 [Istio 文档样式指南](https://istio.io/latest/about/contribute/style-guide/)。
