@@ -1,5 +1,5 @@
 ---
-title: "Cloud Native Python"
+title: "Python 云原生"
 date: 2018-07-01T12:00:00+08:00
 draft: false
 subtitle: "使用 Python 构建高可扩展 Web 应用"

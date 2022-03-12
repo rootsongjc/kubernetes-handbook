@@ -1,5 +1,5 @@
 ---
-title: "Serverless Handbook"
+title: "Serverless 实战"
 date: 2019-10-21T12:00:00+08:00
 draft: false
 subtitle : "无服务架构实践手册"
@@ -24,8 +24,6 @@ type: "book"
 aliases:
 - "/posts/what-is-serverless"
 ---
-
-### Serverless Handbook——无服务架构实践手册
 
 Serverless（无服务器架构）是指服务端逻辑由开发者实现，应用运行在无状态的计算容器中，由事件触发，完全被第三方管理，其业务层面的状态则存储在数据库或其他介质中。
 

@@ -1,5 +1,5 @@
 ---
-title: "Hugo Handbook"
+title: "Hugo 实战手册"
 date: 2017-10-10T12:00:00+08:00
 draft: false
 subtitle : "Hugo 静态网站构建手册"
