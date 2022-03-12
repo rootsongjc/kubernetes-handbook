@@ -23,8 +23,6 @@ apply_url : "/docker-handbook"
 type: "book"
 ---
 
-### Docker Handbook
-
 此书是 [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/) 的前传，本书中主要介绍 Docker 1.13 新特性和帮助大家了解 Docker 集群的管理和使用。
 
 - [GitHub](https://github.com/rootsongjc/docker-handbook)
