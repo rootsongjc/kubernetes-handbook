@@ -22,7 +22,7 @@
       <div class="row filtr-container">
       <!-- book -->
       {{ range .Data.Pages }}
-      <div data-category="{{ .Params.category | urlize }}" class="col-lg-4 col-sm-6 filtr-item">
+      <div data-category="{{ .Params.category | urlize }}" class="col-lg-3 col-sm-6 filtr-item">
         {{ .Render "book" }}
       </div>
       {{ end }}

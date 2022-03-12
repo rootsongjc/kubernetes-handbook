@@ -12,7 +12,7 @@ image: "images/books/envoy-handbook.jpg"
 # page banner
 banner: "images/banner/python.jpg"
 # taxonomy
-category: "电子书"
+category: "Handbook 系列"
 # author
 author: "Jimmy Song"
 # page count

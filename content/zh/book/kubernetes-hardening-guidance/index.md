@@ -12,7 +12,7 @@ image: "images/books/kubernetes-hardening-guidance-cover.jpg"
 # page banner
 banner: "images/banner/serverless.jpg"
 # taxonomy
-category: "电子书"
+category: "电子书翻译系列"
 # page count
 pages : "62"
 # book price

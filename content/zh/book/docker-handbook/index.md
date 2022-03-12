@@ -12,7 +12,7 @@ image: "images/books/docker-handbook.jpg"
 # page banner
 banner: "images/banner/docker.jpg"
 # taxonomy
-category: "电子书"
+category: "Handbook 系列"
 # page count
 pages : "26"
 # book price

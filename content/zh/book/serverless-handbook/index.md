@@ -12,7 +12,7 @@ image: "images/books/serverless-handbook.jpg"
 # page banner
 banner: "images/banner/serverless.jpg"
 # taxonomy
-category: "电子书"
+category: "Handbook 系列"
 # page count
 pages : "19"
 # book price
