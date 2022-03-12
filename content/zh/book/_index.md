@@ -4,5 +4,5 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "Jimmy Song（宋净超）参与撰写的图书。"
+description : "宋净超（Jimmy Song）创作、编写和翻译的图书。"
 ---

@@ -12,7 +12,7 @@ image: "images/books/cloud-native-infrastructure.jpg"
 # page banner
 banner: "images/banner/infrastructure.jpg"
 # taxonomy
-category: "电子书"
+category: "电子书翻译系列"
 # page count
 pages : "80"
 # book price

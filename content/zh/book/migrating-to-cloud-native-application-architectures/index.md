@@ -12,7 +12,7 @@ image: "images/books/migrating-to-cloud-native-application-architectures.jpg"
 # page banner
 banner: "images/banner/migrating.jpg"
 # taxonomy
-category: "电子书"
+category: "电子书翻译系列"
 # page count
 pages : "13"
 # book price

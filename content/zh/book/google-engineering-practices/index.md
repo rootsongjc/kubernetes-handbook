@@ -12,7 +12,7 @@ image: "images/books/google-engineering-practices.jpg"
 # page banner
 banner: "images/banner/google.jpg"
 # taxonomy
-category: "电子书"
+category: "电子书翻译系列"
 # page count
 pages : "12"
 # book price

@@ -12,7 +12,7 @@ image: "images/books/hugo-handbook.jpg"
 # page banner
 banner: "images/banner/hugo.jpg"
 # taxonomy
-category: "电子书"
+category: "Handbook 系列"
 # page count
 pages : "35"
 # book price

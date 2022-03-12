@@ -12,7 +12,7 @@ image: "images/books/opentelemetry-obervability.jpg"
 # page banner
 banner: "images/banner/python.jpg"
 # taxonomy
-category: "电子书"
+category: "电子书翻译系列"
 # author
 author: "Ted Young"
 # page count

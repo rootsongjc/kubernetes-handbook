@@ -12,7 +12,7 @@ image: "images/books/istio-handbook.jpg"
 # page banner
 banner: "images/banner/istio.jpg"
 # taxonomy
-category: "电子书"
+category: "Handbook 系列"
 # page count
 pages : "256"
 # book price
