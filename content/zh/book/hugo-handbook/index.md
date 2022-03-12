@@ -21,15 +21,13 @@ price : "免费"
 apply_url : "/hugo-handbook"
 # type
 type: "book"
-aliases: 
+aliases:
 - "/posts/jimmysong-io-change-log"
 - "/posts/jimmysong-io-revision-20171001"
 - "/posts/static-website-storage"
 - "/posts/enable-github-pages-https-with-cloudflare"
 - "/posts/hugo-universal-theme-guide"
 ---
-
-### 静态网站构建手册——使用Hugo构建个人博客
 
 本手册将指导你如何使用[Hugo](https://gohugo.io/)构建静态网站用于个人博客或者项目展示。
 
