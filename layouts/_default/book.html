@@ -4,7 +4,9 @@
   </a>
   <div class="book-card-body">
     <ul class="list-inline" align="center">
+      <a href="{{ .Permalink | relURL }}">
       <li class="list-inline-item">{{ .Title }}</li>
+      </a>
     </ul>
     <!--
     <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
