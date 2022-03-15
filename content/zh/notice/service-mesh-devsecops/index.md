@@ -5,7 +5,7 @@ date: 2022-03-14T13:27:49+08:00
 description: "本书译自美国国家标准标准与技术研究院（NIST）SP 800-204C"
 type: "notice"
 link: "https://jimmysong.io/service-mesh-devsecops/"
-image: "images/backgrounds/envoy-logo.png"
+image: "images/backgrounds/notification.jpg"
 ---
 
 本书译自美国国家标准标准与技术研究院（NIST）Special Publication 800-204C。
