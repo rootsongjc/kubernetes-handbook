@@ -258,19 +258,19 @@ weight = 3
 
 [[Languages.zh.menu.main]]
 parent = "图书"
-name = "Kubernetes Handbook"
+name = "Kubernetes 中文指南"
 URL = "kubernetes-handbook/"
 weight = 1
 
 [[Languages.zh.menu.main]]
 parent = "图书"
-name = "Istio Handbook"
+name = "Istio 服务网格"
 URL = "istio-handbook/"
 weight = 2
 
 [[Languages.zh.menu.main]]
 parent = "图书"
-name = "Envoy Handbook"
+name = "Envoy 基础教程"
 URL = "envoy-handbook/"
 weight = 3
 
