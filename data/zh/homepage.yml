@@ -34,7 +34,18 @@ slider:
       button:
         enable : true
         label : "开启旅程"
-        link : "/kubernetes-handbook"
+        link : "/kubernetes-handbook/"
+
+    # slider item loop
+    - title : "云原生图书系列"
+      content : "2017 年至今 Jimmy 参与编写和翻译的云原生出版物，创作的 Handbook 系列及翻译系列电子书，可在本站免费阅读。"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "查看书目"
+        link : "/book/"
 
 ############################### Banner feature ###############################
 banner_feature:
