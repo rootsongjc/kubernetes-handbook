@@ -19,7 +19,7 @@
         <h2>{{ .Title }}</h2>
       </div>
       -->
-      <div class="col-xl-6 order-sm-3 order-xl-2 col-12 order-2">
+      <div class="col-xl-9 order-sm-3 order-xl-2 col-12 order-2">
         <ul class="list-inline">
           <li class="list-inline-item mr-4 mb-3 mb-sm-0">
             <div class="d-flex align-items-center">
@@ -27,6 +27,15 @@
               <div class="text-left">
                 <h6 class="mb-0">{{ i18n "publishedAt" | upper }}</h6>
                 <p class="mb-0">{{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-tag text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">{{ i18n "category" | upper }}</h6>
+                <p class="mb-0">{{ .Params.category | title }}</p>
               </div>
             </div>
           </li>
