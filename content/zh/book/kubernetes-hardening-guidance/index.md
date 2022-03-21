@@ -18,7 +18,7 @@ pages : "62"
 # book price
 price : "免费"
 # apply url
-apply_url : "/kubernetes-hardening-guidance"
+apply_url : "/kubernetes-hardening-guidance/"
 # type
 type: "book"
 ---
