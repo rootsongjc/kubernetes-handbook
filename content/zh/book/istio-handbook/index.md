@@ -18,7 +18,7 @@ pages : "256"
 # book price
 price : "免费"
 # apply url
-apply_url : "https://www.servicemesher.com/istio-handbook"
+apply_url : "https://jimmysong.io/istio-handbook/"
 # type
 type: "book"
 aliases: 
