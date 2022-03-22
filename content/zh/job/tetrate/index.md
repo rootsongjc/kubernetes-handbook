@@ -1,12 +1,17 @@
 ---
 title: "企业级服务网格提供商 Tetrate 公司招聘"
 date: 2020-09-15T07:28:18+08:00
+updated: 2022-03-22
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Base 地：全球远程办公"
 type: "notice"
 image: "images/backgrounds/tetrate-logo.png"
 ---
+
+更新时间：2022年03月22日
+
+我们正在中国招聘 Team Leader 和开发工程师，全球远程办公，让你工作更自由！
 
 ![Tetrate logo](tetrate-logo.jpg)
 
@@ -176,19 +181,23 @@ Tetrate 的云服务团队负责建立和运营基于 SaaS 的应用程序。包
 
 ## 对英语的要求
 
-我们鼓励口头英语和书面英语的非同步沟通，受聘者不必操流利英语。
+我们鼓励口头英语和书面英语的非同步沟通，除 Team Leader 外，受聘者不必操流利英语。
 
 ## 投递简历
 
-请将展示你代码风格的 GitHub 或在线链接与你的**英文简历**一起发送至：[careers@tetrate.io](mailto:careers@tetrate.io)（并抄送给 [jimmy@tetrate.io](mailto:jimmy@tetrate.io)） 或联系 [Jimmy Song](/contact) 了解详情。
+请将展示你代码风格的 GitHub 或在线链接与你的**英文简历**一起发送至：[careers@tetrate.io](mailto:careers@tetrate.io)（并抄送给 [jimmy@tetrate.io](mailto:jimmy@tetrate.io)） 或联系 [Jimmy Song](/contact/) 了解详情。
 
 ## Tetrate 介绍
 
-基于 Istio、Envoy、Apache SkyWalking 等开源项目，Tetrate 的旗舰产品 Tetrate Service Bridge（TSB）可以实现传统和现代工作负载的桥接。在任何环境下，客户都可以为所有工作负载获得一致的内置可观察性、运行时安全性和流量管理。
+基于 Istio、Envoy、Apache SkyWalking 等开源项目，Tetrate 的旗舰产品 [Tetrate Service Bridge](https://tetrate.io/tetrate-service-bridge)（TSB）可以实现传统和现代工作负载的桥接。在任何环境下，客户都可以为所有工作负载获得一致的内置可观察性、运行时安全性和流量管理。
 
 除了技术之外，Tetrate 还带来了一个世界级的团队，领导开放的 Istio、Envoy、Apache SkyWalking 等项目，提供企业可以用来实现人员和流程现代化的最佳实践。
 
 ### Tetrate 的工作氛围
+
+![Forbes](forbes.jpg)
+
+Tetrate 被认定为2022 年福布斯美国最佳创业公司雇主
 
 Tetrate 2018 年创立于硅谷，当年获得 1250 万美元 A 轮融资，2021 年获得 4000 万美元 [B 轮融资](/notice/tetrate-series-b/)。我们的团队主要来自加拿大、中国、印度、印尼、爱尔兰、日本、新西兰、新加坡、西班牙、荷兰和乌克兰。我们的招聘目的很简单，我们期望物色最佳人才，不论背景与居住地。我们并不提供一个头衔或角色，反而更着重于要解决的问题。若可透过实时通话，讨论彼此的交集和兴趣领域，则更为理想。你可以自由选择工作地点，弹性的休假时间和工作日程。我们每年会组织 3 到 4 次的线下团队聚会，最近几次分别举办于旧金山、西雅图、巴塞罗那、圣迭戈、华盛顿和万隆（2020 年以来因为疫情原因暂停）。团队建设活动能拉近团员间的距离，有利于你在远程工作时的协作。
 
