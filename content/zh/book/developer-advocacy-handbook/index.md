@@ -6,7 +6,7 @@ subtitle : "开发者布道师的自我修养"
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
-description : "《开发者布道手册——开发者的自我修养》很多人对布道师这个职位有很多不解，不知道、看不懂。利用最近几个月的时间翻译了下这本书，我相信这本书可以揭开这个职位的神秘面纱，也可以指导想从事这个工作的人。"
+description : "《开发者布道手册——开发者布道师的自我修养》很多人对布道师这个职位有很多不解，不知道、看不懂。利用最近几个月的时间翻译了下这本书，我相信这本书可以揭开这个职位的神秘面纱，也可以指导想从事这个工作的人。"
 # book thumbnail
 image: "images/books/developer-advocacy-handbook.jpg"
 # page banner
@@ -29,12 +29,6 @@ type: "book"
 - 译者：宋净超（Jimmy Song）
 - 阅读：<https://jimmysong.io/developer-advocacy-handbook/>
 - 下载：<https://github.com/rootsongjc/developer-advocacy-handbook/releases/>
-
-<div align="center">
-  <a href="https://jimmysong.io/developer-advocacy-handbook/">
-    <img src="https://jimmysong.io/developer-advocacy-handbook/cover-thumbnail.jpg" title="开发者布道手册" alt="开发者布道手册">
-  </a>
-</div>
 
 ## 译者序
 
