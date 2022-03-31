@@ -12,9 +12,12 @@ Kubernetes 垃圾收集器的角色是删除指定的对象，这些对象曾经
 
 也可以通过手动设置 `ownerReference` 的值，来指定 Owner 和 Dependent 之间的关系。
 
-这有一个配置文件，表示一个具有 3 个 Pod 的 ReplicaSet：
+这有一个配置文件`my-repset.yaml`，表示一个具有 3 个 Pod 的 ReplicaSet：
 
 ```yaml
+# k8s >= 1.16 使用下面注释 https://stackoverflow.com/questions/64412740/no-matches-for-kind-replicaset-in-version-extensions-v1beta1/64412990#64412990
+# apiVersion: apps/v1
+# k8s < 1.16 使用下面配置
 apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
@@ -37,7 +40,7 @@ spec:
 如果创建该 ReplicaSet，然后查看 Pod 的 metadata 字段，能够看到 OwnerReferences 字段：
 
 ```bash
-kubectl create -f https://k8s.io/docs/concepts/abstractions/controllers/my-repset.yaml
+kubectl create -f my-repset.yaml
 kubectl get pods --output=yaml
 ```
 
