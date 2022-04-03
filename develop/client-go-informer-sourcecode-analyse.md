@@ -21,17 +21,22 @@ deploymentLister := kubeInformerFactory.Apps().V1().Deployments().Lister()
 kubeInformerFactory.Start(stopCh)
 ```
 
-### SharedInformerFactory结构
+### SharedInformerFactory 结构
 
-使用sharedInformerFactory可以统一管理控制器中需要的各资源对象的informer实例，避免同一个资源创建多个实例，这里的informer实现是shareIndexInformer
-NewSharedInformerFactory调用了NewSharedInformerFactoryWithOptions，将返回一个sharedInformerFactory对象
+使用 sharedInformerFactory 可以统一管理控制器中需要的各资源对象的 informer 实例，避免同一个资源创建多个实例，这里的 informer 实现是 shareIndexInformer
+NewSharedInformerFactory 调用了 NewSharedInformerFactoryWithOptions，将返回一个 sharedInformerFactory 对象
 
-> client: clientset，支持直接请求api中各内置资源对象的restful group客户端集合
-> namespace: factory关注的namespace（默认All Namespace），informer中的reflector将只会listAndWatch指定namespace的资源
-> defaultResync: 用于初始化持有的shareIndexInformer的resyncCheckPeriod和defaultEventHandlerResyncPeriod字段，用于定时的将local store同步到deltaFIFO
-> customResync：支持针对每一个informer来配置resync时间，通过WithCustomResyncConfig这个Option配置，否则就用指定的defaultResync
-> informers：factory管理的informer集合
-> startedInformers：记录已经启动的informer集合
+> client: clientset，支持直接请求 api 中各内置资源对象的 restful group 客户端集合
+
+> namespace: factory 关注的 namespace（默认 All Namespace），informer 中的 reflector 将只会 listAndWatch 指定 namespace 的资源
+
+> defaultResync: 用于初始化持有的 shareIndexInformer 的 resyncCheckPeriod 和 defaultEventHandlerResyncPeriod 字段，用于定时的将 local store 同步到 deltaFIFO
+
+> customResync：支持针对每一个 informer 来配置 resync 时间，通过 WithCustomResyncConfig 这个 Option 配置，否则就用指定的 defaultResync
+
+> informers：factory 管理的 informer 集合
+
+> startedInformers：记录已经启动的 informer 集合
 
 ```go
 type sharedInformerFactory struct {
