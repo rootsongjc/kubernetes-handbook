@@ -1,4 +1,4 @@
-# Pause容器
+# Pause 容器
 
 Pause 容器，又叫 Infra 容器，本文将探究该容器的作用与原理。
 
