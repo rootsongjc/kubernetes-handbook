@@ -1,4 +1,4 @@
-# Pause容器
+# Pause 容器
 
 Pause 容器，又叫 Infra 容器，本文将探究该容器的作用与原理。
 
@@ -73,33 +73,13 @@ kubernetes 中的 pause 容器主要为每个业务容器提供以下功能：
 我们首先在节点上运行一个 pause 容器。
 
 ```bash
-docker run -d --name pause -p 8880:80 jimmysong/pause-amd64:3.0
+docker run -d --name pause -p 8880:80 --ipc=shareable jimmysong/pause-amd64:3.0
 ```
 
 然后再运行一个 nginx 容器，nginx 将为 `localhost:2368` 创建一个代理。
 
 ```bash
-$ cat <<EOF >> nginx.conff
-error_log stderr;
-events { worker_connections  1024; }
-http {
-    access_log /dev/stdout combined;
-    server {
-        listen 80 default_server;
-        server_name example.com www.example.com;
-        location / {
-            proxy_pass http://127.0.0.1:2368;
-        }
-    }
-}
-EOF
-$ docker run -d --name nginx -v `pwd`/nginx.conf:/etc/nginx/nginx.conf --net=container:pause --ipc=container:pause --pid=container:pause nginx
-```
-
-然后再运行一个 nginx 容器，nginx 将为 `localhost:2368` 创建一个代理。
-
-```bash
-$ cat <<EOF >> nginx.conff
+$ cat <<EOF >> nginx.conf
 error_log stderr;
 events { worker_connections  1024; }
 http {
