@@ -1,6 +1,6 @@
 # Envoy
 
-[Envoy](https://github.com/envoyproxy/envoy) 是一款由 Lyft 开源的，使用 C++ 编写的 L7 代理和通信总线，目前是 [CNCF](https://cncf.io) 旗下的开源项目且已经毕业，代码托管在 GitHub 上，它也是 [Istio](https://istio.io) service mesh 中默认的 data plane。关于 Envoy 的详情请阅读 [Envoy 中文文档](https://cloudnative.to/envoy/).
+[Envoy](https://github.com/envoyproxy/envoy) 是一款由 Lyft 开源的，使用 C++ 编写的 L7 代理和通信总线，目前是 [CNCF](https://cncf.io) 旗下的开源项目且已经毕业，代码托管在 GitHub 上，它也是 [Istio](../usecases/istio.md) 服务网格中默认的数据平面。关于 Envoy 的详情请阅读 [Envoy 中文文档](https://cloudnative.to/envoy/)。
 
 ## 特性
 
