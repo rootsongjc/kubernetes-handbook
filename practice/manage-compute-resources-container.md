@@ -1,6 +1,8 @@
 # 管理容器的计算资源
 
-当您定义 [Pod](http://kubernetes.io/docs/user-guide/pods) 的时候可以选择为每个容器指定需要的 CPU 和内存（RAM）大小。当为容器指定了资源请求后，调度器就能够更好的判断出将容器调度到哪个节点上。如果您还为容器指定了资源限制，节点上的资源就可以按照指定的方式做竞争。
+注意：本文基于 Kubernetes 1.6 撰写。
+
+当你定义 Pod 的时候可以选择为每个容器指定需要的 CPU 和内存（RAM）大小。当为容器指定了资源请求后，调度器就能够更好的判断出将容器调度到哪个节点上。如果你还为容器指定了资源限制，节点上的资源就可以按照指定的方式做竞争。
 
 ## 资源类型
 
@@ -36,7 +38,7 @@ CPU 总是要用绝对数量，不可以使用相对数量；0.1 的 CPU 在单�
 
 ## 内存的含义
 
-内存的限制和请求以字节为单位。您可以使用以下后缀之一作为平均整数或定点整数表示内存：E，P，T，G，M，K。您还可以使用两个字母的等效的幂数：Ei，Pi，Ti ，Gi，Mi，Ki。例如，以下代表大致相同的值：
+内存的限制和请求以字节为单位。你可以使用以下后缀之一作为平均整数或定点整数表示内存：E，P，T，G，M，K。你还可以使用两个字母的等效的幂数：Ei，Pi，Ti ，Gi，Mi，Ki。例如，以下代表大致相同的值：
 
 ```bash
 128974848, 129e6, 129M, 123Mi
@@ -44,7 +46,7 @@ CPU 总是要用绝对数量，不可以使用相对数量；0.1 的 CPU 在单�
 
 下面是个例子。
 
-以下 Pod 有两个容器。每个容器的请求为 0.25 cpu 和 64MiB（2<sup>26</sup> 字节）内存，每个容器的限制为 0.5 cpu 和 128MiB 内存。您可以说该 Pod 请求 0.5 cpu 和 128 MiB 的内存，限制为 1 cpu 和 256MiB 的内存。
+以下 Pod 有两个容器。每个容器的请求为 0.25 cpu 和 64MiB（2<sup>26</sup> 字节）内存，每个容器的限制为 0.5 cpu 和 128MiB 内存。你可以说该 Pod 请求 0.5 cpu 和 128 MiB 的内存，限制为 1 cpu 和 256MiB 的内存。
 
 ```yaml
 apiVersion: v1
@@ -75,7 +77,7 @@ spec:
 
 ## 具有资源请求的 Pod 如何调度
 
-当您创建一个 Pod 时，Kubernetes 调度程序将为 Pod 选择一个节点。每个节点具有每种资源类型的最大容量：可为 Pod 提供的 CPU 和内存量。调度程序确保对于每种资源类型，调度的容器的资源请求的总和小于节点的容量。请注意，尽管节点上的实际内存或 CPU 资源使用量非常低，但如果容量检查失败，则调度程序仍然拒绝在该节点上放置 Pod。当资源使用量稍后增加时，例如在请求率的每日峰值期间，这可以防止节点上的资源短缺。
+当你创建一个 Pod 时，Kubernetes 调度程序将为 Pod 选择一个节点。每个节点具有每种资源类型的最大容量：可为 Pod 提供的 CPU 和内存量。调度程序确保对于每种资源类型，调度的容器的资源请求的总和小于节点的容量。请注意，尽管节点上的实际内存或 CPU 资源使用量非常低，但如果容量检查失败，则调度程序仍然拒绝在该节点上放置 Pod。当资源使用量稍后增加时，例如在请求率的每日峰值期间，这可以防止节点上的资源短缺。
 
 ## 具有资源限制的 Pod 如何运行
 
@@ -108,29 +110,35 @@ Pod 的资源使用情况被报告为 Pod 状态的一部分。
 如果调度器找不到任何该 Pod 可以匹配的节点，则该 Pod 将保持不可调度状态，直到找到一个可以被调度到的位置。每当调度器找不到 Pod 可以调度的地方时，会产生一个事件，如下所示：
 
 ```bash
-$ kubectl describe pod frontend | grep -A 3 Events
+$ kubectl describe pod frontend | grep -A 9999999999 Events
 Events:
-  FirstSeen LastSeen   Count  From          Subobject   PathReason      Message
-  36s   5s     6      {scheduler }              FailedScheduling  Failed for reason PodExceedsFreeCPU and possibly others
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  23s   default-scheduler  0/42 nodes available: insufficient cpu
 ```
 
-在上述示例中，由于节点上的 CPU 资源不足，名为 “frontend” 的 Pod 将无法调度。由于内存不足（PodExceedsFreeMemory），类似的错误消息也可能会导致失败。一般来说，如果有这种类型的消息而处于 pending 状态，您可以尝试如下几件事情：
+在上述示例中，由于节点上的 CPU 资源不足，名为 “frontend” 的 Pod 将无法调度。由于内存不足（PodExceedsFreeMemory），类似的错误消息也可能会导致失败。一般来说，如果有这种类型的消息而处于 pending 状态，你可以尝试如下几件事情：
+
+- 向集群添加更多节点。
+- 终止不需要的 Pod，为 pending 的 Pod 腾出空间。
+- 检查 Pod 所需的资源是否超出所有节点的资源容量。例如，如果所有节点的容量都是 `cpu：1`， 那么一个请求为 `cpu: 1.1` 的 Pod 永远不会被调度。
+- 检查节点上的污点设置。如果集群中节点上存在污点，而新的 Pod 不能容忍污点， 调度器只会考虑将 Pod 调度到不带有该污点的节点上。
+
+你可以使用 `kubectl describe nodes` 命令检查节点容量和已分配的资源数量。 例如：
 
 ```bash
-$ kubectl describe nodes e2e-test-minion-group-4lw4
-Name:            e2e-test-minion-group-4lw4
-[ ... lines removed for clarity ...]
+$ kubectl describe nodes e2e-test-node-pool-4lw4
+Name:            e2e-test-node-pool-4lw4
+[ ... 省略 ...]
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:    0
  cpu:                               2
  memory:                            7679792Ki
  pods:                              110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:    0
  cpu:                               1800m
  memory:                            7474992Ki
  pods:                              110
-[ ... lines removed for clarity ...]
+[ ... 省略 ...]
 Non-terminated Pods:        (5 in total)
   Namespace    Name                                  CPU Requests  CPU Limits  Memory Requests  Memory Limits
   ---------    ----                                  ------------  ----------  ---------------  -------------
@@ -146,9 +154,21 @@ Allocated resources:
   680m (34%)      400m (20%)    920Mi (12%)        1070Mi (14%)
 ```
 
-## 我的容器被终结了
+在上面的输出中，你可以看到如果 Pod 请求超过 1120m CPU 或者 6.23Gi 内存，节点将无法满足。
 
-您的容器可能因为资源枯竭而被终结了。要查看容器是否因为遇到资源限制而被杀死，请在相关的 Pod 上调用 `kubectl describe pod`：
+通过查看 "Pods" 部分，你将看到哪些 Pod 占用了节点上的资源。
+
+Pods 可用的资源量低于节点的资源总量，因为系统守护进程也会使用一部分可用资源。 在 Kubernetes API 中，每个 Node 都有一个 `.status.allocatable` 字段 （详情参见 [NodeStatus](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/node-v1/#NodeStatus)）。
+
+字段 `.status.allocatable` 描述节点上可以用于 Pod 的资源总量（例如：15 个虚拟 CPU、7538 MiB 内存）。关于 Kubernetes 中节点可分配资源的信息，可参阅 [为系统守护进程预留计算资源](https://kubernetes.io/zh/docs/tasks/administer-cluster/reserve-compute-resources/)。
+
+你可以配置[资源配额](https://kubernetes.io/zh/docs/concepts/policy/resource-quotas/)功能特性以限制每个名字空间可以使用的资源总量。 当某名字空间中存在 ResourceQuota 时，Kubernetes 会在该名字空间中的对象强制实施配额。 例如，如果你为不同的团队分配名字空间，你可以为这些名字空间添加 ResourceQuota。 设置资源配额有助于防止一个团队占用太多资源，以至于这种占用会影响其他团队。
+
+你还需要考虑为这些名字空间设置授权访问： 为名字空间提供 **全部** 的写权限时，具有合适权限的人可能删除所有资源， 包括所配置的 ResourceQuota。
+
+## 我的容器被终止了
+
+你的容器可能因为资源枯竭而被终止了。要查看容器是否因为遇到资源限制而被杀死，请在相关的 Pod 上调用 `kubectl describe pod`：
 
 ```bash
 [12:54:41] $ kubectl describe pod simmemleak-hra99
@@ -190,7 +210,7 @@ Events:
 
 在上面的例子中，`Restart Count: 5` 意味着 Pod 中的 `simmemleak` 容器被终止并重启了五次。
 
-您可以使用 `kubectl get pod` 命令加上 `-o go-template=...` 选项来获取之前终止容器的状态。
+你可以使用 `kubectl get pod` 命令加上 `-o go-template=...` 选项来获取之前终止容器的状态。
 
 ```bash
 [13:59:01] $ kubectl get pod -o go-template='{{range.status.containerStatuses}}{{"Container Name: "}}{{.name}}{{"\r\nLastState: "}}{{.lastState}}{{end}}'  simmemleak-60xbc
@@ -198,7 +218,7 @@ Container Name: simmemleak
 LastState: map[terminated:map[exitCode:137 reason:OOM Killed startedAt:2015-07-07T20:58:43Z finishedAt:2015-07-07T20:58:43Z containerID:docker://0e4095bba1feccdfe7ef9fb6ebffe972b4b14285d5acdec6f0d3ae8a22fad8b2]]
 ```
 
-您可以看到容器因为 `reason:OOM killed` 被终止，`OOM` 表示 Out Of Memory。
+你可以看到容器因为 `reason:OOM killed` 被终止，`OOM` 表示 Out Of Memory。
 
 ## 不透明整型资源（Alpha功能）
 
@@ -259,10 +279,14 @@ spec:
 
 ## 计划改进
 
-在 kubernetes 1.5 版本中仅允许在容器上指定资源量。计划改进对所有容器在 Pod 中共享资源的计量，如 [emptyDir volume](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)。
+在 Kubernetes 1.5 版本中仅允许在容器上指定资源量。计划改进对所有容器在 Pod 中共享资源的计量，如 [emptyDir volume](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)。
 
-在 kubernetes 1.5 版本中仅支持容器对 CPU 和内存的申请和限制。计划增加新的资源类型，包括节点磁盘空间资源和一个可支持自定义资源类型的框架。
+在 Kubernetes 1.5 版本中仅支持容器对 CPU 和内存的申请和限制。计划增加新的资源类型，包括节点磁盘空间资源和一个可支持自定义资源类型的框架。
 
 Kubernetes 通过支持通过多级别的 [服务质量](http://issue.k8s.io/168) 来支持资源的过度使用。
 
 在 kubernetes 1.5 版本中，一个 CPU 单位在不同的云提供商和同一云提供商的不同机器类型中的意味都不同。例如，在 AWS 上，节点的容量报告为 [ECU](http://aws.amazon.com/ec2/faqs/)，而在 GCE 中报告为逻辑内核。我们计划修改 cpu 资源的定义，以便在不同的提供商和平台之间保持一致。
+
+## 参考
+
+- [为 Pod 和容器管理资源 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/configuration/manage-resources-containers/)
