@@ -9,7 +9,7 @@ Minikube 用于在本地运行 kubernetes 环境，用来开发和测试。
 下载完成后修改文件名为 `minikube`，然后 `chmod +x minikube`，移动到 `$PATH` 目录下：
 
 ```bash
-sudo mv ~/Download/minikube-darwin-adm64 /usr/loal/bin/
+sudo mv ~/Download/minikube-darwin-adm64 /usr/local/bin/
 sudo chmod +x /usr/local/bin/minikube
 ```
 
