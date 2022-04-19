@@ -79,6 +79,7 @@
   * [基于角色的访问控制（RBAC）](concepts/rbac.md)
   * [NetworkPolicy](concepts/network-policy.md)
   * [SPIFFE](concepts/spiffe.md)
+    * [SPIRE](concepts/spire.md)
 * [网络](concepts/networking.md)
   * [扁平网络 Flannel](concepts/flannel.md)
   * [非 Overlay 扁平网络 Calico](concepts/calico.md)

@@ -48,8 +48,7 @@ SPIFFE 可验证的身份文件（SVID）
 
 SVID（SPIFFE Verifiable Identity Document） 是工作负载向资源或调用者证明其身份的文件。如果 SVID 是由 SPIFFE ID 的信任域内的机构签发的，则被认为是有效的。
 
-SVID 包含一个 SPIFFE ID，代表了服务的身份。它将 SPIFFE
-ID 编码在一个可加密验证的文件中，目前支持两种格式：X.509 证书或 JWT 令牌。
+SVID 包含一个 SPIFFE ID，代表了服务的身份。它将 SPIFFE ID 编码在一个可加密验证的文件中，目前支持两种格式：X.509 证书或 JWT 令牌。
 
 由于令牌容易受到**重放攻击（replay attack）**，即在传输过程中获得令牌的攻击者可以使用它来冒充工作负载，因此建议尽可能使用 `X.509-SVID`。然而，在某些情况下，JWT令牌格式是唯一的选择，例如，当你的架构在两个工作负载之间有一个L7代理或负载均衡器。
 
