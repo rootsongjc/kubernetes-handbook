@@ -12,13 +12,17 @@ eBPF 是**扩展的柏克莱封包过滤器**（extented Berkeley Packet Filter�
 
 双向 TLS 通过内置身份和凭证管理，提供强大的服务到服务身份验证。 了解更多关于双向 TLS 身份验证。
 
+## OpenAPI
+
+OpenAPI 一般指的是 OpenAPI 规范（OAS），它为 HTTP API 定义了一个标准的、与编程语言无关的接口描述，允许人类和计算机发现和理解一个服务的能力，而不需要访问源代码、额外的文档或检查网络流量。
+
 ## OpenTracing
 
 OpenTracing 是一个分布式追踪标准规范，它定义了一套通用的数据上报接口，提供平台无关、厂商无关的 API，要求各个分布式追踪系统都来实现这套接口，使得开发人员能够方便的添加（或更换）追踪系统的实现。
 
 ## Operator
 
-Operator 是打包、部署和管理 Kubernetes 应用程序的一种方法。有关更多信息，请参见 [operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)。
+Operator 是打包、部署和管理 Kubernetes 应用程序的一种方法。
 
 ## Sidecar
 
@@ -34,7 +38,7 @@ SPIRE 是 SPIFFE API 的一个生产就绪的实现，用于执行节点和工�
 
 ## SPIFFE ID
 
-SPIFFE ID 是一个[统一资源标识符（URI](https://tools.ietf.org/html/rfc3986)），其格式如下：`spiffe://信任域/工作负载标识符`，用来唯一地、具体地标识一个工作负载。
+SPIFFE ID 是一个统一资源标识符（URI），其格式如下：`spiffe://信任域/工作负载标识符`，用来唯一地、具体地标识一个工作负载。
 
 ## SVID
 
