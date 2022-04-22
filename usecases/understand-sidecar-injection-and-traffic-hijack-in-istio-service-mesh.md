@@ -1,8 +1,6 @@
 # Sidecar 的注入与流量劫持
 
-**本文基于 Istio 1.5。**
-
-本文基于 Istio 1.5.1 版本，将为大家介绍以下内容：
+本文基于 Istio 1.11 版本，将为大家介绍以下内容：
 
 - 什么是 sidecar 模式和它的优势在哪里。
 - Istio 中是如何做 sidecar 注入的？
@@ -32,7 +30,7 @@
 Istio 中提供了以下两种 sidecar 注入方式：
 
 - 使用 `istioctl` 手动注入。
-- 基于 Kubernetes 的 [突变 webhook 入驻控制器（mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) 的自动 sidecar 注入方式。
+- 基于 Kubernetes 的 [突变 webhook 准入控制器（mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) 的自动 sidecar 注入方式。
 
 不论是手动注入还是自动注入，sidecar 的注入过程都需要遵循如下步骤：
 
@@ -66,304 +64,104 @@ Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有�
 
 ## Sidecar 注入示例分析
 
-以 Istio 官方提供的 `bookinfo` 中 `productpage` 的 YAML 为例，关于 `bookinfo` 应用的详细 YAML 配置请参考 [bookinfo.yaml](https://github.com/istio/istio/blob/master/samples/bookinfo/platform/kube/bookinfo.yaml)。
+本文我们将以 Istio 官方示例 `bookinfo` 中 `reivews` 服务为例，来接讲解 Sidecar 容器注入的额流程，每个注入了 Sidecar 的 Pod 中除了原先应用的应用本身的容器外，都会多出来这样两个容器：
 
-下文将从以下几个方面讲解：
-
-- Sidecar 容器的注入
-- iptables 规则的创建
-- 路由的详细过程
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: productpage-v1
-  labels:
-    app: productpage
-    version: v1
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: productpage
-      version: v1
-  template:
-    metadata:
-      labels:
-        app: productpage
-        version: v1
-    spec:
-      serviceAccountName: bookinfo-productpage
-      containers:
-      - name: productpage
-        image: docker.io/istio/examples-bookinfo-productpage-v1:1.15.0
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 9080
-        volumeMounts:
-        - name: tmp
-          mountPath: /tmp
-      volumes:
-      - name: tmp
-        emptyDir: {}
-```
-
-再查看下 `productpage` 容器的 [Dockerfile](https://github.com/istio/istio/blob/master/samples/bookinfo/src/productpage/Dockerfile)。
-
-```docker
-FROM python:3.7.4-slim
-
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY test-requirements.txt ./
-RUN pip install --no-cache-dir -r test-requirements.txt
-
-COPY productpage.py /opt/microservices/
-COPY tests/unit/* /opt/microservices/
-COPY templates /opt/microservices/templates
-COPY static /opt/microservices/static
-COPY requirements.txt /opt/microservices/
-
-ARG flood_factor
-ENV FLOOD_FACTOR ${flood_factor:-0}
-
-EXPOSE 9080
-WORKDIR /opt/microservices
-RUN python -m unittest discover
-
-USER 1
-
-CMD ["python", "productpage.py", "9080"]
-```
-
-我们看到 `Dockerfile` 中没有配置 `ENTRYPOINT`，所以 `CMD` 的配置 `python productpage.py 9080` 将作为默认的 `ENTRYPOINT`，记住这一点，再看下注入 sidecar 之后的配置。
-
-```bash
-$ istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml
-```
-
-我们只截取其中与 `productpage` 相关的 `Deployment` 配置中的部分 YAML 配置。
-
-```yaml
-      containers:
-      - image: docker.io/istio/examples-bookinfo-productpage-v1:1.15.0 # 应用镜像
-        name: productpage
-        ports:
-        - containerPort: 9080
-      - args:
-        - proxy
-        - sidecar
-        - --domain
-        - $(POD_NAMESPACE).svc.cluster.local
-        - --configPath
-        - /etc/istio/proxy
-        - --binaryPath
-        - /usr/local/bin/envoy
-        - --serviceCluster
-        - productpage.$(POD_NAMESPACE)
-        - --drainDuration
-        - 45s
-        - --parentShutdownDuration
-        - 1m0s
-        - --discoveryAddress
-        - istiod.istio-system.svc:15012
-        - --zipkinAddress
-        - zipkin.istio-system:9411
-        - --proxyLogLevel=warning
-        - --proxyComponentLogLevel=misc:error
-        - --connectTimeout
-        - 10s
-        - --proxyAdminPort
-        - "15000"
-        - --concurrency
-        - "2"
-        - --controlPlaneAuthPolicy
-        - NONE
-        - --dnsRefreshRate
-        - 300s
-        - --statusPort
-        - "15020"
-        - --trust-domain=cluster.local
-        - --controlPlaneBootstrap=false
-        image: docker.io/istio/proxyv2:1.5.1 # sidecar proxy
-        name: istio-proxy
-        ports:
-        - containerPort: 15090
-          name: http-envoy-prom
-          protocol: TCP
-      initContainers:
-      - command:
-        - istio-iptables
-        - -p
-        - "15001"
-        - -z
-        - "15006"
-        - -u
-        - "1337"
-        - -m
-        - REDIRECT
-        - -i
-        - '*'
-        - -x
-        - ""
-        - -b
-        - '*'
-        - -d
-        - 15090,15020
-        image: docker.io/istio/proxyv2:1.5.1 # init 容器
-        name: istio-init
-```
-
-Istio 给应用 Pod 注入的配置主要包括：
-
-- Init 容器 `istio-init`：用于 pod 中设置 iptables 端口转发
-- Sidecar 容器 `istio-proxy`：运行 sidecar 代理
+- `istio-init`：用于给 Sidecar 容器即 Envoy 代理做初始化，设置 iptables 端口转发
+- `istio-proxy`：Envoy 代理容器，运行 Envoy 代理
 
 接下来将分别解析下这两个容器。
 
-## Init 容器解析
+### Init 容器解析
 
-Istio 在 pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动命令是：
+Istio 在 Pod 中注入的 Init 容器名为 `istio-init`，如果你查看 `reviews` Deployment 配置，你将看到其中 `initContaienrs` 的启动参数：
 
 ```bash
-istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 15090,15020
+      initContainers:
+        - name: istio-init
+          image: docker.io/istio/proxyv2:1.13.1
+          args:
+            - istio-iptables
+            - '-p'
+            - '15001'
+            - '-z'
+            - '15006'
+            - '-u'
+            - '1337'
+            - '-m'
+            - REDIRECT
+            - '-i'
+            - '*'
+            - '-x'
+            - ''
+            - '-b'
+            - '*'
+            - '-d'
+            - 15090,15021,15020
 ```
 
-我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2) 看看 `ENTRYPOINT` 是怎么确定启动时执行的命令。
-
-```docker
-# 前面的内容省略
-# The pilot-agent will bootstrap Envoy.
-ENTRYPOINT ["/usr/local/bin/pilot-agent"]
-```
-
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables` 命令行，该命令行工具的代码的位置在 Istio 源码仓库的 [tools/istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 目录。
-
-注意：在 Istio 1.1 版本时还是使用 `isito-iptables.sh` 命令行来操作 IPtables。
+我们看到 `istio-init` 容器的入口是 `istio-iptables` 命令，该命令是用于初始化路由表的。
 
 ### Init 容器启动入口
 
-Init 容器的启动入口是 `istio-iptables` 命令行，该命令行工具的用法如下：
+Init 容器的启动入口是 `/usr/local/bin/istio-iptable` 命令，该命令的用法如下：
 
 ```bash
-$ istio-iptables [flags]
-  -p: 指定重定向所有 TCP 流量的 sidecar 端口（默认为 $ENVOY_PORT = 15001）
-  -m: 指定入站连接重定向到 sidecar 的模式，“REDIRECT” 或 “TPROXY”（默认为 $ISTIO_INBOUND_INTERCEPTION_MODE)
+$ istio-iptables -p PORT -u UID -g GID [-m mode] [-b ports] [-d ports] [-i CIDR] [-x CIDR] [-h]
+  -p: 指定重定向所有 TCP 流量的 Envoy 端口（默认为 $ENVOY_PORT = 15001）
+  -u: 指定未应用重定向的用户的 UID。通常，这是代理容器的 UID（默认为 $ENVOY_USER 的 uid，istio_proxy 的 uid 或 1337）
+  -g: 指定未应用重定向的用户的 GID。（与 -u param 相同的默认值）
+  -m: 指定入站连接重定向到 Envoy 的模式，“REDIRECT” 或 “TPROXY”（默认为 $ISTIO_INBOUND_INTERCEPTION_MODE)
   -b: 逗号分隔的入站端口列表，其流量将重定向到 Envoy（可选）。使用通配符 “*” 表示重定向所有端口。为空时表示禁用所有入站重定向（默认为 $ISTIO_INBOUND_PORTS）
-  -d: 指定要从重定向到 sidecar 中排除的入站端口列表（可选），以逗号格式分隔。使用通配符“*” 表示重定向所有入站流量（默认为 $ISTIO_LOCAL_EXCLUDE_PORTS）
-  -o：逗号分隔的出站端口列表，不包括重定向到 Envoy 的端口。
-  -i: 指定重定向到 sidecar 的 IP 地址范围（可选），以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量。空列表将禁用所有出站重定向（默认为 $ISTIO_SERVICE_CIDR）
+  -d: 指定要从重定向到 Envoy 中排除（可选）的入站端口列表，以逗号格式分隔。使用通配符“*” 表示重定向所有入站流量（默认为 $ISTIO_LOCAL_EXCLUDE_PORTS）
+  -i: 指定重定向到 Envoy（可选）的 IP 地址范围，以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量。空列表将禁用所有出站重定向（默认为 $ISTIO_SERVICE_CIDR）
   -x: 指定将从重定向中排除的 IP 地址范围，以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量（默认为 $ISTIO_SERVICE_EXCLUDE_CIDR）。
-  -k：逗号分隔的虚拟接口列表，其入站流量（来自虚拟机的）将被视为出站流量。
-  -g：指定不应用重定向的用户的 GID。(默认值与 -u param 相同)
-  -u：指定不应用重定向的用户的 UID。通常情况下，这是代理容器的 UID（默认值是 1337，即 istio-proxy 的 UID）。
-  -z: 所有进入 pod/VM 的 TCP 流量应被重定向到的端口（默认 $INBOUND_CAPTURE_PORT = 15006）。
+  -z: 所有入站 TCP 流量重定向端口（默认为 $INBOUND_CAPTURE_PORT 15006）
 ```
 
-以上传入的参数都会重新组装成 [`iptables` ](https://wangchujiang.com/linux-command/c/iptables.html)规则，关于该命令的详细用法请访问 [tools/istio-iptables/pkg/cmd/root.go](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
+关于该命令的详细代码请[查看 GitHub：`tools/istio-iptables/pkg/cmd/root.go`](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
 
-该容器存在的意义就是让 sidecar 代理可以拦截所有的进出 pod 的流量，15090 端口（Mixer 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（sidecar），再拦截应用容器的出站（outbound）流量经过 sidecar 处理（通过 15001 端口监听）后再出站。关于 Istio 中端口用途请参考 [Istio 官方文档](https://istio.io/zh/docs/ops/deployment/requirements/)。
+再参考 `istio-init` 容器的启动参数，完整的启动命令如下：
+
+```bash
+$ /usr/local/bin/istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b * -d "15090,15201,15020"
+```
+
+该容器存在的意义就是让 Envoy 代理可以拦截所有的进出 Pod 的流量，即将入站流量重定向到 Sidecar，再拦截应用容器的出站流量经过 Sidecar 处理后再出站。
 
 **命令解析**
 
 这条启动命令的作用是：
 
-- 将应用容器的所有流量都转发到 sidecar 的 15006 端口。
-- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 sidecar 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
+- 将应用容器的所有流量都转发到 Envoy 的 15006 端口。
+- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 Envoy 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
 - 使用默认的 `REDIRECT` 模式来重定向流量。
-- 将所有出站流量都重定向到 sidecar 代理（通过 15001 端口）。
+- 将所有出站流量都重定向到 Envoy 代理。
+- 将除了 15090、15201、15020 端口以外的所有端口的流量重定向到 Envoy 代理。
 
-因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 sidecar 容器中。
+因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 Sidecar 容器中。
 
-## iptables 注入解析
+### istio-proxy 容器解析
 
-为了查看 iptables 配置，我们需要登陆到 sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `productpage` pod 所在的主机上使用 `docker` 命令登陆容器中查看。
+为了查看 iptables 配置，我们需要登陆到 Sidecar 容器中使用 root 用户来查看，因为 `kubectl` 无法使用特权模式来远程操作 docker 容器，所以我们需要登陆到 `reviews` Pod 所在的主机上使用 `docker` 命令登陆容器中查看。
 
-如果您使用 minikube 部署的 Kubernetes，可以直接登录到 minikube 的虚拟机中并切换为 root 用户。查看 iptables 配置，列出 NAT（网络地址转换）表的所有规则，因为在 Init 容器启动的时候选择给 `istio-iptables` 传递的参数中指定将入站流量重定向到 sidecar 的模式为 `REDIRECT`，因此在 iptables 中将只有 NAT 表的规格配置，如果选择 `TPROXY` 还会有 `mangle` 表配置。`iptables` 命令的详细用法请参考 [iptables](https://wangchujiang.com/linux-command/c/iptables.html) 命令。
-
-我们仅查看与 `productpage` 有关的 iptables 规则如下。
+查看 `reviews` Pod 所在的主机。
 
 ```bash
-# 进入 minikube 并切换为 root 用户，minikube 默认用户为 docker
-$ minikube ssh
+$ kubectl -n default get pod -l app=reviews -o wide
+NAME                              READY     STATUS    RESTARTS   AGE       IP             NODE
+reviews-v1-745ffc55b7-2l2lw   2/2       Running   0          1d        172.33.78.10   node3
+```
+
+从输出结果中可以看到该 Pod 运行在 `node3` 上，使用 `vagrant` 命令登陆到 `node3` 主机中并切换为 root 用户。
+
+```bash
+$ vagrant ssh node3
 $ sudo -i
-
-# 查看 productpage pod 的 istio-proxy 容器中的进程
-$ docker top `docker ps|grep "istio-proxy_productpage"|cut -d " " -f1`
-UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
-1337                10576               10517               0                   08:09               ?                   00:00:07            /usr/local/bin/pilot-agent proxy sidecar --domain default.svc.cluster.local --configPath /etc/istio/proxy --binaryPath /usr/local/bin/envoy --serviceCluster productpage.default --drainDuration 45s --parentShutdownDuration 1m0s --discoveryAddress istiod.istio-system.svc:15012 --zipkinAddress zipkin.istio-system:9411 --proxyLogLevel=warning --proxyComponentLogLevel=misc:error --connectTimeout 10s --proxyAdminPort 15000 --concurrency 2 --controlPlaneAuthPolicy NONE --dnsRefreshRate 300s --statusPort 15020 --trust-domain=cluster.local --controlPlaneBootstrap=false
-1337                10660               10576               0                   08:09               ?                   00:00:33            /usr/local/bin/envoy -c /etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --drain-time-s 45 --parent-shutdown-time-s 60 --service-cluster productpage.default --service-node sidecar~172.17.0.16~productpage-v1-7f44c4d57c-ksf9b.default~default.svc.cluster.local --max-obj-name-len 189 --local-address-ip-version v4 --log-format [Envoy (Epoch 0)] [%Y-%m-%d %T.%e][%t][%l][%n] %v -l warning --component-log-level misc:error --concurrency 2
-
-# 进入 nsenter 进入 sidecar 容器的命名空间（以上任何一个都可以）
-$ nsenter -n --target 10660
 ```
 
-在该进程的命名空间下查看其 iptables 规则链。
+查看 iptables 配置，列出 NAT（网络地址转换）表的所有规则，因为在 Init 容器启动的时候选择给 `istio-iptables.sh` 传递的参数中指定将入站流量重定向到 Envoy 的模式为 “REDIRECT”，因此在 iptables 中将只有 NAT 表的规格配置，如果选择 `TPROXY` 还会有 `mangle` 表配置。`iptables` 命令的详细用法请参考 [iptables](https://wangchujiang.com/linux-command/c/iptables.html)，规则配置请参考 [iptables 规则配置](http://www.zsythink.net/archives/1517)。
 
-```bash
-# 查看 NAT 表中规则配置的详细信息。
-$ iptables -t nat -L -v
-# PREROUTING 链：用于目标地址转换（DNAT），将所有入站 TCP 流量跳转到 ISTIO_INBOUND 链上。
-Chain PREROUTING (policy ACCEPT 2701 packets, 162K bytes)
- pkts bytes target     prot opt in     out     source               destination
- 2701  162K ISTIO_INBOUND  tcp  --  any    any     anywhere             anywhere
-
-# INPUT 链：处理输入数据包，非 TCP 流量将继续 OUTPUT 链。
-Chain INPUT (policy ACCEPT 2701 packets, 162K bytes)
- pkts bytes target     prot opt in     out     source               destination
-
-# OUTPUT 链：将所有出站数据包跳转到 ISTIO_OUTPUT 链上。
-Chain OUTPUT (policy ACCEPT 79 packets, 6761 bytes)
- pkts bytes target     prot opt in     out     source               destination
-   15   900 ISTIO_OUTPUT  tcp  --  any    any     anywhere             anywhere
-
-# POSTROUTING 链：所有数据包流出网卡时都要先进入POSTROUTING 链，内核根据数据包目的地判断是否需要转发出去，我们看到此处未做任何处理。
-Chain POSTROUTING (policy ACCEPT 79 packets, 6761 bytes)
- pkts bytes target     prot opt in     out     source               destination
-
-# ISTIO_INBOUND 链：将所有入站流量重定向到 ISTIO_IN_REDIRECT 链上，目的地为 15090（mixer 使用）和 15020（Ingress gateway 使用，用于 Pilot 健康检查）端口的流量除外，发送到以上两个端口的流量将返回 iptables 规则链的调用点，即 PREROUTING 链的后继 POSTROUTING。
-Chain ISTIO_INBOUND (1 references)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
-    2   120 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:15090
- 2699  162K RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:15020
-    0     0 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere
-
-# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15006 端口，至此成功的拦截了流量到 sidecar 中。
-Chain ISTIO_IN_REDIRECT (3 references)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
-
-# ISTIO_OUTPUT 链：选择需要重定向到 Envoy（即本地） 的出站流量，所有非 localhost 的流量全部转发到 ISTIO_REDIRECT。为了避免流量在该 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 ISTIO_OUTPUT 规则之后就进入下一条链 POSTROUTING。如果目的地非 localhost 就跳转到 ISTIO_REDIRECT；如果流量是来自 istio-proxy 用户空间的，那么就跳出该链，返回它的调用链继续执行下一条规则（OUTPUT 的下一条规则，无需对流量进行处理）；所有的非 istio-proxy 用户空间的目的地是 localhost 的流量就跳转到 ISTIO_REDIRECT。
-Chain ISTIO_OUTPUT (1 references)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 RETURN     all  --  any    lo      127.0.0.6            anywhere
-    0     0 ISTIO_IN_REDIRECT  all  --  any    lo      anywhere            !localhost            owner UID match 1337
-    0     0 RETURN     all  --  any    lo      anywhere             anywhere             ! owner UID match 1337
-   15   900 RETURN     all  --  any    any     anywhere             anywhere             owner UID match 1337
-    0     0 ISTIO_IN_REDIRECT  all  --  any    lo      anywhere            !localhost            owner GID match 1337
-    0     0 RETURN     all  --  any    lo      anywhere             anywhere             ! owner GID match 1337
-    0     0 RETURN     all  --  any    any     anywhere             anywhere             owner GID match 1337
-    0     0 RETURN     all  --  any    any     anywhere             localhost
-    0     0 ISTIO_REDIRECT  all  --  any    any     anywhere             anywhere
-
-# ISTIO_REDIRECT 链：将所有流量重定向到 Sidecar（即本地） 的 15001 端口。
-Chain ISTIO_REDIRECT (1 references)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
-```
-
-下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 sidecar proxy 是如何做流量拦截和路由转发的。
-
-![Sidecar 流量劫持示意图](../images/envoy-sidecar-traffic-interception-jimmysong-blog.png)
-
-第一步开始时，`productpage` Pod 中的 sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
-
-`reviews` 服务有三个版本，每个版本有一个实例，三个版本中的 sidecar 工作步骤类似，下文只以其中一个 Pod 中的 sidecar 流量转发步骤来说明。
-
-### 理解 iptables
+## 理解 iptables
 
 `iptables` 是 Linux 内核中的防火墙软件 netfilter 的管理工具，位于用户空间，同时也是 netfilter 的一部分。Netfilter 位于内核空间，不仅有网络地址转换的功能，也具备数据包内容修改、以及数据包过滤等防火墙功能。
 
@@ -378,10 +176,10 @@ Chain ISTIO_REDIRECT (1 references)
 Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 
 1. `raw` 用于配置数据包，`raw` 中的数据包不会被系统跟踪。
-1. `filter` 是用于存放所有与防火墙相关操作的默认表。
-1. `nat` 用于 [网络地址转换](https://en.wikipedia.org/wiki/Network_address_translation)（例如：端口转发）。
-1. `mangle` 用于对特定数据包的修改（参考[损坏数据包](https://en.wikipedia.org/wiki/Mangled_packet)）。
-1. `security` 用于[强制访问控制](https://wiki.archlinux.org/index.php/Security#Mandatory_access_control) 网络规则。
+2. `filter` 是用于存放所有与防火墙相关操作的默认表。
+3. `nat` 用于 [网络地址转换](https://en.wikipedia.org/wiki/Network_address_translation)（例如：端口转发）。
+4. `mangle` 用于对特定数据包的修改（参考[损坏数据包](https://en.wikipedia.org/wiki/Mangled_packet)）。
+5. `security` 用于[强制访问控制](https://wiki.archlinux.org/index.php/Security#Mandatory_access_control) 网络规则。
 
 **注**：在本示例中只用到了 `nat` 表。
 
@@ -394,6 +192,18 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 | OUTPUT      |      | ✓      | ✓    | ✓      | ✓        |
 | POSTROUTING |      |        | ✓    | ✓      |          |
 | FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
+
+下图是 iptables 的调用链顺序。
+
+### iptables 命令
+
+`iptables` 命令的主要用途是修改这些表中的规则。`iptables` 命令格式如下：
+
+```bash
+$ iptables [-t 表名] 命令选项［链名]［条件匹配］[-j 目标动作或跳转］
+```
+
+Init 容器中的 `/istio-iptables.sh` 启动入口脚本就是执行 iptables 初始化的。
 
 ### 理解 iptables 规则
 
@@ -411,9 +221,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
  pkts bytes target     prot opt in     out     source               destination
 ```
 
-我们看到三个默认的链，分别是 INPUT、FORWARD 和 OUTPUT，每个链中的第一行输出表示链名称（在本例中为INPUT/FORWARD/OUTPUT），后跟默认策略（ACCEPT）。
-
-下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
+我们看到三个默认的链，分别是 INPUT、FORWARD 和 OUTPUT，每个链中的第一行输出表示链名称（在本例中为 INPUT/FORWARD/OUTPUT），后跟默认策略（ACCEPT）。
 
 每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
 
@@ -429,369 +237,98 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 还有一列没有表头，显示在最后，表示规则的选项，作为规则的扩展匹配条件，用来补充前面的几列中的配置。`prot`、`opt`、`in`、`out`、`source` 和 `destination` 和显示在 `destination` 后面的没有表头的一列扩展条件共同组成匹配规则。当流量匹配这些规则后就会执行 `target`。
 
+关于 iptables 规则请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
+
 **target 支持的类型**
 
 `target` 类型包括 ACCEPT`、REJECT`、`DROP`、`LOG` 、`SNAT`、`MASQUERADE`、`DNAT`、`REDIRECT`、`RETURN` 或者跳转到其他规则等。只要执行到某一条链中只有按照顺序有一条规则匹配后就可以确定报文的去向了，除了 `RETURN` 类型，类似编程语言中的 `return` 语句，返回到它的调用点，继续执行下一条规则。`target` 支持的配置详解请参考 [iptables 详解（1）：iptables 概念](http://www.zsythink.net/archives/1199)。
 
 从输出结果中可以看到 Init 容器没有在 iptables 的默认链路中创建任何规则，而是创建了新的链路。
 
-## 流量路由过程详解
+## 查看 iptables nat 表中注入的规则
 
-流量路由分为 Inbound 和 Outbound 两个过程，下面将根据上文中的示例及 sidecar 的配置为读者详细分析此过程。
+Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是三个 reviews 服务示例中的某一个 Pod，其中有 init 容器、应用容器和 sidecar 容器，图中展示了 iptables 流量劫持的详细过程。
 
-### 理解 Inbound Handler
+![Sidecar 流量劫持示意图](../images/envoy-sidecar-traffic-interception-jimmysong-blog.png)
 
-Inbound handler 的作用是将 iptables 拦截到的 downstream 的流量转交给 localhost，与 Pod 内的应用程序容器建立连接。假设其中一个 Pod 的名字是 `reviews-v1-54b8794ddf-jxksn`，运行 `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` 查看该 Pod 中的具有哪些 Listener。
+Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。
 
-```ini
-ADDRESS            PORT      TYPE
-172.17.0.15        9080      HTTP <--- 接收所有 Inbound HTTP 流量，该地址即为业务进程的真实监听地址
-172.17.0.15        15020     TCP <--- Ingress Gateway，Pilot 健康检查
-10.109.20.166      15012     TCP <--- Istiod http dns
-10.103.34.135      14250     TCP <--+
-10.103.34.135      14267     TCP    |
-10.103.34.135      14268     TCP    |
-10.104.122.175     15020     TCP    |
-10.104.122.175     15029     TCP    |
-10.104.122.175     15030     TCP    |
-10.104.122.175     15031     TCP    |
-10.104.122.175     15032     TCP    |
-10.104.122.175     15443     TCP    |
-10.104.122.175     31400     TCP    | 接收与 0.0.0.0:15006 监听器配对的 Outbound 流量
-10.104.122.175     443       TCP    |
-10.104.62.18       15443     TCP    |
-10.104.62.18       443       TCP    |
-10.106.201.253     16686     TCP    |
-10.109.20.166      443       TCP    |
-10.96.0.1          443       TCP    |
-10.96.0.10         53        TCP    |
-10.96.0.10         9153      TCP    |
-10.98.184.149      15011     TCP    |
-10.98.184.149      15012     TCP    |
-10.98.184.149      443       TCP    |
-0.0.0.0            14250     TCP    |
-0.0.0.0            15010     TCP    |
-0.0.0.0            15014     TCP    |
-0.0.0.0            15090     HTTP   |
-0.0.0.0            20001     TCP    |
-0.0.0.0            3000      TCP    |
-0.0.0.0            80        TCP    |
-0.0.0.0            8080      TCP    |
-0.0.0.0            9080      TCP    |
-0.0.0.0            9090      TCP    |
-0.0.0.0            9411      TCP <--+
-0.0.0.0            15001     TCP <--- 接收所有经 iptables 拦截的 Outbound 流量并转交给虚拟监听器处理
-0.0.0.0            15006     TCP <--- 接收所有经 iptables 拦截的 Inbound 流量并转交给虚拟监听器处理
+### 进入到 reviews pod
+
+Reviews 服务有三个版本，我们进入到其中任意一个版本，例如 reviews-1，首先你需要搞清楚这个 pod 运行在哪个节点上，知道那个容器的具体 ID，然后使用 SSH 登录那个节点，使用 `ps` 命令查看到那个容器的具体 IP，使用 `nsenter` 命令进入该容器。
+
+```sh
+nsenter -t{PID} -n
 ```
 
-当来自 `productpage` 的流量抵达 `reviews` Pod 的时候，downstream 已经明确知道 Pod 的 IP 地址为 `172.17.0.16` 所以才会访问该 Pod，所以该请求是 `172.17.0.15:9080`。
+**为什么不直接使用 kubectl 进入容器？**
 
-**`virtualInbound` Listener**
+Istio 向 pod 中自动注入的 sidecar 容器（名为 `istio-proxy`）其中默认的用户是 `istio-proxy`，该用户没有权限查看路由表规则，即当你在该容器中运行 `iptabes` 命令时会得到 `iptables -t nat -L -v` 这样的结果，而且你又没有 root 权限。对于 reviews 容器也是一样，默认用户的 UID 是 `1000`，而且这个用户又没有名字，一样也无法切换为 root 用户，系统中默认没有安装 iptabels 命令。所以我们只能登录到 Pod 的宿主节点上，使用 `nsenter` 命令进入容器内部。
 
-从该 Pod 的 Listener 列表中可以看到，`0.0.0.0:15006/TCP` 的 Listener（其实际名字是 `virtualInbound`）监听所有的 Inbound 流量，下面是该 Listener 的详细配置。
+### 查看路由表
 
-```json
-{
-    "name": "virtualInbound",
-    "address": {
-        "socketAddress": {
-            "address": "0.0.0.0",
-            "portValue": 15006
-        }
-    },
-"filterChains": [
-    {
-        "filters": [
-        /*省略部分内容*/
-              {
-            "filterChainMatch": {
-                "destinationPort": 9080,
-                "prefixRanges": [
-                    {
-                        "addressPrefix": "172.17.0.15",
-                        "prefixLen": 32
-                    }
-                ],
-                "applicationProtocols": [
-                    "istio-peer-exchange",
-                    "istio",
-                    "istio-http/1.0",
-                    "istio-http/1.1",
-                    "istio-h2"
-                ]
-            },
-            "filters": [
-                {
-                    "name": "envoy.filters.network.metadata_exchange",
-                    "config": {
-                        "protocol": "istio-peer-exchange"
-                    }
-                },
-                {
-                    "name": "envoy.http_connection_manager",
-                    "typedConfig": {
-                        "@type": "type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager",
-                        "statPrefix": "inbound_172.17.0.15_9080",
-                        "routeConfig": {
-                            "name": "inbound|9080|http|reviews.default.svc.cluster.local",
-                            "virtualHosts": [
-                                {
-                                    "name": "inbound|http|9080",
-                                    "domains": [
-                                        "*"
-                                    ],
-                                    "routes": [
-                                        {
-                                            "name": "default",
-                                            "match": {
-                                                "prefix": "/"
-                                            },
-                                            "route": {
-                                                "cluster": "inbound|9080|http|reviews.default.svc.cluster.local",
-                                                "timeout": "0s",
-                                                "maxGrpcTimeout": "0s"
-                                            },
-                                            "decorator": {
-                                                "operation": "reviews.default.svc.cluster.local:9080/*"
-                                            }
-                                        }
-                                    ]
-                                }
-                            ],
-                            "validateClusters": false
-                        }
-  /*省略部分内容*/
-}
+下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
+
+```bash
+# 查看 NAT 表中规则配置的详细信息
+$ iptables -t nat -L -v
+# PREROUTING 链：用于目标地址转换（DNAT），将所有入站 TCP 流量跳转到 ISTIO_INBOUND 链上
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    2   120 ISTIO_INBOUND  tcp  --  any    any     anywhere             anywhere
+
+# INPUT 链：处理输入数据包，非 TCP 流量将继续 OUTPUT 链
+Chain INPUT (policy ACCEPT 2 packets, 120 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+# OUTPUT 链：将所有出站数据包跳转到 ISTIO_OUTPUT 链上
+Chain OUTPUT (policy ACCEPT 41146 packets, 3845K bytes)
+ pkts bytes target     prot opt in     out     source               destination
+   93  5580 ISTIO_OUTPUT  tcp  --  any    any     anywhere             anywhere
+
+# POSTROUTING 链：所有数据包流出网卡时都要先进入POSTROUTING 链，内核根据数据包目的地判断是否需要转发出去，我们看到此处未做任何处理
+Chain POSTROUTING (policy ACCEPT 41199 packets, 3848K bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+# ISTIO_INBOUND 链：将所有目的地为 9080 端口的入站流量重定向到 ISTIO_IN_REDIRECT 链上
+Chain ISTIO_INBOUND (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    2   120 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere             tcp dpt:9080
+
+# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15006 端口，至此成功的拦截了流量到 Envoy 
+Chain ISTIO_IN_REDIRECT (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    2   120 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
+
+# ISTIO_OUTPUT 链：选择需要重定向到 Envoy（即本地） 的出站流量，所有非 localhost 的流量全部转发到 ISTIO_REDIRECT。为了避免流量在该 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 ISTIO_OUTPUT 规则之后就进入下一条链 POSTROUTING。如果目的地非 localhost 就跳转到 ISTIO_REDIRECT；如果流量是来自 istio-proxy 用户空间的，那么就跳出该链，返回它的调用链继续执行下一条规则（OUPT 的下一条规则，无需对流量进行处理）；所有的非 istio-proxy 用户空间的目的地是 localhost 的流量就跳转到 ISTIO_REDIRECT
+Chain ISTIO_OUTPUT (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ISTIO_REDIRECT  all  --  any    lo      anywhere            !localhost
+   40  2400 RETURN     all  --  any    any     anywhere             anywhere             owner UID match istio-proxy
+    0     0 RETURN     all  --  any    any     anywhere             anywhere             owner GID match istio-proxy	
+    0     0 RETURN     all  --  any    any     anywhere             localhost
+   53  3180 ISTIO_REDIRECT  all  --  any    any     anywhere             anywhere
+
+# ISTIO_REDIRECT 链：将所有流量重定向到 Envoy（即本地） 的 15001 端口
+Chain ISTIO_REDIRECT (2 references)
+ pkts bytes target     prot opt in     out     source               destination
+   53  3180 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
 ```
 
-Inbound handler 的流量被 `virtualInbound` Listener 转移到 `172.17.0.15_9080` Listener，我们在查看下该 Listener 配置。
+`iptables` 显示的链的顺序，即流量规则匹配的顺序。其中要特别注意 `ISTIO_OUTPUT` 链中的规则配置。为了避免流量一直在 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 `ISTIO_OUTPUT` 规则之后就进入下一条链 `POSTROUTING`。
 
-运行 `istioctl pc listener reviews-v1-54b8794ddf-jxksn --address 172.17.0.15 --port 9080 -o json` 查看。
+`ISTIO_OUTPUT` 链规则匹配的详细过程如下：
 
-```json
-[
-    {
-        "name": "172.17.0.15_9080",
-        "address": {
-            "socketAddress": {
-                "address": "172.17.0.15",
-                "portValue": 9080
-            }
-        },
-        "filterChains": [
-            {
-                "filterChainMatch": {
-                    "applicationProtocols": [
-                        "istio-peer-exchange",
-                        "istio",
-                        "istio-http/1.0",
-                        "istio-http/1.1",
-                        "istio-h2"
-                    ]
-                },
-            "filters": [
-                {
-                    "name": "envoy.http_connection_manager",
-                    "config": {
-                        ... 
-                    "routeConfig": {
-                                "name": "inbound|9080|http|reviews.default.svc.cluster.local",
-                                "virtualHosts": [
-                                    {
-                                        "name": "inbound|http|9080",
-                                        "domains": [
-                                            "*"
-                                        ],
-                                        "routes": [
-                                            {
-                                                "name": "default",
-                                                "match": {
-                                                    "prefix": "/"
-                                                },
-                                                "route": {
-                                                    "cluster": "inbound|9080|http|reviews.default.svc.cluster.local",
-                                                    "timeout": "0s",
-                                                    "maxGrpcTimeout": "0s"
-                                                },
-                                                "decorator": {
-                                                    "operation": "reviews.default.svc.cluster.local:9080/*"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ],
-            }
-        ...
-        },
-        {
-            "filterChainMatch": {
-                "transportProtocol": "tls"
-            },
-            "tlsContext": {...
-            },
-            "filters": [...
-            ]
-        }
-    ],
-...
-}]
-```
+- 如果目的地非 localhost 就跳转到 ISTIO_REDIRECT 链
+- 所有来自 istio-proxy 用户空间的非 localhost 流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
+- 如果流量不是来自 istio-proxy 用户空间，又是对 localhost 的访问，那么就跳出 iptables，直接访问目的地
+- 其它所有情况都跳转到 `ISTIO_REDIRECT` 链
 
-我们看其中的 `filterChains.filters` 中的 `envoy.http_connection_manager` 配置部分，该配置表示流量将转交给Cluster`inbound|9080|http|reviews.default.svc.cluster.local` 处理。
+其实在最后这条规则前还可以增加 IP 地址过滤，让某些 IP 地址段不通过 Envoy 代理。
 
-**Cluster `inbound|9080|http|reviews.default.svc.cluster.local`**
+以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 命令生成的，详细过程可以查看该命令行程序。
 
-运行 `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json` 查看该Cluster的配置如下。
-
-```json
-[
-    {
-        "name": "inbound|9080|http|reviews.default.svc.cluster.local",
-        "type": "STATIC",
-        "connectTimeout": "1s",
-        "loadAssignment": {
-            "clusterName": "inbound|9080|http|reviews.default.svc.cluster.local",
-            "endpoints": [
-                {
-                    "lbEndpoints": [
-                        {
-                            "endpoint": {
-                                "address": {
-                                    "socketAddress": {
-                                        "address": "127.0.0.1",
-                                        "portValue": 9080
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        "circuitBreakers": {
-            "thresholds": [
-                {
-                    "maxConnections": 4294967295,
-                    "maxPendingRequests": 4294967295,
-                    "maxRequests": 4294967295,
-                    "maxRetries": 4294967295
-                }
-            ]
-        }
-    }
-]
-```
-
-可以看到该Cluster的 Endpoint 直接对应的就是 localhost，再经过 iptables 转发流量就被应用程序容器消费了。
-
-### 理解 Outbound Handler
-
-因为 `reviews` 会向 `ratings` 服务发送 HTTP 请求，请求的地址是：`http://ratings.default.svc.cluster.local:9080/`，Outbound handler 的作用是将 iptables 拦截到的本地应用程序发出的流量，经由 sidecar 判断如何路由到 upstream。
-
-应用程序容器发出的请求为 Outbound 流量，被 iptables 劫持后转移给 Outbound handler 处理，然后经过 `virtualOutbound` Listener、`0.0.0.0_9080` Listener，然后通过 Route 9080 找到 upstream 的 cluster，进而通过 EDS 找到 Endpoint 执行路由动作。
-
-**Route `ratings.default.svc.cluster.local:9080`**
-
-`reviews` 会请求 `ratings` 服务，运行 `istioctl proxy-config routes reviews-v1-54b8794ddf-jxksn --name 9080 -o json` 查看 route 配置，因为 sidecar 会根据 HTTP header 中的 domains 来匹配 VirtualHost，所以下面只列举了 `ratings.default.svc.cluster.local:9080` 这一个 VirtualHost。
-
-```json
-[{
-  {
-      "name": "ratings.default.svc.cluster.local:9080",
-      "domains": [
-          "ratings.default.svc.cluster.local",
-          "ratings.default.svc.cluster.local:9080",
-          "ratings",
-          "ratings:9080",
-          "ratings.default.svc.cluster",
-          "ratings.default.svc.cluster:9080",
-          "ratings.default.svc",
-          "ratings.default.svc:9080",
-          "ratings.default",
-          "ratings.default:9080",
-          "10.98.49.62",
-          "10.98.49.62:9080"
-      ],
-      "routes": [
-          {
-              "name": "default",
-              "match": {
-                  "prefix": "/"
-              },
-              "route": {
-                  "cluster": "outbound|9080||ratings.default.svc.cluster.local",
-                  "timeout": "0s",
-                  "retryPolicy": {
-                      "retryOn": "connect-failure,refused-stream,unavailable,cancelled,resource-exhausted,retriable-status-codes",
-                      "numRetries": 2,
-                      "retryHostPredicate": [
-                          {
-                              "name": "envoy.retry_host_predicates.previous_hosts"
-                          }
-                      ],
-                      "hostSelectionRetryMaxAttempts": "5",
-                      "retriableStatusCodes": [
-                          503
-                      ]
-                  },
-                  "maxGrpcTimeout": "0s"
-              },
-              "decorator": {
-                  "operation": "ratings.default.svc.cluster.local:9080/*"
-              }
-          }
-      ]
-  },
-..]
-```
-
-从该 Virtual Host 配置中可以看到将流量路由到Cluster`outbound|9080||ratings.default.svc.cluster.local`。
-
-**Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
-
-运行 `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 -o json` 查看 Endpoint 配置，我们只选取其中的 `outbound|9080||ratings.default.svc.cluster.local`Cluster的结果如下。
-
-```json
-{
-  "clusterName": "outbound|9080||ratings.default.svc.cluster.local",
-  "endpoints": [
-    {
-      "locality": {
-
-      },
-      "lbEndpoints": [
-        {
-          "endpoint": {
-            "address": {
-              "socketAddress": {
-                "address": "172.33.100.2",
-                "portValue": 9080
-              }
-            }
-          },
-          "metadata": {
-            "filterMetadata": {
-              "istio": {
-                  "uid": "kubernetes://ratings-v1-8558d4458d-ns6lk.default"
-                }
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-Endpoint 可以是一个或多个，sidecar 将根据一定规则选择适当的 Endpoint 来路由。至此 Review 服务找到了它 upstream 服务 Rating 的 Endpoint。
-
-## 小结
-
-本文使用了 Istio 官方提供的 bookinfo 示例，按图索骥得带领读者了解了 sidecar 注入、iptables 透明流量劫持及 sidecar 中流量路由背后的实现细节。Sidecar 模式和流量透明劫持是 Istio 服务网格的特色和基础功能，理解该功能的背后过程及实现细节，将有助于大家理解 Service Mesh 的原理和 [Istio Handbook](https://www.servicemesher.com/istio-handbook/) 后面章节中的内容，因此希望读者可以在自己的环境中从头来试验一遍以加深理解。
-
-使用 iptables 做流量劫持只是 service mesh 的数据平面中做流量劫持的方式之一，还有更多的流量劫持方案，下面引用自 [云原生网络代理 MOSN 官网中给出的流量劫持](https://mosn.io/docs/concept/traffic-hijack/)部分的描述。
-
-### 使用 iptables 做流量劫持时存在的问题
+## 使用 iptables 做流量劫持时存在的问题
 
 目前 Istio 使用 iptables 实现透明劫持，主要存在以下三个问题：
 
@@ -801,7 +338,17 @@ Endpoint 可以是一个或多个，sidecar 将根据一定规则选择适当的
 
 上述几个问题并非在所有场景中都存在，比方说某些场景下，连接数并不多，且 NAT 表未被使用到的情况下，iptables 是一个满足要求的简单方案。为了适配更加广泛的场景，透明劫持需要解决上述三个问题。
 
-### 透明劫持方案优化
+## 透明劫持方案优化
+
+为了优化 Istio 中的透明流量劫持的性能，业界提出了以下方案。
+
+**使用 Merbridge 开源项目利用 eBPF 劫持流量**
+
+[Merbridge](https://github.com/merbridge/merbridge) 是由 DaoCloud 在 2022 年初开源的的一款利用 eBPF 加速 Istio 服务网格的插件。使用 Merbridge 可以在一定程度上优化数据平面的网络性能。
+
+Merbridge 利用 eBPF 的 sockops 和 redir 能力，可以直接将数据包从 inbound socket 传输到 outbound socket。eBPF 提供了 `bpf_msg_redirect_hash` 函数可以直接转发应用程序的数据包。
+
+详见 [Istio 服务网格 —— 云原生应用网络构建指南](https://jimmysong.io/istio-handbook/ecosystem/merbridge.html)。
 
 **使用 tproxy 处理 inbound 流量**
 
@@ -820,5 +367,5 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 ## 参考
 
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/docs/ops/diagnostic-tools/proxy-cmd/)
-- [揭开 Istio Sidecar 注入模型的神秘面纱 - istio.io](https://istio.io/zh/blog/2019/data-plane-setup/)
+- [揭开 Istio Sidecar 注入模型的神秘面纱 - istio.io](https://istio.io/latest/zh/blog/2019/data-plane-setup/)
 - [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/docs/concept/traffic-hijack/)

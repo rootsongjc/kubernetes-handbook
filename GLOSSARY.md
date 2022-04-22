@@ -24,6 +24,10 @@ OpenTracing 是一个分布式追踪标准规范，它定义了一套通用的�
 
 Operator 是打包、部署和管理 Kubernetes 应用程序的一种方法。
 
+## SNI
+
+SNI 全称 Server Name Indication（服务器名称指示），是 TLS 的扩展，用来解决一个服务器拥有多个域名的情况。
+
 ## Sidecar
 
 Sidecar，全称 Sidecar proxy，为在应用程序旁运行的单独的进程，它可以为应用程序添加许多功能，而无需在应用程序中添加额外的第三方组件，或修改应用程序的代码或配置。
