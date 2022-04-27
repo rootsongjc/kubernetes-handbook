@@ -12,6 +12,10 @@ type: "post"
 
 本文最早是基于 Istio 1.11 撰写，之后随着 Istio 的版本陆续更新，最新更新时间为 2022 年 4 月 24 日，关于本文历史版本的更新说明请见文章最后。本文记录了详细的实践过程，力图能够让读者复现，因此事无巨细，想要理解某个部分过程的读者可以使用目录跳转到对应的小节阅读。
 
+为了使读者能够更加直观的了解本文中执行的操作，在阅读本文前你也可以先观看下 [Istio Workshop 第八讲视频](https://bilibili.com/video/BV1cF411T72o/)。
+
+[![Istio Workshop第八讲](bilibili.jpg)](https://bilibili.com/video/BV1cF411T72o/)
+
 ## 内容介绍
 
 本文基于 Istio 1.13 版本，将为大家介绍以下内容：
