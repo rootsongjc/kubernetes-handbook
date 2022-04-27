@@ -1,9 +1,9 @@
 ---
-title: "Sidecar injection, transparent traffic hijacking and routing process in Istio explained in detail"
+title: "Sidecar injection, transparent traffic hijacking , and routing process in Istio explained in detail"
 date: 2020-08-18T21:08:59+08:00
 draft: false
 weight: 10
-tags: ["istio","iptables"]
+tags: ["istio","iptables","envoy"]
 description: "Based on Istio version 1.13, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and routing is done."
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
@@ -11,42 +11,42 @@ image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-Updated at April 24, 2022
+Updated on April 24, 2022
 
 Based on Istio version 1.13, this article will present the following.
 
 - What is the sidecar pattern and what advantages does it have?
-- How are sidecar injections done in Istio?
-- How does Sidecar proxy do transparent traffic hijacking?
+- How are the sidecar injections done in Istio?
+- How does the sidecar proxy do transparent traffic hijacking?
 - How is the traffic routed to upstream?
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
 ![Sidecar traffic injection](envoy-sidecar-traffic-interception-en-20220424.jpg)
 
-At the beginning of the first step, the sidecar in the productpage pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
+At the beginning of the first step, the sidecar in the `productpage` pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 
 There are three versions of the reviews service, each with an instance, and the sidecar work steps in the three versions are similar, as illustrated below only by the sidecar traffic forwarding step in one of the Pods.
 
-Read the Chinese version: [阅读中文版](/blog/sidecar-injection-iptables-and-traffic-routing)
+There's a Chinese version of this blog: [阅读中文版](/blog/sidecar-injection-iptables-and-traffic-routing)
 
 ## Sidecar pattern
 
-Dividing the functionality of an application into separate processes running in the same minimal scheduling unit (e.g. Pod in Kubernetes) can be considered sidecar mode. As shown in the figure below, Sidecar pattern allows you to add more features next to your application without additional third-party component configuration or modifications to the application code.
+Dividing the functionality of an application into separate processes running in the same minimal scheduling unit (e.g. Pod in Kubernetes) can be considered sidecar mode. As shown in the figure below, the sidecar pattern allows you to add more features next to your application without additional third-party component configuration or modifications to the application code.
 
 ![Sidecar pattern](sidecar-pattern.png)
 
-The Sidecar application is loosely coupled to the main application. It can shield the differences of different programming languages and unify the functions of microservices such as observability, monitoring, logging, configuration, circuit breaker, etc.
+The Sidecar application is loosely coupled to the main application. It can shield the differences between different programming languages and unify the functions of microservices such as observability, monitoring, logging, configuration, circuit breaker, etc.
 
 ### Advantages of using the Sidecar pattern
 
-When deploying a service mesh using the sidecar mode, there is no need to run an agent on the node, but multiple copies of the same sidecar will run in the cluster. In the sidecar deployment mode, a companion container (such as Envoy or MOSN) is deployed next to each application's container, which is called a sidecar container. The sidecar takes over all traffic in and out of the application container. In Kubernetes' Pod, a sidecar container is injected next to the original application container, and the two containers share storage, networking, and other resources.
+When deploying a service mesh using the sidecar model, there is no need to run an agent on the node, but multiple copies of the same sidecar will run in the cluster. In the sidecar deployment model, a companion container (such as Envoy or MOSN) is deployed next to each application's container, which is called a sidecar container. The sidecar takes overall traffic in and out of the application container. In Kubernetes' Pod, a sidecar container is injected next to the original application container, and the two containers share storage, networking, and other resources.
 
 Due to its unique deployment architecture, the sidecar model offers the following advantages.
 
 - Abstracting functions unrelated to application business logic into a common infrastructure reduces the complexity of microservice code.
 - Reduce code duplication in microservices architectures because it is no longer necessary to write the same third-party component profiles and code.
-- Sidecar can be independently upgraded to reduce the coupling of application code to the underlying platform.
+- The sidecar can be independently upgraded to reduce the coupling of application code to the underlying platform.
 
 ## Sidecar injection in Istio
 
@@ -69,7 +69,7 @@ istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
 
 This command is injected using Istio's built-in sidecar configuration, see the [Istio official website](https://istio.io) for details on how to use Istio below.
 
-When the injection is complete you will see that Istio has injected initContainer and sidecar proxy related configurations into the original pod template.
+When the injection is complete you will see that Istio has injected initContainer and sidecar proxy-related configurations into the original pod template.
 
 ### Init container
 
@@ -79,13 +79,13 @@ Multiple Init containers can be specified in a Pod, and if more than one is spec
 
 The Init container uses Linux Namespace, so it has a different view of the file system than the application container. As a result, they can have access to Secret in a way that application containers cannot.
 
-During Pod startup, the Init container starts sequentially after the network and data volumes are initialized. Each container must be successfully exited before the next container can be started. If exiting due to a error will result in a container startup failure, it will retry according to the policy specified in the Pod's restartPolicy. However, if the Pod's restartPolicy is set to Always, the restartPolicy is used when the Init container failed.
+During Pod startup, the Init container starts sequentially after the network and data volumes are initialized. Each container must be successfully exited before the next container can be started. If exiting due to an error will result in a container startup failure, it will retry according to the policy specified in the Pod's restartPolicy. However, if the Pod's restartPolicy is set to Always, the restartPolicy is used when the Init container failed.
 
-The Pod will not become Ready until all Init containers are successful. The ports of the Init containers will not be aggregated in the Service. The Pod that is being initialized is in the Pending state, but should set the Initializing state to true. The Init container will automatically terminate once it is run.
+The Pod will not become Ready until all Init containers are successful. The ports of the Init containers will not be aggregated in the Service. The Pod that is being initialized is in the Pending state but should set the Initializing state to true. The Init container will automatically terminate once it is run.
 
 ## Sidecar injection example analysis
 
-For a detailed YAML configuration for bookinfo applications, see bookinfo.yaml for the official Istio YAML of productpage in bookinfo sample.
+For a detailed YAML configuration for the bookinfo applications, see `bookinfo.yaml` for the official Istio YAML of productpage in the bookinfo sample.
 
 The following will be explained in the following terms.
 
@@ -128,7 +128,7 @@ spec:
         emptyDir: {}
 ```
 
-Let's see the `productpage` container’s [Dockerfile](https://github.com/istio/istio/blob/master/samples/bookinfo/src/productpage/Dockerfile)。
+Let's see the `productpage` container’s [Dockerfile](https://github.com/istio/istio/blob/master/samples/bookinfo/src/productpage/Dockerfile).
 
 ```docker
 FROM python:3.7.4-slim
@@ -237,14 +237,14 @@ We intercept only a portion of the YAML configuration that is part of the Deploy
 
 Istio's configuration for application Pod injection mainly includes:
 
-- Init container `istio-init`: for setting iptables port forwarding in pod
+- Init container `istio-init`: for setting iptables port forwarding in the pod
 - Sidecar container `istio-proxy`: running a sidecar proxy, such as Envoy or MOSN
 
 The two containers will be parsed separately.
 
 ## Init container analysis
 
-The Init container that Istio injects into the pod is named istio-init, and we see in the YAML file above after Istio's injection is complete that the init command for this container is.
+The Init container that Istio injects into the pod is named `istio-init`, and we see in the YAML file above after Istio's injection is complete that the init command for this container is.
 
 ```bash
 istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 15090,15020
@@ -258,9 +258,7 @@ Let's check the container's Dockerfile again to see how `ENTRYPOINT` determines 
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-We see that the entrypoint of the istio-init container is the `/usr/local/bin/istio-iptables` command line, and the location of the code for this command line tool is in the `tools/istio-iptables` directory of the Istio source code repository.
-
-Note: In Istio version 1.1, the `isito-iptables.sh` command line is still used to operate IPtables.
+We see that the entrypoint of the `istio-init` container is the `/usr/local/bin/istio-iptables` command line, and the location of the code for this command-line tool is in the `tools/istio-iptables` directory of the Istio source code repository.
 
 ### Init container initiation
 
@@ -302,17 +300,17 @@ The significance of the container's existence is that it allows the sidecar agen
 Here is the purpose of this start-up command.
 
 - Forward all traffic from the application container to port 15006 of the sidecar.
-- Run with the istio-proxy user identity, with a UID of 1337, the user space where the sidecar is located, which is the default user used by the istio-proxy container, see the runAsUser field of the YAML configuration.
+- Run with the `istio-proxy` user identity, with a UID of 1337, the userspace where the sidecar is located, which is the default user used by the `istio-proxy` container, see the runAsUser field of the YAML configuration.
 - Use the default REDIRECT mode to redirect traffic.
 - Redirect all outbound traffic to the sidecar proxy (via port 15001).
 
-Because the Init container is automatically terminated after initialization, since we cannot log into the container to view the iptables information, but the Init container initialization results are retained in the application container and sidecar container.
+Because the Init container is automatically terminated after initialization, since we cannot log into the container to view the iptables information, the Init container initialization results are retained in the application container and sidecar container.
 
 ## iptables manipulation analysis
 
-In order to view the iptables configuration, we need to `nsente`r the sidecar container using the root user to view it, because kubectl cannot use privileged mode to remotely manipulate the docker container, so we need to log on the host where the productpage pod is located.
+In order to view the iptables configuration, we need to `nsente`r the sidecar container using the root user to view it, because `kubectl` cannot use privileged mode to remotely manipulate the docker container, so we need to log on to the host where the `productpage` pod is located.
 
-If you use Kubernetes deployed by minikube, you can log directly into the minikube's virtual machine and switch to root. View the iptables configuration that lists all the rules for the NAT (Network Address Translation) table because the mode for redirecting inbound traffic to the sidecar is REDIRECT in the parameters passed to the istio-iptables when the Init container is selected for startup, so there will only be NAT table specifications in the iptables and mangle table configurations if TPROXY is selected. See the iptables command for detailed usage.
+If you use Kubernetes deployed by minikube, you can log directly into the minikube's virtual machine and switch to root. View the iptables configuration that lists all the rules for the NAT (Network Address Translation) table because the mode for redirecting inbound traffic to the sidecar is `REDIRECT` in the parameters passed to the `istio-iptables` when the Init container is selected for the startup, so there will only be NAT table specifications in the iptables and mangle table configurations if TPROXY is selected. See the iptables command for detailed usage.
 
 We only look at the iptables rules related to `productpage` below.
 
@@ -404,7 +402,7 @@ The following diagram shows the detailed flow of the `ISTIO_ROUTE` rule.
 
 ![ISTIO_ROUTE iptables rules](istio-route-iptables-en.jpg)
 
-I will explain the purpose of each rule, corresponding to the steps and details in the illustration at the beginning of the article, in the order in which they appear. Where rules 5, 6 and 7 are extensions of the application of rules 2, 3 and 4 respectively (from UID to GID), which serve similar purposes and will be explained together. Note that the rules therein are executed in order, meaning that the rule with the next highest order will be used as the default. When the outbound NIC (out) is lo (local loopback address, loopback interface), it means that the destination of the traffic is the local Pod, and for traffic sent from the Pod to the outside, it will not go through this interface. Only rules 4, 7, 8, and 9 apply to all outbound traffic from the review Pod.
+I will explain the purpose of each rule, corresponding to the steps and details in the illustration at the beginning of the article, in the order in which they appear. Where rules 5, 6, and 7 are extensions of the application of rules 2, 3, and 4 respectively (from UID to GID), which serve similar purposes and will be explained together. Note that the rules therein are executed in order, meaning that the rule with the next highest order will be used as the default. When the outbound NIC (out) is lo (local loopback address, loopback interface), it means that the destination of the traffic is the local Pod, and traffic sent from the Pod to the outside, will not go through this interface. Only rules 4, 7, 8, and 9 apply to all outbound traffic from the review Pod.
 
 **Rule 1**
 
@@ -462,11 +460,11 @@ The following figure shows the iptables call chain.
 
 The iptables version used in the Init container is v1.6.0 and contains 5 tables.
 
-1. RAW is used to configure packets. packets in RAW are not tracked by the system.
-2. filter is the default table used to house all firewall-related operations.
+1. RAW is used to configure packets. Packets in RAW are not tracked by the system.
+2. The filter is the default table used to house all firewall-related operations.
 3. NAT is used for network address translation (e.g., port forwarding).
-4. mangle is used for modifications to specific packets (refer to corrupted packets).
-5. security is used to force access to control network rules.
+4. Mangle is used for modifications to specific packets (refer to corrupted packets).
+5. Security is used to force access to control network rules.
 
 Note: In this example, only the NAT table is used.
 
@@ -496,7 +494,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
  pkts bytes target     prot opt in     out     source               destination
 ```
 
-We see three default chains, INPUT, FORWARD and OUTPUT, with the first line of output in each chain indicating the chain name (INPUT/FORWARD/OUTPUT in this case), followed by the default policy (ACCEPT).
+We see three default chains, INPUT, FORWARD, and OUTPUT, with the first line of output in each chain indicating the chain name (INPUT/FORWARD/OUTPUT in this case), followed by the default policy (ACCEPT).
 
 The following is a proposed structure diagram of iptables, where traffic passes through the INPUT chain and then enters the upper protocol stack, such as:
 
@@ -522,7 +520,7 @@ Target types include ACCEPT, REJECT, DROP, LOG, SNAT, MASQUERADE, DNAT, REDIRECT
 
 From the output, you can see that the Init container does not create any rules in the default link of iptables, but instead creates a new link.
 
-## Traffic routing process explained
+## The traffic routing process explained
 
 Traffic routing is divided into two processes, Inbound and Outbound, which will be analyzed in detail for the reader below based on the example above and the configuration of the sidecar.
 
@@ -551,7 +549,7 @@ The following lists the meanings of the fields in the above output.
 
 The Iptables in the reviews Pod hijack inbound traffic to port 15006, and from the above output we can see that Envoy's Inbound Handler is listening on port 15006, and requests to port 9080 destined for any IP will be routed to the `inbound|9080||` Cluster.
 
-As you can see in the last two rows of the Pod's Listener list, the Listener for `0.0.0.0:15006/TCP` (whose actual name is `virtualInbound`) listens for all Inbound traffic, which contains matching rules, and traffic to port 9080 from any IP will be routed to If you want to see the detailed configuration of this Listener in Json format, you can execute the `istioctl proxy-config listeners reviews-v1-545db77b95-jkgv2 --port 15006 -o json` command. You will get an output similar to the following.
+As you can see in the last two rows of the Pod's Listener list, the Listener for `0.0.0.0:15006/TCP` (whose actual name is `virtualInbound`) listens for all Inbound traffic, which contains matching rules, and traffic to port 9080 from any IP will be routed. If you want to see the detailed configuration of this Listener in Json format, you can execute the `istioctl proxy-config listeners reviews-v1-545db77b95-jkgv2 --port 15006 -o json` command. You will get an output similar to the following.
 
 ```json
 [
@@ -676,11 +674,11 @@ Since the Inbound Handler traffic routes traffic from any address to this Pod po
 ]
 ```
 
-We see that the `TYPE` is `ORIGINAL_DST`, which sends the traffic to the original destination address (Pod IP), because the original destination address is the current Pod, you should also notice that the value of `upstreamBindConfig.sourceAddress.address` is rewritten to 127.0.0.6, and for Pod This echoes the first rule in the iptables `ISTIO_OUTPUT` chain above, according to which traffic will be passed through to the application container inside the Pod.
+We see that the `TYPE` is `ORIGINAL_DST`, which sends the traffic to the original destination address (Pod IP), because the original destination address is the current Pod, you should also notice that the value of `upstreamBindConfig.sourceAddress.address` is rewritten to 127.0.0.6, and for Pod This echoes the first rule in the iptables `ISTIO_OUTPUT` the chain above, according to which traffic will be passed through to the application container inside the Pod.
 
 ### Understand Outbound Handler
 
-Because reviews sends an HTTP request to the ratings service at `http://ratings.default.svc.cluster.local:9080/`, the role of the Outbound handler is to intercept traffic from the local application to which iptables has intercepted, and determine how to route it to the upstream via the sidecar.
+Because reviews send an HTTP request to the ratings service at `http://ratings.default.svc.cluster.local:9080/`, the role of the Outbound handler is to intercept traffic from the local application to which iptables has intercepted, and determine how to route it to the upstream via the sidecar.
 
 Requests from application containers are Outbound traffic, hijacked by iptables and transferred to the Outbound handler for processing, which then passes through the virtualOutbound Listener, the `0.0.0.0_9080` Listener, and then finds the upstream cluster via Route 9080, which in turn finds the Endpoint via EDS to perform the routing action.
 
@@ -739,7 +737,7 @@ Requests from application containers are Outbound traffic, hijacked by iptables 
 ..]
 ```
 
-From this Virtual Host configuration, you can see routing traffic to Cluster `outbound|9080||ratings.default.svc.cluster.local`.
+From this VirtualHost configuration, you can see routing traffic to the cluster `outbound|9080||ratings.default.svc.cluster.local`.
 
 **Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
 
@@ -777,7 +775,7 @@ Running `istioctl proxy-config endpoint reviews-v1-545db77b95-jkgv2 --port 9080 
 }
 ```
 
-We see that the endpoint address is 10.4.1.12. In fact, the Endpoint can be one or more, and the sidecar will select the appropriate Endpoint to route based on certain rules. At this point the review Pod has found the Endpoint for its upstream service rating.
+We see that the endpoint address is `10.4.1.12`. In fact, the Endpoint can be one or more, and the sidecar will select the appropriate Endpoint to route based on certain rules. At this point the review Pod has found the Endpoint for its upstream service rating.
 
 ## Summary
 
@@ -787,11 +785,11 @@ Using iptables for traffic hijacking is just one of the ways to do traffic hijac
 
 ### Problems with using iptables for traffic hijacking
 
-Currently Istio uses iptables for transparent hijacking and there are three main problems.
+Currently, Istio uses iptables for transparent hijacking and there are three main problems.
 
-1. the need to use the conntrack module for connection tracking, in the case of a large number of connections, will cause a large consumption, and may cause the track table to be full, in order to avoid this problem, the industry has a practice of closing conntrack.
+1. The need to use the conntrack module for connection tracking, in the case of a large number of connections, will cause a large consumption and may cause the track table to be full, in order to avoid this problem, the industry has a practice of closing conntrack.
 2. iptables is a common module with global effect and cannot explicitly prohibit associated changes, which is less controllable.
-3. iptables redirect traffic is essentially exchanging data via a loopback. outbond traffic will traverse the protocol stack twice and lose forwarding performance in a large concurrency scenario.
+3. iptables redirect traffic is essentially exchanging data via a loopback. The outbound traffic will traverse the protocol stack twice and lose forwarding performance in a large concurrency scenario.
 
 Several of the above problems are not present in all scenarios, let's say some scenarios where the number of connections is not large and the NAT table is not used, iptables is a simple solution that meets the requirements. In order to adapt to a wider range of scenarios, transparent hijacking needs to address all three of these issues.
 
@@ -817,7 +815,7 @@ In order to adapt to more application scenarios, the outbound direction is imple
 
 Whichever transparent hijacking scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, `tproxy` can read the destination address directly, by modifying the call interface, hook connect scheme reads in a similar way to tproxy.
 
-After transparent hijacking, the  `sockmap` can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
+After the transparent hijacking, the  `sockmap` can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
 
 ## References
 
