@@ -1,9 +1,9 @@
 ---
-title: "Istio 中的 Sidecar 注入及透明流量劫持过程详解"
+title: "Istio 中的 Sidecar 注入、透明流量劫持及流量路由过程详解"
 date: 2020-04-27T21:08:59+08:00
 draft: false
 tags: ["istio","iptables","envoy","sidecar"]
-description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 注入到数据平面，如何做流量劫持和转发的，以及流量是怎样路由到 upstream 的。"
+description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 如何注入到数据平面，Envoy 如何做流量劫持和路由转发的，包括 Inbound 流量和 Outbound 流量。"
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
@@ -471,7 +471,7 @@ Chain ISTIO_REDIRECT (1 references)
 
 **关于 127.0.0.6 IP 地址**
 
-127.0.0.6 这个 IP 是 Istio 中默认的 `InboundPassthroughClusterIpv4`，在 Istio 的代码中指定。即流量在进入 Envoy 代理后被绑定的 IP 地址，作用是让 Outbound 流量重新发送到  Pod 中的应用容器，即 **Passthought（透传），绕过 Outbound Handler**。该流量是对 Pod 自身的访问，而不是真正的对外流量。至于为什么选择这个 IP 作为流量透传，请参考 [Istio Issue-29603](https://github.com/istio/istio/issues/29603) 
+127.0.0.6 这个 IP 是 Istio 中默认的 `InboundPassthroughClusterIpv4`，在 Istio 的代码中指定。即流量在进入 Envoy 代理后被绑定的 IP 地址，作用是让 Outbound 流量重新发送到  Pod 中的应用容器，即 **Passthought（透传），绕过 Outbound Handler**。该流量是对 Pod 自身的访问，而不是真正的对外流量。至于为什么选择这个 IP 作为流量透传，请参考 [Istio Issue-29603](https://github.com/istio/istio/issues/29603)。
 
 ### 理解 iptables
 
