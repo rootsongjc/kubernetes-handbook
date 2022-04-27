@@ -2,6 +2,7 @@
 title: "Istio 中的 Sidecar 注入、透明流量劫持及流量路由过程详解"
 date: 2020-04-27T21:08:59+08:00
 draft: false
+weight: 10
 tags: ["istio","iptables","envoy","sidecar"]
 description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 如何注入到数据平面，Envoy 如何做流量劫持和路由转发的，包括 Inbound 流量和 Outbound 流量。"
 categories: ["Istio"]
