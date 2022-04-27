@@ -1,31 +1,4 @@
-# Sidecar 的注入与流量劫持
-
-本文基于 Istio 1.11 版本，将为大家介绍以下内容：
-
-- 什么是 sidecar 模式和它的优势在哪里。
-- Istio 中是如何做 sidecar 注入的？
-- Sidecar proxy 是如何做透明流量劫持的？
-- 流量是如何路由到 upstream 的？
-
-## Sidecar 模式
-
-将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
-
-![Sidecar 模式示意图](../images/sidecar-pattern.jpg)
-
-就像连接了 Sidecar 的三轮摩托车一样，在软件架构中， Sidecar 连接到父应用并且为其添加扩展或者增强功能。Sidecar 应用与主应用程序松散耦合。它可以屏蔽不同编程语言的差异，统一实现微服务的可观察性、监控、日志记录、配置、断路器等功能。
-
-### 使用 Sidecar 模式的优势
-
-使用 sidecar 模式部署服务网格时，无需在节点上运行代理，但是集群中将运行多个相同的 sidecar 副本。在 sidecar 部署方式中，每个应用的容器旁都会部署一个伴生容器，这个容器称之为 sidecar 容器。Sidecar 接管进出应用容器的所有流量。在 Kubernetes 的 Pod 中，在原有的应用容器旁边注入一个 Sidecar 容器，两个容器共享存储、网络等资源，可以广义的将这个包含了 sidecar 容器的 Pod 理解为一台主机，两个容器共享主机资源。
-
-因其独特的部署结构，使得 sidecar 模式具有以下优势：
-
-- 将与应用业务逻辑无关的功能抽象到共同基础设施，降低了微服务代码的复杂度。
-- 因为不再需要编写相同的第三方组件配置文件和代码，所以能够降低微服务架构中的代码重复度。
-- Sidecar 可独立升级，降低应用程序代码和底层平台的耦合度。
-
-## Istio 中的 sidecar 注入
+# Sidecar 的注入与透明流量劫持
 
 Istio 中提供了以下两种 sidecar 注入方式：
 
@@ -48,7 +21,7 @@ istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
 
 注入完成后您将看到 Istio 为原有 pod template 注入了 `initContainer` 及 sidecar proxy相关的配置。
 
-### Init 容器
+## Init 容器
 
 Init 容器是一种专用容器，它在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
 
@@ -249,7 +222,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是三个 reviews 服务示例中的某一个 Pod，其中有 init 容器、应用容器和 sidecar 容器，图中展示了 iptables 流量劫持的详细过程。
 
-![Sidecar 流量劫持示意图](../images/envoy-sidecar-traffic-interception-jimmysong-blog.png)
+![Sidecar 流量劫持示意图](../images/envoy-sidecar-traffic-interception-zh-20220424.jpg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。
 
@@ -270,63 +243,117 @@ Istio 向 pod 中自动注入的 sidecar 容器（名为 `istio-proxy`）其中�
 下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
 ```bash
-# 查看 NAT 表中规则配置的详细信息
-$ iptables -t nat -L -v
-# PREROUTING 链：用于目标地址转换（DNAT），将所有入站 TCP 流量跳转到 ISTIO_INBOUND 链上
-Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+# PREROUTING 链：用于目标地址转换（DNAT），将所有入站 TCP 流量跳转到 ISTIO_INBOUND 链上。
+Chain PREROUTING (policy ACCEPT 2701 packets, 162K bytes)
  pkts bytes target     prot opt in     out     source               destination
-    2   120 ISTIO_INBOUND  tcp  --  any    any     anywhere             anywhere
+ 2701  162K ISTIO_INBOUND  tcp  --  any    any     anywhere             anywhere
 
-# INPUT 链：处理输入数据包，非 TCP 流量将继续 OUTPUT 链
-Chain INPUT (policy ACCEPT 2 packets, 120 bytes)
+# INPUT 链：处理输入数据包，非 TCP 流量将继续 OUTPUT 链。
+Chain INPUT (policy ACCEPT 2701 packets, 162K bytes)
  pkts bytes target     prot opt in     out     source               destination
 
-# OUTPUT 链：将所有出站数据包跳转到 ISTIO_OUTPUT 链上
-Chain OUTPUT (policy ACCEPT 41146 packets, 3845K bytes)
+# OUTPUT 链：将所有出站数据包跳转到 ISTIO_OUTPUT 链上。
+Chain OUTPUT (policy ACCEPT 79 packets, 6761 bytes)
  pkts bytes target     prot opt in     out     source               destination
-   93  5580 ISTIO_OUTPUT  tcp  --  any    any     anywhere             anywhere
+   15   900 ISTIO_OUTPUT  tcp  --  any    any     anywhere             anywhere
 
-# POSTROUTING 链：所有数据包流出网卡时都要先进入POSTROUTING 链，内核根据数据包目的地判断是否需要转发出去，我们看到此处未做任何处理
-Chain POSTROUTING (policy ACCEPT 41199 packets, 3848K bytes)
+# POSTROUTING 链：所有数据包流出网卡时都要先进入 POSTROUTING 链，内核根据数据包目的地判断是否需要转发出去，我们看到此处未做任何处理。
+Chain POSTROUTING (policy ACCEPT 79 packets, 6761 bytes)
  pkts bytes target     prot opt in     out     source               destination
 
-# ISTIO_INBOUND 链：将所有目的地为 9080 端口的入站流量重定向到 ISTIO_IN_REDIRECT 链上
+# ISTIO_INBOUND 链：将所有入站流量重定向到 ISTIO_IN_REDIRECT 链上。目的地为 15090（Prometheus 使用）和 15020（Ingress gateway 使用，用于 Pilot 健康检查）端口的流量除外，发送到以上两个端口的流量将返回 iptables 规则链的调用点，即 PREROUTING 链的后继 POSTROUTING 后直接调用原始目的地。
 Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
-    2   120 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere             tcp dpt:9080
+    0     0 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
+    2   120 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:15090
+ 2699  162K RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:15020
+    0     0 ISTIO_IN_REDIRECT  tcp  --  any    any     anywhere             anywhere
 
-# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15006 端口，至此成功的拦截了流量到 Envoy 
-Chain ISTIO_IN_REDIRECT (1 references)
+# ISTIO_IN_REDIRECT 链：将所有的入站流量跳转到本地的 15006 端口，至此成功的拦截了流量到 sidecar 代理的 Inbound Handler 中。
+Chain ISTIO_IN_REDIRECT (3 references)
  pkts bytes target     prot opt in     out     source               destination
-    2   120 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
+    0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
 
-# ISTIO_OUTPUT 链：选择需要重定向到 Envoy（即本地） 的出站流量，所有非 localhost 的流量全部转发到 ISTIO_REDIRECT。为了避免流量在该 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 ISTIO_OUTPUT 规则之后就进入下一条链 POSTROUTING。如果目的地非 localhost 就跳转到 ISTIO_REDIRECT；如果流量是来自 istio-proxy 用户空间的，那么就跳出该链，返回它的调用链继续执行下一条规则（OUPT 的下一条规则，无需对流量进行处理）；所有的非 istio-proxy 用户空间的目的地是 localhost 的流量就跳转到 ISTIO_REDIRECT
+# ISTIO_OUTPUT 链：规则比较复杂，将在下文解释
 Chain ISTIO_OUTPUT (1 references)
  pkts bytes target     prot opt in     out     source               destination
-    0     0 ISTIO_REDIRECT  all  --  any    lo      anywhere            !localhost
-   40  2400 RETURN     all  --  any    any     anywhere             anywhere             owner UID match istio-proxy
-    0     0 RETURN     all  --  any    any     anywhere             anywhere             owner GID match istio-proxy	
-    0     0 RETURN     all  --  any    any     anywhere             localhost
-   53  3180 ISTIO_REDIRECT  all  --  any    any     anywhere             anywhere
+    0     0 RETURN     all  --  any    lo      127.0.0.6            anywhere #规则1
+    0     0 ISTIO_IN_REDIRECT  all  --  any    lo      anywhere            !localhost            owner UID match 1337 #规则2
+    0     0 RETURN     all  --  any    lo      anywhere             anywhere             ! owner UID match 1337 #规则3
+   15   900 RETURN     all  --  any    any     anywhere             anywhere             owner UID match 1337 #规则4
+    0     0 ISTIO_IN_REDIRECT  all  --  any    lo      anywhere            !localhost            owner GID match 1337 #规则5
+    0     0 RETURN     all  --  any    lo      anywhere             anywhere             ! owner GID match 1337 #规则6
+    0     0 RETURN     all  --  any    any     anywhere             anywhere             owner GID match 1337 #规则7
+    0     0 RETURN     all  --  any    any     anywhere             localhost #规则8
+    0     0 ISTIO_REDIRECT  all  --  any    any     anywhere             anywhere #规则9
 
-# ISTIO_REDIRECT 链：将所有流量重定向到 Envoy（即本地） 的 15001 端口
-Chain ISTIO_REDIRECT (2 references)
+# ISTIO_REDIRECT 链：将所有流量重定向到 Envoy 代理的 15001 端口。
+Chain ISTIO_REDIRECT (1 references)
  pkts bytes target     prot opt in     out     source               destination
-   53  3180 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
+    0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
 ```
 
-`iptables` 显示的链的顺序，即流量规则匹配的顺序。其中要特别注意 `ISTIO_OUTPUT` 链中的规则配置。为了避免流量一直在 Pod 中无限循环，所有到 istio-proxy 用户空间的流量都返回到它的调用点中的下一条规则，本例中即 OUTPUT 链，因为跳出 `ISTIO_OUTPUT` 规则之后就进入下一条链 `POSTROUTING`。
+这里着重需要解释的是 `ISTIO_OUTPUT` 链中的 9 条规则，为了便于阅读，我将以上规则中的部分内容使用表格的形式来展示如下：
 
-`ISTIO_OUTPUT` 链规则匹配的详细过程如下：
+| **规则** | **target**        | **in** | **out** | **source** | **destination**                 |
+| -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
+| 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
+| 2        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner UID match 1337 |
+| 3        | RETURN            | any    | lo      | anywhere   | anywhere !owner UID match 1337  |
+| 4        | RETURN            | any    | any     | anywhere   | anywhere owner UID match 1337   |
+| 5        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner GID match 1337 |
+| 6        | RETURN            | any    | lo      | anywhere   | anywhere !owner GID match 1337  |
+| 7        | RETURN            | any    | any     | anywhere   | anywhere owner GID match 1337   |
+| 8        | RETURN            | any    | any     | anywhere   | localhost                       |
+| 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
 
-- 如果目的地非 localhost 就跳转到 ISTIO_REDIRECT 链
-- 所有来自 istio-proxy 用户空间的非 localhost 流量跳转到它的调用点 `OUTPUT` 继续执行 `OUTPUT` 链的下一条规则，因为 `OUTPUT` 链中没有下一条规则了，所以会继续执行 `POSTROUTING` 链然后跳出 iptables，直接访问目的地
-- 如果流量不是来自 istio-proxy 用户空间，又是对 localhost 的访问，那么就跳出 iptables，直接访问目的地
-- 其它所有情况都跳转到 `ISTIO_REDIRECT` 链
+下图展示了 `ISTIO_ROUTE` 规则的详细流程。
 
-其实在最后这条规则前还可以增加 IP 地址过滤，让某些 IP 地址段不通过 Envoy 代理。
+![ISTIO_ROUTE iptables 规则流程图](../images/istio-route-iptables.jpg)
 
-以上 iptables 规则都是 Init 容器启动的时使用 [istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 命令生成的，详细过程可以查看该命令行程序。
+我将按照规则的出现顺序来解释每条规则的目的、对应文章开头图示中的步骤及详情。其中规则 5、6、7 是分别对规则 2、3、4 的应用范围扩大（从 UID 扩大为 GID），作用是类似的，将合并解释。注意，其中的规则是按顺序执行的，也就是说排序越靠后的规则将作为默认值。出站网卡（out）为 `lo` （本地回环地址，loopback 接口）时，表示流量的目的地是本地 Pod，对于 Pod 向外部发送的流量就不会经过这个接口。所有 `review` Pod 的出站流量只适用于规则 4、7、8、9。
+
+**规则 1**
+
+- 目的：**透传** Envoy 代理发送到本地应用容器的流量，使其绕过 Envoy 代理，直达应用容器。
+- 对应图示中的步骤：6 到 7。
+- 详情：该规则使得所有来自 `127.0.0.6`（该 IP 地址将在下文解释） 的请求，跳出该链，返回 iptables 的调用点（即 `OUTPUT`）后继续执行其余路由规则，即 `POSTROUTING` 规则，把流量发送到任意目的地址，如本地 Pod 内的应用容器。如果没有这条规则，由 Pod 内 Envoy 代理发出的对 Pod 内容器访问的流量将会执行下一条规则，即规则 2，流量将再次进入到了 Inbound Handler 中，从而形成了死循环。将这条规则放在第一位可以避免流量在 Inbound Handler 中死循环的问题。
+
+**规则 2、5**
+
+- 目的：处理 Envoy 代理发出的站内流量（Pod 内部的流量），但不是对 localhost 的请求，通过后续规则将其转发给 Envoy 代理的 Inbound Handler。该规则适用于 Pod 对自身 IP 地址调用的场景。
+- 对应图示中的步骤：6 到 7。
+- 详情：如果流量的目的地非 localhost，且数据包是由 1337 UID（即 `istio-proxy` 用户，Envoy 代理）发出的，流量将被经过 `ISTIO_IN_REDIRECT` 最终转发到 Envoy 的 Inbound Handler。
+
+**规则 3、6**
+
+- 目的：**透传** Pod 内的应用容器的站内流量。适用于在应用容器中发出的对本地 Pod 的流量。
+- 详情：如果流量不是由 Envoy 用户发出的，那么就跳出该链，返回 `OUTPUT` 调用 `POSTROUTING`，直达目的地。
+
+**规则 4、7**
+
+- 目的：**透传** Envoy 代理发出的出站请求。
+- 对应图示中的步骤：14 到 15。
+- 详情：如果请求是由 Envoy 代理发出的，则返回 `OUTPUT` 继续调用 `POSTROUTING` 规则，最终直接访问目的地。
+
+**规则 8**
+
+- 目的：**透传** Pod 内部对 localhost 的请求。
+- 详情：如果请求的目的地是 localhost，则返回 OUTPUT 调用 `POSTROUTING`，直接访问 localhost。
+
+**规则 9**
+
+- 目的：所有其他的流量将被转发到 `ISTIO_REDIRECT` 后，最终达到 Envoy 代理的 Outbound Handler。
+
+以上规则避免了 Envoy 代理到应用程序的路由在 iptables 规则中的死循环，保障了流量可以被正确的路由到 Envoy 代理上，也可以发出真正的出站请求。
+
+**关于 RETURN target**
+
+你可能留意到上述规则中有很多 RETURN target，它的意思是，指定到这条规则时，跳出该规则链，返回 iptables 的调用点（在我们的例子中即 `OUTPUT`）后继续执行其余路由规则，在我们的例子中即 `POSTROUTING` 规则，把流量发送到任意目的地址，你可以把它直观的理解为**透传**。
+
+**关于 127.0.0.6 IP 地址**
+
+127.0.0.6 这个 IP 是 Istio 中默认的 `InboundPassthroughClusterIpv4`，在 Istio 的代码中指定。即流量在进入 Envoy 代理后被绑定的 IP 地址，作用是让 Outbound 流量重新发送到 Pod 中的应用容器，即 **Passthought（透传），绕过 Outbound Handler**。该流量是对 Pod 自身的访问，而不是真正的对外流量。至于为什么选择这个 IP 作为流量透传，请参考 [Istio Issue-29603](https://github.com/istio/istio/issues/29603)。
 
 ## 使用 iptables 做流量劫持时存在的问题
 
@@ -369,3 +396,4 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/docs/ops/diagnostic-tools/proxy-cmd/)
 - [揭开 Istio Sidecar 注入模型的神秘面纱 - istio.io](https://istio.io/latest/zh/blog/2019/data-plane-setup/)
 - [MOSN 作为 Sidecar 使用时的流量劫持方案 - mosn.io](https://mosn.io/docs/concept/traffic-hijack/)
+- [Istio 中的 Sidecar 注入、透明流量劫持及流量路由过程详解 - jimmysong.io](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/)
