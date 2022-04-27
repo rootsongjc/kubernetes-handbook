@@ -1,30 +1,32 @@
 ---
-title: "Sidecar injection and transparent traffic hijacking process in Istio explained in detail"
+title: "Sidecar injection, transparent traffic hijacking and routing process in Istio explained in detail"
 date: 2020-08-18T21:08:59+08:00
 draft: false
+weight: 10
 tags: ["istio","iptables"]
-description: "Based on Istio version 1.11, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and forwarding is done, and how traffic is routed to upstream."
+description: "Based on Istio version 1.13, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and routing is done."
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-Updated at March 8, 2022
+Updated at April 24, 2022
 
-Based on Istio version 1.11, this article will present the following.
+Based on Istio version 1.13, this article will present the following.
 
 - What is the sidecar pattern and what advantages does it have?
 - How are sidecar injections done in Istio?
 - How does Sidecar proxy do transparent traffic hijacking?
 - How is the traffic routed to upstream?
 
-A year ago, I have written about [understanding Envoy proxy Sidecar injection and traffic hijacking in Istio Service Mesh](/en/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) which was based on Istio version 1.1. The biggest changes in the sidecar injection and traffic hijacking link between Istio 1.11 and Istio 1.1 are:
+The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-- iptables switched to a command-line tool and no longer uses shell scripts.
-- The sidecar inbound and outbound specify the ports separately, whereas previously the same port (15001) was used.
+![Sidecar traffic injection](envoy-sidecar-traffic-interception-en-20220424.jpg)
 
-Note: Portions of this article are included in the [Istio Handbook](https://jimmysong.io/istio-handbook/) from the ServiceMesher community.
+At the beginning of the first step, the sidecar in the productpage pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
+
+There are three versions of the reviews service, each with an instance, and the sidecar work steps in the three versions are similar, as illustrated below only by the sidecar traffic forwarding step in one of the Pods.
 
 Read the Chinese version: [阅读中文版](/blog/sidecar-injection-iptables-and-traffic-routing)
 
@@ -38,7 +40,7 @@ The Sidecar application is loosely coupled to the main application. It can shiel
 
 ### Advantages of using the Sidecar pattern
 
-When deploying a service grid using SIDECAR mode, there is no need to run an agent on the node, but multiple copies of the same SIDECAR will run in the cluster. In the sidecar deployment method, a companion container (such as Envoy or MOSN) is deployed next to each application's container, which is called a sidecar container. the sidecar takes over all traffic in and out of the application container. In Kubernetes' Pod, a sidecar container is injected next to the original application container, and the two containers share storage, networking, and other resources.
+When deploying a service mesh using the sidecar mode, there is no need to run an agent on the node, but multiple copies of the same sidecar will run in the cluster. In the sidecar deployment mode, a companion container (such as Envoy or MOSN) is deployed next to each application's container, which is called a sidecar container. The sidecar takes over all traffic in and out of the application container. In Kubernetes' Pod, a sidecar container is injected next to the original application container, and the two containers share storage, networking, and other resources.
 
 Due to its unique deployment architecture, the sidecar model offers the following advantages.
 
@@ -293,7 +295,7 @@ Flags:
 
 The above incoming parameters are reassembled into iptables rules. For more information on how to use this command, visit `tools/istio-iptables/pkg/cmd/root.go`.
 
-The significance of the container's existence is that it allows the sidecar agent to intercept all inbound and outbound traffic to the pod, redirect all inbound traffic to port 15006 (sidecar) except port 15090 (used by Mixer) and port 15092 (Ingress Gateway), and then intercept outbound traffic from the application container which is processed by sidecar (listening through port 15001) and then outbound. See the [official Istio documentation](https://istio.io/docs/ops/deployment/requirements/) for port usage in Istio.
+The significance of the container's existence is that it allows the sidecar agent to intercept all inbound and outbound traffic to the pod, redirect all inbound traffic to port 15006 (sidecar) except port 15090 (used by Prometheus) and port 15092 (Ingress Gateway), and then intercept outbound traffic from the application container which is processed by sidecar (listening through port 15001) and then outbound. See the [official Istio documentation](https://istio.io/docs/ops/deployment/requirements/) for port usage in Istio.
 
 **Command analysis**
 
@@ -352,7 +354,7 @@ Chain OUTPUT (policy ACCEPT 79 packets, 6761 bytes)
 Chain POSTROUTING (policy ACCEPT 79 packets, 6761 bytes)
  pkts bytes target     prot opt in     out     source               destination
 
-# ISTIO_INBOUND CHAIN: Redirects all inbound traffic to the ISTIO_IN_REDIRECT chain, except for traffic destined for ports 15090 (used by mixer) and 15020 (used by Ingress gateway for Pilot health checks), and traffic sent to these two ports will return to the call point of the iptables rule chain, the successor POSTROUTING to the PREROUTING chain.
+# ISTIO_INBOUND CHAIN: Redirects all inbound traffic to the ISTIO_IN_REDIRECT chain, except for traffic destined for ports 15090 (used by Prometheus) and 15020 (used by Ingress gateway for Pilot health checks), and traffic sent to these two ports will return to the call point of the iptables rule chain, the successor POSTROUTING to the PREROUTING chain.
 Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
     0     0 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
@@ -365,7 +367,7 @@ Chain ISTIO_IN_REDIRECT (3 references)
  pkts bytes target     prot opt in     out     source               destination
     0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15006
 
-# ISTIO_OUTPUT chain: select the outbound traffic that needs to be redirected to Envoy (i.e., local), and all non-localhost traffic is forwarded to ISTIO_REDIRECT. to avoid infinite loops in the pod, all traffic to the istio-proxy userspace is returned to the next rule in its call point, which in this case is the OUTPUT chain, because jumping out of the ISTIO_OUTPUT rule leads to the next chain POSTROUTING. if the destination is non-localhost, jump to ISTIO_REDIRECT; if the traffic is from the istio-proxy userspace, jump out of the chain, return its call chain to continue the next rule (the next rule of OUTPUT, without processing the traffic); all non-istio-proxy userspace traffic whose destination is localhost, jump to ISTIO_REDIRECT.
+# ISTIO_OUTPUT chain: see the details bellow
 Chain ISTIO_OUTPUT (1 references)
  pkts bytes target     prot opt in     out     source               destination
     0     0 RETURN     all  --  any    lo      127.0.0.6            anywhere
@@ -384,13 +386,67 @@ Chain ISTIO_REDIRECT (1 references)
     0     0 REDIRECT   tcp  --  any    any     anywhere             anywhere             redir ports 15001
 ```
 
-The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
+The focus here is on the 9 rules in the `ISTIO_OUTPUT` chain. For ease of reading, I will show some of the above rules in the form of a table as follows.
 
-![Sidecar traffic injection](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210818.png)
+| **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
+| -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
+| 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
+| 2        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner UID match 1337 |
+| 3        | RETURN            | any    | lo      | anywhere   | anywhere !owner UID match 1337  |
+| 4        | RETURN            | any    | any     | anywhere   | anywhere owner UID match 1337   |
+| 5        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner GID match 1337 |
+| 6        | RETURN            | any    | lo      | anywhere   | anywhere !owner GID match 1337  |
+| 7        | RETURN            | any    | any     | anywhere   | anywhere owner GID match 1337   |
+| 8        | RETURN            | any    | any     | anywhere   | localhost                       |
+| 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
 
-At the beginning of the first step, the sidecar in the productpage pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
+The following diagram shows the detailed flow of the `ISTIO_ROUTE` rule.
 
-There are three versions of the reviews service, each with an instance, and the sidecar work steps in the three versions are similar, as illustrated below only by the sidecar traffic forwarding step in one of the Pods.
+![ISTIO_ROUTE iptables rules](istio-route-iptables-en.jpg)
+
+I will explain the purpose of each rule, corresponding to the steps and details in the illustration at the beginning of the article, in the order in which they appear. Where rules 5, 6 and 7 are extensions of the application of rules 2, 3 and 4 respectively (from UID to GID), which serve similar purposes and will be explained together. Note that the rules therein are executed in order, meaning that the rule with the next highest order will be used as the default. When the outbound NIC (out) is lo (local loopback address, loopback interface), it means that the destination of the traffic is the local Pod, and for traffic sent from the Pod to the outside, it will not go through this interface. Only rules 4, 7, 8, and 9 apply to all outbound traffic from the review Pod.
+
+**Rule 1**
+
+- Purpose: To pass through traffic sent by the Envoy proxy to the local application container, so that it bypasses the Envoy proxy and goes directly to the application container.
+- Corresponds to steps 6 through 7 in the diagram.
+- Details: This rule causes all requests from 127.0.0.6 (this IP address will be explained below) to jump out of the chain, return to the point of invocation of iptables (i.e. OUTPUT) and continue with the rest of the routing rules, i.e. the `POSTROUTING` rule, which sends traffic to an arbitrary destination, such as the application container within the local Pod. Without this rule, traffic from the Envoy proxy within the Pod to the Pod container will execute the next rule, rule 2, and the traffic will enter the Inbound Handler again, creating a dead loop. Putting this rule in the first place can avoid the problem of traffic dead-ending in the Inbound Handler.
+
+**Rule 2, 5**
+
+- Purpose: Handle inbound traffic (traffic inside the Pod) from the Envoy proxy, but not requests to the localhost, and forward it to the Envoy proxy's Inbound Handler via a subsequent rule.
+- Corresponds to steps 6 through 7 in the diagram.
+- Details: If the destination of the traffic is not localhost and the packet is sent by 1337 UID (i.e. istio-proxy user, Envoy proxy), the traffic will be forwarded to Envoy's Inbound Handler through `ISTIO_IN_REDIRECT` eventually.
+
+**Rule 3, 6**
+
+- Purpose: To pass through the inbound traffic of the application container within the Pod. Applies to traffic to the local Pod that is emitted in the application container.
+- Details: If the traffic is not sent by an Envoy user, then jump out of the chain and return to `OUTPUT` to call `POSTROUTING` and go straight to the destination.
+
+**Rule 4, 7**
+
+- Purpose: To pass through outbound requests sent by Envoy proxy.
+- Corresponds to steps 14 through 15 in the illustration.
+- Details: If the request was made by the Envoy proxy, return `OUTPUT` to continue invoking the `POSTROUTING` rule and eventually access the destination directly.
+
+**Rule 8**
+
+- Purpose: Passes requests from within the Pod to the localhost.
+- Details: If the destination of the request is localhost, return `OUTPUT` and call `POSTROUTING` to access localhost directly.
+
+**Rule 9**
+
+- Purpose: All other traffic will be forwarded to `ISTIO_REDIRECT` after finally reaching the Outbound Handler of Envoy proxy.
+
+The above rule avoids dead loops in the iptables rules for Envoy proxy to application routing, and guarantees that traffic can be routed correctly to the Envoy proxy, and that real outbound requests can be made.
+
+**About RETURN target**
+
+You may notice that there are many `RETURN` targets in the above rules, which means that when this rule is specified, it jumps out of the rule chain, returns to the call point of iptables (in our case `OUTPUT`) and continues to execute the rest of the routing rules, in our case the `POSTROUTING` rule, which sends traffic to any destination address, you can think of This is intuitively understood as pass-through.
+
+**About the 127.0.0.6 IP address**
+
+The IP 127.0.0.6 is the default `InboundPassthroughClusterIpv4` in Istio and is specified in the code of Istio. This is the IP address to which traffic is bound after entering the Envoy proxy, and serves to allow Outbound traffic to be re-sent to the application container in the Pod, i.e. Passthought, bypassing the Outbound Handler. this traffic is access to the Pod itself, and not real outbound traffic. See Istio [Issue-29603](https://github.com/istio/istio/issues/29603) for more information on why this IP was chosen as the traffic passthrough.
 
 ### Understand iptables
 
@@ -472,161 +528,65 @@ Traffic routing is divided into two processes, Inbound and Outbound, which will 
 
 ### Understand Inbound Handler
 
-The role of the Inbound handler is to pass traffic from the downstream blocked by iptables to the localhost and establish a connection to the application container within the Pod. Assuming the name of one of the Pods is `reviews-v1-54b8794ddf-jxksn`, run `istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn` to see which Listener is in that Pod.
+The role of the Inbound handler is to pass traffic from the downstream blocked by iptables to the localhost and establish a connection to the application container within the Pod. Assuming the name of one of the Pods is `reviews-v1-545db77b95-jkgv2`, run `istioctl proxy-config listener reviews-v1-545db77b95-jkgv2 --port 15006` to see which Listener is in that Pod.
 
 ```ini
-ADDRESS            PORT      TYPE
-172.17.0.15        9080      HTTP <--- Receives all Inbound HTTP traffic, which is the real listening address of the business process.
-172.17.0.15        15020     TCP <--- Ingress Gateway
-10.109.20.166      15012     TCP <--- Istiod http dns
-10.103.34.135      14250     TCP <--+
-10.103.34.135      14267     TCP    |
-10.103.34.135      14268     TCP    |
-10.104.122.175     15020     TCP    |
-10.104.122.175     15029     TCP    |
-10.104.122.175     15030     TCP    |
-10.104.122.175     15031     TCP    |
-10.104.122.175     15032     TCP    |
-10.104.122.175     15443     TCP    |
-10.104.122.175     31400     TCP    | Receive Outbound traffic paired with a 0.0.0.0:15006 listener
-10.104.122.175     443       TCP    |
-10.104.62.18       15443     TCP    |
-10.104.62.18       443       TCP    |
-10.106.201.253     16686     TCP    |
-10.109.20.166      443       TCP    |
-10.96.0.1          443       TCP    |
-10.96.0.10         53        TCP    |
-10.96.0.10         9153      TCP    |
-10.98.184.149      15011     TCP    |
-10.98.184.149      15012     TCP    |
-10.98.184.149      443       TCP    |
-0.0.0.0            14250     TCP    |
-0.0.0.0            15010     TCP    |
-0.0.0.0            15014     TCP    |
-0.0.0.0            15090     HTTP   |
-0.0.0.0            20001     TCP    |
-0.0.0.0            3000      TCP    |
-0.0.0.0            80        TCP    |
-0.0.0.0            8080      TCP    |
-0.0.0.0            9080      TCP    |
-0.0.0.0            9090      TCP    |
-0.0.0.0            9411      TCP <--+
-0.0.0.0            15001     TCP <--- Receive all Outbound traffic intercepted by iptables and forward it to the virtual listener
-0.0.0.0            15006     TCP <--- Receive all Inbound traffic intercepted by iptables and forward it to the virtual listener
+ADDRESS PORT  MATCH                                                                                           DESTINATION
+0.0.0.0 15006 Addr: *:15006                                                                                   Non-HTTP/Non-TCP
+0.0.0.0 15006 Trans: tls; App: istio-http/1.0,istio-http/1.1,istio-h2; Addr: 0.0.0.0/0                        InboundPassthroughClusterIpv4
+0.0.0.0 15006 Trans: raw_buffer; App: http/1.1,h2c; Addr: 0.0.0.0/0                                           InboundPassthroughClusterIpv4
+0.0.0.0 15006 Trans: tls; App: TCP TLS; Addr: 0.0.0.0/0                                                       InboundPassthroughClusterIpv4
+0.0.0.0 15006 Trans: raw_buffer; Addr: 0.0.0.0/0                                                              InboundPassthroughClusterIpv4
+0.0.0.0 15006 Trans: tls; Addr: 0.0.0.0/0                                                                     InboundPassthroughClusterIpv4
+0.0.0.0 15006 Trans: tls; App: istio,istio-peer-exchange,istio-http/1.0,istio-http/1.1,istio-h2; Addr: *:9080 Cluster: inbound|9080||
+0.0.0.0 15006 Trans: raw_buffer; Addr: *:9080                                                                 Cluster: inbound|9080||
 ```
 
-When traffic from productpage arrives at the `reviews` pod, downstream already knows explicitly that the IP address of the pod is `172.17.0.16` and that's why the request is `172.17.0.15:9080`.
+The following lists the meanings of the fields in the above output.
 
-**`virtualInbound` Listener**
+- ADDRESS: downstream address
+- PORT: The port the Envoy listener is listening on
+- MATCH: The transport protocol used by the request or the matching downstream address
+- DESTINATION: Route destination
 
-As you can see from the Listener list of this Pod, the Listener of `0.0.0:15006/TCP` (whose real name is virtualInbound) listens to all Inbound traffic, and here is the detailed configuration of this Listener.
+The Iptables in the reviews Pod hijack inbound traffic to port 15006, and from the above output we can see that Envoy's Inbound Handler is listening on port 15006, and requests to port 9080 destined for any IP will be routed to the `inbound|9080||` Cluster.
 
-```json
-{
-    "name": "virtualInbound",
-    "address": {
-        "socketAddress": {
-            "address": "0.0.0.0",
-            "portValue": 15006
-        }
-    },
-"filterChains": [
-    {
-        "filters": [
-        /*ommit*/
-              {
-            "filterChainMatch": {
-                "destinationPort": 9080,
-                "prefixRanges": [
-                    {
-                        "addressPrefix": "172.17.0.15",
-                        "prefixLen": 32
-                    }
-                ],
-                "applicationProtocols": [
-                    "istio-peer-exchange",
-                    "istio",
-                    "istio-http/1.0",
-                    "istio-http/1.1",
-                    "istio-h2"
-                ]
-            },
-            "filters": [
-                {
-                    "name": "envoy.filters.network.metadata_exchange",
-                    "config": {
-                        "protocol": "istio-peer-exchange"
-                    }
-                },
-                {
-                    "name": "envoy.http_connection_manager",
-                    "typedConfig": {
-                        "@type": "type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager",
-                        "statPrefix": "inbound_172.17.0.15_9080",
-                        "routeConfig": {
-                            "name": "inbound|9080|http|reviews.default.svc.cluster.local",
-                            "virtualHosts": [
-                                {
-                                    "name": "inbound|http|9080",
-                                    "domains": [
-                                        "*"
-                                    ],
-                                    "routes": [
-                                        {
-                                            "name": "default",
-                                            "match": {
-                                                "prefix": "/"
-                                            },
-                                            "route": {
-                                                "cluster": "inbound|9080|http|reviews.default.svc.cluster.local",
-                                                "timeout": "0s",
-                                                "maxGrpcTimeout": "0s"
-                                            },
-                                            "decorator": {
-                                                "operation": "reviews.default.svc.cluster.local:9080/*"
-                                            }
-                                        }
-                                    ]
-                                }
-                            ],
-                            "validateClusters": false
-                        }
-  /*ommit*/
-}
-```
-
-The traffic from the Inbound handler was diverted to the `172.17.0.15_9080` Listener by the virtualInbound Listener and we are looking at the configuration of this Listener.
-
-Run `istioctl pc listener reviews-v1-54b8794ddf-jxksn --address 172.17.0.15 --port 9080 -o json`  to see it.
+As you can see in the last two rows of the Pod's Listener list, the Listener for `0.0.0.0:15006/TCP` (whose actual name is `virtualInbound`) listens for all Inbound traffic, which contains matching rules, and traffic to port 9080 from any IP will be routed to If you want to see the detailed configuration of this Listener in Json format, you can execute the `istioctl proxy-config listeners reviews-v1-545db77b95-jkgv2 --port 15006 -o json` command. You will get an output similar to the following.
 
 ```json
 [
+    /*omit*/
     {
-        "name": "172.17.0.15_9080",
+        "name": "virtualInbound",
         "address": {
             "socketAddress": {
-                "address": "172.17.0.15",
-                "portValue": 9080
+                "address": "0.0.0.0",
+                "portValue": 15006
             }
         },
         "filterChains": [
+            /*omit*/
             {
                 "filterChainMatch": {
+                    "destinationPort": 9080,
+                    "transportProtocol": "tls",
                     "applicationProtocols": [
-                        "istio-peer-exchange",
                         "istio",
+                        "istio-peer-exchange",
                         "istio-http/1.0",
                         "istio-http/1.1",
                         "istio-h2"
                     ]
                 },
-            "filters": [
-                {
-                    "name": "envoy.http_connection_manager",
-                    "config": {
-                        ... 
-                    "routeConfig": {
-                                "name": "inbound|9080|http|reviews.default.svc.cluster.local",
+                "filters": [
+                    /*omit*/
+                    {
+                        "name": "envoy.filters.network.http_connection_manager",
+                        "typedConfig": {
+                            "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
+                            "statPrefix": "inbound_0.0.0.0_9080",
+                            "routeConfig": {
+                                "name": "inbound|9080||",
                                 "virtualHosts": [
                                     {
                                         "name": "inbound|http|9080",
@@ -640,9 +600,12 @@ Run `istioctl pc listener reviews-v1-54b8794ddf-jxksn --address 172.17.0.15 --po
                                                     "prefix": "/"
                                                 },
                                                 "route": {
-                                                    "cluster": "inbound|9080|http|reviews.default.svc.cluster.local",
+                                                    "cluster": "inbound|9080||",
                                                     "timeout": "0s",
-                                                    "maxGrpcTimeout": "0s"
+                                                    "maxStreamDuration": {
+                                                        "maxStreamDuration": "0s",
+                                                        "grpcTimeoutHeaderMax": "0s"
+                                                    }
                                                 },
                                                 "decorator": {
                                                     "operation": "reviews.default.svc.cluster.local:9080/*"
@@ -651,79 +614,79 @@ Run `istioctl pc listener reviews-v1-54b8794ddf-jxksn --address 172.17.0.15 --po
                                         ]
                                     }
                                 ],
-            }
-        ...
-        },
-        {
-            "filterChainMatch": {
-                "transportProtocol": "tls"
-            },
-            "tlsContext": {...
-            },
-            "filters": [...
-            ]
-        }
-    ],
-...
-}]
+                                "validateClusters": false
+                            },
+                            /*omit*/
+                        }
+                    }
+                ],
+            /*omit*/
+        ],
+        "listenerFilters": [
+        /*omit*/
+        ],
+        "listenerFiltersTimeout": "0s",
+        "continueOnListenerFiltersTimeout": true,
+        "trafficDirection": "INBOUND"
+    }
+]
 ```
 
-Let's look at the envoy.http_connection_manager configuration section in filterChains.filters, which indicates that traffic is forwarded to Cluster `inbound|9080|http|reviews.default.svc.cluster.local` for processing.
-
-**Cluster `inbound|9080|http|reviews.default.svc.cluster.local`**
-
-Run `istioctl proxy-config cluster reviews-v1-54b8794ddf-jxksn --fqdn reviews.default.svc.cluster.local --direction inbound -o json`  to see the config of cluster.
+Since the Inbound Handler traffic routes traffic from any address to this Pod port 9080 to the `inbound|9080||` Cluster, let's run `istioctl pc cluster reviews-v1-545db77b95-jkgv2 --port 9080 --direction inbound -o json` to see the Cluster configuration and you will get something like the following output.
 
 ```json
 [
     {
-        "name": "inbound|9080|http|reviews.default.svc.cluster.local",
-        "type": "STATIC",
-        "connectTimeout": "1s",
-        "loadAssignment": {
-            "clusterName": "inbound|9080|http|reviews.default.svc.cluster.local",
-            "endpoints": [
-                {
-                    "lbEndpoints": [
-                        {
-                            "endpoint": {
-                                "address": {
-                                    "socketAddress": {
-                                        "address": "127.0.0.1",
-                                        "portValue": 9080
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
+        "name": "inbound|9080||",
+        "type": "ORIGINAL_DST",
+        "connectTimeout": "10s",
+        "lbPolicy": "CLUSTER_PROVIDED",
         "circuitBreakers": {
             "thresholds": [
                 {
                     "maxConnections": 4294967295,
                     "maxPendingRequests": 4294967295,
                     "maxRequests": 4294967295,
-                    "maxRetries": 4294967295
+                    "maxRetries": 4294967295,
+                    "trackRemaining": true
                 }
             ]
+        },
+        "cleanupInterval": "60s",
+        "upstreamBindConfig": {
+            "sourceAddress": {
+                "address": "127.0.0.6",
+                "portValue": 0
+            }
+        },
+        "metadata": {
+            "filterMetadata": {
+                "istio": {
+                    "services": [
+                        {
+                            "host": "reviews.default.svc.cluster.local",
+                            "name": "reviews",
+                            "namespace": "default"
+                        }
+                    ]
+                }
+            }
         }
     }
 ]
 ```
 
-You can see that the Endpoint of the Cluster directly corresponds to the localhost, which then forwards the traffic through the iptables and is consumed by the application container.
+We see that the `TYPE` is `ORIGINAL_DST`, which sends the traffic to the original destination address (Pod IP), because the original destination address is the current Pod, you should also notice that the value of `upstreamBindConfig.sourceAddress.address` is rewritten to 127.0.0.6, and for Pod This echoes the first rule in the iptables `ISTIO_OUTPUT` chain above, according to which traffic will be passed through to the application container inside the Pod.
 
 ### Understand Outbound Handler
 
-Because reviews sends an HTTP request to the ratings service at `http://ratings.default.svc.cluster.local:9080/`, the role of the Outbound handler is to intercept traffic from the local application to which iptables has intercepted, and determine how to route it to the upstream via sidecar.
+Because reviews sends an HTTP request to the ratings service at `http://ratings.default.svc.cluster.local:9080/`, the role of the Outbound handler is to intercept traffic from the local application to which iptables has intercepted, and determine how to route it to the upstream via the sidecar.
 
 Requests from application containers are Outbound traffic, hijacked by iptables and transferred to the Outbound handler for processing, which then passes through the virtualOutbound Listener, the `0.0.0.0_9080` Listener, and then finds the upstream cluster via Route 9080, which in turn finds the Endpoint via EDS to perform the routing action.
 
 **Route `ratings.default.svc.cluster.local:9080`**
 
-`reviews` requests the `ratings` service and runs `istioctl proxy-config routes reviews-v1-54b8794ddf-jxksn --name 9080 -o json`. View the route configuration because sidecar matches VirtualHost based on domains in the HTTP header, so only `ratings.default.svc.cluster.local:9080` is listed below for this VirtualHost.
+`reviews` requests the `ratings` service and runs `istioctl proxy-config routes reviews-v1-545db77b95-jkgv2 --name 9080 -o json`. View the route configuration because the  sidecar matches VirtualHost based on domains in the HTTP header, so only `ratings.default.svc.cluster.local:9080` is listed below for this VirtualHost.
 
 ```json
 [{
@@ -780,7 +743,7 @@ From this Virtual Host configuration, you can see routing traffic to Cluster `ou
 
 **Endpoint `outbound|9080||ratings.default.svc.cluster.local`**
 
-Running `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 -o json` to view the Endpoint configuration, we select only the `outbound|9080|||ratings.default.svc.cluster.local` Cluster of which the results are as follows.
+Running `istioctl proxy-config endpoint reviews-v1-545db77b95-jkgv2 --port 9080 -o json --cluster "outbound|9080||ratings.default.svc.cluster.local"` to view the Endpoint configuration, the results are as follows.
 
 ```json
 {
@@ -814,11 +777,11 @@ Running `istioctl proxy-config endpoint reviews-v1-54b8794ddf-jxksn --port 9080 
 }
 ```
 
-Endpoints can be one or more, and sidecar will select the appropriate Endpoint to route according to certain rules. At this point the `Review` service has found its upstream service `Rating`'s Endpoint.
+We see that the endpoint address is 10.4.1.12. In fact, the Endpoint can be one or more, and the sidecar will select the appropriate Endpoint to route based on certain rules. At this point the review Pod has found the Endpoint for its upstream service rating.
 
 ## Summary
 
-This article uses the bookinfo example provided by Istio to guide readers through the implementation details behind sidecar injection, iptables transparent traffic hijacking, and traffic routing in sidecar. sidecar mode and traffic transparent hijacking are the features and basic functions of Istio service mesh, understanding the process behind this function and the implementation details will help you understand the principle of service mesh and the content in the later chapters of the [Istio Handbook](https://www.servicemesher.com/istio-handbook), so I hope readers can try it from scratch in their own environment to deepen their understanding.
+This article uses the bookinfo example provided by Istio to guide readers through the implementation details behind the sidecar injection, iptables transparent traffic hijacking, and traffic routing in the sidecar. The sidecar mode and traffic transparent hijacking are the features and basic functions of Istio service mesh, understanding the process behind this function and the implementation details will help you understand the principle of service mesh and the content in the later chapters of the [Istio Handbook](https://jimmysong.io/istio-handbook), so I hope readers can try it from scratch in their own environment to deepen their understanding.
 
 Using iptables for traffic hijacking is just one of the ways to do traffic hijacking in the data plane of a service mesh, and there are many more traffic hijacking scenarios, quoted below from the description of the traffic hijacking section given in the MOSN official network of the cloud-native network proxy.
 
@@ -834,6 +797,14 @@ Several of the above problems are not present in all scenarios, let's say some s
 
 ### Transparent hijacking optimization
 
+In order to optimize the performance of transparent traffic hijacking in Istio, the following solutions have been proposed by the industry.
+
+**Traffic Hijacking with eBPF using the Merbridge Open Source Project**
+
+[Merbridge](https://github.com/merbridge/merbridge) is a plug-in that leverages eBPF to accelerate the Istio service mesh, which was open sourced by DaoCloud in early 2022. Using Merbridge can optimize network performance in the data plane to some extent.
+
+Merbridge leverages the sockops and `redir` capabilities of eBPF to transfer packets directly from inbound sockets to outbound sockets. eBPF provides the `bpf_msg_redirect_hash` function to forward application packets directly.
+
 **Handling inbound traffic with tproxy**
 
 tproxy can be used for redirection of inbound traffic without changing the destination IP/port in the packet, without performing connection tracking, and without the problem of conntrack modules creating a large number of connections. Restricted to the kernel version, tproxy's application to outbound is flawed. Istio currently supports handling inbound traffic via tproxy.
@@ -844,9 +815,9 @@ In order to adapt to more application scenarios, the outbound direction is imple
 
 ![hook-connect ](hook-connect.jpg)
 
-Whichever transparent hijacking scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, tproxy can read the destination address directly, by modifying the call interface, hok connect scheme reads in a similar way to tproxy.
+Whichever transparent hijacking scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, `tproxy` can read the destination address directly, by modifying the call interface, hook connect scheme reads in a similar way to tproxy.
 
-After transparent hijacking, sockmap can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
+After transparent hijacking, the  `sockmap` can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
 
 ## References
 
