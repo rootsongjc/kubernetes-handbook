@@ -8,7 +8,7 @@ Kubernetes的社区是以SIG（Special Interest Group特别兴趣小组）和工
 
 ## 主要SIG列表
 
-- **api-machinery**：所有API级别的功能，包括了API server、API注册和发现、通用的API CRUD语义，准入控制，编码/解码，转换，默认值，持久化层（etcd），OpenAPI，第三方资源，垃圾回收(gc)和客户端库的方方面面。
+- **api-machinery**：所有API级别的功能，包括了API server、API注册和发现、通用的API CRUD语义，准入控制，编码/解码，转换，默认值，持久化层（etcd），OpenAPI，第三方资源，垃圾回收（gc）和客户端库的方方面面。
 - **aws**：如何在AWS上支持和使用kubernetes。
 - **apps**：在kubernetes上部署和运维应用程序。关注开发者和DevOps在kubernetes上运行应用程序的体验。
 - **architecture**：维持kubernetes在架构设计上的一致性和原则。
