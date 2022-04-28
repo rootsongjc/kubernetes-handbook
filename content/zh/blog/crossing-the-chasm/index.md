@@ -2,7 +2,7 @@
 title: "跨越鸿沟：理解鸿沟理论"
 date: 2022-01-09T10:43:27+08:00
 draft: false
-tags: ["marketing"]
+tags: ["文化"]
 categories: ["文化"]
 bg_image: "images/backgrounds/page-title.jpg"
 description: "本文将为读者分享一些关于“鸿沟理论”有关的一些知识，希望能够引发大家对于新技术推广的一些思考。"
