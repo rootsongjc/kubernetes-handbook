@@ -3,7 +3,7 @@ title: "新疆北疆房车自驾之旅"
 description: "记录我与 Addo 一行七天的房车自驾之旅。"
 date: 2021-07-31T12:18:40+08:00
 draft: false
-tags: ["旅行","自驾"]
+tags: ["旅行"]
 categories: ["旅行"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"

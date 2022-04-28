@@ -3,7 +3,7 @@ title: "服务网格之旅——使用 Kubernetes 和 Istio Service Mesh 构建�
 description: "这篇文章将带你了解使用 Kubernetes 和 Istio Service Mesh 构建多集群及混合云的过程和需要考虑的问题。"
 image: "/images/banner/multicluster-zh.jpg"
 categories: ["istio"]
-tags: ["istio","service mesh","kuberentes","tsb","multicluster"]
+tags: ["istio","service mesh","kubernetes","tsb","multicluster"]
 date: 2021-07-12T22:22:00+08:00
 type: "post"
 ---
