@@ -1,18 +1,18 @@
 # 安装配置 kube-dns
 
-在我们安装Kubernetes集群的时候就已经安装了kube-dns插件，这个插件也是官方推荐安装的。通过将 Service 注册到 DNS 中，Kuberentes 可以为我们提供一种简单的服务注册发现与负载均衡方式。
+在我们安装 Kubernetes 集群的时候就已经安装了 `kube-dns` 插件，这个插件也是官方推荐安装的。通过将 Service 注册到 DNS 中，Kuberentes 可以为我们提供一种简单的服务注册发现与负载均衡方式。
 
-[CoreDNS](https://coredns.io)作为CNCF中的托管的一个项目，在Kuberentes1.9版本中，使用kubeadm方式安装的集群可以通过以下命令直接安装CoreDNS。
+[CoreDNS](https://coredns.io) 作为 CNCF 中的托管的一个项目，在 Kuberentes1.9 版本中，使用 kubeadm 方式安装的集群可以通过以下命令直接安装 CoreDNS。
 
 ```bash
 kubeadm init --feature-gates=CoreDNS=true
 ```
 
-您也可以使用CoreDNS替换Kubernetes插件kube-dns，可以使用 Pod 部署也可以独立部署，请参考[Using CoreDNS for Service Discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)，下文将介绍如何配置kube-dns。
+您也可以使用 CoreDNS 替换 Kubernetes 插件 `kube-dns`，可以使用 Pod 部署也可以独立部署，请参考 [Using CoreDNS for Service Discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)，下文将介绍如何配置 `kube-dns`。
 
 ## kube-dns
 
-kube-dns是Kubernetes中的一个内置插件，目前作为一个独立的开源项目维护，见<https://github.com/kubernetes/dns>。
+`kube-dns` 是 Kubernetes 中的一个内置插件，目前作为一个独立的开源项目维护，见 [GitHub](https://github.com/kubernetes/dns)。
 
 下文中给出了配置 DNS Pod 的提示和定义 DNS 解析过程以及诊断 DNS 问题的指南。
 
@@ -101,7 +101,7 @@ data:
     [“8.8.8.8”, “8.8.4.4”]
 ```
 
-如上面指定的那样，带有“.acme.local”后缀的 DNS 请求被转发到 1.2.3.4 处监听的 DNS。Google Public DNS 为上游查询提供服务。
+如上面指定的那样，带有“.acme.local”后缀的 DNS 请求被转发到 `1.2.3.4` 处监听的 DNS。Google Public DNS 为上游查询提供服务。
 
 下表描述了如何将具有特定域名的查询映射到其目标DNS服务器：
 
@@ -296,8 +296,6 @@ kube-dns      10.0.0.10      <none>        53/UDP,53/TCP        1h
 ...
 ```
 
-如果您已经创建了该服务或它本应该默认创建但没有出现，参考[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)获取更多信息。
-
 ### DNS 端点暴露出来了吗？
 
 您可以使用`kubectl get endpoints`命令验证 DNS 端点是否被暴露。
@@ -307,8 +305,6 @@ $ kubectl get ep kube-dns --namespace=kube-system
 NAME       ENDPOINTS                       AGE
 kube-dns   10.180.3.17:53,10.180.3.17:53    1h
 ```
-
-如果您没有看到端点，查看[调试服务](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)文档中的端点部分。
 
 获取更多的 Kubernetes DNS 示例，请参考 Kubernetes GitHub 仓库中的[cluster-dns示例](https://github.com/kubernetes/examples/tree/master/staging/cluster-dns)。
 

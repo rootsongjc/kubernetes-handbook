@@ -8,7 +8,7 @@
 - LoadBalancer
 - Ingress
 
-说是暴露 Pod 其实跟暴露 Service 是一回事，因为 Pod 就是 Service 的 backend。
+说是暴露 Pod 其实跟暴露 Service 是一回事，因为 Pod 就是 Service 的后端。
 
 ## hostNetwork: true
 
@@ -50,7 +50,7 @@ curl -v http://$POD_IP:8086/ping
 
 这是一种直接定义 Pod 网络的方式。
 
-`hostPort` 是直接将容器的端口与所调度的节点上的端口路由，这样用户就可以通过宿主机的 IP 加上来访问 Pod 了，如:。
+`hostPort` 是直接将容器的端口与所调度的节点上的端口路由，这样用户就可以通过宿主机的 IP 加上来访问 Pod 了，比如：
 
 ```yaml
 apiVersion: v1
@@ -68,7 +68,7 @@ spec:
 
 这样做有个缺点，因为 Pod 重新调度的时候该 Pod 被调度到的宿主机可能会变动，这样就变化了，用户必须自己维护一个 Pod 与所在宿主机的对应关系。
 
-这种网络方式可以用来做 nginx ingress controller。外部流量都需要通过 Kubernetes node 节点的 80 和 443 端口。
+这种网络方式可以用来做 Nginx Ingress Controller。外部流量都需要通过 Kubernetes node 节点的 80 和 443 端口。
 
 ## NodePort
 
@@ -105,7 +105,7 @@ spec:
     name: influxdb
 ```
 
-集群外就可以使用 kubernetes 任意一个节点的 IP 加上 30000 端口访问该服务了。kube-proxy 会自动将流量以 round-robin 的方式转发给该 service 的每一个 pod。
+集群外就可以使用 Kubernetes 任意一个节点的 IP 加上 30000 端口访问该服务了。kube-proxy 会自动将流量以 `round-robin` 的方式转发给该 service 的每一个 pod。
 
 这种服务暴露方式，无法让你指定自己想要的应用常用端口，不过可以在集群上再部署一个反向代理作为流量入口。
 
@@ -134,12 +134,12 @@ NAME       CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
 influxdb   10.97.121.42   10.13.242.236   8086:30051/TCP   39s
 ```
 
-内部可以使用 ClusterIP 加端口来访问服务，如 19.97.121.42:8086。
+内部可以使用 ClusterIP 加端口来访问服务，如 `10.97.121.42:8086`。
 
 外部可以用以下两种方式访问该服务：
 
 - 使用任一节点的 IP 加 30051 端口访问该服务
-- 使用 `EXTERNAL-IP` 来访问，这是一个 VIP，是云供应商提供的负载均衡器 IP，如 10.13.242.236:8086。
+- 使用 `EXTERNAL-IP` 来访问，这是一个 VIP，是云供应商提供的负载均衡器 IP，如 `10.13.242.236:8086`
 
 ## Ingress
 

@@ -13,8 +13,8 @@
 
 如您所知，将整个应用程序（例如容器化的 Rails 应用程序，MySQL 数据库以及所有应用程序）迁移到单个 Pod 中是一种反模式。这就是说，有一些非常有用的模式超出了容器和 Pod 之间的 1:1 的对应关系：
 
-- **Sidecar 容器**：虽然 Pod 中依然需要有一个主容器，你还可以添加一个副容器作为辅助（见 [日志示例](https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent))。*单个 Pod 中的两个容器可以[通过共享卷](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)进行通信*。
-- **Init 容器**：*Init 容器*在 Pod 的应用容器（如主容器和 sidecar 容器）之前运行。[阅读更多](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)，查看 [nginx 服务器示例](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/)，并[学习如何调试这些容器](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/)。
+- **Sidecar 容器**：虽然 Pod 中依然需要有一个主容器，你还可以添加一个副容器作为辅助（见 [日志示例](https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent))。单个 Pod 中的两个容器可以[通过共享卷](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)进行通信。
+- **Init 容器**：Init 容器在 Pod 的应用容器（如主容器和 sidecar 容器）之前运行。
 
 #### Pod 配置
 

@@ -132,8 +132,6 @@ $ kubectl exec -ti nginx-app-5jyvm -- /bin/sh
 # exit
 ```
 
-更多信息请查看 [获取运行中容器的 Shell 环境](https://kubernetes.io/docs/tasks/kubectl/get-shell-running-container)。
-
 #### docker logs
 
 如何查看运行中进程的 stdout/stderr？查看 [kubectl logs](https://kubernetes.io/docs/user-guide/kubectl/#logs)。

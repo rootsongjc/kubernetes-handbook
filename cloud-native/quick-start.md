@@ -150,7 +150,7 @@ Kubernetes 提供了应用程序在集群的每个层次上的资源使用情况
 
 毕竟，监控可以帮助你了解应用和集群运行情况的详细信息，这对于学习 Kubernetes 是十分有帮助的。
 
-Kubernetes 包含两个内置度量收集工具用于监控：[资源管道和全度量管道](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)。资源管道是一个较低级和较有限的工具，主要集中在与各种控制器相关的指标上。全指标管道，顾名思义，从几乎所有集群组件中获取并显示更丰富的指标。
+Kubernetes 包含两个内置度量收集工具用于监控：资源管道和全度量管道。资源管道是一个较低级和较有限的工具，主要集中在与各种控制器相关的指标上。全指标管道，顾名思义，从几乎所有集群组件中获取并显示更丰富的指标。
 
 还有一些第三方工具可以安装并集成到 Kubernetes 集群中。对于 Kubernetes 来说，最普遍使用的两个工具是 Prometheus 和 Grafana。
 
