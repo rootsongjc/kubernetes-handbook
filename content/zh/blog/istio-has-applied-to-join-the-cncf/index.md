@@ -18,7 +18,7 @@ image: "images/banner/istio-cncf.jpg"
 
 将 Istio 纳入 CNCF，使得 Istio 和 Envoy 的发展更容易同步推进。它还有助于将 Istio 与 Envoy 一起定位为 CNCF 验证的 "云原生技术栈" 的一部分。根据 CNCF 的年度[调查](https://www.cncf.io/reports/cncf-annual-survey-2021/)，到目前为止，Istio 是生产中最受欢迎和使用最多的服务网格。有 20 多家不同的公司在推动 Istio 社区的发展，这一宣布为 CNCF 管理下的持续创新和增长创造了条件。
 
-## 2016：Istio 的起源
+### 2016：Istio 的起源
 
 我想借此机会解释一下 Istio 的起源。Istio 来自谷歌的 API 平台团队，名为 One Platform。(今天，具有讽刺意味的是，Istio 是美国政府项目 [Platform One](https://www.tetrate.io/blog/tetrate-first-to-provide-hardened-istio-to-dods-iron-bank/) 的一部分，它使用 Tetrate 产品和服务）。一个平台利用了谷歌所有的基础设施优势（stubby、monarch、loas 等），并增加了最初的服务管理经验，并将其全部暴露给应用团队。
 
