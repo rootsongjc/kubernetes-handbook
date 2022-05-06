@@ -2,7 +2,7 @@
 title: "Istio Sidecar 代理组成详解"
 description: "本文将向你介绍 Istio 中 sidecar 代理的组成。"
 date: 2022-05-05T14:18:40+08:00
-draft: false
+draft: true
 tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
