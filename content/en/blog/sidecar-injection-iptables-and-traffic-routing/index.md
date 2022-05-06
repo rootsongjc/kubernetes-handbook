@@ -11,7 +11,7 @@ image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-Updated on April 24, 2022
+Updated on May 6, 2022
 
 Based on Istio version 1.13, this article will present the following.
 
@@ -22,7 +22,7 @@ Based on Istio version 1.13, this article will present the following.
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-![Sidecar traffic injection](envoy-sidecar-traffic-interception-en-20220424.jpg)
+![Sidecar traffic injection](envoy-sidecar-traffic-interception-en-20220506.png)
 
 At the beginning of the first step, the sidecar in the `productpage` pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 
@@ -407,18 +407,18 @@ I will explain the purpose of each rule, corresponding to the steps and details 
 **Rule 1**
 
 - Purpose: To pass through traffic sent by the Envoy proxy to the local application container, so that it bypasses the Envoy proxy and goes directly to the application container.
-- Corresponds to steps 6 through 7 in the diagram.
+- Corresponds to steps 6 through 7 in the illustration.
 - Details: This rule causes all requests from 127.0.0.6 (this IP address will be explained below) to jump out of the chain, return to the point of invocation of iptables (i.e. OUTPUT) and continue with the rest of the routing rules, i.e. the `POSTROUTING` rule, which sends traffic to an arbitrary destination, such as the application container within the local Pod. Without this rule, traffic from the Envoy proxy within the Pod to the Pod container will execute the next rule, rule 2, and the traffic will enter the Inbound Handler again, creating a dead loop. Putting this rule in the first place can avoid the problem of traffic dead-ending in the Inbound Handler.
 
 **Rule 2, 5**
 
-- Purpose: Handle inbound traffic (traffic inside the Pod) from the Envoy proxy, but not requests to the localhost, and forward it to the Envoy proxy's Inbound Handler via a subsequent rule.
-- Corresponds to steps 6 through 7 in the diagram.
+- Purpose: Handle inbound traffic (traffic inside the Pod) from the Envoy proxy, but not requests to the localhost, and forward it to the Envoy proxy's Inbound Handler via a subsequent rule. This rule applies to scenarios where the Pod invokes its own IP address, i.e., traffic between services within the Pod.
 - Details: If the destination of the traffic is not localhost and the packet is sent by 1337 UID (i.e. istio-proxy user, Envoy proxy), the traffic will be forwarded to Envoy's Inbound Handler through `ISTIO_IN_REDIRECT` eventually.
 
 **Rule 3, 6**
 
-- Purpose: To pass through the inbound traffic of the application container within the Pod. Applies to traffic to the local Pod that is emitted in the application container.
+- Purpose: To pass through the internal traffic of the application container within the Pod. This rule applies to traffic within the container. For example, access to Pod IP or localhost within a Pod.
+- Corresponds to steps 6 through 7 in the illustration.
 - Details: If the traffic is not sent by an Envoy user, then jump out of the chain and return to `OUTPUT` to call `POSTROUTING` and go straight to the destination.
 
 **Rule 4, 7**
@@ -435,6 +435,7 @@ I will explain the purpose of each rule, corresponding to the steps and details 
 **Rule 9**
 
 - Purpose: All other traffic will be forwarded to `ISTIO_REDIRECT` after finally reaching the Outbound Handler of Envoy proxy.
+- Corresponds to steps 10 through 11 in the illustration.
 
 The above rule avoids dead loops in the iptables rules for Envoy proxy to application routing, and guarantees that traffic can be routed correctly to the Envoy proxy, and that real outbound requests can be made.
 

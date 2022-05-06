@@ -11,7 +11,7 @@ image: "images/banner/istio-logo.jpg"
 type: "post"
 ---
 
-本文最早是基于 Istio 1.11 撰写，之后随着 Istio 的版本陆续更新，最新更新时间为 2022 年 4 月 24 日，关于本文历史版本的更新说明请见文章最后。本文记录了详细的实践过程，力图能够让读者复现，因此事无巨细，想要理解某个部分过程的读者可以使用目录跳转到对应的小节阅读。
+本文最早是基于 Istio 1.11 撰写，之后随着 Istio 的版本陆续更新，最新更新时间为 2022 年 5 月 6 日，关于本文历史版本的更新说明请见文章最后。本文记录了详细的实践过程，力图能够让读者复现，因此事无巨细，想要理解某个部分过程的读者可以使用目录跳转到对应的小节阅读。
 
 为了使读者能够更加直观的了解本文中执行的操作，在阅读本文前你也可以先观看下 [Istio Workshop 第八讲视频](https://bilibili.com/video/BV1cF411T72o/)。
 
@@ -29,11 +29,13 @@ type: "post"
 
 请大家结合下图理解本文中的内容，本图基于 Istio 官方提供的 Bookinfo 示例绘制，展示的是 `reviews` Pod 的内部结构，包括 Linux Kernel 空间中的 iptables 规则、Sidecar 容器、应用容器。
 
-![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh-20220424.jpg)
+![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh-20220505.png)
 
 `productpage` 访问 `reviews` Pod，入站流量处理过程对应于图示上的步骤：1、2、3、4、Envoy Inbound Handler、5、6、7、8、应用容器。
 
 `reviews` Pod 访问 `rating` 服务的出站流量处理过程对应于图示上的步骤是：9、10、11、12、Envoy Outbound Handler、13、14、15。
+
+注意：图中的路径 16 近用于路由规则说明，它不不出现在当前示例中。实际上仅当 Pod 内发出的对当前 Pod 内的服务访问的时候才会途径它。
 
 上图中关于流量路由部分，包含：
 
@@ -440,13 +442,13 @@ Chain ISTIO_REDIRECT (1 references)
 
 **规则 2、5**
 
-- 目的：处理 Envoy 代理发出的站内流量（Pod 内部的流量），但不是对 localhost 的请求，通过后续规则将其转发给 Envoy 代理的 Inbound Handler。该规则适用于 Pod 对自身 IP 地址调用的场景。
-- 对应图示中的步骤：6 到 7。
+- 目的：处理 Envoy 代理发出的站内流量（Pod 内部的流量），但不是对 localhost 的请求，通过后续规则将其转发给 Envoy 代理的 Inbound Handler。该规则适用于 Pod 对自身 IP 地址调用的场景，即 Pod 内服务之间的访问。
 - 详情：如果流量的目的地非 localhost，且数据包是由 1337 UID（即 `istio-proxy` 用户，Envoy 代理）发出的，流量将被经过 `ISTIO_IN_REDIRECT` 最终转发到 Envoy 的 Inbound Handler。
 
 **规则 3、6**
 
-- 目的：**透传** Pod 内的应用容器的站内流量。适用于在应用容器中发出的对本地 Pod 的流量。
+- 目的：**透传** Pod 内的应用容器的站内流量。该规则适用于容器内部的流量。例如在 Pod 内对 Pod IP 或 localhost 的访问。
+- 对应图示中的步骤：6 到 7。
 - 详情：如果流量不是由 Envoy 用户发出的，那么就跳出该链，返回 `OUTPUT` 调用 `POSTROUTING`，直达目的地。
 
 **规则 4、7**
@@ -463,6 +465,7 @@ Chain ISTIO_REDIRECT (1 references)
 **规则 9**
 
 - 目的：所有其他的流量将被转发到 `ISTIO_REDIRECT` 后，最终达到 Envoy 代理的 Outbound Handler。
+- 对应图示中的步骤：10 到 11。
 
 以上规则避免了 Envoy 代理到应用程序的路由在 iptables 规则中的死循环，保障了流量可以被正确的路由到 Envoy 代理上，也可以发出真正的出站请求。
 
@@ -919,6 +922,11 @@ Istio 1.11 与 Istio 1.1 中的 sidecar 注入和流量劫持环节最大的变�
 这个版本的文章主要是根据当时 Istio 的最新版本更新了文章的部分内容，并重新排版，增加更新说明。
 
 Istio 1.13 相比 Istio 1.11 的变化是 `istioctl proxy-config` 命令的输出有了较大变化。
+
+**2022 年 5 月 6 日，第四版，基于 Istio 1.13**
+
+- 修改了对 `ISTIO_ROUTE` iptables 规则 2、5 的解释
+- 在示意图中增加了路径 16
 
 ## 参考
 
