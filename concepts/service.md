@@ -1,13 +1,12 @@
 # Service
 
-Kubernetes [`Pod`](https://kubernetes.io/docs/user-guide/pods) 是有生命周期的，它们可以被创建，也可以被销毁，然而一旦被销毁生命就永远结束。 
-通过 [`ReplicationController`](https://kubernetes.io/docs/user-guide/replication-controller) 能够动态地创建和销毁 `Pod`。 每个 `Pod` 都会获取它自己的 IP 地址，即使这些 IP 地址不总是稳定可依赖的。这会导致一个问题：在 Kubernetes 集群中，如果一组 `Pod`（称为 backend）为其它 `Pod` （称为 frontend）提供服务，那么那些 frontend 该如何发现，并连接到这组 `Pod` 中的哪些 backend 呢？
+Kubernetes [`Pod`](https://kubernetes.io/docs/user-guide/pods) 是有生命周期的，它们可以被创建，也可以被销毁，然而一旦被销毁生命就永远结束。通过 [`ReplicationController`](https://kubernetes.io/docs/user-guide/replication-controller) 能够动态地创建和销毁 `Pod`。 每个 `Pod` 都会获取它自己的 IP 地址，即使这些 IP 地址不总是稳定可依赖的。这会导致一个问题：在 Kubernetes 集群中，如果一组 `Pod`（称为 backend）为其它 `Pod` （称为 frontend）提供服务，那么 frontend Pod 该如何发现和连接哪些 backend Pod 呢？
 
 ## 关于 `Service`
 
-Kubernetes `Service` 定义了这样一种抽象：一个 `Pod` 的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组 `Pod` 能够被 `Service` 访问到，通常是通过 [`Label Selector`](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)（查看下面了解，为什么可能需要没有 selector 的 `Service`）实现的。
+Kubernetes `Service` 定义了这样一种抽象：`Pod` 的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组 `Pod` 能够被 `Service` 访问到，通常是通过 [`Label Selector`](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)（查看下面了解，为什么可能需要没有 selector 的 `Service`）实现的。
 
-举个例子，考虑一个图片处理 backend，它运行了3个副本。这些副本是可互换的 —— frontend 不需要关心它们调用了哪个 backend 副本。然而组成这一组 backend 程序的 `Pod` 实际上可能会发生变化，frontend 客户端不应该也没必要知道，而且也不需要跟踪这一组 backend 的状态。`Service` 定义的抽象能够解耦这种关联。
+举个例子，假设有一个用于图片处理的运行了三个副本的 backend。这些副本是可互换的 —— frontend 不需要关心它们调用了哪个 backend 副本。然而组成这一组 backend 程序的 `Pod` 实际上可能会发生变化，frontend 客户端不应该也没必要知道，而且也不需要跟踪这组 backend 的状态。`Service` 定义的抽象能够解耦这种关联。
 
 对 Kubernetes 集群中的应用，Kubernetes 提供了简单的 `Endpoints` API，只要 `Service` 中的一组 `Pod` 发生变更，应用程序就会被更新。对非 Kubernetes 集群中的应用，Kubernetes 提供了基于 VIP 的网桥的方式访问 `Service`，再由 `Service` 重定向到 backend `Pod`。
 
@@ -15,6 +14,7 @@ Kubernetes `Service` 定义了这样一种抽象：一个 `Pod` 的逻辑分组�
 
 一个 `Service` 在 Kubernetes 中是一个 REST 对象，和 `Pod` 类似。
 像所有的 REST 对象一样， `Service` 定义可以基于 POST 方式，请求 apiserver 创建新的实例。
+
 例如，假定有一组 `Pod`，它们对外暴露了 9376 端口，同时还被打上 `"app=MyApp"` 标签。
 
 ```yaml
@@ -31,11 +31,11 @@ spec:
       targetPort: 9376
 ```
 
-上述配置将创建一个名称为 “my-service” 的 `Service` 对象，它会将请求代理到使用 TCP 端口 9376，并且具有标签 `"app=MyApp"` 的 `Pod` 上。这个 `Service` 将被指派一个 IP 地址（通常称为 “Cluster IP”），它会被服务的代理使用（见下面）。该 `Service` 的 selector 将会持续评估，处理结果将被 POST 到一个名称为 “my-service” 的 `Endpoints` 对象上。
+上述配置将创建一个名称为 “my-service” 的 `Service` 对象，它会将请求代理到 9376 TCP 端口，具有标签 `"app=MyApp"` 的 `Pod` 上。这个 `Service` 将被指派一个 IP 地址（通常称为 “Cluster IP”），它会被服务的代理使用（见下面）。该 `Service` 的 selector 将会持续评估，处理结果将被 POST 到一个名称为 “my-service” 的 `Endpoints` 对象上。
 
-需要注意的是， `Service` 能够将一个接收端口映射到任意的 `targetPort`。默认情况下，`targetPort` 将被设置为与 `port` 字段相同的值。更有趣的是，`targetPort` 可以是一个字符串，引用了 backend `Pod` 的一个端口的名称。但是，实际指派给该端口名称的端口号，在每个 backend `Pod` 中可能并不相同。对于部署和设计 `Service` ，这种方式会提供更大的灵活性。例如，可以在 backend 软件下一个版本中，修改 Pod 暴露的端口，并不会中断客户端的调用。
+需要注意的是， `Service` 能够将一个接收端口映射到任意的 `targetPort`。默认情况下，`targetPort` 将被设置为与 `port` 字段相同的值。`targetPort` 可以是一个字符串，引用了 backend `Pod` 的端口的名称。但是，实际指派给该端口名称的端口号，在每个 backend `Pod` 中可能并不相同。对于部署和设计 `Service` ，这种方式会提供更大的灵活性。例如，可以在 backend 软件下一个版本中，修改 Pod 暴露的端口，并不会中断客户端的调用。
 
-Kubernetes `Service` 支持 `TCP` 和 `UDP` 协议，默认 `TCP` 协议。 
+Kubernetes `Service` 支持 `TCP` 和 `UDP` 协议，默认为 `TCP` 协议。 
 
 ### 没有 selector 的 Service
 
@@ -202,8 +202,7 @@ Kubernetes 支持2种基本的服务发现模式 —— 环境变量和 DNS。
 
 ### 环境变量
 
-当 `Pod` 运行在 `Node` 上，kubelet 会为每个活跃的 `Service` 添加一组环境变量。
-它同时支持 [Docker links 兼容](https://docs.docker.com/userguide/dockerlinks/) 变量（查看 makeLinkVariables）、简单的 `{SVCNAME}_SERVICE_HOST` 和 `{SVCNAME}_SERVICE_PORT` 变量，这里 `Service` 的名称需大写，横线被转换成下划线。
+当 `Pod` 运行在 `Node` 上，kubelet 会为每个活跃的 `Service` 添加一组环境变量。它同时支持 [Docker links 兼容](https://docs.docker.com/userguide/dockerlinks/) 变量（查看 makeLinkVariables）、简单的 `{SVCNAME}_SERVICE_HOST` 和 `{SVCNAME}_SERVICE_PORT` 变量，这里 `Service` 的名称需大写，横线被转换成下划线。
 
 举个例子，一个名称为 `"redis-master"` 的 Service 暴露了 TCP 端口 6379，同时给它分配了 Cluster IP 地址 10.0.0.11，这个 Service 生成了如下环境变量：
 
@@ -248,8 +247,7 @@ Kubernetes DNS 服务器是唯一的一种能够访问 `ExternalName` 类型的 
 
 ### 不配置 Selector
 
-对没有定义 selector 的 Headless Service，Endpoint 控制器不会创建 `Endpoints` 记录。
-然而 DNS 系统会查找和配置，无论是：
+对没有定义 selector 的 Headless Service，Endpoint 控制器不会创建 `Endpoints` 记录。然而 DNS 系统会查找和配置，无论是：
 
 * `ExternalName` 类型 Service 的 CNAME 记录
   * 记录：与 Service 共享一个名称的任何 `Endpoints`，以及所有其它类型
@@ -303,8 +301,7 @@ status:
     ingress:
       - ip: 146.148.47.155
 ```
-来自外部负载均衡器的流量将直接打到 backend `Pod` 上，不过实际它们是如何工作的，这要依赖于云提供商。
-在这些情况下，将根据用户设置的 `loadBalancerIP` 来创建负载均衡器。
+来自外部负载均衡器的流量将直接打到 backend `Pod` 上，不过实际它们是如何工作的，这要依赖于云提供商。在这些情况下，将根据用户设置的 `loadBalancerIP` 来创建负载均衡器。
 
 某些云提供商允许设置 `loadBalancerIP`。如果没有设置 `loadBalancerIP`，将会给负载均衡器指派一个临时 IP。
 
@@ -370,11 +367,9 @@ spec:
 
 未来我们能预见到，代理策略可能会变得比简单的 round-robin 均衡策略有更多细微的差别，比如 master 选举或分片。我们也能想到，某些 `Service` 将具有 “真正” 的负载均衡器，这种情况下 VIP 将简化数据包的传输。
 
-我们打算为 L7（HTTP）`Service` 改进我们对它的支持。
+在未来的版本中，Kubernetes 打算改进对 L7（HTTP）`Service` 的支持。为 `Service` 实现更加灵活的请求进入模式，这些 `Service` 包含当前 `ClusterIP`、`NodePort` 和 `LoadBalancer` 模式等。
 
-我们打算为 `Service` 实现更加灵活的请求进入模式，这些 `Service` 包含当前 `ClusterIP`、`NodePort` 和 `LoadBalancer` 模式，或者更多。
-
-## VIP 的那些骇人听闻的细节
+## 关于虚拟 IP 的细节
 
 对很多想使用 `Service` 的人来说，前面的信息应该足够了。然而，有很多内部原理性的内容，还是值去理解的。
 
