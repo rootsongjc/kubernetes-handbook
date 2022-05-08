@@ -7,7 +7,7 @@ tags: ["istio","iptables","envoy"]
 description: "Based on Istio version 1.13, this blog describes the sidecar pattern and its advantages. How sidecar be injected into the data plane, how traffic hijacking and routing is done."
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-hijacking.jpg"
 type: "post"
 ---
 

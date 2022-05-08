@@ -3,7 +3,7 @@ title: "Tetrate 公司开源项目介绍"
 description: "本文介绍了企业级服务网格公司 Tetrate 的几个围绕服务网格领域的开源项目。"
 date: 2022-04-25T17:16:50+08:00
 draft: false
-tags: ["open source","tetrate"]
+tags: ["tetrate"]
 categories: ["开源"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
