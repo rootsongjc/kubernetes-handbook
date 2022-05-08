@@ -3,11 +3,10 @@ title: "Istio 捐献给 CNCF 意味着什么？"
 draft: false
 date: 2022-04-26T09:27:49+08:00
 description: "来自 Tetrate CEO、Istio 联合创始人 Varun Talwar 的解读。"
-weight: 9
 categories: ["Istio"]
 tags: ["Istio","Tetrate"]
 type: "post"
-image: "images/banner/istio-cncf.jpg"
+image: "images/banner/istio-apply-cncf.jpg"
 ---
 
 在 2022 年 4 月 25 日， IstioCon 2022 开幕的当天，Istio 社区宣布正在[申请将项目捐献给 CNCF](https://istio.io/latest/blog/2022/istio-has-applied-to-join-the-cncf/)，这是 Istio 项目的一个里程碑，企业级服务网格公司 Tetrate 的 CEO/Istio 项目联合创始人 Varun Talwar 对此进行了解读。

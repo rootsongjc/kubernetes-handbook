@@ -7,7 +7,7 @@ categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 description: "In February 2022, Istio released 1.13.0 and 1.13.1. This blog will give you an overview of what’s new in these two releases."
 type: "post"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-113.jpg"
 ---
 
 Istio 1.13 is the first release of 2022, and, not surprisingly, the Istio team will continue to release new versions every quarter. Overall, the new features in this release include:
