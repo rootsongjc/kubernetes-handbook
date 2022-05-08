@@ -34,9 +34,10 @@ img {
   border: 0;
 }
 
-a,
-a:hover,
-a:focus {
+a,a:hover {
+    text-decoration: underline;
+}
+a,a:focus {
   text-decoration: none;
 }
 
@@ -323,8 +324,8 @@ textarea.form-control{
     margin-bottom: 20px;
   }
 
-  a {
-    text-decoration: underline;
+  a:hover{
+      text-decoration: underline;
   }
   img {
     cursor: zoom-in;
@@ -468,7 +469,7 @@ textarea.form-control{
     }
     a:hover
     {
-        background-color:yellow;
+        text-decoration: underline;
     }
 
 }
