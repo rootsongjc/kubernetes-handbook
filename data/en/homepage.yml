@@ -39,6 +39,11 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
+  title: "Cloud Native All-in-one"
+  button:
+    enable : false
+    label : "Learn"
+    link : "/docs/"
   image : "/images/banner/cloud-landscape-en.jpg"
   feature_item:
     # feature item loop
@@ -111,7 +116,7 @@ success_story:
 
 ############################# event ################################
 event:
-  enable : true
+  enable : false
   title : "Events"
   # event item comes from "content/**/event" folder.
 
