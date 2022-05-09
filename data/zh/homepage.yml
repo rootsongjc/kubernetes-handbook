@@ -50,6 +50,11 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
+  title: "一站式云原生资料库"
+  button:
+    enable : false
+    label : "了解详情"
+    link : "/docs/"
   image : "/images/banner/cloud-landscape-zh.jpg"
   feature_item:
     # feature item loop
@@ -117,7 +122,7 @@ success_story:
 
 ############################# event ################################
 event:
-  enable : true
+  enable : false
   title : "活动信息"
   # event item comes from "content/**/event" folder.
 

@@ -25,76 +25,73 @@
 {{ end }} {{ end }}
 <!-- /hero slider -->
 
+<!-- blog -->
+{{ if $data.homepage.blog.enable }}
+<section class="section-sm bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3">{{ $data.homepage.blog.title }}</h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    <div>
+                        <a href="{{`blog` | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ i18n "see_all" }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- blog post -->
+            {{ range first 3 (where .Site.RegularPages "Type" "post")}}
+            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                {{ .Render "post" }}
+            </div>
+            {{ end }}
+        </div>
+        <!-- mobile see all button -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{{`blog` | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ i18n "see_all" }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+<!-- /blog -->
+
 <!-- banner-feature -->
 {{ if $data.homepage.banner_feature.enable }} {{ with $data.homepage.banner_feature }}
-<section class="bg-gray">
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-xl-4 col-lg-5 align-self-end">
-                <img class="img-fluid w-100" src="{{ .image | relURL }}" alt="banner-feature">
-            </div>
-            <div class="col-xl-8 col-lg-7">
-                <div class="row no-gutters feature-blocks bg-gray justify-content-between">
-                    {{ range .feature_item }}
-                    <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-                        <!--
-            <i class="{{ .icon }} mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-            -->
-                        <i><img class="img-fluid mb-xl-4 mb-lg-3 mb-4 feature-icon" width="64px" src="{{ .image | relURL }}" alt="feature-item-banner"></i>
-                        <h3 class="mb-xl-4 mb-lg-3 mb-4">{{ .name | markdownify }}</h3>
-                        <p>{{ .content | markdownify }}</p>
+<section class="section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3">{{ .title }}</h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    {{ if .button.enable }} {{ with .button }}
+                    <div>
+                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ .label }}</a> {{ end }}
                     </div>
                     {{ end }}
                 </div>
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="col-12 align-items-center">
+                <div class="row justify-content-center align-items-center">
+                    {{ range .feature_item }}
+                    <div class="col-md-3 text-center align-items-center text-sm-left">
+                        <div class="row justify-content-center"><img class="img-fluid mb-xl-4 mb-lg-3 mb-4 feature-icon" width="64px" src="{{ .image | relURL }}" alt="feature-item-banner"></div>
+                        <h3 class="text-center mb-xl-4 mb-lg-3 mb-4">{{ .name | markdownify }}</h3>
+                        <p class="text-center">{{ .content | markdownify }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
 </section>
 {{ end }} {{ end }}
-<!-- /banner-feature -->
-<!-- funfacts -->
-{{ if $data.homepage.funfacts.enable }}
-{{ with $data.homepage.funfacts }}
-<section class="section-sm bg-primary">
-  <div class="container">
-    <div class="row">
-      <!-- funfacts item -->
-      {{ range .funfact_item }}
-      <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-        <div class="text-center">
-          <h2 class="count text-white" data-count="{{ .count }}">0</h2>
-          <a href="{{ .link }}"><h5 class="text-white"><u>{{ .name }}</u></h5></a>
-        </div>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-{{ end }}
-<!-- /funfacts -->
-
-<!-- about -->
-{{ if $data.homepage.about.enable }} {{ with $data.homepage.about }}
-<section class="section-sm">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 order-2 order-md-1">
-                <h2 class="section-title">{{ .title | markdownify }}</h2>
-                <p>{{ .content | markdownify }}</p>
-                {{ if .button.enable }} {{ with .button }}
-                <a href="{{ .link | relLangURL }}" class="btn btn-primary-outline">{{ .label }}</a> {{ end }} {{ end }}
-            </div>
-            {{ with .image }}
-            <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
-                <img class="img-fluid w-100" src="{{ . | relURL }}" alt="about image">
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</section>
-{{ end }} {{ end }}
-<!-- /about -->
+<!-- banner-feature -->
 
 <!-- books -->
 {{ if $data.homepage.books.enable }}
@@ -149,43 +146,31 @@
 {{ end }} {{ end }}
 <!-- /cta -->
 
-<!-- success story -->
-{{ if $data.homepage.success_story.enable }} {{ partial "success-story.html" . }} {{ end }}
-<!-- /success story -->
-
-<!-- blog -->
-{{ if $data.homepage.blog.enable }}
-<section class="section-sm bg-gray">
+<!-- funfacts -->
+{{ if $data.homepage.funfacts.enable }} {{ with $data.homepage.funfacts }}
+<section class="section-sm bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="d-flex align-items-center section-title justify-content-between">
-                    <h2 class="mb-0 text-nowrap mr-3">{{ $data.homepage.blog.title }}</h2>
-                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-                    <div>
-                        <a href="{{`blog` | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ i18n "see_all" }}</a>
-                    </div>
+            <!-- funfacts item -->
+            {{ range .funfact_item }}
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <div class="text-center">
+                    <h2 class="count text-white" data-count="{{ .count }}">0</h2>
+                    <a href="{{ .link }}">
+                        <h5 class="text-white"><u>{{ .name }}</u></h5>
+                    </a>
                 </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <!-- blog post -->
-            {{ range first 3 (where .Site.RegularPages "Type" "post")}}
-            <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-                {{ .Render "post" }}
             </div>
             {{ end }}
         </div>
-        <!-- mobile see all button -->
-        <div class="row">
-            <div class="col-12 text-center">
-                <a href="{{`blog` | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ i18n "see_all" }}</a>
-            </div>
-        </div>
     </div>
 </section>
-{{ end }}
-<!-- /blog -->
+{{ end }} {{ end }}
+<!-- /funfacts -->
+
+<!-- success story -->
+{{ if $data.homepage.success_story.enable }} {{ partial "success-story.html" . }} {{ end }}
+<!-- /success story -->
 
 <!-- events -->
 {{ if $data.homepage.event.enable }}
@@ -220,5 +205,27 @@
 </section>
 {{ end }}
 <!-- /events -->
+
+<!-- about -->
+{{ if $data.homepage.about.enable }} {{ with $data.homepage.about }}
+<section class="section-sm">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 order-2 order-md-1">
+                <h2 class="section-title">{{ .title | markdownify }}</h2>
+                <p>{{ .content | markdownify }}</p>
+                {{ if .button.enable }} {{ with .button }}
+                <a href="{{ .link | relLangURL }}" class="btn btn-primary-outline">{{ .label }}</a> {{ end }} {{ end }}
+            </div>
+            {{ with .image }}
+            <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                <img class="img-fluid w-100" src="{{ . | relURL }}" alt="about image">
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }} {{ end }}
+<!-- /about -->
 
 {{ end }}
