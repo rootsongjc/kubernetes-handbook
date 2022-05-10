@@ -7,7 +7,7 @@
   <figure>
   <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
   {{ if .Text }}
-  <figcaption class="text-center">{{ .Text }}</figcaption>
+  <figcaption class="text-center">{{ .Text |htmlUnescape }}</figcaption>
   {{ end }}
   </figure>
 {{ end }}
