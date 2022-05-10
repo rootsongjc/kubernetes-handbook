@@ -4,18 +4,18 @@ slider:
   bg_image : "/images/banner/kubecon-2019-shanghai.jpg"
   slider_item:
     # slider item loop
-    #    - title : "云原生势不可挡"
-    #      content : "容器、Kubernetes、Service Mesh、Serverless 等新技术层出不穷，云计算发展到以应用为中心的云原生阶段，企业上云势不可挡，普通开发者应何去何从？"
-    #      animation_in : "left"
-    #      animation_out : "right"
-    #      # available animation : left, right, up, down
-    #      button:
-    #        enable : true
-    #        label : "开始了解"
-    #        link : "book"
+    - title : "一站式云原生资料库"
+      content : "云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成[《云原生宝典》](/docs/cloud-native/)。"
+      animation_in : "left"
+      animation_out : "right"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "查看书目"
+        link : "/docs/#portforlio"
 
     # slider item loop
-    - title : "云原生社区，国内最大的独立第三方云原生终端用户和泛开发者社区"
+    - title : "欢迎加入云原生社区，独立第三方云原生终端用户社区"
       animation_in : "left"
       animation_out : "right"
       content: "宋净超（Jimmy Song）是云原生社区创始人，这里是他的个人博客。从 2016 年起，他参与撰写和翻译了多本云原生领域书籍，他致力于构建中国最具影响力的云原生社区，打造以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的云原生技术体系。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
@@ -36,25 +36,13 @@ slider:
         label : "开启旅程"
         link : "/kubernetes-handbook/"
 
-    # slider item loop
-    - title : "云原生图书系列"
-      content : "2017 年至今 Jimmy 参与编写和翻译的云原生出版物，创作的 Handbook 系列及翻译系列电子书，可在本站免费阅读。"
-      animation_in : "left"
-      animation_out : "right"
-      # available animation : left, right, up, down
-      button:
-        enable : true
-        label : "查看书目"
-        link : "/docs/#portforlio"
-
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
   title: "云原生资料库"
-  link: "/docs/"
   button:
     enable : true
-    label : "点击查看"
+    label : "点击进入"
     link : "/docs/"
   image : "/images/banner/cloud-landscape-zh.jpg"
   feature_item:
@@ -87,11 +75,13 @@ banner_feature:
 about:
   enable : true
   title : "关于 Jimmy Song"
+  partner_enabled: false
+  funfacts_enabled: false
   image: "/images/jimmy-song-avatar.png"
   content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，前[蚂蚁集团](https://www.antgroup.com)云原生布道师及开源管理负责人，独立撰稿人，摄影师。"
   button:
     enable : true
-    label : "了解详情"
+    label : "详细介绍"
     link : "about"
 
 ############################# Book ################################

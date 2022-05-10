@@ -151,9 +151,10 @@ blockquote {
             color: $primary-color;
             border: 1px solid $primary-color;
             box-shadow: none;
-            height: 50px;
-            width: 50px;
-            line-height: 45px;
+            height: 30px;
+            width: 30px;
+            font-size: 12px;
+            line-height: 30px;
             text-align: center;
             padding: 0;
         }
