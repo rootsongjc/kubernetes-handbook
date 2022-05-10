@@ -253,44 +253,8 @@ weight = 2
 
 [[Languages.zh.menu.main]]
 name = "图书"
-URL = "book"
+URL = "docs"
 weight = 3
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "Kubernetes 中文指南"
-URL = "kubernetes-handbook/"
-weight = 1
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "Istio 服务网格"
-URL = "istio-handbook/"
-weight = 2
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "Envoy 基础教程"
-URL = "envoy-handbook/"
-weight = 3
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "迁移到云原生应用架构"
-URL = "migrating-to-cloud-native-application-architectures/"
-weight = 4
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "Kubernetes 加固指南"
-URL = "kubernetes-hardening-guidance/"
-weight = 5
-
-[[Languages.zh.menu.main]]
-parent = "图书"
-name = "所有图书"
-URL = "book/"
-weight = 6
 
 [[Languages.zh.menu.main]]
 name = "社区"

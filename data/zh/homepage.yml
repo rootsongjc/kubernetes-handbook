@@ -52,8 +52,8 @@ banner_feature:
   enable : true
   title: "一站式云原生资料库"
   button:
-    enable : false
-    label : "了解详情"
+    enable : true
+    label : "点击查看"
     link : "/docs/"
   image : "/images/banner/cloud-landscape-zh.jpg"
   feature_item:
