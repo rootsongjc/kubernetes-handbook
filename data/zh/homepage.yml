@@ -143,7 +143,7 @@ funfacts:
     # funfact item loop
     - name : "出版图书"
       count : "6"
-      link : "/book"
+      link : "/docs/#portfolio"
 
     # funfact item loop
     - name : "举办活动"
@@ -157,7 +157,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区成员"
-      count : "10383"
+      count : "10391"
       link : "https://cloudnative.to"
 
 # funfact is for about page
