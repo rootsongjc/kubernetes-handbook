@@ -1,12 +1,26 @@
 ---
 title: "企业级服务网格提供商 Tetrate 公司招聘"
-date: 2020-09-15T07:28:18+08:00
-updated: 2022-03-22
+date: 2022-05-10T07:28:18+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
-description : "Base 地：全球远程办公"
+description : "注册在硅谷，全球化远程办公。"
 type: "notice"
+link: "https://tetrate.io/career"
 image: "images/backgrounds/tetrate-logo.png"
+aliases:
+- /job/
+- /job/tetrate
+- /job/intern-tnt
+- /job/intern-system-containers-orchestration-group
+- /job/intern-service-and-framework-group
+- /job/intern-monitoring-group
+- /job/intern-message-group
+- /job/intern-data-middleware-group
+- /job/intern-container-and-service-group
+- /job/intern-cloud-native-engineering-system
+- /job/intern-ant-group-container-service
+- /job/intern-aliyun-serverless
+- /job/cloud-native-app-platform-fall-recruitment
 ---
 
 更新时间：2022年03月22日

@@ -76,6 +76,8 @@ banner_feature:
 about:
   enable : true
   title : "About Jimmy Song"
+  partner_enabled: false
+  funfacts_enabled: false
   #image : "images/about/about-me.jpg"
   image: "/images/jimmy-song-avatar.png"
   content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador, [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder, former cloud native advocate and head of OSS office at [Ant Group](https://www.antgroup.com), independent writer and photographer."

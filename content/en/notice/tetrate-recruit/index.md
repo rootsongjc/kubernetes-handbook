@@ -1,10 +1,11 @@
 ---
 title: "The Enterprise Service Mesh company Tetrate is hiring"
-date: 2020-09-15T07:28:18+08:00
+date: 2022-03-15T07:28:18+08:00
 draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Remotely worldwide"
 type: "notice"
+link: "https://tetrate.io/career"
 image: "images/backgrounds/tetrate-logo.png"
 ---
 

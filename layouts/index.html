@@ -66,9 +66,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-center section-title justify-content-between">
-                    <a href="{{ .link }}">
-                        <h2 class="mb-0 text-nowrap mr-3">{{ .title }}</h2>
-                    </a>
+                    <h2 class="mb-0 text-nowrap mr-3">{{ .title }}</h2>
                     <div class="border-top w-100 border-primary d-none d-sm-block"></div>
                     {{ if .button.enable }} {{ with .button }}
                     <div>
@@ -89,8 +87,19 @@
                     </div>
                     {{ end }}
                 </div>
+                {{ if .button.enable }} {{ with .button }}
+                <!-- mobile see all button -->
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ .label }}</a>
+                    </div>
+                </div>
+                {{ end }}
             </div>
+            {{ end }}
         </div>
+    </div>
 </section>
 {{ end }} {{ end }}
 <!-- banner-feature -->
