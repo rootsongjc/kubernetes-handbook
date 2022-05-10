@@ -119,8 +119,12 @@ aliases:
 - "/book/service-mesh-devsecops"
 ---
 
+云原生资料库地址：<https://jimmysong.io/docs/>
+
 云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com/?utm_campaign=poweredby) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/docs>
 
-这个项目收集笔者自 2017 年以来的发表和翻译的云原生相关图书、翻译资料等，是对原有的十几本资料的一个梳理和归档。原有的资料会继续通过 GitBook 的方式维护，其中的精华和关联将通过该项目来梳理成《[云原生宝典](/docs/cloud-native/)》。
+同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](/docs/#portfolio)中。
 
-云原生资料库地址：<https://jimmysong.io/docs/>
+### 云原生资料库定位
+
+云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成《[云原生宝典](/docs/cloud-native/)》。
