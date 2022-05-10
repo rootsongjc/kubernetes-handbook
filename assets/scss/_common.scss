@@ -314,6 +314,7 @@ textarea.form-control{
 
     .page-link {
       color: $text-color;
+      width: 40%;
     }
   }
 }
@@ -472,6 +473,12 @@ textarea.form-control{
         text-decoration: underline;
     }
 
+}
+
+@media screen and (max-width: 600px) {
+.sidebar {
+    display: none;
+  }
 }
 
 footer .text-color {

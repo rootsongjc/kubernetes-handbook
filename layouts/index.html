@@ -66,7 +66,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-center section-title justify-content-between">
-                    <h2 class="mb-0 text-nowrap mr-3">{{ .title }}</h2>
+                    <a href="{{ .link }}">
+                        <h2 class="mb-0 text-nowrap mr-3">{{ .title }}</h2>
+                    </a>
                     <div class="border-top w-100 border-primary d-none d-sm-block"></div>
                     {{ if .button.enable }} {{ with .button }}
                     <div>
@@ -168,7 +170,7 @@
 {{ end }} {{ end }}
 <!-- /funfacts -->
 
-<!-- success story -->
+<!-- 云原生学院 -->
 {{ if $data.homepage.success_story.enable }} {{ partial "success-story.html" . }} {{ end }}
 <!-- /success story -->
 

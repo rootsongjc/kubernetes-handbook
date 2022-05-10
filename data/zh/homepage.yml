@@ -50,7 +50,8 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  title: "一站式云原生资料库"
+  title: "云原生资料库"
+  link: "/docs/"
   button:
     enable : true
     label : "点击查看"
@@ -98,6 +99,14 @@ book:
   enable : true
   title : "图书"
   # book item comes from "content/**/book" folder.
+  book_item:
+    - name: "Istio 服务网格"
+      link: "/istio-handbook/"
+    - name: "Kubernetes 中文指南"
+      link: "/kubernetes-handbook/"
+    - name: "Envoy 基础教程"
+      link: "/envoy-handbook/"
+
 
 ########################## Call to action ############################
 cta:
@@ -166,6 +175,6 @@ footer:
   footer_image: "/images/jimmysong-wechat-qr-code.jpg"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
-  subscribe_enable: true
+  subscribe_enable: false
   button_link: "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
   button_title: "订阅"

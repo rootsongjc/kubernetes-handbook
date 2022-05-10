@@ -181,7 +181,7 @@ weight = 2
 
 [[menu.main]]
 name = "Book"
-URL = "book"
+URL = "https://jimmysong.io/docs/"
 weight = 3
 
 [[menu.main]]
@@ -204,7 +204,7 @@ name = "Contact"
 URL = "contact"
 weight = 7
 
-# footer menu
+# footer links
 
 [[menu.footer]]
 name = "Tetrate Istio Distro"
@@ -222,13 +222,27 @@ URL = "/awesome-cloud-native"
 name = "Jimmy's YouTube Channel"
 URL = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
-#[[menu.footer]]
-#name = "Jimmy's Photography"
-#URL = "https://jimmysongio.tuchong.com"
-
 [[menu.footer]]
 name = "Tetrate - Service Mesh Company"
 URL = "https://tetrate.io/?jimmysong"
+
+# book
+
+[[menu.book]]
+name = "Kubernetes Handbook"
+URL = "/kubernetes-handbook/"
+
+[[menu.book]]
+name = "Istio Handbook"
+URL = "/istio-handbook/"
+
+[[menu.book]]
+name = "Envoy Handbook"
+URL = "/envoy-handbook/"
+
+[[menu.book]]
+name = "Cloud Native Bible"
+URL = "/docs/cloud-native/"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -294,35 +308,45 @@ name = "活动"
 URL = "event"
 weight = 4
 
-# footer menu
+# footer links 
 
 [[Languages.zh.menu.footer]]
 name = "云原生开源项目大全"
 URL = "/awesome-cloud-native"
 
 [[Languages.zh.menu.footer]]
-name = "Istio 基础教程|Tetrate 学院"
-URL = "https://academy.tetrate.io/courses/istio-fundamentals-zh"
-
-[[Languages.zh.menu.footer]]
 name = "云原生学院|Bilibili"
 URL = "https://space.bilibili.com/515485124"
 
 [[Languages.zh.menu.footer]]
-name = "Tetrate Istio 发行版"
-URL = "https://istio.tetratelabs.io/"
+name = "云原生资料库"
+URL = "/docs/"
 
 [[Languages.zh.menu.footer]]
 name = "云原生社区（中国）"
 URL = "https://cloudnative.to"
 
-#[[Languages.zh.menu.footer]]
-#name = "云原生百科"
-#URL = "/cloud-native"
-
 [[Languages.zh.menu.footer]]
 name = "Tetrate 公司"
 URL = "https://tetrate.io/?jimmysong"
+
+# book
+
+[[Languages.zh.menu.book]]
+name = "Kubernetes 中文指南"
+URL = "/kubernetes-handbook/"
+
+[[Languages.zh.menu.book]]
+name = "Istio 服务网格"
+URL = "/istio-handbook/"
+
+[[Languages.zh.menu.book]]
+name = "Envoy 基础教程"
+URL = "/envoy-handbook/"
+
+[[Languages.zh.menu.book]]
+name = "云原生宝典"
+URL = "/docs/cloud-native/"
 
 [markup]
   [markup.highlight]
