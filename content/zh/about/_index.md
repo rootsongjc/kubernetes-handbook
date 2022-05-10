@@ -4,30 +4,28 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # about image
-image: "images/about/jimmy-song.jpg"
+image: "images/about/jimmysong-xj.jpg"
 # meta description
 description : "宋净超（Jimmy Song）的简介。"
 ---
-
-### 简介
 
 宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)（蚂蚁金服）。
 
 ### 出版物
 
-自 2017 年以来 Jimmy 已陆续出版了多本图书，详见 [图书页面](/book)。
+自 2017 年以来 Jimmy 已陆续出版了多本图书，详见 [图书列表](/docs/)。
 
 **著作**
 
-- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2019 年 4 月，电子工业出版社](/book/future-architecture/)
+- [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2019 年 4 月，电子工业出版社](/docs/book/future-architecture/)
 
 **译本**
 
-- [Quarkus 实战 - 专为 Kubernetes 而优化的 Java 解决方案，2021 年 3 月，机械工业出版社](/book/quarkus-cookbook)
-- [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务，2017 年 8 月，电子工业出版社](/book/cloud-native-go)
-- [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-python/)
-- [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](/book/cloud-native-java)
-- [云原生模式，2020 年 8 月，电子工业出版社](/book/cloud-native-patterns)
+- [Quarkus 实战 - 专为 Kubernetes 而优化的 Java 解决方案，2021 年 3 月，机械工业出版社](/docs/book/quarkus-cookbook/)
+- [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务，2017 年 8 月，电子工业出版社](/docs/book/cloud-native-go/)
+- [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](/docs/book/cloud-native-python/)
+- [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](/docs/book/cloud-native-java/)
+- [云原生模式，2020 年 8 月，电子工业出版社](/docs/book/cloud-native-patterns/)
 
 **审阅**
 
@@ -35,7 +33,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 ### 关注领域
 
-主要关注云原生领域，包括容器、微服务、Service Mesh、Serverless 等技术，热衷于参与开源软件和开源社区。
+主要关注云原生领域，包括容器、微服务、服务网格、Serverless 等技术，热衷于参与开源软件和开源社区。
 
 ### 社区
 
@@ -43,13 +41,17 @@ Jimmy 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](h
 
 **ServiceMesher 社区**
 
-ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。ServiceMesher 社区的使命是传播 Service Mesh 技术，构建开源文化，加强行业交流，推动 Service Mesh 在企业中落地。社区官网 <https://www.servicemesher.com>。
+ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。ServiceMesher 社区的使命是传播 Service Mesh 技术，构建开源文化，加强行业交流，推动 Service Mesh 在企业中落地。
 
 **云原生社区**
 
-云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team/) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。社区官网 <https://cloudnative.to>。
+云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team/) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。
 
 ### 参与与组织的活动
+
+### 2022 年
+
+- 2022 年 4 月 26日 | 线上 | [IstioCon 2022](https://events.istio.io/istiocon-2022/sessions/ecosystem-outlook-from-china/) | Istio 开源生态展望
 
 ### 2021 年
 
