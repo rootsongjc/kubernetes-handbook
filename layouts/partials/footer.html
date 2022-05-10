@@ -57,7 +57,7 @@
           <h4 class="text-white mb-5 text-uppercase">{{ i18n "links" }}</h4>
           <ul class="list-unstyled">
             {{ range .Site.Menus.footer }}
-            <li class="mb-3"><a class="text-color" href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+            <li class="mb-3"><a class="text-color" href="{{ .URL | relLangURL }}" target="_blank" rel="noopener">{{ .Name }}</a></li>
             {{ end }}
           </ul>
         </div>
@@ -67,7 +67,7 @@
           <h4 class="text-white mb-5 text-uppercase">{{ i18n "books" }}</h4>
           <ul class="list-unstyled">
             {{ range .Site.Menus.book }}
-            <li class="mb-3"><a class="text-color" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            <li class="mb-3"><a class="text-color" href="{{ .URL | relURL }}" target="_blank" rel="noopener">{{ .Name }}</a></li>
             {{ end }}
           </ul>
         </div>
@@ -84,6 +84,7 @@
       </div>
     </div>
   </div>
+
   <!-- copyright -->
   <div class="copyright py-4 bg-footer">
     <div class="container">
@@ -94,7 +95,7 @@
         <div class="col-sm-3 text-sm-right text-center">
           <ul class="list-inline">
             {{ range .Site.Params.social }}
-            <li class="list-inline-item"><a class="d-inline-block p-2" href="{{ .link | safeURL }}"><i class="fa {{.icon }} "></i></a></li>
+            <li class="list-inline-item"><a class="d-inline-block p-2" href="{{ .link | safeURL }}" target="_blank" rel="noopener"><i class="fa {{.icon }} "></i></a></li>
             {{ end }}
           </ul>
         </div>
