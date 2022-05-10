@@ -40,10 +40,11 @@ slider:
 banner_feature:
   enable : true
   title: "Cloud Native All-in-one"
+  link: "https://jimmysong.io/docs/"
   button:
-    enable : false
+    enable : true
     label : "Learn"
-    link : "/docs/"
+    link : "https://jimmysong.io/docs/"
   image : "/images/banner/cloud-landscape-en.jpg"
   feature_item:
     # feature item loop
@@ -162,5 +163,5 @@ footer:
   footer_image : "images/jimmysong-twitter-qr-code.jpg"
   address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
-  subscribe_enable: true
+  subscribe_enable: false
   button_title: "Follow Me"

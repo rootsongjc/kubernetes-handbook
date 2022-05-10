@@ -1,4 +1,5 @@
 {{ "<!-- categories -->" | safeHTML }}
+<div class="sidebar">
 <div class="bg-white mb-5">
   <h4 class="mb-4">{{ i18n "categories" }}</h4>
   {{- if isset .Site.Taxonomies "categories" }}
@@ -23,6 +24,7 @@
   </ul>
   {{- end }}
   {{- end }}
+</div>
 </div>
 {{ "<!-- latest post -->" | safeHTML }}
 <!--
