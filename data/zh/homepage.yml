@@ -45,7 +45,7 @@ slider:
       button:
         enable : true
         label : "查看书目"
-        link : "/book/"
+        link : "/docs/#portforlio"
 
 ############################### Banner feature ###############################
 banner_feature:
