@@ -1,6 +1,6 @@
 ---
-title: "Istio sidecar 中的流量类型及 iptables 规则详解"
-description: "本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则，并以示意图的形式带你一览其全貌。"
+title: "Traffic types and iptables rules in Istio sidecar explained"
+description: "This article will show you the six traffic types and their iptables rules in Istio sidecar, and take you through the whole picture in a schematic format."
 date: 2022-05-07T11:18:40+08:00
 draft: false
 tags: ["istio","sidecar","iptables"]
@@ -10,93 +10,92 @@ bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-iptables.jpg"
 ---
 
-我在[之前的一篇博客中](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/)讲解过 Istio 中 sidecar 的注入、使用 iptables 进行透明流量拦截及流量路由的详细过程，并以 Bookinfo 示例中的 `productpage` 服务访问 `reviews` 服务，和 `reviews` 服务访问 `ratings` 服务为例绘制了透明流量劫持示意图。在那个示意图中仅展示了 `reviews` pod 接收流量和对外访问的路由，实际上 sidecar 内的流量远不止于此。
+In [a previous blog](/en/blog/sidecar-injection-iptables-and-traffic-routing/), I explained the detailed process of sidecar injection in Istio, transparent traffic interception and traffic routing using iptables, and drew a diagram of transparent traffic hijacking using the `productpage` service accessing the `reviews` service and the `reviews` service accessing the `ratings` service in the Bookinfo example. Services in the Bookinfo sammple, and a transparent traffic hijacking diagram. That schematic only shows that `reviews` pod receiving traffic and outbound routing, but there is much more than that within the sidecar.
 
-本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则，并以示意图的形式带你一览其全貌。
+This article will show you the six types of traffic and their iptables rules in Istio sidecar and take you through the whole picture in a schematic.
 
-## Sidecar 中的 iptables 流量路由
+## iptables Traffic Routing in Sidecar
 
-Sidecar 中的流量可以划分为以下几类：
+The following list summarizes the six types of traffic in Sidecar.
 
-- 远程服务访问本地服务：Remote Pod -> Local Pod
-- 本地服务访问远程服务：Local Pod -> Remote Pod
-- Prometheus 抓取本地服务的 metrics：Prometheus -> Local Pod
-- 本地 Pod 服务间的流量：Local Pod -> Local Pod
-- Envoy 内部的进程间 TCP 流量
-- Sidecar 到 Istiod 的流量
+ - Remote services accessing local services: Remote Pod -> Local Pod
+ - Local service accessing remote service: Local Pod -> Remote Pod
+ - Prometheus crawling metrics of local services: Prometheus -> Local Pod
+ - Traffic between Local Pod services: Local Pod -> Local Pod
+ - Inter-process TCP traffic within Envoy
+ - Sidecar to Istiod traffic
 
-下面将依次解释每个场景下 Sidecar 内的 iptables 路由规则。
+The following will explain the iptables routing rules within Sidecar for each scenario in turn.
 
-### 类型一：Remote Pod -> Local Pod
+### Type 1: Remote Pod -> Local Pod
+The following are the iptables rules for remote services, applications or clients accessing the local pod IP of the data plane.
 
-以下是远程服务、应用或客户端访问数据平面本地 Pod IP 的 iptables 规则。
+Remote Pod -> `RREREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15006 (Inbound) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> ` POSTROUTING` -> Local Pod
 
-Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
-
-我们看到流量只经过一次 Envoy 15006 Inbound 端口。这种场景下的 iptables 规则的示意图如下。
+We see that the traffic only passes through the Envoy 15006 Inbound port once. The following diagram shows the scenario of the iptables rules.
 
 ![Remote Pod -> Local Pod](remote-pod-local-pod.png)
 
-### 类型二：Local Pod -> Remote Pod
+### Type 2: Local Pod -> Remote Pod
 
-以下是本地 Pod IP 访问远程服务经过的 iptables 规则。
+The following are the iptables rules that the local pod IP goes through to access the remote service.
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> ISTIO_REDIRECT -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING` -> Remote Pod
+Local Pod-> `OUTPUT` -> `ISTIO_OUTPUT` RULE 9 -> `ISTIO_REDIRECT` -> Envoy 15001 (Outbound) -> `OUTPUT` -> `ISTIO_OUTPUT` RULE 4 -> `POSTROUTING` -> Remote Pod
 
-我们看到流量只经过 Envoy 15001 Outbound 端口。这种场景下的 iptables 规则的示意图如下。
+We see that the traffic only goes through Envoy 15001 Outbound port. The following diagram shows the scenario of the iptables rules.
 
 ![Local Pod -> Remote Pod](local-pod-remote-pod.png)
 
-以上两种场景中的流量都只经过一次 Envoy，因为该 Pod 中只有发出或接受请求一种场景发生。
+The traffic in both scenarios above passes through Envoy only once because only one scenario occurs in that Pod, sending or receiving requests.
 
-### 类型三：Prometheus -> Local Pod
+### Type 3: Prometheus -> Local Pod
 
-Prometheus 抓取数据平面 metrics 的流量不会也无须经过 Envoy 代理。
+Prometheus traffic that grabs data plane metrics does not have to go through the Envoy proxy.
 
-这些流量通过的 iptables 规则如下。
+These flows pass through the following iptables rules.
 
-Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端口流量将转到 `INPUT`）-> `INPUT` -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING`  -> Local Pod
+Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15002, 15090 will go to `INPUT`) -> `INPUT` -> `OUTPUT` -> `ISTIO_OUTPUT` RULE 3 -> `POSTROUTING` -> Local Pod
 
-这种场景下的 iptables 规则的示意图如下。
+The following diagram shows the scenario of the iptables rules.
 
 ![Prometheus -> Local Pod](prometheus-local-pod.png)
 
-### 类型四：Local Pod -> Local Pod
+### Type 4: Local Pod -> Local Pod
 
-一个 Pod 可能同时存在两个或多个服务，如果 Local Pod 访问的服务也在该当前 Pod 上，流量会依次经过 Envoy 15001 和 Envoy 15006 端口最后到达本地 Pod 的服务端口上。
+A Pod may simultaneously have two or more services. If the Local Pod accesses a service on the current Pod, the traffic will go through Envoy 15001 and Envoy 15006 ports to reach the service port of the Local Pod.
 
-这些流量通过的 iptables 规则如下。
+The iptables rules for this traffic are as follows.
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
-这种场景下的 iptables 规则的示意图如下。
+The following diagram shows the scenario of the iptables rules.
 
 ![Local Pod -> Local Pod](local-pod-local-pod.png)
 
-### 类型五：Envoy 内部的进程间 TCP 流量
+### Type 5: Inter-process TCP traffic within Envoy
 
-Envoy 内部进程的 UID 和 GID 为 1337，它们之间的流量将使用 lo 网卡，使用 localhost 域名来通信。
+Envoy internal processes with UID and GID 1337 will communicate with each other using lo NICs and localhost domains.
 
-这些流量通过的 iptables 规则如下。
+The iptables rules that these flows pass through are as follows.
 
-Envoy 进程（Localhost） -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy 进程（Localhost）
+Envoy process（Localhost） -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy process（Localhost）
 
-这种场景下的 iptables 规则的示意图如下。
+The following diagram shows the scenario of the iptables rules.
 
 ![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.png)
 
-### 类型六：Sidecar 到 Istiod 的流量
+### Type 6: Sidecar to Istiod traffic
 
-Sidecar 需要访问 Istiod 以同步配置，因此 Envoy 会有向 Istiod 发送流量。
+Sidecar needs access to Istiod to synchronize its configuration so that Envoy will have traffic sent to Istiod.
 
-这些流量通过的 iptables 规则如下。
+The iptables rules that this traffic passes through are as follows.
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
 
-这种场景下的 iptables 规则的示意图如下。
+The following diagram shows the scenario of the iptables rules.
 
 ![Sidecar 到 Istiod 的流量](sidecar-istiod.png)
 
-## 总结
+## Summary
 
-Istio 注入在 Pod 内或虚拟机中安装的所有 sidecar 代理组成了服务网格的数据平面，也是 Istio 的主要工作负载所在地，通过 [Istio 中的透明流量劫持](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/) 及这篇博客，相信你一定对 sidecar 代理中的流量有了一个深刻的了解，但这还只是管中窥豹，略见一斑，在我的[下一篇博客](https://jimmysong.io/blog/istio-components-and-ports/)中，我将带你了解 Envoy 中各个组件的端口及其功能，这样可以让我们对 Istio 中的流量有一个更全面的了解。
+All the sidecar proxies that Istio injects into the Pod or installed in the virtual machine form the data plane of the service mesh, which is also the main workload location of Istio. In my next blog, I will take you through the ports of each component in Envoy and their functions, so that we can have a more comprehensive understanding of the traffic in Istio.
