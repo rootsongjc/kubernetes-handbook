@@ -211,7 +211,7 @@ URL = "https://cloudnative.to"
 
 [[menu.footer]]
 name = "Awesome Cloud Native"
-URL = "https://jimmysong.io/awesome-cloud-native/"
+URL = "/awesome-cloud-native/"
 
 [[menu.footer]]
 name = "Jimmy's YouTube Channel"
@@ -237,7 +237,7 @@ URL = "/envoy-handbook/"
 
 [[menu.book]]
 name = "Cloud Native Bible"
-URL = "https://jimmysong.io/docs/cloud-native/"
+URL = "/docs/cloud-native/"
 
 ################################### Chinese language #####################################
 [Languages.zh]
