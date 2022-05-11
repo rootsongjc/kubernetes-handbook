@@ -211,7 +211,7 @@ URL = "https://cloudnative.to"
 
 [[menu.footer]]
 name = "Awesome Cloud Native"
-URL = "/awesome-cloud-native"
+URL = "https://jimmysong.io/awesome-cloud-native/"
 
 [[menu.footer]]
 name = "Jimmy's YouTube Channel"
@@ -289,7 +289,7 @@ weight = 7
 
 [[Languages.zh.menu.footer]]
 name = "云原生开源项目大全"
-URL = "/awesome-cloud-native"
+URL = "https://jimmysong.io/awesome-cloud-native/"
 
 [[Languages.zh.menu.footer]]
 name = "云原生学院|Bilibili"
