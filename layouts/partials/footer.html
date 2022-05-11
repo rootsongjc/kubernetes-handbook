@@ -58,7 +58,7 @@
           <ul class="list-unstyled">
             {{ range .Site.Menus.footer }}
             {{ if strings.HasPrefix .Name "http" }}
-            <li class="mb-3"><a class="text-color" href="{{ .URL }}" target="_blank" rel="noopener">{{ .Name }}</a></li>
+            <li class="mb-3"><a class="text-color" href="{{ .URL | relURL }}" target="_blank" rel="noopener">{{ .Name }}</a></li>
             {{ else }}
             <li class="mb-3"><a class="text-color" href="{{ .URL | relLangURL }}" target="_blank" rel="noopener">{{ .Name }}</a></li>
             {{ end }}
