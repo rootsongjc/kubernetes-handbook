@@ -5,19 +5,11 @@
   <div class="top-header py-2 bg-white">
     <div class="container">
       <div class="row no-gutters align-items-center">
-        <div class="col-lg-4 text-center text-lg-left">
-          <ul class="list-inline">
-            {{ range .Site.Params.social }}
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="{{ .link | relLangURL }}"><i class="{{ .icon }}"></i></a></li>
-            {{ end }}
-          </ul>
-        </div>
-        <div class="col-lg-8 text-center text-lg-right">
+        <div class="col-12 text-center">
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="text-color" href="{{ "/contact" | relLangURL }}"><strong>{{ i18n "wechat" | upper }} : </strong>{{ .Site.Params.wechat }}</a></li>
-            <li class="list-inline-item">
-              <a class="text-color" href="mailto:{{ .Site.Params.email }}"><strong>{{ i18n "email" | upper }} : </strong> {{ .Site.Params.email }}</a></li>
+                {{ .Site.Params.top_header_content | markdownify }}
+            </li>
           </ul>
         </div>
       </div>

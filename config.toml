@@ -74,8 +74,6 @@ contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with 
 google_analitycs_id = "UA-93485976-1" # your id
 # Baidu tongji
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
-# top header
-top_header = false
 search = true
 # Gitalk
 enableGitalk = true
@@ -168,6 +166,10 @@ home = "Home"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song All Right Reserved"
 
+# top header
+top_header = false
+top_header_content = ""
+
 # main menu
 [[menu.main]]
 name = "About"
@@ -248,6 +250,9 @@ home = "主页"
 title = "Jimmy Song - 云原生"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
+# top header
+top_header = true
+top_header_content = "一站式云原生资料库上线，[前往浏览](https://jimmysong.io/docs/)"
 
 # main menu
 [[Languages.zh.menu.main]]
