@@ -237,7 +237,7 @@ URL = "/envoy-handbook/"
 
 [[menu.book]]
 name = "Cloud Native Bible"
-URL = "https://jimmsyong.io/docs/cloud-native/"
+URL = "https://jimmysong.io/docs/cloud-native/"
 
 ################################### Chinese language #####################################
 [Languages.zh]
