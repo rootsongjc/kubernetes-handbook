@@ -100,7 +100,7 @@ cta:
   button:
     enable : true
     label : "Apply now"
-    link : "https://cloudnative.to/contact"
+    link : "https://cloudnative.to/contact/"
 
 
 ######################## Success story #############################
@@ -129,22 +129,22 @@ funfacts:
   funfact_item:
     # funfact item loop
     - name : "Published Books"
-      count : "6"
-      link : "/en/book"
+      count : "7"
+      link : "https://jimmysong.io/docs/#portfolio"
 
     # funfact item loop
     - name : "Hosted Events"
       count : "19"
-      link: "/en/event"
+      link: "https://jimmysong.io/docs/event/"
 
     # funfact item loop
-    - name : "Talks"
-      count : "13"
-      link: "/en/about"
+    - name : "Live Shows"
+      count : "30"
+      link: "https://cloudnative.to/academy/webinar/"
 
     # funfact item loop
     - name : "Community Members"
-      count : "10383"
+      count : "10393"
       link : "https://cloudnative.to/en"
 
 # funfact is for about page
