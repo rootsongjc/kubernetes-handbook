@@ -132,22 +132,22 @@ funfacts:
   funfact_item:
     # funfact item loop
     - name : "出版图书"
-      count : "6"
+      count : "7"
       link : "https://jimmysong.io/docs/#portfolio"
 
     # funfact item loop
     - name : "举办活动"
       count : "19"
-      link : "/event"
+      link : "/docs/event/"
 
     # funfact item loop
-    - name : "参与演讲"
-      count : "14"
-      link: "/about"
+    - name : "社区直播"
+      count : "30"
+      link: "https://cloudnative.to/academy/webinar/"
 
     # funfact item loop
     - name : "社区成员"
-      count : "10391"
+      count : "10393"
       link : "https://cloudnative.to"
 
 # funfact is for about page
