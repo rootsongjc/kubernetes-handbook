@@ -185,6 +185,11 @@ URL = "https://jimmysong.io/docs/"
 weight = 3
 
 [[menu.main]]
+name = "Event"
+URL = "https://jimmysong.io/docs/event/"
+weight = 4
+
+[[menu.main]]
 name = "Notice"
 URL = "notice"
 weight = 5
@@ -232,7 +237,7 @@ URL = "/envoy-handbook/"
 
 [[menu.book]]
 name = "Cloud Native Bible"
-URL = "/docs/cloud-native/"
+URL = "https://jimmsyong.io/docs/cloud-native/"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -257,7 +262,7 @@ weight = 2
 
 [[Languages.zh.menu.main]]
 name = "图书"
-URL = "docs"
+URL = "https://jimmysong.io/docs/"
 weight = 3
 
 [[Languages.zh.menu.main]]
@@ -266,14 +271,19 @@ URL = "https://cloudnative.to"
 weight = 4
 
 [[Languages.zh.menu.main]]
+name = "活动"
+URL = "https://jimmysong.io/docs/event/"
+weight = 5
+
+[[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
-weight = 5
+weight = 6
 
 [[Languages.zh.menu.main]]
 name = "通知"
 URL = "notice"
-weight = 6
+weight = 7
 
 # footer links 
 
@@ -287,7 +297,7 @@ URL = "https://space.bilibili.com/515485124"
 
 [[Languages.zh.menu.footer]]
 name = "云原生资料库"
-URL = "/docs/"
+URL = "https://jimmysong.io/docs/"
 
 [[Languages.zh.menu.footer]]
 name = "云原生社区（中国）"
@@ -313,7 +323,7 @@ URL = "/envoy-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "云原生宝典"
-URL = "/docs/cloud-native/"
+URL = "https://jimmysong.io/docs/cloud-native/"
 
 [markup]
   [markup.highlight]

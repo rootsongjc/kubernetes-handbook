@@ -117,6 +117,25 @@ aliases:
 - "/book/quarkus-cookbook"
 - "/book/serverless-handbook"
 - "/book/service-mesh-devsecops"
+- "/event"
+- "/event/cloud-native-meetup-beijing-02"
+- "/event/cloud-native-meetup-chengdu-05"
+- "/event/cloud-native-meetup-dalian-06"
+- "/event/cloud-native-meetup-guangzhou-04"
+- "/event/cloud-native-meetup-hangzhou-03"
+- "/event/cloud-native-meetup-shanghai-01"
+- "/event/cloud-native-meetup-shanghai-08"
+- "/event/cloud-native-meetup-shenzhen-07"
+- "/event/service-mesh-meetup-01"
+- "/event/service-mesh-meetup-02"
+- "/event/service-mesh-meetup-03"
+- "/event/service-mesh-meetup-04"
+- "/event/service-mesh-meetup-05"
+- "/event/service-mesh-meetup-06"
+- "/event/service-mesh-meetup-07"
+- "/event/service-mesh-meetup-08"
+- "/event/service-mesh-meetup-09"
+- "/event/sofastack-cloud-native-workshop"
 ---
 
 云原生资料库地址：<https://jimmysong.io/docs/>
@@ -128,3 +147,5 @@ aliases:
 ### 云原生资料库定位
 
 云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成《[云原生宝典](/docs/cloud-native/)》。
+
+另外本站**活动**栏目也进行了改版，迁移到了[新的主题页面](/docs/event/)。
