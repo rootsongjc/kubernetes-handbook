@@ -452,10 +452,3 @@ Spark 原生支持 Standalone、Mesos 和 YARN 资源调度，现已支持 Kuber
 下图是从 Grafana 监控页面上查看到的某个 executor 资源占用情况。
 
 ![Grafana](../images/spark-job-on-kubernetes-example-2.jpg)
-
-## 参考
-
-* [迁移到云原生应用架构指南 - jimmysong.io](https://jimmysong.io/migrating-to-cloud-native-application-architectures)
-* [Cloud Native Go - jimmysong.io](https://jimmysong.io/book/cloud-native-go/)
-* [Cloud Native Python - jimmysong.io](https://jimmysong.io/book/cloud-native-python/)
-* [Istio 官方文档（中文）- istio.io](https://istio.io/latest/zh/)

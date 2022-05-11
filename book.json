@@ -6,7 +6,7 @@
     "links": {
         "sidebar": {
             "回到主页": "https://jimmysong.io",
-            "全部书籍": "https://jimmysong.io/book/",
+            "全部书籍": "https://jimmysong.io/docs/",
             "云原生开源项目大全": "https://jimmysong.io/awesome-cloud-native/",
             "云原生社区": "https://cloudnative.to"
         }

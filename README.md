@@ -20,8 +20,9 @@ Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用
     <img src="cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song (宋净超）">
   </a>
 </p>
+Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，其后经过不断完善。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[服务网格](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
 
-Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，其后经过不断完善。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[Service Mesh](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
+更多云原生内容请访问[云原生资料库](https://jimmysong.io/docs/)。
 
 ### 开始之前
 
@@ -48,9 +49,9 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 您可以通过以下方式使用本书：
 
-- GitHub 地址：https://github.com/rootsongjc/kubernetes-handbook
-- GitBook 在线浏览：https://jimmysong.io/kubernetes-handbook/
-- 下载本书的发行版：https://github.com/rootsongjc/kubernetes-handbook/releases
+- [GitHub](https://github.com/rootsongjc/kubernetes-handbook)
+- [在线浏览](https://jimmysong.io/kubernetes-handbook/)
+- [下载本书的发行版](https://github.com/rootsongjc/kubernetes-handbook/releases)
 - 按照[说明](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)自行编译成离线版本
 - Fork 一份添加你自己的笔记自行维护，有余力者可以一起参与进来
 
@@ -71,17 +72,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - [查看文档的组织结构与使用方法](https://github.com/rootsongjc/kubernetes-handbook/blob/master/CODE_OF_CONDUCT.md)
 
 关于本书有任何问题，欢迎[提交 Issue](https://github.com/rootsongjc/kubernetes-handbook/issues/new) 或[与作者联系](https://jimmysong.io/contact/)。
-
-## 云原生出版物
-
-以下为笔者参与出版的云原生相关图书。
-
-- [Cloud Native Go](https://jimmysong.io/book/cloud-native-go/) - 基于 Go 和 React 的 web 云原生应用构建指南（Kevin Hoffman & Dan Nemeth 著 宋净超 吴迎松 徐蓓 马超 译），电子工业出版社，2017 年 6 月出版
-- [Python 云原生](https://jimmysong.io/book/cloud-native-python/) - 使用 Python 和 React 构建云原生应用（Manish Sethi 著，宋净超译），电子工业出版社，2018 年 6 月出版
-- [云原生 Java](https://jimmysong.io/book/cloud-native-java/) - Spring Boot、Spring Cloud 与 Cloud Foundry 弹性系统设计（Josh Long & Kenny Bastani 著，张若飞 宋净超译 ），电子工业出版社，2018 年 7 月出版
-- [未来架构 —— 从服务化到云原生](https://jimmysong.io/book/future-architecture/) - 张亮 吴晟 敖小剑 宋净超 著，电子工业出版社，2019 年 3 月出版
-- [云原生模式](https://jimmysong.io/book/cloud-native-patterns) - 设计拥抱变化的软件（Cornelia Davis 著，张若飞 宋净超 译），电子工业出版社，2020 年 8 月出版
-- [Quarkus 实战](https://jimmysong.io/book/quarkus-cookbook/) - 专为 Kubernetes 而优化的 Java 解决方案（Alex Soto Bueno、Jason Porter 著，张晓宇 刘岩 宋净超 译），机械工业出版社，2021 年 3 月出版
 
 ## 许可证
 

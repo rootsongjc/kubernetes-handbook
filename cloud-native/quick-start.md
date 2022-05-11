@@ -174,6 +174,6 @@ Grafana 是一个优秀的仪表盘、分析和数据可视化工具。它没有
 
 ## 更多
 
-云原生领域的开源项目众多（见 [Awesome Cloud Native / 云原生开源项目大全](https://jimmysong.io/awesome-cloud-native)），其中有大量的优秀项目可供我们学习。此外，Kubernetes 开源已经多年时间，网上有大量的学习资料，业界出版过很多[书籍](https://jimmysong.io/cloud-native/note/books/)，建议大家通过阅读[官方文档](https://kubernetes.io/)和实践来学习，也可以参考我编写的 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](https://jimmysong.io/kubernetes-handbook)。
+云原生领域的开源项目众多（见 [Awesome Cloud Native / 云原生开源项目大全](https://jimmysong.io/awesome-cloud-native/)），其中有大量的优秀项目可供我们学习。此外，Kubernetes 开源已经多年时间，网上有大量的学习资料，业界出版过很多书籍，建议大家通过阅读[官方文档](https://kubernetes.io/)和实践来学习，也可以参考我编写的 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](https://jimmysong.io/kubernetes-handbook)。
 
 推荐大家加入笔者发起创办的[云原生社区](https://cloudnative.to/)，这是一个立足中国，放眼世界的云原生终端用户社区，致力于云原生技术的传播和应用。云原生社区主办的[云原生学院](https://github.com/cloudnativeto/academy)定期邀请云原生和开源领域的大咖进行直播分享，成员自发组织了多个 SIG（特别兴趣小组）进行讨论学习。欢迎加入我们，共同学习和交流云原生技术。
