@@ -1,6 +1,6 @@
 ---
 title: "Traffic types and iptables rules in Istio sidecar explained"
-description: "This article will show you the six traffic types and their iptables rules in Istio sidecar, and take you through the whole picture in a schematic format."
+description: "This article will show you the six traffic types and their iptables rules in Istio sidecar, and take you through the whole diagram in a schematic format."
 date: 2022-05-07T11:18:40+08:00
 draft: false
 tags: ["istio","sidecar","iptables"]
@@ -10,9 +10,21 @@ bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/istio-iptables.jpg"
 ---
 
-In [a previous blog](/en/blog/sidecar-injection-iptables-and-traffic-routing/), I explained the detailed process of sidecar injection in Istio, transparent traffic interception and traffic routing using iptables, and drew a diagram of transparent traffic hijacking using the `productpage` service accessing the `reviews` service and the `reviews` service accessing the `ratings` service in the Bookinfo example. Services in the Bookinfo sammple, and a transparent traffic hijacking diagram. That schematic only shows that `reviews` pod receiving traffic and outbound routing, but there is much more than that within the sidecar.
+As we know that Istio uses iptables for traffic hijacking, where the iptables rule chains has one called ISTIO_OUTPUT, which contains the following rules.
 
-This article will show you the six types of traffic and their iptables rules in Istio sidecar and take you through the whole picture in a schematic.
+| **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
+| -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
+| 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
+| 2        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner UID match 1337 |
+| 3        | RETURN            | any    | lo      | anywhere   | anywhere !owner UID match 1337  |
+| 4        | RETURN            | any    | any     | anywhere   | anywhere owner UID match 1337   |
+| 5        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner GID match 1337 |
+| 6        | RETURN            | any    | lo      | anywhere   | anywhere !owner GID match 1337  |
+| 7        | RETURN            | any    | any     | anywhere   | anywhere owner GID match 1337   |
+| 8        | RETURN            | any    | any     | anywhere   | localhost                       |
+| 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
+
+The sidecar applies these rules to deal with the different types of traffic. This article will show you the six types of traffic and their iptables rules in Istio sidecar and take you through the diagram in a schematic.
 
 ## iptables Traffic Routing in Sidecar
 
