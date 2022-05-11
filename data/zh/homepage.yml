@@ -5,14 +5,14 @@ slider:
   slider_item:
     # slider item loop
     - title : "一站式云原生资料库"
-      content : "云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成[《云原生宝典》](/docs/cloud-native/)。"
+      content : "云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成《云原生宝典》。"
       animation_in : "left"
       animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "查看书目"
-        link : "/docs/#portforlio"
+        link : "https://jimmysong.io/docs/#portforlio"
 
     # slider item loop
     - title : "欢迎加入云原生社区，独立第三方云原生终端用户社区"
@@ -43,7 +43,7 @@ banner_feature:
   button:
     enable : true
     label : "点击进入"
-    link : "/docs/"
+    link : "https://jimmysong.io/docs/"
   image : "/images/banner/cloud-landscape-zh.jpg"
   feature_item:
     # feature item loop
@@ -133,7 +133,7 @@ funfacts:
     # funfact item loop
     - name : "出版图书"
       count : "6"
-      link : "/docs/#portfolio"
+      link : "https://jimmysong.io/docs/#portfolio"
 
     # funfact item loop
     - name : "举办活动"
