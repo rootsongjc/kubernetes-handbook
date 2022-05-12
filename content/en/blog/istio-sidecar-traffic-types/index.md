@@ -24,39 +24,39 @@ As we know that Istio uses iptables for traffic hijacking, where the iptables ru
 | 8        | RETURN            | any    | any     | anywhere   | localhost                       |
 | 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
 
-The sidecar applies these rules to deal with the different types of traffic. This article will show you the six types of traffic and their iptables rules in Istio sidecar and take you through the diagram in a schematic.
+The sidecar applies these rules to deal with different types of traffic. This article will show you the six types of traffic and their iptables rules in Istio sidecar.
 
 ## iptables Traffic Routing in Sidecar
 
 The following list summarizes the six types of traffic in Sidecar.
 
- - Remote services accessing local services: Remote Pod -> Local Pod
- - Local service accessing remote service: Local Pod -> Remote Pod
- - Prometheus crawling metrics of local services: Prometheus -> Local Pod
- - Traffic between Local Pod services: Local Pod -> Local Pod
- - Inter-process TCP traffic within Envoy
- - Sidecar to Istiod traffic
+ 1. Remote service accessing local service: Remote Pod -> Local Pod
+ 2. Local service accessing remote service: Local Pod -> Remote Pod
+ 3. Prometheus crawling metrics of local service: Prometheus -> Local Pod
+ 4. Traffic between Local Pod service: Local Pod -> Local Pod
+ 5. Inter-process TCP traffic within Envoy
+ 6. Sidecar to Istiod traffic
 
-The following will explain the iptables routing rules within Sidecar for each scenario in turn.
+The following will explain the iptables routing rules within Sidecar for each scenario, which specifies which rule in ISTIO_OUTPUT is used for routing.
 
 ### Type 1: Remote Pod -> Local Pod
 The following are the iptables rules for remote services, applications or clients accessing the local pod IP of the data plane.
 
-Remote Pod -> `RREREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15006 (Inbound) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> ` POSTROUTING` -> Local Pod
+Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15006 (Inbound) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> ` POSTROUTING` -> Local Pod
 
-We see that the traffic only passes through the Envoy 15006 Inbound port once. The following diagram shows the scenario of the iptables rules.
+We see that the traffic only passes through the Envoy 15006 Inbound port once. The following diagram shows this scenario of the iptables rules.
 
-![Remote Pod -> Local Pod](remote-pod-local-pod.png)
+![Remote Pod to Local Pod](remote-pod-local-pod.jpg)
 
 ### Type 2: Local Pod -> Remote Pod
 
 The following are the iptables rules that the local pod IP goes through to access the remote service.
 
-Local Pod-> `OUTPUT` -> `ISTIO_OUTPUT` RULE 9 -> `ISTIO_REDIRECT` -> Envoy 15001 (Outbound) -> `OUTPUT` -> `ISTIO_OUTPUT` RULE 4 -> `POSTROUTING` -> Remote Pod
+Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001 (Outbound) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING` -> Remote Pod
 
-We see that the traffic only goes through Envoy 15001 Outbound port. The following diagram shows the scenario of the iptables rules.
+We see that the traffic only goes through the Envoy 15001 Outbound port. 
 
-![Local Pod -> Remote Pod](local-pod-remote-pod.png)
+![Local Pod to Remote Pod](local-pod-remote-pod.jpg)
 
 The traffic in both scenarios above passes through Envoy only once because only one scenario occurs in that Pod, sending or receiving requests.
 
@@ -64,13 +64,11 @@ The traffic in both scenarios above passes through Envoy only once because only 
 
 Prometheus traffic that grabs data plane metrics does not have to go through the Envoy proxy.
 
-These flows pass through the following iptables rules.
+These traffic pass through the following iptables rules.
 
-Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15002, 15090 will go to `INPUT`) -> `INPUT` -> `OUTPUT` -> `ISTIO_OUTPUT` RULE 3 -> `POSTROUTING` -> Local Pod
+Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15002, 15090 will go to `INPUT`) -> `INPUT` -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING` -> Local Pod
 
-The following diagram shows the scenario of the iptables rules.
-
-![Prometheus -> Local Pod](prometheus-local-pod.png)
+![Prometheus to Local Pod](prometheus-local-pod.jpg)
 
 ### Type 4: Local Pod -> Local Pod
 
@@ -80,9 +78,7 @@ The iptables rules for this traffic are as follows.
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
-The following diagram shows the scenario of the iptables rules.
-
-![Local Pod -> Local Pod](local-pod-local-pod.png)
+![Local Pod to Local Pod](local-pod-local-pod.jpg)
 
 ### Type 5: Inter-process TCP traffic within Envoy
 
@@ -90,11 +86,9 @@ Envoy internal processes with UID and GID 1337 will communicate with each other 
 
 The iptables rules that these flows pass through are as follows.
 
-Envoy process（Localhost） -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy process（Localhost）
+Envoy process (Localhost) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy process (Localhost)
 
-The following diagram shows the scenario of the iptables rules.
-
-![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.png)
+![Envoy inter-process TCP traffic](envoy-internal-tcp-traffic.jpg)
 
 ### Type 6: Sidecar to Istiod traffic
 
@@ -102,11 +96,9 @@ Sidecar needs access to Istiod to synchronize its configuration so that Envoy wi
 
 The iptables rules that this traffic passes through are as follows.
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
+`pilot-agent` process -> `OUTPUT` -> **`Istio_OUTPUT` RULE 9** -> Envoy 15001 (Outbound Handler) -> OUTPUT -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
 
-The following diagram shows the scenario of the iptables rules.
-
-![Sidecar 到 Istiod 的流量](sidecar-istiod.png)
+![Sidecar to Istiod](sidecar-istiod.jpg)
 
 ## Summary
 
