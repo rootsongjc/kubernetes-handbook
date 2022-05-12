@@ -24,6 +24,14 @@ p, .paragraph {
   font-family: $primary-font;
 }
 
+.content ol li{
+    line-height: 1.8;
+}
+
+.content ul li{
+    line-height: 1.8;
+}
+
 h1,h2,h3,h4,h5,h6 {
   color: $text-color-dark;
   font-family: $secondary-font;

@@ -1,8 +1,7 @@
 ---
 title: "Istio 中的 Sidecar 注入、透明流量劫持及流量路由过程详解"
-date: 2020-04-27T21:08:59+08:00
+date: 2022-05-12T21:08:59+08:00
 draft: false
-weight: 10
 tags: ["istio","iptables","envoy","sidecar"]
 description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 如何注入到数据平面，Envoy 如何做流量劫持和路由转发的，包括 Inbound 流量和 Outbound 流量。"
 categories: ["Istio"]
@@ -11,11 +10,16 @@ image: "images/banner/istio-sidecar-iptables.jpg"
 type: "post"
 ---
 
-本文最早是基于 Istio 1.11 撰写，之后随着 Istio 的版本陆续更新，最新更新时间为 2022 年 5 月 6 日，关于本文历史版本的更新说明请见文章最后。本文记录了详细的实践过程，力图能够让读者复现，因此事无巨细，想要理解某个部分过程的读者可以使用目录跳转到对应的小节阅读。
+本文最早是基于 Istio 1.11 撰写，之后随着 Istio 的版本陆续更新，最新更新时间为 2022 年 5 月 12 日，关于本文历史版本的更新说明请见文章最后。本文记录了详细的实践过程，力图能够让读者复现，因此事无巨细，想要理解某个部分过程的读者可以使用目录跳转到对应的小节阅读。
 
 为了使读者能够更加直观的了解本文中执行的操作，在阅读本文前你也可以先观看下 [Istio Workshop 第八讲视频](https://bilibili.com/video/BV1cF411T72o/)。
 
 [![Istio Workshop第八讲](bilibili.jpg)](https://bilibili.com/video/BV1cF411T72o/)
+
+为了理解本文希望你先阅读以下内容：
+
+- [理解 iptables](/blog/understanding-iptables/)
+- [Istio 数据平面 Pod 启动过程详解](/blog/istio-pod-process-lifecycle/)
 
 ## 内容介绍
 
@@ -29,7 +33,7 @@ type: "post"
 
 请大家结合下图理解本文中的内容，本图基于 Istio 官方提供的 Bookinfo 示例绘制，展示的是 `reviews` Pod 的内部结构，包括 Linux Kernel 空间中的 iptables 规则、Sidecar 容器、应用容器。
 
-![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh-20220505.png)
+![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh.jpg)
 
 `productpage` 访问 `reviews` Pod，入站流量处理过程对应于图示上的步骤：1、2、3、4、Envoy Inbound Handler、5、6、7、8、应用容器。
 
@@ -65,43 +69,6 @@ type: "post"
 - 将与应用业务逻辑无关的功能抽象到共同基础设施，降低了微服务代码的复杂度。
 - 因为不再需要编写相同的第三方组件配置文件和代码，所以能够降低微服务架构中的代码重复度。
 - Sidecar 可独立升级，降低应用程序代码和底层平台的耦合度。
-
-## Istio 中的 sidecar 注入
-
-Istio 中提供了以下两种 sidecar 注入方式：
-
-- 使用 `istioctl` 手动注入。
-- 基于 Kubernetes 的 [突变 webhook 准入控制器（mutating webhook addmission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) 的自动 sidecar 注入方式。
-
-不论是手动注入还是自动注入，sidecar 的注入过程都需要遵循如下步骤：
-
-1. Kubernetes 需要了解待注入的 sidecar 所连接的 Istio 集群及其配置；
-1. Kubernetes 需要了解待注入的 sidecar 容器本身的配置，如镜像地址、启动参数等；
-1. Kubernetes 根据 sidecar 注入模板和以上配置填充 sidecar 的配置参数，将以上配置注入到应用容器的一侧；
-
-使用下面的命令可以手动注入 sidecar。
-
-```bash
-istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
-```
-
-该命令会使用 Istio 内置的 sidecar 配置来注入，下面使用 Istio详细配置请参考 [Istio 官网](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
-
-注入完成后您将看到 Istio 为原有 pod template 注入了 `initContainer` 及 sidecar proxy相关的配置。
-
-### Init 容器
-
-Init 容器是一种专用容器，它在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。
-
-一个 Pod 中可以指定多个 Init 容器，如果指定了多个，那么 Init 容器将会按顺序依次运行。只有当前面的 Init 容器必须运行成功后，才可以运行下一个 Init 容器。当所有的 Init 容器运行完成后，Kubernetes 才初始化 Pod 和运行应用容器。
-
-Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有不同的文件系统视图。因此，它们能够具有访问 Secret 的权限，而应用程序容器则不能。
-
-在 Pod 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
-
-在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
-
-关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)。
 
 ## Sidecar 注入示例分析
 
@@ -259,62 +226,6 @@ Istio 给应用 Pod 注入的配置主要包括：
 
 - Init 容器 `istio-init`：用于 pod 中设置 iptables 端口转发
 - Sidecar 容器 `istio-proxy`：运行 sidecar 代理，如 Envoy 或 MOSN。
-
-接下来将分别解析下这两个容器。
-
-## Init 容器解析
-
-Istio 在 pod 中注入的 Init 容器名为 `istio-init`，我们在上面 Istio 注入完成后的 YAML 文件中看到了该容器的启动命令是：
-
-```bash
-istio-iptables -p 15001 -z 15006 -u 1337 -m REDIRECT -i '*' -x "" -b '*' -d 15090,15020
-```
-
-我们再检查下该容器的 [Dockerfile](https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2) 看看 `ENTRYPOINT` 是怎么确定启动时执行的命令。
-
-```docker
-# 前面的内容省略
-# The pilot-agent will bootstrap Envoy.
-ENTRYPOINT ["/usr/local/bin/pilot-agent"]
-```
-
-我们看到 `istio-init` 容器的入口是 `/usr/local/bin/istio-iptables` 命令行，该命令行工具的代码的位置在 Istio 源码仓库的 [tools/istio-iptables](https://github.com/istio/istio/tree/master/tools/istio-iptables) 目录。
-
-注意：在 Istio 1.1 版本时还是使用 `isito-iptables.sh` 命令行来操作 IPtables。
-
-### Init 容器启动入口
-
-Init 容器的启动入口是 `istio-iptables` 命令行，该命令行工具的用法如下：
-
-```bash
-$ istio-iptables [flags]
-  -p: 指定重定向所有 TCP 流量的 sidecar 端口（默认为 $ENVOY_PORT = 15001）
-  -m: 指定入站连接重定向到 sidecar 的模式，“REDIRECT” 或 “TPROXY”（默认为 $ISTIO_INBOUND_INTERCEPTION_MODE)
-  -b: 逗号分隔的入站端口列表，其流量将重定向到 Envoy（可选）。使用通配符 “*” 表示重定向所有端口。为空时表示禁用所有入站重定向（默认为 $ISTIO_INBOUND_PORTS）
-  -d: 指定要从重定向到 sidecar 中排除的入站端口列表（可选），以逗号格式分隔。使用通配符“*” 表示重定向所有入站流量（默认为 $ISTIO_LOCAL_EXCLUDE_PORTS）
-  -o：逗号分隔的出站端口列表，不包括重定向到 Envoy 的端口。
-  -i: 指定重定向到 sidecar 的 IP 地址范围（可选），以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量。空列表将禁用所有出站重定向（默认为 $ISTIO_SERVICE_CIDR）
-  -x: 指定将从重定向中排除的 IP 地址范围，以逗号分隔的 CIDR 格式列表。使用通配符 “*” 表示重定向所有出站流量（默认为 $ISTIO_SERVICE_EXCLUDE_CIDR）。
-  -k：逗号分隔的虚拟接口列表，其入站流量（来自虚拟机的）将被视为出站流量。
-  -g：指定不应用重定向的用户的 GID。(默认值与 -u param 相同)
-  -u：指定不应用重定向的用户的 UID。通常情况下，这是代理容器的 UID（默认值是 1337，即 istio-proxy 的 UID）。
-  -z: 所有进入 pod/VM 的 TCP 流量应被重定向到的端口（默认 $INBOUND_CAPTURE_PORT = 15006）。
-```
-
-以上传入的参数都会重新组装成 [`iptables` ](https://wangchujiang.com/linux-command/c/iptables.html)规则，关于该命令的详细用法请访问 [tools/istio-iptables/pkg/cmd/root.go](https://github.com/istio/istio/blob/master/tools/istio-iptables/pkg/cmd/root.go)。
-
-该容器存在的意义就是让 sidecar 代理可以拦截所有的进出 pod 的流量，15090 端口（Mixer 使用）和 15092 端口（Ingress Gateway）除外的所有入站（inbound）流量重定向到 15006 端口（sidecar），再拦截应用容器的出站（outbound）流量经过 sidecar 处理（通过 15001 端口监听）后再出站。关于 Istio 中端口用途请参考 [Istio 官方文档](https://istio.io/latest/zh/docs/ops/deployment/requirements/)。
-
-**命令解析**
-
-这条启动命令的作用是：
-
-- 将应用容器的所有流量都转发到 sidecar 的 15006 端口。
-- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 sidecar 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
-- 使用默认的 `REDIRECT` 模式来重定向流量。
-- 将所有出站流量都重定向到 sidecar 代理（通过 15001 端口）。
-
-因为 Init 容器初始化完毕后就会自动终止，因为我们无法登陆到容器中查看 iptables 信息，但是 Init 容器初始化结果会保留到应用容器和 sidecar 容器中。
 
 ## iptables 规则注入解析
 
@@ -476,80 +387,6 @@ Chain ISTIO_REDIRECT (1 references)
 **关于 127.0.0.6 IP 地址**
 
 127.0.0.6 这个 IP 是 Istio 中默认的 `InboundPassthroughClusterIpv4`，在 Istio 的代码中指定。即流量在进入 Envoy 代理后被绑定的 IP 地址，作用是让 Outbound 流量重新发送到  Pod 中的应用容器，即 **Passthought（透传），绕过 Outbound Handler**。该流量是对 Pod 自身的访问，而不是真正的对外流量。至于为什么选择这个 IP 作为流量透传，请参考 [Istio Issue-29603](https://github.com/istio/istio/issues/29603)。
-
-### 理解 iptables
-
-为了帮助大家理解以上 iptables 规则的含义，这里特别为大家简单介绍下 iptbles。
-
-`iptables` 是 Linux 内核中的防火墙软件 netfilter 的管理工具，位于用户空间，同时也是 netfilter 的一部分。Netfilter 位于内核空间，不仅有网络地址转换的功能，也具备数据包内容修改、以及数据包过滤等防火墙功能。
-
-在了解 Init 容器初始化的 iptables 之前，我们先来了解下 iptables 和规则配置。
-
-下图展示了 iptables 调用链。
-
-![iptables 调用链](iptables.jpg)
-
-### iptables 中的表
-
-Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
-
-1. `raw` 用于配置数据包，`raw` 中的数据包不会被系统跟踪。
-1. `filter` 是用于存放所有与防火墙相关操作的默认表。
-1. `nat` 用于 [网络地址转换](https://en.wikipedia.org/wiki/Network_address_translation)（例如：端口转发）。
-1. `mangle` 用于对特定数据包的修改（参考[损坏数据包](https://en.wikipedia.org/wiki/Mangled_packet)）。
-1. `security` 用于[强制访问控制](https://wiki.archlinux.org/index.php/Security#Mandatory_access_control) 网络规则。
-
-**注**：在本示例中只用到了 `nat` 表。
-
-不同的表中的具有的链类型如下表所示：
-
-| 规则名称    | raw  | filter | nat  | mangle | security |
-| ----------- | ---- | ------ | ---- | ------ | -------- |
-| PREROUTING  | ✓    |        | ✓    | ✓      |          |
-| INPUT       |      | ✓      | ✓    | ✓      | ✓        |
-| OUTPUT      |      | ✓      | ✓    | ✓      | ✓        |
-| POSTROUTING |      |        | ✓    | ✓      |          |
-| FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
-
-### 理解 iptables 规则
-
-查看 `istio-proxy` 容器中的默认的 iptables 规则，默认查看的是 filter 表中的规则。
-
-```bash
-$ iptables -L -v
-Chain INPUT (policy ACCEPT 350K packets, 63M bytes)
- pkts bytes target     prot opt in     out     source               destination
-
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-
-Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
- pkts bytes target     prot opt in     out     source               destination
-```
-
-我们看到三个默认的链，分别是 INPUT、FORWARD 和 OUTPUT，每个链中的第一行输出表示链名称（在本例中为INPUT/FORWARD/OUTPUT），后跟默认策略（ACCEPT）。
-
-下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
-
-每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
-
-- **pkts**：处理过的匹配的报文数量
-- **bytes**：累计处理的报文大小（字节数）
-- **target**：如果报文与规则匹配，指定目标就会被执行。
-- **prot**：协议，例如 `tdp`、`udp`、`icmp` 和 `all`。
-- **opt**：很少使用，这一列用于显示 IP 选项。
-- **in**：入站网卡。
-- **out**：出站网卡。
-- **source**：流量的源 IP 地址或子网，或者是 `anywhere`。
-- **destination**：流量的目的地 IP 地址或子网，或者是 `anywhere`。
-
-还有一列没有表头，显示在最后，表示规则的选项，作为规则的扩展匹配条件，用来补充前面的几列中的配置。`prot`、`opt`、`in`、`out`、`source` 和 `destination` 和显示在 `destination` 后面的没有表头的一列扩展条件共同组成匹配规则。当流量匹配这些规则后就会执行 `target`。
-
-**target 支持的类型**
-
-`target` 类型包括 ACCEPT`、REJECT`、`DROP`、`LOG` 、`SNAT`、`MASQUERADE`、`DNAT`、`REDIRECT`、`RETURN` 或者跳转到其他规则等。只要执行到某一条链中只有按照顺序有一条规则匹配后就可以确定报文的去向了，除了 `RETURN` 类型，类似编程语言中的 `return` 语句，返回到它的调用点，继续执行下一条规则。`target` 支持的配置详解请参考 [iptables 详解（1）：iptables 概念](http://www.zsythink.net/archives/1199)。
-
-从输出结果中可以看到 Init 容器没有在 iptables 的默认链路中创建任何规则，而是创建了新的链路。
 
 ## 流量路由过程详解
 
@@ -927,6 +764,10 @@ Istio 1.13 相比 Istio 1.11 的变化是 `istioctl proxy-config` 命令的输�
 
 - 修改了对 `ISTIO_ROUTE` iptables 规则 2、5 的解释
 - 在示意图中增加了路径 16
+
+**2022 年 5 月 12 日，第五版，基于 Istio 1.13**
+
+- 将 iptables 说明和 sidecar 注入、init 容器部分独立成了两篇单独的博客，以缩减博客的篇幅，见 [Istio 数据平面 Pod 启动过程详解](/blog/istio-pod-process-lifecycle/)和[理解 iptables](/blog/understanding-iptables/)。
 
 ## 参考
 

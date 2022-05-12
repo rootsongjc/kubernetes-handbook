@@ -12,7 +12,21 @@ image: "images/banner/istio-iptables.jpg"
 
 我在[之前的一篇博客中](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/)讲解过 Istio 中 sidecar 的注入、使用 iptables 进行透明流量拦截及流量路由的详细过程，并以 Bookinfo 示例中的 `productpage` 服务访问 `reviews` 服务，和 `reviews` 服务访问 `ratings` 服务为例绘制了透明流量劫持示意图。在那个示意图中仅展示了 `reviews` pod 接收流量和对外访问的路由，实际上 sidecar 内的流量远不止于此。
 
-本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则，并以示意图的形式带你一览其全貌。
+在所有的 iptables 调用链中最复杂的一个是 `ISTIO_OUTPUT`，其中共有 9 条规则如下：
+
+| **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
+| -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
+| 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
+| 2        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner UID match 1337 |
+| 3        | RETURN            | any    | lo      | anywhere   | anywhere !owner UID match 1337  |
+| 4        | RETURN            | any    | any     | anywhere   | anywhere owner UID match 1337   |
+| 5        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner GID match 1337 |
+| 6        | RETURN            | any    | lo      | anywhere   | anywhere !owner GID match 1337  |
+| 7        | RETURN            | any    | any     | anywhere   | anywhere owner GID match 1337   |
+| 8        | RETURN            | any    | any     | anywhere   | localhost                       |
+| 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
+
+本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则， 以示意图的形式带你一览其全貌，其中详细指出了路由具体使用的是 `ISTIO_OUTPUT` 中的哪一条规则。
 
 ## Sidecar 中的 iptables 流量路由
 
@@ -35,7 +49,7 @@ Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15
 
 我们看到流量只经过一次 Envoy 15006 Inbound 端口。这种场景下的 iptables 规则的示意图如下。
 
-![Remote Pod -> Local Pod](remote-pod-local-pod.png)
+![Remote Pod 到 Local Pod](remote-pod-local-pod.jpg)
 
 ### 类型二：Local Pod -> Remote Pod
 
@@ -43,9 +57,9 @@ Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> ISTIO_REDIRECT -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING` -> Remote Pod
 
-我们看到流量只经过 Envoy 15001 Outbound 端口。这种场景下的 iptables 规则的示意图如下。
+我们看到流量只经过 Envoy 15001 Outbound 端口。
 
-![Local Pod -> Remote Pod](local-pod-remote-pod.png)
+![Local Pod 到 Remote Pod](local-pod-remote-pod.jpg)
 
 以上两种场景中的流量都只经过一次 Envoy，因为该 Pod 中只有发出或接受请求一种场景发生。
 
@@ -59,7 +73,7 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端
 
 这种场景下的 iptables 规则的示意图如下。
 
-![Prometheus -> Local Pod](prometheus-local-pod.png)
+![Prometheus 到 Local Pod](prometheus-local-pod.jpg)
 
 ### 类型四：Local Pod -> Local Pod
 
@@ -69,9 +83,7 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
-这种场景下的 iptables 规则的示意图如下。
-
-![Local Pod -> Local Pod](local-pod-local-pod.png)
+![Local Pod 到 Local Pod](local-pod-local-pod.jpg)
 
 ### 类型五：Envoy 内部的进程间 TCP 流量
 
@@ -81,21 +93,17 @@ Envoy 内部进程的 UID 和 GID 为 1337，它们之间的流量将使用 lo �
 
 Envoy 进程（Localhost） -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy 进程（Localhost）
 
-这种场景下的 iptables 规则的示意图如下。
-
-![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.png)
+![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.jpg)
 
 ### 类型六：Sidecar 到 Istiod 的流量
 
-Sidecar 需要访问 Istiod 以同步配置，因此 Envoy 会有向 Istiod 发送流量。
+Sidecar 需要访问 Istiod 以同步配置，`pilot-agent` 进程会向 Istiod 发送请求，以同步配置。
 
 这些流量通过的 iptables 规则如下。
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
+`pilot-agent` 进程 -> `OUTPUT` -> **`Istio_OUTPUT` RULE 9** -> Envoy 15001 (Outbound Handler) -> OUTPUT -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
 
-这种场景下的 iptables 规则的示意图如下。
-
-![Sidecar 到 Istiod 的流量](sidecar-istiod.png)
+![Sidecar 到 Istiod 的流量](sidecar-istiod.jpg)
 
 ## 总结
 
