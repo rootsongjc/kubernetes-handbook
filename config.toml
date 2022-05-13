@@ -251,7 +251,7 @@ title = "Jimmy Song - 云原生"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
 # top header
-top_header = true
+top_header = false
 top_header_content = "一站式云原生资料库上线，[前往浏览](https://jimmysong.io/docs/)"
 
 # main menu
