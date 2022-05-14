@@ -31,7 +31,7 @@ type: "post"
 
 - 电脑：macOS、Windows 都可以，我是用的是Macbook Pro 2016 年产，配置如下：
 
-![img](008i3skNly1gqv0t9gubjj30wk0jiwl1.jpg) 
+![系统配置](008i3skNly1gqv0t9gubjj30wk0jiwl1.jpg) 
 
 - 外接麦克风：切勿直接使用电脑机身上自带的麦克风，那样会收录电脑风扇的声音，我使用的是博雅 BY-500（400 多块钱） 麦克风，电容式麦克风，指向性比较好，基本没有噪音。
 - 摄像头：保证电脑上的摄像头可用，因为会议的时候需要开摄像头，或者用外接摄像头也可以。
@@ -51,15 +51,15 @@ type: "post"
 
 需要注意的是输出、音频和视频的配置。请参考图中的配置，尤其注意编码控制、比特率的配置。
 
-![img](008i3skNly1gqv0t9tppnj312t0u0gpv.jpg)
+![OBS输出配置](008i3skNly1gqv0t9tppnj312t0u0gpv.jpg)
 
-![img](008i3skNly1gqv0tbb4g8j313m0u0jv1.jpg)
+![OBS音频配置](008i3skNly1gqv0tbb4g8j313m0u0jv1.jpg)
 
 请注意分辨率的配置，同时调整电脑屏幕的分辨率为 1440x900，**不要使用太大的分辨率，否则可能导致直播画面黑屏**。
 
-![img](008i3skNly1gqv0tarnvoj31is0p276g.jpg)
+![OBS视频配置](008i3skNly1gqv0tarnvoj31is0p276g.jpg)
 
-![img](008i3skNly1gqv0tbrclhj31140pkjxy.jpg)
+![Macbook显示配置](008i3skNly1gqv0tbrclhj31140pkjxy.jpg)
 
 ## 会议直播
 
@@ -73,7 +73,7 @@ type: "post"
 
 安装 sunflower 后，在 Midi 设备中创建一个多输出设备，如图。
 
-![img](008i3skNly1gqv0ta93jfj31060q0n28.jpg) 
+![MacBook音频配置](008i3skNly1gqv0ta93jfj31060q0n28.jpg) 
 
 选择 Sunflower（2ch）和你想要用来监听系统声音的设备，我是用的是 AirPods，你也可以选择其他耳机，总之不要让麦克风录到这个系统输出的即可。
 
@@ -121,6 +121,10 @@ type: "post"
 - 会议开始后检查 B 站直播间，确保声音和画质没有问题
 - OBS 推流的时候不用录像，因为 zoom 已经在录了
 - 直播完成后检查 zoom 生成的视频文件并备份
+
+## 优化项
+
+直接直播屏幕内容也会造成多重布局的问题，以上方案还是有可优化的地方。比如将视频会议中的共享桌面与摄像头画面分开布局到 OBS 上。
 
 ## 最后
 
