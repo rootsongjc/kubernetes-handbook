@@ -2,7 +2,6 @@
 title: "Sidecar injection, transparent traffic hijacking , and routing process in Istio explained in detail"
 date: 2022-05-12T21:08:59+08:00
 draft: false
-weight: 10
 tags: ["istio","iptables","envoy"]
 description: "This blog describes the sidecar pattern, transparent traffic hijacking and routing."
 categories: ["Istio"]
