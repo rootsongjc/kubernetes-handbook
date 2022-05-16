@@ -3,11 +3,10 @@ title: "Kubernetes 次世代的云原生应用"
 date: 2020-06-01T18:13:19+08:00
 tags: ["Kubernetes","云原生"]
 description: "Kubernetes 的次世代在于解决 Kubernetes 生态的碎片化问题。"
-image: "images/banner/cloud-native-era.jpg"
+image: "images/banner/cloud-native-era.webp"
 categories: ["云原生"]
 draft: false
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 ---
 
 Kubernetes 自开源至今已经走过六个年头了，[云原生时代](https://cloudnative.to/blog/cloud-native-era/)也已到来，我关注云原生领域也四年有余了，最近开始思考云原生的未来走向，特此撰写本文作为[《云原生应用白皮书》](https://jimmysong.io/guide-to-cloud-native-app)的开篇，更多关于云原生应用的介绍请转到白皮书中浏览。

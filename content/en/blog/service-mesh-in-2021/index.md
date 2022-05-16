@@ -4,10 +4,9 @@ date: 2022-01-12T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","cloud native"]
 categories: ["Service Mesh"]
-bg_image: "images/backgrounds/page-title.jpg"
 description: "A review of the development of Service Mesh in 2021."
 type: "post"
-image: "images/banner/y2021.jpg"
+image: "images/banner/y2021.webp"
 ---
 
 As the service mesh architecture concept gains traction and the scenarios for its applications emerge, there is no shortage of discussions about it in the community. I have worked on service mesh with the community for 4 years now, and will summarize the development of service mesh in 2021 from this perspective. Since Istio is the most popular service mesh, this article will focus on the technical and ecological aspects of Istio.

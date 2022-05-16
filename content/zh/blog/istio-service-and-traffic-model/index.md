@@ -7,9 +7,8 @@ description: "本文介绍了 Istio 和 Kubernetes 中的一些服务和流量�
 tags: ["istio"]
 categories: ["service mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/istio-community-tips"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-logo.webp"
 ---
 
 本文介绍了 Istio 和 Kubernetes 中的一些服务和流量的抽象模型。虽然 Istio 一开始确定的抽象模型与对接的底层平台无关，但目前来看基本绑定 Kubernetes，本文仅以 Kubernetes 说明。另外在 [ServiceMesher 社区](http://www.servicemesher.com)中最近有很多关于 Istio、Envoy、Kubernetes 之中的服务模型关系的讨论，本文作为一个开篇说明，Kubernetes 和 Isito 之间有哪些共有的服务模型，Istio 在 Kubernetes 的服务模型之上又增加了什么。

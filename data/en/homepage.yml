@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "images/banner/kubecon-2019-shanghai.jpg"
+  bg_image : "images/banner/kubecon-2019-shanghai.webp"
   slider_item:
     # slider item loop
     # - title : "Cloud Native is eating the world"
@@ -50,25 +50,25 @@ banner_feature:
     # feature item loop
     - name : "Containers"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/containers.png"
+      image : "images/banner/containers.webp"
       content : "The smallest building unit of cloud native applications, built once and run everywhere."
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/kubernetes.png"
+      image : "images/banner/kubernetes.webp"
       content : "Cloud native operating system, declarative API is its core, Operator framework controls everything."
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/service-mesh.png"
+      image : "images/banner/service-mesh.webp"
       content : "As a cloud native network infrastructure, the service mesh is responsible for all aspects of communication between services."
 
     # feature item loop
     - name : "Serverless"
       icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/serverless.png"
+      image : "images/banner/serverless.webp"
       content : "The ultimate form of cloud native in the foreseeable time, true on-demand use and pay-as-you-go."
 
 
@@ -79,7 +79,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   #image : "images/about/about-me.jpg"
-  image: "/images/jimmy-song-avatar.png"
+  image: "/images/jimmy-song-avatar.webp"
   content : "Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF ambassador, [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder, former cloud native advocate and head of OSS office at [Ant Group](https://www.antgroup.com), independent writer and photographer."
   button:
     enable : true
@@ -106,7 +106,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/success-story.jpg"
+  bg_image : "images/backgrounds/success-story.webp"
   title : "Quick Start"
   content : "When we need to develop cloud native apps locally, 
   we prefer to have a distributed development environment that is ready to use and easy to customize, 
@@ -161,8 +161,8 @@ blog:
 footer:
   content : "Cloud Native | Open Source | Community"
   button_link : "https://twitter.com/jimmysongio"
-  image : "images/jimmysong-twitter-qr-code.jpg"
-  footer_image : "images/jimmysong-twitter-qr-code.jpg"
+  image : "images/jimmysong-twitter-qr-code.webp"
+  footer_image : "images/jimmysong-twitter-qr-code.webp"
   address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false

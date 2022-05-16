@@ -1,11 +1,12 @@
 ---
 title: "如何理解 Istio Ingress， 它与 API Gateway 有什么区别？"
 description: "服务网格与 API 网关之间是什么关系？是不是使用了 Istio 就可以替代了 API 网关？Istio 的 API 网关是如何运作的？有哪些方式暴露 Istio mesh 中的服务？这篇文章给为你解答。"
-image: "/images/banner/istio-api-gateway.jpg"
+image: "/images/banner/istio-api-gateway.webp"
 categories: ["istio"]
 tags: ["istio","service mesh","kubernetes","api gateway"]
 date: 2021-08-06T10:22:00+08:00
 type: "post"
+bg_image: "images/backgrounds/page-title.webp"
 ---
 
 API 网关作为客户端访问后端的入口，已经存在很长时间了，它主要是用来管理”南北向“的流量；近几年服务网格开始流行，它主要是管理系统内部，即“东西向”流量，而像 Istio 这样的服务网格还内置了网关，从而将系统内外部的流量纳入了统一管控。这经常给初次接触 Istio 的人带来困惑——服务网格与 API 网关之间是什么关系？是不是使用了 Istio 就可以替代了 API 网关？Istio 的 API 网关是如何运作的？有哪些方式暴露 Istio mesh 中的服务？这篇文章给为你解答。

@@ -6,8 +6,8 @@ draft: false
 tags: ["iptables"]
 categories: ["Istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/iptables.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/iptables.webp"
 ---
 
 iptables 作为 Linux 内核中的重要功能，有着广泛的应用，在 Istio 中默认就是利用 iptables 做透明流量劫持的。理解 iptables，对于我们理解 Istio 的运作有十分重要的作用。本文将为大家简单介绍下 iptbles。
@@ -20,7 +20,7 @@ iptables 作为 Linux 内核中的重要功能，有着广泛的应用，在 Ist
 
 下图展示了 iptables 调用链。
 
-![iptables 调用链](iptables.jpg)
+![iptables 调用链](iptables.webp)
 
 ## iptables 中的表
 

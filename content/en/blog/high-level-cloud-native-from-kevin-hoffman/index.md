@@ -4,8 +4,7 @@ date: 2017-09-15T20:32:47+08:00
 draft: false
 categories: ["cloud native"]
 description: "Kevin Hoffman address that 15 Factors of Cloud Native."
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/kevin-hoffman-t11.jpg"
+image: "images/banner/kevin-hoffman-t11.webp"
 aliases: "/en/posts/high-level-cloud-native-from-kevin-hoffman"
 type: "post"
 ---

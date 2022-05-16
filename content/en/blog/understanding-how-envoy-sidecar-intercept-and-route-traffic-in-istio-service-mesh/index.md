@@ -5,8 +5,7 @@ draft: false
 description: "Details about Envoy sidecar with iptables rules."
 tags: ["envoy","istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-logo.webp"
 categories: ["service mesh"]
 aliases: 
 - "/en/posts/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh/"
