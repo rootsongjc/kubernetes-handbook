@@ -8,12 +8,20 @@
             </div>
         </div>
         <div class="row">
-            {{ if not (eq (len $.Site.Taxonomies.tags) 0) }} {{ $fontUnit := "rem" }} {{ $largestFontSize := 2.0 }} {{ $largestFontSize := 2.5 }} {{ $smallestFontSize := 1.0 }} {{ $fontSpread := sub $largestFontSize $smallestFontSize }} {{ $max := add (len (index
-            $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }} {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }} {{ $spread := sub $max $min }} {{ $fontStep := div $fontSpread $spread }}
+            {{ if not (eq (len $.Site.Taxonomies.tags) 0) }}
+            {{ $fontUnit := "rem" }} {{ $largestFontSize := 2.0 }} {{ $largestFontSize := 2.5 }}
+            {{ $smallestFontSize := 1.0 }} {{ $fontSpread := sub $largestFontSize $smallestFontSize }}
+            {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
+            {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }}
+            {{ $spread := sub $max $min }} {{ $fontStep := div $fontSpread $spread }}
 
             <div id="tag-cloud" style="padding: 5px 15px">
-                {{ range $name, $taxonomy := $.Site.Taxonomies.tags }} {{ $currentTagCount := len $taxonomy.Pages }} {{ $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) }} {{ $count := len $taxonomy.Pages }} {{ $weigth := div (sub
-                (math.Log $count) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }} {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) }}
+                {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                {{ $currentTagCount := len $taxonomy.Pages }}
+                {{ $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) }}
+                {{ $count := len $taxonomy.Pages }}
+                {{ $weigth := div (sub (math.Log $count) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
+                {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) }}
                 <!--Current font size: {{$currentFontSize}}-->
                 <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{ $name | humanize }}</a> {{ end }}
             </div>
@@ -23,7 +31,7 @@
     <div class="container ">
         <div class="row ">
             <div class="col-lg-12 ">
-                <h2 class="section-title ">{{ i18n "contact_us " }}</h2>
+                <h2 class="section-title "></h2>
             </div>
         </div>
         <div class="row col-12 content ">
