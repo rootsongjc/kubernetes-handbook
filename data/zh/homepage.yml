@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "/images/banner/kubecon-2019-shanghai.jpg"
+  bg_image : "/images/banner/kubecon-2019-shanghai.webp"
   slider_item:
     # slider item loop
     - title : "一站式云原生资料库"
@@ -49,25 +49,25 @@ banner_feature:
     # feature item loop
     - name : "容器"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/containers.png"
+      image : "/images/banner/containers.webp"
       content : "云原生应用的最小的构建单元，一次构建，到处运行。"
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/kubernetes.png"
+      image : "/images/banner/kubernetes.webp"
       content : "云原生操作系统，声明式 API 是它的核心，Operator 操控万物。"
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/service-mesh.png"
+      image : "/images/banner/service-mesh.webp"
       content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面。"
 
     # feature item loop
     - name : "Serverless"
       icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/serverless.png"
+      image : "/images/banner/serverless.webp"
       content : "可预见时间内的云原生的终极形式，真正的按需使用和按量付费。"
 
 
@@ -77,7 +77,7 @@ about:
   title : "关于 Jimmy Song"
   partner_enabled: false
   funfacts_enabled: false
-  image: "/images/jimmy-song-avatar.png"
+  image: "/images/jimmy-song-avatar.webp"
   content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，前[蚂蚁集团](https://www.antgroup.com)云原生布道师及开源管理负责人，独立撰稿人，摄影师。"
   button:
     enable : true
@@ -111,7 +111,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "/images/backgrounds/success-story.jpg"
+  bg_image : "/images/backgrounds/success-story.webp"
   title : "云原生学院"
   content : "欢迎来到云原生学院，云原生学院由云原生社区主办，致力于云原生知识的传播和普及。云原生学院定期举办线上直播活动， 组织 SIG（特别兴趣小组），直播分享云原生领域的前沿知识和动向。欢迎关注我们的 Bilibili [频道](https://space.bilibili.com/515485124)和[直播间](http://live.bilibili.com/22230973)。"
   # video link
@@ -161,8 +161,8 @@ blog:
 ############################ footer ###############################
 footer:
   content : "专注于云原生开源与社区"
-  image: "/images/jimmysong-wechat-qr-code.jpg"
-  footer_image: "/images/jimmysong-wechat-qr-code.jpg"
+  image: "/images/jimmysong-wechat-qr-code.webp"
+  footer_image: "/images/jimmysong-wechat-qr-code.webp"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false

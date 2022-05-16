@@ -5,8 +5,8 @@ draft: false
 tags: ["istio","iptables","envoy","sidecar"]
 description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 如何注入到数据平面，Envoy 如何做流量劫持和路由转发的，包括 Inbound 流量和 Outbound 流量。"
 categories: ["Istio"]
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-sidecar-iptables.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/istio-sidecar-iptables.webp"
 type: "post"
 ---
 

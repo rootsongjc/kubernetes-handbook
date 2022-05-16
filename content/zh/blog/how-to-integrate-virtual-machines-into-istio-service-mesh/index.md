@@ -4,10 +4,9 @@ date: 2020-11-02T16:43:27+08:00
 draft: false
 tags: ["istio"]
 categories: ["Service Mesh"]
-bg_image: "images/backgrounds/page-title.jpg"
 description: "将基于虚拟机的工作负载更好地集成到服务网格中，是 Istio 团队今年的一大重点。Tetrate 还通过其产品 Tetrate Service Bridge 提供了无缝的多云连接、安全性和可观察性，包括针对虚拟机的。本文将带您了解为什么 Istio 需要与虚拟机整合，以及如何整合。"
 type: "post"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-logo.webp"
 ---
 
 Istio 是目前最流行的服务网格，用于连接、保护、控制和观察服务。当其 2017 年开源时，Kubernetes 已赢得容器编排之战，Istio 为了满足组织转向微服务的需求。虽然 Istio 声称支持异构环境，如 Nomad、Consul、Eureka、Cloud Foundry、Mesos 等，但实际上，它一直与 Kubernetes 合作得最好–它的服务发现就是基于 Kubernetes。

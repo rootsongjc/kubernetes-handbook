@@ -6,8 +6,7 @@ draft: false
 tags: ["Istio"]
 categories: ["service mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/vm.jpg"
+image: "images/banner/vm.webp"
 ---
 
 本文将为你介绍 Istio 历史上对虚拟机负载的支持情况，尤其是 Istio 1.8 中引入的智能 DNS 代理及 `WorkloadGroup` 使得虚拟机与容器在资源抽象层面可以等同视之。我将为你展现一幅 Istio 支持虚拟机的波澜壮阔的奥德赛。

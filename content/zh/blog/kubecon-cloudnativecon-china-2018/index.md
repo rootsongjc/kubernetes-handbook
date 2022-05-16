@@ -5,14 +5,13 @@ draft: false
 description: "KubeCon&CloudNativeCon China 2018参会回顾。"
 categories: ["其他"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/kubecon-cloudnativecon-china-2018"
-image: "images/banner/kubecon-shanghai-2018-banner.jpg"
+image: "images/banner/kubecon-shanghai-2018-banner.webp"
 ---
 
-本次大会光面基了，很多 topic 都没来得及听。。。
+本次大会是一个难得的机会，让我见到了很多朋友，很多都是第一次在线下见面。
 
-![KubeCon&CloudNativeCon China 上海 2018](kubecon-shanghai-2018-group.jpg)
+![KubeCon&CloudNativeCon China 上海 2018](kubecon-shanghai-2018-group.webp)
 
 *图中由上自下的大合影是：ServiceMesher 社区上海聚首合影；中美日的Kubernetes、Envoy、Istio、Apache Skywalking、ServiceMesher社区在KubeCon上海；Yahoo Japan 与蚂蚁集团团队在上海中心办公室合影。*
 

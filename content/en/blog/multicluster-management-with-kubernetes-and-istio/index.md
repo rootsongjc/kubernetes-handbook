@@ -1,7 +1,7 @@
 ---
 title: "Multicluster Management with Kubernetes and Istio"
 description: "This article explains three patterns/tools for debugging microservices in Kubernetes and the changes brought by the introduction of Istio for debugging microservices."
-image: "/images/banner/multicluster.jpg"
+image: "/images/banner/multicluster.webp"
 categories: ["istio"]
 tags: ["istio","service mesh","kuberentes","tsb","multicluster"]
 date: 2021-07-12T22:22:00+08:00

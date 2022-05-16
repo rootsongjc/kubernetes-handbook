@@ -6,11 +6,11 @@ draft: false
 tags: ["旅行"]
 categories: ["旅行"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/xinjiang.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/xinjiang.webp"
 ---
 
-![在琼库什台村与哈萨克族村民在一起](xinjiang-hasake.jpg)
+![在琼库什台村与哈萨克族村民在一起](xinjiang-hasake.webp)
 
 *摄于新疆维吾尔自治区伊犁哈萨克自治州特克斯县琼库什台村，晓辉和我与哈萨克族村民在一起*
 
@@ -42,11 +42,11 @@ image: "images/banner/xinjiang.jpg"
 
 夜宿在赛里木湖北门附近的牧民家旁边，夜晚可以看到璀璨的星空。
 
-![赛里木湖的星空](stars.jpg)
+![赛里木湖的星空](stars.webp)
 
 如果说有个地方我想再重走一遍的话，我会选择伊犁哈萨克自治州，如果一定要确定一个具体的村庄的话，那我会选择琼库什台。
 
-![琼库什台](qiongkushitai.jpg)
+![琼库什台](qiongkushitai.webp)
 
 我们在草原上工作，到哈萨克族老乡家吃饭一起庆祝古尔邦节，教小朋友玩无人机，一起骑马、打篮球，不亦乐乎。大美新疆，我一定会再来的！
 
@@ -56,13 +56,13 @@ image: "images/banner/xinjiang.jpg"
 
 在琼库什台草原上骑马，这也是我第一次骑马，骑着骑着，马自己就跑起来了。
 
-![琼库什台骑马](horse.jpg)
+![琼库什台骑马](horse.webp)
 
 ## 视频
 
 下面是我为本次旅程所剪辑的[视频](https://www.bilibili.com/video/BV1Ab4y1z7TW/)，希望大家一键三连（点赞、投币、转发）。
 
-![Bilibili 点播](bilibili.jpg)
+![Bilibili 点播](bilibili.webp)
 
 ## 贴士
 

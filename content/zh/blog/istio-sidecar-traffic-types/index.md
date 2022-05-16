@@ -6,8 +6,8 @@ draft: false
 tags: ["istio","sidecar","iptables"]
 categories: ["Istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-iptables.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/istio-iptables.webp"
 ---
 
 我在[之前的一篇博客中](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/)讲解过 Istio 中 sidecar 的注入、使用 iptables 进行透明流量拦截及流量路由的详细过程，并以 Bookinfo 示例中的 `productpage` 服务访问 `reviews` 服务，和 `reviews` 服务访问 `ratings` 服务为例绘制了透明流量劫持示意图。在那个示意图中仅展示了 `reviews` pod 接收流量和对外访问的路由，实际上 sidecar 内的流量远不止于此。

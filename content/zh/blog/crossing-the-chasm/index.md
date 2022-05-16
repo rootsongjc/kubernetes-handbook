@@ -4,10 +4,10 @@ date: 2022-01-09T10:43:27+08:00
 draft: false
 tags: ["文化"]
 categories: ["文化"]
-bg_image: "images/backgrounds/page-title.jpg"
+bg_image: "images/backgrounds/page-title.webp"
 description: "本文将为读者分享一些关于“鸿沟理论”有关的一些知识，希望能够引发大家对于新技术推广的一些思考。"
 type: "post"
-image: "images/banner/crossing-the-chasm.jpg"
+image: "images/banner/crossing-the-chasm.webp"
 ---
 
 最近为某网站撰写服务网格技术的 2021 年总结，笔者关注该领域也有 4 年时间了，再结合自己最近这几年对云原生行业发展的观察，越发觉得《跨越鸿沟》（Crossing the chasm）这本书中所写的新技术的推广生命周期一一应验了。虽然该理论由 Jeffery Moore 于 1991 年提出，距今已有 30 年时间，但该理论至今依然奏效，另外该理论也在 [CNCF 项目](https://www.cncf.io/projects/)的成熟度划分中得到应用，还有人指出过[云原生技术需要跨越的鸿沟](https://www.infoq.cn/article/hv5dft_bgjdfpqongzqx)。本文将为读者分享一些关于” 鸿沟理论 “有关的一些知识，希望能够引发大家对于新技术推广的一些思考。

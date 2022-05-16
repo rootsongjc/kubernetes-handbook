@@ -6,9 +6,8 @@ description: "Sidecar proxy 中 Indbound/Outbound 流量处理过程详解。"
 tags: ["istio"]
 categories: ["service mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/envoy-sidecar-routing-of-istio-service-mesh-deep-dive"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-logo.webp"
 ---
 
 本文以 Istio 官方的 [bookinfo 示例](https://preliminary.istio.io/zh/docs/examples/bookinfo)来讲解在进入 Pod 的流量被 iptables 转交给 Envoy sidecar 后，Envoy 是如何做路由转发的，详述了 Inbound 和 Outbound 处理过程。关于流量拦截的详细分析请参考[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)。

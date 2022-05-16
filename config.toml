@@ -66,8 +66,8 @@ author = "Jimmy Song"
 address = "Beijing, China"
 email = "jimmysong@jimmysong.io"
 wechat = "jimmysongio"
-wechatCode = "/images/jimmysong-wechat-qr-code.jpg"
-twitterCode = "/images/jimmysong-wechat-qr-code.jpg"
+wechatCode = "/images/jimmysong-wechat-qr-code.webp"
+twitterCode = "/images/jimmysong-wechat-qr-code.webp"
 # contact form action
 contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with https://formspree.io
 # Google Analitycs

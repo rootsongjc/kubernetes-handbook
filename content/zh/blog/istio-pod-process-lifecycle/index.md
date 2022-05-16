@@ -6,8 +6,8 @@ draft: false
 tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-pod-process-lifecycle.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/istio-pod-process-lifecycle.webp"
 ---
 
 本文将为你讲解：
@@ -18,7 +18,7 @@ image: "images/banner/istio-pod-process-lifecycle.jpg"
 
 下图中展示了 Istio 数据平面中的 Pod 启动完后的组件。
 
-![Istio 数据平面 Pod 内部组件](istio-pod-lifecycle.jpg)
+![Istio 数据平面 Pod 内部组件](istio-pod-lifecycle.webp)
 
 ## Istio 中的 sidecar 注入
 

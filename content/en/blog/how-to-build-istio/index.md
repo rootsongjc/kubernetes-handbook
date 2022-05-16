@@ -6,8 +6,7 @@ draft: false
 tags: ["istio"]
 categories: ["Istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/build-istio.jpg"
+image: "images/banner/build-istio.webp"
 ---
 
 This article will guide you on how to compile the Istio binaries and Docker images on macOS.

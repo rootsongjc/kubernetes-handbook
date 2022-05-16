@@ -5,8 +5,7 @@ date: 2020-04-01T11:56:04+08:00
 draft: false
 categories: ["Service Mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/era.jpg"
+image: "images/banner/era.webp"
 ---
 
 This article is a rework of previously written content and is included in the [Istio Handbook](https://www.servicemesher.com/istio-handbook) of the ServiceMesher community . Other chapters are still being compiled.

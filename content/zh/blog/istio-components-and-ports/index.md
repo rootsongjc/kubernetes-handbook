@@ -6,8 +6,8 @@ draft: false
 tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/istio-ports.jpg"
+bg_image: "images/backgrounds/page-title.webp"
+image: "images/banner/istio-ports.webp"
 ---
 
 在我的前两篇博客中：
@@ -21,29 +21,29 @@ image: "images/banner/istio-ports.jpg"
 
 按照习惯，我们首先展示一个全局示意图。下图展示的是 Istio 数据平面中 sidecar 的组成，以及与其交互的对象。
 
-![Istio sidecar 组成示意图](istio-ports-components.png)
+![Istio sidecar 组成示意图](istio-ports-components.webp)
 
 我们可以使用 `nsenter` 命令进入Bookinfo 示例的 `productpage`  Pod的网络空间，查看其内部监听的端口信息。
 
-![Istio sidecar 中监听的端口信息](sidecar-ports.jpg)
+![Istio sidecar 中监听的端口信息](sidecar-ports.webp)
 
 从图中我们可以看到除了 `productpage` 应用本身监听的 9080 端口以外，Sidecar 容器还有监听大量的其他端口，如 `15000`、`15001`、`15004`、`15006`、`15021`、`15090` 等，你可以在 [Istio 文档](https://istio.io/latest/docs/ops/deployment/requirements/)上了解 Istio 中使用的端口。
 
 我们再进入 `productpage` Pod 中，使用 `lsof -i` 命令查看它打开的端口，如下图所示。
 
-![Productpage Pod 中打开的端口](product-pod-ports.jpg)
+![Productpage Pod 中打开的端口](product-pod-ports.webp)
 
 我们可以看到其中有 `pilot-agent` 与 `istiod` 建立了 TCP 连接，上文中所述的监听中的端口，还有在 Pod 内部建立的 TCP 连接，这些连接对应了文章开头的示意图。
 
 Sidecar 容器（`istio-proxy` ）的根进程是 `pilot-agent`，启动命令如下图所示：
 
-![Sidecar 中的进程](sidecar-procecces.jpg)
+![Sidecar 中的进程](sidecar-procecces.webp)
 
 从图中我们可以看到，它 `pilot-agent` 进程的 PID 是 1，是它拉起了 `envoy` 进程。
 
 在 `istiod` 的 Pod 中查看它打开的端口，如下图所示。
 
-![Istiod 中的端口](sidecar-lsof.jpg)
+![Istiod 中的端口](sidecar-lsof.webp)
 
 我们可以看到其中的监听的端口、进程间和远程通信连接。
 
@@ -95,7 +95,7 @@ kubectl -n default port-forward deploy/productpage-v1 15000
 
 在浏览器中访问 `http://localhost:15000`，你将看到 Envoy Admin 界面如下图所示。
 
-![Envoy Admin 界面](envoy-admin.jpg)
+![Envoy Admin 界面](envoy-admin.webp)
 
 ## 15004 端口
 
@@ -111,7 +111,7 @@ kubectl -n istio-system port-forward deploy/istiod 8080
 
 在浏览器中访问 `http://localhost:8080/debug`，你将看到调试端点，如下图所示。
 
-![Pilot 调试控制台](pilot-debug-console.jpg)
+![Pilot 调试控制台](pilot-debug-console.webp)
 
 当然，这只是一种获取网格信息和调试网格的方式，你还可以使用 `istioctl` 命令或 Kiali 来调试，那样将更加高效和直观。
 
@@ -125,7 +125,7 @@ kubectl -n istio-system port-forward deploy/istiod 8080
 
 下图展示的是使用本地端口转发后，在浏览器中打开 `http://localhost:15020/debug/pprof` 看到的调试信息。
 
-![pprof 端点](pprof.jpg)
+![pprof 端点](pprof.webp)
 
 图中信息展示的是 `pilot-agent` 的堆栈信息。
 

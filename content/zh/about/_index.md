@@ -4,7 +4,7 @@ draft: false
 # page title background image
 bg_image: "images/backgrounds/page-title.jpg"
 # about image
-image: "images/about/jimmysong-xj.jpg"
+image: "images/about/jimmysong-xj.webp"
 # meta description
 description : "宋净超（Jimmy Song）的简介。"
 ---
