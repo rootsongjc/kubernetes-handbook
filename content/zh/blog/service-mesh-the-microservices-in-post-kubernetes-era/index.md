@@ -6,8 +6,7 @@ draft: false
 tags: ["istio"]
 categories: ["Service Mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/era.jpg"
+image: "images/banner/era.webp"
 ---
 
 本文是以前所写内容的重新修订并收录于 ServiceMesher 社区的 [Istio Handbook](https://www.servicemesher.com/istio-handbook) 中，其他章节仍在编纂中。
