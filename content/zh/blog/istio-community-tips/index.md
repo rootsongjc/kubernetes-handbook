@@ -6,9 +6,8 @@ draft: false
 tags: ["istio"]
 categories: ["service mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/istio-service-and-traffic-model"
-image: "images/banner/istio-logo.jpg"
+image: "images/banner/istio-logo.webp"
 ---
 
 本文讲述了参与 Istio 社区和进行 Istio 开发时需要注意的事项。
