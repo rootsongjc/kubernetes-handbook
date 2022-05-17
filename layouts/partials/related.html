@@ -1,6 +1,6 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
-<div class="bg-white">
+<div class="bg-white md-5">
   <h4 class="mb-4">{{ i18n "related_article" }}</h4>
   {{ "<!-- post-item -->" | safeHTML }}
   {{ range . }}
