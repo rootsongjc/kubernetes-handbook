@@ -22,8 +22,7 @@
     {{ if not (eq (len $.Site.Taxonomies.tags) 0) }}
     {{ $fontUnit := "rem" }}
     {{ $largestFontSize := 2.0 }}
-    {{ $largestFontSize := 2.5 }}
-    {{ $smallestFontSize := 1.0 }}
+    {{ $smallestFontSize := 0.8 }}
     {{ $fontSpread := sub $largestFontSize $smallestFontSize }}
     {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
     {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }}
