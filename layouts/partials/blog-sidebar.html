@@ -1,5 +1,4 @@
 {{ "<!-- categories -->" | safeHTML }}
-<div class="sidebar">
 <div class="bg-white mb-5">
   <h4 class="mb-4">{{ i18n "categories" }}</h4>
   {{- if isset .Site.Taxonomies "categories" }}
@@ -27,7 +26,7 @@
     {{ $spread := sub $max $min }}
     {{ $fontStep := div $fontSpread $spread }}
 
-    <div id="tag-cloud" style="padding: 5px 15px">
+    <div id="tag-cloud">
         {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
             {{ $currentTagCount := len $taxonomy.Pages }}
             {{ $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) }}
@@ -40,21 +39,3 @@
     </div>
 {{ end }}
 </div>
-{{ "<!-- latest post -->" | safeHTML }}
-<!--
-<div class="bg-white mb-5">
-  <h4 class="mb-4">{{ i18n "latest_article" }}</h4>
-  {{ "<!-- post-item -->" | safeHTML }}
-  {{ range first 3 ( where .Site.Pages "Type" "post" )}}
-  <div class="media border-bottom border-color pb-3 mb-3">
-    <a href="{{ .Permalink | relURL }}"><img class="mr-3 post-thumb-sm" src="{{ .Params.Image | relURL }}"></a>
-    <div class="media-body">
-      <a href="{{ .Permalink | relURL }}">
-        <h5 class="mt-0">{{ .Title }}</h5>
-      </a>
-      {{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}
-    </div>
-  </div>
-  {{ end }}
-</div>
--->

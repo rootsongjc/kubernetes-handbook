@@ -467,13 +467,15 @@ textarea.form-control{
     line-height: 1.9;
     ul {
             padding-inline-start: 10px;
+            border-left: 1px solid #eee;
     }
     a:hover
     {
         text-decoration: underline;
     }
-
 }
+
+
 
 @media screen and (max-width: 600px) {
 .sidebar {
