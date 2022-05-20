@@ -1,0 +1,64 @@
+{
+    "index_name": "DocSearch",
+    "start_urls": [{
+            "url": "https://jimmysong.io/docs/",
+            "selectors_key": "docs"
+        },
+        {
+            "url": "https://jimmysong.io/blog/"
+        },
+        {
+            "url": "https://jimmysong.io/notice/"
+        },
+        {
+            "url": "https://jimmysong.io/en/blog/"
+        },
+        {
+            "url": "https://jimmysong.io/blog/"
+        }
+    ],
+    "selectors": {
+        "docs": {
+            "lvl0": {
+                "selector": ".breadcrumb .active",
+                "default_value": "云原生资料库"
+            },
+            "lvl1": ".article h1",
+            "lvl2": ".article h2",
+            "lvl3": ".article h3",
+            "text": ""
+        },
+        "default": {
+            "lvl0": {
+                "selector": ".custom-breadcrumb .h2",
+                "default_value": "主站"
+            },
+            "lvl1": ".custom-breadcrumb .h3",
+            "lvl2": ".content h2",
+            "lvl3": ".content h3",
+            "text": ""
+        }
+    },
+    "selectors_exclude": [
+        "nav",
+        "footer",
+        ".aside",
+        "aside",
+        ".search-header"
+    ],
+    "min_indexed_level": 1,
+    "scrape_start_urls": false,
+    "sitemap_urls": [
+        "https://jimmysong.io/sitemap.xml",
+        "https://jimmysong.io/docs/sitemap.xml"
+    ],
+    "sitemap_alternate_links": true,
+    "stop_urls": [
+        "https://jimmysong.io/tags/*",
+        "https://jimmysong.io/docs/tags/*",
+        "https://jimmysong.io/migrating-to-cloud-native-application-architectures/*",
+        "https://jimmysong.io/categories/*",
+        "https://jimmysong.io/docs/categories/*",
+        "https://jimmysong.io/docs/author/*"
+    ]
+}
