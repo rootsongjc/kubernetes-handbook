@@ -8,7 +8,6 @@ type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/configuring-kubernetes-kube-dns"
 image: "images/banner/kubernetes.jpg"
-draft: false
 ---
 
 在我们安装Kubernetes集群的时候就已经安装了kube-dns插件，这个插件也是官方推荐安装的。通过将 Service 注册到 DNS 中，Kuberentes 可以为我们提供一种简单的服务注册发现与负载均衡方式。

@@ -8,7 +8,6 @@ type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/configuration-best-practice"
 image: "images/banner/kubernetes.jpg"
-draft: false
 ---
 
 ## 前言
