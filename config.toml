@@ -1,10 +1,10 @@
 ######################## default configuration ####################
 baseURL = "https://jimmysong.io"
-title = "Jimmy Song - Cloud Native"
+title = "Jimmy Song - Cloud Native|云原生"
 # post pagination
 paginate = "10"
 # post excerpt
-summaryLength = "6"
+summaryLength = "100"
 metaDataFormat = "yaml"
 hasCJKLanguage = true
 DefaultContentLanguage = "zh"
@@ -14,6 +14,19 @@ gcs_engine_id="012737790962522169780:fd1izxsfgrs"
 # disable language
 disableLanguages = [] # desable language from here
 pygmentsUseClasses=true
+
+[outputs]
+home = ["HTML", "RSS", "JSON", "Algolia"]
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "permalink", "image","description"]
+params = ["tags","categories"]
 
 ############################# Plugins ##############################
 
