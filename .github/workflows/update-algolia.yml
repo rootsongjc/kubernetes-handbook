@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
-
       - name: Update Algolia
-        run: update-algolia.sh
+        run: ./update-algolia.sh
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
