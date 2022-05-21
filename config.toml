@@ -89,7 +89,7 @@ google_analitycs_id = "UA-93485976-1" # your id
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 search = true
 # Gitalk
-enableGitalk = true
+enableComment = true
 enableAdSense = true
 
 # Preloader
