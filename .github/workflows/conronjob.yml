@@ -2,7 +2,7 @@ name: update-algolia-index
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '* */6 * * *'
 jobs:
   build:
     name: Trigger Algolia Update
@@ -12,5 +12,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update Algolia
-        # Hit the webhook endpoint to rebuild  from the "main" branch
         run: update-algolia.sh
