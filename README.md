@@ -1,6 +1,6 @@
 # Website
 
-[![build-and-deploy](https://github.com/rootsongjc/website/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/rootsongjc/website/actions/workflows/build-and-deploy.yml) [![update-algolia-index](https://github.com/rootsongjc/website/actions/workflows/conronjob.yml/badge.svg)](https://github.com/rootsongjc/website/actions/workflows/conronjob.yml)
+[![build-and-deploy](https://github.com/rootsongjc/website/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/rootsongjc/website/actions/workflows/build-and-deploy.yml) [![update-algolia](https://github.com/rootsongjc/website/actions/workflows/update-algolia.yml/badge.svg)](https://github.com/rootsongjc/website/actions/workflows/update-algolia.yml)
 
 The website of [jimmysong.io](https://jimmysong.io) is powder by Hugo version v0.98.0 extended.
 

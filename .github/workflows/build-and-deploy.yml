@@ -21,4 +21,4 @@ jobs:
           publish_dir: ./public
           publish_branch: master
       - name: Update Algolia Index
-        run: update-algolia.sh
+        run: ./update-algolia.sh
