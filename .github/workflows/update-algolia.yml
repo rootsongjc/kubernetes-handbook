@@ -1,11 +1,11 @@
-name: update-algolia-index
+name: update-algolia
 
 on:
   schedule:
     - cron: '* */6 * * *'
 jobs:
   build:
-    name: Trigger Algolia Update
+    name: Algolia Update
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
