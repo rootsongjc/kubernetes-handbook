@@ -20,7 +20,3 @@ jobs:
           external_repository: rootsongjc/rootsongjc.github.io
           publish_dir: ./public
           publish_branch: master
-      - name: Update Algolia Index
-        run: ./update-algolia.sh
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
