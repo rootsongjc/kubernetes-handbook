@@ -1,14 +1,16 @@
-name: Update Algolia Index
+name: update-algolia-index
 
 on:
   schedule:
-    # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '* */6 * * *'
+    - cron: '*/5 * * * *'
 jobs:
   build:
     name: Trigger Algolia Update
     runs-on: ubuntu-latest
     steps:
-      - name: cURL request
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Update Algolia
         # Hit the webhook endpoint to rebuild  from the "main" branch
         run: update-algolia.sh
