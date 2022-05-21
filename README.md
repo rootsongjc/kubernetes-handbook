@@ -9,5 +9,7 @@ The website of [jimmysong.io](https://jimmysong.io) is powder by Hugo version v0
 - Sections: Homepage, Blog, Notice, About
 - Blog banner ratio: 3:2
 - Search: [Algolia](https://algolia.com)
-- Primary color: '#0a55a7'
+- Primary color: `#0a55a7`
 - CI: GitHub Action
+
+For the Cloud Native Public Library, please visit [rootsongjc/docs](https://github.com/rootsongjc/docs/).

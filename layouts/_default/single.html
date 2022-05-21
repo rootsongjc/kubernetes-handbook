@@ -50,9 +50,8 @@
             {{ template "_internal/disqus.html" . }}
           </div>
           {{ end }}
-        {{ if .Site.Params.enableGitalk }}
-        <div class="col-12 mb-5" id="gitalk-container"></div>
-            {{ partial "gitalk.html" . }}
+        {{ if .Site.Params.enableComment }}
+            {{ partial "giscus.html" . }}
         {{ end }}
         </div>
       </div>
