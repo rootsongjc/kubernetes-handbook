@@ -133,7 +133,7 @@ funfacts:
     # funfact item loop
     - name : "出版图书"
       count : "7"
-      link : "https://jimmysong.io/docs/#portfolio"
+      link : "https://jimmysong.io/docs/#books"
 
     # funfact item loop
     - name : "举办活动"

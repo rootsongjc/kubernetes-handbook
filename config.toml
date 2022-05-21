@@ -284,26 +284,29 @@ URL = "https://jimmysong.io/docs/"
 weight = 3
 
 [[Languages.zh.menu.main]]
+name = "翻译"
+URL = "https://jimmysong.io/docs/translation/"
+weight = 4
+
+[[Languages.zh.menu.main]]
 name = "社区"
 URL = "https://cloudnative.to"
-weight = 4
+weight = 5
 
 [[Languages.zh.menu.main]]
 name = "活动"
 URL = "https://jimmysong.io/docs/event/"
-weight = 5
+weight = 6
 
 [[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
-weight = 6
+weight = 7
 
 [[Languages.zh.menu.main]]
 name = "通知"
 URL = "notice"
-weight = 7
-
-# footer links 
+weight = 8
 
 [[Languages.zh.menu.footer]]
 name = "云原生开源项目大全"

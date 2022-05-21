@@ -50,9 +50,11 @@
             {{ template "_internal/disqus.html" . }}
           </div>
           {{ end }}
-        {{ if .Site.Params.enableComment }}
-            {{ partial "giscus.html" . }}
-        {{ end }}
+          <div class="col-12">
+          {{ if .Site.Params.enableComment }}
+           {{ partial "giscus.html" . }}
+          {{ end }}
+          </div>
         </div>
       </div>
       {{ "<!-- sidebar -->" | safeHTML }}
