@@ -130,7 +130,7 @@ funfacts:
     # funfact item loop
     - name : "Published Books"
       count : "7"
-      link : "https://jimmysong.io/docs/#portfolio"
+      link : "https://jimmysong.io/docs/#books"
 
     # funfact item loop
     - name : "Hosted Events"
