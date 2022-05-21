@@ -6,16 +6,12 @@ jobs:
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
-
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.98.0'
           extended: true
-
       - name: Build
-        # remove --minify tag if you do not need it
-        # docs: https://gohugo.io/hugo-pipes/minification/
         run: hugo
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -23,5 +19,6 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: rootsongjc/rootsongjc.github.io
           publish_dir: ./public
-        #   keep_files: true
           publish_branch: master
+      - name: Update Algolia Index
+        run: update-algolia.sh
