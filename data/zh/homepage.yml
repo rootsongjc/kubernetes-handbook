@@ -160,7 +160,7 @@ blog:
 
 ############################ footer ###############################
 footer:
-  content : "专注于云原生开源与社区"
+  content : "扫码添加微信（请备注来意）"
   image: "/images/jimmysong-wechat-qr-code.webp"
   footer_image: "/images/jimmysong-wechat-qr-code.webp"
   address : "中国，北京"

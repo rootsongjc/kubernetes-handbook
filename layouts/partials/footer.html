@@ -7,7 +7,10 @@
       <div class="row">
         <div class="col-lg-4 col-sm-8 mb-5 mb-lg-0">
           <!-- logo -->
+          <h4 class="text-white mb-5 text-uppercase">{{ i18n "follow_me" }}</h4>
+          {{ if .Site.Params.footer_image }}
           <a class="logo-footer" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid mb-4" width="50%" src="{{ .Site.Params.footer_image | relURL }}" alt="{{ .Site.Title }}"></a>
+          {{ end }}
           <ul class="list-unstyled">
             {{ with $data.homepage.footer }}
             {{ if .content }}
