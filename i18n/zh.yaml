@@ -189,3 +189,6 @@
 
 - id: blog_subscribe
   translation: "博客订阅"
+
+- id: follow_me
+  translation: "关注我"

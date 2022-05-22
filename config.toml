@@ -16,7 +16,7 @@ disableLanguages = [] # desable language from here
 pygmentsUseClasses=true
 
 [outputs]
-home = ["HTML", "RSS", "JSON", "Algolia"]
+home = ["HTML", "RSS", "Algolia"]
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -70,8 +70,7 @@ link = "plugins/hex_md5/hex_md5.js"
 
 #################### default parameters ################################
 [params]
-logo = "images/jimmysong-logo.png"
-footer_image = "images/logo.png"
+logo = "images/logo.svg"
 # Meta data
 description = "宋净超（Jimmy Song）的个人博客"
 author = "Jimmy Song"

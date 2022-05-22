@@ -186,3 +186,6 @@
 
 - id: blog_subscribe
   translation: "Blog Subscribe"
+
+- id: follow_me
+  translation: "Follow Me"
