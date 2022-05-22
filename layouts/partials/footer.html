@@ -14,7 +14,7 @@
             <li class="mb-4 text-color">{{ .content | markdownify }}</li>
             {{ end }}
             {{ if .footer_image }}
-            <li class="mb-4"><img src="{{ .footer_image | relURL }}" width="128px"></li>
+            <li class="mb-4"><img src="{{ .footer_image | relURL }}" width="128px" alt="footer image"></li>
             {{ end }}
             <!-- newsletter -->
             {{ if .subscribe_enable }}
