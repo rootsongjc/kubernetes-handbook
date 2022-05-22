@@ -5,7 +5,7 @@
   {{ "<!-- post-item -->" | safeHTML }}
   {{ range . }}
   <div class="media border-bottom border-color pb-3 mb-3">
-    <a href="{{ .Permalink | relURL }}"><img class="mr-3 post-thumb-sm" src="{{ .Params.Image | relURL }}"></a>
+    <a href="{{ .Permalink | relURL }}"><img class="mr-3 post-thumb-sm" src="{{ .Params.Image | relURL }}" alt="blog banner"></a>
     <div class="media-body">
       <a href="{{ .Permalink | relURL }}">
         <h5 class="mt-0">{{ .Title }}</h5>

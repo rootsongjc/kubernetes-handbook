@@ -10,7 +10,7 @@ aliases: "/posts/open-source-cla"
 image: "images/banner/sdd.jpg"
 ---
 
-今天给大家分享的是《软件定义交付宣言》，该宣言发出已经有一周多时间了，目前该宣言的官方网站（<https://sdd-manifesto.org/>）还在联署签名中。
+今天给大家分享的是《软件定义交付宣言》，该宣言发出已经有一周多时间了，目前该宣言的官方网站（`https://sdd-manifesto.org/` 已停止维护）还在联署签名中。
 
 云原生通过不可变基础设施与声明式配置，作为了软件定义交付的基础，再假以持续交付工具可以极大的提高软件交付效率，本宣言的起草者中包含众多云原生理念的鉴定拥护者如 Kenny Bastani、Matt Stine 等。
 

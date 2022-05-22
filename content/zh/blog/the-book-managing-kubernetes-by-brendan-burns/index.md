@@ -21,7 +21,7 @@ image: "images/banner/managing-kubernetes.jpg"
 英文电子版 PDF 下载，请翻页面底部关注`云原生应用架构`公众号并在后台回复`管理Kubernetes`即可获得下载地址。
 
 
-Kubernetes 项目的另外两位联合创始人目前都就职在 [Heptio](https://heptio.com)，该公司于 2018 年 11 月 6 日被 VMWare 收购，详见[Kubernetes两位联合创始人创办的Heptio公司被VMWare收购](https://mp.weixin.qq.com/s/8_DDCOAk1spYHPB7LsLe5Q)。
+Kubernetes 项目的另外两位联合创始人目前都就职在 Heptio，该公司于 2018 年 11 月 6 日被 VMWare 收购，详见[Kubernetes两位联合创始人创办的Heptio公司被VMWare收购](https://mp.weixin.qq.com/s/8_DDCOAk1spYHPB7LsLe5Q)。
 
 ### 个人评论
 
