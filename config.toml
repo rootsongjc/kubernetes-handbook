@@ -239,15 +239,15 @@ URL = "https://tetrate.io/?jimmysong"
 
 [[menu.book]]
 name = "Kubernetes Handbook"
-URL = "/kubernetes-handbook/"
+URL = "/docs/kubernetes-handbook/"
 
 [[menu.book]]
 name = "Istio Handbook"
-URL = "/istio-handbook/"
+URL = "/docs/istio-handbook/"
 
 [[menu.book]]
 name = "Envoy Handbook"
-URL = "/envoy-handbook/"
+URL = "/docs/envoy-handbook/"
 
 [[menu.book]]
 name = "Cloud Native Bible"
@@ -270,7 +270,7 @@ top_header_content = "一站式云原生资料库上线，[前往浏览](https:/
 [[Languages.zh.menu.main]]
 name = "关于"
 URL = "about"
-weight = 1
+weight = 9
 
 [[Languages.zh.menu.main]]
 name = "博客"
@@ -283,7 +283,7 @@ URL = "https://jimmysong.io/docs/"
 weight = 3
 
 [[Languages.zh.menu.main]]
-name = "翻译"
+name = "译文"
 URL = "https://jimmysong.io/docs/translation/"
 weight = 4
 
@@ -330,16 +330,16 @@ URL = "https://tetrate.io/?jimmysong"
 # book
 
 [[Languages.zh.menu.book]]
-name = "Kubernetes 中文指南"
-URL = "/kubernetes-handbook/"
+name = "Kubernetes 基础教程"
+URL = "https://jimmysong.io/docs/kubernetes-handbook/"
 
 [[Languages.zh.menu.book]]
-name = "Istio 服务网格"
-URL = "/istio-handbook/"
+name = "Istio 基础教程"
+URL = "https://jimmysong.io/docs/istio-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "Envoy 基础教程"
-URL = "/envoy-handbook/"
+URL = "https://jimmysong.io/docs/envoy-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "云原生宝典"
