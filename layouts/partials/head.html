@@ -34,11 +34,20 @@
   <meta name="twitter:creator" content="@jimmysongio" />
   <meta property="og:url" content="{{ with .Permalink }}{{ . }}{{ end }}" />
   <meta property="og:title" content="{{ .Title }}" />
+  <meta property="twitter:title" content="{{ .Title }}" />
+  {{ if .Description }}
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ end }}" />
+  <meta property="twitter:description" content="{{ with .Description}}{{ . }}{{ end }}" />
+  {{ else }}
+  <meta property="og:description" content="{{ .Site.Params.description }}" />
+  <meta property="twitter:description" content="{{ .Site.Params.description }}" />
+  {{ end }}
   {{ if .Params.image }}
   <meta property="og:image" content="{{ with .Params.image }}{{.| absURL}}{{ end }}" />
+  <meta property="twitter:image" content="{{ with .Params.image }}{{.| absURL}}{{ end }}" />
   {{ else }}
   <meta property="og:image" content="{{ `images/favicon.png` | absURL }}">
+  <meta property="twitter:image" content="{{ `images/favicon.png` | absURL }}">
   {{ end }}
   <!-- Google AdSense -->
   {{ if .Site.Params.enableAdSense }}
