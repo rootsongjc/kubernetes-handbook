@@ -24,9 +24,6 @@
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
   <link rel="icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
-
-  <meta property="og:image" content="{{ `images/favicon.png` | absURL }}">
-
   <link href='/opensearchdescription.xml' rel='search' title='Content search' type='application/opensearchdescription+xml'/>
 
   {{ "<!--Algolia-->" | safeHTML }}
@@ -38,7 +35,11 @@
   <meta property="og:url" content="{{ with .Permalink }}{{ . }}{{ end }}" />
   <meta property="og:title" content="{{ .Title }}" />
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ end }}" />
+  {{ if .Params.image }}
   <meta property="og:image" content="{{ with .Params.image }}{{.| absURL}}{{ end }}" />
+  {{ else }}
+  <meta property="og:image" content="{{ `images/favicon.png` | absURL }}">
+  {{ end }}
   <!-- Google AdSense -->
   {{ if .Site.Params.enableAdSense }}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029167986768912"
