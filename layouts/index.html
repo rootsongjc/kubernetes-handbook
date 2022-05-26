@@ -70,7 +70,7 @@
                     <div class="border-top w-100 border-primary d-none d-sm-block"></div>
                     {{ if .button.enable }} {{ with .button }}
                     <div>
-                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">{{ .label }}</a> {{ end }}
+                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block" target="_blank" rel="noopener">{{ .label }}</a> {{ end }}
                     </div>
                     {{ end }}
                 </div>
@@ -92,7 +92,7 @@
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">{{ .label }}</a>
+                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block" target="_blank" rel="noopener">{{ .label }}</a>
                     </div>
                 </div>
                 {{ end }}
@@ -149,7 +149,7 @@
                 <h6 class="text-white font-secondary mb-0">{{ .subtitle | markdownify }}</h6>
                 <h2 class="section-title text-white">{{ .title | markdownify }}</h2>
                 {{ if .button.enable }} {{ with .button }}
-                <a href="{{ .link | relLangURL }}" class="btn btn-secondary">{{ .label }}</a> {{ end }} {{ end }}
+                <a href="{{ .link | relLangURL }}" class="btn btn-secondary" target="_blank" rel="noopener">{{ .label }}</a> {{ end }} {{ end }}
             </div>
         </div>
     </div>
