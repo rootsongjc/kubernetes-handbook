@@ -140,9 +140,9 @@ aliases:
 
 云原生资料库地址：<https://jimmysong.io/docs/>
 
-云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com/?utm_campaign=poweredby) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/docs>
+云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/docs>
 
-同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](/docs/#portfolio)中。
+同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](/docs/#books)中。
 
 ### 云原生资料库定位
 
