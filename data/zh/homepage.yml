@@ -12,7 +12,7 @@ slider:
       button:
         enable : true
         label : "查看书目"
-        link : "https://jimmysong.io/docs/"
+        link : "https://lib.jimmysong.io/"
 
     # slider item loop
     - title : "欢迎加入云原生社区，独立第三方云原生终端用户社区"
@@ -43,7 +43,7 @@ banner_feature:
   button:
     enable : true
     label : "点击进入"
-    link : "https://jimmysong.io/docs/"
+    link : "https://lib.jimmysong.io/"
   image : "/images/banner/cloud-landscape-zh.jpg"
   feature_item:
     # feature item loop
@@ -133,12 +133,12 @@ funfacts:
     # funfact item loop
     - name : "出版图书"
       count : "7"
-      link : "https://jimmysong.io/docs/#books"
+      link : "https://lib.jimmysong.io/#books"
 
     # funfact item loop
     - name : "举办活动"
       count : "19"
-      link : "/docs/event/"
+      link : "https://lib.jimmysong.io/event/"
 
     # funfact item loop
     - name : "社区直播"
