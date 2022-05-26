@@ -4,15 +4,15 @@ slider:
   bg_image : "/images/banner/kubecon-2019-shanghai.webp"
   slider_item:
     # slider item loop
-    - title : "一站式云原生资料库"
-      content : "云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布，其中的精华和关联内容将通过该项目梳理成《云原生宝典》。"
+    - title : "云原生资料库上线"
+      content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布。"
       animation_in : "left"
       animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "查看书目"
-        link : "https://lib.jimmysong.io/"
+        link : "https://lib.jimmysong.io"
 
     # slider item loop
     - title : "欢迎加入云原生社区，独立第三方云原生终端用户社区"
