@@ -195,12 +195,12 @@ weight = 2
 
 [[menu.main]]
 name = "Book"
-URL = "https://jimmysong.io/docs/"
+URL = "https://lib.jimmysong.io"
 weight = 3
 
 [[menu.main]]
 name = "Event"
-URL = "https://jimmysong.io/docs/event/"
+URL = "https://lib.jimmysong.io/event/"
 weight = 4
 
 [[menu.main]]
@@ -239,19 +239,19 @@ URL = "https://tetrate.io/?jimmysong"
 
 [[menu.book]]
 name = "Kubernetes Handbook"
-URL = "/docs/kubernetes-handbook/"
+URL = "https://lib.jimmysong.io/kubernetes-handbook/"
 
 [[menu.book]]
 name = "Istio Handbook"
-URL = "/docs/istio-handbook/"
+URL = "https://lib.jimmysong.io/istio-handbook/"
 
 [[menu.book]]
 name = "Envoy Handbook"
-URL = "/docs/envoy-handbook/"
+URL = "https://lib.jimmysong.io/envoy-handbook/"
 
 [[menu.book]]
 name = "Cloud Native Bible"
-URL = "/docs/cloud-native/"
+URL = "https://lib.jimmysong.io/cloud-native/"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -264,7 +264,7 @@ title = "Jimmy Song - 云原生"
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
 # top header
 top_header = false
-top_header_content = "一站式云原生资料库上线，[前往浏览](https://jimmysong.io/docs/)"
+top_header_content = "一站式云原生资料库上线，[前往浏览](https://lib.jimmysong.io/)"
 
 # main menu
 [[Languages.zh.menu.main]]
@@ -279,12 +279,12 @@ weight = 2
 
 [[Languages.zh.menu.main]]
 name = "图书"
-URL = "https://jimmysong.io/docs/"
+URL = "https://lib.jimmysong.io/"
 weight = 3
 
 [[Languages.zh.menu.main]]
 name = "译文"
-URL = "https://jimmysong.io/docs/translation/"
+URL = "https://lib.jimmysong.io/translation/"
 weight = 4
 
 [[Languages.zh.menu.main]]
@@ -294,7 +294,7 @@ weight = 5
 
 [[Languages.zh.menu.main]]
 name = "活动"
-URL = "https://jimmysong.io/docs/event/"
+URL = "https://lib.jimmysong.io/event/"
 weight = 6
 
 [[Languages.zh.menu.main]]
@@ -317,7 +317,7 @@ URL = "https://space.bilibili.com/515485124"
 
 [[Languages.zh.menu.footer]]
 name = "云原生资料库"
-URL = "https://jimmysong.io/docs/"
+URL = "https://lib.jimmysong.io"
 
 [[Languages.zh.menu.footer]]
 name = "云原生社区（中国）"
@@ -331,19 +331,19 @@ URL = "https://tetrate.io/?jimmysong"
 
 [[Languages.zh.menu.book]]
 name = "Kubernetes 基础教程"
-URL = "https://jimmysong.io/docs/kubernetes-handbook/"
+URL = "https://lib.jimmysong.io/kubernetes-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "Istio 基础教程"
-URL = "https://jimmysong.io/docs/istio-handbook/"
+URL = "https://lib.jimmysong.io/istio-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "Envoy 基础教程"
-URL = "https://jimmysong.io/docs/envoy-handbook/"
+URL = "https://lib.jimmysong.io/envoy-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "云原生宝典"
-URL = "https://jimmysong.io/docs/cloud-native/"
+URL = "https://lib.jimmysong.io/cloud-native/"
 
 [markup]
   [markup.highlight]

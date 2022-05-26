@@ -138,14 +138,14 @@ aliases:
 - "/event/sofastack-cloud-native-workshop"
 ---
 
-云原生资料库地址：<https://jimmysong.io/docs/>
+云原生资料库地址：<https://lib.jimmysong.io>
 
-云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/docs>
+云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/cloud-native-library>
 
-同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](/docs/#books)中。
+同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](https://lib.jimmysong.io/#books)中。
 
 ### 云原生资料库定位
 
 云原生资料库收集了笔者自 2017 年以来的发表和翻译的云原生相关图书、资料等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续保存在原仓库中，但不再继续维护。
 
-另外本站**活动**栏目也进行了改版，迁移到了[新的主题页面](/docs/event/)。
+另外本站**活动**栏目也进行了改版，迁移到了[新的主题页面](https://lib.jimmysong.io/event/)。
