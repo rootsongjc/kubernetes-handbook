@@ -9,22 +9,22 @@ image: "images/about/jimmysong-xj.webp"
 description : "Jimmy Song's profile."
 ---
 
-Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder. He is an outstanding translator, author and producer of PHEI.  Former cloud native advocate and head of OSS office at Ant Group. Early adopters and evangelist of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com)(Ant Financial).
+Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder. He is an outstanding translator, author and producer of PHEI.  Former cloud native advocate and head of OSS office at Ant Group. Early adopters and evangelist of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com).
 
 ### Publications
 
-Jimmy Song has published several books since 2017, see the [book page](/en/book) for details .
+Jimmy Song has published several books since 2017, see the [book page](https://lib.jimmysong.io) for details .
 
 **Copyright**
 
-- [Future Architecture - From SOA to Cloud Native, Zhang Liang,Wu Sheng, Ao Xiaojian, Song Jingchao, 2019.04](/en/book/future-architecture/)
+- [Future Architecture - From SOA to Cloud Native, Zhang Liang,Wu Sheng, Ao Xiaojian, Song Jingchao, 2019.04](https://lib.jimmysong.io/book/future-architecture/)
 
 **Translation**
 
-- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React, 2017.08](/en/book/cloud-native-go)
-- [Cloud Native Python - Build cloud native applications with Python and React, 2018.07](/en/book/cloud-native-python/)
-- [Cloud Native Java - Build cloud native applications with Java, 2018.07](/en/book/cloud-native-java)
-- [Cloud Native Patterns, 2020.08](/en/book/cloud-native-patterns)
+- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React, 2017.08](https://lib.jimmysong.io/book/cloud-native-go)
+- [Cloud Native Python - Build cloud native applications with Python and React, 2018.07](https://lib.jimmysong.io/book/cloud-native-python/)
+- [Cloud Native Java - Build cloud native applications with Java, 2018.07](https://lib.jimmysong.io/book/cloud-native-java)
+- [Cloud Native Patterns, 2020.08](https://lib.jimmysong.io/book/cloud-native-patterns)
 
 **Reviewed**
 
