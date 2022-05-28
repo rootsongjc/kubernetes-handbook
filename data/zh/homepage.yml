@@ -161,7 +161,6 @@ blog:
 ############################ footer ###############################
 footer:
   content : "扫码关注我的微信公众号"
-  image: "/images/servicemesher-wechat.webp"
   footer_image: "/images/servicemesher-wechat.webp"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
