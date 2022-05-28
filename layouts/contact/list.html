@@ -22,8 +22,10 @@
         {{ .Content }}
         {{ with $data.homepage.footer }}
         <img src="{{ .image | relURL }}" width="128px" alt="img">
+        <!--
         <a href="mailto:{{ .Site.Params.email }}" class="mb-5 text-color h5 d-block">{{ .email }}</a>
         <p>{{ .address | markdownify }}</p>
+        -->
         {{ end }}
       </div>
     </div>

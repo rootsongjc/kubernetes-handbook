@@ -78,8 +78,8 @@ author = "Jimmy Song"
 address = "Beijing, China"
 email = "jimmysong@jimmysong.io"
 wechat = "jimmysongio"
-wechatCode = "/images/jimmysong-wechat-qr-code.webp"
-twitterCode = "/images/jimmysong-wechat-qr-code.webp"
+wechatCode = "/images/servicemesher-wechat.webp"
+twitterCode = "/images/servicemesher-wechat.webp"
 # contact form action
 contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with https://formspree.io
 # Google Analitycs
@@ -152,11 +152,6 @@ link = "https://github.com/rootsongjc"
 title = "linkedin"
 icon = "fa-linkedin"
 link = "https://linkedin.com/in/jimmysongio"
-
-[[params.social]]
-title = "WeChat"
-icon = "fa-weixin"
-link = "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
 
 [[params.social]]
 title = "mail"
@@ -342,7 +337,7 @@ name = "Envoy 基础教程"
 URL = "https://lib.jimmysong.io/envoy-handbook/"
 
 [[Languages.zh.menu.book]]
-name = "云原生宝典"
+name = "云原生导览"
 URL = "https://lib.jimmysong.io/cloud-native/"
 
 [markup]
