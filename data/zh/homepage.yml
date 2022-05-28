@@ -160,11 +160,11 @@ blog:
 
 ############################ footer ###############################
 footer:
-  content : "扫码添加微信（请备注来意）"
-  image: "/images/jimmysong-wechat-qr-code.webp"
-  footer_image: "/images/jimmysong-wechat-qr-code.webp"
+  content : "扫码关注我的微信公众号"
+  image: "/images/servicemesher-wechat.webp"
+  footer_image: "/images/servicemesher-wechat.webp"
   address : "中国，北京"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false
-  button_link: "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
+  button_link: "/contact"
   button_title: "订阅"

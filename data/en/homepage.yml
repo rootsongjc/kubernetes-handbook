@@ -159,7 +159,7 @@ blog:
 
 ############################# footer ##############################
 footer:
-  content : "Cloud Native | Open Source | Community"
+  content : "Fellow me on twitter"
   button_link : "https://twitter.com/jimmysongio"
   image : "images/jimmysong-twitter-qr-code.webp"
   footer_image : "images/jimmysong-twitter-qr-code.webp"
