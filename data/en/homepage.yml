@@ -16,8 +16,8 @@ slider:
 
     # slider item loop
     - title : "Cloud Native, Open Source and Community"
-      animation_in : "left"
-      animation_out : "right"
+      animation_in : "up"
+      animation_out : "up"
       content: "Jimmy Song is the founder of Cloud Native Community and has authored or translated several books on cloud native since 2016. He is committed to promoting cloud native technologies and trying to build a developer ecosystem based on containers, Kubernetes, Service Mesh, and Serverless in order to help Chinese developers get involved in the global cloud native trend. Cloud Native Community he's assembled covers almost all the stalwarts of cloud native in China, join the community and walk alongside them!"
       # available animation : left, right, up, down
       button:
@@ -28,8 +28,8 @@ slider:
     # slider item loop
     - title : "Start your Cloud Native journey"
       content : "Cloud Native is a behavior and design philosophy. At its essence, any behavior or approach that improves resource utilization and application delivery efficiency in the cloud is Cloud Native. The history of cloud computing is a history of Cloud Native biochemistry. Kubernetes kicked off the prelude of cloud native 1.0, and the emergence of Istio, a service mesh, led the way for microservices in the post-Kubernetes era. The re-emergence of serverless makes cloud native move from the infrastructure layer to the application architecture layer, and we are now in a new era of cloud native."
-      animation_in : "left"
-      animation_out : "right"
+      animation_in : "up"
+      animation_out : "up"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -40,11 +40,11 @@ slider:
 banner_feature:
   enable : true
   title: "Cloud Native All-in-one"
-  link: "https://jimmysong.io/docs/"
+  link: "https://lib.jimmysong.io"
   button:
     enable : true
     label : "Learn"
-    link : "https://jimmysong.io/docs/"
+    link : "https://lib.jimmysong.io"
   image : "/images/banner/cloud-landscape-en.jpg"
   feature_item:
     # feature item loop
@@ -130,12 +130,12 @@ funfacts:
     # funfact item loop
     - name : "Published Books"
       count : "7"
-      link : "https://jimmysong.io/docs/#books"
+      link : "https://lib.jimmysong.io/#books"
 
     # funfact item loop
     - name : "Hosted Events"
       count : "19"
-      link: "https://jimmysong.io/docs/event/"
+      link: "https://lib.jimmysong.io/event/"
 
     # funfact item loop
     - name : "Live Shows"

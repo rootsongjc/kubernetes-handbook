@@ -5,31 +5,31 @@ slider:
   slider_item:
     # slider item loop
     - title : "云原生资料库上线"
-      content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。原有的资料会继续通过 GitBook 的形式发布。"
-      animation_in : "left"
-      animation_out : "right"
+      content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。"
+      animation_in : "up"
+      animation_out : "up"
       # available animation : left, right, up, down
       button:
         enable : true
-        label : "查看书目"
+        label : "查看资料"
         link : "https://lib.jimmysong.io"
 
     # slider item loop
-    - title : "欢迎加入云原生社区，独立第三方云原生终端用户社区"
-      animation_in : "left"
-      animation_out : "right"
-      content: "宋净超（Jimmy Song）是云原生社区创始人，这里是他的个人博客。从 2016 年起，他参与撰写和翻译了多本云原生领域书籍，他致力于构建中国最具影响力的云原生社区，打造以容器、Kubernetes、Service Mesh 和 Serverless 等为基础的云原生技术体系。他所组织的云原生社区几乎覆盖了中国云原生领域的所有中坚力量，加入社区与他们并肩同行！"
+    - title : "云原生社区，独立第三方云原生终端用户社区"
+      animation_in : "up"
+      animation_out : "up"
+      content: "云原生社区成立于 2020 年 5 月 12 日，始于 Jimmy 2016 年开始创建的 Kubernetes & 云原生实战群。云原生社区是一个中立的云原生终端用户社区，旨在推广云原生技术，构建开发者生态。"
       # available animation : left, right, up, down
       button:
         enable : true
         label : "加入社区"
-        link : "https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg"
+        link : "https://mp.weixin.qq.com/s/ppDxLapuFwo3isEpg3zfUQ"
 
     # slider item loop
     - title : "开启云原生之旅"
       content : "云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生 1.0 的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。"
-      animation_in : "left"
-      animation_out : "right"
+      animation_in : "up"
+      animation_out : "up"
       # available animation : left, right, up, down
       button:
         enable : true

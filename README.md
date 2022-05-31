@@ -12,4 +12,4 @@ The website of [jimmysong.io](https://jimmysong.io) is powder by Hugo version v0
 - Primary color: `#0a55a7`
 - CI: GitHub Action
 
-For the Cloud Native Public Library, please visit [rootsongjc/docs](https://github.com/rootsongjc/docs/).
+For the Cloud Native Library, please visit [rootsongjc/cloud-native-library](https://github.com/rootsongjc/cloud-native-library/).
