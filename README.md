@@ -1,6 +1,6 @@
-# Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册
+# Kubernetes 中文指南/云原生应用架构实战手册
 
-> 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，Serverless 的兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。—— [Jimmy Song](https://jimmysong.io)
+**注意：本手册中 Kubernetes 相关内容已迁移到云原生资料库中的 [《Kubernetes 基础教程》](https://lib.jimmysong.io/kubernetes-handbook)，本手册不再继续维护，更多云原生内容请访问 [云原生资料库](https://lib.jimmysong.io)。**
 
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/note/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
@@ -17,13 +17,12 @@ Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用
 </p>
 <p align="center">
   <a href="https://jimmysong.io/kubernetes-handbook/">
-    <img src="cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song (宋净超）">
+    <img src="images/cover-thumbnail.jpg" title="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song（宋净超）" alt="Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实战手册 by Jimmy Song (宋净超）">
   </a>
 </p>
 
-Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，其后经过不断完善。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[服务网格](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
 
-更多云原生内容请访问[云原生资料库](https://lib.jimmysong.io)。
+Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，其后经过不断完善。写作本书的过程中，笔者记录了从零开始学习和使用 Kubernetes 的历程，着重于经验总结和资料分享，亦有 Kubernetes 核心概念解析，希望能够帮助大家少走弯路，为大家介绍 Kubernetes 周边生态，如微服务、DevOps、大数据应用、[服务网格](https://jimmysong.io/blog/what-is-a-service-mesh/)、云原生应用、Serverless 等领域。
 
 ### 开始之前
 
@@ -81,11 +80,11 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 ## 云原生社区
 
 <p align="center">
-  <a href="https://cloudnative.to">
-    <img src="./images/github-banner.jpg" alt="加入云原生社区" title="加入云原生社区">
+  <a href="https://mp.weixin.qq.com/s/ppDxLapuFwo3isEpg3zfUQ">
+    <img src="./images/wechat.jpg" alt="加入云原生社区" title="加入云原生社区">
   </a>
 </p>
 
 云原生社区是中国最大的独立第三方云原生终端用户和泛开发者社区，由 CNCF 大使、开源意见领袖共同发起成立于 2020 年 5 月 12 日，提供云原生专业资讯，促进云原生产业发展。
 
-官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，[申请加入社区](https://mp.weixin.qq.com/s/vWlSdzz2MNdXRr0sd2-LFg)。
+官方网站 <https://cloudnative.to>，关注云原生社区微信公众号，[申请加入社区](https://mp.weixin.qq.com/s/ppDxLapuFwo3isEpg3zfUQ)。

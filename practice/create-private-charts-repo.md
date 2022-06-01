@@ -133,5 +133,4 @@ $ helm install monocular/monocular
 ## 参考
 
 - [Monocular UI - github.com](https://github.com/kubernetes-helm/monocular)
-- [Speed deployment on Kubernetes with Helm Chart – Quick YAML example from scratch - ibm.com](https://www.ibm.com/blogs/bluemix/2017/10/quick-example-helm-chart-for-kubernetes/)
 - [Using a private github repo as helm chart repo (https access) - medium.com](https://medium.com/@kavehmz/using-a-private-github-repo-as-helm-chart-repo-https-access-95629b2af27c)
