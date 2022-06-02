@@ -17,6 +17,8 @@ image: "/images/banner/oss-insight.webp"
 - 编码活力，如每月 PR 数量、代码行数变化
 - 分类趋势排名
 
+## 网站截图
+
 以下图片来自 [OSSInsight 博客](https://ossinsight.io/blog/explore-deep-in-4.6-billion-github-events/)，展示了该网站的一些功能。
 
 ![Kubernetes 和 Moby 的标记 star 的人员地理分布](https://tva1.sinaimg.cn/large/e6c9d24ely1h2trup1v5bj20k00c5my9.jpg)
@@ -25,7 +27,7 @@ image: "/images/banner/oss-insight.webp"
 
 ![分类排名](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts5cig5kj21mw0u00xv.jpg)
 
-你可以在首页输入一个 GitHub 仓库，查看该仓库的一些洞察信息。我查看了我的 `rootsongjc/kubernetes-handbook` 之后，发现它还以获得关注者的公司信息，如下图。
+你可以在首页输入一个 GitHub 仓库，查看该仓库的一些洞察信息。我查看了我的 [`rootsongjc/kubernetes-handbook`](https://github.com/rootsongjc/kubernetes-handbook/) 之后，发现它还以获得关注者的公司信息，如下图。
 
 ![rootsongjc/kubernetes-handbook 关注者的公司分布](https://tva1.sinaimg.cn/large/e6c9d24ely1h2trz8bpqfj21di0u0gq4.jpg)
 
@@ -33,7 +35,9 @@ image: "/images/banner/oss-insight.webp"
 
 ![DevStats 页面](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts2o2rirj21mw0u00zv.jpg)
 
-OSSInsight 也可以算是 CHAOSS 类软件的一种，比如 Linux 基金会下的 CHAOSS （Community Health Analytics Open Source Software）工作组有一个开源羡慕 GrimoireLab 就是做软件开发分析的。
+## 评论
+
+OSSInsight 也可以算是 CHAOSS 类软件的一种，比如 Linux 基金会下的 CHAOSS （Community Health Analytics Open Source Software）工作组有一个开源项目 [GrimoireLab](https://chaoss.github.io/grimoirelab/) 就是做软件开发分析的。
 
 ![GrimoireLab 网站页面](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts7e6aiuj21ml0u078o.jpg)
 
