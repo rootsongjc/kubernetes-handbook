@@ -258,8 +258,8 @@ title = "Jimmy Song - 宋净超的个人博客"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
 # top header
-top_header = false
-top_header_content = "一站式云原生资料库上线，[前往浏览](https://lib.jimmysong.io/)"
+top_header = true
+top_header_content = "📣 云原生资料库上线，原有 GitBook 已批量迁移，请[前往浏览](https://lib.jimmysong.io/)"
 
 # main menu
 [[Languages.zh.menu.main]]
