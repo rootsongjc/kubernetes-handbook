@@ -4,7 +4,7 @@ draft: false
 date: 2022-05-10T08:27:49+08:00
 description: "一站式云原生资料库，是对已发布资料的梳理。"
 type: "notice"
-link: "/docs/"
+link: "https://lib.jimmysong.io"
 image: "images/backgrounds/library.jpg"
 aliases:
 - "/book"
