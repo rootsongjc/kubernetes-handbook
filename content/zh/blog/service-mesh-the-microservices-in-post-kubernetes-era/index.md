@@ -2,14 +2,13 @@
 title: "Service Mesh——后 Kubernetes 时代的微服务"
 description: "本文是以前所写内容的重新修订并收录于 ServiceMesher 社区的 Istio Handbook 中，其他章节仍在编纂中。"
 date: 2020-04-01T11:56:04+08:00
+lastmod: 2022-06-06T11:56:04+08:00
 draft: false
 tags: ["istio"]
 categories: ["Service Mesh"]
 type: "post"
 image: "images/banner/era.webp"
 ---
-
-本文是以前所写内容的重新修订并收录于 ServiceMesher 社区的 [Istio Handbook](https://www.servicemesher.com/istio-handbook) 中，其他章节仍在编纂中。
 
 如果你刚听说 Service Mesh 不久，并试用过 [Istio](https://istio.io) 的话，那么你可能都会有下面几个疑问：
 
@@ -125,7 +124,7 @@ xDS 协议是由 [Envoy](https://envoyproxy.io/) 提出的，在 Envoy v2 版本
 
 Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前我们还需要先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](http://cloudnative.to/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
 
-![Envoy proxy 架构图](envoy-arch.png)
+![Envoy proxy 架构图](envoy-arch.jpg)
 
 ### 基本术语
 
