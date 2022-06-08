@@ -89,7 +89,7 @@ baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 search = true
 # Gitalk
 enableComment = true
-enableAdSense = true
+enableAdSense = false
 
 # Preloader
 [params.preloader]
