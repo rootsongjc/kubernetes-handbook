@@ -39,5 +39,6 @@ KataCoda 上的很多免费课程其实都有在 GitHub 上开源，只有有另
 
 - [Killercoda](https://killercoda.com/)
 - [CloudYuga](https://cloudyuga.guru/)
+- [Instruqt](https://instruqt.com/)
 
 关于 O'Reilly 关闭 KataCoda 你有什么想法，欢迎在下面留言评论。
