@@ -514,3 +514,12 @@ figcaption {
     font-size: 0.8em;
     font-weight: 500;
 }
+
+// footnotes
+.footnotes ol li:target {
+    scroll-margin-top: 98px;
+}
+
+.content sup:target{
+    scroll-margin-top: 98px;
+}
