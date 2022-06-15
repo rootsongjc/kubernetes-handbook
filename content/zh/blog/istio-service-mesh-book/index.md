@@ -11,7 +11,7 @@ image: "images/banner/istio-book.webp"
 
 ![云原生社区最新力作 —— 《深入理解 Istio》上市开售](istio-book.webp)
 
-2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已5年有余。在这5年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio图书出版领域，我国走在了世界的前列。
+2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已5年有余。在这5年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio 图书出版领域，我国走在了世界的前列。
 
 ![Istio 开源时间线](istio-open-source-history.jpg)
 
@@ -43,7 +43,7 @@ Envoy 创造的 xDS 协议被众多开源软件所支持，如 Istio、Linkerd�
 
 - Kubernetes 的本质是应用的生命周期管理，具体来说，就是应用的部署和管理（扩缩容、自 动恢复、发布）。
 - Kubernetes 为微服务提供了可扩展、高弹性的部署和管理平台。
-- 服务网格的基础是透明代理，先通过Sidecar 代理拦截微服务间的流量，再通过控制平面配置管理微服务的行为。如今，服务网格的部署模式也迎来了新的挑战，Sidecar 已经不是服务网格所必须的，基于 gRPC 的无代理的服务网格也在测试中。
+- 服务网格的基础是透明代理，先通过 sidecar 代理拦截微服务间的流量，再通过控制平面配置管理微服务的行为。如今，服务网格的部署模式也迎来了新的挑战，sidecar 已经不是服务网格所必须的，基于 gRPC 的无代理的服务网格也在测试中。
 - xDS 定义了服务网格配置的协议标准，目前基于 gRPC 的 xDS 也正在开发中。
 - 服务网格将流量管理从 Kubernetes 中解耦，服务网格内部的流量无须 kube-proxy 组件的支持， 通过接近微服务应用层的抽象，管理服务间的流量，实现安全性和可观察性功能。
 - 服务网格是对 Kubernetes 中 service 更上层的抽象，它的下一步是 Serverless，这也是Google 在 Istio 之后紧接着推出基于 Kubernetes 和 Istio 之上的 Knative 的原因。
@@ -70,9 +70,9 @@ Istio 在 1.5 版本后有了重大的架构变化，同时引入或改进了多
 
 {{<figure src="target-reader.jpg" alt="面向读者" class="mx-auto text-center" width="70%">}}
 
-目前，这本书已经在京东平台上线，要想了解更多有关Istio的相关知识，就来读一读这本《深入理解Isito：云原生服务网格进阶实战》吧！
+目前，这本书已经在京东平台上线，要想了解更多有关 Istio 的相关知识，就来读一读这本《深入理解 Isito：云原生服务网格进阶实战》吧！
 
-京东618，满100减50，扫码即购！
+京东 618，满 100 减 50，扫码即购！
 
 {{<figure src="qrcode.jpg" alt="购书二维码" class="mx-auto text-center" width="30%" link="https://item.jd.com/13200745.html" attr="[点此购买](https://item.jd.com/13200745.html)">}}
 
