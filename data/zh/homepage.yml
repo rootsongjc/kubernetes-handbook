@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "/images/banner/background.webp"
+  bg_image : "/images/backgrounds/11.webp"
   slider_item:
     # slider item loop
     - title : "云原生资料库上线"
