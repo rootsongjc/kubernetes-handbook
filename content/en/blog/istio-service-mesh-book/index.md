@@ -6,10 +6,10 @@ description: In-Depth Understanding of Istio - Advanced Practice of Cloud Native
 categories: ["Istio"]
 tags: ["Istio","Service Mesh"]
 type: "post"
-image: "images/banner/istio-book-en.webp"
+image: "images/banner/istio-book-en.jpg"
 ---
 
-![](istio-book-en.webp)
+![](book.jpg)
 
 It's been more than 5 years since Google, IBM, and Lyft unveiled the Istio open source project in May 2017. The Istio project has developed from a seed to a tall tree in these years. Many domestic books on the Istio service mesh were launched in the two years following the release of Istio 1.0 in 2018. My country is at the forefront of the world in the field of Istio book publishing.
 
