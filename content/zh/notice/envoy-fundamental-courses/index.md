@@ -2,7 +2,7 @@
 title: "Tetrate 推出免费的 Envoy 基础教程"
 draft: false
 date: 2022-02-07T09:27:49+08:00
-description: "本教程有企业级服务网格提供商 Tetrate 出品。"
+description: "本教程由企业级服务网格提供商 Tetrate 出品。"
 type: "notice"
 link: "https://academy.tetrate.io/courses/envoy-fundamentals"
 image: "images/backgrounds/envoy-logo.png"
