@@ -1,5 +1,5 @@
 ---
-title: "In-Depth Understanding of Isito: Announcing the Publication of a New Istio Book"
+title: "In-Depth Understanding of Istio: Announcing the Publication of a New Istio Book"
 draft: false
 date: 2022-06-15T20:27:49+08:00
 description: In-Depth Understanding of Istio - Advanced Practice of Cloud Native Service Mesh, the book is officially on sale!
