@@ -4,6 +4,15 @@ slider:
   bg_image : "/images/backgrounds/11.webp"
   slider_item:
     # slider item loop
+    - title : "《深入理解 Istio》出版啦"
+      content : "三年磨一剑，云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 编写，[京东有售](https://item.jd.com/13200745.html)!"
+      animation_in : "up"
+      animation_out : "up"
+      # available animation : left, right, up, down
+      button:
+        enable : true
+        label : "了解详情"
+        link : "/blog/istio-service-mesh-book"
     - title : "云原生资料库上线"
       content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。"
       animation_in : "up"
