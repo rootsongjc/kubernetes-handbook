@@ -6,10 +6,10 @@ description: "三年磨一剑，云原生社区著《深入理解 Istio —— �
 categories: ["Istio"]
 tags: ["Istio","图书","Service Mesh"]
 type: "post"
-image: "images/banner/istio-book.webp"
+image: "images/banner/istio-book.jpg"
 ---
 
-![云原生社区最新力作 —— 《深入理解 Istio》上市开售](istio-book.webp)
+![云原生社区最新力作 —— 《深入理解 Istio》上市开售](istio-book.jpg)
 
 2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已5年有余。在这5年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio 图书出版领域，我国走在了世界的前列。
 
