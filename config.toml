@@ -258,8 +258,8 @@ title = "Jimmy Song - 宋净超的个人博客"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
 # top header
-top_header = false
-top_header_content = "📣 云原生资料库上线，原有 GitBook 已批量迁移，请[前往浏览](https://lib.jimmysong.io/)"
+top_header = true
+top_header_content = "📣 云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 撰写，[京东有售](https://item.jd.com/13200745.html)！"
 
 # main menu
 [[Languages.zh.menu.main]]
