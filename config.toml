@@ -1,6 +1,6 @@
 ######################## default configuration ####################
 baseURL = "https://jimmysong.io"
-title = "Jimmy Song - Jimmy's Blog"
+title = "Jimmy Song's blog"
 # post pagination
 paginate = "10"
 # post excerpt
@@ -9,8 +9,6 @@ metaDataFormat = "yaml"
 hasCJKLanguage = true
 DefaultContentLanguage = "zh"
 gcs_engine_id="012737790962522169780:fd1izxsfgrs"
-# disqus short name
-#disqusShortname = "jimmysong" # get your shortname form here : https://disqus.com
 # disable language
 disableLanguages = [] # desable language from here
 pygmentsUseClasses=true
@@ -72,7 +70,7 @@ link = "plugins/hex_md5/hex_md5.js"
 [params]
 logo = "images/logo.svg"
 # Meta data
-description = "宋净超（Jimmy Song）的个人博客，分享对技术的理解，世界的看法，生活的感悟。"
+description = "宋净超（Jimmy Song）的个人博客， 专注于探索后 Kubernetes 时代的云原生新范式。"
 author = "Jimmy Song"
 # contact info
 address = "Beijing, China"
@@ -87,7 +85,6 @@ google_analitycs_id = "UA-93485976-1" # your id
 # Baidu tongji
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 search = true
-# Gitalk
 enableComment = true
 enableAdSense = false
 

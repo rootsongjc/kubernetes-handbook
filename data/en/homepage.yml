@@ -3,18 +3,6 @@ slider:
   enable : true
   bg_image : "images/backgrounds/11.webp"
   slider_item:
-    # slider item loop
-    # - title : "Cloud Native is eating the world"
-    #   content : "New technologies such as containers, Kubernetes, Service Mesh, and serverless have emerged endlessly. Cloud computing has developed into an application-centric cloud-native stage. The cloud on the enterprise is unstoppable. What should ordinary developers do?"
-    #   animation_in : "left"
-    #   animation_out : "right"
-    #   # available animation : left, right, up, down
-    #   button:
-    #     enable : true
-    #     label : "Learn"
-    #     link : "/book"
-
-    # slider item loop
     - title : "Cloud Native, Open Source and Community"
       animation_in : "up"
       animation_out : "up"
@@ -106,7 +94,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/success-story.webp"
+  bg_image : "images/backgrounds/books.webp"
   title : "Quick Start"
   content : "When we need to develop cloud native apps locally, 
   we prefer to have a distributed development environment that is ready to use and easy to customize, 
