@@ -353,11 +353,14 @@ textarea.form-control{
   }
 
   ol {
-    padding-left: 15px;
+    padding-left: 2rem;
     list-style-type: decimal;
 
     li {
-        margin-bottom: 2rem;
+        margin-bottom: 0.2rem;
+        p {
+            margin-bottom: 0.2rem;
+        }
     }
   }
 
@@ -368,6 +371,9 @@ textarea.form-control{
       position: relative;
       margin-bottom: 0.2rem;
       list-style-type: disc;
+      p {
+          margin-bottom: 0.2rem;
+      }
     }
   }
 
@@ -508,9 +514,9 @@ figcaption {
 
 // footnotes
 .footnotes ol li:target {
-    scroll-margin-top: 98px;
+    scroll-margin-top: 88px;
 }
 
 .content sup:target{
-    scroll-margin-top: 98px;
+    scroll-margin-top: 88px;
 }
