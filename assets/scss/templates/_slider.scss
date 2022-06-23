@@ -1,5 +1,11 @@
 .hero-section {
-  padding: 200px 0 152px;
+  padding: 200px 0 150px;
+}
+
+@media screen and (max-width: 600px) {
+ .hero-section{
+    padding: 120px 0 120px;
+  }
 }
 
 .hero-slider-item h1 {
