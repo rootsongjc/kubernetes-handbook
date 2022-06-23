@@ -55,7 +55,7 @@
 
           <!-- Language List -->
           {{ if .IsTranslated }}
-          <select class="nav-item m-2 border-0 m-auto" id="select-language" onchange="location = this.value;">
+          <li class="nav-item">
             {{ $siteLanguages := .Site.Languages}}
             {{ $pageLang := .Page.Lang}}
             {{ range .Page.AllTranslations }}
@@ -64,15 +64,13 @@
             {{ if eq $translation.Lang .Lang }}
             {{ $selected := false }}
             {{ if eq $pageLang .Lang}}
-            <option id="{{ $translation.Language }}" value="{{ $translation.Permalink | relURL }}" selected>{{ .LanguageName }}
-            </option>
             {{ else }}
-            <option id="{{ $translation.Language }}" value="{{ $translation.Permalink | relURL }}">{{ .LanguageName }}</option>
+            <a class="nav-link" href="{{ $translation.Permalink | relURL }}">{{ .LanguageName }}</a>
             {{ end }}
             {{ end }}
             {{ end }}
             {{ end }}
-          </select>
+          </li>
           {{ end }}
           {{ if .Site.Params.search }}
           {{ "<!-- search -->" | safeHTML }}

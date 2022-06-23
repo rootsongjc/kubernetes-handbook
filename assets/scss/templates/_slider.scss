@@ -1,7 +1,10 @@
 .hero-section {
-  padding: 250px 0 290px;
+  padding: 200px 0 152px;
 }
 
+.hero-slider-item h1 {
+    font-size: 35px;
+}
 .hero-slider {
 
   .prevArrow,
@@ -12,8 +15,8 @@
     padding: 15px;
     color: rgba($color: $white, $alpha: .5);
     border: 0;
-    font-size: 30px;
-    transition: all linear .2s;
+    font-size: 25px;
+    transition: all linear .1s;
     background: transparent;
 
     &:focus {
