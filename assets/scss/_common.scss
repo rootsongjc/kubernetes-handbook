@@ -520,3 +520,13 @@ figcaption {
 .content sup:target{
     scroll-margin-top: 88px;
 }
+
+@media screen and (max-width: 600px) {
+  .footnotes ol li:target {
+      scroll-margin-top: 0px;
+  }
+
+  .content sup:target{
+      scroll-margin-top: 0px;
+  }
+}
