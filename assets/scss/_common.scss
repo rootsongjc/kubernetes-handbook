@@ -348,33 +348,21 @@ textarea.form-control{
   }
 
   ol {
-    padding-left: 20px;
+    padding-left: 10px;
     list-style-type: decimal;
 
     li {
-        margin-bottom: 10px;
+        margin-bottom: 0.2rem;
     }
   }
 
   ul {
-    padding-left: 0;
+    padding-left: 10px;
 
     li {
       position: relative;
-      padding-left: 20px;
-      margin-bottom: 10px;
-      list-style-type: none;
-
-      &::before {
-        position: absolute;
-        content: "\e65d";
-        font-family: $icon-font;
-        font-size: 14px;
-        left: 0;
-        top: 1px;
-        color: $primary-color;
-        transition: .3s ease;
-      }
+      margin-bottom: 0.2rem;
+      list-style-type: disc;
     }
   }
 
