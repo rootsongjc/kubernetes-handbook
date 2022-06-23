@@ -1,0 +1,8 @@
+<div class="alert alert-{{ .Get 0 }}">
+  <div class="alert-title">
+      <p>{{ .Get 1 }}</p>
+  </div>
+  <div>
+    {{ .Inner | markdownify | emojify  }}
+  </div>
+</div>

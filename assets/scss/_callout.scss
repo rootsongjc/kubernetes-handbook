@@ -1,0 +1,53 @@
+// Callout styles for the Callout shortcode
+
+/* Style asides as Bootstrap alerts. */
+.article-style aside {
+  @extend .alert;
+}
+
+/* Asides use <p> block element whereas alerts use <div>. */
+.article-style aside p,
+div.alert > div {
+  position: relative;
+  display: block;
+  margin-top: 0;
+  line-height: 1.5rem;
+  margin-bottom: 0;
+}
+
+div.alert div > * {
+  margin-bottom: 0.5rem; /* Use smaller paragraph spacing than usual. */
+}
+
+div.alert div > :last-child {
+  margin-bottom: 0;
+}
+
+.article-style aside a,
+div.alert a {
+  text-decoration: none;
+}
+
+.article-style aside,
+.alert-note {
+  background-color: #f6fbfe;
+  border-color: #1976d2;
+}
+
+.alert-note p {
+  color: #12537e;
+}
+
+.alert-warning {
+  color: #cd0930;
+  background-color: #fff5f7;
+  border-color: #ff3860;
+}
+
+.alert-warning p {
+  color: #cd0930;
+}
+
+.alert-title p{
+    font-weight: 900;
+}
