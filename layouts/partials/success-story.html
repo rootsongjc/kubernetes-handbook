@@ -1,7 +1,7 @@
 {{ $data := index .Site.Data .Site.Language.Lang }}
 
 {{ with $data.homepage.success_story }}
-<section class="section bg-cover" data-background="{{ .bg_image | relURL }}">
+<section class="section overlay bg-cover" data-background="{{ .bg_image | relURL }}">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-sm-4 position-relative success-video">
