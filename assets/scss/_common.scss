@@ -232,9 +232,14 @@ a h4{
 
 /* page title */
 .page-title-section {
-  padding: 200px 0 80px;
+  padding: 200px 0 40px;
 }
 
+@media screen and (max-width: 600px) {
+  .page-title-section {
+  padding: 40px 0 25px;
+  }
+}
 .custom-breadcrumb {
   li {
     &.nasted {
