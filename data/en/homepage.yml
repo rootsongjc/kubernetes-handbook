@@ -27,7 +27,7 @@ slider:
 ############################### Banner feature ###############################
 banner_feature:
   enable : true
-  title: "Cloud Native All-in-one"
+  title: "Cloud Native"
   link: "https://lib.jimmysong.io"
   button:
     enable : true
