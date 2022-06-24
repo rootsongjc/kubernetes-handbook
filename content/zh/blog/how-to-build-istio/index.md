@@ -7,7 +7,7 @@ tags: ["istio"]
 categories: ["Istio"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/build-istio.webp"
+image: "images/banner/build-istio.jpg"
 ---
 
 本文将指导你如何在 macOS 上编译 Istio 二进制文件和 Docker 镜像。

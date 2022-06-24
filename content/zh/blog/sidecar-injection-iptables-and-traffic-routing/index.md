@@ -6,7 +6,7 @@ tags: ["istio","iptables","envoy","sidecar"]
 description: "本文基于 Istio 1.13 版本，介绍了 sidecar 模式及其优势 sidecar 如何注入到数据平面，Envoy 如何做流量劫持和路由转发的，包括 Inbound 流量和 Outbound 流量。"
 categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/istio-sidecar-iptables.webp"
+image: "images/banner/istio-sidecar-iptables.jpg"
 type: "post"
 ---
 
@@ -33,7 +33,7 @@ type: "post"
 
 请大家结合下图理解本文中的内容，本图基于 Istio 官方提供的 Bookinfo 示例绘制，展示的是 `reviews` Pod 的内部结构，包括 Linux Kernel 空间中的 iptables 规则、Sidecar 容器、应用容器。
 
-![Sidecar 流量劫持示意图](envoy-sidecar-traffic-interception-zh.jpg)
+![Sidecar 流量劫持示意图](istio-route-iptables.webp)
 
 `productpage` 访问 `reviews` Pod，入站流量处理过程对应于图示上的步骤：1、2、3、4、Envoy Inbound Handler、5、6、7、8、应用容器。
 
