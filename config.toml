@@ -238,7 +238,7 @@ languageName = "中文"
 languageCode = "zh"
 contentDir = "content/zh"
 home = "主页"
-title = "Jimmy Song - 宋净超的个人博客"
+title = "Jimmy Song - 专注于探索后 Kubernetes 时代的云原生新范式"
 # copyright
 copyright = "&copy; 2017-2022 Jimmy Song 保留所有权利"
 # top header
