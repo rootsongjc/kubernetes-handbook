@@ -6,7 +6,7 @@ description: "O'Reilly 宣布将于 6 月 15 日关闭在线学习网站 KataCod
 categories: ["其他"]
 tags: ["KataCoda"]
 type: "post"
-image: "images/banner/katacoda-rip.webp"
+image: "images/banner/katacoda-rip.jpg"
 ---
 
 {{<figure src="katacoda-logo.webp" class="mx-auto text-center">}}

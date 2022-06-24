@@ -6,7 +6,7 @@ description: "推荐一个 PingCAP 推出的 OSSInsight.io 网站，可以根据
 categories: ["其他"]
 tags: ["OSSInsight","GitHub"]
 type: "post"
-image: "/images/banner/oss-insight.webp"
+image: "/images/banner/oss-insight.jpg"
 ---
 
 不知道大家听说没有 PingCAP 推出的一个 OSSInsight.io 网站，可以根据 GitHub 上的事件，提供开源软件洞察，这个项目也开源在 [GitHub](https://github.com/pingcap/ossinsight) 上。它可以提供以下方面的洞察能力，有点类似于 Google Analytics、Trends：

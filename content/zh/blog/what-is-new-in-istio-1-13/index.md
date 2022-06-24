@@ -7,7 +7,7 @@ tags: ["istio","service mesh"]
 categories: ["istio"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/istio-113.webp"
+image: "images/banner/istio-113.jpg"
 ---
 
 2022 年 2 月 Istio 发布 [1.13.0](https://istio.io/latest/news/releases/1.13.x/announcing-1.13/) 和 [1.13.1](https://istio.io/latest/news/releases/1.13.x/announcing-1.13.1/)，这篇博客将想你介绍这两个版本中有哪些值得注意的新特性。
