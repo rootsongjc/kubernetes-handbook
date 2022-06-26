@@ -1,7 +1,7 @@
 ---
 title: "Zoom + OBS + B 站直播配置手册"
 description: "本文将指导你如何配置和使用 OBS + zoom在 Bilibili 上直播。"
-image: "/images/banner/bilibili-live.webp"
+image: "/images/banner/studio.jpg"
 categories: ["其他"]
 tags: ["直播","OBS"]
 date: 2021-05-25T22:22:00+08:00

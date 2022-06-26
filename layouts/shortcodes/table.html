@@ -1,0 +1,5 @@
+{{ $htmlTable := .Inner | markdownify }}
+{{ $htmlTable | safeHTML }}
+<figcaption class="text-center">
+    {{ .Get 0 | markdownify }}
+</figcaption>

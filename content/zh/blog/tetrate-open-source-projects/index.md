@@ -7,7 +7,7 @@ tags: ["tetrate"]
 categories: ["开源"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/tetrate-open-source.webp"
+image: "images/banner/open.jpg"
 ---
 
 [Tetrate](https://tetrate.io) 是企业级服务网格领域的主要玩家之一，是 Istio、Envoy 和 SkyWalking 开源项目的发起者或主要参与者。本文将向你介绍 Tetrate 发起的几个开源项目：

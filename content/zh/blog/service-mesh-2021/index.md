@@ -7,7 +7,7 @@ tags: ["service mesh"]
 categories: ["service mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/y2021.webp"
+image: "images/banner/y2021.jpg"
 ---
 
 随着服务网格架构理念的深入人心，它的适用场景也慢慢为众人所了解，社区中也不乏争论，甚至是质疑的声音。笔者以在云原生和服务网格社区中多年的观察，将从亲历者的角度总结服务网格在 2021 年的进展。因为当前在国内 Istio 几乎是服务网格的代名词，本文也将主要从 Istio 的技术和生态层面来解读服务网格在 2021 年的发展。
