@@ -1,7 +1,7 @@
 ---
 title: "How to debug microservices in Kubernetes with proxy, sidecar or service mesh?"
 description: "This article explains three patterns/tools for debugging microservices in Kubernetes and the changes brought by the introduction of Istio for debugging microservices."
-image: "/images/banner/scaled.jpg"
+image: "/images/banner/debug.jpg"
 categories: ["istio"]
 tags: ["istio","service mesh","telepresence","nocalhost"]
 date: 2021-07-05T22:22:00+08:00

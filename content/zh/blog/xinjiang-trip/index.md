@@ -7,7 +7,7 @@ tags: ["旅行"]
 categories: ["旅行"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/xinjiang.webp"
+image: "images/banner/xinjiang.jpg"
 ---
 
 ![在琼库什台村与哈萨克族村民在一起](xinjiang-hasake.webp)

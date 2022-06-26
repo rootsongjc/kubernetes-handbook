@@ -7,7 +7,7 @@ tags: ["文化","day2"]
 categories: ["文化"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/day2.jpg"
+image: "images/banner/laptop.jpg"
 ---
 
 在 IstioCon 2021 上，Istio 社区确定了 2021 年的社区的工作重点是 Day-2 Operation，很多人问我这个词是什么意思。我查了下中文互联网上，没有对这个词的解释，我在网上找到了一些解释，我发现大部分文章的源头都指向了这篇 [Defining Day-2 Operations](https://dzone.com/articles/defining-day-2-operations)。因此，在此我将问翻译一下，同时再加上一些我自己的见解。

@@ -6,7 +6,7 @@ tags: ["istio","service mesh","cloud native"]
 categories: ["Service Mesh"]
 description: "There is no shortage of debate in the community about the practicability of service mesh and Istio – here’s a list of common questions and concerns, and how to address them."
 type: "post"
-image: "images/banner/sm-debate.webp"
+image: "images/banner/talk.jpg"
 ---
 
 You can use Istio to do [multi-cluster management](https://www.tetrate.io/blog/multicluster-management-with-kubernetes-and-istio/), [API Gateway](https://www.tetrate.io/blog/istio-servicemesh-api-gateway/), and manage applications on Kubernetes or [virtual machines](https://www.tetrate.io/blog/istio-18-a-virtual-machine-integration-odyssey/). In my [last blog](https://www.tetrate.io/blog/why-is-service-mesh-a-necessary-part-of-cloud-native/), I talked about how service mesh is an integral part of cloud native applications. However, building infrastructure can be a big deal. There is no shortage of debate in the community about the practicability of service mesh and Istio– here’s a list of common questions and concerns, and how to address them.

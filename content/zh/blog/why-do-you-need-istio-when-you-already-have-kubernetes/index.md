@@ -4,7 +4,7 @@ date: 2021-04-07T08:27:17+08:00
 draft: false
 type: "post"
 categories: ["service mesh"]
-image: "/images/banner/istio-kubernetes.jpg"
+image: "/images/banner/demand.jpg"
 tags: ["kubernetes","istio","service mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
 description : "本文将带大家了解 Kubernetes 和 Istio 的内部工作原理。此外，我会介绍 Kubernetes 中的负载均衡方法，并解释为什么有了 Kubernetes 后可能还需要 Istio。"

@@ -6,7 +6,7 @@ draft: false
 tags: ["istio","sidecar","iptables"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/istio-iptables.webp"
+image: "images/banner/mirror.jpg"
 ---
 
 As we know that Istio uses iptables for traffic hijacking, where the iptables rule chains has one called ISTIO_OUTPUT, which contains the following rules.

@@ -1,7 +1,7 @@
 ---
 title: "如何调试 Kubernetes 中的微服务 ——proxy、sidecar 还是 service mesh？"
 description: "本文讲解了调试 Kubernetes 中微服务的三种模式/工具，以及 Istio 的引入为微服务的调试带来的变革。"
-image: "/images/banner/scaled.jpg"
+image: "/images/banner/debug.jpg"
 categories: ["istio"]
 tags: ["istio","service mesh","telepresence","nocalhost"]
 date: 2021-07-05T22:22:00+08:00

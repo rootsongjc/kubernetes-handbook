@@ -5,7 +5,7 @@ draft: false
 tags: ["istio","iptables","envoy"]
 description: "This blog describes the sidecar pattern, transparent traffic hijacking and routing."
 categories: ["Istio"]
-image: "images/banner/istio-hijacking.webp"
+image: "images/banner/target.jpg"
 type: "post"
 ---
 

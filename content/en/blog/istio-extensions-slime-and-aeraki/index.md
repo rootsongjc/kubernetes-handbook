@@ -7,7 +7,7 @@ categories: ["Istio"]
 bg_image: "images/backgrounds/page-title.jpg"
 description: "In this article, I’ll introduce you two Istio extension projects: Aeraki and Slime."
 type: "post"
-image: "images/banner/areaki-and-slime.jpg"
+image: "images/banner/slime.jpg"
 ---
 
 It’s been more than [four years](https://www.tetrate.io/blog/happy-istio-4th-anniversary-retrospect-and-outlook/) since Istio launched in May 2017, and while the project has had a strong following on GitHub and 10+ releases, its growing open-source ecosystem is still in its infancy. 

@@ -7,7 +7,7 @@ tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/istio-pod-process-lifecycle.webp"
+image: "images/banner/istio-pod-process-lifecycle.jpg"
 ---
 
 本文将为你讲解：

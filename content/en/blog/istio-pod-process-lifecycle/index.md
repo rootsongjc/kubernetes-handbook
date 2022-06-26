@@ -6,7 +6,7 @@ draft: false
 tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/istio-pod-process-lifecycle.webp"
+image: "images/banner/istio-pod-process-lifecycle.jpg"
 ---
 
 This article will explain:

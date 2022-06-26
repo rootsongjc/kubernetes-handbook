@@ -6,7 +6,7 @@ draft: false
 tags: ["iptables"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/iptables.webp"
+image: "images/banner/iptables.jpg"
 aliases: "/en/blog/uderstanding-iptables"
 ---
 

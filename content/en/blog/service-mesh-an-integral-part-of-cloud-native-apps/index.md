@@ -7,7 +7,7 @@ categories: ["Service Mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
 description: "This article will explore the relationship between service mesh and cloud native."
 type: "post"
-image: "images/banner/service-mesh-banner-bg.jpg"
+image: "images/banner/dream.jpg"
 ---
 
 If you don’t know what Istio is, you can read my previous articles below:

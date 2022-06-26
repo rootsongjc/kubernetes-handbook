@@ -7,7 +7,7 @@ tags: ["istio","sidecar"]
 categories: ["Istio"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
-image: "images/banner/istio-ports.webp"
+image: "images/banner/istio-ports.jpg"
 ---
 
 在我的前两篇博客中：
