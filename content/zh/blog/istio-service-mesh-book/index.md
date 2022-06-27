@@ -58,7 +58,7 @@ Envoy 创造的 xDS 协议被众多开源软件所支持，如 Istio、Linkerd�
 
 2020 年 10 月，这本书主要的内容贡献者组成了编委会，成员分别有我、马若飞、王佰平、王炜、罗广明、赵化冰、钟华和郭旭东。我们在出版社的指导与帮助下，对本书进行了后续的版本升级、完善、优化等工作。经过反复的迭代，这本《深入理解 Isito：云原生服务网格进阶实战》终于和大家见面了。
 
-{{<figure src="cover.jpg" title="《深入理解 Istio —— 云原生服务网格进阶实战》封面" alt="图书封面" width="70%" class="mx-auto text-center">}}
+{{<figure src="cover.jpg" title="《深入理解 Istio —— 云原生服务网格进阶实战》封面" alt="图书封面" width="70%">}}
 
 ## 关于本书
 
@@ -66,13 +66,13 @@ Istio 在 1.5 版本后有了重大的架构变化，同时引入或改进了多
 
 本书以 Istio 新版本为基础编写而成，在持续追踪 Istio 社区最新动向的基础上，力求为读者提 供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。
 
-{{<figure src="feature.jpg" alt="本书特色" class="mx-auto text-center" width="70%">}}
+{{<figure src="feature.jpg" alt="本书特色" width="70%">}}
 
-{{<figure src="target-reader.jpg" alt="面向读者" class="mx-auto text-center" width="70%">}}
+{{<figure src="target-reader.jpg" alt="面向读者" width="70%">}}
 
 目前，这本书已经在京东平台上线，要想了解更多有关 Istio 的相关知识，就来读一读这本《深入理解 Isito：云原生服务网格进阶实战》吧！
 
 京东 618，满 100 减 50，扫码即购！
 
-{{<figure src="qrcode.jpg" alt="购书二维码" class="mx-auto text-center" width="30%" link="https://item.jd.com/13200745.html" attr="[点此购买](https://item.jd.com/13200745.html)">}}
+{{<figure src="qrcode.jpg" alt="购书二维码" width="30%" link="https://item.jd.com/13200745.html" attr="[点此购买](https://item.jd.com/13200745.html)">}}
 
