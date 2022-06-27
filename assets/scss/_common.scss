@@ -520,16 +520,6 @@ figcaption {
     scroll-margin-top: 88px;
 }
 
-@media screen and (max-width: 600px) {
-  .footnotes ol li:target {
-      scroll-margin-top: 0px;
-  }
-
-  .content sup:target{
-      scroll-margin-top: 0px;
-  }
-}
-
 #myBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
@@ -546,4 +536,19 @@ figcaption {
 
 #myBtn:hover {
   color: #0a55a7; /* Add a dark-grey background on hover */
+}
+
+@media screen and (max-width: 600px) {
+  .footnotes ol li:target {
+      scroll-margin-top: 0px;
+  }
+
+  .content sup:target{
+      scroll-margin-top: 0px;
+  }
+  #myBtn {
+    font-size: 40px;
+    right: 4px;
+    bottom: 4px;
+  }
 }
