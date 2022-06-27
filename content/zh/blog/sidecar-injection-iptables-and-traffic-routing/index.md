@@ -14,7 +14,7 @@ type: "post"
 
 为了使读者能够更加直观的了解本文中执行的操作，在阅读本文前你也可以先观看下 [Istio Workshop 第八讲视频](https://bilibili.com/video/BV1cF411T72o/)。
 
-[![Istio Workshop第八讲](bilibili.jpg)](https://bilibili.com/video/BV1cF411T72o/)
+{{<figure alt="图片" attr="[点击观看](https://bilibili.com/video/BV1cF411T72o/)" src="bilibili.jpg" link="https://bilibili.com/video/BV1cF411T72o/" width="70%">}}
 
 为了理解本文希望你先阅读以下内容：
 
@@ -56,7 +56,7 @@ type: "post"
 
 将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
 
-{{<figure title="SIdecar 模式示意图" alt="图片" src="sidecar-pattern.jpg" width="50%">}}
+{{<figure title="Sidecar 模式示意图" alt="图片" src="sidecar-pattern.jpg" width="60%">}}
 
 就像连接了 Sidecar 的三轮摩托车一样，在软件架构中， Sidecar 连接到父应用并且为其添加扩展或者增强功能。Sidecar 应用与主应用程序松散耦合。它可以屏蔽不同编程语言的差异，统一实现微服务的可观察性、监控、日志记录、配置、断路器等功能。
 
@@ -327,6 +327,7 @@ Chain ISTIO_REDIRECT (1 references)
 
 这里着重需要解释的是 `ISTIO_OUTPUT` 链中的 9 条规则，为了便于阅读，我将以上规则中的部分内容使用表格的形式来展示如下：
 
+{{<table "ISTIO_OUTPUT 链中的路由规则">}}
 | **规则** | **target**        | **in** | **out** | **source** | **destination**                 |
 | -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
 | 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
@@ -338,6 +339,7 @@ Chain ISTIO_REDIRECT (1 references)
 | 7        | RETURN            | any    | any     | anywhere   | anywhere owner GID match 1337   |
 | 8        | RETURN            | any    | any     | anywhere   | localhost                       |
 | 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
+{{</table>}}
 
 下图展示了 `ISTIO_ROUTE` 规则的详细流程。
 
@@ -731,7 +733,7 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 
 为了适配更多应用场景，outbound 方向通过 hook connect 来实现，实现原理如下：
 
-![hook-connect 原理示意图](hook-connect.jpg)
+{{<figure src="hook-connect.jpg" alt="hook-connect 原理示意图" title="hook-connect 原理示意图" width="50%">}}
 
 无论采用哪种透明劫持方案，均需要解决获取真实目的 IP/端口的问题，使用 iptables 方案通过 getsockopt 方式获取，tproxy 可以直接读取目的地址，通过修改调用接口，hook connect 方案读取方式类似于 tproxy。
 
