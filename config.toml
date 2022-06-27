@@ -321,8 +321,8 @@ name = "Envoy 基础教程"
 URL = "https://lib.jimmysong.io/envoy-handbook/"
 
 [[Languages.zh.menu.book]]
-name = "云原生导览"
-URL = "https://lib.jimmysong.io/cloud-native/"
+name = "深入理解 Istio"
+URL = "/blog/istio-service-mesh-book/"
 
 [markup]
   [markup.highlight]
