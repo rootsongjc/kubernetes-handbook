@@ -192,3 +192,11 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 </script>
+
+{{ if .Site.Params.anchored }}
+{{ if eq .Section "blog" }}
+<script>
+    anchors.add()
+</script>
+{{ end }}
+{{ end }}

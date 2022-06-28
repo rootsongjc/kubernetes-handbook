@@ -32,16 +32,21 @@ div.alert a {
 .alert-note {
   background-color: #f6fbfe;
   border-color: #1976d2;
-}
-
-.alert-note *{
   color: #12537e;
 }
 
-.alert-warning *{
+.alert-note p{
+  color: #12537e;
+}
+
+.alert-warning{
   color: #cd0930;
   background-color: #fff5f7;
   border-color: #ff3860;
+}
+
+.alert-warning p{
+  color: #cd0930;
 }
 
 .alert-title p {

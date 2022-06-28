@@ -2,7 +2,5 @@
   <div class="alert-title">
       <p>{{ .Get 1 }}</p>
   </div>
-  <div>
-    {{ .Inner | markdownify | emojify  }}
-  </div>
+  {{ .Inner | markdownify | emojify  }}
 </div>
