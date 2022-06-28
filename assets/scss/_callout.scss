@@ -34,20 +34,16 @@ div.alert a {
   border-color: #1976d2;
 }
 
-.alert-note p {
+.alert-note *{
   color: #12537e;
 }
 
-.alert-warning {
+.alert-warning *{
   color: #cd0930;
   background-color: #fff5f7;
   border-color: #ff3860;
 }
 
-.alert-warning p {
-  color: #cd0930;
-}
-
-.alert-title p{
+.alert-title p {
     font-weight: 900;
 }
