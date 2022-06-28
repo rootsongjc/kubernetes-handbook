@@ -552,3 +552,13 @@ figcaption {
     bottom: 4px;
   }
 }
+
+.anchorjs-link {
+  font-weight: 400;
+  color: black;
+}
+
+.anchorjs-link:hover {
+  color: #0a55a7;
+  text-decoration: none;
+}
