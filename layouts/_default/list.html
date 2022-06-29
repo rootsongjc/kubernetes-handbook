@@ -31,7 +31,7 @@
                   {{ . | title }}</a> {{ end}}
                   </li>
                 </ul>
-                <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+                <h5 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h5>
                 <p class="card-text">{{ .Params.Description | truncate 100 }}</p>
                 <!--
                 <a href="{{ .Permalink | relURL }}" class="btn btn-primary btn-sm">{{ i18n "read_more" }}</a>

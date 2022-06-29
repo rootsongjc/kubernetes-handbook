@@ -1,6 +1,8 @@
 {{ "<!-- categories -->" | safeHTML }}
-<div class="bg-white mb-5">
-  <h4 class="mb-4">{{ i18n "categories" }}</h4>
+<div class="bg-white mb-4">
+  <p class="sidebar-title">
+      {{ i18n "categories" }}
+  </p>
   {{- if isset .Site.Taxonomies "categories" }}
   {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
   <ul class="list-unstyled">
@@ -16,9 +18,11 @@
 {{- if (eq (len (.Site.RegularPages.Related .)) 0)}}
 <div class="bg-white">
     {{- else }}
-<div class="bg-white mb-5">
+<div class="bg-white mb-4">
     {{- end }}
-    <h4 class="mb-4">{{ i18n "tags" }}</h4>
+    <p class="sidebar-title">
+    {{ i18n "tags" }}
+    </p>
     {{ if not (eq (len $.Site.Taxonomies.tags) 0) }}
     {{ $fontUnit := "rem" }}
     {{ $largestFontSize := 2.0 }}
