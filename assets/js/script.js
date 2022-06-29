@@ -40,7 +40,7 @@
   //Hero Slider
   $('.hero-slider').slick({
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6500,
     pauseOnFocus: false,
     pauseOnHover: false,
     infinite: true,
@@ -111,11 +111,11 @@
     });
   });
 
-    // Blog image maximize
-	$('.content img').on('click', function (e) {
-		BigPicture({
-			el: e.target,
-		})
-	})
+  // Blog image maximize
+  $('.content img').on('click', function (e) {
+    BigPicture({
+      el: e.target,
+    })
+  })
 
 })(jQuery);

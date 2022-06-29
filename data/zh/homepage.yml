@@ -6,8 +6,8 @@ slider:
     # slider item loop
     - title : "《深入理解 Istio》出版啦"
       content : "三年磨一剑，云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 编写，[京东有售](https://item.jd.com/13200745.html)！本书在持续追踪 Istio 社区最新动向的基础上，力求为读者提供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。"
-      animation_in : "up"
-      animation_out : "up"
+      animation_in : "left"
+      animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -15,8 +15,8 @@ slider:
         link : "/blog/istio-service-mesh-book"
     - title : "云原生资料库上线"
       content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。"
-      animation_in : "up"
-      animation_out : "up"
+      animation_in : "left"
+      animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -25,9 +25,9 @@ slider:
 
     # slider item loop
     - title : "独立第三方云原生终端用户社区"
-      animation_in : "up"
-      animation_out : "up"
-      content: "云原生社区成立于 2020 年 5 月 12 日，始于 Jimmy 2016 年开始创建的 Kubernetes & 云原生实战群。云原生社区是一个中立的云原生终端用户社区，旨在推广云原生技术，构建开发者生态。"
+      animation_in : "left"
+      animation_out : "right"
+      content: "云原生社区成立于 2020 年 5 月 12 日，始于 Jimmy 2016 年创建的 Kubernetes & 云原生实战群。云原生社区是一个中立的云原生终端用户社区，现有成员一万余人，欢迎加入我们。"
       # available animation : left, right, up, down
       button:
         enable : true
@@ -37,8 +37,8 @@ slider:
     # slider item loop
     - title : "开启云原生之旅"
       content : "Kubernetes 开启了云原生 1.0 的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，Serverless 的再次兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。"
-      animation_in : "up"
-      animation_out : "up"
+      animation_in : "left"
+      animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
