@@ -1,6 +1,8 @@
 {{ if gt .WordCount 400 }}
-<div class="bg-white py-5 box-shadow mb-5 sticky-top aside-toc d-none d-sm-block">
-  <h4 class="mb-4">{{ i18n "toc" }}</h4>
+<div class="bg-white py-5 box-shadow mb-4 sticky-top aside-toc d-none d-sm-block">
+    <p class="sidebar-title">
+    {{ i18n "toc" }}
+    </p>
   {{ .TableOfContents }}
 </div>
 {{- end }}

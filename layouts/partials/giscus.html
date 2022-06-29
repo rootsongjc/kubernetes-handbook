@@ -8,7 +8,11 @@
         data-emit-metadata="0"
         data-input-position="top"
         data-theme="light"
+        {{ if eq .Site.Language.Lang "zh" }}
         data-lang="zh-CN"
+        {{ else }}
+        data-lang="en"
+        {{ end }}
         data-loading="lazy"
         crossorigin="anonymous"
         async>
