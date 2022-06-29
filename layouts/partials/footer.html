@@ -194,7 +194,7 @@ function topFunction() {
 </script>
 
 {{ if .Site.Params.anchored }}
-{{ if eq .Section "blog" }}
+{{ if eq .Type "post" }}
 <script>
     anchors.add()
 </script>
