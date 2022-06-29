@@ -12,9 +12,9 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h1 class="text-white" data-animation-out="fadeOut{{.animation_out | title }}" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeIn{{.animation_in | title }}" data-delay-in=".1">{{ .title | markdownify }}</h1>
-                        <p class="text-white mb-4" data-animation-out="fadeOut{{.animation_out | title }}" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeIn{{.animation_in | title }}" data-delay-in=".4">{{ .content | markdownify }}</p>
+                        <p class="text-white mb-4" data-animation-out="fadeOut{{.animation_out | title }}" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeIn{{.animation_in | title }}" data-delay-in=".1">{{ .content | markdownify }}</p>
                         {{ if .button.enable }}
-                        <a href="{{ .button.link | relLangURL }}" target="_blank" rel="noopener" class="btn btn-primary" data-animation-out="fadeOut{{.animation_out | title }}" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeIn{{.animation_in | title }}" data-delay-in=".7">{{ .button.label }}</a>                        {{ end }}
+                        <a href="{{ .button.link | relLangURL }}" target="_blank" rel="noopener" class="btn btn-primary" data-animation-out="fadeOut{{.animation_out | title }}" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeIn{{.animation_in | title }}" data-delay-in=".1">{{ .button.label }}</a>                        {{ end }}
                     </div>
                 </div>
             </div>
