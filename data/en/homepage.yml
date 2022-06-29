@@ -4,8 +4,8 @@ slider:
   bg_image : "images/backgrounds/11.webp"
   slider_item:
     - title : "Welcome to Jimmy's blog"
-      animation_in : "up"
-      animation_out : "up"
+      animation_in : "left"
+      animation_out : "right"
       content: "Jimmy is the founder of Cloud Native Community and has authored or translated several books on cloud native since 2016. Cloud Native Community he's assembled covers almost all the stalwarts of cloud native in China, join the community and walk alongside them!"
       # available animation : left, right, up, down
       button:
@@ -16,8 +16,8 @@ slider:
     # slider item loop
     - title : "Cloud Native Library"
       content : "Cloud Native Library is open source cloud-native library in Chinese. The library is managed by Jimmy."
-      animation_in : "up"
-      animation_out : "up"
+      animation_in : "left"
+      animation_out : "right"
       # available animation : left, right, up, down
       button:
         enable : true
