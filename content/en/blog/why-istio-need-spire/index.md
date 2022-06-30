@@ -54,9 +54,7 @@ We might identify a workload using an IP address and port in the era of virtual 
 
 ## Using SPIRE for Authentication in Istio
 
-With the introduction of SPIRE to Istio, we can give each workload a unique identity, which is used by workloads in the service mesh for peer authentication, request authentication, and authorization policies. The SPIRE Agent issues SVIDs for workloads by communicating with a shared UNIX Domain Socket in the workload. The Envoy proxy and the SPIRE agent
-
-communicate through the Envoy SDS (Secret Discovery Service) API. Whenever an Envoy proxy needs to access secrets (certificates, keys, or anything else needed to do secure communication), it will talk to the SPIRE agent through Envoy’s SDS API.
+With the introduction of SPIRE to Istio, we can give each workload a unique identity, which is used by workloads in the service mesh for peer authentication, request authentication, and authorization policies. The SPIRE Agent issues SVIDs for workloads by communicating with a shared UNIX Domain Socket in the workload. The Envoy proxy and the SPIRE agent communicate through the Envoy SDS (Secret Discovery Service) API. Whenever an Envoy proxy needs to access secrets (certificates, keys, or anything else needed to do secure communication), it will talk to the SPIRE agent through Envoy’s SDS API.
 
 The most significant advantage of SDS is the ease with which certificates can be managed. Without this feature, certificates would have to be created as a secret and then mounted into the agent container in a Kubernetes deployment. The secret must be updated, and the proxy container must be re-deployed if the certificate expires. Using SDS, Istio can push the certificates to all Envoy instances in the service mesh. If the certificate expires, the server only needs to push the new certificate to the Envoy instance; Envoy will use the new certificate right away, and the proxy container will not need to be re-deployed.
 
