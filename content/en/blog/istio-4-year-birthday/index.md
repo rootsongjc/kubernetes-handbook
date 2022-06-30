@@ -4,7 +4,7 @@ date: 2021-05-24T08:00:00+08:00
 draft: false
 type: "post"
 categories: ["service mesh"]
-image: "/images/banner/istio-4-year-birthday.jpg"
+image: "/images/banner/dream.jpg"
 tags: ["kubernetes","istio","service mesh"]
 bg_image: "images/backgrounds/page-title.jpg"
 description : "Today is Istio's 4 year birthday, let’s take a look back at Istio’s four years of development — and look forward to Istio’s future."
