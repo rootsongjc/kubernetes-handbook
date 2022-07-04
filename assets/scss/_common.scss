@@ -566,3 +566,20 @@ figcaption {
 .sidebar-title{
     font-weight: 900;
 }
+
+.badge{
+    border: none;
+    color: #5c5c77;
+    background: #00000014;
+    font-weight: 400;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.badge:hover{
+    background: #000044;
+    color: white;
+    text-decoration: none;
+}

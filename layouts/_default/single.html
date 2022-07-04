@@ -35,9 +35,9 @@
           </div>
           <!-- tags -->
           <div class="col-12">
-              <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">{{ i18n "tags" }}
-                  :</span>{{ range $index, $elements:= .Params.Tags}}<a
-                  href="{{ `tags/` | relLangURL }}{{ . | urlize | lower }}"> {{ if ne $index 0 }}, {{ end }}
+              <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light">
+              {{ range $index, $elements:= .Params.Tags}}
+              <a href="{{ `tags/` | relLangURL }}{{ . | urlize | lower }}" class="badge"> {{ if ne $index 0 }} {{ end }}
                   {{ . | title }}</a> {{ end}}</li>
           </div>
 
