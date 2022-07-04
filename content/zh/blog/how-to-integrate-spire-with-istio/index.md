@@ -1,10 +1,10 @@
 ---
-title: "如何在 Istio 中集成 SPRIRE？"
+title: "如何在 Istio 中集成 SPIRE？"
 draft: false
 date: 2022-06-30T18:27:49+08:00
 description: "本文将带你一步一步在 Istio 中集成 SPIRE 身份认证。"
 categories: ["Istio"]
-tags: ["Istio","How-to","SPIRE"]
+tags: ["Istio","How-to","SPIRE","SPIFFE","零信任","安全","身份","身份认证"]
 type: "post"
 image: "images/banner/auth.jpg"
 ---

@@ -4,7 +4,7 @@ draft: false
 date: 2022-06-02T10:27:49+08:00
 description: "推荐一个 PingCAP 推出的 OSSInsight.io 网站，可以根据 GitHub 上的事件，提供开源软件洞察，这个项目本身也开源在 GitHub 上。"
 categories: ["其他"]
-tags: ["OSSInsight","GitHub"]
+tags: ["开源","GitHub"]
 type: "post"
 image: "/images/banner/oss-insight.jpg"
 ---
