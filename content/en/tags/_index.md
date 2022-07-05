@@ -1,5 +1,5 @@
 ---
 layout: tags
-title: "Tags"
+title: "Tag Cloud"
 description: "Jimmy Song's blog tag cloud."
 ---

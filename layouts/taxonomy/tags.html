@@ -1,12 +1,7 @@
 {{ define "main" }}
 <!-- tags -->
-<section class="section">
+<section class="section-sm">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="section-title">Tag Cloud</h2>
-            </div>
-        </div>
         <div class="row">
             {{ if not (eq (len $.Site.Taxonomies.tags) 0) }}
             {{ $fontUnit := "rem" }} {{ $largestFontSize := 2.0 }} {{ $largestFontSize := 2.5 }}
