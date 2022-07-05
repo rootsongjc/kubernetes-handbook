@@ -86,7 +86,7 @@ contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with 
 google_analitycs_id = "UA-93485976-1" # your id
 # Baidu tongji
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
-search = true
+#search = true
 enableComment = true
 enableAdSense = false
 anchored = true
