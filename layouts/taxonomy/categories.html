@@ -1,0 +1,14 @@
+{{ define "main" }}
+<!-- categories -->
+<section class="section-sm">
+    <div class="container ">
+        <div class="row col-12 content ">
+            <ul>
+                {{ range .Data.Terms.ByCount }}
+                <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</section>
+{{ end }}

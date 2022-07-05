@@ -20,19 +20,17 @@ Based on Istio version 1.13, this article will present the following.
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-![Sidecar traffic injection](envoy-sidecar-traffic-interception-en.jpg)
+![Sidecar traffic injection](sidecar-iptables.webp)
 
 At the beginning of the first step, the sidecar in the `productpage` pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 
 There are three versions of the reviews service, each with an instance, and the sidecar work steps in the three versions are similar, as illustrated below only by the sidecar traffic forwarding step in one of the Pods.
 
-There's a Chinese version of this blog: [阅读中文版](/blog/sidecar-injection-iptables-and-traffic-routing)
-
 ## Sidecar pattern
 
 Dividing the functionality of an application into separate processes running in the same minimal scheduling unit (e.g. Pod in Kubernetes) can be considered sidecar mode. As shown in the figure below, the sidecar pattern allows you to add more features next to your application without additional third-party component configuration or modifications to the application code.
 
-![Sidecar pattern](sidecar-pattern.png)
+![Sidecar pattern](sidecar-pattern.webp)
 
 The Sidecar application is loosely coupled to the main application. It can shield the differences between different programming languages and unify the functions of microservices such as observability, monitoring, logging, configuration, circuit breaker, etc.
 

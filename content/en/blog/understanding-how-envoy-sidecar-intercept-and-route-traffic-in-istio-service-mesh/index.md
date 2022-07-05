@@ -13,47 +13,41 @@ aliases:
 
 Updated at Mar 8, 2022
 
-This article uses Istio's official [bookinfo sample](https://istio.io/latest/docs/examples/bookinfo/) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/) .
-
-The following is a request flow diagram for bookinfo officially provided by Istio, assuming that the DestinationRule is not configured in all services of the bookinfo application.
-
-![bookinfo](006tNbRwly1fyitp0jsghj31o70u0x6p.jpg)
+This article uses Istio's official [bookinfo sample](https://istio.io/latest/docs/examples/bookinfo/) to explain how Envoy performs routing forwarding after the traffic entering the Pod and forwarded to Envoy sidecar by iptables, detailing the inbound and outbound processing. For a detailed analysis of traffic interception, see [Understanding Envoy Sidecar Proxy Injection and Traffic Interception in Istio Service Mesh](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/).
 
 ## Overview of Sidecar Injection and Traffic Interception Steps
 
 Below is an overview of the steps from Sidecar injection, Pod startup to Sidecar proxy interception traffic and Envoy processing routing.
 
-**1.** Kubernetes automatically injected through Admission Controller, or the user run `istioctl` command to manually inject sidecar container.
+1. Kubernetes automatically injected through Admission Controller, or the user run `istioctl` command to manually inject sidecar container.
+2. Apply the YAML configuration deployment application. At this time, the service creation configuration file received by the Kubernetes API server already includes the Init container and the sidecar proxy.
+3. Before the sidecar proxy container and application container are started, the Init container started firstly. The Init container is used to set iptables (the default traffic interception method in Istio, and can also use BPF, IPVS, etc.) to Intercept traffic entering the pod to Envoy sidecar Proxy. All TCP traffic (Envoy currently only supports TCP traffic) will be Intercepted by sidecar, and traffic from other protocols will be requested as originally.
+4. Launch the Envoy sidecar proxy and application container in the Pod.
 
-**2.** Apply the YAML configuration deployment application. At this time, the service creation configuration file received by the Kubernetes API server already includes the Init container and the sidecar proxy.
+{{<callout note>}}
+**Sidecar proxy and application container startup order issues**
 
-**3.** Before the sidecar proxy container and application container are started, the Init container started firstly. The Init container is used to set iptables (the default traffic interception method in Istio, and can also use BPF, IPVS, etc.) to Intercept traffic entering the pod to Envoy sidecar Proxy. All TCP traffic (Envoy currently only supports TCP traffic) will be Intercepted by sidecar, and traffic from other protocols will be requested as originally.
+Start the sidecar proxy and the application container. Which container is started first? Normally, Envoy Sidecar and the application container are all started up before receiving traffic requests. But we can't predict which container will start first, so does the container startup order have an impact on Envoy hijacking traffic? The answer is yes, but it is divided into the following two situations.
 
-**4.** Launch the Envoy sidecar proxy and application container in the Pod. For the process of this step, please refer to [the complete configuration through the management interface](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#%E9%80%9A%E8%BF%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E8%8E%B7%E5%8F%96%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE) .
+**Case 1: The application container starts first, and the sidecar proxy is still not ready**
 
-> **Sidecar proxy and application container startup order issues**
->
-> Start the sidecar proxy and the application container. Which container is started first? Normally, Envoy Sidecar and the application container are all started up before receiving traffic requests. But we can't predict which container will start first, so does the container startup order have an impact on Envoy hijacking traffic? The answer is yes, but it is divided into the following two situations.
->
-> **Case 1: The application container starts first, and the sidecar proxy is still not ready**
->
-> In this case, the traffic is transferred to the 15001 port by iptables, and the port is not monitored in the Pod. The TCP link cannot be established and the request fails.
->
-> **Case 2: Sidecar starts first, the request arrives and the application is still not ready**
->
-> In this case, the request will certainly fail. As for the step at which the failure begins, the reader is left to think.
+In this case, the traffic is transferred to the 15001 port by iptables, and the port is not monitored in the Pod. The TCP link cannot be established and the request fails.
+
+**Case 2: Sidecar starts first, the request arrives and the application is still not ready**
+
+In this case, the request will certainly fail. As for the step at which the failure begins, the reader is left to think.
 
 **Question** : If adding a readiness and living probe for the sidecar proxy and application container can solve the problem?
+{{</callout>}}
 
-**5.** TCP requests that are sent or received from the Pod will be hijacked by iptables. After the inbound traffic is hijacked, it is processed by the Inbound Handler and then forwarded to the application container for processing. The outbound traffic is hijacked by iptables and then forwarded to the Outbound Handler for processing. Upstream and Endpoint.
-
-**6.** Sidecar proxy requests Pilot to use the xDS protocol to synchronize Envoy configurations, including LDS, EDS, CDS, etc., but to ensure the order of updates, Envoy will use ADS to request configuration updates from Pilot directly.
+5. TCP requests that are sent or received from the Pod will be hijacked by iptables. After the inbound traffic is hijacked, it is processed by the Inbound Handler and then forwarded to the application container for processing. The outbound traffic is hijacked by iptables and then forwarded to the Outbound Handler for processing. Upstream and Endpoint.
+6. Sidecar proxy requests Pilot to use the xDS protocol to synchronize Envoy configurations, including LDS, EDS, CDS, etc., but to ensure the order of updates, Envoy will use ADS to request configuration updates from Pilot directly.
 
 ## How Envoy handles route forwarding
 
 The following figure shows a `productpage`service access request `http://reviews.default.svc.cluster.local:9080/`, when traffic enters `reviews` the internal services, `reviews` internal services Envoy Sidecar is how to do traffic blocked the route forward.
 
-![istio iptables](envoy-sidecar-traffic-interception-jimmysong-blog-en-20210818.png)
+![Istio transparent traffic hijacking and traffic routing schematic](sidecar-iptables.webp)
 
 Before the first step, `productpage` Envoy Sidecar Pod has been selected by EDS of a request to `reviews` a Pod service of its IP address, it sends a TCP connection request.
 
