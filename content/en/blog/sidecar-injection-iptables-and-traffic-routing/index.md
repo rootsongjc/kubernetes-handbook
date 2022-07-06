@@ -138,7 +138,7 @@ The focus here is on the 9 rules in the `ISTIO_OUTPUT` chain. For ease of readin
 
 The following diagram shows the detailed flow of the `ISTIO_ROUTE` rule.
 
-![ISTIO_ROUTE iptables rules](istio-route-iptables-en.jpg)
+![ISTIO_ROUTE iptables rules](istio-route-iptables-en.webp)
 
 I will explain the purpose of each rule, corresponding to the steps and details in the illustration at the beginning of the article, in the order in which they appear. Where rules 5, 6, and 7 are extensions of the application of rules 2, 3, and 4 respectively (from UID to GID), which serve similar purposes and will be explained together. Note that the rules therein are executed in order, meaning that the rule with the next highest order will be used as the default. When the outbound NIC (out) is lo (local loopback address, loopback interface), it means that the destination of the traffic is the local Pod, and traffic sent from the Pod to the outside, will not go through this interface. Only rules 4, 7, 8, and 9 apply to all outbound traffic from the review Pod.
 
