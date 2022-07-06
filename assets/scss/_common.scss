@@ -583,3 +583,30 @@ figcaption {
     color: white;
     text-decoration: none;
 }
+
+// Code copy buttons
+
+.highlight {
+    position: relative;
+}
+
+.highlight-copy-btn {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.8rem;
+    border: 0;
+    border-radius: 4px;
+    padding: 1px;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    background-color: transparent;
+    opacity: 0.2;
+    min-width: 1rem;
+    text-align: center;
+}
+
+.highlight-copy-btn:hover {
+    color: black;
+    opacity: 1;
+}
+
