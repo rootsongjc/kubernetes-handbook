@@ -266,7 +266,7 @@ weight = 3
 
 [[Languages.zh.menu.main]]
 name = "译文"
-URL = "https://lib.jimmysong.io/translation/"
+URL = "https://lib.jimmysong.io/blog/"
 weight = 4
 
 [[Languages.zh.menu.main]]
