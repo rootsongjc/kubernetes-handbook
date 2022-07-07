@@ -20,7 +20,7 @@ Based on Istio version 1.13, this article will present the following.
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-![Sidecar traffic injection](sidecar-iptables.webp)
+![Istio transparent traffic hijacking and traffic routing diagram](istio-iptables.svg)
 
 At the beginning of the first step, the sidecar in the `productpage` pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 
@@ -30,7 +30,7 @@ There are three versions of the reviews service, each with an instance, and the 
 
 Dividing the functionality of an application into separate processes running in the same minimal scheduling unit (e.g. Pod in Kubernetes) can be considered sidecar mode. As shown in the figure below, the sidecar pattern allows you to add more features next to your application without additional third-party component configuration or modifications to the application code.
 
-![Sidecar pattern](sidecar-pattern.webp)
+![Sidecar pattern](sidecar-pattern.svg)
 
 The Sidecar application is loosely coupled to the main application. It can shield the differences between different programming languages and unify the functions of microservices such as observability, monitoring, logging, configuration, circuit breaker, etc.
 
@@ -138,7 +138,7 @@ The focus here is on the 9 rules in the `ISTIO_OUTPUT` chain. For ease of readin
 
 The following diagram shows the detailed flow of the `ISTIO_ROUTE` rule.
 
-![ISTIO_ROUTE iptables rules](istio-route-iptables-en.webp)
+![ISTIO_ROUTE iptables rules](istio-route-iptables.svg)
 
 I will explain the purpose of each rule, corresponding to the steps and details in the illustration at the beginning of the article, in the order in which they appear. Where rules 5, 6, and 7 are extensions of the application of rules 2, 3, and 4 respectively (from UID to GID), which serve similar purposes and will be explained together. Note that the rules therein are executed in order, meaning that the rule with the next highest order will be used as the default. When the outbound NIC (out) is lo (local loopback address, loopback interface), it means that the destination of the traffic is the local Pod, and traffic sent from the Pod to the outside, will not go through this interface. Only rules 4, 7, 8, and 9 apply to all outbound traffic from the review Pod.
 

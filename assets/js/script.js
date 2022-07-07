@@ -8,14 +8,15 @@
 
   // Sticky Menu
   $(window).scroll(function () {
+    var height = $('.top-header').innerHeight();
     if ($('header').offset().top > 10) {
       $('.top-header').addClass('hide');
       $('.navigation').addClass('nav-bg');
-      $('.top-hider').addClass('top-height');
+      $('.navigation').css('margin-top','-'+height+'px');
     } else {
       $('.top-header').removeClass('hide');
       $('.navigation').removeClass('nav-bg');
-      $('.top-hider').removeClass('top-height');
+      $('.navigation').css('margin-top','-'+0+'px');
     }
   });
 

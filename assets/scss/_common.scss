@@ -511,13 +511,13 @@ figcaption {
     font-weight: 500;
 }
 
-// footnotes
+// footnotes with top bar
 .footnotes ol li:target {
-    scroll-margin-top: 88px;
+    scroll-margin-top: 98px;
 }
 
 .content sup:target{
-    scroll-margin-top: 88px;
+    scroll-margin-top: 98px;
 }
 
 #backTopBtn {
