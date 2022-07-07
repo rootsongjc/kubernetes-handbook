@@ -531,7 +531,7 @@ figcaption {
   color: #80808080; /* Set a background color */
   background-color: transparent; /* Set a background color */
   cursor: pointer; /* Add a mouse pointer on hover */
-  font-size: 50px; /* Increase font size */
+  font-size: 4rem; /* Increase font size */
 }
 
 @media screen and (max-width: 600px) {
@@ -542,8 +542,8 @@ figcaption {
   .content sup:target{
       scroll-margin-top: 0px;
   }
-  #myBtn {
-    font-size: 40px;
+  #backTopBtn {
+    font-size: 2rem;
     right: 4px;
     bottom: 4px;
   }
