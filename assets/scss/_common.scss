@@ -520,7 +520,7 @@ figcaption {
     scroll-margin-top: 88px;
 }
 
-#myBtn {
+#backTopBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
@@ -532,10 +532,6 @@ figcaption {
   background-color: transparent; /* Set a background color */
   cursor: pointer; /* Add a mouse pointer on hover */
   font-size: 50px; /* Increase font size */
-}
-
-#myBtn:hover {
-  color: #0a55a7; /* Add a dark-grey background on hover */
 }
 
 @media screen and (max-width: 600px) {
@@ -610,3 +606,23 @@ figcaption {
     opacity: 1;
 }
 
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-toggler{
+    border: 1px solid transparent;
+    font-size: 1rem;
+}
+
+.article-content .list-inline{
+    line-height: 1.9rem;
+}
+
+
+@media screen and (max-width: 600px) {
+    .article-content .list-inline{
+        line-height: 0.8rem;
+    }
+}

@@ -3,7 +3,7 @@
 {{- partial "head.html" . -}}
 
 <body>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+    <button onclick="topFunction()" id="backTopBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
 	{{- partial "preloader.html" . -}}
 	{{- partial "header.html" . -}}
 	{{ if not .IsHome }}
