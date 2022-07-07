@@ -43,6 +43,9 @@ link = "plugins/themify-icons/themify-icons.css"
 link = "plugins/hightlight/syntax.css"
 [[params.plugins.css]]
 link = "plugins/fontawesome/font-awesome.min.css"
+[[params.plugins.css]]
+link = "plugins/tocbot/tocbot.css"
+
 
 # JS Plugins
 [[params.plugins.js]]
@@ -67,6 +70,8 @@ link = "plugins/bigPicture/bigPicture.js"
 link = "plugins/hex_md5/hex_md5.js"
 [[params.plugins.js]]
 link = "plugins/anchor/anchor.min.js"
+[[params.plugins.js]]
+link = "plugins/tocbot/tocbot.min.js"
 
 #################### default parameters ################################
 [params]
