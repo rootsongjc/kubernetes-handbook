@@ -20,7 +20,7 @@ API gateways have been around for a long time as the entry point for clients to 
 
 The following diagram shows four approaches to expose services in the Istio mesh using Istio Gateway, Kubernetes Ingress, API Gateway, and NodePort/LB.
 
-![Exposing services through Istio Ingress Gateway](api-gateway-istio-service-mesh.jpg)
+![Exposing services through Istio Ingress Gateway](access-cluster.svg)
 
 The Istio mesh is shaded, and the traffic in the mesh is internal (east-west) traffic, while the traffic from clients accessing services within the Kubernetes cluster is external (north-south) traffic. 
 
@@ -37,7 +37,7 @@ Since NodePort/LoadBalancer is a basic way to expose services built into Kuberne
 
 We all know that clients of a Kubernetes cluster cannot directly access the IP address of a pod because the pod is in a network plane built into Kubernetes. We can expose services inside Kubernetes outside the cluster using NodePort or Load Balancer Kubernetes service type. To support virtual hosting, hiding and saving IP addresses, you can use Ingress resources to expose services in Kubernetes.
 
-![Kubernetes Ingress to expose services](kubernetes-ingress.jpg)
+![Kubernetes Ingress to expose services](ingress.svg)
 
 Ingress is a Kubernetes resource that controls the behavior of an ingress controller that does the traffic touring, which is the equivalent of a load-balanced directional proxy server such as Nginx, Apache, etc., which also includes rule definitions, i.e., routing information for URLs, which is provided by the [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers).
 

@@ -21,7 +21,7 @@ API 网关作为客户端访问后端的入口，已经存在很长时间了，�
 
 下图展示了使用 Istio Gateway、Kubernetes Ingress、API Gateway 及 NodePort/LB 暴露 Istio mesh 中服务的四种方式。
 
-![暴露 Kubernetes 中服务的几种方式](api-gateway-istio-service-mesh.jpg)
+![暴露 Kubernetes 中服务的几种方式](access-cluster.svg)
 
 其中阴影表示的是 Istio mesh，mesh 中的的流量属于集群内部（东西向）流量，而客户端访问 Kubernetes 集群内服务的流量属于外部（南北向）流量。不过因为 Ingress、Gateway 也是部署在 Kubernetes 集群内的，这些节点访问集群内其他服务的流量就难以归属了。
 
@@ -38,7 +38,7 @@ API 网关作为客户端访问后端的入口，已经存在很长时间了，�
 
 我们都知道 Kubernetes 集群的客户端是无法直接访问 Pod 的 IP 地址的，因为 Pod 是处于 Kubernetes 内置的一个网络平面中。我们可以将 Kubernetes 内的服务使用 NodePort 或者 LoadBlancer 的方式暴露到集群以外。同时为了支持虚拟主机、隐藏和节省 IP 地址，可以使用 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) 来暴露 Kubernetes 中的服务。Kubernetes Ingress 原理如下图所示。
 
-![使用 Kubernetes Ingress 暴露服务](kubernetes-ingress.jpg)
+![使用 Kubernetes Ingress 暴露服务](ingress.svg)
 
 简单的说，Ingress 就是从 Kubernetes 集群外访问集群的入口，将用户的 URL 请求转发到不同的服务上。Ingress 相当于 Nginx、Apache 等负载均衡方向代理服务器，其中还包括规则定义，即 URL 的路由信息，路由信息得的刷新由 [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers)来提供。
 
@@ -139,7 +139,7 @@ API Gateway 是微服务架构体系中的一类型特殊服务，它是所有�
 
 ## 总结
 
-在 Istio mesh 中你可以使用多种 Kubernetes Ingress Controller 来充当入口网关，当然你还可以直接使用 Istio 内置的 Istio 网关，对于策略控制、流量管理和用量监控可以直接通过 Istio 网关来完成，这样做的好处是通过 Istio 的控制平面来直接管理网关，而不需要再借助其他工具。但是对于 API 声明周期管理、复杂的计费、协议转换和认证等功能，传统的 API 网关可能更适合你。所以，你可以根据自己的需求来选择，也可以组合使用。
+在 Istio mesh 中你可以使用多种 Kubernetes Ingress Controller 来充当入口网关，当然你还可以直接使用 Istio 内置的 Istio 网关，对于策略控制、流量管理和用量监控可以直接通过 Istio 网关来完成，这样做的好处是通过 Istio 的控制平面来直接管理网关，而不需要再借助其他工具。但是对于 API 生命周期管理、复杂的计费、协议转换和认证等功能，传统的 API 网关可能更适合你。所以，你可以根据自己的需求来选择，也可以组合使用。
 
 目前有些传统的反向代理也在向 Service Mesh 方向发展，如 Nginx 构建了 [Nginx Service Mesh](https://www.nginx.com/products/nginx-service-mesh/)，Traefik 构建了 [Traefik Mesh](https://traefik.io/traefik-mesh/)。还有的 API 网关产品也向 Service Mesh 方向挺进，比如 Kong 发展出了 [Kuma](https://kuma.io)。在未来，我们会看到更多 API 网关、反向代理和服务网格的融合产品出现。
 
