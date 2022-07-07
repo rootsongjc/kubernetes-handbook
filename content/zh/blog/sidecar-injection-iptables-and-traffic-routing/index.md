@@ -33,7 +33,7 @@ type: "post"
 
 请大家结合下图理解本文中的内容，本图基于 Istio 官方提供的 Bookinfo 示例绘制，展示的是 `reviews` Pod 的内部结构，包括 Linux Kernel 空间中的 iptables 规则、Sidecar 容器、应用容器。
 
-![Sidecar 流量劫持示意图](istio-route-iptables.webp)
+![Istio 流量劫持示意图](istio-iptables.svg)
 
 `productpage` 访问 `reviews` Pod，入站流量处理过程对应于图示上的步骤：1、2、3、4、Envoy Inbound Handler、5、6、7、8、应用容器。
 
@@ -56,7 +56,7 @@ type: "post"
 
 将应用程序的功能划分为单独的进程运行在同一个最小调度单元中（例如 Kubernetes 中的 Pod）可以被视为 **sidecar 模式**。如下图所示，sidecar 模式允许您在应用程序旁边添加更多功能，而无需额外第三方组件配置或修改应用程序代码。
 
-{{<figure title="Sidecar 模式示意图" alt="图片" src="sidecar-pattern.jpg" width="60%">}}
+{{<figure title="Sidecar 模式示意图" alt="图片" src="sidecar-pattern.svg" width="60%">}}
 
 就像连接了 Sidecar 的三轮摩托车一样，在软件架构中， Sidecar 连接到父应用并且为其添加扩展或者增强功能。Sidecar 应用与主应用程序松散耦合。它可以屏蔽不同编程语言的差异，统一实现微服务的可观察性、监控、日志记录、配置、断路器等功能。
 
@@ -343,7 +343,7 @@ Chain ISTIO_REDIRECT (1 references)
 
 下图展示了 `ISTIO_ROUTE` 规则的详细流程。
 
-![ISTIO_ROUTE iptables 规则流程图](istio-route-iptables.webp)
+{{<figure title="Istio_ROUTE iptalbes 规则判断流程图" alt="图片" src="istio-route-iptables.svg" width="70%">}}
 
 我将按照规则的出现顺序来解释每条规则的目的、对应文章开头图示中的步骤及详情。其中规则 5、6、7 是分别对规则 2、3、4 的应用范围扩大（从 UID 扩大为 GID），作用是类似的，将合并解释。注意，其中的规则是按顺序执行的，也就是说排序越靠后的规则将作为默认值。出站网卡（out）为 `lo` （本地回环地址，loopback 接口）时，表示流量的目的地是本地 Pod，对于 Pod 向外部发送的流量就不会经过这个接口。所有 `review` Pod 的出站流量只适用于规则 4、7、8、9。
 

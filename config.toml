@@ -258,11 +258,6 @@ top_header_content = "📣 云原生社区著的《深入理解 Istio》出版�
 
 # main menu
 [[Languages.zh.menu.main]]
-name = "关于"
-URL = "about"
-weight = 9
-
-[[Languages.zh.menu.main]]
 name = "博客"
 URL = "blog"
 weight = 2
@@ -288,14 +283,24 @@ URL = "https://lib.jimmysong.io/event/"
 weight = 6
 
 [[Languages.zh.menu.main]]
+name = "B 站"
+URL = "https://space.bilibili.com/515485124/"
+weight = 7
+
+[[Languages.zh.menu.main]]
 name = "联系"
 URL = "contact"
-weight = 7
+weight = 8
 
 [[Languages.zh.menu.main]]
 name = "通知"
 URL = "notice"
-weight = 8
+weight = 9
+
+[[Languages.zh.menu.main]]
+name = "关于"
+URL = "about"
+weight = 10
 
 [[Languages.zh.menu.footer]]
 name = "云原生开源项目大全"
