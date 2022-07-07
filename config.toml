@@ -94,7 +94,10 @@ baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
 #search = true
 enableComment = true
 enableAdSense = false
-anchored = true
+anchored = true # add anchor on each head title in the blog article content
+code_copy_button = true
+back_to_top_button = true
+
 
 # Preloader
 [params.preloader]

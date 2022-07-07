@@ -171,27 +171,9 @@ var _hmt = _hmt || [];
   });
 </script>
 
-<script>
-//Get the button
-var mybutton = document.getElementById("backTopBtn");
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-</script>
+{{ if .Site.Params.back_to_top_button}}
+{{ partial "back-to-top.html" . }}
+{{ end }}
 
 {{ if .Site.Params.anchored }}
 {{ if eq .Type "post" }}
@@ -201,62 +183,11 @@ function topFunction() {
 {{ end }}
 {{ end }}
 
+{{ if .Site.Params.code_copy_button }}
+{{ partial "code-copy-button.html" . }}
+{{ end }}
+
 <script>
-// Add code-copy buttons using progressive enhancement
-// © 2019. Tom Spencer
-// https://www.fiznool.com/blog/2018/09/14/adding-click-to-copy-buttons-to-a-hugo-powered-blog/
-(function() {
-  'use strict';
-
-  if(!document.queryCommandSupported('copy')) {
-    return;
-  }
-
-  function flashCopyMessage(el, msg) {
-    el.className = "highlight-copy-btn";
-    el.textContent = msg;
-    setTimeout(function() {
-      el.textContent = "";
-      el.className = "highlight-copy-btn fa fa-copy";
-    }, 1000);
-  }
-
-  function selectText(node) {
-    var selection = window.getSelection();
-    var range = document.createRange();
-    range.selectNodeContents(node);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    return selection;
-  }
-
-  function addCopyButton(containerEl) {
-    var copyBtn = document.createElement("button");
-    copyBtn.className = "highlight-copy-btn fa fa-copy";
-    copyBtn.textContent = "";
-
-    var codeEl = containerEl.firstElementChild;
-    copyBtn.addEventListener('click', function() {
-      try {
-        var selection = selectText(codeEl);
-        document.execCommand('copy');
-        selection.removeAllRanges();
-
-        flashCopyMessage(copyBtn, 'OK')
-      } catch(e) {
-        console && console.log(e);
-        flashCopyMessage(copyBtn, 'Failed :\'(')
-      }
-    });
-
-    containerEl.appendChild(copyBtn);
-  }
-
-  // Add copy button to code blocks
-  var highlightBlocks = document.getElementsByClassName('highlight');
-  Array.prototype.forEach.call(highlightBlocks, addCopyButton);
-})();
-
 tocbot.init({
   // Where to render the table of contents.
   tocSelector: '#TableOfContents',
