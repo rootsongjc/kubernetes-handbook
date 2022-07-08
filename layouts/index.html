@@ -76,29 +76,27 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="col-12 align-items-center">
-                <div class="row justify-content-center align-items-center">
-                    {{ range .feature_item }}
-                    <div class="col-md-3 text-center align-items-center text-sm-left">
-                        <div class="row justify-content-center"><img class="img-fluid mb-xl-4 mb-lg-3 mb-4 feature-icon" width="64px" src="{{ .image | relURL }}" alt="feature-item-banner"></div>
-                        <h3 class="text-center mb-xl-4 mb-lg-3 mb-4">{{ .name | markdownify }}</h3>
-                        <p class="text-center">{{ .content | markdownify }}</p>
-                    </div>
-                    {{ end }}
-                </div>
-                {{ if .button.enable }} {{ with .button }}
-                <!-- mobile see all button -->
+           <div class="row justify-content-center align-items-center">
+               {{ range .feature_item }}
+               <div class="col-lg-3 col-sm-6 card rounded-0 border-bottom-0 border-top-0 border-left-0 border-right-0 text-center">
+                   <p><img class="img-fluid feature-icon" width="80px" src="{{ .image | relURL }}" alt="feature-item-banner"></p>
+                   <div class="card-body lib-element-card-body">
+                   <h5 class="card-title text-center">{{ .name | markdownify }}</h5>
+                   <p class="text-left">{{ .content | markdownify }}</p>
+                   </div>
+               </div>
+               {{ end }}
+           </div>
+           {{ if .button.enable }} {{ with .button }}
+           <!-- mobile see all button -->
 
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block" target="_blank" rel="noopener">{{ .label }}</a>
-                    </div>
-                </div>
-                {{ end }}
-            </div>
-            {{ end }}
-        </div>
+           <div class="row">
+               <div class="col-12 text-center">
+                   <a href="{{ .link | relLangURL }}" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block" target="_blank" rel="noopener">{{ .label }}</a>
+               </div>
+           </div>
+           {{ end }}
+       {{ end }}
     </div>
 </section>
 {{ end }} {{ end }}
