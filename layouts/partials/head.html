@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="{{ $styles.Permalink | relURL }}" media="screen">
 
   {{ "<!--Favicon-->" | safeHTML }}
-  <link rel="shortcut icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
-  <link rel="icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ `favicon.png` | relURL }}" type="image/png">
+  <link rel="apple-touch-icon" href="{{ `favicon.png` | relURL }}">
   <link href='/opensearchdescription.xml' rel='search' title='Content search' type='application/opensearchdescription+xml'/>
 
   {{ "<!--Algolia-->" | safeHTML }}
@@ -46,8 +46,8 @@
   <meta property="og:image" content="{{ with .Params.image }}{{.| absURL}}{{ end }}" />
   <meta property="twitter:image" content="{{ with .Params.image }}{{.| absURL}}{{ end }}" />
   {{ else }}
-  <meta property="og:image" content="{{ `images/favicon.png` | absURL }}">
-  <meta property="twitter:image" content="{{ `images/favicon.png` | absURL }}">
+  <meta property="og:image" content="{{ `favicon.png` | absURL }}">
+  <meta property="twitter:image" content="{{ `favicon.png` | absURL }}">
   {{ end }}
   <!-- Google AdSense -->
   {{ if .Site.Params.enableAdSense }}

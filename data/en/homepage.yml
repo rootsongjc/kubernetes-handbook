@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "images/backgrounds/11.webp"
+  bg_image : "images/backgrounds/bg.svg"
   slider_item:
     - title : "Welcome to Jimmy's blog"
       animation_in : "left"
@@ -94,7 +94,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/books.webp"
+  bg_image : "images/backgrounds/books.svg"
   title : "Quick Start"
   content : "When we need to develop cloud native apps locally, 
   we prefer to have a distributed development environment that is ready to use and easy to customize, 
