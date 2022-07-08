@@ -3,10 +3,11 @@ title: "请暂时抛弃使用 eBPF 取代服务网格和 sidecar 模式的幻想
 draft: false
 date: 2022-06-11T11:08:49+08:00
 description: "不管有没有 eBPF，在可预见的未来，服务网格都会基于运行在用户空间的 sidecar 代理（proxyless 模式除外）。"
-categories: ["service mesh"]
+categories: ["Service Mesh"]
 tags: ["eBPF","sidecar","Service Mesh"]
 type: "post"
 image: "images/banner/ebpf-service-mesh.jpg"
+aliases: ["/blog/epbf-sidecar-and-service-mesh/"]
 ---
 
 最近 eBPF 技术在云原生社区中持续火热，在我翻译了《[什么是 eBPF](https://lib.jimmysong.io/what-is-ebpf/)》之后，当阅读“云原生环境中的 eBPF”之后就一直在思考 eBPF 在云原生环境中究竟处于什么地位，发挥什么样的作用。当时我评论说“eBPF 开启了上帝视角，可以看到主机上所有的活动，而 sidecar 只能观测到 pod 内的活动，只要搞好进程隔离，基于 eBPF 的 proxy per-node 才是最佳选择”，再看到 William Morgan 的[这篇文章](https://buoyant.io/2022/06/07/ebpf-sidecars-and-the-future-of-the-service-mesh/) [^1]之后，让我恍然大悟。下面节选翻译了文章我比统同意的观点，即 eBPF 无法替代服务网格和 sidecar，感兴趣的读者可以阅读 William 的原文。
