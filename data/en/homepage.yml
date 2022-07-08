@@ -38,25 +38,25 @@ banner_feature:
     # feature item loop
     - name : "Containers"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/containers.webp"
+      image : "images/banner/containers.svg"
       content : "The smallest building unit of cloud native applications, built once and run everywhere."
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/kubernetes.webp"
+      image : "images/banner/kubernetes.svg"
       content : "Cloud native operating system, declarative API is its core, Operator framework controls everything."
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/service-mesh.webp"
+      image : "images/banner/istio.svg"
       content : "As a cloud native network infrastructure, the service mesh is responsible for all aspects of communication between services."
 
     # feature item loop
     - name : "Serverless"
       icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
-      image : "images/banner/serverless.webp"
+      image : "images/banner/serverless.svg"
       content : "The ultimate form of cloud native in the foreseeable time, true on-demand use and pay-as-you-go."
 
 
