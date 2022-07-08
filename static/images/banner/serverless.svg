@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="130px" height="130px" viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>energy</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="energy">
+            <polygon id="Path" fill="#365ECA" points="97.95 4 65.79 4.43 34.81 63.24 55.91 63.46 22.94 126.88 97.31 45.56 69.53 45.56"></polygon>
+            <polyline id="Line" stroke="#365ECA" stroke-width="4" stroke-linecap="square" points="34.4024051 86.7630702 11.5 59.4844419 34.4024051 34.5"></polyline>
+            <polyline id="Line" stroke="#365ECA" stroke-width="4" stroke-linecap="square" transform="translate(108.951203, 60.631535) scale(-1, 1) translate(-108.951203, -60.631535) " points="120.402405 86.7630702 97.5 59.4844419 120.402405 34.5"></polyline>
+            <rect id="Rectangle" x="0" y="0" width="130" height="130"></rect>
+        </g>
+    </g>
+</svg>

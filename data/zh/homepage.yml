@@ -58,25 +58,25 @@ banner_feature:
     # feature item loop
     - name : "容器"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/containers.webp"
+      image : "/images/banner/containers.svg"
       content : "云原生应用的最小的构建单元，一次构建，到处运行。"
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/kubernetes.webp"
+      image : "/images/banner/kubernetes.svg"
       content : "云原生操作系统，声明式 API 是它的核心，Operator 操控万物。"
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/service-mesh.webp"
+      image : "/images/banner/istio.svg"
       content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面。"
 
     # feature item loop
     - name : "Serverless"
       icon : "ti-layout-sidebar-none" # icon pack : https://themify.me/themify-icons
-      image : "/images/banner/serverless.webp"
+      image : "/images/banner/serverless.svg"
       content : "可预见时间内的云原生的终极形式，真正的按需使用和按量付费。"
 
 
