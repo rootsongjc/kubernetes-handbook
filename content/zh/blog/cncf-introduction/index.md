@@ -5,7 +5,7 @@ date: 2018-03-04T18:03:39+08:00
 tags: ["CNCF"]
 categories: ["云原生"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
+bg_image: "images/backgrounds/page-title.webp"
 aliases: "/posts/cncf-introduction"
 image: "images/banner/cncf-logo.jpg"
 draft: false

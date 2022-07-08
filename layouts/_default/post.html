@@ -1,5 +1,7 @@
 <article class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+  <a href="{{ .Permalink | relURL }}">
   <img class="card-img-top rounded-0" src="{{ .Params.Image | relURL }}" alt="{{ .Title }}">
+  </a>
   <div class="card-body">
     <!-- post meta -->
     <ul class="list-inline mb-3">
@@ -12,7 +14,7 @@
                   {{ . | title }}</a> {{ end}}
       </li>
     </ul>
-      <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+    <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
     <p class="card-text">{{ .Params.description | truncate 100 }}</p>
     <!--
     <a href="{{ .Permalink | relURL }}" class="btn btn-primary btn-sm">{{ i18n "read_more" }}</a>

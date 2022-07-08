@@ -199,6 +199,11 @@ URL = "notice"
 weight = 5
 
 [[menu.main]]
+name = "Tags"
+URL = "tags"
+weight = 6
+
+[[menu.main]]
 name = "Contact"
 URL = "contact"
 weight = 7
@@ -283,8 +288,8 @@ URL = "https://lib.jimmysong.io/event/"
 weight = 6
 
 [[Languages.zh.menu.main]]
-name = "B 站"
-URL = "https://space.bilibili.com/515485124/"
+name = "标签"
+URL = "tags"
 weight = 7
 
 [[Languages.zh.menu.main]]

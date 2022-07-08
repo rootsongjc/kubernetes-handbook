@@ -1,13 +1,13 @@
 ---
-title: "Kubernetes项目联合创始人Brendan Burns新书Managing Kubernetes介绍及评论"
+title: "图书 Managing Kubernetes 介绍及评论"
 date: 2018-10-23T21:21:07+08:00
 draft: false
-description: "本文是Kubernetes项目联合创始人Brendan Burns新书Managing Kubernetes介绍并发表了我个人对本书的评论。"
+description: "本文是对 Kubernetes 项目联合创始人 Brendan Burns 新书 Managing Kubernetes 介绍并发表了我个人对本书的评论。"
 tags: ["图书"]
 categories: ["kubernetes"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-aliases: "/posts/the-book-managing-kubernetes-by-brendan-burns"
+bg_image: "images/backgrounds/page-title.webp"
+aliases: ["/posts/the-book-managing-kubernetes-by-brendan-burns"]
 image: "images/banner/managing-kubernetes.jpg"
 ---
 

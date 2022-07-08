@@ -41,7 +41,7 @@
             {{ $weigth := div (sub (math.Log $count) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
             {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) }}
             <!--Current font size: {{$currentFontSize}}-->
-            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{ $name | humanize}}</a>
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{ $name | title |humanize}}</a>
         {{ end }}
     </div>
 {{ end }}
