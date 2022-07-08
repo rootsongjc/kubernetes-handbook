@@ -118,7 +118,7 @@ a h4{
     top: 0;
     left: 0;
     background: $secondary-color;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 }
 
@@ -234,6 +234,9 @@ a h4{
 @media screen and (max-width: 600px) {
   .page-title-section {
   padding: 40px 0 25px;
+  }
+  .lib-element-card-body{
+      height: 180px !important;
   }
 }
 .custom-breadcrumb {

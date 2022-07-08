@@ -59,19 +59,19 @@ banner_feature:
     - name : "容器"
       icon : "ti-layout-grid3" # icon pack : https://themify.me/themify-icons
       image : "/images/banner/containers.svg"
-      content : "云原生应用的最小的构建单元，一次构建，到处运行。"
+      content : "容器作为云原生应用的标准交付物和最小的构建单元，一次构建，到处运行。"
 
     # feature item loop
     - name : "Kubernetes"
       icon : "ti-layout-media-left" # icon pack : https://themify.me/themify-icons
       image : "/images/banner/kubernetes.svg"
-      content : "云原生操作系统，声明式 API 是它的核心，Operator 操控万物。"
+      content : "Kubernetes 是云原生时代的操作系统，以不可变基础设施为设计的理念，以声明式 API 为核心，Operator 扩展的引擎。"
 
     # feature item loop
     - name : "Service Mesh"
       icon : "ti-layout-sidebar-left" # icon pack : https://themify.me/themify-icons
       image : "/images/banner/istio.svg"
-      content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面。"
+      content : "服务网格作为云原生网络基础设施，负责服务间通信的一切方面，旨在构建零信任网络。"
 
     # feature item loop
     - name : "Serverless"
@@ -152,11 +152,11 @@ funfacts:
     # funfact item loop
     - name : "社区直播"
       count : "30"
-      link: "https://cloudnative.to/academy/webinar/"
+      link: "https://space.bilibili.com/515485124/"
 
     # funfact item loop
     - name : "社区成员"
-      count : "10529"
+      count : "10566"
       link : "https://cloudnative.to"
 
 # funfact is for about page

@@ -128,11 +128,11 @@ funfacts:
     # funfact item loop
     - name : "Live Shows"
       count : "30"
-      link: "https://cloudnative.to/academy/webinar/"
+      link : "https://space.bilibili.com/515485124/"
 
     # funfact item loop
     - name : "Community Members"
-      count : "10529"
+      count : "10566"
       link : "https://cloudnative.to/en"
 
 # funfact is for about page
