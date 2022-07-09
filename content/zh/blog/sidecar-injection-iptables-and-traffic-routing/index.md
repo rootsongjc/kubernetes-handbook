@@ -733,7 +733,7 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 
 为了适配更多应用场景，outbound 方向通过 hook connect 来实现，实现原理如下：
 
-{{<figure src="hook-connect.jpg" alt="hook-connect 原理示意图" title="hook-connect 原理示意图" width="50%">}}
+{{<figure src="hook-connect.svg" alt="hook-connect 原理示意图" title="hook-connect 原理示意图" width="50%">}}
 
 无论采用哪种透明劫持方案，均需要解决获取真实目的 IP/端口的问题，使用 iptables 方案通过 getsockopt 方式获取，tproxy 可以直接读取目的地址，通过修改调用接口，hook connect 方案读取方式类似于 tproxy。
 
