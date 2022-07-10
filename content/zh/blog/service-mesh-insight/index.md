@@ -275,7 +275,7 @@ Aeraki + MetaProtocol 套件降低了在 Istio 中管理第三方协议的难度
 
 下图展示的 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 架构图。
 
-![image-20211123181346493](tsb.png)
+![Tetrate Service Bridge 架构图](tsb.png)
 
 ### API 网关与服务网格的融合
 
