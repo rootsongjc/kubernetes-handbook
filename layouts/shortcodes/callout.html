@@ -1,10 +1,10 @@
 <div class="alert">
 {{ if ne "" (.Get 1) }}
-<div class="alert-{{ .Get 0 }}-title py-2 px-2">
+<div class="alert-{{ .Get 0 }}-title py-1 px-2">
   {{ .Get 1 }}
 </div>
 {{ end }}
-<div class="alert-{{ .Get 0 }} py-2 px-2">
+<div class="alert-{{ .Get 0 }} py-1 px-2">
   {{ .Inner | markdownify | emojify  }}
 </div>
 </div>

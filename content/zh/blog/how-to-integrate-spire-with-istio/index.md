@@ -9,10 +9,8 @@ type: "post"
 image: "images/banner/auth.jpg"
 ---
 
-{{<callout note>}}
-
-注意：SPIRE 支持是 Istio 1.14 的新特性，请确保安装 1.14 及以上版本的 Istio。
-
+{{<callout note 读者须知>}}
+SPIRE 支持是 Istio 1.14 的新特性，请确保安装 1.14 及以上版本的 Istio。
 {{</callout>}}
 
 ## 安装 Istio
