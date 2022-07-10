@@ -1,6 +1,6 @@
 ---
 title: "Istio 服务网格的现状及未来"
-draft: false
+draft: true
 date: 2022-07-06T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
