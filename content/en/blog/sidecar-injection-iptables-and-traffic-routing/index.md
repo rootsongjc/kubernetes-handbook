@@ -476,7 +476,7 @@ tproxy can be used for redirection of inbound traffic without changing the desti
 
 In order to adapt to more application scenarios, the outbound direction is implemented by hook connect, which is implemented as follows.
 
-![hook-connect ](hook-connect.jpg)
+{{<figure src="hook-connect.svg" alt="hook-connect images" title="Hook Connect Diagram" width="50%">}}
 
 Whichever transparent hijacking scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, `tproxy` can read the destination address directly, by modifying the call interface, hook connect scheme reads in a similar way to tproxy.
 
