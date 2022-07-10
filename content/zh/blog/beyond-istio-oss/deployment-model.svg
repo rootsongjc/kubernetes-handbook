@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="-159 -147 3364 883" width="3364" height="883">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="30" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="18" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Medium"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.5 
+    <dc:date>2022-07-06 08:54:19 +0000</dc:date>
+  </metadata>
+  <g id="Canvas________" stroke-dasharray="none" stroke-opacity="1" stroke="none" fill="none" fill-opacity="1">
+    <title>服务网格的部署模式</title>
+    <rect fill="white" x="-159" y="-147" width="3364" height="883"/>
+    <g id="Canvas________: 模式 2">
+      <title>模式 2</title>
+      <g id="Graphic_78">
+        <text transform="translate(-144 240.1298)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="30" font-weight="700" fill="black" x="581.635" y="29">Model I: Sidecar per workload</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <rect x="-125" y="-106.22269" width="819" height="240.2227" fill="white"/>
+        <rect x="-125" y="-106.22269" width="819" height="240.2227" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-120 -101.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="381.667" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <rect x="-71" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="-71" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(-66 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_38">
+        <rect x="810" y="-106.22269" width="608" height="240.2227" fill="white"/>
+        <rect x="810" y="-106.22269" width="608" height="240.2227" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(815 -101.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="276.167" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <rect x="119" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="119" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(124 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <rect x="309" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="309" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(314 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <rect x="499" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="499" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(504 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_37">
+        <rect x="853.5" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="853.5" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(858.5 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_35">
+        <rect x="1043.5" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="1043.5" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1048.5 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <rect x="1233.5" y="-51.22269" width="141" height="119.22269" fill="white"/>
+        <rect x="1233.5" y="-51.22269" width="141" height="119.22269" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1238.5 -46.22269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Line_66">
+        <path d="M 189.5 57 L 189.5 102.42718 L 385.47754 102.42718 L 385.47754 69.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_67">
+        <path d="M 573.2051 57 L 573.2051 183.0097 L 1112.6404 183.0097 L 1112.6404 69.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+    <g id="Canvas________: 模式 3">
+      <title>模式 3</title>
+      <g id="Graphic_95">
+        <text transform="translate(-144 667.1298)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="30" font-weight="700" fill="black" x="567.955" y="29">Model II: Shared proxy per node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_94">
+        <rect x="810" y="337" width="608" height="263" fill="white"/>
+        <rect x="810" y="337" width="608" height="263" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(815 342)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="276.167" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_93">
+        <rect x="-125" y="337" width="819" height="263" fill="white"/>
+        <rect x="-125" y="337" width="819" height="263" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-120 342)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="381.667" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_92">
+        <rect x="-71" y="392" width="141" height="96" fill="white"/>
+        <rect x="-71" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(-66 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_91">
+        <rect x="119" y="392" width="141" height="96" fill="white"/>
+        <rect x="119" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(124 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_90">
+        <rect x="309" y="392" width="141" height="96" fill="white"/>
+        <rect x="309" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(314 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_89">
+        <rect x="499" y="392" width="141" height="96" fill="white"/>
+        <rect x="499" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(504 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_87">
+        <rect x="853.5" y="392" width="141" height="96" fill="white"/>
+        <rect x="853.5" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(858.5 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_86">
+        <rect x="1043.5" y="392" width="141" height="96" fill="white"/>
+        <rect x="1043.5" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1048.5 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_85">
+        <rect x="1233.5" y="392" width="141" height="96" fill="white"/>
+        <rect x="1233.5" y="392" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1238.5 397)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Line_83">
+        <line x1="318.89324" y1="566.5" x2="1057.6" y2="566.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_82">
+        <path d="M 1108.0898 542.5 L 1108.0898 531.5 L 1108.402 486.7497" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_80">
+        <path d="M -.5 472 L -.5 483 L -.9023824 549.844 L -.9023824 566.5 L 230.81355 566.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+    <g id="Canvas________: 模式 4">
+      <title>模式 4</title>
+      <g id="Graphic_79">
+        <text transform="translate(1557 254.1298)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="30" font-weight="700" fill="black" x="417.955" y="29">Model III: Shared proxy per service account per node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_59">
+        <rect x="2511" y="-109" width="608" height="273.73206" fill="white"/>
+        <rect x="2511" y="-109" width="608" height="273.73206" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2516 -104)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="276.167" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_51">
+        <rect x="1576" y="-109" width="819" height="273.73206" fill="white"/>
+        <rect x="1576" y="-109" width="819" height="273.73206" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1581 -104)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="381.667" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_50">
+        <rect x="1630" y="-63.72269" width="141" height="96" fill="white"/>
+        <rect x="1630" y="-63.72269" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1635 -58.72269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_48">
+        <rect x="1820" y="-63.72269" width="141" height="96" fill="white"/>
+        <rect x="1820" y="-63.72269" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1825 -58.72269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_46">
+        <rect x="2010" y="-63.72269" width="141" height="96" fill="white"/>
+        <rect x="2010" y="-63.72269" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2015 -58.72269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_44">
+        <rect x="2200" y="-63.72269" width="141" height="96" fill="white"/>
+        <rect x="2200" y="-63.72269" width="141" height="96" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2205 -58.72269)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_58">
+        <rect x="2554.5" y="-73" width="141" height="105.27731" fill="white"/>
+        <rect x="2554.5" y="-73" width="141" height="105.27731" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2559.5 -68)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_56">
+        <rect x="2744.5" y="-73" width="141" height="105.27731" fill="white"/>
+        <rect x="2744.5" y="-73" width="141" height="105.27731" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2749.5 -68)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_54">
+        <rect x="2934.5" y="-73" width="141" height="105.27731" fill="white"/>
+        <rect x="2934.5" y="-73" width="141" height="105.27731" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2939.5 -68)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+    </g>
+    <g id="Canvas________: 模式">
+      <title>模式</title>
+      <g id="Graphic_277"/>
+      <g id="Graphic_155">
+        <text transform="translate(1581 667.1298)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="30" font-weight="700" fill="black" x="484.51" y="29">Model IV: Micro-proxy with remote L7 proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_154">
+        <rect x="2511" y="334" width="608" height="173" fill="white"/>
+        <rect x="2511" y="334" width="608" height="173" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2516 339)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="276.167" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_153">
+        <rect x="1591" y="337" width="828" height="173" fill="white"/>
+        <rect x="1591" y="337" width="828" height="173" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1596 342)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="386.167" y="18">Node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_152">
+        <rect x="1654" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="1654" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1659 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_151">
+        <rect x="1844" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="1844" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(1849 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_150">
+        <rect x="2034" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="2034" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2039 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_149">
+        <rect x="2224" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="2224" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2229 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_148">
+        <rect x="2554.5" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="2554.5" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2559.5 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_147">
+        <rect x="2744.5" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="2744.5" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2749.5 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_146">
+        <rect x="2934.5" y="373" width="141" height="110.5" fill="white"/>
+        <rect x="2934.5" y="373" width="141" height="110.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <text transform="translate(2939.5 378)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="18" font-weight="700" fill="black" x="48.499" y="18">Pod</tspan>
+        </text>
+      </g>
+      <g id="Line_162">
+        <line x1="1966.15" y1="457.9" x2="2039.95" y2="457.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_182">
+        <title>Envoy</title>
+        <rect x="-50.04492" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="-50.04492" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-45.04492 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_184">
+        <title>App</title>
+        <rect x="-50.04492" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="-50.04492" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-45.04492 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_186">
+        <title>Envoy</title>
+        <rect x="139.95508" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="139.95508" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(144.95508 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_185">
+        <title>App</title>
+        <rect x="139.95508" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="139.95508" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(144.95508 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_190">
+        <title>Envoy</title>
+        <rect x="335.9326" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="335.9326" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(340.9326 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_189">
+        <title>App</title>
+        <rect x="335.9326" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="335.9326" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(340.9326 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_192">
+        <title>Envoy</title>
+        <rect x="523.66016" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="523.66016" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(528.66016 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_191">
+        <title>App</title>
+        <rect x="523.66016" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="523.66016" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(528.66016 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_194">
+        <title>Envoy</title>
+        <rect x="874.4551" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="874.4551" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(879.4551 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_193">
+        <title>App</title>
+        <rect x="874.4551" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="874.4551" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(879.4551 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.384922" y="16">Service B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_196">
+        <title>Envoy</title>
+        <rect x="1064.4551" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="1064.4551" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1069.4551 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_195">
+        <title>App</title>
+        <rect x="1064.4551" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="1064.4551" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1069.4551 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_198">
+        <title>Envoy</title>
+        <rect x="1254.4551" y="26" width="99.08984" height="31" fill="#0a55a8"/>
+        <rect x="1254.4551" y="26" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1259.4551 31.767944)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.416922" y="16">Envoy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_197">
+        <title>App</title>
+        <rect x="1254.4551" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="1254.4551" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1259.4551 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_199">
+        <title>Envoy</title>
+        <rect x="243.71355" y="542.5" width="75.17969" height="48" fill="#0a55a8"/>
+        <rect x="243.71355" y="542.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(248.71355 556.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_201">
+        <title>Envoy</title>
+        <rect x="1070.5" y="542.5" width="75.17969" height="48" fill="#0a55a8"/>
+        <rect x="1070.5" y="542.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1075.5 556.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+        </text>
+      </g>
+      <g id="Group_203">
+        <g id="Graphic_135">
+          <text transform="translate(2696.576 617.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service D</tspan>
+          </text>
+        </g>
+        <g id="Graphic_202">
+          <title>Envoy</title>
+          <rect x="2694.4102" y="564.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2694.4102" y="564.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2699.4102 578.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_204">
+        <g id="Graphic_206">
+          <text transform="translate(2223.3413 617.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="6536993e-19" y="16">Service B</tspan>
+          </text>
+        </g>
+        <g id="Graphic_205">
+          <title>Envoy</title>
+          <rect x="2221.0315" y="564.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2221.0315" y="564.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2226.0315 578.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_207">
+        <g id="Graphic_209">
+          <text transform="translate(2459.8147 617.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service C</tspan>
+          </text>
+        </g>
+        <g id="Graphic_208">
+          <title>Envoy</title>
+          <rect x="2457.6488" y="564.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2457.6488" y="564.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2462.6488 578.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_210">
+        <g id="Graphic_212">
+          <text transform="translate(1987.46 617.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="37658765e-20" y="16">Service A</tspan>
+          </text>
+        </g>
+        <g id="Graphic_211">
+          <title>Envoy</title>
+          <rect x="1984.854" y="564.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="1984.854" y="564.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1989.854 578.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_213">
+        <title>Envoy</title>
+        <rect x="1672.85" y="442.4" width="103.30004" height="31.899994" fill="#0a55a8"/>
+        <rect x="1672.85" y="442.4" width="103.30004" height="31.899994" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1677.85 448.61794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_214">
+        <title>Envoy</title>
+        <rect x="1862.85" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="1862.85" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1867.85 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_215">
+        <title>Envoy</title>
+        <rect x="2052.85" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="2052.85" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2057.85 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_218">
+        <title>Envoy</title>
+        <rect x="2573.35" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="2573.35" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2578.35 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Line_221">
+        <path d="M 1724.5 474.3 L 1724.5 588.3982 L 1964.9656 588.3982 L 1965.954 588.5 L 1971.954 588.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_222">
+        <path d="M 2060.0338 588.5 L 2181.7214 588.5 L 2181.7214 539.64286 L 2625 539.64286 L 2625 486.3" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_223">
+        <text transform="translate(196.3354 153)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="7531753e-19" y="16">Service A -&gt; Service C</tspan>
+        </text>
+      </g>
+      <g id="Line_224">
+        <path d="M 318.89324 566.5 L 569.80974 566.5 L 569.80974 484.8963" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_225">
+        <text transform="translate(196.3354 616)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="7531753e-19" y="16">Service A -&gt; Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_226">
+        <title>App</title>
+        <rect x="1650.955" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="1650.955" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1655.955 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_227">
+        <title>App</title>
+        <rect x="1672.85" y="405" width="103.30004" height="31" fill="#333"/>
+        <rect x="1672.85" y="405" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1677.85 410.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.64202" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_228">
+        <title>App</title>
+        <rect x="1862.85" y="405" width="103.30004" height="31" fill="#333"/>
+        <rect x="1862.85" y="405" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1867.85 410.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.64202" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_229">
+        <title>App</title>
+        <rect x="2052.85" y="405" width="103.30004" height="31" fill="#333"/>
+        <rect x="2052.85" y="405" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2057.85 410.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.19402" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_230">
+        <title>Envoy</title>
+        <rect x="2242.85" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="2242.85" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2247.85 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_231">
+        <title>App</title>
+        <rect x="2242.85" y="405.5" width="103.30004" height="31" fill="#333"/>
+        <rect x="2242.85" y="405.5" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2247.85 411.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.49002" y="16">Service B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_232">
+        <title>App</title>
+        <rect x="2573.35" y="405.5" width="103.30004" height="31" fill="#333"/>
+        <rect x="2573.35" y="405.5" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2578.35 411.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.19402" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_234">
+        <title>Envoy</title>
+        <rect x="2763.35" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="2763.35" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2768.35 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_233">
+        <title>App</title>
+        <rect x="2763.35" y="405.5" width="103.30004" height="31" fill="#333"/>
+        <rect x="2763.35" y="405.5" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2768.35 411.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.19402" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_236">
+        <title>Envoy</title>
+        <rect x="2953.35" y="442.4" width="103.30004" height="31" fill="#0a55a8"/>
+        <rect x="2953.35" y="442.4" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2958.35 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.0180206" y="16">Micro Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_235">
+        <title>App</title>
+        <rect x="2953.35" y="405.5" width="103.30004" height="31" fill="#333"/>
+        <rect x="2953.35" y="405.5" width="103.30004" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2958.35 411.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.19402" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_237">
+        <title>App</title>
+        <rect x="1844" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="1844" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1849 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_238">
+        <title>App</title>
+        <rect x="2034" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="2034" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2039 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_239">
+        <title>App</title>
+        <rect x="2220.955" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="2220.955" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2225.955 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_240">
+        <title>App</title>
+        <rect x="-50.04492" y="441" width="99.08984" height="31" fill="#333"/>
+        <rect x="-50.04492" y="441" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-45.04492 446.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_241">
+        <title>App</title>
+        <rect x="139.95508" y="441" width="99.08984" height="31" fill="#333"/>
+        <rect x="139.95508" y="441" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(144.95508 446.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_242">
+        <title>App</title>
+        <rect x="329.95508" y="441" width="99.08984" height="31" fill="#333"/>
+        <rect x="329.95508" y="441" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(334.95508 446.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.384922" y="16">Service B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_243">
+        <title>App</title>
+        <rect x="519.9551" y="441" width="99.08984" height="31" fill="#333"/>
+        <rect x="519.9551" y="441" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(524.9551 446.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_244">
+        <title>App</title>
+        <rect x="876.7275" y="441" width="99.08984" height="31" fill="#333"/>
+        <rect x="876.7275" y="441" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(881.7275 446.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_245">
+        <title>App</title>
+        <rect x="1065.9551" y="442.85" width="99.08984" height="31" fill="#333"/>
+        <rect x="1065.9551" y="442.85" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1070.9551 448.61794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_246">
+        <title>App</title>
+        <rect x="1254.4551" y="442.4" width="99.08984" height="31" fill="#333"/>
+        <rect x="1254.4551" y="442.4" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1259.4551 448.16794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Graphic_247">
+        <text transform="translate(1659 617.5)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="7531753e-19" y="16">Service A -&gt; Service C</tspan>
+        </text>
+      </g>
+      <g id="Group_248">
+        <g id="Graphic_250">
+          <text transform="translate(1720.032 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="37658765e-20" y="16">Service A</tspan>
+          </text>
+        </g>
+        <g id="Graphic_249">
+          <title>Envoy</title>
+          <rect x="1717.4262" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="1717.4262" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1722.4262 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_251">
+        <path d="M 1700.5 17 L 1700.5 48.75 L 1755.016 48.75 L 1755.016 67.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_252">
+        <path d="M 1893.545 17 L 1893.545 48.75 L 1755.016 48.75 L 1755.016 67.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_253">
+        <g id="Graphic_255">
+          <text transform="translate(2048.121 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service C</tspan>
+          </text>
+        </g>
+        <g id="Graphic_254">
+          <title>Envoy</title>
+          <rect x="2045.955" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2045.955" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2050.955 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_256">
+        <g id="Graphic_258">
+          <text transform="translate(2235.076 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service D</tspan>
+          </text>
+        </g>
+        <g id="Graphic_257">
+          <title>Envoy</title>
+          <rect x="2232.9102" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2232.9102" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2237.9102 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_259">
+        <line x1="1792.6058" y1="104.5" x2="2033.055" y2="104.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_260">
+        <line x1="2083.545" y1="80.5" x2="2083.545" y2="29.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_261">
+        <g id="Graphic_263">
+          <text transform="translate(2590.016 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="37658765e-20" y="16">Service A</tspan>
+          </text>
+        </g>
+        <g id="Graphic_262">
+          <title>Envoy</title>
+          <rect x="2587.4102" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2587.4102" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2592.4102 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_264">
+        <g id="Graphic_266">
+          <text transform="translate(2779.576 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service C</tspan>
+          </text>
+        </g>
+        <g id="Graphic_265">
+          <title>Envoy</title>
+          <rect x="2777.41" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2777.41" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2782.41 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_267">
+        <g id="Graphic_269">
+          <text transform="translate(2969.576 133.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="881073e-18" y="16">Service D</tspan>
+          </text>
+        </g>
+        <g id="Graphic_268">
+          <title>Envoy</title>
+          <rect x="2967.41" y="80.5" width="75.17969" height="48" fill="#0a55a8"/>
+          <rect x="2967.41" y="80.5" width="75.17969" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2972.41 94.76794)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="10.949844" y="16">Proxy</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_270">
+        <title>App</title>
+        <rect x="2575.455" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="2575.455" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2580.455 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.536922" y="16">Service A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_271">
+        <title>App</title>
+        <rect x="2765.455" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="2765.455" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2770.455 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_272">
+        <title>App</title>
+        <rect x="2955.455" y="-14" width="99.08984" height="31" fill="#333"/>
+        <rect x="2955.455" y="-14" width="99.08984" height="31" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2960.455 -8.232056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="8.088922" y="16">Service D</tspan>
+        </text>
+      </g>
+      <g id="Line_273">
+        <path d="M 1792.6058 104.5 L 1891.358 104.5 L 1891.358 190.74074 L 2744.5 190.74074 L 2744.5 104.5 L 2764.51 104.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_274">
+        <line x1="2815" y1="80.5" x2="2815" y2="29.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_275">
+        <path d="M 1951.5 553.9641 L 2802.5 553.9641 L 2802.5 641.9641 L 1951.5 641.9641 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_276">
+        <text transform="translate(1659 185.26794)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="7531753e-19" y="16">Service A -&gt; Service C</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

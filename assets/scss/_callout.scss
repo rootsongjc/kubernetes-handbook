@@ -36,7 +36,7 @@ div.alert a {
 }
 
 .alert-note p{
-  color: #12537e;
+    color: #12537e;
 }
 
 .alert-warning{
@@ -49,6 +49,24 @@ div.alert a {
   color: #cd0930;
 }
 
-.alert-title p {
+.alert-warning-title{
+  font-weight: 900;
+  background-color: #cd0930;
+  color: white;
+}
+
+.alert-note-title {
     font-weight: 900;
+    color: white;
+    font-size: 1rem;
+    background-color: #2b94c3;
+    padding: 0 1.5rem;
+}
+
+.alert {
+    padding: 0;
+    ul{
+        padding: 0 1.5rem;
+        margin-bottom:0;
+    }
 }
