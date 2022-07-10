@@ -383,15 +383,69 @@ spec:
       weight: 25 
 ```
 
-该配置将 `servicea.example.com` 同过 T1 网关暴露到网格外，并将网格外访问该服务的流量的 `75%` 转发到 `cluster1`，`25%` 的流量转发到 `cluster2`。
+该配置将 `servicea.example.com` 同过 T1 网关暴露到网格外，并将网格外访问该服务的流量的 `75%` 转发到 `cluster1`，`25%` 的流量转发到 `cluster2`，另外为了应对多集群中的流量、服务和安全配置，Tetrate 旗舰产品 Tetrate Service Bridge 中还增加了 一系列 Group API，详见 [TSB 文档](https://docs.tetrate.io/service-bridge/1.4.x)。
 
 ## Istio 开源生态{#ecosystem}
 
-Istio 开源在至今已经五年都了，近两年来出现了很多开源项目，其中网易开源的 Slime 和腾讯开源的 Aeraki 在 Istio 之上构建了一层管理平面。
+Istio 开源在至今已经五年多了，近两年来出现了很多开源项目，其中比较代表性的有：
 
-## 扩展 Istio
+- 网易开源的 Slime
+- 腾讯开源的 Aeraki
+- Istio 官方对 Wasm 插件的支持
 
+它们的出现使得 Istio 更加智能化并扩展了 Istio 的适用范围。
 
+### Slime
+
+Slime 是由网易数帆微服务团队开源的一款基于 Istio 的智能网格管理器。Slime 基于 Kubernetes Operator 实现，可作为 Istio 的 CRD 管理器，无须对 Istio 做任何定制化改造，就可以定义动态的服务治理策略，从而达到自动便捷使用 Istio 和 Envoy 高阶功能的目的。
+
+我们在前文的[控制平面性能优化](#control-plane-perf-optimizing)中提到了通过「减少需要推送的配置」的方式来优化 Istio 的性能，但是 Istio 无法做到自动识别无法依赖以最优化需要推送到每个 sidecar 的代理配置，Slime 提供了 `lazyload` 控制器，可以帮助我们实现配置懒加载，用户无须手动配置 `SidecarScope` [^15]，Istio 可以按需加载服务配置和服务发现信息；
+
+下图展示的将 Slime 作为 Istio 的管理平面更新数据平面配置的流程图。
+
+![使用 Slime 更新 Istio 数据平面配置的流程图](slime-process.svg)
+
+数据平面配置更新的具体步骤如下：
+
+具体步骤如下：
+
+1. Slime Operator 根据管理员的配置在 Kubernetes 中完成 Slime 组件的初始化；
+2. 开发者创建符合 Slime CRD 规范的配置并应用到 Kubernetes 集群中；
+3. Slime 查询 Prometheus 中保存的相关服务的监控数据，结合 Slime CRD 中自适应部分的配置，将 Slime CRD 转换为 Istio CRD，同时将其推送到 Global Proxy 中；
+4. Istio 监听 Istio CRD 的创建；
+5. Istio 将 Sidecar Proxy 的配置信息推送到数据平面相应的 Sidecar Proxy 中；
+
+关于 Slime 的更多信息请查看 [云原生资料库](https://lib.jimmysong.io/istio-handbook/ecosystem/slime/)。
+
+### Aeraki
+
+Aeraki Mesh 是腾讯云在 2021 年 3 月开源的一个服务网格领域的项目，基于 Istio 扩展对七层协议的支持，专注于解决 Istio 中的**非 HTTP 协议**的服务治理，已于 2022 年 6 月进入 CNCF Sandbox。
+
+下图展示了 Aeraki 的架构图。
+
+{{<figure title="Aeraki 架构图" alt="Aeraki 架构图" src="aeraki-arch.svg" width="60%">}}
+
+使用 Aeraki 将非 HTTP 服务到 Istio 网格中的流程如下：
+
+1. Aeraki 的 X2Istio 组件对接服务注册中心，获取非 HTTP 服务的注册信息，并生成 ServiceEntry 向 Istio 中注册；
+2. Aeraki 作为 Istio 之上的管理平面，它从 Istio 中获取 ServiceEntry 配置；
+3. Aeraki 通过端口命令规判断服务的协议类型（如 `tcp-metaprotocol-dubbo`），然后生成 MetaProtocol Proxy Filter（兼容 EnvoyFilter）配置，同时修改 RDS 地址，将其指向 Aeraki；
+4. Istio 使用 xDS 协议将配置（LDS、CDS、EDS 等）下发给数据平面；
+5. Aeraki 根据服务注册表中的信息和用户设置生成路由规则，通过 RDS 发送给数据平面；
+
+在 Istio 中接入非 HTTP 服务的整个流程中的关键是 **MetaProtocol Proxy** 。Istio 默认支持 HTTP/HTTP2、TCP 和 gRPC 协议，实验性支持 Mongo、MySQL 和 Redis 协议 [^14]。若要使用 Istio 路由其他协议的流量，不仅需要修改 Istio 控制平面并扩展 Envoy 带来大量工作量，而且因为不同的协议共享通用控制逻辑，还会带来很多重复性工作。MetaProtocol Proxy 基于 Envoy 实现的一个通用七层协议代理。MetaProtocol Proxy 是在 Envoy 代码基础上的扩展，为七层协议统一实现了服务发现、负载均衡、RDS 动态路由、流量镜像、故障注入、本地/全局限流等基础能力，大大降低了在 Envoy 上开发第三方协议的难度。
+
+下图展示的 MetaProtocol Proxy 的架构图。
+
+![MetaProtocol Proxy 架构图](metaprotocol-proxy.svg)
+
+当我们想扩展 Istio 使其支持 Kafka、Dubbo、Thrift 等其他七层协议时，只需要实现上图中的编解码的接口（Decode 和 Encode），就可以基于 MetaProtocol 快速开发一个第三方协议插件。因为 MetaProtocol Proxy 是在 Envoy 基础上的扩展，你仍然可以使用不同语言为其开发过滤器，使用 `EnvoyFilter` 资源将配置下发到数据平面。
+
+关于 Aeraki 的更多信息请查看 [云原生资料库](https://lib.jimmysong.io/istio-handbook/ecosystem/aeraki/)。
+
+### WasmPlugin API
+
+TODO
 
 ## 谁应该使用 Istio？
 
@@ -411,6 +465,12 @@ Istio 开源在至今已经五年都了，近两年来出现了很多开源项�
 {{<figure title="云原生技术堆栈示意图" alt="云原生技术堆栈示意图" src="cloud-native-stack.svg" width="60%">}}
 
 解释。。。
+
+## 零信任
+
+### 身份认证
+
+### mTLS
 
 ## 服务网格将走向何处？
 
@@ -438,3 +498,5 @@ Istio 开源在至今已经五年都了，近两年来出现了很多开源项�
 [^11]: [PEP](https://www.oreilly.com/library/view/network-access-control/9780470398678/9780470398678_policy_enforcement_point.html)，全称 Policy Enforcement Point，策略执行点（PEP）是控制用户访问并确保策略决策点 (PDP) 做出授权决策的网络或安全设备。在一些 NAC 实现中，PDP 是有线交换机或无线接入点。在其他情况下，PEP 是防火墙、IPS、服务器或内联设备。根据实施情况，PEP 和 PDP 可以是独立设备，也可以合并为单个设备。
 [^12]: Apache SkyWalking 的 Rover 组件利用 eBPF 技术改进了 SkyWalking 的剖析功能，可用于分析服务网格的性能问题，请参考 [使用 eBPF 准确定位服务网格的关键性能问题](https://lib.jimmysong.io/blog/pinpoint-service-mesh-critical-performance-impact-by-using-ebpf/)。
 [^13]: 有多家公司正在合作开发 Envoy Gateway，包括 [Ambassador Labs](https://www.getambassador.io/)、[Fidelity Investments](https://www.fidelity.com/)、[Project Contour](https://projectcontour.io/) 和 [VMware](https://www.vmware.com/)。
+[^14]: Istio 仅可以路由 TCP 流量，默认支持 HTTP、HTTPS、gRPC 和原始 TCP 协议，其中 Sidecar 和 Gateway 所支持的协议范围有所不同，详见 [Istio 文档](https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/)。
+[^15]: SidecarScope 是在 Istio 1.1 版本中引入的，它并不是一个直接面向用户的配置项，而是 Sidecar 资源的包装器，具体来说就是 [Sidecar 资源](https://lib.jimmysong.io/istio-handbook/config-networking/sidecar/)中的 `egress` 选项。通过该配置可以减少 Istio 向 Sidecar 下发的数据量，例如只向某个命名空间中的某些服务下发某些 hosts 的访问配置，从而提高应用提高性能。

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-1336 1470 2615 1253" width="2615" height="1253">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-1335 1471 2614 1251" width="2614" height="1251">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="32" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
       <font-face-src>
@@ -44,16 +44,15 @@
     </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.5 
-    <dc:date>2022-07-06 13:52:31 +0000</dc:date>
+    <dc:date>2022-07-10 11:09:37 +0000</dc:date>
   </metadata>
-  <g id="Istio_____" stroke="none" fill="none" fill-opacity="1" stroke-dasharray="none" stroke-opacity="1">
+  <g id="Istio_____" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill-opacity="1">
     <title>Istio 组件拓扑图</title>
-    <rect fill="white" x="-1336" y="1470" width="2615" height="1253"/>
+    <rect fill="white" x="-1335" y="1471" width="2614" height="1251"/>
     <g id="Istio_____: Layer 1">
       <title>Layer 1</title>
       <g id="Graphic_248">
         <rect x="-1335" y="1471" width="2613.1273" height="1250.6677" fill="white"/>
-        <rect x="-1335" y="1471" width="2613.1273" height="1250.6677" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_216">
         <rect x="-1287" y="1708.058" width="730.5687" height="976" fill="white"/>
