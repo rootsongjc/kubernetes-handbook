@@ -66,7 +66,6 @@ about:
   title : "About Jimmy Song"
   partner_enabled: false
   funfacts_enabled: false
-  #image : "images/about/about-me.jpg"
   image: "/images/jimmy-song-avatar.webp"
   content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF Ambassador, [Cloud Native Community(China)](https://cloudnative.to/en) founder, former cloud native advocate and head of OSS office at [Ant Group](https://www.antgroup.com). He mainly focuses on cloud native fields, including Kubernetes and Service Mesh.  He is one of the authors of books such as "Deeper Understanding of Istio" and "Future Architecture".'
   button:
@@ -149,9 +148,12 @@ blog:
 footer:
   content : "Fellow me on twitter"
   button_link : "https://twitter.com/jimmysongio"
-  image : "images/jimmysong-twitter-qr-code.webp"
   footer_image : "images/jimmysong-twitter-qr-code.webp"
   address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false
   button_title: "Follow Me"
+
+### contact ###
+contact:
+  qr_code: "/images/jimmysong-twitter-qr-code.webp"

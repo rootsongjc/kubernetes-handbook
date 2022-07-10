@@ -176,3 +176,7 @@ footer:
   subscribe_enable: false
   button_link: "/contact"
   button_title: "订阅"
+
+### contact ###
+contact:
+  qr_code: "images/jimmysongio-wechat.webp"
