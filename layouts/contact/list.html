@@ -20,7 +20,9 @@
       </div>
       <div class="col-lg-5 content">
         {{ .Content }}
-        <img src="{{ .Site.Params.wechatCode| relURL }}" width="128px" alt="img">
+        {{ with $data.homepage.contact }}
+        <img src="{{ .qr_code | relURL }}" width="128px" alt="img">
+        {{ end }}
       </div>
     </div>
   </div>

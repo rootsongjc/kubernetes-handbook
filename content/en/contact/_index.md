@@ -2,7 +2,7 @@
 title: "Contact"
 draft: false
 # page title background image
-bg_image: "images/backgrounds/page-title.jpg"
+bg_image: "images/backgrounds/page-title.webp"
 # meta description
 description : "Contact with Jimmy Song."
 ---
@@ -15,4 +15,4 @@ You can send me a message directly via the form on the current web page.
 
 ##### Follow me on Twitter
 
-Free feel to directly message to me on twitter.
+Free feel to directly message to me on twitter [@jimmysongio](https://twitter.com/jimmysongio)
