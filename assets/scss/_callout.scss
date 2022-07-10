@@ -53,14 +53,15 @@ div.alert a {
   font-weight: 900;
   background-color: #cd0930;
   color: white;
+  font-size: 1rem;
+  background-image: linear-gradient(to left, transparent 10%, #cd0930 90%);
 }
 
 .alert-note-title {
     font-weight: 900;
     color: white;
     font-size: 1rem;
-    background-color: #2b94c3;
-    padding: 0 1.5rem;
+    background-image: linear-gradient(to left, transparent 10%, #0a55a7 90%);
 }
 
 .alert {
