@@ -116,8 +116,9 @@
   $('.content img').on('click', function (e) {
     BigPicture({
       el: e.target,
-    })
-  })
+      overlayColor: 'rgba(15,15,15,.94)',
+    });
+  });
 
 })(jQuery);
 

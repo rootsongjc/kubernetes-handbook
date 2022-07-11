@@ -1,7 +1,7 @@
 ---
 title: "Istio 服务网格的现状及未来"
 draft: true
-date: 2022-07-06T12:27:49+08:00
+date: 2022-07-11T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
 tags: ["eBPF","wasm","零信任","Service Mesh","Istio"]
@@ -399,15 +399,13 @@ Istio 开源在至今已经五年多了，近两年来出现了很多开源项�
 
 Slime 是由网易数帆微服务团队开源的一款基于 Istio 的智能网格管理器。Slime 基于 Kubernetes Operator 实现，可作为 Istio 的 CRD 管理器，无须对 Istio 做任何定制化改造，就可以定义动态的服务治理策略，从而达到自动便捷使用 Istio 和 Envoy 高阶功能的目的。
 
-我们在前文的[控制平面性能优化](#control-plane-perf-optimizing)中提到了通过「减少需要推送的配置」的方式来优化 Istio 的性能，但是 Istio 无法做到自动识别无法依赖以最优化需要推送到每个 sidecar 的代理配置，Slime 提供了 `lazyload` 控制器，可以帮助我们实现配置懒加载，用户无须手动配置 `SidecarScope` [^15]，Istio 可以按需加载服务配置和服务发现信息；
+我们在前文的[控制平面性能优化](#control-plane-perf-optimizing)中提到了通过「减少需要推送的配置」的方式来优化 Istio 的性能，但是 Istio 无法做到自动识别无法依赖以最优化需要推送到每个 sidecar 的代理配置，Slime 提供了 `lazyload` 控制器，可以帮助我们实现配置懒加载，用户无须手动配置 `SidecarScope` [^15]，Istio 可以按需加载服务配置和服务发现信息。
 
-下图展示的将 Slime 作为 Istio 的管理平面更新数据平面配置的流程图。
+下图展示的是 Slime 作为 Istio 的管理平面更新数据平面配置的流程图。
 
 ![使用 Slime 更新 Istio 数据平面配置的流程图](slime-process.svg)
 
 数据平面配置更新的具体步骤如下：
-
-具体步骤如下：
 
 1. Slime Operator 根据管理员的配置在 Kubernetes 中完成 Slime 组件的初始化；
 2. 开发者创建符合 Slime CRD 规范的配置并应用到 Kubernetes 集群中；
@@ -415,7 +413,7 @@ Slime 是由网易数帆微服务团队开源的一款基于 Istio 的智能网�
 4. Istio 监听 Istio CRD 的创建；
 5. Istio 将 Sidecar Proxy 的配置信息推送到数据平面相应的 Sidecar Proxy 中；
 
-关于 Slime 的更多信息请查看 [云原生资料库](https://lib.jimmysong.io/istio-handbook/ecosystem/slime/)。
+因为数据平面中的所有服务的首次调用都通过 Global Proxy，该 Proxy 可以记录所有服务的调用和依赖信息，根据该依赖信息更新 Istio 中 Sidecar 资源的配置；当某个服务的调用链被 VirtualService 中的路由信息重新定义时， Global Proxy 原有记录就失效了，需要一个新的数据结构来维护该服务的调用关系。Slime 创建了名为 `ServiceFence` 的 CRD 来维护服务调用关系以解决服务信息缺失问题。关于 Slime 的更多信息请查看 [云原生资料库](https://lib.jimmysong.io/istio-handbook/ecosystem/slime/)。
 
 ### Aeraki
 
@@ -468,7 +466,13 @@ TODO
 
 ## 零信任
 
+零信任（Zero Trust）是 IstioCon 2022 的一个主要话题，Istio 可以帮助我们实现零信任网络，其主要贡献在以下两个方面。
+
 ### 身份认证
+
+关于身份
+
+![SPIRE 部署在 Kubernetes 中的架构图](spire-with-kubernetes.svg)
 
 ### mTLS
 

@@ -65,7 +65,7 @@ link = "plugins/search/mark.js"
 [[params.plugins.js]]
 link = "plugins/search/search.js"
 [[params.plugins.js]]
-link = "plugins/bigPicture/bigPicture.js"
+link = "plugins/bigpicture/bigpicture.min.js"
 [[params.plugins.js]]
 link = "plugins/hex_md5/hex_md5.js"
 [[params.plugins.js]]
