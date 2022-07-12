@@ -39,10 +39,10 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 | 规则名称    | raw  | filter | nat  | mangle | security |
 | ----------- | ---- | ------ | ---- | ------ | -------- |
 | PREROUTING  | ✓    |        | ✓    | ✓      |          |
-| INPUT       |      | ✓      | ✓    | ✓      | ✓        |
-| OUTPUT      |      | ✓      | ✓    | ✓      | ✓        |
+| INPUT       |      | ✓      |      | ✓      | ✓        |
+| OUTPUT      | ✓    | ✓      | ✓    | ✓      | ✓        |
 | POSTROUTING |      |        | ✓    | ✓      |          |
-| FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
+| FORWARD     |      | ✓      |      | ✓      | ✓        |
 
 ## 理解 iptables 规则
 

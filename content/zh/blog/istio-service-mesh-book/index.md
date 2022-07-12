@@ -13,7 +13,7 @@ image: "images/banner/istio-book.jpg"
 
 2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已5年有余。在这5年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio 图书出版领域，我国走在了世界的前列。
 
-![Istio 开源时间线](istio-open-source-history.jpg)
+![Istio 开源时间线](istio-history.svg)
 
 ## 服务网格：云原生的核心技术之一
 
@@ -31,7 +31,7 @@ image: "images/banner/istio-book.jpg"
 
 云原生的发展方兴未艾，虽然不断有新的技术和产品出现，但作为整个云原生技术栈的一部分，服务网格在过去一年里不断夯实了它作为“云原生网络基础设施”的定位。下图展示了云原生技术栈模型，其中的每一层都有一些代表性的技术来定义标准。作为新时代的中间件，服务网格与其他云原生技术交相辉映，如 Dapr（分布式应用程序运行时）定义了云原生中间件的能力模型，OAM 定义了云原生应用程序模型等，而服务网格定义了云原生七层网络模型。
 
-{{<figure title="云原生应用模型" alt="云原生应用模型" src="model.jpg" class="mx-auto text-center" width="80%">}}
+{{<figure title="云原生应用技术栈" alt="云原生应用技术栈" src="cloud-native-stack.svg" width="80%">}}
 
 ## 为什么需要服务网格
 

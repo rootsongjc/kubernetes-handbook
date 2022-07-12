@@ -40,11 +40,11 @@ image: "images/banner/infoq-2022.jpg"
 
 下图展示的是跨越鸿沟理论中不同阶段人群的分类及占比。
 
-![跨越鸿沟理论中不同阶段人群的分类及占比](https://tva1.sinaimg.cn/large/e6c9d24ely1h3i08cufbsj218g0p0dhn.jpg)
+![跨越鸿沟理论中不同阶段人群的分类及占比](chasm.jpg)
 
 我们来看下 InfoQ 6 月新出的「云和 DevOps」趋势报告。
 
-![软件开发云和 DevOps 趋势图（2022 年 6 月）](https://tva1.sinaimg.cn/large/e6c9d24ely1h3i0uoqn13j20xc0ndtb5.jpg)
+![软件开发云和 DevOps 趋势图（2022 年 6 月）](infoq.jpg)
 
 我们可以看到像低代码、eBPF、Data Mesh、WASM 已经出现在创新者视线里了。Service Mesh 还在「早期采用者」阶段，这点比我预想的要慢好多，我以为服务网格已经跨越鸿沟了，你觉得呢？
 

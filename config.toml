@@ -26,6 +26,10 @@ notAlternative = true
 vars = ["title", "summary", "date", "permalink", "image","description"]
 params = ["tags","categories"]
 
+[params.repository]
+url = "https://github.com/rootsongjc/website"
+branch = "master"
+
 ############################# Plugins ##############################
 
 # CSS Plugins

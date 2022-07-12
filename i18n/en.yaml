@@ -189,3 +189,6 @@
 
 - id: follow_me
   translation: "Follow Me"
+
+- id: edit_page
+  translation: "Edit this page"

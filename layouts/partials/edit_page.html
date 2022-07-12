@@ -1,0 +1,9 @@
+{{/* Add link to let visitors edit the page on GitHub. */}}
+{{ if .Params.editable | and site.Params.repository.url }}
+{{/* Get language subfolder for multilingual sites. */}}
+<p class="edit-page">
+<a href="{{site.Params.repository.url}}/edit/{{site.Params.repository.branch | default "main"}}/{{ .Site.Params.contentDir}}/{{.File.Path}}">
+  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ i18n "edit_page" | default "Edit this page" }}
+  </a>
+</p>
+{{ end }}
