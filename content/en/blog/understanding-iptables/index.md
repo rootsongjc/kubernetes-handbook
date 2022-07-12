@@ -39,10 +39,10 @@ The chain types in the different tables are as follows.
 | Rule name   | raw  | filter | nat  | mangle | security |
 | ----------- | ---- | ------ | ---- | ------ | -------- |
 | PREROUTING  | ✓    |        | ✓    | ✓      |          |
-| INPUT       |      | ✓      | ✓    | ✓      | ✓        |
-| OUTPUT      |      | ✓      | ✓    | ✓      | ✓        |
+| INPUT       |      | ✓      |      | ✓      | ✓        |
+| OUTPUT      | ✓    | ✓      | ✓    | ✓      | ✓        |
 | POSTROUTING |      |        | ✓    | ✓      |          |
-| FORWARD     | ✓    | ✓      |      | ✓      | ✓        |
+| FORWARD     |      | ✓      |      | ✓      | ✓        |
 
 ### Understand iptables rules
 

@@ -192,3 +192,6 @@
 
 - id: follow_me
   translation: "关注我"
+
+- id: edit_page
+  translation: "编辑本页"

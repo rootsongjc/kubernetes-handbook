@@ -78,7 +78,7 @@ SDS 最重要的好处就是简化了证书管理。如果没有这个特性，�
 
 下图展示了 Istio 中使用 SPIRE 进行身份认证的架构。
 
-![Istio 中使用 SPIRE 进行身份认证的架构图](spire-istio-arch.jpg)
+![Istio 中使用 SPIRE 进行身份认证的架构图](spire-with-kubernetes.svg)
 
 在 Kubernetes 集群中的 `spire` 命名空间中使用 StatefulSet 部署 SPIRE Server 和 Kubernetes Workload Registrar，使用 DaemonSet 资源为每个节点部署一个 SPIRE Agent。假设你在安装 Kubernetes 时使用的是默认的 DNS 名称 `cluster.local`，[Kubernetes Workload Registar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) 会为 Istio Mesh 中的工作负载创建如下格式的身份：
 
@@ -91,7 +91,7 @@ SDS 最重要的好处就是简化了证书管理。如果没有这个特性，�
 
 Istio Mesh 中的工作负载身份验证过程如下图所示。
 
-{{<figure title="Istio 服务网格中的工作负载身份认证过程示意图" alt="图片" src="istio-workload-attestor.jpg" width="30%" class="mx-auto text-center">}}
+{{<figure title="Istio 服务网格中的工作负载身份认证过程示意图" alt="Istio 服务网格中的工作负载身份认证过程示意图" src="workload-attestation.svg" width="50%">}}
 
 详细过程如下：
 
