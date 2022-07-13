@@ -1,11 +1,11 @@
 {{ if .Title }}
   <figure class="mx-auto text-center">
-    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
+      <img src="{{ .Destination | safeURL }}" data-img="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
     <figcaption>{{ .Title }}</figcaption>
   </figure>
 {{ else }}
   <figure class="mx-auto text-center">
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
+      <img src="{{ .Destination | safeURL }}" data-img="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
   {{ if .Text }}
   <figcaption>{{ .Text |htmlUnescape }}</figcaption>
   {{ end }}

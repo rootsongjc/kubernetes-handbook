@@ -49,6 +49,8 @@ link = "plugins/hightlight/syntax.css"
 link = "plugins/fontawesome/font-awesome.min.css"
 [[params.plugins.css]]
 link = "plugins/tocbot/tocbot.css"
+[[params.plugins.css]]
+link = "plugins/bigger-picture/bigger-picture.css"
 
 
 # JS Plugins
@@ -76,6 +78,8 @@ link = "plugins/hex_md5/hex_md5.js"
 link = "plugins/anchor/anchor.min.js"
 [[params.plugins.js]]
 link = "plugins/tocbot/tocbot.min.js"
+[[params.plugins.js]]
+link = "plugins/bigger-picture/bigger-picture.min.js"
 
 #################### default parameters ################################
 [params]
