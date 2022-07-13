@@ -24,7 +24,7 @@
     </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.5 
-    <dc:date>2022-07-10 14:39:28 +0000</dc:date>
+    <dc:date>2022-07-13 11:54:37 +0000</dc:date>
   </metadata>
   <g id="Slime___" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill-opacity="1">
     <title>Slime 流程图</title>
@@ -50,24 +50,24 @@
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="52.659336" y="16">Istio</tspan>
         </text>
       </g>
-      <g id="Group_37">
+      <g id="Group_47">
         <g id="Graphic_40">
           <rect x="3.2482103" y="257.57874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="3.2482103" y="257.57874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect x="3.2482103" y="257.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
           <text transform="translate(8.24821 274.5967)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="47.72" y="16">Istio CRD</tspan>
           </text>
         </g>
         <g id="Graphic_39">
-          <rect x="41.49821" y="274.07874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="41.49821" y="274.07874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(46.49821 291.0967)" fill="white">
+          <rect x="41.49821" y="275.57874" width="178" height="53.5" fill="#0a55a8"/>
+          <rect x="41.49821" y="275.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(46.49821 292.5967)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="47.72" y="16">Istio CRD</tspan>
           </text>
         </g>
         <g id="Graphic_38">
           <rect x="79.74821" y="293.57874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="79.74821" y="293.57874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect x="79.74821" y="293.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
           <text transform="translate(84.74821 310.5967)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="47.72" y="16">Istio CRD</tspan>
           </text>
@@ -197,24 +197,24 @@
       <g id="Line_13">
         <path d="M 816.9982 154.05274 L 816.9982 206.3979 L 114.078 206.3979 L 114.078 244.67874" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
       </g>
-      <g id="Group_9">
+      <g id="Group_46">
         <g id="Graphic_12">
           <rect x="291.488" y="69.57874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="291.488" y="69.57874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect x="291.488" y="69.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
           <text transform="translate(296.488 86.59668)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="47.72" y="16">Istio CRD</tspan>
           </text>
         </g>
         <g id="Graphic_11">
-          <rect x="329.738" y="86.07874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="329.738" y="86.07874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(334.738 103.09668)" fill="white">
+          <rect x="329.738" y="87.57874" width="178" height="53.5" fill="#0a55a8"/>
+          <rect x="329.738" y="87.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(334.738 104.59668)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="47.72" y="16">Istio CRD</tspan>
           </text>
         </g>
         <g id="Graphic_10">
           <rect x="367.988" y="105.57874" width="178" height="53.5" fill="#0a55a8"/>
-          <rect x="367.988" y="105.57874" width="178" height="53.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect x="367.988" y="105.57874" width="178" height="53.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
           <text transform="translate(372.988 122.59668)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="42.984" y="16">Slime CRD</tspan>
           </text>

@@ -42,9 +42,14 @@
         <font-face-name name="HelveticaNeue-Bold"/>
       </font-face-src>
     </font-face>
+    <font-face font-family="Helvetica Neue" font-size="28" panose-1="2 0 5 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="-428.57143" x-height="517" cap-height="714" ascent="957.0007" descent="-212.99744" font-style="italic" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Italic"/>
+      </font-face-src>
+    </font-face>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.5 
-    <dc:date>2022-07-10 11:09:37 +0000</dc:date>
+    <dc:date>2022-07-13 06:53:53 +0000</dc:date>
   </metadata>
   <g id="Istio_____" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill-opacity="1">
     <title>Istio 组件拓扑图</title>
@@ -145,22 +150,22 @@
       <g id="Line_185">
         <path d="M 596.87274 1576.2888 L 760.6154 1576.2888 L 760.6154 2159.058 L 219.39829 2159.058" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
       </g>
-      <g id="Group_189">
+      <g id="Group_251">
         <g id="Graphic_186">
-          <rect x="785.5" y="2350.058" width="331" height="95" fill="#333"/>
-          <rect x="785.5" y="2350.058" width="331" height="95" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect x="790.576" y="2352.0306" width="331" height="95" fill="#333"/>
+          <rect x="790.576" y="2352.0306" width="331" height="95" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         </g>
         <g id="Graphic_187">
-          <rect x="808.5" y="2320.058" width="331" height="95" fill="#333"/>
-          <rect x="808.5" y="2320.058" width="331" height="95" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(887.84 2348.094)" fill="white">
+          <rect x="821.076" y="2323.5306" width="331" height="95" fill="#333"/>
+          <rect x="821.076" y="2323.5306" width="331" height="95" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(900.416 2351.5665)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="32" font-weight="700" fill="white" x="0" y="31">Application</tspan>
           </text>
         </g>
         <g id="Graphic_188">
-          <rect x="846.5" y="2293.058" width="331" height="95" fill="#333"/>
-          <rect x="846.5" y="2293.058" width="331" height="95" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(925.84 2321.094)" fill="white">
+          <rect x="851.576" y="2295.0306" width="331" height="95" fill="#333"/>
+          <rect x="851.576" y="2295.0306" width="331" height="95" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(930.916 2323.0665)" fill="white">
             <tspan font-family="Helvetica Neue" font-size="32" font-weight="700" fill="white" x="0" y="31">Application</tspan>
           </text>
         </g>
@@ -180,7 +185,7 @@
         </text>
       </g>
       <g id="Line_192">
-        <path d="M 785.5 2397.558 L 772.5 2397.558 L 636.75 2397.7943 L 514.9 2398.0306 L 506.9 2398.0306" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <path d="M 790.576 2399.5306 L 777.576 2399.5306 L 506.9 2399.6008" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
       </g>
       <g id="Line_193">
         <line x1="306.5" y1="1889.8545" x2="306.5" y2="2234.158" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
@@ -222,8 +227,8 @@
         </text>
       </g>
       <g id="Graphic_200">
-        <rect x="638.6274" y="2358.91" width="113.236" height="77.56799" fill="white"/>
-        <text transform="translate(643.6274 2363.91)" fill="black">
+        <rect x="624.7607" y="2360.7716" width="113.236" height="77.56799" fill="white"/>
+        <text transform="translate(629.7607 2365.7716)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="3907985e-19" y="27">Inbound</tspan>
           <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="16.324" y="60.784">traffic</tspan>
         </text>
@@ -239,18 +244,17 @@
         </text>
       </g>
       <g id="Graphic_203">
-        <rect x="709.4574" y="1627.5742" width="102.316" height="77.56799" fill="white"/>
-        <text transform="translate(714.4574 1632.5742)" fill="black">
+        <rect x="629.1199" y="1537.5048" width="102.316" height="77.56799" fill="white"/>
+        <text transform="translate(634.1199 1542.5048)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="1.568" y="27">Scrape</tspan>
           <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="0" y="60.784">metrics</tspan>
         </text>
       </g>
       <g id="Graphic_204">
-        <rect x="-371.28037" y="2103.6256" width="120.488" height="111.35199" fill="white"/>
-        <text transform="translate(-366.28037 2108.6256)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="20.762" y="27">Istiod</tspan>
-          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="15.302" y="60.784">debug</tspan>
-          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="5968559e-19" y="94.56799">endpoint</tspan>
+        <rect x="-403.2114" y="2120.5313" width="166.632" height="77.56799" fill="white"/>
+        <text transform="translate(-398.2114 2125.5313)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="7105427e-19" y="27">Istiod debug</tspan>
+          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="23.072" y="60.784">endpoint</tspan>
         </text>
       </g>
       <g id="Graphic_205">
@@ -435,7 +439,7 @@
         </text>
       </g>
       <g id="Line_243">
-        <path d="M -130 2236.9298 L -481.6795 2236.9298 L -481.6795 2349.3962 L -627.8523 2349.3962" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <path d="M -646.7523 2349.3962 L -475.26316 2349.3962 L -475.26316 2248.9474 L -148.9 2248.9474" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
       </g>
       <g id="Graphic_244">
         <text transform="translate(821 1815.2865)" fill="black">
@@ -462,9 +466,21 @@
         </text>
       </g>
       <g id="Graphic_249">
-        <text transform="translate(821 1538)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="42" font-weight="700" fill="black" x=".6279944" y="41">Istio Components</tspan>
-          <tspan font-family="Helvetica Neue" font-size="42" font-weight="700" fill="black" x="93.17499" y="92.21829">Diagram</tspan>
+        <text transform="translate(816.7734 1538)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="42" font-weight="700" fill="black" x="0" y="41">Istio Components</tspan>
+          <tspan font-family="Helvetica Neue" font-size="42" font-weight="700" fill="black" x="0" y="92.21829">Diagram</tspan>
+        </text>
+      </g>
+      <g id="Graphic_250">
+        <rect x="-393.9955" y="2210.1634" width="172.288" height="77.56799" fill="white"/>
+        <text transform="translate(-388.9955 2215.1634)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="6.986" y="27">Push config</tspan>
+          <tspan font-family="Helvetica Neue" font-size="28" font-weight="400" fill="black" x="24158453e-20" y="60.784">&amp; certificates</tspan>
+        </text>
+      </g>
+      <g id="Graphic_252">
+        <text transform="translate(821 1676.8577)" fill="#666">
+          <tspan font-family="Helvetica Neue" font-size="28" font-style="italic" font-weight="400" fill="#666" x="0" y="27">Version 2022-07-13</tspan>
         </text>
       </g>
     </g>

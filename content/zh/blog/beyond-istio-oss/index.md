@@ -1,10 +1,10 @@
 ---
 title: "Istio 服务网格的现状及未来"
 draft: true
-date: 2022-07-11T12:27:49+08:00
+date: 2022-07-13T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
-tags: ["eBPF","wasm","零信任","Service Mesh","Istio"]
+tags: ["eBPF","wasm","零信任","Service Mesh","Istio","混合云"]
 type: "post"
 image: "images/banner/beyond.jpg"
 ---
@@ -13,10 +13,9 @@ image: "images/banner/beyond.jpg"
 本文根据笔者在 GIAC 深圳 2022 年大会上的的演讲[《Beyond Istio OSS —— Istio 的现状及未来》](https://giac.msup.com.cn/2022sz/course?id=16093)整理而成。
 {{</callout>}}
 
-本文回顾了 Istio 开源近五年来的发展，并展望了 Istio 的发展方向。主要阐述了以下观点：
+本文回顾了 Istio 开源近五年来的发展，并展望了 Istio 的发展方向。本文中主要阐述的观点如下：
 
 - 因为 Kubernetes、微服务、DevOps 及云原生架构的流行，导致服务网格技术的兴起；
-- 在中国 Istio 成为了服务网格的代名词；
 - Kubernetes 和可编程代理的出现，为 Istio 的实现打好了技术基础；
 - 虽然 eBPF 可以加速 Istio 中的透明流量劫持，但无法取代服务网格中的 sidecar；
 - Istio 的未来是构建零信任网络；
@@ -106,12 +105,15 @@ Istio 是在 Kubernetes 的基础上构建的，它可以利用 Kubernetes 的�
 
 下表中详细对比了这四种部署方式，它们各有优劣，具体选择哪种根据实际情况而定。
 
+{{<table "服务网格的四种部署模式对比">}}
 | **模式**                           | **内存开销**                                                 | **安全性**                                                   | **故障域**                                                   | **运维**                                                  |
 | :--------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :-------------------------------------------------------- |
 | **Sidecar 代理**                   | 因为为每个 pod 都注入一个代理，所以开销最大。                | 由于 sidecar 必须与工作负载一起部署，工作负载有可能绕过 sidecar。 | Pod 级别隔离，如果有代理出现故障，只影响到 Pod 中的工作负载。 | 可以单独升级某个工作负载的 sidecar 而不影响其他工作负载。 |
 | **节点共享代理**                   | 每个节点上只有一个代理，为该节点上的所有工作负载所共享，开销小。 | 对加密内容和私钥的管理存在安全隐患。                         | 节点级别隔离，如果共享代理升级时出现版本冲突、配置冲突或扩展不兼容等问题，则可能会影响该节点上的所有工作负载。 | 不需要考虑注入 Sidecar 的问题。                           |
 | **Service Account / 节点共享代理** | 服务账户 / 身份下的所有工作负载都使用共享代理，开销小。      | 工作负载和代理之间的连接的认证及安全性无法保障。             | 节点和服务账号之间级别隔离，故障同 “节点共享代理”。          | 同 “节点共享代理”。                                       |
 | **带有微代理的共享远程代理**       | 因为为每个 pod 都注入一个微代理，开销比较大。                | 微代理专门处理 mTLS，不负责 L7 路由，可以保障安全性。        | 当需要应用 7 层策略时，工作负载实例的流量会被重定向到 L7 代理上，若不需要，则可以直接绕过。该 L7 代理可以采用共享节点代理、每个服务账户代理，或者远程代理的方式运行。 | 同 “Sidecar 代理”。                                       |
+
+{{</table>}}
 
 ### 可编程代理{#programmable-proxy}
 
@@ -131,7 +133,7 @@ Flomesh 的张晓辉曾在 [为什么需要可编程代理](https://cloudnative.
 
 ## 这些都是服务网格吗？{#are-they-service-mesh}
 
-现在我将列举现有的服务网格项目，我们一起探索服务网格的发展规律和本质。下表对比了当前流行的开源的「服务网格」项目 [^7]。
+那么，有了代理就可以构建服务网格了吗？现在我将列举现有的服务网格项目，我们一起探索服务网格的发展规律和本质。下表对比了当前流行的开源的「服务网格」项目 [^7]。
 
 {{<table 服务网格开源项目对比表>}}
 
@@ -161,7 +163,7 @@ Flomesh 的张晓辉曾在 [为什么需要可编程代理](https://cloudnative.
 
 纵观以上所谓的「服务网格」项目，我们可以看出大部分服务网格项目的发起者都是根据代理起家，然后做控制平面。而且 Istio、Consul Connect、Open Service Mesh、Kuma 都是使用 Envoy 作为 sidecar 代理。只有 Linkerd 和 Traefik Mesh 推出了自己的代理。而所有的服务网格项目都支持 sidecar 模式。除了 Istio、Linkerd、Consul Connect 已应用于生产上，其他服务网格项目目前还只能算是个「玩具」。
 
-## 性能优化{#performance-optimizing}
+## Istio 的性能优化{#performance-optimizing}
 
 在 Istio 1.5 版本确定了稳定的架构之后，社区的主要精力在于优化 Istio 的性能。下面我将向你详细介绍 Istio 中的性能优化方法，包括：
 
@@ -178,7 +180,13 @@ Proxyless 模式是 Istio 在 1.11 版本中提出的实验特性 —— [基于
 
 从上图中我们可以看到，虽然 proxyless 模式不使用 proxy 进行数据面通信，但仍然需要一个 agent 来进行初始化和与控制面的通信。首先，agent 在启动时生成一个[引导文件](https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md#xdsclient-and-bootstrap-file)，与为 Envoy 生成引导文件的方式相同。这告诉 gRPC 库如何连接到 istiod，在哪里可以找到用于数据平面通信的证书，向控制面发送什么元数据。接下来，agent 作为 xDS proxy，代表应用程序与 `istiod` 进行连接和认证。最后，agent 获取并轮换数据平面通信中使用的证书。
 
+> *服务网格的本质不是 Sidecar 模式，也不是配置中心或透明流量拦截，而是标准化的服务间通信标准。*
+
 有人说 proxyless 模式又回到了基于 SDK 开发微服务的老路，服务网格的优势丧失殆尽，那还能叫做服务网格吗 [^9]？其实这也是一种对性能的妥协 —— 如果你主要使用 gRPC 来开发微服务的话，只需要维护不同语言的 gRPC 版本，即可以通过控制平面来管理微服务了。
+
+> *Envoy xDS 已经成为云原生应用服务间通信的事实标准。*
+
+![xDS 协议示意图](xds.svg)
 
 ### 使用 eBPF 优化流量劫持{#ebpf}
 
@@ -214,7 +222,25 @@ Proxyless 模式是 Istio 在 1.11 版本中提出的实验特性 —— [基于
 
 {{</callout>}}
 
-开源项目 [Merbridge](https://github.com/merbridge/merbridge) 正是利用 eBPF 缩短了透明流量劫持的路径，优化了服务网格的性能。关于 Merbridge 实现的一些细节，请参考 [Istio 博客](https://istio.io/latest/zh/blog/2022/merbridge/)。乍看上去 eBPF 似乎从更底层实现了 Istio 的功能，更大有取代 sidecar 的趋势。
+开源项目 [Merbridge](https://github.com/merbridge/merbridge) 正是利用 eBPF 缩短了透明流量劫持的路径，优化了服务网格的性能。关于 Merbridge 实现的一些细节，请参考 [Istio 博客](https://istio.io/latest/zh/blog/2022/merbridge/)。
+
+{{<callout warning 注意>}}
+
+Merbridge 使用的 eBPF 函数需要 Linux 内核版本 ≥ 5.7。
+
+{{</callout>}}
+
+乍看上去 eBPF 似乎从更底层实现了 Istio 的功能，更大有取代 sidecar 的趋势。但是 eBPF 也存在很多局限性，导致在可以预见的未来无法取代服务网格和 Sidecar。如果取消 sidecar 转而使用每个主机一个代理的模式，会导致：
+
+1. 代理失败的爆炸半径扩大到整个节点；
+2. 使得安全问题更加复杂，因为一个节点上保存在太多负载的证书，一旦被攻击，会存在秘钥泄露的风险；
+3. 主机上的 Pod 之间的流量争抢问题；
+
+而且 eBPF 主要负责三/四层流量，可以与 CNI 一起运行，但是七层流量使用 eBPF 来处理就不太合适了。
+
+> 在可以预见的未来 eBPF 技术无法取代服务网格和 Sidecar。
+
+关于 eBPF 与服务网格的关系的更详细介绍请参考博客[请暂时抛弃使用 eBPF 取代服务网格和 Sidecar 模式的幻想](/blog/ebpf-sidecar-and-service-mesh/)。
 
 ### 控制平面性能优化{#control-plane-perf-optimizing}
 
@@ -288,7 +314,7 @@ spec:
 - 当单个 Istiod 的资源占用饱和时，优先推荐你扩大 Istiod 的实例大小，这通常是因为服务网格中有太多的资源（Istio 的自定义资源，如 VirtualService、DestinationRule 等）需要处理；
 - 然后增加 Istiod 的实例个数，这样可以分散个实例要管理的工作负载数量；
 
-### 数据平面性能优化
+### 数据平面性能优化{#data-plane-performance}
 
 Apache SkyWalking 可以作为 Istio 提供可观测性工具，还可以帮助我们在进行服务动态调试和故障排除剖析服务的性能，其最新推出的 [Apache SkyWalking Rover](https://github.com/apache/skywalking-rover) 组件可以利用 eBPF 技术来准确定位 Istio 的关键性能问题 [^12]。
 
@@ -308,17 +334,18 @@ Apache SkyWalking 可以作为 Istio 提供可观测性工具，还可以帮助�
 
 xDS 是 Envoy 区别于其他代理的核心，因为它的代码和解析流程十分复杂 [^10]，扩展起来也很有难度。下面展示的是 Istio 组件拓扑图，从图中我们可以看到 Istio 数据平面的 Sidecar 容器中不止有 `envoy` 这一个进程，还有一个 `pilot-agent` 进程。
 
-{{<figure title="Istio 组件拓扑图" alt="Istio 组件拓扑图" id="istio-components" src="istio-component.svg">}}
+{{<figure title="Istio 组件拓扑图" alt="Istio 组件拓扑图" id="istio-components" src="istio-components.svg">}}
 
 `pilot-agent` 进程的作用如下：
-
 - 作为 `envoy` 的父进程，负责 Envoy 的生命周期管理；
-- 配置身份和证书；
+-  接收来自控制平面的推送，配置代理和证书；
 - 收集 Envoy 统计信息，汇总 sidecar 的统计数据供 Prometheus 搜集；
 - 内置本地 DNS 代理，用于解析 Kubernetes DNS 解析不了的集群内部域名的场景；
 - 对 Envoy 和 DNS 代理进行健康检查；
 
 从以上功能中我们可以看出 `pilot-agent` 进程主要是用于与 Istiod 交互，为 Envoy 起到指挥和辅助的作用，Istio 的核心组件是 Envoy。那么 Envoy 会不会「演而优则导」，不再配合 Istio，构建一套自己的控制平面呢？
+
+> *在 Sidecar 容器中，`pilot-agent` 就像是 Envoy 的  “Sidecar”。*
 
 {{<callout note 请读者思考一下>}}
 `pilot-agent` 的功能能否直接内置到 Envoy 中，从而取消 `pilot-agent` 呢？
@@ -344,8 +371,6 @@ xDS 是 Envoy 区别于其他代理的核心，因为它的代码和解析流程
 我们现在所见的网关基本都是在单集群中作为入口网关，对于多集群和多网格就无能为力了。为了应对多集群，我们需要在 Istio 之上再添加一层网关，和一个全局的控制平面以在多集群间路由流量，如下图所示。
 
 ![多集群多网格的两级网关示意图](t2-gateway.svg)
-
-
 
 {{<callout note 关于两级网关的简要介绍>}}
 - 一级网关（下文简称 T1）位于应用边缘，用于多集群环境。同一应用会同时托管在不同的集群上，T1 网关将对该应用的请求流量在这些集群之间路由。
@@ -458,18 +483,20 @@ Aeraki Mesh 是腾讯云在 2021 年 3 月开源的一个服务网格领域的�
 
 好了，说了这么说，这跟你有什么关系呢？Istio 跟你的关系取决于你的角色：
 
-- 如果你是运维工程师，
-- 如果是应用程序开发者，
+- 如果你是平台负责人，应用服务网格后，可能增强你的平台可观测性，具有了一个统一的平台来管理微服务，你将是直接受益者，也应该是服务网格的主要实施者；
+- 如果是应用程序开发者，也会从服务网格中收益，因为你可以更加专属于业务逻辑，而不用担心重试策略、TLS 等其他非功能性问题；
 
 下图展示了服务网格的采用路径。
 
 ![服务网格的采用路径](adopt.svg)
 
-## 服务网格在云原生架构中的定位{#service-mesh-positioning}
+是否采用服务网格取决你的技术发展阶段，应用是否实现容器化和微服务，对多语言的需求，是否需要 mTLS 以及对性能损耗的接纳度等。
+
+## 服务网格在云原生技术栈中的定位{#service-mesh-positioning}
 
 技术的发展日新月异，近两年来有一些新技术出现，似乎挑战了服务网格的地位，更有人声称可以直接取代现有经典的 sidecar 模式的服务网格 [^8]，我们不要被外界嘈杂的声音所迷惑，端正服务网格在云原生技术栈中的定位。
 
-> *一味地推广某项技术而不讨论它的适用场景，那就是耍流氓。—— Jimmy*
+> *一味地推广某项技术而忽略它的适用场景，就是耍流氓。*
 
 下图展示的是云原生技术堆栈。
 
@@ -480,6 +507,10 @@ Aeraki Mesh 是腾讯云在 2021 年 3 月开源的一个服务网格领域的�
 - 在云基础设施领域，Kubernetes 统一了容器编排和应用生命周期管理的标准，Operator 模式奠定了扩展 Kubernetes API 及第三方应用接入的标准；
 - 在中间件领域，服务网格承担起了云原生技术栈中的七层网络、可观测性和安全等多个方面的部分或全部责任，它运行在应用程序下层，对于应用程序来说几乎是无感知的；Dapr（分布式应用程序运行时）定义云原生中间件的能力模型，开发者可以在应用中集成 Dapr 的多语言 SDK，面向 Dapr 提供的分布式能力编程，而不用关心应用所运行的环境及对接的后端基础设施。因为在和应用程序运行在同一个 Pod 中的 Dapr 运行时（Sidecar 模式部署，其中包含各种构建块）自动帮我们对接了后端组件（Component）；
 - 在应用程序领域：OAM 旨在建立一个应用模型标准，通过组件、特征、策略和工作流来一个应用程序，详见[云原生资料库](https://lib.jimmysong.io/cloud-native-handbook/intro/define-cloud-native-app/)；
+
+下图展示了 Istio 在云原生部署中定位于七层网格管理。
+
+![Istio 在云原生架构中定位在七层网络](istio-role.svg)
 
 {{<callout note "Dapr 与 Istio 是什么关系？">}}
 
@@ -493,6 +524,21 @@ Istio 和 Dapr 之间的不同点：
 - 面向的人群不同：但是应用 Istio 对于开发者来说几乎无感知，主要需要基础设施运维团队实施，而应用 Dapr 需要开发者自主选择集成 Dapr SDK；
 
 {{</callout>}}
+
+## 服务网格的未来{#istio-future}
+
+我在前文中介绍了 Istio 的发展脉络及开源生态，接下来我将为大家介绍 Istio 服务网格的未来趋势：
+
+- 零信任网络
+- 混合云
+
+> *服务网格的未来在于成为零信任网络和混合云的基础设施。*
+
+这也是笔者所在的公司企业级服务网格提供商 [Tetrate](https://www.tetrate.io/) 的努力方向，我们致力于构建一个适用于任意环境、任意负载的应用感知网络，并提供零信任的混合云平台。下面展示的是 Tetrate 旗舰产品 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 的架构图。
+
+![TSB 架构图](tsb.svg)
+
+Tetrate 公司是由 Istio 项目的发起人创立的，TSB 是基于开源的 Istio、Envoy 和 Apache SkyWalking 开发的。我们同时积极得贡献上游社区，并参与了旨在简化将 Envoy 网关使用的 [Envoy Gateway](https://github.com/envoyproxy/gateway) 项目的创建（上图中的 XCP 即使用 Envoy 构建的网关）。
 
 ## 零信任{#zero-trust}
 
@@ -516,15 +562,14 @@ Istio 中原先是使用 Istiod 中 Citadel 服务 [^17] 负责服务网格中�
 
 我们可以使用 [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) 在 Kubernetes 中部署 SPIRE，它会为我们自动注册 Kubernetes 中的工作负载并生成 SVID。该注册机是 Server-Agent 架构，它在每个 Node 上部署一个 SPIRE Agent，Agent 与工作负载通过共享的 UNIX Domain Socket 通信。下图展示了在 Istio 中使用 SPIRE 进行身份认证的过程。
 
-![Istio 中基于 SPIRE 的工作负载身份认证过程示意图](workload-attestation.svg)
+{{<figure title="Istio 中基于 SPIRE 的工作负载身份认证过程示意图" width="40%"  src="workload-attestation.svg">}}
 
 Istio 中使用 SPIRE 进行工作负载认证的步骤如下：
 
 1. 工作负载的 sidecar 中的 `pilot-agent` 通过共享的 UDS 调用 SPIRE Agent 来获取 SIVD；
 2. SPIRE Agent 询问 Kubernetes（准确的说是节点上的 kubelet）获取负载的信息；
 3. Kubelet 把从 API 服务器中查询到的信息返回给工作负载验证器；
-4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对；
-5. 如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同则认证失败；
+4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对，如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同则认证失败；
 
 关于工作负载的注册和认证的详细过程请参考 [SPIRE 文档](https://lib.jimmysong.io/kubernetes-handbook/concepts/spire/) 。
 
@@ -534,18 +579,27 @@ Istio 中使用 SPIRE 进行工作负载认证的步骤如下：
 
 NGAC，即下一代访问控制，采用将访问决定数据建模为图的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/) （美国国家标准与技术研究所）开发，目前已用于 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 中的权限管理。关于为什么选择 NGAC，而不是 ABAC 和 RBAC 的更多内容请参考博客[为什么应该选择使用 NGAC 作为权限控制模型](/blog/why-you-should-choose-ngac-as-your-access-control-model/)。
 
-## 服务网格将走向何处？
+## 混合云{#hybrid-cloud}
 
-服务网格的未来趋势在以下两方面：
+在实际应用中，我们可能出于负载均衡、隔离开发和生产环境、解耦数据处理和数据存储、跨云备份和灾难恢复以及避免厂商锁定等原因，在多种环境下部署多个 Kubernetes 集群。Kubernetes 社区提供了「集群联邦」功能可以帮助我们创建多集群架构，例如下图所示的一种常用的 Kubernetes 多集群架构，其中 Host Cluster 作为控制平面，有两个成员集群，分别是 West 和 East。
 
-- 零信任网络
-- 混合云
+![Kubernetes 集群联邦架构](multicluster.svg)
 
-这也是笔者所在的公司 [Tetrate](https://www.tetrate.io/) 的努力方向，我们致力于构建一个适用于任意环境、任意负载的应用感知网络，并提供零信任的混合云平台。下面展示的是 Tetrate 旗舰产品 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 的架构图。
+集群联邦要求 Host 集群与成员集群的之间的网络能够互通，对成员集群之间的网络连接性没有要求。Host 集群作为 API 入口，外界所有对 Host 集群的资源请求会转发到成员集群中。Host 集群中部署有集群联邦的控制平面，其中的 「Push Reconciler」会将联邦中的身份、角色及角色绑定传播到所有的成员集群中。集群联邦只是简单地将多个集群简单的「连接到了一起」，在多个集群之间复制工作负载，而成员集群之间的流量无法调度，也无法实现真正的多租户。
 
-![TSB 架构图](tsb.svg)
+集群联邦不足以实现混合云，为了实现真正意义上的混合云，就要让集群之间做到互联互通，同时实现多租户。TSB 在 Istio 之上构建一个多集群管理的通用控制平面，然后再增加一个管理平面来管理多集群，提供多租户、管理配置、可观察性等功能。下面是 Istio 管理平面的多租户和 API 示意图。
 
-Tetrate 公司是由 Istio 项目的发起人创立的，TSB 是基于开源的 Istio、Envoy 和 Apache SkyWalking 构建，同时向上游社区贡献并参与了旨在简化将 Envoy 作为网关使用的 [Envoy Gateway](https://github.com/envoyproxy/gateway) 项目的创立。
+![TSB 在 Istio 之上构建的管理平面示意图](tsb-management-plane.svg)
+
+TSB 为管理混合云，基于 Istio 构建了一个管理平面，新建了 Tenant 和 Workspace 的资源，并通过选择器，将网关组、流量组和安全组应用到对应集群中的工作负载上。关于 TSB 的详细架构请参考 [TSB 文档](https://docs.tetrate.io/service-bridge/1.4.x/en-us/concepts/architecture)。
+
+## 更多{#more}
+
+如果你想了解更多关于 Istio 和云原生的内容，下面有一些资料分享给你：
+
+- 为了帮助大家更好的了解 Istio 和云原生，笔者在 2020 年发起了[云原生社区](https://cloudnative.to)，欢迎大家[加入我们](https://mp.weixin.qq.com/s/ppDxLapuFwo3isEpg3zfUQ)一起探索后 Kubernetes 时代的云原生新范式；
+- 2022 年 6 月，云原生社区著的[《深入理解 Istio —— 云原生服务网格进阶实战》](/blog/istio-service-mesh-book/)已图书由电子工业出版社出版，欢迎大家购买；
+- 笔者于 2022 年 5 月，将之前所作电子书、教程和译文全部迁移到了[云原生资料库](https://lib.jimmysong.io)，欢迎阅读和留言评论。
 
 ## 参考
 
