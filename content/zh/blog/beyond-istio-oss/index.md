@@ -308,7 +308,7 @@ Apache SkyWalking 可以作为 Istio 提供可观测性工具，还可以帮助�
 
 xDS 是 Envoy 区别于其他代理的核心，因为它的代码和解析流程十分复杂 [^10]，扩展起来也很有难度。下面展示的是 Istio 组件拓扑图，从图中我们可以看到 Istio 数据平面的 Sidecar 容器中不止有 `envoy` 这一个进程，还有一个 `pilot-agent` 进程。
 
-![Istio 组件拓扑图](istio-component.svg)
+{{<figure title="Istio 组件拓扑图" alt="Istio 组件拓扑图" id="istio-components" src="istio-component.svg">}}
 
 `pilot-agent` 进程的作用如下：
 
@@ -443,9 +443,18 @@ Aeraki Mesh 是腾讯云在 2021 年 3 月开源的一个服务网格领域的�
 
 ### WasmPlugin API
 
-TODO
+[WasmPlugin](https://istio.io/latest/docs/reference/config/proxy_extensions/wasm-plugin/) 是 Istio 1.12 版本引入的 API，作为代理扩展机制，我们可以使用它将自定义和第三方的 Wasm 模块添加到数据平面中。下图中展示了用户如何在 Istio 中使用 WasmPlugin。
 
-## 谁应该使用 Istio？
+![在 Istio 中使用 WasmPlugin 的流程图](wasmplugin.svg)
+
+具体步骤如下：
+
+1. 用户使用 Proxy-Wasm SDK（目前有 AssemblyScript、C++、Rust、Zig 和 Go 语言版本）来开发扩展，并构建成 OCI 镜像（如 Docker 镜像）上传到镜像仓库；
+2. 用户编写 `WasmPlugin` 配置并应用到 Istio；
+3. Istio 控制平面根据 `WasmPlugin` 配置中的工作负载选择配置，将 Wasm 模块注入到指定的 Pod 中；
+4. Sidecar 中的 `pilot-agent` [^16] 从远程或本地文件中获取 Wasm 模块并将其加载到 Envoy 中运行；
+
+## 谁应该使用 Istio？{#whos-should-use-istio}
 
 好了，说了这么说，这跟你有什么关系呢？Istio 跟你的关系取决于你的角色：
 
@@ -456,36 +465,87 @@ TODO
 
 ![服务网格的采用路径](adopt.svg)
 
-## 服务网格在云原生架构中的定位
+## 服务网格在云原生架构中的定位{#service-mesh-positioning}
 
-技术的发展日新月异，近两年来有一些新技术出现，似乎挑战了服务网格的地位，更有人声称可以直接取代现有经典的 sidecar 模式的服务网格 [^8]，我们不要被外界嘈杂的声音所迷惑，端正服务网格在云原生技术栈中的定位。下图展示的是云原生技术堆栈。
+技术的发展日新月异，近两年来有一些新技术出现，似乎挑战了服务网格的地位，更有人声称可以直接取代现有经典的 sidecar 模式的服务网格 [^8]，我们不要被外界嘈杂的声音所迷惑，端正服务网格在云原生技术栈中的定位。
+
+> *一味地推广某项技术而不讨论它的适用场景，那就是耍流氓。—— Jimmy*
+
+下图展示的是云原生技术堆栈。
 
 {{<figure title="云原生技术堆栈示意图" alt="云原生技术堆栈示意图" src="cloud-native-stack.svg" width="60%">}}
 
-解释。。。
+我们可以看到，在云原生技术堆栈图中的「云基础设施」、「中间件」和「应用」层都列举了一些标志性的开源项目，这些项目构建了它们所在领域的标准：
 
-## 零信任
+- 在云基础设施领域，Kubernetes 统一了容器编排和应用生命周期管理的标准，Operator 模式奠定了扩展 Kubernetes API 及第三方应用接入的标准；
+- 在中间件领域，服务网格承担起了云原生技术栈中的七层网络、可观测性和安全等多个方面的部分或全部责任，它运行在应用程序下层，对于应用程序来说几乎是无感知的；Dapr（分布式应用程序运行时）定义云原生中间件的能力模型，开发者可以在应用中集成 Dapr 的多语言 SDK，面向 Dapr 提供的分布式能力编程，而不用关心应用所运行的环境及对接的后端基础设施。因为在和应用程序运行在同一个 Pod 中的 Dapr 运行时（Sidecar 模式部署，其中包含各种构建块）自动帮我们对接了后端组件（Component）；
+- 在应用程序领域：OAM 旨在建立一个应用模型标准，通过组件、特征、策略和工作流来一个应用程序，详见[云原生资料库](https://lib.jimmysong.io/cloud-native-handbook/intro/define-cloud-native-app/)；
 
-零信任（Zero Trust）是 IstioCon 2022 的一个主要话题，Istio 可以帮助我们实现零信任网络，其主要贡献在以下两个方面。
+{{<callout note "Dapr 与 Istio 是什么关系？">}}
 
-### 身份认证
+Istio 和 Dapr 之间的相同点：
+- Istio 和 Dapr 都可以使用 Sidecar 模式的部署模型；
+- 同属于中间件，同样可以管理服务间通信；
 
-关于身份
+Istio 和 Dapr 之间的不同点：
+- 目标不同：Istio 的目标是构建零信任网络，定义服务间通信标准，Dapr 目标是构建标准的中间件能力的 API；
+- 架构不同：Istio = Envoy + 透明流量劫持 + 控制平面，Dapr = 多语言 SDK + 标准化 API + 分布式能力组件；
+- 面向的人群不同：但是应用 Istio 对于开发者来说几乎无感知，主要需要基础设施运维团队实施，而应用 Dapr 需要开发者自主选择集成 Dapr SDK；
+
+{{</callout>}}
+
+## 零信任{#zero-trust}
+
+零信任（Zero Trust）是 IstioCon 2022 里的一个重要话题，Istio 正在成为零信任的一个重要组成部分，其中最重要的是**面向身份的控制**而不是面向网络的控制。
+
+{{<callout note "什么是零信任？">}}
+零信任（Zero Trust）是一种安全理念，而不是一种所有安全团队都要遵循的最佳实践。零信任概念的提出是为了给云原生世界带来更安全的网络。零信任是一种理论状态，即网络内的所有消费者不仅没有任何权限，而且也不具备对周围网络的感知。零信任的主要挑战是就越来越细化的授权和和对用户授权的时间限制。关于更多零信任的介绍，请阅读[这篇博客](/blog/what-is-zero-trust/)。
+{{</callout>}}
+
+### 身份认证{#authn}
+
+Istio 1.14 中增加了对 SPIRE 的支持，SPIRE（SPIFFE Runtime Environment，CNCF 孵化项目） 是 SPIFFE（Secure Production Identity Framework For Everyone，CNCF 孵化项目） 的一个实现。在 Kubernetes 中我们使用 [ServiceAccount](https://lib.jimmysong.io/kubernetes-handbook/auth/serviceaccount/) 为 Pod 中的工作负载提供身份信息，其核心是基于 Token（使用 Secret 资源存储）来表示负载身份。而 Token 是 Kubernetes 集群中的资源，对于多集群及运行在非 Kubernetes 环境（例如虚拟机）中的负载，如何统一它们的身份？这就是 SPIFFE 要解决的问题。
+
+SPIFFE 的目的是基于零信任的理念，建立一个开放、统一的工作负载身份标准，这有助于建立一个零信任的全面身份化的数据中心网络。SPIFFE 的核心是通过简单 API 定义了一个生命周期短暂的加密身份文件—— SVID（SPFFE Verifiable Identity Document），用作工作负载认证时使用的身份文件（基于 X.509 证书或 JWT 令牌）。SPIRE 可以根据管理员定义的策略自动轮换 SVID 证书和秘钥，动态地提供工作负载标识，同时 Istio 可以通过 SPIRE 动态的消费这些工作负载标识。
+
+基于 Kubernetes 的 SPIRE 架构图如下所示。
 
 ![SPIRE 部署在 Kubernetes 中的架构图](spire-with-kubernetes.svg)
 
-### mTLS
+Istio 中原先是使用 Istiod 中 Citadel 服务 [^17] 负责服务网格中证书管理，通过 xDS（准确的说是 SDS API）协议将证书下发给数据平面。有了 SPIRE 之后，证书管理的工作就交给了 SPIRE Server。SPIRE 同样支持 Envoy SDS API，我们在 Istio 中启用 SPIRE 之后，进入工作负载 Pod 中的流量在被透明拦截到 Sidecar 中后，会经过一次身份认证。身份认证的目的是对比该工作负载的身份，与它所运行的环境信息（所在的节点、Pod 的 ServiceAccount 和 Namespace 等）是否一致，以防止伪造身份。请参考[如何在 Istio 中集成 SPIRE](/blog/how-to-integrate-spire-with-istio/) 以了解如何在 Istio 中使用 SPIRE 做身份认证。
+
+我们可以使用 [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) 在 Kubernetes 中部署 SPIRE，它会为我们自动注册 Kubernetes 中的工作负载并生成 SVID。该注册机是 Server-Agent 架构，它在每个 Node 上部署一个 SPIRE Agent，Agent 与工作负载通过共享的 UNIX Domain Socket 通信。下图展示了在 Istio 中使用 SPIRE 进行身份认证的过程。
+
+![Istio 中基于 SPIRE 的工作负载身份认证过程示意图](workload-attestation.svg)
+
+Istio 中使用 SPIRE 进行工作负载认证的步骤如下：
+
+1. 工作负载的 sidecar 中的 `pilot-agent` 通过共享的 UDS 调用 SPIRE Agent 来获取 SIVD；
+2. SPIRE Agent 询问 Kubernetes（准确的说是节点上的 kubelet）获取负载的信息；
+3. Kubelet 把从 API 服务器中查询到的信息返回给工作负载验证器；
+4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对；
+5. 如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同则认证失败；
+
+关于工作负载的注册和认证的详细过程请参考 [SPIRE 文档](https://lib.jimmysong.io/kubernetes-handbook/concepts/spire/) 。
+
+### NGAC
+
+当每个工作负载都有准确的身份之后，如何对这些身份的权限进行限制？Kubernetes 中默认使用 RBAC 来做访问控制，正如其名，这种访问控制是基于角色的，虽然使用起来比较简单，但是对于大规模集群，存在角色爆炸问题 —— 即存在太多角色，而且角色的类型不是一成不变的，难以对角色权限机型跟踪和审计。另外 RBAC 中的角色的访问权限是固定，没有规定短暂的使用权限，也没有考虑位置、时间或设备等属性。使用 RBAC 的企业很难满足复杂的访问控制要求，以满足其他组织需求的监管要求。
+
+NGAC，即下一代访问控制，采用将访问决定数据建模为图的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/) （美国国家标准与技术研究所）开发，目前已用于 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 中的权限管理。关于为什么选择 NGAC，而不是 ABAC 和 RBAC 的更多内容请参考博客[为什么应该选择使用 NGAC 作为权限控制模型](/blog/why-you-should-choose-ngac-as-your-access-control-model/)。
 
 ## 服务网格将走向何处？
 
-服务网格的两个未来趋势：
+服务网格的未来趋势在以下两方面：
 
-- 零信任
+- 零信任网络
 - 混合云
 
-下面展示的是 Tetrate Service Bridge 的架构图。
+这也是笔者所在的公司 [Tetrate](https://www.tetrate.io/) 的努力方向，我们致力于构建一个适用于任意环境、任意负载的应用感知网络，并提供零信任的混合云平台。下面展示的是 Tetrate 旗舰产品 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 的架构图。
 
 ![TSB 架构图](tsb.svg)
+
+Tetrate 公司是由 Istio 项目的发起人创立的，TSB 是基于开源的 Istio、Envoy 和 Apache SkyWalking 构建，同时向上游社区贡献并参与了旨在简化将 Envoy 作为网关使用的 [Envoy Gateway](https://github.com/envoyproxy/gateway) 项目的创立。
 
 ## 参考
 
@@ -504,3 +564,5 @@ TODO
 [^13]: 有多家公司正在合作开发 Envoy Gateway，包括 [Ambassador Labs](https://www.getambassador.io/)、[Fidelity Investments](https://www.fidelity.com/)、[Project Contour](https://projectcontour.io/) 和 [VMware](https://www.vmware.com/)。
 [^14]: Istio 仅可以路由 TCP 流量，默认支持 HTTP、HTTPS、gRPC 和原始 TCP 协议，其中 Sidecar 和 Gateway 所支持的协议范围有所不同，详见 [Istio 文档](https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/)。
 [^15]: SidecarScope 是在 Istio 1.1 版本中引入的，它并不是一个直接面向用户的配置项，而是 Sidecar 资源的包装器，具体来说就是 [Sidecar 资源](https://lib.jimmysong.io/istio-handbook/config-networking/sidecar/)中的 `egress` 选项。通过该配置可以减少 Istio 向 Sidecar 下发的数据量，例如只向某个命名空间中的某些服务下发某些 hosts 的访问配置，从而提高应用提高性能。
+[^16]: `pilot-agent` 是 sidecar 容器中的主进程，你可以在 [Istio 的组成架构图](#istio-components)中看到。`pilot-agent` 中的镜像提取机制（在 Istio 1.9 中引入），从远程 HTTP 源可靠地检索 Wasm 二进制文件，已被扩展到支持从任何 OCI 注册处检索 Wasm OCI 镜像，包括 Docker Hub、Google Container Registry（GCR）、Amazon Elastic Container Registry（Amazon ECR）和其他地方。
+[^17]: Istio 具有身份和证书管理功能，可以实现服务间的终端用户认证，在控制平面还采用微服务架构的时候，其中的 Citadel 组件负责证书管理，在 Istio 1.5 版本被合并到单体 Istiod 中了。

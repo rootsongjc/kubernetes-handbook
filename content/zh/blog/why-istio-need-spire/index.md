@@ -95,10 +95,11 @@ Istio Mesh 中的工作负载身份验证过程如下图所示。
 
 详细过程如下：
 
-1. 工作负载的 sidecar 中的 `pilot-agent` 会通过共享的 UDS 调用 SPIRE Agent 来获取 SIVD
+1. 工作负载的 sidecar 中的 `pilot-agent` 会通过共享的 UDS 调用 SPIRE Agent 来获取 SVID
 2. SPIRE Agent 询问 Kubernetes（准确的说是节点上的 kubelet）获取负载的信息
 3. Kubelet 将从 API server 查询到的信息返回给工作负载验证器
-4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对，如果相同，则将正确的 SVID 缓存返回给工作负载
+4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对
+5. 如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同，则身份认证失败
 
 关于工作负载的注册和认证的详细过程请参考 [SPIRE 文档](https://lib.jimmysong.io/kubernetes-handbook/concepts/spire/)。
 
