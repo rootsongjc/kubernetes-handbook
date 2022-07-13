@@ -526,6 +526,10 @@ figcaption {
     scroll-margin-top: 98px;
 }
 
+figure img:target{
+    scroll-margin-top: 98px;
+}
+
 #backTopBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */

@@ -57,7 +57,7 @@ Alice 可以只读取命名空间 `foo` 中的 pod。
 
 ## 什么是 NGAC？
 
-NGAC，即下一代访问控制，采用将访问决定数据建模为图形的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/)（美国国家标准与技术研究所）开发，目前用于 [Tetrate Q](https://www.tetrate.io/blog/introducing-tetrate-q/) 和 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/)。
+NGAC，即下一代访问控制，采用将访问决定数据建模为图的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/)（美国国家标准与技术研究所）开发，目前用于 [Tetrate Q](https://www.tetrate.io/blog/introducing-tetrate-q/) 和 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/)。
 
 有几种类型的实体；它们代表了您要保护的资源、它们之间的关系以及与系统互动的行为者。这些实体是：
 

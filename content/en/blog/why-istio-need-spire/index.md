@@ -78,9 +78,10 @@ The workload authentication process in Istio mesh is shown in the figure below.
 The detailed process is as follows:
 
 1. The pilot-agent in the sidecar of the workload calls the SPIRE agent via the shared UDS to get the SVID.
-2. SPIRE Agent asks Kubernetes (kubelet on the node to be precise) for information about the workload
-3. The kubelet returns the information queries from the Kubernetes API server to the workload attesttor.
-4. The attesttor compares the results returned by the kubelet with the identity information shared by the sidecar, and if they match, returns the SVID to the workload and caches it.
+2. SPIRE Agent asks Kubernetes (kubelet on the node to be precise) for information about the workload.
+3. The kubelet returns the information queries from the Kubernetes API server to the workload attestor.
+4. The attestor compares the results returned by the kubelet with the identity information shared by the sidecar.
+5. If they match, returns the SVID to the workload and caches it, if not, the attestation failed.
 
 Please refer to the [Istio documentation](https://istio.io/latest/docs/ops/integrations/spire) to learn how to use SPIRE for authentication in Istio.
 

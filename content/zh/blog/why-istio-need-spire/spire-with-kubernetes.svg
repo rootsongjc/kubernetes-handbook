@@ -34,7 +34,7 @@
     </marker>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.5 
-    <dc:date>2022-07-11 14:54:03 +0000</dc:date>
+    <dc:date>2022-07-13 02:42:13 +0000</dc:date>
   </metadata>
   <g id="SPIFFE_SPIRE_SVID___" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill-opacity="1">
     <title>SPIFFE、SPIRE、SVID 的关系</title>
@@ -47,16 +47,16 @@
         <rect x="352.2909" y="1099.6892" width="219.68504" height="106.83579" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_198">
-        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.2812 1458.3552 L 625.3529 1458.3552 L 625.3529 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6584 1487.9055 L 461.65895 1458.4183 L 625.3529 1458.4183 L 625.3529 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_197">
-        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.2812 1458.3552 L 643.419 1458.3552 L 643.419 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.629 1458.5045 L 643.419 1458.5045 L 643.419 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_195">
-        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.615 1457.862 L 461.6581 1405.949 L 461.6581 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.6428 1457.575 L 461.6581 1405.949 L 461.6581 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_196">
-        <path d="M 461.6581 1487.9055 L 461.6581 1458.689 L 443.592 1458.689 L 443.592 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1458.438 L 443.592 1458.438 L 443.592 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_190">
         <rect x="580.3582" y="1233.6259" width="128.46957" height="191.6339" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -167,7 +167,7 @@
       </g>
       <g id="Line_194">
         <title>左1</title>
-        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.2812 1458.3552 L 261.60774 1458.3552 L 261.60774 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1458.5036 L 261.60774 1458.5036 L 261.60774 1386.554" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_116">
         <path d="M 279.67385 1245.5433 L 279.67385 1216.7523 L 461.88146 1216.7523 L 461.88146 1197.8613" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -329,7 +329,7 @@
         </g>
       </g>
       <g id="Line_125">
-        <path d="M 461.6581 1487.9055 L 461.6581 1458.5271 L 297.96333 1458.5271 L 297.96333 1406.113" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1458.54 L 297.96333 1458.54 L 297.96333 1406.113" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_191">
         <path d="M 461.6581 1487.9055 L 461.6581 1458.4082 L 479.9476 1458.4082 L 479.9476 1406.113" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
@@ -358,7 +358,7 @@
         </text>
       </g>
       <g id="Line_193">
-        <path d="M 461.6581 1487.9055 L 461.6581 1477.9055 L 461.2812 1458.3552 L 279.67385 1458.3552 L 279.67385 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 461.6581 1487.9055 L 461.6581 1458.4885 L 279.67385 1458.4885 L 279.67385 1395.949" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Group_142">
         <g id="Graphic_145">
