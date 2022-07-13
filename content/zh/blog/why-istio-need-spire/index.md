@@ -89,7 +89,7 @@ SDS 最重要的好处就是简化了证书管理。如果没有这个特性，�
 
 这样不论是节点还是每个工作负载都有它们全局唯一的身份，而且还可以根据集群 （信任域）扩展。
 
-Istio Mesh 中的工作负载身份验证过程如下图所示。
+Istio 中的工作负载身份验证过程如下图所示。
 
 {{<figure title="Istio 服务网格中的工作负载身份认证过程示意图" alt="Istio 服务网格中的工作负载身份认证过程示意图" src="workload-attestation.svg" width="50%">}}
 
@@ -98,8 +98,7 @@ Istio Mesh 中的工作负载身份验证过程如下图所示。
 1. 工作负载的 sidecar 中的 `pilot-agent` 会通过共享的 UDS 调用 SPIRE Agent 来获取 SVID
 2. SPIRE Agent 询问 Kubernetes（准确的说是节点上的 kubelet）获取负载的信息
 3. Kubelet 将从 API server 查询到的信息返回给工作负载验证器
-4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对
-5. 如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同，则身份认证失败
+4. 验证器将 kubelet 返回的结果与 sidecar 共享的身份信息比对，如果相同，则将正确的 SVID 缓存返回给工作负载，如果不同，则身份认证失败
 
 关于工作负载的注册和认证的详细过程请参考 [SPIRE 文档](https://lib.jimmysong.io/kubernetes-handbook/concepts/spire/)。
 
