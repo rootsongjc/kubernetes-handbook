@@ -1,0 +1,340 @@
+@keyframes bp-fadein {
+  from {
+    opacity: 0.01;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes bp-bar {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes bp-o {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bp-wrap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  /* If you're mounting on a portion of the screen and need visible
+  overflow on .bp-wrap, change contain to "layout" on that instance */
+  contain: strict;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bp-wrap > div:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  animation: bp-fadein 0.48s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.bp-vid audio {
+  position: absolute;
+  left: 14px;
+  width: calc(100% - 28px);
+  bottom: 14px;
+  height: 50px;
+}
+
+.bp-inner {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+}
+
+.bp-html {
+  display: contents;
+}
+.bp-html > :first-child {
+  margin: auto;
+}
+
+.bp-img-wrap {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  contain: strict;
+}
+.bp-img-wrap.bp-drag .bp-img {
+  cursor: grabbing;
+}
+
+.bp-close {
+  contain: layout size;
+}
+
+.bp-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  user-select: none;
+  cursor: zoom-in;
+  background-size: 100% 100%;
+}
+.bp-img img,
+.bp-img div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.bp-img .bp-o {
+  display: none;
+}
+
+.bp-zoomed .bp-img {
+  cursor: grab;
+}
+.bp-zoomed .bp-cap {
+  opacity: 0;
+  animation: none !important;
+}
+
+.bp-zoomed.bp-small .bp-controls {
+  opacity: 0;
+}
+.bp-zoomed.bp-small .bp-controls button {
+  pointer-events: none;
+}
+
+.bp-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  text-align: left;
+  transition: opacity 0.3s;
+  animation: bp-fadein 0.3s;
+}
+.bp-controls button {
+  pointer-events: auto;
+  cursor: pointer;
+  position: absolute;
+  border: 0;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+  transition: all 0.1s;
+  contain: content;
+}
+.bp-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+.bp-controls svg {
+  fill: #fff;
+}
+
+.bp-count {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
+  margin: 16px;
+  height: 50px;
+  width: 100px;
+}
+
+.bp-prev,
+.bp-next {
+  top: 50%;
+  right: 0;
+  margin-top: -32px;
+  height: 64px;
+  width: 58px;
+  border-radius: 3px 0 0 3px;
+}
+.bp-prev:hover:before,
+.bp-next:hover:before {
+  transform: translateX(-2px);
+}
+.bp-prev:before,
+.bp-next:before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z'/%3E%3C/svg%3E");
+  position: absolute;
+  left: 7px;
+  top: 9px;
+  width: 46px;
+  transition: all 0.2s;
+}
+
+.bp-prev {
+  right: auto;
+  left: 0;
+  transform: scalex(-1);
+}
+
+.bp-x {
+  top: 0;
+  right: 0;
+  height: 55px;
+  width: 58px;
+  border-radius: 0 0 0 3px;
+}
+.bp-x:before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='%23fff'%3E%3Cpath d='M24 10l-2-2-6 6-6-6-2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6z'/%3E%3C/svg%3E");
+  position: absolute;
+  width: 37px;
+  top: 8px;
+  right: 10px;
+}
+
+.bp-if,
+.bp-vid {
+  position: relative;
+  margin: auto;
+  background: #000;
+  background-size: 100% 100%;
+}
+.bp-if iframe,
+.bp-if video,
+.bp-if div,
+.bp-vid iframe,
+.bp-vid video,
+.bp-vid div {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 0;
+}
+
+.bp-load {
+  display: flex;
+  background-size: 100% 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bp-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform: translateX(-100%);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0 3px 3px 0;
+  animation: bp-bar 4s both;
+}
+
+.bp-o,
+.bp-o:after {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+
+.bp-o {
+  margin: auto;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.9);
+  animation: bp-o 1s infinite linear;
+}
+
+.bp-cap {
+  position: absolute;
+  bottom: 2%;
+  background: rgba(9, 9, 9, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  max-width: 95%;
+  line-height: 1.3;
+  padding: 0.6em 1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  width: -moz-fit-content;
+  display: table;
+  transition: opacity 0.3s;
+  animation: bp-fadein 0.2s;
+}
+.bp-cap a {
+  color: inherit;
+}
+
+.bp-inline {
+  position: absolute;
+}
+
+.bp-lock {
+  overflow-y: hidden;
+}
+.bp-lock body {
+  overflow: scroll;
+}
+
+.bp-noclose .bp-x {
+  display: none;
+}
+.bp-noclose:not(.bp-zoomed) {
+  touch-action: pan-y;
+}
+.bp-noclose:not(.bp-zoomed) .bp-img-wrap {
+  cursor: zoom-in;
+}
+
+@media (prefers-reduced-motion) {
+  .bp-wrap * {
+    animation-duration: 0s !important;
+  }
+}
+@media (max-width: 500px) {
+  .bp-x {
+    height: 47px;
+    width: 47px;
+  }
+  .bp-x:before {
+    width: 34px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .bp-prev,
+.bp-next {
+    margin-top: -27px;
+    height: 54px;
+    width: 45px;
+  }
+  .bp-prev:before,
+.bp-next:before {
+    top: 7px;
+    left: 2px;
+    width: 43px;
+  }
+
+  .bp-o,
+.bp-o:after {
+    border-width: 6px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .bp-count {
+    margin: 13px;
+  }
+}

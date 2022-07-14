@@ -8,11 +8,11 @@ link: "https://jimmysong.io/guide-to-cloud-native-app/"
 type: "notice"
 ---
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1gf65jqq5oog30go03vjt9.gif)
+![](007S8ZIlly1gf65jqq5oog30go03vjt9.gif)
 
 Just the other day, Java just celebrated its [25th birthday](https://www.infoworld.com/article/3544229/java-programming-language-celebrates-25-years.html), and from the time of its birth it was called "write once, run everywhere", but more than 20 years later, there is still a deep gap between programming and actual production delivery. the world of IT is never short of concepts, and if a concept doesn't solve the problem, then it's time for another layer of concepts. it's been 6 years since Kubernetes was born, and it's time for the post-Kubernetes era - the era of cloud-native applications!
 
-![Cloud Native Stage](https://tva1.sinaimg.cn/large/007S8ZIlly1gf65wnt4v1j31x40jmjtz.jpg)
+![Cloud Native Stage](007S8ZIlly1gf65wnt4v1j31x40jmjtz.jpg)
 
 This white paper will take you on a journey to explore the development path of cloud-native applications in the post-Kubernetes era.
 

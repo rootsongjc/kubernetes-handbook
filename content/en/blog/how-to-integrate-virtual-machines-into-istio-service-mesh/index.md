@@ -30,7 +30,7 @@ The Istio community and [Tetrate](https://www.tetrate.io/) have done a lot of [w
 
 The following diagram shows how Istio models services in the mesh. The predominant source of information comes from a platform service registry like Kubernetes, or a system like Consul. In addition, the ServiceEntry serves as a user-defined service registry, modeling services on VMs or external services outside the organization.
 
-![](https://tva1.sinaimg.cn/large/0081Kckwgy1gkp0fvr3orj30p30ehabc.jpg)
+![](0081Kckwgy1gkp0fvr3orj30p30ehabc.jpg)
 
 **Why install Istio in a virtual machine when you can just use ServiceEntry to bring in the services in the VMs?**
 
