@@ -13,6 +13,8 @@ aliases: "/posts/ci-cd-in-kubernetes"
 
 众所周知Kubernetes并不提供代码构建、发布和部署，所有的这些工作都是由CI/CD工作流完成的，最近TheNewStack又出了本小册子（117页）介绍了Kubernetes中CI/CD的现状，[下载本书的PDF](https://thenewstack.io/ebooks/kubernetes/ci-cd-with-kubernetes/)。
 
+## 关于本书
+
 本书的作者有：
 
 - Rob Scott：ReactiveOps公司的SRE
@@ -27,7 +29,7 @@ aliases: "/posts/ci-cd-in-kubernetes"
 - 使用Spinnaker做持续交付
 - 云原生时代的监控
 
-### DevOps模式
+## DevOps模式
 
 这一章从一些流行的自动化运维工具讲起，比如Chef、Puppet等，引申出CI/CD流水线，进而引出Docker和DevOps，将容器如何解除开发和运维之间的隔阂，但同时也带来了一些挑战，比如频繁的发布变更如何控制，如何控制容器集群的行为，如何拆分应用到容器之中等。这是一个专门用于容器编排调度的工具呼之欲出，Kubernetes的出现彻底改变了局面，可以说它直接改变了应用的基础架构。
 
@@ -37,7 +39,7 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 
 有了基于Kubernetes的CI/CD流程后，又诞生了GitOps（[WeaveWorks](http://weave.works) 的博客中有很多相关文章）和SecOps（Security Operation）。
 
-### 云原生应用模式
+## 云原生应用模式
 
 > 云原生是通过构建团队、文化和技术，利用自动化和架构来管理系统的复杂性和解放生产力。——Joe Beda，Heptio CTO，联合创始人
 
@@ -71,13 +73,13 @@ Kubernetes细化的应用程序的分解粒度，同时将服务发现、配置�
 9. 定义多个namespace来限制默认service范围的可视性。
 10. 配置HPA来动态扩展无状态工作负载。
 
-### 使用Spinnaker进行持续交付
+## 使用Spinnaker进行持续交付
 
 作者首先讲到了Spinnaker的各种特性，比如面向微服务啦，云原生的交付工具啦，可视化的交付和基础设施啦，支持多个region，支持容器和Kubernetes等等，不一而足，感兴趣大家可以自己看下报告或者登陆[Spinnaker官网](https://www.spinnaker.io)查看。
 
 总之作者就是想说Spinnaker很好很强大啦，足以满足您对云原生应用CI/CD的需求。
 
-### 云原生时代的监控
+## 云原生时代的监控
 
 监控是为了实现系统的可观察性，不要以为监控就是简单的出个监控页面，监控其实包括以下部分：
 
