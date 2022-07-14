@@ -1,14 +1,11 @@
 <figure class="mx-auto text-center">
+  {{ $caption := or .Title | default (.Text|htmlUnescape) }}
   {{ with $image := .Page.Resources.GetMatch (printf "%s" (.Destination|safeURL)) }}
-  {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
-  <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="{{.Title}}">
-  {{ else }}
-  <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" alt="{{.Title}}">
+    {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
+    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="{{.Title}}" data-caption="{{ $caption }}">
+    {{ else }}
+    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" alt="{{.Title}}" data-caption="{{ $caption }}">
+    {{ end }}
   {{ end }}
-  {{ end }}
-  {{ with .Title }}
-  <figcaption>{{ . }}</figcaption>
-  {{ else }}
-  <figcaption>{{ .Text |htmlUnescape }}</figcaption>
-  {{ end }}
+  <figcaption>{{ $caption }}</figcaption>
 </figure>
