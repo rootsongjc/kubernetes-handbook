@@ -2,11 +2,11 @@
 date: "2017-06-23T12:24:12+08:00"
 draft: false
 categories: ["其他"]
-title: "使用API blueprint创建API文档"
-description: "在进行微服务开发的过程中的API设计文档化工具。"
+title: "使用 API blueprint 创建 API 文档"
+description: "在进行微服务开发的过程中的 API 设计文档化工具。"
 image: "images/banner/api-blueprint.jpg"
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["API","文档","开源项目"]
 aliases: "/posts/creating-api-document-with-api-blueprint"
 ---
 

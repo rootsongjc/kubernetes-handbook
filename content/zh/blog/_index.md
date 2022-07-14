@@ -8,4 +8,7 @@ description : "Jimmy Song 的原创博客。"
 cascade:
   bg_image: "images/backgrounds/page-title.webp"
   editable: true
+  mobile_toc: true
+  categories: ["云原生"]
+  tags: ["云原生"]
 ---

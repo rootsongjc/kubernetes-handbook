@@ -14,7 +14,8 @@ disableLanguages = [] # desable language from here
 pygmentsUseClasses=true
 
 [outputs]
-home = ["HTML", "RSS", "Algolia"]
+home = ["HTML", "RSS", "Algolia", "JSON"]
+page = ["HTML"]
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -29,6 +30,10 @@ params = ["tags","categories"]
 [params.repository]
 url = "https://github.com/rootsongjc/website"
 branch = "master"
+
+[params.search_wowchemy]
+min_lenth = 1
+threshold = 0.3
 
 ############################# Plugins ##############################
 
@@ -52,10 +57,11 @@ link = "plugins/tocbot/tocbot.css"
 [[params.plugins.css]]
 link = "plugins/bigger-picture/bigger-picture.css"
 
-
 # JS Plugins
 [[params.plugins.js]]
 link = "plugins/jQuery/jquery.min.js"
+[[params.plugins.js]]
+link = "plugins/popper/popper.min.js"
 [[params.plugins.js]]
 link = "plugins/bootstrap/bootstrap.min.js"
 [[params.plugins.js]]
@@ -69,10 +75,6 @@ link = "plugins/search/fuse.min.js"
 [[params.plugins.js]]
 link = "plugins/search/mark.js"
 [[params.plugins.js]]
-link = "plugins/search/search.js"
-#[[params.plugins.js]]
-#link = "plugins/bigpicture/bigpicture.min.js"
-[[params.plugins.js]]
 link = "plugins/hex_md5/hex_md5.js"
 [[params.plugins.js]]
 link = "plugins/anchor/anchor.min.js"
@@ -85,7 +87,7 @@ link = "plugins/bigger-picture/bigger-picture.min.js"
 [params]
 logo = "images/logo.svg"
 # Meta data
-description = "宋净超（Jimmy Song）的个人博客， 专注于探索后 Kubernetes 时代的云原生新范式。"
+description = "宋净超（Jimmy Song）的个人博客，专注于探索后 Kubernetes 时代的云原生新范式。"
 author = "Jimmy Song"
 # contact info
 address = "Beijing, China"
@@ -97,13 +99,13 @@ contact_form_action = "https://formspree.io/mpzdzdbj" # contact form works with 
 google_analitycs_id = "UA-93485976-1" # your id
 # Baidu tongji
 baidu_key = "11f7d254cfa4e0ca44b175c66d379ecc"
-#search = true
+search = true
+search_provider = "wowchemy"
 enableComment = true
 enableAdSense = false
 anchored = true # add anchor on each head title in the blog article content
 code_copy_button = true
 back_to_top_button = true
-
 
 # Preloader
 [params.preloader]

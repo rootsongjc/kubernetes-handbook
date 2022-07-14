@@ -1,5 +1,9 @@
 <figure class="mx-auto text-center">
   {{ $caption := or .Title | default (.Text|htmlUnescape) }}
+  {{ $image_url := .Destination|safeURL }}
+  {{ if hasPrefix (printf "%s" $image_url) "https://" }}
+  <img src="{{ $image_url }}" data-img="{{ $image_url }}" alt="image" data-caption="{{ $caption }}">
+  {{ end }}
   {{ with $image := .Page.Resources.GetMatch (printf "%s" (.Destination|safeURL)) }}
     {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
     <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="{{.Title}}" data-caption="{{ $caption }}">

@@ -4,8 +4,8 @@ title: "两款开源图片处理工具对比"
 description: "Google Guetzli和基于AI的Deep Photo Style Transfer。"
 draft: false
 categories: ["其他"]
+tags: ["图片处理","开源项目"]
 image: "images/banner/guetzli.jpg"
-bg_image: "images/backgrounds/page-title.jpg"
 type: "post"
 aliases: "/posts/picture-process"
 ---

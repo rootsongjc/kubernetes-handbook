@@ -1,9 +1,10 @@
 ---
 date: "2017-04-24T21:32:52+08:00"
-title: "运用kubernetes进行分布式负载测试"
+title: "使用 Kubernetes 进行分布式负载测试"
 draft: false
 categories: ["Kubernetes"]
-description: "该教程描述如何在Kubernetes中进行分布式负载均衡测试。"
+tags: ["Kubernetes","测试","Locust"]
+description: "该教程描述如何在 Kubernetes 中进行分布式负载均衡测试。"
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/deploy-applications-in-kubernetes"
@@ -21,8 +22,6 @@ image: "images/banner/kubernetes.jpg"
 ## 准备
 
 **不需要GCE及其他组件，你只需要有一个kubernetes集群即可。**
-
-如果你还没有kubernetes集群，可以参考[kubernetes-handbook](https://www.gitbook.com/book/rootsongjc/kubernetes-handbook)部署一个。
 
 ## 部署Web应用
 
@@ -85,7 +84,7 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 当然你也可以通过WebUI：Dashboard - Workloads - Replication Controllers - **ServiceName** - Scale来扩容。
 
-![dashboard-scale](dashbaord-scale.jpg)
+![Dashboard](dashbaord-scale.jpg)
 
 ### 配置Traefik
 
@@ -105,23 +104,23 @@ $ kubectl scale --replicas=20 replicationcontrollers locust-worker
 
 通过Traefik的dashboard就可以看到刚增加的`traefik.locust.io`节点。
 
-![traefik-dashboard-locust](traefik-dashboard-locust.jpg)
+![Traefik dashboard](traefik-dashboard-locust.jpg)
 
 ## 执行测试
 
 打开`http://traefik.locust.io`页面，点击`Edit`输入伪造的用户数和用户每秒发送的请求个数，点击`Start Swarming`就可以开始测试了。
 
-![locust-start-swarming](locust-start-swarming.jpg)
+![启动 locust](locust-start-swarming.jpg)
 
 在测试过程中调整`sample-webapp`的pod个数（默认设置了1个pod），观察pod的负载变化情况。
 
-![sample-webapp-rc](sample-webapp-rc.jpg)
+![示例 Web 应用](sample-webapp-rc.jpg)
 
 从一段时间的观察中可以看到负载被平均分配给了3个pod。
 
 在locust的页面中可以实时观察也可以下载测试结果。
 
-![locust-dashboard](locust-dashboard.jpg)
+![Locust dashboard](locust-dashboard.jpg)
 
 ## 参考
 

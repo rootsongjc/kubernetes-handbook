@@ -1,12 +1,11 @@
 ---
 draft: false
 date: "2017-03-17T22:08:25+08:00"
-title: "零基础使用Hugo和GitHub Pages创建自己的博客"
-description: "Hugo是一种通用的网站框架，本问教你如何使用Hugo来构建静态网站。"
+title: "零基础使用 Hugo 和 GitHub Pages 创建自己的博客"
+description: "Hugo 是一种通用的网站框架，本问教你如何使用 Hugo 来构建静态网站。"
 categories: ["其他"]
-tags: ["hugo"]
+tags: ["Hugo","Github Pages"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/hugo-logo.jpg"
 ---
 
