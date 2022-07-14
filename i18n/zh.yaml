@@ -206,7 +206,7 @@
   translation: "关闭"
 
 - id: search_results
-  translation: "搜索结果"
+  translation: "个相关搜索结果"
 
 - id: search_no_results
   translation: "没有找到相关内容"
