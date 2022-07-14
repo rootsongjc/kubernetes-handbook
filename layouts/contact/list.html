@@ -18,7 +18,7 @@
           <button type="submit" value="send" class="btn btn-primary">{{ i18n "send" }}</button>
         </form>
       </div>
-      <div class="col-lg-5 content">
+      <div class="col-lg-5">
         {{ .Content }}
         {{ with $data.homepage.contact }}
         <img src="{{ .qr_code | relURL }}" width="128px" alt="img">

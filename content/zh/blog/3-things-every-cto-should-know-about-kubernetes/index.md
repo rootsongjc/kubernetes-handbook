@@ -1,10 +1,10 @@
 ---
-title: "每位CTO都该知道的关于Kubernetes的三件事"
+title: "每位 CTO 都该知道的关于 Kubernetes 的三件事"
 date: 2017-09-10T16:43:27+08:00
 draft: false
 categories: ["kubernetes"]
-bg_image: "images/backgrounds/page-title.jpg"
-description: "事前须知。"
+tags: ["Kubernetes"]
+description: "使用 Kubernetes 前你需要先了解的问题。"
 type: "post"
 image: "images/banner/kubernetes.jpg"
 aliaes: "/posts/3-things-every-cto-should-know-about-kubernetes"

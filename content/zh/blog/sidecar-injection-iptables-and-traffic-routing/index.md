@@ -14,7 +14,7 @@ type: "post"
 
 为了使读者能够更加直观的了解本文中执行的操作，在阅读本文前你也可以先观看下 [Istio Workshop 第八讲视频](https://bilibili.com/video/BV1cF411T72o/)。
 
-{{<figure alt="图片" attr="[点击观看](https://bilibili.com/video/BV1cF411T72o/)" src="bilibili.jpg" link="https://bilibili.com/video/BV1cF411T72o/" width="70%">}}
+{{<figure title="观看视频" alt="图片" attr="[点击观看](https://bilibili.com/video/BV1cF411T72o/)" src="bilibili.jpg" link="https://bilibili.com/video/BV1cF411T72o/" width="70%">}}
 
 为了理解本文希望你先阅读以下内容：
 

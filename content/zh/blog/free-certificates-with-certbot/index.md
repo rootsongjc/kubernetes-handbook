@@ -2,10 +2,9 @@
 date: "2019-07-05T21:10:57+08:00"
 draft: false
 title: "使用 Certbot 为网站设置永久免费的 HTTPS 证书"
-notoc: true
 description: "实测推荐使用 Certbot 为网站设置永久免费的 HTTPS 证书，超简单，全程不用五分钟！"
 categories: ["其他"]
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["https","证书","安全","certbot","let's encrypt"]
 image: "images/banner/certbot.jpg"
 aliases: "/posts/free-certificates-with-certbot"
 type: "post"

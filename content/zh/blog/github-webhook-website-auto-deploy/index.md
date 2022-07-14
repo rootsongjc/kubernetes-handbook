@@ -3,7 +3,7 @@ title: "使用 GitHub Webhook 实现静态网站自动化部署"
 date: 2019-07-10T13:13:15+08:00
 description: "通过本文你将了解到如何使用 GitHub Webhook 来自动化发布您的网站。"
 categories: ["其他"]
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["GitHub","自动化","证书","webhook"]
 image: "images/banner/webhook.jpg"
 aliases: "/posts/github-webhook-website-auto-deploy"
 type: "post"

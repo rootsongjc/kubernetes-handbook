@@ -1,0 +1,227 @@
+/*************************************************
+ *  Search
+ **************************************************/
+
+// Search modal
+
+.search-modal {
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow: scroll;
+  position: fixed;
+  visibility: hidden;
+  z-index: -99;
+}
+
+.search-modal > .container {
+  padding-top: 70px; /* Navbar height. */
+}
+@media screen and (max-width: 1200px) {
+  .search-modal > .container {
+    padding-top: 50px; /* Navbar height. */
+  }
+}
+
+// Search modal header
+
+.search-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.search-header h1 {
+  margin: 0;
+  line-height: 1;
+}
+
+.col-search-close {
+  text-align: right;
+}
+
+// Large icon for closing search dialog.
+.search-header .col-search-close i {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+// Search box in modal
+
+#search-box {
+  position: relative; /* Required for search icon positioning. */
+  margin-bottom: 0.5rem;
+}
+
+#search-icon{
+  font-size: 1rem;
+  opacity: 0.5;
+  line-height: 1rem;
+  position: absolute;
+  left: 0.7rem;
+  top: 0.6rem;
+  overflow-x: hidden;
+}
+
+// Override Algolia results style
+.ais-Hits-item,
+.ais-InfiniteHits-item {
+  background: unset;
+  box-shadow: unset;
+  padding: unset;
+}
+
+// Override Algolia search box icon style
+.ais-SearchBox-form::before {
+  all: unset; // clear Algolia style
+  height: 1rem;
+  left: 1rem;
+  margin-top: -0.5rem;
+  position: absolute;
+  top: 50%;
+  width: 1rem;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f002';
+  font-size: 100%;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+#search-box #search-query {
+  border: 1px solid #dedede;
+  border-radius: 1rem;
+  padding: 1rem 1rem 1rem 2rem; /* Wider left padding for search icon to fit in. */
+  width: 250px;
+  line-height: 1rem;
+  height: 1rem;
+  font-size: 0.8rem;
+}
+
+.form-control {
+    font-size: 0.85rem;
+}
+
+.form-control:focus {
+  border-color: gray;
+  box-shadow: 0 0 0 0.2rem #fff;
+}
+
+// Search result items
+
+.search-hit em {
+  font-style: normal;
+  background-color: #ffe0b2;
+  color: #e65100;
+  border-bottom: 1px solid #e65100;
+}
+
+.search-hit-type {
+  margin-bottom: 0.4rem !important; /* Override .article-metadata margin. */
+  font-size: 0.65rem;
+}
+
+.search-hit {
+    padding-bottom: 0.8rem;
+}
+
+.search-hit mark {
+      color: red;
+      background-color: transparent;
+}
+
+.search-hit-description {
+  font-size: 0.7rem;
+}
+
+/* Load more results button - hide when there are no more results. */
+#search-hits button[disabled] {
+  display: none;
+}
+
+// Search button in Book sidebar
+
+.sidebar-search {
+  place-self: center start;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-search:hover {
+  color: rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-search-text {
+  flex-grow: 1;
+  text-align: left;
+  // Multilingual safe option to prevent long placeholders overflowing search box.
+  overflow: hidden;
+  font-size: 0.8rem;
+}
+
+.sidebar-search-shortcut {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  box-shadow: 0 1px 1px rgba(12, 13, 14, 0.15), inset 0 1px 0 0 #fff;
+  flex-shrink: 0;
+  padding: 1px 8px;
+  margin: 0 0 0 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: rgb(228, 230, 232);
+  border-radius: 5px;
+  border: 1px solid rgb(159, 166, 173);
+  line-height: 1.2;
+}
+
+// Common queries
+
+#search-common-queries ul {
+  // Empirically remove indentation due to `fa-ul`'s centered 2em spacing, wider than the search icon.
+  margin-left: 0;
+  padding-left: 1.6em;
+}
+
+#search-common-queries li {
+  // Vertically align FA icons.
+  line-height: 1;
+}
+
+#search-common-queries li a {
+  // Color common search query links as body text.
+  color: inherit;
+}
+
+// Hide body scrollbars whilst searching in modal
+.searching {
+  overflow: hidden;
+}
+
+.searching .search-modal {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  visibility: visible;
+  z-index: 1031; /* Highest index, higher than navbar. */
+}
+
+.searching #search-box #search-query {
+  width: 100%;
+}
+
+.search-title p{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.hits-title{
+  font-size: 1rem;
+  font-weight: 600;
+}

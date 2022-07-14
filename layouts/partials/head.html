@@ -31,8 +31,10 @@
 
   <link href='/opensearchdescription.xml' rel='search' title='Content search' type='application/opensearchdescription+xml'/>
 
+  {{ if and .Site.Params.search | eq .Site.Params.search_provider "algolia" }}
   {{ "<!--Algolia-->" | safeHTML }}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css">
+  {{ end }}
   {{ "<!--Twitter card-->" | safeHTML }}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="jimmysong.io" />

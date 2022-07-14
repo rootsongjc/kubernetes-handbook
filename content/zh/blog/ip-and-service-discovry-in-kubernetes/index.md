@@ -3,9 +3,9 @@ date: "2017-04-24T16:11:16+08:00"
 title: "Kubernetes中的IP和服务发现体系"
 draft: false
 description: "几种 IP 的来历。"
-categories: ["kubernetes"]
+categories: ["Kubernetes"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["Kubernetes"]
 aliases: "/posts/ip-and-service-discovry-in-kubernetes"
 image: "images/banner/kubernetes.jpg"
 draft: false
