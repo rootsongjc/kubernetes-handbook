@@ -6,6 +6,9 @@
     <button onclick="topFunction()" id="backTopBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
 	{{- partial "preloader.html" . -}}
 	{{- partial "header.html" . -}}
+    {{ if .Site.Params.search }}
+    {{ partial "search.html" }}
+    {{ end }}
 	{{ if not .IsHome }}
 	{{ partial "page-header.html" . }}
 	{{ end }}

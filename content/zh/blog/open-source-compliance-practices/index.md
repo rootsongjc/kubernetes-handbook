@@ -4,8 +4,8 @@ date: 2019-06-08T18:13:19+08:00
 description: "本文是开源软件合规实践的,介绍开源软件合规的流程及建议。"
 draft: false
 categories: ["开源"]
+tags: ["开源管理","开源"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/open-source.jpg"
 aliases:
 - /posts/open-source-compliance-sourcing

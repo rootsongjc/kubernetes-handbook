@@ -192,3 +192,19 @@
 
 - id: edit_page
   translation: "Edit this page"
+
+- id: show_toc
+  translation: "Click to show the outline"
+
+- id: search
+  translation: "Search"
+
+- id: close
+  translation: "Close"
+
+- id: search_results
+  translation: "search results"
+
+- id: search_no_results
+  translation: "search no result"
+

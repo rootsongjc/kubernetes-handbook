@@ -136,6 +136,7 @@ aliases:
 - "/event/service-mesh-meetup-08"
 - "/event/service-mesh-meetup-09"
 - "/event/sofastack-cloud-native-workshop"
+- "/blog/configuring-efficient-kubernetes-cli-terminal"
 ---
 
 云原生资料库地址：<https://lib.jimmysong.io>

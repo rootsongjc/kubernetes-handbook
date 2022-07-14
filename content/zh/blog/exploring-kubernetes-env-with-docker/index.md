@@ -5,7 +5,7 @@ title: "Kubernetes中的服务发现与docker容器间的环境变量传递源�
 type: "post"
 description: "基于实际应用研究。"
 categories: ["kubernetes"]
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["Kubernetes"]
 aliases: "/posts/configuring-kubernetes-kube-dns"
 image: "images/banner/kubernetes.jpg"
 aliases: "/posts/exploring-kubernetes-env-with-docker"

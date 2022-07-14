@@ -1,11 +1,11 @@
 ---
 date: "2017-07-20T19:41:53+08:00"
 draft: false
-title: "适用于kubernetes的应用开发与部署流程详解"
-description: "以两个应用来说明。"
+title: "适用于 Kubernetes 的应用开发与部署流程详解"
+description: "本文以在 Kubernetes 中部署两个应用来说明。"
 categories: ["Kubernetes"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["Kubernetes","持续交付"]
 aliases: "/posts/deploy-applications-in-kubernetes"
 image: "images/banner/kubernetes.jpg"
 ---

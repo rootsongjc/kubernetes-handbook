@@ -1,7 +1,7 @@
 ---
 title: "Istio 服务网格的现状及未来"
 draft: true
-date: 2022-07-13T12:27:49+08:00
+date: 2022-07-14T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
 tags: ["eBPF","wasm","零信任","Service Mesh","Istio","混合云"]

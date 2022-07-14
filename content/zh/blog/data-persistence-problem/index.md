@@ -4,8 +4,8 @@ draft: false
 title: "Kubernetes中的数据持久化问题"
 description: "以日志收集问题为例来讨论和解决方案探究。"
 categories: ["Kubernetes"]
+tags: ["Kubernetes","存储"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/data-persistence-problem"
 image: "images/banner/kubernetes.jpg"
 ---

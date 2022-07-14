@@ -74,7 +74,7 @@
             {{ end }}
           </ul>
         </div>
-        
+
         <!-- notice -->
         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
           <h4 class="text-white mb-5 text-uppercase">{{ i18n "new_notice" }}</h4>
@@ -159,18 +159,6 @@ var _hmt = _hmt || [];
 </script>
 {{ end }}
 
-{{ "<!-- Algolia -->" | safeHTML }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: 'd7f7189aef2be4e5be6a6b9f44897f61',
-    indexName: 'DocSearch',
-    appId: 'CRNDR5CNMU',
-    inputSelector: '#js-algolia-btn',
-    debug: false,
-  });
-</script>
-
 {{ if .Site.Params.back_to_top_button}}
 {{ partial "back-to-top.html" . }}
 {{ end }}
@@ -187,10 +175,11 @@ var _hmt = _hmt || [];
 {{ partial "code-copy-button.html" . }}
 {{ end }}
 
+{{ if eq .Section "blog" }}
 <script>
 tocbot.init({
   // Where to render the table of contents.
-  tocSelector: '#TableOfContents',
+  tocSelector: '.aside-toc #TableOfContents',
   // Where to grab the headings to build the table of contents.
   contentSelector: '.content',
   // Which headings to grab inside of the contentSelector element.
@@ -200,3 +189,31 @@ tocbot.init({
   collapseDepth: 3
 });
 </script>
+{{ end }}
+
+<!-- Wowchemy search -->
+{{ if and .Site.Params.search | eq .Site.Params.search_provider "wowchemy" }}
+{{ $js_search_params := dict }}
+{{/* Configure search engine. */}}
+{{ $min_length := 1 }}
+{{ $threshold := 0.3 }}
+{{ $search_config := dict "indexURI" ("/index.json" | relLangURL) "threshold" $threshold "minLength" $min_length }}
+{{ $search_i18n := dict "placeholder" (i18n "search_placeholder") "results" (i18n "search_results") "no_results" (i18n "search_no_results") }}
+{{ $content_types := dict "post" (i18n "blog") "notice" (i18n "notice") }}
+{{ $js_search_params = dict "search_config" $search_config "i18n" $search_i18n "content_type" $content_types }}
+{{ $js_wowchemy_search := resources.Get "js/wowchemy-search.js" | js.Build (dict "params" $js_search_params) }}
+{{- $js_wowchemy_search = $js_wowchemy_search | minify | fingerprint "md5" -}}
+<script src="{{ $js_wowchemy_search.RelPermalink }}" type="module"></script>
+<script id="search-hit-fuse-template" type="text/x-template">
+  <div class="search-hit" id="summary-{{"{{key}}"}}">
+    <div class="search-hit-content">
+      <div class="search-hit-name">
+        <div class="article-metadata search-hit-type">{{"{{permalink}}"}}</div>
+        {{ printf "<a href=\"%s\">%s</a>" "{{permalink}}" "{{title}}" | safeHTML }}
+        <p class="search-hit-description">{{"{{snippet}}"}}</p>
+      </div>
+    </div>
+  </div>
+</script>
+{{ end }}
+
