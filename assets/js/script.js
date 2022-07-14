@@ -140,6 +140,7 @@ function openGallery(e) {
   e.preventDefault();
   bp.open({
     items: imageLinks,
-    el: e.currentTarget
+    el: e.currentTarget,
+    maxZoom: 2
   });
 }

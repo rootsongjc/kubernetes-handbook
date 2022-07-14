@@ -69,7 +69,7 @@ NIST’s David Ferraiolo and [Tetrate](https://www.tetrate.io/?utm_content=inlin
 
 NGAC is based on the assumption that you can represent the system you want to protect in a graph that represents the resources you want to protect and your organizational structure, in a way that has meaning to you and that adheres to your organization semantics. On top of this model that is very particular to your organization, you can overlay policies. Between the resource model and the user model, the permissions are defined. This way NGAC provides an elegant way of representing the resources you want to protect, the different actors in the system, and how both worlds are tied together with permissions.
 
-![NGAC DAG](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7y6dffaj30ke0ay0ue.jpg)
+![NGAC DAG](008eGmZEly1gpb7y6dffaj30ke0ay0ue.jpg)
 
 Image via [Linear Time Algorithms to Restrict Insider Access using Multi-Policy Access Control Systems](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=922390)
 
@@ -77,7 +77,7 @@ Image via [Linear Time Algorithms to Restrict Insider Access using Multi-Policy 
 
 The following example shows a simple NGAC graph with a User DAG representing an organization structure, an Object DAG representing files and folders in a filesystem, a categorization of the files, and two different policies — file system and scope — that can be combined to make access decisions. The association edges between the two DAGs define the permissions the actors have on the target resources.
 
-![NGAC](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7y4v7x3j30lx0f7my9.jpg)
+![NGAC](008eGmZEly1gpb7y4v7x3j30lx0f7my9.jpg)
 
 In this graph we can see a representation of two files, “resume” and “contract” in the “/hr-docs” folder, each linked to a category (“public/confidential”). There are also two policy classes, “File System” and “Scope,” where the objects in the graph are attached — these need to be satisfied in order to get access to each file.
 
@@ -97,7 +97,7 @@ Other key advantages of NGAC include the ability to set policies consistently (t
 
 The following table compares ABAC, RBAC, and NGAC in several aspects.
 
-![NGAC vs RBAC vs ABAC](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7y5ehmej30zs0fw76d.jpg)
+![NGAC vs RBAC vs ABAC](008eGmZEly1gpb7y5ehmej30zs0fw76d.jpg)
 
 In conclusion:
 
