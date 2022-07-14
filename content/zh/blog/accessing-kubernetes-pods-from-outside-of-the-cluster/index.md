@@ -1,11 +1,10 @@
 ---
 title: "从外部访问Kubernetes中的Pod"
-subtitle: "你需要知道的访问Pod的5种方式"
 date: 2017-11-21T20:13:01+08:00
 description: "关于在kubenretes中暴露Pod及服务的5种方式。"
 draft: false
-categories: ["kubernetes"]
-bg_image: "images/backgrounds/page-title.jpg"
+categories: ["Kubernetes"]
+tags: ["Kubernetes"]
 type: "post"
 image: "images/banner/kubernetes.jpg"
 aliases: "/posts/accessing-kubernetes-pods-from-outside-of-the-cluster"

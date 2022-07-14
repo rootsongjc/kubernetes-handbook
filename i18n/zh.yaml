@@ -195,3 +195,18 @@
 
 - id: edit_page
   translation: "编辑本页"
+
+- id: show_toc
+  translation: "点击查看目录"
+
+- id: search
+  translation: "搜索"
+
+- id: close
+  translation: "关闭"
+
+- id: search_results
+  translation: "搜索结果"
+
+- id: search_no_results
+  translation: "没有找到相关内容"

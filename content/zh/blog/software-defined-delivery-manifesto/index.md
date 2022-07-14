@@ -4,9 +4,9 @@ date: 2018-11-30T19:06:35+08:00
 draft: false
 description: "今天给大家分享的是《软件定义交付宣言》，该宣言发出已经有一周多时间了，还在联署签名中。"
 categories: ["其他"]
+tags: ["软件定义交付","持续交付"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
-aliases: "/posts/open-source-cla"
+aliases: "/posts/software-defined-delivery-manifesto/"
 image: "images/banner/sdd.jpg"
 ---
 

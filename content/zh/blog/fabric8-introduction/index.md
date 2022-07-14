@@ -1,10 +1,10 @@
 ---
 draft: false
 date: "2017-04-10T21:39:00+08:00"
-title: "开源微服务管理平台fabric8简介"
+title: "开源微服务管理平台 fabric8 简介"
 description: "本文介绍了开源的微服务管理平台 Fabric8。"
 categories: ["其他"]
-bg_image: "images/backgrounds/page-title.jpg"
+tags: ["fabric8","开源项目","微服务"]
 image: "images/banner/blog-banner.jpg"
 aliases: "/posts/fabric8-introduction"
 type: "post"
@@ -13,8 +13,6 @@ type: "post"
 无意中发现[Fabric8](https://github.com/fabric8io/fabric8)这个**对于Java友好的开源微服务管理平台**。
 
 其实这在这里发现的[Achieving CI/CD with Kubernetes](http://blog.sonatype.com/achieving-ci/cd-with-kubernetes)（by Ramit Surana,on February 17, 2017），其实是先在[slideshare](https://www.slideshare.net/ramitsurana/achieving-cicd-with-kubernetes)上看到的。
-
-![fabric8](https://fabric8.io/images/fabric8_logo.svg)
 
 大家可能以前听过一个叫做[fabric](https://github.com/fabric/fabric/)的工具，那是一个 Python (2.5-2.7) 库和命令行工具，用来流水线化执行 SSH 以部署应用或系统管理任务。所以大家不要把fabric8跟fabric搞混，虽然它们之间有一些共同点，但两者完全不是同一个东西，**fabric8不是fabric的一个版本**。Fabric是用python开发的，fabric8是java开发的。
 
@@ -122,7 +120,7 @@ Waiting, endpoint for service is not ready yet...
 
 我一看下载下来的
 
-```http
+```text
 https://repo1.maven.org/maven2/io/fabric8/platform/packages/fabric8-platform/2.4.24/fabric8-platform-2.4.24-kubernetes.yml
 ```
 

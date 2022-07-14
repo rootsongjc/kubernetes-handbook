@@ -27,12 +27,15 @@
           </div>
           <!-- blog content -->
           <div class="col-12 content">
+            {{ if .Params.mobile_toc }}
+            {{ partial "mobile_toc.html" . }}
+            {{ end }}
             {{ .Content }}
           </div>
 
           <div class="col-12 mb-4">
             <div class="border-bottom">
-          {{ partial "edit_page.html" . }}
+            {{ partial "edit_page.html" . }}
             </div>
           </div>
           <!-- tags -->
@@ -61,7 +64,6 @@
       </div>
       {{ "<!-- sidebar -->" | safeHTML }}
       <aside class="col-lg-4 sidebar">
-      {{ partial "blog-sidebar.html" . }}
       {{ "<!-- recommend -->" | safeHTML }}
       {{ partial "related.html" . }}
       {{ "<!-- /recommend -->" | safeHTML }}

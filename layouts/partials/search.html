@@ -1,0 +1,34 @@
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6 search-title">
+          <p>{{ i18n "search" }}</p>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="{{i18n "close" | default "Close"}}"><i class="fa fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        <i class="fa fa-search" id="search-icon" aria-hidden="true"></i>
+        <input name="q" id="search-query" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="{{i18n "search_placeholder"}}">
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        <!-- Search results will appear here -->
+      </div>
+
+      <div id="search-common-queries">
+        <!-- Search results will appear here -->
+      </div>
+
+    </section>
+  </div>
+</aside>

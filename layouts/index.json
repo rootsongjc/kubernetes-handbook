@@ -1,0 +1,19 @@
+{{- $.Scratch.Add "pagesIndex" slice -}}
+{{- range $index, $page := .Site.Pages -}}
+  {{- if in (slice "post" "notice") $page.Type -}}
+    {{- if and (not .Draft) (not .Params.private) | and (ne .Params.searchable false) -}}
+    {{- if gt (len $page.Content) 0 -}}
+      {{- /* Generate page description. */ -}}
+      {{- $desc := "" -}}
+      {{- if .Params.description -}}
+        {{- $desc = .Params.description -}}
+      {{- else -}}
+        {{- $desc = .Summary -}}
+      {{- end -}}
+      {{- $pageData := (dict "title" $page.Title "permalink" $page.Permalink "summary" (plainify $desc| htmlUnescape) "content" ($page.Plain | htmlUnescape)) -}}
+      {{- $.Scratch.Add "pagesIndex" $pageData -}}
+    {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "pagesIndex" | jsonify -}}

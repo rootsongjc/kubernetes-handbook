@@ -3,9 +3,9 @@ title: "配置Kubernetes DNS服务kube-dns"
 date: 2018-01-03T16:16:01+08:00
 draft: false
 description: "配置 Kubernetes DNS Pod 的提示和定义 DNS 解析过程以及诊断 DNS 问题的指南。"
-categories: ["kubernetes"]
+categories: ["Kubernetes"]
+tags: ["Kubernetes"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/configuring-kubernetes-kube-dns"
 image: "images/banner/kubernetes.jpg"
 ---

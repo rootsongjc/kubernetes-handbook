@@ -4,8 +4,8 @@ draft: false
 title: "Kubernetes配置最佳实践"
 description: "本文档旨在汇总和强调用户指南、快速开始文档和示例中的最佳实践。"
 categories: ["kubernetes"]
+tags: ["Kubernetes"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/configuration-best-practice"
 image: "images/banner/kubernetes.jpg"
 ---

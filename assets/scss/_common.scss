@@ -659,3 +659,10 @@ figure img:target{
 .fixed-top{
     z-index:990;
 }
+
+// Hide in-page toc on PC and show it on mobile
+@media screen and (min-width: 600px) {
+    .content .toc-inpage{
+        display: none;
+    }
+}
