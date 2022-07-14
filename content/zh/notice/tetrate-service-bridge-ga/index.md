@@ -9,7 +9,7 @@ type: "notice"
 image: "images/backgrounds/tetrate-logo.png"
 ---
 
-![](https://tva1.sinaimg.cn/large/008eGmZEly1gpbh3r4a10j31dk0peb2a.jpg)
+![Tetrate](008eGmZEly1gpbh3r4a10j31dk0peb2a.jpg)
 
 我们很高兴地宣布 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 1.0（General Available） 发布。Tetrate 的使命是解决应用网络的复杂性，使应用开发者和运维的工作变得简单。今天是我们发展道路上的一个重要里程碑。
 

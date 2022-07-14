@@ -31,7 +31,7 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 
 下图显示了 Istio 如何在网格中对服务进行建模。最主要的信息来源来自于 Kubernetes 这样的平台服务注册表，或者 Consul 这样的系统。此外，ServiceEntry 作为用户定义的服务注册表，对虚拟机上的服务或组织外部的服务进行建模。
 
-![Istio 中的服务注册发现模型](https://tva1.sinaimg.cn/large/0081Kckwly1gkc4ldbqzhj30p30ehwf5.jpg)
+![Istio 中的服务注册发现模型](0081Kckwly1gkc4ldbqzhj30p30ehwf5.jpg)
 
 **为什么不直接使用 ServiceEntry 引入虚拟机中的服务，却还要大费周折在虚拟机中安装 Istio？**
 
@@ -41,7 +41,7 @@ Istio 社区和 [Tetrate](https://www.tetrate.io/) 在 Istio 对虚拟机的支�
 
 在下面这个 demo 中我们将使在 GKE 中部署 Istio 并运行 bookinfo 示例，其中 ratings 服务的后端使用的是部署在虚拟机上的 MySQL，该示例可以在 [Istio 官方文档](https://istio.io/latest/docs/examples/virtual-machines/bookinfo/)中找到，我作出了部分改动，最终的流量路由如下图所示。
 
-![Bookinfo 示例中的流量示意图](https://tva1.sinaimg.cn/large/0081Kckwly1gkc4lch5epj318g0avwfx.jpg)
+![Bookinfo 示例中的流量示意图](0081Kckwly1gkc4lch5epj318g0avwfx.jpg)
 
 ### 安装流程
 

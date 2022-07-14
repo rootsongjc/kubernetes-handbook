@@ -113,12 +113,34 @@
   });
 
   // Blog image maximize
-  $('.content img').on('click', function (e) {
+/*  $('.content img').on('click', function (e) {
     BigPicture({
       el: e.target,
       overlayColor: 'rgba(15,15,15,.94)',
     });
   });
-
+*/
 })(jQuery);
 
+// initialize BiggerPicture
+const bp = BiggerPicture({
+  target: document.body
+});
+
+// grab image links
+const imageLinks = document.querySelectorAll(".content img");
+
+// add click listener to open BiggerPicture
+for (let link of imageLinks) {
+  link.addEventListener("click", openGallery);
+}
+
+// open BiggerPicture
+function openGallery(e) {
+  e.preventDefault();
+  bp.open({
+    items: imageLinks,
+    el: e.currentTarget,
+    maxZoom: 2
+  });
+}

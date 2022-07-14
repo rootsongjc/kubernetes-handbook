@@ -5,11 +5,17 @@
     <img src="{{ .Get "src" }}" loading="lazy" decoding="async"
          {{- if or (.Get "title") (.Get "caption") }}
          alt="{{ with .Get "title" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-         data-caption="{{ with .Get "title" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
          {{- end -}}
          {{- with .Get "width" }} width="{{ . }}"{{ end -}}
          {{- with .Get "height" }} height="{{ . }}"{{ end -}}
          {{- with .Get "id" }} id="{{ . }}"{{ end -}}
+         data-img="{{ .Get "src" }}"
+         {{ with $image := .Page.Resources.GetMatch (.Get "src") }}
+         {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
+         data-width="{{ .Width }}"
+         data-height="{{ .Height }}"
+         {{ end }}
+         {{ end }}
     /><!-- Closing img tag -->
     {{- if .Get "link" }}</a>{{ end -}}
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
