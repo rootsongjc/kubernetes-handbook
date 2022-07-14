@@ -11,7 +11,7 @@ link: "https://academy.tetrate.io/courses/istio-fundamentals-zh"
 
 该教程由企业级服务网格供应商 Tetrate 出品，该课程已上线，可免费报名学习。报名地址：<https://academy.tetrate.io/courses/istio-fundamentals-zh>
 
-![Istio 基础教程页面](https://tva1.sinaimg.cn/large/008i3skNly1gvb4ffykbrj60u00gwgn002.jpg)
+![Istio 基础教程页面](istio-fundamental-courses-zh.jpg)
 
 ### 课程简介
 

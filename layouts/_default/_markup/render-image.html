@@ -1,13 +1,14 @@
-{{ if .Title }}
-  <figure class="mx-auto text-center">
-      <img src="{{ .Destination | safeURL }}" data-img="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
-    <figcaption>{{ .Title }}</figcaption>
-  </figure>
-{{ else }}
-  <figure class="mx-auto text-center">
-      <img src="{{ .Destination | safeURL }}" data-img="{{ .Destination | safeURL }}" alt="{{ .Text }}" data-caption="{{ .Text }}">
-  {{ if .Text }}
+<figure class="mx-auto text-center">
+  {{ with $image := .Page.Resources.GetMatch (printf "%s" (.Destination|safeURL)) }}
+  {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
+  <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="{{.Title}}">
+  {{ else }}
+  <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" alt="{{.Title}}">
+  {{ end }}
+  {{ end }}
+  {{ with .Title }}
+  <figcaption>{{ . }}</figcaption>
+  {{ else }}
   <figcaption>{{ .Text |htmlUnescape }}</figcaption>
   {{ end }}
-  </figure>
-{{ end }}
+</figure>

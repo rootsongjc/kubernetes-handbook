@@ -18,7 +18,7 @@ Day-2 Operation 是系统为组织产生结果的地方。因此，要不断寻�
 
 Day-2 Operation 不一定是指第2天的行动。一旦 "某物 "进入行动，"Day-2 Operation "是指在这个 "某物 "没有被杀死或被 "其他东西 "取代之前的剩余时间段。如下图中展示的软件的生命周期中，从软件被安装之后到被卸载之前的那段时间。
 
-![Day-2 Operation](https://tva1.sinaimg.cn/large/008eGmZEly1gorlqmukkij31im0kote7.jpg)
+![Day-2 Operation](008eGmZEly1gorlqmukkij31im0kote7.jpg)
 
 当我们审视一个业务流程、应用程序或IT基础设施生命中的各个阶段时，有些人喜欢把它们描绘成一个循环过程。我相信这是因为人们倾向于使用 "应用程序的生命周期 "这个词，并以某种方式陷于相信图中必须循环回到起点。各个阶段通常是在时间上向前推进的，而不是把你带回起点。
 
@@ -53,7 +53,7 @@ Day2 是产品发货或提供给客户的时间。在这里，大部分精力都
 
 如同在作战过程中，这个循环不断重复，正如下图中展示的那样。
 
-![](https://tva1.sinaimg.cn/large/008eGmZEly1gormccennnj31gi0u0nae.jpg)
+![Day 2 Operation 流程](008eGmZEly1gormccennnj31gi0u0nae.jpg)
 
 监控程序是基于服务水平协议（SLA）中定义的要求。SLA基于服务水平目标（SLO），它代表了我们的服务水平指标（SLI）的状态。自动化和监控是解决第2天责任的关键。
 

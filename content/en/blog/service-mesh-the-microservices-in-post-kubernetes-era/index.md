@@ -95,7 +95,7 @@ The xDS protocol was proposed by [Envoy](https://envoyproxy.io/) . The original 
 
 Let's take a look at the xDS protocol with a service with two instances each.
 
-![xDS protocol](https://tva1.sinaimg.cn/large/00831rSTly1gde7ydng3ij30s80j4aba.jpg)
+![xDS protocol](00831rSTly1gde7ydng3ij30s80j4aba.jpg)
 
 The arrow in the figure above is not the path or route after the traffic enters the proxy, nor is it the actual sequence. It is an imagined xDS interface processing sequence. In fact, there are cross references between xDS.
 

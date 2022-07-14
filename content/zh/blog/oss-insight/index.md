@@ -21,24 +21,24 @@ image: "/images/banner/oss-insight.jpg"
 
 以下图片来自 [OSSInsight 博客](https://ossinsight.io/blog/explore-deep-in-4.6-billion-github-events/)，展示了该网站的一些功能。
 
-![Kubernetes 和 Moby 的标记 star 的人员地理分布](https://tva1.sinaimg.cn/large/e6c9d24ely1h2trup1v5bj20k00c5my9.jpg)
+![Kubernetes 和 Moby 的标记 star 的人员地理分布](e6c9d24ely1h2trup1v5bj20k00c5my9.jpg)
 
-![K8s（上）和 Moby（下）的月度推送和提交](https://tva1.sinaimg.cn/large/e6c9d24ely1h2trw4iqpyj20wn0gvgnp.jpg)
+![K8s（上）和 Moby（下）的月度推送和提交](e6c9d24ely1h2trw4iqpyj20wn0gvgnp.jpg)
 
-![分类排名](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts5cig5kj21mw0u00xv.jpg)
+![分类排名](e6c9d24ely1h2ts5cig5kj21mw0u00xv.jpg)
 
 你可以在首页输入一个 GitHub 仓库，查看该仓库的一些洞察信息。我查看了我的 [`rootsongjc/kubernetes-handbook`](https://github.com/rootsongjc/kubernetes-handbook/) 之后，发现它还以获得关注者的公司信息，如下图。
 
-![rootsongjc/kubernetes-handbook 关注者的公司分布](https://tva1.sinaimg.cn/large/e6c9d24ely1h2trz8bpqfj21di0u0gq4.jpg)
+![rootsongjc/kubernetes-handbook 关注者的公司分布](e6c9d24ely1h2trz8bpqfj21di0u0gq4.jpg)
 
 这个网站有点类似于 CNCF 推出的 [DevStats](https://devstats.cncf.io/)，不过 DevStats 只能洞察 CNCF 托管的项目。
 
-![DevStats 页面](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts2o2rirj21mw0u00zv.jpg)
+![DevStats 页面](e6c9d24ely1h2ts2o2rirj21mw0u00zv.jpg)
 
 ## 评论
 
 OSSInsight 也可以算是 CHAOSS 类软件的一种，比如 Linux 基金会下的 CHAOSS （Community Health Analytics Open Source Software）工作组有一个开源项目 [GrimoireLab](https://chaoss.github.io/grimoirelab/) 就是做软件开发分析的。
 
-![GrimoireLab 网站页面](https://tva1.sinaimg.cn/large/e6c9d24ely1h2ts7e6aiuj21ml0u078o.jpg)
+![GrimoireLab 网站页面](e6c9d24ely1h2ts7e6aiuj21ml0u078o.jpg)
 
 如果你关注开源和技术趋势的话，网上还有一些类似的 GitHub 趋势网站，大家可以根据自己的需要选用。

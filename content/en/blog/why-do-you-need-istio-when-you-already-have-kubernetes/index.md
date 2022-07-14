@@ -34,7 +34,7 @@ This article contains the following:
 
 The following diagram shows the service access relationship in Kubernetes and service mesh (one sidecar per pod model).
 
-![Kubernetes vs Service Mesh](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7knfo4dj31hk0redrz.jpg)
+![Kubernetes vs Service Mesh](008eGmZEly1gpb7knfo4dj31hk0redrz.jpg)
 
 ### Traffic Forwarding
 
@@ -42,7 +42,7 @@ Each node in a Kubernetes cluster deploys a kube-proxy component that communicat
 
 ### Service Discovery
 
-![Service Discovery](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7knwb79j30kq0fcjs9.jpg)
+![Service Discovery](008eGmZEly1gpb7knwb79j30kq0fcjs9.jpg)
 
 Istio can follow the service registration in Kubernetes and can also interface with other service discovery systems via platform adapters in the control plane; and then generate data plane configurations (using CRD, which are stored in etcd) with transparent proxies for the data plane. The transparent proxy of the data plane is deployed as a sidecar container in the pod of each application service, and all these proxies need to request the control plane to synchronize the proxy configuration. The proxy is “transparent” because the application container is completely unaware of the presence of the proxy. The kube-proxy component in the process needs to intercept traffic as well, except that the kube-proxy intercepts traffic to and from the Kubernetes node — while the sidecar proxy intercepts traffic to and from the pod.
 
@@ -72,7 +72,7 @@ Istio Gateway functions similarly to Kubernetes Ingress, in that it is responsib
 
 Envoy is the default sidecar proxy in Istio. Istio extends its control plane based on Enovy’s xDS protocol. We need to familiarize ourselves with Envoy’s basic terminology before talking about Envoy’s xDS protocol. The following is a list of basic terms and their data structures in Envoy; please refer to the [Envoy documentation](https://envoyproxy.io/) for more details.
 
-![Envoy](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7koah95j31450tetta.jpg)
+![Envoy](008eGmZEly1gpb7koah95j31450tetta.jpg)
 
 ### Basic Terminology
 
@@ -87,7 +87,7 @@ Multiple listeners can be set in Envoy, each listener can set a filter chain (fi
 
 The xDS protocol was proposed by Envoy and is the default sidecar proxy in Istio, but as long as the xDS protocol is implemented, it can theoretically be used as a sidecar proxy in Istio — such as the [MOSN](https://github.com/mosn/mosn) open source by Ant Group.
 
-[![img](https://tva1.sinaimg.cn/large/008eGmZEly1gpb7kk7wk4j31060lqgqx.jpg)](https://cdn.thenewstack.io/media/2021/03/b800bf17-image3.png)
+[![img](008eGmZEly1gpb7kk7wk4j31060lqgqx.jpg)](https://cdn.thenewstack.io/media/2021/03/b800bf17-image3.png)
 
 Istio is a very feature-rich service mesh that includes the following capabilities.
 
