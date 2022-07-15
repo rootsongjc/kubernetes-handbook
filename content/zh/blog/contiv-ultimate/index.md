@@ -1,12 +1,11 @@
 ---
 date: "2017-03-17T17:52:37+08:00"
-title: "Docker17.03CE下思科docker网络插件contiv趟坑终极版"
+title: "Docker 17.03CE 下思科 Docker 网络插件contiv 趟坑终极版"
 draft: false
-description: "今天这篇文章将带领大家用正确的姿势编译和打包一个contiv netplugin。"
+description: "本文将带领大家用正确的姿势编译和打包一个 contiv netplugin。"
 categories: ["容器"]
 tags: ["contiv","docker"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/contiv-ultimate"
 image: "images/banner/contiv.jpg"
 ---

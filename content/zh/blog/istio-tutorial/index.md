@@ -2,7 +2,7 @@
 title: "Istio Service Mesh 教程"
 subtitle: "一文了解 Istio 全部功能，示例见 GitHub"
 date: 2018-04-18T23:20:47+08:00
-tags: ["istio","service-mesh"]
+tags: ["istio","service mesh"]
 description: "本文是 Istio 管理 Java 微服务的案例教程。"
 draft: false
 tags: ["istio"]

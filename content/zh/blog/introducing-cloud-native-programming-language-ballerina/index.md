@@ -5,7 +5,6 @@ date: 2018-05-12T23:27:49+08:00
 draft: false
 categories: ["云原生"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 image: "images/banner/ballerina.jpg"
 ---
 

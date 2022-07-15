@@ -1,12 +1,11 @@
 ---
-title: "CentOS7官方Docker发行版现重大Bug可致Kubernetes中的健康检测探针失败并影响容器交互"
+title: "CentOS7 官方 Docker 发行版现重大 Bug"
 date: 2018-12-06T21:08:02+08:00
 draft: false
-description: "CentOS7官方Docker版本docker 1.13现Bug导致docker exec失败，可致Kubernetes中的检测探针失败，官方推荐降级docker版本解决。"
+description: "CentOS7 官方 Docker 1.13 版本 Bug 导致 docker exec 失败，可致 Kubernetes 中的检测探针失败，官方推荐降级 docker 版本解决。"
 categories: ["容器"]
-tags: ["docker"]
+tags: ["docker","Kubernetes","CentOs"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/docker-exec-bug-on-centos7"
 image: "images/banner/docker-logo.jpg"
 ---

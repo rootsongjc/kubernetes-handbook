@@ -6,9 +6,9 @@
   {{ end }}
   {{ with $image := .Page.Resources.GetMatch (printf "%s" (.Destination|safeURL)) }}
     {{ if in (slice "jpeg" "png" "webp" "gif") .MediaType.SubType }}
-    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="{{.Title}}" data-caption="{{ $caption }}">
+    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" data-width="{{ .Width }}" data-height="{{ .Height }}" alt="image" data-caption="{{ $caption }}">
     {{ else }}
-    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" alt="{{.Title}}" data-caption="{{ $caption }}">
+    <img src="{{ .RelPermalink }}" data-img="{{ .RelPermalink  }}" alt="image" data-caption="{{ $caption }}">
     {{ end }}
   {{ end }}
   <figcaption>{{ $caption }}</figcaption>
