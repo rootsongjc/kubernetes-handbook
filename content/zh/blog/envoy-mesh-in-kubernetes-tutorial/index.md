@@ -14,7 +14,7 @@ image: "images/banner/envoyproxy.jpg"
 
 **注**：本教程中的示例来自 [envoy-steps](https://github.com/datawire/envoy-steps)，本文中使用的所有的代码和 YAML 配置见 [envoy-tutorial](https://github.com/rootsongjc/envoy-tutorial)。
 
-![Envoy Mesh架构图](https://jimmysong.io/kubernetes-handbook/images/envoy-mesh-in-kubernetes.png)
+![Envoy Mesh 架构图](envoy-mesh-in-kubernetes.webp)
 
 ## 前提条件
 
