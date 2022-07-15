@@ -141,7 +141,7 @@ function parseResults(query, results) {
       key: key,
       title: value.item.title,
       type: content_key,
-      permalink: value.item.permalink,
+      relpermalink: value.item.relpermalink,
       snippet: snippet,
     };
     let output = render(template, templateData);

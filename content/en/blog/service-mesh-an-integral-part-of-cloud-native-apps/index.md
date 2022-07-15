@@ -4,7 +4,6 @@ date: 2021-12-12T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","cloud native"]
 categories: ["Service Mesh"]
-bg_image: "images/backgrounds/page-title.jpg"
 description: "This article will explore the relationship between service mesh and cloud native."
 type: "post"
 image: "images/banner/integrate.jpg"
@@ -31,7 +30,7 @@ The service mesh is regarded as the next generation of microservices. In the dia
 
 This diagram shows the layered architecture of Kubernetes and Istio.
 
-![img](008i3skNly1gxgxss9mamj30n90d73zs.jpg)
+![Kubernetes vs xDS vs Istio](008i3skNly1gxgxss9mamj30n90d73zs.jpg)
 
 The diagram indicates that the kube-proxy settings are global and cannot be controlled at a granular level for each service. All Kubernetes can do is topology-aware routing, routing traffic closer to the Pod, and setting network policies in and out of the Pod.
 
