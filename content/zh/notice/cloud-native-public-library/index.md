@@ -137,6 +137,10 @@ aliases:
 - "/event/service-mesh-meetup-09"
 - "/event/sofastack-cloud-native-workshop"
 - "/blog/configuring-efficient-kubernetes-cli-terminal"
+- "/blog/creating-cloud-native-app-with-kubernetes"
+- "/blog/the-book-managing-kubernetes-by-brendan-burns"
+- "/blog/ci-cd-in-kubernetes"
+- "/blog/from-kubernetes-to-cloud-native"
 ---
 
 云原生资料库地址：<https://lib.jimmysong.io>

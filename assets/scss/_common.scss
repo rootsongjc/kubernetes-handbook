@@ -467,7 +467,7 @@ th {
 .aside-toc {
     top: 98px;
     line-height: 1.9;
-    z-index:998;
+    z-index:989;
     ul {
             padding-inline-start: 10px;
             border-left: 1px solid #eee;
@@ -658,6 +658,12 @@ figure img:target{
 // fix big pictures overlay issue, this value should less than 999
 .fixed-top{
     z-index:990;
+}
+
+.content .toc-inpage{
+    ul{
+        margin-bottom: 0;
+    }
 }
 
 // Hide in-page toc on PC and show it on mobile

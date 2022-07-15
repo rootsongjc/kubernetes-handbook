@@ -27,7 +27,7 @@
           </div>
           <!-- blog content -->
           <div class="col-12 content">
-            {{ if .Params.mobile_toc }}
+            {{ if and .Params.mobile_toc | gt (countwords .Content) 600}}
             {{ partial "mobile_toc.html" . }}
             {{ end }}
             {{ .Content }}

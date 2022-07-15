@@ -6,7 +6,6 @@ description: "本书有两个优点，一个是每个章节都给出了问题的
 categories: ["kubernetes"]
 tags:  ["kubernetes","图书"]
 image: "images/banner/kubernets-management-design-patterns.jpg"
-bg_image: "images/backgrounds/page-title.jpg"
 type: "post"
 aliases: "/posts/book-kubernetes-management-design-patterns"
 ---

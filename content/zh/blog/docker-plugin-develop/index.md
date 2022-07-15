@@ -1,12 +1,11 @@
 ---
 date: "2017-03-15T13:57:26+08:00"
-title: "Docker17.03-CE插件开发案例"
+title: "Docker 17.03-CE 插件开发案例"
 description: "看了文章后你可能会觉得，官网上的可能是个假例子。"
 draft: false
 categories: ["容器"]
 tags: ["docker"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/docker-plugin-develop"
 image: "images/banner/docker-logo.jpg"
 ---
@@ -15,7 +14,7 @@ image: "images/banner/docker-logo.jpg"
 
 看了文章后你可能会觉得，官网上的可能是个假🌰。**虽然官网上的文档写的有点不对，不过你使用docker-ssh-volume的开源代码自己去构建plugin的还是可以成功的！**
 
-### Docker plugin开发文档
+## Docker plugin开发文档
 
 首先docker官方给出了一个[docker legacy plugin文档](https://docs.docker.com/engine/extend/legacy_plugins/)，这篇文章基本就是告诉你docker目前支持哪些插件，罗列了一系列连接，不过对不起，这些不是docker官方插件，有问题去找它们的开发者去吧😂
 
@@ -41,7 +40,7 @@ const defaultAPIVersion string = "1.0"
 
 真正要开发一个docker plugin还是得看[docker plugin API](https://docs.docker.com/engine/extend/plugin_api/)，这篇文档告诉我们：
 
-#### 插件发现
+### 插件发现
 
 当你开发好一个插件**docker engine**怎么才能发现它们呢？有三种方式：
 
@@ -57,7 +56,7 @@ const defaultAPIVersion string = "1.0"
 
 [docker plugin管理](https://docs.docker.com/engine/extend/)
 
-### 创建sshfs volume plugin
+## 创建sshfs volume plugin
 
 [官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)（这个文档有问题）[docker-issue29886](https://github.com/docker/docker/issues/29886)
 
@@ -234,7 +233,7 @@ denied: requested access to the resource is denied
 
 有发现了个问题[docker issue-31723](https://github.com/docker/docker/issues/31723)，使用plugin创建volume的时候居然找不到`sshfs.sock`文件！😢刚开始手动创建plugin的时候测试了下是正常的，不知道为啥弄到这台测试机器上出问题了。
 
-### 关于docker plugin enable失败的问题
+## 关于docker plugin enable失败的问题
 
 当docker  plugin创建成功并enable的时候docker并没有报错，这与docker plugin的**activate**机制有关，只有当你最终使用该plugin的时候才会激活它。
 

@@ -6,7 +6,6 @@ draft: false
 categories: ["容器"]
 tags: ["hadoop","docker","swarm","yarn"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/yarn-on-docker"
 image: "images/banner/hadoop.png"
 ---
