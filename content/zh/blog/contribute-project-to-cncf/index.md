@@ -3,15 +3,14 @@ title: "如何将一个开源项目加入CNCF？"
 date: 2019-04-15T19:37:02+08:00
 draft: false
 description: " CNCF 基金会的开源项目治理规则和组织架构，还有如何将一个开源项目加入到 CNCF。"
-tags: ["cncf"]
+tags: ["cncf","开源项目"]
 categories: ["开源"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/contribute-project-to-cncf"
 image: "images/banner/cncf-logo.jpg"
 ---
 
-前段时间看了一篇文章[为什么中国没有 Apache 基金会这样的组织？](<https://www.infoq.cn/article/l0bCXU3SojYXpz-AhP3v>)，二叉树视频中采访了[开源社](<http://www.kaiyuanshe.cn/>)的理事长老刘，他的一番话也让我很受启发，在关注和参与 CNCF 基金会这几年来我也有很多收获，有一点就是了解到了一个开源社区（基金会）治理的规则。
+前段时间看了一篇文章[为什么中国没有 Apache 基金会这样的组织？](https://www.infoq.cn/article/l0bCXU3SojYXpz-AhP3v)，二叉树视频中采访了[开源社](http://www.kaiyuanshe.cn/)的理事长老刘，他的一番话也让我很受启发，在关注和参与 CNCF 基金会这几年来我也有很多收获，有一点就是了解到了一个开源社区（基金会）治理的规则。
 
 虽然 CNCF 没有 Apache、GNOME、FreeBSD 历史那么悠久，但是它成立的短短几年内就成功的运作了 [Kubernetes](https://kubernetes.io) 这样的超大型开源项目，一定有其可取之处。今天我就来给大家分享下CNCF基金会的开源项目治理规则和组织架构，还有如何将一个开源项目加入到 CNCF。
 
@@ -19,7 +18,7 @@ CNCF 根据“[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”将其托
 
 > “[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”是由Geoffrey A. Moore提出的高科技产品的市场营销理论。新技术要想跨越鸿沟，必须能够实现一些跨越式的发展，**拥有某一些以前不可能实现的功能**，具有某种内在价值并能够**赢得非技术人员的**青睐。
 
-![CNCF 项目的成熟度分类](https://jimmysong.io/kubernetes-handbook/images/cncf-graduation.jpg)
+![CNCF 项目的成熟度分类](cncf-graduation.jpg)
 
 *图片来自 <https://www.cncf.io/projects/>*
 
@@ -40,7 +39,7 @@ CNCF 根据“[鸿沟理论](https://www.jianshu.com/p/a305fa93580b)”将其托
 
 CNCF 的开源项目遵循如下图所示的成熟度演进。
 
-![CNCF项目成熟度级别](https://jimmysong.io/kubernetes-handbook/images/cncf-graduation-criteria-v2.jpg)
+![CNCF项目成熟度级别](cncf-graduation-criteria-v2.jpg)
 
 关于上图的一些说明：
 
@@ -63,7 +62,7 @@ CNCF 中托管的开源项目要符合云原生定义：
 
 下图演示了开源项目加入 CNCF 后的整个运作流程。
 
-![CNCF中的项目运作](https://jimmysong.io/kubernetes-handbook/images/006tNc79ly1g1yz80ag98j31cs0n2gr7.jpg)
+![CNCF中的项目运作](006tNc79ly1g1yz80ag98j31cs0n2gr7.jpg)
 
 ### 开源项目如何加入 CNCF
 

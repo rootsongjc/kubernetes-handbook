@@ -69,11 +69,11 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
-| grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>，<http://servicegraph.istio.jimmysong.io/graph> |
-| zipkin       | http://zipkin.istio.jimmysong.io                             |
+| grafana      | `http://grafana.istio.jimmysong.io`                          |
+| servicegraph | `http://servicegraph.istio.jimmysong.io/dotviz`，`http://servicegraph.istio.jimmysong.io/graph` |
+| zipkin       | `http://zipkin.istio.jimmysong.io`                           |
 
-详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
+详细信息请参阅 [Istio 文档](https://istio.io/latest/docs/examples/bookinfo/)。
 
 ## 部署示例应用
 
@@ -121,7 +121,7 @@ docker run -d \
   jaegertracing/all-in-one:1.3
 ```
 
-Jaeger UI 地址 http://localhost:16686
+Jaeger UI 地址 `http://localhost:16686`
 
 **Customer**
 
@@ -132,7 +132,7 @@ JAEGER_SERVICE_NAME=customer mvn \
   -Drun.arguments="--spring.config.location=src/main/resources/application-local.properties"
 ```
 
-服务访问地址： http://localhost:8280
+服务访问地址： `http://localhost:8280`
 
 **Preference**
 
@@ -143,7 +143,7 @@ JAEGER_SERVICE_NAME=preference mvn \
   -Drun.arguments="--spring.config.location=src/main/resources/application-local.properties"
 ```
 
-服务访问地址：http://localhost:8180
+服务访问地址：`http://localhost:8180`
 
 **Recommendation**
 
@@ -152,9 +152,9 @@ cd recommendation/java/vertx
 mvn vertx:run
 ```
 
-服务访问地址：http://localhost:8080
+服务访问地址：`http://localhost:8080`
 
-所有服务都启动之后，此时访问 http://localhost:8280 将会看到如下输出。
+所有服务都启动之后，此时访问 `http://localhost:8280` 将会看到如下输出。
 
 ```bash
 customer => preference => recommendation v1 from 'unknown': 1
@@ -164,11 +164,11 @@ customer => preference => recommendation v1 from 'unknown': 1
 
 **Jaeger**
 
-此时访问 http://localhost:16686 将看到 Jaeger query UI，所有应用将 metrics 发送到 Jeager 中。
+此时访问 `http://localhost:16686` 将看到 Jaeger query UI，所有应用将 metrics 发送到 Jeager 中。
 
 可以在 Jaeger UI 中搜索 `customer` 和 `preference` service 的 trace 并查看每次请求的 tracing。
 
-![Jaeger query UI](https://jimmysong.io/kubernetes-handbook/images/jaeger-query-ui.png)
+![Jaeger query UI](jaeger-query-ui.webp)
 
 ### 构建镜像
 
@@ -262,7 +262,7 @@ kubectl apply -f ingress/ingress.yaml
 172.17.8.102 customer.istio-tutorial.jimmysong.io
 ```
 
-现在访问 http://customer.istio-tutorial.jimmysong.io 将看到如下输出：
+现在访问 `http://customer.istio-tutorial.jimmysong.io` 将看到如下输出：
 
 ```ini
 customer => preference => recommendation v1 from '6fc97476f8-m2ntp': 1
@@ -274,19 +274,19 @@ customer => preference => recommendation v1 from '6fc97476f8-m2ntp': 1
 ./bin/poll_customer.sh
 ```
 
-访问 <http://servicegraph.istio.jimmysong.io/dotviz> 查看服务的分布式追踪和依赖关系。
+访问 `http://servicegraph.istio.jimmysong.io/dotviz` 查看服务的分布式追踪和依赖关系。
 
-![分布式追踪](https://jimmysong.io/kubernetes-handbook/images/istio-tutorial-zipkin-trace.png)
+![分布式追踪](istio-tutorial-zipkin-trace.webp)
 
-![依赖关系](https://jimmysong.io/kubernetes-handbook/images/istio-tutorial-zipkin-dependency.png)
+![依赖关系](istio-tutorial-zipkin-dependency.webp)
 
-访问 <http://servicegraph.istio.jimmysong.io/dotviz> 查看服务间的关系图和 QPS。
+访问 `http://servicegraph.istio.jimmysong.io/dotviz` 查看服务间的关系图和 QPS。
 
-![服务关系图和QPS](https://jimmysong.io/kubernetes-handbook/images/istio-tutorial-serivcegraph-dotviz.png)
+![服务关系图和QPS](istio-tutorial-serivcegraph-dotviz.webp)
 
-访问 <http://grafana.istio.jimmysong.io> 查看 Service Mesh 的监控信息。
+访问 `http://grafana.istio.jimmysong.io` 查看 Service Mesh 的监控信息。
 
-![Grafana 监控](https://jimmysong.io/kubernetes-handbook/images/istio-tutorial-grafana.png)
+![Grafana 监控](istio-tutorial-grafana.webp)
 
 ## Istio 使用示例
 
@@ -564,7 +564,7 @@ istioctl create -f istiofiles/route-rule-recommendation-v1.yml -n istio-tutorial
 istioctl create -f istiofiles/route-rule-safari-recommendation-v2.yml -n istio-tutorial
 ```
 
-谁用 Safari 或者 Chrome（Chrome 浏览器的 user-agent 中也包含 Safari 字段）访问 <http://customer.istio-tutorial.jimmysong.io/> 在经过 3 秒钟（我们在前面重新编译 v2 镜像，设置了 3 秒超时时间）后将看到访问 v2 的输出。
+谁用 Safari 或者 Chrome（Chrome 浏览器的 user-agent 中也包含 Safari 字段）访问 `http://customer.istio-tutorial.jimmysong.io/` 在经过 3 秒钟（我们在前面重新编译 v2 镜像，设置了 3 秒超时时间）后将看到访问 v2 的输出。
 
 或者使用 curl 访问。
 
