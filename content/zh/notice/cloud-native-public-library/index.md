@@ -141,6 +141,7 @@ aliases:
 - "/blog/the-book-managing-kubernetes-by-brendan-burns"
 - "/blog/ci-cd-in-kubernetes"
 - "/blog/from-kubernetes-to-cloud-native"
+- "/blog/install-nginx-ingress-with-helm"
 ---
 
 云原生资料库地址：<https://lib.jimmysong.io>

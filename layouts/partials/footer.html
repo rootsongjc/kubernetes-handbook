@@ -208,8 +208,8 @@ tocbot.init({
   <div class="search-hit" id="summary-{{"{{key}}"}}">
     <div class="search-hit-content">
       <div class="search-hit-name">
-        <div class="article-metadata search-hit-type">{{"{{permalink}}"}}</div>
-        {{ printf "<a href=\"%s\">%s</a>" "{{permalink}}" "{{title}}" | safeHTML }}
+        <div class="article-metadata search-hit-type">{{"{{relpermalink}}"}}</div>
+        {{ printf "<a href=\"%s\">%s</a>" "{{relpermalink}}" "{{title}}" | safeHTML }}
         <p class="search-hit-description">{{"{{snippet}}"}}</p>
       </div>
     </div>

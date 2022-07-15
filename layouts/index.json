@@ -10,7 +10,7 @@
       {{- else -}}
         {{- $desc = .Summary -}}
       {{- end -}}
-      {{- $pageData := (dict "title" $page.Title "permalink" $page.Permalink "summary" (plainify $desc| htmlUnescape) "content" ($page.Plain | htmlUnescape)) -}}
+      {{- $pageData := (dict "title" $page.Title "relpermalink" $page.RelPermalink "summary" (plainify $desc| htmlUnescape) "content" ($page.Plain | htmlUnescape | truncate 5000)) -}}
       {{- $.Scratch.Add "pagesIndex" $pageData -}}
     {{- end -}}
     {{- end -}}
