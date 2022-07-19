@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-88 253 908 526" width="908" height="526">
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Medium"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue-Bold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.5 
+    <dc:date>2022-07-06 15:25:24 +0000</dc:date>
+  </metadata>
+  <g id="TSB" stroke="none" fill="none" fill-opacity="1" stroke-dasharray="none" stroke-opacity="1">
+    <title>TSB</title>
+    <rect fill="white" x="-88" y="253" width="908" height="526"/>
+    <g id="TSB: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_40">
+        <path d="M -87.49491 503.5893 L 210.2551 503.5893 L 210.2551 778.4331 L -87.49491 778.4331 Z" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_5">
+        <path d="M 501.0051 503.5893 L 818.8335 503.5893 L 818.8335 778.4331 L 501.0051 778.4331 Z" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9">
+        <path d="M 210.2551 503.5893 L 501.2551 503.5893 L 501.2551 778.4331 L 210.2551 778.4331 Z" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.0,5.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_54">
+        <rect x="-87.49491" y="503.5893" width="906.3284" height="274.84375" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_39">
+        <rect x="-55.11991" y="623.7143" width="230.75" height="105.5" fill="#f0f0f0" fill-opacity=".2798509"/>
+        <rect x="-55.11991" y="623.7143" width="230.75" height="105.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-50.11991 704.7502)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="49.087" y="16">Virtual Machines</tspan>
+        </text>
+      </g>
+      <g id="Graphic_37">
+        <rect x="-87.49491" y="367.43307" width="906.3284" height="136.15625" fill="white"/>
+        <rect x="-87.49491" y="367.43307" width="906.3284" height="136.15625" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-82.49491 372.43307)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Global Control Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_36">
+        <rect x="-55.11991" y="404.05155" width="126.39187" height="55.16105" fill="#0a55a8"/>
+        <text transform="translate(-50.11991 412.16797)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="29.891938" y="16">Service </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="20.411938" y="35.46411">Discovery</tspan>
+        </text>
+      </g>
+      <g id="Graphic_35">
+        <rect x="110.32868" y="404.05155" width="126.39187" height="55.16105" fill="#0a55a8"/>
+        <text transform="translate(115.32868 421.9)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="21.027938" y="16">Telemetry</tspan>
+        </text>
+      </g>
+      <g id="Graphic_34">
+        <rect x="275.77727" y="404.05155" width="155.95564" height="55.16105" fill="#0a55a8"/>
+        <text transform="translate(280.77727 412.16797)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="41.28182" y="16">Disaster</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="3.9298214" y="35.46411">Recovery/Failover</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <rect x="470.7896" y="404.05155" width="126.39187" height="55.16105" fill="#0a55a8"/>
+        <text transform="translate(475.7896 412.16797)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="31.515938" y="16">AuthN/</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="35.22794" y="35.46411">AuthZ</tspan>
+        </text>
+      </g>
+      <g id="Graphic_32">
+        <rect x="636.2382" y="404.05155" width="126.39187" height="55.16105" fill="#0a55a8"/>
+        <text transform="translate(641.2382 412.16797)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="31.97194" y="16">Egress</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="25.603938" y="35.46411">Controls</tspan>
+        </text>
+      </g>
+      <g id="Graphic_31">
+        <rect x="237.34884" y="628.0971" width="230.75" height="105.5" fill="#f0f0f0" fill-opacity=".2798509"/>
+        <rect x="237.34884" y="628.0971" width="230.75" height="105.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(242.34884 709.133)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="23.975" y="16">Kubernetes on Premise</tspan>
+        </text>
+      </g>
+      <g id="Graphic_30">
+        <rect x="-87.49491" y="253.7008" width="906.3284" height="113.73228" fill="white"/>
+        <rect x="-87.49491" y="253.7008" width="906.3284" height="113.73228" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-82.49491 258.7008)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Management Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_29">
+        <rect x="-55.40116" y="294.42045" width="113" height="54.28548" fill="#0a55a8"/>
+        <rect x="-55.40116" y="294.42045" width="113" height="54.28548" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(-50.40116 302.09908)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="32.556" y="16">Multi</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="20.084" y="35.46411">Tenancy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <rect x="84.59884" y="294.42045" width="114" height="55.16105" fill="#0a55a8"/>
+        <rect x="84.59884" y="294.42045" width="114" height="55.16105" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(89.59884 302.53687)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="23.696" y="16">Service</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="16.432" y="35.46411">Inventory</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <rect x="225.59884" y="294.42045" width="114" height="55.16105" fill="#0a55a8"/>
+        <rect x="225.59884" y="294.42045" width="114" height="55.16105" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(230.59884 312.26892)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="2.088" y="16">Observability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <rect x="366.59884" y="294.42045" width="114" height="54.28548" fill="#0a55a8"/>
+        <rect x="366.59884" y="294.42045" width="114" height="54.28548" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(371.59884 302.09908)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="3.864" y="16">Role/Access </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.936" y="35.46411">Management</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="507.59884" y="294.42045" width="113" height="55.16105" fill="#0a55a8"/>
+        <rect x="507.59884" y="294.42045" width="113" height="55.16105" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(512.59884 312.26892)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="31.508" y="16">Audit</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="647.59884" y="294.42045" width="114" height="55.16105" fill="#0a55a8"/>
+        <rect x="647.59884" y="294.42045" width="114" height="55.16105" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"/>
+        <text transform="translate(652.59884 302.53687)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="26.664" y="16">Config</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="1.936" y="35.46411">Management</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <rect x="532.97384" y="623.7143" width="228.625" height="105.5" fill="#f0f0f0" fill-opacity=".2798509"/>
+        <rect x="532.97384" y="623.7143" width="228.625" height="105.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(537.97384 704.7502)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="30.9285" y="16">Kubernetes on Cloud</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <rect x="237.34884" y="589.0971" width="230.75" height="39" fill="white"/>
+        <rect x="237.34884" y="589.0971" width="230.75" height="39" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(242.34884 598.8651)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="10.919" y="16">Local Control Plane (istiod)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <rect x="-56.15116" y="474.0893" width="817.75" height="29.5" fill="#0a55a8"/>
+        <text transform="translate(-51.15116 479.10726)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="white" x="321.651" y="16">XCP Central Gateway</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="237.34884" y="550.0971" width="230.75" height="39" fill="#0a55a8"/>
+        <rect x="237.34884" y="550.0971" width="230.75" height="39" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(242.34884 559.8651)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="white" x="38.055" y="16">XCP Edge Gateway</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <rect x="532.97384" y="584.7143" width="228.625" height="39" fill="white"/>
+        <rect x="532.97384" y="584.7143" width="228.625" height="39" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(537.97384 594.48226)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="9.8565" y="16">Local Control Plane (istiod)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_18">
+        <rect x="532.97384" y="545.7143" width="228.625" height="39" fill="#0a55a8"/>
+        <rect x="532.97384" y="545.7143" width="228.625" height="39" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(537.97384 555.48226)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="white" x="36.9925" y="16">XCP Edge Gateway</tspan>
+        </text>
+      </g>
+      <g id="Group_57">
+        <g id="Graphic_38">
+          <rect x="35.46449" y="640.9721" width="84.5" height="29.5" fill="#333"/>
+          <rect x="35.46449" y="640.9721" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_17">
+          <rect x="10.66134" y="651.3432" width="84.5" height="29.5" fill="#333"/>
+          <rect x="10.66134" y="651.3432" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_16">
+          <rect x="-14.14181" y="661.7143" width="84.5" height="29.5" fill="#333"/>
+          <rect x="-14.14181" y="661.7143" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(-9.14181 667.2403)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="25.394" y="15">VM</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_8">
+        <line x1="352.72384" y1="550.0971" x2="352.72384" y2="503.5893" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_7">
+        <path d="M 352.72384 503.5893 L 352.72384 530.34927 L 647.28634 530.34927 L 647.28634 545.7143" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_6">
+        <path d="M 352.72384 503.5893 L 352.72384 530.2678 L 60.25509 530.2678 L 60.25509 623.7143" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_4">
+        <text transform="translate(17.65534 747.4331)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Cluster A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <text transform="translate(317.31584 747.3471)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Cluster B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <text transform="translate(611.58234 747.4331)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" font-weight="700" fill="black" x="0" y="16">Cluster C</tspan>
+        </text>
+      </g>
+      <g id="Group_58">
+        <g id="Graphic_47">
+          <rect x="335.277" y="640.9721" width="84.5" height="29.5" fill="#333"/>
+          <rect x="335.277" y="640.9721" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_46">
+          <rect x="310.47384" y="651.3432" width="84.5" height="29.5" fill="#333"/>
+          <rect x="310.47384" y="651.3432" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_45">
+          <rect x="285.6707" y="661.7143" width="84.5" height="29.5" fill="#333"/>
+          <rect x="285.6707" y="661.7143" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(290.6707 667.2403)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="3.482" y="15">Workload</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_56">
+        <g id="Graphic_51">
+          <rect x="629.8395" y="640.9721" width="84.5" height="29.5" fill="#333"/>
+          <rect x="629.8395" y="640.9721" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_50">
+          <rect x="605.03634" y="651.3393" width="84.5" height="29.5" fill="#333"/>
+          <rect x="605.03634" y="651.3393" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_49">
+          <rect x="580.2332" y="661.7143" width="84.5" height="29.5" fill="#333"/>
+          <rect x="580.2332" y="661.7143" width="84.5" height="29.5" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(585.2332 667.2403)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="3.482" y="15">Workload</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
