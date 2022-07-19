@@ -1,7 +1,7 @@
 ---
 title: "Istio 服务网格的现状及未来"
 draft: true
-date: 2022-07-14T12:27:49+08:00
+date: 2022-07-18T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
 tags: ["eBPF","wasm","零信任","Service Mesh","Istio","混合云"]
@@ -97,7 +97,7 @@ Istio 开源发展时间线如下图所示。
 
 ### Sidecar 运维管理{#sidecar-management}
 
-Istio 是在 Kubernetes 的基础上构建的，它可以利用 Kubernetes 的容器编排和生命周期管理，在 Kubernetes 创建 pod 时，通过准入控制器自动向 pod 中注入 sidecar。下图展示了
+Istio 是在 Kubernetes 的基础上构建的，它可以利用 Kubernetes 的容器编排和生命周期管理，在 Kubernetes 创建 pod 时，通过准入控制器自动向 pod 中注入 sidecar。
 
 为了解决 Sidecar 的资源消耗问题，有人为服务网格提出了有四种部署模式，如下图所示。
 
@@ -153,12 +153,12 @@ Flomesh 的张晓辉曾在 [为什么需要可编程代理](https://cloudnative.
 - [Istio](https://istio.io)：目前最流行的服务网格项目之一，在中国几乎成为了服务网格的代名词；
 - [Envoy](https://envoyproxy.io)：Envoy 本身只是代理，也经常被作为其他基于 Envoy 的服务网格的 sidecar，也经常被用来构建 API Gateway；
 - [Linkerd](https://linkerd.io)：最早出现的服务网格，「Service Mesh」概念提出者，第一个进入 CNCF 的服务网格项目，使用自研的 Rust 语言编写轻量级 sidecar 代理；
-- [Traefik Mesh](https://traefik.io/traefik-mesh/)：由 Traefik 推出的服务网格项目，使用 Treafik proxy 作为 sidecar，支持 SMI（接下来会提到），它的特点是对应用的无侵入性，不会在 pod 中注入 sidecar，
-- [Kuma](https://kuma.io/)：由 Kong 推出的服务网格项目，使用 Envoy 作为 Sidecar 代理，特色是使用 Kong 自家的
+- [Traefik Mesh](https://traefik.io/traefik-mesh/)：由 Traefik 推出的服务网格项目，使用 Treafik proxy 作为 sidecar，支持 SMI（接下来会提到），它的特点是对应用的无侵入性，不会在 pod 中注入 sidecar；
+- [Kuma](https://kuma.io/)：由 Kong 推出的服务网格项目，使用 Envoy 作为 Sidecar 代理，特色是使用 Kong 自家的网关作为入口网关；
 - [Consul Connect](https://www.consul.io/docs/connect)：Consul 服务网格，使用 Envoy 作为 sidecar 代理；
-- [Open Service Mesh](https://openservicemesh.io/)：由微软开源的服务网格，使用 Envoy 作为 sidecar，兼容 SMI（同样是微软提出）。
+- [Open Service Mesh](https://openservicemesh.io/)：由微软开源的服务网格，使用 Envoy 作为 sidecar，兼容 SMI（同样是微软提出）；
 - [Service Mesh Performance（SMP）](https://smp-spec.io/)：标准化了服务网格值的指标，通过捕获基础设施容量、服务网格配置和工作负载元数据的细节来描述任何部署的性能；
-- [Service Mesh Interface（SMI）](https://smi-spec.io/)：它不是服务网格，而只是一套服务网格实现标准，与 OAM、SPIFFE、CNI、CSI 等类似都是定义接口标准，具体实现就不一而足了。目前 Traefik Mesh 和 Open Service Mesh 声明支持该规范。
+- [Service Mesh Interface（SMI）](https://smi-spec.io/)：它不是服务网格，而只是一套服务网格实现标准，与 OAM、SPIFFE、CNI、CSI 等类似都是定义接口标准，具体实现就不一而足了。目前 Traefik Mesh 和 Open Service Mesh 声明支持该规范；
 - [Network Service Mesh](https://networkservicemesh.io/)：有必要提一下这个项目，因为经常有人把它错认为是一个服务网格。实际上，它面向的是三层网络，使用它可以在不更换 CNI 插件的前提下，连接多云/混合云。它并不是我们所定义的「服务网格」，而是服务网格的一个有力补充（虽然名字里带有服务网格比较有迷惑性）。
 
 纵观以上所谓的「服务网格」项目，我们可以看出大部分服务网格项目的发起者都是根据代理起家，然后做控制平面。而且 Istio、Consul Connect、Open Service Mesh、Kuma 都是使用 Envoy 作为 sidecar 代理。只有 Linkerd 和 Traefik Mesh 推出了自己的代理。而所有的服务网格项目都支持 sidecar 模式。除了 Istio、Linkerd、Consul Connect 已应用于生产上，其他服务网格项目目前还只能算是个「玩具」。
@@ -326,7 +326,7 @@ Apache SkyWalking 可以作为 Istio 提供可观测性工具，还可以帮助�
 
 以上优化方式对 Envoy 吞吐量的影响数据请参阅 [使用 eBPF 准确定位服务网格的关键性能问题](https://lib.jimmysong.io/blog/pinpoint-service-mesh-critical-performance-impact-by-using-ebpf/#introducing-skywalking-rover)。
 
-## 服务网格的领衔主演  Envoy{#starring-envoy}
+## Envoy —— 服务网格的领衔主演{#starring-envoy}
 
 我们知道服务网格是由数据平面和控制平面组成的，从上面的服务网格开源项目列表中我们可以看到，服务网格开源项目大部分都是基于 Envoy，然后开发自己的控制平面。还记得我在本文前面将服务网格比作演出吗？在这场服务网格的演出中，毫无以为 Envoy 就是领衔主演 —— Envoy 发明的 xDS 协议，基本成为服务网格的通用 API，众多的服务网格开源项目都使用 Envoy 作为数据平面。下面展示的是 Envoy 的架构图。
 
@@ -408,7 +408,7 @@ spec:
       weight: 25 
 ```
 
-该配置将 `servicea.example.com` 同过 T1 网关暴露到网格外，并将网格外访问该服务的流量的 `75%` 转发到 `cluster1`，`25%` 的流量转发到 `cluster2`，另外为了应对多集群中的流量、服务和安全配置，Tetrate 旗舰产品 Tetrate Service Bridge 中还增加了 一系列 Group API，详见 [TSB 文档](https://docs.tetrate.io/service-bridge/1.4.x)。
+该配置将 `servicea.example.com` 通过 T1 网关暴露到网格外，并将网格外访问该服务的流量的 `75%` 转发到 `cluster1`，`25%` 的流量转发到 `cluster2`，另外为了应对多集群中的流量、服务和安全配置，Tetrate 旗舰产品 Tetrate Service Bridge 中还增加了 一系列 Group API，详见 [TSB 文档](https://docs.tetrate.io/service-bridge/1.4.x)。
 
 ## Istio 开源生态{#ecosystem}
 
