@@ -6,6 +6,7 @@ description: "本教程由企业级服务网格提供商 Tetrate 出品。"
 type: "notice"
 link: "https://academy.tetrate.io/courses/envoy-fundamentals"
 image: "images/backgrounds/envoy-logo.png"
+aliases: ["/notice/envoy-handbook-release/"]
 ---
 
 ![Envoy 基础教程](008i3skNly1gz4q1qdqvuj30xc0goq4h.jpg)
