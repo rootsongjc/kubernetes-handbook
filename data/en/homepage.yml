@@ -3,26 +3,23 @@ slider:
   enable : true
   bg_image : "images/backgrounds/bg.svg"
   slider_item:
-    - title : "Welcome to Jimmy's blog"
+    - title : "Learn Istio Fundamentals"
+      content: "Tetrate presents Istio Fundamentals, a course that enables users to learn Istio easily with concept text, labs, and quizzes. Istio is an open-source service mesh platform that helps microservices communicate with each other easily."
       animation_in : "left"
       animation_out : "right"
-      content: "Jimmy is the founder of Cloud Native Community and has authored or translated several books on cloud native since 2016. Cloud Native Community he's assembled covers almost all the stalwarts of cloud native in China, join the community and walk alongside them!"
-      # available animation : left, right, up, down
       button:
         enable : true
-        label : "Learn More"
-        link : "about/"
+        label : "Enroll for free"
+        link :  "https://academy.tetrate.io/courses/istio-fundamentals"
 
-    # slider item loop
-    - title : "Cloud Native Library"
-      content : "Cloud Native Library is open source cloud-native library in Chinese. The library is managed by Jimmy."
+    - title : "Learn Envoy Fundamentals"
+      content: "Tetrate presents Envoy fundamentals, the easiest way to learn Envoy. Envoy is an open-source edge and service proxy that is a key part of modern, cloud-native applications. This free course provides a comprehensive, eight-part tour of Envoy with concept text, labs, and quizzes."
       animation_in : "left"
       animation_out : "right"
-      # available animation : left, right, up, down
       button:
         enable : true
-        label : "Go"
-        link : "https://lib.jimmysong.io/"
+        label : "Enroll for free"
+        link :  "https://academy.tetrate.io/courses/envoy-fundamentals"
 
 ############################### Banner feature ###############################
 banner_feature:
