@@ -210,3 +210,6 @@
 
 - id: search_no_results
   translation: "没有找到相关内容"
+
+- id: courses
+  translation: "教程"

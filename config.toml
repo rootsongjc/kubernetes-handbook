@@ -197,11 +197,6 @@ URL = "https://lib.jimmysong.io"
 weight = 3
 
 [[menu.main]]
-name = "Event"
-URL = "https://lib.jimmysong.io/event/"
-weight = 4
-
-[[menu.main]]
 name = "Notice"
 URL = "notice"
 weight = 5
@@ -230,31 +225,23 @@ URL = "https://cloudnative.to"
 name = "Awesome Cloud Native"
 URL = "/awesome-cloud-native/"
 
-[[menu.footer]]
-name = "Jimmy's YouTube Channel"
-URL = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
+#[[menu.footer]]
+#name = "Jimmy's YouTube Channel"
+#URL = "https://www.youtube.com/channel/UCwLGlxo3b492bzIgD8lnOKg/"
 
 [[menu.footer]]
 name = "Tetrate - Service Mesh Company"
 URL = "https://tetrate.io/?jimmysong"
 
-# book
+# courses
 
 [[menu.book]]
 name = "Kubernetes Handbook"
 URL = "https://lib.jimmysong.io/kubernetes-handbook/"
 
 [[menu.book]]
-name = "Istio Handbook"
-URL = "https://lib.jimmysong.io/istio-handbook/"
-
-[[menu.book]]
-name = "Envoy Handbook"
-URL = "https://lib.jimmysong.io/envoy-handbook/"
-
-[[menu.book]]
-name = "Cloud Native Bible"
-URL = "https://lib.jimmysong.io/cloud-native/"
+name = "Istio Fundamentals"
+URL = "https://academy.tetrate.io/courses/istio-fundamentals-zh"
 
 ################################### Chinese language #####################################
 [Languages.zh]
@@ -289,11 +276,6 @@ weight = 4
 name = "社区"
 URL = "https://cloudnative.to"
 weight = 5
-
-[[Languages.zh.menu.main]]
-name = "活动"
-URL = "https://lib.jimmysong.io/event/"
-weight = 6
 
 [[Languages.zh.menu.main]]
 name = "标签"
@@ -343,11 +325,11 @@ URL = "https://lib.jimmysong.io/kubernetes-handbook/"
 
 [[Languages.zh.menu.book]]
 name = "Istio 基础教程"
-URL = "https://lib.jimmysong.io/istio-handbook/"
+URL = "https://academy.tetrate.io/courses/istio-fundamentals-zh"
 
 [[Languages.zh.menu.book]]
 name = "Envoy 基础教程"
-URL = "https://lib.jimmysong.io/envoy-handbook/"
+URL = "https://academy.tetrate.io/courses/envoy-fundamentals-zh"
 
 [[Languages.zh.menu.book]]
 name = "深入理解 Istio"

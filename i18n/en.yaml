@@ -208,3 +208,5 @@
 - id: search_no_results
   translation: "search no result"
 
+- id: courses
+  translation: "Courses"

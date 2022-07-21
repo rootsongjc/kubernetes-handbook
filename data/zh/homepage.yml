@@ -43,7 +43,7 @@ slider:
       button:
         enable : true
         label : "开启旅程"
-        link : "/kubernetes-handbook/"
+        link : "https://lib.jimmysong.io/kubernetes-handbook/"
 
 ############################### Banner feature ###############################
 banner_feature:
