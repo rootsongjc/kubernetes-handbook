@@ -135,18 +135,13 @@ So, is it possible to build a service mesh with proxies? Now I will list the exi
 | Service proxy | Envoy, which supports proxyless mode for gRPC                | [Linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy) | Default is [Envoy](https://www.envoyproxy.io/) , replaceable | [Traefik Proxy](https://traefik.io/traefik/)                 | [Envoy](https://www.envoyproxy.io/) | [Envoy](https://www.envoyproxy.io/)           |
 | Ingress controller | Envoy, custom Ingress, supports Kubernetes Gateway API       | no built-in                                                 | Envoy, with support for the Kubernetes Gateway API           | no built-in                                                  | Kong                                | Support Contour, Nginx, compatible with other |
 | Governance         | Istio Community and Open Usage Commons, proposed to donate to CNCF | CNCF                                                        | View [Contribution Guidelines](https://github.com/hashicorp/consul/blob/master/.github/CONTRIBUTING.md) | View [Contribution Guidelines](https://github.com/traefik/mesh/blob/master/CONTRIBUTING.md) | CNCF                                | CNCF                                          |
+| Comment | It is one of the most popular service mesh projects at present. | The earliest service mesh, the creator of the concept of "Service Mesh", the first service mesh project to enter CNCF, using a lightweight proxy developed with Rust. | Consul service mesh, using Envoy as a sidecar proxy. | A service mesh project launched by Traefik, using Traefik Proxy as a sidecar and supporting SMI (mentioned below). | A service mesh project launched by Kong that uses Envoy as a sidecar proxy, using Kong's own gateway as ingress. | An open source service mesh created by Microsoft, using Envoy as a sidecar, compatible with SMI (also proposed by Microsoft). |
 
 {{< /table >}}
 
 The open source projects in the above table are summarized below, and several projects closely related to service mesh are added, as follows:
 
-- [Istio](https://istio.io/): it is one of the most popular service mesh projects at present.
-- [Envoy](https://envoyproxy.io/): Envoy is just a proxy that is frequently used as a sidecar for other Envoy-based service meshes and to build API Gateways.
-- [Linkerd](https://linkerd.io/): The earliest service mesh, the creator of the concept of "Service Mesh", the first service mesh project to enter CNCF, using the self-developed Rust to write lightweight sidecar proxies;
-- [Traefik Mesh](https://traefik.io/traefik-mesh/): A service mesh project launched by Traefik, using Trefik Proxy as a sidecar and supporting SMI (which will be mentioned next).
-- [Kuma](https://kuma.io/): A service mesh project launched by Kong, using Envoy as a sidecar proxy, featuring the use of Kong's own gateway as ingress.
-- [Consul Connect](https://www.consul.io/docs/connect): Consul service mesh, using Envoy as a sidecar proxy.
-- [Open Service Mesh](https://openservicemesh.io/): An open source service mesh by Microsoft, using Envoy as a sidecar, compatible with SMI (also proposed by Microsoft).
+- [Envoy](https://envoyproxy.io/): Envoy is a cloud-native proxy, frequently used as a sidecar in other Envoy-based service meshes and for building API Gateways.
 - [Service Mesh Performance (SMP)](https://smp-spec.io/): Metrics that capture details of infrastructure capacity, service mesh configuration, and workload metadata to standardize service mesh values and describe the performance of any deployment.
 - [Service Mesh Interface (SMI)](https://smi-spec.io/): It is not a service mesh, but a set of service mesh implementation standards. Similar to OAM, SPIFFE, CNI, CSI, etc., it defines interface standards, and the specific implementation varies. Currently, Traefik Mesh and Open Service Mesh claim to support this specification.
 - [Network Service Mesh](https://networkservicemesh.io/): It's worth mentioning this project because it's often mistaken for a service mesh. In fact, it is oriented towards a three-layer network, and it can be used to connect multi-cloud/hybrid clouds without changing the CNI plug-in. It's not a "service mesh" as we define it, but a powerful complement to a service mesh (albeit a somewhat confusing name with a service mesh in it).
@@ -175,8 +170,6 @@ As we can see from the above figure, although proxyless mode does not use a prox
 Some people say that the proxyless model has returned to the old way of developing microservices based on SDK, and the advantages of service meshes have been lost. Can it still be called service mesh? In fact, this is also a compromise on performance—if you mainly use gRPC to develop microservices, you only need to maintain gRPC versions in different languages; that is, you can manage microservices through the control plane.
 
 > *Envoy xDS has become the de facto standard for communication between cloud-native application services.*
-
-![xDS protocol](xds.svg)
 
 ### Optimizing traffic hijacking with eBPF
 

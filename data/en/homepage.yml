@@ -122,14 +122,14 @@ funfacts:
       link: "https://lib.jimmysong.io/event/"
 
     # funfact item loop
-    - name : "Live Shows"
-      count : "30"
+    - name : "Webinars"
+      count : "33"
       link : "https://space.bilibili.com/515485124/"
 
     # funfact item loop
     - name : "Community Members"
-      count : "10566"
-      link : "https://cloudnative.to/en"
+      count : "10621"
+      link : "https://cloudnative.to"
 
 # funfact is for about page
 

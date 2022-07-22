@@ -1,7 +1,7 @@
 ---
 title: "Istio 服务网格的现状及未来"
 draft: true
-date: 2022-07-18T12:27:49+08:00
+date: 2022-07-22T12:27:49+08:00
 description: "本文讲解 Istio 诞生的背景，在云原生技术栈中的地位，以及 Istio 的发展方向。"
 categories: ["Istio"]
 tags: ["eBPF","wasm","零信任","Service Mesh","Istio","混合云"]
@@ -13,14 +13,12 @@ image: "images/banner/beyond.jpg"
 本文根据笔者在 GIAC 深圳 2022 年大会上的的演讲[《Beyond Istio OSS —— Istio 的现状及未来》](https://giac.msup.com.cn/2022sz/course?id=16093)整理而成。
 {{</callout>}}
 
-本文回顾了 Istio 开源近五年来的发展，并展望了 Istio 的发展方向。本文中主要阐述的观点如下：
+本文回顾了 Istio 开源近五年来的发展，并展望了 Istio 服务网格的未来方向。本文的主要观点如下：
 
 - 因为 Kubernetes、微服务、DevOps 及云原生架构的流行，导致服务网格技术的兴起；
-- Kubernetes 和可编程代理的出现，为 Istio 的实现打好了技术基础；
+- Kubernetes 和可编程代理，为 Istio 的出现打下了坚实的基础；
 - 虽然 eBPF 可以加速 Istio 中的透明流量劫持，但无法取代服务网格中的 sidecar；
-- Istio 的未来是构建零信任网络；
-
-接下来我们从 Istio 诞生的背景开始本文。
+- Istio 的未来在于构建基于混合云的零信任网络；
 
 ## Istio 诞生的前夜{#the-dawn-of-istio}
 
@@ -148,20 +146,23 @@ Flomesh 的张晓辉曾在 [为什么需要可编程代理](https://cloudnative.
 
 {{< /table >}}
 
-下面总结一下上表中的开源项目，同时追加几个与服务网格息息相关的项目，如下：
+上表中列出的都是服务网格，下面再简单评论一下这些项目：
 
 - [Istio](https://istio.io)：目前最流行的服务网格项目之一，在中国几乎成为了服务网格的代名词；
-- [Envoy](https://envoyproxy.io)：Envoy 本身只是代理，也经常被作为其他基于 Envoy 的服务网格的 sidecar，也经常被用来构建 API Gateway；
-- [Linkerd](https://linkerd.io)：最早出现的服务网格，「Service Mesh」概念提出者，第一个进入 CNCF 的服务网格项目，使用自研的 Rust 语言编写轻量级 sidecar 代理；
+- [Linkerd](https://linkerd.io)：；最早出现的服务网格，「Service Mesh」概念提出者，第一个进入 CNCF 的服务网格项目，使用自研的 Rust 语言编写轻量级 sidecar 代理；
 - [Traefik Mesh](https://traefik.io/traefik-mesh/)：由 Traefik 推出的服务网格项目，使用 Treafik proxy 作为 sidecar，支持 SMI（接下来会提到），它的特点是对应用的无侵入性，不会在 pod 中注入 sidecar；
 - [Kuma](https://kuma.io/)：由 Kong 推出的服务网格项目，使用 Envoy 作为 Sidecar 代理，特色是使用 Kong 自家的网关作为入口网关；
 - [Consul Connect](https://www.consul.io/docs/connect)：Consul 服务网格，使用 Envoy 作为 sidecar 代理；
 - [Open Service Mesh](https://openservicemesh.io/)：由微软开源的服务网格，使用 Envoy 作为 sidecar，兼容 SMI（同样是微软提出）；
+
+另外还有几个项目，也服务网格领域也经常被提及，但它们都不是服务网格：
+
+- [Envoy](https://envoyproxy.io)：Envoy 本身只是代理，也经常被作为其他基于 Envoy 的服务网格的 sidecar，也经常被用来构建 API Gateway；
 - [Service Mesh Performance（SMP）](https://smp-spec.io/)：标准化了服务网格值的指标，通过捕获基础设施容量、服务网格配置和工作负载元数据的细节来描述任何部署的性能；
 - [Service Mesh Interface（SMI）](https://smi-spec.io/)：它不是服务网格，而只是一套服务网格实现标准，与 OAM、SPIFFE、CNI、CSI 等类似都是定义接口标准，具体实现就不一而足了。目前 Traefik Mesh 和 Open Service Mesh 声明支持该规范；
 - [Network Service Mesh](https://networkservicemesh.io/)：有必要提一下这个项目，因为经常有人把它错认为是一个服务网格。实际上，它面向的是三层网络，使用它可以在不更换 CNI 插件的前提下，连接多云/混合云。它并不是我们所定义的「服务网格」，而是服务网格的一个有力补充（虽然名字里带有服务网格比较有迷惑性）。
 
-纵观以上所谓的「服务网格」项目，我们可以看出大部分服务网格项目的发起者都是根据代理起家，然后做控制平面。而且 Istio、Consul Connect、Open Service Mesh、Kuma 都是使用 Envoy 作为 sidecar 代理。只有 Linkerd 和 Traefik Mesh 推出了自己的代理。而所有的服务网格项目都支持 sidecar 模式。除了 Istio、Linkerd、Consul Connect 已应用于生产上，其他服务网格项目目前还只能算是个「玩具」。
+纵观以上项目，我们可以看出大部分服务网格项目的发起者都是根据代理起家，然后做控制平面。而且 Istio、Consul Connect、Open Service Mesh、Kuma 都是使用 Envoy 作为 sidecar 代理。只有 Linkerd 和 Traefik Mesh 推出了自己的代理。而所有的服务网格项目都支持 sidecar 模式。除了 Istio、Linkerd、Consul Connect 已应用于生产上，其他服务网格项目还没有看到被大规模在生产上使用。
 
 ## Istio 的性能优化{#performance-optimizing}
 
@@ -178,15 +179,13 @@ Proxyless 模式是 Istio 在 1.11 版本中提出的实验特性 —— [基于
 
 {{<figure title="Sidecar 模式 vs Proxyless 模式" width="100%" alt="图片" src="sidecar-to-proxyless.svg">}}
 
-从上图中我们可以看到，虽然 proxyless 模式不使用 proxy 进行数据面通信，但仍然需要一个 agent 来进行初始化和与控制面的通信。首先，agent 在启动时生成一个[引导文件](https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md#xdsclient-and-bootstrap-file)，与为 Envoy 生成引导文件的方式相同。这告诉 gRPC 库如何连接到 istiod，在哪里可以找到用于数据平面通信的证书，向控制面发送什么元数据。接下来，agent 作为 xDS proxy，代表应用程序与 `istiod` 进行连接和认证。最后，agent 获取并轮换数据平面通信中使用的证书。
+从上图中我们可以看到，虽然 proxyless 模式不使用 proxy 进行数据面通信，但仍然需要一个 agent 来进行初始化和与控制面的通信。首先，agent 在启动时生成一个[引导文件](https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md#xdsclient-and-bootstrap-file)，与为 Envoy 生成引导文件的方式相同。这告诉 gRPC 库如何连接到 `istiod`，在哪里可以找到用于数据平面通信的证书，向控制平面发送什么元数据。接下来，agent 作为 xDS proxy，代表应用程序与 `istiod` 进行连接和认证。最后，agent 获取并轮换数据平面通信中使用的证书。这其实是与 Sidecar 模式一样的。
 
 > *服务网格的本质不是 Sidecar 模式，也不是配置中心或透明流量拦截，而是标准化的服务间通信标准。*
 
 有人说 proxyless 模式又回到了基于 SDK 开发微服务的老路，服务网格的优势丧失殆尽，那还能叫做服务网格吗 [^9]？其实这也是一种对性能的妥协 —— 如果你主要使用 gRPC 来开发微服务的话，只需要维护不同语言的 gRPC 版本，即可以通过控制平面来管理微服务了。
 
-> *Envoy xDS 已经成为云原生应用服务间通信的事实标准。*
-
-![xDS 协议示意图](xds.svg)
+> *Envoy xDS 已经成为服务网格中服务间通信的事实标准。*
 
 ### 使用 eBPF 优化流量劫持{#ebpf}
 
@@ -254,7 +253,7 @@ Merbridge 使用的 eBPF 函数需要 Linux 内核版本 ≥ 5.7。
 
 #### 减少需要推送的配置{#reduce-config-size}
 
-优化控制平面性能最简单也是最直接的方式就是减少要推送的配置大小。假设有工作负载 A，如果将与 A 相关的代理配置，即 A 需要访问的服务的配置推送到 A 上，而不是将网格内所有服务的配置都推送给 A，这样就可以大大压缩要推送的配置的大小及应用范围。Istio 中的 [Sidecar 资源](https://lib.jimmysong.io/istio-handbook/config-networking/sidecar/)可以帮助我们实现这一点。下面是 Sidecar 配置示例：
+控制平面性能优化最直接的方式就是减少要向数据平面推送的代理配置大小。假设有工作负载 A，如果仅将与 A 相关的代理配置（即 A 依赖的服务）推送给 A，而不是将网格内所有服务的配置都推送给 A，这样就可以大大压缩要推送的工作负载范围及配置大小。Istio 中的 [Sidecar 资源](https://lib.jimmysong.io/istio-handbook/config-networking/sidecar/)可以帮助我们实现这一点。下面是 Sidecar 配置示例：
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -271,7 +270,7 @@ spec:
     - "cn-bj/*"
 ```
 
-我们通过 `workloadSelector` 字段可以限制该 Sidecar 配置适用的工作负载范围，而 `egress` 字段可以确定该工作负载以来的服务范围，这样控制平面就可以仅向服务 A 推送其依的赖服务配置，大大减低要向数据平面推送的配置大小，减少了服务网格的内存和网络消耗。
+我们通过 `workloadSelector` 字段可以限制该 Sidecar 配置适用的工作负载范围，而 `egress` 字段可以确定该工作负载依赖的服务范围，这样控制平面就可以仅向服务 A 推送其依的赖服务配置，大大减低要向数据平面推送的配置大小，减少了服务网格的内存和网络消耗。
 
 #### 批处理代理配置推送{#batch-push-conf}
 

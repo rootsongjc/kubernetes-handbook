@@ -1,6 +1,6 @@
 ---
-title: "Understanding iptalbes"
-description: "This article will give you a brief introduction to iptbles, its tables and the order of execution."
+title: "Understanding iptables"
+description: "This article will give you a brief introduction to iptables, its tables and the order of execution."
 date: 2022-05-12T12:18:40+08:00
 draft: false
 tags: ["iptables"]

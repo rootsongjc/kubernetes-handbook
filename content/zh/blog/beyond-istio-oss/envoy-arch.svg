@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-652 -103 686 493" width="686" height="493">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="-652 -103 686 493" width="686" height="493">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 8 3 0 0 0 9 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="975.0061" descent="-216.99524" font-weight="700">
       <font-face-src>
@@ -34,9 +34,9 @@
     </marker>
   </defs>
   <metadata> Produced by OmniGraffle 7.11.5 
-    <dc:date>2022-07-07 09:25:00 +0000</dc:date>
+    <dc:date>2022-07-22 07:30:25 +0000</dc:date>
   </metadata>
-  <g id="Envoy___" stroke="none" fill="none" fill-opacity="1" stroke-dasharray="none" stroke-opacity="1">
+  <g id="Envoy___" stroke-opacity="1" fill="none" stroke-dasharray="none" stroke="none" fill-opacity="1">
     <title>Envoy 架构图</title>
     <rect fill="white" x="-652" y="-103" width="686" height="493"/>
     <g id="Envoy___: Layer 1">
@@ -55,7 +55,7 @@
         <rect x="-640.6299" y="14.314837" width="413.7992" height="39" fill="#0a55a8"/>
         <rect x="-640.6299" y="14.314837" width="413.7992" height="39" stroke="#0a55a8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-635.6299 25.11179)" fill="white">
-          <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="white" x="153.66961" y="14">Sidecar  Proxy</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" font-weight="700" fill="white" x="158.83561" y="14">Envoy  Proxy</tspan>
         </text>
       </g>
       <g id="Graphic_43">
