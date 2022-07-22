@@ -1,6 +1,6 @@
 ---
-title: "理解 iptalbes"
-description: "本文将为大家简单介绍下 iptbles，其中的表及执行顺序。"
+title: "理解 iptables"
+description: "本文将为大家简单介绍下 iptables，其中的表及执行顺序。"
 date: 2022-05-12T12:18:40+08:00
 draft: false
 tags: ["iptables"]
