@@ -1,5 +1,5 @@
 ---
-title: "Beyond Istio OSS —— Istio 服务网格的现状及未来"
+title: "Beyond Istio OSS —— Istio 服务网格的现状与未来"
 draft: false
 date: 2022-07-23T15:27:49+08:00
 description: "本文从云原生大背景下重新审视 Istio，讲解 Istio 诞生，在云原生技术栈中的地位及发展方向。"
