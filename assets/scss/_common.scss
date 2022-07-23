@@ -672,3 +672,10 @@ figure img:target{
         display: none;
     }
 }
+
+.bp-lock {
+    overflow-y: auto;
+}
+.bp-lock body {
+    overflow: auto;
+}
