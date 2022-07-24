@@ -240,17 +240,17 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Sidecar
 metadata:
   name: default
-  namespace: cn-bj
+  namespace: us-west-1
 spec:
   workloadSelector:
     labels:
       app: app-a
   egress:
   - hosts:
-    - "cn-bj/*"
+    - "us-west-1/*"
 ```
 
-We can use the `workloadSelectorfield ` to limit the scope of workloads that the sidecar configuration applies to, and the `egress` field is used to determine the scope of services for the workload, so that the control plane can only push the configuration of its dependent services to service A, greatly reducing the need to push to the data plane. The configuration size of the service mesh reduces the memory and network consumption of the service mesh.
+We can use the `workloadSelector` field  to limit the scope of workloads that the sidecar configuration applies to, and the `egress` field is used to determine the scope of services for the workload, so that the control plane can only push the configuration of its dependent services to service A, greatly reducing the need to push to the data plane. The configuration size of the service mesh reduces the memory and network consumption of the service mesh.
 
 #### Batch push the proxy configurations
 
