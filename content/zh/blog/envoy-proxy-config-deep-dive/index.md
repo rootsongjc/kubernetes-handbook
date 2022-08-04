@@ -6,14 +6,13 @@ description: "本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以
 tags: ["envoy"]
 categories: ["service mesh"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/envoy-proxy-config-deep-dive"
 image: "images/banner/envoyproxy.jpg"
 ---
 
-Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](http://www.servicemesher.com/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
+Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](https://cloudnative.to/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
 
-![Envoy proxy 架构图](U587b3a8535474a2abcbe93fa069341c0A.png)
+![Envoy proxy 架构图](xds.svg)
 
 ## 基本术语
 
@@ -22,7 +21,7 @@ Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上
 - **Downstream（下游）**：下游主机连接到 Envoy，发送请求并接收响应，即发送请求的主机。
 - **Upstream（上游）**：上游主机接收来自 Envoy 的连接和请求，并返回响应，即接受请求的主机。
 - **Listener（监听器）**：监听器是命名网地址（例如，端口、unix domain socket 等)，下游客户端可以连接这些监听器。Envoy 暴露一个或者多个监听器给下游主机连接。
-- **Cluster（集群）**：集群是指 Envoy 连接的一组逻辑相同的上游主机。Envoy 通过[服务发现](http://www.servicemesher.com/envoy/intro/arch_overview/service_discovery.html#arch-overview-service-discovery)来发现集群的成员。可以选择通过[主动健康检查](http://www.servicemesher.com/envoy/intro/arch_overview/health_checking.html#arch-overview-health-checking)来确定集群成员的健康状态。Envoy 通过[负载均衡策略](http://www.servicemesher.com/envoy/intro/arch_overview/load_balancing.html#arch-overview-load-balancing)决定将请求路由到集群的哪个成员。
+- **Cluster（集群）**：集群是指 Envoy 连接的一组逻辑相同的上游主机。Envoy 通过[服务发现](https://www.servicemesher.com/envoy/intro/arch_overview/service_discovery.html#arch-overview-service-discovery)来发现集群的成员。可以选择通过[主动健康检查](https://www.servicemesher.com/envoy/intro/arch_overview/health_checking.html#arch-overview-health-checking)来确定集群成员的健康状态。Envoy 通过[负载均衡策略](https://www.servicemesher.com/envoy/intro/arch_overview/load_balancing.html#arch-overview-load-balancing)决定将请求路由到集群的哪个成员。
 
 我将在本文的后半部分解释以上术语与 Kubernetes、Istio 中概念之间的联系。
 
@@ -30,7 +29,7 @@ Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上
 
 有一点需要大家注意，就是 Envoy 的 API 有 v1 和 v2 两个版本，从 Envoy 1.5.0 起 v2 API 就已经生产就绪了，为了能够让用户顺利的向 v2 版本的额 API 过度，Envoy 启动的时候设置了一个 `--v2-config-only` 的标志，Enovy 不同版本对 v1/v2 API 的支持详情请参考 [Envoy v1 配置废弃时间表](https://groups.google.com/forum/#!topic/envoy-announce/Lb1QZcSclGQ)。
 
-Envoy 的作者 Matt Klein 在 [Service Mesh 中的通用数据平面 API 设计](http://www.servicemesher.com/blog/the-universal-data-plane-api/)这篇文章中说明了 Envoy API v1 的历史及其缺点，还有 v2 的引入。v2 API 是 v1 的演进，而不是革命，它是 v1 功能的超集。
+Envoy 的作者 Matt Klein 在 [Service Mesh 中的通用数据平面 API 设计](https://cloudnative.to/blog/the-universal-data-plane-api/)这篇文章中说明了 Envoy API v1 的历史及其缺点，还有 v2 的引入。v2 API 是 v1 的演进，而不是革命，它是 v1 功能的超集。
 
 在 Istio 1.0 及以上版本中使用的是 **Envoy 1.8.0-dev** 版本，其支持 v2 的 API，同时在 Envoy 作为 Sidecar proxy 启动的使用使用了例如下面的命令：
 
@@ -42,13 +41,13 @@ $ /usr/local/bin/envoy -c /etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --d
 
 ## Istio sidecar proxy 配置
 
-假如您使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 部署了 Kubernetes 集群并开启了 [Istio Service Mesh](https://istio.io/zh)，再部署 [bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/)，那么在 `default` 命名空间下有一个名字类似于 `ratings-v1-7c9949d479-dwkr4` 的 Pod，使用下面的命令查看该 Pod 的 Envoy sidecar 的全量配置：
+假如您使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 部署了 Kubernetes 集群并开启了 [Istio Service Mesh](https://istio.io/zh)，再部署 [bookinfo 示例](https://istio.io/latest/zh/docs/examples/bookinfo/)，那么在 `default` 命名空间下有一个名字类似于 `ratings-v1-7c9949d479-dwkr4` 的 Pod，使用下面的命令查看该 Pod 的 Envoy sidecar 的全量配置：
 
 ```bash
 kubectl -n default exec ratings-v1-7c9949d479-dwkr4 -c istio-proxy curl http://localhost:15000/config_dump > dump-rating.json
 ```
 
-将 Envoy 的运行时配置 dump 出来之后你将看到一个长 6000 余行的配置文件。关于该配置文件的介绍请参考 [Envoy v2 API 概览](http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)。
+将 Envoy 的运行时配置 dump 出来之后你将看到一个长 6000 余行的配置文件。关于该配置文件的介绍请参考 [Envoy v2 API 概览](https://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)。
 
 Istio 会在为 Service Mesh 中的每个 Pod 注入 Sidecar 的时候同时为 Envoy 注入 Bootstrap 配置，其余的配置是通过 Pilot 下发的，注意整个数据平面即 Service Mesh 中的 Envoy 的动态配置应该是相同的。您也可以使用上面的命令检查其他 sidecar 的 Envoy 配置是否跟最上面的那个相同。
 
@@ -76,7 +75,7 @@ Istio envoy sidecar proxy 配置中包含以下四个部分。
 
 由于 bootstrap 中的配置是来自 Envoy 启动时加载的静态文件，主要配置了节点信息、tracing、admin 和统计信息收集等信息，这不是本文的重点，大家可以自行研究。
 
-[Bootstrap](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-msg-config-bootstrap-v2-bootstrap) 是 Envoy 中配置的根本来源，[Bootstrap](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-msg-config-bootstrap-v2-bootstrap) 消息中有一个关键的概念，就是静态和动态资源的之间的区别。例如 [Listener](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/lds.proto.html#envoy-api-msg-listener) 或 [Cluster](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cds.proto.html#envoy-api-msg-cluster) 这些资源既可以从 [static_resources](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-field-config-bootstrap-v2-bootstrap-static-resources) 静态的获得也可以从 [dynamic_resources](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-field-config-bootstrap-v2-bootstrap-dynamic-resources) 中配置的 [LDS](http://www.servicemesher.com/envoy/configuration/listeners/lds.html#config-listeners-lds) 或 [CDS](http://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html#config-cluster-manager-cds) 之类的 xDS 服务获取。
+[Bootstrap](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-msg-config-bootstrap-v2-bootstrap) 是 Envoy 中配置的根本来源，[Bootstrap](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-msg-config-bootstrap-v2-bootstrap) 消息中有一个关键的概念，就是静态和动态资源的之间的区别。例如 [Listener](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/lds.proto.html#envoy-api-msg-listener) 或 [Cluster](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cds.proto.html#envoy-api-msg-cluster) 这些资源既可以从 [static_resources](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-field-config-bootstrap-v2-bootstrap-static-resources) 静态的获得也可以从 [dynamic_resources](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/bootstrap/v2/bootstrap.proto.html#envoy-api-field-config-bootstrap-v2-bootstrap-dynamic-resources) 中配置的 [LDS](https://www.servicemesher.com/envoy/configuration/listeners/lds.html#config-listeners-lds) 或 [CDS](https://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html#config-cluster-manager-cds) 之类的 xDS 服务获取。
 
 ### Listener
 
@@ -130,19 +129,19 @@ Listener 的数据结构如下，除了 `name`、`address` 和 `filter_chains` �
 
 - **filter_chains**：这是一个列表，Envoy 中内置了一些通用的 filter，每种 filter 都有特定的数据结构，Enovy 会根据该配置顺序执行 filter。Envoy 中内置的 filter 有：[envoy.client_ssl_auth](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/client_ssl_auth_filter#config-network-filters-client-ssl-auth)、[envoy.echo](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/echo_filter#config-network-filters-echo)、[enovy.http_connection_manager](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/http_conn_man/http_conn_man#config-http-conn-man)、[envoy.mongo_proxy](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/mongo_proxy_filter#config-network-filters-mongo-proxy)、[envoy.rate_limit](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/rate_limit_filter#config-network-filters-rate-limit)、[enovy.redis_proxy](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/redis_proxy_filter#config-network-filters-redis-proxy)、[envoy.tcp_proxy](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/network_filters/tcp_proxy_filter#config-network-filters-tcp-proxy)、[http_filters](https://www.envoyproxy.io/docs/envoy/v1.8.0/intro/arch_overview/http_filters)、[thrift_filters](https://www.envoyproxy.io/docs/envoy/v1.8.0/configuration/thrift_filters/thrift_filters)等。这些 filter 可以单独使用也可以组合使用，还可以自定义扩展，例如使用 Istio 中的 [EnvoyFilter 配置](https://istio.io/zh/docs/reference/config/istio.networking.v1alpha3/#envoyfilter)。
 
-- **use_original_dst**：这是一个布尔值，如果使用 iptables 重定向连接，则代理接收的端口可能与[原始目的地址](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的端口不一样。当此标志设置为 true 时，Listener 将重定向的连接切换到与原始目的地址关联的 Listener。如果没有与原始目的地址关联的 Listener，则连接由接收它的 Listener 处理。默认为 false。注意：该参数将被废弃，请使用[原始目的地址](http://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的 Listener filter 替代。该参数的主要用途是：Envoy 通过监听 15001 端口将应用的流量截取后再由其他 Listener 处理而不是直接转发出去，详情见 [Virtual Listener](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#virtual-listener)。
+- **use_original_dst**：这是一个布尔值，如果使用 iptables 重定向连接，则代理接收的端口可能与[原始目的地址](https://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的端口不一样。当此标志设置为 true 时，Listener 将重定向的连接切换到与原始目的地址关联的 Listener。如果没有与原始目的地址关联的 Listener，则连接由接收它的 Listener 处理。默认为 false。注意：该参数将被废弃，请使用[原始目的地址](https://www.servicemesher.com/envoy/configuration/listener_filters/original_dst_filter.html)的 Listener filter 替代。该参数的主要用途是：Envoy 通过监听 15001 端口将应用的流量截取后再由其他 Listener 处理而不是直接转发出去，详情见 [Virtual Listener](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#virtual-listener)。
 
 关于 Listener 的详细介绍请参考 [Envoy v2 API reference - listener](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/lds.proto#envoy-api-msg-listener)。
 
 ### Route
 
-我们在这里所说的路由指的是 [HTTP 路由](http://www.servicemesher.com/envoy/intro/arch_overview/http_routing.html)，这也使得 Envoy 可以用来处理网格边缘的流量。HTTP 路由转发是通过路由过滤器实现的。该过滤器的主要职能就是执行[路由表](https://www.envoyproxy.io/docs/envoy/latest/api-v1/route_config/route_config#config-http-conn-man-route-table)中的指令。除了可以做重定向和转发，路由过滤器还需要处理重试、统计之类的任务。
+我们在这里所说的路由指的是 [HTTP 路由](https://www.servicemesher.com/envoy/intro/arch_overview/http_routing.html)，这也使得 Envoy 可以用来处理网格边缘的流量。HTTP 路由转发是通过路由过滤器实现的。该过滤器的主要职能就是执行[路由表](https://www.envoyproxy.io/docs/envoy/latest/api-v1/route_config/route_config#config-http-conn-man-route-table)中的指令。除了可以做重定向和转发，路由过滤器还需要处理重试、统计之类的任务。
 
 **HTTP 路由的特点**
 
 - 前缀和精确路径匹配规则。
 - 可跨越多个上游集群进行基于[权重/百分比的路由](https://www.envoyproxy.io/docs/envoy/latest/api-v1/route_config/route#config-http-conn-man-route-table-route-weighted-clusters)。
-- 基于[优先级](http://www.servicemesher.com/envoy/intro/arch_overview/http_routing.html#arch-overview-http-routing-priority)的路由。
+- 基于[优先级](https://www.servicemesher.com/envoy/intro/arch_overview/http_routing.html#arch-overview-http-routing-priority)的路由。
 - 基于[哈希](https://www.envoyproxy.io/docs/envoy/latest/api-v1/route_config/route#config-http-conn-man-route-table-hash-policy)策略的路由。
 
 **Route 的数据结构**
@@ -165,8 +164,6 @@ Listener 的数据结构如下，除了 `name`、`address` 和 `filter_chains` �
 - **name**：该名字跟 `envoy.http_connection_manager` filter 中的 `http_filters.rds.route_config_name` 一致，在 Istio Service Mesh 中为 Envoy 下发的配置中的 Route 是以监听的端口号作为名字，而同一个名字下面的 `virtual_hosts` 可以有多个值（数组形式）。
 - **virtual_hosts**：因为 **VirtualHosts** 是 Envoy 中引入的一个重要概念，我们在下文将详细说明 `virtual_hosts` 的数据结构。
 - **validate_clusters**：这是一个布尔值，用来设置开启使用 cluster manager 来检测路由表引用的 cluster 是否有效。如果是路由表是通过 [route_config](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/filter/network/http_connection_manager/v2/http_connection_manager.proto#envoy-api-field-config-filter-network-http-connection-manager-v2-httpconnectionmanager-route-config) 静态配置的则该值默认设置为 true，如果是使用 [rds](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/filter/network/http_connection_manager/v2/http_connection_manager.proto#envoy-api-field-config-filter-network-http-connection-manager-v2-httpconnectionmanager-rds) 动态配置的话，则该值默认设置为 false。
-
-关于 Route 的详细介绍请参考 [Envoy v2 API reference - HTTP route configuration](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/rds.proto)。
 
 #### route.VirtualHost
 
@@ -200,7 +197,7 @@ VirtualHost 即上文中 Route 配置中的 `virtual_hosts`，VirtualHost 是路
 - **domains**：这是个用来匹配 VirtualHost 的域名（host/authority header）列表，也可以使用通配符，但是通配符不能匹配空字符，除了仅使用 `*` 作为 domains，注意列表中的值不能重复和存在交集，只要有一条 domain 被匹配上了，就会执行路由。Istio 会为该值配置所有地址解析形式，包括 IP 地址、FQDN 和短域名等。
 - **routes**：针对入口流量的有序路由列表，第一个匹配上的路由将被执行。我们在下文将详细说明 route 的数据结构。
 
-下面是一个实际的 VirtualHost 的例子，该配置来自 [Bookinfo 应用](https://istio.io/zh/docs/examples/bookinfo/)的 details 应用的 Sidecar 服务。
+下面是一个实际的 VirtualHost 的例子，该配置来自 [Bookinfo 应用](https://istio.io/latest/zh/docs/examples/bookinfo/)的 details 应用的 Sidecar 服务。
 
 ```json
 {
@@ -280,8 +277,6 @@ VirtualHost 即上文中 Route 配置中的 `virtual_hosts`，VirtualHost 是路
         }
 ```
 
-关于 route.VirtualHost 的详细介绍请参考 [Envoy v2 API reference - route.VirtualHost](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/route/route.proto#envoy-api-msg-route-virtualhost)。
-
 #### route.Route
 
 路由既是如何匹配请求的规范，也是对下一步做什么的指示（例如，redirect、forward、rewrite等）。
@@ -313,11 +308,9 @@ VirtualHost 即上文中 Route 配置中的 `virtual_hosts`，VirtualHost 是路
 - **decorator**：被匹配的路由的修饰符，表示被匹配的虚拟主机和 URL。该配置里有且只有一个必须配置的项 `operation`，例如 `details.default.svc.cluster.local:9080/*`。
 - **per_filter_config**：这是一个 map 类型，`per_filter_config` 字段可用于为 filter 提供特定路由的配置。Map 的 key 应与 filleter 名称匹配，例如用于 HTTP buffer filter 的 `envoy.buffer`。该字段是特定于 filter 的，详情请参考 [HTTP filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/http_filters#config-http-filters)。
 
-关于 route.Route 的详细介绍请参考 [Envoy v2 API reference - route.Route](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/route/route.proto#envoy-api-msg-route-route)。
-
 ### Cluster
 
-Cluster 是指 Envoy 连接的一组逻辑相同的上游主机。Envoy 通过[服务发现](http://www.servicemesher.com/envoy/intro/arch_overview/service_discovery.html)来发现 cluster 的成员。可以选择通过[主动健康检查](http://www.servicemesher.com/envoy/intro/arch_overview/health_checking.html#arch-overview-health-checking)来确定集群成员的健康状态。Envoy 通过[负载均衡策略](http://www.servicemesher.com/envoy/intro/arch_overview/load_balancing.html#arch-overview-load-balancing)决定将请求路由到 cluster 的哪个成员。
+Cluster 是指 Envoy 连接的一组逻辑相同的上游主机。Envoy 通过[服务发现](https://www.servicemesher.com/envoy/intro/arch_overview/service_discovery.html)来发现 cluster 的成员。可以选择通过[主动健康检查](https://www.servicemesher.com/envoy/intro/arch_overview/health_checking.html#arch-overview-health-checking)来确定集群成员的健康状态。Envoy 通过[负载均衡策略](https://www.servicemesher.com/envoy/intro/arch_overview/load_balancing.html#arch-overview-load-balancing)决定将请求路由到 cluster 的哪个成员。
 
 **Cluster 的特点**
 
@@ -376,13 +369,12 @@ Cluster 的数据结构如下，除了 `name` 字段，其他都是可选的。
 - **hosts**：这是个列表，配置负载均衡的 IP 地址和端口，只有使用了  `STATIC`、`STRICT_DNS`、`LOGICAL_DNS` 服务发现类型时才需要配置。
 - **eds_cluster_config**：如果使用 `EDS` 做服务发现，则需要配置该项目，其中包括的配置有 `service_name` 和 `ads`。
 
-关于 Cluster 的详细介绍请参考 [Envoy v2 API reference - cluster](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cds.proto#cluster)。
-
 ## 参考
 
-- [Envoy v2 API 概览 - servicemesher.com](http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)
-- [监听器发现服务（LDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/listeners/lds.html)
-- [路由发现服务（RDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/http_conn_man/rds.html)
-- [集群发现服务（CDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html)
+- [Envoy v2 API 概览 - servicemesher.com](https://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)
+- [监听器发现服务（LDS）- servicemesher.com](https://www.servicemesher.com/envoy/configuration/listeners/lds.html)
+- [路由发现服务（RDS）- servicemesher.com](https://www.servicemesher.com/envoy/configuration/http_conn_man/rds.html)
+- [集群发现服务（CDS）- servicemesher.com](https://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html)
 - [xDS 协议解析 - jimmysong.io](https://jimmysong.io/istio-handbook/concepts/envoy-xds-protocol.html)
-- [深入解读 Service Mesh 背后的技术细节 - cnblogs.com](https://www.cnblogs.com/163yun/p/8962278.html)[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
+- [深入解读 Service Mesh 背后的技术细节 - cnblogs.com](https://www.cnblogs.com/163yun/p/8962278.html)
+- [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
