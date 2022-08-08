@@ -12,6 +12,8 @@ image: "images/banner/mirror.jpg"
 
 我在[之前的一篇博客中](https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/)讲解过 Istio 中 sidecar 的注入、使用 iptables 进行透明流量拦截及流量路由的详细过程，并以 Bookinfo 示例中的 `productpage` 服务访问 `reviews` 服务，和 `reviews` 服务访问 `ratings` 服务为例绘制了透明流量劫持示意图。在那个示意图中仅展示了 `reviews` pod 接收流量和对外访问的路由，实际上 sidecar 内的流量远不止于此。
 
+## ISTIO_OUTPUT 规则
+
 在所有的 iptables 调用链中最复杂的一个是 `ISTIO_OUTPUT`，其中共有 9 条规则如下：
 
 | **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
@@ -41,7 +43,7 @@ Sidecar 中的流量可以划分为以下几类：
 
 下面将依次解释每个场景下 Sidecar 内的 iptables 路由规则。
 
-### 类型一：Remote Pod -> Local Pod
+## 类型一：Remote Pod -> Local Pod
 
 以下是远程服务、应用或客户端访问数据平面本地 Pod IP 的 iptables 规则。
 
@@ -49,9 +51,9 @@ Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15
 
 我们看到流量只经过一次 Envoy 15006 Inbound 端口。这种场景下的 iptables 规则的示意图如下。
 
-![Remote Pod 到 Local Pod](remote-pod-local-pod.jpg)
+![Remote Pod 到 Local Pod](remote-pod-local-pod.svg)
 
-### 类型二：Local Pod -> Remote Pod
+## 类型二：Local Pod -> Remote Pod
 
 以下是本地 Pod IP 访问远程服务经过的 iptables 规则。
 
@@ -59,11 +61,11 @@ Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> ISTIO_REDIRECT -> Envoy 150
 
 我们看到流量只经过 Envoy 15001 Outbound 端口。
 
-![Local Pod 到 Remote Pod](local-pod-remote-pod.jpg)
+![Local Pod 到 Remote Pod](local-pod-remote-pod.svg)
 
 以上两种场景中的流量都只经过一次 Envoy，因为该 Pod 中只有发出或接受请求一种场景发生。
 
-### 类型三：Prometheus -> Local Pod
+## 类型三：Prometheus -> Local Pod
 
 Prometheus 抓取数据平面 metrics 的流量不会也无须经过 Envoy 代理。
 
@@ -73,9 +75,9 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端
 
 这种场景下的 iptables 规则的示意图如下。
 
-![Prometheus 到 Local Pod](prometheus-local-pod.jpg)
+![Prometheus 到 Local Pod](prometheus-local-pod.svg)
 
-### 类型四：Local Pod -> Local Pod
+## 类型四：Local Pod -> Local Pod
 
 一个 Pod 可能同时存在两个或多个服务，如果 Local Pod 访问的服务也在该当前 Pod 上，流量会依次经过 Envoy 15001 和 Envoy 15006 端口最后到达本地 Pod 的服务端口上。
 
@@ -83,9 +85,9 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
-![Local Pod 到 Local Pod](local-pod-local-pod.jpg)
+![Local Pod 到 Local Pod](local-pod-local-pod.svg)
 
-### 类型五：Envoy 内部的进程间 TCP 流量
+## 类型五：Envoy 内部的进程间 TCP 流量
 
 Envoy 内部进程的 UID 和 GID 为 1337，它们之间的流量将使用 lo 网卡，使用 localhost 域名来通信。
 
@@ -93,9 +95,9 @@ Envoy 内部进程的 UID 和 GID 为 1337，它们之间的流量将使用 lo �
 
 Envoy 进程（Localhost） -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy 进程（Localhost）
 
-![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.jpg)
+![Envoy 内部的进程间 TCP 流量](envoy-internal-tcp-traffic.svg)
 
-### 类型六：Sidecar 到 Istiod 的流量
+## 类型六：Sidecar 到 Istiod 的流量
 
 Sidecar 需要访问 Istiod 以同步配置，`pilot-agent` 进程会向 Istiod 发送请求，以同步配置。
 
@@ -103,7 +105,7 @@ Sidecar 需要访问 Istiod 以同步配置，`pilot-agent` 进程会向 Istiod 
 
 `pilot-agent` 进程 -> `OUTPUT` -> **`Istio_OUTPUT` RULE 9** -> Envoy 15001 (Outbound Handler) -> OUTPUT -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
 
-![Sidecar 到 Istiod 的流量](sidecar-istiod.jpg)
+![Sidecar 到 Istiod 的流量](sidecar-istiod.svg)
 
 ## 总结
 

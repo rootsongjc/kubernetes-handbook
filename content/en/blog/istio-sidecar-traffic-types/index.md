@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/mirror.jpg"
 ---
 
-As we know that Istio uses iptables for traffic hijacking, where the iptables rule chains has one called ISTIO_OUTPUT, which contains the following rules.
+As we know that Istio uses iptables for traffic hijacking, where the iptables rule chains has one called `ISTIO_OUTPUT`, which contains the following rules.
 
 | **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
 | -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
@@ -38,16 +38,17 @@ The following list summarizes the six types of traffic in Sidecar.
 
 The following will explain the iptables routing rules within Sidecar for each scenario, which specifies which rule in ISTIO_OUTPUT is used for routing.
 
-### Type 1: Remote Pod -> Local Pod
+## Type 1: Remote Pod -> Local Pod
+
 The following are the iptables rules for remote services, applications or clients accessing the local pod IP of the data plane.
 
 Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15006 (Inbound) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> ` POSTROUTING` -> Local Pod
 
 We see that the traffic only passes through the Envoy 15006 Inbound port once. The following diagram shows this scenario of the iptables rules.
 
-![Remote Pod to Local Pod](remote-pod-local-pod.jpg)
+![Remote Pod to Local Pod](remote-pod-local-pod.svg)
 
-### Type 2: Local Pod -> Remote Pod
+## Type 2: Local Pod -> Remote Pod
 
 The following are the iptables rules that the local pod IP goes through to access the remote service.
 
@@ -55,11 +56,11 @@ Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 1
 
 We see that the traffic only goes through the Envoy 15001 Outbound port. 
 
-![Local Pod to Remote Pod](local-pod-remote-pod.jpg)
+![Local Pod to Remote Pod](local-pod-remote-pod.svg)
 
 The traffic in both scenarios above passes through Envoy only once because only one scenario occurs in that Pod, sending or receiving requests.
 
-### Type 3: Prometheus -> Local Pod
+## Type 3: Prometheus -> Local Pod
 
 Prometheus traffic that grabs data plane metrics does not have to go through the Envoy proxy.
 
@@ -67,9 +68,9 @@ These traffic pass through the following iptables rules.
 
 Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15002, 15090 will go to `INPUT`) -> `INPUT` -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING` -> Local Pod
 
-![Prometheus to Local Pod](prometheus-local-pod.jpg)
+![Prometheus to Local Pod](prometheus-local-pod.svg)
 
-### Type 4: Local Pod -> Local Pod
+## Type 4: Local Pod -> Local Pod
 
 A Pod may simultaneously have two or more services. If the Local Pod accesses a service on the current Pod, the traffic will go through Envoy 15001 and Envoy 15006 ports to reach the service port of the Local Pod.
 
@@ -77,9 +78,9 @@ The iptables rules for this traffic are as follows.
 
 Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
-![Local Pod to Local Pod](local-pod-local-pod.jpg)
+![Local Pod to Local Pod](local-pod-local-pod.svg)
 
-### Type 5: Inter-process TCP traffic within Envoy
+## Type 5: Inter-process TCP traffic within Envoy
 
 Envoy internal processes with UID and GID 1337 will communicate with each other using lo NICs and localhost domains.
 
@@ -87,9 +88,9 @@ The iptables rules that these flows pass through are as follows.
 
 Envoy process (Localhost) -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 8** -> `POSTROUTING` -> Envoy process (Localhost)
 
-![Envoy inter-process TCP traffic](envoy-internal-tcp-traffic.jpg)
+![Envoy inter-process TCP traffic](envoy-internal-tcp-traffic.svg)
 
-### Type 6: Sidecar to Istiod traffic
+## Type 6: Sidecar to Istiod traffic
 
 Sidecar needs access to Istiod to synchronize its configuration so that Envoy will have traffic sent to Istiod.
 
@@ -97,7 +98,7 @@ The iptables rules that this traffic passes through are as follows.
 
 `pilot-agent` process -> `OUTPUT` -> **`Istio_OUTPUT` RULE 9** -> Envoy 15001 (Outbound Handler) -> OUTPUT -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING`  -> Istiod
 
-![Sidecar to Istiod](sidecar-istiod.jpg)
+![Sidecar to Istiod](sidecar-istiod.svg)
 
 ## Summary
 
