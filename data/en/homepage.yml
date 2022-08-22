@@ -119,21 +119,17 @@ funfacts:
     # funfact item loop
     - name : "Hosted Events"
       count : "19"
-      link: "https://lib.jimmysong.io/event/"
+      link: "https://cloudnative.to/event/"
 
     # funfact item loop
     - name : "Webinars"
-      count : "33"
+      count : "35"
       link : "https://space.bilibili.com/515485124/"
 
     # funfact item loop
     - name : "Community Members"
-      count : "10690"
+      count : "10707"
       link : "https://cloudnative.to"
-
-# funfact is for about page
-
-
 
 ############################# blog ################################
 blog:

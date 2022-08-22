@@ -145,18 +145,18 @@ funfacts:
       link : "https://lib.jimmysong.io/#books"
 
     # funfact item loop
-    - name : "举办活动"
+    - name : "社区活动"
       count : "19"
-      link : "https://lib.jimmysong.io/event/"
+      link : "https://cloudnative.to/event/"
 
     # funfact item loop
     - name : "社区直播"
-      count : "33"
+      count : "35"
       link: "https://space.bilibili.com/515485124/"
 
     # funfact item loop
     - name : "社区成员"
-      count : "10690"
+      count : "10707"
       link : "https://cloudnative.to"
 
 # funfact is for about page
