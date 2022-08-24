@@ -164,8 +164,7 @@ funfacts:
 ############################# blog ################################
 blog:
   enable : true
-  title : "最新博客"
-  # blog item comes from "content/**/blog" folder.
+  title : "原创博客"
 
 ############################ footer ###############################
 footer:
