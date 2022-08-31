@@ -1,7 +1,7 @@
 ---
 title: "Istio 1.15 新增对 amd64 架构的支持"
-draft: true
-date: 2022-08-30T19:27:49+08:00
+draft: false
+date: 2022-08-31T21:47:49+08:00
 description: "随着 Istio 1.15 的发布，你可以很方便得在 arm64 架构上部署 Istio。"
 categories: ["Istio"]
 tags: ["Istio","arm"]
@@ -9,9 +9,9 @@ type: "post"
 image: "images/banner/arm.jpg"
 ---
 
-Istio 是基于容器的云原生技术栈的三大核心技术之一，另外两个是 Kubernetes 和 Knative。其中 Kubernetes 和 Knative 早已支持了 arm64 架构，甚至连 Istio 的数据平面 Envoy 早在 [1.16 版本](https://www.envoyproxy.io/docs/envoy/v1.16.0/install/building#arm-binaries)就已支持 arm64 架构（2020 年 10 月）。随着 Istio 1.15 的发布，你可以开箱即用得在 arm64 架构上部署 Istio，不需要自己来编译 arm 架构的镜像。
+Istio 是基于容器的云原生技术栈的三大核心技术之一，另外两个是 Kubernetes 和 Knative。其中 Kubernetes 和 Knative 早已支持了 arm64 架构，甚至连 Istio 的数据平面 Envoy 早在 [1.16 版本](https://www.envoyproxy.io/docs/envoy/v1.16.0/install/building#arm-binaries)就已支持 arm64 架构（2020 年 10 月）。随着 [Istio 1.15 的发布](https://istio.io/latest/news/releases/1.15.x/announcing-1.15/)，你可以开箱即用得在 arm64 架构上部署 Istio，不需要自己来编译 arm 架构的镜像。
 
-## 为什么 Istio 迟迟不支持 arm？
+## 在 Istio 1.15 之前如何在 arm 架构上安装 Istio？
 
 Istio 默认使用 Docker Hub 作为生产镜像仓库，Google Container Registry 作为生产和测试仓库。对于 1.14 及以前的版本，Istio 官方的镜像仓库中只有 amd64 架构的镜像，如果你的 Kubernetes 集群是运行在 arm 架构下，在安装 Istio 时会出现出现如下错误：
 
