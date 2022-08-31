@@ -58,7 +58,7 @@
   {{ end }}
   <!-- Google AdSense -->
   {{ if .Site.Params.enableAdSense }}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029167986768912"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.AdSenseClientID }}"
      crossorigin="anonymous"></script>
   {{ end }}
 </head>
