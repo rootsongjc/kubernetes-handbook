@@ -1,11 +1,12 @@
 ---
-title: "Istio 1.15 新增对 amd64 架构的支持"
+title: "Istio 1.15 新增对 arm64 架构处理器的支持"
 draft: false
 date: 2022-08-31T21:47:49+08:00
 description: "随着 Istio 1.15 的发布，你可以很方便得在 arm64 架构上部署 Istio。"
 categories: ["Istio"]
 tags: ["Istio","arm"]
 type: "post"
+aliases: ["/blog/istio-amd64-support/"]
 image: "images/banner/arm.jpg"
 ---
 
