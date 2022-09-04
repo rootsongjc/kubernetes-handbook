@@ -106,7 +106,7 @@ $ docker run -d --name ghost --net=container:pause --ipc=container:pause --pid=c
 
 **解析**
 
-pause 容器将内部的 80 端口映射到宿主机的 8880 端口，pause 容器在宿主机上设置好了网络 namespace 后，nginx 容器加入到该网络 namespace 中，我们看到 nginx 容器启动的时候指定了 `--net=container:pause`，ghost 容器同样加入到了该网络 namespace 中，这样三个容器就共享了网络，互相之间就可以使用 `localhost` 直接通信，`--ipc=contianer:pause --pid=container:pause` 就是三个容器处于同一个 namespace 中，init 进程为 `pause`，这时我们进入到 ghost 容器中查看进程情况。
+pause 容器将内部的 80 端口映射到宿主机的 8880 端口，pause 容器在宿主机上设置好了网络 namespace 后，nginx 容器加入到该网络 namespace 中，我们看到 nginx 容器启动的时候指定了 `--net=container:pause`，ghost 容器同样加入到了该网络 namespace 中，这样三个容器就共享了网络，互相之间就可以使用 `localhost` 直接通信，`--ipc=container:pause --pid=container:pause` 就是三个容器处于同一个 namespace 中，init 进程为 `pause`，这时我们进入到 ghost 容器中查看进程情况。
 
 ```bash
 # ps aux
