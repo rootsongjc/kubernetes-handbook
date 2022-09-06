@@ -250,7 +250,7 @@ Kubernetes DNS 服务器是唯一的一种能够访问 `ExternalName` 类型的 
 对没有定义 selector 的 Headless Service，Endpoint 控制器不会创建 `Endpoints` 记录。然而 DNS 系统会查找和配置，无论是：
 
 * `ExternalName` 类型 Service 的 CNAME 记录
-  * 记录：与 Service 共享一个名称的任何 `Endpoints`，以及所有其它类型
+* 记录：与 Service 共享一个名称的任何 `Endpoints`，以及所有其它类型
 
 ## 发布服务 —— 服务类型
 
