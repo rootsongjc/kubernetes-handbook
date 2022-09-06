@@ -31,7 +31,7 @@ spec:
       targetPort: 9376
 ```
 
-上述配置将创建一个名称为 “my-service” 的 `Service` 对象，它会将请求代理到 9376 TCP 端口，具有标签 `"app=MyApp"` 的 `Pod` 上。这个 `Service` 将被指派一个 IP 地址（通常称为 “Cluster IP”），它会被服务的代理使用（见下面）。该 `Service` 的 selector 将会持续评估，处理结果将被 POST 到一个名称为 “my-service” 的 `Endpoints` 对象上。
+上述配置将创建一个名称为 “my-service” 的 `Service` 对象，它会将请求代理到 9376 TCP 端口，具有标签 `"app=MyApp"` 的 `Pod` 上。这个 `Service` 将被指派一个 IP 地址（通常称为 “Cluster IP”），它会被服务的代理使用（见下面）。`Service` selector的控制器将会持续扫描符合条件的`Pod`，扫描结果会更新到名称为`my-service`的`Endpoints`对象上。
 
 需要注意的是， `Service` 能够将一个接收端口映射到任意的 `targetPort`。默认情况下，`targetPort` 将被设置为与 `port` 字段相同的值。`targetPort` 可以是一个字符串，引用了 backend `Pod` 的端口的名称。但是，实际指派给该端口名称的端口号，在每个 backend `Pod` 中可能并不相同。对于部署和设计 `Service` ，这种方式会提供更大的灵活性。例如，可以在 backend 软件下一个版本中，修改 Pod 暴露的端口，并不会中断客户端的调用。
 
