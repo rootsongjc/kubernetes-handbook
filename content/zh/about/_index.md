@@ -53,7 +53,8 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 
 ### 2022 年
 
-- 2022 年 4 月 26日 | 线上 | [IstioCon 2022](https://events.istio.io/istiocon-2022/sessions/ecosystem-outlook-from-china/) | Istio 开源生态展望
+- 2022 年 7 月 23 日 | 线上 | [GIAC 深圳](https://giac.msup.com.cn/2022sz/home) | Beyond Istio OSS
+- 2022 年 4 月 26 日 | 线上 | [IstioCon 2022](https://events.istio.io/istiocon-2022/sessions/ecosystem-outlook-from-china/) | Istio 开源生态展望
 
 ### 2021 年
 
