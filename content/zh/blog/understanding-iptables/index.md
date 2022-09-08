@@ -62,8 +62,6 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 我们看到三个默认的链，分别是 INPUT、FORWARD 和 OUTPUT，每个链中的第一行输出表示链名称（在本例中为INPUT/FORWARD/OUTPUT），后跟默认策略（ACCEPT）。
 
-下图是 iptables 的建议结构图，流量在经过 INPUT 链之后就进入了上层协议栈，比如
-
 每条链中都可以添加多条规则，规则是按照顺序从前到后执行的。我们来看下规则的表头定义。
 
 - **pkts**：处理过的匹配的报文数量

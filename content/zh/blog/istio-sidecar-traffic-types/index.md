@@ -71,7 +71,7 @@ Prometheus 抓取数据平面 metrics 的流量不会也无须经过 Envoy 代�
 
 这些流量通过的 iptables 规则如下。
 
-Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端口流量将转到 `INPUT`）-> `INPUT` -> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING`  -> Local Pod
+Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15002、15090 端口流量将转到 `INPUT`）-> `INPUT` ->  Local Pod
 
 这种场景下的 iptables 规则的示意图如下。
 
