@@ -20,7 +20,9 @@ iptables 作为 Linux 内核中的重要功能，有着广泛的应用，在 Ist
 
 下图展示了 iptables 调用链。
 
-![iptables 调用链](iptables.webp)
+![iptables 调用链](iptables.jpg)
+
+[图片来源](https://stuffphilwrites.com/wp-content/uploads/2014/09/FW-IDS-iptables-Flowchart-v2019-04-30-1.png)
 
 ## iptables 中的表
 
