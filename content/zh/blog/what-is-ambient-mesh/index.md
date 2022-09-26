@@ -2,7 +2,7 @@
 title: "什么是 Ambient Mesh？"
 description: "本文将向你介绍 Istio 的 Ambient Mesh。"
 date: 2022-09-14T14:18:40+08:00
-draft: false
+draft: true
 tags: ["istio","sidecar","Ambient Mesh"]
 categories: ["Istio"]
 type: "post"
