@@ -155,7 +155,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区活动"
-      count : "19"
+      count : "21"
       link : "https://cloudnative.to/event/"
 
     # funfact item loop
@@ -165,7 +165,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区成员"
-      count : "10769"
+      count : "10841"
       link : "https://cloudnative.to"
 
 # funfact is for about page
@@ -179,7 +179,7 @@ blog:
 footer:
   content : "扫码关注我的微信公众号"
   footer_image: "/images/servicemesher-wechat.webp"
-  address : "中国，北京"
+  address : "中国，上海"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false
   button_link: "/contact"
