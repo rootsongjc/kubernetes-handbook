@@ -66,7 +66,7 @@ Prometheus traffic that grabs data plane metrics does not have to go through the
 
 These traffic pass through the following iptables rules.
 
-Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15002, 15090 will go to `INPUT`) -> `INPUT`  -> Local Pod
+Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15020, 15090 will go to `INPUT`) -> `INPUT`  -> Local Pod
 
 ![Prometheus to Local Pod](prometheus-local-pod.svg)
 
