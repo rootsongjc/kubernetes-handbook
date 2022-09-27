@@ -79,11 +79,11 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND`（对目的地为 15020、15090 端
 
 ## 类型四：Local Pod -> Local Pod
 
-一个 Pod 可能同时存在两个或多个服务，如果 Local Pod 访问的服务也在该当前 Pod 上，流量会依次经过 Envoy 15001 和 Envoy 15006 端口最后到达本地 Pod 的服务端口上。
+一个 Pod 可能同时存在两个或多个服务，如果 Local Pod 访问的服务也在该当前 Pod 上，流量不会经过 Sidecar 而直到到应用容器的端口上（直接通过 loopback 网卡）。
 
 这些流量通过的 iptables 规则如下。
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
+Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING` -> Local Pod
 
 ![Local Pod 到 Local Pod](local-pod-local-pod.svg)
 

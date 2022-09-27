@@ -53,6 +53,8 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 
 ### 2022 年
 
+- 2022 年 9 月 24 日 | 上海 | [服务网格峰会 2022](https://huodongxing.com/event/9663784282200) | 从开源 Istio 到企业级服务：如何在企业中落地服务网格
+- 2022 年 9 月 23 日 | 线上 | [亚马逊云科技中国峰会](https://summit.awsevents.cn/2022/) | 如何利用服务网格打造多云环境
 - 2022 年 7 月 23 日 | 线上 | [GIAC 深圳](https://giac.msup.com.cn/2022sz/home) | Beyond Istio OSS
 - 2022 年 4 月 26 日 | 线上 | [IstioCon 2022](https://events.istio.io/istiocon-2022/sessions/ecosystem-outlook-from-china/) | Istio 开源生态展望
 
