@@ -72,11 +72,11 @@ Prometheus-> `RREROUTING` -> `ISTIO_INBOUND` (traffic destined for ports 15020, 
 
 ## Type 4: Local Pod -> Local Pod
 
-A Pod may simultaneously have two or more services. If the Local Pod accesses a service on the current Pod, the traffic will go directly to the application container via loopback.
+A Pod may simultaneously have two or more services. If the Local Pod accesses a service on the current Pod, the traffic will go through Envoy 15001 and Envoy 15006 ports to reach the service port of the Local Pod.
 
 The iptables rules for this traffic are as follows.
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 3** -> `POSTROUTING` -> Local Pod
+Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> `ISTIO_REDIRECT` -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 2** -> `ISTIO_IN_REDIRECT` -> Envoy 15006（Inbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 1** -> `POSTROUTING` -> Local Pod
 
 ![Local Pod to Local Pod](local-pod-local-pod.svg)
 
