@@ -49,7 +49,7 @@ Envoy 具有丰富的网络相关功能，如重试、超时、流量路由和�
 
 每个模块后的小测验帮助你评估自己对知识的掌握。完成课程和所有测验后，你会收到一份完成证书。在 [Tetrate Academy 网站](https://academy.tetrate.io/)上注册免费的 [Envoy 基础课程](https://academy.tetrate.io/courses/envoy-fundamentals)，开始学习。
 
-**注意：该课程为英文版，中文版课程将在未来推出。**
+**注意：该课程为双语版，见[中文版](https://academy.tetrate.io/courses/envoy-fundamentals-zh)。**
 
 ## 更多 Envoy 学习资源
 
