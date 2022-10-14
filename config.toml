@@ -178,8 +178,8 @@ home = "Home"
 copyright = "&copy; 2017-2022 Jimmy Song All Right Reserved"
 
 # top header
-top_header = false
-top_header_content = ""
+top_header = true
+top_header_content = "[Download the eBook: The Current State and Future of the Istio Service Mesh](https://bit.ly/3Vqrlfw)"
 
 # main menu
 [[menu.main]]
