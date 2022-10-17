@@ -96,7 +96,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，前[蚂蚁集团](https://www.antgroup.com)云原生布道师及开源管理负责人，独立撰稿人，摄影师。"
+  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to) 创始人，独立撰稿人，讲师，摄影及航拍爱好者。"
   button:
     enable : true
     label : "详细介绍"
@@ -104,7 +104,7 @@ about:
 
 ############################# Book ################################
 book:
-  enable : true
+  enable : false
   title : "图书"
   # book item comes from "content/**/book" folder.
   book_item:
