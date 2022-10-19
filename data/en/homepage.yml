@@ -3,7 +3,15 @@ slider:
   enable : true
   bg_image : "images/backgrounds/bg.svg"
   slider_item:
-    - title : "Learn Istio Fundamentals"
+    - title : "eBook: The Current State and Future of the Istio Service Mesh"
+      content: "This book takes you through the historical motivation for the emergence of the service mesh, the evolution of Istio, and the Istio open source ecosystem. "
+      animation_in : "left"
+      animation_out : "right"
+      button:
+        enable : true
+        label : "Download for free"
+        link :  "https://academy.tetrate.io/courses/istio-fundamentals"
+    - title : "Istio Fundamentals Courses"
       content: "Tetrate presents Istio Fundamentals, a course that enables users to learn Istio easily with concept text, labs, and quizzes. Istio is an open-source service mesh platform that helps microservices communicate with each other easily."
       animation_in : "left"
       animation_out : "right"
@@ -12,7 +20,7 @@ slider:
         label : "Enroll for free"
         link :  "https://academy.tetrate.io/courses/istio-fundamentals"
 
-    - title : "Learn Envoy Fundamentals"
+    - title : "Envoy Fundamentals Courses"
       content: "Tetrate presents Envoy fundamentals, the easiest way to learn Envoy. Envoy is an open-source edge and service proxy that is a key part of modern, cloud-native applications. This free course provides a comprehensive, eight-part tour of Envoy with concept text, labs, and quizzes."
       animation_in : "left"
       animation_out : "right"
@@ -64,7 +72,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF Ambassador, [Cloud Native Community(China)](https://cloudnative.to/en) founder, independent writer, lecturer, photography and aerial photography enthusiast.'
+  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF Ambassador, [Cloud Native Community(China)](https://cloudnative.to) founder, independent writer, instructor , photography and aerial photography enthusiast.'
   button:
     enable : true
     label : "Learn more"
@@ -73,7 +81,7 @@ about:
 
 ############################# Course ################################
 book:
-  enable : true
+  enable : false
   title : "My books"
   # book item comes from "content/**/book" folder.
 
@@ -128,7 +136,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "10841"
+      count : "10903"
       link : "https://cloudnative.to"
 
 ############################# blog ################################
