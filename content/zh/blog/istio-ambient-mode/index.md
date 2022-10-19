@@ -31,8 +31,9 @@ Ambient Mesh 推出的消息对于社区来说可能显得有些突然，但其�
 - 不支持 `EnvoyFilter`；
 - 直接对 Pod IP 而不是 service 的请求在某些情况下将无效；
 - Ambient 模式下的服务无法通过 `LoadBalancer` 和 `NodePort` 方式访问，不过你可以部署一个入口网关（未启用 ambient 模式）以从外部访问服务；
+- 不支持 Calico CNI 和 Dataplane V2 CNI；
 
-但是目前在 `experimental-ambient` 分支中还没有看到 ztunnel 和 waypoint 代理的代码，更多细节我们不得而知。
+[这里](https://github.com/istio/istio/tree/experimental-ambient#supported-environments)有安装 ambient 模式的详细环境要求。
 
 ## 更多
 
