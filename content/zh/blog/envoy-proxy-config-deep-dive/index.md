@@ -4,7 +4,7 @@ date: 2019-01-07T16:11:27+08:00
 draft: false
 description: "本文介绍了 Envoy proxy 的概念，对应的 xDS 的版本以及配置的详细解析。"
 tags: ["envoy"]
-categories: ["service mesh"]
+categories: ["Envoy"]
 type: "post"
 aliases: "/posts/envoy-proxy-config-deep-dive"
 image: "images/banner/envoyproxy.jpg"

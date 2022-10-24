@@ -3,9 +3,8 @@ title: "在 Kubernetes 中使用 Envoy mesh 教程"
 date: 2018-04-28T20:26:53+08:00
 description: "本文是在 Kubernetes 集群中，使用 Envoy 来做 mesh，来为一个简单的使用 Python 编写的 Flask 应用程序做反向代理和负载均衡。"
 tags: ["envoy"]
-categories: ["service mesh"]
+categories: ["Envoy"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/envoy-archiecture-and-terminology"
 image: "images/banner/envoyproxy.jpg"
 ---
