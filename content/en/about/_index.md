@@ -9,7 +9,7 @@ image: "images/about/jimmysong-xj.webp"
 description : "Jimmy Song's profile."
 ---
 
-Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to/en) and [ServiceMesher](https://www.servicemesher.com) founder. He is an outstanding translator, author and producer of PHEI.  Former cloud native advocate and head of OSS office at Ant Group. Early adopters and evangelist of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com).
+Jimmy Song(宋净超) is a developer advocate at [Tetrate](https://tetrate.io), [CNCF Ambassador](https://www.cncf.io/people/ambassadors/), [Cloud Native Community](https://cloudnative.to). He is an outstanding translator, author and producer of PHEI.  Former cloud native advocate and head of OSS office at Ant Group. Early adopters and evangelist of Kubernetes and Istio. Previously, he worked at [iFlytek](https://www.iflytek.com), [TalkingData](https://www.talkingdata.com) and [Ant Group](https://www.antgroup.com).
 
 ### Publications
 
@@ -17,6 +17,7 @@ Jimmy Song has published several books since 2017, see the [book page](https://l
 
 **Copyright**
 
+- [In-Depth Understanding of Istio, Cloud Native Community (China), 2022.06](/en/blog/istio-service-mesh-book/)
 - [Future Architecture - From SOA to Cloud Native, Zhang Liang,Wu Sheng, Ao Xiaojian, Song Jingchao, 2019.04](https://lib.jimmysong.io/book/future-architecture/)
 
 **Translation**
@@ -26,17 +27,13 @@ Jimmy Song has published several books since 2017, see the [book page](https://l
 - [Cloud Native Java - Build cloud native applications with Java, 2018.07](https://lib.jimmysong.io/book/cloud-native-java)
 - [Cloud Native Patterns, 2020.08](https://lib.jimmysong.io/book/cloud-native-patterns)
 
-**Reviewed**
-
-- [Mastering Service Mesh](https://www.packtpub.com/web-development/mastering-service-mesh-architecture)
-
 ### Focused domains
 
 He mainly focuses on cloud native fields, including containers, microservices, service mesh, serverless and other technologies, and is keen to participate in open source software and open source communities.
 
 ### Community
 
-Jimmy Song is the founder of [ServiceMesher](https://www.servicemesher.com/) and [Cloud Native Communtiy](https://cloudnative.to), [China open source pioneer 2021](https://segmentfault.com/a/1190000041270720).
+Jimmy Song is the founder of ServiceMesher and [Cloud Native Community (China)](https://cloudnative.to), [China open source pioneer 2021](https://segmentfault.com/a/1190000041270720).
 
 #### ServiceMesher Community
 
