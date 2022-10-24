@@ -4,9 +4,8 @@ description: "本文介绍了 Envoy proxy 中的基本概念、配置与架构�
 date: 2018-04-27T17:16:50+08:00
 draft: false
 tags: ["envoy"]
-categories: ["service mesh"]
+categories: ["Envoy"]
 type: "post"
-bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/envoy-archiecture-and-terminology"
 image: "images/banner/envoyproxy.jpg"
 ---
