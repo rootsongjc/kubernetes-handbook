@@ -9,7 +9,7 @@ image: "images/about/jimmysong-xj.webp"
 description : "宋净超（Jimmy Song）的简介。"
 ---
 
-宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)及 [ServiceMesher](https://www.servicemesher.com) 创始人，[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)。
+宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)创始人，[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)。
 
 ## 出版物
 
@@ -17,6 +17,7 @@ description : "宋净超（Jimmy Song）的简介。"
 
 **著作**
 
+- [深入理解 Istio——云原生服务网格进阶实战，云原生社区著，2022 年 6 月，电子工业出版社](/blog/istio-service-mesh-book/)
 - [未来架构 —— 从服务化到云原生，张亮 吴晟 敖小剑 宋净超 著，2019 年 4 月，电子工业出版社](https://lib.jimmysong.io/book/future-architecture/)
 
 **译本**
@@ -27,17 +28,13 @@ description : "宋净超（Jimmy Song）的简介。"
 - [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-java/)
 - [云原生模式，2020 年 8 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-patterns/)
 
-**审阅**
-
-- [Mastering Service Mesh](https://www.packtpub.com/web-development/mastering-service-mesh-architecture)
-
 ## 关注领域
 
 主要关注云原生领域，包括容器、微服务、服务网格、Serverless 等技术，热衷于参与开源软件和开源社区。
 
 ## 社区
 
-Jimmy 是 [ServiceMesher](https://www.servicemesher.com) 及 [云原生社区](https://cloudnative.to) 创始人，[2021 年中国开源先锋](https://segmentfault.com/a/1190000041270720)。
+Jimmy 是 ServiceMesher 及 [云原生社区](https://cloudnative.to) 创始人，[2021 年中国开源先锋](https://segmentfault.com/a/1190000041270720)。
 
 **ServiceMesher 社区**
 
