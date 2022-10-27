@@ -150,6 +150,11 @@ curl --verbose --header "Host: www.example.com" http://$GATEWAY_HOST:8080/get
 
 关于这些 CRD 的具体用法以及 Envoy Gateway 的用户指南，将在以后的文章中分享。
 
+下面两篇我同事写的关于 Envoy Gateway 的文章推荐给大家阅读：
+
+- [使用 Envoy Gateway 0.2 体验新的 Kubernetes Gateway API](https://lib.jimmysong.io/blog/hands-on-with-envoy-gateway/)
+- [面向未来的网关：新的 Kubernetes Gateway API 和 Envoy Gateway 0.2 介绍](https://lib.jimmysong.io/blog/envoy-gateway-to-the-future/)
+
 ## 参考 {#reference}
 
 - [开源项目 Envoy Gateway 简介 - lib.jimmysong.io](https://lib.jimmysong.io/blog/introducing-envoy-gateway/)
