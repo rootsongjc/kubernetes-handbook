@@ -1,6 +1,6 @@
 ---
-title: "为什么说 Gateway API 是 Kubernetes 和服务网格入口中网关的未来？"
-description: "本文为你介绍了 Kubernetes 中的入口网关及 Gateway API，入口网关与服务网格融合的新趋势。"
+title: "Gateway API：Kubernetes 和服务网格入口中网关的未来"
+description: "本文介绍 Kubernetes 中的入口网关及 Gateway API，入口网关与服务网格融合的新趋势。"
 date: 2022-11-02T11:18:40+08:00
 draft: false
 tags: ["Gateway","Gateway API","Kubernetes","Service Mesh","Envoy Gateway"]
