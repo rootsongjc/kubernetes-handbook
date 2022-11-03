@@ -73,7 +73,7 @@ spec:
 - Ingress 的配置过于简单，仅支持 HTTP 协议路由；
 - HTTP 路由仅支持 host 和 path 匹配，对于高级路由功能没有通用配置，只能通过 annotation 来实现，比如[使用 Nginx Ingress Controller 实现 URL 重定向](https://help.aliyun.com/document_detail/86533.html#section-xsg-g5g-1uy)，需要配置 `nginx.ingress.kubernetes.io/rewrite-target` annotation，已经无法适应可编程路由的需求；
 - 不同命名空间中的服务要绑定到同一个网关中的情况在实际情况下经常出现，而入口网关无法在多个命名空间中共享；
-- 入口网关的创建和管理的职责没有划分界限，导致开发者不仅要
+- 入口网关的创建和管理的职责没有划分界限，导致开发者不仅要配置网关路由，还需要自己创建和管理网关；
 
 ## Kubernetes Gateway API
 
