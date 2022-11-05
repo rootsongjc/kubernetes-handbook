@@ -32,9 +32,7 @@ image: "images/banner/crossing-the-chasm.jpg"
 - 后期大众
 - 落后者
 
-![跨越鸿沟](crossing-the-chasm.jpg)
-
-图：”鸿沟理论“客户分布情况
+![图：”鸿沟理论“客户分布情况](crossing-the-chasm.jpg)
 
 ## 分布情况
 

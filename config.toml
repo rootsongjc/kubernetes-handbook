@@ -338,6 +338,9 @@ name = "深入理解 Istio"
 URL = "/blog/istio-service-mesh-book/"
 
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
   [markup.highlight]
     codeFences = true
     guessSyntax = false

@@ -1,15 +1,36 @@
 ---
-title: "Istio 中流量管理机制详解"
+title: "Istio 的架构与流量管理机制解析"
 description: "本文详述了从用户配置 Istio 流量管理资源对象到应用到配置下发并作用于 Envoy 的全过程。"
-date: 2022-10-17T11:18:40+08:00
+date: 2022-11-04T11:18:40+08:00
 draft: true
 tags: ["istio"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/no-entry.jpg"
+image: "images/banner/magic-round.jpg"
 ---
 
-如今网上已经有很多教程和文章都说明了 Istio 配置的用法，但是没有说这些配置是怎样作用到 sidecar 上来操作流量的。下面我就以 Istio 官方 task [Requst routing](https://istio.io/latest/docs/tasks/traffic-management/request-routing/) 中的例子来说明，sidecar 模式下 VirtualService 是如何运作的。
+这篇文章是根据笔者在 Linux Foundation APAC “源来如此” [开源软件学园技术公开课](https://mp.weixin.qq.com/s/LSnr7R4ZqCqnr1veOq11nQ)《Istio 架构与流量管理机制解析》分享内容整理而成。
+
+本次分享的幻灯片可以[在腾讯文档中观看]。
+
+## 前言
+
+Istio 自 2017 年开源，至今已有 5 年多时间，业界已经出版了很多本介绍 Istio 的图书，包括笔者参与编写的《深入理解 Istio》，网上也有很多教程和文章介绍 Istio 配置的用法，但是笔者觉得都还不够生动形象，本文将发挥互联网多媒体的优势，笔者整理了以前撰写的介绍 Istio 的文章及绘制的图片，同时结合 Istio 的最新进展，重新撰写一篇介绍 Istio 架构和基础的流量管理功能的文章。读者可以跟着我一起来动手体验，一步步深入了解 Istio。
+
+本次分享内容包括：
+
+- Istio 的架构与部署模式：Sidecar、Proxyless 和 Ambient 模式解析
+- Istio 中的流量管理机制及资源对象介绍
+- Istio 部署与安装示例
+- Istio 中的流量拦截与路由过程详解
+
+## 准备条件
+
+## 实验内容
+
+## Istio 的架构
+
+下面我就以 Istio 官方 task [Requst routing](https://istio.io/latest/docs/tasks/traffic-management/request-routing/) 中的例子来说明，sidecar 模式下 VirtualService 是如何运作的。
 
 我们先简要描述下这个例子在开始前的 Istio Mesh 状态：
 
@@ -62,3 +83,9 @@ kubectl -n default port-forward deploy/productpage-v1 15000
 ## 更多资源
 
 归根结底，在 Istio 网格中是 Envoy 处理的七层流量，要想了解更底层的原理，需要对 Envoy 有更详细的了解。推荐大家学习 Envoy 基础教程，
+
+## 关于
+
+“源来如此”是由 Linux 基金会开源软件学园主办的开源技术公开课系列活动。Linux 基金会开源软件学园是 Linux 基金会中国区官方培训平台，致力于为中国软件行业培养具备专业开源技能的人才，不仅为中国开发者提供来自源头的开源技术课程，更发挥 Linux 基金会开源领导能力，积极与国内权威技术专家、知名软件企业合作，开展开源技术公开课系列活动，让更多人了解开源知识，以开源技术公开课为窗口了解开源世界。
+
+Linux Foundation 开源软件学园（LFOSSA）依托于全球最大的开源软件组织, 是领先全球的高端专业软件人才教育机构, 为科技企业培养了大量软件人才, Linux 基金会开源软件学园不仅拥有丰富的线上专业课程，面授课程的导师同样是由业内资深专家担任, 所颁发的证书更是全球认可的专业资质。Linux 基金会做为非牟利国际技术组织, 致力于通过开源推动创新和促进科技发展, 我们唯一的目标就是帮助您的事业发展更上一层楼。

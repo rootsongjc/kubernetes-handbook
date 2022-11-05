@@ -8,13 +8,13 @@
       <!-- post date -->
       <li class="list-inline-item mr-3 ml-0"><i class="ti-calendar"></i> {{ default (i18n "dateFormat") .Site.Params.dateformat | .PublishDate.Format }}</li>
       <!-- categories -->
-      <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><i class="ti-tag"></i>
+      <li class="list-inline-item mr-3 ml-0 text-light"><i class="ti-tag"></i>
                   {{ range $index, $elements:= .Params.Categories }}<a
                   href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"> {{ if ne $index 0 }}, {{ end }}
                   {{ . | title }}</a> {{ end}}
       </li>
     </ul>
-    <h4 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
+    <h5 class="card-title"><a href="{{ .Permalink | relURL }}">{{ .Title }}</a></h4>
     <p class="card-text">{{ .Params.description | truncate 100 }}</p>
     <!--
     <a href="{{ .Permalink | relURL }}" class="btn btn-primary btn-sm">{{ i18n "read_more" }}</a>
