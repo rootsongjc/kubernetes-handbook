@@ -268,7 +268,7 @@ chronos     4329  0.9  0.6 117524 24616 ?        Sl   Apr22  13:43 /usr/local/bi
 root      361903  0.0  0.0   4536   812 pts/0    S+   01:54   0:00 grep --colour=auto productpage
 ```
 
-然后在终端中输出 `iptables -t nat -L` 即可查看 iptables 规则。
+在本示例中，productpage 进程的 PID 是 `4329`，使用 `nsenter -n --target 4329` 进入该进程的命名空间，然后在终端中输入 `iptables -t nat -L` 即可查看 iptables 规则。
 
 ## iptables 流量劫持过程详解
 
