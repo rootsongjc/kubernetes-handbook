@@ -217,9 +217,10 @@ spec:
 
 - 对 Kubernetes 版本的要求不低于 1.21
 - 不支持 `EnvoyFilter`；
+- 不支持 IPv6；
 - 直接对 Pod IP 而不是 service 的请求在某些情况下将无效；
 - Ambient 模式下的服务无法通过 `LoadBalancer` 和 `NodePort` 方式访问，不过你可以部署一个入口网关（未启用 ambient 模式）以从外部访问服务；
-- 不支持 Calico CNI 和 Dataplane V2 CNI；
+- 不支持 Calico CNI 和 Dataplane V2 CNI，因为 Ambient 模式会使用 Istio CNI，与其他 CNI 冲突；
 
 [这里](https://github.com/istio/istio/tree/experimental-ambient#supported-environments)有安装 ambient 模式的详细环境要求。
 
