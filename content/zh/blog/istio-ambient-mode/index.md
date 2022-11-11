@@ -34,6 +34,25 @@ Ambient 模式是 Istio 社区在 2022 年 9 月推出的一种无 sidecar 的 I
 - [Istio 服务网格 ambient 模式安全详解](https://lib.jimmysong.io/blog/ambient-security/)
 - [什么是 Ambient Mesh，它与 sidecar 模式有什么区别？](https://lib.jimmysong.io/blog/what-is-ambient-mesh/)
 
+## Ambient 模式的核心技术 {#ambient-core}
+
+Ambient 模式中的 ztunnel 和 Waypoint proxy 目前还是使用 Envoy 来实现的，未来不排除使用其他语言（非 C++，如 Rust）来实现一个轻量级的 ztunnel。该模式的核心是所谓的 HBONE（HTTP Based Overlay Network Environment，基于 HTTP 的覆盖网络环境）。
+
+HBONE 基于 HTTP/2 CONNECT，将工作负载之间的请求以流的形式进行隧道传输，尽可能地复用 HTTP/2 连接。HBONE 对工作负载来说是透明的，支持更好的传输机制：
+
+- 支持多协议，包括 [Server First 协议](https://istio.io/latest/docs/ops/deployment/requirements/#server-first-protocols)，如 MySQL。Istio 可以自动检测出 HTTP 和 HTTP/2 流量。如果未自动检测出协议，流量将会视为普通 TCP 流量。对于 Server First 协议必须明确声明，否则将作为 TCP 流量处理；
+- 对于使用自己 TLS 证书的应用程序可以逐步采用 Istio；
+- 支持绕过 Istio mTLS 封装直接调用 Pod IP；
+
+## Sidecar 模式的限制 {#sidecar-limitations}
+
+其实 ambient 模式的出现，主要是因为 sidecar 模式有以下限制：
+
+- Sidecar 容器不是 pod 中的一等公民，它的生命周期不受控制，有可能在 sidecar 就没准备好的情况下，pod 就开始接收连接，让 sidecar 的生命周期与应用程序 pod 绑定，这本身就是对应用程序的一种侵入
+- Sidecar 无法解释不规范的七层系列，如 HTTP 和 gRPC；
+- 如果仅需服务网格的安全功能，那么引入 sidecar 是一次过大的投资，因为它增加了很多七层网络功能，这些是用不到的，客户无法做到渐进式采用服务网格；
+- Sidecar 升级时，应用程序需要重新部署或者启动，这需要对应用程序进行协调；
+
 ## 关于 Ambient 模式的看法 {#ambient-insight}
 
 本文我将谈谈对 ambient 模式的几点看法：
@@ -42,7 +61,7 @@ Ambient 模式是 Istio 社区在 2022 年 9 月推出的一种无 sidecar 的 I
 2. **Ambient Mode 的本质**：它的本质是分离 sidecar proxy（Envoy）中的 L4 和 L7 功能，让一部分仅需要安全功能的用户可以最小阻力（低资源消耗、运维成本）地使用 Istio service mesh。
 3. **Ambient Mode 的意义**：因为它 sidecar 模式兼容，用户在采纳 Ambient Mode 获得了 mTLS 和有限的可观察性及 TPC 路由等 L4 功能，之后可以更方便的过度到 sidecar mode 以获得完全的 L7 功能。这给用户采纳 Istio 提供了更多模式选择，优化了 Istio 采纳路径。
 4. **Ambient Mode 的坏处**：Proxyless、sidecar、ambient 模式，使得 Istio 越来越复杂，用户理解起来更加费力；控制平面为了支持多种数据平面部署模式，其实现将更加复杂。
-5. **与其他 service mesh 的关系**：有的 service mesh 从原先的 per-proxy per-node 模式转变为 sidecar mode，如 Linkerd；还有的从 CNI 做到 service mesh，如 Cilium 使用 per-proxy per-node 模式；如今 Istio 在 sidecar mode 的基础上增加了 ambient mode，这也是目前唯一同时支持这两种部署模式的 service mesh，为用户提供了多样的选择。
+5. **与其他服务网格的关系**：有的 service mesh 从原先的 per-proxy per-node 模式转变为 sidecar mode，如 Linkerd；还有的从 CNI 做到 service mesh，如 Cilium 使用 per-proxy per-node 模式；如今 Istio 在 sidecar mode 的基础上增加了 ambient mode，这也是目前唯一同时支持这两种部署模式的服务网格，为用户提供了多样的选择。
 6. **安全问题**：虽然 [Istio 服务网格 ambient 模式安全详解](https://lib.jimmysong.io/blog/ambient-security/) 说明了ambient 模式的设计主旨是为了将应用程序与数据平面分离，让安全覆盖层的组件（ztunnel）处于类似于 CNI 的网格底层，考虑到 ztunnel 有限的 L4 攻击面，该模式的安全风险是可以接受的；但是，ztunnel 作为 DaemonSet 部署在每个节点上，需要处理和分发调度到该节点上的所有 pod 的证书来建立 mTLS 连接，一旦 一个 ztunnel 被攻破，它的爆炸半径确实是大于一个 sidecar，安全详解的博客中说 Envoy 的 CVE 问题会影响所有 sidecar，升级 sidecar 也会带来很大的运营成本，所以权衡之下选择 ambient 模式，安全问题再次给用户造成了困惑，不过最终选择的权利还是在用户自己。
 
 ## 安装试用 {#setup}

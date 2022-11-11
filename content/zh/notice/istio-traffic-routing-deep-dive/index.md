@@ -1,17 +1,19 @@
 ---
-title: "Istio 的架构与流量管理机制解析"
+title: "Linux 基金会开源软件学园分享：Istio 的架构与流量管理机制解析"
 description: "本文详述了从用户配置 Istio 流量管理资源对象到应用到配置下发并作用于 Envoy 的全过程。"
-date: 2022-11-04T11:18:40+08:00
-draft: true
+date: 2022-11-11T11:18:40+08:00
+draft: false
 tags: ["istio"]
 categories: ["Istio"]
-type: "post"
+type: "notice"
 image: "images/banner/magic-round.jpg"
 ---
 
 这篇文章是根据笔者在 Linux Foundation APAC “源来如此” [开源软件学园技术公开课](https://mp.weixin.qq.com/s/LSnr7R4ZqCqnr1veOq11nQ)《Istio 架构与流量管理机制解析》分享内容整理而成。
 
-本次分享的幻灯片可以[在腾讯文档中观看]。
+本次分享的幻灯片可以[在腾讯文档中观看](https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy)。
+
+![幻灯片视图](slides.jpg)
 
 ## 前言
 
@@ -26,7 +28,12 @@ Istio 自 2017 年开源，至今已有 5 年多时间，业界已经出版了�
 
 ## 准备条件
 
-## 实验内容
+为了能够自己动手实验，你需要准备：
+
+- Kubernetes 集群 1.21+
+- Istio 1.15
+- Kubectl
+- Lens（我推荐的一个 Kubernetes UI）
 
 ## Istio 的架构
 
@@ -74,15 +81,26 @@ kubectl -n default port-forward deploy/productpage-v1 15000
 
 然后在浏览器中打开 `http://localhost:15000` 就可以进入 Envoy 的 admin 页面，查看 Envoy 的当前配置。在应用新的 VirtualService 之前，你可以保存当前 Envoy 的配置，然后应用后的 Envoy 配置做对比。关于 sidecar 中各个端口的详细用法请见[Istio 中的各组件端口及功能详解](https://jimmysong.io/blog/istio-components-and-ports/)。
 
-![Envoy admin 页面（局部）](https://tva1.sinaimg.cn/large/008vxvgGgy1h72l9to87tj30u013w79q.jpg)
-
 ### 步骤三：Envoy 处理流量
 
 被拦截的流量在进入 Pod 的 Envoy Inbound Handler 后，然后进入 Envoy 的 Filter Chain，对于 HTTP 流量会进入 HttpConnectionManager（HCM）这个高级网络过滤器链，这里面有一系列的 HTTP 过滤器。Productpage 页面对 reviews 服务的访问究竟走哪个 subset，还得看 `prodcutpage` pod 中的 Envoy 配置。在步骤二的那个页面上查看 `config_dump`，你将看到 Envoy 的详细配置，其中的 `dynamic_route_configs` 中，可以看到对 `reviews.default.svc.cluster.local:9080` 服务的 Route 配置是 `outbound|9080|v2|reviews.default.svc.cluster.local` Cluster，再查看这个 Cluster 的配置，可以看到是用 EDS 来获取的，你可以使用 `istioctl proxy-config endpoint xxx` 查看该 pod 上可识别的所有 Endpoint。
 
+关于详细流程请参考[分享的幻灯片](https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy)及演示视频。
+
 ## 更多资源
 
-归根结底，在 Istio 网格中是 Envoy 处理的七层流量，要想了解更底层的原理，需要对 Envoy 有更详细的了解。推荐大家学习 Envoy 基础教程，
+归根结底，在 Istio 网格中是 Envoy 处理的七层流量，要想了解更底层的原理，需要对 Envoy 有更详细的了解。推荐大家学习 Envoy 基础教程，还有下面这些学习资源：
+
+- [Tetrate 学院](http://academy.tetrate.io)
+
+- - [Istio 基础教程](https://academy.tetrate.io/courses/istio-fundamentals-zh)
+  - [Envoy 基础教程](https://academy.tetrate.io/courses/envoy-fundamentals-zh)
+
+- 云原生资料库：[lib.jimmysong.io](http://lib.jimmysong.io)
+
+- 云原生社区：[cloudnative.to](http://cloudnative.to)
+
+- [Istio 管理员认证](https://academy.tetrate.io/courses/certified-istio-administrator)
 
 ## 关于
 
