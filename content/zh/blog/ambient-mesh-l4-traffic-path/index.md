@@ -5,7 +5,7 @@ date: 2022-11-10T10:18:40+08:00
 draft: true
 tags: ["Istio","Ambient Mesh"]
 categories: ["Istio"]
-type: "post"
+type: "notice"
 image: "images/banner/ambient.jpg"
 ---
 
@@ -274,7 +274,9 @@ cat all-include-eds.json|fx
     }
 ```
 
-该 Cluster 配置使用 EDS 获取端点，我们再检查下 EDS，我们会发现有很多类似这样的 `endpoint_config`：
+该 Cluster 配置使用 EDS 获取端点，对所有具有 `tunnel: h2` 元数据的字节流应用 [`InternalUpstreamTransport`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/internal_upstream/v3/internal_upstream.proto#envoy-v3-api-msg-extensions-transport-sockets-internal-upstream-v3-internalupstreamtransport)：内部地址定义位于同一代理实例中的环回用户空间 socket。除了常规字节流之外，该扩展还允许跨用户空间 socket 传递额外的结构化状态（`passthrough_metadata`）。目的是促进下游过滤器和上游内部连接之间的通信。与上游连接共享的所有过滤器状态对象也通过此传输 socket 与下游内部连接共享。
+
+对于，我们再检查下 EDS，我们会发现有很多类似这样的 `endpoint_config`：
 
 ```json
     {
@@ -387,7 +389,9 @@ cat all-include-eds.json|fx
     }
 ```
 
-注意其中的 `tunneling_config` 部分，该部分用来配置与上游 HTTP CONNECT 隧道。该监听器通过`set_dst_address` 过滤器根据上一步的选择的端点的 `metadata` 里的参数设置目的地址。假如前面集群选择的端点是 `10.4.1.39:15008` ，那么这里的 tunnel 监听器就会把 `10.4.1.39:15008` 设置为目的地址。另外该监听器，只有一个 `TcpProxy` 将流量传给给 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/ sleep` 的集群。TCP过滤器上还设置了HTTP CONNECT 隧道（承载发送到 `10.4.1.39:9080` 的流量），供 `productpage` 所在节点的 ztunnel 使用。有多少个端点，就会创建多少条隧道。HTTP 隧道是 Ambient 组件之间安全通信的承载协议。
+注意：其中的 [`tunneling_config`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto#envoy-v3-api-msg-extensions-filters-network-tcp-proxy-v3-tcpproxy-tunnelingconfig) 部分，该部分用来配置上游 HTTP CONNECT 隧道。
+
+监听器中首先执行监听器过滤器，`set_dst_address` 过滤器将上游地址设置为下游的目的地址。根据上一步 EDS 中选择的端点的 `metadata` 里的参数设置目的地址。假如前面集群选择的端点是 `10.4.1.39:9080` ，那么这里的 tunnel 监听器就会把 `10.4.1.39:9080` 设置为目的地址。另外该监听器中的 `TcpProxy` 过滤器将流量传给上游 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep` 集群。TCP 过滤器上设置了 HTTP CONNECT 隧道（承载发送到 `10.4.1.39:9080` 的流量），供 `productpage` 所在节点的 ztunnel 使用。有多少个端点，就会创建多少条隧道。HTTP 隧道是 Ambient 组件之间安全通信的承载协议。
 
 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep` 集群的配置：
 
