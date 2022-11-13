@@ -20,3 +20,4 @@ For the Cloud Native Library, please visit [rootsongjc/cloud-native-library](htt
 - `<table "title">`
 - `<detail "title">`
 - `<figure src="" alt="" width="">`
+- [highlight](https://gohugo.io/content-management/syntax-highlighting/)
