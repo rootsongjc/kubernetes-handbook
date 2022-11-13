@@ -679,3 +679,20 @@ figure img:target{
 .bp-lock body {
     overflow: auto;
 }
+
+/* fix highlight line break */
+.highlight .chroma {
+    background: #f8f9fe;
+    margin-bottom: 0;
+    .lntd pre{
+        padding-left:0;
+        padding-right:0;
+        .line {
+        padding-left:10px;
+        }
+    }
+    code .hl{
+    margin-bottom: 0 !important;
+    }
+}
+
