@@ -811,7 +811,7 @@ $ iptables-save
 32767:  from all lookup default
 ```
 
-所有 Ambient Mesh 节点中的路由表数量和规则是一样的，路由表规则将按顺序执行，首先查找 `local` 表，然后所有带有 `0x200/0x200` 标记的数据包将首先跳转到 `main` 表，然后查找 `100` 表，在 `100` 表中有以下规则：
+所有 Ambient Mesh 节点中的路由表数量和规则是一样的，路由表规则将按顺序执行，首先查找 `local` 表，然后所有带有 `0x200/0x200` 标记的数据包将首先跳转到 `main` 表（其中定义了 veth 路由），然后查找 `100` 表，在 `100` 表中有以下规则：
 
 {{<highlight bash "linenos=table,hl_lines=8">}}
 $ ip route show table 100
