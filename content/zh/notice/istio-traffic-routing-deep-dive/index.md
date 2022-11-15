@@ -7,11 +7,14 @@ tags: ["istio"]
 categories: ["Istio"]
 type: "notice"
 image: "images/banner/magic-round.jpg"
+link: "https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy"
 ---
 
 这篇文章是根据笔者在 Linux Foundation APAC “源来如此” [开源软件学园技术公开课](https://mp.weixin.qq.com/s/LSnr7R4ZqCqnr1veOq11nQ)《Istio 架构与流量管理机制解析》分享内容整理而成。
 
-本次分享的幻灯片可以[在腾讯文档中观看](https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy)。
+- 本次分享的幻灯片可以[在腾讯文档中观看](https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy)。
+
+- 在 [B 站](https://www.bilibili.com/video/BV1YG4y1t7kh)中观看直播回放。
 
 ![幻灯片视图](slides.jpg)
 

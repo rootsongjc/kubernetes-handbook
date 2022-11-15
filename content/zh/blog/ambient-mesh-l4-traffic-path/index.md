@@ -634,7 +634,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 
 {{</callout>}}
 
-### Sleep 集群通过 Envoy 内部监听器建立 HBONE 隧道 {#sleep-internal-upstream}
+### 通过 Envoy 内部监听器建立 HBONE 隧道 {#sleep-internal-upstream}
 
 我们再看下这个监听器 `outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/sleep`：
 
@@ -695,6 +695,12 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 - 第 14 行：数据包将被转发到 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep` 集群；
 - 第 18 - 28 行： [`tunneling_config`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto#envoy-v3-api-msg-extensions-filters-network-tcp-proxy-v3-tcpproxy-tunnelingconfig) ，用来配置上游 HTTP CONNECT 隧道。另外该监听器中的 `TcpProxy` 过滤器将流量传给上游 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep` 集群。TCP 过滤器上设置了 HTTP CONNECT 隧道（承载发送到 `10.4.3.20:9080` 的流量），供 `productpage` 所在节点的 ztunnel 使用。有多少个端点，就会创建多少条隧道。HTTP 隧道是 Ambient 组件之间安全通信的承载协议。同时在隧道中的数据包添加了 `x-envoy-original-dst-host` header，根据上一步 EDS 中选择的端点的 `metadata` 里的参数设置目的地址。前面 EDS  选择的端点是 `10.4.3.20:9080` ，那么这里的 tunnel 监听器就会 header 的值设置为 `10.4.3.20:9080`，请留意这个 header，它会在隧道的另一端被用到；
 - 第 40 行：监听器中首先执行监听器过滤器，`set_dst_address` 过滤器将上游地址设置为下游的目的地址。
+
+{{<callout note "关于 HBONE 隧道">}}
+
+HBONE 是 HTTP-Based Overlay Network Environment 的缩写，是一种使用 HTTP 协议提供隧道能力的方法。客户端向 HTTP 代理服务器发送 HTTP CONNECT 请求（其中包含了目的地址）以建立隧道，代理服务器代表客户端与目的地建立 TCP 连接，然后客户端就可以通过代理服务器透明的传输 TCP 数据流到目的服务器。在 Ambient 模式中，Ztunnel（其中的 Envoy）实际上是充当了透明代理，它使用 [Envoy Internal Listener](https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener) 来接收 HTTP CONNECT 请求和传递 TCP 流给上游集群。
+
+{{</callout>}}
 
 ### Sleep 集群的 HBONE 隧道端点 {#sleep-tunnel-cluster}
 
@@ -1028,5 +1034,6 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 - [深入 Ambient Mesh - 流量路径 - mp.weixin.qq.com](https://mp.weixin.qq.com/s/PpP0pmxdJR8PknHeR-pVHQ)
 - [一文读懂 Ambient Mesh 七层服务治理 - mp.weixin.qq.com](https://mp.weixin.qq.com/s/TXMyxbzBSfuYNquOZJmZTg)
 - [深度剖析！Istio共享代理新模式Ambient Mesh - mp.weixin.qq.com](https://mp.weixin.qq.com/s/B0q73ACAvmY4SjW42A2GVw)
+- [Istio Ambient 模式流量管理实现机制详解（一）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-1/)
 - [Istio Ambient 模式流量管理实现机制详解（二） - zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/)
 - [Istio Ambient 模式流量管理实现机制详解（三）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/)
