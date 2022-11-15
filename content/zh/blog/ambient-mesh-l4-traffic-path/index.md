@@ -20,39 +20,46 @@ image: "images/banner/ambient-l4.jpg"
 
 ![Ambient 模式中的四层流量路径](ambient-mesh-l4-traffic-path.svg)
 
+## 原理 {#principles}
+
+Ambient 模式使用 **tproxy** 和 **HBONE** 这两个关键技术实现透明流量劫持和路由的：
+
+- 使用 tproxy 将主机 Pod 中的流量劫持到 Ztunnel（Envoy Proxy）中，实现透明流量劫持；
+- 使用 HBONE 建立在 Ztunnel 之间传递 TCP 数据流隧道；
+
+### 什么是 tproxy？{#what-is-tproxy}
+
+`tproxy` 是 Linux 内核自 2.2 版本以来支持的透明代理（Transparent proxy），其中的 t 代表 transparent，即透明。你需要在内核配置中启用 `NETFILTER_TPROXY` 和策略路由。通过 tproxy，Linux 内核就可以作为一个路由器，将数据包重定向到用户空间。详见 [tproxy 文档](http://lxr.linux.no/linux+v3.10/Documentation/networking/tproxy.txt) 。
+
+### 什么是 HBONE？{#what-is-hbone}
+
+HBONE 是 HTTP-Based Overlay Network Environment 的缩写，是一种使用 HTTP 协议提供隧道能力的方法。客户端向 HTTP 代理服务器发送 HTTP CONNECT 请求（其中包含了目的地址）以建立隧道，代理服务器代表客户端与目的地建立 TCP 连接，然后客户端就可以通过代理服务器透明的传输 TCP 数据流到目的服务器。在 Ambient 模式中，Ztunnel（其中的 Envoy）实际上是充当了透明代理，它使用 [Envoy Internal Listener](https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener) 来接收 HTTP CONNECT 请求和传递 TCP 流给上游集群。
+
 ## 环境说明
 
 在开始动手操作之前，需要先说明一下笔者的演示环境，本文中对应的对象名称：
 
-| 代号              | 名称                                         | IP            |
-| ----------------- | -------------------------------------------- | ------------- |
-| 服务 A Pod        | sleep-5644bdc767-2dfg7                       | 10.4.4.19     |
-| 服务 B Pod        | productpage-v1-5586c4d4ff-qxz9f              | 10.4.3.20     |
-| Ztunnel A Pod     | ztunnel-rts54                                | 10.4.4.18     |
-| Ztunnel B Pod     | ztunnel-z4qmh                                | 10.4.3.14     |
-| 节点 A            | gke-jimmy-cluster-default-pool-d5041909-d10i | 10.168.15.222 |
-| 节点 B            | gke-jimmy-cluster-default-pool-d5041909-c1da | 10.168.15.224 |
-| 服务 B Cluster IP | productpage                                  | 10.8.14.226   |
+| 代号           | 名称                                         | IP            |
+| -------------- | -------------------------------------------- | ------------- |
+| 服务 A Pod     | sleep-5644bdc767-2dfg7                       | 10.4.4.19     |
+| 服务 B Pod     | productpage-v1-5586c4d4ff-qxz9f              | 10.4.3.20     |
+| Ztunnel A Pod  | ztunnel-rts54                                | 10.4.4.18     |
+| Ztunnel B Pod  | ztunnel-z4qmh                                | 10.4.3.14     |
+| 节点 A         | gke-jimmy-cluster-default-pool-d5041909-d10i | 10.168.15.222 |
+| 节点 B         | gke-jimmy-cluster-default-pool-d5041909-c1da | 10.168.15.224 |
+| 服务 B Cluster | productpage                                  | 10.8.14.226   |
 
-因为这些名称将在后续的命令行中用到，文中将使用代称，以便你在自己的环境中实验，请读者对号入座。
-
-下面我们将动手实验，深入探究 `sleep` 服务的 Pod 访问不同节点上 `productpage` 服务的 Pod 的四层流量路径。
-
-## 动手操作 {#hands-on}
+注意：因为这些名称将在后续的命令行中用到，文中将使用代称，以便你在自己的环境中实验。
 
 笔者在 GKE 中安装了 Ambient 模式的 Istio，请参考[该步骤](/blog/istio-ambient-mode/#setup)安装，注意不要安装 Gateway，以免启用 L7 功能，否则流量路径将于 L4 流量不同。
 
-我们将分别检视 Pod 的 outbound 和 inbound 流量。
+下面我们将动手实验，深入探究 `sleep` 服务的 Pod 访问不同节点上 `productpage` 服务的 Pod 的四层流量路径。我们将分别检视 Pod 的 outbound 和 inbound 流量。
 
 ## Outbound 流量劫持 {#outbound}
 
-Ambient 模式使用 tproxy 和 HBONE 实现透明流量劫持。
-
-### 出站流量透明劫持概览{#outbound-overview}
-
 Ambient mesh 的 pod 出站流量的透明流量劫持流程如下：
 
-1. Istio CNI 在节点上创建 `istioout` 网卡和 iptables 规则，将 Ambient mesh 中的 Pod IP 加入 IP 集，并通过 netfilter `nfmark` 标记和路由规则，将 Ambient mesh 中的出站流量通过 Geneve 隧道透明劫持到 `pistioout` 虚拟机网卡；
+1. Istio CNI 在节点上创建 `istioout` 网卡和 iptables 规则，将 Ambient mesh 中的 Pod IP 加入 [IP 集](https://ipset.netfilter.org/)，并通过 netfilter `nfmark` 标记和路由规则，将 Ambient mesh 中的出站流量通过 Geneve 隧道透明劫持到 `pistioout` 虚拟网卡；
 2. ztunnel 中的 init 容器创建 iptables 规则，将 `pistioout` 网卡中的所有流量转发到 ztunnel 中的 Envoy 代理的 15001 端口；
 3. Envoy 对数据包进行处理，并与上游端点建立 HBONE 隧道（HTTP CONNECT），将数据包转发到上游。
 
@@ -130,7 +137,7 @@ Mark 的设置一共有五个选项，分别是 `--set-xmark`、`--set-mark`、`
 
 根据上面的规则，省略 `mask` 的值，或者将 `mask` 与 `value` 值设置成一样可以快速设置数据包的 `nfmark` 值为 `value`。读者可以自己推导一下：`value XOR 0xFFFFFFFF OR value = value`，`0 OR value = value`）。
 
-查看 [netfileter 文档](https://ipset.netfilter.org/iptables-extensions.man.html#lbDD) 了解详情。
+查看 [netfilter 文档](https://ipset.netfilter.org/iptables-extensions.man.html#lbDD) 了解详情。
 
 {{</callout>}}
 
@@ -706,7 +713,7 @@ HBONE 是 HTTP-Based Overlay Network Environment 的缩写，是一种使用 HTT
 
 我们再查看一下 `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep` 集群的配置：
 
-{{<highlight json "linenos=table,hl_lines=6 22-41 45-48">}}
+{{<highlight json "linenos=table,hl_lines=6 22-41 45-47">}}
  {
  "version_info": "2022-11-11T07:30:10Z/37",
  "cluster": {
@@ -781,15 +788,13 @@ HBONE 是 HTTP-Based Overlay Network Environment 的缩写，是一种使用 HTT
 
 节点 B 接收节点 A 对 `10.4.3.20:15008` 的请求。Ambient 模式的入站流量劫持与出站流量类似，同样使用 tproxy 和 HBONE 实现透明流量劫持。
 
-因为操作步骤与上文中的检查出站流量时相同，因此下文将省略部分输出。
-
-### 入站流量劫持概览 {#inbound-overview}
-
 Ambient mesh 的 pod 入站流量的透明流量劫持流程如下：
 
 1. Istio CNI 在节点上创建 `istioin` 网卡和 iptables 规则，将 Ambient mesh 中的 Pod IP 加入 IP 集，并通过 netfilter `nfmark` 标记和路由规则，将 Ambient mesh 中的出站流量通过 Geneve 隧道透明劫持到 `pistioin` 虚拟机网卡；
 2. ztunnel 中的 init 容器创建 iptables 规则，将 `pistioin` 网卡中的所有流量转发到 ztunnel 中的 Envoy 代理的 15008 端口；
 3. Envoy 对数据包进行处理后转发给 Pod B。
+
+因为操作步骤与上文中的检查出站流量时相同，因此下文将省略部分输出。
 
 ### 检查节点 B 上的路由规则 {#node-b-rules}
 
@@ -835,7 +840,7 @@ $ ip route show table 100
 查看 `istioin` 网卡的详细信息：
 
 {{<highlight bash "linenos=table,hl_lines=4 5">}}
-ip -d addr show istioin 
+$ ip -d addr show istioin 
 17: istioin: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1410 qdisc noqueue state UNKNOWN group default 
     link/ether 36:2a:2f:f1:5c:97 brd ff:ff:ff:ff:ff:ff promiscuity 0 minmtu 68 maxmtu 65485 
     geneve id 1000 remote 10.4.3.14 ttl auto dstport 6081 noudpcsum udp6zerocsumrx numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 
@@ -883,7 +888,7 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 
 查看 `ztunnel_inbound` 监听器的详细信息：
 
-{{<highlight json "linenos=table,hl_lines=7 10 11 17-23 39-65 78-82">}}
+{{<highlight json "linenos=table,hl_lines=7 10 11 17-22 39-65 78-82">}}
 
 {
  "name": "ztunnel_inbound",
@@ -999,7 +1004,7 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 
 查看 `virtual_inbound` 集群的信息：
 
-{{<highlight bash "linenos=table,hl_lines=6 9">}}
+{{<highlight bash "linenos=inline,hl_lines=6 9">}}
 
 {
  "version_info": "2022-11-11T07:10:40Z/13",
