@@ -637,7 +637,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 
 {{<callout warning "关于 endpoint_config 中未显示 cluster_name 字段的问题">}}
 
-这里的 [`endpoint_config`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/endpoint/v3/endpoint.proto) 中缺少了必选的 `cluster_name` 字段，这可能是 Ambient 模式的一个 bug 导致了在导出 Envoy 的配置时缺少了该字段。
+这里的 [`endpoint_config`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/endpoint/v3/endpoint.proto) 中缺少了必选的 `cluster_name` 字段，这可能是 Ambient 模式的一个 bug 导致了在导出 Envoy 的配置时缺少了该字段。我在 GItHub 上创建了一个 Issue 来追踪这个问题，详见 [Istio Issue-42022](https://github.com/istio/istio/issues/42022)。
 
 {{</callout>}}
 
@@ -1004,7 +1004,7 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 
 查看 `virtual_inbound` 集群的信息：
 
-{{<highlight bash "linenos=inline,hl_lines=6 9">}}
+{{<highlight bash "linenos=table,hl_lines=6 9">}}
 
 {
  "version_info": "2022-11-11T07:10:40Z/13",
