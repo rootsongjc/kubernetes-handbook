@@ -245,7 +245,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是三个 reviews 服务示例中的某一个 Pod，其中有 init 容器、应用容器和 sidecar 容器，图中展示了 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持与路由转发示意图](envoy-sidecar-traffic-interception-zh-20210818.png)
+![Envoy sidecar 流量劫持与路由转发示意图](istio-iptables.svg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。
 

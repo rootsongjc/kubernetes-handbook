@@ -35,7 +35,7 @@ Ambient 模式使用 **tproxy** 和 **HBONE** 这两个关键技术实现透明�
 
 HBONE 是 HTTP-Based Overlay Network Environment 的缩写，是一种使用 HTTP 协议提供隧道能力的方法。客户端向 HTTP 代理服务器发送 HTTP CONNECT 请求（其中包含了目的地址）以建立隧道，代理服务器代表客户端与目的地建立 TCP 连接，然后客户端就可以通过代理服务器透明的传输 TCP 数据流到目的服务器。在 Ambient 模式中，Ztunnel（其中的 Envoy）实际上是充当了透明代理，它使用 [Envoy Internal Listener](https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener) 来接收 HTTP CONNECT 请求和传递 TCP 流给上游集群。
 
-## 环境说明
+## 环境说明 {#environment}
 
 在开始动手操作之前，需要先说明一下笔者的演示环境，本文中对应的对象名称：
 

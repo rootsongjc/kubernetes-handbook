@@ -27,7 +27,7 @@ Below is an overview of the steps from Sidecar injection, Pod startup to Sidecar
 {{<callout note>}}
 **Sidecar proxy and application container startup order issues**
 
-Start the sidecar proxy and the application container. Which container is started first? Normally, Envoy Sidecar and the application container are all started up before receiving traffic requests. But we can't predict which container will start first, so does the container startup order have an impact on Envoy hijacking traffic? The answer is yes, but it is divided into the following two situations.
+Start the sidecar proxy and the application container. Which container is started first? Normally, Envoy Sidecar and the application container are all started up before receiving traffic requests. But we can't predict which container will start first, so does the container startup order have an impact on Envoy intercepting traffic? The answer is yes, but it is divided into the following two situations.
 
 **Case 1: The application container starts first, and the sidecar proxy is still not ready**
 
@@ -40,14 +40,14 @@ In this case, the request will certainly fail. As for the step at which the fail
 **Question** : If adding a readiness and living probe for the sidecar proxy and application container can solve the problem?
 {{</callout>}}
 
-5. TCP requests that are sent or received from the Pod will be hijacked by iptables. After the inbound traffic is hijacked, it is processed by the Inbound Handler and then forwarded to the application container for processing. The outbound traffic is hijacked by iptables and then forwarded to the Outbound Handler for processing. Upstream and Endpoint.
+5. TCP requests that are sent or received from the Pod will be intercepted by iptables. After the inbound traffic is intercepted, it is processed by the Inbound Handler and then forwarded to the application container for processing. The outbound traffic is intercepted by iptables and then forwarded to the Outbound Handler for processing. Upstream and Endpoint.
 6. Sidecar proxy requests Pilot to use the xDS protocol to synchronize Envoy configurations, including LDS, EDS, CDS, etc., but to ensure the order of updates, Envoy will use ADS to request configuration updates from Pilot directly.
 
 ## How Envoy handles route forwarding
 
 The following figure shows a `productpage`service access request `http://reviews.default.svc.cluster.local:9080/`, when traffic enters `reviews` the internal services, `reviews` internal services Envoy Sidecar is how to do traffic blocked the route forward.
 
-![Istio transparent traffic hijacking and traffic routing schematic](sidecar-iptables.webp)
+![Istio transparent traffic intercepting and traffic routing schematic](istio-iptables.svg)
 
 Before the first step, `productpage` Envoy Sidecar Pod has been selected by EDS of a request to `reviews` a Pod service of its IP address, it sends a TCP connection request.
 
@@ -269,7 +269,7 @@ You can see that the Endpoint of the Cluster directly corresponds to localhost, 
 
 Because the `reviews` will to `ratings` send an HTTP request service, request address are: `http://ratings.default.svc.cluster.local:9080/` the role of Outbound handler is to intercept traffic to iptables to native applications sent via Envoy to determine how to route to the upstream.
 
-The request sent by the application container is outbound traffic. After being hijacked by iptables, it is transferred to the Envoy Outbound handler for processing, then passed through `virtual` Listener and `0.0.0.0_9080` Listener, and then finds the cluster of upstream through Route 9080, and then finds Endpoint through EDS to perform routing action. 
+The request sent by the application container is outbound traffic. After being intercepted by iptables, it is transferred to the Envoy Outbound handler for processing, then passed through `virtual` Listener and `0.0.0.0_9080` Listener, and then finds the cluster of upstream through Route 9080, and then finds Endpoint through EDS to perform routing action. 
 
 **Route 9080**
 
