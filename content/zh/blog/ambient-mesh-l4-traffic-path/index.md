@@ -1031,7 +1031,9 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 
 ## 总结 {#summary}
 
-为了方便演示，本文中展示的是不同节点上的服务 L4 网络访问数据包的路径，即使两个服务在同一个节点上路径也是类似的。根据本文中提供的操作说明，读者可以在自己的环境中尝试。Istio 的 Ambient 模式还在初级阶段，在笔者测试过程中，也发现导出的 Envoy 配置中 EDS 缺少 `cluster_name` 字段的问题。在了解了 L4 流量路径之后，今后笔者会再分享 Ambient 模式中的 L7 流量路径，欢迎关注。
+为了方便演示，本文中展示的是不同节点上的服务 L4 网络访问数据包的路径，即使两个服务在同一个节点上路径也是类似的。根据本文中提供的操作说明，读者可以在自己的环境中尝试。Istio 的 Ambient 模式还在初级阶段，在笔者测试过程中，也发现导出的 Envoy 配置中 EDS 缺少 `cluster_name` 字段的问题（[Issue Istio-42022](https://github.com/istio/istio/issues/42022)）。另外 Ambient 模式使用 Istio CNI 在节点中注入 iptables 规则，通过设置 `nfmark` 的方式拦截 Pod 的流量到 Ztunnel 中，这种方式可能造成对其他 CNI 的兼容性问题，[Merbridge](https://merbridge.io/zh/blog/2022/11/11/ambient-mesh-support/) 项目正在寻求使用 eBPF 来绕过 IPtables，从而无需安装 Istio CNI，这样也就不会存在 CNI 兼容性问题。
+
+在了解了 L4 流量路径之后，今后笔者会再分享 Ambient 模式中的 L7 流量路径，欢迎关注。
 
 ## 参考{#reference}
 
@@ -1042,3 +1044,4 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 - [Istio Ambient 模式流量管理实现机制详解（一）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-1/)
 - [Istio Ambient 模式流量管理实现机制详解（二） - zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/)
 - [Istio Ambient 模式流量管理实现机制详解（三）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/)
+- [Merbridge 支持 Ambient Mesh，无惧 CNI 兼容性！- merbridge.io](https://merbridge.io/zh/blog/2022/11/11/ambient-mesh-support/)
