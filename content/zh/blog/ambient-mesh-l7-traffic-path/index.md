@@ -15,6 +15,8 @@ image: "images/banner/ambient-l7.jpg"
 
 ![Ambient Mesh 中的七层网络流量路径](ambient-mesh-l7-traffic-path.svg)
 
+注意：Waypoint Proxy 可以位于应用程序所在节点，甚至图中的服务 A、服务 B 和 Waypoint Proxy 都可以位于同一个节点，之所以将它们画在三个节点上是为了方便展示，但是对于实际的流量路径没有大的影响，只不过是不再通过 eth0 发送到另外一个节点。
+
 下文我们将从手操作探究图中过程。
 
 ## 环境说明 {#environment}
