@@ -56,7 +56,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 
 {{<highlight json "linenos=table,hl_lines=2 12 18">}}
 {
-  "10.8.4.226": {
+  "10.8.14.226": {
     "matcher": {
     "matcher_tree": {
       "input": {
@@ -84,7 +84,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 }
 {{</highlight>}}
 
-`10.8.4.226` 是目标服务的 Cluster  IP，服务端口是 9080。流量将被路由到 `spiffe://cluster.local/ns/default/sa/sleep_to_server_waypoint_proxy_spiffe://cluster.local/ns/default/sa/bookinfo-productpage` 集群，查看该集群的配置：
+`10.8.14.226` 是目标服务的 Cluster  IP，服务端口是 9080。流量将被路由到 `spiffe://cluster.local/ns/default/sa/sleep_to_server_waypoint_proxy_spiffe://cluster.local/ns/default/sa/bookinfo-productpage` 集群，查看该集群的配置：
 
 {{<highlight json "linenos=table,hl_lines=6">}}
 {
@@ -117,7 +117,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
      "endpoint": {
       "address": {
        "socket_address": {
-        "address": "10.4.3.10",
+        "address": "10.4.3.14",
         "port_value": 15006
        }
       },
@@ -137,7 +137,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 
 注意：这里还是缺少输出 `cluster_name` 字段。
 
-在这里直接将流量转发给 Waypoint Proxy 的端点 `10.4.3.10:15006`。
+在这里直接将流量转发给 Waypoint Proxy 的端点 `10.4.3.14:15006`。
 
 ## Waypoint Proxy B 上的流量转发 {#waypoint-proxy-b}
 
@@ -188,7 +188,7 @@ kubectl exec -n default bookinfo-productpage-waypoint-proxy-6f88c55d59-4dzdx -c 
             "match": {
               "headers": [{
               "name": ":authority",
-              "exact_match": "10.8.4.226:9080"
+              "exact_match": "10.8.14.226:9080"
               }],
               "connect_matcher": {}
             },
@@ -229,7 +229,7 @@ kubectl exec -n default bookinfo-productpage-waypoint-proxy-6f88c55d59-4dzdx -c 
 }
 {{</highlight>}}
 
-目的地为 `10.8.4.226:9080` 的 TCP 流量将被转发到 `inbound-vip|9080|internal|productpage.default.svc.cluster.local`，并将 HTTP 类型修改为 `CONNECT`，查看该集群的配置：
+目的地为 `10.8.14.226:9080` 的 TCP 流量将被转发到 `inbound-vip|9080|internal|productpage.default.svc.cluster.local`，并将 HTTP 类型修改为 `CONNECT`，查看该集群的配置：
 
 {{<highlight json "linenos=table,hl_lines=6 37">}}
 {
