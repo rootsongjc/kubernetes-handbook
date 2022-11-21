@@ -11,11 +11,11 @@ image: "images/banner/tproxy.jpg"
 
 在 Istio 最新的 Ambient 模式中，使用了 tproxy 做透明流量劫持（[见此博客](/blog/ambient-mesh-l4-traffic-path/)），这与 Sidecar 模式中基于 IPtables 的流量劫持方式有些许不同，这篇文文章，我们就就一起来探究下什么是 tproxy。
 
-## 什么是代理？
+## 什么是代理？{#what-is-proxy}
 
 在介绍透明代理之前，我们先了解下什么是代理。
 
-### 代理的功能
+### 代理的功能 {#proxy-functionalities}
 
 代理在互联网中的用途非常广泛，例如：
 
@@ -25,7 +25,7 @@ image: "images/banner/tproxy.jpg"
 - 流量管理：对进出代理的流量进行细粒度的管理，例如按百分比发布到不同的后端、超时和重试设置、熔断等；
 - 安全审计：记录和限制客户端请求，用于计费或审计；
 
-### 代理的分类
+### 代理的分类 {#proxies-types}
 
 代理的分类方式有很多，下图根据代理的位置将其划分为了两类：
 
@@ -43,7 +43,7 @@ image: "images/banner/tproxy.jpg"
 - 透明代理：所谓透明代理，即客户端和服务端感知不到代理的存在，客户端无需修改目的地址，也不需要采用代理协议连接代理服务器，所有目的地址转换都是在透明代理中完成的；
 - 非透明代理：客户端需要修改目的地址为代理服务器的地址，并使用代理协议连接代理服务器；
 
-## 使用 tproxy 透明代理
+## 使用 tproxy 透明代理 {#how-to-use-tproxy}
 
 `tproxy` 是 Linux 的内核模块（自 Linux 2.2 版本开始引入），用于实现透明代理，其名称中的字母 `t` 即代表透明（transparent）。
 
@@ -78,7 +78,7 @@ image: "images/banner/tproxy.jpg"
 
 透明代理作为代理中的一类重要类型，它的用途广泛，不论是 xray、clash 等代理软件，还是 Istio 服务网格中得使用了应用。了解它的原理和工作方式有助于我们科学正确的使用代理，而是否使用透明代理取决于你对它的新人和了解程度。
 
-## 参考
+## 参考 {#reference}
 
 - [tproxy-example - github.com](https://github.com/kristrev/tproxy-example)
 - [Linux transparent proxy support - powerdns.org](https://powerdns.org/tproxydoc/tproxy.md.html)
