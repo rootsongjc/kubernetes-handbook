@@ -52,7 +52,7 @@ image: "images/banner/tproxy.jpg"
 1. 首先需要实现流量拦截：在 iptables 的 `PREROUTING` 链的 `mangle` 表中创建一个规则，拦截流量发送给 tproxy 处理，例如 `iptables -t mangle -A PREROUTING -p tcp -dport 9080 -j TPROXY --on-port 15001 --on-ip 127.0.0.1 --tproxy-mark 0x1/0x1`，给所有目的地为 `9080` 端口的 TCP 数据包打上标记 `1`，你还可以指定来源 IP 地址或者 [IP 集](https://ipset.netfilter.org/)，进一步缩小标记范围，tproxy 监听在 `15001` 端口；
 2. 创建一个路由规则，将所有带有标记 `1` 的数据包查找特定的路由表：例如 `ip rule add fwmark 1 lookup 100`，让所有 `fwmark` 为 1 的数据包查找 `100` 路由表；
 3. 将数据包映射到特定的本地地址：例如 `ip rule add local 0.0.0.0/0 dev lo table 100`，在 `100` 路由表中将所有 IPv4 地址声明为本地，当然这只是一个例子，实际使用时需要请将特定的 IP 的数据包转发到本地的 `lo` 回环网卡；
-4. 至此流量已被拦截到 tproxy 的监听端口 `15001`（从 Linux 内核空间记入用户空间），你可以编写网络应用处理数据包或使用 [Squid](http://www.squid-cache.org/) 或 [Envoy](https://www.envoyproxy.io/) 等支持 tproxy 的软件来处理数据包；
+4. 至此流量已被拦截到 tproxy 的监听端口 `15001`（从 Linux 内核空间进入用户空间），你可以编写网络应用处理数据包或使用 [Squid](http://www.squid-cache.org/) 或 [Envoy](https://www.envoyproxy.io/) 等支持 tproxy 的软件来处理数据包；
 
 ## 透明代理的优点 {#pros}
 
@@ -74,7 +74,7 @@ image: "images/banner/tproxy.jpg"
 
 ## 总结 {#summary}
 
-透明代理作为代理中的一类重要类型，它的用途广泛，不论是 xray、clash 等代理软件，还是 Istio 服务网格中得使用了应用。了解它的原理和工作方式有助于我们科学正确的使用代理，而是否使用透明代理取决于你对它的新人和了解程度。
+透明代理作为代理中的一类重要类型，它的用途广泛，不论是 xray、clash 等代理软件，还是 Istio 服务网格中得使用了应用。了解它的原理和工作方式有助于我们科学正确的使用代理，而是否使用透明代理取决于你对它的信任和了解程度。
 
 ## 参考 {#reference}
 
