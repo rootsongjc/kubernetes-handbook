@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="711 492 378 208" width="378" height="208">
+  <defs/>
+  <g id="HTTP_vs_HTTPS" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+    <title>HTTP vs HTTPS</title>
+    <rect fill="white" x="711" y="492" width="378" height="208"/>
+    <g id="HTTP_vs_HTTPS_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_11">
+        <rect x="711.5" y="492" width="377" height="208" fill="white"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="722.5" y="531.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="722.5" y="531.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(727.5 541.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="43.96" y="16">HTTP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="722.5" y="571.4641" width="140" height="80" fill="#0a55a8"/>
+        <rect x="722.5" y="571.4641" width="140" height="80" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(727.5 601.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="48.848" y="16">TCP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="722.5" y="651.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="722.5" y="651.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(727.5 661.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="57.304" y="16">IP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <rect x="938" y="531.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="938" y="531.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(943 541.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="43.96" y="16">HTTP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_6">
+        <rect x="938" y="571.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="938" y="571.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(943 581.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="50.176" y="16">TLS</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="938" y="651.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="938" y="651.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(943 661.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="57.304" y="16">IP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <rect x="938" y="611.4641" width="140" height="40" fill="#0a55a8"/>
+        <rect x="938" y="611.4641" width="140" height="40" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(943 621.73206)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="48.848" y="16">TCP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_9">
+        <text transform="translate(771.46 507)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="8739676e-19" y="16">HTTP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <text transform="translate(987.104 507)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="6394885e-19" y="16">HTTS</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

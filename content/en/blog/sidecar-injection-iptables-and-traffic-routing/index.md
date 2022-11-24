@@ -1,9 +1,9 @@
 ---
-title: "Sidecar injection, transparent traffic hijacking , and routing process in Istio explained in detail"
+title: "Sidecar injection, transparent traffic intercepting, and routing process in Istio explained in detail"
 date: 2022-05-12T21:08:59+08:00
 draft: false
 tags: ["istio","iptables","envoy"]
-description: "This blog describes the sidecar pattern, transparent traffic hijacking and routing."
+description: "This blog describes the sidecar pattern, transparent traffic intercepting and routing."
 categories: ["Istio"]
 image: "images/banner/target.jpg"
 type: "post"
@@ -15,12 +15,12 @@ Based on Istio version 1.13, this article will present the following.
 
 - What is the sidecar pattern and what advantages does it have?
 - How are the sidecar injections done in Istio?
-- How does the sidecar proxy do transparent traffic hijacking?
+- How does the sidecar proxy do transparent traffic intercepting?
 - How is the traffic routed to upstream?
 
 The figure below shows how the `productpage` service requests access to `http://reviews.default.svc.cluster.local:9080/` and how the sidecar proxy inside the reviews service does traffic blocking and routing forwarding when traffic goes inside the `reviews` service.
 
-![Istio transparent traffic hijacking and traffic routing diagram](istio-iptables.svg)
+![Istio transparent traffic intercepting and traffic routing diagram](istio-iptables.svg)
 
 At the beginning of the first step, the sidecar in the `productpage` pod has selected a pod of the reviews service to be requested via EDS, knows its IP address, and sends a TCP connection request.
 
@@ -212,7 +212,7 @@ The following lists the meanings of the fields in the above output.
 - MATCH: The transport protocol used by the request or the matching downstream address
 - DESTINATION: Route destination
 
-The Iptables in the reviews Pod hijack inbound traffic to port 15006, and from the above output we can see that Envoy's Inbound Handler is listening on port 15006, and requests to port 9080 destined for any IP will be routed to the `inbound|9080||` Cluster.
+The Iptables in the reviews Pod intercept inbound traffic to port 15006, and from the above output we can see that Envoy's Inbound Handler is listening on port 15006, and requests to port 9080 destined for any IP will be routed to the `inbound|9080||` Cluster.
 
 As you can see in the last two rows of the Pod's Listener list, the Listener for `0.0.0.0:15006/TCP` (whose actual name is `virtualInbound`) listens for all Inbound traffic, which contains matching rules, and traffic to port 9080 from any IP will be routed. If you want to see the detailed configuration of this Listener in Json format, you can execute the `istioctl proxy-config listeners reviews-v1-545db77b95-jkgv2 --port 15006 -o json` command. You will get an output similar to the following.
 
@@ -345,7 +345,7 @@ We see that the `TYPE` is `ORIGINAL_DST`, which sends the traffic to the origina
 
 Because reviews send an HTTP request to the ratings service at `http://ratings.default.svc.cluster.local:9080/`, the role of the Outbound handler is to intercept traffic from the local application to which iptables has intercepted, and determine how to route it to the upstream via the sidecar.
 
-Requests from application containers are Outbound traffic, hijacked by iptables and transferred to the Outbound handler for processing, which then passes through the virtualOutbound Listener, the `0.0.0.0_9080` Listener, and then finds the upstream cluster via Route 9080, which in turn finds the Endpoint via EDS to perform the routing action.
+Requests from application containers are Outbound traffic, intercepted by iptables and transferred to the Outbound handler for processing, which then passes through the virtualOutbound Listener, the `0.0.0.0_9080` Listener, and then finds the upstream cluster via Route 9080, which in turn finds the Endpoint via EDS to perform the routing action.
 
 **Route `ratings.default.svc.cluster.local:9080`**
 
@@ -444,25 +444,25 @@ We see that the endpoint address is `10.4.1.12`. In fact, the Endpoint can be on
 
 ## Summary
 
-This article uses the bookinfo example provided by Istio to guide readers through the implementation details behind the sidecar injection, iptables transparent traffic hijacking, and traffic routing in the sidecar. The sidecar mode and traffic transparent hijacking are the features and basic functions of Istio service mesh, understanding the process behind this function and the implementation details will help you understand the principle of service mesh and the content in the later chapters of the [Istio Handbook](https://jimmysong.io/istio-handbook), so I hope readers can try it from scratch in their own environment to deepen their understanding.
+This article uses the bookinfo example provided by Istio to guide readers through the implementation details behind the sidecar injection, iptables transparent traffic intercepting, and traffic routing in the sidecar. The sidecar mode and traffic transparent intercepting are the features and basic functions of Istio service mesh, understanding the process behind this function and the implementation details will help you understand the principle of service mesh and the content in the later chapters of the [Istio Handbook](https://jimmysong.io/istio-handbook), so I hope readers can try it from scratch in their own environment to deepen their understanding.
 
-Using iptables for traffic hijacking is just one of the ways to do traffic hijacking in the data plane of a service mesh, and there are many more traffic hijacking scenarios, quoted below from the description of the traffic hijacking section given in the MOSN official network of the cloud-native network proxy.
+Using iptables for traffic intercepting is just one of the ways to do traffic intercepting in the data plane of a service mesh, and there are many more traffic intercepting scenarios, quoted below from the description of the traffic intercepting section given in the MOSN official network of the cloud-native network proxy.
 
-### Problems with using iptables for traffic hijacking
+### Problems with using iptables for traffic intercepting
 
-Currently, Istio uses iptables for transparent hijacking and there are three main problems.
+Currently, Istio uses iptables for transparent intercepting and there are three main problems.
 
 1. The need to use the conntrack module for connection tracking, in the case of a large number of connections, will cause a large consumption and may cause the track table to be full, in order to avoid this problem, the industry has a practice of closing conntrack.
 2. iptables is a common module with global effect and cannot explicitly prohibit associated changes, which is less controllable.
 3. iptables redirect traffic is essentially exchanging data via a loopback. The outbound traffic will traverse the protocol stack twice and lose forwarding performance in a large concurrency scenario.
 
-Several of the above problems are not present in all scenarios, let's say some scenarios where the number of connections is not large and the NAT table is not used, iptables is a simple solution that meets the requirements. In order to adapt to a wider range of scenarios, transparent hijacking needs to address all three of these issues.
+Several of the above problems are not present in all scenarios, let's say some scenarios where the number of connections is not large and the NAT table is not used, iptables is a simple solution that meets the requirements. In order to adapt to a wider range of scenarios, transparent intercepting needs to address all three of these issues.
 
-### Transparent hijacking optimization
+### Transparent intercepting optimization
 
-In order to optimize the performance of transparent traffic hijacking in Istio, the following solutions have been proposed by the industry.
+In order to optimize the performance of transparent traffic intercepting in Istio, the following solutions have been proposed by the industry.
 
-**Traffic Hijacking with eBPF using the Merbridge Open Source Project**
+**Traffic intercepting with eBPF using the Merbridge Open Source Project**
 
 [Merbridge](https://github.com/merbridge/merbridge) is a plug-in that leverages eBPF to accelerate the Istio service mesh, which was open sourced by DaoCloud in early 2022. Using Merbridge can optimize network performance in the data plane to some extent.
 
@@ -478,12 +478,12 @@ In order to adapt to more application scenarios, the outbound direction is imple
 
 {{<figure src="hook-connect.svg" alt="hook-connect images" title="Hook Connect Diagram" width="50%">}}
 
-Whichever transparent hijacking scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, `tproxy` can read the destination address directly, by modifying the call interface, hook connect scheme reads in a similar way to tproxy.
+Whichever transparent intercepting scheme is used, the problem of obtaining the real destination IP/port needs to be solved, using the iptables scheme through getsockopt, `tproxy` can read the destination address directly, by modifying the call interface, hook connect scheme reads in a similar way to tproxy.
 
-After the transparent hijacking, the  `sockmap` can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
+After the transparent intercepting, the  `sockmap` can shorten the packet traversal path and improve forwarding performance in the outbound direction, provided that the kernel version meets the requirements (4.16 and above).
 
 ## References
 
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/docs/ops/diagnostic-tools/proxy-cmd/)
 - [Demystifying Istio's Sidecar Injection Model - istio.io](https://istio.io/blog/2019/data-plane-setup/)
-- [The traffic hijacking solution when MOSN is used as a sidecar - mosn.io](https://mosn.io/en/docs/concept/traffic-hijack/)
+- [The traffic intercepting solution when MOSN is used as a sidecar - mosn.io](https://mosn.io/en/docs/concept/traffic-intercept/)
