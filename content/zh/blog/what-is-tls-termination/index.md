@@ -1,15 +1,19 @@
 ---
-title: "什么是 TLS 终止？"
+title: "如何使用 Istio 为流量开启 TLS 加密？"
 description: "本文介绍了 tproxy 透明代理及其使用方法。"
 date: 2022-11-21T11:09:40+08:00
 draft: true
-tags: ["TLS","network","mTLS","Istio","安全"]
-categories: ["其他"]
+tags: ["TLS","network","mTLS","Istio","安全","Istio","service mesh"]
+categories: ["Istio"]
 type: "post"
 image: "images/banner/tproxy.jpg"
 ---
 
-介绍下 TLS、TLS 终止和 mTLS 以及 Istio 中如何实现 mTLS。
+本文包括以下内容：
+
+- 介绍什么是 TLS、mTLS 和 TLS 终止
+- 介绍 Istio 中如何实现 TLS 加密
+- 使用 Istio 为 Kubernetes 中的服务实现 TLS 加密的方法
 
 ## 什么是 TLS
 
@@ -17,7 +21,7 @@ TLS（Transport Layer Security，传输层安全性）是一种广泛采用的�
 
 我们在浏览网页时看到的 HTTPS 实际上就使用了 TLS，如下图所示。TLS 是建立在 TCP 之上的，作为 OSI 模型中的会话层。为了保证兼容性，TLS 通常使用 443 端口，但是你也可以使用任意端口。
 
-![图 1：HTTP vs HTTPS](http-vs-https.svg)
+![HTTP vs HTTPS](http-vs-https.svg)
 
 当客户端需要验证服务端身份，以防中间人攻击同时保证通信安全的情况下，在和服务端通信时会要求 TLS 加密。下图展示了的是 TLS 加密通信的流程。
 
@@ -41,11 +45,41 @@ TLS 终止（TLS Termination）指的是在将 TLS 加密流量传递给 Web 服
 
 ## 什么是 mTLS？
 
-应用 TLS 需要完成复杂的对称加密、解密过程，这将非常耗时且消耗大量的 CPU 资源。如果我们在流量入口处终止 TLS，就可以加快请求响应和减少计算资源消耗。
+双向 TLS 或相互 TLS（Mutual TLS 或 mTLS）是指在服务端和客户端之间使用双向加密通道，需要双方相互提供证书并验证对方身份。关于如何在 Kubernetes 中使用 mTLS 请参考[这篇文章](https://lib.jimmysong.io/blog/mtls-guide/)。
 
-## 什么是 mTLS
+## 什么时候用 mTLS？
+
+互联网客户端对 Web 服务的访问，一般使用单向 TLS，即只需要服务端提供身份证明，而不关心客户端的身份。当你需要验证客户端身份时，使用单向 TLS可以使用密码、token、双因子认证等方式。不过这样的认证方式需要应用程序内部支持，而双向 TLS 是运行在应用程序之外的，不需要多应用逻辑进行修改。
+
+当你需要正如你在上文中看到的，实施 mTLS 的服务间需要交换证书，当服务数量变大时，就需要管理大量的证书，这需要消耗大量的精力，使用服务网格可以帮助你实现自动 mTLS，彻底解决证书管理的难题。
+
+### 什么时候不用 mTLS？
+
+虽然 mTLS 是确保云原生应用程序服务间通信安全的首选协议，但是应用 mTLS 需要完成复杂的对称加密、解密过程，这将非常耗时且消耗大量的 CPU 资源。对于某些安全级别不高的流量，如果我们在流量入口处终止 TLS，就可以加快请求响应和减少计算资源消耗。
+
+有的服务无法获取证书，例如 Kubelet 上的健康检查，访问服务内的健康检查端点
+
+Istio 网格内的服务访问外部服务
 
 ## Istio 中如何实现自动 mTLS？
+
+下图中展示的是 Istio 安全架构图，从图中可以看到在入口处使用 JWS + TLS 认证和加密，在 Istio 网格内部的所有服务间都开启了 mTLS。
+
+![Istio 安全架构图](istio-security.svg)
+
+Istio 中内置了 CA，使用 xDS 中的 SDS（Secret Discovery Service，秘密发现服务）实现 SVID 证书的签发和轮换。Istio 中有三个资源对象可用于配置服务间的认证与授权：
+
+- `RequestAuthentication`：用于定义服务支持的请求级认证方式，目前只支持  JWT；
+- `PeerAuthentication`：配置服务间的传输认证模式，如 `STRICT`、`PERMISSIVE` 或 `DISABLE` 等，以开启 mTLS 或明文请求；
+- `AuthorizationPolicy`：用于授权服务间的流量，定义谁可以做什么？例如主体 A 允许（`ALLOW`）或拒绝（`DENY`）来自主体 B 的流量；
+
+### Istio 中 mTLS 的过程
+
+mTLS 将经历如下的过程：
+
+1. 客户端请求将 Pod 内的 sidecar 拦截；
+2. 客户端 sidecar 与服务端 sidecar 开始 mTLS 握手。在握手的同时，客户端 sidecar 将进行 secure naming check 的额外操作，对服务端中的 Server Identity (存储在证书中的 SAN 中)进行检查，以确保它能够运行服务。该操作能够防止一些常见 HTTP/TCP 的流量劫持攻击；
+3. 在完成身份认证和授权之后，客户端和服务端开始建立连接进行通信。
 
 ## 如何在 Istio 中为服务开启自动 mTLS？
 
@@ -84,15 +118,8 @@ TLS 终止（TLS Termination）指的是在将 TLS 加密流量传递给 Web 服
 - `DISABLED`：关闭 mTLS，在网格内外都使用纯文本连接
 - `UNSET`：集成父级中的策略设置，如果父级没有设置则默认为 `PERMASSIVE`；
 
-### Istio 中 mTLS 的过程 
-
-mTLS 将经历如下的过程：
-
-1. 客户端请求将 Pod 内的 sidecar 拦截；
-2. 客户端 sidecar 与服务端 sidecar 开始 mTLS 握手。在握手的同时，客户端 sidecar 将进行 secure naming check 的额外操作，对服务端中的 Server Identity (存储在证书中的 SAN 中)进行检查，以确保它能够运行服务。该操作能够防止一些常见 HTTP/TCP 的流量劫持攻击。
-3. 在完成身份认证和授权之后，客户端和服务端开始建立连接进行通信。
-
 ## 参考
 
 - [什么是 TLS（传输层安全性）？- cloudflare.com](https://www.cloudflare.com/zh-cn/learning/ssl/transport-layer-security-tls/)
 - [What happens in a TLS handshake? | SSL handshake - cloudflare.com](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/)
+- [写给 Kubernetes 工程师的 mTLS 指南 - lib.jimmysong.io](https://lib.jimmysong.io/blog/mtls-guide/)
