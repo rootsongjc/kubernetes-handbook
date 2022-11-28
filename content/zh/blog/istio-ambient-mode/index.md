@@ -203,6 +203,18 @@ HBONE 基于 HTTP/2 CONNECT，将工作负载之间的请求以流的形式进�
 
    你将获得请求结果，说明一切运行正常。
 
+10. 清理环境和删除 Istio。
+
+    ```bash
+    kubectl delete -f samples/bookinfo/networking/virtual-service-reviews-90-10.yaml
+    kubectl delete -f samples/bookinfo/networking/destination-rule-reviews.yaml
+    kubectl delete -f samples/bookinfo/platform/kube/bookinfo.yaml
+    kubectl delete -f https://raw.githubusercontent.com/linsun/sample-apps/main/sleep/sleep.yaml
+    kubectl delete -f https://raw.githubusercontent.com/linsun/sample-apps/main/sleep/notsleep.yaml
+    kubectl delete namespace istio-system
+    kubectl label namespace default istio.io/dataplane-mode-   
+    ```
+
 ## 如何开启 Ambient Mesh？{#enable-ambient}
 
 在安装有 Istio 的 Kubernetes 中部署了你的应用之后，如果想要给命名空间 `ns-a` 启用 Ambient Mode，只需要运行：
