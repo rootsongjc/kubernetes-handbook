@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="2524 889 616 350" width="616" height="350">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="2524 889 616 350" width="616" height="350">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
       <g>
@@ -8,7 +8,7 @@
       </g>
     </marker>
   </defs>
-  <g id="Canvas__________" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+  <g id="Canvas__________" fill-opacity="1" fill="none" stroke-opacity="1" stroke="none" stroke-dasharray="none">
     <title>代理类别（透明非透明）</title>
     <rect fill="white" x="2524" y="889" width="616" height="350"/>
     <g id="Canvas___________Layer_1">
@@ -137,12 +137,12 @@
       <g id="Graphic_108">
         <text transform="translate(2898.0667 1000.4812)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="22737368e-20" y="15">SRC IP: C</tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" fill="#0a55a8" x="1.328" y="33.448">DST IP: B</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.328" y="33.448">DST IP: B</tspan>
         </text>
       </g>
       <g id="Graphic_109">
-        <text transform="translate(2685.6514 1000.4812)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">SRC IP: B</tspan>
+        <text transform="translate(2685.6514 1000.4812)" fill="#0a55a8">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="#0a55a8" x="0" y="15">SRC IP: B</tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.328" y="33.448">DST IP: A</tspan>
         </text>
       </g>
@@ -267,13 +267,13 @@
       <g id="Graphic_112">
         <text transform="translate(2898.0667 1179.0638)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="22737368e-20" y="15">SRC IP: C</tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" fill="#0a55a8" x="1.624" y="33.448">DST IP: A</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.328" y="33.448">DST IP: B</tspan>
         </text>
       </g>
       <g id="Graphic_111">
-        <text transform="translate(2685.6514 1179.0638)" fill="black">
-          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">SRC IP: B</tspan>
-          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.328" y="33.448">DST IP: A</tspan>
+        <text transform="translate(2685.3554 1179.0638)" fill="#0a55a8">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="#0a55a8" x="22737368e-20" y="15">SRC IP: C</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.624" y="33.448">DST IP: A</tspan>
         </text>
       </g>
       <g id="Graphic_151">
