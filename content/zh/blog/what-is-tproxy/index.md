@@ -34,7 +34,7 @@ image: "images/banner/tproxy.jpg"
 - 前向代理（Forward Proxy）：运行在客户端侧，代替客户端想服务端发送请求，例如我们日常使用的各种科学上网代理；
 - 反向代理（Reverse Proxy）：代替服务端接受互联网或外部请求，然后将请求路由到对应的服务端，例如各种 Web 服务器，[在这里](https://jimmysong.io/awesome-cloud-native/#proxy)你可以看到一个代理列表；
 
-代理可能与客户端或服务器位于同一节点（或网络空间，如 Kubernetes 中的 Pod），也可以位于远端。另外还可以根据代理对客户端或服务端是否可见（visible）来分为透明代理和非透明代理，如下图所示：
+代理可能与客户端或服务器位于同一节点（或网络空间，如 Kubernetes 中的 Pod），也可以位于远端。另外还可以根据代理对客户端或服务端是否可见（visible）来分为透明代理和非透明代理。下图展示了客户端（A）通过代理（B）向服务端（C）发送请求的过程。
 
 ![非透明代理和透明代理](transparent-proxy.svg)
 
