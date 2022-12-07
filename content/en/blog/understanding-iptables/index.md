@@ -1,12 +1,12 @@
 ---
-title: "Understanding iptables"
+title: "Understanding IPTables"
 description: "This article will give you a brief introduction to iptables, its tables and the order of execution."
 date: 2022-05-12T12:18:40+08:00
 draft: false
 tags: ["iptables"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/iptables.jpg"
+image: "images/banner/iptables-en.jpg"
 aliases: "/en/blog/uderstanding-iptables"
 ---
 

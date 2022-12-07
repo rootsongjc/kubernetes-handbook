@@ -1,5 +1,5 @@
 ---
-title: "Service Mesh - an integral part of cloud-native applications"
+title: "Service Mesh - An Integral Part of Cloud-Native Applications"
 date: 2021-12-12T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","cloud native"]

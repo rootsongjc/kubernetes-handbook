@@ -1,5 +1,5 @@
 ---
-title: "The debate in the community about Istio and service mesh"
+title: "The Debate in the Community About Istio and Service Mesh"
 date: 2021-12-17T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","cloud native"]

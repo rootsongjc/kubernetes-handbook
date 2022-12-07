@@ -1,5 +1,5 @@
 ---
-title: "Multicluster Management with Kubernetes and Istio"
+title: "Multicluster Management With Kubernetes and Istio"
 description: "This article explains three patterns/tools for debugging microservices in Kubernetes and the changes brought by the introduction of Istio for debugging microservices."
 image: "/images/banner/laptop.jpg"
 categories: ["istio"]

@@ -1,5 +1,5 @@
 ---
-title: "The current state and future of the Istio service mesh"
+title: "The Current State and Future of the Istio Service Mesh"
 draft: true
 date: 2022-07-18T12:27:49+08:00
 description: "This article explains the background of Istio's birth, its position in the cloud-native technology stack, and the development direction of Istio."

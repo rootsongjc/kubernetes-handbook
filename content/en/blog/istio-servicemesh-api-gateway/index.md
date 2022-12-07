@@ -1,5 +1,5 @@
 ---
-title: "Using Istio service mesh as API Gateway"
+title: "Using Istio Service Mesh as API Gateway"
 description: "What is the relationship between the service mesh and the API gateway? How does Istio’s gateway work? What are the ways to expose the services in the Istio mesh? This article gives you the answer."
 image: "/images/banner/istio-service-mesh-api-gateway.jpg"
 categories: ["istio"]

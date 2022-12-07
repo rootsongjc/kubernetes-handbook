@@ -1,5 +1,5 @@
 ---
-title: "What's new in Istio 1.13?"
+title: "What's New in Istio 1.13?"
 date: 2022-03-28T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh"]

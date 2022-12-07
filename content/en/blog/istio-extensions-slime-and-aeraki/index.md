@@ -1,5 +1,5 @@
 ---
-title: "Introducing Slime and Aeraki in the evolution of Istio open-source ecosystem"
+title: "Introducing Slime and Aeraki in the Evolution of Istio Open-Source Ecosystem"
 date: 2022-01-10T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","aeraki","slime"]

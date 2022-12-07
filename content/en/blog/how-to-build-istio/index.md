@@ -1,12 +1,12 @@
 ---
-title: "How to build Istio?"
+title: "How to Build Istio?"
 description: "This article will guide you on how to compile the Istio binaries on macOS."
 date: 2022-05-15T14:18:40+08:00
 draft: false
 tags: ["istio"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/build-istio.jpg"
+image: "images/banner/build-istio-en.jpg"
 ---
 
 This article will guide you on how to compile the Istio binaries and Docker images on macOS.

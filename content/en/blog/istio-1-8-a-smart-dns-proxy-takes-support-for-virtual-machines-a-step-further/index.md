@@ -1,5 +1,5 @@
 ---
-title: "Istio 1.8: A Smart DNS Proxy Takes Support for Virtual Machines a Step Further"
+title: "Istio 1.8: A Smart DNS Proxy Takes Support For Virtual Machines A Step Further"
 date: 2020-11-19T16:43:27+08:00
 draft: false
 categories: ["Istio"]

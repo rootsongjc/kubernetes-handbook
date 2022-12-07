@@ -1,9 +1,9 @@
 ---
-title: "Sidecar injection, transparent traffic intercepting, and routing process in Istio explained in detail"
+title: "Understanding the Sidecar Injection, Traffic Intercepting & Routing Process in Istio"
 date: 2022-05-12T21:08:59+08:00
 draft: false
 tags: ["istio","iptables","envoy"]
-description: "This blog describes the sidecar pattern, transparent traffic intercepting and routing."
+description: "Learn the sidecar pattern, transparent traffic intercepting and routing in Istio."
 categories: ["Istio"]
 image: "images/banner/target.jpg"
 type: "post"
