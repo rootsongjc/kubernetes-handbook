@@ -1,5 +1,5 @@
 ---
-title: "Service Mesh in 2021: the ecosystem is emerging"
+title: "Service Mesh in 2021: The Ecosystem Is Emerging"
 date: 2022-01-12T16:43:27+08:00
 draft: false
 tags: ["istio","service mesh","cloud native"]

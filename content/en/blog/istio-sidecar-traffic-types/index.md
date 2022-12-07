@@ -1,5 +1,5 @@
 ---
-title: "Traffic types and iptables rules in Istio sidecar explained"
+title: "Traffic Types and Iptables Rules in Istio Sidecar Explained"
 description: "This article will show you the six traffic types and their iptables rules in Istio sidecar, and take you through the whole diagram in a schematic format."
 date: 2022-05-07T11:18:40+08:00
 draft: false

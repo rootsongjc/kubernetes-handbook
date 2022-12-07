@@ -1,5 +1,5 @@
 ---
-title: "Why would you need SPIRE for authentication with Istio?"
+title: "Why Would You Need Spire for Authentication With Istio?"
 draft: false
 date: 2022-06-29T11:27:49+08:00
 description: "This article explains what SPIRE means for zero-trust architectures and why you would need SPIRE for authentication in Istio."

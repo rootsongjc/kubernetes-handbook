@@ -1,5 +1,5 @@
 ---
-title: "Istio data plane pod startup process explained"
+title: "Istio Data Plane Pod Startup Process Explained"
 description: "This article will explain Istio's Init container, Pod internal processes and the startup process."
 date: 2022-05-12T19:18:40+08:00
 draft: false

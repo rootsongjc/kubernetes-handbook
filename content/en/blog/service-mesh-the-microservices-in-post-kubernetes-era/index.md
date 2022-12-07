@@ -1,5 +1,5 @@
 ---
-title: "Service Mesh - the Microservices in Post Kubernetes Era"
+title: "Service Mesh - The Microservices in Post Kubernetes Era"
 description: "This article is a rework of previously written content and is included in the Istio Handbook of the ServiceMesher community . Other chapters are still being compiled."
 date: 2020-04-01T11:56:04+08:00
 draft: false

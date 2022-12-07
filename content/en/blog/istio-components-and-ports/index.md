@@ -1,5 +1,5 @@
 ---
-title: " Istio component ports and functions in detail"
+title: "Istio Component Ports and Functions in Details"
 description: "This article will introduce you to the various ports and functions of the Istio control plane and data plane."
 date: 2022-05-08T10:18:40+08:00
 draft: false

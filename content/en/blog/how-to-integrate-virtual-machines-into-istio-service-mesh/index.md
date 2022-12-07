@@ -1,5 +1,5 @@
 ---
-title: "How to Integrate Virtual Machines into Istio Service Mesh"
+title: "How to Integrate Virtual Machines Into Istio Service Mesh"
 date: 2020-11-02T16:43:27+08:00
 draft: false
 categories: ["Istio"]
