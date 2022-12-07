@@ -8,10 +8,10 @@
       </g>
     </marker>
   </defs>
-  <g id="Bookinfo___" fill-opacity="1" fill="none" stroke="none" stroke-opacity="1" stroke-dasharray="none">
-    <title>Bookinfo 加耗时</title>
+  <g id="Canvas_6" fill-opacity="1" fill="none" stroke="none" stroke-opacity="1" stroke-dasharray="none">
+    <title>Canvas 6</title>
     <rect fill="white" x="423" y="28" width="445" height="649"/>
-    <g id="Bookinfo____Layer_1">
+    <g id="Canvas_6_Layer_1">
       <title>Layer 1</title>
       <g id="Graphic_48">
         <rect x="423" y="28" width="444.5" height="648.2003" fill="white"/>
@@ -21,7 +21,7 @@
         <rect x="575.25" y="180.09941" width="140" height="130" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_46">
-        <rect x="575.25" y="108.36236" width="140" height="40" fill="#f15623"/>
+        <rect x="575.25" y="108.36236" width="140" height="40" fill="#0a55a8"/>
         <text transform="translate(580.25 118.6303)" fill="white">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="1.304" y="16">Ingress Gateway</tspan>
         </text>
@@ -33,7 +33,7 @@
         </text>
       </g>
       <g id="Graphic_44">
-        <rect x="585.25" y="209.8043" width="120" height="30" fill="#f15623"/>
+        <rect x="585.25" y="209.8043" width="120" height="30" fill="#0a55a8"/>
         <text transform="translate(590.25 215.07223)" fill="white">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="31.872" y="16">Envoy</tspan>
         </text>
@@ -55,7 +55,7 @@
         </text>
       </g>
       <g id="Graphic_39">
-        <rect x="455.875" y="390.8609" width="120" height="30" fill="#f15623"/>
+        <rect x="455.875" y="390.8609" width="120" height="30" fill="#0a55a8"/>
         <text transform="translate(460.875 396.12886)" fill="white">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="31.872" y="16">Envoy</tspan>
         </text>
@@ -71,7 +71,7 @@
         </text>
       </g>
       <g id="Graphic_36">
-        <rect x="712.415" y="390.8609" width="120" height="30" fill="#f15623"/>
+        <rect x="712.415" y="390.8609" width="120" height="30" fill="#0a55a8"/>
         <text transform="translate(717.415 396.12886)" fill="white">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="31.872" y="16">Envoy</tspan>
         </text>
@@ -90,7 +90,7 @@
         </text>
       </g>
       <g id="Graphic_32">
-        <rect x="456.545" y="558.18864" width="120" height="30" fill="#f15623"/>
+        <rect x="456.545" y="558.18864" width="120" height="30" fill="#0a55a8"/>
         <text transform="translate(461.545 563.4566)" fill="white">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="31.872" y="16">Envoy</tspan>
         </text>

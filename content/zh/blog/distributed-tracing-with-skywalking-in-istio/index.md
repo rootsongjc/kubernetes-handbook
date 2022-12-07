@@ -1,12 +1,12 @@
 ---
 title: "如何在 Istio 中使用 SkyWalking 进行分布式追踪？"
 description: "这篇文章将介绍一些关于分布式追踪的基础知识以及如何在 Istio 中使用分布式追踪。"
-date: 2022-11-29T11:09:40+08:00
-draft: true
+date: 2022-12-07T11:09:40+08:00
+draft: false
 tags: ["分布式追踪","可观测性","Istio","服务网格"]
 categories: ["Istio"]
 type: "post"
-image: "images/banner/tproxy.jpg"
+image: "images/banner/tracing.jpg"
 ---
 
 在云原生应用中，一次请求往往需要经过一系列的 API 或后台服务处理才能完成，这些服务有些是并行的，有些是串行的，而且位于不同的平台或节点。那么如何确定一次调用的经过的服务路径和节点以帮助我们进行问题排查？这时候就需要使用到分布式追踪。
@@ -22,13 +22,13 @@ image: "images/banner/tproxy.jpg"
 
 分布式追踪是一种用来跟踪分布式系统中请求的方法，它可以帮助用户更好地理解、控制和优化分布式系统。分布式追踪中用到了两个概念：TraceID 和 SpanID。
 
-- TraceID 是一个全局唯一的 ID，用来标识一个请求的追踪信息。一个请求的所有追踪信息都属于同一个 TraceID，TraceID 在整个请求的追踪过程中都是不变的。
+- TraceID 是一个全局唯一的 ID，用来标识一个请求的追踪信息。一个请求的所有追踪信息都属于同一个 TraceID，TraceID 在整个请求的追踪过程中都是不变的；
 
-- SpanID 是一个局部唯一的 ID，用来标识一个请求在某一时刻的追踪信息。一个请求在不同的时间段会产生不同的 SpanID，SpanID 用来区分一个请求在不同时间段的追踪信息。
+- SpanID 是一个局部唯一的 ID，用来标识一个请求在某一时刻的追踪信息。一个请求在不同的时间段会产生不同的 SpanID，SpanID 用来区分一个请求在不同时间段的追踪信息；
 
 TraceID 和 SpanID 是分布式追踪的基础，它们为分布式系统中请求的追踪提供了一个统一的标识，方便用户查询、管理和分析请求的追踪信息。
 
-![分布式追踪原理图](tracing-arch.svg)
+![分布式追踪原理图](basic.svg)
 
 下面是分布式追踪的过程：
 
@@ -37,10 +37,85 @@ TraceID 和 SpanID 是分布式追踪的基础，它们为分布式系统中请�
 3. 每个服务调用过程中都要传递 TraceID 和 SpanID；
 4. 在查看分布式追踪时，通过 TraceID 查询某次请求的全过程；
 
+## Istio 如何实现分布式追踪 {#distributed-tracing-in-istio}
+
+Istio 中的分布式追踪是基于数据平面中的 Envoy 代理实现的。服务请求在被劫持到 Envoy 中后，Envoy 在转发请求时会附加大量 Header，其中与分布式追踪相关的有：
+
+- 作为 TraceID：`x-request-id`：
+- 用于在 LightStep 追踪系统中建立 Span 的父子关系：`x-ot-span-context`：
+- 用于 Zipkin，同时适用于 Jaeger、SkyWalking，详见 [b3-propagation](https://github.com/openzipkin/b3-propagation)：
+  - `x-b3-traceid`
+  - `x-b3-spanid`
+  - `x-b3-parentspanid`
+  - `x-b3-sampled`
+  - `x-b3-flags`
+  - `b3`
+- 用于 Datadog：
+  - `x-datadog-trace-id`
+  - `x-datadog-parent-id`
+  - `x-datadog-sampling-priority`
+- 用于 SkyWalking：`sw8`
+- 用于 AWS X-Ray：`x-amzn-trace-id`
+
+关于这些 Header 的详细用法请参考 [Envoy 文档](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers)。
+
+不论你的应用程序使用何种语言开发，Envoy 都会自动为你传播这些 Header，但是你还要对应用程序代码做一些小的修改，才能为应用添加分布式追踪功能。这是因为应用程序无法自动传播这些 Header，可以在程序中集成分布式追踪的 Agent，或者在代码中手动传播这些 Header。Envoy 会将追踪数据发送到 tracer 后端处理，然后就可以在 UI 中查看追踪数据了。
+
+例如在 Bookinfo 应用中的 Productpage 服务，如果你查看它的代码可以发现，其中集成了 Jeager 客户端库，并在 `getForwardHeaders (request)` 方法中将 Envoy 生成的 Header 同步给对 Details 和 Reviews 服务的 HTTP 请求：
+
+```python
+def getForwardHeaders(request):
+    headers = {}
+
+    # 使用 Jeager agent 获取 x-b3-** header
+    span = get_current_span()
+    carrier = {}
+    tracer.inject(
+        span_context=span.context,
+        format=Format.HTTP_HEADERS,
+        carrier=carrier)
+
+    headers.update(carrier)
+
+    # 手动处理非 x-b3-* header
+    if 'user' in session:
+        headers['end-user'] = session['user']
+    incoming_headers = [
+        'x-request-id',
+        'x-ot-span-context',
+        'x-datadog-trace-id',
+        'x-datadog-parent-id',
+        'x-datadog-sampling-priority',
+        'traceparent',
+        'tracestate',
+        'x-cloud-trace-context',
+        'grpc-trace-bin',
+        'sw8',
+        'user-agent',
+        'cookie',
+        'authorization',
+        'jwt',
+    ]
+
+    for ihdr in incoming_headers:
+        val = request.headers.get(ihdr)
+        if val is not None:
+            headers[ihdr] = val
+
+    return headers
+```
+
+关于 Istio 中分布式追踪的常见问题请见 [Istio 文档](https://istio.io/latest/zh/about/faq/#distributed-tracing)。
+
 ## 分布式追踪系统如何选择 {#how-to-choose-a-distributed-tracing-system}
 
-分布式追踪系统的原理类似，市面上也有很多这样的系统，例如 [Apache SkyWalking](https://github.com/apache/skywalking)、[Jaeger](https://github.com/jaegertracing/jaeger)、[Zipkin](https://github.com/openzipkin/zipkin/)、Lightstep、Pinpoint 等。下面我们选择三个常用的基于 OpenTracing 规范的开源分布式追踪系统，从多个维度对比，可供您参考选型。
+分布式追踪系统的原理类似，市面上也有很多这样的系统，例如 [Apache SkyWalking](https://github.com/apache/skywalking)、[Jaeger](https://github.com/jaegertracing/jaeger)、[Zipkin](https://github.com/openzipkin/zipkin/)、Lightstep、Pinpoint 等。我们将选择其中三个，从多个维度进行对比。之所以选择它们是因为：
 
+- 它们是当前最流行的开源分布式追踪系统；
+- 都是基于 OpenTracing 规范；
+- 都支持与 Istio 及 Envoy 集成；
+
+{{<table "分布式追踪系统对比表（数据截止时间 2022-12-07）">}}
 | 类别      | Apache SkyWalking                                            | Jaeger                                       | Zipkin                                       |
 | --------- | ------------------------------------------------------------ | -------------------------------------------- | -------------------------------------------- |
 | 实现方式  | 基于语言的探针、服务网格探针、eBPF agent、第三方指标库（当前支持 Zipkin） | 基于语言的探针                               | 基于语言的探针                               |
@@ -51,38 +126,9 @@ TraceID 和 SpanID 是分布式追踪的基础，它们为分布式系统中请�
 | 版本      | 9.3.0                                                        | 1.39.0                                       | 2.23.19                                      |
 | Star 数量 | 20.9k                                                        | 16.8k                                        | 15.8k                                        |
 
-虽然 Agent 支持的语言没有 Jaeger 和 Zipkin，但是 SkyWalking 的实现方式更丰富，并且与 Jeager、Zipkin 的追踪数据兼容，开发更为活跃，且为国人开发，中文资料丰富，是构建遥测平台的最佳选择之一。
+{{</table>}}
 
-## Istio 中的分布式追踪
-
-![](https://tva1.sinaimg.cn/large/008vxvgGgy1h8myecwfs5j30i30ae75t.jpg)
-
-参考：https://piotrminkowski.com/2022/01/31/distributed-tracing-with-istio-quarkus-and-jaeger/
-
-## 各个服务访问时的 header
-
-productpage 
-
-```
-HTTP/1.1 200 OK
-content-type: application/json
-content-length: 395
-server: istio-envoy
-date: Thu, 01 Dec 2022 03:18:14 GMT
-x-envoy-upstream-service-time: 4
-```
-
-所有的应用都会传播 `x-request-id` 这个 header。
-
-![image-20221201141743161](https://tva1.sinaimg.cn/large/008vxvgGgy1h8oabfmif6j31gk0u0the.jpg)
-
-x-envoy-upstream-service-time 是一个 HTTP Header，它表示从客户端发起请求到服务端响应完成，经过 Envoy 代理服务器的处理时间。这个 HTTP Header 的值是一个以毫秒为单位的时间戳，表示 Envoy 代理服务器处理该请求所花费的时间。
-
-通常情况下，这个 HTTP Header 用于监控系统中，可以帮助监控人员了解 Envoy 代理服务器的性能情况。例如，可以通过统计 x-envoy-upstream-service-time 的值来判断 Envoy 代理服务器是否工作正常，如果值过大，则可能表示 Envoy 代理服务器出现了问题，需要进行相应的调整和优化。
-
-在 Istio 服务网格中，不论你的应用程序使用何种语言开发，要想为应用添加分布式追踪功能，只需要对应用程序做一点很小的改动。Istio 会为请求自动 Trace 和 Span，你需要在应用程序中传播 HTTP Header 将这些 Span 关联到一个 Trace 中。应用程序需要收集和传播从传入请求到任何传出请求的头信息。要传播的头信息的选择由使用的跟踪配置决定。参见 getForwardHeaders 以了解不同的头信息选项。
-
-这个示例代码使用 OpenTracing（http://opentracing.io/ ）来传播’b3’（zipkin）头信息。为此使用 OpenTracing 并不是必须的。使用 OpenTracing 可以让你在以后添加特定于应用程序的跟踪，但如果你愿意，你可以直接手动转发头信息。
+虽然 Apache SkyWalking 的 Agent 支持的语言没有 Jaeger 和 Zipkin 多，但是 SkyWalking 的实现方式更丰富，并且与 Jeager、Zipkin 的追踪数据兼容，开发更为活跃，且为国人开发，中文资料丰富，是构建遥测平台的最佳选择之一。
 
 ## 实验 {#demo}
 
@@ -140,12 +186,12 @@ Istio 1.16 支持使用 Apache SkyWalking 进行分布式追踪，执行下面�
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.16/samples/addons/extras/skywalking.yaml
 ```
 
-它将在 `istio-system` 命名空间下安装 SkyWalking OAP (Observability Analysis Platform) 和 UI 组件。
+它将在 `istio-system` 命名空间下安装：
 
-我们在前面将 SkyWalking 设置为追踪的OAP 从多种数据源接收数据，这些数据分为两大类，**链路追踪**和**度量指标**.
+- [SkyWalking OAP](https://skywalking.apache.org/docs/main/v9.3.0/en/concepts-and-designs/backend-overview/) (Observability Analysis Platform) ：用于接收追踪数据，支持 SkyWalking 原生数据格式，Zipkin v1 和 v2 以及 Jaeger 格式。
+- [UI](https://skywalking.apache.org/docs/main/v9.3.0/en/ui/readme/)：用于查询分布式追踪数据。
 
-- **链路追踪**. 包括 SkyWalking 原生数据格式，Zipkin V1 和 V2 数据格式，以及 Jaeger 数据格式.
-- **度量指标**. SkyWalking 集成了服务网格平台，如 Istio, Envoy 和 Linkerd, 并在数据面板和控制面板进行观测. 此外，SkyWalking 原生代理还可以运行在度量模式，这极大提升了性能.
+关于 SkyWalking 的详细信息请参考 [SkyWalking 文档](https://skywalking.apache.org/docs/main/v9.3.0/readme/)。
 
 ### 部署 Bookinfo 应用 {#install-bookinfo}
 
@@ -249,10 +295,9 @@ kubectl delete namespace istio-system
 
 ## 总结 {#summary}
 
-Apache SkyWalking 是一个完备的可观测性系统，它不仅支持分布式追踪，还支持指标和日志收集、报警、Kubernetes 和服务网格监控，[使用 eBPF 诊断服务网格性能](https://skywalking.apache.org/zh/diagnose-service-mesh-network-performance-with-ebpf/)等功能。
-
-另外，在生产使用时请根据需要调整采样策略（采样百分比），防止产生过多的追踪日志。
+只要对应用代码稍作修改就可以在 Istio 很方便的使用分布式追踪功能。在 Istio 支持的众多分布式追踪系统中，[Apache SkyWalking](https://skywalking.apache.org/) 是其中的佼佼者。它不仅支持分布式追踪，还支持指标和日志收集、报警、Kubernetes 和服务网格监控，[使用 eBPF 诊断服务网格性能](https://skywalking.apache.org/zh/diagnose-service-mesh-network-performance-with-ebpf/)等功能，是一个功能完备的云原生应用分析平台。本文中为了方便演示，将追踪采样率设置为了 100%，在生产使用时请根据需要调整采样策略（采样百分比），防止产生过多的追踪日志。
 
 ## 参考 {#reference}
 
 - [Istio 分布式追踪概览 - istio.io](https://istio.io/latest/zh/docs/tasks/observability/distributed-tracing/overview/)
+- [Istio 分布式追踪 FAQ - istio.io](https://istio.io/latest/zh/about/faq/#distributed-tracing)
