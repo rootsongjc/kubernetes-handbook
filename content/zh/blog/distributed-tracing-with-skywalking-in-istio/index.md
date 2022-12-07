@@ -3,7 +3,7 @@ title: "如何在 Istio 中使用 SkyWalking 进行分布式追踪？"
 description: "这篇文章将介绍一些关于分布式追踪的基础知识以及如何在 Istio 中使用分布式追踪。"
 date: 2022-12-07T11:09:40+08:00
 draft: false
-tags: ["分布式追踪","可观测性","Istio","服务网格"]
+tags: ["分布式追踪","可观测性","Istio","服务网格","SkyWalking"]
 categories: ["Istio"]
 type: "post"
 image: "images/banner/tracing.jpg"
