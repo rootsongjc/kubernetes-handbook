@@ -59,7 +59,7 @@ Istio 中的分布式追踪是基于数据平面中的 Envoy 代理实现的。�
 
 关于这些 Header 的详细用法请参考 [Envoy 文档](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers)。
 
-不论你的应用程序使用何种语言开发，Envoy 都会自动为你传播这些 Header，但是你还要对应用程序代码做一些小的修改，才能为应用添加分布式追踪功能。这是因为应用程序无法自动传播这些 Header，可以在程序中集成分布式追踪的 Agent，或者在代码中手动传播这些 Header。Envoy 会将追踪数据发送到 tracer 后端处理，然后就可以在 UI 中查看追踪数据了。
+Envoy 会在 Ingress Gateway 中为你产生用于追踪的 Header，不论你的应用程序使用何种语言开发，Envoy 都会将这些 Header 转发到上游集群。但是，你还要对应用程序代码做一些小的修改，才能为使用分布式追踪功能。这是因为应用程序无法自动传播这些 Header，可以在程序中集成分布式追踪的 Agent，或者在代码中手动传播这些 Header。Envoy 会将追踪数据发送到 tracer 后端处理，然后就可以在 UI 中查看追踪数据了。
 
 例如在 Bookinfo 应用中的 Productpage 服务，如果你查看它的代码可以发现，其中集成了 Jaeger 客户端库，并在 `getForwardHeaders (request)` 方法中将 Envoy 生成的 Header 同步给对 Details 和 Reviews 服务的 HTTP 请求：
 
@@ -109,7 +109,7 @@ def getForwardHeaders(request):
 
 ## 分布式追踪系统如何选择 {#how-to-choose-a-distributed-tracing-system}
 
-分布式追踪系统的原理类似，市面上也有很多这样的系统，例如 [Apache SkyWalking](https://github.com/apache/skywalking)、[Jaeger](https://github.com/jaegertracing/jaeger)、[Zipkin](https://github.com/openzipkin/zipkin/)、Lightstep、Pinpoint 等。我们将选择其中三个，从多个维度进行对比。之所以选择它们是因为：
+分布式追踪系统的原理类似，市面上也有很多这样的系统，例如 [Apache SkyWalking](https://github.com/apache/skywalking)、[Jaeger](https://github.com/jaegertracing/jaeger)、[Zipkin](https://github.com/openzipkin/zipkin/)、[LightStep](https://lightstep.com/)、[Pinpoint](https://github.com/pinpoint-apm/pinpoint) 等。我们将选择其中三个，从多个维度进行对比。之所以选择它们是因为：
 
 - 它们是当前最流行的开源分布式追踪系统；
 - 都是基于 OpenTracing 规范；
@@ -203,7 +203,7 @@ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 ```
 
-查看网关 IP，并访问 Productpage 服务访问端点，然后打开 SkyWalking UI：
+打开 SkyWalking UI：
 
 ```bash
 istioctl dashboard skywalking
