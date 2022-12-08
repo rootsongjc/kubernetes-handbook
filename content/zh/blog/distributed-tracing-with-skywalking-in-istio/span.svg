@@ -56,9 +56,9 @@
         <line x1="1183.705" y1="143.5" x2="1325.51" y2="143.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_23">
-        <rect x="943.8234" y="128.76794" width="42.03825" height="29.46411" fill="white"/>
-        <rect x="943.8234" y="128.76794" width="42.03825" height="29.46411" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(948.8234 135.82596)" fill="black">
+        <path d="M 943.8234 128.76794 L 985.8616 128.76794 L 985.8616 152.33923 C 973.2502 149.39282 956.4349 161.17847 943.8234 155.28564 Z" fill="white"/>
+        <path d="M 943.8234 128.76794 L 985.8616 128.76794 L 985.8616 152.33923 C 973.2502 149.39282 956.4349 161.17847 943.8234 155.28564 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(948.8234 134.35275)" fill="black">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="1.457125" y="12">Span</tspan>
         </text>
       </g>
@@ -81,23 +81,23 @@
         </text>
       </g>
       <g id="Graphic_31">
-        <rect x="1068.3579" y="181.09268" width="42.03825" height="29.46411" fill="white"/>
-        <rect x="1068.3579" y="181.09268" width="42.03825" height="29.46411" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(1073.3579 188.1507)" fill="black">
+        <path d="M 1068.3579 181.09268 L 1110.3961 181.09268 L 1110.3961 204.66397 C 1097.7847 201.71756 1080.9693 213.5032 1068.3579 207.61038 Z" fill="white"/>
+        <path d="M 1068.3579 181.09268 L 1110.3961 181.09268 L 1110.3961 204.66397 C 1097.7847 201.71756 1080.9693 213.5032 1068.3579 207.61038 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1073.3579 186.67749)" fill="black">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="1.457125" y="12">Span</tspan>
         </text>
       </g>
       <g id="Graphic_32">
-        <rect x="1134.4359" y="181.1825" width="42.03825" height="29.46411" fill="white"/>
-        <rect x="1134.4359" y="181.1825" width="42.03825" height="29.46411" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(1139.4359 188.24052)" fill="black">
+        <path d="M 1134.4359 181.1825 L 1176.4741 181.1825 L 1176.4741 204.7538 C 1163.8627 201.80739 1147.0473 213.59303 1134.4359 207.7002 Z" fill="white"/>
+        <path d="M 1134.4359 181.1825 L 1176.4741 181.1825 L 1176.4741 204.7538 C 1163.8627 201.80739 1147.0473 213.59303 1134.4359 207.7002 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1139.4359 186.76732)" fill="black">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="1.457125" y="12">Span</tspan>
         </text>
       </g>
       <g id="Graphic_33">
-        <rect x="1258.3616" y="128.76794" width="42.03825" height="29.46411" fill="white"/>
-        <rect x="1258.3616" y="128.76794" width="42.03825" height="29.46411" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(1263.3616 135.82596)" fill="black">
+        <path d="M 1258.3616 128.76794 L 1300.3999 128.76794 L 1300.3999 152.33923 C 1287.7884 149.39282 1270.9731 161.17847 1258.3616 155.28564 Z" fill="white"/>
+        <path d="M 1258.3616 128.76794 L 1300.3999 128.76794 L 1300.3999 152.33923 C 1287.7884 149.39282 1270.9731 161.17847 1258.3616 155.28564 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1263.3616 134.35275)" fill="black">
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="1.457125" y="12">Span</tspan>
         </text>
       </g>
