@@ -15,7 +15,7 @@ Istio 服务网格可以帮助云原生应用实现自动 mTLS，完成网格内
 - 介绍什么是 TLS、mTLS 和 TLS 终止
 - 介绍 Istio 中如何实现 TLS 加密
 - 如何使用 Istio 为 Kubernetes 中的服务实现 mTLS？
-- 何时需要 mTLS？合适不需要 mTLS？
+- 何时需要 mTLS？何时不需要 mTLS？
 
 ## 什么是 TLS 和 mTLS？{#what-is-tls-and-mtls}
 
