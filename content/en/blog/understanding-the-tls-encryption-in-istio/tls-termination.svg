@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="1008 808 645 181" width="645" height="181">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="TLS__-1" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+    <title>TLS 终止</title>
+    <rect fill="white" x="1008" y="808" width="645" height="181"/>
+    <g id="TLS__-1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_26">
+        <rect x="1008" y="808.5" width="644.5" height="180.5" fill="white"/>
+      </g>
+      <g id="Graphic_2">
+        <path d="M 1231.6139 831 L 1633.114 831 C 1637.5322 831 1641.114 834.5817 1641.114 839 L 1641.114 967 C 1641.114 971.4183 1637.5322 975 1633.114 975 L 1231.6139 975 C 1227.1956 975 1223.6139 971.4183 1223.6139 967 L 1223.6139 839 C 1223.6139 834.5817 1227.1956 831 1231.6139 831 Z" fill="white"/>
+        <path d="M 1231.6139 831 L 1633.114 831 C 1637.5322 831 1641.114 834.5817 1641.114 839 L 1641.114 967 C 1641.114 971.4183 1637.5322 975 1633.114 975 L 1231.6139 975 C 1227.1956 975 1223.6139 971.4183 1223.6139 967 L 1223.6139 839 C 1223.6139 834.5817 1227.1956 831 1231.6139 831 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1228.6139 836)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="142.414" y="16">Private Network</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="1478" y="880.5" width="147" height="75.5" fill="#0a55a8"/>
+        <rect x="1478" y="880.5" width="147" height="75.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1483 908.5179)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="17.1" y="16">Web Services</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="1204" y="880.5" width="147" height="75.5" fill="#0a55a8"/>
+        <rect x="1204" y="880.5" width="147" height="75.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1209 898.7859)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="4.804" y="16">Ingress Gateway</tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="6.588" y="35.46411">TLS Termination</tspan>
+        </text>
+      </g>
+      <g id="Group_6">
+        <g id="Graphic_8">
+          <path d="M 1077.514 936.639 L 1067.961 931.863 C 1067.06 931.412 1066.5 930.506 1066.5 929.498 L 1066.5 926.117 C 1066.729 925.837 1066.97 925.518 1067.219 925.166 C 1068.458 923.416 1069.451 921.468 1070.173 919.367 C 1071.584 918.72 1072.5 917.325 1072.5 915.75 L 1072.5 911.75 C 1072.5 910.787 1072.14 909.854 1071.5 909.125 L 1071.5 903.806 C 1071.556 903.256 1071.776 899.982 1069.408 897.281 C 1067.354 894.938 1064.021 893.75 1059.5 893.75 C 1054.979 893.75 1051.646 894.938 1049.592 897.28 C 1047.224 899.981 1047.444 903.256 1047.5 903.805 L 1047.5 909.124 C 1046.86 909.853 1046.5 910.786 1046.5 911.749 L 1046.5 915.749 C 1046.5 916.966 1047.053 918.101 1047.997 918.858 C 1048.913 922.485 1050.83 925.218 1051.5 926.095 L 1051.5 929.404 C 1051.5 930.372 1050.972 931.26 1050.123 931.724 L 1041.202 936.59 C 1038.302 938.172 1036.501 941.206 1036.501 944.51 L 1036.501 948.75 L 1082.501 948.75 L 1082.501 944.707 C 1082.5 941.269 1080.589 938.177 1077.514 936.639 Z" fill="black"/>
+        </g>
+        <g id="Graphic_7">
+          <path d="M 1040.483 935.275 L 1049.404 930.409 C 1049.771 930.208 1050 929.823 1050 929.405 L 1050 926.591 C 1049.115 925.359 1047.554 922.879 1046.663 919.681 C 1045.6 918.649 1045 917.244 1045 915.75 L 1045 911.75 C 1045 910.626 1045.352 909.531 1046 908.609 L 1046 903.876 C 1045.966 903.493 1045.926 902.607 1046.096 901.481 C 1044.719 901.001 1043.187 900.75 1041.5 900.75 C 1031.111 900.75 1030.506 909.605 1030.5 909.75 L 1030.5 914.329 C 1029.852 915.035 1029.5 915.85 1029.5 916.659 L 1029.5 920.113 C 1029.5 921.192 1029.983 922.198 1030.811 922.878 C 1031.636 925.988 1033.665 928.338 1034.455 929.163 L 1034.455 931.906 C 1034.455 932.693 1034.027 933.415 1033.284 933.821 L 1026.631 937.994 C 1024.083 939.384 1022.5 942.051 1022.5 944.953 L 1022.5 948.75 L 1035 948.75 L 1035 944.512 C 1035 940.659 1037.101 937.12 1040.483 935.275 Z" fill="black"/>
+        </g>
+      </g>
+      <g id="Graphic_9"/>
+      <g id="Graphic_10"/>
+      <g id="Graphic_12"/>
+      <g id="Graphic_11"/>
+      <g id="Line_13">
+        <line x1="1372.75" y1="903" x2="1443.35" y2="903" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_14">
+        <line x1="1456.25" y1="933.5" x2="1385.65" y2="933.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_15">
+        <text transform="translate(1393.46 908.5179)" fill="black">
+          <tspan font-family="Helvetica Neue" font-style="italic" font-weight="bold" font-size="16" fill="black" x="8739676e-19" y="16">HTTP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22"/>
+      <g id="Graphic_21"/>
+      <g id="Graphic_20"/>
+      <g id="Graphic_19"/>
+      <g id="Line_18">
+        <line x1="1089.5" y1="906" x2="1169.35" y2="906" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_17">
+        <line x1="1182.25" y1="936.5" x2="1102.4" y2="936.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(1114.276 911.5179)" fill="black">
+          <tspan font-family="Helvetica Neue" font-style="italic" font-weight="bold" font-size="16" fill="black" x="15987212e-20" y="16">HTTPS</tspan>
+        </text>
+      </g>
+      <g id="Group_23">
+        <title>XMLID_504_</title>
+        <g id="Graphic_24">
+          <title>XMLID_505_</title>
+          <path d="M 1097.4977 930.416 L 1108.4543 930.416 C 1108.9081 930.416 1109.276 930.0429 1109.276 929.5827 L 1109.276 920.139 C 1109.276 919.6788 1108.9081 919.3057 1108.4543 919.3057 L 1107.6325 919.3057 L 1107.6325 916.8059 C 1107.6325 914.2022 1105.5436 912.084 1102.976 912.084 C 1100.4084 912.084 1098.3195 914.2022 1098.3195 916.8059 L 1098.3195 919.3057 L 1097.4977 919.3057 C 1097.0439 919.3057 1096.676 919.6788 1096.676 920.139 L 1096.676 929.5827 C 1096.676 930.0429 1097.0439 930.416 1097.4977 930.416 Z M 1105.3032 924.2696 L 1102.975 926.6305 C 1102.8145 926.7932 1102.6042 926.8746 1102.3939 926.8746 C 1102.1837 926.8746 1101.9733 926.7932 1101.8129 926.6305 L 1100.6488 925.45 C 1100.3279 925.1246 1100.3279 924.5971 1100.6488 924.2716 C 1100.9696 923.9462 1101.49 923.9462 1101.8109 924.2716 L 1102.394 924.8628 L 1104.1412 923.0911 C 1104.4621 922.7657 1104.9824 922.7657 1105.3033 923.0911 C 1105.6242 923.4166 1105.6242 923.9441 1105.3032 924.2696 Z M 1099.963 916.8059 C 1099.963 915.1212 1101.3146 913.7505 1102.976 913.7505 C 1104.6374 913.7505 1105.989 915.1212 1105.989 916.8059 L 1105.989 919.3057 L 1099.963 919.3057 Z" fill="black"/>
+        </g>
+      </g>
+      <g id="Graphic_25">
+        <text transform="translate(1106.884 872)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="7105427e-20" y="16">Internet</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

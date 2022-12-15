@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="347 223 561 375" width="561" height="375">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="TLS__" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1" fill="none">
+    <title>TLS 原理</title>
+    <rect fill="white" x="347" y="223" width="561" height="375"/>
+    <g id="TLS___Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_47">
+        <rect x="347.5" y="223.0205" width="559.8509" height="374.959" fill="white"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="357.5" y="432.5" width="90" height="150" fill="#0a55a8"/>
+        <rect x="357.5" y="432.5" width="90" height="150" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(362.5 497.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="17.792" y="16">Client</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="807.5" y="432.5" width="90" height="150" fill="#0a55a8"/>
+        <rect x="807.5" y="432.5" width="90" height="150" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(812.5 497.76794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="15.24" y="16">Server</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <path d="M 554.67546 294.4 L 554.67546 245.6 C 554.67546 242.2328 587.26746 239.5 627.42546 239.5 C 667.58346 239.5 700.17546 242.2328 700.17546 245.6 L 700.17546 294.4 C 700.17546 297.7672 667.58346 300.5 627.42546 300.5 C 587.26746 300.5 554.67546 297.7672 554.67546 294.4" fill="#0a55a8"/>
+        <path d="M 554.67546 294.4 L 554.67546 245.6 C 554.67546 242.2328 587.26746 239.5 627.42546 239.5 C 667.58346 239.5 700.17546 242.2328 700.17546 245.6 L 700.17546 294.4 C 700.17546 297.7672 667.58346 300.5 627.42546 300.5 C 587.26746 300.5 554.67546 297.7672 554.67546 294.4 M 554.67546 245.6 C 554.67546 248.9672 587.26746 251.7 627.42546 251.7 C 667.58346 251.7 700.17546 248.9672 700.17546 245.6" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(559.67546 263.31794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="25.518" y="16">Trusted CA</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="807.5" y1="460.01573" x2="662.6805" y2="307.20134" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_7">
+        <line x1="447.5" y1="469.5" x2="797.6" y2="469.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9"/>
+      <g id="Graphic_10"/>
+      <g id="Graphic_12"/>
+      <g id="Graphic_11"/>
+      <g id="Graphic_14"/>
+      <g id="Graphic_13"/>
+      <g id="Line_15">
+        <line x1="807.5" y1="512.28363" x2="457.39995" y2="513.3541" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_16">
+        <line x1="447.5" y1="555" x2="797.6" y2="555" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_17">
+        <line x1="447.5" y1="459.98426" x2="592.191" y2="307.20424" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_24">
+        <rect x="634.6418" y="355.75082" width="175.056" height="28.447998" fill="white"/>
+        <text transform="translate(639.6418 360.75082)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="24158453e-20" y="15">1. Request a certificate</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="537.49494" y="455.276" width="168.272" height="28.447998" fill="white"/>
+        <text transform="translate(542.49494 460.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="42632564e-20" y="15">2. Request to connect</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <rect x="529.9796" y="498.6481" width="170.13818" height="28.447998" fill="white"/>
+        <text transform="translate(534.9796 503.6481)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="3.909092" y="15">3. Sent the certificate</tspan>
+        </text>
+      </g>
+      <g id="Group_48">
+        <g id="Graphic_35">
+          <rect x="745.345" y="399.5" width="22" height="22" fill="white"/>
+        </g>
+        <g id="Group_31">
+          <g id="Group_32">
+            <g id="Graphic_34">
+              <path d="M 764.6797 416.4642 L 761.4593 416.4642 L 761.4593 413.3171 C 762.0757 412.6191 762.4471 411.7129 762.4471 410.721 C 762.4471 408.53313 760.6348 406.7575 758.4063 406.7575 C 756.1777 406.7575 754.36545 408.5372 754.36545 410.721 C 754.36545 411.7129 754.7369 412.6191 755.3532 413.3171 L 755.3532 416.4642 L 748.01035 416.4642 L 748.01035 402.1654 L 764.6757 402.1654 L 764.6757 416.4642 Z M 758.4063 416.8765 L 757.0308 417.9337 L 757.0308 414.45185 C 757.4593 414.6029 757.9246 414.6886 758.4063 414.6886 C 758.8879 414.6886 759.3532 414.60696 759.7818 414.45185 L 759.7818 417.9337 Z M 758.4063 413.0232 C 757.0961 413.0232 756.0308 411.9905 756.0308 410.721 C 756.0308 409.45155 757.0961 408.41884 758.4063 408.41884 C 759.7165 408.41884 760.7818 409.45155 760.7818 410.721 C 760.7818 411.9905 759.7165 413.0232 758.4063 413.0232 Z M 765.5124 400.5 L 747.1777 400.5 C 746.7165 400.5 746.345 400.87145 746.345 401.3327 L 746.345 417.2969 C 746.345 417.75817 746.7165 418.1296 747.1777 418.1296 L 755.3532 418.1296 L 755.3532 419.6848 C 755.3532 420.3583 756.1287 420.742 756.6634 420.32975 L 758.4063 418.9909 L 760.1491 420.32975 C 760.6838 420.742 761.4593 420.3583 761.4593 419.6848 L 761.4593 418.1296 L 765.5124 418.1296 C 765.9736 418.1296 766.345 417.75817 766.345 417.2969 L 766.345 401.3327 C 766.345 400.87145 765.9736 400.5 765.5124 400.5 Z" fill="black"/>
+            </g>
+            <g id="Graphic_33">
+              <path d="M 752.0634 405.96563 L 760.6226 405.96563 C 761.0838 405.96563 761.45525 405.5942 761.45525 405.13293 C 761.45525 404.6717 761.0838 404.30023 760.6226 404.30023 L 752.0634 404.30023 C 751.6022 404.30023 751.2308 404.6717 751.2308 405.13293 C 751.2308 405.5901 751.6063 405.96563 752.0634 405.96563 Z" fill="black"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Graphic_43">
+        <rect x="438.3873" y="357.32683" width="185.728" height="28.447998" fill="white"/>
+        <text transform="translate(443.3873 362.32683)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">4. Validate the certificate</tspan>
+        </text>
+      </g>
+      <g id="Graphic_44">
+        <rect x="548.70724" y="540.776" width="145.776" height="28.447998" fill="white"/>
+        <text transform="translate(553.70724 545.776)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="8242296e-19" y="15">5. Encrypted traffic</tspan>
+        </text>
+      </g>
+      <g id="Group_45">
+        <title>XMLID_504_</title>
+        <g id="Graphic_46">
+          <title>XMLID_505_</title>
+          <path d="M 714.8217 562.5 L 725.7783 562.5 C 726.2321 562.5 726.6 562.1269 726.6 561.6667 L 726.6 552.223 C 726.6 551.7628 726.2321 551.3897 725.7783 551.3897 L 724.9565 551.3897 L 724.9565 548.8899 C 724.9565 546.28623 722.8676 544.168 720.3 544.168 C 717.7324 544.168 715.6435 546.28623 715.6435 548.8899 L 715.6435 551.3897 L 714.8217 551.3897 C 714.3679 551.3897 714 551.7628 714 552.223 L 714 561.6667 C 714 562.1269 714.3679 562.5 714.8217 562.5 Z M 722.6272 556.35356 L 720.299 558.7145 C 720.1385 558.8772 719.9282 558.9586 719.7179 558.9586 C 719.5077 558.9586 719.2973 558.8772 719.1369 558.7145 L 717.9728 557.534 C 717.6519 557.2086 717.6519 556.6811 717.9728 556.3556 C 718.29364 556.0302 718.814 556.0302 719.1349 556.3556 L 719.718 556.94685 L 721.4652 555.17514 C 721.7861 554.8497 722.3064 554.8497 722.6273 555.17514 C 722.9482 555.5006 722.9482 556.02814 722.6272 556.35356 Z M 717.287 548.8899 C 717.287 547.20517 718.6386 545.83454 720.3 545.83454 C 721.9614 545.83454 723.31305 547.20517 723.31305 548.8899 L 723.31305 551.3897 L 717.287 551.3897 Z" fill="black"/>
+        </g>
+      </g>
+      <g id="Group_50">
+        <g id="Graphic_55">
+          <rect x="709.3" y="501.25" width="22" height="22" fill="white"/>
+        </g>
+        <g id="Group_51">
+          <g id="Group_52">
+            <g id="Graphic_54">
+              <path d="M 728.6347 518.2142 L 725.4143 518.2142 L 725.4143 515.0671 C 726.0306 514.3691 726.40204 513.4629 726.40204 512.471 C 726.40204 510.2831 724.5898 508.5075 722.3612 508.5075 C 720.13266 508.5075 718.3204 510.2872 718.3204 512.471 C 718.3204 513.4629 718.6918 514.3691 719.3082 515.0671 L 719.3082 518.2142 L 711.9653 518.2142 L 711.9653 503.9154 L 728.6306 503.9154 L 728.6306 518.2142 Z M 722.3612 518.6265 L 720.9857 519.6837 L 720.9857 516.20185 C 721.4143 516.3529 721.8796 516.4386 722.3612 516.4386 C 722.8429 516.4386 723.3082 516.35696 723.7367 516.20185 L 723.7367 519.6837 Z M 722.3612 514.7732 C 721.051 514.7732 719.9857 513.7405 719.9857 512.471 C 719.9857 511.20155 721.051 510.16884 722.3612 510.16884 C 723.6714 510.16884 724.7367 511.20155 724.7367 512.471 C 724.7367 513.7405 723.6714 514.7732 722.3612 514.7732 Z M 729.46735 502.25 L 711.13266 502.25 C 710.6714 502.25 710.3 502.62145 710.3 503.0827 L 710.3 519.0469 C 710.3 519.50817 710.6714 519.8796 711.13266 519.8796 L 719.3082 519.8796 L 719.3082 521.4348 C 719.3082 522.1083 720.0837 522.492 720.6184 522.07975 L 722.3612 520.7409 L 724.1041 522.07975 C 724.6388 522.492 725.4143 522.1083 725.4143 521.4348 L 725.4143 519.8796 L 729.46735 519.8796 C 729.9286 519.8796 730.3 519.50817 730.3 519.0469 L 730.3 503.0827 C 730.3 502.62145 729.9286 502.25 729.46735 502.25 Z" fill="black"/>
+            </g>
+            <g id="Graphic_53">
+              <path d="M 716.0184 507.71563 L 724.57756 507.71563 C 725.0388 507.71563 725.4102 507.3442 725.4102 506.8829 C 725.4102 506.4217 725.0388 506.0502 724.57756 506.0502 L 716.0184 506.0502 C 715.55715 506.0502 715.1857 506.4217 715.1857 506.8829 C 715.1857 507.3401 715.5612 507.71563 716.0184 507.71563 Z" fill="black"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Graphic_56">
+        <text transform="translate(775.948 400.76794)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">X509</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

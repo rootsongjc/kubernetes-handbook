@@ -120,7 +120,7 @@ def getForwardHeaders(request):
 | --------- | ------------------------------------------------------------ | -------------------------------------------- | -------------------------------------------- |
 | 实现方式  | 基于语言的探针、服务网格探针、eBPF agent、第三方指标库（当前支持 Zipkin） | 基于语言的探针                               | 基于语言的探针                               |
 | 数据存储  | ES、H2、MySQL、TiDB、Sharding-sphere、BanyanDB               | ES、MySQL、Cassandra、内存                   | ES、MySQL、Cassandra、内存                   |
-| 支持语言  | Java、Rust、PHP、NodeJS、Go、Ruby、Python                    | Java、Go、Python、NodeJS、C#、PHP、Ruby、C++ | Java、Go、Python、NodeJS、C#、PHP、Ruby、C++ |
+| 支持语言  | Java、Rust、PHP、NodeJS、Go、Python、C++、.NET、Lua          | Java、Go、Python、NodeJS、C#、PHP、Ruby、C++ | Java、Go、Python、NodeJS、C#、PHP、Ruby、C++ |
 | 发起者    | 个人                                                         | Uber                                         | Twitter                                      |
 | 治理方式  | Apache Foundation                                            | CNCF                                         | CNCF                                         |
 | 版本      | 9.3.0                                                        | 1.39.0                                       | 2.23.19                                      |
