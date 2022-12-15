@@ -9,7 +9,7 @@ slider:
       animation_out : "right"
       button:
         enable : true
-        label : "Download for free"
+        label : "Free Download"
         link :  "https://academy.tetrate.io/courses/istio-fundamentals"
     - title : "Istio Fundamentals Courses"
       content: "Tetrate presents Istio Fundamentals, a course that enables users to learn Istio easily with concept text, labs, and quizzes. Istio is an open-source service mesh platform that helps microservices communicate with each other easily."

@@ -5,7 +5,4 @@ draft: false
 bg_image: "images/backgrounds/page-title.jpg"
 # meta description
 description : "Important Information Notice"
-cascade:
-  categories: ["notice"]
-  tags: ["notice"]
 ---

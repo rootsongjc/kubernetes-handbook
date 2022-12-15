@@ -235,14 +235,13 @@ name = "Tetrate - Service Mesh Company"
 URL = "https://tetrate.io/?jimmysong"
 
 # courses
-
 [[menu.book]]
-name = "Kubernetes Handbook"
-URL = "https://lib.jimmysong.io/kubernetes-handbook/"
+name = "Envoy Fundamentals"
+URL = "https://academy.tetrate.io/courses/envoy-fundamentals"
 
 [[menu.book]]
 name = "Istio Fundamentals"
-URL = "https://academy.tetrate.io/courses/istio-fundamentals-zh"
+URL = "https://academy.tetrate.io/courses/istio-fundamentals"
 
 ################################### Chinese language #####################################
 [Languages.zh]

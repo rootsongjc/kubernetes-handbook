@@ -1,8 +1,8 @@
 ---
 title: "Why the Gateway API Is the Unified Future of Ingress for Kubernetes and Service Mesh"
 description: "This article introduces the ingress gateway and Gateway API in Kubernetes, the new trend of them with service mesh."
-date: 2022-12-08T11:18:40+08:00
-draft: true
+date: 2022-12-13T11:18:40+08:00
+draft: false
 tags: ["Gateway","Gateway API","Kubernetes","Service Mesh","Envoy Gateway"]
 categories: ["Kubernetes"]
 type: "post"
