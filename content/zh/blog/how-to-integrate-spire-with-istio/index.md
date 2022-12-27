@@ -6,7 +6,7 @@ description: "本文将带你一步一步在 Istio 中集成 SPIRE 身份认证�
 categories: ["Istio"]
 tags: ["Istio","SPIRE","SPIFFE","零信任","安全","身份","身份认证"]
 type: "post"
-image: "images/banner/auth.jpg"
+image: "images/banner/spire.jpg"
 ---
 
 {{<callout note 读者须知>}}

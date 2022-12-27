@@ -1,8 +1,8 @@
 ---
 title: "How Istio’s mTLS Traffic Encryption Works as Part of a Zero Trust Security Posture"
 description: "This article introduces TLS and mTLS, and describes how to enable mTLS in Istio and its application scenarios."
-date: 2022-12-14T14:09:40+08:00
-draft: true
+date: 2022-12-24T14:09:40+08:00
+draft: false
 tags: ["TLS","network","mTLS","Istio","Security","Istio","service mesh"]
 categories: ["Istio"]
 type: "post"

@@ -60,7 +60,7 @@ The most significant advantage of SDS is the ease with which certificates can be
 
 The architecture of using SPIRE for authentication in Istio is depicted in the diagram below.
 
-![SPIRE Architecture with Istio](spire-istio-arch.jpg)
+![SPIRE Architecture with Istio](spire-with-kubernetes.svg)
 
 Use StatefulSet resources to deploy the SPIRE Server and Kubernetes Workload Registrar in the spire namespace of the Kubernetes cluster, and DaemonSet resources to deploy a SPIRE Agent for each node. Assuming that you used the default DNS name `cluster.local` when you install Kubernetes, [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) creates identities for the workloads in the Istio mesh in the following format:
 
@@ -73,7 +73,7 @@ This way, both the nodes and each workload have their own globally unique identi
 
 The workload authentication process in Istio mesh is shown in the figure below.
 
-{{<figure title="The workload authentication process in the Istio mesh" alt="Image" src="istio-workload-attestor.jpg" width="30%" class="mx-auto text-center">}}
+{{<figure title="The workload authentication process in the Istio mesh" alt="Image" src="workload-attestation.svg" width="30%" class="mx-auto text-center">}}
 
 The detailed process is as follows:
 
