@@ -1,1 +1,179 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" width="561" height="375" version="1.1" viewBox="347 223 561 375"><defs><marker id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" color="#000" markerHeight="8" markerUnits="strokeWidth" markerWidth="10" orient="auto" overflow="visible" viewBox="-1 -4 10 8"><g><path fill="currentColor" stroke="currentColor" stroke-width="1" d="M 8 0 L 0 -3 L 0 3 Z"/></g></marker></defs><g id="TLS__" fill="none" fill-opacity="1" stroke="none" stroke-dasharray="none" stroke-opacity="1"><title>TLS 原理</title><rect width="561" height="375" x="347" y="223" fill="#fff"/><g id="TLS___Layer_1"><title>Layer 1</title><g id="Graphic_47"><rect width="559.851" height="374.959" x="347.5" y="223.02" fill="#fff"/></g><g id="Graphic_2"><rect width="90" height="150" x="357.5" y="432.5" fill="#0a55a8"/><rect width="90" height="150" x="357.5" y="432.5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#fff" transform="translate(362.5 497.76794)"><tspan x="17.792" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Client</tspan></text></g><g id="Graphic_3"><rect width="90" height="150" x="807.5" y="432.5" fill="#0a55a8"/><rect width="90" height="150" x="807.5" y="432.5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#fff" transform="translate(812.5 497.76794)"><tspan x="15.24" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Server</tspan></text></g><g id="Graphic_4"><path fill="#0a55a8" d="M 554.67546 294.4 L 554.67546 245.6 C 554.67546 242.2328 587.26746 239.5 627.42546 239.5 C 667.58346 239.5 700.17546 242.2328 700.17546 245.6 L 700.17546 294.4 C 700.17546 297.7672 667.58346 300.5 627.42546 300.5 C 587.26746 300.5 554.67546 297.7672 554.67546 294.4"/><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 554.67546 294.4 L 554.67546 245.6 C 554.67546 242.2328 587.26746 239.5 627.42546 239.5 C 667.58346 239.5 700.17546 242.2328 700.17546 245.6 L 700.17546 294.4 C 700.17546 297.7672 667.58346 300.5 627.42546 300.5 C 587.26746 300.5 554.67546 297.7672 554.67546 294.4 M 554.67546 245.6 C 554.67546 248.9672 587.26746 251.7 627.42546 251.7 C 667.58346 251.7 700.17546 248.9672 700.17546 245.6"/><text fill="#fff" transform="translate(559.67546 263.31794)"><tspan x="25.518" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Trusted CA</tspan></text></g><g id="Line_6"><line x1="807.5" x2="662.681" y1="460.016" y2="307.201" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_7"><line x1="447.5" x2="797.6" y1="469.5" y2="469.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_15"><line x1="807.5" x2="457.4" y1="512.284" y2="513.354" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_16"><line x1="447.5" x2="797.6" y1="555" y2="555" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_17"><line x1="447.5" x2="592.191" y1="459.984" y2="307.204" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_24"><rect width="175.056" height="28.448" x="634.642" y="355.751" fill="#fff"/><text fill="#000" transform="translate(639.6418 360.75082)"><tspan x="0" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">1. Request a certificate</tspan></text></g><g id="Graphic_25"><rect width="168.272" height="28.448" x="537.495" y="455.276" fill="#fff"/><text fill="#000" transform="translate(542.49494 460.276)"><tspan x="0" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">2. Request to connect</tspan></text></g><g id="Graphic_26"><rect width="170.138" height="28.448" x="529.98" y="498.648" fill="#fff"/><text fill="#000" transform="translate(534.9796 503.6481)"><tspan x="3.909" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">3. Sent the certificate</tspan></text></g><g id="Group_48"><g id="Graphic_35"><rect width="22" height="22" x="745.345" y="399.5" fill="#fff"/></g><g id="Group_31"><g id="Group_32"><g id="Graphic_34"><path fill="#000" d="M 764.6797 416.4642 L 761.4593 416.4642 L 761.4593 413.3171 C 762.0757 412.6191 762.4471 411.7129 762.4471 410.721 C 762.4471 408.53313 760.6348 406.7575 758.4063 406.7575 C 756.1777 406.7575 754.36545 408.5372 754.36545 410.721 C 754.36545 411.7129 754.7369 412.6191 755.3532 413.3171 L 755.3532 416.4642 L 748.01035 416.4642 L 748.01035 402.1654 L 764.6757 402.1654 L 764.6757 416.4642 Z M 758.4063 416.8765 L 757.0308 417.9337 L 757.0308 414.45185 C 757.4593 414.6029 757.9246 414.6886 758.4063 414.6886 C 758.8879 414.6886 759.3532 414.60696 759.7818 414.45185 L 759.7818 417.9337 Z M 758.4063 413.0232 C 757.0961 413.0232 756.0308 411.9905 756.0308 410.721 C 756.0308 409.45155 757.0961 408.41884 758.4063 408.41884 C 759.7165 408.41884 760.7818 409.45155 760.7818 410.721 C 760.7818 411.9905 759.7165 413.0232 758.4063 413.0232 Z M 765.5124 400.5 L 747.1777 400.5 C 746.7165 400.5 746.345 400.87145 746.345 401.3327 L 746.345 417.2969 C 746.345 417.75817 746.7165 418.1296 747.1777 418.1296 L 755.3532 418.1296 L 755.3532 419.6848 C 755.3532 420.3583 756.1287 420.742 756.6634 420.32975 L 758.4063 418.9909 L 760.1491 420.32975 C 760.6838 420.742 761.4593 420.3583 761.4593 419.6848 L 761.4593 418.1296 L 765.5124 418.1296 C 765.9736 418.1296 766.345 417.75817 766.345 417.2969 L 766.345 401.3327 C 766.345 400.87145 765.9736 400.5 765.5124 400.5 Z"/></g><g id="Graphic_33"><path fill="#000" d="M 752.0634 405.96563 L 760.6226 405.96563 C 761.0838 405.96563 761.45525 405.5942 761.45525 405.13293 C 761.45525 404.6717 761.0838 404.30023 760.6226 404.30023 L 752.0634 404.30023 C 751.6022 404.30023 751.2308 404.6717 751.2308 405.13293 C 751.2308 405.5901 751.6063 405.96563 752.0634 405.96563 Z"/></g></g></g></g><g id="Graphic_43"><rect width="185.728" height="28.448" x="438.387" y="357.327" fill="#fff"/><text fill="#000" transform="translate(443.3873 362.32683)"><tspan x="0" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">4. Validate the certificate</tspan></text></g><g id="Graphic_44"><rect width="145.776" height="28.448" x="548.707" y="540.776" fill="#fff"/><text fill="#000" transform="translate(553.70724 545.776)"><tspan x="0" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">5. Encrypted traffic</tspan></text></g><g id="Group_45"><title>XMLID_504_</title><g id="Graphic_46"><title>XMLID_505_</title><path fill="#000" d="M 714.8217 562.5 L 725.7783 562.5 C 726.2321 562.5 726.6 562.1269 726.6 561.6667 L 726.6 552.223 C 726.6 551.7628 726.2321 551.3897 725.7783 551.3897 L 724.9565 551.3897 L 724.9565 548.8899 C 724.9565 546.28623 722.8676 544.168 720.3 544.168 C 717.7324 544.168 715.6435 546.28623 715.6435 548.8899 L 715.6435 551.3897 L 714.8217 551.3897 C 714.3679 551.3897 714 551.7628 714 552.223 L 714 561.6667 C 714 562.1269 714.3679 562.5 714.8217 562.5 Z M 722.6272 556.35356 L 720.299 558.7145 C 720.1385 558.8772 719.9282 558.9586 719.7179 558.9586 C 719.5077 558.9586 719.2973 558.8772 719.1369 558.7145 L 717.9728 557.534 C 717.6519 557.2086 717.6519 556.6811 717.9728 556.3556 C 718.29364 556.0302 718.814 556.0302 719.1349 556.3556 L 719.718 556.94685 L 721.4652 555.17514 C 721.7861 554.8497 722.3064 554.8497 722.6273 555.17514 C 722.9482 555.5006 722.9482 556.02814 722.6272 556.35356 Z M 717.287 548.8899 C 717.287 547.20517 718.6386 545.83454 720.3 545.83454 C 721.9614 545.83454 723.31305 547.20517 723.31305 548.8899 L 723.31305 551.3897 L 717.287 551.3897 Z"/></g></g><g id="Group_50"><g id="Graphic_55"><rect width="22" height="22" x="709.3" y="501.25" fill="#fff"/></g><g id="Group_51"><g id="Group_52"><g id="Graphic_54"><path fill="#000" d="M 728.6347 518.2142 L 725.4143 518.2142 L 725.4143 515.0671 C 726.0306 514.3691 726.40204 513.4629 726.40204 512.471 C 726.40204 510.2831 724.5898 508.5075 722.3612 508.5075 C 720.13266 508.5075 718.3204 510.2872 718.3204 512.471 C 718.3204 513.4629 718.6918 514.3691 719.3082 515.0671 L 719.3082 518.2142 L 711.9653 518.2142 L 711.9653 503.9154 L 728.6306 503.9154 L 728.6306 518.2142 Z M 722.3612 518.6265 L 720.9857 519.6837 L 720.9857 516.20185 C 721.4143 516.3529 721.8796 516.4386 722.3612 516.4386 C 722.8429 516.4386 723.3082 516.35696 723.7367 516.20185 L 723.7367 519.6837 Z M 722.3612 514.7732 C 721.051 514.7732 719.9857 513.7405 719.9857 512.471 C 719.9857 511.20155 721.051 510.16884 722.3612 510.16884 C 723.6714 510.16884 724.7367 511.20155 724.7367 512.471 C 724.7367 513.7405 723.6714 514.7732 722.3612 514.7732 Z M 729.46735 502.25 L 711.13266 502.25 C 710.6714 502.25 710.3 502.62145 710.3 503.0827 L 710.3 519.0469 C 710.3 519.50817 710.6714 519.8796 711.13266 519.8796 L 719.3082 519.8796 L 719.3082 521.4348 C 719.3082 522.1083 720.0837 522.492 720.6184 522.07975 L 722.3612 520.7409 L 724.1041 522.07975 C 724.6388 522.492 725.4143 522.1083 725.4143 521.4348 L 725.4143 519.8796 L 729.46735 519.8796 C 729.9286 519.8796 730.3 519.50817 730.3 519.0469 L 730.3 503.0827 C 730.3 502.62145 729.9286 502.25 729.46735 502.25 Z"/></g><g id="Graphic_53"><path fill="#000" d="M 716.0184 507.71563 L 724.57756 507.71563 C 725.0388 507.71563 725.4102 507.3442 725.4102 506.8829 C 725.4102 506.4217 725.0388 506.0502 724.57756 506.0502 L 716.0184 506.0502 C 715.55715 506.0502 715.1857 506.4217 715.1857 506.8829 C 715.1857 507.3401 715.5612 507.71563 716.0184 507.71563 Z"/></g></g></g></g><g id="Graphic_56"><text fill="#000" transform="translate(775.948 400.76794)"><tspan x="0" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">X509</tspan></text></g></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="1360 975 626 351" width="626" height="351">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Cert_Generation" stroke="none" stroke-dasharray="none" stroke-opacity="1" fill-opacity="1" fill="none">
+    <title>Cert Generation</title>
+    <rect fill="white" x="1360" y="975" width="626" height="351"/>
+    <g id="Cert_Generation_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_55">
+        <rect x="1360.188" y="975" width="625.786" height="350.5" fill="white"/>
+      </g>
+      <g id="Graphic_10">
+        <path d="M 1613.081 1041.5 L 1613.081 993.5 C 1613.081 990.188 1639.961 987.5 1673.081 987.5 C 1706.201 987.5 1733.081 990.188 1733.081 993.5 L 1733.081 1041.5 C 1733.081 1044.812 1706.201 1047.5 1673.081 1047.5 C 1639.961 1047.5 1613.081 1044.812 1613.081 1041.5" fill="#0a55a8"/>
+        <path d="M 1613.081 1041.5 L 1613.081 993.5 C 1613.081 990.188 1639.961 987.5 1673.081 987.5 C 1706.201 987.5 1733.081 990.188 1733.081 993.5 L 1733.081 1041.5 C 1733.081 1044.812 1706.201 1047.5 1673.081 1047.5 C 1639.961 1047.5 1613.081 1044.812 1613.081 1041.5 M 1613.081 993.5 C 1613.081 996.812 1639.961 999.5 1673.081 999.5 C 1706.201 999.5 1733.081 996.812 1733.081 993.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1618.081 1010.768)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="12.768" y="16">Trusted CA</tspan>
+        </text>
+      </g>
+      <g id="Graphic_9">
+        <rect x="1433.552" y="1207.5" width="120" height="80" fill="#0a55a8"/>
+        <text transform="translate(1438.552 1237.768)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="30.24" y="16">Server</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <rect x="1780.052" y="1207.5" width="120" height="80" fill="#0a55a8"/>
+        <text transform="translate(1785.052 1237.768)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="32.792" y="16">Client</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="1524.7744" y1="1207.5" x2="1642.0855" y2="1057.2093" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_3">
+        <rect x="1701.024" y="1301.164" width="278.056" height="24.335999" fill="white"/>
+        <text transform="translate(1706.024 1306.164)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="22737368e-20" y="11">10. Decrypt messages with the client’s private key</tspan>
+        </text>
+      </g>
+      <g id="Line_12">
+        <path d="M 1780.052 1251.2385 L 1769.1007 1251.1111 L 1566.452 1251.1111" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_16">
+        <rect x="1550.7938" y="1091.9032" width="98.236" height="38.671997" fill="white"/>
+        <text transform="translate(1555.7938 1096.9032)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="10.008" y="11">1. Certificate</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="39790393e-20" y="25.336">Signing Reqeust</tspan>
+        </text>
+      </g>
+      <g id="Line_5">
+        <line x1="1613.081" y1="1013.245" x2="1465.534" y2="1197.432" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_19">
+        <line x1="1811.0136" y1="1207.5" x2="1702.1502" y2="1057.5424" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_20">
+        <rect x="1695.8316" y="1103.4184" width="107.32" height="38.671997" fill="white"/>
+        <text transform="translate(1700.8316 1108.4184)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="10.758" y="11">5. Validata the</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="25.336">server’s certificate</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="1464.9354" y="1147.6" width="78.22" height="24.335999" fill="white"/>
+        <text transform="translate(1469.9354 1152.6)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="58264504e-20" y="11">2. Certificate</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <rect x="1360.188" y="1286.828" width="266.728" height="24.335999" fill="white"/>
+        <text transform="translate(1365.188 1291.828)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="11">8. Encrypt messages with the client’s public key</tspan>
+        </text>
+      </g>
+      <g id="Line_57">
+        <line x1="1780.052" y1="1216.0853" x2="1566.452" y2="1216.0853" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_58">
+        <rect x="1592.4257" y="1202.5853" width="131.14" height="27" fill="white"/>
+        <text transform="translate(1597.4257 1207.5853)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="13">3. Request </tspan>
+          <tspan font-family="PingFang SC" font-size="12" fill="black" y="13">to connect</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <rect x="1591.2894" y="1238.9431" width="120.7" height="24.335999" fill="white"/>
+        <text transform="translate(1596.2894 1243.9431)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="11">7. Client’s public key</tspan>
+        </text>
+      </g>
+      <g id="Line_62">
+        <line x1="1553.552" y1="1234.2466" x2="1767.152" y2="1234.2466" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_63">
+        <rect x="1591.8525" y="1222.0786" width="122.44" height="24.335999" fill="white"/>
+        <text transform="translate(1596.8525 1227.0786)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="11">4. Server’s certificate</tspan>
+        </text>
+      </g>
+      <g id="Group_61">
+        <g id="Graphic_33">
+          <rect x="1565.8" y="1226.825" width="16.66968" height="16.66968" fill="white"/>
+        </g>
+        <g id="Graphic_32">
+          <path d="M 1581.0817 1240.1309 L 1578.3975 1240.1309 L 1578.3975 1237.5078 C 1578.9112 1236.926 1579.2208 1236.1708 1579.2208 1235.344 C 1579.2208 1233.5205 1577.7103 1232.0405 1575.8529 1232.0405 C 1573.9954 1232.0405 1572.4849 1233.5239 1572.4849 1235.344 C 1572.4849 1236.1708 1572.7945 1236.926 1573.3082 1237.5078 L 1573.3082 1240.1309 L 1567.188 1240.1309 L 1567.188 1228.213 L 1581.0783 1228.213 L 1581.0783 1240.1309 Z M 1575.8529 1240.4745 L 1574.7064 1241.3557 L 1574.7064 1238.4536 C 1575.0636 1238.5795 1575.4514 1238.651 1575.8529 1238.651 C 1576.2543 1238.651 1576.6421 1238.5829 1576.9993 1238.4536 L 1576.9993 1241.3557 Z M 1575.8529 1237.2629 C 1574.7608 1237.2629 1573.873 1236.4021 1573.873 1235.344 C 1573.873 1234.286 1574.7608 1233.4252 1575.8529 1233.4252 C 1576.9449 1233.4252 1577.8328 1234.286 1577.8328 1235.344 C 1577.8328 1236.4021 1576.9449 1237.2629 1575.8529 1237.2629 Z M 1581.7757 1226.825 L 1566.494 1226.825 C 1566.1096 1226.825 1565.8 1227.1346 1565.8 1227.519 L 1565.8 1240.825 C 1565.8 1241.2094 1566.1096 1241.519 1566.494 1241.519 L 1573.3082 1241.519 L 1573.3082 1242.8152 C 1573.3082 1243.3766 1573.9546 1243.6964 1574.4002 1243.3528 L 1575.8529 1242.2368 L 1577.3055 1243.3528 C 1577.7512 1243.6964 1578.3975 1243.3766 1578.3975 1242.8152 L 1578.3975 1241.519 L 1581.7757 1241.519 C 1582.1601 1241.519 1582.4697 1241.2094 1582.4697 1240.825 L 1582.4697 1227.519 C 1582.4697 1227.1346 1582.1601 1226.825 1581.7757 1226.825 Z" fill="#0a55a8"/>
+        </g>
+        <g id="Graphic_31">
+          <path d="M 1570.5662 1231.3805 L 1577.7001 1231.3805 C 1578.0846 1231.3805 1578.3941 1231.0709 1578.3941 1230.6864 C 1578.3941 1230.302 1578.0846 1229.9924 1577.7001 1229.9924 L 1570.5662 1229.9924 C 1570.1818 1229.9924 1569.8722 1230.302 1569.8722 1230.6864 C 1569.8722 1231.0675 1570.1852 1231.3805 1570.5662 1231.3805 Z" fill="#0a55a8"/>
+        </g>
+      </g>
+      <g id="Group_66">
+        <g id="Graphic_69">
+          <rect x="1501.2" y="1130.9303" width="16.66968" height="16.66968" fill="white"/>
+        </g>
+        <g id="Graphic_68">
+          <path d="M 1516.4817 1144.2363 L 1513.7975 1144.2363 L 1513.7975 1141.6132 C 1514.3112 1141.0314 1514.6208 1140.2761 1514.6208 1139.4494 C 1514.6208 1137.6258 1513.1103 1136.1459 1511.2529 1136.1459 C 1509.3954 1136.1459 1507.8849 1137.6292 1507.8849 1139.4494 C 1507.8849 1140.2761 1508.1945 1141.0314 1508.7082 1141.6132 L 1508.7082 1144.2363 L 1502.588 1144.2363 L 1502.588 1132.3184 L 1516.4783 1132.3184 L 1516.4783 1144.2363 Z M 1511.2529 1144.5799 L 1510.1064 1145.461 L 1510.1064 1142.559 C 1510.4636 1142.6849 1510.8514 1142.7563 1511.2529 1142.7563 C 1511.6543 1142.7563 1512.0421 1142.6883 1512.3993 1142.559 L 1512.3993 1145.461 Z M 1511.2529 1141.3682 C 1510.1608 1141.3682 1509.2729 1140.5075 1509.2729 1139.4494 C 1509.2729 1138.3913 1510.1608 1137.5306 1511.2529 1137.5306 C 1512.3449 1137.5306 1513.2328 1138.3913 1513.2328 1139.4494 C 1513.2328 1140.5075 1512.3449 1141.3682 1511.2529 1141.3682 Z M 1517.1757 1130.9303 L 1501.894 1130.9303 C 1501.5096 1130.9303 1501.2 1131.24 1501.2 1131.6244 L 1501.2 1144.9303 C 1501.2 1145.3147 1501.5096 1145.6243 1501.894 1145.6243 L 1508.7082 1145.6243 L 1508.7082 1146.9206 C 1508.7082 1147.4819 1509.3546 1147.8017 1509.8002 1147.4581 L 1511.2529 1146.3422 L 1512.7055 1147.4581 C 1513.1512 1147.8017 1513.7975 1147.4819 1513.7975 1146.9206 L 1513.7975 1145.6243 L 1517.1757 1145.6243 C 1517.5601 1145.6243 1517.8697 1145.3147 1517.8697 1144.9303 L 1517.8697 1131.6244 C 1517.8697 1131.24 1517.5601 1130.9303 1517.1757 1130.9303 Z" fill="#0a55a8"/>
+        </g>
+        <g id="Graphic_67">
+          <path d="M 1505.9662 1135.4859 L 1513.1001 1135.4859 C 1513.4846 1135.4859 1513.7941 1135.1763 1513.7941 1134.7918 C 1513.7941 1134.4074 1513.4846 1134.0978 1513.1001 1134.0978 L 1505.9662 1134.0978 C 1505.5818 1134.0978 1505.2722 1134.4074 1505.2722 1134.7918 C 1505.2722 1135.1729 1505.5852 1135.4859 1505.9662 1135.4859 Z" fill="#0a55a8"/>
+        </g>
+      </g>
+      <g id="Graphic_70">
+        <rect x="1694.13" y="1283.5393" width="291.844" height="24.335999" fill="white"/>
+        <text transform="translate(1699.13 1288.5393)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="48316906e-20" y="11">6. Generate a random pair of public and private keys</tspan>
+        </text>
+      </g>
+      <g id="Group_71">
+        <g id="Graphic_74">
+          <rect x="1728" y="1242.7763" width="16.66968" height="16.66968" fill="white"/>
+        </g>
+        <g id="Graphic_73">
+          <path d="M 1743.2817 1256.0822 L 1740.5975 1256.0822 L 1740.5975 1253.4591 C 1741.1112 1252.8773 1741.4208 1252.122 1741.4208 1251.2953 C 1741.4208 1249.4718 1739.9103 1247.9918 1738.0529 1247.9918 C 1736.1954 1247.9918 1734.685 1249.4752 1734.685 1251.2953 C 1734.685 1252.122 1734.9945 1252.8773 1735.5082 1253.4591 L 1735.5082 1256.0822 L 1729.388 1256.0822 L 1729.388 1244.1644 L 1743.2783 1244.1644 L 1743.2783 1256.0822 Z M 1738.0529 1256.4258 L 1736.9064 1257.307 L 1736.9064 1254.4049 C 1737.2636 1254.5308 1737.6514 1254.6022 1738.0529 1254.6022 C 1738.4543 1254.6022 1738.8421 1254.5342 1739.1993 1254.4049 L 1739.1993 1257.307 Z M 1738.0529 1253.2142 C 1736.9608 1253.2142 1736.073 1252.3534 1736.073 1251.2953 C 1736.073 1250.2373 1736.9608 1249.3765 1738.0529 1249.3765 C 1739.145 1249.3765 1740.0328 1250.2373 1740.0328 1251.2953 C 1740.0328 1252.3534 1739.145 1253.2142 1738.0529 1253.2142 Z M 1743.9757 1242.7763 L 1728.694 1242.7763 C 1728.3096 1242.7763 1728 1243.0859 1728 1243.4703 L 1728 1256.7762 C 1728 1257.1607 1728.3096 1257.4703 1728.694 1257.4703 L 1735.5082 1257.4703 L 1735.5082 1258.7665 C 1735.5082 1259.3279 1736.1546 1259.6477 1736.6002 1259.304 L 1738.0529 1258.1881 L 1739.5055 1259.304 C 1739.9512 1259.6477 1740.5975 1259.3279 1740.5975 1258.7665 L 1740.5975 1257.4703 L 1743.9757 1257.4703 C 1744.3601 1257.4703 1744.6697 1257.1607 1744.6697 1256.7762 L 1744.6697 1243.4703 C 1744.6697 1243.0859 1744.3601 1242.7763 1743.9757 1242.7763 Z" fill="#0a55a8"/>
+        </g>
+        <g id="Graphic_72">
+          <path d="M 1732.7662 1247.3318 L 1739.9001 1247.3318 C 1740.2846 1247.3318 1740.5941 1247.0222 1740.5941 1246.6378 C 1740.5941 1246.2533 1740.2846 1245.9437 1739.9001 1245.9437 L 1732.7662 1245.9437 C 1732.3818 1245.9437 1732.0722 1246.2533 1732.0722 1246.6378 C 1732.0722 1247.0188 1732.3852 1247.3318 1732.7662 1247.3318 Z" fill="#0a55a8"/>
+        </g>
+      </g>
+      <g id="Line_75">
+        <line x1="1553.552" y1="1273.0594" x2="1767.152" y2="1273.0594" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_77">
+        <title>Message</title>
+        <g id="Graphic_51">
+          <rect x="1565.8" y="1267.0754" width="16.66968" height="11.967983" fill="white"/>
+        </g>
+        <g id="Group_44">
+          <g id="Group_48">
+            <g id="Group_49">
+              <g id="Graphic_50">
+                <path d="M 1565.8 1267.0754 L 1565.8 1279.0434 L 1582.4697 1279.0434 L 1582.4697 1267.0754 Z M 1581.0835 1268.3577 L 1574.1349 1274.1482 L 1567.1862 1268.3577 Z M 1581.1874 1277.761 L 1567.0823 1277.761 L 1567.0823 1269.9402 L 1574.1349 1275.8173 L 1581.1874 1269.9402 Z" fill="#0a55a8"/>
+              </g>
+            </g>
+          </g>
+          <g id="Group_45">
+            <g id="Group_46">
+              <g id="Graphic_47">
+                <rect x="1577.768" y="1275.1965" width="2.1371375" height="1.2822956" fill="#0a55a8"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Graphic_76">
+        <rect x="1591.3292" y="1260.8914" width="136.036" height="24.335999" fill="white"/>
+        <text transform="translate(1596.3292 1265.8914)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="0" y="11">9. Encrypted messages</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

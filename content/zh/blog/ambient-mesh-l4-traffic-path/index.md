@@ -3,7 +3,7 @@ title: "Istio Ambient 模式中的透明流量劫持四层网络路由路径详�
 description: "本文以图示和实际操作的形式详细介绍了 Ambient Mesh 中的透明流量劫持和四层（L4）流量路径。"
 date: 2022-11-14T22:09:40+08:00
 draft: false
-tags: ["Istio","Ambient Mesh","ztunnel","Envoy"]
+tags: ["Istio","Ambient Mesh","ztunnel","Envoy","HBONE"]
 categories: ["Istio"]
 type: "post"
 image: "images/banner/ambient-l4.jpg"
