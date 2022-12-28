@@ -282,7 +282,7 @@ istioctl proxy-config secret deployment/istiod -o json | jq -r \
 
 如果你要修改 *istiod* 证书的轮换周期，从 60 天（1440 小时）缩短到 30 天（720 小时），运行下面的命令：
 
-```bash
+```yaml
 cat << EOF | kubectl apply -f -
 ---
 apiVersion: cert-manager.io/v1
