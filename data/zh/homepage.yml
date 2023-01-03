@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "/images/backgrounds/bg.svg"
+  bg_image : "/images/backgrounds/winter.svg"
   slider_item:
     #    - title : "服务网格峰会 2022"
     #      content : "9 月 24 日（周六），上海舜元会议中心（近 2 号线淞虹路），欢迎报名参加。"
