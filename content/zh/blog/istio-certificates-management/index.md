@@ -277,7 +277,7 @@ Istio 启动时将创建一个自签名的 CA 证书，然后再用该 CA 证书
 
    {{</callout>}}
 
-4. 创建服务器的私钥 `workload.key`：
+4. 为工作负载创建私钥 `workload.key`：
 
    ```bash
    openssl genrsa -out workload.key

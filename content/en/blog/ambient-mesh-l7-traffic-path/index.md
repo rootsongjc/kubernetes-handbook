@@ -1,8 +1,8 @@
 ---
 title: "L7 Traffic Path in Ambient Mesh"
 description: "This article describes in detail the L7 traffic path in Ambient Mesh in both diagrammatic and hands-on form."
-date: 2022-12-14T14:09:40+08:00
-draft: true
+date: 2023-01-06T08:09:40+08:00
+draft: false
 tags: ["Istio","Ambient Mesh","ztunnel","Envoy"]
 categories: ["Istio"]
 type: "post"
