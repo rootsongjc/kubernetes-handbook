@@ -98,7 +98,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/books.svg"
+  bg_image : "images/backgrounds/bg.svg"
   title : "Quick Start"
   content : "When we need to develop cloud native apps locally, 
   we prefer to have a distributed development environment that is ready to use and easy to customize, 
