@@ -9,7 +9,9 @@ type: "notice"
 image: "images/backgrounds/notification.jpg"
 ---
 
-Envoy 中文文档地址：**https://cloudnative.to/envoy**
+注意：该活动已结束，感谢大家的关注。
+
+Envoy 中文文档地址：<https://cloudnative.to/envoy/>
 
 ## 先给大家拜个晚年
 
@@ -21,19 +23,13 @@ Envoy 中文文档地址：**https://cloudnative.to/envoy**
 
 由云原生社区 Envoy SIG 发起的 Envoy 1.16 版本翻译，在几十位（登记信息的为 **64** 人）志愿者的共同努力下，经过了以下几个阶段的努力贡献：
 
-**第一阶段**：2020 年 11 月 4 日至 2020 年 11 月 28 日，共开放 **84** 个 issue。
-
-**第二阶段**：2020 年 11 月 28 日至 2020 年 12 月 6 日，共开放 **24** 个 issue。
-
-**第三阶段**：2020 年 12 月 6 日至 2021 年 1 月 10 日，共开放 **128** 个 issue。
-
-**第四阶段**：2021 年 1 月 10 日至 2021 年 1 月 17 日，共开放 **10** 个 issue。
-
-**第五阶段**：2021 年 1 月 17 日至 2021 年 2 月 9 日，共开放 **76** 个 issue。
-
-**第六阶段**：2021 年 2 月 9 日开始，共开放 **34** 个 issue。
-
-**现在已经到了决胜攻坚时刻**，最后的翻译任务已经开放。欢迎大家搭载翻译的末班车，为 Envoy 的翻译贡献自己的力量。
+- **第一阶段**：2020 年 11 月 4 日至 2020 年 11 月 28 日，共开放 **84** 个 issue。
+- **第二阶段**：2020 年 11 月 28 日至 2020 年 12 月 6 日，共开放 **24** 个 issue。
+- **第三阶段**：2020 年 12 月 6 日至 2021 年 1 月 10 日，共开放 **128** 个 issue。
+- **第四阶段**：2021 年 1 月 10 日至 2021 年 1 月 17 日，共开放 **10** 个 issue。
+- **第五阶段**：2021 年 1 月 17 日至 2021 年 2 月 9 日，共开放 **76** 个 issue。
+- **第六阶段**：2021 年 2 月 9 日开始，共开放 **34** 个 issue。
+- **现在已经到了决胜攻坚时刻**，最后的翻译任务已经开放。欢迎大家搭载翻译的末班车，为 Envoy 的翻译贡献自己的力量。
 
 ## 突出贡献人员
 
@@ -63,11 +59,3 @@ Envoy 中文文档地址：**https://cloudnative.to/envoy**
 ## 如何加入
 
 关于如何加入 Envoy SIG 并加入翻译团队，可以查看 [Envoy 官方文档翻译工作组成员招募中](http://mp.weixin.qq.com/s?__biz=MzI1NTE2NDE2MA==&mid=2649383214&idx=1&sn=55abc3ec184dbaad0a4a1d2c2eb0d341&chksm=f224eb41c5536257b4158bff696a8297249b581b8cb6fc3e22961a2c9492beddd6badb228e4a&scene=21#wechat_redirect)；关于翻译要求及相关福利，可以查看 [Envoy 官方文档翻译进度更新及成员招募](http://mp.weixin.qq.com/s?__biz=MzI1NTE2NDE2MA==&mid=2649383618&idx=2&sn=02855bfd0df512686aa7ce2b3692e18e&chksm=f224e8adc55361bbade88f6dbbe08f04f4f096601671d838dda233314035a2e2a1121d2969aa&scene=21#wechat_redirect)。有任何疑问可以直接添加微信（jimmysongio 或者 majinghe11）进行咨询。
-
-#### 关于云原生社区
-
-云原生社区成立于 2020 年 5 月 12 日，作为中立的云原生终端用户社区，致力于推广云原生技术，构建开发者生态。[点击了解我们](http://mp.weixin.qq.com/s?__biz=MzI1NTE2NDE2MA==&mid=2649383149&idx=3&sn=6012d51c80d0b8f84db58e514448ad11&chksm=f224ea82c553639460af375bb1f172ba94502c5599eb2a4e4df52287f98db29e3858ae09373d&scene=21#wechat_redirect)。
-
-云原生社区基于成员兴趣创建了多个 SIG（特别兴趣小组），如 Kubernetes、Istio、Envoy、OAM、Dapr、稳定性、可观察性等。请扫描下面的二维码，点击公众号后台的「加入我们」，填写问卷加入社区。
-
-![加入云原生社区](008eGmZEgy1gnztj9d7bwj30p00dw41g.jpg)
