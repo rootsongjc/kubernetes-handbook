@@ -13,7 +13,7 @@ In September 2022, Istio [became a CNCF incubation project](https://www.cncf.io/
 
 If you don’t know about service mesh and Istio, or are curious about the future of Istio, this eBook—[The Current State and Future of the Istio Service Mesh](https://www.tetrate-old.local/get-insights-into-history-and-future-of-istio-content/) will give you the answers. The following is an excerpt from the book. In my view, the future of Istio lies in being the infrastructure for zero-trust network and hybrid cloud.
 
-# Zero Trust
+## Zero Trust
 
 Zero trust is an important topic, including when I spoke at IstioCon 2022. Istio is becoming an important part of zero trust, the most important element of which is identity-oriented control rather than network-oriented control.
 
@@ -21,7 +21,7 @@ Zero trust is an important topic, including when I spoke at IstioCon 2022. Istio
 
 Zero trust is a security philosophy, not a best practice that all security teams follow in the same way. The concept of zero trust was proposed to bring a more secure network to the cloud-native world. Zero trust is a theoretical state where all consumers within a network not only have no authority but also have no awareness of the surrounding network. The main challenges of zero trust are the increasingly granular authorization and the need for a time limit for user authorization.
 
-### Authentication
+## Authentication
 
 Istio 1.14 adds support for the SPIFFE Runtime Environment (SPIRE). SPIRE, a CNCF incubation project, is an implementation of the Secure Production Identity Framework for Everyone (SPIFFE), also a CNCF Incubation Project. In Kubernetes, we use ServiceAccount to provide identity information for workloads in Pods, and its core is based on Token (using Secret resource storage) to represent workload identity. A token is a resource in a Kubernetes cluster. How to unify the identities of multiple clusters and workloads running in non-Kubernetes environments (such as virtual machines)? That’s what SPIFFE is trying to solve.
 
@@ -46,13 +46,13 @@ The steps to using SPIRE for workload authentication in Istio are as follows:
 
  Please refer to the SPIRE documentation for the detailed process of registering and authenticating workloads.
 
-### NGAC
+## NGAC
 
 When each workload has an accurate identity, how can the permissions of these identities be restricted? Role-based access control (RBAC) is used by default in Kubernetes for access control. As the name suggests, this access control is based on roles. Although it is relatively simple to use, there is a role explosion problem for large-scale clusters—that is, there are too many roles, and the types are not static, making it difficult to track and audit role permission models. In addition, the access rights of roles in RBAC are fixed, and there is no provision for short-term use rights; nor does it take into account attributes such as location, time, or equipment. Enterprises using RBAC have difficulty meeting complex access control requirements to comply with the regulatory requirements that other organizations demand.
 
 NGAC, or Next Generation Access Control, takes the approach of modeling access decision data as a graph. NGAC enables a systematic, policy-consistent approach to access control, granting or denying user management capabilities with a high level of granularity. NGAC was developed by the U.S. National Institute of Standards and Technology (NIST) and is currently used for rights management in [Tetrate Service Bridge (TSB).](https://tetrate.io/tetrate-service-bridge) For more information, read our article on [why you should choose NGAC over ABAC and RBAC](https://thenewstack.io/why-you-should-choose-ngac-as-your-access-control-model).
 
-### Hybrid cloud
+## Hybrid cloud
 
 In practical applications, we may deploy multiple Kubernetes clusters in various environments for reasons such as load balancing; isolation of development and production environments; decoupling of data processing and data storage; cross-cloud backup and disaster recovery; and avoiding vendor lock-in. The Kubernetes community provides a “cluster federation” function that can help us create a multi-cluster architecture, such as the common Kubernetes multi-cluster architecture shown in the figure below, in which the host cluster serves as the control plane and has two member clusters, namely West and East.
 
@@ -76,7 +76,7 @@ The figure shown below is the architecture diagram of Tetrate’s flagship produ
 
 For the detailed architecture of TSB, please refer to the [TSB documentation](https://docs.tetrate.io/service-bridge).
 
-Get the eBook
+## Get the eBook
 
 The above is just a summary of what we see for the future of Istio. To learn more about the historical motivation for the emergence of the service mesh, the evolution of Istio, and the Istio open source ecosystem, please [download the eBook](https://www.tetrate-old.local/get-insights-into-history-and-future-of-istio-content/). This book provides detailed information on:
 
