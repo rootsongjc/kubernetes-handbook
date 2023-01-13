@@ -255,7 +255,7 @@ spec:
 
 ## 总结
 
-Gateway API 作为下一代 Kubernetes Ingress API，为 Kubernetes 网关供应商提供一定程度上的 API 规范，在保证其可移植性的前提下丰富了入口网关的功能，同时通过关注点分离方便不同觉得对网关进行管理。最后GAMMA 倡议正在促进服务网格的入口网关与 Gateway API 的融合，策略附件可能将 Gateway API 的功能进一步扩展到东西向网关，我们拭目以待。
+Gateway API 作为下一代 Kubernetes Ingress API，为 Kubernetes 网关供应商提供一定程度上的 API 规范，在保证其可移植性的前提下丰富了入口网关的功能，同时通过关注点分离方便不同角色的人员对网关进行管理。最后GAMMA 倡议正在促进服务网格的入口网关与 Gateway API 的融合，策略附件可能将 Gateway API 的功能进一步扩展到东西向网关，我们拭目以待。
 
 ## 参考
 
