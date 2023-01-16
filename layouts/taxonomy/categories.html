@@ -5,7 +5,7 @@
         <div class="row col-12 content ">
             <ul>
                 {{ range .Data.Terms.ByCount }}
-                <li><a href="{{ .Page.Permalink }}">{{ .Page.Title |title }}</a> {{ .Count }}</li>
+                <li><a href="{{ .Page.Permalink }}">{{ .Page.Title |title }}</a> ({{ .Count }})</li>
                 {{ end }}
             </ul>
         </div>

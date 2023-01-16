@@ -16,7 +16,7 @@ image: "images/banner/mirror.jpg"
 
 在所有的 iptables 调用链中最复杂的一个是 `ISTIO_OUTPUT`，其中共有 9 条规则如下：
 
-| **Rule** | **target**        | **in** | **out** | **source** | **destination**                 |
+| **Rule** | **Target**        | **In** | **Out** | **Source** | **Destination**                 |
 | -------- | ----------------- | ------ | ------- | ---------- | ------------------------------- |
 | 1        | RETURN            | any    | lo      | 127.0.0.6  | anywhere                        |
 | 2        | ISTIO_IN_REDIRECT | any    | lo      | anywhere   | !localhost owner UID match 1337 |
