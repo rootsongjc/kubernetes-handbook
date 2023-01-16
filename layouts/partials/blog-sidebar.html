@@ -7,7 +7,7 @@
   {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
   <ul class="list-unstyled">
     {{- range $name, $items := .Site.Taxonomies.categories }}
-    <li class="border-bottom"><a href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}" class="d-block pb-3 mt-3 text-capitalize">{{ $name | title | humanize }}</a></li>
+    <li class="border-bottom"><a href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}" class="d-block pb-3 mt-3 text-capitalize">{{ $name | title | humanize }} ({{.Count}})</a></li>
     {{- end }}
   </ul>
   {{- end }}
