@@ -1,8 +1,16 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "images/backgrounds/winter.svg"
+  bg_image : "images/backgrounds/new-year-blue.svg"
   slider_item:
+    - title : "Happy Chinese New Year!"
+      content: "All expectations can appear， all dreams can be realized， all hopes can be fulfilled， all efforts can be successful！"
+      animation_in : "left"
+      animation_out : "right"
+      button:
+        enable : false
+        label : "Enroll for free"
+        link :  "https://academy.tetrate.io/courses/envoy-fundamentals"
     - title : "eBook: The Current State and Future of the Istio Service Mesh"
       content: "This book takes you through the historical motivation for the emergence of the service mesh, the evolution of Istio, and the Istio open source ecosystem. "
       animation_in : "left"
@@ -19,7 +27,6 @@ slider:
         enable : true
         label : "Enroll for free"
         link :  "https://academy.tetrate.io/courses/istio-fundamentals"
-
     - title : "Envoy Fundamentals Courses"
       content: "Tetrate presents Envoy fundamentals, the easiest way to learn Envoy. Envoy is an open-source edge and service proxy that is a key part of modern, cloud-native applications. This free course provides a comprehensive, eight-part tour of Envoy with concept text, labs, and quizzes."
       animation_in : "left"
