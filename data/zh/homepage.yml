@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "/images/backgrounds/new-year-blue.svg"
+  bg_image : "/images/backgrounds/winter.svg"
   slider_item:
     #  - title : "兔年快乐！新春大吉！"
     #    content : "愿所有的期待都能出现、所有的梦想都能实现、所有的希望都能如愿、所有的努力都能成功！"
