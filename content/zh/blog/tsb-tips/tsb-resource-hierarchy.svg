@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="1142 752 1092 483" width="1092" height="483">
+  <defs/>
+  <g id="Resource_Hierarchy" fill-opacity="1" stroke="none" fill="none" stroke-dasharray="none" stroke-opacity="1">
+    <title>Resource Hierarchy</title>
+    <rect fill="white" x="1142" y="752" width="1092" height="483"/>
+    <g id="Resource_Hierarchy_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_93">
+        <rect x="1142.3622" y="752.5984" width="1091.3386" height="481.88977" fill="white"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="1176.378" y="841.8898" width="150.23622" height="43" fill="#f15623"/>
+        <rect x="1176.378" y="841.8898" width="150.23622" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1181.378 853.6577)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="23.13411" y="16">Organization</tspan>
+        </text>
+      </g>
+      <g id="Group_5">
+        <g id="Graphic_3">
+          <rect x="1165.0394" y="935.4331" width="150.23622" height="43" fill="#333"/>
+          <rect x="1165.0394" y="935.4331" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_4">
+          <rect x="1176.378" y="951.0236" width="150.23622" height="43" fill="#333"/>
+          <rect x="1176.378" y="951.0236" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1181.378 962.7916)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="45.51811" y="16">Tenant</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_6">
+        <g id="Graphic_8">
+          <rect x="1165.0394" y="1041.7323" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1165.0394" y="1041.7323" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_7">
+          <rect x="1176.378" y="1057.3228" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1176.378" y="1057.3228" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1181.378 1069.0908)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="50.40611" y="16">Team</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_9">
+        <g id="Graphic_11">
+          <rect x="1165.0394" y="1148.0315" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1165.0394" y="1148.0315" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_10">
+          <rect x="1176.378" y="1163.622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1176.378" y="1163.622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1181.378 1175.39)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="52.92611" y="16">User</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_16">
+        <path d="M 1251.496 994.0236 L 1251.496 1017.878 L 1240.1575 1017.878 L 1240.1575 1041.7323" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_17">
+        <path d="M 1251.496 1100.3228 L 1251.496 1124.1772 L 1240.1575 1124.1772 L 1240.1575 1148.0315" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_21">
+        <path d="M 1251.496 884.8898 L 1251.496 910.1614 L 1240.1575 910.1614 L 1240.1575 935.4331" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_75">
+        <g id="Graphic_77">
+          <rect x="1434.3307" y="1041.7323" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1434.3307" y="1041.7323" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_76">
+          <rect x="1445.6693" y="1057.3228" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1445.6693" y="1057.3228" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1450.6693 1069.0908)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="43.74211" y="16">Cluster</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_72">
+        <g id="Graphic_74">
+          <rect x="1434.3307" y="1148.0315" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1434.3307" y="1148.0315" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_73">
+          <rect x="1445.6693" y="1163.622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1445.6693" y="1163.622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1450.6693 1175.39)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="26.10211" y="16">Namespace</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_71">
+        <path d="M 1520.7874 1100.3228 L 1520.7874 1124.1772 L 1509.4488 1124.1772 L 1509.4488 1148.0315" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_68">
+        <g id="Graphic_70">
+          <rect x="1434.3307" y="935.4331" width="150.23622" height="43" fill="#0a55a8"/>
+          <rect x="1434.3307" y="935.4331" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_69">
+          <rect x="1445.6693" y="951.0236" width="150.23622" height="43" fill="#0a55a8"/>
+          <rect x="1445.6693" y="951.0236" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1450.6693 962.7916)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="28.47011" y="16">Workspace</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_67">
+        <path d="M 1520.7874 994.0236 L 1520.7874 1017.878 L 1509.4488 1017.878 L 1509.4488 1041.7323" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_64">
+        <g id="Graphic_66">
+          <rect x="1862.3622" y="1036.7717" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1862.3622" y="1036.7717" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_65">
+          <rect x="1873.7008" y="1052.3622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1873.7008" y="1052.3622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1878.7008 1064.1302)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="28.32611" y="16">Application</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_60">
+        <g id="Graphic_62">
+          <rect x="1669.6063" y="1148.0315" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1669.6063" y="1148.0315" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_61">
+          <rect x="1680.9449" y="1163.622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1680.9449" y="1163.622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1685.9449 1175.39)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="12.47011" y="16">Gateway Group</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_57">
+        <g id="Graphic_59">
+          <rect x="1862.3622" y="1148.0315" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1862.3622" y="1148.0315" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_58">
+          <rect x="1873.7008" y="1163.622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="1873.7008" y="1163.622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1878.7008 1165.658)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="47.43011" y="16">Traffic</tspan>
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="47.15011" y="35.46411">Group</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_54">
+        <g id="Graphic_56">
+          <rect x="2055.1181" y="1148.0315" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="2055.1181" y="1148.0315" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_55">
+          <rect x="2066.4567" y="1163.622" width="150.23622" height="43" fill="#ccc"/>
+          <rect x="2066.4567" y="1163.622" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(2071.4567 1165.658)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="39.88611" y="16">Security</tspan>
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="47.15011" y="35.46411">Group</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Group_78">
+        <g id="Graphic_80">
+          <rect x="1434.3307" y="829.1339" width="150.23622" height="43" fill="#333"/>
+          <rect x="1434.3307" y="829.1339" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_79">
+          <rect x="1445.6693" y="844.7244" width="150.23622" height="43" fill="#333"/>
+          <rect x="1445.6693" y="844.7244" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1450.6693 856.4924)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="45.51811" y="16">Tenant</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_81">
+        <path d="M 1520.7874 887.7244 L 1520.7874 911.5787 L 1509.4488 911.5787 L 1509.4488 935.4331" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_82">
+        <g id="Graphic_84">
+          <rect x="1862.3622" y="935.4331" width="150.23622" height="43" fill="#0a55a8"/>
+          <rect x="1862.3622" y="935.4331" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_83">
+          <rect x="1873.7008" y="951.0236" width="150.23622" height="43" fill="#0a55a8"/>
+          <rect x="1873.7008" y="951.0236" width="150.23622" height="43" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(1878.7008 962.7916)" fill="white">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="28.47011" y="16">Workspace</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_85">
+        <path d="M 1948.819 994.0236 L 1948.819 1015.3976 L 1937.4803 1015.3976 L 1937.4803 1036.7717" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_87">
+        <path d="M 1948.819 1095.3622 L 1948.819 1121.6969 L 1937.4803 1121.6969 L 1937.4803 1148.0315" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_88">
+        <path d="M 1948.819 1095.3622 L 1948.819 1121.6969 L 1744.7244 1121.6969 L 1744.7244 1148.0315" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_89">
+        <path d="M 1948.819 1095.3622 L 1948.819 1121.6969 L 2130.2362 1121.6969 L 2130.2362 1148.0315" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_90">
+        <text transform="translate(1173.1871 775.9119)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="18" fill="black" x="0" y="18">Role Management</tspan>
+        </text>
+      </g>
+      <g id="Graphic_91">
+        <text transform="translate(1430.2751 775.9119)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="18" fill="black" x="7673862e-19" y="18">Resource Hierarchy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_92">
+        <text transform="translate(1868.3596 775.9119)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="18" fill="black" x="881073e-18" y="18">Application Logic</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
