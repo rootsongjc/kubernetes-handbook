@@ -1,7 +1,7 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "images/backgrounds/winter.svg"
+  bg_image : "images/backgrounds/spring1.svg"
   slider_item:
     # - title : "Happy Chinese New Year!"
     #   content: "All expectations can appear， all dreams can be realized， all hopes can be fulfilled， all efforts can be successful！"
@@ -105,7 +105,7 @@ cta:
 ######################## Success story #############################
 success_story:
   enable : true
-  bg_image : "images/backgrounds/bg.svg"
+  bg_image : "images/backgrounds/bg1.svg"
   title : "Quick Start"
   content : "When we need to develop cloud native apps locally, 
   we prefer to have a distributed development environment that is ready to use and easy to customize, 
