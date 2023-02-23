@@ -43,57 +43,48 @@
           <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="0" y="16">Global Control Plane</tspan>
         </text>
       </g>
-      <g id="Group_292">
-        <g id="Graphic_298">
-          <rect x="-828" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-828" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-823 1.5358887)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="49.776" y="16">Multi</tspan>
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="37.464" y="35.46411">Tenancy</tspan>
-          </text>
-        </g>
-        <g id="Graphic_297">
-          <rect x="-664" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-664" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-659 1.5358887)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="40.576" y="16">Service</tspan>
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="33.616" y="35.46411">Inventory</tspan>
-          </text>
-        </g>
-        <g id="Graphic_296">
-          <rect x="-500" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-500" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-495 11.267944)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.528" y="16">Observability</tspan>
-          </text>
-        </g>
-        <g id="Graphic_295">
-          <rect x="-336" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-336" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-331 1.5358887)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="21.448" y="16">Role/Access</tspan>
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.544" y="35.46411">Management</tspan>
-          </text>
-        </g>
-        <g id="Graphic_294">
-          <rect x="-172" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-172" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-167 11.267944)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="48.592" y="16">Audit</tspan>
-          </text>
-        </g>
-        <g id="Graphic_293">
-          <rect x="-8" y="-11" width="146" height="64" fill="white"/>
-          <rect x="-8" y="-11" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-          <text transform="translate(-3 1.5358887)" fill="black">
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="17.912" y="16">Configuration</tspan>
-            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.544" y="35.46411">Management</tspan>
-          </text>
-        </g>
+      <g id="Graphic_298">
+        <rect x="-828" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-823 1.5358887)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="49.776" y="16">Multi</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="37.464" y="35.46411">Tenancy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_297">
+        <rect x="-664" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-659 1.5358887)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="40.576" y="16">Service</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="33.616" y="35.46411">Inventory</tspan>
+        </text>
+      </g>
+      <g id="Graphic_296">
+        <rect x="-500" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-495 11.267944)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.528" y="16">Observability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_295">
+        <rect x="-336" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-331 1.5358887)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="21.448" y="16">Role/Access</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.544" y="35.46411">Management</tspan>
+        </text>
+      </g>
+      <g id="Graphic_294">
+        <rect x="-172" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-167 11.267944)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="48.592" y="16">Audit</tspan>
+        </text>
+      </g>
+      <g id="Graphic_293">
+        <rect x="-8" y="-11" width="146" height="64" fill="white"/>
+        <text transform="translate(-3 1.5358887)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="17.912" y="16">Configuration</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="19.544" y="35.46411">Management</tspan>
+        </text>
       </g>
       <g id="Graphic_291">
         <rect x="-787.5" y="137" width="146" height="64" fill="white"/>
-        <rect x="-787.5" y="137" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-782.5 149.53589)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="40.576" y="16">Service</tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="31.384" y="35.46411">Discovery</tspan>
@@ -101,14 +92,12 @@
       </g>
       <g id="Graphic_290">
         <rect x="-602.75" y="137" width="146" height="64" fill="white"/>
-        <rect x="-602.75" y="137" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-597.75 159.26794)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="32.28" y="16">Telemetry</tspan>
         </text>
       </g>
       <g id="Graphic_289">
         <rect x="-418" y="137" width="146" height="64" fill="white"/>
-        <rect x="-418" y="137" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-413 149.53589)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="37.616" y="16">Disaster</tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1.136" y="35.46411">Recovery/Failover</tspan>
@@ -116,7 +105,6 @@
       </g>
       <g id="Graphic_288">
         <rect x="-233.25" y="137" width="146" height="64" fill="white"/>
-        <rect x="-233.25" y="137" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-228.25 149.53589)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="11.544" y="16">Authentication/</tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="18.952" y="35.46411">Authorization</tspan>
@@ -124,7 +112,6 @@
       </g>
       <g id="Graphic_287">
         <rect x="-48.5" y="137" width="146" height="64" fill="white"/>
-        <rect x="-48.5" y="137" width="146" height="64" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-43.5 149.53589)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="42.792" y="16">Egress</tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="36.728" y="35.46411">Controls</tspan>
@@ -146,28 +133,24 @@
       </g>
       <g id="Graphic_284">
         <rect x="-787.5" y="217" width="885" height="48" fill="#456cb0"/>
-        <rect x="-787.5" y="217" width="885" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-782.5 231.26794)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="392.308" y="16">XCP Central</tspan>
         </text>
       </g>
       <g id="Graphic_283">
         <rect x="-815.84375" y="373.25" width="263.15625" height="48" fill="#333"/>
-        <rect x="-815.84375" y="373.25" width="263.15625" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-810.84375 387.51794)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="73.514125" y="16">Tier1 Gateway</tspan>
         </text>
       </g>
       <g id="Graphic_282">
         <rect x="-476.5781" y="374.25" width="117.3125" height="48" fill="#456cb0"/>
-        <rect x="-476.5781" y="374.25" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-471.5781 388.51794)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="16.01625" y="16">XCP Edge</tspan>
         </text>
       </g>
       <g id="Graphic_281">
         <rect x="-330.73438" y="374.25" width="117.3125" height="48" fill="#333"/>
-        <rect x="-330.73438" y="374.25" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-325.73438 381.8729)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="13" fill="white" x="10.54175" y="13">Tier2 Gateway</tspan>
           <tspan font-family="Helvetica Neue" font-size="13" fill="white" x="1.74725" y="29.37709">(IngressGateway)</tspan>
@@ -175,7 +158,6 @@
       </g>
       <g id="Graphic_280">
         <rect x="-476.5781" y="445.5" width="117.3125" height="48" fill="#456cb0"/>
-        <rect x="-476.5781" y="445.5" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-471.5781 450.0359)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="4.15225" y="16">Local Control </tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="7.85625" y="35.46411">Plane(Istiod)</tspan>
@@ -183,14 +165,12 @@
       </g>
       <g id="Graphic_279">
         <rect x="-136.82813" y="373.25" width="117.3125" height="48" fill="#456cb0"/>
-        <rect x="-136.82813" y="373.25" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-131.82813 387.51794)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="16.01625" y="16">XCP Edge</tspan>
         </text>
       </g>
       <g id="Graphic_278">
         <rect x="9.015625" y="373.25" width="117.3125" height="48" fill="#333"/>
-        <rect x="9.015625" y="373.25" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(14.015625 380.8729)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="13" fill="white" x="10.54175" y="13">Tier2 Gateway</tspan>
           <tspan font-family="Helvetica Neue" font-size="13" fill="white" x="1.74725" y="29.37709">(IngressGateway)</tspan>
@@ -198,7 +178,6 @@
       </g>
       <g id="Graphic_277">
         <rect x="-136.82813" y="444.5" width="117.3125" height="48" fill="#456cb0"/>
-        <rect x="-136.82813" y="444.5" width="117.3125" height="48" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-131.82813 449.0359)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="4.15225" y="16">Local Control </tspan>
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="7.85625" y="35.46411">Plane(Istiod)</tspan>
@@ -223,14 +202,12 @@
       </g>
       <g id="Graphic_271">
         <rect x="-128.8" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="-128.8" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-123.8 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_270">
         <rect x="-75.65625" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="-75.65625" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-70.65625 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
@@ -244,14 +221,12 @@
       </g>
       <g id="Graphic_267">
         <rect x="17.043756" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="17.043756" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(22.043756 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_266">
         <rect x="70.1875" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="70.1875" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(75.1875 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
@@ -268,14 +243,12 @@
       </g>
       <g id="Graphic_262">
         <rect x="-322.70624" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="-322.70624" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-317.70624 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_261">
         <rect x="-269.5625" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="-269.5625" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-264.5625 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
@@ -286,14 +259,12 @@
       </g>
       <g id="Graphic_259">
         <rect x="-468.55" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="-468.55" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-463.55 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_258">
         <rect x="-415.40625" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="-415.40625" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-410.40625 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
@@ -304,14 +275,12 @@
       </g>
       <g id="Graphic_256">
         <rect x="-807.8156" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="-807.8156" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-802.8156 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_255">
         <rect x="-754.6719" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="-754.6719" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-749.6719 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
@@ -322,14 +291,12 @@
       </g>
       <g id="Graphic_253">
         <rect x="-661.9719" y="554.9" width="47.94063" height="25.70001" fill="#456cb0"/>
-        <rect x="-661.9719" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-656.9719 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="1.370316" y="10">Sidecar</tspan>
         </text>
       </g>
       <g id="Graphic_252">
         <rect x="-608.8281" y="554.9" width="47.94063" height="25.70001" fill="#333"/>
-        <rect x="-608.8281" y="554.9" width="47.94063" height="25.70001" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(-603.8281 561.60497)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="10" fill="white" x="9.525316" y="10">App</tspan>
         </text>
