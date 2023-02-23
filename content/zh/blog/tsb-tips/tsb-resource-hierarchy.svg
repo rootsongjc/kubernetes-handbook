@@ -12,7 +12,6 @@
       </g>
       <g id="Graphic_2">
         <rect x="1176.378" y="841.8898" width="150.23622" height="43" fill="#f15623"/>
-        <rect x="1176.378" y="841.8898" width="150.23622" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
         <text transform="translate(1181.378 853.6577)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="23.13411" y="16">Organization</tspan>
         </text>

@@ -33,7 +33,7 @@ image: "images/banner/tsb.jpg"
 
 ## TSB 中的资源对象 {#tsb-resources}
 
-图 1 展示了 TSB 的基本资源对象，其中只要分为三大类：
+图 1 展示了 TSB 的基本资源对象，其中只要分为五大类：
 
 - 为了实现多租户和多集群管理的资源对象，如 Tenant、Organization、Workspace 等；
 - 主要功能对象配置组，如 Traffic、Security、Gateway 等；
@@ -45,53 +45,53 @@ image: "images/banner/tsb.jpg"
 
 TSB 是建立在 Istio 之上的，下表中列出了 TSB 中的可以通过 tctl 命令获取的资源对象，其中部分名称与 Kubernetes 中原生资源对象重复，但它们并不相同：
 
-| 全称                        | 缩写  | 说明                                                         |
-| --------------------------- | ----- | ------------------------------------------------------------ |
-| ApplicationAccessBindings   | aab   | 配置应用程序用户访问权限。                                   |
-| AccessBindings              | ab    | 为 TSB 中任何资源的用户分配访问角色的配置。                  |
-| AuthorizationPolicy         | ap    | 同 Istio 中的授权策略。                                      |
-| APIAccessBindings           | apiab | 配置 API 用户访问权限。                                      |
-| Application                 | app   | 应用程序的配置，应用程序表示一组相互关联的服务逻辑分组，并公开一组实现完整业务逻辑的 API。 |
-| Cluster                     | cs    | Kubernetes 集群。要想将 Kubernetes 集群纳入 TSB 管理，首先需要声明 Cluster 添加，然后是部署 TSB Agent 和控制平面（包括 Istio、XCP、GitOps、OAP 等组件）。 |
-| DestinationRule             | dr    | Istio 原生 CRD，主要用来划分可路由的集群及负载均衡规则。     |
-| EnvoyFilter                 | ef    | Istio 原生 CRD，主要用来扩展 Envoy 的功能。                  |
-| EgressGateway               | eg    | 配置工作负载作为出口网关。                                   |
-| GatewayAccessBindings       | gab   | 配置网关组用户访问权限。                                     |
-| GatewayGroup                | gg    | 网关组。                                                     |
-| Gateway                     | gw    | 管理 TSB 中设置的网关，而非 Istio 中的原生 Gateway CRD。     |
-| IstioInternalAccessBindings | iab   | 为 Istio 内部组的用户分配访问角色的配置。                    |
-| IngressGateway              | ig    | 配置负载作为入口网关，类似于 Istio 中的原生 Gateway。        |
-| IstioInternalGroup          | iig   | 配置 Istio 内部的 TSB 资源。                                 |
-| OrganizationAccessBindings  | oab   | 配置组织用户访问权限。                                       |
-| Organization                | org   | 组织。                                                       |
-| OrganizationSetting         | os    | 组织的默认配置，如区域 Failover、安全、流量、网络配置等。    |
-| Metric                      | otm   | 运行时获取的服务度量。                                       |
-| Source                      | ots   | Sources 服务公开了管理来自资源的遥测源。                     |
-| PeerAuthentication          | pa    | Istio 原生 CRD，配置对等认证（配置 mTLS）。                  |
-| RequestAuthentication       | ra    | Istio 原生 CRD，配置请求认证（JWT 规则配置）。               |
-| ServiceAccount              | sa    | 不同于 Kubernetes 中的原生资源对象，TSB 自定义的服务账号配置。 |
-| SecurityAccessBindings      | sab   | 配置安全组用户访问权限。                                     |
-| Sidecar                     | sd    | 配置预安装的 Istio Sidecar。                                 |
-| ServiceEntry                | se    | Istio 原生 CRD，添加服务对象。                               |
-| SecurityGroup               | sg    | 安全配置组。                                                 |
-| ServiceRoute                | sr    | 配置服务路由。                                               |
-| SecuritySetting             | ss    | 安全设置将配置应用于 SecurityGroup 或 Workspace 中的一组代理工作负载。当应用于 SecurityGroup 时，缺失的字段将从 Workspace 范围设置继承值(如果有的话)。 |
-| ServiceSecuritySetting      | sss   | 安全组配置。                                                 |
-| Service                     | svc   | 注册中心中的服务，表示所有这些单独服务的聚合和逻辑视图，并提供聚合指标等高级功能。 |
-| Tier1Gateway                | t1    | TSB 一级网关配置，指定网关负载。                             |
-| TrafficAccessBindings       | tab   | 流量访问角色配置。                                           |
-| TrafficGroup                | tg    | 流量管理组。                                                 |
-| TenantAccessBindings        | tnab  | 租户角色配置。                                               |
-| TenantSetting               | tns   | 租户配置。                                                   |
-| TrafficSetting              | ts    | 流量配置。                                                   |
-| VirtualService              | vs    | Istio 原生 CRD，配置流量路由。                               |
-| WorkspaceAccessBindings     | wab   | Workspace 角色配置。                                         |
-| WasmExtension               | wext  | 配置管理 Wasm 扩展。                                         |
-| WasmPlugin                  | wp    | Istio 原生 CRD，配置 Wasm 插件。                             |
-| Workspace                   | ws    | 划定工作空间。                                               |
-| WorkspaceSetting            | wss   | 配置工作空间。                                               |
+| **名称**                    | **说明**                                                     |
+| --------------------------- | ------------------------------------------------------------ |
+| ApplicationAccessBindings   | 配置应用程序用户访问权限。                                   |
+| AccessBindings              | 为 TSB 中任何资源的用户分配访问角色的配置。                  |
+| AuthorizationPolicy         | 同 Istio 中的授权策略。                                      |
+| APIAccessBindings           | 配置 API 用户访问权限。                                      |
+| Application                 | 应用程序的配置，应用程序表示一组相互关联的服务逻辑分组，并公开一组实现完整业务逻辑的 API。 |
+| Cluster                     | Kubernetes 集群。要想将 Kubernetes 集群纳入 TSB 管理，首先需要声明 Cluster 添加，然后是部署 TSB Agent 和控制平面（包括 Istio、XCP、GitOps、OAP 等组件）。 |
+| DestinationRule             | Istio 原生 CRD，主要用来划分可路由的集群及负载均衡规则。     |
+| EnvoyFilter                 | Istio 原生 CRD，主要用来扩展 Envoy 的功能。                  |
+| EgressGateway               | 配置工作负载作为出口网关。                                   |
+| GatewayAccessBindings       | 配置网关组用户访问权限。                                     |
+| GatewayGroup                | 网关组。                                                     |
+| Gateway                     | 管理 TSB 中设置的网关，而非 Istio 中的原生 Gateway CRD。     |
+| IstioInternalAccessBindings | 为 Istio 内部组的用户分配访问角色的配置。                    |
+| IngressGateway              | 配置负载作为入口网关，类似于 Istio 中的原生 Gateway。        |
+| IstioInternalGroup          | 配置 Istio 内部的 TSB 资源。                                 |
+| OrganizationAccessBindings  | 配置组织用户访问权限。                                       |
+| Organization                | 组织。                                                       |
+| OrganizationSetting         | 组织的默认配置，如区域 Failover、安全、流量、网络配置等。    |
+| Metric                      | 运行时获取的服务度量。                                       |
+| Source                      | Sources 服务公开了管理来自资源的遥测源。                     |
+| PeerAuthentication          | Istio 原生 CRD，配置对等认证（配置 mTLS）。                  |
+| RequestAuthentication       | Istio 原生 CRD，配置请求认证（JWT 规则配置）。               |
+| ServiceAccount              | 不同于 Kubernetes 中的原生资源对象，TSB 自定义的服务账号配置。 |
+| SecurityAccessBindings      | 配置安全组用户访问权限。                                     |
+| Sidecar                     | 配置预安装的 Istio Sidecar。                                 |
+| ServiceEntry                | Istio 原生 CRD，添加服务对象。                               |
+| SecurityGroup               | 安全配置组。                                                 |
+| ServiceRoute                | 配置服务路由。                                               |
+| SecuritySetting             | 安全设置将配置应用于 SecurityGroup 或 Workspace 中的一组代理工作负载。当应用于 SecurityGroup 时，缺失的字段将从 Workspace 范围设置继承值(如果有的话)。 |
+| ServiceSecuritySetting      | 安全组配置。                                                 |
+| Service                     | 注册中心中的服务，表示所有这些单独服务的聚合和逻辑视图，并提供聚合指标等高级功能。 |
+| Tier1Gateway                | TSB 一级网关配置，指定网关负载。                             |
+| TrafficAccessBindings       | 流量访问角色配置。                                           |
+| TrafficGroup                | 流量管理组。                                                 |
+| TenantAccessBindings        | 租户角色配置。                                               |
+| TenantSetting               | 租户配置。                                                   |
+| TrafficSetting              | 流量配置。                                                   |
+| VirtualService              | Istio 原生 CRD，配置流量路由。                               |
+| WorkspaceAccessBindings     | Workspace 角色配置。                                         |
+| WasmExtension               | 配置管理 Wasm 扩展。                                         |
+| WasmPlugin                  | Istio 原生 CRD，配置 Wasm 插件。                             |
+| Workspace                   | 划定工作空间。                                               |
+| WorkspaceSetting            | 配置工作空间。                                               |
 
-你可以使用 tctl 命令行工具来管理 TSB，它的使用方法与 kubectl 类似，上面的列表是使用 `tctl get` 命令可以列出的资源对象。实际上 TSB 中的资源对象不止这些，关于 TSB 中 API 资源的详细说明请参考 [TSB  文档](https://docs.tetrate.io/service-bridge/1.6.x/en-us/reference)。
+你可以使用 tctl 命令行工具来管理 TSB，它的使用方法与 kubectl 类似，上面的列表是使用 `tctl get` 命令可以列出的资源对象。实际上 TSB 中的资源对象不止这些，关于 TSB 中 API 资源的详细说明请参考 [TSB 文档](https://docs.tetrate.io/service-bridge/1.6.x/en-us/reference)。
 
 ## TSB 架构 {#tsb-arch}
 
