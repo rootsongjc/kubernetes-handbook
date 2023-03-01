@@ -1,0 +1,21 @@
+<video class="video-shortcode" preload="{{ .Get "preload" }}" autoplay loop>
+    <source src="{{ .Get "src" }}" type="{{ .Get "type" }}">
+    There should have been a video here but your browser does not seem
+    to support it.
+</video>
+{{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+    <figcaption class="mx-auto text-center">
+        {{ with (.Get "title") -}}
+            {{ . }}
+        {{- end -}}
+        {{- if or (.Get "caption") (.Get "attr") -}}<p>
+            {{- .Get "caption" | markdownify -}}
+            {{- with .Get "attrlink" }}
+                <a href="{{ . }}">
+            {{- end -}}
+            {{- .Get "attr" | markdownify -}}
+            {{- if .Get "attrlink" }}</a>{{ end }}</p>
+        {{- end }}
+    </figcaption>
+{{- end }}
+
