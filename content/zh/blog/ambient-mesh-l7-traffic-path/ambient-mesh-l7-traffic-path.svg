@@ -1,1 +1,641 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" width="2250" height="1153" version="1.1" viewBox="1933 176 2250 1153"><defs><marker id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" color="#000" markerHeight="8" markerUnits="strokeWidth" markerWidth="10" orient="auto" overflow="visible" viewBox="-1 -4 10 8"><g><path fill="currentColor" stroke="currentColor" stroke-width="1" d="M 8 0 L 0 -3 L 0 3 Z"/></g></marker></defs><g id="Canvas__-L7" fill="none" fill-opacity="1" stroke="none" stroke-dasharray="none" stroke-opacity="1"><title>博客-L7</title><rect width="2250" height="1153" x="1933" y="176" fill="#fff"/><g id="Canvas__-L7_Layer_1"><title>Layer 1</title><g id="Graphic_149"><rect width="2249.645" height="1151.614" x="1933.228" y="176.791" fill="#fff"/></g><g id="Graphic_87"><rect width="566.929" height="1105.512" x="1964.409" y="199.843" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(1969.4095 1280.8902)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Node A</tspan></text></g><g id="Graphic_86"><rect width="566.929" height="1105.512" x="3577.146" y="199.843" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3582.1457 1280.8902)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Node B</tspan></text></g><g id="Graphic_89"><title>ztunnel a pod</title><rect width="501.732" height="588.431" x="1997.008" y="518.499" fill="#f3f9ff"/><rect width="501.732" height="588.431" x="1997.008" y="518.499" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2002.008 1082.465)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Ztunnel A Pod</tspan></text></g><g id="Graphic_88"><rect width="501.732" height="529.769" x="3611.87" y="422.362" fill="#f3f9ff"/><rect width="501.732" height="529.769" x="3611.87" y="422.362" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3616.87 927.6668)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Ztunnel B Pod</tspan></text></g><g id="Graphic_85"><rect width="391.181" height="68.031" x="2050.834" y="236.693" fill="#333"/><rect width="391.181" height="68.031" x="2050.834" y="236.693" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#fff" transform="translate(2055.8342 241.69292)"><tspan x="137.247" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Service A Pod</tspan></text></g><g id="Graphic_84"><rect width="391.181" height="46.772" x="2050.834" y="422.362" fill="#dadada"/><rect width="391.181" height="46.772" x="2050.834" y="422.362" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2055.8342 426.792)"><tspan x="162.015" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">istioout</tspan> <tspan x="139.439" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.127.1</tspan></text></g><g id="Graphic_83"><rect width="245.969" height="46.772" x="2123.44" y="518.499" fill="#dadada"/><rect width="245.969" height="46.772" x="2123.44" y="518.499" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2128.44 522.9284)"><tspan x="84.521" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">pistioout</tspan> <tspan x="66.833" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.127.2</tspan></text></g><g id="Graphic_82"><rect width="391.181" height="365.669" x="2052.284" y="630.709" fill="#fff"/><rect width="391.181" height="365.669" x="2052.284" y="630.709" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2057.2835 971.9139)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Envoy Proxy</tspan></text></g><g id="Line_81"><line x1="2246.425" x2="2246.425" y1="304.724" y2="322.03" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_80"><line x1="2246.425" x2="2246.425" y1="469.134" y2="508.599" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_79"><line x1="2246.55" x2="2246.846" y1="565.27" y2="620.809" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_78"><rect width="391.181" height="68.031" x="3665.02" y="236.693" fill="#333"/><rect width="391.181" height="68.031" x="3665.02" y="236.693" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#fff" transform="translate(3670.0197 241.69292)"><tspan x="137.095" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Service B Pod</tspan></text></g><g id="Graphic_77"><rect width="391.181" height="57.734" x="3665.02" y="1024.724" fill="#dadada"/><rect width="391.181" height="57.734" x="3665.02" y="1024.724" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 1034.6352)"><tspan x="167.655" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">istioin</tspan> <tspan x="139.439" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.126.1</tspan></text></g><g id="Graphic_76"><rect width="391.181" height="199.755" x="3665.02" y="462.576" fill="#fff"/><rect width="391.181" height="199.755" x="3665.02" y="462.576" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 637.8667)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Envoy Proxy</tspan></text></g><g id="Graphic_75"><rect width="232.441" height="34.99" x="3744.39" y="554.51" fill="#0a55a8"/><text fill="#fff" transform="translate(3749.39 562.27267)"><tspan x="14.188" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Ztunnel_inbound Listener</tspan></text></g><g id="Graphic_74"><rect width="232.441" height="34.99" x="3744.39" y="494.017" fill="#0a55a8"/><text fill="#fff" transform="translate(3749.39 501.7796)"><tspan x="22.196" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Virtual_inbound Cluster</tspan></text></g><g id="Line_73"><line x1="3860.61" x2="3860.61" y1="1249.911" y2="1092.358" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_72"><line x1="3860.61" x2="3860.61" y1="1024.724" y2="836.305" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_71"><line x1="3860.61" x2="3860.61" y1="768.671" y2="750.977" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="Line_70"><line x1="3860.61" x2="3860.61" y1="554.51" y2="538.907" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_69"><line x1="3860.61" x2="3860.61" y1="422.362" y2="408.165" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_67"><rect width="232.441" height="28.346" x="2131.654" y="688.532" fill="#0a55a8"/><text fill="#fff" transform="translate(2136.6536 692.9728)"><tspan x="8.548" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Ztunnel_outbound Listener</tspan></text></g><g id="Graphic_66"><rect width="232.441" height="28.346" x="2131.654" y="768.671" fill="#0a55a8"/><text fill="#fff" transform="translate(2136.6536 773.1124)"><tspan x="45.436" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Service A Cluster</tspan></text></g><g id="Graphic_65"><rect width="232.441" height="28.346" x="2131.654" y="848.811" fill="#0a55a8"/><text fill="#fff" transform="translate(2136.6536 853.2519)"><tspan x="9.316" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Internal Upstream Listener</tspan></text></g><g id="Line_64"><line x1="2247.874" x2="2247.874" y1="716.878" y2="758.771" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_63"><rect width="243.071" height="24.336" x="2123.44" y="727.566" fill="#fff"/><text fill="#000" transform="translate(2128.44 732.5661)"><tspan x="7.173" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">Match the destination port and cluster IP</tspan></text></g><g id="Graphic_62"><rect width="232.441" height="28.346" x="2131.654" y="928.95" fill="#0a55a8"/><text fill="#fff" transform="translate(2136.6536 933.3915)"><tspan x="16.244" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Outbound Tunnel Cluster</tspan></text></g><g id="Line_61"><line x1="2247.874" x2="2247.874" y1="797.018" y2="838.911" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_60"><line x1="2247.874" x2="2247.874" y1="877.157" y2="919.05" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_59"><rect width="243.071" height="24.336" x="2126.339" y="477.448" fill="#fff"/><text fill="#000" transform="translate(2131.3386 482.44794)"><tspan x="77.859" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">Geneva tunnel</tspan></text></g><g id="Graphic_58"><rect width="42.608" height="24.336" x="2226.57" y="805.756" fill="#fff"/><text fill="#000" transform="translate(2231.57 810.7558)"><tspan x="4.526" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">EDS</tspan></text></g><g id="Graphic_57"><rect width="391.181" height="28.346" x="2052.284" y="1250.079" fill="#dadada"/><rect width="391.181" height="28.346" x="2052.284" y="1250.079" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2057.2835 1254.5199)"><tspan x="173.991" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_56"><rect width="391.181" height="25.348" x="2052.284" y="581.985" fill="#f3f9ff"/><text fill="#000" transform="translate(2057.2835 584.927)"><tspan x="166.583" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">tproxy</tspan></text></g><g id="Graphic_55"><rect width="98.922" height="28.346" x="2196.964" y="276.378" fill="#dadada"/><text fill="#000" transform="translate(2201.9637 280.81913)"><tspan x="27.861" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_54"><rect width="391.181" height="28.346" x="2050.834" y="331.93" fill="#dadada"/><rect width="391.181" height="28.346" x="2050.834" y="331.93" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2055.8342 336.37154)"><tspan x="161.391" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">vethxxx</tspan></text></g><g id="Line_53"><line x1="2246.425" x2="2246.425" y1="360.277" y2="412.462" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_52"><rect width="289.936" height="39.684" x="2101.457" y="366.63" fill="#fff"/><text fill="#000" transform="translate(2106.4568 371.6295)"><tspan x="34.992" y="12" fill="#000" font-family="Helvetica Neue" font-size="12" font-weight="bold">iptables chain ztunnel-PREROUTING</tspan> <tspan x="89.946" y="26.348" fill="#000" font-family="Helvetica Neue" font-size="12">mark 0x100/0x100</tspan></text></g><g id="Graphic_51"><rect width="70.752" height="28.346" x="2212.498" y="630.709" fill="#0a55a8"/><text fill="#fff" transform="translate(2217.498 635.14984)"><tspan x="8.136" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">15001</tspan></text></g><g id="Graphic_50"><rect width="136.772" height="24.336" x="2179.488" y="886.542" fill="#fff"/><text fill="#000" transform="translate(2184.4882 891.5422)"><tspan x="10.934" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">HTTP Tunnel config</tspan></text></g><g id="Graphic_49"><rect width="219.685" height="28.346" x="2138.032" y="1078.583" fill="#dadada"/><rect width="219.685" height="28.346" x="2138.032" y="1078.583" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2143.0315 1083.0239)"><tspan x="88.243" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_48"><rect width="391.181" height="28.346" x="2052.284" y="1132.441" fill="#dadada"/><rect width="391.181" height="28.346" x="2052.284" y="1132.441" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2057.2835 1136.8821)"><tspan x="161.391" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">vethxxx</tspan></text></g><g id="Line_47"><line x1="2247.874" x2="2247.874" y1="659.055" y2="678.632" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_46"><line x1="2247.874" x2="2247.874" y1="957.297" y2="1068.683" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_45"><rect width="391.181" height="46.772" x="2052.284" y="1008.32" fill="#f3f9ff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 2052.2835 1008.3204 L 2443.4646 1008.3204 L 2443.4646 1055.092 L 2052.2835 1055.092 Z"/><text fill="#000" transform="translate(2057.2835 1012.7501)"><tspan x="140.535" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">init container</tspan> <tspan x="79.767" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules for ztunnel</tspan></text></g><g id="Line_44"><line x1="2247.874" x2="2247.874" y1="1106.929" y2="1122.541" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_43"><line x1="2247.874" x2="2247.874" y1="1160.787" y2="1240.179" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_42"><rect width="391.181" height="50.616" x="2052.284" y="1180.011" fill="#fff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 2052.2835 1180.0114 L 2443.4646 1180.0114 L 2443.4646 1230.6273 L 2052.2835 1230.6273 Z"/><text fill="#000" transform="translate(2057.2835 1186.3633)"><tspan x="157.727" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Istio CNI</tspan> <tspan x="38.559" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules and veth pair for node</tspan></text></g><g id="Graphic_41"><rect width="391.181" height="28.514" x="3665.02" y="1249.911" fill="#dadada"/><rect width="391.181" height="28.514" x="3665.02" y="1249.911" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 1254.436)"><tspan x="173.991" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_40"><rect width="391.181" height="57.734" x="3665.02" y="1172.894" fill="#fff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 3665.0197 1172.8936 L 4056.201 1172.8936 L 4056.201 1230.6273 L 3665.0197 1230.6273 Z"/><text fill="#000" transform="translate(3670.0197 1182.8044)"><tspan x="157.727" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Istio CNI</tspan> <tspan x="38.559" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules and veth pair for node</tspan></text></g><g id="Graphic_39"><rect width="391.181" height="57.734" x="3665.02" y="768.671" fill="#dadada"/><rect width="391.181" height="57.734" x="3665.02" y="768.671" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 778.582)"><tspan x="162.767" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">pistioin</tspan> <tspan x="139.439" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.126.2</tspan></text></g><g id="Graphic_38"><rect width="391.181" height="57.734" x="3665.02" y="849.785" fill="#f3f9ff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 3665.0197 849.7847 L 4056.201 849.7847 L 4056.201 907.5185 L 3665.0197 907.5185 Z"/><text fill="#000" transform="translate(3670.0197 859.6955)"><tspan x="140.535" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">init container</tspan> <tspan x="79.767" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules for ztunnel</tspan></text></g><g id="Graphic_37"><rect width="70" height="28" x="3788.988" y="634" fill="#0a55a8"/><text fill="#fff" transform="translate(3793.988 638.26794)"><tspan x="7.76" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">15006</tspan></text></g><g id="Graphic_36"><rect width="391.181" height="19.355" x="3665.02" y="731.622" fill="#f3f9ff"/><text fill="#000" transform="translate(3670.0197 731.5674)"><tspan x="166.583" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">tproxy</tspan></text></g><g id="Graphic_35"><rect width="289.936" height="39.684" x="3717.768" y="1113.926" fill="#fff"/><text fill="#000" transform="translate(3722.7683 1118.9259)"><tspan x="34.992" y="12" fill="#000" font-family="Helvetica Neue" font-size="12" font-weight="bold">iptables chain ztunnel-PREROUTING</tspan> <tspan x="89.946" y="26.348" fill="#000" font-family="Helvetica Neue" font-size="12">mark 0x200/0x200</tspan></text></g><g id="Graphic_34"><rect width="243.071" height="24.336" x="3739.075" y="972.042" fill="#fff"/><text fill="#000" transform="translate(3744.075 977.042)"><tspan x="77.859" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">Geneva tunnel</tspan></text></g><g id="Graphic_33"><rect width="136.772" height="21.258" x="3792.224" y="422.362" fill="#dadada"/><rect width="136.772" height="21.258" x="3792.224" y="422.362" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3797.2244 423.2589)"><tspan x="46.786" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_32"><rect width="98.922" height="28.346" x="3811.149" y="276.378" fill="#dadada"/><text fill="#000" transform="translate(3816.149 280.81913)"><tspan x="27.861" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_31"><rect width="391.181" height="21.258" x="3665.02" y="377.008" fill="#dadada"/><rect width="391.181" height="21.258" x="3665.02" y="377.008" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 377.9046)"><tspan x="161.391" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">vethxxx</tspan></text></g><g id="Graphic_30"><rect width="391.181" height="21.258" x="3665.02" y="330.237" fill="#dadada"/><rect width="391.181" height="21.258" x="3665.02" y="330.237" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(3670.0197 331.1341)"><tspan x="161.391" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">vethxxx</tspan></text></g><g id="Line_29"><line x1="3860.61" x2="3860.61" y1="377.008" y2="361.395" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_28"><line x1="3860.61" x2="3860.61" y1="330.237" y2="314.624" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_26"><rect width="70.752" height="28.346" x="3859.307" y="633.984" fill="#0a55a8"/><text fill="#fff" transform="translate(3864.307 638.4255)"><tspan x="8.136" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">15008</tspan></text></g><g id="Line_25"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3860.6103 731.622 L 3860.6103 711.835 L 3894.683 711.835 L 3894.683 672.2308"/></g><g id="Graphic_24"><rect width="58.11" height="24.336" x="3865.628" y="682.527" fill="#f3f9ff"/><text fill="#000" transform="translate(3870.628 687.527)"><tspan x="13.387" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">TLS</tspan></text></g><g id="Line_23"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3823.988 634 L 3823.988 611.7499 L 3860.6103 611.7499 L 3860.6103 599.3998"/></g><g id="Line_22"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3894.683 633.9843 L 3894.683 611.74206 L 3860.6103 611.74206 L 3860.6103 599.3998"/></g><g id="Line_21"><line x1="3860.61" x2="3860.61" y1="494.017" y2="453.52" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_20"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3860.6103 731.622 L 3860.6103 711.8641 L 3823.988 711.8641 L 3823.988 671.9"/></g><g id="Graphic_19"><rect width="58.11" height="24.336" x="3794.933" y="681.946" fill="#f3f9ff"/><text fill="#000" transform="translate(3799.933 686.9459)"><tspan x="10.945" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">Plain</tspan></text></g><g id="Line_5"><line x1="2443.465" x2="2837.146" y1="1264.231" y2="1264.19" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_4"><text fill="#000" transform="translate(2560.722 1244.7475)"><tspan x="13.624" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">HBONE Tunnel</tspan> <tspan x="0" y="35.464" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Waypoint IP:15006</tspan></text></g><g id="Line_3"><line x1="3238.227" x2="3655.12" y1="1264.168" y2="1264.168" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_2"><text fill="#000" transform="translate(3396.1964 1244.7039)"><tspan x="1.192" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">HBONE Tunnel</tspan> <tspan x="0" y="35.464" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Pod B IP:15008</tspan></text></g><g id="Graphic_130"><rect width="566.929" height="1105.512" x="2754.478" y="199.843" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2759.4784 1280.8902)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Node C</tspan></text></g><g id="Graphic_129"><rect width="501.732" height="719.737" x="2787.077" y="284.882" fill="#f3f9ff"/><rect width="501.732" height="719.737" x="2787.077" y="284.882" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2792.0768 980.1543)"><tspan x="0" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Waypoint Proxy B Pod</tspan></text></g><g id="Graphic_127"><rect width="391.181" height="57.734" x="2847.046" y="1049.848" fill="#dadada"/><rect width="391.181" height="57.734" x="2847.046" y="1049.848" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2852.0463 1059.7586)"><tspan x="167.655" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">istioin</tspan> <tspan x="139.439" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.126.1</tspan></text></g><g id="Line_123"><line x1="3042.637" x2="3042.637" y1="1249.911" y2="1117.482" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_122"><line x1="3042.637" x2="3042.637" y1="1049.848" y2="916.444" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_121"><line x1="3042.637" x2="3042.637" y1="848.811" y2="832.592" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g><g id="Graphic_118"><rect width="391.181" height="28.514" x="2847.046" y="1249.911" fill="#dadada"/><rect width="391.181" height="28.514" x="2847.046" y="1249.911" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2852.0463 1254.436)"><tspan x="173.991" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_116"><rect width="391.181" height="57.734" x="2847.046" y="848.811" fill="#dadada"/><rect width="391.181" height="57.734" x="2847.046" y="848.811" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2852.0463 858.7216)"><tspan x="162.767" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">pistioin</tspan> <tspan x="139.439" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">192.168.126.2</tspan></text></g><g id="Graphic_115"><rect width="391.181" height="43.04" x="2847.046" y="928.95" fill="#f3f9ff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 2847.0463 928.9503 L 3238.2274 928.9503 L 3238.2274 971.9904 L 2847.0463 971.9904 Z"/><text fill="#000" transform="translate(2852.0463 931.5143)"><tspan x="140.535" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">init container</tspan> <tspan x="79.767" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules for ztunnel</tspan></text></g><g id="Graphic_113"><rect width="391.181" height="19.355" x="2847.046" y="813.237" fill="#f3f9ff"/><text fill="#000" transform="translate(2852.0463 813.1821)"><tspan x="166.583" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">tproxy</tspan></text></g><g id="Graphic_112"><rect width="289.936" height="39.684" x="2899.795" y="1126.772" fill="#fff"/><text fill="#000" transform="translate(2904.795 1131.7721)"><tspan x="34.992" y="12" fill="#000" font-family="Helvetica Neue" font-size="12" font-weight="bold">iptables chain ztunnel-PREROUTING</tspan> <tspan x="89.946" y="26.348" fill="#000" font-family="Helvetica Neue" font-size="12">mark 0x200/0x200</tspan></text></g><g id="Graphic_111"><rect width="243.071" height="24.336" x="2921.102" y="1015.065" fill="#fff"/><text fill="#000" transform="translate(2926.1015 1020.0651)"><tspan x="77.859" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">Geneva tunnel</tspan></text></g><g id="Graphic_107"><rect width="289.936" height="28.514" x="2897.669" y="284.798" fill="#dadada"/><rect width="289.936" height="28.514" x="2897.669" y="284.798" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2902.669 289.32307)"><tspan x="123.368" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">eth0</tspan></text></g><g id="Graphic_17"><rect width="391.181" height="463.567" x="2847.046" y="333.071" fill="#fff"/><rect width="391.181" height="463.567" x="2847.046" y="333.071" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2852.0463 769.6374)"><tspan x="0" y="17" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">E</tspan> <tspan y="17" fill="#000" font-family="PingFang SC" font-size="16" font-weight="bold">nvoy Proxy</tspan></text></g><g id="Graphic_16"><rect width="322.616" height="27.67" x="2881.329" y="723.677" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 727.77975)"><tspan x="2.836" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">inbound_CONNECT_terminate Listnener</tspan></text></g><g id="Graphic_15"><rect width="322.616" height="27.67" x="2881.329" y="677.668" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 681.7705)"><tspan x="48.924" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Internal Inbound VIP Cluster</tspan></text></g><g id="Graphic_14"><rect width="322.616" height="27.67" x="2881.329" y="622.06" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 626.16274)"><tspan x="76.908" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Inbound VIP Listener</tspan></text></g><g id="Graphic_13"><rect width="322.616" height="27.67" x="2881.329" y="566.452" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 570.555)"><tspan x="80.316" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Inbound VIP Cluster</tspan></text></g><g id="Graphic_12"><rect width="322.616" height="27.833" x="2881.329" y="409.064" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 414.0636)"><tspan x="10.396" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">inbound_CONNECT_originate Listener</tspan></text></g><g id="Graphic_11"><rect width="322.616" height="27.833" x="2881.329" y="356.328" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 361.32757)"><tspan x="13.804" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">inbound_CONNECT_originate Cluster</tspan></text></g><g id="Line_10"><line x1="3042.637" x2="3042.637" y1="723.677" y2="715.237" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_9"><line x1="3042.637" x2="3042.637" y1="677.668" y2="659.63" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_8"><line x1="3042.637" x2="3042.637" y1="622.06" y2="604.022" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_6"><line x1="3042.637" x2="3042.637" y1="409.064" y2="394.061" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_90"><rect width="322.616" height="27.67" x="2881.329" y="514.044" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 518.14673)"><tspan x="74.532" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Inbound Pod Listener</tspan></text></g><g id="Graphic_91"><rect width="322.616" height="27.67" x="2881.329" y="461.636" fill="#0a55a8"/><text fill="#fff" transform="translate(2886.3288 465.7385)"><tspan x="77.94" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">Inbound Pod Cluster</tspan></text></g><g id="Graphic_93"><rect width="135.968" height="27.331" x="2974.251" y="769.686" fill="#0a55a8"/><text fill="#fff" transform="translate(2979.251 773.6199)"><tspan x="40.744" y="16" fill="#fff" font-family="Helvetica Neue" font-size="16" font-weight="bold">15006</tspan></text></g><g id="Line_132"><line x1="3042.637" x2="3042.637" y1="813.237" y2="806.909" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_133"><line x1="3042.637" x2="3042.637" y1="566.452" y2="551.614" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_134"><line x1="3042.637" x2="3042.637" y1="514.044" y2="499.205" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_135"><line x1="3042.637" x2="3042.637" y1="461.636" y2="446.797" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_136"><line x1="3042.235" x2="3042.235" y1="769.686" y2="761.238" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Line_137"><line x1="3042.637" x2="3042.637" y1="356.328" y2="323.212" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)"/></g><g id="Graphic_138"><rect width="391.181" height="28.346" x="2847.046" y="236.693" fill="#dadada"/><rect width="391.181" height="28.346" x="2847.046" y="236.693" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><text fill="#000" transform="translate(2852.0463 241.1341)"><tspan x="161.391" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">vethxxx</tspan></text></g><g id="Line_139"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3042.637 284.79794 L 3042.637 274.91866 L 3042.637 274.96063 L 3042.637 274.93937"/></g><g id="Line_143"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" marker-end="url(#FilledArrow_Marker)" d="M 3238.2274 250.86614 L 3305.0946 250.86614 L 3305.0946 1145.3704 L 3202.2765 1145.3704 L 3202.2765 1240.0109"/></g><g id="Graphic_144"><text fill="#000" transform="translate(3256.2716 232.41815)"><tspan x="7.416" y="15" fill="#000" font-family="Helvetica Neue" font-size="16">To</tspan> <tspan x="0" y="33.448" fill="#000" font-family="Helvetica Neue" font-size="16">eth0</tspan></text></g><g id="Graphic_145"><text fill="#000" transform="translate(3052.8642 658.3318)"><tspan x="2.483" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">STATIC</tspan></text></g><g id="Graphic_146"><text fill="#000" transform="translate(3052.8642 547.83465)"><tspan x="4.526" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">EDS</tspan></text></g><g id="Graphic_147"><text fill="#000" transform="translate(3052.8642 442.95276)"><tspan x="2.483" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">STATIC</tspan></text></g><g id="Graphic_148"><text fill="#000" transform="translate(3048.6122 338.07087)"><tspan x="4.967" y="11" fill="#000" font-family="Helvetica Neue" font-size="12">ORIGINAL_DST</tspan></text></g><g id="Graphic_117"><rect width="391.181" height="57.734" x="2847.046" y="1172.894" fill="#fff"/><path stroke="gray" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M 2847.0463 1172.8936 L 3238.2274 1172.8936 L 3238.2274 1230.6273 L 2847.0463 1230.6273 Z"/><text fill="#000" transform="translate(2852.0463 1182.8044)"><tspan x="157.727" y="16" fill="#000" font-family="Helvetica Neue" font-size="16" font-weight="bold">Istio CNI</tspan> <tspan x="38.559" y="34.464" fill="#000" font-family="Helvetica Neue" font-size="16">Setup iptables rules and veth pair for node</tspan></text></g></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="1326 60 2251 1153" width="2251" height="1153">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Ambient_Mesh_L7_Traffic" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1" stroke-dasharray="none">
+    <title>Ambient Mesh L7 Traffic</title>
+    <rect fill="white" x="1326" y="60" width="2251" height="1153"/>
+    <g id="Ambient_Mesh_L7_Traffic_Layer_2">
+      <title>Layer 2</title>
+      <g id="Graphic_266">
+        <rect x="1326.6142" y="60.94488" width="2249.6448" height="1151.6145" fill="white"/>
+      </g>
+      <g id="Graphic_265">
+        <rect x="1357.7953" y="83.9962" width="566.92914" height="1105.5118" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1362.7953 1165.0439)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Node A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_264">
+        <rect x="2970.5315" y="83.9962" width="566.92914" height="1105.5118" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2975.5315 1165.0439)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Node B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_263">
+        <title>ztunnel a pod</title>
+        <rect x="1390.3937" y="402.65233" width="501.7323" height="588.4305" fill="#f3f9ff"/>
+        <rect x="1390.3937" y="402.65233" width="501.7323" height="588.4305" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1395.3937 966.6187)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Ztunnel A Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_262">
+        <rect x="3005.256" y="306.5159" width="501.7323" height="529.7687" fill="#f3f9ff"/>
+        <rect x="3005.256" y="306.5159" width="501.7323" height="529.7687" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3010.256 811.8205)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Ztunnel B Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_261">
+        <rect x="1444.22" y="120.8466" width="391.1811" height="68.0315" fill="#333"/>
+        <rect x="1444.22" y="120.8466" width="391.1811" height="68.0315" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1449.22 125.8466)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="137.24655" y="16">Service A Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_260">
+        <rect x="1444.22" y="306.5159" width="391.1811" height="46.771654" fill="#dadada"/>
+        <rect x="1444.22" y="306.5159" width="391.1811" height="46.771654" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1449.22 310.94566)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="162.01455" y="16">istioout</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="139.43855" y="34.46411">192.168.127.1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_259">
+        <rect x="1516.8259" y="402.65233" width="245.96942" height="46.771654" fill="#dadada"/>
+        <rect x="1516.8259" y="402.65233" width="245.96942" height="46.771654" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1521.8259 407.0821)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="84.52071" y="16">pistioout</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="66.83271" y="34.46411">192.168.127.2</tspan>
+        </text>
+      </g>
+      <g id="Graphic_258">
+        <rect x="1445.6693" y="514.86235" width="391.1811" height="365.6693" fill="white"/>
+        <rect x="1445.6693" y="514.86235" width="391.1811" height="365.6693" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1450.6693 856.0675)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Envoy Proxy</tspan>
+        </text>
+      </g>
+      <g id="Line_257">
+        <line x1="1639.8106" y1="188.8781" x2="1639.8106" y2="206.18405" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_256">
+        <line x1="1639.8106" y1="353.28754" x2="1639.8106" y2="392.75233" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_255">
+        <line x1="1639.9353" y1="449.424" x2="1640.2316" y2="504.9625" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_254">
+        <rect x="3058.4055" y="120.8466" width="391.1811" height="68.0315" fill="#333"/>
+        <rect x="3058.4055" y="120.8466" width="391.1811" height="68.0315" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 125.8466)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="137.09455" y="16">Service B Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_253">
+        <rect x="3058.4055" y="908.8781" width="391.1811" height="57.73376" fill="#dadada"/>
+        <rect x="3058.4055" y="908.8781" width="391.1811" height="57.73376" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 918.7889)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="167.65455" y="16">istioin</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="139.43855" y="34.46411">192.168.126.1</tspan>
+        </text>
+      </g>
+      <g id="Graphic_252">
+        <rect x="3058.4055" y="346.72928" width="391.1811" height="199.75518" fill="white"/>
+        <rect x="3058.4055" y="346.72928" width="391.1811" height="199.75518" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 522.02035)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Envoy Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_251">
+        <rect x="3137.7756" y="438.6633" width="232.44095" height="34.990158" fill="#0a55a8"/>
+        <text transform="translate(3142.7756 446.42634)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="14.188474" y="16">Ztunnel_inbound Listener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_250">
+        <rect x="3137.7756" y="378.17024" width="232.44095" height="34.990158" fill="#0a55a8"/>
+        <text transform="translate(3142.7756 385.93327)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="22.196474" y="16">Virtual_inbound Cluster</tspan>
+        </text>
+      </g>
+      <g id="Line_249">
+        <line x1="3253.996" y1="1134.0645" x2="3253.996" y2="976.5119" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_248">
+        <line x1="3253.996" y1="908.8781" x2="3253.996" y2="720.4586" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_247">
+        <line x1="3253.996" y1="652.8249" x2="3253.996" y2="635.13066" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_246">
+        <line x1="3253.996" y1="438.6633" x2="3253.996" y2="423.0604" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_245">
+        <line x1="3253.996" y1="306.5159" x2="3253.996" y2="292.31908" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_244">
+        <rect x="1525.0394" y="572.6853" width="232.44095" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(1530.0394 577.1265)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="8.548474" y="16">Ztunnel_outbound Listener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_243">
+        <rect x="1525.0394" y="652.8249" width="232.44095" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(1530.0394 657.26605)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="45.436474" y="16">Service A Cluster</tspan>
+        </text>
+      </g>
+      <g id="Graphic_242">
+        <rect x="1525.0394" y="732.9644" width="232.44095" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(1530.0394 737.4056)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="9.316474" y="16">Internal Upstream Listener</tspan>
+        </text>
+      </g>
+      <g id="Line_241">
+        <line x1="1641.2599" y1="601.0318" x2="1641.2599" y2="642.9249" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_240">
+        <rect x="1516.8259" y="611.7198" width="243.07087" height="24.335999" fill="white"/>
+        <text transform="translate(1521.8259 616.7198)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="7.173431" y="11">Match the destination port and cluster IP</tspan>
+        </text>
+      </g>
+      <g id="Graphic_239">
+        <rect x="1525.0394" y="813.104" width="232.44095" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(1530.0394 817.5451)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="16.244474" y="16">Outbound Tunnel Cluster</tspan>
+        </text>
+      </g>
+      <g id="Line_238">
+        <line x1="1641.2599" y1="681.1713" x2="1641.2599" y2="723.0644" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_237">
+        <line x1="1641.2599" y1="761.3109" x2="1641.2599" y2="803.204" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_236">
+        <rect x="1519.7244" y="361.6016" width="243.07087" height="24.335999" fill="white"/>
+        <text transform="translate(1524.7244 366.6016)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="77.85943" y="11">Geneve tunnel</tspan>
+        </text>
+      </g>
+      <g id="Graphic_235">
+        <rect x="1619.9559" y="689.9094" width="42.608" height="24.335999" fill="white"/>
+        <text transform="translate(1624.9559 694.9094)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="4.526001" y="11">EDS</tspan>
+        </text>
+      </g>
+      <g id="Graphic_234">
+        <rect x="1445.6693" y="1134.2324" width="391.1811" height="28.346457" fill="#dadada"/>
+        <rect x="1445.6693" y="1134.2324" width="391.1811" height="28.346457" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1450.6693 1138.6736)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="173.99055" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_233">
+        <rect x="1445.6693" y="466.1387" width="391.1811" height="25.348083" fill="#f3f9ff"/>
+        <text transform="translate(1450.6693 469.0807)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="166.58255" y="16">tproxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_232">
+        <rect x="1590.3495" y="160.53163" width="98.92217" height="28.346457" fill="#dadada"/>
+        <text transform="translate(1595.3495 164.9728)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="27.861086" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_231">
+        <rect x="1444.22" y="216.08405" width="391.1811" height="28.346457" fill="#dadada"/>
+        <rect x="1444.22" y="216.08405" width="391.1811" height="28.346457" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1449.22 220.52522)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="161.39055" y="16">vethxxx</tspan>
+        </text>
+      </g>
+      <g id="Line_230">
+        <line x1="1639.8106" y1="244.4305" x2="1639.8106" y2="296.6159" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_229">
+        <rect x="1494.8426" y="250.78316" width="289.936" height="39.68408" fill="white"/>
+        <text transform="translate(1499.8426 255.78316)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="34.992002" y="12">iptables chain ztunnel-PREROUTING</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="89.946" y="26.348083">mark 0x100/0x100</tspan>
+        </text>
+      </g>
+      <g id="Graphic_228">
+        <rect x="1605.8839" y="514.86235" width="70.752" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(1610.8839 519.3035)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="8.135999" y="16">15001</tspan>
+        </text>
+      </g>
+      <g id="Graphic_227">
+        <rect x="1572.874" y="770.69585" width="136.77165" height="24.335999" fill="white"/>
+        <text transform="translate(1577.874 775.69585)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="10.933826" y="11">HTTP Tunnel config</tspan>
+        </text>
+      </g>
+      <g id="Graphic_226">
+        <rect x="1531.4173" y="962.7364" width="219.68504" height="28.346457" fill="#dadada"/>
+        <rect x="1531.4173" y="962.7364" width="219.68504" height="28.346457" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1536.4173 967.1775)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="88.24252" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_225">
+        <rect x="1445.6693" y="1016.5946" width="391.1811" height="28.346457" fill="#dadada"/>
+        <rect x="1445.6693" y="1016.5946" width="391.1811" height="28.346457" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1450.6693 1021.0358)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="161.39055" y="16">vethxxx</tspan>
+        </text>
+      </g>
+      <g id="Line_224">
+        <line x1="1641.2599" y1="543.2088" x2="1641.2599" y2="562.7853" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_223">
+        <line x1="1641.2599" y1="841.4504" x2="1641.2599" y2="952.8364" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_222">
+        <rect x="1445.6693" y="892.4741" width="391.1811" height="46.771654" fill="#f3f9ff"/>
+        <path d="M 1445.6693 892.4741 L 1836.8504 892.4741 L 1836.8504 939.2457 L 1445.6693 939.2457 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(1450.6693 896.9038)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="140.53455" y="16">init container</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="79.76655" y="34.46411">Setup iptables rules for ztunnel</tspan>
+        </text>
+      </g>
+      <g id="Line_221">
+        <line x1="1641.2599" y1="991.0828" x2="1641.2599" y2="1006.6946" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_220">
+        <line x1="1641.2599" y1="1044.9411" x2="1641.2599" y2="1124.3324" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_219">
+        <rect x="1445.6693" y="1064.1651" width="391.1811" height="50.6159" fill="white"/>
+        <path d="M 1445.6693 1064.1651 L 1836.8504 1064.1651 L 1836.8504 1114.781 L 1445.6693 1114.781 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(1450.6693 1070.517)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="157.72655" y="16">Istio CNI</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="38.558546" y="34.46411">Setup iptables rules and veth pair for node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_218">
+        <rect x="3058.4055" y="1134.0645" width="391.1811" height="28.51436" fill="#dadada"/>
+        <rect x="3058.4055" y="1134.0645" width="391.1811" height="28.51436" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 1138.5897)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="173.99055" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_217">
+        <rect x="3058.4055" y="1057.0472" width="391.1811" height="57.73376" fill="white"/>
+        <path d="M 3058.4055 1057.0472 L 3449.5866 1057.0472 L 3449.5866 1114.781 L 3058.4055 1114.781 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(3063.4055 1066.958)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="157.72655" y="16">Istio CNI</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="38.558546" y="34.46411">Setup iptables rules and veth pair for node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_216">
+        <rect x="3058.4055" y="652.8249" width="391.1811" height="57.73376" fill="#dadada"/>
+        <rect x="3058.4055" y="652.8249" width="391.1811" height="57.73376" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 662.7357)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="162.76655" y="16">pistioin</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="139.43855" y="34.46411">192.168.126.2</tspan>
+        </text>
+      </g>
+      <g id="Graphic_215">
+        <rect x="3058.4055" y="733.9384" width="391.1811" height="57.73376" fill="#f3f9ff"/>
+        <path d="M 3058.4055 733.9384 L 3449.5866 733.9384 L 3449.5866 791.6721 L 3058.4055 791.6721 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(3063.4055 743.8492)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="140.53455" y="16">init container</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="79.76655" y="34.46411">Setup iptables rules for ztunnel</tspan>
+        </text>
+      </g>
+      <g id="Graphic_214">
+        <rect x="3182.374" y="518.1537" width="70" height="28" fill="#0a55a8"/>
+        <text transform="translate(3187.374 522.4216)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="7.76" y="16">15006</tspan>
+        </text>
+      </g>
+      <g id="Graphic_213">
+        <rect x="3058.4055" y="615.7757" width="391.1811" height="19.354975" fill="#f3f9ff"/>
+        <text transform="translate(3063.4055 615.7211)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="166.58255" y="16">tproxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_212">
+        <rect x="3111.154" y="998.0796" width="289.936" height="39.68408" fill="white"/>
+        <text transform="translate(3116.154 1003.0796)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="34.992002" y="12">iptables chain ztunnel-PREROUTING</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="89.946" y="26.348083">mark 0x200/0x200</tspan>
+        </text>
+      </g>
+      <g id="Graphic_211">
+        <rect x="3132.4607" y="856.1956" width="243.07087" height="24.335999" fill="white"/>
+        <text transform="translate(3137.4607 861.1956)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="77.85943" y="11">Geneve tunnel</tspan>
+        </text>
+      </g>
+      <g id="Graphic_210">
+        <rect x="3185.6103" y="306.5159" width="136.77165" height="21.25752" fill="#dadada"/>
+        <rect x="3185.6103" y="306.5159" width="136.77165" height="21.25752" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3190.6103 307.4126)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="46.785826" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_209">
+        <rect x="3204.535" y="160.53163" width="98.92217" height="28.346457" fill="#dadada"/>
+        <text transform="translate(3209.535 164.9728)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="27.861086" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_208">
+        <rect x="3058.4055" y="261.16156" width="391.1811" height="21.25752" fill="#dadada"/>
+        <rect x="3058.4055" y="261.16156" width="391.1811" height="21.25752" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 262.05826)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="161.39055" y="16">vethxxx</tspan>
+        </text>
+      </g>
+      <g id="Graphic_207">
+        <rect x="3058.4055" y="214.39106" width="391.1811" height="21.25752" fill="#dadada"/>
+        <rect x="3058.4055" y="214.39106" width="391.1811" height="21.25752" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(3063.4055 215.28777)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="161.39055" y="16">vethxxx</tspan>
+        </text>
+      </g>
+      <g id="Line_206">
+        <line x1="3253.996" y1="261.16156" x2="3253.996" y2="245.54858" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_205">
+        <line x1="3253.996" y1="214.39106" x2="3253.996" y2="198.7781" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_204">
+        <rect x="3252.693" y="518.138" width="70.752" height="28.346457" fill="#0a55a8"/>
+        <text transform="translate(3257.693 522.5792)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="8.135999" y="16">15008</tspan>
+        </text>
+      </g>
+      <g id="Line_203">
+        <path d="M 3253.996 615.7757 L 3253.996 595.9887 L 3288.069 595.9887 L 3288.069 556.38446" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_202">
+        <rect x="3259.0138" y="566.6807" width="58.11024" height="24.335999" fill="#f3f9ff"/>
+        <text transform="translate(3264.0138 571.6807)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="13.387119" y="11">TLS</tspan>
+        </text>
+      </g>
+      <g id="Line_201">
+        <path d="M 3217.374 518.1537 L 3217.374 495.9036 L 3253.996 495.9036 L 3253.996 483.5535" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_200">
+        <path d="M 3288.069 518.138 L 3288.069 495.89574 L 3253.996 495.89574 L 3253.996 483.5535" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_199">
+        <line x1="3253.996" y1="378.17024" x2="3253.996" y2="337.6734" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_198">
+        <path d="M 3253.996 615.7757 L 3253.996 596.0178 L 3217.374 596.0178 L 3217.374 556.0537" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_197">
+        <rect x="3188.319" y="566.09956" width="58.11024" height="24.335999" fill="#f3f9ff"/>
+        <text transform="translate(3193.319 571.09956)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="10.945119" y="11">Plain</tspan>
+        </text>
+      </g>
+      <g id="Line_196">
+        <line x1="1836.8504" y1="1148.385" x2="2230.5322" y2="1148.3434" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_195">
+        <text transform="translate(1954.108 1128.9011)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="13.624" y="16">HBONE Tunnel</tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="35.46411">Waypoint IP:15006</tspan>
+        </text>
+      </g>
+      <g id="Line_194">
+        <line x1="2631.6133" y1="1148.3217" x2="3048.5055" y2="1148.3217" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_193">
+        <text transform="translate(2789.5822 1128.8576)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="1.192" y="16">HBONE Tunnel</tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="7673862e-19" y="35.46411">Pod B IP:15008</tspan>
+        </text>
+      </g>
+      <g id="Graphic_192">
+        <rect x="2147.8642" y="83.9962" width="566.92914" height="1105.5118" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2152.8642 1165.0439)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Node C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_191">
+        <rect x="2180.4626" y="169.03557" width="501.7323" height="719.7366" fill="#f3f9ff"/>
+        <rect x="2180.4626" y="169.03557" width="501.7323" height="719.7366" stroke="#a5a5a5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2185.4626 864.308)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Waypoint Proxy B Pod</tspan>
+        </text>
+      </g>
+      <g id="Graphic_190">
+        <rect x="2240.4322" y="934.0015" width="391.1811" height="57.73376" fill="#dadada"/>
+        <rect x="2240.4322" y="934.0015" width="391.1811" height="57.73376" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2245.4322 943.9123)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="167.65455" y="16">istioin</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="139.43855" y="34.46411">192.168.126.1</tspan>
+        </text>
+      </g>
+      <g id="Line_189">
+        <line x1="2436.0227" y1="1134.0645" x2="2436.0227" y2="1001.6352" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_188">
+        <line x1="2436.0227" y1="934.0015" x2="2436.0227" y2="800.5982" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_187">
+        <line x1="2436.0227" y1="732.9644" x2="2436.0227" y2="716.7454" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_186">
+        <rect x="2240.4322" y="1134.0645" width="391.1811" height="28.51436" fill="#dadada"/>
+        <rect x="2240.4322" y="1134.0645" width="391.1811" height="28.51436" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2245.4322 1138.5897)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="173.99055" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_185">
+        <rect x="2240.4322" y="732.9644" width="391.1811" height="57.73376" fill="#dadada"/>
+        <rect x="2240.4322" y="732.9644" width="391.1811" height="57.73376" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2245.4322 742.87525)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="162.76655" y="16">pistioin</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="139.43855" y="34.46411">192.168.126.2</tspan>
+        </text>
+      </g>
+      <g id="Graphic_184">
+        <rect x="2240.4322" y="813.104" width="391.1811" height="43.04011" fill="#f3f9ff"/>
+        <path d="M 2240.4322 813.104 L 2631.6133 813.104 L 2631.6133 856.1441 L 2240.4322 856.1441 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(2245.4322 815.668)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="140.53455" y="16">init container</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="79.76655" y="34.46411">Setup iptables rules for ztunnel</tspan>
+        </text>
+      </g>
+      <g id="Graphic_183">
+        <rect x="2240.4322" y="697.3904" width="391.1811" height="19.354975" fill="#f3f9ff"/>
+        <text transform="translate(2245.4322 697.3358)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="166.58255" y="16">tproxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_182">
+        <rect x="2293.1807" y="1010.9258" width="289.936" height="39.68408" fill="white"/>
+        <text transform="translate(2298.1807 1015.9258)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="12" fill="black" x="34.992002" y="12">iptables chain ztunnel-PREROUTING</tspan>
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="89.946" y="26.348083">mark 0x200/0x200</tspan>
+        </text>
+      </g>
+      <g id="Graphic_181">
+        <rect x="2314.4873" y="899.2188" width="243.07087" height="24.335999" fill="white"/>
+        <text transform="translate(2319.4873 904.2188)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="77.85943" y="11">Geneve tunnel</tspan>
+        </text>
+      </g>
+      <g id="Graphic_180">
+        <rect x="2291.0547" y="168.95162" width="289.936" height="28.51436" fill="#dadada"/>
+        <rect x="2291.0547" y="168.95162" width="289.936" height="28.51436" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2296.0547 173.47674)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="123.368" y="16">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_179">
+        <rect x="2240.4322" y="217.22455" width="391.1811" height="463.5665" fill="white"/>
+        <rect x="2240.4322" y="217.22455" width="391.1811" height="463.5665" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2245.4322 653.7911)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="17">E</tspan>
+          <tspan font-family="PingFang SC" font-weight="bold" font-size="16" fill="black" y="17">nvoy Proxy</tspan>
+        </text>
+      </g>
+      <g id="Graphic_178">
+        <rect x="2274.7146" y="607.8307" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 611.9334)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="2.836136" y="16">inbound_CONNECT_terminate Listnener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_177">
+        <rect x="2274.7146" y="561.82146" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 565.9242)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="48.924136" y="16">Internal Inbound VIP Cluster</tspan>
+        </text>
+      </g>
+      <g id="Graphic_176">
+        <rect x="2274.7146" y="506.2137" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 510.3164)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="76.90814" y="16">Inbound VIP Listener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_175">
+        <rect x="2274.7146" y="450.60595" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 454.70867)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="80.31614" y="16">Inbound VIP Cluster</tspan>
+        </text>
+      </g>
+      <g id="Graphic_174">
+        <rect x="2274.7146" y="293.2173" width="322.61626" height="27.833443" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 298.2173)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="10.396136" y="16">inbound_CONNECT_originate Listener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_173">
+        <rect x="2274.7146" y="240.48125" width="322.61626" height="27.833443" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 245.48125)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="13.804136" y="16">inbound_CONNECT_originate Cluster</tspan>
+        </text>
+      </g>
+      <g id="Line_172">
+        <line x1="2436.0227" y1="607.8307" x2="2436.0227" y2="599.391" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_171">
+        <line x1="2436.0227" y1="561.82146" x2="2436.0227" y2="543.78325" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_170">
+        <line x1="2436.0227" y1="506.2137" x2="2436.0227" y2="488.1755" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_169">
+        <line x1="2436.0227" y1="293.2173" x2="2436.0227" y2="278.2147" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_168">
+        <rect x="2274.7146" y="398.1977" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 402.3004)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="74.53214" y="16">Inbound Pod Listener</tspan>
+        </text>
+      </g>
+      <g id="Graphic_167">
+        <rect x="2274.7146" y="345.78943" width="322.61626" height="27.66955" fill="#0a55a8"/>
+        <text transform="translate(2279.7146 349.89215)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="77.94014" y="16">Inbound Pod Cluster</tspan>
+        </text>
+      </g>
+      <g id="Graphic_166">
+        <rect x="2367.637" y="653.84" width="135.968" height="27.331368" fill="#0a55a8"/>
+        <text transform="translate(2372.637 657.7736)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="40.744" y="16">15006</tspan>
+        </text>
+      </g>
+      <g id="Line_165">
+        <line x1="2436.0227" y1="697.3904" x2="2436.0227" y2="691.0632" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_164">
+        <line x1="2436.0227" y1="450.60595" x2="2436.0227" y2="435.76724" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_163">
+        <line x1="2436.0227" y1="398.1977" x2="2436.0227" y2="383.359" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_162">
+        <line x1="2436.0227" y1="345.78943" x2="2436.0227" y2="330.95073" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_161">
+        <line x1="2435.621" y1="653.84" x2="2435.621" y2="645.3921" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_160">
+        <line x1="2436.0227" y1="240.48125" x2="2436.0227" y2="207.36598" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_159">
+        <rect x="2240.4322" y="120.8466" width="391.1811" height="28.346457" fill="#dadada"/>
+        <rect x="2240.4322" y="120.8466" width="391.1811" height="28.346457" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(2245.4322 125.28777)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="161.39055" y="16">vethxxx</tspan>
+        </text>
+      </g>
+      <g id="Line_158">
+        <path d="M 2436.0227 168.95162 L 2436.0227 159.07234 L 2436.0227 159.11431 L 2436.0227 159.09305" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_157">
+        <path d="M 2631.6133 135.01982 L 2698.4804 135.01982 L 2698.4804 1029.524 L 2595.6624 1029.524 L 2595.6624 1124.1645" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_156">
+        <text transform="translate(2649.6574 116.57183)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="7.416" y="15">To</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="33.448">eth0</tspan>
+        </text>
+      </g>
+      <g id="Graphic_155">
+        <text transform="translate(2446.25 542.48546)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="2.4831344" y="11">STATIC</tspan>
+        </text>
+      </g>
+      <g id="Graphic_154">
+        <text transform="translate(2446.25 431.98833)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="4.526001" y="11">EDS</tspan>
+        </text>
+      </g>
+      <g id="Graphic_153">
+        <text transform="translate(2446.25 327.10644)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="2.4831344" y="11">STATIC</tspan>
+        </text>
+      </g>
+      <g id="Graphic_152">
+        <text transform="translate(2441.998 222.22455)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="12" fill="black" x="4.967499" y="11">ORIGINAL_DST</tspan>
+        </text>
+      </g>
+      <g id="Graphic_151">
+        <rect x="2240.4322" y="1057.0472" width="391.1811" height="57.73376" fill="white"/>
+        <path d="M 2240.4322 1057.0472 L 2631.6133 1057.0472 L 2631.6133 1114.781 L 2240.4322 1114.781 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(2245.4322 1066.958)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="157.72655" y="16">Istio CNI</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="38.558546" y="34.46411">Setup iptables rules and veth pair for node</tspan>
+        </text>
+      </g>
+      <g id="Graphic_150">
+        <rect x="1592.25" y="848.2805" width="98.01953" height="24" fill="white"/>
+        <text transform="translate(1597.25 853.2805)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">ORIGINAL_DST</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
