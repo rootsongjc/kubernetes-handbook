@@ -4,7 +4,7 @@ description: "本篇博客旨在为大家推荐几款实用且易于上手的 AI
 date: 2023-03-15T21:40:40+08:00
 draft: false
 tags: ["AI","AIGC"]
-categories: ["其他"]
+categories: ["AI"]
 type: "post"
 image: "images/banner/ai.jpg"
 ---
