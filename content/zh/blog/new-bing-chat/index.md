@@ -3,8 +3,8 @@ title: "体验新必应——聊天式的搜索引擎辅助工具"
 description: "昨天我的新必应体验申请通过了，立马去体验了下，本文记录下我对新必应的最初印象。"
 date: 2023-03-01T09:09:40+08:00
 draft: false
-tags: ["必应","ChatGPT"]
-categories: ["其他"]
+tags: ["必应","ChatGPT","Bing","AIGC"]
+categories: ["AI"]
 type: "post"
 image: "images/banner/bing.jpg"
 ---
