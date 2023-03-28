@@ -81,9 +81,10 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 <p align="center">
   <a href="https://mp.weixin.qq.com/s/ppDxLapuFwo3isEpg3zfUQ">
-    <img src="./images/wechat.jpg" alt="加入云原生社区" title="加入云原生社区">
+    <img src="./images/wechat-1.jpg" alt="加入云原生社区" title="加入云原生社区">
   </a>
 </p>
+
 
 云原生社区是中国最大的独立第三方云原生终端用户和泛开发者社区，由 CNCF 大使、开源意见领袖共同发起成立于 2020 年 5 月 12 日，提供云原生专业资讯，促进云原生产业发展。
 
