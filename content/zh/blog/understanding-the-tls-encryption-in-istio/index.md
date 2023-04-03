@@ -81,7 +81,7 @@ Istio 中内置了 CA，使用 xDS 中的 SDS（Secret Discovery Service，秘�
 
 Istio 中有三个资源对象可用于配置服务间的认证与授权：
 
-- `RequestAuthentication`：用于定义服务支持的请求级认证方式，目前只支持  JWT；
+- `RequestAuthentication`：用于定义服务支持的请求级认证方式，目前只支持  JWT（[查看 JWT 组件详解](https://lib.jimmysong.io/blog/jwt-components-explained/)）；
 - `PeerAuthentication`：配置服务间的传输认证模式，如 `STRICT`、`PERMISSIVE` 或 `DISABLE` 等，以开启 mTLS 或明文请求；
 - `AuthorizationPolicy`：用于授权服务间的流量，定义谁可以做什么？例如主体 A 允许（`ALLOW`）或拒绝（`DENY`）来自主体 B 的流量；
 
@@ -164,3 +164,4 @@ mTLS 实现了网格内流量的加密，是构建零信任应用网络的关键
 - [写给 Kubernetes 工程师的 mTLS 指南 - lib.jimmysong.io](https://lib.jimmysong.io/blog/mtls-guide/)
 - [云原生安全白皮书中文版 - github.com](https://github.com/cncf/tag-security/blob/main/security-whitepaper/v1/cloud-native-security-whitepaper-simplified-chinese.md)
 - [Istio 安全 - istio.io](https://istio.io/latest/zh/docs/concepts/security/)
+- [JWT 组件详解 - lib.jimmysong.io](https://lib.jimmysong.io/blog/jwt-components-explained/)
