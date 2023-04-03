@@ -103,7 +103,7 @@ eBPF（extended Berkeley Packet Filter）是一个功能强大的技术，它可
 | 实现难度 | 较高 | 较低 |
 | 扩展性 | 较好 | 较差 |
 
-根据 Istio 官方博客，使用 eBPF 方式避免了部分 iptables 规则和隧道封装，相比使用 iptables 和 Geneve 隧道更加高效。然而，eBPF 对 Linux 内核版本的要求更高（至少 4.20），而 iptables 方式则具有更好的兼容性。此外，eBPF 方式的实现难度较高，但扩展性较好。
+根据 [Istio 官方博客](https://istio.io/latest/blog/2023/ambient-ebpf-redirection/)介绍，使用 eBPF 方式避免了部分 iptables 规则和隧道封装，相比使用 iptables 和 Geneve 隧道更加高效。然而，eBPF 对 Linux 内核版本的要求更高（至少 4.20），而 iptables 方式则具有更好的兼容性。此外，eBPF 方式的实现难度较高，但扩展性较好。
 
 要想使用 eBPF 模式运行 Ambient Mesh，只需要在安装 Istio 时设置 `values.cni.ambient.redirectMode` 参数即可，如下：
 
