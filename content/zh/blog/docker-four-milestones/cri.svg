@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="1006 117 937 708" width="937" height="708">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Docker_daemon" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none">
+    <title>Docker daemon</title>
+    <rect fill="white" x="1006" y="117" width="937" height="708"/>
+    <g id="Docker_daemon_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_129">
+        <rect x="1006.0086" y="120.47244" width="936.5598" height="704.40946" fill="white"/>
+      </g>
+      <g id="Graphic_108"/>
+      <g id="Graphic_106">
+        <rect x="1035.5887" y="274.96063" width="376.79384" height="535.74804" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1040.5887 786.2446)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="141.91693" y="16">Data Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_90">
+        <rect x="1060.1395" y="418.11024" width="327.69223" height="352.9134" fill="#ededed"/>
+        <rect x="1060.1395" y="418.11024" width="327.69223" height="352.9134" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1065.1395 744.0236)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="28.638115" y="17">Docker Daemon</tspan>
+          <tspan font-family="PingFang SC" font-weight="bold" font-size="16" fill="black" y="17"> (</tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" y="17">not support CRI)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_104">
+        <rect x="1035.5887" y="141.73228" width="376.79384" height="102.04725" fill="white"/>
+        <rect x="1035.5887" y="141.73228" width="376.79384" height="102.04725" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1040.5887 146.73228)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="131.54893" y="16">Control Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_93">
+        <rect x="1060.1395" y="293.38583" width="327.69223" height="97.79528" fill="#ededed"/>
+        <rect x="1060.1395" y="293.38583" width="327.69223" height="97.79528" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1065.1395 298.38583)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="129.37412" y="16">Kubelet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_73">
+        <rect x="1127.6307" y="439.33173" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1132.6307 453.69416)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="49.426964" y="16">containerd</tspan>
+        </text>
+      </g>
+      <g id="Graphic_62">
+        <rect x="1127.6307" y="521.61316" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1132.6307 535.9756)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="27.818964" y="16">containerd-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_61">
+        <rect x="1127.6307" y="680.3533" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="1127.6307" y="680.3533" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1132.6307 694.71575)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="19.642964" y="16">Container Process</tspan>
+        </text>
+      </g>
+      <g id="Graphic_60">
+        <rect x="1127.6307" y="600.98324" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1132.6307 615.3457)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="73.12296" y="16">runc</tspan>
+        </text>
+      </g>
+      <g id="Line_59">
+        <line x1="1222.9456" y1="569.80214" x2="1222.9456" y2="588.08324" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_58">
+        <path d="M 1222.9456 649.1722 L 1222.9456 664.7628 L 1222.9456 667.4533" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_94">
+        <rect x="1127.6307" y="324.56693" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1132.6307 338.92936)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="45.298964" y="16">dockershim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_95"/>
+      <g id="Line_96">
+        <path d="M 1223.9856 391.1811 L 1223.9856 404.64567 L 1223.9856 399.21024 L 1223.9856 405.21024" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_99">
+        <rect x="1128.6707" y="180" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1137.3056 194.36243)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="2842171e-19" y="16">Kubernetes API Server</tspan>
+        </text>
+      </g>
+      <g id="Line_103">
+        <line x1="1223.9856" y1="228.18898" x2="1223.9856" y2="280.48583" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_107">
+        <path d="M 1222.9456 487.5207 L 1222.9456 504.56693 L 1222.9456 508.71316" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_125"/>
+      <g id="Graphic_124">
+        <rect x="1536.1943" y="274.96063" width="376.79384" height="535.74804" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1541.1943 786.2446)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="141.91693" y="16">Data Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_123">
+        <rect x="1560.7451" y="418.11024" width="327.69223" height="352.9134" fill="#ededed"/>
+        <rect x="1560.7451" y="418.11024" width="327.69223" height="352.9134" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1565.7451 746.5595)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="144.78212" y="16">CRI</tspan>
+        </text>
+      </g>
+      <g id="Graphic_122">
+        <rect x="1536.1943" y="141.73228" width="376.79384" height="102.04725" fill="white"/>
+        <rect x="1536.1943" y="141.73228" width="376.79384" height="102.04725" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1541.1943 146.73228)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="131.54893" y="16">Control Plane</tspan>
+        </text>
+      </g>
+      <g id="Graphic_121">
+        <rect x="1560.7451" y="293.38583" width="327.69223" height="97.79528" fill="#ededed"/>
+        <rect x="1560.7451" y="293.38583" width="327.69223" height="97.79528" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1565.7451 332.5514)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="129.37412" y="16">Kubelet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_120">
+        <rect x="1628.2363" y="439.33173" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1633.2363 453.69416)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="49.426964" y="16">containerd</tspan>
+        </text>
+      </g>
+      <g id="Graphic_119">
+        <rect x="1628.2363" y="521.61316" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1633.2363 535.9756)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="27.818964" y="16">containerd-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_118">
+        <rect x="1628.2363" y="680.3533" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="1628.2363" y="680.3533" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1633.2363 694.71575)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="19.642964" y="16">Container Process</tspan>
+        </text>
+      </g>
+      <g id="Graphic_117">
+        <rect x="1628.2363" y="600.98324" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1633.2363 615.3457)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="73.12296" y="16">runc</tspan>
+        </text>
+      </g>
+      <g id="Line_116">
+        <line x1="1723.5513" y1="569.80214" x2="1723.5513" y2="588.08324" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_115">
+        <path d="M 1723.5513 649.1722 L 1723.5513 664.7628 L 1723.5513 667.4533" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_113"/>
+      <g id="Line_112">
+        <path d="M 1724.5913 391.1811 L 1724.5913 404.64567 L 1724.5913 399.21024 L 1724.5913 405.21024" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_111">
+        <rect x="1629.2763" y="180" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1637.9113 194.36243)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="2842171e-19" y="16">Kubernetes API Server</tspan>
+        </text>
+      </g>
+      <g id="Line_110">
+        <line x1="1724.5913" y1="228.18898" x2="1724.5913" y2="280.48583" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_109">
+        <path d="M 1723.5513 487.5207 L 1723.5513 504.56693 L 1723.5513 508.71316" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_127">
+        <path d="M 1448.504 436.02756 L 1448.504 425.02756 L 1484.2756 425.02756 L 1484.2756 419.52756 L 1495.2756 430.52756 L 1484.2756 441.52756 L 1484.2756 436.02756 Z" fill="black"/>
+        <path d="M 1448.504 436.02756 L 1448.504 425.02756 L 1484.2756 425.02756 L 1484.2756 419.52756 L 1495.2756 430.52756 L 1484.2756 441.52756 L 1484.2756 436.02756 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>
