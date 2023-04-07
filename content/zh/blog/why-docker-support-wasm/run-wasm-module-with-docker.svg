@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="515 151 1418 742" width="1418" height="742">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="runtimes" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none">
+    <title>runtimes</title>
+    <rect fill="white" x="515" y="151" width="1418" height="742"/>
+    <g id="runtimes_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_78">
+        <rect x="515.9055" y="151.65354" width="1416.1602" height="741.25985" fill="white"/>
+      </g>
+      <g id="Graphic_77">
+        <rect x="555.8175" y="617.95276" width="232.44095" height="249.44882" fill="white"/>
+        <rect x="555.8175" y="617.95276" width="232.44095" height="249.44882" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_76">
+        <rect x="660.47245" y="294.80315" width="293.38583" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(665.47245 309.1656)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="85.54892" y="16">Docker Engine</tspan>
+        </text>
+      </g>
+      <g id="Graphic_75">
+        <rect x="576.72304" y="639.2126" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(581.72304 653.575)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="27.818964" y="16">containerd-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_74">
+        <rect x="576.72304" y="797.9528" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="576.72304" y="797.9528" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(581.72304 812.3152)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="19.642964" y="16">Container Process</tspan>
+        </text>
+      </g>
+      <g id="Graphic_73">
+        <rect x="1077.2927" y="409.6063" width="293.38583" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1082.2927 423.96874)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="100.80492" y="16">containerd</tspan>
+        </text>
+      </g>
+      <g id="Graphic_72">
+        <rect x="576.72304" y="718.5827" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(581.72304 732.9451)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="73.12296" y="16">runc</tspan>
+        </text>
+      </g>
+      <g id="Line_71">
+        <line x1="672.038" y1="687.4016" x2="672.038" y2="705.6827" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_70">
+        <line x1="672.038" y1="766.7717" x2="672.038" y2="785.0528" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_69">
+        <rect x="831.84115" y="617.95276" width="232.44095" height="249.44882" fill="white"/>
+        <rect x="831.84115" y="617.95276" width="232.44095" height="249.44882" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_68">
+        <rect x="852.7467" y="639.2126" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(857.7467 653.575)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="1.9149643" y="16">containerd-wasm-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_67">
+        <rect x="852.7467" y="797.9528" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="852.7467" y="797.9528" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(857.7467 812.3152)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="36.266964" y="16">Wasm Module</tspan>
+        </text>
+      </g>
+      <g id="Graphic_66">
+        <rect x="852.7467" y="718.5827" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(857.7467 732.9451)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="48.706964" y="16">wasmedge</tspan>
+        </text>
+      </g>
+      <g id="Line_65">
+        <line x1="948.0616" y1="687.4016" x2="948.0616" y2="705.6827" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_64">
+        <line x1="948.0616" y1="766.7717" x2="948.0616" y2="785.0528" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_63">
+        <rect x="1107.7652" y="616.95276" width="232.44095" height="249.44882" fill="white"/>
+        <rect x="1107.7652" y="616.95276" width="232.44095" height="249.44882" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_62">
+        <rect x="1128.6707" y="638.2126" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1133.6707 652.575)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="1.9149643" y="16">containerd-wasm-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_61">
+        <rect x="1128.6707" y="796.9528" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="1128.6707" y="796.9528" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1133.6707 811.3152)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="36.266964" y="16">Wasm Module</tspan>
+        </text>
+      </g>
+      <g id="Graphic_60">
+        <rect x="1128.6707" y="717.5827" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1133.6707 731.9451)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="74.32296" y="16">spin</tspan>
+        </text>
+      </g>
+      <g id="Line_59">
+        <line x1="1223.9856" y1="686.4016" x2="1223.9856" y2="704.6827" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_58">
+        <line x1="1223.9856" y1="765.7717" x2="1223.9856" y2="784.0528" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_57">
+        <rect x="1383.6722" y="615.78276" width="232.44095" height="249.44882" fill="white"/>
+        <rect x="1383.6722" y="615.78276" width="232.44095" height="249.44882" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_56">
+        <rect x="1404.5778" y="637.0426" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1409.5778 651.405)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="1.9149643" y="16">containerd-wasm-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_55">
+        <rect x="1404.5778" y="795.7828" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="1404.5778" y="795.7828" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1409.5778 810.1452)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="36.266964" y="16">Wasm Module</tspan>
+        </text>
+      </g>
+      <g id="Graphic_54">
+        <rect x="1404.5778" y="716.4127" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1409.5778 730.7751)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="69.442964" y="16">slight</tspan>
+        </text>
+      </g>
+      <g id="Line_53">
+        <line x1="1499.8927" y1="685.2316" x2="1499.8927" y2="703.5127" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_52">
+        <line x1="1499.8927" y1="764.6017" x2="1499.8927" y2="782.8828" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_51">
+        <rect x="1659.5765" y="614.58386" width="232.44095" height="249.44882" fill="white"/>
+        <rect x="1659.5765" y="614.58386" width="232.44095" height="249.44882" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_50">
+        <rect x="1680.482" y="635.8437" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1685.482 650.2061)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="1.9149643" y="16">containerd-wasm-shim</tspan>
+        </text>
+      </g>
+      <g id="Graphic_49">
+        <rect x="1680.482" y="794.5839" width="190.62992" height="48.188977" fill="#333"/>
+        <rect x="1680.482" y="794.5839" width="190.62992" height="48.188977" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1685.482 808.9463)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="36.266964" y="16">Wasm Module</tspan>
+        </text>
+      </g>
+      <g id="Graphic_48">
+        <rect x="1680.482" y="715.2138" width="190.62992" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1685.482 729.5762)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="50.946964" y="16">wasmtime</tspan>
+        </text>
+      </g>
+      <g id="Line_47">
+        <line x1="1775.797" y1="684.0327" x2="1775.797" y2="702.3138" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_46">
+        <line x1="1775.797" y1="763.4028" x2="1775.797" y2="781.6839" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_45">
+        <path d="M 807.1654 342.99213 L 807.1654 376.2992 L 1223.9856 376.2992 L 1223.9856 396.7063" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_44">
+        <path d="M 1223.9856 457.7953 L 1223.9856 547 L 948.0616 547 L 948.0616 605.05276" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_43">
+        <line x1="1223.9856" y1="457.7953" x2="1223.9856" y2="604.05276" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_42">
+        <path d="M 1223.9856 547.3716 L 1499.9369 547.3716 L 1499.9369 602.88284" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_41">
+        <path d="M 1230.6223 547.3716 L 1776.1422 547.3716 L 1776.1422 601.6885" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_40">
+        <path d="M 1223.9856 546.77465 L 671.7934 546.77465 L 671.7934 573.298 L 672.038 599.05276 L 672.038 605.05276" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_79">
+        <rect x="1077.2927" y="170.07874" width="293.38583" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1082.2927 184.44117)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="97.39692" y="16">Kubernetes</tspan>
+        </text>
+      </g>
+      <g id="Graphic_81">
+        <rect x="1438.5827" y="409.6063" width="293.38583" height="48.188977" fill="#0a55a8"/>
+        <text transform="translate(1443.5827 423.96874)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="118.14892" y="16">CRI-O</tspan>
+        </text>
+      </g>
+      <g id="Line_82">
+        <line x1="1223.9856" y1="218.26772" x2="1223.9856" y2="396.7063" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_83">
+        <path d="M 1223.9856 218.26772 L 1223.9856 313.937 L 1585.2756 313.937 L 1585.2756 396.7063" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_84">
+        <rect x="1089.9856" y="247.0113" width="268" height="29.46411" fill="white"/>
+        <text transform="translate(1094.9856 252.0113)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">CRI (Container Runtime Interface)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_85">
+        <rect x="1081.3776" y="482.9953" width="285.216" height="29.46411" fill="white"/>
+        <text transform="translate(1086.3776 487.9953)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="17053026e-20" y="16">OCI (Open Container Initiative) Spec</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
