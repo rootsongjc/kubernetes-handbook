@@ -11,7 +11,7 @@ image: "images/banner/milestone.jpg"
 
 在 2017 年的容器编排大战中，Docker 公司失败后沉寂了几年，但近年来又开始频繁行动，例如腾退开源组织账号，支持 WebAssembly 等。本文将回顾 Docker 公司发展过程中的四个重大举措，这些措施深深地影响了 Docker 公司的发展，也对 Docker 甚至 Kubernetes 社区产生了深远的影响。
 
-## 当我们在谈论 Docker 时我们在谈论什么？
+## 当我们在谈论 Docker 时我们在谈论什么？{#what-are-we-talking-about-docker}
 
 首先我们需要先确定 Docker 这个词的含义。当人们在谈论 Docker 时可能指的是：
 
@@ -22,7 +22,7 @@ image: "images/banner/milestone.jpg"
 
 为什么同一个词会有这么多不同的意思呢？这都是有历史原因的。Docker 软件于 2013 年发布，起初定位为开发者工具。作为最早发布的容器工具，它迅速走红，并成为容器技术的代名词。但它最初只是在单机上运行，有太多耦合的接口设计。后来容器集群出现，才需要用到容器编排调度工具。因为 Kubernetes 具有丰富的功能和扩展性，Docker 公司推出的 Swarm 在这场容器编排大战中败下阵来。归根结底，Docker 面向开发者，而容器运行时则面向机器，只需要对应的接口即可，不需要那么丰富的管理工具。如今，Docker 仍然是最受开发者喜爱的容器工具之一，其 Docker Hub 是全球最大的镜像仓库。
 
-## 将 Docker 项目改名为 Moby
+## 将 Docker 项目改名为 Moby {#rename-docker-to-moby}
 
 2017 年 4 月，Docker 公司将 Docker 项目重命名为 Moby，详见 [Introducing Moby Project: a new open-source project to advance the software containerization movement](https://www.docker.com/blog/introducing-the-moby-project/)：
 
@@ -43,11 +43,11 @@ Moby Project 和 Docker 的区别和联系是：
 - Moby Project 是一个通用的框架，可以用于构建各种类型和用例的容器系统，Docker 是一个针对特定用例的容器系统，即构建，运行和共享应用程序。
 - Moby Project 是一个开放的研发实验室，用于实验和协作开发新的容器技术，Docker 是一个成熟的产品，用于提供稳定和可靠的容器服务。
 
-## 支持 Kubernetes 调度
+## 支持 Kubernetes 调度 {#support-kubernetes}
 
 Docker 公司在 2017 年 12 月发布的 Docker 17.12 版本中开始支持 Kubernetes。在此之前，Docker 公司一直在发展自己的容器编排和调度工具 Docker Swarm。然而，Kubernetes 在容器编排和调度方面具有更广泛的支持和社区贡献，已经成为了业界标准。因此，Docker 公司决定将 Kubernetes 集成到 Docker 平台中，以提供更广泛的选择和更好的用户体验。Docker 公司在 Docker Desktop 和 Docker Enterprise 中提供了 Kubernetes 的集成支持，使得 Kubernetes 和 Docker 容器可以更加方便地部署和管理。同时，Docker 公司也开发了一些工具，如 Kompose 和 Docker Compose，使得用户可以将 Docker Compose 配置文件转换为 Kubernetes YAML 文件，以便更加方便地将应用程序从 Docker Swarm 迁移到 Kubernetes。
 
-## Kubernetes 不再支持 Docker 运行时
+## Kubernetes 不再支持 Docker 运行时 {#kubernetes-not-support-docker}
 
 Kubernetes 从 v1.20 起不再支持 Docker 运行时并在 2022 年 4 月发布的 v1.24 中被完全移除，如下图所示。这意味着在 Kubernetes 中只能使用 containerd 或 CRI-O 容器运行时，不过你依然可以使用 Docker 镜像，只是无需使用 docker 命令或 Docker 守护程序。
 
@@ -55,7 +55,7 @@ Kubernetes 从 v1.20 起不再支持 Docker 运行时并在 2022 年 4 月发布
 
 Kubernetes v1.24 正式移除 Docker 运行时
 
-## 腾退开源组织账号
+## 腾退开源组织账号 {#deprecate-open-source-organization}
 
 2023 年 3 月，据 [Alex Ellis 的博客](https://blog.alexellis.io/docker-is-deleting-open-source-images/) 介绍，Docker 公司决定删除一些开源组织的账户和镜像，除非他们升级到付费的团队计划，这对开源社区造成了很大的困扰和不安。很多 Docker 忠实拥护者和贡献者对 Docker 的这一举动表示了不满和失望。
 
@@ -69,7 +69,7 @@ Kubernetes v1.24 正式移除 Docker 运行时
 - 文章作者建议开源项目使用其他的容器镜像仓库，如 GitHub Container Registry、[Quay.io](http://quay.io/)、各大云厂商的镜像仓库等。
 - 开源社区还提供了一些迁移镜像和重命名镜像的方法和工具。
 
-## 增加对 WebAssembly 运行时的支持
+## 增加对 WebAssembly 运行时的支持 {#support-webassembly-runtime}
 
 2022 年 10 月，Docker 公司发布了 Docker+Wasm 技术预览，这是一个特殊的构建，可以让开发者更容易地使用 Docker 运行 Wasm 工作负载。作为这次发布的一部分，Docker 还宣布将加入 Bytecode Alliance 作为一个投票成员。
 
@@ -96,11 +96,11 @@ Docker+Wasm 技术预览包括：
 - 通过这种方式，Wasm 容器可以与 Linux 容器一起使用 Docker Compose 或其他编排平台如 Kubernetes 运行。
 - 此外，Docker Desktop 还能够将一个 Wasm 应用打包成一个 OCI 容器，并在其中嵌入一个 Wasm 运行时，以便通过容器仓库如 DockerHub 等分享。
 
-## 总结
+## 总结 {#summary}
 
 本文介绍了 Docker 发展过程中的四个重大举措：Moby Project、支持 Kubernetes、删除开源组织账号和增加对 WebAssembly 运行时的支持。其中，Moby Project 旨在推动容器技术走向主流，支持 Kubernetes 的举措提供了更广泛的选择和更好的用户体验，删除开源组织账号的举措引起了开源社区的不满和失望，增加对 WebAssembly 运行时的支持的举措则扩展了 Docker 的应用场景。
 
-## 参考
+## 参考 {#reference}
 
 - [Introducing Moby Project: a new open-source project to advance the software containerization movement](https://www.docker.com/blog/introducing-the-moby-project/)
 - [Docker for Windows Desktop… Now With Kubernetes!](https://www.docker.com/blog/docker-windows-desktop-now-kubernetes/)
