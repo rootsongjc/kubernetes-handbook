@@ -17,7 +17,7 @@ image: "images/banner/docker-wasm.jpg"
 
 使用 Docker 构建包含 WebAssembly 模块的镜像，并保存在 Docker Hub 中。通过 [containerd-wasm-shim](https://github.com/deislabs/containerd-wasm-shims)，可以让它们在 Kubernetes 中运行，如下图所示。
 
-![在 Kubernetes 中运行 WebAssembly 模块](run-wasm-module-with-docker.svg)
+![在 Kubernetes 中运行 WebAssembly 模块](oci.svg)
 
 Containerd 是一种符合 CRI（Container Runtime Interface）规范的容器运行时，是由 Docker 公司开源并贡献给 CNCF 的。只要支持 CRI 规范的运行时都可以在 Kubernetes 中运行。
 
