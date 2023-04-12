@@ -44,7 +44,7 @@ Envoy Gateway 从 2022 年 5 月发起，发展速度很快，至今已经历 v0
 - huabingzhao: Founder of Aeraki Mesh
 - qicz: PMC of Apache ShenYu
 
-于是在上周五，刘训灼发起了 Envoy Gateway 中国兴趣组，EG SIG 是为对 Envoy Gateway 感兴趣的中国贡献者，提供交流、分享、探讨的一个平台，也会提供最新的 Envoy Gateway 的动态。
+于是在上周五，赵化冰、刘训灼发起了 Envoy Gateway 中国兴趣组，EG SIG 是为对 Envoy Gateway 感兴趣的中国贡献者，提供交流、分享、探讨的一个平台，也会提供最新的 Envoy Gateway 的动态。
 
 ## Envoy Gateway 资料 {#materials}
 
