@@ -9,6 +9,8 @@ type: "post"
 image: "images/banner/bing.jpg"
 ---
 
+更新时间：2023年04月20日17:16:22
+
 昨天我的新必应体验申请通过了，立马去体验了下，本文记录下我对新必应的最初印象。
 
 ## 如何体验新必应 {#how-to-experience-new-bing}
@@ -21,6 +23,8 @@ image: "images/banner/bing.jpg"
 
 如果你身处中国大陆，习惯使用了 Chrome 浏览器，不想为了体验新必应而安装一个 Edge 浏览器，可以使用下面的方法在 Chrome 中使用新必应：
 
+### 方式一：修改 HTTP Header
+
 首先在 Chrome 应用商店中安装 [ModHeader](https://chrome.google.com/webstore/detail/modheader-modify-http-hea/idgpnmonknjnojddfkpgkljpfnnfcklj)，方便我们修改  HTTP 请求中的 Header，模仿 Edge 浏览器。
 
 然后配置 ModeHeader，添加规则如下：
@@ -32,7 +36,13 @@ image: "images/banner/bing.jpg"
 
 在 FILTER 处选择「(Request) URL filter」，填入 `.*://www.bing.com/.*`
 
-现在访问 bing.com 你就可以看到顶部的【聊天】选项，可以顺利的使用新必应了。
+**注意：这种方式在 2023年4月20日发现失效。**
+
+### 方式二：安装专用浏览器插件
+
+安装 [Bing chat for all browsers](https://github.com/anaclumos/bing-chat-for-all-browsers) 浏览器插件。推荐这种方式，安装好后你不需要任何配置。
+
+现在访问 [bing.com](https://bing.com) 你就可以看到顶部的【聊天】选项，可以顺利的使用新必应了。
 
 ## 新必应初体验 {#first-experience}
 
