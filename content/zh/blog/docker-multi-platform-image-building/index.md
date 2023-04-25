@@ -4,7 +4,7 @@ description: "本文介绍了 Docker buildx 的多平台构建指南，包括构
 date: 2023-04-25T19:09:28+08:00
 draft: false
 tags: ["docker","容器","跨平台","WebAssembly"]
-categories: ["Docker"]
+categories: ["容器"]
 type: "post"
 image: "images/banner/docker-wasm-build.jpg"
 ---
@@ -54,7 +54,7 @@ Docker buildx 支持的平台主要包括以下几种：
 
 除了以上平台外，Docker buildx 还支持构建和输出多种其他平台的 Docker 镜像，包括 FreeBSD、Solaris 等。用户可以通过指定对应的 `platform` 参数来构建和输出不同平台的 Docker 镜像，例如：
 
-```
+```bash
 docker buildx build --platform linux/amd64,linux/arm64 .
 ```
 
@@ -78,19 +78,19 @@ Docker buildx 引擎的架构是一个分布式的构建系统，通过多阶段
 查看当前的 buildx 构建器列表
 
 ```bash
- docker buildx ls
+docker buildx ls
 ```
 
 创建新的 buildx 构建器
 
 ```bash
- docker buildx create --name mybuilder
+docker buildx create --name mybuilder
 ```
 
 切换到指定名称的 buildx 构建器
 
 ```bash
- docker buildx use mybuilder
+docker buildx use mybuilder
 ```
 
 设置 buildx 构建器的平台支持
