@@ -4,13 +4,13 @@ slider:
   bg_image : "/images/backgrounds/spring1.svg"
   slider_item:
     - title : "可观测性峰会 2023"
-      content : "国内首届可观测性大会，4 月 22 日周六，北京奥加美术馆酒店（近东直门），欢迎大家免费报名参加！"
+      content : "云原生社区主办的国内首届可观测性大会，4 月 22 日周六在北京奥加美术馆酒店成功召开，查看回顾及下载 PPT。"
       animation_in : "left"
       animation_out : "right"
       button:
         enable : true
-        label : "立即报名"
-        link : "http://hdxu.cn/Scfhy"
+        label : "查看回顾"
+        link : "https://cloudnative.to/blog/observability-summit-2023-recap/"
     - title : "云原生社区著《深入理解 Istio》"
       content : "三年磨一剑，云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 编写，本书在持续追踪 Istio 社区最新动向的基础上，力求为读者提供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。"
       animation_in : "left"
@@ -94,7 +94,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，CNCF Ambassador，[云原生社区](https://cloudnative.to) 创始人，独立撰稿人，讲师，摄影及航拍爱好者。"
+  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](https://cloudnative.to) 创始人，独立撰稿人，讲师，摄影及航拍爱好者。"
   button:
     enable : true
     label : "详细介绍"
@@ -163,7 +163,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区成员"
-      count : "11283"
+      count : "11420"
       link : "https://cloudnative.to"
 
 # funfact is for about page
