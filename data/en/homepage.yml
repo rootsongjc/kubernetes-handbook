@@ -79,7 +79,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF Ambassador, [Cloud Native Community(China)](https://cloudnative.to) founder, independent writer, instructor , photography and aerial photography enthusiast.'
+  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), [Cloud Native Community(China)](https://cloudnative.to) founder, independent writer, instructor , photography and aerial photography enthusiast.'
   button:
     enable : true
     label : "Learn more"
@@ -143,7 +143,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "11283"
+      count : "11420"
       link : "https://cloudnative.to"
 
 ############################# blog ################################
