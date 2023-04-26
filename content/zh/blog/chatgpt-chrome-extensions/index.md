@@ -1,5 +1,5 @@
 ---
-title: "ChatGPT 浏览器插件工具推荐|亲测有效"
+title: "免费的 ChatGPT 浏览器插件工具推荐|亲测有效"
 description: "本文整理了一些可以帮助你高效使用 ChatGPT 的浏览器插件，经过本人实测有效，推荐大家。"
 date: 2023-04-26T13:09:28+08:00
 draft: false
@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/chrome.jpg"
 ---
 
-ChatGPT 是一个强大的工具，可以根据提示生成文本响应。然而，使用浏览器版本可能会很繁琐和耗时。幸运的是，有几个浏览器扩展可以帮助您更有效地使用 ChatGPT。在本文中，我们将讨论几个我个人测试并推荐的最有用的 ChatGPT 浏览器扩展。
+ChatGPT 是一个强大的工具，可以根据提示生成文本响应。然而，使用浏览器版本可能会很繁琐和耗时。幸运的是，有几个浏览器扩展可以帮助您更有效地使用 ChatGPT。在本文中，我们将讨论几个我个人测试并推荐的最有用的 ChatGPT 浏览器扩展。这些插件都是完全免费的，不存在订阅或者后期收费选项，大家可以放心使用。
 
 下图展示了安装了插件的 Chrome 浏览器中的 ChatGPT 页面。
 
@@ -59,6 +59,19 @@ GitHub：<https://github.com/xcanwin/KeepChatGPT>
 - 在设置菜单中调整语音识别和文本转语音的选项。
 
 这个扩展可以让你更方便地使用 ChatGPT，也可以帮助你学习外语或提高口语能力。它是一个免费和开源的项目，你可以在 [Chrome 网上应用商店](https://www.notion.so/ChatGPT-5523efe226d744b59f136565ddf3cc90) 下载。
+
+需要注意的是，你无法关闭用语音朗读，除非你卸载掉该扩展。
+
+## WebChatGPT
+
+这个免费的扩展程序将相关的网络结果添加到您对 ChatGPT 的提示中，以获得更准确和最新的对话。
+
+- 为您的查询获取网络结果
+- 从任何 URL中提取网页文本
+- 添加和使用提示模板
+- 使用 Duckduckgo bangs 从数千个网站中获取搜索结果
+
+当你不想使用时，也可以在 ChatGPT 页面上随时关闭它。你可以在 [Chrome 网上应用商店](https://chrome.google.com/webstore/detail/webchatgpt-chatgpt-with-i/lpfemeioodjbpieminkklglpmhlngfcn?hl=zh-CN) 下载该扩展。
 
 ## 总结
 
