@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="478 426 705 537" width="705" height="537">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Multi-tenancy" fill-opacity="1" stroke="none" fill="none" stroke-dasharray="none" stroke-opacity="1">
+    <title>Multi-tenancy</title>
+    <rect fill="white" x="478" y="426" width="705" height="537"/>
+    <g id="Multi-tenancy_Layer_2">
+      <title>Layer 2</title>
+      <g id="Graphic_75">
+        <rect x="478" y="426" width="705" height="537" fill="white"/>
+      </g>
+      <g id="Graphic_74">
+        <rect x="618" y="451" width="174.25" height="413" fill="white"/>
+        <rect x="618" y="451" width="174.25" height="413" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(623 456)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="29.101" y="16">Namespace A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_73">
+        <rect x="650.125" y="503" width="110" height="149" fill="#0a55a8"/>
+        <rect x="650.125" y="503" width="110" height="149" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(655.125 548.30383)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="26.872" y="16">Envoy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="16.672" y="35.46411">Gateway </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="11.936" y="54.92822">Controller</tspan>
+        </text>
+      </g>
+      <g id="Graphic_72">
+        <rect x="1037" y="540" width="110" height="149" fill="#0a55a8"/>
+        <rect x="1037" y="540" width="110" height="149" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1042 595.0359)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="5.704" y="16">Kubernetes </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="9.84" y="35.46411">API Server</tspan>
+        </text>
+      </g>
+      <g id="Line_71">
+        <path d="M 760.125 577.5 L 816.6838 577.5 L 816.6838 614.2302 L 1018.1 614.5 L 1024.1 614.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_70">
+        <rect x="841.7727" y="591.0554" width="164.96" height="46.895996" fill="white"/>
+        <text transform="translate(846.7727 596.0554)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="32.144" y="15">Watching for</tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="33.448">HTTPRoute &amp; Service</tspan>
+        </text>
+      </g>
+      <g id="Graphic_69">
+        <rect x="639.4375" y="723" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="639.4375" y="723" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(644.4375 748.802)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_68">
+        <rect x="650.125" y="742.5" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="650.125" y="742.5" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(655.125 768.302)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_67">
+        <rect x="660.8125" y="762" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="660.8125" y="762" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(665.8125 786.7859)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="3.008" y="16">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="4.088" y="35.46411">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Line_66">
+        <line x1="705.125" y1="652" x2="705.125" y2="729.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_65">
+        <rect x="638.037" y="670.36804" width="134.176" height="28.447998" fill="white"/>
+        <text transform="translate(643.037 675.36804)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Create &amp; Manage</tspan>
+        </text>
+      </g>
+      <g id="Graphic_64">
+        <rect x="563" y="488" width="174.25" height="413" fill="white"/>
+        <rect x="563" y="488" width="174.25" height="413" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(568 493)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="28.949" y="16">Namespace B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_63">
+        <rect x="595.125" y="540" width="110" height="149" fill="#0a55a8"/>
+        <rect x="595.125" y="540" width="110" height="149" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(600.125 585.3038)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="26.872" y="16">Envoy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="16.672" y="35.46411">Gateway </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="11.936" y="54.92822">Controller</tspan>
+        </text>
+      </g>
+      <g id="Graphic_62">
+        <rect x="584.4375" y="760" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="584.4375" y="760" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(589.4375 785.802)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_61">
+        <rect x="595.125" y="779.5" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="595.125" y="779.5" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(600.125 805.302)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_60">
+        <rect x="605.8125" y="799" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="605.8125" y="799" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(610.8125 823.7859)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="3.008" y="16">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="4.088" y="35.46411">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Line_59">
+        <line x1="650.125" y1="689" x2="650.125" y2="766.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_58">
+        <rect x="583.037" y="707.36804" width="134.176" height="28.447998" fill="white"/>
+        <text transform="translate(588.037 712.368)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Create &amp; Manage</tspan>
+        </text>
+      </g>
+      <g id="Line_57">
+        <path d="M 705.125 614.5 L 716.125 614.5 L 1024.1 614.5825" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_56">
+        <rect x="509" y="530" width="174.25" height="413" fill="white"/>
+        <rect x="509" y="530" width="174.25" height="413" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(514 535)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="28.653" y="16">Namespace C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_55">
+        <rect x="541.125" y="582" width="110" height="149" fill="#0a55a8"/>
+        <rect x="541.125" y="582" width="110" height="149" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(546.125 627.3038)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="26.872" y="16">Envoy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="16.672" y="35.46411">Gateway </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="11.936" y="54.92822">Controller</tspan>
+        </text>
+      </g>
+      <g id="Graphic_54">
+        <rect x="530.4375" y="802" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="530.4375" y="802" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(535.4375 827.802)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_53">
+        <rect x="541.125" y="821.5" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="541.125" y="821.5" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(546.125 847.302)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="5.408" y="15">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.872" y="33.448">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Graphic_52">
+        <rect x="551.8125" y="841" width="110" height="88.5" fill="#0a55a8"/>
+        <rect x="551.8125" y="841" width="110" height="88.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(556.8125 865.7859)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="3.008" y="16">Envoy Proxy </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="4.088" y="35.46411">Deployment</tspan>
+        </text>
+      </g>
+      <g id="Line_51">
+        <line x1="596.125" y1="731" x2="596.125" y2="808.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_50">
+        <rect x="529.037" y="749.368" width="134.176" height="28.447998" fill="white"/>
+        <text transform="translate(534.037 754.368)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Create &amp; Manage</tspan>
+        </text>
+      </g>
+      <g id="Line_49">
+        <path d="M 651.125 656.5 L 816.4835 656.5 L 816.4835 614.2857 L 1024.1 614.7051" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
