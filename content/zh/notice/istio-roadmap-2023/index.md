@@ -5,7 +5,7 @@ date: 2023-05-09T15:27:49+08:00
 description: "根据 KubeCon EU Istio Day 上的分享整理。"
 type: "notice"
 link: "https://static.sched.com/hosted_files/colocatedeventseu2023/3d/Istio%20Roadmap%20Update.pdf"
-image: "images/backgrounds/favicon.png"
+image: "images/backgrounds/istio-logo.png"
 ---
 
 本文根据 KubeCon EU 2023 上的 Istio Day 上 Lin Sun 和 Louis Ryan 的分享整理。
