@@ -47,7 +47,7 @@ Kubernetes 主要由以下几个核心组件组成：
 
 下图清晰表明了 Kubernetes 的架构设计以及组件之间的通信协议。
 
-![Kuberentes 架构（图片来自于网络）](../images/kubernetes-high-level-component-archtecture.jpg)
+![Kubernetes 架构（图片来自于网络）](../images/kubernetes-high-level-component-archtecture.jpg)
 
 下面是更抽象的一个视图：
 
