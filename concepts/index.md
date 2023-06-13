@@ -12,7 +12,7 @@ Borg 主要由 BorgMaster、Borglet、borgcfg 和 Scheduler 组成，如下图�
 ![Borg 架构](../images/borg.png)
 
 * BorgMaster 是整个集群的大脑，负责维护整个集群的状态，并将数据持久化到 Paxos 存储中；
-* Scheduer 负责任务的调度，根据应用的特点将其调度到具体的机器上去；
+* Scheduler 负责任务的调度，根据应用的特点将其调度到具体的机器上去；
 * Borglet 负责真正运行任务（在容器中）；
 * borgcfg 是 Borg 的命令行工具，用于跟 Borg 系统交互，一般通过一个配置文件来提交任务。
 
