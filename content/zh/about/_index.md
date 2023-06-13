@@ -36,13 +36,13 @@ description : "宋净超（Jimmy Song）的简介。"
 
 Jimmy 是 ServiceMesher 及 [云原生社区](https://cloudnative.to) 创始人，[2021 年中国开源先锋](https://segmentfault.com/a/1190000041270720)。
 
-**ServiceMesher 社区**
+**ServiceMesher 社区（已合并到云原生社区）**
 
 ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共同发起，成立于 2018 年 4 月。ServiceMesher 社区的使命是传播 Service Mesh 技术，构建开源文化，加强行业交流，推动 Service Mesh 在企业中落地。
 
 **云原生社区**
 
-云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 [Jimmy 和他的伙伴们](https://cloudnative.to/team/) 共同发起成立。社区旨在推广云原生技术，构建开发者生态。
+云原生社区始于 2016 年成立的 `K8s&CloudNative 实战群`，覆盖了上千名云原生早期拥护者。2020 年 5 月经过改组，由 Jimmy 和他的伙伴们共同发起成立。社区旨在推广云原生技术，构建开发者生态。
 
 ## 发表的演讲及参与的活动
 
