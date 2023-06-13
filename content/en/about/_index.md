@@ -41,4 +41,4 @@ ServiceMesher community by a group with the same values and ideals of volunteers
 
 #### Cloud Native Community
 
-Cloud Native Community is founded on May 12, 2020 by [Jimmy and his friends](https://cloudnative.to/en/team). It is an open source community with technology and passion. It was founded spontaneously by a group of industry elites who love open source and uphold the principle of ‘consensus, co-governance, co-construction and sharing’. The aim of the community is: connection, neutral, open source. We are based in China, facing the world, enterprise neutrality, focusing on open source, and give feedback to open source.
+Cloud Native Community is founded on May 12, 2020 by Jimmy and his friends. It is an open source community with technology and passion. It was founded spontaneously by a group of industry elites who love open source and uphold the principle of ‘consensus, co-governance, co-construction and sharing’. The aim of the community is: connection, neutral, open source. We are based in China, facing the world, enterprise neutrality, focusing on open source, and give feedback to open source.
