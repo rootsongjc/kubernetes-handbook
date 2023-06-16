@@ -92,7 +92,7 @@ out
 执行下面的将 Istio 编译成 Docker 镜像：
 
 ```bash
-sudo make build
+sudo make docker
 ```
 
 编译根据你的网络情况，大概耗时 3 到 5 分钟。编译完成后，执行下面的命令你将看到 Istio 的 Docker 镜像。

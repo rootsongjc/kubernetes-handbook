@@ -89,7 +89,7 @@ It will build both the `linux_amd64` and `darwin_amd64` architectures binaries a
 Run the following command to compile Istio into a Docker image.
 
 ```bash
-sudo make build
+sudo make docker
 ```
 
 The compilation will take about 3 to 5 minutes depending on your network. Once the compilation is complete, you will see the Docker image of Istio by running the following command.
