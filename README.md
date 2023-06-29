@@ -61,7 +61,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 - [使用虚拟机安装的拥有三个节点的 Kubernetes 集群](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)：项目直接在本地部署一个 3 节点的分布式集群及其他如 Heapster、EFK、Istio 等可选组件
 - [Cloud Native Sandbox](https://github.com/rootsongjc/cloud-native-sandbox)：更加轻量级，在个人电脑上使用 Docker 运行单节点的 Kubernetes、Istio 等组件
-- [Katacoda 提供的 Kubernetes 环境](https://katacoda.com/kubernetes)：免费的在线学习平台，无需注册，拥有 GitHub 账号即可登录
 
 ## 贡献与致谢
 

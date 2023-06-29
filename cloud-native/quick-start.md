@@ -132,10 +132,6 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 这些解决方案样是一些工具和实用程序，大大简化了在本地计算机上安装和配置小型 Kubernetes 集群的任务。它们是学习 Kubernetes 的好方法，同时对于新手来说也不会太难，又足够小巧可以到安装在个人电脑上。最流行的自托管 Kubernetes 工具和环境是 [Minikube](https://github.com/kubernetes/minikube)、[MicroK8s](https://github.com/ubuntu/microk8s)、[Docker Desktop](https://docs.docker.com/docker-for-windows/kubernetes/) 和 [Kind](https://github.com/kubernetes-sigs/kind)。这些解决方案往往有一些限制，例如，Minikube 只允许创建一个节点。尽管有这些缺点，但这些工具还是非常值得推荐，因为它们将易学性和成本效益结合起来，对于刚开始使用 Kubernetes 的初学者来说，是一个很好的选择。
 
-### 三、云托管的解决方案
-
-如今各大云供应商都提供了定制化的 Kubernetes 解决方案来。你也可以通过线上教学平台如 [Katacoda](https://katacoda.com/) 上的免费课程来学习 Kubernetes，它们都是云托管的，你不需要自己安装，只不过你需要云供应商的集群需要付费。
-
 ## 本地测试和调试 Kubernetes
 
 作为本地安装 Kubernetes 的一部分，你很可能还需要一些测试和调试能力，以确保一切都在顺利运行，特别是定义入口和出口策略等棘手的任务。此外，还有 Kubernetes 附加组件的生态系统，你可能想使用这些组件来扩展 Kubernetes 集群的功能。添加所有这些都需要进行更多的测试，以确保它们能与你的 Kubernetes 集群完美的集成。
