@@ -81,7 +81,7 @@ Let's Encrypt 是一个非营利性的 ACME Issuer，可以为网站提供免费
    - `Zone - DNS - Edit`
    - `Zone - Zone - Read`
 
-   Zone Resources：
+   Zone Resources:
 
    - `Include - All Zones`
 

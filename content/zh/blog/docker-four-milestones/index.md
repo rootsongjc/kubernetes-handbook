@@ -92,7 +92,7 @@ Docker+Wasm 技术预览包括：
 - 这四种 Wasm 运行时引擎都基于 runwasi 库，这是一个 Rust 库，可以让容器管理器 containerd 运行 Wasm 工作负载，并创建一种新的容器类型。
 - runwasi 库基于 WASI 标准，这是一个为 WebAssembly 提供通用平台接口的模块化系统接口。这意味着如果一个程序编译成目标是 WASI，它就可以在任何符合 WASI 的运行时上运行。
 - Wasm 容器通常只包含一个编译好的 Wasm 字节码文件，不需要任何额外的二进制库，这使得它比 Linux 容器更小。这也意味着 Wasm 容器通常启动更快，更可移植。
-- 由于 Wasm 容器直接被 containerd 支持，在 Docker Desktop 最新版本中尝试 Docker+Wasm 技术预览 2 只需要启用 “使用 containerd” 选项。
+- 由于 Wasm 容器直接被 containerd 支持，在 Docker Desktop 最新版本中尝试 Docker+Wasm 技术预览 2 只需要启用“使用 containerd”选项。
 - 通过这种方式，Wasm 容器可以与 Linux 容器一起使用 Docker Compose 或其他编排平台如 Kubernetes 运行。
 - 此外，Docker Desktop 还能够将一个 Wasm 应用打包成一个 OCI 容器，并在其中嵌入一个 Wasm 运行时，以便通过容器仓库如 DockerHub 等分享。
 
@@ -107,4 +107,4 @@ Docker+Wasm 技术预览包括：
 - [Introducing the Docker+Wasm Technical Preview](https://www.docker.com/blog/docker-wasm-technical-preview/)
 - [Announcing Docker+Wasm Technical Preview 2](https://www.docker.com/blog/announcing-dockerwasm-technical-preview-2/)
 - [Docker is deleting Open Source organisations - what you need to know](https://blog.alexellis.io/docker-is-deleting-open-source-images/)
-- [别慌: Kubernetes 和 Docker](https://kubernetes.io/zh-cn/blog/2020/12/02/dont-panic-kubernetes-and-docker/)
+- [别慌：Kubernetes 和 Docker](https://kubernetes.io/zh-cn/blog/2020/12/02/dont-panic-kubernetes-and-docker/)

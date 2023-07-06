@@ -34,7 +34,7 @@ By the time of May 2018, I start to organize the [ServiceMesher](http://www.serv
 
 In the last few months, we work with other open source communities in China, such as [k8smeetup](http://www.k8smeetup.com), [Sharding-Sphere](http://shardingjdbc.io/), [Apache SkyWalking](http://skywalking.apache.org/). Our community has grown to have 1,700 members and two round meetups in [Hangzhou](http://www.servicemesher.com/blog/hangzhou-meetup-20180630/) and [Beijing](http://www.servicemesher.com/blog/beijing-meetup-20180729/) till now.
 
-More than 300 people participated in the scene and more than 20,000 people watched it live by [IT大咖说](http://www.itdks.com/eventlist/detail/2311)。
+More than 300 people participated in the scene and more than 20,000 people watched it live by [IT 大咖说](http://www.itdks.com/eventlist/detail/2311)。
 
 ## Future
 

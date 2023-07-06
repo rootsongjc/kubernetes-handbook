@@ -1,8 +1,8 @@
 ---
 date: "2017-03-15T12:09:26+08:00"
-title: "Docker 17.03-CE create plugin源码解析"
+title: "Docker 17.03-CE create plugin 源码解析"
 draft: false
-description: "今天来看下docker create plugin的源码。"
+description: "今天来看下 docker create plugin 的源码。"
 categories: ["容器"]
 tags: ["docker"]
 type: "post"
@@ -11,17 +11,17 @@ aliases: "/posts/docker-create-plugin"
 image: "images/banner/docker-logo.jpg"
 ---
 
-继续上一篇[Docker17.03-CE插件开发的🌰](https://jimmysong.io/posts/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
+继续上一篇[Docker17.03-CE 插件开发的🌰](https://jimmysong.io/posts/docker-plugin-develop/)，今天来看下**docker create plugin**的源码。
 
 **cli/command/plugin/create.go**
 
-Docker命令行`docker plugin create`调用的，使用的是[cobra](http://github.com/spf13/cobra)，这个命令行工具开发包很好用，推荐下。
+Docker 命令行`docker plugin create`调用的，使用的是[cobra](http://github.com/spf13/cobra)，这个命令行工具开发包很好用，推荐下。
 
 执行这两个函数
 
 ```go
 func newCreateCommand(dockerCli *command.DockerCli) *cobra.Command 
-//调用下面的函数，拼装成URL调用RESTful API接口
+//调用下面的函数，拼装成 URL 调用 RESTful API 接口
 func runCreate(dockerCli *command.DockerCli, options pluginCreateOptions) error {
   ...
   if err = dockerCli.Client().PluginCreate(ctx, createCtx, createOptions); err != nil {
@@ -71,7 +71,7 @@ func (cli *Client) PluginCreate(ctx context.Context, createContext io.Reader, cr
 }
 ```
 
-plugin在后端接收到请求后会执行下面的方法。最终**create plugin**的实现在plugin/backend_linux.go下：
+plugin 在后端接收到请求后会执行下面的方法。最终**create plugin**的实现在plugin/backend_linux.go下：
 
 ```go
 // CreateFromContext creates a plugin from the given pluginDir which contains
@@ -79,5 +79,5 @@ plugin在后端接收到请求后会执行下面的方法。最终**create plugi
 func (pm *Manager) CreateFromContext(ctx context.Context, tarCtx io.ReadCloser, options *types.PluginCreateOptions) (err error) {}
 ```
 
-至于docker create plugin时docker后台究竟做了什么，就看👆那个文件。
+至于 docker create plugin 时 docker 后台究竟做了什么，就看👆那个文件。
 

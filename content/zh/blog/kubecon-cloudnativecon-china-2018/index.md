@@ -2,7 +2,7 @@
 title: "KubeCon&CloudNativeCon China 2018"
 date: 2018-11-16T13:40:38+08:00
 draft: false
-description: "KubeCon&CloudNativeCon China 2018参会回顾。"
+description: "KubeCon&CloudNativeCon China 2018 参会回顾。"
 categories: ["其他"]
 type: "post"
 aliases: "/posts/kubecon-cloudnativecon-china-2018"
@@ -13,7 +13,7 @@ image: "images/banner/kubecon-shanghai-2018-banner.webp"
 
 ![KubeCon&CloudNativeCon China 上海 2018](kubecon-shanghai-2018-group.webp)
 
-*图中由上自下的大合影是：ServiceMesher 社区上海聚首合影；中美日的Kubernetes、Envoy、Istio、Apache Skywalking、ServiceMesher社区在KubeCon上海；Yahoo Japan 与蚂蚁集团团队在上海中心办公室合影。*
+*图中由上自下的大合影是：ServiceMesher 社区上海聚首合影；中美日的 Kubernetes、Envoy、Istio、Apache Skywalking、ServiceMesher 社区在 KubeCon 上海；Yahoo Japan 与蚂蚁集团团队在上海中心办公室合影。*
 
 ## 活动
 
@@ -45,10 +45,10 @@ KubeCon China 会议的很多 PPT 在[大会的官网](https://www.lfasiallc.com
 
 ## 飞行
 
-在会场随便一坐，就能遇到熟人。还有很多我都叫不上名字的人来打招呼，不能一一道谢了，感谢晚餐以及收到的Prometheus飞行袜。
+在会场随便一坐，就能遇到熟人。还有很多我都叫不上名字的人来打招呼，不能一一道谢了，感谢晚餐以及收到的 Prometheus 飞行袜。
 
-11月12日晚在上海静安寺上空飞行，航拍的南京西路夜景。
+11 月 12 日晚在上海静安寺上空飞行，航拍的南京西路夜景。
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//player.bilibili.com/player.html?aid=36041724&cid=63259487&page=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="Jimmy Song的航拍视频"></iframe>
+  <iframe src="//player.bilibili.com/player.html?aid=36041724&cid=63259487&page=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="Jimmy Song 的航拍视频"></iframe>
 </div>

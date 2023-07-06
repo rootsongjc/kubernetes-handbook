@@ -28,7 +28,7 @@ image: "images/banner/mirror.jpg"
 | 8        | RETURN            | any    | any     | anywhere   | localhost                       |
 | 9        | ISTIO_REDIRECT    | any    | any     | anywhere   | anywhere                        |
 
-本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则， 以示意图的形式带你一览其全貌，其中详细指出了路由具体使用的是 `ISTIO_OUTPUT` 中的哪一条规则。
+本文将向你展示 Istio sidecar 中的六种流量类型及其 iptables 规则，以示意图的形式带你一览其全貌，其中详细指出了路由具体使用的是 `ISTIO_OUTPUT` 中的哪一条规则。
 
 ## Sidecar 中的 iptables 流量路由
 
@@ -57,7 +57,7 @@ Remote Pod -> `RREROUTING` -> `ISTIO_INBOUND` -> `ISTIO_IN_REDIRECT` -> Envoy 15
 
 以下是本地 Pod IP 访问远程服务经过的 iptables 规则。
 
-Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> ISTIO_REDIRECT -> Envoy 15001（Outbound）-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING` -> Remote Pod
+Local Pod-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 9** -> ISTIO_REDIRECT -> Envoy 15001 (Outbound)-> `OUTPUT` -> **`ISTIO_OUTPUT` RULE 4** -> `POSTROUTING` -> Remote Pod
 
 我们看到流量只经过 Envoy 15001 Outbound 端口。
 

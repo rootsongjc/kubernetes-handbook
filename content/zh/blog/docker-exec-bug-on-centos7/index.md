@@ -59,7 +59,7 @@ CentOS7 发行版中的 Docker 使用的 docker-runc 二进制文件使用旧版
 
 ## 发现过程
 
-本周 [Kubernetes 1.13](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.13-changelog.html) 发布，想着更新下我的 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 使用 Vagrant 和 VirtualBox 在本地搭建分布式 Kubernetes 1.13 集群和 [Istio](https://istio.io/zh) Service Mesh 的最新版本 1.0.4， 可是在安装 Istio 的时候发现 Istio 有两个 Pod 启动不起来，`istio-sidecar-injector` 和 `istio-galley` 这两个 Pod，检查其启动过程，发现它们都是因为 Readiness Probe 和 Liveness Probe 失败导致的。再联想到之前安装较老版本的 Istio 的时候也遇到该问题，见 [Increase health probe interval #6610](https://github.com/istio/istio/pull/6610) 通过增加健康检查的时间间隔可以解决该问题，可是经过反复的测试后发现还是不行。然后我想到先去掉健康检查，然后我手动使用 `kubectl exec` 来执行健康检查的命令，解决却遇到下面的错误：
+本周 [Kubernetes 1.13](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-1.13-changelog.html) 发布，想着更新下我的 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 使用 Vagrant 和 VirtualBox 在本地搭建分布式 Kubernetes 1.13 集群和 [Istio](https://istio.io/zh) Service Mesh 的最新版本 1.0.4，可是在安装 Istio 的时候发现 Istio 有两个 Pod 启动不起来，`istio-sidecar-injector` 和 `istio-galley` 这两个 Pod，检查其启动过程，发现它们都是因为 Readiness Probe 和 Liveness Probe 失败导致的。再联想到之前安装较老版本的 Istio 的时候也遇到该问题，见 [Increase health probe interval #6610](https://github.com/istio/istio/pull/6610) 通过增加健康检查的时间间隔可以解决该问题，可是经过反复的测试后发现还是不行。然后我想到先去掉健康检查，然后我手动使用 `kubectl exec` 来执行健康检查的命令，解决却遇到下面的错误：
 
 ```bash
 $ kubectl exec -it istio-sidecar-injector-6fc974b6c8-pts4t -- istio-sidecar-injector-b484dfcbb-9x9l9 probe --probe-path=/health --interval=4s
@@ -104,11 +104,11 @@ docker-client-1.13.1-75.git8633870.el7.centos.x86_64
 
 **二、更新到 Docker-CE**
 
-众所周知，Docker 自1.13版本之后更改了版本的命名方式，也提供了官方的 CentOS 源，替换为 Docker-CE 亦可解决该问题，不过 Docker-CE 的配置可能会与 Docker 1.13 有所不同，所以可能需要修改配置文件。
+众所周知，Docker 自 1.13 版本之后更改了版本的命名方式，也提供了官方的 CentOS 源，替换为 Docker-CE 亦可解决该问题，不过 Docker-CE 的配置可能会与 Docker 1.13 有所不同，所以可能需要修改配置文件。
 
 ## 参考
 
-- [配置Pod的liveness和readiness探针 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html)
+- [配置 Pod 的 liveness 和 readiness 探针 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/guide/configure-liveness-readiness-probes.html)
 - [Bug 1655214 - docker exec does not work with registry.access.redhat.com/rhel7:7.3 - redhat.com](https://bugzilla.redhat.com/show_bug.cgi?id=1655214)
 - [kubernetes-vagrant-centos-cluster - github.com](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster)
 - [FIPS Mode - an explanation - mozilla.org](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/FIPS_Mode_-_an_explanation)

@@ -157,4 +157,4 @@ $ pm2 status
 
 ## 参考
 
-- [使用Github的webhooks进行网站自动化部署](https://aotu.io/notes/2016/01/07/auto-deploy-website-by-webhooks-of-github/index.html)
+- [使用 Github 的 webhooks 进行网站自动化部署](https://aotu.io/notes/2016/01/07/auto-deploy-website-by-webhooks-of-github/index.html)

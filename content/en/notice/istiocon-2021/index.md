@@ -8,7 +8,7 @@ link: "https://events.istio.io/istiocon-2021/"
 type: "notice"
 ---
 
-![IstioCon 2021 poster（Jimmy Song）](istio-con-jimmysong.png)
+![IstioCon 2021 poster (Jimmy Song)](istio-con-jimmysong.png)
 
 - Topic: Service Mesh in China
 - Time: February 23rd, 10:00 - 10:10 am Beijing time

@@ -38,7 +38,7 @@ rules:
 
 ## 什么是 ABAC？
 
-ABAC 是 “基于属性的访问控制 “的缩写。从高层次上讲，[NIST](https://www.nist.gov/publications/guide-attribute-based-access-control-abac-definition-and-considerations-1) 将 ABAC 定义为一种访问控制方法，“在这种方法中，根据分配的主体属性、环境条件以及用这些属性和条件指定的一组策略，批准或拒绝主体对对象进行操作的请求。” ABAC 是一个细粒度的模型，因为你可以给用户分配任何属性，但同时它也成为一种负担，很难管理：
+ABAC 是“基于属性的访问控制“的缩写。从高层次上讲，[NIST](https://www.nist.gov/publications/guide-attribute-based-access-control-abac-definition-and-considerations-1) 将 ABAC 定义为一种访问控制方法，“在这种方法中，根据分配的主体属性、环境条件以及用这些属性和条件指定的一组策略，批准或拒绝主体对对象进行操作的请求。”ABAC 是一个细粒度的模型，因为你可以给用户分配任何属性，但同时它也成为一种负担，很难管理：
 
 - 在定义权限的时候，用户和对象之间的关系无法可视化。
 - 如果规则设计的有点复杂或者混乱，对于管理员来说，维护和跟踪会很麻烦。
@@ -83,7 +83,7 @@ NGAC 是基于这样一个假设：你可以用一个图来表示你要保护的
 
 在这张图中，我们可以看到 `/hr-docs` 文件夹中的两个文件 `resume` 和 `contract` 的表示，每个文件都链接到一个类别（`public`/`confidential`）。还有两个策略类，`File System` 和 `Scope`，图中的对象被连接在这里 —— 需要满足这些条件才能获得对每个文件的访问权。
 
-在例子中，用户 Allice 对两个文件都有读写访问权限，因为有一个路径将 Allice 链接到每个文件，而且路径授予了两个策略类的权限。但是，用户 Bob 只有对 `resume` 文件的访问权，因为虽然存在一个从 Bob 到 `contract` 文件的路径，该路径满足 `File System` 策略类的 “读 " 权限，但没有授予 `Scope` 策略类权限的路径。所以，Bob 对 `contract` 文件的访问被拒绝。
+在例子中，用户 Allice 对两个文件都有读写访问权限，因为有一个路径将 Allice 链接到每个文件，而且路径授予了两个策略类的权限。但是，用户 Bob 只有对 `resume` 文件的访问权，因为虽然存在一个从 Bob 到 `contract` 文件的路径，该路径满足 `File System` 策略类的“读 " 权限，但没有授予 `Scope` 策略类权限的路径。所以，Bob 对 `contract` 文件的访问被拒绝。
 
 ## 为什么选择 NGAC？
 

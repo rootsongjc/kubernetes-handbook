@@ -145,7 +145,7 @@ SPIRE Server 配置中的 `trust_domain` 应与安装 Istio 时指定的 `TRUST_
 
 该命令中会安装 [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md)，自动注册 Kubernetes 中的工作负载。所有工作负载将根据其服务账户注册 SPIFFE 标准的服务身份格式 `spiffe://<trust-domain>/ns/<namespace>/sa/<service-account>`。
 
-如果你想调整 SPIRE CA 和 SVID 证书的 TTL，可以在 SPIRE Server 的配置中修改 `ca_ttl`（默认 24h） 和 `default_svid_ttl`（默认 1h），详见 [SPIRE Server 配置](https://spiffe.io/docs/latest/deploying/spire_server/)。
+如果你想调整 SPIRE CA 和 SVID 证书的 TTL，可以在 SPIRE Server 的配置中修改 `ca_ttl`（默认 24h）和 `default_svid_ttl`（默认 1h），详见 [SPIRE Server 配置](https://spiffe.io/docs/latest/deploying/spire_server/)。
 
 ## 安装 Istio {#install-istio}
 

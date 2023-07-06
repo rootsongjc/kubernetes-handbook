@@ -19,7 +19,7 @@ image: "images/banner/kubernetes.jpg"
 
 ## docker run
 
-如何运行一个 nginx Deployment 并将其暴露出来？ 查看 [kubectl run](https://kubernetes.io/docs/user-guide/kubectl) 。
+如何运行一个 nginx Deployment 并将其暴露出来？查看 [kubectl run](https://kubernetes.io/docs/user-guide/kubectl) 。
 
 使用 docker 命令：
 
@@ -39,7 +39,7 @@ $ kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
 deployment "nginx-app" created
 ```
 
-在大于等于 1.2 版本 Kubernetes 集群中，使用`kubectl run` 命令将创建一个名为 "nginx-app" 的 Deployment。如果您运行的是老版本，将会创建一个 replication controller。 如果您想沿用旧的行为，使用 `--generation=run/v1` 参数，这样就会创建 replication controller。查看 [`kubectl run`](https://kubernetes.io/docs/user-guide/kubectl/) 获取更多详细信息。
+在大于等于 1.2 版本 Kubernetes 集群中，使用`kubectl run` 命令将创建一个名为 "nginx-app" 的 Deployment。如果您运行的是老版本，将会创建一个 replication controller。如果您想沿用旧的行为，使用 `--generation=run/v1` 参数，这样就会创建 replication controller。查看 [`kubectl run`](https://kubernetes.io/docs/user-guide/kubectl/) 获取更多详细信息。
 
 ```bash
 # expose a port through with a service
@@ -57,7 +57,7 @@ kubectl run [-i] [--tty] --attach <name> --image=<image>
 
 与 `docker run ...` 不同的是，如果指定了 `--attach` ，我们将连接到 `stdin`，`stdout` 和 `stderr`，而不能控制具体连接到哪个输出流（`docker -a ...`）。
 
-因为我们使用 Deployment 启动了容器，如果您终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。 如果想销毁该 Deployment（和它的 pod），您需要运行 `kubeclt delete deployment <name>`。
+因为我们使用 Deployment 启动了容器，如果您终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。如果想销毁该 Deployment（和它的 pod），您需要运行 `kubeclt delete deployment <name>`。
 
 ## docker ps
 
@@ -165,7 +165,7 @@ $ kubectl logs -f nginx-app-zibvs
 10.240.63.110 - - [14/Jul/2015:01:09:02 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.26.0" "-"
 ```
 
-现在是时候提一下 pod 和容器之间的细微差别了；默认情况下如果 pod 中的进程退出 pod 也不会终止，相反它将会重启该进程。这类似于 docker run 时的 `--restart=always` 选项， 这是主要差别。在 docker 中，进程的每个调用的输出都是被连接起来的，但是对于 kubernetes，每个调用都是分开的。要查看以前在 kubernetes 中执行的输出，请执行以下操作：
+现在是时候提一下 pod 和容器之间的细微差别了；默认情况下如果 pod 中的进程退出 pod 也不会终止，相反它将会重启该进程。这类似于 docker run 时的 `--restart=always` 选项，这是主要差别。在 docker 中，进程的每个调用的输出都是被连接起来的，但是对于 kubernetes，每个调用都是分开的。要查看以前在 kubernetes 中执行的输出，请执行以下操作：
 
 ```bash
 $ kubectl logs --previous nginx-app-zibvs
@@ -206,7 +206,7 @@ $ kubectl get po -l run=nginx-app
 # Return nothing
 ```
 
-请注意，我们不直接删除 pod。使用 kubectl 命令，我们要删除拥有该 pod 的 Deployment。如果我们直接删除pod，Deployment 将会重新创建该 pod。
+请注意，我们不直接删除 pod。使用 kubectl 命令，我们要删除拥有该 pod 的 Deployment。如果我们直接删除 pod，Deployment 将会重新创建该 pod。
 
 ## docker login
 

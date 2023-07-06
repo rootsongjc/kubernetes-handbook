@@ -1,5 +1,5 @@
 ---
-title: "捐献Istio Handbook给ServiceMesher社区"
+title: "捐献 Istio Handbook 给 ServiceMesher 社区"
 date: 2019-03-10T16:55:11+08:00
 draft: false
 description: "为了进一步普及 Istio 和 Service Mesh 技术将此书捐献给社区共同撰写。"
@@ -10,7 +10,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 image: "images/backgrounds/notification.jpg"
 ---
 
-Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.io/istio-handbook>）在捐献给 ServiceMesher 社区之前已经撰写了8个月，为了进一步普及 Istio 和 Service Mesh 技术将次书捐献给社区共同撰写。2019年3月10日完成了原书内容的迁移至  <https://github.com/servicemesher/istio-handbook>，原书将不再更新。
+Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.io/istio-handbook>）在捐献给 ServiceMesher 社区之前已经撰写了 8 个月，为了进一步普及 Istio 和 Service Mesh 技术将次书捐献给社区共同撰写。2019 年 3 月 10 日完成了原书内容的迁移至  <https://github.com/servicemesher/istio-handbook>，原书将不再更新。
 
 - GitHub 地址：https://github.com/servicemesher/istio-handbook
 - 在线阅读地址：<http://www.servicemesher.com/istio-handbook/>
@@ -19,7 +19,7 @@ Istio handbook 原是我创作的一本开源电子书（见 <https://jimmysong.
 
 本书发行版权归属于电子工业出版社博文视点，未经授权请勿私自印刷发行。
 
-[Istio](https://istio.io/zh) 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于2017年初开始进入大众视野，作为云原生时代下承 Kubernetes、上接 Serverless 架构的重要基础设施层，地位至关重要。[ServiceMesher 社区](http://www.servicemesher.com/)作为中国最早的一批在研究和推广 Service Mesh 技术的开源社区决定整合社区资源，合作撰写一本开源电子书以飨读者。
+[Istio](https://istio.io/zh) 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于 2017 年初开始进入大众视野，作为云原生时代下承 Kubernetes、上接 Serverless 架构的重要基础设施层，地位至关重要。[ServiceMesher 社区](http://www.servicemesher.com/)作为中国最早的一批在研究和推广 Service Mesh 技术的开源社区决定整合社区资源，合作撰写一本开源电子书以飨读者。
 
 ### 关于本书
 

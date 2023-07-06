@@ -1,5 +1,5 @@
 ---
-title: "什么是Service Mesh（服务网格）？"
+title: "什么是 Service Mesh（服务网格）？"
 description: "本文介绍了 Service Mesh 是什么，其工作原理并提供了一些有用的链接。"
 date: 2017-09-20T21:56:04+08:00
 draft: false
@@ -11,7 +11,7 @@ aliases: "/posts/what-is-a-service-mesh"
 image: "images/banner/service-mesh.jpg"
 ---
 
-Service Mesh 又译作 “服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A Service Mesh? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
+Service Mesh 又译作“服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A Service Mesh? AND WHY DO I NEED ONE?](https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
 
 下面是 [Willian Morgan](https://twitter.com/wm) 对 Service Mesh 的解释。
 
@@ -21,7 +21,7 @@ Service Mesh 又译作 “服务网格”，作为服务间通信的基础设施
 
 > 服务网格（Service Mesh）是处理服务间通信的基础设施层。它负责构成现代云原生应用程序的复杂服务拓扑来可靠地交付请求。在实践中，Service Mesh 通常以轻量级网络代理阵列的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。
 
-## Service Mesh的特点
+## Service Mesh 的特点
 
 Service Mesh 有如下几个特点：
 
@@ -55,7 +55,7 @@ Service Mesh 的架构如下图所示：
 
 Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 serivce mesh 中实现。
 
-## Service Mesh如何工作？
+## Service Mesh 如何工作？
 
 下面以 Istio 为例讲解 Service Mesh 如何工作，后续文章将会详解 Istio 如何在 Kubernetes 中工作。
 
@@ -72,7 +72,7 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 Service Mesh 并没有给我们带来新功能，它是用于解决其他工具已经解决过的问题，只不过这次是在以 Kubernetes 为基础的云原生生态环境下的实现。
 
-在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的 “胖客户端” 库，这些就是早期的 Service Mesh，但是它们都仅适用于特定的环境和特定的开发语言，并不能作为平台级的 Service Mesh 支持。
+在传统的 MVC 三层 Web 应用程序架构下，服务之间的通讯并不复杂，在应用程序内部自己管理即可，但是在现今的复杂的大型网站情况下，单体应用被分解为众多的微服务，服务之间的依赖和通讯十分复杂，出现了 twitter 开发的 [Finagle](https://twitter.github.io/finagle/)、Netflix 开发的 [Hystrix](https://github.com/Netflix/Hystrix) 和 Google 的 Stubby 这样的“胖客户端”库，这些就是早期的 Service Mesh，但是它们都仅适用于特定的环境和特定的开发语言，并不能作为平台级的 Service Mesh 支持。
 
 在 Cloud Native 架构下，容器的使用赋予了异构应用程序更多的可能性，Kubernetes 增强了应用的横向扩容能力，用户可以快速的编排出复杂环境、复杂依赖关系的应用程序，同时开发者又无须过分关心应用程序的监控、扩展性、服务发现和分布式追踪这些繁琐的事情，进而专注于程序开发，赋予开发者更多的创造性。
 

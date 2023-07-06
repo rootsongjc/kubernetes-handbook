@@ -16,9 +16,9 @@ SOFAMesh 已闭源，本文已过时。
 
 {{</callout>}}
 
-4 月，蚂蚁集团自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）启动开源计划，并开放多个组件，（相关背景请点击链接阅读《[开源 | 蚂蚁集团启动分布式中间件开源计划，用于快速构建金融级云原生架构](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247484729&idx=1&sn=0d8dbee2739fb0eef3e4ad699661fd13&chksm=e9abbd49dedc345fd5d6898fd1989710f249d6386bf3d52ae1603365a4a1c3696538bc8b9a8f&scene=21#wechat_redirect) 》、《[开源 | 蚂蚁集团分布式中间件开源第二弹：丰富微服务架构体系](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247485026&idx=1&sn=0a367bc67d5fe3a268e3715b17e020ab&chksm=e9abbe12dedc370489102d9307b832457891fdb0530eec5c35c0fb82bc2a3e6dbbc7db8436c4&scene=21#wechat_redirect) 》），这一系列的动作受到大家的关注和支持，SOFA 社区也日益壮大。
+4 月，蚂蚁集团自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA）启动开源计划，并开放多个组件，（相关背景请点击链接阅读《[开源 | 蚂蚁集团启动分布式中间件开源计划，用于快速构建金融级云原生架构](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247484729&idx=1&sn=0d8dbee2739fb0eef3e4ad699661fd13&chksm=e9abbd49dedc345fd5d6898fd1989710f249d6386bf3d52ae1603365a4a1c3696538bc8b9a8f&scene=21#wechat_redirect) 》、《[开源 | 蚂蚁集团分布式中间件开源第二弹：丰富微服务架构体系](http://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247485026&idx=1&sn=0a367bc67d5fe3a268e3715b17e020ab&chksm=e9abbe12dedc370489102d9307b832457891fdb0530eec5c35c0fb82bc2a3e6dbbc7db8436c4&scene=21#wechat_redirect) 》），这一系列的动作受到大家的关注和支持，SOFA 社区也日益壮大。
 
-在两轮开源之后，蚂蚁集团自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA ）在今天推出了**第三轮的开源产品：SOFAMesh**。和前两轮开源的历经多年沉淀和打磨的成熟产品不同，本轮的开源主角 SOFAMesh，将探索一条和以往产品有所不同的开源道路。下面我们就来看看到底有哪些不同吧！
+在两轮开源之后，蚂蚁集团自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA）在今天推出了**第三轮的开源产品：SOFAMesh**。和前两轮开源的历经多年沉淀和打磨的成熟产品不同，本轮的开源主角 SOFAMesh，将探索一条和以往产品有所不同的开源道路。下面我们就来看看到底有哪些不同吧！
 
 ## SOFAMesh 的开源探索之路
 
@@ -68,7 +68,7 @@ SOFAMesh 中 Golang 版本的 Sidecar，是一个名为 MOSN (Modular Observable
 
 此外，我们会增加对 SOFARPC、Dubbo 等通讯协议的支持，以便更好的迎合国内用户包括我们自身的实际需求。
 
-由于 Sidecar 相对独立，而且我们也预期会有单独使用 MOSN 的场景，因此 MOSN 的代码仓库是独立于 SOFAMesh 的，地址为： https://github.com/mosn/mosn
+由于 Sidecar 相对独立，而且我们也预期会有单独使用 MOSN 的场景，因此 MOSN 的代码仓库是独立于 SOFAMesh 的，地址为：https://github.com/mosn/mosn
 
 欢迎大家使用，提供需求、反馈问题、贡献代码或者合作开发。
 

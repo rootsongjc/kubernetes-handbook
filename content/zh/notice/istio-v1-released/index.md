@@ -1,6 +1,6 @@
 ---
-title: "Istio 1.0发布，生态逐步壮大，且可用于生产！"
-description: "中文文档同时释出!"
+title: "Istio 1.0 发布，生态逐步壮大，且可用于生产！"
+description: "中文文档同时释出！"
 date: 2018-08-01T14:42:36+08:00
 draft: false
 type: "notice"

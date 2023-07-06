@@ -16,8 +16,8 @@ image: "images/banner/y2021.jpg"
 
 作为 [CNCF 定义的云原生](https://github.com/cncf/toc/blob/main/DEFINITION.md)关键技术之一，服务网格发展至今已经有五个年头了，其发展经历了以下几个时期：
 
-- 探索阶段：2017 年-2018 年
-- 早期采用者阶段：2019 年-2020 年
+- 探索阶段：2017 年 -2018 年
+- 早期采用者阶段：2019 年 -2020 年
 - 大规模落地及生态发展阶段：2021 年至今
 
 如果根据[“跨越鸿沟”理论](https://thinkinsights.net/strategy/crossing-the-chasm/)，服务网格已经跨越了“鸿沟”，处于“早期大众”和“晚期大众”阶段之间。根据[《Istio 大咖说》](https://cloudnative.to/sig-istio/big-talk/overview.html)观众中的反馈来看，用户已不再盲从于新技术，开始辩证的考虑[是否真的需要引入服务网格](https://cloudnative.to/sig-istio/begin/before-you-begin.html)。
@@ -69,7 +69,7 @@ Istio 使用的是 Envoy 作为数据平面，扩展 Istio 本质上就是对 En
 | **Sidecar 代理**                 | 因为为每个 pod 都注入一个代理，所以开销最大。                | 由于 sidecar 必须与工作负载一起部署，工作负载有可能绕过 sidecar。 | Pod 级别隔离，如果有代理出现故障，只影响到 Pod 中的工作负载。 | 可以单独升级某个工作负载的 sidecar 而不影响其他工作负载。 |
 | **节点共享代理**                 | 每个节点上只有一个代理，为该节点上的所有工作负载所共享，开销小。 | 对加密内容和私钥的管理存在安全隐患。                         | 节点级别隔离，如果共享代理升级时出现版本冲突、配置冲突或扩展不兼容等问题，则可能会影响该节点上的所有工作负载。 | 不需要考虑注入 Sidecar 的问题。                           |
 | **Service Account/节点共享代理** | 服务账户/身份下的所有工作负载都使用共享代理，开销小。        | 工作负载和代理之间的连接的认证及安全性无法保障。             | 节点和服务账号之间级别隔离，故障同“节点共享代理”。           | 同“节点共享代理”。                                        |
-| **带有微代理的共享远程代理**     | 因为为每个 pod 都注入一个微代理，开销比较大。                | 微代理专门处理 mTLS，不负责 L7 路由，可以保障安全性。        | 当需要应用7层策略时，工作负载实例的流量会被重定向到L7代理上，若不需要，则可以直接绕过。该L7代理可以采用共享节点代理、每个服务账户代理，或者远程代理的方式运行。 | 同“Sidecar 代理”。                                        |
+| **带有微代理的共享远程代理**     | 因为为每个 pod 都注入一个微代理，开销比较大。                | 微代理专门处理 mTLS，不负责 L7 路由，可以保障安全性。        | 当需要应用 7 层策略时，工作负载实例的流量会被重定向到 L7 代理上，若不需要，则可以直接绕过。该 L7 代理可以采用共享节点代理、每个服务账户代理，或者远程代理的方式运行。 | 同“Sidecar 代理”。                                        |
 {{</table>}}
 
 ### 生态发展
@@ -89,13 +89,13 @@ Istio 使用的是 Envoy 作为数据平面，扩展 Istio 本质上就是对 En
 {{<table "Istio 开源生态">}}
 | **项目名称**                                                 | **开源时间**  | **类别** | **描述**                                               | **主导公司** | **Star 数量** | **与 Istio 的关系**                           |
 | ------------------------------------------------------------ | ------------- | -------- | ------------------------------------------------------ | ------------ | ------------- | --------------------------------------------- |
-| [Envoy](https://github.com/envoyproxy/envoy)                 | 2016年 9 月   | 网络代理 | 云原生高性能边缘/中间服务代理                          | Lyft         | 18700         | 默认的数据平面                                |
+| [Envoy](https://github.com/envoyproxy/envoy)                 | 2016 年 9 月   | 网络代理 | 云原生高性能边缘/中间服务代理                          | Lyft         | 18700         | 默认的数据平面                                |
 | [Istio](https://github.com/istio/istio/)                     | 2017 年 5 月  | 服务网格 | 连接、保护、控制和观察服务。                           | Google       | 29100         | 控制平面                                      |
 | [Linkerd2](https://github.com/linkerd/linkerd2)              | 2017 年 12 月 | 服务网格 | 适用于 Kubernetes 的轻量级服务网格。                   | Buoyant      | 7900          | 服务网格的另一种实现                          |
 | [Emissary Gateway](https://github.com/emissary-ingress/emissary) | 2018 年 2 月  | 网关     | 用于微服务的 Kubernetes 原生 API 网关，基于 Envoy 构建 | Ambassador   | 3600          | 可连接 Istio                                  |
 | [APISIX](https://github.com/apache/apisix)                   | 2019 年 6 月  | 网关     | 云原生 API 网关                                        | API7         | 8100          | 可作为 Istio 的数据平面运行也可以单独作为网关 |
 | [MOSN](https://github.com/mosn/mosn)                         | 2019 年 12 月 | 代理     | 云原生边缘网关及代理                                   | 蚂蚁         | 3500          | 可作为 Istio 数据平面                         |
-| [Slime](https://github.com/slime-io/slime)                   | 2021 年 1月   | 扩展     | 基于 Istio 的智能服务网格管理器                        | 网易         | 236           | 为 Istio 增加一个管理平面                     |
+| [Slime](https://github.com/slime-io/slime)                   | 2021 年 1 月   | 扩展     | 基于 Istio 的智能服务网格管理器                        | 网易         | 236           | 为 Istio 增加一个管理平面                     |
 | [Tetrate Istio Distro](https://github.com/tetratelabs/getmesh) | 2021 年 2 月  | 工具     | Istio 集成和命令行管理工具                             | Tetrate      | 95            | 第一个 Istio 开源发行版和多版本管理工具       |
 | [Aeraki](https://github.com/aeraki-framework/aeraki)         | 2021 年 3 月  | 扩展     | 管理 Istio 的任何七层负载                              | 腾讯         | 330           | 扩展多协议支持                                |
 | [Layotto](https://github.com/mosn/layotto/)                  | 2021 年 6 月  | 运行时   | 云原生应用运行时                                       | 蚂蚁         | 393           | 可以作为 Istio 的数据平面                     |

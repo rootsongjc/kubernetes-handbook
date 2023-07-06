@@ -62,7 +62,7 @@ HBONE 基于 HTTP/2 CONNECT，将工作负载之间的请求以流的形式进�
 3. **Ambient Mode 的意义**：因为它 sidecar 模式兼容，用户在采纳 Ambient Mode 获得了 mTLS 和有限的可观察性及 TPC 路由等 L4 功能，之后可以更方便的过度到 sidecar mode 以获得完全的 L7 功能。这给用户采纳 Istio 提供了更多模式选择，优化了 Istio 采纳路径。
 4. **Ambient Mode 的坏处**：Proxyless、sidecar、ambient 模式，使得 Istio 越来越复杂，用户理解起来更加费力；控制平面为了支持多种数据平面部署模式，其实现将更加复杂。
 5. **与其他服务网格的关系**：有的 service mesh 从原先的 per-proxy per-node 模式转变为 sidecar mode，如 Linkerd；还有的从 CNI 做到 service mesh，如 Cilium 使用 per-proxy per-node 模式；如今 Istio 在 sidecar mode 的基础上增加了 ambient mode，这也是目前唯一同时支持这两种部署模式的服务网格，为用户提供了多样的选择。
-6. **安全问题**：虽然 [Istio 服务网格 ambient 模式安全详解](https://lib.jimmysong.io/blog/ambient-security/) 说明了ambient 模式的设计主旨是为了将应用程序与数据平面分离，让安全覆盖层的组件（ztunnel）处于类似于 CNI 的网格底层，考虑到 ztunnel 有限的 L4 攻击面，该模式的安全风险是可以接受的；但是，ztunnel 作为 DaemonSet 部署在每个节点上，需要处理和分发调度到该节点上的所有 pod 的证书来建立 mTLS 连接，一旦 一个 ztunnel 被攻破，它的爆炸半径确实是大于一个 sidecar，安全详解的博客中说 Envoy 的 CVE 问题会影响所有 sidecar，升级 sidecar 也会带来很大的运营成本，所以权衡之下选择 ambient 模式，安全问题再次给用户造成了困惑，不过最终选择的权利还是在用户自己。
+6. **安全问题**：虽然 [Istio 服务网格 ambient 模式安全详解](https://lib.jimmysong.io/blog/ambient-security/) 说明了 ambient 模式的设计主旨是为了将应用程序与数据平面分离，让安全覆盖层的组件（ztunnel）处于类似于 CNI 的网格底层，考虑到 ztunnel 有限的 L4 攻击面，该模式的安全风险是可以接受的；但是，ztunnel 作为 DaemonSet 部署在每个节点上，需要处理和分发调度到该节点上的所有 pod 的证书来建立 mTLS 连接，一旦 一个 ztunnel 被攻破，它的爆炸半径确实是大于一个 sidecar，安全详解的博客中说 Envoy 的 CVE 问题会影响所有 sidecar，升级 sidecar 也会带来很大的运营成本，所以权衡之下选择 ambient 模式，安全问题再次给用户造成了困惑，不过最终选择的权利还是在用户自己。
 
 ## 安装试用 {#setup}
 

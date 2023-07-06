@@ -175,7 +175,7 @@ At last, he advise us the programming language Go is the best language to build 
 - Large, thriving, engaged community
   - http://gopherize.me
 
-Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于Go和React的云原生Web应用与微服务》published by PHEI publisher house. 
+Kevin also wrote a book **Cloud Native Go** to show how to **Building Web Applications and Microservices for the Cloud with Go and React**. This book has been translated to Chinese by four guys from TalkingData with ❤️. 《Cloud Native Go 构建基于 Go 和 React 的云原生 Web 应用与微服务》published by PHEI publisher house. 
 
 Kevin was signing his name on the book
 

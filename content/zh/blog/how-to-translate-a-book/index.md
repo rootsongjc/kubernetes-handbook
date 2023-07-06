@@ -141,7 +141,7 @@ type: "post"
 
 ![Translation-shell](translation-trans-terminal.jpg)
 
-注：推荐使用翻译质量更高的工具 [DeepL](https://deepl.com/)（更新于 2022年02月22日）。
+注：推荐使用翻译质量更高的工具 [DeepL](https://deepl.com/)（更新于 2022 年 02 月 22 日）。
 
 #### 使用 Typora 编辑中文翻译
 

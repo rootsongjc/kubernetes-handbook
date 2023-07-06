@@ -26,9 +26,9 @@ Istio 是由 [Tetrate](https://tetrate.io/) 创始人 Varun Talwar 和谷歌首�
 | 2020-03-03 | 1.5  | 回归单体架构，支持 WebAssembly 扩展，使得 Istio 的生态更加强大。 |
 | 2020-11-18 | 1.8  | 正式放弃 Mixer，进一步完善对虚拟机的支持。                   |
 
-Istio 开源后经过了一年时间的发展，在 1.0 发布的前两个月发布了 0.8 版本，这是对 API 的一次大规模重构。而在 2018 年 7 月底发布 1.0 时， Istio 达到了生产可用的临界点，此后 Google 对 Istio 团队进行了大规模重组，多家以 Istio 为基础的 Service Mesh [创业公司](https://istio.io/latest/about/ecosystem/#providers)诞生，可以说 2018 年是服务网格行业诞生的元年。
+Istio 开源后经过了一年时间的发展，在 1.0 发布的前两个月发布了 0.8 版本，这是对 API 的一次大规模重构。而在 2018 年 7 月底发布 1.0 时，Istio 达到了生产可用的临界点，此后 Google 对 Istio 团队进行了大规模重组，多家以 Istio 为基础的 Service Mesh [创业公司](https://istio.io/latest/about/ecosystem/#providers)诞生，可以说 2018 年是服务网格行业诞生的元年。
 
-2019年 3 月 Istio 1.1 发布，而这距离 1.0 发布已经过去了近 9 个月，这已经远远超出一个开源项目的平均发布周期。我们知道迭代和进化速度是基础软件的核心竞争力，此后 Istio 开始以每个季度一个版本的固定[发布节奏](https://istio.io/v1.7/about/release-cadence/)，并在 2019 年成为了 [GitHub 增长最快的十大项目中排名第 4 名](https://octoverse.github.com/#fastest-growing-oss-projects-by-contributors)！
+2019 年 3 月 Istio 1.1 发布，而这距离 1.0 发布已经过去了近 9 个月，这已经远远超出一个开源项目的平均发布周期。我们知道迭代和进化速度是基础软件的核心竞争力，此后 Istio 开始以每个季度一个版本的固定[发布节奏](https://istio.io/v1.7/about/release-cadence/)，并在 2019 年成为了 [GitHub 增长最快的十大项目中排名第 4 名](https://octoverse.github.com/#fastest-growing-oss-projects-by-contributors)！
 
 ## Istio 社区
 

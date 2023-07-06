@@ -1,6 +1,6 @@
 ---
 date: "2017-03-10T11:51:09+08:00"
-title: "Contiv入坑指南-v2plugin"
+title: "Contiv 入坑指南-v2plugin"
 description: "继续趟昨天挖的坑。"
 draft: false
 categories: ["容器"]
@@ -13,15 +13,15 @@ image: "images/banner/contiv.jpg"
 
 继续趟昨天挖的坑。
 
-昨天的[issue-776](https://github.com/contiv/netplugin/issues/776)已经得到@gkvijay的回复，原来是因为没有安装contiv/v2plugin的缘故，所以create contiv network失败，我需要自己build一个**docker plugin**。
+昨天的[issue-776](https://github.com/contiv/netplugin/issues/776)已经得到@gkvijay 的回复，原来是因为没有安装 contiv/v2plugin 的缘故，所以 create contiv network 失败，我需要自己 build 一个**docker plugin**。
 
-查看下这个[commit](https://github.com/contiv/netplugin/commit/8afd1b7718c8424a876760d18484124e0aad3557)里面有build **v2plugin**的脚本更改，所以直接调用以下命令就可以build自己的v2plugin。
+查看下这个[commit](https://github.com/contiv/netplugin/commit/8afd1b7718c8424a876760d18484124e0aad3557)里面有 build **v2plugin**的脚本更改，所以直接调用以下命令就可以 build 自己的 v2plugin。
 
-前提你需要先build出`netctl`、`netmaster`、`netplugin`三个二进制文件并保存到**bin**目录下，如果你没自己build直接下载**release**里面的文件保存进去也行。
+前提你需要先 build 出`netctl`、`netmaster`、`netplugin`三个二进制文件并保存到**bin**目录下，如果你没自己 build 直接下载**release**里面的文件保存进去也行。
 
-### 编译v2plugin插件
+### 编译 v2plugin 插件
 
-**修改config.json插件配置文件**
+**修改 config.json 插件配置文件**
 
 ```Json
 {
@@ -138,7 +138,7 @@ image: "images/banner/contiv.jpg"
 
 **方法一**
 
-自动化make
+自动化 make
 
 ```bash
 $make host-pluginfs-create
@@ -146,7 +146,7 @@ $make host-pluginfs-create
 
 **方法二**
 
-直接调用Makefile里指定的那个shell脚本`scripts/v2plugin_rootfs.sh`。
+直接调用 Makefile 里指定的那个 shell 脚本`scripts/v2plugin_rootfs.sh`。
 
 ```Shell
 $bash scripts/v2plugin_rootfs
@@ -197,13 +197,13 @@ Deleted: sha256:ab3c02d5a171681ba00d27f2c456cf8b63eeeaf408161dc84d9d89526d0399de
 Deleted: sha256:f0440792dff6a89e321cc5d34ecaa21b4cb993f0c4e4df6c2b04eef8878bb471
 ```
 
-> 创建镜像这一步需要输入你的docker hub密码。而且alpine下载软件需要翻墙的。打包v2plugin目录需要使用sudo，不然会报一个错。
+> 创建镜像这一步需要输入你的 docker hub 密码。而且 alpine 下载软件需要翻墙的。打包 v2plugin 目录需要使用 sudo，不然会报一个错。
 
-整个插件打包压缩后的大小是91M。现在`rootfs`和`config.json`都已经有了，就可以在你自己的系统上create docker plugin了。
+整个插件打包压缩后的大小是 91M。现在`rootfs`和`config.json`都已经有了，就可以在你自己的系统上 create docker plugin 了。
 
-## 启动contiv plugin
+## 启动 contiv plugin
 
-创建docker network plugin并enable。
+创建 docker network plugin 并 enable。
 
 ```Shell
 $docker plugin create contiv/v2plugin .
@@ -214,7 +214,7 @@ ID                  NAME                     DESCRIPTION                        
 574d4a4d82a3        contiv/v2plugin:latest   Contiv network plugin for Docker   true
 ```
 
-至此*contiv plugin*已经创建好了，enable后执行`ip addr`命令可以看到多出一个网络*contivh0*。
+至此*contiv plugin*已经创建好了，enable 后执行`ip addr`命令可以看到多出一个网络*contivh0*。
 
 ```bash
 contivh0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN qlen 1000
@@ -223,10 +223,10 @@ inet 172.19.255.254/16 scope global contivh0
 	valid_lft forever preferred_lft forever
 ```
 
-且主机多了一个IP地址*172.19.255.254*。
+且主机多了一个 IP 地址*172.19.255.254*。
 
-> 不需要再主机上安装`netctl`、`netmaster`、`netplugin`这几个二进制文件了，只需要安装`docker plugin`即可，这些都已经封装到plugin中了，如果你看下插件的目录结构就知道了。
+> 不需要再主机上安装`netctl`、`netmaster`、`netplugin`这几个二进制文件了，只需要安装`docker plugin`即可，这些都已经封装到 plugin 中了，如果你看下插件的目录结构就知道了。
 
-因为插件安装的问题，目前我测试机上的自定义插件都无法使用，正在troubleshooting中，一旦有进展会及时更新该文档。
+因为插件安装的问题，目前我测试机上的自定义插件都无法使用，正在 troubleshooting 中，一旦有进展会及时更新该文档。
 
 另外正在同步跟开发者沟通中，因为时差问题，下周一才能有结果。😪

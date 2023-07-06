@@ -29,7 +29,7 @@ CA 通过设置 TTL 控制证书的寿命，如果要提前结束证书可以将
 
 CRL（证书吊销列表）是一种用于管理和验证证书有效性的机制。它包含一个已被撤销的证书列表，颁发机构（CA）定期更新该列表。当验证证书的客户端（如浏览器）收到证书时，它会检查该证书是否在 CRL 中被列为已撤销，如果是，则该证书被视为无效。
 
-CRL 通常存储在颁发机构（CA）的服务器上，并可以通过互联网公开访问。验证证书的客户端（例如，浏览器）可以下载并检查 CRL 以确定证书是否有效。 CRL 可以以多种格式（如 DER 或 PEM）存储，并通过 HTTP，LDAP 或其他协议发布，以便进行验证。
+CRL 通常存储在颁发机构（CA）的服务器上，并可以通过互联网公开访问。验证证书的客户端（例如，浏览器）可以下载并检查 CRL 以确定证书是否有效。CRL 可以以多种格式（如 DER 或 PEM）存储，并通过 HTTP，LDAP 或其他协议发布，以便进行验证。
 
 CRL 文件通常是以二进制形式存储的，不是直接可读的文本文件。但是，可以使用工具（例如 OpenSSL）转换为其他格式，例如 PEM，以方便阅读。下面是一个名为 `crl.pem` 的 CRL 示例文件，以 PEM 格式表示：
 
@@ -80,7 +80,7 @@ CRL 虽被广泛使用，但使用 CRL 文件来撤销证书存在以下几个�
 
 ## OCSP Stapling
 
-OCSP Stapling（正式名称为 TLS 证书状态查询扩展）是一种 TLS（Transport Layer Security）扩展，用于证明证书的状态是有效的。它允许服务器预先检索证书状态信息，并将该信息“钉”到TLS证书中，以减少对证书颁发机构的依赖，并提高证书状态验证的效率。可代替 OCSP 来查询 X.509 证书的状态。服务器在TLS握手时发送事先缓存的OCSP响应，用户只需验证该响应的有效性而不用再向数字证书认证机构（CA）发送请求。详见[维基百科](https://en.wikipedia.org/wiki/OCSP_stapling)。
+OCSP Stapling（正式名称为 TLS 证书状态查询扩展）是一种 TLS（Transport Layer Security）扩展，用于证明证书的状态是有效的。它允许服务器预先检索证书状态信息，并将该信息“钉”到 TLS 证书中，以减少对证书颁发机构的依赖，并提高证书状态验证的效率。可代替 OCSP 来查询 X.509 证书的状态。服务器在 TLS 握手时发送事先缓存的 OCSP 响应，用户只需验证该响应的有效性而不用再向数字证书认证机构（CA）发送请求。详见[维基百科](https://en.wikipedia.org/wiki/OCSP_stapling)。
 
 OCSP 只适用于单个证书，而不是列表。客户端在收到证书后，与 CA 通信以检查撤销状态。响应可以是 "good"、"revoked" 或 "unknown" 之一。
 
@@ -91,7 +91,7 @@ OCSP 只适用于单个证书，而不是列表。客户端在收到证书后，
 3. **安全问题**：如果 OCSP 响应被篡改或服务器不安全，则证书的有效性信息可能被篡改，从而影响安全；
 4. **兼容性问题**：OCSP Stapling 不是所有浏览器都支持的功能，因此可能需要在旧浏览器上实现额外的兼容性。
 
-OCSP的挑战是，它给 CA 带来了很大的负担，因为每个客户端都需要独立地获得证书的验证。总体而言，OCSP Stapling 可以提高证书验证的效率和安全性，但是也存在一些需要考虑的问题。因此，在采用该技术时需要综合考虑多方面的因素。
+OCSP 的挑战是，它给 CA 带来了很大的负担，因为每个客户端都需要独立地获得证书的验证。总体而言，OCSP Stapling 可以提高证书验证的效率和安全性，但是也存在一些需要考虑的问题。因此，在采用该技术时需要综合考虑多方面的因素。
 
 ## Istio 对 OSCP Stapling 支持
 
@@ -100,7 +100,7 @@ OCSP的挑战是，它给 CA 带来了很大的负担，因为每个客户端都
 - 配置 [`DownstreamTlsContext`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-downstreamtlscontext) 中的 `oscp_staple_policy`：
   - `LENIENT_STAPLING`：OCSP 响应是可选的，此为默认值
   - `STRICT_STAPLING`：OCSP 响应是可选的，但如果存在并且有效，就会使用。
-  - `MUST_STAPLE`: OCSP响应是必需的
-- 配置 [`TlsCertificate`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/common.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlscertificate) 中的 `oscp_staple`，响应必须是DER编码的，只能通过文件名或 `inline_bytes` 提供。响应可能只与一个证书有关。
+  - `MUST_STAPLE`: OCSP 响应是必需的
+- 配置 [`TlsCertificate`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/common.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-tlscertificate) 中的 `oscp_staple`，响应必须是 DER 编码的，只能通过文件名或 `inline_bytes` 提供。响应可能只与一个证书有关。
 
 目前 Envoy 已支持 OSCP Stapling，其作为 Istio 的数据平面和 Istio Gateway 中的代理，理论上 Istio 也可以支持该功能。不过 Istio 的 OSCP Stapling 证书撤销功能支持仍在进行中，详见 [PR #42859 - OSCP Stapling](https://github.com/istio/istio/pull/42859)。该功能的新进展将在本文中更新，请保持关注。

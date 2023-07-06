@@ -33,7 +33,7 @@ image: "images/banner/talk.jpg"
 
 服务网格将微服务中的通用的功能给下沉到了基础设施层，让开发者可以更加专注于业务逻辑，从而加快服务交付，这与整个云原生的理念的一致的。你不需要再在应用中集成笨重的 SDK，为不同语言开发和维护 SDK，应用部署完后，使用服务网格进行 Day 2 操作即可。
 
-Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有个重要概念就是微服务的架构设计，当将单体应用拆分微服务后， 随着服务数量的增多，如何微服务进行管理以保证服务的 SLA 呢？为了从架构层面上解决这个问题，解放程序员的创造性，避免繁琐的服务发现、监控、分布式追踪等事务，服务网格应运而生。
+Kubernetes 设计之初就是按照云原生的理念设计的，云原生中有个重要概念就是微服务的架构设计，当将单体应用拆分微服务后，随着服务数量的增多，如何微服务进行管理以保证服务的 SLA 呢？为了从架构层面上解决这个问题，解放程序员的创造性，避免繁琐的服务发现、监控、分布式追踪等事务，服务网格应运而生。
 
 ![微服务关注点](008i3skNly1gwp7qas2vtj30v70u0whb.jpg)
 
@@ -76,7 +76,7 @@ kube-proxy 组件、xDS 和 Istio 对流量管理的抽象后，现在我们仅�
 
 在列举过以上 Kubernetes 和服务网格的对比后，我们可以看出服务网格在云原生应用架构中的地位。那就是构建一个云原生网络基础设施，具体来说就是：
 
-- 流量管理：控制服务间的流量和API调用流，使调用更可靠，增强不同环境下的网络鲁棒性。
+- 流量管理：控制服务间的流量和 API 调用流，使调用更可靠，增强不同环境下的网络鲁棒性。
 - 可观测性：了解服务之间的依赖关系和它们之间的性质和流量，提供快速识别定位问题的能力。
 - 策略实施：通过配置网格而不是以改变代码的方式来控制服务之间的访问策略。
 - 服务识别与安全：提供在网格里的服务可识别性和安全性保护。
@@ -105,7 +105,7 @@ kube-proxy 组件、xDS 和 Istio 对流量管理的抽象后，现在我们仅�
 
 ![Istio 发布时间表](008i3skNly1gwp7wvt1g8j32yo0nk78g.jpg)
 
-首先我们来看下 Istio 的发布时间表，1.12 版本在上周刚刚发布，这里列举了从它开源到 1.8 版本发布的时间表。2018 年可以说是服务网格爆发之年，Tetrate 也在这一年成立。自1.5 版本起 Istio 正式确立了当前的架构。Istio 社区也也举办了丰富多彩的活动，2021 年 3 月首届 IstioCon 召开，7 月 Istio Meetup China 在北京举行，2022 年 1 月，Service Mesh Summit 2022 也将在上海举行。
+首先我们来看下 Istio 的发布时间表，1.12 版本在上周刚刚发布，这里列举了从它开源到 1.8 版本发布的时间表。2018 年可以说是服务网格爆发之年，Tetrate 也在这一年成立。自 1.5 版本起 Istio 正式确立了当前的架构。Istio 社区也也举办了丰富多彩的活动，2021 年 3 月首届 IstioCon 召开，7 月 Istio Meetup China 在北京举行，2022 年 1 月，Service Mesh Summit 2022 也将在上海举行。
 
 Istio 有着庞大的社区以及[供应商和用户群体](https://istio.io/latest/about/case-studies/)。目前主流公有云全都支持了 Istio 服务网格，如阿里云、华为云、腾讯云、网易云等，Istio 的官网上也列举了几十个社区用户，云原生社区 Istio SIG 还陆续举办了八场 [Istio 大咖说](https://cloudnative.to/sig-istio/big-talk/overview.html)，百度、腾讯、网易、小红书、小电科技都来分享过他们的 Istio 实践。
 
@@ -119,7 +119,7 @@ Istio 有着庞大的社区以及[供应商和用户群体](https://istio.io/lat
 
 来源：<https://cloudnative.to/blog/istio-dns-proxy/>
 
-还有一种方式，也是[小红书使用的方式](https://cloudnative.to/sig-istio/big-talk/ep08.html)，那就是利用 Istio 1.8 中引入的智能 DNS 代理功能。首先使用 ServiceEntry 定义服务，让所有服务属于一个 VIP 范围，再利用 Istio 的智能 DNS 代理功能，让sidecar只拦截 VIP 网段的流量，这样可以减少 iptables 规则，从而提高性能。如果想深入了解这个做法的细节，大家可以去浏览 [Istio 大咖说第八期的分享视频](https://www.bilibili.com/video/BV12b4y187ae/)。
+还有一种方式，也是[小红书使用的方式](https://cloudnative.to/sig-istio/big-talk/ep08.html)，那就是利用 Istio 1.8 中引入的智能 DNS 代理功能。首先使用 ServiceEntry 定义服务，让所有服务属于一个 VIP 范围，再利用 Istio 的智能 DNS 代理功能，让 sidecar 只拦截 VIP 网段的流量，这样可以减少 iptables 规则，从而提高性能。如果想深入了解这个做法的细节，大家可以去浏览 [Istio 大咖说第八期的分享视频](https://www.bilibili.com/video/BV12b4y187ae/)。
 
 Istio 在初期是将整个网格内的所有服务的路由信息全量下发到所有的 proxy sidecar 中，会导致 sidecar 占用大量资源，后来 Istio 引入了 [Sidecar 资源](https://istio.io/latest/docs/reference/config/networking/sidecar/)来精细化控制需要下发的代理配置范围，另外还有企业自己开发了配置懒加载功能，例如腾讯云开源的 [Aeraki](https://github.com/aeraki-framework/aeraki)、网易开源的 [Slime](https://github.com/slime-io/slime) 都可以实现配置懒加载。我们会在 Istio 开源生态中介绍这两个开源项目。
 
@@ -163,12 +163,12 @@ Istio 开源至今已有 4 年时间，2018 年时我和敖小剑一起创建了
 
 | **项目名称**                                                 | **开源时间**  | **类别** | **描述**                                               | **主导公司** | **Star 数量** | **与 Istio 的关系**                           |
 | ------------------------------------------------------------ | ------------- | -------- | ------------------------------------------------------ | ------------ | ------------- | --------------------------------------------- |
-| [Envoy](https://github.com/envoyproxy/envoy)                 | 2016年 9 月   | 网络代理 | 云原生高性能边缘/中间服务代理                          | Lyft         | 18300         | 默认的数据平面                                |
+| [Envoy](https://github.com/envoyproxy/envoy)                 | 2016 年 9 月   | 网络代理 | 云原生高性能边缘/中间服务代理                          | Lyft         | 18300         | 默认的数据平面                                |
 | [Istio](https://github.com/istio/istio/)                     | 2017 年 5 月  | 服务网格 | 连接、保护、控制和观察服务。                           | Google       | 28400         | 控制平面                                      |
 | [Emissary Gateway](https://github.com/emissary-ingress/emissary) | 2018 年 2 月  | 网关     | 用于微服务的 Kubernetes 原生 API 网关，基于 Envoy 构建 | Ambassador   | 3500          | 可连接 Istio                                  |
 | [APISIX](https://github.com/apache/apisix)                   | 2019 年 6 月  | 网关     | 云原生 API 网关                                        | API7         | 7400          | 可作为 Istio 的数据平面运行也可以单独作为网关 |
 | [MOSN](https://github.com/mosn/mosn)                         | 2019 年 12 月 | 代理     | 云原生边缘网关及代理                                   | 蚂蚁         | 3400          | 可作为 Istio 数据平面                         |
-| [Slime](https://github.com/slime-io/slime)                   | 2021 年 1月   | 扩展     | 基于 Istio 的智能服务网格管理器                        | 网易         | 204           | 为 Istio 增加一个管理平面                     |
+| [Slime](https://github.com/slime-io/slime)                   | 2021 年 1 月   | 扩展     | 基于 Istio 的智能服务网格管理器                        | 网易         | 204           | 为 Istio 增加一个管理平面                     |
 | [GetMesh](https://github.com/tetratelabs/getmesh)            | 2021 年 2 月  | 工具     | Istio 集成和命令行管理工具                             | Tetrate      | 91            | 实用工具，可用于 Istio 多版本管理             |
 | [Aeraki](https://github.com/aeraki-framework/aeraki)         | 2021 年 3 月  | 扩展     | 管理 Istio 的任何七层负载                              | 腾讯         | 280           | 扩展多协议支持                                |
 | [Layotto](https://github.com/mosn/layotto/)                  | 2021 年 6 月  | 运行时   | 云原生应用运行时                                       | 蚂蚁         | 325           | 可以作为 Istio 的数据平面                     |
@@ -212,7 +212,7 @@ Slime 管理 Istio 的具体步骤如下：
 Slime 内部分为三大组件：
 
 - **slime-boot**：在 Kubernetes 上部署 Slime 模块的 operator。
-- **slime-controller**：Slime 的核心组件，监听 Slime CRD 并将其转换为Istio CRD。
+- **slime-controller**：Slime 的核心组件，监听 Slime CRD 并将其转换为 Istio CRD。
 - **slime-metric**：用于获取服务 metrics 信息的组件，slime-controller 会根据其获取的信息动态调整服务治理规则。
 
 下图展示的是 Slime 自适应限流的架构图。
@@ -221,7 +221,7 @@ Slime 内部分为三大组件：
 
 Envoy 内置的限流组件功能单一，只能以实例维度配置限流值，无法做到根据应用负载的自适应限流。Slime 通过与 Prometheus metric server 对接，实时的获取监控情况，来动态配置限流值。
 
-Slime 的自适应限流的流程分为两部分，一部分为 SmartLimiter 到 [EnvoyFilter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/) 的转换，另一部分为获取监控数据。目前 Slime 支持从 Kubernetes Metric Server 获取服务的CPU、内存、副本数等数据。Slime 还对外提供了一套监控数据接口（Metric Discovery Server），通过 MDS，可以将自定义的监控指标同步给限流组件。
+Slime 的自适应限流的流程分为两部分，一部分为 SmartLimiter 到 [EnvoyFilter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/) 的转换，另一部分为获取监控数据。目前 Slime 支持从 Kubernetes Metric Server 获取服务的 CPU、内存、副本数等数据。Slime 还对外提供了一套监控数据接口（Metric Discovery Server），通过 MDS，可以将自定义的监控指标同步给限流组件。
 
 Slime 创建的 CRD SmartLimiter 用于配置自适应限流。其的配置是接近自然语义，例如希望在 CPU 超过 80% 时触发服务 A 的访问限制，限额为 30QPS，对应的 SmartLimiter 定义如下：
 

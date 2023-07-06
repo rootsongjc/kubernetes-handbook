@@ -10,17 +10,17 @@ aliases: "/posts/docker-plugin-develop"
 image: "images/banner/docker-logo.jpg"
 ---
 
-> 当你看到这篇文章时，如果你也正在进行docker1.13+版本下的plugin开发，恭喜你也入坑了，如果你趟出坑，麻烦告诉你的方法，感恩不尽🙏
+> 当你看到这篇文章时，如果你也正在进行 docker1.13+版本下的 plugin 开发，恭喜你也入坑了，如果你趟出坑，麻烦告诉你的方法，感恩不尽🙏
 
-看了文章后你可能会觉得，官网上的可能是个假🌰。**虽然官网上的文档写的有点不对，不过你使用docker-ssh-volume的开源代码自己去构建plugin的还是可以成功的！**
+看了文章后你可能会觉得，官网上的可能是个假🌰。**虽然官网上的文档写的有点不对，不过你使用 docker-ssh-volume 的开源代码自己去构建 plugin 的还是可以成功的！**
 
-## Docker plugin开发文档
+## Docker plugin 开发文档
 
-首先docker官方给出了一个[docker legacy plugin文档](https://docs.docker.com/engine/extend/legacy_plugins/)，这篇文章基本就是告诉你docker目前支持哪些插件，罗列了一系列连接，不过对不起，这些不是docker官方插件，有问题去找它们的开发者去吧😂
+首先 docker 官方给出了一个[docker legacy plugin 文档](https://docs.docker.com/engine/extend/legacy_plugins/)，这篇文章基本就是告诉你 docker 目前支持哪些插件，罗列了一系列连接，不过对不起，这些不是 docker 官方插件，有问题去找它们的开发者去吧😂
 
-**Docker plugin貌似开始使用了新的v2 plugin了，legacy版本的plugin可以能在后期被废弃。**
+**Docker plugin 貌似开始使用了新的 v2 plugin 了，legacy 版本的 plugin 可以能在后期被废弃。**
 
-从docker的源码**plugin/store.go**中可以看到：
+从 docker 的源码**plugin/store.go**中可以看到：
 
 ```Go
 /* allowV1PluginsFallback determines daemon's support for V1 plugins.
@@ -36,36 +36,36 @@ const allowV1PluginsFallback bool = true
 const defaultAPIVersion string = "1.0"
 ```
 
-> 随着docker公司是的战略调整，推出了docker-CE和docker-EE之后，未来有些插件就可能要收费了，v2版本的插件都是在docker store中下载了，而这种插件在创建的时候都是打包成docker image，如果不开放源码的话，你即使pull下来插件也无法修改和导出的，**docker plugin目前没有导出接口**。
+> 随着 docker 公司是的战略调整，推出了 docker-CE 和 docker-EE 之后，未来有些插件就可能要收费了，v2 版本的插件都是在 docker store 中下载了，而这种插件在创建的时候都是打包成 docker image，如果不开放源码的话，你即使 pull 下来插件也无法修改和导出的，**docker plugin 目前没有导出接口**。
 
-真正要开发一个docker plugin还是得看[docker plugin API](https://docs.docker.com/engine/extend/plugin_api/)，这篇文档告诉我们：
+真正要开发一个 docker plugin 还是得看[docker plugin API](https://docs.docker.com/engine/extend/plugin_api/)，这篇文档告诉我们：
 
 ### 插件发现
 
 当你开发好一个插件**docker engine**怎么才能发现它们呢？有三种方式：
 
 ```markdown
-- **.sock**，linux下放在/run/docker/plugins目录下，或该目录下的子目录比如[flocker](https://github.com/ClusterHQ/flocker)插件的`.sock`文件放在`/run/docker/plugins/flocker/flocker.sock`下
+- **.sock**，linux 下放在/run/docker/plugins 目录下，或该目录下的子目录比如[flocker](https://github.com/ClusterHQ/flocker)插件的`.sock`文件放在`/run/docker/plugins/flocker/flocker.sock`下
 - **.spec**，比如**convoy**插件在`/etc/docker/plugins/convoy.spec `定义，内容为`unix:///var/run/convoy/convoy.sock`
 - **.json**，比如**infinit**插件在`/usr/lib/docker/plugins/infinit.json `定义，内容为`{"Addr":"https://infinit.sh","Name":"infinit"}`
 ```
 
 文章中的其它部分**貌似都过时**了，新的插件不是作为**systemd**进程运行的，而是完全通过**docker plugin**命令来管理的。
 
-当你使用**docker plugin enable <plugin_name>**来激活了插件后，理应在`/run/docker/plugins`目录下生成插件的`.sock`文件，但是现在只有一个以runc ID命名的目录，这个问题下面有详细的叙述过程，你也可以跳过，直接看[issue-31723](https://github.com/docker/docker/issues/31723)
+当你使用**docker plugin enable <plugin_name>**来激活了插件后，理应在`/run/docker/plugins`目录下生成插件的`.sock`文件，但是现在只有一个以 runc ID 命名的目录，这个问题下面有详细的叙述过程，你也可以跳过，直接看[issue-31723](https://github.com/docker/docker/issues/31723)
 
-[docker plugin管理](https://docs.docker.com/engine/extend/)
+[docker plugin 管理](https://docs.docker.com/engine/extend/)
 
-## 创建sshfs volume plugin
+## 创建 sshfs volume plugin
 
 [官方示例文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/index.md#developing-a-plugin)（这个文档有问题）[docker-issue29886](https://github.com/docker/docker/issues/29886)
 
-官方以开发一个**sshfs**的volume plugin为例。
+官方以开发一个**sshfs**的 volume plugin 为例。
 
 执行`docker plugin create`命令的目录下必须包含以下内容：
 
-- **config.json**文件，里面是插件的配置信息，[plugin config参考文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/config.md)
-- **rootfs**目录，插件镜像解压后的目录。v2版本的docker plugin都是以docker镜像的方式包装的。
+- **config.json**文件，里面是插件的配置信息，[plugin config 参考文档](https://github.com/docker/docker/blob/17.03.x/docs/extend/config.md)
+- **rootfs**目录，插件镜像解压后的目录。v2 版本的 docker plugin 都是以 docker 镜像的方式包装的。
 
 
 
@@ -82,7 +82,7 @@ $ docker rm -vf "$id"
 $ docker rmi rootfsimage
 ```
 
-我们可以看到**sshfs**的Dockerfile是这样的：
+我们可以看到**sshfs**的 Dockerfile 是这样的：
 
 ```Dockerfile
 FROM alpine
@@ -96,9 +96,9 @@ COPY docker-volume-sshfs docker-volume-sshfs
 CMD ["docker-volume-sshfs"]
 ```
 
-实际上是编译好的可执行文件复制到alpine linux容器中运行。
+实际上是编译好的可执行文件复制到 alpine linux 容器中运行。
 
-编译rootfsimage镜像的过程。
+编译 rootfsimage 镜像的过程。
 
 ```bash
 docker build -t rootfsimage .
@@ -192,17 +192,17 @@ Successfully built 0fd2e3d94860
 }
 ```
 
-该插件使用host网络类型，使用/run/docker/plugins/sshfs.sock接口与docker engine通信。
+该插件使用 host 网络类型，使用/run/docker/plugins/sshfs.sock 接口与 docker engine 通信。
 
-**注意官网上的这个文档有问题，config.json与代码里的不符，尤其是Entrypoint的二进制文件的位置不对。**
+**注意官网上的这个文档有问题，config.json 与代码里的不符，尤其是 Entrypoint 的二进制文件的位置不对。**
 
-> 注意**socket**配置的地址不要写详细地址，默认会在/run/docker/plugins目录下生成socket文件。
+> 注意**socket**配置的地址不要写详细地址，默认会在/run/docker/plugins 目录下生成 socket 文件。
 
-**创建plugin**
+**创建 plugin**
 
 使用``docker plugin create <plugin_name> /path/to/plugin/data/``命令创建插件。
 
-具体到sshfs插件，在myplugin目录下使用如下命令创建插件：
+具体到 sshfs 插件，在 myplugin 目录下使用如下命令创建插件：
 
 ```bash
 docker plugin create jimmmysong/sshfs:latest .
@@ -218,7 +218,7 @@ ID                  NAME                 DESCRIPTION               ENABLED
 
 **push plugin**
 
-先登录你的docker hub账户，然后使用``docker plugin push jimmysong/sshfs:latest``即可以推送docker plugin到docker hub中。
+先登录你的 docker hub 账户，然后使用``docker plugin push jimmysong/sshfs:latest``即可以推送 docker plugin 到 docker hub 中。
 
 目前推送到**harbor**镜像仓库有问题，报错信息：
 
@@ -227,17 +227,17 @@ c08c951b53b7: Preparing
 denied: requested access to the resource is denied
 ```
 
-已给harbor提[issue-1532](https://github.com/vmware/harbor/issues/1532)
+已给 harbor 提[issue-1532](https://github.com/vmware/harbor/issues/1532)
 
-**plugin的使用**
+**plugin 的使用**
 
-有发现了个问题[docker issue-31723](https://github.com/docker/docker/issues/31723)，使用plugin创建volume的时候居然找不到`sshfs.sock`文件！😢刚开始手动创建plugin的时候测试了下是正常的，不知道为啥弄到这台测试机器上出问题了。
+有发现了个问题[docker issue-31723](https://github.com/docker/docker/issues/31723)，使用 plugin 创建 volume 的时候居然找不到`sshfs.sock`文件！😢刚开始手动创建 plugin 的时候测试了下是正常的，不知道为啥弄到这台测试机器上出问题了。
 
-## 关于docker plugin enable失败的问题
+## 关于 docker plugin enable 失败的问题
 
-当docker  plugin创建成功并enable的时候docker并没有报错，这与docker plugin的**activate**机制有关，只有当你最终使用该plugin的时候才会激活它。
+当 docker  plugin 创建成功并 enable 的时候 docker 并没有报错，这与 docker plugin 的**activate**机制有关，只有当你最终使用该 plugin 的时候才会激活它。
 
-使用**sshfs**插件创建volume。
+使用**sshfs**插件创建 volume。
 
 ```shell
 docker volume create -d jimmysong/sshfs --name sshvolume -o sshcmd=1.2.3.4:/remote -o password=password
@@ -249,7 +249,7 @@ docker volume create -d jimmysong/sshfs --name sshvolume -o sshcmd=1.2.3.4:/remo
 Error response from daemon: create sshvolume: Post http://%2Frun%2Fdocker%2Fplugins%2F8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f%2Fsshfs.sock/VolumeDriver.Create: dial unix /run/docker/plugins/8f7b8f931b38a4ef53d0e4f8d738e26e8f10ef8bd26c8244f4b8dcc7276b685f/sshfs.sock: connect: no such file or directory
 ```
 
-Docker daemon在enable这个插件的时候会寻找这个**.sock**文件，然后在自己的plugindb中注册它，相关代码在这个文件里：
+Docker daemon 在 enable 这个插件的时候会寻找这个**.sock**文件，然后在自己的 plugindb 中注册它，相关代码在这个文件里：
 
 ```http
 https://github.com/docker/docker/blob/17.03.x/plugin/manager_linux.go
@@ -306,15 +306,15 @@ func (pm *Manager) pluginPostStart(p *v2.Plugin, c *controller) error {
 
 注意这段代码里的**sockAddr := filepath.Join(pm.config.ExecRoot, p.GetID(), p.GetSocket())**，我在上面添加了注释。
 
-这个**.sock**文件应该有docker plugin来生成，具体怎样生成的呢？还以**docker-volume-ssh**这个插件为例。
+这个**.sock**文件应该有 docker plugin 来生成，具体怎样生成的呢？还以**docker-volume-ssh**这个插件为例。
 
-整个项目就一个**main.go**文件，里面最后一行生成了**/run/docker/plugins/sshfs.sock**这个sock。
+整个项目就一个**main.go**文件，里面最后一行生成了**/run/docker/plugins/sshfs.sock**这个 sock。
 
 ```
 logrus.Error(h.ServeUnix(socketAddress, 0))
 ```
 
-这行代码调用**docker/go-plugin-helpers/sdk/handler.go**中的:
+这行代码调用**docker/go-plugin-helpers/sdk/handler.go**中的：
 
 ```Go
 // ServeUnix makes the handler to listen for requests in a unix socket.
@@ -347,17 +347,17 @@ func newUnixListener(pluginName string, gid int) (net.Listener, string, error) {
 }
 ```
 
-看了上面这这些，你看出socket文件是怎么创建的吗？
+看了上面这这些，你看出 socket 文件是怎么创建的吗？
 
 这又是一个[issue-19](https://github.com/vieux/docker-volume-sshfs/issues/19)
 
-如果你修改**config.json**文件，将其中的**interfaces - socket**指定为`/run/docker/plugins/sshfs.sock`然后创建plugin，则能成功生成socket文件，但是当你enable它的时候又会报错
+如果你修改**config.json**文件，将其中的**interfaces - socket**指定为`/run/docker/plugins/sshfs.sock`然后创建 plugin，则能成功生成 socket 文件，但是当你 enable 它的时候又会报错
 
 ```
 Error response from daemon: Unix socket path "/run/docker/plugins/ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7/run/docker/plugins/sshfs.sock" is too long
 ```
 
-从docker daemon的日志里可以看到详细报错：
+从 docker daemon 的日志里可以看到详细报错：
 
 ```bash
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7
@@ -365,9 +365,9 @@ Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="20
 Mar 13 17:15:20 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:15:20.321488680+08:00" level=error msg="Handler for POST /v1.26/plugins/sshfs/enable returned error: Unix socket path \"/run/docker/plugins/ac34f7b246ac6c029023b1ebd48e166eadcdd2c9d0cc682cadca0336951d72f7/run/docker/plugins/sshfs.sock\" is too long\ngithub.com/docker/docker/plugin.(*Manager).pluginPostStart\n\t/root/rpmbuild/BUILD/docker-engine/.gopath/src/github.com/docker/docker/plugin/manager_linux.go:84\ngithub.com/docker/docker/plugin.(*Manager).enable\n\t/root/rpmbuild/BUILD/docker-
 ```
 
-正好验证了上面的**enable**代码，docker默认是到`/run/docker/plugins`目录下找**sshfs.sock**这个文件的。
+正好验证了上面的**enable**代码，docker 默认是到`/run/docker/plugins`目录下找**sshfs.sock**这个文件的。
 
-我在docker daemon中发现一个很诡异的错误，
+我在 docker daemon 中发现一个很诡异的错误，
 
 ```bash
 Mar 13 17:29:41 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="2017-03-13T17:29:41+08:00" level=info msg="standard_init_linux.go:178: exec user process caused \"no such file or directory\"" plugin=85760810b4850009fc965f5c20d8534dc9aba085340a2ac0b4b9167a6fef7d53
@@ -379,9 +379,9 @@ Mar 13 17:29:41 sz-pg-oam-docker-test-001.tendcloud.com dockerd[51757]: time="20
 github.com/libnetwork/vendor/github.com/opencontainers/run/libcontainer/standard_init_linux.go
 ```
 
-文件，这个那个文件只有114行，见[ standard_init_linux.go](https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go)
+文件，这个那个文件只有 114 行，见[ standard_init_linux.go](https://github.com/docker/libnetwork/blob/master/vendor/github.com/opencontainers/runc/libcontainer/standard_init_linux.go)
 
-但是在**opencontainers**的github项目里才有那么多行，见 [standard_init_linux.go](https://github.com/opencontainers/runc/blob/master/libcontainer/standard_init_linux.go)
+但是在**opencontainers**的 github 项目里才有那么多行，见 [standard_init_linux.go](https://github.com/opencontainers/runc/blob/master/libcontainer/standard_init_linux.go)
 
 这个报错前后的函数是：
 
@@ -427,13 +427,13 @@ func (l *linuxStandardInit) Init() error {
 
 ~~到此了问题还没解决。~~
 
-~~问题的关键是执行**docker create plugin**之后**.sock**文件创建到哪里去了？为什么在**config.json**指定成`/run/docker/plugins/sshfs.sock`就可以在指定的目录下创建出.sock文件，说明**创建socket的定义和get socket时寻找的路径不一样**，创建socket时就是固定在/run/docker/plugins目录下创建，而enable plugin的时候，Get socket的时候还要加上docker plugin的ID，可是按照官网的配置在本地create plugin后并没有在/run/docker/plugins目录下生成插件的socket文件，直到enable插件的时候才会生成以plugin ID命名的目录，但是socket文件没有！☹️~~
+~~问题的关键是执行**docker create plugin**之后**.sock**文件创建到哪里去了？为什么在**config.json**指定成`/run/docker/plugins/sshfs.sock`就可以在指定的目录下创建出.sock 文件，说明**创建 socket 的定义和 get socket 时寻找的路径不一样**，创建 socket 时就是固定在/run/docker/plugins 目录下创建，而 enable plugin 的时候，Get socket 的时候还要加上 docker plugin 的 ID，可是按照官网的配置在本地 create plugin后并没有在/run/docker/plugins目录下生成插件的socket文件，直到enable插件的时候才会生成以plugin ID 命名的目录，但是 socket 文件没有！☹️~~
 
 
 
 ## 问题解决
 
-之所以出现上面的那些问题，是因为create docker plugin的时候有问题，也就是那个二进制文件有问题，我在**Mac**上build的image，而且还没有用**Dockerfile.dev**这个专门用来搭建二进制文件编译环境的Dockerfile来创建golang的编译环境，虽然docker plugin是创建成功了，但是当docker plugin enable的时候，这个热紧张文件不能正确的运行，所以就没能生成**sshfs.sock**文件。
+之所以出现上面的那些问题，是因为 create docker plugin 的时候有问题，也就是那个二进制文件有问题，我在**Mac**上 build 的 image，而且还没有用**Dockerfile.dev**这个专门用来搭建二进制文件编译环境的 Dockerfile 来创建 golang 的编译环境，虽然 docker plugin 是创建成功了，但是当 docker plugin enable 的时候，这个热紧张文件不能正确的运行，所以就没能生成**sshfs.sock**文件。
 
-> 请在Linux环境下使用**make all**命令来创建plugin。
+> 请在 Linux 环境下使用**make all**命令来创建 plugin。
 

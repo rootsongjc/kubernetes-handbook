@@ -10,7 +10,7 @@ aliases: "/posts/envoy-proxy-config-deep-dive"
 image: "images/banner/envoyproxy.jpg"
 ---
 
-Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](https://cloudnative.to/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
+Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](https://cloudnative.to/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio）中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
 
 ![Envoy proxy 架构图](xds.svg)
 
@@ -114,7 +114,7 @@ Listener 的数据结构如下，除了 `name`、`address` 和 `filter_chains` �
 
 下面是关于上述数据结构中的常用配置解析。
 
-- **name**：该 listener 的 UUID，唯一限定名，默认60个字符，例如 `10.254.74.159_15011`，可以使用命令参数指定长度限制。
+- **name**：该 listener 的 UUID，唯一限定名，默认 60 个字符，例如 `10.254.74.159_15011`，可以使用命令参数指定长度限制。
 
 - **address**：监听的逻辑/物理地址和端口号，例如
 
@@ -279,7 +279,7 @@ VirtualHost 即上文中 Route 配置中的 `virtual_hosts`，VirtualHost 是路
 
 #### route.Route
 
-路由既是如何匹配请求的规范，也是对下一步做什么的指示（例如，redirect、forward、rewrite等）。
+路由既是如何匹配请求的规范，也是对下一步做什么的指示（例如，redirect、forward、rewrite 等）。
 
 **route.Route 的数据结构**
 

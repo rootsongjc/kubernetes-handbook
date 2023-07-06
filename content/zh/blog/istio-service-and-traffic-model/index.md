@@ -19,7 +19,7 @@ image: "images/banner/istio-logo.webp"
 
 因为 Istio 基本就是绑定在 Kubernetes 上，下面是我们熟知的 Kubernetes 及 Istio 中共有的服务模型。
 
-Kubernetes 中 iptables 代理模式（另外还有 IPVS 模式）下的 service ，管理员可以在 kube-proxy 中配置简单的负载均衡，对整个 node 生效，无法配置到单个服务的负载均衡和其他微服务的高级功能，例如熔断、限流、追踪等，这些功能只能在应用中实现了，而在 Istio 的概念模型中完全去掉了 `kube-proxy`  这个组件，将其分散到每个应用 Pod 中同时部署的 Envoy 中实现。
+Kubernetes 中 iptables 代理模式（另外还有 IPVS 模式）下的 service，管理员可以在 kube-proxy 中配置简单的负载均衡，对整个 node 生效，无法配置到单个服务的负载均衡和其他微服务的高级功能，例如熔断、限流、追踪等，这些功能只能在应用中实现了，而在 Istio 的概念模型中完全去掉了 `kube-proxy`  这个组件，将其分散到每个应用 Pod 中同时部署的 Envoy 中实现。
 
 下面列举的是 Kubernetes 和 Istio 中共有的模型。
 
@@ -72,7 +72,7 @@ Envoy 是 Istio 中默认的 sidecar proxy，负责服务间的流量管控、�
 
 下面是 Envoy 的架构图。
 
-![Envoy架构图](envoy-arch-20190114.png)
+![Envoy 架构图](envoy-arch-20190114.png)
 
 我再给大家介绍 Envoy 中的如下几个重要概念。
 
@@ -84,7 +84,7 @@ Envoy 是 Istio 中默认的 sidecar proxy，负责服务间的流量管控、�
 
 ### Listener
 
-监听器（listener）是可以由下游客户端连接的命名网络位置（例如，端口、unix域套接字等）。Envoy 公开一个或多个下游主机连接的侦听器。一般是每台主机运行一个 Envoy，使用单进程运行，但是每个进程中可以启动任意数量的 Listener（监听器），目前只监听 TCP，每个监听器都独立配置一定数量的（L3/L4）网络过滤器。Listenter 也可以通过 Listener Discovery Service（**LDS**）动态获取。
+监听器（listener）是可以由下游客户端连接的命名网络位置（例如，端口、unix 域套接字等）。Envoy 公开一个或多个下游主机连接的侦听器。一般是每台主机运行一个 Envoy，使用单进程运行，但是每个进程中可以启动任意数量的 Listener（监听器），目前只监听 TCP，每个监听器都独立配置一定数量的（L3/L4）网络过滤器。Listenter 也可以通过 Listener Discovery Service（**LDS**）动态获取。
 
 ### Listener filter
 

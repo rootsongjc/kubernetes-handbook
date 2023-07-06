@@ -47,7 +47,7 @@ SPIFFE 的目的是基于零信任的理念，建立一个开放、统一的工�
 下面我将为你简单介绍一下与 SPIFFE 相关的一些术语。
 
 - **SPIFFE**（Secure Production Identity Framework For Everyone）是一套身份认证标准。
-- **SPIRE**（SPIFFE Runtime Environment） 是 SPIFFE 标准的一套生产就绪实现。
+- **SPIRE**（SPIFFE Runtime Environment）是 SPIFFE 标准的一套生产就绪实现。
 - **SVID**（SPIFFE Verifiable Identity Document）是工作负载向资源或调用者证明其身份的文件。SVID 包含一个 SPIFFE ID，代表了服务的身份。它将 SPIFFE ID 编码在一个可加密验证的文件中，目前支持两种格式：X.509 证书或 JWT 令牌。
 - **SPIFFE ID** 是一个统一资源标识符（URI），其格式如下：`spiffe://trust_domain/workload_identifier`。
 
@@ -82,12 +82,12 @@ SDS 最重要的好处就是简化了证书管理。如果没有这个特性，�
 
 在 Kubernetes 集群中的 `spire` 命名空间中使用 StatefulSet 部署 SPIRE Server 和 Kubernetes Workload Registrar，使用 DaemonSet 资源为每个节点部署一个 SPIRE Agent。假设你在安装 Kubernetes 时使用的是默认的 DNS 名称 `cluster.local`，[Kubernetes Workload Registar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) 会为 Istio Mesh 中的工作负载创建如下格式的身份：
 
-- SPRRE Server：`spiffe://cluster.local/ns/spire/sa/server`
-- SPIRE Agent：`spiffe://cluster.local/ns/spire/sa/spire-agent`
-- Kubernetes Node：`spiffe://cluster.local/k8s-workload-registrar/demo-cluster/node/`
-- Kubernetes Worload Pod：`spiffe://cluster.local/{namespace}/spire/sa/{service_acount}`
+- SPRRE Server:`spiffe://cluster.local/ns/spire/sa/server`
+- SPIRE Agent:`spiffe://cluster.local/ns/spire/sa/spire-agent`
+- Kubernetes Node:`spiffe://cluster.local/k8s-workload-registrar/demo-cluster/node/`
+- Kubernetes Worload Pod:`spiffe://cluster.local/{namespace}/spire/sa/{service_acount}`
 
-这样不论是节点还是每个工作负载都有它们全局唯一的身份，而且还可以根据集群 （信任域）扩展。
+这样不论是节点还是每个工作负载都有它们全局唯一的身份，而且还可以根据集群（信任域）扩展。
 
 Istio 中的工作负载身份验证过程如下图所示。
 

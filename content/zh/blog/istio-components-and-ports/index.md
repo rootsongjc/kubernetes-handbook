@@ -23,7 +23,7 @@ image: "images/banner/istio-ports.jpg"
 
 ![Istio sidecar 组成示意图](istio-ports-components.webp)
 
-我们可以使用 `nsenter` 命令进入Bookinfo 示例的 `productpage`  Pod的网络空间，查看其内部监听的端口信息。
+我们可以使用 `nsenter` 命令进入 Bookinfo 示例的 `productpage`  Pod 的网络空间，查看其内部监听的端口信息。
 
 ![Istio sidecar 中监听的端口信息](sidecar-ports.webp)
 

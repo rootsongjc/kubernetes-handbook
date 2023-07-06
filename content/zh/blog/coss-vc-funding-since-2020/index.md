@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/coss.jpg"
 ---
 
-昨天 COSS（Commercial Open Source）公司的创始人也是投资者 Joseph（JJ） Jacks 给我发消息，让我看下他们新发布的这个报告。
+昨天 COSS（Commercial Open Source）公司的创始人也是投资者 Joseph（JJ）Jacks 给我发消息，让我看下他们新发布的这个报告。
 
 {{<figure title="JJ 给我发的报告" src="jj.jpg" width="50%">}}
 

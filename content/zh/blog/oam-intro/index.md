@@ -24,7 +24,7 @@ image: "images/banner/oam.png"
 
 > **康威定律（Conway’s Law）**
 >
-> [康威定律](https://zh.wikipedia.org/zh-hans/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B)是马尔文·康威（Melvin Conway）1967年提出的： "设计系统的架构受制于产生这些设计的组织的沟通结构。" 
+> [康威定律](https://zh.wikipedia.org/zh-hans/%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B)是马尔文·康威（Melvin Conway）1967 年提出的： "设计系统的架构受制于产生这些设计的组织的沟通结构。" 
 
 ## OAM 简介
 
@@ -70,7 +70,7 @@ OAM 模型中包含以下基本对象，以本文发稿时的最新 API 版本 `
 
 ### OAM 工作原理
 
-下图来自阿里云原生应用平台团队孙健波在 **《OAM:云原生时代的应用模型与 下一代 DevOps 技术》** 中的分享，OAM 的工作原理如下图所示，OAM Spec 定义了云原生应用的规范（使用一些列 CRD 定义）， Rudr 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。
+下图来自阿里云原生应用平台团队孙健波在 **《OAM:云原生时代的应用模型与 下一代 DevOps 技术》** 中的分享，OAM 的工作原理如下图所示，OAM Spec 定义了云原生应用的规范（使用一些列 CRD 定义），Rudr 可以看做是 OAM 规范的解析器，将应用定义翻译为 Kubernetes 中的资源对象。
 
 ![OAM 的原理](oam-principle.png)
 

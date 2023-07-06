@@ -69,7 +69,7 @@ brew install nocalhost/repo/nocalhost
 nhctl version
 ```
 
-我们假设你机的 `kubeconfig` 文件位于 `~/.kube/config`（若不在此位置需要在下面的命令中使用 `--kubeconfig` 手动指定） 并拥有 Kubernetes 集群的 admin 角色，执行下面的命令使用 Helm3 在 Kubernetes 上安装 Nocalhost 服务端。
+我们假设你机的 `kubeconfig` 文件位于 `~/.kube/config`（若不在此位置需要在下面的命令中使用 `--kubeconfig` 手动指定）并拥有 Kubernetes 集群的 admin 角色，执行下面的命令使用 Helm3 在 Kubernetes 上安装 Nocalhost 服务端。
 
 ```bash
 nhctl init demo -n nocalhost 

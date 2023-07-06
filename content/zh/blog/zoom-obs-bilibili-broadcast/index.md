@@ -1,6 +1,6 @@
 ---
 title: "Zoom + OBS + B 站直播配置手册"
-description: "本文将指导你如何配置和使用 OBS + zoom在 Bilibili 上直播。"
+description: "本文将指导你如何配置和使用 OBS + zoom 在 Bilibili 上直播。"
 image: "/images/banner/studio.jpg"
 categories: ["其他"]
 tags: ["直播","OBS"]
@@ -29,11 +29,11 @@ type: "post"
 
 ## 硬件准备
 
-- 电脑：macOS、Windows 都可以，我是用的是Macbook Pro 2016 年产，配置如下：
+- 电脑：macOS、Windows 都可以，我是用的是 Macbook Pro 2016 年产，配置如下：
 
 ![系统配置](008i3skNly1gqv0t9gubjj30wk0jiwl1.jpg) 
 
-- 外接麦克风：切勿直接使用电脑机身上自带的麦克风，那样会收录电脑风扇的声音，我使用的是博雅 BY-500（400 多块钱） 麦克风，电容式麦克风，指向性比较好，基本没有噪音。
+- 外接麦克风：切勿直接使用电脑机身上自带的麦克风，那样会收录电脑风扇的声音，我使用的是博雅 BY-500（400 多块钱）麦克风，电容式麦克风，指向性比较好，基本没有噪音。
 - 摄像头：保证电脑上的摄像头可用，因为会议的时候需要开摄像头，或者用外接摄像头也可以。
 - 网络：确保网速至少 100MB/s 的宽带，因为推流还是比较占用带宽的，而且还需要同时查看直播效果，对下行带宽也有要求。
 - 另一台可联网设备：用来监控直播效果，可以是手机、iPad 等
@@ -51,15 +51,15 @@ type: "post"
 
 需要注意的是输出、音频和视频的配置。请参考图中的配置，尤其注意编码控制、比特率的配置。
 
-![OBS输出配置](008i3skNly1gqv0t9tppnj312t0u0gpv.jpg)
+![OBS 输出配置](008i3skNly1gqv0t9tppnj312t0u0gpv.jpg)
 
-![OBS音频配置](008i3skNly1gqv0tbb4g8j313m0u0jv1.jpg)
+![OBS 音频配置](008i3skNly1gqv0tbb4g8j313m0u0jv1.jpg)
 
 请注意分辨率的配置，同时调整电脑屏幕的分辨率为 1440x900，**不要使用太大的分辨率，否则可能导致直播画面黑屏**。
 
-![OBS视频配置](008i3skNly1gqv0tarnvoj31is0p276g.jpg)
+![OBS 视频配置](008i3skNly1gqv0tarnvoj31is0p276g.jpg)
 
-![Macbook显示配置](008i3skNly1gqv0tbrclhj31140pkjxy.jpg)
+![Macbook 显示配置](008i3skNly1gqv0tbrclhj31140pkjxy.jpg)
 
 ## 会议直播
 
@@ -73,7 +73,7 @@ type: "post"
 
 安装 sunflower 后，在 Midi 设备中创建一个多输出设备，如图。
 
-![MacBook音频配置](008i3skNly1gqv0ta93jfj31060q0n28.jpg) 
+![MacBook 音频配置](008i3skNly1gqv0ta93jfj31060q0n28.jpg) 
 
 选择 Sunflower（2ch）和你想要用来监听系统声音的设备，我是用的是 AirPods，你也可以选择其他耳机，总之不要让麦克风录到这个系统输出的即可。
 

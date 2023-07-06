@@ -52,7 +52,7 @@ Istio 开源发展时间线如下图所示。
 - Kubernetes 管理应用的生命周期，具体来说，就是应用的部署和管理（扩缩容、自动恢复、发布策略）；
 - 基于 Kubernetes 的自动 sidecar 注入，实现了透明流量拦截。先通过 sidecar 代理拦截到微服务间流量，再通过控制平面配置管理微服务的行为。如今服务网格的部署模式也迎来了新的挑战，sidecar 已经不是 Istio 服务网格所必须的，基于 gRPC 的无代理的服务网格 [^5] 也在测试中。
 
-- 服务网格将流量管理从 Kubernetes 中解耦，服务网格内部的流量无须 `kube-proxy` 组件的支持， 通过类似于微服务应用层的抽象，管理服务间的流量，实现安全性和可观察性功能。
+- 服务网格将流量管理从 Kubernetes 中解耦，服务网格内部的流量无须 `kube-proxy` 组件的支持，通过类似于微服务应用层的抽象，管理服务间的流量，实现安全性和可观察性功能。
 - 控制平面通过 xDS 协议发放代理配置给数据平面，已实现 xDS 的代理有 [Envoy](https://envoyproxy.io) 和蚂蚁开源的 [MOSN](https://mosn.io)。
 
 - Kubernetes 集群外部的客户端访问集群内部服务时，原先是通过 Kubernetes [Ingress](https://lib.jimmysong.io/kubernetes-handbook/concepts/ingress/)，在有了 Istio 之后，会通过 Gateway 来访问 [^6]。
@@ -105,8 +105,8 @@ Istio 是在 Kubernetes 的基础上构建的，它可以利用 Kubernetes 的�
 | :--------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :-------------------------------------------------------- |
 | **Sidecar 代理**                   | 因为为每个 pod 都注入一个代理，所以开销最大。                | 由于 sidecar 必须与工作负载一起部署，工作负载有可能绕过 sidecar。 | Pod 级别隔离，如果有代理出现故障，只影响到 Pod 中的工作负载。 | 可以单独升级某个工作负载的 sidecar 而不影响其他工作负载。 |
 | **节点共享代理**                   | 每个节点上只有一个代理，为该节点上的所有工作负载所共享，开销小。 | 对加密内容和私钥的管理存在安全隐患。                         | 节点级别隔离，如果共享代理升级时出现版本冲突、配置冲突或扩展不兼容等问题，则可能会影响该节点上的所有工作负载。 | 不需要考虑注入 Sidecar 的问题。                           |
-| **Service Account / 节点共享代理** | 服务账户 / 身份下的所有工作负载都使用共享代理，开销小。      | 工作负载和代理之间的连接的认证及安全性无法保障。             | 节点和服务账号之间级别隔离，故障同 “节点共享代理”。          | 同 “节点共享代理”。                                       |
-| **带有微代理的共享远程代理**       | 因为为每个 pod 都注入一个微代理，开销比较大。                | 微代理专门处理 mTLS，不负责 L7 路由，可以保障安全性。        | 当需要应用 7 层策略时，工作负载实例的流量会被重定向到 L7 代理上，若不需要，则可以直接绕过。该 L7 代理可以采用共享节点代理、每个服务账户代理，或者远程代理的方式运行。 | 同 “Sidecar 代理”。                                       |
+| **Service Account / 节点共享代理** | 服务账户 / 身份下的所有工作负载都使用共享代理，开销小。      | 工作负载和代理之间的连接的认证及安全性无法保障。             | 节点和服务账号之间级别隔离，故障同“节点共享代理”。          | 同“节点共享代理”。                                       |
+| **带有微代理的共享远程代理**       | 因为为每个 pod 都注入一个微代理，开销比较大。                | 微代理专门处理 mTLS，不负责 L7 路由，可以保障安全性。        | 当需要应用 7 层策略时，工作负载实例的流量会被重定向到 L7 代理上，若不需要，则可以直接绕过。该 L7 代理可以采用共享节点代理、每个服务账户代理，或者远程代理的方式运行。 | 同“Sidecar 代理”。                                       |
 
 {{</table>}}
 
@@ -176,7 +176,7 @@ Proxyless 模式是 Istio 在 1.11 版本中提出的实验特性 —— [基于
 
 {{<figure title="Sidecar 模式 vs Proxyless 模式" width="100%" alt="图片" src="sidecar-to-proxyless.svg">}}
 
-从上图中我们可以看到，虽然 proxyless 模式不使用 proxy 进行数据平面通信，但仍然需要一个 agent（即 `pilot-agent`） 来进行初始化和与控制平面的通信。首先，agent 在启动时生成一个[引导文件](https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md#xdsclient-and-bootstrap-file)，与为 Envoy 生成引导文件的方式相同。这告诉 gRPC 库如何连接到 `istiod`，在哪里可以找到用于数据平面通信的证书，向控制平面发送什么元数据。接下来，agent 作为 xDS proxy，代表应用程序与 `istiod` 进行连接和认证。最后，agent 获取并轮换数据平面通信中使用的证书，这其实与 Sidecar 模式的流程是一样的，只是将 Envoy 代理的功能内置到 SDK 中了。
+从上图中我们可以看到，虽然 proxyless 模式不使用 proxy 进行数据平面通信，但仍然需要一个 agent（即 `pilot-agent`）来进行初始化和与控制平面的通信。首先，agent 在启动时生成一个[引导文件](https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md#xdsclient-and-bootstrap-file)，与为 Envoy 生成引导文件的方式相同。这告诉 gRPC 库如何连接到 `istiod`，在哪里可以找到用于数据平面通信的证书，向控制平面发送什么元数据。接下来，agent 作为 xDS proxy，代表应用程序与 `istiod` 进行连接和认证。最后，agent 获取并轮换数据平面通信中使用的证书，这其实与 Sidecar 模式的流程是一样的，只是将 Envoy 代理的功能内置到 SDK 中了。
 
 > *服务网格的本质不是 Sidecar 模式，也不是配置中心或透明流量拦截，而是标准化的服务间通信标准。*
 
@@ -339,7 +339,7 @@ xDS 是 Envoy 区别于其他代理的关键，它的代码和解析流程十分
 
 从以上功能中我们可以看出 `pilot-agent` 进程主要是用于与 Istiod 交互，为 Envoy 起到指挥和辅助的作用，Istio 的核心组件是 Envoy。那么 Envoy 会不会「演而优则导」，不再配合 Istio，构建一套自己的控制平面呢？
 
-> *在 Sidecar 容器中，`pilot-agent` 就像是 Envoy 的  “Sidecar”。*
+> *在 Sidecar 容器中，`pilot-agent` 就像是 Envoy 的“Sidecar”。*
 
 {{<callout note 请读者思考一下>}}
 `pilot-agent` 的功能能否直接内置到 Envoy 中，从而取消 `pilot-agent` 呢？
@@ -434,7 +434,7 @@ Istio 开源在至今已经五年多了，近两年来出现了很多基于 Isti
 4. Istio 监听 Istio CRD 的创建；
 5. Istio 将代理的配置信息推送到数据平面相应的 Sidecar Proxy 中；
 
-因为数据平面中的所有服务的首次调用都通过 Global Proxy，该 Proxy 可以记录所有服务的调用和依赖信息，根据该依赖信息更新 Istio 中 Sidecar 资源的配置；当某个服务的调用链被 VirtualService 中的路由信息重新定义时， Global Proxy 原有记录就失效了，需要一个新的数据结构来维护该服务的调用关系。Slime 创建了名为 `ServiceFence` 的 CRD 来维护服务调用关系以解决服务信息缺失问题，详见 [Slime 简介](/blog/slime-intro/)。
+因为数据平面中的所有服务的首次调用都通过 Global Proxy，该 Proxy 可以记录所有服务的调用和依赖信息，根据该依赖信息更新 Istio 中 Sidecar 资源的配置；当某个服务的调用链被 VirtualService 中的路由信息重新定义时，Global Proxy 原有记录就失效了，需要一个新的数据结构来维护该服务的调用关系。Slime 创建了名为 `ServiceFence` 的 CRD 来维护服务调用关系以解决服务信息缺失问题，详见 [Slime 简介](/blog/slime-intro/)。
 
 ### Aeraki
 
@@ -547,7 +547,7 @@ Tetrate 公司是由 Istio 项目的发起人创立的，TSB 是基于开源的 
 
 ### 身份认证{#authn}
 
-零信任网络中最重要的是**面向身份的控制**而不是面向网络的控制。Istio 1.14 中增加了对 SPIRE 的支持，SPIRE（SPIFFE Runtime Environment，CNCF 孵化项目） 是 SPIFFE（Secure Production Identity Framework For Everyone，CNCF 孵化项目） 的一个实现。在 Kubernetes 中我们使用 [ServiceAccount](https://lib.jimmysong.io/kubernetes-handbook/auth/serviceaccount/) 为 Pod 中的工作负载提供身份信息，其核心是基于 Token（使用 Secret 资源存储）来表示负载身份。而 Token 是 Kubernetes 集群中的资源，对于多集群及运行在非 Kubernetes 环境（例如虚拟机）中的负载，如何统一它们的身份？这就是 SPIFFE 要解决的问题。
+零信任网络中最重要的是**面向身份的控制**而不是面向网络的控制。Istio 1.14 中增加了对 SPIRE 的支持，SPIRE（SPIFFE Runtime Environment，CNCF 孵化项目）是 SPIFFE（Secure Production Identity Framework For Everyone，CNCF 孵化项目）的一个实现。在 Kubernetes 中我们使用 [ServiceAccount](https://lib.jimmysong.io/kubernetes-handbook/auth/serviceaccount/) 为 Pod 中的工作负载提供身份信息，其核心是基于 Token（使用 Secret 资源存储）来表示负载身份。而 Token 是 Kubernetes 集群中的资源，对于多集群及运行在非 Kubernetes 环境（例如虚拟机）中的负载，如何统一它们的身份？这就是 SPIFFE 要解决的问题。
 
 SPIFFE 的目的是基于零信任的理念，建立一个开放、统一的工作负载身份标准，这有助于建立一个零信任的全面身份化的数据中心网络。SPIFFE 的核心是通过简单 API 定义了一个生命周期短暂的加密身份文件—— SVID（SPFFE Verifiable Identity Document），用作工作负载认证时使用的身份文件（基于 X.509 证书或 JWT 令牌）。SPIRE 可以根据管理员定义的策略自动轮换 SVID 证书和秘钥，动态地提供工作负载标识，同时 Istio 可以通过 SPIRE 动态的消费这些工作负载标识。
 
@@ -574,7 +574,7 @@ Istio 中使用 SPIRE 进行工作负载认证的步骤如下：
 
 当每个工作负载都有准确的身份之后，如何对这些身份的权限进行限制？Kubernetes 中默认使用 RBAC 来做访问控制，正如其名，这种访问控制是基于角色的，虽然使用起来比较简单，但是对于大规模集群，存在角色爆炸问题 —— 即存在太多角色，而且角色的类型不是一成不变的，难以对角色权限机型跟踪和审计。另外 RBAC 中的角色的访问权限是固定，没有规定短暂的使用权限，也没有考虑位置、时间或设备等属性。使用 RBAC 的企业很难满足复杂的访问控制要求，以满足其他组织需求的监管要求。
 
-NGAC，即下一代访问控制，采用将访问决定数据建模为DAG （有向无环图）的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/) （美国国家标准与技术研究所）开发，目前已用于 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 中的权限管理。关于为什么选择 NGAC，而不是 ABAC 和 RBAC 的更多内容请参考博客[为什么应该选择使用 NGAC 作为权限控制模型](/blog/why-you-should-choose-ngac-as-your-access-control-model/)。
+NGAC，即下一代访问控制，采用将访问决定数据建模为 DAG（有向无环图）的方法。NGAC 可以实现系统化、策略一致的访问控制方法，以高精细度授予或拒绝用户管理能力。NGAC 由 [NIST](https://www.nist.gov/) （美国国家标准与技术研究所）开发，目前已用于 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 中的权限管理。关于为什么选择 NGAC，而不是 ABAC 和 RBAC 的更多内容请参考博客[为什么应该选择使用 NGAC 作为权限控制模型](/blog/why-you-should-choose-ngac-as-your-access-control-model/)。
 
 ## 混合云{#hybrid-cloud}
 
@@ -582,7 +582,7 @@ NGAC，即下一代访问控制，采用将访问决定数据建模为DAG （有
 
 ![Kubernetes 集群联邦架构](multicluster.svg)
 
-集群联邦要求 Host 集群与成员集群的之间的网络能够互通，对成员集群之间的网络连接性没有要求。Host 集群作为 API 入口，外界所有对 Host 集群的资源请求会转发到成员集群中。Host 集群中部署有集群联邦的控制平面，其中的 「Push Reconciler」会将联邦中的身份、角色及角色绑定传播到所有的成员集群中。集群联邦只是简单地将多个集群简单的「连接到了一起」，在多个集群之间复制工作负载，而成员集群之间的流量无法调度，也无法实现真正的多租户。
+集群联邦要求 Host 集群与成员集群的之间的网络能够互通，对成员集群之间的网络连接性没有要求。Host 集群作为 API 入口，外界所有对 Host 集群的资源请求会转发到成员集群中。Host 集群中部署有集群联邦的控制平面，其中的「Push Reconciler」会将联邦中的身份、角色及角色绑定传播到所有的成员集群中。集群联邦只是简单地将多个集群简单的「连接到了一起」，在多个集群之间复制工作负载，而成员集群之间的流量无法调度，也无法实现真正的多租户。
 
 集群联邦不足以实现混合云，为了实现真正意义上的混合云，就要让集群之间做到互联互通，同时实现多租户。TSB 在 Istio 之上构建一个多集群管理的通用控制平面，然后再增加一个管理平面来管理多集群，提供多租户、管理配置、可观察性等功能。下面是 Istio 管理平面的多租户和 API 示意图。
 
@@ -603,7 +603,7 @@ TSB 为管理混合云，基于 Istio 构建了一个管理平面，新建了 Te
 [^1]: 有关 Envoy 开源的详细过程，推荐你阅读 Envoy 作者 Matt Klein 的这篇文章[网络代理 Envoy 开源五周年，创始人 Matt Klein 亲述开源心路历程及经验教训](https://lib.jimmysong.io/translation/envoy-oss-5-year/)。
 
 [^2]: 后来 IBM 与 Google 反目，大举抨击 Google 没有遵守将 Istio 捐献给 CNCF 的约定，Google 对 Istio 商标的管理也受到了[质疑](https://thenewstack.io/googles-management-of-the-istio-service-mesh-raises-questions-in-the-cloud-native-community/)。
-[^3]: 2018 年，CNCF 为云原生的重新定义是：云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式 API。 详见 [什么是云原生](https://lib.jimmysong.io/cloud-native-handbook/intro/what-is-cloud-native/)。
+[^3]: 2018 年，CNCF 为云原生的重新定义是：云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式 API。详见 [什么是云原生](https://lib.jimmysong.io/cloud-native-handbook/intro/what-is-cloud-native/)。
 [^4]: Day-2 Operation 是在系统的生命周期结束前，对系统不断改进的过程，以实现效益最大化。参考 [什么是 Day-2 Operation](https://jimmysong.io/blog/what-is-day-2-operation/)。
 [^5]: Istio 现已推出 proxyless 模式测试版，详见 [基于 gRPC 和 Istio 的无 sidecar 代理的服务网格](https://lib.jimmysong.io/translation/grpc-proxyless-service-mesh/)。
 [^6]: Kubernetes 预计推出 [Gateway API](https://lib.jimmysong.io/kubernetes-handbook/concepts/gateway/)，Istio 也有计划使用 Kubernetes 的 Gateway API 替换当前 Istio 自定义的 Gateway 资源。

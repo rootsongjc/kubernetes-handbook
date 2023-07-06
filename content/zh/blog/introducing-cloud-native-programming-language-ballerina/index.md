@@ -1,5 +1,5 @@
 ---
-title: "云原生编程语言Ballerina介绍"
+title: "云原生编程语言 Ballerina 介绍"
 description: "编译式强类型基于序列图理念的开源编程语言。"
 date: 2018-05-12T23:27:49+08:00
 draft: false
@@ -28,7 +28,7 @@ ESB、EAI、BPM 和 DSL 需要 XML 和配置来中断迭代开发流程：编辑
 
 ### 序列图
 
-![云原生编程语言Ballerina的序列图设计理念](006y8mN6ly1g88c8ji2zdj30u00wwdgm.jpg)
+![云原生编程语言 Ballerina 的序列图设计理念](006y8mN6ly1g88c8ji2zdj30u00wwdgm.jpg)
 
 **语言灵感**
 
@@ -40,11 +40,11 @@ Ballerina 的语言语义模型旨在定义独立的各方如何通过结构化�
 
 **Actor 与 action**
 
-客户端、worker 和远程系统在 Ballerina 的序列图中以不同的 actor 表示。在代码中，远程端点通过连接器进行连接，连接器提供类型安全操作。在图形上，每个连接器在序列图中表示为一个 actor（即一条垂直线），action 表示为与这些actor 的交互。
+客户端、worker 和远程系统在 Ballerina 的序列图中以不同的 actor 表示。在代码中，远程端点通过连接器进行连接，连接器提供类型安全操作。在图形上，每个连接器在序列图中表示为一个 actor（即一条垂直线），action 表示为与这些 actor 的交互。
 
 ### 并发
 
-![云原生编程语言Ballerina的并发理念](006y8mN6ly1g88c99h584j30u00ww752.jpg)
+![云原生编程语言 Ballerina 的并发理念](006y8mN6ly1g88c99h584j30u00ww752.jpg)
 
 **序列图和并发**
 
@@ -108,7 +108,7 @@ Ballerina 的语法、代码和编译器创建了运行时服务和部署构件�
 
 ### 运行时架构
 
-![云原生编程语言ballerina运行时架构](006y8mN6ly1g88cazdfcnj30u00wxjsr.jpg)
+![云原生编程语言 ballerina 运行时架构](006y8mN6ly1g88cazdfcnj30u00wxjsr.jpg)
 
 **Ballerina API 网关**
 
@@ -116,7 +116,7 @@ Ballerina 的语法、代码和编译器创建了运行时服务和部署构件�
 
 **Ballerina service**
 
-表示您的 API 和执行逻辑。服务通过不同的协议运行，内部代码结构被编译为支持 OpenAPI 和 Swagger 的API接口。服务与端点进行通信，无论它们是调用客户端还是其他服务。
+表示您的 API 和执行逻辑。服务通过不同的协议运行，内部代码结构被编译为支持 OpenAPI 和 Swagger 的 API 接口。服务与端点进行通信，无论它们是调用客户端还是其他服务。
 
 **Ballerina bridge**
 
@@ -128,7 +128,7 @@ Ballerina 的语法、代码和编译器创建了运行时服务和部署构件�
 
 ### 部署架构
 
-![云原生编程语言ballerina部署架构图](006y8mN6ly1g88cbr5hquj30u00wxq46.jpg)
+![云原生编程语言 ballerina 部署架构图](006y8mN6ly1g88cbr5hquj30u00wxq46.jpg)
 
 **IaaS**
 
@@ -144,7 +144,7 @@ Ballerina 可以选择断路器和事务流程逻辑委托给像 Istio 或 Envoy
 
 ### 生命周期
 
-![云原生编程语言ballerina生命周期架构图](006y8mN6ly1g88cck2s8xj30u00wtgni.jpg)
+![云原生编程语言 ballerina 生命周期架构图](006y8mN6ly1g88cck2s8xj30u00wtgni.jpg)
 
 **Ballerina 工具**
 
@@ -152,7 +152,7 @@ Ballerina 可以选择断路器和事务流程逻辑委托给像 Istio 或 Envoy
 
 **Ballerina 构建**
 
-将服务编译为经过优化的字节码，以便使用内存调优后的 BVM 运行。提供了使用Testerina 的项目结构、依赖管理、包管理和单元测试。构建锁可以轻松地重新创建服务和部署。生成可执行文件（.balx）或库（.balo）。
+将服务编译为经过优化的字节码，以便使用内存调优后的 BVM 运行。提供了使用 Testerina 的项目结构、依赖管理、包管理和单元测试。构建锁可以轻松地重新创建服务和部署。生成可执行文件（.balx）或库（.balo）。
 
 **CI/CD**
 
@@ -190,5 +190,5 @@ Ballerina 是一种旨在**集成简化**的语言。基于顺序图的交互，
 
 ## 参考
 
-- [Ballerina官网](https://ballerina.io)
+- [Ballerina 官网](https://ballerina.io)
 - [Microservices, Docker, Kubernetes, Serverless, Service Mesh, and Beyond](https://dzone.com/articles/microservices-docker-kubernetes-serverless-service)

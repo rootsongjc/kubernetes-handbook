@@ -12,6 +12,6 @@ aliases: "/posts/servicemesher-community"
 
 Service Mesh 爱好者们联合翻译了 [Envoy 最新版本的官方文档](https://www.envoyproxy.io/docs/envoy/latest/)，翻译的代码托管在 <https://github.com/servicemesher/envoy>，如果你也是 Service Mesh 爱好者可以加入到 [SerivceMesher GitHub 组织](https://github.com/servicemesher)里共同参与。
 
-Envoy 官方文档排除 v1 API 参考 和 v2 API 参考的两个目录下的所有文章后一共有 120 余篇文档，文档的长短不一，原英文的官方文档都是使用 RST 格式，我手动将它们转成了 Markdown 格式，并使用 Gitbook 编译。按照文档相对于主目录的路径生成了 GitHub Issue，想参与翻译的朋友可以[联系我](https://jimmysong.io/about)加入 ServiceMesher 组织，然后可以在 [Issue](https://github.com/servicemesher/envoy/issues) 中选择你想要翻译的文章，然后回复 “认领”。
+Envoy 官方文档排除 v1 API 参考 和 v2 API 参考的两个目录下的所有文章后一共有 120 余篇文档，文档的长短不一，原英文的官方文档都是使用 RST 格式，我手动将它们转成了 Markdown 格式，并使用 Gitbook 编译。按照文档相对于主目录的路径生成了 GitHub Issue，想参与翻译的朋友可以[联系我](https://jimmysong.io/about)加入 ServiceMesher 组织，然后可以在 [Issue](https://github.com/servicemesher/envoy/issues) 中选择你想要翻译的文章，然后回复“认领”。
 
 [在这里](https://github.com/servicemesher/envoy/graphs/contributors)可以看到所有的贡献者。未来我们也会创建 Service Mesh 爱好者网站，网站使用静态页面，所有的代码都会托管在 Github 上，欢迎大家参与进来。

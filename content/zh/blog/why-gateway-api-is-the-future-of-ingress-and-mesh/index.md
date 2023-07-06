@@ -19,7 +19,7 @@ image: "images/banner/gateway-api.jpg"
 
 ## Kubernetes 入口网关的历史
 
-2014 年 6 月 Kubernetes 开源，起初只能使用 NodePort 和 LoadBalancer 类型的 Service 对象来暴露集群内服务，后来才诞生了 [Ingress](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/)，两年后（Kubernetes 1.2） Ingress API 进入 Beta 版本，随后为了保持其轻量和可移植的特性，Ingress API 相较于 Kubernetes 其他 API 发展得比较缓慢，直到 Kubernetes 1.19 它才升级到 GA。
+2014 年 6 月 Kubernetes 开源，起初只能使用 NodePort 和 LoadBalancer 类型的 Service 对象来暴露集群内服务，后来才诞生了 [Ingress](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/)，两年后（Kubernetes 1.2）Ingress API 进入 Beta 版本，随后为了保持其轻量和可移植的特性，Ingress API 相较于 Kubernetes 其他 API 发展得比较缓慢，直到 Kubernetes 1.19 它才升级到 GA。
 
 Ingress 的主要目标是用简单的、声明性的语法来暴露 HTTP 应用。你可以在 Kubernetes 中部署多种 Ingress Controller，并在创建 Ingress 的时候通过 IngressClass 指定该网关使用的控制器，或者在 Kubernetes 中设置默认的默认的 IngressClass。Kubernetes 默认只支持 AWS、GCE 和 Nginx Ingress Controller，同时还支持大量的[第三方 Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers)。
 
@@ -255,7 +255,7 @@ spec:
 
 ## 总结
 
-Gateway API 作为下一代 Kubernetes Ingress API，为 Kubernetes 网关供应商提供一定程度上的 API 规范，在保证其可移植性的前提下丰富了入口网关的功能，同时通过关注点分离方便不同角色的人员对网关进行管理。最后GAMMA 倡议正在促进服务网格的入口网关与 Gateway API 的融合，策略附件可能将 Gateway API 的功能进一步扩展到东西向网关，我们拭目以待。
+Gateway API 作为下一代 Kubernetes Ingress API，为 Kubernetes 网关供应商提供一定程度上的 API 规范，在保证其可移植性的前提下丰富了入口网关的功能，同时通过关注点分离方便不同角色的人员对网关进行管理。最后 GAMMA 倡议正在促进服务网格的入口网关与 Gateway API 的融合，策略附件可能将 Gateway API 的功能进一步扩展到东西向网关，我们拭目以待。
 
 ## 参考
 

@@ -10,7 +10,7 @@ image: "images/banner/magic-round.jpg"
 link: "https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy"
 ---
 
-这篇文章是根据笔者在 Linux Foundation APAC “源来如此” [开源软件学园技术公开课](https://mp.weixin.qq.com/s/LSnr7R4ZqCqnr1veOq11nQ)《Istio 架构与流量管理机制解析》分享内容整理而成。
+这篇文章是根据笔者在 Linux Foundation APAC“源来如此” [开源软件学园技术公开课](https://mp.weixin.qq.com/s/LSnr7R4ZqCqnr1veOq11nQ)《Istio 架构与流量管理机制解析》分享内容整理而成。
 
 - 本次分享的幻灯片可以[在腾讯文档中观看](https://docs.qq.com/pdf/DRUZTVXZCS25QTlZy)。
 
@@ -45,7 +45,7 @@ Istio 自 2017 年开源，至今已有 5 年多时间，业界已经出版了�
 我们先简要描述下这个例子在开始前的 Istio Mesh 状态：
 
 1. 安装好 Istio，并为 `default` namespace 开启了自动 sidecar 注入；
-2. 在 `default` namespace 下安装了 bookinfo 示例，Bookinfo 示例中的 Kubernetes Service 会自动注册到 Istio Mesh 的 Cluster 中，例如 `outbound|9080||details.default.svc.cluster.local`， 注意在其中没有 `subset` 信息；
+2. 在 `default` namespace 下安装了 bookinfo 示例，Bookinfo 示例中的 Kubernetes Service 会自动注册到 Istio Mesh 的 Cluster 中，例如 `outbound|9080||details.default.svc.cluster.local`，注意在其中没有 `subset` 信息；
 3. 创建了一系列的 Istio CR，包括：
    1. Gateway ： `bookinfo-gateway` 用于选择 Istio 的 Ingress Gateway，作为 bookinfo 的对外流量入口；
    2. DestinationRule：`productpage`、`reviews`、`ratings`、`details` 将这些流量路径通过 `subset` 与 Kubernetes 的 Service 关联起来，将用于未来的分版本路由。实际上为了让 Bookinfo 可以运行起来，这些 DestinationRule 目前都是不必要的；但是你创建了这些 DestinationRule 之后，就会在 Istio Mesh 中创建新的 Cluster 配置，比如 `outbound|9080|v1|reviews.default.svc.cluster.local` 这些 `dynamic_active_clusters `，在创建 VirtualService 指定路由的时候，Istiod 就会下发 `dynamic_route_configs` 给 sidecar，其中会包含 `reviews.default.svc.cluster.local:9080` 路由，其中指定了将路由到的 cluster，这个 cluster 就是在 VirtualService 中配置的那个 host 的 `subset`；
@@ -109,4 +109,4 @@ kubectl -n default port-forward deploy/productpage-v1 15000
 
 “源来如此”是由 Linux 基金会开源软件学园主办的开源技术公开课系列活动。Linux 基金会开源软件学园是 Linux 基金会中国区官方培训平台，致力于为中国软件行业培养具备专业开源技能的人才，不仅为中国开发者提供来自源头的开源技术课程，更发挥 Linux 基金会开源领导能力，积极与国内权威技术专家、知名软件企业合作，开展开源技术公开课系列活动，让更多人了解开源知识，以开源技术公开课为窗口了解开源世界。
 
-Linux Foundation 开源软件学园（LFOSSA）依托于全球最大的开源软件组织, 是领先全球的高端专业软件人才教育机构, 为科技企业培养了大量软件人才, Linux 基金会开源软件学园不仅拥有丰富的线上专业课程，面授课程的导师同样是由业内资深专家担任, 所颁发的证书更是全球认可的专业资质。Linux 基金会做为非牟利国际技术组织, 致力于通过开源推动创新和促进科技发展, 我们唯一的目标就是帮助您的事业发展更上一层楼。
+Linux Foundation 开源软件学园（LFOSSA）依托于全球最大的开源软件组织，是领先全球的高端专业软件人才教育机构，为科技企业培养了大量软件人才，Linux 基金会开源软件学园不仅拥有丰富的线上专业课程，面授课程的导师同样是由业内资深专家担任，所颁发的证书更是全球认可的专业资质。Linux 基金会做为非牟利国际技术组织，致力于通过开源推动创新和促进科技发展，我们唯一的目标就是帮助您的事业发展更上一层楼。

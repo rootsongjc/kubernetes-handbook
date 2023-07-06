@@ -64,10 +64,10 @@ The architecture of using SPIRE for authentication in Istio is depicted in the d
 
 Use StatefulSet resources to deploy the SPIRE Server and Kubernetes Workload Registrar in the spire namespace of the Kubernetes cluster, and DaemonSet resources to deploy a SPIRE Agent for each node. Assuming that you used the default DNS name `cluster.local` when you install Kubernetes, [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/main/support/k8s/k8s-workload-registrar/README.md) creates identities for the workloads in the Istio mesh in the following format:
 
-- SPRRE Server：`spiffe://cluster.local/ns/spire/sa/server`
-- SPIRE Agent：`spiffe://cluster.local/ns/spire/sa/spire-agent`
-- Kubernetes Node：`spiffe://cluster.local/k8s-workload-registrar/demo-cluster/node/`
-- Kubernetes Workload Pod：`spiffe://cluster.local/{namespace}/spire/sa/{service_acount}`
+- SPRRE Server:`spiffe://cluster.local/ns/spire/sa/server`
+- SPIRE Agent:`spiffe://cluster.local/ns/spire/sa/spire-agent`
+- Kubernetes Node:`spiffe://cluster.local/k8s-workload-registrar/demo-cluster/node/`
+- Kubernetes Workload Pod:`spiffe://cluster.local/{namespace}/spire/sa/{service_acount}`
 
 This way, both the nodes and each workload have their own globally unique identity and can be scaled according to the cluster (trust domain).
 

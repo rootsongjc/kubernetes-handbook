@@ -11,7 +11,7 @@ image: "images/backgrounds/tetrate-logo.png"
 
 ![Tetrate](008eGmZEly1gpbh3r4a10j31dk0peb2a.jpg)
 
-我们很高兴地宣布 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 1.0（General Available） 发布。Tetrate 的使命是解决应用网络的复杂性，使应用开发者和运维的工作变得简单。今天是我们发展道路上的一个重要里程碑。
+我们很高兴地宣布 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) 1.0（General Available）发布。Tetrate 的使命是解决应用网络的复杂性，使应用开发者和运维的工作变得简单。今天是我们发展道路上的一个重要里程碑。
 
 ## 初心
 
@@ -19,7 +19,7 @@ Tetrate 成立的初心是应用网络应与计算无关。我们相信，这是
 
 ## Tetrate Service Bridge
 
-使用一流的开源项目：[Istio](https://istio.io/)、[Envoy Proxy](http://envoyproxy.io/) 和 [Apache SkyWalking](https://skywalking.apache.org/)（Tetrate 积极参与并维护这些项目），我们开始建立原型，以解决应用网络的挑战。我们与《财富》500 强企业密切合作，并得到他们出色的团队支持，以验证我们的想法和产品。他们一直并将继续帮助我们构建产品，他们所提供的在快速变化的环境中的真实用例为我们的产品构建发挥了重要作用。 我们建立了一个平台，以帮助组织在多云和多集群环境的异构计算中管理其应用网络。这个平台能够满足企业的实际需求，使他们能够按照自己的节奏安全地、渐进地进行现代化和 / 或迁移。
+使用一流的开源项目：[Istio](https://istio.io/)、[Envoy Proxy](http://envoyproxy.io/) 和 [Apache SkyWalking](https://skywalking.apache.org/)（Tetrate 积极参与并维护这些项目），我们开始建立原型，以解决应用网络的挑战。我们与《财富》500 强企业密切合作，并得到他们出色的团队支持，以验证我们的想法和产品。他们一直并将继续帮助我们构建产品，他们所提供的在快速变化的环境中的真实用例为我们的产品构建发挥了重要作用。我们建立了一个平台，以帮助组织在多云和多集群环境的异构计算中管理其应用网络。这个平台能够满足企业的实际需求，使他们能够按照自己的节奏安全地、渐进地进行现代化和 / 或迁移。
 
 我们将该平台命名为 Tetrate Service Bridge（TSB）。桥梁提供了一种连接方式，而这正是我们所实现的。TSB 是一座桥梁：
 
