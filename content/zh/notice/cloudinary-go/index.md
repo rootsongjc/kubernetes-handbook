@@ -1,5 +1,5 @@
 ---
-title: "Go 语言编写的Cloudinary文件上传工具发布"
+title: "Go 语言编写的 Cloudinary 文件上传工具发布"
 date: 2017-10-29T15:24:19+08:00
 draft: false
 description: "Cloudinary-go is a Go client library and CLI tool to upload static assets to Cloudinary service"

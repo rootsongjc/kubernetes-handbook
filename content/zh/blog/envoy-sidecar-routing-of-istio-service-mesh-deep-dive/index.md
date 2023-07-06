@@ -31,7 +31,7 @@ image: "images/banner/istio-logo.webp"
 
 **2.** 应用 YAML 配置部署应用，此时 Kubernetes API server 接收到的服务创建配置文件中已经包含了 Init 容器及 sidecar proxy。
 
-**3.** 在 sidecar proxy 容器和应用容器启动之前，首先运行 Init 容器，Init 容器用于设置 iptables（Istio 中默认的流量拦截方式，还可以使用 BPF、IPVS 等方式） 将进入 pod 的流量劫持到 Envoy sidecar proxy。所有 TCP 流量（Envoy 目前只支持 TCP 流量）将被 sidecar 劫持，其他协议的流量将按原来的目的地请求。
+**3.** 在 sidecar proxy 容器和应用容器启动之前，首先运行 Init 容器，Init 容器用于设置 iptables（Istio 中默认的流量拦截方式，还可以使用 BPF、IPVS 等方式）将进入 pod 的流量劫持到 Envoy sidecar proxy。所有 TCP 流量（Envoy 目前只支持 TCP 流量）将被 sidecar 劫持，其他协议的流量将按原来的目的地请求。
 
 **4.** 启动 Pod 中的 Envoy sidecar proxy 和应用程序容器。这一步的过程请参考[通过管理接口获取完整配置](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/#%E9%80%9A%E8%BF%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E8%8E%B7%E5%8F%96%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE)。
 
@@ -39,11 +39,11 @@ image: "images/banner/istio-logo.webp"
 >
 > 启动 sidecar proxy 和应用容器，究竟哪个容器先启动呢？正常情况是 Envoy Sidecar 和应用程序容器全部启动完成后再开始接收流量请求。但是我们无法预料哪个容器会先启动，那么容器启动顺序是否会对 Envoy 劫持流量有影响呢？答案是肯定的，不过分为以下两种情况。
 >
-> **情况1：应用容器先启动，而 sidecar proxy 仍未就绪**
+> **情况 1：应用容器先启动，而 sidecar proxy 仍未就绪**
 >
 > 这种情况下，流量被 iptables 转移到 15001 端口，而 Pod 中没有监听该端口，TCP 链接就无法建立，请求失败。
 >
-> **情况2：Sidecar 先启动，请求到达而应用程序仍未就绪**
+> **情况 2：Sidecar 先启动，请求到达而应用程序仍未就绪**
 >
 > 这种情况下请求也肯定会失败，至于是在哪一步开始失败的，留给读者来思考。
 
@@ -376,5 +376,5 @@ Endpoint 可以是一个或多个，Envoy 将根据一定规则选择适当的 E
 
 - [调试 Envoy 和 Pilot - istio.io](https://preliminary.istio.io/zh/help/ops/traffic-management/proxy-cmd/)
 - [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
-- [Istio流量管理实现机制深度解析 - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
+- [Istio 流量管理实现机制深度解析 - zhaohuabing.com](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 

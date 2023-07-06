@@ -7,7 +7,7 @@ type: "notice"
 link: "https://github.com/cncf/tag-security/blob/main/security-whitepaper/v1/cloud-native-security-whitepaper-simplified-chinese.md"
 ---
 
-安全问题从互联网诞生之初就存在了，云原生因为涉及到高度分布式，安全问题更加严峻。云原生计算基金会（CNCF）特别就此发布了Cloud Native Security Whitepaper v1.1，云原生社区将其翻译成了中文版，并合并到了官方仓库，见[**云原生安全白皮书中文版**](https://github.com/cncf/tag-security/blob/main/security-whitepaper/v1/cloud-native-security-whitepaper-simplified-chinese.md)。
+安全问题从互联网诞生之初就存在了，云原生因为涉及到高度分布式，安全问题更加严峻。云原生计算基金会（CNCF）特别就此发布了 Cloud Native Security Whitepaper v1.1，云原生社区将其翻译成了中文版，并合并到了官方仓库，见[**云原生安全白皮书中文版**](https://github.com/cncf/tag-security/blob/main/security-whitepaper/v1/cloud-native-security-whitepaper-simplified-chinese.md)。
 
 ![云原生安全白皮书（CNCF 出品，云原生社区译）](cloud-native-security-whitepater-cncf-zh.jpg)
 

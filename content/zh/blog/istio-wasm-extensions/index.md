@@ -19,11 +19,11 @@ image: "images/banner/house.jpg"
 
 ## Istio 对  WebAssembly 扩展支持的历史
 
-Istio对WebAssembly扩展的支持历史如下：
+Istio 对 WebAssembly 扩展的支持历史如下：
 
 1. 2018 年下半年 Google 的 Istio 团队就开始与 Envoy 社区合作使用 WebAssembly 为 Envoy 添加动态扩展，并在 2020 年初发布的 1.5 版本（Istio 历史上最重大的版本之一）中抛弃了 Mixer，转而使用 WebAssembly 构建可扩展模型。Istio 1.5  版本中推出了 [Proxy-Wasm](https://github.com/proxy-wasm)，定义了 [ABI 规范](https://github.com/proxy-wasm/spec)和 SDK（[Rust](https://github.com/proxy-wasm/proxy-wasm-rust-sdk)、[C++](https://github.com/proxy-wasm/proxy-wasm-cpp-sdk)）；
-2. 在Istio 1.7版本中，引入了一种新的Istio扩展点，称为"EnvoyFilter"。使用EnvoyFilter，用户可以编写自定义的Istio Envoy Filter，并以WebAssembly二进制格式部署它们。这意味着用户可以使用任何WebAssembly支持的编程语言编写Istio扩展程序，例如Rust，C ++，Go等。
-3. Istio的WebAssembly扩展支持在Istio 1.7版本中还处于实验阶段，但是随着Istio的发展和改进，这个特性得到了更加稳定和完善的支持。例如，Istio 1.10版本中引入了更多的WebAssembly扩展程序示例，以及用于验证和测试这些扩展程序的工具。
+2. 在 Istio 1.7 版本中，引入了一种新的 Istio 扩展点，称为"EnvoyFilter"。使用 EnvoyFilter，用户可以编写自定义的 Istio Envoy Filter，并以 WebAssembly 二进制格式部署它们。这意味着用户可以使用任何 WebAssembly 支持的编程语言编写 Istio 扩展程序，例如 Rust，C ++，Go 等。
+3. Istio 的 WebAssembly 扩展支持在 Istio 1.7 版本中还处于实验阶段，但是随着 Istio 的发展和改进，这个特性得到了更加稳定和完善的支持。例如，Istio 1.10 版本中引入了更多的 WebAssembly 扩展程序示例，以及用于验证和测试这些扩展程序的工具。
 4. 2021 年底发布的 1.12 版本，引入了 WasmPlugin API alpha 功能，你可以轻松地将自定义插件部署到单个代理，甚至是整个网格。
 
 ## WebAssemblyHub
@@ -32,15 +32,15 @@ https://docs.solo.io/web-assembly-hub/latest/tutorial_code/
 
 ## 如何为 Envoy 代理配置 WebAssembly 扩展？
 
-要为Envoy代理配置WebAssembly扩展，请按照以下步骤操作：
+要为 Envoy 代理配置 WebAssembly 扩展，请按照以下步骤操作：
 
-1.  在Envoy代理上启用WebAssembly扩展功能。您可以通过在Envoy配置文件中设置`--enable-extensions "wasm"`选项来启用此功能。
+1.  在 Envoy 代理上启用 WebAssembly 扩展功能。您可以通过在 Envoy 配置文件中设置`--enable-extensions "wasm"`选项来启用此功能。
     
-2.  编写WebAssembly扩展。您可以使用任何编程语言编写WebAssembly扩展，只需确保使用了支持的WebAssembly运行时（例如，可以使用Rust，C ++，Go等）。
+2.  编写 WebAssembly 扩展。您可以使用任何编程语言编写 WebAssembly 扩展，只需确保使用了支持的 WebAssembly 运行时（例如，可以使用 Rust，C ++，Go 等）。
     
-3.  将WebAssembly扩展编译为`.wasm`文件。这可以通过使用支持WebAssembly的编译器完成。例如，如果您使用Rust编写扩展程序，则可以使用Rust编译器将其编译为WebAssembly二进制文件。
+3.  将 WebAssembly 扩展编译为`.wasm`文件。这可以通过使用支持 WebAssembly 的编译器完成。例如，如果您使用 Rust 编写扩展程序，则可以使用 Rust 编译器将其编译为 WebAssembly 二进制文件。
     
-4.  将`.wasm`文件添加到Envoy配置文件中的`http_filters`部分。在配置文件中，您需要指定扩展程序的名称，路径和配置选项。例如，以下是一个示例配置：
+4.  将`.wasm`文件添加到 Envoy 配置文件中的`http_filters`部分。在配置文件中，您需要指定扩展程序的名称，路径和配置选项。例如，以下是一个示例配置：
     
 
 ```yaml
@@ -57,9 +57,9 @@ http_filters:
             filename: "/path/to/my_wasm_extension.wasm"
 ```
 
-5.  重新加载Envoy代理以加载新的WebAssembly扩展。
+5.  重新加载 Envoy 代理以加载新的 WebAssembly 扩展。
 
-这些步骤应该可以帮助您在Envoy代理上配置WebAssembly扩展。注意，这只是一个简单的指南，实际上可能会涉及更多的步骤和配置选项，具体取决于您的具体环境和需求。建议查看Envoy的官方文档和示例以获取更多帮助。
+这些步骤应该可以帮助您在 Envoy 代理上配置 WebAssembly 扩展。注意，这只是一个简单的指南，实际上可能会涉及更多的步骤和配置选项，具体取决于您的具体环境和需求。建议查看 Envoy 的官方文档和示例以获取更多帮助。
 
 ## EnvoyFilter
 

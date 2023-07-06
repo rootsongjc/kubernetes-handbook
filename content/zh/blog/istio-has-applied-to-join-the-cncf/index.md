@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/istio-apply-cncf.jpg"
 ---
 
-在 2022 年 4 月 25 日， IstioCon 2022 开幕的当天，Istio 社区宣布正在[申请将项目捐献给 CNCF](https://istio.io/latest/blog/2022/istio-has-applied-to-join-the-cncf/)，这是 Istio 项目的一个里程碑，企业级服务网格公司 Tetrate 的 CEO/Istio 项目联合创始人 Varun Talwar 对此进行了解读。
+在 2022 年 4 月 25 日，IstioCon 2022 开幕的当天，Istio 社区宣布正在[申请将项目捐献给 CNCF](https://istio.io/latest/blog/2022/istio-has-applied-to-join-the-cncf/)，这是 Istio 项目的一个里程碑，企业级服务网格公司 Tetrate 的 CEO/Istio 项目联合创始人 Varun Talwar 对此进行了解读。
 
 以下是来自 Varun 对 Istio 捐献给 CNCF 的[解读](https://www.tetrate.io/blog/istio-has-applied-to-join-the-cncf/)。
 

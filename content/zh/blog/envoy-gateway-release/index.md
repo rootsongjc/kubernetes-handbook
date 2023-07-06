@@ -141,9 +141,9 @@ curl --verbose --header "Host: www.example.com" http://$GATEWAY_HOST:8080/get
 - `envoyproxies.config.gateway.envoyproxy.io`：Envoy Proxy API 的 Schema。
 - `gatewayclasses.gateway.networking.k8s.io`：GatewayClass 描述了用户可用于创建 Gateway 资源的一类 Gateways。建议将该资源作为 Gateway 的模板。这意味着一个 Gateway 是基于创建时 GatewayClass 的状态，对 GatewayClass 或相关参数的改变不会向下传播到现有的 Gateway。这项建议的目的是限制 GatewayClass 或相关参数的变化的爆炸半径。如果实现者选择将 GatewayClass 的变化传播给现有 Gateway，实现者必须清楚地记录这一点。每当一个或多个 Gateway 使用一个 GatewayClass 时，实现必须在相关的 GatewayClass 上添加 `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer。这可以确保与 Gateway 相关的 GatewayClass 在使用中不会被删除。GatewayClass 是一个集群级的资源。
 - `gateways.gateway.networking.k8s.io`：Gateway 通过将 Listener 与一组 IP 地址绑定，代表了一个服务流量处理基础设施的实例。
-- `httproutes.gateway.networking.k8s.io`： HTTPRoute 提供了一种路由 HTTP 请求的方法。这包括通过主机名、路径、标头或查询参数来匹配请求的能力。过滤器可以用来指定额外的处理步骤。后端指定匹配的请求应该被路由到哪里。
-- `referencegrants.gateway.networking.k8s.io`：`ReferenceGrant` 标识了其他命名空间中的资源种类，这些资源被信任为引用与策略相同的名称空间中的指定资源种类。 每个 `ReferenceGrant` 都可以用来代表一个独特的信任关系。额外的引用授权可以用来添加到它们所定义的命名空间的入站引用的信任源集合中。Gateway API 中的所有跨命名空间引用（除了跨命名空间的 Gateway-route 附件）都需要一个 `ReferenceGrant`。
-- `referencepolicies.gateway.networking.k8s.io`：该资源已被重新命名为ReferenceGrant，且将在 Gateway API v0.6.0 中被删除，而采用相同的 ReferenceGrant 资源。
+- `httproutes.gateway.networking.k8s.io`：HTTPRoute 提供了一种路由 HTTP 请求的方法。这包括通过主机名、路径、标头或查询参数来匹配请求的能力。过滤器可以用来指定额外的处理步骤。后端指定匹配的请求应该被路由到哪里。
+- `referencegrants.gateway.networking.k8s.io`：`ReferenceGrant` 标识了其他命名空间中的资源种类，这些资源被信任为引用与策略相同的名称空间中的指定资源种类。每个 `ReferenceGrant` 都可以用来代表一个独特的信任关系。额外的引用授权可以用来添加到它们所定义的命名空间的入站引用的信任源集合中。Gateway API 中的所有跨命名空间引用（除了跨命名空间的 Gateway-route 附件）都需要一个 `ReferenceGrant`。
+- `referencepolicies.gateway.networking.k8s.io`：该资源已被重新命名为 ReferenceGrant，且将在 Gateway API v0.6.0 中被删除，而采用相同的 ReferenceGrant 资源。
 - `tcproutes.gateway.networking.k8s.io`：TCPRoute 提供了一种路由 TCP 请求的方法。当与 Gateway 监听器结合使用时，它可以用来将监听器指定的端口上的连接转发到 TCPRoute 指定的一组后端。
 - `tlsroutes.gateway.networking.k8s.io`：TLSRoute 资源与 TCPRoute 类似，但可以配置为与 TLS 特定的元数据相匹配。这使得为特定的 TLS 监听器匹配数据流时有更大的灵活性。如果你需要将流量转发到一个 TLS 监听器的单一目标，你可以选择同时使用 TCPRoute 和 TLS 监听器。
 - `udproutes.gateway.networking.k8s.io`：UDPRoute 提供了一种路由 UDP 流量的方法。当与网关监听器结合使用时，它可以用来将监听器指定的端口上的流量转发到 UDPRoute 指定的一组后端。

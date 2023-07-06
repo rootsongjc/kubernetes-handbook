@@ -13,7 +13,7 @@ image: "images/backgrounds/notification.jpg"
 
 - 主题：Service Mesh in China
 - 时间：北京时间 2 月 23 日，上午 10:00 - 10:10
-- 参与方式：[IstioCon 2021官网](https://events.istio.io/istiocon-2021/)
+- 参与方式：[IstioCon 2021 官网](https://events.istio.io/istiocon-2021/)
 - 费用：免费
 
 北京时间 2 月 22 日至 25 日，Istio 社区将在线上举办第一届 IstioCon，免费报名参加，欢迎大家踊跃参加！我将在 2 月 23 日（农历正月十二，星期二）发表闪电演讲，作为一个 Service Mesh 技术在中国的布道者和见证者，我将为大家介绍中国的 Service Mesh 行业及社区在中国的发展。

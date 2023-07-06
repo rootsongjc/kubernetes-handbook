@@ -15,7 +15,7 @@ image: "images/banner/oam.png"
 - [Low Code No Code, Part I: Use Cases and Landscape](https://interconnected.blog/low-code-no-code-part-i-use-cases-and-landscape/)
 - [Low Code No Code, Part II: How to Ride This Wave](https://interconnected.blog/low-code-no-code-part-ii-how-to-ride-this-wave/)
 
-这两篇主要介绍了什么是LCNC—— Low Code（低代码）和 No Code（无代码），对我有所启发，特别是其中谈到[低代码和无代码面临的挑战](https://interconnected.blog/low-code-no-code-part-ii-how-to-ride-this-wave/#lcnc%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98)时，我深表认同。
+这两篇主要介绍了什么是 LCNC—— Low Code（低代码）和 No Code（无代码），对我有所启发，特别是其中谈到[低代码和无代码面临的挑战](https://interconnected.blog/low-code-no-code-part-ii-how-to-ride-this-wave/#lcnc%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98)时，我深表认同。
 
 自古以来人来就在不断发明各种工具，来帮助自身摆脱繁重的体力劳动和重复劳动，而把精力投入到创造性工作中去。低代码和无代码其实也是此类工具。如今这类工具已经欣欣向荣，大大降低了软件开发的门槛，减少了部分重复劳动。下图是《2021 年低代码、无代码全景图》，对于其生态可见一斑。
 

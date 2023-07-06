@@ -56,7 +56,7 @@ docker run -dp 8080:8080 --name=wasm-example --runtime=io.containerd.wasmedge.v1
 其中：
 
 - `--runtime=io.containerd.wasmedge.v1` 指定使用 WasmEdge 运行时，替代默认的 Linux 容器运行时。
-- `--platform=wasi/wasm32` 指定镜像的架构。通过利用 Wasm 架构，无需为不同的机器架构构建单独的镜像。 Wasm 运行时负责将 Wasm 二进制文件转换为机器指令的最后一步。
+- `--platform=wasi/wasm32` 指定镜像的架构。通过利用 Wasm 架构，无需为不同的机器架构构建单独的镜像。Wasm 运行时负责将 Wasm 二进制文件转换为机器指令的最后一步。
 
 目前 Docker 支持四种 WebAssembly 运行时，分别为：
 

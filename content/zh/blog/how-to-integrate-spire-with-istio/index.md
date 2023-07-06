@@ -13,7 +13,7 @@ image: "images/banner/spire.jpg"
 SPIRE 支持是 Istio 1.14 的新特性，请确保安装 1.14 及以上版本的 Istio。
 {{</callout>}}
 
-SPIRE 是 SPIFFE 规范的一个生产就绪的实现，它可以执行节点和工作负载证明，以便安全地将加密身份发给在异构环境中运行的工作负载。通过与 Envoy 的 SDS API 集成，SPIRE 可以被配置为 Istio 工作负载的加密身份来源。Istio 可以检测到 UNIX 域套接字的存在，该套接字在定义的套接字路径上实现了Envoy SDS API，允许 Envoy 直接从它那里进行通信和获取身份。
+SPIRE 是 SPIFFE 规范的一个生产就绪的实现，它可以执行节点和工作负载证明，以便安全地将加密身份发给在异构环境中运行的工作负载。通过与 Envoy 的 SDS API 集成，SPIRE 可以被配置为 Istio 工作负载的加密身份来源。Istio 可以检测到 UNIX 域套接字的存在，该套接字在定义的套接字路径上实现了 Envoy SDS API，允许 Envoy 直接从它那里进行通信和获取身份。
 
 我在[上一篇文章](/blog/why-istio-need-spire/)中介绍了为什么 Istio 要使用 SPIRE 做身份认证，在这篇博客中我将为你介绍如何在 Istio 中集成 SPIRE。
 

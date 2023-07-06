@@ -1,7 +1,7 @@
 ---
 date: "2017-03-23T22:54:18+08:00"
-title: "Pivotal Cloud foundry快速开始指南"
-description: "最近研究了下Pivotal的Cloud foundry，CF本身是一款开源软件，很多PAAS厂商都加入了CF。"
+title: "Pivotal Cloud foundry 快速开始指南"
+description: "最近研究了下 Pivotal 的 Cloud foundry，CF 本身是一款开源软件，很多 PAAS 厂商都加入了 CF。"
 draft: false
 categories: ["其他"]
 tags: ["CloudFoundry"]
@@ -12,19 +12,19 @@ aliases: "/posts/cloud-foundry-tryout"
 
 ## 前言
 
-最近研究了下**Pivotal**的**Cloud foundry**，CF本身是一款开源软件，很多PAAS厂商都加入了CF，我们用的是的**PCF Dev**（PCF Dev是一款可以在工作站上运行的轻量级PCF安装）来试用的，因为它可以部署在自己的环境里，而**Pivotal Web Services**只免费两个月，之后就要收费。[这里](https://pivotal.io/cn/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction)有官方的详细教程。
+最近研究了下**Pivotal**的**Cloud foundry**，CF 本身是一款开源软件，很多 PAAS 厂商都加入了 CF，我们用的是的**PCF Dev**（PCF Dev 是一款可以在工作站上运行的轻量级 PCF 安装）来试用的，因为它可以部署在自己的环境里，而**Pivotal Web Services**只免费两个月，之后就要收费。[这里](https://pivotal.io/cn/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction)有官方的详细教程。
 
 ## 开始
 
-根据官网的示例，我们将运行一个Java程序示例。
+根据官网的示例，我们将运行一个 Java 程序示例。
 
 **安装命令行终端**
 
 [下载](https://pivotal.io/cn/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-the-cf-cli)后双击安装即可，然后执行`cf help`能够看到帮助。
 
-**安装PCF Dev**
+**安装 PCF Dev**
 
-先[下载](https://network.pivotal.io/products/pcfdev)，如果你没有Pivotal network账号的话，还需要注册个用户，然后用以下命令安装：
+先[下载](https://network.pivotal.io/products/pcfdev)，如果你没有 Pivotal network 账号的话，还需要注册个用户，然后用以下命令安装：
 
 ```shell
 
@@ -65,9 +65,9 @@ Admin user => Email: admin / Password: admin
 Regular user => Email: user / Password: pass
 ```
 
-启动过程中还需要**Sign In**，所以注册完后要记住用户名（邮箱地址）和密码（必须超过8位要有特殊字符和大写字母）。这个过程中还要下载VM，对内存要求至少4G。而且下载速度比较慢，我下载的了大概3个多小时吧。
+启动过程中还需要**Sign In**，所以注册完后要记住用户名（邮箱地址）和密码（必须超过 8 位要有特殊字符和大写字母）。这个过程中还要下载 VM，对内存要求至少 4G。而且下载速度比较慢，我下载的了大概 3 个多小时吧。
 
-下面部署一个应用到PCF Dev上试一试。
+下面部署一个应用到 PCF Dev 上试一试。
 
 ## 部署应用
 
@@ -98,7 +98,7 @@ Space:          pcfdev-space
 ```
 **编译应用**
 
-使用gradle来编译。
+使用 gradle 来编译。
 
 ```bash
 $./gradlew assemble
@@ -137,7 +137,7 @@ This build could be faster, please consider using the Gradle Daemon: https://doc
 
 **上传应用**
 
-设置应用的主机名为spring-music。
+设置应用的主机名为 spring-music。
 
 ```bash
 $cf push --hostname spring-music
@@ -227,7 +227,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 #0   running   2017-03-23 10:31:36 PM   160.7%   442M of 1G   165.6M of 512M
 ```
 
-**在浏览器中访问app**
+**在浏览器中访问 app**
 
 [spring-music.local.pcfdev.io](spring-music.local.pcfdev.io)页面如图：
 
@@ -242,7 +242,7 @@ urls: spring-music.local.pcfdev.io
 
 ## 查看日志
 
-PCF提供应用的日志聚合功能，你可以查看HTTP请求、对应用操作时候的output，如扩容、重启等。
+PCF 提供应用的日志聚合功能，你可以查看 HTTP 请求、对应用操作时候的 output，如扩容、重启等。
 
 每行日志中都包括如下信息：
 
@@ -268,7 +268,7 @@ $cf logs spring-music
 
 ## 连接数据库
 
-在上面的那个例子中用的是内存数据库。我们可以改用mysql数据库。
+在上面的那个例子中用的是内存数据库。我们可以改用 mysql 数据库。
 
 **查看可用的数据**
 
@@ -299,7 +299,7 @@ OK
 TIP: Use 'cf restage spring-music' to ensure your env variable changes take effect
 ```
 
-重启app
+重启 app
 
 ```bash
 $cf restart spring-music
@@ -337,7 +337,7 @@ buildpack: java-buildpack=v3.10-offline-https://github.com/cloudfoundry/java-bui
 #0   running   2017-03-23 10:44:18 PM   150.4%   461.6M of 1G   165.6M of 512M
 ```
 
-现在我们再查看下自己的service。
+现在我们再查看下自己的 service。
 
 ```bash
 $cf services

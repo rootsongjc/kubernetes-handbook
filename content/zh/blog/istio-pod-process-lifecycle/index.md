@@ -39,9 +39,9 @@ Istio 中提供了以下两种 sidecar 注入方式：
 istioctl kube-inject -f ${YAML_FILE} | kuebectl apply -f -
 ```
 
-该命令会使用 Istio 内置的 sidecar 配置来注入，下面使用 Istio详细配置请参考 [Istio 官网](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
+该命令会使用 Istio 内置的 sidecar 配置来注入，下面使用 Istio 详细配置请参考 [Istio 官网](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)。
 
-注入完成后您将看到 Istio 为原有 pod template 注入了 `initContainer` 及 sidecar proxy相关的配置。
+注入完成后您将看到 Istio 为原有 pod template 注入了 `initContainer` 及 sidecar proxy 相关的配置。
 
 ### Init 容器
 
@@ -53,7 +53,7 @@ Init 容器使用 Linux Namespace，所以相对应用程序容器来说具有�
 
 在 Pod 启动过程中，Init 容器会按顺序在网络和数据卷初始化之后启动。每个容器必须在下一个容器启动之前成功退出。如果由于运行时或失败退出，将导致容器启动失败，它会根据 Pod 的 `restartPolicy` 指定的策略进行重试。然而，如果 Pod 的 `restartPolicy` 设置为 Always，Init 容器失败时会使用 `RestartPolicy` 策略。
 
-在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service中进行聚集。 正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
+在所有的 Init 容器没有成功之前，Pod 将不会变成 `Ready` 状态。Init 容器的端口将不会在 Service 中进行聚集。正在初始化中的 Pod 处于 `Pending` 状态，但应该会将 `Initializing` 状态设置为 true。Init 容器运行完成以后就会自动终止。
 
 关于 Init 容器的详细信息请参考 [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)。
 
@@ -105,7 +105,7 @@ $ istio-iptables [flags]
 这条启动命令的作用是：
 
 - 将应用容器的所有流量都转发到 sidecar 的 15006 端口。
-- 使用 `istio-proxy` 用户身份运行， UID 为 1337，即 sidecar 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
+- 使用 `istio-proxy` 用户身份运行，UID 为 1337，即 sidecar 所处的用户空间，这也是 `istio-proxy` 容器默认使用的用户，见 YAML 配置中的 `runAsUser` 字段。
 - 使用默认的 `REDIRECT` 模式来重定向流量。
 - 将所有出站流量都重定向到 sidecar 代理（通过 15001 端口）。
 
@@ -133,4 +133,4 @@ $ istio-iptables [flags]
 
 ## 参考
 
-- [istio 常见问题: Sidecar 启动顺序问题 - imroc.cc](https://imroc.cc/post/202105/sidecar-startup-order/)
+- [istio 常见问题：Sidecar 启动顺序问题 - imroc.cc](https://imroc.cc/post/202105/sidecar-startup-order/)

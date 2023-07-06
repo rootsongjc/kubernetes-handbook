@@ -100,7 +100,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 请记住，我们使用 Kubernetes 而不是直接使用 Docker 的原因之一，是因为 Kubernetes 能够自动扩展应用实例的数量以满足工作负载的需求。
 
-自动缩放是通过集群设置来实现的，当服务需求增加时，增加节点数量，当需求减少时，则减少节点数量。但也要记住，节点是 “物理” 结构——我们把“物理”放在引号里，因为要记住，很多时候，它们实际上是虚拟机。
+自动缩放是通过集群设置来实现的，当服务需求增加时，增加节点数量，当需求减少时，则减少节点数量。但也要记住，节点是“物理”结构——我们把“物理”放在引号里，因为要记住，很多时候，它们实际上是虚拟机。
 
 无论如何，节点是物理机器的事实意味着我们的云平台必须允许 Kubernetes 引擎创建新机器。各种云提供商对 Kubernetes 支持基本都满足这一点。
 
@@ -120,7 +120,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 为了保证应用程序的弹性，需要在不同节点上创建多个 pod 的副本。这些被称为 Replica。假设你所需的状态策略是“让名为 webserver-1 的 pod 始终维持在 3 个副本”，这意味着 ReplicationController 或 ReplicaSet 将监控活动副本的数量，如果其中有任何一个 replica 因任何原因不可用（例如节点的故障），那么 Deployment Controller 将自动创建一个新的系统（定义如下）。
 
-所需状态是在 deployment 中定义的。 Master 节点的中有一个子系统叫做 Deployment Controller，负责实际执行并使当前状态不断趋向于所需状态。
+所需状态是在 deployment 中定义的。Master 节点的中有一个子系统叫做 Deployment Controller，负责实际执行并使当前状态不断趋向于所需状态。
 
 因此，举例来说，如果你目前有 2 个 pod 的副本，而你所希望的状态应该有 3 个，那么 Replication Controller 或 ReplicaSet 会自动检测到这个要求，并指示 Deployment Controller 根据预定义的设置部署一个新的 pod。
 

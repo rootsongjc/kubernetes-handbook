@@ -1,5 +1,5 @@
 ---
-title: "Envoy Gateway 0.4.0发布：自定义API扩展"
+title: "Envoy Gateway 0.4.0 发布：自定义 API 扩展"
 description: "Envoy Gateway 是一款基于 Envoy 代理和 Kubernetes Gateway API 开发的开源 API 网关，最近发布了 0.4.0 版本。此次发布的版本着重于自定义功能，旨在为最终用户提供更多的用例。在本文中，我们将讨论此版本中可用的新自定义选项及其对用户的重要性。"
 date: 2023-05-06T13:19:28+08:00
 draft: false
@@ -13,7 +13,7 @@ image: "images/banner/envoy-gateway-release.jpg"
 
 ## 自定义 Envoy 代理架构 {#customization}
 
-此次版本中最主要的自定义功能之一是配置 [EnvoyProxy](https://gateway.envoyproxy.io/v0.4.0/api/config_types.html#envoyproxy)（Envoy Gateway 定义的 CRD） 部署的确切类型。你可以定义 EnvoyProxy 部署的副本数、镜像和资源限制。还可以向 EnvoyProxy 部署和服务添加注解（Annotation）。这使得不同的用例成为可能，例如：
+此次版本中最主要的自定义功能之一是配置 [EnvoyProxy](https://gateway.envoyproxy.io/v0.4.0/api/config_types.html#envoyproxy)（Envoy Gateway 定义的 CRD）部署的确切类型。你可以定义 EnvoyProxy 部署的副本数、镜像和资源限制。还可以向 EnvoyProxy 部署和服务添加注解（Annotation）。这使得不同的用例成为可能，例如：
 
 - 将 Envoy Gateway 与 AWS、NLB、ELB 和 GCP 等外部负载均衡器链接起来。
 - 在 EnvoyProxy 旁边注入 Sidecar，这对于 Ingress 层管理南北向流量的 Envoy Gateway 和服务网格层用于管理东西向流量互联 TLS（mTLS）的 Envoy Sidecar 非常有用。此自定义功能消除了用户创建自己证书的需要，因为它基于历史的证书管理。

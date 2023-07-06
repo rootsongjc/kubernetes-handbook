@@ -39,4 +39,4 @@ image: "images/backgrounds/notification.jpg"
 
 ## 更新
 
-在 3 月 31 日，以上公告发布后，马哥教育第一时间联系了我，并承认错误，积极改正，并发布了公告（[关于 Istio官方文档使用声明](https://mp.weixin.qq.com/s?__biz=MzAxMTkwODIyNA==&mid=2247529088&idx=1&sn=3464684b245073d0f3641a37918e57f9&chksm=9bbbd76faccc5e794e2711cace08e77b7e63983448db65a9fb62891c567fd143c5f4431edc15&mpshare=1&scene=1&srcid=0331NBhdQ74wQn7Sxfjn6YmA&sharer_sharetime=1617170742413&sharer_shareid=6ebbb87f840417a73f21a9535bf0aa28#rd)）给马哥教育诚恳的态度点个赞，本次事件并非针对马哥教育，而是希望能够唤醒大家的版权保护意识，以正某些“利用”开源的不正之风。
+在 3 月 31 日，以上公告发布后，马哥教育第一时间联系了我，并承认错误，积极改正，并发布了公告（[关于 Istio 官方文档使用声明](https://mp.weixin.qq.com/s?__biz=MzAxMTkwODIyNA==&mid=2247529088&idx=1&sn=3464684b245073d0f3641a37918e57f9&chksm=9bbbd76faccc5e794e2711cace08e77b7e63983448db65a9fb62891c567fd143c5f4431edc15&mpshare=1&scene=1&srcid=0331NBhdQ74wQn7Sxfjn6YmA&sharer_sharetime=1617170742413&sharer_shareid=6ebbb87f840417a73f21a9535bf0aa28#rd)）给马哥教育诚恳的态度点个赞，本次事件并非针对马哥教育，而是希望能够唤醒大家的版权保护意识，以正某些“利用”开源的不正之风。

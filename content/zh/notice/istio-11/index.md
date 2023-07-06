@@ -1,8 +1,8 @@
 ---
-title: "Istio 1.1发布"
+title: "Istio 1.1 发布"
 draft: false
 date: 2019-03-21T23:27:49+08:00
-description: "北京时间3月20日凌晨4点 Istio 1.1发布了，该版本历时8个月！ServiceMesher 社区同时推出了 Istio 中文文档。"
+description: "北京时间 3 月 20 日凌晨 4 点 Istio 1.1 发布了，该版本历时 8 个月！ServiceMesher 社区同时推出了 Istio 中文文档。"
 type: "notice"
 link: "https://istio.io"
 aliases: "/posts/istio-11"
@@ -10,7 +10,7 @@ aliases: "/posts/istio-11"
 
 下面这段是发布说明，来自 Istio 官方博客 <https://istio.io/zh/blog/2019/announcing-1.1/>，是我翻译的。
 
-Istio 于北京时间今日凌晨4点，太平洋时间下午1点 Istio 1.1 发布。
+Istio 于北京时间今日凌晨 4 点，太平洋时间下午 1 点 Istio 1.1 发布。
 
 自从去年 7 月份 1.0 发布以来，为了帮助人们将 Istio 投入生产我们做了很多工作。我们不出所料得发布了很多补丁（到目前为止已经发布了 6 个补丁！），但我们也在努力为产品添加新功能。
 
@@ -34,7 +34,7 @@ Istio 于北京时间今日凌晨4点，太平洋时间下午1点 Istio 1.1 发�
 
 ### 官方网站
 
-ServiceMesher 社区从 Istio 0.6 版本起一直在维护 Istio 官方文档的[中文页面](https://istio.io/zh)，截止2019年3月19日晚12点已有596个 PR 合并，共维护文档310余篇，感谢大家的努力！部分文档可能稍微滞后于英文版本，同步工作持续进行中，参与进来请访问 <https://github.com/servicemesher/istio-official-translation>
+ServiceMesher 社区从 Istio 0.6 版本起一直在维护 Istio 官方文档的[中文页面](https://istio.io/zh)，截止 2019 年 3 月 19 日晚 12 点已有 596 个 PR 合并，共维护文档 310 余篇，感谢大家的努力！部分文档可能稍微滞后于英文版本，同步工作持续进行中，参与进来请访问 <https://github.com/servicemesher/istio-official-translation>
 Istio 官网每个页面右侧都有切换语言按钮，大家可以随时切换中英文版本，还可以提交文档修改，报告网站 Bug 等。
 
 **ServiceMesher 社区网站**

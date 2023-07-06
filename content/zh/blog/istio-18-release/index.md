@@ -1,6 +1,6 @@
 ---
 title: "Istio 1.8——用户至上的选择"
-description: "Istio 信守了年初的承诺，从1.1开始，几乎每三个月一个版本，更能体会用户的需求了。此次是2020年的最后一个版本，引入了 WorkloadGroup 和 DNS proxy，对如虚拟机的非 Kubernetes 负载的支持更进了一步。"
+description: "Istio 信守了年初的承诺，从 1.1 开始，几乎每三个月一个版本，更能体会用户的需求了。此次是 2020 年的最后一个版本，引入了 WorkloadGroup 和 DNS proxy，对如虚拟机的非 Kubernetes 负载的支持更进了一步。"
 date: 2020-11-20T08:34:40+08:00
 draft: false
 tags: ["istio"]
@@ -36,7 +36,7 @@ Istio 从 1.5 版本开始弃用了 Helm，使用 `istioctl manifest` 方式安�
 
 在我[之前的博客](https://thenewstack.io/how-to-integrate-virtual-machines-into-istio-service-mesh/)中谈到 Istio 1.7 如何支持虚拟机，在 Istio 1.8 中新增了[智能 DNS 代理](https://istio.io/latest/blog/2020/dns-proxy/)，它是由 Go 编写的 Istio sidecar 代理，sidecar 上的 Istio agent 将附带一个由 Istiod 动态编程的缓存 DNS 代理。来自应用程序的 DNS 查询会被 pod 或 VM 中的 Istio 代理透明地拦截和服务，该代理会智能地响应 DNS 查询请求，可以实现虚拟机到服务网格的无缝多集群访问。
 
-新增了 [WorkloadGroup](https://istio.io/latest/docs/reference/config/networking/workload-group/) ，它描述了工作负载实例的集合。提供了一个规范，工作负载实例可以用来引导它们的代理，包括元数据和身份。它只打算与虚拟机等非 Kubernetes 工作负载一起使用，旨在模仿现有的用于 Kubernetes 工作负载的sidecar注入和部署规范模型来引导 Istio 代理。
+新增了 [WorkloadGroup](https://istio.io/latest/docs/reference/config/networking/workload-group/) ，它描述了工作负载实例的集合。提供了一个规范，工作负载实例可以用来引导它们的代理，包括元数据和身份。它只打算与虚拟机等非 Kubernetes 工作负载一起使用，旨在模仿现有的用于 Kubernetes 工作负载的 sidecar 注入和部署规范模型来引导 Istio 代理。
 
 在 [Tetrate](https://tetrate.io)，我们在客户的多集群部署中广泛使用这种机制，以使 sidecar 能够为暴露在网格中所有集群的入口网关的主机解析 DNS，并通过 mTLS 访问。
 

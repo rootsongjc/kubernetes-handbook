@@ -15,7 +15,7 @@ image: "images/banner/keuc-2017.jpg"
 
 其实今年 6 月 19 日 LinuxCon + ContainerCon + CloudOpen 简称 [L3 大会](https://www.bagevent.com/event/561769)在北京国家会议中心召开，那是我跟 [CNCF](https://cncf.io) 首次相会，也获得了我的首批贴纸，该社区的一系列活动吸引了我浓浓的兴趣，自那以后开始持续关注 CNCF 的社区活动。
 
-借用孙中山先生在黄埔军校的训词，愿 Kubernetes 携手云原生应用，让IT基础设施和软件开发流程进入新的纪元。
+借用孙中山先生在黄埔军校的训词，愿 Kubernetes 携手云原生应用，让 IT 基础设施和软件开发流程进入新的纪元。
 
 **云原生主义歌**
 

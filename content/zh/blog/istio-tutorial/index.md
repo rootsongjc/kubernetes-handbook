@@ -65,7 +65,7 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 172.17.8.102 zipkin.istio.jimmysong.io
 ```
 
-我们可以通过下面的URL地址访问以上的服务。
+我们可以通过下面的 URL 地址访问以上的服务。
 
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
@@ -282,7 +282,7 @@ customer => preference => recommendation v1 from '6fc97476f8-m2ntp': 1
 
 访问 `http://servicegraph.istio.jimmysong.io/dotviz` 查看服务间的关系图和 QPS。
 
-![服务关系图和QPS](istio-tutorial-serivcegraph-dotviz.webp)
+![服务关系图和 QPS](istio-tutorial-serivcegraph-dotviz.webp)
 
 访问 `http://grafana.istio.jimmysong.io` 查看 Service Mesh 的监控信息。
 

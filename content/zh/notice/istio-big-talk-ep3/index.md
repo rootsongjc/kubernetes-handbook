@@ -11,7 +11,7 @@ image: "images/backgrounds/notification.jpg"
 
 ![](bilibili.jpg)
 
-- 时间：6 月 9 日晚 8 点-9点
+- 时间：6 月 9 日晚 8 点 -9 点
 - 直播间：<https://live.bilibili.com/23095515>
 - 主持人：宋净超
 - 嘉宾：杨笛航

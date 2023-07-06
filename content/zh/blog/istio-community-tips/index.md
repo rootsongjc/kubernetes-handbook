@@ -45,7 +45,7 @@ Istio 的代码规范沿用 [CNCF 社区的代码规范](https://github.com/cncf
 
 所有的设计文档都保存在 [Google Drive](https://drive.google.com/drive/u/0/folders/0AIS5p3eW9BCtUk9PVA) 中，其中包括以下资源：
 
-- Technical Oversight Committee：ToC管理的文档
+- Technical Oversight Committee：ToC 管理的文档
 - Misc：一些杂项
 - Working Groups：最重要的部分，各个工作组相关的设计文档
 - Presentations：Istio 相关的演讲幻灯片，从这些文稿中可以快速了解 Istio
@@ -57,7 +57,7 @@ Istio 的代码规范沿用 [CNCF 社区的代码规范](https://github.com/cncf
 根据对开发者和要求和贡献程度的不同，Istio 社区中包含以下角色：
 
 - [Collaborator](https://github.com/istio/community/blob/master/ROLES.md#collaborator)：非正式贡献者，偶尔贡献，任何人都可以成为该角色
-- [Member](https://github.com/istio/community/blob/master/ROLES.md#member)：正式贡献者，经常贡献，必须有2个已有的 member 提名
+- [Member](https://github.com/istio/community/blob/master/ROLES.md#member)：正式贡献者，经常贡献，必须有 2 个已有的 member 提名
 - [Approver](https://github.com/istio/community/blob/master/ROLES.md#approver)：老手，可以批准 member 的贡献
 - [Lead](https://github.com/istio/community/blob/master/ROLES.md#lead)：管理功能、项目和提议，必须由 [ToC](https://github.com/istio/community/blob/master/WORKING-GROUP-PROCESSES.md) 提名
 - [Administrator](https://github.com/istio/community/blob/master/ROLES.md#administrator)：管理员，管理和控制权限，必须由 ToC 提名
@@ -67,7 +67,7 @@ Istio 的代码规范沿用 [CNCF 社区的代码规范](https://github.com/cncf
 
 ### 各种功能的状态
 
-Istio 中的所有 feature 根据**是否生产可用**、**API兼容性**、**性能**、**维护策略**分为三种状态：
+Istio 中的所有 feature 根据**是否生产可用**、**API 兼容性**、**性能**、**维护策略**分为三种状态：
 
 - Alpha：仅仅可以作为 demo，无法生产上使用，也没有性能保证，随时都可能不维护
 - Beta：可以在生产上使用了，也有版本化的 API 但是无法保证性能，保证三个月的维护

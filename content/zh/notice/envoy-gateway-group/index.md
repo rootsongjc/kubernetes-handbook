@@ -9,7 +9,7 @@ type: "notice"
 image: "images/backgrounds/notification.jpg"
 ---
 
-两天前[刘训灼的公众号](https://mp.weixin.qq.com/s/hLwYv94GwevQkZ2XnEZ2FQ)上公布成立 Envoy Gateway 中国兴趣组，并拉了一个 Envoy Gateway 的微信群，截至到 2023年04月12日已经有 243 人（超 200 人需要邀请入群），欢迎大家加入，可以[联系我](/contact/)、[刘训灼](https://www.liuxunzhuo.com/)、[赵化冰](https://zhaohuabing.com)等入群。
+两天前[刘训灼的公众号](https://mp.weixin.qq.com/s/hLwYv94GwevQkZ2XnEZ2FQ)上公布成立 Envoy Gateway 中国兴趣组，并拉了一个 Envoy Gateway 的微信群，截至到 2023 年 04 月 12 日已经有 243 人（超 200 人需要邀请入群），欢迎大家加入，可以[联系我](/contact/)、[刘训灼](https://www.liuxunzhuo.com/)、[赵化冰](https://zhaohuabing.com)等入群。
 
 为促进项目发展和社区沟通，Envoy Gateway 中国兴趣组会通过腾讯会议定期召开中国时间友好的社区会议，会议时间和纪要更新在 [Google Doc](https://docs.google.com/document/d/1leqwsHX8N-XxNEyTflYjRur462ukFxd19Rnk3Uzy55I/edit#heading=h.ohxa07we5x4p) 中。
 
@@ -24,7 +24,7 @@ image: "images/backgrounds/notification.jpg"
 
 Envoy Gateway 是 EnvoyProxy 创始人 Matt Klein 牵头发起，联合 Contour、Emissary 等基于 Envoy 的 API 网关开源社区，共同参与并维护的 API 网关项目。
 
-Envoy Gateway 从 2022 年 5 月发起，发展速度很快，至今已经历 v0.1.0、v0.2.0、v0.3.0，以及即将发布的 v0.4.0 的版本的迭代，基于 Kubernetes Gateway API为 配置语言的 API Gateway，已实现了所有最新 Gateway API 的能力，以及通过 extensionRef 去扩展更高级的流量治理的能力，如认证、限流等功能。
+Envoy Gateway 从 2022 年 5 月发起，发展速度很快，至今已经历 v0.1.0、v0.2.0、v0.3.0，以及即将发布的 v0.4.0 的版本的迭代，基于 Kubernetes Gateway API 为 配置语言的 API Gateway，已实现了所有最新 Gateway API 的能力，以及通过 extensionRef 去扩展更高级的流量治理的能力，如认证、限流等功能。
 
 ## Envoy Gateway 中国兴趣组 {#eg-china}
 

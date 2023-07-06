@@ -47,7 +47,7 @@ Istio 从 0.2 版本开始通过 [Istio Mesh Expansion](https://istio.io/v0.2/do
 
 1. 为 Istio 控制平面服务及 Kubernetes 集群的 DNS 服务创建 Internal 负载均衡器；
 2. 生成 Istio Service CIDR、Service Account token、安全证书、Istio 控制平面服务的 IP（通过 Internal 负载均衡器暴露出来的 IP）的配置文件并发送给虚拟机；
-3. （可选）在虚拟机中安装、配置并启动 Istio 的组件、dnsmaq（用于DNS 发现），此时虚拟机可以使用   FQDN 访问 mesh 中的服务了，这一步是为了保证虚拟机可以正确解析出 mesh 中服务的 Cluster IP；
+3. （可选）在虚拟机中安装、配置并启动 Istio 的组件、dnsmaq（用于 DNS 发现），此时虚拟机可以使用   FQDN 访问 mesh 中的服务了，这一步是为了保证虚拟机可以正确解析出 mesh 中服务的 Cluster IP；
 4. 若要在虚拟机中运行服务，需要配置 sidecar，新增需要拦截的 inbound 端口，然后重启 istio，还需要运行 istioctl 为服务注册
 
 下图展示的从集成虚拟机到在 mesh 中访问虚拟机中服务的详细流程。

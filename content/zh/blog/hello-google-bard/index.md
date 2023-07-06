@@ -27,7 +27,7 @@ Google Bard 的用户界面如图 2 所示。
 
 下面我就同一个问题向 ChatGPT、必应聊天、Google Bard 提问——”Where is Jack Ma now?“，它们的回答如图 3 所示。
 
-![图 3 ：“马云去哪了？”在三种工具中的回答对比](chatgpt-vs-bing-vs-bard.jpg)
+![图 3：“马云去哪了？”在三种工具中的回答对比](chatgpt-vs-bing-vs-bard.jpg)
 
 你觉得哪个回答更好呢？我觉得是必应聊天。
 

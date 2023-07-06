@@ -44,7 +44,7 @@ Service Mesh Summit 2022 首届服务网格峰会，将于 2022 年 3 月 19 日
 
 **讲师介绍**
 
-张晋涛，API7.ai 云原生技术专家，Apache APISIX PMC， Kubernetes ingress-nginx reviewer，containerd/Docker/Helm/Kubernetes/KIND 等众多开源项目 contributor， 『K8S 生态周报』的维护者，微软 MVP。对 Docker 和 Kubernetes 等容器化技术有大量实践和深入源码的研究，业内多个知名大会讲师，PyCon China 核心组织者，著有 《Kubernetes 上手实践》、《Docker 核心知识必知必会》和《Kubernetes 安全原理与实践》等专栏。 公众号：MoeLove。
+张晋涛，API7.ai 云原生技术专家，Apache APISIX PMC，Kubernetes ingress-nginx reviewer，containerd/Docker/Helm/Kubernetes/KIND 等众多开源项目 contributor， 『K8S 生态周报』的维护者，微软 MVP。对 Docker 和 Kubernetes 等容器化技术有大量实践和深入源码的研究，业内多个知名大会讲师，PyCon China 核心组织者，著有《Kubernetes 上手实践》、《Docker 核心知识必知必会》和《Kubernetes 安全原理与实践》等专栏。公众号：MoeLove。
 
 **话题大纲**
 
@@ -83,11 +83,11 @@ Tetrate 作为服务网格的顶级供应商之一，成立 4 年来服务大量
 
 **讲师介绍**
 
-曾宇星，阿里云云原生架构师，技术专家，长期从事服务端开发和架构工作，10 多年分布式领域后台开发经验，主要关注于云原生、高性能、高可用分布式架构。有多年 ServiceMesh 、Envoy 网关、Kubernetes 容器平台等云原生领域相关开发工作经验。 目前在阿里云服务网格团队从事 ServiceMesh 云产品研发和架构设计工作。
+曾宇星，阿里云云原生架构师，技术专家，长期从事服务端开发和架构工作，10 多年分布式领域后台开发经验，主要关注于云原生、高性能、高可用分布式架构。有多年 ServiceMesh、Envoy 网关、Kubernetes 容器平台等云原生领域相关开发工作经验。目前在阿里云服务网格团队从事 ServiceMesh 云产品研发和架构设计工作。
 
 **话题大纲**
 
-- 基于 Istio 的几种服务网格自定义扩展方式介绍 ， 囊括 In-process 和 Out-Of-Process 的几种实现方式，具体包括 wasm (WebAssembly)、lua、golang、native c++、grpc proxyless 等
+- 基于 Istio 的几种服务网格自定义扩展方式介绍，囊括 In-process 和 Out-Of-Process 的几种实现方式，具体包括 wasm (WebAssembly)、lua、golang、native c++、grpc proxyless 等
 - 以上几种扩展方式对比及其背后的实现原理，包括 envoyfilter 和 xds 协议扩展
 - 阿里云服务网格云产品（asm) 是如何将这几种扩展方式集成到产品中的，云产品用户如何使用满足自定义扩展需求
 
@@ -95,7 +95,7 @@ Tetrate 作为服务网格的顶级供应商之一，成立 4 年来服务大量
 
 - 了解 Istio 服务网格的控制面和数据面相关知识和交互原理
 - 了解 Istio 自定义扩展的几种实现方式和对比，如何选型和快速满足自定义扩展需求
-- 基于阿里云服务网格 ASM， 如何快速落地服务网格自定义扩展需求
+- 基于阿里云服务网格 ASM，如何快速落地服务网格自定义扩展需求
 
 ### Aeraki Mesh 在冬奥会视频应用中的产品落地实践
 
@@ -186,7 +186,7 @@ Service Mesh 如何提高网络传输效率，在性能上在哪些方面可以�
 **话题大纲**
 
 - 练内功：内部集群规模化扩张带来的技术挑战，长连接膨胀，服务治理智能化演进和人工介入说再见
-- 定标准：Mesh 化是终点么？ 应用运行时标准
+- 定标准：Mesh 化是终点么？应用运行时标准
 - 建通路：让业务飞速发展的秘诀
 - 看未来：云原生运行时的下一个五年
 

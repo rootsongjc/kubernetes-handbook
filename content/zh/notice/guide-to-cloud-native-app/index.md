@@ -13,7 +13,7 @@ image: "images/backgrounds/notification.jpg"
 
 
 
-就在前几天，Java 刚度过了它的 [25 周岁生日](https://www.infoworld.com/article/3544229/java-programming-language-celebrates-25-years.html)，从它诞生时就在号称”一次编写，到处运行“，但是 20 多年过去了，从程序编写出来到真正交付生产还是有很深的 gap。IT 的世界从来就不缺概念，如果一个概念无法解决问题，那就再来一层概念。Kubernetes 诞生至今也有6 年时间了，已经来到了后 Kubernetes 时代了——云原生应用时代！
+就在前几天，Java 刚度过了它的 [25 周岁生日](https://www.infoworld.com/article/3544229/java-programming-language-celebrates-25-years.html)，从它诞生时就在号称”一次编写，到处运行“，但是 20 多年过去了，从程序编写出来到真正交付生产还是有很深的 gap。IT 的世界从来就不缺概念，如果一个概念无法解决问题，那就再来一层概念。Kubernetes 诞生至今也有 6 年时间了，已经来到了后 Kubernetes 时代了——云原生应用时代！
 
 ![云原生应用的发展阶段](007S8ZIlly1gf65ufll5lj31m80e476v.jpg)
 

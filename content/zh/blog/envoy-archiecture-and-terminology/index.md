@@ -34,23 +34,23 @@ image: "images/banner/envoyproxy.jpg"
 
 **运行时配置**：与 Envoy 一起部署的带外实时配置系统。可以在无需重启 Envoy 或 更改 Envoy 主配置的情况下，通过更改设置来影响操作。
 
-**Listener**: 侦听器（listener）是可以由下游客户端连接的命名网络位置（例如，端口、unix域套接字等）。Envoy 公开一个或多个下游主机连接的侦听器。一般是每台主机运行一个 Envoy，使用单进程运行，但是每个进程中可以启动任意数量的 Listener（监听器），目前只监听 TCP，每个监听器都独立配置一定数量的（L3/L4）网络过滤器。Listenter 也可以通过 Listener Discovery Service（**LDS**）动态获取。
+**Listener**: 侦听器（listener）是可以由下游客户端连接的命名网络位置（例如，端口、unix 域套接字等）。Envoy 公开一个或多个下游主机连接的侦听器。一般是每台主机运行一个 Envoy，使用单进程运行，但是每个进程中可以启动任意数量的 Listener（监听器），目前只监听 TCP，每个监听器都独立配置一定数量的（L3/L4）网络过滤器。Listenter 也可以通过 Listener Discovery Service（**LDS**）动态获取。
 
 **Listener filter**：Listener 使用 listener filter（监听器过滤器）来操作链接的元数据。它的作用是在不更改 Envoy 的核心功能的情况下添加更多的集成功能。Listener filter 的 API 相对简单，因为这些过滤器最终是在新接受的套接字上运行。在链中可以互相衔接以支持更复杂的场景，例如调用速率限制。Envoy 已经包含了多个监听器过滤器。
 
 **Http Route Table**：HTTP 的路由规则，例如请求的域名，Path 符合什么规则，转发给哪个 Cluster。
 
-**Health checking**：健康检查会与SDS服务发现配合使用。但是，即使使用其他服务发现方式，也有相应需要进行主动健康检查的情况。详见 [health checking](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/health_checking)。
+**Health checking**：健康检查会与 SDS 服务发现配合使用。但是，即使使用其他服务发现方式，也有相应需要进行主动健康检查的情况。详见 [health checking](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/health_checking)。
 
 ## xDS
 
 xDS 是一个关键概念，它是一类发现服务的统称，其包括如下几类：
 
-- CDS：Cluster Discovery Service
-- EDS：Endpoint Discovery Service
-- SDS：Secret Discovery Service
-- RDS：Route Discovery Service
-- LDS：Listener Discovery Service
+- CDS: Cluster Discovery Service
+- EDS: Endpoint Discovery Service
+- SDS: Secret Discovery Service
+- RDS: Route Discovery Service
+- LDS: Listener Discovery Service
 
 正是通过对 xDS 的请求来动态更新 Envoy 配置，另外还有个 ADS（Aggregated Discovery Service）通过聚合的方式解决以上 xDS 的更新顺序问题。
 
@@ -69,7 +69,7 @@ Envoy 中的配置包括两大类：listenner 配置和 cluster 配置。
 
 ### Listener 配置
 
-我们知道 Envoy 中可以配置一组 listener 以实现复杂的处理逻辑。Listener 中设置监听的 TCP 端口，还有一组 filter 对这些端口上的数据流进行处理。如下所示，该示例来自[使用Envoy 作为前端代理](envoy-front-proxy.md)。
+我们知道 Envoy 中可以配置一组 listener 以实现复杂的处理逻辑。Listener 中设置监听的 TCP 端口，还有一组 filter 对这些端口上的数据流进行处理。如下所示，该示例来自[使用 Envoy 作为前端代理](envoy-front-proxy.md)。
 
 ```yaml
   listeners:
@@ -116,7 +116,7 @@ Envoy 中的配置包括两大类：listenner 配置和 cluster 配置。
 
 ### Cluster 配置
 
-Cluster 是一组逻辑相似的主机配置，定义哪些主机属于一个服务，cluster 的配置中包含了服务发现和负载均衡方式配置。依然是参考[使用Envoy 作为前端代理](envoy-front-proxy.md)中的配置：
+Cluster 是一组逻辑相似的主机配置，定义哪些主机属于一个服务，cluster 的配置中包含了服务发现和负载均衡方式配置。依然是参考[使用 Envoy 作为前端代理](envoy-front-proxy.md)中的配置：
 
 ```yaml
  clusters:

@@ -44,7 +44,7 @@ Kubernetes 集群中的每个节点都部署了一个 kube-proxy 组件，该组
 
 ![Service Discovery](008eGmZEly1gpb7knwb79j30kq0fcjs9.jpg)
 
-Istio 可以跟踪 Kubernetes 中的服务注册，也可以在控制平面中通过平台适配器与其他服务发现系统对接；然后生成数据平面的配置（使用 CRD，这些配置存储在 etcd 中），数据平面的透明代理。数据平面的透明代理以 sidecar 容器的形式部署在每个应用服务的 pod 中，这些代理都需要请求控制平面同步代理配置。代理之所以 “透明”，是因为应用容器完全不知道代理的存在。过程中的 kube-proxy 组件也需要拦截流量，只不过 kube-proxy 拦截的是进出 Kubernetes 节点的流量–而 sidecar 代理拦截的是进出 pod 的流量。
+Istio 可以跟踪 Kubernetes 中的服务注册，也可以在控制平面中通过平台适配器与其他服务发现系统对接；然后生成数据平面的配置（使用 CRD，这些配置存储在 etcd 中），数据平面的透明代理。数据平面的透明代理以 sidecar 容器的形式部署在每个应用服务的 pod 中，这些代理都需要请求控制平面同步代理配置。代理之所以“透明”，是因为应用容器完全不知道代理的存在。过程中的 kube-proxy 组件也需要拦截流量，只不过 kube-proxy 拦截的是进出 Kubernetes 节点的流量–而 sidecar 代理拦截的是进出 pod 的流量。
 
 ### 服务网格的劣势
 

@@ -220,7 +220,7 @@ default via 192.168.127.2 dev istioout
 - 0：系统保留表
 - 253：defulte 表，没特别指定的默认路由都放在改表
 - 254：main 表，没指明路由表的所有路由放在该表，默认表，我们使用 `ip route list` 或 `route -n` 或 `netstat -rn` 查看的路由记录即为 main 表中的记录
-- 255：locale 表，保存本地接口地址，广播地址、NAT地址 由系统维护，用户不得更改
+- 255：locale 表，保存本地接口地址，广播地址、NAT 地址 由系统维护，用户不得更改
 
 {{</callout>}}
 
@@ -631,7 +631,7 @@ kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:150
 
 说明：
 
-- 第 4 行：截止 2022年11月14日，实际在导出 Envoy 配置的时候并没有该字段，但是理应有这个字段，否则无法判断 Endpoint 属于哪个 Cluster；
+- 第 4 行：截止 2022 年 11 月 14 日，实际在导出 Envoy 配置的时候并没有该字段，但是理应有这个字段，否则无法判断 Endpoint 属于哪个 Cluster；
 - 第 13 行：该端点的地址是一个 `envoy_internal_address`，Envoy 内部监听器 `outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/sleep`；
 - 第 20 - 30 行：定义过滤器元数据，使用 HBONE 隧道传递给 Envoy 内部监听器；
 
@@ -868,7 +868,7 @@ $ ip -d addr show istioin
 {{<callout note "关于 15006 和 15008 端口">}}
 
 - 15006 端口用于处理非加密的（plain）TCP 数据包。
-- 15008 端口用于处理加密的（TLS）TCP数据包。
+- 15008 端口用于处理加密的（TLS）TCP 数据包。
 
 {{</callout>}}
 
@@ -1040,7 +1040,7 @@ kubectl exec -n istio-system 	ztunnel-z4qmh -c istio-proxy -- curl "127.0.0.1:15
 - [安装 Ambient Mesh - istio.io](https://istio.io/latest/blog/2022/get-started-ambient/)
 - [深入 Ambient Mesh - 流量路径 - mp.weixin.qq.com](https://mp.weixin.qq.com/s/PpP0pmxdJR8PknHeR-pVHQ)
 - [一文读懂 Ambient Mesh 七层服务治理 - mp.weixin.qq.com](https://mp.weixin.qq.com/s/TXMyxbzBSfuYNquOZJmZTg)
-- [深度剖析！Istio共享代理新模式Ambient Mesh - mp.weixin.qq.com](https://mp.weixin.qq.com/s/B0q73ACAvmY4SjW42A2GVw)
+- [深度剖析！Istio 共享代理新模式 Ambient Mesh - mp.weixin.qq.com](https://mp.weixin.qq.com/s/B0q73ACAvmY4SjW42A2GVw)
 - [Istio Ambient 模式流量管理实现机制详解（一）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-1/)
 - [Istio Ambient 模式流量管理实现机制详解（二） - zhaohuabing.com](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/)
 - [Istio Ambient 模式流量管理实现机制详解（三）- zhaohuabing.com](https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/)

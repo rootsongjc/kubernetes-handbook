@@ -35,7 +35,7 @@ Slime 内部分为三大模块，其架构图如下所示。
 Slime 内部三大组件为：
 
 1. `slime-boot`：在 Kubernetes 上部署 Slime 模块的 operator。
-2. `slime-controller`：Slime 的核心组件，监听 Slime CRD 并将其转换为Istio CRD。
+2. `slime-controller`：Slime 的核心组件，监听 Slime CRD 并将其转换为 Istio CRD。
 3. `slime-metric`：用于获取服务 metrics 信息的组件，`slime-controller` 会根据其获取的信息动态调整服务治理规则。
 
 目前 Slime 内置了三个控制器子模块：
@@ -71,7 +71,7 @@ Slime 内部三大组件为：
 Slime 实现 Sidecar Proxy 配置懒加载的方法是：
 
 - 让数据平面中的所有服务的首次调用都通过一个 Global Proxy，该 Proxy 可以记录所有服务的调用和依赖信息，根据该依赖信息更新 Istio 中 Sidecar 资源的配置；
-- 当某个服务的调用链被 VirtualService 中的路由信息重新定义时， Global Proxy 原有记录就失效了，需要一个新的数据结构来维护该服务的调用关系。Slime 创建了名为 `ServiceFence`  的 CRD 来维护服务调用关系以解决服务信息缺失问题。
+- 当某个服务的调用链被 VirtualService 中的路由信息重新定义时，Global Proxy 原有记录就失效了，需要一个新的数据结构来维护该服务的调用关系。Slime 创建了名为 `ServiceFence`  的 CRD 来维护服务调用关系以解决服务信息缺失问题。
 
 ### 使用 Global Proxy 初始化服务调用拓扑
 
@@ -104,9 +104,9 @@ Slime 自适应限流的流程图如下所示。
 
 ![Slime 的自适应限流流程图](slime-smart-limiter.jpg)
 
-Slime 的自适应限流的流程分为两部分，一部分为 SmartLimiter 到 EnvoyFilter 的转换，另一部分为获取监控数据。目前 Slime 支持从 Kubernetes Metric Server 获取服务的CPU、内存、副本数等数据。Slime 还对外提供了一套监控数据接口（Metric Discovery Server），通过 MDS，可以将自定义的监控指标同步给限流组件。
+Slime 的自适应限流的流程分为两部分，一部分为 SmartLimiter 到 EnvoyFilter 的转换，另一部分为获取监控数据。目前 Slime 支持从 Kubernetes Metric Server 获取服务的 CPU、内存、副本数等数据。Slime 还对外提供了一套监控数据接口（Metric Discovery Server），通过 MDS，可以将自定义的监控指标同步给限流组件。
 
-Slime 创建的 CRD `SmartLimiter` 用于配置自适应限流。其的配置是接近自然语义，例如希望在 CPU 超过 80% 时触发服务 A 的访问限制，限额为 30QPS，对应的SmartLimiter 定义如下：
+Slime 创建的 CRD `SmartLimiter` 用于配置自适应限流。其的配置是接近自然语义，例如希望在 CPU 超过 80% 时触发服务 A 的访问限制，限额为 30QPS，对应的 SmartLimiter 定义如下：
 
 ```yaml
 apiVersion: microservice.netease.com/v1alpha1
@@ -119,7 +119,7 @@ spec:
   - action:
       fill_interval:
         seconds: 1
-      quota: "30/{pod}"    # 30为该服务的额度，将其均分给每个 pod，加入有 3 个 pod，则每个 pod 的限流为 10
+      quota: "30/{pod}"    # 30 为该服务的额度，将其均分给每个 pod，加入有 3 个 pod，则每个 pod 的限流为 10
     condition: "{cpu}>0.8" # 根据监控项{cpu}的值自动填充该模板
 ```
 

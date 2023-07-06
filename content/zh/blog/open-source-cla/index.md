@@ -17,7 +17,7 @@ image: "images/banner/open-source.jpg"
 下面列举了开源贡献协议的一些简介：
 
 - 开源贡献协议有 CLA（Contributor License Agreement）和 [DCO](https://developercertificate.org/)（Developer Certificate of Origin）两种；
-- DCO 由 Linux Foundation 提出，是固定的简短条文（只有4条），旨在让贡献者保证遵守开源 license；
+- DCO 由 Linux Foundation 提出，是固定的简短条文（只有 4 条），旨在让贡献者保证遵守开源 license；
 - CLA 是对开源 license 的法律性质补充，由法务制定；
 - CLA 可以自定义，不论是个人还是企业级签署的时候都需要提供详细的信息，如姓名、公司、邮箱、地址、电话等；
 - 下表中对比了 CLA 和 DCO 的特性，推荐大型跨公司开源项目使用 CLA，利用项目更加正规和长久发展；
@@ -64,14 +64,14 @@ DCO 是 Developer Certificate of Origin 的缩写，由 Linux Foundation 于 200
 
 1. 该贡献全部或部分由我创建，我有权根据文件中指明的开源许可提交；要么
 2. 该贡献是基于以前的工作，这些工作属于适当的开源许可，无论这些工作全部还是部分由我完成，我有权根据相同的开源许可证（除非我被允许根据不同的许可证提交）提交修改后的工作；要么
-3. 该贡献由1、2、或 3 证明的其他人直接提供给我，而我没有对其进行修改。
+3. 该贡献由 1、2、或 3 证明的其他人直接提供给我，而我没有对其进行修改。
 4. 我理解并同意该项目和贡献是公开的，并且该贡献的记录（包括我随之提交的所有个人信息，包括我的签字）将无限期保留，并且可以与本项目或涉及的开源许可证保持一致或者重新分配。
 
 ## CLA vs DCO
 
-Kubernetes 社区中有过讨论将 Kubernetes 贡献者从 CLA 迁移到 DCO，最后TOC 成员 Tim Hockin觉得签署 CLA 对于贡献者只需要痛苦一次，每次提交都签署DCO是持续的痛苦，因此最后还是坚持使用CLA。参考[Move from CLA to DCO #2649](https://github.com/kubernetes/community/issues/2649)。
+Kubernetes 社区中有过讨论将 Kubernetes 贡献者从 CLA 迁移到 DCO，最后 TOC 成员 Tim Hockin 觉得签署 CLA 对于贡献者只需要痛苦一次，每次提交都签署 DCO 是持续的痛苦，因此最后还是坚持使用 CLA。参考[Move from CLA to DCO #2649](https://github.com/kubernetes/community/issues/2649)。
 
-2018年 CNCF 对其托管的项目的 Maintainer 做了调研，从反馈来看，Maintainer 对 DCO 是存在痛点的，并希望 CNCF 投入更多的 PR 和市场力量来对抗具有全职 PR/marketing 的初创公司。
+2018 年 CNCF 对其托管的项目的 Maintainer 做了调研，从反馈来看，Maintainer 对 DCO 是存在痛点的，并希望 CNCF 投入更多的 PR 和市场力量来对抗具有全职 PR/marketing 的初创公司。
 
 如果为了更注重个人贡献者，考虑社区属性，可以使用 DCO，这样对于开源项目的管理者来说就不用指定复杂的 CLA 了，但是对于大型项目由众多合作方的项目，建议使用 CLA。
 
@@ -87,8 +87,8 @@ CLA 内容见：<https://github.com/aliyun/cla>
 
 Google 的 CLA 也是仿照 Apache CLA 撰写的，Google 开源的一些列项目如 Istio、TensorFlow、Knative 等都是需要签署 [Google CLA](<https://cla.developers.google.com/clas>)。
 
-1. 要贡献者授予Google以及其他软件用户贡献内容的版权以及内容背后的专利权。贡献者不要因为版权和专利权诉讼Google和其他软件用户。
-2. 明确贡献的原创性。不要因为贡献者的不适当抄袭行为，导致Google和其他软件使用者被诉讼。
+1. 要贡献者授予 Google 以及其他软件用户贡献内容的版权以及内容背后的专利权。贡献者不要因为版权和专利权诉讼 Google 和其他软件用户。
+2. 明确贡献的原创性。不要因为贡献者的不适当抄袭行为，导致 Google 和其他软件使用者被诉讼。
 3. 签署公司级别 CLA 的人要能代表所在公司的所有贡献者。
 4. 维护贡献者列表的不一定是跟签署该协议的是同一个人，签名者可以指定一个人来管理。
 
@@ -96,7 +96,7 @@ Google 的 CLA 也是仿照 Apache CLA 撰写的，Google 开源的一些列项�
 
 ## Pivotal CLA
 
-Pivotal 的 CLA 也是仿照 Apache CLA 撰写的，唯一增加了一点是协议受美国加州法律监管。签署个人级协议的时候需要提供姓名、邮箱、邮寄地址（可选）、国家（可选）、电话（可选），签署公司级别的 CLA 的条款了还增加了一条对于签名者必须有权利代表整个公司，要求的信息也更加详细，包括姓名、邮箱、邮寄地址、国家、电话、公司名称、 GitHub 组织、头衔等。参与贡献 Pivotal 主导的 Spring 社区和 CloudFoundry 里的项目需要签署 [Pivotal CLA](<https://cla.pivotal.io/>)。
+Pivotal 的 CLA 也是仿照 Apache CLA 撰写的，唯一增加了一点是协议受美国加州法律监管。签署个人级协议的时候需要提供姓名、邮箱、邮寄地址（可选）、国家（可选）、电话（可选），签署公司级别的 CLA 的条款了还增加了一条对于签名者必须有权利代表整个公司，要求的信息也更加详细，包括姓名、邮箱、邮寄地址、国家、电话、公司名称、GitHub 组织、头衔等。参与贡献 Pivotal 主导的 Spring 社区和 CloudFoundry 里的项目需要签署 [Pivotal CLA](<https://cla.pivotal.io/>)。
 
 ## 建议
 

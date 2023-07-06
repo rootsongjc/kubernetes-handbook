@@ -85,7 +85,7 @@ IstioCon 2022 今年是第二届了，于 4 月 25 日到 29 日在线上举行�
 - 性能增强：增量 xDS、降低 sidecar 延迟
 
 {{<callout note "什么是双栈网络？">}}
-双协议栈技术就是指在一台设备上同时启用 IPv4 协议栈和 IPv6 协议栈。 这样的话，这台设备既能和 IPv4 网络通信，又能和 IPv6 网络通信。 如果这台设备是一个路由器，那么这台路由器的不同接口上，分别配置了 IPv4 地址和 IPv6 地址，并很可能分别连接了 IPv4 网络和 IPv6 网络。Kubernetes 中支持 IPv4/IPv6 双协议栈，详见 [Kubernetes 文档](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dual-stack/)。
+双协议栈技术就是指在一台设备上同时启用 IPv4 协议栈和 IPv6 协议栈。这样的话，这台设备既能和 IPv4 网络通信，又能和 IPv6 网络通信。如果这台设备是一个路由器，那么这台路由器的不同接口上，分别配置了 IPv4 地址和 IPv6 地址，并很可能分别连接了 IPv4 网络和 IPv6 网络。Kubernetes 中支持 IPv4/IPv6 双协议栈，详见 [Kubernetes 文档](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dual-stack/)。
 {{</callout>}}
 
 ### 安全加固

@@ -148,7 +148,7 @@ aliases:
 
 云原生资料库项目是一个文档项目，使用 [Wowchemy](https://wowchemy.com) 主题构建，开源在 GitHub 上：<https://github.com/rootsongjc/cloud-native-library>
 
-同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库-书目列表](https://lib.jimmysong.io/#books)中。
+同时笔者也对网站首页、菜单和目录结构进行了调整，网站上的**图书**栏目将使用新的主题来维护，发布在[云原生资料库 - 书目列表](https://lib.jimmysong.io/#books)中。
 
 ### 云原生资料库定位
 

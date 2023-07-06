@@ -1,5 +1,5 @@
 ---
-title: "如何理解 Istio Ingress， 它与 API Gateway 有什么区别？"
+title: "如何理解 Istio Ingress，它与 API Gateway 有什么区别？"
 description: "服务网格与 API 网关之间是什么关系？是不是使用了 Istio 就可以替代了 API 网关？Istio 的 API 网关是如何运作的？有哪些方式暴露 Istio mesh 中的服务？这篇文章给为你解答。"
 image: "/images/banner/choices.jpg"
 categories: ["istio"]
@@ -14,7 +14,7 @@ API 网关作为客户端访问后端的入口，已经存在很长时间了，�
 ## 主要观点
 
 - 服务网格诞生的初衷是为了解决分布式应用的内部流量的管理问题，而在此之前 API 网关已存在很久了。
-- 虽然 Istio 中内置了Gateway，但是你仍可以使用自定义的 Ingress Controller 来代理外部流量。
+- 虽然 Istio 中内置了 Gateway，但是你仍可以使用自定义的 Ingress Controller 来代理外部流量。
 - API 网关和服务网格正朝着融合的方向发展。
 
 ## 如何暴露 Istio mesh 中的服务？
@@ -71,9 +71,9 @@ Istio 0.8 以前版本中使用 Kubernetes [Ingress](https://kubernetes.io/docs/
 
 Istio Gateway 的功能与 Kubernetes Ingress 类似，它负责进出集群的南北流量。Istio Gateway 描述了一个负载均衡器，用于承载进出服务网格边缘的连接。该规范描述了一组开放端口和这些端口所使用的协议，以及用于负载均衡的 SNI 配置等。
 
-Istio Gateway 资源本身只能配置L4到L6的功能，例如暴露的端口、TLS 设置等；但 Gateway 可与 VirtualService 绑定，在VirtualService 中可以配置七层路由规则，例如按比例和版本的流量路由，故障注入，HTTP 重定向，HTTP 重写等所有Mesh内部支持的路由规则。
+Istio Gateway 资源本身只能配置 L4 到 L6 的功能，例如暴露的端口、TLS 设置等；但 Gateway 可与 VirtualService 绑定，在 VirtualService 中可以配置七层路由规则，例如按比例和版本的流量路由，故障注入，HTTP 重定向，HTTP 重写等所有 Mesh 内部支持的路由规则。
 
-下面是一个 Gateway 与 VirtualService 绑定的示例。拥有 `istio: ingressgateway` 标签的 pod 将作为 Ingress Gateway 并路由对 `httpbin.example.com` 虚拟主机的 80 端口的 HTTP 访问，这相当于给 Kubernetes 敞开了一个外部访问的入口。这与使用 Kubernetes Ingress 最大的区别就是，需要我们手动将VirtualService与Gateway 绑定，并指定 Gateway 所在的 pod。
+下面是一个 Gateway 与 VirtualService 绑定的示例。拥有 `istio: ingressgateway` 标签的 pod 将作为 Ingress Gateway 并路由对 `httpbin.example.com` 虚拟主机的 80 端口的 HTTP 访问，这相当于给 Kubernetes 敞开了一个外部访问的入口。这与使用 Kubernetes Ingress 最大的区别就是，需要我们手动将 VirtualService 与 Gateway 绑定，并指定 Gateway 所在的 pod。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

@@ -29,7 +29,7 @@ image: "images/banner/istio-kubernetes.jpg"
 
 通过在整个环境中部署一个特殊的 sidecar 代理（辅助容器），您可以将 Istio 支持添加到服务中（这给我留下了深刻的印象，如果您想做到这一点，请参阅后面的内容）。安装了 sidecar 代理之后，（微）服务之间的所有网络通信都通过这个代理。此外，所有的网络通信都是使用 Istio 的控制平面功能进行配置和管理的。
 
-Istio 是 **Service Mesh（服务网格）**。我认为的 service mesh 定义就是 “它是一个专用的基础设施层，使得服务间的通信安全、高效和可靠”
+Istio 是 **Service Mesh（服务网格）**。我认为的 service mesh 定义就是“它是一个专用的基础设施层，使得服务间的通信安全、高效和可靠”
 
 然而，如果像我一样，你从[概念文档](https://istio.io/docs/concepts/what-is-istio/overview.html) 开始看的话，上面有这样的内容：“术语 **service mesh** 通常用于描述组成这些应用程序的微服务网络以及它们之间的交互。随着服务网格的大小和复杂程度不断增加，可能会变得难以理解和管理。可能出现包括服务发现、负载平衡、故障恢复、度量和监控，以及更复杂的需求，如 A/B 测试、金丝雀发布、速率限制、访问控制和端到端身份验证。Istio 提供了一个完整的解决方案，通过对整个服务网格提供行为分析和操作控制来满足微服务应用程序的各种需求。“
 
@@ -88,7 +88,7 @@ Istio-auth 很好，计划中的增强功能将值得等待。我对安全的复
 
 ## 网络控制
 
-GKE（用于 k8s 版本 1.7.6 +）使用 [k8s 网络策略](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy) 来管理哪些 Pod 可以和服务通信。这是相对简单的配置。 Istio 也有网络策略，但他们不是你知道和喜欢的 K8s 策略，为什么会有这样的区别呢？ [这篇文章](https://istio.io/blog/2017/0.1-using-network-policy.html) 很好地解释了这一点，所以我不会在这里重述，但是这个表格总结了不同之处以及为什么会有这样的不同。
+GKE（用于 k8s 版本 1.7.6 +）使用 [k8s 网络策略](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy) 来管理哪些 Pod 可以和服务通信。这是相对简单的配置。Istio 也有网络策略，但他们不是你知道和喜欢的 K8s 策略，为什么会有这样的区别呢？ [这篇文章](https://istio.io/blog/2017/0.1-using-network-policy.html) 很好地解释了这一点，所以我不会在这里重述，但是这个表格总结了不同之处以及为什么会有这样的不同。
 
 | 项目   | Istio 策略      | 网络策略           |
 | :----- | :-------------- | :----------------- |

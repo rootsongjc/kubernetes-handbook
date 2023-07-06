@@ -109,5 +109,5 @@ echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random
 
 ## 参考
 
-- [让网站永久拥有HTTPS - 申请免费SSL证书并自动续期](https://blog.csdn.net/xs18952904/article/details/79262646)
+- [让网站永久拥有 HTTPS - 申请免费 SSL 证书并自动续期](https://blog.csdn.net/xs18952904/article/details/79262646)
 - [certbot - 免费的 https 证书](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)

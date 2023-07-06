@@ -1,8 +1,8 @@
 ---
 date: "2017-07-18T11:21:14+08:00"
 draft: false
-title: "Awesome Cloud Native列表发布"
-description: "这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目。"
+title: "Awesome Cloud Native 列表发布"
+description: "这是一份记录关于 Cloud Native 的软件、工具、架构以及参考资料的列表，是我在 GitHub 上开的一个项目。"
 bg_image: "images/backgrounds/page-title.jpg"
 type: "notice"
 link: "https://jimmysong.io/awesome-cloud-native"
@@ -10,7 +10,7 @@ aliases: "/posts/awesome-cloud-native"
 image: "images/backgrounds/notification.jpg"
 ---
 
-这是一份记录关于Cloud Native的软件、工具、架构以及参考资料的列表，是我在GitHub上开的一个项目  [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)，同时也可以通过 [Web 页面浏览](http://jimmysong.io/awesome-cloud-native)。
+这是一份记录关于 Cloud Native 的软件、工具、架构以及参考资料的列表，是我在 GitHub 上开的一个项目  [awesome-cloud-native](https://github.com/rootsongjc/awesome-cloud-native)，同时也可以通过 [Web 页面浏览](http://jimmysong.io/awesome-cloud-native)。
 
 初步划分成以下这些领域：
 
@@ -42,4 +42,4 @@ image: "images/backgrounds/notification.jpg"
 - [Tools](https://jimmysong.io/awesome-cloud-native/#tools)
 - [Tutorial](https://jimmysong.io/awesome-cloud-native/#tutorial)
 
-今后会不断更新和完善该列表，不仅是为了本人平时的研究记录，也作为Cloud Native 业内人士的参考。
+今后会不断更新和完善该列表，不仅是为了本人平时的研究记录，也作为 Cloud Native 业内人士的参考。

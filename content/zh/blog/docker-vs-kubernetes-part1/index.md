@@ -1,8 +1,8 @@
 ---
 date: "2017-03-10T21:09:47+08:00"
-title: "Docker对比Kubernetes第一部分"
+title: "Docker 对比 Kubernetes 第一部分"
 draft: false
-description: "这一系列文章是对比kubernetes 和docker两者之间的差异。"
+description: "这一系列文章是对比 kubernetes 和 docker 两者之间的差异。"
 categories: ["容器"]
 tags: ["docker"]
 type: "post"
@@ -12,7 +12,7 @@ image: "images/banner/docker-logo.jpg"
 
 ## 前言
 
-这一系列文章是对比 kubernetes 和 docker 两者之间的差异，鉴于我之前从 docker1.10.3 起开始使用 docker，对原生 docker 的了解比较多，最近又正在看《Kunernetes 权威指南（第二版）》 这本书（P.S 感谢电子工业出版社的编辑朋友赠送此书）。这系列文章不是为了比较孰优孰劣，**适合自己的才是最好的**。
+这一系列文章是对比 kubernetes 和 docker 两者之间的差异，鉴于我之前从 docker1.10.3 起开始使用 docker，对原生 docker 的了解比较多，最近又正在看《Kunernetes 权威指南（第二版）》这本书（P.S 感谢电子工业出版社的编辑朋友赠送此书）。这系列文章不是为了比较孰优孰劣，**适合自己的才是最好的**。
 
 此系列文章中所说的 Docker 指的是 `17.03-ce` 版本。
 

@@ -37,7 +37,7 @@ image: "/images/banner/oss-insight.jpg"
 
 ## 评论
 
-OSSInsight 也可以算是 CHAOSS 类软件的一种，比如 Linux 基金会下的 CHAOSS （Community Health Analytics Open Source Software）工作组有一个开源项目 [GrimoireLab](https://chaoss.github.io/grimoirelab/) 就是做软件开发分析的。
+OSSInsight 也可以算是 CHAOSS 类软件的一种，比如 Linux 基金会下的 CHAOSS（Community Health Analytics Open Source Software）工作组有一个开源项目 [GrimoireLab](https://chaoss.github.io/grimoirelab/) 就是做软件开发分析的。
 
 ![GrimoireLab 网站页面](e6c9d24ely1h2ts7e6aiuj21ml0u078o.jpg)
 

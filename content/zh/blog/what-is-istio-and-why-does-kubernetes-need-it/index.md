@@ -1,6 +1,6 @@
 ---
 title: "什么是 Istio？为什么 Kubernetes 需要 Istio？"
-description: "本文将解释Istio是如何产生的，以及它与Kubernetes的关系。"
+description: "本文将解释 Istio 是如何产生的，以及它与 Kubernetes 的关系。"
 date: 2021-04-28T09:06:14+08:00
 draft: false
 tags: ["istio","kubernetes"]

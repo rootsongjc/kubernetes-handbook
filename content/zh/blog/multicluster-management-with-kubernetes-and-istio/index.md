@@ -45,7 +45,7 @@ Host 集群同时承担着 API 入口的作用，由 Host Cluster 将对 Member 
 
 ![Istio Service Mesh](008i3skNly1gsgg6sdrk2j32v60u0qbb.jpg)
 
-你可能最终会有至少几个Kubernetes集群，每个集群都承载着微服务。Istio 的多集群部署根据网络隔离、主备情况存在多种[部署模式](https://istio.io/latest/docs/setup/install/multicluster/)，可以使用 Istio Operator 部署时通过声明来指定。集群中的这些微服务之间的通信可以通过服务网格来加强。在集群内部，Istio提供通用的通信模式，以提高弹性、安全性和可观察性。
+你可能最终会有至少几个 Kubernetes 集群，每个集群都承载着微服务。Istio 的多集群部署根据网络隔离、主备情况存在多种[部署模式](https://istio.io/latest/docs/setup/install/multicluster/)，可以使用 Istio Operator 部署时通过声明来指定。集群中的这些微服务之间的通信可以通过服务网格来加强。在集群内部，Istio 提供通用的通信模式，以提高弹性、安全性和可观察性。
 
 以上都是关于 Kubernetes 上的应用负载管理，但是对于虚拟机上遗留应用，如何在同一个平面中管理？如何管理多集群中的流量划分、网关和安全性呢？
 

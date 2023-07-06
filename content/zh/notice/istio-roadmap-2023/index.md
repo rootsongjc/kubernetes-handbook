@@ -54,7 +54,7 @@ Ambient mesh 发布计划：
 
 - Kubernetes 标准的流量管理
 - Istio 社区是定义和实现的领导者
-- Istio 的实现达到 Beta，并通过100%的一致性测试
+- Istio 的实现达到 Beta，并通过 100% 的一致性测试
 
 ## 稳定性和功能提升
 

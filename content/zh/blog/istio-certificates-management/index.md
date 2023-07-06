@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/cert.jpg"
 ---
 
-我在[如何理解 Istio 中的 mTLS 流量加密](/blog/understanding-the-tls-encryption-in-istio/)这篇文章中提出流量加密的关键是证书管理。我们可以使用 Istio 中内置了CA（证书授权机构）也可以使用自定义 CA 来管理网格内的证书。这篇博客将为你讲解 Istio 是如何进行证书管理的。
+我在[如何理解 Istio 中的 mTLS 流量加密](/blog/understanding-the-tls-encryption-in-istio/)这篇文章中提出流量加密的关键是证书管理。我们可以使用 Istio 中内置了 CA（证书授权机构）也可以使用自定义 CA 来管理网格内的证书。这篇博客将为你讲解 Istio 是如何进行证书管理的。
 
 ## 什么是证书？ {#certificates-introduction}
 

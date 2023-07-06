@@ -144,7 +144,7 @@ def getForwardHeaders(request):
 
 ### 安装 Istio {#install-istio}
 
-安装之前可以先检查下环境是否有问题:
+安装之前可以先检查下环境是否有问题：
 
 ```bash
 $ istioctl experimental precheck

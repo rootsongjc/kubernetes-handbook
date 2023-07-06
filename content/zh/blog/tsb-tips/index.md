@@ -1,6 +1,6 @@
 ---
 title: "关于 TSB 你应该知道的事情"
-description: "如果你对服务网格（Service Mesh） 和 Tetrate Service Bridge 感兴趣，那么这篇文章可以解答你心中很多疑惑。"
+description: "如果你对服务网格（Service Mesh）和 Tetrate Service Bridge 感兴趣，那么这篇文章可以解答你心中很多疑惑。"
 date: 2023-02-22T17:09:40+08:00
 draft: false
 tags: ["Istio","TSB","Tetrate"]
@@ -75,7 +75,7 @@ TSB 是建立在 Istio 之上的，下表中列出了 TSB 中的可以通过 tct
 | ServiceEntry                | Istio 原生 CRD，添加服务对象。                               |
 | SecurityGroup               | 安全配置组。                                                 |
 | ServiceRoute                | 配置服务路由。                                               |
-| SecuritySetting             | 安全设置将配置应用于 SecurityGroup 或 Workspace 中的一组代理工作负载。当应用于 SecurityGroup 时，缺失的字段将从 Workspace 范围设置继承值(如果有的话)。 |
+| SecuritySetting             | 安全设置将配置应用于 SecurityGroup 或 Workspace 中的一组代理工作负载。当应用于 SecurityGroup 时，缺失的字段将从 Workspace 范围设置继承值 (如果有的话)。 |
 | ServiceSecuritySetting      | 安全组配置。                                                 |
 | Service                     | 注册中心中的服务，表示所有这些单独服务的聚合和逻辑视图，并提供聚合指标等高级功能。 |
 | Tier1Gateway                | TSB 一级网关配置，指定网关负载。                             |

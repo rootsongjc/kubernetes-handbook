@@ -1,5 +1,5 @@
 ---
-title: "IstioCon 2022（4月25-29，线上会议）"
+title: "IstioCon 2022（4 月 25-29，线上会议）"
 draft: false
 date: 2022-04-22T09:27:49+08:00
 description: "欢迎注册第二届 IstioCon"

@@ -11,7 +11,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/cloud-native-devops-book"
 ---
 
-本书的主旨是：如果没有成熟的 DevOps 实践，云原生是玩转不起来的。DevOps 已经不是什么新鲜的话题，但到底什么是 "Cloud Native DevOps” 及如何实践 Cloud Native DevOps，这正是本书要探讨的内容。
+本书的主旨是：如果没有成熟的 DevOps 实践，云原生是玩转不起来的。DevOps 已经不是什么新鲜的话题，但到底什么是 "Cloud Native DevOps”及如何实践 Cloud Native DevOps，这正是本书要探讨的内容。
 
 DevOps 正在经历一次转型，从自动化构建到声明式基础设施、微服务和 Serverless。大部分人对云原生存在误解，以为`云原生`就是`运行在云上`，其实云原生更偏向于一种理念，即应用的定义及架构方式，而不是将应用运行在哪里。而云上的 DevOps 与传统的 DevOps 有什么区别，开发者和运维人员在云原生时代如何转型？也许本书会给你答案。
 

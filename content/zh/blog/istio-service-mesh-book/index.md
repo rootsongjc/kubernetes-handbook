@@ -11,7 +11,7 @@ image: "images/banner/istio-book.jpg"
 
 ![云原生社区最新力作 —— 《深入理解 Istio》上市开售](istio-book.jpg)
 
-2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已5年有余。在这5年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio 图书出版领域，我国走在了世界的前列。
+2017 年 5 月，Google、IBM 和 Lyft 联合 [宣布](https://istio.io/latest/news/releases/0.x/announcing-0.1/) 将 [Istio](https://istio.io) 开源，不知不觉中距今已 5 年有余。在这 5 年多的时间里，Istio 项目从一颗种子长成了参天大树。尤其是在 2018 年 Istio 1.0 版本发布的接下来两年里，国内有多本关于 Istio 服务网格的图书上市。在 Istio 图书出版领域，我国走在了世界的前列。
 
 ![Istio 开源时间线](istio-history.svg)
 
@@ -25,7 +25,7 @@ image: "images/banner/istio-book.jpg"
 
 2018 年，CNCF 对云原生的定义是：云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式 API。
 
-可见，CNCF 将服务网格加入了云原生定义中，即服务网格是云原生的代表性技术之一。如今， Google 正在将 Istio 捐献给 CNCF，我们有理由相信，成为 CNCF 项目后，Istio 的社区会开放，它未来的发展之路也会更顺畅。
+可见，CNCF 将服务网格加入了云原生定义中，即服务网格是云原生的代表性技术之一。如今，Google 正在将 Istio 捐献给 CNCF，我们有理由相信，成为 CNCF 项目后，Istio 的社区会开放，它未来的发展之路也会更顺畅。
 
 ## 服务网格与云原生应用
 
@@ -35,7 +35,7 @@ image: "images/banner/istio-book.jpg"
 
 ## 为什么需要服务网格
 
-使用服务网格并非意味着与 Kubernetes 决裂，而是自然而然的事情。Kubernetes 的本质是通过声明配置对应用进行生命周期管理，而服务网格的本质是提供应用间的流量控制和安全性管理，以及可观察性。 假如已经使用 Kubernetes 构建了稳定的微服务平台，那么如何设置服务间调用的负载均衡和流量控制呢？
+使用服务网格并非意味着与 Kubernetes 决裂，而是自然而然的事情。Kubernetes 的本质是通过声明配置对应用进行生命周期管理，而服务网格的本质是提供应用间的流量控制和安全性管理，以及可观察性。假如已经使用 Kubernetes 构建了稳定的微服务平台，那么如何设置服务间调用的负载均衡和流量控制呢？
 
 Envoy 创造的 xDS 协议被众多开源软件所支持，如 Istio、Linkerd、MOSN 等。Envoy 对服务网格或云原生而言最大的贡献就是定义了 xDS。Envoy 本质上是一个网络代理，是通过 API 配置的现代版代理，基于它衍生出了很多不同的使用场景，如 API 网关、服务网格中的 sidecar 代理和边缘代理。
 
@@ -45,8 +45,8 @@ Envoy 创造的 xDS 协议被众多开源软件所支持，如 Istio、Linkerd�
 - Kubernetes 为微服务提供了可扩展、高弹性的部署和管理平台。
 - 服务网格的基础是透明代理，先通过 sidecar 代理拦截微服务间的流量，再通过控制平面配置管理微服务的行为。如今，服务网格的部署模式也迎来了新的挑战，sidecar 已经不是服务网格所必须的，基于 gRPC 的无代理的服务网格也在测试中。
 - xDS 定义了服务网格配置的协议标准，目前基于 gRPC 的 xDS 也正在开发中。
-- 服务网格将流量管理从 Kubernetes 中解耦，服务网格内部的流量无须 kube-proxy 组件的支持， 通过接近微服务应用层的抽象，管理服务间的流量，实现安全性和可观察性功能。
-- 服务网格是对 Kubernetes 中 service 更上层的抽象，它的下一步是 Serverless，这也是Google 在 Istio 之后紧接着推出基于 Kubernetes 和 Istio 之上的 Knative 的原因。
+- 服务网格将流量管理从 Kubernetes 中解耦，服务网格内部的流量无须 kube-proxy 组件的支持，通过接近微服务应用层的抽象，管理服务间的流量，实现安全性和可观察性功能。
+- 服务网格是对 Kubernetes 中 service 更上层的抽象，它的下一步是 Serverless，这也是 Google 在 Istio 之后紧接着推出基于 Kubernetes 和 Istio 之上的 Knative 的原因。
 
 ## 以社区之名成就开源
 
@@ -64,7 +64,7 @@ Envoy 创造的 xDS 协议被众多开源软件所支持，如 Istio、Linkerd�
 
 Istio 在 1.5 版本后有了重大的架构变化，同时引入或改进了多项功能，例如，引入了智能 DNS 代理、新的资源对象，改进了对虚拟机的支持等。
 
-本书以 Istio 新版本为基础编写而成，在持续追踪 Istio 社区最新动向的基础上，力求为读者提 供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。
+本书以 Istio 新版本为基础编写而成，在持续追踪 Istio 社区最新动向的基础上，力求为读者提 供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验，为本书提供了翔实、宝贵的参考案例。
 
 {{<figure src="feature.jpg" alt="本书特色" width="70%">}}
 

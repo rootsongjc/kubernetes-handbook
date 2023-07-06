@@ -29,7 +29,7 @@ image: "images/banner/zero-trust.jpg"
 
 在零信任网络里，默认是拒绝一切访问。需要在应用程序开发中，积极主动的允许来自应用程序的某些适当的请求。身份是零信任的基础，而不是网络。零信任的关注对象是访问点、身份认证与授权和攻击面。对于云原生应用，因为它们的生命周期短暂且是动态的，为了实现零信任，你必须为每个访问点配置一个规则，不断更新应用程序的证书和访问规则，这时候手动配置几乎是不可能的，你必须实现自动化。
 
-在 IstioCon 2022 的[主题演讲](https://events.istio.io/istiocon-2022/sessions/zero-trust-istio/) 有提到，[Istio](https://istio.io) 正在成为零信任的一个重要组成部分。其中最主要的是面向身份的控制，而不是面向网络的控制。这方面的核心原则在谷歌白皮书[《BeyondProd：云原生安全的新方法》](https://cloud.google.com/blog/products/identity-security/beyondprod-whitepaper-discusses-cloud-native-security-at-google)上有描写 。
+在 IstioCon 2022 的[主题演讲](https://events.istio.io/istiocon-2022/sessions/zero-trust-istio/) 有提到，[Istio](https://istio.io) 正在成为零信任的一个重要组成部分。其中最主要的是面向身份的控制，而不是面向网络的控制。这方面的核心原则在谷歌白皮书[《BeyondProd：云原生安全的新方法》](https://cloud.google.com/blog/products/identity-security/beyondprod-whitepaper-discusses-cloud-native-security-at-google)上有描写。
 
 如果我们能将身份概念扩展到用户，并为我们提供灵活而丰富的策略机制来指定、监控和跟踪访问控制，我们就能达到一个可操作的零信任架构 —— 将用户、服务和数据统一到一个管理层。我所工作的公司 [Tetrate](https://tetrate.io) 创建了 [Tetrate Service Bridge](https://www.tetrate.io/tetrate-service-bridge/) —— 可供大型组织使用的管理平面，也是践行了零信任的理念。
 

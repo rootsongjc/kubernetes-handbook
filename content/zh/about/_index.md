@@ -71,7 +71,7 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 
 ### 2017 年
 
-- 2017 年 12 月 16 日 | 北京 | 下一代微服务： Service Mesh is Coming | [IT 大咖说 数人云 & TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
+- 2017 年 12 月 16 日 | 北京 | 下一代微服务：Service Mesh is Coming | [IT 大咖说 数人云 & TalkingData meetup](http://www.itdks.com/eventlist/detail/1690)
 - 2017 年 12 月 8 日 | 北京 | ArchSummit（全球架构师峰会）| [从 Kubernetes 到 Cloud Native—— 云原生应用之路](http://bj2017.archsummit.com/presentation/306)
 - 2017 年 10 月 15 日 | 杭州 | KEUC 2017（Kubernetes 中国用户大会）| [k8smeetup 最佳社区译者、最佳技术专栏作者](http://keuc.k8smeetup.com/)
 - 2017 年 9 月 23 日 | 北京 | Kubernetes 实战训练 | [Kubernetes 云原生应用设计与实战](https://www.bagevent.com/event/791762)
