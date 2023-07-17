@@ -771,6 +771,10 @@ Istio 1.13 相比 Istio 1.11 的变化是 `istioctl proxy-config` 命令的输�
 
 - 将 iptables 说明和 sidecar 注入、init 容器部分独立成了两篇单独的博客，以缩减博客的篇幅，见 [Istio 数据平面 Pod 启动过程详解](/blog/istio-pod-process-lifecycle/)和[理解 iptables](/blog/understanding-iptables/)。
 
+**2023 年 7 月 17 日，第六版，基于 Istio 1.13**
+
+- 修改了对 ISTIO_INBOUND 链的说明
+
 ## 参考
 
 - [Debugging Envoy and Istiod - istio.io](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/)
