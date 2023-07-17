@@ -90,7 +90,7 @@ Chain OUTPUT (policy ACCEPT 79 packets, 6761 bytes)
 Chain POSTROUTING (policy ACCEPT 79 packets, 6761 bytes)
  pkts bytes target     prot opt in     out     source               destination
 
-# ISTIO_INBOUND CHAIN: Redirects all inbound traffic to the ISTIO_IN_REDIRECT chain, except for traffic destined for ports 15090 (used by Prometheus) and 15020 (used by Ingress gateway for Pilot health checks), and traffic sent to these two ports will return to the call point of the iptables rule chain, the successor POSTROUTING to the PREROUTING chain.
+# ISTIO_INBOUND CHAIN: Redirects all inbound traffic to the ISTIO_IN_REDIRECT chain, except for traffic destined for ports 15090 (used by Prometheus) and 15020 (used by Ingress gateway for Pilot health checks), and traffic sent to these two ports will return to the call point of the iptables rule chain, the successor POSTROUTING to the INPUT chain.
 Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
     0     0 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh

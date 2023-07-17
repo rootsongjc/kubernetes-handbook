@@ -293,7 +293,7 @@ Chain OUTPUT (policy ACCEPT 79 packets, 6761 bytes)
 Chain POSTROUTING (policy ACCEPT 79 packets, 6761 bytes)
  pkts bytes target     prot opt in     out     source               destination
 
-# ISTIO_INBOUND 链：将所有入站流量重定向到 ISTIO_IN_REDIRECT 链上。目的地为 15090（Prometheus 使用）和 15020（Ingress gateway 使用，用于 Pilot 健康检查）端口的流量除外，发送到以上两个端口的流量将返回 iptables 规则链的调用点，即 PREROUTING 链的后继 POSTROUTING 后直接调用原始目的地。
+# ISTIO_INBOUND 链：将所有入站流量重定向到 ISTIO_IN_REDIRECT 链上。目的地为 15090（Prometheus 使用）和 15020（Ingress gateway 使用，用于 Pilot 健康检查）端口的流量除外，发送到以上两个端口的流量将返回 iptables 规则链的调用点，即 PREROUTING 链的后继 INPUT 后直接调用原始目的地。
 Chain ISTIO_INBOUND (1 references)
  pkts bytes target     prot opt in     out     source               destination
     0     0 RETURN     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
