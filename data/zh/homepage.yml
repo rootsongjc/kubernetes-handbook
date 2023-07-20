@@ -1,25 +1,25 @@
 ################################# Slider #####################################
 slider:
   enable : true
-  bg_image : "/images/backgrounds/spring1.svg"
+  bg_image : "/images/backgrounds/summer.svg"
   slider_item:
-    - title : "可观测性峰会 2023"
-      content : "云原生社区主办的国内首届可观测性大会，4 月 22 日周六在北京奥加美术馆酒店成功召开，查看回顾及下载 PPT。"
+    - title : "最新译作《Istio 最佳实战》出版"
+      content : "*Istio in Action* 中文版出版，基于 Istio 1.15 撰写。本书以 Istio 服务网格为核心，内容包括基本概念、核心功能、运维、企业级落地四大部分，从基本的安装部署到功能实践，从底层原理分析到故障排查，从进阶操作到企业级实战，由浅入深地介绍了 Istio 服务网格的各个方面。"
       animation_in : "left"
       animation_out : "right"
-      button:
-        enable : true
-        label : "查看回顾"
-        link : "https://cloudnative.to/blog/observability-summit-2023-recap/"
-    - title : "云原生社区著《深入理解 Istio》"
-      content : "三年磨一剑，云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 编写，本书在持续追踪 Istio 社区最新动向的基础上，力求为读者提供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。"
-      animation_in : "left"
-      animation_out : "right"
-      # available animation : left, right, up, down
       button:
         enable : true
         label : "了解详情"
-        link : "/blog/istio-service-mesh-book"
+        link : "https://item.jd.com/14057890.html"
+          #   - title : "云原生社区著《深入理解 Istio》"
+          #     content : "三年磨一剑，云原生社区著的《深入理解 Istio —— 云原生服务网格进阶实战》出版啦！基于 Istio 1.11 编写，本书在持续追踪 Istio 社区最新动向的基础上，力求为读者提供最新、最全面的内容。另外，本书的多位作者都是一线的开发或运维工程师，具有丰富的 Istio 实战经验， 为本书提供了翔实、宝贵的参考案例。"
+          #     animation_in : "left"
+          #     animation_out : "right"
+          #     # available animation : left, right, up, down
+          #     button:
+          #       enable : true
+          #       label : "了解详情"
+          #       link : "/blog/istio-service-mesh-book"
     - title : "云原生资料库上线"
       content : "云原生资料库收集了 Jimmy 自 2017 年以来的发表和翻译的云原生相关图书、资料、活动等，是对已发布的的十几本资料的一个梳理和补充。"
       animation_in : "left"
