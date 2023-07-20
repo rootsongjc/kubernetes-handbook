@@ -44,28 +44,28 @@ Watch the network request list and right-click on the one of the graphql request
 The curl commands you see will look like this. Execute the command in your terminal, and you will get a list of services managed by TSB from SkyWalking.
 
 ```bash
-curl '<https://saturn.tetrate.work/ui/graphql>' \\
-  -H 'Accept-Language: en,zh-CN;q=0.9,zh;q=0.8,en-US;q=0.7,zh-TW;q=0.6' \\
-  -H 'Cache-Control: no-cache' \\
-  -H 'Client-Timestamp: 1686104776136' \\
-  -H 'Connection: keep-alive' \\
-  -H 'Content-Type: application/json' \\
-  -H 'Cookie: ...' \\
-  -H 'Origin: <https://saturn.tetrate.work>' \\
-  -H 'Pragma: no-cache' \\
-  -H 'Referer: <https://saturn.tetrate.work/mp/services>' \\
-  -H 'Request-Id: ...' \\
-  -H 'Sec-Fetch-Dest: empty' \\
-  -H 'Sec-Fetch-Mode: cors' \\
-  -H 'Sec-Fetch-Site: same-origin' \\
-  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \\
-  -H 'X-Bridge-Csrf-Token: IOmJszLAqY3TRIUNhTuGu7vQgnfQY1FtgYFm+l/+Mu4EmVQU5T8EaQ7bngkCv4hQ12ZGids+I21pHMdepE9/qQ==' \\
-  -H 'X-Csrf-Token: xTbxZerD3t8N3PaS7nbjKCfxk1Q9dtvvrx4D+IJohHicb0VfB4iAZaP0zh1eXDWctQyCYZWaKLhAYT3M6Drk3A==' \\
-  -H 'accept: application/json' \\
-  -H 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \\
-  -H 'sec-ch-ua-mobile: ?0' \\
-  -H 'sec-ch-ua-platform: "macOS"' \\
-  --data-raw $'{"query":"query ServiceRegistryListMetrics(...)}' \\
+curl '<https://saturn.tetrate.work/ui/graphql>' \
+  -H 'Accept-Language: en,zh-CN;q=0.9,zh;q=0.8,en-US;q=0.7,zh-TW;q=0.6' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Client-Timestamp: 1686104776136' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: ...' \
+  -H 'Origin: <https://saturn.tetrate.work>' \
+  -H 'Pragma: no-cache' \
+  -H 'Referer: <https://saturn.tetrate.work/mp/services>' \
+  -H 'Request-Id: ...' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36' \
+  -H 'X-Bridge-Csrf-Token: IOmJszLAqY3TRIUNhTuGu7vQgnfQY1FtgYFm+l/+Mu4EmVQU5T8EaQ7bngkCv4hQ12ZGids+I21pHMdepE9/qQ==' \
+  -H 'X-Csrf-Token: xTbxZerD3t8N3PaS7nbjKCfxk1Q9dtvvrx4D+IJohHicb0VfB4iAZaP0zh1eXDWctQyCYZWaKLhAYT3M6Drk3A==' \
+  -H 'accept: application/json' \
+  -H 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  --data-raw $'{"query":"query ServiceRegistryListMetrics(...)}' \
   --compressed
 ```
 
@@ -83,7 +83,7 @@ Firstly, you need to obtain the bearer of the website. Log in to TSB UI, click o
 
 We have already deployed the[ bookinfo application](https://istio.io/latest/docs/examples/bookinfo/) in advance and sent some test traffic. To query the load metrics of reviews using GraphQL in the Postman client, follow these steps:
 
-1. Create a new GraphQL request and enter the request URL: `$TSB_ADDRESS[/graphql](<http://demo.skywalking.apache.org/graphql>)`
+1. Create a new GraphQL request and enter the request URL: `$TSB_ADDRESS/graphql`
 2. Add the `Authorization` header with the value` Bearer $TOKEN`
 
 Use GraphQL Introspection to see the schema of SkyWalking GraphQL APIs. Find and click the `readMetricsValues` item. You will see the variables on the right side. Fill in the `condition` and `duration` items, as shown in the following image.
