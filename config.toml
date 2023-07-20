@@ -254,8 +254,8 @@ title = "Jimmy Song - 专注于探索后 Kubernetes 时代的云原生新范式"
 copyright = "&copy; 2017-2023 Jimmy Song 保留所有权利"
 # top header
 top_header = true
-#top_header_content = "云原生社区著《深入理解 Istio》，[前往购买](https://item.jd.com/13200745.html)"
-top_header_content = '按 `/` 键或点击搜索按钮可以检索本站博客'
+top_header_content = "最新译作《Istio 最佳实战》出版，[了解详情](https://item.jd.com/14057890.html)"
+#top_header_content = '按 `/` 键或点击搜索按钮可以检索本站博客'
 
 # main menu
 [[Languages.zh.menu.main]]
