@@ -22,10 +22,12 @@ Jimmy Song has published several books since 2017, see the [book page](https://l
 
 **Translation**
 
-- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React, 2017.08](https://lib.jimmysong.io/book/cloud-native-go)
+- [Cloud Native Go - Build cloud-native web applications and microservices based on Go and React, 2017.08](https://lib.jimmysong.io/book/cloud-native-go/)
 - [Cloud Native Python - Build cloud native applications with Python and React, 2018.07](https://lib.jimmysong.io/book/cloud-native-python/)
-- [Cloud Native Java - Build cloud native applications with Java, 2018.07](https://lib.jimmysong.io/book/cloud-native-java)
-- [Cloud Native Patterns, 2020.08](https://lib.jimmysong.io/book/cloud-native-patterns)
+- [Cloud Native Java - Build cloud native applications with Java, 2018.07](https://lib.jimmysong.io/book/cloud-native-java/)
+- [Cloud Native Patterns, 2020.08](https://lib.jimmysong.io/book/cloud-native-patterns/)
+- [Quarkus Cookbook, 2021.03](https://lib.jimmysong.io/book/quarkus-cookbook/)
+- [Istio in Action, 2023.07](https://lib.jimmysong.io/book/istio-in-action/)
 
 ### Focused domains
 
