@@ -27,6 +27,7 @@ description : "宋净超（Jimmy Song）的简介。"
 - [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-python/)
 - [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-java/)
 - [云原生模式，2020 年 8 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-patterns/)
+- [Istio 最佳实战，2023 年 6 年，电子工业出版社](https://lib.jimmysong.io/book/istio-in-action/)
 
 ## 关注领域
 
