@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="229 164 617 432" width="617" height="432">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 7 6" markerWidth="7" markerHeight="6" color="black">
+      <g>
+        <path d="M 4.8 0 L 0 -1.8 L 0 1.8 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="client-side-load-balancing" stroke-opacity="1" fill="none" stroke-dasharray="none" stroke="none" fill-opacity="1">
+    <title>client-side-load-balancing</title>
+    <rect fill="white" x="229" y="164" width="617" height="432"/>
+    <g id="client-side-load-balancing_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_26"/>
+      <g id="Graphic_19">
+        <path d="M 653.292 330 L 801.708 330 C 806.1263 330 809.708 333.58172 809.708 338 L 809.708 569 C 809.708 573.4183 806.1263 577 801.708 577 L 653.292 577 C 648.8737 577 645.292 573.4183 645.292 569 L 645.292 338 C 645.292 333.58172 648.8737 330 653.292 330 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+        <text transform="translate(650.292 552.5359)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="48.904" y="16">Service</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <path d="M 257.5 416 L 364.5 416 C 368.91828 416 372.5 419.5817 372.5 424 L 372.5 462 C 372.5 466.4183 368.91828 470 364.5 470 L 257.5 470 C 253.08172 470 249.5 466.4183 249.5 462 L 249.5 424 C 249.5 419.5817 253.08172 416 257.5 416 Z" fill="#0a55a8"/>
+        <text transform="translate(254.5 433.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="34.292" y="16">Client</tspan>
+        </text>
+      </g>
+      <g id="Graphic_12">
+        <path d="M 674 490 L 781 490 C 785.4183 490 789 493.5817 789 498 L 789 536 C 789 540.4183 785.4183 544 781 544 L 674 544 C 669.5817 544 666 540.4183 666 536 L 666 498 C 666 493.5817 669.5817 490 674 490 Z" fill="#0a55a8"/>
+        <text transform="translate(671 507.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="15.612" y="16">Instance C</tspan>
+        </text>
+      </g>
+      <g id="Graphic_8">
+        <path d="M 674 416 L 781 416 C 785.4183 416 789 419.5817 789 424 L 789 462 C 789 466.4183 785.4183 470 781 470 L 674 470 C 669.5817 470 666 466.4183 666 462 L 666 424 C 666 419.5817 669.5817 416 674 416 Z" fill="#0a55a8"/>
+        <text transform="translate(671 433.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="15.908" y="16">Instance B</tspan>
+        </text>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 674 342 L 781 342 C 785.4183 342 789 345.58172 789 350 L 789 388 C 789 392.4183 785.4183 396 781 396 L 674 396 C 669.5817 396 666 392.4183 666 388 L 666 350 C 666 345.58172 669.5817 342 674 342 Z" fill="#0a55a8"/>
+        <text transform="translate(671 359.26794)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="16.06" y="16">Instance A</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <path d="M 416 234.5 L 416 182.5 C 416 178.912 445.12 176 481 176 C 516.88 176 546 178.912 546 182.5 L 546 234.5 C 546 238.088 516.88 241 481 241 C 445.12 241 416 238.088 416 234.5" fill="#0a55a8"/>
+        <path d="M 416 234.5 L 416 182.5 C 416 178.912 445.12 176 481 176 C 516.88 176 546 178.912 546 182.5 L 546 234.5 C 546 238.088 516.88 241 481 241 C 445.12 241 416 238.088 416 234.5 M 416 182.5 C 416 186.088 445.12 189 481 189 C 516.88 189 546 186.088 546 182.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(421 192.2859)" fill="white">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="31.696" y="16">Service </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="white" x="28.304" y="35.46411">Registry</tspan>
+        </text>
+      </g>
+      <g id="Line_17">
+        <path d="M 291.5703 416 C 288.3248 401.51677 291.37684 380.6185 312.1795 351.92308 C 338.8089 315.19017 387.60163 275.23105 425.90783 246.84315" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_18">
+        <rect x="267.36034" y="295.47537" width="164.416" height="29.46411" fill="white"/>
+        <text transform="translate(272.36034 300.47537)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="5400125e-19" y="16">2. Service Discovery</tspan>
+        </text>
+      </g>
+      <g id="Line_20">
+        <path d="M 744.0326 330 C 739.322 309.77486 729.63546 289.78564 712.1795 272.4359 C 674.4708 234.9567 610.08075 219.31116 558.81824 212.84794" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_21">
+        <rect x="607.4437" y="236.10043" width="153.12" height="29.46411" fill="white"/>
+        <text transform="translate(612.4437 241.10043)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">1. Service Register</tspan>
+        </text>
+      </g>
+      <g id="Line_22">
+        <path d="M 371.6499 420.40745 C 407.73684 408.45685 457.65873 394.18705 515.13964 383.97436 C 567.9865 374.585 616.0929 370.6024 653.1048 369.06687" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_23">
+        <line x1="372.5" y1="443" x2="653.1" y2="443" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_24">
+        <path d="M 371.1665 466.42393 C 395.9194 473.94185 429.16433 482.3119 472.4359 490 C 535.08426 501.1308 603.1086 508.0532 653.1403 512.0983" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_25">
+        <rect x="452" y="404" width="146.288" height="29.46411" fill="white"/>
+        <text transform="translate(457 409)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="22737368e-20" y="16">3. Load Balancing</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
