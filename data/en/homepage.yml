@@ -128,7 +128,7 @@ funfacts:
   funfact_item:
     # funfact item loop
     - name : "Published Books"
-      count : "7"
+      count : "8"
       link : "https://lib.jimmysong.io/#books"
 
     # funfact item loop

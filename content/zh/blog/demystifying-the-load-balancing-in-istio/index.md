@@ -9,6 +9,12 @@ type: "post"
 image: "images/banner/load-balance.jpg"
 ---
 
+{{<callout note 编者按>}}
+
+本文介绍了 Istio 中支持的负载均衡类型，然后提出多集群网格负载均衡的解决方案。如果您已经了解 Istio 中负载均衡，可以直接从[多集群网格中的负载均衡](#multicluster)部分开始阅读。
+
+{{</callout>}}
+
 在之前的博客[为什么在使用了 Kubernetes 后你可能还需要 Istio](https://jimmysong.io/blog/why-do-you-need-istio-when-you-already-have-kubernetes/) 中提到 Istio 是在 Kubernetes 的基础之上构建起来的，Kubernetes 中的组件 kube-proxy 本身已有负载均衡功能，但是只支持四层流量的负载均衡，而且无法实现服务超时、熔断等高级功能。具体来说，服务网格比起 Kubernetes 新增了以下负载均衡及韧性（Resiliency）特性：
 
 1. **Layer 7 负载均衡**：服务网格在应用层（Layer 7）操作和管理流量，可以更细粒度地识别和控制流量。这使得它可以实现更高级的负载均衡策略，如基于 HTTP 请求头、URL 路径、Cookie 等的路由和流量分发。
