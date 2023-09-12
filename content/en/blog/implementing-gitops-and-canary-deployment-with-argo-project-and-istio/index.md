@@ -161,7 +161,7 @@ argocd app create bookinfo-app --repo https://github.com/tetrateio/tse-gitops-de
 
 ```
 
-Note: We set `replicas` to `0` in the `[reviews` Deployment](https://github.com/tetrateio/tse-gitops-demo/blob/main/application/bookinfo.yaml#L151) because we will create Argo Rollouts to manipulate the number of instances of the `reviews` service. If you set it to a non-zero positive integer here, we will not be able to achieve canary deployment.
+Note: We set `replicas` to `0` in the [`reviews` Deployment](https://github.com/tetrateio/tse-gitops-demo/blob/main/application/bookinfo.yaml#L151) because we will create Argo Rollouts to manipulate the number of instances of the `reviews` service. If you set it to a non-zero positive integer here, we will not be able to achieve canary deployment.
 
 Now you can open the ArgoCD UI in your browser, as shown in Figure 4.
 

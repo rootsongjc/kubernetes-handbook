@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-4644 -807 703 486" width="703" height="486">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Argo_Rollouts_with_Istio" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1">
+    <title>Argo Rollouts with Istio</title>
+    <rect fill="white" x="-4644" y="-807" width="703" height="486"/>
+    <g id="Argo_Rollouts_with_Istio_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_40">
+        <rect x="-4643.1496" y="-785.4396" width="702.0252" height="463.7073" fill="white"/>
+      </g>
+      <g id="Graphic_38">
+        <rect x="-4257.025" y="-584.8884" width="286.2992" height="70.86614" fill="white"/>
+        <path d="M -4257.025 -584.8884 L -3970.726 -584.8884 L -3970.726 -514.02225 L -4257.025 -514.02225 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" stroke-width="1"/>
+      </g>
+      <g id="Graphic_2">
+        <rect x="-4535.433" y="-762.5197" width="128.97638" height="51.02362" fill="#f15623"/>
+        <text transform="translate(-4530.433 -746.2319)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="10.75219" y="15">VirtualService</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="-4612.677" y="-603.7795" width="128.97638" height="51.02362" fill="black"/>
+        <text transform="translate(-4607.677 -587.4917)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="6.89619" y="15">Service: stable</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="-4455.3544" y="-603.7795" width="128.97638" height="51.02362" fill="black"/>
+        <text transform="translate(-4450.3544 -587.4917)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="4.5281897" y="15">Service: canary</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <path d="M -4470.945 -711.4961 L -4470.945 -657.6378 L -4548.189 -657.6378 L -4548.189 -613.6795" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_7">
+        <path d="M -4470.945 -711.4961 L -4470.945 -657.6378 L -4390.866 -657.6378 L -4390.866 -613.6795" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9">
+        <rect x="-4612.677" y="-469.13386" width="128.97638" height="70.86614" fill="black"/>
+        <text transform="translate(-4607.677 -442.9248)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="20.82419" y="15">ReplicaSet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <rect x="-4455.3544" y="-469.13386" width="128.97638" height="70.86614" fill="black"/>
+        <text transform="translate(-4450.3544 -442.9248)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="20.82419" y="15">ReplicaSet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <rect x="-4561.117" y="-697.4418" width="180.34375" height="24" fill="white"/>
+        <text transform="translate(-4556.117 -692.4418)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Route and change hosts’ weight</tspan>
+        </text>
+      </g>
+      <g id="Line_12">
+        <line x1="-4548.189" y1="-552.7559" x2="-4548.189" y2="-479.03386" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_13">
+        <line x1="-4390.866" y1="-552.7559" x2="-4390.866" y2="-479.03386" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_16">
+        <rect x="-4577.995" y="-522.9449" width="214.0996" height="24" fill="white"/>
+        <text transform="translate(-4572.9947 -517.9449)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Select with rollouts-pod-template-hash</tspan>
+        </text>
+      </g>
+      <g id="Graphic_17"/>
+      <g id="Graphic_18">
+        <text transform="translate(-4219.7076 -355.0945)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="3410605e-19" y="16">Subset based traffic routing</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <rect x="-4178.364" y="-762.5197" width="128.97638" height="51.02362" fill="#f15623"/>
+        <text transform="translate(-4173.364 -746.2319)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="10.75219" y="15">VirtualService</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="-4586.0104" y="-391.1811" width="230.13086" height="24" fill="white"/>
+        <text transform="translate(-4581.0104 -386.1811)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Label rollouts-pod-template-hash injected</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <rect x="-4236.8764" y="-571.256" width="88.67874" height="51.02362" fill="black"/>
+        <text transform="translate(-4231.8764 -567.7442)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="12.035371" y="17">Subset</tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="white" y="17">: </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="white" x="16.97937" y="39">stable</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="-4178.364" y="-666.88786" width="128.97638" height="51.02362" fill="#f15623"/>
+        <text transform="translate(-4173.364 -650.60005)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="3.1841897" y="15">DestinationRule</tspan>
+        </text>
+      </g>
+      <g id="Graphic_26">
+        <rect x="-4257.025" y="-469.13386" width="128.97638" height="70.86614" fill="black"/>
+        <text transform="translate(-4252.025 -442.9248)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="20.82419" y="15">ReplicaSet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="-4099.7024" y="-469.13386" width="128.97638" height="70.86614" fill="black"/>
+        <text transform="translate(-4094.7024 -442.9248)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="20.82419" y="15">ReplicaSet</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <rect x="-4228.941" y="-391.1811" width="230.13086" height="24" fill="white"/>
+        <text transform="translate(-4223.941 -386.1811)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Label rollouts-pod-template-hash injected</tspan>
+        </text>
+      </g>
+      <g id="Line_31">
+        <line x1="-4113.8756" y1="-711.4961" x2="-4113.8756" y2="-676.78786" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_32">
+        <rect x="-4210.3844" y="-706.0965" width="193.01758" height="24" fill="white"/>
+        <text transform="translate(-4205.3844 -701.0965)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Route and change subsets’ weight</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <rect x="-4079.5536" y="-571.256" width="88.67874" height="51.02362" fill="black"/>
+        <text transform="translate(-4074.5536 -564.1922)" fill="white">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="11.923371" y="15">Subset: </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="white" x="15.33937" y="33.448">canary</tspan>
+        </text>
+      </g>
+      <g id="Line_34">
+        <path d="M -4113.8756 -615.8642 L -4113.8756 -593.5601 L -4192.537 -593.5601 L -4192.537 -581.156" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_35">
+        <path d="M -4113.8756 -615.8642 L -4113.8756 -593.5601 L -4035.214 -593.5601 L -4035.214 -581.156" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_36">
+        <line x1="-4192.537" y1="-520.2324" x2="-4192.537" y2="-479.03386" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_37">
+        <line x1="-4035.214" y1="-520.2324" x2="-4035.214" y2="-479.03386" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_30">
+        <rect x="-4220.9254" y="-506.68313" width="214.0996" height="24" fill="white"/>
+        <text transform="translate(-4215.9254 -501.68313)" fill="black">
+          <tspan font-family="Helvetica" font-size="12" fill="black" x="0" y="11">Select with rollouts-pod-template-hash</tspan>
+        </text>
+      </g>
+      <g id="Graphic_39">
+        <rect x="-4145.4036" y="-560.4763" width="63.056" height="29.46411" fill="white"/>
+        <text transform="translate(-4140.4036 -554.9682)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x=".015999878" y="15">Service</tspan>
+        </text>
+      </g>
+      <g id="Graphic_41">
+        <text transform="translate(-4568.177 -355.0945)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="black" x="0" y="16">Host based traffic routing</tspan>
+        </text>
+      </g>
+      <g id="Graphic_42">
+        <rect x="-4632.874" y="-772.44095" width="323.85827" height="412.34646" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_43">
+        <rect x="-4275.805" y="-772.44095" width="323.85827" height="412.34646" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

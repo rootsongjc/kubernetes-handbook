@@ -3,7 +3,7 @@ title: "Istio 中的负载均衡详解及多集群路由实践"
 draft: false
 date: 2023-09-07T20:16:49+08:00
 description: "Istio 负载均衡详解尤其是多集群如何实现路由与负载均衡的，并给出一个多集群路由的演示。"
-tags: ["Istio"]
+tags: ["Istio","负载均衡","多集群"]
 categories: ["Istio"]
 type: "post"
 image: "images/banner/load-balance.jpg"
