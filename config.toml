@@ -279,6 +279,11 @@ URL = "https://cloudnative.to"
 weight = 5
 
 [[Languages.zh.menu.main]]
+name = "视频"
+URL = "https://space.bilibili.com/515485124"
+weight = 6
+
+[[Languages.zh.menu.main]]
 name = "标签"
 URL = "tags"
 weight = 7
