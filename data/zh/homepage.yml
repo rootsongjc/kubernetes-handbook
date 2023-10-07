@@ -3,14 +3,14 @@ slider:
   enable : true
   bg_image : "/images/backgrounds/kubecon-shanghai.jpg"
   slider_item:
-    - title : "KubeCon&CloudNativeCon China 2023"
-      content : "云赋创新，无处不在。9 月 26 至 28 日，KubeCon China 将在上海跨国采购中心举行，还有多场通场活动，欢迎报名参加。"
-      animation_in : "left"
-      animation_out : "right"
-      button:
-        enable : true
-        label : "了解详情"
-        link : "https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/"
+    #  - title : "KubeCon&CloudNativeCon China 2023"
+    #    content : "云赋创新，无处不在。9 月 26 至 28 日，KubeCon China 将在上海跨国采购中心举行，还有多场通场活动，欢迎报名参加。"
+    #    animation_in : "left"
+    #    animation_out : "right"
+    #    button:
+    #      enable : true
+    #      label : "了解详情"
+    #      link : "https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/"
     - title : "最新译作《Istio 最佳实战》出版"
       content : "*Istio in Action* 中文版出版，基于 Istio 1.15 撰写。本书以 Istio 服务网格为核心，内容包括基本概念、核心功能、运维、企业级落地四大部分，从基本的安装部署到功能实践，从底层原理分析到故障排查，从进阶操作到企业级实战，由浅入深地介绍了 Istio 服务网格的各个方面。"
       animation_in : "left"
