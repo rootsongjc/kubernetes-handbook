@@ -1,13 +1,19 @@
 ---
 title: "使用 Argo 项目 Istio 及 SkyWalking 实现 GitOps 和金丝雀部署"
 description: "本文讨论如何使用 Kubernetes Deployment、Argo 项目和 Istio 来实现 GitOps 和金丝雀部署。"
-date: 2023-08-31T10:18:40+08:00
-draft: true
+date: 2023-10-21T10:18:40+08:00
+draft: false
 tags: ["istio","argo","argo cd","skywalking"]
 categories: ["Istio"]
 type: "post"
 image: "images/banner/argo-sk-istio.jpg"
 ---
+
+{{<callout note 关于本文>}}
+
+本文根据笔者在 KubeCon&CloudNativeCon China 2023 的通话仓活动 [IstioCon China](https://istioconchina2023.sched.com/event/1RoVG/nano-argo-istio-re-skywalking-jiong-gitops-reqi-zha-yao-pi-how-to-achieve-the-perfect-union-of-gitops-and-observability-with-argo-istio-and-skywalking-jimmy-song-tetrate) 上的分享整理而成，原标题为《如何在 Argo、Istio 和 SkyWalking 中实现 GitOps 和可观察性的完美结合》。
+
+{{</callout>}}
 
 云原生应用的发展导致开发左移，应用迭代频率更高，这就催生了 GitOps 的需求。本文将介绍如何使用 Argo 项目，包括 ArgoCD 和 Argo Rollouts，通过 Istio 实现 GitOps 和金丝雀部署。文中还有一个演示，展示了如何基于 Tetrate Service Express（也适用于 Tetrate Service Bridge）提供的 Istio 环境实现 GitOps。
 
