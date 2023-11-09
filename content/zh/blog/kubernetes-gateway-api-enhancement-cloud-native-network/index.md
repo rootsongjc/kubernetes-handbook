@@ -2,7 +2,7 @@
 title: "Kubernetes Gateway API 如何增强云原生网络"
 draft: false
 date: 2023-11-09T17:10:49+08:00
-description: "我很高兴呈现 Istio 的最新版本— Istio 1.19。这篇博客将概述此版本中的更新内容。"
+description: "Kubernetes Gateway API 和 Backstage 的结合标志着 Kubernetes 生态系统内 Gateway 能力的重要里程碑。"
 categories: ["Kubernetes"]
 tags: ["Istio","Gateway","Gateway API","Kubernetes","Backstage"]
 type: "post"
