@@ -33,6 +33,14 @@
             {{ .Content }}
           </div>
 
+          <!-- mermaid diagram -->
+          {{ if .Page.Store.Get "hasMermaid" }}
+           <script type="module">
+             import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.esm.min.mjs';
+             mermaid.initialize({ startOnLoad: true });
+           </script>
+          {{ end }}
+
           <div class="col-12 mb-4">
             <div class="border-bottom">
             {{ partial "edit_page.html" . }}
