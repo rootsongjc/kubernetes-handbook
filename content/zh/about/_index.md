@@ -22,11 +22,11 @@ description : "宋净超（Jimmy Song）的简介。"
 
 **译本**
 
-- [Quarkus 实战 - 专为 Kubernetes 而优化的 Java 解决方案，2021 年 3 月，机械工业出版社](https://lib.jimmysong.io/book/quarkus-cookbook/)
 - [Cloud Native Go - 构建基于 Go 和 React 的云原生 Web 应用与微服务，2017 年 8 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-go/)
 - [Cloud Native Python - 使用 Python 和 React 构建云原生应用，2018 年 7 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-python/)
 - [Cloud Native Java - 使用 Java 构建云原生应用，2018 年 7 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-java/)
 - [云原生模式，2020 年 8 月，电子工业出版社](https://lib.jimmysong.io/book/cloud-native-patterns/)
+- [Quarkus 实战 - 专为 Kubernetes 而优化的 Java 解决方案，2021 年 3 月，机械工业出版社](https://lib.jimmysong.io/book/quarkus-cookbook/)
 - [Istio 最佳实战，2023 年 6 年，电子工业出版社](https://lib.jimmysong.io/book/istio-in-action/)
 
 ## 关注领域
@@ -48,6 +48,10 @@ ServiceMesher 社区是由一群拥有相同价值观和理念的志愿者们共
 ## 发表的演讲及参与的活动
 
 以下是 Jimmy 历年来发表的演讲及参与的活动。
+
+### 2023 年
+
+- 2023 年 10 月 | 上海 | [KubeCon&CloudNativeCon China 同场活动 IstioCon China 2023](https://istioconchina2023.sched.com/) | 如何在 Argo、Istio 和 SkyWalking 中实现 GitOps 和可观察性的完美结合
 
 ### 2022 年
 
