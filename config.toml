@@ -107,6 +107,10 @@ AdSenseClientID = "ca-pub-4029167986768912"
 anchored = true # add anchor on each head title in the blog article content
 code_copy_button = true
 back_to_top_button = true
+# top header
+top_header = true
+top_header_content = "最新译作《Istio 最佳实战》出版，[了解详情](https://item.jd.com/14057890.html)"
+#top_header_content = '按 `/` 键或点击搜索按钮可以检索本站博客'
 
 # Preloader
 [params.preloader]
@@ -173,11 +177,11 @@ languageName = "English"
 languageCode = "en-us"
 contentDir = "content/en"
 weight = 1
+
+[Languages.en.params]
 home = "Home"
 # copyright
 copyright = "&copy; 2017-2023 Jimmy Song All Right Reserved"
-
-# top header
 top_header = true
 top_header_content = "[Download the eBook: The Current State and Future of the Istio Service Mesh](https://bit.ly/3Vqrlfw)"
 
@@ -248,14 +252,11 @@ URL = "https://academy.tetrate.io/courses/istio-fundamentals"
 languageName = "中文"
 languageCode = "zh"
 contentDir = "content/zh"
+[Languages.zh.params]
 home = "主页"
 title = "Jimmy Song - 专注于探索后 Kubernetes 时代的云原生新范式"
 # copyright
 copyright = "&copy; 2017-2023 Jimmy Song 保留所有权利"
-# top header
-top_header = true
-top_header_content = "最新译作《Istio 最佳实战》出版，[了解详情](https://item.jd.com/14057890.html)"
-#top_header_content = '按 `/` 键或点击搜索按钮可以检索本站博客'
 
 # main menu
 [[Languages.zh.menu.main]]

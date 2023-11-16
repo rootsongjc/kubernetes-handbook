@@ -9,7 +9,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 description : "宋净超（Jimmy Song）的简介。"
 ---
 
-宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)创始人，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人，生活在北京。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)。
+宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](http://cloudnative.to)创始人，[CNCF Ambassador](https://www.cncf.io/people/ambassadors/)，前蚂蚁集团云原生布道师及开源管理负责人，云原生领域畅销书作译者，电子工业出版社图书出品人，独立撰稿人，生活在北京。[Kubernetes](https://kubernetes.io)、[Istio](https://istio.io) 等开源技术的早期使用及推广者。曾就职于[科大讯飞](https://www.iflytek.com)、[TalkingData](https://www.talkingdata.com) 和[蚂蚁集团](https://www.antgroup.com)。
 
 ## 出版物
 
