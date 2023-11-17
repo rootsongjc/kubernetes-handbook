@@ -1,6 +1,6 @@
 ---
-title: "迈向未来：Istio 1.20 服务网格的全新篇章"
-draft: true
+title: "Istio 1.20 有哪些更新？"
+draft: false
 date: 2023-11-10T06:27:49+08:00
 description: "Istio 1.20 带来关键更新：全面支持 Gateway API、ExternalName 优化、Envoy 过滤器统一排序等，提升服务网格灵活性和性能。" 
 categories: ["Istio"]
