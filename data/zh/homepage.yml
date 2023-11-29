@@ -102,7 +102,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](https://cloudnative.to) 创始人，作家，摄影及航拍爱好者。"
+  content : "宋净超（Jimmy Song），[Tetrate](https://tetrate.io) 布道师，[云原生社区](https://cloudnative.to) 创始人，CNCF Ambassador，云原生技术专家、作者。"
   button:
     enable : true
     label : "详细介绍"
