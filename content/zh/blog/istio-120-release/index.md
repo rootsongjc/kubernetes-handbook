@@ -19,10 +19,10 @@ Istio 1.20 全面支持 Kubernetes Gateway API，并已正式发布（GA）。�
 
 在服务发现领域，Istio 1.20 对于`ExternalName`服务的处理进行了重要更新（见 [Better support ExternalName #37331](https://github.com/istio/istio/issues/37331)），使得 Istio 的行为更加符合 Kubernetes 的行为。这个变化简化了配置，并使得 Istio 能够更好地处理 DNS，对于依赖于外部终点的服务至关重要。关于 ExternalName 服务的更多信息，你可以参考 [Kubernetes 官方文档](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#externalname)。
 
-`ExternalName` 和 Istio 中的 `ServiceEntry` 都可以用于处理服务发现，特别是引入Kubernetes集群之外的服务，但有一些关键区别：
+`ExternalName` 和 Istio 中的 `ServiceEntry` 都可以用于处理服务发现，特别是引入 Kubernetes 集群之外的服务，但有一些关键区别：
 
 - `ExternalName` 是 Kubernetes 的原生 Service 类型，相当于给集群外部服务这设置了一个别名，使得外部服务在 Kubernetes 内部的表现与原生 Service 保持一致，从而可以统一管理和使用内部和外部服务。你可以先定义 `ExternalName` 类型的服务，如果后来你决定将服务移到集群中，则可以启动其 Pod，添加适当的选择算符或端点并更改服务的类型。使用时需要注意不要在多个命名空间中使用相同的 `ExternalName`，可能会引起命名冲突或混淆。
-- `ServiceEntry` 是 Istio特有的配置对象，它提供了更灵活的控制，可以描述网格内或网格外的服务，以及指定特定的协议、端口等属性。例如，可以使用`ServiceEntry`将网格内服务访问网格外的服务，或者定义自定义的服务入口点。
+- `ServiceEntry` 是 Istio 特有的配置对象，它提供了更灵活的控制，可以描述网格内或网格外的服务，以及指定特定的协议、端口等属性。例如，可以使用`ServiceEntry`将网格内服务访问网格外的服务，或者定义自定义的服务入口点。
 
 ## 其他更新
 
@@ -36,7 +36,7 @@ Istio 1.20 全面支持 Kubernetes Gateway API，并已正式发布（GA）。�
 
 **可插拔的根证书轮换：** 加强了安全性，Istio 现在支持可插拔的根证书轮换，增强了服务网格在使用更新的加密凭证时保持服务间信任的能力。
 
-**Sidecar 容器中的 StartupProbe:** 为了改善启动时间，Istio 在Sidecar容器中引入了`startupProbe`，它可以在初始阶段进行积极的轮询，而不会在整个 Pod 的生命周期中持续存在。
+**Sidecar 容器中的 StartupProbe:** 为了改善启动时间，Istio 在 Sidecar 容器中引入了`startupProbe`，它可以在初始阶段进行积极的轮询，而不会在整个 Pod 的生命周期中持续存在。
 
 **OpenShift 安装增强：** 通过去除某些特权要求，Istio 简化了在 OpenShift 上的安装过程，从而降低了 OpenShift 用户的使用门槛。
 
