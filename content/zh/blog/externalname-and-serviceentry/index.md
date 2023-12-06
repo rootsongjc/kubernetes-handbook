@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/externalname.jpg"
 ---
 
-随着 Kubernetes 不断演进，Istio功能逐渐在 Kubernetes 中找到对应实现，如 [Sidecar 容器](https://kubernetes.io/blog/2023/08/25/native-sidecar-containers/)、[Gateway API](https://gateway-api.sigs.k8s.io/) 以及本文的主题 [ExternalName](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#externalname)。ExternalName 和 ServiceEntry 都能起到引入 Kubernetes 集群外部服务的作用，但是它们的功能和使用场景也有所区别，本文将为你详细解析。
+随着 Kubernetes 不断演进，Istio 功能逐渐在 Kubernetes 中找到对应实现，如 [Sidecar 容器](https://kubernetes.io/blog/2023/08/25/native-sidecar-containers/)、[Gateway API](https://gateway-api.sigs.k8s.io/) 以及本文的主题 [ExternalName](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#externalname)。ExternalName 和 ServiceEntry 都能起到引入 Kubernetes 集群外部服务的作用，但是它们的功能和使用场景也有所区别，本文将为你详细解析。
 
 ## ExternalName vs ServiceEntry
 
@@ -17,10 +17,10 @@ image: "images/banner/externalname.jpg"
 
 | 特性/用例      | ExternalName                   | ServiceEntry                                                 |
 | -------------- | ------------------------------ | ------------------------------------------------------------ |
-| **流量控制**   | 有限，仅支持TCP和UDP           | 更灵活，支持TCP、UDP、HTTP等多种协议，可以指定端口、TLS等选项 |
+| **流量控制**   | 有限，仅支持 TCP 和 UDP           | 更灵活，支持 TCP、UDP、HTTP 等多种协议，可以指定端口、TLS 等选项 |
 | **服务发现**   | 适用于外部服务的简单别名       | 适用于描述网格内外服务，包括外部和内部服务的详细配置         |
 | **配置复杂性** | 简单，适用于基本的服务发现需求 | 较复杂，适用于需要高级流量控制和详细配置的场景               |
-| **TLS支持**    | 有限，较简单                   | 更丰富的TLS支持，可以指定证书等详细选项                      |
+| **TLS 支持**    | 有限，较简单                   | 更丰富的 TLS 支持，可以指定证书等详细选项                      |
 | **安全性**     | 较基本，适用于简单的用例       | 更强大的安全性支持，可以定义 `subjectAltNames` 等选项        |
 | **用途**       | 适用于简单的外部服务别名       | 适用于复杂的流量管理和服务发现需求，尤其是在多协议和复杂网络拓扑中 |
 
@@ -33,7 +33,7 @@ image: "images/banner/externalname.jpg"
 
 **ServiceEntry 的使用情况：**
 
-1. **复杂流量控制需求：** 需要更复杂的流量控制，如指定协议、端口、TLS选项等，选择 `ServiceEntry`。
+1. **复杂流量控制需求：** 需要更复杂的流量控制，如指定协议、端口、TLS 选项等，选择 `ServiceEntry`。
 2. **描述网格内外服务：** 需要描述网格内外服务，包括外部和内部服务的详细配置，`ServiceEntry` 更适合。
 3. **对服务详细属性有要求：** 需要为服务定义特殊属性，如 `subjectAltNames` 等，需使用 `ServiceEntry`。
 
