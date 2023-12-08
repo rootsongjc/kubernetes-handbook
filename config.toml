@@ -85,8 +85,9 @@ link = "plugins/bigger-picture/bigger-picture.min.js"
 
 #################### default parameters ################################
 [params]
-logo = "images/logo.svg"
+#logo = "images/logo.svg"
 # Meta data
+header_title = "云原生博客"
 description = "宋净超（Jimmy Song）的个人博客，专注于探索后 Kubernetes 时代的云原生新范式。"
 author = "Jimmy Song"
 # contact info
@@ -180,8 +181,9 @@ weight = 1
 
 [Languages.en.params]
 home = "Home"
+header_title = "Cloud Native Blog"
 # copyright
-copyright = "&copy; 2017-2023 Jimmy Song All Right Reserved"
+copyright = "&copy; 2017-2024 Jimmy Song All Right Reserved"
 top_header = true
 top_header_content = "[Download the eBook: The Current State and Future of the Istio Service Mesh](https://bit.ly/3Vqrlfw)"
 
@@ -256,7 +258,7 @@ contentDir = "content/zh"
 home = "主页"
 title = "Jimmy Song - 专注于探索后 Kubernetes 时代的云原生新范式"
 # copyright
-copyright = "&copy; 2017-2023 Jimmy Song 保留所有权利"
+copyright = "&copy; 2017-2024 Jimmy Song 保留所有权利"
 
 # main menu
 [[Languages.zh.menu.main]]

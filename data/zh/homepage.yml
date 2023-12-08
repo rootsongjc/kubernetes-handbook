@@ -98,7 +98,7 @@ banner_feature:
 ############################## about ##################################
 about:
   enable : true
-  title : "关于 Jimmy Song"
+  title : "关于博主"
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
@@ -183,7 +183,7 @@ blog:
 
 ############################ footer ###############################
 footer:
-  content : "扫码关注我的微信公众号"
+  content : "几米宋的微信公众号"
   footer_image: "/images/servicemesher-wechat.webp"
   address : "中国，上海"
   email : "jimmysong@jimmysong.io"

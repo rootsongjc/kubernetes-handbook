@@ -20,8 +20,13 @@
   <div class="navigation w-100 {{ if .Site.Params.top_header }} top-hider {{ end }}">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light p-0">
-        <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}"><img class="img-fluid" width="200px"
-            src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}"></a>
+        <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
+            {{ if .Site.Params.logo }}
+            <img class="img-fluid" width="200px" src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">
+            {{ else }}
+            <b>{{ .Site.Params.header_title | upper}}</b>
+            {{ end }}
+        </a>
         <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
