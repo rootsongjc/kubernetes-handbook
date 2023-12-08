@@ -79,7 +79,7 @@ about:
   partner_enabled: false
   funfacts_enabled: false
   image: "/images/jimmy-song-avatar.webp"
-  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), [Cloud Native Community(China)](https://cloudnative.to) founder, cloud native expert, author.'
+  content : 'Jimmy is a developer advocate at [Tetrate](https://tetrate.io), CNCF Ambassador, [Cloud Native Community(China)](https://cloudnative.to) founder, cloud native expert, author.'
   button:
     enable : true
     label : "Learn more"
@@ -154,7 +154,7 @@ blog:
 
 ############################# footer ##############################
 footer:
-  content : "Fellow me on twitter"
+  content : "Jimmy's Twitter"
   button_link : "https://twitter.com/jimmysongio"
   footer_image : "images/jimmysong-twitter-qr-code.webp"
   address : "Shanghai, China"
