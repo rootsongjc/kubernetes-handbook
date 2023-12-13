@@ -183,7 +183,7 @@ EOF
 Istio 1.16 支持使用 Apache SkyWalking 进行分布式追踪，执行下面的代码安装 SkyWalking：
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.16/samples/addons/extras/skywalking.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/addons/extras/skywalking.yaml
 ```
 
 它将在 `istio-system` 命名空间下安装：
@@ -202,6 +202,14 @@ kubectl label namespace default istio-injection=enabled
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 ```
+
+然后给 productpage 服务发送请求，如果你是在 Kind 中安装的 Istio，则默认的 IngressGateway 将是 LoadBalancer 类型，你可以使用端口转发的方式来暴露网关。
+
+```bash
+kubectl port-forward -n istio-system svc/istio-ingressgateway 8081:80
+```
+
+通过 `http://localhost:8081/productpage` 就可以访问到 productpage 服务。多访问几次来制造一些流量，后面我们就能在 SkyWalking UI 上看到拓扑图了。
 
 打开 SkyWalking UI：
 
