@@ -152,13 +152,11 @@ $ istioctl experimental precheck
   To get started, check out https://istio.io/latest/docs/setup/getting-started/
 ```
 
-然后安装 Istio 同时配置发送追踪信息的目的地为 SkyWalking：
+然后使用 `istioctl` 安装 Istio 同时配置发送追踪信息的目的地为 SkyWalking：
 
 ```bash
-# 初始化 Istio Operator
-istioctl operator init
-# 安装 Istio 并配置使用 SkyWalking
-kubectl apply -f - <<EOF
+# 将安装配置保存到文件中
+cat<<EOF>istio-install.yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
@@ -176,6 +174,9 @@ spec:
         service: tracing.istio-system.svc.cluster.local
         port: 11800
 EOF
+
+# 使用 istioctl 安装 Istio
+istioctl install -f istio-install.yaml
 ```
 
 ### 部署 Apache SkyWalking {#install-skywalking}
