@@ -2,9 +2,9 @@
 title: "Istio 社区周报（第 1 期）"
 draft: false
 date: 2023-12-18T10:27:49+08:00
-description: "这是 Istio 社区周报第一期，汇总 Istio 社区最近一周的新闻和动态。"
+description: "这是 Istio 社区周报第一期，汇总 Istio 社区最近一周的新闻和动态。本期覆盖的时间范围为 2023 年 12 月 11 日到 17 日。"
 categories: ["Istio"]
-tags: ["Istio","Istio每周"]
+tags: ["Istio","Istio Weekly"]
 type: "post"
 image: "images/banner/istio-weekly-01.jpg"
 ---
