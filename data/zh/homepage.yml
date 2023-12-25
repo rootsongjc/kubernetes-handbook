@@ -171,7 +171,7 @@ funfacts:
 
     # funfact item loop
     - name : "社区成员"
-      count : "11707"
+      count : "11892"
       link : "https://cloudnative.to"
 
 # funfact is for about page
@@ -183,7 +183,7 @@ blog:
 
 ############################ footer ###############################
 footer:
-  content : "几米宋的微信公众号"
+  content : "Jimmy Song 的微信公众号"
   footer_image: "/images/servicemesher-wechat.webp"
   address : "中国，上海"
   email : "jimmysong@jimmysong.io"
