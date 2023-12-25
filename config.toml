@@ -1,6 +1,6 @@
 ######################## default configuration ####################
 baseURL = "https://jimmysong.io"
-title = "Jimmy Song's blog"
+title = "Jimmy Song's Cloud Native Blog"
 # post pagination
 paginate = "10"
 # post excerpt
@@ -88,7 +88,7 @@ link = "plugins/bigger-picture/bigger-picture.min.js"
 #logo = "images/logo.svg"
 # Meta data
 header_title = "云原生博客"
-description = "宋净超（Jimmy Song）的个人博客，专注于探索后 Kubernetes 时代的云原生新范式。"
+description = "宋净超（Jimmy Song）的云原生博客，专注于探索后 Kubernetes 时代的云原生新范式。"
 author = "Jimmy Song"
 # contact info
 address = "Beijing, China"
