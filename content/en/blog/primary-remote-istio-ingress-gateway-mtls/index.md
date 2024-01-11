@@ -1,7 +1,7 @@
 ---
 title: "Deciphering Istio Multi-Cluster Authentication & mTLS Connection"
 draft: true
-date: 2023-12-27T11:27:49+08:00
+date: 2024-01-17T11:27:49+08:00
 description: "This blog deeply analyzes the initial authentication and mTLS connection process of remote gateways in Istio's primary-remote deployment mode."
 categories: ["Istio"]
 tags: ["Istio", "mTLS"]
@@ -81,3 +81,7 @@ This process is a key component of Istio's multi-cluster configuration, ensuring
 ## Conclusion
 
 In this blog, we explored how the gateway in a remote cluster initially authenticates to an external Istiod in Istio's primary-remote deployment. We explained how to create a Secret containing a kubeconfig to allow Istio in the primary cluster to access the remote cluster's API and how shared CA and service account tokens ensure the security of mTLS authentication. This process secures cross-cluster communication within the service mesh, providing key insights for understanding and implementing Istio's multi-cluster configuration.
+
+---
+
+*This blog was initially published at [tetrate.io](https://tetrate.io/blog/istio-multi-cluster-authentication-mtls/).*
