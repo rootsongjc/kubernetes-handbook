@@ -1,7 +1,7 @@
 ---
 title: "Enhancing Istio with TIS: Comprehensive Installation and Monitoring Guide"
-draft: true
-date: 2024-01-03T11:27:49+08:00
+draft: false
+date: 2024-01-10T11:27:49+08:00
 description: "In this blog, I’ll guide you through installing Tetrate Istio Subscription (TIS) and activating its monitoring add-on."
 categories: ["Istio"]
 tags: ["Istio","Grafana","Observability","TIS","Tetrate"]
@@ -211,3 +211,7 @@ kubectl delete namespace istio-system
 ## Conclusion
 
 By following these steps, you have successfully set up and tested monitoring in Istio using TIS. Enjoy the insights and advantages of enhanced monitoring in your Istio environment!
+
+---
+
+*This blog was initially published at [tetrate.io](https://tetrate.io/blog/enhancing-istio-with-tis-comprehensive-installation-and-monitoring-guide/).*
