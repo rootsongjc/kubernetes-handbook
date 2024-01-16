@@ -1,7 +1,7 @@
 ---
 title: "Deciphering Istio Multi-Cluster Authentication & mTLS Connection"
-draft: true
-date: 2024-01-17T11:27:49+08:00
+draft: false
+date: 2024-01-16T11:27:49+08:00
 description: "This blog deeply analyzes the initial authentication and mTLS connection process of remote gateways in Istio's primary-remote deployment mode."
 categories: ["Istio"]
 tags: ["Istio", "mTLS"]
