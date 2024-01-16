@@ -143,7 +143,7 @@ funfacts:
 
     # funfact item loop
     - name : "Community Members"
-      count : "11892"
+      count : "12009"
       link : "https://cloudnative.to"
 
 ############################# blog ################################
@@ -157,7 +157,7 @@ footer:
   content : "Jimmy's Twitter"
   button_link : "https://twitter.com/jimmysongio"
   footer_image : "images/jimmysong-twitter-qr-code.webp"
-  address : "Shanghai, China"
+  address : "Beijing, China"
   email : "jimmysong@jimmysong.io"
   subscribe_enable: false
   button_title: "Follow Me"
