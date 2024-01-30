@@ -2,7 +2,7 @@
 title: "【AI 创作试验】大话西游之齐天大圣帮派的崛起与覆灭：复仇、政治斗争和爱情故事"
 description: "我觉得大部分应该都看过周星驰的电影《大话西游》，因此就拿这部电影中的角色，使用 ChatGPT 来写神仙故事。在这个故事中，我创造了一个角色，其性格特点借鉴了《教父》电影中柯里昂。通过 ChatGPT 来创作这个故事，我们看到了 ChatGPT 的强大创作能力。希望大家喜欢这个故事，也希望 ChatGPT 能够继续为我们带来更多优秀的创意！"
 date: 2023-04-08T13:20:40+08:00
-draft: false
+draft: true
 tags: ["AI","ChatGPT"]
 categories: ["AI"]
 type: "post"
