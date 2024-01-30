@@ -5,6 +5,8 @@ draft: false
 bg_image: "images/backgrounds/page-title.webp"
 # meta description
 description : "本站为 Jimmy Song 的原创博客，投稿请转至[云原生社区](https://cloudnative.to)。"
+aliases:
+  - /blog/chatgpt-story-composing
 cascade:
   bg_image: "images/backgrounds/page-title.webp"
   editable: true

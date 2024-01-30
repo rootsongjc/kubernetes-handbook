@@ -222,7 +222,7 @@ weight = 7
 
 [[menu.footer]]
 name = "Tetrate Istio Distro"
-URL = "https://istio.tetratelabs.io/"
+URL = "https://docs.tetrate.io/istio-distro/"
 
 [[menu.footer]]
 name = "Cloud Native Community(China)"
