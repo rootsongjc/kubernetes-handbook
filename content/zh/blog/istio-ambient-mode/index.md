@@ -1,6 +1,6 @@
 ---
 title: "关于 Istio 推出 ambient 数据平面模式的看法"
-description: "本文介绍了 Ambient 模式并阐述了笔者对于 Istio 新推出的 ambient mesh（外围模式）的看法。"
+description: "本文介绍了 Ambient 模式并阐述了笔者对于 Istio 新推出的 ambient mesh（环境网格）的看法。"
 date: 2022-09-08T11:18:40+08:00
 draft: false
 tags: ["istio","sidecar","Ambient Mesh"]
@@ -9,7 +9,7 @@ type: "post"
 image: "images/banner/ambient.jpg"
 ---
 
-今天 [Istio 社区推出了 Ambient Mesh](https://lib.jimmysong.io/blog/introducing-ambient-mesh/)，这是一种新的 Istio 数据平面模式，旨在简化操作、扩大应用兼容性并降低基础设施成本。用户可以选择将 Ambient Mesh 集成到其基础设施的网格数据平面，放弃 sidecar 代理，同时保持 Istio 的零信任安全、遥测和流量管理等核心功能。该模式目前还是预览版，Istio 社区准备在未来几个月内将其推向生产就绪。
+今天 [Istio 社区推出了Ambient Mesh](https://lib.jimmysong.io/blog/introducing-ambient-mesh/)，这是一种新的 Istio 数据平面模式，旨在简化操作、扩大应用兼容性并降低基础设施成本。用户可以选择将 Ambient Mesh 集成到其基础设施的网格数据平面，放弃 sidecar 代理，同时保持 Istio 的零信任安全、遥测和流量管理等核心功能。该模式目前还是预览版，Istio 社区准备在未来几个月内将其推向生产就绪。
 
 Ambient Mesh 推出的消息对于社区来说可能显得有些突然，但其实关于 sidecar 模式对于资源的消耗过大，以及简化服务网格的呼声在社区里已经存在很久了，Google 从多年前就在寻求 HBONE（HTTP-Based Overlay Network Environment，基于 HTTP 的重叠网络环境）解决方案，还有社区提出的[多种 sidecar 部署模式](/blog/beyond-istio-oss/#sidecar-management)、[proxyless 模式](/blog/beyond-istio-oss/#proxyless-pattern) 等都是为了解决这个问题。
 

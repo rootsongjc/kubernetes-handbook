@@ -10,6 +10,9 @@
             {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }}
             {{ $spread := sub $max $min }} {{ $fontStep := div $fontSpread $spread }}
 
+            <div class="col-lg-12 ">
+                <h2 class="section-title">{{ i18n "tags" }}</h2>
+            </div>
             <div id="tag-cloud" style="padding: 5px 15px">
                 {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
                 {{ $currentTagCount := len $taxonomy.Pages }}
@@ -26,7 +29,7 @@
     <div class="container ">
         <div class="row ">
             <div class="col-lg-12 ">
-                <h2 class="section-title "></h2>
+                <h2 class="section-title mt-4">{{ i18n "categories" }}</h2>
             </div>
         </div>
         <div class="row col-12 content ">

@@ -78,7 +78,7 @@ function initSearch(force, fuse) {
 // Perform search.
 function searchAcademic(query, fuse) {
   let results = fuse.search(query);
-  // console.log({"results": results});
+  //console.log({"results": results});
 
   if (results.length > 0) {
     $('#search-hits').append('<p class="mt-0 hits-title">' + results.length + ' ' + i18n.results + '</p>');
@@ -174,7 +174,6 @@ if (typeof Fuse === 'function') {
   // Wait for Fuse to initialize.
   $.getJSON(search_config.indexURI, function (search_index) {
     let fuse = new Fuse(search_index, fuseOptions);
-
     // On page load, check for search query in URL.
     let query = getSearchQuery('q');
     if (query) {
