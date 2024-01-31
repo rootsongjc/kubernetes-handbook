@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><path d="M11.3 420.2h314.8l-196.7 59zm0-19.7l118.1-19.7V164.4zM149 380.8l177.1 19.7L149 7z" transform="matrix(.135536 0 0 .135536 9.135112 -.948751)" fill="#466bb0"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="64px" viewBox="0 0 44 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>istio</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="istio" transform="translate(0.666669, 0.000001)" fill="#0A55A7" fill-rule="nonzero">
+            <path d="M3.55271368e-15,56.0034752 L42.6667328,56.0034752 L16.0068016,64.0000992 L3.55271368e-15,56.0034752 Z M3.55271368e-15,53.333416 L16.0068016,50.6633568 L16.0068016,21.3333664 L3.55271368e-15,53.333416 Z M18.6633072,50.6633568 L42.6667328,53.333416 L18.6633072,2.44249065e-15 L18.6633072,50.6633568 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
