@@ -14,7 +14,9 @@ disableLanguages = [] # desable language from here
 pygmentsUseClasses=true
 
 [outputs]
-home = ["HTML", "RSS", "Algolia", "JSON"]
+# Comment Algolia, otherwise, the site search results will be repeated.
+#home = ["HTML", "RSS", "Algolia", "JSON"]
+home = ["HTML", "RSS", "JSON"]
 page = ["HTML"]
 
 [outputFormats.Algolia]

@@ -115,11 +115,11 @@ sequenceDiagram
 kubectl label namespace default istio-injection=enabled
 ```
 
-在 Istio 中部署 source-ip-app 应用测试。
+在 Istio 中部署 echo-server 应用测试。echo-server 是一个基于 Nginx 的服务器，用于回显客户端发送的请求信息，例如请求头、客户端地址、请求方法等。
 
 ```bash
-kubectl create deployment source-ip-app --image=registry.k8s.io/echoserver:1.4
-kubectl expose deployment source-ip-app --name=clusterip --port=80 --target-port=8080
+kubectl create deployment echo-server --image=registry.k8s.io/echoserver:1.4
+kubectl expose deployment echo-server --name=clusterip --port=80 --target-port=8080
 ```
 
 创建 Ingress Gateway：
@@ -175,7 +175,7 @@ kubectl logs -f deployment/sleep -n default -c istio-proxy
 查看 Source IP App 中的 Envoy 日志：
 
 ```bash
-kubectl logs -f deployment/source-ip-app -n default -c istio-proxy
+kubectl logs -f deployment/echo-server -n default -c istio-proxy
 ```
 
 获取网关公网 IP：
@@ -200,7 +200,7 @@ curl -H "Host: clusterip.jimmysong.io" $GATEWAY_IP
 
 | Pod 名称                              | Pod IP      |
 | ------------------------------------- | ----------- |
-| source-ip-app-6d9f5d97d7-fznrq        | 10.32.1.205 |
+| echo-server-6d9f5d97d7-fznrq          | 10.32.1.205 |
 | sleep-9454cc476-2dskx                 | 10.32.3.202 |
 | istio-ingressgateway-6c96bdcd74-zh46d | 10.32.1.221 |
 
@@ -304,7 +304,9 @@ IngressGatewayPod-->SourceIPAppPod
 sequenceDiagram
     participant C as Client<br>123.120.247.15
     participant LB as Load Balancer<br>35.188.212.88
+    box Node <br>10.128.0.54
     participant IG as Ingress Gateway<br>10.32.1.221
+    end
     participant S as Source IP App Pod<br>10.32.1.205
     C->>LB: Initial Request
     LB->>IG: Altered Request (IP Changed)<br>SNAT: 123.120.234.15 -> 10.128.0.54
@@ -423,10 +425,10 @@ IngressGatewayPod-->SourceIPAppPod
 将 Source IP App 中的流量拦截方式从 iptables 修改为 [tproxy](https://jimmysong.io/blog/what-is-tproxy/)：
 
 ```bash
-kubectl patch deployment -n default source-ip-app -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"TPROXY"}}}}}'
+kubectl patch deployment -n default echo-server -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"TPROXY"}}}}}'
 ```
 
-注意：此时 Source IP App 的 Pod 将会重建，新的 Pod 名称是 `source-ip-app-686d564647-r7nlq`，IP 地址是 10.32.1.140。
+注意：此时 Source IP App 的 Pod 将会重建，新的 Pod 名称是 `echo-server-686d564647-r7nlq`，IP 地址是 10.32.1.140。
 
 Curl 测试：
 
@@ -488,10 +490,10 @@ SleepPod-->SourceIPAppPod
 将 Source IP App 中的流量拦截方式恢复为 redirect：
 
 ```bash
-kubectl patch deployment -n default source-ip-app -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"REDIRECT"}}}}}'
+kubectl patch deployment -n default echo-server -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"REDIRECT"}}}}}'
 ```
 
-注意：此时 Source IP App 的 Pod 将会重建，新的 Pod 名称是 `source-ip-app-6d9f5d97d7-bgpk6`，IP 地址是 10.32.1.123。
+注意：此时 Source IP App 的 Pod 将会重建，新的 Pod 名称是 `echo-server-6d9f5d97d7-bgpk6`，IP 地址是 10.32.1.123。
 
 Curl 测试：
 
