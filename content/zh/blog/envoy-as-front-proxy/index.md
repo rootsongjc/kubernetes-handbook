@@ -7,7 +7,7 @@ categories: ["Envoy"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/envoy-as-front-proxy"
-image: "images/banner/envoyproxy.jpg"
+image: "images/banner/envoyproxy-3.jpg"
 draft: false
 ---
 

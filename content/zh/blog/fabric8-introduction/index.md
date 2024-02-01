@@ -5,7 +5,7 @@ title: "开源微服务管理平台 fabric8 简介"
 description: "本文介绍了开源的微服务管理平台 Fabric8。"
 categories: ["其他"]
 tags: ["fabric8","开源项目","微服务"]
-image: "images/banner/blog-banner.jpg"
+image: "images/banner/fabric8.jpg"
 aliases: "/posts/fabric8-introduction"
 type: "post"
 ---

@@ -8,7 +8,7 @@ categories: ["Kubernetes"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/docker-cli-to-kubectl"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-3.jpg"
 ---
 
 对于没有使用过 kubernetes 的 docker 用户，如何快速掌握 kubectl 命令？kubectl 跟 docker 命令之间有什么区别和联系？

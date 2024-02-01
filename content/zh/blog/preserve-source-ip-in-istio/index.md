@@ -54,10 +54,10 @@ sequenceDiagram
 
 在 Istio 服务网格中，Envoy 代理通常会将客户端 IP 添加到 HTTP 请求的 "X-Forwarded-For" 头部中。以下是确认客户端 IP 的步骤：
 
-1. **检查 X-Forwarded-For 头部**：包含请求路径上各代理的 IP 地址。
+1. **检查 x-forwarded-for 头部**：包含请求路径上各代理的 IP 地址。
 2. **选择最后一个 IP**：通常，最后一个 IP 是最接近服务器的客户端 IP。
 3. **验证 IP 的可信性**：检查代理服务器的信任度。
-4. **使用 X-Envoy-External-Address**：Envoy 可以设置此头部，包含客户端真实 IP。
+4. **使用 x-envoy-external-address**：Envoy 可以设置此头部，包含客户端真实 IP。
 
 详情请见 Envoy 文档中对 [`x-forwarded-for` 标头](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-forwarded-for)的说明。对于 TCP/IP 连接，可以通过协议字段解析客户端 IP。
 
@@ -337,6 +337,12 @@ graph TD;
 
 既然 Service 采用 Local 外部流量策略可以保留客户端的源 IP 地址，那为什么 Kubernetes 不默认采用呢？
 
+{{<callout note 说明>}}
+
+通过 Local 模式暴露服务以获取客户端源 IP 是一种对可靠性的妥协，如果大家有更好的方案欢迎推荐给我。
+
+{{</callout>}}
+
 Kubernetes 默认将 Service 的 `externalTrafficPolicy` 设置为 `Cluster` 而非 `Local`，主要是基于以下考虑：
 
 1. **负载均衡**：确保流量在所有节点之间平均分配，避免单个节点过载。
@@ -560,6 +566,20 @@ Sleep -->SourceIPApp
 
 实际上我们很难确定流量在到达 Istio Mesh 时究竟经过了几层代理，但你可以根据 `x-forwarded-for` 标头了解流量的转发路径。
 
+下图展示了 Envoy 如何根据 `x-forwarded-for` 标头和 `xff_num_trusted_hops`（对应 Istio 中的 `numTrustedProxies` 配置）来确认源 IP 的流程。详见 [Envoy 文档](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-forwarded-for)。
+
+```mermaid
+graph TD
+    A[Start] -->|use_remote_address is false| B[Check XFF]
+    A -->|use_remote_address is true| G[Check xff_num_trusted_hops]
+    B -->|XFF contains at least one IP| C[Use last IP in XFF]
+    B -->|XFF is empty| D[Use immediate downstream IP]
+    G -->|xff_num_trusted_hops > 0| H["Use (N)th IP from right in XFF"]
+    G -->|xff_num_trusted_hops <= 0| D
+    H -->|XFF contains >= N addresses| I[Use Nth address from right]
+    H -->|XFF contains < N addresses| D
+```
+
 执行下面的命令为入口网关开启受信代理数量配置：
 
 ```bash
@@ -598,9 +618,13 @@ Envoy 并不建议使用 Proxy 协议，因为它：
 
 ## 应用场景示例
 
+下面是常见的两个源 IP 地址的应用场景。
+
+### 基于源 IP 地址的访问控制
+
 在 Istio 的入口网关配置基于源 IP 的访问控制策略。这通过设置入口网关的授权策略，根据源 IP 地址实现访问限制。
 
-### 数据流程图
+下图展示了基于源 IP 地址的访问控制流程图。
 
 ```mermaid
 sequenceDiagram
@@ -620,14 +644,16 @@ sequenceDiagram
     Note over IG: Authorization Policy Based on Source IP
 ```
 
-### 场景假设
+#### 场景假设
+
 假设请求经过三个代理，其 IP 地址分别为 `1.1.1.1`、`2.2.2.2` 和 `3.3.3.3`。在 Ingress Gateway 中，`numTrustedProxies` 被设置为 2，因此 Istio 信任的源 IP 为 `2.2.2.2`（即 `x-envoy-external-address`）。
 
 ```bash
 curl -H "Host: clusterip.jimmysong.io" -H 'X-Forwarded-For: 1.1.1.1,2.2.2.2,3.3.3.3' $GATEWAY_IP
 ```
 
-### 屏蔽特定源 IP
+#### 屏蔽特定源 IP
+
 若需屏蔽来自 `2.2.2.2` 的请求，可以使用以下授权策略：
 
 ```yaml
@@ -648,7 +674,8 @@ spec:
             - "2.2.2.2/24"
 ```
 
-### 使用最终客户端 IP
+#### 使用最终客户端 IP
+
 如果希望识别与 Istio Mesh 直连的客户端 IP（即 `x-forwarded-for` 中的最后一个 IP，例如 `123.120.234.15`），则需要用 `ipBlocks` 配置：
 
 ```yaml
@@ -670,6 +697,44 @@ spec:
 ```
 
 这种方法通过配置 Istio 的入口网关授权策略，可以有效地实现基于源 IP 的访问控制。它允许管理员根据不同的需求（如屏蔽特定 IP 或信任最终客户端 IP）灵活设定规则，从而增强了服务的安全性和灵活性。
+
+### 基于源 IP 地址的负载均衡
+
+要在 Istio 中根据源 IP 地址配置负载均衡策略，你需要使用 `DestinationRule` 资源，并指定 `LOAD_BALANCER_POLICY_CONSISTENT_HASH` 策略。这种策略允许您根据一致性哈希算法为流量分配目标，可以基于源 IP 地址来实现会话亲和性（session affinity），确保来自同一源 IP 的请求被路由到相同的目标。
+
+#### 源 IP 地址负载均衡示例
+
+下面是一个示例配置，展示了如何使用 `DestinationRule` 来根据源 IP 地址实现负载均衡：
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: example-destination-rule
+spec:
+  host: example-service
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: x-forwarded-for # 这通常包含源 IP 地址，适用于经过代理或负载均衡器转发的流量。
+```
+
+注意，如果直接连接到 Istio Ingress Gateway 而不经过其他代理，你可能需要根据实际情况调整 `httpHeaderName` 或使用其他哈希键，例如 `useSourceIp`，如下所示：
+
+```yaml
+spec:
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        useSourceIp: true
+```
+
+{{<callout note 注意>}}
+
+- 使用源 IP 地址作为负载均衡的键时，请确保您理解这可能如何影响流量分布，特别是在源 IP 地址分布不均匀的情况下。
+- 正如上文所述，在某些环境中，原始的源 IP 可能会被网络设备（如负载均衡器或 NAT 设备）修改，需要确保 `x-forwarded-for` 头或其他相应机制能准确反映原始的客户端 IP。
+
+{{</callout>}}
 
 ## 总结
 

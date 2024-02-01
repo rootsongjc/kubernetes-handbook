@@ -7,7 +7,7 @@ categories: ["容器"]
 tags: ["hadoop","docker","swarm","yarn"]
 type: "post"
 aliases: "/posts/yarn-on-docker"
-image: "images/banner/hadoop.png"
+image: "images/banner/hadoop.jpg"
 ---
 
 ## 前言

@@ -4,7 +4,7 @@ date: 2021-01-22T08:27:17+08:00
 draft: false
 type: "post"
 categories: ["service mesh"]
-image: "/images/banner/service-mesh-banner.jpg"
+image: "/images/banner/service-mesh.jpg"
 bg_image: "images/backgrounds/page-title.jpg"
 description : "This article will take you through what a service mesh is, as well as its architecture, features, and advantages and disadvantages."
 ---

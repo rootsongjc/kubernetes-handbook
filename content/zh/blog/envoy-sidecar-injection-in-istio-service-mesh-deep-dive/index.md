@@ -8,7 +8,7 @@ categories: ["service mesh"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
 aliases: "/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive"
-image: "images/banner/istio-logo.webp"
+image: "images/banner/istio-logo-1.jpg"
 ---
 
 本文最新更新于 2022 年 3 月 7 日。

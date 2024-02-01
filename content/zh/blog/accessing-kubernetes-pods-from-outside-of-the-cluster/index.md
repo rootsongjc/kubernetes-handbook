@@ -6,7 +6,7 @@ draft: false
 categories: ["Kubernetes"]
 tags: ["Kubernetes"]
 type: "post"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-2.jpg"
 aliases: "/posts/accessing-kubernetes-pods-from-outside-of-the-cluster"
 ---
 

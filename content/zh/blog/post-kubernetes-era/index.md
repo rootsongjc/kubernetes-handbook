@@ -3,7 +3,7 @@ title: "Kubernetes 次世代的云原生应用"
 date: 2020-06-01T18:13:19+08:00
 tags: ["Kubernetes","云原生"]
 description: "Kubernetes 的次世代在于解决 Kubernetes 生态的碎片化问题。"
-image: "images/banner/cloud-native-era.webp"
+image: "images/banner/cloud-native-era.jpg"
 categories: ["云原生"]
 draft: false
 type: "post"

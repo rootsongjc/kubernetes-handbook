@@ -7,7 +7,7 @@ draft: false
 tags: ["istio"]
 categories: ["Service Mesh"]
 type: "post"
-image: "images/banner/era.webp"
+image: "images/banner/era.jpg"
 ---
 
 如果你刚听说 Service Mesh 不久，并试用过 [Istio](https://istio.io) 的话，那么你可能都会有下面几个疑问：

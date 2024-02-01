@@ -7,7 +7,7 @@ categories: ["Kubernetes"]
 tags: ["Kubernetes","存储"]
 type: "post"
 aliases: "/posts/data-persistence-problem"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-8.jpg"
 ---
 
 ## 数据落盘问题的由来

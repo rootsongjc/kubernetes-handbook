@@ -4,7 +4,7 @@ date: 2021-01-23T08:27:17+08:00
 draft: false
 type: "post"
 categories: ["service mesh"]
-image: "images/banner/vm.webp"
+image: "images/banner/vm.jpg"
 description : "In this article, I’ll give you an overview of Istio‘s history of virtual machine integration support. In particular, the introduction of the smart DNS proxy and WorkloadGroup in Istio 1.8, which makes virtual machines and containers equivalent at the resource abstraction level."
 ---
 

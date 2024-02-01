@@ -6,7 +6,7 @@ description: By the Cloud Native Community(China)
 categories: ["Istio"]
 tags: ["Istio","Service Mesh"]
 type: "post"
-image: "images/banner/istio-book-en.jpg"
+image: "images/banner/istio-book.jpg"
 ---
 
 ![](book.jpg)

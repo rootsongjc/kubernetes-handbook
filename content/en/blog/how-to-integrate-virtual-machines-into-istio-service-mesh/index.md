@@ -5,7 +5,7 @@ draft: false
 categories: ["Istio"]
 description: "Better integration of virtual machine-based workloads into the service mesh is a major focus for the Istio team this year, and Tetrate also provides seamless multi-cloud connectivity, security and observability, including for virtual machines, through its product Tetrate Service Bridge. This article will show you why Istio needs to integrate with virtual machines and how."
 type: "post"
-image: "images/banner/istio-logo.webp"
+image: "images/banner/istio-logo.jpg"
 ---
 
 [Istio](https://istio.io/) is a popular service mesh to connect, secure, control, and observe services. When it was first introduced as open source in 2017, Kubernetes was winning the container orchestration battle and Istio answered the needs of organizations moving to microservices. Although Istio claims to support heterogeneous environments such as Nomad, Consul, Eureka, Cloud Foundry, Mesos, etc., in reality, it has always worked best with Kubernetes — on which its service discovery is based.

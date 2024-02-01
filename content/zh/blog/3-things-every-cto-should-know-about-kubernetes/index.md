@@ -6,7 +6,7 @@ categories: ["kubernetes"]
 tags: ["Kubernetes"]
 description: "使用 Kubernetes 前你需要先了解的问题。"
 type: "post"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-5.jpg"
 aliaes: "/posts/3-things-every-cto-should-know-about-kubernetes"
 ---
 

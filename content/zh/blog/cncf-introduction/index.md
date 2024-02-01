@@ -7,7 +7,7 @@ categories: ["云原生"]
 type: "post"
 bg_image: "images/backgrounds/page-title.webp"
 aliases: "/posts/cncf-introduction"
-image: "images/banner/cncf-logo.jpg"
+image: "images/banner/cncf-1.jpg"
 draft: false
 ---
 

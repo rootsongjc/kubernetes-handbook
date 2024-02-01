@@ -7,7 +7,7 @@ categories: ["Kubernetes"]
 type: "post"
 tags: ["Kubernetes"]
 aliases: "/posts/ip-and-service-discovry-in-kubernetes"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-9.jpg"
 draft: false
 ---
 

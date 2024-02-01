@@ -7,7 +7,7 @@ tags: ["envoy"]
 categories: ["Envoy"]
 type: "post"
 aliases: "/posts/envoy-archiecture-and-terminology"
-image: "images/banner/envoyproxy.jpg"
+image: "images/banner/envoyproxy-2.jpg"
 ---
 
 在了解一门技术之前一开始就要了解其中的基本概念和术语，只有融入了该语境才能理解这门技术。本文将为大家介绍 Envoy 中的基本术语和重点概念。

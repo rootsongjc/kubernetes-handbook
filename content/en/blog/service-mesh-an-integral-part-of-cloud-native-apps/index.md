@@ -6,7 +6,7 @@ tags: ["istio","service mesh","cloud native"]
 categories: ["Service Mesh"]
 description: "This article will explore the relationship between service mesh and cloud native."
 type: "post"
-image: "images/banner/integrate.jpg"
+image: "images/banner/service-mesh.jpg"
 ---
 
 If you don’t know what Istio is, you can read my previous articles below:

@@ -7,7 +7,7 @@ description: "基于实际应用研究。"
 categories: ["kubernetes"]
 tags: ["Kubernetes"]
 aliases: "/posts/configuring-kubernetes-kube-dns"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-7.jpg"
 aliases: "/posts/exploring-kubernetes-env-with-docker"
 ---
 
