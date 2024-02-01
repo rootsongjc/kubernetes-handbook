@@ -181,6 +181,9 @@ languageCode = "en-us"
 contentDir = "content/en"
 weight = 1
 
+[Languages.en.outputs]
+home = ["HTML", "RSS", "JSON"]
+
 [Languages.en.params]
 home = "Home"
 header_title = "Cloud Native Blog"

@@ -5,7 +5,7 @@ draft: false
 description: "如何翻译一本外文书，从图书引进到翻译出版全攻略。"
 categories: ["其他"]
 tags: ["翻译","图书"]
-image: "images/banner/blog-banner.jpg"
+image: "images/banner/blog-banner-1.jpg"
 aliases: "/posts/how-to-translate-a-book"
 type: "post"
 ---

@@ -7,7 +7,7 @@ categories: ["kubernetes"]
 tags: ["Kubernetes"]
 type: "post"
 aliases: "/posts/configuration-best-practice"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-4.jpg"
 ---
 
 ## 前言

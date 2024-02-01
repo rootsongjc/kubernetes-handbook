@@ -6,7 +6,7 @@ description: "KubeCon&CloudNativeCon China 2018 参会回顾。"
 categories: ["其他"]
 type: "post"
 aliases: "/posts/kubecon-cloudnativecon-china-2018"
-image: "images/banner/kubecon-shanghai-2018-banner.webp"
+image: "images/banner/kubecon-shanghai-2018-banner.jpg"
 ---
 
 本次大会是一个难得的机会，让我见到了很多朋友，很多都是第一次在线下见面。

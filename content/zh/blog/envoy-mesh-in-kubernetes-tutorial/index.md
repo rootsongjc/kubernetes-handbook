@@ -6,7 +6,7 @@ tags: ["envoy"]
 categories: ["Envoy"]
 type: "post"
 aliases: "/posts/envoy-archiecture-and-terminology"
-image: "images/banner/envoyproxy.jpg"
+image: "images/banner/envoyproxy-1.jpg"
 ---
 
 本文是在 Kubernetes 集群中，使用 Envoy 来做 mesh，来为一个简单的使用 Python 编写的 Flask 应用程序做反向代理和负载均衡。

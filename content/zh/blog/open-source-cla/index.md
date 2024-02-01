@@ -7,7 +7,7 @@ categories: ["开源"]
 tags: ["CLA","开源","开源管理","开源合规"]
 type: "post"
 aliases: "/posts/open-source-cla"
-image: "images/banner/open-source.jpg"
+image: "images/banner/cla.jpg"
 ---
 
 很多从事开源人可能会注意到有些开源项目要求贡献者在提交 PR 前首先签署 CLA，只有签署了 CLA 之后 PR 才可以合并。

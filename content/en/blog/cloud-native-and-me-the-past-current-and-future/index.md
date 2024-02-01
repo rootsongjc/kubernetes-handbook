@@ -3,7 +3,7 @@ title: "Cloud Native With Me - The Past, Current and Future"
 description: "Today I am honored to announce that I have become a CNCF Ambassador."
 date: 2018-08-11T11:37:36+08:00
 draft: false
-image: "images/banner/cncf-ambassador.webp"
+image: "images/banner/cncf-ambassador.jpg"
 aliases: "/en/posts/cloud-native-and-me-the-past-current-and-future"
 type: "post"
 categories: ["cloud native"]

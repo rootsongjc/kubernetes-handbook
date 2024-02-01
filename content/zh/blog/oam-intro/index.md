@@ -7,7 +7,7 @@ tags: ["oam"]
 categories: ["云原生"]
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
-image: "images/banner/oam.png"
+image: "images/banner/oam.jpg"
 ---
 
 [OAM（Open Application Model）](https://oam.dev/)是阿里巴巴和微软共同开源的云原生应用规范模型，同时开源了基于 OAM 的实现 [Rudr](https://github.com/oam-dev/rudr)，自 2019 年 10 月宣布开源以来截止本文发稿已经有快半年时间了。

@@ -7,7 +7,7 @@ categories: ["Kubernetes"]
 type: "post"
 tags: ["Kubernetes","持续交付"]
 aliases: "/posts/deploy-applications-in-kubernetes"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-6.jpg"
 ---
 
 本文已归档在[kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)中的第 3 章【用户指南】中，一切更新以 kubernetes-handbook 中为准。

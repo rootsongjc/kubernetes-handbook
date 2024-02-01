@@ -8,7 +8,7 @@ description: "该教程描述如何在 Kubernetes 中进行分布式负载均衡
 type: "post"
 bg_image: "images/backgrounds/page-title.jpg"
 aliases: "/posts/deploy-applications-in-kubernetes"
-image: "images/banner/kubernetes.jpg"
+image: "images/banner/kubernetes-1.jpg"
 ---
 
 ## 前言
