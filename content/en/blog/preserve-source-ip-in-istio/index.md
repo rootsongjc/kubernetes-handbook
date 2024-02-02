@@ -1,7 +1,7 @@
 ---
 title: "Maintaining Traffic Transparency: Preserving Client Source IP in Istio"
-draft: true
-date: 2024-01-29T11:27:49+08:00
+draft: false
+date: 2024-02-16T11:27:49+08:00
 description: "This article focuses on how to maintain transparency of the client source IP in the Istio service mesh."
 categories: ["Istio"]
 tags: ["Istio","iptables","tproxy","Envoy","kubernetes"]
@@ -103,7 +103,7 @@ sequenceDiagram
     participant C as Client
     participant LB as Load Balancer
     participant IG as Ingress Gateway
-    participant S as Source IP App
+    participant S as Echo Server
     C->>LB: Initial Request
     LB->>IG: Forward Request 
     IG->>S: Forwarded Request
@@ -115,11 +115,11 @@ First, deploy Istio according to the [Istio documentation](https://istio.io/late
 kubectl label namespace default istio-injection=enabled
 ```
 
-Deploy the `source-ip-app` application in Istio:
+Deploy the `echo-server` application in Istio:
 
 ```bash
-kubectl create deployment source-ip-app --image=registry.k8s.io/echoserver:1.4
-kubectl expose deployment source-ip-app --name=clusterip --port=80 --target-port=8080
+kubectl create deployment echo-server --image=registry.k8s.io/echoserver:1.4
+kubectl expose deployment echo-server --name=clusterip --port=80 --target-port=8080
 ```
 
 Create an Ingress Gateway:
@@ -172,10 +172,10 @@ View the Envoy logs in the Sleep Pod:
 kubectl logs -f deployment/sleep -n default -c istio-proxy
 ```
 
-View the Envoy logs in the Source IP App:
+View the Envoy logs in the Echo Server:
 
 ```bash
-kubectl logs -f deployment/source-ip-app -n default -c istio-proxy
+kubectl logs -f deployment/echo-server -n default -c istio-proxy
 ```
 
 Get the public IP of the gateway:
@@ -200,7 +200,7 @@ Here are the initial Pod IPs, but please note that as patches are applied to the
 
 | Pod Name                              | Pod IP      |
 | ------------------------------------- | ----------- |
-| source-ip-app-6d9f5d97d7-fznrq        | 10.32.1.205 |
+| echo-server-6d9f5d97d7-fznrq          | 10.32.1.205 |
 | sleep-9454cc476-2dskx                 | 10.32.3.202 |
 | istio-ingressgateway-6c96bdcd74-zh46d | 10.32.1.221 |
 
@@ -281,13 +281,13 @@ subgraph IngressGatewayPod[Ingress Gateway Pod]
 A["Downstream Remote (Ingress Gateway Node)<br>10.128.0.54:56532"] --> B
     B["Downstream Local (Ingresss Gateway Pod)<br>10.32.1.221:8080"]-->C
     C["Upstream Local (Ingress Gateway Pod)<br>10.32.1.221:59842"]
-    C --> D["Upstream Host (Source IP App Pod)<br>10.32.1.205:8080"]
+    C --> D["Upstream Host (Echo Server Pod)<br>10.32.1.205:8080"]
 end
-subgraph SourceIPAppPod[Source IP App Pod]
+subgraph SourceIPAppPod[Echo Server Pod]
     E["Downstream Remote (Ingress Gateway Pod)<br>10.128.0.54:0"] --> F
-    F["Downstream Local (Source IP App Pod)<br>10.32.1.205:8080"]
+    F["Downstream Local (Echo Server Pod)<br>10.32.1.205:8080"]
     G["Upstream Local (InboundPassthroughClusterIpv4)<br>127.0.0.6:60481"]
-    H["Upstream Host (Source IP App Pod)<br>10.32.1.205:8080"]
+    H["Upstream Host (Echo Server Pod)<br>10.32.1.205:8080"]
     F --> G
     G --> H
 end
@@ -305,7 +305,7 @@ sequenceDiagram
     participant C as Client<br>123.120.247.15
     participant LB as Load Balancer<br>35.188.212.88
     participant IG as Ingress Gateway<br>10.32.1.221
-    participant S as Source IP App Pod<br>10.32.1.205
+    participant S as Echo Server Pod<br>10.32.1.205
     C->>LB: Initial Request
     LB->>IG: Altered Request (IP Changed)<br>SNAT: 123.120.234.15 -> 10.128.0.54
     IG->>S: Forwarded Request
@@ -316,7 +316,7 @@ Because the load balancer sends packets to any node in the Kubernetes cluster, S
 
 ### How to Preserve the Client Source IP
 
-You can control the load balancer to preserve the source IP by setting the `externalTrafficPolicy` field in the service to `Cluster`.
+You can control the load balancer to preserve the source IP by setting the `externalTrafficPolicy` field in the service to `Local`.
 
 **externalTrafficPolicy**
 
@@ -399,12 +399,12 @@ subgraph IngressGatewayPod[Ingress Gateway Pod]
     C["Upstream Local (Ingress Gateway Pod)<br>10.32.1.221:59842"]
 A["Downstream Remote (Client)<br>123.120.247.15:62650"] --> B
 B --> C
-C --> D["Upstream Host (Source IP App Pod)<br>10.32.1.205:8080"]
+C --> D["Upstream Host (Echo Server Pod)<br>10.32.1.205:8080"]
 end
-subgraph SourceIPAppPod[Source IP App Pod]
-    F["Downstream Local (Source IP App Pod)<br>10.32.1.205:8080"]
+subgraph SourceIPAppPod[Echo Server Pod]
+    F["Downstream Local (Echo Server Pod)<br>10.32.1.205:8080"]
     G["Upstream Local (InboundPassthroughClusterIpv4)<br>127.0.0.6:58639"]
-    H["Upstream Host (Source IP App Pod)<br>10.32.1.205:8080"]
+    H["Upstream Host (Echo Server Pod)<br>10.32.1.205:8080"]
 E["Downstream Remote (Client)<br>123.120.247.15:0"] --> F
 F --> G
 G --> H
@@ -420,13 +420,13 @@ In the default Istio configuration, for east-west traffic as well, the server ca
 
 ### Test 3: Local Traffic Policy, tproxy Traffic Hijacking
 
-Change the traffic interception method from iptables to [tproxy](https://jimmysong.io/blog/what-is-tproxy/) for the Source IP App:
+Change the traffic interception method from iptables to [tproxy](https://jimmysong.io/blog/what-is-tproxy/) for the Echo Server:
 
 ```bash
-kubectl patch deployment -n default source-ip-app -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"TPROXY"}}}}}'
+kubectl patch deployment -n default echo-server -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"TPROXY"}}}}}'
 ```
 
-Note: At this point, the Pod for Source IP App will be recreated, and the new Pod's name is `source-ip-app-686d564647-r7nlq`, with an IP address of 10.32.1.140.
+Note: At this point, the Pod for Echo Server will be recreated, and the new Pod's name is `echo-server-686d564647-r7nlq`, with an IP address of 10.32.1.140.
 
 Curl test:
 
@@ -471,12 +471,12 @@ graph LR
 subgraph SleepPod[Sleep Pod]
 A["Downstream Remote (Sleep Pod)<br>10.32.3.202:38394"] --> B
 B["Downstream Local (Clusterip Service)<br>10.36.8.86:80"] --> C
-C["Upstream Local (Sleep Pod)<br>10.32.3.202:33786"] --> D["Upstream Host (Source IP App Pod)<br>10.32.1.140:8080"]
+C["Upstream Local (Sleep Pod)<br>10.32.3.202:33786"] --> D["Upstream Host (Echo Server Pod)<br>10.32.1.140:8080"]
 end
-subgraph SourceIPAppPod[Source IP App Pod]
+subgraph SourceIPAppPod[Echo Server Pod]
 E["Downstream Remote (Sleep Pod)<br>10.32.3.202:33786"] --> F
-F["Downstream Local (Source IP App Pod)<br>10.32.1.140:8080"] --> G
-G["Upstream Local (Sleep Pod)<br>10.32.3.202:34173"] --> H["Upstream Host (Source IP App Pod)<br>10.32.1.140:8080"]
+F["Downstream Local (Echo Server Pod)<br>10.32.1.140:8080"] --> G
+G["Upstream Local (Sleep Pod)<br>10.32.3.202:34173"] --> H["Upstream Host (Echo Server Pod)<br>10.32.1.140:8080"]
 end
 SleepPod-->SourceIPAppPod
 ```
@@ -485,13 +485,13 @@ The client's IP is correctly identified as `10.32.3.202`.
 
 ### Test 4: Local Traffic Policy, iptables Traffic Hijacking
 
-Restore the traffic interception method in the Source IP App to redirect:
+Restore the traffic interception method in the Echo Server to redirect:
 
 ```bash
-kubectl patch deployment -n default source-ip-app -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"REDIRECT"}}}}}'
+kubectl patch deployment -n default echo-server -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/interceptionMode":"REDIRECT"}}}}}'
 ```
 
-Note: At this point, the Pod for the Source IP App will be recreated, and the new Pod's name is `source-ip-app-6d9f5d97d7-bgpk6`, with an IP address of 10.32.1.123.
+Note: At this point, the Pod for the Echo Server will be recreated, and the new Pod's name is `echo-server-6d9f5d97d7-bgpk6`, with an IP address of 10.32.1.123.
 
 Curl test:
 
@@ -536,12 +536,12 @@ graph LR
 subgraph Sleep[Sleep Pod]
 A["Downstream Remote (Sleep Pod)<br>10.32.3.202:34238"] --> B
 B["Downstream Local (Clusterip Service)<br>10.36.8.86:80"] --> C
-C["Upstream Local (Sleep Pod)<br>10.32.3.202:52776"] --> D["Upstream Host (Source IP App Pod)<br>10.32.1.123:8080"]
+C["Upstream Local (Sleep Pod)<br>10.32.3.202:52776"] --> D["Upstream Host (Echo Server Pod)<br>10.32.1.123:8080"]
 end
-subgraph SourceIPApp[Source IP App Pod]
+subgraph SourceIPApp[Echo Server Pod]
 E["Downstream Remote (Sleep Pod)<br>10.32.3.202:52776"] --> F
-F["Downstream Local (Source IP App Pod)<br>10.32.1.123:8080"] --> G
-G["Upstream Local (InboundPassthroughClusterIpv4)<br>127.0.0.6:49803"] --> H["Upstream Host (Source IP App Pod)<br>10.32.1.123:8080"]
+F["Downstream Local (Echo Server Pod)<br>10.32.1.123:8080"] --> G
+G["Upstream Local (InboundPassthroughClusterIpv4)<br>127.0.0.6:49803"] --> H["Upstream Host (Echo Server Pod)<br>10.32.1.123:8080"]
 end
 Sleep -->SourceIPApp
 ```
@@ -557,6 +557,20 @@ In a single-tier proxy scenario, you only need to set the `externalTrafficPolicy
 If traffic has already passed through multiple tiers of proxies before entering the Istio Mesh, each time traffic passes through a proxy, the proxy parses the HTTP traffic and appends its own IP address to the `x-forwarded-for` header. You can use the `numTrustedProxies` configuration to specify the number of trusted proxy hops, referring to the [Envoy documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-forwarded-for) for how to determine the `X-Forwarded-For` header and trusted client addresses.
 
 In practice, it can be challenging to determine how many tiers of proxy traffic have passed through before reaching the Istio Mesh, but you can use the `x-forwarded-for` header to understand the forwarding path of the traffic.
+
+The diagram below shows how Envoy confirms the source IP based on the `x-forwarded-for` header and `xff_num_trusted_hops` (corresponding to the `numTrustedProxies` configuration in Istio). See the [Envoy documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-forwarded-for) for details.
+
+```mermaid
+graph TD
+    A[Start] -->|use_remote_address is false| B[Check XFF]
+    A -->|use_remote_address is true| G[Check xff_num_trusted_hops]
+    B -->|XFF contains at least one IP| C[Use last IP in XFF]
+    B -->|XFF is empty| D[Use immediate downstream IP]
+    G -->|xff_num_trusted_hops > 0| H["Use (N)th IP from right in XFF"]
+    G -->|xff_num_trusted_hops <= 0| D
+    H -->|XFF contains >= N addresses| I[Use Nth address from right]
+    H -->|XFF contains < N addresses| D
+```
 
 Execute the following command to enable trusted proxy configuration for the Ingress Gateway:
 
@@ -596,6 +610,10 @@ For Envoy's support of the Proxy Protocol, refer to [this documentation](https:/
 
 ## Use Case Examples
 
+The following are common scenarios for source IP addresses.
+
+### Access Control Based on Source IP Address
+
 In Istio, you can configure access control policies based on source IP using the Ingress Gateway. This is achieved by setting the authorization policy for the Ingress Gateway to restrict access based on source IP addresses.
 
 The following diagram shows the flow of traffic:
@@ -618,14 +636,16 @@ sequenceDiagram
     Note over IG: Authorization Policy Based on Source IP
 ```
 
-### Scenario Assumptions
+#### Scenario Assumptions
+
 Let's assume a request passes through three proxies with IP addresses `1.1.1.1`, `2.2.2.2`, and `3.3.3.3`. In the Ingress Gateway, `numTrustedProxies` is set to 2, so Istio trusts the source IP as `2.2.2.2` (i.e., `x-envoy-external-address`).
 
 ```bash
 curl -H "Host: clusterip.jimmysong.io" -H 'X-Forwarded-For: 1.1.1.1,2.2.2.2,3.3.3.3' $GATEWAY_IP
 ```
 
-### Blocking Specific Source IP
+#### Blocking Specific Source IP
+
 If you need to block requests from `2.2.2.2`, you can use the following authorization policy:
 
 ```yaml
@@ -646,7 +666,8 @@ spec:
             - "2.2.2.2/24"
 ```
 
-### Using the Ultimate Client IP
+#### Using the Ultimate Client IP
+
 If you want to identify the client IP directly connected to the Istio Mesh (i.e., the last IP in `x-forwarded-for`, e.g., `123.120.234.15`), you need to configure it using `ipBlocks`:
 
 ```yaml
@@ -669,6 +690,40 @@ spec:
 
 This approach, by configuring authorization policies for Istio's Ingress Gateway, allows for effective access control based on source IP. It enables administrators to set rules flexibly based on different requirements, such as blocking specific IPs or trusting the ultimate client IP, enhancing the security and flexibility of the services.
 
+#### Load Balancing Based on Source IP Address
+
+Here is an example configuration that shows how to use `DestinationRule` to load balance based on source IP address:
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: example-destination-rule
+spec:
+  host: example-service
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        httpHeaderName: x-forwarded-for
+```
+
+Note that if connecting directly to the Istio Ingress Gateway without going through another proxy, you may need to adjust `httpHeaderName` or use a different hash key, such as `useSourceIp` as shown below:
+
+```yaml
+spec:
+  trafficPolicy:
+    loadBalancer:
+      consistentHash:
+        useSourceIp: true
+```
+
+{{<callout note Notice>}}
+
+- When using source IP addresses as keys for load balancing, make sure you understand how this may affect traffic distribution, especially if the source IP addresses are unevenly distributed.
+- As mentioned above, in some environments, the original source IP may be modified by network devices (such as load balancers or NAT devices), and you need to ensure that the `x-forwarded-for` header or other corresponding mechanism accurately reflects the original client IP.
+
+{{</callout>}}
+
 ## Summary
 
 - Preserving the source IP is crucial for implementing access control, load balancing, and data analysis.
@@ -685,3 +740,7 @@ This approach, by configuring authorization policies for Istio's Ingress Gateway
 - [IP Transparency - envoyproxy.io](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/other_features/ip_transparency)
 - [Using Source IP - kubernetes.io](https://kubernetes.io/docs/tutorials/services/source-ip/)
 - [Proxy Protocol - github.com](https://github.com/haproxy/haproxy/blob/master/doc/proxy-protocol.txt)
+
+---
+
+*This blog was initially published at [tetrate.io](https://tetrate.io/blog/istio-source-ip-transparency/) .*

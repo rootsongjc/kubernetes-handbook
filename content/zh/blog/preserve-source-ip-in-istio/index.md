@@ -318,7 +318,7 @@ sequenceDiagram
 
 ### 如何保留客户端源 IP
 
-你可以通过设置 service 中的 `externalTrafficPolicy` 字段为 `Cluster` 控制负载均衡器保留源 IP。
+你可以通过设置 service 中的 `externalTrafficPolicy` 字段为 `Local` 控制负载均衡器保留源 IP。
 
 **externalTrafficPolicy**
 
