@@ -1,7 +1,7 @@
 ---
 title: "Maintaining Traffic Transparency: Preserving Client Source IP in Istio"
 draft: false
-date: 2024-02-16T11:27:49+08:00
+date: 2024-02-28T11:27:49+08:00
 description: "This article focuses on how to maintain transparency of the client source IP in the Istio service mesh."
 categories: ["Istio"]
 tags: ["Istio","iptables","tproxy","Envoy","kubernetes"]
