@@ -112,7 +112,7 @@ code_copy_button = true
 back_to_top_button = true
 # top header
 top_header = true
-top_header_content = "最新译作《Istio 最佳实战》出版，[了解详情](https://item.jd.com/14057890.html)"
+top_header_content = "[期待 KubeCon&CloudNativeCon 2024 巴黎与你相见!](/notice/kubecon-eu-2024/)"
 #top_header_content = '按 `/` 键或点击搜索按钮可以检索本站博客'
 
 # Preloader
@@ -190,7 +190,7 @@ header_title = "Cloud Native Blog"
 # copyright
 copyright = "&copy; 2017-2024 Jimmy Song All Right Reserved"
 top_header = true
-top_header_content = "[Download the eBook: The Current State and Future of the Istio Service Mesh](https://bit.ly/3Vqrlfw)"
+top_header_content = "[Hope to see you at KubeCon Europe 2024 in Paris!](/en/notice/kubecon-eu-2024/)"
 
 # main menu
 [[menu.main]]
