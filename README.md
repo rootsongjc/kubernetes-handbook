@@ -16,8 +16,8 @@ For the Cloud Native Library, please visit [rootsongjc/cloud-native-library](htt
 
 ## Short codes
 
-- `<callout note|warning "title">`
-- `<table "title">`
-- `<detail "title">`
-- `<figure src="" alt="" width="">`
+- `{{<callout note|warning "title">}}`
+- `{{<table "title">}}`
+- `{{<detail "title">}}`
+- `{{<figure src="" alt="" width="">}}`
 - [highlight](https://gohugo.io/content-management/syntax-highlighting/)
