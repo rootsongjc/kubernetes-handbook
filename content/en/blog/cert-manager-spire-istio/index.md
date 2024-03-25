@@ -319,7 +319,7 @@ After two minutes, you will see a certificate change log similar to the followin
 2022-12-23T03:48:42.779657Z	info	Istiod certificates are reloaded
 ```
 
-To modify the automatic rotation period for workload certificates, you can set the environment variable `**SECRET_TTL** `of the pilot-agent command, which defaults to 24h0m0s.
+To modify the automatic rotation period for workload certificates, you can set the environment variable `SECRET_TTL` of the pilot-agent command, which defaults to 24h0m0s.
 
 ## Summary
 
