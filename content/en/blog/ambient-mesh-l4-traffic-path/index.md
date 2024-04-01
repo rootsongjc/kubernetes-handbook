@@ -26,7 +26,7 @@ Ambient mode uses [tproxy](https://www.kernel.org/doc/Documentation/networking/t
 
 ### What Is tproxy?
 
-tproxy is a transparent proxy supported by the Linux kernel since version 2.2, where the t stands for transparent. You need to enable *NETFILTER_TPROXY* and policy routing in the kernel configuration. With tproxy, the Linux kernel can act as a router and redirect packets to user space. See the [tproxy documentation](http://lxr.linux.no/linux+v3.10/Documentation/networking/tproxy.txt) for details.
+tproxy is a transparent proxy supported by the Linux kernel since version 2.2, where the t stands for transparent. You need to enable `NETFILTER_TPROXY` and policy routing in the kernel configuration. With tproxy, the Linux kernel can act as a router and redirect packets to user space. See the [tproxy documentation](http://lxr.linux.no/linux+v3.10/Documentation/networking/tproxy.txt) for details.
 
 ### What Is HBONE?
 
@@ -39,7 +39,7 @@ Before starting the hands-on, it is necessary to explain the demo environment, a
 | Items             | Name                                           | IP            |
 | :---------------- | :--------------------------------------------- | :------------ |
 | Service A Pod     | `sleep-5644bdc767-2dfg7`                       | 10.4.4.19     |
-| Service B Pod     | productpage-v1-5586c4d4ff-qxz9f                | 10.4.3.20     |
+| Service B Pod     | `productpage-v1-5586c4d4ff-qxz9f`              | 10.4.3.20     |
 | Ztunnel A Pod     | `ztunnel-rts54`                                | 10.4.4.18     |
 | Ztunnel B Pod     | `ztunnel-z4qmh`                                | 10.4.3.14     |
 | Node A            | `gke-jimmy-cluster-default-pool-d5041909-d10i` | 10.168.15.222 |
@@ -50,14 +50,14 @@ Because these names will be used in subsequent command lines, the text will use 
 
 For the tutorial, I installed Istio Ambient mode in GKE. You can refer to this [Istio blog post](https://istio.io/latest/blog/2022/get-started-ambient/) for installation instructions. Be careful not to install the Gateway, so as not to enable the L7 functionality; otherwise, the traffic path will be different from the descriptions in this blog.
 
-In the following, we will experiment and dive into the L4 traffic path of a pod of *sleep* service to a pod of *productpage* service on different nodes. We will look at the outbound and inbound traffic of the Pods separately.
+In the following, we will experiment and dive into the L4 traffic path of a pod of `sleep` service to a pod of `productpage` service on different nodes. We will look at the outbound and inbound traffic of the Pods separately.
 
 ## Outbound Traffic Intercepting
 
 The transparent traffic intercepting process for outbound traffic from a pod in Ambient mesh is as follows:
 
-1. Istio CNI creates the *istioout* NIC and iptables rules on the node, adds the Pods’ IP in Ambient mesh to the [IP set](https://ipset.netfilter.org/), and transparently intercepts outbound traffic from Ambient mesh to *pistioout* virtual NIC through [Geneve (Generic Network Virtualization Encapsulation)](https://datatracker.ietf.org/doc/rfc8926/) tunnels with netfilter *nfmark* tags and routing rules.
-2. The init container in Ztunnel creates iptables rules that forward all traffic from the *pistioout* NIC to port 15001 of the Envoy proxy in Ztunnel.
+1. Istio CNI creates the `istioout` NIC and iptables rules on the node, adds the Pods’ IP in Ambient mesh to the [IP set](https://ipset.netfilter.org/), and transparently intercepts outbound traffic from Ambient mesh to `pistioout` virtual NIC through [Geneve (Generic Network Virtualization Encapsulation)](https://datatracker.ietf.org/doc/rfc8926/) tunnels with netfilter `nfmark` tags and routing rules.
+2. The init container in Ztunnel creates iptables rules that forward all traffic from the `pistioout` NIC to port 15001 of the Envoy proxy in Ztunnel.
 3. Envoy processes the packets and establishes an HBONE tunnel (HTTP CONNECT) with the upstream endpoints to forward the packets upstream.
 
 ### Check The Routing Rules On Node A
@@ -104,12 +104,12 @@ $ iptables-save
 
 IPtables rule descriptions:
 
-- Line 3: the *PREROUTING* chain is the first to run, and all packets will go to the *ztunnel-PEROUTING* chain first.
-- Line 4: packets are sent to the *KUBE-SERVICES* chain, where the Cluster IP of the Kubernetes Service is DNAT’d to the Pod IP.
-- Line 6: packets with 0x100/0x100 flags pass through the *PREROUTING* chain and no longer go through the *KUBE-SERVICES* chain.
-- Line 35: this is the last rule added to the *ztunnel-PREROUTING* chain; all TCP packets entering the *ztunnel-PREROUTING* chain that are in the *ztunnel-pods-ips* [IP set](https://ipset.netfilter.org/) (created by the Istio CNI) are marked with 0x100/0x100, which overrides all previous marks. See the [Netfilter documentation](https://ipset.netfilter.org/iptables-extensions.man.html#lbDD) for more information about *nfmark*.
+- Line 3: the `PREROUTING` chain is the first to run, and all packets will go to the `ztunnel-PEROUTING` chain first.
+- Line 4: packets are sent to the `KUBE-SERVICES` chain, where the Cluster IP of the Kubernetes Service is DNAT’d to the Pod IP.
+- Line 6: packets with `0x100/0x100` flags pass through the `PREROUTING` chain and no longer go through the `KUBE-SERVICES` chain.
+- Line 35: this is the last rule added to the `ztunnel-PREROUTING` chain; all TCP packets entering the `ztunnel-PREROUTING` chain that are in the `ztunnel-pods-ips` [IP set](https://ipset.netfilter.org/) (created by the Istio CNI) are marked with 0x100/0x100, which overrides all previous marks. See the [Netfilter documentation](https://ipset.netfilter.org/iptables-extensions.man.html#lbDD) for more information about `nfmark`.
 
-By implementing the above iptables rules, we can ensure that ambient mesh only intercepts packets from the *ztunnel-pods-ips* IP set pods and marks the packets with 0x100/0x100 (*nfmark*, in value/mask format, both value and mask are 32-bit binary integers) without affecting other pods.
+By implementing the above iptables rules, we can ensure that ambient mesh only intercepts packets from the `ztunnel-pods-ips` IP set pods and marks the packets with `0x100/0x100` (`nfmark`, in value/mask format, both value and mask are 32-bit binary integers) without affecting other pods.
 
 Let’s look at the routing rules for this node.
 
@@ -124,7 +124,7 @@ $ ip rule
 32767:  from all lookup default
 ```
 
-The routing table will be executed sequentially, with the first column indicating the priority of the routing table and the second column indicating the routing table to look for or jump to. You will see that all packets marked with 0x100/0x100 will look for the 101 routing table. Let’s look at that routing table.
+The routing table will be executed sequentially, with the first column indicating the priority of the routing table and the second column indicating the routing table to look for or jump to. You will see that all packets marked with `0x100/0x100` will look for the 101 routing table. Let’s look at that routing table.
 
 ```bash
 $ ip route show table 101
@@ -132,9 +132,9 @@ default via 192.168.127.2 dev istioout
 10.4.4.18 dev veth52b75946 scope link 
 ```
 
-You will see the 101 routing table with the keyword via, which indicates that the packets will be transmitted through the gateway, [see the usage of the ip route command](http://linux-ip.net/html/tools-ip-route.html#tools-ip-route-show). All packets are sent through the *istioout* NIC to the gateway (IP is 192.168.127.2). The other line indicates the routing link for the *ztunnel* pod on the current node.
+You will see the 101 routing table with the keyword via, which indicates that the packets will be transmitted through the gateway, [see the usage of the ip route command](http://linux-ip.net/html/tools-ip-route.html#tools-ip-route-show). All packets are sent through the `istioout` NIC to the gateway (IP is `192.168.127.2`). The other line indicates the routing link for the `ztunnel` pod on the current node.
 
-Let’s look at the details of the *istioout* NIC.
+Let’s look at the details of the `istioout` NIC.
 
 {{<highlight bash "linenos=table,hl_lines=4 5">}}
 $ ip -d addr show istioout
@@ -147,11 +147,11 @@ $ ip -d addr show istioout
        valid_lft forever preferred_lft forever
 {{</highlight>}}
 
-The *istioout* NIC in Pod A is connected to the *pstioout* NIC in *ztunnel* A through the Geneve tunnel.
+The `istioout` NIC in Pod A is connected to the `pstioout` NIC in `ztunnel` A through the Geneve tunnel.
 
 ### Check The Routing Rules On Ztunnel A
 
-Go to the *Ztunnel* A Pod and use the *ip -d* a command to check its NIC information.
+Go to the `Ztunnel` A Pod and use the `ip -d a` command to check its NIC information.
 
 {{<highlight bash "linenos=table,hl_lines=11-20">}}
 $ ip -d a
@@ -178,8 +178,8 @@ $ ip -d a
 
 You will find two NICs:
 
-- *pistioin* ：192.168.126.2, for the inbound traffic
-- *pistioout*：192.168.127.2 for the outbound traffic
+- `pistioin` ：192.168.126.2, for the inbound traffic
+- `pistioout`：192.168.127.2 for the outbound traffic
 
 How do you handle traffic from Pod A after it enters ztunnel? The answer is iptables. Look at the iptables rules in ztunnel A:
 
@@ -199,7 +199,7 @@ $ iptables-save
 /* omit */
 {{</highlight>}}
 
-You can see that all TCP traffic in Ztunnel A destined for the pistioin NIC is transparently forwarded to port 15001 (Envoy’s outbound port) and tagged with 0x400/0xfff. This marker ensures that packets are sent to the correct NIC.
+You can see that all TCP traffic in Ztunnel A destined for the `pistioin` NIC is transparently forwarded to port 15001 (Envoy’s outbound port) and tagged with `0x400/0xfff`. This marker ensures that packets are sent to the correct NIC.
 
 Check the routing rules In Ztunnel A:
 
@@ -214,14 +214,14 @@ $ ip rule
 32767:  from all lookup default
 ```
 
-You will see that all packets marked 0x400/0xfff go to the 101 routing table, and we look at the details of that routing table:
+You will see that all packets marked `0x400/0xfff` go to the 101 routing table, and we look at the details of that routing table:
 
 ```bash
 $ ip route show table 100
 local default dev lo scope host 
 ```
 
-You will see that this is a local route and the packet is sent to the loopback NIC, which is 127.0.0.1.
+You will see that this is a local route and the packet is sent to the loopback NIC, which is `127.0.0.1`.
 
 This is the transparent intercepting process of outbound traffic in the pod.
 
@@ -229,7 +229,7 @@ This is the transparent intercepting process of outbound traffic in the pod.
 
 Outbound traffic is intercepted onto Ztunnel and processed into Envoy’s port 15001. Let’s see how Ztunnel routes outbound traffic.
 
-> Note: The Envoy filter rules in Ztunnel are completely different from the Envoy filter rules in Sidecar mode, so instead of using the *istioctl proxy-config* command to inspect the configuration of Listener, Cluster, Endpoint, etc., we directly export the complete Envoy configuration in Ztunnel.
+> Note: The Envoy filter rules in Ztunnel are completely different from the Envoy filter rules in Sidecar mode, so instead of using the `istioctl proxy-config` command to inspect the configuration of Listener, Cluster, Endpoint, etc., we directly export the complete Envoy configuration in Ztunnel.
 
 You can get the Envoy configuration in Ztunnel A directly and remotely on your local machine
 
@@ -237,11 +237,11 @@ You can get the Envoy configuration in Ztunnel A directly and remotely on your l
 kubectl exec -n istio-system ztunnel-hptxk -c istio-proxy -- curl "127.0.0.1:15000/config_dump?include_eds">ztunnel-a-all-include-eds.json
 ```
 
-> Note: Do not use *istioctl proxy-config all ztunnel-rts54 -n istio-system* command to get the Envoy configuration, because the configuration so obtained does not contain the EDS part. The exported JSON file will have tens of thousands of lines, so it is recommended to use [fx ](https://github.com/antonmedv/fx)or other tools to parse the file for readability.
+> Note: Do not use `istioctl proxy-config all ztunnel-rts54 -n istio-system` command to get the Envoy configuration, because the configuration so obtained does not contain the EDS part. The exported JSON file will have tens of thousands of lines, so it is recommended to use [fx](https://github.com/antonmedv/fx) or other tools to parse the file for readability.
 
 ### Ztunnel_outbound Listener
 
-The Envoy configuration contains the traffic rule configuration for all pods on this node. Let’s inspect the *ztunnel_outbound* Listener section configuration (some parts are omitted due to too much configuration):
+The Envoy configuration contains the traffic rule configuration for all pods on this node. Let’s inspect the `ztunnel_outbound` Listener section configuration (some parts are omitted due to too much configuration):
 
 {{<highlight json "linenos=table,hl_lines=7 10 11 14 43 59 62 64 69 76 82 85 88-123">}}
 {
@@ -400,7 +400,7 @@ Descriptions:
 
 - Lines 10, 11, 59, 62, 64, 69, 76, 82, 85: Envoy listens to port 15001 and processes traffic forwarded using tproxy in the kernel; packets destined for port 15001 are directly discarded, and packets destined for other ports are then matched according to the source IP address to determine their destination.
 - Line 43: Use the `IP_TRANSPARENT` socket option to enable tproxy transparent proxy to forward traffic packets with destinations other than Ztunnel IPs.
-- Lines 88 to 123: based on the source IP (10.4.4.19 is the IP of Pod A), destination IP (10.8.14.226 is the Cluster IP of Service B) and port (9080) rule match, the packet will be sent to `spiffe://cluster.local/ns/default/sa/sleep_to_http_productpage.default.svc.cluster.local_outbound_internal` cluster.
+- Lines 88 to 123: based on the source IP (`10.4.4.19` is the IP of Pod A), destination IP (`10.8.14.226` is the Cluster IP of Service B) and port (9080) rule match, the packet will be sent to `spiffe://cluster.local/ns/default/sa/sleep_to_http_productpage.default.svc.cluster.local_outbound_internal` cluster.
 
 ### Sleep Cluster
 
@@ -526,7 +526,7 @@ Descriptions:
 
 Line 4: As of the first release of Ambient mesh, this field was not actually present when the Envoy configuration was exported, but it is should have it. Otherwise, it would be impossible to determine which Cluster the Endpoint belongs to. The mandatory `cluster_name` field is missing from the `endpoint_config` here, probably due to a bug in Ambient mode that caused the field to be missing when exporting Envoy’s configuration.
 
-Line 13: the address of the Endpoint is an `envoy_internal_address`，` Envoy internal listener `outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/sleep`.
+Line 13: the address of the Endpoint is an `envoy_internal_address`， ` Envoy internal listener ` `outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/sleep`.
 
 Lines 20 – 30: defining filter metadata to be passed to the Envoy internal listener using the HBONE tunnel.
 
@@ -589,7 +589,7 @@ Let’s look into the listener `outbound_tunnel_lis_spiffe://cluster.local/ns/de
 Descriptions:
 
 - Line 14: packets will be forwarded to the `outbound_tunnel_clus_spiffe://cluster.local/ns/default/sa/sleep cluster`.
-- Lines 18 – 28: [tunneling_config](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto#envoy-v3-api-msg-extensions-filters-network-tcp-proxy-v3-tcpproxy-tunnelingconfig) , used to configure the upstream HTTP CONNECT tunnel. In addition, the TcpProxy filter in this listener passes traffic to the upstream p cluster. HTTP CONNECT tunnels (which carry traffic sent to `10.4.3.20:9080`) are set up on the TCP filter for use by the Ztunnel on the node where the productpage is located. As many tunnels are created, as there are endpoints. HTTP tunnels are the bearer protocol for secure communication between Ambient components. The packet in the tunnel also adds the `x-envoy-original-dst-host` header, which sets the destination address based on the parameters in the metadata of the endpoint selected in the previous EDS step. The endpoint selected in the previous EDS is 10.4.3.20:9080, so the tunnel listener here sets the header value to 10.4.3.20:9080, so keep an eye on this header as it will be used at the other end of the tunnel.
+- Lines 18 – 28: [tunneling_config](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/network/tcp_proxy/v3/tcp_proxy.proto#envoy-v3-api-msg-extensions-filters-network-tcp-proxy-v3-tcpproxy-tunnelingconfig), used to configure the upstream HTTP CONNECT tunnel. In addition, the `TcpProxy` filter in this listener passes traffic to the upstream p cluster. HTTP CONNECT tunnels (which carry traffic sent to `10.4.3.20:9080`) are set up on the TCP filter for use by the Ztunnel on the node where the productpage is located. As many tunnels are created, as there are endpoints. HTTP tunnels are the bearer protocol for secure communication between Ambient components. The packet in the tunnel also adds the `x-envoy-original-dst-host` header, which sets the destination address based on the parameters in the metadata of the endpoint selected in the previous EDS step. The endpoint selected in the previous EDS is 10.4.3.20:9080, so the tunnel listener here sets the header value to 10.4.3.20:9080, so keep an eye on this header as it will be used at the other end of the tunnel.
 - Line 40: The listener filter is executed first in the listener. The `set_dst_address` filter sets the upstream address to the downstream destination address.
 
 ### HBONE Tunnel Endpoints For The Sleep Cluster
@@ -705,7 +705,7 @@ Look into the routing table on node B:
 32767:  from all lookup default
 ```
 
-The number of routing tables and rules are the same in all the nodes which belong to the ambient mesh. The routing table rules will be executed sequentially, looking first for the local table, then all packets with 0x200/0x200 flags will first jump to the main table (where veth routes are defined), and then to the 100 table, where the following rules are in place:
+The number of routing tables and rules are the same in all the nodes which belong to the ambient mesh. The routing table rules will be executed sequentially, looking first for the local table, then all packets with `0x200/0x200` flags will first jump to the main table (where veth routes are defined), and then to the 100 table, where the following rules are in place:
 
 {{<highlight bash "linenos=table,hl_lines=8">}}
 $ ip route show table 100
@@ -733,11 +733,11 @@ $ ip -d addr show istioin
        valid_lft forever preferred_lft forever
 {{</highlight>}}
 
-As you can see from the output, istioin is a Geneve type virtual NIC that creates a Geneve tunnel with a remote IP of 10.4.3.14, which is the Pod IP of Ztunnel B.
+As you can see from the output, `istioin` is a Geneve-type virtual NIC that creates a Geneve tunnel with a remote IP of `10.4.3.14`, which is the Pod IP of Ztunnel B.
 
 ###  Check The Routing Rules On Ztunnel B Pod
 
-Go to the Ztunnel B Pod and use the ip -d a command to check its NIC information. You will see that there is a pistioout NIC with an IP of 192.168.127.2, which is the far end of the Geneve tunnel created with the istioin virtual NIC.
+Go to the Ztunnel B Pod and use the `ip -d a` command to check its NIC information. You will see that there is a `pistioout` NIC with an IP of `192.168.127.2`, which is the far end of the Geneve tunnel created with the `istioout` virtual NIC.
 
 Use iptables-save to view the iptables rules within the Pod, and you will see that:
 
@@ -906,8 +906,8 @@ Look into the configuration of the `virtual_inbound` cluster:
 
 Descriptions:
 
-- Line 7: the type of this cluster is ORIGINAL_DST, indicating that the original downstream destination is used as the route destination, i.e. 10.4.3.20:15008, which obviously has an incorrect port in this address.
-- Line 9: a use_http_header of true will use the HTTP header x-envoy-original-dst-host as the destination, which has been set to 10.4.3.20:9080 in the outbound Ztunnel, and it will override the previously set destination address.
+- Line 7: the type of this cluster is ORIGINAL_DST, indicating that the original downstream destination is used as the route destination, i.e. `10.4.3.20:15008`, which has an incorrect port in this address.
+- Line 9: a `use_http_header` of true will use the HTTP header x-envoy-original-dst-host as the destination, which has been set to `10.4.3.20:9080` in the outbound Ztunnel, and it will override the previously set destination address.
 
 At this point, the inbound traffic is accurately routed to the destination by Ztunnel. The above is the flow of L4 traffic hijacking and routing between nodes in Ambient mode.
 
