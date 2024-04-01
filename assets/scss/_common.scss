@@ -709,3 +709,9 @@ figure img:target{
   height: auto;
 }
 
+a.toc-link {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
