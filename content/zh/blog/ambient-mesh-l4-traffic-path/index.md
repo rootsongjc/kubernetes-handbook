@@ -854,7 +854,7 @@ $ ip -d addr show istioin
 
 ### 检查 Ztunnel B Pod 上的路由规则 {#ztunnel-b-rules}
 
-进入 Ztunnel B Pod，使用 `ip -d a` 命令检查它的网卡信息，你会看到有一个 `pistioout` 网卡，它的 IP 为 `192.168.127.2`，这正是与 `istioin` 虚拟网卡建立的 Geneve 隧道的远端。
+进入 Ztunnel B Pod，使用 `ip -d a` 命令检查它的网卡信息，你会看到有一个 `pistioout` 网卡，它的 IP 为 `192.168.127.2`，这正是与 `istioout` 虚拟网卡建立的 Geneve 隧道的远端。
 
 使用 `iptables-save` 查看 Pod 内的 iptables 规则，你会看到：
 
