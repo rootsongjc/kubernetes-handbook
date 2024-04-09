@@ -1,5 +1,0 @@
-{{- $id := printf "spoiler-%d" .Ordinal -}}
-<details class="spoiler" id="{{$id}}">
-  <summary>{{ .Get 0 | markdownify }}</summary>
-  <p>{{ .Inner | markdownify }}</p>
-</details>
