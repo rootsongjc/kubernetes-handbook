@@ -26,7 +26,7 @@ Kubectl 的子命令主要分为 8 个类别：
 
 为了使用 kubectl 命令更加高效，我们可以选择安装一下开源软件来增加操作 kubectl 命令的快捷方式，同时为 kubectl 命令增加命令提示。
 
-![增加kubeclt命令的工具（图片来自网络）](tools-to-supercharge-kubectl.jpg)
+![增加 kubeclt 命令的工具（图片来自网络）](tools-to-supercharge-kubectl.jpg)
 
 - [kubectx](https://github.com/ahmetb/kubectx)：用于切换 Kubernetes context
 - [kube-ps1](https://github.com/jonmosco/kube-ps1)：为命令行终端增加`$PROMPT`字段
@@ -34,7 +34,7 @@ Kubectl 的子命令主要分为 8 个类别：
 
 全部配置完成后的 kubectl 终端如下图所示：
 
-![增强的kubectl命令](supercharged-kubectl.jpg)
+![增强的 kubectl 命令](supercharged-kubectl.jpg)
 
 开源项目 [kube-shell](https://github.com/cloudnativelabs/kube-shell) 可以为 kubectl 提供自动的命令提示和补全，使用起来特别方便，推荐给大家。
 
@@ -52,7 +52,7 @@ Kube-shell 有以下特性：
 pip install kube-shell --user -U
 ```
 
-![kube-shell页面](kube-shell.jpg)
+![kube-shell 页面](kube-shell.jpg)
 
 ## kubectl 的身份认证
 

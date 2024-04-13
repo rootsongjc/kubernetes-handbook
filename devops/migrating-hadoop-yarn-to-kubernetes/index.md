@@ -11,7 +11,7 @@ type: book
 
 下图是将单体应用迁移到云原生的步骤。
 
-![将单体应用迁移到云原生(图片来自DevOpsDay Toronto)](migrating-monolith-to-kubernetes.jpg)
+![将单体应用迁移到云原生 (图片来自 DevOpsDay Toronto)](migrating-monolith-to-kubernetes.jpg)
 
 接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去。
 

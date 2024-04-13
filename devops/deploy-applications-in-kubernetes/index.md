@@ -34,7 +34,7 @@ API 文档见 [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monit
 
 构建流程见：https://app.wercker.com/jimmysong/k8s-app-monitor-agent/
 
-![wercker构建页面](k8s-app-monitor-agent-wercker.jpg)
+![wercker 构建页面](k8s-app-monitor-agent-wercker.jpg)
 
 生成了如下两个 docker 镜像：
 
@@ -146,7 +146,7 @@ kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-
 
 在对 *k8s-app-monitor-agent* 服务进行了 N 此访问之后，再访问 [`http://grafana.istio.jimmysong.io`](http://grafana.istio.jimmysong.io/) 可以看到 服务网格 的监控信息。
 
-![Grafana页面](k8s-app-monitor-istio-grafana.png)
+![Grafana 页面](k8s-app-monitor-istio-grafana.png)
 
 访问 `http://servicegraph.istio.jimmysong.io/dotviz` 可以看到服务的依赖和 QPS 信息。
 
@@ -154,6 +154,6 @@ kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-
 
 访问 `http://zipkin.istio.jimmysong.io` 可以选择查看 `k8s-app-monitor-agent` 应用的追踪信息。
 
-![Zipkin页面](k8s-app-monitor-istio-zipkin.jpg)
+![Zipkin 页面](k8s-app-monitor-istio-zipkin.jpg)
 
 至此从代码提交到上线到 Kubernetes 集群上并集成 Istio 服务网格的过程就全部完成了。
