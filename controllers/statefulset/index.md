@@ -117,7 +117,7 @@ StatefulSet Pod 具有唯一的身份，包括序数，稳定的网络身份和�
 
 ## 稳定的网络 ID
 
-StatefulSet 中的每个 Pod 从 StatefulSet 的名称和 Pod 的序数派生其主机名。构造的主机名的模式是`$（statefulset 名称)-$(序数)`。上面的例子将创建三个名为`web-0，web-1，web-2`的 Pod。
+StatefulSet 中的每个 Pod 从 StatefulSet 的名称和 Pod 的序数派生其主机名。构造的主机名的模式是`$（statefulset 名称)-$(序数)`。上面的例子将创建三个名为 `web-0，web-1，web-2` 的 Pod。
 
 StatefulSet 可以使用 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 来控制其 Pod 的域。此服务管理的域的格式为：`$(服务名称).$(namespace).svc.cluster.local`，其中“cluster.local”是集群域。
 

@@ -168,7 +168,7 @@ spec:
 
 1. 在 ServiceBinding 创建后，Service Catalog 给外部 service broker 发一个调用请求，获取与服务实例绑定所需的信息。
 
-2. service broker为相应的服务帐户启用应用程序权限/角色。
+2. service broker 为相应的服务帐户启用应用程序权限/角色。
 
 3. service broker 返回连接和访问托管服务实例所需的信息。根据不同的提供商和不同的服务，返回的信息可能在服务提供商和其管理服务之间有所不同。
 

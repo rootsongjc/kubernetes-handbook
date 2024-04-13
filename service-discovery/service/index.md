@@ -124,7 +124,7 @@ spec:
 默认的策略是，通过 round-robin 算法来选择 backend `Pod`。
 实现基于客户端 IP 的会话亲和性，可以通过设置 `service.spec.sessionAffinity` 的值为 `"ClientIP"` （默认值为 `"None"`）。
 
-![userspace代理模式下Service概览图](services-userspace-overview.jpg)
+![userspace 代理模式下 Service 概览图](services-userspace-overview.jpg)
 
 ### iptables 代理模式
 
@@ -137,7 +137,7 @@ spec:
 
 这应该比 userspace 代理更快、更可靠。然而，不像 userspace 代理，如果初始选择的 `Pod` 没有响应，iptables 代理不能自动地重试另一个 `Pod`，所以它需要依赖 [readiness probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#defining-readiness-probes)。
 
-![iptables代理模式下Service概览图](services-iptables-overview.jpg)
+![iptables 代理模式下 Service 概览图](services-iptables-overview.jpg)
 
 ### ipvs 代理模式
 
@@ -154,7 +154,7 @@ spec:
 
 **注意：** ipvs 模式假定在运行 kube-proxy 之前在节点上都已经安装了 IPVS 内核模块。当 kube-proxy 以 ipvs 代理模式启动时，kube-proxy 将验证节点上是否安装了 IPVS 模块，如果未安装，则 kube-proxy 将回退到 iptables 代理模式。
 
-![ipvs代理模式下Service概览图](service-ipvs-overview.png)
+![ipvs 代理模式下 Service 概览图](service-ipvs-overview.png)
 
 ## 多端口 Service
 

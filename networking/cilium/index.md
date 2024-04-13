@@ -142,7 +142,7 @@ KV 存储数据库用存储以下状态：
 
 下图是 Cilium 的组件示意图，Cilium 是位于 Linux kernel 与容器编排系统的中间层。向上可以为容器配置网络，向下可以向 Linux 内核生成 BPF 程序来控制容器的安全性和转发行为。
 
-![Cilium 组件(来自 Cilium 官网)](cilium-arch.png)
+![Cilium 组件 (来自 Cilium 官网)](cilium-arch.png)
 
 管理员通过 Cilium CLI 配置策略信息，这些策略信息将存储在 KV 数据库里，Cilium 使用插件（如 CNI）与容器编排调度系统交互，来实现容器间的联网和容器分配 IP 地址分配，同时 Cilium 还可以获得容器的各种元数据和流量信息，提供监控 API。
 
