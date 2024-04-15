@@ -5,6 +5,8 @@ weight: 1
 category: "Handbook 系列"
 icon: book
 icon_pack: fa
+featured: true
+type: book
 title: Kubernetes 基础教程
 date: '2022-05-21T00:00:00+08:00'
 cascade:
