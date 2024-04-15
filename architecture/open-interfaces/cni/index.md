@@ -15,7 +15,7 @@ CNI 的接口中包括以下几个方法：
 
 ```go
 type CNI interface {
-    AddNetworkList (net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)
+  AddNetworkList (net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)
 	DelNetworkList (net *NetworkConfigList, rt *RuntimeConf) error
 	AddNetwork (net *NetworkConfig, rt *RuntimeConf) (types.Result, error)
 	DelNetwork (net *NetworkConfig, rt *RuntimeConf) error
@@ -86,18 +86,19 @@ CNI 插件必须支持以下操作：
 - 结果：插件支持的 CNI 规范版本信息。
 
 ```json
-{“cniVersion”：“0.3.1”，// 此输出使用的 CNI 规范的版本
-“supportedVersions”：[“0.1.0”，“0.2.0”，“0.3.0”，“0.3.1”] // 此插件支持的 CNI 规范版本列表
+{
+  "cniVersio"："0.3.1"，// 此输出使用的 CNI 规范的版本
+  "supportedVersions"：["0.1.0"，"0.2.0"，"0.3.0"，"0.3.1"] // 此插件支持的 CNI 规范版本列表
 }
 ```
 
-CNI 插件的详细说明请参考：[CNI SPEC](https://github.com/containernetworking/cni/blob/master/SPEC.md)。
+CNI 插件的详细说明请参考：[CNI 规范](https://github.com/containernetworking/cni/blob/master/SPEC.md)。
 
 ### IP 分配
 
 作为容器网络管理的一部分，CNI 插件需要为接口分配（并维护）IP 地址，并安装与该接口相关的所有必要路由。这给了 CNI 插件很大的灵活性，但也给它带来了很大的负担。众多的 CNI 插件需要编写相同的代码来支持用户需要的多种 IP 管理方案（例如 dhcp、host-local）。
 
-为了减轻负担，使 IP 管理策略与 CNI 插件类型解耦，我们定义了 IP 地址管理插件（IPAM 插件）。CNI 插件的职责是在执行时恰当地调用 IPAM 插件。IPAM 插件必须确定接口 IP/subnet，网关和路由，并将此信息返回到“主”插件来应用配置。IPAM 插件可以通过协议（例如 dhcp）、存储在本地文件系统上的数据、网络配置文件的“ipam”部分或上述的组合来获得信息。
+为了减轻负担，使 IP 管理策略与 CNI 插件类型解耦，我们定义了 IP 地址管理插件（IPAM 插件）。CNI 插件的职责是在执行时恰当地调用 IPAM 插件。IPAM 插件必须确定接口 IP/subnet，网关和路由，并将此信息返回到“主”插件来应用配置。IPAM 插件可以通过协议（例如 dhcp）、存储在本地文件系统上的数据、网络配置文件的“ipam” 部分或上述的组合来获得信息。
 
 #### IPAM 插件
 
@@ -129,5 +130,5 @@ CNI 插件的详细说明请参考：[CNI SPEC](https://github.com/containernetw
 
 - [containernetworking/cni - github.com](https://github.com/containernetworking/cni)
 - [containernetworking/plugins - github.com](https://github.com/containernetworking/plugins)
-- [Container Networking Interface Specification - github.com](https://github.com/containernetworking/cni/blob/master/SPEC.md#container-networking-interface-specification)
-- [CNI Extension conventions - github.com](https://github.com/containernetworking/cni/blob/master/CONVENTIONS.md)
+- [Container Networking Interface Specification - github.com](https://github.com/containernetworking/cni/blob/master/SPEC.md)
+- [CNI Extension conventions - github.com](https://github.com/containernetworking/cni/blob/main/CONVENTIONS.md)
