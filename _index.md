@@ -9,6 +9,8 @@ featured: true
 type: book
 title: Kubernetes 基础教程
 date: '2022-05-21T00:00:00+08:00'
+aliases:
+ - /guide-to-cloud-native-app
 cascade:
   commentable: true
   tags: ["Kubernetes"]
