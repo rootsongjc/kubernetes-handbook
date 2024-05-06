@@ -32,7 +32,11 @@ $ etcdctl --ca-file=/etc/kubernetes/ssl/ca.pem --cert-file=/etc/kubernetes/ssl/k
 /kube-centos/network/subnets/172.30.31.0-24
 /kube-centos/network/subnets/172.30.20.0-24
 /kube-centos/network/subnets/172.30.23.0-24
-```查看 flannel 的配置：```bash
+```
+
+查看 flannel 的配置：
+
+```bash
 $ etcdctl --ca-file=/etc/kubernetes/ssl/ca.pem --cert-file=/etc/kubernetes/ssl/kubernetes.pem --key-file=/etc/kubernetes/ssl/kubernetes-key.pem get /kube-centos/network/config
 2018-01-19 18:38:22.768145 I | warning: ignoring ServerName for user-provided CA for backwards compatibility is deprecated
 {"Network": "172.30.0.0/16", "SubnetLen": 24, "Backend": { "Type": "host-gw"} }
