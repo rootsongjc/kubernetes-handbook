@@ -3,6 +3,8 @@ weight: 3
 title: Kubernetes 架构
 date: '2022-05-21T00:00:00+08:00'
 type: book
+aliases:
+ - /kubernetes-handbook/concepts/
 ---
 
 Kubernetes 最初源于谷歌内部的 Borg，提供了面向应用的容器集群部署和管理系统。Kubernetes 的目标旨在消除编排物理 / 虚拟计算，网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原语上进行自助运营。Kubernetes 也提供稳定、兼容的基础（平台），用于构建定制化的 workflows 和更高级的自动化任务。
