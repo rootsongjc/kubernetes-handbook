@@ -12,7 +12,7 @@ date: '2022-05-21T00:00:00+08:00'
 aliases:
  - /guide-to-cloud-native-app
 cascade:
-  commentable: true
+  comment: true
   tags: ["Kubernetes"]
   type: book
   categories: ["Kubernetes"]
