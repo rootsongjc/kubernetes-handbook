@@ -1,6 +1,7 @@
 ---
 weight: 26
 title: Taint 和 Toleration（污点和容忍）
+linktitle: 污点和容忍
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

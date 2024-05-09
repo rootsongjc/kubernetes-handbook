@@ -1,6 +1,7 @@
 ---
 weight: 20
 title: Pod 中断与 PDB（Pod 中断预算）
+linktitle: Pod 中断预算
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

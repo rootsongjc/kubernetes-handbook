@@ -1,6 +1,7 @@
 ---
 weight: 97
 title: Lens - Kubernetes IDE
+linktitle: Lens
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

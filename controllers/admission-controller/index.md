@@ -1,6 +1,7 @@
 ---
 weight: 37
 title: 准入控制器（Admission Controller）
+linktitle: 准入控制器
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

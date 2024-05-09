@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="158.125 118 550 289" width="550" height="289">
+  <defs/>
+  <g id="cloud-native-app" stroke="none" fill-opacity="1" stroke-dasharray="none" fill="none" stroke-opacity="1">
+    <title>cloud-native-app</title>
+    <rect fill="white" x="158.125" y="118" width="550" height="289"/>
+    <g id="cloud-native-app_Layer_1">
+      <title>Layer 1</title>
+      <g id="Group_219">
+        <g id="Graphic_270">
+          <rect x="170.25" y="192" width="522.8594" height="57" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_271">
+          <rect x="170.25" y="333" width="522.8594" height="57" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_272">
+          <rect x="170.25" y="249" width="522.8594" height="84" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_273">
+          <rect x="170.25" y="135" width="522.8594" height="57" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_218">
+          <text transform="translate(176.008 254)" fill="black">
+            <tspan font-family="PingFang SC" font-weight="bold" font-size="14" fill="black" x="19895197e-20" y="15">Application Deploy &amp; Rollout</tspan>
+          </text>
+        </g>
+        <g id="Group_202">
+          <g id="Group_209">
+            <g id="Graphic_217">
+              <text transform="translate(225.695 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="29132252e-20" y="13">argo</tspan>
+              </text>
+            </g>
+            <g id="Graphic_216">
+              <text transform="translate(318.062 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="1030287e-19" y="13">argo-cd</tspan>
+              </text>
+            </g>
+            <g id="Graphic_215">
+              <text transform="translate(175.913 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">tekton</tspan>
+              </text>
+            </g>
+            <g id="Graphic_214">
+              <text transform="translate(264.114 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="42277293e-20" y="13">flagger</tspan>
+              </text>
+            </g>
+            <g id="Graphic_213">
+              <text transform="translate(526.78425 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">lastbackend</tspan>
+              </text>
+            </g>
+            <g id="Graphic_212">
+              <text transform="translate(377.751 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">pipeline</tspan>
+              </text>
+            </g>
+            <g id="Graphic_211">
+              <text transform="translate(436.981 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="23270275e-20" y="13">flux</tspan>
+              </text>
+            </g>
+            <g id="Graphic_210">
+              <text transform="translate(469.913 284)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">gitkube</tspan>
+              </text>
+            </g>
+          </g>
+          <g id="Group_203">
+            <g id="Graphic_208">
+              <text transform="translate(350.586 311)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">autoapply</tspan>
+              </text>
+            </g>
+            <g id="Graphic_207">
+              <text transform="translate(304.935 311)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">ketpn</tspan>
+              </text>
+            </g>
+            <g id="Graphic_206">
+              <text transform="translate(233.604 311)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">spinnaker</tspan>
+              </text>
+            </g>
+            <g id="Graphic_205">
+              <text transform="translate(175.596 311)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="45119464e-20" y="13">skaffold</tspan>
+              </text>
+            </g>
+            <g id="Graphic_204">
+              <text transform="translate(423.068 311)" fill="black">
+                <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">kayenta</tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Group_261">
+        <g id="Graphic_260">
+          <text transform="translate(175.574 140)" fill="black">
+            <tspan font-family="PingFang SC" font-weight="bold" font-size="14" fill="black" x="0" y="15">Application Definition &amp; Packaging</tspan>
+          </text>
+        </g>
+        <g id="Group_253">
+          <g id="Graphic_259">
+            <text transform="translate(175.736 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">pulumi</tspan>
+            </text>
+          </g>
+          <g id="Graphic_258">
+            <text transform="translate(228.491 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="7105427e-21" y="13">ballerina-lang</tspan>
+            </text>
+          </g>
+          <g id="Graphic_257">
+            <text transform="translate(480.52 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">armada</tspan>
+            </text>
+          </g>
+          <g id="Graphic_256">
+            <text transform="translate(323.574 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">helm</tspan>
+            </text>
+          </g>
+          <g id="Graphic_255">
+            <text transform="translate(364.358 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">kustomize</tspan>
+            </text>
+          </g>
+          <g id="Graphic_254">
+            <text transform="translate(438.689 170)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">cnab</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Group_170">
+        <g id="Graphic_169">
+          <text transform="translate(175.621 338)" fill="black">
+            <tspan font-family="PingFang SC" font-weight="bold" font-size="14" fill="black" x="8242296e-19" y="15">Kubernetes Primitive</tspan>
+          </text>
+        </g>
+        <g id="Group_161">
+          <g id="Graphic_168">
+            <text transform="translate(175.888 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Deployment</tspan>
+            </text>
+          </g>
+          <g id="Graphic_167">
+            <text transform="translate(261.798 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">DaemonSet</tspan>
+            </text>
+          </g>
+          <g id="Graphic_166">
+            <text transform="translate(346.198 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Job</tspan>
+            </text>
+          </g>
+          <g id="Graphic_165">
+            <text transform="translate(380.029 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">CronJob</tspan>
+            </text>
+          </g>
+          <g id="Graphic_164">
+            <text transform="translate(444.018 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">StatefulSet</tspan>
+            </text>
+          </g>
+          <g id="Graphic_163">
+            <text transform="translate(523.295 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">Pod</tspan>
+            </text>
+          </g>
+          <g id="Graphic_162">
+            <text transform="translate(559.41 368)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="1563194e-19" y="13">ReplicationController</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Group_245">
+        <g id="Graphic_244">
+          <title>Workload Definition</title>
+          <text transform="translate(175.289 197)" fill="black">
+            <tspan font-family="PingFang SC" font-weight="bold" font-size="14" fill="black" x="0" y="15">Workload Definition</tspan>
+          </text>
+        </g>
+        <g id="Group_232">
+          <g id="Graphic_243">
+            <text transform="translate(175.419 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="1314504e-19" y="13">istio</tspan>
+            </text>
+          </g>
+          <g id="Graphic_242">
+            <text transform="translate(211.448 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">knative</tspan>
+            </text>
+          </g>
+          <g id="Graphic_241">
+            <text transform="translate(374.53737 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="11723955e-20" y="13">operators</tspan>
+            </text>
+          </g>
+          <g id="Graphic_240">
+            <text transform="translate(266.34 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">openfaas</tspan>
+            </text>
+          </g>
+          <g id="Graphic_239">
+            <text transform="translate(334.448 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">keda</tspan>
+            </text>
+          </g>
+          <g id="Graphic_238">
+            <text transform="translate(511.1454 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">fn</tspan>
+            </text>
+          </g>
+          <g id="Graphic_237">
+            <text transform="translate(445.3614 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">kubeless</tspan>
+            </text>
+          </g>
+          <g id="Graphic_236">
+            <text transform="translate(533.2464 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">kyma</tspan>
+            </text>
+          </g>
+          <g id="Graphic_235">
+            <text transform="translate(577.5194 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="14566126e-20" y="13">fission</tspan>
+            </text>
+          </g>
+          <g id="Graphic_234">
+            <text transform="translate(628.4114 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="31974423e-20" y="13">fx</tspan>
+            </text>
+          </g>
+          <g id="Graphic_233">
+            <text transform="translate(650.4404 227)" fill="black">
+              <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="0" y="13">nuclio</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+      <g id="Graphic_274"/>
+    </g>
+  </g>
+</svg>

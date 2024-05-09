@@ -1,6 +1,7 @@
 ---
 weight: 98
 title: Kubernator - 更底层的 Kubernetes UI
+linktitle: Kubernator
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

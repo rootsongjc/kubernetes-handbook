@@ -1,5 +1,6 @@
 ---
 weight: 67
+linktitle: 服务目录
 title: 服务目录（Service Catalog）
 date: '2022-05-21T00:00:00+08:00'
 type: book

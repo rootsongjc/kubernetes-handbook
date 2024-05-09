@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="203 129.5 590 232" width="590" height="232">
+  <defs/>
+  <g id="roles" stroke="none" fill-opacity="1" stroke-dasharray="none" fill="none" stroke-opacity="1">
+    <title>roles</title>
+    <rect fill="white" x="203" y="129.5" width="590" height="232"/>
+    <g id="roles_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_23"/>
+      <g id="Graphic_22">
+        <path d="M 227.9 145 L 507.9 145 C 512.3183 145 515.9 148.58172 515.9 153 L 515.9 338 C 515.9 342.41828 512.3183 346 507.9 346 L 227.9 346 C 223.48172 346 219.9 342.41828 219.9 338 L 219.9 153 C 219.9 148.58172 223.48172 145 227.9 145 Z" fill="#c0c0ff"/>
+        <path d="M 227.9 145 L 507.9 145 C 512.3183 145 515.9 148.58172 515.9 153 L 515.9 338 C 515.9 342.41828 512.3183 346 507.9 346 L 227.9 346 C 223.48172 346 219.9 342.41828 219.9 338 L 219.9 153 C 219.9 148.58172 223.48172 145 227.9 145 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(224.9 150)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="54.552" y="15">ApplicationConfiguration</tspan>
+        </text>
+      </g>
+      <g id="Group_15">
+        <g id="Graphic_21">
+          <path d="M 239.4 183.65 L 496.4 183.65 C 500.8183 183.65 504.4 187.23172 504.4 191.65 L 504.4 325.15 C 504.4 329.56828 500.8183 333.15 496.4 333.15 L 239.4 333.15 C 234.98172 333.15 231.4 329.56828 231.4 325.15 L 231.4 191.65 C 231.4 187.23172 234.98172 183.65 239.4 183.65 Z" fill="#40ffff"/>
+          <path d="M 239.4 183.65 L 496.4 183.65 C 500.8183 183.65 504.4 187.23172 504.4 191.65 L 504.4 325.15 C 504.4 329.56828 500.8183 333.15 496.4 333.15 L 239.4 333.15 C 234.98172 333.15 231.4 329.56828 231.4 325.15 L 231.4 191.65 C 231.4 187.23172 234.98172 183.65 239.4 183.65 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(302.412 188.65)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Application Scope</tspan>
+          </text>
+        </g>
+        <g id="Graphic_20">
+          <title>大框</title>
+          <path d="M 244.5 215.5 L 491 215.5 C 495.4183 215.5 499 219.08172 499 223.5 L 499 316 C 499 320.41828 495.4183 324 491 324 L 244.5 324 C 240.08172 324 236.5 320.41828 236.5 316 L 236.5 223.5 C 236.5 219.08172 240.08172 215.5 244.5 215.5 Z" fill="#ffc0ff"/>
+          <path d="M 244.5 215.5 L 491 215.5 C 495.4183 215.5 499 219.08172 499 223.5 L 499 316 C 499 320.41828 495.4183 324 491 324 L 244.5 324 C 240.08172 324 236.5 320.41828 236.5 316 L 236.5 223.5 C 236.5 219.08172 240.08172 215.5 244.5 215.5 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(241.5 220.5)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="84.01" y="15">Component</tspan>
+          </text>
+        </g>
+        <g id="Graphic_19">
+          <path d="M 250.5 247.80996 L 411.5 247.80996 C 415.9183 247.80996 419.5 251.3917 419.5 255.80996 L 419.5 310.69 C 419.5 315.10828 415.9183 318.69 411.5 318.69 L 250.5 318.69 C 246.08172 318.69 242.5 315.10828 242.5 310.69 L 242.5 255.80996 C 242.5 251.3917 246.08172 247.80996 250.5 247.80996 Z" fill="lime"/>
+          <path d="M 250.5 247.80996 L 411.5 247.80996 C 415.9183 247.80996 419.5 251.3917 419.5 255.80996 L 419.5 310.69 C 419.5 315.10828 415.9183 318.69 411.5 318.69 L 250.5 318.69 C 246.08172 318.69 242.5 315.10828 242.5 310.69 L 242.5 255.80996 C 242.5 251.3917 246.08172 247.80996 250.5 247.80996 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(247.5 274.02598)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="49.732" y="15">Workload</tspan>
+          </text>
+        </g>
+        <g id="Graphic_18">
+          <path d="M 427.5 247.80996 L 436 247.80996 C 440.4183 247.80996 444 251.3917 444 255.80996 L 444 310.69 C 444 315.10828 440.4183 318.69 436 318.69 L 427.5 318.69 C 423.0817 318.69 419.5 315.10828 419.5 310.69 L 419.5 255.80996 C 419.5 251.3917 423.0817 247.80996 427.5 247.80996 Z" fill="#40ffff"/>
+          <path d="M 427.5 247.80996 L 436 247.80996 C 440.4183 247.80996 444 251.3917 444 255.80996 L 444 310.69 C 444 315.10828 440.4183 318.69 436 318.69 L 427.5 318.69 C 423.0817 318.69 419.5 315.10828 419.5 310.69 L 419.5 255.80996 C 419.5 251.3917 423.0817 247.80996 427.5 247.80996 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(422.526 298.36198) rotate(-90)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Trait</tspan>
+          </text>
+        </g>
+        <g id="Graphic_17">
+          <path d="M 452 248.11996 L 460.5 248.11996 C 464.9183 248.11996 468.5 251.7017 468.5 256.11996 L 468.5 311 C 468.5 315.41828 464.9183 319 460.5 319 L 452 319 C 447.5817 319 444 315.41828 444 311 L 444 256.11996 C 444 251.7017 447.5817 248.11996 452 248.11996 Z" fill="#40ffff"/>
+          <path d="M 452 248.11996 L 460.5 248.11996 C 464.9183 248.11996 468.5 251.7017 468.5 256.11996 L 468.5 311 C 468.5 315.41828 464.9183 319 460.5 319 L 452 319 C 447.5817 319 444 315.41828 444 311 L 444 256.11996 C 444 251.7017 447.5817 248.11996 452 248.11996 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(447.026 298.67198) rotate(-90)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Trait</tspan>
+          </text>
+        </g>
+        <g id="Graphic_16">
+          <path d="M 476.5 248.11996 L 485 248.11996 C 489.4183 248.11996 493 251.7017 493 256.11996 L 493 311 C 493 315.41828 489.4183 319 485 319 L 476.5 319 C 472.0817 319 468.5 315.41828 468.5 311 L 468.5 256.11996 C 468.5 251.7017 472.0817 248.11996 476.5 248.11996 Z" fill="#40ffff"/>
+          <path d="M 476.5 248.11996 L 485 248.11996 C 489.4183 248.11996 493 251.7017 493 256.11996 L 493 311 C 493 315.41828 489.4183 319 485 319 L 476.5 319 C 472.0817 319 468.5 315.41828 468.5 311 L 468.5 256.11996 C 468.5 251.7017 472.0817 248.11996 476.5 248.11996 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(471.526 298.67198) rotate(-90)" fill="black">
+            <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="15">Trait</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Graphic_14">
+        <text transform="translate(540.5 148.325)" fill="#24292e">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="#24292e" x="0" y="16">Target Roles</tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="16" fill="#24292e" x="0" y="35.46411">in a Cloud Native Application</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <text transform="translate(540.5 202.5)" fill="#24292e">
+          <tspan font-family="Helvetica Neue" font-style="italic" font-size="16" fill="#24292e" x="0" y="16">Legend</tspan>
+        </text>
+      </g>
+      <g id="Group_4">
+        <g id="Graphic_12">
+          <text transform="translate(575.2675 301.96167)" fill="black">
+            <tspan font-family="Helvetica Neue" font-style="italic" font-size="14" fill="black" x="0" y="13">Infrastructure Operator</tspan>
+          </text>
+        </g>
+        <g id="Graphic_11">
+          <text transform="translate(574.8485 254.45144)" fill="black">
+            <tspan font-family="Helvetica Neue" font-style="italic" font-size="14" fill="black" x="0" y="13">Application Developer</tspan>
+          </text>
+        </g>
+        <g id="Graphic_10">
+          <text transform="translate(575.53715 278.20656)" fill="black">
+            <tspan font-family="Helvetica Neue" font-style="italic" font-size="14" fill="black" x="0" y="13">Application Operator</tspan>
+          </text>
+        </g>
+        <g id="Graphic_9">
+          <path d="M 543.30585 302.3518 L 556.2615 302.3518 C 560.57255 302.3518 564.06735 305.8466 564.06735 310.15767 L 564.06735 310.15767 C 564.06735 314.46873 560.57255 317.96353 556.2615 317.96353 L 543.30585 317.96353 C 538.9948 317.96353 535.5 314.46873 535.5 310.15767 L 535.5 310.15767 C 535.5 305.8466 538.9948 302.3518 543.30585 302.3518 Z" fill="lime"/>
+          <path d="M 543.30585 302.3518 L 556.2615 302.3518 C 560.57255 302.3518 564.06735 305.8466 564.06735 310.15767 L 564.06735 310.15767 C 564.06735 314.46873 560.57255 317.96353 556.2615 317.96353 L 543.30585 317.96353 C 538.9948 317.96353 535.5 314.46873 535.5 310.15767 L 535.5 310.15767 C 535.5 305.8466 538.9948 302.3518 543.30585 302.3518 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_8">
+          <path d="M 543.30585 278.5967 L 556.2615 278.5967 C 560.57255 278.5967 564.06735 282.0915 564.06735 286.40256 L 564.06735 286.40256 C 564.06735 290.7136 560.57255 294.2084 556.2615 294.2084 L 543.30585 294.2084 C 538.9948 294.2084 535.5 290.7136 535.5 286.40256 L 535.5 286.40256 C 535.5 282.0915 538.9948 278.5967 543.30585 278.5967 Z" fill="#40ffff"/>
+          <path d="M 543.30585 278.5967 L 556.2615 278.5967 C 560.57255 278.5967 564.06735 282.0915 564.06735 286.40256 L 564.06735 286.40256 C 564.06735 290.7136 560.57255 294.2084 556.2615 294.2084 L 543.30585 294.2084 C 538.9948 294.2084 535.5 290.7136 535.5 286.40256 L 535.5 286.40256 C 535.5 282.0915 538.9948 278.5967 543.30585 278.5967 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_7">
+          <path d="M 543.30585 254.8416 L 556.2615 254.8416 C 560.57255 254.8416 564.06735 258.3364 564.06735 262.64744 L 564.06735 262.64744 C 564.06735 266.9585 560.57255 270.4533 556.2615 270.4533 L 543.30585 270.4533 C 538.9948 270.4533 535.5 266.9585 535.5 262.64744 L 535.5 262.64744 C 535.5 258.3364 538.9948 254.8416 543.30585 254.8416 Z" fill="#ffc0ff"/>
+          <path d="M 543.30585 254.8416 L 556.2615 254.8416 C 560.57255 254.8416 564.06735 258.3364 564.06735 262.64744 L 564.06735 262.64744 C 564.06735 266.9585 560.57255 270.4533 556.2615 270.4533 L 543.30585 270.4533 C 538.9948 270.4533 535.5 266.9585 535.5 262.64744 L 535.5 262.64744 C 535.5 258.3364 538.9948 254.8416 543.30585 254.8416 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_6">
+          <text transform="translate(575.8055 229.72587)" fill="black">
+            <tspan font-family="Helvetica Neue" font-style="italic" font-size="14" fill="black" x="0" y="13">Application Developer &amp; Operator</tspan>
+          </text>
+        </g>
+        <g id="Graphic_5">
+          <path d="M 543.30585 231.08647 L 556.2615 231.08647 C 560.57255 231.08647 564.06735 234.58127 564.06735 238.89233 L 564.06735 238.89233 C 564.06735 243.20338 560.57255 246.69818 556.2615 246.69818 L 543.30585 246.69818 C 538.9948 246.69818 535.5 243.20338 535.5 238.89233 L 535.5 238.89233 C 535.5 234.58127 538.9948 231.08647 543.30585 231.08647 Z" fill="#c0c0ff"/>
+          <path d="M 543.30585 231.08647 L 556.2615 231.08647 C 560.57255 231.08647 564.06735 234.58127 564.06735 238.89233 L 564.06735 238.89233 C 564.06735 243.20338 560.57255 246.69818 556.2615 246.69818 L 543.30585 246.69818 C 538.9948 246.69818 535.5 243.20338 535.5 238.89233 L 535.5 238.89233 C 535.5 234.58127 538.9948 231.08647 543.30585 231.08647 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
