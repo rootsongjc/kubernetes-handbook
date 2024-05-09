@@ -1,6 +1,7 @@
 ---
 weight: 70
 title: 集群联邦（Cluster Federation）
+linktitle: 集群联邦
 date: '2023-01-17T10:40:00+08:00'
 type: book
 ---

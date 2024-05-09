@@ -1,8 +1,10 @@
 ---
 weight: 35
 title: Horizontal Pod Autoscaling
+linkTitle: HPA
 date: '2022-05-21T00:00:00+08:00'
 type: book
+level: 2
 ---
 
 应用的资源使用率通常都有高峰和低谷的时候，如何削峰填谷，提高集群的整体资源利用率，让 service 中的 Pod 个数自动调整呢？这就有赖于 Horizontal Pod Autoscaling 了，顾名思义，使 Pod 水平自动缩放。这个 Object（跟 Pod、Deployment 一样都是 API resource）也是最能体现 kubernetes 之于传统运维价值的地方，不再需要手动扩容了，终于实现自动化了，还可以自定义指标，没准未来还可以通过人工智能自动进化呢！

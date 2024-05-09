@@ -1,6 +1,7 @@
 ---
 weight: 69
 title: 多集群服务 API（Multi-Cluster Services API）
+linktitle: 多集群服务 API
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="168 227 1048 261" width="1048" height="261">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledBall_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -3 6 6" markerWidth="6" markerHeight="6" color="black">
+      <g>
+        <circle cx="1.7999992" cy="0" r="1.79999840920999" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" stroke-dasharray="none" fill-opacity="1" stroke="none" fill="none" stroke-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" x="168" y="227" width="1048" height="261"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_28">
+        <rect x="173.5" y="238" width="1037" height="250" fill="white"/>
+      </g>
+      <g id="Graphic_27"/>
+      <g id="Graphic_26">
+        <rect x="201.5" y="315" width="135.5" height="43" fill="#ffff80"/>
+        <rect x="201.5" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(206.5 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2014</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <rect x="337" y="315" width="135.5" height="43" fill="#c0ffc0"/>
+        <rect x="337" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(342 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2015</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="472.5" y="315" width="135.5" height="43" fill="#c0ffc0"/>
+        <rect x="472.5" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(477.5 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2016</tspan>
+        </text>
+      </g>
+      <g id="Graphic_23">
+        <rect x="608" y="315" width="135.5" height="43" fill="#ff80ff"/>
+        <rect x="608" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(613 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2017</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <rect x="743.5" y="315" width="135.5" height="43" fill="#ff80ff"/>
+        <rect x="743.5" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(748.5 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2018</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <rect x="879" y="315" width="135.5" height="43" fill="#ffc0c0"/>
+        <rect x="879" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(884 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2019</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="1014.5" y="315" width="135.5" height="43" fill="#ffc0c0"/>
+        <rect x="1014.5" y="315" width="135.5" height="43" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1019.5 327.276)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="44.958" y="15">2020</tspan>
+        </text>
+      </g>
+      <g id="Graphic_19">
+        <path d="M 1150 292 L 1185 336.5 L 1150 381 Z" fill="white"/>
+        <path d="M 1150 292 L 1185 336.5 L 1150 381 Z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_18">
+        <text transform="translate(209.834 410)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="17">Kubernetes </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">开源</tspan>
+        </text>
+      </g>
+      <g id="Graphic_17">
+        <text transform="translate(331.99 410)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="22737368e-20" y="17">Kubernetes 1.0 </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">发布</tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" x="32.08" y="39">CNCF 成立</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <text transform="translate(454.618 449)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="17">CRD/Operator </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">模式确立</tspan>
+        </text>
+      </g>
+      <g id="Graphic_15">
+        <text transform="translate(642.566 410)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="0" y="17">Istio </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">开源</tspan>
+        </text>
+      </g>
+      <g id="Graphic_14">
+        <text transform="translate(714.962 410)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="51.392" y="17">Knative </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">开源</tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" x="45474735e-20" y="39">Kubernetes 从 CNCF 毕业</tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" x="48.288" y="61">重定义云原生</tspan>
+        </text>
+      </g>
+      <g id="Graphic_13">
+        <text transform="translate(910.294 410)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="1278977e-19" y="17">OAM </tspan>
+          <tspan font-family="PingFang SC" font-size="16" fill="black" y="17">开源</tspan>
+        </text>
+      </g>
+      <g id="Line_12">
+        <line x1="269.25" y1="405" x2="269.25" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_11">
+        <line x1="404.75" y1="405" x2="404.75" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_10">
+        <line x1="540.25" y1="444" x2="540.25" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_9">
+        <line x1="675.75" y1="405" x2="675.75" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_8">
+        <line x1="811.25" y1="405" x2="811.25" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_7">
+        <line x1="946.75" y1="405" x2="946.75" y2="366.2" marker-end="url(#FilledBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_6">
+        <text transform="translate(236.5 259)" fill="black">
+          <tspan font-family="PingFang SC" font-size="24" fill="black" x="0" y="25">孵化期</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <text transform="translate(411 259)" fill="black">
+          <tspan font-family="PingFang SC" font-size="24" fill="black" x="0" y="25">高速发展期</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <text transform="translate(683 259)" fill="black">
+          <tspan font-family="PingFang SC" font-size="24" fill="black" x="0" y="25">野蛮生长期</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <text transform="translate(951 259)" fill="black">
+          <tspan font-family="PingFang SC" font-size="24" fill="black" x="0" y="25">普及推广期</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

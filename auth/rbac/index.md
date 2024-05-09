@@ -1,6 +1,7 @@
 ---
 weight: 45
 title: 基于角色的访问控制（RBAC）
+linktitle: RBAC
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
