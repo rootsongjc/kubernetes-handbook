@@ -1,6 +1,7 @@
 ---
 weight: 51
 title: 非 Overlay 扁平网络 Calico
+linktitle: Calico
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

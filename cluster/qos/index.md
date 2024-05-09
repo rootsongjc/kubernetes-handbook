@@ -1,6 +1,7 @@
 ---
 weight: 72
 title: 服务质量等级（QoS）
+linktitle: 服务质量等级
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---

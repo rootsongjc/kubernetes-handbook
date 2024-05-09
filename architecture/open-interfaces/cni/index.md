@@ -1,6 +1,7 @@
 ---
 weight: 8
 title: 容器网络接口（CNI）
+linktitle: CNI
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
