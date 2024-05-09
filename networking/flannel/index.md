@@ -1,6 +1,7 @@
 ---
 weight: 50
 title: 扁平网络 Flannel
+linktitle: Flannel
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
