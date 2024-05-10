@@ -17,7 +17,7 @@ Kubernetes 已成为云原生应用的既定运行平台，本文以 Kubernetes 
 
 ## 云原生的不同发展阶段
 
-Kubernetes 从开源至今已经走过快[六个年头](https://jimmysong.io/cloud-native/memo/open-source/)（2014 年 6 月开源）了，可以说是 Kubernetes 的诞生开启了整个云原生的时代。我粗略的将云原生的发展划分为以下几个时期。
+Kubernetes 从开源至今已经走过快六个年头（2014 年 6 月开源）了，可以说是 Kubernetes 的诞生开启了整个云原生的时代。我粗略的将云原生的发展划分为以下几个时期。
 
 ![云原生的发展阶段](cloud-native-stages.svg)
 
@@ -31,7 +31,7 @@ Kubernetes 从开源至今已经走过快[六个年头](https://jimmysong.io/clo
 
 **第三阶段：野蛮生长期（2017 年 - 2018 年）**
 
-2016 年之后的云原生基本都默认运行在 Kubernetes 平台上，2017、2018 年 Google 主导的 Istio、Knative 相继开源，这些开源项目都大量利用了 Kubernetes 的 Operator 进行了扩展，Istio 刚发布时就有 50 多个 CRD 定义。Istio 号称是[后 Kubernetes 时代的微服务](https://jimmysong.io/blog/service-mesh-the-microservices-in-post-kubernetes-era/)，它的出现第一次使得云原生以服务（应用）为中心。Knative 是 Google 在基于 Kubernetes 之上开源的 Serverless 领域的一次尝试。2018 年 Kubernetes 正式从 CNCF [毕业](https://www.cncf.io/blog/2018/03/06/kubernetes-first-cncf-project-graduate/)，Prometheus、Envoy 也陆续从 CNCF 毕业。CNCF 也与 2018 年修改了 charter，对云原生进行了重定义，从原来的三要素：”应用容器化；面向微服务架构；应用支持容器的编排调度“，修改为”云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API“。这一年，我曾写过两篇 Kubernetes 及云原生发展的年终总结和展望，见 [2017 年](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.html)和 [2018 年](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.html)的预测和总结。
+2016 年之后的云原生基本都默认运行在 Kubernetes 平台上，2017、2018 年 Google 主导的 Istio、Knative 相继开源，这些开源项目都大量利用了 Kubernetes 的 Operator 进行了扩展，Istio 刚发布时就有 50 多个 CRD 定义。Istio 号称是[后 Kubernetes 时代的微服务](/blog/service-mesh-the-microservices-in-post-kubernetes-era/)，它的出现第一次使得云原生以服务（应用）为中心。Knative 是 Google 在基于 Kubernetes 之上开源的 Serverless 领域的一次尝试。2018 年 Kubernetes 正式从 CNCF [毕业](https://www.cncf.io/blog/2018/03/06/kubernetes-first-cncf-project-graduate/)，Prometheus、Envoy 也陆续从 CNCF 毕业。CNCF 也与 2018 年修改了 charter，对云原生进行了重定义，从原来的三要素：”应用容器化；面向微服务架构；应用支持容器的编排调度“，修改为”云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式 API“。这一年，我曾写过两篇 Kubernetes 及云原生发展的年终总结和展望，见 [2017 年](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-and-cloud-native-summary-in-2017-and-outlook-for-2018.html)和 [2018 年](https://jimmysong.io/kubernetes-handbook/appendix/kubernetes-and-cloud-native-summary-in-2018-and-outlook-for-2019.html)的预测和总结。
 
 **第四阶段：普及推广期（2019 年至今）**
 
@@ -41,7 +41,7 @@ Kubernetes 从开源至今已经走过快[六个年头](https://jimmysong.io/clo
 
 Kubernetes 开源之初就继承了 Google 内部调度系统 Borg 的经验，屏蔽掉了底层物理机、虚拟机之间的差异，经过几年时间的发展成为了容器编排标准，进而统一了 PaaS 平台的基础设施层。
 
-下图是Kubernetes 原生内置的可以应用到一个 Pod 上的所有控制器、资源对象等。
+下图是 Kubernetes 原生内置的可以应用到一个 Pod 上的所有控制器、资源对象等。
 
 ![Kubernetes 概念](kubernetes-concepts.png)
 
@@ -54,7 +54,7 @@ Kubernetes 作为云原生基础设施设计之初遵循了以下原则：
 1. 幂等性
 1. 调节器模式（Operator 的原理）
 
-其中声明式 API 可谓开创了云原生时代的基调，而调节器模式是 Kubernetes 区别于其他[云部署形式](https://jimmysong.io/cloud-native-infra/evolution-of-cloud-native-developments.html)的主要区别之一，这也为后来的 [Operator 框架的诞生](https://zhuanlan.zhihu.com/p/54633203)打下了基础。
+其中声明式 API 可谓开创了云原生时代的基调，而调节器模式是 Kubernetes 区别于其他[云部署形式](/book/cloud-native-infra/evolution-of-cloud-native-developments/)的主要区别之一，这也为后来的 [Operator 框架的诞生](https://zhuanlan.zhihu.com/p/54633203)打下了基础。
 
 ### 声明式 API
 
@@ -96,7 +96,7 @@ Kubernetes 本身的原语、资源对象、配置、常用的 CRD 扩展有几�
 
 上图中不同颜色的方框代表不同的资源类别，红线框代表不能为一个资源同时应用该配置，否则会出现冲突，不同的颜色上面是一个动画，展示的是部分资源组合。图中仅包含了部分 Kubernetes 中的原语和 Istio 中的资源对象组合及自定义扩展，实际上用户可以根据应用的自身特点，基于 Kubernetes 原语和 CRD 创建出千变万化的组合。
 
-为了管理这些应用诞生出了众多的 [Operator](https://github.com/operator-framework/awesome-operators)。Kubernetes 1.7 版本以来就引入了[自定义控制器](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)的概念，该功能可以让开发人员扩展添加新功能，更新现有的功能，并且可以自动执行一些管理任务，这些自定义的控制器就像 Kubernetes 原生的组件一样，Operator 直接使用 Kubernetes API进行开发，也就是说它们可以根据这些控制器内部编写的自定义规则来监控集群、更改 Pods/Services、对正在运行的应用进行扩缩容。
+为了管理这些应用诞生出了众多的 [Operator](https://github.com/operator-framework/awesome-operators)。Kubernetes 1.7 版本以来就引入了[自定义控制器](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)的概念，该功能可以让开发人员扩展添加新功能，更新现有的功能，并且可以自动执行一些管理任务，这些自定义的控制器就像 Kubernetes 原生的组件一样，Operator 直接使用 Kubernetes API 进行开发，也就是说它们可以根据这些控制器内部编写的自定义规则来监控集群、更改 Pods/Services、对正在运行的应用进行扩缩容。
 
 Operator 的本质是一种调节器模式（Reconciler Pattern）的应用，跟 Kubernetes 本身的实现模式是一样的，用于管理云原生应用，协调应用的实际状态达到预期状态。
 
@@ -157,7 +157,7 @@ Helm 主要关注的是 [12 因素应用](https://12factor.net/zh_cn/)法则[构
 
 ![Helm3 架构](helm-chart.svg)
 
-Helm 可以安装本地或者远程的 chart，当 chart 安装到 Kubernetes 中后就会创建一个 release，每次更新该 chart 的配置并执行 `helm upgrade`， release 的版本数就会加 1，开发者可以升级 chart 或回滚到历史版本。
+Helm 可以安装本地或者远程的 chart，当 chart 安装到 Kubernetes 中后就会创建一个 release，每次更新该 chart 的配置并执行 `helm upgrade`，release 的版本数就会加 1，开发者可以升级 chart 或回滚到历史版本。
 
 ### 打包、配置和发布
 
