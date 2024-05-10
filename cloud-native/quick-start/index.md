@@ -113,7 +113,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 ## 什么是服务网格？
 
-[服务网格 (Service Mesh)](https://jimmysong.io/blog/what-is-a-service-mesh/) 用于管理服务之间的网络流量，是云原生的网络基础设施层，也是 [Kubernetes 次世代的云原生应用](https://jimmysong.io/blog/post-kubernetes-era/) 的重要组成部分。
+[服务网格 (Service Mesh)](/blog/what-is-a-service-mesh/) 用于管理服务之间的网络流量，是云原生的网络基础设施层，也是 [Kubernetes 次世代的云原生应用](/blog/post-kubernetes-era/) 的重要组成部分。
 
 服务网格利用容器之间的网络设置来控制或改变应用程序中不同组件之间的交互。下面，我们用一个例子来说明。假设你想测试 Nginx 的新版本，检查它是否与你的 Web 应用兼容。你用新的 Nginx 版本创建了一个新的容器 (Container2)，并从当前容器 (Container1) 中复制了当前的 Nginx webserver 配置。但你不想影响组成 web 应用的其他微服务（假设每个容器对应一个单独的微服务）—— 就是 MySQL 数据库、Node.js 前端、负载均衡器等。
 
@@ -121,7 +121,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 如果没有服务网格，对容器来说这项工作将十分繁琐，因为这涉及到逐一更改所有其他容器上的配置，将它们所包含的服务从 Container1 指向 Container2，然后在测试失败后，将它们全部改回来。
 
-在前面这部分 Kubernetes 指南中，我们介绍了一些与 Kubernetes 网络相关的概念。Kubernetes 中的网络可能很棘手，很难理解，如果你刚刚开始，你可能需要一些实践来理解这里。关于服务网格的更多内容请参考 [《Istio 服务网格》](https://jimmysong.io/istio-handbook/)。
+在前面这部分 Kubernetes 指南中，我们介绍了一些与 Kubernetes 网络相关的概念。Kubernetes 中的网络可能很棘手，很难理解，如果你刚刚开始，你可能需要一些实践来理解这里。
 
 在下一部分中，我们将展开更多关于 Kubernetes 的话题：如何开始学习 Kubernetes，如何在本地安装和测试 Kubernetes，以及 Kubernetes 的一些优秀的监控工具。
 
@@ -131,7 +131,7 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 ### 一、从零开始学习和安装 Kubernetes
 
-要想真正掌握 Kubernetes，最好的办法莫过于自己从头开始安装 Kubernetes。不过要注意的是，从零开始安装 Kubernetes 并不是一件容易的事情。安装 Kubernetes 并不是简单的“下载文件 -> 点击安装”式的操作，Kubernetes 由多个组件组成，这些组件必须单独安装和配置。而在此之前，你也需要相当的技术储备来做安装前的准备，比如熟悉 Linux 操作系统。如果你决定使用这种方式学习的话，推荐你阅读 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](https://github.com/rootsongjc/kubernetes-handbook)。此外，请记住，尽管 Kubernetes 作为一个开源解决方案在技术上是免费的，但它确实有一些隐藏的成本，只不过对初学者来说可能并不明显。
+要想真正掌握 Kubernetes，最好的办法莫过于自己从头开始安装 Kubernetes。不过要注意的是，从零开始安装 Kubernetes 并不是一件容易的事情。安装 Kubernetes 并不是简单的“下载文件 -> 点击安装”式的操作，Kubernetes 由多个组件组成，这些组件必须单独安装和配置。而在此之前，你也需要相当的技术储备来做安装前的准备，比如熟悉 Linux 操作系统。如果你决定使用这种方式学习的话，推荐你阅读 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](/book/kubernetes-handbook)。此外，请记住，尽管 Kubernetes 作为一个开源解决方案在技术上是免费的，但它确实有一些隐藏的成本，只不过对初学者来说可能并不明显。
 
 ### 二、Kubernetes 自托管解决方案
 
@@ -179,6 +179,6 @@ Grafana 是一个优秀的仪表盘、分析和数据可视化工具。它没有
 
 ## 更多
 
-云原生领域的开源项目众多（见 [Awesome Cloud Native / 云原生开源项目大全](https://jimmysong.io/awesome-cloud-native)），其中有大量的优秀项目可供我们学习。此外，Kubernetes 开源已经多年时间，网上有大量的学习资料，业界出版过很多[书籍](https://jimmysong.io/cloud-native/note/books/)，建议大家通过阅读[官方文档](https://kubernetes.io/)和实践来学习，也可以参考我编写的 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](https://jimmysong.io/kubernetes-handbook)。
+云原生领域的开源项目众多（见 [Awesome Cloud Native / 云原生开源项目大全](https://jimmysong.io/awesome-cloud-native)），其中有大量的优秀项目可供我们学习。此外，Kubernetes 开源已经多年时间，网上有大量的学习资料，业界出版过很多书籍，建议大家通过阅读[官方文档](https://kubernetes.io/)和实践来学习，也可以参考我编写的 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](/book/kubernetes-handbook)。
 
 推荐大家加入笔者发起创办的[云原生社区](https://cloudnative.to/)，这是一个立足中国，放眼世界的云原生终端用户社区，致力于云原生技术的传播和应用。云原生社区主办的[云原生学院](https://github.com/cloudnativeto/academy)定期邀请云原生和开源领域的大咖进行直播分享，成员自发组织了多个 SIG（特别兴趣小组）进行讨论学习。欢迎加入我们，共同学习和交流云原生技术。

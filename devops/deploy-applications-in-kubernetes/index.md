@@ -26,7 +26,7 @@ API 文档见 [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monit
 
 我们知道 Kubernetes 在启动 Pod 的时候为容器注入环境变量，这些环境变量在所有的 namespace 中共享（环境变量是不断追加的，新启动的 Pod 中将拥有老的 Pod 中所有的环境变量，而老的 Pod 中的环境变量不变）。但是既然使用这些环境变量就已经可以访问到对应的 service，那么获取应用的地址信息，究竟是使用变量呢？还是直接使用 DNS 解析来发现？
 
-答案是使用 DNS，详细说明见 [Kubernetes 中的服务发现与 Docker 容器间的环境变量传递源码探究](https://jimmysong.io/blog/exploring-kubernetes-env-with-docker/)。
+答案是使用 DNS，详细说明见 [Kubernetes 中的服务发现与 Docker 容器间的环境变量传递源码探究](/blog/exploring-kubernetes-env-with-docker/)。
 
 ## 持续集成
 

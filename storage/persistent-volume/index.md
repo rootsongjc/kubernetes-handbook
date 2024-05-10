@@ -498,4 +498,4 @@ spec:
 
 ---
 
-注：本文译自 [Kubernetes官方文档](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+注：本文译自 [Kubernetes 官方文档](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
