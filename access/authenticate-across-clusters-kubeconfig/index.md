@@ -1,6 +1,7 @@
 ---
 weight: 93
 title: 使用 kubeconfig 文件配置跨集群认证
+linktitle: "通过 kubeconfig 访问"
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
