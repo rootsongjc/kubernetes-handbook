@@ -1,6 +1,7 @@
 ---
 weight: 95
-title: 使用 service 访问群集中的应用程序
+title: 使用 service 访问集群中的应用程序
+linktitle: "通过 service 访问"
 date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
