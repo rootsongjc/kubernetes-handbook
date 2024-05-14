@@ -14,7 +14,7 @@ SPIRE 是 [SPIFFE API](../spiffe) 的一个生产就绪的实现，它执行节�
 
 SPIRE 部署由一个 SPIRE 服务器和一个或多个 SPIRE 代理组成。服务器充当通过代理向一组工作负载发放身份的签名机构。它还维护一个工作负载身份的注册表，以及为签发这些身份而必须验证的条件。代理在本地向工作负载公开 SPIFFE 工作负载 API，必须安装在工作负载运行的每个节点上。
 
-{{<figure title="SPIRE 架构图" alt="SPIRE 架构图" src="spire-arch.svg" width="30%">}}
+![SPIRE 架构图](spire-arch.svg)
 
 ## 服务器
 
