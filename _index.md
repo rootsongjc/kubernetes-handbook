@@ -2,7 +2,8 @@
 linktitle: Kubernetes 基础教程
 description: "本书起始于 2017 年 3 月，记录了本人从零开始学习和使用 Kubernetes 的心路历程，着重于经验分享和总结。"
 weight: 1
-category: "Handbook 系列"
+categories: ["Handbook 系列"]
+category: "教程手册"
 icon: book
 icon_pack: fa
 featured: true
