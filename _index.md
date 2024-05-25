@@ -4,8 +4,6 @@ description: "本书起始于 2017 年 3 月，记录了本人从零开始学习
 weight: 1
 categories: ["教程手册"]
 category: "教程手册"
-icon: book
-icon_pack: fa
 featured: true
 type: publication
 layout: book
