@@ -28,7 +28,7 @@ type: book
 
 **授权模式和匿名认证**
 
-像 kops 这样的一些安装程序会为集群使用 `AlwaysAllow` 授权模式。这将授予任何经过身份验证的实体拥有完全访问集群的权限。应该使用 RBAC 基于角色的访问控制。检查您的 kube-apiserver 进程的 `--authorization-mode` 参数。有关该主题的更多信息，请访问[认证概览](https://kubernetes.io/docs/admin/authorization/)。要强制进行身份验证，请确保通过设置 `--anonymous-auth = false` 禁用匿名身份验证。
+像 kops 这样的一些安装程序会为集群使用 `AlwaysAllow` 授权模式。这将授予任何经过身份验证的实体拥有完全访问集群的权限。应该使用 RBAC 基于角色的访问控制。检查你的 kube-apiserver 进程的 `--authorization-mode` 参数。有关该主题的更多信息，请访问[认证概览](https://kubernetes.io/docs/admin/authorization/)。要强制进行身份验证，请确保通过设置 `--anonymous-auth = false` 禁用匿名身份验证。
 
 注意这不影响 Kubelet 授权模式。kubelet 本身公开了一个 API 来执行命令，通过它可以完全绕过 Kubernetes API。
 

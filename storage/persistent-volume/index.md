@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-本文档介绍了 Kubernetes 中 `PersistentVolume` 的当前状态。建议您在阅读本文档前先熟悉 [volume](https://kubernetes.io/docs/concepts/storage/volumes/)。
+本文档介绍了 Kubernetes 中 `PersistentVolume` 的当前状态。建议你在阅读本文档前先熟悉 [volume](https://kubernetes.io/docs/concepts/storage/volumes/)。
 
 ## 介绍
 
@@ -55,7 +55,7 @@ PVC 保护的目的是确保由 pod 正在使用的 PVC 不会从系统中移除
 
 当启用 PVC 保护 alpha 功能时，如果用户删除了一个 pod 正在使用的 PVC，则该 PVC 不会被立即删除。PVC 的删除将被推迟，直到 PVC 不再被任何 pod 使用。
 
-您可以看到，当 PVC 的状态为 `Teminatiing` 时，PVC 受到保护，`Finalizers` 列表中包含 `kubernetes.io/pvc-protection`：
+你可以看到，当 PVC 的状态为 `Teminatiing` 时，PVC 受到保护，`Finalizers` 列表中包含 `kubernetes.io/pvc-protection`：
 
 ```bash
 kubectl described pvc hostpath
@@ -486,15 +486,15 @@ spec:
 
 ## 编写可移植配置
 
-如果您正在编写在多种集群上运行并需要持久存储的配置模板或示例，我们建议您使用以下模式：
+如果你正在编写在多种集群上运行并需要持久存储的配置模板或示例，我们建议你使用以下模式：
 
-- 要在您的在配置组合中包含 `PersistentVolumeClaim` 对象（与 Deployment、ConfigMap 等一起）。
+- 要在你的在配置组合中包含 `PersistentVolumeClaim` 对象（与 Deployment、ConfigMap 等一起）。
 - 不要在配置中包含 `PersistentVolume` 对象，因为用户实例化配置可能没有创建 `PersistentVolume` 的权限。
 - 给用户在实例化模板时提供存储类名称的选项。
   - 如果用户提供存储类名称，则将该值放入 `persistentVolumeClaim.storageClassName` 字段中。如果集群具有由管理员启用的 StorageClass，这将导致 PVC 匹配正确的存储类别。
   - 如果用户未提供存储类名称，则将 `persistentVolumeClaim.storageClassName` 字段保留为 nil。
     - 这将导致使用集群中默认的 StorageClass 为用户自动配置 PV。许多集群环境都有默认的 StorageClass，或者管理员可以创建自己的默认 StorageClass。
-- 在您的工具中，请注意一段时间之后仍未绑定的 PVC，并向用户展示它们，因为这表示集群可能没有动态存储支持（在这种情况下用户应创建匹配的 PV），或集群没有存储系统（在这种情况下用户不能部署需要 PVC 的配置）。
+- 在你的工具中，请注意一段时间之后仍未绑定的 PVC，并向用户展示它们，因为这表示集群可能没有动态存储支持（在这种情况下用户应创建匹配的 PV），或集群没有存储系统（在这种情况下用户不能部署需要 PVC 的配置）。
 
 ---
 

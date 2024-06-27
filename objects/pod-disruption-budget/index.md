@@ -37,17 +37,17 @@ Pod 不会消失，直到有人（人类或控制器）将其销毁，或者当�
 
 这些操作可能由集群管理员直接执行，也可能由集群管理员或集群托管提供商自动执行。
 
-询问您的集群管理员或咨询您的云提供商或发行文档，以确定是否为您的集群启用了任何自动中断源。如果没有启用，您可以跳过创建 Pod Disruption Budget（Pod 中断预算）。
+询问你的集群管理员或咨询你的云提供商或发行文档，以确定是否为你的集群启用了任何自动中断源。如果没有启用，你可以跳过创建 Pod Disruption Budget（Pod 中断预算）。
 
 ## 处理中断
 
 以下是一些减轻非自愿性中断的方法：
 
-- 确保您的 pod [请求所需的资源](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-ram-container)。
-- 如果您需要更高的可用性，请复制您的应用程序。 （了解有关运行复制的[无状态](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment)和[有状态](https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application)应用程序的信息。）
+- 确保你的 pod [请求所需的资源](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-ram-container)。
+- 如果你需要更高的可用性，请复制你的应用程序。 （了解有关运行复制的[无状态](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment)和[有状态](https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application)应用程序的信息。）
 - 为了在运行复制应用程序时获得更高的可用性，请跨机架（使用[反亲和性](https://kubernetes.io/docs/user-guide/node-selection/#inter-pod-affinity-and-anti-affinity-beta-feature)）或跨区域（如果使用多区域集群）分布应用程序。
 
-自愿中断的频率各不相同。在 Kubernetes 集群上，根本没有自愿的中断。但是，您的集群管理员或托管提供商可能会运行一些导致自愿中断的附加服务。例如，节点软件更新可能导致自愿更新。另外，集群（节点）自动缩放的某些实现可能会导致碎片整理和紧缩节点的自愿中断。您的集群管理员或主机提供商应该已经记录了期望的自愿中断级别（如果有的话）。
+自愿中断的频率各不相同。在 Kubernetes 集群上，根本没有自愿的中断。但是，你的集群管理员或托管提供商可能会运行一些导致自愿中断的附加服务。例如，节点软件更新可能导致自愿更新。另外，集群（节点）自动缩放的某些实现可能会导致碎片整理和紧缩节点的自愿中断。你的集群管理员或主机提供商应该已经记录了期望的自愿中断级别（如果有的话）。
 
 Kubernetes 提供的功能可以满足在频繁地自动中断的同时运行高可用的应用程序。我们称之为“中断预算”。
 
@@ -125,7 +125,7 @@ Deployment 将创建一个名为 `pod-e` 的 `pod-b` 的替代品。但是，集
 
 此时，集群管理员需要向集群中添加回一个节点以继续升级操作。
 
-您可以看到 Kubernetes 如何改变中断发生的速率，根据：
+你可以看到 Kubernetes 如何改变中断发生的速率，根据：
 
 - 应用程序需要多少副本
 - 正常关闭实例需要多长时间
@@ -142,11 +142,11 @@ Deployment 将创建一个名为 `pod-e` 的 `pod-b` 的替代品。但是，集
 
 Pod Disruption Budget（Pod 中断预算）通过在角色之间提供接口来支持这种角色分离。
 
-如果您的组织中没有这样的职责分离，则可能不需要使用 Pod 中断预算。
+如果你的组织中没有这样的职责分离，则可能不需要使用 Pod 中断预算。
 
 ## 如何在集群上执行中断操作
 
-如果您是集群管理员，要对集群的所有节点执行中断操作，例如节点或系统软件升级，则可以使用以下选择：
+如果你是集群管理员，要对集群的所有节点执行中断操作，例如节点或系统软件升级，则可以使用以下选择：
 
 - 在升级期间接受停机时间。
 - 故障转移到另一个完整的副本集群。

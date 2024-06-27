@@ -9,9 +9,9 @@ type: book
 
 ## 第一次使用 kubectl 访问
 
-如果您是第一次访问 Kubernetes API 的话，我们建议您使用 Kubernetes 命令行工具：`kubectl`。
+如果你是第一次访问 Kubernetes API 的话，我们建议你使用 Kubernetes 命令行工具：`kubectl`。
 
-为了访问集群，您需要知道集群的地址，并且需要有访问它的凭证。通常，如果您完成了入门指南那么这些将会自动设置，或者其他人为您部署的集群提供并给您凭证和集群地址。
+为了访问集群，你需要知道集群的地址，并且需要有访问它的凭证。通常，如果你完成了入门指南那么这些将会自动设置，或者其他人为你部署的集群提供并给你凭证和集群地址。
 
 使用下面的命令检查 kubectl 已知的集群的地址和凭证：
 
@@ -21,7 +21,7 @@ $ kubectl config view
 
 ## 直接访问 REST API
 
-Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST API，可以使用像 curl、wget 或浏览器这样的 http 客户端，有以下几种方式来定位和认证：
+Kubectl 处理对 apiserver 的定位和认证。如果你想直接访问 REST API，可以使用像 curl、wget 或浏览器这样的 http 客户端，有以下几种方式来定位和认证：
 
 - 以 proxy 模式运行 kubectl。
   - 推荐方法。
@@ -44,7 +44,7 @@ Kubectl 处理对 apiserver 的定位和认证。如果您想直接访问 REST A
 $ kubectl proxy --port=8080 &
 ```
 
-然后您可以使用 curl、wget 或者浏览器来访问 API，如下所示：
+然后你可以使用 curl、wget 或者浏览器来访问 API，如下所示：
 
 ```bash
 $ curl http://localhost:8080/api/
@@ -92,7 +92,7 @@ $ curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 }
 ```
 
-以上示例使用`--insecure` 标志。这使得它容易受到 MITM 攻击。当 kubectl 访问集群时，它使用存储的根证书和客户端证书来访问服务器。 （这些安装在`~/.kube`目录中）。由于集群证书通常是自签名的，因此可能需要特殊配置才能让您的 http 客户端使用根证书。
+以上示例使用`--insecure` 标志。这使得它容易受到 MITM 攻击。当 kubectl 访问集群时，它使用存储的根证书和客户端证书来访问服务器。 （这些安装在`~/.kube`目录中）。由于集群证书通常是自签名的，因此可能需要特殊配置才能让你的 http 客户端使用根证书。
 
 对于某些群集，apiserver 可能不需要身份验证；可以选择在本地主机上服务，或者使用防火墙保护。对此还没有一个标准。配置对 API 的访问 描述了群集管理员如何配置此操作。这种方法可能与未来的高可用性支持相冲突。
 
@@ -141,15 +141,15 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
 
 ## 访问集群中运行的 service
 
-上一节是关于连接到 kubernetes API server。这一节是关于连接到 kubernetes 集群中运行的 service。在 Kubernetes 中，node、pod 和 services 都有它们自己的 IP。很多情况下，集群中 node 的 IP、Pod 的 IP、service 的 IP 都是不可路由的，因此在集群外面的机器就无法访问到它们，例如从您自己的笔记本电脑。
+上一节是关于连接到 kubernetes API server。这一节是关于连接到 kubernetes 集群中运行的 service。在 Kubernetes 中，node、pod 和 services 都有它们自己的 IP。很多情况下，集群中 node 的 IP、Pod 的 IP、service 的 IP 都是不可路由的，因此在集群外面的机器就无法访问到它们，例如从你自己的笔记本电脑。
 
 ### 连接的方式
 
-您可以选择以下几种方式从集群外部连接到 node、pod 和 service：
+你可以选择以下几种方式从集群外部连接到 node、pod 和 service：
 
 - 通过 public IP 访问 service。
   - 使用 `NodePort` 和 `LoadBalancer` 类型的 service，以使 service 能够在集群外部被访问到。
-  - 根据您的群集环境，这可能会将服务暴露给您的公司网络，或者可能会将其暴露在互联网上。想想暴露的服务是否安全。它是否自己进行身份验证？
+  - 根据你的群集环境，这可能会将服务暴露给你的公司网络，或者可能会将其暴露在互联网上。想想暴露的服务是否安全。它是否自己进行身份验证？
   - 将 pod 放在服务后面。要从一组副本（例如为了调试）访问一个特定的 pod，请在 pod 上放置一个唯一的 label，并创建一个选择该 label 的新服务。
   - 在大多数情况下，应用程序开发人员不需要通过 node IP 直接访问节点。
 - 通过 Proxy 规则访问 service、node、pod。
@@ -159,7 +159,7 @@ Python 客户端可以使用与 kubectl 命令行工具相同的 [kubeconfig 文
   - [见此描述](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#manually-constructing-apiserver-proxy-urls)。
 - 在集群内访问 node 和 pod。
   - 运行一个 pod，然后使用 kubectl exec 命令连接到 shell。从该 shell 中连接到其他 node、pod 和 service。
-  - 有些集群可能允许 ssh 到集群上的某个节点。从那个节点您可以访问到集群中的服务。这是一个非标准的方法，它可能将在某些集群上奏效，而在某些集群不行。这些节点上可能安装了浏览器和其他工具也可能没有。群集 DNS 可能无法正常工作。
+  - 有些集群可能允许 ssh 到集群上的某个节点。从那个节点你可以访问到集群中的服务。这是一个非标准的方法，它可能将在某些集群上奏效，而在某些集群不行。这些节点上可能安装了浏览器和其他工具也可能没有。群集 DNS 可能无法正常工作。
 
 ### 访问内置服务
 
@@ -184,16 +184,16 @@ $ kubectl cluster-info
 
 #### 手动构建 apiserver 代理 URL
 
-如上所述，您可以使用 `kubectl cluster-info` 命令来检索服务的代理 URL。要创建包含服务端点、后缀和参数的代理 URL，您只需附加到服务的代理 URL：
+如上所述，你可以使用 `kubectl cluster-info` 命令来检索服务的代理 URL。要创建包含服务端点、后缀和参数的代理 URL，你只需附加到服务的代理 URL：
 
 `http://`*kubernetes_master_address*`/api/v1/namespaces/`*namespace_name*`/services/`*service_name[:port_name]*`/proxy`
 
-如果您没有指定 port 的名字，那么您不必在 URL 里指定 port_name。
+如果你没有指定 port 的名字，那么你不必在 URL 里指定 port_name。
 
 #### 示例
 
-- 要想访问 Elasticsearch 的服务端点 `_search?q=user:kimchy`，您需要使用：`http://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_search?q=user:kimchy`
-- 要想访问 Elasticsearch 的集群健康信息 `_cluster/health?pretty=true`，您需要使用：`https://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_cluster/health?pretty=true`
+- 要想访问 Elasticsearch 的服务端点 `_search?q=user:kimchy`，你需要使用：`http://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_search?q=user:kimchy`
+- 要想访问 Elasticsearch 的集群健康信息 `_cluster/health?pretty=true`，你需要使用：`https://104.197.5.247/api/v1/namespaces/kube-system/services/elasticsearch-logging/proxy/_cluster/health?pretty=true`
 
 ```json
   {
@@ -212,9 +212,9 @@ $ kubectl cluster-info
 
 #### 使用 web 浏览器来访问集群中运行的服务
 
-您可以将 apiserver 代理网址放在浏览器的地址栏中。然而：
+你可以将 apiserver 代理网址放在浏览器的地址栏中。然而：
 
-- Web 浏览器通常不能传递 token，因此您可能需要使用基本（密码）认证。Apiserver 可以配置为接受基本认证，但您的集群可能未配置为接受基本认证。
+- Web 浏览器通常不能传递 token，因此你可能需要使用基本（密码）认证。Apiserver 可以配置为接受基本认证，但你的集群可能未配置为接受基本认证。
 - 某些网络应用程序可能无法正常工作，特别是那些在不知道代理路径前缀的情况下构造 URL 的客户端 JavaScript。
 
 ## 请求重定向
@@ -223,7 +223,7 @@ $ kubectl cluster-info
 
 ## 多种代理
 
-在使用 kubernetes 的时候您可能会遇到许多种不同的代理：
+在使用 kubernetes 的时候你可能会遇到许多种不同的代理：
 
 1. [kubectl 代理](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster.md#directly-accessing-the-rest-api)：
    - 在用户桌面或 pod 中运行

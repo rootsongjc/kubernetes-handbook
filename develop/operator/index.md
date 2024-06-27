@@ -28,7 +28,7 @@ Operator 基于 Kubernetes 的以下两个概念构建：
 
 ## Operator 用途
 
-若您有以下需求，可能会需要用到 Operator：
+若你有以下需求，可能会需要用到 Operator：
 
 - 按需部署一个应用程序
 - 需要备份和恢复应用程序的状态（如数据库）
@@ -49,7 +49,7 @@ Operator 基于 Kubernetes 的以下两个概念构建：
   - 如果添加新的 SampleDB，Operator 将设置 PersistentVolumeClaims 以提供持久的数据库存储，设置 StatefulSet 以运行 SampleDB，并设置 Job 来处理初始配置。
   - 如果删除它，Operator 将建立快照，然后确保删除了 StatefulSet 和卷。
 - Operator 还管理常规数据库备份。对于每个 SampleDB 资源，Operator 确定何时创建可以连接到数据库并进行备份的 Pod。这些 Pod 将依赖于 ConfigMap 和 / 或具有数据库连接详细信息和凭据的 Secret。
-- 由于 Operator 旨在为其管理的资源提供强大的自动化功能，因此会有其他支持代码。对于此示例，代码将检查数据库是否正在运行旧版本，如果是，则创建 Job 对象为您升级数据库。
+- 由于 Operator 旨在为其管理的资源提供强大的自动化功能，因此会有其他支持代码。对于此示例，代码将检查数据库是否正在运行旧版本，如果是，则创建 Job 对象为你升级数据库。
 
 ## 创建 Operator
 

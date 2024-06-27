@@ -130,7 +130,7 @@ CURRENT   NAME         CLUSTER      AUTHINFO   NAMESPACE
 kubectl get pods --namespace default
 Error from server (Forbidden): User "devuser" cannot list pods in the namespace "default". (get pods)
 
-# 默认访问的是 dev namespace，您也可以重新设置 context 让其默认访问 test namespace
+# 默认访问的是 dev namespace，你也可以重新设置 context 让其默认访问 test namespace
 kubectl get pods
 No resources found.
 ```

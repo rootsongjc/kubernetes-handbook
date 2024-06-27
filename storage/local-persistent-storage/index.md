@@ -120,7 +120,7 @@ $kubectl create -f provisioner/deployment/kubernetes/example/default_example_sto
    helm template ./helm/provisioner > ./provisioner/deployment/kubernetes/provisioner_generated.yaml
    ```
 
-   您也可以提供一个自定义值文件：
+   你也可以提供一个自定义值文件：
 
    ```bash
    helm template ./helm/provisioner --values custom-values.yaml > ./provisioner/deployment/kubernetes/provisioner_generated.yaml
@@ -187,7 +187,7 @@ spec:
   storageClassName: local-storage
 ```
 
-请替换以下元素以反映您的配置：
+请替换以下元素以反映你的配置：
 
 - 卷所需的存储容量“5Gi”
 - “local-storage”，与本地 PV 关联的存储类名称应该用于满足此 PVC
@@ -217,11 +217,11 @@ spec:
 - 对于容量隔离，建议使用单个分区
 - 避免重新创建具有相同节点名称的节点，而仍然存在指定了该节点亲和性的旧 PV。否则，系统可能认为新节点包含旧的 PV。
 - 对于带有文件系统的卷，建议在 fstab 条目和该挂载点的目录名称中使用它们的 UUID（例如 `ls -l/dev/disk/by-uuid ` 的输出）。这种做法可确保即使设备路径发生变化（例如，如果 `/dev/sda1` 在添加新磁盘时变为 `/dev/sdb1`），也不会错误地挂在本地卷。此外，这种做法将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
-- 对于没有文件系统的 raw block 卷，使用唯一的 ID 作为符号链接名称。根据您的环境，`/dev/disk/by-id/ `中的卷 ID 可能包含唯一的硬件序列号。否则，应该生成一个唯一的 ID。符号链接名称的唯一性将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
+- 对于没有文件系统的 raw block 卷，使用唯一的 ID 作为符号链接名称。根据你的环境，`/dev/disk/by-id/ `中的卷 ID 可能包含唯一的硬件序列号。否则，应该生成一个唯一的 ID。符号链接名称的唯一性将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
 
 ### 删除/清理底层卷
 
-当您想要停用本地卷时，以下是可能的工作流程。
+当你想要停用本地卷时，以下是可能的工作流程。
 
 1. 停止使用卷的 pod
 2. 从节点中删除本地卷（即卸载、拔出磁盘等）

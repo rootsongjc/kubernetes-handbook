@@ -241,7 +241,7 @@ Kubernetes 1.7 或更高版本的集群运行 API Aggregator，它位于 core AP
 
 ### Kubernetes 版本
 
-Service Catalog 需要 Kubernetes v1.7 或更高版本。您还需要 在主机上安装 [Kubernetes configuration file](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) 。你需要这个文件，以便可以使用 kubectl 和 helm 与群集通信。许多 Kubernetes 安装工具或云提供商会为你设置此配置文件。有关详细信息，请与您的工具或提供商联系。
+Service Catalog 需要 Kubernetes v1.7 或更高版本。你还需要 在主机上安装 [Kubernetes configuration file](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) 。你需要这个文件，以便可以使用 kubectl 和 helm 与群集通信。许多 Kubernetes 安装工具或云提供商会为你设置此配置文件。有关详细信息，请与你的工具或提供商联系。
 
 #### `kubectl` 版本
 
@@ -266,7 +266,7 @@ chmod +x ./kubectl
 
 ### 群集内 DNS
 
-您需要启用 Kubernetes 集群内的 DNS。大多数常用的安装方法会为您自动配置群集内 DNS：
+你需要启用 Kubernetes 集群内的 DNS。大多数常用的安装方法会为你自动配置群集内 DNS：
 
 - [Minikube](https://github.com/kubernetes/minikube)
 - [`hack/local-up-cluster.sh`](https://github.com/kubernetes/kubernetes/blob/master/hack/local-up-cluster.sh)
@@ -331,7 +331,7 @@ Kubernetes 群集必须启用 [RBAC](https://kubernetes.io/docs/admin/authorizat
 
 #### Minikube
 
-如果您正在使用 Minikube，请使用以下命令启动群集：
+如果你正在使用 Minikube，请使用以下命令启动群集：
 
 ```bash
 minikube start --extra-config=apiserver.Authorization.Mode=RBAC

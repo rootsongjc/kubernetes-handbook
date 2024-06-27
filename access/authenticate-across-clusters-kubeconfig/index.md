@@ -85,7 +85,7 @@ clusters:
 
 `cluster` 中包含 kubernetes 集群的端点数据，包括 kubernetes apiserver 的完整 url 以及集群的证书颁发机构或者当集群的服务证书未被系统信任的证书颁发机构签名时，设置`insecure-skip-tls-verify: true`。
 
-`cluster` 的名称（昵称）作为该 kubeconfig 文件中的集群字典的 key。您可以使用 `kubectl config set-cluster`添加或修改 `cluster` 条目。
+`cluster` 的名称（昵称）作为该 kubeconfig 文件中的集群字典的 key。你可以使用 `kubectl config set-cluster`添加或修改 `cluster` 条目。
 
 #### user
 
@@ -102,7 +102,7 @@ users:
 
 `user` 定义用于向 kubernetes 集群进行身份验证的客户端凭据。在加载/合并 kubeconfig 之后，`user` 将有一个名称（昵称）作为用户条目列表中的 key。可用凭证有 `client-certificate`、`client-key`、`token` 和 `username/password`。 `username/password` 和 `token` 是二者只能选择一个，但 client-certificate 和 client-key 可以分别与它们组合。
 
-您可以使用 `kubectl config set-credentials` 添加或者修改 `user` 条目。
+你可以使用 `kubectl config set-credentials` 添加或者修改 `user` 条目。
 
 #### context
 
@@ -117,7 +117,7 @@ contexts:
 
 `context` 定义了一个命名的 [`cluster`](https://kubernetes.io/docs/tasks/access-application-cluster/authenticate-across-clusters-kubeconfig#cluster)、[`user`](https://kubernetes.io/docs/tasks/access-application-cluster/authenticate-across-clusters-kubeconfig#user)、`namespace` 元组，用于使用提供的认证信息和命名空间将请求发送到指定的集群。三个都是可选的；仅使用 `cluster`、`user`、`namespace` 之一指定上下文，或指定 none。未指定的值或在加载的 kubeconfig 中没有相应条目的命名值（例如，如果为上述 kubeconfig 文件指定了 `pink-user` 的上下文）将被替换为默认值。有关覆盖/合并行为，请参阅下面的 [加载和合并规则](https://kubernetes.io/docs/tasks/access-application-cluster/authenticate-across-clusters-kubeconfig#loading-and-merging)。
 
-您可以使用 `kubectl config set-context` 添加或修改上下文条目。
+你可以使用 `kubectl config set-context` 添加或修改上下文条目。
 
 #### current-context
 
@@ -125,9 +125,9 @@ contexts:
 current-context: federal-context
 ```
 
-`current-context` 是昵称或者说是作为 `cluster`、`user`、`namespace` 元组的”key“，当 kubectl 从该文件中加载配置的时候会被默认使用。您可以在 kubectl 命令行里覆盖这些值，通过分别传入 `—context=CONTEXT`、 `—cluster=CLUSTER`、`--user=USER` 和 `--namespace=NAMESPACE` 。
+`current-context` 是昵称或者说是作为 `cluster`、`user`、`namespace` 元组的”key“，当 kubectl 从该文件中加载配置的时候会被默认使用。你可以在 kubectl 命令行里覆盖这些值，通过分别传入 `—context=CONTEXT`、 `—cluster=CLUSTER`、`--user=USER` 和 `--namespace=NAMESPACE` 。
 
-您可以使用 `kubectl config use-context` 更改 `current-context`。
+你可以使用 `kubectl config use-context` 更改 `current-context`。
 
 ```yaml
 apiVersion: v1
@@ -142,13 +142,13 @@ preferences:
 
 ## 查看 kubeconfig 文件
 
-`kubectl config view` 命令可以展示当前的 kubeconfig 设置。默认将为您展示所有的 kubeconfig 设置；您可以通过传入 `—minify` 参数，将视图过滤到与 `current-context` 有关的配额设置。有关其他选项，请参阅 `kubectl config view`。
+`kubectl config view` 命令可以展示当前的 kubeconfig 设置。默认将为你展示所有的 kubeconfig 设置；你可以通过传入 `—minify` 参数，将视图过滤到与 `current-context` 有关的配额设置。有关其他选项，请参阅 `kubectl config view`。
 
-## 构建您自己的 kubeconfig 文件
+## 构建你自己的 kubeconfig 文件
 
-您可以使用上文 [示例 kubeconfig 文件](https://kubernetes.io/docs/tasks/access-application-cluster/authenticate-across-clusters-kubeconfig#example-kubeconfig-file) 作为
+你可以使用上文 [示例 kubeconfig 文件](https://kubernetes.io/docs/tasks/access-application-cluster/authenticate-across-clusters-kubeconfig#example-kubeconfig-file) 作为
 
-**注意：** 如果您是通过 `kube-up.sh` 脚本部署的 kubernetes 集群，不需要自己创建 kubeconfig 文件——该脚本已经为您创建过了。
+**注意：** 如果你是通过 `kube-up.sh` 脚本部署的 kubernetes 集群，不需要自己创建 kubeconfig 文件——该脚本已经为你创建过了。
 
 当 api server 启动的时候使用了 `—token-auth-file=tokens.csv` 选项时，上述文件将会与 [API server](https://kubernetes.io/docs/admin/kube-apiserver/) 相关联，`tokens.csv` 文件看起来会像这个样子：
 
@@ -157,7 +157,7 @@ blue-user,blue-user,1
 mister-red,mister-red,2
 ```
 
-**注意：** 启动 API server 时有很多 [可用选项](https://kubernetes.io/docs/admin/kube-apiserver/)。请您一定要确保理解您使用的选项。
+**注意：** 启动 API server 时有很多 [可用选项](https://kubernetes.io/docs/admin/kube-apiserver/)。请你一定要确保理解你使用的选项。
 
 上述示例 kubeconfig 文件提供了 `green-user` 的客户端凭证。因为用户的 `current-user` 是 `green-user` ，任何该 API server 的客户端使用该示例 kubeconfig 文件时都可以成功登录。同样，我们可以通过修改 `current-context` 的值以 `blue-user` 的身份操作。
 
@@ -193,7 +193,7 @@ mister-red,mister-red,2
    2. 如果存在集群信息，并且存在该属性的值，请使用它。
    3. 如果没有服务器位置，则产生错误。
 
-5. 确定要使用的实际用户信息。用户使用与集群信息相同的规则构建，除非，您的每个用户只能使用一种认证技术。
+5. 确定要使用的实际用户信息。用户使用与集群信息相同的规则构建，除非，你的每个用户只能使用一种认证技术。
 
    1. 负载优先级为 1）命令行标志 2）来自 kubeconfig 的用户字段
    2. 命令行标志是：`client-certificate`、`client-key`、`username`、`password` 和 `token`
@@ -288,6 +288,6 @@ $ kubectl config use-context federal-context
 
 所以，将这一切绑在一起，快速创建自己的 kubeconfig 文件：
 
-- 仔细看一下，了解您的 api-server 的启动方式：在设计 kubeconfig 文件以方便身份验证之前，您需要知道您自己的安全要求和策略。
-- 将上面的代码段替换为您的集群的 api-server 端点的信息。
-- 确保您的 api-server 至少能够以提供一个用户（即 `green-user`）凭据的方式启动。当然您必须查看 api-server 文档，以了解当前关于身份验证细节方面的最新技术。
+- 仔细看一下，了解你的 api-server 的启动方式：在设计 kubeconfig 文件以方便身份验证之前，你需要知道你自己的安全要求和策略。
+- 将上面的代码段替换为你的集群的 api-server 端点的信息。
+- 确保你的 api-server 至少能够以提供一个用户（即 `green-user`）凭据的方式启动。当然你必须查看 api-server 文档，以了解当前关于身份验证细节方面的最新技术。

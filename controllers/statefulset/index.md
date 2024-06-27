@@ -40,15 +40,15 @@ StatefulSet 适用于有以下某个或多个需求的应用：
 - 有序，优雅地删除和终止。
 - 有序，自动的滚动升级。
 
-在上文中，稳定是 Pod（重新）调度中持久性的代名词。如果应用程序不需要任何稳定的标识符、有序部署、删除和 scale，则应该使用提供一组无状态副本的 controller 来部署应用程序，例如 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment) 或 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset) 可能更适合您的无状态需求。
+在上文中，稳定是 Pod（重新）调度中持久性的代名词。如果应用程序不需要任何稳定的标识符、有序部署、删除和 scale，则应该使用提供一组无状态副本的 controller 来部署应用程序，例如 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment) 或 [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset) 可能更适合你的无状态需求。
 
 ## 限制
 
 - StatefulSet 是 beta 资源，Kubernetes 1.5 以前版本不支持。
-- 对于所有的 alpha/beta 的资源，您都可以通过在 apiserver 中设置 `--runtime-config` 选项来禁用。
+- 对于所有的 alpha/beta 的资源，你都可以通过在 apiserver 中设置 `--runtime-config` 选项来禁用。
 - 给定 Pod 的存储必须由 PersistentVolume Provisioner 根据请求的 `storage class` 进行配置，或由管理员预先配置。
 - 删除或 scale StatefulSet 将_不会_删除与 StatefulSet 相关联的 volume。这样做是为了确保数据安全性，这通常比自动清除所有相关 StatefulSet 资源更有价值。
-- StatefulSets 目前要求 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 负责 Pod 的网络身份。您有责任创建此服务。
+- StatefulSets 目前要求 [Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) 负责 Pod 的网络身份。你有责任创建此服务。
 
 ## 组件
 
@@ -144,7 +144,7 @@ Kubernetes 为每个 VolumeClaimTemplate 创建一个 [PersistentVolume](https:/
 - 对 Pod 执行 scale 操作之前，它所有的前任必须处于 Running 和 Ready 状态。
 - 在终止 Pod 前，它所有的继任者必须处于完全关闭状态。
 
-不应该将 StatefulSet 的 `pod.Spec.TerminationGracePeriodSeconds` 设置为 0。这样是不安全的且强烈不建议您这样做。进一步解释，请参阅 [强制删除 StatefulSet Pod](https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod)。
+不应该将 StatefulSet 的 `pod.Spec.TerminationGracePeriodSeconds` 设置为 0。这样是不安全的且强烈不建议你这样做。进一步解释，请参阅 [强制删除 StatefulSet Pod](https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod)。
 
 上面的 nginx 示例创建后，3 个 Pod 将按照如下顺序创建 web-0，web-1，web-2。在 web-0 处于 运行并就绪 状态之前，web-1 将不会被部署，同样当 web-1 处于运行并就绪状态之前 web-2 也不会被部署。如果在 web-1 运行并就绪后，web-2 启动之前，web-0 失败了，web-2 将不会启动，直到 web-0 成功重启并处于运行并就绪状态。
 
@@ -152,7 +152,7 @@ Kubernetes 为每个 VolumeClaimTemplate 创建一个 [PersistentVolume](https:/
 
 ### Pod 管理策略
 
-在 Kubernetes 1.7 和之后版本，StatefulSet 允许您放开顺序保证，同时通过 `.spec.podManagementPolicy` 字段保证身份的唯一性。
+在 Kubernetes 1.7 和之后版本，StatefulSet 允许你放开顺序保证，同时通过 `.spec.podManagementPolicy` 字段保证身份的唯一性。
 
 #### OrderedReady Pod 管理
 
@@ -164,7 +164,7 @@ StatefulSet 中默认使用的是 `OrderedReady` pod 管理。它实现了 [如�
 
 ## 更新策略
 
-在 kubernetes 1.7 和以上版本中，StatefulSet 的 `.spec.updateStrategy` 字段允许您配置和禁用 StatefulSet 中的容器、label、resource request/limit、annotation 的滚动更新。
+在 kubernetes 1.7 和以上版本中，StatefulSet 的 `.spec.updateStrategy` 字段允许你配置和禁用 StatefulSet 中的容器、label、resource request/limit、annotation 的滚动更新。
 
 ### 删除
 
@@ -178,7 +178,7 @@ StatefulSet 中默认使用的是 `OrderedReady` pod 管理。它实现了 [如�
 
 可以通过指定 `.spec.updateStrategy.rollingUpdate.partition` 来对 `RollingUpdate` 更新策略进行分区。如果指定了分区，则当 StatefulSet 的 `.spec.template` 更新时，具有大于或等于分区序数的所有 Pod 将被更新。具有小于分区的序数的所有 Pod 将不会被更新，即使删除它们也将被重新创建。如果 StatefulSet 的 `.spec.updateStrategy.rollingUpdate.partition` 大于其 `.spec.replicas`，则其 `.spec.template` 的更新将不会传播到 Pod。
 
-在大多数情况下，您不需要使用分区，但如果您想要进行分阶段更新，使用金丝雀发布或执行分阶段发布，它们将非常有用。
+在大多数情况下，你不需要使用分区，但如果你想要进行分阶段更新，使用金丝雀发布或执行分阶段发布，它们将非常有用。
 
 ## 简单示例
 

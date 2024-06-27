@@ -13,7 +13,7 @@ Preset 就是预设，有时候想要让一批容器在启动的时候就注入�
 
 `Pod Preset` 是用来在 Pod 被创建的时候向其中注入额外的运行时需求的 API 资源。
 
-您可以使用 [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) 来指定为哪些 Pod 应用 Pod Preset。
+你可以使用 [label selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) 来指定为哪些 Pod 应用 Pod Preset。
 
 使用 Pod Preset 使得 pod 模板的作者可以不必为每个 Pod 明确提供所有信息。这样一来，pod 模板的作者就不需要知道关于该服务的所有细节。
 
@@ -35,12 +35,12 @@ Kubernetes 提供了一个准入控制器（`PodPreset`），当其启用时，P
 
 ### 禁用特定 Pod 的 Pod Preset
 
-在某些情况下，您可能不希望 Pod 被任何 Pod Preset 所改变。在这些情况下，您可以在 Pod 的 Pod Spec 中添加注释：`podpreset.admission.kubernetes.io/exclude："true"`。
+在某些情况下，你可能不希望 Pod 被任何 Pod Preset 所改变。在这些情况下，你可以在 Pod 的 Pod Spec 中添加注释：`podpreset.admission.kubernetes.io/exclude："true"`。
 
 ## 启用 Pod Preset
 
-为了在群集中使用 Pod Preset，您必须确保以下内容：
+为了在群集中使用 Pod Preset，你必须确保以下内容：
 
-1. 您已启用 `settings.k8s.io/v1alpha1/podpreset` API 类型。例如，可以通过在 API server 的 `--runtime-config` 选项中包含 `settings.k8s.io/v1alpha1=true` 来完成此操作。
-2. 您已启用 `PodPreset` 准入控制器。一种方法是将 `PodPreset` 包含在为 API server 指定的 `--admission-control` 选项值中。
-3. 您已经在要使用的命名空间中通过创建 `PodPreset` 对象来定义 `PodPreset`。
+1. 你已启用 `settings.k8s.io/v1alpha1/podpreset` API 类型。例如，可以通过在 API server 的 `--runtime-config` 选项中包含 `settings.k8s.io/v1alpha1=true` 来完成此操作。
+2. 你已启用 `PodPreset` 准入控制器。一种方法是将 `PodPreset` 包含在为 API server 指定的 `--admission-control` 选项值中。
+3. 你已经在要使用的命名空间中通过创建 `PodPreset` 对象来定义 `PodPreset`。

@@ -19,17 +19,17 @@ Secret 是一种包含少量敏感信息例如密码、token 或 key 的对象�
 
 #### Service Account 使用 API 凭证自动创建和附加 secret
 
-Kubernetes 自动创建包含访问 API 凭据的 secret，并自动修改您的 pod 以使用此类型的 secret。
+Kubernetes 自动创建包含访问 API 凭据的 secret，并自动修改你的 pod 以使用此类型的 secret。
 
-如果需要，可以禁用或覆盖自动创建和使用 API 凭据。但是，如果您需要的只是安全地访问 apiserver，我们推荐这样的工作流程。
+如果需要，可以禁用或覆盖自动创建和使用 API 凭据。但是，如果你需要的只是安全地访问 apiserver，我们推荐这样的工作流程。
 
 参阅 Service Account 文档获取关于 Service Account 如何工作的更多信息。
 
-### 创建您自己的 Secret
+### 创建你自己的 Secret
 
 #### 使用 kubectl 创建 Secret
 
-假设有些 pod 需要访问数据库。这些 pod 需要使用的用户名和密码在您本地机器的 `./username.txt` 和 `./password.txt` 文件里。
+假设有些 pod 需要访问数据库。这些 pod 需要使用的用户名和密码在你本地机器的 `./username.txt` 和 `./password.txt` 文件里。
 
 ```bash
 # Create files needed for rest of example.
@@ -44,7 +44,7 @@ $ kubectl create secret generic db-user-pass --from-file=./username.txt --from-f
 secret "db-user-pass" created
 ```
 
-您可以这样检查刚创建的 secret：
+你可以这样检查刚创建的 secret：
 
 ```bash
 $ kubectl get secrets
@@ -71,7 +71,7 @@ username.txt:    5 bytes
 
 #### 手动创建 Secret
 
-您也可以先以 json 或 yaml 格式在文件中创建一个 secret 对象，然后创建该对象。
+你也可以先以 json 或 yaml 格式在文件中创建一个 secret 对象，然后创建该对象。
 
 每一项必须是 base64 编码：
 
@@ -136,16 +136,16 @@ $ echo "MWYyZDFlMmU2N2Rm" | base64 --decode
 
 ### 使用 Secret
 
-Secret 可以作为数据卷被挂载，或作为环境变量暴露出来以供 pod 中的容器使用。它们也可以被系统的其他部分使用，而不直接暴露在 pod 内。例如，它们可以保存凭据，系统的其他部分应该用它来代表您与外部系统进行交互。
+Secret 可以作为数据卷被挂载，或作为环境变量暴露出来以供 pod 中的容器使用。它们也可以被系统的其他部分使用，而不直接暴露在 pod 内。例如，它们可以保存凭据，系统的其他部分应该用它来代表你与外部系统进行交互。
 
 #### 在 Pod 中使用 Secret 文件
 
 在 Pod 中的 volume 里使用 Secret：
 
 1. 创建一个 secret 或者使用已有的 secret。多个 pod 可以引用同一个 secret。
-2. 修改您的 pod 的定义在 `spec.volumes[]` 下增加一个 volume。可以给这个 volume 随意命名，它的 `spec.volumes[].secret.secretName` 必须等于 secret 对象的名字。
-3. 将 `spec.containers[].volumeMounts[]` 加到需要用到该 secret 的容器中。指定 `spec.containers[].volumeMounts[].readOnly = true` 和 `spec.containers[].volumeMounts[].mountPath` 为您想要该 secret 出现的尚未使用的目录。
-4. 修改您的镜像并且／或者命令行让程序从该目录下寻找文件。Secret 的 `data` 映射中的每一个键都成为了 `mountPath` 下的一个文件名。
+2. 修改你的 pod 的定义在 `spec.volumes[]` 下增加一个 volume。可以给这个 volume 随意命名，它的 `spec.volumes[].secret.secretName` 必须等于 secret 对象的名字。
+3. 将 `spec.containers[].volumeMounts[]` 加到需要用到该 secret 的容器中。指定 `spec.containers[].volumeMounts[].readOnly = true` 和 `spec.containers[].volumeMounts[].mountPath` 为你想要该 secret 出现的尚未使用的目录。
+4. 修改你的镜像并且／或者命令行让程序从该目录下寻找文件。Secret 的 `data` 映射中的每一个键都成为了 `mountPath` 下的一个文件名。
 
 这是一个在 pod 中使用 volume 挂在 secret 的例子：
 
@@ -168,15 +168,15 @@ spec:
       secretName: mysecret
 ```
 
-您想要用的每个 secret 都需要在 `spec.volumes` 中指明。
+你想要用的每个 secret 都需要在 `spec.volumes` 中指明。
 
 如果 pod 中有多个容器，每个容器都需要自己的 `volumeMounts` 配置块，但是每个 secret 只需要一个 `spec.volumes`。
 
-您可以打包多个文件到一个 secret 中，或者使用的多个 secret，怎样方便就怎样来。
+你可以打包多个文件到一个 secret 中，或者使用的多个 secret，怎样方便就怎样来。
 
 **向特性路径映射 secret 密钥**
 
-我们还可以控制 Secret key 映射在 volume 中的路径。您可以使用 `spec.volumes[].secret.items` 字段修改每个 key 的目标路径：
+我们还可以控制 Secret key 映射在 volume 中的路径。你可以使用 `spec.volumes[].secret.items` 字段修改每个 key 的目标路径：
 
 ```yaml
 apiVersion: v1
@@ -209,7 +209,7 @@ spec:
 
 **Secret 文件权限**
 
-您还可以指定 secret 将拥有的权限模式位文件。如果不指定，默认使用 `0644`。您可以为整个保密卷指定默认模式，如果需要，可以覆盖每个密钥。
+你还可以指定 secret 将拥有的权限模式位文件。如果不指定，默认使用 `0644`。你可以为整个保密卷指定默认模式，如果需要，可以覆盖每个密钥。
 
 ```yaml
 apiVersion: v1
@@ -232,9 +232,9 @@ spec:
 
 然后，secret 将被挂载到 `/etc/foo` 目录，所有通过该 secret volume 挂载创建的文件的权限都是 `0400`。
 
-请注意，JSON 规范不支持八进制符号，因此使用 256 值作为 0400 权限。如果您使用 yaml 而不是 json 作为 pod，则可以使用八进制符号以更自然的方式指定权限。
+请注意，JSON 规范不支持八进制符号，因此使用 256 值作为 0400 权限。如果你使用 yaml 而不是 json 作为 pod，则可以使用八进制符号以更自然的方式指定权限。
 
-您还可以是用映射，如上一个示例，并为不同的文件指定不同的权限，如下所示：
+你还可以是用映射，如上一个示例，并为不同的文件指定不同的权限，如下所示：
 
 ```yaml
 apiVersion: v1
@@ -289,7 +289,7 @@ Kubelet 在周期性同步时检查被挂载的 secret 是不是最新的。但�
 将 secret 作为 pod 中的环境变量使用：
 
 1. 创建一个 secret 或者使用一个已存在的 secret。多个 pod 可以引用同一个 secret。
-2. 在每个容器中修改您想要使用 secret key 的 Pod 定义，为要使用的每个 secret key 添加一个环境变量。消费 secret key 的环境变量应填充 secret 的名称，并键入 `env[x].valueFrom.secretKeyRef`。
+2. 在每个容器中修改你想要使用 secret key 的 Pod 定义，为要使用的每个 secret key 添加一个环境变量。消费 secret key 的环境变量应填充 secret 的名称，并键入 `env[x].valueFrom.secretKeyRef`。
 3. 修改镜像并／或者命令行，以便程序在指定的环境变量中查找值。
 
 ```yaml
@@ -328,7 +328,7 @@ $ echo $SECRET_PASSWORD
 
 #### 使用 imagePullSecret
 
-imagePullSecret 是将包含 Docker（或其他）镜像注册表密码的 secret 传递给 Kubelet 的一种方式，因此可以代表您的 pod 拉取私有镜像。
+imagePullSecret 是将包含 Docker（或其他）镜像注册表密码的 secret 传递给 Kubelet 的一种方式，因此可以代表你的 pod 拉取私有镜像。
 
 **手动指定 imagePullSecret**
 
@@ -336,7 +336,7 @@ imagePullSecret 的使用在 [镜像文档](https://kubernetes.io/docs/concepts/
 
 ### 安排 imagePullSecrets 自动附加
 
-您可以手动创建 imagePullSecret，并从 serviceAccount 引用它。使用该 serviceAccount 创建的任何 pod 和默认使用该 serviceAccount 的 pod 将会将其的 imagePullSecret 字段设置为服务帐户的 imagePullSecret 字段。有关该过程的详细说明，请参阅 [将 ImagePullSecrets 添加到服务帐户](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#adding-imagepullsecrets-to-a-service-account)。
+你可以手动创建 imagePullSecret，并从 serviceAccount 引用它。使用该 serviceAccount 创建的任何 pod 和默认使用该 serviceAccount 的 pod 将会将其的 imagePullSecret 字段设置为服务帐户的 imagePullSecret 字段。有关该过程的详细说明，请参阅 [将 ImagePullSecrets 添加到服务帐户](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#adding-imagepullsecrets-to-a-service-account)。
 
 #### 自动挂载手动创建的 Secret
 
@@ -380,7 +380,7 @@ LASTSEEN   FIRSTSEEN   COUNT     NAME            KIND      SUBOBJECT            
 $ kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=/path/to/.ssh/id_rsa --from-file=ssh-publickey=/path/to/.ssh/id_rsa.pub
 ```
 
-**安全性注意事项**：发送自己的 ssh 密钥之前要仔细思考：集群的其他用户可能有权访问该密钥。使用您想要共享 Kubernetes 群集的所有用户可以访问的服务帐户，如果它们遭到入侵，可以撤销。
+**安全性注意事项**：发送自己的 ssh 密钥之前要仔细思考：集群的其他用户可能有权访问该密钥。使用你想要共享 Kubernetes 群集的所有用户可以访问的服务帐户，如果它们遭到入侵，可以撤销。
 
 现在我们可以创建一个使用 ssh 密钥引用 secret 的 pod，并在一个卷中使用它：
 
@@ -478,7 +478,7 @@ items:
 /etc/secret-volume/password
 ```
 
-请注意，两个 pod 的 spec 配置中仅有一个字段有所不同；这有助于使用普通的 pod 配置模板创建具有不同功能的 pod。您可以使用两个 service account 进一步简化基本 pod spec：一个名为 `prod-user` 拥有 `prod-db-secret` ，另一个称为 `test-user` 拥有 `test-db-secret` 。然后，pod spec 可以缩短为，例如：
+请注意，两个 pod 的 spec 配置中仅有一个字段有所不同；这有助于使用普通的 pod 配置模板创建具有不同功能的 pod。你可以使用两个 service account 进一步简化基本 pod spec：一个名为 `prod-user` 拥有 `prod-db-secret` ，另一个称为 `test-user` 拥有 `test-db-secret` 。然后，pod spec 可以缩短为，例如：
 
 ```yaml
 kind: Pod
@@ -577,7 +577,7 @@ Pod 中有多个容器。但是，pod 中的每个容器必须请求其挂载卷
 - API server 的 secret 数据以纯文本的方式存储在 etcd 中；因此：
   - 管理员应该限制 admin 用户访问 etcd；
   - API server 中的 secret 数据位于 etcd 使用的磁盘上；管理员可能希望在不再使用时擦除/粉碎 etcd 使用的磁盘
-- 如果您将 secret 数据编码为 base64 的清单（JSON 或 YAML）文件，共享该文件或将其检入代码库，这样的话该密码将会被泄露。Base64 编码不是一种加密方式，一样也是纯文本。
+- 如果你将 secret 数据编码为 base64 的清单（JSON 或 YAML）文件，共享该文件或将其检入代码库，这样的话该密码将会被泄露。Base64 编码不是一种加密方式，一样也是纯文本。
 - 应用程序在从卷中读取 secret 后仍然需要保护 secret 的值，例如不会意外记录或发送给不信任方。
 - 可以创建和使用 secret 的 pod 的用户也可以看到该 secret 的值。即使 API server 策略不允许用户读取 secret 对象，用户也可以运行暴露 secret 的 pod。
 - 如果运行了多个副本，那么这些 secret 将在它们之间共享。默认情况下，etcd 不能保证与 SSL/TLS 的对等通信，尽管可以进行配置。

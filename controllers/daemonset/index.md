@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-本文将为您介绍 DaemonSet 的基本概念。
+本文将为你介绍 DaemonSet 的基本概念。
 
 ## 什么是 DaemonSet？
 

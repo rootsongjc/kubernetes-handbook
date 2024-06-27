@@ -13,7 +13,7 @@ type: book
 
 ## 集群中的 TLS 信任
 
-让 Pod 中运行的应用程序信任集群根 CA 通常需要一些额外的应用程序配置。您将需要将 CA 证书包添加到 TLS 客户端或服务器信任的 CA 证书列表中。例如，您可以使用 golang TLS 配置通过解析证书链并将解析的证书添加到 [`tls.Config`](https://godoc.org/crypto/tls#Config)结构中的 `Certificates` 字段中，CA 证书捆绑包将使用默认服务账户自动加载到 pod 中，路径为 `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`。如果您没有使用默认服务账户，请请求集群管理员构建包含您有权访问使用的证书包的 configmap。
+让 Pod 中运行的应用程序信任集群根 CA 通常需要一些额外的应用程序配置。你将需要将 CA 证书包添加到 TLS 客户端或服务器信任的 CA 证书列表中。例如，你可以使用 golang TLS 配置通过解析证书链并将解析的证书添加到 [`tls.Config`](https://godoc.org/crypto/tls#Config)结构中的 `Certificates` 字段中，CA 证书捆绑包将使用默认服务账户自动加载到 pod 中，路径为 `/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`。如果你没有使用默认服务账户，请请求集群管理员构建包含你有权访问使用的证书包的 configmap。
 
 ## 请求认证
 
@@ -105,7 +105,7 @@ Events: <none>
 
 ### 下载签名并使用
 
-一旦 CSR 被签署并获得批准，您应该看到以下内容：
+一旦 CSR 被签署并获得批准，你应该看到以下内容：
 
 ```bash
 $ kubectl get csr
@@ -124,7 +124,7 @@ $ kubectl get csr my-svc.my-namespace -o jsonpath='{.status.certificate}' \
 
 ## 批准证书签名请求
 
-Kubernetes 管理员（具有适当权限）可以使用 `kubectl certificate approve` 和 `kubectl certificate deny` 命令手动批准（或拒绝）证书签名请求。但是，如果您打算大量使用此 API，则可以考虑编写自动化的证书控制器。
+Kubernetes 管理员（具有适当权限）可以使用 `kubectl certificate approve` 和 `kubectl certificate deny` 命令手动批准（或拒绝）证书签名请求。但是，如果你打算大量使用此 API，则可以考虑编写自动化的证书控制器。
 
 如果上述机器或人类使用 kubectl，批准者的作用是验证 CSR 满足如下两个要求：
 
