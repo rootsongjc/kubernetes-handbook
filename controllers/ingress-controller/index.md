@@ -5,14 +5,55 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-为了使 Ingress 正常工作，集群中必须运行 Ingress controller。这与其他类型的控制器不同，其他类型的控制器通常作为 `kube-controller-manager` 二进制文件的一部分运行，在集群启动时自动启动。你需要选择最适合自己集群的 Ingress controller 或者自己实现一个。
+为了让 [Ingress](../../service-discovery/ingress) 资源工作，集群必须有一个运行中的 Ingress 控制器。与 `kube-controller-manager` 一起运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。你可以选择最适合你的集群的 Ingress 控制器。
 
-Kubernetes 社区和众多厂商开发了大量的 Ingress Controller，你可以在 [这里](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 找到。
+Kubernetes 官方支持以下 Ingress 控制器：
+- [AWS](https://github.com/kubernetes-sigs/aws-load-balancer-controller#readme)
+- [GCE](https://git.k8s.io/ingress-gce/README.md#readme)
+- [Nginx](https://git.k8s.io/ingress-nginx/README.md#readme)
+
+### 其他控制器
+
+以下是一些第三方 Ingress 控制器：
+- [AKS 应用程序网关 Ingress 控制器](https://docs.microsoft.com/zh-cn/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
+- [阿里云 MSE Ingress](https://www.alibabacloud.com/help/zh/mse/user-guide/overview-of-mse-ingress-gateways)
+- [Apache APISIX Ingress 控制器](https://github.com/apache/apisix-ingress-controller)
+- [Avi Kubernetes Operator](https://github.com/vmware/load-balancer-and-ingress-services-for-kubernetes)
+- [BFE Ingress 控制器](https://github.com/bfenetworks/ingress-bfe)
+- [Cilium Ingress 控制器](https://docs.cilium.io/en/stable/network/servicemesh/ingress/)
+- [Citrix Ingress 控制器](https://github.com/citrix/citrix-k8s-ingress-controller#readme)
+- [Contour](https://projectcontour.io/)
+- [Emissary-Ingress](https://www.getambassador.io/products/api-gateway)
+- [EnRoute](https://getenroute.io/)
+- [Easegress IngressController](https://megaease.com/docs/easegress/04.cloud-native/4.1.kubernetes-ingress-controller/)
+- [F5 BIG-IP Ingress 服务](https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest)
+- [FortiADC Ingress 控制器](https://docs.fortinet.com/document/fortiadc/7.0.0/fortiadc-ingress-controller/742835/fortiadc-ingress-controller-overview)
+- [Gloo](https://gloo.solo.io/)
+- [HAProxy Ingress](https://haproxy-ingress.github.io/)
+- [Higress](https://github.com/alibaba/higress)
+- [Istio Ingress](https://istio.io/latest/zh/docs/tasks/traffic-management/ingress/kubernetes-ingress/)
+- [Kong Ingress 控制器](https://github.com/Kong/kubernetes-ingress-controller#readme)
+- [Kusk Gateway](https://kusk.kubeshop.io/)
+- [NGINX Ingress 控制器](https://www.nginx.com/products/nginx-ingress-controller/)
+- [ngrok Kubernetes Ingress 控制器](https://github.com/ngrok/kubernetes-ingress-controller)
+- [OCI Native Ingress Controller](https://github.com/oracle/oci-native-ingress-controller#readme)
+- [OpenNJet Ingress Controller](https://gitee.com/njet-rd/open-njet-kic)
+- [Pomerium Ingress 控制器](https://www.pomerium.com/docs/k8s/ingress.html)
+- [Skipper](https://opensource.zalando.com/skipper/kubernetes/ingress-controller/)
+- [Traefik Kubernetes Ingress 提供程序](https://doc.traefik.io/traefik/providers/kubernetes-ingress/)
+- [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
+- [Voyager](https://voyagermesh.com/)
+- [Wallarm Ingress Controller](https://www.wallarm.com/solutions/waf-for-kubernetes)
 
 ## 使用多个 Ingress 控制器
 
-你可以使用 [IngressClass](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class) 在集群中部署任意数量的 Ingress 控制器。请注意你的 Ingress 类资源的 `.metadata.name` 字段。当你创建 Ingress 时，你需要用此字段的值来设置 Ingress 对象的 `ingressClassName` 字段（请参考 [IngressSpec v1 reference](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec)）。 `ingressClassName` 是之前的[注解](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)做法的替代。
+你可以使用 [Ingress 类](../../service-discovery/ingress/#ingress-class)在集群中部署多个 Ingress 控制器。在创建 Ingress 时，需要设置 `ingressClassName` 字段。
 
-如果你不为 Ingress 指定 IngressClass，并且你的集群中只有一个 IngressClass 被标记为了集群默认，那么 Kubernetes 会应用此[默认 IngressClass](https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class)。你可以通过将 [`ingressclass.kubernetes.io/is-default-class` 注解](https://kubernetes.io/docs/reference/labels-annotations-taints/#ingressclass-kubernetes-io-is-default-class) 的值设置为 `"true"` 来将一个 IngressClass 标记为集群默认。
+如果不指定 IngressClass，且集群中有一个默认的 IngressClass，Kubernetes 会将默认 IngressClass 应用到 Ingress 上。你可以通过将 IngressClass 资源的 `ingressclass.kubernetes.io/is-default-class` 注解设置为 `true` 来标记默认 IngressClass。
 
-理想情况下，所有 Ingress 控制器都应满足此规范，但各种 Ingress 控制器的操作略有不同。
+不同的 Ingress 控制器操作略有不同，请查阅相关文档。
+
+## 参考
+
+- [Awesome Cloud Native - jimmysong.io](https://jimmysong.io/awesome-cloud-native/#api-gateway)
+- [Ingress Controllers - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)

@@ -253,7 +253,7 @@ HTTPRoute 的规范中包括：
 
 下图展示了流量经过网关和 HTTPRoute 发送到服务中的过程。
 
-![](httproute-basic-example.svg)
+![流量经过网关和 HTTPRoute 发送到服务中的过程](httproute-basic-example.svg)
 
 #### TLSRoute
 
@@ -482,7 +482,13 @@ spec:
 
 其关系如下图所示。
 
-![](tls-overview.svg)
+```mermaid "上游与下游"
+graph LR
+    A[Client] <-->|Downstream| B[Gateway]
+    B <-->|Upstream| C[Service]
+```
+
+![上游与下游](5a1572b1eac120869a92a95b35073da6.svg)
 
 通过 Gateway API 可以分别对上游或下游的 TLS 进行配置。
 
