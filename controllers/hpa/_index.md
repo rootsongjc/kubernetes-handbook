@@ -95,7 +95,7 @@ HorizontalPodAutoscaler 控制器可以以两种不同的方式获取 metric：�
 
 Autoscaler 访问相应的 replication controller，deployment 或 replica set 来缩放子资源。
 
-Scale 是一个允许您动态设置副本数并检查其当前状态的接口。
+Scale 是一个允许你动态设置副本数并检查其当前状态的接口。
 
 ## API Object
 
@@ -119,7 +119,7 @@ Horizontal Pod Autoscaler 和其他的所有 API 资源一样，通过 `kubectl`
 
 ## 滚动更新期间的自动扩缩容
 
-目前在 Kubernetes 中，可以通过直接管理 replication controller 或使用 deployment 对象来执行 滚动更新，该 deployment 对象为您管理基础 replication controller。
+目前在 Kubernetes 中，可以通过直接管理 replication controller 或使用 deployment 对象来执行 滚动更新，该 deployment 对象为你管理基础 replication controller。
 
 Horizontal Pod Autoscaler 仅支持后一种方法：Horizontal Pod Autoscaler 被绑定到 deployment 对象，它设置 deployment 对象的大小，deployment 负责设置底层 replication controller 的大小。
 
@@ -129,7 +129,7 @@ Horizontal Pod Autoscaler 不能使用直接操作 replication controller 进行
 
 ## 支持多个 metric
 
-Kubernetes 1.6 中增加了支持基于多个 metric 的扩缩容。您可以使用 `autoscaling/v2alpha1` API 版本来为 Horizontal Pod Autoscaler 指定多个 metric。然后 Horizontal Pod Autoscaler controller 将权衡每一个 metric，并根据该 metric 提议一个新的 scale。在所有提议里最大的那个 scale 将作为最终的 scale。
+Kubernetes 1.6 中增加了支持基于多个 metric 的扩缩容。你可以使用 `autoscaling/v2alpha1` API 版本来为 Horizontal Pod Autoscaler 指定多个 metric。然后 Horizontal Pod Autoscaler controller 将权衡每一个 metric，并根据该 metric 提议一个新的 scale。在所有提议里最大的那个 scale 将作为最终的 scale。
 
 ## 支持自定义 metric
 
@@ -139,15 +139,15 @@ Kubernetes 1.6 中增加了支持基于多个 metric 的扩缩容。您可以使
 
 Kubernetes 1.6 增加了在 Horizontal Pod Autoscale r 中使用自定义 metric 的支持。
 
-您可以为 `autoscaling/v2alpha1` API 中使用的 Horizontal Pod Autoscaler 添加自定义 metric。
+你可以为 `autoscaling/v2alpha1` API 中使用的 Horizontal Pod Autoscaler 添加自定义 metric。
 
 Kubernetes 然后查询新的自定义 metric API 来获取相应自定义 metric 的值。
 
 ## 前提条件
 
-为了在 Horizontal Pod Autoscaler 中使用自定义 metric，您必须在您集群的 controller manager 中将 `--horizontal-pod-autoscaler-use-rest-clients` 标志设置为 true。然后，您必须通过将 controller manager 的目标 API server 设置为 API server aggregator（使用 `--apiserver` 标志），配置您的 controller manager 通过 API server aggregator 与 API server 通信。Resource metric API 和自定义 metric API 也必须向 API server aggregator 注册，并且必须由集群上运行的 API server 提供。
+为了在 Horizontal Pod Autoscaler 中使用自定义 metric，你必须在你集群的 controller manager 中将 `--horizontal-pod-autoscaler-use-rest-clients` 标志设置为 true。然后，你必须通过将 controller manager 的目标 API server 设置为 API server aggregator（使用 `--apiserver` 标志），配置你的 controller manager 通过 API server aggregator 与 API server 通信。Resource metric API 和自定义 metric API 也必须向 API server aggregator 注册，并且必须由集群上运行的 API server 提供。
 
-您可以使用 Heapster 实现 resource metric API，方法是将 `--api-server` 标志设置为 true 并运行 Heapster。单独的组件必须提供自定义 metric API（有关自定义 metric API 的更多信息，可从 [k8s.io/metrics repository](https://github.com/kubernetes/metrics) 获得）。
+你可以使用 Heapster 实现 resource metric API，方法是将 `--api-server` 标志设置为 true 并运行 Heapster。单独的组件必须提供自定义 metric API（有关自定义 metric API 的更多信息，可从 [k8s.io/metrics repository](https://github.com/kubernetes/metrics) 获得）。
 
 ## 本节大纲
 

@@ -7,7 +7,7 @@ type: book
 
 对于没有使用过 Kubernetes 的 Docker 用户，如何快速掌握 kubectl 命令？
 
-在本文中，我们将向 docker-cli 用户介绍 Kubernetes 命令行如何与 api 进行交互。该命令行工具——kubectl，被设计成 docker-cli 用户所熟悉的样子，但是它们之间又存在一些必要的差异。该文档将向您展示每个 docker 子命令和 kubectl 与其等效的命令。
+在本文中，我们将向 docker-cli 用户介绍 Kubernetes 命令行如何与 api 进行交互。该命令行工具——kubectl，被设计成 docker-cli 用户所熟悉的样子，但是它们之间又存在一些必要的差异。该文档将向你展示每个 docker 子命令和 kubectl 与其等效的命令。
 
 在使用 kubernetes 集群的时候，docker 命令通常情况是不需要用到的，只有在调试程序或者容器的时候用到，我们基本上使用 kubectl 命令即可，所以在操作 kubernetes 的时候我们抛弃原先使用 docker 时的一些观念。
 
@@ -33,7 +33,7 @@ $ kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
 deployment "nginx-app" created
 ```
 
-在大于等于 1.2 版本 Kubernetes 集群中，使用`kubectl run` 命令将创建一个名为 "nginx-app" 的 Deployment。如果您运行的是老版本，将会创建一个 replication controller。如果您想沿用旧的行为，使用 `--generation=run/v1` 参数，这样就会创建 replication controller。查看 [`kubectl run`](https://kubernetes.io/docs/user-guide/kubectl/#run) 获取更多详细信息。
+在大于等于 1.2 版本 Kubernetes 集群中，使用`kubectl run` 命令将创建一个名为 "nginx-app" 的 Deployment。如果你运行的是老版本，将会创建一个 replication controller。如果你想沿用旧的行为，使用 `--generation=run/v1` 参数，这样就会创建 replication controller。查看 [`kubectl run`](https://kubernetes.io/docs/user-guide/kubectl/#run) 获取更多详细信息。
 
 ```bash
 # expose a port through with a service
@@ -43,7 +43,7 @@ service "nginx-http" exposed
 
 在 kubectl 命令中，我们创建了一个 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment)，这将保证有 N 个运行 nginx 的 pod（N 代表 spec 中声明的 replica 数，默认为 1）。我们还创建了一个 service，使用 selector 匹配具有相应的 selector 的 Deployment。查看 快速开始 获取更多信息。
 
-默认情况下镜像会在后台运行，与`docker run -d ...` 类似，如果您想在前台运行，使用：
+默认情况下镜像会在后台运行，与`docker run -d ...` 类似，如果你想在前台运行，使用：
 
 ```bash
 kubectl run [-i] [--tty] --attach <name> --image=<image>
@@ -51,7 +51,7 @@ kubectl run [-i] [--tty] --attach <name> --image=<image>
 
 与 `docker run ...` 不同的是，如果指定了 `--attach` ，我们将连接到 `stdin`，`stdout` 和 `stderr`，而不能控制具体连接到哪个输出流（`docker -a ...`）。
 
-因为我们使用 Deployment 启动了容器，如果您终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。如果想销毁该 Deployment（和它的 pod），您需要运行 `kubectl delete deployment <name>`。
+因为我们使用 Deployment 启动了容器，如果你终止了连接到的进程（例如 `ctrl-c`），容器将会重启，这跟 `docker run -it`不同。如果想销毁该 Deployment（和它的 pod），你需要运行 `kubectl delete deployment <name>`。
 
 ## docker ps
 
@@ -202,7 +202,7 @@ $ kubectl get po -l run=nginx-app
 
 ## docker login
 
-在 kubectl 中没有对 `docker login` 的直接模拟。如果您有兴趣在私有镜像仓库中使用 Kubernetes，请参阅 [使用私有镜像仓库](https://kubernetes.io/docs/concepts/containers/images/#using-a-private-registry)。
+在 kubectl 中没有对 `docker login` 的直接模拟。如果你有兴趣在私有镜像仓库中使用 Kubernetes，请参阅 [使用私有镜像仓库](https://kubernetes.io/docs/concepts/containers/images/#using-a-private-registry)。
 
 ## docker version
 

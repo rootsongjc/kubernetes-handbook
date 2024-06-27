@@ -58,9 +58,9 @@ Kubernetes 支持以下类型的卷：
 
 ### awsElasticBlockStore
 
-`awsElasticBlockStore` 卷将 Amazon Web Services（AWS）EBS Volume 挂载到您的容器中。与 `emptyDir` 类型会在删除 Pod 时被清除不同，EBS 卷的的内容会保留下来，仅仅是被卸载。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
+`awsElasticBlockStore` 卷将 Amazon Web Services（AWS）EBS Volume 挂载到你的容器中。与 `emptyDir` 类型会在删除 Pod 时被清除不同，EBS 卷的的内容会保留下来，仅仅是被卸载。这意味着 EBS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。
 
-**重要提示**：您必须使用 `aws ec2 create-volume` 或 AWS API 创建 EBS 卷，才能使用它。
+**重要提示**：你必须使用 `aws ec2 create-volume` 或 AWS API 创建 EBS 卷，才能使用它。
 
 使用 awsElasticBlockStore 卷时有一些限制：
 
@@ -70,13 +70,13 @@ Kubernetes 支持以下类型的卷：
 
 #### 创建 EBS 卷
 
-在 pod 中使用的 EBS 卷之前，您需要先创建它。
+在 pod 中使用的 EBS 卷之前，你需要先创建它。
 
 ```bash
 aws ec2 create-volume --availability-zone=eu-west-1a --size=10 --volume-type=gp2
 ```
 
-确保区域与您启动集群的区域相匹配（并且检查大小和 EBS 卷类型是否适合您的使用！）
+确保区域与你启动集群的区域相匹配（并且检查大小和 EBS 卷类型是否适合你的使用！）
 
 ### AWS EBS 示例配置
 
@@ -110,9 +110,9 @@ spec:
 
 ### cephfs
 
-`cephfs` 卷允许将现有的 CephFS 卷挂载到您的容器中。不像 `emptyDir`，当删除 Pod 时被删除，`cephfs` 卷的内容将被保留，卷仅仅是被卸载。这意味着 CephFS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。CephFS 可以被多个写设备同时挂载。
+`cephfs` 卷允许将现有的 CephFS 卷挂载到你的容器中。不像 `emptyDir`，当删除 Pod 时被删除，`cephfs` 卷的内容将被保留，卷仅仅是被卸载。这意味着 CephFS 卷可以预先填充数据，并且可以在数据包之间“切换”数据。CephFS 可以被多个写设备同时挂载。
 
-**重要提示**：您必须先拥有自己的 Ceph 服务器，然后才能使用它。
+**重要提示**：你必须先拥有自己的 Ceph 服务器，然后才能使用它。
 
 ### csi
 
@@ -167,9 +167,9 @@ spec:
 
 ### fc (fibre channel)
 
-fc 卷允许将现有的 `fc` 卷挂载到 pod 中。您可以使用卷配置中的 `targetWWN` 参数指定单个或多个目标全球通用名称（World Wide Name）。如果指定了多个 WWN，则 targetWWN 期望这些 WWN 来自多路径连接。
+fc 卷允许将现有的 `fc` 卷挂载到 pod 中。你可以使用卷配置中的 `targetWWN` 参数指定单个或多个目标全球通用名称（World Wide Name）。如果指定了多个 WWN，则 targetWWN 期望这些 WWN 来自多路径连接。
 
-**重要提示**：您必须配置 FC SAN 区域划分，并预先将这些 LUN（卷）分配并屏蔽到目标 WWN，以便 Kubernetes 主机可以访问它们。
+**重要提示**：你必须配置 FC SAN 区域划分，并预先将这些 LUN（卷）分配并屏蔽到目标 WWN，以便 Kubernetes 主机可以访问它们。
 
 参考 [FC  示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/fibre_channel)获取详细信息。
 
@@ -179,27 +179,27 @@ Flocker 是一款开源的集群容器数据卷管理器。它提供了由各种
 
 `flocker` 允许将 Flocker 数据集挂载到 pod 中。如果数据集在 Flocker 中不存在，则需要先使用 Flocker CLI 或使用 Flocker API 创建数据集。如果数据集已经存在，它将被 Flocker 重新连接到 pod 被调度的节点上。这意味着数据可以根据需要在数据包之间“切换”。
 
-**重要提示**：您必须先运行自己的 Flocker 安装程序才能使用它。
+**重要提示**：你必须先运行自己的 Flocker 安装程序才能使用它。
 
 参考 [Flocker 示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/flocker)获取更多详细信息。
 
 ### gcePersistentDisk
 
-`gcePersistentDisk` 卷将 Google Compute Engine（GCE）[Persistent Disk](http://cloud.google.com/compute/docs/disks) 挂载到您的容器中。与删除 Pod 时删除的 `emptyDir` 不同，PD 的内容被保留，只是卸载了卷。这意味着 PD 可以预先填充数据，并且数据可以在 Pod 之间“切换”。
+`gcePersistentDisk` 卷将 Google Compute Engine（GCE）[Persistent Disk](http://cloud.google.com/compute/docs/disks) 挂载到你的容器中。与删除 Pod 时删除的 `emptyDir` 不同，PD 的内容被保留，只是卸载了卷。这意味着 PD 可以预先填充数据，并且数据可以在 Pod 之间“切换”。
 
-**重要提示**：您必须先使用 gcloud 或 GCE API 或 UI 创建一个 PD，然后才能使用它。
+**重要提示**：你必须先使用 gcloud 或 GCE API 或 UI 创建一个 PD，然后才能使用它。
 
 使用 `gcePersistentDisk` 时有一些限制：
 
 - 运行 Pod 的节点必须是 GCE 虚拟机
 - 那些虚拟机需要在与 PD 一样在 GCE 项目和区域中
 
-PD 的一个特点是它们可以同时被多个用户以只读方式挂载。这意味着您可以预先使用您的数据集填充 PD，然后根据需要给多个 Pod 中并行提供。不幸的是，只能由单个消费者以读写模式挂载 PD，而不允许同时写入。
+PD 的一个特点是它们可以同时被多个用户以只读方式挂载。这意味着你可以预先使用你的数据集填充 PD，然后根据需要给多个 Pod 中并行提供。不幸的是，只能由单个消费者以读写模式挂载 PD，而不允许同时写入。
 在由 ReplicationController 控制的 pod 上使用 PD 将会失败，除非 PD 是只读的或者副本数是 0 或 1。
 
 #### 创建 PD
 
-在您在 pod 中使用 GCE PD 之前，需要先创建它。
+在你在 pod 中使用 GCE PD 之前，需要先创建它。
 
 ```bash
 gcloud compute disks create --size=500GB --zone=us-central1-a my-data-disk
@@ -229,7 +229,7 @@ spec:
 
 ### gitRepo
 
-`gitRepo` 卷是一个可以演示卷插件功能的示例。它会挂载一个空目录并将 git 存储库克隆到您的容器中。将来，这样的卷可能会转移到一个更加分离的模型，而不是为每个这样的用例扩展 Kubernetes API。
+`gitRepo` 卷是一个可以演示卷插件功能的示例。它会挂载一个空目录并将 git 存储库克隆到你的容器中。将来，这样的卷可能会转移到一个更加分离的模型，而不是为每个这样的用例扩展 Kubernetes API。
 
 下面是 gitRepo 卷示例：
 
@@ -254,9 +254,9 @@ spec:
 
 ### glusterfs
 
-`glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到您的集群中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。GlusterFS 可以同时由多个写入挂载。
+`glusterfs` 卷允许将 [Glusterfs](http://www.gluster.org)（一个开放源代码的网络文件系统）卷挂载到你的集群中。与删除 Pod 时删除的 `emptyDir` 不同，`glusterfs` 卷的内容将被保留，而卷仅仅被卸载。这意味着 glusterfs 卷可以预先填充数据，并且可以在数据包之间“切换”数据。GlusterFS 可以同时由多个写入挂载。
 
-**重要提示**：您必须先自行安装 GlusterFS，才能使用它。
+**重要提示**：你必须先自行安装 GlusterFS，才能使用它。
 
 ### hostPath
 
@@ -287,7 +287,7 @@ spec:
 
 - 由于每个节点上的文件都不同，具有相同配置（例如从 podTemplate 创建的）的 pod 在不同节点上的行为可能会有所不同
 - 当 Kubernetes 按照计划添加资源感知调度时，将无法考虑 `hostPath` 使用的资源
-- 在底层主机上创建的文件或目录只能由 root 写入。您需要在特权容器中以 root 身份运行进程，或修改主机上的文件权限以便写入 `hostPath` 卷
+- 在底层主机上创建的文件或目录只能由 root 写入。你需要在特权容器中以 root 身份运行进程，或修改主机上的文件权限以便写入 `hostPath` 卷
 
 #### Pod 示例
 
@@ -318,7 +318,7 @@ spec:
 
 **重要提示**：必须先创建自己的 iSCSI 服务器，然后才能使用它。
 
-iSCSI 的一个特点是它可以同时被多个用户以只读方式安装。这意味着您可以预先使用您的数据集填充卷，然后根据需要向多个额 pod 同时提供。不幸的是，iSCSI 卷只能由单个使用者以读写模式挂载——不允许同时写入。
+iSCSI 的一个特点是它可以同时被多个用户以只读方式安装。这意味着你可以预先使用你的数据集填充卷，然后根据需要向多个额 pod 同时提供。不幸的是，iSCSI 卷只能由单个使用者以读写模式挂载——不允许同时写入。
 
 ### local
 
@@ -372,9 +372,9 @@ spec:
 
 ### nfs
 
-`nfs` 卷允许将现有的 NFS（网络文件系统）共享挂载到您的容器中。不像 `emptyDir`，当删除 Pod 时，`nfs` 卷的内容被保留，卷仅仅是被卸载。这意味着 NFS 卷可以预填充数据，并且可以在 pod 之间“切换”数据。NFS 可以被多个写入者同时挂载。
+`nfs` 卷允许将现有的 NFS（网络文件系统）共享挂载到你的容器中。不像 `emptyDir`，当删除 Pod 时，`nfs` 卷的内容被保留，卷仅仅是被卸载。这意味着 NFS 卷可以预填充数据，并且可以在 pod 之间“切换”数据。NFS 可以被多个写入者同时挂载。
 
-**重要提示**：您必须先拥有自己的 NFS 服务器才能使用它，然后才能使用它。
+**重要提示**：你必须先拥有自己的 NFS 服务器才能使用它，然后才能使用它。
 
 有关更多详细信息，请参见 [NFS 示例](https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs)。
 
@@ -471,7 +471,7 @@ spec:
 每个映射的卷来源在 `sources` 下的规格中列出。除了以下两个例外，参数几乎相同：
 
 - 对于 secret，`secretName` 字段已经被更改为 `name` 以与 ConfigMap 命名一致。
-- `defaultMode` 只能在映射级别指定，而不能针对每个卷源指定。但是，如上所述，您可以明确设置每个映射的 `mode`。
+- `defaultMode` 只能在映射级别指定，而不能针对每个卷源指定。但是，如上所述，你可以明确设置每个映射的 `mode`。
 
 ### portworxVolume
 
@@ -501,27 +501,27 @@ spec:
       fsType: "<fs-type>"
 ```
 
-**重要提示**：在 pod 中使用之前，请确保您有一个名为 `pxvol` 的现有 PortworxVolume。
+**重要提示**：在 pod 中使用之前，请确保你有一个名为 `pxvol` 的现有 PortworxVolume。
 
 ### quobyte
 
 `quobyte` 卷允许将现有的 [Quobyte](http://www.quobyte.com) 卷挂载到容器中。
 
-**重要提示**：您必须先创建自己的 Quobyte 安装程序，然后才能使用它。
+**重要提示**：你必须先创建自己的 Quobyte 安装程序，然后才能使用它。
 
 ### rbd
 
 `rbd` 卷允许将 Rados Block Device 卷挂载到容器中。不像 `emptyDir`，删除 Pod 时 `rbd `卷的内容被保留，卷仅仅被卸载。这意味着 RBD 卷可以预先填充数据，并且可以在 pod 之间“切换”数据。
 
-**重要提示**：您必须先自行安装 Ceph，然后才能使用 RBD。
+**重要提示**：你必须先自行安装 Ceph，然后才能使用 RBD。
 
-RBD 的一个特点是它可以同时为多个用户以只读方式挂载。这意味着可以预先使用您的数据集填充卷，然后根据需要同时为多个 pod 并行提供。不幸的是，RBD 卷只能由单个用户以读写模式安装——不允许同时写入。
+RBD 的一个特点是它可以同时为多个用户以只读方式挂载。这意味着可以预先使用你的数据集填充卷，然后根据需要同时为多个 pod 并行提供。不幸的是，RBD 卷只能由单个用户以读写模式安装——不允许同时写入。
 
 ### scaleIO
 
 ScaleIO 是一个基于软件的存储平台，可以使用现有的硬件来创建可扩展的共享块网络存储集群。`scaleIO` 卷插件允许已部署的 pod 访问现有的 ScaleIO 卷（或者它可以为持久性卷声明动态调配新卷，请参阅 [ScaleIO 持久卷](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#scaleio)）。
 
-**重要提示**：您必须有一个已经配置好的 ScaleIO 集群，并和创建的卷一同运行，然后才能使用它们。
+**重要提示**：你必须有一个已经配置好的 ScaleIO 集群，并和创建的卷一同运行，然后才能使用它们。
 
 以下是使用 ScaleIO 的示例 pod 配置：
 
@@ -554,9 +554,9 @@ spec:
 
 ### secret
 
-`secret` 卷用于将敏感信息（如密码）传递到 pod。您可以将 secret 存储在 Kubernetes API 中，并将它们挂载为文件，以供 Pod 使用，而无需直接连接到 Kubernetes。 `secret` 卷由 tmpfs（一个 RAM 支持的文件系统）支持，所以它们永远不会写入非易失性存储器。
+`secret` 卷用于将敏感信息（如密码）传递到 pod。你可以将 secret 存储在 Kubernetes API 中，并将它们挂载为文件，以供 Pod 使用，而无需直接连接到 Kubernetes。 `secret` 卷由 tmpfs（一个 RAM 支持的文件系统）支持，所以它们永远不会写入非易失性存储器。
 
-**重要提示**：您必须先在 Kubernetes API 中创建一个 secret，然后才能使用它。
+**重要提示**：你必须先在 Kubernetes API 中创建一个 secret，然后才能使用它。
 
 ### storageOS
 
@@ -568,7 +568,7 @@ StorageOS 的核心是为容器提供块存储，可以通过文件系统访问�
 
 StorageOS 容器需要 64 位 Linux，没有额外的依赖关系。可以使用免费的开发者许可证。
 
-**重要提示**：您必须在每个要访问 StorageOS 卷的节点上运行 StorageOS 容器，或者为该池提供存储容量。相关的安装说明，请参阅 [StorageOS 文档](https://docs.storageos.com)。
+**重要提示**：你必须在每个要访问 StorageOS 卷的节点上运行 StorageOS 容器，或者为该池提供存储容量。相关的安装说明，请参阅 [StorageOS 文档](https://docs.storageos.com)。
 
 ```yaml
 apiVersion: v1
@@ -604,7 +604,7 @@ spec:
 
 `vsphereVolume` 用于将 vSphere VMDK 卷挂载到 Pod 中。卷的内容在卸载时会被保留。支持 VMFS 和 VSAN 数据存储。
 
-**重要提示**：在 Pod 中使用它之前，您必须使用以下一种方法创建 VMDK。
+**重要提示**：在 Pod 中使用它之前，你必须使用以下一种方法创建 VMDK。
 
 #### 创建 VMDK 卷
 

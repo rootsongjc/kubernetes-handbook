@@ -54,13 +54,13 @@ Kubelet 可以选择是否执行在容器上运行的两种探针执行和做出
 
 如果容器中的进程能够在遇到问题或不健康的情况下自行崩溃，则不一定需要存活探针; kubelet 将根据 Pod 的`restartPolicy` 自动执行正确的操作。
 
-如果您希望容器在探测失败时被杀死并重新启动，那么请指定一个存活探针，并指定`restartPolicy` 为 Always 或 OnFailure。
+如果你希望容器在探测失败时被杀死并重新启动，那么请指定一个存活探针，并指定`restartPolicy` 为 Always 或 OnFailure。
 
 如果要仅在探测成功时才开始向 Pod 发送流量，请指定就绪探针。在这种情况下，就绪探针可能与存活探针相同，但是 spec 中的就绪探针的存在意味着 Pod 将在没有接收到任何流量的情况下启动，并且只有在探针探测成功后才开始接收流量。
 
-如果您希望容器能够自行维护，您可以指定一个就绪探针，该探针检查与存活探针不同的端点。
+如果你希望容器能够自行维护，你可以指定一个就绪探针，该探针检查与存活探针不同的端点。
 
-请注意，如果您只想在 Pod 被删除时能够排除请求，则不一定需要使用就绪探针；在删除 Pod 时，Pod 会自动将自身置于未完成状态，无论就绪探针是否存在。当等待 Pod 中的容器停止时，Pod 仍处于未完成状态。
+请注意，如果你只想在 Pod 被删除时能够排除请求，则不一定需要使用就绪探针；在删除 Pod 时，Pod 会自动将自身置于未完成状态，无论就绪探针是否存在。当等待 Pod 中的容器停止时，Pod 仍处于未完成状态。
 
 ### readinessGates
 
@@ -94,7 +94,7 @@ status:
 ...
 ```
 
-您添加的 Pod 条件的名称必须符合 Kubernetes 的 [label key 格式](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
+你添加的 Pod 条件的名称必须符合 Kubernetes 的 [label key 格式](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
 
 只有到 Pod 中的所有容器状态都是 Ready，且 Pod 附加的额外状态检测的 `readinessGates` 条件也是 Ready 的时候，Pod 的状态才是 Ready。
 

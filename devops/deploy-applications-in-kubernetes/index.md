@@ -138,7 +138,7 @@ kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-
 
 ## 验证
 
-如果您使用的是 Traefik ingress 来暴露的服务，那么在浏览器中访问 `http://k8s-app-monitor-agent.jimmysong.io/k8s-app-monitor-agent`，可以看到如下的画面，每次刷新页面将看到新的柱状图。
+如果你使用的是 Traefik ingress 来暴露的服务，那么在浏览器中访问 `http://k8s-app-monitor-agent.jimmysong.io/k8s-app-monitor-agent`，可以看到如下的画面，每次刷新页面将看到新的柱状图。
 
 ![图表](k8s-app-monitor-agent.jpg)
 

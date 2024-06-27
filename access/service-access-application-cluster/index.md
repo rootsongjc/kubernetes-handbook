@@ -6,7 +6,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-本文向您展示如何创建 Kubernetes Service 对象，外部客户端可以使用它来访问集群中运行的应用程序。该 Service 可以为具有两个运行实例的应用程序提供负载均衡。
+本文向你展示如何创建 Kubernetes Service 对象，外部客户端可以使用它来访问集群中运行的应用程序。该 Service 可以为具有两个运行实例的应用程序提供负载均衡。
 
 ## 目的
 
@@ -83,9 +83,9 @@ type: book
     hello-world-2895499144-m1pwt   1/1     Running   ...  10.200.2.5   worker2
    ```
 
-7. 获取正在运行 Hello World 应用程序的 Pod 的其中一个节点的 public IP 地址。如何得到这个地址取决于您的集群设置。例如，如果您使用 Minikube，可以通过运行 `kubectl cluster-info` 查看节点地址。如果您是使用 Google Compute Engine 实例，可以使用 `gcloud compute instances list` 命令查看您的公共地址节点。
+7. 获取正在运行 Hello World 应用程序的 Pod 的其中一个节点的 public IP 地址。如何得到这个地址取决于你的集群设置。例如，如果你使用 Minikube，可以通过运行 `kubectl cluster-info` 查看节点地址。如果你是使用 Google Compute Engine 实例，可以使用 `gcloud compute instances list` 命令查看你的公共地址节点。
 
-8. 在您选择的节点上，在您的节点端口上例如创建允许 TCP 流量的防火墙规则，如果您的服务 NodePort 值为 31568，创建防火墙规则，允许端口 31568 上的 TCP 流量。
+8. 在你选择的节点上，在你的节点端口上例如创建允许 TCP 流量的防火墙规则，如果你的服务 NodePort 值为 31568，创建防火墙规则，允许端口 31568 上的 TCP 流量。
 
 9. 使用节点地址和节点端口访问 Hello World 应用程序：
 
@@ -93,7 +93,7 @@ type: book
    curl http://<public-node-ip>:<node-port>
    ```
 
-   其中 `<public-node-ip>` 是您节点的 public IP 地址，而 `<node-port>` 是您服务的 NodePort 值。
+   其中 `<public-node-ip>` 是你节点的 public IP 地址，而 `<node-port>` 是你服务的 NodePort 值。
 
    对成功请求的响应是一个 hello 消息：
 
@@ -103,7 +103,7 @@ type: book
 
 ## 使用 Service 配置文件
 
-作为使用 `kubectl expose` 的替代方法，您可以使用 service 配置文件 来创建 Service。
+作为使用 `kubectl expose` 的替代方法，你可以使用 service 配置文件 来创建 Service。
 
 要删除 Service，输入以下命令：
 

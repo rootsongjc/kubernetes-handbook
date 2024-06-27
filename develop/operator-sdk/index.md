@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-[Operator SDK](https://github.com/operator-framework/operator-sdk) 由 CoreOS 开源，它是用于构建 Kubernetes 原生应用的 SDK，它提供更高级别的 API、抽象和项目脚手架。在阅读本文前请先确认您已经了解 [Operator](operator.md)是什么。
+[Operator SDK](https://github.com/operator-framework/operator-sdk) 由 CoreOS 开源，它是用于构建 Kubernetes 原生应用的 SDK，它提供更高级别的 API、抽象和项目脚手架。在阅读本文前请先确认你已经了解 [Operator](operator.md)是什么。
 
 使用 Kubernetes 中原生的对象来部署和管理复杂的应用程序不是那么容易，尤其是要管理整个应用的生命周期、组件的扩缩容，我们之前通常是编写各种脚本，通过调用 Kubernetes 的命令行工具来管理 Kubernetes 上的应用。现在可以通过 CRD（CustomResourceDefinition）来自定义这些复杂操作，通过将运维的知识封装在自定义 API 里来减轻运维人员的负担。同时我们还可以像操作 Kubernetes 的原生资源对象一样，使用 `kubectl` 来操作 CRD。
 
@@ -48,7 +48,7 @@ Root project is "github.com/rootsongjc/kubernetes-operator-sdk-tutorial"
 $ go install github.com/operator-framework/operator-sdk/commands/operator-sdk
 ```
 
-该过程需要几分钟，请耐心等待。确认 `$GOPATH/bin/operator-sdk` 文件位于您的 `$PATH` 目录下。
+该过程需要几分钟，请耐心等待。确认 `$GOPATH/bin/operator-sdk` 文件位于你的 `$PATH` 目录下。
 
 ## 创建项目
 

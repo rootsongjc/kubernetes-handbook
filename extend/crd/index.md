@@ -7,11 +7,11 @@ type: book
 
 本文是如何创建 CRD 来扩展 Kubernetes API 的教程。CRD 是用来扩展 Kubernetes 最常用的方式，在 Service Mesh 和 Operator 中也被大量使用。因此读者如果想在 Kubernetes 上做扩展和开发的话，是十分有必要了解 CRD 的。
 
-在阅读本文前您需要先了解[使用自定义资源扩展 API](../custom-resource)，以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](https://cloudnative.to/blog/kubernetes-crd-quick-start/)。
+在阅读本文前你需要先了解[使用自定义资源扩展 API](../custom-resource)，以下内容译自 [Kubernetes 官方文档](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)，有删改，推荐阅读[如何从零开始编写一个 Kubernetes CRD](https://cloudnative.to/blog/kubernetes-crd-quick-start/)。
 
 ## 创建 CRD（CustomResourceDefinition）
 
-创建新的 CustomResourceDefinition（CRD）时，Kubernetes API Server 会为您指定的每个版本创建新的 RESTful 资源路径。CRD 可以是命名空间的，也可以是集群范围的，可以在 CRD `scope` 字段中所指定。与现有的内置对象一样，删除命名空间会删除该命名空间中的所有自定义对象。CustomResourceDefinition 本身是非命名空间的，可供所有命名空间使用。
+创建新的 CustomResourceDefinition（CRD）时，Kubernetes API Server 会为你指定的每个版本创建新的 RESTful 资源路径。CRD 可以是命名空间的，也可以是集群范围的，可以在 CRD `scope` 字段中所指定。与现有的内置对象一样，删除命名空间会删除该命名空间中的所有自定义对象。CustomResourceDefinition 本身是非命名空间的，可供所有命名空间使用。
 
 参考下面的 CRD，将其配置保存在 `resourcedefinition.yaml` 文件中：
 
@@ -74,13 +74,13 @@ kubectl create -f resourcedefinition.yaml
 
 然后，此端点 URL 可用于创建和管理自定义对象。上面的 CRD 中定义的类型就是 `CronTab`。
 
-可能需要几秒钟才能创建端点。您可以监控 CustomResourceDefinition 中 `Established` 的状态何时为 true，或者查看 API 资源的发现信息中是否显示了您的资源。
+可能需要几秒钟才能创建端点。你可以监控 CustomResourceDefinition 中 `Established` 的状态何时为 true，或者查看 API 资源的发现信息中是否显示了你的资源。
 
 ## 创建自定义对象
 
-创建 CustomResourceDefinition 对象后，您可以创建自定义对象。自定义对象可包含自定义字段。这些字段可以包含任意  JSON。在以下示例中， `cronSpec` 和 `image` 自定义字段在自定义对象中设置 `CronTab`。`CronTab` 类型来自您在上面创建的 CustomResourceDefinition 对象的规范。
+创建 CustomResourceDefinition 对象后，你可以创建自定义对象。自定义对象可包含自定义字段。这些字段可以包含任意  JSON。在以下示例中， `cronSpec` 和 `image` 自定义字段在自定义对象中设置 `CronTab`。`CronTab` 类型来自你在上面创建的 CustomResourceDefinition 对象的规范。
 
-如果您将以下 YAML 保存到 `my-crontab.yaml`：
+如果你将以下 YAML 保存到 `my-crontab.yaml`：
 
 ```yaml
 apiVersion: "stable.example.com/v1"
@@ -98,7 +98,7 @@ spec:
 kubectl create -f my-crontab.yaml
 ```
 
-然后，您可以使用 kubectl 管理 CronTab 对象。例如：
+然后，你可以使用 kubectl 管理 CronTab 对象。例如：
 
 ```bash
 kubectl get crontab
@@ -111,15 +111,15 @@ NAME                 AGE
 my-new-cron-object   6s
 ```
 
-使用 kubectl 时，资源名称不区分大小写，您可以使用 CRD 中定义的单数或复数形式，以及任何短名称。
+使用 kubectl 时，资源名称不区分大小写，你可以使用 CRD 中定义的单数或复数形式，以及任何短名称。
 
-您还可以查看原始 YAML 数据：
+你还可以查看原始 YAML 数据：
 
 ```bash
 kubectl get ct -o yaml
 ```
 
-您应该看到它的 yaml 中的自定义 `cronSpec` 和 `image` 字段：
+你应该看到它的 yaml 中的自定义 `cronSpec` 和 `image` 字段：
 
 ```yaml
 apiVersion: v1
@@ -163,7 +163,7 @@ Error from server (NotFound): Unable to list "crontabs": the server could not fi
 
 Finalizer（终结器）允许控制器实现异步预删除 hook。自定义对象支持终结器，就像内置对象一样。
 
-您可以将终结器添加到自定义对象，如下所示：
+你可以将终结器添加到自定义对象，如下所示：
 
 ```yaml
 apiVersion: "stable.example.com/v1"
@@ -195,7 +195,7 @@ metadata:
 - 该字段 `uniqueItems` 不能设置为 true。
 - 该字段 `additionalProperties` 不能设置为 false。
 
-您可以使用 kube-apiserver`CustomResourceValidation` 上的功能门（feature gate）禁用此功能：
+你可以使用 kube-apiserver`CustomResourceValidation` 上的功能门（feature gate）禁用此功能：
 
 ```
 --feature-gates=CustomResourceValidation=false
@@ -253,7 +253,7 @@ kubectl create -f resourcedefinition.yaml
 - `spec.cronSpec` 与正则表达式不匹配。
 - `spec.replicas` 大于 10。
 
-如果您将以下 YAML 保存到`my-crontab.yaml`：
+如果你将以下 YAML 保存到`my-crontab.yaml`：
 
 ```yaml
 apiVersion: "stable.example.com/v1"
@@ -305,7 +305,7 @@ crontab "my-new-cron-object" created
 
 ### 其他打印列
 
-从 Kubernetes 1.11 开始，kubectl 使用服务器端打印。服务器决定 `kubectl get` 命令显示哪些列。您可以使用 CustomResourceDefinition 自定义这些列。下面的示例将输出 `Spec`、`Replicas` 和 `Age`  列。
+从 Kubernetes 1.11 开始，kubectl 使用服务器端打印。服务器决定 `kubectl get` 命令显示哪些列。你可以使用 CustomResourceDefinition 自定义这些列。下面的示例将输出 `Spec`、`Replicas` 和 `Age`  列。
 
 1. 将 CustomResourceDefinition 保存到 `resourcedefinition.yaml`。
 
@@ -401,7 +401,7 @@ crontab "my-new-cron-object" created
 
 自定义资源支持 `/status` 和 `/scale` 子资源。
 
-您可以使用 kube-apiserver `CustomResourceSubresources` 上的功能门（feature gate）禁用此功能：
+你可以使用 kube-apiserver `CustomResourceSubresources` 上的功能门（feature gate）禁用此功能：
 
 ```bash
 --feature-gates=CustomResourceSubresources=false
@@ -502,9 +502,9 @@ spec:
 kubectl create -f resourcedefinition.yaml
 ```
 
-创建 CustomResourceDefinition 对象后，您可以创建自定义对象。
+创建 CustomResourceDefinition 对象后，你可以创建自定义对象。
 
-如果您将以下 YAML 保存到 `my-crontab.yaml`：
+如果你将以下 YAML 保存到 `my-crontab.yaml`：
 
 ```yaml
 apiVersion: "stable.example.com/v1"
@@ -547,7 +547,7 @@ kubectl get crontabs my-new-cron-object -o jsonpath='{.spec.replicas}'
 
 ### Category（分类）
 
-类别是自定义资源所属的分组资源的列表（例如 `all`）。您可以使用 `kubectl get <category-name>` 列出属于该类别的资源。此功能是 **beta**，可用于 v1.10 中的自定义资源。
+类别是自定义资源所属的分组资源的列表（例如 `all`）。你可以使用 `kubectl get <category-name>` 列出属于该类别的资源。此功能是 **beta**，可用于 v1.10 中的自定义资源。
 
 以下示例添加 `all` CustomResourceDefinition 中的类别列表，并说明如何使用 `kubectl get all` 输出自定义资源。
 
@@ -582,7 +582,7 @@ spec:
 kubectl create -f resourcedefinition.yaml
 ```
 
-创建 CustomResourceDefinition 对象后，您可以创建自定义对象。
+创建 CustomResourceDefinition 对象后，你可以创建自定义对象。
 
 将以下 YAML 保存到 `my-crontab.yaml`：
 
@@ -602,7 +602,7 @@ spec:
 kubectl create -f my-crontab.yaml
 ```
 
-您可以使用`kubectl get`以下方式指定类别：
+你可以使用`kubectl get`以下方式指定类别：
 
 ```bash
 kubectl get all

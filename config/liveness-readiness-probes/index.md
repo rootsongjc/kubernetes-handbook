@@ -201,7 +201,7 @@ spec:
       periodSeconds: 20
 ```
 
-如您所见，TCP 检查的配置与 HTTP 检查非常相似。此示例同时使用了 readiness 和 liveness probe。容器启动后 5 秒钟，kubelet 将发送第一个 readiness probe。这将尝试连接到端口 8080 上的 goproxy 容器。如果探测成功，则该 pod 将被标记为就绪。Kubelet 将每隔 10 秒钟执行一次该检查。
+如你所见，TCP 检查的配置与 HTTP 检查非常相似。此示例同时使用了 readiness 和 liveness probe。容器启动后 5 秒钟，kubelet 将发送第一个 readiness probe。这将尝试连接到端口 8080 上的 goproxy 容器。如果探测成功，则该 pod 将被标记为就绪。Kubelet 将每隔 10 秒钟执行一次该检查。
 
 除了 readiness probe 之外，该配置还包括 liveness probe。容器启动 15 秒后，kubelet 将运行第一个 liveness probe。就像 readiness probe 一样，这将尝试连接到 goproxy 容器上的 8080 端口。如果 liveness probe 失败，容器将重新启动。
 

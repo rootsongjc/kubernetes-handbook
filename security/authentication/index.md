@@ -30,7 +30,7 @@ Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 
 
 所有的值对于认证系统都是不透明的，只有 [授权人](https://kubernetes.io/docs/admin/authorization/) 才能解释这些值的重要含义。
 
-您可以一次性启用多种身份验证方式。通常使用至少以下两种认证方式：
+你可以一次性启用多种身份验证方式。通常使用至少以下两种认证方式：
 
 - 服务帐户的 service account token
 - 至少一种其他的用户认证的方式
@@ -57,7 +57,7 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 
 当在命令行上指定 `--token-auth-file=SOMEFILE` 选项时，API server 从文件读取 bearer token。目前，token 会无限期地持续下去，并且不重新启动 API server 的话就无法更改令牌列表。
 
-token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的组名。请注意，如果您有多个组，则该列必须使用双引号。
+token 文件是一个 csv 文件，每行至少包含三列：token、用户名、用户 uid，其次是可选的组名。请注意，如果你有多个组，则该列必须使用双引号。
 
 ```ini
 token,user,uid,"group1,group2,group3"
@@ -77,13 +77,13 @@ Authorization: Bearer 31ada4fd-adec-460c-809a-9e56ceb75269
 
 为了简化新集群的初始化引导过程，Kubernetes 中包含了一个名为 *Bootstrap Token* 的动态管理的 bearer token。这些 token 使用 Secret 存储在 `kube-system` namespace 中，在那里它们可以被动态管理和创建。Controller Manager 中包含了一个 TokenCleaner 控制器，用于在 bootstrap token 过期时删除将其删除。
 
-这些 token 的形式是 `[a-z0-9]{6}.[a-z0-9]{16}`。第一部分是 Token ID，第二部分是 Token Secret。您在 HTTP header 中指定的 token 如下所示：
+这些 token 的形式是 `[a-z0-9]{6}.[a-z0-9]{16}`。第一部分是 Token ID，第二部分是 Token Secret。你在 HTTP header 中指定的 token 如下所示：
 
 ```http
 Authorization: Bearer 781292.db7bc3a58fc5f07e
 ```
 
-在 API server 的启动参数中加上  `--experimental-bootstrap-token-auth` 标志以启用 Bootstrap Token Authenticator。您必须通过 Controller Manager 上的 `--controllers` 标志启用 TokenCleaner 控制器，如 `--controllers=*,tokencleaner`。如果您使用它来引导集群， `kubeadm` 会为您完成。
+在 API server 的启动参数中加上  `--experimental-bootstrap-token-auth` 标志以启用 Bootstrap Token Authenticator。你必须通过 Controller Manager 上的 `--controllers` 标志启用 TokenCleaner 控制器，如 `--controllers=*,tokencleaner`。如果你使用它来引导集群， `kubeadm` 会为你完成。
 
 认证者认证为 `system:bootstrap:<Token ID>` 。被包含在 `system:bootstrappers` 组中。命名和组是有意限制用户使用过去的 bootstap token。可以使用用户名和组（`kubeadm` 使用）来制定适当的授权策略以支持引导集群。 
 
@@ -93,7 +93,7 @@ Authorization: Bearer 781292.db7bc3a58fc5f07e
 
 通过将 `--basic-auth-file=SOMEFILE` 选项传递给 API server 来启用基本身份验证。目前，基本身份验证凭证将无限期地保留，并且密码在不重新启动 API 服务器的情况下无法更改。请注意，为了方便起见，目前支持基本身份验证，而上述模式更安全更容易使用。
 
-基本身份认证是一个 csv 文件，至少包含 3 列：密码、用户名和用户 ID。在 Kubernetes 1.6 和更高版本中，可以指定包含以逗号分隔的组名称的可选第四列。如果您有多个组，则必须将第四列值用双引号（“）括起来，请参阅以下示例：
+基本身份认证是一个 csv 文件，至少包含 3 列：密码、用户名和用户 ID。在 Kubernetes 1.6 和更高版本中，可以指定包含以逗号分隔的组名称的可选第四列。如果你有多个组，则必须将第四列值用双引号（“）括起来，请参阅以下示例：
 
 ```ini
 password,user,uid,"group1,group2,group3"
@@ -175,9 +175,9 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 
 ![Kubernetes OpenID Connect Flow](kubernetes-oidc-login.jpg)
 
-1. 登陆到您的身份提供商
-2. 您的身份提供商将为您提供一个 `access_token`，一个 `id_token` 和一个 `refresh_token`
-3. 当使用 `kubectl` 时，使用 `--token` 标志和  `id_token` ，或者直接加入到您的 `kubeconfig` 文件中
+1. 登陆到你的身份提供商
+2. 你的身份提供商将为你提供一个 `access_token`，一个 `id_token` 和一个 `refresh_token`
+3. 当使用 `kubectl` 时，使用 `--token` 标志和  `id_token` ，或者直接加入到你的 `kubeconfig` 文件中
 4. `kubectl` 在调用 API server 时将 `id_token` 置于 HTTP header 中
 5. API server 将通过检查配置中指定的证书来确保 JWT 签名有效
 6. 检查以确保 `id_token` 没有过期
@@ -185,9 +185,9 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 8. 授权 API server 后向 `kubectl` 
 9. `kubectl` 向用户提供反馈
 
-由于所有需要验证您身份的数据都在 `id_token` 中，Kubernetes 不需要向身份提供商“phone home”。在每个请求都是无状态的模型中，这为认证提供了非常可扩展的解决方案。它确实提供了一些挑战：
+由于所有需要验证你身份的数据都在 `id_token` 中，Kubernetes 不需要向身份提供商“phone home”。在每个请求都是无状态的模型中，这为认证提供了非常可扩展的解决方案。它确实提供了一些挑战：
 
-1. Kubernetes 没有”web 接口“来出发验证进程。没有浏览器或界面来收集凭据，这就是为什么您需要首先认证您的身份提供商。
+1. Kubernetes 没有”web 接口“来出发验证进程。没有浏览器或界面来收集凭据，这就是为什么你需要首先认证你的身份提供商。
 2. `id_token` 无法撤销，就像一个证书，所以它应该是短暂的（只有几分钟），所以每隔几分钟就得到一个新的令牌是非常烦人的。
 3. 没有使用 `kubectl proxy` 命令或注入 `id_token` 的反向代理，无法简单地对 Kubernetes dashboard 进行身份验证。
 
@@ -201,7 +201,7 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 | `--oidc-client-id`      | 所有的 token 必须为其颁发的客户端 ID                         | kubernetes                                                   | 是       |
 | `--oidc-username-claim` | JWT 声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如` email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                                          | 否       |
 | `--oidc-groups-claim`   | JWT 声明使用的用户组。如果生命存在，它必须是一个字符串数组。  | groups                                                       | 否       |
-| `--oidc-ca-file`        | 用来签名您的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。 | `/etc/kubernetes/ssl/kc-ca.pem`                              | 否       |
+| `--oidc-ca-file`        | 用来签名你的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。 | `/etc/kubernetes/ssl/kc-ca.pem`                              | 否       |
 
 如果为 `--oidc-username-claim` 选择了除 `email` 以外的其他声明，则该值将以 `--oidc-issuer-url` 作为前缀，以防止与现有 Kubernetes 名称（例如 `system:users`）冲突。例如，如果提供商网址是 https://accounts.google.com，而用户名声明映射到 `jane`，则插件会将用户身份验证为：
 
@@ -211,7 +211,7 @@ https://accounts.google.com#jane
 
 重要的是，API server 不是 OAuth2 客户端，而只能配置为信任单个发行者。这允许使用 Google 等公共提供者，而不必信任第三方发行的凭据。希望利用多个 OAuth 客户端的管理员应该探索支持 `azp`（授权方）声明的提供者，这是允许一个客户端代表另一个客户端发放令牌的机制。
 
-Kubernetes 不提供 OpenID Connect 身份提供商。您可以使用现有的公共 OpenID Connect 标识提供程序（例如 Google 或 [其他](http://connect2id.com/products/nimbus-oauth-openid-connect-sdk/openid-connect-providers)）。或者，您可以运行自己的身份提供程序，例如 CoreOS [dex](https://github.com/coreos/dex)、[Keycloak](https://github.com/keycloak/keycloak)、CloudFoundry [UAA](https://github.com/cloudfoundry/uaa) 或 Tremolo Security 的 [OpenUnison](https://github.com/tremolosecurity/openunison)。
+Kubernetes 不提供 OpenID Connect 身份提供商。你可以使用现有的公共 OpenID Connect 标识提供程序（例如 Google 或 [其他](http://connect2id.com/products/nimbus-oauth-openid-connect-sdk/openid-connect-providers)）。或者，你可以运行自己的身份提供程序，例如 CoreOS [dex](https://github.com/coreos/dex)、[Keycloak](https://github.com/keycloak/keycloak)、CloudFoundry [UAA](https://github.com/cloudfoundry/uaa) 或 Tremolo Security 的 [OpenUnison](https://github.com/tremolosecurity/openunison)。
 
 对于身份提供商能够适用于 Kubernetes，必须满足如下条件：Kubernetes it must:
 
@@ -219,7 +219,7 @@ Kubernetes 不提供 OpenID Connect 身份提供商。您可以使用现有的�
 2. 使用非过时密码在 TLS 中运行
 3. 拥有 CA 签名证书（即使 CA 不是商业 CA 或自签名）
 
-有关上述要求 3 的说明，需要 CA 签名证书。如果您部署自己的身份提供商（而不是像 Google 或 Microsoft 之类的云提供商），则必须让您的身份提供商的 Web 服务器证书由 CA 标志设置为 TRUE 的证书签名，即使是自签名的。这是由于 GoLang 的 TLS 客户端实现对证书验证的标准非常严格。如果您没有 `CA`，可以使用 `CoreOS` 团队的 [这个脚本](https://github.com/coreos/dex/blob/1ee5920c54f5926d6468d2607c728b71cfe98092/examples/k8s/gencert.sh) 创建一个简单的 CA 和一个签名的证书和密钥对。
+有关上述要求 3 的说明，需要 CA 签名证书。如果你部署自己的身份提供商（而不是像 Google 或 Microsoft 之类的云提供商），则必须让你的身份提供商的 Web 服务器证书由 CA 标志设置为 TRUE 的证书签名，即使是自签名的。这是由于 GoLang 的 TLS 客户端实现对证书验证的标准非常严格。如果你没有 `CA`，可以使用 `CoreOS` 团队的 [这个脚本](https://github.com/coreos/dex/blob/1ee5920c54f5926d6468d2607c728b71cfe98092/examples/k8s/gencert.sh) 创建一个简单的 CA 和一个签名的证书和密钥对。
 
 针对特定系统的安装说明：
 
@@ -231,7 +231,7 @@ Kubernetes 不提供 OpenID Connect 身份提供商。您可以使用现有的�
 
 ##### 选项 1 - OIDC 身份验证器
 
-第一个选项是使用 `oidc` 身份验证器。此身份验证程序将您的 `id_token`、`refresh_token` 和您的 OIDC `client_secret` 自动刷新您的 token。一旦您对身份提供者进行了身份验证：
+第一个选项是使用 `oidc` 身份验证器。此身份验证程序将你的 `id_token`、`refresh_token` 和你的 OIDC `client_secret` 自动刷新你的 token。一旦你对身份提供者进行了身份验证：
 
 ```bash
 kubectl config set-credentials USER_NAME \
@@ -277,7 +277,7 @@ users:
       name: oidc
 ```
 
-一旦您的 `id_token` 过期，`kubectl` 将使用 `refresh_token` 刷新 `id_token`，然后在 `kube/.config` 文件的`client_secret` 中存储 `id_token` 的值和`refresh_token` 的新值。
+一旦你的 `id_token` 过期，`kubectl` 将使用 `refresh_token` 刷新 `id_token`，然后在 `kube/.config` 文件的`client_secret` 中存储 `id_token` 的值和`refresh_token` 的新值。
 
 ##### 选项 2 - 使用 `--token` 选项
 
@@ -425,7 +425,7 @@ extra:
 
 通过在启动过程中将 `--experimental-keystone-url=<AuthURL>` 选项传递给 API server 来启用 Keystone 认证。该插件在 `plugin/pkg/auth/authenticator/password/keystone/keystone.go` 中实现，目前使用基本身份验证通过用户名和密码验证用户。
 
-如果您为 Keystone 服务器配置了自签名证书，则在启动 Kubernetes API server 时可能需要设置 `--experimental-keystone-ca-file=SOMEFILE` 选项。如果您设置了该选项，Keystone 服务器的证书将由`experimental-keystone-ca-file` 中的某个权威机构验证。否则，证书由主机的根证书颁发机构验证。
+如果你为 Keystone 服务器配置了自签名证书，则在启动 Kubernetes API server 时可能需要设置 `--experimental-keystone-ca-file=SOMEFILE` 选项。如果你设置了该选项，Keystone 服务器的证书将由`experimental-keystone-ca-file` 中的某个权威机构验证。否则，证书由主机的根证书颁发机构验证。
 
 有关如何使用 keystone 来管理项目和用户的详细信息，请参阅 [Keystone 文档](http://docs.openstack.org/developer/keystone/)。请注意，这个插件仍处于试验阶段，正在积极开发之中，并可能在后续版本中进行更改。
 
@@ -579,7 +579,7 @@ rules:
    ./easyrsa --subject-alt-name="IP:${MASTER_IP}" build-server-full server nopass
    ```
 
-4. 复制 `pki/ca.crt`, `pki/issued/server.crt` 和 `pki/private/server.key` 到您的目录下。
+4. 复制 `pki/ca.crt`, `pki/issued/server.crt` 和 `pki/private/server.key` 到你的目录下。
 
 5. 将以下参数添加到 API server 的启动参数中：
 
@@ -633,7 +633,7 @@ rules:
 
 #### 认证 API
 
-您可以使用 `certificates.k8s.io` API 将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
+你可以使用 `certificates.k8s.io` API 将 x509 证书配置为用于身份验证，如 [此处](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster) 所述。
 
 ## 参考
 

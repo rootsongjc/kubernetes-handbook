@@ -17,7 +17,7 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes-incubator/ip-masq
 
 关于 ip-masq-agent 的更多信息请参考 [该文档](https://github.com/kubernetes-incubator/ip-masq-agent)。
 
-在大多数情况下，默认的一套规则应该是足够的；但是，如果内置的规则不适用于您的集群，您可以创建并应用 ConfigMap 来自定义受影响的 IP 范围。例如，为了仅允许 ip-masq-agent 考虑 10.0.0.0/8，您可以在名为“config”的文件中创建以下 ConfigMap。
+在大多数情况下，默认的一套规则应该是足够的；但是，如果内置的规则不适用于你的集群，你可以创建并应用 ConfigMap 来自定义受影响的 IP 范围。例如，为了仅允许 ip-masq-agent 考虑 10.0.0.0/8，你可以在名为“config”的文件中创建以下 ConfigMap。
 
 ```yaml
 nonMasqueradeCIDRs:
@@ -27,7 +27,7 @@ resyncInterval: 60s
 
 **注意**：重要的是，该文件被命名为 config，因为默认情况下，该文件将被用作 ip-masq-agent 查找的关键字。
 
-运行下列命令将 ConfigMap 添加到您的集群中：
+运行下列命令将 ConfigMap 添加到你的集群中：
 
 ```bash
 kubectl create configmap ip-masq-agent --from-file=config --namespace=kube-system
@@ -44,7 +44,7 @@ RETURN     all  --  anywhere             10.0.0.0/8           /* ip-masq-agent: 
 MASQUERADE  all  --  anywhere             anywhere             /* ip-masq-agent: outbound traffic should be subject to MASQUERADE (this match must come after cluster-local CIDR matches) */ ADDRTYPE match dst-type !LOCAL
 ```
 
-默认情况下，本地链路范围（169.254.0.0/16）也由 ip-masq 代理处理，该代理设置相应的 iptables 规则。想要让 ip-masq-agent 忽略本地链路，您可以在 ConfigMap 中将 masqLinkLocal 设置为 true。
+默认情况下，本地链路范围（169.254.0.0/16）也由 ip-masq 代理处理，该代理设置相应的 iptables 规则。想要让 ip-masq-agent 忽略本地链路，你可以在 ConfigMap 中将 masqLinkLocal 设置为 true。
 
 ```yaml
 nonMasqueradeCIDRs:
@@ -96,7 +96,7 @@ RETURN     all  --  anywhere             192.168.0.0/16       /* ip-masq-agent: 
 MASQUERADE  all  --  anywhere             anywhere             /* ip-masq-agent: outbound traffic should be subject to MASQUERADE (this match must come after cluster-local CIDR matches) */ ADDRTYPE match dst-type !LOCAL
 ```
 
-默认情况下，在 GCE/GKE 中将启动 kubernetes 1.7.0 版本，ip-masq-agent 已经在集群中运行。如果您在其他环境中运行 kubernetes，那么您可以将 ip-masq-agent 以 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 的方式在集群中运行。
+默认情况下，在 GCE/GKE 中将启动 kubernetes 1.7.0 版本，ip-masq-agent 已经在集群中运行。如果你在其他环境中运行 kubernetes，那么你可以将 ip-masq-agent 以 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 的方式在集群中运行。
 
 ## 参考
 

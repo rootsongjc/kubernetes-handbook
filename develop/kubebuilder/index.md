@@ -71,11 +71,11 @@ sudo systemctl restart systemd-resolved
 
 ## 安装 kubebuilder
 
-到 kubebuilder 的 [GitHub release 页面](https://github.com/kubernetes-sigs/kubebuilder/releases)上下载与您操作系统对应的 kubebuilder 安装包。
+到 kubebuilder 的 [GitHub release 页面](https://github.com/kubernetes-sigs/kubebuilder/releases)上下载与你操作系统对应的 kubebuilder 安装包。
 
 **MacOS**
 
-对于 Mac 系统，将下载好的安装包解压后将其移动到 `/usr/local/kubebuilder` 目录下，并将 `/usr/local/kubebuilder/bin` 添加到您的 `$PATH` 路径下。
+对于 Mac 系统，将下载好的安装包解压后将其移动到 `/usr/local/kubebuilder` 目录下，并将 `/usr/local/kubebuilder/bin` 添加到你的 `$PATH` 路径下。
 
 ## 创建项目
 
@@ -425,7 +425,7 @@ make install
 
 **运行 controller**
 
-跟上文的做法一样，执行下面的命令运行 controller。为了方便起见，我们将在本地运行 controller，当然您也可以将其部署到 Kubernetes 上运行。
+跟上文的做法一样，执行下面的命令运行 controller。为了方便起见，我们将在本地运行 controller，当然你也可以将其部署到 Kubernetes 上运行。
 
 ```bash
 make run

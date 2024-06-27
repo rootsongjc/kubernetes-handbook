@@ -58,7 +58,7 @@ Storage class 有一个分配器，用来决定使用哪个卷插件分配 PV。
 | ScaleIO              | ✓                    | [ScaleIO](https://kubernetes.io/docs/concepts/storage/storage-classes/#scaleio) |
 | StorageOS            | ✓                    | [StorageOS](https://kubernetes.io/docs/concepts/storage/storage-classes/#storageos) |
 
-您不限于指定此处列出的"内置"分配器（其名称前缀为 kubernetes.io 并打包在 Kubernetes 中）。您还可以运行和指定外部分配器，这些独立的程序遵循由 Kubernetes 定义的 规范。外部供应商的作者完全可以自由决定他们的代码保存于何处、打包方式、运行方式、使用的插件（包括 Flex）等。代码仓库 [kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage) 包含一个用于为外部分配器编写功能实现的类库，以及各种社区维护的外部分配器。
+你不限于指定此处列出的"内置"分配器（其名称前缀为 kubernetes.io 并打包在 Kubernetes 中）。你还可以运行和指定外部分配器，这些独立的程序遵循由 Kubernetes 定义的 规范。外部供应商的作者完全可以自由决定他们的代码保存于何处、打包方式、运行方式、使用的插件（包括 Flex）等。代码仓库 [kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage) 包含一个用于为外部分配器编写功能实现的类库，以及各种社区维护的外部分配器。
 
 例如，NFS 没有内部分配器，但可以使用外部分配器。一些外部分配器在代码仓库 [kubernetes-incubator/external-storage](https://github.com/kubernetes-incubator/external-storage) 中。也有第三方存储供应商提供自己的外部分配器。
 
