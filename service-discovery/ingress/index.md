@@ -7,7 +7,7 @@ description: "Ingress 允许您通过 Kubernetes API 定义的规则来将 HTTP 
 ---
 
 {{<callout warning "注意">}}
-Ingress 资源已不再维护，推荐使用 [Gateway API](../gateway/) 代替。
+虽然 Ingress 在 Kubernetes 1.9 正式发布，但是目前 Ingress 资源已不再维护，推荐使用 [Gateway API](../gateway/) 代替。
 {{</callout>}}
 
 ## 什么是 Ingress？
