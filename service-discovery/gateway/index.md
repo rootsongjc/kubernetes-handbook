@@ -7,7 +7,7 @@ type: book
 
 {{<callout note 注意>}}
 
-本文根据 Gateway API 0.5.1 版本撰写。目前 Gateway API 仅用于处理 Kubernetes 集群中的南北向（入口）流量，未来也有可能处理集群内（东西向）流量。关于使用 Gateway API 处理东西向流量的提议详见[此文档](https://docs.google.com/document/d/1T_DtMQoq2tccLAtJTpo3c0ohjm25vRS35MsestSL9QU/edit)。
+Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的资源，既可以处理南北向流量，还可以处理东西向流量，详情见[Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。关于使用 Gateway API 处理东西向流量的提议详见 [Google Doc](https://docs.google.com/document/d/1T_DtMQoq2tccLAtJTpo3c0ohjm25vRS35MsestSL9QU/edit)。
 
 {{</callout>}}
 
@@ -25,7 +25,7 @@ Gateway API 是一个 API 资源的集合 —— `GatewayClass`、`Gateway`、`H
 
 下图中展示的是 Kubernetes 集群中四层和七层的网络配置。从图中可以看到通过将这些资源对象分离，可以实现配置上的解耦，由不同角色的人员来管理，而这也是 Gateway API 的相较于 Ingress 的一大特色。
 
-![](gateway-api.svg)
+![Gateway API 的分层架构](gateway-api.svg)
 
 ## Gateway API 与 Ingress 有什么不同？
 
@@ -80,7 +80,7 @@ Gateway API 开发者为其使用场景定义四类角色：
 
 Gateway API 通过 Kubernetes 服务网络的面向角色的设计在分布式灵活性和集中控制之间取得了平衡。使得许多不同的非协调团队可以使用共享网络基础设施（硬件负载均衡器、云网络、集群托管代理等），所有团队都受集群运维设置的策略约束。下图展示了在进行 Gateway 管理时的角色划分。
 
-![](gateway-roles.jpg)
+![Gateway API 管理时的角色划分](gateway-roles.jpg)
 
 集群运维人员创建从 [GatewayClass](https://gateway-api.sigs.k8s.io/api-types/gatewayclass) 派生的 [Gateway](https://gateway-api.sigs.k8s.io/api-types/gateway) 资源。此 Gateway 部署或配置它所代表的底层网络资源。通过 Gateway 和 Route 之间的[路由附加进程](https://gateway-api.sigs.k8s.io/concepts/api-overview#attaching-routes-to-gateways) ，集群运维人员和特定团队必须就可以附加到此 Gateway 并通过它公开其应用程序的内容达成一致。集群运维人员可以在网关上实施  [TLS](https://gateway-api.sigs.k8s.io/guides/tls#downstream-tls) 集中式策略。同时，Store 和 Site 团队[在他们自己的 Namespaces 中](https://gateway-api.sigs.k8s.io/guides/multiple-ns)运行，但是将他们的 Routes 附加到同一个共享 Gateway，允许他们独立控制自己的[路由逻辑](https://gateway-api.sigs.k8s.io/guides/http-routing)。这种关注点分离允许 Store 队管理自己的[流量拆分部署](https://gateway-api.sigs.k8s.io/guides/traffic-splitting)，同时将集中策略和控制权留给集群运维人员。
 
@@ -235,12 +235,6 @@ status:
 
 从 v1alpha2 开始，Gateway API 中包含四种 `Route` 资源类型。对于其他协议，鼓励使用特定于实现的自定义路由类型。未来可能会向 API 添加新的路由类型。
 
-{{<callout note "注意">}}
-
-目前只有 `HTTPRoute` 是 Gateway API 正式支持的，其他的路由类型还在实验中，详见[版本文档](https://gateway-api.sigs.k8s.io/concepts/versioning/)。
-
-{{</callout>}}
-
 #### HTTPRoute
 
 `HTTPRoute` 用于多路复用 HTTP 或终止的 HTTPS 连接。它适用于检查 HTTP 流并使用 HTTP 请求数据进行路由或修改的情况，例如使用 HTTP Header 进行路由或在运行中修改它们。
@@ -354,7 +348,7 @@ spec:
 
 你可以给策略附件指定 `override` 和 `default` 值，其在入口和网格内不同资源上的覆盖值和默认值的优先级是如下图所示。
 
-![](policy-attachment-level.svg)
+![策略优先级](policy-attachment-level.svg)
 
 从图中我们可以看到：
 
