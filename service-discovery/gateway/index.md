@@ -7,11 +7,11 @@ type: book
 
 {{<callout note 注意>}}
 
-Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的资源，既可以处理南北向流量，还可以处理东西向流量，详情见[Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。关于使用 Gateway API 处理东西向流量的提议详见 [Google Doc](https://docs.google.com/document/d/1T_DtMQoq2tccLAtJTpo3c0ohjm25vRS35MsestSL9QU/edit)。
+Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的资源，既可以处理南北向流量，还可以处理东西向流量，详情见 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。关于使用 Gateway API 处理东西向流量的提议详见 [Google Doc](https://docs.google.com/document/d/1T_DtMQoq2tccLAtJTpo3c0ohjm25vRS35MsestSL9QU/edit)。
 
 {{</callout>}}
 
-除了直接使用 Service 和 Ingress 之外，Kubernetes 社区还发起了 [Gateway API 项目](https://github.com/kubernetes-sigs/gateway-api)，它可以帮助我们将 Kubernetes 中的服务暴露到集群外。
+除了直接使用 Service 和 Ingress 之外，Kubernetes 社区还发起了 [Gateway API 项目](https://github.com/kubernetes-sigs/gateway-api)，它可以帮助我们将 Kubernetes 中的服务暴露到集群外。该项目在 2023 年 12 月[宣布 GA](https://kubernetes.io/blog/2023/10/31/gateway-api-ga/)，并在 2024 年 3 月[发布 v1.1](https://kubernetes.io/blog/2024/05/09/gateway-api-v1-1/)，宣布将多项功能升正式可用，特别是对服务网格和 GRPCRoute 的支持。
 
 Gateway API 是一个由 [SIG-NETWORK](https://github.com/kubernetes/community/tree/master/sig-network) 管理的开源项目。该项目的目标是在 Kubernetes 生态系统中发展服务网络 API。Gateway API 提供了暴露 Kubernetes 应用的资源——`GatewayClass`、`Gateway`、`HTTPRoute`、`TCPRoute` 等。
 
@@ -174,12 +174,12 @@ status:
 下面展示的是使用 [Envoy Gateway](https://gateway.envoyproxy.io/) 生成的 Gateway 示例：
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"gateway.networking.k8s.io/v1beta1","kind":"Gateway","metadata":{"annotations":{},"name":"eg","namespace":"default"},"spec":{"gatewayClassName":"eg","listeners":[{"name":"http","port":8080,"protocol":"HTTP"}]}}
+      {"apiVersion":"gateway.networking.k8s.io/v1","kind":"Gateway","metadata":{"annotations":{},"name":"eg","namespace":"default"},"spec":{"gatewayClassName":"eg","listeners":[{"name":"http","port":8080,"protocol":"HTTP"}]}}
   creationTimestamp: "2022-10-22T07:03:28Z"
   generation: 1
   name: eg
@@ -383,7 +383,7 @@ Route 可以通过在 `parentRef` 中指定命名空间（如果 Route 和 Gatew
 在下面的例子中 `gateway-api-example-ns1` 命名空间中的 `my-route` Route 想要附加到 `foo-gateway` 中，不会附加到任何其他 Gateway 上。请注意， `foo-gateway` 位于与 Gateway 不同的命名空间中。`foo-gateway` 必须允许来自 `gateway-api-example-ns2` 命名空间中的 HTTPRoute 附加。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: my-route
@@ -402,7 +402,7 @@ spec:
 `foo-gateway` 允许 `my-route` HTTPRoute 附加。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: foo-gateway
@@ -427,7 +427,7 @@ spec:
 对于一个更宽松的示例，下面的网关将允许所有 HTTPRoute 资源从带有 `expose-apps: true` 标签的命名空间附加。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: prod-gateway
@@ -527,7 +527,7 @@ listeners:
 在下面的示例中，配置 Gateway 服务于 `foo.example.com` 和  `bar.example.com` 域。这些域的证书在 Gateway 中指定。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: tls-basic
@@ -559,7 +559,7 @@ spec:
 在下面的示例中，Gateway 为 `*.example.com` 和 `foo.example.com` 域配置了不同的通配符证书。由于特定匹配具有优先权，所有对 `foo.example.com` 的请求将使用 `foo-example-com-cert`，所有对 `exmaple.com` 的其他请求使用 `wildcard-example-com-cert` 证书。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: wildcard-tls-gateway
@@ -591,7 +591,7 @@ spec:
 在此示例中，配置 Gateway 引用不同命名空间中的证书。在目标命名空间中创建 `ReferenceGrant` 以允许跨命名空间引用。
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: cross-namespace-tls-gateway
