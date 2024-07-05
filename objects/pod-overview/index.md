@@ -9,11 +9,11 @@ type: book
 
 ## 理解 Pod
 
-Pod 是 kubernetes 中你可以创建和部署的最小也是最简的单位。Pod 代表着集群中运行的进程。
+Pod 是 Kubernetes 中你可以创建和部署的最小也是最简的单位。Pod 代表着集群中运行的进程。
 
-Pod 中封装着应用的容器（有的情况下是好几个容器），存储、独立的网络 IP，管理容器如何运行的策略选项。Pod 代表着部署的一个单位：kubernetes 中应用的一个实例，可能由一个或者多个容器组合在一起共享资源。
+Pod 中封装着应用的容器（有的情况下是好几个容器），存储、独立的网络 IP，管理容器如何运行的策略选项。Pod 代表着部署的一个单位：Kubernetes 中应用的一个实例，可能由一个或者多个容器组合在一起共享资源。
 
-> [Docker](https://www.docker.com) 是 kubernetes 中最常用的容器运行时，但是 Pod 也支持其他容器运行时。
+> [Docker](https://www.docker.com) 是 Kubernetes 中最常用的容器运行时，但是 Pod 也支持其他容器运行时。
 
 
 在 Kubernetes 集群中 Pod 有如下两种使用方式：
@@ -48,7 +48,7 @@ Pod 中可以共享两种资源：网络和存储。
 
 ## 使用 Pod
 
-你很少会直接在 kubernetes 中创建单个 Pod。因为 Pod 的生命周期是短暂的，用后即焚的实体。当 Pod 被创建后（不论是由你直接创建还是被其他 Controller），都会被 Kubernetes 调度到集群的 Node 上。直到 Pod 的进程终止、被删掉、因为缺少资源而被驱逐、或者 Node 故障之前这个 Pod 都会一直保持在那个 Node 上。
+你很少会直接在 Kubernetes 中创建单个 Pod。因为 Pod 的生命周期是短暂的，用后即焚的实体。当 Pod 被创建后（不论是由你直接创建还是被其他 Controller），都会被 Kubernetes 调度到集群的 Node 上。直到 Pod 的进程终止、被删掉、因为缺少资源而被驱逐、或者 Node 故障之前这个 Pod 都会一直保持在那个 Node 上。
 
 > 注意：重启 Pod 中的容器跟重启 Pod 不是一回事。Pod 只提供容器的运行环境并保持容器的运行状态，重启容器不会造成 Pod 重启。
 
