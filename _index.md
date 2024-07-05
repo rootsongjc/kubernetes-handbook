@@ -16,7 +16,7 @@ cascade:
   tags: ["Kubernetes"]
   type: book
   categories: ["Kubernetes"]
-  level: 1
+  layout: book
 ---
 
 {{<callout note 关于本教程>}}
