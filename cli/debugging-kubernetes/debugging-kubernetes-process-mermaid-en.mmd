@@ -1,0 +1,33 @@
+flowchart TD
+    A1["kubectl get pods"] --> A2["kubectl describe pod <pod-name>"]
+    A2 -->|Pending Pod?| A3{"Check node status"}
+    A3 -->|Node Ready?| A4["Node not ready, investigate node issues"]:::no
+    A3 -->|Node Issue?| A5["Resolve node specific issues (e.g., disk pressure, PID pressure)"]:::no
+    A3 -->|Y| A6["Node is ready, check resource quotas"]:::yes
+    A6 -->|Quotas Exceeded?| A7["Increase quotas or manage resources"]:::yes
+    A6 -->|N| A8{"Check for taints and tolerations"}
+    A8 -->|Taints Found?| A9["Adjust tolerations or remove taints"]:::yes
+    A8 -->|N| A10["Proceed to resource limits"]:::yes
+
+    A10 -->|Resource Limits?| A11["Relax resource limits"]:::yes
+    A10 -->|N| A12["Pending PVC?"]
+    A12 -->|Y| A13["Handle PVC issues"]:::yes
+    A12 -->|N| A14["Check for scheduler events"]
+    A14 -->|Events Found?| A15["Resolve scheduler issues based on events"]:::yes
+    A14 -->|N| A16["Unknown issue, escalate or seek further help"]:::no
+
+    A2 -->|Running?| B1["Check application logs"]
+    B1 -->|Errors Found?| B2["Resolve application errors based on logs"]:::yes
+    B1 -->|N| B3["Check service and ingress configurations"]
+    B3 -->|Misconfigurations?| B4["Correct service/ingress misconfigurations"]:::yes
+    B3 -->|N| B5["Check network policies"]
+    B5 -->|Issues Found?| B6["Adjust network policies"]:::yes
+    B5 -->|N| B7["Perform network trace to diagnose traffic flow"]:::no
+
+    B7 -->|Traffic Flow Incorrect?| B8["Debug network components (CNI, routes, etc.)"]:::no
+    B7 -->|N| B9["Check for external dependencies or services"]
+    B9 -->|Dependency Issues?| B10["Resolve external dependencies issues"]:::yes
+    B9 -->|N| B11["Unknown issue, consider system logs or external support"]:::no
+
+    classDef yes fill:#a3f7a3,stroke:#333,stroke-width:2px;
+    classDef no fill:#f7a3a3,stroke:#333,stroke-width:2px;
