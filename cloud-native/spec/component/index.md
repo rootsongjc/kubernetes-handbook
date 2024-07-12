@@ -1,7 +1,7 @@
 ---
 title: "Component"
 linkTitle: "Component"
-description:  "`Component` 用于定义应用程序的基本组件。"
+description: "`Component` 用于定义应用程序的基本组件。"
 weight: 2
 ---
 
