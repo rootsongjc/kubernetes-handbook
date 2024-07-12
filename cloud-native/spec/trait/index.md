@@ -1,7 +1,7 @@
 ---
 title: "Trait"
 linkTitle: "Trait"
-description:  "`Trait` 用于定义 `Component` 的运维属性。"
+description: "`Trait` 用于定义 `Component` 的运维属性。"
 weight: 3
 ---
 
