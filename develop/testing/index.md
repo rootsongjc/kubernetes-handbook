@@ -20,9 +20,9 @@ make test
 **仅测试指定的 package**
 
 ```sh
-# 单个package
+# 单个 package
 make test WHAT=./pkg/api
-# 多个packages
+# 多个 packages
 make test WHAT=./pkg/{api,kubelet} 
 ```
 
