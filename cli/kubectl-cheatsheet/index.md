@@ -193,9 +193,9 @@ $ kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   # Scale mult
 ```bash
 $ kubectl delete -f ./pod.json                                              # 删除 pod.json 文件中定义的类型和名称的 pod
 $ kubectl delete pod,service baz foo                                        # 删除名为“baz”的 pod 和名为“foo”的 service
-$ kubectl delete pods,services -l name=myLabel                              # 删除具有 name=myLabel 标签的 pod 和 serivce
+$ kubectl delete pods,services -l name=myLabel                              # 删除具有 name=myLabel 标签的 pod 和 Service
 $ kubectl delete pods,services -l name=myLabel --include-uninitialized      # 删除具有 name=myLabel 标签的 pod 和 service，包括尚未初始化的
-$ kubectl -n my-ns delete po,svc --all                                      # 删除 my-ns namespace 下的所有 pod 和 serivce，包括尚未初始化的
+$ kubectl -n my-ns delete po,svc --all                                      # 删除 my-ns namespace 下的所有 pod 和 Service，包括尚未初始化的
 ```
 
 ## 与运行中的 Pod 交互

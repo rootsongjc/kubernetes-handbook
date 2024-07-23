@@ -69,7 +69,7 @@ Kubernetes 作为云原生基础设施设计之初遵循了以下原则：
 - 应用的业务逻辑（代码）、运行时（可运行的二进制文件、字节码或脚本）。
 - 应用的配置注入（配置文件、环境变量等），身份、路由、服务暴露等满足应用的安全性和可访问性。
 - 应用的生命周期管理（各种 Controller 登场）。
-- 可观察性、可运维、网络和资源及环境依赖、隔离性等。
+- 可观测性、可运维、网络和资源及环境依赖、隔离性等。
 
 下图展示了基于 Kubernetes 原语及 PaaS 平台资源的 Kubernetes 原生应用的组成。
 
@@ -196,7 +196,7 @@ Release 代表 Chart 在集群中的运行实例，Helm 围绕 Release 对应用
 - 环境隔离：Namespace、多租户、VPC、防火墙、LimitRange、Resources；
 - 可访问性：Service、Ingress、Egress、Gateway、LoadBalancer、VirtualService、DestinationRule、ServiceEntry；
 - 状态管理：Operator；
-- 可观察性：日志、监控、指标；
+- 可观测性：日志、监控、指标；
 - 安全性：SecurityPolicy、ServiceAccount；
 
 ### 云原生应用分层模型
@@ -206,7 +206,7 @@ Release 代表 Chart 在集群中的运行实例，Helm 围绕 Release 对应用
 ![云原生应用的分层模型](cloud-native-app.svg)
 
 - **应用定义和包装**：云原生应用的最上层，直接定义云原生应用的组成形式，解决云原生应用之间的依赖关系，并封装成发布包，如 Helm、CNAB，还有云原生变成语言 Pulumi 和 Ballerina，基于 API 的方式来编排云原生应用；
-- **负载定义**：基于 Kubernetes Operator，大多是 Serverless 负载，既负责了负载的定义又负责了生命周期管理。[Istio](https://istio.io) 是比较特殊的存在，它不仅管理服务间的流量，还负责安全性、可观察性。
+- **负载定义**：基于 Kubernetes Operator，大多是 Serverless 负载，既负责了负载的定义又负责了生命周期管理。[Istio](https://istio.io) 是比较特殊的存在，它不仅管理服务间的流量，还负责安全性、可观测性。
 - **应用发布和上线**：关注应用的构建和发布、GitOps、发布策略等，这也是云原生应用全景中最丰富的部分之一；
 - **Kubernetes 原语**：Kubernetes 本身提供的原语，Operator 基于此构建；
 

@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-前面几节讲到如何访问 Kubernetes 集群，本文主要讲解访问 Kubernetes 中的 Pod 和 Serivce 的几种方式，包括如下几种：
+前面几节讲到如何访问 Kubernetes 集群，本文主要讲解访问 Kubernetes 中的 Pod 和 Service 的几种方式，包括如下几种：
 
 - hostNetwork
 - hostPort

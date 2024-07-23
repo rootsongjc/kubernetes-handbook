@@ -68,7 +68,7 @@ status:
     type: Available
 ```
 
-## 查看集群支持的 APISerivce
+## 查看集群支持的 APIService
 
 作为 Kubernetes 中的一种资源对象，可以使用 `kubectl get apiservice` 来查看。
 
