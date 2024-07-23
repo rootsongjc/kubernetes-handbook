@@ -483,7 +483,7 @@ kubectl create -f zookeeper.yaml
 
 我们设想一下这样的场景：在 kubernetes 集群外部调试 StatefulSet 中有序的 Pod，那么如何访问这些的 pod 呢？
 
-方法是为 pod 设置 label，然后用`kubectl expose`将其以 NodePort 的方式暴露到集群外部，以上面的 zookeeper 的例子来说明，下面使用命令的方式来暴露其中的两个 zookeeper 节点，也可以写一个 serivce 配置 yaml 文件。
+方法是为 pod 设置 label，然后用`kubectl expose`将其以 NodePort 的方式暴露到集群外部，以上面的 zookeeper 的例子来说明，下面使用命令的方式来暴露其中的两个 zookeeper 节点，也可以写一个 Service 配置 yaml 文件。
 
 ```bash
 kubectl label pod zk-0 zkInst=0                                                                          

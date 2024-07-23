@@ -5,13 +5,13 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-Kubenretes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 kuberentes 在 etcd 中保存的数据。
+Kubernetes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 kuberentes 在 etcd 中保存的数据。
 
 ```bash
 ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json|python -m json.tool
 ```
 
-如果是使用 kubeadm 创建的集群，在 Kubenretes 1.11 中，etcd 默认使用 tls，这时你可以在 master 节点上使用以下命令来访问 etcd：
+如果是使用 kubeadm 创建的集群，在 Kubernetes 1.11 中，etcd 默认使用 tls，这时你可以在 master 节点上使用以下命令来访问 etcd：
 
 ```bash
 ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
@@ -22,7 +22,7 @@ get /registry/namespaces/default -w=json | jq .
 
 - `-w` 指定输出格式
 
-将得到这样的 json 的结果：
+将得到这样的 JSON 的结果：
 
 ```json
 {
