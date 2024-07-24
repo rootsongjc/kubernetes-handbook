@@ -298,4 +298,4 @@ $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 
 - Kubectl 概览 - kubernetes.io
 - JsonPath 手册 - kubernetes.io
-- [Cheatsheet - kubernetes.io](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+- Cheatsheet - kubernetes.io

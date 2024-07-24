@@ -45,7 +45,7 @@ Pod 不会消失，直到有人（人类或控制器）将其销毁，或者当�
 
 - 确保你的 pod [请求所需的资源](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-ram-container)。
 - 如果你需要更高的可用性，请复制你的应用程序。 （了解有关运行复制的[无状态](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment)和[有状态](https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application)应用程序的信息。）
-- 为了在运行复制应用程序时获得更高的可用性，请跨机架（使用[反亲和性](https://kubernetes.io/docs/user-guide/node-selection/#inter-pod-affinity-and-anti-affinity-beta-feature)）或跨区域（如果使用多区域集群）分布应用程序。
+- 为了在运行复制应用程序时获得更高的可用性，请跨机架（使用反亲和性）或跨区域（如果使用多区域集群）分布应用程序。
 
 自愿中断的频率各不相同。在 Kubernetes 集群上，根本没有自愿的中断。但是，你的集群管理员或托管提供商可能会运行一些导致自愿中断的附加服务。例如，节点软件更新可能导致自愿更新。另外，集群（节点）自动缩放的某些实现可能会导致碎片整理和紧缩节点的自愿中断。你的集群管理员或主机提供商应该已经记录了期望的自愿中断级别（如果有的话）。
 

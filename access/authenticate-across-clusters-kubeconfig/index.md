@@ -150,14 +150,14 @@ preferences:
 
 **注意：** 如果你是通过 `kube-up.sh` 脚本部署的 kubernetes 集群，不需要自己创建 kubeconfig 文件——该脚本已经为你创建过了。
 
-当 api server 启动的时候使用了 `—token-auth-file=tokens.csv` 选项时，上述文件将会与 [API server](https://kubernetes.io/docs/admin/kube-apiserver/) 相关联，`tokens.csv` 文件看起来会像这个样子：
+当 api server 启动的时候使用了 `—token-auth-file=tokens.csv` 选项时，上述文件将会与 API server 相关联，`tokens.csv` 文件看起来会像这个样子：
 
 ```bash
 blue-user,blue-user,1
 mister-red,mister-red,2
 ```
 
-**注意：** 启动 API server 时有很多 [可用选项](https://kubernetes.io/docs/admin/kube-apiserver/)。请你一定要确保理解你使用的选项。
+**注意：** 启动 API server 时有很多 可用选项。请你一定要确保理解你使用的选项。
 
 上述示例 kubeconfig 文件提供了 `green-user` 的客户端凭证。因为用户的 `current-user` 是 `green-user` ，任何该 API server 的客户端使用该示例 kubeconfig 文件时都可以成功登录。同样，我们可以通过修改 `current-context` 的值以 `blue-user` 的身份操作。
 

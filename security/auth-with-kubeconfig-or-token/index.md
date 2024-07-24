@@ -93,7 +93,7 @@ kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|ba
 
 **注意**：yaml 输出里的那个 token 值是进行 base64 编码后的结果，一定要将 kubectl 的输出中的 token 值进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入  `base64` 是进行编码，Linux 中`base64 -d` 表示解码，Mac 中使用 `base64 -D`。
 
-我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](../../guide/secret-configuration)。关于 JSONPath 的使用请参考 [JSONPath 手册](https://kubernetes.io/docs/user-guide/jsonpath/)。
+我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](../../guide/secret-configuration)。关于 JSONPath 的使用请参考 JSONPath 手册。
 
 更简单的方式是直接使用`kubectl describe`命令获取 token 的内容（经过 base64 解码之后）：
 
@@ -117,5 +117,5 @@ kubectl create rolebinding $ROLEBINDING_NAME --clusterrole=admin --serviceaccoun
 
 ## 参考
 
-- [JSONPath 手册 - kubernetes.io](https://kubernetes.io/docs/user-guide/jsonpath/)
-- [Kubernetes 中的认证 - kubernetes.io](https://kubernetes.io/docs/admin/authentication/)
+- JSONPath 手册 - kubernetes.io
+- Kubernetes 中的认证 - kubernetes.io

@@ -220,11 +220,11 @@ spec:
 - 查看 [sample service brokers](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#sample-service-brokers)。
 - 探索 [kubernetes-incubator/service-catalog](https://github.com/kubernetes-sigs/service-catalog) 项目。
 
-以上翻译自[官方文档](https://kubernetes.io/docs/concepts/extend-kubernetes/service-catalog/)。
+以上翻译自官方文档。
 
 ## Service Catalog 的安装 (利用 Helm) 和交互
 
-以下翻译自[官方项目文档](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/install.md)。与[官方网站文档](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)大致一致。
+以下翻译自[官方项目文档](https://github.com/kubernetes-incubator/service-catalog/blob/master/docs/install.md)。与官方网站文档大致一致。
 
 Kubernetes 1.7 或更高版本的集群运行 API Aggregator，它位于 core API Server 前面的专用 proxy 服务器。
 
@@ -325,7 +325,7 @@ svc-cat/catalog    x,y.z      service-catalog API server and controller-manag...
 
 ### RBAC
 
-Kubernetes 群集必须启用 [RBAC](https://kubernetes.io/docs/admin/authorization/rbac/) 才能使用 Service Catalog。
+Kubernetes 群集必须启用 RBAC 才能使用 Service Catalog。
 
 与群集内 DNS 一样，许多安装方法都有对应启用 RBAC 的途径。
 

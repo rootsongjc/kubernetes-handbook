@@ -33,7 +33,7 @@ Token 文件应该类似于以下示例，其中前三个值可以是任何值�
 
 在 kube-apiserver 命令中添加 `--token-auth-file=FILENAME` 标志（可能在你的 systemd unit 文件中）来启用 token 文件。
 
-查看 [该文档](https://kubernetes.io/docs/admin/authentication/#static-token-file) 获取更多详细信息。
+查看 该文档 获取更多详细信息。
 
 ### 客户端证书 CA 包
 
@@ -61,7 +61,7 @@ Kube-controller-manager 标志为：
 
 在 kubernetes 1.7 版本中，实验性的“组自动批准”控制器被弃用，新的 `csrapproving` 控制器将作为 kube-controller-manager 的一部分，被默认启用。
 
-控制器使用 [`SubjectAccessReview` API](https://kubernetes.io/docs/admin/authorization/#checking-api-access) 来确定给定用户是否已被授权允许请求 CSR，然后根据授权结果进行批准。为了防止与其他批准者冲突，内置审批者没有明确地拒绝 CSR，只是忽略未经授权的请求。
+控制器使用 `SubjectAccessReview` API 来确定给定用户是否已被授权允许请求 CSR，然后根据授权结果进行批准。为了防止与其他批准者冲突，内置审批者没有明确地拒绝 CSR，只是忽略未经授权的请求。
 
 控制器将 CSR 分为三个子资源：
 

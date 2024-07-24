@@ -218,7 +218,7 @@ rules:
 
 对角色绑定主体（Subject）的引用`RoleBinding`或者`ClusterRoleBinding` 将角色绑定到 *角色绑定主体*（Subject）。角色绑定主体可以是用户组（Group）、用户（User）或者服务账户（Service Accounts）。
 
-用户由字符串表示。可以是纯粹的用户名，例如”alice”、电子邮件风格的名字，如“bob@example.com”或者是用字符串表示的数字 id。由 Kubernetes 管理员配置 [认证模块](https://kubernetes.io/docs/admin/authentication/) 以产生所需格式的用户名。对于用户名，RBAC 授权系统不要求任何特定的格式。然而，前缀 `system:` 是 为 Kubernetes 系统使用而保留的，所以管理员应该确保用户名不会意外地包含这个前缀。
+用户由字符串表示。可以是纯粹的用户名，例如”alice”、电子邮件风格的名字，如“bob@example.com”或者是用字符串表示的数字 id。由 Kubernetes 管理员配置 认证模块 以产生所需格式的用户名。对于用户名，RBAC 授权系统不要求任何特定的格式。然而，前缀 `system:` 是 为 Kubernetes 系统使用而保留的，所以管理员应该确保用户名不会意外地包含这个前缀。
 
 Kubernetes 中的用户组信息由授权模块提供。用户组与用户一样由字符串表示。Kubernetes 对用户组 字符串没有格式要求，但前缀 `system:` 同样是被系统保留的。
 
@@ -343,7 +343,7 @@ API Server 会创建一组默认的 `ClusterRole` 和 `ClusterRoleBinding` 对�
 | ---------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | **system:kube-scheduler**          | **system:kube-scheduler** user           | 允许访问 kube-scheduler 组件所需要的资源。              |
 | **system:kube-controller-manager** | **system:kube-controller-manager** user  | 允许访问 kube-controller-manager 组件所需要的资源。单个控制循环所需要的权限请参阅 [控制器（controller）角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#controller-roles). |
-| **system:node**                    | **system:nodes** group (deprecated in 1.7) | 允许对 kubelet 组件所需要的资源的访问，**包括读取所有 secret 和对所有 pod 的写访问**。自 Kubernetes 1.7 开始，相比较于这个角色，更推荐使用 [Node authorizer](https://kubernetes.io/docs/admin/authorization/node/) 以及 [NodeRestriction admission plugin](https://kubernetes.io/docs/admin/admission-controllers#NodeRestriction)，并允许根据调度运行在节点上的 pod 授予 kubelets API 访问的权限。自 Kubernetes 1.7 开始，当启用 `Node` 授权模式时，对 `system:nodes` 用户组的绑定将不会被自动创建。 |
+| **system:node**                    | **system:nodes** group (deprecated in 1.7) | 允许对 kubelet 组件所需要的资源的访问，**包括读取所有 secret 和对所有 pod 的写访问**。自 Kubernetes 1.7 开始，相比较于这个角色，更推荐使用 Node authorizer 以及 NodeRestriction admission plugin，并允许根据调度运行在节点上的 pod 授予 kubelets API 访问的权限。自 Kubernetes 1.7 开始，当启用 `Node` 授权模式时，对 `system:nodes` 用户组的绑定将不会被自动创建。 |
 | **system:node-proxier**            | **system:kube-proxy** user               | 允许对 kube-proxy 组件所需要资源的访问。                 |
 
 ### 其它组件角色
@@ -353,14 +353,14 @@ API Server 会创建一组默认的 `ClusterRole` 和 `ClusterRoleBinding` 对�
 | **system:auth-delegator**                | None                                                         | 允许委托认证和授权检查。通常由附加 API Server 用于统一认证和授权。 |
 | **system:heapster**                      | None                                                         | [Heapster](https://github.com/kubernetes/heapster) 组件的角色。 |
 | **system:kube-aggregator**               | None                                                         | [kube-aggregator](https://github.com/kubernetes/kube-aggregator) 组件的角色。 |
-| **system:kube-dns**                      | **kube-dns** service account in the **kube-system**namespace | [kube-dns](https://kubernetes.io/docs/admin/dns/) 组件的角色。 |
-| **system:node-bootstrapper**             | None                                                         | 允许对执行 [Kubelet TLS 引导（Kubelet TLS bootstrapping）](https://kubernetes.io/docs/admin/kubelet-tls-bootstrapping/) 所需要资源的访问。|
+| **system:kube-dns**                      | **kube-dns** service account in the **kube-system**namespace | kube-dns 组件的角色。 |
+| **system:node-bootstrapper**             | None                                                         | 允许对执行 Kubelet TLS 引导（Kubelet TLS bootstrapping） 所需要资源的访问。|
 | **system:node-problem-detector**         | None                                                         | [node-problem-detector](https://github.com/kubernetes/node-problem-detector) 组件的角色。 |
 | **system:persistent-volume-provisioner** | None                                                         | 允许对大部分动态存储卷创建组件（dynamic volume provisioner）所需要资源的访问。 |
 
 ### 控制器（Controller）角色
 
-[Kubernetes controller manager](https://kubernetes.io/docs/admin/kube-controller-manager/) 负责运行核心控制循环。当使用 `--use-service-account-credentials` 选项运行 controller manager 时，每个控制循环都将使用单独的服务账户启动。而每个控制循环都存在对应的角色，前缀名为 `system:controller:`。如果不使用 `--use-service-account-credentials` 选项时，controller manager 将会使用自己的凭证运行所有控制循环，而这些凭证必须被授予相关的角色。这些角色包括：
+Kubernetes controller manager 负责运行核心控制循环。当使用 `--use-service-account-credentials` 选项运行 controller manager 时，每个控制循环都将使用单独的服务账户启动。而每个控制循环都存在对应的角色，前缀名为 `system:controller:`。如果不使用 `--use-service-account-credentials` 选项时，controller manager 将会使用自己的凭证运行所有控制循环，而这些凭证必须被授予相关的角色。这些角色包括：
 
 - system:controller:attachdetach-controller
 - system:controller:certificate-controller

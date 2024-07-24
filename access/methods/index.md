@@ -240,7 +240,7 @@ $ kubectl cluster-info
    - 根据代理目标的可用信息由代理选择使用 HTTP 或 HTTPS
    - 可用于访问 node、pod 或 service
    - 用于访问 service 时进行负载均衡
-3. [kube 代理](https://kubernetes.io/docs/user-guide/services/#ips-and-vips)：
+3. kube 代理：
    - 在每个节点上运行
    - 代理 UDP 和 TCP
    - 不支持 HTTP

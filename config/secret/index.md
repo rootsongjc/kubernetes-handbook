@@ -546,13 +546,13 @@ spec:
 
 ### 客户端使用 secret API
 
-当部署与 secret API 交互的应用程序时，应使用诸如 [RBAC](https://kubernetes.io/docs/admin/authorization/rbac/) 之类的 [授权策略](https://kubernetes.io/docs/admin/authorization/) 来限制访问。
+当部署与 secret API 交互的应用程序时，应使用诸如 RBAC 之类的 授权策略 来限制访问。
 
 Secret 的重要性通常不尽相同，其中许多可能只对 Kubernetes 集群内（例如 service account 令牌）和对外部系统造成影响。即使一个应用程序可以理解其期望的与之交互的 secret 的权力，但是同一命名空间中的其他应用程序也可以使这些假设无效。
 
 由于这些原因，在命名空间中 `watch` 和 `list` secret 的请求是非常强大的功能，应该避免这样的行为，因为列出 secret 可以让客户端检查所有 secret 是否在该命名空间中。在群集中`watch` 和 `list` 所有 secret 的能力应该只保留给最有特权的系统级组件。
 
-需要访问 secrets API 的应用程序应该根据他们需要的 secret 执行 `get` 请求。这允许管理员限制对所有 secret 的访问，同时设置 [白名单访问](https://kubernetes.io/docs/admin/authorization/rbac/#referring-to-resources) 应用程序需要的各个实例。
+需要访问 secrets API 的应用程序应该根据他们需要的 secret 执行 `get` 请求。这允许管理员限制对所有 secret 的访问，同时设置 白名单访问 应用程序需要的各个实例。
 
 为了提高循环获取的性能，客户端可以设计引用 secret 的资源，然后 `watch` 资源，在引用更改时重新请求 secret。
 

@@ -7,7 +7,7 @@ date: '2022-05-03T00:00:00+01:00'
 weight: 1
 ---
 
-Service Mesh 又译作“服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 [WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?](https://buoyant.io/what-is-a-service-mesh/) 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
+Service Mesh 又译作“服务网格”，作为服务间通信的基础设施层。Buoyant 公司的 CEO Willian Morgan 在他的这篇文章 WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE? 中解释了什么是 Service Mesh，为什么云原生应用需要 Service Mesh。
 
 服务网格是用于处理服务间通信的专用基础设施层。它负责通过包含现代云原生应用程序的复杂服务拓扑来可靠地传递请求。实际上，服务网格通常通过一组轻量级网络代理来实现，这些代理与应用程序代码一起部署，而不需要感知应用程序本身。—— [Willian Morgan](https://twitter.com/wm) Buoyant CEO
 
