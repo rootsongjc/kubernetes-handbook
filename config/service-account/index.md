@@ -17,9 +17,9 @@ Service account 为 Pod 中的进程提供身份信息。
 
 当你创建 pod 的时候，如果你没有指定一个 service account，系统会自动得在与该 pod 相同的 namespace 下为其指派一个`default` service account。如果你获取刚创建的 pod 的原始 json 或 yaml 信息（例如使用`kubectl get pods/podename -o yaml`命令），你将看到`spec.serviceAccountName`字段已经被设置为 automatically。
 
-你可以在 pod 中使用自动挂载的 service account 凭证来访问 API，如 [Accessing the Cluster](https://kubernetes.io/docs/user-guide/accessing-the-cluster/#accessing-the-api-from-a-pod) 中所描述。
+你可以在 pod 中使用自动挂载的 service account 凭证来访问 API，如 Accessing the Cluster 中所描述。
 
-Service account 是否能够取得访问 API 的许可取决于你使用的 [授权插件和策略](https://kubernetes.io/docs/admin/authorization/#a-quick-note-on-service-accounts)。
+Service account 是否能够取得访问 API 的许可取决于你使用的 授权插件和策略。
 
 在 1.6 以上版本中，你可以选择取消为 service account 自动挂载 API 凭证，只需在 service account 中设置 `automountServiceAccountToken: false`：
 
@@ -216,7 +216,7 @@ secrets:
 
 然后你将看到有一个 token 已经被自动创建，并被 service account 引用。
 
-你可以使用授权插件来 [设置 service account 的权限](https://kubernetes.io/docs/admin/authorization/#a-quick-note-on-service-accounts) 。
+你可以使用授权插件来 设置 service account 的权限 。
 
 设置非默认的 service account，只需要在 pod 的`spec.serviceAccountName` 字段中将 name 设置为你想要用的 service account 名字即可。
 

@@ -24,7 +24,7 @@ type: book
 
 ### 必需字段
 
-和其它所有 Kubernetes 配置一样，DaemonSet 需要 `apiVersion`、`kind` 和 `metadata`字段。有关配置文件的通用信息，详见文档 [部署应用](https://kubernetes.io/docs/user-guide/deploying-applications/)、[配置容器](https://kubernetes.io/docs/user-guide/configuring-containers/) 和资源管理。
+和其它所有 Kubernetes 配置一样，DaemonSet 需要 `apiVersion`、`kind` 和 `metadata`字段。有关配置文件的通用信息，详见文档 部署应用、配置容器 和资源管理。
 
 DaemonSet 也需要一个 `.spec`配置段。
 
@@ -32,7 +32,7 @@ DaemonSet 也需要一个 `.spec`配置段。
 
 `.spec` 唯一必需的字段是 `.spec.template`。
 
-`.spec.template` 是一个 [Pod 模板](https://kubernetes.io/docs/user-guide/replication-controller/#pod-template)。
+`.spec.template` 是一个 Pod 模板。
 它与 Pod 具有相同的 schema，除了它是嵌套的，而且不具有 `apiVersion` 或 `kind` 字段。
 
 Pod 除了必须字段外，在 DaemonSet 中的 Pod 模板必须指定合理的标签（查看 [pod selector](#pod-selector)）。
@@ -65,7 +65,7 @@ Pod 除了必须字段外，在 DaemonSet 中的 Pod 模板必须指定合理的
 
 正常情况下，Pod 运行在哪个机器上是由 Kubernetes 调度器进行选择的。然而，由 Daemon Controller 创建的 Pod 已经确定了在哪个机器上（Pod 创建时指定了 `.spec.nodeName`），因此：
 
-- DaemonSet Controller 并不关心一个 Node 的 [`unschedulable`](https://kubernetes.io/docs/admin/node/#manual-node-administration) 字段。
+- DaemonSet Controller 并不关心一个 Node 的 `unschedulable` 字段。
 - DaemonSet Controller 可以创建 Pod，即使调度器还没有被启动，这对集群启动是非常有帮助的。
 
 Daemon Pod 关心 [Taint 和 Toleration](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature)，它们会为没有指定 `tolerationSeconds` 的 `node.alpha.kubernetes.io/notReady` 和 `node.alpha.kubernetes.io/unreachable` 的 Taint，而创建具有 `NoExecute` 的 Toleration。这确保了当 alpha 特性的 `TaintBasedEvictions` 被启用，当 Node 出现故障，比如网络分区，这时它们将不会被清除掉（当 `TaintBasedEvictions` 特性没有启用，在这些场景下也不会被清除，但会因为 NodeController 的硬编码行为而被清除，Toleration  是不会的）。
@@ -76,7 +76,7 @@ Daemon Pod 关心 [Taint 和 Toleration](https://kubernetes.io/docs/concepts/con
 
 - **Push**：配置 DaemonSet 中的 Pod 向其它 Service 发送更新，例如统计数据库。它们没有客户端。
 - **NodeIP 和已知端口**：DaemonSet 中的 Pod 可以使用 `hostPort`，从而可以通过 Node IP 访问到 Pod。客户端能通过某种方法知道 Node IP 列表，并且基于此也可以知道端口。
-- **DNS**：创建具有相同 Pod Selector 的 [Headless Service](https://kubernetes.io/docs/user-guide/services/#headless-services)，然后通过使用 `endpoints` 资源或从 DNS 检索到多个 A 记录来发现 DaemonSet。
+- **DNS**：创建具有相同 Pod Selector 的 Headless Service，然后通过使用 `endpoints` 资源或从 DNS 检索到多个 A 记录来发现 DaemonSet。
 - **Service**：创建具有相同 Pod Selector 的 Service，并使用该 Service 访问到某个随机 Node 上的 daemon。（没有办法访问到特定 Node）
 
 ## 更新 DaemonSet

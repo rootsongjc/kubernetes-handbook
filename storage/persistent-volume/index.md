@@ -87,7 +87,7 @@ Finalizers:    [kubernetes.io/pvc-protection]
 
 如果存储卷插件支持，回收策略会在 volume 上执行基本擦除（`rm -rf / thevolume / *`），可被再次声明使用。
 
-但是，管理员可以使用如[此处](https://kubernetes.io/docs/admin/kube-controller-manager/)所述的 Kubernetes controller manager 命令行参数来配置自定义回收站 pod 模板。自定义回收站 pod 模板必须包含 `volumes` 规范，如下面的示例所示：
+但是，管理员可以使用如此处所述的 Kubernetes controller manager 命令行参数来配置自定义回收站 pod 模板。自定义回收站 pod 模板必须包含 `volumes` 规范，如下面的示例所示：
 
 ```yaml
 apiVersion: v1
@@ -126,7 +126,7 @@ Kubernetes 1.8 增加了对扩展持久化存储卷的 Alpha 支持。在 v1.9 �
 - glusterfs
 - rbd
 
-管理员可以通过将 `ExpandPersistentVolumes` 特性门设置为 true 来允许扩展持久卷声明。管理员还应该启用[`PersistentVolumeClaimResize` 准入控制插件](https://kubernetes.io/docs/admin/admission-controllers/#persistentvolumeclaimresize)来执行对可调整大小的卷的其他验证。
+管理员可以通过将 `ExpandPersistentVolumes` 特性门设置为 true 来允许扩展持久卷声明。管理员还应该启用`PersistentVolumeClaimResize` 准入控制插件来执行对可调整大小的卷的其他验证。
 
 一旦 `PersistentVolumeClaimResize` 准入插件已打开，将只允许其 `allowVolumeExpansion` 字段设置为 true 的存储类进行大小调整。
 
@@ -363,7 +363,7 @@ spec:
 
 声明可以通过使用属性 `storageClassName` 指定 [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) 的名称来请求特定的类。只有所请求的类与 PVC 具有相同 `storageClassName` 的 PV 才能绑定到 PVC。
 
-PVC 不一定要请求类。其 `storageClassName` 设置为 `""` 的 PVC 始终被解释为没有请求类的 PV，因此只能绑定到没有类的 PV（没有注解或 `""`）。没有 `storageClassName` 的 PVC 根据是否打开[`DefaultStorageClass` 准入控制插件](https://kubernetes.io/docs/admin/admission-controllers/#defaultstorageclass)，集群对其进行不同处理。
+PVC 不一定要请求类。其 `storageClassName` 设置为 `""` 的 PVC 始终被解释为没有请求类的 PV，因此只能绑定到没有类的 PV（没有注解或 `""`）。没有 `storageClassName` 的 PVC 根据是否打开`DefaultStorageClass` 准入控制插件，集群对其进行不同处理。
 
 - 如果打开了准入控制插件，管理员可以指定一个默认的 `StorageClass`。所有没有 `StorageClassName` 的 PVC 将被绑定到该默认的 PV。通过在 `StorageClass` 对象中将注解 `storageclass.kubernetes.io/is-default-class` 设置为“true”来指定默认的 `StorageClass`。如果管理员没有指定缺省值，那么集群会响应 PVC 创建，就好像关闭了准入控制插件一样。如果指定了多个默认值，则准入控制插件将禁止所有 PVC 创建。
 - 如果准入控制插件被关闭，则没有默认 `StorageClass` 的概念。所有没有 `storageClassName` 的 PVC 只能绑定到没有类的 PV。在这种情况下，没有 `storageClassName` 的 PVC 的处理方式与 `storageClassName` 设置为 `""` 的 PVC 的处理方式相同。

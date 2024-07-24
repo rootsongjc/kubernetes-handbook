@@ -21,7 +21,7 @@ Kubelet 的 HTTPS 端点对外暴露了用于访问不同敏感程度数据的 A
 
 - 启动 kubelet 时指定 `--client-ca-file` 标志，提供 CA bundle 以验证客户端证书
 - 启动 apiserver 时指定 `--kubelet-client-certificate` 和 `--kubelet-client-key` 标志
-- 参阅 [apiserver 认证文档](https://kubernetes.io/docs/admin/authentication/#x509-client-certs) 获取更多详细信息。
+- 参阅 apiserver 认证文档 获取更多详细信息。
 
 启用 API bearer token（包括 service account token）用于向 kubelet 的 HTTPS 端点进行身份验证：
 
@@ -45,7 +45,7 @@ Kubelet 的 HTTPS 端点对外暴露了用于访问不同敏感程度数据的 A
 - 启动 kubelet 时指定 `--authorization-mode=Webhook`、 `--kubeconfig` 和 `--require-kubeconfig` 标志
 - kubelet 在配置的 API server 上调用 `SubjectAccessReview` API，以确定每个请求是否被授权
 
-kubelet 使用与 apiserver 相同的 [请求属性](https://kubernetes.io/docs/admin/authorization/#request-attributes) 方法来授权 API 请求。
+kubelet 使用与 apiserver 相同的 请求属性 方法来授权 API 请求。
 
 Verb（动词）是根据传入的请求的 HTTP 动词确定的：
 

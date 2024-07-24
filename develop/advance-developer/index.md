@@ -84,7 +84,7 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 
 如果你想要使用或提供完整的服务（而不是单个资源），**Service Catalog** 为此提供了一个[规范](https://github.com/openservicebrokerapi/servicebroker)。这些服务使用 Service Broker 注册（请参阅 [示例](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#example-service-brokers)）。
 
-如果你没有集群管理员来管理 Service Catalog 的安装，你可以使用 [Helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/) 或 [二进制安装器](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-sc/)。
+如果你没有集群管理员来管理 Service Catalog 的安装，你可以使用 Helm 或 二进制安装器。
 
 ## 探索其他资源
 

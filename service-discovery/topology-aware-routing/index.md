@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
-[拓扑感知路由](https://kubernetes.io/zh/docs/concepts/services-networking/service-topology/)指的是客户端对一个服务的访问流量，可以根据这个服务的端点拓扑，优先路由到与该客户端在同一个节点或者可用区的端点上的路由行为。
+拓扑感知路由指的是客户端对一个服务的访问流量，可以根据这个服务的端点拓扑，优先路由到与该客户端在同一个节点或者可用区的端点上的路由行为。
 
 ## 先决条件
 
@@ -91,7 +91,7 @@ endpoints:
 
 ## 参考
 
-- [使用拓扑键实现拓扑感知的流量路由 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/service-topology/)
+- 使用拓扑键实现拓扑感知的流量路由 - kubernetes.io
 - [端点切片 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/endpoint-slices/)
-- [拓扑感知提示 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/services-networking/topology-aware-hints/)
+- 拓扑感知提示 - kubernetes.io
 

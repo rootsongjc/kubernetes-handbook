@@ -28,7 +28,7 @@ Kubernetes 使用客户端证书、bearer token、身份验证代理或者 HTTP 
 - 组：一组将用户和常规用户组相关联的字符串。
 - 额外字段：包含其他有用认证信息的字符串列表的映射。
 
-所有的值对于认证系统都是不透明的，只有 [授权人](https://kubernetes.io/docs/admin/authorization/) 才能解释这些值的重要含义。
+所有的值对于认证系统都是不透明的，只有 授权人 才能解释这些值的重要含义。
 
 你可以一次性启用多种身份验证方式。通常使用至少以下两种认证方式：
 
@@ -87,7 +87,7 @@ Authorization: Bearer 781292.db7bc3a58fc5f07e
 
 认证者认证为 `system:bootstrap:<Token ID>` 。被包含在 `system:bootstrappers` 组中。命名和组是有意限制用户使用过去的 bootstap token。可以使用用户名和组（`kubeadm` 使用）来制定适当的授权策略以支持引导集群。 
 
-有关 Bootstrap Token 身份验证器和控制器的更深入的文档，以及如何使用 `kubeadm` 管理这些令牌，请参阅 [Bootstrap Token](https://kubernetes.io/docs/admin/bootstrap-tokens/)。
+有关 Bootstrap Token 身份验证器和控制器的更深入的文档，以及如何使用 `kubeadm` 管理这些令牌，请参阅 Bootstrap Token。
 
 ### 静态密码文件
 
@@ -108,7 +108,7 @@ Service account 是一个自动启用的验证器，它使用签名的 bearer to
 - `--service-account-key-file`  一个包含签名 bearer token 的 PEM 编码文件。如果未指定，将使用 API server 的 TLS 私钥。
 - `--service-account-lookup` 如果启用，从 API 中删除掉的 token 将被撤销。
 
-Service account 通常 API server 自动创建，并通过 `ServiceAccount` [注入控制器](https://kubernetes.io/docs/admin/admission-controllers/) 关联到集群中运行的 Pod 上。Bearer token 挂载到 pod 中众所周知的位置，并允许集群进程与 API server 通信。帐户可以使用 `PodSpec` 的 `serviceAccountName` 字段显式地与 Pod 关联。
+Service account 通常 API server 自动创建，并通过 `ServiceAccount` 注入控制器 关联到集群中运行的 Pod 上。Bearer token 挂载到 pod 中众所周知的位置，并允许集群进程与 API server 通信。帐户可以使用 `PodSpec` 的 `serviceAccountName` 字段显式地与 Pod 关联。
 
 注意： `serviceAccountName` 通常被省略，因为这会自动生成。
 

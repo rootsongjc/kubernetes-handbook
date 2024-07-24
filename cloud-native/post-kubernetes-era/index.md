@@ -242,8 +242,8 @@ OAM 是对 Kubernetes 友好的，一样采用声明式 API 的理念开发。�
 
 目前 OAM 定义的云原生应用模型已有以下项目支持。
 
-- [Crossplane](https://crossplane.io/)：这是一个开源的 Kubernetes 扩展组件，适用于主流公有云平台，使用 `kubectl` 配置和管理基础架构、服务和应用。对于 OAM 的支持详见[运行应用程序](https://crossplane.io/docs/v0.11/getting-started/run-applications.html)。
-- [KPT](https://googlecontainertools.github.io/kpt/)：Kpt（发音为 "keep"）是一个在资源配置之上构建声明性工作流的开源工具。它的 git + YAML 架构意味着它只需与现有的工具、框架和平台一起工作。Kpt 包括了获取、显示、自定义、更新、验证和应用 Kubernetes 配置的解决方案。对 OAM 的支持详见 [使用 kpt 来管理由开放应用模型（OAM）定义的自定义 Kubernetes 应用程序](https://googlecontainertools.github.io/kpt/guides/ecosystem/oam/)。
+- [Crossplane](https://crossplane.io/)：这是一个开源的 Kubernetes 扩展组件，适用于主流公有云平台，使用 `kubectl` 配置和管理基础架构、服务和应用。对于 OAM 的支持详见运行应用程序。
+- KPT：Kpt（发音为 "keep"）是一个在资源配置之上构建声明性工作流的开源工具。它的 git + YAML 架构意味着它只需与现有的工具、框架和平台一起工作。Kpt 包括了获取、显示、自定义、更新、验证和应用 Kubernetes 配置的解决方案。对 OAM 的支持详见 使用 kpt 来管理由开放应用模型（OAM）定义的自定义 Kubernetes 应用程序。
 
 应用交付领域相关的开源项目还有很多，详见 [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native/#application-delivery)。
 

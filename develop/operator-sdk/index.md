@@ -69,4 +69,4 @@ operator-sdk new kubernetes-operator-sdk-tutorial --api-version=jimmysong.io/v1a
 
 ## 参考
 
-- [A complete guide to Kubernetes Operator SDK](https://banzaicloud.com/blog/operator-sdk/)
+- A complete guide to Kubernetes Operator SDK
