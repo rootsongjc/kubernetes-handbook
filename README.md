@@ -1,6 +1,6 @@
 # Kubernetes 中文指南/云原生应用架构实战手册
 
-**注意：本书内容不再维护，已合并到 [jimmysong.io](https://jimmysong.io)**。
+**注意：本书内容不再维护，已转到 <https://jimmysong.io/book/kubernetes-handbook/> 浏览。**
 
 [Kubernetes](http://kubernetes.io) 是 Google 于 [2014 年 6 月](https://jimmysong.io/cloud-native/note/open-source/)基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
