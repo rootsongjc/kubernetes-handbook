@@ -17,7 +17,6 @@ cascade:
   type: book
   categories: ["Kubernetes"]
   layout: book
-  ad_id: 2
 ---
 
 {{<callout note 关于本教程>}}
