@@ -1,5 +1,5 @@
 ---
-weight: 69
+weight: 2
 title: 多集群服务 API（Multicluster Services API）
 linktitle: 多集群服务 API
 date: '2022-05-21T00:00:00+08:00'
