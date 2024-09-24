@@ -19,3 +19,7 @@ OAM 规范的设计遵循了以下[原则](https://github.com/oam-dev/spec/blob/
 ![OAM 规范示意图](oam-spec.png)
 
 图片来自 [oam/spec issue #346](https://github.com/oam-dev/spec/issues/346)。
+
+## 本节大纲
+
+{{< list_children show_summary="false">}}
