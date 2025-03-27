@@ -117,4 +117,4 @@ Istio 目前主要解决的是分布式系统之间服务调用的问题，但�
 
 ## 参考
 
-- [在生产环境使用 Istio 前的若干考虑要素 - cloudnative.to](https://cloudnative.to/blog/the-facts-of-using-istio/)
+- [在生产环境使用 Istio 前的若干考虑要素 - cloudnativecn.com](https://cloudnativecn.com/blog/the-facts-of-using-istio/)
