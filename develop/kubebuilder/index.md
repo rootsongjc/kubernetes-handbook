@@ -579,6 +579,6 @@ Operator 的核心逻辑都在 controller 的 `Reconcile` 函数中，请参考 
 
 - [kubebuilder - github.com](https://github.com/kubernetes-sigs/kubebuilder/)
 - [kubebuilder book - book.kubebuilder.io](https://book.kubebuilder.io)
-- [Kubebuilder 中文文档 - cloudnative.to](https://cloudnative.to/kubebuilder/)
+- [Kubebuilder 中文文档 - cloudnativecn.com](https://cloudnativecn.com/kubebuilder/)
 - [如何使用 KubeBuilder 开发一个 Operator - chenshaowen.com](https://chenshaowen.com/blog/how-to-develop-a-operator-using-kubebuilder.html)
 - [Kubebuilder book - kubebuilder.io](https://kubebuilder.io/quick-start.html)

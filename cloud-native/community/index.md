@@ -4,7 +4,7 @@ linktitle: 云原生社区（中国）
 weight: 7
 ---
 
-云原生社区是由 [宋净超（Jimmy Song）](https://jimmysong.io) 于 2020 年 5 月发起的，企业中立的云原生终端用户社区。社区秉持“共识、共治、共建、共享”的原则。社区的宗旨是：连接、中立、开源。立足中国，面向世界，企业中立，关注开源，回馈开源。了解更多请访问云原生社区官网：<https://cloudnative.to>。
+云原生社区是由 [宋净超（Jimmy Song）](https://jimmysong.io) 于 2020 年 5 月发起的，企业中立的云原生终端用户社区。社区秉持“共识、共治、共建、共享”的原则。社区的宗旨是：连接、中立、开源。立足中国，面向世界，企业中立，关注开源，回馈开源。了解更多请访问云原生社区官网：<https://cloudnativecn.com>。
 
 ## 成立背景
 
@@ -18,4 +18,4 @@ weight: 7
 
 ## 参考
 
-- [云原生社区成立 - cloudnative.to](https://cloudnative.to/blog/cnc-announcement/)
+- [云原生社区成立 - cloudnativecn.com](https://cloudnativecn.com/blog/cnc-announcement/)

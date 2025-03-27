@@ -45,6 +45,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 ## 交流群
 
-欢迎加入[云原生社区](https://cloudnative.to/)微信讨论群，加入前请先填写[入群申请问卷](https://wj.qq.com/s2/5479026/bf82)后联系 [Jimmy Song](https://jimmysong.io/contact/) 入群。
+欢迎加入[云原生社区](https://cloudnativecn.com/)微信讨论群，加入前请先填写[入群申请问卷](https://wj.qq.com/s2/5479026/bf82)后联系 [Jimmy Song](https://jimmysong.io/contact/) 入群。
 
 {{< cta cta_text="开始阅读" cta_link="architecture" >}}

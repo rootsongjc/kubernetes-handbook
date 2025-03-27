@@ -72,5 +72,5 @@ Service Mesh 又译作“服务网格”，作为服务间通信的基础设施�
 - [初次了解 Istio - istio.io](https://istio.io/latest/news/releases/0.x/announcing-0.1/)
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh? - blog.christianposta.com](http://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)
 - [Pattern: Service Mesh - philcalcado.com](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
-- [Envoy 官方文档中文版 - cloudnative.to](https://cloudnative.to/envoy/)
+- [Envoy 官方文档中文版 - cloudnativecn.com](https://cloudnativecn.com/envoy/)
 - [Istio 官方文档 - istio.io](https://istio.io/)
