@@ -13,9 +13,7 @@ aliases:
  - /guide-to-cloud-native-app
 cascade:
   comment: true
-  tags: ["Kubernetes"]
   type: book
-  categories: ["Kubernetes"]
   layout: book
 ---
 
