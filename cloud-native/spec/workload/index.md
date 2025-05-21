@@ -23,7 +23,7 @@ spec:
     name: schema.example.jimmysong.io
 ```
 
-{{<callout warn "关于 definitionRef">}}
+{{<callout tip "关于 definitionRef">}}
 CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。应用开发者可以在 `Component` 的 `Workload` 中直接定义 CR。`definitionRef` 将 `Workload` shcema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的），表示可作为负载类型使用。
 {{</callout>}}
 
