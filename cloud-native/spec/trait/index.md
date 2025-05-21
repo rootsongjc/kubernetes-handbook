@@ -39,7 +39,7 @@ spec:
     name: manualscalertrait.core.oam.dev
 ```
 
-{{<callout warn "关于 definitionRef">}}
+{{<callout note "关于 definitionRef">}}
 CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。`definitionRef` 将 `Trait` shcema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的）。
 {{</callout>}}
 

@@ -111,7 +111,7 @@ Operator 的本质是一种调节器模式（Reconciler Pattern）的应用，�
 
 利用声明式 API 及调节器模式，理论上可以在 Kubernetes 上部署任何可声明应用，但是在 Operator 出现之前，管理 Kubernetes 上的有状态应用一直是一个难题，随着 Operator 模式的确立，该难题已得以解决，并促进了 Kubernetes 生态的进一步发展。随着该生态的繁荣，有一种碎片化的特征正在显现。
 
-{{<callout warn "云原生应用碎片化的体现">}}
+{{<callout note "云原生应用碎片化的体现">}}
 
 - Operator 模式将运维人员的反应式经验转化成基于 `Reconcile` 模式的代码，统一了有状态应用的管理模式，极大得扩展了 Kubernetes 应用生态。
 - 开发者在引用 Operator 所提供的能力时没有统一的视图，加大了基础设施运维与开发者之间的沟通成本。
@@ -147,7 +147,7 @@ Kubernetes 之上有很多能力缺失，比如应用构建、发布、管理和
 
 这些配置可以存在于 `ConfigMap`、`Deployment`、`Service`、`Ingress` 等 Kubernetes 的多个资源文件中，如何保证应用程序的复用性？应用程序之间有依赖该如何解决？这是时候你可能自然的想到了 Helm。
 
-{{<callout warn "云原生应用打包和发布管理">}}
+{{<callout note "云原生应用打包和发布管理">}}
 - Helm 通过 chart 模板，提高了应用程序的复用性并解决了部分依赖问题；
 - Chart 仓库提供了云原生应用程序的统一管控视图；
 - `Release` 概念的引入，使得云原生应用版本化管理进一步加强；
