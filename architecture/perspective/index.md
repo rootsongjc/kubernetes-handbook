@@ -3,8 +3,18 @@ weight: 4
 title: Kubernetes 的设计理念
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- kubernetes
+- pod
+- 对象
+- 服务
+- 状态
+- 系统
+- 节点
+- 设计
+- 集群
 ---
-
 这一章将介绍 Kubernetes 的设计理念及基本概念。
 
 ## Kubernetes 设计理念与分布式系统

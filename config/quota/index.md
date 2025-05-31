@@ -3,8 +3,18 @@ weight: 77
 title: 管理 namespace 中的资源配额
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- kubernetes
+- limit
+- limitrange
+- namespace
+- spark
+- yaml
+- 资源
+- 配置文件
+- 配额
+- 默认
 ---
-
 当用多个团队或者用户共用同一个集群的时候难免会有资源竞争的情况发生，这时候就需要对不同团队或用户的资源使用配额做出限制。
 
 ## 开启资源配额限制功能

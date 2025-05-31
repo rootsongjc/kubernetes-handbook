@@ -3,8 +3,17 @@ weight: 80
 title: Kubectl 命令概览
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- kube
+- kubectl
+- kubernetes
+- server
+- shell
+- token
+- 命令
+- 补全
 ---
-
 Kubernetes 提供的 kubectl 命令是与集群交互最直接的方式，v1.6 版本的 kubectl 命令参考图如下：
 
 ![kubectl cheatsheet](kubernetes-kubectl-cheatsheet.png)

@@ -3,8 +3,18 @@ weight: 33
 title: Job
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- bare
+- job
+- pod
+- spec
+- 个数
+- 任务
+- 批处理
+- 标志
+- 重试
+- 默认
 ---
-
 Job 负责批处理任务，即仅执行一次的任务，它保证批处理任务的一个或多个 Pod 成功结束。
 
 ## Job Spec 格式

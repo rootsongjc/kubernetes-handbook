@@ -3,8 +3,18 @@ weight: 96
 title: 从外部访问 Kubernetes 中的 Pod
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- controller
+- ingress
+- ip
+- kubernetes
+- pod
+- service
+- 宿主机
+- 服务
+- 端口
+- 访问
 ---
-
 前面几节讲到如何访问 Kubernetes 集群，本文主要讲解访问 Kubernetes 中的 Pod 和 Service 的几种方式，包括如下几种：
 
 - hostNetwork

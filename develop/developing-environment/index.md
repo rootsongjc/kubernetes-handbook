@@ -3,8 +3,18 @@ weight: 105
 title: 配置 Kubernetes 开发环境
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- docker
+- kuberentes
+- 二进制
+- 内存
+- 根目录
+- 环境
+- 目录
+- 编译
+- 跨平台
+- 镜像
 ---
-
 我们将在 Mac 上使用 docker 环境编译 kuberentes。
 
 ## 安装依赖

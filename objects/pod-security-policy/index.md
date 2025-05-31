@@ -3,8 +3,18 @@ weight: 16
 title: Pod 安全策略
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- pod
+- podsecuritypolicy
+- psp
+- 使用
+- 允许
+- 容器
+- 指定
+- 控制
+- 策略
+- 默认
 ---
-
 `PodSecurityPolicy` 类型的对象能够控制，是否可以向 Pod 发送请求，该 Pod 能够影响被应用到 Pod 和容器的 `SecurityContext`。 
 
 ## 什么是 Pod 安全策略？

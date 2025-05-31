@@ -3,8 +3,18 @@ weight: 14
 title: Init 容器
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- init
+- kubernetes
+- pod
+- 启动
+- 容器
+- 应用
+- 应用程序
+- 版本
+- 运行
+- 镜像
 ---
-
 该特性在自 Kubernetes 1.6 版本推出 beta 版本。Init 容器可以在 PodSpec 中同应用程序的 `containers` 数组一起来指定。此前 beta 注解的值仍将保留，并覆盖 PodSpec 字段值。
 
 本文讲解 Init 容器的基本概念，这是一种专用的容器，在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。

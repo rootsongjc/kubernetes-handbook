@@ -3,8 +3,18 @@ weight: 34
 title: CronJob
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- cron
+- job
+- pod
+- spec
+- 创建
+- 删除
+- 字段
+- 并发
+- 指定
+- 运行
 ---
-
 *Cron Job* 管理基于时间的 [Job](https://kubernetes.io/docs/concepts/jobs/run-to-completion-finite-workloads/)，即：
 
 - 在给定时间点只运行一次

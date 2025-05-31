@@ -3,8 +3,18 @@ title: 云原生快速入门
 linktitle: 云原生快速入门
 date: '2022-05-03T00:00:00+01:00'
 weight: 5
+keywords:
+- docker
+- kubernetes
+- pod
+- 容器
+- 应用
+- 应用程序
+- 服务
+- 组件
+- 节点
+- 集群
 ---
-
 [Kubernetes](https://kubernetes.io/) 一词来自希腊语，意思是“飞行员”或“舵手”。这个名字很贴切，Kubernetes 可以帮助你在波涛汹涌的容器海洋中航行。
 
 Kubernetes 是做什么的？什么是 Docker？什么是容器编排？Kubernetes 是如何工作和扩展的？你可能还有很多其他的问题，本文将一一为你解答。

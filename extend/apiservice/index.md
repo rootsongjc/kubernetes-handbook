@@ -3,8 +3,18 @@ weight: 66
 title: APIService
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- apiregistration
+- apiservice
+- io
+- k8s
+- service
+- v1
+- 使用
+- 排序
+- 查看
 ---
-
 APIService 是用来表示一个特定的 `GroupVersion` 的中的 server，它的结构定义位于代码 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
 
 下面是一个 APIService 的示例配置：

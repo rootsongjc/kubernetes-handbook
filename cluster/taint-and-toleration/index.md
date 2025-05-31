@@ -4,8 +4,17 @@ title: Taint 和 Toleration（污点和容忍）
 linktitle: 污点和容忍
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- node
+- node1
+- pod
+- taint
+- toleration
+- 亲和性
+- 节点
+- 设置
+- 调度
 ---
-
 Taint（污点）和 Toleration（容忍）可以作用于 node 和 pod 上，其目的是优化 pod 在集群间的调度，这跟节点亲和性类似，只不过它们作用的方式相反，具有 taint 的 node 和 pod 是互斥关系，而具有节点亲和性关系的 node 和 pod 是相吸的。另外还有可以给 node 节点设置 label，通过给 pod 设置 `nodeSelector` 将 pod 调度到具有匹配标签的节点上。
 
 Taint 和 toleration 相互配合，可以用来避免 pod 被分配到不合适的节点上。每个节点上都可以应用**一个或多个** taint，这表示对于那些不能容忍这些 taint 的 pod，是不会被该节点接受的。如果将 toleration 应用于 pod 上，则表示这些 pod 可以（但不要求）被调度到具有相应 taint 的节点上。

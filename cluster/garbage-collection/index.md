@@ -3,8 +3,18 @@ weight: 27
 title: 垃圾收集
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- dependent
+- kubernetes
+- owner
+- ownerreference
+- pod
+- replicaset
+- 删除
+- 对象
+- 级联
+- 设置
 ---
-
 Kubernetes 垃圾收集器的角色是删除指定的对象，这些对象曾经有但以后不再拥有 Owner 了。
 
 

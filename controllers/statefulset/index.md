@@ -3,8 +3,18 @@ weight: 30
 title: StatefulSet
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- cluster
+- local
+- nginx
+- persistentvolume
+- pod
+- service
+- spec
+- statefulset
+- svc
+- web
 ---
-
 StatefulSet 作为 Controller 为 Pod 提供唯一的标识。它可以保证部署和 scale 的顺序。
 
 使用案例参考：[kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)，其中包含 zookeeper 和 kakfa 的 statefulset 设置和使用说明。

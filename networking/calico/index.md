@@ -4,8 +4,18 @@ title: 非 Overlay 扁平网络 Calico
 linktitle: Calico
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- bgp
+- calico
+- felix
+- kubernetes
+- 插件
+- 数据
+- 端点
+- 网络
+- 路由
+- 集群
 ---
-
 [Calico](https://www.projectcalico.org/) 原意为”有斑点的“，如果说一只猫为 calico cat 的话，就是说这是只花猫，也叫三色猫，所以 calico 的 logo 是只三色猫。
 
 ![Calico logo](calico-logo.jpg)

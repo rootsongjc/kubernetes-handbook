@@ -3,9 +3,19 @@ weight: 44
 title: ServiceAccount
 date: '2022-05-21T00:00:00+08:00'
 type: book
-summary: "ServiceAccount 为 Pod 中的进程提供身份信息。"
+summary: ServiceAccount 为 Pod 中的进程提供身份信息。
+keywords:
+- api
+- default
+- namespace
+- pod
+- serviceaccount
+- spec
+- token
+- 创建
+- 设置
+- 集群
 ---
-
 ServiceAccount 为 Pod 中的进程提供身份信息。
 
 {{<callout note 注意>}}

@@ -1,11 +1,21 @@
 ---
 weight: 108
 title: Operator
-summary: "关于 Kubernetes Operator 的原理、用途等基础知识介绍。"
+summary: 关于 Kubernetes Operator 的原理、用途等基础知识介绍。
 date: '2022-09-05T11:00:00+08:00'
 type: book
+keywords:
+- api
+- deployment
+- kubernetes
+- operator
+- sampledb
+- 创建
+- 应用程序
+- 控制器
+- 数据库
+- 资源
 ---
-
 Operator 最初是由 CoreOS（后被 Red Hat 收购）开发的，下面是关于 Operator 的一些基础知识：
 
 - Operator 是用来扩展 Kubernetes API 的特定的应用程序控制器；

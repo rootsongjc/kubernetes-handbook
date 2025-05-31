@@ -3,8 +3,17 @@ weight: 76
 title: Secret 配置
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- key
+- pod
+- secret
+- spec
+- volume
+- 使用
+- 创建
+- 容器
 ---
-
 `Secret` 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 ssh key。将这些信息放在 `secret` 中比放在 `pod` 的定义中或者 docker 镜像中来说更加安全和灵活。
 
 ## Secret 概览

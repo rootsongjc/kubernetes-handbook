@@ -2,8 +2,18 @@
 title: HTTP 连接管理器介绍
 linktitle: HTTP 连接管理器介绍
 weight: 6
+keywords:
+- envoy
+- hcm
+- http
+- 数据
+- 类型化
+- 编码器
+- 解码器
+- 请求
+- 调用
+- 过滤器
 ---
-
 HCM 是一个网络级的过滤器，将原始字节转译成 HTTP 级别的消息和事件（例如，收到的 Header，收到的 Body 数据等）。
 
 HCM 过滤器还处理标准的 HTTP 功能。它支持访问记录、请求 ID 生成和跟踪、Header 操作、路由表管理和统计等功能。

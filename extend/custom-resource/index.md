@@ -3,8 +3,17 @@ weight: 63
 title: 使用自定义资源扩展 API
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- crd
+- kubectl
+- kubernetes
+- server
+- 创建
+- 参考
+- 对象
+- 资源
 ---
-
 自定义资源是对 Kubernetes API 的扩展，Kubernetes 中的每个资源都是一个 API 对象的集合，例如我们在 YAML 文件里定义的那些 spec 都是对 Kubernetes 中的资源对象的定义，所有的自定义资源可以跟 Kubernetes 中内建的资源一样使用 kubectl 操作。
 
 ## 自定义资源

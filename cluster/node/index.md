@@ -3,8 +3,17 @@ weight: 22
 title: Node
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- 'false'
+- ip
+- kubelet
+- node
+- pod
+- 'true'
+- 命令
+- 节点
+- 集群
 ---
-
 Node 是 Kubernetes 集群的工作节点，可以是物理机也可以是虚拟机。
 
 ## Node 的状态

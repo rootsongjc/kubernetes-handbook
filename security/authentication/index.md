@@ -3,8 +3,18 @@ weight: 89
 title: Kubernetes 中的用户与身份认证授权
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- header
+- server
+- token
+- 使用
+- 用户
+- 认证
+- 证书
+- 请求
+- 身份验证
 ---
-
 在安装集群的时候我们在 master 节点上生成了一堆证书、token，还在 kubelet 的配置中用到了 bootstrap token，安装各种应用时，为了能够与 API server 通信创建了各种 service account，在 Dashboard 中使用了 kubeconfig 或 token 登陆，那么这些都属于什么认证方式？如何区分用户的？我特地翻译了下这篇官方文档，想你看了之后你将找到答案。
 
 重点查看 bearer token 和 HTTP 认证中的 token 使用，我们已经有所应用，如 [使用 kubeconfig 或 token 进行用户身份认证](auth-with-kubeconfig-or-token.md)。

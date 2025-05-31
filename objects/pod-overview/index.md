@@ -3,8 +3,18 @@ weight: 12
 title: Pod 概览
 date: '2017-03-10T00:00:00+08:00'
 type: book
+keywords:
+- controller
+- kubernetes
+- node
+- pod
+- 共享
+- 创建
+- 实例
+- 容器
+- 运行
+- 重启
 ---
-
 本文将为你讲解 Pod 的基础概念。
 
 ## 理解 Pod

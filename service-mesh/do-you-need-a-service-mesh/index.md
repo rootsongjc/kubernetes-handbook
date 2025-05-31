@@ -3,10 +3,19 @@ title: 你是否需要 Istio？
 linktitle: 你是否需要 Istio？
 type: book
 date: '2022-05-03T00:00:00+08:00'
-# Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
 weight: 3
+keywords:
+- envoy
+- isito
+- istio
+- kubernetes
+- sidecar
+- 使用
+- 可能
+- 服务
+- 社区
+- 需要
 ---
-
 你可能参加过各种云原生、服务网格相关的 meetup，在社区里看到很多人在分享和讨论 Istio，但是对于自己是否真的需要 Istio 感到踌躇，甚至因为它的复杂性而对服务网格的前景感到怀疑。那么，在你继阅读 Istio SIG 后续文章之前，请先仔细阅读本文，审视一下自己公司的现状，看看你是否有必要使用服务网格，处于 Istio 应用的哪个阶段。
 
 本文不是对应用服务网格的指导，而是根据社区里经常遇到的问题而整理。在使用 Istio 之前，请先考虑下以下因素：

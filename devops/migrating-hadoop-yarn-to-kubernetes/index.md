@@ -3,8 +3,18 @@ weight: 101
 title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- hadoop
+- kubernetes
+- spark
+- yarn
+- 启动
+- 应用
+- 服务
+- 迁移
+- 配置文件
+- 镜像
 ---
-
 本文档不是说明如何在 kubernetes 中开发和部署应用程序，如果你想要直接开发应用程序在 kubernetes 中运行可以参考 [适用于 kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
 
 本文旨在说明如何将已有的应用程序尤其是传统的分布式应用程序迁移到 kubernetes 中。如果该类应用程序符合云原生应用规范（如 12 因素法则）的话，那么迁移会比较顺利，否则会遇到一些麻烦甚至是阻碍。具体请参考 [迁移至云原生应用架构](../../../migrating-to-cloud-native-application-architectures)。

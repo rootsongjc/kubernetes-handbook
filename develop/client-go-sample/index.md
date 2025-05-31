@@ -3,8 +3,17 @@ weight: 107
 title: client-go 示例
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- client
+- dashboard
+- deployment
+- go
+- image
+- kubernetes
+- replica
+- 客户端
+- 镜像
 ---
-
 访问 kubernetes 集群有以下几种方式：
 
 | 方式                                                         | 特点                                                         | 支持者   |

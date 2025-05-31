@@ -3,8 +3,18 @@ weight: 11
 title: Pod 状态与生命周期管理
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- controller
+- kube
+- kubernetes
+- manager
+- pod
+- 了解
+- 基本
+- 模板
+- 生命周期
+- 组件
 ---
-
 该节将带领大家了解 Kubernetes 中的基本概念，尤其是作为 Kubernetes 中调度的最基本单位 Pod。
 
 本节中包括以下内容：

@@ -3,8 +3,18 @@ weight: 106
 title: 测试 Kubernetes
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- cluster
+- go
+- kubernetes
+- package
+- test
+- 单元测试
+- 并行
+- 指定
+- 测试
+- 集成
 ---
-
 这篇文章将指导你如何测试 Kubernetes。
 
 ## 单元测试

@@ -3,8 +3,18 @@ title: 什么是 Istio?
 linktitle: 什么是 Istio?
 date: '2022-05-03T00:00:00+08:00'
 weight: 2
+keywords:
+- envoy
+- istio
+- 代理
+- 平面
+- 控制
+- 数据
+- 服务
+- 组件
+- 网格
+- 配置
 ---
-
 Istio 是一个服务网格的开源实现。Istio 支持以下功能。
 
 **流量管理**

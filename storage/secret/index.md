@@ -3,8 +3,16 @@ weight: 55
 title: Secret
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- docker
+- io
+- kubernetes
+- pod
+- secret
+- secrets
+- 创建
+- 敏感数据
 ---
-
 Secret 解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者 Pod Spec 中。Secret 可以以 Volume 或者环境变量的方式使用。
 
 Secret 有三种类型：

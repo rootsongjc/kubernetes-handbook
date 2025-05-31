@@ -3,8 +3,17 @@ title: Karmada
 weight: 3
 date: 2024-08-22
 description: Karmada 多集群管理。
+keywords:
+- api
+- apiserver
+- karmada
+- kubernetes
+- 平面
+- 成员
+- 注册
+- 调度
+- 集群
 ---
-
 Karmada 是一个 Kubernetes 管理系统，使您能够在多个 Kubernetes 集群和云中运行云原生应用程序，而无需更改应用程序。通过使用 Kubernetes 原生 API 并提供先进的调度功能，Karmada 实现了真正的开放式、多云 Kubernetes。
 
 {{<callout tip "Karmada 名称的由来">}}

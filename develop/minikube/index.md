@@ -3,8 +3,18 @@ weight: 114
 title: Minikube
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- hyperkit
+- install
+- kubectl
+- kubernetes
+- minikube
+- v1
+- 下载
+- 安装
+- 文件
+- 访问
 ---
-
 Minikube 用于在本地运行 kubernetes 环境，用来开发和测试。
 
 ## 安装 Minikube

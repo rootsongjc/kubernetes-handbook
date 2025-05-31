@@ -1,10 +1,20 @@
 ---
-linkTitle: "Kubernetes 次世代"
-title: "Kubernetes 次世代的云原生应用"
+linkTitle: Kubernetes 次世代
+title: Kubernetes 次世代的云原生应用
 weight: 3
-description: "Kubernetes 的次世代在于解决 Kubernetes 生态的碎片化问题。"
+description: Kubernetes 的次世代在于解决 Kubernetes 生态的碎片化问题。
+keywords:
+- kubernetes
+- oam
+- operator
+- 原生
+- 原语
+- 定义
+- 应用
+- 应用程序
+- 开源
+- 资源
 ---
-
 ## 重点
 
 - 云原生基础设施已渡过了野蛮生长期，正朝着统一应用标准方向迈进。

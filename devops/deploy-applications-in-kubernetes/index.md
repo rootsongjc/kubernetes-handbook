@@ -3,8 +3,17 @@ weight: 100
 title: 适用于 Kubernetes 的应用开发部署流程
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- agent
+- app
+- docker
+- k8s
+- monitor
+- yaml
+- 服务
+- 环境变量
+- 访问
 ---
-
 本文讲解了如何开发容器化应用，并使用 Wercker 持续集成工具构建 docker 镜像上传到 docker 镜像仓库中，然后在本地使用 *docker-compose* 测试后，再使用 `kompose` 自动生成 kubernetes 的 yaml 文件，再将注入 Envoy sidecar 容器，集成 Istio 服务网格中的详细过程。
 
 整个过程如下图所示。

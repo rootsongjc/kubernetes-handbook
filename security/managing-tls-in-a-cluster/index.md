@@ -3,8 +3,18 @@ weight: 84
 title: 管理集群中的 TLS
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- ca
+- cluster
+- csr
+- kubernetes
+- pod
+- server
+- 使用
+- 证书
+- 集群
 ---
-
 在使用二进制文件部署 Kubernetes 集群的时候，很多人在进行到部署证书时遇到各种各样千奇百怪的问题，这一步是创建集群的基础，我们有必要详细了解一下其背后的流程和原理。
 
 ## 概览

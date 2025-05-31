@@ -3,8 +3,18 @@ weight: 87
 title: 创建用户认证授权的 kubeconfig 文件
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- context
+- dev
+- devuser
+- kubectl
+- namespace
+- test
+- 创建
+- 文件
+- 用户
+- 绑定
 ---
-
 当我们安装好集群后，如果想要把 kubectl 命令交给用户使用，就不得不对用户的身份进行认证和对其权限做出限制。
 
 下面以创建一个 devuser 用户并将其绑定到 dev 和 test 两个 namespace 为例说明。

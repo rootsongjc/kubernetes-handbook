@@ -4,8 +4,18 @@ title: 扁平网络 Flannel
 linktitle: Flannel
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- docker
+- flannel
+- ip
+- node
+- node1
+- pod
+- run
+- 网络
+- 节点
+- 路由
 ---
-
 如果你安装了拥有三个节点的 Kubernetes 集群，节点的状态如下所述。
 
 ```bash

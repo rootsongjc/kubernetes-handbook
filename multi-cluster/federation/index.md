@@ -4,8 +4,18 @@ title: 集群联邦（Cluster Federation）
 linktitle: 集群联邦
 date: '2023-01-17T10:40:00+08:00'
 type: book
+keywords:
+- api
+- dns
+- federation
+- kubefed
+- kubernetes
+- nginx
+- 服务
+- 联邦
+- 资源
+- 集群
 ---
-
 {{<callout warning 注意>}}
 
 [Kubefed](https://github.com/kubernetes-sigs/kubefed) 项目计划归档，详见 [Fellow-up: discussion on archiving Kubefed](https://groups.google.com/g/kubernetes-sig-multicluster/c/lciAVj-_ShE?pli=1)。

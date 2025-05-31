@@ -3,8 +3,17 @@ weight: 15
 title: Pause 容器
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- container
+- infra
+- namespace
+- nginx
+- pause
+- pod
+- 共享
+- 容器
+- 网络
 ---
-
 Pause 容器，又叫 Infra 容器，本文将探究该容器的作用与原理。
 
 我们知道在 kubelet 的配置中有这样一个参数：
