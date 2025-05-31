@@ -4,9 +4,19 @@ title: 从 Ingress 迁移到 Gateway API
 linktitle: 迁移到 Gateway API
 date: '2024-06-28T19:00:00+08:00'
 type: book
-description: "本文介绍如何从 Kubernetes Ingress 迁移到更先进的 Gateway API，包括步骤说明。"
+description: 本文介绍如何从 Kubernetes Ingress 迁移到更先进的 Gateway API，包括步骤说明。
+keywords:
+- api
+- gateway
+- http
+- https
+- ingress
+- tls
+- 注解
+- 监听器
+- 资源
+- 路由
 ---
-
 Gateway API 是 [Ingress API](../ingress/) 的继任者。然而，它不包括 Ingress 资源（最接近的对应是 HTTPRoute）。因此，需要从现有的 Ingress 资源一次性转换到相应的 Gateway API 资源。
 
 本指南将帮助你进行转换，内容包括：

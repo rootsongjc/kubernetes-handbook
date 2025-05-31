@@ -3,8 +3,18 @@ weight: 85
 title: Kublet 的认证授权
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- client
+- https
+- kubelet
+- nodes
+- server
+- token
+- verb
+- 请求
+- 身份验证
 ---
-
 Kubelet 的 HTTPS 端点对外暴露了用于访问不同敏感程度数据的 API，并允许你在节点或者容器内执行不同权限级别的操作。
 
 本文档向你描述如何通过认证授权来访问 kubelet 的 HTTPS 端点。

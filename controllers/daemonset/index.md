@@ -3,8 +3,18 @@ weight: 31
 title: DaemonSet
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- controller
+- daemon
+- daemonset
+- node
+- pod
+- selector
+- spec
+- 创建
+- 指定
+- 模板
 ---
-
 本文将为你介绍 DaemonSet 的基本概念。
 
 ## 什么是 DaemonSet？

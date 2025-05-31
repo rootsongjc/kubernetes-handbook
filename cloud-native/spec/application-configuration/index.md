@@ -1,10 +1,20 @@
 ---
-title: "ApplicationConfiguration"
-linkTitle: "ApplicationConfiguration"
-description: "`ApplicationConfiguration` 将 `Component` 和 `Trait` 组合成完整的应用程序。"
+title: ApplicationConfiguration
+linkTitle: ApplicationConfiguration
+description: '`ApplicationConfiguration` 将 `Component` 和 `Trait` 组合成完整的应用程序。'
 weight: 5
+keywords:
+- applicationconfiguration
+- component
+- oam
+- release
+- trait
+- 产生
+- 升级
+- 发布
+- 实例
+- 构建
 ---
-
 {{<callout note 注意>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

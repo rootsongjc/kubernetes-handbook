@@ -3,8 +3,17 @@ weight: 18
 title: Pod Hook
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- event
+- hook
+- http
+- kubernetes
+- pod
+- poststart
+- 处理程序
+- 容器
+- 调用
 ---
-
 Pod Hook（钩子）是由 Kubernetes 管理的 kubelet 发起的，当容器中的进程启动前或者容器中的进程终止之前运行，这是包含在容器的生命周期之中。可以同时为 Pod 中的所有容器都配置 hook。
 
 Hook 的类型包括两种：

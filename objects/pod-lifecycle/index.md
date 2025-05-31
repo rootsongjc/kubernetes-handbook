@@ -3,8 +3,18 @@ weight: 17
 title: Pod 的生命周期
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- always
+- kubelet
+- phase
+- pod
+- restartpolicy
+- running
+- 容器
+- 探针
+- 状态
+- 重启
 ---
-
 本文讲解的是 Kubernetes  中 Pod 的生命周期，包括生命周期的不同阶段、存活和就绪探针、重启策略等。
 
 ## Pod phase

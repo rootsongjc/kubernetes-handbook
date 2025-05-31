@@ -3,8 +3,17 @@ weight: 36
 title: 自定义指标 HPA
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- hpa
+- kube
+- kubernetes
+- kubernetes1
+- master
+- requestheader
+- server
+- 设置
 ---
-
 Kubernetes 中不仅支持 CPU、内存为指标的 HPA，还支持自定义指标的 HPA，例如 QPS。
 
 ## 设置自定义指标

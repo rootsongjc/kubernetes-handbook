@@ -3,8 +3,17 @@ weight: 24
 title: Label
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- based
+- environment
+- key
+- label
+- object
+- pod
+- selector
+- tier
+- 使用
 ---
-
 Label 是附着到 object 上（例如 Pod）的键值对。可以在创建 object 的时候指定，也可以在 object 创建后随时指定。Labels 的值对系统本身并没有什么含义，只是对用户才有意义。
 
 ```json

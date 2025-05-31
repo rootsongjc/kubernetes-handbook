@@ -3,8 +3,17 @@ weight: 25
 title: Annotation
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- annotation
+- kubernetes
+- 例如
+- 信息
+- 字段
+- 客户端
+- 对象
+- 工具
+- 用于
 ---
-
 Annotation，顾名思义，就是注解。Annotation 可以将 Kubernetes 资源对象关联到任意的非标识性元数据。使用客户端（如工具和库）可以检索到这些元数据。
 
 ## 关联元数据到对象

@@ -3,8 +3,16 @@ weight: 5
 title: Etcd 解析
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- etcd
+- etcdctl
+- flannel
+- kubernetes
+- v2
+- v3
+- 使用
 ---
-
 Etcd 是 Kubernetes 集群中的一个十分重要的组件，用于保存集群所有的网络配置和对象的状态信息。在后面具体的安装环境中，我们安装的 etcd 的版本是 v3.1.5，整个 Kubernetes 系统中一共有两个服务需要用到 etcd 用来协同和存储配置，分别是：
 
 - 网络插件 flannel、对于其它网络插件也需要用到 etcd 存储网络的配置信息

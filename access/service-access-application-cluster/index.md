@@ -1,11 +1,21 @@
 ---
 weight: 95
 title: 使用 service 访问集群中的应用程序
-linktitle: "通过 service 访问"
+linktitle: 通过 service 访问
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- deployment
+- hello
+- pod
+- replicaset
+- service
+- world
+- 创建
+- 应用程序
+- 节点
+- 运行
 ---
-
 本文向你展示如何创建 Kubernetes Service 对象，外部客户端可以使用它来访问集群中运行的应用程序。该 Service 可以为具有两个运行实例的应用程序提供负载均衡。
 
 ## 目的

@@ -3,8 +3,16 @@ weight: 75
 title: 配置 Pod 的 Service Account
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- account
+- api
+- namespace
+- pod
+- service
+- token
+- 创建
+- 集群
 ---
-
 Service account 为 Pod 中的进程提供身份信息。
 
 *本文是关于 Service Account 的用户指南，管理指南另见 Service Account 的集群管理指南。*

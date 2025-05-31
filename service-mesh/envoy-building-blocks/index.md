@@ -3,10 +3,19 @@ title: Envoy 的构建模块
 linktitle: Envoy 的构建模块
 type: book
 date: '2019-05-05T00:00:00+01:00'
-# Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
 weight: 5
+keywords:
+- com
+- envoy
+- hello
+- 匹配
+- 监听器
+- 端点
+- 请求
+- 路由
+- 过滤器
+- 配置
 ---
-
 在这一节中，我们将解释 Envoy 的基本构建模块。
 
 Envoy 配置的根被称为引导配置。它包含了一些字段，我们可以在这里提供静态或动态的资源和高级别的 Envoy 配置（例如，Envoy 实例名称、运行时配置、启用管理界面等等）。

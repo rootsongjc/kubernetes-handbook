@@ -3,8 +3,18 @@ weight: 102
 title: 使用 StatefulSet 部署有状态应用
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- dockerfile
+- hostname
+- kafka
+- sh
+- statefulset
+- yaml
+- zookeeper
+- 脚本
+- 配置文件
+- 镜像
 ---
-
 [StatefulSet](../../concepts/statefulset) 这个对象是专门用来部署用状态应用的，可以为 Pod 提供稳定的身份标识，包括 hostname、启动顺序、DNS 名称等。
 
 下面以在 Kubernetes1.6 版本中部署 zookeeper 和 kafka 为例讲解 StatefulSet 的使用，其中 kafka 依赖于 zookeeper。

@@ -3,8 +3,18 @@ weight: 90
 title: Kubernetes 集群安全性配置最佳实践
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- kube
+- kubelet
+- kubernetes
+- security
+- tcp
+- 端口
+- 节点
+- 身份验证
+- 集群
 ---
-
 本文是对 Kubernetes 集群安全性管理的最佳实践。
 
 ## 端口

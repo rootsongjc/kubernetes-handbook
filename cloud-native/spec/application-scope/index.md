@@ -1,10 +1,20 @@
 ---
-title: "ApplicationScope"
-linkTitle: "ApplicationScope"
-description: "`ApplicationScope` 用于定义 `Component` 的边界以用于逻辑分组。"
+title: ApplicationScope
+linkTitle: ApplicationScope
+description: '`ApplicationScope` 用于定义 `Component` 的边界以用于逻辑分组。'
 weight: 4
+keywords:
+- applicationscope
+- component
+- networkscope
+- oam
+- v1alpha2
+- 作用域
+- 划定
+- 子网
+- 示例
+- 网络
 ---
-
 {{<callout note 提示>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

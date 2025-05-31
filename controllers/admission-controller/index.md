@@ -4,8 +4,18 @@ title: 准入控制器（Admission Controller）
 linktitle: 准入控制器
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- kubernetes
+- pod
+- server
+- 准入
+- 命名
+- 对象
+- 控制器
+- 请求
+- 验证
 ---
-
 准入控制器（Admission Controller）位于 API Server 中，在对象被持久化之前，准入控制器拦截对 API Server 的请求，一般用来做身份验证和授权。其中包含两个特殊的控制器：`MutatingAdmissionWebhook` 和 `ValidatingAdmissionWebhook`。分别作为配置的变异和验证[准入控制 webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks)。
 
 准入控制器包括以下两种：

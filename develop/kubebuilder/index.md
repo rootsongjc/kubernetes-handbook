@@ -3,8 +3,18 @@ weight: 110
 title: Kubebuilder
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- controller
+- cr
+- crd
+- kubebuilder
+- kubernetes
+- operator
+- 使用
+- 修改
+- 创建
 ---
-
 Kubebuilder 是一个基于 CRD 来构建 Kubernetes API 的框架，可以使用 CRD 来构建 API、Controller 和 Admission Webhook。
 
 ## 动机

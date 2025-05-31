@@ -4,8 +4,18 @@ title: SPIRE Kubernetes 工作负载注册器
 date: '2022-06-08T16:00:00+08:00'
 type: book
 summary: 本文介绍了如何在 Kubernetes 中使用 SPIRE 工作负载注册器，包括工作负载注册器部署的方式，注册模式等。
+keywords:
+- crd
+- id
+- pod
+- reconcile
+- spire
+- string
+- webhook
+- 服务器
+- 模式
+- 注册器
 ---
-
 SPIRE Kubernetes 工作负载注册器实现了一个 Kubernetes `ValidatingAdmissionWebhook`，便于在 Kubernetes 内自动注册工作负载。
 
 ## 配置

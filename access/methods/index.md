@@ -3,8 +3,18 @@ weight: 92
 title: 访问集群
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- apiserver
+- kubectl
+- pod
+- service
+- 代理
+- 使用
+- 客户端
+- 访问
+- 集群
 ---
-
 本文列举了集中访问 Kubernetes 集群的方式。
 
 ## 第一次使用 kubectl 访问

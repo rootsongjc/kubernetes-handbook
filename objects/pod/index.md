@@ -3,8 +3,17 @@ weight: 13
 title: Pod 解析
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- api
+- pod
+- 删除
+- 容器
+- 宽限期
+- 节点
+- 调度
+- 运行
+- 进程
 ---
-
 Pod 是 Kubernetes 中可以创建的最小部署单元，也是 Kubernetes REST API 中的顶级资源类型。
 
 在 Kuberentes V1 core API 版本中的 Pod 的数据结构如下图所示：

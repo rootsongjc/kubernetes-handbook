@@ -1,10 +1,20 @@
 ---
-title: "Component"
-linkTitle: "Component"
-description: "`Component` 用于定义应用程序的基本组件。"
+title: Component
+linkTitle: Component
+description: '`Component` 用于定义应用程序的基本组件。'
 weight: 2
+keywords:
+- component
+- kubernetes
+- oam
+- parameters
+- pod
+- workload
+- 定义
+- 应用
+- 负载
+- 运维
 ---
-
 {{<callout note 提示>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

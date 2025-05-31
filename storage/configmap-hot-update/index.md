@@ -3,8 +3,18 @@ weight: 57
 title: ConfigMap 的热更新
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- configmap
+- etcd
+- go
+- kubernetes
+- namespace
+- nginx
+- volume
+- 容器
+- 挂载
+- 环境变量
 ---
-
 ConfigMap 是用来存储配置文件的 kubernetes 资源对象，所有的配置内容都存储在 etcd 中，下文主要是探究 ConfigMap 的创建和更新流程，以及对 ConfigMap 更新后容器内挂载的内容是否同步更新的测试。
 
 ## 测试示例

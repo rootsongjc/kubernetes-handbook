@@ -4,8 +4,17 @@ title: 服务质量等级（QoS）
 linktitle: 服务质量等级
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- burstable
+- cpu
+- pod
+- qos
+- 内存
+- 容器
+- 服务质量
+- 调度
+- 配置
 ---
-
 QoS（Quality of Service），大部分译为“服务质量等级”，又译作“服务质量保证”，是作用在 Pod 上的一个配置，当 Kubernetes 创建一个 Pod 时，它就会给这个 Pod 分配一个 QoS 等级，可以是以下等级之一：
 
 - **Guaranteed**：Pod 里的每个容器都必须有内存/CPU 限制和请求，而且值必须相等。

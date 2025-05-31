@@ -3,8 +3,18 @@ weight: 113
 title: 参与 Kubernetes 社区贡献
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- community
+- developer
+- github
+- issue
+- kubernetes
+- pr
+- repo
+- 提交
+- 文档
+- 社区
 ---
-
 如果你想参与 Kubernetes 社区，请先阅读下[Kubernetes Community](https://github.com/kubernetes/community)这个 GitHub Repo 中的文档，该文档中包括社区的治理形式、社区成员资格申请、提交 Issue、查找问题和提交 PR 的指导等。
 
 ## 参考

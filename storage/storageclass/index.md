@@ -3,8 +3,18 @@ weight: 60
 title: Storage Class
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- class
+- kubernetes
+- persistent
+- pv
+- storage
+- storageclass
+- volume
+- 分配器
+- 参数
+- 指定
 ---
-
 本文介绍了 Kubernetes 中 `StorageClass` 的概念。在阅读本文之前建议先熟悉 [卷](https://kubernetes.io/docs/concepts/storage/volumes) 和 [Persistent Volume（持久卷）](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
 ## 介绍

@@ -3,8 +3,18 @@ weight: 23
 title: Namespace
 date: '2022-05-21T00:00:00+08:00'
 type: book
+keywords:
+- default
+- kube
+- kubernetes
+- namespace
+- service
+- system
+- 部署
+- 隔离
+- 集群
+- 默认
 ---
-
 在一个 Kubernetes 集群中可以使用 namespace 创建多个“虚拟集群”，这些 namespace 之间可以完全隔离，也可以通过某种方式，让一个 namespace 中的 service 可以访问到其他的 namespace 中的服务。
 
 ## 哪些情况下适合使用多个 namespace
