@@ -30,7 +30,7 @@ keywords:
 
 Lens 界面图下图所示。
 
-![Lens Kubernetes IDE 界面](lens.jpg)
+![Lens Kubernetes IDE 界面](lens.webp)
 
 ## 参考
 

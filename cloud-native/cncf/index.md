@@ -51,7 +51,7 @@ CNCF 这个角色的作用是推广技术，形成社区，开源项目管理与
 
 项目所达到相应成熟度需要满足的条件和投票机制见下图：
 
-![CNCF 项目成熟度级别](../../images/cncf-graduation-criteria-v2.jpg "CNCF项目成熟度级别")
+![CNCF 项目成熟度级别](../../images/cncf-graduation-criteria-v2.webp "CNCF项目成熟度级别")
 
 ## TOC（技术监督委员会）
 

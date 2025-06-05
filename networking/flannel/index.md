@@ -71,7 +71,7 @@ Flannel 是作为一个二进制文件的方式部署在每个 node 上，主要
 
 下面是使用 `host-gw` backend 的 flannel 网络架构图：
 
-![flannel 网络架构（图片来自 openshift）](flannel-networking.png)
+![flannel 网络架构（图片来自 openshift）](flannel-networking.webp)
 
 **注意**：以上 IP 非本示例中的 IP，但是不影响读者理解。
 

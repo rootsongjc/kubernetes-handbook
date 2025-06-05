@@ -21,13 +21,13 @@ keywords:
 
 下图是将单体应用迁移到云原生的步骤。
 
-![将单体应用迁移到云原生 (图片来自 DevOpsDay Toronto)](migrating-monolith-to-kubernetes.jpg)
+![将单体应用迁移到云原生 (图片来自 DevOpsDay Toronto)](migrating-monolith-to-kubernetes.webp)
 
 接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去。
 
 下图即整个架构的示意图，所有的进程管理和容器扩容直接使用 Makefile。
 
-![spark on yarn with kubernetes](spark-on-yarn-with-kubernetes.png)
+![spark on yarn with kubernetes](spark-on-yarn-with-kubernetes.webp)
 
 **注意：该例子仅用来说明具体的步骤划分和复杂性，在生产环境应用还有待验证，请谨慎使用。**
 
@@ -37,13 +37,13 @@ keywords:
 
 过程中可能用到的概念和术语初步整理如下：
 
-![术语](terms-in-kubernetes-app-deployment.png)
+![术语](terms-in-kubernetes-app-deployment.webp)
 
 为了讲解整改过程和具体细节，我们所有操作都是通过命令手动完成，不使用自动化工具。当你充分了解到其中的细节后可以通过自动化工具来优化该过程，以使其更加自动和高效，同时减少因为人为操作失误导致的迁移失败。
 
 ## 迁移应用
 
-![分解步骤解析](migrating-hadoop-yarn-to-kubernetes.png)
+![分解步骤解析](migrating-hadoop-yarn-to-kubernetes.webp)
 
 整个迁移过程分为如下几个步骤：
 

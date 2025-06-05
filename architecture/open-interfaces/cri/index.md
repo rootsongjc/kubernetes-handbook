@@ -21,7 +21,7 @@ keywords:
 
 Container Runtime 实现了 CRI gRPC Server，包括 `RuntimeService` 和 `ImageService`。该 gRPC Server 需要监听本地的 Unix socket，而 kubelet 则作为 gRPC Client 运行。
 
-![CRI 架构 - 图片来自 kubernetes blog](cri-architecture.png)
+![CRI 架构 - 图片来自 kubernetes blog](cri-architecture.webp)
 
 ## 启用 CRI
 

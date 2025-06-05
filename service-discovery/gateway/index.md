@@ -90,7 +90,7 @@ Gateway API 开发者为其使用场景定义四类角色：
 
 Gateway API 通过 Kubernetes 服务网络的面向角色的设计在分布式灵活性和集中控制之间取得了平衡。使得许多不同的非协调团队可以使用共享网络基础设施（硬件负载均衡器、云网络、集群托管代理等），所有团队都受集群运维设置的策略约束。下图展示了在进行 Gateway 管理时的角色划分。
 
-![Gateway API 管理时的角色划分](gateway-roles.jpg)
+![Gateway API 管理时的角色划分](gateway-roles.webp)
 
 集群运维人员创建从 [GatewayClass](https://gateway-api.sigs.k8s.io/api-types/gatewayclass) 派生的 [Gateway](https://gateway-api.sigs.k8s.io/api-types/gateway) 资源。此 Gateway 部署或配置它所代表的底层网络资源。通过 Gateway 和 Route 之间的[路由附加进程](https://gateway-api.sigs.k8s.io/concepts/api-overview#attaching-routes-to-gateways) ，集群运维人员和特定团队必须就可以附加到此 Gateway 并通过它公开其应用程序的内容达成一致。集群运维人员可以在网关上实施  [TLS](https://gateway-api.sigs.k8s.io/guides/tls#downstream-tls) 集中式策略。同时，Store 和 Site 团队[在他们自己的 Namespaces 中](https://gateway-api.sigs.k8s.io/guides/multiple-ns)运行，但是将他们的 Routes 附加到同一个共享 Gateway，允许他们独立控制自己的[路由逻辑](https://gateway-api.sigs.k8s.io/guides/http-routing)。这种关注点分离允许 Store 队管理自己的[流量拆分部署](https://gateway-api.sigs.k8s.io/guides/traffic-splitting)，同时将集中策略和控制权留给集群运维人员。
 
@@ -317,7 +317,7 @@ HTTPRoute 的规范中包括：
 
 不同命名空间及 `Gateway` 与 `Route` 的绑定关系如下图所示。
 
-![路由绑定示意图](gateway-api-route-binding.jpg)
+![路由绑定示意图](gateway-api-route-binding.webp)
 
 将路由附加到网关包括以下步骤：
 
@@ -462,7 +462,7 @@ spec:
 
 `GatewayClass`、Gateway、`xRoute` 和 `Service` 的组合将定义一个可实现的负载均衡器。下图说明了不同资源之间的关系。
 
-![Gateway API 流程图](gateway-api-request-flow.png)
+![Gateway API 流程图](gateway-api-request-flow.webp)
 
 ## 请求流程
 

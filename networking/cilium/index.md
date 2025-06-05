@@ -18,7 +18,7 @@ keywords:
 ---
 Cilium 是一款开源软件，也是 CNCF 的孵化项目，目前[已有公司](https://isovalent.com/)提供商业化支持，还有基于 Cilium 实现的服务网格解决方案。最初它仅是作为一个 Kubernetes 网络组件。Cilium 在 1.7 版本后[推出并开源了 Hubble](https://cilium.io/blog/2019/11/19/announcing-hubble)，它是专门为网络可视化设计，能够利用 Cilium 提供的 eBPF 数据路径，获得对 Kubernetes 应用和服务的网络流量的深度可视性。这些网络流量信息可以对接 Hubble CLI、UI 工具，可以通过交互式的方式快速进行问题诊断。除了 Hubble 自身的监控工具，还可以对接主流的云原生监控体系——Prometheus 和 Grafana，实现可扩展的监控策略。
 
-![Cilium 示意图](006tNbRwly1fwqi98i51ij30sc0j80zn.jpg)
+![Cilium 示意图](006tNbRwly1fwqi98i51ij30sc0j80zn.webp)
 
 本节将带你了解什么是 Cilium 及选择它的原因。
 
@@ -153,7 +153,7 @@ KV 存储数据库用存储以下状态：
 
 下图是 Cilium 的组件示意图，Cilium 是位于 Linux kernel 与容器编排系统的中间层。向上可以为容器配置网络，向下可以向 Linux 内核生成 BPF 程序来控制容器的安全性和转发行为。
 
-![Cilium 组件 (来自 Cilium 官网)](cilium-arch.png)
+![Cilium 组件 (来自 Cilium 官网)](cilium-arch.webp)
 
 管理员通过 Cilium CLI 配置策略信息，这些策略信息将存储在 KV 数据库里，Cilium 使用插件（如 CNI）与容器编排调度系统交互，来实现容器间的联网和容器分配 IP 地址分配，同时 Cilium 还可以获得容器的各种元数据和流量信息，提供监控 API。
 
@@ -248,7 +248,7 @@ Available Commands:
 
 将该配置保存成 JSON 文件，在使用 `cilium policy import` 命令即可应用到 Cilium 网络中。
 
-![Cilium 网络配置策略](006tNbRwly1fwzreaalj6j30dz0dy3z3.jpg)
+![Cilium 网络配置策略](006tNbRwly1fwzreaalj6j30dz0dy3z3.webp)
 
 如图所示，此时 `id` 标签为其他值的容器就无法访问 `id=app1` 容器，策略配置中的 `toPorts` 中还可以配置 HTTP `method` 和 `path`，实现更细粒度的访问策略控制。
 
