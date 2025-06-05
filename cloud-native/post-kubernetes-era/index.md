@@ -53,7 +53,7 @@ Kubernetes 开源之初就继承了 Google 内部调度系统 Borg 的经验，�
 
 下图是 Kubernetes 原生内置的可以应用到一个 Pod 上的所有控制器、资源对象等。
 
-![Kubernetes 概念](kubernetes-concepts.png)
+![Kubernetes 概念](kubernetes-concepts.webp)
 
 图片来自图书 [Kubernetes Patterns（O’Reilly）](https://www.redhat.com/cms/managed-files/cm-oreilly-kubernetes-patterns-ebook-f19824-201910-en.pdf)
 

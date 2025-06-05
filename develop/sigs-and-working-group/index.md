@@ -18,7 +18,7 @@ Kubernetes 的社区是以 SIG（Special Interest Group 特别兴趣小组）和
 
 所有的 SIG 和工作组都使用 slack 和邮件列表沟通。
 
-![Kubernetes SIG 组织结构](kubernetes-sigs.jpg)
+![Kubernetes SIG 组织结构](kubernetes-sigs.webp)
 
 ## 主要 SIG 列表
 

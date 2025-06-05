@@ -26,7 +26,7 @@ Envoy 输出许多统计数据，这取决于启用的组件和它们的配置�
 
 下图显示了通过这些概念的请求流。
 
-![Envoy 构建块](envoy-block.jpg)
+![Envoy 构建块](envoy-block.webp)
 
 这一切都从监听器开始。Envoy 暴露的监听器是命名的网络位置，可以是一个 IP 地址和一个端口，也可以是一个 Unix 域套接字路径。Envoy 通过监听器接收连接和请求。考虑一下下面的 Envoy 配置。
 
@@ -55,13 +55,13 @@ Envoy 定义了三类过滤器：监听器过滤器、网络过滤器和 HTTP �
 
 每个通过监听器进来的请求可以流经多个过滤器。我们还可以写一个配置，根据传入的请求或连接属性选择不同的过滤器链。
 
-![过滤器链](filter-chain.jpg)
+![过滤器链](filter-chain.webp)
 
 一个特殊的、内置的网络过滤器被称为 **HTTP 连接管理器**过滤器（HTTP Connection Manager Filter）或 **HCM**。HCM 过滤器能够将原始字节转换为 HTTP 级别的消息。它可以处理访问日志，生成请求 ID，操作头信息，管理路由表，并收集统计数据。我们将在以后的课程中对 HCM 进行更详细的介绍。
 
 就像我们可以为每个监听器定义多个网络过滤器（其中一个是 HCM）一样，Envoy 也支持在 HCM 过滤器中定义多个 HTTP 级过滤器。我们可以在名为 `http_filters` 的字段下定义这些 HTTP 过滤器。
 
-![HCM 过滤器](hcm-filter.jpg)
+![HCM 过滤器](hcm-filter.webp)
 
 HTTP 过滤器链中的最后一个过滤器必须是路由器过滤器（`envoy.filters.HTTP.router`）。路由器过滤器负责执行路由任务。这最终把我们带到了第二个构件 —— **路由**。
 
