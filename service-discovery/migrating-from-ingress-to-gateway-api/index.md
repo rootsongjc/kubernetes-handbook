@@ -112,6 +112,7 @@ flowchart TD
 ![从 Ingress 迁移到 Gateway API 的步骤](4b2fe8abad28e57ebbd8900b2298d42a.svg)
 
 下面是对图中步骤的说明：
+
 - **步骤 1：定义 Gateway**：创建一个 Gateway 资源，并配置对应的 GatewayClass（'prod'）。定义两个监听器：HTTP 在 80 端口，HTTPS 在 443 端口。HTTPS 监听器还包括了 TLS 终止设置，使用名为 'example-com' 的 Secret。
 - **步骤 2：定义 HTTPRoutes**：根据 Ingress 资源的定义，将路由拆分成两个 HTTPRoutes，分别对应 'foo.example.com' 和 'bar.example.com' 的主机名。这些 HTTPRoutes 附加到 HTTPS 监听器。
 - **步骤 3：配置 TLS 重定向**：创建一个新的 HTTPRoute 用于处理 HTTP 到 HTTPS 的重定向，这一设置原先通过 Ingress 注解来配置。

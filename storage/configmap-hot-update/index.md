@@ -144,16 +144,16 @@ ConfigMap 结构体的定义：
 ```go
 // ConfigMap holds configuration data for pods to consume.
 type ConfigMap struct {
-	metav1.TypeMeta `json:",inline"`
-	// Standard object's metadata.
-	// More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata
-	// +optional
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+ metav1.TypeMeta `json:",inline"`
+ // Standard object's metadata.
+ // More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata
+ // +optional
+ metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
-	// Data contains the configuration data.
-	// Each key must be a valid DNS_SUBDOMAIN with an optional leading dot.
-	// +optional
-	Data map[string]string `json:"data,omitempty" protobuf:"bytes,2,rep,name=data"`
+ // Data contains the configuration data.
+ // Each key must be a valid DNS_SUBDOMAIN with an optional leading dot.
+ // +optional
+ Data map[string]string `json:"data,omitempty" protobuf:"bytes,2,rep,name=data"`
 }
 ```
 
@@ -162,15 +162,15 @@ type ConfigMap struct {
 ```go
 // ConfigMapInterface has methods to work with ConfigMap resources.
 type ConfigMapInterface interface {
-	Create(*v1.ConfigMap) (*v1.ConfigMap, error)
-	Update(*v1.ConfigMap) (*v1.ConfigMap, error)
-	Delete(name string, options *meta_v1.DeleteOptions) error
-	DeleteCollection(options *meta_v1.DeleteOptions, listOptions meta_v1.ListOptions) error
-	Get(name string, options meta_v1.GetOptions) (*v1.ConfigMap, error)
-	List(opts meta_v1.ListOptions) (*v1.ConfigMapList, error)
-	Watch(opts meta_v1.ListOptions) (watch.Interface, error)
-	Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1.ConfigMap, err error)
-	ConfigMapExpansion
+ Create(*v1.ConfigMap) (*v1.ConfigMap, error)
+ Update(*v1.ConfigMap) (*v1.ConfigMap, error)
+ Delete(name string, options *meta_v1.DeleteOptions) error
+ DeleteCollection(options *meta_v1.DeleteOptions, listOptions meta_v1.ListOptions) error
+ Get(name string, options meta_v1.GetOptions) (*v1.ConfigMap, error)
+ List(opts meta_v1.ListOptions) (*v1.ConfigMapList, error)
+ Watch(opts meta_v1.ListOptions) (watch.Interface, error)
+ Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *v1.ConfigMap, err error)
+ ConfigMapExpansion
 }
 ```
 
@@ -179,14 +179,14 @@ type ConfigMapInterface interface {
 ```go
 // Create takes the representation of a configMap and creates it.  Returns the server's representation of the configMap, and an error, if there is any.
 func (c *configMaps) Create(configMap *v1.ConfigMap) (result *v1.ConfigMap, err error) {
-	result = &v1.ConfigMap{}
-	err = c.client.Post().
-		Namespace(c.ns).
-		Resource("configmaps").
-		Body(configMap).
-		Do().
-		Into(result)
-	return
+ result = &v1.ConfigMap{}
+ err = c.client.Post().
+  Namespace(c.ns).
+  Resource("configmaps").
+  Body(configMap).
+  Do().
+  Into(result)
+ return
 }
 ```
 
@@ -213,37 +213,37 @@ HTTP 请求中的结构体：
 // Any errors are stored until the end of your call, so you only have to
 // check once.
 type Request struct {
-	// required
-	client HTTPClient
-	verb   string
+ // required
+ client HTTPClient
+ verb   string
 
-	baseURL     *url.URL
-	content     ContentConfig
-	serializers Serializers
+ baseURL     *url.URL
+ content     ContentConfig
+ serializers Serializers
 
-	// generic components accessible via method setters
-	pathPrefix string
-	subpath    string
-	params     url.Values
-	headers    http.Header
+ // generic components accessible via method setters
+ pathPrefix string
+ subpath    string
+ params     url.Values
+ headers    http.Header
 
-	// structural elements of the request that are part of the Kubernetes API conventions
-	namespace    string
-	namespaceSet bool
-	resource     string
-	resourceName string
-	subresource  string
-	timeout      time.Duration
+ // structural elements of the request that are part of the Kubernetes API conventions
+ namespace    string
+ namespaceSet bool
+ resource     string
+ resourceName string
+ subresource  string
+ timeout      time.Duration
 
-	// output
-	err  error
-	body io.Reader
+ // output
+ err  error
+ body io.Reader
 
-	// This is only used for per-request timeouts, deadlines, and cancellations.
-	ctx context.Context
+ // This is only used for per-request timeouts, deadlines, and cancellations.
+ ctx context.Context
 
-	backoffMgr BackoffManager
-	throttle   flowcontrol.RateLimiter
+ backoffMgr BackoffManager
+ throttle   flowcontrol.RateLimiter
 }
 ```
 
@@ -295,7 +295,7 @@ log_level=INFO
 修改 ConfigMap
 
 ```bash
-$ kubectl edit configmap env-config
+kubectl edit configmap env-config
 ```
 
 修改 `log_level` 的值为 `DEBUG`。
@@ -352,7 +352,7 @@ INFO
 修改 ConfigMap
 
 ```bash
-$ kubectl edit configmap special-config
+kubectl edit configmap special-config
 ```
 
 修改 `log_level` 的值为 `DEBUG`。
@@ -366,14 +366,14 @@ DEBUG
 
 我们可以看到使用 ConfigMap 方式挂载的 Volume 的文件中的内容已经变成了 `DEBUG`。
 
-Known Issue：如果使用 ConfigMap 的 **subPath** 挂载为 Container 的 Volume，Kubernetes 不会做自动热更新：https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#mounted-configmaps-are-updated-automatically
+Known Issue：如果使用 ConfigMap 的 **subPath** 挂载为 Container 的 Volume，Kubernetes 不会做自动热更新：<https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#mounted-configmaps-are-updated-automatically>
 
 ## ConfigMap 更新后滚动更新 Pod
 
 更新 ConfigMap 目前并不会触发相关 Pod 的滚动更新，可以通过修改 pod annotations 的方式强制触发滚动更新。
 
 ```bash
-$ kubectl patch deployment my-nginx --patch '{"spec": {"template": {"metadata": {"annotations": {"version/config": "20180411" }}}}}'
+kubectl patch deployment my-nginx --patch '{"spec": {"template": {"metadata": {"annotations": {"version/config": "20180411" }}}}}'
 ```
 
 这个例子里我们在 `.spec.template.metadata.annotations` 中添加 `version/config`，每次通过修改 `version/config` 来触发滚动更新。

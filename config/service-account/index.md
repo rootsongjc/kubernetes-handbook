@@ -58,11 +58,14 @@ spec:
 ## 使用 Service Account 作为用户权限管理配置 kubeconfig
 
 ### 创建服务账号
+
 ```
 kubectl create serviceaccount sample-sc
 ```
+
 这时候我们将得到一个在 default namespace 的 serviceaccount 账号；
 我们运行`kubectl get serviceaccount sample-sc` 将得到如下结果：
+
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -83,6 +86,7 @@ secrets:
 该 token 保存在该 serviceaccount 保存的 secret 中；
 
 我们运行`kubectl get secret sample-sc-token-9x7nk` 将会得到如下结果：
+
 ```yaml
 apiVersion: v1
 data:
@@ -106,7 +110,9 @@ type: kubernetes.io/service-account-token
 其中 `{data.token}` 就会是我们的用户 token 的 base64 编码，之后我们配置 kubeconfig 的时候将会用到它；
 
 ### 创建角色
+
 比如我们想创建一个只可以查看集群`deployments`，`services`，`pods` 相关的角色，应该使用如下配置
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 ## 这里也可以使用 Role
@@ -134,6 +140,7 @@ rules:
 ```
 
 ### 创建角色绑定
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 ## 这里也可以使用 RoleBinding
@@ -153,10 +160,12 @@ subjects:
 ```
 
 ### 配置 kubeconfig
+
 经过以上的步骤，我们最开始创建的 serviceaccount 就可以用来访问我们的集群了，
 同时我们可以动态更改 `ClusterRole` 的授权来及时控制某个账号的权限 (这也是使用 serviceaccount 的好处)；
 
 配置应该如下：
+
 ```yaml
 apiVersion: v1
 clusters:
@@ -235,7 +244,7 @@ secrets:
 你可以清理 service account，如下所示：
 
 ```bash
-$ kubectl delete serviceaccount/build-robot
+kubectl delete serviceaccount/build-robot
 ```
 
 ## 手动创建 service account 的 API token

@@ -85,7 +85,7 @@ Authorization: Bearer 31ada4fd-adec-460c-809a-9e56ceb75269
 
 该功能仍处于 **alpha** 版本。
 
-为了简化新集群的初始化引导过程，Kubernetes 中包含了一个名为 *Bootstrap Token* 的动态管理的 bearer token。这些 token 使用 Secret 存储在 `kube-system` namespace 中，在那里它们可以被动态管理和创建。Controller Manager 中包含了一个 TokenCleaner 控制器，用于在 bootstrap token 过期时删除将其删除。
+为了简化新集群的初始化引导过程，Kubernetes 中包含了一个名为 _Bootstrap Token_ 的动态管理的 bearer token。这些 token 使用 Secret 存储在 `kube-system` namespace 中，在那里它们可以被动态管理和创建。Controller Manager 中包含了一个 TokenCleaner 控制器，用于在 bootstrap token 过期时删除将其删除。
 
 这些 token 的形式是 `[a-z0-9]{6}.[a-z0-9]{16}`。第一部分是 Token ID，第二部分是 Token Secret。你在 HTTP header 中指定的 token 如下所示：
 
@@ -95,7 +95,7 @@ Authorization: Bearer 781292.db7bc3a58fc5f07e
 
 在 API server 的启动参数中加上  `--experimental-bootstrap-token-auth` 标志以启用 Bootstrap Token Authenticator。你必须通过 Controller Manager 上的 `--controllers` 标志启用 TokenCleaner 控制器，如 `--controllers=*,tokencleaner`。如果你使用它来引导集群， `kubeadm` 会为你完成。
 
-认证者认证为 `system:bootstrap:<Token ID>` 。被包含在 `system:bootstrappers` 组中。命名和组是有意限制用户使用过去的 bootstap token。可以使用用户名和组（`kubeadm` 使用）来制定适当的授权策略以支持引导集群。 
+认证者认证为 `system:bootstrap:<Token ID>` 。被包含在 `system:bootstrappers` 组中。命名和组是有意限制用户使用过去的 bootstap token。可以使用用户名和组（`kubeadm` 使用）来制定适当的授权策略以支持引导集群。
 
 有关 Bootstrap Token 身份验证器和控制器的更深入的文档，以及如何使用 `kubeadm` 管理这些令牌，请参阅 Bootstrap Token。
 
@@ -109,7 +109,7 @@ Authorization: Bearer 781292.db7bc3a58fc5f07e
 password,user,uid,"group1,group2,group3"
 ```
 
-当使用来自 HTTP 客户端的基本身份验证时，API server 需要` Authorization` header 中包含 `Basic BASE64ENCODED(USER:PASSWORD)` 的值。
+当使用来自 HTTP 客户端的基本身份验证时，API server 需要`Authorization` header 中包含 `Basic BASE64ENCODED(USER:PASSWORD)` 的值。
 
 ### Service Account Token
 
@@ -192,7 +192,7 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 5. API server 将通过检查配置中指定的证书来确保 JWT 签名有效
 6. 检查以确保 `id_token` 没有过期
 7. 确保用户已授权
-8. 授权 API server 后向 `kubectl` 
+8. 授权 API server 后向 `kubectl`
 9. `kubectl` 向用户提供反馈
 
 由于所有需要验证你身份的数据都在 `id_token` 中，Kubernetes 不需要向身份提供商“phone home”。在每个请求都是无状态的模型中，这为认证提供了非常可扩展的解决方案。它确实提供了一些挑战：
@@ -209,11 +209,11 @@ Service account 验证时用户名 `system:serviceaccount:(NAMESPACE):(SERVICEAC
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
 | `--oidc-issuer-url`     | 允许 API server 发现公共签名密钥的提供者的 URL。只接受使用 `https://` 的方案。通常是提供商的 URL 地址，不包含路径，例如“<https://accounts.google.com>”或者“<https://login.salesforce.com>”。这个 URL 应该指向下面的 .well-known/openid-configuration | 如果发现 URL 是 `https://accounts.google.com/.well-known/openid-configuration`，值应该是`https://accounts.google.com` | 是       |
 | `--oidc-client-id`      | 所有的 token 必须为其颁发的客户端 ID                         | kubernetes                                                   | 是       |
-| `--oidc-username-claim` | JWT 声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如` email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                                          | 否       |
+| `--oidc-username-claim` | JWT 声明使用的用户名。默认情况下，`sub` 是最终用户的唯一标识符。管理员可以选择其他声明，如`email` 或 `name`，具体取决于他们的提供者。不过，`email` 以外的其他声明将以发行者的 URL 作为前缀，以防止与其他插件命名冲突。 | sub                                                          | 否       |
 | `--oidc-groups-claim`   | JWT 声明使用的用户组。如果生命存在，它必须是一个字符串数组。  | groups                                                       | 否       |
 | `--oidc-ca-file`        | 用来签名你的身份提供商的网络 CA 证书的路径。默认为主机的跟 CA。 | `/etc/kubernetes/ssl/kc-ca.pem`                              | 否       |
 
-如果为 `--oidc-username-claim` 选择了除 `email` 以外的其他声明，则该值将以 `--oidc-issuer-url` 作为前缀，以防止与现有 Kubernetes 名称（例如 `system:users`）冲突。例如，如果提供商网址是 https://accounts.google.com，而用户名声明映射到 `jane`，则插件会将用户身份验证为：
+如果为 `--oidc-username-claim` 选择了除 `email` 以外的其他声明，则该值将以 `--oidc-issuer-url` 作为前缀，以防止与现有 Kubernetes 名称（例如 `system:users`）冲突。例如，如果提供商网址是 <https://accounts.google.com，而用户名声明映射到> `jane`，则插件会将用户身份验证为：
 
 ```http
 https://accounts.google.com#jane
@@ -391,7 +391,7 @@ HTTP 状态代码可以用来提供额外的错误上下文。
 可以配置 API server 从请求 header 的值中识别用户，例如 `X-Remote-User`。这样的设计是用来与请求 header 值的验证代理结合使用。
 
 - `--requestheader-username-headers` 必需，大小写敏感。按 header 名称和顺序检查用户标识。包含值的第一个 header 将被作为用户名。
-- `--requestheader-group-headers` 1.6 以上版本。可选。大小写敏感。建议为“X-Remote-Group”。按 header 名称和顺序检查用户组。所有指定的 header 中的所有值都将作为组名。 
+- `--requestheader-group-headers` 1.6 以上版本。可选。大小写敏感。建议为“X-Remote-Group”。按 header 名称和顺序检查用户组。所有指定的 header 中的所有值都将作为组名。
 - `--requestheader-extra-headers-prefix` 1.6 以上版本。可选，大小写敏感。建议为“X-Remote-Extra-”。标题前缀可用于查找有关用户的额外信息（通常由配置的授权插件使用）。以任何指定的前缀开头的 header 都会删除前缀，header 名称的其余部分将成为额外的键值，而 header 值则是额外的值。
 
 例如下面的配置：
@@ -443,7 +443,7 @@ extra:
 
 ## 匿名请求
 
-启用时，未被其他已配置身份验证方法拒绝的请求将被视为匿名请求，并给予 `system:anonymous` 的用户名和` system:unuthenticated` 的组名。
+启用时，未被其他已配置身份验证方法拒绝的请求将被视为匿名请求，并给予 `system:anonymous` 的用户名和`system:unuthenticated` 的组名。
 
 例如，在配置了令牌认证和启用了匿名访问的服务器上，提供无效的 bearer token 的请求将收到 `401 Unauthorized` 错误。提供 bearer token 的请求将被视为匿名请求。
 

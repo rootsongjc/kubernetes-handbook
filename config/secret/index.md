@@ -386,7 +386,7 @@ LASTSEEN   FIRSTSEEN   COUNT     NAME            KIND      SUBOBJECT            
 创建一个包含 ssh key 的 secret：
 
 ```bash
-$ kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=/path/to/.ssh/id_rsa --from-file=ssh-publickey=/path/to/.ssh/id_rsa.pub
+kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=/path/to/.ssh/id_rsa --from-file=ssh-publickey=/path/to/.ssh/id_rsa.pub
 ```
 
 **安全性注意事项**：发送自己的 ssh 密钥之前要仔细思考：集群的其他用户可能有权访问该密钥。使用你想要共享 Kubernetes 群集的所有用户可以访问的服务帐户，如果它们遭到入侵，可以撤销。

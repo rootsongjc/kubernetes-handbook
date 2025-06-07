@@ -91,7 +91,7 @@ spec:
 一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 `kubectl create` 命令，传递 `.yaml` 作为参数。下面是一个示例：
 
 ```bash
-$ kubectl create -f docs/user-guide/nginx-deployment.yaml --record
+kubectl create -f docs/user-guide/nginx-deployment.yaml --record
 ```
 
 输出类似如下这样：

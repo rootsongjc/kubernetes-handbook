@@ -85,7 +85,7 @@ route_config:
     ...
 ```
 
-如果传入请求的目的地是 `tetrate.io`（即 `Host/Authority` 标头被设置为其中一个值），则 `tetrate_hosts ` 虚拟主机中定义的路由将得到处理。
+如果传入请求的目的地是 `tetrate.io`（即 `Host/Authority` 标头被设置为其中一个值），则 `tetrate_hosts` 虚拟主机中定义的路由将得到处理。
 
 同样，如果 `Host/Authority` 标头包含 `test.tetrate.io` 或 `qa.tetrate.io`，`test_hosts` 虚拟主机下的路由将被处理。使用这种设计，我们可以用一个监听器（`0.0.0.0:10000`）来处理多个顶级域。
 
@@ -139,7 +139,7 @@ static_resources:
 | 路由匹配          | 描述                                     | 示例                                                         |
 | ----------------- | ---------------------------------------- | ------------------------------------------------------------ |
 | `prefix`          | 前缀必须与`:path` 头的开头相符。         | `/hello` 与 `hello.com/hello`、`hello.com/helloworld` 和 `hello.com/hello/v1` 匹配。 |
-| `path`            | 路径必须与`:path` 头完全匹配。           | `/hello `匹配 `hello.com/hello`，但不匹配 `hello.com/helloworld `或 `hello.com/hello/v1` |
+| `path`            | 路径必须与`:path` 头完全匹配。           | `/hello`匹配 `hello.com/hello`，但不匹配 `hello.com/helloworld`或 `hello.com/hello/v1` |
 | `safe_regex`      | 所提供的正则表达式必须与`:path` 头匹配。 | `/\{3}` 匹配任何以 `/` 开头的三位数。例如，与 `hello.com/123` 匹配，但不能匹配 `hello.com/hello` 或 `hello.com/54321。` |
 | `connect_matcher` | 匹配器只匹配 CONNECT 请求。              |                                                              |
 

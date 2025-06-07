@@ -95,7 +95,7 @@ how.nice.to.look=fairlyNice
 使用下面的命令可以创建一个包含目录中所有文件的 ConfigMap。
 
 ```bash
-$ kubectl create configmap game-config --from-file=docs/user-guide/configmap/kubectl
+kubectl create configmap game-config --from-file=docs/user-guide/configmap/kubectl
 ```
 
 `—from-file` 指定在目录下的所有文件都会被用在 ConfigMap 里面创建一个键值对，键的名字就是文件名，值就是文件的内容。
@@ -118,7 +118,7 @@ ui.properties:          83 bytes
 我们可以看到那两个 key 是从 kubectl 指定的目录中的文件名。这些 key 的内容可能会很大，所以在 kubectl describe 的输出中，只能够看到键的名字和他们的大小。如果想要看到键的值的话，可以使用 `kubectl get`：
 
 ```bash
-$ kubectl get configmaps game-config -o yaml
+kubectl get configmaps game-config -o yaml
 ```
 
 我们以 `yaml` 格式输出配置。

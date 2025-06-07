@@ -55,8 +55,8 @@ Pod 除了必须字段外，在 DaemonSet 中的 Pod 模板必须指定合理的
 
 `spec.selector` 表示一个对象，它由如下两个字段组成：
 
-* `matchLabels` - 与 [ReplicationController](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/) 的 `.spec.selector` 的原理相同。
-* `matchExpressions` - 允许构建更加复杂的 Selector，可以通过指定 key、value 列表，以及与 key 和 value 列表的相关的操作符。
+- `matchLabels` - 与 [ReplicationController](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/) 的 `.spec.selector` 的原理相同。
+- `matchExpressions` - 允许构建更加复杂的 Selector，可以通过指定 key、value 列表，以及与 key 和 value 列表的相关的操作符。
 
 当上述两个字段都指定时，结果表示的是 AND 关系。
 
@@ -123,4 +123,3 @@ Daemon Pod 关心 [Taint 和 Toleration](https://kubernetes.io/docs/concepts/con
 
 DaemonSet 与 Replication Controller 非常类似，它们都能创建 Pod，这些 Pod 都具有不期望被终止的进程（例如，Web 服务器、存储服务器）。
 为无状态的 Service 使用 Replication Controller，像 frontend，实现对副本的数量进行扩缩容、平滑升级，比之于精确控制 Pod 运行在某个主机上要重要得多。需要 Pod 副本总是运行在全部或特定主机上，并需要先于其他 Pod 启动，当这被认为非常重要时，应该使用 Daemon Controller。
-

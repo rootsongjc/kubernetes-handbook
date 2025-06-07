@@ -113,10 +113,10 @@ $ docker run -d --name nginx -v `pwd`/nginx.conf:/etc/nginx/nginx.conf --net=con
 然后再为 [ghost](https://github.com/TryGhost/Ghost) 创建一个应用容器，这是一款博客软件。
 
 ```bash
-$ docker run -d --name ghost --net=container:pause --ipc=container:pause --pid=container:pause ghost
+docker run -d --name ghost --net=container:pause --ipc=container:pause --pid=container:pause ghost
 ```
 
-现在访问 http://localhost:8880/ 就可以看到 ghost 博客的界面了。
+现在访问 <http://localhost:8880/> 就可以看到 ghost 博客的界面了。
 
 **解析**
 

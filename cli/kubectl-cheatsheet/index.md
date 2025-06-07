@@ -20,8 +20,8 @@ keywords:
 ## Kubectl 自动补全
 
 ```bash
-$ source <(kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.
-$ source <(kubectl completion zsh)  # setup autocomplete in zsh
+source <(kubectl completion bash) # setup autocomplete in bash, bash-completion package should be installed first.
+source <(kubectl completion zsh)  # setup autocomplete in zsh
 ```
 
 ## Kubectl 上下文和配置
@@ -185,42 +185,42 @@ $ kubectl patch deployment valid-deployment  --type json   -p='[{"op": "remove",
 在编辑器中编辑任何 API 资源。
 
 ```bash
-$ kubectl edit svc/docker-registry                      # 编辑名为 docker-registry 的 service
-$ KUBE_EDITOR="nano" kubectl edit svc/docker-registry   # 使用其它编辑器
+kubectl edit svc/docker-registry                      # 编辑名为 docker-registry 的 service
+KUBE_EDITOR="nano" kubectl edit svc/docker-registry   # 使用其它编辑器
 ```
 
 ## Scale 资源
 
 ```bash
-$ kubectl scale --replicas=3 rs/foo                                 # Scale a replicaset named 'foo' to 3
-$ kubectl scale --replicas=3 -f foo.yaml                            # Scale a resource specified in "foo.yaml" to 3
-$ kubectl scale --current-replicas=2 --replicas=3 deployment/mysql  # If the deployment named mysql's current size is 2, scale mysql to 3
-$ kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   # Scale multiple replication controllers
+kubectl scale --replicas=3 rs/foo                                 # Scale a replicaset named 'foo' to 3
+kubectl scale --replicas=3 -f foo.yaml                            # Scale a resource specified in "foo.yaml" to 3
+kubectl scale --current-replicas=2 --replicas=3 deployment/mysql  # If the deployment named mysql's current size is 2, scale mysql to 3
+kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   # Scale multiple replication controllers
 ```
 
 ## 删除资源
 
 ```bash
-$ kubectl delete -f ./pod.json                                              # 删除 pod.json 文件中定义的类型和名称的 pod
-$ kubectl delete pod,service baz foo                                        # 删除名为“baz”的 pod 和名为“foo”的 service
-$ kubectl delete pods,services -l name=myLabel                              # 删除具有 name=myLabel 标签的 pod 和 Service
-$ kubectl delete pods,services -l name=myLabel --include-uninitialized      # 删除具有 name=myLabel 标签的 pod 和 service，包括尚未初始化的
-$ kubectl -n my-ns delete po,svc --all                                      # 删除 my-ns namespace 下的所有 pod 和 Service，包括尚未初始化的
+kubectl delete -f ./pod.json                                              # 删除 pod.json 文件中定义的类型和名称的 pod
+kubectl delete pod,service baz foo                                        # 删除名为“baz”的 pod 和名为“foo”的 service
+kubectl delete pods,services -l name=myLabel                              # 删除具有 name=myLabel 标签的 pod 和 Service
+kubectl delete pods,services -l name=myLabel --include-uninitialized      # 删除具有 name=myLabel 标签的 pod 和 service，包括尚未初始化的
+kubectl -n my-ns delete po,svc --all                                      # 删除 my-ns namespace 下的所有 pod 和 Service，包括尚未初始化的
 ```
 
 ## 与运行中的 Pod 交互
 
 ```bash
-$ kubectl logs my-pod                                 # dump 输出 pod 的日志（stdout）
-$ kubectl logs my-pod -c my-container                 # dump 输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）
-$ kubectl logs -f my-pod                              # 流式输出 pod 的日志（stdout）
-$ kubectl logs -f my-pod -c my-container              # 流式输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）
-$ kubectl run -i --tty busybox --image=busybox -- sh  # 交互式 shell 的方式运行 pod
-$ kubectl attach my-pod -i                            # 连接到运行中的容器
-$ kubectl port-forward my-pod 5000:6000               # 转发 pod 中的 6000 端口到本地的 5000 端口
-$ kubectl exec my-pod -- ls /                         # 在已存在的容器中执行命令（只有一个容器的情况下）
-$ kubectl exec my-pod -c my-container -- ls /         # 在已存在的容器中执行命令（pod 中有多个容器的情况下）
-$ kubectl top pod POD_NAME --containers               # 显示指定 pod 和容器的指标度量
+kubectl logs my-pod                                 # dump 输出 pod 的日志（stdout）
+kubectl logs my-pod -c my-container                 # dump 输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）
+kubectl logs -f my-pod                              # 流式输出 pod 的日志（stdout）
+kubectl logs -f my-pod -c my-container              # 流式输出 pod 中容器的日志（stdout，pod 中有多个容器的情况下使用）
+kubectl run -i --tty busybox --image=busybox -- sh  # 交互式 shell 的方式运行 pod
+kubectl attach my-pod -i                            # 连接到运行中的容器
+kubectl port-forward my-pod 5000:6000               # 转发 pod 中的 6000 端口到本地的 5000 端口
+kubectl exec my-pod -- ls /                         # 在已存在的容器中执行命令（只有一个容器的情况下）
+kubectl exec my-pod -c my-container -- ls /         # 在已存在的容器中执行命令（pod 中有多个容器的情况下）
+kubectl top pod POD_NAME --containers               # 显示指定 pod 和容器的指标度量
 ```
 
 ## 与节点和集群交互

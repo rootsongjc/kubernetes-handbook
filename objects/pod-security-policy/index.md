@@ -15,7 +15,7 @@ keywords:
 - 策略
 - 默认
 ---
-`PodSecurityPolicy` 类型的对象能够控制，是否可以向 Pod 发送请求，该 Pod 能够影响被应用到 Pod 和容器的 `SecurityContext`。 
+`PodSecurityPolicy` 类型的对象能够控制，是否可以向 Pod 发送请求，该 Pod 能够影响被应用到 Pod 和容器的 `SecurityContext`。
 
 ## 什么是 Pod 安全策略？
 
@@ -172,7 +172,7 @@ restricted  false  []    RunAsAny  MustRunAsNonRoot  RunAsAny  RunAsAny  false  
 通过交互方式修改策略，使用 `kubectl edit`：
 
 ```bash
-$ kubectl edit psp permissive
+kubectl edit psp permissive
 ```
 
 该命令将打开一个默认文本编辑器，在这里能够修改策略。

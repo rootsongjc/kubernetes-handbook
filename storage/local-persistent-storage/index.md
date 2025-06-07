@@ -87,14 +87,14 @@ export KUBE_FEATURE_GATES ="BlockVolume = true"
 
 1. 根据应用程序的要求对每个节点上的磁盘进行分区和格式化。
 2. 根据 StorageClass 将所有文件系统挂载到同一个目录下。目录在 configmap 中指定，见下文。
-3. 使用 `KUBE_FEATURE_GATES `配置 Kubernetes API server、controller manager、scheduler 和所有 kubelet，[如上所述](https://github.com/kubernetes-incubator/external-storage/tree/master/local-volume#enabling-the-alpha-feature-gates)。
+3. 使用 `KUBE_FEATURE_GATES`配置 Kubernetes API server、controller manager、scheduler 和所有 kubelet，[如上所述](https://github.com/kubernetes-incubator/external-storage/tree/master/local-volume#enabling-the-alpha-feature-gates)。
 4. 如果不使用默认 Kubernetes 调度程序策略，则必须启用以下谓词：
    - 1.9 之前：`NoVolumeBindConflict`
    - 1.9+：`VolumeBindingChecker`
 
 #### 选项 2：本地测试集群
 
-1. 创建 `/mnt/disks `目录并将多个卷挂载到其子目录。下面的示例使用三个 ram 磁盘来模拟真实的本地卷：
+1. 创建 `/mnt/disks`目录并将多个卷挂载到其子目录。下面的示例使用三个 ram 磁盘来模拟真实的本地卷：
 
    ```bash
    mkdir/mnt/disks
@@ -156,23 +156,23 @@ $kubectl create -f provisioner/deployment/kubernetes/example/default_example_sto
    local-pv-ce05be60   1024220Ki   RWO           Delete          Available             local-storage             26s
    
    $ kubectl describe pv local-pv-ce05be60 
-   Name:		local-pv-ce05be60
-   Labels:		<none>
-   Annotations:	pv.kubernetes.io/provisioned-by=local-volume-provisioner-minikube-18f57fb2-a186-11e7-b543-080027d51893
-   StorageClass:	local-fast
-   Status:		Available
-   Claim:		
-   Reclaim Policy:	Delete
-   Access Modes:	RWO
-   Capacity:	1024220Ki
+   Name:  local-pv-ce05be60
+   Labels:  <none>
+   Annotations: pv.kubernetes.io/provisioned-by=local-volume-provisioner-minikube-18f57fb2-a186-11e7-b543-080027d51893
+   StorageClass: local-fast
+   Status:  Available
+   Claim:  
+   Reclaim Policy: Delete
+   Access Modes: RWO
+   Capacity: 1024220Ki
    NodeAffinity:
      Required Terms:
          Term 0:  kubernetes.io/hostname in [my-node]
-   Message:	
+   Message: 
    Source:
-       Type:	LocalVolume (a persistent volume backed by local storage on a node)
-       Path:	/mnt/disks/vol1
-   Events:		<none>
+       Type: LocalVolume (a persistent volume backed by local storage on a node)
+       Path: /mnt/disks/vol1
+   Events:  <none>
    ```
 
    上面描述的 PV 可以通过引用 `local-fast` storageClassName 声明和绑定到 PVC。
@@ -226,8 +226,8 @@ spec:
 - 对于 IO 隔离，建议每个卷使用整个磁盘
 - 对于容量隔离，建议使用单个分区
 - 避免重新创建具有相同节点名称的节点，而仍然存在指定了该节点亲和性的旧 PV。否则，系统可能认为新节点包含旧的 PV。
-- 对于带有文件系统的卷，建议在 fstab 条目和该挂载点的目录名称中使用它们的 UUID（例如 `ls -l/dev/disk/by-uuid ` 的输出）。这种做法可确保即使设备路径发生变化（例如，如果 `/dev/sda1` 在添加新磁盘时变为 `/dev/sdb1`），也不会错误地挂在本地卷。此外，这种做法将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
-- 对于没有文件系统的 raw block 卷，使用唯一的 ID 作为符号链接名称。根据你的环境，`/dev/disk/by-id/ `中的卷 ID 可能包含唯一的硬件序列号。否则，应该生成一个唯一的 ID。符号链接名称的唯一性将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
+- 对于带有文件系统的卷，建议在 fstab 条目和该挂载点的目录名称中使用它们的 UUID（例如 `ls -l/dev/disk/by-uuid` 的输出）。这种做法可确保即使设备路径发生变化（例如，如果 `/dev/sda1` 在添加新磁盘时变为 `/dev/sdb1`），也不会错误地挂在本地卷。此外，这种做法将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
+- 对于没有文件系统的 raw block 卷，使用唯一的 ID 作为符号链接名称。根据你的环境，`/dev/disk/by-id/`中的卷 ID 可能包含唯一的硬件序列号。否则，应该生成一个唯一的 ID。符号链接名称的唯一性将确保如果创建具有相同名称的另一个节点，则该节点上的任何卷都是唯一的，而不会误认为是具有相同名称的另一个节点上的卷。
 
 ### 删除/清理底层卷
 

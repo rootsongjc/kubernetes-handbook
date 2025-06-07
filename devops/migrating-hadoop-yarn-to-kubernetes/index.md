@@ -213,24 +213,24 @@ keywords:
 
    ```bash
    kubectl create configmap hadoop-config \
-   	  --from-file=artifacts/hadoop/bootstrap.sh \
-   	  --from-file=artifacts/hadoop/start-yarn-rm.sh \
-   	  --from-file=artifacts/hadoop/start-yarn-nm.sh \
-   	  --from-file=artifacts/hadoop/slaves \
-   	  --from-file=artifacts/hadoop/core-site.xml \
-   	  --from-file=artifacts/hadoop/hdfs-site.xml \
-   	  --from-file=artifacts/hadoop/mapred-site.xml \
-   	  --from-file=artifacts/hadoop/yarn-site.xml \
-   	  --from-file=artifacts/hadoop/capacity-scheduler.xml \
-   	  --from-file=artifacts/hadoop/container-executor.cfg \
-   	  --from-file=artifacts/hadoop/hadoop-env.sh \
-   	  --from-file=artifacts/hadoop/log4j.properties \
-   	  --from-file=artifacts/hadoop/nodemanager_exclude.txt \
-   	  --from-file=artifacts/hadoop/yarn-env.sh
+      --from-file=artifacts/hadoop/bootstrap.sh \
+      --from-file=artifacts/hadoop/start-yarn-rm.sh \
+      --from-file=artifacts/hadoop/start-yarn-nm.sh \
+      --from-file=artifacts/hadoop/slaves \
+      --from-file=artifacts/hadoop/core-site.xml \
+      --from-file=artifacts/hadoop/hdfs-site.xml \
+      --from-file=artifacts/hadoop/mapred-site.xml \
+      --from-file=artifacts/hadoop/yarn-site.xml \
+      --from-file=artifacts/hadoop/capacity-scheduler.xml \
+      --from-file=artifacts/hadoop/container-executor.cfg \
+      --from-file=artifacts/hadoop/hadoop-env.sh \
+      --from-file=artifacts/hadoop/log4j.properties \
+      --from-file=artifacts/hadoop/nodemanager_exclude.txt \
+      --from-file=artifacts/hadoop/yarn-env.sh
    kubectl  create configmap spark-config \
-   	  --from-file=artifacts/spark/spark-bootstrap.sh \
-   	  --from-file=artifacts/spark/spark-env.sh \
-   	  --from-file=artifacts/spark/spark-defaults.conf
+      --from-file=artifacts/spark/spark-bootstrap.sh \
+      --from-file=artifacts/spark/spark-env.sh \
+      --from-file=artifacts/spark/spark-defaults.conf
    ```
 
 所有的配置完成后，可以可以使用 kubectl 命令来启动和管理集群了，我们编写了 Makefile，你可以直接使用该 Makefile 封装的命令实现部分的自动化。

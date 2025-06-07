@@ -120,7 +120,7 @@ Federated Service 的核心是包含一个 Template（Kubernetes 服务的定义
 
 ### Pod 如何发现联邦服务
 
-默认情况下，Kubernetes 集群预先配置了集群本地 DNS 服务器，以及智能构建的 DNS 搜索路径，它们共同确保了由 pod 内部运行的软件发出的 myservice、`myservice.mynamespace `或 `some-other-service.other-namespace` 等 DNS 查询会自动扩展并正确解析到本地集群中运行的服务的相应 IP。
+默认情况下，Kubernetes 集群预先配置了集群本地 DNS 服务器，以及智能构建的 DNS 搜索路径，它们共同确保了由 pod 内部运行的软件发出的 myservice、`myservice.mynamespace`或 `some-other-service.other-namespace` 等 DNS 查询会自动扩展并正确解析到本地集群中运行的服务的相应 IP。
 
 随着联邦服务和跨集群服务发现的引入，这个概念被扩展到全局覆盖在你的集群联邦中所有集群中运行的 Kubernetes 服务。为了利用这个扩展的范围，我们需要使用一个稍微不同的 DNS 名称（例如 `myservice.mynamespace.myfederation`）来解析联邦服务。使用不同的 DNS 名还可以避免现有的应用意外地穿越区域网络而会产生不必要的网络费用或延迟。
 
@@ -161,7 +161,6 @@ Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Fe
 
 相较于 v1，v2 在组件上最大改变是将 API Server 移除，并通过 CRD 机制来完成 Federated Resources 的扩充。而 KubeFed Controller 则管理这些 CRD，并实现同步资源、跨集群编排等功能。
 
-
 目前 KubeFed 通过 CRD 方式新增了四种 API 群组来实现联邦机制的核心功能：
 
 | API Group                      | 用途                                                  |
@@ -173,7 +172,7 @@ Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Fe
 
 在这些核心功能中，我们必须先了解一些 KebeFed 提出的基础概念后，才能更清楚知道 KubeFed 是如何运作的。
 
-###  Cluster Configuration
+### Cluster Configuration
 
 用来定义哪些 Kubernetes 集群要被联邦。可通过 kubefedctl join/unjoin 来加入/删除集群，当成功加入时，会建立一个 KubeFedCluster 组件来储存集群相关信息，如 API Endpoint、CA Bundle 等。这些信息会被用在 KubeFed Controller 存取不同 Kubernetes 集群上，以确保能够建立 Kubernetes API 资源，示意图如下所示。
 

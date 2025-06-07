@@ -25,10 +25,10 @@ SPIFFE 已经在云原生应用中得到了大量的应用，尤其是在 Istio 
 
 工作负载是个单一的软件，以特定的配置部署，用于单一目的；它可能包括软件的多个运行实例，所有这些实例执行相同的任务。工作负载这个术语可以包含一系列不同的软件系统定义，包括：
 
--   一个运行 Python 网络应用程序的网络服务器，在一个虚拟机集群上运行，前面有一个负载均衡器。
--   一个 MySQL 数据库的实例。
--   一个处理队列中项目的 worker 程序。
--   独立部署的系统的集合，它们一起工作，例如一个使用数据库服务的网络应用程序。网络应用程序和数据库也可以单独被视为工作负载。
+- 一个运行 Python 网络应用程序的网络服务器，在一个虚拟机集群上运行，前面有一个负载均衡器。
+- 一个 MySQL 数据库的实例。
+- 一个处理队列中项目的 worker 程序。
+- 独立部署的系统的集合，它们一起工作，例如一个使用数据库服务的网络应用程序。网络应用程序和数据库也可以单独被视为工作负载。
 
 就 SPIFFE 而言，工作负载往往比物理或虚拟节点更加细化——通常细化到节点上的单个进程。这对工作负载来说至关重要，例如，在容器编排器中托管的工作负载，几个工作负载可能在同一个节点上（但彼此隔离）。
 
@@ -68,15 +68,15 @@ SVID 包含一个 SPIFFE ID，代表了服务的身份。它将 SPIFFE ID 编码
 
 对于`X.509`格式的身份文件（`X.509-SVID`）:
 
--   其身份，描述为 SPIFFE ID。
--   一个与该 ID 绑定的私钥，可用于代表工作负载签署数据。一个相应的短期 X.509 证书也将被创建，即 `X509-SVID`。这可以用来建立 TLS 或以其他方式对其他工作负载进行认证。
--   一组证书——被称为[信任包](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/#trust-bundle)。一个工作负载用来验证另一个工作负载提出的`X.509-SVID`。
+- 其身份，描述为 SPIFFE ID。
+- 一个与该 ID 绑定的私钥，可用于代表工作负载签署数据。一个相应的短期 X.509 证书也将被创建，即 `X509-SVID`。这可以用来建立 TLS 或以其他方式对其他工作负载进行认证。
+- 一组证书——被称为[信任包](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/#trust-bundle)。一个工作负载用来验证另一个工作负载提出的`X.509-SVID`。
 
 对于 JWT 格式的身份文件（JWT-SVID）：
 
--   其身份，描述为 SPIFFE ID
--   JWT 令牌
--   一组证书——被称为[信任包](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/#trust-bundle)，一个工作负载用来验证其他工作负载的身份。
+- 其身份，描述为 SPIFFE ID
+- JWT 令牌
+- 一组证书——被称为[信任包](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/#trust-bundle)，一个工作负载用来验证其他工作负载的身份。
 
 与 [AWS  EC2 实例元数据 API](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)和 [Google GCE 实例元数据 API](https://cloud.google.com/compute/docs/storing-retrieving-metadata) 类似，工作负载 API 不要求调用的工作负载对自己的身份有任何了解，也不要求调用 API 时拥有任何认证令牌。这意味着你的应用程序不需要与工作负载共同部署任何认证密钥。
 

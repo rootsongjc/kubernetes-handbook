@@ -37,24 +37,24 @@ zkMetrics.sh 脚本实际上执行的是下面的命令：
 
 ```bash
 $ echo mntr | nc localhost $ZK_CLIENT_PORT >& 1
-zk_version	3.4.6-1569965, built on 02/20/2014 09:09 GMT
-zk_avg_latency	0
-zk_max_latency	5
-zk_min_latency	0
-zk_packets_received	427879
-zk_packets_sent	427890
-zk_num_alive_connections	3
-zk_outstanding_requests	0
-zk_server_state	leader
-zk_znode_count	18
-zk_watch_count	3
-zk_ephemerals_count	4
-zk_approximate_data_size	613
-zk_open_file_descriptor_count	29
-zk_max_file_descriptor_count	1048576
-zk_followers	1
-zk_synced_followers	1
-zk_pending_syncs	0
+zk_version 3.4.6-1569965, built on 02/20/2014 09:09 GMT
+zk_avg_latency 0
+zk_max_latency 5
+zk_min_latency 0
+zk_packets_received 427879
+zk_packets_sent 427890
+zk_num_alive_connections 3
+zk_outstanding_requests 0
+zk_server_state leader
+zk_znode_count 18
+zk_watch_count 3
+zk_ephemerals_count 4
+zk_approximate_data_size 613
+zk_open_file_descriptor_count 29
+zk_max_file_descriptor_count 1048576
+zk_followers 1
+zk_synced_followers 1
+zk_pending_syncs 0
 ```
 
 zkOk.sh 脚本实际上执行的是下面的命令：

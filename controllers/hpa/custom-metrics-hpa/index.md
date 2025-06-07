@@ -26,7 +26,6 @@ Kubernetes 中不仅支持 CPU、内存为指标的 HPA，还支持自定义指�
 
 - 将 heapster 的启动参数 `--api-server` 设置为 true
 
-
 - 启用 custom metric API
 - 将 kube-controller-manager 的启动参数中 `--horizontal-pod-autoscaler-use-rest-clients` 设置为 true，并指定 `--master` 为 API server 地址，如 `--master=http://172.20.0.113:8080`
 

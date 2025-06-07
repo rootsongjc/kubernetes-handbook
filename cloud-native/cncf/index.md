@@ -68,16 +68,16 @@ TOC 成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/
 
 ## CNCF Ambassador
 
-CNCF Ambassador（CNCF 大使），人员名单详见 https://www.cncf.io/people/ambassadors/，笔者很荣幸作为第二位成为 CNCF Ambassador 的中国人。
+CNCF Ambassador（CNCF 大使），人员名单详见 <https://www.cncf.io/people/ambassadors/，笔者很荣幸作为第二位成为> CNCF Ambassador 的中国人。
 
 ### 如何成为 CNCF Ambassador
 
 可以通过以下方式成为 CNCF Ambassador：
 
-- 成为 CNCF 会员或对成为某个 CNCF 的项目的贡献者
-- 以 contributor、blogger、演讲者等身份参与 CNCF 社区项目
-- 在社区中演讲或撰写博客
-- 主持云原生社区 meetup
+* 成为 CNCF 会员或对成为某个 CNCF 的项目的贡献者
+* 以 contributor、blogger、演讲者等身份参与 CNCF 社区项目
+* 在社区中演讲或撰写博客
+* 主持云原生社区 meetup
 
 ## 参考
 

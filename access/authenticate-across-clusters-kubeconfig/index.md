@@ -224,12 +224,12 @@ Kubeconfig 文件中的任何路径都相对于 kubeconfig 文件本身的位置
 ### Example
 
 ```bash
-$ kubectl config set-credentials myself --username=admin --password=secret
-$ kubectl config set-cluster local-server --server=http://localhost:8080
-$ kubectl config set-context default-context --cluster=local-server --user=myself
-$ kubectl config use-context default-context
-$ kubectl config set contexts.default-context.namespace the-right-prefix
-$ kubectl config view
+kubectl config set-credentials myself --username=admin --password=secret
+kubectl config set-cluster local-server --server=http://localhost:8080
+kubectl config set-context default-context --cluster=local-server --user=myself
+kubectl config use-context default-context
+kubectl config set contexts.default-context.namespace the-right-prefix
+kubectl config view
 ```
 
 产生如下输出：
@@ -283,15 +283,15 @@ users:
 #### 示例文件相关操作命令
 
 ```bash
-$ kubectl config set preferences.colors true
-$ kubectl config set-cluster cow-cluster --server=http://cow.org:8080 --api-version=v1
-$ kubectl config set-cluster horse-cluster --server=https://horse.org:4443 --certificate-authority=path/to/my/cafile
-$ kubectl config set-cluster pig-cluster --server=https://pig.org:443 --insecure-skip-tls-verify=true
-$ kubectl config set-credentials blue-user --token=blue-token
-$ kubectl config set-credentials green-user --client-certificate=path/to/my/client/cert --client-key=path/to/my/client/key
-$ kubectl config set-context queen-anne-context --cluster=pig-cluster --user=black-user --namespace=saw-ns
-$ kubectl config set-context federal-context --cluster=horse-cluster --user=green-user --namespace=chisel-ns
-$ kubectl config use-context federal-context
+kubectl config set preferences.colors true
+kubectl config set-cluster cow-cluster --server=http://cow.org:8080 --api-version=v1
+kubectl config set-cluster horse-cluster --server=https://horse.org:4443 --certificate-authority=path/to/my/cafile
+kubectl config set-cluster pig-cluster --server=https://pig.org:443 --insecure-skip-tls-verify=true
+kubectl config set-credentials blue-user --token=blue-token
+kubectl config set-credentials green-user --client-certificate=path/to/my/client/cert --client-key=path/to/my/client/key
+kubectl config set-context queen-anne-context --cluster=pig-cluster --user=black-user --namespace=saw-ns
+kubectl config set-context federal-context --cluster=horse-cluster --user=green-user --namespace=chisel-ns
+kubectl config use-context federal-context
 ```
 
 ### 最后将它们捆绑在一起

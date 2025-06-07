@@ -50,7 +50,6 @@ Kubernetes 1.9 中的 CRI 接口在 `api.proto` 中的定义，其中包含了�
 
 总之，虽然 katacontainers 和 gvisor 都不能直接实现 CRI 接口，但它们都是为容器提供增强安全性和隔离性的重要技术，并且可以与 Kubernetes 集成来实现容器管理和调度。
 
-
 ## 参考
 
 - [Kubernetes CRI and Minikube - sreeninet.wordpress.com](https://sreeninet.wordpress.com/2017/02/11/kubernetes-cri-and-minikube/)

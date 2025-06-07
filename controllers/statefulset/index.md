@@ -312,7 +312,7 @@ $ kubectl delete pvc www-web-0 www-web-1
 
 ## zookeeper
 
-另外一个更能说明 StatefulSet 强大功能的示例为[zookeeper.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/test/zookeeper.yaml)，这个例子仅为讲解，实际可用的配置请使用 https://github.com/kubernetes/contrib/tree/master/statefulsets 中的配置。
+另外一个更能说明 StatefulSet 强大功能的示例为[zookeeper.yaml](https://github.com/rootsongjc/kubernetes-handbook/blob/master/manifests/test/zookeeper.yaml)，这个例子仅为讲解，实际可用的配置请使用 <https://github.com/kubernetes/contrib/tree/master/statefulsets> 中的配置。
 
 ```yaml
 ---
@@ -515,6 +515,6 @@ zk-0      10.254.98.14   <nodes>       2181:31693/TCP   5m
 
 ## 参考
 
-- https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+- <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/>
 
 - [kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)

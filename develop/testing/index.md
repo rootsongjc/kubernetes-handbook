@@ -210,7 +210,7 @@ kubectl get pods nginx-4263166205-ggst4 -o template '--template={{if (exists . "
 
 ![test-infra 架构图（图片来自官方 GitHub）](kubernetes-test-architecture.webp)
 
-该测试框架主要是针对 Google 公有云做的，支持 kubernetes1.6 以上版本的测试。详见 https://github.com/kubernetes/test-infra。
+该测试框架主要是针对 Google 公有云做的，支持 kubernetes1.6 以上版本的测试。详见 <https://github.com/kubernetes/test-infra。>
 
 ## 参考文档
 

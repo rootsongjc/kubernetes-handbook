@@ -113,7 +113,7 @@ secrets:
 你可以清理 ServiceAccount，如下所示：
 
 ```bash
-$ kubectl delete serviceaccount/build-robot
+kubectl delete serviceaccount/build-robot
 ```
 
 ## 手动创建 ServiceAccount 的 API token

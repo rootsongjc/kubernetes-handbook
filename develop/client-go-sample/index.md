@@ -32,89 +32,89 @@ keywords:
 package main
 
 import (
-	"flag"
-	"fmt"
-	"os"
-	"path/filepath"
+ "flag"
+ "fmt"
+ "os"
+ "path/filepath"
 
-	"k8s.io/apimachinery/pkg/api/errors"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
+ "k8s.io/apimachinery/pkg/api/errors"
+ metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+ "k8s.io/client-go/kubernetes"
+ "k8s.io/client-go/tools/clientcmd"
 )
 
 func main() {
-	var kubeconfig *string
-	if home := homeDir(); home != "" {
-		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
-	} else {
-		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
-	}
-	deploymentName := flag.String("deployment", "", "deployment name")
-	imageName := flag.String("image", "", "new image name")
-	appName := flag.String("app", "app", "application name")
+ var kubeconfig *string
+ if home := homeDir(); home != "" {
+  kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
+ } else {
+  kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
+ }
+ deploymentName := flag.String("deployment", "", "deployment name")
+ imageName := flag.String("image", "", "new image name")
+ appName := flag.String("app", "app", "application name")
 
-	flag.Parse()
-	if *deploymentName == "" {
-		fmt.Println("You must specify the deployment name.")
-		os.Exit(0)
-	}
-	if *imageName == "" {
-		fmt.Println("You must specify the new image name.")
-		os.Exit(0)
-	}
-	// use the current context in kubeconfig
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
-	if err != nil {
-		panic(err.Error())
-	}
+ flag.Parse()
+ if *deploymentName == "" {
+  fmt.Println("You must specify the deployment name.")
+  os.Exit(0)
+ }
+ if *imageName == "" {
+  fmt.Println("You must specify the new image name.")
+  os.Exit(0)
+ }
+ // use the current context in kubeconfig
+ config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+ if err != nil {
+  panic(err.Error())
+ }
 
-	// create the clientset
-	clientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		panic(err.Error())
-	}
-	deployment, err := clientset.AppsV1beta1().Deployments("default").Get(*deploymentName, metav1.GetOptions{})
-	if err != nil {
-		panic(err.Error())
-	}
-	if errors.IsNotFound(err) {
-		fmt.Printf("Deployment not found\n")
-	} else if statusError, isStatus := err.(*errors.StatusError); isStatus {
-		fmt.Printf("Error getting deployment%v\n", statusError.ErrStatus.Message)
-	} else if err != nil {
-		panic(err.Error())
-	} else {
-		fmt.Printf("Found deployment\n")
-		name := deployment.GetName()
-		fmt.Println("name ->", name)
-		containers := &deployment.Spec.Template.Spec.Containers
-		found := false
-		for i := range *containers {
-			c := *containers
-			if c[i].Name == *appName {
-				found = true
-				fmt.Println("Old image ->", c[i].Image)
-				fmt.Println("New image ->", *imageName)
-				c[i].Image = *imageName
-			}
-		}
-		if found == false {
-			fmt.Println("The application container not exist in the deployment pods.")
-			os.Exit(0)
-		}
-		_, err := clientset.AppsV1beta1().Deployments("default").Update(deployment)
-		if err != nil {
-			panic(err.Error())
-		}
-	}
+ // create the clientset
+ clientset, err := kubernetes.NewForConfig(config)
+ if err != nil {
+  panic(err.Error())
+ }
+ deployment, err := clientset.AppsV1beta1().Deployments("default").Get(*deploymentName, metav1.GetOptions{})
+ if err != nil {
+  panic(err.Error())
+ }
+ if errors.IsNotFound(err) {
+  fmt.Printf("Deployment not found\n")
+ } else if statusError, isStatus := err.(*errors.StatusError); isStatus {
+  fmt.Printf("Error getting deployment%v\n", statusError.ErrStatus.Message)
+ } else if err != nil {
+  panic(err.Error())
+ } else {
+  fmt.Printf("Found deployment\n")
+  name := deployment.GetName()
+  fmt.Println("name ->", name)
+  containers := &deployment.Spec.Template.Spec.Containers
+  found := false
+  for i := range *containers {
+   c := *containers
+   if c[i].Name == *appName {
+    found = true
+    fmt.Println("Old image ->", c[i].Image)
+    fmt.Println("New image ->", *imageName)
+    c[i].Image = *imageName
+   }
+  }
+  if found == false {
+   fmt.Println("The application container not exist in the deployment pods.")
+   os.Exit(0)
+  }
+  _, err := clientset.AppsV1beta1().Deployments("default").Update(deployment)
+  if err != nil {
+   panic(err.Error())
+  }
+ }
 }
 
 func homeDir() string {
-	if h := os.Getenv("HOME"); h != "" {
-		return h
-	}
-	return os.Getenv("USERPROFILE") // windows
+ if h := os.Getenv("HOME"); h != "" {
+  return h
+ }
+ return os.Getenv("USERPROFILE") // windows
 }
 ```
 
@@ -125,9 +125,9 @@ func homeDir() string {
 **编译运行**
 
 ```bash
-$ go get github.com/rootsongjc/kubernetes-client-go-sample
-$ cd $GOPATH/src/github.com/rootsongjc/kubernetes-client-go-sample
-$ go build main.go
+go get github.com/rootsongjc/kubernetes-client-go-sample
+cd $GOPATH/src/github.com/rootsongjc/kubernetes-client-go-sample
+go build main.go
 ```
 
 该命令的用法如下。
@@ -135,13 +135,13 @@ $ go build main.go
 ```bash
  $ ./main
   -app string
-    	application name (default "app")
+     application name (default "app")
   -deployment string
-    	deployment name
+     deployment name
   -image string
-    	new image name
+     new image name
   -kubeconfig string
-    	(optional) absolute path to the kubeconfig file (default "/Users/jimmy/.kube/config")
+     (optional) absolute path to the kubeconfig file (default "/Users/jimmy/.kube/config")
 ```
 
 **使用不存在的 image 更新**
@@ -158,28 +158,28 @@ New image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_9
 
 ```bash
 $ kubectl describe deployment filebeat-test   
-Name:			filebeat-test
-Namespace:		default
-CreationTimestamp:	Fri, 19 May 2017 15:12:28 +0800
-Labels:			k8s-app=filebeat-test
-Selector:		k8s-app=filebeat-test
-Replicas:		2 updated | 3 total | 2 available | 2 unavailable
-StrategyType:		RollingUpdate
-MinReadySeconds:	0
-RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Name:   filebeat-test
+Namespace:  default
+CreationTimestamp: Fri, 19 May 2017 15:12:28 +0800
+Labels:   k8s-app=filebeat-test
+Selector:  k8s-app=filebeat-test
+Replicas:  2 updated | 3 total | 2 available | 2 unavailable
+StrategyType:  RollingUpdate
+MinReadySeconds: 0
+RollingUpdateStrategy: 1 max unavailable, 1 max surge
 Conditions:
-  Type		Status	Reason
-  ----		------	------
-  Available 	True	MinimumReplicasAvailable
-  Progressing 	True	ReplicaSetUpdated
-OldReplicaSets:	filebeat-test-2365467882 (2/2 replicas created)
-NewReplicaSet:	filebeat-test-2470325483 (2/2 replicas created)
+  Type  Status Reason
+  ----  ------ ------
+  Available  True MinimumReplicasAvailable
+  Progressing  True ReplicaSetUpdated
+OldReplicaSets: filebeat-test-2365467882 (2/2 replicas created)
+NewReplicaSet: filebeat-test-2470325483 (2/2 replicas created)
 Events:
-  FirstSeen	LastSeen	Count	From				SubObjectPath	Type		ReasoMessage
-  ---------	--------	-----	----				-------------	--------	------------
-  2h		1m		3	{deployment-controller }			Normal		ScalingReplicaSet	Scaled down replica set filebeat-test-2365467882 to 2
-  1m		1m		1	{deployment-controller }			Normal		ScalingReplicaSet	Scaled up replica set filebeat-test-2470325483 to 1
-  1m		1m		1	{deployment-controller }			Normal		ScalingReplicaSet	Scaled up replica set filebeat-test-2470325483 to 2
+  FirstSeen LastSeen Count From    SubObjectPath Type  ReasoMessage
+  --------- -------- ----- ----    ------------- -------- ------------
+  2h  1m  3 {deployment-controller }   Normal  ScalingReplicaSet Scaled down replica set filebeat-test-2365467882 to 2
+  1m  1m  1 {deployment-controller }   Normal  ScalingReplicaSet Scaled up replica set filebeat-test-2470325483 to 1
+  1m  1m  1 {deployment-controller }   Normal  ScalingReplicaSet Scaled up replica set filebeat-test-2470325483 to 2
 ```
 
 可以看到老的 ReplicaSet 从 3 个 replica 减少到了 2 个，有 2 个使用新配置的 replica 不可用，目前可用的 replica 是 2 个。
@@ -213,30 +213,30 @@ New image -> harbor-001.jimmysong.io/library/analytics-docker-test:Build_8
 
 ```bash
 $ kubectl describe deployment filebeat-test   
-Name:			filebeat-test
-Namespace:		default
-CreationTimestamp:	Fri, 19 May 2017 15:12:28 +0800
-Labels:			k8s-app=filebeat-test
-Selector:		k8s-app=filebeat-test
-Replicas:		3 updated | 3 total | 3 available | 0 unavailable
-StrategyType:		RollingUpdate
-MinReadySeconds:	0
-RollingUpdateStrategy:	1 max unavailable, 1 max surge
+Name:   filebeat-test
+Namespace:  default
+CreationTimestamp: Fri, 19 May 2017 15:12:28 +0800
+Labels:   k8s-app=filebeat-test
+Selector:  k8s-app=filebeat-test
+Replicas:  3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:  RollingUpdate
+MinReadySeconds: 0
+RollingUpdateStrategy: 1 max unavailable, 1 max surge
 Conditions:
-  Type		Status	Reason
-  ----		------	------
-  Available 	True	MinimumReplicasAvailable
-  Progressing 	True	NewReplicaSetAvailable
-OldReplicaSets:	<none>
-NewReplicaSet:	filebeat-test-2365467882 (3/3 replicas created)
+  Type  Status Reason
+  ----  ------ ------
+  Available  True MinimumReplicasAvailable
+  Progressing  True NewReplicaSetAvailable
+OldReplicaSets: <none>
+NewReplicaSet: filebeat-test-2365467882 (3/3 replicas created)
 Events:
-  FirstSeen	LastSeen	Count	From				SubObjectPath	Type		ReasoMessage
-  ---------	--------	-----	----				-------------	--------	------------
-  2h		8m		3	{deployment-controller }			Normal		ScalingReplicaSet	Scaled down replica set filebeat-test-2365467882 to 2
-  8m		8m		1	{deployment-controller }			Normal		ScalingReplicaSet	Scaled up replica set filebeat-test-2470325483 to 1
-  8m		8m		1	{deployment-controller }			Normal		ScalingReplicaSet	Scaled up replica set filebeat-test-2470325483 to 2
-  2h		1m		3	{deployment-controller }			Normal		ScalingReplicaSet	Scaled up replica set filebeat-test-2365467882 to 3
-  1m		1m		1	{deployment-controller }			Normal		ScalingReplicaSet	Scaled down replica set filebeat-test-2470325483 to 0
+  FirstSeen LastSeen Count From    SubObjectPath Type  ReasoMessage
+  --------- -------- ----- ----    ------------- -------- ------------
+  2h  8m  3 {deployment-controller }   Normal  ScalingReplicaSet Scaled down replica set filebeat-test-2365467882 to 2
+  8m  8m  1 {deployment-controller }   Normal  ScalingReplicaSet Scaled up replica set filebeat-test-2470325483 to 1
+  8m  8m  1 {deployment-controller }   Normal  ScalingReplicaSet Scaled up replica set filebeat-test-2470325483 to 2
+  2h  1m  3 {deployment-controller }   Normal  ScalingReplicaSet Scaled up replica set filebeat-test-2365467882 to 3
+  1m  1m  1 {deployment-controller }   Normal  ScalingReplicaSet Scaled down replica set filebeat-test-2470325483 to 0
 ```
 
 可以看到 available 的 replica 个数恢复成 3 了。

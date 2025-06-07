@@ -62,7 +62,6 @@ Kubernetes 支持以下类型的卷：
 - `storageos`
 - `vsphereVolume`
 
-
 我们欢迎额外贡献。
 
 ### awsElasticBlockStore
@@ -520,7 +519,7 @@ spec:
 
 ### rbd
 
-`rbd` 卷允许将 Rados Block Device 卷挂载到容器中。不像 `emptyDir`，删除 Pod 时 `rbd `卷的内容被保留，卷仅仅被卸载。这意味着 RBD 卷可以预先填充数据，并且可以在 pod 之间“切换”数据。
+`rbd` 卷允许将 Rados Block Device 卷挂载到容器中。不像 `emptyDir`，删除 Pod 时 `rbd`卷的内容被保留，卷仅仅被卸载。这意味着 RBD 卷可以预先填充数据，并且可以在 pod 之间“切换”数据。
 
 **重要提示**：你必须先自行安装 Ceph，然后才能使用 RBD。
 
