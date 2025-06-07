@@ -45,7 +45,7 @@ Kubernetes 目前支持的准入控制器有：
 - **ExtendedResourceToleration**：此插件有助于创建具有扩展资源的专用节点。
 - **ImagePolicyWebhook**：此准入控制器允许后端判断镜像拉取策略，例如配置镜像仓库的密钥。
 - **Initializers (alpha)**：Pod 初始化的准入控制器，详情请参考[动态准入控制](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)。
-- **LimitPodHardAntiAffinityTopology**：此准入控制器拒绝任何在 `requiredDuringSchedulingRequiredDuringExecution` 的 `AntiAffinity ` 字段中定义除了`kubernetes.io/hostname` 之外的拓扑关键字的 pod。
+- **LimitPodHardAntiAffinityTopology**：此准入控制器拒绝任何在 `requiredDuringSchedulingRequiredDuringExecution` 的 `AntiAffinity` 字段中定义除了`kubernetes.io/hostname` 之外的拓扑关键字的 pod。
 - **LimitRanger**：此准入控制器将确保所有资源请求不会超过 namespace 的 `LimitRange`。
 - **MutatingAdmissionWebhook（1.9 版本中为 beta）**：该准入控制器调用与请求匹配的任何变更 webhook。匹配的 webhook 是串行调用的；如果需要，每个人都可以修改对象。
 - **NamespaceAutoProvision**：此准入控制器检查命名空间资源上的所有传入请求，并检查引用的命名空间是否存在。如果不存在就创建一个命名空间。

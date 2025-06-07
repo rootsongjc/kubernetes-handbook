@@ -27,9 +27,9 @@ CNI 的接口中包括以下几个方法：
 ```go
 type CNI interface {
   AddNetworkList (net *NetworkConfigList, rt *RuntimeConf) (types.Result, error)
-	DelNetworkList (net *NetworkConfigList, rt *RuntimeConf) error
-	AddNetwork (net *NetworkConfig, rt *RuntimeConf) (types.Result, error)
-	DelNetwork (net *NetworkConfig, rt *RuntimeConf) error
+ DelNetworkList (net *NetworkConfigList, rt *RuntimeConf) error
+ AddNetwork (net *NetworkConfig, rt *RuntimeConf) (types.Result, error)
+ DelNetwork (net *NetworkConfig, rt *RuntimeConf) error
 }
 ```
 
@@ -86,7 +86,6 @@ CNI 插件必须支持以下操作：
 - **网络配置**，如上所述。
 - **额外的参数**，如上所述。
 - **上面定义的容器**内的接口的名称。
-
 
 - 所有参数应与传递给相应的添加操作的参数相同。
 - 删除操作应释放配置的网络中提供的 containerid 拥有的所有资源。

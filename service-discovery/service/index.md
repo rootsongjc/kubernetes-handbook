@@ -50,7 +50,7 @@ spec:
 
 需要注意的是， `Service` 能够将一个接收端口映射到任意的 `targetPort`。默认情况下，`targetPort` 将被设置为与 `port` 字段相同的值。`targetPort` 可以是一个字符串，引用了 backend `Pod` 的端口的名称。但是，实际指派给该端口名称的端口号，在每个 backend `Pod` 中可能并不相同。对于部署和设计 `Service` ，这种方式会提供更大的灵活性。例如，可以在 backend 软件下一个版本中，修改 Pod 暴露的端口，并不会中断客户端的调用。
 
-Kubernetes `Service` 支持 `TCP` 和 `UDP` 协议，默认为 `TCP` 协议。 
+Kubernetes `Service` 支持 `TCP` 和 `UDP` 协议，默认为 `TCP` 协议。
 
 ### 没有 selector 的 Service
 
@@ -155,12 +155,12 @@ spec:
 
 与 iptables 类似，ipvs 基于 netfilter 的 hook 功能，但使用哈希表作为底层数据结构并在内核空间中工作。这意味着 ipvs 可以更快地重定向流量，并且在同步代理规则时具有更好的性能。此外，ipvs 为负载均衡算法提供了更多选项，例如：
 
-- `rr`：轮询调度
-- `lc`：最小连接数
-- `dh`：目标哈希
-- `sh`：源哈希
-- `sed`：最短期望延迟
-- `nq`： 不排队调度
+* `rr`：轮询调度
+* `lc`：最小连接数
+* `dh`：目标哈希
+* `sh`：源哈希
+* `sed`：最短期望延迟
+* `nq`： 不排队调度
 
 **注意：** ipvs 模式假定在运行 kube-proxy 之前在节点上都已经安装了 IPVS 内核模块。当 kube-proxy 以 ipvs 代理模式启动时，kube-proxy 将验证节点上是否安装了 IPVS 模块，如果未安装，则 kube-proxy 将回退到 iptables 代理模式。
 
@@ -203,7 +203,7 @@ spec:
 
 * 长久以来，DNS 库都没能认真对待 DNS TTL、缓存域名查询结果
 * 很多应用只查询一次 DNS 并缓存了结果
-   * 就算应用和库能够正确查询解析，每个客户端反复重解析造成的负载也是非常难以管理的
+  * 就算应用和库能够正确查询解析，每个客户端反复重解析造成的负载也是非常难以管理的
 
 我们尽力阻止用户做那些对他们没有好处的事情，如果很多人都来问这个问题，我们可能会选择实现它。
 
@@ -226,6 +226,7 @@ REDIS_MASTER_PORT_6379_TCP_PROTO=tcp
 REDIS_MASTER_PORT_6379_TCP_PORT=6379
 REDIS_MASTER_PORT_6379_TCP_ADDR=10.0.0.11
 ```
+
 *这意味着需要有顺序的要求* ——  `Pod` 想要访问的任何 `Service` 必须在 `Pod` 自己之前被创建，否则这些环境变量就不会被赋值。DNS 并没有这个限制。
 
 ### DNS
@@ -281,7 +282,7 @@ Kubernetes `ServiceTypes` 允许指定一个需要的类型的 Service，默认�
 
 如果设置 `type` 的值为 `"NodePort"`，Kubernetes master 将从给定的配置范围内（默认：30000-32767）分配端口，每个 Node 将从该端口（每个 Node 上的同一端口）代理到 `Service`。该端口将通过 `Service` 的 `spec.ports[*].nodePort` 字段被指定。
 
-如果需要指定的端口号，可以配置 `nodePort` 的值，系统将分配这个端口，否则调用 API 将会失败（比如，需要关心端口冲突的可能性）。 
+如果需要指定的端口号，可以配置 `nodePort` 的值，系统将分配这个端口，否则调用 API 将会失败（比如，需要关心端口冲突的可能性）。
 
 这可以让开发人员自由地安装他们自己的负载均衡器，并配置 Kubernetes 不能完全支持的环境参数，或者直接暴露一个或多个 Node 的 IP 地址。
 
@@ -312,6 +313,7 @@ status:
     ingress:
       - ip: 146.148.47.155
 ```
+
 来自外部负载均衡器的流量将直接打到 backend `Pod` 上，不过实际它们是如何工作的，这要依赖于云提供商。在这些情况下，将根据用户设置的 `loadBalancerIP` 来创建负载均衡器。
 
 某些云提供商允许设置 `loadBalancerIP`。如果没有设置 `loadBalancerIP`，将会给负载均衡器指派一个临时 IP。
@@ -426,4 +428,4 @@ Kubernetes 最主要的哲学之一，是用户不应该暴露那些能够导致
 
 ## 更多信息
 
-- [使用 Service 连接 Frontend 到 Backend - kubernetes.io](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)
+* [使用 Service 连接 Frontend 到 Backend - kubernetes.io](https://kubernetes.io/docs/tutorials/connecting-apps/connecting-frontend-backend/)

@@ -119,7 +119,7 @@ spec:
 
 Kubernetes 尽可能少地指定 CSI Volume 驱动程序的打包和部署规范。[这里](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md#third-party-csi-volume-drivers)记录了在 Kubernetes 上部署 CSI Volume 驱动程序的最低要求。
 
-最低要求文件还包含[概述部分](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md#recommended-mechanism-for-deploying-csi-drivers-on-kubernetes)，提供了在 Kubernetes 上部署任意容器化 CSI 驱动程序的建议机制。存储提供商可以运用这个机制来简化 Kubernetes 上容器式 CSI 兼容 Volume 驱动程序的部署。 
+最低要求文件还包含[概述部分](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md#recommended-mechanism-for-deploying-csi-drivers-on-kubernetes)，提供了在 Kubernetes 上部署任意容器化 CSI 驱动程序的建议机制。存储提供商可以运用这个机制来简化 Kubernetes 上容器式 CSI 兼容 Volume 驱动程序的部署。
 
 作为推荐部署的一部分，Kubernetes 团队提供以下 sidecar（辅助）容器：
 

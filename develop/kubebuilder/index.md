@@ -98,7 +98,7 @@ sudo systemctl restart systemd-resolved
 在项目路径下使用下面的命令初始化项目。
 
 ```bash
-$ kubebuilder init --domain jimmysong.io
+kubebuilder init --domain jimmysong.io
 ```
 
 在项目根目录下执行下面的命令创建 API。
@@ -256,7 +256,7 @@ kubectl apply -f config/samples/webapp_v1_guestbook.yaml
 执行下面的命令查看新创建的 CR。
 
 ```bash
-$ kubectl get guestbooks.webapp.jimmysong.io guestbook-sample -o yaml
+kubectl get guestbooks.webapp.jimmysong.io guestbook-sample -o yaml
 ```
 
 你将看到类似如下的输出。
@@ -325,7 +325,7 @@ limitations under the License.
 package v1
 
 import (
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+ metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -333,20 +333,20 @@ import (
 
 // GuestbookSpec defines the desired state of Guestbook
 type GuestbookSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+ // INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+ // Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Guestbook. Edit Guestbook_types.go to remove/update
+ // Foo is an example field of Guestbook. Edit Guestbook_types.go to remove/update
   // 添加两个新的字段
-	FirstName string `json:"firstname"`
-	LastName  string `json:"lastname"`
+ FirstName string `json:"firstname"`
+ LastName  string `json:"lastname"`
 }
 
 // GuestbookStatus defines the observed state of Guestbook
 type GuestbookStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-	Status string `json:"Status"`
+ // INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+ // Important: Run "make" to regenerate code after modifying this file
+ Status string `json:"Status"`
 }
 
 // +kubebuilder:object:root=true
@@ -355,33 +355,33 @@ type GuestbookStatus struct {
 
 // Guestbook is the Schema for the guestbooks API
 type Guestbook struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
+ metav1.TypeMeta   `json:",inline"`
+ metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   GuestbookSpec   `json:"spec,omitempty"`
-	Status GuestbookStatus `json:"status,omitempty"`
+ Spec   GuestbookSpec   `json:"spec,omitempty"`
+ Status GuestbookStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
 // GuestbookList contains a list of Guestbook
 type GuestbookList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Guestbook `json:"items"`
+ metav1.TypeMeta `json:",inline"`
+ metav1.ListMeta `json:"metadata,omitempty"`
+ Items           []Guestbook `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&Guestbook{}, &GuestbookList{})
+ SchemeBuilder.Register(&Guestbook{}, &GuestbookList{})
 }
 ```
 
 上面的代码比原先使用 kubebuilder 生成的默认代码增加了以下内容：
 
 ```go
-	FirstName string `json:"firstname"`
-	LastName  string `json:"lastname"`
-	Status string `json:"Status"`
+ FirstName string `json:"firstname"`
+ LastName  string `json:"lastname"`
+ Status string `json:"Status"`
 // +kubebuilder:subresource:status
 ```
 
@@ -394,28 +394,28 @@ Reconcile 函数是 Operator 的核心逻辑，Operator 的业务逻辑都位于
 // +kubebuilder:rbac:groups=webapp.jimmysong.io,resources=guestbooks/status,verbs=get;update;patch
 
 func (r *GuestbookReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
-	_ = r.Log.WithValues("guestbook", req.NamespacedName)
+ _ = context.Background()
+ _ = r.Log.WithValues("guestbook", req.NamespacedName)
 
-	// your logic here
-	ctx := context.Background()
-	_ = r.Log.WithValues("apiexamplea", req.NamespacedName)
+ // your logic here
+ ctx := context.Background()
+ _ = r.Log.WithValues("apiexamplea", req.NamespacedName)
 
   // 获取当前的 CR，并打印
-	obj := &webappv1.Guestbook{}
-	if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
-		log.Println(err, "Unable to fetch object")
-	} else {
-		log.Println("Geeting from Kubebuilder to", obj.Spec.FirstName, obj.Spec.LastName)
-	}
+ obj := &webappv1.Guestbook{}
+ if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
+  log.Println(err, "Unable to fetch object")
+ } else {
+  log.Println("Geeting from Kubebuilder to", obj.Spec.FirstName, obj.Spec.LastName)
+ }
   
   // 初始化 CR 的 Status 为 Running
-	obj.Status.Status = "Running"
-	if err := r.Status().Update(ctx, obj); err != nil {
-		log.Println(err, "unable to update status")
-	}
+ obj.Status.Status = "Running"
+ if err := r.Status().Update(ctx, obj); err != nil {
+  log.Println(err, "unable to update status")
+ }
 
-	return ctrl.Result{}, nil
+ return ctrl.Result{}, nil
 }
 ```
 
@@ -471,14 +471,14 @@ go fmt ./...
 go vet ./...
 /Users/jimmysong/Workspace/go/bin/controller-gen "crd:trivialVersions=true" rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 go run ./main.go
-2020-06-07T16:48:29.966+0800	INFO	controller-runtime.metrics	metrics server is starting to listen	{"addr": ":8080"}
-2020-06-07T16:48:29.967+0800	INFO	setup	starting manager
-2020-06-07T16:48:29.967+0800	INFO	controller-runtime.manager	starting metrics server	{"path": "/metrics"}
-2020-06-07T16:48:29.967+0800	INFO	controller-runtime.controller	Starting EventSource	{"controller": "guestbook", "source": "kind source: /, Kind="}
-2020-06-07T16:48:30.068+0800	INFO	controller-runtime.controller	Starting Controller	{"controller": "guestbook"}
-2020-06-07T16:48:30.068+0800	INFO	controller-runtime.controller	Starting workers	{"controller": "guestbook", "worker count": 1}
+2020-06-07T16:48:29.966+0800 INFO controller-runtime.metrics metrics server is starting to listen {"addr": ":8080"}
+2020-06-07T16:48:29.967+0800 INFO setup starting manager
+2020-06-07T16:48:29.967+0800 INFO controller-runtime.manager starting metrics server {"path": "/metrics"}
+2020-06-07T16:48:29.967+0800 INFO controller-runtime.controller Starting EventSource {"controller": "guestbook", "source": "kind source: /, Kind="}
+2020-06-07T16:48:30.068+0800 INFO controller-runtime.controller Starting Controller {"controller": "guestbook"}
+2020-06-07T16:48:30.068+0800 INFO controller-runtime.controller Starting workers {"controller": "guestbook", "worker count": 1}
 2020/06/07 16:48:30 Geeting from Kubebuilder to Jimmy Song
-2020-06-07T16:48:30.080+0800	DEBUG	controller-runtime.controller	Successfully Reconciled	{"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
+2020-06-07T16:48:30.080+0800 DEBUG controller-runtime.controller Successfully Reconciled {"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
 ```
 
 从上面的日志中，可以看到这条输出。
@@ -569,7 +569,7 @@ kubectl delete guestbooks.webapp.jimmysong.io guestbook-sample
 ```bash
 2020/06/07 20:09:50 Guestbook.webapp.jimmysong.io "guestbook-sample" not found Unable to fetch object
 2020/06/07 20:09:50 resource name may not be empty unable to update status
-2020-06-07T20:09:50.380+0800	DEBUG	controller-runtime.controller	Successfully Reconciled	{"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
+2020-06-07T20:09:50.380+0800 DEBUG controller-runtime.controller Successfully Reconciled {"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
 ```
 
 因为该 CR 被删除，因此日志中会提示资源找不到。

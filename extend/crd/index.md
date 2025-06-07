@@ -464,7 +464,7 @@ crontab "my-new-cron-object" created
   - 这是一个必需的值。
   - `.stutus` 只允许使用带点符号的 JSONPaths。
   - 如果 `StatusReplicasPath` 自定义资源中没有值，则子资源 `/scale` 中的状态副本值将默认为 0。
-- `LabelSelectorPath `在与之对应的自定义资源中定义 JSONPath `Scale.Status.Selector`。
+- `LabelSelectorPath`在与之对应的自定义资源中定义 JSONPath `Scale.Status.Selector`。
   - 这是一个可选值。
   - 必须将其设置为与 HPA 一起使用。
   - `.status` 只允许使用带点符号的 JSONPaths。

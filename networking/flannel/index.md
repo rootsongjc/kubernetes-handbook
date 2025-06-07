@@ -181,7 +181,7 @@ ExecStart=/usr/bin/dockerd-current \
           $ADD_REGISTRY \
           $BLOCK_REGISTRY \
           $INSECURE_REGISTRY\
-	      $REGISTRIES
+       $REGISTRIES
 ExecReload=/bin/kill -s HUP $MAINPID
 LimitNOFILE=1048576
 LimitNPROC=1048576

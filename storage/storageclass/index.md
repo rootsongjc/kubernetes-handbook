@@ -92,4 +92,4 @@ Storage class 具有描述属于 storage class 卷的参数。取决于`分配�
 
 ## 参考
 
-- https://kubernetes.io/docs/concepts/storage/storage-classes/
+- <https://kubernetes.io/docs/concepts/storage/storage-classes/>

@@ -63,10 +63,10 @@ Label selector 有两种类型：
 ## 示例
 
 ```bash
-$ kubectl get pods -l environment=production,tier=frontend
-$ kubectl get pods -l 'environment in (production),tier in (frontend)'
-$ kubectl get pods -l 'environment in (production, qa)'
-$ kubectl get pods -l 'environment,environment notin (frontend)'
+kubectl get pods -l environment=production,tier=frontend
+kubectl get pods -l 'environment in (production),tier in (frontend)'
+kubectl get pods -l 'environment in (production, qa)'
+kubectl get pods -l 'environment,environment notin (frontend)'
 ```
 
 ## 在 API object 中设置 label selector
@@ -115,4 +115,3 @@ selector:
             values:
             - another-node-label-value
 ```
-

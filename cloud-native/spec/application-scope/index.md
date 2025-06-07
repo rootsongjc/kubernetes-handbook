@@ -52,4 +52,3 @@ spec:
 上面的示例的作用是将三个子网划定为一组网络边界，这通常是使用 VPC 实现。
 
 关于 `ApplicationScope` 的详细信息请参考 OAM 中的 [ApplicationScope 规范](https://github.com/oam-dev/spec/blob/master/5.application_scopes.md)。
-

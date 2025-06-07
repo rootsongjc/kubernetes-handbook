@@ -118,6 +118,7 @@ spec:
   ingress:
   - {}
 ```
+
 ## 参考
 
 - [Network Policies - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

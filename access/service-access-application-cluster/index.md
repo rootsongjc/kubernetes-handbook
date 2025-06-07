@@ -128,4 +128,3 @@ kubectl delete deployment hello-world
 ```
 
 了解更多关于 [使用 service 连接应用程序](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service)。
-

@@ -80,19 +80,19 @@ $ kubectl -n kube-system get secret|grep admin-token
 admin-token-nwphb                          kubernetes.io/service-account-token   3         6m
 # 获取token的值
 $ kubectl -n kube-system describe secret admin-token-nwphb
-Name:		admin-token-nwphb
-Namespace:	kube-system
-Labels:		<none>
-Annotations:	kubernetes.io/service-account.name=admin
-		kubernetes.io/service-account.uid=f37bd044-bfb3-11e7-87c0-f4e9d49f8ed0
+Name:  admin-token-nwphb
+Namespace: kube-system
+Labels:  <none>
+Annotations: kubernetes.io/service-account.name=admin
+  kubernetes.io/service-account.uid=f37bd044-bfb3-11e7-87c0-f4e9d49f8ed0
 
-Type:	kubernetes.io/service-account-token
+Type: kubernetes.io/service-account-token
 
 Data
 ====
-namespace:	11 bytes
-token:		非常长的字符串
-ca.crt:		1310 bytes
+namespace: 11 bytes
+token:  非常长的字符串
+ca.crt:  1310 bytes
 ```
 
 也可以使用 jsonpath 的方式直接获取 token 的值，如：

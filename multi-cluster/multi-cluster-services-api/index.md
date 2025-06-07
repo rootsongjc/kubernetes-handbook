@@ -52,7 +52,7 @@ ClusterSet 是一组由单一管理机构治理的 Kubernetes 集群的集合。
 - 集群之间存在高度信任。
 
 - ClusterSet 中的集群应用 Namespace Sameness 原则:
-  - 给定命名空间在集群间具有一致的权限和特征。 
+  - 给定命名空间在集群间具有一致的权限和特征。
   - 命名空间不必在每个集群中都存在，但在存在的集群中行为一致。
 
 ClusterSet 是一个集群作用域的 ClusterProperty CRD，存储名称和值。这个属性可用于:

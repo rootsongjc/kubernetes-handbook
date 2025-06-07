@@ -41,7 +41,7 @@ API 文档见 [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monit
 
 因为我使用 wercker 自动构建，构建完成后自动打包成 docker 镜像并上传到 docker hub 中（需要现在 docker hub 中创建 repo）。
 
-构建流程见：https://app.wercker.com/jimmysong/k8s-app-monitor-agent/
+构建流程见：<https://app.wercker.com/jimmysong/k8s-app-monitor-agent/>
 
 ![wercker 构建页面](k8s-app-monitor-agent-wercker.webp)
 
@@ -79,7 +79,7 @@ services:
 docker-compose up
 ```
 
-在浏览器中访问 http://localhost:8888/k8s-app-monitor-test 就可以看到监控页面。
+在浏览器中访问 <http://localhost:8888/k8s-app-monitor-test> 就可以看到监控页面。
 
 ## 发布
 

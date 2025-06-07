@@ -46,12 +46,12 @@ Root project is "github.com/rootsongjc/kubernetes-operator-sdk-tutorial"
  3 transitively valid internal packages
  12 external packages imported from 4 projects
 (0)   ✓ select (root)
-(1)	? attempt k8s.io/api with 1 pkgs; at least 1 versions to try
-(1)	    try k8s.io/api@kubernetes-1.9.3
-(1)	✓ select k8s.io/api@kubernetes-1.9.3 w/1 pkgs
-(2)	? attempt k8s.io/apimachinery with 4 pkgs; at least 1 versions to try
-(2)	    try k8s.io/apimachinery@kubernetes-1.9.3
-(2)	✓ select k8s.io/apimachinery@kubernetes-1.9.3 w/22 pkgs
+(1) ? attempt k8s.io/api with 1 pkgs; at least 1 versions to try
+(1)     try k8s.io/api@kubernetes-1.9.3
+(1) ✓ select k8s.io/api@kubernetes-1.9.3 w/1 pkgs
+(2) ? attempt k8s.io/apimachinery with 4 pkgs; at least 1 versions to try
+(2)     try k8s.io/apimachinery@kubernetes-1.9.3
+(2) ✓ select k8s.io/apimachinery@kubernetes-1.9.3 w/22 pkgs
 ...
 
 $ go install github.com/operator-framework/operator-sdk/commands/operator-sdk
@@ -62,9 +62,9 @@ $ go install github.com/operator-framework/operator-sdk/commands/operator-sdk
 ## 创建项目
 
 ```bash
-$ cd $GOPATH/src/github.com/<your-github-repo>/
-$ operator-sdk new <operator-project-name> --api-version=<your-api-group>/<version> --kind=<custom-resource-kind>
-$ cd <operator-project-name>
+cd $GOPATH/src/github.com/<your-github-repo>/
+operator-sdk new <operator-project-name> --api-version=<your-api-group>/<version> --kind=<custom-resource-kind>
+cd <operator-project-name>
 ```
 
 - operator-project-name：创建的项目的名称

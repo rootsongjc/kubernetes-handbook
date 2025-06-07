@@ -43,4 +43,4 @@ RBAC 页面可以看到集群中 RBAC 关系及结构。
 
 ## 参考
 
-- [Kubernator - github.com](https://github.com/smpio/kubernator) 
+- [Kubernator - github.com](https://github.com/smpio/kubernator)

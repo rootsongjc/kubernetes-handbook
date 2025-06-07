@@ -25,7 +25,6 @@ Pod 中封装着应用的容器（有的情况下是好几个容器），存储�
 
 > [Docker](https://www.docker.com) 是 Kubernetes 中最常用的容器运行时，但是 Pod 也支持其他容器运行时。
 
-
 在 Kubernetes 集群中 Pod 有如下两种使用方式：
 
 - **一个 Pod 中运行一个容器**。“每个 Pod 中一个容器”的模式是最常见的用法；在这种使用方式中，你可以把 Pod 想象成是单个容器的封装，kuberentes 管理的是 Pod 而不是直接管理容器。

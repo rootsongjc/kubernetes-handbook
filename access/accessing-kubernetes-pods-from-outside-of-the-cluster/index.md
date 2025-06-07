@@ -46,7 +46,7 @@ spec:
 部署该 Pod：
 
 ```bash
-$ kubectl create -f influxdb-hostnetwork.yml
+kubectl create -f influxdb-hostnetwork.yml
 ```
 
 访问该 pod 所在主机的 8086 端口：

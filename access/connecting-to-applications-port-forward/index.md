@@ -37,14 +37,14 @@ keywords:
    ```bash
    kubectl get pods
    ```
-   
+
    当 Pod 就绪，输出显示 Running 的状态：
-   
+
    ```bash
     NAME           READY     STATUS    RESTARTS   AGE
     redis-master   2/2       Running   0          41s
    ```
-   
+
 3. 验证 Redis 服务器是否已在 Pod 中运行，并监听 6379 端口：
 
    ```bash
@@ -66,7 +66,7 @@ keywords:
    ```bash
    kubectl port-forward redis-master 6379:6379
    ```
-   
+
    输出类似于：
 
    ```

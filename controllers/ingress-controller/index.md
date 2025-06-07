@@ -18,6 +18,7 @@ keywords:
 为了让 [Ingress](../../service-discovery/ingress) 资源工作，集群必须有一个运行中的 Ingress 控制器。与 `kube-controller-manager` 一起运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。你可以选择最适合你的集群的 Ingress 控制器。
 
 Kubernetes 官方支持以下 Ingress 控制器：
+
 - [AWS](https://github.com/kubernetes-sigs/aws-load-balancer-controller#readme)
 - [GCE](https://git.k8s.io/ingress-gce/README.md#readme)
 - [Nginx](https://git.k8s.io/ingress-nginx/README.md#readme)
@@ -25,6 +26,7 @@ Kubernetes 官方支持以下 Ingress 控制器：
 ### 其他控制器
 
 以下是一些第三方 Ingress 控制器：
+
 - [AKS 应用程序网关 Ingress 控制器](https://docs.microsoft.com/zh-cn/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
 - [阿里云 MSE Ingress](https://www.alibabacloud.com/help/zh/mse/user-guide/overview-of-mse-ingress-gateways)
 - [Apache APISIX Ingress 控制器](https://github.com/apache/apisix-ingress-controller)

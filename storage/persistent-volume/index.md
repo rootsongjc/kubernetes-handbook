@@ -292,7 +292,6 @@ Kubernetes 管理员可以指定在节点上为挂载持久卷指定挂载选项
 
 **注意**：不是所有的持久化卷类型都支持挂载选项。
 
-
 以下卷类型支持挂载选项：
 
 - GCEPersistentDisk
@@ -435,6 +434,7 @@ spec:
     lun: 0
     readOnly: false
 ```
+
 ### 持久化卷声明请求原始块卷
 
 ```yaml
@@ -450,6 +450,7 @@ spec:
     requests:
       storage: 10Gi
 ```
+
 ### 在 Pod 规格配置中为容器添加原始块设备
 
 ```yaml

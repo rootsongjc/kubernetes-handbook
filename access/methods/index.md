@@ -26,7 +26,7 @@ keywords:
 使用下面的命令检查 kubectl 已知的集群的地址和凭证：
 
 ```bash
-$ kubectl config view
+kubectl config view
 ```
 
 ## 直接访问 REST API
@@ -51,7 +51,7 @@ Kubectl 处理对 apiserver 的定位和认证。如果你想直接访问 REST A
 像这样运行：
 
 ```bash
-$ kubectl proxy --port=8080 &
+kubectl proxy --port=8080 &
 ```
 
 然后你可以使用 curl、wget 或者浏览器来访问 API，如下所示：
