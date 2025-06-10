@@ -26,7 +26,7 @@ Horizontal Pod Autoscaling 仅适用于 Deployment 和 ReplicaSet，在 v1 版�
 
 Horizontal Pod Autoscaling 由 API server 和 controller 共同实现。
 
-![HPA 示意图](horizontal-pod-autoscaler.png)
+![HPA 示意图](horizontal-pod-autoscaler.webp)
 
 ## Metrics 支持
 
