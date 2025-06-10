@@ -16,7 +16,7 @@ OAM 规范的设计遵循了以下[原则](https://github.com/oam-dev/spec/blob/
 
 下图是 OAM 规范示意图。
 
-![OAM 规范示意图](oam-spec.png)
+![OAM 规范示意图](oam-spec.webp)
 
 图片来自 [oam/spec issue #346](https://github.com/oam-dev/spec/issues/346)。
 
