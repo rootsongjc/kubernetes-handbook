@@ -397,7 +397,7 @@ Chain KUBE-SERVICES (2 references)
 target     prot opt source               destination
 ```
 
-从上面的 iptables 中可以看到注入了很多 Kuberentes service 的规则。
+从上面的 iptables 中可以看到注入了很多 Kubernetes service 的规则。
 
 ## 参考
 

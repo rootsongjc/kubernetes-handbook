@@ -651,5 +651,5 @@ API 中提供了一些扩展点，以灵活处理大量通用 API 无法处理�
 
 ## 参考
 
-- [kuberentes-sigs/gateway-api - github.com](https://github.com/kubernetes-sigs/gateway-api)
+- [Kubernetes-sigs/gateway-api - github.com](https://github.com/kubernetes-sigs/gateway-api)
 - [Kubernetes Gateway API 文档 - gateway-api.sigs.k8s.io](https://gateway-api.sigs.k8s.io/)

@@ -16,7 +16,7 @@ keywords:
 ---
 Pod 是 Kubernetes 中可以创建的最小部署单元，也是 Kubernetes REST API 中的顶级资源类型。
 
-在 Kuberentes V1 core API 版本中的 Pod 的数据结构如下图所示：
+在 Kubernetes V1 core API 版本中的 Pod 的数据结构如下图所示：
 
 ![Pod Cheatsheet](kubernetes-pod-cheatsheet.webp)
 
@@ -130,7 +130,7 @@ Pod 的强制删除是通过在集群和 etcd 中将其定义为删除状态。�
 
 从 Kubernetes1.1 版本开始，pod 中的容器就可以开启 privileged 模式，在容器定义文件的 `SecurityContext` 下使用 `privileged` flag。这在使用 Linux 的网络操作和访问设备的能力时是很有用的。容器内进程可获得近乎等同于容器外进程的权限。在不需要修改和重新编译 kubelet 的情况下就可以使用 pod 来开发节点的网络和存储插件。
 
-如果 master 节点运行的是 kuberentes1.1 或更高版本，而 node 节点的版本低于 1.1 版本，则 API server 将也可以接受新的特权模式的 pod，但是无法启动，pod 将处于 pending 状态。
+如果 master 节点运行的是 Kubernetes1.1 或更高版本，而 node 节点的版本低于 1.1 版本，则 API server 将也可以接受新的特权模式的 pod，但是无法启动，pod 将处于 pending 状态。
 
 执行 `kubectl describe pod FooPodName`，可以看到为什么 pod 处于 pending 状态。输出的 event 列表中将显示： `Error validating pod "FooPodName"."FooPodNamespace" from api, ignoring: spec.containers[0].securityContext.privileged: forbidden '<*>(0xc2089d3248)true'`
 

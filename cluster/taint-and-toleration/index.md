@@ -74,4 +74,4 @@ tolerations:
 
 ## 参考
 
-- [Taints and Tolerations - kuberentes.io](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+- [Taints and Tolerations - Kubernetes.io](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
