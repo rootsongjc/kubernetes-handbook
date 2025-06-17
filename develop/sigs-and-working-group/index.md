@@ -15,7 +15,6 @@ keywords:
 - 集群
 ---
 
-
 Kubernetes 的社区是以 SIG（Special Interest Group 特别兴趣小组）和工作组的形式组织起来的，每个工作组都会定期召开视频会议。
 
 所有的 SIG 和工作组都使用 slack 和邮件列表沟通。
