@@ -20,7 +20,7 @@ Pod 是 Kubernetes 中可以创建的最小部署单元，也是 Kubernetes REST
 
 在 Kubernetes V1 core API 版本中的 Pod 的数据结构如下图所示：
 
-![Pod Cheatsheet](kubernetes-pod-cheatsheet.webp)
+![Pod Cheatsheet](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pod/kubernetes-pod-cheatsheet.webp)
 {width=3695 height=5188}
 
 ## 什么是 Pod？
@@ -41,7 +41,7 @@ Pod 中的容器也有访问共享 volume 的权限，这些 volume 会被定义
 
 临时卷的生命周期跟 pod 相同，当 Pod 因为某种原因被删除或者被新创建的相同的 pod 取代时，pod 的附属物（例如 volume）也会被销毁和重新创建。Kubernetes 中提供了众多的卷类型，关于卷（Volume）的详细介绍请参考 [Kubernetes 文档](https://kubernetes.io/zh-cn/docs/concepts/storage/volumes/)。
 
-![Pod 示意图](pod-overview.webp)
+![Pod 示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pod/pod-overview.webp)
 {width=600 height=400}
 
 说明：一个多容器 Pod，包含文件提取程序和 Web 服务器，该服务器使用持久卷在容器之间共享存储。

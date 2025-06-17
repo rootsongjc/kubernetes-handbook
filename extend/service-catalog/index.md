@@ -40,7 +40,7 @@ Service Catalog 使用 [Open Service Broker API](https://github.com/openserviceb
 
 Service Catalog 通过扩展 API 服务器和控制器实现，使用 etcd 进行存储。它还使用 Kubernetes 1.7 + 中提供的聚合层来呈现其 API。
 
-![Service Catalog 架构](service-catalog-architecture.webp)
+![Service Catalog 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/service-catalog/service-catalog-architecture.webp)
 {width=1421 height=772}
 
 ### API 资源
@@ -91,7 +91,7 @@ spec:
 
 以下是说明从一个 service broker 列出托管服务和套餐所涉及步骤的顺序图：
 
-![列出服务](service-catalog-list.webp)
+![列出服务](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/service-catalog/service-catalog-list.webp)
 {width=1421 height=772}
 
 1. 将 ClusterServiceBroker 资源添加到 Service catalog 中，它会触发对外部 Service Broker 的调用以获取可用服务的清单。
@@ -150,7 +150,7 @@ spec:
 
 以下序列图说明了提供一个新的托管服务的实例所涉及的步骤：
 
-![启用一个服务](service-catalog-provision.webp)
+![启用一个服务](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/service-catalog/service-catalog-provision.webp)
 {width=964 height=654}
 
 1. 当 `ServiceInstance` 资源创建后，Service Catalog 发起到外部 service broker 来提供服务的一个实例。
@@ -180,7 +180,7 @@ spec:
 
 以下序列图说明了绑定到托管服务实例所涉及的步骤：
 
-![绑定到托管服务](service-catalog-bind.webp)
+![绑定到托管服务](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/service-catalog/service-catalog-bind.webp)
 {width=962 height=656}
 
 1. 在 ServiceBinding 创建后，Service Catalog 给外部 service broker 发一个调用请求，获取与服务实例绑定所需的信息。
@@ -193,7 +193,7 @@ spec:
 
 绑定后，最后一步是将连接凭证和服务特定的信息映射到应用程序中。这些信息存储在 secret 中，应用程序可以用来访问并与托管服务连接。
 
-![映射连接凭证](service-catalog-map.webp)
+![映射连接凭证](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/service-catalog/service-catalog-map.webp)
 {width=1421 height=772}
 
 #### Pod 配置文件

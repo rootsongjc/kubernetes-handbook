@@ -27,7 +27,7 @@ keywords:
 
 Kubernetes 设计理念和功能其实就是一个类似 Linux 的分层架构，如下图所示
 
-![Kubernetes 分层架构示意图](006tNc79ly1fzniqvmi51j31gq0s0q5u.webp)
+![Kubernetes 分层架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/perspective/006tNc79ly1fzniqvmi51j31gq0s0q5u.webp)
 {width=1898 height=1008}
 
 * 核心层：Kubernetes 最核心的功能，对外提供 API 构建高层的应用，对内提供插件式应用执行环境

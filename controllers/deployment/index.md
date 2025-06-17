@@ -70,7 +70,7 @@ kubectl rollout undo deployment/nginx-deployment
 
 ## Deployment 结构示意图
 
-![Kubernetes Deployment Cheatsheet](deployment-cheatsheet.webp)
+![Kubernetes Deployment Cheatsheet](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/deployment/deployment-cheatsheet.webp)
 {width=2142 height=2468}
 
 ## Deployment 是什么？

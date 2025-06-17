@@ -17,7 +17,6 @@ keywords:
 - 资源
 ---
 
-
 Operator 最初是由 CoreOS（后被 Red Hat 收购）开发的，下面是关于 Operator 的一些基础知识：
 
 - Operator 是用来扩展 Kubernetes API 的特定的应用程序控制器；

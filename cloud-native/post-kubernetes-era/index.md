@@ -31,7 +31,7 @@ Kubernetes 已成为云原生应用的既定运行平台，本文以 Kubernetes 
 
 Kubernetes 从开源至今已经走过快六个年头（2014 年 6 月开源）了，可以说是 Kubernetes 的诞生开启了整个云原生的时代。我粗略的将云原生的发展划分为以下几个时期。
 
-![云原生的发展阶段](cloud-native-stages.svg)
+![云原生的发展阶段](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/cloud-native-stages.svg)
 {width=1048 height=261}
 
 **第一阶段：孵化期（2014 年）**
@@ -56,7 +56,7 @@ Kubernetes 开源之初就继承了 Google 内部调度系统 Borg 的经验，�
 
 下图是 Kubernetes 原生内置的可以应用到一个 Pod 上的所有控制器、资源对象等。
 
-![Kubernetes 概念](kubernetes-concepts.webp)
+![Kubernetes 概念](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/kubernetes-concepts.webp)
 {width=800 height=596}
 
 图片来自图书 [Kubernetes Patterns（O’Reilly）](https://www.redhat.com/cms/managed-files/cm-oreilly-kubernetes-patterns-ebook-f19824-201910-en.pdf)
@@ -87,7 +87,7 @@ Kubernetes 作为云原生基础设施设计之初遵循了以下原则：
 
 下图展示了基于 Kubernetes 原语及 PaaS 平台资源的 Kubernetes 原生应用的组成。
 
-![Kubernetes 原生应用](kubernetes-native-application-motion.gif)
+![Kubernetes 原生应用](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/kubernetes-native-application-motion.gif)
 {width=600 height=334}
 
 我们都知道 Kubernetes 提供了大量的[原语](https://kubernetes.io/docs/concepts/)，用户可以基于这些原语来编排服务，管理应用的生命周期。上图展示的是基于 Kubernetes 原生应用可以使用的 Kubernetes 原语、扩展及平台层资源，从内向外的对象跟应用程序（业务逻辑）的关联度依次降低，到最外层基本只剩下平台资源依赖，已经与 Kubernetes 几乎没有关系了。该图里仅展示了部分资源和对象（包含阿里巴巴开源的 [OpenKruise](https://github.com/openkruise/kruise)、Istio），实际上 [Operator](https://operatorhub.io/) 资源之丰富，也是 Kubernetes 生态如此繁荣的原因之一。
@@ -107,7 +107,7 @@ Kubernetes 本身的原语、资源对象、配置、常用的 CRD 扩展有几�
 
 同一个资源对象又有多种实现方式，比如 Ingress 就有 [10 多种实现](https://docs.google.com/spreadsheets/d/1DnsHtdHbxjvHmxvlu7VhzWcWgLAn_Mc5L1WlhLDA__k/edit#gid=0)，PV 就更不用说，对于开发者究竟如何选择，平台如何管理，这都是让人很头疼的问题。而且有时候平台所提供的扩展能力还可能会有冲突，这些能力有的可能互不相干，有的可能会有正交，有的可能完全重合。且应用本身与运维特性之间存在太多耦合，不便于复用。
 
-![资源交集动画](resources-motion.gif)
+![资源交集动画](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/resources-motion.gif)
 {width=600 height=363}
 
 上图中不同颜色的方框代表不同的资源类别，红线框代表不能为一个资源同时应用该配置，否则会出现冲突，不同的颜色上面是一个动画，展示的是部分资源组合。图中仅包含了部分 Kubernetes 中的原语和 Istio 中的资源对象组合及自定义扩展，实际上用户可以根据应用的自身特点，基于 Kubernetes 原语和 CRD 创建出千变万化的组合。
@@ -172,7 +172,7 @@ Kubernetes 之上有很多能力缺失，比如应用构建、发布、管理和
 
 Helm 主要关注的是 [12 因素应用](https://12factor.net/zh_cn/)法则[构建、发布、运行](https://12factor.net/zh_cn/build-release-run)这一原则中的”发布”这一环节。下图是 Helm v3 的架构图。
 
-![Helm3 架构](helm-chart.svg)
+![Helm3 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/helm-chart.svg)
 {width=499 height=357}
 
 Helm 可以安装本地或者远程的 chart，当 chart 安装到 Kubernetes 中后就会创建一个 release，每次更新该 chart 的配置并执行 `helm upgrade`，release 的版本数就会加 1，开发者可以升级 chart 或回滚到历史版本。
@@ -221,7 +221,7 @@ Release 代表 Chart 在集群中的运行实例，Helm 围绕 Release 对应用
 
 那么究竟如何来给云原生应用分层，化繁就简？近几年来，基于 Kubernetes 的应用呈爆炸式发展，光是在[应用交付领域](https://jimmysong.io/awesome-cloud-native/#application-delivery)的开源项目就达几十个之多。下图展示我根据这些项目的特性而绘制的 App Delivery Landscape。
 
-![云原生应用的分层模型](cloud-native-app.svg)
+![云原生应用的分层模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/cloud-native-app.svg)
 {width=550 height=289}
 
 - **应用定义和包装**：云原生应用的最上层，直接定义云原生应用的组成形式，解决云原生应用之间的依赖关系，并封装成发布包，如 Helm、CNAB，还有云原生变成语言 Pulumi 和 Ballerina，基于 API 的方式来编排云原生应用；

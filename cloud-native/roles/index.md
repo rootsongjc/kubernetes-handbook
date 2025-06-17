@@ -18,7 +18,7 @@ keywords:
 
 云原生应用在诞生之初就是面向云而设计，适应云环境，为了在云上运行而开发的应用，既然是应用就涉及到生命周期管理，在一个云原生应用的生命周期中，存在以下几种角色，如下图所示。
 
-![云原生应用中的角色](roles.svg)
+![云原生应用中的角色](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/roles/roles.svg)
 {width=512 height=279}
 
 三者之间不是完全独立，而是互有交集。
