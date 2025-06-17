@@ -14,7 +14,13 @@ keywords:
 - volume
 - 创建
 ---
+
+
 Preset 就是预设，有时候想要让一批容器在启动的时候就注入一些信息，比如 secret、volume、volume mount 和环境变量，而又不想一个一个的改这些 Pod 的 template，这时候就可以用到 PodPreset 这个资源对象了。
+
+{{<callout warning "注意">}}
+PodPreset 功能已在 Kubernetes v1.24 中移除，建议改用 InitContainer 或自定义控制器等方式实现相同需求。
+{{</callout>}}
 
 本页是关于 PodPreset 的概述，该对象用来在 Pod 创建的时候向 Pod 中注入某些特定信息。该信息可以包括 secret、volume、volume mount 和环境变量。
 
@@ -50,6 +56,6 @@ Kubernetes 提供了一个准入控制器（`PodPreset`），当其启用时，P
 
 为了在群集中使用 Pod Preset，你必须确保以下内容：
 
-1. 你已启用 `settings.k8s.io/v1alpha1/podpreset` API 类型。例如，可以通过在 API server 的 `--runtime-config` 选项中包含 `settings.k8s.io/v1alpha1=true` 来完成此操作。
+1. PodPreset API (`settings.k8s.io/v1alpha1`) 已在 Kubernetes v1.24 被移除，如需相似功能可考虑使用 InitContainer 或自定义控制器。
 2. 你已启用 `PodPreset` 准入控制器。一种方法是将 `PodPreset` 包含在为 API server 指定的 `--admission-control` 选项值中。
 3. 你已经在要使用的命名空间中通过创建 `PodPreset` 对象来定义 `PodPreset`。

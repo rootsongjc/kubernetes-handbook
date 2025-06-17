@@ -3,7 +3,6 @@ weight: 41
 title: Ingress
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: Ingress 允许您通过 Kubernetes API 定义的规则来将 HTTP 和 HTTPS 流量映射到集群内的不同后端，使用基于协议的配置机制来处理 URI、主机名和路径等 Web 概念，使得您的网络服务可以被访问。
 keywords:
 - ingress
 - ingressclass
@@ -16,6 +15,8 @@ keywords:
 - 集群
 - 默认
 ---
+
+
 {{<callout warning "注意">}}
 虽然 Ingress 在 Kubernetes 1.9 正式发布，但是目前 Ingress 资源已不再维护，推荐使用 [Gateway API](../gateway/) 代替。
 {{</callout>}}

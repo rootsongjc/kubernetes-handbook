@@ -15,6 +15,8 @@ keywords:
 - 调度
 - 资源
 ---
+
+
 Kubernetes 作为一个容器编排调度引擎，资源调度是它的最基本也是最重要的功能，这一节中我们将着重讲解 Kubernetes 中是如何做资源调度的。
 
 Kubernetes 中有一个叫做 `kube-scheduler` 的组件，该组件就是专门监听 `kube-apiserver` 中是否有还未调度到 node 上的 pod，再通过特定的算法为 pod 指定分派 node 运行。

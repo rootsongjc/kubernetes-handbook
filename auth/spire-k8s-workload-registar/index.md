@@ -16,6 +16,8 @@ keywords:
 - 模式
 - 注册器
 ---
+
+
 SPIRE Kubernetes 工作负载注册器实现了一个 Kubernetes `ValidatingAdmissionWebhook`，便于在 Kubernetes 内自动注册工作负载。
 
 ## 配置

@@ -16,6 +16,8 @@ keywords:
 - 运行
 - 连接
 ---
+
+
 本页向你展示如何使用 `kubectl port-forward` 命令连接到运行在 Kubernetes 集群中的 Redis 服务器。这种类型的连接对于数据库调试很有帮助。
 
 ## 创建一个 Pod 来运行 Redis 服务器

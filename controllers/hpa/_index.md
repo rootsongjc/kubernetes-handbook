@@ -7,6 +7,8 @@ type: book
 level: 2
 ---
 
+
+
 应用的资源使用率通常都有高峰和低谷的时候，如何削峰填谷，提高集群的整体资源利用率，让 service 中的 Pod 个数自动调整呢？这就有赖于 Horizontal Pod Autoscaling 了，顾名思义，使 Pod 水平自动缩放。这个 Object（跟 Pod、Deployment 一样都是 API resource）也是最能体现 kubernetes 之于传统运维价值的地方，不再需要手动扩容了，终于实现自动化了，还可以自定义指标，没准未来还可以通过人工智能自动进化呢！
 
 HPA 属于 Kubernetes 中的 **autoscaling** SIG（Special Interest Group），其下有两个 feature：
@@ -101,7 +103,7 @@ Scale 是一个允许你动态设置副本数并检查其当前状态的接口�
 
 Horizontal Pod Autoscaler 是 kubernetes 的 `autoscaling` API 组中的 API 资源。当前的稳定版本中，只支持 CPU 自动扩缩容，可以在 `autoscaling/v1` API 版本中找到。
 
-在 alpha 版本中支持根据内存和自定义 metric 扩缩容，可以在 `autoscaling/v2alpha1` 中找到。`autoscaling/v2alpha1` 中引入的新字段在 `autoscaling/v1` 中是做为 annotation 而保存的。
+在新版中，你可以通过 `autoscaling/v2` API 根据内存和自定义指标进行扩缩容。`autoscaling/v2` 在 `autoscaling/v1` 的基础上加入了更多指标支持。
 
 ## 在 kubectl 中支持 Horizontal Pod Autoscaling
 
@@ -129,17 +131,17 @@ Horizontal Pod Autoscaler 不能使用直接操作 replication controller 进行
 
 ## 支持多个 metric
 
-Kubernetes 1.6 中增加了支持基于多个 metric 的扩缩容。你可以使用 `autoscaling/v2alpha1` API 版本来为 Horizontal Pod Autoscaler 指定多个 metric。然后 Horizontal Pod Autoscaler controller 将权衡每一个 metric，并根据该 metric 提议一个新的 scale。在所有提议里最大的那个 scale 将作为最终的 scale。
+Kubernetes 1.6 起支持基于多个指标的扩缩容，现在推荐使用 `autoscaling/v2` API 为 Horizontal Pod Autoscaler 指定多个 metric。Controller 会综合各指标计算出新的副本数，以其中最大的值为准。
 
 ## 支持自定义 metric
 
 **注意：** Kubernetes 1.2 根据特定于应用程序的 metric，通过使用特殊注释的方式，增加了对缩放的 alpha 支持。
 
-在 Kubernetes 1.6 中删除了对这些注释的支持，有利于 `autoscaling/v2alpha1` API。虽然旧的收集自定义 metric 的旧方法仍然可用，但是这些 metric 将不可供 Horizontal Pod Autoscaler 使用，并且用于指定要缩放的自定义 metric 的以前的注释也不在受 Horizontal Pod Autoscaler 认可。
+在 Kubernetes 1.6 中删除了基于注解的旧方法，转而使用 `autoscaling/v2` API。虽然旧的自定义 metric 收集方式仍可用，但不再被 HPA 所识别。
 
 Kubernetes 1.6 增加了在 Horizontal Pod Autoscale r 中使用自定义 metric 的支持。
 
-你可以为 `autoscaling/v2alpha1` API 中使用的 Horizontal Pod Autoscaler 添加自定义 metric。
+你可以为 `autoscaling/v2` API 中的 Horizontal Pod Autoscaler 添加自定义 metric。
 
 Kubernetes 然后查询新的自定义 metric API 来获取相应自定义 metric 的值。
 

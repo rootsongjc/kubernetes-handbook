@@ -13,6 +13,8 @@ keywords:
 - 创建
 - 敏感数据
 ---
+
+
 Secret 解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者 Pod Spec 中。Secret 可以以 Volume 或者环境变量的方式使用。
 
 Secret 有三种类型：
@@ -82,7 +84,7 @@ spec:
 ### 将 Secret 导出到环境变量中
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-deployment

@@ -15,6 +15,8 @@ keywords:
 - 用户
 - 认证
 ---
+
+
 在开启了 TLS 的集群中，每当与集群交互的时候少不了的是身份认证，使用 kubeconfig（即证书）和 token 两种认证方式是最简单也最通用的认证方式，在 dashboard 的登录功能就可以使用这两种登录功能。
 
 下文分两块以示例的方式来讲解两种登陆认证方式：
@@ -42,7 +44,7 @@ keywords:
 
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: admin
   annotations:

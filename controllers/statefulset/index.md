@@ -15,6 +15,8 @@ keywords:
 - svc
 - web
 ---
+
+
 StatefulSet 作为 Controller 为 Pod 提供唯一的标识。它可以保证部署和 scale 的顺序。
 
 使用案例参考：[kubernetes contrib - statefulsets](https://github.com/kubernetes/contrib/tree/master/statefulsets)，其中包含 zookeeper 和 kakfa 的 statefulset 设置和使用说明。
@@ -83,7 +85,7 @@ spec:
   selector:
     app: nginx
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: web
@@ -210,7 +212,7 @@ spec:
   selector:
     app: nginx
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: web
@@ -346,7 +348,7 @@ data:
   snap.retain: "3"
   purge.interval: "1"
 ---
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: zk-budget
@@ -356,7 +358,7 @@ spec:
       app: zk
   minAvailable: 2
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zk

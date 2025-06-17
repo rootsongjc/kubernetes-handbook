@@ -15,6 +15,8 @@ keywords:
 - 集群
 - 默认
 ---
+
+
 为了让 [Ingress](../../service-discovery/ingress) 资源工作，集群必须有一个运行中的 Ingress 控制器。与 `kube-controller-manager` 一起运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。你可以选择最适合你的集群的 Ingress 控制器。
 
 Kubernetes 官方支持以下 Ingress 控制器：

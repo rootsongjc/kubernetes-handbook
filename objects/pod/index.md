@@ -14,6 +14,8 @@ keywords:
 - 运行
 - 进程
 ---
+
+
 Pod 是 Kubernetes 中可以创建的最小部署单元，也是 Kubernetes REST API 中的顶级资源类型。
 
 在 Kuberentes V1 core API 版本中的 Pod 的数据结构如下图所示：

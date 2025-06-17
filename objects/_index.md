@@ -6,6 +6,8 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
+
+
 以下列举的内容都是 Kubernetes 中的对象（Object），这些对象都可以在 YAML 文件中作为一种 API 类型来配置。
 
 - Pod
@@ -19,7 +21,7 @@ type: book
 - StatefulSet
 - DaemonSet
 - ServiceAccount
-- ReplicationController
+- ReplicationController （已废弃，建议使用 Deployment 或 ReplicaSet）
 - ReplicaSet
 - Job
 - CronJob
@@ -38,7 +40,7 @@ type: book
 
 | 类别     | 名称                                                         |
 | :------- | ------------------------------------------------------------ |
-| 资源对象 | Pod、ReplicaSet、ReplicationController、Deployment、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaling、Node、Namespace、Service、Ingress、Label、CustomResourceDefinition |
+| 资源对象 | Pod、ReplicaSet、Deployment（取代 ReplicationController）、StatefulSet、DaemonSet、Job、CronJob、HorizontalPodAutoscaler、Node、Namespace、Service、Ingress、Label、CustomResourceDefinition |
 | 存储对象 | Volume、PersistentVolume、Secret、ConfigMap                  |
 | 策略对象 | SecurityContext、ResourceQuota、LimitRange                   |
 | 身份对象 | ServiceAccount、Role、ClusterRole                            |
@@ -70,7 +72,7 @@ Kubernetes 对象是“目标性记录” —— 一旦创建对象，Kubernetes
 这里有一个 `.yaml` 示例文件，展示了 Kubernetes Deployment 的必需字段和对象 spec：
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
@@ -83,15 +85,15 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.7.9
+        image: nginx:1.25
         ports:
         - containerPort: 80
 ```
 
-一种创建 Deployment 的方式，类似上面使用 `.yaml` 文件，是使用 `kubectl` 命令行接口（CLI）中的 `kubectl create` 命令，传递 `.yaml` 作为参数。下面是一个示例：
+创建 Deployment 推荐使用 `kubectl apply`，其会根据 YAML 文件更新或创建资源。下面是一个示例：
 
 ```bash
-kubectl create -f docs/user-guide/nginx-deployment.yaml --record
+kubectl apply -f docs/user-guide/nginx-deployment.yaml
 ```
 
 输出类似如下这样：

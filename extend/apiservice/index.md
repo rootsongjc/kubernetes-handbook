@@ -15,12 +15,14 @@ keywords:
 - 排序
 - 查看
 ---
+
+
 APIService 是用来表示一个特定的 `GroupVersion` 的中的 server，它的结构定义位于代码 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
 
 下面是一个 APIService 的示例配置：
 
 ```yaml
-apiVersion: apiregistration.k8s.io/v1beta1
+apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
   name: v1alpha1.custom-metrics.metrics.k8s.io
@@ -37,7 +39,7 @@ spec:
 
 ## APIService 详解
 
-使用 `apiregistration.k8s.io/v1beta1` 版本的 APIService，在 metadata.name 中定义该 API 的名字。
+使用 `apiregistration.k8s.io/v1` 版本的 APIService，在 metadata.name 中定义该 API 的名字。
 
 使用上面的 yaml 的创建 `v1alpha1.custom-metrics.metrics.k8s.io` APIService。
 
@@ -51,13 +53,13 @@ spec:
 ```bash
 kubectl get apiservice v1alpha1.custom-metrics.metrics.k8s.io -o yaml
 ​``````yaml
-apiVersion: apiregistration.k8s.io/v1beta1
+apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
   creationTimestamp: 2017-12-14T08:27:35Z
   name: v1alpha1.custom-metrics.metrics.k8s.io
   resourceVersion: "35194598"
-  selfLink: /apis/apiregistration.k8s.io/v1beta1/apiservices/v1alpha1.custom-metrics.metrics.k8s.io
+  selfLink: /apis/apiregistration.k8s.io/v1/apiservices/v1alpha1.custom-metrics.metrics.k8s.io
   uid: a31a3412-e0a8-11e7-9fa4-f4e9d49f8ed0
 spec:
   caBundle: null
@@ -97,16 +99,16 @@ v1.networking.k8s.io                     2d
 v1.rbac.authorization.k8s.io             2d
 v1.storage.k8s.io                        2d
 v1alpha1.custom-metrics.metrics.k8s.io   2h
-v1beta1.apiextensions.k8s.io             2d
-v1beta1.apps                             2d
-v1beta1.authentication.k8s.io            2d
-v1beta1.authorization.k8s.io             2d
-v1beta1.batch                            2d
-v1beta1.certificates.k8s.io              2d
-v1beta1.extensions                       2d
-v1beta1.policy                           2d
-v1beta1.rbac.authorization.k8s.io        2d
-v1beta1.storage.k8s.io                   2d
+v1.apiextensions.k8s.io                  2d
+v1.apps                                  2d
+v1.authentication.k8s.io                 2d
+v1.authorization.k8s.io                  2d
+v1.batch                                 2d
+v1.certificates.k8s.io                   2d
+v1.networking.k8s.io                     2d
+v1.policy                                2d
+v1.rbac.authorization.k8s.io             2d
+v1.storage.k8s.io                        2d
 v1beta2.apps                             2d
 v2beta1.autoscaling                      2d
 ```
@@ -115,27 +117,19 @@ v2beta1.autoscaling                      2d
 
 ```bash
 $ kubectl api-versions
-apiextensions.k8s.io/v1beta1
-apiregistration.k8s.io/v1beta1
-apps/v1beta1
-apps/v1beta2
+apiextensions.k8s.io/v1
+apiregistration.k8s.io/v1
+apps/v1
 authentication.k8s.io/v1
-authentication.k8s.io/v1beta1
 authorization.k8s.io/v1
-authorization.k8s.io/v1beta1
 autoscaling/v1
 autoscaling/v2beta1
 batch/v1
-batch/v1beta1
-certificates.k8s.io/v1beta1
+certificates.k8s.io/v1
 custom-metrics.metrics.k8s.io/v1alpha1
-extensions/v1beta1
-monitoring.coreos.com/v1
 networking.k8s.io/v1
-policy/v1beta1
+policy/v1
 rbac.authorization.k8s.io/v1
-rbac.authorization.k8s.io/v1beta1
 storage.k8s.io/v1
-storage.k8s.io/v1beta1
 v1
 ```

@@ -15,6 +15,8 @@ keywords:
 - 端口
 - 集群
 ---
+
+
 Kubernetes `Pod` 是有生命周期的，它们可以被创建，也可以被销毁，然而一旦被销毁生命就永远结束。通过 `ReplicationController` 能够动态地创建和销毁 `Pod`。每个 `Pod` 都会获取它自己的 IP 地址，即使这些 IP 地址不总是稳定可依赖的。这会导致一个问题：在 Kubernetes 集群中，如果一组 `Pod`（称为 backend）为其它 `Pod` （称为 frontend）提供服务，那么 frontend Pod 该如何发现和连接哪些 backend Pod 呢？
 
 ## 关于 `Service`

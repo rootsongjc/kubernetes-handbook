@@ -5,9 +5,11 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 ---
 
+
+
 Kubernetes 中提供了良好的多租户认证管理机制，如 RBAC、ServiceAccount 还有各种策略等。
 
-另外还有一个 CNCF 孵化项目 [SPIFFE](https://spiffe.io/) 旨在为所有的分布式应用提供身份支持，目前已应用在了 Envoy、Istio 等应用中。
+另外 [SPIFFE](https://spiffe.io/) / SPIRE 已从 CNCF 毕业，广泛用于为分布式应用提供统一的身份管理，已被 Envoy、Istio 等项目所采纳。
 
 ## 本节大纲
 

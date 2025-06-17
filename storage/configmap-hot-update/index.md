@@ -15,6 +15,8 @@ keywords:
 - 挂载
 - 环境变量
 ---
+
+
 ConfigMap 是用来存储配置文件的 kubernetes 资源对象，所有的配置内容都存储在 etcd 中，下文主要是探究 ConfigMap 的创建和更新流程，以及对 ConfigMap 更新后容器内挂载的内容是否同步更新的测试。
 
 ## 测试示例
@@ -256,7 +258,7 @@ type Request struct {
 使用下面的配置创建 nginx 容器测试更新 ConfigMap 后容器内的环境变量是否也跟着更新。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx
@@ -314,7 +316,7 @@ log_level=INFO
 使用下面的配置创建 nginx 容器测试更新 ConfigMap 后容器内挂载的文件是否也跟着更新。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx

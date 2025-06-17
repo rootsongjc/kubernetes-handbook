@@ -1,7 +1,6 @@
 ---
 title: 云原生应用的定义
 linkTitle: 云原生应用的定义
-description: 定义云原生应用的基本模型。
 weight: 4
 keywords:
 - component
@@ -15,6 +14,8 @@ keywords:
 - 组件
 - 运维
 ---
+
+
 {{<callout note 注意>}}
 
 本文参考的是 [OAM 规范](https://github.com/oam-dev/spec)中对云原生应用的定义，并做出了引申。

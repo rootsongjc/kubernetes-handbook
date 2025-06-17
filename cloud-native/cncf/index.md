@@ -14,6 +14,8 @@ keywords:
 - 级别
 - 项目
 ---
+
+
 CNCF，全称 Cloud Native Computing Foundation（云原生计算基金会），成立于 2015 年 7 月 21 日（[于美国波特兰 OSCON 2015 上宣布](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)），其最初的口号是**坚持和整合开源技术来让编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论你是云原生应用的开发者、管理者还是研究人员都有必要了解。
 
 CNCF 作为一个厂商中立的基金会，致力于 Github 上的快速成长的开源技术的推广，如 Kubernetes、Prometheus、Envoy 等，帮助开发人员更快更好的构建出色的产品。CNCF 维护了一个全景图项目，详见 [GitHub](https://github.com/cncf/landscape)。

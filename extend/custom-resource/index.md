@@ -14,6 +14,8 @@ keywords:
 - 对象
 - 资源
 ---
+
+
 自定义资源是对 Kubernetes API 的扩展，Kubernetes 中的每个资源都是一个 API 对象的集合，例如我们在 YAML 文件里定义的那些 spec 都是对 Kubernetes 中的资源对象的定义，所有的自定义资源可以跟 Kubernetes 中内建的资源一样使用 kubectl 操作。
 
 ## 自定义资源
@@ -43,7 +45,7 @@ Kubernetes 从 1.6 版本开始包含一个内建的资源叫做 TPR（ThirdPart
 参考下面的 CRD，resourcedefinition.yaml：
 
 ```yaml
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   # 名称必须符合下面的格式：<plural>.<group>

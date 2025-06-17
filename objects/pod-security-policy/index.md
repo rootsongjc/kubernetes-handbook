@@ -15,7 +15,13 @@ keywords:
 - 策略
 - 默认
 ---
+
+
 `PodSecurityPolicy` 类型的对象能够控制，是否可以向 Pod 发送请求，该 Pod 能够影响被应用到 Pod 和容器的 `SecurityContext`。
+
+{{<callout warning "重要">}}
+PodSecurityPolicy 已在 Kubernetes v1.25 被移除。请使用 [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/) 或其他安全控制方案。
+{{</callout>}}
 
 ## 什么是 Pod 安全策略？
 
@@ -128,7 +134,7 @@ Pod 必须基于 PSP 验证每个字段。
 下面是一个 Pod 安全策略的例子，所有字段的设置都被允许：
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: permissive
@@ -190,7 +196,7 @@ podsecuritypolicy "permissive" deleted
 
 为了能够在集群中使用 Pod 安全策略，必须确保如下：
 
-1. 启用 API 类型 `extensions/v1beta1/podsecuritypolicy`（仅对 1.6 之前的版本）
+1. 启用 API 类型 `policy/v1beta1/podsecuritypolicy`（已在 v1.25 移除）
 2. 启用许可控制器 `PodSecurityPolicy`
 3. 定义自己的策略
 

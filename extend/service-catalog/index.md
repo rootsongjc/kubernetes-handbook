@@ -16,6 +16,8 @@ keywords:
 - 群集
 - 集群
 ---
+
+
 服务目录（Service Catalog）是 Kubernetes 的扩展 API，它使运行在 Kubernetes 集群中的应用程序可以轻松使用外部托管软件产品，例如由云提供商提供的数据存储服务。
 
 它提供列表清单、提供 (provision) 和绑定 (binding) 来自服务代理（Service Brokers）的外部托管服务，而不需要关心如何创建或管理这些服务的详细情况。

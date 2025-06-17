@@ -1,7 +1,6 @@
 ---
 title: Workload
 linkTitle: Workload
-description: '`Workload` 用于定义工作负载的类型。'
 weight: 1
 keywords:
 - component
@@ -15,6 +14,8 @@ keywords:
 - 定义
 - 开发者
 ---
+
+
 {{<callout note 提示>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

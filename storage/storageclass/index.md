@@ -15,6 +15,8 @@ keywords:
 - 参数
 - 指定
 ---
+
+
 本文介绍了 Kubernetes 中 `StorageClass` 的概念。在阅读本文之前建议先熟悉 [卷](https://kubernetes.io/docs/concepts/storage/volumes) 和 [Persistent Volume（持久卷）](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
 ## 介绍

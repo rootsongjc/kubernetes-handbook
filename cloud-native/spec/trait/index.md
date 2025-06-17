@@ -1,7 +1,6 @@
 ---
 title: Trait
 linkTitle: Trait
-description: '`Trait` 用于定义 `Component` 的运维属性。'
 weight: 3
 keywords:
 - component
@@ -15,6 +14,8 @@ keywords:
 - 路由
 - 运维
 ---
+
+
 {{<callout note 提示>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

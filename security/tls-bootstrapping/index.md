@@ -15,6 +15,8 @@ keywords:
 - 证书
 - 请求
 ---
+
+
 本文档介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）。
 
 Kubernetes 1.4 引入了一个用于从集群级证书颁发机构（CA）请求证书的 API。此 API 的原始目的是为 kubelet 提供 TLS 客户端证书。可以在 [这里](https://github.com/kubernetes/kubernetes/pull/20439) 找到该提议，在 [feature #43](https://github.com/kubernetes/features/issues/43) 追踪该功能的进度。
@@ -91,7 +93,7 @@ Kube-controller-manager 标志为：
 # A ClusterRole which instructs the CSR approver to approve a user requesting
 # node client credentials.
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: approve-node-client-csr
 rules:
@@ -102,7 +104,7 @@ rules:
 # A ClusterRole which instructs the CSR approver to approve a node renewing its
 # own client credentials.
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: approve-node-client-renewal-csr
 rules:
@@ -113,7 +115,7 @@ rules:
 # A ClusterRole which instructs the CSR approver to approve a node requesting a
 # serving cert matching its client cert.
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: approve-node-server-renewal-csr
 rules:
@@ -134,7 +136,7 @@ rules:
 ```yaml
 # Approve all CSRs for the group "kubelet-bootstrap-token"
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: auto-approve-csrs-for-group
 subjects:
@@ -151,7 +153,7 @@ roleRef:
 
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: node1-client-cert-renewal
 subjects:

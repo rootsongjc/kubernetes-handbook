@@ -1,7 +1,6 @@
 ---
 title: Component
 linkTitle: Component
-description: '`Component` 用于定义应用程序的基本组件。'
 weight: 2
 keywords:
 - component
@@ -15,6 +14,8 @@ keywords:
 - 负载
 - 运维
 ---
+
+
 {{<callout note 提示>}}
 本文基于 OAM v1alpha2 版本。
 {{</callout>}}

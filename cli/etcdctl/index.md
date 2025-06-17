@@ -15,6 +15,8 @@ keywords:
 - 看到
 - 输出
 ---
+
+
 Kubernetes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 kuberentes 在 etcd 中保存的数据。
 
 ```bash
