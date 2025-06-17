@@ -211,6 +211,7 @@ kubectl get pods nginx-4263166205-ggst4 -o template '--template={{if (exists . "
 [test-infra](https://github.com/kubernetes/test-infra) 是由 kubernetes 官方开源的测试框架，其中包括了 Kubernetes 测试工具集和测试结果展示。下图展示了 test-infra 的架构：
 
 ![test-infra 架构图（图片来自官方 GitHub）](kubernetes-test-architecture.webp)
+{width=1313 height=1284}
 
 该测试框架主要是针对 Google 公有云做的，支持 kubernetes1.6 以上版本的测试。详见 <https://github.com/kubernetes/test-infra。>
 

@@ -55,5 +55,5 @@ Hook 调用的日志没有暴露给 Pod 的 event，所以只能通过 `describe
 
 ## 参考
 
-- [Attach Handlers to Container Lifecycle Events - kuberentes.io](https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/)
+- [Attach Handlers to Container Lifecycle Events - Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/)
 - [Container Lifecycle Hooks - kubernetes.io](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/)

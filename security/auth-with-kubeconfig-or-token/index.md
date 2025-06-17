@@ -33,6 +33,7 @@ keywords:
 比如我们为 brand namespace 下的 brand 用户生成了名为 `brand.kubeconfig` 的 kubeconfig 文件，还要再该文件中追加一行 `token` 的配置（如何生成 token 将在下文介绍），如下所示：
 
 ![kubeconfig 文件](brand-kubeconfig-yaml.webp)
+{width=1798 height=1168}
 
 对于访问 dashboard 时候的使用 kubeconfig 文件如`brand.kubeconfig` 必须追到 `token` 字段，否则认证不会通过。而使用 kubectl 命令时的用的 kubeconfig 文件则不需要包含 `token` 字段。
 
