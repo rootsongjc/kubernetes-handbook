@@ -83,6 +83,7 @@ kubernetes 中的 pause 容器主要为每个业务容器提供以下功能：
 [这篇文章](https://www.ianlewis.org/en/almighty-pause-container)做出了详细的说明，pause 容器的作用可以从这个例子中看出，首先见下图：
 
 ![Pause 容器示意图](pause-container.webp)
+{width=1598 height=948}
 
 我们首先在节点上运行一个 pause 容器。
 

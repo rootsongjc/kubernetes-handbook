@@ -36,6 +36,7 @@ Pod 相位的数量和含义是严格指定的。除了本文档中列举的状�
 下图是 Pod 的生命周期示意图，从图中可以看到 Pod 状态的变化。
 
 ![Pod 的生命周期示意图（图片来自网络）](kubernetes-pod-life-cycle.webp)
+{width=1886 height=638}
 
 ## Pod 状态
 

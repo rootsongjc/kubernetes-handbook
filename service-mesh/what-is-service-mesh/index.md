@@ -50,7 +50,8 @@ Service Mesh 又译作“服务网格”，作为服务间通信的基础设施�
 
 服务网格的架构如下图所示：
 
-![Service Mesh 架构图](service-mesh-pattern.webp)图片来自：[Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
+![Service Mesh 架构图](service-mesh-pattern.webp)
+{width=661 height=421}图片来自：[Pattern: Service Mesh](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
 
 服务网格作为 sidecar 运行，对应用程序来说是透明，所有应用程序间的流量都会通过它，所以对应用程序流量的控制都可以在 Service mesh 中实现。
 

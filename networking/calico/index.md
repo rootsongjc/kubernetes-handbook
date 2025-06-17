@@ -19,6 +19,7 @@ keywords:
 [Calico](https://www.projectcalico.org/) 原意为”有斑点的“，如果说一只猫为 calico cat 的话，就是说这是只花猫，也叫三色猫，所以 calico 的 logo 是只三色猫。
 
 ![Calico logo](calico-logo.webp)
+{width=441 height=424}
 
 ## 概念
 
@@ -48,6 +49,7 @@ Calico 由以下组件组成，在部署 Calico 的时候部分组件是可选�
 Calico 的架构图如下所示：
 
 ![Calico 架构图](calico-architecture.webp)
+{width=2580 height=1738}
 
 ### Calico API Server
 

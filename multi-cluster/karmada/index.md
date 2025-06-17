@@ -29,6 +29,7 @@ Karmada 是一个 Kubernetes 管理系统，使您能够在多个 Kubernetes 集
 下图展示的是 Karmada 中的各个组件及其关系。
 
 ![Karmada 中的各个组件及其关系](arch.webp)
+{width=1706 height=1127}
 
 以下是 Karmada 的主要组件概述以及每个组件的功能说明：
 
