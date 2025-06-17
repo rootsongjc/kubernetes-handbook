@@ -74,6 +74,7 @@ Flannel 是作为一个二进制文件的方式部署在每个 node 上，主要
 下面是使用 `host-gw` backend 的 flannel 网络架构图：
 
 ![flannel 网络架构（图片来自 openshift）](flannel-networking.webp)
+{width=1520 height=1039}
 
 **注意**：以上 IP 非本示例中的 IP，但是不影响读者理解。
 
@@ -399,7 +400,7 @@ Chain KUBE-SERVICES (2 references)
 target     prot opt source               destination
 ```
 
-从上面的 iptables 中可以看到注入了很多 Kuberentes service 的规则。
+从上面的 iptables 中可以看到注入了很多 Kubernetes service 的规则。
 
 ## 参考
 

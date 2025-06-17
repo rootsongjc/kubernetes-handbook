@@ -19,6 +19,7 @@ keywords:
 Kubernetes 提供的 kubectl 命令是与集群交互最直接的方式，v1.6 版本的 kubectl 命令参考图如下：
 
 ![kubectl cheatsheet](kubernetes-kubectl-cheatsheet.webp)
+{width=5592 height=7010}
 
 Kubectl 的子命令主要分为 8 个类别：
 
@@ -38,6 +39,7 @@ Kubectl 的子命令主要分为 8 个类别：
 为了使用 kubectl 命令更加高效，我们可以选择安装一下开源软件来增加操作 kubectl 命令的快捷方式，同时为 kubectl 命令增加命令提示。
 
 ![增加 kubeclt 命令的工具（图片来自网络）](tools-to-supercharge-kubectl.webp)
+{width=2048 height=1535}
 
 - [kubectx](https://github.com/ahmetb/kubectx)：用于切换 Kubernetes context
 - [kube-ps1](https://github.com/jonmosco/kube-ps1)：为命令行终端增加`$PROMPT`字段
@@ -46,6 +48,7 @@ Kubectl 的子命令主要分为 8 个类别：
 全部配置完成后的 kubectl 终端如下图所示：
 
 ![增强的 kubectl 命令](supercharged-kubectl.webp)
+{width=2132 height=1174}
 
 开源项目 [kube-shell](https://github.com/cloudnativelabs/kube-shell) 可以为 kubectl 提供自动的命令提示和补全，使用起来特别方便，推荐给大家。
 
@@ -64,6 +67,7 @@ pip install kube-shell --user -U
 ```
 
 ![kube-shell 页面](kube-shell.webp)
+{width=2592 height=1976}
 
 ## kubectl 的身份认证
 

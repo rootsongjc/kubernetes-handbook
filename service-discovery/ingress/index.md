@@ -39,6 +39,7 @@ graph LR;
 ```
 
 ![Ingress 运作的架构图](e0a8252231167704c4f15deeea858784.svg)
+{width=627 height=203}
 
 通过配置，Ingress 可为 Service 提供外部可访问的 URL、对其流量作负载均衡、终止 SSL/TLS，以及基于名称的虚拟托管等能力。 [Ingress 控制器](../../controllers/ingress-controller) 负责完成 Ingress 的工作，具体实现上通常会使用某个负载均衡器，不过也可以配置边缘路由器或其他前端来帮助处理流量。
 

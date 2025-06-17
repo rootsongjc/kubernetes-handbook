@@ -7,7 +7,7 @@ keywords:
 - api
 - etcd
 - key
-- kuberentes
+- Kubernetes
 - kubernetes
 - namespace
 - 使用
@@ -16,8 +16,7 @@ keywords:
 - 输出
 ---
 
-
-Kubernetes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 kuberentes 在 etcd 中保存的数据。
+Kubernetes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 Kubernetes 在 etcd 中保存的数据。
 
 ```bash
 ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json|python -m json.tool
@@ -158,7 +157,7 @@ for x in $keys;do
 done
 ```
 
-通过输出的结果我们可以看到 kubernetes 的原数据是按何种结构包括在 kuberentes 中的，输出结果如下所示：
+通过输出的结果我们可以看到 kubernetes 的原数据是按何种结构包括在 Kubernetes 中的，输出结果如下所示：
 
 ```ini
 /registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-details-default
@@ -175,7 +174,7 @@ done
 ...
 ```
 
-我们可以看到所有的 Kuberentes 的所有元数据都保存在 `/registry` 目录下，下一层就是 API 对象类型（复数形式），再下一层是 `namespace`，最后一层是对象的名字。
+我们可以看到所有的 Kubernetes 的所有元数据都保存在 `/registry` 目录下，下一层就是 API 对象类型（复数形式），再下一层是 `namespace`，最后一层是对象的名字。
 
 以下是 etcd 中存储的 kubernetes 所有的元数据类型：
 

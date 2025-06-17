@@ -153,6 +153,7 @@ Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Fe
 由于 Federation 试图解决一系列复杂的问题，因此需要将这些问题的不同部分分解开来。Federation 中涉及的概念和架构图如下所示。
 
 ![Kubernetes 集群联邦架构图](federation-concepts.webp)
+{width=960 height=720}
 
 上图中展示了集群联邦的过程：
 
@@ -179,6 +180,7 @@ Kubernetes Cluster Federation 又名 KubeFed 或 Federation v2，v2 架构在 Fe
 用来定义哪些 Kubernetes 集群要被联邦。可通过 kubefedctl join/unjoin 来加入/删除集群，当成功加入时，会建立一个 KubeFedCluster 组件来储存集群相关信息，如 API Endpoint、CA Bundle 等。这些信息会被用在 KubeFed Controller 存取不同 Kubernetes 集群上，以确保能够建立 Kubernetes API 资源，示意图如下所示。
 
 ![KubeFed 基础架构](sync-controller.webp)
+{width=4199 height=2474}
 
 在 Federation 中，会区分 Host 与 Member 两种类型集群。
 
@@ -281,6 +283,7 @@ spec:
 该配置示意图如下所示。
 
 ![RSP](kubefed-rsp.webp)
+{width=1707 height=948}
 
 当该范例建立后，RSP Controller 会收到资源，并匹配对应 namespace/name 的 FederatedDeployment 与 FederatedReplicaSet 是否存在，若存在的话，会根据设定的策略计算出每个集群预期的副本数，之后覆写 Federated 资源中的 `spec.overrides` 内容以修改每个集群的副本数，最后再由 KubeFed Sync Controller 来同步至每个集群的 Deployment。以上面为例，结果会是 ap-northeast 集群会拥有 3 个 Pod，us-east 跟 us-west 则分别会有 6 个 Pod。
 
@@ -315,10 +318,11 @@ spec:
 首先假设已建立一个名称为 nginx 的 FederatedDeployment，然后放到 development namespace 中，并且也建立了对应的 FederatedService 提供 LoadBalancer。这时当建立上述 Domain 与 ServiceDNSRecord 后，KubeFed 的 Service DNS Controller 会依据 ServiceDNSRecord 文件内容，去收集不同集群的 Service 信息，并将这些信息更新至 ServiceDNSRecord 状态中，接着 DNS Endpoint Controller 会依据该 ServiceDNSRecord 的状态内容，建立一个 DNSEndpoint 文件，并产生 DNS records 资源，最后再由 ExternalDNS 来同步更新 DNS records 至 DNS 供应商。下图是 Service DNS 建立的架构。
 
 ![DNS](kubefed-service-dns.webp)
+{width=1572 height=912}
 
 若是 Ingress 的话，会由 IngressDNSRecord 文件取代，并由 Ingress DNS Controller 收集信息。
 
 ## 参考
 
 - [Kubernetes Federation v2 - github.com](https://github.com/kubernetes-sigs/kubefed)
-- [Kubernetes Federation Evolution - kuberentes.io](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)
+- [Kubernetes Federation Evolution - Kubernetes.io](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)
