@@ -15,6 +15,8 @@ keywords:
 - 端口
 - 访问
 ---
+
+
 前面几节讲到如何访问 Kubernetes 集群，本文主要讲解访问 Kubernetes 中的 Pod 和 Service 的几种方式，包括如下几种：
 
 - hostNetwork
@@ -163,7 +165,7 @@ influxdb   10.97.121.42   10.13.242.236   8086:30051/TCP   39s
 Kubernetes Ingress 提供了负载平衡器的典型特性：HTTP 路由，粘性会话，SSL 终止，SSL 直通，TCP 和 UDP 负载平衡等。目前并不是所有的 Ingress controller 都实现了这些功能，需要查看具体的 Ingress controller 文档。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: influxdb
@@ -172,9 +174,13 @@ spec:
     - host: influxdb.kube.example.com
       http:
         paths:
-          - backend:
-              serviceName: influxdb
-              servicePort: 8086
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: influxdb
+                port:
+                  number: 8086
 ```
 
 外部访问 URL `http://influxdb.kube.example.com/ping` 访问该服务，入口就是 80 端口，然后 Ingress controller 直接将流量转发给后端 Pod，不需再经过 kube-proxy 的转发，比 LoadBalancer 方式更高效。

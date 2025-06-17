@@ -15,6 +15,8 @@ keywords:
 - 运行
 - 重启
 ---
+
+
 本文将为你讲解 Pod 的基础概念。
 
 ## 理解 Pod
@@ -77,4 +79,4 @@ Controller 可以创建和管理多个 Pod，提供副本管理、滚动升级�
 
 ## Pod Templates
 
-Pod 模版是包含了其他 object 的 Pod 定义，例如 [Replication Controllers](../replicaset)，[Jobs](../job) 和 [DaemonSets](../daemonset)。Controller 根据 Pod 模板来创建实际的 Pod。
+Pod 模板可嵌入到 [ReplicaSet](../replicaset)、[Job](../job) 或 [DaemonSet](../daemonset) 等对象中，Controller 会基于模板生成实际 Pod。

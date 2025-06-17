@@ -1,29 +1,35 @@
 ---
 linktitle: Kubernetes 基础教程
-description: "本书起始于 2017 年 3 月，记录了本人从零开始学习和使用 Kubernetes 的心路历程，着重于经验分享和总结。"
 weight: 1
-categories: ["教程手册"]
-category: "教程手册"
+categories:
+- 教程手册
+category: 教程手册
 featured: true
 type: publication
 layout: book
 title: Kubernetes 基础教程
 date: '2022-05-21T00:00:00+08:00'
 aliases:
- - /guide-to-cloud-native-app
+- /guide-to-cloud-native-app
 cascade:
   comment: true
   type: book
   layout: book
 ---
 
+
+
 {{<callout note 关于本教程>}}
-本教程迁移自[《Kubernetes 中文指南——云原生应用架构实战手册》](https://github.com/rootsongjc/kubernetes-handbook)，原手册使用 Gitbook 发布，内容涵盖 容器、Kubernetes、服务网格、Serverless 等云元生的多个领域，因内容过于宽泛，且 Gitbook 项目已停止维护，现将其中的 Kubernetes 教程部分独立成书，并使用 Hugo 重新构建。
+本教程迁移自[《Kubernetes 中文指南——云原生应用架构实战手册》](https://github.com/rootsongjc/kubernetes-handbook)，原手册使用 Gitbook 发布，内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域，因内容过于宽泛，且 Gitbook 项目已停止维护，现将其中的 Kubernetes 教程部分独立成书，并使用 Hugo 重新构建。
 {{</callout>}}
 
 云原生是一种行为方式和设计理念，究其本质，凡是能够提高云上资源利用率和应用交付效率的行为或方式都是云原生的。云计算的发展史就是一部云原生化的历史。Kubernetes 开启了云原生的序幕，服务网格 Istio 的出现，引领了后 Kubernetes 时代的微服务，Serverless 的兴起，使得云原生从基础设施层不断向应用架构层挺进，我们正处于一个云原生的新时代。
 
-[Kubernetes](http://kubernetes.io) 是 Google 于 2014 年 6 月基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
+{{<callout note "版本信息">}}
+本书基于 Kubernetes v1.31 编写，已更新过时的概念和 API。
+{{</callout>}}
+
+[Kubernetes](https://kubernetes.io) 是 Google 于 2014 年 6 月基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源出来的容器编排调度引擎，Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），近年来逐渐发展出了云原生生态。
 
 Kubernetes 的目标不仅仅是一个编排系统，而是提供一个规范用以描述集群的架构，定义服务的最终状态，使系统自动地达到和维持该状态。Kubernetes 作为云原生应用的基石，相当于一个云原生操作系统，其重要性不言而喻。
 

@@ -2,7 +2,6 @@
 title: 什么是云原生？
 linktitle: 什么是云原生？
 date: '2022-05-03T00:00:00+01:00'
-description: 本文将为你介绍什么是云原生。
 weight: 1
 keywords:
 - cloud
@@ -16,6 +15,8 @@ keywords:
 - 服务
 - 架构
 ---
+
+
 云原生（Cloud Native）这个词汇由来已久，以致于何时出现已无据可考。云原生开始大规模出现在受众视线中，与 Pivotal 提出的云原生应用的理念有着莫大的关系。我们现在谈到云原生，更多的指的是[一种文化](https://cloudnativecn.com/blog/cloud-native-culture-not-container/)，而不具象为哪些技术体系。
 
 > Pivotal 推出过 Pivotal Cloud Foundry 云原生应用平台和 [Spring](https://spring.io/) 开源 Java 开发框架，成为云原生应用架构中先驱者和探路者。Pivotal 是云原生应用平台第一股，2018 年在纽交所上市，2019 年底被 VMWare 以 27 亿美元收购，加入到 VMware 新的产品线 [Tanzu](https://tanzu.vmware.com/)。

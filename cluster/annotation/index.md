@@ -14,6 +14,8 @@ keywords:
 - 工具
 - 用于
 ---
+
+
 Annotation，顾名思义，就是注解。Annotation 可以将 Kubernetes 资源对象关联到任意的非标识性元数据。使用客户端（如工具和库）可以检索到这些元数据。
 
 ## 关联元数据到对象
@@ -44,7 +46,7 @@ Annotation 和 label 一样都是 key/value 键值对映射结构：
 如 Istio 的 Deployment 配置中就使用到了 annotation：
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: istio-manager

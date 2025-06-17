@@ -1,10 +1,11 @@
 ---
-title: "云原生应用规范模型"
-linkTitle: "规范模型"
-description: "基于 OAM 的云原生应用的规范模型。"
+title: 云原生应用规范模型
+linkTitle: 规范模型
 weight: 9
 level: 2
 ---
+
+
 
 OAM 规范的设计遵循了以下[原则](https://github.com/oam-dev/spec/blob/master/9.design_principles.md)：
 

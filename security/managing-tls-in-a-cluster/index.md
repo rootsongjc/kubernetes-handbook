@@ -15,6 +15,8 @@ keywords:
 - 证书
 - 集群
 ---
+
+
 在使用二进制文件部署 Kubernetes 集群的时候，很多人在进行到部署证书时遇到各种各样千奇百怪的问题，这一步是创建集群的基础，我们有必要详细了解一下其背后的流程和原理。
 
 ## 概览
@@ -72,7 +74,7 @@ EOF
 
 ```bash
 $ cat <<EOF | kubectl create -f -
-apiVersion: certificates.k8s.io/v1beta1
+apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
 metadata:
   name: my-svc.my-namespace

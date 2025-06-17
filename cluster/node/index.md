@@ -14,6 +14,8 @@ keywords:
 - 节点
 - 集群
 ---
+
+
 Node 是 Kubernetes 集群的工作节点，可以是物理机也可以是虚拟机。
 
 ## Node 的状态

@@ -15,6 +15,8 @@ keywords:
 - 绑定
 - 集群
 ---
+
+
 本文档介绍了 Kubernetes 中 `PersistentVolume` 的当前状态。建议你在阅读本文档前先熟悉 [volume](https://kubernetes.io/docs/concepts/storage/volumes/)。
 
 ## 介绍

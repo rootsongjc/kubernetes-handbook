@@ -15,6 +15,8 @@ keywords:
 - 生成
 - 配置
 ---
+
+
 [Kustomize](https://kustomize.io/)是一个开源的 Kubernetes 配置管理工具，用于对 Kubernetes 清单文件进行自定义和修改。它允许用户通过分层和声明式的方式管理和定制应用程序的配置，而无需直接修改原始的清单文件，促进了配置的复用和可维护性。
 
 Kustomize 的主要功能包括：

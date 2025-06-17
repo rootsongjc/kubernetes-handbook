@@ -16,6 +16,8 @@ keywords:
 - 设置
 - 集群
 ---
+
+
 ServiceAccount 为 Pod 中的进程提供身份信息。
 
 {{<callout note 注意>}}
@@ -32,7 +34,7 @@ ServiceAccount 为 Pod 中的进程提供身份信息。
 
 ServiceAccount 是否能够取得访问 API 的许可取决于你使用的 授权插件和策略。
 
-在 1.6 以上版本中，你可以选择取消为 ServiceAccount 自动挂载 API 凭证，只需在 ServiceAccount 中设置 `automountServiceAccountToken: false`：
+从 Kubernetes v1.6 开始，你可以选择取消为 ServiceAccount 自动挂载 API 凭证，只需在 ServiceAccount 中设置 `automountServiceAccountToken: false`：
 
 ```yaml
 apiVersion: v1
@@ -43,7 +45,7 @@ automountServiceAccountToken: false
 ...
 ```
 
-在 1.6 以上版本中，你也可以选择只取消单个 pod 的 API 凭证自动挂载：
+从 Kubernetes v1.6 开始，你也可以选择只取消单个 pod 的 API 凭证自动挂载：
 
 ```yaml
 apiVersion: v1
@@ -55,6 +57,8 @@ spec:
   automountServiceAccountToken: false
   ...
 ```
+
+从 Kubernetes v1.24 起，默认启用了 BoundServiceAccountTokenVolume 功能，挂载到 Pod 的凭证会定期轮换并存放在只读目录中。
 
 如果在 pod 和 ServiceAccount 中同时设置了 `automountServiceAccountToken`, pod 设置中的优先级更高。
 

@@ -16,6 +16,8 @@ keywords:
 - 资源
 - 集群
 ---
+
+
 {{<callout warning 注意>}}
 
 [Kubefed](https://github.com/kubernetes-sigs/kubefed) 项目计划归档，详见 [Fellow-up: discussion on archiving Kubefed](https://groups.google.com/g/kubernetes-sig-multicluster/c/lciAVj-_ShE?pli=1)。

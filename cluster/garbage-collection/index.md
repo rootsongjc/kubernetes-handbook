@@ -15,6 +15,8 @@ keywords:
 - 级联
 - 设置
 ---
+
+
 Kubernetes 垃圾收集器的角色是删除指定的对象，这些对象曾经有但以后不再拥有 Owner 了。
 
 ## Owner 和 Dependent
@@ -28,10 +30,7 @@ Kubernetes 垃圾收集器的角色是删除指定的对象，这些对象曾经
 这有一个配置文件`my-repset.yaml`，表示一个具有 3 个 Pod 的 ReplicaSet：
 
 ```yaml
-# k8s >= 1.16 使用下面注释 https://stackoverflow.com/questions/64412740/no-matches-for-kind-replicaset-in-version-extensions-v1beta1/64412990#64412990
-# apiVersion: apps/v1
-# k8s < 1.16 使用下面配置
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: my-repset
@@ -65,7 +64,7 @@ kind: Pod
 metadata:
   ...
   ownerReferences:
-  - apiVersion: extensions/v1beta1
+  - apiVersion: apps/v1
     controller: true
     blockOwnerDeletion: true
     kind: ReplicaSet
@@ -110,7 +109,7 @@ metadata:
 
 ```bash
 kubectl proxy --port=8080
-curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/replicasets/my-repset \
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset \
 -d '{"kind":"DeleteOptions","apiVersion":"v1","propagationPolicy":"Background"}' \
 -H "Content-Type: application/json"
 ```
@@ -119,7 +118,7 @@ curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/replica
 
 ```bash
 kubectl proxy --port=8080
-curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/replicasets/my-repset \
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset \
 -d '{"kind":"DeleteOptions","apiVersion":"v1","propagationPolicy":"Foreground"}' \
 -H "Content-Type: application/json"
 ```
@@ -128,7 +127,7 @@ curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/replica
 
 ```bash
 kubectl proxy --port=8080
-curl -X DELETE localhost:8080/apis/extensions/v1beta1/namespaces/default/replicasets/my-repset \
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset \
 -d '{"kind":"DeleteOptions","apiVersion":"v1","propagationPolicy":"Orphan"}' \
 -H "Content-Type: application/json"
 ```

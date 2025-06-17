@@ -16,6 +16,8 @@ keywords:
 - 绑定
 - 角色
 ---
+
+
 **注意：本文基于 Kubernetes 1.6 撰写，当时 RBAC 模式处于 beta 版本。**
 
 基于角色的访问控制（Role-Based Access Control，即”RBAC”）使用 `rbac.authorization.k8s.io` API Group 实现授权决策，允许管理员通过 Kubernetes API 动态配置策略。
@@ -34,7 +36,7 @@ keywords:
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: default
   name: pod-reader
@@ -54,7 +56,7 @@ rules:
 
 ```yaml
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   # 鉴于 ClusterRole 是集群范围对象，所以这里不需要定义 "namespace" 字段
   name: secret-reader
@@ -74,7 +76,7 @@ rules:
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: read-pods
   namespace: default
@@ -95,7 +97,7 @@ roleRef:
 ```yaml
 # 以下角色绑定允许用户 "dave" 读取 "development" 命名空间中的 secret。
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: read-secrets
   namespace: development # 这里表明仅授权读取 "development" 命名空间中的资源。
@@ -115,7 +117,7 @@ roleRef:
 
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: read-secrets-global
 subjects:
@@ -138,7 +140,7 @@ roleRef:
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: default
   name: pod-and-pod-logs-reader
@@ -152,7 +154,7 @@ rules:
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: default
   name: configmap-updater
@@ -414,7 +416,7 @@ RBAC API 会阻止用户通过编辑角色或者角色绑定来升级权限。�
 例如，下面例子中的 ClusterRole 和 RoleBinding 将允许用户”user-1”授予其它用户”user-1-namespace”命名空间内的 `admin`、`edit` 和 `view` 等角色和角色绑定。
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: role-grantor
@@ -427,7 +429,7 @@ rules:
   verbs: ["bind"]
   resourceNames: ["admin","edit","view"]
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: role-grantor-binding

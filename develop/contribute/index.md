@@ -15,6 +15,8 @@ keywords:
 - 文档
 - 社区
 ---
+
+
 如果你想参与 Kubernetes 社区，请先阅读下[Kubernetes Community](https://github.com/kubernetes/community)这个 GitHub Repo 中的文档，该文档中包括社区的治理形式、社区成员资格申请、提交 Issue、查找问题和提交 PR 的指导等。
 
 ## 参考

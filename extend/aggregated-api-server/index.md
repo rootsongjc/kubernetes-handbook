@@ -15,6 +15,8 @@ keywords:
 - 组件
 - 集群
 ---
+
+
 Aggregated（聚合的）API server 是为了将原来的 API server 这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的 API server 集成进来，而不用直接修改 kubernetes 官方仓库的代码，这样一来也能将 API server 解耦，方便用户使用实验特性。这些 API server 可以跟 core API server 无缝衔接，使用 kubectl 也可以管理它们。
 
 ## 架构

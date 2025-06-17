@@ -15,6 +15,8 @@ keywords:
 - 修改
 - 创建
 ---
+
+
 Kubebuilder 是一个基于 CRD 来构建 Kubernetes API 的框架，可以使用 CRD 来构建 API、Controller 和 Admission Webhook。
 
 ## 动机

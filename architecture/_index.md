@@ -2,9 +2,10 @@
 weight: 3
 title: Kubernetes 架构
 date: '2022-05-21T00:00:00+08:00'
-description: "本章介绍 Kubernetes 的架构设计。"
 type: book
 ---
+
+
 
 Kubernetes 最初源于谷歌内部的 Borg，提供了面向应用的容器集群部署和管理系统。Kubernetes 的目标旨在消除编排物理 / 虚拟计算，网络和存储基础设施的负担，并使应用程序运营商和开发人员完全将重点放在以容器为中心的原语上进行自助运营。Kubernetes 也提供稳定、兼容的基础（平台），用于构建定制化的 workflows 和更高级的自动化任务。
 
@@ -82,7 +83,7 @@ Kubernetes 设计理念和功能其实就是一个类似 Linux 的分层架构�
   * Kubernetes 内部：CRI、CNI、CSI、镜像仓库、Cloud Provider、集群自身的配置和管理等
 
 {{<callout note 备注>}}
-关于分层架构，可以关注下 [Kubernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o) 和 [幻灯片](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)。
+关于分层架构，可以关注 [Kubernetes architectural roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o) 以及 [幻灯片](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)。
 {{</callout>}}
 
 ## 本节大纲
@@ -91,7 +92,7 @@ Kubernetes 设计理念和功能其实就是一个类似 Linux 的分层架构�
 
 ## 参考
 
-* [Borg, Omega, and Kubernetes - Lessons learned from three container-management systems over a decade](http://queue.acm.org/detail.cfm?id=2898444)
-* [Paper - Large-scale cluster management at Google with Borg](http://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/43438.pdf)
-* [KUBERNETES: AN OVERVIEW](http://thenewstack.io/kubernetes-an-overview)
-* [Kubernetes architectual roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o) 和 [slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)
+* [Borg, Omega, and Kubernetes - Lessons learned from three container-management systems over a decade](https://queue.acm.org/detail.cfm?id=2898444)
+* [Paper - Large-scale cluster management at Google with Borg](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/43438.pdf)
+* [KUBERNETES: AN OVERVIEW](https://thenewstack.io/kubernetes-an-overview)
+* [Kubernetes architectural roadmap](https://docs.google.com/document/d/1XkjVm4bOeiVkj-Xt1LgoGiqWsBfNozJ51dyI-ljzt1o) 和 [slide](https://docs.google.com/presentation/d/1GpELyzXOGEPY0Y1ft26yMNV19ROKt8eMN67vDSSHglk/edit)

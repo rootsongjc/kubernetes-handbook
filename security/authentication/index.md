@@ -15,6 +15,8 @@ keywords:
 - 请求
 - 身份验证
 ---
+
+
 在安装集群的时候我们在 master 节点上生成了一堆证书、token，还在 kubelet 的配置中用到了 bootstrap token，安装各种应用时，为了能够与 API server 通信创建了各种 service account，在 Dashboard 中使用了 kubeconfig 或 token 登陆，那么这些都属于什么认证方式？如何区分用户的？我特地翻译了下这篇官方文档，想你看了之后你将找到答案。
 
 重点查看 bearer token 和 HTTP 认证中的 token 使用，我们已经有所应用，如 [使用 kubeconfig 或 token 进行用户身份认证](auth-with-kubeconfig-or-token.md)。
@@ -123,7 +125,7 @@ Service account 通常 API server 自动创建，并通过 `ServiceAccount` 注�
 注意： `serviceAccountName` 通常被省略，因为这会自动生成。
 
 ```yaml
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
@@ -332,13 +334,13 @@ contexts:
 
 当客户端尝试使用 bearer token 与 API server 进行认证是，如上论述，认证 webhook 用饱含该 token 的对象查询远程服务。Kubernetes 不会挑战缺少该 header 的请求。
 
-请注意，webhook API 对象与其他 Kubernetes API 对象具有相同的 [版本控制兼容性规则](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。实现者应该意识到 Beta 对象的宽松兼容性承诺，并检查请求的“apiVersion”字段以确保正确的反序列化。此外，API server 必须启用 `authentication.k8s.io/v1beta1` API 扩展组（`--runtime config =authentication.k8s.io/v1beta1=true`）。
+请注意，webhook API 对象与其他 Kubernetes API 对象具有相同的 [版本控制兼容性规则](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)。实现者应该意识到 Beta 对象的宽松兼容性承诺，并检查请求的“apiVersion”字段以确保正确的反序列化。此外，API server 必须启用 `authentication.k8s.io/v1` API 扩展组（`--runtime config =authentication.k8s.io/v1=true`）。
 
 The request body will be of the following format:
 
 ```json
 {
-  "apiVersion": "authentication.k8s.io/v1beta1",
+  "apiVersion": "authentication.k8s.io/v1",
   "kind": "TokenReview",
   "spec": {
     "token": "(BEARERTOKEN)"
@@ -350,7 +352,7 @@ The request body will be of the following format:
 
 ```json
 {
-  "apiVersion": "authentication.k8s.io/v1beta1",
+  "apiVersion": "authentication.k8s.io/v1",
   "kind": "TokenReview",
   "status": {
     "authenticated": true,
@@ -376,7 +378,7 @@ The request body will be of the following format:
 
 ```json
 {
-  "apiVersion": "authentication.k8s.io/v1beta1",
+  "apiVersion": "authentication.k8s.io/v1",
   "kind": "TokenReview",
   "status": {
     "authenticated": false

@@ -15,6 +15,8 @@ keywords:
 - 格式
 - 输出
 ---
+
+
 `kubectl` 命令是操作 Kubernetes 集群的最直接和最高效的途径，这个 60 多 MB 大小的二进制文件，到底有啥能耐呢？
 
 ## Kubectl 自动补全

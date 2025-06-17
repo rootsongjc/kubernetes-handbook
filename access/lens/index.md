@@ -16,6 +16,8 @@ keywords:
 - 支持
 - 集群
 ---
+
+
 [Lens](https://k8slens.dev/) 是一款开源的 Kubernetes IDE，也可以作为桌面客户端，官方网站 <https://k8slens.dev>，具有以下特性：
 
 - 完全开源，GitHub 地址 <https://github.com/lensapp/lens>

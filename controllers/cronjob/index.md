@@ -15,6 +15,8 @@ keywords:
 - 指定
 - 运行
 ---
+
+
 *Cron Job* 管理基于时间的 [Job](https://kubernetes.io/docs/concepts/jobs/run-to-completion-finite-workloads/)，即：
 
 - 在给定时间点只运行一次
@@ -24,7 +26,7 @@ keywords:
 
 ## 前提条件
 
-当前使用的 Kubernetes 集群，版本 >= 1.8（对 CronJob）。对于先前版本的集群，版本 < 1.8，启动 API Server（参考 为集群开启或关闭 API 版本 获取更多信息）时，通过传递选项 `--runtime-config=batch/v2alpha1=true` 可以开启 batch/v2alpha1 API。
+CronJob 从 Kubernetes v1.21 起已进入稳定版本（`batch/v1`），无需再手动启用早期的 `batch/v2alpha1` API。
 
 典型的用法如下所示：
 
@@ -54,7 +56,7 @@ keywords:
   默认情况下，它们分别设置为 `3` 和 `1`。设置限制的值为 `0`，相关类型的 Job 完成后将不会被保留。
 
 ```yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: hello

@@ -15,6 +15,8 @@ keywords:
 - 跨平台
 - 镜像
 ---
+
+
 我们将在 Mac 上使用 docker 环境编译 kuberentes。
 
 ## 安装依赖

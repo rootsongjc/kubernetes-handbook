@@ -15,6 +15,8 @@ keywords:
 - 资源
 - 路由
 ---
+
+
 {{<callout note 注意>}}
 
 Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的资源，既可以处理南北向流量，还可以处理东西向流量，详情见 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。关于使用 Gateway API 处理东西向流量的提议详见 [Google Doc](https://docs.google.com/document/d/1T_DtMQoq2tccLAtJTpo3c0ohjm25vRS35MsestSL9QU/edit)。

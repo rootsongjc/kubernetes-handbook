@@ -15,6 +15,8 @@ keywords:
 - 示例
 - 自动
 ---
+
+
 ReplicationController 用来确保容器应用的副本数始终保持在用户定义的副本数，即如果有容器异常退出，会自动创建新的 Pod 来替代；而如果异常多出来的容器也会自动回收。
 
 在新版本的 Kubernetes 中建议使用 ReplicaSet 来取代 ReplicationController。ReplicaSet 跟 ReplicationController 没有本质的不同，只是名字不一样，并且 ReplicaSet 支持集合式的 selector。
@@ -24,7 +26,7 @@ ReplicationController 用来确保容器应用的副本数始终保持在用户�
 ReplicaSet 示例：
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: frontend

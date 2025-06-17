@@ -15,6 +15,8 @@ keywords:
 - 负载
 - 身份
 ---
+
+
 SPIFFE，即普适安全生产身份框架（Secure Production Identity Framework for Everyone），是一套开源标准，用于在动态和异构环境中安全地进行身份识别。采用 SPIFFE 的系统无论在哪里运行，都可以轻松可靠地相互认证。
 
 SPIFFE 开源规范的核心是——通过简单 API 定义了一个短期的加密身份文件 SVID。然后，工作负载进行认证时可以使用该身份文件，例如建立 TLS 连接或签署和验证 JWT 令牌等。

@@ -15,6 +15,8 @@ keywords:
 - 配置文件
 - 镜像
 ---
+
+
 [StatefulSet](../../concepts/statefulset) 这个对象是专门用来部署用状态应用的，可以为 Pod 提供稳定的身份标识，包括 hostname、启动顺序、DNS 名称等。
 
 下面以在 Kubernetes1.6 版本中部署 zookeeper 和 kafka 为例讲解 StatefulSet 的使用，其中 kafka 依赖于 zookeeper。
@@ -99,7 +101,7 @@ data:
   snap.retain: "3"
   purge.interval: "0"
 ---
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: zk-pdb
@@ -109,7 +111,7 @@ spec:
       app: zk
   minAvailable: 2
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zk
@@ -259,7 +261,7 @@ spec:
   selector:
     app: kafka
 ---
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: kafka-pdb
@@ -269,7 +271,7 @@ spec:
       app: kafka
   minAvailable: 2
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kafka

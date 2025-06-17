@@ -14,6 +14,8 @@ keywords:
 - 环境变量
 - 访问
 ---
+
+
 本文讲解了如何开发容器化应用，并使用 Wercker 持续集成工具构建 docker 镜像上传到 docker 镜像仓库中，然后在本地使用 *docker-compose* 测试后，再使用 `kompose` 自动生成 kubernetes 的 yaml 文件，再将注入 Envoy sidecar 容器，集成 Istio 服务网格中的详细过程。
 
 整个过程如下图所示。
@@ -118,7 +120,7 @@ docker-compose up
 或者不修改已有的 Ingress，而是为该队外暴露的服务单独创建一个 Ingress，如下：
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: k8s-app-monitor-agent-ingress
@@ -130,9 +132,12 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: k8s-app-monitor-agent
-          servicePort: 8888
+          service:
+            name: k8s-app-monitor-agent
+            port:
+              number: 8888
 ```
 
 ## 集成 Istio 服务网格
