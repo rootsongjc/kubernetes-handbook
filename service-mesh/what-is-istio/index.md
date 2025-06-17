@@ -39,7 +39,7 @@ Istio 服务网格有两个部分：数据平面和控制平面。
 
 Istio 中的数据平面由 Envoy 代理组成，控制服务之间的通信。网格的控制平面部分负责管理和配置代理。
 
-![Istio 架构](istio-arch.webp)
+![Istio 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/what-is-istio/istio-arch.webp)
 {width=1280 height=720}
 
 ### Envoy（数据平面）

@@ -32,7 +32,7 @@ keywords:
 
 Lens 界面图下图所示。
 
-![Lens Kubernetes IDE 界面](lens.webp)
+![Lens Kubernetes IDE 界面](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/lens/lens.webp)
 {width=1200 height=750}
 
 ## 参考

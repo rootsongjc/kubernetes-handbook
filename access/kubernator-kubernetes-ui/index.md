@@ -37,12 +37,12 @@ kubectl proxy
 
 Catalog 页面可以看到 Kubernetes 中资源对象的树形结构，还可以在该页面中对资源对象的配置进行更改和操作。
 
-![Kubernator catalog 页面](kubernator-catalog.webp)
+![Kubernator catalog 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernator-kubernetes-ui/kubernator-catalog.webp)
 {width=1655 height=993}
 
 RBAC 页面可以看到集群中 RBAC 关系及结构。
 
-![Kubernator rbac 页面](kubernator-rbac.webp)
+![Kubernator rbac 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernator-kubernetes-ui/kubernator-rbac.webp)
 {width=1655 height=993}
 
 ## 参考
