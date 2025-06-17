@@ -2,6 +2,7 @@
 linkTitle: Kubernetes 次世代
 title: Kubernetes 次世代的云原生应用
 weight: 3
+description: Kubernetes 的次世代在于解决 Kubernetes 生态的碎片化问题。
 keywords:
 - kubernetes
 - oam

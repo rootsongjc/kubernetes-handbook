@@ -1,6 +1,7 @@
 ---
 title: ApplicationConfiguration
 linkTitle: ApplicationConfiguration
+description: '`ApplicationConfiguration` 将 `Component` 和 `Trait` 组合成完整的应用程序。'
 weight: 5
 keywords:
 - applicationconfiguration

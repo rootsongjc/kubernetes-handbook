@@ -1,6 +1,7 @@
 ---
 title: Workload
 linkTitle: Workload
+description: '`Workload` 用于定义工作负载的类型。'
 weight: 1
 keywords:
 - component
