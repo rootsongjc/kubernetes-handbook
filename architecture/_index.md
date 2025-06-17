@@ -2,6 +2,7 @@
 weight: 3
 title: Kubernetes 架构
 date: '2022-05-21T00:00:00+08:00'
+description: "本章介绍 Kubernetes 的架构设计。"
 type: book
 ---
 

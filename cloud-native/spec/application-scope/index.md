@@ -1,6 +1,7 @@
 ---
 title: ApplicationScope
 linkTitle: ApplicationScope
+description: '`ApplicationScope` 用于定义 `Component` 的边界以用于逻辑分组。'
 weight: 4
 keywords:
 - applicationscope
