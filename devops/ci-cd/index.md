@@ -52,6 +52,7 @@ CI/CD 的主要优势包括：
 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) 是一个开源的 GitOps 工具，用于持续交付和部署应用程序。它与 Git 仓库集成，通过监视代码仓库中的更改来自动部署应用程序。ArgoCD 提供了一个直观的用户界面和命令行工具，支持声明性的应用程序定义，以及应用程序的版本控制和回滚功能。ArgoCD 是 CNCF（Cloud Native Computing Foundation）的一部分，因此选择它作为代表介绍 CI/CD 工具的功能和优势。
 
 ![](argocd-ui.webp)
+{width=2000 height=1034}
 
 ArgoCD 的目标是通过基于 Git 仓库的声明性配置来自动化应用程序的部署和更新过程。以下是对 ArgoCD 的详细介绍：
 

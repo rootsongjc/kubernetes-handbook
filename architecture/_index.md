@@ -17,6 +17,7 @@ Borg 是谷歌内部的大规模集群管理系统，负责对谷歌内部很多
 Borg 主要由 BorgMaster、Borglet、borgcfg 和 Scheduler 组成，如下图所示
 
 ![Borg 架构](borg.webp)
+{width=572 height=549}
 
 * BorgMaster 是整个集群的大脑，负责维护整个集群的状态，并将数据持久化到 Paxos 存储中；
 * Scheduer 负责任务的调度，根据应用的特点将其调度到具体的机器上去；
@@ -28,6 +29,7 @@ Borg 主要由 BorgMaster、Borglet、borgcfg 和 Scheduler 组成，如下图�
 Kubernetes 借鉴了 Borg 的设计理念，比如 Pod、Service、Label 和单 Pod 单 IP 等。Kubernetes 的整体架构跟 Borg 非常像，如下图所示。
 
 ![Kubernetes 架构](architecture.webp)
+{width=1200 height=932}
 
 Kubernetes 主要由以下几个核心组件组成：
 
@@ -54,24 +56,29 @@ Kubernetes 主要由以下几个核心组件组成：
 下图清晰表明了 Kubernetes 的架构设计以及组件之间的通信协议。
 
 ![Kubernetes 架构（图片来自于网络）](kubernetes-high-level-component-archtecture.webp)
+{width=1858 height=1126}
 
 下面是更抽象的一个视图：
 
 ![kubernetes 整体架构示意图](kubernetes-whole-arch.webp)
+{width=1600 height=1067}
 
 ### Master 架构
 
 ![Kubernetes master 架构示意图](kubernetes-master-arch.webp)
+{width=1600 height=1067}
 
 ### Node 架构
 
 ![kubernetes node 架构示意图](kubernetes-node-arch.webp)
+{width=1600 height=1067}
 
 ### 分层架构
 
 Kubernetes 设计理念和功能其实就是一个类似 Linux 的分层架构，如下图所示。
 
 ![Kubernetes 分层架构示意图](kubernetes-layers-arch.webp)
+{width=1898 height=1008}
 
 * 核心层：Kubernetes 最核心的功能，对外提供 API 构建高层的应用，对内提供插件式应用执行环境
 * 应用层：部署（无状态应用、有状态应用、批处理任务、集群应用等）和路由（服务发现、DNS 解析等）、Service Mesh（部分位于应用层）

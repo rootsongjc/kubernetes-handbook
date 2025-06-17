@@ -92,6 +92,7 @@ selector:
 如 Service 通过 label selector 将同一类型的 pod 作为一个服务 expose 出来。
 
 ![Label 示意图](labels.webp)
+{width=803 height=588}
 
 另外在 node affinity 和 pod affinity 中的 label selector 的语法又有些许不同，示例如下：
 
