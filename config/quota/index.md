@@ -1,8 +1,9 @@
 ---
 weight: 77
-title: 管理 namespace 中的资源配额
+title: 管理 Namespace 中的资源配额
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 本文介绍了如何在 Kubernetes 集群中通过 ResourceQuota 和 LimitRange 来管理 namespace 的资源配额，包括计算资源、存储资源和对象数量的限制配置。
 keywords:
 - kubernetes
 - limit
@@ -10,40 +11,46 @@ keywords:
 - namespace
 - spark
 - yaml
+- qos
 - 资源
 - 配置文件
 - 配额
 - 默认
 ---
 
+当多个团队或用户共享同一个 Kubernetes 集群时，资源竞争问题不可避免。为了确保资源的合理分配和使用，需要对不同团队或用户的资源使用配额进行限制。
 
-当用多个团队或者用户共用同一个集群的时候难免会有资源竞争的情况发生，这时候就需要对不同团队或用户的资源使用配额做出限制。
+## 资源配额控制策略
 
-## 开启资源配额限制功能
+Kubernetes 提供了两种主要的资源分配管理控制策略：
 
-目前有两种资源分配管理相关的控制策略插件 `ResourceQuota` 和 `LimitRange`。
+### ResourceQuota
 
-要启用它们只要 API Server 的启动配置的 `KUBE_ADMISSION_CONTROL` 参数中加入了 `ResourceQuota` 的设置，这样就给集群开启了资源配额限制功能，加入 `LimitRange` 可以用来限制一个资源申请的范围限制，参考 [为 namesapce 配置默认的内存请求与限额](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) 和 [在 namespace 中配置默认的 CPU 请求与限额](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/)。
+用于限制 namespace 中所有 Pod 占用的总资源 request 和 limit，包括：
 
-两种控制策略的作用范围都是对于某一 namespace，`ResourceQuota` 用来限制 namespace 中所有的 Pod 占用的总的资源 request 和 limit，而 `LimitRange` 是用来设置 namespace 中 Pod 的默认的资源 request 和 limit 值。
+- **计算资源配额**：CPU、内存等
+- **存储资源配额**：持久化卷声明等
+- **对象数量配额**：Pod、Service、ConfigMap 等 Kubernetes 对象的数量
 
-资源配额分为三种类型：
+### LimitRange
 
-- 计算资源配额
-- 存储资源配额
-- 对象数量配额
+用于设置 namespace 中 Pod 的默认资源 request 和 limit 值，以及单个资源对象的使用范围限制。
 
-关于资源配额的详细信息请参考 Kubernetes 官方文档 [资源配额](https://kubernetes.io/docs/concepts/policy/resource-quotas/)。
+## 启用资源配额功能
 
-## 示例
+在现代 Kubernetes 集群中，ResourceQuota 和 LimitRange 准入控制器通常默认启用。如果需要手动启用，可以在 API Server 的启动参数中添加：
 
-我们为 `spark-cluster` 这个 namespace 设置 `ResouceQuota` 和 `LimitRange`。
+```bash
+--enable-admission-plugins=ResourceQuota,LimitRange
+```
 
-以下 yaml 文件可以在 [kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook) 的 `manifests/spark-with-kubernetes-native-scheduler` 目录下找到。
+## 实战示例
 
-### 配置计算资源配额
+以下示例展示如何为 `spark-cluster` namespace 配置资源配额和限制。
 
-配置文件：`spark-compute-resources.yaml`
+### 计算资源配额配置
+
+创建 `spark-compute-resources.yaml`：
 
 ```yaml
 apiVersion: v1
@@ -53,22 +60,28 @@ metadata:
   namespace: spark-cluster
 spec:
   hard:
-    pods: "20"
-    requests.cpu: "20"
-    requests.memory: 100Gi
-    limits.cpu: "40"
-    limits.memory: 200Gi
+    pods: "20"                    # 最多创建 20 个 Pod
+    requests.cpu: "20"            # CPU 请求总量不超过 20 核
+    requests.memory: 100Gi        # 内存请求总量不超过 100Gi
+    limits.cpu: "40"              # CPU 限制总量不超过 40 核
+    limits.memory: 200Gi          # 内存限制总量不超过 200Gi
 ```
 
-要想查看该配置只要执行：
+应用配置：
+
+```bash
+kubectl apply -f spark-compute-resources.yaml
+```
+
+查看资源配额状态：
 
 ```bash
 kubectl -n spark-cluster describe resourcequota compute-resources
 ```
 
-### 配置对象数量限制
+### 对象数量限制配置
 
-配置文件：`spark-object-counts.yaml`
+创建 `spark-object-counts.yaml`：
 
 ```yaml
 apiVersion: v1
@@ -78,39 +91,67 @@ metadata:
   namespace: spark-cluster
 spec:
   hard:
-    configmaps: "10"
-    persistentvolumeclaims: "4"
-    replicationcontrollers: "20"
-    secrets: "10"
-    services: "10"
-    services.loadbalancers: "2"
+    configmaps: "10"                    # 最多 10 个 ConfigMap
+    persistentvolumeclaims: "4"         # 最多 4 个 PVC
+    replicationcontrollers: "20"        # 最多 20 个 RC
+    secrets: "10"                       # 最多 10 个 Secret
+    services: "10"                      # 最多 10 个 Service
+    services.loadbalancers: "2"         # 最多 2 个 LoadBalancer 类型的 Service
 ```
 
-### 配置 CPU 和内存 LimitRange
+### LimitRange 配置
 
-配置文件：`spark-limit-range.yaml`
+创建 `spark-limit-range.yaml`：
 
 ```yaml
 apiVersion: v1
 kind: LimitRange
 metadata:
   name: mem-limit-range
+  namespace: spark-cluster
 spec:
   limits:
-  - default:
+  - default:          # 默认限制值（Pod 中容器的 limit）
       memory: 50Gi
       cpu: 5
-    defaultRequest:
+    defaultRequest:   # 默认请求值（Pod 中容器的 request）
       memory: 1Gi
       cpu: 1
     type: Container
 ```
 
-- `default` 即 limit 的值
-- `defaultRequest` 即 request 的值
+应用所有配置：
 
-## 参考
+```bash
+kubectl apply -f spark-object-counts.yaml
+kubectl apply -f spark-limit-range.yaml
+```
 
-- [资源配额 - kubernetes.io](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
-- [为命名空间配置默认的内存请求与限额 - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
-- [在命名空间中配置默认的 CPU 请求与限额 - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/cpu-default-namespace/)
+## 验证配置效果
+
+查看 namespace 的资源配额使用情况：
+
+```bash
+# 查看所有资源配额
+kubectl -n spark-cluster get resourcequota
+
+# 查看 LimitRange
+kubectl -n spark-cluster get limitrange
+
+# 详细信息
+kubectl -n spark-cluster describe namespace spark-cluster
+```
+
+## 最佳实践
+
+1. **合理规划资源配额**：根据团队实际需求和集群总容量合理分配
+2. **设置合适的默认值**：通过 LimitRange 为容器设置合理的默认 request 和 limit
+3. **监控资源使用**：定期检查资源配额使用情况，及时调整
+4. **逐步实施**：在生产环境中逐步引入资源限制，避免影响现有工作负载
+
+## 参考资料
+
+- [资源配额 - Kubernetes 官方文档](https://kubernetes.io/zh-cn/docs/concepts/policy/resource-quotas/)
+- [限制范围 - Kubernetes 官方文档](https://kubernetes.io/zh-cn/docs/concepts/policy/limit-range/)
+- [为命名空间配置默认的内存请求与限额](https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
+- [在命名空间中配置默认的 CPU 请求与限额](https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/manage-resources/cpu-default-namespace/)

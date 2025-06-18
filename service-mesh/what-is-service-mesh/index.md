@@ -68,7 +68,7 @@ keywords:
 ### 架构模式
 
 ```mermaid
-graph TB
+graph TB "架构模式"
     A[应用A] --> SA[Sidecar A]
     B[应用B] --> SB[Sidecar B]
     C[应用C] --> SC[Sidecar C]

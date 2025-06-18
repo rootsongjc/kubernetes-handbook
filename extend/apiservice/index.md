@@ -3,6 +3,8 @@ weight: 66
 title: APIService
 date: '2022-05-21T00:00:00+08:00'
 type: book
+
+description: 深入了解 Kubernetes APIService 的概念、配置和使用方法，包括如何查看和管理集群中的 API 服务。
 keywords:
 - api
 - apiregistration
@@ -16,10 +18,11 @@ keywords:
 - 查看
 ---
 
+APIService 是 Kubernetes 中用来表示特定 GroupVersion 服务器的资源对象，它允许扩展 Kubernetes API 以支持自定义资源和功能。APIService 的结构定义位于 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
 
-APIService 是用来表示一个特定的 `GroupVersion` 的中的 server，它的结构定义位于代码 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
+## APIService 配置示例
 
-下面是一个 APIService 的示例配置：
+以下是一个典型的 APIService 配置示例：
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
@@ -27,109 +30,155 @@ kind: APIService
 metadata:
   name: v1alpha1.custom-metrics.metrics.k8s.io
 spec:
-  insecureSkipTLSVerify: true
+  insecureSkipTLSVerify: false
+  caBundle: <base64-encoded-ca-bundle>
   group: custom-metrics.metrics.k8s.io
   groupPriorityMinimum: 1000
   versionPriority: 5
   service:
-    name: api
+    name: custom-metrics-apiserver
     namespace: custom-metrics
+    port: 443
   version: v1alpha1
 ```
 
-## APIService 详解
+## APIService 字段详解
 
-使用 `apiregistration.k8s.io/v1` 版本的 APIService，在 metadata.name 中定义该 API 的名字。
+### 基本配置
 
-使用上面的 yaml 的创建 `v1alpha1.custom-metrics.metrics.k8s.io` APIService。
+- **apiVersion**: 使用 `apiregistration.k8s.io/v1` 版本
+- **metadata.name**: 定义 API 的唯一标识符，格式为 `<version>.<group>`
 
-- `insecureSkipTLSVerify`：当与该服务通信时，禁用 TLS 证书认证。强加建议不要设置这个参数，默认为 false。应该使用 CABundle 代替。
-- `service`：与该 APIService 通信时引用的 service，其中要注明 service 的名字和所属的 namespace，如果为空的话，则所有的服务都会该 API groupversion 将在本地 443 端口处理所有通信。
-- `groupPriorityMinimum`：该组 API 的处理优先级，主要排序是基于 `groupPriorityMinimum`，该数字越大表明优先级越高，客户端就会与其通信处理请求。次要排序是基于字母表顺序，例如 v1.bar 比 v1.foo 的优先级更高。
-- `versionPriority`：VersionPriority 控制其组内的 API 版本的顺序。必须大于零。主要排序基于 VersionPriority，从最高到最低（20 大于 10）排序。次要排序是基于对象名称的字母比较。 （v1.foo 在 v1.bar 之前）由于它们都是在一个组内，因此数字可能很小，一般都小于 10。
+### Spec 字段
 
-查看我们使用上面的 yaml 文件创建的 APIService。
+- **group**: API 组名称，用于组织相关的 API 资源
+- **version**: API 版本标识符
+- **service**: 处理该 APIService 请求的后端服务配置
+  - `name`: 服务名称
+  - `namespace`: 服务所在的命名空间
+  - `port`: 服务端口（可选，默认为 443）
+
+### 安全配置
+
+- **caBundle**: Base64 编码的 CA 证书包，用于验证服务的 TLS 证书
+- **insecureSkipTLSVerify**: 是否跳过 TLS 证书验证（**强烈不推荐**设置为 true）
+
+### 优先级配置
+
+- **groupPriorityMinimum**: API 组的处理优先级
+  - 数值越大优先级越高
+  - 主要用于决定客户端与哪个 API 组通信
+  - 次要排序基于字母顺序
+
+- **versionPriority**: 同一组内 API 版本的优先级
+  - 必须大于零
+  - 数值越大优先级越高（如 20 > 10）
+  - 用于控制版本选择顺序
+
+## 查看 APIService 状态
+
+创建 APIService 后，可以查看其详细状态：
 
 ```bash
 kubectl get apiservice v1alpha1.custom-metrics.metrics.k8s.io -o yaml
-​``````yaml
+```
+
+输出示例：
+
+```yaml
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  creationTimestamp: 2017-12-14T08:27:35Z
+  creationTimestamp: "2023-10-15T08:27:35Z"
   name: v1alpha1.custom-metrics.metrics.k8s.io
   resourceVersion: "35194598"
-  selfLink: /apis/apiregistration.k8s.io/v1/apiservices/v1alpha1.custom-metrics.metrics.k8s.io
   uid: a31a3412-e0a8-11e7-9fa4-f4e9d49f8ed0
 spec:
-  caBundle: null
+  caBundle: LS0tLS1CRUdJTi... # Base64 encoded CA bundle
   group: custom-metrics.metrics.k8s.io
   groupPriorityMinimum: 1000
-  insecureSkipTLSVerify: true
+  insecureSkipTLSVerify: false
   service:
-    name: api
+    name: custom-metrics-apiserver
     namespace: custom-metrics
+    port: 443
   version: v1alpha1
   versionPriority: 5
 status:
   conditions:
-  - lastTransitionTime: 2017-12-14T08:27:38Z
+  - lastTransitionTime: "2023-10-15T08:27:38Z"
     message: all checks passed
     reason: Passed
     status: "True"
     type: Available
 ```
 
-## 查看集群支持的 APIService
+## 管理集群中的 APIService
 
-作为 Kubernetes 中的一种资源对象，可以使用 `kubectl get apiservice` 来查看。
-
-例如查看集群中所有的 APIService：
+### 查看所有 APIService
 
 ```bash
-$ kubectl get apiservice
-NAME                                     AGE
-v1.                                      2d
-v1.authentication.k8s.io                 2d
-v1.authorization.k8s.io                  2d
-v1.autoscaling                           2d
-v1.batch                                 2d
-v1.monitoring.coreos.com                 1d
-v1.networking.k8s.io                     2d
-v1.rbac.authorization.k8s.io             2d
-v1.storage.k8s.io                        2d
-v1alpha1.custom-metrics.metrics.k8s.io   2h
-v1.apiextensions.k8s.io                  2d
-v1.apps                                  2d
-v1.authentication.k8s.io                 2d
-v1.authorization.k8s.io                  2d
-v1.batch                                 2d
-v1.certificates.k8s.io                   2d
-v1.networking.k8s.io                     2d
-v1.policy                                2d
-v1.rbac.authorization.k8s.io             2d
-v1.storage.k8s.io                        2d
-v1beta2.apps                             2d
-v2beta1.autoscaling                      2d
+kubectl get apiservices
 ```
 
-另外查看当前 kubernetes 集群支持的 API 版本还可以使用`kubectl api-versions`：
+输出示例：
 
 ```bash
-$ kubectl api-versions
+NAME                                     SERVICE                      AVAILABLE   AGE
+v1.                                      Local                        True        2d
+v1.apps                                  Local                        True        2d
+v1.authentication.k8s.io                Local                        True        2d
+v1.authorization.k8s.io                 Local                        True        2d
+v1.autoscaling                           Local                        True        2d
+v1.batch                                 Local                        True        2d
+v1.networking.k8s.io                    Local                        True        2d
+v1.rbac.authorization.k8s.io            Local                        True        2d
+v1.storage.k8s.io                       Local                        True        2d
+v1alpha1.custom-metrics.metrics.k8s.io  custom-metrics/api           True        2h
+v1.apiextensions.k8s.io                 Local                        True        2d
+v1.certificates.k8s.io                  Local                        True        2d
+v1.policy                               Local                        True        2d
+v2.autoscaling                          Local                        True        2d
+```
+
+### 查看支持的 API 版本
+
+使用以下命令查看集群支持的所有 API 版本：
+
+```bash
+kubectl api-versions
+```
+
+输出示例：
+
+```bash
+admissionregistration.k8s.io/v1
 apiextensions.k8s.io/v1
 apiregistration.k8s.io/v1
 apps/v1
 authentication.k8s.io/v1
 authorization.k8s.io/v1
 autoscaling/v1
-autoscaling/v2beta1
+autoscaling/v2
 batch/v1
 certificates.k8s.io/v1
+coordination.k8s.io/v1
 custom-metrics.metrics.k8s.io/v1alpha1
+events.k8s.io/v1
 networking.k8s.io/v1
+node.k8s.io/v1
 policy/v1
 rbac.authorization.k8s.io/v1
 storage.k8s.io/v1
 v1
 ```
+
+## 最佳实践
+
+1. **安全性**: 始终使用 `caBundle` 进行 TLS 验证，避免设置 `insecureSkipTLSVerify: true`
+2. **命名规范**: 使用清晰的命名约定，格式为 `<version>.<group>`
+3. **优先级设置**: 合理设置优先级以避免 API 冲突
+4. **监控状态**: 定期检查 APIService 的 `Available` 状态，确保服务正常运行
+5. **版本管理**: 在更新 API 版本时，保持向后兼容性
+
+通过合理配置和管理 APIService，可以有效扩展 Kubernetes API 功能，为自定义应用程序提供原生的 Kubernetes API 体验。

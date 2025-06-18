@@ -3,213 +3,224 @@ weight: 82
 title: 使用 etcdctl 访问 Kubernetes 数据
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 详细介绍如何使用 etcdctl 工具访问和查看 Kubernetes 在 etcd 中存储的集群数据，包括配置方法、常用命令和数据结构分析。
 keywords:
-- api
 - etcd
-- key
+- etcdctl
 - Kubernetes
-- kubernetes
-- namespace
-- 使用
-- 命令
-- 看到
-- 输出
+- 集群数据
+- API 对象
+- 元数据
+- TLS 认证
 ---
 
-Kubernetes1.6 中使用 etcd V3 版本的 API，使用 `etcdctl` 直接 `ls` 的话只能看到 `/kube-centos` 一个路径。需要在命令前加上 `ETCDCTL_API=3` 这个环境变量才能看到 Kubernetes 在 etcd 中保存的数据。
+Kubernetes 使用 etcd 作为其后端数据存储，从 Kubernetes 1.6 开始默认使用 etcd v3 API。要访问 Kubernetes 在 etcd 中存储的数据，需要使用正确的 API 版本和认证配置。
+
+## 基本访问方法
+
+### 设置 API 版本
+
+使用 etcdctl 访问 Kubernetes 数据时，必须指定使用 etcd v3 API：
 
 ```bash
-ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json|python -m json.tool
+export ETCDCTL_API=3
 ```
 
-如果是使用 kubeadm 创建的集群，在 Kubernetes 1.11 中，etcd 默认使用 tls，这时你可以在 master 节点上使用以下命令来访问 etcd：
+或者在每个命令前添加环境变量：
 
 ```bash
-ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
---cert=/etc/kubernetes/pki/etcd/peer.crt \
---key=/etc/kubernetes/pki/etcd/peer.key \
-get /registry/namespaces/default -w=json | jq .
+ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json | jq .
 ```
 
-- `-w` 指定输出格式
+### TLS 认证访问
 
-将得到这样的 JSON 的结果：
+对于使用 kubeadm 创建的集群，etcd 默认启用 TLS 认证。需要使用相应的证书文件：
+
+```bash
+ETCDCTL_API=3 etcdctl \
+    --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+    --cert=/etc/kubernetes/pki/etcd/peer.crt \
+    --key=/etc/kubernetes/pki/etcd/peer.key \
+    get /registry/namespaces/default -w=json | jq .
+```
+
+**参数说明：**
+
+- `--cacert`: CA 证书文件路径
+- `--cert`: 客户端证书文件路径  
+- `--key`: 客户端私钥文件路径
+- `-w`: 指定输出格式（json、table 等）
+
+## 常用查询命令
+
+### 查看单个对象
+
+查看 default 命名空间的详细信息：
+
+```bash
+ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json | jq .
+```
+
+输出示例：
 
 ```json
 {
-    "count": 1,
-    "header": {
-        "cluster_id": 12091028579527406772,
-        "member_id": 16557816780141026208,
-        "raft_term": 36,
-        "revision": 29253467
-    },
-    "kvs": [
-        {
-            "create_revision": 5,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==",
-            "mod_revision": 5,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=",
-            "version": 1
-        }
-    ]
+        "count": 1,
+        "header": {
+                "cluster_id": 12091028579527406772,
+                "member_id": 16557816780141026208,
+                "raft_term": 36,
+                "revision": 29253467
+        },
+        "kvs": [
+                {
+                        "create_revision": 5,
+                        "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==",
+                        "mod_revision": 5,
+                        "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=",
+                        "version": 1
+                }
+        ]
 }
 ```
 
-使用 `--prefix` 可以看到所有的子目录，如查看集群中的 namespace：
+### 查看多个对象
+
+使用 `--prefix` 参数查看指定前缀下的所有对象：
 
 ```bash
-ETCDCTL_API=3 etcdctl get /registry/namespaces --prefix -w=json|python -m json.tool
+ETCDCTL_API=3 etcdctl get /registry/namespaces --prefix -w=json | jq .
 ```
 
-输出结果中可以看到所有的 namespace。
+### 列出所有键
+
+列出 etcd 中所有 Kubernetes 相关的键：
 
 ```bash
-{
-    "count": 8,
-    "header": {
-        "cluster_id": 12091028579527406772,
-        "member_id": 16557816780141026208,
-        "raft_term": 36,
-        "revision": 29253722
-    },
-    "kvs": [
-        {
-            "create_revision": 24310883,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs",
-            "mod_revision": 24310883,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmQKSgoJYXV0b21vZGVsEgAaACIAKiQ1MjczOTU1ZC1iMzEyLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgsI7fSWzwUQ6Jv1Z3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==",
-            "version": 1
-        },
-        {
-            "create_revision": 21387676,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYnJhbmQ=",
-            "mod_revision": 21387676,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmEKRwoFYnJhbmQSABoAIgAqJGNkZmQ1Y2NmLWExYzktMTFlNy05NzBjLWY0ZTlkNDlmOGVkMDIAOABCDAjR9qLOBRDYn83XAXoAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==",
-            "version": 1
-        },
-        {
-            "create_revision": 5,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==",
-            "mod_revision": 5,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=",
-            "version": 1
-        },
-        {
-            "create_revision": 18504694,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGV2",
-            "mod_revision": 24310213,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmwKUgoDZGV2EgAaACIAKiQyOGRlMGVjNS04ZTEzLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgwI89CezQUQ0v2fuQNaCwoEbmFtZRIDZGV2egASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA",
-            "version": 4
-        },
-        {
-            "create_revision": 10,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1wdWJsaWM=",
-            "mod_revision": 10,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmcKTQoLa3ViZS1wdWJsaWMSABoAIgAqJGU1ZjhkY2I1LTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCDAiJ+LLHBRDdrsDPA3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==",
-            "version": 1
-        },
-        {
-            "create_revision": 2,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1zeXN0ZW0=",
-            "mod_revision": 2,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmYKTAoLa3ViZS1zeXN0ZW0SABoAIgAqJGU1NmFhMDVkLTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCCwiJ+LLHBRDoq9ASegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA",
-            "version": 1
-        },
-        {
-            "create_revision": 3774247,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvc3BhcmstY2x1c3Rlcg==",
-            "mod_revision": 3774247,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEoABCmYKDXNwYXJrLWNsdXN0ZXISABoAIgAqJDMyNjY3ZDVjLTM0YWMtMTFlNy1iZmJkLThhZjFlM2E3YzViZDIAOABCDAiA1cbIBRDU3YuAAVoVCgRuYW1lEg1zcGFyay1jbHVzdGVyegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA",
-            "version": 1
-        },
-        {
-            "create_revision": 15212191,
-            "key": "L3JlZ2lzdHJ5L25hbWVzcGFjZXMveWFybi1jbHVzdGVy",
-            "mod_revision": 15212191,
-            "value": "azhzAAoPCgJ2MRIJTmFtZXNwYWNlEn0KYwoMeWFybi1jbHVzdGVyEgAaACIAKiQ2YWNhNjk1Yi03N2Y5LTExZTctYmZiZC04YWYxZTNhN2M1YmQyADgAQgsI1qiKzAUQkoqxDloUCgRuYW1lEgx5YXJuLWNsdXN0ZXJ6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=",
-            "version": 1
-        }
-    ]
-}
+ETCDCTL_API=3 etcdctl get /registry --prefix --keys-only
 ```
 
-key 的值是经过 base64 编码，需要解码后才能看到实际值，如：
+## 数据解码
+
+etcd 中的键值都经过 base64 编码，需要解码才能查看实际内容：
 
 ```bash
-$ echo L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs|base64 -d
-/registry/namespaces/automodel
+# 解码键名
+echo "L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==" | base64 -d
+# 输出：/registry/namespaces/default
+
+# 批量解码脚本
+#!/bin/bash
+export ETCDCTL_API=3
+keys=$(etcdctl get /registry --prefix -w json | jq -r '.kvs[].key')
+for key in $keys; do
+    echo $key | base64 -d
+done | sort
 ```
 
-## etcd 中 kubernetes 的元数据
+## Kubernetes 数据结构
 
-我们使用 kubectl 命令获取的 kubernetes 的对象状态实际上是保存在 etcd 中的，使用下面的脚本可以获取 etcd 中的所有 kubernetes 对象的 key：
+### 存储层次结构
 
-> 注意，我们使用了 ETCD v3 版本的客户端命令来访问 etcd。
+Kubernetes 在 etcd 中的数据遵循以下层次结构：
+
+```
+/registry/
+├── <资源类型复数形式>/
+│   ├── <命名空间>/
+│   │   └── <对象名称>
+│   └── <集群级别对象名称>
+```
+
+### 主要资源类型
+
+Kubernetes 在 etcd 中存储的主要资源类型包括：
+
+**核心资源：**
+
+- `namespaces` - 命名空间
+- `pods` - Pod 对象
+- `services` - 服务
+- `configmaps` - 配置映射
+- `secrets` - 密钥
+- `persistentvolumes` - 持久卷
+- `persistentvolumeclaims` - 持久卷声明
+
+**工作负载资源：**
+
+- `deployments` - 部署
+- `replicasets` - 副本集
+- `daemonsets` - 守护进程集
+- `statefulsets` - 有状态集
+- `jobs` - 任务
+
+**配置和存储：**
+
+- `storageclasses` - 存储类
+- `limitranges` - 资源限制
+- `resourcequotas` - 资源配额
+
+**RBAC 相关：**
+
+- `roles` - 角色
+- `rolebindings` - 角色绑定
+- `clusterroles` - 集群角色
+- `clusterrolebindings` - 集群角色绑定
+- `serviceaccounts` - 服务账户
+
+**扩展资源：**
+
+- `apiextensions.k8s.io` - 自定义资源定义
+- `apiregistration.k8s.io` - API 服务注册
+
+## 实用脚本
+
+### 获取所有 Kubernetes 对象键
 
 ```bash
 #!/bin/bash
-# Get kubernetes keys from etcd
+# 获取 etcd 中所有 Kubernetes 对象的键
 export ETCDCTL_API=3
-keys=`etcdctl get /registry --prefix -w json|python -m json.tool|grep key|cut -d ":" -f2|tr -d '"'|tr -d ","`
-for x in $keys;do
-  echo $x|base64 -d|sort
-done
+
+# 配置 etcd 访问参数（根据实际环境调整）
+ETCD_OPTS=""
+if [ -f "/etc/kubernetes/pki/etcd/ca.crt" ]; then
+        ETCD_OPTS="--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+                             --cert=/etc/kubernetes/pki/etcd/peer.crt \
+                             --key=/etc/kubernetes/pki/etcd/peer.key"
+fi
+
+# 获取并解码所有键
+etcdctl $ETCD_OPTS get /registry --prefix -w json | \
+jq -r '.kvs[].key' | \
+while read key; do
+        echo $key | base64 -d
+done | sort
 ```
 
-通过输出的结果我们可以看到 kubernetes 的原数据是按何种结构包括在 Kubernetes 中的，输出结果如下所示：
+### 按资源类型统计对象数量
 
-```ini
-/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-details-default
-/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-productpage-default
-/registry/ThirdPartyResourceData/istio.io/istioconfigs/default/route-rule-ratings-default
-...
-/registry/configmaps/default/namerctl-script
-/registry/configmaps/default/namerd-config
-/registry/configmaps/default/nginx-config
-...
-/registry/deployments/default/sdmk-page-sdmk
-/registry/deployments/default/sdmk-payment-web
-/registry/deployments/default/sdmk-report
-...
+```bash
+#!/bin/bash
+export ETCDCTL_API=3
+
+etcdctl get /registry --prefix --keys-only | \
+while read key; do
+        echo $key | base64 -d
+done | \
+cut -d'/' -f3 | \
+sort | uniq -c | \
+sort -nr
 ```
 
-我们可以看到所有的 Kubernetes 的所有元数据都保存在 `/registry` 目录下，下一层就是 API 对象类型（复数形式），再下一层是 `namespace`，最后一层是对象的名字。
+## 注意事项
 
-以下是 etcd 中存储的 kubernetes 所有的元数据类型：
+1. **生产环境谨慎操作**：直接操作 etcd 数据可能会破坏集群状态，建议仅用于调试和学习。
 
-```ini
-ThirdPartyResourceData
-apiextensions.k8s.io
-apiregistration.k8s.io
-certificatesigningrequests
-clusterrolebindings
-clusterroles
-configmaps
-controllerrevisions
-controllers
-daemonsets
-deployments
-events
-horizontalpodautoscalers
-ingress
-limitranges
-minions
-monitoring.coreos.com
-namespaces
-persistentvolumeclaims
-persistentvolumes
-poddisruptionbudgets
-pods
-ranges
-replicasets
-resourcequotas
-rolebindings
-roles
-secrets
-serviceaccounts
-services
-statefulsets
-storageclasses
-thirdpartyresources
-```
+2. **权限要求**：访问 etcd 需要适当的权限，通常需要在 master 节点上执行。
+
+3. **数据一致性**：etcd 中的数据反映的是 Kubernetes API Server 的内部状态，可能与 kubectl 输出略有差异。
+
+4. **版本兼容性**：不同 Kubernetes 版本在 etcd 中的数据结构可能有所不同。
+
+通过 etcdctl 访问 Kubernetes 数据有助于深入理解集群的内部工作机制，对于故障排查和性能优化具有重要意义。

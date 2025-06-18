@@ -2,11 +2,12 @@
 title: 云原生计算基金会（CNCF）
 linktitle: CNCF
 weight: 6
+description: 深入了解云原生计算基金会（CNCF）的使命、组织架构、项目成熟度分级体系，以及如何成为 CNCF Ambassador。探索 CNCF 如何推动云原生技术生态系统的发展。
 keywords:
 - ambassador
 - cncf
 - toc
-- 原生
+- 云原生
 - 成熟度
 - 技术
 - 投票
@@ -15,73 +16,125 @@ keywords:
 - 项目
 ---
 
+## CNCF 简介
 
-CNCF，全称 Cloud Native Computing Foundation（云原生计算基金会），成立于 2015 年 7 月 21 日（[于美国波特兰 OSCON 2015 上宣布](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)），其最初的口号是**坚持和整合开源技术来让编排容器作为微服务架构的一部分**，其作为致力于云原生应用推广和普及的一支重要力量，不论你是云原生应用的开发者、管理者还是研究人员都有必要了解。
+Cloud Native Computing Foundation（云原生计算基金会，简称 CNCF）成立于 2015 年 7 月 21 日，[于美国波特兰 OSCON 2015 上正式宣布](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)。CNCF 是一个厂商中立的基金会，致力于推广和普及云原生应用，其核心使命是**推动开源技术的发展，帮助开发者构建可扩展、高可靠的云原生应用**。
 
-CNCF 作为一个厂商中立的基金会，致力于 Github 上的快速成长的开源技术的推广，如 Kubernetes、Prometheus、Envoy 等，帮助开发人员更快更好的构建出色的产品。CNCF 维护了一个全景图项目，详见 [GitHub](https://github.com/cncf/landscape)。
+作为 Linux 基金会的一部分，CNCF 专注于培育和维护云原生生态系统中的关键开源项目，如 Kubernetes、Prometheus、Envoy、Helm 等。无论你是云原生应用的开发者、运维人员还是决策者，了解 CNCF 都至关重要。
 
-关于 CNCF 的使命与组织方式请参考[CNCF 章程](https://www.cncf.io/about/charter/)，概括的讲 CNCF 的使命包括以下三点：
+## CNCF 的使命与价值
 
-* 容器化包装。
-* 通过中心编排系统的动态资源管理。
-* 面向微服务。
+CNCF 的核心使命可以概括为以下几个方面：
 
-CNCF 这个角色的作用是推广技术，形成社区，开源项目管理与推进生态系统健康发展。
+- **容器化技术推广**：推动应用程序的容器化包装和部署
+- **动态资源管理**：通过编排系统实现资源的动态分配和管理
+- **微服务架构**：促进面向微服务的架构设计和实践
+- **开源生态建设**：构建健康、可持续的开源技术生态系统
 
-另外 CNCF 组织由以下部分组成：
+CNCF 维护着一个综合性的[云原生全景图](https://landscape.cncf.io/)，展示了云原生生态系统中各个领域的技术和解决方案。
 
-* **会员**：白金、金牌、银牌、最终用户、学术和非赢利成员，不同级别的会员在治理委员会中的投票权不同。
-* **理事会**：负责事务管理
-* **TOC（技术监督委员会）**：技术管理
-* **最终用户社区**：推动 CNCF 技术的采纳并选举最终用户技术咨询委员会
-* **最终用户技术咨询委员会**：为最终用户会议或向理事会提供咨询
-* **营销委员会**：市场推广
+## 组织架构
 
-## CNCF 项目成熟度分级与毕业条件
+CNCF 的组织架构包括以下关键组成部分：
 
-每个 CNCF 项目都需要有个成熟度等级，申请成为 CNCF 项目的时候需要确定项目的成熟度级别。
+### 会员体系
 
-成熟度级别（Maturity Level）包括以下三种：
+- **白金会员**：拥有最高级别的治理权限和投票权
+- **金牌会员**：在技术委员会中拥有重要话语权
+- **银牌会员**：参与社区建设和技术推广
+- **最终用户会员**：代表技术采用者的声音
+- **学术和非营利会员**：促进教育和研究
 
-* sandbox（初级）
-* incubating（孵化中）
-* graduated（毕业）
+### 治理结构
 
-是否可以成为 CNCF 项目需要通过 Technical Oversight Committee \(技术监督委员会）简称[TOC](https://github.com/cncf/toc)，投票采取 fallback 策略，即**回退策略**，先从最高级别（graduated）开始，如果 2/3 多数投票通过的话则确认为该级别，如果没通过的话，则进行下一低级别的投票，如果一直到 inception 级别都没得到 2/3 多数投票通过的话，则拒绝其进入 CNCF 项目。
+- **理事会（Governing Board）**：负责基金会的战略方向和重大决策
+- **技术监督委员会（TOC）**：负责技术相关的决策和项目管理
+- **最终用户社区**：推动技术采纳，选举技术咨询委员会
+- **最终用户技术咨询委员会**：为理事会提供用户视角的建议
 
-当前所有的 CNCF 项目可以访问[https://www.cncf.io/projects/](https://www.cncf.io/projects/) 。
+## 项目成熟度分级体系
 
-项目所达到相应成熟度需要满足的条件和投票机制见下图：
+CNCF 建立了一套完整的项目成熟度评估体系，确保项目质量和可持续发展。
 
-![CNCF 项目成熟度级别](../../images/cncf-graduation-criteria-v2.webp "CNCF项目成熟度级别")
-{width=800 height=600}
+### 成熟度级别
 
-## TOC（技术监督委员会）
+成熟度级别从低到高分为三个等级：
 
-TOC（Technical Oversight Committee）作为 CNCF 中的一个重要组织，它的作用是：
+1. **Sandbox（沙箱级）**：处于早期阶段的创新项目
+2. **Incubating（孵化级）**：已证明价值并获得一定采用的项目
+3. **Graduated（毕业级）**：成熟、稳定、被广泛采用的项目
 
-* 定义和维护技术视野
-* 审批新项目加入组织，为项目设定概念架构
-* 接受最终用户的反馈并映射到项目中
-* 调整组件间的访问接口，协调组件之间兼容性
+### 评估机制
 
-TOC 成员通过选举产生，见[选举时间表](https://github.com/cncf/toc/blob/master/process/election-schedule.md)。
+项目评估采用**递减策略（Fallback Strategy）**：
 
-参考 CNCF TOC：[https://github.com/cncf/toc](https://github.com/cncf/toc)
+1. 首先评估是否符合最高级别（Graduated）标准
+2. 如果未达到，则评估下一级别（Incubating）
+3. 最后评估是否符合 Sandbox 级别要求
+4. TOC 通过 2/3 多数投票决定项目级别
 
-## CNCF Ambassador
+当前所有 CNCF 项目可在 [官方项目页面](https://www.cncf.io/projects/) 查看。
 
-CNCF Ambassador（CNCF 大使），人员名单详见 <https://www.cncf.io/people/ambassadors/，笔者很荣幸作为第二位成为> CNCF Ambassador 的中国人。
+## 技术监督委员会（TOC）
 
-### 如何成为 CNCF Ambassador
+### TOC 的职责
 
-可以通过以下方式成为 CNCF Ambassador：
+Technical Oversight Committee（TOC）是 CNCF 的核心技术治理机构，主要职责包括：
 
-* 成为 CNCF 会员或对成为某个 CNCF 的项目的贡献者
-* 以 contributor、blogger、演讲者等身份参与 CNCF 社区项目
-* 在社区中演讲或撰写博客
-* 主持云原生社区 meetup
+- **技术愿景制定**：定义和维护云原生技术的长期发展方向
+- **项目评审管理**：审批新项目加入，设定项目架构标准
+- **用户反馈处理**：收集最终用户反馈并指导项目改进
+- **生态系统协调**：确保项目间的互操作性和兼容性
+- **技术标准制定**：建立云原生领域的最佳实践和标准
 
-## 参考
+### TOC 成员选举
 
-* [AT&T, Box, Cisco, Cloud Foundry Foundation, CoreOS, Cycle Computing, Docker, eBay, Goldman Sachs, Google, Huawei, IBM, Intel, Joyent, Kismatic, Mesosphere, Red Hat, Switch SUPERNAP, Twitter, Univa, VMware and Weaveworks join new effort to build and maintain cloud native distributed systems - cncf.io](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)
+TOC 成员通过社区选举产生，选举周期和流程详见 [GitHub TOC 仓库](https://github.com/cncf/toc)。
+
+## CNCF Ambassador 项目
+
+### 什么是 CNCF Ambassador
+
+CNCF Ambassador（CNCF 大使）是 CNCF 社区的杰出贡献者和技术传播者，他们在推广云原生技术和建设社区方面发挥重要作用。
+
+完整的 Ambassador 名单可在 [官方页面](https://www.cncf.io/people/ambassadors/) 查看。
+
+### 成为 Ambassador 的途径
+
+想要成为 CNCF Ambassador，可以通过以下方式参与社区：
+
+#### 技术贡献
+
+- 成为 CNCF 项目的活跃贡献者
+- 参与项目的代码开发、文档编写或测试工作
+- 为项目提供技术支持和问题解决方案
+
+#### 社区参与
+
+- 在技术会议和活动中发表演讲
+- 撰写高质量的技术博客和文章
+- 组织或参与云原生社区 meetup
+- 参与在线社区讨论和知识分享
+
+#### 教育推广
+
+- 开发云原生相关的培训课程
+- 指导新人参与开源项目
+- 翻译重要技术文档
+
+## 发展趋势与展望
+
+随着云原生技术的快速发展，CNCF 持续扩展其影响力：
+
+- **项目数量增长**：从最初的 Kubernetes 发展到涵盖整个云原生技术栈
+- **全球社区建设**：在世界各地建立本地化社区
+- **企业采纳加速**：越来越多企业将云原生作为数字化转型战略
+- **技术标准化**：推动云原生领域的标准化和最佳实践
+
+## 参考资源
+
+- [CNCF 官方网站](https://www.cncf.io/)
+- [CNCF 章程](https://www.cncf.io/about/charter/)
+- [云原生全景图](https://landscape.cncf.io/)
+- [CNCF TOC GitHub 仓库](https://github.com/cncf/toc)
+- [CNCF 项目列表](https://www.cncf.io/projects/)

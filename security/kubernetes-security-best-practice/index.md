@@ -1,56 +1,173 @@
 ---
 weight: 90
 title: Kubernetes 集群安全性配置最佳实践
+linktitle: Kubernetes 安全最佳实践
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 全面介绍 Kubernetes 集群安全配置的最佳实践，包括端口管理、API 安全设置、RBAC 配置以及安全扫描工具的使用指南。
 keywords:
 - api
 - kube
 - kubelet
 - kubernetes
 - security
-- tcp
+- rbac
 - 端口
 - 节点
 - 身份验证
 - 集群
+- 安全扫描
 ---
 
+本文提供 Kubernetes 集群安全性管理的最佳实践指南，帮助您构建更安全的容器化环境。
 
-本文是对 Kubernetes 集群安全性管理的最佳实践。
+## 网络端口安全管理
 
-## 端口
+合理管理和控制以下关键端口的访问权限：
 
-请注意管理好以下端口。
+| 端口      | 服务组件       | 用途描述                                           | 安全建议 |
+| --------- | -------------- | -------------------------------------------------- | -------- |
+| 6443/TCP  | kube-apiserver | Kubernetes API 服务端口                            | 限制访问源 |
+| 10250/TCP | kubelet        | Kubelet API 端口，提供节点管理功能                 | 启用认证 |
+| 10255/TCP | kubelet        | 只读端口，允许访问节点状态（已废弃）               | 建议禁用 |
+| 10256/TCP | kube-proxy     | kube-proxy 健康检查端口                            | 内网访问 |
+| 4194/TCP  | kubelet        | cAdvisor 容器监控指标端口                          | 限制访问 |
+| 9099/TCP  | calico-felix   | Calico 网络插件健康检查端口                        | 内网访问 |
 
-| 端口      | 进程           | 描述                                               |
-| --------- | -------------- | -------------------------------------------------- |
-| 4149/TCP  | kubelet        | 用于查询容器监控指标的 cAdvisor 端口               |
-| 10250/TCP | kubelet        | 访问节点的 API 端口                                |
-| 10255/TCP | kubelet        | 未认证的只读端口，允许访问节点状态                 |
-| 10256/TCP | kube-proxy     | kube-proxy 的健康检查服务端口                      |
-| 9099/TCP  | calico-felix   | calico 的健康检查服务端口（如果使用 calico/canal） |
-| 6443/TCP  | kube-apiserver | Kubernetes API 端口                                |
+**端口安全建议：**
 
-## Kubernetes 安全扫描工具 kube-bench
+- 使用防火墙规则限制不必要的端口访问
+- 禁用已废弃的 10255 只读端口
+- 为敏感端口配置 TLS 加密传输
 
-[kube-bench](https://github.com/aquasecurity/kube-bench) 可以消除大约 kubernetes 集群中 95％的配置缺陷。通过应用 CIS Kubernetes Benchmark 来检查 master 节点、node 节点及其控制平面组件，从而确保集群设置了特定安全准则。在经历特定的 Kubernetes 安全问题或安全增强功能之前，这应该是第一步。
+## API 服务器安全配置
 
-## API 设置
+### 身份认证与授权
 
-**授权模式和匿名认证**
+**1. 启用 RBAC 授权模式**
 
-像 kops 这样的一些安装程序会为集群使用 `AlwaysAllow` 授权模式。这将授予任何经过身份验证的实体拥有完全访问集群的权限。应该使用 RBAC 基于角色的访问控制。检查你的 kube-apiserver 进程的 `--authorization-mode` 参数。有关该主题的更多信息，请访问认证概览。要强制进行身份验证，请确保通过设置 `--anonymous-auth = false` 禁用匿名身份验证。
+避免使用不安全的 `AlwaysAllow` 授权模式，推荐配置：
 
-注意这不影响 Kubelet 授权模式。kubelet 本身公开了一个 API 来执行命令，通过它可以完全绕过 Kubernetes API。
+```yaml
+--authorization-mode=Node,RBAC
+```
 
-更多关于使用 kops 等工具自动安装 Kubernetes 集群的安全配置注意事项请参考 [Kubernetes Security - Best Practice Guide](https://github.com/freach/kubernetes-security-best-practice)。
+**2. 禁用匿名访问**
 
-## 参考
+通过以下参数禁用匿名身份验证：
 
-- [Kubernetes Security - Best Practice Guide - github.com](https://github.com/freach/kubernetes-security-best-practice)
-- Kubernetes v1.7 security in practice - acotten.com
-- [Isolate containers with a user namespace - docs.docker.com](https://docs.docker.com/engine/security/userns-remap/)
-- [Docker Security – It’s a Layered Approach - logz.io](https://logz.io/blog/docker-security/)
-- [Kubernetes 1.8: Security, Workloads and Feature Depth - blog.kubernetes.io](https://blog.kubernetes.io/2017/09/kubernetes-18-security-workloads-and.html)
-- [Security Matters: RBAC in Kubernetes - blog.heptio.co](https://blog.heptio.com/security-matters-rbac-in-kubernetes-e369b483c8d8)
+```yaml
+--anonymous-auth=false
+```
+
+**3. 配置准入控制器**
+
+建议启用以下准入控制器：
+
+```yaml
+--enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ResourceQuota,LimitRanger
+```
+
+### TLS 和证书管理
+
+- 为所有 API 通信启用 TLS 加密
+- 定期轮换 API 服务器证书
+- 使用强加密算法和密钥长度
+
+## 节点安全配置
+
+### Kubelet 安全设置
+
+```yaml
+# kubelet 配置示例
+authentication:
+    anonymous:
+        enabled: false
+    webhook:
+        enabled: true
+authorization:
+    mode: Webhook
+```
+
+### 容器运行时安全
+
+- 使用非特权容器运行工作负载
+- 配置 Pod Security Standards 替代已废弃的 PSP
+- 启用容器镜像签名验证
+
+## 安全扫描与审计工具
+
+### kube-bench 集群安全评估
+
+[kube-bench](https://github.com/aquasecurity/kube-bench) 是基于 CIS Kubernetes Benchmark 的安全扫描工具：
+
+```bash
+# 运行 kube-bench
+kubectl apply -f https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job.yaml
+
+# 查看扫描结果
+kubectl logs job.batch/kube-bench
+```
+
+**主要功能：**
+
+- 检查主节点配置安全性
+- 验证工作节点合规性
+- 评估控制平面组件配置
+- 提供详细的修复建议
+
+### 其他推荐安全工具
+
+- **Falco**: 运行时安全监控
+- **OPA Gatekeeper**: 策略即代码管理
+- **Trivy**: 容器镜像漏洞扫描
+
+## 网络安全策略
+
+### Network Policy 配置
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    name: deny-all-ingress
+spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+```
+
+### 服务网格安全
+
+考虑使用 Istio 或 Linkerd 等服务网格解决方案：
+
+- 自动 mTLS 加密
+- 细粒度访问控制
+- 流量监控和审计
+
+## 监控与日志安全
+
+### 审计日志配置
+
+启用 Kubernetes 审计功能：
+
+```yaml
+--audit-log-path=/var/log/audit.log
+--audit-policy-file=/etc/kubernetes/policies/audit-policy.yaml
+```
+
+### 安全事件监控
+
+建立安全事件响应机制：
+
+- 配置异常行为告警
+- 建立事件响应流程
+- 定期进行安全演练
+
+## 参考资源
+
+- [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes)
+- [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/)
+- [NIST Container Security Guide](https://csrc.nist.gov/publications/detail/sp/800-190/final)
+- [Kubernetes 官方安全文档](https://kubernetes.io/docs/concepts/security/)
+- [OWASP Kubernetes Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html)

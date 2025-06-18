@@ -1,8 +1,10 @@
 ---
 weight: 104
 title: 使用 Kustomize 配置 Kubernetes 应用
+linktitle: Kustomize
 date: '2023-07-04T08:40:00+08:00'
 type: book
+description: Kustomize 是一个强大的 Kubernetes 配置管理工具，支持声明式配置定制、多环境管理和配置复用。本文介绍 Kustomize 的核心功能、最佳实践以及与 kubectl 的集成使用方法。
 keywords:
 - kubectl
 - kubernetes
@@ -16,105 +18,182 @@ keywords:
 - 配置
 ---
 
+[Kustomize](https://kustomize.io/) 是一个专为 Kubernetes 设计的声明式配置管理工具，它允许用户通过分层和声明式的方式定制和管理应用程序配置，而无需直接修改原始的清单文件。Kustomize 现已集成到 kubectl 中，成为 Kubernetes 原生的配置管理解决方案。
 
-[Kustomize](https://kustomize.io/)是一个开源的 Kubernetes 配置管理工具，用于对 Kubernetes 清单文件进行自定义和修改。它允许用户通过分层和声明式的方式管理和定制应用程序的配置，而无需直接修改原始的清单文件，促进了配置的复用和可维护性。
+## Kustomize 核心功能
 
-Kustomize 的主要功能包括：
+### 配置合并与分层管理
 
-1. 配置合并：Kustomize 允许用户通过定义基础配置和覆盖配置的方式来合并和定制 Kubernetes 清单文件。基础配置可以作为一个基准，而覆盖配置可以包含对基础配置进行修改和定制的内容。这种分层的方式使得对配置进行管理和修改更加灵活和可维护。
+Kustomize 采用基础配置（base）和覆盖配置（overlay）的分层架构：
 
-2. 声明式的配置：Kustomize 使用基于文件的声明式配置格式，使得用户可以以清晰的方式描述应用程序的配置和定制需求。用户可以定义资源的名称、标签、注释、环境变量等，并指定资源之间的关系和依赖。
+- **基础配置**：作为应用程序的基准配置，包含通用的 Kubernetes 资源定义
+- **覆盖配置**：针对特定环境或需求的定制配置，可以修改、添加或删除基础配置中的内容
 
-3. 配置重用：Kustomize 支持配置的重用和共享。用户可以定义可重用的配置片段，并在多个应用程序中进行引用。这样可以避免重复的配置，提高配置的可维护性和复用性。
+这种分层方式实现了配置的继承和定制，提高了配置管理的灵活性。
 
-4. 多环境管理：Kustomize 支持多个环境（例如开发、测试、生产）的管理。用户可以根据不同环境的需求，为每个环境创建特定的覆盖配置，并在部署过程中应用相应的配置。
+### 声明式配置管理
 
-## Kustomize 配置应用示例
+Kustomize 使用 YAML 格式的 `kustomization.yaml` 文件来描述配置定制规则，支持：
 
-假设我们有一个名为"myapp"的应用程序，它由多个 Kubernetes 资源组成，包括 Deployment、Service 和 ConfigMap。下面是一个使用 Kustomize 进行应用程序配置管理的简单示例。
+- 资源引用和组合
+- 名称前缀和后缀添加
+- 标签和注释的统一管理
+- 环境变量和配置映射的替换
+- 镜像标签的动态修改
 
-首先，创建一个名为"base"的目录，并在该目录中创建 Kubernetes 资源的清单文件：
+### 配置复用与共享
+
+通过定义可重用的配置组件和补丁（patches），Kustomize 支持：
+
+- 跨项目的配置共享
+- 组件化的配置管理
+- 减少重复配置的维护成本
+
+### 多环境配置管理
+
+Kustomize 天然支持多环境部署，允许为不同环境（开发、测试、生产）创建特定的覆盖配置，实现一套基础配置适配多个环境的需求。
+
+## 实践示例
+
+以下是一个完整的 Kustomize 配置管理示例，展示如何管理一个名为 "webapp" 的应用程序。
+
+### 基础配置结构
 
 ```
 base/
-  ├── deployment.yaml
-  ├── service.yaml
-  └── configmap.yaml
+├── kustomization.yaml
+├── deployment.yaml
+├── service.yaml
+└── configmap.yaml
 ```
 
-接下来，我们可以使用 Kustomize 创建一个 overlay 目录，用于定制基础配置。在 overlay 目录中，我们创建一个名为"dev"的子目录，并在该目录中添加一个 kustomization.yaml 文件，指定我们的定制配置：
-
-```
-overlay/
-  └── dev/
-      ├── kustomization.yaml
-      └── configmap.yaml
-```
-
-在"dev"子目录中的 kustomization.yaml 文件中，我们可以指定要修改或添加的资源和配置：
+**base/kustomization.yaml**：
 
 ```yaml
-resources:
-  - ../../base
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-patches:
-  - configmap.yaml
+resources:
+- deployment.yaml
+- service.yaml
+- configmap.yaml
+
+commonLabels:
+   app: webapp
 ```
 
-在上面的示例中，我们指定了基础配置的位置（`../../base`），以及要应用的修改配置（`configmap.yaml`）。
+### 环境特定配置
 
-最后，我们在命令行中运行 Kustomize 命令来生成最终的 Kubernetes 清单文件：
+```
+overlays/
+├── dev/
+│   ├── kustomization.yaml
+│   └── replica-patch.yaml
+└── prod/
+      ├── kustomization.yaml
+      ├── replica-patch.yaml
+      └── resource-limits.yaml
+```
+
+**overlays/dev/kustomization.yaml**：
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: webapp-dev
+
+resources:
+- ../../base
+
+patchesStrategicMerge:
+- replica-patch.yaml
+
+images:
+- name: webapp
+   newTag: dev-latest
+```
+
+**overlays/prod/kustomization.yaml**：
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: webapp-prod
+
+resources:
+- ../../base
+
+patchesStrategicMerge:
+- replica-patch.yaml
+- resource-limits.yaml
+
+images:
+- name: webapp
+   newTag: v1.2.3
+
+replicas:
+- name: webapp-deployment
+   count: 3
+```
+
+## 与 kubectl 集成使用
+
+自 Kubernetes 1.14 版本起，Kustomize 已内置于 kubectl 中，提供了原生的配置管理能力。
+
+### 常用命令
+
+1. **直接应用配置**：
+
+    ```bash
+    kubectl apply -k overlays/dev
+    ```
+
+2. **预览生成的清单**：
+
+    ```bash
+    kubectl kustomize overlays/prod
+    ```
+
+3. **查看配置差异**：
+
+    ```bash
+    kubectl diff -k overlays/prod
+    ```
+
+4. **删除应用的资源**：
+
+    ```bash
+    kubectl delete -k overlays/dev
+    ```
+
+### 高级功能
+
+**使用 Kustomize 进行配置验证**：
 
 ```bash
-kustomize build overlay/dev
+# 验证配置语法
+kubectl kustomize overlays/prod --enable-alpha-plugins
+
+# 结合其他工具进行验证
+kubectl kustomize overlays/prod | kubectl apply --dry-run=client -f -
 ```
 
-运行以上命令后，Kustomize 会合并基础配置和定制配置，生成包含所有修改的最终清单文件。
+**与 CI/CD 集成**：
 
-这是一个简单的 Kustomize 应用示例，它展示了如何使用 Kustomize 来管理应用程序的配置。通过分层的方式，我们可以对基础配置进行定制，并在不同的环境中使用相应的覆盖配置，从而实现应用程序的灵活配置管理。
+```bash
+# 在 CI/CD 流水线中使用
+kubectl kustomize overlays/prod > final-manifest.yaml
+kubectl apply -f final-manifest.yaml
+```
 
-## 结合 kubectl 命令使用
+## 最佳实践
 
-Kustomize 遍历 Kubernetes 清单以添加、删除或更新配置选项，而无需 fork。它既可以作为独立的二进制文件使用，也可以作为 `kubectl` 的原生功能使用。
+1. **目录结构规范**：采用清晰的目录结构，区分 base 和 overlays
+2. **版本控制**：将所有配置文件纳入版本控制系统
+3. **配置验证**：在部署前验证生成的配置文件
+4. **文档维护**：为复杂的配置定制添加说明文档
+5. **安全考虑**：避免在配置文件中硬编码敏感信息
 
-Kustomize 与 kubectl 命令结合使用，可以将生成的 Kubernetes 清单文件部署到 Kubernetes 集群中。以下是使用 kubectl 命令与 Kustomize 一起使用的一些常见示例：
-
-1. 生成和应用清单文件：
-   使用 Kustomize 生成最终的 Kubernetes 清单文件，并直接通过 kubectl 命令将其应用到集群中。可以使用以下命令：
-
-   ```bash
-   kubectl apply -k <kustomization-directory>
-   ```
-
-   `<kustomization-directory>`是包含 kustomization.yaml 文件的目录路径，该文件描述了使用 Kustomize 生成清单文件的配置。
-
-2. 生成清单文件并输出到标准输出：
-   如果你只想生成 Kubernetes 清单文件而不直接应用它们，你可以使用以下命令：
-
-   ```bash
-   kubectl kustomize <kustomization-directory>
-   ```
-
-   这将在标准输出中生成最终的 Kubernetes 清单文件，你可以将其重定向到文件或与其他工具一起使用。
-
-3. 查看将要应用的资源变化：
-   使用 Kustomize 生成的清单文件之前，你可以通过以下命令预览将要应用的资源变化：
-
-   ```bash
-   kubectl diff -k <kustomization-directory>
-   ```
-
-   这将显示将要创建、更新或删除的资源变化列表，帮助你了解将应用的更改。
-
-4. 删除已应用的资源：
-   如果你已经使用 Kustomize 部署了应用程序，并且想要将其从集群中删除，你可以使用以下命令：
-
-   ```bash
-   kubectl delete -k <kustomization-directory>
-   ```
-
-   这将根据生成的清单文件中定义的资源进行删除操作。
-
-这些是使用 kubectl 命令与 Kustomize 一起使用的一些示例。通过结合使用它们，你可以方便地使用 Kustomize 生成和管理 Kubernetes 清单文件，并使用 kubectl 命令与集群进行交互。
-
-关于将 kustomize 与 kubectl 结合使用的详细说明请见 [Kubernetes 文档](https://kubernetes.io/zh-cn/docs/tasks/manage-kubernetes-objects/kustomization/)。
+通过 Kustomize，你可以实现 Kubernetes 配置的标准化管理，提高配置的可维护性和部署的一致性。更多详细信息请参考 [Kubernetes 官方文档](https://kubernetes.io/zh-cn/docs/tasks/manage-kubernetes-objects/kustomization/)。

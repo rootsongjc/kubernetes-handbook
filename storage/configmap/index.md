@@ -3,6 +3,7 @@ weight: 56
 title: ConfigMap
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: ConfigMap 是 Kubernetes 用于存储配置数据的 API 资源，支持将配置信息与容器镜像解耦。本文详细介绍 ConfigMap 的概念、创建方法以及在 Pod 中的使用方式。
 keywords:
 - configmap
 - pod
@@ -16,363 +17,327 @@ keywords:
 - 配置文件
 ---
 
-
-其实 ConfigMap 功能在 Kubernetes1.2 版本的时候就有了，许多应用程序会从配置文件、命令行参数或环境变量中读取配置信息。这些配置信息需要与 docker image 解耦，你总不能每修改一个配置就重做一个 image 吧？ConfigMap API 给我们提供了向容器中注入配置信息的机制，ConfigMap 可以被用来保存单个属性，也可以用来保存整个配置文件或者 JSON 二进制大对象。
+ConfigMap 是 Kubernetes 提供的配置管理机制，用于将配置信息与容器镜像解耦。应用程序可以从配置文件、命令行参数或环境变量中读取配置信息，而无需在每次配置修改时重新构建镜像。ConfigMap API 提供了向容器注入配置信息的能力，既可以保存单个属性，也可以保存完整的配置文件或 JSON 数据。
 
 ## ConfigMap 概览
 
-**ConfigMap API** 资源用来保存 **key-value pair** 配置数据，这个数据可以在 **pods** 里使用，或者被用来为像 **controller** 一样的系统组件存储配置数据。虽然 ConfigMap 跟 Secrets 类似，但是 ConfigMap 更方便的处理不含敏感信息的字符串。注意：ConfigMaps 不是属性配置文件的替代品。ConfigMaps 只是作为多个 properties 文件的引用。你可以把它理解为 Linux 系统中的 `/etc` 目录，专门用来存储配置文件的目录。下面举个例子，使用 ConfigMap 配置来创建 Kubernetes Volumes，ConfigMap 中的每个 data 项都会成为一个新文件。
+**ConfigMap** 是 Kubernetes 的 API 资源，用于存储**键值对**配置数据。这些数据可以在 **Pod** 中使用，或者为系统组件存储配置信息。
+
+### 主要特点
+
+- **非敏感数据**：ConfigMap 专门处理不包含敏感信息的配置数据（敏感数据请使用 Secret）
+- **配置解耦**：将配置与应用程序代码分离，便于管理和更新
+- **多种用途**：可用作环境变量、命令行参数或配置文件
+
+### 基本结构
 
 ```yaml
-kind: ConfigMap
 apiVersion: v1
+kind: ConfigMap
 metadata:
-  creationTimestamp: 2016-02-18T19:14:38Z
   name: example-config
   namespace: default
 data:
-  example.property.1: hello
-  example.property.2: world
-  example.property.file: |-
-    property.1=value-1
-    property.2=value-2
-    property.3=value-3
+  database.host: "mysql.example.com"
+  database.port: "3306"
+  app.properties: |
+    log.level=INFO
+    cache.size=100
+    timeout=30s
 ```
 
-`data` 一栏包括了配置数据，ConfigMap 可以被用来保存单个属性，也可以用来保存一个配置文件。配置数据可以通过很多种方式在 Pods 里被使用。ConfigMaps 可以被用来：
+### 使用场景
 
-1. 设置环境变量的值
-2. 在容器里设置命令行参数
-3. 在数据卷里面创建 config 文件
+ConfigMap 可以用于：
 
-用户和系统组件两者都可以在 ConfigMap 里面存储配置数据。
+1. **环境变量**：设置容器的环境变量值
+2. **命令行参数**：为容器提供启动参数
+3. **配置文件**：在数据卷中创建配置文件
+4. **应用配置**：存储应用程序的配置信息
 
-其实不用看下面的文章，直接从 `kubectl create configmap -h` 的帮助信息中就可以对 ConfigMap 究竟如何创建略知一二了。
+## 创建 ConfigMap
 
-```
-Examples:
-  # Create a new configmap named my-config based on folder bar
-  kubectl create configmap my-config --from-file=path/to/bar
-
-  # Create a new configmap named my-config with specified keys instead of file basenames on disk
-  kubectl create configmap my-config --from-file=key1=/path/to/bar/file1.txt --from-file=key2=/path/to/bar/file2.txt
-
-  # Create a new configmap named my-config with key1=config1 and key2=config2
-  kubectl create configmap my-config --from-literal=key1=config1 --from-literal=key2=config2
-```
-
-## 创建 ConfigMaps
-
-可以使用该命令，用给定值、文件或目录来创建 ConfigMap。
-
-```
-kubectl create configmap
-```
+Kubernetes 提供了多种创建 ConfigMap 的方法，可以使用 `kubectl create configmap` 命令。
 
 ### 使用目录创建
 
-比如我们已经有了一些配置文件，其中包含了我们想要设置的 ConfigMap 的值：
+当你有多个配置文件时，可以通过目录批量创建：
 
 ```bash
-$ ls docs/user-guide/configmap/kubectl/
-game.properties
-ui.properties
+# 假设有以下配置文件
+$ ls config/
+database.properties
+logging.properties
 
-$ cat docs/user-guide/configmap/kubectl/game.properties
-enemies=aliens
-lives=3
-enemies.cheat=true
-enemies.cheat.level=noGoodRotten
-secret.code.passphrase=UUDDLRLRBABAS
-secret.code.allowed=true
-secret.code.lives=30
+$ cat config/database.properties
+host=mysql.example.com
+port=3306
+database=myapp
 
-$ cat docs/user-guide/configmap/kubectl/ui.properties
-color.good=purple
-color.bad=yellow
-allow.textmode=true
-how.nice.to.look=fairlyNice
+$ cat config/logging.properties
+level=INFO
+format=json
+output=stdout
 ```
 
-使用下面的命令可以创建一个包含目录中所有文件的 ConfigMap。
+创建 ConfigMap：
 
 ```bash
-kubectl create configmap game-config --from-file=docs/user-guide/configmap/kubectl
+kubectl create configmap app-config --from-file=config/
 ```
 
-`—from-file` 指定在目录下的所有文件都会被用在 ConfigMap 里面创建一个键值对，键的名字就是文件名，值就是文件的内容。
+查看创建的 ConfigMap：
 
-让我们来看一下这个命令创建的 ConfigMap：
-
-```yaml
-$ kubectl describe configmaps game-config
-Name:           game-config
-Namespace:      default
-Labels:         <none>
-Annotations:    <none>
+```bash
+$ kubectl describe configmap app-config
+Name:         app-config
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
 
 Data
 ====
-game.properties:        158 bytes
-ui.properties:          83 bytes
+database.properties:    45 bytes
+logging.properties:     42 bytes
 ```
 
-我们可以看到那两个 key 是从 kubectl 指定的目录中的文件名。这些 key 的内容可能会很大，所以在 kubectl describe 的输出中，只能够看到键的名字和他们的大小。如果想要看到键的值的话，可以使用 `kubectl get`：
+### 使用单个文件创建
+
+也可以从单个文件创建 ConfigMap：
 
 ```bash
-kubectl get configmaps game-config -o yaml
+# 从单个文件创建
+kubectl create configmap database-config --from-file=config/database.properties
+
+# 指定自定义键名
+kubectl create configmap database-config --from-file=db-config=config/database.properties
 ```
-
-我们以 `yaml` 格式输出配置。
-
-```yaml
-apiVersion: v1
-data:
-  game.properties: |
-    enemies=aliens
-    lives=3
-    enemies.cheat=true
-    enemies.cheat.level=noGoodRotten
-    secret.code.passphrase=UUDDLRLRBABAS
-    secret.code.allowed=true
-    secret.code.lives=30
-  ui.properties: |
-    color.good=purple
-    color.bad=yellow
-    allow.textmode=true
-    how.nice.to.look=fairlyNice
-kind: ConfigMap
-metadata:
-  creationTimestamp: 2016-02-18T18:34:05Z
-  name: game-config
-  namespace: default
-  resourceVersion: "407"
-  selfLink: /api/v1/namespaces/default/configmaps/game-config
-  uid: 30944725-d66e-11e5-8cd0-68f728db1985
-```
-
-### 使用文件创建
-
-刚才**使用目录创建**的时候我们 `—from-file` 指定的是一个目录，只要指定为一个文件就可以从单个文件中创建 ConfigMap。
-
-```bash
-$ kubectl create configmap game-config-2 --from-file=docs/user-guide/configmap/kubectl/game.properties 
-
-$ kubectl get configmaps game-config-2 -o yaml
-apiVersion: v1
-data:
-  game-special-key: |
-    enemies=aliens
-    lives=3
-    enemies.cheat=true
-    enemies.cheat.level=noGoodRotten
-    secret.code.passphrase=UUDDLRLRBABAS
-    secret.code.allowed=true
-    secret.code.lives=30
-kind: ConfigMap
-metadata:
-  creationTimestamp: 2016-02-18T18:54:22Z
-  name: game-config-3
-  namespace: default
-  resourceVersion: "530"
-  selfLink: /api/v1/namespaces/default/configmaps/game-config-3
-  uid: 05f8da22-d671-11e5-8cd0-68f728db1985
-```
-
-`—from-file` 这个参数可以使用多次，你可以使用两次分别指定上个实例中的那两个配置文件，效果就跟指定整个目录是一样的。
 
 ### 使用字面值创建
 
-使用文字值创建，利用 `—from-literal` 参数传递配置信息，该参数可以使用多次，格式如下；
+直接在命令行中指定键值对：
 
 ```bash
-$ kubectl create configmap special-config --from-literal=special.how=very --from-literal=special.type=charm
-
-$ kubectl get configmaps special-config -o yaml
-apiVersion: v1
-data:
-  special.how: very
-  special.type: charm
-kind: ConfigMap
-metadata:
-  creationTimestamp: 2016-02-18T19:14:38Z
-  name: special-config
-  namespace: default
-  resourceVersion: "651"
-  selfLink: /api/v1/namespaces/default/configmaps/special-config
-  uid: dadce046-d673-11e5-8cd0-68f728db1985
+kubectl create configmap app-settings \
+  --from-literal=app.name=myapp \
+  --from-literal=app.version=1.0.0 \
+  --from-literal=debug.enabled=true
 ```
 
-## Pod 中使用 ConfigMap
+查看结果：
 
-**使用 ConfigMap 来替代环境变量**
+```yaml
+$ kubectl get configmap app-settings -o yaml
+apiVersion: v1
+data:
+  app.name: myapp
+  app.version: 1.0.0
+  debug.enabled: "true"
+kind: ConfigMap
+metadata:
+  name: app-settings
+  namespace: default
+```
 
-ConfigMap 可以被用来填入环境变量。看下下面的 ConfigMap。
+### 使用 YAML 文件创建
+
+也可以直接编写 YAML 文件创建：
 
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: special-config
-  namespace: default
+  name: app-config
 data:
-  special.how: very
-  special.type: charm
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: env-config
-  namespace: default
-data:
-  log_level: INFO
+  database.url: "mysql://mysql.example.com:3306/myapp"
+  redis.url: "redis://redis.example.com:6379"
+  config.yaml: |
+    server:
+      port: 8080
+      host: 0.0.0.0
+    logging:
+      level: INFO
+      format: json
 ```
 
-我们可以在 Pod 中这样使用 ConfigMap：
+```bash
+kubectl apply -f configmap.yaml
+```
+
+## 在 Pod 中使用 ConfigMap
+
+### 作为环境变量使用
+
+#### 引用单个键值
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dapi-test-pod
+  name: app-pod
 spec:
   containers:
-    - name: test-container
-      image: gcr.io/google_containers/busybox
-      command: [ "/bin/sh", "-c", "env" ]
-      env:
-        - name: SPECIAL_LEVEL_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: special.how
-        - name: SPECIAL_TYPE_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: special.type
-      envFrom:
-        - configMapRef:
-            name: env-config
-  restartPolicy: Never
+  - name: app-container
+    image: nginx:1.20
+    env:
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: database.host
+    - name: DATABASE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: database.port
 ```
 
-这个 Pod 运行后会输出如下几行：
-
-```
-SPECIAL_LEVEL_KEY=very
-SPECIAL_TYPE_KEY=charm
-log_level=INFO
-```
-
-**用 ConfigMap 设置命令行参数**
-
-ConfigMap 也可以被使用来设置容器中的命令或者参数值。它使用的是 Kubernetes 的 $(VAR_NAME) 替换语法。我们看下下面这个 ConfigMap。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: special-config
-  namespace: default
-data:
-  special.how: very
-  special.type: charm
-```
-
-为了将 ConfigMap 中的值注入到命令行的参数里面，我们还要像前面那个例子一样使用环境变量替换语法 `${VAR_NAME)`。（其实这个东西就是给 Docker 容器设置环境变量，以前我创建镜像的时候经常这么玩，通过 docker run 的时候指定 - e 参数修改镜像里的环境变量，然后 docker 的 CMD 命令再利用该 $(VAR_NAME) 通过 sed 来修改配置文件或者作为命令行启动参数。）
+#### 引用整个 ConfigMap
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dapi-test-pod
+  name: app-pod
 spec:
   containers:
-    - name: test-container
-      image: gcr.io/google_containers/busybox
-      command: [ "/bin/sh", "-c", "echo $(SPECIAL_LEVEL_KEY) $(SPECIAL_TYPE_KEY)" ]
-      env:
-        - name: SPECIAL_LEVEL_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: special.how
-        - name: SPECIAL_TYPE_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: special.type
-  restartPolicy: Never
+  - name: app-container
+    image: nginx:1.20
+    envFrom:
+    - configMapRef:
+        name: app-config
 ```
 
-运行这个 Pod 后会输出：
-
-```
-very charm
-```
-
-**通过数据卷插件使用 ConfigMap**
-
-ConfigMap 也可以在数据卷里面被使用。还是这个 ConfigMap。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: special-config
-  namespace: default
-data:
-  special.how: very
-  special.type: charm
-```
-
-在数据卷里面使用这个 ConfigMap，有不同的选项。最基本的就是将文件填入数据卷，在这个文件中，键就是文件名，键值就是文件内容：
+### 作为命令行参数使用
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dapi-test-pod
+  name: app-pod
 spec:
   containers:
-    - name: test-container
-      image: gcr.io/google_containers/busybox
-      command: [ "/bin/sh", "-c", "cat /etc/config/special.how" ]
-      volumeMounts:
-      - name: config-volume
-        mountPath: /etc/config
-  volumes:
+  - name: app-container
+    image: nginx:1.20
+    command: ["/bin/sh"]
+    args: ["-c", "echo 'Database: $(DATABASE_HOST):$(DATABASE_PORT)'"]
+    env:
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: database.host
+    - name: DATABASE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: database.port
+```
+
+### 作为数据卷使用
+
+#### 挂载所有键值
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+spec:
+  containers:
+  - name: app-container
+    image: nginx:1.20
+    volumeMounts:
     - name: config-volume
-      configMap:
-        name: special-config
-  restartPolicy: Never
+      mountPath: /etc/config
+  volumes:
+  - name: config-volume
+    configMap:
+      name: app-config
 ```
 
-运行这个 Pod 的输出是 `very`。
+此时，ConfigMap 中的每个键都会成为 `/etc/config/` 目录下的一个文件。
 
-我们也可以在 ConfigMap 值被映射的数据卷里控制路径。
+#### 挂载特定键值
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: dapi-test-pod
+  name: app-pod
 spec:
   containers:
-    - name: test-container
-      image: gcr.io/google_containers/busybox
-      command: [ "/bin/sh","-c","cat /etc/config/path/to/special-key" ]
-      volumeMounts:
-      - name: config-volume
-        mountPath: /etc/config
-  volumes:
+  - name: app-container
+    image: nginx:1.20
+    volumeMounts:
     - name: config-volume
-      configMap:
-        name: special-config
-        items:
-        - key: special.how
-          path: path/to/special-key
-  restartPolicy: Never
+      mountPath: /etc/config
+  volumes:
+  - name: config-volume
+    configMap:
+      name: app-config
+      items:
+      - key: database.host
+        path: db/host
+      - key: app.properties
+        path: app/config.properties
 ```
 
-运行这个 Pod 后的结果是 `very`。
+#### 设置文件权限
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+spec:
+  containers:
+  - name: app-container
+    image: nginx:1.20
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+  volumes:
+  - name: config-volume
+    configMap:
+      name: app-config
+      defaultMode: 0644
+      items:
+      - key: app.properties
+        path: app.properties
+        mode: 0600
+```
+
+## 最佳实践
+
+### 1. 命名规范
+
+- 使用描述性的名称
+- 遵循 DNS 子域名规范
+- 建议使用小写字母和连字符
+
+### 2. 数据组织
+
+- 按功能或服务分组配置
+- 避免在单个 ConfigMap 中存储过多数据
+- 考虑使用多个小的 ConfigMap 而不是一个大的
+
+### 3. 版本管理
+
+- 通过标签管理不同版本的配置
+- 使用 Deployment 的滚动更新机制
+- 考虑使用 Helm 等工具管理配置
+
+### 4. 安全考虑
+
+- 不要在 ConfigMap 中存储敏感信息
+- 使用 Secret 存储密码、密钥等敏感数据
+- 定期审查配置内容
+
+### 5. 更新策略
+
+- ConfigMap 更新后，Pod 需要重启才能生效（除非使用 subPath）
+- 考虑使用 Deployment 的配置更新策略
+- 监控配置变更对应用的影响
+
+通过合理使用 ConfigMap，可以有效地管理 Kubernetes 应用的配置信息，实现配置与代码的解耦，提高应用的可维护性和可移植性。

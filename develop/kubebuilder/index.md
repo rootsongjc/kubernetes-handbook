@@ -1,7 +1,7 @@
 ---
-weight: 110
+weight: 111
 title: Kubebuilder
-date: '2022-05-21T00:00:00+08:00'
+date: '2024-01-15T00:00:00+08:00'
 type: book
 keywords:
 - api
@@ -11,586 +11,458 @@ keywords:
 - kubebuilder
 - kubernetes
 - operator
-- 使用
-- 修改
-- 创建
+- 开发
+- 框架
+- 自定义资源
 ---
 
+Kubebuilder 是用于构建 Kubernetes API 的 SDK，基于 CRD（Custom Resource Definition）来构建 API、Controller 和 Admission Webhook，是 Kubernetes 官方推荐的 Operator 开发框架。
 
-Kubebuilder 是一个基于 CRD 来构建 Kubernetes API 的框架，可以使用 CRD 来构建 API、Controller 和 Admission Webhook。
+## 概述
 
-## 动机
+### 什么是 Kubebuilder
 
-目前扩展 Kubernetes 的 API 的方式有创建 CRD、使用 Operator SDK 等方式，都需要写很多的样本文件（boilerplate），使用起来十分麻烦。为了能够更方便构建 Kubernetes API 和工具，就需要一款能够事半功倍的工具，与其他 Kubernetes API 扩展方案相比，kubebuilder 更加简单易用，并获得了社区的广泛支持。
+Kubebuilder 是一个使用 CRD 构建 Kubernetes API 的框架，可以帮助开发者：
+
+- 快速创建和管理 CRD
+- 生成 Controller 代码框架
+- 提供测试和部署工具
+- 集成 Webhook 和 RBAC
+
+### 核心优势
+
+与其他 Kubernetes API 扩展方案相比，Kubebuilder 具有以下优势：
+
+- **简单易用**：提供命令行工具快速生成代码框架
+- **社区支持**：Kubernetes 官方维护，社区活跃
+- **最佳实践**：内置 Kubernetes 开发最佳实践
+- **完整工具链**：从开发到部署的完整解决方案
+
+## 设计原则
+
+Kubebuilder 遵循以下设计哲学：
+
+1. **库优于代码生成** - 优先使用 Go 接口和库
+2. **代码生成优于样板代码** - 必要时使用代码生成而非重复样板
+3. **一次性脚手架** - 避免 fork 和修改样板代码
+4. **清晰的抽象** - 提供基于 godoc 的清晰库抽象
 
 ## 工作流程
 
-Kubebuilder 的工作流程如下：
+典型的 Kubebuilder 开发流程：
 
-1. 创建一个新的工程目录
-2. 创建一个或多个资源 API CRD 然后将字段添加到资源
-3. 在控制器中实现协调循环（reconcile loop），watch 额外的资源
-4. 在集群中运行测试（自动安装 CRD 并自动启动控制器）
-5. 更新引导集成测试测试新字段和业务逻辑
-6. 使用用户提供的 Dockerfile 构建和发布容器
+```mermaid "Kubebuilder 开发流程"
+flowchart LR
+  A[初始化项目] --> B[创建 API 和 CRD]
+  B --> C[实现 Controller 逻辑]
+  C --> D[本地测试]
+  D --> E[构建镜像]
+  E --> F[部署到集群]
+  F --> G[集成测试]
+```
 
-## 设计哲学
+1. **项目初始化** - 创建项目结构和配置
+2. **API 定义** - 创建 CRD 和资源类型
+3. **Controller 开发** - 实现业务逻辑和协调循环
+4. **本地测试** - 在本地环境测试功能
+5. **镜像构建** - 构建 Operator 容器镜像
+6. **集群部署** - 部署到 Kubernetes 集群
+7. **集成测试** - 验证完整功能
 
-Kubebuilder 提供基于简洁的精心设计的示例 godoc 来提供整洁的库抽象。
+## 环境准备
 
-- 能使用 go 接口和库，就不使用代码生成
-- 能使用代码生成，就不用使用多于一次的存根初始化
-- 能使用一次存根，就不 fork 和修改 boilerplate
-- 绝不 fork 和修改 boilerplate
+### 系统要求
 
-## 示例
+本教程使用的环境配置：
 
-下面是一个使用 kubebuilder 创建 Kubernetes Operator 的示例。
+| 组件 | 版本 | 说明 |
+|------|------|------|
+| Kubernetes | v1.28+ | 推荐使用 kind 或 minikube |
+| Go | 1.21+ | 支持 Go modules |
+| Kubebuilder | v3.14+ | 最新稳定版本 |
+| Docker | 20.10+ | 容器运行时 |
+| kubectl | v1.28+ | Kubernetes 命令行工具 |
 
-## 准备
+### 安装 Kubebuilder
 
-本文中的示例运行环境及相关软件版本如下：
-
-- Kubernetes MiniKube v1.9.2
-- Kubernetes v1.18.0
-- Go 1.14
-- Kubebuilder 2.3.1
-- kustomize 3.6.1
-- Docker 19.03.8
-
-使用 Minikube 安装 Kubernetes 集群，Kubernetes 安装好后，检查集群是否可用。
-
-### Minikube 的 DNS 解析问题
-
-如果遇到 Kubernetes 集群无法拉取镜像，DNS 解析出现问题，解决方式见 [DNS lookup not working when starting minikube with --dns-domain #1674](https://github.com/kubernetes/minikube/issues/1674)。
-
-使用 `minikube ssh` 进入 minikube 主机，修改 `/etc/systemd/resolved.conf` 文件，将其中的 DNS 配置字段修改为 `DNS=8.8.8.8`，然后执行 `sudo systemctl restart systemd-resolved` 即可更改 DNS，切勿直接修改 `/etc/resolv.conf` 文件。
-
-修正 Minikube 的 DNS 配置，请执行下面的命令。
+**Linux/macOS**
 
 ```bash
+# 下载并安装最新版本
+curl -L -o kubebuilder "https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)"
+chmod +x kubebuilder && sudo mv kubebuilder /usr/local/bin/
+```
+
+**验证安装**
+
+```bash
+kubebuilder version
+```
+
+### 准备 Kubernetes 集群
+
+**使用 kind（推荐）**
+
+```bash
+# 安装 kind
+go install sigs.k8s.io/kind@latest
+
+# 创建集群
+kind create cluster --name kubebuilder-demo
+```
+
+**使用 minikube**
+
+```bash
+# 启动 minikube
+minikube start --kubernetes-version=v1.28.0
+
+# 解决 DNS 问题（如需要）
 minikube ssh
 sudo sed -i 's/#DNS=/DNS=8.8.8.8/g' /etc/systemd/resolved.conf
 sudo systemctl restart systemd-resolved
+exit
 ```
 
-## 名词解释
+## 核心概念
 
-在阅读下面的文章前，需要先明确以下两个名词的含义。
+在开始实践前，了解以下核心概念：
 
-- CRD：自定义资源定义，Kubernetes 中的资源类型。
-- CR：Custom Resource，对使用 CRD 创建出来的自定义资源的统称。
+- **CRD（Custom Resource Definition）**：自定义资源定义，扩展 Kubernetes API 的机制
+- **CR（Custom Resource）**：使用 CRD 创建的自定义资源实例
+- **Controller**：监听资源变化并执行协调逻辑的控制器
+- **Reconcile**：协调函数，Controller 的核心业务逻辑
+- **Manager**：管理多个 Controller 的组件
 
-## 安装 kubebuilder
+## 快速开始
 
-到 kubebuilder 的 [GitHub release 页面](https://github.com/kubernetes-sigs/kubebuilder/releases)上下载与你操作系统对应的 kubebuilder 安装包。
-
-**MacOS**
-
-对于 Mac 系统，将下载好的安装包解压后将其移动到 `/usr/local/kubebuilder` 目录下，并将 `/usr/local/kubebuilder/bin` 添加到你的 `$PATH` 路径下。
-
-## 创建项目
-
-我们首先将使用自动配置创建一个项目，该项目在创建 CR 时不会触发任何资源生成。
-
-### 初始化和创建 API
-
-创建的项目路径位于 `$GOPATH/jimmysong.io/kubebuilder-example`。下文中的操作没有明确说明的话都是在该项目路径下运行。
-
-在项目路径下使用下面的命令初始化项目。
+### 1. 创建项目
 
 ```bash
-kubebuilder init --domain jimmysong.io
+# 创建项目目录
+mkdir guestbook-operator && cd guestbook-operator
+
+# 初始化项目
+kubebuilder init --domain example.com --repo github.com/example/guestbook-operator
 ```
 
-在项目根目录下执行下面的命令创建 API。
+### 2. 创建 API
 
 ```bash
-$ kubebuilder create api --group webapp --version v1 --kind Guestbook
-Create Resource under pkg/apis [y/n]?
-y
-Create Controller under pkg/controller [y/n]?
-y
-Writing scaffold for you to edit...
-api/v1/guestbook_types.go
-controllers/guestbook_controller.go
-Running make:
-$ make
-/Users/jimmysong/Workspace/go/bin/controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
-go fmt ./...
-go vet ./...
-go: finding github.com/onsi/ginkgo v1.11.0
-go: finding github.com/onsi/gomega v1.8.1
-go: finding github.com/hpcloud/tail v1.0.0
-go: finding gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
-go build -o bin/manager main.go
+# 创建 API 和 Controller
+kubebuilder create api --group webapp --version v1 --kind Guestbook
+# 选择 y 创建 resource 和 controller
 ```
 
-API 创建完成后，在项目根目录下查看目录结构。
+项目结构：
 
-```bash
+```
 .
-├── Dockerfile # 用于构建 Operator 镜像
-├── Makefile # 构建时使用
-├── PROJECT # 项目配置
-├── api
-│   └── v1
-│       ├── groupversion_info.go
-│       ├── guestbook_types.go
-│       └── zz_generated.deepcopy.go
-├── bin
-│   └── manager
-├── config
-│   ├── certmanager
-│   │   ├── certificate.yaml
-│   │   ├── kustomization.yaml
-│   │   └── kustomizeconfig.yaml
-│   ├── crd # 新增 CRD 定义
-│   │   ├── kustomization.yaml
-│   │   ├── kustomizeconfig.yaml
-│   │   └── patches
-│   ├── default
-│   │   ├── kustomization.yaml
-│   │   ├── manager_auth_proxy_patch.yaml
-│   │   ├── manager_webhook_patch.yaml
-│   │   └── webhookcainjection_patch.yaml
-│   ├── manager
-│   │   ├── kustomization.yaml
-│   │   └── manager.yaml
-│   ├── prometheus
-│   │   ├── kustomization.yaml
-│   │   └── monitor.yaml
-│   ├── rbac
-│   │   ├── auth_proxy_client_clusterrole.yaml
-│   │   ├── auth_proxy_role.yaml
-│   │   ├── auth_proxy_role_binding.yaml
-│   │   ├── auth_proxy_service.yaml
-│   │   ├── guestbook_editor_role.yaml
-│   │   ├── guestbook_viewer_role.yaml
-│   │   ├── kustomization.yaml
-│   │   ├── leader_election_role.yaml
-│   │   ├── leader_election_role_binding.yaml
-│   │   └── role_binding.yaml
-│   ├── samples
-│   │   └── webapp_v1_guestbook.yaml # CRD 示例
-│   └── webhook
-│       ├── kustomization.yaml
-│       ├── kustomizeconfig.yaml
-│       └── service.yaml
-├── controllers # 新增 controller
-│   ├── guestbook_controller.go
-│   └── suite_test.go
-├── go.mod
-├── go.sum
-├── hack
-│   └── boilerplate.go.txt
-└── main.go # 新增处理逻辑
-
-15 directories, 40 files
+├── Dockerfile
+├── Makefile
+├── PROJECT
+├── api/
+│   └── v1/
+│       ├── guestbook_types.go      # CRD 定义
+│       └── zz_generated.deepcopy.go
+├── bin/
+├── config/                         # Kubernetes 配置文件
+│   ├── crd/
+│   ├── default/
+│   ├── manager/
+│   ├── rbac/
+│   └── samples/
+├── internal/controller/            # Controller 实现
+│   └── guestbook_controller.go
+├── cmd/
+│   └── main.go
+└── test/
 ```
 
-以上就是自动初始化出来的文件。
+### 3. 定义 CRD 结构
 
-### 安装 CRD
-
-执行下面的命令安装 CRD。
-
-```bash
-$ make install
-/Users/jimmysong/Workspace/go/bin/controller-gen "crd:trivialVersions=true" rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=config/crd/bases
-kustomize build config/crd | kubectl apply -f -
-customresourcedefinition.apiextensions.k8s.io/guestbooks.webapp.jimmysong.io created
-$ kubectl get crd |grep jimmysong.io
-guestbooks.webapp.jimmysong.io           2020-06-06T21:58:17Z
-```
-
-### 部署 controller
-
-在开始部署 controller 之前，我们需要先检查 kubebuilder 自动生成的 YAML 文件。
-
-**修改使用 gcr.io 镜像仓库的镜像地址**
-
-对于中国大陆用户，可能无法访问 Google 镜像仓库 gcr.io，因此需要修改 `config/default/manager_auth_proxy_patch.yaml`  文件中的镜像地址，将其中 `gcr.io/kube-rbac-proxy:v0.5.0` 修改为 `jimmysong/kubebuilder-kube-rbac-proxy:v0.5.0`。
-
-有两种方式运行 controller：
-
-- 本地运行，用于调试
-- 部署到 Kubernetes 上运行，作为生产使用
-
-**本地运行 controller**
-
-要想在本地运行 controller，只需要执行下面的命令。
-
-```bash
-make run
-```
-
-你将看到 controller 启动和运行时输出。
-
-**将 controller 部署到 Kubernetes**
-
-执行下面的命令部署 controller 到 Kubernetes 上，这一步将会在本地构建 controller 的镜像，并推送到 DockerHub 上，然后在 Kubernetes 上部署 Deployment 资源。
-
-```bash
-make docker-build docker-push IMG=jimmysong/kubebuilder-example:latest
-make deploy IMG=jimmysong/kubebuilder-example:latest
-```
-
-在初始化项目时，kubebuilder 会自动根据项目名称创建一个 Namespace，如本文中的 `kubebuilder-example-system`，查看 Deployment 对象和 Pod 资源。
-
-```bash
-$ kubectl get deployment -n kubebuilder-example-system
-NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
-kubebuilder-example-controller-manager   1/1     1            1           3h26m
-$ kubectl get pod -n kubebuilder-example-system
-NAME                                                      READY   STATUS    RESTARTS   AGE
-kubebuilder-example-controller-manager-77b4c685f9-2npz8   2/2     Running   0          3h16m
-```
-
-### 创建 CR
-
-Kubebuilder 在初始化项目的时候已生成了示例 CR，执行下面的命令部署 CR。
-
-```bash
-kubectl apply -f config/samples/webapp_v1_guestbook.yaml
-```
-
-执行下面的命令查看新创建的 CR。
-
-```bash
-kubectl get guestbooks.webapp.jimmysong.io guestbook-sample -o yaml
-```
-
-你将看到类似如下的输出。
-
-```yaml
-apiVersion: webapp.jimmysong.io/v1
-kind: Guestbook
-metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"webapp.jimmysong.io/v1","kind":"Guestbook","metadata":{"annotations":{},"name":"guestbook-sample","namespace":"kubebuilder-example-system"},"spec":{"foo":"bar"}}
-  creationTimestamp: "2020-06-07T01:04:48Z"
-  generation: 1
-  managedFields:
-  - apiVersion: webapp.jimmysong.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:kubectl.kubernetes.io/last-applied-configuration: {}
-      f:spec:
-        .: {}
-        f:foo: {}
-    manager: kubectl
-    operation: Update
-    time: "2020-06-07T01:04:48Z"
-  name: guestbook-sample
-  namespace: kubebuilder-example-system
-  resourceVersion: "1795834"
-  selfLink: /apis/webapp.jimmysong.io/v1/namespaces/kubebuilder-example-system/guestbooks/guestbook-sample
-  uid: 051a4266-7f5a-4c57-8180-64222d462bba
-spec:
-  foo: bar
-```
-
-至此一个基本的 Operator 框架已经创建完成，但这个 Operator 只是修改了 etcd 中的数据而已，实际上什么事情也没做，因为我们没有在 Operator 中的增加业务逻辑。
-
-## 增加业务逻辑
-
-下面我们将修改 CRD 的数据结构并在 controller 中增加一些日志输出。
-
-### 修改 CRD
-
-我们将修改上文中使用 kubebuilder 命令生成的默认 CRD 配置，在 CRD 中增加 `FirstName`、`LastName` 和 `Status` 字段。
-
-下面是修改后的 `api/v1/guestbook_types.go` 文件的内容，对应修改的地方已在代码中注释说明。
+编辑 `api/v1/guestbook_types.go`：
 
 ```go
-/*
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-package v1
-
-import (
- metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-)
-
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// GuestbookSpec defines the desired state of Guestbook
+// GuestbookSpec 定义期望状态
 type GuestbookSpec struct {
- // INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
- // Important: Run "make" to regenerate code after modifying this file
-
- // Foo is an example field of Guestbook. Edit Guestbook_types.go to remove/update
-  // 添加两个新的字段
- FirstName string `json:"firstname"`
- LastName  string `json:"lastname"`
-}
-
-// GuestbookStatus defines the observed state of Guestbook
-type GuestbookStatus struct {
- // INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
- // Important: Run "make" to regenerate code after modifying this file
- Status string `json:"Status"`
-}
-
-// +kubebuilder:object:root=true
-// 在这里增加 status 的说明
-// +kubebuilder:subresource:status
-
-// Guestbook is the Schema for the guestbooks API
-type Guestbook struct {
- metav1.TypeMeta   `json:",inline"`
- metav1.ObjectMeta `json:"metadata,omitempty"`
-
- Spec   GuestbookSpec   `json:"spec,omitempty"`
- Status GuestbookStatus `json:"status,omitempty"`
-}
-
-// +kubebuilder:object:root=true
-
-// GuestbookList contains a list of Guestbook
-type GuestbookList struct {
- metav1.TypeMeta `json:",inline"`
- metav1.ListMeta `json:"metadata,omitempty"`
- Items           []Guestbook `json:"items"`
-}
-
-func init() {
- SchemeBuilder.Register(&Guestbook{}, &GuestbookList{})
-}
-```
-
-上面的代码比原先使用 kubebuilder 生成的默认代码增加了以下内容：
-
-```go
- FirstName string `json:"firstname"`
- LastName  string `json:"lastname"`
- Status string `json:"Status"`
-// +kubebuilder:subresource:status
-```
-
-### 修改 Reconcile 函数
-
-Reconcile 函数是 Operator 的核心逻辑，Operator 的业务逻辑都位于 `controllers/guestbook_controller.go` 文件的 `func (r *GuestbookReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)` 函数中。
-
-```go
-// +kubebuilder:rbac:groups=webapp.jimmysong.io,resources=guestbooks,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=webapp.jimmysong.io,resources=guestbooks/status,verbs=get;update;patch
-
-func (r *GuestbookReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
- _ = context.Background()
- _ = r.Log.WithValues("guestbook", req.NamespacedName)
-
- // your logic here
- ctx := context.Background()
- _ = r.Log.WithValues("apiexamplea", req.NamespacedName)
-
-  // 获取当前的 CR，并打印
- obj := &webappv1.Guestbook{}
- if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
-  log.Println(err, "Unable to fetch object")
- } else {
-  log.Println("Geeting from Kubebuilder to", obj.Spec.FirstName, obj.Spec.LastName)
- }
+  // +kubebuilder:validation:Required
+  // +kubebuilder:validation:MinLength=1
+  Name string `json:"name"`
   
-  // 初始化 CR 的 Status 为 Running
- obj.Status.Status = "Running"
- if err := r.Status().Update(ctx, obj); err != nil {
-  log.Println(err, "unable to update status")
- }
+  // +kubebuilder:validation:Optional
+  Message string `json:"message,omitempty"`
+  
+  // +kubebuilder:validation:Minimum=1
+  // +kubebuilder:default=1
+  Replicas int32 `json:"replicas,omitempty"`
+}
 
- return ctrl.Result{}, nil
+// GuestbookStatus 定义观察到的状态
+type GuestbookStatus struct {
+  // +kubebuilder:validation:Optional
+  Phase string `json:"phase,omitempty"`
+  
+  // +kubebuilder:validation:Optional
+  ReadyReplicas int32 `json:"readyReplicas,omitempty"`
+  
+  // +kubebuilder:validation:Optional
+  Conditions []metav1.Condition `json:"conditions,omitempty"`
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
+// +kubebuilder:subresource:scale:specpath=.spec.replicas,statuspath=.status.readyReplicas
+// +kubebuilder:printcolumn:name="Phase",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Ready",type="integer",JSONPath=".status.readyReplicas"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+
+// Guestbook 是 Guestbook API 的 Schema
+type Guestbook struct {
+  metav1.TypeMeta   `json:",inline"`
+  metav1.ObjectMeta `json:"metadata,omitempty"`
+
+  Spec   GuestbookSpec   `json:"spec,omitempty"`
+  Status GuestbookStatus `json:"status,omitempty"`
 }
 ```
 
-这段代码的业务逻辑是当发现有 `guestbooks.webapp.jimmysong.io` 的 CR 变更时，在控制台中输出日志。
+### 4. 实现 Controller 逻辑
 
-### 运行测试
+编辑 `internal/controller/guestbook_controller.go`：
 
-修改好 Operator 的业务逻辑后，再测试一下新的逻辑是否可以正常运行。
+```go
+func (r *GuestbookReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+  log := log.FromContext(ctx)
 
-**部署 CRD**
+  // 获取 Guestbook 实例
+  var guestbook webappv1.Guestbook
+  if err := r.Get(ctx, req.NamespacedName, &guestbook); err != nil {
+    if apierrors.IsNotFound(err) {
+      log.Info("Guestbook resource not found, probably deleted")
+      return ctrl.Result{}, nil
+    }
+    log.Error(err, "Failed to get Guestbook")
+    return ctrl.Result{}, err
+  }
 
-跟上文的做法一样，执行下面的命令部署 CRD。
+  log.Info("Reconciling Guestbook", "name", guestbook.Name, "namespace", guestbook.Namespace)
+
+  // 更新状态
+  guestbook.Status.Phase = "Running"
+  guestbook.Status.ReadyReplicas = guestbook.Spec.Replicas
+
+  if err := r.Status().Update(ctx, &guestbook); err != nil {
+    log.Error(err, "Failed to update Guestbook status")
+    return ctrl.Result{}, err
+  }
+
+  return ctrl.Result{RequeueAfter: time.Minute * 5}, nil
+}
+
+// SetupWithManager 设置 Controller
+func (r *GuestbookReconciler) SetupWithManager(mgr ctrl.Manager) error {
+  return ctrl.NewControllerManagedBy(mgr).
+    For(&webappv1.Guestbook{}).
+    Complete(r)
+}
+```
+
+### 5. 测试和部署
+
+**安装 CRD**
 
 ```bash
 make install
 ```
 
-**运行 controller**
-
-跟上文的做法一样，执行下面的命令运行 controller。为了方便起见，我们将在本地运行 controller，当然你也可以将其部署到 Kubernetes 上运行。
+**本地运行 Controller**
 
 ```bash
 make run
 ```
 
-保持该窗口在前台运行。
+**创建测试资源**
 
-**部署 CR**
-
-修改 `config/samples/webapp_v1_guestbook.yaml` 文件中的配置。
+编辑 `config/samples/webapp_v1_guestbook.yaml`：
 
 ```yaml
-apiVersion: webapp.jimmysong.io/v1
+apiVersion: webapp.example.com/v1
 kind: Guestbook
 metadata:
   name: guestbook-sample
+  namespace: default
 spec:
-  # Add fields here
-  firstname: Jimmy
-  lastname: Song
+  name: "Hello Kubebuilder"
+  message: "Welcome to Kubebuilder!"
+  replicas: 3
 ```
 
-将其应用到 Kubernetes。
+应用资源：
 
 ```bash
 kubectl apply -f config/samples/webapp_v1_guestbook.yaml
 ```
 
-此时转到上文中运行 controller 的窗口，将在命令行前台中看到如下输出。
+**查看结果**
 
 ```bash
-go fmt ./...
-go vet ./...
-/Users/jimmysong/Workspace/go/bin/controller-gen "crd:trivialVersions=true" rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=config/crd/bases
-go run ./main.go
-2020-06-07T16:48:29.966+0800 INFO controller-runtime.metrics metrics server is starting to listen {"addr": ":8080"}
-2020-06-07T16:48:29.967+0800 INFO setup starting manager
-2020-06-07T16:48:29.967+0800 INFO controller-runtime.manager starting metrics server {"path": "/metrics"}
-2020-06-07T16:48:29.967+0800 INFO controller-runtime.controller Starting EventSource {"controller": "guestbook", "source": "kind source: /, Kind="}
-2020-06-07T16:48:30.068+0800 INFO controller-runtime.controller Starting Controller {"controller": "guestbook"}
-2020-06-07T16:48:30.068+0800 INFO controller-runtime.controller Starting workers {"controller": "guestbook", "worker count": 1}
-2020/06/07 16:48:30 Geeting from Kubebuilder to Jimmy Song
-2020-06-07T16:48:30.080+0800 DEBUG controller-runtime.controller Successfully Reconciled {"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
+# 查看 CRD
+kubectl get crd
+
+# 查看 Guestbook 资源
+kubectl get guestbooks
+
+# 查看详细信息
+kubectl describe guestbook guestbook-sample
 ```
 
-从上面的日志中，可以看到这条输出。
+**部署到集群**
 
 ```bash
-2020/06/07 16:48:30 Geeting from Kubebuilder to Jimmy Song
+# 构建并推送镜像
+make docker-build docker-push IMG=your-registry/guestbook-operator:latest
+
+# 部署到集群
+make deploy IMG=your-registry/guestbook-operator:latest
 ```
 
-这正是在 `Reconcile` 函数中的输出。
+## 高级特性
 
-**获取当前的 CR**
+### Webhook
 
-使用下面的命令获取当前的 CR。
+添加验证和变更 Webhook：
 
 ```bash
-# kubectl get guestbooks.webapp.jimmysong.io guestbook-sample -o yaml
+kubebuilder create webhook --group webapp --version v1 --kind Guestbook --defaulting --programmatic-validation
 ```
 
-将看到如下输出。
-
-```yaml
-apiVersion: webapp.jimmysong.io/v1
-kind: Guestbook
-metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"webapp.jimmysong.io/v1","kind":"Guestbook","metadata":{"annotations":{},"name":"guestbook-sample","namespace":"kubebuilder-example-system"},"spec":{"firstname":"Jimmy","lastname":"Song"}}
-  creationTimestamp: "2020-06-07T02:54:46Z"
-  generation: 1
-  managedFields:
-  - apiVersion: webapp.jimmysong.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:kubectl.kubernetes.io/last-applied-configuration: {}
-      f:spec:
-        .: {}
-        f:firstname: {}
-        f:lastname: {}
-    manager: kubectl
-    operation: Update
-    time: "2020-06-07T02:54:46Z"
-  - apiVersion: webapp.jimmysong.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:status:
-        .: {}
-        f:Status: {}
-    manager: main
-    operation: Update
-    time: "2020-06-07T02:56:38Z"
-  name: guestbook-sample
-  namespace: kubebuilder-example-system
-  resourceVersion: "1813769"
-  selfLink: /apis/webapp.jimmysong.io/v1/namespaces/kubebuilder-example-system/guestbooks/guestbook-sample
-  uid: 17da5eae-1020-40d2-821a-9a1f990dd767
-spec:
-  firstname: Jimmy
-  lastname: Song
-status:
-  Status: Running
-```
-
-我们输出的最后部分：
-
-```yaml
-spec:
-  firstname: Jimmy
-  lastname: Song
-status:
-  Status: Running
-```
-
-这正是我们在 CRD 里定义的字段。
-
-**删除 CR**
-
-使用下面的命令删除 CR。
+### 多版本支持
 
 ```bash
-kubectl delete guestbooks.webapp.jimmysong.io guestbook-sample
+kubebuilder create api --group webapp --version v2 --kind Guestbook
 ```
 
-此时在 controller 的前台输出中可以看到以下内容。
+### 性能优化
 
-```bash
-2020/06/07 20:09:50 Guestbook.webapp.jimmysong.io "guestbook-sample" not found Unable to fetch object
-2020/06/07 20:09:50 resource name may not be empty unable to update status
-2020-06-07T20:09:50.380+0800 DEBUG controller-runtime.controller Successfully Reconciled {"controller": "guestbook", "request": "kubebuilder-example-system/guestbook-sample"}
+在 `main.go` 中配置 Controller 选项：
+
+```go
+if err = (&controller.GuestbookReconciler{
+  Client: mgr.GetClient(),
+  Scheme: mgr.GetScheme(),
+}).SetupWithManager(mgr, controller.GuestbookReconcilerOptions{
+  MaxConcurrentReconciles: 2,
+}); err != nil {
+  setupLog.Error(err, "unable to create controller", "controller", "Guestbook")
+  os.Exit(1)
+}
 ```
 
-因为该 CR 被删除，因此日志中会提示资源找不到。
+## 最佳实践
 
-## 更多
+### 1. 错误处理
 
-本示例仅展示了使用 kubebuilder 创建 Operator 的基本逻辑，步骤为：
+```go
+// 使用适当的错误类型
+if apierrors.IsNotFound(err) {
+  // 资源不存在，可能已被删除
+  return ctrl.Result{}, nil
+}
 
-- 初始化项目和 API
-- 安装 CRD
-- 部署 Controller
-- 创建 CR
+if apierrors.IsConflict(err) {
+  // 资源冲突，需要重试
+  return ctrl.Result{RequeueAfter: time.Second * 5}, nil
+}
+```
 
-Operator 的核心逻辑都在 controller 的 `Reconcile` 函数中，请参考 [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native/#kubernetes-operators) 中的 Operator 实现，本书后续将会讨论。
+### 2. 状态管理
 
-## 参考
+```go
+// 使用 Conditions 记录状态变化
+meta.SetStatusCondition(&guestbook.Status.Conditions, metav1.Condition{
+  Type:    "Ready",
+  Status:  metav1.ConditionTrue,
+  Reason:  "GuestbookReady",
+  Message: "Guestbook is ready",
+})
+```
 
-- [kubebuilder - github.com](https://github.com/kubernetes-sigs/kubebuilder/)
-- [kubebuilder book - book.kubebuilder.io](https://book.kubebuilder.io)
-- [Kubebuilder 中文文档 - cloudnativecn.com](https://cloudnativecn.com/kubebuilder/)
-- [如何使用 KubeBuilder 开发一个 Operator - chenshaowen.com](https://chenshaowen.com/blog/how-to-develop-a-operator-using-kubebuilder.html)
-- [Kubebuilder book - kubebuilder.io](https://kubebuilder.io/quick-start.html)
+### 3. 日志记录
+
+```go
+// 使用结构化日志
+log.Info("Reconciling resource", 
+  "guestbook", guestbook.Name,
+  "namespace", guestbook.Namespace,
+  "generation", guestbook.Generation)
+```
+
+### 4. 测试
+
+编写单元测试和集成测试：
+
+```go
+// 使用 envtest 进行集成测试
+var _ = Describe("Guestbook Controller", func() {
+  Context("When creating a Guestbook", func() {
+    It("Should update the status", func() {
+      // 测试逻辑
+    })
+  })
+})
+```
+
+## 故障排查
+
+### 常见问题
+
+1. **CRD 安装失败**
+
+   ```bash
+   kubectl get crd | grep guestbook
+   kubectl describe crd guestbooks.webapp.example.com
+   ```
+
+2. **Controller 启动失败**
+
+   ```bash
+   kubectl logs -n system deployment/controller-manager
+   ```
+
+3. **权限问题**
+   检查 RBAC 配置，确保 ServiceAccount 有足够权限
+
+### 调试技巧
+
+1. **增加日志级别**
+
+   ```bash
+   make run ARGS="--zap-log-level=debug"
+   ```
+
+2. **使用 kubectl events**
+
+   ```bash
+   kubectl get events --sort-by=.metadata.creationTimestamp
+   ```
+
+## 总结
+
+Kubebuilder 提供了完整的 Kubernetes Operator 开发体验，从项目初始化到生产部署。通过本教程，你已经学会了：
+
+- Kubebuilder 的核心概念和工作流程
+- 如何创建和定义 CRD
+- 如何实现 Controller 业务逻辑
+- 如何测试和部署 Operator
+- 最佳实践和故障排查方法
+
+继续深入学习可以探索更高级的特性，如 Webhook、多版本支持、性能优化等。
+
+## 参考资料
+
+- [Kubebuilder 官方文档](https://book.kubebuilder.io/)
+- [Kubernetes API 扩展](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/)
+- [Controller Runtime](https://github.com/kubernetes-sigs/controller-runtime)
+- [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
+- [Kind 快速开始](https://kind.sigs.k8s.io/docs/user/quick-start/)

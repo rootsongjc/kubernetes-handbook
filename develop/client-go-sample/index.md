@@ -1,5 +1,5 @@
 ---
-weight: 107
+weight: 106
 title: client-go 示例
 date: '2022-05-21T00:00:00+08:00'
 type: book
@@ -252,6 +252,7 @@ kubectl get pods -l app=nginx-app -w
 - **滚动更新历史**：跟踪版本变更历史
 
 ![Kubernetes Dashboard 监控界面](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/client-go-sample/kubernetes-client-go-sample-update.webp)
+{width=1536 height=547}
 
 ## 最佳实践
 

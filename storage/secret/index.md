@@ -3,171 +3,242 @@ weight: 55
 title: Secret
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: Secret 是 Kubernetes 中用于存储敏感数据的对象，包括密码、token、密钥等，支持以 Volume 或环境变量方式使用，主要类型有 Opaque、Service Account 和 dockerconfigjson。
 keywords:
-- docker
-- io
 - kubernetes
-- pod
 - secret
-- secrets
-- 创建
 - 敏感数据
+- 密码管理
+- 配置管理
+- base64 编码
+- docker registry
+- service account
 ---
 
+Secret 是 Kubernetes 中专门用于存储和管理敏感数据的资源对象，如密码、OAuth token、SSH 密钥等。使用 Secret 可以避免将敏感信息直接写入容器镜像或 Pod 规范中，提高了应用的安全性。
 
-Secret 解决了密码、token、密钥等敏感数据的配置问题，而不需要把这些敏感数据暴露到镜像或者 Pod Spec 中。Secret 可以以 Volume 或者环境变量的方式使用。
+## Secret 类型
 
-Secret 有三种类型：
+Kubernetes 支持多种类型的 Secret：
 
-- **Service Account** ：用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的 `/run/secrets/kubernetes.io/serviceaccount` 目录中；
-- **Opaque** ：base64 编码格式的 Secret，用来存储密码、密钥等；
-- **kubernetes.io/dockerconfigjson** ：用来存储私有 docker registry 的认证信息。
+- **Opaque**：用户定义的任意数据，最常用的类型
+- **kubernetes.io/service-account-token**：Service Account 的认证令牌
+- **kubernetes.io/dockerconfigjson**：Docker registry 认证信息
+- **kubernetes.io/tls**：TLS 证书和私钥
+- **kubernetes.io/basic-auth**：基本认证凭据
 
 ## Opaque Secret
 
-Opaque 类型的数据是一个 map 类型，要求 value 是 base64 编码格式：
+Opaque 是最常用的 Secret 类型，用于存储任意的敏感数据。数据必须使用 base64 编码。
 
-```sh
-$ echo -n "admin" | base64
-YWRtaW4=
-$ echo -n "1f2d1e2e67df" | base64
-MWYyZDFlMmU2N2Rm
+### 创建 Opaque Secret
+
+首先准备需要编码的数据：
+
+```bash
+echo -n "admin" | base64
+# 输出：YWRtaW4=
+
+echo -n "mypassword123" | base64
+# 输出：bXlwYXNzd29yZDEyMw==
 ```
 
-secrets.yml
+创建 Secret 资源文件：
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysecret
+  name: user-credentials
+  namespace: default
 type: Opaque
 data:
-  password: MWYyZDFlMmU2N2Rm
   username: YWRtaW4=
+  password: bXlwYXNzd29yZDEyMw==
 ```
 
-接着，就可以创建 secret 了：`kubectl create -f secrets.yml`。
+也可以使用 `kubectl` 命令直接创建：
 
-创建好 secret 之后，有两种方式来使用它：
+```bash
+kubectl create secret generic user-credentials \
+  --from-literal=username=admin \
+  --from-literal=password=mypassword123
+```
 
-- 以 Volume 方式
-- 以环境变量方式
+应用 Secret：
 
-### 将 Secret 挂载到 Volume 中
+```bash
+kubectl apply -f secret.yaml
+```
+
+### 使用 Secret
+
+Secret 可以通过两种方式在 Pod 中使用：
+
+#### 方式一：挂载为 Volume
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    name: db
-  name: db
+  name: secret-volume-pod
 spec:
-  volumes:
-  - name: secrets
-    secret:
-      secretName: mysecret
   containers:
-  - image: gcr.io/my_project_id/pg:v1
-    name: db
+  - name: app
+    image: nginx:1.20
     volumeMounts:
-    - name: secrets
-      mountPath: "/etc/secrets"
+    - name: secret-volume
+      mountPath: /etc/secrets
       readOnly: true
     ports:
-    - name: cp
-      containerPort: 5432
-      hostPort: 5432
+    - containerPort: 80
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: user-credentials
+      defaultMode: 0400  # 只读权限
 ```
 
-### 将 Secret 导出到环境变量中
+挂载后，Secret 的每个键会成为一个文件：
+
+- `/etc/secrets/username` 包含 `admin`
+- `/etc/secrets/password` 包含 `mypassword123`
+
+#### 方式二：作为环境变量
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: web-app
 spec:
   replicas: 2
-  strategy:
-      type: RollingUpdate
+  selector:
+    matchLabels:
+      app: web-app
   template:
     metadata:
       labels:
-        app: wordpress
-        visualize: "true"
+        app: web-app
     spec:
       containers:
-      - name: "wordpress"
-        image: "wordpress"
+      - name: web-app
+        image: nginx:1.20
         ports:
         - containerPort: 80
         env:
-        - name: WORDPRESS_DB_USER
+        - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
-              name: mysecret
+              name: user-credentials
               key: username
-        - name: WORDPRESS_DB_PASSWORD
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysecret
+              name: user-credentials
               key: password
 ```
 
-## kubernetes.io/dockerconfigjson
+## Docker Registry Secret
 
-可以直接用 `kubectl` 命令来创建用于 docker registry 认证的 secret：
+当需要从私有 Docker Registry 拉取镜像时，需要创建认证 Secret。
 
-```sh
-$ kubectl create secret docker-registry myregistrykey --docker-server=DOCKER_REGISTRY_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL
-secret "myregistrykey" created.
+### 使用命令创建
+
+```bash
+kubectl create secret docker-registry registry-secret \
+  --docker-server=your-registry.com \
+  --docker-username=your-username \
+  --docker-password=your-password \
+  --docker-email=your-email@example.com
 ```
 
-也可以直接读取 `~/.docker/config.json` 的内容来创建：
+### 使用 YAML 创建
 
-```sh
-$ cat ~/.docker/config.json | base64
-$ cat > myregistrykey.yaml <<EOF
+```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: myregistrykey
-data:
-  .dockerconfigjson: UmVhbGx5IHJlYWxseSByZWVlZWVlZWVlZWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGx5eXl5eXl5eXl5eXl5eXl5eXl5eSBsbGxsbGxsbGxsbGxsbG9vb29vb29vb29vb29vb29vb29vb29vb29vb25ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubmdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cgYXV0aCBrZXlzCg==
+  name: registry-secret
 type: kubernetes.io/dockerconfigjson
-EOF
-$ kubectl create -f myregistrykey.yaml
+data:
+  .dockerconfigjson: <base64-encoded-docker-config>
 ```
 
-在创建 Pod 的时候，通过 `imagePullSecrets` 来引用刚创建的 `myregistrykey`:
+其中 `.dockerconfigjson` 的值可以通过以下方式获取：
+
+```bash
+cat ~/.docker/config.json | base64 -w 0
+```
+
+### 在 Pod 中使用
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: foo
+  name: private-app
 spec:
   containers:
-    - name: foo
-      image: janedoe/awesomeapp:v1
+  - name: app
+    image: your-registry.com/your-app:latest
+    ports:
+    - containerPort: 8080
   imagePullSecrets:
-    - name: myregistrykey
+  - name: registry-secret
 ```
 
-### Service Account
+## Service Account 与 Secret
 
-Service Account 用来访问 Kubernetes API，由 Kubernetes 自动创建，并且会自动挂载到 Pod 的 `/run/secrets/kubernetes.io/serviceaccount` 目录中。
+从 Kubernetes 1.24 开始，Service Account 不再自动创建对应的 Secret。如需手动创建：
 
-```sh
-$ kubectl run nginx --image nginx
-deployment "nginx" created
-$ kubectl get pods
-NAME                     READY     STATUS    RESTARTS   AGE
-nginx-3137573019-md1u2   1/1       Running   0          13s
-$ kubectl exec nginx-3137573019-md1u2 ls /run/secrets/kubernetes.io/serviceaccount
-ca.crt
-namespace
-token
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sa-token-secret
+  annotations:
+    kubernetes.io/service-account.name: my-service-account
+type: kubernetes.io/service-account-token
 ```
+
+查看 Service Account token：
+
+```bash
+kubectl create serviceaccount my-sa
+kubectl apply -f sa-secret.yaml
+
+# 查看 token
+kubectl get secret sa-token-secret -o jsonpath='{.data.token}' | base64 -d
+```
+
+## 最佳实践
+
+1. **最小权限原则**：只向需要的 Pod 暴露必要的 Secret
+2. **使用 RBAC**：限制对 Secret 资源的访问权限
+3. **定期轮换**：定期更新敏感数据，特别是密码和 token
+4. **避免日志泄露**：确保应用不会将 Secret 内容输出到日志中
+5. **使用外部密钥管理**：考虑集成 HashiCorp Vault、AWS Secrets Manager 等外部系统
+6. **文件权限**：挂载 Secret 时设置适当的文件权限（如 0400）
+
+## 监控和故障排查
+
+查看 Secret 详情：
+
+```bash
+kubectl describe secret user-credentials
+kubectl get secret user-credentials -o yaml
+```
+
+验证 Pod 中的 Secret：
+
+```bash
+# 检查环境变量
+kubectl exec pod-name -- env | grep DB_
+
+# 检查挂载的文件
+kubectl exec pod-name -- ls -la /etc/secrets/
+kubectl exec pod-name -- cat /etc/secrets/username
+```
+
+Secret 相关的常见问题包括编码错误、权限不足、Secret 不存在等，可通过 `kubectl describe pod` 查看详细的错误信息。

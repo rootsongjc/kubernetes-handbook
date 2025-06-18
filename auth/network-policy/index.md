@@ -3,6 +3,7 @@ weight: 46
 title: NetworkPolicy
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 'Kubernetes NetworkPolicy 是一种声明式的网络安全策略，用于控制 Pod 之间的网络通信。本文详细介绍了 NetworkPolicy 的工作原理、配置方法、使用场景和最佳实践。'
 keywords:
 - namespace
 - network
@@ -16,111 +17,216 @@ keywords:
 - 规则
 ---
 
+NetworkPolicy 是 Kubernetes 提供的网络安全功能，用于控制 Pod 之间以及 Pod 与外部网络端点之间的通信。它通过标签选择器来选择目标 Pod，并定义允许的入站和出站流量规则。
 
-网络策略说明一组 `Pod` 之间是如何被允许互相通信，以及如何与其它网络 Endpoint 进行通信。 `NetworkPolicy` 资源使用标签来选择 `Pod`，并定义了一些规则，这些规则指明允许什么流量进入到选中的 `Pod` 上。关于 Network Policy 的详细用法请参考 [Kubernetes 官网](https://kubernetes.io/docs/concepts/services-networking/network-policies/)。
-
-Network Policy 的作用对象是 Pod，也可以应用到 Namespace 和集群的 Ingress、Egress 流量。Network Policy 是作用在 L3/4 层的，即限制的是对 IP 地址和端口的访问，如果需要对应用层做访问限制需要使用如 [Istio](https://istio.io) 这类 Service Mesh。
+NetworkPolicy 主要作用于网络层（L3）和传输层（L4），即控制基于 IP 地址和端口的访问。如果需要在应用层（L7）进行更细粒度的访问控制，建议使用 [Istio](https://istio.io) 等服务网格解决方案。
 
 ## 前提条件
 
-网络策略通过网络插件来实现，所以必须使用一种支持 `NetworkPolicy` 的网络方案（如 [calico](https://www.projectcalico.org/)）—— 非 Controller 创建的资源，是不起作用的。
+NetworkPolicy 的实现依赖于网络插件（CNI），因此需要使用支持 NetworkPolicy 的网络方案，如：
 
-## 隔离的与未隔离的 Pod
+- [Calico](https://www.projectcalico.org/)
+- [Cilium](https://cilium.io/)
+- [Weave Net](https://www.weave.works/oss/net/)
 
-默认 Pod 是未隔离的，它们可以从任何的源接收请求。具有一个可以选择 Pod 的网络策略后，Pod 就会变成隔离的。一旦 Namespace 中配置的网络策略能够选择一个特定的 Pod，这个 Pod 将拒绝任何该网络策略不允许的连接。（Namespace 中其它未被网络策略选中的 Pod 将继续接收所有流量）
+如果使用不支持 NetworkPolicy 的网络插件，创建的 NetworkPolicy 资源将不会生效。
 
-## `NetworkPolicy` 资源
+## Pod 的网络隔离状态
 
-下面是一个 `NetworkPolicy` 的例子：
+在 Kubernetes 中，Pod 的网络隔离状态分为以下两种：
+
+- **未隔离状态**：默认情况下，所有 Pod 都处于未隔离状态，可以接收来自任何源的网络流量
+- **隔离状态**：当 NetworkPolicy 选择某个 Pod 后，该 Pod 进入隔离状态，只允许 NetworkPolicy 明确允许的流量
+
+需要注意的是，NetworkPolicy 的隔离是单向的。如果一个 NetworkPolicy 只定义了 ingress 规则，那么只会影响入站流量；如果只定义了 egress 规则，则只会影响出站流量。
+
+## NetworkPolicy 资源规范
+
+### 基本结构
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: test-network-policy
+  name: example-network-policy
   namespace: default
 spec:
   podSelector:
     matchLabels:
-      role: db
+      app: web
   policyTypes:
   - Ingress
   - Egress
   ingress:
   - from:
-    - ipBlock:
-        cidr: 172.17.0.0/16
-        except:
-        - 172.17.1.0/24
-    - namespaceSelector:
-        matchLabels:
-          project: myproject
     - podSelector:
         matchLabels:
-          role: frontend
+          app: frontend
     ports:
     - protocol: TCP
-      port: 6379
+      port: 8080
   egress:
   - to:
-    - ipBlock:
-        cidr: 10.0.0.0/24
+    - podSelector:
+        matchLabels:
+          app: database
     ports:
     - protocol: TCP
-      port: 5978
+      port: 3306
 ```
 
-*将上面配置 POST 到 API Server 将不起任何作用，除非选择的网络方案支持网络策略。*
+### 核心字段说明
 
-**必选字段**：像所有其它 Kubernetes 配置一样， `NetworkPolicy` 需要 `apiVersion`、`kind` 和 `metadata` 这三个字段，关于如何使用配置文件的基本信息，可以查看 这里。
+**podSelector**：用于选择应用此策略的目标 Pod。空的 podSelector（`{}`）会选择当前命名空间中的所有 Pod。
 
-**spec**：`NetworkPolicy` spec 具有在给定 Namespace 中定义特定网络的全部信息。
+**policyTypes**：指定策略类型，可选值为 `Ingress`、`Egress` 或两者都有。如果未指定，默认为 `Ingress`。
 
-**podSelector**：每个 `NetworkPolicy` 包含一个 `podSelector`，它可以选择一组应用了网络策略的 Pod。由于 `NetworkPolicy` 当前只支持定义 `ingress` 规则，这个 `podSelector` 实际上为该策略定义了一组“目标 Pod”。示例中的策略选择了标签为“role=db”的 Pod。一个空的 `podSelector` 选择了该 Namespace 中的所有 Pod。
+**ingress**：定义入站流量规则，包含 `from`（流量源）和 `ports`（允许的端口）配置。
 
-**ingress**：每个`NetworkPolicy` 包含了一个白名单 `ingress` 规则列表。每个规则只允许能够匹配上 `from` 和 `ports`配置段的流量。示例策略包含了单个规则，它从这两个源中匹配在单个端口上的流量，第一个是通过`namespaceSelector` 指定的，第二个是通过 `podSelector` 指定的。
+**egress**：定义出站流量规则，包含 `to`（流量目标）和 `ports`（允许的端口）配置。
 
-**egress**：每个`NetworkPolicy` 包含了一个白名单 `ingress` 规则列表。每个规则只允许能够匹配上 `to` 和 `ports`配置段的流量。示例策略包含了单个规则，它匹配目的地 `10.0.0.0/24` 单个端口的流量。
+### 流量源和目标选择器
 
-因此，此示例 NetworkPolicy：
+NetworkPolicy 支持三种方式来指定流量的源或目标：
 
-1. 针对入口和出口流量（如果尚未隔离）隔离了 `default` 命名空间中的 `role=db` pods。
-2. （入口规则）允许来自以下来源的 TCP 端口 6379 的 `default` 命名空间中具有标签 `role=db` 的所有 pods 的连接：
-   - `default` 命名空间中具有标签 `role=frontend` 的任何 pod
-   - 具有标签 `project=myproject` 的任何命名空间中的任何 pod
-   - IP 地址范围 `172.17.0.0`–`172.17.0.255` 和 `172.17.2.0`–`172.17.255.255` 中的 IP 地址（即，`172.17.0.0/16` 的所有地址，但不包括 `172.17.1.0/24`）
-3. （出口规则）允许具有标签 `role=db` 的 `default` 命名空间中的任何 pod 连接到 CIDR `10.0.0.0/24` 上的 TCP 端口 5978。
+1. **podSelector**：选择当前命名空间中的 Pod
+2. **namespaceSelector**：选择指定命名空间中的所有 Pod
+3. **ipBlock**：指定 IP 地址段
 
-请参阅 [Declare Network Policy](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/) 教程以获取更多示例。
+```yaml
+ingress:
+- from:
+  - podSelector:
+      matchLabels:
+        role: frontend
+  - namespaceSelector:
+      matchLabels:
+        environment: production
+  - ipBlock:
+      cidr: 192.168.1.0/24
+      except:
+      - 192.168.1.10/32
+```
 
-## 默认策略
+## 实际应用示例
 
-通过创建一个可以选择所有 Pod 但不允许任何流量的 NetworkPolicy，你可以为一个 Namespace 创建一个“默认的”隔离策略，如下所示：
+### 示例 1：数据库访问控制
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: default-deny
+  name: database-policy
+  namespace: production
 spec:
   podSelector:
+    matchLabels:
+      app: mysql
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: backend
+    ports:
+    - protocol: TCP
+      port: 3306
 ```
 
-这确保了即使是没有被任何 NetworkPolicy 选中的 Pod，将仍然是被隔离的。
+此策略仅允许标签为 `app: backend` 的 Pod 通过 TCP 端口 3306 访问数据库。
 
-可选地，在 Namespace 中，如果你想允许所有的流量进入到所有的 Pod（即使已经添加了某些策略，使一些 Pod 被处理为“隔离的”），你可以通过创建一个策略来显式地指定允许所有流量：
+### 示例 2：跨命名空间通信
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-all
+  name: cross-namespace-policy
+  namespace: api
 spec:
   podSelector:
+    matchLabels:
+      app: api-server
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: frontend
+    - namespaceSelector:
+        matchLabels:
+          name: mobile
+    ports:
+    - protocol: TCP
+      port: 8080
+```
+
+此策略允许来自 `frontend` 和 `mobile` 命名空间的流量访问 API 服务器。
+
+## 常用默认策略
+
+### 拒绝所有流量
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+
+### 允许所有入站流量
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
   ingress:
   - {}
 ```
 
-## 参考
+### 允许所有出站流量
 
-- [Network Policies - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-egress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress:
+  - {}
+```
+
+## 最佳实践
+
+1. **采用零信任模型**：建议为每个命名空间创建默认拒绝策略，然后根据需要添加允许规则
+2. **精确的标签选择**：使用具体的标签选择器，避免过于宽泛的规则
+3. **定期审查策略**：定期检查和更新 NetworkPolicy，确保其符合当前的安全要求
+4. **测试验证**：在应用 NetworkPolicy 前，在测试环境中验证其效果
+5. **监控和日志**：配合网络监控工具，观察 NetworkPolicy 的实际效果
+
+## 限制和注意事项
+
+- NetworkPolicy 不能阻止同一 Pod 内容器之间的通信
+- 不支持基于用户身份的访问控制
+- 对于需要应用层访问控制的场景，需要结合服务网格等解决方案
+- 策略规则是累加的，多个 NetworkPolicy 的规则会合并生效
+
+## 参考资料
+
+- [Network Policies - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+- [Declare Network Policy - Kubernetes 官方教程](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
