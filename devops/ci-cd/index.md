@@ -71,7 +71,7 @@ keywords:
 2. **AWS CodePipeline**：AWS 的全托管持续交付服务
 3. **Azure DevOps**：Microsoft 的综合 DevOps 平台
 
-更多工具详情请参考 [Awesome Cloud Native](https://jimmysong.io/awesome-cloud-native/#application-delivery)。
+更多工具详情请参考 [Awesome Cloud Native](https://awesome-cloud-native.jimmysong.io/#application-delivery)。
 
 ## ArgoCD 深度解析
 
