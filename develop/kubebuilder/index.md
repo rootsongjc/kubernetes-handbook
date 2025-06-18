@@ -49,18 +49,6 @@ Kubebuilder 遵循以下设计哲学：
 
 ## 工作流程
 
-典型的 Kubebuilder 开发流程：
-
-```mermaid "Kubebuilder 开发流程"
-flowchart LR
-  A[初始化项目] --> B[创建 API 和 CRD]
-  B --> C[实现 Controller 逻辑]
-  C --> D[本地测试]
-  D --> E[构建镜像]
-  E --> F[部署到集群]
-  F --> G[集成测试]
-```
-
 1. **项目初始化** - 创建项目结构和配置
 2. **API 定义** - 创建 CRD 和资源类型
 3. **Controller 开发** - 实现业务逻辑和协调循环

@@ -64,15 +64,17 @@ Pod 内多个容器的网络共享通过以下步骤实现：
 2. **建立网络命名空间**：Pause 容器创建并持有 Network Namespace
 3. **容器加入命名空间**：其他业务容器通过 `--net=container:pause` 方式加入到同一个 Network Namespace
 
-```mermaid
-graph TD "网络共享机制"
-    A[Pod 创建] --> B[启动 Pause 容器]
-    B --> C[创建 Network Namespace]
-    C --> D[业务容器 A 加入]
-    C --> E[业务容器 B 加入]
-    D --> F[共享网络资源]
-    E --> F
-```
+#### 网络共享机制流程
+
+Pod 内容器的网络共享按以下顺序执行：
+
+1. **Pod 创建**：Kubernetes 调度器决定创建新 Pod
+2. **启动 Pause 容器**：容器运行时首先创建并启动 Pause 容器
+3. **创建 Network Namespace**：Pause 容器建立独立的网络命名空间
+4. **业务容器加入**：后续创建的业务容器通过 `--net=container:pause` 参数加入相同的网络命名空间
+5. **实现资源共享**：所有容器共享同一套网络资源（IP、端口、路由表等）
+
+这种设计确保了 Pod 内容器间的网络通信就像在同一台主机上运行的进程一样简单高效。
 
 ### 关键特性
 
