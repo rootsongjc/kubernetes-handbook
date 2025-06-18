@@ -339,9 +339,6 @@ kubectl delete crontab my-new-cron-object
 
 聚合 API Server 通过 API 聚合层（kube-aggregator）实现多个 API Server 的统一管理：
 
-![聚合 API Server 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/aggregated-api-server-architecture.svg)
-{width=800 height=600}
-
 ### 核心组件
 
 #### kube-aggregator
@@ -525,20 +522,34 @@ func main() {
 
 ### 决策流程
 
-```mermaid
-flowchart TD
-    A[需要扩展 Kubernetes API] --> B{是否需要复杂逻辑？}
-    B -->|否| C{是否需要存储状态？}
-    B -->|是| D[聚合 API Server]
-    C -->|是| E[使用 CRD]
-    C -->|否| F[考虑 ConfigMap/Secret]
-    E --> G{需要控制器逻辑？}
-    G -->|是| H[CRD + Controller/Operator]
-    G -->|否| I[纯 CRD]
-    D --> J{是否需要自定义存储？}
-    J -->|是| K[完全自定义 API Server]
-    J -->|否| L[聚合 API + etcd]
-```
+根据以下决策流程选择合适的扩展方式：
+
+**第一步：评估复杂性需求**
+
+- 如果需要复杂的业务逻辑、计算或与外部系统深度集成，请跳转到第四步
+- 如果只需要简单的数据存储和标准 CRUD 操作，继续第二步
+
+**第二步：确定存储需求**
+
+- 需要持久化存储自定义数据：选择 CRD 方案
+- 不需要持久化存储：考虑使用 ConfigMap 或 Secret
+
+**第三步：CRD 控制器评估**
+
+- 需要监听资源变化并执行自动化操作：使用 CRD + Controller 或 Operator 模式
+- 仅需要数据存储，无需自动化逻辑：使用纯 CRD
+
+**第四步：聚合 API Server 存储选择**
+
+- 需要自定义存储后端（如时序数据库、外部 API）：开发完全自定义的 API Server
+- 可以使用 etcd 存储：使用聚合 API Server + etcd 方案
+
+**关键决策点：**
+
+- **性能要求高**：选择聚合 API Server
+- **开发资源有限**：首选 CRD
+- **需要实时数据**：选择聚合 API Server
+- **标准化需求**：优先考虑 CRD
 
 ### 对比表格
 

@@ -31,14 +31,6 @@ Kubernetes Operator 是一种扩展 Kubernetes API 的方法，用于自动化�
 
 ### 核心组件
 
-```mermaid "Operator 核心组件"
-graph LR
-  A[Custom Resource] --> B[Custom Controller]
-  B --> C[Kubernetes API]
-  C --> D[Workloads]
-  D --> E[Applications]
-```
-
 Operator 基于两个关键的 Kubernetes 概念：
 
 - **自定义资源（CRD）**：定义应用程序的期望状态

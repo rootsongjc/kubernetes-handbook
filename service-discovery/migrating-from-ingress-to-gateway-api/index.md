@@ -223,7 +223,7 @@ flowchart TD
         F --> F3[流量分割]
 ```
 
-![从 Ingress 迁移到 Gateway API 的步骤](4b2fe8abad28e57ebbd8900b2298d42a.svg)
+![从 Ingress 迁移到 Gateway API 的完整流程](43c6548dd2251b476f12cce86fd239db.svg)
 {width=1082 height=646}
 
 ### 详细迁移步骤

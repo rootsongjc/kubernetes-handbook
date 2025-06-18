@@ -23,6 +23,7 @@ keywords:
 > —— [William Morgan](https://twitter.com/wm)，Buoyant CEO
 
 随着微服务架构的普及和服务规模的增长，服务网格解决了以下核心问题：
+
 - **服务发现**：自动发现和连接服务
 - **负载均衡**：智能流量分发
 - **故障恢复**：熔断、重试和故障转移
@@ -33,12 +34,14 @@ keywords:
 ## 核心特征
 
 ### 🏗️ 架构特点
+
 - **透明代理**：以 Sidecar 模式部署，对应用程序无侵入
 - **平台无关**：支持多种编程语言和运行时环境
 - **声明式配置**：通过配置而非代码实现流量管理
 - **统一治理**：集中管理所有服务间通信策略
 
 ### 📊 功能能力
+
 - **流量控制**：路由、重试、超时、熔断
 - **安全防护**：mTLS、访问控制、安全策略
 - **可观测性**：指标、日志、分布式追踪
@@ -47,18 +50,21 @@ keywords:
 ## 主流实现方案
 
 ### Istio
+
 - **成熟度**：生产就绪，社区活跃
 - **特点**：功能丰富，Google、IBM、Lyft 等公司支持
 - **数据平面**：基于 Envoy 代理
 - **治理模式**：开放治理，隶属于 CNCF 生态
 
 ### Linkerd
+
 - **成熟度**：CNCF 毕业项目（2021 年 7 月）
 - **特点**：轻量级，专注于简单性和性能
 - **数据平面**：自研 Rust 代理
 - **优势**：资源占用少，延迟低
 
 ### Envoy Proxy
+
 - **定位**：高性能数据平面代理
 - **特点**：C++ 编写，性能优异
 - **生态**：被多个服务网格项目采用
@@ -67,20 +73,27 @@ keywords:
 
 ### 架构模式
 
-```mermaid
-graph TB "架构模式"
-    A[应用A] --> SA[Sidecar A]
-    B[应用B] --> SB[Sidecar B]
-    C[应用C] --> SC[Sidecar C]
-    
-    SA <--> SB
-    SB <--> SC
-    SA <--> SC
-    
-    CP[控制平面] --> SA
-    CP --> SB
-    CP --> SC
-```
+服务网格采用**数据平面 + 控制平面**的经典架构模式：
+
+**数据平面（Data Plane）**
+
+- 由部署在每个服务实例旁的 **Sidecar 代理**组成
+- 负责实际的服务间通信、流量转发和策略执行
+- 代理之间形成网格状的通信网络
+- 对应用程序完全透明，无需修改业务代码
+
+**控制平面（Control Panel）**
+
+- 集中管理和配置所有 Sidecar 代理
+- 负责服务发现、配置分发、证书管理等
+- 提供统一的管理接口和可观测性数据收集
+- 通过 API 与数据平面代理通信，下发策略和配置
+
+**工作模式**
+
+- 应用程序之间不直接通信，所有流量都经过各自的 Sidecar 代理
+- Sidecar 代理根据控制平面下发的配置执行路由、安全、监控等策略
+- 形成应用程序 + 代理的服务网格拓扑结构
 
 ### 工作流程（以 Istio 为例）
 
@@ -110,12 +123,14 @@ graph TB "架构模式"
 ## 使用场景与价值
 
 ### 适用场景
+
 - **微服务架构**：服务数量多，调用关系复杂
 - **多语言环境**：不同技术栈的服务需要统一治理
 - **云原生应用**：容器化、动态扩缩容的应用
 - **合规要求**：需要服务间加密、审计的环境
 
 ### 核心价值
+
 - **降低复杂性**：将服务治理从业务逻辑中分离
 - **提高可靠性**：统一的故障处理和恢复机制
 - **增强安全性**：自动化的服务间安全通信
@@ -135,15 +150,18 @@ graph TB "架构模式"
 ## 参考资源
 
 ### 官方文档
+
 - [Istio 官方文档](https://istio.io/)
 - [Linkerd 官方文档](https://linkerd.io/)
 - [Envoy 官方文档](https://www.envoyproxy.io/)
 
 ### 深入学习
+
 - [CNCF Service Mesh Landscape](https://landscape.cncf.io/category=service-mesh)
 - [Pattern: Service Mesh - Phil Calçado](http://philcalcado.com/2017/08/03/pattern_service_mesh.html)
 - [What's a Service Mesh? - Buoyant](https://buoyant.io/what-is-a-service-mesh/)
 
 ### 社区资源
+
 - [Istio 中文社区](https://istio.io/latest/zh/)
 - [云原生社区 Service Mesh 专题](https://cloudnative.to/topic/service-mesh/)

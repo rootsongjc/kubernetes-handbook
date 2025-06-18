@@ -466,11 +466,12 @@ spec:
 - **下游**：客户端到网关的连接
 - **上游**：网关到后端服务的连接
 
-```mermaid "概念说明"
-graph LR
-    A[Client] <-->|Downstream TLS| B[Gateway]
-    B <-->|Upstream TLS| C[Service]
-```
+在 Gateway API 的 TLS 配置中：
+
+- **下游 TLS**：指从客户端到网关的连接，网关作为 TLS 服务器，负责处理客户端的 TLS 握手和证书验证
+- **上游 TLS**：指从网关到后端服务的连接，网关作为 TLS 客户端，与后端服务建立加密连接
+
+这种双向的 TLS 配置使得可以实现端到端的加密通信，确保数据在传输过程中的安全性。
 
 ### 下游 TLS 配置
 
