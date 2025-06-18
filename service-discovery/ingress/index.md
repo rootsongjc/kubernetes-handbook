@@ -3,6 +3,7 @@ weight: 41
 title: Ingress
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress 的工作原理、配置方法、IngressClass 概念以及各种使用场景。
 keywords:
 - ingress
 - ingressclass
@@ -16,16 +17,17 @@ keywords:
 - 默认
 ---
 
-
-{{<callout warning "注意">}}
-虽然 Ingress 在 Kubernetes 1.9 正式发布，但是目前 Ingress 资源已不再维护，推荐使用 [Gateway API](../gateway/) 代替。
+{{<callout note "重要提示">}}
+Ingress 在 Kubernetes 1.9 正式发布，目前仍被广泛使用。但对于新项目，建议考虑使用更现代的 [Gateway API](../gateway/) 作为替代方案，它提供更强大和灵活的流量管理能力。
 {{</callout>}}
 
 ## 什么是 Ingress？
 
-Ingress 提供从集群外部到集群内部服务的 HTTP 和 HTTPS 路由。通过 Ingress 资源定义的规则控制流量路由。
+Ingress 是 Kubernetes 的一个资源对象，用于管理集群外部到集群内服务的 HTTP 和 HTTPS 访问。它充当智能路由器，根据定义的规则将外部流量路由到集群内的不同服务。
 
-下图展示了 Ingress 是如何运作的。
+### Ingress 架构图
+
+下图展示了 Ingress 的工作原理：
 
 ```mermaid "Ingress 运作的架构图"
 graph LR;
@@ -38,32 +40,44 @@ graph LR;
   end
 ```
 
-![Ingress 运作的架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/ingress/e0a8252231167704c4f15deeea858784.svg)
+![Ingress 运作的架构图](e0a8252231167704c4f15deeea858784.svg)
 {width=627 height=203}
 
-通过配置，Ingress 可为 Service 提供外部可访问的 URL、对其流量作负载均衡、终止 SSL/TLS，以及基于名称的虚拟托管等能力。 [Ingress 控制器](../../controllers/ingress-controller) 负责完成 Ingress 的工作，具体实现上通常会使用某个负载均衡器，不过也可以配置边缘路由器或其他前端来帮助处理流量。
+## 核心功能
 
-## Ingress 功能
+Ingress 提供以下核心功能：
 
-- 提供外部可访问的 URL
-- 流量负载均衡
-- SSL/TLS 终止
-- 基于名称的虚拟托管
+- **外部 URL 访问**：为集群内服务提供外部可访问的 URL
+- **负载均衡**：在多个 Pod 实例之间分发流量
+- **SSL/TLS 终结**：处理 HTTPS 证书和加密
+- **基于名称的虚拟主机**：根据主机名路由到不同服务
+- **路径路由**：根据 URL 路径将请求路由到不同服务
 
-## 环境准备
+## 前置条件
 
-要使用 Ingress，你必须部署一个 [Ingress 控制器](../../controllers/ingress-controller)。仅创建 Ingress 资源本身没有效果。
+使用 Ingress 需要满足以下条件：
 
-## Ingress 资源示例
+1. **部署 Ingress 控制器**：如 NGINX Ingress Controller、Traefik、HAProxy 等
+2. **配置 IngressClass**：定义使用哪个控制器处理 Ingress 资源
+3. **准备后端服务**：确保目标 Service 和 Pod 正常运行
 
-一个最简单的 Ingress 资源示例：
+{{<callout warning "注意">}}
+仅创建 Ingress 资源本身不会产生任何效果，必须配合 [Ingress 控制器](../../controllers/ingress-controller) 一起使用。
+{{</callout>}}
+
+## 基本配置示例
+
+### 最简单的 Ingress
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: simple-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
   - host: example.com
     http:
@@ -72,169 +86,170 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: example-service
+            name: web-service
             port:
               number: 80
 ```
 
-### Ingress 规则
+### 路径类型说明
 
-- `host`：可选，指定主机名。
-- `paths`：路径列表，每个路径关联一个后端服务。
-- `backend`：定义服务和端口。
+Kubernetes 支持三种路径类型：
 
-### 默认后端
+- **`Exact`**：精确匹配 URL 路径（区分大小写）
+- **`Prefix`**：基于 URL 路径前缀匹配，按 `/` 分隔
+- **`ImplementationSpecific`**：匹配方法由 IngressClass 决定
 
-未匹配任何规则的请求将被路由到默认后端。
+## IngressClass 详解
 
-### 路径类型
+IngressClass 是 Kubernetes 1.18 引入的资源，用于定义 Ingress 的实现类别。
 
-- `ImplementationSpecific`：由 IngressClass 决定匹配方法。
-- `Exact`：精确匹配 URL 路径。
-- `Prefix`：基于 URL 路径前缀匹配。
-
-## Ingress 类 {#ingress-class}
-
-Ingress 可以由不同的控制器实现，每个 Ingress 应指定一个类（IngressClass），包含额外配置，如控制器名称。
-
-### IngressClass 参数
-
-`.spec.parameters` 字段可引用其他资源以提供相关配置。参数的具体类型取决于 `.spec.controller` 字段中指定的 Ingress 控制器。
-
-### IngressClass 作用域
-
-IngressClass 参数可以是集群作用域或命名空间作用域。
-
-#### 集群作用域
-
-默认情况下，IngressClass 参数是集群范围的。如果未设置 `.spec.parameters.scope` 或将其设置为 `Cluster`，则 IngressClass 引用集群范围的资源。
+### 基本 IngressClass 配置
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: external-lb-1
+  name: nginx
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+### 设置默认 IngressClass
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+### IngressClass 参数配置
+
+#### 集群范围参数
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: external-lb
 spec:
   controller: example.com/ingress-controller
   parameters:
     scope: Cluster
     apiGroup: k8s.example.net
     kind: ClusterIngressParameter
-    name: external-config-1
+    name: external-config
 ```
 
-#### 命名空间作用域
-
-如果 `.spec.parameters.scope` 设置为 `Namespace`，则 IngressClass 引用命名空间范围的资源，并需设置 `.spec.parameters.namespace` 字段。
+#### 命名空间范围参数
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
-  name: external-lb-2
+  name: internal-lb
 spec:
   controller: example.com/ingress-controller
   parameters:
     scope: Namespace
     apiGroup: k8s.example.com
     kind: IngressParameter
-    namespace: external-configuration
-    name: external-config
+    namespace: ingress-config
+    name: internal-config
 ```
 
-### 已废弃的注解 {#deprecated-annotation}
+## 常见使用场景
 
-在 Kubernetes 1.18 之前，Ingress 类通过 `kubernetes.io/ingress.class` 注解指定。现在使用 `ingressClassName` 字段替代该注解，引用 IngressClass 资源。
+### 单服务暴露
 
-### 默认 Ingress 类 {#default-ingress-class}
-
-可以将一个 IngressClass 标记为集群默认类。设置 `ingressclass.kubernetes.io/is-default-class` 注解为 `true` 确保新的 Ingress 使用默认 IngressClass。
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: IngressClass
-metadata:
-  name: default-ingress-class
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
-spec:
-  controller: example.com/ingress-controller
-```
-
-如果集群中有多个默认 IngressClass，准入控制器会阻止创建新的 Ingress。确保最多只有一个默认 IngressClass。
-
-## Ingress 类型
-
-### 单个服务支持的 Ingress
-
-通过设置无规则的默认后端来暴露单个服务。
-
-### 简单扇出
-
-根据请求的 HTTP URI，将来自同一 IP 地址的流量路由到多个服务。
+适用于只需要暴露一个服务的简单场景：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: fanout-example
+  name: single-service
 spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: web-service
+      port:
+        number: 80
+```
+
+### 路径扇出
+
+根据 URL 路径将流量路由到不同服务：
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: path-fanout
+spec:
+  ingressClassName: nginx
   rules:
-  - host: example.com
+  - host: api.example.com
     http:
       paths:
-      - path: /foo
+      - path: /v1
         pathType: Prefix
         backend:
           service:
-            name: foo-service
+            name: api-v1-service
             port:
               number: 80
-      - path: /bar
+      - path: /v2
         pathType: Prefix
         backend:
           service:
-            name: bar-service
+            name: api-v2-service
             port:
               number: 80
 ```
 
-### 基于名称的虚拟主机服务
+### 基于主机名的虚拟主机
 
-将针对多个主机名的 HTTP 流量路由到同一 IP 地址上。
+根据不同主机名路由到不同服务：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: name-based-example
+  name: virtual-host
 spec:
+  ingressClassName: nginx
   rules:
-  - host: foo.example.com
+  - host: blog.example.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: foo-service
+            name: blog-service
             port:
               number: 80
-  - host: bar.example.com
+  - host: shop.example.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: bar-service
+            name: shop-service
             port:
               number: 80
 ```
 
-## TLS
+## TLS/SSL 配置
 
-你可以通过设定包含 TLS 私钥和证书的 Secret 来保护 Ingress。TLS 配置示例：
+### 单域名 TLS
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -242,57 +257,197 @@ kind: Ingress
 metadata:
   name: tls-example
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
-    - example.com
+    - secure.example.com
     secretName: tls-secret
   rules:
-  - host: example.com
+  - host: secure.example.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: example-service
+            name: secure-service
             port:
-              number: 80
+              number: 443
 ```
 
-## 更新 Ingress
-
-要更新 Ingress 以添加新的主机，可以通过 `kubectl edit ingress` 命令编辑资源：
+### 多域名 TLS
 
 ```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi-tls
 spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - api.example.com
+    - admin.example.com
+    secretName: wildcard-tls-secret
   rules:
-  - host: foo.example.com
+  - host: api.example.com
     http:
       paths:
-      - backend:
+      - path: /
+        pathType: Prefix
+        backend:
           service:
-            name: foo-service
+            name: api-service
             port:
               number: 80
-        path: /foo
-        pathType: Prefix
-  - host: bar.example.com
+  - host: admin.example.com
     http:
       paths:
-      - backend:
+      - path: /
+        pathType: Prefix
+        backend:
           service:
-            name: bar-service
+            name: admin-service
             port:
               number: 80
-        path: /bar
-        pathType: Prefix
 ```
 
-## 替代方案
+### 创建 TLS Secret
 
-- 使用 `Service.Type=LoadBalancer`
-- 使用 `Service.Type=NodePort`
+```bash
+kubectl create secret tls tls-secret \
+  --cert=path/to/tls.cert \
+  --key=path/to/tls.key
+```
 
-## 参考
+## 高级功能
 
-- [Ingress - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+### 注解配置
+
+不同的 Ingress 控制器支持各种注解来配置高级功能：
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: advanced-ingress
+  annotations:
+    # NGINX 特定注解
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: api.example.com
+    http:
+      paths:
+      - path: /api(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80
+```
+
+### 默认后端
+
+为未匹配任何规则的请求提供默认处理：
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: default-backend
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: default-service
+      port:
+        number: 80
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /app
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+```
+
+## 管理和维护
+
+### 更新 Ingress 配置
+
+```bash
+# 编辑现有 Ingress
+kubectl edit ingress my-ingress
+
+# 应用新配置
+kubectl apply -f ingress.yaml
+
+# 查看 Ingress 状态
+kubectl get ingress
+kubectl describe ingress my-ingress
+```
+
+### 故障排查
+
+```bash
+# 检查 Ingress 控制器日志
+kubectl logs -n ingress-nginx deployment/ingress-nginx-controller
+
+# 检查 Ingress 事件
+kubectl get events --field-selector involvedObject.kind=Ingress
+
+# 验证后端服务
+kubectl get svc
+kubectl get endpoints
+```
+
+## 迁移说明
+
+### 从注解到 IngressClass
+
+在 Kubernetes 1.18 之前使用的 `kubernetes.io/ingress.class` 注解已被废弃：
+
+```yaml
+# 旧方式（已废弃）
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+# 新方式（推荐）
+spec:
+  ingressClassName: nginx
+```
+
+## 替代方案比较
+
+| 方案 | 适用场景 | 优势 | 劣势 |
+|------|----------|------|------|
+| Ingress | HTTP/HTTPS 流量管理 | 功能丰富，生态成熟 | 仅支持 7 层路由 |
+| LoadBalancer Service | 简单负载均衡 | 配置简单 | 成本较高，功能有限 |
+| NodePort Service | 开发测试环境 | 无需额外组件 | 端口管理复杂，安全性差 |
+| Gateway API | 现代流量管理 | 功能更强大，设计更灵活 | 相对较新，生态待完善 |
+
+## 最佳实践
+
+1. **使用 IngressClass**：明确指定 `ingressClassName` 而不是依赖默认值
+2. **TLS 配置**：为生产环境启用 HTTPS 并配置适当的 TLS 证书
+3. **资源限制**：通过注解配置适当的速率限制和资源控制
+4. **监控告警**：配置 Ingress 控制器的监控和告警
+5. **安全配置**：启用适当的安全头和 CORS 策略
+6. **版本管理**：使用标签和注解管理 Ingress 资源的版本信息
+
+## 参考资料
+
+- [Ingress - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Ingress Controllers - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+- [Gateway API - Kubernetes SIG Network](https://gateway-api.sigs.k8s.io/)

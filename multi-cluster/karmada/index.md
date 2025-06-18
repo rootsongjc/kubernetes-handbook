@@ -2,86 +2,177 @@
 title: Karmada
 weight: 3
 date: 2024-08-22
+description: "Karmada 是一个开源的 Kubernetes 多集群管理系统，通过原生 API 和先进调度功能实现跨多个集群和云的应用统一管理，无需修改应用程序即可实现真正的开放式多云 Kubernetes 部署。"
 keywords:
 - api
 - apiserver
 - karmada
 - kubernetes
-- 平面
-- 成员
-- 注册
+- 多集群
+- 云原生
 - 调度
-- 集群
+- 管理
 ---
 
+Karmada 是一个开源的 Kubernetes 多集群管理系统，让您能够在多个 Kubernetes 集群和云环境中运行云原生应用程序，而无需修改应用程序本身。通过使用 Kubernetes 原生 API 并提供先进的调度功能，Karmada 实现了真正的开放式多云 Kubernetes 管理。
 
-Karmada 是一个 Kubernetes 管理系统，使您能够在多个 Kubernetes 集群和云中运行云原生应用程序，而无需更改应用程序。通过使用 Kubernetes 原生 API 并提供先进的调度功能，Karmada 实现了真正的开放式、多云 Kubernetes。
+{{<callout note "Karmada 名称的由来">}}
 
-{{<callout tip "Karmada 名称的由来">}}
-
-`Karmada` 是由“Kubernetes”和“Armada”组合而来的。`Armada` 这个词在英语中意味着“舰队”，通常指的是由许多船只组成的大型水面作战力量。在这里，它象征着多个集群的集合，每个集群如同一个强大的船只，共同组成了一个强大的“舰队”（正如 Karmada 的图标是一个舰队一样），协同工作，提高效率和资源利用率。
+`Karmada` 是由 "Kubernetes" 和 "Armada" 组合而来的。`Armada` 在英语中意味着"舰队"，通常指由许多船只组成的大型水面作战力量。在这里，它象征着多个集群的集合，每个集群如同一艘强大的战舰，共同组成了一个强大的"舰队"，协同工作以提高效率和资源利用率。
 
 {{</callout>}}
 
-关于 Karmada 的更多内容，请访问 [Karmada 文档](https://karmada.io/zh/docs/)。
+更多关于 Karmada 的详细信息，请访问 [Karmada 官方文档](https://karmada.io/zh/docs/)。
 
-## Karmada 组件概述
+## 核心架构与组件
 
-下图展示的是 Karmada 中的各个组件及其关系。
+下图展示了 Karmada 的整体架构以及各组件之间的关系。
 
 ![Karmada 中的各个组件及其关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/arch.webp)
 {width=1706 height=1127}
 
-以下是 Karmada 的主要组件概述以及每个组件的功能说明：
+### 控制平面组件
 
-- **karmada-apiserver**：扩展了 Kubernetes API 的 Karmada API 服务器，作为 Karmada 控制平面的前端，使 Karmada 能够简单集成 Kubernetes 生态系统，并允许使用`kubectl`操作 Karmada。
+**karmada-apiserver**
 
-- **karmada-aggregated-apiserver**：利用 Kubernetes API 聚合层技术的聚合 API 服务器，提供集群 API 和相关子资源，支持通过 karmada-apiserver 访问成员集群。
+- 扩展了 Kubernetes API 的 Karmada API 服务器
+- 作为 Karmada 控制平面的前端入口
+- 支持使用 `kubectl` 直接操作 Karmada 资源
 
-- **kube-controller-manager**：包含多个控制器的 kube-controller-manager，Karmada 继承了一些来自 Kubernetes 的控制器，以保持用户体验和行为的一致性。
+**karmada-aggregated-apiserver**
 
-- **karmada-controller-manager**：运行多个自定义控制器进程的管理器，这些控制器监视 Karmada 对象并与下层集群的 API 服务器交互，创建常规的 Kubernetes 资源。
+- 基于 Kubernetes API 聚合层技术的聚合 API 服务器
+- 提供集群 API 和相关子资源
+- 支持通过 karmada-apiserver 代理访问成员集群
 
-- **karmada-scheduler**：负责将 k8s 原生 API 资源对象（包括 CRD 资源）调度到成员集群，根据约束和可用资源确定有效的集群放置。
+**kube-controller-manager**
 
-- **karmada-webhook**：是 HTTP 回调，处理 Karmada/Kubernetes API 请求的 webhook，可以定义为验证 webhook 和突变 webhook，用于执行自定义策略和修改对象。
+- 继承自 Kubernetes 的控制器管理器
+- 保持与原生 Kubernetes 一致的用户体验和行为
+- 负责处理标准的 Kubernetes 资源控制逻辑
 
-- **etcd**：作为 Karmada/Kubernetes API 对象的后端存储，提供一致且高可用的键值存储。
+**karmada-controller-manager**
 
-- **karmada-agent**：在 Pull 模式下部署在每个成员集群上的代理，负责将特定集群注册到 Karmada 控制平面并同步清单和状态。
+- 运行多个 Karmada 自定义控制器
+- 监视 Karmada 对象并与成员集群 API 交互
+- 负责在成员集群中创建和管理 Kubernetes 资源
 
-- **karmada-scheduler-estimator**：运行一个精确的集群调度估算器，为调度器提供更精确的集群资源信息。
+### 调度与策略组件
 
-- **karmada-descheduler**：定期检测所有副本，并根据成员集群中实例状态的变化触发重新调度。
+**karmada-scheduler**
 
-- **karmada-search**：启动一个聚合服务器，提供全局搜索和多云环境中的资源代理等功能。
+- 负责将 Kubernetes 原生 API 资源（包括 CRD）调度到成员集群
+- 根据调度策略、资源约束和集群可用性确定最佳部署位置
+- 支持多种调度算法和策略
 
-- **karmadactl**：Karmada 提供的命令行工具，用于与 Karmada 控制平面通信，执行诸如集群加入/退出等操作。
+**karmada-descheduler**
 
-- **kubectl karmada**：以 kubectl 插件的形式提供功能，其实现与`karmadactl`完全相同。
+- 定期检测集群中的资源分布状态
+- 根据成员集群状态变化触发重新调度
+- 优化资源分配和集群负载均衡
 
-## 集群注册概述
+**karmada-scheduler-estimator**
 
-Karmada 允许用户将多个集群注册到 Karmada 控制平面，以便进行统一管理和调度。集群注册的过程涉及到在 Karmada 控制平面和目标集群之间建立连接。
+- 提供精确的集群资源估算服务
+- 为调度器提供实时的集群资源信息
+- 提高调度决策的准确性
 
-Karmada 的集群注册，包括了`Push`模式和`Pull`模式：
+### 扩展与管理组件
 
-- **Push 模式**：Karmada 控制平面直接访问成员集群的`kube-apiserver`以获取集群状态和部署清单。
-- **Pull 模式**：控制平面不直接访问成员集群，而是通过一个叫做`karmada-agent`的额外组件来委派任务。
+**karmada-webhook**
 
-### 注册集群 - Push 模式
+- HTTP 回调服务，处理 Karmada 和 Kubernetes API 请求
+- 支持验证（Validating）和变更（Mutating）webhook
+- 用于执行自定义策略和对象修改
 
-- 使用`kubectl-karmada`命令行工具通过`join`命令注册集群，通过`unjoin`命令取消注册。
-- 注册和取消注册时，需要指定 Karmada 的`kubeconfig`文件和成员集群的`kubeconfig`。
-- 可以通过`--cluster-context`标志自定义集群上下文。
+**karmada-agent**
 
-### 注册集群 - Pull 模式
+- 在 Pull 模式下部署在成员集群的代理组件
+- 负责将集群注册到 Karmada 控制平面
+- 处理资源清单的同步和状态上报
 
-- 使用`karmadactl register`命令以 Pull 模式注册成员集群。
-- 注册过程中需要在 Karmada 控制平面创建引导令牌，并在成员集群执行注册命令。
-- 成员集群注册后，`karmada-agent`将在其启动阶段自动完成集群的注册。
+**karmada-search**
 
-### 集群标识符
+- 提供全局搜索和资源代理功能
+- 支持跨多个集群的资源查询和访问
+- 简化多云环境下的资源管理
 
-- 每个在 Karmada 注册的集群都会被表示为一个`Cluster`对象，对象的名称 (`.metadata.name`) 是注册时使用的名称。
-- 在注册过程中，每个集群都会被分配一个`.spec.id`中的`独特标识符`，这主要用于技术上区分每个集群，防止同一个集群被多次以不同的名称注册。
+### 存储与工具
+
+**etcd**
+
+- Karmada 控制平面的后端存储
+- 存储所有 Karmada 和 Kubernetes API 对象
+- 提供高可用和一致性保证
+
+**karmadactl**
+
+- Karmada 官方命令行工具
+- 支持集群注册、资源管理等操作
+- 提供完整的 Karmada 管理功能
+
+**kubectl karmada**
+
+- 以 kubectl 插件形式提供的工具
+- 功能与 `karmadactl` 完全相同
+- 便于集成到现有的 kubectl 工作流中
+
+## 集群注册与管理
+
+Karmada 支持将多个 Kubernetes 集群注册到控制平面进行统一管理。集群注册提供了两种模式来适应不同的网络环境和安全需求。
+
+### Push 模式
+
+在 Push 模式下，Karmada 控制平面直接访问成员集群的 `kube-apiserver` 来获取集群状态和部署应用清单。
+
+**特点：**
+
+- 控制平面主动连接成员集群
+- 实时性更好，延迟更低
+- 适用于网络连通性良好的环境
+
+**操作方法：**
+
+```bash
+# 注册集群
+kubectl karmada join <cluster-name> --kubeconfig=<member-cluster-kubeconfig>
+
+# 取消注册集群
+kubectl karmada unjoin <cluster-name> --kubeconfig=<member-cluster-kubeconfig>
+```
+
+### Pull 模式
+
+在 Pull 模式下，控制平面不直接访问成员集群，而是通过部署在成员集群中的 `karmada-agent` 组件来处理任务委派。
+
+**特点：**
+
+- 成员集群主动连接控制平面
+- 适用于网络受限或安全要求较高的环境
+- 支持 NAT 和防火墙后的集群
+
+**操作方法：**
+
+```bash
+# 在控制平面生成注册令牌
+karmadactl token create --print-register-command
+
+# 在成员集群执行注册
+karmadactl register <cluster-name> --token=<bootstrap-token> --discovery-token-ca-cert-hash=<hash>
+```
+
+### 集群标识与管理
+
+**集群对象表示**
+
+- 每个注册的集群都表示为一个 `Cluster` 对象
+- 对象名称（`.metadata.name`）为注册时指定的集群名称
+- 每个集群分配唯一标识符（`.spec.id`）防止重复注册
+
+**集群状态监控**
+
+- 实时监控集群健康状态和资源使用情况
+- 支持集群标签和污点管理
+- 提供集群准入控制和调度策略配置
+
+通过这些机制，Karmada 能够有效管理大规模的多集群环境，为云原生应用提供统一、高效的部署和运维体验。

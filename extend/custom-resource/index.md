@@ -1,132 +1,622 @@
 ---
 weight: 63
-title: 使用自定义资源扩展 API
+linktitle: 扩展 Kubernetes API
+title: 扩展 Kubernetes API
 date: '2022-05-21T00:00:00+08:00'
 type: book
+aliases:
+  - /book/kubernetes-handbook/extend/aggregated-api-server/
+  - /book/kubernetes-handbook/extend/crd/
+description: 全面介绍 Kubernetes API 扩展方法，包括自定义资源定义（CRD）、聚合 API Server 等技术，帮助开发者构建符合 Kubernetes 原生体验的扩展功能。
 keywords:
 - api
 - crd
+- customresourcedefinition
+- aggregated api server
 - kubectl
 - kubernetes
-- server
-- 创建
-- 参考
-- 对象
-- 资源
+- operator
+- extension
+- 扩展
+- 自定义资源
 ---
 
+Kubernetes 提供了多种扩展 API 的方式，让开发者能够在不修改核心代码的情况下添加新的资源类型和功能。本文将全面介绍这些扩展方法，帮助您选择最适合的方案来满足特定需求。
 
-自定义资源是对 Kubernetes API 的扩展，Kubernetes 中的每个资源都是一个 API 对象的集合，例如我们在 YAML 文件里定义的那些 spec 都是对 Kubernetes 中的资源对象的定义，所有的自定义资源可以跟 Kubernetes 中内建的资源一样使用 kubectl 操作。
+## 扩展 API 的方式
 
-## 自定义资源
+向 Kubernetes API 中增加新类型，主要有以下几种方式：
 
-Kubernetes 从 1.6 版本开始包含一个内建的资源叫做 TPR（ThirdPartyResource），可以用它来创建自定义资源，但该资源在 Kubernetes 1.7 版本开始已被 CRD（CustomResourceDefinition）取代。
+### 1. 自定义资源定义（CRD）
 
-## 扩展 API
+**推荐指数：⭐⭐⭐⭐⭐**
 
-自定义资源实际上是为了扩展 Kubernetes 的 API，向 Kubernetes API 中增加新类型，可以使用以下三种方式：
+CustomResourceDefinition (CRD) 是最简单、最常用的扩展方式，适用于大多数场景。
 
-- 修改 Kubernetes 的源码，显然难度比较高，也不太合适
-- 创建自定义 API server 并聚合到 API 中
+**优势：**
 
-编写自定义资源是扩展 Kubernetes API 的最简单的方式，是否编写自定义资源来扩展 API 请参考 [Should I add a custom resource to my Kubernetes Cluster?](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)，行动前请先考虑以下几点：
+- 无需编写额外代码，声明式定义
+- 自动获得 CRUD API 和存储支持
+- 与 kubectl、客户端库完全兼容
+- 支持 OpenAPI 规范和数据验证
+- 内置版本控制和转换
 
-- 你的 API 是否属于 [声明式的](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#declarative-apis)
-- 是否想使用 kubectl 命令来管理
-- 是否要作为 Kubernetes 中的对象类型来管理，同时显示在 Kubernetes dashboard 上
-- 是否可以遵守 Kubernetes 的 API 规则限制，例如 URL 和 API group、namespace 限制
-- 是否可以接受该 API 只能作用于集群或者 namespace 范围
-- 想要复用 Kubernetes API 的公共功能，比如 CRUD、watch、内置的认证和授权等
+**适用场景：**
 
-如果这些都不是你想要的，那么你可以开发一个独立的 API。
+- 配置管理
+- 应用部署抽象
+- Operator 模式实现
+- 业务对象建模
 
-### CRD
+### 2. 聚合 API Server
 
-参考下面的 CRD，resourcedefinition.yaml：
+**推荐指数：⭐⭐⭐⭐**
+
+通过 API 聚合层集成独立的 API Server，提供更强大的功能和灵活性。
+
+**优势：**
+
+- 完全自定义的 API 逻辑
+- 支持自定义存储后端
+- 可提供实时计算和动态数据
+- 更好的性能控制
+
+**适用场景：**
+
+- 复杂的数据处理逻辑
+- 实时监控和指标 API
+- 需要特殊存储方案的场景
+- 与外部系统深度集成
+
+### 3. 修改 Kubernetes 源码
+
+**推荐指数：⭐**
+
+直接修改 Kubernetes 核心代码，一般不推荐。
+
+**劣势：**
+
+- 维护成本极高
+- 升级困难
+- 需要深度理解 Kubernetes 内部机制
+
+## 自定义资源定义（CRD）详解
+
+### 基础概念
+
+自定义资源允许用户在 Kubernetes 集群中定义和使用自己的 API 对象类型。每个自定义资源都会像内置的 Pod、Service 等资源一样：
+
+- 存储在 etcd 中
+- 通过 Kubernetes API server 提供 RESTful API
+- 支持 kubectl 命令操作
+- 集成到 RBAC 权限系统
+
+### 何时使用 CRD
+
+在决定使用 CRD 之前，请考虑以下条件：
+
+✅ **适合使用 CRD 的场景：**
+
+- 你的 API 属于声明式的
+- 想使用 kubectl 命令来管理
+- 希望作为 Kubernetes 对象显示在 Dashboard 上
+- 可以遵守 Kubernetes API 规则限制
+- 可以接受 namespace 或 cluster 范围的限制
+- 想复用 Kubernetes API 的公共功能（CRUD、watch、认证授权等）
+
+❌ **不适合 CRD 的场景：**
+
+- 需要复杂的计算逻辑
+- 需要实时数据查询
+- 需要自定义存储后端
+- API 不是声明式的
+
+### 创建 CRD
+
+#### 1. 基础 CRD 定义
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  # 名称必须符合下面的格式：<plural>.<group>
+  # 名称必须符合格式：<plural>.<group>
   name: crontabs.stable.example.com
 spec:
   # REST API 使用的组名称：/apis/<group>/<version>
   group: stable.example.com
-  # REST API 使用的版本号：/apis/<group>/<version>
-  version: v1
-  # Namespaced 或 Cluster
+  # API 版本定义
+  versions:
+  - name: v1
+    # 是否启用该版本
+    served: true
+    # 是否作为存储版本（有且仅有一个版本可设置为 true）
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              cronSpec:
+                type: string
+                pattern: '^(\d+|\*)(/\d+)?(\s+(\d+|\*)(/\d+)?){4}$'
+                description: "Cron 表达式"
+              image:
+                type: string
+                minLength: 1
+                description: "容器镜像"
+              replicas:
+                type: integer
+                minimum: 1
+                maximum: 100
+                default: 1
+                description: "副本数量"
+          status:
+            type: object
+            properties:
+              conditions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    status:
+                      type: string
+                    lastTransitionTime:
+                      type: string
+                      format: date-time
+  # 资源范围：Namespaced 或 Cluster
   scope: Namespaced
   names:
-    # URL 中使用的复数名称: /apis/<group>/<version>/<plural>
+    # URL 中使用的复数名称
     plural: crontabs
     # CLI 中使用的单数名称
     singular: crontab
-    # CamelCased 格式的单数类型。在清单文件中使用
+    # 清单文件中使用的类型名称
     kind: CronTab
     # CLI 中使用的资源简称
     shortNames:
     - ct
+    # 资源分类，便于批量操作
+    categories:
+    - all
+    - batch
 ```
 
-创建该 CRD：
+#### 2. 创建和验证 CRD
 
 ```bash
-kubectl create -f resourcedefinition.yaml
+# 创建 CRD
+kubectl apply -f crd-definition.yaml
+
+# 验证 CRD 创建
+kubectl get crd crontabs.stable.example.com
+
+# 查看 API 资源
+kubectl api-resources | grep crontab
 ```
 
-访问 RESTful API 端点如 `http://172.20.0.113:8080` 将看到如下 API 端点已创建：
+### 高级特性
 
-```bash
-/apis/stable.example.com/v1/namespaces/*/crontabs/...
-```
+#### 1. 自定义打印列
 
-**创建自定义对象**
-
-如下所示：
+自定义 `kubectl get` 输出格式：
 
 ```yaml
-apiVersion: "stable.example.com/v1"
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+spec:
+  # ...existing code...
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    additionalPrinterColumns:
+    - name: Spec
+      type: string
+      description: Cron 规范
+      jsonPath: .spec.cronSpec
+    - name: Replicas
+      type: integer
+      description: 副本数量
+      jsonPath: .spec.replicas
+    - name: Age
+      type: date
+      jsonPath: .metadata.creationTimestamp
+    - name: Status
+      type: string
+      description: 状态
+      jsonPath: .status.phase
+      priority: 1  # 仅在 -o wide 时显示
+    # ...existing code...
+```
+
+#### 2. 子资源支持
+
+##### Status 子资源
+
+启用 status 子资源，分离 spec 和 status 管理：
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+spec:
+  # ...existing code...
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    subresources:
+      status: {}
+    # ...existing code...
+```
+
+##### Scale 子资源
+
+支持 HPA 和 `kubectl scale` 命令：
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+spec:
+  # ...existing code...
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    subresources:
+      status: {}
+      scale:
+        specReplicasPath: .spec.replicas
+        statusReplicasPath: .status.replicas
+        labelSelectorPath: .status.labelSelector
+    # ...existing code...
+```
+
+#### 3. Finalizer（终结器）
+
+实现异步删除前置操作：
+
+```yaml
+apiVersion: stable.example.com/v1
 kind: CronTab
 metadata:
-  name: my-new-cron-object
+  name: my-cron-with-finalizer
+  finalizers:
+  - crontab.finalizers.stable.example.com/cleanup
 spec:
-  cronSpec: "* * * * /5"
+  cronSpec: "*/5 * * * *"
   image: my-awesome-cron-image
 ```
 
-引用该自定义资源的 API 创建对象。
+### 管理自定义资源
 
-**终止器**
-
-可以为自定义对象添加一个终止器，如下所示：
+#### 创建自定义资源实例
 
 ```yaml
-apiVersion: "stable.example.com/v1"
+apiVersion: stable.example.com/v1
 kind: CronTab
 metadata:
-  finalizers:
-  - finalizer.stable.example.com
+  name: my-new-cron-object
+  namespace: default
+spec:
+  cronSpec: "*/5 * * * *"
+  image: my-awesome-cron-image
+  replicas: 3
 ```
 
-删除自定义对象前，异步执行的钩子。对于具有终止器的一个对象，删除请求仅仅是为`metadata.deletionTimestamp` 字段设置一个值，而不是删除它，这将触发监控该对象的控制器执行他们所能处理的任意终止器。
+#### 使用 kubectl 管理
 
-详情参考：[Extend the Kubernetes API with CustomResourceDefinitions](https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/)
+```bash
+# 创建资源
+kubectl apply -f my-crontab.yaml
 
-## 自定义控制器
+# 查看资源
+kubectl get crontabs
+kubectl get ct  # 使用简称
 
-单纯设置了自定义资源，并没有什么用，只有跟自定义控制器结合起来，才能将资源对象中的声明式 API 翻译成用户所期望的状态。自定义控制器可以用来管理任何资源类型，但是一般是跟自定义资源结合使用。
+# 查看详细信息
+kubectl describe crontab my-new-cron-object
 
-请参考使用 [Operator](https://coreos.com/blog/introducing-operators.html) 模式，该模式可以让开发者将自己的领域知识转换成特定的 Kubernetes API 扩展。
+# 扩容（如果启用了 scale 子资源）
+kubectl scale --replicas=5 crontabs/my-new-cron-object
 
-## API server 聚合
+# 删除资源
+kubectl delete crontab my-new-cron-object
+```
 
-Aggregated（聚合的）API  server 是为了将原来的 API server 这个巨石（monolithic）应用给拆分成，为了方便用户开发自己的 API server 集成进来，而不用直接修改 kubernetes 官方仓库的代码，这样一来也能将 API server 解耦，方便用户使用实验特性。这些 API server 可以跟 core API server 无缝衔接，使用 kubectl 也可以管理它们。
+## 聚合 API Server
 
-详情参考 [Aggregated API Server](../aggregated-api-server)。
+### 架构概述
 
-## 参考
+聚合 API Server 通过 API 聚合层（kube-aggregator）实现多个 API Server 的统一管理：
 
-- [Custom Resources - kubernetes.io](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)
-- [Extend the Kubernetes API with CustomResourceDefinitions - kubernetes.io](https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/)
-- [Introducing Operators: Putting Operational Knowledge into Software - coreos.com](https://coreos.com/blog/introducing-operators.html)
+![聚合 API Server 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/aggregated-api-server-architecture.svg)
+{width=800 height=600}
+
+### 核心组件
+
+#### kube-aggregator
+
+聚合层的核心组件，负责：
+
+- **API 注册管理**：通过 APIService 资源注册外部 API Server
+- **请求路由**：根据 API 路径路由客户端请求
+- **服务发现**：自动发现和监控 API Server 状态
+- **证书管理**：处理 TLS 通信认证
+
+#### 工作流程
+
+1. **注册阶段**：外部 API Server 通过 APIService 向聚合层注册
+2. **发现阶段**：聚合层验证并存储 API Server 元数据
+3. **路由阶段**：客户端请求通过聚合层路由到对应的 API Server
+4. **响应阶段**：聚合层将结果返回给客户端
+
+### 配置聚合 API Server
+
+#### 1. 启用聚合功能
+
+现代 Kubernetes 集群（v1.7+）默认启用，可通过以下参数确认：
+
+```bash
+# kube-apiserver 启动参数
+--enable-aggregator-routing=true
+--proxy-client-cert-file=/path/to/aggregator-proxy.crt
+--proxy-client-key-file=/path/to/aggregator-proxy.key
+--requestheader-client-ca-file=/path/to/front-proxy-ca.crt
+--requestheader-allowed-names=front-proxy-client
+--requestheader-extra-headers-prefix=X-Remote-Extra-
+--requestheader-group-headers=X-Remote-Group
+--requestheader-username-headers=X-Remote-User
+```
+
+#### 2. 创建 APIService
+
+```yaml
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1alpha1.custom.example.com
+spec:
+  group: custom.example.com
+  version: v1alpha1
+  # 指向自定义 API Server 的 Service
+  service:
+    name: custom-api-server
+    namespace: custom-system
+    port: 443
+  # API 优先级设置
+  groupPriorityMinimum: 100
+  versionPriority: 15
+  # 是否跳过 TLS 验证（生产环境不推荐）
+  insecureSkipTLSVerify: false
+  # CA Bundle for TLS verification
+  caBundle: LS0tLS1CRUdJTi...  # base64 encoded CA certificate
+```
+
+#### 3. 部署自定义 API Server
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-api-server
+  namespace: custom-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: custom-api-server
+  template:
+    metadata:
+      labels:
+        app: custom-api-server
+    spec:
+      containers:
+      - name: api-server
+        image: custom/api-server:latest
+        ports:
+        - containerPort: 8443
+          name: webhook-api
+        volumeMounts:
+        - name: webhook-tls-certs
+          mountPath: /etc/certs
+          readOnly: true
+        env:
+        - name: TLS_CERT_FILE
+          value: /etc/certs/tls.crt
+        - name: TLS_PRIVATE_KEY_FILE
+          value: /etc/certs/tls.key
+      volumes:
+      - name: webhook-tls-certs
+        secret:
+          secretName: api-server-certs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-api-server
+  namespace: custom-system
+spec:
+  selector:
+    app: custom-api-server
+  ports:
+  - port: 443
+    targetPort: webhook-api
+    protocol: TCP
+    name: webhook-api
+```
+
+### 开发自定义 API Server
+
+#### 基础结构
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "net/http"
+    
+    "k8s.io/apimachinery/pkg/runtime"
+    "k8s.io/apimachinery/pkg/runtime/schema"
+    "k8s.io/apiserver/pkg/registry/rest"
+    genericapiserver "k8s.io/apiserver/pkg/server"
+    "k8s.io/apiserver/pkg/server/options"
+)
+
+// 定义 API 组和版本
+var (
+    GroupName = "custom.example.com"
+    GroupVersion = schema.GroupVersion{
+        Group:   GroupName,
+        Version: "v1alpha1",
+    }
+)
+
+// 实现 REST Storage 接口
+type CustomREST struct {
+    // 存储实现
+}
+
+func (r *CustomREST) New() runtime.Object {
+    return &Custom{}
+}
+
+func (r *CustomREST) Create(ctx context.Context, obj runtime.Object, createValidation rest.ValidateObjectFunc, options *metav1.CreateOptions) (runtime.Object, error) {
+    // 创建逻辑
+    return obj, nil
+}
+
+// 主函数
+func main() {
+    // 配置和启动 API Server
+    recommendedOptions := options.NewRecommendedOptions("", nil)
+    
+    config := genericapiserver.NewRecommendedConfig(codecs)
+    server, err := config.Complete().New("custom-api-server", genericapiserver.NewEmptyDelegate())
+    if err != nil {
+        panic(err)
+    }
+    
+    // 注册 API 路由
+    apiGroupInfo := genericapiserver.NewDefaultAPIGroupInfo(GroupName, Scheme, metav1.ParameterCodec, Codecs)
+    apiGroupInfo.VersionedResourcesStorageMap[GroupVersion.Version] = map[string]rest.Storage{
+        "customs": &CustomREST{},
+    }
+    
+    server.InstallAPIGroup(&apiGroupInfo)
+    
+    // 启动服务器
+    server.PrepareRun().Run(context.Background())
+}
+```
+
+## 选择合适的扩展方式
+
+### 决策流程
+
+```mermaid
+flowchart TD
+    A[需要扩展 Kubernetes API] --> B{是否需要复杂逻辑？}
+    B -->|否| C{是否需要存储状态？}
+    B -->|是| D[聚合 API Server]
+    C -->|是| E[使用 CRD]
+    C -->|否| F[考虑 ConfigMap/Secret]
+    E --> G{需要控制器逻辑？}
+    G -->|是| H[CRD + Controller/Operator]
+    G -->|否| I[纯 CRD]
+    D --> J{是否需要自定义存储？}
+    J -->|是| K[完全自定义 API Server]
+    J -->|否| L[聚合 API + etcd]
+```
+
+### 对比表格
+
+| 特性 | CRD | 聚合 API Server | 修改源码 |
+|------|-----|-----------------|----------|
+| **实现难度** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **维护成本** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **功能灵活性** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **性能** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **存储自定义** | ❌ | ✅ | ✅ |
+| **版本兼容性** | ✅ | ⭐⭐⭐ | ❌ |
+
+## 最佳实践
+
+### CRD 最佳实践
+
+1. **版本管理**
+   - 使用语义化版本号
+   - 支持多版本并存和转换
+   - 合理设置 storage 版本
+
+2. **Schema 设计**
+   - 提供详细的字段描述
+   - 设置合理的默认值和约束
+   - 使用适当的验证规则
+
+3. **命名规范**
+   - 使用有意义的资源名称
+   - 遵循 Kubernetes 命名约定
+   - 提供合适的短名称和分类
+
+### 聚合 API Server 最佳实践
+
+1. **安全性**
+   - 正确配置 TLS 证书
+   - 启用 RBAC 访问控制
+   - 实现适当的认证授权
+
+2. **可靠性**
+   - 实现健康检查端点
+   - 添加监控和告警
+   - 设计优雅关闭机制
+
+3. **性能优化**
+   - 实现连接池和缓存
+   - 设置合理的超时参数
+   - 监控资源使用情况
+
+### 通用最佳实践
+
+1. **API 设计**
+   - 遵循 RESTful 原则
+   - 实现标准的 Kubernetes API 约定
+   - 提供清晰的错误响应
+
+2. **运维考虑**
+   - 实现适当的 Finalizer 逻辑
+   - 提供完整的状态管理
+   - 支持备份和恢复
+
+3. **文档和测试**
+   - 提供详细的 API 文档
+   - 编写完整的测试用例
+   - 提供使用示例和最佳实践
+
+## 总结
+
+Kubernetes 提供了灵活多样的 API 扩展方式：
+
+- **CRD** 适合大多数场景，简单易用，是首选方案
+- **聚合 API Server** 适合需要复杂逻辑和自定义存储的场景
+- **修改源码** 仅在极特殊情况下考虑
+
+选择合适的扩展方式，遵循最佳实践，可以构建出既强大又易维护的 Kubernetes 扩展功能。
+
+## 参考资料
+
+- [Custom Resources - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+- [Extend the Kubernetes API with CustomResourceDefinitions - kubernetes.io](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+- [API Aggregation - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+- [Kubernetes Operators - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)

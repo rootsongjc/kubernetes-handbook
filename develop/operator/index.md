@@ -1,5 +1,5 @@
 ---
-weight: 108
+weight: 109
 linktitle: Operator
 title: Kubernetes Operator
 summary: 深入了解 Kubernetes Operator 的原理、架构、应用场景和最佳实践。
@@ -32,7 +32,7 @@ Kubernetes Operator 是一种扩展 Kubernetes API 的方法，用于自动化�
 ### 核心组件
 
 ```mermaid "Operator 核心组件"
-graph TD
+graph LR
   A[Custom Resource] --> B[Custom Controller]
   B --> C[Kubernetes API]
   C --> D[Workloads]

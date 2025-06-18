@@ -2,6 +2,7 @@
 weight: 4
 title: Kubernetes 的设计理念
 date: '2022-05-21T00:00:00+08:00'
+description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
 keywords:
 - api
@@ -15,9 +16,6 @@ keywords:
 - 设计
 - 集群
 ---
-
-
-这一章将介绍 Kubernetes 的设计理念及基本概念。
 
 ## Kubernetes 设计理念与分布式系统
 

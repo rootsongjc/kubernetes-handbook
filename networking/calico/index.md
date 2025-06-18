@@ -4,6 +4,7 @@ title: 非 Overlay 扁平网络 Calico
 linktitle: Calico
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 'Calico 是一个基于 eBPF 和 iptables 的云原生网络和安全解决方案，提供扁平三层网络架构，支持灵活的网络策略和高性能容器网络互联。'
 keywords:
 - bgp
 - calico
@@ -15,156 +16,200 @@ keywords:
 - 网络
 - 路由
 - 集群
+- ebpf
 ---
 
-
-[Calico](https://www.projectcalico.org/) 原意为”有斑点的“，如果说一只猫为 calico cat 的话，就是说这是只花猫，也叫三色猫，所以 calico 的 logo 是只三色猫。
+[Calico](https://www.projectcalico.org/) 原意为"有斑点的"，如果说一只猫为 calico cat 的话，就是说这是只花猫，也叫三色猫，所以 Calico 的 logo 是只三色猫。Calico 是一个开源的云原生网络和网络安全解决方案，为容器、虚拟机和基于主机的工作负载提供网络连接和网络安全策略。
 
 ![Calico logo](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/calico/calico-logo.webp)
 {width=441 height=424}
 
-## 概念
+## 核心特性
 
 Calico 创建和管理一个扁平的三层网络（不需要 overlay），每个容器会分配一个可路由的 IP。由于通信时不需要解包和封包，网络性能损耗小，易于排查，且易于水平扩展。
 
-小规模部署时可以通过 BGP client 直接互联，大规模下可通过指定的 BGP Route Reflector 来完成，这样保证所有的数据流量都是通过 IP 路由的方式完成互联的。
+主要特性包括：
 
-Calico 基于 iptables 还提供了丰富而灵活的网络 Policy，保证通过各个节点上的 ACL 来提供 Workload 的多租户隔离、安全组以及其他可达性限制等功能。
+- **高性能网络**：基于标准 Linux 网络栈，支持 eBPF 和 XDP 加速
+- **扁平网络架构**：无需 overlay 网络，减少网络延迟和复杂性
+- **灵活的网络策略**：支持 Kubernetes NetworkPolicy 和 Calico 扩展策略
+- **多种数据平面**：支持 iptables、IPVS 和 eBPF 数据平面
+- **跨平台支持**：支持 Kubernetes、OpenShift、Docker、OpenStack 等平台
 
-## Calico 架构
+小规模部署时可以通过 BGP client 直接互联，大规模部署可通过指定的 BGP Route Reflector 来完成，确保所有数据流量都通过 IP 路由的方式完成互联。
 
-Calico 由以下组件组成，在部署 Calico 的时候部分组件是可选的。
+## 架构概览
 
-- [Calico API server](https://projectcalico.docs.tigera.io/reference/architecture/overview#calico-api-server)
-- [Felix](https://projectcalico.docs.tigera.io/reference/architecture/overview#felix)
-- [BIRD](https://projectcalico.docs.tigera.io/reference/architecture/overview#bird)
-- [confd](https://projectcalico.docs.tigera.io/reference/architecture/overview#confd)
-- [Dikastes](https://projectcalico.docs.tigera.io/reference/architecture/overview#dikastes)
-- [CNI 插件](https://projectcalico.docs.tigera.io/reference/architecture/overview#cni-plugin)
-- [数据存储插件](https://projectcalico.docs.tigera.io/reference/architecture/overview#datastore-plugin)
-- [IPAM 插件](https://projectcalico.docs.tigera.io/reference/architecture/overview#ipam-plugin)
-- [kube-controllers](https://projectcalico.docs.tigera.io/reference/architecture/overview#kube-controllers)
-- [Typha](https://projectcalico.docs.tigera.io/reference/architecture/overview#typha)
-- [calicoctl](https://projectcalico.docs.tigera.io/reference/architecture/overview#calicoctl)
-- [云编排器插件](https://projectcalico.docs.tigera.io/reference/architecture/overview#plugins-for-cloud-orchestrators)
-
-Calico 的架构图如下所示：
+Calico 采用分布式架构，由多个组件协同工作，在部署时部分组件是可选的。
 
 ![Calico 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/calico/calico-architecture.webp)
 {width=2580 height=1738}
 
-### Calico API Server
+### 核心组件
 
-可以使用 kubectl 直接管理 Calico。
+#### Felix
 
-### Felix
+Felix 是 Calico 的核心代理，以 DaemonSet 形式在每个节点上运行，负责：
 
-Felix 以 agent 代理的形式在每台机器端点上运行。对路由和 ACL 以及主机编程，为该主机上的端点提供所需的连接。
+- **接口管理**：配置虚拟网卡和路由表，确保容器网络接口正确配置
+- **路由编程**：将本节点的端点路由信息写入 Linux 内核 FIB
+- **安全策略执行**：通过 iptables 或 eBPF 程序实施网络安全策略
+- **状态上报**：监控网络健康状态并上报异常
 
-根据具体的编排器环境，Felix 负责：
+#### Calico API Server
 
-**接口管理**
+Calico API Server 提供 Kubernetes 原生的 API 接口，让用户可以：
 
-将有关接口的信息编入内核，以便内核能够正确处理来自该端点的流量。特别是，确保主机响应来自每个工作负载的 ARP 请求，提供主机的 MAC，并为它所管理的接口启用 IP 转发。它还监控接口，以确保编程在适当的时候应用。
+- 使用 `kubectl` 直接管理 Calico 资源
+- 享受 Kubernetes RBAC 和审计功能
+- 集成现有的 Kubernetes 工具链
 
-**路由编程**
+#### BIRD
 
-将其主机上的端点的路由编程到 Linux 内核的 FIB（转发信息库）。这可以确保到达主机上的以这些端点为目的地的数据包被相应地转发。
+BGP Internet Routing Daemon (BIRD) 负责路由发现和分发：
 
-**ACL 编程**
+- **路由分发**：将本节点的路由信息通过 BGP 协议分发给其他节点
+- **路由学习**：从其他节点学习路由信息并更新本地路由表
+- **BGP 对等**：与其他 BIRD 实例或网络设备建立 BGP 会话
 
-在 Linux 内核中编程 ACL，以确保只有有效的流量可以在端点之间发送，并且端点不能规避 Calico 的安全措施。
+#### Typha
 
-**状态报告**
+Typha 是一个可选的扩展组件，主要用于大规模集群：
 
-提供网络健康数据。特别是在配置其主机时报告错误和问题。这些数据被写入数据存储，以便对网络的其他组件和运营商可见。
+- **连接代理**：代理 Felix 与数据存储的连接，减少数据存储负载
+- **事件分发**：缓存和过滤数据存储事件，减少不必要的网络传输
+- **性能优化**：在超过 100 个节点的集群中显著提升性能
 
-### BIRD
+### 插件组件
 
-BGP Internet Routing Daemon，简称 BIRD。从 Felix 获取路由，并分发到网络上的 BGP peer，用于主机间的路由。在每个 Felix 代理的节点上运行。
+#### CNI 插件
 
-BGP 客户端负责：
+Calico CNI 插件实现容器网络接口规范：
 
-**路由分配**
+- **IP 地址分配**：为新创建的 Pod 分配 IP 地址
+- **网络接口配置**：创建和配置 veth pair 等网络接口
+- **路由配置**：配置容器到主机的路由规则
 
-当 Felix 将路由插入 Linux 内核的 FIB 时，BGP 客户端将它们分配给部署中的其他节点。这确保了部署中的有效流量路由。
+#### IPAM 插件
 
-**BGP 路由反射器的配置**
+IP 地址管理插件负责：
 
-BGP 路由反射器通常是为大型部署而配置的，而不是一个标准的 BGP 客户端。BGP 路由反射器作为连接 BGP 客户端的一个中心点。(标准 BGP 要求每个 BGP 客户端在网状拓扑结构中与其他每个 BGP 客户端连接，这很难维护)。
+- **IP 池管理**：管理可分配的 IP 地址池
+- **地址分配**：为 Pod 分配唯一的 IP 地址
+- **地址回收**：回收已删除 Pod 的 IP 地址
 
-为了实现冗余，你可以无缝部署多个 BGP 路由反射器。BGP 路由反射器只参与网络的控制：没有终端数据通过它们。当 Calico BGP 客户端将其 FIB 中的路由通告给路由反射器时，路由反射器将这些路由通告给部署中的其他节点。
+### 控制器组件
 
-### confd
+#### kube-controllers
 
-开源的、轻量级的配置管理工具。监控 Calico 数据存储对 BGP 配置和全局默认的日志变更，如 AS 号、日志级别和 IPAM 信息。
+监控 Kubernetes API 变化并执行相应操作的控制器集合：
 
-Confd 根据存储中的数据更新，动态生成 BIRD 配置文件。当配置文件发生变化时，confd 会触发 BIRD 加载新的文件。
+- **Policy Controller**：将 Kubernetes NetworkPolicy 转换为 Calico 策略
+- **Namespace Controller**：管理命名空间相关的网络配置
+- **Node Controller**：监控节点状态和网络配置
+- **WorkloadEndpoint Controller**：管理工作负载端点信息
 
-### Dikastes
+#### confd
 
-执行 Istio 服务网格的网络策略。作为 Istio Envoy 的一个 Sidecar 代理，在集群上运行。
+轻量级配置管理工具：
 
-Dikastes 是可选的。Calico 在 Linux 内核（使用 iptables，在三、四层）和三到七层使用 Envoy 的 Sidecar 代理 Dikastes 为工作负载执行网络策略，对请求进行加密认证。使用多个执行点可以根据多个标准确定远程端点的身份。即使工作负载 Pod 破坏，Envoy 代理被绕过，主机 Linux 内核的执行也能保护你的工作负载。
+- **配置同步**：监控数据存储中的配置变化
+- **动态更新**：自动生成和更新 BIRD 配置文件
+- **服务重载**：在配置变化时自动重启相关服务
 
-### CNI 插件
+### 数据存储
 
-为 Kubernetes 集群提供 Calico 网络。
+Calico 支持两种数据存储方式：
 
-向 Kubernetes 展示该 API 的 Calico 二进制文件被称为 CNI 插件，必须安装在 Kubernetes 集群的每个节点上。Calico CNI 插件允许你为任何使用 CNI  网络规范的编排调度器使用 Calico 网络。
+#### Kubernetes API Datastore (KDD)
 
-### 数据存储插件
+使用 Kubernetes API 作为数据存储的优势：
 
-通过减少每个节点对数据存储的影响来增加规模。它是 Calico CNI 的插件之一。
+- **简化管理**：无需额外的数据存储组件
+- **集成 RBAC**：利用 Kubernetes 的权限控制机制
+- **审计日志**：利用 Kubernetes 的审计功能
 
-**Kubernetes API datastore（kdd）**
+#### etcd
 
-在 Calico 中使用 Kubernetes API 数据存储（kdd）的优点是：
+独立的 etcd 集群提供：
 
-- 管理更简单，因为不需要额外的数据存储
-- 使用 Kubernetes RBAC 来控制对 Calico 资源的访问
-- 使用 Kubernetes 审计日志来生成对 Calico 资源变化的审计日志
+- **跨平台支持**：支持非 Kubernetes 环境
+- **关注点分离**：独立扩展网络数据存储
+- **混合部署**：支持多集群和裸机混合场景
 
-**etcd**
+### 可选组件
 
-etcd 是一个一致的、高可用的分布式键值存储，为 Calico 网络提供数据存储，并用于组件之间的通信。etcd 仅支持保护非集群主机（从 Calico v3.1 开始）。etcd 的优点是：
+#### Dikastes
 
-- 让你在非 Kubernetes 平台上运行 Calico
-- 分离 Kubernetes 和 Calico 资源之间的关注点，例如允许你独立地扩展数据存储。
-- 让你运行的 Calico 集群不仅仅包含一个 Kubernetes 集群，例如，让带有 Calico 主机保护的裸机服务器与 Kubernetes 集群互通；或者多个 Kubernetes 集群。
+服务网格策略执行组件：
 
-### IPAM 插件
+- **七层策略**：执行应用层网络策略
+- **Istio 集成**：作为 Envoy Sidecar 运行
+- **加密认证**：提供请求级别的安全控制
 
-使用 Calico 的 IP 池资源来控制如何将 IP 地址分配给集群中的 pod。它是大多数 Calico 安装所使用的默认插件。它是 Calico CNI 插件之一。
+#### calicoctl
 
-### kube-controller
+命令行管理工具：
 
-监控 Kubernetes 的 API，并根据集群状态执行行动。
+- **资源管理**：创建、查看、更新 Calico 资源
+- **故障诊断**：提供网络诊断和调试功能
+- **配置导入导出**：支持配置的备份和迁移
 
-`tigera/kube-controllers` 容器包括以下控制器：
+## 数据平面技术
 
-- Policy 控制器
-- Namespace 控制器
-- ServiceAccount 控制器
-- WorkloadEndpoint 控制器
-- Node 控制器
+### eBPF 数据平面
 
-### Typha
+Calico 支持基于 eBPF 的高性能数据平面：
 
-通过减少每个节点对数据存储的影响来增加规模。作为数据存储和 Felix 实例之间的一个守护程序运行。默认安装，但没有配置。
+- **内核级处理**：在内核空间处理网络包，避免用户空间开销
+- **更好的性能**：相比 iptables 提供更低的延迟和更高的吞吐量
+- **源 IP 保持**：支持保持原始源 IP 地址
 
-Typha 代表 Felix 和 confd 等所有客户端维护一个单一的数据存储连接。它缓存数据存储的状态，并复制事件，以便它们可以被推广到更多监听器。因为一个 Typha 实例可以支持数百个 Felix 实例，可以将数据存储的负载降低很多。由于 Typha 可以过滤掉与 Felix 无关的更新，它也减少了 Felix 的 CPU 使用。在一个大规模（100 多个节点）的 Kubernetes 集群中，这是至关重要的，因为 API 服务器产生的更新数量随着节点数量的增加而增加。
+### iptables 数据平面
 
-### calicoctl
+传统的基于 iptables 的数据平面：
 
-Calicoctl 命令行作为二进制或容器需要单独安装，可以在任何可以通过网络访问 Calico 数据存储的主机上使用。
+- **成熟稳定**：经过长期验证的网络处理方式
+- **广泛支持**：在各种 Linux 发行版上都有很好的支持
+- **调试友好**：使用标准的 Linux 网络工具进行调试
 
-## 云编排器插件
+## 网络策略
 
-将管理网络的编排器 API 翻译成 Calico 的数据模型和数据存储。
+Calico 提供强大的网络安全策略功能：
 
-对于云供应商，Calico 为每个主要的云编排平台提供了一个单独的插件。这使得 Calico 能够与编排器紧密结合，因此用户可以使用他们的编排器工具来管理 Calico 网络。当需要时，编排器插件会将 Calico 网络的反馈信息提供给编排器。例如，提供关于 Felix liveness 的信息，并在网络设置失败时将特定端点标记为失败。
+### Kubernetes NetworkPolicy
 
-## 参考
+完全兼容 Kubernetes 原生的 NetworkPolicy：
 
-- [Calico 组件架构 - docs.projectcalico.org](https://docs.tigera.io/calico/latest/reference/architecture/overview)
+- **入站规则**：控制进入 Pod 的流量
+- **出站规则**：控制从 Pod 发出的流量
+- **标签选择器**：基于标签进行流量控制
+
+### Calico 扩展策略
+
+提供更丰富的策略功能：
+
+- **全局网络策略**：跨命名空间的策略控制
+- **主机端点策略**：保护主机网络接口
+- **服务策略**：基于 Kubernetes Service 的策略
+- **七层策略**：应用层协议的流量控制
+
+## 部署模式
+
+### BGP 网络模式
+
+- **Full Mesh**：所有节点之间建立 BGP 会话
+- **Route Reflector**：通过路由反射器减少 BGP 会话数量
+- **AS Per Rack**：为每个机架分配独立的 AS 号
+
+### 网络拓扑
+
+- **扁平网络**：所有 Pod 在同一个大二层网络中
+- **分段网络**：根据命名空间或其他标准进行网络分段
+- **跨云部署**：支持多云和混合云环境
+
+## 参考资料
+
+- [Calico 官方文档](https://docs.tigera.io/calico/latest/)
+- [Calico 架构概览](https://docs.tigera.io/calico/latest/reference/architecture/overview)
+- [eBPF 数据平面](https://docs.tigera.io/calico/latest/operations/ebpf/)

@@ -1,44 +1,51 @@
 ---
 weight: 102
 title: 使用 StatefulSet 部署有状态应用
+linktitle: 部署有状态应用
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 本文介绍如何使用 Kubernetes 的 StatefulSet 控制器部署有状态应用，以 ZooKeeper 和 Kafka 集群为例，详细说明 StatefulSet 的配置和使用方法。
 keywords:
-- dockerfile
-- hostname
-- kafka
-- sh
-- statefulset
-- yaml
-- zookeeper
-- 脚本
-- 配置文件
-- 镜像
+- StatefulSet
+- Kubernetes
+- ZooKeeper
+- Kafka
+- 有状态应用
+- 集群部署
+- Pod 管理
 ---
 
+[StatefulSet](../../concepts/statefulset) 是 Kubernetes 专门用来部署有状态应用的控制器，它为 Pod 提供稳定的身份标识，包括主机名、启动顺序、网络标识和持久化存储等特性。
 
-[StatefulSet](../../concepts/statefulset) 这个对象是专门用来部署用状态应用的，可以为 Pod 提供稳定的身份标识，包括 hostname、启动顺序、DNS 名称等。
+本文以部署 ZooKeeper 和 Kafka 集群为例，详细介绍 StatefulSet 的使用方法。其中 Kafka 依赖于 ZooKeeper，这种依赖关系正好展示了 StatefulSet 在部署复杂有状态应用时的优势。
 
-下面以在 Kubernetes1.6 版本中部署 zookeeper 和 kafka 为例讲解 StatefulSet 的使用，其中 kafka 依赖于 zookeeper。
+完整的配置文件和 Dockerfile 可以在 GitHub 仓库中找到：[zookeeper](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/kafka)。
 
-Dockerfile 和配置文件见 [zookeeper](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/zookeeper) 和 [kafka](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/kafka)。
+## StatefulSet 的核心特性
 
-**注**：所有的镜像基于 CentOS 系统的 JDK 制作，为我的私人镜像，外部无法访问，yaml 中没有配置持久化存储。
+在开始部署之前，让我们先了解 StatefulSet 的核心特性：
 
-## 部署 Zookeeper
+- **稳定的网络标识**：每个 Pod 都有唯一且稳定的网络标识
+- **有序部署和扩缩容**：Pod 按照顺序创建、删除和扩缩容
+- **稳定的持久化存储**：每个 Pod 都可以有自己的持久化存储
+- **有序的滚动更新**：更新时按照顺序进行，确保服务的稳定性
 
-Dockerfile 中从远程获取 zookeeper 的安装文件，然后在定义了三个脚本：
+## 部署 ZooKeeper 集群
 
-- zkGenConfig.sh：生成 zookeeper 配置文件
-- zkMetrics.sh：获取 zookeeper 的 metrics
-- zkOk.sh：用来做 ReadinessProb
+### ZooKeeper 镜像准备
 
-我们在来看下这三个脚本的执行结果。
+ZooKeeper 的 Docker 镜像包含以下核心脚本：
 
-zkMetrics.sh 脚本实际上执行的是下面的命令：
+- **zkGenConfig.sh**：动态生成 ZooKeeper 配置文件
+- **zkMetrics.sh**：获取 ZooKeeper 集群的监控指标
+- **zkOk.sh**：健康检查脚本，用于就绪和存活探针
+
+让我们查看这些脚本的功能：
+
+**监控指标获取（zkMetrics.sh）**：
 
 ```bash
-$ echo mntr | nc localhost $ZK_CLIENT_PORT >& 1
+$ echo mntr | nc localhost $ZK_CLIENT_PORT
 zk_version 3.4.6-1569965, built on 02/20/2014 09:09 GMT
 zk_avg_latency 0
 zk_max_latency 5
@@ -59,16 +66,16 @@ zk_synced_followers 1
 zk_pending_syncs 0
 ```
 
-zkOk.sh 脚本实际上执行的是下面的命令：
+**健康检查（zkOk.sh）**：
 
 ```bash
 $ echo ruok | nc 127.0.0.1 $ZK_CLIENT_PORT
 imok
 ```
 
-**zookeeper.yaml**
+### ZooKeeper StatefulSet 配置
 
-下面是启动三个 zookeeper 实例的 YAML 配置文件：
+以下是部署 3 节点 ZooKeeper 集群的完整配置：
 
 ```yaml
 ---
@@ -77,14 +84,14 @@ kind: Service
 metadata:
   name: zk-svc
   labels:
-    app: zk-svc
+    app: zk
 spec:
   ports:
   - port: 2888
     name: server
   - port: 3888
     name: leader-election
-  clusterIP: None
+  clusterIP: None  # Headless Service
   selector:
     app: zk
 ---
@@ -109,7 +116,7 @@ spec:
   selector:
     matchLabels:
       app: zk
-  minAvailable: 2
+  minAvailable: 2  # 确保至少 2 个实例可用
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -118,6 +125,9 @@ metadata:
 spec:
   serviceName: zk-svc
   replicas: 3
+  selector:
+    matchLabels:
+      app: zk
   template:
     metadata:
       labels:
@@ -136,11 +146,14 @@ spec:
       containers:
       - name: k8szk
         imagePullPolicy: Always
-        image: harbor-001.jimmysong.io/library/zookeeper:3.4.6
+        image: zookeeper:3.6.3  # 使用官方镜像
         resources:
           requests:
             memory: "2Gi"
             cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "1"
         ports:
         - containerPort: 2181
           name: client
@@ -149,29 +162,29 @@ spec:
         - containerPort: 3888
           name: leader-election
         env:
-        - name : ZK_REPLICAS
+        - name: ZK_REPLICAS
           value: "3"
-        - name : ZK_HEAP_SIZE
+        - name: ZK_HEAP_SIZE
           valueFrom:
             configMapKeyRef:
                 name: zk-cm
                 key: jvm.heap
-        - name : ZK_TICK_TIME
+        - name: ZK_TICK_TIME
           valueFrom:
             configMapKeyRef:
                 name: zk-cm
                 key: tick
-        - name : ZK_INIT_LIMIT
+        - name: ZK_INIT_LIMIT
           valueFrom:
             configMapKeyRef:
                 name: zk-cm
                 key: init
-        - name : ZK_SYNC_LIMIT
+        - name: ZK_SYNC_LIMIT
           valueFrom:
             configMapKeyRef:
                 name: zk-cm
                 key: tick
-        - name : ZK_MAX_CLIENT_CNXNS
+        - name: ZK_MAX_CLIENT_CNXNS
           valueFrom:
             configMapKeyRef:
                 name: zk-cm
@@ -202,48 +215,51 @@ spec:
             - "zkOk.sh"
           initialDelaySeconds: 10
           timeoutSeconds: 5
+          periodSeconds: 10
         livenessProbe:
           exec:
             command:
             - "zkOk.sh"
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           timeoutSeconds: 5
+          periodSeconds: 30
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
 ```
 
-我们再主要下上面那三个脚本的用途。
+### 配置说明
 
-## 部署 kafka
+1. **Headless Service**：`clusterIP: None` 确保每个 Pod 都有独立的 DNS 记录
+2. **PodDisruptionBudget**：确保滚动更新或节点维护时至少保持 2 个实例可用
+3. **Pod 反亲和性**：确保 ZooKeeper 实例分布在不同的节点上，提高可用性
+4. **资源限制**：合理设置资源请求和限制，确保性能和稳定性
 
-Kafka 的 docker 镜像制作跟 zookeeper 类似，都是从远程下载安装包后，解压安装。
+## 部署 Kafka 集群
 
-与 zookeeper 不同的是，只要一个脚本，但是又依赖于我们上一步安装的 zookeeper，kafkaGenConfig.sh 用来生成 kafka 的配置文件。
+### Kafka 配置生成脚本
 
-我们来看下这个脚本。
+Kafka 依赖于 ZooKeeper，需要动态生成配置文件。`kafkaGenConfig.sh` 脚本的核心逻辑：
 
 ```bash
 #!/bin/bash
 HOST=`hostname -s`
 if [[ $HOST =~ (.*)-([0-9]+)$ ]]; then
-        NAME=${BASH_REMATCH[1]}
-        ORD=${BASH_REMATCH[2]}
+    NAME=${BASH_REMATCH[1]}
+    ORD=${BASH_REMATCH[2]}
 else
-        echo "Failed to extract ordinal from hostname $HOST"
-        exit 1
+    echo "Failed to extract ordinal from hostname $HOST"
+    exit 1
 fi
 
 MY_ID=$((ORD+1))
-sed -i s"/broker.id=0/broker.id=$MY_ID/g" /opt/kafka/config/server.properties
-sed -i s'/zookeeper.connect=localhost:2181/zookeeper.connect=zk-0.zk-svc.brand.svc:2181,zk-1.zk-svc.brand.svc:2181,zk-2.zk-svc.brand.svc:2181/g' /opt/kafka/config/server.properties
+sed -i "s/broker.id=0/broker.id=$MY_ID/g" /opt/kafka/config/server.properties
+sed -i 's/zookeeper.connect=localhost:2181/zookeeper.connect=zk-0.zk-svc.default.svc.cluster.local:2181,zk-1.zk-svc.default.svc.cluster.local:2181,zk-2.zk-svc.default.svc.cluster.local:2181/g' /opt/kafka/config/server.properties
 ```
 
-该脚本根据 statefulset 生成的 pod 的 hostname 的后半截数字部分作为 broker ID，同时再替换 zookeeper 的地址。
+这个脚本根据 StatefulSet 生成的 Pod 主机名中的序号设置 Broker ID，并配置 ZooKeeper 连接地址。
 
-**Kafka.yaml**
-
-下面是创建 3 个 kafka 实例的 YAML 配置。
+### Kafka StatefulSet 配置
 
 ```yaml
 ---
@@ -255,7 +271,7 @@ metadata:
     app: kafka
 spec:
   ports:
-  - port: 9093
+  - port: 9092
     name: server
   clusterIP: None
   selector:
@@ -278,6 +294,9 @@ metadata:
 spec:
   serviceName: kafka-svc
   replicas: 3
+  selector:
+    matchLabels:
+      app: kafka
   template:
     metadata:
       labels:
@@ -308,33 +327,90 @@ spec:
       containers:
       - name: k8skafka
         imagePullPolicy: Always
-        image: harbor-001.jimmysong.io/library/kafka:2.10-0.8.2.1
+        image: confluentinc/cp-kafka:7.0.1  # 使用 Confluent 官方镜像
         resources:
           requests:
             memory: "1Gi"
             cpu: 500m
-        env:
-        - name: KF_REPLICAS
-          value: "3"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
         ports:
-        - containerPort: 9093
+        - containerPort: 9092
           name: server
-        command:
-        - /bin/bash
-        - -c
-        - "/opt/kafka/bin/kafkaGenConfig.sh && /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties"
         env:
+        - name: KAFKA_BROKER_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: "zk-0.zk-svc.default.svc.cluster.local:2181,zk-1.zk-svc.default.svc.cluster.local:2181,zk-2.zk-svc.default.svc.cluster.local:2181"
+        - name: KAFKA_ADVERTISED_LISTENERS
+          value: "PLAINTEXT://$(hostname -f):9092"
+        - name: KAFKA_LISTENERS
+          value: "PLAINTEXT://0.0.0.0:9092"
         - name: KAFKA_HEAP_OPTS
-          value : "-Xmx512M -Xms512M"
-        - name: KAFKA_OPTS
-          value: "-Dlogging.level=DEBUG"
+          value: "-Xmx1G -Xms1G"
+        - name: KAFKA_LOG_RETENTION_HOURS
+          value: "168"
+        - name: KAFKA_LOG_SEGMENT_BYTES
+          value: "1073741824"
+        - name: KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS
+          value: "300000"
         readinessProbe:
-           tcpSocket:
-             port: 9092
-           initialDelaySeconds: 15
-           timeoutSeconds: 1
+          tcpSocket:
+            port: 9092
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 9092
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          periodSeconds: 30
 ```
 
-## 参考
+## 部署和验证
 
-- [StatefulSet - kubernetes.io](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+### 部署步骤
+
+1. **部署 ZooKeeper**：
+
+   ```bash
+   kubectl apply -f zookeeper.yaml
+   ```
+
+2. **等待 ZooKeeper 就绪**：
+
+   ```bash
+   kubectl get pods -l app=zk
+   ```
+
+3. **部署 Kafka**：
+
+   ```bash
+   kubectl apply -f kafka.yaml
+   ```
+
+### 验证集群状态
+
+**检查 ZooKeeper 集群状态**：
+
+```bash
+kubectl exec zk-0 -- zkServer.sh status
+```
+
+**检查 Kafka 集群状态**：
+
+```bash
+kubectl exec kafka-0 -- kafka-topics.sh --bootstrap-server localhost:9092 --list
+```
+
+**创建测试 Topic**：
+
+```bash
+kubectl exec kafka-0 -- kafka-topics.sh --bootstrap-server localhost:9092 --topic test-topic --create --partitions 3 --replication-factor 3
+```
+
+## 最佳实践

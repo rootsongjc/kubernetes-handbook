@@ -3,6 +3,7 @@ weight: 86
 title: TLS Bootstrap
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: "介绍如何为 Kubernetes kubelet 配置 TLS 客户端证书自动引导，包括 kube-apiserver、kube-controller-manager 和 kubelet 的详细配置步骤。"
 keywords:
 - api
 - bootstrap
@@ -16,84 +17,92 @@ keywords:
 - 请求
 ---
 
+本文档详细介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）功能。
 
-本文档介绍如何为 kubelet 设置 TLS 客户端证书引导（bootstrap）。
-
-Kubernetes 1.4 引入了一个用于从集群级证书颁发机构（CA）请求证书的 API。此 API 的原始目的是为 kubelet 提供 TLS 客户端证书。可以在 [这里](https://github.com/kubernetes/kubernetes/pull/20439) 找到该提议，在 [feature #43](https://github.com/kubernetes/features/issues/43) 追踪该功能的进度。
+TLS Bootstrap 是 Kubernetes 1.4 引入的重要安全特性，它提供了一个从集群级证书颁发机构（CA）自动请求证书的 API。该功能主要为 kubelet 提供 TLS 客户端证书的自动化管理能力，大大简化了大规模集群的证书管理工作。
 
 ## kube-apiserver 配置
 
-你必须提供一个 token 文件，该文件中指定了至少一个分配给 kubelet 特定 bootstrap 组的“bootstrap token”。
+### Token 认证配置
 
-该组将作为 controller manager 配置中的默认批准控制器而用于审批。随着此功能的成熟，你应该确保 token 被绑定到基于角色的访问控制（RBAC）策略上，该策略严格限制了与证书配置相关的客户端请求（使用 bootstrap token）。使用 RBAC，将 token 范围划分为组可以带来很大的灵活性（例如，当你配置完成节点后，你可以禁用特定引导组的访问）。
+首先需要配置 bootstrap token 文件，该文件包含分配给 kubelet 特定 bootstrap 组的认证令牌。
 
-### Token 认证文件
+#### 生成 Bootstrap Token
 
-Token 可以是任意的，但应该可以表示为从安全随机数生成器（例如大多数现代操作系统中的 /dev/urandom）导出的至少128位熵。生成 token 有很多中方式。例如：
-
-`head -c 16 /dev/urandom | od -An -t x | tr -d ' '`
-
-产生的 token 类似于这样： `02b50b05283e98dd0fd71db496ef01e8`。
-
-Token 文件应该类似于以下示例，其中前三个值可以是任何值，引用的组名称应如下所示：
+Token 应具有足够的随机性（至少 128 位熵）。推荐使用以下命令生成：
 
 ```bash
-02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,system:kubelet-bootstrap
+head -c 16 /dev/urandom | od -An -t x | tr -d ' '
 ```
 
-注意：`system:kubelet-bootstrap` 的配置，当只有一个组时，不需要加引号。
+生成的 token 示例：`02b50b05283e98dd0fd71db496ef01e8`
 
-在 kube-apiserver 命令中添加 `--token-auth-file=FILENAME` 标志（可能在你的 systemd unit 文件中）来启用 token 文件。
+#### Token 文件格式
 
-查看 该文档 获取更多详细信息。
+创建 token 文件，格式如下：
 
-### 客户端证书 CA 包
-
-在 kube-apiserver 命令中添加 `--client-ca-file=FILENAME` 标志启用客户端证书认证，指定包含签名证书的证书颁发机构包（例如 `--client-ca-file=/var/lib/kubernetes/ca.pem`）。
-
-### kube-controller-manager 配置
-
-请求证书的 API 向 Kubernetes controller manager 中添加证书颁发控制循环。使用磁盘上的 [cfssl](https://blog.cloudflare.com/introducing-cfssl/) 本地签名文件的形式。目前，所有发型的证书均为一年有效期和并具有一系列关键用途。
-
-### 签名文件
-
-你必须提供证书颁发机构，这样才能提供颁发证书所需的密码资料。
-
-kube-apiserver 通过指定的 `--client-ca-file=FILENAME` 标志来认证和采信该 CA。CA 的管理超出了本文档的范围，但建议你为 Kubernetes 生成专用的 CA。
-
-假定证书和密钥都是 PEM 编码的。
-
-Kube-controller-manager 标志为：
-
-```
---cluster-signing-cert-file="/etc/path/to/kubernetes/ca/ca.crt" --cluster-signing-key-file="/etc/path/to/kubernetes/ca/ca.key"
+```bash
+02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,"system:kubelet-bootstrap"
 ```
 
-### 审批控制器
+文件格式说明：
 
-在 kubernetes 1.7 版本中，实验性的“组自动批准”控制器被弃用，新的 `csrapproving` 控制器将作为 kube-controller-manager 的一部分，被默认启用。
+- 第一列：token 值
+- 第二列：用户名
+- 第三列：用户 ID
+- 第四列：组名（多个组时需要用引号）
 
-控制器使用 `SubjectAccessReview` API 来确定给定用户是否已被授权允许请求 CSR，然后根据授权结果进行批准。为了防止与其他批准者冲突，内置审批者没有明确地拒绝 CSR，只是忽略未经授权的请求。
+#### 启用 Token 认证
 
-控制器将 CSR 分为三个子资源：
+在 kube-apiserver 启动参数中添加：
 
-1. `nodeclient` ：用户的客户端认证请求 `O=system:nodes`， `CN=system:node:(node name)`。
-2. `selfnodeclient`：更新具有相同 `O` 和 `CN` 的客户端证书的节点。
-3. `selfnodeserver`：更新服务证书的节点（ALPHA，需要 feature gate）。
-
-当前，确定 CSR 是否为 `selfnodeserver` 请求的检查与 kubelet 的凭据轮换实现（Alpha 功能）相关联。因此，`selfnodeserver` 的定义将来可能会改变，并且需要 Controller Manager 上的`RotateKubeletServerCertificate` feature gate。该功能的进展可以在 [kubernetes/feature/#267](https://github.com/kubernetes/features/issues/267) 上追踪。
-
+```bash
+--token-auth-file=/path/to/token-file
 ```
+
+### 客户端证书 CA 配置
+
+配置客户端证书认证，指定 CA 证书文件：
+
+```bash
+--client-ca-file=/var/lib/kubernetes/ca.pem
+```
+
+## kube-controller-manager 配置
+
+### 证书签名配置
+
+Controller Manager 负责证书的签发，需要配置 CA 证书和私钥：
+
+```bash
+--cluster-signing-cert-file="/etc/kubernetes/pki/ca.crt"
+--cluster-signing-key-file="/etc/kubernetes/pki/ca.key"
+```
+
+### CSR 审批控制器
+
+从 Kubernetes 1.7 开始，内置的 `csrapproving` 控制器默认启用，替代了实验性的"组自动批准"控制器。
+
+控制器将 CSR 分为三种类型：
+
+1. **nodeclient**：节点客户端认证请求（`O=system:nodes`，`CN=system:node:<node-name>`）
+2. **selfnodeclient**：节点更新自身客户端证书
+3. **selfnodeserver**：节点更新服务端证书（需要启用 feature gate）
+
+#### 启用服务端证书轮转
+
+```bash
 --feature-gates=RotateKubeletServerCertificate=true
 ```
 
-以下 RBAC `ClusterRoles` 代表 `nodeClient`、`selfnodeclient` 和 `selfnodeserver` 功能。在以后的版本中可能会自动创建类似的角色。
+### RBAC 权限配置
+
+#### 创建 ClusterRole
 
 ```yaml
-# A ClusterRole which instructs the CSR approver to approve a user requesting
-# node client credentials.
-kind: ClusterRole
+# 审批节点客户端证书请求
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
 metadata:
   name: approve-node-client-csr
 rules:
@@ -101,10 +110,9 @@ rules:
   resources: ["certificatesigningrequests/nodeclient"]
   verbs: ["create"]
 ---
-# A ClusterRole which instructs the CSR approver to approve a node renewing its
-# own client credentials.
-kind: ClusterRole
+# 审批节点客户端证书续期
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
 metadata:
   name: approve-node-client-renewal-csr
 rules:
@@ -112,10 +120,9 @@ rules:
   resources: ["certificatesigningrequests/selfnodeclient"]
   verbs: ["create"]
 ---
-# A ClusterRole which instructs the CSR approver to approve a node requesting a
-# serving cert matching its client cert.
-kind: ClusterRole
+# 审批节点服务端证书续期
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
 metadata:
   name: approve-node-server-renewal-csr
 rules:
@@ -124,24 +131,19 @@ rules:
   verbs: ["create"]
 ```
 
-这些权力可以授予给凭证，如 bootstrap token。例如，要复制由已被移除的自动批准标志提供的行为，由单个组批准所有的 CSR：
+#### 创建 ClusterRoleBinding
 
-```
-# REMOVED: This flag no longer works as of 1.7.
---insecure-experimental-approve-all-kubelet-csrs-for-group="kubelet-bootstrap-token"
-```
-
-管理员将创建一个 `ClusterRoleBinding` 来定位该组。
+为 bootstrap 组授予权限：
 
 ```yaml
-# Approve all CSRs for the group "kubelet-bootstrap-token"
-kind: ClusterRoleBinding
+# 为 kubelet-bootstrap 组自动审批 CSR
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
   name: auto-approve-csrs-for-group
 subjects:
 - kind: Group
-  name: kubelet-bootstrap-token
+  name: system:kubelet-bootstrap
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
@@ -149,16 +151,16 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-要让节点更新自己的凭据，管理员可以构造一个 `ClusterRoleBinding` 来定位该节点的凭据。
+为节点续期授予权限：
 
 ```yaml
-kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: node1-client-cert-renewal
+  name: auto-approve-renewals-for-nodes
 subjects:
-- kind: User
-  name: system:node:node-1 # Let "node-1" renew its client certificate.
+- kind: Group
+  name: system:nodes
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
@@ -166,36 +168,90 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-删除该绑定将会阻止节点更新客户端凭据，一旦其证书到期，实际上就会将其从集群中删除。
-
 ## kubelet 配置
 
-要向 kube-apiserver 请求客户端证书，kubelet 首先需要一个包含 bootstrap 身份验证 token 的 kubeconfig 文件路径。你可以使用 `kubectl config set-cluster`，`set-credentials` 和 `set-context` 来构建此 kubeconfig 文件。为 `kubectl config set-credentials` 提供 `kubelet-bootstrap` 的名称，并包含 `--token = <token-value>`，如下所示：
+### 创建 Bootstrap Kubeconfig
+
+使用 kubectl 创建 bootstrap kubeconfig 文件：
 
 ```bash
-kubectl config set-credentials kubelet-bootstrap --token=${BOOTSTRAP_TOKEN} --kubeconfig=bootstrap.kubeconfig
+# 设置集群信息
+kubectl config set-cluster kubernetes \
+  --certificate-authority=/etc/kubernetes/pki/ca.crt \
+  --embed-certs=true \
+  --server=https://k8s-api:6443 \
+  --kubeconfig=bootstrap.kubeconfig
+
+# 设置认证信息
+kubectl config set-credentials kubelet-bootstrap \
+  --token=${BOOTSTRAP_TOKEN} \
+  --kubeconfig=bootstrap.kubeconfig
+
+# 设置上下文
+kubectl config set-context default \
+  --cluster=kubernetes \
+  --user=kubelet-bootstrap \
+  --kubeconfig=bootstrap.kubeconfig
+
+# 使用默认上下文
+kubectl config use-context default --kubeconfig=bootstrap.kubeconfig
 ```
 
-启动 kubelet 时，如果 `--kubeconfig` 指定的文件不存在，则使用 bootstrap kubeconfig 向 API server 请求客户端证书。在批准 `kubelet` 的证书请求和回执时，将包含了生成的密钥和证书的 kubeconfig 文件写入由 `-kubeconfig` 指定的路径。证书和密钥文件将被放置在由 `--cert-dir` 指定的目录中。
+### kubelet 启动参数
 
-启动 kubelet 时启用 bootstrap 用到的标志：
+配置 kubelet 启动参数：
 
 ```bash
---experimental-bootstrap-kubeconfig="/path/to/bootstrap/kubeconfig"
+--bootstrap-kubeconfig="/path/to/bootstrap.kubeconfig"
+--kubeconfig="/var/lib/kubelet/kubeconfig"
+--cert-dir="/var/lib/kubelet/pki"
+--rotate-certificates=true
+--rotate-server-certificates=true
 ```
 
-此外，在 1.7 中，kubelet 实现了 **Alpha** 功能，使其客户端和/或服务器都能轮转提供证书。
+参数说明：
 
-可以分别通过 kubelet 中的 `RotateKubeletClientCertificate` 和 `RotateKubeletServerCertificate` 功能标志启用此功能，但在未来版本中可能会以向后兼容的方式发生变化。
+- `--bootstrap-kubeconfig`：bootstrap kubeconfig 文件路径
+- `--kubeconfig`：生成的 kubeconfig 文件路径
+- `--cert-dir`：证书存放目录
+- `--rotate-certificates`：启用客户端证书自动轮转
+- `--rotate-server-certificates`：启用服务端证书自动轮转
+
+### 证书轮转功能
+
+现代 Kubernetes 版本中，证书轮转功能已经稳定，不再需要 feature gate：
+
+- **客户端证书轮转**：kubelet 会在证书即将过期时自动创建新的 CSR 请求续期
+- **服务端证书轮转**：kubelet 可以自动更新用于对外提供服务的 TLS 证书
+
+## 手动管理 CSR
+
+### 查看证书请求
 
 ```bash
---feature-gates=RotateKubeletClientCertificate=true,RotateKubeletServerCertificate=true
+# 列出所有 CSR
+kubectl get csr
+
+# 查看特定 CSR 详情
+kubectl describe csr <csr-name>
 ```
 
-`RotateKubeletClientCertificate` 可以让 kubelet 在其现有凭据到期时通过创建新的 CSR 来轮换其客户端证书。 `RotateKubeletServerCertificate` 可以让 kubelet 在其引导客户端凭据后还可以请求服务证书，并轮换该证书。服务证书目前不要求 DNS 或 IP SANs。
+### 手动审批证书
 
-## kubectl 审批
+```bash
+# 批准证书请求
+kubectl certificate approve <csr-name>
 
-签名控制器不会立即签署所有证书请求。相反，它会一直等待直到适当特权的用户被标记为“已批准”状态。这最终将是由外部审批控制器来处理的自动化过程，但是对于 alpha 版本的 API 来说，可以由集群管理员通过 kubectl 命令手动完成。
+# 拒绝证书请求
+kubectl certificate deny <csr-name>
+```
 
-管理员可以使用 `kubectl get csr` 命令列出所有的 CSR，使用 `kubectl describe csr <name>` 命令描述某个 CSR 的详细信息。在 1.6 版本以前，[没有直接的批准/拒绝命令](https://github.com/kubernetes/kubernetes/issues/30163) ，因此审批者需要直接更新 Status 信息（[查看如何实现](https://github.com/gtank/csrctl)）。此后的 Kubernetes 版本中提供了 `kubectl certificate approve <name>` 和 `kubectl certificate deny <name>` 命令。
+## 最佳实践
+
+1. **安全性**：定期轮转 bootstrap token，并为不同环境使用不同的 token
+2. **监控**：监控 CSR 请求和证书过期情况
+3. **自动化**：在生产环境中使用自动审批控制器，减少手动操作
+4. **备份**：定期备份 CA 证书和私钥
+5. **权限控制**：严格控制能够审批 CSR 的用户和服务账号权限
+
+通过正确配置 TLS Bootstrap，可以大大简化 Kubernetes 集群中 kubelet 证书的管理工作，提高集群的安全性和可维护性。

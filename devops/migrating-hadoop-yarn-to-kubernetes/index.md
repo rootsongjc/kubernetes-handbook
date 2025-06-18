@@ -1,8 +1,10 @@
 ---
 weight: 101
 title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
+linktitle: 迁移传统应用
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN 为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
 keywords:
 - hadoop
 - kubernetes
@@ -16,227 +18,271 @@ keywords:
 - 镜像
 ---
 
+本文档主要介绍如何将已有的传统分布式应用程序迁移到 Kubernetes 中。如果你想要直接开发 Kubernetes 原生应用，可以参考 [适用于 Kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
 
-本文档不是说明如何在 kubernetes 中开发和部署应用程序，如果你想要直接开发应用程序在 kubernetes 中运行可以参考 [适用于 kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
+应用迁移的难易程度很大程度上取决于原应用是否符合云原生应用规范（如 12 因素应用）。符合规范的应用迁移会比较顺利，否则可能遇到较大阻碍。具体请参考 [迁移至云原生应用架构](../../../migrating-to-cloud-native-application-architectures)。
 
-本文旨在说明如何将已有的应用程序尤其是传统的分布式应用程序迁移到 kubernetes 中。如果该类应用程序符合云原生应用规范（如 12 因素法则）的话，那么迁移会比较顺利，否则会遇到一些麻烦甚至是阻碍。具体请参考 [迁移至云原生应用架构](../../../migrating-to-cloud-native-application-architectures)。
+## 迁移策略概述
 
-下图是将单体应用迁移到云原生的步骤。
+下图展示了将单体应用迁移到云原生的整体策略：
 
 ![将单体应用迁移到云原生 (图片来自 DevOpsDay Toronto)](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/migrating-monolith-to-kubernetes.webp)
 {width=4096 height=2098}
 
-接下来我们将以 Spark on YARN with kubernetes 为例来说明，该例子足够复杂也很有典型性，了解了这个例子可以帮助大家将自己的应用迁移到 kubernetes 集群上去。
+本文将以 Spark on YARN 迁移为例进行详细说明。该例子具有足够的复杂性和典型性，掌握这个案例有助于理解大部分传统应用的迁移过程。
 
-下图即整个架构的示意图，所有的进程管理和容器扩容直接使用 Makefile。
+下图是整个架构的示意图，所有进程管理和容器扩容通过 Makefile 实现：
 
 ![spark on yarn with kubernetes](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/spark-on-yarn-with-kubernetes.webp)
 {width=2395 height=1156}
 
-**注意：该例子仅用来说明具体的步骤划分和复杂性，在生产环境应用还有待验证，请谨慎使用。**
+> **重要提示**：本案例仅用于演示迁移步骤和复杂性，生产环境使用需要进一步验证和优化。
 
-## 术语
+## 核心概念与术语
 
-对于为曾接触过 kubernetes 或对云平台的技术细节不太了解的人来说，如何将应用迁移到 kubernetes 中可能是个头疼的问题，在行动之前有必要先了解整个过程中需要用到哪些概念和术语，有助于大家在行动中达成共识。
-
-过程中可能用到的概念和术语初步整理如下：
+在开始迁移之前，需要了解过程中涉及的关键概念：
 
 ![术语](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/terms-in-kubernetes-app-deployment.webp)
 {width=1312 height=1766}
 
-为了讲解整改过程和具体细节，我们所有操作都是通过命令手动完成，不使用自动化工具。当你充分了解到其中的细节后可以通过自动化工具来优化该过程，以使其更加自动和高效，同时减少因为人为操作失误导致的迁移失败。
+为了更好地理解迁移细节，本文所有操作都通过命令手动完成，不使用自动化工具。待充分理解细节后，可以引入自动化工具优化流程，提高效率并减少人为错误。
 
-## 迁移应用
+## 迁移实施步骤
 
 ![分解步骤解析](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/migrating-hadoop-yarn-to-kubernetes.webp)
 {width=967 height=462}
 
-整个迁移过程分为如下几个步骤：
+### 第一步：应用服务化拆解
 
-1. **将原有应用拆解为服务**
+在制作镜像和编写配置之前，首先需要梳理应用架构，识别哪些组件可以作为独立服务运行。
 
-   我们不是一上来就开始做镜像，写配置，而是应该先梳理下要迁移的应用中有哪些可以作为服务运行，哪些是变的，哪些是不变的部分。
+**拆解原则**：
 
-   服务划分的原则是最小可变原则，这个同样适用于镜像制作，将服务中不变的部分编译到同一个镜像中。
+- 遵循最小可变原则
+- 将不变的部分编译到同一个镜像中
+- 保持服务的功能内聚性
 
-   对于像 Spark on YARN 这样复杂的应用，可以将其划分为三大类服务：
+对于 Spark on YARN，可以拆解为以下核心服务：
 
-   - ResourceManager
-   - NodeManager
-   - Spark client
+- **ResourceManager**：资源管理服务
+- **NodeManager**：节点管理服务  
+- **Spark Client**：Spark 应用客户端
 
-2. **制作镜像**
+### 第二步：容器镜像制作
 
-   根据拆解出来的服务，我们需要制作两个镜像：
+根据服务拆解结果，需要制作以下镜像：
 
-   - Hadoop
-   - Spark (From hadoop docker image)
+#### Hadoop 基础镜像
 
-   因为我们运行的是 Spark on YARN，因此 Spark 依赖与 Hadoop 镜像，我们在 Spark 的基础上包装了一个 web service 作为服务启动。
+```dockerfile
+FROM my-docker-repo/jdk:8u321
 
-   镜像制作过程中不需要在 Dockerfile 中指定 Entrypoint 和 CMD，这些都是在 kubernetes 的 YAML 文件中指定的。
+# 添加原生库
+ARG HADOOP_VERSION=3.3.4
+ADD hadoop-${HADOOP_VERSION}.tar.gz /usr/local
+ADD ./lib/* /usr/local/hadoop-${HADOOP_VERSION}/lib/native/
+ADD ./jars/* /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/yarn/
 
-   Hadoop YARN 的 Dockerfile 参考如下配置。
+# 环境变量配置
+ENV HADOOP_PREFIX=/usr/local/hadoop \
+  HADOOP_COMMON_HOME=/usr/local/hadoop \
+  HADOOP_HDFS_HOME=/usr/local/hadoop \
+  HADOOP_MAPRED_HOME=/usr/local/hadoop \
+  HADOOP_YARN_HOME=/usr/local/hadoop \
+  HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop \
+  YARN_CONF_DIR=/usr/local/hadoop/etc/hadoop \
+  PATH=${PATH}:/usr/local/hadoop/bin
 
-   ```docker
-   FROM my-docker-repo/jdk:7u80
+RUN cd /usr/local && \
+  ln -s ./hadoop-${HADOOP_VERSION} hadoop && \
+  rm -f ${HADOOP_PREFIX}/logs/* && \
+  mkdir -p ${HADOOP_PREFIX}/logs
 
-   # Add native libs
-   ARG HADOOP_VERSION=2.6.0-cdh5.5.2
-   ## Prefer to download from server not use local storage
-   ADD hadoop-${HADOOP_VERSION}.tar.gz /usr/local
-   ADD ./lib/* /usr/local/hadoop-${HADOOP_VERSION}/lib/native/
-   ADD ./jars/* /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/yarn/
-   ENV HADOOP_PREFIX=/usr/local/hadoop \
-       HADOOP_COMMON_HOME=/usr/local/hadoop \
-       HADOOP_HDFS_HOME=/usr/local/hadoop \
-       HADOOP_MAPRED_HOME=/usr/local/hadoop \
-       HADOOP_YARN_HOME=/usr/local/hadoop \
-       HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop \
-       YARN_CONF_DIR=/usr/local/hadoop/etc/hadoop \
-       PATH=${PATH}:/usr/local/hadoop/bin
+WORKDIR $HADOOP_PREFIX
 
-   RUN \
-     cd /usr/local && ln -s ./hadoop-${HADOOP_VERSION} hadoop && \
-     rm -f ${HADOOP_PREFIX}/logs/*
+# 端口暴露
+EXPOSE 8020 8030 8031 8032 8033 8040 8042 8088 9000 50070
+```
 
-   WORKDIR $HADOOP_PREFIX
+#### Spark 镜像
 
-   # Hdfs ports
-   EXPOSE 50010 50020 50070 50075 50090 8020 9000
-   # Mapred ports
-   EXPOSE 19888
-   #Yarn ports
-   EXPOSE 8030 8031 8032 8033 8040 8042 8088
-   #Other ports
-   EXPOSE 49707 2122
-   ```
+基于 Hadoop 镜像构建 Spark 镜像，并包装 Web 服务：
 
-3. **准备应用的配置文件**
+```dockerfile
+FROM hadoop-base:latest
 
-   因为我们只制作了一个 Hadoop 的镜像，而需要启动两个服务，这就要求在服务启动的时候必须加载不同的配置文件，现在我们只需要准备两个服务中需要同时用的的配置的部分。
+ARG SPARK_VERSION=3.3.2
+ADD spark-${SPARK_VERSION}-bin-hadoop3.tgz /usr/local
+ENV SPARK_HOME=/usr/local/spark
+ENV PATH=${PATH}:${SPARK_HOME}/bin:${SPARK_HOME}/sbin
 
-   YARN 依赖的配置在 `artifacts` 目录下，包含以下文件：
+RUN cd /usr/local && \
+  ln -s ./spark-${SPARK_VERSION}-bin-hadoop3 spark
 
-   ```
-   bootstrap.sh
-   capacity-scheduler.xml
-   container-executor.cfg
-   core-site.xml
-   hadoop-env.sh
-   hdfs-site.xml
-   log4j.properties
-   mapred-site.xml
-   nodemanager_exclude.txt
-   slaves
-   start-yarn-nm.sh
-   start-yarn-rm.sh
-   yarn-env.sh
-   yarn-site.xml
-   ```
+EXPOSE 4040 7077 8080 8081
+```
 
-   其中作为 bootstrap 启动脚本的 `bootstrap.sh` 也包含在该目录下，该脚本的如何编写请见下文。
+**注意**：镜像制作时不需要在 Dockerfile 中指定 ENTRYPOINT 和 CMD，这些在 Kubernetes YAML 中定义。
 
-4. **Kubernetes YAML 文件**
+### 第三步：配置文件准备
 
-   根据业务的特性选择最适合的 kubernetes 的资源对象来运行，因为在 YARN 中 NodeManager 需要使用主机名向 ResourceManger 注册，因此需要沿用 YARN 原有的服务发现方式，使用 headless service 和 StatefulSet 资源。更多资料请参考  [StatefulSet](../../concepts/statefulset)。
+准备服务运行所需的配置文件，存放在 `artifacts` 目录：
 
-   所有的 Kubernetes YAML 配置文件存储在 `manifest` 目录下，包括如下配置：
+```
+artifacts/hadoop/
+├── bootstrap.sh              # 启动脚本
+├── capacity-scheduler.xml    # 容量调度器配置
+├── core-site.xml            # Hadoop 核心配置
+├── hadoop-env.sh            # Hadoop 环境变量
+├── hdfs-site.xml            # HDFS 配置
+├── log4j2.properties        # 日志配置
+├── mapred-site.xml          # MapReduce 配置
+├── start-yarn-nm.sh         # NodeManager 启动脚本
+├── start-yarn-rm.sh         # ResourceManager 启动脚本
+├── yarn-env.sh              # YARN 环境变量
+└── yarn-site.xml            # YARN 配置
+```
 
-   - yarn-cluster 的 namespace 配置
-   - Spark、ResourceManager、NodeManager 的 headless service 和 StatefulSet 配置
-   - 需要暴露到 kubernetes 集群外部的 ingress 配置（ResourceManager 的 Web）
+### 第四步：Kubernetes 资源定义
 
-   ```
-   kube-yarn-ingress.yaml
-   spark-statefulset.yaml
-   yarn-cluster-namespace.yaml
-   yarn-nm-statefulset.yaml
-   yarn-rm-statefulset.yaml
-   ```
+根据应用特性选择合适的 Kubernetes 资源对象。由于 NodeManager 需要使用主机名向 ResourceManager 注册，采用 StatefulSet 和 Headless Service。
 
-5. **Bootstrap 脚本**
+配置文件存储在 `manifests` 目录：
 
-   Bootstrap 脚本的作用是在启动时根据 Pod 的环境变量、主机名或其他可以区分不同 Pod 和将启动角色的变量来修改配置文件和启动服务应用。
+```
+manifests/
+├── namespace.yaml           # 命名空间
+├── configmap.yaml          # 配置映射
+├── yarn-rm-statefulset.yaml # ResourceManager
+├── yarn-nm-statefulset.yaml # NodeManager  
+├── spark-statefulset.yaml  # Spark 服务
+└── ingress.yaml            # 外部访问
+```
 
-   该脚本同时将原来 YARN 的日志使用 stdout 输出，便于使用 `kubectl logs` 查看日志或其他日志收集工具进行日志收集。
+#### ResourceManager StatefulSet 示例
 
-   启动脚本 `bootstrap.sh`  跟 Hadoop 的配置文件同时保存在 `artifacts` 目录下。
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-rm
+  namespace: yarn-cluster
+spec:
+  serviceName: yarn-rm
+  replicas: 1
+  selector:
+  matchLabels:
+    app: yarn-rm
+  template:
+  metadata:
+    labels:
+    app: yarn-rm
+  spec:
+    containers:
+    - name: yarn-rm
+    image: hadoop:latest
+    resources:
+      requests:
+      memory: "2Gi"
+      cpu: "1000m"
+      limits:
+      memory: "4Gi" 
+      cpu: "2000m"
+    env:
+    - name: HADOOP_ROLE
+      value: "resourcemanager"
+    volumeMounts:
+    - name: hadoop-config
+      mountPath: /tmp/hadoop-config
+    volumes:
+    - name: hadoop-config
+    configMap:
+      name: hadoop-config
+```
 
-   该脚本根据 Pod 的主机名，决定如何修改 Hadoop 的配置文件和启动何种服务。`bootstrap.sh` 文件的部分代码如下：
+### 第五步：启动脚本编写
 
-   ```bash
-   if [[ "${HOSTNAME}" =~ "yarn-nm" ]]; then
-     sed -i '/<\/configuration>/d' $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
-     cat >> $HADOOP_PREFIX/etc/hadoop/yarn-site.xml <<- EOM
-     <property>
-       <name>yarn.nodemanager.resource.memory-mb</name>
-       <value>${MY_MEM_LIMIT:-2048}</value>
-     </property>
+Bootstrap 脚本根据 Pod 环境变量和主机名动态修改配置并启动相应服务：
 
-     <property>
-       <name>yarn.nodemanager.resource.cpu-vcores</name>
-       <value>${MY_CPU_LIMIT:-2}</value>
-     </property>
-   EOM
-     echo '</configuration>' >> $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
-     cp ${CONFIG_DIR}/start-yarn-nm.sh $HADOOP_PREFIX/sbin/
-     cd $HADOOP_PREFIX/sbin
-     chmod +x start-yarn-nm.sh
-     ./start-yarn-nm.sh
-   fi
+```bash
+#!/bin/bash
 
-   if [[ $1 == "-d" ]]; then
-     until find ${HADOOP_PREFIX}/logs -mmin -1 | egrep -q '.*'; echo "`date`: Waiting for logs..." ; do sleep 2 ; done
-     tail -F ${HADOOP_PREFIX}/logs/* &
-     while true; do sleep 1000; done
-   fi
-   ```
+# 复制配置文件
+cp /tmp/hadoop-config/* $HADOOP_CONF_DIR/
 
-   从这部分中代码中可以看到，如果 Pod 的主机名中包含 `yarn-nm` 字段则向 `yarn-site.xml` 配置文件中增加如下内容：
+# 根据角色启动不同服务
+if [[ "${HOSTNAME}" =~ "yarn-rm" ]]; then
+  echo "Starting ResourceManager..."
+  # 修改 ResourceManager 特定配置
+  sed -i "s/RESOURCEMANAGER_HOST/${HOSTNAME}/g" $HADOOP_CONF_DIR/yarn-site.xml
+  
+  # 启动 ResourceManager
+  $HADOOP_PREFIX/sbin/yarn-daemon.sh start resourcemanager
+  
+elif [[ "${HOSTNAME}" =~ "yarn-nm" ]]; then
+  echo "Starting NodeManager..."
+  # 动态设置资源限制
+  sed -i "s/MEMORY_LIMIT/${MY_MEM_LIMIT:-2048}/g" $HADOOP_CONF_DIR/yarn-site.xml
+  sed -i "s/CPU_LIMIT/${MY_CPU_LIMIT:-2}/g" $HADOOP_CONF_DIR/yarn-site.xml
+  
+  # 启动 NodeManager
+  $HADOOP_PREFIX/sbin/yarn-daemon.sh start nodemanager
+fi
 
-   ```xml
-     <property>
-       <name>yarn.nodemanager.resource.memory-mb</name>
-       <value>${MY_MEM_LIMIT:-2048}</value>
-     </property>
+# 输出日志到标准输出
+if [[ $1 == "-d" ]]; then
+  until find ${HADOOP_PREFIX}/logs -mmin -1 | egrep -q '.*'; do 
+    echo "`date`: Waiting for logs..."
+    sleep 2
+  done
+  tail -F ${HADOOP_PREFIX}/logs/* &
+  while true; do sleep 1000; done
+fi
+```
 
-     <property>
-       <name>yarn.nodemanager.resource.cpu-vcores</name>
-       <value>${MY_CPU_LIMIT:-2}</value>
-     </property>
-   ```
+### 第六步：ConfigMap 创建
 
-   其中 `MY_MEM_LIMIT` 和 `MY_CPU_LIMIT` 是 kubernetes YAML 中定义的环境变量，该环境变量又是引用的 Resource limit。
+将配置文件作为 ConfigMap 资源保存：
 
-   所有的配置准备完成后，执行 `start-yarn-nm.sh` 脚本启动 NodeManager。
+```bash
+# 创建 Hadoop 配置
+kubectl create configmap hadoop-config \
+  --from-file=artifacts/hadoop/ \
+  --namespace=yarn-cluster
 
-   如果 kubernetes YAML 中的 container CMD args 中包含 `-d` 则在后台运行 NodeManger 并 tail 输出 NodeManager 的日志到标准输出。
+# 创建 Spark 配置  
+kubectl create configmap spark-config \
+  --from-file=artifacts/spark/ \
+  --namespace=yarn-cluster
+```
 
-6. **ConfigMaps**
+## 部署与管理
 
-   将 Hadoop 的配置文件和 bootstrap 脚本作为 ConfigMap 资源保存，用作 Pod 启动时挂载的 volume。
+配置完成后，可以使用以下命令部署和管理集群：
 
-   ```bash
-   kubectl create configmap hadoop-config \
-      --from-file=artifacts/hadoop/bootstrap.sh \
-      --from-file=artifacts/hadoop/start-yarn-rm.sh \
-      --from-file=artifacts/hadoop/start-yarn-nm.sh \
-      --from-file=artifacts/hadoop/slaves \
-      --from-file=artifacts/hadoop/core-site.xml \
-      --from-file=artifacts/hadoop/hdfs-site.xml \
-      --from-file=artifacts/hadoop/mapred-site.xml \
-      --from-file=artifacts/hadoop/yarn-site.xml \
-      --from-file=artifacts/hadoop/capacity-scheduler.xml \
-      --from-file=artifacts/hadoop/container-executor.cfg \
-      --from-file=artifacts/hadoop/hadoop-env.sh \
-      --from-file=artifacts/hadoop/log4j.properties \
-      --from-file=artifacts/hadoop/nodemanager_exclude.txt \
-      --from-file=artifacts/hadoop/yarn-env.sh
-   kubectl  create configmap spark-config \
-      --from-file=artifacts/spark/spark-bootstrap.sh \
-      --from-file=artifacts/spark/spark-env.sh \
-      --from-file=artifacts/spark/spark-defaults.conf
-   ```
+```bash
+# 创建命名空间
+kubectl apply -f manifests/namespace.yaml
 
-所有的配置完成后，可以可以使用 kubectl 命令来启动和管理集群了，我们编写了 Makefile，你可以直接使用该 Makefile 封装的命令实现部分的自动化。
+# 部署 ConfigMaps
+kubectl apply -f manifests/configmap.yaml
+
+# 部署服务
+kubectl apply -f manifests/yarn-rm-statefulset.yaml
+kubectl apply -f manifests/yarn-nm-statefulset.yaml
+kubectl apply -f manifests/spark-statefulset.yaml
+
+# 配置外部访问
+kubectl apply -f manifests/ingress.yaml
+```
+
+## 最佳实践与注意事项
+
+1. **资源限制**：合理设置 CPU 和内存限制，避免资源争抢
+2. **健康检查**：配置 liveness 和 readiness 探针
+3. **数据持久化**：对于有状态服务，使用 PersistentVolume
+4. **网络策略**：配置适当的网络安全策略
+5. **监控告警**：集成监控系统，及时发现问题
+6. **备份恢复**：制定完整的备份恢复策略
+
+通过以上步骤，可以成功将传统的 Hadoop YARN 应用迁移到 Kubernetes 平台。整个过程需要充分理解原应用架构和 Kubernetes 特性，确保迁移后的系统稳定可靠。

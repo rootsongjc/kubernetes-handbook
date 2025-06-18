@@ -1,8 +1,10 @@
 ---
 weight: 88
 title: 使用 kubeconfig 或 token 进行用户身份认证
+linktitle: kubeconfig 和 token 认证
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: 详细介绍在 Kubernetes 集群中使用 kubeconfig 文件和 Service Account token 两种方式进行用户身份认证的方法，包括证书配置、token 生成和权限管理。
 keywords:
 - admin
 - base64
@@ -16,119 +18,148 @@ keywords:
 - 认证
 ---
 
+在启用了 TLS 的 Kubernetes 集群中，身份认证是与集群交互的重要环节。使用 kubeconfig（基于证书）和 Service Account token 是最常用和通用的两种认证方式，广泛应用于 Kubernetes Dashboard 登录、kubectl 操作等场景。
 
-在开启了 TLS 的集群中，每当与集群交互的时候少不了的是身份认证，使用 kubeconfig（即证书）和 token 两种认证方式是最简单也最通用的认证方式，在 dashboard 的登录功能就可以使用这两种登录功能。
+本文将通过实际示例详细介绍这两种认证方式：
 
-下文分两块以示例的方式来讲解两种登陆认证方式：
+- 为特定命名空间用户创建 kubeconfig 文件
+- 为集群管理员和普通用户生成 Service Account token
 
-- 为 brand 命名空间下的 brand 用户创建 kubeconfig 文件
-- 为集群的管理员（拥有所有命名空间的 amdin 权限）创建 token
+## 使用 kubeconfig 文件认证
 
-## 使用 kubeconfig
+### kubeconfig 文件生成
 
-如何生成`kubeconfig`文件请参考[创建用户认证授权的 kubeconfig 文件](../../guide/kubectl-user-authentication-authorization)。
+关于如何生成 kubeconfig 文件，请参考[创建用户认证授权的 kubeconfig 文件](../../guide/kubectl-user-authentication-authorization)。
 
-> 注意我们生成的 kubeconfig 文件中没有 token 字段，需要手动添加该字段。
+### Dashboard 认证的特殊要求
 
-比如我们为 brand namespace 下的 brand 用户生成了名为 `brand.kubeconfig` 的 kubeconfig 文件，还要再该文件中追加一行 `token` 的配置（如何生成 token 将在下文介绍），如下所示：
+对于 Kubernetes Dashboard 的登录认证，kubeconfig 文件需要特殊处理。以 brand 命名空间下的 brand 用户为例，生成的 `brand.kubeconfig` 文件需要手动添加 `token` 字段：
 
 ![kubeconfig 文件](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/auth-with-kubeconfig-or-token/brand-kubeconfig-yaml.webp)
 {width=1798 height=1168}
 
-对于访问 dashboard 时候的使用 kubeconfig 文件如`brand.kubeconfig` 必须追到 `token` 字段，否则认证不会通过。而使用 kubectl 命令时的用的 kubeconfig 文件则不需要包含 `token` 字段。
+**重要提示**：
+- Dashboard 使用的 kubeconfig 文件**必须**包含 `token` 字段，否则认证失败
+- kubectl 命令行工具使用的 kubeconfig 文件**不需要**包含 `token` 字段
 
-## 生成 token
+## Service Account Token 认证
 
-需要创建一个 admin 用户并授予 admin 角色绑定，使用下面的 yaml 文件创建 admin 用户并赋予他管理员权限，然后可以通过 token 访问 kubernetes，该文件见[admin-role.yaml](https://github.com/rootsongjc/kubernetes-handbook/tree/master/manifests/dashboard-1.7.1/admin-role.yaml)。
+### 创建集群管理员 Token
 
-### 生成 kubernetes 集群最高权限 admin 用户的 token
+为了创建具有集群最高权限的管理员 token，需要创建 ServiceAccount 并绑定 cluster-admin 角色。
+
+创建以下 YAML 文件（admin-role.yaml）：
 
 ```yaml
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: admin
-  annotations:
-    rbac.authorization.kubernetes.io/autoupdate: "true"
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-- kind: ServiceAccount
-  name: admin
-  namespace: kube-system
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: admin
+  name: admin-user
   namespace: kube-system
-  labels:
-    kubernetes.io/cluster-service: "true"
-    addonmanager.kubernetes.io/mode: Reconcile
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
 ```
 
-然后执行下面的命令创建 serviceaccount 和角色绑定，
+应用配置：
 
 ```bash
-kubectl create -f admin-role.yaml
+kubectl apply -f admin-role.yaml
 ```
 
-创建完成后获取 secret 中 token 的值。
+### 获取管理员 Token
+
+#### 方法一：使用 kubectl describe（推荐）
 
 ```bash
-# 获取admin-token的secret名字
-$ kubectl -n kube-system get secret|grep admin-token
-admin-token-nwphb                          kubernetes.io/service-account-token   3         6m
-# 获取token的值
-$ kubectl -n kube-system describe secret admin-token-nwphb
-Name:  admin-token-nwphb
-Namespace: kube-system
-Labels:  <none>
-Annotations: kubernetes.io/service-account.name=admin
-  kubernetes.io/service-account.uid=f37bd044-bfb3-11e7-87c0-f4e9d49f8ed0
-
-Type: kubernetes.io/service-account-token
-
-Data
-====
-namespace: 11 bytes
-token:  非常长的字符串
-ca.crt:  1310 bytes
+# 获取 ServiceAccount 的 Secret
+kubectl -n kube-system get secret $(kubectl -n kube-system get sa admin-user -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 -d
 ```
 
-也可以使用 jsonpath 的方式直接获取 token 的值，如：
+#### 方法二：创建临时 Token（Kubernetes 1.24+）
+
+从 Kubernetes 1.24 开始，ServiceAccount 不再自动创建长期 token。推荐使用以下命令创建临时 token：
 
 ```bash
-kubectl -n kube-system get secret admin-token-nwphb -o jsonpath={.data.token}|base64 -d
+kubectl -n kube-system create token admin-user
 ```
 
-**注意**：yaml 输出里的那个 token 值是进行 base64 编码后的结果，一定要将 kubectl 的输出中的 token 值进行 `base64` 解码，在线解码工具 [base64decode](https://www.base64decode.org/)，Linux 和 Mac 有自带的 `base64` 命令也可以直接使用，输入  `base64` 是进行编码，Linux 中`base64 -d` 表示解码，Mac 中使用 `base64 -D`。
+#### 方法三：手动创建 Secret（长期 token）
 
-我们使用了 base64 对其重新解码，因为 secret 都是经过 base64 编码的，如果直接使用 kubectl 中查看到的 `token` 值会认证失败，详见 [secret 配置](../../guide/secret-configuration)。关于 JSONPath 的使用请参考 JSONPath 手册。
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: admin-user-secret
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: admin-user
+type: kubernetes.io/service-account-token
+```
 
-更简单的方式是直接使用`kubectl describe`命令获取 token 的内容（经过 base64 解码之后）：
+然后获取 token：
 
 ```bash
-kubectl describe secret admin-token-nwphb 
+kubectl -n kube-system get secret admin-user-secret -o jsonpath='{.data.token}' | base64 -d
 ```
 
-### 为普通用户生成 token
+### 为特定命名空间创建用户 Token
 
-为指定 namespace 分配该 namespace 的最高权限，这通常是在为某个用户（组织或者个人）划分了 namespace 之后，需要给该用户创建 token 登陆 kubernetes dashboard 或者调用 kubernetes API 的时候使用。
-
-每次创建了新的 namespace 下都会生成一个默认的 token，名为`default-token-xxxx`。`default`就相当于该 namespace 下的一个用户，可以使用下面的命令给该用户分配该 namespace 的管理员权限。
+为指定命名空间的用户分配该命名空间的管理权限：
 
 ```bash
-kubectl create rolebinding $ROLEBINDING_NAME --clusterrole=admin --serviceaccount=$NAMESPACE:default --namespace=$NAMESPACE
+# 设置变量
+NAMESPACE="your-namespace"
+ROLEBINDING_NAME="namespace-admin"
+
+# 创建 RoleBinding
+kubectl create rolebinding $ROLEBINDING_NAME \
+  --clusterrole=admin \
+  --serviceaccount=$NAMESPACE:default \
+  --namespace=$NAMESPACE
 ```
 
-- `$ROLEBINDING_NAME`必须是该 namespace 下的唯一的
-- `admin`表示用户该 namespace 的管理员权限，关于使用`clusterrole`进行更细粒度的权限控制请参考[RBAC——基于角色的访问控制](../../concepts/rbac)。
-- 我们给默认的 serviceaccount `default`分配 admin 权限，这样就不要再创建新的 serviceaccount，当然你也可以自己创建新的 serviceaccount，然后给它 admin 权限
+获取该命名空间的 token：
 
-## 参考
+```bash
+kubectl -n $NAMESPACE get secret $(kubectl -n $NAMESPACE get sa default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 -d
+```
 
-- JSONPath 手册 - kubernetes.io
-- Kubernetes 中的认证 - kubernetes.io
+## 重要注意事项
+
+### Base64 编码问题
+
+Kubernetes Secret 中存储的 token 是经过 base64 编码的，**必须进行解码**才能使用：
+
+- **Linux**: `echo "encoded-token" | base64 -d`
+- **macOS**: `echo "encoded-token" | base64 -D`
+- **在线工具**: [base64decode.org](https://www.base64decode.org/)
+
+### 权限控制
+
+- `cluster-admin`: 集群最高权限
+- `admin`: 命名空间管理权限
+- 更细粒度的权限控制请参考 [RBAC——基于角色的访问控制](../../concepts/rbac)
+
+### 安全最佳实践
+
+1. **最小权限原则**：仅授予必要的最小权限
+2. **定期轮换**：定期更新和轮换 token
+3. **临时 token**：优先使用临时 token（有效期限制）
+4. **安全存储**：妥善保管 kubeconfig 文件和 token
+
+## 参考资料
+
+- [JSONPath 手册](https://kubernetes.io/docs/reference/kubectl/jsonpath/) - kubernetes.io
+- [Kubernetes 中的认证](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) - kubernetes.io
+- [Service Account Token](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) - kubernetes.io

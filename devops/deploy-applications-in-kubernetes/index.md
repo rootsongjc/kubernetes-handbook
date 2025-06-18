@@ -1,137 +1,249 @@
 ---
 weight: 100
 title: 适用于 Kubernetes 的应用开发部署流程
+linktitle: 应用开发部署流程
 date: '2022-05-21T00:00:00+08:00'
 type: book
+description: "本文详细介绍了如何开发容器化应用，使用现代 CI/CD 工具构建 Docker 镜像，通过 Docker Compose 本地测试，生成 Kubernetes YAML 配置文件，并集成到 Istio 服务网格的完整流程。"
 keywords:
-- agent
-- app
+- kubernetes
 - docker
-- k8s
-- monitor
-- yaml
-- 服务
-- 环境变量
-- 访问
+- ci/cd
+- istio
+- 服务网格
+- 容器化
+- 微服务
+- devops
 ---
 
+本文详细介绍了现代化容器应用的完整开发部署流程：从容器化应用开发、CI/CD 自动化构建、本地 Docker Compose 测试，到 Kubernetes 集群部署，最终集成 Istio 服务网格的端到端实践。
 
-本文讲解了如何开发容器化应用，并使用 Wercker 持续集成工具构建 docker 镜像上传到 docker 镜像仓库中，然后在本地使用 *docker-compose* 测试后，再使用 `kompose` 自动生成 kubernetes 的 yaml 文件，再将注入 Envoy sidecar 容器，集成 Istio 服务网格中的详细过程。
-
-整个过程如下图所示。
+整个流程架构如下图所示：
 
 ![流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/how-to-use-kubernetes-with-istio.webp)
 {width=1115 height=960}
 
-为了讲解详细流程，我特意写了用 Go 语言开发的示例程序放在 GitHub 中，模拟监控流程：
+## 示例应用介绍
 
-- [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test)：生成模拟的监控数据，在接收到 http 请求返回 json 格式的 metrics 信息
-- [K8s-app-monitor-agent](https://github.com/rootsongjc/k8s-app-monitor-agent)：获取监控 metrics 信息并绘图，访问该服务将获得监控图表
+为了演示完整的开发部署流程，本文使用两个 Go 语言开发的微服务应用作为示例：
 
-API 文档见 [k8s-app-monitor-test](https://github.com/rootsongjc/k8s-app-monitor-test) 中的 `api.html` 文件，该文档在 API blueprint 中定义，使用 [aglio](https://github.com/danielgtaylor/aglio) 生成，打开后如图所示：
+- **k8s-app-monitor-test**：监控数据生成服务，提供 RESTful API 返回 JSON 格式的模拟监控指标
+- **k8s-app-monitor-agent**：监控数据展示服务，获取监控指标并生成可视化图表
+
+这两个服务构成了一个典型的微服务架构，展现了服务间通信、服务发现等关键概念。
+
+### API 文档规范
+
+API 文档采用 API Blueprint 格式定义，使用 [aglio](https://github.com/danielgtaylor/aglio) 工具生成静态文档：
 
 ![API](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-test-api-doc.webp)
 {width=958 height=941}
 
-## 关于服务发现
+## 服务发现机制
 
-`K8s-app-monitor-agent` 服务需要访问 `k8s-app-monitor-test` 服务，这就涉及到服务发现的问题，我们在代码中直接写死了要访问的服务的内网 DNS 地址（kubedns 中的地址，即 `k8s-app-monitor-test.default.svc.cluster.local`）。
+在 Kubernetes 环境中，`k8s-app-monitor-agent` 需要访问 `k8s-app-monitor-test` 服务。Kubernetes 提供了多种服务发现方式：
 
-我们知道 Kubernetes 在启动 Pod 的时候为容器注入环境变量，这些环境变量在所有的 namespace 中共享（环境变量是不断追加的，新启动的 Pod 中将拥有老的 Pod 中所有的环境变量，而老的 Pod 中的环境变量不变）。但是既然使用这些环境变量就已经可以访问到对应的 service，那么获取应用的地址信息，究竟是使用变量呢？还是直接使用 DNS 解析来发现？
+### 环境变量方式
 
-答案是使用 DNS，详细说明见 [Kubernetes 中的服务发现与 Docker 容器间的环境变量传递源码探究](/blog/exploring-kubernetes-env-with-docker/)。
+Kubernetes 会为每个 Pod 注入相关服务的环境变量，但这种方式存在顺序依赖问题。
 
-## 持续集成
+### DNS 服务发现（推荐）
 
-因为我使用 wercker 自动构建，构建完成后自动打包成 docker 镜像并上传到 docker hub 中（需要现在 docker hub 中创建 repo）。
+使用 Kubernetes 内置的 DNS 服务（CoreDNS），通过服务的 FQDN 进行访问：
 
-构建流程见：<https://app.wercker.com/jimmysong/k8s-app-monitor-agent/>
+```
+<service-name>.<namespace>.svc.cluster.local
+```
 
-![wercker 构建页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-agent-wercker.webp)
-{width=3316 height=1536}
+例如：`k8s-app-monitor-test.default.svc.cluster.local`
 
-生成了如下两个 docker 镜像：
+**推荐使用 DNS 方式**，因为它没有启动顺序限制，更加灵活可靠。详细原理可参考 [Kubernetes 中的服务发现与环境变量传递机制](/blog/exploring-kubernetes-env-with-docker/)。
 
-- jimmysong/k8s-app-monitor-test:9c935dd
-- jimmysong/k8s-app-monitor-agent:234d51c
+## CI/CD 持续集成
 
-## 测试
+### 现代化 CI/CD 选择
 
-在将服务发布到线上之前，我们可以先使用 *docker-compose* 在本地测试一下，这两个应用的 `docker-compose.yaml` 文件如下：
+虽然原文使用 Wercker（已停止服务），现在推荐使用以下现代化 CI/CD 工具：
+
+- **GitHub Actions**：与 GitHub 深度集成，配置简单
+- **GitLab CI/CD**：功能强大的 DevOps 平台
+- **Jenkins**：老牌开源 CI/CD 工具
+- **Tekton**：Kubernetes 原生的 CI/CD 解决方案
+
+### 典型构建流程
 
 ```yaml
-version: '2'
+# GitHub Actions 示例
+name: Build and Push
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Docker image
+      run: docker build -t ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }} .
+    - name: Push to registry
+      run: docker push ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }}
+```
+
+构建过程会生成带有 Git commit hash 标签的 Docker 镜像，确保版本可追溯。
+
+## 本地开发测试
+
+### Docker Compose 配置
+
+使用 Docker Compose 在本地环境中测试微服务组合：
+
+```yaml
+version: '3.8'
 services:
   k8s-app-monitor-agent:
-    image: jimmysong/k8s-app-monitor-agent:234d51c
+    image: jimmysong/k8s-app-monitor-agent:latest
     container_name: monitor-agent
     depends_on:
       - k8s-app-monitor-test
     ports:
-      - 8888:8888
+      - "8888:8888"
     environment:
       - SERVICE_NAME=k8s-app-monitor-test
+      - LOG_LEVEL=debug
+    networks:
+      - monitor-network
+
   k8s-app-monitor-test:
-    image: jimmysong/k8s-app-monitor-test:9c935dd
+    image: jimmysong/k8s-app-monitor-test:latest
     container_name: monitor-test
     ports:
-      - 3000:3000
+      - "3000:3000"
+    environment:
+      - LOG_LEVEL=debug
+    networks:
+      - monitor-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  monitor-network:
+    driver: bridge
 ```
 
-执行下面的命令运行测试。
+### 本地测试流程
 
 ```bash
-docker-compose up
+# 启动服务
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+
+# 查看日志
+docker-compose logs -f
+
+# 访问监控页面
+curl http://localhost:8888/metrics
+
+# 清理环境
+docker-compose down
 ```
 
-在浏览器中访问 <http://localhost:8888/k8s-app-monitor-test> 就可以看到监控页面。
+## Kubernetes 部署配置
 
-## 发布
+### 生成 Kubernetes YAML
 
-所有的 kubernetes 应用启动所用的 yaml 配置文件都保存在那两个 GitHub 仓库的 `manifest.yaml` 文件中。也可以使用 [kompose](https://github.com/kubernetes/kompose) 这个工具，可以将 *docker-compose* 的 YAML 文件转换成 kubernetes 规格的 YAML 文件。
+可以使用 [Kompose](https://kompose.io/) 工具将 Docker Compose 配置转换为 Kubernetes 清单：
 
-分别在两个 GitHub 目录下执行 `kubectl create -f manifest.yaml` 即可启动服务。也可以直接在 *k8s-app-monitor-agent* 代码库的 `k8s` 目录下执行 `kubectl apply -f kompose`。
+```bash
+# 安装 kompose
+curl -L https://github.com/kubernetes/kompose/releases/latest/download/kompose-linux-amd64 -o kompose
+chmod +x kompose && sudo mv kompose /usr/local/bin/
 
-在以上 YAML 文件中有包含了 Ingress 配置，是为了将 *k8s-app-monitor-agent* 服务暴露给集群外部访问。
+# 转换配置
+kompose convert -f docker-compose.yaml
+```
 
-**方式一**
-
-服务启动后需要更新 ingress 配置，在 [ingress.yaml](https://jimmysong.io/kubernetes-handbook/manifests/traefik-ingress/ingress.yaml) 文件中增加以下几行：
+### 手动编写 Kubernetes 清单
 
 ```yaml
-  - host: k8s-app-monitor-agent.jimmysong.io
-    http:
-      paths:
-      - path: /k8s-app-monitor-agent
-        backend:
-          serviceName: k8s-app-monitor-agent
-          servicePort: 8888
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-app-monitor-test
+  labels:
+    app: k8s-app-monitor-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8s-app-monitor-test
+  template:
+    metadata:
+      labels:
+        app: k8s-app-monitor-test
+    spec:
+      containers:
+      - name: k8s-app-monitor-test
+        image: jimmysong/k8s-app-monitor-test:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-app-monitor-test
+spec:
+  selector:
+    app: k8s-app-monitor-test
+  ports:
+  - port: 3000
+    targetPort: 3000
+  type: ClusterIP
 ```
 
-保存后，然后执行 `kubectl replace -f ingress.yaml` 即可刷新 ingress。
+## 服务外部暴露
 
-修改本机的 `/etc/hosts` 文件，在其中加入以下一行：
-
-```ini
-172.20.0.119 k8s-app-monitor-agent.jimmysong.io
-```
-
-当然你也可以将该域名加入到内网的 DNS 中，为了简单起见我使用 hosts。
-
-**方式二**
-
-或者不修改已有的 Ingress，而是为该队外暴露的服务单独创建一个 Ingress，如下：
+### Ingress 配置
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: k8s-app-monitor-agent-ingress
+  name: k8s-app-monitor-ingress
   annotations:
-    kubernetes.io/ingress.class: "treafik"
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - monitor.example.com
+    secretName: monitor-tls
   rules:
-  - host: k8s-app-monitor-agent.jimmysong.io
+  - host: monitor.example.com
     http:
       paths:
       - path: /
@@ -143,38 +255,116 @@ spec:
               number: 8888
 ```
 
-## 集成 Istio 服务网格
+### Service Mesh 集成方案
 
-上一步中我们生成了 Kubernetes 可读取的应用的 YAML 配置文件，我们可以将所有的 YAML 配置和并到同一个 YAML 文件中假如文件名为 `k8s-app-monitor-istio-all-in-one.yaml`，如果要将其集成到 Istio 服务网格，只需要执行下面的命令。
+#### 使用 Istio 服务网格
+
+安装 Istio 并启用自动 sidecar 注入：
 
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f k8s-app-monitor-istio-all-in-one.yaml)
+# 安装 Istio
+istioctl install --set values.defaultRevision=default
+
+# 为命名空间启用自动注入
+kubectl label namespace default istio-injection=enabled
+
+# 部署应用（自动注入 sidecar）
+kubectl apply -f k8s-manifests/
 ```
 
-这样就会在每个 Pod 中注入一个 sidecar 容器。
+#### Istio Gateway 配置
 
-## 验证
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: monitor-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - monitor.example.com
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: monitor-vs
+spec:
+  hosts:
+  - monitor.example.com
+  gateways:
+  - monitor-gateway
+  http:
+  - route:
+    - destination:
+        host: k8s-app-monitor-agent
+        port:
+          number: 8888
+```
 
-如果你使用的是 Traefik ingress 来暴露的服务，那么在浏览器中访问 `http://k8s-app-monitor-agent.jimmysong.io/k8s-app-monitor-agent`，可以看到如下的画面，每次刷新页面将看到新的柱状图。
+## 可观测性与监控
+
+### 服务监控验证
+
+应用部署完成后，可以通过以下方式验证服务状态：
 
 ![图表](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-agent.webp)
 {width=1015 height=579}
 
-使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 来部署的 kubernetes 集群，该应用集成了 Istio 服务网格后可以通过 `http://172.17.8.101:32000/k8s-app-monitor-agent` 来访问。
+### Istio 可观测性
 
-在对 *k8s-app-monitor-agent* 服务进行了 N 此访问之后，再访问 [`http://grafana.istio.jimmysong.io`](http://grafana.istio.jimmysong.io/) 可以看到 服务网格 的监控信息。
+集成 Istio 后，可以通过以下工具获得丰富的可观测性数据：
+
+#### Grafana 监控面板
+
+访问 Grafana 可以查看详细的服务指标和性能数据：
 
 ![Grafana 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-grafana.webp)
 {width=2582 height=1688}
 
-访问 `http://servicegraph.istio.jimmysong.io/dotviz` 可以看到服务的依赖和 QPS 信息。
+#### 服务拓扑图
+
+通过 Kiali 查看服务间的依赖关系和流量分布：
 
 ![servicegraph 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-servicegraph-dotviz.webp)
 {width=1168 height=1046}
 
-访问 `http://zipkin.istio.jimmysong.io` 可以选择查看 `k8s-app-monitor-agent` 应用的追踪信息。
+#### 分布式链路追踪
+
+使用 Jaeger 进行分布式请求追踪分析：
 
 ![Zipkin 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-zipkin.webp)
 {width=2582 height=1688}
 
-至此从代码提交到上线到 Kubernetes 集群上并集成 Istio 服务网格的过程就全部完成了。
+## 最佳实践总结
+
+### 开发阶段
+
+- 使用多阶段 Docker 构建优化镜像大小
+- 实施容器安全扫描
+- 编写全面的单元测试和集成测试
+
+### 部署阶段
+
+- 使用 Helm Charts 管理复杂应用
+- 实施滚动更新和回滚策略
+- 配置适当的资源限制和健康检查
+
+### 运维阶段
+
+- 建立完善的监控和告警体系
+- 实施日志聚合和分析
+- 定期进行容灾演练
+
+### 安全考虑
+
+- 使用私有镜像仓库
+- 实施 RBAC 权限控制
+- 定期更新依赖和基础镜像
+
+通过以上完整的流程，我们实现了从代码提交到生产环境部署的全自动化 DevOps 流水线，并通过服务网格获得了强大的可观测性和流量管理能力。
