@@ -1,5 +1,6 @@
 ---
-linktitle: Kubernetes 基础教程
+linktitle: Kubernetes 手册
+description: "Kubernetes 基础教程是一本全面介绍 Kubernetes 容器编排技术的实战手册。本书从云原生基础概念出发，深入讲解 Kubernetes 的核心架构、关键组件和实际应用，涵盖容器化部署、服务发现、存储管理、网络配置等核心主题。适合想要系统学习 Kubernetes 技术栈的开发者、运维工程师和架构师阅读。" 
 weight: 1
 categories:
 - 教程手册
