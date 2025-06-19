@@ -18,7 +18,7 @@ cascade:
 ---
 
 {{<callout note 关于本教程>}}
-本教程迁移自[《Kubernetes 中文指南——云原生应用架构实战手册》](https://github.com/rootsongjc/kubernetes-handbook)，原手册使用 Gitbook 发布，内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域。由于内容过于宽泛，且 Gitbook 项目已停止维护，现将其中的 Kubernetes 教程部分独立成书，并使用 Hugo 重新构建和持续更新。
+本教程迁移自[《Kubernetes 中文指南——云原生应用架构实战手册》](https://github.com/rootsongjc/kubernetes-handbook)，原手册使用 Gitbook 发布，内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域。由于内容过于宽泛，且 Gitbook 项目已停止维护，现将其中的 Kubernetes 教程部分独立成书，并使用 Hugo 重新构建和持续更新。本书采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 {{</callout>}}
 
 ## 什么是云原生
@@ -26,6 +26,7 @@ cascade:
 云原生是一种行为方式和设计理念，其本质是通过一系列技术和方法论来提高云上资源利用率和应用交付效率。云计算的发展史就是一部云原生化的历史。
 
 从技术发展历程来看：
+
 - **Kubernetes** 开启了云原生的序幕，提供了容器编排的标准
 - **服务网格（如 Istio）** 引领了后 Kubernetes 时代的微服务治理
 - **Serverless** 技术使云原生从基础设施层向应用架构层深入发展
@@ -43,6 +44,7 @@ cascade:
 ### Kubernetes 的使命
 
 Kubernetes 的目标不仅仅是一个编排系统，而是：
+
 - 提供规范来描述集群架构
 - 定义服务的最终状态
 - 使系统自动达到并维持该状态
@@ -53,6 +55,7 @@ Kubernetes 的目标不仅仅是一个编排系统，而是：
 根据 CNCF 定义，云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。
 
 核心技术包括：
+
 - **容器** - 应用打包和运行的标准单元
 - **服务网格** - 微服务间通信的基础设施层
 - **微服务** - 应用架构的设计模式
@@ -70,6 +73,7 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 ### 内容特色
 
 本书记录了从零开始学习和使用 Kubernetes 的完整历程，具有以下特点：
+
 - **实战导向** - 着重于经验总结和最佳实践分享
 - **深入浅出** - 详细解析 Kubernetes 核心概念
 - **生态完整** - 涵盖微服务、DevOps、服务网格、Serverless 等相关领域
@@ -78,24 +82,5 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 ## 本书大纲
 
 {{< list_children show_summary="false">}}
-
-## 开源协议
-
-本书采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议开源共享。
-
-## 社区交流
-
-### 加入讨论
-
-欢迎加入[云原生社区](https://cloudnativecn.com/)进行技术交流：
-1. 填写[入群申请问卷](https://wj.qq.com/s2/5479026/bf82)
-2. 联系 [Jimmy Song](https://jimmysong.io/contact/) 加入微信讨论群
-
-### 贡献指南
-
-欢迎通过以下方式参与本书建设：
-- 提交 Issue 反馈问题或建议
-- 提交 Pull Request 改进内容
-- 分享使用经验和最佳实践
 
 {{< cta cta_text="开始阅读" cta_link="architecture" >}}
