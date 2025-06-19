@@ -7,7 +7,7 @@ categories:
 category: 教程手册
 featured: true
 type: publication
-layout: book
+layout: book-content
 title: Kubernetes 基础教程
 date: '2024-01-15T00:00:00+08:00'
 aliases:
@@ -15,7 +15,7 @@ aliases:
 cascade:
   comment: true
   type: book
-  layout: book
+  layout: book-content
 ---
 
 {{<callout note 关于本教程>}}
