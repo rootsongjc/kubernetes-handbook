@@ -62,4 +62,4 @@ Kubernetes 网络需要解决以下核心问题：
 
 本章将详细介绍主流网络插件的原理、部署和最佳实践：
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

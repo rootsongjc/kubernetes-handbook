@@ -37,4 +37,4 @@ Kubernetes 提供了丰富的集群资源管理功能，帮助运维人员有效
 
 ## 本章内容
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

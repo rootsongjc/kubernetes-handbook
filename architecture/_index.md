@@ -304,7 +304,7 @@ Kubernetes 作为 CNCF 的核心项目，与众多云原生技术形成完整生
 
 ## 本章内容
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}
 
 ## 参考资料
 

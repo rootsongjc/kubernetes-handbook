@@ -32,6 +32,6 @@ Kubernetes 存储架构具有以下优势：
 
 本章节将按照以下结构为你深入讲解 Kubernetes 存储系统：
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}
 
 通过系统学习这些存储对象，你将能够在生产环境中设计和实施可靠的存储解决方案。

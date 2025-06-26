@@ -31,4 +31,4 @@ Kubernetes 提供了以下主要的扩展方式：
 
 ## 本节内容
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

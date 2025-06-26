@@ -50,4 +50,4 @@ type: book
 
 ## 章节大纲
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

@@ -29,4 +29,4 @@ Kubernetes 提供了丰富的扩展机制，支持开发者构建定制化的解
 
 ## 章节大纲
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}
