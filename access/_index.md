@@ -62,4 +62,4 @@ Kubernetes 集群提供了多种访问方式，用户可以根据具体的使用
 
 ## 章节大纲
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

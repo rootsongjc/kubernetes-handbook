@@ -30,4 +30,4 @@ Kubernetes 中内建了多种控制器（Controller），它们是集群中的�
 
 ## 本节内容
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

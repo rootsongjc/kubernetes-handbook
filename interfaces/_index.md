@@ -48,4 +48,4 @@ Kubernetes 通过这些开放接口，将计算、网络、存储三大核心资
 
 ## 章节大纲
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

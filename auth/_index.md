@@ -25,4 +25,4 @@ SPIFFE 和 SPIRE（SPIFFE Runtime Environment）的广泛采用标志着云原�
 
 本章将深入探讨 Kubernetes 身份认证与权限管理的各个方面：
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

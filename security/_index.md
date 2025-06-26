@@ -1,6 +1,7 @@
 ---
 weight: 83
 title: 集群安全性管理
+linktitle: 安全
 date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 全面介绍 Kubernetes 集群安全管理的核心概念、最佳实践和实施策略，包括身份认证、授权控制、网络安全、Pod 安全标准等关键安全机制。
@@ -30,4 +31,4 @@ Kubernetes 安全采用纵深防御策略，涵盖以下几个关键层面：
 
 ## 章节大纲
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}

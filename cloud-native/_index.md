@@ -20,4 +20,4 @@ cascade:
 - **DevOps 集成**：持续集成和持续部署实践
 - **可观测性**：全面的监控、日志和追踪能力
 
-{{< list_children show_summary="false">}}
+{{< list_children show_summary="true" style="cards" >}}
