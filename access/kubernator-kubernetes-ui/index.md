@@ -106,4 +106,3 @@ Kubernator 特别适合以下场景：
 ## 参考资料
 
 - [Kubernator GitHub 仓库](https://github.com/smpio/kubernator)
-- [Kubernator 官方文档](https://github.com/smpio/kubernator/blob/main/README.md)

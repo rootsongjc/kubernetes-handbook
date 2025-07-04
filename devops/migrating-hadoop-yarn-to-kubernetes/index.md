@@ -20,7 +20,7 @@ keywords:
 
 本文档主要介绍如何将已有的传统分布式应用程序迁移到 Kubernetes 中。如果你想要直接开发 Kubernetes 原生应用，可以参考 [适用于 Kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
 
-应用迁移的难易程度很大程度上取决于原应用是否符合云原生应用规范（如 12 因素应用）。符合规范的应用迁移会比较顺利，否则可能遇到较大阻碍。具体请参考 [迁移至云原生应用架构](../../../migrating-to-cloud-native-application-architectures)。
+应用迁移的难易程度很大程度上取决于原应用是否符合云原生应用规范（如 12 因素应用）。符合规范的应用迁移会比较顺利，否则可能遇到较大阻碍。
 
 ## 迁移策略概述
 

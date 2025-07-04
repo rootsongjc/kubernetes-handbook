@@ -247,5 +247,4 @@ kubectl delete deployment hello-world
 ## 进一步学习
 
 - [Service 和 Pod 的 DNS](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dns-pod-service/)
-- [使用 Service 连接应用程序](https://kubernetes.io/zh-cn/docs/concepts/services-networking/connect-applications-service/)
 - [Service 类型详解](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/)

@@ -407,5 +407,4 @@ spec:
 ## 参考资源
 
 - [Kubernetes 官方文档 - StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
-- [StatefulSet 示例集合](https://github.com/kubernetes/examples/tree/master/staging/storage)
 - [有状态应用部署教程](https://kubernetes.io/docs/tutorials/stateful-application/)

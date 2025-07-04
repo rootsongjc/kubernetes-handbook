@@ -15,7 +15,7 @@ keywords:
 - Pod 管理
 ---
 
-[StatefulSet](../../concepts/statefulset) 是 Kubernetes 专门用来部署有状态应用的控制器，它为 Pod 提供稳定的身份标识，包括主机名、启动顺序、网络标识和持久化存储等特性。
+[StatefulSet](../../controllers/statefulset) 是 Kubernetes 专门用来部署有状态应用的控制器，它为 Pod 提供稳定的身份标识，包括主机名、启动顺序、网络标识和持久化存储等特性。
 
 本文以部署 ZooKeeper 和 Kafka 集群为例，详细介绍 StatefulSet 的使用方法。其中 Kafka 依赖于 ZooKeeper，这种依赖关系正好展示了 StatefulSet 在部署复杂有状态应用时的优势。
 

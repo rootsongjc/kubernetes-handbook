@@ -147,5 +147,4 @@ crictl exec -it <container-id> /bin/bash
 - [Container Runtime Interface (CRI) - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/architecture/cri/)
 - [containerd 官方文档](https://containerd.io/)
 - [CRI-O 官方文档](https://cri-o.io/)
-- [Kata Containers 架构文档](https://github.com/kata-containers/kata-containers/blob/main/docs/design/architecture.md)
 - [gVisor 官方文档](https://gvisor.dev/docs/)
