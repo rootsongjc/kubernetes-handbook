@@ -217,6 +217,5 @@ cluster/log-dump.sh <output-directory>
 
 ## 参考资源
 
-- [Kubernetes 测试指南](https://kubernetes.io/docs/contribute/test/)
 - [test-infra 项目](https://github.com/kubernetes/test-infra)
 - [Ginkgo 测试框架](https://onsi.github.io/ginkgo/)

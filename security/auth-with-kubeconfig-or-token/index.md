@@ -29,7 +29,7 @@ keywords:
 
 ### kubeconfig 文件生成
 
-关于如何生成 kubeconfig 文件，请参考[创建用户认证授权的 kubeconfig 文件](../../guide/kubectl-user-authentication-authorization)。
+关于如何生成 kubeconfig 文件，请参考[创建用户认证授权的 kubeconfig 文件](../../security/kubectl-user-authentication-authorization)。
 
 ### Dashboard 认证的特殊要求
 
@@ -149,7 +149,7 @@ Kubernetes Secret 中存储的 token 是经过 base64 编码的，**必须进行
 
 - `cluster-admin`: 集群最高权限
 - `admin`: 命名空间管理权限
-- 更细粒度的权限控制请参考 [RBAC——基于角色的访问控制](../../concepts/rbac)
+- 更细粒度的权限控制请参考 [RBAC——基于角色的访问控制](../../auth/rbac)
 
 ### 安全最佳实践
 

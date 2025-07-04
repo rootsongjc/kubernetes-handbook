@@ -442,4 +442,4 @@ Kubernetes 提供了 `certificates.k8s.io` API 来管理 x509 证书，支持自
 
 - [Kubernetes Authentication Documentation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
 - [Managing TLS in a Cluster](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
-- [使用 kubeconfig 或 token 进行用户身份认证](auth-with-kubeconfig-or-token.md)
+- [使用 kubeconfig 或 token 进行用户身份认证](../auth-with-kubeconfig-or-token/)

@@ -28,7 +28,7 @@ OAM（Open Application Model）是一个专注于描述应用程序的规范，�
 
 ## 设计原则
 
-OAM 规范的设计遵循了以下[原则](https://github.com/oam-dev/spec/blob/master/9.design_principles.md)：
+OAM 规范的设计遵循了以下原则：
 
 - **关注点分离**：根据功能和行为来定义模型，以此划分不同角色的职责
 - **平台中立**：OAM 的实现不绑定到特定平台
@@ -57,7 +57,7 @@ OAM 规范包含以下核心组件：
 
 ### 概述
 
-`Workload` 用于定义工作负载的类型。应用程序可用的 `Workload` 类型是由平台提供商和基础设施运维人员提供的。`Workload` 模型参照 [Kubernetes 规范](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields)定义，理论上，平台商可以定义如容器、Pod、Serverless 函数、虚拟机、数据库、消息队列等任何类型的 `Workload`。
+`Workload` 用于定义工作负载的类型。应用程序可用的 `Workload` 类型是由平台提供商和基础设施运维人员提供的。`Workload` 模型参照 Kubernetes 规范定义，理论上，平台商可以定义如容器、Pod、Serverless 函数、虚拟机、数据库、消息队列等任何类型的 `Workload`。
 
 ### Workload 定义示例
 
@@ -72,12 +72,12 @@ spec:
 ```
 
 {{<callout tip "关于 definitionRef">}}
-CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。应用开发者可以在 `Component` 的 `Workload` 中直接定义 CR。`definitionRef` 将 `Workload` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的），表示可作为负载类型使用。
+CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes CRD。应用开发者可以在 `Component` 的 `Workload` 中直接定义 CR。`definitionRef` 将 `Workload` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的），表示可作为负载类型使用。
 {{</callout>}}
 
 ### 重要说明
 
-请保持 `spec.definitionRef.name` 的值与 `metadata.name` 的值相同，因为 `definitionRef` 是对相应的 `Workload` schema 的引用，对于 Kubernetes 平台来说，即对 [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) 的引用。应用开发者在定义 `Component` 引用该 `Workload` 的时候需要直接实例化一个 CRD 的配置（及创建一个 CR）。
+请保持 `spec.definitionRef.name` 的值与 `metadata.name` 的值相同，因为 `definitionRef` 是对相应的 `Workload` schema 的引用，对于 Kubernetes 平台来说，即对 CRD 的引用。应用开发者在定义 `Component` 引用该 `Workload` 的时候需要直接实例化一个 CRD 的配置（及创建一个 CR）。
 
 ### Workload 分类
 
@@ -87,7 +87,7 @@ OAM 中将 `Workload` 分成了三个类别：
 - **standard.oam.dev**（标准）
 - **自定义扩展类别**
 
-目前 OAM 中支持的核心 `Workload` 有 [`ContainerizedWorkload`](https://github.com/oam-dev/spec/blob/master/core/workloads/containerized_workload/containerized_workload.md)。
+目前 OAM 中支持的核心 `Workload` 有 `ContainerizedWorkload`。
 
 ## Component - 应用组件
 
@@ -128,18 +128,18 @@ spec:
 
 #### 2. workload
 
-该 Component 的实际工作负载。具体有哪些负载类型可用可以咨询平台提供商，平台运维也可以根据 [Workload 规范](https://github.com/oam-dev/spec/blob/master/3.workload.md) 来扩展负载类型，比如：
+该 Component 的实际工作负载。具体有哪些负载类型可用可以咨询平台提供商，平台运维也可以根据 Workload 规范来扩展负载类型，比如：
 
 - `Containers`
 - `Functions`
 - `VirtualMachine`
-- [`VirtualService`](https://istio.io/docs/reference/config/networking/virtual-service/)
+- `VirtualService`
 
-OAM 目前定义的核心负载类型有 [ContainerizedWorkload](https://github.com/oam-dev/spec/blob/master/core/workloads/containerized_workload/containerized_workload.md)（与 Kubernetes 中的 Pod 定义类似，同样支持定义多个容器，但是缺少了 Pod 中的一些属性）。
+OAM 目前定义的核心负载类型有 `ContainerizedWorkload`（与 Kubernetes 中的 Pod 定义类似，同样支持定义多个容器，但是缺少了 Pod 中的一些属性）。
 
 #### 3. parameters
 
-在应用程序运行时可以调整的参数，即应用开发者在 `Component` 中的原有定义可以在运行时被应用运维人员覆盖。`parameters` 使用 [JSONPath](https://kubernetes.io/zh/docs/reference/kubectl/jsonpath/) 的方式引用 `spec` 中的字段。
+在应用程序运行时可以调整的参数，即应用开发者在 `Component` 中的原有定义可以在运行时被应用运维人员覆盖。`parameters` 使用 JSONPath 的方式引用 `spec` 中的字段。
 
 {{<callout note "Component 是可变的">}}
 `Component` 的配置在应用后是**可更改的（Mutable）**，有的 `Trait` 可能会监听 `Component` 的变更并作出相应的操作，每次变更都会导致新的 `ApplicationConfiguration` 发布。
@@ -184,7 +184,7 @@ spec:
 ```
 
 {{<callout note "关于 definitionRef">}}
-CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)。`definitionRef` 将 `Trait` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的）。
+CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes CRD。`definitionRef` 将 `Trait` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的）。
 {{</callout>}}
 
 ### Trait 分类
@@ -195,7 +195,7 @@ OAM 中将 `Trait` 分成了三个类别：
 - **standard.oam.dev**（标准）
 - **自定义扩展类别**
 
-一个 `Trait` 具体适用于哪些 `workload` 可以在 `Trait` 的 `TraitDefinition` 中定义。目前 OAM 中支持的核心 `Trait` 有 [`ManualScalerTrait`](https://github.com/oam-dev/spec/blob/master/core/traits/manual_scaler_trait.md)。
+一个 `Trait` 具体适用于哪些 `workload` 可以在 `Trait` 的 `TraitDefinition` 中定义。目前 OAM 中支持的核心 `Trait` 有 `ManualScalerTrait`。
 
 ## ApplicationScope - 应用范围
 
@@ -216,8 +216,8 @@ OAM 中将 `Trait` 分成了三个类别：
 
 目前 OAM 中支持的核心应用范围类型有：
 
-- [`NetworkScope`](https://github.com/oam-dev/spec/blob/master/standard/scopes/network_scope.md)
-- [`HealthScope`](https://github.com/oam-dev/spec/blob/master/standard/scopes/health_scope.md)
+- `NetworkScope`
+- `HealthScope`
 
 ### NetworkScope 示例
 
@@ -249,7 +249,7 @@ spec:
 `ApplicationConfiguration` 将 `Component` 与 `Trait` 组合，定义了一个应用程序的配置。`Component` 每部署一次就会产生一个实例（`Instance`），实例是可以被升级的（包括回滚和重新部署），而每次部署和升级就会产生一次新的发布（`Release`）。
 
 {{<callout note "关于 Release">}}
-[12 因素应用](https://12factor.net/zh_cn/)严格区分[构建、发布、运行](https://12factor.net/zh_cn/build-release-run)这三个步骤。每次构建和修改配置后都会产生一次新的发布（`Release`）。OAM 中将 `Component`、`Trait`、`ApplicationScope` 组合而成的 `ApplicationConfiguration` 即等同于 `Release`。每次对 `ApplicationConfiguration` 的更新都会创建一个新的 `Release`（跟 [Helm](https://helm.sh) 中的 `Release` 概念一致）。
+[12 因素应用](https://12factor.net/zh_cn/)严格区分构建、发布、运行这三个步骤。每次构建和修改配置后都会产生一次新的发布（`Release`）。OAM 中将 `Component`、`Trait`、`ApplicationScope` 组合而成的 `ApplicationConfiguration` 即等同于 `Release`。每次对 `ApplicationConfiguration` 的更新都会创建一个新的 `Release`（跟 Helm 中的 `Release` 概念一致）。
 {{</callout>}}
 
 ### ApplicationConfiguration 示例
@@ -434,8 +434,4 @@ OAM 规范通过定义标准化的应用程序模型，实现了关注点分离�
 ## 参考资料
 
 - [OAM 官方规范](https://github.com/oam-dev/spec)
-- [Workload 规范](https://github.com/oam-dev/spec/blob/master/3.workload.md)
-- [Component 规范](https://github.com/oam-dev/spec/blob/master/4.component.md)
-- [ApplicationScope 规范](https://github.com/oam-dev/spec/blob/master/5.application_scopes.md)
-- [Trait 规范](https://github.com/oam-dev/spec/blob/master/6.traits.md)
-- [ApplicationConfiguration 规范](https://github.com/oam-dev/spec/blob/master/7.application_configuration.md)
+

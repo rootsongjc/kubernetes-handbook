@@ -195,8 +195,8 @@ Error from server (Forbidden): pods is forbidden: User "devuser" cannot list res
 
 ## 相关参考
 
-- [基于角色的访问控制 (RBAC)](../../concepts/rbac)
-- [管理 Service Account](../service-account)
-- [网络策略](../../concepts/network-policy)
+- [基于角色的访问控制 (RBAC)](../../auth/rbac)
+- [管理 Service Account](../../config/service-account)
+- [网络策略](../../auth/network-policy)
 
 通过以上步骤，你已经成功为 Kubernetes 集群创建了一个具有受限权限的用户，该用户只能在指定的 namespace 中进行操作，有效提升了集群的安全性。

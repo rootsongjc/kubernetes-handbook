@@ -32,13 +32,13 @@ keywords:
 
 OAM 的规范中定义了以下对象，它们既是 OAM 规范中的基本术语也是云原生应用的基本组成。
 
-- **[Workload](../spec/workload)（工作负载）**：应用程序的工作负载类型，由平台提供。
-- **[Component](../spec/component)（组件）**：定义了一个 `Workload` 的实例，并以基础设施中立的术语声明其运维特性。
-- **[Trait](../spec/trait)（特征）**：用于将运维特性分配给组件实例。
-- **[ApplicationScope](../spec/application-scope)（应用作用域）**：用于将组件分组成具有共同特性的松散耦合的应用。
-- **[ApplicationConfiguration](../spec/application-configuration)（应用配置）**：描述 `Component` 的部署、`Trait` 和 `ApplicationScope`。
+- **Workload（工作负载）**：应用程序的工作负载类型，由平台提供。
+- **Component（组件）**：定义了一个 `Workload` 的实例，并以基础设施中立的术语声明其运维特性。
+- **Trait（特征）**：用于将运维特性分配给组件实例。
+- **ApplicationScope（应用作用域）**：用于将组件分组成具有共同特性的松散耦合的应用。
+- **ApplicationConfiguration（应用配置）**：描述 `Component` 的部署、`Trait` 和 `ApplicationScope`。
 
-OAM 规范中提供了一个使用以上对象定义云原生应用的[工作流示例](https://github.com/oam-dev/spec/blob/master/examples/workflow.md)。
+OAM 规范中提供了一个使用以上对象定义云原生应用的工作流示例。
 
 ## 关注点分离
 

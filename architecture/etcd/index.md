@@ -200,4 +200,4 @@ ETCDCTL_API=3 etcdctl endpoint status --cluster -w table
 - [etcd 官方文档](https://etcd.io/)
 - [Kubernetes etcd 管理指南](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 - [etcd 性能调优指南](https://etcd.io/docs/v3.5/tuning/)
-- [使用 etcdctl 访问 Kubernetes 数据](../../guide/using-etcdctl-to-access-kubernetes-data/)
+- [使用 etcdctl 访问 Kubernetes 数据](../../cli/etcdctl/)

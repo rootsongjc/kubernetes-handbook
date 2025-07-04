@@ -69,7 +69,7 @@ Kubernetes 社区官方维护和支持以下 Ingress 控制器：
 
 ### 使用 IngressClass 资源
 
-通过 [IngressClass](../../service-discovery/ingress/#ingress-class) 资源，可以在同一集群中部署和管理多个 Ingress 控制器：
+通过 IngressClass 资源，可以在同一集群中部署和管理多个 Ingress 控制器：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
