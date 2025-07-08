@@ -120,5 +120,5 @@ spec:
 
 ## 参考资源
 
-- [Awesome Cloud Native - jimmysong.io](https://awesome-cloud-native.jimmysong.io/#api-gateway)
+- [Awesome Cloud Native - jimmysong.io](https://awesome.jimmysong.io/#api-gateway)
 - [Ingress Controllers - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
