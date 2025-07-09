@@ -29,6 +29,4 @@ Kubernetes 提供了以下主要的扩展方式：
 - **可观测性**：提供充分的日志、指标和事件信息
 - **向后兼容**：确保扩展不会影响现有功能的稳定性
 
-## 本节内容
-
 {{< list_children show_summary="true" style="cards" >}}

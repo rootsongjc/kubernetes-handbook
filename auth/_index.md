@@ -21,8 +21,6 @@ SPIFFE 和 SPIRE（SPIFFE Runtime Environment）的广泛采用标志着云原�
 - **跨平台兼容**：支持 Kubernetes、虚拟机等多种环境
 - **生态集成**：被 Envoy、Istio、Consul Connect 等主流项目采用
 
-## 本章内容
-
 本章将深入探讨 Kubernetes 身份认证与权限管理的各个方面：
 
 {{< list_children show_summary="true" style="cards" >}}

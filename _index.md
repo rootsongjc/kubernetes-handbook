@@ -80,8 +80,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **生态完整** - 涵盖微服务、DevOps、服务网格、Serverless 等相关领域
 - **持续更新** - 跟进最新技术发展和社区动态
 
-## 本书大纲
-
 {{< list_children show_summary="true" style="cards" >}}
 
 {{< cta cta_text="开始阅读" cta_link="architecture" >}}

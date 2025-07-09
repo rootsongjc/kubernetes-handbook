@@ -46,6 +46,4 @@ Kubernetes 提供了以下三个核心开放接口，它们分别管理分布式
 
 Kubernetes 通过这些开放接口，将计算、网络、存储三大核心资源有机结合，形成了一个完整的分布式应用运行平台。
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}

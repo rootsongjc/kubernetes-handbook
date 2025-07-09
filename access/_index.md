@@ -60,6 +60,4 @@ Kubernetes 集群提供了多种访问方式，用户可以根据具体的使用
 - **网络安全**：合理配置网络策略和防火墙规则
 - **审计日志**：启用访问审计以便安全监控
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}

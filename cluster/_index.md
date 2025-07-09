@@ -35,6 +35,4 @@ Kubernetes 提供了丰富的集群资源管理功能，帮助运维人员有效
 3. **监控资源使用**：定期检查集群资源利用率
 4. **自动化运维**：使用 Operator 等工具简化管理流程
 
-## 本章内容
-
 {{< list_children show_summary="true" style="cards" >}}

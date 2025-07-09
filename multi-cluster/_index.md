@@ -112,8 +112,6 @@ kubectl config current-context
 - 实现跨集群的日志聚合
 - 配置告警和故障转移机制
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}
 
 ## 参考资源
