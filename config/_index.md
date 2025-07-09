@@ -20,6 +20,4 @@ Kubernetes 资源对象配置是集群管理的核心，正确的配置能够确
 - 学会根据实际需求选择合适的配置选项
 - 理解资源对象之间的关系和依赖
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}

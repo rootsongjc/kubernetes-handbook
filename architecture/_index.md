@@ -302,8 +302,6 @@ Kubernetes 作为 CNCF 的核心项目，与众多云原生技术形成完整生
 - **监控**：部署 Prometheus + Grafana 监控栈
 - **备份**：定期备份 etcd 数据
 
-## 本章内容
-
 {{< list_children show_summary="true" style="cards" >}}
 
 ## 参考资料

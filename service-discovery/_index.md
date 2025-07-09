@@ -101,6 +101,4 @@ Kubernetes 默认使用 CoreDNS 作为集群 DNS 服务器，支持以下解析�
 - 熔断、重试、超时控制
 - 分布式追踪和可观测性
 
-## 本节内容
-
 {{< list_children show_summary="true" style="cards" >}}

@@ -48,6 +48,4 @@ type: book
 4. **安全策略**：使用 RBAC、Network Policy 等安全机制
 5. **监控和日志**：集成完善的可观测性工具栈
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}

@@ -27,6 +27,4 @@ Kubernetes 提供了丰富的扩展机制，支持开发者构建定制化的解
 - 学会使用 Kubernetes 客户端库进行 API 开发
 - 了解云原生应用的开发最佳实践
 
-## 章节大纲
-
 {{< list_children show_summary="true" style="cards" >}}

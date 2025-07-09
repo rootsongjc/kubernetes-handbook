@@ -28,6 +28,4 @@ Kubernetes 中内建了多种控制器（Controller），它们是集群中的�
 
 这种设计模式确保了 Kubernetes 集群的自愈能力和声明式管理特性。
 
-## 本节内容
-
 {{< list_children show_summary="true" style="cards" >}}

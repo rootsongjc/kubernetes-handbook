@@ -26,6 +26,4 @@ kubectl 是 Kubernetes 的官方命令行客户端，用于与 Kubernetes API �
 - 资源扩缩容
 - 滚动更新与回滚
 
-## 本节内容
-
 {{< list_children show_summary="true" style="cards" >}}
