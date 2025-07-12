@@ -16,6 +16,11 @@ cascade:
   comment: true
   type: book
   layout: book-content
+book:
+  title: "Kubernetes 手册"
+  description: "Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。"
+  language: "zh-hans"
+  author: "Jimmy Song"
 ---
 
 {{<callout note 关于本教程>}}
@@ -40,7 +45,7 @@ cascade:
 
 ## Kubernetes 简介
 
-[Kubernetes](https://kubernetes.io) 是 Google 于 2014 年 6 月基于其内部使用的 [Borg](https://research.google.com/pubs/pub43438.html) 系统开源的容器编排调度引擎。Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），现已成为云原生生态的核心基石。
+[Kubernetes](https://kubernetes.io) 是 Google 于 2014 年 6 月基于其内部使用的 [Borg](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/) 系统开源的容器编排调度引擎。Google 将其作为初始和核心项目贡献给 [CNCF](https://cncf.io)（云原生计算基金会），现已成为云原生生态的核心基石。
 
 ### Kubernetes 的使命
 
