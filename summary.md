@@ -1,8 +1,3 @@
----
-title: Summary
-draft: true
----
-
 - [Kubernetes 架构](architecture/_index.md)
   - [Kubernetes 的设计理念](architecture/perspective/index.md)
   - [Etcd 解析](architecture/etcd/index.md)

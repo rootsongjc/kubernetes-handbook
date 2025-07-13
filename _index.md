@@ -21,6 +21,10 @@ book:
   description: "Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。"
   language: "zh-hans"
   author: "Jimmy Song"
+  cover: cover.jpg
+  date: 2025-07-13
+  website: https://jimmysong.io/book/kubernetes-handbook/
+  appendix: false
 ---
 
 {{<callout note 关于本教程>}}
