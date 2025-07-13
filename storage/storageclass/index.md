@@ -164,6 +164,8 @@ parameters:
 
 ### 创建 StorageClass
 
+以下是相关的定义示例：
+
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -179,6 +181,8 @@ volumeBindingMode: WaitForFirstConsumer
 ```
 
 ### 在 PVC 中使用
+
+以下是具体的使用方法：
 
 ```yaml
 apiVersion: v1

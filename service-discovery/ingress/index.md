@@ -69,6 +69,8 @@ Ingress 提供以下核心功能：
 
 ### 最简单的 Ingress
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -105,6 +107,8 @@ IngressClass 是 Kubernetes 1.18 引入的资源，用于定义 Ingress 的实�
 
 ### 基本 IngressClass 配置
 
+以下是相关的配置示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -115,6 +119,8 @@ spec:
 ```
 
 ### 设置默认 IngressClass
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -131,6 +137,8 @@ spec:
 
 #### 集群范围参数
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -146,6 +154,8 @@ spec:
 ```
 
 #### 命名空间范围参数
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -251,6 +261,8 @@ spec:
 
 ### 单域名 TLS
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -276,6 +288,8 @@ spec:
 ```
 
 ### 多域名 TLS
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -313,6 +327,8 @@ spec:
 ```
 
 ### 创建 TLS Secret
+
+以下是相关的定义示例：
 
 ```bash
 kubectl create secret tls tls-secret \
@@ -385,6 +401,8 @@ spec:
 
 ### 更新 Ingress 配置
 
+以下是相关的配置示例：
+
 ```bash
 # 编辑现有 Ingress
 kubectl edit ingress my-ingress
@@ -398,6 +416,8 @@ kubectl describe ingress my-ingress
 ```
 
 ### 故障排查
+
+以下是相关的代码示例：
 
 ```bash
 # 检查 Ingress 控制器日志

@@ -121,6 +121,8 @@ spec:
 
 ### Pod 中使用 CSI 卷
 
+以下是具体的使用方法：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -227,6 +229,8 @@ spec:
 3. **动态配置失败**：检查 external-provisioner 和 StorageClass 配置
 
 ### 调试命令
+
+以下是相关的代码示例：
 
 ```bash
 # 查看 CSI 驱动程序状态

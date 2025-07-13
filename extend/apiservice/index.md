@@ -117,6 +117,8 @@ status:
 
 ### 查看所有 APIService
 
+以下是相关的代码示例：
+
 ```bash
 kubectl get apiservices
 ```

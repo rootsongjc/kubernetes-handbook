@@ -113,7 +113,7 @@ spec:
 
 ## 常见使用场景
 
-### 1. 专用节点
+### 专用节点
 
 为特定工作负载预留节点：
 
@@ -122,7 +122,7 @@ spec:
 kubectl taint nodes gpu-node dedicated=gpu:NoSchedule
 ```
 
-### 2. 节点维护
+### 节点维护
 
 临时隔离节点进行维护：
 
@@ -131,7 +131,7 @@ kubectl taint nodes gpu-node dedicated=gpu:NoSchedule
 kubectl taint nodes node1 maintenance=true:NoExecute
 ```
 
-### 3. 问题节点处理
+### 问题节点处理
 
 处理有问题的节点：
 

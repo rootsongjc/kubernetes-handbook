@@ -108,11 +108,15 @@ spec:
 
 ### 创建 ReplicaSet
 
+以下是相关的定义示例：
+
 ```bash
 kubectl apply -f replicaset.yaml
 ```
 
 ### 查看 ReplicaSet 状态
+
+以下是相关的代码示例：
 
 ```bash
 kubectl get rs
@@ -121,11 +125,15 @@ kubectl describe rs frontend-rs
 
 ### 扩缩容
 
+以下是相关的代码示例：
+
 ```bash
 kubectl scale rs frontend-rs --replicas=5
 ```
 
 ### 删除 ReplicaSet
+
+以下是相关的代码示例：
 
 ```bash
 kubectl delete rs frontend-rs

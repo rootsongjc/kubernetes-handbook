@@ -78,6 +78,8 @@ keywords:
 
 ### Kubelet 安全设置
 
+以下是相关的代码示例：
+
 ```yaml
 # kubelet 配置示例
 authentication:
@@ -125,6 +127,8 @@ kubectl logs job.batch/kube-bench
 ## 网络安全策略
 
 ### Network Policy 配置
+
+以下是相关的配置示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1

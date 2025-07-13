@@ -197,7 +197,7 @@ kubectl config set-context prod-admin \
 
 #### Current Context
 
-`current-context` 指定默认使用的上下文：
+使用 `current-context` 指定默认使用的上下文：
 
 ```yaml
 current-context: prod-admin
@@ -213,6 +213,8 @@ kubectl config use-context staging-dev
 
 ### 查看配置
 
+以下是相关的配置示例：
+
 ```bash
 # 查看完整配置
 kubectl config view
@@ -226,6 +228,8 @@ kubectl config view --kubeconfig=/path/to/config
 
 ### 管理集群
 
+以下是相关的代码示例：
+
 ```bash
 # 添加集群
 kubectl config set-cluster my-cluster \
@@ -237,6 +241,8 @@ kubectl config delete-cluster my-cluster
 ```
 
 ### 管理用户
+
+以下是相关的代码示例：
 
 ```bash
 # 添加用户（证书认证）
@@ -252,6 +258,8 @@ kubectl config delete-user my-user
 ```
 
 ### 管理上下文
+
+以下是相关的代码示例：
 
 ```bash
 # 创建上下文
@@ -291,6 +299,8 @@ kubectl 按以下优先级加载和合并 kubeconfig 文件：
 
 ### 环境变量示例
 
+以下是相关的示例代码：
+
 ```bash
 # 使用多个 kubeconfig 文件
 export KUBECONFIG=$HOME/.kube/config:$HOME/.kube/config-cluster2
@@ -301,7 +311,9 @@ kubectl --kubeconfig=/path/to/special-config get pods
 
 ## 最佳实践
 
-### 1. 文件组织
+### 文件组织
+
+以下是相关的代码示例：
 
 ```bash
 # 推荐的目录结构
@@ -317,7 +329,9 @@ kubectl --kubeconfig=/path/to/special-config get pods
     └── dev-ca.crt
 ```
 
-### 2. 安全考虑
+### 安全考虑
+
+本节将详细介绍安全考虑的相关内容，包括核心概念、实现方式和最佳实践。以下列表总结了主要要点：
 
 - **保护私钥文件**: 设置适当的文件权限（600）
 - **避免明文密码**: 使用证书或 token 认证
@@ -330,7 +344,7 @@ chmod 600 ~/.kube/config
 chmod 600 ~/.kube/certificates/*
 ```
 
-### 3. 命名规范
+### 命名规范
 
 使用清晰的命名约定：
 
@@ -352,7 +366,7 @@ contexts:
 - name: dev-local-testing
 ```
 
-### 4. 自动化脚本示例
+### 自动化脚本示例
 
 创建便捷的集群切换脚本：
 
@@ -377,7 +391,7 @@ case $1 in
 esac
 ```
 
-### 5. 验证配置
+### 验证配置
 
 定期验证配置的有效性：
 

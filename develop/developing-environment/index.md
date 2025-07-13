@@ -82,6 +82,8 @@ cd kubernetes
 
 ### 编译选项
 
+以下是相关的代码示例：
+
 ```bash
 # 快速编译（跳过测试）
 ./build/run.sh make KUBE_BUILD_PLATFORMS=linux/amd64

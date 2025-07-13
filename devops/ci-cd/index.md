@@ -83,17 +83,21 @@ keywords:
 ### 核心特性
 
 #### GitOps 原则实现
+
 ArgoCD 严格遵循 GitOps 方法论，具备以下特点：
+
 - **Git 作为唯一真实源**：所有配置变更都通过 Git 仓库进行
 - **声明式配置管理**：使用 Kubernetes YAML 文件定义期望状态
 - **自动化同步**：持续监控 Git 仓库变更并自动应用
 
 #### 多环境管理
+
 - **环境隔离**：支持开发、测试、预生产、生产等多环境部署
 - **配置差异化**：通过 Kustomize、Helm 等工具管理环境间的配置差异
 - **权限控制**：基于 RBAC 的细粒度权限管理
 
 #### 高级部署功能
+
 - **应用健康检查**：实时监控应用程序健康状态
 - **自动同步策略**：支持手动和自动同步模式
 - **回滚功能**：一键回滚到任意历史版本
@@ -101,7 +105,10 @@ ArgoCD 严格遵循 GitOps 方法论，具备以下特点：
 
 ### 快速开始指南
 
-#### 1. 环境准备
+#### 环境准备
+
+以下是相关的代码示例：
+
 ```bash
 # 创建 ArgoCD 命名空间
 kubectl create namespace argocd
@@ -110,7 +117,10 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-#### 2. 访问 ArgoCD UI
+#### 访问 ArgoCD UI
+
+以下是相关的代码示例：
+
 ```bash
 # 获取初始密码
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
@@ -119,8 +129,10 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
-#### 3. 创建应用程序
+#### 创建应用程序
+
 通过 ArgoCD CLI 或 Web UI 创建应用程序：
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -142,7 +154,8 @@ spec:
             selfHeal: true
 ```
 
-#### 4. 监控和管理
+#### 监控和管理
+
 - 通过 Web UI 监控应用程序状态
 - 查看同步历史和部署日志
 - 管理应用程序生命周期
@@ -156,16 +169,19 @@ spec:
 ### 核心优势
 
 #### 渐进式交付策略
+
 - **蓝绿部署**：在新环境中部署新版本，验证通过后切换流量
 - **金丝雀发布**：逐步增加新版本的流量比例
 - **A/B 测试**：基于用户属性或请求特征分配流量
 
 #### 自动化分析和验证
+
 - **指标分析**：集成 Prometheus 等监控系统进行自动化分析
 - **健康检查**：自定义健康检查规则
 - **自动回滚**：基于预定义条件自动回滚
 
 #### 流量管理集成
+
 - **Istio 集成**：与 Istio 服务网格深度集成
 - **Nginx Ingress**：支持基于 Nginx 的流量分割
 - **AWS ALB**：支持 AWS Application Load Balancer

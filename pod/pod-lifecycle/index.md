@@ -64,6 +64,8 @@ Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition �
 
 ### 探针类型
 
+容器探针包含以下类型：
+
 | 探针类型 | 描述 | 成功条件 |
 |----------|------|----------|
 | **ExecAction** | 执行指定命令 | 命令退出码为 0 |
@@ -120,6 +122,8 @@ Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition �
 - 需要为慢启动容器提供更长的启动窗口
 
 ### 探针配置示例
+
+在 Kubernetes 中，探针（Probe）用于自动检测容器的健康和可用状态。常见的探针类型包括存活探针（Liveness Probe）、就绪探针（Readiness Probe）和启动探针（Startup Probe）。下面分别给出三种探针的典型配置示例，帮助你理解如何在 Pod 中使用探针提升应用的健壮性和可用性。
 
 ```yaml
 apiVersion: v1
@@ -241,7 +245,11 @@ PodSpec 的 `restartPolicy` 字段控制容器重启行为：
 
 ## 实际应用场景
 
+在实际应用中，Pod 生命周期管理和重启策略的选择会根据不同的业务场景而有所不同。下面分别以 Web 应用部署和批处理任务为例，展示典型的 Pod 配置及其生命周期管理方式。
+
 ### 场景 1：Web 应用部署
+
+Web 应用部署（Deployment 控制器，适合长期运行的服务，重启策略为 Always）：
 
 ```yaml
 apiVersion: apps/v1
@@ -286,6 +294,8 @@ spec:
 
 ### 场景 2：批处理任务
 
+在批处理任务场景下，通常使用 Job 控制器来管理一次性或有限次数运行的任务。Job 会确保指定数量的 Pod 成功完成，适合数据处理、定时任务等场景。此时 Pod 的重启策略一般设置为 `OnFailure`，即仅在容器异常退出时重启，正常完成后不再重启。下面是一个典型的批处理 Job 配置示例：
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
@@ -328,6 +338,8 @@ spec:
    - 确认网络策略设置
 
 ### 调试命令
+
+在日常运维和故障排查中，掌握常用的 Pod 调试命令非常重要。以下列举了一些常见的 kubectl 命令，帮助你快速定位和解决 Pod 相关问题：
 
 ```bash
 # 查看 Pod 状态

@@ -141,15 +141,15 @@ kubectl 是一个命令行工具，用于与 Kubernetes 集群和其中的 pod �
 
 自学 Kubernetes 知识基本上有三种不同的途径，我们在这里只提供了一个指导大纲。
 
-### 一、从零开始学习和安装 Kubernetes
+### 从零开始学习和安装 Kubernetes
 
 要想真正掌握 Kubernetes，最好的办法莫过于自己从头开始安装 Kubernetes。不过要注意的是，从零开始安装 Kubernetes 并不是一件容易的事情。安装 Kubernetes 并不是简单的“下载文件 -> 点击安装”式的操作，Kubernetes 由多个组件组成，这些组件必须单独安装和配置。而在此之前，你也需要相当的技术储备来做安装前的准备，比如熟悉 Linux 操作系统。如果你决定使用这种方式学习的话，推荐你阅读 [Kubernetes Handbook——Kubernetes 中文指南 / 云原生架构实践手册](/book/kubernetes-handbook)。此外，请记住，尽管 Kubernetes 作为一个开源解决方案在技术上是免费的，但它确实有一些隐藏的成本，只不过对初学者来说可能并不明显。
 
-### 二、Kubernetes 自托管解决方案
+### Kubernetes 自托管解决方案
 
 这些解决方案样是一些工具和实用程序，大大简化了在本地计算机上安装和配置小型 Kubernetes 集群的任务。它们是学习 Kubernetes 的好方法，同时对于新手来说也不会太难，又足够小巧可以到安装在个人电脑上。最流行的自托管 Kubernetes 工具和环境是 [Minikube](https://github.com/kubernetes/minikube)、[MicroK8s](https://github.com/ubuntu/microk8s)、[Docker Desktop](https://docs.docker.com/docker-for-windows/kubernetes/) 和 [Kind](https://github.com/kubernetes-sigs/kind)。这些解决方案往往有一些限制，例如，Minikube 只允许创建一个节点。尽管有这些缺点，但这些工具还是非常值得推荐，因为它们将易学性和成本效益结合起来，对于刚开始使用 Kubernetes 的初学者来说，是一个很好的选择。
 
-### 三、云托管的解决方案
+### 云托管的解决方案
 
 如今各大云供应商都提供了定制化的 Kubernetes 解决方案来。你也可以通过线上教学平台如 [Katacoda](https://katacoda.com/) 上的免费课程来学习 Kubernetes，它们都是云托管的，你不需要自己安装，只不过你需要云供应商的集群需要付费。
 

@@ -31,6 +31,8 @@ ConfigMap 是 Kubernetes 提供的配置管理机制，用于将配置信息与�
 
 ### 基本结构
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -170,6 +172,8 @@ kubectl apply -f configmap.yaml
 
 #### 引用单个键值
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -194,6 +198,8 @@ spec:
 
 #### 引用整个 ConfigMap
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -209,6 +215,8 @@ spec:
 ```
 
 ### 作为命令行参数使用
+
+以下是具体的使用方法：
 
 ```yaml
 apiVersion: v1
@@ -238,6 +246,8 @@ spec:
 
 #### 挂载所有键值
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -259,6 +269,8 @@ spec:
 此时，ConfigMap 中的每个键都会成为 `/etc/config/` 目录下的一个文件。
 
 #### 挂载特定键值
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: v1
@@ -285,6 +297,8 @@ spec:
 
 #### 设置文件权限
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -310,31 +324,31 @@ spec:
 
 ## 最佳实践
 
-### 1. 命名规范
+### 命名规范
 
 - 使用描述性的名称
 - 遵循 DNS 子域名规范
 - 建议使用小写字母和连字符
 
-### 2. 数据组织
+### 数据组织
 
 - 按功能或服务分组配置
 - 避免在单个 ConfigMap 中存储过多数据
 - 考虑使用多个小的 ConfigMap 而不是一个大的
 
-### 3. 版本管理
+### 版本管理
 
 - 通过标签管理不同版本的配置
 - 使用 Deployment 的滚动更新机制
 - 考虑使用 Helm 等工具管理配置
 
-### 4. 安全考虑
+### 安全考虑
 
 - 不要在 ConfigMap 中存储敏感信息
 - 使用 Secret 存储密码、密钥等敏感数据
 - 定期审查配置内容
 
-### 5. 更新策略
+### 更新策略
 
 - ConfigMap 更新后，Pod 需要重启才能生效（除非使用 subPath）
 - 考虑使用 Deployment 的配置更新策略

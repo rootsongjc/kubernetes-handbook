@@ -74,6 +74,8 @@ keywords:
 
 #### Hadoop 基础镜像
 
+以下是相关的代码示例：
+
 ```dockerfile
 FROM my-docker-repo/jdk:8u321
 
@@ -160,6 +162,8 @@ manifests/
 ```
 
 #### ResourceManager StatefulSet 示例
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: apps/v1

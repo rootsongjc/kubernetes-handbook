@@ -119,6 +119,8 @@ users:
 
 ### Bash 环境配置
 
+以下是相关的配置示例：
+
 ```bash
 # 临时启用
 source <(kubectl completion bash)
@@ -147,6 +149,8 @@ kubectl completion zsh > ~/.oh-my-zsh/completions/_kubectl
 ```
 
 ### Fish 环境配置
+
+以下是相关的配置示例：
 
 ```bash
 kubectl completion fish | source

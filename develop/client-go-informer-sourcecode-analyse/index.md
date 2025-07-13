@@ -20,6 +20,8 @@ client-go 是 Kubernetes 官方提供的 Go 语言客户端库，其中的 infor
 
 ### 基本使用示例
 
+以下是相关的示例代码：
+
 ```go
 // 创建 informer factory
 kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
@@ -63,6 +65,8 @@ informer 机制由以下几个核心组件构成：
 
 ### 结构定义
 
+以下是相关的定义示例：
+
 ```go
 type sharedInformerFactory struct {
     client           kubernetes.Interface      // Kubernetes 客户端
@@ -78,7 +82,9 @@ type sharedInformerFactory struct {
 
 ### 关键方法
 
-#### 1. 创建 Factory
+#### 创建 Factory
+
+以下是相关的定义示例：
 
 ```go
 func NewSharedInformerFactoryWithOptions(client kubernetes.Interface, defaultResync time.Duration, options ...SharedInformerOption) SharedInformerFactory {
@@ -100,7 +106,9 @@ func NewSharedInformerFactoryWithOptions(client kubernetes.Interface, defaultRes
 }
 ```
 
-#### 2. 启动所有 Informer
+#### 启动所有 Informer
+
+以下是相关的代码示例：
 
 ```go
 func (f *sharedInformerFactory) Start(stopCh <-chan struct{}) {
@@ -116,7 +124,9 @@ func (f *sharedInformerFactory) Start(stopCh <-chan struct{}) {
 }
 ```
 
-#### 3. 等待缓存同步
+#### 等待缓存同步
+
+以下是相关的代码示例：
 
 ```go
 func (f *sharedInformerFactory) WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool {
@@ -145,6 +155,8 @@ func (f *sharedInformerFactory) WaitForCacheSync(stopCh <-chan struct{}) map[ref
 
 ### 结构定义
 
+以下是相关的定义示例：
+
 ```go
 type sharedIndexInformer struct {
     indexer                         Indexer              // 本地缓存
@@ -163,6 +175,8 @@ type sharedIndexInformer struct {
 ```
 
 ### 核心运行逻辑
+
+以下是相关的代码示例：
 
 ```go
 func (s *sharedIndexInformer) Run(stopCh <-chan struct{}) {
@@ -208,6 +222,8 @@ Reflector 负责与 API Server 交互，执行 List & Watch 操作：
 
 ### List & Watch 流程
 
+以下是相关的代码示例：
+
 ```go
 func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
     // 1. 执行 List 操作获取全量数据
@@ -243,6 +259,8 @@ func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 
 ### 定时重同步机制
 
+以下是相关的代码示例：
+
 ```go
 // 启动定时重同步
 go func() {
@@ -270,6 +288,8 @@ go func() {
 DeltaFIFO 是 informer 的核心队列，存储资源的增量变更事件。
 
 ### 结构定义
+
+以下是相关的定义示例：
 
 ```go
 type DeltaFIFO struct {
@@ -299,7 +319,9 @@ type Deltas []Delta // 同一资源的增量事件列表
 
 ### 关键操作
 
-#### 1. 批量替换（Replace）
+#### 批量替换（Replace）
+
+以下是相关的代码示例：
 
 ```go
 func (f *DeltaFIFO) Replace(list []interface{}, resourceVersion string) error {
@@ -352,7 +374,9 @@ func (f *DeltaFIFO) Replace(list []interface{}, resourceVersion string) error {
 }
 ```
 
-#### 2. 弹出事件（Pop）
+#### 弹出事件（Pop）
+
+以下是相关的代码示例：
 
 ```go
 func (f *DeltaFIFO) Pop(process PopProcessFunc) (interface{}, error) {
@@ -398,6 +422,8 @@ Indexer 提供了支持索引的本地缓存实现：
 
 ### 核心结构
 
+以下是相关的代码示例：
+
 ```go
 type threadSafeMap struct {
     lock     sync.RWMutex
@@ -412,6 +438,8 @@ type Index map[string]sets.String   // 索引值 -> 对象键集合
 ```
 
 ### 索引维护
+
+以下是相关的代码示例：
 
 ```go
 func (c *threadSafeMap) updateIndices(oldObj interface{}, newObj interface{}, key string) {
@@ -447,6 +475,8 @@ func (c *threadSafeMap) updateIndices(oldObj interface{}, newObj interface{}, ke
 
 ### 常用索引函数
 
+以下是相关的代码示例：
+
 ```go
 // 命名空间索引
 func MetaNamespaceIndexFunc(obj interface{}) ([]string, error) {
@@ -481,6 +511,8 @@ func LabelIndexFunc(labelKey string) IndexFunc {
 ## 事件处理机制
 
 ### HandleDeltas 方法
+
+以下是相关的代码示例：
 
 ```go
 func (s *sharedIndexInformer) HandleDeltas(obj interface{}) error {
@@ -519,6 +551,8 @@ func (s *sharedIndexInformer) HandleDeltas(obj interface{}) error {
 
 ### SharedProcessor 事件分发
 
+以下是相关的代码示例：
+
 ```go
 func (p *sharedProcessor) distribute(obj interface{}, sync bool) {
     p.listenersLock.RLock()
@@ -540,7 +574,9 @@ func (p *sharedProcessor) distribute(obj interface{}, sync bool) {
 
 ## 最佳实践
 
-### 1. 合理设置重同步周期
+### 合理设置重同步周期
+
+以下是相关的代码示例：
 
 ```go
 // 根据业务需求设置合适的重同步周期
@@ -557,7 +593,9 @@ factory = kubeinformers.NewSharedInformerFactoryWithOptions(
 )
 ```
 
-### 2. 优雅的错误处理
+### 优雅的错误处理
+
+以下是相关的代码示例：
 
 ```go
 deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
@@ -590,7 +628,9 @@ deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 })
 ```
 
-### 3. 使用 Lister 进行高效查询
+### 使用 Lister 进行高效查询
+
+以下是具体的使用方法：
 
 ```go
 // 使用 Lister 从本地缓存查询，避免直接调用 API Server

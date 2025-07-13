@@ -63,6 +63,8 @@ IP 伪装代理的工作流程如下：
 
 ### 使用默认配置部署
 
+以下是相关的配置示例：
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/cluster/addons/ip-masq-agent/ip-masq-agent.yaml
 ```
@@ -151,17 +153,23 @@ MASQUERADE all  --  anywhere             anywhere             /* ip-masq-agent: 
 
 ### 检查代理状态
 
+以下是相关的代码示例：
+
 ```bash
 kubectl get pods -n kube-system -l k8s-app=ip-masq-agent
 ```
 
 ### 查看日志
 
+以下是相关的代码示例：
+
 ```bash
 kubectl logs -n kube-system -l k8s-app=ip-masq-agent
 ```
 
 ### 验证 iptables 规则
+
+以下是相关的代码示例：
 
 ```bash
 # 在节点上执行

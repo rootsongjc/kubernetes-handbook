@@ -88,15 +88,17 @@ Pod 内容器的网络共享按以下顺序执行：
 
 Pause 容器在 Pod 中承担以下关键职责：
 
-1. **命名空间共享基础**
-   - Network Namespace 共享
-   - IPC Namespace 共享  
-   - PID Namespace 共享
+**命名空间共享基础**
 
-2. **Init 进程角色**
-   - 作为 Pod 内的 PID 1 进程
-   - 负责回收僵尸进程
-   - 处理信号传递
+- Network Namespace 共享
+- IPC Namespace 共享  
+- PID Namespace 共享
+
+**Init 进程角色**
+
+- 作为 Pod 内的 PID 1 进程
+- 负责回收僵尸进程
+- 处理信号传递
 
 ### 查看运行状态
 
@@ -117,11 +119,15 @@ $ crictl ps | grep pause
 
 ### 步骤一：启动 Pause 容器
 
+在下面的命令中，我们将手动启动一个 Pause 容器，并将其作为网络、IPC 和 PID 命名空间的基础。随后，其他业务容器（如 Nginx、Ghost）通过 `--net=container:pause`、`--ipc=container:pause`、`--pid=container:pause` 参数加入到同一个命名空间，从而实现与 Kubernetes Pod 内部相同的资源共享机制。这有助于直观理解 Pause 容器在 Pod 中的作用和多容器协作的实现方式。
+
 ```bash
 docker run -d --name pause -p 8880:80 --ipc=shareable registry.k8s.io/pause:3.9
 ```
 
 ### 步骤二：创建 Nginx 配置并启动容器
+
+我们将通过 Docker 手动模拟 Kubernetes Pod 内 Pause 容器的网络与命名空间共享机制。首先启动一个 Pause 容器作为基础命名空间载体，然后将 Nginx 和 Ghost 应用容器通过 `--net=container:pause`、`--ipc=container:pause`、`--pid=container:pause` 参数加入到同一个命名空间，实现多容器间的网络、进程空间共享。这种方式可以帮助理解 Kubernetes Pod 内部容器是如何依赖 Pause 容器实现资源隔离与共享的。
 
 ```bash
 cat <<EOF > nginx.conf
@@ -148,6 +154,8 @@ docker run -d --name nginx \
 ```
 
 ### 步骤三：启动 Ghost 应用容器
+
+在这一步，我们将启动 Ghost 应用容器，并让其加入到 Pause 容器的网络、IPC 和 PID 命名空间中。这样，Ghost 容器就能与 Nginx 容器共享同一个网络和进程空间，实现多容器协作，模拟 Kubernetes Pod 内部的容器共享机制。
 
 ```bash
 docker run -d --name ghost \

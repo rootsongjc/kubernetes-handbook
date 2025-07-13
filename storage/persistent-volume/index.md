@@ -85,6 +85,8 @@ Pod 通过在 volume 配置中引用 PVC 来使用持久化存储。集群调度
 
 ### 基础配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -151,6 +153,8 @@ nodeAffinity:
 
 ### 基础配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -202,6 +206,8 @@ selector:
 
 ### 文件系统模式使用
 
+以下是具体的使用方法：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -229,6 +235,8 @@ spec:
 
 ### 块设备模式使用
 
+以下是具体的使用方法：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -253,6 +261,8 @@ spec:
 ## StorageClass 配置
 
 ### 基础 StorageClass 示例
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -376,6 +386,8 @@ spec:
 
 #### PVC 无法绑定
 
+以下是相关的代码示例：
+
 ```bash
 # 检查 PVC 状态
 kubectl describe pvc <pvc-name>
@@ -388,6 +400,8 @@ kubectl describe storageclass <class-name>
 ```
 
 #### Pod 无法启动
+
+以下是相关的代码示例：
 
 ```bash
 # 检查 Pod 事件

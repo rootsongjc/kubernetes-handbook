@@ -168,6 +168,9 @@ FLANNEL_IPMASQ=false
 # eth2: 外网访问接口
 # docker0: Docker 网桥 (172.33.68.1/24)
 # veth对: 连接容器与网桥的虚拟网卡对
+
+以下是相关的代码示例：
+
 ```
 
 网络接口类型说明：
@@ -190,6 +193,9 @@ d94c046e105d        host                host                local
 # 检查 bridge 网络详情
 [root@node1 ~]# docker network inspect bridge
 # 输出包含子网配置、网关设置、连接的容器等信息
+
+以下是相关的配置示例：
+
 ```
 
 ## 路由机制
@@ -242,6 +248,9 @@ Kubernetes 会在 iptables 中注入相关规则：
 # KUBE-SERVICES: Service 访问规则
 # KUBE-FORWARD: 转发规则
 # KUBE-FIREWALL: 防火墙规则
+
+以下是相关的代码示例：
+
 ```
 
 重要规则说明：

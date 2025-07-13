@@ -59,6 +59,8 @@ Kustomize 天然支持多环境部署，允许为不同环境（开发、测试�
 
 ### 基础配置结构
 
+以下是相关的配置示例：
+
 ```
 base/
 ├── kustomization.yaml
@@ -83,6 +85,8 @@ commonLabels:
 ```
 
 ### 环境特定配置
+
+以下是相关的配置示例：
 
 ```
 overlays/

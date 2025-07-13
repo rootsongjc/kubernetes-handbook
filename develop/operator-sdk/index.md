@@ -48,6 +48,8 @@ Operator SDK 通过以下方式解决这些问题：
 
 #### 方式一：使用二进制文件（推荐）
 
+以下是具体的使用方法：
+
 ```bash
 # 设置版本和架构
 export ARCH=$(case $(uname -m) in x86_64) echo -n amd64 ;; aarch64) echo -n arm64 ;; *) echo -n $(uname -m) ;; esac)
@@ -68,11 +70,15 @@ sudo mv operator-sdk_${OS}_${ARCH} /usr/local/bin/operator-sdk
 
 #### 方式二：使用 Homebrew (macOS)
 
+以下是具体的使用方法：
+
 ```bash
 brew install operator-sdk
 ```
 
 #### 验证安装
+
+以下是安装相关的步骤：
 
 ```bash
 operator-sdk version
@@ -81,6 +87,8 @@ operator-sdk version
 ## 创建第一个 Operator 项目
 
 ### 初始化项目
+
+以下是相关的代码示例：
 
 ```bash
 # 创建项目目录
@@ -93,6 +101,8 @@ operator-sdk init --domain example.com --repo github.com/example/memcached-opera
 
 ### 创建 API
 
+以下是相关的定义示例：
+
 ```bash
 operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
 ```
@@ -103,6 +113,8 @@ operator-sdk create api --group cache --version v1alpha1 --kind Memcached --reso
 - 相关的测试文件
 
 ### 项目结构说明
+
+以下是相关的代码示例：
 
 ```
 ├── api/
@@ -142,6 +154,8 @@ type MemcachedStatus struct {
 
 ### 构建和测试
 
+以下是测试相关的代码：
+
 ```bash
 # 生成代码
 make generate
@@ -160,17 +174,23 @@ make docker-build IMG=controller:latest
 
 ### 安装 CRD
 
+以下是安装相关的步骤：
+
 ```bash
 make install
 ```
 
 ### 本地运行
 
+以下是相关的代码示例：
+
 ```bash
 make run
 ```
 
 ### 部署到集群
+
+以下是部署相关的配置：
 
 ```bash
 # 构建并推送镜像

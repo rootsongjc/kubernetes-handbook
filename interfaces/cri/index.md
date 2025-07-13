@@ -50,6 +50,8 @@ CRI 的核心架构包含以下组件：
 
 ### 常用配置示例
 
+以下为常见的 CRI 配置示例，可根据实际使用的容器运行时进行选择：
+
 ```bash
 # 使用 containerd
 --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock
@@ -98,6 +100,8 @@ CRI 接口定义了两个主要的 gRPC 服务：
 
 ### 集成方式
 
+以下示例展示了如何通过 RuntimeClass 集成 Kata Containers 等安全增强型运行时：
+
 ```yaml
 # 通过 RuntimeClass 使用不同的容器运行时
 apiVersion: node.k8s.io/v1
@@ -127,6 +131,15 @@ spec:
 4. **维护成本**：考虑团队的技术栈和维护能力
 
 ### 监控和故障排查
+
+在日常运维和故障排查中，建议结合 `crictl` 工具对容器运行时进行监控和诊断。常见操作包括：
+
+- **查看运行时信息**：快速了解当前 CRI 运行时的详细状态
+- **列出容器**：获取所有正在运行的容器列表
+- **查看容器日志**：排查应用异常或启动失败原因
+- **容器内执行命令**：进入容器内部进行实时调试
+
+以下为常用 `crictl` 命令示例：
 
 ```bash
 # 查看 CRI 运行时状态

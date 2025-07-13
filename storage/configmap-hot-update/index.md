@@ -253,6 +253,8 @@ spec:
 
 ### 监控 ConfigMap 变化
 
+以下是相关的代码示例：
+
 ```bash
 # 查看 ConfigMap 变更事件
 kubectl get events --field-selector involvedObject.name=my-configmap
@@ -311,7 +313,7 @@ func watchConfigFile(filename string) {
 
 ## 最佳实践
 
-### 1. 选择合适的挂载方式
+### 选择合适的挂载方式
 
 | 场景 | 推荐方式 | 理由 |
 |------|----------|------|
@@ -319,7 +321,9 @@ func watchConfigFile(filename string) {
 | 配置文件，需要热更新 | Volume 挂载 | 支持热更新，原子性 |
 | 数据库密码等敏感信息 | Secret + Volume | 安全性更好 |
 
-### 2. 配置版本管理
+### 配置版本管理
+
+以下是相关的配置示例：
 
 ```yaml
 apiVersion: v1
@@ -340,7 +344,9 @@ data:
     log_level: "INFO"
 ```
 
-### 3. 优化更新延迟
+### 优化更新延迟
+
+以下是相关的代码示例：
 
 ```yaml
 # 在 Pod 中配置更快的同步
@@ -355,7 +361,9 @@ spec:
     value: "10s"  # 应用级别的配置检查周期
 ```
 
-### 4. 实现优雅的配置重载
+### 实现优雅的配置重载
+
+以下是相关的配置示例：
 
 ```yaml
 # 应用程序配置示例
@@ -377,7 +385,9 @@ data:
   }
 ```
 
-### 5. 健康检查和配置验证
+### 健康检查和配置验证
+
+以下是相关的配置示例：
 
 ```yaml
 apiVersion: apps/v1

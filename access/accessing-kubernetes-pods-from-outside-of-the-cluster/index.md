@@ -40,6 +40,8 @@ Kubernetes 提供了多种从外部访问 Pod 和 Service 的方式：
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -55,6 +57,8 @@ spec:
 ```
 
 ### 使用方法
+
+以下是具体的使用方法：
 
 ```bash
 # 部署 Pod
@@ -89,6 +93,8 @@ curl -v http://<NODE_IP>:8086/ping
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -105,6 +111,8 @@ spec:
 ```
 
 ### 访问方法
+
+以下是相关的代码示例：
 
 ```bash
 # 通过任意节点 IP + hostPort 访问
@@ -124,6 +132,8 @@ curl http://<NODE_IP>:8086/ping
 NodePort 是 Kubernetes Service 的一种类型，它会在每个节点上开放一个端口（默认范围 30000-32767），将外部流量转发到对应的 Pod。
 
 ### 配置示例
+
+以下是相关的示例代码：
 
 ```yaml
 # Pod 定义
@@ -157,6 +167,8 @@ spec:
 
 ### 访问方法
 
+以下是相关的代码示例：
+
 ```bash
 # 通过任意节点 IP + NodePort 访问
 curl http://<NODE_IP>:30086/ping
@@ -187,6 +199,8 @@ LoadBalancer 类型的 Service 会自动创建云平台提供的负载均衡器�
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -202,6 +216,8 @@ spec:
 ```
 
 ### 查看和访问
+
+以下是相关的代码示例：
 
 ```bash
 # 查看服务状态
@@ -239,6 +255,8 @@ Ingress 是 Kubernetes 中用于管理外部访问集群内服务的 API 对象�
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 # 基础 Ingress 配置
 apiVersion: networking.k8s.io/v1
@@ -262,6 +280,8 @@ spec:
 ```
 
 ### 高级配置示例
+
+以下是相关的示例代码：
 
 ```yaml
 # 支持 HTTPS 和多路径的 Ingress
@@ -298,6 +318,8 @@ spec:
 ```
 
 ### 访问方法
+
+以下是相关的代码示例：
 
 ```bash
 # 通过域名访问
@@ -342,6 +364,8 @@ curl https://api.example.com/influxdb/ping
 - 避免在生产环境使用 hostNetwork
 
 ### 监控和排错
+
+以下是相关的代码示例：
 
 ```bash
 # 检查服务状态

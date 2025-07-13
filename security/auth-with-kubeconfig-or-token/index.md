@@ -81,6 +81,8 @@ kubectl apply -f admin-role.yaml
 
 #### 方法一：使用 kubectl describe（推荐）
 
+以下是具体的使用方法：
+
 ```bash
 # 获取 ServiceAccount 的 Secret
 kubectl -n kube-system get secret $(kubectl -n kube-system get sa admin-user -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 -d
@@ -95,6 +97,8 @@ kubectl -n kube-system create token admin-user
 ```
 
 #### 方法三：手动创建 Secret（长期 token）
+
+以下是相关的定义示例：
 
 ```yaml
 apiVersion: v1

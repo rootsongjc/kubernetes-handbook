@@ -91,6 +91,8 @@ Kubernetes 支持以下类型的卷：
 
 #### 示例配置
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -113,6 +115,8 @@ spec:
 `configMap` 卷用于将配置数据注入到 Pod 中。存储在 ConfigMap 中的数据可以在 `configMap` 类型的卷中引用，然后被运行在 Pod 中的容器化应用使用。
 
 #### 示例配置
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: v1
@@ -140,6 +144,8 @@ spec:
 
 #### 示例配置
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -164,6 +170,8 @@ spec:
 `persistentVolumeClaim` 卷用于将 [PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) 挂载到容器中。PersistentVolume 是在用户不知道特定云环境的细节的情况下"声明"持久化存储（例如 GCE PersistentDisk 或 iSCSI 卷）的一种方式。
 
 #### 示例配置
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: v1
@@ -216,6 +224,8 @@ spec:
 
 #### 示例配置
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -243,6 +253,8 @@ spec:
 
 #### 示例配置
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -267,6 +279,8 @@ spec:
 CSI（Container Storage Interface）是容器存储接口的标准，允许存储供应商编写插件来支持其存储系统。CSI 卷类型允许 Pod 使用任何符合 CSI 规范的存储驱动程序。
 
 #### 示例配置
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: v1
@@ -363,6 +377,8 @@ spec:
 
 #### 示例配置
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -410,6 +426,8 @@ spec:
 **注意**：双向挂载传播可能是危险的。它可能会损坏主机操作系统，因此只能在特权容器中使用。
 
 #### 示例配置
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: v1

@@ -56,7 +56,7 @@ export ETCDCTL_API=3
 
 Kubernetes 将所有资源对象存储在 etcd 的 `/registry` 路径下：
 
-```
+```text
 /registry/
 ├── pods/
 ├── services/
@@ -76,6 +76,10 @@ Kubernetes 将所有资源对象存储在 etcd 的 `/registry` 路径下：
 
 #### 查看所有 Pod 信息
 
+在使用 etcdctl 工具直接操作 etcd 数据时，建议仅用于调试、排查或只读场景。**切勿直接修改 etcd 中的 Kubernetes 资源数据**，否则可能导致集群状态不一致或不可预期的故障。所有生产环境下的资源管理应通过 Kubernetes API Server 进行。
+
+以下为常见的 etcd 查询操作示例：
+
 ```bash
 # 查看所有 Pod（JSON 格式）
 ETCDCTL_API=3 etcdctl get /registry/pods --prefix -w json | python -m json.tool
@@ -86,6 +90,8 @@ ETCDCTL_API=3 etcdctl get /registry/pods/default --prefix
 
 #### 查看集群节点信息
 
+以下命令用于查看 etcd 中存储的集群节点信息。请注意，直接操作 etcd 数据仅建议用于只读、调试或排查场景，切勿在生产环境下直接修改 etcd 数据，以免导致集群状态异常。
+
 ```bash
 # 查看所有节点
 ETCDCTL_API=3 etcdctl get /registry/minions --prefix
@@ -95,6 +101,8 @@ ETCDCTL_API=3 etcdctl get /registry/minions/node-name
 ```
 
 #### 监控资源变化
+
+在 etcd 中，可以通过 `etcdctl watch` 命令实时监控指定资源路径的数据变化。这对于调试、排查集群资源变更、分析事件触发等场景非常有用。以下是常见的监控操作示例：
 
 ```bash
 # 监控 Pod 变化
@@ -120,6 +128,8 @@ ETCDCTL_API=3 etcdctl get /coreos.com/network --prefix
 
 ### 创建快照
 
+在对 etcd 进行数据备份和恢复时，建议定期创建快照以防止数据丢失。以下命令演示了如何使用 `etcdctl` 工具进行快照的创建与校验。请确保备份文件安全存储，并在恢复时严格按照官方流程操作，避免数据一致性问题。
+
 ```bash
 # 创建 etcd 快照
 ETCDCTL_API=3 etcdctl snapshot save /backup/etcd-snapshot-$(date +%Y%m%d-%H%M%S).db
@@ -129,6 +139,8 @@ ETCDCTL_API=3 etcdctl snapshot status /backup/etcd-snapshot.db
 ```
 
 ### 恢复数据
+
+在恢复 etcd 数据时，建议先在隔离环境中验证快照的完整性和一致性，确保快照文件未损坏且包含所需数据。恢复操作会将 etcd 数据目录重建为快照中的状态，**请勿在原有数据目录上直接恢复**，以免造成数据丢失或集群不可用。恢复完成后，可将新数据目录用于启动 etcd 实例，或用于数据迁移、灾备演练等场景。
 
 ```bash
 # 从快照恢复
@@ -157,6 +169,8 @@ ETCDCTL_API=3 etcdctl snapshot restore /backup/etcd-snapshot.db \
 
 ### TLS 加密
 
+建议所有 etcd 节点间通信和客户端访问均启用 TLS，防止数据在传输过程中被窃听或篡改。以下示例展示了如何通过 etcdctl 工具使用 TLS 证书安全访问 etcd 服务。
+
 ```bash
 # 使用 TLS 证书访问 etcd
 ETCDCTL_API=3 etcdctl \
@@ -183,6 +197,8 @@ ETCDCTL_API=3 etcdctl \
 4. **存储空间不足**：清理历史数据和执行压缩
 
 ### 调试命令
+
+以下命令可用于排查和定位 etcd 常见故障：
 
 ```bash
 # 检查集群健康状态

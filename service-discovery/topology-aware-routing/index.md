@@ -40,6 +40,8 @@ EndpointSlice 是 Kubernetes 中用于替代传统 Endpoint 资源的新 API，�
 
 ### 基本结构
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
@@ -74,7 +76,7 @@ EndpointSlice 中每个端点可以包含以下拓扑信息：
 
 ## 启用拓扑感知路由
 
-### 1. 启用特性门控
+### 启用特性门控
 
 对于 Kubernetes 1.23 之前的版本，需要在以下组件中启用特性门控：
 
@@ -89,7 +91,7 @@ EndpointSlice 中每个端点可以包含以下拓扑信息：
 --feature-gates=TopologyAwareHints=true
 ```
 
-### 2. 配置服务注解
+### 配置服务注解
 
 在 Service 资源上添加注解来启用拓扑感知提示：
 
@@ -108,7 +110,7 @@ spec:
       targetPort: 8080
 ```
 
-### 3. 验证配置
+### 验证配置
 
 启用后，EndpointSlice 将包含拓扑提示信息：
 
@@ -157,6 +159,8 @@ endpoints:
 3. **连接失败**：验证网络策略和防火墙规则
 
 ### 诊断命令
+
+以下是相关的代码示例：
 
 ```bash
 # 查看 EndpointSlice 详情

@@ -97,6 +97,9 @@ echo -n "admin" | base64
 # 输出：YWRtaW4=
 echo -n "1f2d1e2e67df" | base64
 # 输出：MWYyZDFlMmU2N2Rm
+
+以下是相关的代码示例：
+
 ```
 
 现在可以像这样写一个 Secret 对象：
@@ -138,6 +141,9 @@ kubectl get secret mysecret -o yaml
 ```bash
 echo "MWYyZDFlMmU2N2Rm" | base64 --decode
 # 输出：1f2d1e2e67df
+
+以下是相关的代码示例：
+
 ```
 
 ## 使用 Secret
@@ -265,6 +271,9 @@ cat /etc/foo/username
 # 输出：admin
 cat /etc/foo/password
 # 输出：1f2d1e2e67df
+
+以下是相关的代码示例：
+
 ```
 
 #### 挂载的 Secret 被自动更新
@@ -313,6 +322,9 @@ echo $SECRET_USERNAME
 # 输出：admin
 echo $SECRET_PASSWORD
 # 输出：1f2d1e2e67df
+
+以下是相关的代码示例：
+
 ```
 
 ### 使用 imagePullSecret

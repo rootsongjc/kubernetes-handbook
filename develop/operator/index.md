@@ -111,6 +111,8 @@ spec:
 
 ### 开发步骤
 
+以下是相关的代码示例：
+
 ```bash
 # 使用 Operator SDK 创建项目
 operator-sdk init --domain=example.com --repo=github.com/example/my-operator
@@ -142,6 +144,8 @@ make deploy IMG=myregistry/my-operator:v1.0.0
 ## 运维考虑
 
 ### 监控和调试
+
+以下是相关的代码示例：
 
 ```yaml
 # 监控 Operator 状态

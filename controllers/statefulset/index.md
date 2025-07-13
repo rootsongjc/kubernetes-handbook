@@ -206,6 +206,8 @@ spec:
 
 ### 部署 StatefulSet
 
+以下是部署相关的配置：
+
 ```bash
 # 创建 StatefulSet
 kubectl apply -f web.yaml
@@ -222,6 +224,8 @@ kubectl get pods -l app=nginx
 ```
 
 ### 基本运维操作
+
+以下是相关的代码示例：
 
 ```bash
 # 扩容到 5 个副本
@@ -245,6 +249,8 @@ kubectl delete pvc www-web-0 www-web-1 www-web-2
 ```
 
 ### DNS 验证
+
+以下是相关的代码示例：
 
 ```bash
 # 创建测试 Pod 验证 DNS 解析
@@ -357,6 +363,8 @@ spec:
 
 ### 方法一：NodePort Service
 
+以下是相关的代码示例：
+
 ```bash
 # 为特定 Pod 添加标签
 kubectl label pod zk-0 instance=zk-0
@@ -371,6 +379,8 @@ kubectl expose pod zk-1 --port=2181 --target-port=2181 \
 ```
 
 ### 方法二：LoadBalancer Service
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: v1

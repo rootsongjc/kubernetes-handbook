@@ -42,6 +42,10 @@ Kubernetes 垃圾收集器（Garbage Collector）是集群中的重要组件，�
 
 ### ownerReference 字段结构
 
+`ownerReference` 字段用于描述当前对象与其所有者（Owner）之间的关系。通过设置 `ownerReference`，Kubernetes 能够自动识别对象的归属关系，并在 Owner 被删除时，根据级联删除策略自动处理 Dependent 对象。这一机制极大地方便了资源的自动化管理和清理，避免了资源孤儿化和集群资源泄漏的问题。
+
+常见场景包括 ReplicaSet 管理的 Pod、Deployment 管理的 ReplicaSet 等。理解和正确使用 `ownerReference`，是掌握 Kubernetes 资源生命周期管理的关键。
+
 ```yaml
 ownerReferences:
 - apiVersion: apps/v1
@@ -175,6 +179,8 @@ kubectl describe pod <pod-name>
 
 ### 使用 kubectl 命令
 
+以下是具体的使用方法：
+
 ```bash
 # 默认级联删除（Background 模式）
 kubectl delete replicaset my-repset
@@ -191,6 +197,8 @@ kubectl delete replicaset my-repset --cascade=orphan
 
 ### 使用 YAML 文件控制
 
+以下是具体的使用方法：
+
 ```yaml
 # delete-options.yaml
 apiVersion: v1
@@ -203,6 +211,8 @@ kubectl delete -f my-repset.yaml --delete-options=./delete-options.yaml
 ```
 
 ### 使用 API 直接控制
+
+以下是具体的使用方法：
 
 ```bash
 # 启动代理
@@ -276,6 +286,8 @@ kubectl patch pv <pv-name> -p '{"metadata":{"finalizers":null}}'
 
 ### 监控和观察
 
+以下是相关的代码示例：
+
 ```bash
 # 监控垃圾收集器状态
 kubectl get events --field-selector reason=SuccessfulDelete
@@ -344,6 +356,8 @@ rules:
    ```
 
 ### 调试工具
+
+以下是相关的代码示例：
 
 ```bash
 # 查看垃圾收集器日志
