@@ -65,6 +65,8 @@ spec:
 
 ### 创建 ServiceAccount
 
+以下是相关的定义示例：
+
 ```bash
 kubectl create serviceaccount sample-sa
 ```
@@ -141,6 +143,8 @@ rules:
 
 ### 创建 ClusterRoleBinding
 
+以下是相关的定义示例：
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -202,6 +206,8 @@ default   0          1d
 
 ### 创建自定义 ServiceAccount
 
+以下是相关的定义示例：
+
 ```bash
 kubectl apply -f - <<EOF
 apiVersion: v1
@@ -239,6 +245,8 @@ spec:
 - 你不能更新已创建的 Pod 的 Service Account
 
 ### 清理 ServiceAccount
+
+以下是相关的代码示例：
 
 ```bash
 kubectl delete serviceaccount/build-robot

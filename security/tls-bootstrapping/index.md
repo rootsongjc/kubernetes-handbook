@@ -91,6 +91,8 @@ Controller Manager 负责证书的签发，需要配置 CA 证书和私钥：
 
 #### 启用服务端证书轮转
 
+以下是相关的代码示例：
+
 ```bash
 --feature-gates=RotateKubeletServerCertificate=true
 ```
@@ -98,6 +100,8 @@ Controller Manager 负责证书的签发，需要配置 CA 证书和私钥：
 ### RBAC 权限配置
 
 #### 创建 ClusterRole
+
+以下是相关的定义示例：
 
 ```yaml
 # 审批节点客户端证书请求
@@ -228,6 +232,8 @@ kubectl config use-context default --kubeconfig=bootstrap.kubeconfig
 
 ### 查看证书请求
 
+以下是相关的代码示例：
+
 ```bash
 # 列出所有 CSR
 kubectl get csr
@@ -237,6 +243,8 @@ kubectl describe csr <csr-name>
 ```
 
 ### 手动审批证书
+
+以下是相关的代码示例：
 
 ```bash
 # 批准证书请求

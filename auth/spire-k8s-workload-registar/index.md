@@ -80,6 +80,8 @@ SPIRE Kubernetes 工作负载注册器是一个强大的工具，用于在 Kuber
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```hcl
 log_level = "info"
 trust_domain = "example.org"
@@ -117,6 +119,9 @@ spiffe://<TRUST_DOMAIN>/ns/<NAMESPACE>/sa/<SERVICE_ACCOUNT>
 ```yaml
 # Pod 使用 production 命名空间中的 blog 服务账户
 # 生成的 SPIFFE ID: spiffe://example.org/ns/production/sa/blog
+
+以下是相关的代码示例：
+
 ```
 
 **注册条目示例：**

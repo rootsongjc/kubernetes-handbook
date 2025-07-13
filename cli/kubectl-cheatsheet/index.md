@@ -154,6 +154,8 @@ kubectl describe node my-node
 
 ## 资源更新
 
+以下是相关的代码示例：
+
 ```bash
 # 声明式更新（推荐）
 kubectl apply -f updated-manifest.yaml
@@ -176,6 +178,8 @@ kubectl autoscale deployment my-deployment --min=2 --max=10 --cpu-percent=80
 
 ## 资源删除
 
+以下是相关的代码示例：
+
 ```bash
 # 删除指定资源
 kubectl delete pod my-pod
@@ -193,6 +197,8 @@ kubectl delete all --all -n my-namespace
 ```
 
 ## Pod 交互和调试
+
+以下是相关的代码示例：
 
 ```bash
 # 查看日志
@@ -223,6 +229,8 @@ kubectl top node
 
 ## 节点和集群管理
 
+以下是相关的代码示例：
+
 ```bash
 # 节点管理
 kubectl get nodes
@@ -244,6 +252,8 @@ kubectl api-versions                        # 查看API版本
 ```
 
 ## 高级查询技巧
+
+以下是相关的代码示例：
 
 ```bash
 # 使用字段选择器
@@ -301,6 +311,8 @@ kubectl get events --watch --field-selector involvedObject.name=my-pod
 | `--v=8` | 显示 HTTP 请求内容 |
 
 ## 实用技巧
+
+以下是相关的代码示例：
 
 ```bash
 # 快速创建测试Pod

@@ -120,27 +120,27 @@ spec:                   # 对象规范
 
 ### 对象管理操作
 
-#### 创建对象
+创建对象：
 
 ```bash
 kubectl apply -f nginx-deployment.yaml
 ```
 
-#### 查看对象状态
+查看对象状态：
 
 ```bash
 kubectl get deployment nginx-deployment
 kubectl describe deployment nginx-deployment  
 ```
 
-#### 更新对象
+更新对象：
 
 ```bash
 # 修改 YAML 文件后重新应用
 kubectl apply -f nginx-deployment.yaml
 ```
 
-#### 删除对象
+删除对象：
 
 ```bash
 kubectl delete -f nginx-deployment.yaml

@@ -261,6 +261,8 @@ sed -i 's/zookeeper.connect=localhost:2181/zookeeper.connect=zk-0.zk-svc.default
 
 ### Kafka StatefulSet 配置
 
+以下是相关的配置示例：
+
 ```yaml
 ---
 apiVersion: v1

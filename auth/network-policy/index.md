@@ -44,6 +44,8 @@ NetworkPolicy 的实现依赖于网络插件（CNI），因此需要使用支持
 
 ### 基本结构
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -112,6 +114,8 @@ ingress:
 
 ### 示例 1：数据库访问控制
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -137,6 +141,8 @@ spec:
 此策略仅允许标签为 `app: backend` 的 Pod 通过 TCP 端口 3306 访问数据库。
 
 ### 示例 2：跨命名空间通信
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -169,6 +175,8 @@ spec:
 
 ### 拒绝所有流量
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -182,6 +190,8 @@ spec:
 ```
 
 ### 允许所有入站流量
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -197,6 +207,8 @@ spec:
 ```
 
 ### 允许所有出站流量
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1

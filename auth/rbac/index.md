@@ -204,6 +204,8 @@ RBAC 支持三种主体类型：
 
 ### 用户（User）
 
+以下是相关的代码示例：
+
 ```yaml
 subjects:
 - kind: User
@@ -213,6 +215,8 @@ subjects:
 
 ### 用户组（Group）
 
+以下是相关的代码示例：
+
 ```yaml
 subjects:
 - kind: Group
@@ -221,6 +225,8 @@ subjects:
 ```
 
 ### 服务账户（ServiceAccount）
+
+以下是相关的代码示例：
 
 ```yaml
 subjects:
@@ -306,6 +312,8 @@ subjects:
 
 ### 创建 RoleBinding
 
+以下是相关的定义示例：
+
 ```bash
 # 在命名空间中授予 ClusterRole
 kubectl create rolebinding bob-admin-binding \
@@ -321,6 +329,8 @@ kubectl create rolebinding myapp-view-binding \
 ```
 
 ### 创建 ClusterRoleBinding
+
+以下是相关的定义示例：
 
 ```bash
 # 在集群范围内授予权限
@@ -338,7 +348,7 @@ kubectl create clusterrolebinding myapp-view-binding \
 
 默认情况下，RBAC 策略不会为 `kube-system` 命名空间外的服务账户授予任何权限。以下是几种授权策略，按安全性从高到低排序：
 
-### 1. 特定应用授权（推荐）
+### 特定应用授权（推荐）
 
 为特定应用的服务账户授予最小必要权限：
 
@@ -349,7 +359,7 @@ kubectl create rolebinding my-sa-view \
   --namespace=my-namespace
 ```
 
-### 2. 默认服务账户授权
+### 默认服务账户授权
 
 为命名空间的默认服务账户授予权限：
 
@@ -360,7 +370,7 @@ kubectl create rolebinding default-view \
   --namespace=my-namespace
 ```
 
-### 3. 命名空间级别授权
+### 命名空间级别授权
 
 为命名空间中所有服务账户授予相同权限：
 
@@ -371,7 +381,7 @@ kubectl create rolebinding serviceaccounts-view \
   --namespace=my-namespace
 ```
 
-### 4. 集群级别授权（不推荐）
+### 集群级别授权（不推荐）
 
 为所有服务账户授予集群范围权限：
 
@@ -392,6 +402,8 @@ kubectl create clusterrolebinding serviceaccounts-view \
 ## 故障排除
 
 ### 查看权限
+
+以下是相关的代码示例：
 
 ```bash
 # 检查用户权限

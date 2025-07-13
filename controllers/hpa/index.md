@@ -80,6 +80,8 @@ HPA 控制器可通过两种方式获取指标：
 
 ### kubectl 命令
 
+以下是相关的代码示例：
+
 ```bash
 # 基本管理命令
 kubectl create hpa
@@ -93,6 +95,8 @@ kubectl autoscale deployment nginx --min=2 --max=10 --cpu-percent=80
 
 ### 命令参数说明
 
+以下是相关的代码示例：
+
 ```bash
 kubectl autoscale (-f FILENAME | TYPE NAME | TYPE/NAME) [--min=MINPODS] --max=MAXPODS [--cpu-percent=CPU] [flags]
 ```
@@ -104,6 +108,8 @@ kubectl autoscale deployment foo --min=2 --max=5 --cpu-percent=80
 ```
 
 ### YAML 配置示例
+
+以下是相关的示例代码：
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -247,7 +253,9 @@ Kubernetes 1.6+ 支持基于多个指标的扩缩容：
 
 ## 最佳实践
 
-### 1. 资源请求设置
+### 资源请求设置
+
+以下是相关的代码示例：
 
 ```yaml
 resources:
@@ -259,7 +267,9 @@ resources:
     memory: 512Mi
 ```
 
-### 2. 合理的扩缩容参数
+### 合理的扩缩容参数
+
+以下是相关的代码示例：
 
 ```yaml
 behavior:
@@ -277,7 +287,7 @@ behavior:
       periodSeconds: 60
 ```
 
-### 3. 监控和告警
+### 监控和告警
 
 - 监控 HPA 状态和扩缩容事件
 - 设置合理的告警阈值
@@ -303,6 +313,8 @@ behavior:
    - 检查应用负载模式
 
 ### 调试命令
+
+以下是相关的代码示例：
 
 ```bash
 # 查看 HPA 状态

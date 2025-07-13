@@ -177,6 +177,8 @@ Kubernetes 在 etcd 中存储的主要资源类型包括：
 
 ### 获取所有 Kubernetes 对象键
 
+以下是相关的代码示例：
+
 ```bash
 #!/bin/bash
 # 获取 etcd 中所有 Kubernetes 对象的键
@@ -199,6 +201,8 @@ done | sort
 ```
 
 ### 按资源类型统计对象数量
+
+以下是相关的代码示例：
 
 ```bash
 #!/bin/bash

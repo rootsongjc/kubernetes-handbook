@@ -173,6 +173,8 @@ EOF
 
 ### 查看证书签名请求状态
 
+以下是相关的代码示例：
+
 ```bash
 kubectl get csr my-svc.my-namespace
 
@@ -267,6 +269,8 @@ Kubernetes 提供了几种自动批准机制：
 
 ### 示例：自动批准脚本
 
+以下是相关的示例代码：
+
 ```bash
 #!/bin/bash
 # 简单的 CSR 批准脚本
@@ -343,6 +347,8 @@ spec:
    - 检查 RBAC 配置
 
 ### 调试命令
+
+以下是相关的代码示例：
 
 ```bash
 # 查看 CSR 详细信息

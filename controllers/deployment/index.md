@@ -488,6 +488,8 @@ spec:
 
 ### 配置示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment

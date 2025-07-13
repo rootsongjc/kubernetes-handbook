@@ -124,7 +124,9 @@ exit
 
 ## 快速开始
 
-### 1. 创建项目
+### 创建项目
+
+以下是相关的定义示例：
 
 ```bash
 # 创建项目目录
@@ -134,17 +136,22 @@ mkdir guestbook-operator && cd guestbook-operator
 kubebuilder init --domain example.com --repo github.com/example/guestbook-operator
 ```
 
-### 2. 创建 API
+### 创建 API
+
+以下是相关的定义示例：
 
 ```bash
 # 创建 API 和 Controller
 kubebuilder create api --group webapp --version v1 --kind Guestbook
 # 选择 y 创建 resource 和 controller
+
+以下是相关的定义示例：
+
 ```
 
 项目结构：
 
-```
+```text
 .
 ├── Dockerfile
 ├── Makefile
@@ -167,7 +174,7 @@ kubebuilder create api --group webapp --version v1 --kind Guestbook
 └── test/
 ```
 
-### 3. 定义 CRD 结构
+### 定义 CRD 结构
 
 编辑 `api/v1/guestbook_types.go`：
 
@@ -215,7 +222,7 @@ type Guestbook struct {
 }
 ```
 
-### 4. 实现 Controller 逻辑
+### 实现 Controller 逻辑
 
 编辑 `internal/controller/guestbook_controller.go`：
 
@@ -256,7 +263,7 @@ func (r *GuestbookReconciler) SetupWithManager(mgr ctrl.Manager) error {
 }
 ```
 
-### 5. 测试和部署
+### 测试和部署
 
 **安装 CRD**
 
@@ -327,6 +334,8 @@ kubebuilder create webhook --group webapp --version v1 --kind Guestbook --defaul
 
 ### 多版本支持
 
+以下是相关的代码示例：
+
 ```bash
 kubebuilder create api --group webapp --version v2 --kind Guestbook
 ```
@@ -349,7 +358,9 @@ if err = (&controller.GuestbookReconciler{
 
 ## 最佳实践
 
-### 1. 错误处理
+### 错误处理
+
+以下是相关的代码示例：
 
 ```go
 // 使用适当的错误类型
@@ -364,7 +375,9 @@ if apierrors.IsConflict(err) {
 }
 ```
 
-### 2. 状态管理
+### 状态管理
+
+以下是相关的代码示例：
 
 ```go
 // 使用 Conditions 记录状态变化
@@ -376,7 +389,9 @@ meta.SetStatusCondition(&guestbook.Status.Conditions, metav1.Condition{
 })
 ```
 
-### 3. 日志记录
+### 日志记录
+
+以下是相关的代码示例：
 
 ```go
 // 使用结构化日志
@@ -386,7 +401,7 @@ log.Info("Reconciling resource",
   "generation", guestbook.Generation)
 ```
 
-### 4. 测试
+### 测试
 
 编写单元测试和集成测试：
 

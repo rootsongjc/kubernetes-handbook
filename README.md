@@ -70,6 +70,8 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 ## 在线阅读
 
+你可以通过以下方式阅读本书：
+
 - **官方网站**: [https://jimmysong.io/book/kubernetes-handbook/](https://jimmysong.io/book/kubernetes-handbook/)
 - **GitHub**: [https://github.com/rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
 - **PDF 下载**：[见 Release 页面](https://github.com/rootsongjc/kubernetes-handbook/releases)
@@ -86,9 +88,9 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 4. 推送到分支 (`git push origin feature/amazing-feature`)
 5. 创建 Pull Request
 
-## 👤 作者
+## 作者
 
-**Jimmy Song**
+**Jimmy Song：**
 
 - 网站：[https://jimmysong.io](https://jimmysong.io)
 - GitHub: [@rootsongjc](https://github.com/rootsongjc)

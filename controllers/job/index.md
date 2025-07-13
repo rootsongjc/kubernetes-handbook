@@ -39,6 +39,8 @@ Job 控制器会持续监控 Pod 的状态，直到指定数量的 Pod 成功完
 
 ### 完整示例
 
+以下是相关的示例代码：
+
 ```yaml
 apiVersion: batch/v1
 kind: Job

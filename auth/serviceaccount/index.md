@@ -123,6 +123,8 @@ kubectl create serviceaccount build-robot
 
 ### 查看 ServiceAccount 详情
 
+以下是相关的代码示例：
+
 ```bash
 kubectl get serviceaccounts/build-robot -o yaml
 ```

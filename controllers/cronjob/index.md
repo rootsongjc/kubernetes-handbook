@@ -67,6 +67,8 @@ CronJob 自 Kubernetes v1.21 起已成为稳定版本（`batch/v1`），在所�
 
 ### 使用 YAML 文件
 
+以下是具体的使用方法：
+
 ```yaml
 apiVersion: batch/v1
 kind: CronJob
@@ -94,6 +96,8 @@ kubectl apply -f cronjob.yaml
 
 ### 使用 kubectl 命令
 
+以下是具体的使用方法：
+
 ```bash
 kubectl create cronjob hello --schedule="*/1 * * * *" --image=busybox:1.35 -- /bin/sh -c "date; echo Hello from the Kubernetes cluster"
 ```
@@ -101,6 +105,8 @@ kubectl create cronjob hello --schedule="*/1 * * * *" --image=busybox:1.35 -- /b
 ## 管理 CronJob
 
 ### 查看 CronJob 状态
+
+以下是相关的代码示例：
 
 ```bash
 $ kubectl get cronjob
@@ -111,6 +117,8 @@ $ kubectl describe cronjob hello
 ```
 
 ### 查看相关 Job 和 Pod
+
+以下是相关的代码示例：
 
 ```bash
 $ kubectl get jobs
@@ -150,6 +158,8 @@ CronJob 调度基于控制平面运行的时区。如果控制平面在不同时
 
 ### 删除 CronJob 资源
 
+以下是相关的代码示例：
+
 ```bash
 kubectl delete cronjob hello
 ```
@@ -159,6 +169,8 @@ kubectl delete cronjob hello
 {{< /callout >}}
 
 ### 清理相关资源
+
+以下是相关的代码示例：
 
 ```bash
 # 列出所有相关 Job
@@ -175,6 +187,8 @@ $ kubectl delete jobs --all
 ```
 
 ### 批量清理脚本
+
+以下是相关的代码示例：
 
 ```bash
 # 删除特定 CronJob 创建的所有 Job

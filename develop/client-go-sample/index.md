@@ -149,6 +149,8 @@ func homeDir() string {
 
 ### 编译步骤
 
+以下是相关的代码示例：
+
 ```bash
 # 克隆项目
 git clone https://github.com/rootsongjc/kubernetes-client-go-sample
@@ -163,6 +165,8 @@ go build -o update-deployment main.go
 ```
 
 ### 使用方法
+
+以下是具体的使用方法：
 
 ```bash
 # 查看帮助
@@ -188,6 +192,8 @@ go build -o update-deployment main.go
 
 ### 场景 1：正常镜像更新
 
+以下是相关的代码示例：
+
 ```bash
 $ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
 ✓ 找到 Deployment: nginx-app
@@ -197,6 +203,8 @@ $ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
 ```
 
 ### 场景 2：使用不存在的镜像
+
+以下是具体的使用方法：
 
 ```bash
 $ ./update-deployment -deployment nginx-app -image nginx:nonexistent -app nginx
@@ -219,6 +227,8 @@ nginx-app-8f5a1b2c3d-jkl78   0/1     ImagePullBackOff   0          1m
 
 ### 场景 3：回滚到正常镜像
 
+以下是相关的代码示例：
+
 ```bash
 $ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
 ✓ 找到 Deployment: nginx-app
@@ -230,6 +240,8 @@ $ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
 ## 监控和故障排查
 
 ### 使用 kubectl 监控更新过程
+
+以下是具体的使用方法：
 
 ```bash
 # 实时查看 Deployment 状态

@@ -30,11 +30,15 @@ Kubernetes 项目采用多层测试策略：
 
 ### 运行所有单元测试
 
+以下是测试相关的代码：
+
 ```bash
 make test
 ```
 
 ### 测试指定包
+
+以下是测试相关的代码：
 
 ```bash
 # 测试单个包
@@ -51,6 +55,8 @@ go test -v k8s.io/kubernetes/pkg/kubelet
 ```
 
 ### 测试指定用例
+
+以下是测试相关的代码：
 
 ```bash
 # 运行特定测试函数
@@ -77,11 +83,15 @@ make test PARALLEL=2 ITERATION=5
 
 ### 生成覆盖率报告
 
+以下是相关的代码示例：
+
 ```bash
 make test KUBE_COVER=y
 ```
 
 ### 基准测试
+
+以下是测试相关的代码：
 
 ```bash
 go test ./pkg/apiserver -benchmem -run=XXX -bench=BenchmarkWatch
@@ -102,6 +112,8 @@ export PATH="$PATH:$(pwd)/third_party/etcd"
 
 ### 运行集成测试
 
+以下是测试相关的代码：
+
 ```bash
 # 运行所有集成测试
 make test-integration
@@ -116,6 +128,8 @@ make test-integration KUBE_GOFLAGS="-v" KUBE_TEST_ARGS="-run ^TestPodUpdateActiv
 
 ### 环境准备
 
+以下是相关的代码示例：
+
 ```bash
 # 编译测试二进制文件
 make WHAT='test/e2e/e2e.test'
@@ -127,12 +141,16 @@ export KUBERNETES_PROVIDER=local
 
 ### 完整测试流程
 
+以下是测试相关的代码：
+
 ```bash
 # 构建、启动集群、运行测试、清理
 go run hack/e2e.go -- -v --build --up --test --down
 ```
 
 ### 运行特定测试
+
+以下是测试相关的代码：
 
 ```bash
 # 运行特定测试用例
@@ -144,6 +162,8 @@ go run hack/e2e.go -- -v --test --test_args="--ginkgo.skip=Pods.*env"
 
 ### 并行 E2E 测试
 
+以下是测试相关的代码：
+
 ```bash
 # 并行运行测试，跳过必须串行的测试
 GINKGO_PARALLEL=y go run hack/e2e.go --v --test --test_args="--ginkgo.skip=\[Serial\]"
@@ -153,6 +173,8 @@ GINKGO_PARALLEL=y go run hack/e2e.go --v --test --test_args="--ginkgo.skip=\[Ser
 ```
 
 ### 测试环境管理
+
+以下是测试相关的代码：
 
 ```bash
 # 清理测试环境
@@ -181,6 +203,8 @@ make test_e2e_node TEST_ARGS="--experimental-cgroups-per-qos=true"
 
 ### 使用 kubectl 模板查询
 
+以下是具体的使用方法：
+
 ```bash
 # 获取特定容器的镜像信息
 kubectl get pods nginx-xxx -o template \
@@ -188,6 +212,8 @@ kubectl get pods nginx-xxx -o template \
 ```
 
 ### 日志收集
+
+以下是相关的代码示例：
 
 ```bash
 # 收集测试相关日志

@@ -72,6 +72,8 @@ Kubernetes 会为每个 Pod 注入相关服务的环境变量，但这种方式�
 
 ### 典型构建流程
 
+以下是相关的代码示例：
+
 ```yaml
 # GitHub Actions 示例
 name: Build and Push
@@ -135,6 +137,8 @@ networks:
 
 ### 本地测试流程
 
+以下是测试相关的代码：
+
 ```bash
 # 启动服务
 docker-compose up -d
@@ -168,6 +172,8 @@ kompose convert -f docker-compose.yaml
 ```
 
 ### 手动编写 Kubernetes 清单
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: apps/v1
@@ -228,6 +234,8 @@ spec:
 
 ### Ingress 配置
 
+以下是相关的配置示例：
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -273,6 +281,8 @@ kubectl apply -f k8s-manifests/
 ```
 
 #### Istio Gateway 配置
+
+以下是相关的配置示例：
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1

@@ -36,6 +36,8 @@ Namespace 是 Kubernetes 中的一个抽象概念，用于在同一个物理集�
 
 ### 查看 Namespace
 
+下面的命令用于查看集群中所有的 Namespace：
+
 ```bash
 # 查看所有 namespace
 kubectl get namespaces
@@ -46,6 +48,8 @@ kubectl get ns
 
 ### 创建 Namespace
 
+可以通过命令或 YAML 文件创建新的 Namespace，示例如下：
+
 ```bash
 # 使用命令创建
 kubectl create namespace <namespace-name>
@@ -55,6 +59,8 @@ kubectl apply -f namespace.yaml
 ```
 
 ### 指定 Namespace 操作
+
+以下命令展示了如何在特定 Namespace 下操作资源，以及如何设置默认 Namespace：
 
 ```bash
 # 在特定 namespace 中操作资源

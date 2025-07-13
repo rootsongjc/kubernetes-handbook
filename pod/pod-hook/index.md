@@ -68,6 +68,8 @@ lifecycle:
 
 ## 配置示例
 
+在下面的 YAML 配置示例中，展示了如何为 Pod 配置 postStart 和 preStop 两种 Hook。postStart Hook 会在容器启动后执行指定命令，preStop Hook 会在容器终止前向指定端点发送 HTTP 请求，实现优雅关闭。
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -101,6 +103,8 @@ spec:
 Hook 的执行日志不会直接暴露在 Pod 事件中，需要通过以下方式进行调试：
 
 ### 查看 Pod 事件
+
+在调试 Hook 时，建议首先通过 `kubectl describe pod` 命令查看 Pod 的事件（Events）信息。虽然 Hook 的详细输出不会直接显示在事件中，但可以通过事件了解 Hook 是否被触发以及是否有失败记录。以下是常用的调试方法：
 
 ```bash
 kubectl describe pod <pod-name>

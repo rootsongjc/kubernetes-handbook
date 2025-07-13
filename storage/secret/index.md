@@ -41,6 +41,9 @@ echo -n "admin" | base64
 
 echo -n "mypassword123" | base64
 # 输出：bXlwYXNzd29yZDEyMw==
+
+以下是相关的代码示例：
+
 ```
 
 创建 Secret 资源文件：
@@ -77,6 +80,8 @@ Secret 可以通过两种方式在 Pod 中使用：
 
 #### 方式一：挂载为 Volume
 
+以下是相关的代码示例：
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -105,6 +110,8 @@ spec:
 - `/etc/secrets/password` 包含 `mypassword123`
 
 #### 方式二：作为环境变量
+
+以下是相关的代码示例：
 
 ```yaml
 apiVersion: apps/v1
@@ -145,6 +152,8 @@ spec:
 
 ### 使用命令创建
 
+以下是相关的定义示例：
+
 ```bash
 kubectl create secret docker-registry registry-secret \
   --docker-server=your-registry.com \
@@ -154,6 +163,8 @@ kubectl create secret docker-registry registry-secret \
 ```
 
 ### 使用 YAML 创建
+
+以下是相关的定义示例：
 
 ```yaml
 apiVersion: v1
@@ -172,6 +183,8 @@ cat ~/.docker/config.json | base64 -w 0
 ```
 
 ### 在 Pod 中使用
+
+以下是具体的使用方法：
 
 ```yaml
 apiVersion: v1

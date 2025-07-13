@@ -70,7 +70,11 @@ Pod Preset 不会影响 Init Container，仅对主容器生效。
 
 ## 现代替代方案
 
-### 1. Init Container 方案
+在 Kubernetes v1.24 及以后版本，Pod Preset 功能已被移除。以下将介绍几种常见的现代替代方案，并分别给出简要说明和示例，帮助你实现自动化配置注入的需求。
+
+### Init Container 方案
+
+在使用 Init Container 方案时，可以通过初始化容器在主容器启动前完成配置文件、环境变量等的准备工作。下面是一个简单示例，展示如何通过 Init Container 生成配置并共享给主容器：
 
 ```yaml
 apiVersion: v1
@@ -91,7 +95,7 @@ spec:
             mountPath: /usr/share/nginx/html
 ```
 
-### 2. 自定义准入控制器
+### 自定义准入控制器
 
 使用 Mutating Admission Webhook 实现类似功能：
 
@@ -109,11 +113,11 @@ webhooks:
             path: "/mutate"
 ```
 
-### 3. Operator 模式
+### Operator 模式
 
 通过自定义控制器监听 Pod 创建事件并进行配置注入。
 
-### 4. 配置管理工具
+### 配置管理工具
 
 - **Helm**：通过模板和 values 文件管理配置
 - **Kustomize**：通过补丁和变换管理配置变更

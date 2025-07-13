@@ -17,132 +17,82 @@ keywords:
 - 已废弃
 ---
 
-## 概述
+Pod 安全策略（PodSecurityPolicy，简称 PSP）是 Kubernetes 早期用于控制 Pod 安全上下文和运行行为的集群级安全机制。
 
-`PodSecurityPolicy` 是 Kubernetes 中的一种集群级别资源，用于控制 Pod 的安全上下文和运行行为。
+**注意：自 Kubernetes v1.25 起，PSP 已被官方移除。建议迁移到 Pod Security Standards（PSS）和 Pod Security Admission（PSA），或采用 OPA Gatekeeper 等第三方方案。**
 
-{{<callout warning "重要">}}
-**PodSecurityPolicy 已在 Kubernetes v1.25 中被移除**。建议迁移到 [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) 和 [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/)，或使用其他第三方安全策略解决方案如 OPA Gatekeeper。
-{{</callout>}}
+## Pod 安全策略简介
 
-## 什么是 Pod 安全策略？
+PSP 是一种集群级别的资源，允许管理员通过一组规则约束 Pod 的创建和运行，确保其符合组织安全要求。
 
-Pod 安全策略是集群级别的资源，它定义了一组安全规则和约束条件，用于控制 Pod 的创建和运行。PSP 允许集群管理员在集群级别实施安全策略，确保 Pod 符合组织的安全要求。
+**主要控制维度包括：**
 
-### 主要控制维度
+- 权限控制（如特权容器、能力管理）
+- 资源访问（如卷类型、主机网络、主机端口、主机命名空间、主机路径）
+- 用户和组（如运行用户、附加组、文件系统组）
+- 其他安全设置（如 SELinux 上下文、只读根文件系统）
 
-Pod 安全策略可以控制以下安全方面：
+**常见字段说明：**
 
-| 控制项 | 字段名称 | 描述 |
-|--------|----------|------|
-| **权限控制** |
-| 特权容器 | `privileged` | 是否允许运行特权容器 |
-| 能力管理 | `defaultAddCapabilities` | 为容器默认添加的能力 |
-| | `requiredDropCapabilities` | 必须移除的能力 |
-| | `allowedCapabilities` | 允许请求的能力 |
-| **资源访问** |
-| 存储卷类型 | `volumes` | 允许使用的卷类型 |
-| 主机网络 | `hostNetwork` | 是否允许使用主机网络 |
-| 主机端口 | `hostPorts` | 允许使用的主机端口范围 |
-| 主机命名空间 | `hostPID` | 是否允许使用主机 PID 命名空间 |
-| | `hostIPC` | 是否允许使用主机 IPC 命名空间 |
-| 主机路径 | `allowedHostPaths` | 允许挂载的主机路径 |
-| **用户和组** |
-| 运行用户 | `runAsUser` | 容器运行的用户 ID 规则 |
-| 附加组 | `supplementalGroups` | 允许的附加组 ID |
-| 文件系统组 | `fsGroup` | 拥有 Pod 卷的文件系统组 |
-| **其他安全设置** |
-| SELinux 上下文 | `seLinux` | SELinux 安全上下文规则 |
-| 只读根文件系统 | `readOnlyRootFilesystem` | 是否强制使用只读根文件系统 |
+| 控制项         | 字段名称                    | 描述                         |
+| -------------- | -------------------------- | ---------------------------- |
+| 特权容器       | privileged                 | 是否允许运行特权容器         |
+| 能力管理       | defaultAddCapabilities     | 默认添加的能力               |
+|                | requiredDropCapabilities   | 必须移除的能力               |
+|                | allowedCapabilities        | 允许请求的能力               |
+| 存储卷类型     | volumes                    | 允许使用的卷类型             |
+| 主机网络       | hostNetwork                | 是否允许主机网络             |
+| 主机端口       | hostPorts                  | 允许的主机端口范围           |
+| 主机命名空间   | hostPID, hostIPC           | 是否允许主机 PID/IPC 命名空间|
+| 主机路径       | allowedHostPaths           | 允许挂载的主机路径           |
+| 运行用户       | runAsUser                  | 容器运行的用户 ID 规则       |
+| 附加组         | supplementalGroups         | 允许的附加组 ID              |
+| 文件系统组     | fsGroup                    | 拥有 Pod 卷的文件系统组      |
+| SELinux 上下文 | seLinux                    | SELinux 安全上下文规则       |
+| 只读根文件系统 | readOnlyRootFilesystem     | 是否强制只读根文件系统       |
 
-## 策略规则类型
+## PSP 策略规则类型
 
-PSP 的安全控制分为三种类型：
+- 布尔值控制：直接启用或禁用某项功能，默认最严格。
+- 枚举值控制：从允许值集合中选择，如卷类型。
+- 策略控制：通过策略机制生成和验证值，如 RunAsUser、SELinux、SupplementalGroups、FSGroup。
 
-### 1. 布尔值控制
+**RunAsUser 策略示例：**
 
-直接启用或禁用某项功能，默认为最严格的限制。
+- MustRunAs：必须在指定范围内
+- MustRunAsNonRoot：必须非 root
+- RunAsAny：允许任意用户 ID
 
-### 2. 枚举值控制
+**SELinux 策略示例：**
 
-从预定义的允许值集合中选择，例如允许的卷类型。
+- MustRunAs：必须使用指定的 SELinux 选项
+- RunAsAny：允许任意 SELinux 上下文
 
-### 3. 策略控制
+**SupplementalGroups/FSGroup 策略示例：**
 
-通过策略机制生成和验证值，主要包括：
-
-#### RunAsUser 策略
-
-- **MustRunAs**: 必须在指定范围内运行
-- **MustRunAsNonRoot**: 必须以非 root 用户运行
-- **RunAsAny**: 允许任意用户 ID
-
-#### SELinux 策略
-
-- **MustRunAs**: 必须使用指定的 SELinux 选项
-- **RunAsAny**: 允许任意 SELinux 上下文
-
-#### SupplementalGroups 策略
-
-- **MustRunAs**: 必须在指定范围内
-- **RunAsAny**: 允许任意附加组
-
-#### FSGroup 策略
-
-- **MustRunAs**: 必须在指定范围内
-- **RunAsAny**: 允许任意文件系统组
+- MustRunAs：必须在指定范围内
+- RunAsAny：允许任意值
 
 ## 卷类型控制
 
-PSP 可以控制 Pod 使用的存储卷类型，支持的卷类型包括：
+PSP 可限制 Pod 使用的存储卷类型。常见卷类型有：
 
-**云存储卷**：
+- 云存储卷：awsElasticBlockStore、azureDisk、gcePersistentDisk 等
+- 网络存储卷：nfs、iscsi、glusterfs、cephFS 等
+- 本地存储卷：hostPath、emptyDir、persistentVolumeClaim
+- 配置和密钥卷：configMap、secret、downwardAPI、projected
+- 其他卷类型：flexVolume、portworxVolume、scaleIO、storageos、quobyte、*（允许所有）
 
-- `awsElasticBlockStore`
-- `azureDisk`
-- `azureFile`
-- `gcePersistentDisk`
-- `vsphereVolume`
-
-**网络存储卷**：
-
-- `nfs`
-- `iscsi`
-- `glusterfs`
-- `cephFS`
-- `rbd`
-
-**本地存储卷**：
-
-- `hostPath`
-- `emptyDir`
-- `persistentVolumeClaim`
-
-**配置和密钥卷**：
-
-- `configMap`
-- `secret`
-- `downwardAPI`
-- `projected`
-
-**其他卷类型**：
-
-- `flexVolume`
-- `portworxVolume`
-- `scaleIO`
-- `storageos`
-- `quobyte`
-- `*` (允许所有卷类型)
-
-{{<callout note "建议">}}
-对于新的 PSP，建议的最小卷类型集合包括：`configMap`、`downwardAPI`、`emptyDir`、`persistentVolumeClaim`、`secret` 和 `projected`。
-{{</callout>}}
+**建议：**新建 PSP 时，最小卷类型集合建议包含 configMap、downwardAPI、emptyDir、persistentVolumeClaim、secret、projected。
 
 ## 配置示例
 
-### 宽松策略示例
+下面是宽松和严格策略的 PSP 配置示例。
+
+宽松策略示例说明：允许大部分操作，适合开发环境。
 
 ```yaml
+# 宽松策略 PSP 配置示例
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -172,9 +122,10 @@ spec:
     rule: 'RunAsAny'
 ```
 
-### 严格策略示例
+严格策略示例说明：限制更严格，适合生产环境。
 
 ```yaml
+# 严格策略 PSP 配置示例
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -213,33 +164,33 @@ spec:
 
 ## 管理操作
 
-### 创建 PSP
+创建 PSP：使用如下命令创建 PodSecurityPolicy 资源。
 
 ```bash
 kubectl apply -f pod-security-policy.yaml
 ```
 
-### 查看 PSP 列表
+查看当前集群中所有 PSP 资源的命令如下：
 
 ```bash
 kubectl get psp
 ```
 
-输出示例：
+以下是 `kubectl get psp` 命令的输出示例：
 
-```
+```text
 NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 permissive   false   []     RunAsAny   RunAsAny           RunAsAny    RunAsAny    false           [configMap emptyDir projected secret downwardAPI persistentVolumeClaim]
 restricted   false   []     RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   true            [configMap emptyDir projected secret downwardAPI persistentVolumeClaim]
 ```
 
-### 修改 PSP
+如需编辑已存在的 PSP，可使用如下命令：
 
 ```bash
 kubectl edit psp permissive
 ```
 
-### 删除 PSP
+如需删除指定的 PSP，可使用如下命令：
 
 ```bash
 kubectl delete psp permissive
@@ -247,9 +198,10 @@ kubectl delete psp permissive
 
 ## RBAC 集成
 
-PSP 需要与 RBAC 配合使用才能生效：
+PSP 需与 RBAC 配合，以下是角色和绑定的 YAML 示例，允许 default ServiceAccount 使用 restricted PSP：
 
 ```yaml
+# RBAC 配置示例，允许 default ServiceAccount 使用 restricted PSP
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -276,11 +228,10 @@ subjects:
 
 ## 迁移到 Pod Security Standards
 
-由于 PSP 已被移除，建议迁移到新的 Pod Security Standards：
-
-### 1. 启用 Pod Security Admission
+下面是为命名空间启用 Pod Security Admission 的标签配置示例：
 
 ```yaml
+# 在命名空间上启用 Pod Security Admission 的示例
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -291,22 +242,8 @@ metadata:
     pod-security.kubernetes.io/warn: restricted
 ```
 
-### 2. 安全级别说明
-
-- **Privileged**: 无限制策略
-- **Baseline**: 最小限制策略，防止已知的特权升级
-- **Restricted**: 严格限制策略，遵循当前的 Pod 安全最佳实践
-
-### 3. 替代方案
-
-- **OPA Gatekeeper**: 基于 Open Policy Agent 的准入控制器
-- **Falco**: 运行时安全监控
-- **Kyverno**: 基于 YAML 的 Kubernetes 策略引擎
-
-{{<callout tip "迁移建议">}}
-在迁移过程中，建议先在测试环境中验证新的安全策略，然后逐步在生产环境中部署。可以使用 `warn` 和 `audit` 模式来观察策略的影响，再切换到 `enforce` 模式。
-{{</callout>}}
+**迁移建议：**建议先在测试环境验证新策略，使用 warn/audit 观察影响，再切换到 enforce 模式。
 
 ## 总结
 
-虽然 PodSecurityPolicy 已被废弃，但了解其概念和工作原理仍然有助于理解 Kubernetes 的安全模型。新的 Pod Security Standards 提供了更简单、更标准化的方式来实现 Pod 安全控制，建议及时迁移到新的安全机制。
+虽然 PSP 已被废弃，但理解其原理有助于把握 Kubernetes 安全模型。Pod Security Standards 提供了更简单、标准化的安全控制方式，建议尽快迁移。

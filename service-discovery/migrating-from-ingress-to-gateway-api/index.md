@@ -196,6 +196,8 @@ spec:
 
 ### 步骤概览
 
+以下是相关的代码示例：
+
 ```mermaid "从 Ingress 迁移到 Gateway API 的完整流程"
 flowchart TD
         A[现有 Ingress 资源] --> B[分析现有配置]
