@@ -135,7 +135,7 @@ Forwarding from [::1]:6379 -> 6379
 
 3. 测试连接：
 
-   ```redis
+   ```text
    127.0.0.1:6379> ping
    PONG
    127.0.0.1:6379> set test-key "Hello Kubernetes"
