@@ -25,6 +25,9 @@ book:
   date: 2025-07-13
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
+repository:
+  url: https://github.com/rootsongjc/kubernetes-handbook
+  branch: main
 ---
 
 {{<callout note 关于本教程>}}
