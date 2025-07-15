@@ -21,8 +21,6 @@ Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的下一�
 
 {{</callout>}}
 
-## 概述
-
 [Gateway API](https://github.com/kubernetes-sigs/gateway-api) 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kubernetes 生态系统提供现代化的服务网络 API。该项目在 2023 年 10 月[宣布 GA](https://kubernetes.io/blog/2023/10/31/gateway-api-ga/)，并在 2024 年 5 月[发布 v1.1](https://kubernetes.io/blog/2024/05/09/gateway-api-v1-1/)，将多项功能升级为正式可用，特别是对服务网格和 GRPCRoute 的支持。
 
 Gateway API 提供了一套完整的资源对象来暴露 Kubernetes 应用：

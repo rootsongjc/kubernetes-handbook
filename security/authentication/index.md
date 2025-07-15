@@ -113,7 +113,7 @@ openssl req -new -key jbeda.pem -out jbeda-csr.pem -subj "/CN=jbeda/O=app1/O=app
 
 **文件格式**：
 
-```csv
+```text
 token,user,uid,"group1,group2,group3"
 ```
 
@@ -165,7 +165,7 @@ Authorization: Bearer 781292.db7bc3a58fc5f07e
 
 **文件格式**：
 
-```csv
+```text
 password,user,uid,"group1,group2,group3"
 ```
 
