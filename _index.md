@@ -31,7 +31,7 @@ repository:
 ---
 
 {{<callout note 关于本教程>}}
-本教程迁移自[《Kubernetes 中文指南——云原生应用架构实战手册》](https://github.com/rootsongjc/kubernetes-handbook)，原手册使用 Gitbook 发布，内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域。由于内容过于宽泛，且 Gitbook 项目已停止维护，现将其中的 Kubernetes 教程部分独立成书，并使用 Hugo 重新构建和持续更新。本书采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
+Kubernetes 手册/教程开源在 [GitHub - rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建，采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 {{</callout>}}
 
 ## 什么是云原生
