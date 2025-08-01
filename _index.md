@@ -22,6 +22,7 @@ book:
   language: "zh-hans"
   author: "Jimmy Song"
   cover: cover.jpg
+  backcover_image: "back_cover.jpg"
   date: 2025-07-13
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
