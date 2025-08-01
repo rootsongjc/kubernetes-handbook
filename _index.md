@@ -17,14 +17,39 @@ cascade:
   type: book
   layout: book-content
 book:
-  title: "Kubernetes 手册"
+  title: "Kubernetes 基础教程"
   description: "Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。"
   language: "zh-hans"
   author: "Jimmy Song"
   cover: cover.jpg
+  backcover_image: "back_cover.jpg"
   date: 2025-07-13
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
+  # Enhanced cover configuration
+  cover_title_text: "Kubernetes Handbook"
+  cover_author_text: "Jimmy Song"
+  cover_subtitle_text: "Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。"
+  cover_title_color: "#FFFFFF"
+  cover_author_color: "#E0E0E0"
+  cover_subtitle_color: "#C0C0C0"
+  cover_title_font_size: 48
+  cover_author_font_size: 28
+  cover_subtitle_font_size: 20
+  cover_title_position: "center"
+  cover_author_position: "bottom"
+  cover_overlay_enabled: true
+  cover_text_shadow: false
+  cover_background_overlay: false
+  cover_overlay_opacity: 0.0
+  
+  # Typography and color configuration
+  body_color: "#333333"
+  heading_color: "#2C3E50"
+  link_color: "#3498DB"
+  code_color: "#E74C3C"
+  quote_color: "#7F8C8D"
+  caption_color: "#95A5A6"
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main

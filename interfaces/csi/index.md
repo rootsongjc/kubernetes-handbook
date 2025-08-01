@@ -157,9 +157,9 @@ Kubernetes 社区提供了以下 sidecar 容器来简化 CSI 驱动程序的开�
 
 | Sidecar 容器 | 功能描述 |
 |-------------|----------|
-| **external-provisioner** | 监听 PVC 事件，调用 `CreateVolume`/`DeleteVolume` |
-| **external-attacher** | 监听 VolumeAttachment 事件，调用 `ControllerPublishVolume`/`ControllerUnpublishVolume` |
-| **external-resizer** | 处理 PVC 扩容请求，调用 `ControllerExpandVolume` |
+| **external-provisioner** | 监听 PVC 事件 |
+| **external-attacher** | 监听 VolumeAttachment 事件 |
+| **external-resizer** | 处理 PVC 扩容请求 |
 | **external-snapshotter** | 管理卷快照功能 |
 | **node-driver-registrar** | 向 kubelet 注册 CSI 驱动程序 |
 | **livenessprobe** | 监控 CSI 驱动程序健康状态 |
