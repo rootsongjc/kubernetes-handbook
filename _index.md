@@ -27,13 +27,13 @@ book:
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
   # Enhanced cover configuration
-  cover_title_text: "Kubernetes 基础教程"
+  cover_title_text: "Kubernetes Handbook"
   cover_author_text: "Jimmy Song"
   cover_subtitle_text: "Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。"
   cover_title_color: "#FFFFFF"
   cover_author_color: "#E0E0E0"
   cover_subtitle_color: "#C0C0C0"
-  cover_title_font_size: 52
+  cover_title_font_size: 48
   cover_author_font_size: 28
   cover_subtitle_font_size: 20
   cover_title_position: "center"
