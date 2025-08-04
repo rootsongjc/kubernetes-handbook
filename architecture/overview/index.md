@@ -5,6 +5,7 @@ linktitle: 架构概览
 date: '2022-05-21T00:00:00+08:00'
 description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
+lastmod: '2025-08-04'
 ---
 
 Kubernetes 提供以下核心特性：
@@ -37,6 +38,8 @@ Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理
 Kubernetes 继承了 Borg 的核心设计理念，同时在开放性、可扩展性和社区生态方面实现了重大突破。
 
 ### 整体架构
+
+下图展示了 Kubernetes 的整体架构，包括控制平面和工作节点的主要组件及其交互关系，帮助理解系统的核心模块分布和职责划分。
 
 ![Kubernetes 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/architecture.webp)
 {width=1200 height=932}
@@ -170,20 +173,28 @@ Kubernetes 采用扁平化网络模型：
 
 ### 高层架构
 
+下图展示了 Kubernetes 的高层架构，帮助理解各主要组件之间的关系及其在系统中的作用。
+
 ![Kubernetes 架构（图片来自于网络）](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-high-level-component-archtecture.webp)
 {width=1858 height=1126}
 
 ### 抽象架构
+
+下图展示了 Kubernetes 的抽象架构，突出各层次组件的分工与协作关系，帮助理解系统的整体设计思路和模块边界。
 
 ![kubernetes 整体架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-whole-arch.webp)
 {width=1600 height=1067}
 
 ### 控制平面详图
 
+下图展示了 Kubernetes 的控制平面架构，包括 API 服务器、控制器管理器、调度器、etcd 数据库、kubelet 和容器运行时。
+
 ![Kubernetes master 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-master-arch.webp)
 {width=1600 height=1067}
 
 ### 工作节点详图
+
+下图展示了 Kubernetes 的工作节点架构，包括 kubelet、容器运行时和 Pod。
 
 ![kubernetes node 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-node-arch.webp)
 {width=1600 height=1067}
