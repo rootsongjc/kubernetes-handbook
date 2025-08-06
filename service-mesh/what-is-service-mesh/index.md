@@ -165,4 +165,3 @@ keywords:
 ### 社区资源
 
 - [Istio 中文社区](https://istio.io/latest/zh/)
-- [云原生社区 Service Mesh 专题](https://cloudnative.to/topic/service-mesh/)

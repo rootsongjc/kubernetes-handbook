@@ -10,12 +10,15 @@ type: publication
 layout: book-content
 title: Kubernetes 基础教程
 date: '2024-01-15T00:00:00+08:00'
+icon: fa-solid fa-book
+banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 aliases:
   - /guide-to-cloud-native-app
 cascade:
   comment: true
   type: book
   layout: book-content
+  icon_pack: fas
 book:
   title: Kubernetes 基础教程
   description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
