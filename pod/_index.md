@@ -7,17 +7,18 @@ aliases:
   - /book/kubernetes-handbook/objects/
 description: 深入了解 Kubernetes 中 Pod 这一最小调度单元的构成、生命周期管理以及容器启动机制，掌握 Pod 状态管理的核心概念。
 keywords:
-- controller
-- kube
-- kubernetes
-- manager
-- pod
-- 了解
-- 基本
-- 模板
-- 生命周期
-- 组件
+  - controller
+  - kube
+  - kubernetes
+  - manager
+  - pod
+  - 了解
+  - 基本
+  - 模板
+  - 生命周期
+  - 组件
 icon: fa-solid fa-solid fa-cube
+lastmod: '2025-08-06'
 ---
 
 Pod 是 Kubernetes 中最小的可部署单元，理解 Pod 的状态管理和生命周期对于掌握 Kubernetes 至关重要。
