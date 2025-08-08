@@ -1,19 +1,20 @@
 ---
 title: 什么是服务网格？
 linktitle: 什么是服务网格？
-description: '服务网格是处理微服务间通信的基础设施层。'
+description: 服务网格是处理微服务间通信的基础设施层。
 type: book
 date: '2024-01-15T00:00:00+08:00'
 weight: 1
 keywords:
-- service mesh
-- istio
-- kubernetes
-- envoy
-- linkerd
-- 微服务
-- 云原生
-- 服务治理
+  - service mesh
+  - istio
+  - kubernetes
+  - envoy
+  - linkerd
+  - 微服务
+  - 云原生
+  - 服务治理
+lastmod: '2025-08-06'
 ---
 
 ## 概述
