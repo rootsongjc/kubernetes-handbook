@@ -18,7 +18,7 @@ keywords:
   - 生命周期
   - 组件
 icon: fa-solid fa-solid fa-cube
-lastmod: '2025-08-06'
+lastmod: '2025-08-09'
 ---
 
 Pod 是 Kubernetes 中最小的可部署单元，理解 Pod 的状态管理和生命周期对于掌握 Kubernetes 至关重要。

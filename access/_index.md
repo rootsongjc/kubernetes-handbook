@@ -8,7 +8,7 @@ description: >-
 date: '2022-05-21T00:00:00+08:00'
 type: book
 icon: fa-solid fa-sign-in-alt
-lastmod: '2025-08-06'
+lastmod: '2025-08-09'
 ---
 
 Kubernetes 集群提供了多种访问方式，用户可以根据具体的使用场景和安全要求选择合适的访问方法。本章将详细介绍各种访问集群的方式及其适用场景。
