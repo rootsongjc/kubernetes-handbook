@@ -58,7 +58,7 @@ book:
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: '2025-08-06'
+lastmod: '2025-08-09'
 ---
 
 {{<callout note 关于本教程>}}

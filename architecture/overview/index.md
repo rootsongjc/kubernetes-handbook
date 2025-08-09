@@ -7,7 +7,7 @@ description: >-
   本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解
   Kubernetes 系统的设计思想和实现机制。
 type: book
-lastmod: '2025-08-04'
+lastmod: '2025-08-09'
 ---
 
 Kubernetes 提供以下核心特性：
