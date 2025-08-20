@@ -53,7 +53,7 @@ CronJob 自 Kubernetes v1.21 起已成为稳定版本（`batch/v1`），在所�
   - `Forbid`：禁止并发运行，如果前一个未完成，则跳过下一个
   - `Replace`：取消当前运行的 Job，用新的替换
 
-{{<callout note "注意" >}}
+{{< callout note "注意"  >}}
 并发策略仅适用于同一个 CronJob 创建的 Job。不同 CronJob 之间创建的 Job 总是允许并发运行。
 {{< /callout >}}
 
@@ -164,7 +164,7 @@ CronJob 调度基于控制平面运行的时区。如果控制平面在不同时
 kubectl delete cronjob hello
 ```
 
-{{< callout note 重要 >}}
+{{< callout note 重要  >}}
 删除 CronJob 不会自动删除其创建的 Job 和 Pod。需要手动清理。
 {{< /callout >}}
 

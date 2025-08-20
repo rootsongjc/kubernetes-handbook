@@ -22,7 +22,7 @@ keywords:
 
 OAM（Open Application Model）是一个专注于描述应用程序的规范，它通过定义标准化的应用程序模型来实现平台无关的应用程序描述。本文将详细介绍 OAM 规范中的核心概念和组件。
 
-{{< callout note "版本说明" >}}
+{{< callout note "版本说明"  >}}
 本文基于 OAM v1alpha2 版本编写。
 {{< /callout >}}
 
@@ -71,9 +71,9 @@ spec:
     name: schema.example.jimmysong.io
 ```
 
-{{<callout tip "关于 definitionRef">}}
+{{< callout tip "关于 definitionRef" >}}
 CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes CRD。应用开发者可以在 `Component` 的 `Workload` 中直接定义 CR。`definitionRef` 将 `Workload` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的），表示可作为负载类型使用。
-{{</callout>}}
+{{< /callout >}}
 
 ### 重要说明
 
@@ -141,9 +141,9 @@ OAM 目前定义的核心负载类型有 `ContainerizedWorkload`（与 Kubernete
 
 在应用程序运行时可以调整的参数，即应用开发者在 `Component` 中的原有定义可以在运行时被应用运维人员覆盖。`parameters` 使用 JSONPath 的方式引用 `spec` 中的字段。
 
-{{<callout note "Component 是可变的">}}
+{{< callout note "Component 是可变的" >}}
 `Component` 的配置在应用后是**可更改的（Mutable）**，有的 `Trait` 可能会监听 `Component` 的变更并作出相应的操作，每次变更都会导致新的 `ApplicationConfiguration` 发布。
-{{</callout>}}
+{{< /callout >}}
 
 ## Trait - 运维特性
 
@@ -183,9 +183,9 @@ spec:
     name: manualscalertrait.core.oam.dev
 ```
 
-{{<callout note "关于 definitionRef">}}
+{{< callout note "关于 definitionRef" >}}
 CR 即 Custom Resource（自定义资源），指的是实例化后的 Kubernetes CRD。`definitionRef` 将 `Trait` schema 在 OAM 解释器中注册，通过增加一个抽象层，使其与 Operator 框架解耦（毕竟不是说有 CRD 都是面向应用开发者的）。
-{{</callout>}}
+{{< /callout >}}
 
 ### Trait 分类
 
@@ -244,9 +244,9 @@ spec:
 
 `ApplicationConfiguration` 将 `Component` 与 `Trait` 组合，定义了一个应用程序的配置。`Component` 每部署一次就会产生一个实例（`Instance`），实例是可以被升级的（包括回滚和重新部署），而每次部署和升级就会产生一次新的发布（`Release`）。
 
-{{<callout note "关于 Release">}}
+{{< callout note "关于 Release" >}}
 [12 因素应用](https://12factor.net/zh_cn/)严格区分构建、发布、运行这三个步骤。每次构建和修改配置后都会产生一次新的发布（`Release`）。OAM 中将 `Component`、`Trait`、`ApplicationScope` 组合而成的 `ApplicationConfiguration` 即等同于 `Release`。每次对 `ApplicationConfiguration` 的更新都会创建一个新的 `Release`（跟 Helm 中的 `Release` 概念一致）。
-{{</callout>}}
+{{< /callout >}}
 
 ### ApplicationConfiguration 示例
 

@@ -17,9 +17,9 @@ keywords:
 - 默认
 ---
 
-{{<callout note "重要提示">}}
+{{< callout note "重要提示" >}}
 Ingress 在 Kubernetes 1.9 正式发布，目前仍被广泛使用。但对于新项目，建议考虑使用更现代的 [Gateway API](../gateway/) 作为替代方案，它提供更强大和灵活的流量管理能力。
-{{</callout>}}
+{{< /callout >}}
 
 ## 什么是 Ingress？
 
@@ -61,9 +61,9 @@ Ingress 提供以下核心功能：
 2. **配置 IngressClass**：定义使用哪个控制器处理 Ingress 资源
 3. **准备后端服务**：确保目标 Service 和 Pod 正常运行
 
-{{<callout warning "注意">}}
+{{< callout warning "注意" >}}
 仅创建 Ingress 资源本身不会产生任何效果，必须配合 [Ingress 控制器](../../controllers/ingress-controller) 一起使用。
-{{</callout>}}
+{{< /callout >}}
 
 ## 基本配置示例
 

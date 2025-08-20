@@ -19,7 +19,7 @@ keywords:
 
 容器网络接口（Container Network Interface，CNI）是 CNCF 旗下的一个重要项目，提供了一套标准化的容器网络配置规范和库。CNI 专注于容器创建时的网络资源分配和容器删除时的网络资源释放，为容器编排平台提供了统一的网络管理接口。
 
-{{< callout type="info" >}}
+{{< callout type="info"  >}}
 CNI 项目地址：[github.com/containernetworking/cni](https://github.com/containernetworking/cni)
 {{< /callout >}}
 

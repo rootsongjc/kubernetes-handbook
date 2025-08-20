@@ -16,11 +16,11 @@ keywords:
 
 Karmada 是一个开源的 Kubernetes 多集群管理系统，让您能够在多个 Kubernetes 集群和云环境中运行云原生应用程序，而无需修改应用程序本身。通过使用 Kubernetes 原生 API 并提供先进的调度功能，Karmada 实现了真正的开放式多云 Kubernetes 管理。
 
-{{<callout note "Karmada 名称的由来">}}
+{{< callout note "Karmada 名称的由来" >}}
 
 `Karmada` 是由 "Kubernetes" 和 "Armada" 组合而来的。`Armada` 在英语中意味着"舰队"，通常指由许多船只组成的大型水面作战力量。在这里，它象征着多个集群的集合，每个集群如同一艘强大的战舰，共同组成了一个强大的"舰队"，协同工作以提高效率和资源利用率。
 
-{{</callout>}}
+{{< /callout >}}
 
 更多关于 Karmada 的详细信息，请访问 [Karmada 官方文档](https://karmada.io/zh/docs/)。
 

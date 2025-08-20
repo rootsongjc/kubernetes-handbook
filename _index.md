@@ -61,9 +61,9 @@ repository:
 lastmod: '2025-08-09'
 ---
 
-{{<callout note 关于本教程>}}
+{{< callout note 关于本教程 >}}
 Kubernetes 手册/教程开源在 [GitHub - rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建，采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
-{{</callout>}}
+{{< /callout >}}
 
 ## 什么是云原生
 
@@ -77,9 +77,9 @@ Kubernetes 手册/教程开源在 [GitHub - rootsongjc/kubernetes-handbook](http
 
 我们正处于一个云原生技术快速演进的新时代。
 
-{{<callout note "版本信息">}}
+{{< callout note "版本信息" >}}
 本书基于 Kubernetes v1.31+ 编写，持续更新最新的概念和 API，确保内容的时效性和准确性。
-{{</callout>}}
+{{< /callout >}}
 
 ## Kubernetes 简介
 
@@ -123,6 +123,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **生态完整** - 涵盖微服务、DevOps、服务网格、Serverless 等相关领域
 - **持续更新** - 跟进最新技术发展和社区动态
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}
 
-{{< cta cta_text="开始阅读" cta_link="architecture" >}}
+{{< cta cta_text="开始阅读" cta_link="architecture"  >}}

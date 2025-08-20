@@ -189,9 +189,9 @@ SPIRE 包含适用于以下环境的工作负载证明器插件：
 - Kubernetes
 - Docker
 
-{{<callout note 注意>}}
+{{< callout note 注意 >}}
 节点证明不需要节点选择器，除非你需要[将工作负载映射到多个节点](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes)。
-{{</callout>}}
+{{< /callout >}}
 
 ## 参考资料
 

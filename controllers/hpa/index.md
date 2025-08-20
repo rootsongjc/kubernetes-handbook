@@ -56,9 +56,9 @@ HPA 由一个控制循环实现，循环周期由 controller manager 中的 `--h
 3. **计算副本数**：基于所有指标计算新的副本数，取最大值
 4. **执行扩缩容**：通过 Scale 子资源调整副本数
 
-{{<callout note "注意">}}
+{{< callout note "注意" >}}
 如果 Pod 的容器没有设置 resource request，则无法定义 CPU 利用率，HPA 不会对该指标采取任何操作。
-{{</callout>}}
+{{< /callout >}}
 
 ## 支持的指标类型
 
@@ -138,12 +138,12 @@ spec:
         averageUtilization: 80
 ```
 
-{{<callout warning "滚动更新注意事项">}}
+{{< callout warning "滚动更新注意事项" >}}
 - ✅ **支持**：HPA 绑定到 Deployment，支持滚动更新
 - ❌ **不支持**：HPA 直接绑定到 ReplicationController 进行滚动更新
 
 原因：滚动更新会创建新的 ReplicationController，HPA 不会自动绑定到新的 RC。
-{{</callout>}}
+{{< /callout >}}
 
 ## 自定义指标配置
 

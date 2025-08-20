@@ -28,9 +28,9 @@ keywords:
 6. 代理执行节点证明，向服务器证明它正在运行的节点的身份。例如，在 AWS EC2 实例上运行时，它通常会通过向服务器提供 [AWS 实例身份文档](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html)来执行节点证明。
 7. 代理通过 TLS 连接向服务器提供此身份证明，该 TLS 连接通过代理配置的引导程序包进行身份验证。
 
-{{<callout note  注意>}}
+{{< callout note  注意 >}}
 此引导程序包是默认配置，应在生产中替换为客户提供的凭据。
-{{</callout>}}
+{{< /callout >}}
 
 8. 服务器调用 AWS API 来验证证明。
 9. AWS 承认该文件是有效的。
