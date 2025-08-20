@@ -6,16 +6,17 @@ date: '2023-01-17T10:40:00+08:00'
 type: book
 description: 介绍 Kubernetes 集群联邦的概念、用途和发展历程。虽然 Kubefed 项目已归档，但了解其设计理念和架构对理解多集群管理仍有价值。
 keywords:
-- api
-- dns
-- federation
-- kubefed
-- kubernetes
-- nginx
-- 服务
-- 联邦
-- 资源
-- 集群
+  - api
+  - dns
+  - federation
+  - kubefed
+  - kubernetes
+  - nginx
+  - 服务
+  - 联邦
+  - 资源
+  - 集群
+lastmod: '2025-08-20'
 ---
 
 {{< callout warning 注意 >}}

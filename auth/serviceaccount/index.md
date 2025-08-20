@@ -6,16 +6,17 @@ type: book
 description: 详细介绍 Kubernetes 中的 ServiceAccount 概念，包括其作用、配置方法和最佳实践，帮助理解 Pod 身份认证机制。
 summary: ServiceAccount 为 Pod 中的进程提供身份信息。
 keywords:
-- api
-- default
-- namespace
-- pod
-- serviceaccount
-- spec
-- token
-- 创建
-- 设置
-- 集群
+  - api
+  - default
+  - namespace
+  - pod
+  - serviceaccount
+  - spec
+  - token
+  - 创建
+  - 设置
+  - 集群
+lastmod: '2025-08-20'
 ---
 
 ServiceAccount 为 Pod 中的进程提供身份信息，是 Kubernetes 集群中实现 Pod 身份认证的重要机制。

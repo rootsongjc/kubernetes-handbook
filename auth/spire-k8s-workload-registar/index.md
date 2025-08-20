@@ -3,17 +3,20 @@ weight: 49
 title: SPIRE Kubernetes 工作负载注册器
 date: '2022-06-08T16:00:00+08:00'
 type: book
-description: 本文详细介绍了 SPIRE Kubernetes 工作负载注册器的部署方式、配置选项和注册模式，包括 webhook、reconcile 和 CRD 三种模式的特点与最佳实践。
+description: >-
+  本文详细介绍了 SPIRE Kubernetes 工作负载注册器的部署方式、配置选项和注册模式，包括 webhook、reconcile 和 CRD
+  三种模式的特点与最佳实践。
 summary: 本文介绍了如何在 Kubernetes 中使用 SPIRE 工作负载注册器，包括工作负载注册器部署的方式，注册模式等。
 keywords:
-- spire
-- kubernetes
-- workload-registrar
-- svid
-- spiffe
-- admission-webhook
-- crd
-- reconcile
+  - spire
+  - kubernetes
+  - workload-registrar
+  - svid
+  - spiffe
+  - admission-webhook
+  - crd
+  - reconcile
+lastmod: '2025-08-20'
 ---
 
 SPIRE Kubernetes 工作负载注册器是一个强大的工具，用于在 Kubernetes 环境中自动注册工作负载。它支持多种部署模式，包括 ValidatingAdmissionWebhook、控制器协调（reconcile）和自定义资源定义（CRD）模式，为不同场景提供灵活的解决方案。

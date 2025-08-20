@@ -6,15 +6,18 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 aliases:
   - /book/kubernetes-handbook/controllers/hpa/custom-metrics-hpa/
-description: 深入了解 Kubernetes HPA（Horizontal Pod Autoscaling）的工作原理、配置方法和自定义指标支持，包括基于 CPU、内存和自定义指标的自动扩缩容实现。
+description: >-
+  深入了解 Kubernetes HPA（Horizontal Pod Autoscaling）的工作原理、配置方法和自定义指标支持，包括基于
+  CPU、内存和自定义指标的自动扩缩容实现。
 keywords:
-- hpa
-- kubernetes
-- autoscaling
-- 自动扩缩容
-- 自定义指标
-- prometheus
-- metrics
+  - hpa
+  - kubernetes
+  - autoscaling
+  - 自动扩缩容
+  - 自定义指标
+  - prometheus
+  - metrics
+lastmod: '2025-08-20'
 ---
 
 应用的资源使用率通常都有高峰和低谷的时候，如何削峰填谷，提高集群的整体资源利用率，让 service 中的 Pod 个数自动调整呢？这就有赖于 Horizontal Pod Autoscaling 了，顾名思义，使 Pod 水平自动缩放。

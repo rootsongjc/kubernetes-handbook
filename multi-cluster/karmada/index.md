@@ -1,17 +1,20 @@
 ---
 title: Karmada
 weight: 3
-date: 2024-08-22
-description: "Karmada 是一个开源的 Kubernetes 多集群管理系统，通过原生 API 和先进调度功能实现跨多个集群和云的应用统一管理，无需修改应用程序即可实现真正的开放式多云 Kubernetes 部署。"
+date: 2024-08-22T00:00:00.000Z
+description: >-
+  Karmada 是一个开源的 Kubernetes 多集群管理系统，通过原生 API
+  和先进调度功能实现跨多个集群和云的应用统一管理，无需修改应用程序即可实现真正的开放式多云 Kubernetes 部署。
 keywords:
-- api
-- apiserver
-- karmada
-- kubernetes
-- 多集群
-- 云原生
-- 调度
-- 管理
+  - api
+  - apiserver
+  - karmada
+  - kubernetes
+  - 多集群
+  - 云原生
+  - 调度
+  - 管理
+lastmod: '2025-08-20'
 ---
 
 Karmada 是一个开源的 Kubernetes 多集群管理系统，让您能够在多个 Kubernetes 集群和云环境中运行云原生应用程序，而无需修改应用程序本身。通过使用 Kubernetes 原生 API 并提供先进的调度功能，Karmada 实现了真正的开放式多云 Kubernetes 管理。

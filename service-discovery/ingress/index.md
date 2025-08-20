@@ -3,18 +3,21 @@ weight: 41
 title: Ingress
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress 的工作原理、配置方法、IngressClass 概念以及各种使用场景。
+description: >-
+  Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress
+  的工作原理、配置方法、IngressClass 概念以及各种使用场景。
 keywords:
-- ingress
-- ingressclass
-- spec
-- tls
-- url
-- 控制器
-- 资源
-- 路由
-- 集群
-- 默认
+  - ingress
+  - ingressclass
+  - spec
+  - tls
+  - url
+  - 控制器
+  - 资源
+  - 路由
+  - 集群
+  - 默认
+lastmod: '2025-08-20'
 ---
 
 {{< callout note "重要提示" >}}
