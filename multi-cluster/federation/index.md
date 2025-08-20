@@ -18,7 +18,7 @@ keywords:
 - 集群
 ---
 
-{{<callout warning 注意>}}
+{{< callout warning 注意 >}}
 
 [Kubefed](https://github.com/kubernetes-sigs/kubefed) 项目已于 2023 年正式归档，详见 [Follow-up: discussion on archiving Kubefed](https://groups.google.com/g/kubernetes-sig-multicluster/c/lciAVj-_ShE?pli=1)。本文档仅作为历史参考和概念介绍。
 
@@ -28,7 +28,7 @@ keywords:
 - [Liqo](https://liqo.io/)
 - [Virtual Kubelet](https://virtual-kubelet.io/)
 
-{{</callout>}}
+{{< /callout >}}
 
 ## 什么是集群联邦
 

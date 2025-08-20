@@ -10,4 +10,4 @@ lastmod: '2025-08-09'
 
 Kubernetes 提供了丰富的命令行工具用于集群和应用的管理。kubectl 是官方命令行客户端，可与 API 服务器通信，实现资源的创建、查询、配置、扩缩容、诊断、调试、滚动更新等操作。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

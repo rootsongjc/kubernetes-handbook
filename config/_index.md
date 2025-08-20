@@ -11,4 +11,4 @@ lastmod: '2025-08-09'
 
 Kubernetes 资源对象配置是集群管理的核心。通过学习各种资源对象（如 Pod、Service、Deployment 等）的配置语法和最佳实践，能够更好地管理和部署应用，避免常见陷阱，并根据实际需求选择合适的配置选项，理解资源对象之间的关系和依赖。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

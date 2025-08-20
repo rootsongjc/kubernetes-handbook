@@ -332,9 +332,9 @@ spec:
 **Reconcile 模式：** 添加所有可能的访问名称
 **CRD 模式：** 仅添加 `<service>.<namespace>.svc` 格式的名称
 
-{{<callout warning 注意>}}
+{{< callout warning 注意 >}}
 某些服务（如 etcd）使用反向 DNS 验证客户端证书中的 DNS SAN。由于 Kubernetes 客户端的 IP 地址可能无法进行有效的反向 DNS 解析，可能导致验证失败。如果使用 X.509-SVID 对此类服务进行身份验证，建议禁用 DNS 名称功能。
-{{</callout>}}
+{{< /callout >}}
 
 ## 最佳实践
 

@@ -20,9 +20,9 @@ keywords:
 
 ServiceAccount 为 Pod 中的进程提供身份信息，是 Kubernetes 集群中实现 Pod 身份认证的重要机制。
 
-{{<callout note 注意>}}
+{{< callout note 注意 >}}
 本文档描述的关于 ServiceAccount 的行为只有当你按照 Kubernetes 项目建议的方式搭建集群的情况下才有效。集群管理员可能在你的集群中进行了自定义配置，这种情况下该文档可能并不适用。
-{{</callout>}}
+{{< /callout >}}
 
 ## ServiceAccount 基本概念
 
@@ -76,9 +76,9 @@ spec:
   # ... 其他配置
 ```
 
-{{<callout note 优先级>}}
+{{< callout note 优先级 >}}
 如果在 Pod 和 ServiceAccount 中同时设置了 `automountServiceAccountToken`，Pod 设置中的优先级更高。
-{{</callout>}}
+{{< /callout >}}
 
 ## 创建和管理 ServiceAccount
 
@@ -145,11 +145,11 @@ spec:
     image: nginx
 ```
 
-{{<callout warning 重要提醒>}}
+{{< callout warning 重要提醒 >}}
 
 - ServiceAccount 必须在 Pod 创建之前存在，否则创建将被拒绝
 - 你不能更新已创建的 Pod 的 ServiceAccount
-{{</callout>}}
+{{< /callout >}}
 
 ## Token 管理
 
@@ -181,9 +181,9 @@ type: kubernetes.io/service-account-token
 kubectl describe secret build-robot-secret
 ```
 
-{{<callout warning 安全建议>}}
+{{< callout warning 安全建议 >}}
 手动创建的长期 Token 存在安全风险，建议使用 TokenRequest API 或短期 Token。
-{{</callout>}}
+{{< /callout >}}
 
 ## 配置镜像拉取密钥
 

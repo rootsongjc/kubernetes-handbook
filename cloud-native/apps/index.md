@@ -16,10 +16,10 @@ keywords:
 ---
 
 
-{{<callout note 注意>}}
+{{< callout note 注意 >}}
 
 本文参考的是 [OAM 规范](https://github.com/oam-dev/spec)中对云原生应用的定义，并做出了引申。
-{{</callout>}}
+{{< /callout >}}
 
 云原生应用是一个相互关联但又不独立的组件（service、task、worker）的集合，这些组件与配置结合在一起并在适当的运行时实例化后，共同完成统一的功能目的。
 

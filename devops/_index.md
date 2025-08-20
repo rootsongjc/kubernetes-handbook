@@ -13,4 +13,4 @@ lastmod: '2025-08-09'
 
 Kubernetes 为新开发的云原生应用提供自动化部署、弹性伸缩、服务网格集成、可观测性和多环境一致性等优势。开发部署时，建议采用微服务架构，配置健康检查，合理设置资源限制，强化安全策略，并集成监控和日志系统。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

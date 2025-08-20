@@ -10,4 +10,4 @@ lastmod: '2025-08-09'
 
 Kubernetes 支持多种扩展方式，开发者可以通过自定义资源定义（CRD）、控制器、Admission Webhook、调度器扩展和网络插件（CNI）等机制，构建定制化的云原生解决方案。掌握这些开发模式和工具，有助于扩展 Kubernetes 能力，实现自动化和高效管理。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

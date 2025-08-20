@@ -23,4 +23,4 @@ Kubernetes 集群资源管理的核心要点包括：
 - 定期监控集群资源利用率，及时发现和解决资源瓶颈。
 - 利用 Operator 等自动化工具简化运维流程，提高管理效率。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

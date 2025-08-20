@@ -10,4 +10,4 @@ lastmod: '2025-08-09'
 
 随着组织规模的扩大和业务复杂性的增加，单一 Kubernetes 集群往往无法满足所有需求。多集群管理已成为现代云原生架构的重要组成部分，为不同业务提供隔离，增强可用性和可扩展性。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< list_children show_summary="true" style="cards"  >}}

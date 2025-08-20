@@ -22,14 +22,14 @@ keywords:
 
 Pod Preset 是 Kubernetes 中的一个概念，用于在 Pod 创建时自动注入预设的配置信息，如 Secret、Volume、环境变量等，而无需逐个修改 Pod 模板。
 
-{{<callout warning "重要提醒">}}
+{{< callout warning "重要提醒" >}}
 Pod Preset 功能已在 Kubernetes v1.24 中正式移除。对于类似需求，推荐使用以下替代方案：
 
 - **Init Container**：用于初始化工作
 - **自定义准入控制器**：实现自动配置注入
 - **Operator 模式**：通过自定义控制器管理应用配置
 - **Helm Charts** 或 **Kustomize**：通过模板化管理配置
-{{</callout>}}
+{{< /callout >}}
 
 ## Pod Preset 概述
 
@@ -64,9 +64,9 @@ Pod Preset 基于 Kubernetes 的准入控制器（Admission Controller）机制�
 - **Pod 级别**：卷定义等会应用到整个 Pod
 - **排除机制**：支持通过注释排除特定 Pod
 
-{{<callout note "注意">}}
+{{< callout note "注意" >}}
 Pod Preset 不会影响 Init Container，仅对主容器生效。
-{{</callout>}}
+{{< /callout >}}
 
 ## 现代替代方案
 

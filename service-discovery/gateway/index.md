@@ -15,11 +15,11 @@ keywords:
 - 网络策略
 ---
 
-{{<callout note 注意>}}
+{{< callout note 注意 >}}
 
 Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的下一代资源，既可以处理南北向流量，还可以处理东西向流量。关于 Gateway API 的详细介绍和发展趋势，请参考 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。
 
-{{</callout>}}
+{{< /callout >}}
 
 [Gateway API](https://github.com/kubernetes-sigs/gateway-api) 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kubernetes 生态系统提供现代化的服务网络 API。该项目在 2023 年 10 月[宣布 GA](https://kubernetes.io/blog/2023/10/31/gateway-api-ga/)，并在 2024 年 5 月[发布 v1.1](https://kubernetes.io/blog/2024/05/09/gateway-api-v1-1/)，将多项功能升级为正式可用，特别是对服务网格和 GRPCRoute 的支持。
 
