@@ -3,16 +3,19 @@ weight: 42
 title: Gateway API
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: "深入介绍 Kubernetes Gateway API 的核心概念、资源模型和最佳实践。作为 Ingress 的现代化替代方案，Gateway API 提供更强大的流量管理能力，支持多协议路由、角色分离和灵活的策略配置，已于 2023 年达到 GA 状态。"
+description: >-
+  深入介绍 Kubernetes Gateway API 的核心概念、资源模型和最佳实践。作为 Ingress 的现代化替代方案，Gateway API
+  提供更强大的流量管理能力，支持多协议路由、角色分离和灵活的策略配置，已于 2023 年达到 GA 状态。
 keywords:
-- gateway api
-- kubernetes
-- ingress
-- 流量管理
-- 路由
-- 负载均衡
-- 服务网格
-- 网络策略
+  - gateway api
+  - kubernetes
+  - ingress
+  - 流量管理
+  - 路由
+  - 负载均衡
+  - 服务网格
+  - 网络策略
+lastmod: '2025-08-20'
 ---
 
 {{< callout note 注意 >}}

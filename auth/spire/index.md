@@ -3,19 +3,22 @@ weight: 48
 title: SPIRE
 date: '2022-06-10T00:00:00+08:00'
 type: book
-description: SPIRE 是 SPIFFE API 的生产就绪实现，提供节点和工作负载认证，安全地向工作负载发布 SVID 并验证其他工作负载的 SVID。本文详细介绍 SPIRE 的架构、核心组件、证明机制和工作原理。
+description: >-
+  SPIRE 是 SPIFFE API 的生产就绪实现，提供节点和工作负载认证，安全地向工作负载发布 SVID 并验证其他工作负载的 SVID。本文详细介绍
+  SPIRE 的架构、核心组件、证明机制和工作原理。
 summary: 这篇文章将向你介绍 SPIRE 的架构、基本概念及原理。
 keywords:
-- spire
-- spiffe
-- 身份认证
-- 工作负载
-- 证明
-- 服务器
-- 代理
-- 插件
-- 选择器
-- SVID
+  - spire
+  - spiffe
+  - 身份认证
+  - 工作负载
+  - 证明
+  - 服务器
+  - 代理
+  - 插件
+  - 选择器
+  - SVID
+lastmod: '2025-08-20'
 ---
 
 SPIRE（SPIFFE Runtime Environment）是 [SPIFFE API](../spiffe) 的生产就绪实现，它执行节点和工作负载认证，根据预定义条件安全地向工作负载发布 SVID（SPIFFE Verifiable Identity Document），并验证其他工作负载的 SVID。

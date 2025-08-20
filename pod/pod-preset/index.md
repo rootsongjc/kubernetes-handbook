@@ -5,19 +5,22 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 aliases:
   - /book/kubernetes-handbook/objects/pod-preset/
-description: "Pod Preset 是 Kubernetes 中用于在 Pod 创建时自动注入配置信息的机制。本文介绍了 Pod Preset 的概念、工作原理以及替代方案，帮助理解如何在现代 Kubernetes 环境中实现类似功能。"
+description: >-
+  Pod Preset 是 Kubernetes 中用于在 Pod 创建时自动注入配置信息的机制。本文介绍了 Pod Preset
+  的概念、工作原理以及替代方案，帮助理解如何在现代 Kubernetes 环境中实现类似功能。
 keywords:
-- api
-- io
-- kubernetes
-- pod
-- podpreset
-- preset
-- spec
-- volume
-- 创建
-- initcontainer
-- 控制器
+  - api
+  - io
+  - kubernetes
+  - pod
+  - podpreset
+  - preset
+  - spec
+  - volume
+  - 创建
+  - initcontainer
+  - 控制器
+lastmod: '2025-08-20'
 ---
 
 Pod Preset 是 Kubernetes 中的一个概念，用于在 Pod 创建时自动注入预设的配置信息，如 Secret、Volume、环境变量等，而无需逐个修改 Pod 模板。

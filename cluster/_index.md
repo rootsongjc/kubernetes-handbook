@@ -5,7 +5,7 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 深入了解 Kubernetes 集群资源管理，包括 Namespace 命名空间隔离、Node 节点管理、Pod 调度策略等核心概念和实践方法。
 icon: fa-solid fa-server
-lastmod: '2025-08-09'
+lastmod: '2025-08-20'
 ---
 
 Kubernetes 提供了丰富的集群资源管理功能，帮助运维人员有效管理异构环境和复杂的容器化应用。通过合理的资源管理策略，可以实现应用的高效部署、调度和运维。

@@ -5,16 +5,17 @@ linktitle: CNI
 date: '2022-05-21T00:00:00+08:00'
 type: book
 aliases:
-- /book/kubernetes-handbook/architecture/open-interfaces/cni/
+  - /book/kubernetes-handbook/architecture/open-interfaces/cni/
 description: 深入了解容器网络接口（CNI）的设计原理、接口定义、插件实现和使用方式，掌握 Kubernetes 网络管理的核心机制。
 keywords:
-- cni
-- container network interface
-- kubernetes networking
-- 容器网络
-- 网络插件
-- ipam
-- 云原生网络
+  - cni
+  - container network interface
+  - kubernetes networking
+  - 容器网络
+  - 网络插件
+  - ipam
+  - 云原生网络
+lastmod: '2025-08-20'
 ---
 
 容器网络接口（Container Network Interface，CNI）是 CNCF 旗下的一个重要项目，提供了一套标准化的容器网络配置规范和库。CNI 专注于容器创建时的网络资源分配和容器删除时的网络资源释放，为容器编排平台提供了统一的网络管理接口。
