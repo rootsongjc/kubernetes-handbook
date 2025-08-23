@@ -3,16 +3,19 @@ weight: 75
 title: 配置 Pod 的 Service Account
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 详细介绍如何在 Kubernetes 中配置和使用 Service Account，包括默认配置、权限管理、创建自定义账户、配置 kubeconfig 以及管理 ImagePullSecret 等核心操作。
+description: >-
+  详细介绍如何在 Kubernetes 中配置和使用 Service Account，包括默认配置、权限管理、创建自定义账户、配置 kubeconfig
+  以及管理 ImagePullSecret 等核心操作。
 keywords:
-- account
-- api
-- namespace
-- pod
-- service
-- token
-- 创建
-- 集群
+  - account
+  - api
+  - namespace
+  - pod
+  - service
+  - token
+  - 创建
+  - 集群
+lastmod: '2025-08-23'
 ---
 
 Service Account 为 Pod 中的进程提供身份信息，是 Kubernetes 中重要的安全机制。
@@ -199,7 +202,7 @@ kubectl get serviceaccounts
 
 输出示例：
 
-```
+```text
 NAME      SECRETS    AGE
 default   0          1d
 ```
@@ -276,7 +279,7 @@ kubectl describe secrets/build-robot-secret
 
 输出示例：
 
-```
+```text
 Name:         build-robot-secret
 Namespace:    default
 Labels:       <none>

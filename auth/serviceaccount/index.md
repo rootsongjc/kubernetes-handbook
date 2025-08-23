@@ -16,7 +16,7 @@ keywords:
   - 创建
   - 设置
   - 集群
-lastmod: '2025-08-20'
+lastmod: '2025-08-23'
 ---
 
 ServiceAccount 为 Pod 中的进程提供身份信息，是 Kubernetes 集群中实现 Pod 身份认证的重要机制。
@@ -93,7 +93,7 @@ kubectl get serviceaccounts
 
 输出示例：
 
-```
+```text
 NAME      SECRETS    AGE
 default   0          1d
 ```

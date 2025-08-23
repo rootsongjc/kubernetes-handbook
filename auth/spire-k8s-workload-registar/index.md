@@ -16,7 +16,7 @@ keywords:
   - admission-webhook
   - crd
   - reconcile
-lastmod: '2025-08-20'
+lastmod: '2025-08-23'
 ---
 
 SPIRE Kubernetes 工作负载注册器是一个强大的工具，用于在 Kubernetes 环境中自动注册工作负载。它支持多种部署模式，包括 ValidatingAdmissionWebhook、控制器协调（reconcile）和自定义资源定义（CRD）模式，为不同场景提供灵活的解决方案。
@@ -113,7 +113,7 @@ disabled_namespaces = ["kube-system", "kube-public", "spire-system"]
 
 基于 Kubernetes 服务账户自动生成 SPIFFE ID，格式为：
 
-```
+```text
 spiffe://<TRUST_DOMAIN>/ns/<NAMESPACE>/sa/<SERVICE_ACCOUNT>
 ```
 
@@ -129,7 +129,7 @@ spiffe://<TRUST_DOMAIN>/ns/<NAMESPACE>/sa/<SERVICE_ACCOUNT>
 
 **注册条目示例：**
 
-```
+```text
 Entry ID      : 200d8b19-8334-443d-9494-f65d0ad64eb5
 SPIFFE ID     : spiffe://example.org/ns/production/sa/blog
 Parent ID     : spiffe://example.org/spire/agent/k8s_psat/production/node-123
@@ -141,7 +141,7 @@ Selectors     : k8s:ns:production
 
 基于指定的 Pod 标签值生成 SPIFFE ID，格式为：
 
-```
+```text
 spiffe://<TRUST_DOMAIN>/<LABEL_VALUE>
 ```
 

@@ -4,16 +4,17 @@ title: 高级开发指南
 date: '2022-05-21T00:00:00+08:00'
 type: book
 keywords:
-- api
-- kubernetes
-- pod
-- secret
-- 容器
-- 对象
-- 应用程序
-- 示例
-- 资源
-- 集群
+  - api
+  - kubernetes
+  - pod
+  - secret
+  - 容器
+  - 对象
+  - 应用程序
+  - 示例
+  - 资源
+  - 集群
+lastmod: '2025-08-23'
 ---
 
 
@@ -26,14 +27,14 @@ keywords:
 
 现在你知道了 Kubernetes 中提供的一组 API 对象。理解了 daemonset 和 deployment 之间的区别对于应用程序部署通常是足够的。也就是说，熟悉 Kubernetes 中其它的鲜为人知的功能也是值得的。因为这些功能有时候对于特别的用例是非常强大的。
 
-#### 容器级功能
+### 容器级功能
 
 如你所知，将整个应用程序（例如容器化的 Rails 应用程序，MySQL 数据库以及所有应用程序）迁移到单个 Pod 中是一种反模式。这就是说，有一些非常有用的模式超出了容器和 Pod 之间的 1:1 的对应关系：
 
 - **Sidecar 容器**：虽然 Pod 中依然需要有一个主容器，你还可以添加一个副容器作为辅助（见 [日志示例](https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent))。单个 Pod 中的两个容器可以[通过共享卷](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/)进行通信。
 - **Init 容器**：Init 容器在 Pod 的应用容器（如主容器和 sidecar 容器）之前运行。
 
-#### Pod 配置
+### Pod 配置
 
 通常，你可以使用 label 和 annotation 将元数据附加到资源上。将数据注入到资源，你可以会创建 ConfigMap（用于非机密数据）或 Secret（用于机密数据）。
 
@@ -43,7 +44,7 @@ keywords:
 - **向下 API**：这允许你的容器使用有关自己或集群的信息，而不会过度耦合到 Kubernetes API server。这可以通过[环境变量](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/) 或者 [DownwardAPIVolumeFiles](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)。
 - **Pod 预设**：通常，要将运行时需求（例如环境变量、ConfigMap 和 Secret）安装到资源中，可以在资源的配置文件中指定它们。PodPresets 允许你在创建资源时动态注入这些需求。例如，这允许团队 A 将任意数量的新 Secret 安装到团队 B 和 C 创建的资源中，而不需要 B 和 C 的操作。
 
-#### 其他 API 对象
+### 其他 API 对象
 
 在设置以下资源之前，请检查这是否属于你组织的集群管理员的责任。
 
@@ -54,7 +55,7 @@ keywords:
 
 Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 API 资源和功能不足以满足你的需求，则可以自定义其行为，而无需修改核心 Kubernetes 代码。
 
-#### 理解 Kubernetes 的默认行为
+### 理解 Kubernetes 的默认行为
 
 在进行任何自定义之前，了解 Kubernetes API 对象背后的一般抽象很重要。虽然 Deployment 和 Secret 看起来可能完全不同，但对于*任何*对象来说，以下概念都是正确的：
 
@@ -76,7 +77,7 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 
   并非所有的 Kubernetes 对象都需要一个 Controller。尽管 Deployment 触发群集进行状态更改，但 ConfigMaps 纯粹作为存储。
 
-#### 创建自定义资源
+### 创建自定义资源
 
 基于上述想法，你可以定义与 Deployment 一样合法的[自定义资源](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#custom-resources)。例如，如果 `CronJobs` 不能提供所有你需要的功能，你可能需要定义 `Backup` 对象以进行定期备份。
 
@@ -92,7 +93,7 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 - [如何才知道自定义资源是否符合你的使用场景](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#should-i-use-a-configmap-or-a-custom-resource)
 - [CRD 还是 API 聚合，如何选择？](https://kubernetes.io/docs/concepts/api-extension/custom-resources/#choosing-a-method-for-adding-custom-resources)
 
-#### Service Catalog
+### Service Catalog
 
 如果你想要使用或提供完整的服务（而不是单个资源），**Service Catalog** 为此提供了一个[规范](https://github.com/openservicebrokerapi/servicebroker)。这些服务使用 Service Broker 注册（请参阅 [示例](https://github.com/openservicebrokerapi/servicebroker/blob/master/gettingStarted.md#example-service-brokers)）。
 
@@ -100,14 +101,14 @@ Kubernetes 在设计之初就考虑到了可扩展性。如果上面提到的 AP
 
 ## 探索其他资源
 
-#### 参考
+### 参考
 
 以下主题对构建更复杂的应用程序也很有用：
 
 - [Kubernetes 中的其他扩展点](https://kubernetes.io/docs/concepts/overview/extending/) - 在哪里可以挂勾到 Kubernetes 架构的概念性的概述
 - Kubernetes 客户端库 - 用于构建需要与 Kubernetes API 大量交互的应用程序。
 
-#### 下一步
+### 下一步
 
 恭喜你完成了应用开发者之旅！你已经了解了 Kubernetes 提供的大部分功能。现在怎么办？
 

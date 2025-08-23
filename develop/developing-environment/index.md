@@ -6,13 +6,14 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 本文介绍如何在 macOS 上使用 Docker 环境编译 Kubernetes，包括环境配置、依赖安装和编译流程的详细说明。
 keywords:
-- docker
-- Kubernetes
-- 编译
-- 开发环境
-- macOS
-- 容器
-- 交叉编译
+  - docker
+  - Kubernetes
+  - 编译
+  - 开发环境
+  - macOS
+  - 容器
+  - 交叉编译
+lastmod: '2025-08-23'
 ---
 
 本文将指导您在 macOS 上使用 Docker 环境编译 Kubernetes，为开发和定制化需求提供支持。
@@ -99,7 +100,7 @@ cd kubernetes
 
 编译完成后，二进制文件将输出到以下目录：
 
-```
+```text
 _output/
 ├── local/
 │   ├── bin/

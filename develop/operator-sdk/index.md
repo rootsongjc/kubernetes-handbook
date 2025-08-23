@@ -4,15 +4,16 @@ title: Operator SDK
 date: '2022-05-21T00:00:00+08:00'
 type: book
 keywords:
-- api
-- crd
-- kubernetes
-- operator
-- sdk
-- 原生
-- 应用
-- 操作
-- 运维
+  - api
+  - crd
+  - kubernetes
+  - operator
+  - sdk
+  - 原生
+  - 应用
+  - 操作
+  - 运维
+lastmod: '2025-08-23'
 ---
 
 ## 什么是 Operator SDK
@@ -108,6 +109,7 @@ operator-sdk create api --group cache --version v1alpha1 --kind Memcached --reso
 ```
 
 这个命令会创建：
+
 - 自定义资源定义 (CRD)
 - 控制器逻辑
 - 相关的测试文件
@@ -116,7 +118,7 @@ operator-sdk create api --group cache --version v1alpha1 --kind Memcached --reso
 
 以下是相关的代码示例：
 
-```
+```text
 ├── api/
 │   └── v1alpha1/          # API 定义
 ├── config/

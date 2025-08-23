@@ -3,17 +3,20 @@ weight: 76
 title: Secret 配置
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 'Secret 对象用于保存敏感信息，如密码、OAuth 令牌和 SSH 密钥。本文详细介绍了 Secret 的概念、创建方法、使用方式、安全属性以及最佳实践。'
+description: >-
+  Secret 对象用于保存敏感信息，如密码、OAuth 令牌和 SSH 密钥。本文详细介绍了 Secret
+  的概念、创建方法、使用方式、安全属性以及最佳实践。
 keywords:
-- api
-- key
-- pod
-- secret
-- spec
-- volume
-- 使用
-- 创建
-- 容器
+  - api
+  - key
+  - pod
+  - secret
+  - spec
+  - volume
+  - 使用
+  - 创建
+  - 容器
+lastmod: '2025-08-23'
 ---
 
 Secret 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 SSH 密钥。将这些信息放在 Secret 中比放在 Pod 的定义中或者 Docker 镜像中更加安全和灵活。
@@ -67,7 +70,7 @@ kubectl describe secrets/db-user-pass
 
 输出类似于：
 
-```
+```text
 NAME                  TYPE                                  DATA      AGE
 db-user-pass          Opaque                                2         51s
 
@@ -395,7 +398,7 @@ spec:
 
 当容器中的命令运行时，密钥的内容将可在以下目录：
 
-```
+```text
 /etc/secret-volume/ssh-publickey
 /etc/secret-volume/ssh-privatekey
 ```

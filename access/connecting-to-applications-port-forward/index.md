@@ -6,14 +6,15 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 学习如何使用 kubectl port-forward 命令连接到运行在 Kubernetes 集群中的应用程序，实现本地调试和数据库访问。
 keywords:
-- kubectl
-- port-forward
-- 端口转发
-- Redis
-- Pod
-- 集群访问
-- 本地调试
-- 数据库连接
+  - kubectl
+  - port-forward
+  - 端口转发
+  - Redis
+  - Pod
+  - 集群访问
+  - 本地调试
+  - 数据库连接
+lastmod: '2025-08-23'
 ---
 
 本文将指导你使用 `kubectl port-forward` 命令连接到运行在 Kubernetes 集群中的应用程序。端口转发是一种强大的调试工具，特别适用于数据库调试和本地开发场景。
@@ -62,7 +63,7 @@ keywords:
 
    输出应显示 Pod 处于 Running 状态：
 
-   ```
+   ```text
    NAME           READY   STATUS    RESTARTS   AGE
    redis-server   1/1     Running   0          30s
    ```
@@ -85,7 +86,7 @@ kubectl port-forward pod/redis-server 6379:6379
 
 输出信息：
 
-```
+```text
 Forwarding from 127.0.0.1:6379 -> 6379
 Forwarding from [::1]:6379 -> 6379
 ```

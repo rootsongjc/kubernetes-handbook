@@ -6,7 +6,7 @@ date: '2018-09-09T00:00:00Z'
 description: 深入了解服务网格技术，探索微服务架构中的通信、安全和可观测性解决方案，包括 Istio、Linkerd 等主流服务网格实现。
 type: book
 icon: fa-solid fa-project-diagram
-lastmod: '2025-08-20'
+lastmod: '2025-08-23'
 ---
 
 ## 概述
