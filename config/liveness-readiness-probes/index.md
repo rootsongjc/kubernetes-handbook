@@ -4,18 +4,21 @@ title: 配置 Pod 的 liveness 和 readiness 探针
 linktitle: Liveness 和 Readiness 探针
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 学习如何在 Kubernetes 中配置 Pod 的存活探针和就绪探针，确保应用程序的健康状态监控和流量管理。本文详细介绍了三种探针类型：命令执行、HTTP 请求和 TCP 套接字，以及相关的配置参数。
+description: >-
+  学习如何在 Kubernetes 中配置 Pod 的存活探针和就绪探针，确保应用程序的健康状态监控和流量管理。本文详细介绍了三种探针类型：命令执行、HTTP
+  请求和 TCP 套接字，以及相关的配置参数。
 keywords:
-- http
-- kubelet
-- kubernetes
-- liveness
-- pod
-- probe
-- readiness
-- 失败
-- 容器
-- 返回
+  - http
+  - kubelet
+  - kubernetes
+  - liveness
+  - pod
+  - probe
+  - readiness
+  - 失败
+  - 容器
+  - 返回
+lastmod: '2025-08-23'
 ---
 
 当你使用 Kubernetes 时，是否遇到过 Pod 在启动后不久就崩溃然后重新启动的恶性循环？你是否好奇 Kubernetes 如何检测 Pod 是否还存活？虽然容器已经启动，但 Kubernetes 如何知道容器的进程是否准备好对外提供服务？
@@ -71,19 +74,19 @@ spec:
 
 **测试流程：**
 
-1. 创建 Pod：
+创建 Pod：
 
 ```bash
 kubectl apply -f exec-liveness.yaml
 ```
 
-2. 在 30 秒内查看 Pod 状态：
+在 30 秒内查看 Pod 状态：
 
 ```bash
 kubectl describe pod liveness-exec
 ```
 
-3. 35 秒后再次查看，会发现 liveness probe 失败的事件：
+35 秒后再次查看，会发现 liveness probe 失败的事件：
 
 ```bash
 kubectl get pod liveness-exec

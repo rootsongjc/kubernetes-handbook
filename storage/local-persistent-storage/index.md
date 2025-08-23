@@ -5,13 +5,14 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 了解如何在 Kubernetes 中配置和使用本地持久化存储，包括静态配置器的部署、PV/PVC 的创建以及最佳实践指南。
 keywords:
-- kubernetes
-- pv
-- pvc
-- 本地存储
-- 持久化卷
-- 静态配置器
-- 存储类
+  - kubernetes
+  - pv
+  - pvc
+  - 本地存储
+  - 持久化卷
+  - 静态配置器
+  - 存储类
+lastmod: '2025-08-23'
 ---
 
 本地持久化卷允许用户通过标准 PVC 接口以简单便携的方式访问本地存储。PV 中包含系统用于将 Pod 调度到正确节点的节点亲和性信息。
@@ -129,7 +130,7 @@ reclaimPolicy: Delete
 
 #### 使用 Helm 部署（推荐）
 
-1. 生成配置器规范：
+生成配置器规范：
 
 ```bash
 # 使用默认配置
@@ -144,7 +145,7 @@ helm template local-volume-provisioner \
   ./helm/provisioner > provisioner.yaml
 ```
 
-2. 部署配置器：
+部署配置器：
 
 ```bash
 kubectl apply -f provisioner.yaml
@@ -304,14 +305,14 @@ spec:
 当需要停用本地卷时，按以下顺序操作：
 
 1. **停止应用**：确保所有使用该卷的 Pod 已停止
-2. **删除 PVC**：删除 PersistentVolumeClaim
+1. **删除 PVC**：删除 PersistentVolumeClaim
 
   ```bash
   kubectl delete pvc local-storage-claim
   ```
 
-3. **物理移除**：从节点卸载或移除物理卷
-4. **清理 PV**：手动删除对应的 PersistentVolume
+1. **物理移除**：从节点卸载或移除物理卷
+1. **清理 PV**：手动删除对应的 PersistentVolume
 
   ```bash
   kubectl delete pv local-pv-name
@@ -348,13 +349,13 @@ spec:
   kubectl logs -n kube-system -l app=local-volume-provisioner
   ```
 
-2. **验证节点亲和性**：
+1. **验证节点亲和性**：
 
   ```bash
   kubectl describe pv <pv-name> | grep -A 10 NodeAffinity
   ```
 
-3. **检查 StorageClass 配置**：
+1. **检查 StorageClass 配置**：
 
   ```bash
   kubectl describe storageclass local-storage

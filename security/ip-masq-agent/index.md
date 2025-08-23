@@ -3,17 +3,20 @@ weight: 87
 title: IP 伪装代理
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 'IP 伪装代理（ip-masq-agent）通过配置 iptables 规则将 Pod IP 地址隐藏在集群节点 IP 后面，实现网络地址转换，确保集群内部流量能够正确访问外部网络。'
+description: >-
+  IP 伪装代理（ip-masq-agent）通过配置 iptables 规则将 Pod IP 地址隐藏在集群节点 IP
+  后面，实现网络地址转换，确保集群内部流量能够正确访问外部网络。
 keywords:
-- agent
-- cidr
-- ip
-- masq
-- 伪装
-- 地址
-- 链路
-- 集群
-- 默认
+  - agent
+  - cidr
+  - ip
+  - masq
+  - 伪装
+  - 地址
+  - 链路
+  - 集群
+  - 默认
+lastmod: '2025-08-23'
 ---
 
 本文介绍如何在 Kubernetes 集群中配置和使用 IP 伪装代理（ip-masq-agent），以实现网络地址转换功能。
@@ -73,7 +76,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/
 
 如果默认配置不满足需求，可以通过 ConfigMap 进行自定义配置。
 
-1. **创建配置文件**
+**创建配置文件**
 
 创建名为 `config` 的配置文件：
 
@@ -85,7 +88,7 @@ resyncInterval: 60s
 masqLinkLocal: false
 ```
 
-2. **创建 ConfigMap**
+**创建 ConfigMap**
 
 ```bash
 kubectl create configmap ip-masq-agent \
@@ -93,7 +96,7 @@ kubectl create configmap ip-masq-agent \
   --namespace=kube-system
 ```
 
-3. **验证配置**
+**验证配置**
 
 配置更新后，代理会每隔 `resyncInterval` 指定的时间间隔重新加载配置。可以通过以下命令验证 iptables 规则：
 
@@ -103,7 +106,7 @@ iptables -t nat -L IP-MASQ-AGENT
 
 预期输出类似：
 
-```
+```text
 Chain IP-MASQ-AGENT (1 references)
 target     prot opt source               destination         
 RETURN     all  --  anywhere             169.254.0.0/16       /* ip-masq-agent: cluster-local traffic */

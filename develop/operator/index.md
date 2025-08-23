@@ -6,14 +6,15 @@ summary: 深入了解 Kubernetes Operator 的原理、架构、应用场景和�
 date: '2024-01-15T11:00:00+08:00'
 type: book
 keywords:
-- kubernetes
-- operator
-- custom-resource
-- controller
-- automation
-- stateful-applications
-- crd
-- lifecycle-management
+  - kubernetes
+  - operator
+  - custom-resource
+  - controller
+  - automation
+  - stateful-applications
+  - crd
+  - lifecycle-management
+lastmod: '2025-08-23'
 ---
 
 ## 什么是 Operator
@@ -170,4 +171,3 @@ kubectl describe myapp my-instance
 - [Operator Framework 官网](https://operatorframework.io/)
 - [CNCF Operator 白皮书](https://github.com/cncf/tag-app-delivery/blob/main/operator-wg/whitepaper/Operator-WhitePaper_v1-0.md)
 - [Best Practices for Kubernetes Operators](https://cloud.redhat.com/blog/best-practices-for-kubernetes-operators)
-

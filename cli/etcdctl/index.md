@@ -5,13 +5,14 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 description: 详细介绍如何使用 etcdctl 工具访问和查看 Kubernetes 在 etcd 中存储的集群数据，包括配置方法、常用命令和数据结构分析。
 keywords:
-- etcd
-- etcdctl
-- Kubernetes
-- 集群数据
-- API 对象
-- 元数据
-- TLS 认证
+  - etcd
+  - etcdctl
+  - Kubernetes
+  - 集群数据
+  - API 对象
+  - 元数据
+  - TLS 认证
+lastmod: '2025-08-23'
 ---
 
 Kubernetes 使用 etcd 作为其后端数据存储，从 Kubernetes 1.6 开始默认使用 etcd v3 API。要访问 Kubernetes 在 etcd 中存储的数据，需要使用正确的 API 版本和认证配置。
@@ -124,7 +125,7 @@ done | sort
 
 Kubernetes 在 etcd 中的数据遵循以下层次结构：
 
-```
+```text
 /registry/
 ├── <资源类型复数形式>/
 │   ├── <命名空间>/

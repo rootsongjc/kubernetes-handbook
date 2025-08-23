@@ -4,18 +4,21 @@ title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
 linktitle: 迁移传统应用
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN 为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
+description: >-
+  详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN
+  为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
 keywords:
-- hadoop
-- kubernetes
-- spark
-- yarn
-- 启动
-- 应用
-- 服务
-- 迁移
-- 配置文件
-- 镜像
+  - hadoop
+  - kubernetes
+  - spark
+  - yarn
+  - 启动
+  - 应用
+  - 服务
+  - 迁移
+  - 配置文件
+  - 镜像
+lastmod: '2025-08-23'
 ---
 
 本文档主要介绍如何将已有的传统分布式应用程序迁移到 Kubernetes 中。如果你想要直接开发 Kubernetes 原生应用，可以参考 [适用于 Kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
@@ -130,7 +133,7 @@ EXPOSE 4040 7077 8080 8081
 
 准备服务运行所需的配置文件，存放在 `artifacts` 目录：
 
-```
+```text
 artifacts/hadoop/
 ├── bootstrap.sh              # 启动脚本
 ├── capacity-scheduler.xml    # 容量调度器配置
@@ -151,7 +154,7 @@ artifacts/hadoop/
 
 配置文件存储在 `manifests` 目录：
 
-```
+```text
 manifests/
 ├── namespace.yaml           # 命名空间
 ├── configmap.yaml          # 配置映射

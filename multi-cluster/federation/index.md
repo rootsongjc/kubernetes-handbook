@@ -16,7 +16,7 @@ keywords:
   - 联邦
   - 资源
   - 集群
-lastmod: '2025-08-20'
+lastmod: '2025-08-23'
 ---
 
 {{< callout warning 注意 >}}
@@ -24,6 +24,7 @@ lastmod: '2025-08-20'
 [Kubefed](https://github.com/kubernetes-sigs/kubefed) 项目已于 2023 年正式归档，详见 [Follow-up: discussion on archiving Kubefed](https://groups.google.com/g/kubernetes-sig-multicluster/c/lciAVj-_ShE?pli=1)。本文档仅作为历史参考和概念介绍。
 
 对于当前的多集群管理解决方案，建议考虑：
+
 - [Admiral](https://github.com/istio-ecosystem/admiral)
 - [Submariner](https://submariner.io/)
 - [Liqo](https://liqo.io/)
@@ -83,6 +84,7 @@ Federation 还可以支持以下用例：
 3. **负载均衡策略**：是否允许跨区域流量调度
 
 根据这些因素，推荐的集群数量为：
+
 - 允许跨区域流量：至少 max(R, U+1) 个集群
 - 不允许跨区域流量：至少 R × (U+1) 个集群
 
@@ -214,15 +216,18 @@ spec:
 虽然 Kubefed 已归档，但多集群管理的需求依然存在。目前的主流方案包括：
 
 ### 服务网格方案
+
 - **Istio 多集群**：通过 Istio 实现跨集群服务发现和流量管理
 - **Linkerd 多集群**：轻量级的跨集群连接方案
 
 ### 专业化工具
+
 - **Submariner**：专注于网络连接的多集群方案
 - **Admiral**：基于 Istio 的多集群流量管理
 - **Liqo**：动态的多集群资源共享
 
 ### 云厂商方案
+
 - **Google Anthos**：Google 的混合云和多云管理平台
 - **AWS EKS Anywhere**：AWS 的边缘和本地部署方案
 - **Azure Arc**：Microsoft 的混合云管理方案
@@ -233,4 +238,3 @@ spec:
 - [Kubernetes Federation Evolution](https://kubernetes.io/blog/2018/12/12/kubernetes-federation-evolution/)
 - [SIG Multicluster](https://github.com/kubernetes/community/tree/master/sig-multicluster)
 - [多集群管理最佳实践](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-

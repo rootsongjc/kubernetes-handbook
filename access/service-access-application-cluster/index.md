@@ -4,16 +4,19 @@ title: 使用 Service 访问集群中的应用程序
 linktitle: 通过 Service 访问
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 学习如何创建 Kubernetes Service 对象来访问集群中运行的应用程序，包括创建 Deployment、配置 NodePort 服务以及实现负载均衡的完整流程。
+description: >-
+  学习如何创建 Kubernetes Service 对象来访问集群中运行的应用程序，包括创建 Deployment、配置 NodePort
+  服务以及实现负载均衡的完整流程。
 keywords:
-- deployment
-- service
-- nodeport
-- pod
-- kubernetes
-- 负载均衡
-- 集群访问
-- 应用程序
+  - deployment
+  - service
+  - nodeport
+  - pod
+  - kubernetes
+  - 负载均衡
+  - 集群访问
+  - 应用程序
+lastmod: '2025-08-23'
 ---
 
 本文将指导你创建 Kubernetes Service 对象，使外部客户端能够访问集群中运行的应用程序。我们将创建一个具有负载均衡功能的 Service，为运行两个实例的应用程序提供服务。
@@ -119,7 +122,7 @@ kubectl get pods -l app=hello-world -o wide
 
 输出示例：
 
-```
+```text
 NAME                           READY   STATUS    RESTARTS   AGE   IP           NODE
 hello-world-5d8f7c4c9b-8x2mq   1/1     Running   0          2m    10.244.1.4   node1
 hello-world-5d8f7c4c9b-v7k9s   1/1     Running   0          2m    10.244.2.5   node2
@@ -176,7 +179,7 @@ curl http://192.168.1.100:32156
 
 成功的响应应该是：
 
-```
+```text
 Hello Kubernetes!
 ```
 

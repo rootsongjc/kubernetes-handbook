@@ -3,17 +3,20 @@ weight: 58
 title: Volume
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 本文详细介绍 Kubernetes Volume 的概念、类型和使用方法，包括各种存储卷类型的配置示例、挂载传播、subPath 等高级特性，以及最佳实践和使用场景。
+description: >-
+  本文详细介绍 Kubernetes Volume 的概念、类型和使用方法，包括各种存储卷类型的配置示例、挂载传播、subPath
+  等高级特性，以及最佳实践和使用场景。
 keywords:
-- emptydir
-- kubernetes
-- pod
-- volume
-- 存储
-- 挂载
-- 容器
-- 持久化
-- 存储卷
+  - emptydir
+  - kubernetes
+  - pod
+  - volume
+  - 存储
+  - 挂载
+  - 容器
+  - 持久化
+  - 存储卷
+lastmod: '2025-08-23'
 ---
 
 ## 概述
@@ -375,8 +378,6 @@ spec:
 
 所有来源都必须在与 Pod 相同的命名空间中。
 
-#### 示例配置
-
 以下是相关的示例代码：
 
 ```yaml
@@ -424,8 +425,6 @@ spec:
 - `Bidirectional`：此卷挂载与 `HostToContainer` 挂载相同。另外，由容器创建的所有卷挂载将被传播回主机和所有使用相同卷的容器。
 
 **注意**：双向挂载传播可能是危险的。它可能会损坏主机操作系统，因此只能在特权容器中使用。
-
-#### 示例配置
 
 以下是相关的示例代码：
 

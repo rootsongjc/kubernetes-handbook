@@ -3,18 +3,21 @@ weight: 92
 title: 访问集群
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 详细介绍访问 Kubernetes 集群的多种方式，包括使用 kubectl、直接访问 REST API、编程访问以及在 Pod 中访问 API 的方法和最佳实践。
+description: >-
+  详细介绍访问 Kubernetes 集群的多种方式，包括使用 kubectl、直接访问 REST API、编程访问以及在 Pod 中访问 API
+  的方法和最佳实践。
 keywords:
-- api
-- apiserver
-- kubectl
-- pod
-- service
-- 代理
-- 使用
-- 客户端
-- 访问
-- 集群
+  - api
+  - apiserver
+  - kubectl
+  - pod
+  - service
+  - 代理
+  - 使用
+  - 客户端
+  - 访问
+  - 集群
+lastmod: '2025-08-23'
 ---
 
 本文介绍了访问 Kubernetes 集群的各种方式，包括命令行工具、REST API、编程接口等多种方法。
@@ -244,7 +247,7 @@ kubectl proxy
 
 然后通过以下 URL 格式访问服务：
 
-```
+```text
 http://localhost:8080/api/v1/namespaces/{namespace}/services/{service-name}:{port}/proxy/
 ```
 

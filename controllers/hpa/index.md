@@ -17,7 +17,7 @@ keywords:
   - 自定义指标
   - prometheus
   - metrics
-lastmod: '2025-08-20'
+lastmod: '2025-08-23'
 ---
 
 应用的资源使用率通常都有高峰和低谷的时候，如何削峰填谷，提高集群的整体资源利用率，让 service 中的 Pod 个数自动调整呢？这就有赖于 Horizontal Pod Autoscaling 了，顾名思义，使 Pod 水平自动缩放。
@@ -142,6 +142,7 @@ spec:
 ```
 
 {{< callout warning "滚动更新注意事项" >}}
+
 - ✅ **支持**：HPA 绑定到 Deployment，支持滚动更新
 - ❌ **不支持**：HPA 直接绑定到 ReplicationController 进行滚动更新
 
@@ -155,12 +156,14 @@ spec:
 要使用自定义指标，需要满足以下条件：
 
 1. **Controller Manager 配置**：
+
    ```bash
    --horizontal-pod-autoscaler-use-rest-clients=true
    --master=http://API_SERVER_ADDRESS:8080
    ```
 
 2. **API Server 配置**（Kubernetes 1.7+）：
+
    ```bash
    --requestheader-client-ca-file=/etc/kubernetes/ssl/ca.pem
    --requestheader-allowed-names=aggregator
@@ -194,16 +197,19 @@ spec:
 ### Prometheus 集成
 
 1. **部署 Prometheus Operator**：
+
    ```bash
    kubectl apply -f prometheus-operator.yaml
    ```
 
 2. **验证自定义指标 API**：
+
    ```bash
    kubectl get --raw="/apis/custom-metrics.metrics.k8s.io/v1beta2" | jq .
    ```
 
 3. **自定义指标 HPA 示例**：
+
    ```yaml
    apiVersion: autoscaling/v2
    kind: HorizontalPodAutoscaler

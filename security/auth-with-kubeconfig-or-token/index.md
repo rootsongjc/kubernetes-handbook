@@ -4,18 +4,21 @@ title: 使用 kubeconfig 或 token 进行用户身份认证
 linktitle: kubeconfig 和 token 认证
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: 详细介绍在 Kubernetes 集群中使用 kubeconfig 文件和 Service Account token 两种方式进行用户身份认证的方法，包括证书配置、token 生成和权限管理。
+description: >-
+  详细介绍在 Kubernetes 集群中使用 kubeconfig 文件和 Service Account token
+  两种方式进行用户身份认证的方法，包括证书配置、token 生成和权限管理。
 keywords:
-- admin
-- base64
-- brand
-- kubeconfig
-- namespace
-- token
-- 创建
-- 权限
-- 用户
-- 认证
+  - admin
+  - base64
+  - brand
+  - kubeconfig
+  - namespace
+  - token
+  - 创建
+  - 权限
+  - 用户
+  - 认证
+lastmod: '2025-08-23'
 ---
 
 在启用了 TLS 的 Kubernetes 集群中，身份认证是与集群交互的重要环节。使用 kubeconfig（基于证书）和 Service Account token 是最常用和通用的两种认证方式，广泛应用于 Kubernetes Dashboard 登录、kubectl 操作等场景。
@@ -39,6 +42,7 @@ keywords:
 {width=1798 height=1168}
 
 **重要提示**：
+
 - Dashboard 使用的 kubeconfig 文件**必须**包含 `token` 字段，否则认证失败
 - kubectl 命令行工具使用的 kubeconfig 文件**不需要**包含 `token` 字段
 

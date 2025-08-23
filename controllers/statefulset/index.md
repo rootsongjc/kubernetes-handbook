@@ -3,15 +3,18 @@ weight: 30
 title: StatefulSet
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: StatefulSet 是 Kubernetes 中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。
+description: >-
+  StatefulSet 是 Kubernetes
+  中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。
 keywords:
-- statefulset
-- kubernetes
-- 有状态应用
-- 持久化存储
-- 网络标识
-- pod 管理
-- 滚动更新
+  - statefulset
+  - kubernetes
+  - 有状态应用
+  - 持久化存储
+  - 网络标识
+  - pod 管理
+  - 滚动更新
+lastmod: '2025-08-23'
 ---
 
 StatefulSet 是 Kubernetes 中专门用于管理有状态应用的控制器。与 Deployment 和 ReplicaSet 为无状态服务设计不同，StatefulSet 为 Pod 提供唯一标识，并保证部署和扩缩容的有序性。
@@ -38,7 +41,7 @@ StatefulSet 由以下几个关键部分组成：
 
 StatefulSet 中每个 Pod 的 DNS 格式为：
 
-```
+```text
 <statefulSetName>-<ordinal>.<serviceName>.<namespace>.svc.cluster.local
 ```
 

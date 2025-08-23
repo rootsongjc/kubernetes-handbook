@@ -5,13 +5,14 @@ linktitle: 测试指南
 date: '2024-01-15T00:00:00+08:00'
 type: book
 keywords:
-- kubernetes
-- 测试
-- 单元测试
-- 集成测试
-- e2e 测试
-- go test
-- 测试策略
+  - kubernetes
+  - 测试
+  - 单元测试
+  - 集成测试
+  - e2e 测试
+  - go test
+  - 测试策略
+lastmod: '2025-08-23'
 ---
 
 本文介绍 Kubernetes 项目中的各种测试方法和最佳实践。
@@ -228,6 +229,7 @@ cluster/log-dump.sh <output-directory>
 {width=1313 height=1284}
 
 主要特性：
+
 - 支持多云环境测试
 - 自动化测试流水线
 - 测试结果可视化

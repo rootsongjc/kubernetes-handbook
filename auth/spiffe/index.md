@@ -3,18 +3,22 @@ weight: 47
 title: SPIFFE
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: SPIFFE（Secure Production Identity Framework for Everyone）是一套开源标准，用于在动态和异构环境中安全地进行身份识别。本文介绍了 SPIFFE 的核心概念，包括工作负载、SPIFFE ID、信任域、SVID 和工作负载 API 等，以及它们在云原生应用中的应用。
+description: >-
+  SPIFFE（Secure Production Identity Framework for
+  Everyone）是一套开源标准，用于在动态和异构环境中安全地进行身份识别。本文介绍了 SPIFFE 的核心概念，包括工作负载、SPIFFE
+  ID、信任域、SVID 和工作负载 API 等，以及它们在云原生应用中的应用。
 keywords:
-- api
-- id
-- jwt
-- spiffe
-- svid
-- 信任
-- 工作
-- 证书
-- 负载
-- 身份
+  - api
+  - id
+  - jwt
+  - spiffe
+  - svid
+  - 信任
+  - 工作
+  - 证书
+  - 负载
+  - 身份
+lastmod: '2025-08-23'
 ---
 
 SPIFFE（Secure Production Identity Framework for Everyone）是一套开源标准，旨在为动态和异构环境中的工作负载提供安全的身份识别机制。通过 SPIFFE，系统中的各个组件无论在何处运行，都能够安全可靠地相互认证。
@@ -42,7 +46,7 @@ SPIFFE 规范的核心是通过简单的 API 定义短期加密身份文件 SVID
 
 SPIFFE ID 是唯一标识工作负载的字符串标识符，也可以分配给工作负载运行的中间系统。它采用 [URI](https://tools.ietf.org/html/rfc3986) 格式：
 
-```
+```text
 spiffe://信任域/工作负载标识符
 ```
 

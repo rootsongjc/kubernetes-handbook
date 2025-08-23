@@ -4,16 +4,19 @@ title: 适用于 Kubernetes 的应用开发部署流程
 linktitle: 应用开发部署流程
 date: '2022-05-21T00:00:00+08:00'
 type: book
-description: "本文详细介绍了如何开发容器化应用，使用现代 CI/CD 工具构建 Docker 镜像，通过 Docker Compose 本地测试，生成 Kubernetes YAML 配置文件，并集成到 Istio 服务网格的完整流程。"
+description: >-
+  本文详细介绍了如何开发容器化应用，使用现代 CI/CD 工具构建 Docker 镜像，通过 Docker Compose 本地测试，生成
+  Kubernetes YAML 配置文件，并集成到 Istio 服务网格的完整流程。
 keywords:
-- kubernetes
-- docker
-- ci/cd
-- istio
-- 服务网格
-- 容器化
-- 微服务
-- devops
+  - kubernetes
+  - docker
+  - ci/cd
+  - istio
+  - 服务网格
+  - 容器化
+  - 微服务
+  - devops
+lastmod: '2025-08-23'
 ---
 
 本文详细介绍了现代化容器应用的完整开发部署流程：从容器化应用开发、CI/CD 自动化构建、本地 Docker Compose 测试，到 Kubernetes 集群部署，最终集成 Istio 服务网格的端到端实践。
@@ -51,7 +54,7 @@ Kubernetes 会为每个 Pod 注入相关服务的环境变量，但这种方式�
 
 使用 Kubernetes 内置的 DNS 服务（CoreDNS），通过服务的 FQDN 进行访问：
 
-```
+```text
 <service-name>.<namespace>.svc.cluster.local
 ```
 
