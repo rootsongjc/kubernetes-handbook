@@ -5,16 +5,19 @@ date: '2022-05-21T00:00:00+08:00'
 type: book
 aliases:
   - /book/kubernetes-handbook/objects/pod-security-policy/
-description: 'Pod 安全策略（PodSecurityPolicy）是 Kubernetes 中已废弃的集群级别安全控制机制，用于控制 Pod 的安全上下文和运行行为。本文介绍其基本概念、配置方法以及替代方案。'
+description: >-
+  Pod 安全策略（PodSecurityPolicy）是 Kubernetes 中已废弃的集群级别安全控制机制，用于控制 Pod
+  的安全上下文和运行行为。本文介绍其基本概念、配置方法以及替代方案。
 keywords:
-- pod
-- podsecuritypolicy
-- psp
-- pod security admission
-- 容器安全
-- 安全策略
-- kubernetes 安全
-- 已废弃
+  - pod
+  - podsecuritypolicy
+  - psp
+  - pod security admission
+  - 容器安全
+  - 安全策略
+  - kubernetes 安全
+  - 已废弃
+lastmod: '2025-08-23'
 ---
 
 Pod 安全策略（PodSecurityPolicy，简称 PSP）是 Kubernetes 早期用于控制 Pod 安全上下文和运行行为的集群级安全机制。
@@ -83,7 +86,7 @@ PSP 可限制 Pod 使用的存储卷类型。常见卷类型有：
 - 配置和密钥卷：configMap、secret、downwardAPI、projected
 - 其他卷类型：flexVolume、portworxVolume、scaleIO、storageos、quobyte、*（允许所有）
 
-**建议：**新建 PSP 时，最小卷类型集合建议包含 configMap、downwardAPI、emptyDir、persistentVolumeClaim、secret、projected。
+**建议**：新建 PSP 时，最小卷类型集合建议包含 configMap、downwardAPI、emptyDir、persistentVolumeClaim、secret、projected。
 
 ## 配置示例
 
@@ -242,7 +245,7 @@ metadata:
     pod-security.kubernetes.io/warn: restricted
 ```
 
-**迁移建议：**建议先在测试环境验证新策略，使用 warn/audit 观察影响，再切换到 enforce 模式。
+**迁移建议**：建议先在测试环境验证新策略，使用 warn/audit 观察影响，再切换到 enforce 模式。
 
 ## 总结
 

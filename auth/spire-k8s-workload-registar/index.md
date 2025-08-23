@@ -292,7 +292,7 @@ spec:
 - 服务不可用时可能阻止 Pod 准入
 - SPIFFE ID 会广播到所有代理节点
 
-**适用场景：** 小规模集群或测试环境
+**适用场景**：小规模集群或测试环境
 
 ### Reconcile 模式（推荐）
 
@@ -309,7 +309,7 @@ spec:
 - 自动清理失效条目
 - 更好的可扩展性
 
-**适用场景：** 生产环境首选
+**适用场景**：生产环境首选
 
 ### CRD 模式
 
@@ -326,14 +326,14 @@ spec:
 - 支持复杂的身份策略
 - 与 GitOps 工作流集成良好
 
-**适用场景：** 需要精细控制的复杂环境
+**适用场景**：需要精细控制的复杂环境
 
 ## DNS 名称支持
 
 在 `reconcile` 和 `crd` 模式中，可以为 Pod 的注册条目添加 DNS 名称：
 
-**Reconcile 模式：** 添加所有可能的访问名称
-**CRD 模式：** 仅添加 `<service>.<namespace>.svc` 格式的名称
+**Reconcile 模式**：添加所有可能的访问名称
+**CRD 模式**：仅添加 `<service>.<namespace>.svc` 格式的名称
 
 {{< callout warning 注意 >}}
 某些服务（如 etcd）使用反向 DNS 验证客户端证书中的 DNS SAN。由于 Kubernetes 客户端的 IP 地址可能无法进行有效的反向 DNS 解析，可能导致验证失败。如果使用 X.509-SVID 对此类服务进行身份验证，建议禁用 DNS 名称功能。
@@ -343,37 +343,37 @@ spec:
 
 ### 模式选择建议
 
-1. **生产环境：** 优先选择 `reconcile` 模式
-2. **复杂身份策略：** 选择 `crd` 模式
-3. **简单测试：** 可使用 `webhook` 模式
+1. **生产环境**：优先选择 `reconcile` 模式
+2. **复杂身份策略**：选择 `crd` 模式
+3. **简单测试**：可使用 `webhook` 模式
 
 ### 安全配置
 
-1. **启用客户端验证：** 避免设置 `insecure_skip_client_verification = true`
-2. **命名空间隔离：** 合理配置 `disabled_namespaces`
-3. **最小权限原则：** 为注册器配置最小必需的 RBAC 权限
+1. **启用客户端验证**：避免设置 `insecure_skip_client_verification = true`
+2. **命名空间隔离**：合理配置 `disabled_namespaces`
+3. **最小权限原则**：为注册器配置最小必需的 RBAC 权限
 
 ### 性能优化
 
-1. **领导者选举：** 多副本部署时启用 `leader_election`
-2. **DNS 名称：** 根据实际需求决定是否启用 `add_pod_dns_names`
-3. **监控指标：** 配置 `metrics_addr` 进行性能监控
+1. **领导者选举**：多副本部署时启用 `leader_election`
+2. **DNS 名称**：根据实际需求决定是否启用 `add_pod_dns_names`
+3. **监控指标**：配置 `metrics_addr` 进行性能监控
 
 ## 故障排查
 
 ### 常见问题
 
-1. **Pod 无法获取 SVID：**
+1. **Pod 无法获取 SVID**：
    - 检查注册器日志
    - 验证网络连接
    - 确认 SPIRE 代理状态
 
-2. **Webhook 模式准入失败：**
+2. **Webhook 模式准入失败**：
    - 检查证书配置
    - 验证网络策略
    - 查看 API 服务器日志
 
-3. **权限错误：**
+3. **权限错误**：
    - 验证 ServiceAccount 和 RBAC 配置
    - 检查命名空间权限
 
@@ -387,6 +387,6 @@ spec:
 
 ## 平台兼容性
 
-- **支持系统：** Linux/Unix 系统
-- **Kubernetes 版本：** 1.19+
-- **SPIRE 版本：** 1.5.0+
+- **支持系统**：Linux/Unix 系统
+- **Kubernetes 版本**： 1.19+
+- **SPIRE 版本**： 1.5.0+

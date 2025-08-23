@@ -30,7 +30,7 @@ keywords:
 
 > "Software is eating the world." —— Marc Andreessen
 
-当"软件正在吞噬世界"成为共识时，云原生的兴起让我们看到了新的趋势：**"Cloud Native is eating the software"**。
+当"软件正在吞噬世界"成为共识时，云原生的兴起让我们看到了新的趋势："**Cloud Native is eating the software**"。
 
 ### 技术演进趋势
 

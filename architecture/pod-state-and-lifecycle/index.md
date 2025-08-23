@@ -5,8 +5,11 @@ linkTitle: 资源对象
 date: '2022-05-21T00:00:00+08:00'
 type: book
 aliases:
-- "/book/kubernetes-handbook/objects/"
-description: '深入了解 Kubernetes 中的各种资源对象类型，包括 Pod、Service、Deployment 等核心概念，以及如何通过 YAML 文件定义和管理这些对象的 spec 和 status。'
+  - /book/kubernetes-handbook/objects/
+description: >-
+  深入了解 Kubernetes 中的各种资源对象类型，包括 Pod、Service、Deployment 等核心概念，以及如何通过 YAML
+  文件定义和管理这些对象的 spec 和 status。
+lastmod: '2025-08-23'
 ---
 
 Kubernetes 作为容器编排平台，通过各种资源对象来管理应用程序的部署、扩展和运行。这些对象都可以通过 YAML 或 JSON 文件进行声明式配置。
@@ -35,8 +38,8 @@ Kubernetes 作为容器编排平台，通过各种资源对象来管理应用程
 - **ConfigMap** - 存储非敏感配置数据
 - **Secret** - 存储敏感信息如密码、令牌
 - **Volume** - 为容器提供存储
-- **PersistentVolume (PV)** - 集群级别的存储资源
-- **PersistentVolumeClaim (PVC)** - 用户对存储的请求
+- **PersistentVolume**（**PV**） - 集群级别的存储资源
+- **PersistentVolumeClaim**（**PVC**） - 用户对存储的请求
 
 ### 集群管理
 
@@ -55,11 +58,11 @@ Kubernetes 作为容器编排平台，通过各种资源对象来管理应用程
 
 - **ResourceQuota** - 限制命名空间的资源使用
 - **LimitRange** - 设置资源使用的默认值和限制
-- **HorizontalPodAutoscaler (HPA)** - 基于 CPU/内存使用率自动扩缩容
+- **HorizontalPodAutoscaler**（**HPA**） - 基于 CPU/内存使用率自动扩缩容
 
 ### 扩展性
 
-- **CustomResourceDefinition (CRD)** - 定义自定义资源类型
+- **CustomResourceDefinition**（**CRD**） - 定义自定义资源类型
 
 ## 理解 Kubernetes 对象
 
