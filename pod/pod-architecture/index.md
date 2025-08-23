@@ -7,15 +7,16 @@ aliases:
   - /book/kubernetes-handbook/objects/pod-overview/
 description: 深入了解 Kubernetes Pod 架构、设计理念、生命周期管理和最佳实践，包括 Pod 的创建、调度、终止和故障处理机制。
 keywords:
-- kubernetes
-- pod
-- 容器
-- 架构
-- 生命周期
-- 调度
-- 网络
-- 存储
-- 安全
+  - kubernetes
+  - pod
+  - 容器
+  - 架构
+  - 生命周期
+  - 调度
+  - 网络
+  - 存储
+  - 安全
+lastmod: '2025-08-23'
 ---
 
 Pod 是 Kubernetes 中最小的可部署和管理单元，也是 Kubernetes REST API 中的核心资源类型。本文将深入探讨 Pod 的架构设计、工作原理和最佳实践。
@@ -43,13 +44,13 @@ Pod 为紧密耦合的应用提供了一个"逻辑主机"环境，类似于传�
 Pod 中的容器共享以下环境：
 
 - **Linux 命名空间**：网络、IPC、UTS 等
-- **控制组 (cgroups)**：资源限制和隔离
+- **控制组**（**cgroups**）：资源限制和隔离
 - **存储卷**：数据持久化和共享
 
 容器间可以通过以下方式通信：
 
 - **localhost**：网络通信
-- **进程间通信 (IPC)**：SystemV 信号量、POSIX 共享内存等
+- **进程间通信**（**IPC**）：SystemV 信号量、POSIX 共享内存等
 - **共享文件系统**：通过挂载的卷进行文件共享
 
 ## Pod 架构示意图

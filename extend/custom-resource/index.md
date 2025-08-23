@@ -7,18 +7,21 @@ type: book
 aliases:
   - /book/kubernetes-handbook/extend/aggregated-api-server/
   - /book/kubernetes-handbook/extend/crd/
-description: 全面介绍 Kubernetes API 扩展方法，包括自定义资源定义（CRD）、聚合 API Server 等技术，帮助开发者构建符合 Kubernetes 原生体验的扩展功能。
+description: >-
+  全面介绍 Kubernetes API 扩展方法，包括自定义资源定义（CRD）、聚合 API Server 等技术，帮助开发者构建符合 Kubernetes
+  原生体验的扩展功能。
 keywords:
-- api
-- crd
-- customresourcedefinition
-- aggregated api server
-- kubectl
-- kubernetes
-- operator
-- extension
-- 扩展
-- 自定义资源
+  - api
+  - crd
+  - customresourcedefinition
+  - aggregated api server
+  - kubectl
+  - kubernetes
+  - operator
+  - extension
+  - 扩展
+  - 自定义资源
+lastmod: '2025-08-23'
 ---
 
 Kubernetes 提供了多种扩展 API 的方式，让开发者能够在不修改核心代码的情况下添加新的资源类型和功能。本文将全面介绍这些扩展方法，帮助您选择最适合的方案来满足特定需求。
@@ -95,7 +98,7 @@ CustomResourceDefinition (CRD) 是最简单、最常用的扩展方式，适用�
 
 在决定使用 CRD 之前，请考虑以下条件：
 
-✅ **适合使用 CRD 的场景：**
+✅ **适合使用 CRD 的场景**：
 
 - 你的 API 属于声明式的
 - 想使用 kubectl 命令来管理
@@ -104,7 +107,7 @@ CustomResourceDefinition (CRD) 是最简单、最常用的扩展方式，适用�
 - 可以接受 namespace 或 cluster 范围的限制
 - 想复用 Kubernetes API 的公共功能（CRUD、watch、认证授权等）
 
-❌ **不适合 CRD 的场景：**
+❌ **不适合 CRD 的场景**：
 
 - 需要复杂的计算逻辑
 - 需要实时数据查询
