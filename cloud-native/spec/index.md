@@ -1,9 +1,7 @@
 ---
 title: 云原生应用规范模型
 linkTitle: 规范模型
-description: >-
-  基于 OAM 的云原生应用的规范模型，详细介绍 Workload、Component、Trait、ApplicationScope 和
-  ApplicationConfiguration 等核心概念。
+description: 基于 OAM 的云原生应用的规范模型，详细介绍 Workload、Component、Trait、ApplicationScope 和 ApplicationConfiguration 等核心概念。
 weight: 9
 aliases:
   - /book/kubernetes-handbook/cloud-native/spec/workload/
@@ -20,7 +18,8 @@ keywords:
   - application configuration
   - 云原生
   - 应用规范
-lastmod: '2025-08-20'
+lastmod: 2025-08-26T10:11:27.809Z
+date: 2025-08-26T10:11:27.424Z
 ---
 
 OAM（Open Application Model）是一个专注于描述应用程序的规范，它通过定义标准化的应用程序模型来实现平台无关的应用程序描述。本文将详细介绍 OAM 规范中的核心概念和组件。

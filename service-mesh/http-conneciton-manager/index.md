@@ -2,18 +2,21 @@
 title: HTTP 连接管理器介绍
 linktitle: HTTP 连接管理器
 weight: 6
-description: "详细介绍 Envoy 的 HTTP 连接管理器（HCM）工作原理，包括 HTTP 过滤器机制、数据共享方式、过滤器执行顺序以及内置过滤器功能。"
+description: 详细介绍 Envoy 的 HTTP 连接管理器（HCM）工作原理，包括 HTTP 过滤器机制、数据共享方式、过滤器执行顺序以及内置过滤器功能。
 keywords:
-- envoy
-- hcm
-- http
-- 数据
-- 类型化
-- 编码器
-- 解码器
-- 请求
-- 调用
-- 过滤器
+  - envoy
+  - hcm
+  - http
+  - 数据
+  - 类型化
+  - 编码器
+  - 解码器
+  - 请求
+  - 调用
+  - 过滤器
+draft: false
+date: 2025-08-26T10:05:55.144Z
+lastmod: 2025-08-26T10:05:55.835Z
 ---
 
 HTTP 连接管理器（HCM）是 Envoy 代理的核心组件之一，作为网络级过滤器，它负责将原始字节流转换为 HTTP 级别的消息和事件，如接收到的请求头、消息体数据等。
