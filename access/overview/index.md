@@ -4,6 +4,9 @@ title: 访问方式概览
 linktitle: 概览
 type: book
 description: 根据不同的使用场景和安全需求，访问 Kubernetes 集群。
+date: 2025-08-26T10:05:39.568Z
+draft: false
+lastmod: 2025-08-26T10:05:42.484Z
 ---
 
 根据不同的使用场景和安全需求，访问 Kubernetes 集群主要有以下几种方式：

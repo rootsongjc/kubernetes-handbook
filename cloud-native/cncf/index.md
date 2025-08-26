@@ -4,16 +4,18 @@ linktitle: CNCF
 weight: 6
 description: 深入了解云原生计算基金会（CNCF）的使命、组织架构、项目成熟度分级体系，以及如何成为 CNCF Ambassador。探索 CNCF 如何推动云原生技术生态系统的发展。
 keywords:
-- ambassador
-- cncf
-- toc
-- 云原生
-- 成熟度
-- 技术
-- 投票
-- 社区
-- 级别
-- 项目
+    - ambassador
+    - cncf
+    - toc
+    - 云原生
+    - 成熟度
+    - 技术
+    - 投票
+    - 社区
+    - 级别
+    - 项目
+lastmod: 2025-08-26T10:05:08.610Z
+date: 2025-08-26T10:05:08.076Z
 ---
 
 ## CNCF 简介
