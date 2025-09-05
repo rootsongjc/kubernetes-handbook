@@ -226,7 +226,7 @@ flowchart TD
 ```
 
 ![从 Ingress 迁移到 Gateway API 的完整流程](43c6548dd2251b476f12cce86fd239db.svg)
-{width=1082 height=646}
+{width=1920 height=1165}
 
 ### 详细迁移步骤
 
