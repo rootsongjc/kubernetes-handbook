@@ -44,7 +44,7 @@ graph LR;
 ```
 
 ![Ingress 运作的架构图](e0a8252231167704c4f15deeea858784.svg)
-{width=1920 height=551}
+{width=1920 height=606}
 
 ## 核心功能
 
