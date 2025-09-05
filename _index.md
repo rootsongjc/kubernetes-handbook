@@ -124,5 +124,3 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **持续更新** - 跟进最新技术发展和社区动态
 
 {{< list_children show_summary="true" style="cards"  >}}
-
-{{< cta cta_text="开始阅读" cta_link="architecture"  >}}
