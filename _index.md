@@ -9,7 +9,7 @@ featured: true
 type: publication
 layout: book-content
 title: Kubernetes 基础教程
-date: '2024-01-15T00:00:00+08:00'
+date: 2017-03-15T00:00:00+08:00
 icon: fa-solid fa-book
 banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 aliases:
@@ -29,17 +29,17 @@ book:
   backcover_text: 「几米宋」微信公众号
   backcover_link_text: 访问 jimmysong.io 在线阅读本书
   backcover_link_url: https://jimmysong.io/book/kubernetes-handbook/
-  backcover_text_color: '#FFFFFF'
-  backcover_link_color: '#1d09d8'
+  backcover_text_color: "#FFFFFF"
+  backcover_link_color: "#1d09d8"
   date: 2025-07-13T00:00:00.000Z
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
   cover_title_text: Kubernetes Handbook
   cover_author_text: Jimmy Song
   cover_subtitle_text: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
-  cover_title_color: '#FFFFFF'
-  cover_author_color: '#E0E0E0'
-  cover_subtitle_color: '#C0C0C0'
+  cover_title_color: "#FFFFFF"
+  cover_author_color: "#E0E0E0"
+  cover_subtitle_color: "#C0C0C0"
   cover_title_font_size: 48
   cover_author_font_size: 28
   cover_subtitle_font_size: 20
@@ -49,16 +49,19 @@ book:
   cover_text_shadow: false
   cover_background_overlay: false
   cover_overlay_opacity: 0
-  body_color: '#333333'
-  heading_color: '#2C3E50'
-  link_color: '#3498DB'
-  code_color: '#E74C3C'
-  quote_color: '#7F8C8D'
-  caption_color: '#95A5A6'
+  body_color: "#333333"
+  heading_color: "#2C3E50"
+  link_color: "#3498DB"
+  code_color: "#E74C3C"
+  quote_color: "#7F8C8D"
+  caption_color: "#95A5A6"
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: '2025-08-20'
+lastmod: 2025-09-19T15:21:58.585Z
+authors:
+  - Jimmy Song
+publisher: jimmysong.io
 ---
 
 {{< callout note 关于本教程 >}}
