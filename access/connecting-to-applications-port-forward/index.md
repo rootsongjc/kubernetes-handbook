@@ -2,19 +2,9 @@
 weight: 94
 title: 通过端口转发访问集群中的应用程序
 linktitle: 端口转发访问
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 学习如何使用 kubectl port-forward 命令连接到运行在 Kubernetes 集群中的应用程序，实现本地调试和数据库访问。
-keywords:
-  - kubectl
-  - port-forward
-  - 端口转发
-  - Redis
-  - Pod
-  - 集群访问
-  - 本地调试
-  - 数据库连接
-lastmod: '2025-08-23'
+lastmod: 2025-10-13T05:09:38.067Z
 ---
 
 本文将指导你使用 `kubectl port-forward` 命令连接到运行在 Kubernetes 集群中的应用程序。端口转发是一种强大的调试工具，特别适用于数据库调试和本地开发场景。

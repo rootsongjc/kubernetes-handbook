@@ -2,20 +2,9 @@
 weight: 96
 title: 从外部访问 Kubernetes 中的 Pod
 linktitle: 从外部访问 Pod
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 本文详细介绍了从外部访问 Kubernetes 集群中 Pod 和 Service 的多种方式，包括 hostNetwork、hostPort、NodePort、LoadBalancer 和 Ingress 等方法，并分析了各种方式的优缺点和适用场景。
-keywords:
-- controller
-- ingress
-- ip
-- kubernetes
-- pod
-- service
-- 宿主机
-- 服务
-- 端口
-- 访问
+lastmod: 2025-10-13T05:09:51.672Z
 ---
 
 在 Kubernetes 集群中，Pod 默认只能在集群内部访问。为了让外部用户能够访问集群中的应用，我们需要采用适当的网络暴露方式。本文将介绍几种主要的外部访问方法，每种方法都有其特定的使用场景和优缺点。

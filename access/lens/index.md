@@ -2,20 +2,10 @@
 weight: 97
 title: Lens - Kubernetes IDE
 linktitle: Lens
-date: '2022-05-21T00:00:00+08:00'
+date: 2022-05-21T00:00:00+08:00
 type: book
 description: Lens 是一款功能强大的开源 Kubernetes IDE，提供实时集群监控、多集群管理、可视化界面等功能，支持跨平台使用，是 Kubernetes 开发和运维的理想工具。
-keywords:
-- chart
-- github
-- ide
-- kubernetes
-- lens
-- namespace
-- prometheus
-- 开源
-- 支持
-- 集群
+lastmod: 2025-10-13T05:09:18.704Z
 ---
 
 ## 什么是 Lens

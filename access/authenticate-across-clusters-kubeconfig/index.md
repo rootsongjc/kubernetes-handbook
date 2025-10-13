@@ -1,21 +1,10 @@
 ---
 weight: 93
 title: 使用 kubeconfig 文件配置跨集群认证
-linktitle: 通过 kubeconfig 访问
-date: '2022-05-21T00:00:00+08:00'
-type: book
+linktitle: kubeconfig 与跨集群访问
+date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes kubeconfig 文件的结构、组成和使用方法，包括集群、用户、上下文的配置，以及跨集群认证的最佳实践。
-keywords:
-- cluster
-- config
-- context
-- kubeconfig
-- kubectl
-- server
-- user
-- 使用
-- 文件
-- 集群
+lastmod: 2025-10-13T05:09:43.994Z
 ---
 
 在 Kubernetes 环境中，不同的组件和用户可能需要不同的认证方式：
