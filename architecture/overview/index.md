@@ -2,28 +2,17 @@
 weight: 1
 title: Kubernetes 的架构
 linktitle: 架构概览
-date: '2022-05-21T00:00:00+08:00'
-description: >-
-  本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解
-  Kubernetes 系统的设计思想和实现机制。
+date: 2022-05-21T00:00:00+08:00
+description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
-lastmod: '2025-08-09'
+lastmod: 2025-10-13T03:56:26.290Z
 ---
 
-Kubernetes 提供以下核心特性：
+本文全面介绍 Kubernetes 的核心架构、对象模型、命名空间、对象管理与扩展机制等基础内容。若需深入了解存储、网络或工作负载管理等专题，请参考相关专章。
 
-- **声明式配置**：通过 YAML 定义期望状态，系统自动维护实际状态与期望状态一致
-- **自动化编排**：Pod 调度、故障恢复、滚动更新、自动扩缩容
-- **服务发现与负载均衡**：内置 DNS 和服务抽象，支持多种负载均衡策略
-- **存储编排**：支持多种存储后端，提供持久化存储抽象
-- **配置和密钥管理**：统一的配置和敏感信息管理机制
-- **多租户支持**：命名空间隔离、RBAC 权限控制、资源配额管理
+## Kubernetes 的前身 Borg
 
-要谈到 Kubernetes 就要不得从 Borg 系统开始谈起。
-
-## Borg 系统简介
-
-Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理着数十万个应用跨越数千个集群。它为 Kubernetes 的设计提供了宝贵的实践经验和理论基础。
+要谈到 Kubernetes 就要不得从 Borg 系统开始谈起。Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理着数十万个应用跨越数千个集群。它为 Kubernetes 的设计提供了宝贵的实践经验和理论基础。
 
 ![Borg 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/borg.webp)
 {width=572 height=549}
@@ -35,171 +24,393 @@ Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理
 - **Borglet**：节点代理，管理容器生命周期和资源监控
 - **borgcfg**：声明式配置工具，定义应用的期望状态
 
-## Kubernetes 架构概览
+## Kubernetes 架构总览
 
-Kubernetes 继承了 Borg 的核心设计理念，同时在开放性、可扩展性和社区生态方面实现了重大突破。
+Kubernetes 采用分布式架构，控制面与工作节点分离，实现了决策集中与任务分布的高可用设计。
 
-### 整体架构
+```mermaid "Kubernetes 架构总览"
+flowchart TD
+    subgraph "Control Plane"
+        API["API Server"] 
+        ETCD["etcd<br>存储"]
+        CM["Controller<br>Manager"]
+        SCH["Scheduler"]
+    end
 
-下图展示了 Kubernetes 的整体架构，包括控制平面和工作节点的主要组件及其交互关系，帮助理解系统的核心模块分布和职责划分。
+    subgraph "Worker Nodes"
+        N1["节点 1"]
+        N2["节点 2"]
+        N3["节点 3"]
+    end
 
-![Kubernetes 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/architecture.webp)
-{width=1200 height=932}
+    subgraph "Node Components"
+        KB["kubelet"]
+        KP["kube-proxy"]
+        CRI["容器运行时"]
+    end
 
-### 设计原则
+    API <--> ETCD
+    API <--> CM
+    API <--> SCH
+    
+    API <--> N1
+    API <--> N2
+    API <--> N3
+    
+    N1 --- KB
+    N1 --- KP
+    N1 --- CRI
+```
 
-- **API 驱动**：所有操作通过 RESTful API 完成
-- **声明式**：描述期望状态而非执行步骤
-- **控制器模式**：通过控制循环保持状态一致性
-- **可扩展性**：支持插件化架构和自定义资源
+![Kubernetes 架构总览](a1a89650891fe65d7173653effe1ec82.svg)
+{width=1920 height=873}
 
-## 核心组件详解
+## 控制面组件
 
-### 控制平面（Control Plane）
+控制面负责全局决策与事件响应，核心组件如下：
 
-控制平面是 Kubernetes 的决策中心，负责管理集群状态和协调各种操作。
+{{< table title="Kubernetes 控制面组件说明" >}}
 
-#### kube-apiserver
+| 组件                    | 描述                 | 主要职责                 |
+| ----------------------- | -------------------- | ------------------------ |
+| kube-apiserver          | 控制面的前端入口     | 提供 API，处理所有请求   |
+| etcd                    | 一致性高可用键值存储 | 存储集群所有数据         |
+| kube-scheduler          | 监听新建 Pod         | 根据资源调度 Pod 到节点  |
+| kube-controller-manager | 运行控制器进程       | 通过控制循环维护集群状态 |
 
-- **功能**：提供 Kubernetes API 的唯一入口
-- **职责**：身份验证、授权、准入控制、API 版本管理
-- **特点**：无状态、水平可扩展、支持多种认证机制
+{{< /table >}}
 
-#### etcd
+## 节点组件
 
-- **功能**：分布式键值存储，集群状态的唯一数据源
-- **特点**：强一致性、高可用、支持 Watch 机制
-- **重要性**：etcd 是集群的"真相源"，其健康状态直接影响集群可用性
+每个节点运行以下组件，负责 Pod 的实际运行与网络管理。
 
-#### kube-controller-manager
+```mermaid "节点组件与 Pod 关系"
+flowchart LR
+    subgraph "Node"
+        KB["kubelet"]
+        KP["kube-proxy"]
+        CR["容器运行时"]
+        
+        subgraph "Pods"
+            P1["Pod 1"]
+            P2["Pod 2"]
+            P3["Pod 3"]
+        end
+    end
+    
+    KB --> CR
+    CR --> Pods
+    KP --> Pods
+```
 
-- **功能**：运行各种控制器，实现声明式配置的核心逻辑
-- **内置控制器**：
-  - Node Controller：节点状态管理
-  - Replication Controller：副本数量控制
-  - Endpoints Controller：服务端点管理
-  - Service Account & Token Controller：认证令牌管理
+![节点组件与 Pod 关系](4266a1401509a843bfb7ee758f729664.svg)
+{width=1920 height=3275}
 
-#### kube-scheduler
+{{< table title="Kubernetes 节点组件说明" >}}
 
-- **功能**：为新创建的 Pod 选择合适的节点
-- **调度算法**：预选（Filtering）+ 优选（Scoring）
-- **可扩展性**：支持调度框架和多调度器
+| 组件       | 描述         | 主要职责                                 |
+| ---------- | ------------ | ---------------------------------------- |
+| kubelet    | 节点代理     | 保证 Pod 中容器运行                      |
+| kube-proxy | 网络代理     | 维护节点网络规则                         |
+| 容器运行时 | 容器执行环境 | 运行容器（如 Docker、containerd、CRI-O） |
 
-### 工作节点（Worker Node）
+{{< /table >}}
 
-工作节点负责运行应用容器和处理网络流量。
+## Kubernetes API 与对象模型
 
-#### kubelet
+Kubernetes API 定义了一组资源类型（对象），所有操作均通过 API Server 完成，负责对象的校验与配置。
 
-- **功能**：节点代理，管理 Pod 生命周期
-- **职责**：
-  - 容器运行时管理（通过 CRI）
-  - 存储卷管理（通过 CSI）
-  - 网络配置（通过 CNI）
-  - 健康检查和监控
+### API 概念
 
-#### kube-proxy
+```mermaid "Kubernetes API 请求流程"
+flowchart TD
+    C["客户端"] --> |请求| API["API Server"]
+    API --> |读/写| ETCD["etcd"]
+    API --> |响应| C
+    API --> |校验| V["准入控制器"]
+    API --> |认证| A["认证/鉴权"]
+```
 
-- **功能**：网络代理，实现 Service 的流量转发
-- **模式**：
-  - iptables：基于 iptables 规则（默认）
-  - IPVS：基于 IPVS 负载均衡（高性能）
-  - userspace：用户空间代理（已弃用）
+![Kubernetes API 请求流程](f28e790438943eb2d9ad110d6f0eee98.svg)
+{width=1920 height=1506}
 
-#### 容器运行时（Container Runtime）
+Kubernetes API 遵循 RESTful 设计：
 
-- **接口**：Container Runtime Interface (CRI)
-- **主流实现**：
-  - containerd：CNCF 毕业项目，轻量级
-  - CRI-O：专为 Kubernetes 设计
-  - Docker Engine：通过 dockershim 支持（已弃用）
+- 资源通过 HTTP 动词（`GET`、`POST`、`PUT`、`DELETE`、`PATCH`）访问
+- 资源按 API 组组织（如 `apps`、`batch`、`networking.k8s.io`）
+- 对象包含 `metadata`、`spec`、`status` 等字段
 
-## 网络架构
+### 对象的声明式管理
 
-### 网络模型
+Kubernetes 对象是集群状态的持久实体，描述：
 
-Kubernetes 采用扁平化网络模型：
+- 运行的容器化应用
+- 可用资源
+- 行为策略
 
-- 每个 Pod 有独立的 IP 地址
-- Pod 间可直接通信，无需 NAT
-- Node 和 Pod 间可直接通信
-- 容器看到的 IP 与其他容器看到的一致
+每个对象有两个关键字段：
 
-### 网络组件
+1. **`spec`**：用户声明的期望状态
+2. **`status`**：Kubernetes 实际观测到的状态
 
-#### CNI (Container Network Interface)
+### 对象命名与标识
 
-- **主流插件**：
-  - Calico：基于 BGP 的网络方案
-  - Flannel：简单的 overlay 网络
-  - Cilium：基于 eBPF 的高性能网络
-  - Weave：易于部署的网络方案
+每个对象通过以下标识唯一确定：
 
-#### Service 类型
+{{< table title="Kubernetes 对象标识说明" >}}
 
-- **ClusterIP**：集群内部访问
-- **NodePort**：通过节点端口暴露服务
-- **LoadBalancer**：云提供商负载均衡器
-- **ExternalName**：DNS 别名映射
+| 标识      | 描述             | 示例                                   |
+| --------- | ---------------- | -------------------------------------- |
+| Name      | 用户自定义名称   | `nginx-deployment`                     |
+| UID       | 系统生成唯一标识 | `a8f3d1c8-0aeb-11e9-a4c2-000c29ed5138` |
+| Namespace | 命名空间范围     | `default`、`kube-system`               |
 
-#### Ingress
+{{< /table >}}
 
-- **功能**：HTTP/HTTPS 流量的负载均衡和路由
-- **控制器**：NGINX Ingress Controller、Traefik、Istio Gateway
+命名空间内资源名称唯一，集群级资源全局唯一。
 
-## 存储架构
+### 标签与选择器
 
-### 存储抽象
+标签（Label）是附加在对象上的键值对，用于组织和筛选对象。
 
-#### Volume
+```mermaid "标签与选择器示例"
+flowchart LR
+    subgraph "Pod Selection Example"
+        L1["标签:
+        app: nginx
+        tier: frontend
+        environment: production"]
+        
+        S1["选择器:
+        app=nginx,tier=frontend"]
+    end
+    
+    S1 --> |"选中"| P1["Pod 1"]
+    S1 --> |"选中"| P2["Pod 2"]
+    S1 -.- |"未选中"| P3["Pod 3"]
+```
 
-- **EmptyDir**：Pod 临时存储
-- **HostPath**：挂载宿主机路径
-- **ConfigMap/Secret**：配置和密钥挂载
-- **PersistentVolume**：持久化存储抽象
+![标签与选择器示例](3efaecfe88f1518f3c91ae43a80226c9.svg)
+{width=1920 height=1396}
 
-#### CSI (Container Storage Interface)
+标签常用于：
 
-- **作用**：标准化存储插件接口
-- **支持**：块存储、文件存储、对象存储
-- **生态**：AWS EBS、GCE PD、Azure Disk、Ceph、GlusterFS
+- 服务选择 Pod
+- 对象分组与组织
+- 批量操作对象
 
-### 存储类
+### 字段选择器
 
-- **动态供应**：StorageClass 定义存储属性
-- **回收策略**：Retain、Delete、Recycle
-- **访问模式**：ReadWriteOnce、ReadOnlyMany、ReadWriteMany
+字段选择器（Field Selector）可根据对象字段筛选资源，例如：
 
-## 架构视图
+```bash
+kubectl get pods --field-selector status.phase=Running
+```
 
-### 高层架构
+{{< table title="常用字段选择器示例" >}}
 
-下图展示了 Kubernetes 的高层架构，帮助理解各主要组件之间的关系及其在系统中的作用。
+| 资源类型 | 支持字段                                                   |
+| -------- | ---------------------------------------------------------- |
+| Pod      | `status.phase`, `spec.nodeName`, `spec.serviceAccountName` |
+| Node     | `spec.unschedulable`                                       |
+| Event    | `involvedObject.kind`, `reason`, `type`                    |
 
-![Kubernetes 架构（图片来自于网络）](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-high-level-component-archtecture.webp)
-{width=1858 height=1126}
+{{< /table >}}
 
-### 抽象架构
+## 命名空间与资源隔离
 
-下图展示了 Kubernetes 的抽象架构，突出各层次组件的分工与协作关系，帮助理解系统的整体设计思路和模块边界。
+命名空间用于在单集群内隔离资源，适合多租户场景。
 
-![kubernetes 整体架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-whole-arch.webp)
-{width=1600 height=1067}
+```mermaid "命名空间资源隔离示意"
+flowchart TD
+    subgraph "Kubernetes Cluster"
+        subgraph "default namespace"
+            D1["Deployment: app-1"]
+            D2["Service: app-1-svc"]
+        end
+        
+        subgraph "kube-system namespace"
+            KD1["Deployment: kube-dns"]
+            KD2["DaemonSet: kube-proxy"]
+        end
+        
+        subgraph "team-a namespace"
+            TD1["Deployment: app-2"]
+            TD2["Service: app-2-svc"]
+        end
+    end
+```
 
-### 控制平面详图
+![命名空间资源隔离示意](256e34eafa44266a7ed019fd31298309.svg)
+{width=1920 height=2204}
 
-下图展示了 Kubernetes 的控制平面架构，包括 API 服务器、控制器管理器、调度器、etcd 数据库、kubelet 和容器运行时。
+Kubernetes 默认包含四个命名空间：
 
-![Kubernetes master 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-master-arch.webp)
-{width=1600 height=1067}
+- `default`：默认命名空间
+- `kube-system`：系统组件
+- `kube-public`：所有用户可读，公开资源
+- `kube-node-lease`：节点心跳对象
 
-### 工作节点详图
+## 对象所有权与垃圾回收
 
-下图展示了 Kubernetes 的工作节点架构，包括 kubelet、容器运行时和 Pod。
+Kubernetes 通过 ownerReference 管理对象生命周期，实现级联删除。
 
-![kubernetes node 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-node-arch.webp)
-{width=1600 height=1067}
+```mermaid "对象所有权与级联删除"
+flowchart TD
+    D["Deployment"] --> |"owns"| RS["ReplicaSet"]
+    RS --> |"owns"| P1["Pod 1"]
+    RS --> |"owns"| P2["Pod 2"]
+    RS --> |"owns"| P3["Pod 3"]
+```
+
+![对象所有权与级联删除](81b618988285148d04008ace255ff37f.svg)
+{width=1920 height=1629}
+
+删除对象时可选择：
+
+- **前台删除**：先删除依赖对象，再删除所有者
+- **后台删除**：立即删除所有者，依赖对象后台清理
+- **孤立删除**：仅删除所有者，保留依赖对象
+
+## API Server 工作机制
+
+API Server 是控制面的核心，负责所有组件间通信与 API 暴露。
+
+### API Server 请求处理流程
+
+```mermaid "API Server 请求处理流程"
+flowchart TD
+    subgraph "API Request Lifecycle"
+        A["认证"] --> B["鉴权"]
+        B --> C["准入控制"]
+        C --> D["校验"]
+        D --> E["etcd 存储"]
+    end
+```
+
+![API Server 请求处理流程](c8c8f549dfbfd64e8b486ff88e7e23f6.svg)
+{width=1920 height=277}
+
+处理流程：
+
+1. **认证**：校验客户端身份
+2. **鉴权**：检查权限
+3. **准入控制**：执行策略或修改对象
+4. **校验**：结构合法性检查
+5. **存储**：持久化到 etcd
+
+### Server-Side Apply
+
+Server-Side Apply 支持多客户端协作管理资源字段，自动冲突检测与合并。
+
+```mermaid "Server-Side Apply 工作原理"
+flowchart LR
+    subgraph "Server-Side Apply"
+        C1["客户端 1"] --> |"PATCH (字段 A,B)"| API
+        C2["客户端 2"] --> |"PATCH (字段 C,D)"| API
+        API["API Server"] --> |"存储合并对象"| ETCD
+    end
+```
+
+![Server-Side Apply 工作原理](03f8026feead4a6cccd0b17e50ef49dc.svg)
+{width=1920 height=2556}
+
+主要特性：
+
+- 跟踪字段归属
+- 冲突自动检测与提示
+- 支持控制器与人工协作
+
+## Kubernetes 扩展机制
+
+Kubernetes 支持多种扩展方式，无需修改核心代码即可适配不同场景。
+
+```mermaid "Kubernetes 扩展点"
+flowchart TD
+    subgraph "Extension Points"
+        API["API 扩展"] 
+        ADM["准入控制器"]
+        SCH["调度扩展"]
+        AUTH["认证扩展"]
+        CNI["网络插件"]
+        CSI["存储插件"]
+    end
+```
+
+![Kubernetes 扩展点](5e3544b6d0aa3987b4ca85c2b5f791c3.svg)
+{width=1920 height=5880}
+
+{{< table title="Kubernetes 常见扩展机制" >}}
+
+| 扩展类型       | 作用                   | 示例                               |
+| -------------- | ---------------------- | ---------------------------------- |
+| 自定义资源     | 扩展 API 对象类型      | CRD、API 聚合                      |
+| 准入 Webhook   | 拦截 API 请求校验/变更 | ValidatingWebhook、MutatingWebhook |
+| 调度扩展       | 自定义 Pod 调度逻辑    | 调度插件、多调度器                 |
+| 认证模块       | 新增认证方式           | OIDC、Webhook Token Auth           |
+| 网络插件       | 实现 Pod 网络          | Calico、Cilium、Flannel            |
+| 存储插件       | 支持多种存储系统       | CSI 插件                           |
+
+{{< /table >}}
+
+## 日志与监控
+
+Kubernetes 提供多种日志与监控能力，便于集群与应用的运维。
+
+### 系统组件日志
+
+各组件日志路径如下：
+
+{{< table title="Kubernetes 组件日志路径" >}}
+
+| 组件                    | Linux 路径                                                   | Windows 路径                                                 |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| kube-apiserver          | `/var/log/kube-apiserver.log`                                | `C:\var\logs\kube-apiserver.log`                             |
+| kube-scheduler          | `/var/log/kube-scheduler.log`                                | `C:\var\logs\kube-scheduler.log`                             |
+| kube-controller-manager | `/var/log/kube-controller-manager.log`                       | `C:\var\logs\kube-controller-manager.log`                    |
+| kubelet                 | `/var/log/kubelet.log`                                       | `C:\var\logs\kubelet.log`                                    |
+| containers              | `/var/log/pods/<namespace>_<pod-name>_<uid>/<container-name>/` | `C:\var\log\pods\<namespace>_<pod-name>_<uid>\<container-name>\` |
+
+{{< /table >}}
+
+### 指标采集
+
+Kubernetes 组件通过 `/metrics` 端点暴露 Prometheus 格式指标。
+
+```mermaid "Kubernetes 指标采集流程"
+flowchart LR
+    M["指标采集器"] --> |"抓取"| K1["/metrics API Server"]
+    M --> |"抓取"| K2["/metrics Kubelet"]
+    M --> |"抓取"| K3["/metrics Scheduler"]
+    M --> |"抓取"| K4["/metrics Controller Manager"]
+    M --> |"存储"| DB["指标数据库"]
+    DB --> |"查询"| D["仪表盘"]
+```
+
+![Kubernetes 指标采集流程](e4f92ef0fabb10ce42feec2a76fc7174.svg)
+{width=1920 height=1465}
+
+这些指标有助于集群健康与性能监控。
+
+## 分布式追踪
+
+Kubernetes 支持分布式追踪，便于跨组件操作的监控与故障排查。
+
+```mermaid "Kubernetes 分布式追踪流程"
+flowchart LR
+    C["客户端"] --> |"请求"| API["API Server"]
+    API --> |"追踪"| ETCD["etcd"]
+    API --> |"追踪"| WH["Webhook"]
+    
+    COLLECTOR["OpenTelemetry Collector"] --> |"收集 Span"| API
+    COLLECTOR --> |"收集 Span"| ETCD
+    COLLECTOR --> |"导出"| BACKEND["追踪后端"]
+```
+
+![Kubernetes 分布式追踪流程](fdf532a60038e6ace80c41d750e2b512.svg)
+{width=1920 height=735}
+
+系统组件通过 OpenTelemetry 协议记录操作延迟与依赖关系。
 
 ## 分层架构
 
@@ -208,42 +419,42 @@ Kubernetes 采用分层架构设计，从底层基础设施到上层应用形成
 ![Kubernetes 分层架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-layers-arch.webp)
 {width=1898 height=1008}
 
-### 架构层次
+下面是关于 Kubernetes 的架构层次的详细说明：
 
-#### 基础设施层
+**基础设施层**：
 
 - **计算**：虚拟机、物理机、云实例
 - **网络**：SDN、负载均衡、防火墙
 - **存储**：块存储、文件存储、对象存储
 
-#### 容器运行时层
+**容器运行时层**：
 
 - **容器运行时**：containerd、CRI-O
 - **镜像管理**：镜像仓库、镜像安全扫描
 - **操作系统**：Linux、Windows Server
 
-#### Kubernetes 核心层
+**Kubernetes 核心层**：
 
 - **API Server**：统一的 API 入口
 - **资源模型**：Pod、Service、Deployment 等
 - **控制器**：声明式配置的实现机制
 - **调度器**：资源分配和优化
 
-#### 应用编排层
+**应用编排层**：
 
 - **工作负载**：Deployment、StatefulSet、DaemonSet
 - **配置管理**：ConfigMap、Secret
 - **网络服务**：Service、Ingress、NetworkPolicy
 - **存储编排**：PV、PVC、StorageClass
 
-#### 扩展层
+**扩展层**：
 
 - **CRD**：自定义资源定义
 - **Operator**：应用特定的运维逻辑
 - **Admission Controller**：准入控制和策略执行
 - **调度扩展**：自定义调度算法
 
-#### 生态系统层
+**生态系统层**：
 
 - **开发工具**：Helm、Kustomize、Skaffold
 - **CI/CD**：Jenkins、GitLab CI、Tekton、ArgoCD
@@ -251,71 +462,14 @@ Kubernetes 采用分层架构设计，从底层基础设施到上层应用形成
 - **安全工具**：Falco、OPA Gatekeeper、Twistlock
 - **服务网格**：Istio、Linkerd、Consul Connect
 
-## 云原生生态
+## 总结
 
-### CNCF 生态系统
-
-Kubernetes 作为 CNCF 的核心项目，与众多云原生技术形成完整生态：
-
-#### 应用定义和镜像构建
-
-- **Helm**：Kubernetes 应用包管理
-- **Buildpacks**：源码到镜像的构建工具
-- **Docker**：容器镜像标准
-
-#### 运行时
-
-- **containerd**：容器运行时
-- **gVisor**：安全沙箱运行时
-- **Kata Containers**：轻量级虚拟机
-
-#### 编排和管理
-
-- **Kubernetes**：容器编排平台
-- **Crossplane**：云资源管理
-- **Argo**：GitOps 和工作流
-
-#### 监控和分析
-
-- **Prometheus**：监控系统
-- **Grafana**：可视化平台
-- **Jaeger**：分布式追踪
-
-#### 服务代理、发现和网格
-
-- **Istio**：服务网格
-- **Linkerd**：轻量级服务网格
-- **Consul**：服务发现
-
-#### 网络和安全
-
-- **Calico**：网络和安全策略
-- **Falco**：运行时安全监控
-- **Open Policy Agent**：策略引擎
-
-## 最佳实践
-
-### 架构设计原则
-
-1. **高可用性**：控制平面多副本部署，etcd 集群部署
-2. **可观测性**：完善的监控、日志和追踪体系
-3. **安全性**：最小权限原则、网络策略、镜像安全
-4. **可扩展性**：水平扩展、垂直扩展、集群联邦
-5. **资源效率**：合理的资源配额和限制
-
-### 生产部署建议
-
-- **控制平面**：至少 3 个节点，奇数个 etcd 实例
-- **工作节点**：根据业务需求弹性扩展
-- **网络**：选择适合的 CNI 插件
-- **存储**：规划持久化存储方案
-- **监控**：部署 Prometheus + Grafana 监控栈
-- **备份**：定期备份 etcd 数据
+本文系统梳理了 Kubernetes 的核心架构、对象模型、命名空间、对象管理与扩展机制等基础内容。掌握这些核心概念，是高效使用和运维 Kubernetes 集群的前提。更多专题内容请参阅相关章节。
 
 ## 参考资料
 
 - [Borg, Omega, and Kubernetes - ACM Queue](https://queue.acm.org/detail.cfm?id=2898444)
 - [Large-scale cluster management at Google with Borg](https://research.google/pubs/pub43438/)
-- [Kubernetes 官方架构文档](https://kubernetes.io/docs/concepts/architecture/)
-- [CNCF Cloud Native Landscape](https://landscape.cncf.io/)
-- [Kubernetes 设计文档](https://github.com/kubernetes/design-proposals-archive)
+- [Kubernetes 官方文档 - kubernetes.io](https://kubernetes.io/docs/concepts/)
+- [Kubernetes API 参考 - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/)
+- [Kubernetes 扩展机制 - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/)
