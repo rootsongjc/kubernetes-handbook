@@ -1,18 +1,9 @@
 ---
-weight: 55
+weight: 40
 title: Secret
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: Secret 是 Kubernetes 中用于存储敏感数据的对象，包括密码、token、密钥等，支持以 Volume 或环境变量方式使用，主要类型有 Opaque、Service Account 和 dockerconfigjson。
-keywords:
-- kubernetes
-- secret
-- 敏感数据
-- 密码管理
-- 配置管理
-- base64 编码
-- docker registry
-- service account
+lastmod: 2025-10-13T06:03:37.706Z
 ---
 
 Secret 是 Kubernetes 中专门用于存储和管理敏感数据的资源对象，如密码、OAuth token、SSH 密钥等。使用 Secret 可以避免将敏感信息直接写入容器镜像或 Pod 规范中，提高了应用的安全性。

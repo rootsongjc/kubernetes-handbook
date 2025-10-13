@@ -1,20 +1,9 @@
 ---
-weight: 56
+weight: 30
 title: ConfigMap
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: ConfigMap 是 Kubernetes 用于存储配置数据的 API 资源，支持将配置信息与容器镜像解耦。本文详细介绍 ConfigMap 的概念、创建方法以及在 Pod 中的使用方式。
-keywords:
-- configmap
-- pod
-- 使用
-- 创建
-- 数据
-- 文件
-- 环境变量
-- 目录
-- 配置
-- 配置文件
+lastmod: 2025-10-13T06:03:13.382Z
 ---
 
 ConfigMap 是 Kubernetes 提供的配置管理机制，用于将配置信息与容器镜像解耦。应用程序可以从配置文件、命令行参数或环境变量中读取配置信息，而无需在每次配置修改时重新构建镜像。ConfigMap API 提供了向容器注入配置信息的能力，既可以保存单个属性，也可以保存完整的配置文件或 JSON 数据。
