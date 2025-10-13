@@ -33,7 +33,7 @@ kubectl config use-context <context-name>
 kubectl config current-context
 ```
 
-详细配置方法请参考 [配置对多集群的访问](https://kubernetes.io/zh/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)。
+详细配置方法请参考 [配置对多集群的访问](https://kubernetes.io/zh-cn/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)。
 
 ### 集群命名最佳实践
 
@@ -113,6 +113,6 @@ kubectl config current-context
 ## 参考资源
 
 - [Multicluster Special Interest Group - github.com](https://github.com/kubernetes/community/blob/master/sig-multicluster/README.md)
-- [配置对多集群的访问 - kubernetes.io](https://kubernetes.io/zh/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+- [配置对多集群的访问 - kubernetes.io](https://kubernetes.io/zh-cn/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
 - [Kubernetes 多集群管理最佳实践 - CNCF](https://www.cncf.io/blog/2021/04/12/simplifying-multi-clusters-in-kubernetes/)
 - [现代多集群架构指南 - kubernetes.io](https://kubernetes.io/docs/concepts/cluster-administration/networking/#multi-cluster-networking)

@@ -4,28 +4,45 @@ title: Kubernetes 的设计理念
 linktitle: 设计理念
 date: '2022-05-21T00:00:00+08:00'
 description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
-type: book
-keywords:
-- api
-- kubernetes
-- pod
-- 对象
-- 服务
-- 状态
-- 系统
-- 节点
-- 设计
-- 集群
 ---
 
 分析和理解 Kubernetes 的设计理念可以使我们更深入地了解 Kubernetes 系统，更好地利用它管理分布式部署的云原生应用，另一方面也可以让我们借鉴其在分布式系统设计方面的经验。
 
 ## 分层架构
 
-Kubernetes 设计理念和功能其实就是一个类似 Linux 的分层架构，如下图所示
+Kubernetes 采用分层架构设计，从底层基础设施到上层应用形成完整的技术栈。
 
-![Kubernetes 分层架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/perspective/006tNc79ly1fzniqvmi51j31gq0s0q5u.webp)
-{width=1898 height=1008}
+```mermaid "Kubernetes 分层架构"
+flowchart TB
+    A("云原生生态系统"):::red
+    B("接口层：客户端库与工具"):::green
+    C("治理层：自动化与策略执行"):::purple
+    D("应用层：部署与路由"):::pink
+    E("核心层：API 与执行"):::yellow
+
+    subgraph F["底层接口与依赖"]
+        F1("容器运行时接口")
+        F2("容器网络接口")
+        F3("容器存储接口")
+        F4("镜像仓库")
+        F5("云服务提供商")
+        F6("身份提供商")
+    end
+
+    %% 使用 tighter layout，减少纵向层高
+    A --> B --> C --> D --> E
+    E --- F1 & F2 & F3 & F4 & F5 & F6
+
+    %% 样式调整：更低高度、更柔和颜色
+    classDef red fill:#f8b4b4,stroke:#c44,stroke-width:1px,color:#000;
+    classDef green fill:#bff7bf,stroke:#5a995a,stroke-width:1px,color:#000;
+    classDef purple fill:#d2c2f9,stroke:#7a6bb3,stroke-width:1px,color:#000;
+    classDef pink fill:#f7c2cc,stroke:#b35d6e,stroke-width:1px,color:#000;
+    classDef yellow fill:#fff4b0,stroke:#d1b34d,stroke-width:1px,color:#000;
+```
+
+![Kubernetes 分层架构](ae715519606b429d7b341fbe4cedc29a.svg)
+{width=1920 height=1159}
 
 * 核心层：Kubernetes 最核心的功能，对外提供 API 构建高层的应用，对内提供插件式应用执行环境
 * 应用层：部署（无状态应用、有状态应用、批处理任务、集群应用等）和路由（服务发现、DNS 解析等）
