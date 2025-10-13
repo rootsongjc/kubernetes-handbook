@@ -2,20 +2,10 @@
 weight: 98
 title: Kubernator - 更底层的 Kubernetes UI
 linktitle: Kubernator
-date: '2022-05-21T00:00:00+08:00'
+date: 2022-05-21T00:00:00+08:00
 type: book
 description: Kubernator 是一个底层的 Kubernetes UI 工具，提供基于目录树和关系拓扑图的方式来管理 Kubernetes 对象，支持直接编辑 YAML 配置文件，相比 Dashboard 更加灵活和强大。
-keywords:
-- dashboard
-- kubernator
-- kubernetes
-- rbac
-- ui
-- 对象
-- 底层
-- 拓扑图
-- 操作
-- 页面
+lastmod: 2025-10-13T05:09:25.470Z
 ---
 
 [Kubernator](https://github.com/smpio/kubernator) 是一个专为 Kubernetes 设计的底层 UI 管理工具。与 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) 相比，Kubernator 提供了更加底层和灵活的操作方式 - 它允许用户直接编辑和操作 Kubernetes 各个对象的 YAML 配置文件。
