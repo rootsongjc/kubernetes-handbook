@@ -2,20 +2,9 @@
 weight: 59
 linktitle: 持久化卷
 title: 持久化卷（Persistent Volume）
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: 'Kubernetes 持久化卷详解：深入介绍 PersistentVolume (PV) 和 PersistentVolumeClaim (PVC) 的核心概念、生命周期管理、配置方法和使用方式，涵盖静态和动态配置、存储类、访问模式、回收策略等关键特性，并提供最佳实践指南。'
-keywords:
-- persistentvolume
-- pv
-- pvc
-- 声明
-- 挂载
-- 插件
-- 用户
-- 绑定
-- 集群
-- 存储
+date: 2022-05-21T00:00:00+08:00
+description: Kubernetes 持久化卷详解：深入介绍 PersistentVolume (PV) 和 PersistentVolumeClaim (PVC) 的核心概念、生命周期管理、配置方法和使用方式，涵盖静态和动态配置、存储类、访问模式、回收策略等关键特性，并提供最佳实践指南。
+lastmod: 2025-10-13T04:01:13.634Z
 ---
 
 Kubernetes 持久化卷（PersistentVolume）子系统为用户和管理员提供了一套完整的 API，将存储的实现细节从使用方式中抽象出来，实现了存储资源的统一管理。本文详细介绍 PV 和 PVC 的核心概念、生命周期管理以及在生产环境中的最佳实践。
