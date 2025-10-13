@@ -1,5 +1,5 @@
 ---
-weight: 92
+weight: 20
 title: 访问 Kubernetes 集群的方式详解
 linktitle: 集群访问方式详解
 date: 2022-05-21T00:00:00+08:00

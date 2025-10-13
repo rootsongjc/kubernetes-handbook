@@ -5,7 +5,7 @@ linktitle: 架构概览
 date: 2022-05-21T00:00:00+08:00
 description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
-lastmod: 2025-10-13T03:56:26.290Z
+lastmod: 2025-10-13T09:06:55.486Z
 ---
 
 本文全面介绍 Kubernetes 的核心架构、对象模型、命名空间、对象管理与扩展机制等基础内容。若需深入了解存储、网络或工作负载管理等专题，请参考相关专章。
@@ -14,8 +14,44 @@ lastmod: 2025-10-13T03:56:26.290Z
 
 要谈到 Kubernetes 就要不得从 Borg 系统开始谈起。Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理着数十万个应用跨越数千个集群。它为 Kubernetes 的设计提供了宝贵的实践经验和理论基础。
 
-![Borg 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/borg.webp)
-{width=572 height=549}
+```mermaid "Borg 架构图"
+flowchart TB
+    subgraph User["用户接口"]
+        CFG["配置文件（config file）"]
+        CLI["命令行工具（command-line tools）"]
+        WEB["网页浏览器（web browsers）"]
+        BORGCFG["Borg 配置工具（borgcfg）"]
+    end
+
+    subgraph Cell["单元（Cell）"]
+        subgraph Master["BorgMaster"]
+            READ["读/UI 分片（read/UI shard）"]
+            LINK["链接分片（link shard）"]
+            STORE["持久化存储（Paxos store）"]
+        end
+
+        SCHED["调度器（scheduler）"]
+        SCHED --> Master
+        subgraph Workers["Borglet 节点"]
+            B1["Borglet"]
+            B2["Borglet"]
+            B3["Borglet"]
+            B4["Borglet"]
+        end
+        Master --> B1
+        Master --> B2
+        Master --> B3
+        Master --> B4
+    end
+
+    CFG --> Master
+    CLI --> Master
+    WEB --> Master
+    BORGCFG --> Master
+```
+
+![Borg 架构图](3482c70dd4d09f794748c5a93d539517.svg)
+{width=2301 height=1070}
 
 ### Borg 核心组件
 
@@ -411,56 +447,6 @@ flowchart LR
 {width=1920 height=735}
 
 系统组件通过 OpenTelemetry 协议记录操作延迟与依赖关系。
-
-## 分层架构
-
-Kubernetes 采用分层架构设计，从底层基础设施到上层应用形成完整的技术栈。
-
-![Kubernetes 分层架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/kubernetes-layers-arch.webp)
-{width=1898 height=1008}
-
-下面是关于 Kubernetes 的架构层次的详细说明：
-
-**基础设施层**：
-
-- **计算**：虚拟机、物理机、云实例
-- **网络**：SDN、负载均衡、防火墙
-- **存储**：块存储、文件存储、对象存储
-
-**容器运行时层**：
-
-- **容器运行时**：containerd、CRI-O
-- **镜像管理**：镜像仓库、镜像安全扫描
-- **操作系统**：Linux、Windows Server
-
-**Kubernetes 核心层**：
-
-- **API Server**：统一的 API 入口
-- **资源模型**：Pod、Service、Deployment 等
-- **控制器**：声明式配置的实现机制
-- **调度器**：资源分配和优化
-
-**应用编排层**：
-
-- **工作负载**：Deployment、StatefulSet、DaemonSet
-- **配置管理**：ConfigMap、Secret
-- **网络服务**：Service、Ingress、NetworkPolicy
-- **存储编排**：PV、PVC、StorageClass
-
-**扩展层**：
-
-- **CRD**：自定义资源定义
-- **Operator**：应用特定的运维逻辑
-- **Admission Controller**：准入控制和策略执行
-- **调度扩展**：自定义调度算法
-
-**生态系统层**：
-
-- **开发工具**：Helm、Kustomize、Skaffold
-- **CI/CD**：Jenkins、GitLab CI、Tekton、ArgoCD
-- **监控观测**：Prometheus、Grafana、Jaeger
-- **安全工具**：Falco、OPA Gatekeeper、Twistlock
-- **服务网格**：Istio、Linkerd、Consul Connect
 
 ## 总结
 
