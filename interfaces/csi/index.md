@@ -1,23 +1,12 @@
 ---
 weight: 9
 title: 容器存储接口（CSI）
-date: '2022-05-21T00:00:00+08:00'
+date: 2022-05-21T00:00:00+08:00
 type: book
-linktitle: CSI
 aliases:
   - /book/kubernetes-handbook/architecture/open-interfaces/csi/
 description: 介绍 Kubernetes 容器存储接口（CSI）的概念、架构、使用方法和最佳实践，包括动态配置、预配置卷和 CSI 驱动程序的开发部署。
-keywords:
-  - csi
-  - driver
-  - kubernetes
-  - persistentvolumeclaim
-  - volume
-  - 创建
-  - 容器
-  - 插件
-  - 驱动程序
-lastmod: '2025-08-04'
+lastmod: 2025-10-17T10:18:09.408Z
 ---
 
 ## 什么是 CSI
