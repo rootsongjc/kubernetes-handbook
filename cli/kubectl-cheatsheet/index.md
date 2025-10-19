@@ -1,20 +1,9 @@
 ---
 weight: 81
 title: Kubectl 命令技巧大全
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: 'kubectl 是操作 Kubernetes 集群最直接高效的命令行工具。本文涵盖了 kubectl 的核心功能和实用技巧，包括自动补全、上下文配置、资源管理、调试技巧等，帮助您快速掌握 Kubernetes 集群操作。'
-keywords:
-- api
-- json
-- jsonpath
-- kubectl
-- kubernetes
-- yaml
-- 打印
-- 日志
-- 格式
-- 输出
+date: 2022-05-21T00:00:00+08:00
+description: kubectl 是操作 Kubernetes 集群最直接高效的命令行工具。本文涵盖了 kubectl 的核心功能和实用技巧，包括自动补全、上下文配置、资源管理、调试技巧等，帮助您快速掌握 Kubernetes 集群操作。
+lastmod: 2025-10-19T06:06:29.895Z
 ---
 
 `kubectl` 是操作 Kubernetes 集群最直接和最高效的命令行工具。这个功能强大的二进制文件提供了完整的集群管理能力，本文将为您详细介绍其核心功能和实用技巧。
