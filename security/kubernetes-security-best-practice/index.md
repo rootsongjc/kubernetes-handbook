@@ -2,21 +2,9 @@
 weight: 90
 title: Kubernetes 集群安全性配置最佳实践
 linktitle: Kubernetes 安全最佳实践
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 全面介绍 Kubernetes 集群安全配置的最佳实践，包括端口管理、API 安全设置、RBAC 配置以及安全扫描工具的使用指南。
-keywords:
-- api
-- kube
-- kubelet
-- kubernetes
-- security
-- rbac
-- 端口
-- 节点
-- 身份验证
-- 集群
-- 安全扫描
+lastmod: 2025-10-19T08:33:16.005Z
 ---
 
 本文提供 Kubernetes 集群安全性管理的最佳实践指南，帮助您构建更安全的容器化环境。
@@ -65,7 +53,7 @@ keywords:
 建议启用以下准入控制器：
 
 ```yaml
---enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ResourceQuota,LimitRanger
+--enable-admission-plugins=NodeRestriction,ResourceQuota,LimitRanger
 ```
 
 ### TLS 和证书管理

@@ -2,20 +2,9 @@
 weight: 37
 title: 准入控制器（Admission Controller）
 linktitle: 准入控制器
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: "深入了解 Kubernetes 准入控制器的工作原理、类型分类和配置方法，包括变更和验证准入控制的详细说明，以及各种内置准入控制器的功能介绍和推荐配置。"
-keywords:
-- api
-- kubernetes
-- pod
-- server
-- 准入
-- 命名
-- 对象
-- 控制器
-- 请求
-- 验证
+date: 2022-05-21T00:00:00+08:00
+description: 深入了解 Kubernetes 准入控制器的工作原理、类型分类和配置方法，包括变更和验证准入控制的详细说明，以及各种内置准入控制器的功能介绍和推荐配置。
+lastmod: 2025-10-19T08:31:15.375Z
 ---
 
 准入控制器（Admission Controller）是 Kubernetes API Server 中的重要组件，位于认证和授权之后，在对象被持久化到 etcd 之前拦截对 API Server 的请求。准入控制器主要用于执行策略检查、资源验证和对象修改等操作，是 Kubernetes 集群安全和资源管理的关键机制。
@@ -65,7 +54,6 @@ keywords:
 
 ### 安全相关控制器
 
-- **PodSecurityPolicy**：（已废弃）根据 Pod 安全策略验证 Pod 规格
 - **NodeRestriction**：限制 kubelet 只能修改其所在节点的 Node 和 Pod 对象
 - **SecurityContextDeny**：阻止设置特权安全上下文
 

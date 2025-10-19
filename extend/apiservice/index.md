@@ -1,21 +1,9 @@
 ---
 weight: 66
 title: APIService
-date: '2022-05-21T00:00:00+08:00'
-type: book
-
+date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes APIService 的概念、配置和使用方法，包括如何查看和管理集群中的 API 服务。
-keywords:
-- api
-- apiregistration
-- apiservice
-- io
-- k8s
-- service
-- v1
-- 使用
-- 排序
-- 查看
+lastmod: 2025-10-19T08:31:46.229Z
 ---
 
 APIService 是 Kubernetes 中用来表示特定 GroupVersion 服务器的资源对象，它允许扩展 Kubernetes API 以支持自定义资源和功能。APIService 的结构定义位于 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
@@ -28,7 +16,7 @@ APIService 是 Kubernetes 中用来表示特定 GroupVersion 服务器的资源�
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  name: v1alpha1.custom-metrics.metrics.k8s.io
+  name: v1beta1.custom-metrics.metrics.k8s.io
 spec:
   insecureSkipTLSVerify: false
   caBundle: <base64-encoded-ca-bundle>
@@ -39,7 +27,7 @@ spec:
     name: custom-metrics-apiserver
     namespace: custom-metrics
     port: 443
-  version: v1alpha1
+  version: v1beta1
 ```
 
 ## APIService 字段详解
@@ -80,7 +68,7 @@ spec:
 创建 APIService 后，可以查看其详细状态：
 
 ```bash
-kubectl get apiservice v1alpha1.custom-metrics.metrics.k8s.io -o yaml
+kubectl get apiservice v1beta1.custom-metrics.metrics.k8s.io -o yaml
 ```
 
 输出示例：
@@ -90,7 +78,7 @@ apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
   creationTimestamp: "2023-10-15T08:27:35Z"
-  name: v1alpha1.custom-metrics.metrics.k8s.io
+  name: v1beta1.custom-metrics.metrics.k8s.io
   resourceVersion: "35194598"
   uid: a31a3412-e0a8-11e7-9fa4-f4e9d49f8ed0
 spec:
@@ -136,7 +124,7 @@ v1.batch                                 Local                        True      
 v1.networking.k8s.io                    Local                        True        2d
 v1.rbac.authorization.k8s.io            Local                        True        2d
 v1.storage.k8s.io                       Local                        True        2d
-v1alpha1.custom-metrics.metrics.k8s.io  custom-metrics/api           True        2h
+v1beta1.custom-metrics.metrics.k8s.io  custom-metrics/api           True        2h
 v1.apiextensions.k8s.io                 Local                        True        2d
 v1.certificates.k8s.io                  Local                        True        2d
 v1.policy                               Local                        True        2d
