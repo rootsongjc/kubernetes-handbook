@@ -1,10 +1,10 @@
 ---
 weight: 104
 title: 使用 Kustomize 配置 Kubernetes 应用
-linktitle: Kustomize
+linktitle: Kustomize：配置管理工具
 date: 2023-07-04T08:40:00+08:00
 description: Kustomize 是一个强大的 Kubernetes 配置管理工具，支持声明式配置定制、多环境管理和配置复用。本文介绍 Kustomize 的核心功能、最佳实践以及与 kubectl 的集成使用方法。
-lastmod: 2025-10-19T07:03:52.857Z
+lastmod: 2025-10-19T11:22:45.728Z
 ---
 
 > Kustomize 是 Kubernetes 原生的声明式配置管理工具，支持多环境分层、配置复用与灵活定制，极大提升了集群配置的可维护性和一致性。本文系统梳理其架构、核心功能、实践用法与最佳实践。

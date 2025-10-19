@@ -57,14 +57,14 @@ book:
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: 2025-09-19T15:21:58.585Z
+lastmod: 2025-10-19T12:27:42.107Z
 authors:
   - Jimmy Song
 publisher: jimmysong.io
 ---
 
 {{< callout note 关于本教程 >}}
-Kubernetes 手册/教程开源在 [GitHub - rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建，采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
+《Kubernetes 基础教程》创建于 2017 年，持续维护与更新。本书基于 Kubernetes v1.31+ 编写，持续跟进最新的概念和 API，确保内容的时效性与准确性。开源于 [GitHub](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建。内容以 [CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 {{< /callout >}}
 
 ## 什么是云原生
@@ -78,10 +78,6 @@ Kubernetes 手册/教程开源在 [GitHub - rootsongjc/kubernetes-handbook](http
 - **Serverless** 技术使云原生从基础设施层向应用架构层深入发展
 
 我们正处于一个云原生技术快速演进的新时代。
-
-{{< callout note "版本信息" >}}
-本书基于 Kubernetes v1.31+ 编写，持续更新最新的概念和 API，确保内容的时效性和准确性。
-{{< /callout >}}
 
 ## Kubernetes 简介
 

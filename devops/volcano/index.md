@@ -1,10 +1,10 @@
 ---
 title: Volcano：Kubernetes 上的批处理和高性能计算调度器
-linktitle: Volcano
+linktitle: Volcano：批处理调度器
 weight: 110
 description: Volcano 是一个专为高性能计算（HPC）和大规模批处理任务设计的 Kubernetes 调度器扩展，提供先进的调度策略和资源管理功能。
 date: 2024-06-20T08:00:00.000Z
-lastmod: 2025-10-19T07:19:18.654Z
+lastmod: 2025-10-19T11:21:31.351Z
 ---
 
 > Volcano 是 Kubernetes 生态中专为批处理和高性能计算（HPC）场景设计的调度器扩展，支持 Gang 调度、资源公平分配和多种插件机制，极大提升了集群在 AI、科研和大数据领域的调度能力。

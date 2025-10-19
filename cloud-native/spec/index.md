@@ -9,16 +9,7 @@ aliases:
   - /book/kubernetes-handbook/cloud-native/spec/trait/
   - /book/kubernetes-handbook/cloud-native/spec/application-scope/
   - /book/kubernetes-handbook/cloud-native/spec/application-configuration/
-keywords:
-  - oam
-  - workload
-  - component
-  - trait
-  - application scope
-  - application configuration
-  - 云原生
-  - 应用规范
-lastmod: 2025-08-26T10:11:27.809Z
+lastmod: 2025-10-19T12:51:05.544Z
 date: 2025-08-26T10:11:27.424Z
 ---
 
