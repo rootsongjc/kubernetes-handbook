@@ -1,19 +1,9 @@
 ---
 weight: 80
 title: Kubectl 命令概览
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: "详细介绍 Kubernetes kubectl 命令的使用方法，包括命令分类、命令行增强工具、身份认证机制和自动补全配置等实用技巧。"
-keywords:
-- api
-- kube
-- kubectl
-- kubernetes
-- server
-- shell
-- token
-- 命令
-- 补全
+date: 2022-05-21T00:00:00+08:00
+description: 详细介绍 Kubernetes kubectl 命令的使用方法，包括命令分类、命令行增强工具、身份认证机制和自动补全配置等实用技巧。
+lastmod: 2025-10-19T05:55:57.553Z
 ---
 
 Kubernetes 提供的 kubectl 命令是与集群交互最直接的方式，掌握这些命令对于日常的集群管理和应用部署至关重要。
