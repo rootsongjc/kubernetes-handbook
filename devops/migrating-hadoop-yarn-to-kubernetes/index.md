@@ -2,24 +2,14 @@
 weight: 101
 title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
 linktitle: 迁移传统应用
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: >-
-  详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN
-  为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
-keywords:
-  - hadoop
-  - kubernetes
-  - spark
-  - yarn
-  - 启动
-  - 应用
-  - 服务
-  - 迁移
-  - 配置文件
-  - 镜像
-lastmod: '2025-08-23'
+date: 2022-05-21T00:00:00+08:00
+description: 详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN 为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
+lastmod: 2025-10-19T07:09:05.559Z
 ---
+
+{{< callout warning 注意 >}}
+该文章内容已过时，仅供学习参考。
+{{< /callout>}}
 
 本文档主要介绍如何将已有的传统分布式应用程序迁移到 Kubernetes 中。如果你想要直接开发 Kubernetes 原生应用，可以参考 [适用于 Kubernetes 的应用开发部署流程](../deploy-applications-in-kubernetes)。
 
@@ -36,7 +26,7 @@ lastmod: '2025-08-23'
 
 下图是整个架构的示意图，所有进程管理和容器扩容通过 Makefile 实现：
 
-![spark on yarn with kubernetes](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/spark-on-yarn-with-kubernetes.webp)
+![Spark on YARN with Kubernetes](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/spark-on-yarn-with-kubernetes.webp)
 {width=2395 height=1156}
 
 > **重要提示**：本案例仅用于演示迁移步骤和复杂性，生产环境使用需要进一步验证和优化。

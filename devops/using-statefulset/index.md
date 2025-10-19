@@ -2,18 +2,14 @@
 weight: 102
 title: 使用 StatefulSet 部署有状态应用
 linktitle: 部署有状态应用
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 本文介绍如何使用 Kubernetes 的 StatefulSet 控制器部署有状态应用，以 ZooKeeper 和 Kafka 集群为例，详细说明 StatefulSet 的配置和使用方法。
-keywords:
-- StatefulSet
-- Kubernetes
-- ZooKeeper
-- Kafka
-- 有状态应用
-- 集群部署
-- Pod 管理
+lastmod: 2025-10-19T07:10:24.161Z
 ---
+
+{{< callout warning 注意 >}}
+该文章内容已过时，仅供学习参考。
+{{< /callout>}}
 
 [StatefulSet](../../controllers/statefulset) 是 Kubernetes 专门用来部署有状态应用的控制器，它为 Pod 提供稳定的身份标识，包括主机名、启动顺序、网络标识和持久化存储等特性。
 

@@ -1,23 +1,10 @@
 ---
 weight: 103
 title: 持续集成与交付（CI/CD）
-linktitle: "CI/CD"
-date: '2023-06-16T15:40:00+08:00'
-type: book
-description: '深入介绍持续集成与交付（CI/CD）的概念、优势和实践，重点讲解 ArgoCD 和 Argo Rollouts 等 GitOps 工具在现代软件开发中的应用。'
-keywords:
-- argo
-- argocd
-- cd
-- ci
-- git
-- 交付
-- 应用程序
-- 部署
-- 配置
-- 集成
-- gitops
-- kubernetes
+linktitle: CI/CD
+date: 2023-06-16T15:40:00+08:00
+description: 深入介绍持续集成与交付（CI/CD）的概念、优势和实践，重点讲解 ArgoCD 和 Argo Rollouts 等 GitOps 工具在现代软件开发中的应用。
+lastmod: 2025-10-19T07:06:46.877Z
 ---
 
 持续集成与交付，简称 CI/CD（Continuous Integration/Continuous Delivery），是现代软件开发的核心实践之一。它通过自动化软件构建、测试和部署流程，显著提升应用程序的交付速度和质量。CI/CD 涵盖了从代码提交到生产部署的整个软件生命周期，包括代码管理、构建、测试、部署和监控等多个环节。
