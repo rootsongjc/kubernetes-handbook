@@ -1,24 +1,10 @@
 ---
 title: 什么是云原生？
 linktitle: 什么是云原生？
-date: '2022-05-03T00:00:00+01:00'
+date: 2022-05-03T00:00:00+01:00
 description: 云原生是一种构建和运行应用程序的方法，利用云计算环境的优势来提高应用的可扩展性、弹性和敏捷性。本文深入探讨云原生的定义演进、核心特征以及技术体系。
 weight: 1
-keywords:
-  - cloud
-  - cncf
-  - native
-  - pivotal
-  - 原生
-  - 基金会
-  - 容器
-  - 应用
-  - 服务
-  - 架构
-  - kubernetes
-  - 微服务
-  - 服务网格
-lastmod: '2025-08-23'
+lastmod: 2025-10-19T12:51:12.938Z
 ---
 
 云原生（Cloud Native）这个概念已经成为现代软件开发和部署的核心理念。随着云计算技术的成熟和企业数字化转型的深入，云原生不仅是一套技术体系，更代表着一种全新的[软件开发文化](https://cloudnativecn.com/blog/cloud-native-culture-not-container/)和组织变革方式。

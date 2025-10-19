@@ -1,7 +1,7 @@
 ---
 weight: 103
 title: 持续集成与交付（CI/CD）
-linktitle: CI/CD
+linktitle: CI/CD（持续集成与交付）
 date: 2023-06-16T15:40:00+08:00
 description: 深入介绍持续集成与交付（CI/CD）的概念、优势和实践，重点讲解 ArgoCD 和 Argo Rollouts 等 GitOps 工具在现代软件开发中的应用。
 lastmod: 2025-10-19T07:06:46.877Z

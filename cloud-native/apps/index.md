@@ -2,18 +2,7 @@
 title: 云原生应用的定义
 linkTitle: 云原生应用的定义
 weight: 4
-keywords:
-  - component
-  - oam
-  - trait
-  - workload
-  - 原生
-  - 定义
-  - 应用
-  - 开发者
-  - 组件
-  - 运维
-lastmod: 2025-08-26T10:12:58.602Z
+lastmod: 2025-10-19T12:50:05.013Z
 date: 2025-08-26T10:12:58.252Z
 ---
 

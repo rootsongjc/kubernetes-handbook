@@ -3,19 +3,8 @@ linkTitle: Kubernetes 次世代
 title: Kubernetes 次世代的云原生应用
 weight: 3
 description: 探讨 Kubernetes 生态发展历程，分析云原生应用碎片化问题，介绍 OAM（开放应用模型）等解决方案，展望以应用为中心的云原生未来。
-keywords:
-    - kubernetes
-    - oam
-    - operator
-    - 云原生
-    - 原语
-    - 定义
-    - 应用
-    - 应用程序
-    - 开源
-    - 资源
 date: 2025-08-26T10:05:13.628Z
-lastmod: 2025-08-26T10:05:14.135Z
+lastmod: 2025-10-19T12:50:41.590Z
 ---
 
 ## 核心观点

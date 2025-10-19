@@ -3,369 +3,309 @@ weight: 100
 title: 适用于 Kubernetes 的应用开发部署流程
 linktitle: 应用开发部署流程
 date: 2022-05-21T00:00:00+08:00
-description: 本文详细介绍了如何开发容器化应用，使用现代 CI/CD 工具构建 Docker 镜像，通过 Docker Compose 本地测试，生成 Kubernetes YAML 配置文件，并集成到 Istio 服务网格的完整流程。
-lastmod: 2025-10-19T07:07:20.087Z
+description: 从本地开发、镜像构建、CI/CD、GitOps 到 Kubernetes 部署与服务网格集成的端到端流程与参考实现。
+lastmod: 2025-10-19T11:32:02.451Z
 ---
 
-本文详细介绍了现代化容器应用的完整开发部署流程：从容器化应用开发、CI/CD 自动化构建、本地 Docker Compose 测试，到 Kubernetes 集群部署，最终集成 Istio 服务网格的端到端实践。
+> 从本地快速迭代到生产级持续交付，采用 GitOps、ArgoCD/Argo Rollouts 与可观察性最佳实践构建可靠的 Kubernetes 发布流程。
 
-整个流程架构如下图所示：
+## 概览
 
-![流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/how-to-use-kubernetes-with-istio.webp)
-{width=1115 height=960}
+本文基于行业实践，讲解一套面向生产的 Kubernetes 应用开发与部署流程，涵盖：
 
-## 示例应用介绍
+- 本地开发与快速迭代（k3d / kind / Skaffold / Tilt）
+- 镜像构建与安全扫描（multi-stage、distroless、Trivy）
+- CI/CD 与 GitOps（GitHub Actions / Tekton / ArgoCD）
+- 渐进式交付（Argo Rollouts）
+- 配置管理（Helm / Kustomize）
+- 策略与合规（OPA/Gatekeeper、Kyverno）
+- 可观测性与自动化回滚（Prometheus、Grafana、Alertmanager）
 
-为了演示完整的开发部署流程，本文使用两个 Go 语言开发的微服务应用作为示例：
+下图为推荐的端到端架构与数据流。
 
-- **k8s-app-monitor-test**：监控数据生成服务，提供 RESTful API 返回 JSON 格式的模拟监控指标
-- **k8s-app-monitor-agent**：监控数据展示服务，获取监控指标并生成可视化图表
+```mermaid "End-to-End 发布架构"
+graph LR
+  Dev["Developer Workstation"]
+  SC["Source Control (Git)"]
+  CI["CI Runner (GitHub Actions / Tekton)"]
+  Registry["OCI Registry\n(e.g. GHCR/Harbor/ACR)"]
+  ImageScan["Image Scanning\n(Trivy/Clair)"]
+  CD["GitOps (ArgoCD)"]
+  Rollouts["Progressive Delivery\n(Argo Rollouts)"]
+  Cluster["Kubernetes Clusters\n(dev/stage/prod)"]
+  Observability["Observability\n(Prometheus/Grafana)"]
+  Policy["Policy Engine\n(Kyverno/OPA)"]
 
-这两个服务构成了一个典型的微服务架构，展现了服务间通信、服务发现等关键概念。
-
-### API 文档规范
-
-API 文档采用 API Blueprint 格式定义，使用 [aglio](https://github.com/danielgtaylor/aglio) 工具生成静态文档：
-
-![API](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-test-api-doc.webp)
-{width=958 height=941}
-
-## 服务发现机制
-
-在 Kubernetes 环境中，`k8s-app-monitor-agent` 需要访问 `k8s-app-monitor-test` 服务。Kubernetes 提供了多种服务发现方式：
-
-### 环境变量方式
-
-Kubernetes 会为每个 Pod 注入相关服务的环境变量，但这种方式存在顺序依赖问题。
-
-### DNS 服务发现（推荐）
-
-使用 Kubernetes 内置的 DNS 服务（CoreDNS），通过服务的 FQDN 进行访问：
-
-```text
-<service-name>.<namespace>.svc.cluster.local
+  Dev -->|push| SC
+  SC --> CI
+  CI --> Registry
+  Registry --> ImageScan
+  ImageScan --> Registry
+  Registry --> CD
+  CD --> Cluster
+  Cluster --> Rollouts
+  Cluster --> Observability
+  CD --> Policy
+  Observability --> CD
 ```
 
-例如：`k8s-app-monitor-test.default.svc.cluster.local`
+![End-to-End 发布架构](1327ae365d5cfdf821401583f1945658.svg)
+{width=2621 height=344}
 
-**推荐使用 DNS 方式**，因为它没有启动顺序限制，更加灵活可靠。详细原理可参考 [Kubernetes 中的服务发现与环境变量传递机制](/blog/exploring-kubernetes-env-with-docker/)。
+## 示例应用简介
 
-## CI/CD 持续集成
+本文示例沿用原文的两个服务，便于示范微服务通信与部署实践：
 
-### 现代化 CI/CD 选择
+- k8s-app-monitor-test：生成模拟监控指标的服务（REST API）
+- k8s-app-monitor-agent：消费并展示监控数据的前端/后端服务
 
-虽然原文使用 Wercker（已停止服务），现在推荐使用以下现代化 CI/CD 工具：
+示例仍可用于本地和集群验证；后续配套清单将给出常用 YAML 与 Helm 示例。
 
-- **GitHub Actions**：与 GitHub 深度集成，配置简单
-- **GitLab CI/CD**：功能强大的 DevOps 平台
-- **Jenkins**：老牌开源 CI/CD 工具
-- **Tekton**：Kubernetes 原生的 CI/CD 解决方案
+## 本地开发与快速迭代
 
-### 典型构建流程
+在本地优先进行快速迭代，建议使用轻量 Kubernetes（k3d / kind）或远程 dev-cluster，并结合 Skaffold 或 Tilt 实现代码到容器的快速循环。这样可以保持与生产相近的环境并显著缩短反馈时间。
 
-以下是相关的代码示例：
+```mermaid "本地开发工作流"
+graph LR
+  Code["Code Edit"]
+  Build["Local Build\n(Docker / Buildkit)"]
+  Skaffold["Skaffold / Tilt"]
+  k3d["k3d / kind Cluster"]
+  Debug["Debug / Logs / Port-forward"]
+
+  Code --> Build --> Skaffold --> k3d
+  k3d --> Debug
+```
+
+![本地开发工作流](3f5ad138a016ae1725fe2fe8811e1740.svg)
+{width=1920 height=136}
+
+建议工具与理由：
+
+- k3d / kind：快速创建本地 Kubernetes 集群，支持 CI 一致性
+- Skaffold / Tilt：自动构建、推送、部署并支持端口转发与日志查看
+- Dev containers：在 VS Code Remote / Codespaces 中保持一致开发环境
+
+## 镜像构建与安全
+
+镜像仍是交付单元，2025 年推荐实践：
+
+- 使用 multi-stage 构建减小镜像体积
+- 优选 Distroless 或 scratch 基础镜像
+- 启用 BuildKit 与镜像内容信任（OCI Signature）
+- 在 CI 中集成静态扫描（Trivy / Grype）和依赖扫描
+- 为镜像打可追溯标签（Git SHA、构建时间、SBOM）
+
+示例 GitHub Actions 构建与推送（仅示例，CI secret 与缓存按需配置）：
 
 ```yaml
-# GitHub Actions 示例
-name: Build and Push
+name: Build and push image
 on:
   push:
     branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }} .
-    - name: Push to registry
-      run: docker push ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }}
+      - uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/myorg/myapp:${{ github.sha }}
+          outputs: type=registry
+      - name: Scan image
+        uses: aquasecurity/trivy-action@v1
+        with:
+          image-ref: ghcr.io/myorg/myapp:${{ github.sha }}
 ```
 
-构建过程会生成带有 Git commit hash 标签的 Docker 镜像，确保版本可追溯。
+同时在 CI 中生成 SBOM（CycloneDX / SPDX），并把扫描结果发送到集中告警或 Issue 流程。
 
-## 本地开发测试
+## 配置与清单管理
 
-### Docker Compose 配置
+建议使用 Helm 或 Kustomize 管理 Kubernetes 配置，优先将环境差异抽象到 values / overlays：
 
-使用 Docker Compose 在本地环境中测试微服务组合：
+- Helm：适合应用打包与参数化发布
+- Kustomize：适合纯 YAML 叠加与变更
+- Jsonnet：适合复杂模板化需求
+
+示例目录结构（推荐）：
+
+- ops/
+  - base/ (shared manifests / kustomize base / helm chart)
+  - overlays/
+    - dev/
+    - stage/
+    - prod/
+
+切忌直接在集群中做一次性更改；所有变更应通过 Git 提交并纳入审计。
+
+## GitOps 与持续交付
+
+2025 年主流模式是将 Git 作为单一事实来源（Single Source of Truth），并使用 ArgoCD / Flux 进行自动同步与审计。结合 Argo Rollouts 可实现金丝雀与蓝绿等渐进式交付。
+
+整体 GitOps 流程示意：
+
+```mermaid "GitOps 工作流"
+graph LR
+  Dev["Developer"]
+  Git["Git Repository\n(manifests / helm-values)"]
+  PR["Pull Request\n(code + manifests)"]
+  CI["CI (build + scan)"]
+  Registry["OCI Registry"]
+  ArgoCD["ArgoCD"]
+  Cluster["Kubernetes Cluster"]
+  Rollouts["Argo Rollouts"]
+
+  Dev --> PR --> CI --> Registry
+  CI --> Git
+  Git --> ArgoCD --> Cluster
+  Cluster --> Rollouts
+```
+
+![GitOps 工作流](360e88e5d3d3f27c59218107322ea7af.svg)
+{width=2105 height=249}
+
+ArgoCD 优势：自动化同步、回滚、审计（历史记录）、多集群支持。实践中建议：
+
+- 为每个环境使用独立 Git 分支或目录（GitOps 结构化）
+- 将 ArgoCD Application 和 Project 进行权限隔离
+- 把机密数据放到 SealedSecrets / SOPS / External Secrets 中
+
+示例 Argo CD Application（values 存放在 Git）：
 
 ```yaml
-version: '3.8'
-services:
-  k8s-app-monitor-agent:
-    image: jimmysong/k8s-app-monitor-agent:latest
-    container_name: monitor-agent
-    depends_on:
-      - k8s-app-monitor-test
-    ports:
-      - "8888:8888"
-    environment:
-      - SERVICE_NAME=k8s-app-monitor-test
-      - LOG_LEVEL=debug
-    networks:
-      - monitor-network
-
-  k8s-app-monitor-test:
-    image: jimmysong/k8s-app-monitor-test:latest
-    container_name: monitor-test
-    ports:
-      - "3000:3000"
-    environment:
-      - LOG_LEVEL=debug
-    networks:
-      - monitor-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
-networks:
-  monitor-network:
-    driver: bridge
-```
-
-### 本地测试流程
-
-以下是测试相关的代码：
-
-```bash
-# 启动服务
-docker-compose up -d
-
-# 查看服务状态
-docker-compose ps
-
-# 查看日志
-docker-compose logs -f
-
-# 访问监控页面
-curl http://localhost:8888/metrics
-
-# 清理环境
-docker-compose down
-```
-
-## Kubernetes 部署配置
-
-### 生成 Kubernetes YAML
-
-可以使用 [Kompose](https://kompose.io/) 工具将 Docker Compose 配置转换为 Kubernetes 清单：
-
-```bash
-# 安装 kompose
-curl -L https://github.com/kubernetes/kompose/releases/latest/download/kompose-linux-amd64 -o kompose
-chmod +x kompose && sudo mv kompose /usr/local/bin/
-
-# 转换配置
-kompose convert -f docker-compose.yaml
-```
-
-### 手动编写 Kubernetes 清单
-
-以下是相关的代码示例：
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: k8s-app-monitor-test
-  labels:
-    app: k8s-app-monitor-test
+  name: monitor-app-prod
+  namespace: argocd
 spec:
-  replicas: 2
+  project: default
+  source:
+    repoURL: 'https://github.com/myorg/myrepo.git'
+    targetRevision: HEAD
+    path: ops/overlays/prod
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: monitor
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+## 渐进式交付（Argo Rollouts）
+
+对于生产流量变更，建议使用 Argo Rollouts 或 service-mesh 原生功能做金丝雀 / 蓝绿发布，并结合指标分析（Prometheus）自动决策。Argo Rollouts 可与 Istio / NGINX / APISIX 等路由器集成。
+
+示例 Canary 步骤（节选）：
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo
+spec:
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+      - setWeight: 10
+      - pause: {duration: 60}
+      - setWeight: 50
+      - pause: {duration: 120}
   selector:
     matchLabels:
-      app: k8s-app-monitor-test
+      app: rollouts-demo
   template:
     metadata:
       labels:
-        app: k8s-app-monitor-test
+        app: rollouts-demo
     spec:
       containers:
-      - name: k8s-app-monitor-test
-        image: jimmysong/k8s-app-monitor-test:latest
-        ports:
-        - containerPort: 3000
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 5
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: k8s-app-monitor-test
-spec:
-  selector:
-    app: k8s-app-monitor-test
-  ports:
-  - port: 3000
-    targetPort: 3000
-  type: ClusterIP
+      - name: app
+        image: ghcr.io/myorg/myapp:TAG
 ```
 
-## 服务外部暴露
+与 AnalysisTemplate 集成后，可在每个步骤基于错误率、延迟等指标自动中止或回滚。
 
-### Ingress 配置
+## 策略、合规与安全
 
-以下是相关的配置示例：
+生产集群应启用策略引擎与 Admission 控制：
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: k8s-app-monitor-ingress
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-spec:
-  tls:
-  - hosts:
-    - monitor.example.com
-    secretName: monitor-tls
-  rules:
-  - host: monitor.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: k8s-app-monitor-agent
-            port:
-              number: 8888
-```
+- Kyverno / OPA Gatekeeper：实现合规策略（镜像签名、禁止 root、资源限制等）
+- Pod Security Standards 或者 Pod Security Admission：设置命名空间级安全策略
+- NetworkPolicy：默认 deny，然后按需放行服务间流量
+- 镜像策略：仅允许从受信任的 registry 和签名镜像部署
 
-### Service Mesh 集成方案
+同时建议把安全门（Shift-left）前移至开发与 CI 阶段，例如依赖漏洞、许可证违规与容器漏洞都在 CI 阶段阻断。
 
-#### 使用 Istio 服务网格
+## 可观测性与告警
 
-安装 Istio 并启用自动 sidecar 注入：
+可靠发布依赖完善可观测性：
 
-```bash
-# 安装 Istio
-istioctl install --set values.defaultRevision=default
+- 指标：Prometheus + Grafana（定义 SLO / SLA）
+- 日志：集中化（Loki / ELK）
+- 跟踪：OpenTelemetry / Jaeger
+- 告警：Alertmanager，结合 PagerDuty / Slack
 
-# 为命名空间启用自动注入
-kubectl label namespace default istio-injection=enabled
+示例监控回路：在 Canary 步骤中，Argo Rollouts 调用 AnalysisRun 查询 Prometheus 指标，若超阈值则中止并回滚。
 
-# 部署应用（自动注入 sidecar）
-kubectl apply -f k8s-manifests/
-```
+## 部署示例流程（精简步骤）
 
-#### Istio Gateway 配置
+1. 本地开发，使用 Skaffold 推送到 dev cluster 并验证。
+2. 提交代码到 Git，触发 CI，构建镜像并推送到 OCI registry，同时产出 SBOM 并扫描。
+3. CI 将构建产物与版本标签写入 manifests（或触发 PR 更新 Helm values）。
+4. GitOps（ArgoCD）检测 Git 变更并同步到集群，触发 Argo Rollouts 做金丝雀发布。
+5. 监控与 AnalysisRun 验证指标；异常则触发自动回滚并告警。
 
-以下是相关的配置示例：
+## 工具对比（简要）
 
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
-metadata:
-  name: monitor-gateway
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - monitor.example.com
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: monitor-vs
-spec:
-  hosts:
-  - monitor.example.com
-  gateways:
-  - monitor-gateway
-  http:
-  - route:
-    - destination:
-        host: k8s-app-monitor-agent
-        port:
-          number: 8888
-```
+{{< table title="常用工具对比" >}}
 
-## 可观测性与监控
+| 功能         | 推荐工具（示例）                |
+| ------------ | ------------------------------- |
+| 本地集群     | k3d / kind                      |
+| 开发循环     | Skaffold / Tilt                 |
+| CI           | GitHub Actions / Tekton         |
+| GitOps/CD    | ArgoCD / Flux                   |
+| 渐进式交付   | Argo Rollouts                   |
+| 镜像扫描     | Trivy / Grype                   |
+| 策略引擎     | Kyverno / OPA Gatekeeper        |
+| 可观测性     | Prometheus / Grafana / OTel     |
 
-### 服务监控验证
+{{< /table >}}
 
-应用部署完成后，可以通过以下方式验证服务状态：
+## 迁移与兼容性注意点
 
-![图表](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-agent.webp)
-{width=1015 height=579}
+- 数据库变更需确保向后兼容，使用双写或迁移工作流避免中断。
+- API 兼容性：采用版本化 API 路径或 sidecar 路由策略。
+- 回滚策略：在设计回滚时考虑状态性服务与数据一致性。
+- 测试：在 CI 中包含集成测试与端到端测试，尽量在与生产相近的环境运行。
 
-### Istio 可观测性
+## 总结
 
-集成 Istio 后，可以通过以下工具获得丰富的可观测性数据：
+到 2025 年，Kubernetes 应用交付的核心原则是“可观测的渐进式交付”和“GitOps 为中心的自动化”。推荐采用本地快速迭代工具（k3d、Skaffold）、在 CI 中强化镜像与依赖扫描、使用 GitOps（ArgoCD）实现可审计部署，并用 Argo Rollouts 做渐进式发布与自动回滚。策略引擎（Kyverno / OPA）和完善的可观测性是保障可靠性的关键。
 
-#### Grafana 监控面板
+## 参考文献
 
-访问 Grafana 可以查看详细的服务指标和性能数据：
-
-![Grafana 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-grafana.webp)
-{width=2582 height=1688}
-
-#### 服务拓扑图
-
-通过 Kiali 查看服务间的依赖关系和流量分布：
-
-![servicegraph 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-servicegraph-dotviz.webp)
-{width=1168 height=1046}
-
-#### 分布式链路追踪
-
-使用 Jaeger 进行分布式请求追踪分析：
-
-![Zipkin 页面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/k8s-app-monitor-istio-zipkin.webp)
-{width=2582 height=1688}
-
-## 最佳实践总结
-
-### 开发阶段
-
-- 使用多阶段 Docker 构建优化镜像大小
-- 实施容器安全扫描
-- 编写全面的单元测试和集成测试
-
-### 部署阶段
-
-- 使用 Helm Charts 管理复杂应用
-- 实施滚动更新和回滚策略
-- 配置适当的资源限制和健康检查
-
-### 运维阶段
-
-- 建立完善的监控和告警体系
-- 实施日志聚合和分析
-- 定期进行容灾演练
-
-### 安全考虑
-
-- 使用私有镜像仓库
-- 实施 RBAC 权限控制
-- 定期更新依赖和基础镜像
-
-通过以上完整的流程，我们实现了从代码提交到生产环境部署的全自动化 DevOps 流水线，并通过服务网格获得了强大的可观测性和流量管理能力。
+1. [Argo CD - argoproj.io](https://argo-cd.readthedocs.io/)  
+2. [Argo Rollouts - argoproj.io](https://argoproj.github.io/argo-rollouts/)  
+3. [Skaffold - skaffold.dev](https://skaffold.dev/)  
+4. [Trivy - aquasecurity.github.io/trivy/](https://aquasecurity.github.io/trivy/)  
+5. [Kyverno - kyverno.io](https://kyverno.io/)  
+6. [OpenTelemetry - opentelemetry.io](https://opentelemetry.io/)

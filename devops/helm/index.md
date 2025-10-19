@@ -1,10 +1,10 @@
 ---
 title: 使用 Helm 管理 Kubernetes 应用
-linktitle: Helm
+linktitle: Helm：Kubernetes 包管理工具
 weight: 90
 description: Helm 是 Kubernetes 的包管理工具，简化了应用的部署和管理过程。
 date: 2024-06-15T08:00:00.000Z
-lastmod: 2025-10-19T07:06:11.744Z
+lastmod: 2025-10-19T11:22:31.515Z
 ---
 
 [Helm](https://helm.sh/) 作为 Kubernetes 生态中最主流的包管理工具，极大简化了应用部署、升级与回滚流程。通过 Chart 模板化机制，开发者能够高效复用和分享可配置的应用包，实现声明式、自动化的集群管理。
