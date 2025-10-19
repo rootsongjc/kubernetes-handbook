@@ -1,5 +1,5 @@
 ---
-title: Kubernetes 集群生命周期管理
+title: 使用 Kubeadmin 管理 Kubernetes 集群
 linktitle: 集群生命周期管理
 date: 2025-10-13
 description: 详细介绍如何使用 kubeadm 创建、配置、维护和升级 Kubernetes 集群，涵盖从集群初始化到日常运维与升级的完整生命周期管理流程。
