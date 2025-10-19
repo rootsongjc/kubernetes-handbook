@@ -82,7 +82,6 @@
 - [命令使用](cli/_index.md)
   - [Kubectl 命令概览](cli/using-kubectl/index.md)
   - [Kubectl 命令技巧大全](cli/kubectl-cheatsheet/index.md)
-  - [使用 etcdctl 访问 Kubernetes 数据](cli/etcdctl/index.md)
   - [调试集群中的 Pod](cli/debugging-kubernetes/index.md)
 - [集群安全性管理](security/_index.md)
   - [管理集群中的 TLS](security/managing-tls-in-a-cluster/index.md)
