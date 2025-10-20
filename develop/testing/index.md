@@ -2,17 +2,9 @@
 weight: 108
 title: Kubernetes 测试指南
 linktitle: 测试指南
-date: '2024-01-15T00:00:00+08:00'
-type: book
-keywords:
-  - kubernetes
-  - 测试
-  - 单元测试
-  - 集成测试
-  - e2e 测试
-  - go test
-  - 测试策略
-lastmod: '2025-08-23'
+description: 介绍 Kubernetes 项目中的各种测试方法和最佳实践，涵盖单元测试、集成测试和端到端测试，帮助开发者构建高质量的 Kubernetes 组件。
+date: 2024-01-15T00:00:00+08:00
+lastmod: 2025-10-20T04:06:37.994Z
 ---
 
 本文介绍 Kubernetes 项目中的各种测试方法和最佳实践。
