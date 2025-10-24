@@ -48,7 +48,7 @@ graph TD
 ```
 
 ![Kubernetes 开发生态全景](9dba6ec28b291fd6adf6c391fa72b168.svg)
-{width=1920 height=1261}
+{width=1920 height=1246}
 
 ## 核心开发理念
 
@@ -112,7 +112,7 @@ stateDiagram-v2
 ```
 
 ![控制器模式](75cfc48ca4033e91ae8da26d324773b8.svg)
-{width=1920 height=2561}
+{width=1920 height=2543}
 
 ### 可扩展架构
 
@@ -152,7 +152,7 @@ graph TD
 ```
 
 ![Kubernetes 可扩展架构](e4132f78f7bf48083081c63644119451.svg)
-{width=1920 height=933}
+{width=1920 height=919}
 
 ## 开发工具链
 
@@ -281,7 +281,7 @@ graph LR
 ```
 
 ![开发模式演进](934fff02c006b937f1051070e8233d5c.svg)
-{width=1920 height=674}
+{width=1920 height=684}
 
 ### 2025 年发展趋势
 
@@ -314,7 +314,7 @@ graph TD
 ```
 
 ![AI/ML 原生集成](73849ada9afbf8f9b2aebb9b5f193d7b.svg)
-{width=1920 height=790}
+{width=1920 height=776}
 
 #### 多云和混合云开发
 
@@ -350,7 +350,7 @@ graph TD
 ```
 
 ![多云和混合云开发](ca305ce8f58d8389cb6e278f7373a92b.svg)
-{width=1920 height=1673}
+{width=1920 height=1661}
 
 ## 开发环境配置
 
@@ -483,7 +483,7 @@ graph TD
 ```
 
 ![测试策略](3be90a0aca743463fcf4bcb98f83fcd1.svg)
-{width=1920 height=909}
+{width=1920 height=896}
 
 ### 版本管理和发布
 
@@ -515,7 +515,7 @@ graph LR
 ```
 
 ![发布流程](155cfafb3d723ac1485f16773834161c.svg)
-{width=1973 height=183}
+{width=1920 height=173}
 
 ## 学习路径
 
@@ -585,7 +585,7 @@ graph TD
 ```
 
 ![开源贡献路径](2affd3ec208e9b80b165df00bdfd0af3.svg)
-{width=1920 height=1363}
+{width=1920 height=1348}
 
 ### 学习资源
 

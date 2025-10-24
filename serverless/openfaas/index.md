@@ -69,7 +69,7 @@ graph TD
 ```
 
 ![OpenFaaS 架构图](7f4e69e130e13423a66bda0e2f5d2e63.svg)
-{width=1920 height=3668}
+{width=1920 height=3651}
 
 ### 组件说明
 

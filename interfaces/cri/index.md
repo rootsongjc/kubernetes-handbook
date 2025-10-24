@@ -50,7 +50,7 @@ graph TB
 ```
 
 ![CRI 作为抽象层](3f506382e51979972aa6a2c79d45c9d0.svg)
-{width=1920 height=504}
+{width=1920 height=509}
 
 抽象层允许运行时实现独立演进，同时为 kubelet 保持稳定接口。
 
@@ -95,7 +95,7 @@ graph TB
 ```
 
 ![CRI 的两大服务及其操作](b9f14183ba0ee7115706e4b5a0d623ba.svg)
-{width=1920 height=971}
+{width=1920 height=962}
 
 RuntimeService 与 ImageService 的分离为运行时管理镜像和容器提供了灵活性。
 
@@ -155,7 +155,7 @@ graph BT
 ```
 
 ![gRPC 与 Protocol Buffers 在 CRI 中的作用](a9ffe9bc753405c70dcc0584acc64bc7.svg)
-{width=1920 height=1469}
+{width=1920 height=1487}
 
 ## 关键概念
 

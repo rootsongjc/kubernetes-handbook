@@ -30,7 +30,7 @@ graph TD
 ```
 
 ![Pod 结构示意图](5b8e2b1ddf6ff4f1fb8e8622043da588.svg)
-{width=1920 height=1240}
+{width=1920 height=1250}
 
 ### 工作负载资源层级
 
@@ -49,7 +49,7 @@ graph TD
 ```
 
 ![工作负载资源层级关系](aef657b80f732cc57ab9eeec30d4d92d.svg)
-{width=1920 height=1242}
+{width=1920 height=1273}
 
 ## Deployment 控制器
 
@@ -73,7 +73,7 @@ graph TD
 ```
 
 ![Deployment 控制器结构](ff2b733ee473f5111747ae8a3ed1e268.svg)
-{width=1920 height=1254}
+{width=1920 height=1286}
 
 ### 滚动更新流程
 
@@ -128,7 +128,7 @@ graph TD
 ```
 
 ![StatefulSet 结构示意图](422655315d181b7cc83a8d541f153064.svg)
-{width=1920 height=725}
+{width=1920 height=739}
 
 ### StatefulSet 与 Deployment 对比
 
@@ -167,7 +167,7 @@ graph TD
 ```
 
 ![Job 类型与模式](7dd4e7586115fd40b4573bf482233a76.svg)
-{width=1920 height=928}
+{width=1920 height=946}
 
 ### CronJob 定时调度
 
@@ -207,7 +207,7 @@ graph TD
 ```
 
 ![DaemonSet 结构示意图](59af1f2fbdf0073e5674593334238b93.svg)
-{width=1920 height=1331}
+{width=1920 height=1368}
 
 ## ReplicaSet 控制器
 
@@ -233,7 +233,7 @@ graph TD
 ```
 
 ![Deployment 与 ReplicaSet 关系](bf4a3adc3dd1b8694fcbc7792f87496e.svg)
-{width=1920 height=1077}
+{width=1920 height=1097}
 
 ## 工作负载生命周期管理
 
@@ -257,7 +257,7 @@ stateDiagram-v2
 ```
 
 ![Pod 生命周期状态图](27ee63441b08245b77d2775b608aebae.svg)
-{width=1920 height=2493}
+{width=1920 height=2501}
 
 ### 容器探针
 
@@ -293,7 +293,7 @@ graph TD
 ```
 
 ![HPA 自动扩缩容流程](3c0b6940b717e5c91e2e30a1c0f298bc.svg)
-{width=1920 height=958}
+{width=1920 height=968}
 
 ## 高级工作负载模式
 
@@ -316,7 +316,7 @@ graph TD
 ```
 
 ![Pod 启动与 Sidecar 容器结构](5ad6263e9d7f1988469d55071ee8ae9a.svg)
-{width=1920 height=312}
+{width=1920 height=316}
 
 ### Pod 中断管理
 
@@ -345,7 +345,7 @@ graph TD
 ```
 
 ![Pod Disruption Budget 示意图](c632756e74c2724203504b65e98bc2fd.svg)
-{width=1920 height=652}
+{width=1920 height=654}
 
 ## 最佳实践
 
@@ -407,7 +407,7 @@ graph TD
 ```
 
 ![工作负载控制器选择流程](bdd6482c1d6eeb7ac68f09c5f76ee1b9.svg)
-{width=1920 height=1740}
+{width=1920 height=1736}
 
 该流程图有助于根据实际需求选择最合适的工作负载控制器。
 

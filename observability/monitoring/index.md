@@ -48,7 +48,7 @@ graph TD
 ```
 
 ![Kubernetes 监控层次结构](3eebec98d1d070ca386316be3ad8adc3.svg)
-{width=1920 height=2420}
+{width=1920 height=2409}
 
 监控体系覆盖：
 
@@ -106,7 +106,7 @@ graph TD
 ```
 
 ![Prometheus 架构与数据流](4645bc85c438bae00b79369e06b05dfb.svg)
-{width=1920 height=2238}
+{width=1920 height=2224}
 
 核心特性：
 

@@ -84,7 +84,7 @@ graph TD
 ```
 
 ![Knative 架构图](f066f72889e920855d549d6509fd0ef4.svg)
-{width=2943 height=738}
+{width=2929 height=720}
 
 ## Knative Serving
 
@@ -289,7 +289,7 @@ graph TD
 ```
 
 ![Knative Eventing 事件流](088d9a5b069ba7a0dccbf6ae09550835.svg)
-{width=1920 height=2101}
+{width=1920 height=2083}
 
 ### 核心组件
 

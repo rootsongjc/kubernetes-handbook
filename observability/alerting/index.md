@@ -46,7 +46,7 @@ graph TD
 ```
 
 ![告警生命周期流程](8278944205a80664c94cb6201c345e67.svg)
-{width=1920 height=3584}
+{width=1920 height=3551}
 
 ### 告警类型
 
@@ -90,7 +90,7 @@ graph TD
 ```
 
 ![Alertmanager 架构与流程](daa14a54d8561cc779abc0f4d197e20c.svg)
-{width=1920 height=2638}
+{width=1920 height=2601}
 
 ### 核心概念
 

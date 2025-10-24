@@ -50,7 +50,7 @@ graph LR
 ```
 
 ![End-to-End 发布架构](1327ae365d5cfdf821401583f1945658.svg)
-{width=2621 height=344}
+{width=2541 height=330}
 
 ## 示例应用简介
 
@@ -78,7 +78,7 @@ graph LR
 ```
 
 ![本地开发工作流](3f5ad138a016ae1725fe2fe8811e1740.svg)
-{width=1920 height=136}
+{width=1920 height=128}
 
 建议工具与理由：
 
@@ -177,7 +177,7 @@ graph LR
 ```
 
 ![GitOps 工作流](360e88e5d3d3f27c59218107322ea7af.svg)
-{width=2105 height=249}
+{width=2019 height=239}
 
 ArgoCD 优势：自动化同步、回滚、审计（历史记录）、多集群支持。实践中建议：
 

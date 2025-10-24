@@ -40,7 +40,7 @@ flowchart TD
 ```
 
 ![kubeadm 生命周期流程](170fa3521edb579a131cba33e80f38f1.svg)
-{width=1920 height=2317}
+{width=1920 height=2307}
 
 ## 集群创建流程
 
@@ -80,7 +80,7 @@ flowchart LR
 ```
 
 ![kubeadm 组件安装流程](3e242dafa02d2c033f21cb077272f60e.svg)
-{width=1920 height=287}
+{width=1920 height=283}
 
 ### 容器运行时配置
 
@@ -120,7 +120,7 @@ flowchart TD
 ```
 
 ![kubeadm init 工作流](41cf6c8909c2029f6bc4c69b100805ca.svg)
-{width=2180 height=187}
+{width=2094 height=177}
 
 基础初始化命令：
 
@@ -153,7 +153,7 @@ flowchart TD
 ```
 
 ![工作节点加入流程](eceb5554f1e42bf8bfadaac2ab21a07f.svg)
-{width=1920 height=311}
+{width=1920 height=307}
 
 加入命令示例：
 
@@ -202,7 +202,7 @@ flowchart TD
 ```
 
 ![证书管理流程](66be1e6dad19163bb9f5d846a06505bf.svg)
-{width=1920 height=564}
+{width=1920 height=567}
 
 检查证书有效期：
 
@@ -243,7 +243,7 @@ flowchart TD
 ```
 
 ![集群升级流程](64f3b576eefc4732c63396a1de275a4c.svg)
-{width=2653 height=208}
+{width=2555 height=198}
 
 ### 控制平面节点升级步骤
 
@@ -351,7 +351,7 @@ flowchart TD
 ```
 
 ![高可用集群拓扑](4a53ebf43e453b1f33a66d3469feba5e.svg)
-{width=1920 height=3585}
+{width=1920 height=3643}
 
 高可用部署需满足：
 

@@ -55,7 +55,7 @@ graph TD
 ```
 
 ![Kubebuilder 系统架构核心组件](f54da153157aca0ef26f26bcd9843b1e.svg)
-{width=1920 height=2000}
+{width=1920 height=1996}
 
 ### 插件系统机制
 
@@ -89,7 +89,7 @@ graph LR
 ```
 
 ![Kubebuilder 插件系统接口关系](0f8c4d7195243e71b8b1d62170b59fef.svg)
-{width=1920 height=1565}
+{width=1920 height=1583}
 
 Go v4 插件实现了完整的 `plugin.Full` 接口，支持项目初始化、新建 API 资源、新建 Webhook 及编辑资源。可选插件则针对镜像部署、Helm Chart 管理等场景扩展功能。
 
@@ -120,7 +120,7 @@ flowchart LR
 ```
 
 ![Kubebuilder 开发与部署流程](8ef0ca0ac70a10bc71075954614a6aeb.svg)
-{width=3567 height=469}
+{width=3439 height=459}
 
 典型流程包括：
 
@@ -202,7 +202,7 @@ classDiagram
 ```
 
 ![Kubebuilder 核心对象模型](f3877192b99d52bfd4a75cf54c07fde4.svg)
-{width=1920 height=4208}
+{width=1920 height=4201}
 
 ### 控制器运行时机制
 
@@ -228,7 +228,7 @@ graph TD
 ```
 
 ![controller-runtime 运行时组件](dea9df04335e19584942860ccfc32e1a.svg)
-{width=1948 height=638}
+{width=1934 height=623}
 
 Manager 是核心，负责：
 
@@ -315,7 +315,7 @@ flowchart TD
 ```
 
 ![Kubebuilder 项目初始化流程](eb7e91c1d51e8906d93eecc26c39ae2c.svg)
-{width=2132 height=1119}
+{width=2118 height=1085}
 
 创建项目：
 

@@ -38,7 +38,7 @@ graph TD
 ```
 
 ![链路追踪与传统监控对比](aad460f5297a7e7ea53727a81bee07c6.svg)
-{width=1920 height=492}
+{width=1920 height=502}
 
 链路追踪能够实现：
 
@@ -65,7 +65,7 @@ graph TD
 ```
 
 ![Span 结构](dc3924719762f263fae4651a5e0176cd.svg)
-{width=1920 height=412}
+{width=1920 height=394}
 
 #### Trace（链路）
 
@@ -136,7 +136,7 @@ graph TD
 ```
 
 ![Jaeger 架构总览](a2f49e6fa4fa43b190890f522dbf4724.svg)
-{width=1920 height=2828}
+{width=1920 height=2813}
 
 ### 核心组件
 
@@ -215,7 +215,7 @@ graph TD
 ```
 
 ![OpenTelemetry 架构](78955b3c0bb0fb625b4ce4532c0a5fe1.svg)
-{width=1920 height=4411}
+{width=1920 height=4385}
 
 ### 核心特性
 

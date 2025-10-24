@@ -39,7 +39,7 @@ flowchart TB
 ```
 
 ![发布流程与关键里程碑](c280e7412bee000ca824dea091229af1.svg)
-{width=1920 height=1415}
+{width=1920 height=1395}
 
 - **功能定义**：确定本周期计划纳入的特性，约第 4 周前完成增强提案（Enhancements Freeze）。
 - **实现阶段**：主要开发、集成测试与文档完善。
@@ -81,7 +81,7 @@ flowchart LR
 ```
 
 ![发布规划与里程碑管理](fd6b25f914a80b45c72a03f6e35c0778.svg)
-{width=2410 height=492}
+{width=2360 height=480}
 
 每个面向发布的 Issue 或 PR 需包含：
 
@@ -123,7 +123,7 @@ flowchart LR
 ```
 
 ![版本支持生命周期](15e331789a82329a50ba14dc73e5ecf2.svg)
-{width=1920 height=1127}
+{width=1920 height=1152}
 
 - **标准支持期**：前 12 个月，常规补丁与安全更新
 - **维护模式**：最后 2 个月，仅修复安全漏洞、依赖项与核心组件关键问题
@@ -249,7 +249,7 @@ flowchart LR
 ```
 
 ![Kubernetes 版本发布与支持周期](efd67d8af0ef0f883d491c7aae2728cd.svg)
-{width=2456 height=431}
+{width=2370 height=420}
 
 **二进制与镜像签名**：采用 [sigstore](https://sigstore.dev) 签名，可用 `cosign` 工具验证
 

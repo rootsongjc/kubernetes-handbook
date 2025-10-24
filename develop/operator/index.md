@@ -148,7 +148,7 @@ graph TD
 ```
 
 ![Operator 应用场景与能力映射](47ebaf8d0d03ff003113a604f2085d79.svg)
-{width=2590 height=473}
+{width=2576 height=459}
 
 - 自动化部署：一键部署复杂的分布式应用栈
 - 数据备份恢复：自动化数据库备份、灾难恢复和跨区域复制
@@ -241,7 +241,7 @@ stateDiagram-v2
 ```
 
 ![PostgreSQL Operator 生命周期流程](40fba5ba728a5c718e0dc401057a164d.svg)
-{width=1920 height=2771}
+{width=1920 height=2775}
 
 ## 开发最佳实践
 
@@ -372,7 +372,7 @@ graph TD
 ```
 
 ![Operator 技术栈生态图](6f351f7ce855d7bd67f149590a1be611.svg)
-{width=2355 height=952}
+{width=2341 height=938}
 
 {{< table title="主流 Operator 技术栈对比" >}}
 
@@ -412,7 +412,7 @@ flowchart TD
 ```
 
 ![Operator SDK 开发流程](d7107c8a657ce9088356cc35cd3ce080.svg)
-{width=1920 height=2417}
+{width=1920 height=2379}
 
 以下为主要命令及操作说明：
 
@@ -492,7 +492,7 @@ graph TD
 ```
 
 ![Operator 测试金字塔与工具](16fb88979e39105057301c03bc60dab1.svg)
-{width=1920 height=1008}
+{width=1920 height=995}
 
 - 单元测试：使用 `envtest` 模拟 Kubernetes API，测试控制器逻辑
 - 集成测试：使用 `kind` 创建临时集群，验证组件间交互
@@ -620,7 +620,7 @@ graph TD
 ```
 
 ![资源获取与社区生态](41cb3a0f874edeffda1829702c6814be.svg)
-{width=1920 height=553}
+{width=1920 height=542}
 
 - **[OperatorHub.io](https://operatorhub.io/)** - Red Hat 官方认证 Operator 市场
 - **[Artifact Hub](https://artifacthub.io/)** - CNCF 项目聚合的云原生应用市场
@@ -669,7 +669,7 @@ graph TD
 ```
 
 ![Operator 可观测性与调试工具](b2e16e6a94717ebf130a78181149e0b7.svg)
-{width=2201 height=730}
+{width=2187 height=712}
 
 #### 监控和诊断命令
 
@@ -728,7 +728,7 @@ security[安全性配置]
 ```
 
 ![Operator 安全配置体系](0f4a22335e1d6ee2000e3d844a6773bb.svg)
-{width=3154 height=373}
+{width=3140 height=359}
 
 - 最小权限原则：使用精确的 RBAC 规则，只授予必要权限
 - 网络隔离：实施 NetworkPolicy 限制 Operator 与其他服务的通信
