@@ -37,7 +37,7 @@ graph TD
 ```
 
 ![可观测性三支柱](9fd2affa6ae075204219672962404eac.svg)
-{width=1981 height=417}
+{width=1967 height=399}
 
 #### Metrics（指标）
 
@@ -101,7 +101,7 @@ graph TD
 ```
 
 ![Kubernetes 可观测性架构](f53bcfade420485a6ae313122cc574c7.svg)
-{width=2417 height=674}
+{width=2403 height=656}
 
 ### Kubernetes 原生可观测性
 
@@ -186,7 +186,7 @@ graph TD
 ```
 
 ![分层观测策略](68d303a8b176355bf34a6315c866495b.svg)
-{width=1920 height=1448}
+{width=1920 height=1434}
 
 ### 指标层次结构
 

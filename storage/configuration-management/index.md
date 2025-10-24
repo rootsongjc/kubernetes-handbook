@@ -44,7 +44,7 @@ flowchart TD
 ```
 
 ![ConfigMap 与 Secret 消费方式](264b709cf94d9fb0c15e96c22c1adcf7.svg)
-{width=1920 height=1785}
+{width=1920 height=1800}
 
 {{< table title="ConfigMap 与 Secret 功能对比" >}}
 
@@ -95,7 +95,7 @@ flowchart TD
 ```
 
 ![ConfigMap 消费方式](2c1fa159a5e8f941ddbc7886ecee0593.svg)
-{width=1920 height=1119}
+{width=1920 height=1113}
 
 - 作为环境变量注入
 - 作为所有环境变量批量注入
@@ -138,7 +138,7 @@ flowchart LR
 ```
 
 ![Secret 类型与典型用途](38bb71880763e102d2958db70a8762de.svg)
-{width=1920 height=2364}
+{width=1920 height=2415}
 
 {{< table title="Secret 类型与用途说明" >}}
 
@@ -202,7 +202,7 @@ flowchart TD
 ```
 
 ![Secret 安全风险与缓解措施](92ee38bdc2df2f01cc9cb32d8123be1b.svg)
-{width=1920 height=634}
+{width=1920 height=623}
 
 ### 主要安全问题
 
@@ -262,7 +262,7 @@ stateDiagram-v2
 ```
 
 ![ConfigMap/Secret 生命周期](a48ed307fe2bbba38a1011156957baf8.svg)
-{width=1920 height=3164}
+{width=1920 height=3190}
 
 - 卷挂载方式：变更会最终同步到 Pod（不适用于 subPath 挂载），同步延迟取决于 kubelet 周期与缓存。
 - 环境变量方式：变更不会自动同步，需重启 Pod。
@@ -309,7 +309,7 @@ flowchart TD
 ```
 
 ![ConfigMap vs Secret 选择流程](07d6e9b9d96fa077ded5e471b799b624.svg)
-{width=1920 height=5401}
+{width=1920 height=5436}
 
 ## 常见场景与示例
 

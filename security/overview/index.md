@@ -45,7 +45,7 @@ flowchart TD
 ```
 
 ![Kubernetes 安全架构分层](121d67c549545b8c53fd7d367ca93f62.svg)
-{width=1941 height=1147}
+{width=1920 height=1149}
 
 ## 认证（Authentication）
 
@@ -172,7 +172,7 @@ flowchart TD
 ```
 
 ![RBAC 组件关系](820e7d0c461aa99f308751d0bec739db.svg)
-{width=1920 height=1315}
+{width=1920 height=1317}
 
 #### RBAC 配置示例
 
@@ -242,7 +242,7 @@ flowchart TD
 ```
 
 ![API 请求准入控制流程](4470cb075382335647d75d233ff459fb.svg)
-{width=2565 height=1227}
+{width=2508 height=1193}
 
 ### 准入控制器类型
 
@@ -339,7 +339,7 @@ flowchart TD
 ```
 
 ![KMS 信封加密流程](5c21e87fcab6444db3b3040370dd7394.svg)
-{width=1920 height=1451}
+{width=1920 height=1419}
 
 ## 证书管理
 
@@ -412,7 +412,7 @@ flowchart TD
 ```
 
 ![节点鉴权流程](e2b5a984360a23b3b46047823512bb55.svg)
-{width=1920 height=235}
+{width=1920 height=234}
 
 ### kubelet 认证与授权
 

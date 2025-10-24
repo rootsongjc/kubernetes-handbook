@@ -51,7 +51,7 @@ graph TD
 ```
 
 ![存储系统架构图](49c40e82a0ff701c4d4148baa8a45de0.svg)
-{width=1920 height=1288}
+{width=1920 height=1272}
 
 Kubernetes 存储系统由控制面、节点组件、存储资源和外部插件等部分组成，共同实现持久化存储的全生命周期管理。
 
@@ -82,7 +82,7 @@ graph LR
 ```
 
 ![Pod 与卷挂载关系](85a981156d5b686de666cdee2a97b54a.svg)
-{width=1920 height=965}
+{width=1920 height=963}
 
 卷类型主要包括：
 
@@ -120,7 +120,7 @@ graph TD
 ```
 
 ![PV/PVC 绑定与类型关系](7b4b9d492e671d5f1800fc59c26491e2.svg)
-{width=1920 height=2767}
+{width=1920 height=2762}
 
 PV 与 PVC 的生命周期：
 
@@ -165,7 +165,7 @@ graph TD
 ```
 
 ![StorageClass 关系图](9cf3303700437b08cde53d2fd6548825.svg)
-{width=1920 height=876}
+{width=1920 height=874}
 
 StorageClass 主要字段：
 
@@ -213,7 +213,7 @@ graph TD
 ```
 
 ![卷快照资源关系](458f2b51759cc12c6b58fc7ea1042d8b.svg)
-{width=1920 height=2203}
+{width=1920 height=2206}
 
 关键资源：
 
@@ -273,7 +273,7 @@ graph TD
 ```
 
 ![CSI 组件交互图](8d9718fcf39c658785256b6ae13d9c96.svg)
-{width=1920 height=1236}
+{width=1920 height=1234}
 
 CSI 优势：
 
@@ -311,7 +311,7 @@ graph TD
 ```
 
 ![临时卷生命周期](1601cd8817ec8421057d4f07aeb3caf2.svg)
-{width=1920 height=3299}
+{width=1920 height=3343}
 
 Generic Ephemeral Volume 的 PVC 生命周期与 Pod 绑定，Pod 删除后 PVC 及底层卷也被删除。
 
@@ -352,7 +352,7 @@ graph LR
 ```
 
 ![持久存储生命周期流程](81da2dad9c0a36f352cd37c70bd041fa.svg)
-{width=2434 height=77}
+{width=2428 height=77}
 
 主要阶段：
 

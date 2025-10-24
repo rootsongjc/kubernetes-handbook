@@ -53,7 +53,7 @@ flowchart TD
 ```
 
 ![Kubernetes 集群生命周期与关键工具](5fe2cc0d294861b4af6dfff4e5dabd46.svg)
-{width=1920 height=1178}
+{width=1920 height=1180}
 
 ## 使用 kubeadm 部署集群
 
@@ -144,7 +144,7 @@ flowchart TD
 ```
 
 ![kubeadm 集群创建流程](0b4c30bb93a94ad67a15092d80040930.svg)
-{width=1920 height=6410}
+{width=1920 height=6390}
 
 ### 高可用集群部署
 
@@ -208,7 +208,7 @@ flowchart TD
 ```
 
 ![kubeadm 集群升级流程](093b3f9502944c3a72e6256822b433c7.svg)
-{width=1920 height=8027}
+{width=1920 height=8141}
 
 详细步骤如下：
 
@@ -292,7 +292,7 @@ flowchart LR
 ```
 
 ![Kubernetes 版本发布与支持周期](7f705a98c730e536df3ce2c27fd764cc.svg)
-{width=2433 height=389}
+{width=2347 height=378}
 
 每个小版本通常支持约 14 个月：
 

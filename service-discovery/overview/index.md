@@ -103,7 +103,7 @@ flowchart TD
 ```
 
 ![不同 Service 类型流量路径](a02b613568d9af5144190b6b698d7135.svg)
-{width=1920 height=1185}
+{width=1920 height=1180}
 
 ## Service 选择器与端点
 
@@ -132,7 +132,7 @@ flowchart TD
 ```
 
 ![普通 Service 与 Headless Service 对比](64fddc9b958a9bf4118da8ed32064302.svg)
-{width=1920 height=777}
+{width=1920 height=786}
 
 ## EndpointSlice 机制
 
@@ -168,7 +168,7 @@ flowchart TD
 ```
 
 ![EndpointSlice 结构与关联](06d1c1083b473f15e3e5eb06c9761bba.svg)
-{width=1920 height=1534}
+{width=1920 height=1532}
 
 控制面自动为带选择器的 Service 创建和维护 EndpointSlice，每个 Slice 包含一组端点的地址、端口和状态。
 
@@ -220,7 +220,7 @@ flowchart LR
 ```
 
 ![Kubernetes DNS 解析流程](c07a80c96558caa732a2081f305c29db.svg)
-{width=1920 height=1697}
+{width=1920 height=1702}
 
 ### Pod DNS 配置
 
@@ -324,7 +324,7 @@ flowchart TD
 ```
 
 ![NetworkPolicy 流量控制示意](12fb2634fbc2a086005dda8185e71931.svg)
-{width=1920 height=1401}
+{width=1920 height=1400}
 
 NetworkPolicy 支持：
 
@@ -367,7 +367,7 @@ flowchart TD
 ```
 
 ![双栈网络配置与流量](03a588dd8d97f0c8ac83d34a0953b2dd.svg)
-{width=1920 height=1032}
+{width=1920 height=1025}
 
 Service 的 `ipFamilyPolicy` 可设为：
 

@@ -33,7 +33,7 @@ flowchart LR
 ```
 
 ![kubectl 到 API Server 交互流程](90d8522b1c4d173fce941c1923b4c05d.svg)
-{width=1920 height=632}
+{width=1920 height=633}
 
 ## Kubernetes API 基础
 
@@ -65,7 +65,7 @@ flowchart LR
 ```
 
 ![Kubernetes API 结构](1c99b2cb068f66b9340dd93e3521e8ec.svg)
-{width=1920 height=1025}
+{width=1920 height=994}
 
 常见 API 路径模式：
 
@@ -141,7 +141,7 @@ flowchart TB
 ```
 
 ![kubectl 认证流程](49abe7da4d4cfc4ab63048cede84ea6d.svg)
-{width=1920 height=1010}
+{width=1920 height=988}
 
 ## kubectl 基本用法
 
@@ -252,7 +252,7 @@ flowchart TB
 ```
 
 ![Server-Side Apply 工作原理](98f8a4fbb3eec5842ee4706d7bc37e03.svg)
-{width=1920 height=2852}
+{width=1920 height=2828}
 
 关键点：
 

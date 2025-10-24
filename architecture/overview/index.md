@@ -51,7 +51,7 @@ flowchart TB
 ```
 
 ![Borg 架构图](3482c70dd4d09f794748c5a93d539517.svg)
-{width=2301 height=1070}
+{width=2287 height=1052}
 
 ### Borg 核心组件
 
@@ -99,7 +99,7 @@ flowchart TD
 ```
 
 ![Kubernetes 架构总览](a1a89650891fe65d7173653effe1ec82.svg)
-{width=1920 height=873}
+{width=1920 height=869}
 
 ## 控制面组件
 
@@ -140,7 +140,7 @@ flowchart LR
 ```
 
 ![节点组件与 Pod 关系](4266a1401509a843bfb7ee758f729664.svg)
-{width=1920 height=3275}
+{width=1920 height=3295}
 
 {{< table title="Kubernetes 节点组件说明" >}}
 
@@ -168,7 +168,7 @@ flowchart TD
 ```
 
 ![Kubernetes API 请求流程](f28e790438943eb2d9ad110d6f0eee98.svg)
-{width=1920 height=1506}
+{width=1920 height=1503}
 
 Kubernetes API 遵循 RESTful 设计：
 
@@ -227,7 +227,7 @@ flowchart LR
 ```
 
 ![标签与选择器示例](3efaecfe88f1518f3c91ae43a80226c9.svg)
-{width=1920 height=1396}
+{width=1920 height=1407}
 
 标签常用于：
 
@@ -300,7 +300,7 @@ flowchart TD
 ```
 
 ![对象所有权与级联删除](81b618988285148d04008ace255ff37f.svg)
-{width=1920 height=1629}
+{width=1920 height=1625}
 
 删除对象时可选择：
 
@@ -325,7 +325,7 @@ flowchart TD
 ```
 
 ![API Server 请求处理流程](c8c8f549dfbfd64e8b486ff88e7e23f6.svg)
-{width=1920 height=277}
+{width=1920 height=275}
 
 处理流程：
 
@@ -349,7 +349,7 @@ flowchart LR
 ```
 
 ![Server-Side Apply 工作原理](03f8026feead4a6cccd0b17e50ef49dc.svg)
-{width=1920 height=2556}
+{width=1920 height=2552}
 
 主要特性：
 
@@ -424,7 +424,7 @@ flowchart LR
 ```
 
 ![Kubernetes 指标采集流程](e4f92ef0fabb10ce42feec2a76fc7174.svg)
-{width=1920 height=1465}
+{width=1920 height=1486}
 
 这些指标有助于集群健康与性能监控。
 
@@ -444,7 +444,7 @@ flowchart LR
 ```
 
 ![Kubernetes 分布式追踪流程](fdf532a60038e6ace80c41d750e2b512.svg)
-{width=1920 height=735}
+{width=1920 height=743}
 
 系统组件通过 OpenTelemetry 协议记录操作延迟与依赖关系。
 

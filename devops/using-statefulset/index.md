@@ -70,7 +70,7 @@ graph LR
 ```
 
 ![StatefulSet Architecture Overview](1d4549d05adba4d1377c46bd0bb4ccf2.svg)
-{width=1939 height=845}
+{width=1925 height=826}
 
 ## 推荐的部署流程（高层）
 
@@ -99,7 +99,7 @@ flowchart TD
 ```
 
 ![Deployment Workflow](67b6ca95d61b3f730a9fb7f4202f9e53.svg)
-{width=1920 height=6801}
+{width=1920 height=6902}
 
 ## 精简示例：Headless Service + StatefulSet（最佳实践要素）
 

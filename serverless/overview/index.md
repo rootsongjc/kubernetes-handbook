@@ -40,7 +40,7 @@ graph LR
 ```
 
 ![架构演进](dad6f6cba2ab5c6b48d7d7b0351c922d.svg)
-{width=1920 height=631}
+{width=1920 height=637}
 
 ### Serverless 的核心特征
 
@@ -106,7 +106,7 @@ graph TB
 ```
 
 ![Serverless 技术栈](1d2954963d744cb773fb0d899531eb1b.svg)
-{width=1920 height=1114}
+{width=1920 height=1102}
 
 ### 框架对比
 
@@ -155,7 +155,7 @@ graph TD
 ```
 
 ![函数生命周期和运行时特性](28f546c1b635fa77f46543b8dfeb7664.svg)
-{width=1920 height=1207}
+{width=1920 height=1199}
 
 #### 冷启动问题与解决方案
 
@@ -229,7 +229,7 @@ graph TD
 ```
 
 ![事件驱动架构](18fb4f086e5ef8bc04a6218f049b7748.svg)
-{width=1920 height=2306}
+{width=1920 height=2272}
 
 #### CloudEvents 标准
 
@@ -303,7 +303,7 @@ graph TD
 ```
 
 ![自动扩缩容流程](7dab55485dd2d1713652281741bfb680.svg)
-{width=1920 height=1919}
+{width=1920 height=1890}
 
 #### HPA vs KEDA
 
@@ -381,7 +381,7 @@ graph TD
 ```
 
 ![微服务 vs Serverless](a265b3770c7fbae8e9c04d5688cdc516.svg)
-{width=1920 height=1302}
+{width=1920 height=1310}
 
 ### 集成策略
 
@@ -421,7 +421,7 @@ graph TD
 ```
 
 ![冷启动优化策略](ded9076c0951b5f98ab97a483e598079.svg)
-{width=1920 height=770}
+{width=1920 height=756}
 
 ### 资源配置优化
 
@@ -496,7 +496,7 @@ graph TD
 ```
 
 ![Serverless 安全挑战与防护](65e09dac1742b26e2e7769857007cfeb.svg)
-{width=1920 height=638}
+{width=1920 height=624}
 
 ### 零信任模型
 
@@ -575,7 +575,7 @@ graph TD
 ```
 
 ![成本模型对比](cdd7ea2e3b122d00afbeb013a05f3d21.svg)
-{width=1920 height=472}
+{width=1920 height=461}
 
 ### 成本优化实践
 
@@ -640,7 +640,7 @@ graph TD
 ```
 
 ![电商订单处理](6791bf235116643389c0f7d458bc57c1.svg)
-{width=2055 height=1162}
+{width=2029 height=1132}
 
 ### 案例 2：实时数据处理
 
@@ -693,7 +693,7 @@ graph TD
 ```
 
 ![实时数据处理](39dc6586a44b2f132ff5259340f27b73.svg)
-{width=1920 height=1487}
+{width=1920 height=1463}
 
 ## 总结
 

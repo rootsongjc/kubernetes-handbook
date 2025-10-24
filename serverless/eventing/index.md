@@ -66,7 +66,7 @@ graph TD
 ```
 
 ![事件驱动架构](45add0ddb9c2bb092cc7af8865c1907a.svg)
-{width=1920 height=2391}
+{width=1920 height=2362}
 
 ### CloudEvents 标准
 
@@ -270,7 +270,7 @@ graph TD
 ```
 
 ![发布-订阅模式](e1bb93fe2d680147a9b8bbaa99548728.svg)
-{width=1920 height=1603}
+{width=1920 height=1604}
 
 ### 序列处理
 

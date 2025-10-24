@@ -79,7 +79,7 @@ graph TB
 ```
 
 ![Volcano 架构总览](e50d13c14269ef18427c0e5654b4688d.svg)
-{width=3999 height=1239}
+{width=3985 height=1213}
 
 {{< table title="Volcano 核心组件职责" >}}
 
@@ -118,7 +118,7 @@ graph TB
 ```
 
 ![Volcano CRD 模型](1c1276cf6df0e487ce4c16fef59c1d09.svg)
-{width=1920 height=1875}
+{width=1920 height=1865}
 
 {{< table title="Volcano CRD 功能说明" >}}
 
@@ -176,7 +176,7 @@ graph LR
 ```
 
 ![Volcano 调度流程](f79912c5373326c074f7e3a189fa8376.svg)
-{width=3662 height=521}
+{width=3528 height=509}
 
 调度循环（Scheduling Cycle）包括：
 
@@ -230,7 +230,7 @@ graph TB
 ```
 
 ![Volcano 插件体系](c702ec2359e8ed558e42b311103b9c9b.svg)
-{width=2599 height=1097}
+{width=2582 height=1071}
 
 {{< table title="常见内置插件功能" >}}
 

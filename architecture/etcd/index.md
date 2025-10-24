@@ -79,7 +79,7 @@ flowchart TD
 ```
 
 ![Etcd 系统架构](4a8ade6ab26cf25e1b85eb9d40bce092.svg)
-{width=1920 height=3680}
+{width=1920 height=3670}
 
 Etcd 架构由以下关键组件组成：
 
@@ -216,7 +216,7 @@ flowchart TD
 ```
 
 ![Raft 节点与 EtcdServer 交互](f54519a3c8f26c3c57c1dcb1192d05db.svg)
-{width=2086 height=894}
+{width=2062 height=882}
 
 Raft 实现的关键方面：
 
@@ -259,7 +259,7 @@ flowchart TD
 ```
 
 ![Etcd 存储层次结构](250b7a2ab6232c056a940cf82df082cf.svg)
-{width=1920 height=1641}
+{width=1920 height=1638}
 
 各层功能说明：
 
@@ -298,7 +298,7 @@ flowchart TD
 ```
 
 ![Etcd 认证与授权流程](1baa2d031389f0054a927fab6efc5542.svg)
-{width=1920 height=1920}
+{width=1920 height=1902}
 
 关键安全特性：
 
@@ -586,7 +586,7 @@ flowchart TD
 ```
 
 ![Etcd 集群形成与成员管理](4f08964b29b33fc833c5e7ad61c19786.svg)
-{width=2440 height=980}
+{width=2422 height=979}
 
 ### Leader 选举与日志复制
 
@@ -648,7 +648,7 @@ flowchart LR
 ```
 
 ![Etcd 客户端库结构](312df6afc0c917b2391f03dc6ae39a68.svg)
-{width=1920 height=1080}
+{width=1920 height=1090}
 
 ### etcdctl 命令行界面
 
