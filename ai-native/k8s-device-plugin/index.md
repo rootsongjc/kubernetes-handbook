@@ -3,7 +3,7 @@ title: Kubernetes 设备插件（Device Plugin）深度剖析：异构资源调�
 linktitle: 设备插件
 weight: 100
 description: 深入理解 Kubernetes 设备插件，掌握异构资源调度的实现细节。
-lastmod: 2025-10-23T12:19:40.477Z
+lastmod: 2025-10-25T05:11:52.135Z
 date: 2025-10-23T11:17:59.039Z
 ---
 
@@ -114,7 +114,7 @@ spec:
 
 ## 动态资源分配（DRA）与设备插件
 
-设备插件在多年实践中解决了 Kubernetes 调度异构资源的问题，但仍存在如每个 Pod 固定指定设备数量、无法共享单个设备等局限。自 Kubernetes v1.34 起，社区推出的 [**动态资源分配（Dynamic Resource Allocation，DRA）** ](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)正式进入 GA 阶段，为设备管理带来了新的弹性和表达能力。
+设备插件在多年实践中解决了 Kubernetes 调度异构资源的问题，但仍存在如每个 Pod 固定指定设备数量、无法共享单个设备等局限。自 Kubernetes v1.34 起，社区推出的 [**动态资源分配（Dynamic Resource Allocation，DRA）**](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)正式进入 GA 阶段，为设备管理带来了新的弹性和表达能力。
 
 下表对比了传统设备插件与 DRA 的主要改进：
 
