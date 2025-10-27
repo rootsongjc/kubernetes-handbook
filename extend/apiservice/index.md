@@ -1,174 +1,171 @@
 ---
-weight: 66
-title: APIService
-date: 2022-05-21T00:00:00+08:00
-description: 深入了解 Kubernetes APIService 的概念、配置和使用方法，包括如何查看和管理集群中的 API 服务。
-lastmod: 2025-10-19T08:31:46.229Z
+title: API 聚合层（APIService）
+weight: 3
+linktitle: APIService
+date: 2025-10-27T19:40:00+08:00
+lastmod: 2025-10-27T09:44:30.234Z
+banner_image: images/k8s-apiservice-banner.png
+description: APIService 是 Kubernetes 的 API 聚合层机制，允许外部 API Server 注册到主 API Server 下，实现统一的 API 接口暴露。本文介绍其架构原理、注册方式与典型应用。
 ---
 
-APIService 是 Kubernetes 中用来表示特定 GroupVersion 服务器的资源对象，它允许扩展 Kubernetes API 以支持自定义资源和功能。APIService 的结构定义位于 `staging/src/k8s.io/kube-aggregator/pkg/apis/apiregistration/types.go` 中。
+> APIService（API 聚合层）是 Kubernetes 早期的官方扩展机制，允许外部 API Server 注册到主 API Server，实现统一 API 入口和系统级能力扩展。本文梳理其架构原理、注册流程、典型场景与局限性，帮助理解其在现代云原生体系中的定位。
 
-## APIService 配置示例
+## 概述
 
-以下是一个典型的 APIService 配置示例：
+在 Kubernetes 的可扩展体系中，**APIService（API 聚合层）** 是一种早期设计的扩展机制。  
+它允许开发者通过注册独立运行的 API Server，将外部系统的 API 聚合到 Kubernetes 主 API Server 下的统一路径中。
+
+这种机制通常被称为 **Aggregation Layer**，是 Kubernetes API Server 的一个“可插拔入口点”。
+
+## 设计目标
+
+API 聚合层的设计目标如下：
+
+- **统一 API 入口**：所有原生与扩展 API 统一通过 `/apis` 前缀访问。
+- **支持外部系统集成**：允许独立服务注册到 Kubernetes API。
+- **保持核心稳定**：无需修改 kube-apiserver 源码即可扩展功能。
+
+这让 Kubernetes 成为可扩展的控制平面，而不仅仅是编排器。
+
+## 架构原理
+
+API 聚合层由两个关键组件构成：
+
+- **主 API Server（kube-apiserver）**：负责接收所有 API 请求。
+- **扩展 API Server（aggregated apiserver）**：由用户或第三方实现，注册到主 API Server 下。
+
+当请求到达主 API Server 时，如果路径匹配某个注册的 `APIService`，则会被代理转发到对应的扩展 API Server。
+
+```mermaid "API 聚合层架构"
+flowchart LR
+    Client["kubectl / client-go"]
+      --> KubeAPIServer["kube-apiserver"]
+    KubeAPIServer -->|/apis/metrics.k8s.io/v1beta1| AggregatedServer["metrics-server"]
+    AggregatedServer --> ResourceDB["Custom Data Source"]
+```
+
+![API 聚合层架构](a0b7be7f710488c91a7be4c26c7cf752.svg)
+{width=1920 height=117}
+
+## 注册机制
+
+扩展 API Server 通过创建 `APIService` 对象注册到 Kubernetes：
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
-  name: v1beta1.custom-metrics.metrics.k8s.io
+  name: v1beta1.metrics.k8s.io
 spec:
-  insecureSkipTLSVerify: false
-  caBundle: <base64-encoded-ca-bundle>
-  group: custom-metrics.metrics.k8s.io
-  groupPriorityMinimum: 1000
-  versionPriority: 5
   service:
-    name: custom-metrics-apiserver
-    namespace: custom-metrics
-    port: 443
+    name: metrics-server
+    namespace: kube-system
+  group: metrics.k8s.io
   version: v1beta1
-```
-
-## APIService 字段详解
-
-### 基本配置
-
-- **apiVersion**: 使用 `apiregistration.k8s.io/v1` 版本
-- **metadata.name**: 定义 API 的唯一标识符，格式为 `<version>.<group>`
-
-### Spec 字段
-
-- **group**: API 组名称，用于组织相关的 API 资源
-- **version**: API 版本标识符
-- **service**: 处理该 APIService 请求的后端服务配置
-  - `name`: 服务名称
-  - `namespace`: 服务所在的命名空间
-  - `port`: 服务端口（可选，默认为 443）
-
-### 安全配置
-
-- **caBundle**: Base64 编码的 CA 证书包，用于验证服务的 TLS 证书
-- **insecureSkipTLSVerify**: 是否跳过 TLS 证书验证（**强烈不推荐**设置为 true）
-
-### 优先级配置
-
-- **groupPriorityMinimum**: API 组的处理优先级
-  - 数值越大优先级越高
-  - 主要用于决定客户端与哪个 API 组通信
-  - 次要排序基于字母顺序
-
-- **versionPriority**: 同一组内 API 版本的优先级
-  - 必须大于零
-  - 数值越大优先级越高（如 20 > 10）
-  - 用于控制版本选择顺序
-
-## 查看 APIService 状态
-
-创建 APIService 后，可以查看其详细状态：
-
-```bash
-kubectl get apiservice v1beta1.custom-metrics.metrics.k8s.io -o yaml
-```
-
-输出示例：
-
-```yaml
-apiVersion: apiregistration.k8s.io/v1
-kind: APIService
-metadata:
-  creationTimestamp: "2023-10-15T08:27:35Z"
-  name: v1beta1.custom-metrics.metrics.k8s.io
-  resourceVersion: "35194598"
-  uid: a31a3412-e0a8-11e7-9fa4-f4e9d49f8ed0
-spec:
-  caBundle: LS0tLS1CRUdJTi... # Base64 encoded CA bundle
-  group: custom-metrics.metrics.k8s.io
-  groupPriorityMinimum: 1000
   insecureSkipTLSVerify: false
-  service:
-    name: custom-metrics-apiserver
-    namespace: custom-metrics
-    port: 443
-  version: v1alpha1
-  versionPriority: 5
-status:
-  conditions:
-  - lastTransitionTime: "2023-10-15T08:27:38Z"
-    message: all checks passed
-    reason: Passed
-    status: "True"
-    type: Available
+  caBundle: <Base64-encoded-CA>
 ```
 
-## 管理集群中的 APIService
+该对象描述了外部服务的访问地址（通常为 Kubernetes Service）及通信安全策略。主 API Server 会根据此配置将请求反向代理到扩展服务。
 
-### 查看所有 APIService
+## 示例：Metrics Server
 
-以下是相关的代码示例：
+`metrics-server` 是典型的 APIService 实现，用于聚合节点与 Pod 的 CPU、内存指标。
+
+部署完成后，可通过如下命令查看注册信息：
 
 ```bash
-kubectl get apiservices
+kubectl get apiservice | grep metrics
+v1beta1.metrics.k8s.io   kube-system/metrics-server   True   25s
 ```
 
-输出示例：
+然后使用：
 
 ```bash
-NAME                                     SERVICE                      AVAILABLE   AGE
-v1.                                      Local                        True        2d
-v1.apps                                  Local                        True        2d
-v1.authentication.k8s.io                Local                        True        2d
-v1.authorization.k8s.io                 Local                        True        2d
-v1.autoscaling                           Local                        True        2d
-v1.batch                                 Local                        True        2d
-v1.networking.k8s.io                    Local                        True        2d
-v1.rbac.authorization.k8s.io            Local                        True        2d
-v1.storage.k8s.io                       Local                        True        2d
-v1beta1.custom-metrics.metrics.k8s.io  custom-metrics/api           True        2h
-v1.apiextensions.k8s.io                 Local                        True        2d
-v1.certificates.k8s.io                  Local                        True        2d
-v1.policy                               Local                        True        2d
-v2.autoscaling                          Local                        True        2d
+kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 ```
 
-### 查看支持的 API 版本
+主 API Server 会将该请求代理至 metrics-server，实现统一访问入口。
 
-使用以下命令查看集群支持的所有 API 版本：
+## 证书与安全配置
 
-```bash
-kubectl api-versions
+聚合层涉及主从 API Server 之间的通信，必须通过 HTTPS 进行安全认证：
+
+- **证书签发**：扩展 API Server 需由集群 CA 签发服务端证书。
+- **CA 绑定**：`APIService` 对象中 `caBundle` 字段填入 CA 的 Base64 编码。
+- **Service Endpoint**：主 API Server 通过 `spec.service` 字段找到扩展服务的 ClusterIP。
+- **身份验证**：kube-apiserver 在反向代理前会验证目标服务的证书链。
+
+```mermaid "APIService 证书与安全通信流程"
+sequenceDiagram
+    participant Client
+    participant kube-apiserver
+    participant aggregated-apiserver
+    Client->>kube-apiserver: GET /apis/metrics.k8s.io/v1beta1/pods
+    kube-apiserver->>aggregated-apiserver: Proxy HTTPS (verify CA)
+    aggregated-apiserver-->>kube-apiserver: JSON metrics data
+    kube-apiserver-->>Client: Aggregated API Response
 ```
 
-输出示例：
+![APIService 证书与安全通信流程](d406fe1a2be7373762413c2de408722f.svg)
+{width=1920 height=840}
 
-```bash
-admissionregistration.k8s.io/v1
-apiextensions.k8s.io/v1
-apiregistration.k8s.io/v1
-apps/v1
-authentication.k8s.io/v1
-authorization.k8s.io/v1
-autoscaling/v1
-autoscaling/v2
-batch/v1
-certificates.k8s.io/v1
-coordination.k8s.io/v1
-custom-metrics.metrics.k8s.io/v1alpha1
-events.k8s.io/v1
-networking.k8s.io/v1
-node.k8s.io/v1
-policy/v1
-rbac.authorization.k8s.io/v1
-storage.k8s.io/v1
-v1
-```
+## 开发与部署流程
 
-## 最佳实践
+实现新的 APIService 通常包括以下步骤：
 
-1. **安全性**: 始终使用 `caBundle` 进行 TLS 验证，避免设置 `insecureSkipTLSVerify: true`
-2. **命名规范**: 使用清晰的命名约定，格式为 `<version>.<group>`
-3. **优先级设置**: 合理设置优先级以避免 API 冲突
-4. **监控状态**: 定期检查 APIService 的 `Available` 状态，确保服务正常运行
-5. **版本管理**: 在更新 API 版本时，保持向后兼容性
+1. **实现扩展 API Server**  
+   使用 `k8s.io/apiserver` 库编写支持 Kubernetes API 规范的独立服务。  
+   参考：[sample-apiserver](https://github.com/kubernetes/sample-apiserver)
 
-通过合理配置和管理 APIService，可以有效扩展 Kubernetes API 功能，为自定义应用程序提供原生的 Kubernetes API 体验。
+2. **部署 Service 与 Deployment**  
+   将扩展 API Server 部署到集群，并通过 ClusterIP Service 暴露。
+
+3. **注册 APIService 对象**  
+   创建 `APIService` 资源，绑定 group/version 与对应服务。
+
+4. **验证通信**  
+   使用 `kubectl get --raw` 验证代理路径是否正常工作。
+
+## 适用场景
+
+APIService 适用于以下典型场景：
+
+- 聚合外部数据源（如监控、日志、审计系统）
+- 构建多租户 API 入口层
+- 向 Kubernetes 注册系统级别管理 API
+- 实现平台级自定义控制平面（如 Service Catalog）
+
+不适用场景包括：
+
+- 一般应用级别的 CRD
+- Operator 模式（应使用 CRD）
+- 需要与 Kubernetes 深度集成的控制循环逻辑
+
+## 局限性与演进
+
+虽然 APIService 是早期重要扩展机制，但随着 CRD 的成熟，它逐渐被边缘化。
+
+{{< table title="APIService 局限性与对比" >}}
+
+| 局限性   | 说明                            |
+| -------- | ----------------------------- |
+| 部署复杂  | 涉及证书、反向代理与双向 TLS              |
+| 性能较低  | 每次访问需额外代理跳转                   |
+| 开发门槛高 | 必须遵循 Kubernetes API Server 架构 |
+| 可替代性强 | CRD + Operator 方案覆盖大多数需求      |
+
+{{< /table >}}
+
+目前社区主要将 APIService 用于系统组件，如 metrics-server、apiextensions-apiserver、kube-aggregator。
+
+## 总结
+
+APIService 是 Kubernetes 的早期扩展机制，代表了“聚合式 API 扩展”的设计理念，让 Kubernetes 成为统一 API 网关。但在实际生产中，APIService 更适合系统级组件，对于业务系统或 Operator 类应用，应优先选择 CRD 方式。
+
+## 参考文献
+
+1. [Kubernetes 官方文档：Aggregation Layer - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+2. [APIService API Reference - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#apiservice-v1-apiregistration-k8s-io)
+3. [Kubernetes Sample API Server - github.com](https://github.com/kubernetes/sample-apiserver)
+4. [Metrics Server - github.com](https://github.com/kubernetes-sigs/metrics-server)

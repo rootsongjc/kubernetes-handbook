@@ -1,24 +1,13 @@
 ---
 title: Envoy 的构建模块
 linktitle: Envoy 的构建模块
-type: book
-date: '2019-05-05T00:00:00+01:00'
+date: 2019-05-05T00:00:00+01:00
 weight: 5
 description: 详细介绍 Envoy 代理的核心构建模块，包括监听器、过滤器链、路由配置和集群等概念，以及它们如何协同工作来处理网络流量。
-keywords:
-- envoy
-- proxy
-- listener
-- filter
-- routing
-- cluster
-- service mesh
-- load balancing
-- 监听器
-- 过滤器
-- 路由
-- 集群
+lastmod: 2025-10-27T17:32:22.802Z
 ---
+
+> Envoy 的每一个构建模块都是现代服务网格灵活性与可观测性的基石，理解它们才能真正驾驭流量治理的全貌。
 
 ## 概述
 
@@ -310,7 +299,7 @@ curl -v localhost:10000
 
 这表明请求成功通过 Envoy 代理转发到了后端服务。
 
-## 小结
+## 总结
 
 Envoy 的核心构建模块包括：
 

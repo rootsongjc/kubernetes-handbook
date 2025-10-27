@@ -4,8 +4,10 @@ title: 参与 Kubernetes 社区贡献
 linktitle: 社区参与
 date: 2022-05-21T00:00:00+08:00
 description: 本文介绍如何参与 Kubernetes 开源社区，包括社区治理结构、贡献方式、开发指南和相关资源，帮助开发者更好地融入 Kubernetes 生态系统。
-lastmod: 2025-10-20T04:04:53.370Z
+lastmod: 2025-10-27T17:28:58.581Z
 ---
+
+> 贡献 Kubernetes 社区，不仅是技术成长的阶梯，更是与全球同行共创未来的桥梁。
 
 ## 社区概览
 

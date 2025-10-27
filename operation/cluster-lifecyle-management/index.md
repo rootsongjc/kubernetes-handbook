@@ -3,8 +3,10 @@ title: 使用 Kubeadmin 管理 Kubernetes 集群
 linktitle: 集群生命周期管理
 date: 2025-10-13
 description: 详细介绍如何使用 kubeadm 创建、配置、维护和升级 Kubernetes 集群，涵盖从集群初始化到日常运维与升级的完整生命周期管理流程。
-lastmod: 2025-10-19T08:32:26.715Z
+lastmod: 2025-10-27T17:13:48.114Z
 ---
+
+> kubeadm 让 Kubernetes 集群的构建与运维变得有章可循，助你轻松驾驭复杂的生命周期管理挑战。
 
 本文系统梳理了 Kubernetes 集群生命周期管理的核心流程，包括集群创建、证书管理、升级、高可用部署及常见故障排查，帮助运维人员高效管理生产级集群。
 

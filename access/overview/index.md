@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: Kubernetes 集群的访问方式概览
-linktitle: 概览
+linktitle: 概述
 description: 介绍如何使用 kubectl 命令行工具与 Kubernetes API 交互，涵盖 kubectl 与 API Server 的通信原理、认证机制、请求响应模式及高效管理资源的方法。
 date: 2025-08-26T10:05:39.568Z
 draft: false

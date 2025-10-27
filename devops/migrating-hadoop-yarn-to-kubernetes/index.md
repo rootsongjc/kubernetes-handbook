@@ -4,8 +4,10 @@ title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
 linktitle: 迁移传统应用
 date: 2022-05-21T00:00:00+08:00
 description: 详细说明如何将已有的传统分布式应用程序迁移到 Kubernetes 中，以 Spark on YARN 为实际案例，涵盖应用拆解、镜像制作、配置管理、资源定义等完整迁移流程。
-lastmod: 2025-10-19T07:09:05.559Z
+lastmod: 2025-10-27T17:24:00.263Z
 ---
+
+> 迁移不仅是技术的转变，更是架构思维与工程实践的深度融合。
 
 {{< callout warning 注意 >}}
 该文章内容已过时，仅供学习参考。

@@ -2,20 +2,9 @@
 weight: 87
 title: 创建用户认证授权的 kubeconfig 文件
 linktitle: Kubeconfig 用户认证授权
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 详细介绍如何为 Kubernetes 集群创建用户认证授权的 kubeconfig 文件，包括 CA 证书生成、kubeconfig 配置和 RBAC 权限绑定的完整流程。
-keywords:
-- context
-- dev
-- devuser
-- kubectl
-- namespace
-- test
-- 创建
-- 文件
-- 用户
-- 绑定
+lastmod: 2025-10-27T17:05:45.385Z
 ---
 
 当我们安装好 Kubernetes 集群后，如果想要把 kubectl 命令交给普通用户使用，就需要对用户的身份进行认证并对其权限做出限制。本文将以创建一个 `devuser` 用户并将其绑定到 `dev` 和 `test` 两个 namespace 为例，详细说明整个配置过程。

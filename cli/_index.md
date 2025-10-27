@@ -1,13 +1,12 @@
 ---
 weight: 78
-title: 命令使用
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: Kubernetes 中 kubectl 和其他常用管理命令的详细使用指南，包括基础操作、高级技巧和最佳实践。
+title: 命令与调试
+date: 2022-05-21T00:00:00+08:00
+description: Kubernetes 集群调试与诊断方法全解，涵盖 kubectl、常用命令行工具、排障技巧、日志分析、资源监控与最佳实践，助力高效定位和解决集群问题。
 icon: fa-solid fa-terminal
-lastmod: '2025-08-20'
+lastmod: 2025-10-27T17:17:42.653Z
 ---
 
-Kubernetes 提供了丰富的命令行工具用于集群和应用的管理。kubectl 是官方命令行客户端，可与 API 服务器通信，实现资源的创建、查询、配置、扩缩容、诊断、调试、滚动更新等操作。
+Kubernetes 提供了丰富的调试与诊断工具，帮助运维和开发人员高效定位和解决集群中的各种问题。除了 kubectl 这一官方命令行客户端外，还包括日志分析、事件排查、网络与存储诊断、Pod 远程调试、资源监控等多种手段。掌握这些工具和方法，是保障集群稳定运行和高效故障排查的基础。
 
 {{< list_children show_summary="true" style="cards"  >}}

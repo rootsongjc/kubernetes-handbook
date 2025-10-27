@@ -4,8 +4,10 @@ title: Kubernetes 测试指南
 linktitle: 测试指南
 description: 介绍 Kubernetes 项目中的各种测试方法和最佳实践，涵盖单元测试、集成测试和端到端测试，帮助开发者构建高质量的 Kubernetes 组件。
 date: 2024-01-15T00:00:00+08:00
-lastmod: 2025-10-20T04:06:37.994Z
+lastmod: 2025-10-27T17:28:05.987Z
 ---
+
+> 测试不仅是质量的保障，更是 Kubernetes 持续创新与演进的基石。
 
 本文介绍 Kubernetes 项目中的各种测试方法和最佳实践。
 

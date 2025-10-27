@@ -2,25 +2,18 @@
 weight: 50
 title: 扁平网络 Flannel
 linktitle: Flannel
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 深入介绍 Kubernetes 网络插件 Flannel 的工作原理，包括网络架构、配置方式、与 Docker 的集成以及路由机制，帮助理解容器网络的底层实现。
-keywords:
-- flannel
-- kubernetes
-- 容器网络
-- CNI
-- 网络插件
-- docker
-- etcd
-- 路由
+lastmod: 2025-10-27T16:34:12.292Z
 ---
+
+> Flannel 作为 Kubernetes 最主流的网络插件之一，为集群提供了简单高效的扁平网络方案，是理解容器网络实现原理的基础。
 
 Flannel 是 Kubernetes 集群中广泛使用的网络插件，它为集群提供了简单而有效的网络解决方案。本文将通过实际案例详细介绍 Flannel 的工作原理和配置方式。
 
 ## 集群网络概览
 
-假设你有一个包含三个节点的 Kubernetes 集群，节点状态如下：
+在 Kubernetes 集群中，网络由多种 IP 地址类型组成。以下示例展示了一个包含三个节点的集群及其节点状态：
 
 ```bash
 [root@node1 ~]# kubectl get nodes -o wide
@@ -30,7 +23,7 @@ node2     Ready     <none>    2d        v1.24.0   <none>        CentOS Linux 7 (
 node3     Ready     <none>    2d        v1.24.0   <none>        CentOS Linux 7 (Core)   3.10.0-693.11.6.el7.x86_64   containerd://1.6.6
 ```
 
-集群中运行的 Pod 分布情况：
+集群中 Pod 的分布情况如下：
 
 ```bash
 [root@node1 ~]# kubectl get pods --all-namespaces -o wide
@@ -41,15 +34,15 @@ kube-system   metrics-server-684c7f9488-z6sdz                   1/1       Runnin
 kube-system   kubernetes-dashboard-6b66b8b96c-mnm2c             1/1       Running   0          1h        172.33.31.2   node2
 ```
 
-## Kubernetes 网络类型
+Kubernetes 网络中常见的三类 IP 地址：
 
-Kubernetes 集群内部存在三类重要的 IP 地址：
-
-- **Node IP**：宿主机的物理网络 IP 地址，用于节点间通信
-- **Pod IP**：由网络插件（如 Flannel）分配的容器 IP，实现跨节点 Pod 通信
-- **Cluster IP**：Service 的虚拟 IP，通过 iptables/ipvs 规则提供服务访问
+- **Node IP**：宿主机物理网络 IP，用于节点间通信
+- **Pod IP**：由网络插件（如 Flannel）分配，实现跨节点 Pod 通信
+- **Cluster IP**：Service 虚拟 IP，通过 iptables/ipvs 提供服务访问
 
 ## Flannel 网络架构
+
+Flannel 通过为每个节点分配独立子网、维护路由和支持多种后端，实现了 Kubernetes 集群的扁平网络。
 
 ### 工作原理
 
@@ -68,7 +61,7 @@ Flannel 作为二进制程序部署在每个节点上，主要实现以下功能
 
 ### etcd 中的网络配置
 
-Flannel 将网络配置信息存储在 etcd 中：
+Flannel 将网络配置信息存储在 etcd 中，便于集群内各节点同步网络状态。
 
 ```bash
 # 查看子网分配情况
@@ -82,7 +75,7 @@ Flannel 将网络配置信息存储在 etcd 中：
 {"Network":"172.33.0.0/16","SubnetLen":24,"Backend":{"Type":"host-gw"}}
 ```
 
-配置说明：
+配置字段说明：
 
 - `Network`：整个集群的网络段
 - `SubnetLen`：每个节点分配的子网掩码长度
@@ -90,9 +83,11 @@ Flannel 将网络配置信息存储在 etcd 中：
 
 ## Flannel 配置详解
 
+Flannel 的部署和运行依赖于系统服务和环境变量配置。
+
 ### 服务配置
 
-Node1 上的 Flannel 服务配置：
+以下为 Node1 上的 Flannel 服务配置文件：
 
 ```bash
 [root@node1 ~]# cat /usr/lib/systemd/system/flanneld.service
@@ -119,7 +114,7 @@ RequiredBy=docker.service
 
 ### 环境变量配置
 
-Flannel 主配置文件：
+Flannel 主配置文件内容如下：
 
 ```bash
 [root@node1 ~]# cat /etc/sysconfig/flanneld
@@ -131,7 +126,7 @@ FLANNEL_OPTIONS="-iface=eth2"
 
 ### 动态生成的配置
 
-Flannel 启动后会生成以下配置文件：
+Flannel 启动后会自动生成以下配置文件，供 Docker 等容器运行时使用。
 
 **Docker 网络配置** (`/run/flannel/docker`)：
 
@@ -155,9 +150,11 @@ FLANNEL_IPMASQ=false
 
 ## 容器运行时集成
 
+Flannel 通过与容器运行时（如 Docker）集成，实现 Pod 网络的自动配置和管理。
+
 ### 网络接口分析
 
-查看节点的网络接口：
+查看节点的网络接口，可以了解 Flannel 与宿主机、容器的网络连接关系。
 
 ```bash
 [root@node1 ~]# ip addr show
@@ -168,9 +165,6 @@ FLANNEL_IPMASQ=false
 # eth2: 外网访问接口
 # docker0: Docker 网桥 (172.33.68.1/24)
 # veth对: 连接容器与网桥的虚拟网卡对
-
-以下是相关的代码示例：
-
 ```
 
 网络接口类型说明：
@@ -181,7 +175,7 @@ FLANNEL_IPMASQ=false
 
 ### 容器网络检查
 
-查看 Docker 网络配置：
+通过 Docker 命令可以检查当前网络配置和容器连接情况。
 
 ```bash
 [root@node1 ~]# docker network ls
@@ -193,16 +187,15 @@ d94c046e105d        host                host                local
 # 检查 bridge 网络详情
 [root@node1 ~]# docker network inspect bridge
 # 输出包含子网配置、网关设置、连接的容器等信息
-
-以下是相关的配置示例：
-
 ```
 
 ## 路由机制
 
+Flannel 自动维护节点间的路由表，实现跨节点 Pod 通信。
+
 ### 路由表分析
 
-Node1 的路由信息：
+以下为 Node1 的路由信息：
 
 ```bash
 [root@node1 ~]# route -n
@@ -223,7 +216,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 ### 跨节点通信测试
 
-测试从 node1 访问 node3 上的 Pod：
+以下为从 node1 访问 node3 上 Pod 的通信流程：
 
 ```bash
 [root@node1 ~]# traceroute 172.33.96.3
@@ -232,7 +225,7 @@ traceroute to 172.33.96.3 (172.33.96.3), 30 hops max, 60 byte packets
  2  172.33.96.3 (172.33.96.3)  0.451 ms  0.352 ms  0.223 ms
 ```
 
-通信流程：
+通信流程说明：
 
 1. 数据包从 node1 发出
 2. 根据路由表转发到 node3（172.17.8.103）
@@ -240,7 +233,7 @@ traceroute to 172.33.96.3 (172.33.96.3), 30 hops max, 60 byte packets
 
 ## 防火墙规则
 
-Kubernetes 会在 iptables 中注入相关规则：
+Kubernetes 会在 iptables 中注入相关规则，保障网络安全和流量转发。
 
 ```bash
 [root@node1 ~]# iptables -L -n
@@ -248,9 +241,6 @@ Kubernetes 会在 iptables 中注入相关规则：
 # KUBE-SERVICES: Service 访问规则
 # KUBE-FORWARD: 转发规则
 # KUBE-FIREWALL: 防火墙规则
-
-以下是相关的代码示例：
-
 ```
 
 重要规则说明：
@@ -261,33 +251,40 @@ Kubernetes 会在 iptables 中注入相关规则：
 
 ## 最佳实践
 
+在生产环境中，合理配置 Flannel 可提升网络性能和稳定性。
+
 ### 性能优化
 
-1. **选择合适的后端**：
-    - `host-gw`：性能最佳，要求节点在同一子网
-    - `vxlan`：适用于复杂网络环境，有轻微性能损耗
-
-2. **MTU 设置**：
-    - 根据底层网络调整 MTU 值
-    - 避免数据包分片导致的性能问题
+- **选择合适的后端**：
+- `host-gw`：性能最佳，要求节点在同一子网
+- `vxlan`：适用于复杂网络环境，有轻微性能损耗
+- **MTU 设置**：
+- 根据底层网络调整 MTU 值
+- 避免数据包分片导致的性能问题
 
 ### 故障排查
 
 常见问题及解决方法：
 
-1. **Pod 无法跨节点通信**：
-    - 检查路由表是否正确
-    - 验证防火墙规则
-    - 确认 Flannel 服务状态
+**Pod 无法跨节点通信**：
 
-2. **网络性能问题**：
-    - 检查 MTU 配置
-    - 监控网络接口状态
-    - 分析网络延迟和丢包
+- 检查路由表是否正确
+- 验证防火墙规则
+- 确认 Flannel 服务状态
 
-## 参考资源
+**网络性能问题**：
 
-- [Flannel 官方文档](https://github.com/flannel-io/flannel)
-- [Kubernetes 网络模型](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-- [CNI 规范](https://github.com/containernetworking/cni)
-- [Linux 网络虚拟化技术](https://www.kernel.org/doc/Documentation/networking/)
+- 检查 MTU 配置
+- 监控网络接口状态
+- 分析网络延迟和丢包
+
+## 总结
+
+Flannel 作为 Kubernetes 最常用的网络插件之一，通过子网分配、路由维护和多后端支持，为集群提供了高效、易用的扁平网络方案。理解 Flannel 的工作原理和配置细节，有助于优化集群网络性能、提升故障排查效率。建议结合实际场景选择合适的后端和参数配置，持续关注网络健康和安全。
+
+## 参考文献
+
+- [Flannel 官方文档 - github.com](https://github.com/flannel-io/flannel)
+- [Kubernetes 网络模型 - kubernetes.io](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+- [CNI 规范 - github.com](https://github.com/containernetworking/cni)
+- [Linux 网络虚拟化技术 - kernel.org](https://www.kernel.org/doc/Documentation/networking/)

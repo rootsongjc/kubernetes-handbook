@@ -1,26 +1,20 @@
 ---
 weight: 29
 title: Deployment
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: Deployment 为 Pod 和 ReplicaSet 提供了声明式的部署方案，支持滚动更新、扩缩容、暂停恢复等操作，是 Kubernetes 中管理无状态应用的核心控制器。
-keywords:
-- deployment
-- nginx
-- pod
-- replica
-- replicaset
-- selector
-- spec
-- template
-- 创建
+lastmod: 2025-10-27T16:02:32.390Z
 ---
+
+> Deployment 控制器为 Kubernetes 无状态应用提供了声明式部署、弹性伸缩与高可用保障，是现代云原生架构的核心基石。
 
 ## 概述
 
 Deployment 为 Pod 和 ReplicaSet 提供了声明式定义（declarative）方法，用来替代以前的 ReplicationController 来方便地管理应用。它是 Kubernetes 中管理无状态应用的核心控制器。
 
 ### 主要功能
+
+Deployment 支持多种核心功能，便于高效管理应用生命周期：
 
 - **创建管理**：定义 Deployment 来创建 Pod 和 ReplicaSet
 - **滚动更新**：支持应用的滚动升级和回滚
@@ -29,7 +23,7 @@ Deployment 为 Pod 和 ReplicaSet 提供了声明式定义（declarative）方�
 
 ### 快速示例
 
-一个简单的 nginx 应用可以定义为：
+以下是一个简单的 nginx 应用 Deployment 配置示例：
 
 ```yaml
 apiVersion: apps/v1
@@ -55,52 +49,48 @@ spec:
 
 ### 常用操作命令
 
-**扩容应用：**
+常见的 Deployment 运维命令如下：
 
 ```bash
+# 扩容应用
 kubectl scale deployment nginx-deployment --replicas 10
-```
 
-**设置自动扩缩容：**
-
-```bash
+# 设置自动扩缩容
 kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80
-```
 
-**更新镜像：**
-
-```bash
+# 更新镜像
 kubectl set image deployment/nginx-deployment nginx=nginx:1.21
-```
 
-**回滚到上一版本：**
-
-```bash
+# 回滚到上一版本
 kubectl rollout undo deployment/nginx-deployment
 ```
 
 ## 架构图解
+
+下图展示了 Deployment 控制器的核心架构与资源关系。
 
 ![Kubernetes Deployment Cheatsheet](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/deployment/deployment-cheatsheet.webp)
 {width=2142 height=2468}
 
 ## 核心概念
 
-### Deployment 的作用
+Deployment 通过声明式更新能力，自动管理 Pod 和 ReplicaSet 的生命周期。只需描述期望的目标状态，Deployment Controller 会自动驱动实际状态向目标状态收敛。
 
-Deployment 为 Pod 和 ReplicaSet 提供声明式更新能力。你只需要在 Deployment 中描述期望的目标状态，Deployment Controller 就会帮你将 Pod 和 ReplicaSet 的实际状态改变到目标状态。
+{{< table title="Deployment 典型应用场景" >}}
 
-**重要提醒**：你不应该手动管理由 Deployment 创建的 ReplicaSet，否则会与 Deployment Controller 产生冲突。
+| 场景         | 说明                                   |
+|--------------|----------------------------------------|
+| 应用部署     | 创建 ReplicaSet，后台自动创建 Pod      |
+| 滚动更新     | 更新 PodTemplateSpec 触发新版本部署    |
+| 版本回滚     | 回滚到历史稳定版本                     |
+| 应用扩缩容   | 动态调整副本数以应对负载变化           |
+| 部署控制     | 支持暂停、恢复、批量修改               |
+| 状态监控     | 监控部署进度与健康状态                 |
+| 历史清理     | 清理旧 ReplicaSet，节省资源            |
 
-### 典型应用场景
+{{< /table >}}
 
-- **应用部署**：使用 Deployment 创建 ReplicaSet，ReplicaSet 在后台创建 Pod
-- **滚动更新**：通过更新 Deployment 的 PodTemplateSpec 字段来声明 Pod 的新状态
-- **版本回滚**：当前状态不稳定时，回滚到之前的 Deployment revision
-- **应用扩缩容**：扩容 Deployment 以满足更高的负载
-- **部署控制**：暂停 Deployment 来应用多个修复，然后恢复上线
-- **状态监控**：根据 Deployment 的状态判断部署是否成功
-- **历史清理**：清除旧的不必要的 ReplicaSet
+**注意**：不要手动管理由 Deployment 创建的 ReplicaSet，否则会与 Deployment Controller 产生冲突。
 
 ## 创建 Deployment
 
@@ -112,32 +102,30 @@ Deployment 为 Pod 和 ReplicaSet 提供声明式更新能力。你只需要在 
 kubectl create -f nginx-deployment.yaml --record
 ```
 
-使用 `--record` 参数可以在 annotation 中记录当前命令，便于后续的版本管理和回滚操作。
+`--record` 参数可记录变更历史，便于后续回滚和审计。
 
 ### 查看状态
 
-创建后立即查看状态：
+创建后可通过以下命令查看 Deployment 状态：
 
 ```bash
 kubectl get deployments
-NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-nginx-deployment   3         0         0            0           1s
+kubectl get rs
+kubectl get pods --show-labels
 ```
 
-状态说明：
+Deployment 状态字段说明：
 
-- **DESIRED**：期望的副本数（根据 `.spec.replicas` 配置）
-- **CURRENT**：当前副本数（`.status.replicas`）
-- **UP-TO-DATE**：最新的副本数（`.status.updatedReplicas`）
-- **AVAILABLE**：可用的副本数（`.status.availableReplicas`）
+{{< table title="Deployment 状态字段说明" >}}
 
-等待部署完成后：
+| 字段         | 含义                         |
+|--------------|------------------------------|
+| DESIRED      | 期望副本数（.spec.replicas） |
+| CURRENT      | 当前副本数（.status.replicas）|
+| UP-TO-DATE   | 最新副本数（.status.updatedReplicas）|
+| AVAILABLE    | 可用副本数（.status.availableReplicas）|
 
-```bash
-kubectl get deployments
-NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-nginx-deployment   3         3         3            3           18s
-```
+{{< /table >}}
 
 ### 查看关联资源
 
@@ -161,13 +149,13 @@ nginx-deployment-2035384211-qqcnn   1/1     Running   0          18s   app=nginx
 
 ### Pod Template Hash 标签
 
-注意 Pod 上的 `pod-template-hash` 标签，这是 Deployment Controller 自动添加的。通过将 ReplicaSet 的 PodTemplate 进行哈希散列，生成的哈希值作为标签值，确保不同版本的 ReplicaSet 管理的 Pod 不会冲突。
+Deployment Controller 会自动为 Pod 添加 `pod-template-hash` 标签，用于区分不同版本的 ReplicaSet 管理的 Pod，避免冲突。
 
 ## 更新 Deployment
 
 ### 触发更新
 
-Deployment 的滚动更新（rollout）只有在 Deployment 的 Pod template（`.spec.template`）中的标签更新或者镜像更改时才会被触发。其他更新如扩容不会触发 rollout。
+只有当 Deployment 的 Pod template（`.spec.template`）发生变更（如标签、镜像等）时，才会触发滚动更新（rollout）。
 
 ### 镜像更新
 
@@ -177,7 +165,7 @@ Deployment 的滚动更新（rollout）只有在 Deployment 的 Pod template（`
 kubectl set image deployment/nginx-deployment nginx=nginx:1.21
 ```
 
-或者使用 edit 命令：
+或通过编辑方式：
 
 ```bash
 kubectl edit deployment/nginx-deployment
@@ -189,17 +177,14 @@ kubectl edit deployment/nginx-deployment
 
 ```bash
 kubectl rollout status deployment/nginx-deployment
-Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
-deployment "nginx-deployment" successfully rolled out
 ```
 
 ### 滚动更新过程
 
-Deployment 采用滚动更新策略，确保在更新过程中服务的可用性：
+Deployment 默认采用滚动更新策略，保证服务可用性：
 
-- 默认情况下，最多有 25% 的 Pod 不可用（maxUnavailable）
-- 最多有 25% 的 Pod 超出期望数量（maxSurge）
-- 这样确保在更新过程中始终有足够的 Pod 提供服务
+- `maxUnavailable`：最多有 25% 的 Pod 不可用
+- `maxSurge`：最多有 25% 的 Pod 超出期望数量
 
 查看更新过程中的 ReplicaSet 变化：
 
@@ -210,74 +195,37 @@ nginx-deployment-1564180365   3         3         3       6s
 nginx-deployment-2035384211   0         0         0       36s
 ```
 
-### Rollover（多个滚动更新并行）
+## Rollover（并行滚动更新）
 
-当 Deployment Controller 观测到新的 deployment 被创建时：
+若在滚动更新过程中再次修改 Deployment，会立即创建新的 ReplicaSet，并终止之前的更新过程，确保最新变更优先生效。
 
-- 如果没有已存在的 ReplicaSet 来创建期望个数的 Pod，就会创建新的 ReplicaSet
-- 已存在的 ReplicaSet 会被缩容到 0
-- 如果在更新过程中再次更新，会立即创建新的 ReplicaSet，并停止之前的更新过程
+## Label Selector 更新
 
-### Label Selector 更新
-
-**不建议更新 label selector**，如果必须更新，需要注意：
-
-- **增加 selector**：需要同时在 Deployment spec 中更新新的 label
-- **更新 selector**：会导致创建新的 ReplicaSet，旧的会变成孤儿
-- **删除 selector**：不需要改变 Pod template label，但删除的 label 仍存在于现有 Pod 中
+**不建议**直接修改 label selector。若必须修改，需同步更新 Pod template 的 label，避免产生孤儿 ReplicaSet。
 
 ## 版本回滚
 
-### 回滚场景
+### 回滚场景与操作
 
-当部署出现问题时（如镜像错误、应用崩溃等），可以快速回滚到稳定版本。
-
-假设更新了错误的镜像：
-
-```bash
-kubectl set image deployment/nginx-deployment nginx=nginx:1.91
-```
-
-### 查看回滚历史
-
-查看 Deployment 的 revision 历史：
-
-```bash
-kubectl rollout history deployment/nginx-deployment
-deployments "nginx-deployment":
-REVISION    CHANGE-CAUSE
-1           kubectl create -f nginx-deployment.yaml --record
-2           kubectl set image deployment/nginx-deployment nginx=nginx:1.20
-3           kubectl set image deployment/nginx-deployment nginx=nginx:1.91
-```
-
-查看特定版本的详细信息：
-
-```bash
-kubectl rollout history deployment/nginx-deployment --revision=2
-```
-
-### 执行回滚
-
-回滚到上一个版本：
+当部署出现问题时，可通过以下命令回滚：
 
 ```bash
 kubectl rollout undo deployment/nginx-deployment
-```
-
-回滚到指定版本：
-
-```bash
 kubectl rollout undo deployment/nginx-deployment --to-revision=2
 ```
 
-### 清理策略
+查看历史版本：
 
-通过设置 `.spec.revisionHistoryLimit` 来控制保留的历史版本数量：
+```bash
+kubectl rollout history deployment/nginx-deployment
+kubectl rollout history deployment/nginx-deployment --revision=2
+```
+
+通过 `.spec.revisionHistoryLimit` 控制历史版本保留数量：
 
 ```yaml
 spec:
-  revisionHistoryLimit: 10  # 保留 10 个历史版本
+  revisionHistoryLimit: 10
 ```
 
 设置为 0 则不保留历史版本，但会失去回滚能力。
@@ -309,7 +257,7 @@ kubectl delete hpa nginx-deployment
 
 ### 比例扩容
 
-当 RollingUpdate Deployment 正在进行滚动更新时，如果同时进行扩容操作，Deployment Controller 会按比例在新旧 ReplicaSet 之间分配新增的副本数，以降低风险。
+滚动更新期间扩容，Deployment Controller 会按比例在新旧 ReplicaSet 之间分配新增副本，降低风险。
 
 例如：
 
@@ -400,7 +348,7 @@ kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSeconds"
 
 ### 金丝雀发布
 
-通过创建多个 Deployment 实现金丝雀发布：
+通过多个 Deployment 实现金丝雀发布：
 
 ```yaml
 # 稳定版本
@@ -451,44 +399,17 @@ spec:
 
 ### 必需字段
 
-**Pod Template (`.spec.template`)**：
-
-- 是 `.spec` 中唯一必需的字段
-- 具有与 Pod 相同的 schema，但是嵌套的且不需要 `apiVersion` 和 `kind`
-- 必须指定适当的标签和重启策略
+- `.spec.template`：Pod 模板，唯一必需字段，结构与 Pod 相同但无需 `apiVersion` 和 `kind`，需指定标签和重启策略
 
 ### 可选字段
 
-**副本数 (`.spec.replicas`)**：
+- `.spec.replicas`：期望 Pod 数量，默认 1
+- `.spec.selector`：label selector，必须与模板标签匹配
+- `.spec.strategy`：更新策略，支持 `Recreate` 和 `RollingUpdate`
+- `maxUnavailable`、`maxSurge`：滚动更新参数
+- `progressDeadlineSeconds`、`minReadySeconds`、`revisionHistoryLimit`、`paused` 等高级配置
 
-- 指定期望的 Pod 数量，默认为 1
-
-**选择器 (`.spec.selector`)**：
-
-- 指定 label selector，圈定 Deployment 管理的 Pod 范围
-- 如果未指定，默认使用 `.spec.template.metadata.labels`
-- 必须匹配 `.spec.template.metadata.labels`
-
-**更新策略 (`.spec.strategy`)**：
-
-- `Recreate`：先删除所有旧 Pod 再创建新 Pod
-- `RollingUpdate`：滚动更新（默认）
-
-**滚动更新参数**：
-
-- `maxUnavailable`：更新过程中不可用 Pod 的最大数量或百分比
-- `maxSurge`：更新过程中可以超出期望数量的最大 Pod 数或百分比
-
-**其他配置**：
-
-- `progressDeadlineSeconds`：进度超时时间
-- `minReadySeconds`：Pod 准备就绪的最小等待时间
-- `revisionHistoryLimit`：保留的历史版本数量
-- `paused`：是否暂停 Deployment
-
-### 配置示例
-
-以下是相关的示例代码：
+**完整配置示例：**
 
 ```yaml
 apiVersion: apps/v1
@@ -529,26 +450,11 @@ spec:
 
 ## 最佳实践
 
-### 标签管理
+- 为 Deployment 和 Pod 设置清晰、语义化的标签，避免选择器冲突
+- 合理配置 CPU、内存 requests/limits，设置健康检查
+- 使用 `--record` 参数记录变更历史，合理设置 `revisionHistoryLimit`
+- 监控 Deployment 状态，建立自动告警和健康检查机制
 
-- 为 Deployment 和 Pod 设置清晰的标签
-- 避免与其他控制器的选择器冲突
-- 使用语义化的标签值
+## 总结
 
-### 资源配置
-
-- 合理设置 CPU 和内存的 requests 和 limits
-- 配置健康检查（liveness 和 readiness probe）
-- 设置适当的镜像拉取策略
-
-### 版本管理
-
-- 使用 `--record` 参数记录变更历史
-- 合理设置 `revisionHistoryLimit`
-- 建立完善的发布和回滚流程
-
-### 监控告警
-
-- 监控 Deployment 的状态变化
-- 设置资源使用率告警
-- 建立应用健康检查机制
+Deployment 控制器为 Kubernetes 提供了声明式、自动化的无状态应用管理能力。通过合理配置和最佳实践，可实现高可用、弹性伸缩、平滑升级与快速回滚，助力云原生架构的持续演进。
