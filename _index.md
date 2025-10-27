@@ -1,5 +1,5 @@
 ---
-linktitle: Kubernetes 手册
+linktitle: Kubernetes 教程
 description: Kubernetes 基础教程 - 全面介绍容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
 categories:
   - 教程手册
@@ -57,7 +57,7 @@ book:
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: 2025-10-19T12:27:42.107Z
+lastmod: 2025-10-27T14:14:36.610Z
 authors:
   - Jimmy Song
 publisher: jimmysong.io
