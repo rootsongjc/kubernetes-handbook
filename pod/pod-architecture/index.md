@@ -4,9 +4,9 @@ title: Pod 解析
 date: 2022-05-21T00:00:00+08:00
 type: book
 aliases:
-   - /book/kubernetes-handbook/objects/pod-overview/
+  - /book/kubernetes-handbook/objects/pod-overview/
 description: 深入了解 Kubernetes Pod 架构、设计理念、生命周期管理和最佳实践，包括 Pod 的创建、调度、终止和故障处理机制。
-lastmod: 2025-10-27T13:06:05.698Z
+lastmod: 2025-10-27T18:08:04.207Z
 ---
 
 > Pod 是 Kubernetes 架构的基石，理解其设计理念和生命周期管理对于构建高可用、可扩展的容器化应用至关重要。
@@ -124,17 +124,17 @@ Pod 的生命周期分为多个阶段，合理管理可提升系统稳定性。
 下图展示了 Pod 的生命周期主要阶段及状态转换：
 
 ```mermaid "Pod 生命周期流程"
-graph TD
-    A[Pending] --> B[Running]
-    B --> C[Succeeded]
-    B --> D[Failed]
-    B --> E[Unknown]
-    D --> F[重启策略]
-    F --> B
+stateDiagram-v2
+  [*] --> Pending : Kube 接收调度请求
+  Pending --> Running : 至少有一个容器正在运行
+  Running --> Succeed : 所有容器以 0 状态码终止
+  Running --> Failed : 至少有一个容器以非 0 状态码终止
+  Failed --> Running : 重启后容器再次运行
+  Succeed --> [*]
 ```
 
-![Pod 生命周期流程](d04dad6cd5f7c74c27c393c1ab56084c.svg)
-{width=1920 height=1677}
+![Pod 生命周期流程](579744754244b76400d417e5b8ebb129.svg)
+{width=1920 height=2284}
 
 ## Pod 网络和存储
 
