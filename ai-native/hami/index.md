@@ -1,9 +1,9 @@
 ---
 title: HAMi：Kubernetes 上的异构算力虚拟化中间件
-description: HAMi（Heterogeneous AI Computing Virtualization Middleware）是一个开源的 Kubernetes 异构算力虚拟化中间件，支持 GPU、NPU、MLU 等多种加速硬件的共享与调度。本文介绍 HAMi 的起源、架构设计、核心功能及典型应用场景。
+description: 探索 HAMi：Kubernetes 上的异构算力虚拟化中间件，提升 AI 加速器管理与调度效率，助力资源优化与灵活性。
 weight: 11
 linktitle: HAMi：算力虚拟化
-lastmod: 2025-10-20T05:17:49.851Z
+lastmod: 2025-10-27T15:05:28.630Z
 date: 2025-10-20T04:55:31.153Z
 ---
 

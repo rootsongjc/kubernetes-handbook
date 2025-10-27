@@ -1,12 +1,42 @@
 ---
 weight: 40
 title: Secret
+aliases:
+  - /book/kubernetes-handbook/config/secret/
 date: 2022-05-21T00:00:00+08:00
 description: Secret 是 Kubernetes 中用于存储敏感数据的对象，包括密码、token、密钥等，支持以 Volume 或环境变量方式使用，主要类型有 Opaque、Service Account 和 dockerconfigjson。
-lastmod: 2025-10-13T06:03:37.706Z
+lastmod: 2025-10-27T12:39:28.278Z
 ---
 
-Secret 是 Kubernetes 中专门用于存储和管理敏感数据的资源对象，如密码、OAuth token、SSH 密钥等。使用 Secret 可以避免将敏感信息直接写入容器镜像或 Pod 规范中，提高了应用的安全性。
+> Secret 是 Kubernetes 管理敏感信息（如密码、Token、密钥）的核心机制，合理使用可提升集群安全性与敏感数据治理能力。
+
+## Secret 概览
+
+Secret（密文对象）用于保存少量敏感信息（如密码、token、密钥等），相比直接写入 Pod spec 或镜像，更安全灵活。Secret 支持多种用法，提升了敏感数据的隔离与访问控制能力。
+
+```mermaid "Secret 生命周期与使用流程"
+flowchart TD
+    A[创建 Secret] --> B{挂载到 Pod}
+    B -- Volume 挂载 --> C[容器内文件]
+    B -- 环境变量 --> D[容器内变量]
+    B -- 镜像拉取凭证 --> E[imagePullSecret]
+    C & D & E --> F[Pod 运行时访问 Secret]
+```
+
+![Secret 生命周期与使用流程](a29e9fd7d57a961ab64c0c6828220d91.svg)
+{width=1920 height=1908}
+
+Secret 可通过以下方式被 Pod 使用：
+
+- 作为 [volume](https://kubernetes.io/docs/concepts/storage/volumes) 挂载为文件
+- 作为环境变量暴露给容器
+- 作为镜像拉取凭证（imagePullSecret）
+
+### 内置 Secret
+
+#### ServiceAccount 自动创建 API 凭证 Secret
+
+Kubernetes 会为每个 ServiceAccount 自动创建访问 API 的 Secret，并自动挂载到 Pod。自 v1.24 起，长期 Token Secret 不再自动创建，推荐使用短期 Token（BoundServiceAccountTokenVolume）。
 
 ## Secret 类型
 
@@ -29,12 +59,8 @@ Opaque 是最常用的 Secret 类型，用于存储任意的敏感数据。数�
 ```bash
 echo -n "admin" | base64
 # 输出：YWRtaW4=
-
 echo -n "mypassword123" | base64
 # 输出：bXlwYXNzd29yZDEyMw==
-
-以下是相关的代码示例：
-
 ```
 
 创建 Secret 资源文件：
@@ -67,11 +93,9 @@ kubectl apply -f secret.yaml
 
 ### 使用 Secret
 
-Secret 可以通过两种方式在 Pod 中使用：
+Secret 可通过多种方式被 Pod 消费，提升安全性与灵活性。
 
 #### 方式一：挂载为 Volume
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: v1
@@ -101,8 +125,6 @@ spec:
 - `/etc/secrets/password` 包含 `mypassword123`
 
 #### 方式二：作为环境变量
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: apps/v1
@@ -137,13 +159,43 @@ spec:
               key: password
 ```
 
+容器内可直接读取环境变量：
+
+```bash
+echo $DB_USERNAME
+echo $DB_PASSWORD
+```
+
+### 以环境变量方式使用 Secret（通用示例）
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-env-pod
+spec:
+  containers:
+  - name: mycontainer
+    image: redis
+    env:
+      - name: SECRET_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: user-credentials
+            key: username
+      - name: SECRET_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: user-credentials
+            key: password
+  restartPolicy: Never
+```
+
 ## Docker Registry Secret
 
 当需要从私有 Docker Registry 拉取镜像时，需要创建认证 Secret。
 
 ### 使用命令创建
-
-以下是相关的定义示例：
 
 ```bash
 kubectl create secret docker-registry registry-secret \
@@ -154,8 +206,6 @@ kubectl create secret docker-registry registry-secret \
 ```
 
 ### 使用 YAML 创建
-
-以下是相关的定义示例：
 
 ```yaml
 apiVersion: v1
@@ -174,8 +224,6 @@ cat ~/.docker/config.json | base64 -w 0
 ```
 
 ### 在 Pod 中使用
-
-以下是具体的使用方法：
 
 ```yaml
 apiVersion: v1
@@ -216,14 +264,159 @@ kubectl apply -f sa-secret.yaml
 kubectl get secret sa-token-secret -o jsonpath='{.data.token}' | base64 -d
 ```
 
+## Secret 生命周期与安全
+
+```mermaid "Secret 生命周期与节点分发"
+flowchart LR
+    A[Secret 创建于 API Server] --> B[仅分发到需要的 Node]
+    B --> C[Pod 消费 Secret]
+    C --> D[Pod 删除后 Secret 文件消失]
+```
+
+![Secret 生命周期与节点分发](221b2d457f6955a65ce0a0c9b72563d2.svg)
+{width=1920 height=123}
+
+- Secret 仅在被 Pod 消费时分发到节点
+- Secret 文件存储于 tmpfs，不落盘
+- Pod 删除后，Secret 文件自动清理
+
+## 限制与约束
+
+- Secret 属于命名空间级资源，仅同 namespace Pod 可引用
+- 单个 Secret 大小上限 1MB
+- 必须先创建 Secret，Pod 才能引用（除非标记为可选）
+- 通过 `envFrom` 注入环境变量时，非法变量名的 key 会被跳过
+
+## 使用案例
+
+### 包含 SSH 密钥的 Pod
+
+```bash
+kubectl create secret generic ssh-key-secret \
+  --from-file=ssh-privatekey=/path/to/.ssh/id_rsa \
+  --from-file=ssh-publickey=/path/to/.ssh/id_rsa.pub
+```
+
+Pod 挂载 SSH 密钥：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-test-pod
+spec:
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: ssh-key-secret
+  containers:
+  - name: ssh-test-container
+    image: mySshImage
+    volumeMounts:
+    - name: secret-volume
+      readOnly: true
+      mountPath: "/etc/secret-volume"
+```
+
+### 多环境数据库凭据
+
+```bash
+kubectl create secret generic prod-db-secret \
+  --from-literal=username=produser \
+  --from-literal=password=Y4nys7f11
+kubectl create secret generic test-db-secret \
+  --from-literal=username=testuser \
+  --from-literal=password=iluvtests
+```
+
+创建使用不同 Secret 的 Pod：
+
+```yaml
+apiVersion: v1
+kind: List
+items:
+- kind: Pod
+  apiVersion: v1
+  metadata:
+    name: prod-db-client-pod
+    labels:
+      name: prod-db-client
+  spec:
+    volumes:
+    - name: secret-volume
+      secret:
+        secretName: prod-db-secret
+    containers:
+    - name: db-client-container
+      image: myClientImage
+      volumeMounts:
+      - name: secret-volume
+        readOnly: true
+        mountPath: "/etc/secret-volume"
+- kind: Pod
+  apiVersion: v1
+  metadata:
+    name: test-db-client-pod
+    labels:
+      name: test-db-client
+  spec:
+    volumes:
+    - name: secret-volume
+      secret:
+        secretName: test-db-secret
+    containers:
+    - name: db-client-container
+      image: myClientImage
+      volumeMounts:
+      - name: secret-volume
+        readOnly: true
+        mountPath: "/etc/secret-volume"
+```
+
+### Secret 卷中以点号开头的文件
+
+为了将数据"隐藏"起来（即文件名以点号开头的文件），让该键以一个点开始：
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dotfile-secret
+data:
+  .secret-file: dmFsdWUtMg0KDQo=
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-dotfiles-pod
+spec:
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: dotfile-secret
+  containers:
+  - name: dotfile-test-container
+    image: busybox
+    command:
+    - ls
+    - "-la"
+    - "/etc/secret-volume"
+    volumeMounts:
+    - name: secret-volume
+      readOnly: true
+      mountPath: "/etc/secret-volume"
+```
+
+**注意**：以点号开头的文件在 `ls -l` 的输出中被隐藏起来了；必须使用 `ls -la` 才能查看它们。
+
 ## 最佳实践
 
-1. **最小权限原则**：只向需要的 Pod 暴露必要的 Secret
-2. **使用 RBAC**：限制对 Secret 资源的访问权限
-3. **定期轮换**：定期更新敏感数据，特别是密码和 token
-4. **避免日志泄露**：确保应用不会将 Secret 内容输出到日志中
-5. **使用外部密钥管理**：考虑集成 HashiCorp Vault、AWS Secrets Manager 等外部系统
-6. **文件权限**：挂载 Secret 时设置适当的文件权限（如 0400）
+- 使用 RBAC 限制 Secret 访问
+- 启用 etcd 静态加密
+- 定期轮换 Secret 凭据
+- 避免日志输出 Secret 内容
+- 高敏感信息建议用专用密钥管理系统
+- 监控 Secret 访问与变更
 
 ## 监控和故障排查
 
@@ -246,3 +439,7 @@ kubectl exec pod-name -- cat /etc/secrets/username
 ```
 
 Secret 相关的常见问题包括编码错误、权限不足、Secret 不存在等，可通过 `kubectl describe pod` 查看详细的错误信息。
+
+## 总结
+
+Secret 是 Kubernetes 管理敏感信息的基础能力。通过合理的创建、挂载和权限控制，可有效提升集群安全性。结合 RBAC、etcd 加密与密钥管理系统，构建安全合规的敏感数据治理体系。

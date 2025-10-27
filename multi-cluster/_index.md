@@ -8,6 +8,6 @@ icon: fa-solid fa-object-group
 lastmod: '2025-08-20'
 ---
 
-随着组织规模的扩大和业务复杂性的增加，单一 Kubernetes 集群往往无法满足所有需求。多集群管理已成为现代云原生架构的重要组成部分，为不同业务提供隔离，增强可用性和可扩展性。
+多集群（Multi-Cluster）是云原生架构演进的重要阶段。随着 Kubernetes 在企业级生产环境中的普及，单一集群架构已难以满足高可用、合规性、多云部署与全球化分布式服务等复杂需求。 本章节介绍 Kubernetes 多集群管理的核心理念、常见架构模式以及当前的发展趋势。
 
-{{< list_children show_summary="true" style="cards"  >}}
+{{< list_children style="cards"  >}}

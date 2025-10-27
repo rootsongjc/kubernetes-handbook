@@ -1,21 +1,12 @@
 ---
 weight: 30
 title: StatefulSet
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: >-
-  StatefulSet 是 Kubernetes
-  中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。
-keywords:
-  - statefulset
-  - kubernetes
-  - 有状态应用
-  - 持久化存储
-  - 网络标识
-  - pod 管理
-  - 滚动更新
-lastmod: '2025-08-23'
+date: 2022-05-21T00:00:00+08:00
+description: StatefulSet 是 Kubernetes 中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。
+lastmod: 2025-10-27T16:13:40.867Z
 ---
+
+> StatefulSet 控制器为 Kubernetes 有状态应用提供了稳定标识、持久存储和有序部署，是数据库、消息队列等关键服务高可用的基础保障。
 
 StatefulSet 是 Kubernetes 中专门用于管理有状态应用的控制器。与 Deployment 和 ReplicaSet 为无状态服务设计不同，StatefulSet 为 Pod 提供唯一标识，并保证部署和扩缩容的有序性。
 
@@ -39,7 +30,7 @@ StatefulSet 由以下几个关键部分组成：
 
 ## DNS 命名规则
 
-StatefulSet 中每个 Pod 的 DNS 格式为：
+StatefulSet 中每个 Pod 的 DNS 格式如下，便于集群内服务发现和通信：
 
 ```text
 <statefulSetName>-<ordinal>.<serviceName>.<namespace>.svc.cluster.local
@@ -74,7 +65,7 @@ StatefulSet 适用于具有以下一个或多个需求的应用：
 
 ## 基础示例
 
-以下是一个简单的 nginx StatefulSet 示例：
+以下 YAML 示例展示了一个典型的 nginx StatefulSet 配置方式：
 
 ```yaml
 apiVersion: v1
@@ -129,6 +120,8 @@ spec:
 
 ## Pod 身份管理
 
+StatefulSet 通过序数和 DNS 规则为每个 Pod 提供唯一身份，便于服务发现和数据隔离。
+
 ### 序数标识
 
 对于有 N 个副本的 StatefulSet，每个副本都有一个唯一的整数序数，范围在 [0,N) 之间。
@@ -139,9 +132,13 @@ spec:
 
 DNS 解析示例：
 
+{{< table title="StatefulSet Pod DNS 解析示例" >}}
+
 | 集群域 | Service | StatefulSet | Pod DNS | Pod 主机名 |
 |--------|---------|-------------|---------|-----------|
 | cluster.local | default/nginx | default/web | web-{0..N-1}.nginx.default.svc.cluster.local | web-{0..N-1} |
+
+{{< /table >}}
 
 ### 稳定存储
 
@@ -149,12 +146,16 @@ Kubernetes 会为每个 VolumeClaimTemplate 创建 PersistentVolume。Pod 重新
 
 ## 部署和扩缩容保证
 
+StatefulSet 在部署和扩缩容过程中，严格保证 Pod 的有序性和依赖关系。
+
 - **有序创建**：Pod 按 {0..N-1} 顺序创建和部署
 - **有序删除**：Pod 按 {N-1..0} 逆序终止
 - **扩容前提**：执行扩容前，所有前序 Pod 必须处于 Running 和 Ready 状态
 - **缩容前提**：终止 Pod 前，所有后续 Pod 必须完全关闭
 
 ## Pod 管理策略
+
+StatefulSet 支持两种 Pod 管理策略，适应不同业务场景。
 
 ### OrderedReady（默认）
 
@@ -170,6 +171,8 @@ spec:
 ```
 
 ## 更新策略
+
+StatefulSet 支持多种更新策略，满足不同的升级需求。
 
 ### OnDelete
 
@@ -207,9 +210,9 @@ spec:
 
 ## 实际操作示例
 
-### 部署 StatefulSet
+以下命令展示了 StatefulSet 的常用运维操作。
 
-以下是部署相关的配置：
+### 部署 StatefulSet
 
 ```bash
 # 创建 StatefulSet
@@ -227,8 +230,6 @@ kubectl get pods -l app=nginx
 ```
 
 ### 基本运维操作
-
-以下是相关的代码示例：
 
 ```bash
 # 扩容到 5 个副本
@@ -253,8 +254,6 @@ kubectl delete pvc www-web-0 www-web-1 www-web-2
 
 ### DNS 验证
 
-以下是相关的代码示例：
-
 ```bash
 # 创建测试 Pod 验证 DNS 解析
 kubectl run dns-test --image=busybox:1.28 --rm -it --restart=Never -- nslookup web-0.nginx.default.svc.cluster.local
@@ -262,7 +261,7 @@ kubectl run dns-test --image=busybox:1.28 --rm -it --restart=Never -- nslookup w
 
 ## 高级示例：ZooKeeper 集群
 
-以下是一个生产级别的 ZooKeeper StatefulSet 配置示例：
+以下 YAML 示例展示了生产级 ZooKeeper StatefulSet 的配置方式：
 
 ```yaml
 apiVersion: v1
@@ -362,11 +361,9 @@ spec:
 
 ## 外部访问
 
-对于需要从集群外部访问 StatefulSet 中特定 Pod 的场景，可以通过以下方式：
+对于需要从集群外部访问 StatefulSet 中特定 Pod 的场景，可以通过以下方式实现。
 
 ### 方法一：NodePort Service
-
-以下是相关的代码示例：
 
 ```bash
 # 为特定 Pod 添加标签
@@ -382,8 +379,6 @@ kubectl expose pod zk-1 --port=2181 --target-port=2181 \
 ```
 
 ### 方法二：LoadBalancer Service
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: v1
@@ -401,23 +396,29 @@ spec:
 
 ## 最佳实践
 
-1. **资源配置**：合理设置 CPU 和内存资源限制
-2. **存储选择**：根据性能需求选择合适的 StorageClass
-3. **健康检查**：配置适当的 readiness 和 liveness 探针
-4. **反亲和性**：使用 Pod 反亲和性确保高可用性
-5. **监控告警**：配置完善的监控和告警机制
-6. **备份策略**：制定数据备份和恢复策略
+在生产环境中，建议遵循以下最佳实践以提升有状态服务的可靠性和可维护性。
+
+- **资源配置**：合理设置 CPU 和内存资源限制
+- **存储选择**：根据性能需求选择合适的 StorageClass
+- **健康检查**：配置适当的 readiness 和 liveness 探针
+- **反亲和性**：使用 Pod 反亲和性确保高可用性
+- **监控告警**：配置完善的监控和告警机制
+- **备份策略**：制定数据备份和恢复策略
 
 ## 故障排查
 
-常见问题及解决方案：
+常见问题及解决方案如下：
 
 - **Pod 启动失败**：检查存储配置和资源限制
 - **DNS 解析问题**：验证 Headless Service 配置
 - **数据丢失**：确认 PVC 配置和存储类设置
 - **更新卡住**：检查 Pod 反亲和性和资源可用性
 
-## 参考资源
+## 总结
+
+StatefulSet 是 Kubernetes 管理有状态应用的核心控制器，提供稳定标识、持久存储和有序部署等能力。通过合理配置 Headless Service、PVC、Pod 管理策略和更新策略，可以高效支撑数据库、消息队列等关键业务场景。建议结合最佳实践和监控体系，持续优化有状态服务的高可用性和可维护性。
+
+## 参考文献
 
 - [Kubernetes 官方文档 - StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
-- [有状态应用部署教程](https://kubernetes.io/docs/tutorials/stateful-application/)
+- [有状态应用部署教程 - kubernetes.io](https://kubernetes.io/docs/tutorials/stateful-application/)

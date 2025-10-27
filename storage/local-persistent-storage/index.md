@@ -1,19 +1,12 @@
 ---
 weight: 61
 title: 本地持久化存储
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 了解如何在 Kubernetes 中配置和使用本地持久化存储，包括静态配置器的部署、PV/PVC 的创建以及最佳实践指南。
-keywords:
-  - kubernetes
-  - pv
-  - pvc
-  - 本地存储
-  - 持久化卷
-  - 静态配置器
-  - 存储类
-lastmod: '2025-08-23'
+lastmod: 2025-10-27T16:45:25.856Z
 ---
+
+> 本地持久化存储为 Kubernetes 提供了高性能、低延迟的数据访问能力，但需要结合节点亲和、卷管理和生命周期策略，才能实现安全可靠的生产级存储方案。
 
 本地持久化卷允许用户通过标准 PVC 接口以简单便携的方式访问本地存储。PV 中包含系统用于将 Pod 调度到正确节点的节点亲和性信息。
 
@@ -21,22 +14,24 @@ lastmod: '2025-08-23'
 
 ## 存储模式
 
-本地存储配置器支持两种卷模式：
+本地存储配置器支持两种卷模式，适应不同类型的应用需求。
 
-1. **Filesystem volumeMode**（默认）—— 将卷挂载到发现目录下作为文件系统使用
-2. **Block volumeMode** —— 在发现目录下为节点上的块设备创建符号链接，提供原始块设备访问
+- **Filesystem volumeMode**（默认）：将卷挂载到发现目录下作为文件系统使用
+- **Block volumeMode**：在发现目录下为节点上的块设备创建符号链接，提供原始块设备访问
 
 ## 配置要求
 
 使用本地持久化存储需要满足以下要求：
 
-- **路径稳定性**：本地卷插件要求路径在重启和磁盘变更时保持稳定
-- **发现机制**：静态配置器只能发现挂载点（文件系统模式）或符号链接（块模式）
-- **绑定要求**：基于目录的本地卷必须绑定挂载到发现目录中
+- 路径在重启和磁盘变更时保持稳定
+- 静态配置器只能发现挂载点（文件系统模式）或符号链接（块模式）
+- 基于目录的本地卷必须绑定挂载到发现目录中
 
 ## 版本兼容性
 
-不同版本的配置器与 Kubernetes 版本的兼容性：
+不同版本的配置器与 Kubernetes 版本的兼容性如下。
+
+{{< table title="本地存储配置器与 Kubernetes 版本兼容性" >}}
 
 | 配置器版本 | Kubernetes 版本 | 主要特性 |
 |-----------|----------------|----------|
@@ -45,7 +40,11 @@ lastmod: '2025-08-23'
 | 2.0.0 | 1.8, 1.9 | 挂载传播支持 |
 | 1.0.1 | 1.7 | 初始 Alpha 版本 |
 
+{{< /table >}}
+
 ## 功能发展历程
+
+Kubernetes 本地存储功能不断演进，以下为主要阶段特性。
 
 ### 当前状态（1.14+）：稳定版
 
@@ -56,22 +55,13 @@ lastmod: '2025-08-23'
 
 ### 历史版本特性
 
-**1.10 版本（Beta）**：
-
-- 引入新的 `PV.NodeAffinity` 字段
-- 弃用 Alpha 版本的 NodeAffinity annotation
-- Alpha 支持原始块设备
-
-**1.9 版本（Alpha）**：
-
-- 新增 StorageClass `volumeBindingMode` 参数，支持延迟绑定
-
-**1.7 版本（Alpha）**：
-
-- 引入 `local` PersistentVolume 源
-- 支持具有节点亲和性的目录或挂载点
+- **1.10（Beta）**：引入新的 `PV.NodeAffinity` 字段，弃用 Alpha 版本的 NodeAffinity annotation，Alpha 支持原始块设备
+- **1.9（Alpha）**：新增 StorageClass `volumeBindingMode` 参数，支持延迟绑定
+- **1.7（Alpha）**：引入 `local` PersistentVolume 源，支持具有节点亲和性的目录或挂载点
 
 ## 部署指南
+
+在生产或测试环境中部署本地持久化存储需按以下步骤操作。
 
 ### 环境准备
 
@@ -86,18 +76,8 @@ export KUBE_FEATURE_GATES="BlockVolume=true"
 
 #### 集群环境配置
 
-**生产环境部署**：
-
-1. 根据应用需求对每个节点的磁盘进行分区和格式化
-2. 将所有文件系统挂载到相同的发现目录下
-3. 确保调度器启用了相应的调度策略：
-
-- Kubernetes 1.9+：`VolumeBindingChecker`
-- Kubernetes 1.9 之前：`NoVolumeBindConflict`
-
-**测试环境配置**：
-
-创建模拟的本地卷用于测试：
+- 生产环境：为每个节点分区、格式化磁盘，并将所有文件系统挂载到相同的发现目录下。确保调度器启用 `VolumeBindingChecker`（1.9+）或 `NoVolumeBindConflict`（1.9 之前）。
+- 测试环境：可用 tmpfs 模拟本地卷。
 
 ```bash
 # 创建发现目录
@@ -130,8 +110,6 @@ reclaimPolicy: Delete
 
 #### 使用 Helm 部署（推荐）
 
-生成配置器规范：
-
 ```bash
 # 使用默认配置
 helm template local-volume-provisioner \
@@ -143,11 +121,7 @@ helm template local-volume-provisioner \
   --namespace kube-system \
   --values custom-values.yaml \
   ./helm/provisioner > provisioner.yaml
-```
 
-部署配置器：
-
-```bash
 kubectl apply -f provisioner.yaml
 ```
 
@@ -163,9 +137,9 @@ metadata:
   namespace: kube-system
 data:
   storageClassMap: |
-   local-storage:
-     hostDir: /mnt/disks
-     mountDir: /mnt/disks
+    local-storage:
+      hostDir: /mnt/disks
+      mountDir: /mnt/disks
 ```
 
 ### PV 创建验证
@@ -189,24 +163,26 @@ metadata:
   name: local-pv-node1-vol1
 spec:
   capacity:
-   storage: 10Gi
+    storage: 10Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
   local:
-   path: /mnt/disks/vol1
+    path: /mnt/disks/vol1
   nodeAffinity:
-   required:
-    nodeSelectorTerms:
-    - matchExpressions:
-      - key: kubernetes.io/hostname
-       operator: In
-       values:
-       - node1
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node1
 ```
 
 ## 使用示例
+
+以下为典型的 PVC 和 Pod 使用本地存储的配置方式。
 
 ### 创建 PVC
 
@@ -222,8 +198,8 @@ spec:
   - ReadWriteOnce
   storageClassName: local-storage
   resources:
-   requests:
-    storage: 5Gi
+    requests:
+      storage: 5Gi
 ```
 
 **块设备模式 PVC**：
@@ -239,13 +215,11 @@ spec:
   volumeMode: Block
   storageClassName: local-storage
   resources:
-   requests:
-    storage: 5Gi
+    requests:
+      storage: 5Gi
 ```
 
 ### Pod 中使用本地存储
-
-以下是具体的使用方法：
 
 ```yaml
 apiVersion: v1
@@ -255,27 +229,29 @@ metadata:
 spec:
   containers:
   - name: app
-   image: nginx
-   volumeMounts:
-   - name: local-vol
-    mountPath: /usr/share/nginx/html
+    image: nginx
+    volumeMounts:
+    - name: local-vol
+      mountPath: /usr/share/nginx/html
   volumes:
   - name: local-vol
-   persistentVolumeClaim:
-    claimName: local-storage-claim
+    persistentVolumeClaim:
+      claimName: local-storage-claim
 ```
 
 ## 最佳实践
 
+结合实际生产需求，建议遵循以下最佳实践。
+
 ### 性能优化
 
-- **IO 隔离**：建议每个卷使用独立的物理磁盘以获得最佳 IO 性能
-- **容量规划**：使用单个分区进行容量隔离，避免多个应用竞争同一磁盘空间
-- **文件系统选择**：根据工作负载特性选择合适的文件系统（ext4、xfs 等）
+- 每个卷使用独立物理磁盘以获得最佳 IO 性能
+- 使用单个分区进行容量隔离，避免多个应用竞争同一磁盘空间
+- 根据工作负载特性选择合适的文件系统（如 ext4、xfs）
 
 ### 高可用性配置
 
-- **UUID 标识**：对于文件系统卷，在 fstab 和目录名中使用 UUID 标识：
+- 文件系统卷建议在 fstab 和目录名中使用 UUID 标识
 
   ```bash
   # 查看磁盘 UUID
@@ -285,7 +261,7 @@ spec:
   UUID=12345678-1234-1234-1234-123456789012 /mnt/disks/vol1 ext4 defaults 0 2
   ```
 
-- **符号链接管理**：对于块设备卷，使用唯一 ID 作为符号链接名称：
+- 块设备卷建议用唯一 ID 作为符号链接名称
 
   ```bash
   # 基于硬件序列号创建符号链接
@@ -294,45 +270,39 @@ spec:
 
 ### 节点管理
 
-- **节点替换**：避免在旧 PV 仍然存在时重新创建同名节点
-- **磁盘热插拔**：确保磁盘路径在热插拔操作后保持稳定
-- **监控告警**：设置磁盘空间和健康状态监控
+- 避免在旧 PV 仍然存在时重新创建同名节点
+- 确保磁盘路径在热插拔操作后保持稳定
+- 配置磁盘空间和健康状态监控
 
 ## 生命周期管理
 
+本地卷的生命周期管理需严格遵循规范，确保数据安全。
+
 ### 卷回收流程
 
-当需要停用本地卷时，按以下顺序操作：
+1. 停止所有使用该卷的 Pod
+2. 删除 PVC
 
-1. **停止应用**：确保所有使用该卷的 Pod 已停止
-1. **删除 PVC**：删除 PersistentVolumeClaim
+   ```bash
+   kubectl delete pvc local-storage-claim
+   ```
 
-  ```bash
-  kubectl delete pvc local-storage-claim
-  ```
+3. 从节点卸载或移除物理卷
+4. 手动删除对应的 PV
 
-1. **物理移除**：从节点卸载或移除物理卷
-1. **清理 PV**：手动删除对应的 PersistentVolume
-
-  ```bash
-  kubectl delete pv local-pv-name
-  ```
+   ```bash
+   kubectl delete pv local-pv-name
+   ```
 
 ### 故障恢复
 
-**磁盘故障处理**：
-
-- 及时更换故障磁盘
-- 更新节点上的挂载配置
-- 重新创建相应的 PV
-
-**数据迁移**：
-
-- 本地存储不支持自动迁移
-- 需要应用层面实现数据备份和恢复
-- 考虑使用多副本或分布式存储架构
+- 磁盘故障时及时更换并更新挂载配置，重新创建 PV
+- 本地存储不支持自动迁移，需应用层实现数据备份和恢复
+- 建议采用多副本或分布式存储架构提升可用性
 
 ## 监控和故障排除
+
+监控本地存储的健康和使用状态，有助于及时发现和解决问题。
 
 ### 常用监控指标
 
@@ -343,26 +313,30 @@ spec:
 
 ### 故障排除步骤
 
-1. **检查配置器状态**：
+1. 检查配置器状态
 
-  ```bash
-  kubectl logs -n kube-system -l app=local-volume-provisioner
-  ```
+   ```bash
+   kubectl logs -n kube-system -l app=local-volume-provisioner
+   ```
 
-1. **验证节点亲和性**：
+2. 验证节点亲和性
 
-  ```bash
-  kubectl describe pv <pv-name> | grep -A 10 NodeAffinity
-  ```
+   ```bash
+   kubectl describe pv <pv-name> | grep -A 10 NodeAffinity
+   ```
 
-1. **检查 StorageClass 配置**：
+3. 检查 StorageClass 配置
 
-  ```bash
-  kubectl describe storageclass local-storage
-  ```
+   ```bash
+   kubectl describe storageclass local-storage
+   ```
 
-## 参考资源
+## 总结
 
-- [Kubernetes 本地持久化卷官方文档](https://kubernetes.io/docs/concepts/storage/volumes/#local)
-- [外部存储配置器项目](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner)
-- [本地存储最佳实践指南](https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/)
+本地持久化存储为 Kubernetes 提供了高性能、低延迟的数据访问能力，但需结合节点亲和、卷管理和生命周期策略，才能实现安全可靠的生产级存储方案。建议结合实际业务需求，合理规划卷分配、监控和备份策略，提升集群的稳定性和数据安全性。
+
+## 参考文献
+
+- [Kubernetes 本地持久化卷官方文档 - kubernetes.io](https://kubernetes.io/docs/concepts/storage/volumes/#local)
+- [外部存储配置器项目 - github.com](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner)
+- [本地存储最佳实践指南 - kubernetes.io](https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/)

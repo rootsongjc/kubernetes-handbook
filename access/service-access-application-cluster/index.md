@@ -2,26 +2,16 @@
 weight: 95
 title: 使用 Service 访问集群中的应用程序
 linktitle: 通过 Service 访问
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: >-
-  学习如何创建 Kubernetes Service 对象来访问集群中运行的应用程序，包括创建 Deployment、配置 NodePort
-  服务以及实现负载均衡的完整流程。
-keywords:
-  - deployment
-  - service
-  - nodeport
-  - pod
-  - kubernetes
-  - 负载均衡
-  - 集群访问
-  - 应用程序
-lastmod: '2025-08-23'
+date: 2022-05-21T00:00:00+08:00
+description: 学习如何创建 Kubernetes Service 对象来访问集群中运行的应用程序，包括创建 Deployment、配置 NodePort 服务以及实现负载均衡的完整流程。
+lastmod: 2025-10-27T17:41:28.257Z
 ---
 
-本文将指导你创建 Kubernetes Service 对象，使外部客户端能够访问集群中运行的应用程序。我们将创建一个具有负载均衡功能的 Service，为运行两个实例的应用程序提供服务。
+> Service 是 Kubernetes 集群中实现应用访问与负载均衡的核心机制，合理配置可让外部客户端安全高效地访问集群内服务。
 
 ## 学习目标
+
+本节将带你系统掌握如何通过 Service 访问 Kubernetes 集群中的应用，包括部署多副本应用、创建 NodePort 服务、实现负载均衡及常见故障排查。
 
 - 创建并运行 Hello World 应用程序的多个实例
 - 创建 NodePort 类型的 Service 对象
@@ -30,7 +20,7 @@ lastmod: '2025-08-23'
 
 ## 准备工作
 
-在开始之前，请确保：
+在操作前，请确保具备以下条件：
 
 - 已安装并配置好 kubectl 命令行工具
 - 有一个可用的 Kubernetes 集群
@@ -38,15 +28,17 @@ lastmod: '2025-08-23'
 
 ## 创建应用程序和 Service
 
+通过以下步骤，完成应用部署与服务暴露。
+
 ### 步骤 1：创建 Deployment
 
-首先，我们创建一个运行 Hello World 应用程序的 Deployment：
+首先，创建一个运行 Hello World 应用的 Deployment：
 
 ```bash
 kubectl create deployment hello-world --image=gcr.io/google-samples/node-hello:1.0 --port=8080
 ```
 
-然后将其扩展到 2 个副本：
+扩展为 2 个副本：
 
 ```bash
 kubectl scale deployment hello-world --replicas=2
@@ -60,23 +52,18 @@ kubectl label deployment hello-world run=load-balancer-example
 
 ### 步骤 2：验证 Deployment
 
-查看 Deployment 状态：
+查看 Deployment 和 ReplicaSet 状态：
 
 ```bash
 kubectl get deployments hello-world
 kubectl describe deployments hello-world
-```
-
-查看 ReplicaSet 信息：
-
-```bash
 kubectl get replicasets
 kubectl describe replicasets
 ```
 
 ### 步骤 3：创建 Service
 
-创建一个 NodePort 类型的 Service 来暴露 Deployment：
+创建 NodePort 类型的 Service 暴露应用：
 
 ```bash
 kubectl expose deployment hello-world --type=NodePort --name=example-service
@@ -84,7 +71,7 @@ kubectl expose deployment hello-world --type=NodePort --name=example-service
 
 ### 步骤 4：查看 Service 详情
 
-查看 Service 的详细信息：
+查看 Service 详细信息，记录 NodePort 端口：
 
 ```bash
 kubectl describe services example-service
@@ -110,11 +97,9 @@ External Traffic Policy: Cluster
 Events:                 <none>
 ```
 
-记录 NodePort 的值（如上例中的 32156）。
-
 ### 步骤 5：查看 Pod 信息
 
-列出运行 Hello World 应用程序的 Pod：
+列出运行 Hello World 应用的 Pod：
 
 ```bash
 kubectl get pods -l app=hello-world -o wide
@@ -130,34 +115,35 @@ hello-world-5d8f7c4c9b-v7k9s   1/1     Running   0          2m    10.244.2.5   n
 
 ## 访问应用程序
 
+完成 Service 创建后，可通过节点 IP 和 NodePort 端口访问应用。
+
 ### 获取节点 IP 地址
 
-根据你的集群类型，使用以下方法之一获取节点的外部 IP 地址：
+根据集群类型，选择合适方式获取节点外部 IP：
 
-**对于 Minikube：**
+- **Minikube：**
 
-```bash
-minikube ip
-```
+  ```bash
+  minikube ip
+  ```
 
-**对于云平台（如 GKE）：**
+- **云平台（如 GKE）：**
 
-```bash
-kubectl get nodes -o wide
-```
+  ```bash
+  kubectl get nodes -o wide
+  ```
 
-**对于本地集群：**
+- **本地集群：**
 
-```bash
-kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="ExternalIP")].address}'
-```
+  ```bash
+  kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="ExternalIP")].address}'
+  ```
 
 ### 配置网络访问
 
-如果使用云平台，可能需要配置防火墙规则允许 NodePort 端口的流量：
+如在云平台，需开放 NodePort 端口的防火墙规则：
 
 ```bash
-# 示例：在 GCP 中创建防火墙规则
 gcloud compute firewall-rules create allow-nodeport \
    --allow tcp:30000-32767 \
    --source-ranges 0.0.0.0/0
@@ -165,19 +151,15 @@ gcloud compute firewall-rules create allow-nodeport \
 
 ### 测试应用程序访问
 
-使用 curl 命令测试应用程序：
+使用 curl 测试访问：
 
 ```bash
 curl http://<node-ip>:<node-port>
-```
-
-例如：
-
-```bash
+# 例如
 curl http://192.168.1.100:32156
 ```
 
-成功的响应应该是：
+预期输出：
 
 ```text
 Hello Kubernetes!
@@ -185,7 +167,7 @@ Hello Kubernetes!
 
 ## 使用配置文件方式
 
-除了使用 `kubectl expose` 命令，你也可以使用 YAML 配置文件创建 Service：
+你也可以通过 YAML 文件创建 Service，便于版本管理和自动化。
 
 ```yaml
 apiVersion: v1
@@ -193,18 +175,18 @@ kind: Service
 metadata:
   name: example-service
   labels:
-   run: load-balancer-example
+    run: load-balancer-example
 spec:
   type: NodePort
   selector:
-   app: hello-world
+    app: hello-world
   ports:
-  - port: 8080
-   targetPort: 8080
-   protocol: TCP
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
 ```
 
-应用配置文件：
+应用配置：
 
 ```bash
 kubectl apply -f service.yaml
@@ -212,7 +194,7 @@ kubectl apply -f service.yaml
 
 ## 验证负载均衡
 
-Service 会自动在多个 Pod 之间进行负载均衡。你可以多次执行 curl 命令来验证请求被分发到不同的 Pod：
+Service 会自动在多个 Pod 之间分发请求。多次执行 curl 命令可验证负载均衡效果：
 
 ```bash
 for i in {1..10}; do curl http://<node-ip>:<node-port>; echo; done
@@ -220,34 +202,32 @@ for i in {1..10}; do curl http://<node-ip>:<node-port>; echo; done
 
 ## 清理资源
 
-完成测试后，删除创建的资源：
+测试结束后，建议及时清理资源：
 
 ```bash
-# 删除 Service
 kubectl delete service example-service
-
-# 删除 Deployment
 kubectl delete deployment hello-world
 ```
 
 ## 故障排除
 
-### 常见问题和解决方案
+遇到无法访问或负载均衡异常时，可参考下表进行排查。
 
-1. **无法访问应用程序**
-   - 检查 NodePort 是否正确
-   - 验证防火墙规则
-   - 确认 Pod 状态正常
+{{< table title="Kubernetes Service 常见故障与解决方案" >}}
 
-2. **Service 没有 Endpoints**
-   - 检查 Service 的 selector 是否匹配 Pod 标签
-   - 确认 Pod 处于 Running 状态
+| 问题                   | 排查建议                                                         |
+|------------------------|------------------------------------------------------------------|
+| 无法访问应用程序       | 检查 NodePort、验证防火墙规则、确认 Pod 状态正常                 |
+| Service 无 Endpoints   | 检查 selector 是否匹配 Pod 标签，确认 Pod 处于 Running 状态      |
+| 负载均衡不工作         | 验证有多个 Pod，检查 Service 的 Endpoints 列表                   |
 
-3. **负载均衡不工作**
-   - 验证有多个 Pod 在运行
-   - 检查 Service 的 Endpoints 列表
+{{< /table >}}
 
-## 进一步学习
+## 总结
 
-- [Service 和 Pod 的 DNS](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dns-pod-service/)
-- [Service 类型详解](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/)
+通过本节内容，你已掌握如何在 Kubernetes 集群中通过 Service 实现应用访问与负载均衡。建议结合实际场景，灵活选择命令行或 YAML 配置方式，并关注网络安全与资源清理，保障集群高可用与易维护。
+
+## 参考文献
+
+- [Service 和 Pod 的 DNS - kubernetes.io](https://kubernetes.io/zh-cn/docs/concepts/services-networking/dns-pod-service/)
+- [Service 类型详解 - kubernetes.io](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/)

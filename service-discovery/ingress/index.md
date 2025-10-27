@@ -1,36 +1,25 @@
 ---
 weight: 41
 title: Ingress
-date: '2022-05-21T00:00:00+08:00'
+date: 2022-05-21T00:00:00+08:00
 type: book
-description: >-
-  Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress
-  的工作原理、配置方法、IngressClass 概念以及各种使用场景。
-keywords:
-  - ingress
-  - ingressclass
-  - spec
-  - tls
-  - url
-  - 控制器
-  - 资源
-  - 路由
-  - 集群
-  - 默认
-lastmod: '2025-08-20'
+description: Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress 的工作原理、配置方法、IngressClass 概念以及各种使用场景。
+lastmod: 2025-10-27T17:50:38.595Z
 ---
+
+> Ingress 是 Kubernetes 集群中实现 HTTP/HTTPS 流量智能路由和安全暴露的核心机制，合理配置可实现灵活的服务访问与流量管理。
+
+## 概述
+
+Ingress 是 Kubernetes 的资源对象，用于管理集群外部到集群内服务的 HTTP 和 HTTPS 访问。它充当智能路由器，根据定义的规则将外部流量路由到集群内的不同服务。
 
 {{< callout note "重要提示" >}}
 Ingress 在 Kubernetes 1.9 正式发布，目前仍被广泛使用。但对于新项目，建议考虑使用更现代的 [Gateway API](../gateway/) 作为替代方案，它提供更强大和灵活的流量管理能力。
 {{< /callout >}}
 
-## 什么是 Ingress？
+## Ingress 架构与核心功能
 
-Ingress 是 Kubernetes 的一个资源对象，用于管理集群外部到集群内服务的 HTTP 和 HTTPS 访问。它充当智能路由器，根据定义的规则将外部流量路由到集群内的不同服务。
-
-### Ingress 架构图
-
-下图展示了 Ingress 的工作原理：
+Ingress 的工作原理如下图所示，展示了客户端流量如何通过 Ingress 控制器路由到后端服务和 Pod。
 
 ```mermaid "Ingress 运作的架构图"
 graph LR;
@@ -46,33 +35,33 @@ graph LR;
 ![Ingress 运作的架构图](e0a8252231167704c4f15deeea858784.svg)
 {width=1920 height=606}
 
-## 核心功能
-
 Ingress 提供以下核心功能：
 
-- **外部 URL 访问**：为集群内服务提供外部可访问的 URL
-- **负载均衡**：在多个 Pod 实例之间分发流量
-- **SSL/TLS 终结**：处理 HTTPS 证书和加密
-- **基于名称的虚拟主机**：根据主机名路由到不同服务
-- **路径路由**：根据 URL 路径将请求路由到不同服务
+- 外部 URL 访问：为集群内服务提供外部可访问的 URL
+- 负载均衡：在多个 Pod 实例之间分发流量
+- SSL/TLS 终结：处理 HTTPS 证书和加密
+- 基于名称的虚拟主机：根据主机名路由到不同服务
+- 路径路由：根据 URL 路径将请求路由到不同服务
 
 ## 前置条件
 
-使用 Ingress 需要满足以下条件：
+在使用 Ingress 前，需要满足以下条件：
 
-1. **部署 Ingress 控制器**：如 NGINX Ingress Controller、Traefik、HAProxy 等
-2. **配置 IngressClass**：定义使用哪个控制器处理 Ingress 资源
-3. **准备后端服务**：确保目标 Service 和 Pod 正常运行
+- 部署 Ingress 控制器（如 NGINX、Traefik、HAProxy 等）
+- 配置 IngressClass，指定使用的控制器
+- 准备好后端 Service 和 Pod
 
 {{< callout warning "注意" >}}
 仅创建 Ingress 资源本身不会产生任何效果，必须配合 [Ingress 控制器](../../controllers/ingress-controller) 一起使用。
 {{< /callout >}}
 
-## 基本配置示例
+## 基本配置与路径类型
 
-### 最简单的 Ingress
+Ingress 支持多种路径类型和灵活的路由规则，适用于不同访问场景。
 
-以下是相关的代码示例：
+### 最简单的 Ingress 配置
+
+以下为典型的 Ingress 配置示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -100,17 +89,15 @@ spec:
 
 Kubernetes 支持三种路径类型：
 
-- **`Exact`**：精确匹配 URL 路径（区分大小写）
-- **`Prefix`**：基于 URL 路径前缀匹配，按 `/` 分隔
-- **`ImplementationSpecific`**：匹配方法由 IngressClass 决定
+- `Exact`：精确匹配 URL 路径（区分大小写）
+- `Prefix`：基于 URL 路径前缀匹配，按 `/` 分隔
+- `ImplementationSpecific`：匹配方法由 IngressClass 决定
 
 ## IngressClass 详解
 
-IngressClass 是 Kubernetes 1.18 引入的资源，用于定义 Ingress 的实现类别。
+IngressClass 用于定义 Ingress 的实现类别，支持集群范围和命名空间范围参数配置。
 
 ### 基本 IngressClass 配置
-
-以下是相关的配置示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -123,8 +110,6 @@ spec:
 
 ### 设置默认 IngressClass
 
-以下是相关的代码示例：
-
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -136,11 +121,9 @@ spec:
   controller: k8s.io/ingress-nginx
 ```
 
-### IngressClass 参数配置
+### 参数化配置示例
 
 #### 集群范围参数
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -157,8 +140,6 @@ spec:
 ```
 
 #### 命名空间范围参数
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -177,9 +158,9 @@ spec:
 
 ## 常见使用场景
 
-### 单服务暴露
+Ingress 支持多种典型场景，满足不同业务需求。
 
-适用于只需要暴露一个服务的简单场景：
+### 单服务暴露
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -196,8 +177,6 @@ spec:
 ```
 
 ### 路径扇出
-
-根据 URL 路径将流量路由到不同服务：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -227,8 +206,6 @@ spec:
 ```
 
 ### 基于主机名的虚拟主机
-
-根据不同主机名路由到不同服务：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -262,9 +239,9 @@ spec:
 
 ## TLS/SSL 配置
 
-### 单域名 TLS
+Ingress 支持多种 TLS 配置，保障数据安全传输。
 
-以下是相关的代码示例：
+### 单域名 TLS
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -291,8 +268,6 @@ spec:
 ```
 
 ### 多域名 TLS
-
-以下是相关的代码示例：
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -331,19 +306,15 @@ spec:
 
 ### 创建 TLS Secret
 
-以下是相关的定义示例：
-
 ```bash
 kubectl create secret tls tls-secret \
   --cert=path/to/tls.cert \
   --key=path/to/tls.key
 ```
 
-## 高级功能
+## 高级功能与注解
 
-### 注解配置
-
-不同的 Ingress 控制器支持各种注解来配置高级功能：
+Ingress 控制器支持多种注解，可实现重写、限流、CORS 等高级功能。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -351,7 +322,6 @@ kind: Ingress
 metadata:
   name: advanced-ingress
   annotations:
-    # NGINX 特定注解
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rate-limit: "100"
@@ -400,11 +370,11 @@ spec:
               number: 80
 ```
 
-## 管理和维护
+## 管理与维护
+
+日常管理和维护 Ingress 资源时，可参考以下命令和流程。
 
 ### 更新 Ingress 配置
-
-以下是相关的配置示例：
 
 ```bash
 # 编辑现有 Ingress
@@ -420,8 +390,6 @@ kubectl describe ingress my-ingress
 
 ### 故障排查
 
-以下是相关的代码示例：
-
 ```bash
 # 检查 Ingress 控制器日志
 kubectl logs -n ingress-nginx deployment/ingress-nginx-controller
@@ -434,11 +402,11 @@ kubectl get svc
 kubectl get endpoints
 ```
 
-## 迁移说明
+## 迁移与替代方案
 
 ### 从注解到 IngressClass
 
-在 Kubernetes 1.18 之前使用的 `kubernetes.io/ingress.class` 注解已被废弃：
+Kubernetes 1.18 之前的 `kubernetes.io/ingress.class` 注解已废弃，推荐使用 `ingressClassName` 字段。
 
 ```yaml
 # 旧方式（已废弃）
@@ -451,25 +419,33 @@ spec:
   ingressClassName: nginx
 ```
 
-## 替代方案比较
+### 替代方案对比
 
-| 方案 | 适用场景 | 优势 | 劣势 |
-|------|----------|------|------|
-| Ingress | HTTP/HTTPS 流量管理 | 功能丰富，生态成熟 | 仅支持 7 层路由 |
-| LoadBalancer Service | 简单负载均衡 | 配置简单 | 成本较高，功能有限 |
-| NodePort Service | 开发测试环境 | 无需额外组件 | 端口管理复杂，安全性差 |
-| Gateway API | 现代流量管理 | 功能更强大，设计更灵活 | 相对较新，生态待完善 |
+{{< table title="Kubernetes 流量暴露方案对比" >}}
+
+| 方案                 | 适用场景           | 优势                   | 劣势                   |
+|----------------------|--------------------|------------------------|------------------------|
+| Ingress              | HTTP/HTTPS 流量管理 | 功能丰富，生态成熟     | 仅支持 7 层路由        |
+| LoadBalancer Service | 简单负载均衡       | 配置简单               | 成本高，功能有限       |
+| NodePort Service     | 开发测试环境       | 无需额外组件           | 端口管理复杂，安全性差 |
+| Gateway API          | 现代流量管理       | 功能强大，设计灵活     | 生态较新，待完善       |
+
+{{< /table >}}
 
 ## 最佳实践
 
-1. **使用 IngressClass**：明确指定 `ingressClassName` 而不是依赖默认值
-2. **TLS 配置**：为生产环境启用 HTTPS 并配置适当的 TLS 证书
-3. **资源限制**：通过注解配置适当的速率限制和资源控制
-4. **监控告警**：配置 Ingress 控制器的监控和告警
-5. **安全配置**：启用适当的安全头和 CORS 策略
-6. **版本管理**：使用标签和注解管理 Ingress 资源的版本信息
+- 明确指定 `ingressClassName`，避免依赖默认值
+- 生产环境启用 HTTPS 并配置 TLS 证书
+- 通过注解配置速率限制和资源控制
+- 配置 Ingress 控制器监控与告警
+- 启用安全头和 CORS 策略
+- 使用标签和注解管理 Ingress 资源版本
 
-## 参考资料
+## 总结
+
+Ingress 作为 Kubernetes 集群中 HTTP/HTTPS 流量暴露和路由的核心机制，具备灵活的路由规则和丰富的控制能力。建议结合实际业务需求，合理选择 Ingress 或 Gateway API，并关注安全、监控和资源管理，提升集群的可用性与可维护性。
+
+## 参考文献
 
 - [Ingress - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 - [Ingress Controllers - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)

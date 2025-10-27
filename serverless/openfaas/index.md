@@ -526,7 +526,7 @@ functions:
    ```bash
    # 检查扩缩容配置
    kubectl describe deployment function-name -n openfaas-fn
-
+   
    # 查看监控指标
    kubectl port-forward -n openfaas svc/prometheus 9090:9090
    ```
@@ -565,7 +565,7 @@ functions:
    ```bash
    # 检查网络策略
    kubectl get networkpolicies -n openfaas
-
+   
    # 测试服务发现
    kubectl run test-pod --image=busybox -it --rm -- nslookup function-name.openfaas
    ```
@@ -642,7 +642,7 @@ functions:
   ```bash
   # 备份函数配置
   faas-cli list --format json > functions-backup.json
-
+  
   # 备份数据
   kubectl get secrets -n openfaas -o yaml > secrets-backup.yaml
   ```
@@ -664,4 +664,3 @@ OpenFaaS 为 Kubernetes 提供了一个简单而强大的 Serverless 平台：
 2. [Kubernetes 官方文档 - kubernetes.io](https://kubernetes.io/)
 3. [Prometheus 官方文档 - prometheus.io](https://prometheus.io/)
 4. [faas-netes 项目 - github.com/openfaas/faas-netes](https://github.com/openfaas/faas-netes)
-{{< list_children show_summary="false" >}}

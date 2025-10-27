@@ -1,14 +1,14 @@
 ---
 weight: 1
 title: Kubernetes 的架构
-linktitle: 架构概览
+linktitle: 概述
 date: 2022-05-21T00:00:00+08:00
 description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
-lastmod: 2025-10-13T09:06:55.486Z
+lastmod: 2025-10-27T13:32:52.335Z
 ---
 
-本文全面介绍 Kubernetes 的核心架构、对象模型、命名空间、对象管理与扩展机制等基础内容。若需深入了解存储、网络或工作负载管理等专题，请参考相关专章。
+> Kubernetes 架构奠定了云原生时代的技术基石，引领分布式系统创新。
 
 ## Kubernetes 的前身 Borg
 

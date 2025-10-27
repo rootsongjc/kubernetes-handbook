@@ -1,18 +1,9 @@
 ---
 weight: 40
 title: 拓扑感知路由
-date: '2022-05-21T00:00:00+08:00'
-type: book
-description: '拓扑感知路由是 Kubernetes 中的一项功能，允许客户端访问服务时根据端点拓扑优先路由到同一节点或可用区的端点，提高网络性能并减少跨区域流量成本。'
-keywords:
-- endpointslice
-- topology
-- routing
-- kubernetes
-- service
-- 拓扑感知
-- 端点切片
-- 网络优化
+date: 2022-05-21T00:00:00+08:00
+description: 拓扑感知路由是 Kubernetes 中的一项功能，允许客户端访问服务时根据端点拓扑优先路由到同一节点或可用区的端点，提高网络性能并减少跨区域流量成本。
+lastmod: 2025-10-27T17:51:43.815Z
 ---
 
 拓扑感知路由（Topology Aware Routing）是 Kubernetes 的一项网络优化功能，它允许客户端访问服务时根据端点的拓扑位置，优先将流量路由到与客户端位于同一节点或可用区的端点上，从而减少网络延迟并降低跨区域流量成本。

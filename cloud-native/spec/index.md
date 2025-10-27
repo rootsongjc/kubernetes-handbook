@@ -9,9 +9,11 @@ aliases:
   - /book/kubernetes-handbook/cloud-native/spec/trait/
   - /book/kubernetes-handbook/cloud-native/spec/application-scope/
   - /book/kubernetes-handbook/cloud-native/spec/application-configuration/
-lastmod: 2025-10-19T12:51:05.544Z
+lastmod: 2025-10-27T17:37:16.370Z
 date: 2025-08-26T10:11:27.424Z
 ---
+
+> 云原生应用规范模型让应用架构与运维能力解耦，为多云与异构平台的敏捷创新奠定坚实基础。
 
 OAM（Open Application Model）是一个专注于描述应用程序的规范，它通过定义标准化的应用程序模型来实现平台无关的应用程序描述。本文将详细介绍 OAM 规范中的核心概念和组件。
 

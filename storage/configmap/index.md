@@ -3,8 +3,10 @@ weight: 30
 title: ConfigMap
 date: 2022-05-21T00:00:00+08:00
 description: ConfigMap 是 Kubernetes 用于存储配置数据的 API 资源，支持将配置信息与容器镜像解耦。本文详细介绍 ConfigMap 的概念、创建方法以及在 Pod 中的使用方式。
-lastmod: 2025-10-13T06:03:13.382Z
+lastmod: 2025-10-27T16:44:44.117Z
 ---
+
+> 在 Kubernetes 的世界里，ConfigMap 让配置管理变得灵活而优雅，是实现应用可移植性与敏捷运维的关键利器。
 
 ConfigMap 是 Kubernetes 提供的配置管理机制，用于将配置信息与容器镜像解耦。应用程序可以从配置文件、命令行参数或环境变量中读取配置信息，而无需在每次配置修改时重新构建镜像。ConfigMap API 提供了向容器注入配置信息的能力，既可以保存单个属性，也可以保存完整的配置文件或 JSON 数据。
 
@@ -313,34 +315,71 @@ spec:
 
 ## 最佳实践
 
-### 命名规范
+下表总结了使用 ConfigMap 的一些最佳实践：
 
-- 使用描述性的名称
-- 遵循 DNS 子域名规范
-- 建议使用小写字母和连字符
+{{< table title="ConfigMap 使用最佳实践" >}}
 
-### 数据组织
+<table>
+  <thead>
+    <tr>
+      <th style="vertical-align: middle;">最佳实践类别</th>
+      <th style="vertical-align: middle;">建议</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="vertical-align: middle;"><strong>命名规范</strong></td>
+      <td>
+        <ul>
+          <li>使用描述性的名称</li>
+          <li>遵循 DNS 子域名规范</li>
+          <li>建议使用小写字母和连字符</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: middle;"><strong>数据组织</strong></td>
+      <td>
+        <ul>
+          <li>按功能或服务分组配置</li>
+          <li>避免在单个 ConfigMap 中存储过多数据</li>
+          <li>考虑使用多个小的 ConfigMap 而不是一个大的</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: middle;"><strong>版本管理</strong></td>
+      <td>
+        <ul>
+          <li>通过标签管理不同版本的配置</li>
+          <li>使用 Deployment 的滚动更新机制</li>
+          <li>考虑使用 Helm 等工具管理配置</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: middle;"><strong>安全考虑</strong></td>
+      <td>
+        <ul>
+          <li>不要在 ConfigMap 中存储敏感信息</li>
+          <li>使用 Secret 存储密码、密钥等敏感数据</li>
+          <li>定期审查配置内容</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: middle;"><strong>更新策略</strong></td>
+      <td>
+        <ul>
+          <li>ConfigMap 更新后，Pod 需要重启才能生效（除非使用 subPath）</li>
+          <li>考虑使用 Deployment 的配置更新策略</li>
+          <li>监控配置变更对应用的影响</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-- 按功能或服务分组配置
-- 避免在单个 ConfigMap 中存储过多数据
-- 考虑使用多个小的 ConfigMap 而不是一个大的
-
-### 版本管理
-
-- 通过标签管理不同版本的配置
-- 使用 Deployment 的滚动更新机制
-- 考虑使用 Helm 等工具管理配置
-
-### 安全考虑
-
-- 不要在 ConfigMap 中存储敏感信息
-- 使用 Secret 存储密码、密钥等敏感数据
-- 定期审查配置内容
-
-### 更新策略
-
-- ConfigMap 更新后，Pod 需要重启才能生效（除非使用 subPath）
-- 考虑使用 Deployment 的配置更新策略
-- 监控配置变更对应用的影响
+{{< /table >}}
 
 通过合理使用 ConfigMap，可以有效地管理 Kubernetes 应用的配置信息，实现配置与代码的解耦，提高应用的可维护性和可移植性。

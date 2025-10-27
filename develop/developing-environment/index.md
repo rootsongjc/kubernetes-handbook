@@ -4,8 +4,10 @@ title: 配置 Kubernetes 开发环境
 linktitle: 配置开发环境
 date: 2022-05-21T00:00:00+08:00
 description: 介绍如何在 macOS 上使用 Docker 环境编译 Kubernetes，包括环境配置、依赖安装和编译流程的详细说明。
-lastmod: 2025-10-20T04:07:19.105Z
+lastmod: 2025-10-27T17:28:47.049Z
 ---
+
+> 借助 Docker 容器化环境，您可以高效、隔离地完成 Kubernetes 的本地开发与编译，轻松应对多平台适配与依赖复杂性。
 
 本文将指导您在 macOS 上使用 Docker 环境编译 Kubernetes，为开发和定制化需求提供支持。
 

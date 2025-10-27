@@ -1,6 +1,6 @@
 ---
 title: Kubernetes API 访问与 kubectl 实践
-linktitle: kubectl
+linktitle: kubectl 命令行工具
 date: 2025-10-13
 weight: 10
 description: 详解如何通过 kubectl 命令行工具与 Kubernetes API 交互，涵盖认证机制、请求模式、资源管理与自动化实践，助力高效管理集群资源。

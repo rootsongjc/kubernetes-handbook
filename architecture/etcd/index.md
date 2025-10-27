@@ -5,10 +5,10 @@ date: 2024-01-15T00:00:00+08:00
 description: 深入解析 etcd 在 Kubernetes 中的核心作用，包括分布式存储原理、Raft 共识算法、数据备份恢复、性能优化和安全配置等实践指南。
 aliases:
     - /book/kubernetes-handbook/cli/etcdctl/
-lastmod: 2025-10-19T06:53:38.436Z
+lastmod: 2025-10-27T13:35:22.445Z
 ---
 
-> Etcd 是 Kubernetes 集群的核心分布式存储组件，本文系统梳理其架构原理、核心特性、数据结构、运维实践及安全优化，帮助读者全面理解其在云原生体系中的关键作用。
+> Etcd 作为 Kubernetes 的“中枢神经”，以强一致性和高可用性保障集群数据安全，是云原生架构不可或缺的基石。
 
 ## Etcd 简介
 

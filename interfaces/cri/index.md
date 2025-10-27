@@ -4,12 +4,11 @@ title: 容器运行时接口（CRI）
 aliases:
     - /book/kubernetes-handbook/architecture/open-interfaces/cri/
 date: 2022-05-21T00:00:00+08:00
-type: book
 description: 容器运行时接口（CRI）是 Kubernetes 中定义容器和镜像服务的核心接口，基于 gRPC 协议，支持多种容器运行时后端如 containerd、CRI-O 等，为 Kubernetes 提供了灵活的容器运行时选择。
-lastmod: 2025-10-17T10:36:56.155Z
+lastmod: 2025-10-27T13:20:57.346Z
 ---
 
-本节解释容器运行时接口（CRI），阐述其作为 Kubernetes 与容器运行时之间抽象层的作用，以及其定义的核心服务。
+> CRI（Container Runtime Interface）为 Kubernetes 提供了标准化的容器运行时抽象层，支持多种运行时后端，极大提升了平台的灵活性和可扩展性。
 
 ## 总览
 
@@ -27,6 +26,8 @@ CRI **不是**通用的容器运行时 API，它专为 kubelet 与运行时通�
 - Kubernetes 代码库中需维护运行时相关代码
 
 CRI 引入了抽象层，将编排（kubelet）与容器生命周期管理（运行时实现）分离。
+
+下图展示了 CRI 作为抽象层的演进过程：
 
 ```mermaid "CRI 作为抽象层"
 graph TB
@@ -66,6 +67,8 @@ CRI 定义了两个主要的 gRPC 服务，各自职责如下：
 
 `ImageService` 独立处理所有镜像相关操作，允许运行时分别使用不同后端存储镜像和运行容器。
 
+下图展示了 CRI 的两大服务及其主要操作：
+
 ```mermaid "CRI 的两大服务及其操作"
 graph TB
     CRI["容器运行时接口"]
@@ -103,28 +106,10 @@ RuntimeService 与 ImageService 的分离为运行时管理镜像和容器提供
 
 CRI 基于两项核心技术：
 
-- Protocol Buffers
-- gRPC
+- **Protocol Buffers**：高效、语言无关的接口定义和序列化机制
+- **gRPC**：基于 HTTP/2 的高性能 RPC 框架
 
-### Protocol Buffers
-
-CRI API 使用 Protocol Buffer v3 语法定义，见 [pkg/apis/runtime/v1/api.proto](https://github.com/kubernetes/cri-api/blob/65157e11/pkg/apis/runtime/v1/api.proto)。其优势包括：
-
-- 语言无关的接口定义
-- 高效的二进制序列化
-- 向前/向后兼容性
-- 多语言自动代码生成
-
-### gRPC
-
-CRI 采用 gRPC 作为 RPC 框架，具备：
-
-- 基于 HTTP/2 的传输
-- 双向流（如 `GetContainerEvents`）
-- Protocol Buffer 强类型
-- 内置认证与加密支持
-
-gRPC 服务定义见 [api.proto](https://github.com/kubernetes/cri-api/blob/65157e11/pkg/apis/runtime/v1/api.proto)。
+下图展示了 gRPC 与 Protocol Buffers 在 CRI 中的作用和调用关系：
 
 ```mermaid "gRPC 与 Protocol Buffers 在 CRI 中的作用"
 graph BT
@@ -227,12 +212,14 @@ CRI **不适用于**：
 
 ## 主流 CRI 实现
 
-### 生产级容器运行时
+{{< table title="主流 CRI 实现对比" >}}
 
-| 运行时 | 维护者 | 特点 | 使用场景 |
-|--------|--------|------|----------|
-| **containerd** | CNCF | 轻量级、高性能、生产就绪 | 云原生环境、生产部署 |
-| **CRI-O** | Red Hat/CNCF | 专为 Kubernetes 设计、OCI 兼容 | OpenShift、企业环境 |
+| 运行时         | 维护者         | 特点                         | 使用场景                |
+| -------------- | -------------- | ---------------------------- | ----------------------- |
+| containerd     | CNCF           | 轻量级、高性能、生产就绪      | 云原生环境、生产部署     |
+| CRI-O          | Red Hat/CNCF   | 专为 Kubernetes 设计、OCI 兼容 | OpenShift、企业环境      |
+
+{{< /table >}}
 
 ### 安全增强型运行时
 
@@ -250,28 +237,28 @@ CRI **不适用于**：
 apiVersion: node.k8s.io/v1
 kind: RuntimeClass
 metadata:
-    name: kata-containers
+  name: kata-containers
 handler: kata
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-    name: secure-pod
+  name: secure-pod
 spec:
-    runtimeClassName: kata-containers
-    containers:
-    - name: app
-        image: nginx
+  runtimeClassName: kata-containers
+  containers:
+  - name: app
+    image: nginx
 ```
 
 ## 最佳实践
 
 ### 选择容器运行时的考虑因素
 
-1. **性能要求**：containerd 通常提供更好的性能
-2. **安全需求**：高安全要求场景考虑 Kata Containers 或 gVisor
-3. **生态兼容性**：CRI-O 与 OpenShift 生态集成更好
-4. **维护成本**：考虑团队的技术栈和维护能力
+- **性能要求**：containerd 通常提供更好的性能
+- **安全需求**：高安全要求场景考虑 Kata Containers 或 gVisor
+- **生态兼容性**：CRI-O 与 OpenShift 生态集成更好
+- **维护成本**：考虑团队的技术栈和维护能力
 
 ### 监控和故障排查
 
@@ -300,21 +287,25 @@ crictl exec -it <container-id> /bin/bash
 
 ## 总结
 
-| **方面** | **详情** |
-| --- | --- |
-| **目的** | kubelet 插件接口，支持多种容器运行时 |
-| **技术** | Protocol Buffers v3 + gRPC |
-| **服务** | RuntimeService（40+ 方法）、ImageService（5 方法） |
-| **消费者** | kubelet、crictl |
-| **实现者** | containerd、CRI-O 及其他容器运行时 |
-| **设计理念** | 以 Kubernetes 为中心，非通用接口 |
-| **定义位置** | [api.proto](https://github.com/kubernetes/cri-api/blob/65157e11/pkg/apis/runtime/v1/api.proto) |
+{{< table title="CRI 核心要点总结" >}}
+
+| 方面       | 详情                                                         |
+| ---------- | ------------------------------------------------------------ |
+| 目的       | kubelet 插件接口，支持多种容器运行时                         |
+| 技术       | Protocol Buffers v3 + gRPC                                   |
+| 服务       | RuntimeService（40+ 方法）、ImageService（5 方法）           |
+| 消费者     | kubelet、crictl                                              |
+| 实现者     | containerd、CRI-O 及其他容器运行时                           |
+| 设计理念   | 以 Kubernetes 为中心，非通用接口                             |
+| 定义位置   | [api.proto](https://github.com/kubernetes/cri-api/blob/65157e11/pkg/apis/runtime/v1/api.proto) |
+
+{{< /table >}}
 
 CRI 让 Kubernetes 生态支持多样化容器运行时实现，同时为 kubelet 保持稳定接口。这一架构决策使容器运行时技术能独立于 Kubernetes 编排逻辑持续演进。
 
-## 参考资料
+## 参考文献
 
-- [Container Runtime Interface (CRI) - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/architecture/cri/)
-- [containerd 官方文档](https://containerd.io/)
-- [CRI-O 官方文档](https://cri-o.io/)
-- [gVisor 官方文档](https://gvisor.dev/docs/)
+- [Container Runtime Interface (CRI) - kubernetes.io](https://kubernetes.io/docs/concepts/architecture/cri/)
+- [containerd 官方文档 - containerd.io](https://containerd.io/)
+- [CRI-O 官方文档 - cri-o.io](https://cri-o.io/)
+- [gVisor 官方文档 - gvisor.dev](https://gvisor.dev/docs/)

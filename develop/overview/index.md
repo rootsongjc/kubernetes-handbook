@@ -4,10 +4,10 @@ title: Kubernetes 开发概述
 linktitle: 概述
 description: 本文全面介绍 Kubernetes 开发的核心理念、工具链、开发模式及最佳实践，帮助读者系统掌握 Kubernetes 应用和扩展开发的关键技术与方法。
 date: 2025-10-20T00:00:00+08:00
-lastmod: 2025-10-20T04:20:25.166Z
+lastmod: 2025-10-27T17:26:39.720Z
 ---
 
-> 本文系统梳理 Kubernetes 开发生态、核心理念、工具链与开发模式，帮助开发者全面掌握云原生应用与扩展开发的关键技术与最佳实践。
+> Kubernetes 开发不仅是技术的革新，更是云原生思维与工程实践的深度融合之路。
 
 ## Kubernetes 开发生态全景
 

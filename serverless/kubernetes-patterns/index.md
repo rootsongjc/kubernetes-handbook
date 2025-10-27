@@ -3,7 +3,7 @@ title: Kubernetes 原生 Serverless 模式
 weight: 6
 description: 使用 Kubernetes 原生功能实现 Serverless 模式，包括 HPA、KEDA 和 Job 模式
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:54:33.891Z
+lastmod: 2025-10-27T17:58:54.227Z
 ---
 
 > 本文系统梳理了如何利用 Kubernetes 原生能力实现 Serverless 模式，涵盖 HPA、KEDA、Job、CronJob 及事件驱动等典型场景，帮助你在无需专用 Serverless 平台的情况下，构建高弹性、自动化的云原生工作负载。
@@ -533,5 +533,3 @@ kubectl logs job/<job-name>
 ## 总结
 
 Kubernetes 原生 Serverless 模式通过 HPA、KEDA、Job/CronJob 及事件驱动等机制，已能满足大部分弹性伸缩和自动化处理需求。虽然功能不及专用 Serverless 平台丰富，但对于大多数云原生场景而言，已是轻量、灵活且易于集成的选择。
-
-{{< list_children show_summary="false" >}}

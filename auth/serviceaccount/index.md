@@ -1,70 +1,49 @@
 ---
 weight: 44
 title: ServiceAccount
-date: '2022-05-21T00:00:00+08:00'
-type: book
+date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中的 ServiceAccount 概念，包括其作用、配置方法和最佳实践，帮助理解 Pod 身份认证机制。
-summary: ServiceAccount 为 Pod 中的进程提供身份信息。
-keywords:
-  - api
-  - default
-  - namespace
-  - pod
-  - serviceaccount
-  - spec
-  - token
-  - 创建
-  - 设置
-  - 集群
-lastmod: '2025-08-23'
+lastmod: 2025-10-27T12:31:10.385Z
 ---
 
-ServiceAccount 为 Pod 中的进程提供身份信息，是 Kubernetes 集群中实现 Pod 身份认证的重要机制。
-
-{{< callout note 注意 >}}
-本文档描述的关于 ServiceAccount 的行为只有当你按照 Kubernetes 项目建议的方式搭建集群的情况下才有效。集群管理员可能在你的集群中进行了自定义配置，这种情况下该文档可能并不适用。
-{{< /callout >}}
+> ServiceAccount 是 Kubernetes 集群中 Pod 身份认证与权限控制的基础机制，合理配置可提升安全性与自动化水平。
 
 ## ServiceAccount 基本概念
 
-当你（真人用户）访问集群（例如使用 `kubectl` 命令）时，API 服务器会将你认证为一个特定的 User Account（目前通常是 `admin`，除非你的系统管理员自定义了集群配置）。Pod 容器中的进程也可以与 API 服务器联系。当它们在联系 API 服务器的时候，它们会被认证为一个特定的 ServiceAccount（例如 `default`）。
+在 Kubernetes 中，ServiceAccount（服务账号）为 Pod 内进程提供身份凭证。与用户账号（User Account）不同，ServiceAccount 主要用于 Pod 与 API Server 的通信认证。
 
-每个 namespace 都有一个默认的 ServiceAccount，名为 `default`。当 Pod 需要访问 Kubernetes API 时，它会使用 ServiceAccount 的凭证进行身份验证。
+每个 namespace 默认存在名为 `default` 的 ServiceAccount。Pod 若需访问 Kubernetes API，会自动使用 ServiceAccount 的凭证进行身份验证。
+
+```mermaid "ServiceAccount 与 Pod 认证关系"
+flowchart LR
+    A[Pod 启动] --> B{ServiceAccount 绑定}
+    B -- 未指定 --> C[default ServiceAccount]
+    B -- 已指定 --> D[自定义 ServiceAccount]
+    C & D --> E[API Server 认证]
+```
+
+![ServiceAccount 与 Pod 认证关系](ced0e8782a79e5e1d4702c2256adf4a4.svg)
+{width=1920 height=376}
 
 ## 使用默认的 ServiceAccount
 
-### 自动分配机制
+当创建 Pod 时，若未指定 ServiceAccount，系统会自动分配同 namespace 下的 `default` ServiceAccount。
 
-当你创建 Pod 时，如果没有指定 ServiceAccount，系统会自动在与该 Pod 相同的 namespace 下为其指派一个 `default` ServiceAccount。
-
-你可以通过以下命令查看 Pod 的 ServiceAccount 配置：
+你可以通过如下命令查看 Pod 的 ServiceAccount 配置：
 
 ```bash
 kubectl get pod <pod-name> -o yaml
 ```
 
-在输出中，你会看到 `spec.serviceAccountName` 字段已经被设置为 `default`。
+输出中的 `spec.serviceAccountName` 字段即为当前 Pod 绑定的 ServiceAccount。
 
 ### 访问 API 权限
 
-ServiceAccount 是否能够访问 API 取决于你使用的 RBAC（基于角色的访问控制）配置。Pod 中的应用程序可以使用自动挂载的 ServiceAccount 凭证来访问 Kubernetes API。
+ServiceAccount 能否访问 API 取决于 RBAC（基于角色的访问控制）配置。Pod 内应用可通过自动挂载的 ServiceAccount Token 访问 Kubernetes API。
 
 ### 禁用自动挂载
 
-从 Kubernetes v1.6 开始，你可以选择禁用 ServiceAccount 凭证的自动挂载。
-
-在 ServiceAccount 级别禁用：
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: build-robot
-  namespace: default
-automountServiceAccountToken: false
-```
-
-在 Pod 级别禁用：
+自 Kubernetes v1.6 起，可在 ServiceAccount 或 Pod 级别禁用凭证自动挂载：
 
 ```yaml
 apiVersion: v1
@@ -74,33 +53,30 @@ metadata:
 spec:
   serviceAccountName: build-robot
   automountServiceAccountToken: false
-  # ... 其他配置
 ```
 
 {{< callout note 优先级 >}}
 如果在 Pod 和 ServiceAccount 中同时设置了 `automountServiceAccountToken`，Pod 设置中的优先级更高。
 {{< /callout >}}
 
+> **更新（2025）**  
+>
+> - 自 Kubernetes v1.24 起，ServiceAccount 默认不再自动创建 Secret 类型的长期 Token，推荐使用 BoundServiceAccountTokenVolume（短期 Token，自动轮换）。
+> - `secrets` 字段已不推荐使用，建议通过 `TokenRequest` API 获取临时 Token。
+
 ## 创建和管理 ServiceAccount
 
 ### 查看现有 ServiceAccount
 
-列出当前 namespace 中的所有 ServiceAccount：
+列出当前 namespace 下所有 ServiceAccount：
 
 ```bash
 kubectl get serviceaccounts
 ```
 
-输出示例：
-
-```text
-NAME      SECRETS    AGE
-default   0          1d
-```
-
 ### 创建自定义 ServiceAccount
 
-创建一个新的 ServiceAccount：
+通过 YAML 或命令行创建 ServiceAccount：
 
 ```yaml
 apiVersion: v1
@@ -110,21 +86,11 @@ metadata:
   namespace: default
 ```
 
-使用 kubectl 创建：
-
-```bash
-kubectl create -f serviceaccount.yaml
-```
-
-或者直接使用命令创建：
-
 ```bash
 kubectl create serviceaccount build-robot
 ```
 
 ### 查看 ServiceAccount 详情
-
-以下是相关的代码示例：
 
 ```bash
 kubectl get serviceaccounts/build-robot -o yaml
@@ -148,23 +114,43 @@ spec:
 
 {{< callout warning 重要提醒 >}}
 
-- ServiceAccount 必须在 Pod 创建之前存在，否则创建将被拒绝
-- 你不能更新已创建的 Pod 的 ServiceAccount
+- ServiceAccount 必须在 Pod 创建前存在，否则创建会被拒绝。
+- 已创建的 Pod 不可更改其 ServiceAccount。
 {{< /callout >}}
 
 ## Token 管理
 
 ### 现代 Token 机制
 
-从 Kubernetes v1.24 开始，默认启用了 BoundServiceAccountTokenVolume 功能：
+自 Kubernetes v1.24 起，默认启用 BoundServiceAccountTokenVolume：
 
-- Token 会定期自动轮换
-- Token 存储在只读的投影卷中
-- Token 具有时间限制和受众限制，提高了安全性
+- Token 自动轮换，存储于只读投影卷
+- Token 具备时间和受众限制，提升安全性
+
+```mermaid "ServiceAccount Token 生命周期"
+sequenceDiagram
+    participant Pod
+    participant Kubelet
+    participant API_Server
+
+    Pod->>Kubelet: 请求 Token
+    Kubelet->>API_Server: TokenRequest
+    API_Server-->>Kubelet: 返回短期 Token
+    Kubelet-->>Pod: 挂载只读 Token
+    Note over Pod: Token 定期自动轮换
+```
+
+![ServiceAccount Token 生命周期](c79bc490468256e4baa278d98e26dcdc.svg)
+{width=1920 height=1184}
+
+> **注意**  
+>
+> - 默认不再为每个 ServiceAccount 自动创建 Secret 类型 Token。
+> - 推荐通过 `TokenRequest` API 获取短期 Token，避免长期 Token 泄露风险。
 
 ### 手动创建长期 Token（不推荐）
 
-如果确实需要长期有效的 Token，可以手动创建 Secret：
+如确需长期有效 Token，可手动创建 Secret：
 
 ```yaml
 apiVersion: v1
@@ -176,21 +162,19 @@ metadata:
 type: kubernetes.io/service-account-token
 ```
 
-创建后查看 Token：
-
 ```bash
 kubectl describe secret build-robot-secret
 ```
 
 {{< callout warning 安全建议 >}}
-手动创建的长期 Token 存在安全风险，建议使用 TokenRequest API 或短期 Token。
+手动创建的长期 Token 存在安全风险，建议优先使用 TokenRequest API 或短期 Token。
 {{< /callout >}}
 
 ## 配置镜像拉取密钥
 
 ### 创建镜像拉取密钥
 
-首先创建包含镜像仓库凭证的 Secret：
+创建包含镜像仓库凭证的 Secret：
 
 ```bash
 kubectl create secret docker-registry myregistrykey \
@@ -202,13 +186,13 @@ kubectl create secret docker-registry myregistrykey \
 
 ### 添加到 ServiceAccount
 
-方法一：使用 patch 命令
+方法一：patch 命令
 
 ```bash
 kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "myregistrykey"}]}'
 ```
 
-方法二：编辑 ServiceAccount YAML
+方法二：编辑 YAML
 
 ```yaml
 apiVersion: v1
@@ -216,37 +200,162 @@ kind: ServiceAccount
 metadata:
   name: default
   namespace: default
-secrets:
-- name: default-token-xxxxx
 imagePullSecrets:
 - name: myregistrykey
 ```
 
-配置完成后，该 namespace 中新创建的所有 Pod 都会自动包含镜像拉取密钥。
+> **更新（2025）**  
+> Kubernetes 1.24+ 推荐通过 `imagePullSecrets` 字段直接关联 Secret，避免依赖自动创建的 ServiceAccount Token Secret。
 
-## 最佳实践
+配置后，该 namespace 新建 Pod 会自动包含镜像拉取密钥。
 
-### 安全建议
+## ServiceAccount 与 RBAC 权限管理
 
-1. **最小权限原则**：为每个应用创建专用的 ServiceAccount，只授予必要的权限
-2. **避免使用 default ServiceAccount**：为生产环境的应用创建专用 ServiceAccount
-3. **定期轮换凭证**：利用自动 Token 轮换功能，避免使用长期 Token
+通过 RBAC（Role-Based Access Control）可为 ServiceAccount 赋予精细化权限。
 
-### 管理建议
-
-1. **命名规范**：使用描述性的 ServiceAccount 名称，如 `webapp-reader`、`backup-writer`
-2. **权限分离**：不同功能的 Pod 使用不同的 ServiceAccount
-3. **监控和审计**：定期检查 ServiceAccount 的权限和使用情况
-
-### 清理资源
-
-删除不再需要的 ServiceAccount：
+### 创建 ServiceAccount
 
 ```bash
-kubectl delete serviceaccount build-robot
+kubectl create serviceaccount sample-sa
 ```
 
-## 参考资料
+### 获取 ServiceAccount Token
 
-- [Configure Service Accounts for Pods - Kubernetes 官方文档](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
-- [Managing Service Accounts - Kubernetes 官方文档](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
+Kubernetes v1.24+ 推荐获取短期 Token：
+
+```bash
+kubectl create token sample-sa
+```
+
+如需长期 Token，需手动创建 Secret。
+
+### 创建 ClusterRole
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: viewer-role
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  - pods/status
+  - pods/log
+  - services
+  - services/status
+  - endpoints
+  - endpoints/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["apps"]
+  resources:
+  - deployments
+  - deployments/status
+  verbs:
+  - get
+  - list
+  - watch
+```
+
+### 创建 ClusterRoleBinding
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sample-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: viewer-role
+subjects:
+- kind: ServiceAccount
+  name: sample-sa
+  namespace: default
+```
+
+### 配置 kubeconfig
+
+```yaml
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: <BASE64_ENCODED_CA_CERT>
+    server: https://your-k8s-api-server:6443
+  name: my-cluster
+contexts:
+- context:
+    cluster: my-cluster
+    user: sample-user
+  name: sample-context
+current-context: sample-context
+kind: Config
+preferences: {}
+users:
+- name: sample-user
+  user:
+    token: <SERVICE_ACCOUNT_TOKEN>
+```
+
+## 管理多个 ServiceAccount
+
+每个 namespace 默认有 `default` ServiceAccount，可通过如下命令列出：
+
+```bash
+kubectl get serviceaccounts
+```
+
+创建自定义 ServiceAccount：
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: build-robot
+EOF
+```
+
+查看详情：
+
+```bash
+kubectl get serviceaccounts/build-robot -o yaml
+```
+
+在 Pod 中指定 ServiceAccount：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  serviceAccountName: build-robot
+  containers:
+  - name: my-container
+    image: nginx
+```
+
+**注意事项**：
+
+- Pod 创建前 ServiceAccount 必须已存在
+- 已创建 Pod 不可更改 ServiceAccount
+
+清理 ServiceAccount：
+
+```bash
+kubectl delete serviceaccount/build-robot
+```
+
+## 总结
+
+ServiceAccount 是 Kubernetes 集群安全与自动化治理的基石。自 v1.24 起，Token 管理机制全面升级，推荐优先使用短期 Token 与 BoundServiceAccountTokenVolume，结合 RBAC 精细化授权，提升集群安全性和可维护性。
+
+## 参考文献
+
+1. [Configure Service Accounts for Pods - kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+2. [Managing Service Accounts - kubernetes.io](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
+3. [Bound ServiceAccount Token Volume - kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#bound-serviceaccount-token-volume)
