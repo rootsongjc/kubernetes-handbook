@@ -1,10 +1,12 @@
 ---
-title: Gateway API Inference Extension
-linkTitle: Gateway API Inference Extension
-weight: 6
-description: Kubernetes Gateway API Inference Extension 的介绍和使用指南。
+title: Gateway API 推理扩展
+linkTitle: Gateway API 推理扩展
+weight: 43
+aliases:
+  - /zh/book/kubernetes-handbook/ai-native/gateway-api-inference/
+description: Kubernetes Gateway API 推理扩展的介绍和使用指南。
 date: 2025-10-20T05:19:44.956Z
-lastmod: 2025-10-20T05:19:45.633Z
+lastmod: 2025-10-27T18:14:39.810Z
 ---
 
 > Gateway API Inference Extension 为 Kubernetes AI/ML 推理工作负载提供了标准化、声明式的流量管理和智能路由能力，极大提升了模型服务的可扩展性与可维护性。

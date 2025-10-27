@@ -4,8 +4,10 @@ linktitle: 概述
 date: 2025-10-13
 weight: 1
 description: 系统梳理了 Kubernetes 网络与服务相关的核心概念，重点介绍 Service、EndpointSlice、DNS、Ingress、网络策略等机制，帮助读者理解集群内外通信与服务发现的实现方式。
-lastmod: 2025-10-13T04:49:54.720Z
+lastmod: 2025-10-27T18:11:39.287Z
 ---
+
+> 服务发现与网络路由是 Kubernetes 架构的灵魂，决定了云原生应用的可扩展性与弹性边界。
 
 本文介绍 Kubernetes 网络与服务的核心概念，重点阐述 Service 及其相关组件如何实现 Pod 间通信与应用对外暴露。
 
