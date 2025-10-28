@@ -3,7 +3,7 @@ title: Kubernetes Scheduler Framework 插件机制
 linktitle: Scheduler Framework 插件
 weight: 35
 date: 2025-10-27T22:20:00+08:00
-lastmod: 2025-10-27T14:46:47.698Z
+lastmod: 2025-10-28T13:33:38.741Z
 description: 深入理解并实践 Kubernetes Scheduler Framework 插件开发，掌握自定义调度逻辑的编写、注册、调试与应用，为 AI 原生与 GPU 调度扩展打下基础。
 ---
 
@@ -234,7 +234,7 @@ plugins:
 | `--v=5`        | 调度器详细日志     | `./custom-scheduler --v=5`                         |
 | `kubectl logs` | 查看 Pod 调度日志 | `kubectl logs -n kube-system kube-scheduler-node1` |
 | `pprof`        | 性能分析        | `curl localhost:10251/debug/pprof`                 |
-| `trace`        | 调度器跟踪事件     | `kubectl get events -A | grep Scheduling`          |
+| `trace`        | 调度器跟踪事件     | `kubectl get events -A \| grep Scheduling`          |
 
 {{< /table >}}
 
