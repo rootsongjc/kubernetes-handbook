@@ -5,7 +5,7 @@ date: 2022-05-21T00:00:00+08:00
 aliases:
   - /book/kubernetes-handbook/objects/pod-lifecycle/
 description: 详细介绍 Kubernetes Pod 的生命周期管理，包括 Pod 状态阶段、容器探针配置、重启策略以及生命周期的各种实际应用场景。
-lastmod: 2025-10-27T13:43:22.095Z
+lastmod: 2025-10-28T04:43:05.297Z
 ---
 
 > Pod 生命周期管理是 Kubernetes 自动化运维和高可用保障的核心，合理配置探针和重启策略可显著提升应用的健壮性和弹性。
@@ -33,20 +33,17 @@ Pod 的 `status` 字段包含一个 PodStatus 对象，其中的 `phase` 字段�
 下图展示了 Pod 生命周期中状态的变化流程：
 
 ```mermaid "Pod 生命周期状态变化流程"
-graph TD
-    A[Pending] --> B[Running]
-    B --> C[Succeeded]
-    B --> D[Failed]
-    B --> E[Unknown]
-    D --> F[重启策略]
-    F --> B
+stateDiagram-v2
+  [*] --> Pending : 被 Kube 接收
+  Pending --> Running : 至少有一个容器正在运行
+  Running --> Succeed : 所有容器以 0 退出码终止
+  Running --> Failed : 至少有一个容器以非零退出码终止
+  Failed --> Running : 重启后容器再次运行
+  Succeed --> [*]
 ```
 
-![Pod 生命周期状态变化流程](d04dad6cd5f7c74c27c393c1ab56084c.svg)
-{width=1920 height=1677}
-
-![Pod 的生命周期示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pod-lifecycle/kubernetes-pod-life-cycle.webp)
-{width=1886 height=638}
+![Pod 生命周期状态变化流程](e3452d9dcb65811ce4d215330d99f6b7.svg)
+{width=1920 height=2289}
 
 ## Pod 状态（Status）
 
