@@ -7,7 +7,7 @@ aliases:
   - /book/kubernetes-handbook/objects/pod-overview/
   - /book/kubernetes-handbook/pod/pod-overview/
 description: 深入了解 Kubernetes 中最基本的部署单元 Pod，包括其核心概念、使用模式、资源共享机制以及与控制器的关系。
-lastmod: 2025-10-27T14:30:06.091Z
+lastmod: 2025-10-28T04:39:25.016Z
 ---
 
 > Pod 是 Kubernetes 中最基本的部署和调度单元，承载着容器化应用的运行环境，是实现弹性伸缩和自动化运维的基础。
@@ -93,8 +93,8 @@ Pod 内的多个容器可以共享以下资源，实现高效协作。
 
 下图展示了典型的多容器 Pod 架构：
 
-![多容器 Pod 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pod-overview/pod-overview.webp)
-{width=600 height=400}
+![多容器 Pod 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/overview/pod-overview-1.webp)
+{width=1156 height=908}
 
 ## Pod 的生命周期管理
 

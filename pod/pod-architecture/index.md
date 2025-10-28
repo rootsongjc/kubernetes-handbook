@@ -6,7 +6,7 @@ type: book
 aliases:
   - /book/kubernetes-handbook/objects/pod-overview/
 description: 深入了解 Kubernetes Pod 架构、设计理念、生命周期管理和最佳实践，包括 Pod 的创建、调度、终止和故障处理机制。
-lastmod: 2025-10-27T18:08:04.207Z
+lastmod: 2025-10-28T04:41:05.841Z
 ---
 
 > Pod 是 Kubernetes 架构的基石，理解其设计理念和生命周期管理对于构建高可用、可扩展的容器化应用至关重要。
@@ -47,8 +47,8 @@ Pod 中的容器共享以下环境：
 
 下图展示了多容器 Pod 的典型架构，便于理解容器间的协作关系：
 
-![多容器 Pod 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pod/pod-overview.webp)
-{width=600 height=400}
+![多容器 Pod 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/overview/pod-overview-1.webp)
+{width=1156 height=908}
 
 ## Pod 的设计理念
 

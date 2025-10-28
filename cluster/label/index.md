@@ -3,7 +3,7 @@ weight: 24
 title: Label
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes Label 是附着到对象上的键值对，用于标识和选择对象。本文详细介绍了 Label 的语法规则、选择器类型，以及在不同场景下的使用方法。
-lastmod: 2025-10-27T12:53:19.397Z
+lastmod: 2025-10-28T04:36:23.667Z
 ---
 
 > Label（标签）是 Kubernetes 资源管理的基础机制之一，通过灵活的标签体系，可以高效地组织、筛选和管理集群中的各类对象，是实现自动化运维和资源治理的关键。
@@ -218,7 +218,7 @@ graph LR
 
 下图展示了 Label 在服务发现中的作用：
 
-![Label 示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/labels.webp)
+![Label 示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/labels-1.webp)
 {width=803 height=588}
 
 ## 注意事项
