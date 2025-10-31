@@ -6,6 +6,7 @@ categories:
 category: 教程手册
 featured: true
 type: publication
+status: maintaining
 layout: book-content
 title: Kubernetes 基础教程
 date: 2017-03-15T00:00:00+08:00
@@ -57,7 +58,7 @@ book:
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: 2025-10-27T14:14:36.610Z
+lastmod: 2025-10-31T12:09:21.128Z
 authors:
   - Jimmy Song
 publisher: jimmysong.io
