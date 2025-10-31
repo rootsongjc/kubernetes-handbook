@@ -2,9 +2,9 @@
 weight: 109
 linktitle: Operator
 title: Kubernetes Operator
-summary: 深入了解 Kubernetes Operator 的原理、架构、应用场景和 2025 年最佳实践。
+description: 深入了解 Kubernetes Operator 的原理、架构、应用场景和 2025 年最佳实践。
 date: 2024-01-15T11:00:00+08:00
-lastmod: 2025-10-20T03:23:43.488Z
+lastmod: 2025-10-31T12:33:13.312Z
 ---
 
 > Kubernetes Operator 通过将运维专家的领域知识编码为软件，实现了复杂有状态应用的自动化部署与运维，极大提升了云原生平台的可扩展性和智能化水平。

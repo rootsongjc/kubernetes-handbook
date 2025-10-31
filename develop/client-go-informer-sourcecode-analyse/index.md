@@ -2,9 +2,9 @@
 weight: 107
 linktitle: client-go informer
 title: client-go 中的 informer 源码分析
-summary: 本文将以图文并茂的方式对 client-go 中的 informer 的源码进行深入分析，揭示其核心实现机制。
+description: 本文将以图文并茂的方式对 client-go 中的 informer 的源码进行深入分析，揭示其核心实现机制。
 date: 2022-09-05T11:00:00+08:00
-lastmod: 2025-10-27T17:29:39.224Z
+lastmod: 2025-10-31T12:33:30.968Z
 ---
 
 > 只有真正理解 informer 的源码实现，才能写出健壮、优雅且高性能的 Kubernetes 控制器。
