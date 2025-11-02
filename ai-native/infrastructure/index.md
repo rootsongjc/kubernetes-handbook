@@ -4,7 +4,7 @@ linkTitle: AI 基础设施架构
 weight: 2
 description: Kubernetes AI 基础设施的设计原则、硬件加速、网络与存储优化及运维实践。
 date: 2025-10-20T05:19:59.805Z
-lastmod: 2025-11-02T12:22:52.542Z
+lastmod: 2025-11-02T12:29:01.847Z
 ---
 
 > 本文系统梳理了 Kubernetes AI 基础设施的设计原则、核心组件、硬件加速、网络与存储优化及运维实践，助力构建高效稳定的 AI 平台。
@@ -22,20 +22,20 @@ Kubernetes 通过统一的 API、调度、伸缩、服务发现和安全控制�
 ```mermaid "Kubernetes AI 技术栈总体架构"
 graph TD
   A[客户端 / 应用] --> B[AI 网关 / 推理 API]
-  B --> C["模型服务层（KServe / vLLM / LLMariner）"]
-  C --> D["调度层（Volcano / Kaito / Karpenter）"]
-  D --> E["算力层（GPU / NPU / DraNet / HAMi）"]
-  E --> F["存储层（JuiceFS / S3 / CSI / 缓存）"]
-  A --> G["可观测与安全（Cilium / OpenTelemetry / K8sGPT）"]
+  B --> C["模型服务层<br/>（KServe / vLLM / LLMariner）"]
+  C --> D["调度层<br/>（Volcano / Kaito / Karpenter）"]
+  D --> E["算力层<br/>（GPU / NPU / DraNet / HAMi）"]
+  E --> F["存储层<br/>（JuiceFS / S3 / Ceph / EdgeFS）"]
+  A --> G["可观测与安全<br/>（Cilium / OpenTelemetry / K8sGPT）"]
   subgraph 框架扩展
-  H[Kagent / LangGraph / LLM Workflow Controller]
+  H[MLFlow / KubeRay / KubeFlow]
   end
   H --> B
   B --> C
 ```
 
-![Kubernetes AI 技术栈总体架构](862df54c6564b970c6b8c56ec2271ceb.svg)
-{width=1920 height=2734}
+![Kubernetes AI 技术栈总体架构](1a10d07c367c1beb5031e11694c5a13b.svg)
+{width=1920 height=2905}
 
 这一架构分为以下层级：
 
