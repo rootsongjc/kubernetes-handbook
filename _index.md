@@ -24,41 +24,13 @@ book:
   description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
   language: zh-hans
   author: Jimmy Song
-  cover: cover.jpg
-  backcover_image: back-cover.jpg
-  backcover_text: 「几米宋」微信公众号
-  backcover_link_text: 访问 jimmysong.io 在线阅读本书
-  backcover_link_url: https://jimmysong.io/book/kubernetes-handbook/
-  backcover_text_color: "#FFFFFF"
-  backcover_link_color: "#1d09d8"
   date: 2025-07-13T00:00:00.000Z
   website: https://jimmysong.io/book/kubernetes-handbook/
   appendix: false
-  cover_title_text: Kubernetes Handbook
-  cover_author_text: Jimmy Song
-  cover_subtitle_text: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
-  cover_title_color: "#FFFFFF"
-  cover_author_color: "#E0E0E0"
-  cover_subtitle_color: "#C0C0C0"
-  cover_title_font_size: 48
-  cover_author_font_size: 28
-  cover_subtitle_font_size: 20
-  cover_title_position: center
-  cover_author_position: bottom
-  cover_overlay_enabled: true
-  cover_text_shadow: false
-  cover_background_overlay: false
-  cover_overlay_opacity: 0
-  body_color: "#333333"
-  heading_color: "#2C3E50"
-  link_color: "#3498DB"
-  code_color: "#E74C3C"
-  quote_color: "#7F8C8D"
-  caption_color: "#95A5A6"
 repository:
   url: https://github.com/rootsongjc/kubernetes-handbook
   branch: main
-lastmod: 2025-10-31T12:09:21.128Z
+lastmod: 2025-11-03T16:06:15.728Z
 authors:
   - Jimmy Song
 publisher: jimmysong.io
@@ -99,27 +71,23 @@ Kubernetes 的目标不仅仅是一个编排系统，而是：
 
 核心技术包括：
 
-- **容器** - 应用打包和运行的标准单元
-- **服务网格** - 微服务间通信的基础设施层
-- **微服务** - 应用架构的设计模式
-- **不可变基础设施** - 基础设施的管理理念
-- **声明式 API** - 系统配置和管理的方式
+- **容器**：应用打包和运行的标准单元
+- **服务网格**：微服务间通信的基础设施层
+- **微服务**：应用架构的设计模式
+- **不可变基础设施**：基础设施的管理理念
+- **声明式 API**：系统配置和管理的方式
 
 这些技术能够构建容错性好、易于管理和便于观察的松耦合系统，结合可靠的自动化手段，使工程师能够轻松地对系统作出频繁和可预测的重大变更。
 
 ## 关于本书
 
-### 项目历程
-
 Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，经过多年持续完善和更新。
-
-### 内容特色
 
 本书记录了从零开始学习和使用 Kubernetes 的完整历程，具有以下特点：
 
-- **实战导向** - 着重于经验总结和最佳实践分享
-- **深入浅出** - 详细解析 Kubernetes 核心概念
-- **生态完整** - 涵盖微服务、DevOps、服务网格、Serverless 等相关领域
-- **持续更新** - 跟进最新技术发展和社区动态
+- **实战导向**：着重于经验总结和最佳实践分享
+- **深入浅出**：详细解析 Kubernetes 核心概念
+- **生态完整**：涵盖微服务、DevOps、服务网格、Serverless、边缘计算、AI 原生等相关领域
+- **持续更新**：跟进最新技术发展和社区动态
 
 {{< list_children show_summary="true" style="cards"  >}}

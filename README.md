@@ -94,6 +94,11 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 - 网站：[https://jimmysong.io](https://jimmysong.io)
 - GitHub: [@rootsongjc](https://github.com/rootsongjc)
+- 微信公众号：几米宋
+
+<div style="text-align: center;">
+    <img src="qrcode.jpg" alt="关注微信公众号" style="max-width: 180px; width: 100%; height: auto; display: inline-block;" />
+</div>
 
 ## 许可证
 
