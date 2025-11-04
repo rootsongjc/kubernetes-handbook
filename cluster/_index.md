@@ -1,11 +1,11 @@
 ---
 weight: 21
 title: 集群资源管理
-date: '2022-05-21T00:00:00+08:00'
+date: 2022-05-21T00:00:00+08:00
 type: book
 description: 深入了解 Kubernetes 集群资源管理，包括 Namespace 命名空间隔离、Node 节点管理、Pod 调度策略等核心概念和实践方法。
 icon: fa-solid fa-server
-lastmod: '2025-08-20'
+lastmod: 2025-11-04T02:02:55.899Z
 ---
 
 Kubernetes 提供了丰富的集群资源管理功能，帮助运维人员有效管理异构环境和复杂的容器化应用。通过合理的资源管理策略，可以实现应用的高效部署、调度和运维。
@@ -23,4 +23,4 @@ Kubernetes 集群资源管理的核心要点包括：
 - 定期监控集群资源利用率，及时发现和解决资源瓶颈。
 - 利用 Operator 等自动化工具简化运维流程，提高管理效率。
 
-{{< list_children show_summary="true" style="cards"  >}}
+{{< show_section_toc show_summary="true" style="cards"  >}}

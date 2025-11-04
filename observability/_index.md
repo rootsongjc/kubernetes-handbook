@@ -4,7 +4,7 @@ weight: 100
 description: Kubernetes 集群和应用的全面可观测性指南，涵盖监控、日志、链路追踪等核心领域的最佳实践
 icon: fas fa-eye
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T11:41:38.399Z
+lastmod: 2025-11-04T02:02:55.933Z
 ---
 
 可观测性是现代云原生应用的基础能力，它帮助我们：
@@ -16,4 +16,4 @@ lastmod: 2025-10-19T11:41:38.399Z
 
 在 Kubernetes 环境中实施可观测性需要综合考虑多个层次，从基础设施到应用的全方位覆盖。选择合适的工具栈并遵循最佳实践，可以构建强大而可靠的可观测性系统。
 
-{{< list_children show_summary="true" style="cards" >}}
+{{< show_section_toc show_summary="true" style="cards" >}}
