@@ -9,4 +9,4 @@ lastmod: 2025-11-04T02:02:55.929Z
 
 在微服务架构中，服务发现和路由是确保应用间高效通信的基础设施。Kubernetes 提供了完善的服务发现机制和灵活的路由策略，让分布式应用能够在动态环境中自动发现彼此并建立可靠连接。
 
-{{< show_section_toc show_summary="true" style="cards"  >}}
+{{< section-toc show_summary="true" style="cards"  >}}

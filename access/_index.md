@@ -11,4 +11,4 @@ lastmod: 2025-11-04T02:02:55.944Z
 
 Kubernetes 集群提供了多种访问方式，用户可以根据具体的使用场景和安全要求选择合适的访问方法。本章将详细介绍各种访问集群的方式及其适用场景。
 
-{{< show_section_toc show_summary="true" style="cards"  >}}
+{{< section-toc show_summary="true" style="cards"  >}}

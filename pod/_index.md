@@ -24,4 +24,4 @@ Kubernetes 通过各种控制器（Controller）来管理 Pod 的状态和生命
 
 在深入学习各类控制器之前，我们需要先建立对 Pod 本身及其生命周期的全面理解，这是掌握 Kubernetes 工作负载管理的基础。
 
-{{< show_section_toc show_summary="true" style="cards"  >}}
+{{< section-toc show_summary="true" style="cards"  >}}

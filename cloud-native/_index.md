@@ -10,4 +10,4 @@ lastmod: 2025-11-04T02:02:55.917Z
 
 云原生（Cloud Native）是一种充分利用云计算弹性、分布式和自动化优势的应用构建与运行方式。它强调容器化、微服务、自动化编排、DevOps 实践和可观测性，帮助企业高效交付和管理大规模应用。
 
-{{< show_section_toc show_summary="true" style="cards"  >}}
+{{< section-toc show_summary="true" style="cards"  >}}

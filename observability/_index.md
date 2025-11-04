@@ -16,4 +16,4 @@ lastmod: 2025-11-04T02:02:55.933Z
 
 在 Kubernetes 环境中实施可观测性需要综合考虑多个层次，从基础设施到应用的全方位覆盖。选择合适的工具栈并遵循最佳实践，可以构建强大而可靠的可观测性系统。
 
-{{< show_section_toc show_summary="true" style="cards" >}}
+{{< section-toc show_summary="true" style="cards" >}}

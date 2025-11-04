@@ -9,4 +9,4 @@ lastmod: 2025-11-04T02:02:55.916Z
 
 Kubernetes 提供了多租户身份认证与权限管理机制，通过 RBAC、ServiceAccount 和安全策略，保障集群资源安全。身份认证不仅用于集群内部，也支持分布式应用的统一身份管理。SPIFFE 作为云原生身份标准，配合 SPIRE 实现自动化证书管理和零信任架构，广泛集成于主流云原生项目。身份与权限管理是 Kubernetes 安全体系的基础。
 
-{{< show_section_toc show_summary="true" style="cards"  >}}
+{{< section-toc show_summary="true" style="cards"  >}}
