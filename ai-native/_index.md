@@ -12,4 +12,4 @@ AI 原生（AI Native）是指将人工智能技术深度集成到云原生基�
 
 本章节将介绍面向 AI 场景的 Kubernetes 基础设施架构，包括 AI Gateway、大模型部署调优、推理优化等关键技术，帮助读者构建高效的 AI 原生平台。
 
-{{< show_section_toc show_summary="true" style="cards" >}}
+{{< section-toc show_summary="true" style="cards" >}}
