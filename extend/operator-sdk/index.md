@@ -17,8 +17,6 @@ aliases:
 
 Operator SDK 基于 Kubernetes controller-runtime 库构建，并通过与 Operator Lifecycle Manager (OLM) 的无缝集成，为 Operator 特定的工具和抽象提供了扩展支持。
 
-在阅读本文前，建议你先了解 [Operator 的基本概念](../operator/)。
-
 ## 为什么需要 Operator SDK
 
 在 Kubernetes 上部署和管理复杂有状态应用时，常常面临生命周期管理复杂、运维门槛高、自动化程度低等挑战。Operator SDK 通过将运维知识编码为软件、提供声明式 API 以及与 kubectl 的一致体验，有效解决了这些问题。
