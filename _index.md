@@ -2,7 +2,7 @@
 linktitle: Kubernetes 教程
 description: Kubernetes 基础教程 - 全面介绍容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
 categories:
-  - 教程手册
+    - 教程手册
 category: 教程手册
 featured: true
 type: publication
@@ -13,26 +13,26 @@ date: 2017-03-15T00:00:00+08:00
 icon: fa-solid fa-book
 banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 aliases:
-  - /guide-to-cloud-native-app
+    - /guide-to-cloud-native-app
 cascade:
-  comment: true
-  type: book
-  layout: book-content
-  icon_pack: fas
+    comment: true
+    type: book
+    layout: book-content
+    icon_pack: fas
 book:
-  title: Kubernetes 基础教程
-  description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
-  language: zh-hans
-  author: Jimmy Song
-  date: 2025-07-13T00:00:00.000Z
-  website: https://jimmysong.io/book/kubernetes-handbook/
-  appendix: false
+    title: Kubernetes 基础教程
+    description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
+    language: zh-hans
+    author: Jimmy Song
+    date: 2025-07-13T00:00:00.000Z
+    website: https://jimmysong.io/book/kubernetes-handbook/
+    appendix: false
 repository:
-  url: https://github.com/rootsongjc/kubernetes-handbook
-  branch: main
-lastmod: 2025-11-03T16:06:15.728Z
+    url: https://github.com/rootsongjc/kubernetes-handbook
+    branch: main
+lastmod: 2025-11-04T02:02:55.950Z
 authors:
-  - Jimmy Song
+    - Jimmy Song
 publisher: jimmysong.io
 ---
 
@@ -90,4 +90,4 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **生态完整**：涵盖微服务、DevOps、服务网格、Serverless、边缘计算、AI 原生等相关领域
 - **持续更新**：跟进最新技术发展和社区动态
 
-{{< list_children show_summary="true" style="cards"  >}}
+{{< show_section_toc show_summary="true" style="cards"  >}}

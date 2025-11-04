@@ -3,10 +3,10 @@ weight: 10
 title: Pod
 date: 2022-05-21T00:00:00+08:00
 aliases:
-  - /book/kubernetes-handbook/objects/
+    - /book/kubernetes-handbook/objects/
 description: 深入了解 Kubernetes 中 Pod 这一最小调度单元的构成、生命周期管理以及容器启动机制，掌握 Pod 状态管理的核心概念。
 icon: fa-solid fa-solid fa-cube
-lastmod: 2025-10-27T17:47:15.470Z
+lastmod: 2025-11-04T02:02:55.894Z
 ---
 
 > Pod 是 Kubernetes 世界中承载一切应用与创新的“原子单元”，其精妙设计奠定了云原生架构的坚实基石。
@@ -24,4 +24,4 @@ Kubernetes 通过各种控制器（Controller）来管理 Pod 的状态和生命
 
 在深入学习各类控制器之前，我们需要先建立对 Pod 本身及其生命周期的全面理解，这是掌握 Kubernetes 工作负载管理的基础。
 
-{{< list_children show_summary="true" style="cards"  >}}
+{{< show_section_toc show_summary="true" style="cards"  >}}
