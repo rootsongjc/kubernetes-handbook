@@ -177,7 +177,7 @@ flowchart LR
 下图为流程示意图：
 
 ![Istio Sidecar 自动注入流程](89f1cd0db0708338739eef896d9ee335.svg)
-{width=1920 height=294}
+{width=1920 height=297}
 
 这种自动注入机制极大简化了服务网格的部署和运维。
 

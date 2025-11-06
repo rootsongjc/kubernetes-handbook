@@ -63,7 +63,7 @@ graph TB
 ```
 
 ![HAMi 系统架构组件](d9f1434b86dc245eb8545cbcb5b0585c.svg)
-{width=1920 height=1122}
+{width=1920 height=1116}
 
 ## 设备虚拟化与共享机制
 

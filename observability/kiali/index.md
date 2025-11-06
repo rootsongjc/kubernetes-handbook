@@ -68,7 +68,7 @@ graph TD
 ```
 
 ![Kiali 架构总览](9294a20b6ded2a0d40dd6638c437f8ec.svg)
-{width=1920 height=1571}
+{width=1920 height=1565}
 
 ### 组件说明
 

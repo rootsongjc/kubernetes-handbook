@@ -44,7 +44,7 @@ graph TD
 ```
 
 ![容器网络挑战与解决方案](0eff034308869028feb90e389fbb9dc9.svg)
-{width=1920 height=556}
+{width=1920 height=548}
 
 Kubernetes 网络设计遵循以下核心原则：
 
@@ -82,7 +82,7 @@ graph TB
 ```
 
 ![Kubernetes 网络模型层次](a4bbd72e29663ed17784d3a460b6be8e.svg)
-{width=2113 height=198}
+{width=2120 height=198}
 
 ### 集群网络 (Cluster Network)
 
@@ -126,7 +126,7 @@ graph TD
 ```
 
 ![Kubernetes 通信模式](ed10c47c51e23dabd2fdb5b3270b6c83.svg)
-{width=1920 height=807}
+{width=1920 height=797}
 
 ### Pod-to-Pod 通信
 
@@ -167,7 +167,7 @@ graph TD
 ```
 
 ![Service 类型和网络实现](4ebaa33bd556d934614ecf1f2bde3e14.svg)
-{width=1920 height=748}
+{width=1920 height=741}
 
 Service 的 Endpoint 与网络拓扑如下图所示，便于理解流量分发过程。
 
@@ -191,7 +191,7 @@ graph TB
 ```
 
 ![Service Endpoint 和 Network Topology](9705a5817a3df36df5cd729d51fe61f0.svg)
-{width=1920 height=1507}
+{width=1920 height=1542}
 
 ## 网络策略与安全机制
 
@@ -232,7 +232,7 @@ graph TD
 ```
 
 ![NetworkPolicy 模型结构](b27357cdc1528705517adf02c94dd6ac.svg)
-{width=1920 height=1430}
+{width=1920 height=1416}
 
 以下是一个典型的零信任 NetworkPolicy 配置示例：
 
@@ -305,7 +305,7 @@ graph TD
 ```
 
 ![CNI Plugin Classification](b9e21b4ea0fe56a3ac4eae0fc26202e2.svg)
-{width=2016 height=480}
+{width=2038 height=480}
 
 选择网络插件时需综合考虑性能、安全、可观测性、运维复杂度和云兼容性等因素。下表对比了主流插件的关键维度。
 
@@ -358,7 +358,7 @@ graph LR
 ```
 
 ![网络架构演进](9481cfad0c68a2719ca21c4476b0c6a4.svg)
-{width=1920 height=6224}
+{width=1920 height=6186}
 
 当前云原生网络发展趋势主要包括：
 
@@ -405,7 +405,7 @@ graph TD
 ```
 
 ![网络故障排查流程](b8af066a8173f5f5efb2f5c09ad05153.svg)
-{width=2172 height=882}
+{width=2202 height=882}
 
 常用诊断工具如下，便于实际运维排查：
 

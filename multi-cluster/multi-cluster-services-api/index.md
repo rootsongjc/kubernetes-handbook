@@ -80,7 +80,7 @@ F[Rancher Fleet] -->|GitOps 声明式同步| G[多集群环境]
 ```
 
 ![控制平面联邦化](b4460932953ab08bd268a180ffe79806.svg)
-{width=1920 height=1502}
+{width=1920 height=1493}
 
 这些项目普遍采用以下核心理念：
 
@@ -144,7 +144,7 @@ A --> F["AI-Native 多集群 (KubeEdge / HAMi)"]
 ```
 
 ![多集群治理方向](7496d5bb8f459f3a5b343d8bf203b6fc.svg)
-{width=1920 height=297}
+{width=1920 height=295}
 
 这些模式正在融合形成新的趋势：
 

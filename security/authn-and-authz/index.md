@@ -28,7 +28,7 @@ flowchart TD
 ```
 
 ![Kubernetes API 安全处理流程](801cb980a749aa71a4a2f3a5cc462e06.svg)
-{width=1920 height=1748}
+{width=1920 height=1744}
 
 ## 用户类型与身份来源
 
@@ -179,7 +179,7 @@ flowchart TD
 ```
 
 ![多鉴权器判定流程](a9194330cb1883ebf281a609d755d159.svg)
-{width=1920 height=2182}
+{width=1920 height=2177}
 
 ## RBAC 授权机制
 
@@ -225,7 +225,7 @@ flowchart TD
 ```
 
 ![RBAC 对象关系](7fd89242eca29d6231168fa9de22eb96.svg)
-{width=1920 height=532}
+{width=1920 height=533}
 
 ### 角色与绑定示例
 
@@ -267,7 +267,7 @@ flowchart LR
 ```
 
 ![准入控制流程](5887d76552c5efb30719f07a5fd6a7db.svg)
-{width=1920 height=1104}
+{width=1920 height=1100}
 
 常用准入控制器包括 PodSecurity、ResourceQuota、LimitRanger、ServiceAccount、MutatingAdmissionWebhook、ValidatingAdmissionWebhook 等。
 

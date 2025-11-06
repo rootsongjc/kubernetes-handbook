@@ -60,7 +60,7 @@ graph TD
 ```
 
 ![Knative Serving 核心架构](062bf86fcea8c9094ac88933553daf35.svg)
-{width=1920 height=2561}
+{width=1920 height=2558}
 
 ## 核心资源
 

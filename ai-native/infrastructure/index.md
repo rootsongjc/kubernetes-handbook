@@ -35,7 +35,7 @@ graph TD
 ```
 
 ![Kubernetes AI 技术栈总体架构](1a10d07c367c1beb5031e11694c5a13b.svg)
-{width=1920 height=2905}
+{width=1920 height=2978}
 
 这一架构分为以下层级：
 

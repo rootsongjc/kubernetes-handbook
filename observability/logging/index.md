@@ -46,7 +46,7 @@ graph TD
 ```
 
 ![Kubernetes 日志类型与流转](bb9a9e40820cda87a4981dfd6d824cc2.svg)
-{width=1982 height=1183}
+{width=2000 height=1183}
 
 日志类型包括：
 
@@ -103,7 +103,7 @@ graph TD
 ```
 
 ![EFK 日志收集架构](0b3586e12ce40bac8d974dd93ee5e4f2.svg)
-{width=1920 height=5063}
+{width=1920 height=5009}
 
 组件说明：
 
@@ -141,7 +141,7 @@ graph TD
 ```
 
 ![PLG 日志收集架构](a3b985a47d6e387a7187a119d146939f.svg)
-{width=1920 height=3981}
+{width=1920 height=3938}
 
 组件说明：
 
@@ -200,7 +200,7 @@ graph TD
 ```
 
 ![Fluent Bit 插件架构](1d557f3216712f6a4a9d91ed6d23aa14.svg)
-{width=1920 height=2951}
+{width=1920 height=2913}
 
 核心特性：
 

@@ -51,7 +51,7 @@ graph TB
 ```
 
 ![CRI 作为抽象层](3f506382e51979972aa6a2c79d45c9d0.svg)
-{width=1920 height=509}
+{width=1920 height=506}
 
 抽象层允许运行时实现独立演进，同时为 kubelet 保持稳定接口。
 
@@ -140,7 +140,7 @@ graph BT
 ```
 
 ![gRPC 与 Protocol Buffers 在 CRI 中的作用](a9ffe9bc753405c70dcc0584acc64bc7.svg)
-{width=1920 height=1487}
+{width=1920 height=1473}
 
 ## 关键概念
 

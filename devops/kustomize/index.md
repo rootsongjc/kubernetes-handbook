@@ -33,7 +33,7 @@ graph TD
 ```
 
 ![Kustomize 核心模块结构](e3e42fdeaf54b37eb85d125cbc52d825.svg)
-{width=1920 height=604}
+{width=1920 height=596}
 
 - **kyaml**：低级 YAML 处理库，提供解析、操作和输出 YAML 文档的基础能力
 - **api**：核心业务逻辑，负责资源转换与生成
@@ -217,7 +217,7 @@ flowchart TD
 ```
 
 ![Kustomize 构建流程](910d311ad4c31c93eb1836a7adae8016.svg)
-{width=1920 height=2698}
+{width=1920 height=2690}
 
 ### 核心概念说明
 
@@ -283,7 +283,7 @@ graph TD
 ```
 
 ![Kustomize 资源处理架构](03bfc18f47067061fa4fe060f1a3da14.svg)
-{width=2236 height=894}
+{width=2238 height=894}
 
 主要组件说明：
 
@@ -349,7 +349,7 @@ graph TD
 ```
 
 ![Kustomize 插件系统](ae1ab1d4082d6c9a3f4b885c38a6a589.svg)
-{width=3139 height=831}
+{width=3143 height=831}
 
 插件类型包括：
 

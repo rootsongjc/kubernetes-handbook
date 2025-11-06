@@ -52,7 +52,7 @@ graph TD
 ```
 
 ![k9s 架构总览](2111a4f035efb9cb345475e43d536ea2.svg)
-{width=2757 height=1565}
+{width=2762 height=1565}
 
 应用启动流程如下：
 
@@ -105,7 +105,7 @@ graph TD
 ```
 
 ![k9s 命令系统](8af5ef630cb8c5473293bc60d888b164.svg)
-{width=1920 height=1296}
+{width=1920 height=1292}
 
 ### 配置系统
 
@@ -131,7 +131,7 @@ graph TD
 ```
 
 ![k9s 配置系统](99d576beb8353499f4e79b42c2914306.svg)
-{width=1920 height=768}
+{width=1920 height=765}
 
 ### 资源视图系统
 
@@ -174,7 +174,7 @@ classDiagram
 ```
 
 ![k9s 资源视图系统](82219cc3b4ad3aa4d17e7f2ca1d1beb0.svg)
-{width=1920 height=2900}
+{width=1920 height=2916}
 
 ### 数据访问层
 
@@ -200,7 +200,7 @@ graph TD
 ```
 
 ![k9s 数据访问层](583dc7a8346f7096f8580971afa8f8e6.svg)
-{width=1920 height=1434}
+{width=1920 height=1428}
 
 ### 核心组件总览
 
@@ -447,7 +447,7 @@ graph TD
 ```
 
 ![k9s 配置与定制](a47a686835eadf5ed76a1bc426c26d22.svg)
-{width=1920 height=853}
+{width=1920 height=847}
 
 ## 实用场景
 

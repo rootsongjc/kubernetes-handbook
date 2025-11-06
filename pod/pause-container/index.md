@@ -56,7 +56,7 @@ graph TD
 ```
 
 ![Pause 容器网络共享机制](4f3bc5b609243a71ffcd051b14e0b965.svg)
-{width=1920 height=5244}
+{width=1920 height=5204}
 
 ### 网络共享机制
 

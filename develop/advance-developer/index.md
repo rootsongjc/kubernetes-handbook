@@ -55,7 +55,7 @@ graph TD
 ```
 
 ![容器架构模式](d709b8364ab0ea2354b01fc0a1f00663.svg)
-{width=1920 height=1413}
+{width=1920 height=1397}
 
 #### Sidecar 容器模式
 
@@ -374,7 +374,7 @@ graph TD
 ```
 
 ![多集群部署架构](1723554d93a7883484ac4992e8787b1f.svg)
-{width=1920 height=939}
+{width=1920 height=936}
 
 #### Karmada 多集群管理实践
 
@@ -462,7 +462,7 @@ graph TD
 ```
 
 ![Operator 架构](9a366ffd4c629d7c84b4b9c54262773f.svg)
-{width=1920 height=2004}
+{width=1920 height=1998}
 
 Operator 模式是主流的 Kubernetes API 扩展方式，支持应用生命周期自动化管理。
 
@@ -513,7 +513,7 @@ graph TD
 ```
 
 ![Operator 开发工具栈](61ffb0e3346aad0c61f9679396bcfc14.svg)
-{width=2003 height=742}
+{width=2012 height=742}
 
 ### CRD 最佳实践
 
@@ -608,7 +608,7 @@ graph TD
 ```
 
 ![API 聚合层扩展](c9456d4d9f7733ed223b35bb6982af8d.svg)
-{width=1920 height=1724}
+{width=1920 height=1717}
 
 ## 现代开发实践
 
@@ -639,7 +639,7 @@ flowchart TD
 ```
 
 ![GitOps 工作流](65a637e4da5c0f53a81b5cdc9a410148.svg)
-{width=1920 height=3025}
+{width=1920 height=2994}
 
 #### ArgoCD 应用管理
 
@@ -701,7 +701,7 @@ graph TD
 ```
 
 ![服务网格架构](e9082c9a865bddea5bb1349109a35d2e.svg)
-{width=1920 height=1622}
+{width=1920 height=1609}
 
 #### Istio 服务治理
 
@@ -770,7 +770,7 @@ graph TD
 ```
 
 ![Knative 架构](1726af5e90ee2dfbe26cd39d09b2de33.svg)
-{width=1920 height=1507}
+{width=1920 height=1502}
 
 #### Knative 服务部署
 
@@ -838,7 +838,7 @@ graph TD
 ```
 
 ![可观测性架构](9c1346352fdf6b00868feef641002ad1.svg)
-{width=2259 height=662}
+{width=2272 height=662}
 
 #### Prometheus 监控配置
 
@@ -908,7 +908,7 @@ graph TD
 ```
 
 ![安全加固架构](d4be71a746b31d7e411fc15f56caee4a.svg)
-{width=2387 height=380}
+{width=2402 height=380}
 
 #### Pod 安全策略实施
 
@@ -988,7 +988,7 @@ graph TD
 ```
 
 ![灾难恢复与备份架构](f746e20ff2b4bb8385fec21b77472383.svg)
-{width=1920 height=2252}
+{width=1920 height=2243}
 
 #### Velero 备份配置
 

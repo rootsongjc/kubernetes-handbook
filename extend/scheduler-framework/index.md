@@ -31,7 +31,7 @@ flowchart LR
 ```
 
 ![Scheduler 插件开发流程](c64589c9a922bfe805c539e1a11faaf8.svg)
-{width=1920 height=138}
+{width=1920 height=136}
 
 每一步都对应具体的开发和集成环节。
 

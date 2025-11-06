@@ -66,7 +66,7 @@ graph TD
 ```
 
 ![Kubernetes 核心接口协作关系](92d3003083d7d7924dd00c850782b279.svg)
-{width=1920 height=1010}
+{width=1920 height=985}
 
 ## 总结
 

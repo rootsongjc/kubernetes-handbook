@@ -145,7 +145,7 @@ graph TD
 ```
 
 ![Kubernetes 对象生命周期](5810af7b75ae6eb50221bedf332356c3.svg)
-{width=1920 height=4915}
+{width=1920 height=4815}
 
 ## 对象管理操作
 

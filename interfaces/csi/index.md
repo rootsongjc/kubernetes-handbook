@@ -61,7 +61,7 @@ graph LR
 ```
 
 ![Kubernetes CSI 架构组件关系](6d7bb10a7950ffc0a3c91bc6fa4fd15b.svg)
-{width=2000 height=218}
+{width=2004 height=218}
 
 ## CSI 持久化卷字段
 

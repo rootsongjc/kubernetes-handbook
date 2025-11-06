@@ -38,7 +38,7 @@ graph TB
 ```
 
 ![Mermaid Diagram](8dfcc1889aac282ff3e95cce8632b88e.svg)
-{width=1920 height=2103}
+{width=1920 height=2105}
 
 ## 系统架构
 
@@ -63,7 +63,7 @@ graph TD
 ```
 
 ![Mermaid Diagram](7cd6b845ebe426e61f65317978584b97.svg)
-{width=1920 height=2833}
+{width=1920 height=2824}
 
 ## 核心组件
 
@@ -181,7 +181,7 @@ graph TD
 ```
 
 ![Mermaid Diagram](7165e713019d160b86c1c19463657c05.svg)
-{width=2093 height=808}
+{width=2096 height=808}
 
 ## 开发和构建系统
 
@@ -204,7 +204,7 @@ graph LR
 ```
 
 ![Mermaid Diagram](ae166e6072a56ca2ee27555fd891c61c.svg)
-{width=1920 height=6805}
+{width=1920 height=6782}
 
 ## 主要特性
 

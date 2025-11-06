@@ -51,7 +51,7 @@ flowchart TB
 ```
 
 ![Borg 架构图](3482c70dd4d09f794748c5a93d539517.svg)
-{width=2287 height=1052}
+{width=2300 height=1052}
 
 ### Borg 核心组件
 
@@ -99,7 +99,7 @@ flowchart TD
 ```
 
 ![Kubernetes 架构总览](a1a89650891fe65d7173653effe1ec82.svg)
-{width=1920 height=869}
+{width=1920 height=867}
 
 ## 控制面组件
 
@@ -140,7 +140,7 @@ flowchart LR
 ```
 
 ![节点组件与 Pod 关系](4266a1401509a843bfb7ee758f729664.svg)
-{width=1920 height=3295}
+{width=1920 height=3272}
 
 {{< table title="Kubernetes 节点组件说明" >}}
 
@@ -168,7 +168,7 @@ flowchart TD
 ```
 
 ![Kubernetes API 请求流程](f28e790438943eb2d9ad110d6f0eee98.svg)
-{width=1920 height=1503}
+{width=1920 height=1485}
 
 Kubernetes API 遵循 RESTful 设计：
 
@@ -278,7 +278,7 @@ flowchart TD
 ```
 
 ![命名空间资源隔离示意](256e34eafa44266a7ed019fd31298309.svg)
-{width=1920 height=2204}
+{width=1920 height=2195}
 
 Kubernetes 默认包含四个命名空间：
 
@@ -300,7 +300,7 @@ flowchart TD
 ```
 
 ![对象所有权与级联删除](81b618988285148d04008ace255ff37f.svg)
-{width=1920 height=1625}
+{width=1920 height=1619}
 
 删除对象时可选择：
 
@@ -325,7 +325,7 @@ flowchart TD
 ```
 
 ![API Server 请求处理流程](c8c8f549dfbfd64e8b486ff88e7e23f6.svg)
-{width=1920 height=275}
+{width=1920 height=273}
 
 处理流程：
 
@@ -349,7 +349,7 @@ flowchart LR
 ```
 
 ![Server-Side Apply 工作原理](03f8026feead4a6cccd0b17e50ef49dc.svg)
-{width=1920 height=2552}
+{width=1920 height=2536}
 
 主要特性：
 
@@ -374,7 +374,7 @@ flowchart TD
 ```
 
 ![Kubernetes 扩展点](5e3544b6d0aa3987b4ca85c2b5f791c3.svg)
-{width=1920 height=5880}
+{width=1920 height=5819}
 
 {{< table title="Kubernetes 常见扩展机制" >}}
 
@@ -424,7 +424,7 @@ flowchart LR
 ```
 
 ![Kubernetes 指标采集流程](e4f92ef0fabb10ce42feec2a76fc7174.svg)
-{width=1920 height=1486}
+{width=1920 height=1470}
 
 这些指标有助于集群健康与性能监控。
 

@@ -53,8 +53,8 @@ graph TD
     MC1 & MC2 & MCN -->|状态上报| KA
 ```
 
-![Karmada 架构示意图](2d5baab9b8b3c209a81fee58fbb70323.svg)
-{width=3144 height=1179}
+![Karmada 架构](2d5baab9b8b3c209a81fee58fbb70323.svg)
+{width=3158 height=1200}
 
 ## 主要特性
 
@@ -112,8 +112,8 @@ flowchart TD
     RB -->|被监听| DD
 ```
 
-![Karmada 资源传播流程图](c8aba1c762f991901677c980c8d0d227.svg)
-{width=1920 height=1534}
+![Karmada 资源传播流程](c8aba1c762f991901677c980c8d0d227.svg)
+{width=1920 height=1525}
 
 简要步骤说明：
 
@@ -177,8 +177,8 @@ classDiagram
     ClusterResourceBinding --> "1..*" Work: creates
 ```
 
-![Karmada 资源关系图](7590885cc55d370d4fc06920ca00cdc5.svg)
-{width=1920 height=725}
+![Karmada 资源关系](7590885cc55d370d4fc06920ca00cdc5.svg)
+{width=1920 height=722}
 
 ## 同步模式
 
@@ -372,8 +372,8 @@ flowchart TD
     KSE["karmada-scheduler-estimator"] -->|提供资源信息| GS
 ```
 
-![Karmada 调度系统流程图](16a7f6c31fc87ed049d89b40eb235349.svg)
-{width=1920 height=1113}
+![Karmada 调度系统](16a7f6c31fc87ed049d89b40eb235349.svg)
+{width=1920 height=1133}
 
 调度流程：
 
@@ -537,7 +537,7 @@ flowchart TD
 ```
 
 ![Karmada 多集群调度与传播 Pipeline](29581faa8dd70d8e88d686cf26af40e7.svg)
-{width=1920 height=6978}
+{width=1920 height=6882}
 
 > ✅ 这就是 Karmada 的核心能力：**声明式多集群资源传播与调度闭环。**
 

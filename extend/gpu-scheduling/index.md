@@ -32,7 +32,7 @@ flowchart LR
 ```
 
 ![GPU 调度核心组件流程图](41f686d7f40b258ea1ee4f70f56e9bad.svg)
-{width=1920 height=83}
+{width=1920 height=82}
 
 - **Device Plugin**：向 kubelet 报告 GPU 资源
 - **Scheduler Framework**：执行 GPU 感知的过滤与打分
@@ -146,7 +146,7 @@ graph LR
 ```
 
 ![MIG 分区资源暴露流程](ce2dcf163d00d4cc10c0f23fd3e2a1bd.svg)
-{width=1920 height=835}
+{width=1920 height=831}
 
 MIG 模式下，每个 GPU 分区在 Kubernetes 中暴露为独立资源：
 
@@ -274,7 +274,7 @@ mindmap
 ```
 
 ![AI-Native Scheduler 未来趋势](8dc0c5fe603043a1165c46e525125060.svg)
-{width=1920 height=1073}
+{width=1920 height=1029}
 
 ## 总结
 

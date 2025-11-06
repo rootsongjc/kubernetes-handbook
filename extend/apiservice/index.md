@@ -45,7 +45,7 @@ flowchart LR
 ```
 
 ![API 聚合层架构](a0b7be7f710488c91a7be4c26c7cf752.svg)
-{width=1920 height=117}
+{width=1920 height=116}
 
 ## 注册机制
 

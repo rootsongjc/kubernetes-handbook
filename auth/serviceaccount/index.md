@@ -23,7 +23,7 @@ flowchart LR
 ```
 
 ![ServiceAccount 与 Pod 认证关系](ced0e8782a79e5e1d4702c2256adf4a4.svg)
-{width=1920 height=376}
+{width=1920 height=374}
 
 ## 使用默认的 ServiceAccount
 

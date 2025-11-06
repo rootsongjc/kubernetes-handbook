@@ -64,7 +64,7 @@ flowchart LR
 ```
 
 ![OpenTelemetry 架构总览](94ff10048d7254d6e4548112bf464902.svg)
-{width=2406 height=198}
+{width=2415 height=198}
 
 该架构主要分为以下几个层次：
 
@@ -118,7 +118,7 @@ flowchart TB
 ```
 
 ![API/SDK/Exporter 交互](a85ae56684da6d570e4907611330a911.svg)
-{width=2606 height=910}
+{width=2615 height=910}
 
 此外，OpenTelemetry 强调 API/SDK 分离、信号分层、上下文传递与可扩展性。下图进一步说明其架构原则：
 
@@ -161,7 +161,7 @@ flowchart TD
 ```
 
 ![OpenTelemetry 架构原则](a4a9d7698d024f4906c1dca4e4808b30.svg)
-{width=1971 height=1232}
+{width=1982 height=1232}
 
 ## Collector 详解与部署模式
 
@@ -200,7 +200,7 @@ flowchart TD
 ```
 
 ![Kubernetes 集群中的 OTel Collector 部署](f084fbf19d168bf9a56785e22385961f.svg)
-{width=1920 height=295}
+{width=1920 height=294}
 
 总结来看：
 
@@ -243,7 +243,7 @@ flowchart LR
 ```
 
 ![OpenTelemetry 信号类型](4d9ff1e0fd496158cc85dcbfb5d8c018.svg)
-{width=1920 height=1627}
+{width=1920 height=1620}
 
 ### Trace 结构示意
 
@@ -261,7 +261,7 @@ flowchart TD
 ```
 
 ![Trace 结构示意](97f6096a67f31e6ac49d050e4553dcdc.svg)
-{width=1920 height=1111}
+{width=1920 height=1106}
 
 ### Metrics 数据流
 
@@ -279,7 +279,7 @@ flowchart LR
 ```
 
 ![Metrics 数据流](90509b784c7b713d0c1133e3a54e4431.svg)
-{width=1920 height=6750}
+{width=1920 height=6708}
 
 ### 上下文与跨服务传播
 
@@ -318,7 +318,7 @@ flowchart LR
 ```
 
 ![OpenTelemetry 上下文与跨服务传播](081d45e1e81c3883ccbdeb4361c0ae7b.svg)
-{width=3267 height=1098}
+{width=3275 height=1098}
 
 #### 资源（Resource）
 
@@ -428,7 +428,7 @@ flowchart TD
 ```
 
 ![OpenTelemetry 的角色分工与扩展点](a0271696e0521b4e82362f8449477207.svg)
-{width=1979 height=462}
+{width=1981 height=462}
 
 ## 总结
 

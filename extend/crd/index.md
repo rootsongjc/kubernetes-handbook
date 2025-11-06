@@ -43,7 +43,7 @@ flowchart LR
 ```
 
 ![CRD 工作原理](09b8d8acc744b3243b08beb32f77a4e3.svg)
-{width=1920 height=340}
+{width=1920 height=338}
 
 ## CRD 的定义结构
 

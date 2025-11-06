@@ -23,7 +23,7 @@ flowchart TD
 ```
 
 ![Namespace 资源隔离与作用域](fae0b147237ef7f231660d68ee11594a.svg)
-{width=1920 height=812}
+{width=1920 height=805}
 
 ## 使用场景
 
@@ -145,7 +145,7 @@ flowchart TD
 ```
 
 ![Namespace 资源配额与限制](384e5f0d14f55991f335ec894416057e.svg)
-{width=1920 height=1637}
+{width=1920 height=1603}
 
 ### ResourceQuota 示例
 
