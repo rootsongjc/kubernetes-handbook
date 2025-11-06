@@ -74,7 +74,7 @@ graph TB
 ```
 
 ![OpenYurt 高层系统架构](06ce6af1c4e546b0aff8a89bea7be70f.svg)
-{width=2143 height=1071}
+{width=2158 height=1071}
 
 如图所示，OpenYurt 采用典型的云 - 边架构，云端 Kubernetes 控制面统一管理多个物理分布的边缘节点池。每个边缘节点运行 `yurthub` 作为本地 API 代理与缓存，保障网络分区时的自治能力。
 
@@ -122,7 +122,7 @@ graph LR
 ```
 
 ![OpenYurt 组件关系](ecac60dad959b620960473fc87a386d6.svg)
-{width=1920 height=1147}
+{width=1920 height=1141}
 
 ## 组件部署架构
 
@@ -163,7 +163,7 @@ graph TB
 ```
 
 ![OpenYurt 组件部署架构](386e3c021b0fc71f19d83263c08be46b.svg)
-{width=1920 height=996}
+{width=1920 height=992}
 
 ## 主要组件功能表
 

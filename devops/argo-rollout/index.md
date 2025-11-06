@@ -65,7 +65,7 @@ graph TD
 ```
 
 ![Argo Rollout 核心架构](db0685afabedb791f1a59b4cfc497c5b.svg)
-{width=2778 height=1102}
+{width=2782 height=1102}
 
 Argo Rollout 的核心组成部分包括自定义资源定义（CRDs）、控制器、流量管理和分析系统，各组件协同实现渐进式交付。
 
@@ -98,7 +98,7 @@ graph TD
 ```
 
 ![控制器实现结构](b89862b0fc1f9f8f90042300d03c6d46.svg)
-{width=2352 height=647}
+{width=2357 height=647}
 
 控制器负责监控 Rollout 资源变化、管理 ReplicaSets、更新 Services、创建分析与实验对象，并与流量路由机制集成，实现渐进式流量转移。
 
@@ -128,7 +128,7 @@ graph TD
 ```
 
 ![部署策略结构](6a2ba63c7b63d413003fbe16a33431f7.svg)
-{width=2071 height=817}
+{width=2068 height=817}
 
 ### BlueGreen 部署
 
@@ -162,7 +162,7 @@ graph TD
 ```
 
 ![分析系统结构](141ab50af2cb81e63768fd6bdc8a471e.svg)
-{width=1929 height=817}
+{width=1939 height=817}
 
 分析系统通过定义指标、查询外部数据、评估成功条件，实现自动提升或回滚。支持 Prometheus、Datadog 等主流监控平台。
 

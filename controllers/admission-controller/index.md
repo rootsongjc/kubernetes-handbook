@@ -35,7 +35,7 @@ graph TD
 ```
 
 ![Kubernetes API 请求流程](bb59bf9f845a2bea4c914597f61b3233.svg)
-{width=1920 height=4857}
+{width=1920 height=4774}
 
 准入控制器位于 **认证** 和 **存储** 之间，是修改与验证资源的最后关口。
 

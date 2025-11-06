@@ -67,7 +67,7 @@ graph TD
 ```
 
 ![Operator SDK 总体架构](6f6a352096e2df667037a13b42057738.svg)
-{width=1920 height=984}
+{width=1920 height=976}
 
 ## 安装 Operator SDK
 
@@ -155,7 +155,7 @@ graph TD
 ```
 
 ![Operator SDK CLI 插件系统](9bbecdfe7a954d6606af1da1b3045a7e.svg)
-{width=4264 height=560}
+{width=4289 height=560}
 
 每个插件包负责为特定的 Operator 实现类型（Go、Ansible 或 Helm）提供功能。核心命令与所有 Operator 类型配合，提供一致的功能体验。
 
@@ -270,7 +270,7 @@ graph LR
 ```
 
 ![Operator SDK 与 OLM 集成流程](302346304b6e530e531145aba14b41f4.svg)
-{width=2764 height=761}
+{width=2774 height=761}
 
 ## 开发工作流
 
@@ -287,7 +287,7 @@ graph LR
 ```
 
 ![Operator SDK 开发工作流](87b070d7afe5b98fa4f8cb064a70174a.svg)
-{width=1991 height=77}
+{width=2010 height=77}
 
 ## 开发 Operator
 
@@ -453,7 +453,7 @@ graph TD
 ```
 
 ![Operator SDK 测试策略](6c6e4711ac2ac41e4feea1b3f1e73159.svg)
-{width=1920 height=939}
+{width=1920 height=931}
 
 ### 打包和分发
 

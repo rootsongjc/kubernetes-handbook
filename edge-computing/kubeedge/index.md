@@ -110,7 +110,7 @@ graph TD
 ```
 
 ![CloudCore 架构示意图](e189132bdca84cee62bf22ea0d10e4b8.svg)
-{width=2317 height=380}
+{width=2295 height=380}
 
 - **CloudHub**：WebSocket 服务器，负责云边消息转发、连接管理和消息缓存。
 - **EdgeController**：扩展控制器，管理边缘节点和 Pod 元数据，同步资源到边缘，处理状态上报。
@@ -142,7 +142,7 @@ graph TD
 ```
 
 ![EdgeCore 架构示意图](7c30bad0e052e2d47de252e1312dafea.svg)
-{width=1920 height=481}
+{width=1920 height=479}
 
 - **EdgeHub**：WebSocket 客户端，负责与 CloudHub 通信，同步云端资源变更、上报边缘状态。
 - **Edged**：轻量级 kubelet，管理本地容器应用，适配边缘环境。
@@ -189,7 +189,7 @@ flowchart LR
 ```
 
 ![KubeEdge 消息框架](72c4c6c8b48196bf2ce067d4012e012e.svg)
-{width=1920 height=2014}
+{width=1920 height=2011}
 
 KubeEdge 支持 ACK/NO-ACK 两种消息确认模式，保障消息可靠送达。消息包含头部（ID、时间戳、版本）、路由（源、目标、操作、资源）和内容体。
 
@@ -267,7 +267,7 @@ graph TD
 ```
 
 ![设备管理框架](33d41cdd1bc18f9d07a088f7b3cfcbb6.svg)
-{width=1920 height=1703}
+{width=1920 height=1699}
 
 - 云端通过 Device CRD/DeviceModel CRD 定义设备
 - 边缘 DeviceTwin 维护设备状态，EventBus 通过 MQTT 与设备通信
@@ -292,7 +292,7 @@ graph TD
 ```
 
 ![管理工具 keadm](dd34b56941f6cf8002df4840274b8ab2.svg)
-{width=1920 height=834}
+{width=1920 height=831}
 
 ## 兼容性与安全
 

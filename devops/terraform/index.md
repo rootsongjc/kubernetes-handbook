@@ -51,7 +51,7 @@ graph TB
 ```
 
 ![Terraform 用户主流程](44bce2a0459da2ff6f36d38c6d178cae.svg)
-{width=2091 height=860}
+{width=2099 height=860}
 
 CLI 工作流包括 `init → plan → apply → destroy`，核心引擎将 HCL 配置解析为依赖图并有序执行，所有资源状态存储于 State，Provider 负责与各平台 API 交互。
 
@@ -98,7 +98,7 @@ graph TB
 ```
 
 ![Terraform 内部架构（进阶）](11786bd1aa0d4c26b0c939bbf5a10d4a.svg)
-{width=1920 height=2606}
+{width=1920 height=2592}
 
 ## Kubernetes 场景下的两大应用路径
 
@@ -276,7 +276,7 @@ graph LR
 ```
 
 ![IaC 工作流](3a73335776a3c3975b219714510ff7eb.svg)
-{width=1920 height=406}
+{width=1920 height=403}
 
 Terraform 的核心机制包括配置加载、依赖图构建、状态管理与 Provider 调用。
 
@@ -291,7 +291,7 @@ graph TD
 ```
 
 ![Terraform Core 简图](adce39f7883671b5a39942de39ad32f1.svg)
-{width=1920 height=3706}
+{width=1920 height=3697}
 
 ## Kubernetes 场景最佳实践
 
@@ -379,7 +379,7 @@ graph TB
 ```
 
 ![Terraform Core 系统视图](ac40d884ecbf99ba8fa437f7392a6a29.svg)
-{width=1920 height=2153}
+{width=1920 height=2142}
 
 ## 总结
 

@@ -117,7 +117,7 @@ graph TD
 ```
 
 ![Label Selector 选择关系](313cee2b9c0595b91ee279c412b12d8a.svg)
-{width=1920 height=2827}
+{width=1920 height=2837}
 
 ## Label 在 API 对象中的用法
 

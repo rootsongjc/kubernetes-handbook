@@ -57,7 +57,7 @@ graph TD
 ```
 
 ![Init 容器执行流程](96277efc8363e49a5e8c906089ee4622.svg)
-{width=1920 height=7804}
+{width=1920 height=7628}
 
 ## 使用示例
 

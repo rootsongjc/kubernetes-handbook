@@ -67,7 +67,7 @@ graph TD
 ```
 
 ![Minikube 高级架构](9477a007a5f0ffcfbb59ff705ef9ac0a.svg)
-{width=1920 height=2065}
+{width=1920 height=2041}
 
 ### 驱动系统
 
@@ -111,7 +111,7 @@ graph TD
 ```
 
 ![Minikube 驱动系统](f68120fd421372d4fb101b6cbde6ba9a.svg)
-{width=2074 height=810}
+{width=2093 height=810}
 
 KIC（Kubernetes in Container）通过专用基础镜像在容器中运行 Kubernetes。
 
@@ -139,7 +139,7 @@ graph TD
 ```
 
 ![Minikube 容器运行时支持](8f5625b03b6231780d83398731d3bc3b.svg)
-{width=1920 height=1443}
+{width=1920 height=1429}
 
 ### 插件系统
 
@@ -167,7 +167,7 @@ graph TD
 ```
 
 ![Minikube 插件系统](af6877deb062d5f8232a1abb37a60595.svg)
-{width=1920 height=7869}
+{width=1920 height=7752}
 
 插件可包含 RBAC 资源，保障集群安全。
 
@@ -221,7 +221,7 @@ graph TD
 ```
 
 ![KIC 基础镜像与依赖](4209db37bf8d13c253d076e6f295ed7d.svg)
-{width=1920 height=443}
+{width=1920 height=441}
 
 ## 安装与配置
 

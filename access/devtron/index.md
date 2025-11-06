@@ -144,7 +144,7 @@ graph TD
 ```
 
 ![Devtron 系统架构](7504291c03888b6ce80362434935d4a4.svg)
-{width=2730 height=1886}
+{width=2741 height=1886}
 
 ### 核心组件说明
 
@@ -199,7 +199,7 @@ graph TD
 ```
 
 ![Devtron CI/CD 流水线流程](341e02d835d8fc833aa9ca9ec17c678d.svg)
-{width=2668 height=2792}
+{width=2677 height=2792}
 
 ## 部署配置与模板
 
@@ -246,7 +246,7 @@ graph TD
 ```
 
 ![Devtron 部署配置流程](29673125d086ac519fef4d4ebbbce980.svg)
-{width=3040 height=1554}
+{width=3048 height=1554}
 
 ### 部署模板类型
 

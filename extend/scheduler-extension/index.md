@@ -205,7 +205,7 @@ graph TD
 ```
 
 ![AI 原生调度插件协作关系](b13344a9ade4589a9abd11f04d396928.svg)
-{width=1920 height=1129}
+{width=1920 height=1127}
 
 这些插件协同工作，实现了面向 AI 任务的智能调度。
 

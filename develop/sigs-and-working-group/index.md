@@ -97,7 +97,7 @@ graph TD
 ```
 
 ![Kubernetes 社区沟通方式](4054aefebac3358dbff4c299a34d919d.svg)
-{width=2141 height=705}
+{width=2155 height=705}
 
 - **会议平台**：主要使用 Zoom/Google Meet，支持实时字幕和录制。
 - **即时通讯**：Slack 为主，Discord 为补充，支持语音频道。
@@ -179,7 +179,7 @@ graph TD
 ```
 
 ![Kubernetes 主要 SIG 列表](18196d19ae94a440d97d3ca32f172579.svg)
-{width=4876 height=1268}
+{width=4901 height=1268}
 
 **核心基础设施**
 
@@ -351,7 +351,7 @@ graph TD
 ```
 
 ![Kubernetes 工作组结构](fba39fec25dc23eab77e13b9aa2eb8f7.svg)
-{width=1962 height=422}
+{width=1982 height=422}
 
 ### 活跃工作组详情
 
@@ -420,7 +420,7 @@ flowchart TD
 ```
 
 ![Kubernetes 参与路径](dba5c6104ecc66ba4abf587bf0311935.svg)
-{width=1920 height=2598}
+{width=1920 height=2570}
 
 ### 参与步骤
 

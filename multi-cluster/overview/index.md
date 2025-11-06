@@ -93,7 +93,7 @@ graph TD
 ```
 
 ![多集群架构模式](f67d11facafc9549060d297448a76d81.svg)
-{width=4676 height=459}
+{width=4694 height=459}
 
 ### 独立集群模式（Isolated Clusters）
 

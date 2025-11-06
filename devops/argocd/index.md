@@ -54,7 +54,7 @@ graph TD
 ```
 
 ![Argo CD 核心架构](c7e3a1ff689f6911063a54ce62733fad.svg)
-{width=2004 height=917}
+{width=2010 height=917}
 
 ## 核心组件
 
@@ -88,7 +88,7 @@ graph TD
 ```
 
 ![API Server 组件结构](b36d2b71b2a0efe3e510239dde0e62e4.svg)
-{width=1920 height=2691}
+{width=1920 height=2683}
 
 ### Application Controller (argocd-application-controller)
 
@@ -119,7 +119,7 @@ graph TD
 ```
 
 ![Application Controller 组件结构](e2ea333fad6eb19f798703c3cd270daa.svg)
-{width=1920 height=1410}
+{width=1920 height=1403}
 
 ### Repository Server (argocd-repo-server)
 
@@ -149,7 +149,7 @@ graph TD
 ```
 
 ![Repository Server 组件结构](f4229a46dd4a467714703828106407b1.svg)
-{width=1920 height=1248}
+{width=1920 height=1241}
 
 ### Redis
 
@@ -178,7 +178,7 @@ graph TD
 ```
 
 ![Dex Server 认证流程](2a1fc7ca0788159c14ed4ff5de3521a2.svg)
-{width=1920 height=1054}
+{width=1920 height=1052}
 
 ## 附加组件
 
@@ -207,7 +207,7 @@ graph TD
 ```
 
 ![ApplicationSet Controller 结构](afed8c6c6b05cf3ea88c7c6e1ea07482.svg)
-{width=1920 height=999}
+{width=1920 height=996}
 
 ### Notifications Controller
 
@@ -253,7 +253,7 @@ classDiagram
 ```
 
 ![Application 资源结构](a74963d8093832659dcf87d55be2217c.svg)
-{width=1920 height=4413}
+{width=1920 height=4400}
 
 ### AppProject 资源
 
@@ -290,7 +290,7 @@ classDiagram
 ```
 
 ![ApplicationSet 资源结构](6f11125e72cb6db2d147db6908734f48.svg)
-{width=1920 height=2430}
+{width=1920 height=2414}
 
 ## GitOps 工作流
 

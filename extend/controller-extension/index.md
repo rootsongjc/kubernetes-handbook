@@ -133,7 +133,7 @@ flowchart TD
 ```
 
 ![Operator 模式架构](454cb90e9cdd0da246abfd5886ec93b7.svg)
-{width=1920 height=2542}
+{width=1920 height=2536}
 
 示例：`Database Operator` 通过 CRD 管理 MySQL 集群的创建、备份、恢复和伸缩。
 

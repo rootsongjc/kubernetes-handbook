@@ -75,7 +75,7 @@ flowchart TB
 ```
 
 ![k0rdent 多集群架构关系图](b4e2baa0eff60475a15f6ce31b60de7e.svg)
-{width=1920 height=514}
+{width=1920 height=512}
 
 实现视角：管理集群（Management Cluster）是控制平面的核心，运行 KCM、KSM、KOF 等控制器。用户通过 GitOps（如 ArgoCD）或 kubectl 将声明式模板应用到管理集群，随后 KCM 与 Cluster API 协同调用云/基础设施 API 完成子集群的创建与配置。
 

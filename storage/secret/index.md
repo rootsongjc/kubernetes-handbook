@@ -24,7 +24,7 @@ flowchart TD
 ```
 
 ![Secret 生命周期与使用流程](a29e9fd7d57a961ab64c0c6828220d91.svg)
-{width=1920 height=1908}
+{width=1920 height=1903}
 
 Secret 可通过以下方式被 Pod 使用：
 
@@ -274,7 +274,7 @@ flowchart LR
 ```
 
 ![Secret 生命周期与节点分发](221b2d457f6955a65ce0a0c9b72563d2.svg)
-{width=1920 height=123}
+{width=1920 height=121}
 
 - Secret 仅在被 Pod 消费时分发到节点
 - Secret 文件存储于 tmpfs，不落盘

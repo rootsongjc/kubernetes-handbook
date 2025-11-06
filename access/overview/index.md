@@ -35,7 +35,7 @@ flowchart LR
 ```
 
 ![kubectl 到 API Server 的交互流程图](849c7c97a9ab438356726e99fc3199ac.svg)
-{width=1920 height=838}
+{width=1920 height=836}
 
 ## Kubernetes API 基础
 
@@ -72,7 +72,7 @@ flowchart TD
 ```
 
 ![Kubernetes API 结构图](8d81cb2cdeb21f25953307d82f32e071.svg)
-{width=1920 height=917}
+{width=1920 height=910}
 
 常见 API URL 模式如下：
 
@@ -148,7 +148,7 @@ flowchart TD
 ```
 
 ![kubectl 认证流程图](54f43e41cebdf7ee3418a1285ba33292.svg)
-{width=1920 height=1141}
+{width=1920 height=1135}
 
 ## kubectl 基本用法
 
@@ -258,7 +258,7 @@ application/apply-patch+yaml" --> apiServer
 ```
 
 ![Server-Side Apply 原理示意图](5e40387cf91c2a0ce6c0ffd5300747b3.svg)
-{width=1920 height=2413}
+{width=1920 height=2390}
 
 关键点：
 

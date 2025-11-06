@@ -59,7 +59,7 @@ graph TD
 ```
 
 ![CNI 高层架构](c522baa04fb7bb750fd7ead0db44b40d.svg)
-{width=1920 height=3064}
+{width=1920 height=3038}
 
 CNI 仓库同时提供规范和辅助代码，方便运行时和插件开发者实现。
 
@@ -91,7 +91,7 @@ graph TD
 ```
 
 ![CNI 组件关系](a3de223c2ba33a5179be7feccba7f46b.svg)
-{width=1920 height=2817}
+{width=1920 height=2796}
 
 ## 关键概念
 
@@ -251,7 +251,7 @@ classDiagram
 ```
 
 ![CNI 结果类型关系](8ea6e7fe2d908ca5f66eada3bf13209c.svg)
-{width=1920 height=1730}
+{width=1920 height=1732}
 
 ## 生态系统与应用
 

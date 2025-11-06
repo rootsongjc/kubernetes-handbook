@@ -25,7 +25,7 @@ flowchart LR
 ```
 
 ![Kubernetes 探针生命周期流程](e35048912a19d0596bcb9df7532a1a7a.svg)
-{width=1920 height=603}
+{width=1920 height=597}
 
 ### Liveness Probe（存活探针）
 

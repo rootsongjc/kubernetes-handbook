@@ -31,7 +31,7 @@ graph LR
 ```
 
 ![Sidecar 容器与主容器协作关系](e1a1499cc6ad7bd492d158a4db5dd8b0.svg)
-{width=1920 height=356}
+{width=1920 height=354}
 
 ## 常见使用场景
 

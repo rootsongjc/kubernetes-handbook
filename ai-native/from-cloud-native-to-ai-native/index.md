@@ -50,7 +50,7 @@ mindmap
 ```
 
 ![Kubernetes 扩展机制思维导图](631304bb3d05d6491ade79b9259ddd28.svg)
-{width=1920 height=1060}
+{width=1920 height=1082}
 
 ### API 扩展
 
@@ -131,7 +131,7 @@ graph TD
 ```
 
 ![AI-Native 扩展模式协同关系](3ab6bed3797e6a46fafd9c53380edc5f.svg)
-{width=1920 height=4685}
+{width=1920 height=4631}
 
 ## AI 原生调度的愿景
 
@@ -156,7 +156,7 @@ mindmap
 ```
 
 ![AI-Native Scheduler 发展方向](547d941c44fe41c625ccd5b6fc81fa3a.svg)
-{width=1920 height=935}
+{width=1920 height=1228}
 
 这将使调度器从“静态分配系统”进化为“智能决策中枢”。
 
