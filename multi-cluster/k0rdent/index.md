@@ -5,7 +5,7 @@ date: 2025-11-03T04:54:19.665Z
 lastmod: 2025-11-03T05:13:37.788Z
 description: k0rdent 是 Mirantis 推出的多集群 Kubernetes 超级控制平面（Super Control Plane），助力平台工程与跨云治理，支持声明式多集群管理、策略模板和集中观测。
 social_title: k0rdent 如何重塑多集群 Kubernetes 管理？一文看懂超级控制平面
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/banner.webp
 ---
 
 > 平台工程的未来在于统一的超级控制平面，k0rdent 正在重塑多集群 Kubernetes 管理的范式。

@@ -3,7 +3,7 @@ title: SuperEdge：单集群多区域边缘管理框架
 weight: 40
 linktitle: SuperEdge
 lastmod: 2025-11-03T16:37:53.701Z
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/banner.webp
 social_title: 单集群多区域边缘管理，SuperEdge 有哪些独门绝技？
 description: SuperEdge 是腾讯云主导的 Kubernetes 边缘计算框架，支持单集群多区域、分布式健康检查和服务拓扑隔离，适合大规模边缘场景。
 ---
