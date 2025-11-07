@@ -23,7 +23,7 @@ repository:
     url: https://github.com/rootsongjc/kubernetes-handbook
     branch: main
 lastmod: 2025-11-04T02:02:55.950Z
-pdf: https://cloud.umami.is/q/W4wH29pGO
+pdf: https://github.com/rootsongjc/kubernetes-handbook/releases/
 authors:
     - Jimmy Song
 publisher: jimmysong.io
