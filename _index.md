@@ -8,7 +8,7 @@ featured: true
 type: publication
 status: maintaining
 layout: book-content
-title: Kubernetes 基础教程
+title: Kubernetes 架构与生态：从云原生到 AI 原生基础设施的构建指南
 date: 2017-03-15T00:00:00+08:00
 icon: fa-solid fa-book
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
@@ -19,18 +19,11 @@ cascade:
     type: book
     layout: book-content
     icon-pack: fas
-book:
-    title: Kubernetes 基础教程
-    description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
-    language: zh-hans
-    author: Jimmy Song
-    date: 2025-07-13T00:00:00.000Z
-    website: https://jimmysong.io/book/kubernetes-handbook/
-    appendix: false
 repository:
     url: https://github.com/rootsongjc/kubernetes-handbook
     branch: main
 lastmod: 2025-11-04T02:02:55.950Z
+pdf: https://cloud.umami.is/q/W4wH29pGO
 authors:
     - Jimmy Song
 publisher: jimmysong.io
