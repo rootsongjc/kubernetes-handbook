@@ -18,7 +18,7 @@ cascade:
     comment: true
     type: book
     layout: book-content
-    icon_pack: fas
+    icon-pack: fas
 book:
     title: Kubernetes 基础教程
     description: Kubernetes 基础教程，全面掌握容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
