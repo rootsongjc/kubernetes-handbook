@@ -8,7 +8,7 @@
 
 ## 关于本教程
 
-本教程内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域，使用 Hugo 构建。
+本教程内容涵盖容器、Kubernetes、服务网格、Serverless 等云原生的多个领域，以及 AI 原生基础设施。
 
 本书采用[署名 - 非商业性使用 - 相同方式共享 4.0 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 
@@ -21,6 +21,7 @@
 - **Kubernetes** 开启了云原生的序幕，提供了容器编排的标准
 - **服务网格（如 Istio）** 引领了后 Kubernetes 时代的微服务治理
 - **Serverless** 技术使云原生从基础设施层向应用架构层深入发展
+- **AI 原生** 技术使云原生从应用架构层向智能化平台发展
 
 我们正处于一个云原生技术快速演进的新时代。
 
@@ -43,38 +44,34 @@ Kubernetes 的目标不仅仅是一个编排系统，而是：
 
 核心技术包括：
 
-- **容器** - 应用打包和运行的标准单元
-- **服务网格** - 微服务间通信的基础设施层
-- **微服务** - 应用架构的设计模式
-- **不可变基础设施** - 基础设施的管理理念
-- **声明式 API** - 系统配置和管理的方式
+- **容器**：应用打包和运行的标准单元
+- **服务网格**：微服务间通信的基础设施层
+- **微服务**：应用架构的设计模式
+- **不可变基础设施**：基础设施的管理理念
+- **声明式 API**：系统配置和管理的方式
 
 这些技术能够构建容错性好、易于管理和便于观察的松耦合系统，结合可靠的自动化手段，使工程师能够轻松地对系统作出频繁和可预测的重大变更。
 
-## 版本信息
-
-本书基于 **Kubernetes v1.31+** 编写，持续更新最新的概念和 API，确保内容的时效性和准确性。
-
-## 项目历程
+## 关于本书
 
 Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为第一本系统介绍 Kubernetes 的中文电子书，经过多年持续完善和更新。
 
-## 内容特色
-
 本书记录了从零开始学习和使用 Kubernetes 的完整历程，具有以下特点：
 
-- **实战导向** - 着重于经验总结和最佳实践分享
-- **深入浅出** - 详细解析 Kubernetes 核心概念
-- **生态完整** - 涵盖微服务、DevOps、服务网格、Serverless 等相关领域
-- **持续更新** - 跟进最新技术发展和社区动态
+- **实战导向**：着重于经验总结和最佳实践分享
+- **深入浅出**：详细解析 Kubernetes 核心概念
+- **生态完整**：涵盖微服务、DevOps、服务网格、Serverless、边缘计算、AI 原生等相关领域
+- **持续更新**：跟进最新技术发展和社区动态
 
-## 在线阅读
+本书基于 **Kubernetes v1.31+** 编写，持续更新最新的概念和 API，确保内容的时效性和准确性。
+
+## 在线阅读与下载
 
 你可以通过以下方式阅读本书：
 
-- **官方网站**: [https://jimmysong.io/book/kubernetes-handbook/](https://jimmysong.io/book/kubernetes-handbook/)
-- **GitHub**: [https://github.com/rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
-- **PDF 下载**：[见 Release 页面](https://github.com/rootsongjc/kubernetes-handbook/releases)
+- 官方网站：[https://jimmysong.io/book/kubernetes-handbook/](https://jimmysong.io/book/kubernetes-handbook/)
+- GitHub：[https://github.com/rootsongjc/kubernetes-handbook](https://github.com/rootsongjc/kubernetes-handbook)
+- PDF 下载：[Release 页面](https://github.com/rootsongjc/kubernetes-handbook/releases)
 
 ## 参与贡献
 
@@ -82,23 +79,19 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 
 贡献方式：
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
+- Fork 本仓库
+- 创建特性分支（`git checkout -b feature/amazing-feature`）
+- 提交更改（`git commit -m 'Add some amazing feature'`）
+- 推送到分支（`git push origin feature/amazing-feature`）
+- 创建 Pull Request
 
 ## 作者
 
-**Jimmy Song：**
+**Jimmy Song**
 
-- 网站：[https://jimmysong.io](https://jimmysong.io)
+- 个人网站：[https://jimmysong.io](https://jimmysong.io)
 - GitHub: [@rootsongjc](https://github.com/rootsongjc)
 - 微信公众号：几米宋
-
-<div style="text-align: center;">
-    <img src="qrcode.jpg" alt="关注微信公众号" style="max-width: 180px; width: 100%; height: auto; display: inline-block;" />
-</div>
 
 ## 许可证
 
