@@ -4,7 +4,7 @@ weight: 3
 linktitle: APIService
 date: 2025-10-27T19:40:00+08:00
 lastmod: 2025-10-27T09:44:30.234Z
-banner_image: images/k8s-apiservice-banner.png
+cover: images/k8s-apiservice-banner.png
 description: APIService 是 Kubernetes 的 API 聚合层机制，允许外部 API Server 注册到主 API Server 下，实现统一的 API 接口暴露。本文介绍其架构原理、注册方式与典型应用。
 ---
 

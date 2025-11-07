@@ -3,7 +3,7 @@ title: KubeEdge：云原生边缘计算框架
 weight: 10
 linktitle: KubeEdge
 lastmod: 2025-11-03T16:32:00.725Z
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/banner.webp
 social_title: KubeEdge 如何让 Kubernetes 统管云边与物联网？
 description: KubeEdge 是 CNCF 托管的云原生边缘计算框架，扩展 Kubernetes 能力至边缘和物联网场景，实现云边端一体化管理。
 date: 2025-11-03T15:51:19.097Z

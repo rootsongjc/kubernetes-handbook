@@ -3,7 +3,7 @@ title: K3s：轻量级 Kubernetes 发行版
 weight: 20
 linktitle: K3s
 lastmod: 2025-11-03T16:32:08.638Z
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/banner.webp
 social_title: 轻量级 Kubernetes？K3s 如何让边缘设备也能玩转 K8s
 description: K3s 是 Rancher Labs 推出的轻量级 Kubernetes 发行版，专为边缘计算和物联网场景设计，极简部署、资源占用低，适合小型集群和开发测试。
 date: 2025-11-03T16:05:09.802Z

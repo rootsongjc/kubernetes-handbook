@@ -5,7 +5,7 @@ weight: 30
 lastmod: 2025-11-03T16:31:52.516Z
 description: OpenYurt 是阿里巴巴开源的零侵入式云原生边缘平台，支持 Kubernetes 集群一键扩展到边缘，具备边缘自治、节点池、流量闭环等特性。
 social_title: OpenYurt 如何实现云原生边缘计算的零侵入？
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/banner.webp
 date: 2025-11-03T15:53:16.892Z
 ---
 

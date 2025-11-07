@@ -11,7 +11,7 @@ layout: book-content
 title: Kubernetes 基础教程
 date: 2017-03-15T00:00:00+08:00
 icon: fa-solid fa-book
-banner_image: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
+cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 aliases:
     - /guide-to-cloud-native-app
 cascade:
