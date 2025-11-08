@@ -3,7 +3,7 @@ title: HAMi：Kubernetes 上的异构算力虚拟化中间件
 description: 探索 HAMi：Kubernetes 上的异构算力虚拟化中间件，提升 AI 加速器管理与调度效率，助力资源优化与灵活性。
 weight: 11
 linktitle: HAMi：算力虚拟化
-lastmod: 2025-10-27T15:05:28.630Z
+lastmod: 2025-11-08T17:40:06.679Z
 date: 2025-10-20T04:55:31.153Z
 ---
 
@@ -11,7 +11,7 @@ date: 2025-10-20T04:55:31.153Z
 
 ## 项目简介与定位
 
-HAMi（Heterogeneous AI Computing Virtualization Middleware，前身为 `k8s-vGPU-scheduler`）是一个专为 Kubernetes 设计的异构设备管理中间件。它扩展了 K8s 原生调度与资源管理能力，为 GPU、NPU、MLU、DCU 等 AI 加速硬件提供统一的资源分配与调度接口。HAMi 致力于打通不同异构设备间的管理壁垒，用户无需修改应用即可享受统一的算力资源管理体验。
+[HAMi](https://github.com/Project-HAMi/HAMi)（Heterogeneous AI Computing Virtualization Middleware，前身为 `k8s-vGPU-scheduler`）是一个专为 Kubernetes 设计的异构设备管理中间件。它扩展了 K8s 原生调度与资源管理能力，为 GPU、NPU、MLU、DCU 等 AI 加速硬件提供统一的资源分配与调度接口。HAMi 致力于打通不同异构设备间的管理壁垒，用户无需修改应用即可享受统一的算力资源管理体验。
 
 **核心能力包括：**
 
@@ -320,15 +320,3 @@ HAMi 设计强调对上层应用的透明兼容：无需修改 Pod YAML 即可�
 
 从技术与行业趋势来看，HAMi 具有较高的研究与应用价值。它能显著提升 GPU 及其他异构加速器的利用率，在大模型训练与推理场景用更少硬件提供更多算力，已有顺丰、Prep EDU 等实践验证效果。插件化架构和拓扑感知调度使其易于扩展到更多异构设备（如 FPGA、定制 AI 芯片），具备明显成长空间。对系统研发者而言，HAMi 涉及虚拟化、GPU 内核拦截、资源配额与分布式调度等多领域，具有重要的学术与工程价值。若社区持续活跃并保持开发节奏，HAMi 有望在云原生生态中成为关键的异构算力管理组件。
 
-## 参考资料
-
-1. [HAMi 官方文档 – 什么是 HAMi？ - project-hami.github.io](https://project-hami.github.io/)
-2. [CNCF 官方介绍 – HAMi was accepted to CNCF on August 21, 2024 at the Sandbox level. - cncf.io](https://www.cncf.io/)
-3. [Palark 技术博客 – Exploring CNCF Sandbox Projects 2024 H2: HAMi - palark.com](https://palark.com/)
-4. [RiseUnion 深度解析 – 开源 vGPU 解决方案 HAMi：让 GPU 资源利用更高效的技术实践 - riseunion.com](https://riseunion.com/)
-5. [HAMi GitHub 自述 – Supported devices: NVIDIA, Cambricon, Hygon, Iluvatar, Moore Threads, Huawei Ascend, MetaX etc. - github.com](https://github.com/Project-HAMi/HAMi)
-6. [CNCF 案例研究 – SF Technology: Effective GPU pooling built on HAMi - cncf.io](https://www.cncf.io/case-studies/sf-technology/)
-7. [CNCF 案例研究 – Prep EDU: Efficient GPU Orchestration with HAMi - cncf.io](https://www.cncf.io/case-studies/prep-edu/)
-8. [阿里云创业中心 – 蜜瓜智能获超五百万种子轮投资 - aliyun.com](https://developer.aliyun.com/)
-9. [SegmentFault 文章 – Yu Yin（尹鈺）介绍 HAMi 项目 - segmentfault.com](https://segmentfault.com/)
-10. [DaoCloud 企业云文档 – HAMi 产品设计与架构图 - daocloud.io](https://www.daocloud.io/)
