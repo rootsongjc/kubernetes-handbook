@@ -10,7 +10,8 @@ status: maintaining
 layout: book-content
 title: Kubernetes 架构与生态：从云原生到 AI 原生基础设施的构建指南
 date: 2017-03-15T00:00:00+08:00
-icon: fa-solid fa-book
+icon: kubernetes
+icon-pack: custom
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 aliases:
     - /guide-to-cloud-native-app
