@@ -54,7 +54,7 @@ graph TD
     ADAPTER --> RETRY
 ```
 
-![容器架构模式](d709b8364ab0ea2354b01fc0a1f00663.svg)
+![容器架构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/d709b8364ab0ea2354b01fc0a1f00663.svg)
 {width=1920 height=1397}
 
 #### Sidecar 容器模式
@@ -373,7 +373,7 @@ graph TD
     SERVICE_SYNC --> CLUSTER2
 ```
 
-![多集群部署架构](1723554d93a7883484ac4992e8787b1f.svg)
+![多集群部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/1723554d93a7883484ac4992e8787b1f.svg)
 {width=1920 height=936}
 
 #### Karmada 多集群管理实践
@@ -461,7 +461,7 @@ graph TD
     CONTROLLER -->|"暴露"| MONITOR
 ```
 
-![Operator 架构](9a366ffd4c629d7c84b4b9c54262773f.svg)
+![Operator 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/9a366ffd4c629d7c84b4b9c54262773f.svg)
 {width=1920 height=1998}
 
 Operator 模式是主流的 Kubernetes API 扩展方式，支持应用生命周期自动化管理。
@@ -512,7 +512,7 @@ graph TD
     CROSSPLANE --> KUBE_RS
 ```
 
-![Operator 开发工具栈](61ffb0e3346aad0c61f9679396bcfc14.svg)
+![Operator 开发工具栈](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/61ffb0e3346aad0c61f9679396bcfc14.svg)
 {width=2012 height=742}
 
 ### CRD 最佳实践
@@ -607,7 +607,7 @@ graph TD
     EXT_API -->|"注册"| AGGREGATOR
 ```
 
-![API 聚合层扩展](c9456d4d9f7733ed223b35bb6982af8d.svg)
+![API 聚合层扩展](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/c9456d4d9f7733ed223b35bb6982af8d.svg)
 {width=1920 height=1717}
 
 ## 现代开发实践
@@ -638,7 +638,7 @@ flowchart TD
     FLUX --> PROD
 ```
 
-![GitOps 工作流](65a637e4da5c0f53a81b5cdc9a410148.svg)
+![GitOps 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/65a637e4da5c0f53a81b5cdc9a410148.svg)
 {width=1920 height=2994}
 
 #### ArgoCD 应用管理
@@ -700,7 +700,7 @@ graph TD
     ENVOY --> MONITORING
 ```
 
-![服务网格架构](e9082c9a865bddea5bb1349109a35d2e.svg)
+![服务网格架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/e9082c9a865bddea5bb1349109a35d2e.svg)
 {width=1920 height=1609}
 
 #### Istio 服务治理
@@ -769,7 +769,7 @@ graph TD
     FUNCTIONS_RUNTIME -->|"按需执行"| COMPUTE["按需计算"]
 ```
 
-![Knative 架构](1726af5e90ee2dfbe26cd39d09b2de33.svg)
+![Knative 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/1726af5e90ee2dfbe26cd39d09b2de33.svg)
 {width=1920 height=1502}
 
 #### Knative 服务部署
@@ -837,7 +837,7 @@ graph TD
     APP_TRACING --> JAEGER
 ```
 
-![可观测性架构](9c1346352fdf6b00868feef641002ad1.svg)
+![可观测性架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/9c1346352fdf6b00868feef641002ad1.svg)
 {width=2272 height=662}
 
 #### Prometheus 监控配置
@@ -907,7 +907,7 @@ graph TD
     KYVERNO --> POLICIES["策略执行"]
 ```
 
-![安全加固架构](d4be71a746b31d7e411fc15f56caee4a.svg)
+![安全加固架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/d4be71a746b31d7e411fc15f56caee4a.svg)
 {width=2402 height=380}
 
 #### Pod 安全策略实施
@@ -987,7 +987,7 @@ graph TD
     APP_RESTORE --> VALIDATION
 ```
 
-![灾难恢复与备份架构](f746e20ff2b4bb8385fec21b77472383.svg)
+![灾难恢复与备份架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/f746e20ff2b4bb8385fec21b77472383.svg)
 {width=1920 height=2243}
 
 #### Velero 备份配置

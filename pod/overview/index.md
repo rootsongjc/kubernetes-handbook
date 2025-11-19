@@ -60,7 +60,7 @@ graph TD
     C --> E[辅助容器]
 ```
 
-![Pod 结构模式](ff2d948b185ecfb1cf4be1059c0859db.svg)
+![Pod 结构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/overview/ff2d948b185ecfb1cf4be1059c0859db.svg)
 {width=1920 height=1695}
 
 ### 学习资源

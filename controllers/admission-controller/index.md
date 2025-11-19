@@ -34,7 +34,7 @@ graph TD
   D --> E[etcd Storage / API Response]
 ```
 
-![Kubernetes API 请求流程](bb59bf9f845a2bea4c914597f61b3233.svg)
+![Kubernetes API 请求流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/admission-controller/bb59bf9f845a2bea4c914597f61b3233.svg)
 {width=1920 height=4774}
 
 准入控制器位于 **认证** 和 **存储** 之间，是修改与验证资源的最后关口。
@@ -146,7 +146,7 @@ sequenceDiagram
   APIServer->>etcd: 存储资源对象
 ```
 
-![准入控制器执行顺序](e6cabb9d9a7d6614ec221df2eaf600cf.svg)
+![准入控制器执行顺序](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/admission-controller/e6cabb9d9a7d6614ec221df2eaf600cf.svg)
 {width=1920 height=726}
 
 ## 调试与配置

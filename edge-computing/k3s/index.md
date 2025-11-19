@@ -33,7 +33,7 @@ flowchart LR
     Master --> Worker
 ```
 
-![K3s 集群架构示意图](85bbe2de6995fc6561c22bf93cf238fe.svg)
+![K3s 集群架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/85bbe2de6995fc6561c22bf93cf238fe.svg)
 {width=1920 height=2427}
 
 K3s 的所有必要组件被打包为单个二进制文件，一个小于 100MB 的可执行文件即可启动一个 Kubernetes 集群，大幅降低部署复杂度和依赖。只需在一台节点上运行 `k3s server`，即可启动控制平面和轻量数据存储（默认 SQLite，也可选 etcd 或外部数据库），其它设备通过 `k3s agent` 加入集群。
@@ -93,7 +93,7 @@ graph TB
     BUILD_SCRIPTS --> MANIFESTS
 ```
 
-![K3s 系统源码与组件流程](4dd7aa7665896901ed7b08ae86772edf.svg)
+![K3s 系统源码与组件流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/4dd7aa7665896901ed7b08ae86772edf.svg)
 {width=1920 height=1488}
 
 ## 组件交互与运行机制
@@ -146,7 +146,7 @@ graph LR
     TUNNEL_AGENT --> KUBEPROXY
 ```
 
-![K3s 组件交互流程](6e56fa5f77d7f3026602aa1691324746.svg)
+![K3s 组件交互流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/6e56fa5f77d7f3026602aa1691324746.svg)
 {width=1920 height=1797}
 
 ## 二进制架构与配置流程
@@ -180,7 +180,7 @@ graph TD
     NODE_CONFIG --> FLANNEL_CONFIG
 ```
 
-![K3s 配置流程](00f07a90c1ab3c7adf05be1c48927dde.svg)
+![K3s 配置流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/00f07a90c1ab3c7adf05be1c48927dde.svg)
 {width=1920 height=1642}
 
 ## 主要改进与组件特性

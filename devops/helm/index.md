@@ -43,7 +43,7 @@ flowchart LR
     A -->|helm install / upgrade / rollback| D
 ```
 
-![Helm 工作流程](5ad0d144f9af089fd14a99c2442dffce.svg)
+![Helm 工作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/helm/5ad0d144f9af089fd14a99c2442dffce.svg)
 {width=1920 height=368}
 
 当执行 `helm install` 时，CLI 会从仓库下载 Chart，使用 values.yaml 参数进行模板渲染，并通过 Kubernetes API 创建资源对象。
@@ -174,7 +174,7 @@ flowchart TD
     D -->|状态反馈| B
 ```
 
-![Helm 与 GitOps 集成流程](f7f07d9b972af229101c9aa443d67fb3.svg)
+![Helm 与 GitOps 集成流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/helm/f7f07d9b972af229101c9aa443d67fb3.svg)
 {width=1920 height=3420}
 
 在该模式下，Helm 负责打包与模板化，GitOps 控制器负责同步与回滚，发布过程完全可追溯。

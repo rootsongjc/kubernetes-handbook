@@ -62,7 +62,7 @@ graph TB
     Metrics --> Dashboard
 ```
 
-![HAMi 系统架构组件](d9f1434b86dc245eb8545cbcb5b0585c.svg)
+![HAMi 系统架构组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/hami/d9f1434b86dc245eb8545cbcb5b0585c.svg)
 {width=1920 height=1116}
 
 ## 设备虚拟化与共享机制
@@ -210,7 +210,7 @@ graph TB
     style DevicePlugin fill:#f9f9f9
 ```
 
-![HAMi 架构图](2b4151911c44acd2719c54a72a02111b.svg)
+![HAMi 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/hami/2b4151911c44acd2719c54a72a02111b.svg)
 {width=1920 height=829}
 
 ### 关键组件

@@ -215,7 +215,7 @@ flowchart TD
     D4 --> D5
 ```
 
-![DRA 工作流程](4dad4a8ac6ac56ba025f7d44a8574595.svg)
+![DRA 工作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/k8s-device-plugin/4dad4a8ac6ac56ba025f7d44a8574595.svg)
 {width=1920 height=5213}
 
 这种分层架构将控制面与节点操作解耦，提升了可扩展性和安全性。DRA 还支持设备分区、健康监控、优先级列表等高级特性，极大增强了异构资源的表达能力和利用率。

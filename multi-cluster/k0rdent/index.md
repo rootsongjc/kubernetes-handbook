@@ -74,7 +74,7 @@ flowchart TB
     A3 -.-> W3
 ```
 
-![k0rdent 多集群架构关系图](b4e2baa0eff60475a15f6ce31b60de7e.svg)
+![k0rdent 多集群架构关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/b4e2baa0eff60475a15f6ce31b60de7e.svg)
 {width=1920 height=512}
 
 实现视角：管理集群（Management Cluster）是控制平面的核心，运行 KCM、KSM、KOF 等控制器。用户通过 GitOps（如 ArgoCD）或 kubectl 将声明式模板应用到管理集群，随后 KCM 与 Cluster API 协同调用云/基础设施 API 完成子集群的创建与配置。
@@ -118,7 +118,7 @@ sequenceDiagram
     end
 ```
 
-![k0rdent 自动化流程图](ed02d31ca6c57388c7c40141dfe240ca.svg)
+![k0rdent 自动化流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/ed02d31ca6c57388c7c40141dfe240ca.svg)
 {width=1920 height=963}
 
 该流程体现了 k0rdent 的声明式、自动化和闭环治理特性。

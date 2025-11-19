@@ -30,7 +30,7 @@ flowchart LR
     E --> F["运行并调试插件"]
 ```
 
-![Scheduler 插件开发流程](c64589c9a922bfe805c539e1a11faaf8.svg)
+![Scheduler 插件开发流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-framework/c64589c9a922bfe805c539e1a11faaf8.svg)
 {width=1920 height=136}
 
 每一步都对应具体的开发和集成环节。
@@ -263,7 +263,7 @@ flowchart TD
     A --> B --> C --> D --> E
 ```
 
-![AI 原生调度插件组合流程](c54911840fc3e46d0a051977d595c898.svg)
+![AI 原生调度插件组合流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-framework/c54911840fc3e46d0a051977d595c898.svg)
 {width=1920 height=4813}
 
 这种组合方式常用于 AI 平台如 KubeRay、Volcano、Kueue 的多作业同步调度，实现任务对齐、GPU 优先级等智能逻辑。

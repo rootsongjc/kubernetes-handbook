@@ -40,7 +40,7 @@ flowchart TB
     A3 --> B3
 ```
 
-![发布流程与关键里程碑](c280e7412bee000ca824dea091229af1.svg)
+![发布流程与关键里程碑](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/c280e7412bee000ca824dea091229af1.svg)
 {width=1920 height=1390}
 
 - **功能定义**：确定本周期计划纳入的特性，约第 4 周前完成增强提案（Enhancements Freeze）。
@@ -82,7 +82,7 @@ flowchart LR
     C3 --> A
 ```
 
-![发布规划与里程碑管理](fd6b25f914a80b45c72a03f6e35c0778.svg)
+![发布规划与里程碑管理](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/fd6b25f914a80b45c72a03f6e35c0778.svg)
 {width=2385 height=480}
 
 每个面向发布的 Issue 或 PR 需包含：
@@ -124,7 +124,7 @@ flowchart LR
     B --> F
 ```
 
-![版本支持生命周期](15e331789a82329a50ba14dc73e5ecf2.svg)
+![版本支持生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/15e331789a82329a50ba14dc73e5ecf2.svg)
 {width=1920 height=1133}
 
 - **标准支持期**：前 12 个月，常规补丁与安全更新
@@ -250,7 +250,7 @@ flowchart LR
     monthly -.-> maintenance
 ```
 
-![Kubernetes 版本发布与支持周期](efd67d8af0ef0f883d491c7aae2728cd.svg)
+![Kubernetes 版本发布与支持周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/efd67d8af0ef0f883d491c7aae2728cd.svg)
 {width=2377 height=420}
 
 **二进制与镜像签名**：采用 [sigstore](https://sigstore.dev) 签名，可用 `cosign` 工具验证

@@ -49,7 +49,7 @@ graph LR
   Observability --> CD
 ```
 
-![End-to-End 发布架构](1327ae365d5cfdf821401583f1945658.svg)
+![End-to-End 发布架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/1327ae365d5cfdf821401583f1945658.svg)
 {width=2551 height=351}
 
 ## 示例应用简介
@@ -77,7 +77,7 @@ graph LR
   k3d --> Debug
 ```
 
-![本地开发工作流](3f5ad138a016ae1725fe2fe8811e1740.svg)
+![本地开发工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/3f5ad138a016ae1725fe2fe8811e1740.svg)
 {width=1920 height=126}
 
 建议工具与理由：
@@ -176,7 +176,7 @@ graph LR
   Cluster --> Rollouts
 ```
 
-![GitOps 工作流](360e88e5d3d3f27c59218107322ea7af.svg)
+![GitOps 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/360e88e5d3d3f27c59218107322ea7af.svg)
 {width=2020 height=239}
 
 ArgoCD 优势：自动化同步、回滚、审计（历史记录）、多集群支持。实践中建议：

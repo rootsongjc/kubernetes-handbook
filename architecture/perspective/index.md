@@ -42,7 +42,7 @@ flowchart TB
     classDef yellow fill:#fff4b0,stroke:#d1b34d,stroke-width:1px,color:#000;
 ```
 
-![Kubernetes 分层架构](ae715519606b429d7b341fbe4cedc29a.svg)
+![Kubernetes 分层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/perspective/ae715519606b429d7b341fbe4cedc29a.svg)
 {width=1920 height=1159}
 
 * 核心层：Kubernetes 最核心的功能，对外提供 API 构建高层的应用，对内提供插件式应用执行环境

@@ -31,7 +31,7 @@ flowchart LR
     E --> F["GPU Node Binding"]
 ```
 
-![GPU 调度核心组件流程图](41f686d7f40b258ea1ee4f70f56e9bad.svg)
+![GPU 调度核心组件流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/41f686d7f40b258ea1ee4f70f56e9bad.svg)
 {width=1920 height=82}
 
 - **Device Plugin**：向 kubelet 报告 GPU 资源
@@ -145,7 +145,7 @@ graph LR
     B & C & D --> E["Kubernetes Node Resources"]
 ```
 
-![MIG 分区资源暴露流程](ce2dcf163d00d4cc10c0f23fd3e2a1bd.svg)
+![MIG 分区资源暴露流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/ce2dcf163d00d4cc10c0f23fd3e2a1bd.svg)
 {width=1920 height=831}
 
 MIG 模式下，每个 GPU 分区在 Kubernetes 中暴露为独立资源：
@@ -179,7 +179,7 @@ sequenceDiagram
     Scheduler->>API: 执行 Bind()
 ```
 
-![AI 训练作业同步调度流程](67713493d24030c80ab587057dd33f8f.svg)
+![AI 训练作业同步调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/67713493d24030c80ab587057dd33f8f.svg)
 {width=1920 height=1184}
 
 示例插件逻辑如下：
@@ -273,7 +273,7 @@ mindmap
     LLM Graph Scheduling
 ```
 
-![AI-Native Scheduler 未来趋势](8dc0c5fe603043a1165c46e525125060.svg)
+![AI-Native Scheduler 未来趋势](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/8dc0c5fe603043a1165c46e525125060.svg)
 {width=1920 height=1029}
 
 ## 总结

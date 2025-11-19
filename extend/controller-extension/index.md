@@ -36,7 +36,7 @@ sequenceDiagram
     APIServer-->>User: 状态更新完成
 ```
 
-![控制循环机制](fcef017757c65304f2145f3075e726f4.svg)
+![控制循环机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/fcef017757c65304f2145f3075e726f4.svg)
 {width=1920 height=745}
 
 控制器持续监听资源对象的变更事件，通过不断地 **Reconcile（调谐）** 操作，使系统最终达到期望状态。
@@ -66,7 +66,7 @@ flowchart LR
     E -->|Update Status| A
 ```
 
-![Informer 与工作队列](33fbb01412953624d57885ba6a0f016b.svg)
+![Informer 与工作队列](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/33fbb01412953624d57885ba6a0f016b.svg)
 {width=1920 height=474}
 
 这种设计使控制器具有高性能与可伸缩性，同时避免了频繁访问 API Server。
@@ -132,7 +132,7 @@ flowchart TD
   B --> MySQL[实际数据库实例]
 ```
 
-![Operator 模式架构](454cb90e9cdd0da246abfd5886ec93b7.svg)
+![Operator 模式架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/454cb90e9cdd0da246abfd5886ec93b7.svg)
 {width=1920 height=2536}
 
 示例：`Database Operator` 通过 CRD 管理 MySQL 集群的创建、备份、恢复和伸缩。

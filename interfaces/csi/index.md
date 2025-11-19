@@ -59,7 +59,7 @@ graph LR
     NODE -->|Node-driver-registrar| Kubelet
 ```
 
-![Kubernetes CSI 架构组件关系](6d7bb10a7950ffc0a3c91bc6fa4fd15b.svg)
+![Kubernetes CSI 架构组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/csi/6d7bb10a7950ffc0a3c91bc6fa4fd15b.svg)
 {width=2004 height=218}
 
 ## CSI 持久化卷字段

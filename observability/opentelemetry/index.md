@@ -63,7 +63,7 @@ flowchart LR
   end
 ```
 
-![OpenTelemetry 架构总览](94ff10048d7254d6e4548112bf464902.svg)
+![OpenTelemetry 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/94ff10048d7254d6e4548112bf464902.svg)
 {width=2415 height=198}
 
 该架构主要分为以下几个层次：
@@ -117,7 +117,7 @@ flowchart TB
   ResourceSDK --> TracingSDK & MetricsSDK & LogsSDK
 ```
 
-![API/SDK/Exporter 交互](a85ae56684da6d570e4907611330a911.svg)
+![API/SDK/Exporter 交互](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a85ae56684da6d570e4907611330a911.svg)
 {width=2615 height=910}
 
 此外，OpenTelemetry 强调 API/SDK 分离、信号分层、上下文传递与可扩展性。下图进一步说明其架构原则：
@@ -160,7 +160,7 @@ flowchart TD
   ResourceSDK --> TracingSDK & MetricsSDK & LogsSDK
 ```
 
-![OpenTelemetry 架构原则](a4a9d7698d024f4906c1dca4e4808b30.svg)
+![OpenTelemetry 架构原则](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a4a9d7698d024f4906c1dca4e4808b30.svg)
 {width=1982 height=1232}
 
 ## Collector 详解与部署模式
@@ -176,7 +176,7 @@ flowchart TB
   end
 ```
 
-![Collector 组件结构](65abc868ba6cea95f657dc57d7c4cb5f.svg)
+![Collector 组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/65abc868ba6cea95f657dc57d7c4cb5f.svg)
 {width=1920 height=349}
 
 Collector 主要包含以下模块：
@@ -199,7 +199,7 @@ flowchart TD
   end
 ```
 
-![Kubernetes 集群中的 OTel Collector 部署](f084fbf19d168bf9a56785e22385961f.svg)
+![Kubernetes 集群中的 OTel Collector 部署](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/f084fbf19d168bf9a56785e22385961f.svg)
 {width=1920 height=294}
 
 总结来看：
@@ -242,7 +242,7 @@ flowchart LR
   Logs --- Resource
 ```
 
-![OpenTelemetry 信号类型](4d9ff1e0fd496158cc85dcbfb5d8c018.svg)
+![OpenTelemetry 信号类型](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/4d9ff1e0fd496158cc85dcbfb5d8c018.svg)
 {width=1920 height=1620}
 
 ### Trace 结构示意
@@ -260,7 +260,7 @@ flowchart TD
   end
 ```
 
-![Trace 结构示意](97f6096a67f31e6ac49d050e4553dcdc.svg)
+![Trace 结构示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/97f6096a67f31e6ac49d050e4553dcdc.svg)
 {width=1920 height=1106}
 
 ### Metrics 数据流
@@ -278,7 +278,7 @@ flowchart LR
   end
 ```
 
-![Metrics 数据流](90509b784c7b713d0c1133e3a54e4431.svg)
+![Metrics 数据流](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/90509b784c7b713d0c1133e3a54e4431.svg)
 {width=1920 height=6708}
 
 ### 上下文与跨服务传播
@@ -317,7 +317,7 @@ flowchart LR
   SpanB & BaggageB --> CtxB
 ```
 
-![OpenTelemetry 上下文与跨服务传播](081d45e1e81c3883ccbdeb4361c0ae7b.svg)
+![OpenTelemetry 上下文与跨服务传播](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/081d45e1e81c3883ccbdeb4361c0ae7b.svg)
 {width=3275 height=1098}
 
 #### 资源（Resource）
@@ -427,7 +427,7 @@ flowchart TD
   PluginAuthor -- implements --> Exporters
 ```
 
-![OpenTelemetry 的角色分工与扩展点](a0271696e0521b4e82362f8449477207.svg)
+![OpenTelemetry 的角色分工与扩展点](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a0271696e0521b4e82362f8449477207.svg)
 {width=1981 height=462}
 
 ## 总结

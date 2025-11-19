@@ -132,7 +132,7 @@ stateDiagram-v2
   Succeed --> [*]
 ```
 
-![Pod 生命周期流程](579744754244b76400d417e5b8ebb129.svg)
+![Pod 生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pod-architecture/579744754244b76400d417e5b8ebb129.svg)
 {width=1920 height=2284}
 
 ## Pod 网络和存储

@@ -59,7 +59,7 @@ graph TD
     REVISION --> DEPLOYMENT
 ```
 
-![Knative Serving 核心架构](062bf86fcea8c9094ac88933553daf35.svg)
+![Knative Serving 核心架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/serving/062bf86fcea8c9094ac88933553daf35.svg)
 {width=1920 height=2558}
 
 ## 核心资源
@@ -344,7 +344,7 @@ sequenceDiagram
     Ingress-->>Client: 返回响应
 ```
 
-![请求处理流程](f549b1b49c9f511178e6e6f5ca6cf746.svg)
+![请求处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/serving/f549b1b49c9f511178e6e6f5ca6cf746.svg)
 {width=1920 height=1393}
 
 ### 冷启动优化

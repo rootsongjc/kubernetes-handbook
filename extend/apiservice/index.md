@@ -44,7 +44,7 @@ flowchart LR
     AggregatedServer --> ResourceDB["Custom Data Source"]
 ```
 
-![API 聚合层架构](a0b7be7f710488c91a7be4c26c7cf752.svg)
+![API 聚合层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/apiservice/a0b7be7f710488c91a7be4c26c7cf752.svg)
 {width=1920 height=116}
 
 ## 注册机制
@@ -107,7 +107,7 @@ sequenceDiagram
     kube-apiserver-->>Client: Aggregated API Response
 ```
 
-![APIService 证书与安全通信流程](d406fe1a2be7373762413c2de408722f.svg)
+![APIService 证书与安全通信流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/apiservice/d406fe1a2be7373762413c2de408722f.svg)
 {width=1920 height=840}
 
 ## 开发与部署流程

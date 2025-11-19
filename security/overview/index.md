@@ -46,7 +46,7 @@ flowchart TD
     C --- O & P
 ```
 
-![Kubernetes 安全架构分层](121d67c549545b8c53fd7d367ca93f62.svg)
+![Kubernetes 安全架构分层](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/121d67c549545b8c53fd7d367ca93f62.svg)
 {width=1920 height=1146}
 
 ## 认证（Authentication）
@@ -122,7 +122,7 @@ sequenceDiagram
     end
 ```
 
-![Kubernetes 认证与访问控制流程](a05361f9ac2f66e663612be4229c8d8b.svg)
+![Kubernetes 认证与访问控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/a05361f9ac2f66e663612be4229c8d8b.svg)
 {width=1920 height=1582}
 
 ## 鉴权（Authorization）
@@ -173,7 +173,7 @@ flowchart TD
     end
 ```
 
-![RBAC 组件关系](820e7d0c461aa99f308751d0bec739db.svg)
+![RBAC 组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/820e7d0c461aa99f308751d0bec739db.svg)
 {width=1920 height=1315}
 
 #### RBAC 配置示例
@@ -243,7 +243,7 @@ flowchart TD
     F --- I & J & K & L & M & N
 ```
 
-![API 请求准入控制流程](4470cb075382335647d75d233ff459fb.svg)
+![API 请求准入控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/4470cb075382335647d75d233ff459fb.svg)
 {width=2513 height=1193}
 
 ### 准入控制器类型
@@ -340,7 +340,7 @@ flowchart TD
     end
 ```
 
-![KMS 信封加密流程](5c21e87fcab6444db3b3040370dd7394.svg)
+![KMS 信封加密流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/5c21e87fcab6444db3b3040370dd7394.svg)
 {width=1920 height=1410}
 
 ## 证书管理
@@ -369,7 +369,7 @@ sequenceDiagram
     API->>User: 返回签发证书
 ```
 
-![证书签名请求流程](08f62257754b53bcfd36bd8ae395c096.svg)
+![证书签名请求流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/08f62257754b53bcfd36bd8ae395c096.svg)
 {width=1920 height=1373}
 
 ### 内置签名者
@@ -413,7 +413,7 @@ flowchart TD
     end
 ```
 
-![节点鉴权流程](e2b5a984360a23b3b46047823512bb55.svg)
+![节点鉴权流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/e2b5a984360a23b3b46047823512bb55.svg)
 {width=1920 height=234}
 
 ### kubelet 认证与授权

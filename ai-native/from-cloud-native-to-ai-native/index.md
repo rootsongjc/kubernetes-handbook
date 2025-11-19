@@ -49,7 +49,7 @@ mindmap
       GPU / AI 调度
 ```
 
-![Kubernetes 扩展机制思维导图](631304bb3d05d6491ade79b9259ddd28.svg)
+![Kubernetes 扩展机制思维导图](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/631304bb3d05d6491ade79b9259ddd28.svg)
 {width=1920 height=1082}
 
 ### API 扩展
@@ -99,7 +99,7 @@ timeline
     MCP/AI Gateway: 智能体与模型编排
 ```
 
-![从 Cloud-Native 到 AI-Native 演进时间线](b9dc502a39611da76740a0bb222cc076.svg)
+![从 Cloud-Native 到 AI-Native 演进时间线](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/b9dc502a39611da76740a0bb222cc076.svg)
 {width=1920 height=820}
 
 ## AI-Native 扩展模式的崛起
@@ -130,7 +130,7 @@ graph TD
     C -->|资源调度| D["Scheduler Framework"]
 ```
 
-![AI-Native 扩展模式协同关系](3ab6bed3797e6a46fafd9c53380edc5f.svg)
+![AI-Native 扩展模式协同关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/3ab6bed3797e6a46fafd9c53380edc5f.svg)
 {width=1920 height=4631}
 
 ## AI 原生调度的愿景
@@ -155,7 +155,7 @@ mindmap
     数据与算力共优化
 ```
 
-![AI-Native Scheduler 发展方向](547d941c44fe41c625ccd5b6fc81fa3a.svg)
+![AI-Native Scheduler 发展方向](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/547d941c44fe41c625ccd5b6fc81fa3a.svg)
 {width=1920 height=1228}
 
 这将使调度器从“静态分配系统”进化为“智能决策中枢”。

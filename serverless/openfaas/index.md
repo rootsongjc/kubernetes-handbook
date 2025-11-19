@@ -68,7 +68,7 @@ graph TD
     GATEWAY --> PROMETHEUS
 ```
 
-![OpenFaaS 架构图](7f4e69e130e13423a66bda0e2f5d2e63.svg)
+![OpenFaaS 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/openfaas/7f4e69e130e13423a66bda0e2f5d2e63.svg)
 {width=1920 height=3647}
 
 ### 组件说明

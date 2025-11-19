@@ -36,7 +36,7 @@ sequenceDiagram
     APIServer-->>User: 拒绝创建 Pod
 ```
 
-![ValidatingWebhook 工作机制](7052ab1c70c970da081974eb94b006cc.svg)
+![ValidatingWebhook 工作机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/validating-webhook/7052ab1c70c970da081974eb94b006cc.svg)
 {width=1920 height=903}
 
 ValidatingWebhook 作为最终的校验层，在 MutatingWebhook 之后执行。一旦 Webhook 返回拒绝响应，API Server 将直接中止该请求并向用户返回错误信息。

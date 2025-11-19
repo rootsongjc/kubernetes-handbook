@@ -47,7 +47,7 @@ graph TD
     HELM --> PLATFORM
 ```
 
-![Kubernetes 开发生态全景](9dba6ec28b291fd6adf6c391fa72b168.svg)
+![Kubernetes 开发生态全景](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/9dba6ec28b291fd6adf6c391fa72b168.svg)
 {width=1920 height=1228}
 
 ## 核心开发理念
@@ -111,7 +111,7 @@ stateDiagram-v2
     note right of 执行调节操作 : 例如：扩缩容、故障恢复\n版本更新等
 ```
 
-![控制器模式](75cfc48ca4033e91ae8da26d324773b8.svg)
+![控制器模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/75cfc48ca4033e91ae8da26d324773b8.svg)
 {width=1920 height=2523}
 
 ### 可扩展架构
@@ -151,7 +151,7 @@ graph TD
     CSI --> CONTAINERD
 ```
 
-![Kubernetes 可扩展架构](e4132f78f7bf48083081c63644119451.svg)
+![Kubernetes 可扩展架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/e4132f78f7bf48083081c63644119451.svg)
 {width=1920 height=917}
 
 ## 开发工具链
@@ -280,7 +280,7 @@ graph LR
     GITOPS --> PLATFORM_ENG
 ```
 
-![开发模式演进](934fff02c006b937f1051070e8233d5c.svg)
+![开发模式演进](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/934fff02c006b937f1051070e8233d5c.svg)
 {width=1920 height=683}
 
 ### 2025 年发展趋势
@@ -313,7 +313,7 @@ graph TD
     MLOPS --> RAY
 ```
 
-![AI/ML 原生集成](73849ada9afbf8f9b2aebb9b5f193d7b.svg)
+![AI/ML 原生集成](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/73849ada9afbf8f9b2aebb9b5f193d7b.svg)
 {width=1920 height=774}
 
 #### 多云和混合云开发
@@ -349,7 +349,7 @@ graph TD
     BARE_METAL --> FEDERATION
 ```
 
-![多云和混合云开发](ca305ce8f58d8389cb6e278f7373a92b.svg)
+![多云和混合云开发](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/ca305ce8f58d8389cb6e278f7373a92b.svg)
 {width=1920 height=1657}
 
 ## 开发环境配置
@@ -482,7 +482,7 @@ graph TD
     E2E --> PERFORMANCE
 ```
 
-![测试策略](3be90a0aca743463fcf4bcb98f83fcd1.svg)
+![测试策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/3be90a0aca743463fcf4bcb98f83fcd1.svg)
 {width=1920 height=890}
 
 ### 版本管理和发布
@@ -514,7 +514,7 @@ graph LR
     MONITOR -->|"指标监控"| DEV
 ```
 
-![发布流程](155cfafb3d723ac1485f16773834161c.svg)
+![发布流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/155cfafb3d723ac1485f16773834161c.svg)
 {width=1922 height=172}
 
 ## 学习路径
@@ -584,7 +584,7 @@ graph TD
     DESIGN --> BLOG
 ```
 
-![开源贡献路径](2affd3ec208e9b80b165df00bdfd0af3.svg)
+![开源贡献路径](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/2affd3ec208e9b80b165df00bdfd0af3.svg)
 {width=1920 height=1343}
 
 ### 学习资源

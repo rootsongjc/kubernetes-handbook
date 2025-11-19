@@ -92,7 +92,7 @@ graph TD
     end
 ```
 
-![多集群架构模式](f67d11facafc9549060d297448a76d81.svg)
+![多集群架构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/overview/f67d11facafc9549060d297448a76d81.svg)
 {width=4694 height=459}
 
 ### 独立集群模式（Isolated Clusters）

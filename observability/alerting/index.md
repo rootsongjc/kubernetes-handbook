@@ -45,7 +45,7 @@ graph TD
     ALERT --> INHIBITION
 ```
 
-![告警生命周期流程](8278944205a80664c94cb6201c345e67.svg)
+![告警生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/alerting/8278944205a80664c94cb6201c345e67.svg)
 {width=1920 height=3511}
 
 ### 告警类型
@@ -89,7 +89,7 @@ graph TD
     ROUTER --> PAGERDUTY[PagerDuty]
 ```
 
-![Alertmanager 架构与流程](daa14a54d8561cc779abc0f4d197e20c.svg)
+![Alertmanager 架构与流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/alerting/daa14a54d8561cc779abc0f4d197e20c.svg)
 {width=1920 height=2597}
 
 ### 核心概念

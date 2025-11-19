@@ -27,7 +27,7 @@ flowchart TD
     Admission -->|"Request denied by policy"| Reject3["Reject with error"]
 ```
 
-![Kubernetes API 安全处理流程](801cb980a749aa71a4a2f3a5cc462e06.svg)
+![Kubernetes API 安全处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/801cb980a749aa71a4a2f3a5cc462e06.svg)
 {width=1920 height=1744}
 
 ## 用户类型与身份来源
@@ -61,7 +61,7 @@ flowchart LR
     SA --> API
 ```
 
-![Kubernetes 用户身份来源](5145a1edfcb3c8522e295f633f42d6e9.svg)
+![Kubernetes 用户身份来源](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/5145a1edfcb3c8522e295f633f42d6e9.svg)
 {width=1920 height=2268}
 
 ## 认证机制（Authentication）
@@ -116,7 +116,7 @@ sequenceDiagram
     APIServer->>APIServer: Continue to Authorization
 ```
 
-![多认证模块短路流程](e480392cebc83ca5e27bcf221cab57ee.svg)
+![多认证模块短路流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/e480392cebc83ca5e27bcf221cab57ee.svg)
 {width=1920 height=1659}
 
 ### 典型认证方式说明
@@ -178,7 +178,7 @@ flowchart TD
     NoOpinion --> Deny
 ```
 
-![多鉴权器判定流程](a9194330cb1883ebf281a609d755d159.svg)
+![多鉴权器判定流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/a9194330cb1883ebf281a609d755d159.svg)
 {width=1920 height=2177}
 
 ## RBAC 授权机制
@@ -224,7 +224,7 @@ flowchart TD
     ClusterRole --> ClusterRoleBinding
 ```
 
-![RBAC 对象关系](7fd89242eca29d6231168fa9de22eb96.svg)
+![RBAC 对象关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/7fd89242eca29d6231168fa9de22eb96.svg)
 {width=1920 height=533}
 
 ### 角色与绑定示例
@@ -266,7 +266,7 @@ flowchart LR
     ValOther -->|"Reject"| Reject
 ```
 
-![准入控制流程](5887d76552c5efb30719f07a5fd6a7db.svg)
+![准入控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/5887d76552c5efb30719f07a5fd6a7db.svg)
 {width=1920 height=1100}
 
 常用准入控制器包括 PodSecurity、ResourceQuota、LimitRanger、ServiceAccount、MutatingAdmissionWebhook、ValidatingAdmissionWebhook 等。
@@ -326,7 +326,7 @@ sequenceDiagram
     kubectl-->>User: 14. Result
 ```
 
-![Kubernetes 认证与鉴权全流程](c56021059b28d622e75a2927fed611a3.svg)
+![Kubernetes 认证与鉴权全流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/c56021059b28d622e75a2927fed611a3.svg)
 {width=1920 height=880}
 
 ## 最佳实践

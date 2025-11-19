@@ -204,7 +204,7 @@ graph TD
     B3 --> C
 ```
 
-![AI 原生调度插件协作关系](b13344a9ade4589a9abd11f04d396928.svg)
+![AI 原生调度插件协作关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-extension/b13344a9ade4589a9abd11f04d396928.svg)
 {width=1920 height=1127}
 
 这些插件协同工作，实现了面向 AI 任务的智能调度。

@@ -47,7 +47,7 @@ graph TD
     PODS --> BUSINESS
 ```
 
-![Kubernetes 监控层次结构](3eebec98d1d070ca386316be3ad8adc3.svg)
+![Kubernetes 监控层次结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/monitoring/3eebec98d1d070ca386316be3ad8adc3.svg)
 {width=1920 height=2397}
 
 监控体系覆盖：
@@ -105,7 +105,7 @@ graph TD
     PROMQL --> HPA
 ```
 
-![Prometheus 架构与数据流](4645bc85c438bae00b79369e06b05dfb.svg)
+![Prometheus 架构与数据流](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/monitoring/4645bc85c438bae00b79369e06b05dfb.svg)
 {width=1920 height=2203}
 
 核心特性：
