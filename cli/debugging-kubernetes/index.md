@@ -49,7 +49,7 @@ flowchart TD
     classDef no fill:#f7a3a3,stroke:#333,stroke-width:2px;
 ```
 
-![调试 Kubernetes 中 Pod 的流程](95cc1f791d969745899a4acfe56ce2c8.svg)
+![调试 Kubernetes 中 Pod 的流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/cli/debugging-kubernetes/95cc1f791d969745899a4acfe56ce2c8.svg)
 {width=1981 height=1414}
 
 ## 基础状态检查

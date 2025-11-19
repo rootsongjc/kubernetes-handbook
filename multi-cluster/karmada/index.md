@@ -53,7 +53,7 @@ graph TD
     MC1 & MC2 & MCN -->|状态上报| KA
 ```
 
-![Karmada 架构](2d5baab9b8b3c209a81fee58fbb70323.svg)
+![Karmada 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/2d5baab9b8b3c209a81fee58fbb70323.svg)
 {width=3158 height=1200}
 
 ## 主要特性
@@ -112,7 +112,7 @@ flowchart TD
     RB -->|被监听| DD
 ```
 
-![Karmada 资源传播流程](c8aba1c762f991901677c980c8d0d227.svg)
+![Karmada 资源传播流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/c8aba1c762f991901677c980c8d0d227.svg)
 {width=1920 height=1525}
 
 简要步骤说明：
@@ -177,7 +177,7 @@ classDiagram
     ClusterResourceBinding --> "1..*" Work: creates
 ```
 
-![Karmada 资源关系](7590885cc55d370d4fc06920ca00cdc5.svg)
+![Karmada 资源关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/7590885cc55d370d4fc06920ca00cdc5.svg)
 {width=1920 height=722}
 
 ## 同步模式
@@ -244,7 +244,7 @@ flowchart TD
     G --> H[状态回传到 Work 与 ResourceBinding]
 ```
 
-![Work 对象在调度流程中的位置](8c8f0103498051ae34629668dffd470d.svg)
+![Work 对象在调度流程中的位置](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/8c8f0103498051ae34629668dffd470d.svg)
 {width=1920 height=8627}
 `
 
@@ -372,7 +372,7 @@ flowchart TD
     KSE["karmada-scheduler-estimator"] -->|提供资源信息| GS
 ```
 
-![Karmada 调度系统](16a7f6c31fc87ed049d89b40eb235349.svg)
+![Karmada 调度系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/16a7f6c31fc87ed049d89b40eb235349.svg)
 {width=1920 height=1133}
 
 调度流程：
@@ -425,7 +425,7 @@ sequenceDiagram
     Controller-->>User: 聚合显示全局状态（Running）
 ```
 
-![多集群部署流程](5d439aa063fefae7861db115657b2982.svg)
+![多集群部署流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/5d439aa063fefae7861db115657b2982.svg)
 {width=1920 height=853}
 
 > 该流程清晰地展示了「模板 → 策略 → 调度 → 传播 → 状态汇聚」的完整生命周期。
@@ -536,7 +536,7 @@ flowchart TD
     F --> G[状态上报与聚合显示]
 ```
 
-![Karmada 多集群调度与传播 Pipeline](29581faa8dd70d8e88d686cf26af40e7.svg)
+![Karmada 多集群调度与传播 Pipeline](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/29581faa8dd70d8e88d686cf26af40e7.svg)
 {width=1920 height=6882}
 
 > ✅ 这就是 Karmada 的核心能力：**声明式多集群资源传播与调度闭环。**

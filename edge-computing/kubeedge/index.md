@@ -65,7 +65,7 @@ graph TB
     CS <-.-> EdgeCore
 ```
 
-![KubeEdge 架构示意图](b08b32603b3ff6eb5f518f796a8a93ba.svg)
+![KubeEdge 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/b08b32603b3ff6eb5f518f796a8a93ba.svg)
 {width=1920 height=1150}
 
 ## 主要优势
@@ -109,7 +109,7 @@ graph TD
     CloudCore --> DynamicController
 ```
 
-![CloudCore 架构示意图](e189132bdca84cee62bf22ea0d10e4b8.svg)
+![CloudCore 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/e189132bdca84cee62bf22ea0d10e4b8.svg)
 {width=2295 height=380}
 
 - **CloudHub**：WebSocket 服务器，负责云边消息转发、连接管理和消息缓存。
@@ -141,7 +141,7 @@ graph TD
     EdgeCore --> SB
 ```
 
-![EdgeCore 架构示意图](7c30bad0e052e2d47de252e1312dafea.svg)
+![EdgeCore 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/7c30bad0e052e2d47de252e1312dafea.svg)
 {width=1920 height=479}
 
 - **EdgeHub**：WebSocket 客户端，负责与 CloudHub 通信，同步云端资源变更、上报边缘状态。
@@ -188,7 +188,7 @@ flowchart LR
     Edged --> Beehive
 ```
 
-![KubeEdge 消息框架](72c4c6c8b48196bf2ce067d4012e012e.svg)
+![KubeEdge 消息框架](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/72c4c6c8b48196bf2ce067d4012e012e.svg)
 {width=1920 height=2011}
 
 KubeEdge 支持 ACK/NO-ACK 两种消息确认模式，保障消息可靠送达。消息包含头部（ID、时间戳、版本）、路由（源、目标、操作、资源）和内容体。
@@ -222,7 +222,7 @@ sequenceDiagram
     EC->>K8s: 更新 API Server 状态
 ```
 
-![资源同步流程](e09a42fa09619512eb5e2208f4b0d1ff.svg)
+![资源同步流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/e09a42fa09619512eb5e2208f4b0d1ff.svg)
 {width=1920 height=918}
 
 ## 设备管理框架
@@ -266,7 +266,7 @@ graph TD
     EB <--> Mappers
 ```
 
-![设备管理框架](33d41cdd1bc18f9d07a088f7b3cfcbb6.svg)
+![设备管理框架](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/33d41cdd1bc18f9d07a088f7b3cfcbb6.svg)
 {width=1920 height=1699}
 
 - 云端通过 Device CRD/DeviceModel CRD 定义设备
@@ -291,7 +291,7 @@ graph TD
     Debug --> Collect["collect<br/>(日志收集)"]
 ```
 
-![管理工具 keadm](dd34b56941f6cf8002df4840274b8ab2.svg)
+![管理工具 keadm](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/dd34b56941f6cf8002df4840274b8ab2.svg)
 {width=1920 height=831}
 
 ## 兼容性与安全

@@ -45,7 +45,7 @@ flowchart TD
     ARG -->|"配置"| C
 ```
 
-![ConfigMap 与 Secret 消费方式](264b709cf94d9fb0c15e96c22c1adcf7.svg)
+![ConfigMap 与 Secret 消费方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/264b709cf94d9fb0c15e96c22c1adcf7.svg)
 {width=1920 height=1796}
 
 {{< table title="ConfigMap 与 Secret 功能对比" >}}
@@ -96,7 +96,7 @@ flowchart TD
     CFG -->|"volumeMounts[].volume.configMap"| FILES
 ```
 
-![ConfigMap 消费方式](2c1fa159a5e8f941ddbc7886ecee0593.svg)
+![ConfigMap 消费方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/2c1fa159a5e8f941ddbc7886ecee0593.svg)
 {width=1920 height=1104}
 
 - 作为环境变量注入
@@ -139,7 +139,7 @@ flowchart LR
     SA --> K8sAuth
 ```
 
-![Secret 类型与典型用途](38bb71880763e102d2958db70a8762de.svg)
+![Secret 类型与典型用途](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/38bb71880763e102d2958db70a8762de.svg)
 {width=1920 height=2404}
 
 {{< table title="Secret 类型与用途说明" >}}
@@ -203,7 +203,7 @@ flowchart TD
     API --> External
 ```
 
-![Secret 安全风险与缓解措施](92ee38bdc2df2f01cc9cb32d8123be1b.svg)
+![Secret 安全风险与缓解措施](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/92ee38bdc2df2f01cc9cb32d8123be1b.svg)
 {width=1920 height=613}
 
 ### 主要安全问题
@@ -263,7 +263,7 @@ stateDiagram-v2
     end note
 ```
 
-![ConfigMap/Secret 生命周期](a48ed307fe2bbba38a1011156957baf8.svg)
+![ConfigMap/Secret 生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/a48ed307fe2bbba38a1011156957baf8.svg)
 {width=1920 height=3158}
 
 - 卷挂载方式：变更会最终同步到 Pod（不适用于 subPath 挂载），同步延迟取决于 kubelet 周期与缓存。
@@ -310,7 +310,7 @@ flowchart TD
     Mutability -->|"否"| Immutable["使用不可变资源"]
 ```
 
-![ConfigMap vs Secret 选择流程](07d6e9b9d96fa077ded5e471b799b624.svg)
+![ConfigMap vs Secret 选择流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/07d6e9b9d96fa077ded5e471b799b624.svg)
 {width=1920 height=5398}
 
 ## 常见场景与示例

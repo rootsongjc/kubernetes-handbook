@@ -22,7 +22,7 @@ flowchart LR
     C & D --> E[API Server 认证]
 ```
 
-![ServiceAccount 与 Pod 认证关系](ced0e8782a79e5e1d4702c2256adf4a4.svg)
+![ServiceAccount 与 Pod 认证关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/serviceaccount/ced0e8782a79e5e1d4702c2256adf4a4.svg)
 {width=1920 height=374}
 
 ## 使用默认的 ServiceAccount
@@ -140,7 +140,7 @@ sequenceDiagram
     Note over Pod: Token 定期自动轮换
 ```
 
-![ServiceAccount Token 生命周期](c79bc490468256e4baa278d98e26dcdc.svg)
+![ServiceAccount Token 生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/serviceaccount/c79bc490468256e4baa278d98e26dcdc.svg)
 {width=1920 height=1184}
 
 > **注意**  

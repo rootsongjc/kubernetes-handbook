@@ -52,7 +52,7 @@ flowchart TD
     kubelet -->|Evicts Pods<br/>under pressure| API
 ```
 
-![调度与资源管理核心组件](0b48a892565f7cc99148637858b25f76.svg)
+![调度与资源管理核心组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/0b48a892565f7cc99148637858b25f76.svg)
 {width=1920 height=5388}
 
 ## Kubernetes 调度器原理
@@ -87,7 +87,7 @@ flowchart LR
     Bind --> ScheduledPod["Scheduled Pod"]
 ```
 
-![调度流程](4a336c158c21caae55e2d82bb47e737e.svg)
+![调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/4a336c158c21caae55e2d82bb47e737e.svg)
 {width=2178 height=259}
 
 ### 调度框架与插件机制
@@ -126,7 +126,7 @@ flowchart LR
     POB --> N["Node"]
 ```
 
-![调度框架扩展点](fad38edf823ac0fb98b8b11ff3469623.svg)
+![调度框架扩展点](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/fad38edf823ac0fb98b8b11ff3469623.svg)
 {width=3241 height=177}
 
 ### 默认调度插件
@@ -212,7 +212,7 @@ Memory: 256Mi"]
     C2L --> PL
 ```
 
-![Pod 资源请求与限制示意](97d371b394c2e5dca0e1607ceb0a294f.svg)
+![Pod 资源请求与限制示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/97d371b394c2e5dca0e1607ceb0a294f.svg)
 {width=1920 height=1181}
 
 - **Requests**：调度时保证的最小资源
@@ -256,7 +256,7 @@ flowchart TD
     newPod["New Pod"] -.- n4
 ```
 
-![拓扑分布约束示意](16f568d0cfe6ce9f423c95d2d649e8ae.svg)
+![拓扑分布约束示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/16f568d0cfe6ce9f423c95d2d649e8ae.svg)
 {width=1920 height=716}
 
 常用字段包括：
@@ -292,7 +292,7 @@ Toleration: key=value:NoSchedule"]
     p2 --> n2
 ```
 
-![污点与容忍调度示意](e8fca8cb32bd1b1c98a99fe07ccc755e.svg)
+![污点与容忍调度示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/e8fca8cb32bd1b1c98a99fe07ccc755e.svg)
 {width=1920 height=856}
 
 常见场景包括专用节点、特殊硬件节点、节点压力驱逐等。
@@ -330,7 +330,7 @@ priority: 0"]
     PC3 -->|"referenced by"| P3
 ```
 
-![Pod 优先级示意](e78caf0e1d15dd924aab8e9ddba408c0.svg)
+![Pod 优先级示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/e78caf0e1d15dd924aab8e9ddba408c0.svg)
 {width=1920 height=1249}
 
 内置优先级类包括 `system-cluster-critical` 和 `system-node-critical`。
@@ -394,7 +394,7 @@ with Pod 5"| P5
     PDB -->|"Allows disruption"| P5
 ```
 
-![PDB 保护机制示意](f27af411de4700b90a5753f9cc319a4d.svg)
+![PDB 保护机制示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/f27af411de4700b90a5753f9cc319a4d.svg)
 {width=1920 height=902}
 
 PDB 可指定 `minAvailable` 或 `maxUnavailable`，仅保护自愿中断，不防止节点故障或资源驱逐。
@@ -434,7 +434,7 @@ flowchart TD
     RS --> P3
 ```
 
-![HPA 工作流程](2156e4e4f5429e8cc0cea41478bd5386.svg)
+![HPA 工作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/2156e4e4f5429e8cc0cea41478bd5386.svg)
 {width=1920 height=2029}
 
 HPA 支持 CPU、内存、自定义与外部指标。核心算法如下：
@@ -524,7 +524,7 @@ schedulerName: custom-scheduler"]
     CS -->|"Schedules"| P2
 ```
 
-![多调度器调度示意](6ed71126383050f86c1b8c4f5c9553c7.svg)
+![多调度器调度示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/6ed71126383050f86c1b8c4f5c9553c7.svg)
 {width=1920 height=1742}
 
 通过 Pod 的 `schedulerName` 字段指定调度器。

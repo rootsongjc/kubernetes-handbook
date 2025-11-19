@@ -53,7 +53,7 @@ graph TD
     D --> E[实现资源共享]
 ```
 
-![Pause 容器网络共享机制](4f3bc5b609243a71ffcd051b14e0b965.svg)
+![Pause 容器网络共享机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pause-container/4f3bc5b609243a71ffcd051b14e0b965.svg)
 {width=1920 height=5204}
 
 ### 网络共享机制

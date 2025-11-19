@@ -32,7 +32,7 @@ graph TD
     cmd_config --> kustomize
 ```
 
-![Kustomize 核心模块结构](e3e42fdeaf54b37eb85d125cbc52d825.svg)
+![Kustomize 核心模块结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/e3e42fdeaf54b37eb85d125cbc52d825.svg)
 {width=1920 height=596}
 
 - **kyaml**：低级 YAML 处理库，提供解析、操作和输出 YAML 文档的基础能力
@@ -216,7 +216,7 @@ flowchart TD
     resolve_vars --> final_yaml
 ```
 
-![Kustomize 构建流程](910d311ad4c31c93eb1836a7adae8016.svg)
+![Kustomize 构建流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/910d311ad4c31c93eb1836a7adae8016.svg)
 {width=1920 height=2690}
 
 ### 核心概念说明
@@ -282,7 +282,7 @@ graph TD
     pipeline --> writers
 ```
 
-![Kustomize 资源处理架构](03bfc18f47067061fa4fe060f1a3da14.svg)
+![Kustomize 资源处理架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/03bfc18f47067061fa4fe060f1a3da14.svg)
 {width=2238 height=894}
 
 主要组件说明：
@@ -348,7 +348,7 @@ graph TD
     plugin_loader --> execution
 ```
 
-![Kustomize 插件系统](ae1ab1d4082d6c9a3f4b885c38a6a589.svg)
+![Kustomize 插件系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/ae1ab1d4082d6c9a3f4b885c38a6a589.svg)
 {width=3143 height=831}
 
 插件类型包括：

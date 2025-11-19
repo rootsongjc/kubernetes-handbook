@@ -37,7 +37,7 @@ graph TB
     end
 ```
 
-![Mermaid Diagram](8dfcc1889aac282ff3e95cce8632b88e.svg)
+![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/8dfcc1889aac282ff3e95cce8632b88e.svg)
 {width=1920 height=2105}
 
 ## 系统架构
@@ -62,7 +62,7 @@ graph TD
     Auth -->|"Validates"| K8sAPI
 ```
 
-![Mermaid Diagram](7cd6b845ebe426e61f65317978584b97.svg)
+![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/7cd6b845ebe426e61f65317978584b97.svg)
 {width=1920 height=2824}
 
 ## 核心组件
@@ -129,7 +129,7 @@ sequenceDiagram
     end
 ```
 
-![Mermaid Diagram](5008e455656948e80527644087c6db50.svg)
+![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/5008e455656948e80527644087c6db50.svg)
 {width=2099 height=777}
 
 ### Metrics Scraper
@@ -180,7 +180,7 @@ graph TD
     metricsDeploy -->|"Queries"| metricsServer
 ```
 
-![Mermaid Diagram](7165e713019d160b86c1c19463657c05.svg)
+![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/7165e713019d160b86c1c19463657c05.svg)
 {width=2096 height=808}
 
 ## 开发和构建系统
@@ -203,7 +203,7 @@ graph LR
     helm -->|"helm install"| deploy
 ```
 
-![Mermaid Diagram](ae166e6072a56ca2ee27555fd891c61c.svg)
+![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/ae166e6072a56ca2ee27555fd891c61c.svg)
 {width=1920 height=6782}
 
 ## 主要特性

@@ -65,7 +65,7 @@ graph TD
     CSI --> ST[存储插件实现<br>（EBS/PD/Ceph）]
 ```
 
-![Kubernetes 核心接口协作关系](92d3003083d7d7924dd00c850782b279.svg)
+![Kubernetes 核心接口协作关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/overview/92d3003083d7d7924dd00c850782b279.svg)
 {width=1920 height=985}
 
 ## 总结

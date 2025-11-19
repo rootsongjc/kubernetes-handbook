@@ -36,7 +36,7 @@ graph TD
     D --> D3[错误定位]
 ```
 
-![可观测性三支柱](9fd2affa6ae075204219672962404eac.svg)
+![可观测性三支柱](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/9fd2affa6ae075204219672962404eac.svg)
 {width=1992 height=399}
 
 #### Metrics（指标）
@@ -100,7 +100,7 @@ graph TD
     TEMPO --> TRACES
 ```
 
-![Kubernetes 可观测性架构](f53bcfade420485a6ae313122cc574c7.svg)
+![Kubernetes 可观测性架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/f53bcfade420485a6ae313122cc574c7.svg)
 {width=2405 height=656}
 
 ### Kubernetes 原生可观测性
@@ -185,7 +185,7 @@ graph TD
     APPLICATION --> BUSINESS
 ```
 
-![分层观测策略](68d303a8b176355bf34a6315c866495b.svg)
+![分层观测策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/68d303a8b176355bf34a6315c866495b.svg)
 {width=1920 height=1416}
 
 ### 指标层次结构
@@ -236,7 +236,7 @@ graph TD
     end
 ```
 
-![CNCF 可观测性项目](c957dd60fe6842097ba8c96228d09407.svg)
+![CNCF 可观测性项目](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/c957dd60fe6842097ba8c96228d09407.svg)
 {width=1920 height=881}
 
 ### 推荐工具组合

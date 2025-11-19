@@ -76,7 +76,7 @@ flowchart TD
     WAL --> Backend
 ```
 
-![Etcd 系统架构](4a8ade6ab26cf25e1b85eb9d40bce092.svg)
+![Etcd 系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/4a8ade6ab26cf25e1b85eb9d40bce092.svg)
 {width=1920 height=3638}
 
 Etcd 架构由以下关键组件组成：
@@ -142,7 +142,7 @@ sequenceDiagram
     ClientLib-->>Client: Operation Result
 ```
 
-![Etcd 请求处理流程](b335d238adb88c4613d3b6083185becf.svg)
+![Etcd 请求处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/b335d238adb88c4613d3b6083185becf.svg)
 {width=1920 height=2024}
 
 读取操作可分为可序列化（可能过时）和线性化（保证最新）；写入操作始终通过 Raft 共识过程以确保跨集群一致性。
@@ -213,7 +213,7 @@ flowchart TD
     RaftHTTP -->|"Delivers messages to"| Node
 ```
 
-![Raft 节点与 EtcdServer 交互](f54519a3c8f26c3c57c1dcb1192d05db.svg)
+![Raft 节点与 EtcdServer 交互](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/f54519a3c8f26c3c57c1dcb1192d05db.svg)
 {width=2059 height=882}
 
 Raft 实现的关键方面：
@@ -256,7 +256,7 @@ flowchart TD
     Snapshot -->|"Compact"| WAL
 ```
 
-![Etcd 存储层次结构](250b7a2ab6232c056a940cf82df082cf.svg)
+![Etcd 存储层次结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/250b7a2ab6232c056a940cf82df082cf.svg)
 {width=1920 height=1632}
 
 各层功能说明：
@@ -295,7 +295,7 @@ flowchart TD
     CheckPermission -->|"4. Allow/Deny"| Response
 ```
 
-![Etcd 认证与授权流程](1baa2d031389f0054a927fab6efc5542.svg)
+![Etcd 认证与授权流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/1baa2d031389f0054a927fab6efc5542.svg)
 {width=1920 height=1900}
 
 关键安全特性：
@@ -583,7 +583,7 @@ flowchart TD
     RemoveMember -->|"Can remove"| Follower2
 ```
 
-![Etcd 集群形成与成员管理](4f08964b29b33fc833c5e7ad61c19786.svg)
+![Etcd 集群形成与成员管理](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/4f08964b29b33fc833c5e7ad61c19786.svg)
 {width=2422 height=979}
 
 ### Leader 选举与日志复制
@@ -645,7 +645,7 @@ flowchart LR
     gRPCConn -->|"Connects to"| Endpoints["etcd Endpoints"]
 ```
 
-![Etcd 客户端库结构](312df6afc0c917b2391f03dc6ae39a68.svg)
+![Etcd 客户端库结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/312df6afc0c917b2391f03dc6ae39a68.svg)
 {width=1920 height=1088}
 
 ### etcdctl 命令行界面

@@ -52,7 +52,7 @@ graph TD
     CSIC --> PV
 ```
 
-![存储系统架构图](49c40e82a0ff701c4d4148baa8a45de0.svg)
+![存储系统架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/49c40e82a0ff701c4d4148baa8a45de0.svg)
 {width=1920 height=1269}
 
 Kubernetes 存储系统由控制面、节点组件、存储资源和外部插件等部分组成，共同实现持久化存储的全生命周期管理。
@@ -83,7 +83,7 @@ graph LR
     C2 -->|"volumeMounts[1]"| V2
 ```
 
-![Pod 与卷挂载关系](85a981156d5b686de666cdee2a97b54a.svg)
+![Pod 与卷挂载关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/85a981156d5b686de666cdee2a97b54a.svg)
 {width=1920 height=960}
 
 卷类型主要包括：
@@ -121,7 +121,7 @@ graph TD
     PV -->|"implemented as"| Local
 ```
 
-![PV/PVC 绑定与类型关系](7b4b9d492e671d5f1800fc59c26491e2.svg)
+![PV/PVC 绑定与类型关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/7b4b9d492e671d5f1800fc59c26491e2.svg)
 {width=1920 height=2750}
 
 PV 与 PVC 的生命周期：
@@ -166,7 +166,7 @@ graph TD
     PVC -->|"bound to"| PV
 ```
 
-![StorageClass 关系图](9cf3303700437b08cde53d2fd6548825.svg)
+![StorageClass 关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/9cf3303700437b08cde53d2fd6548825.svg)
 {width=1920 height=869}
 
 StorageClass 主要字段：
@@ -214,7 +214,7 @@ graph TD
     NewPVC -->|"dataSource"| VS
 ```
 
-![卷快照资源关系](458f2b51759cc12c6b58fc7ea1042d8b.svg)
+![卷快照资源关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/458f2b51759cc12c6b58fc7ea1042d8b.svg)
 {width=1920 height=2201}
 
 关键资源：
@@ -274,7 +274,7 @@ graph TD
     Ctrl -->|"Management Operations"| Store
 ```
 
-![CSI 组件交互图](8d9718fcf39c658785256b6ae13d9c96.svg)
+![CSI 组件交互图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/8d9718fcf39c658785256b6ae13d9c96.svg)
 {width=1920 height=1235}
 
 CSI 优势：
@@ -312,7 +312,7 @@ graph TD
     Pod -->|"uses"| PVC
 ```
 
-![临时卷生命周期](1601cd8817ec8421057d4f07aeb3caf2.svg)
+![临时卷生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/1601cd8817ec8421057d4f07aeb3caf2.svg)
 {width=1920 height=3324}
 
 Generic Ephemeral Volume 的 PVC 生命周期与 Pod 绑定，Pod 删除后 PVC 及底层卷也被删除。
@@ -353,7 +353,7 @@ graph LR
     Reclaiming -->|"Based on policy"| FinalState["Retained/Deleted/Recycled"]
 ```
 
-![持久存储生命周期流程](81da2dad9c0a36f352cd37c70bd041fa.svg)
+![持久存储生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/81da2dad9c0a36f352cd37c70bd041fa.svg)
 {width=2437 height=77}
 
 主要阶段：

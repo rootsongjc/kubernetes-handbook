@@ -70,7 +70,7 @@ graph TB
     MS1 -->|"inference response"| CLIENT
 ```
 
-![系统架构总览](abaa6a57579f530656c7b442710119d1.svg)
+![系统架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/abaa6a57579f530656c7b442710119d1.svg)
 {width=2325 height=1066}
 
 ### 组件说明
@@ -147,7 +147,7 @@ graph LR
     GW -->|"parent of"| HR
 ```
 
-![Kubernetes 资源关系图](3bcf808bd36880367d58e3734d7ffd75.svg)
+![Kubernetes 资源关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/3bcf808bd36880367d58e3734d7ffd75.svg)
 {width=1920 height=559}
 
 ## 请求处理流程
@@ -200,7 +200,7 @@ sequenceDiagram
     end
 ```
 
-![推理请求处理时序图](46cae61c36ec843180be107955f06afb.svg)
+![推理请求处理时序图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/46cae61c36ec843180be107955f06afb.svg)
 {width=1976 height=1516}
 
 **关键阶段说明：**
@@ -277,7 +277,7 @@ graph TB
     POD_CTL --> DS
 ```
 
-![EPP 内部组件结构](3f9c01b2eb0fe5995400c99e2f1d0088.svg)
+![EPP 内部组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/3f9c01b2eb0fe5995400c99e2f1d0088.svg)
 {width=2052 height=1843}
 
 **主要职责：**
@@ -324,7 +324,7 @@ graph LR
     P1 --> RESULT
 ```
 
-![三阶段调度算法流程](11fa63dd41fd3cb38c6667ea0f165881.svg)
+![三阶段调度算法流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/11fa63dd41fd3cb38c6667ea0f165881.svg)
 {width=3006 height=198}
 
 **评分权重说明：**

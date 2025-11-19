@@ -48,7 +48,7 @@ graph TD
     HPA_CONTROLLER -.-> TARGET
 ```
 
-![HPA 工作原理](97e84e350760c562672ca58d6587826f.svg)
+![HPA 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/kubernetes-patterns/97e84e350760c562672ca58d6587826f.svg)
 {width=1920 height=1542}
 
 ### 基于 CPU 的扩缩容
@@ -200,7 +200,7 @@ graph TD
     DEPLOYMENT --> PODS
 ```
 
-![KEDA 事件驱动扩缩容架构](85924c427b422d4d66e2a4e042540680.svg)
+![KEDA 事件驱动扩缩容架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/kubernetes-patterns/85924c427b422d4d66e2a4e042540680.svg)
 {width=1920 height=1443}
 
 ### KEDA 安装与配置

@@ -65,7 +65,7 @@ graph TD
     DELIVERY --> EXTERNAL
 ```
 
-![事件驱动架构](45add0ddb9c2bb092cc7af8865c1907a.svg)
+![事件驱动架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/eventing/45add0ddb9c2bb092cc7af8865c1907a.svg)
 {width=1920 height=2348}
 
 ### CloudEvents 标准
@@ -269,7 +269,7 @@ graph TD
     ANALYTICS -.->|"Trigger 4"| BROKER
 ```
 
-![发布-订阅模式](e1bb93fe2d680147a9b8bbaa99548728.svg)
+![发布-订阅模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/eventing/e1bb93fe2d680147a9b8bbaa99548728.svg)
 {width=1920 height=1588}
 
 ### 序列处理

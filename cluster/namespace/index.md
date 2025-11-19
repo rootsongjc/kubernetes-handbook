@@ -22,7 +22,7 @@ flowchart TD
     B3 --> C3[Pod/Service/Deployment...]
 ```
 
-![Namespace 资源隔离与作用域](fae0b147237ef7f231660d68ee11594a.svg)
+![Namespace 资源隔离与作用域](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/fae0b147237ef7f231660d68ee11594a.svg)
 {width=1920 height=805}
 
 ## 使用场景
@@ -126,7 +126,7 @@ sequenceDiagram
     APIServer->>Namespace: 级联删除所有资源
 ```
 
-![Namespace 生命周期与资源隔离](89f4d985760f72b525c4d332ef3aa29c.svg)
+![Namespace 生命周期与资源隔离](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/89f4d985760f72b525c4d332ef3aa29c.svg)
 {width=1920 height=956}
 
 ## 资源配额与限制
@@ -144,7 +144,7 @@ flowchart TD
     C --> E[单 Pod/容器资源限制]
 ```
 
-![Namespace 资源配额与限制](384e5f0d14f55991f335ec894416057e.svg)
+![Namespace 资源配额与限制](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/384e5f0d14f55991f335ec894416057e.svg)
 {width=1920 height=1603}
 
 ### ResourceQuota 示例

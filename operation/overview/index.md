@@ -54,7 +54,7 @@ flowchart TD
     crictl -.-> Operate
 ```
 
-![Kubernetes 集群生命周期与关键工具](5fe2cc0d294861b4af6dfff4e5dabd46.svg)
+![Kubernetes 集群生命周期与关键工具](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/5fe2cc0d294861b4af6dfff4e5dabd46.svg)
 {width=1920 height=1173}
 
 ## 使用 kubeadm 部署集群
@@ -145,7 +145,7 @@ flowchart TD
     workerBootstrap --> workerKubelet
 ```
 
-![kubeadm 集群创建流程](0b4c30bb93a94ad67a15092d80040930.svg)
+![kubeadm 集群创建流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/0b4c30bb93a94ad67a15092d80040930.svg)
 {width=1920 height=6361}
 
 ### 高可用集群部署
@@ -209,7 +209,7 @@ flowchart TD
     uncordon --> verify
 ```
 
-![kubeadm 集群升级流程](093b3f9502944c3a72e6256822b433c7.svg)
+![kubeadm 集群升级流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/093b3f9502944c3a72e6256822b433c7.svg)
 {width=1920 height=8071}
 
 详细步骤如下：
@@ -293,7 +293,7 @@ flowchart LR
     monthly -.-> maintenance
 ```
 
-![Kubernetes 版本发布与支持周期](7f705a98c730e536df3ce2c27fd764cc.svg)
+![Kubernetes 版本发布与支持周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/7f705a98c730e536df3ce2c27fd764cc.svg)
 {width=2386 height=378}
 
 每个小版本通常支持约 14 个月：

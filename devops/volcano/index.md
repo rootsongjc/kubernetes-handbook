@@ -78,7 +78,7 @@ graph TB
     CLI --> KAPI
 ```
 
-![Volcano 架构总览](e50d13c14269ef18427c0e5654b4688d.svg)
+![Volcano 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/e50d13c14269ef18427c0e5654b4688d.svg)
 {width=3992 height=1213}
 
 {{< table title="Volcano 核心组件职责" >}}
@@ -117,7 +117,7 @@ graph TB
     JOBS --> JOBFLOWS
 ```
 
-![Volcano CRD 模型](1c1276cf6df0e487ce4c16fef59c1d09.svg)
+![Volcano CRD 模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/1c1276cf6df0e487ce4c16fef59c1d09.svg)
 {width=1920 height=1828}
 
 {{< table title="Volcano CRD 功能说明" >}}
@@ -175,7 +175,7 @@ graph LR
     ALLOCATE --> BOUND --> RUNNING
 ```
 
-![Volcano 调度流程](f79912c5373326c074f7e3a189fa8376.svg)
+![Volcano 调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/f79912c5373326c074f7e3a189fa8376.svg)
 {width=3542 height=509}
 
 调度循环（Scheduling Cycle）包括：
@@ -229,7 +229,7 @@ graph TB
     ENGINE --> GANG
 ```
 
-![Volcano 插件体系](c702ec2359e8ed558e42b311103b9c9b.svg)
+![Volcano 插件体系](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/c702ec2359e8ed558e42b311103b9c9b.svg)
 {width=2591 height=1071}
 
 {{< table title="常见内置插件功能" >}}

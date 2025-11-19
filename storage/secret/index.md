@@ -22,7 +22,7 @@ flowchart TD
     C & D & E --> F[Pod 运行时访问 Secret]
 ```
 
-![Secret 生命周期与使用流程](a29e9fd7d57a961ab64c0c6828220d91.svg)
+![Secret 生命周期与使用流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/secret/a29e9fd7d57a961ab64c0c6828220d91.svg)
 {width=1920 height=1903}
 
 Secret 可通过以下方式被 Pod 使用：
@@ -272,7 +272,7 @@ flowchart LR
     C --> D[Pod 删除后 Secret 文件消失]
 ```
 
-![Secret 生命周期与节点分发](221b2d457f6955a65ce0a0c9b72563d2.svg)
+![Secret 生命周期与节点分发](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/secret/221b2d457f6955a65ce0a0c9b72563d2.svg)
 {width=1920 height=121}
 
 - Secret 仅在被 Pod 消费时分发到节点

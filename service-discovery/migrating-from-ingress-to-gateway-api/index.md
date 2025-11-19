@@ -168,7 +168,7 @@ flowchart TD
         F --> F3[流量分割]
 ```
 
-![从 Ingress 迁移到 Gateway API 的完整流程](43c6548dd2251b476f12cce86fd239db.svg)
+![从 Ingress 迁移到 Gateway API 的完整流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/migrating-from-ingress-to-gateway-api/43c6548dd2251b476f12cce86fd239db.svg)
 {width=1920 height=1338}
 
 ### 详细迁移步骤

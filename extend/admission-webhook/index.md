@@ -41,7 +41,7 @@ sequenceDiagram
   API_Server-->>Client: 返回响应结果
 ```
 
-![Kubernetes API 请求生命周期](87015c8235c352f655fd74d7d3d53442.svg)
+![Kubernetes API 请求生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/admission-webhook/87015c8235c352f655fd74d7d3d53442.svg)
 {width=1920 height=889}
 
 > Mutating Webhook 在验证之前执行，可用于注入默认字段或修改配置；Validating Webhook 仅用于验证，不能修改对象。
@@ -270,7 +270,7 @@ flowchart LR
   C -->|拒绝或放行| A
 ```
 
-![Admission Webhook 架构](f11b27b6bb4a377fa203905a76aedf1f.svg)
+![Admission Webhook 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/admission-webhook/f11b27b6bb4a377fa203905a76aedf1f.svg)
 {width=1920 height=275}
 
 ## 总结

@@ -37,7 +37,7 @@ graph TD
     end
 ```
 
-![链路追踪与传统监控对比](aad460f5297a7e7ea53727a81bee07c6.svg)
+![链路追踪与传统监控对比](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/aad460f5297a7e7ea53727a81bee07c6.svg)
 {width=1920 height=497}
 
 链路追踪能够实现：
@@ -64,7 +64,7 @@ graph TD
     SPAN --> PARENT[父 Span]
 ```
 
-![Span 结构](dc3924719762f263fae4651a5e0176cd.svg)
+![Span 结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/dc3924719762f263fae4651a5e0176cd.svg)
 {width=1920 height=390}
 
 #### Trace（链路）
@@ -135,7 +135,7 @@ graph TD
     UI --> QUERY
 ```
 
-![Jaeger 架构总览](a2f49e6fa4fa43b190890f522dbf4724.svg)
+![Jaeger 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/a2f49e6fa4fa43b190890f522dbf4724.svg)
 {width=1920 height=2809}
 
 ### 核心组件
@@ -214,7 +214,7 @@ graph TD
     EXPORTERS --> ELASTICSEARCH
 ```
 
-![OpenTelemetry 架构](78955b3c0bb0fb625b4ce4532c0a5fe1.svg)
+![OpenTelemetry 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/78955b3c0bb0fb625b4ce4532c0a5fe1.svg)
 {width=1920 height=4385}
 
 ### 核心特性

@@ -32,7 +32,7 @@ graph LR;
   end
 ```
 
-![Ingress 运作的架构图](e0a8252231167704c4f15deeea858784.svg)
+![Ingress 运作的架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/ingress/e0a8252231167704c4f15deeea858784.svg)
 {width=1920 height=606}
 
 Ingress 提供以下核心功能：

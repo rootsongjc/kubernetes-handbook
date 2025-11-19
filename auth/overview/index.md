@@ -40,7 +40,7 @@ graph TD
     G --> I[Node、PV 等]
 ```
 
-![RBAC 组件关系图](9a410ea713ed87d54df15fb1f071f172.svg)
+![RBAC 组件关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/9a410ea713ed87d54df15fb1f071f172.svg)
 {width=1920 height=1483}
 
 - **角色（Role）**：定义命名空间内的权限集合
@@ -84,7 +84,7 @@ graph TD
     F --> G[服务间 mTLS 通信]
 ```
 
-![SPIRE 架构图](c1f23853d0d7494977caf36a273b05d7.svg)
+![SPIRE 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/c1f23853d0d7494977caf36a273b05d7.svg)
 {width=1920 height=2339}
 
 **SPIRE 组件**
@@ -128,7 +128,7 @@ graph LR
     F --> C
 ```
 
-![SPIRE + Kubernetes 部署架构](83f5b39d7c743a8951d113166fdf815c.svg)
+![SPIRE + Kubernetes 部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/83f5b39d7c743a8951d113166fdf815c.svg)
 {width=1920 height=281}
 
 ## RBAC 与 SPIFFE/SPIRE 的结合

@@ -34,7 +34,7 @@ flowchart LR
     API -- "存储/读取" --> store
 ```
 
-![kubectl 到 API Server 的交互流程图](849c7c97a9ab438356726e99fc3199ac.svg)
+![kubectl 到 API Server 的交互流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/849c7c97a9ab438356726e99fc3199ac.svg)
 {width=1920 height=836}
 
 ## Kubernetes API 基础
@@ -71,7 +71,7 @@ flowchart TD
     end
 ```
 
-![Kubernetes API 结构图](8d81cb2cdeb21f25953307d82f32e071.svg)
+![Kubernetes API 结构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/8d81cb2cdeb21f25953307d82f32e071.svg)
 {width=1920 height=910}
 
 常见 API URL 模式如下：
@@ -101,7 +101,7 @@ sequenceDiagram
     kubectl-->>用户: 展示格式化后的 Pod 列表
 ```
 
-![kubectl 请求流程图](88f5994a3685293b38046cf27df03fb5.svg)
+![kubectl 请求流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/88f5994a3685293b38046cf27df03fb5.svg)
 {width=1920 height=1220}
 
 ## API Server 认证机制
@@ -147,7 +147,7 @@ flowchart TD
     request --> apiserver
 ```
 
-![kubectl 认证流程图](54f43e41cebdf7ee3418a1285ba33292.svg)
+![kubectl 认证流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/54f43e41cebdf7ee3418a1285ba33292.svg)
 {width=1920 height=1135}
 
 ## kubectl 基本用法
@@ -257,7 +257,7 @@ application/apply-patch+yaml" --> apiServer
     controller --> kubectl
 ```
 
-![Server-Side Apply 原理示意图](5e40387cf91c2a0ce6c0ffd5300747b3.svg)
+![Server-Side Apply 原理示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/5e40387cf91c2a0ce6c0ffd5300747b3.svg)
 {width=1920 height=2390}
 
 关键点：

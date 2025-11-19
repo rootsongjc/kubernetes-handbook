@@ -23,7 +23,7 @@ flowchart LR
     D -- 成功 --> F[正常对外服务]
 ```
 
-![Kubernetes 探针生命周期流程](e35048912a19d0596bcb9df7532a1a7a.svg)
+![Kubernetes 探针生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/liveness-readiness-probes/e35048912a19d0596bcb9df7532a1a7a.svg)
 {width=1920 height=597}
 
 ### Liveness Probe（存活探针）
@@ -199,7 +199,7 @@ graph TD
     D --> E[failureThreshold]
 ```
 
-![探针参数关系](2823dc43fbec206e134991780b4452e0.svg)
+![探针参数关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/liveness-readiness-probes/2823dc43fbec206e134991780b4452e0.svg)
 {width=1920 height=6153}
 
 ### 通用参数

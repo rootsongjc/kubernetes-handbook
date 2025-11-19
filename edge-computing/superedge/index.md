@@ -40,7 +40,7 @@ flowchart LR
     EdgeNode1 <-- 心跳互查 --> EdgeNode2
 ```
 
-![SuperEdge 架构图](d9ffb6c57d638ad6ab85d3b14b655c87.svg)
+![SuperEdge 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/d9ffb6c57d638ad6ab85d3b14b655c87.svg)
 {width=1920 height=814}
 
 SuperEdge 还实现了更细致的云 - 边 - 站点分层架构，支持多级自治和 Kins 边缘集群能力。下图展示了 Kins 方案的整体架构：
@@ -85,7 +85,7 @@ graph TB
     K3S <--> K3SA
 ```
 
-![Kins 架构图](925c9427059af4df4eb7e8e8869db7c1.svg)
+![Kins 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/925c9427059af4df4eb7e8e8869db7c1.svg)
 {width=2543 height=1032}
 
 为了便于查阅，下面以表格形式列出 SuperEdge 的主要云端与边缘组件及其功能。
@@ -152,7 +152,7 @@ graph LR
     AGC <-->|"Reconcile"| SG
 ```
 
-![SuperEdge 组件分布与交互关系](ad4c02535945451193967b6c802bb99e.svg)
+![SuperEdge 组件分布与交互关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/ad4c02535945451193967b6c802bb99e.svg)
 {width=2493 height=781}
 
 ## 主要特性
@@ -195,7 +195,7 @@ graph TB
     LASB <-->|"Cached Requests"| API
 ```
 
-![SuperEdge 云边通信流程](9624f8a54c9639fe06b62033483315d0.svg)
+![SuperEdge 云边通信流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/9624f8a54c9639fe06b62033483315d0.svg)
 {width=1920 height=1168}
 
 ## 分布式应用与服务治理
@@ -252,7 +252,7 @@ graph TB
     KINS_CRI -->|"Container Runtime"| K3SA2
 ```
 
-![SuperEdge Kins 架构](4d3f25e527b44605608a78b12c8eec25.svg)
+![SuperEdge Kins 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/4d3f25e527b44605608a78b12c8eec25.svg)
 {width=1920 height=1200}
 
 ## 适用场景

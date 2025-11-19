@@ -28,7 +28,7 @@ timeline
       2024-2025: Multi-Cluster Gateway API 成为官方推荐方向
 ```
 
-![Kubernetes 多集群管理的演进](49081f0266eb1df8040742a628b912c3.svg)
+![Kubernetes 多集群管理的演进](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/49081f0266eb1df8040742a628b912c3.svg)
 {width=1920 height=761}
 
 ## Federation 与 KubeFed：早期的联邦控制平面
@@ -79,7 +79,7 @@ D[Open Cluster Management] --> E[PolicyHub]
 F[Rancher Fleet] -->|GitOps 声明式同步| G[多集群环境]
 ```
 
-![控制平面联邦化](b4460932953ab08bd268a180ffe79806.svg)
+![控制平面联邦化](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/b4460932953ab08bd268a180ffe79806.svg)
 {width=1920 height=1493}
 
 这些项目普遍采用以下核心理念：
@@ -143,7 +143,7 @@ A --> E["GitOps 联邦 (Argo CD / Flux)"]
 A --> F["AI-Native 多集群 (KubeEdge / HAMi)"]
 ```
 
-![多集群治理方向](7496d5bb8f459f3a5b343d8bf203b6fc.svg)
+![多集群治理方向](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/7496d5bb8f459f3a5b343d8bf203b6fc.svg)
 {width=1920 height=295}
 
 这些模式正在融合形成新的趋势：

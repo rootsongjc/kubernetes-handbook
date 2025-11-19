@@ -71,7 +71,7 @@ graph LR
   operator --- monitoring
 ```
 
-![StatefulSet Architecture Overview](1d4549d05adba4d1377c46bd0bb4ccf2.svg)
+![StatefulSet Architecture Overview](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/1d4549d05adba4d1377c46bd0bb4ccf2.svg)
 {width=1940 height=826}
 
 ## 推荐的部署流程（高层）
@@ -100,7 +100,7 @@ flowchart TD
   F --> G[持续演练与改进]
 ```
 
-![Deployment Workflow](67b6ca95d61b3f730a9fb7f4202f9e53.svg)
+![Deployment Workflow](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/67b6ca95d61b3f730a9fb7f4202f9e53.svg)
 {width=1920 height=7038}
 
 ## 精简示例：Headless Service + StatefulSet（最佳实践要素）
@@ -242,7 +242,7 @@ sequenceDiagram
   Note over Pod0,Pod2: 升级时可通过 partition 控制从最高 ordinal 开始逐个更新
 ```
 
-![StatefulSet Rolling Update Sequence](99d378c2886ad887509f1305fedaeb9d.svg)
+![StatefulSet Rolling Update Sequence](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/99d378c2886ad887509f1305fedaeb9d.svg)
 {width=1920 height=760}
 
 ## 生产建议清单（要点速查）

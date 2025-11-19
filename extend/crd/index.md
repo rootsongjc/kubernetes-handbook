@@ -41,7 +41,7 @@ flowchart LR
   APIServer --> etcd[(etcd Storage)]
 ```
 
-![CRD 工作原理](09b8d8acc744b3243b08beb32f77a4e3.svg)
+![CRD 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/crd/09b8d8acc744b3243b08beb32f77a4e3.svg)
 {width=1920 height=338}
 
 ## CRD 的定义结构
@@ -148,7 +148,7 @@ sequenceDiagram
   Controller-->>KubeAPIServer: 更新 status 状态
 ```
 
-![CRD 与控制器协作流程](ec92ff96f7af235d32d33a39616f68d7.svg)
+![CRD 与控制器协作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/crd/ec92ff96f7af235d32d33a39616f68d7.svg)
 {width=1920 height=760}
 
 这种模式被称为 **Operator 模式**，是构建云原生自动化系统的标准做法。

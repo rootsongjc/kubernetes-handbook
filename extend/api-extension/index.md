@@ -46,7 +46,7 @@ flowchart LR
     APIService --> Data[Custom Resource Backend]
 ```
 
-![API 聚合层原理](17aba0a521b6c8382da8b61dab8ad781.svg)
+![API 聚合层原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/api-extension/17aba0a521b6c8382da8b61dab8ad781.svg)
 {width=1920 height=117}
 
 当用户访问 `/apis/metrics.k8s.io/v1beta1` 时，主 API Server 会将请求**代理转发**给 `metrics-server` 服务。

@@ -42,7 +42,7 @@ sequenceDiagram
 
 下图为流程示意图：
 
-![Mutating Webhook 执行流程](d053b174e7bc10218063d103e8f186ba.svg)
+![Mutating Webhook 执行流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/mutating-webhook/d053b174e7bc10218063d103e8f186ba.svg)
 {width=1920 height=705}
 
 流程说明：
@@ -176,7 +176,7 @@ flowchart LR
 
 下图为流程示意图：
 
-![Istio Sidecar 自动注入流程](89f1cd0db0708338739eef896d9ee335.svg)
+![Istio Sidecar 自动注入流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/mutating-webhook/89f1cd0db0708338739eef896d9ee335.svg)
 {width=1920 height=297}
 
 这种自动注入机制极大简化了服务网格的部署和运维。

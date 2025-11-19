@@ -39,7 +39,7 @@ graph LR
     SERVERLESS -.-> EVENT
 ```
 
-![架构演进](dad6f6cba2ab5c6b48d7d7b0351c922d.svg)
+![架构演进](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/dad6f6cba2ab5c6b48d7d7b0351c922d.svg)
 {width=1920 height=632}
 
 ### Serverless 的核心特征
@@ -105,7 +105,7 @@ graph TB
     KUBERNETES --> STORAGE
 ```
 
-![Serverless 技术栈](1d2954963d744cb773fb0d899531eb1b.svg)
+![Serverless 技术栈](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/1d2954963d744cb773fb0d899531eb1b.svg)
 {width=1920 height=1094}
 
 ### 框架对比
@@ -154,7 +154,7 @@ graph TD
     EXECUTE -.-> RESOURCE_LIMIT
 ```
 
-![函数生命周期和运行时特性](28f546c1b635fa77f46543b8dfeb7664.svg)
+![函数生命周期和运行时特性](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/28f546c1b635fa77f46543b8dfeb7664.svg)
 {width=1920 height=1187}
 
 #### 冷启动问题与解决方案
@@ -228,7 +228,7 @@ graph TD
     EXECUTOR --> RESULT
 ```
 
-![事件驱动架构](18fb4f086e5ef8bc04a6218f049b7748.svg)
+![事件驱动架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/18fb4f086e5ef8bc04a6218f049b7748.svg)
 {width=1920 height=2248}
 
 #### CloudEvents 标准
@@ -302,7 +302,7 @@ graph TD
     SCALE_DECISION --> KEDA_SCALE
 ```
 
-![自动扩缩容流程](7dab55485dd2d1713652281741bfb680.svg)
+![自动扩缩容流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/7dab55485dd2d1713652281741bfb680.svg)
 {width=1920 height=1869}
 
 #### HPA vs KEDA
@@ -380,7 +380,7 @@ graph TD
     FUNCTION_3 -.-> COUPLING
 ```
 
-![微服务 vs Serverless](a265b3770c7fbae8e9c04d5688cdc516.svg)
+![微服务 vs Serverless](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/a265b3770c7fbae8e9c04d5688cdc516.svg)
 {width=1920 height=1300}
 
 ### 集成策略
@@ -420,7 +420,7 @@ graph TD
     CODE_LOAD --> OPTIMIZE_CODE
 ```
 
-![冷启动优化策略](ded9076c0951b5f98ab97a483e598079.svg)
+![冷启动优化策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/ded9076c0951b5f98ab97a483e598079.svg)
 {width=1920 height=751}
 
 ### 资源配置优化
@@ -495,7 +495,7 @@ graph TD
     SECRETS_MANAGEMENT --> SECRETS_MANAGER
 ```
 
-![Serverless 安全挑战与防护](65e09dac1742b26e2e7769857007cfeb.svg)
+![Serverless 安全挑战与防护](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/65e09dac1742b26e2e7769857007cfeb.svg)
 {width=1920 height=617}
 
 ### 零信任模型
@@ -574,7 +574,7 @@ graph TD
     AUTO_SCALE -.-> MONITOR_USAGE
 ```
 
-![成本模型对比](cdd7ea2e3b122d00afbeb013a05f3d21.svg)
+![成本模型对比](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/cdd7ea2e3b122d00afbeb013a05f3d21.svg)
 {width=1920 height=456}
 
 ### 成本优化实践
@@ -639,7 +639,7 @@ graph TD
     SHIPPING_FUNCTION -.-> SHIPPING_EVENT
 ```
 
-![电商订单处理](6791bf235116643389c0f7d458bc57c1.svg)
+![电商订单处理](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/6791bf235116643389c0f7d458bc57c1.svg)
 {width=2050 height=1132}
 
 ### 案例 2：实时数据处理
@@ -692,7 +692,7 @@ graph TD
     STORE_FUNCTION -.-> COST
 ```
 
-![实时数据处理](39dc6586a44b2f132ff5259340f27b73.svg)
+![实时数据处理](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/overview/39dc6586a44b2f132ff5259340f27b73.svg)
 {width=1920 height=1449}
 
 ## 总结

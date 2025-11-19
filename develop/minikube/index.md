@@ -66,7 +66,7 @@ graph TD
     K8sCore --> Services
 ```
 
-![Minikube 高级架构](9477a007a5f0ffcfbb59ff705ef9ac0a.svg)
+![Minikube 高级架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/minikube/9477a007a5f0ffcfbb59ff705ef9ac0a.svg)
 {width=1920 height=2041}
 
 ### 驱动系统
@@ -110,7 +110,7 @@ graph TD
     DriverAPI --> SSH
 ```
 
-![Minikube 驱动系统](f68120fd421372d4fb101b6cbde6ba9a.svg)
+![Minikube 驱动系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/minikube/f68120fd421372d4fb101b6cbde6ba9a.svg)
 {width=2093 height=810}
 
 KIC（Kubernetes in Container）通过专用基础镜像在容器中运行 Kubernetes。
@@ -138,7 +138,7 @@ graph TD
     RuntimeAPI --> CRIO
 ```
 
-![Minikube 容器运行时支持](8f5625b03b6231780d83398731d3bc3b.svg)
+![Minikube 容器运行时支持](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/minikube/8f5625b03b6231780d83398731d3bc3b.svg)
 {width=1920 height=1429}
 
 ### 插件系统
@@ -166,7 +166,7 @@ graph TD
     Manifests --> RBAC
 ```
 
-![Minikube 插件系统](af6877deb062d5f8232a1abb37a60595.svg)
+![Minikube 插件系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/minikube/af6877deb062d5f8232a1abb37a60595.svg)
 {width=1920 height=7752}
 
 插件可包含 RBAC 资源，保障集群安全。
@@ -220,7 +220,7 @@ graph TD
     BaseImage --> CNIPlugins
 ```
 
-![KIC 基础镜像与依赖](4209db37bf8d13c253d076e6f295ed7d.svg)
+![KIC 基础镜像与依赖](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/minikube/4209db37bf8d13c253d076e6f295ed7d.svg)
 {width=1920 height=441}
 
 ## 安装与配置

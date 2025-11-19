@@ -73,7 +73,7 @@ graph TB
     YH2 -.->|池内数据| YC1
 ```
 
-![OpenYurt 高层系统架构](06ce6af1c4e546b0aff8a89bea7be70f.svg)
+![OpenYurt 高层系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/06ce6af1c4e546b0aff8a89bea7be70f.svg)
 {width=2158 height=1071}
 
 如图所示，OpenYurt 采用典型的云 - 边架构，云端 Kubernetes 控制面统一管理多个物理分布的边缘节点池。每个边缘节点运行 `yurthub` 作为本地 API 代理与缓存，保障网络分区时的自治能力。
@@ -121,7 +121,7 @@ graph LR
     YH <--> YC
 ```
 
-![OpenYurt 组件关系](ecac60dad959b620960473fc87a386d6.svg)
+![OpenYurt 组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/ecac60dad959b620960473fc87a386d6.svg)
 {width=1920 height=1141}
 
 ## 组件部署架构
@@ -162,7 +162,7 @@ graph TB
     YH2_POD -.->|查询池数据| YC1_POD
 ```
 
-![OpenYurt 组件部署架构](386e3c021b0fc71f19d83263c08be46b.svg)
+![OpenYurt 组件部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/386e3c021b0fc71f19d83263c08be46b.svg)
 {width=1920 height=992}
 
 ## 主要组件功能表

@@ -116,7 +116,7 @@ graph TD
     E --> F[非开发环境 Pod]
 ```
 
-![Label Selector 选择关系](313cee2b9c0595b91ee279c412b12d8a.svg)
+![Label Selector 选择关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/313cee2b9c0595b91ee279c412b12d8a.svg)
 {width=1920 height=2837}
 
 ## Label 在 API 对象中的用法
@@ -209,7 +209,7 @@ graph LR
     P -- labels --> L[Labels]
 ```
 
-![Kubernetes 资源与 Label 关联](a796f81e5ca12e4ac213cf6a77dadefc.svg)
+![Kubernetes 资源与 Label 关联](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/a796f81e5ca12e4ac213cf6a77dadefc.svg)
 {width=1920 height=1092}
 
 ## 实际应用示例

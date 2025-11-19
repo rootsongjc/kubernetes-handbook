@@ -83,7 +83,7 @@ graph TD
     SERVING --> CERT_MANAGER
 ```
 
-![Knative 架构图](f066f72889e920855d549d6509fd0ef4.svg)
+![Knative 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/knative/f066f72889e920855d549d6509fd0ef4.svg)
 {width=2941 height=720}
 
 ## Knative Serving
@@ -288,7 +288,7 @@ graph TD
     DELIVERY --> RETRY
 ```
 
-![Knative Eventing 事件流](088d9a5b069ba7a0dccbf6ae09550835.svg)
+![Knative Eventing 事件流](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/knative/088d9a5b069ba7a0dccbf6ae09550835.svg)
 {width=1920 height=2064}
 
 ### 核心组件

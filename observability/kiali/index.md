@@ -67,7 +67,7 @@ graph TD
     BUSINESS_LOGIC --> CONFIG_CACHE
 ```
 
-![Kiali 架构总览](9294a20b6ded2a0d40dd6638c437f8ec.svg)
+![Kiali 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/kiali/9294a20b6ded2a0d40dd6638c437f8ec.svg)
 {width=1920 height=1565}
 
 ### 组件说明
@@ -305,7 +305,7 @@ graph TD
     style CACHE fill:#fff3e0
 ```
 
-![服务网格拓扑图示例](d9bd19626c6497cd825605b4be832267.svg)
+![服务网格拓扑图示例](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/kiali/d9bd19626c6497cd825605b4be832267.svg)
 {width=1920 height=3554}
 
 拓扑图展示：

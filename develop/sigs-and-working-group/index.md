@@ -53,7 +53,7 @@ graph TD
     style WGS fill:#fff3e0
 ```
 
-![Kubernetes 社区组织架构](98bae3d277ee07f68a946996b386a5ba.svg)
+![Kubernetes 社区组织架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/98bae3d277ee07f68a946996b386a5ba.svg)
 {width=1920 height=1279}
 
 ### 治理原则
@@ -96,7 +96,7 @@ graph TD
     MAILING_LISTS --> CALENDAR
 ```
 
-![Kubernetes 社区沟通方式](4054aefebac3358dbff4c299a34d919d.svg)
+![Kubernetes 社区沟通方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/4054aefebac3358dbff4c299a34d919d.svg)
 {width=2155 height=705}
 
 - **会议平台**：主要使用 Zoom/Google Meet，支持实时字幕和录制。
@@ -178,7 +178,7 @@ graph TD
     AUTH --> SECURITY
 ```
 
-![Kubernetes 主要 SIG 列表](18196d19ae94a440d97d3ca32f172579.svg)
+![Kubernetes 主要 SIG 列表](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/18196d19ae94a440d97d3ca32f172579.svg)
 {width=4901 height=1268}
 
 **核心基础设施**
@@ -350,7 +350,7 @@ graph TD
     WG_DIVERSITY --> WG_CONTRIBUTOR
 ```
 
-![Kubernetes 工作组结构](fba39fec25dc23eab77e13b9aa2eb8f7.svg)
+![Kubernetes 工作组结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/fba39fec25dc23eab77e13b9aa2eb8f7.svg)
 {width=1982 height=422}
 
 ### 活跃工作组详情
@@ -419,7 +419,7 @@ flowchart TD
     J --> J1["核心维护者<br/>架构决策"]
 ```
 
-![Kubernetes 参与路径](dba5c6104ecc66ba4abf587bf0311935.svg)
+![Kubernetes 参与路径](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/dba5c6104ecc66ba4abf587bf0311935.svg)
 {width=1920 height=2570}
 
 ### 参与步骤

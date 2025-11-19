@@ -143,7 +143,7 @@ graph TD
     WorkflowService --> BlobStorage
 ```
 
-![Devtron 系统架构](7504291c03888b6ce80362434935d4a4.svg)
+![Devtron 系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/7504291c03888b6ce80362434935d4a4.svg)
 {width=2741 height=1886}
 
 ### 核心组件说明
@@ -198,7 +198,7 @@ graph TD
     end
 ```
 
-![Devtron CI/CD 流水线流程](341e02d835d8fc833aa9ca9ec17c678d.svg)
+![Devtron CI/CD 流水线流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/341e02d835d8fc833aa9ca9ec17c678d.svg)
 {width=2677 height=2792}
 
 ## 部署配置与模板
@@ -245,7 +245,7 @@ graph TD
     Environment --> CDPipeline
 ```
 
-![Devtron 部署配置流程](29673125d086ac519fef4d4ebbbce980.svg)
+![Devtron 部署配置流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/29673125d086ac519fef4d4ebbbce980.svg)
 {width=3048 height=1554}
 
 ### 部署模板类型

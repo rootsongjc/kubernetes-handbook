@@ -41,7 +41,7 @@ stateDiagram-v2
   Succeed --> [*]
 ```
 
-![Pod 生命周期状态变化流程](e3452d9dcb65811ce4d215330d99f6b7.svg)
+![Pod 生命周期状态变化流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pod-lifecycle/e3452d9dcb65811ce4d215330d99f6b7.svg)
 {width=1920 height=2289}
 
 ## Pod 状态（Status）
