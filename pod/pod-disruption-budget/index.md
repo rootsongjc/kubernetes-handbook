@@ -3,8 +3,7 @@ weight: 20
 title: Pod 中断与 PDB（Pod 中断预算）
 linktitle: Pod 中断预算
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/objects/pod-disruption-budget/
+slug: pod-disruption-budget
 description: 了解 Kubernetes 中 Pod 的自愿和非自愿中断类型，以及如何使用 Pod 中断预算（PDB）来保护关键应用程序的可用性，确保在集群维护和扩缩容等操作中维持服务稳定性。
 lastmod: 2025-10-27T14:25:15.359Z
 ---

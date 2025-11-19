@@ -2,8 +2,7 @@
 weight: 14
 title: Init 容器
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/objects/init-containers/
+slug: init-containers
 description: Init 容器是一种专用的容器，在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。本文详细介绍 Init 容器的概念、用法和最佳实践。
 lastmod: 2025-10-27T13:26:42.274Z
 ---

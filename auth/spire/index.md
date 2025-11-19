@@ -2,9 +2,6 @@
 weight: 48
 title: SPIRE
 date: 2022-06-10T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/auth/svid/
-  - /book/kubernetes-handbook/auth/spire-k8s-workload-registar/
 description: 本文详细介绍 SPIRE 的架构、核心组件、证明机制和工作原理。
 lastmod: 2025-10-27T16:30:08.433Z
 ---

@@ -1,8 +1,7 @@
 ---
 weight: 40
 title: Secret
-aliases:
-  - /book/kubernetes-handbook/config/secret/
+slug: secret
 date: 2022-05-21T00:00:00+08:00
 description: Secret 是 Kubernetes 中用于存储敏感数据的对象，包括密码、token、密钥等，支持以 Volume 或环境变量方式使用，主要类型有 Opaque、Service Account 和 dockerconfigjson。
 lastmod: 2025-10-27T12:39:28.278Z

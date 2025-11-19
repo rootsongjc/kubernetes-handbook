@@ -3,8 +3,7 @@ weight: 9
 title: 容器存储接口（CSI）
 date: 2022-05-21T00:00:00+08:00
 type: book
-aliases:
-  - /book/kubernetes-handbook/architecture/open-interfaces/csi/
+slug: csi
 description: 介绍 Kubernetes 容器存储接口（CSI）的概念、架构、使用方法和最佳实践，包括动态配置、预配置卷和 CSI 驱动程序的开发部署。
 lastmod: 2025-10-27T13:19:45.025Z
 ---

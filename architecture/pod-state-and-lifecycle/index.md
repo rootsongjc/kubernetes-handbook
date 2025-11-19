@@ -4,8 +4,7 @@ title: Kubernetes 中的资源对象
 linkTitle: 资源对象
 date: 2022-05-21T00:00:00+08:00
 type: book
-aliases:
-    - /book/kubernetes-handbook/objects/
+slug: pod-state-and-lifecycle
 description: 深入了解 Kubernetes 中的各种资源对象类型，包括 Pod、Service、Deployment 等核心概念，以及如何通过 YAML 文件定义和管理这些对象的 spec 和 status。
 lastmod: 2025-10-27T13:14:35.181Z
 ---

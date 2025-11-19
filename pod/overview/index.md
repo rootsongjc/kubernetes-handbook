@@ -3,9 +3,6 @@ weight: 12
 title: Pod 概述
 linktitle: 概述
 date: 2017-03-10T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/objects/pod-overview/
-  - /book/kubernetes-handbook/pod/pod-overview/
 description: 深入了解 Kubernetes 中最基本的部署单元 Pod，包括其核心概念、使用模式、资源共享机制以及与控制器的关系。
 lastmod: 2025-10-28T04:39:25.016Z
 ---

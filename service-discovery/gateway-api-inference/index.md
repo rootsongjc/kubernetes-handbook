@@ -2,9 +2,7 @@
 title: Gateway API 推理扩展
 linkTitle: Gateway API 推理扩展
 weight: 43
-aliases:
-  - /zh/book/kubernetes-handbook/ai-native/gateway-api-inference/
-description: Kubernetes Gateway API 推理扩展的介绍和使用指南。
+slug: gateway-api-inference
 date: 2025-10-20T05:19:44.956Z
 lastmod: 2025-10-27T18:14:39.810Z
 ---
