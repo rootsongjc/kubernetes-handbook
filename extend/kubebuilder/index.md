@@ -2,8 +2,7 @@
 weight: 6
 linktitle: Kubebuilder
 title: 使用 Kubebuilder 构建控制器
-aliases:
-  - /book/kubernetes-handbook/develop/kubebuilder/
+slug: kubebuilder
 date: 2024-01-15T00:00:00+08:00
 description: 介绍 Kubebuilder 的核心概念、设计原则、工作流程及最佳实践，帮助开发者快速上手使用 Kubebuilder 构建 Kubernetes 扩展。
 lastmod: 2025-10-27T10:06:26.453Z

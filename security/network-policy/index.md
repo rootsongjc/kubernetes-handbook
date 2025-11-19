@@ -2,8 +2,7 @@
 weight: 46
 title: NetworkPolicy
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/auth/network-policy/
+slug: network-policy
 description: Kubernetes NetworkPolicy 是一种声明式的网络安全策略，用于控制 Pod 之间的网络通信。本文详细介绍了 NetworkPolicy 的工作原理、配置方法、使用场景和最佳实践。
 lastmod: 2025-10-27T17:03:22.045Z
 ---

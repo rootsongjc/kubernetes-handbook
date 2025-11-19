@@ -3,8 +3,7 @@ weight: 8
 title: 容器网络接口（CNI）
 date: 2022-05-21T00:00:00+08:00
 type: book
-aliases:
-  - /book/kubernetes-handbook/architecture/open-interfaces/cni/
+slug: cni
 description: 深入了解容器网络接口（CNI）的设计原理、接口定义、插件实现和使用方式，掌握 Kubernetes 网络管理的核心机制。
 lastmod: 2025-10-17T10:18:01.536Z
 ---

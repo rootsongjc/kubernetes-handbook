@@ -2,8 +2,7 @@
 weight: 74
 title: 配置 Pod 的 liveness 和 readiness 探针
 linktitle: 存活和就绪探针
-aliases:
-  - /book/kubernetes-handbook/config/liveness-readiness-probes/
+slug: liveness-readiness-probes
 date: 2022-05-21T00:00:00+08:00
 description: 介绍三种探针类型：命令执行、HTTP 请求和 TCP 套接字，以及相关的配置参数。
 lastmod: 2025-10-27T12:22:21.947Z

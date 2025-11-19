@@ -4,8 +4,7 @@ title: 开放接口
 date: 2022-05-21T00:00:00+08:00
 type: book
 level: 4
-aliases:
-    - /book/kubernetes-handbook/architecture/open-interfaces/
+slug: open-interfaces
 description: 了解 Kubernetes 核心开放接口，包括容器运行时接口（CRI）、容器网络接口（CNI）和容器存储接口（CSI），以及它们如何实现云原生应用的资源管理和扩展。
 icon: fa-solid fa-plug
 lastmod: 2025-11-04T02:02:55.946Z

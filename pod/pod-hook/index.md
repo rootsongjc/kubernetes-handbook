@@ -2,8 +2,7 @@
 weight: 18
 title: Pod Hook
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/objects/pod-hook/
+slug: pod-hook
 description: 详细介绍 Kubernetes Pod Hook（钩子）的工作原理、类型配置和调试方法，包括 postStart 和 preStop 生命周期事件的使用场景和最佳实践。
 lastmod: 2025-10-27T14:17:14.695Z
 ---

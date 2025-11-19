@@ -3,8 +3,7 @@ weight: 35
 title: Horizontal Pod Autoscaling
 linkTitle: HPA
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/controllers/hpa/custom-metrics-hpa/
+slug: hpa
 description: 深入了解 Kubernetes HPA（Horizontal Pod Autoscaling）的工作原理、配置方法和自定义指标支持，包括基于 CPU、内存和自定义指标的自动扩缩容实现。
 lastmod: 2025-10-27T16:04:04.775Z
 ---

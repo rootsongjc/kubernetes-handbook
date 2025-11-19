@@ -3,8 +3,7 @@ weight: 16
 title: Sidecar 容器
 date: 2025-06-16T00:00:00+08:00
 type: book
-aliases:
-  - /book/kubernetes-handbook/objects/sidecar-container/
+slug: sidecar-container
 description: 介绍 Kubernetes 中 Sidecar 容器模式的概念、使用场景和最佳实践
 lastmod: 2025-10-27T13:40:59.251Z
 ---

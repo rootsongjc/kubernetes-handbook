@@ -13,8 +13,6 @@ date: 2017-03-15T00:00:00+08:00
 icon: kubernetes
 icon-pack: custom
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
-aliases:
-    - /guide-to-cloud-native-app
 cascade:
     comment: true
     type: book

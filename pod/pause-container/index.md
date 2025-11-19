@@ -3,8 +3,6 @@ weight: 15
 title: Pause 容器
 date: 2022-05-21T00:00:00+08:00
 type: book
-aliases:
-  - /book/kubernetes-handbook/objects/pause-container/
 description: 深入探究 Kubernetes 中 Pause 容器（Infra 容器）的作用与原理，了解它如何实现 Pod 内容器间的网络命名空间共享，以及在 Pod 生命周期管理中的关键作用。
 lastmod: 2025-10-27T13:35:39.329Z
 ---

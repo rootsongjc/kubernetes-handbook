@@ -2,8 +2,7 @@
 weight: 17
 title: Pod 的生命周期
 date: 2022-05-21T00:00:00+08:00
-aliases:
-  - /book/kubernetes-handbook/objects/pod-lifecycle/
+slug: pod-lifecycle
 description: 详细介绍 Kubernetes Pod 的生命周期管理，包括 Pod 状态阶段、容器探针配置、重启策略以及生命周期的各种实际应用场景。
 lastmod: 2025-10-28T04:43:05.297Z
 ---

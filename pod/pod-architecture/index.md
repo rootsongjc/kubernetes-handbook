@@ -3,8 +3,7 @@ weight: 13
 title: Pod 解析
 date: 2022-05-21T00:00:00+08:00
 type: book
-aliases:
-  - /book/kubernetes-handbook/objects/pod-overview/
+slug: pod-architecture
 description: 深入了解 Kubernetes Pod 架构、设计理念、生命周期管理和最佳实践，包括 Pod 的创建、调度、终止和故障处理机制。
 lastmod: 2025-10-28T04:41:05.841Z
 ---

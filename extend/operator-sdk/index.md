@@ -5,8 +5,7 @@ linktitle: Operator SDK
 date: 2022-05-21T00:00:00+08:00
 lastmod: 2025-10-27T10:11:33.402Z
 description: 介绍 Operator SDK 的核心概念、架构设计、安装配置、CLI 插件系统及开发工作流，帮助读者掌握使用 Operator SDK 构建 Kubernetes Operator 的方法与最佳实践。
-aliases:
-    - /book/kubernetes-handbook/develop/operator-sdk/
+slug: operator-sdk
 ---
 
 > Operator SDK 作为 Kubernetes Operator 开发的核心工具，极大简化了 Operator 的创建、测试与打包流程，助力开发者高效实现复杂应用的自动化运维。

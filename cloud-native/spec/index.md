@@ -3,12 +3,6 @@ title: 云原生应用规范模型
 linkTitle: 规范模型
 description: 基于 OAM 的云原生应用的规范模型，详细介绍 Workload、Component、Trait、ApplicationScope 和 ApplicationConfiguration 等核心概念。
 weight: 9
-aliases:
-  - /book/kubernetes-handbook/cloud-native/spec/workload/
-  - /book/kubernetes-handbook/cloud-native/spec/component/
-  - /book/kubernetes-handbook/cloud-native/spec/trait/
-  - /book/kubernetes-handbook/cloud-native/spec/application-scope/
-  - /book/kubernetes-handbook/cloud-native/spec/application-configuration/
 lastmod: 2025-10-27T17:37:16.370Z
 date: 2025-08-26T10:11:27.424Z
 ---

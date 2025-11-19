@@ -2,8 +2,7 @@
 weight: 10
 title: Pod
 date: 2022-05-21T00:00:00+08:00
-aliases:
-    - /book/kubernetes-handbook/objects/
+slug: pod
 description: 深入了解 Kubernetes 中 Pod 这一最小调度单元的构成、生命周期管理以及容器启动机制，掌握 Pod 状态管理的核心概念。
 icon: fa-solid fa-solid fa-cube
 lastmod: 2025-11-04T02:02:55.894Z
