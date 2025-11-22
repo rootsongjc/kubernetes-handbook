@@ -2,7 +2,7 @@
 linktitle: Kubernetes 教程
 description: Kubernetes 基础教程 - 全面介绍容器编排技术的实战手册，涵盖核心架构、关键组件和实际应用。
 categories:
-    - 教程手册
+    - tutorials
 category: 教程手册
 featured: true
 type: publication
