@@ -14,7 +14,7 @@ Gateway API 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kube
 
 {{< callout note 注意 >}}
 
-Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的下一代资源，既可以处理南北向流量，还可以处理东西向流量。关于 Gateway API 的详细介绍和发展趋势，请参考 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。
+Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的下一代资源，既可以处理南北向流量，还可以处理东西向流量。关于 Gateway API 的详细介绍和发展趋势，请参考 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/zh/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。
 
 {{< /callout >}}
 
