@@ -19,7 +19,7 @@ date: 2025-08-26T10:10:44.477Z
 - **中立** - 保持企业中立立场，为所有参与者提供公平的交流平台
 - **开源** - 积极参与开源项目，推动云原生技术生态发展
 
-了解更多信息请访问：<https://cloudnativecn.com>
+了解更多信息请访问：<https://cloudnative.jimmysong.io>
 
 ## 成立背景
 
@@ -57,5 +57,5 @@ date: 2025-08-26T10:10:44.477Z
 
 ## 参考资料
 
-- [云原生社区成立公告 - cloudnativecn.com](https://cloudnativecn.com/blog/cnc-announcement/)
-- [云原生社区官网](https://cloudnativecn.com)
+- [云原生社区成立公告 - cloudnative.jimmysong.io](https://cloudnative.jimmysong.io/blog/cnc-announcement/)
+- [云原生社区官网](https://cloudnative.jimmysong.io)

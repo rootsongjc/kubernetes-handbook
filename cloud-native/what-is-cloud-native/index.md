@@ -9,7 +9,7 @@ lastmod: 2025-10-27T17:37:55.987Z
 
 > 云原生不仅是技术革新，更是驱动企业敏捷创新与持续进化的核心动力。
 
-云原生（Cloud Native）这个概念已经成为现代软件开发和部署的核心理念。随着云计算技术的成熟和企业数字化转型的深入，云原生不仅是一套技术体系，更代表着一种全新的[软件开发文化](https://cloudnativecn.com/blog/cloud-native-culture-not-container/)和组织变革方式。
+云原生（Cloud Native）这个概念已经成为现代软件开发和部署的核心理念。随着云计算技术的成熟和企业数字化转型的深入，云原生不仅是一套技术体系，更代表着一种全新的[软件开发文化](https://cloudnative.jimmysong.io/blog/cloud-native-culture-not-container/)和组织变革方式。
 
 ## 云原生的起源与演进
 
