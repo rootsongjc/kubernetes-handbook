@@ -237,4 +237,4 @@ Label 是 Kubernetes 资源管理和自动化运维的基石。通过合理设�
 ## 参考文献
 
 1. [Kubernetes 官方文档 - kubernetes.io](https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/labels/)
-2. [Kubernetes Label 和 Annotation 设计规范 - 云原生社区](https://cloudnativecn.com/blog/kubernetes-label-annotation-best-practice/)
+2. [Kubernetes Label 和 Annotation 设计规范 - 云原生社区](https://cloudnative.jimmysong.io/blog/kubernetes-label-annotation-best-practice/)
