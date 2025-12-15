@@ -1,5 +1,6 @@
 ---
 weight: 6
+part_id: part-i
 title: 开放接口
 date: 2022-05-21T00:00:00+08:00
 type: book

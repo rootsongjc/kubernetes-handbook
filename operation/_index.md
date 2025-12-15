@@ -1,6 +1,7 @@
 ---
 title: 集群运维
 weight: 92
+part_id: part-ii
 description: 介绍 Kubernetes 集群的安装、配置、升级和维护等操作内容。
 icon: fas fa-user-cog
 date: 2025-10-13

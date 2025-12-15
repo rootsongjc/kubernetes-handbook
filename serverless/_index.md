@@ -1,6 +1,7 @@
 ---
 title: Serverless
 weight: 110
+part_id: part-iii
 description: Kubernetes 上的 Serverless 架构，包括 Knative、OpenFaaS 和原生 Kubernetes Serverless 模式。
 icon: fas fa-bolt
 date: 2025-10-19T00:00:00+08:00

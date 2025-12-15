@@ -1,5 +1,6 @@
 ---
 weight: 55
+part_id: part-ii
 title: 集群安全性管理
 linktitle: 安全
 date: 2022-05-21T00:00:00+08:00

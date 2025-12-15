@@ -1,6 +1,7 @@
 ---
 linktitle: 云原生
 weight: 120
+part_id: part-iii
 title: 云原生
 description: 云原生技术栈和理念的全面指南，涵盖容器化、微服务、DevOps 等核心概念和实践方法
 date: 2024-01-15T00:00:00Z

@@ -13,6 +13,19 @@ date: 2017-03-15T00:00:00+08:00
 icon: kubernetes
 icon-pack: custom
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
+parts:
+    - id: part-i
+      title: "Part I · 基础架构与核心抽象"
+      order: 1
+      collapse: false
+    - id: part-ii
+      title: "Part II · 平台能力与生产实践"
+      order: 2
+      collapse: false
+    - id: part-iii
+      title: "Part III · 扩展机制与新范式"
+      order: 3
+      collapse: false
 cascade:
     comment: true
     type: book

@@ -1,5 +1,6 @@
 ---
 weight: 78
+part_id: part-ii
 title: 命令与调试
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes 集群调试与诊断方法全解，涵盖 kubectl、常用命令行工具、排障技巧、日志分析、资源监控与最佳实践，助力高效定位和解决集群问题。

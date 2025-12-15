@@ -1,5 +1,6 @@
 ---
 weight: 43
+part_id: part-i
 title: 身份与权限认证
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 中的身份认证与权限管理机制，包括 RBAC、ServiceAccount 等核心概念，以及 SPIFFE/SPIRE 等现代身份管理解决方案在云原生环境中的应用。
