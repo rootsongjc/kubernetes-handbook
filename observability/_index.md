@@ -1,6 +1,7 @@
 ---
 title: 可观测性
 weight: 100
+part_id: part-ii
 description: Kubernetes 集群和应用的全面可观测性指南，涵盖监控、日志、链路追踪等核心领域的最佳实践
 icon: fas fa-eye
 date: 2025-10-19T00:00:00+08:00

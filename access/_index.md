@@ -1,5 +1,6 @@
 ---
 weight: 55
+part_id: part-ii
 title: 访问 Kubernetes 集群
 linkTitle: 访问集群
 description: 详细介绍访问 Kubernetes 集群的多种方式，包括 kubectl 命令行工具、kubeconfig 配置、代理转发、Ingress 控制器等方法，帮助用户选择合适的集群访问方案。

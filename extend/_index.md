@@ -1,5 +1,6 @@
 ---
 weight: 62
+part_id: part-ii
 title: 扩展 Kubernetes
 date: 2022-05-21T00:00:00+08:00
 type: book

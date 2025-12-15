@@ -1,5 +1,6 @@
 ---
 weight: 68
+part_id: part-ii
 title: 多集群管理
 date: 2022-05-21T00:00:00+08:00
 type: book
@@ -8,6 +9,6 @@ icon: fa-solid fa-object-group
 lastmod: 2025-11-04T03:19:01.690Z
 ---
 
-多集群（Multi-Cluster）是云原生架构演进的重要阶段。随着 Kubernetes 在企业级生产环境中的普及，单一集群架构已难以满足高可用、合规性、多云部署与全球化分布式服务等复杂需求。 本章节介绍 Kubernetes 多集群管理的核心理念、常见架构模式以及当前的发展趋势。
+多集群（Multi-Cluster）是云原生架构演进的重要阶段。随着 Kubernetes 在企业级生产环境中的普及，单一集群架构已难以满足高可用、合规性、多云部署与全球化分布式服务等复杂需求。本章节介绍 Kubernetes 多集群管理的核心理念、常见架构模式以及当前的发展趋势。
 
 {{< section-toc style="cards"  >}}

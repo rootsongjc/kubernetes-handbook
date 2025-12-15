@@ -1,6 +1,7 @@
 ---
 linktitle: AI 原生
 weight: 130
+part_id: part-iii
 title: AI 原生
 description: Kubernetes 中 AI 基础设施架构和应用实践指南，涵盖 AI Gateway、大模型部署调优、推理优化等。
 date: 2024-10-20T00:00:00Z

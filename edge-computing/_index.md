@@ -3,6 +3,7 @@ title: 边缘计算
 description: 边缘计算是一种将计算资源和数据处理能力部署在边缘设备上的技术，以实现低延迟、高可靠性和数据安全。
 icon: fas fa-microchip
 weight: 115
+part_id: part-iii
 lastmod: 2025-11-04T02:02:55.923Z
 ---
 

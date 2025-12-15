@@ -1,5 +1,6 @@
 ---
 weight: 28
+part_id: part-i
 title: 控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 中的各种控制器，包括 Deployment、StatefulSet、DaemonSet 等，掌握它们的工作原理和使用场景。

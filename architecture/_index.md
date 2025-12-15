@@ -1,5 +1,6 @@
 ---
 weight: 1
+part_id: part-i
 title: Kubernetes 架构
 date: 2024-12-19T00:00:00+08:00
 description: 深入了解 Kubernetes 的架构设计原理、核心组件及其演进历程。
