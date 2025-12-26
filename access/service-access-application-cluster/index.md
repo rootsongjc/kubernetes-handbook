@@ -35,7 +35,7 @@ lastmod: 2025-10-27T17:41:28.257Z
 首先，创建一个运行 Hello World 应用的 Deployment：
 
 ```bash
-kubectl create deployment hello-world --image=gcr.io/google-samples/node-hello:1.0 --port=8080
+kubectl create deployment hello-world --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:2.0 --port=8080
 ```
 
 扩展为 2 个副本：
