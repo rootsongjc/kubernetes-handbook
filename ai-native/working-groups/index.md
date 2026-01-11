@@ -39,7 +39,7 @@ Kubernetes 在 2025 年的主要演化趋势之一，是面向 AI Native 的体�
 
 ## WG AI Gateway：AI 推理流量的网络治理模型
 
-该工作组致力于将 AI 推理场景纳入 Gateway API 体系，形成针对大语言模型（LLM, Large Language Model）及推理工作负载的网络治理能力。
+该工作组致力于将 AI 推理场景纳入 Gateway API 体系，形成针对大语言模型（LLM）及推理工作负载的网络治理能力。
 
 核心成果包括 **Gateway API Inference Extension（GAIE）**，覆盖以下能力：
 
