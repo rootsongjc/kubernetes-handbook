@@ -12,7 +12,6 @@ title: Kubernetes 架构与生态：从云原生到 AI 原生基础设施的构�
 date: 2017-03-15T00:00:00+08:00
 icon: kubernetes
 icon-pack: custom
-cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/banner.webp
 parts:
     - id: part-i
       title: "Part I · 基础架构与核心抽象"
