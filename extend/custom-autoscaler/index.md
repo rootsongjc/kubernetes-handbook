@@ -5,7 +5,6 @@ date: 2025-10-27T20:10:00+08:00
 lastmod: 2025-10-27T10:07:58.539Z
 description: 自定义 Pod 自动扩缩容器让你基于业务指标灵活定义扩缩容策略，突破标准 HPA 的局限，实现更智能的资源管理。
 slug: custom-autoscaler
-cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/custom-autoscaler/banner.webp
 social_title: 你真的了解 Kubernetes 的自定义自动扩缩容吗？
 ---
 

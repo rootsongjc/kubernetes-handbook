@@ -4,7 +4,6 @@ description: 边缘计算是一种将计算资源和数据处理能力部署在�
 weight: 1
 linktitle: 概述
 lastmod: 2025-11-03T16:49:44.539Z
-cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/overview/banner.webp
 social_title: 边缘计算和 Kubernetes 如何结合？一文看懂主流方案
 ---
 
