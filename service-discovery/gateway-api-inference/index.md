@@ -4,6 +4,7 @@ linkTitle: Gateway API 推理扩展
 weight: 43
 slug: gateway-api-inference
 date: 2025-10-20T05:19:44.956Z
+description: 系统介绍 Kubernetes Gateway API Inference Extension 的架构与核心组件、关键资源与请求处理流程，并解析推理调度算法与 AI 流量管理最佳实践。
 lastmod: 2025-10-27T18:14:39.810Z
 ---
 

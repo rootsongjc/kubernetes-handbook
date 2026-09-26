@@ -95,4 +95,3 @@ lastmod: 2025-10-27T17:37:55.987Z
 
 - [CNCF Cloud Native Definition v1.0 - github.com](https://github.com/cncf/toc/blob/main/DEFINITION.md)
 - [Cloud Native Landscape - landscape.cncf.io](https://landscape.cncf.io/)
-- [云原生关乎文化，而不是容器 - jimmysong.io](https://jimmysong.io/trans/cloud-native-culture-not-container/)
