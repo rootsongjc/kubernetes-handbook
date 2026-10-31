@@ -15,39 +15,7 @@ Kubernetes 通过多层安全机制保护集群、资源与通信安全。本文
 
 Kubernetes 安全体系由多层机制协同实现，每层针对不同安全目标提供防护能力。
 
-```mermaid "Kubernetes 安全架构分层"
-flowchart TD
-    subgraph "Security Layers"
-        A["Authentication"] --> B["Authorization"]
-        B --> C["Admission Control"]
-        C --> D["API Server"]
-        D --> E["etcd (Encrypted)"]
-    end
-    subgraph "Authentication Methods"
-        F["X.509 Certificates"]
-        G["Service Account Tokens"]
-        H["OpenID Connect"]
-        I["Webhook Authentication"]
-        J["Bootstrap Tokens"]
-    end
-    subgraph "Authorization Modes"
-        K["RBAC"]
-        L["ABAC"]
-        M["Node"]
-        N["Webhook"]
-    end
-    subgraph "Admission Controllers"
-        O["Mutating Controllers"]
-        P["Validating Controllers"]
-    end
-
-    A --- F & G & H & I & J
-    B --- K & L & M & N
-    C --- O & P
-```
-
-![Kubernetes 安全架构分层](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/121d67c549545b8c53fd7d367ca93f62.svg)
-{width=1920 height=1146}
+![Kubernetes 安全架构分层](security-layers.svg)
 
 ## 认证（Authentication）
 
@@ -83,47 +51,7 @@ Kubernetes 支持多种认证方式，可同时启用：
 
 下图展示了认证到数据持久化的完整流程：
 
-```mermaid "Kubernetes 认证与访问控制流程"
-sequenceDiagram
-    participant Client
-    participant APIServer as "API Server"
-    participant Auth as "Authentication Module(s)"
-    participant Authz as "Authorization Module"
-    participant AdmCtrl as "Admission Controllers"
-    participant etcd
-
-    Client->>APIServer: 请求（含凭证）
-    APIServer->>Auth: 验证凭证
-
-    alt 认证成功
-        Auth->>APIServer: 返回身份信息
-        APIServer->>Authz: 权限检查
-
-        alt 鉴权成功
-            APIServer->>AdmCtrl: 准入校验/变更
-
-            alt 准入通过
-                APIServer->>etcd: 持久化请求
-                etcd->>APIServer: 响应
-                APIServer->>Client: 响应
-            else 准入拒绝
-                AdmCtrl->>APIServer: 拒绝
-                APIServer->>Client: 403 Forbidden
-            end
-
-        else 鉴权失败
-            Authz->>APIServer: 拒绝
-            APIServer->>Client: 403 Forbidden
-        end
-
-    else 认证失败
-        Auth->>APIServer: 拒绝
-        APIServer->>Client: 401 Unauthorized
-    end
-```
-
-![Kubernetes 认证与访问控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/a05361f9ac2f66e663612be4229c8d8b.svg)
-{width=1920 height=1582}
+![Kubernetes 认证与访问控制流程](access-control-sequence.svg)
 
 ## 鉴权（Authorization）
 
@@ -150,31 +78,7 @@ RBAC 是主流鉴权方式，核心对象包括：
 - **RoleBinding**：将 Role 绑定到用户/组/服务账号（命名空间内）
 - **ClusterRoleBinding**：将 ClusterRole 绑定到用户/组/服务账号（全局）
 
-```mermaid "RBAC 组件关系"
-flowchart TD
-    subgraph "RBAC Components"
-        A["Role/ClusterRole"] -->|references| B["Permissions"]
-        C["RoleBinding/ClusterRoleBinding"] -->|references| A
-        C -->|binds to| D["Subjects"]
-    end
-
-    subgraph "Permissions"
-        B -->|consist of| E["Rules"]
-        E -->|specify| F["APIGroups"]
-        E -->|specify| G["Resources"]
-        E -->|specify| H["Verbs"]
-        E -->|optionally specify| I["ResourceNames"]
-    end
-
-    subgraph "Subjects"
-        D -->|may be| J["Users"]
-        D -->|may be| K["Groups"]
-        D -->|may be| L["ServiceAccounts"]
-    end
-```
-
-![RBAC 组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/820e7d0c461aa99f308751d0bec739db.svg)
-{width=1920 height=1315}
+![RBAC 组件关系](rbac-object-model.svg)
 
 #### RBAC 配置示例
 
@@ -218,33 +122,7 @@ flowchart TD
 
 准入控制器在认证与鉴权后、对象持久化前拦截请求，可校验或修改资源。
 
-```mermaid "API 请求准入控制流程"
-flowchart TD
-    subgraph "API Request Flow"
-        A["API Request"] --> B["Authentication"]
-        B --> C["Authorization"]
-        C --> D["Mutating Admission"]
-        D --> E["Object Schema Validation"]
-        E --> F["Validating Admission"]
-        F --> G["Persistence to etcd"]
-    end
-
-    subgraph "Admission Controllers"
-        H["MutatingAdmissionWebhook"]
-        I["ValidatingAdmissionWebhook"]
-        J["PodSecurity"]
-        K["ResourceQuota"]
-        L["LimitRanger"]
-        M["ServiceAccount"]
-        N["Other Controllers..."]
-    end
-
-    D --- H
-    F --- I & J & K & L & M & N
-```
-
-![API 请求准入控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/4470cb075382335647d75d233ff459fb.svg)
-{width=2513 height=1193}
+![API 请求准入控制流程](admission-control-flow.svg)
 
 ### 准入控制器类型
 
@@ -315,33 +193,7 @@ resources:
 
 KMS 提供信封加密，数据密钥（DEK）由主密钥（KEK）加密，主密钥存储于外部 KMS。
 
-```mermaid "KMS 信封加密流程"
-flowchart TD
-    subgraph "Envelope Encryption"
-        A["Data"] -->|用 DEK 加密| B["Data Encryption Key (DEK)"]
-        B -->|用 KEK 加密| C["Key Encryption Key (KEK)"]
-        C -->|存储于| D["外部 KMS"]
-    end
-
-    subgraph "Encryption Flow"
-        E["写入请求"] -->|1. 生成 DEK| F["API Server"]
-        F -->|2. 用 DEK 加密数据| G["加密数据"]
-        F -->|3. 用 KEK 加密 DEK| H["加密 DEK"]
-        G -->|4. 存储| I["etcd"]
-        H -->|4. 与数据一同存储| I
-    end
-
-    subgraph "Decryption Flow"
-        J["读取请求"] --> K["API Server"]
-        K -->|1. 获取加密数据和 DEK| I
-        K -->|2. 请求 KMS 解密 DEK| D
-        K -->|3. 用 DEK 解密数据| L["明文数据"]
-        L -->|4. 返回| M["响应"]
-    end
-```
-
-![KMS 信封加密流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/5c21e87fcab6444db3b3040370dd7394.svg)
-{width=1920 height=1410}
+![KMS 信封加密流程](kms-envelope-encryption.svg)
 
 ## 证书管理
 
@@ -351,26 +203,7 @@ Kubernetes 广泛使用 X.509 证书进行认证。CSR API 支持自动化证书
 
 CSR 资源用于请求指定签名者签发证书，流程如下：
 
-```mermaid "证书签名请求流程"
-sequenceDiagram
-    participant User
-    participant API as "API Server"
-    participant Ctrl as "Controller Manager"
-    participant CSR as "CSR Resource"
-
-    User->>API: 创建 CSR 资源
-    API->>CSR: 存储 CSR
-    User->>API: 审批 CSR
-    API->>CSR: 更新 status.conditions
-    Ctrl->>CSR: 监听已审批 CSR
-    Ctrl->>Ctrl: 签发证书
-    Ctrl->>CSR: 存储证书
-    User->>API: 获取 CSR
-    API->>User: 返回签发证书
-```
-
-![证书签名请求流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/08f62257754b53bcfd36bd8ae395c096.svg)
-{width=1920 height=1373}
+![证书签名请求流程](csr-signing-sequence.svg)
 
 ### 内置签名者
 
@@ -404,17 +237,7 @@ RBAC 可结合命名空间实现细粒度权限控制，A 命名空间的 RoleBi
 
 Node authorizer 专为 kubelet 设计，仅授权其访问本节点及相关资源。
 
-```mermaid "节点鉴权流程"
-flowchart TD
-    subgraph "Node Authorization"
-        A["Kubelet"] -->|"以 system:node:{nodeName} 身份认证"| B["API Server"]
-        B -->|"Node authorizer 检查权限"| C["节点资源"]
-        C -->|"仅限"| D["本节点、绑定 Pod、状态、Secrets 等"]
-    end
-```
-
-![节点鉴权流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/overview/e2b5a984360a23b3b46047823512bb55.svg)
-{width=1920 height=234}
+![节点鉴权流程](node-authorization.svg)
 
 ### kubelet 认证与授权
 

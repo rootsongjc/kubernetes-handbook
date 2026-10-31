@@ -28,45 +28,7 @@ Operator SDK 基于 Kubernetes controller-runtime 库构建，并通过与 Opera
 
 Operator SDK 的架构基于 controller-runtime，并通过插件和 OLM 集成实现多样化 Operator 支持。
 
-```mermaid "Operator SDK 总体架构"
-graph TD
-    subgraph "Operator SDK 核心"
-        CLI["CLI 和插件系统"]
-        ProjectUtils["项目工具"]
-        BuildSystem["构建系统"]
-    end
-
-    subgraph "Operator 实现类型"
-        Go["Go-based Operators"]
-        Ansible["Ansible-based Operators"]
-        Helm["Helm-based Operators"]
-    end
-
-    subgraph "Operator 生命周期管理"
-        OLM["Operator Lifecycle Manager"]
-        Bundle["Bundle 和包管理"]
-        Scorecard["Scorecard 测试"]
-    end
-
-    CLI --> Go
-    CLI --> Ansible
-    CLI --> Helm
-    CLI --> Bundle
-    CLI --> Scorecard
-
-    ProjectUtils --> CLI
-    BuildSystem --> CLI
-
-    Go --> OLM
-    Ansible --> OLM
-    Helm --> OLM
-
-    Bundle --> OLM
-    Scorecard --> OLM
-```
-
-![Operator SDK 总体架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/operator-sdk/6f6a352096e2df667037a13b42057738.svg)
-{width=1920 height=976}
+![Operator SDK 总体架构](operator-sdk-architecture.svg)
 
 ## 安装 Operator SDK
 
@@ -118,43 +80,7 @@ operator-sdk version
 
 Operator SDK CLI 采用模块化、插件化架构，支持多种 Operator 类型和技术。下图展示了插件系统的结构：
 
-```mermaid "Operator SDK CLI 插件系统"
-graph TD
-    CLI["operator-sdk CLI"] --> Plugins["插件系统"]
-
-    Plugins --> GoBundle["Go 插件包"]
-    Plugins --> AnsibleBundle["Ansible 插件包"]
-    Plugins --> HelmBundle["Helm 插件包"]
-    Plugins --> DeployImageBundle["Deploy Image 插件包"]
-
-    GoBundle --> KustomizeGo["Kustomize 插件"]
-    GoBundle --> GoV4["Go V4 插件"]
-    GoBundle --> ManifestsGo["Manifests 插件"]
-    GoBundle --> ScorecardGo["Scorecard 插件"]
-
-    AnsibleBundle --> KustomizeAnsible["Kustomize 插件"]
-    AnsibleBundle --> AnsibleV1["Ansible V1 插件"]
-    AnsibleBundle --> ManifestsAnsible["Manifests 插件"]
-    AnsibleBundle --> ScorecardAnsible["Scorecard 插件"]
-
-    HelmBundle --> KustomizeHelm["Kustomize 插件"]
-    HelmBundle --> HelmV1["Helm V1 插件"]
-    HelmBundle --> ManifestsHelm["Manifests 插件"]
-    HelmBundle --> ScorecardHelm["Scorecard 插件"]
-
-    CLI --> Commands["核心命令"]
-
-    Commands --> Bundle["bundle"]
-    Commands --> Cleanup["cleanup"]
-    Commands --> Generate["generate"]
-    Commands --> OLMCmd["olm"]
-    Commands --> Run["run"]
-    Commands --> Scorecard["scorecard"]
-    Commands --> PkgManToBundle["pkgmantobundle"]
-```
-
-![Operator SDK CLI 插件系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/operator-sdk/9bbecdfe7a954d6606af1da1b3045a7e.svg)
-{width=4289 height=560}
+![Operator SDK CLI 插件系统](cli-plugin-system.svg)
 
 每个插件包负责为特定的 Operator 实现类型（Go、Ansible 或 Helm）提供功能。核心命令与所有 Operator 类型配合，提供一致的功能体验。
 
@@ -241,52 +167,13 @@ Helm Operator 基于现有 Helm charts，适合已有 Helm charts 的应用，�
 
 Operator SDK 与 OLM 深度集成，实现 Operator 的打包、部署和生命周期管理。下图展示了典型的集成流程：
 
-```mermaid "Operator SDK 与 OLM 集成流程"
-graph LR
-    subgraph "Bundle 创建"
-        MakeBundle["make bundle"] --> Manifests["生成 Manifests"]
-        Manifests --> CSV["ClusterServiceVersion"]
-        Manifests --> CRDs["自定义资源定义"]
-    end
-
-    subgraph "OLM 部署"
-        CSV --> BundleImage["Bundle 镜像"]
-        CRDs --> BundleImage
-
-        BundleImage --> RunBundle["operator-sdk run bundle"]
-        RunBundle --> CatalogSource["CatalogSource"]
-        CatalogSource --> Subscription["Subscription"]
-        Subscription --> InstallPlan["InstallPlan"]
-        InstallPlan --> DeployedOperator["已部署的 Operator"]
-    end
-
-    subgraph "验证"
-        BundleImage --> Scorecard["operator-sdk scorecard"]
-        Scorecard --> BasicTests["基础测试"]
-        Scorecard --> OLMTests["OLM 测试"]
-        Scorecard --> CustomTests["自定义测试"]
-    end
-```
-
-![Operator SDK 与 OLM 集成流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/operator-sdk/302346304b6e530e531145aba14b41f4.svg)
-{width=2774 height=761}
+![Operator SDK 与 OLM 集成流程](olm-integration-flow.svg)
 
 ## 开发工作流
 
 Operator SDK 推荐的开发流程如下：
 
-```mermaid "Operator SDK 开发工作流"
-graph LR
-    Init["operator-sdk init"] --> CreateAPI["operator-sdk create api"]
-    CreateAPI --> Implement["实现控制器逻辑"]
-    Implement --> Test["本地测试"]
-    Test --> Bundle["make bundle"]
-    Bundle --> Deploy["operator-sdk run bundle"]
-    Deploy --> Validate["operator-sdk scorecard"]
-```
-
-![Operator SDK 开发工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/operator-sdk/87b070d7afe5b98fa4f8cb064a70174a.svg)
-{width=2010 height=77}
+![Operator SDK 开发工作流](development-workflow.svg)
 
 ## 开发 Operator
 
@@ -430,29 +317,7 @@ Operator SDK 依赖 controller-runtime、kubebuilder、kustomize、OLM 及 Helm/
 
 ### 测试策略
 
-```mermaid "Operator SDK 测试策略"
-graph TD
-    subgraph "测试层次"
-        UNIT["单元测试<br/>controller 逻辑<br/>80%"]
-        INTEGRATION["集成测试<br/>组件交互<br/>15%"]
-        E2E["端到端测试<br/>完整用户流程<br/>5%"]
-    end
-
-    subgraph "测试工具"
-        ENVTEST["envtest<br/>模拟 Kubernetes API"]
-        KIND["kind<br/>轻量级集群"]
-        KUTTL["KUTTL<br/>声明式测试"]
-        CHAOS["Chaos Mesh<br/>故障注入"]
-    end
-
-    UNIT --> ENVTEST
-    INTEGRATION --> KIND
-    E2E --> KUTTL
-    E2E --> CHAOS
-```
-
-![Operator SDK 测试策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/operator-sdk/6c6e4711ac2ac41e4feea1b3f1e73159.svg)
-{width=1920 height=931}
+![Operator SDK 测试策略](testing-strategy.svg)
 
 ### 打包和分发
 

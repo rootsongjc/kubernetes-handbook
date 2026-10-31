@@ -22,27 +22,7 @@ kubeadm 是官方推荐的 Kubernetes 集群生命周期管理工具，旨在以
 
 下图展示了 kubeadm 在集群生命周期中的作用：
 
-```mermaid "kubeadm 生命周期流程"
-flowchart TD
-    subgraph "Cluster Lifecycle with kubeadm"
-        Init["kubeadm init"]
-        Join["kubeadm join"]
-        Upgrade["kubeadm upgrade"]
-        Reset["kubeadm reset"]
-        Certs["kubeadm certs"]
-        Config["kubeadm config"]
-        
-        Init -->|"Creates"| Cluster
-        Join -->|"Adds nodes to"| Cluster
-        Upgrade -->|"Updates"| Cluster
-        Reset -->|"Reverts changes to"| Node
-        Certs -->|"Manages certificates in"| Cluster
-        Config -->|"Configures"| Cluster
-    end
-```
-
-![kubeadm 生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/170fa3521edb579a131cba33e80f38f1.svg)
-{width=1920 height=2310}
+![kubeadm 在集群生命周期中的作用](kubeadm-lifecycle.svg)
 
 ## 集群创建流程
 
@@ -66,23 +46,7 @@ flowchart TD
 
 kubeadm 不会自动安装 kubelet 或 kubectl，需手动安装。下图展示了安装流程：
 
-```mermaid "kubeadm 组件安装流程"
-flowchart LR
-    subgraph "Installation Process"
-        direction LR
-        InstallRuntime["安装容器运行时"]
-        InstallKube["安装 kubeadm、kubelet、kubectl"]
-        ConfigRuntime["配置容器运行时"]
-        CgroupConfig["配置 cgroup driver"]
-        
-        InstallRuntime --> ConfigRuntime
-        ConfigRuntime --> InstallKube
-        InstallKube --> CgroupConfig
-    end
-```
-
-![kubeadm 组件安装流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/3e242dafa02d2c033f21cb077272f60e.svg)
-{width=1920 height=281}
+![kubeadm 组件安装流程](kubeadm-install-steps.svg)
 
 ### 容器运行时配置
 
@@ -101,28 +65,7 @@ kubelet 通过 CRI（Container Runtime Interface）与容器运行时通信。�
 
 `kubeadm init` 命令用于初始化控制平面节点，主要步骤如下：
 
-```mermaid "kubeadm init 工作流"
-flowchart TD
-    subgraph "kubeadm init Workflow"
-        PreFlight["预检"]
-        Certs["生成证书"]
-        KubeConfig["生成 kubeconfig"]
-        StaticPods["生成控制面组件清单"]
-        RBAC["RBAC 配置"]
-        Bootstrap["生成引导令牌"]
-        Addons["安装 CoreDNS 和 kube-proxy"]
-        
-        PreFlight --> Certs
-        Certs --> KubeConfig
-        KubeConfig --> StaticPods
-        StaticPods --> RBAC
-        RBAC --> Bootstrap
-        Bootstrap --> Addons
-    end
-```
-
-![kubeadm init 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/41cf6c8909c2029f6bc4c69b100805ca.svg)
-{width=2117 height=177}
+![kubeadm init 工作流](kubeadm-init-workflow.svg)
 
 基础初始化命令：
 
@@ -140,22 +83,7 @@ kubeadm init --pod-network-cidr=192.168.0.0/16 --kubernetes-version=v1.26.0 --co
 
 控制平面初始化后，可通过 `kubeadm join` 添加工作节点。下图展示了节点加入流程：
 
-```mermaid "工作节点加入流程"
-flowchart TD
-    subgraph "Worker Node Join Process"
-        Discovery["集群信息发现"]
-        TLSBootstrap["TLS 引导"]
-        KubeletConfig["kubelet 配置"]
-        NodeRegistration["节点注册"]
-        
-        Discovery --> TLSBootstrap
-        TLSBootstrap --> KubeletConfig
-        KubeletConfig --> NodeRegistration
-    end
-```
-
-![工作节点加入流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/eceb5554f1e42bf8bfadaac2ab21a07f.svg)
-{width=1920 height=305}
+![工作节点加入流程](worker-join-steps.svg)
 
 加入命令示例：
 
@@ -190,21 +118,7 @@ Kubernetes 依赖 PKI 证书保障安全通信。kubeadm 负责控制面组件�
 
 kubeadm 支持升级时自动续期，也可手动续期。下图展示了证书管理流程：
 
-```mermaid "证书管理流程"
-flowchart TD
-    subgraph "Certificate Management Workflow"
-        Check["kubeadm certs check-expiration"]
-        Renew["kubeadm certs renew <certificate name>"]
-        RenewAll["kubeadm certs renew all"]
-        
-        Check -->|"显示过期时间"| Decision{"需要续期？"}
-        Decision -->|"全部续期"| RenewAll
-        Decision -->|"指定证书"| Renew
-    end
-```
-
-![证书管理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/66be1e6dad19163bb9f5d846a06505bf.svg)
-{width=1920 height=566}
+![证书管理流程](cert-management-flow.svg)
 
 检查证书有效期：
 
@@ -222,30 +136,7 @@ kubeadm certs renew all
 
 升级 Kubernetes 集群需多步操作，建议严格按照官方流程执行。下图展示了升级流程：
 
-```mermaid "集群升级流程"
-flowchart TD
-    subgraph "Cluster Upgrade Workflow"
-        UpgradeKubeadm["升级 kubeadm"]
-        Plan["kubeadm upgrade plan"]
-        ApplyCP1["首控制平面节点 kubeadm upgrade apply"]
-        DrainCP1["驱逐控制平面节点"]
-        UpgradeKubeletCP1["升级 kubelet"]
-        UncordonCP1["恢复调度"]
-        UpgradeRemainingCP["升级其他控制平面节点"]
-        UpgradeWorkers["升级工作节点"]
-        
-        UpgradeKubeadm --> Plan
-        Plan --> ApplyCP1
-        ApplyCP1 --> DrainCP1
-        DrainCP1 --> UpgradeKubeletCP1
-        UpgradeKubeletCP1 --> UncordonCP1
-        UncordonCP1 --> UpgradeRemainingCP
-        UpgradeRemainingCP --> UpgradeWorkers
-    end
-```
-
-![集群升级流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/64f3b576eefc4732c63396a1de275a4c.svg)
-{width=2575 height=198}
+![集群升级流程](cluster-upgrade-workflow.svg)
 
 ### 控制平面节点升级步骤
 
@@ -311,49 +202,7 @@ flowchart TD
 
 kubeadm 支持两种高可用拓扑：
 
-```mermaid "高可用集群拓扑"
-flowchart TD
-    subgraph "High Availability Topologies"
-        subgraph "Stacked Control Plane"
-            CP1["控制平面 + etcd"]
-            CP2["控制平面 + etcd"]
-            CP3["控制平面 + etcd"]
-            
-            CP1 ---|"etcd 通信"| CP2
-            CP2 ---|"etcd 通信"| CP3
-            CP3 ---|"etcd 通信"| CP1
-        end
-        
-        subgraph "External etcd"
-            ControlPlane1["控制平面"]
-            ControlPlane2["控制平面"]
-            ControlPlane3["控制平面"]
-            
-            etcd1["etcd 节点"]
-            etcd2["etcd 节点"]
-            etcd3["etcd 节点"]
-            
-            ControlPlane1 -->|"连接"| etcd1
-            ControlPlane1 -->|"连接"| etcd2
-            ControlPlane1 -->|"连接"| etcd3
-            
-            ControlPlane2 -->|"连接"| etcd1
-            ControlPlane2 -->|"连接"| etcd2
-            ControlPlane2 -->|"连接"| etcd3
-            
-            ControlPlane3 -->|"连接"| etcd1
-            ControlPlane3 -->|"连接"| etcd2
-            ControlPlane3 -->|"连接"| etcd3
-            
-            etcd1 ---|"etcd 通信"| etcd2
-            etcd2 ---|"etcd 通信"| etcd3
-            etcd3 ---|"etcd 通信"| etcd1
-        end
-    end
-```
-
-![高可用集群拓扑](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/cluster-lifecyle-management/4a53ebf43e453b1f33a66d3469feba5e.svg)
-{width=1920 height=3620}
+![kubeadm 支持的两种高可用拓扑](ha-topologies.svg)
 
 高可用部署需满足：
 

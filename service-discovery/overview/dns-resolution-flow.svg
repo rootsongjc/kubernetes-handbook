@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2100" height="940" viewBox="0 0 1050 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="dnsresz-title dnsresz-desc" id="dns-resolution-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="dnsresz-title">Kubernetes DNS 解析流程</title>
+<desc id="dnsresz-desc">Pod 向集群 DNS 服务 CoreDNS 发起查询；CoreDNS 根据名称返回 Service 的 A 记录或 SRV 记录，或返回 Pod 的 A 记录。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #dns-resolution-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #dns-resolution-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #dns-resolution-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#dns-resolution-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="dns-resolution-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="590" y="84" width="420" height="212" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="606" y="106" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Service DNS 记录</text>
+<rect x="590" y="312" width="420" height="124" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="606" y="334" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod DNS 记录</text>
+<path d="M 194 259 L 296 259" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dns-resolution-flow-m-6b7280)"/>
+<rect x="207.04" y="236.4" width="75.92" height="16.6" style="fill:#ffffff"/>
+<text x="245" y="248" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">1. DNS 查询</text>
+<path d="M 524 259 L 548 259 Q 556 259 556 251 L 556 160 Q 556 152 564 152 L 602 152" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dns-resolution-flow-m-6b7280)"/>
+<path d="M 524 259 L 550.5 259 Q 556 259 556 253.5 L 556 253.5 Q 556 248 561.5 248 L 602 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dns-resolution-flow-m-6b7280)"/>
+<path d="M 524 259 L 548 259 Q 556 259 556 267 L 556 380 Q 556 388 564 388 L 602 388" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dns-resolution-flow-m-6b7280)"/>
+<rect x="40" y="227" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(44,241) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="138" y="255.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="138" y="272.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">发起解析的客户端</text>
+<rect x="300" y="219" width="220" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="300" y="219" width="220" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(346.56,241) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3" /></g>
+<text x="433" y="255.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CoreDNS</text>
+<text x="433" y="272.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">集群 DNS 服务</text>
+<rect x="606" y="120" width="388" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="800" y="148.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">A 记录 → 10.96.0.10</text>
+<text x="800" y="165.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">my-service.my-namespace.svc.cluster.local</text>
+<rect x="616" y="111" width="86" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="659" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">2a · SERVICE</text>
+<rect x="606" y="216" width="388" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="800" y="245.275" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">SRV 记录（命名端口）</text>
+<text x="800" y="261.225" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">_http._tcp.my-service.my-namespace.svc.cluster.local</text>
+<rect x="616" y="207" width="58" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="645" y="220" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">2b · SRV</text>
+<rect x="606" y="356" width="388" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="800" y="384.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">A 记录 → 10.244.0.5</text>
+<text x="800" y="401.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10-244-0-5.my-namespace.pod.cluster.local</text>
+<rect x="616" y="347" width="58" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="645" y="360" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">2c · POD</text>
+<text x="525" y="458" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2a / 2b / 2c：CoreDNS 按查询名称分别返回 Service A 记录、SRV 记录或 Pod A 记录。</text>
+<text x="525" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes DNS 解析流程</text>
+</g>
+</svg>

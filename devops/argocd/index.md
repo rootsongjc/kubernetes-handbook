@@ -29,32 +29,7 @@ Argo CD 遵循 GitOps 原则，其中应用定义、配置和环境是声明式�
 
 Argo CD 采用微服务架构运行在 Kubernetes 上。下图展示了主要组件及其交互关系，有助于理解整体系统设计。
 
-```mermaid "Argo CD 核心架构"
-graph TD
-    User["User/Client"] -->|"interacts with"| CLI["CLI Commands"]
-    User -->|"interacts with"| UI["Web UI"]
-    CLI -->|"uses"| APIServer["API Server"]
-    UI -->|"uses"| APIServer
-    subgraph "Core Components"
-        APIServer -->|"creates/manages"| Applications["Application Resources"]
-        APIServer -->|"uses"| Authentication["Auth Service"]
-        APIServer -->|"validates"| RBACEnforcer["RBAC Enforcer"]
-        AppController["Application Controller"] -->|"watches"| Applications
-        AppController -->|"reconciles state with"| K8sClusters["Kubernetes Clusters"]
-        AppController -->|"uses"| LiveCache["Live State Cache"]
-        RepoServer["Repository Server"] -->|"generates manifests from"| GitRepos["Git Repositories"]
-        RepoServer -->|"provides manifests to"| AppController
-        RepoServer -->|"provides manifests to"| APIServer
-        Redis["Redis"] <-->|"caching"| RepoServer
-        Redis <-->|"caching"| APIServer
-        Redis <-->|"caching"| AppController
-        DexServer["Dex Server"] -->|"provides auth to"| APIServer
-    end
-    Applications -->|"deployed to"| K8sClusters
-```
-
-![Argo CD 核心架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/c7e3a1ff689f6911063a54ce62733fad.svg)
-{width=2010 height=917}
+![Argo CD 核心架构：用户经 CLI / Web UI 调用 API Server，API Server 与 Application Controller 共用 Repository Server 与 Redis，Controller 把 Application 资源协调到目标集群](argocd-core-architecture.svg)
 
 ## 核心组件
 
@@ -74,21 +49,7 @@ API Server 为 Web UI、CLI 和 CI/CD 系统提供 gRPC/REST API，是用户和�
 
 API Server 的配置通过 `argocd-cmd-params-cm` ConfigMap 处理，包括认证设置、TLS 配置、Redis 连接等。
 
-```mermaid "API Server 组件结构"
-graph TD
-    subgraph "API Server Component"
-        Server["argocd-server"] -->|"handles"| REST["REST API"]
-        Server -->|"handles"| GRPC["gRPC API"]
-        Server -->|"serves"| WebUI["Web UI"]
-        Server -->|"uses"| DexClient["Dex Client"]
-        Server -->|"uses"| RepoClient["Repository Client"]
-        Server -->|"uses"| K8sClient["Kubernetes Client"]
-        Server -->|"manages"| AppResources["Application Resources"]
-    end
-```
-
-![API Server 组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/b36d2b71b2a0efe3e510239dde0e62e4.svg)
-{width=1920 height=2683}
+![API Server 组件结构：argocd-server 对外处理 REST / gRPC API 并提供 Web UI，对内使用 Dex、Repository、Kubernetes 客户端并管理 Application 资源](api-server-component.svg)
 
 ### Application Controller (argocd-application-controller)
 
@@ -104,22 +65,7 @@ Application Controller 持续监控应用并比较实际状态与期望目标状
 
 控制器通过 ConfigMap 配置，包括协调时机、自愈设置、并行限制等。
 
-```mermaid "Application Controller 组件结构"
-graph TD
-    subgraph "Application Controller"
-        Controller["argocd-application-controller"] -->|"watches"| Applications["Application Resources"]
-        Controller -->|"uses"| RepoClient["Repository Client"]
-        Controller -->|"uses"| K8sClient["Kubernetes Client"]
-        Controller -->|"reconciles"| StateComp["State Comparison"]
-        StateComp -->|"compares"| LiveState["Live State"]
-        StateComp -->|"compares"| DesiredState["Desired State"]
-        Controller -->|"maintains"| Cache["Live State Cache"]
-        Controller -->|"performs"| SyncOps["Sync Operations"]
-    end
-```
-
-![Application Controller 组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/e2ea333fad6eb19f798703c3cd270daa.svg)
-{width=1920 height=1403}
+![Application Controller 组件结构：监听 Application 资源，使用 Repository 与 Kubernetes 客户端，维护 Live State Cache，通过状态比较执行同步操作](application-controller-component.svg)
 
 ### Repository Server (argocd-repo-server)
 
@@ -133,23 +79,7 @@ Repository Server 负责维护 Git 仓库的本地缓存并生成 Kubernetes man
 - 为其他组件提供 manifest 生成服务
 - 与配置管理插件（CMPs）集成
 
-```mermaid "Repository Server 组件结构"
-graph TD
-    subgraph "Repository Server"
-        RepoServer["argocd-repo-server"] -->|"clones"| GitRepos["Git Repositories"]
-        RepoServer -->|"uses"| Tools["Config Management Tools"]
-        Tools -->|"includes"| Helm["Helm"]
-        Tools -->|"includes"| Kustomize["Kustomize"]
-        Tools -->|"includes"| Jsonnet["Jsonnet"]
-        Tools -->|"includes"| CMPs["Config Management Plugins"]
-        RepoServer -->|"caches"| RepoCache["Repository Cache"]
-        RepoServer -->|"generates"| Manifests["Kubernetes Manifests"]
-        RepoServer -->|"serves"| ManifestAPI["Manifest API"]
-    end
-```
-
-![Repository Server 组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/f4229a46dd4a467714703828106407b1.svg)
-{width=1920 height=1241}
+![Repository Server 组件结构：克隆 Git 仓库，使用 Helm、Kustomize、Jsonnet 与 CMP 插件生成 manifests，维护仓库缓存并通过 Manifest API 提供](repository-server-component.svg)
 
 ### Redis
 
@@ -165,20 +95,7 @@ Dex Server 是一个 OpenID Connect (OIDC) 提供商，与外部身份提供商�
 - 提供基于 OIDC 的认证
 - 支持单点登录（SSO）
 
-```mermaid "Dex Server 认证流程"
-graph TD
-    subgraph "Dex Authentication"
-        DexServer["argocd-dex-server"] -->|"connects to"| IDPs["Identity Providers"]
-        IDPs -->|"includes"| LDAP["LDAP"]
-        IDPs -->|"includes"| SAML["SAML"]
-        IDPs -->|"includes"| OAuth["OAuth"]
-        IDPs -->|"includes"| GitHub["GitHub"]
-        DexServer -->|"provides tokens to"| ApiServer["API Server"]
-    end
-```
-
-![Dex Server 认证流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/2a1fc7ca0788159c14ed4ff5de3521a2.svg)
-{width=1920 height=1052}
+![Dex Server 认证流程：连接 LDAP、SAML、OAuth、GitHub 等身份提供商，并为 API Server 签发令牌](dex-authentication-flow.svg)
 
 ## 附加组件
 
@@ -193,21 +110,7 @@ ApplicationSet Controller 通过模板自动化创建 Application 资源，简�
 - 从模板自动化创建 Application 资源
 - 支持多种生成器（List、Cluster、Git、SCM Provider）
 
-```mermaid "ApplicationSet Controller 结构"
-graph TD
-    subgraph "ApplicationSet Controller"
-        AppSetController["argocd-applicationset-controller"] -->|"watches"| AppSets["ApplicationSet Resources"]
-        AppSetController -->|"generates"| Applications["Application Resources"]
-        AppSetController -->|"uses"| Generators["Generators"]
-        Generators -->|"includes"| ListGen["List Generator"]
-        Generators -->|"includes"| ClusterGen["Cluster Generator"]
-        Generators -->|"includes"| GitGen["Git Generator"]
-        Generators -->|"includes"| SCMGen["SCM Provider Generator"]
-    end
-```
-
-![ApplicationSet Controller 结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/afed8c6c6b05cf3ea88c7c6e1ea07482.svg)
-{width=1920 height=996}
+![ApplicationSet Controller 结构：监听 ApplicationSet 资源，使用 List、Cluster、Git、SCM Provider 生成器生成 Application 资源](applicationset-controller-structure.svg)
 
 ### Notifications Controller
 
@@ -228,32 +131,7 @@ Application 资源是 Argo CD 的核心，表示已部署的应用实例，定�
 - `spec.syncPolicy`：控制自动同步行为
 - `spec.project`：此应用所属的项目
 
-```mermaid "Application 资源结构"
-classDiagram
-    class Application {
-        metadata: ObjectMeta
-        spec: ApplicationSpec
-        status: ApplicationStatus
-    }
-    class ApplicationSpec {
-        source: ApplicationSource
-        destination: ApplicationDestination
-        project: string
-        syncPolicy: SyncPolicy
-    }
-    class ApplicationSource {
-        repoURL: string
-        path: string
-        targetRevision: string
-        helm: HelmSpec
-        kustomize: KustomizeSpec
-    }
-    Application --> ApplicationSpec
-    ApplicationSpec --> ApplicationSource
-```
-
-![Application 资源结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/a74963d8093832659dcf87d55be2217c.svg)
-{width=1920 height=4400}
+![Application 资源结构：Application 通过 spec 引用 ApplicationSpec，ApplicationSpec 通过 source 引用 ApplicationSource](application-resource-class.svg)
 
 ### AppProject 资源
 
@@ -276,21 +154,7 @@ ApplicationSet 资源基于模板和生成器自动化创建 Application 资源�
 - `spec.generators`：定义如何为模板生成参数
 - `spec.template`：用于生成 Application 的应用模板
 
-```mermaid "ApplicationSet 资源结构"
-classDiagram
-    class ApplicationSet {
-        metadata: ObjectMeta
-        spec: ApplicationSetSpec
-    }
-    class ApplicationSetSpec {
-        generators: Generator[]
-        template: ApplicationTemplate
-    }
-    ApplicationSet --> ApplicationSetSpec
-```
-
-![ApplicationSet 资源结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argocd/6f11125e72cb6db2d147db6908734f48.svg)
-{width=1920 height=2414}
+![ApplicationSet 资源结构：ApplicationSet 通过 spec 引用包含 generators 与 template 的 ApplicationSetSpec](applicationset-resource-class.svg)
 
 ## GitOps 工作流
 

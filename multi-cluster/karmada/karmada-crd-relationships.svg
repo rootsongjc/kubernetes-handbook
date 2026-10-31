@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2400" height="968" viewBox="0 0 1200 484" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="karmadz-title karmadz-desc" id="karmada-crd-relationships-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="karmadz-title">Karmada 核心 CRD 之间的关系</title>
+<desc id="karmadz-desc">PropagationPolicy 与 ClusterPropagationPolicy 都通过 Placement 描述调度约束；ResourceBinding 与 ClusterResourceBinding 各自为每个目标集群创建一个或多个 Work。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #karmada-crd-relationships-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #karmada-crd-relationships-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #karmada-crd-relationships-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#karmada-crd-relationships-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="karmada-crd-relationships-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 165 241 L 165 273 Q 165 281 173 281 L 252 281 Q 260 281 260 289 L 260 323" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#karmada-crd-relationships-m-6b7280)"/>
+<rect x="190.58" y="289.5" width="65.42" height="15.55" style="fill:#ffffff"/>
+<text x="252" y="300.3" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">placement</text>
+<path d="M 455 241 L 455 273 Q 455 281 447 281 L 368 281 Q 360 281 360 289 L 360 323" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#karmada-crd-relationships-m-6b7280)"/>
+<rect x="364" y="289.5" width="65.42" height="15.55" style="fill:#ffffff"/>
+<text x="368" y="300.3" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">placement</text>
+<path d="M 745 207 L 745 273 Q 745 281 753 281 L 832 281 Q 840 281 840 289 L 840 323" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#karmada-crd-relationships-m-6b7280)"/>
+<rect x="758.04" y="284.4" width="77.96" height="15.55" style="fill:#ffffff"/>
+<text x="832" y="295.2" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">creates 1..*</text>
+<path d="M 1035 207 L 1035 273 Q 1035 281 1027 281 L 948 281 Q 940 281 940 289 L 940 323" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#karmada-crd-relationships-m-6b7280)"/>
+<rect x="944" y="284.4" width="77.96" height="15.55" style="fill:#ffffff"/>
+<text x="948" y="295.2" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">creates 1..*</text>
+<rect x="40" y="96" width="250" height="141" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="165" y="114" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">PropagationPolicy</text>
+<text x="165" y="129" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命名空间级传播策略</text>
+<line x1="40" y1="136" x2="290" y2="136" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="54" y="156" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ResourceSelectors[]</text>
+<text x="54" y="173" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Placement</text>
+<text x="54" y="190" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SchedulerName</text>
+<text x="54" y="207" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ PropagateDeps: bool</text>
+<text x="54" y="224" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Failover: FailoverBehavior</text>
+<rect x="330" y="96" width="250" height="141" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="455" y="114" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ClusterPropagationPolicy</text>
+<text x="455" y="129" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">集群级传播策略</text>
+<line x1="330" y1="136" x2="580" y2="136" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="344" y="156" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ResourceSelectors[]</text>
+<text x="344" y="173" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Placement</text>
+<text x="344" y="190" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SchedulerName</text>
+<text x="344" y="207" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ PropagateDeps: bool</text>
+<text x="344" y="224" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Failover: FailoverBehavior</text>
+<rect x="620" y="96" width="250" height="107" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="620" y="96" width="250" height="107" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="745" y="114" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ResourceBinding</text>
+<text x="745" y="129" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命名空间级绑定</text>
+<line x1="620" y1="136" x2="870" y2="136" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="634" y="156" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Resource: ObjectReference</text>
+<text x="634" y="173" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Clusters[]: TargetCluster</text>
+<text x="634" y="190" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ReplicaRequirements</text>
+<rect x="910" y="96" width="250" height="107" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1035" y="114" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ClusterResourceBinding</text>
+<text x="1035" y="129" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">集群级绑定</text>
+<line x1="910" y1="136" x2="1160" y2="136" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="924" y="156" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Resource: ObjectReference</text>
+<text x="924" y="173" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Clusters[]: TargetCluster</text>
+<text x="924" y="190" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ReplicaRequirements</text>
+<rect x="185" y="327" width="250" height="124" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="310" y="345" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Placement</text>
+<text x="310" y="360" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">调度约束</text>
+<line x1="185" y1="367" x2="435" y2="367" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="199" y="387" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ClusterAffinity</text>
+<text x="199" y="404" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SpreadConstraints[]</text>
+<text x="199" y="421" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ClusterTolerations[]</text>
+<text x="199" y="438" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ ReplicaScheduling</text>
+<rect x="765" y="327" width="250" height="90" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="890" y="345" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Work</text>
+<text x="890" y="360" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">下发到单个集群的资源清单</text>
+<line x1="765" y1="367" x2="1015" y2="367" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="779" y="387" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Manifests[]</text>
+<text x="779" y="404" style="fill:#1d1d1f" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Status: WorkStatus</text>
+<text x="600" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Karmada 核心 CRD 之间的关系</text>
+</g>
+</svg>

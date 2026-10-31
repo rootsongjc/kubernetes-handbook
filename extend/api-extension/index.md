@@ -38,16 +38,7 @@ Kubernetes 支持两种扩展 API 的方式，适用于不同的业务场景和�
 
 API Aggregation Layer 是 Kubernetes 在 v1.7 引入的机制，允许你注册一个**独立运行的 API Server**，并通过主 API Server 的 `/apis` 路径对外统一暴露。
 
-```mermaid "API 聚合层原理"
-flowchart LR
-    Client[kubectl / API Client]
-      --> APIServer[kube-apiserver]
-    APIServer -->|Proxy Request| APIService[External API Server]
-    APIService --> Data[Custom Resource Backend]
-```
-
-![API 聚合层原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/api-extension/17aba0a521b6c8382da8b61dab8ad781.svg)
-{width=1920 height=117}
+![API 聚合层原理：主 API Server 代理转发到外部 API Server](api-aggregation-principle.svg)
 
 当用户访问 `/apis/metrics.k8s.io/v1beta1` 时，主 API Server 会将请求**代理转发**给 `metrics-server` 服务。
 

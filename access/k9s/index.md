@@ -18,65 +18,11 @@ lastmod: 2025-10-19T08:07:28.186Z
 
 k9s 遵循清晰的架构模式，将 UI 展示、Kubernetes 资源访问和应用逻辑分离。下图展示了主要架构组件及其交互关系。
 
-```mermaid "k9s 架构总览"
-graph TD
-    User["User"] --> CLI["CLI/Cobra Commands"]
-    CLI --> App["K9s App"]
-    App --> Config["Configuration System"]
-    App --> UI["UI System"]
-    App --> K8sClient["Kubernetes Client"]
-    K8sClient --> K8sAPI["Kubernetes API"]
-    UI --> Views["Resource Views"]
-    UI --> Table["Table System"]
-    UI --> Menu["Menu"]
-    UI --> Prompt["Prompt"]
-    Views --> ResourceViewers["Resource Viewers"]
-    ResourceViewers --> DAOs["Data Access Objects"]
-    ResourceViewers --> Renderers["Renderers"]
-    DAOs --> K8sClient
-    Config --> Styles["Styles"]
-    Config --> Plugins["Plugins"]
-    Config --> HotKeys["HotKeys"]
-    Config --> Aliases["Aliases"]
-    subgraph "Core Components"
-        App
-        UI
-        K8sClient
-        Config
-    end
-    subgraph "Resource Management"
-        DAOs
-        Renderers
-        ResourceViewers
-    end
-```
-
-![k9s 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/2111a4f035efb9cb345475e43d536ea2.svg)
-{width=2762 height=1565}
+![k9s 架构总览：CLI、核心组件与资源管理](k9s-architecture-overview.svg)
 
 应用启动流程如下：
 
-```mermaid "k9s 应用启动流程"
-sequenceDiagram
-    participant Main
-    participant Cobra as "Cobra Command"
-    participant Config as "Configuration"
-    participant App
-    participant K8sClient
-    participant UI
-    Main->>Cobra: Execute()
-    Cobra->>Cobra: run()
-    Cobra->>Config: loadConfiguration()
-    Config->>K8sClient: InitConnection()
-    Cobra->>App: NewApp(cfg)
-    App->>App: Init(version, refreshRate)
-    App->>K8sClient: Connect to cluster
-    App->>UI: Setup Terminal UI
-    App->>App: Run() starts event loop
-```
-
-![k9s 应用启动流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/bfc9963dc7a09e7da3f9af5f22b0501f.svg)
-{width=1920 height=1037}
+![k9s 应用启动流程](k9s-startup-sequence.svg)
 
 ## 核心组件解析
 
@@ -86,121 +32,25 @@ k9s 通过模块化设计实现高效的资源管理和用户交互，以下为�
 
 命令系统解释用户输入并将其转换为操作，支持导航、过滤和 Kubernetes 操作。
 
-```mermaid "k9s 命令系统"
-graph TD
-    User["User"] -->|"Types command"| CmdBuff["Command Buffer"]
-    CmdBuff -->|"Interprets"| Interpreter["Command Interpreter"]
-    Interpreter -->|"Parses"| CommandObj["Command Object"]
-    CommandObj -->|"Executes"| Action["Application Action"]
-    CommandObj -->|"Resource Command"| ResourceViewer["Resource Viewer"]
-    CommandObj -->|"Context Command"| ContextSwitch["Context Switch"]
-    CommandObj -->|"Namespace Command"| NamespaceSwitch["Namespace Switch"]
-    CommandObj -->|"Special Command"| SpecialAction["Special Action"]
-    subgraph "Command Execution"
-        ResourceViewer
-        ContextSwitch
-        NamespaceSwitch
-        SpecialAction
-    end
-```
-
-![k9s 命令系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/8af5ef630cb8c5473293bc60d888b164.svg)
-{width=1920 height=1292}
+![k9s 命令系统：从输入到执行](k9s-command-system.svg)
 
 ### 配置系统
 
 k9s 使用分层配置系统，结合全局默认值、用户偏好和上下文特定设置。
 
-```mermaid "k9s 配置系统"
-graph TD
-    ConfigFile["Config Files"] -->|"Load"| ConfigSystem["Configuration System"]
-    Flags["CLI Flags"] -->|"Override"| ConfigSystem
-    ConfigSystem -->|"Global Config"| GlobalConfig["Global K9s Config"]
-    ConfigSystem -->|"Context Config"| ContextConfig["Context-Specific Config"]
-    GlobalConfig --> UI["UI Settings"]
-    GlobalConfig --> Logger["Logger Settings"]
-    GlobalConfig --> General["General Settings"]
-    ContextConfig --> Namespace["Active Namespace"]
-    ContextConfig --> View["Active View"]
-    ContextConfig --> Aliases["Command Aliases"]
-    ContextConfig --> HotKeys["Custom HotKeys"]
-    subgraph "Configuration Hierarchy"
-        GlobalConfig
-        ContextConfig
-    end
-```
-
-![k9s 配置系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/99d576beb8353499f4e79b42c2914306.svg)
-{width=1920 height=765}
+![k9s 配置系统：文件与参数到分层配置](k9s-config-system.svg)
 
 ### 资源视图系统
 
 k9s 通过统一的 `ResourceViewer` 接口表示不同的 Kubernetes 资源，Browser 是主要实现，用于显示表格数据。
 
-```mermaid "k9s 资源视图系统"
-classDiagram
-    class ResourceViewer {
-        <<interface>>
-        +Init(context.Context) error
-        +App() *App
-        +Start()
-        +Stop()
-        +GetTable() *Table
-    }
-    class Table {
-        -model *model.Table
-        +Init(context)
-        +Update(data)
-        +Start()
-        +Stop()
-    }
-    class Browser {
-        -table *Table
-        -accessor dao.Accessor
-        -meta *metav1.APIResource
-        +Init(context.Context)
-        +SetInstance(path)
-        +SetContextFn(ContextFunc)
-    }
-    class LogViewer {
-        -model *model.Log
-        -logs *Logger
-        +Init(context.Context)
-        +SetContainer(container)
-    }
-    ResourceViewer <|.. Browser
-    ResourceViewer <|.. LogViewer
-    Browser *-- Table
-```
-
-![k9s 资源视图系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/82219cc3b4ad3aa4d17e7f2ca1d1beb0.svg)
-{width=1920 height=2916}
+![k9s 资源视图类图](k9s-resource-view-class.svg)
 
 ### 数据访问层
 
 k9s 使用 DAO 模式抽象 Kubernetes 资源检索和操作。
 
-```mermaid "k9s 数据访问层"
-graph TD
-    App["App"] --> Factory["Watch Factory"]
-    Factory -->|"Creates"| Accessor["Resource Accessor"]
-    Factory -->|"Manages"| Informers["K8s Informers"]
-    Accessor -->|"Resource-specific"| ResourceDAO["Resource-specific DAO"]
-    ResourceDAO -->|"Retrieves"| K8sObjects["Kubernetes Objects"]
-    ResourceDAO -->|"Pod"| PodDAO["Pod DAO"]
-    ResourceDAO -->|"Deployment"| DeploymentDAO["Deployment DAO"]
-    ResourceDAO -->|"Service"| ServiceDAO["Service DAO"]
-    Informers -->|"Watch"| K8sAPI["Kubernetes API"]
-    subgraph "Data Access Layer"
-        Factory
-        Accessor
-        ResourceDAO
-        Informers
-    end
-```
-
-![k9s 数据访问层](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/583dc7a8346f7096f8580971afa8f8e6.svg)
-{width=1920 height=1428}
+![k9s 数据访问层：Factory、Accessor 与 DAO](k9s-data-access-layer.svg)
 
 ### 核心组件总览
 
@@ -429,25 +279,7 @@ aliases:
 
 k9s 通过配置文件、别名、热键和皮肤实现高度定制。
 
-```mermaid "k9s 配置与定制"
-graph TD
-    User["User"] -->|"Edits"| ConfigFiles["Configuration Files"]
-    ConfigFiles -->|"k9s.yaml"| GlobalConfig["Global Config"]
-    ConfigFiles -->|"context_{name}.yaml"| ContextConfig["Context-specific Config"]
-    ConfigFiles -->|"aliases.yaml"| Aliases["Command Aliases"]
-    ConfigFiles -->|"hotkeys.yaml"| Hotkeys["Custom Hotkeys"]
-    ConfigFiles -->|"{skin}.yaml"| Skins["UI Skins/Themes"]
-    GlobalConfig -->|"Loads on startup"| App["K9s App"]
-    ContextConfig -->|"Loads on context switch"| App
-    Aliases -->|"Command resolution"| Command["Command System"]
-    Hotkeys -->|"Key bindings"| UI["User Interface"]
-    Skins -->|"Colors and styles"| UI
-    ConfigWatcher["Config Watcher"] -.->|"Watch for changes"| ConfigFiles
-    ConfigWatcher -.->|"Hot reload"| App
-```
-
-![k9s 配置与定制](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/k9s/a47a686835eadf5ed76a1bc426c26d22.svg)
-{width=1920 height=847}
+![k9s 配置与定制：配置文件如何进入 App、命令与 UI](k9s-config-customization.svg)
 
 ## 实用场景
 

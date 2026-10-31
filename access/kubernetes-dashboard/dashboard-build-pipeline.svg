@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="600" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="dashboz-title dashboz-desc" id="dashboard-build-pipeline-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="dashboz-title">Dashboard 开发与构建流程</title>
+<desc id="dashboz-desc">源代码经 make build 构建，生成 Docker 镜像，打包进 Helm Chart，最后通过 helm install 部署。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #dashboard-build-pipeline-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #dashboard-build-pipeline-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #dashboard-build-pipeline-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#dashboard-build-pipeline-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="dashboard-build-pipeline-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="96" width="920" height="160" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">开发流程</text>
+<path d="M 208 180 L 240 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dashboard-build-pipeline-m-6b7280)"/>
+<path d="M 392 180 L 424 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dashboard-build-pipeline-m-6b7280)"/>
+<rect x="392" y="157.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="408" y="169" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">创建</text>
+<path d="M 576 180 L 608 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dashboard-build-pipeline-m-6b7280)"/>
+<rect x="576" y="157.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="592" y="169" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">打包</text>
+<path d="M 760 180 L 792 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#dashboard-build-pipeline-m-6b7280)"/>
+<rect x="60" y="148" width="144" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(83,163.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="153.5" y="176.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">源代码</text>
+<text x="153.5" y="192.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">各模块源码</text>
+<rect x="244" y="148" width="144" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(264.91,163.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="337.5" y="176.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">构建过程</text>
+<text x="337.5" y="192.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">make build</text>
+<rect x="428" y="148" width="144" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(436.36,163.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12.54c-1.804 -.345 -2.701 -1.08 -3.523 -2.94c-.487 .696 -1.102 1.568 -.92 2.4c.028 .238 -.32 1 -.557 1h-14c0 5.208 3.164 7 6.196 7c4.124 .022 7.828 -1.376 9.854 -5c1.146 -.101 2.296 -1.505 2.95 -2.46" /> <path d="M5 10h3v3h-3l0 -3" /> <path d="M8 10h3v3h-3l0 -3" /> <path d="M11 10h3v3h-3l0 -3" /> <path d="M8 7h3v3h-3l0 -3" /> <path d="M11 7h3v3h-3l0 -3" /> <path d="M11 4h3v3h-3l0 -3" /> <path d="M4.571 18c1.5 0 2.047 -.074 2.958 -.78" /> <path d="M10 16l0 .01" /></g>
+<text x="521.5" y="176.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Docker 镜像</text>
+<text x="521.5" y="192.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">每模块一个</text>
+<rect x="612" y="148" width="144" height="64" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="612" y="148" width="144" height="64" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(622.32,163.5) scale(1.375)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="705.5" y="176.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Helm Chart</text>
+<text x="705.5" y="192.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">打包镜像</text>
+<rect x="796" y="148" width="144" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(813.39,163.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></g>
+<text x="889.5" y="176.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">部署</text>
+<text x="889.5" y="192.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">helm install</text>
+<text x="500" y="284" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Makefile 是主要编排工具：构建各模块、产出镜像，再把镜像打包进 Helm Chart。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Dashboard 开发与构建流程</text>
+</g>
+</svg>

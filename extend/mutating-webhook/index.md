@@ -27,23 +27,7 @@ description: 介绍 Kubernetes MutatingAdmissionWebhook 的工作机制与应用
 
 Mutating Webhook 在 Kubernetes API Server 中的执行顺序如下。下图展示了请求流程：
 
-```mermaid "Mutating Webhook 执行流程"
-sequenceDiagram
-    participant User as kubectl / Client
-    participant APIServer as kube-apiserver
-    participant Webhook as Mutating Webhook
-    participant etcd as etcd
-
-    User->>APIServer: 创建 Pod
-    APIServer->>Webhook: AdmissionReview（CREATE 请求）
-    Webhook-->>APIServer: AdmissionResponse（含 Patch）
-    APIServer->>etcd: 保存修改后的对象
-```
-
-下图为流程示意图：
-
-![Mutating Webhook 执行流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/mutating-webhook/d053b174e7bc10218063d103e8f186ba.svg)
-{width=1920 height=705}
+![Mutating Webhook 执行流程](mutating-webhook-flow.svg)
 
 流程说明：
 
@@ -164,20 +148,7 @@ Istio 的 Webhook 会在 Pod 创建时被触发，并将 `istio-proxy` 容器自
 
 下图展示了 Istio Sidecar 自动注入的决策流程：
 
-```mermaid "Istio Sidecar 自动注入流程"
-flowchart LR
-    A[Pod 创建请求] --> B[MutatingWebhook 调用]
-    B --> C{是否启用 istio-injection}
-    C -->|是| D[注入 istio-proxy sidecar]
-    C -->|否| E[直接放行]
-    D --> F[保存修改后的 Pod]
-    E --> F
-```
-
-下图为流程示意图：
-
-![Istio Sidecar 自动注入流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/mutating-webhook/89f1cd0db0708338739eef896d9ee335.svg)
-{width=1920 height=297}
+![Istio Sidecar 自动注入决策流程](istio-sidecar-injection-flow.svg)
 
 这种自动注入机制极大简化了服务网格的部署和运维。
 

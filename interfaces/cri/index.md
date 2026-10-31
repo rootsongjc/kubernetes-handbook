@@ -28,29 +28,7 @@ CRI 引入了抽象层，将编排（kubelet）与容器生命周期管理（运
 
 下图展示了 CRI 作为抽象层的演进过程：
 
-```mermaid "CRI 作为抽象层"
-graph TB
-    subgraph "CRI 之前"
-        KB1["Kubelet<br/>(含运行时代码)"]
-        KB1 -->|"紧耦合"| RT1["容器运行时"]
-    end
-    
-    subgraph "有了 CRI"
-        KB2["Kubelet<br/>(运行时无关)"]
-        CRI["CRI API<br/>Protocol Buffer 定义<br/>gRPC 接口"]
-        RT2A["containerd"]
-        RT2B["CRI-O"]
-        RT2C["其他运行时"]
-        
-        KB2 -->|"gRPC 调用"| CRI
-        CRI -->|"由实现"| RT2A
-        CRI -->|"由实现"| RT2B
-        CRI -->|"由实现"| RT2C
-    end
-```
-
-![CRI 作为抽象层](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cri/3f506382e51979972aa6a2c79d45c9d0.svg)
-{width=1920 height=506}
+![CRI 作为抽象层：从紧耦合到运行时无关](cri-abstraction-layer.svg)
 
 抽象层允许运行时实现独立演进，同时为 kubelet 保持稳定接口。
 
@@ -68,36 +46,7 @@ CRI 定义了两个主要的 gRPC 服务，各自职责如下：
 
 下图展示了 CRI 的两大服务及其主要操作：
 
-```mermaid "CRI 的两大服务及其操作"
-graph TB
-    CRI["容器运行时接口"]
-    
-    subgraph RS["RuntimeService"]
-        direction TB
-        
-        PS["Pod 沙箱操作<br/>RunPodSandbox<br/>StopPodSandbox<br/>RemovePodSandbox<br/>PodSandboxStatus<br/>ListPodSandbox<br/>UpdatePodSandboxResources"]
-        
-        CT["容器操作<br/>CreateContainer<br/>StartContainer<br/>StopContainer<br/>RemoveContainer<br/>ContainerStatus<br/>ListContainers<br/>UpdateContainerResources"]
-        
-        EX["执行操作<br/>ExecSync<br/>Exec<br/>Attach<br/>PortForward<br/>ReopenContainerLog<br/>CheckpointContainer"]
-        
-        OBS["可观测性<br/>ContainerStats<br/>ListContainerStats<br/>PodSandboxStats<br/>ListPodSandboxStats<br/>GetContainerEvents<br/>ListMetricDescriptors<br/>ListPodSandboxMetrics"]
-        
-        CFG["配置<br/>Version<br/>Status<br/>RuntimeConfig<br/>UpdateRuntimeConfig"]
-    end
-    
-    subgraph IS["ImageService"]
-        IMG["镜像操作<br/>ListImages<br/>ImageStatus<br/>PullImage<br/>RemoveImage<br/>ImageFsInfo"]
-    end
-    
-    CRI --> RS
-    CRI --> IS
-    
-    PS -.->|"容器运行于其中"| CT
-```
-
-![CRI 的两大服务及其操作](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cri/b9f14183ba0ee7115706e4b5a0d623ba.svg)
-{width=1920 height=962}
+![CRI 的两大 gRPC 服务及其操作](cri-two-services.svg)
 
 RuntimeService 与 ImageService 的分离为运行时管理镜像和容器提供了灵活性。
 
@@ -110,36 +59,7 @@ CRI 基于两项核心技术：
 
 下图展示了 gRPC 与 Protocol Buffers 在 CRI 中的作用和调用关系：
 
-```mermaid "gRPC 与 Protocol Buffers 在 CRI 中的作用"
-graph BT
-    subgraph "消费者"
-        KUBELET("kubelet")
-        CRICTL("crictl CLI")
-    end
-    
-    subgraph "CRI API 层"
-        GRPC_DEF("gRPC 服务定义<br/>RuntimeService<br/>ImageService")
-        PB_MSG("Protocol Buffer 消息<br/>PodSandboxConfig<br/>ContainerConfig<br/>ContainerStatus<br/>...")
-    end
-    
-    subgraph "运行时实现"
-        CONTAINERD("containerd CRI 插件")
-        CRIO("CRI-O")
-        OTHER("其他运行时")
-    end
-    
-    KUBELET -->|"gRPC 客户端调用"| GRPC_DEF
-    CRICTL -->|"gRPC 客户端调用"| GRPC_DEF
-    
-    GRPC_DEF -->|"序列化使用"| PB_MSG
-    
-    GRPC_DEF -->|"由实现"| CONTAINERD
-    GRPC_DEF -->|"由实现"| CRIO
-    GRPC_DEF -->|"由实现"| OTHER
-```
-
-![gRPC 与 Protocol Buffers 在 CRI 中的作用](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cri/a9ffe9bc753405c70dcc0584acc64bc7.svg)
-{width=1920 height=1473}
+![gRPC 与 Protocol Buffers 在 CRI 中的作用](cri-grpc-protobuf.svg)
 
 ## 关键概念
 

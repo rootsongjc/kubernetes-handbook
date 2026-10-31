@@ -29,33 +29,7 @@ Kubernetes 提供丰富的原语和架构模式，支持复杂企业级应用的
 
 下图展示了 Pod 内外常见的容器协作模式。
 
-```mermaid "容器架构模式"
-graph TD
-    subgraph "Pod 内架构模式"
-        SIDECAR["Sidecar 模式<br/>日志收集、代理、监控"]
-        AMBASSADOR["Ambassador 模式<br/>服务代理、路由"]
-        ADAPTER["Adapter 模式<br/>数据转换、标准化"]
-    end
-
-    subgraph "Pod 间协作模式"
-        LEADER_ELECTION["Leader Election<br/>主节点选举"]
-        WORK_QUEUE["Work Queue<br/>任务队列分发"]
-        SCATTER_GATHER["Scatter-Gather<br/>并行处理聚合"]
-    end
-
-    subgraph "应用层模式"
-        BULKHEAD["Bulkhead<br/>故障隔离"]
-        CIRCUIT_BREAKER["Circuit Breaker<br/>熔断保护"]
-        RETRY["Retry & Timeout<br/>重试超时机制"]
-    end
-
-    SIDECAR --> BULKHEAD
-    AMBASSADOR --> CIRCUIT_BREAKER
-    ADAPTER --> RETRY
-```
-
-![容器架构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/d709b8364ab0ea2354b01fc0a1f00663.svg)
-{width=1920 height=1397}
+![容器架构模式：Pod 内、应用层与 Pod 间协作模式](container-architecture-patterns.svg)
 
 #### Sidecar 容器模式
 
@@ -345,36 +319,7 @@ spec:
 
 多集群架构提升高可用性与灾备能力，常见同步机制包括 Federation、配置同步与服务发现同步。
 
-```mermaid "多集群部署架构"
-graph TD
-    subgraph "多集群架构"
-        GLOBAL_LB["全局负载均衡器<br/>Global Load Balancer"]
-        CLUSTER1["集群1<br/>Primary Region"]
-        CLUSTER2["集群2<br/>Secondary Region"]
-        CLUSTER3["集群3<br/>Edge Cluster"]
-    end
-
-    subgraph "同步机制"
-        FEDERATION["Federation API<br/>跨集群资源同步"]
-        CONFIG_SYNC["Config Sync<br/>配置同步"]
-        SERVICE_SYNC["Service Sync<br/>服务发现同步"]
-    end
-
-    GLOBAL_LB --> CLUSTER1
-    GLOBAL_LB --> CLUSTER2
-    GLOBAL_LB --> CLUSTER3
-
-    FEDERATION --> CONFIG_SYNC
-    FEDERATION --> SERVICE_SYNC
-
-    CONFIG_SYNC --> CLUSTER1
-    SERVICE_SYNC --> CLUSTER1
-    CONFIG_SYNC --> CLUSTER2
-    SERVICE_SYNC --> CLUSTER2
-```
-
-![多集群部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/1723554d93a7883484ac4992e8787b1f.svg)
-{width=1920 height=936}
+![多集群部署架构：全局负载均衡与同步机制](multi-cluster-deployment.svg)
 
 #### Karmada 多集群管理实践
 
@@ -436,33 +381,7 @@ Kubernetes 支持多种 API 扩展方式，满足复杂应用的自动化与智�
 
 下图展示了 Operator 架构及其与核心资源的关系。
 
-```mermaid "Operator 架构"
-graph TD
-    subgraph "Operator 架构"
-        CRD["自定义资源定义<br/>Custom Resource Definition"]
-        CR["自定义资源实例<br/>Custom Resource"]
-        CONTROLLER["Operator 控制器<br/>Reconcile Loop"]
-        KUBE_API["Kubernetes API<br/>状态同步"]
-    end
-
-    subgraph "应用管理"
-        DEPLOY["Deployment<br/>应用部署"]
-        SERVICE["Service<br/>网络访问"]
-        CONFIG["ConfigMap/Secret<br/>配置管理"]
-        MONITOR["监控指标<br/>Prometheus"]
-    end
-
-    USER["开发者"] -->|"kubectl apply"| CRD
-    CRD --> CR
-    CR --> CONTROLLER
-    CONTROLLER -->|"管理"| DEPLOY
-    CONTROLLER -->|"管理"| SERVICE
-    CONTROLLER -->|"管理"| CONFIG
-    CONTROLLER -->|"暴露"| MONITOR
-```
-
-![Operator 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/9a366ffd4c629d7c84b4b9c54262773f.svg)
-{width=1920 height=1998}
+![Operator 架构：从 CRD 到应用管理](operator-architecture.svg)
 
 Operator 模式是主流的 Kubernetes API 扩展方式，支持应用生命周期自动化管理。
 
@@ -487,33 +406,7 @@ spec:
 
 Operator 开发工具栈涵盖 Go、Python、Java、Rust 等多语言生态。
 
-```mermaid "Operator 开发工具栈"
-graph TD
-    subgraph "Go 生态"
-        SDK["Operator SDK v1.35+<br/>Red Hat官方"]
-        KUBEBUILDER["Kubebuilder v4.x<br/>Kubernetes SIG"]
-        CONTROLLER_RUNTIME["controller-runtime v0.19+<br/>核心框架"]
-    end
-
-    subgraph "多语言支持"
-        KOPF["Kopf<br/>Python装饰器"]
-        FABRIC8["Fabric8<br/>Java客户端"]
-        KUBE_RS["kube-rs<br/>Rust安全"]
-    end
-
-    subgraph "高级抽象"
-        CROSSPLANE["Crossplane<br/>基础设施即代码"]
-        KUDO["KUDO<br/>声明式Operator"]
-        CAPSULE["Capsule<br/>多租户管理"]
-    end
-
-    SDK --> CONTROLLER_RUNTIME
-    KUBEBUILDER --> CONTROLLER_RUNTIME
-    CROSSPLANE --> KUBE_RS
-```
-
-![Operator 开发工具栈](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/61ffb0e3346aad0c61f9679396bcfc14.svg)
-{width=2012 height=742}
+![Operator 开发工具栈](operator-development-toolchain.svg)
 
 ### CRD 最佳实践
 
@@ -583,32 +476,7 @@ spec:
 
 API 聚合适用于企业级复杂扩展，支持自定义 API Server 与统一入口。
 
-```mermaid "API 聚合层扩展"
-graph TD
-    subgraph "API Server 聚合"
-        MAIN_API["主 API Server<br/>core API"]
-        AGGREGATOR["API 聚合器<br/>kube-aggregator"]
-        EXT_API["扩展 API Server<br/>Custom Implementation"]
-    end
-
-    subgraph "客户端访问"
-        KUBECTL["kubectl<br/>CLI工具"]
-        CLIENT["REST Client<br/>编程访问"]
-        DASHBOARD["Dashboard<br/>Web界面"]
-    end
-
-    KUBECTL --> AGGREGATOR
-    CLIENT --> AGGREGATOR
-    DASHBOARD --> AGGREGATOR
-
-    AGGREGATOR --> MAIN_API
-    AGGREGATOR --> EXT_API
-
-    EXT_API -->|"注册"| AGGREGATOR
-```
-
-![API 聚合层扩展](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/c9456d4d9f7733ed223b35bb6982af8d.svg)
-{width=1920 height=1717}
+![API 聚合层扩展](api-aggregation-layer.svg)
 
 ## 现代开发实践
 
@@ -618,28 +486,7 @@ graph TD
 
 GitOps 通过代码驱动基础设施变更，实现自动化部署与回滚。
 
-```mermaid "GitOps 工作流"
-flowchart TD
-    DEV["开发环境"] -->|"代码提交"| GIT["Git 仓库"]
-    GIT -->|"触发"| CI["CI Pipeline"]
-    CI -->|"构建测试"| ARTIFACTS["容器镜像<br/>Helm Charts"]
-    ARTIFACTS -->|"部署到"| STAGING["Staging 环境"]
-    STAGING -->|"验证"| QA["质量检查"]
-    QA -->|"合并到"| MAIN["主分支"]
-    MAIN -->|"自动部署"| PROD["生产环境"]
-
-    subgraph "GitOps 工具链"
-        ARGO_CD["ArgoCD<br/>声明式部署"]
-        FLUX["Flux<br/>GitOps Operator"]
-        JENKINS_X["Jenkins X<br/>云原生CI/CD"]
-    end
-
-    ARGO_CD --> PROD
-    FLUX --> PROD
-```
-
-![GitOps 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/65a637e4da5c0f53a81b5cdc9a410148.svg)
-{width=1920 height=2994}
+![GitOps 工作流](gitops-workflow.svg)
 
 #### ArgoCD 应用管理
 
@@ -676,32 +523,7 @@ spec:
 
 服务网格提升微服务治理能力，实现流量管理、安全加固与可观测性。
 
-```mermaid "服务网格架构"
-graph TD
-    subgraph "服务网格架构"
-        ISTIO["Istio<br/>控制平面"]
-        ENVOY["Envoy<br/>数据平面"]
-        PILOT["Pilot<br/>配置管理"]
-        CITadel["Citadel<br/>安全管理"]
-    end
-
-    subgraph "应用集成"
-        MICROSERVICES["微服务应用"]
-        GATEWAY["API Gateway"]
-        MONITORING["监控系统"]
-    end
-
-    ISTIO --> PILOT
-    PILOT --> ENVOY
-    CITadel --> ENVOY
-
-    MICROSERVICES --> ENVOY
-    GATEWAY --> ENVOY
-    ENVOY --> MONITORING
-```
-
-![服务网格架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/e9082c9a865bddea5bb1349109a35d2e.svg)
-{width=1920 height=1609}
+![服务网格架构](service-mesh-architecture.svg)
 
 #### Istio 服务治理
 
@@ -746,31 +568,7 @@ spec:
 
 Knative 支持事件驱动与自动扩缩容，适合函数即服务场景。
 
-```mermaid "Knative 架构"
-graph TD
-    subgraph "Knative 架构"
-        SERVING["Knative Serving<br/>无服务器部署"]
-        EVENTING["Knative Eventing<br/>事件驱动"]
-        FUNCTIONS["Knative Functions<br/>函数运行时"]
-    end
-
-    subgraph "工作负载"
-        HTTP_APPS["HTTP应用<br/>自动扩缩容"]
-        EVENT_DRIVEN["事件驱动<br/>异步处理"]
-        FUNCTIONS_RUNTIME["函数即服务<br/>FaaS"]
-    end
-
-    SERVING --> HTTP_APPS
-    EVENTING --> EVENT_DRIVEN
-    FUNCTIONS --> FUNCTIONS_RUNTIME
-
-    HTTP_APPS -->|"0到N"| SCALE["自动扩缩容"]
-    EVENT_DRIVEN -->|"事件触发"| PROCESS["异步处理"]
-    FUNCTIONS_RUNTIME -->|"按需执行"| COMPUTE["按需计算"]
-```
-
-![Knative 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/1726af5e90ee2dfbe26cd39d09b2de33.svg)
-{width=1920 height=1502}
+![Knative 架构](knative-architecture.svg)
 
 #### Knative 服务部署
 
@@ -807,38 +605,7 @@ spec:
 
 下图展示了监控、日志与分布式追踪的整体架构。
 
-```mermaid "可观测性架构"
-graph TD
-    subgraph "指标收集"
-        PROMETHEUS["Prometheus<br/>时序数据库"]
-        NODE_EXPORTER["Node Exporter<br/>节点指标"]
-        KUBE_STATE["kube-state-metrics<br/>Kubernetes状态"]
-        APP_METRICS["应用指标<br/>自定义exporter"]
-    end
-
-    subgraph "日志聚合"
-        FLUENT_BIT["Fluent Bit<br/>日志收集器"]
-        ELASTICSEARCH["Elasticsearch<br/>日志存储"]
-        KIBANA["Kibana<br/>日志可视化"]
-    end
-
-    subgraph "分布式追踪"
-        JAEGER["Jaeger<br/>追踪系统"]
-        OPENTELEMETRY["OpenTelemetry<br/>观测标准"]
-        APP_TRACING["应用追踪<br/>代码埋点"]
-    end
-
-    PROMETHEUS --> GRAFANA["Grafana<br/>仪表板"]
-    FLUENT_BIT --> ELASTICSEARCH
-    ELASTICSEARCH --> KIBANA
-    JAEGER --> GRAFANA
-
-    APP_METRICS --> PROMETHEUS
-    APP_TRACING --> JAEGER
-```
-
-![可观测性架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/9c1346352fdf6b00868feef641002ad1.svg)
-{width=2272 height=662}
+![可观测性架构：指标、追踪与日志](observability-architecture.svg)
 
 #### Prometheus 监控配置
 
@@ -874,41 +641,7 @@ spec:
 
 安全加固涵盖身份认证、网络安全与运行时安全，保障集群与数据安全。
 
-```mermaid "安全加固架构"
-graph TD
-    subgraph "身份认证"
-        OIDC["OIDC<br/>开放身份连接"]
-        CERT_MANAGER["cert-manager<br/>证书管理"]
-        VAULT["HashiCorp Vault<br/>密钥管理"]
-    end
-
-    subgraph "网络安全"
-        NETWORK_POLICIES["Network Policies<br/>网络策略"]
-        SERVICE_MESH["Service Mesh<br/>服务网格"]
-        INGRESS_TLS["Ingress TLS<br/>传输加密"]
-    end
-
-    subgraph "运行时安全"
-        POD_SECURITY["Pod Security Standards<br/>安全标准"]
-        FALCO["Falco<br/>运行时检测"]
-        KYVERNO["Kyverno<br/>策略引擎"]
-    end
-
-    OIDC --> RBAC["RBAC<br/>角色访问控制"]
-    CERT_MANAGER --> TLS["mTLS<br/>双向TLS"]
-    VAULT --> SECRETS["Secret管理"]
-
-    NETWORK_POLICIES --> ISOLATION["网络隔离"]
-    SERVICE_MESH --> ENCRYPTION["流量加密"]
-    INGRESS_TLS --> ENCRYPTION
-
-    POD_SECURITY --> COMPLIANCE["合规检查"]
-    FALCO --> MONITORING["安全监控"]
-    KYVERNO --> POLICIES["策略执行"]
-```
-
-![安全加固架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/d4be71a746b31d7e411fc15f56caee4a.svg)
-{width=2402 height=380}
+![安全加固架构](security-hardening-architecture.svg)
 
 #### Pod 安全策略实施
 
@@ -955,40 +688,7 @@ spec:
 
 灾备体系保障集群与数据的高可用与快速恢复。
 
-```mermaid "灾难恢复与备份架构"
-graph TD
-    subgraph "备份策略"
-        ETCD_BACKUP["etcd 备份<br/>集群状态"]
-        PVC_BACKUP["PVC 备份<br/>持久化数据"]
-        CONFIG_BACKUP["配置备份<br/>应用配置"]
-    end
-
-    subgraph "恢复流程"
-        CLUSTER_RESTORE["集群恢复<br/>etcd还原"]
-        APP_RESTORE["应用恢复<br/>PVC还原"]
-        VALIDATION["验证检查<br/>功能测试"]
-    end
-
-    subgraph "工具链"
-        VELERO["Velero<br/>Kubernetes备份"]
-        KASTEN["Kasten K10<br/>企业备份"]
-        PX_BACKUP["Portworx Backup<br/>云原生备份"]
-    end
-
-    ETCD_BACKUP --> CLUSTER_RESTORE
-    PVC_BACKUP --> APP_RESTORE
-    CONFIG_BACKUP --> APP_RESTORE
-
-    VELERO --> ETCD_BACKUP
-    KASTEN --> PVC_BACKUP
-    PX_BACKUP --> CONFIG_BACKUP
-
-    CLUSTER_RESTORE --> VALIDATION
-    APP_RESTORE --> VALIDATION
-```
-
-![灾难恢复与备份架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/advance-developer/f746e20ff2b4bb8385fec21b77472383.svg)
-{width=1920 height=2243}
+![灾难恢复与备份架构](disaster-recovery-and-backup.svg)
 
 #### Velero 备份配置
 

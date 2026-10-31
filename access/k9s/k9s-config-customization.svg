@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="1060" viewBox="0 0 1080 530" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="k9sconz-title k9sconz-desc" id="k9s-config-customization-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="k9sconz-title">k9s 配置与定制：配置文件如何进入 App、命令与 UI</title>
+<desc id="k9sconz-desc">用户编辑配置文件：k9s.yaml 全局配置与 context_{name}.yaml 上下文配置在启动或切换上下文时加载进 App，aliases.yaml 驱动命令解析，hotkeys.yaml 与皮肤文件作用于 UI；Config Watcher 监听文件变化并热重载。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #k9s-config-customization-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #k9s-config-customization-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #k9s-config-customization-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#k9s-config-customization-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="k9s-config-customization-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 214 280 L 266 280" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<rect x="224" y="257.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="240" y="269" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">编辑</text>
+<path d="M 474 280 L 507 280 Q 515 280 515 272 L 515 136 Q 515 128 523 128 L 556 128" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 474 280 L 507 280 Q 515 280 515 272 L 515 212 Q 515 204 523 204 L 556 204" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 474 280 L 556 280" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 474 280 L 507 280 Q 515 280 515 288 L 515 348 Q 515 356 523 356 L 556 356" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 474 280 L 507 280 Q 515 280 515 288 L 515 424 Q 515 432 523 432 L 556 432" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 774 128 L 846 128" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 774 204 L 802 204 Q 810 204 810 212 L 810 222.8 Q 810 230.8 818 230.8 L 846 230.8" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 774 280 L 802 280 Q 810 280 810 272 L 810 261.2 Q 810 253.2 818 253.2 L 846 253.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 774 356 L 802 356 Q 810 356 810 364 L 810 374.8 Q 810 382.8 818 382.8 L 846 382.8" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 774 432 L 802 432 Q 810 432 810 424 L 810 413.2 Q 810 405.2 818 405.2 L 846 405.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<path d="M 370 400 L 370 316" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<rect x="374" y="350.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="378" y="362.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">监听变化</text>
+<path d="M 370 400 L 370 482 Q 370 490 378 490 L 937 490 Q 945 490 945 482 L 945 426" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#k9s-config-customization-m-6b7280)"/>
+<rect x="622.5" y="467.4" width="44" height="16.6" style="fill:#ffffff"/>
+<text x="644.5" y="479" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">热重载</text>
+<rect x="40" y="252" width="170" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(78,262) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /> <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></g>
+<text x="148" y="276.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">User</text>
+<text x="148" y="293.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">编辑配置</text>
+<rect x="270" y="248" width="200" height="64" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="270" y="248" width="200" height="64" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(285.8,262) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="393" y="276.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">配置文件</text>
+<text x="393" y="293.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Configuration Files</text>
+<rect x="270" y="404" width="200" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(286.7,414) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="393" y="428.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Config Watcher</text>
+<text x="393" y="445.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">监听变更</text>
+<rect x="560" y="100" width="210" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="665" y="124.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令别名</text>
+<text x="665" y="141.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">aliases.yaml</text>
+<rect x="560" y="176" width="210" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="665" y="200.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">自定义热键</text>
+<text x="665" y="217.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">hotkeys.yaml</text>
+<rect x="560" y="252" width="210" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="665" y="276.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">UI 皮肤 / 主题</text>
+<text x="665" y="293.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">{skin}.yaml</text>
+<rect x="560" y="328" width="210" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="665" y="352.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">全局配置</text>
+<text x="665" y="369.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">k9s.yaml</text>
+<rect x="560" y="404" width="210" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="665" y="428.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">上下文配置</text>
+<text x="665" y="445.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">context_{name}.yaml</text>
+<rect x="850" y="100" width="190" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(892,110) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="968" y="124.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令系统</text>
+<text x="968" y="141.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">别名解析</text>
+<rect x="850" y="214" width="190" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(866.56,224) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="968" y="238.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">用户界面</text>
+<text x="968" y="255.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">键位绑定 · 颜色样式</text>
+<rect x="850" y="366" width="190" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(854.56,376) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /> <path d="M7 20h10" /> <path d="M9 16v4" /> <path d="M15 16v4" /></g>
+<text x="968" y="390.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">K9s App</text>
+<text x="968" y="407.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">启动 / 切换上下文时加载</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">k9s 配置与定制：配置文件如何进入 App、命令与 UI</text>
+<line x1="432.68" y1="512" x2="452.68" y2="512" style="stroke:#6b7280" stroke-width="1.7"/>
+<text x="460.68" y="516" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">加载 / 作用于</text>
+<line x1="553.32" y1="512" x2="573.32" y2="512" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="581.32" y="516" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">监听与热重载</text>
+</g>
+</svg>

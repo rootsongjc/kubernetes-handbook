@@ -22,18 +22,7 @@ K3s 采用 server-agent 架构，server 节点运行 Kubernetes 控制面组件�
 
 下图展示了 K3s 的典型集群架构，帮助理解其在边缘场景下的部署方式：
 
-```mermaid "K3s 集群架构示意图"
-flowchart LR
-    subgraph EdgeCluster[K3s 集群]
-        direction TB
-        Master["边缘控制节点 (K3s Server)<br/>- 包含API Server/调度/控制器<br/>- 内置 SQLite/etcd 存储<br/>- 自身也可作为计算节点"]
-        Worker["边缘工作节点 (K3s Agent)<br/>- 运行 kubelet/kube-proxy<br/>- 通过Agent连接到Server"]
-    end
-    Master --> Worker
-```
-
-![K3s 集群架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/85bbe2de6995fc6561c22bf93cf238fe.svg)
-{width=1920 height=2427}
+![K3s 集群架构示意图](k3s-cluster-architecture.svg)
 
 K3s 的所有必要组件被打包为单个二进制文件，一个小于 100MB 的可执行文件即可启动一个 Kubernetes 集群，大幅降低部署复杂度和依赖。只需在一台节点上运行 `k3s server`，即可启动控制平面和轻量数据存储（默认 SQLite，也可选 etcd 或外部数据库），其它设备通过 `k3s agent` 加入集群。
 
@@ -41,146 +30,19 @@ K3s 的所有必要组件被打包为单个二进制文件，一个小于 100MB 
 
 K3s 的源码结构和组件交互流程如下图所示，有助于理解其轻量化实现原理：
 
-```mermaid "K3s 系统源码与组件流程"
-graph TB
-    subgraph "命令行入口"
-        MAIN["main.go<br/>多功能二进制"]
-        SERVER_CLI["pkg/cli/server/server.go<br/>Server 命令"]
-        AGENT_CLI["pkg/cli/agent/agent.go<br/>Agent 命令"]
-    end
-    
-    subgraph "核心运行组件"
-        SERVER_PKG["pkg/server/server.go<br/>Server 控制器"]
-        CONTROL["pkg/daemons/control/<br/>控制面组件"]
-        AGENT_PKG["pkg/agent/run.go<br/>Agent 运行时"]
-        AGENT_DAEMON["pkg/daemons/agent/<br/>Kubelet & KubeProxy"]
-    end
-    
-    subgraph "配置管理"
-        CONFIG["pkg/daemons/config/types.go<br/>节点与控制配置"]
-        AGENT_CONFIG["pkg/agent/config/config.go<br/>Agent 配置"]
-    end
-    
-    subgraph "容器运行时集成"
-        CONTAINERD["pkg/agent/containerd/<br/>Containerd 管理"]
-        FLANNEL["pkg/agent/flannel/<br/>CNI 集成"]
-        NETPOL["pkg/agent/netpol/<br/>网络策略"]
-    end
-    
-    subgraph "构建与分发"
-        DOCKERFILE["Dockerfile.dapper<br/>构建环境"]
-        BUILD_SCRIPTS["scripts/build<br/>构建编排"]
-        MANIFESTS["manifests/<br/>内嵌组件"]
-    end
-    
-    MAIN --> SERVER_CLI
-    MAIN --> AGENT_CLI
-    SERVER_CLI --> SERVER_PKG
-    AGENT_CLI --> AGENT_PKG
-    
-    SERVER_PKG --> CONTROL
-    SERVER_PKG --> CONFIG
-    AGENT_PKG --> AGENT_DAEMON
-    AGENT_PKG --> AGENT_CONFIG
-    
-    AGENT_DAEMON --> CONTAINERD
-    AGENT_DAEMON --> FLANNEL
-    AGENT_DAEMON --> NETPOL
-    
-    CONFIG --> AGENT_CONFIG
-    BUILD_SCRIPTS --> DOCKERFILE
-    BUILD_SCRIPTS --> MANIFESTS
-```
-
-![K3s 系统源码与组件流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/4dd7aa7665896901ed7b08ae86772edf.svg)
-{width=1920 height=1488}
+![K3s 系统源码与组件流程](k3s-source-structure.svg)
 
 ## 组件交互与运行机制
 
 下图展示了 K3s 各核心组件的交互流程，涵盖控制面、Agent、内嵌控制器和辅助服务：
 
-```mermaid "K3s 组件交互流程"
-graph LR
-    subgraph "Server 组件"
-        APISERVER["executor.APIServer<br/>kube-apiserver"]
-        ETCD["cluster.Bootstrap<br/>embedded etcd"]
-        SCHEDULER["executor.Scheduler<br/>kube-scheduler"]
-        CONTROLLER_MGR["executor.ControllerManager<br/>kube-controller-manager"]
-        TUNNEL_SRV["tunnel.setupTunnel<br/>Agent 通信"]
-    end
-    
-    subgraph "Agent 组件"
-        KUBELET["executor.Kubelet<br/>Pod 管理"]
-        KUBEPROXY["executor.KubeProxy<br/>Service Proxy"]
-        CONTAINERD_AGENT["containerd.Setup<br/>容器运行时"]
-        TUNNEL_AGENT["tunnel.Connect<br/>Server 通信"]
-    end
-    
-    subgraph "内嵌控制器"
-        SERVICELB["servicelb.Controller<br/>负载均衡"]
-        DEPLOY["deploy.Controller<br/>清单部署"]
-        HELM["helm.Controller<br/>Helm 管理"]
-        NETPOL_CTL["netpol.Controller<br/>网络策略"]
-    end
-    
-    subgraph "辅助服务"
-        FLANNEL_NET["flannel.Run<br/>Pod 网络"]
-        SPEGEL["spegel.Start<br/>镜像加速"]
-        METRICS["metrics.Start<br/>指标采集"]
-    end
-    
-    TUNNEL_SRV <--> TUNNEL_AGENT
-    APISERVER --> SCHEDULER
-    APISERVER --> CONTROLLER_MGR
-    APISERVER --> SERVICELB
-    APISERVER --> DEPLOY
-    APISERVER --> HELM
-    
-    KUBELET --> CONTAINERD_AGENT
-    KUBEPROXY --> NETPOL_CTL
-    CONTAINERD_AGENT --> FLANNEL_NET
-    CONTAINERD_AGENT --> SPEGEL
-    
-    TUNNEL_AGENT --> KUBELET
-    TUNNEL_AGENT --> KUBEPROXY
-```
-
-![K3s 组件交互流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/6e56fa5f77d7f3026602aa1691324746.svg)
-{width=1920 height=1797}
+![K3s 组件交互流程](k3s-component-interaction.svg)
 
 ## 二进制架构与配置流程
 
 K3s 采用多功能二进制架构，单一可执行文件可根据调用方式充当不同组件。配置系统会合并命令行参数、环境变量和配置文件，生成 server 和 agent 的运行配置。
 
-```mermaid "K3s 配置流程"
-graph TD
-    subgraph "命令行配置"
-        SERVER_FLAGS["cmds.ServerConfig<br/>pkg/cli/cmds/server.go"]
-        AGENT_FLAGS["cmds.AgentConfig<br/>pkg/cli/cmds/agent.go"]
-    end
-    
-    subgraph "运行时配置"
-        CONTROL_CONFIG["config.Control<br/>Server 运行配置"]
-        NODE_CONFIG["config.Node<br/>Agent 运行配置"]
-    end
-    
-    subgraph "组件配置"
-        KUBELET_CONFIG["kubeletconfig<br/>Kubelet 配置"]
-        CONTAINERD_CONFIG["containerd.Config<br/>容器运行时"]
-        FLANNEL_CONFIG["flannel.Config<br/>网络配置"]
-    end
-    
-    SERVER_FLAGS --> CONTROL_CONFIG
-    AGENT_FLAGS --> NODE_CONFIG
-    
-    CONTROL_CONFIG --> KUBELET_CONFIG
-    NODE_CONFIG --> KUBELET_CONFIG
-    NODE_CONFIG --> CONTAINERD_CONFIG
-    NODE_CONFIG --> FLANNEL_CONFIG
-```
-
-![K3s 配置流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/k3s/00f07a90c1ab3c7adf05be1c48927dde.svg)
-{width=1920 height=1642}
+![K3s 配置流程](k3s-config-flow.svg)
 
 ## 主要改进与组件特性
 

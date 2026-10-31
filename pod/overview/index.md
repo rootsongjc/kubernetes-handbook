@@ -52,16 +52,7 @@ Pod 作为部署单元，通常由一个或多个紧密协作的容器组成，�
 
 下图展示了单容器与多容器 Pod 的结构关系：
 
-```mermaid "Pod 结构模式"
-graph TD
-    A[Pod] --> B[单容器]
-    A --> C[多容器]
-    C --> D[主容器]
-    C --> E[辅助容器]
-```
-
-![Pod 结构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/overview/ff2d948b185ecfb1cf4be1059c0859db.svg)
-{width=1920 height=1695}
+![Pod 结构模式](pod-container-patterns.svg)
 
 ### 学习资源
 

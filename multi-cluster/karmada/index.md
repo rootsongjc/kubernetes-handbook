@@ -20,41 +20,7 @@ lastmod: 2025-10-27T16:15:28.821Z
 
 Karmada 系统由一个控制平面（Control Plane）和多个成员集群（Member Cluster）组成。控制平面各组件协同工作，将资源分发到成员集群，并收集其状态。
 
-```mermaid "Karmada 架构"
-graph TD
-    subgraph "Karmada 控制平面"
-        KA["karmada-apiserver"] --- ETCD["etcd"]
-        KA --- KCM["karmada-controller-manager"]
-        KA --- KS["karmada-scheduler"]
-        KA --- KW["karmada-webhook"]
-        KA --- KD["karmada-descheduler"]
-        KA --- KAAS["karmada-aggregated-apiserver"]
-        KA --- KUBC["kube-controller-manager"]
-        KA --- KSR["karmada-search"]
-        
-        KCM -.- KUBC
-        KS -.- KSE["karmada-scheduler-estimator"]
-    end
-    
-    User([用户]) -->|使用| KCTL["karmadactl"]
-    KCTL -->|管理| KA
-    
-    subgraph "成员集群"
-        MC1["成员集群 1"]
-        MC2["成员集群 2"]
-        MCN["成员集群 N"]
-    end
-    
-    KCM -->|分发资源| MC1 & MC2 & MCN
-    KS -->|调度到| MC1 & MC2 & MCN
-    KSE -->|资源估算| MC1 & MC2 & MCN
-    KD -->|驱逐工作负载| MC1 & MC2 & MCN
-    
-    MC1 & MC2 & MCN -->|状态上报| KA
-```
-
-![Karmada 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/2d5baab9b8b3c209a81fee58fbb70323.svg)
-{width=3158 height=1200}
+![Karmada 架构：控制平面组件与成员集群](karmada-architecture.svg)
 
 ## 主要特性
 
@@ -81,39 +47,7 @@ Karmada 具备以下核心特性，适用于多云和大规模多集群场景：
 
 Karmada 的核心能力是根据策略将资源从控制平面传播到成员集群。流程如下：
 
-```mermaid "Karmada 资源传播流程"
-flowchart TD
-    User([用户]) -->|1. 创建| RT["资源模板"]
-    User -->|2. 创建| PP["传播策略(PropagationPolicy/ClusterPropagationPolicy)"]
-    
-    subgraph "资源检测"
-        RD["ResourceDetector"] -->|3. 匹配| RT & PP
-        RD -->|4. 创建| RB["ResourceBinding/ClusterResourceBinding"]
-    end
-    
-    subgraph "调度"
-        KS["karmada-scheduler"] -->|5. 监听| RB
-        KS -->|6. 调度到集群| RB
-    end
-    
-    subgraph "绑定与执行"
-        BC["BindingController"] -->|7. 监听| RB
-        BC -->|8. 创建| WO["Work 对象"]
-        EC["ExecutionController"] -->|9. 监听| WO
-        EC -->|10. 应用到集群| MC["成员集群"]
-    end
-    
-    subgraph "依赖处理"
-        DD["DependenciesDistributor"] -->|11. 检测| DEP["依赖资源"]
-        DD -->|12. 创建| ARB["附加 ResourceBindings"]
-        ARB -->|13. 同步流程| BC
-    end
-    
-    RB -->|被监听| DD
-```
-
-![Karmada 资源传播流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/c8aba1c762f991901677c980c8d0d227.svg)
-{width=1920 height=1525}
+![Karmada 资源传播流程：从模板与策略到成员集群](karmada-resource-propagation-flow.svg)
 
 简要步骤说明：
 
@@ -129,56 +63,7 @@ flowchart TD
 
 下图展示了 Karmada 各类自定义资源（CRD）之间的关系：
 
-```mermaid "Karmada 资源关系"
-classDiagram
-    class PropagationPolicy {
-        +ResourceSelectors[]
-        +Placement
-        +SchedulerName
-        +PropagateDeps: bool
-        +Failover: FailoverBehavior
-    }
-    
-    class ClusterPropagationPolicy {
-        +ResourceSelectors[]
-        +Placement
-        +SchedulerName
-        +PropagateDeps: bool
-        +Failover: FailoverBehavior
-    }
-    
-    class ResourceBinding {
-        +Resource: ObjectReference
-        +Clusters[]: TargetCluster
-        +ReplicaRequirements
-    }
-    
-    class ClusterResourceBinding {
-        +Resource: ObjectReference
-        +Clusters[]: TargetCluster
-        +ReplicaRequirements
-    }
-    
-    class Work {
-        +Manifests[]
-        +Status: WorkStatus
-    }
-    
-    class Placement {
-        +ClusterAffinity
-        +SpreadConstraints[]
-        +ClusterTolerations[]
-        +ReplicaScheduling
-    }
-    
-    PropagationPolicy --> Placement
-    ClusterPropagationPolicy --> Placement
-    ResourceBinding --> "1..*" Work: creates
-    ClusterResourceBinding --> "1..*" Work: creates
-```
-
-![Karmada 资源关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/7590885cc55d370d4fc06920ca00cdc5.svg)
-{width=1920 height=722}
+![Karmada 核心 CRD 之间的关系](karmada-crd-relationships.svg)
 
 ## 同步模式
 
@@ -233,19 +118,7 @@ Karmada 以标准 Kubernetes 资源定义为模板（如 Deployment、Service、
 
 ### Work 在整体流程中的位置
 
-```mermaid "Work 对象在调度流程中的位置"
-flowchart TD
-    A[用户创建 Deployment / Service 等资源] --> B[PropagationPolicy 匹配]
-    B --> C[生成 ResourceBinding / ClusterResourceBinding]
-    C --> D["调度目标集群 (Scheduler)"]
-    D --> E[生成 Work 对象 - 每个目标集群一个]
-    E --> F[karmada-agent 下发 Work 到对应集群]
-    F --> G[成员集群创建实际 Deployment/Pod]
-    G --> H[状态回传到 Work 与 ResourceBinding]
-```
-
-![Work 对象在调度流程中的位置](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/8c8f0103498051ae34629668dffd470d.svg)
-{width=1920 height=8627}
+![Work 对象在调度流程中的位置](work-object-in-scheduling-flow.svg)
 `
 
 > 由此可见，**Work 并非业务资源本身，而是分发“任务描述”**。
@@ -347,33 +220,7 @@ kubectl get deployment nginx -n default --context member1
 
 Karmada 调度器基于插件框架，参考 Kubernetes 调度器，主要流程如下：
 
-```mermaid "Karmada 调度系统"
-flowchart TD
-    subgraph "调度器组件"
-        GS["genericScheduler"] -->|使用| FWK["Framework"]
-        FWK -->|包含| FP["Filter 插件"]
-        FWK -->|包含| SP["Score 插件"]
-        
-        FP -->|如| TT["TaintToleration"]
-        FP -->|如| CA["ClusterAffinity"]
-        FP -->|如| AE["APIEnablement"]
-        FP -->|如| SC["SpreadConstraint"]
-        
-        SP -->|如| CL["ClusterLocality"]
-        SP -->|如| CAScore["ClusterAffinity"]
-    end
-    
-    RB["ResourceBinding"] -->|调度| GS
-    GS -->|1. 过滤集群| FILTER["findClustersThatFit"]
-    FILTER -->|2. 打分集群| SCORE["prioritizeClusters"]
-    SCORE -->|3. 选择集群| SELECT["selectClusters"]
-    SELECT -->|4. 分配副本| ASSIGN["assignReplicas"]
-    
-    KSE["karmada-scheduler-estimator"] -->|提供资源信息| GS
-```
-
-![Karmada 调度系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/16a7f6c31fc87ed049d89b40eb235349.svg)
-{width=1920 height=1133}
+![Karmada 调度系统：插件框架与调度流程](karmada-scheduler-framework.svg)
 
 调度流程：
 
@@ -404,29 +251,7 @@ flowchart TD
 
 下图展示了 Karmada 多集群部署的主要流程：
 
-```mermaid "多集群部署流程"
-sequenceDiagram
-    participant User as 用户
-    participant Karmada-API as Karmada API Server
-    participant Controller as 控制器管理器
-    participant Scheduler as 调度器
-    participant Member1 as 集群 member1
-    participant Member2 as 集群 member2
-
-    User->>Karmada-API: 创建 Deployment（模板）
-    User->>Karmada-API: 创建 PropagationPolicy
-    Karmada-API->>Controller: 触发资源与策略匹配
-    Controller->>Scheduler: 生成 ResourceBinding 并请求调度
-    Scheduler->>Controller: 决策：派发至 member1、member2
-    Controller->>Member1: 创建 Work 对象并下发资源
-    Controller->>Member2: 创建 Work 对象并下发资源
-    Member1-->>Controller: 上报运行状态
-    Member2-->>Controller: 上报运行状态
-    Controller-->>User: 聚合显示全局状态（Running）
-```
-
-![多集群部署流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/5d439aa063fefae7861db115657b2982.svg)
-{width=1920 height=853}
+![多集群部署流程时序图](multi-cluster-deployment-sequence.svg)
 
 > 该流程清晰地展示了「模板 → 策略 → 调度 → 传播 → 状态汇聚」的完整生命周期。
 
@@ -526,18 +351,7 @@ status:
 
 下图总结了 Karmada 多集群调度与资源传播的核心机制：
 
-```mermaid "Karmada 多集群调度与传播 Pipeline"
-flowchart TD
-    A[用户创建 Deployment/Service] --> B[PropagationPolicy 匹配资源]
-    B --> C[控制器生成 ResourceBinding]
-    C --> D[Scheduler 调度目标集群]
-    D --> E[Work 控制器分发资源]
-    E --> F[成员集群创建真实资源]
-    F --> G[状态上报与聚合显示]
-```
-
-![Karmada 多集群调度与传播 Pipeline](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/karmada/29581faa8dd70d8e88d686cf26af40e7.svg)
-{width=1920 height=6882}
+![Karmada 多集群调度与传播 Pipeline](karmada-propagation-pipeline.svg)
 
 > ✅ 这就是 Karmada 的核心能力：**声明式多集群资源传播与调度闭环。**
 

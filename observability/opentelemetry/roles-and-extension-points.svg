@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1120" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rolesaz-title rolesaz-desc" id="roles-and-extension-points-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="rolesaz-title">OpenTelemetry 的角色分工与扩展点</title>
+<desc id="rolesaz-desc">库作者与埋点作者只依赖 API，埋点作者还向 Contrib 贡献；应用所有者配置 SDK、Processors 并选择 Exporters；插件作者扩展 SDK 接口并实现 Exporters；Semantic Conventions 为各角色共同遵循的标签规范。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #roles-and-extension-points-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #roles-and-extension-points-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #roles-and-extension-points-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#roles-and-extension-points-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="roles-and-extension-points-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="24" y="92" width="252" height="436" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="40" y="114" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">User Roles</text>
+<rect x="704" y="92" width="272" height="436" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="720" y="114" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">OpenTelemetry Components</text>
+<path d="M 264 170 L 392 170 Q 400 170 400 162 L 400 162 Q 400 154 408 154 L 736 154" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="286" y="147.4" width="92" height="16.6" style="fill:#ffffff"/>
+<text x="332" y="159" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">原生埋点可选用</text>
+<path d="M 264 253.2 L 428 253.2 Q 436 253.2 436 245.2 L 436 177.6 Q 436 169.6 444 169.6 L 736 169.6" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="313.48" y="230.6" width="73.04" height="16.6" style="fill:#ffffff"/>
+<text x="350" y="242.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">仅使用 API</text>
+<path d="M 264 286.8 L 464 286.8 Q 472 286.8 472 278.8 L 472 230 Q 472 222 480 222 L 736 222" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="352" y="264.2" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="368" y="275.8" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">贡献</text>
+<path d="M 264 344.8 L 501.4 344.8 Q 508 344.8 508 351.4 L 508 351.4 Q 508 358 514.6 358 L 736 358" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="370" y="322.2" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="386" y="333.8" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">配置</text>
+<path d="M 264 370 L 536 370 Q 544 370 544 378 L 544 410.2 Q 544 418.2 552 418.2 L 736 418.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="388" y="347.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="404" y="359" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">配置</text>
+<path d="M 264 395.2 L 572 395.2 Q 580 395.2 580 403.2 L 580 475.6 Q 580 483.6 588 483.6 L 736 483.6" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="406" y="372.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="422" y="384.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">选择</text>
+<path d="M 264 457.4 L 608 457.4 Q 616 457.4 616 449.4 L 616 447 Q 616 439 624 439 L 736 439" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="412" y="434.8" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="440" y="446.4" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">扩展接口</text>
+<path d="M 264 482.6 L 644 482.6 Q 652 482.6 652 490.6 L 652 496.4 Q 652 504.4 660 504.4 L 736 504.4" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#roles-and-extension-points-m-6b7280)"/>
+<rect x="442" y="460" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="458" y="471.6" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">实现</text>
+<rect x="40" y="128" width="220" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(78.76,152) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="173" y="166.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">库作者</text>
+<text x="173" y="183.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Library Author</text>
+<rect x="40" y="228" width="220" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(49.36,252) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="173" y="266.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">埋点作者</text>
+<text x="173" y="283.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Instrumentation Author</text>
+<rect x="40" y="328" width="220" height="84" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="40" y="328" width="220" height="84" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(70.72,352) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21v-2a4 4 0 0 1 4 -4h2" /> <path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5" /> <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /></g>
+<text x="173" y="366.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用所有者</text>
+<text x="173" y="383.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Application Owner</text>
+<rect x="40" y="428" width="220" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(84.04,452) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="173" y="466.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">插件作者</text>
+<text x="173" y="483.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Plugin Author</text>
+<rect x="740" y="128" width="220" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(803,136) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="873" y="150.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">API</text>
+<text x="873" y="167.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">埋点接口</text>
+<rect x="740" y="196" width="220" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(757.7,204) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></g>
+<text x="873" y="218.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Contrib Packages</text>
+<text x="873" y="235.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">社区埋点与插件</text>
+<rect x="740" y="264" width="220" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,4"/>
+<g aria-hidden="true" transform="translate(747.28,272.5) scale(1.458)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="872.5" y="286.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Semantic Conventions</text>
+<text x="872.5" y="303.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标准化标签与属性</text>
+<rect x="740" y="332" width="220" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(781.25,340) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="873" y="354.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Processors</text>
+<text x="873" y="371.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">处理流水线</text>
+<rect x="740" y="400" width="220" height="52" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="740" y="400" width="220" height="52" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(794.48,408) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="873" y="422.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">SDK</text>
+<text x="873" y="439.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">API 的实现</text>
+<rect x="740" y="468" width="220" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(785.75,476) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M5 12l6 6" /> <path d="M5 12l6 -6" /></g>
+<text x="873" y="490.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Exporters</text>
+<text x="873" y="507.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">导出到后端</text>
+<text x="500" y="548" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Semantic Conventions（虚线）不与特定角色绑定，是所有角色共同遵循的命名规范。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">OpenTelemetry 的角色分工与扩展点</text>
+</g>
+</svg>

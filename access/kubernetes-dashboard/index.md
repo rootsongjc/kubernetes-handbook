@@ -13,57 +13,13 @@ lastmod: 2025-10-19T07:54:08.331Z
 
 Kubernetes Dashboard 由一组微服务组成，每个服务服务于特定目的。从版本 7.0.0 开始，Dashboard 仅支持基于 Helm 的安装，因为其多容器设置和对 Kong Gateway 作为中央 API 代理的依赖。
 
-```mermaid
-graph TB
-    subgraph "Kubernetes Dashboard Repository"
-        subgraph "Core Modules"
-            web["Web<br>(Angular Frontend)"]
-            api["API<br>(Go Backend)"]
-            auth["Auth<br>(Authentication)"]
-            metrics["Metrics Scraper<br>(Performance Data)"]
-            common["Common<br>(Shared Code)"]
-        end
-
-        subgraph "Deployment"
-            charts["Helm Charts"]
-        end
-
-        web --> common
-        api --> common
-        auth --> common
-        metrics --> common
-
-        web & api & auth & metrics --> charts
-    end
-```
-
-![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/8dfcc1889aac282ff3e95cce8632b88e.svg)
-{width=1920 height=2105}
+![Kubernetes Dashboard 仓库模块](dashboard-repo-modules.svg)
 
 ## 系统架构
 
 Kubernetes Dashboard 遵循微服务架构，以中央 API 代理（Kong Gateway）路由流量并向用户公开 UI。
 
-```mermaid
-graph TD
-    User["Browser User"] -->|"Access"| Ingress["Ingress Controller"]
-    Ingress -->|"Routes to"| Kong["Kong Gateway API Proxy"]
-
-    subgraph "Kubernetes Dashboard Components"
-        Kong -->|"Routes to"| WebUI["Web UI<br>Angular Frontend"]
-        Kong -->|"Routes to"| API["API Module<br>REST/GraphQL Backend"]
-        Kong -->|"Routes to"| Auth["Auth Module<br>Authentication"]
-        API -->|"Uses"| MetricsScraper["Metrics Scraper<br>Performance Monitoring"]
-    end
-
-    WebUI -->|"HTTP Requests"| API
-    API -->|"Queries"| K8sAPI["Kubernetes API"]
-    MetricsScraper -->|"Collects from"| MetricsServer["Metrics Server"]
-    Auth -->|"Validates"| K8sAPI
-```
-
-![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/7cd6b845ebe426e61f65317978584b97.svg)
-{width=1920 height=2824}
+![Kubernetes Dashboard 系统架构](dashboard-system-architecture.svg)
 
 ## 核心组件
 
@@ -103,34 +59,7 @@ API 模块作为 Dashboard 的后端，提供 REST 和 GraphQL API 以供前端�
 
 认证模块处理 Dashboard 的认证和授权。它根据 Kubernetes API 服务器验证用户令牌。
 
-```mermaid
-sequenceDiagram
-    actor "User" as User
-    participant "Browser" as Browser
-    participant "Dashboard" as Dashboard
-    participant "Auth Service" as Auth
-    participant "Kubernetes API" as K8sAPI
-
-    User->>Browser: Access Dashboard URL
-    Browser->>Dashboard: HTTP Request
-    Dashboard->>Browser: Redirect to Login
-
-    User->>Browser: Enter Token
-    Browser->>Dashboard: Send Token
-    Dashboard->>Auth: Validate Token
-    Auth->>K8sAPI: Authenticate
-    K8sAPI-->>Auth: Authentication Result
-    Auth-->>Dashboard: Auth Status
-
-    alt Authentication Success
-        Dashboard->>Browser: Display Dashboard UI
-    else Authentication Failure
-        Dashboard->>Browser: Display Error
-    end
-```
-
-![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/5008e455656948e80527644087c6db50.svg)
-{width=2099 height=777}
+![Dashboard 认证流程](dashboard-auth-sequence.svg)
 
 ### Metrics Scraper
 
@@ -146,65 +75,13 @@ Metrics Scraper 从 Kubernetes Metrics Server 收集性能指标，并将其存�
 
 Kubernetes Dashboard 使用 Helm 作为一组容器部署在 Kubernetes 集群中。Helm Chart 在 `kubernetes-dashboard` 命名空间中创建必要的资源。
 
-```mermaid
-graph TD
-    subgraph "Kubernetes Cluster"
-        subgraph "kubernetes-dashboard Namespace"
-            kongDeploy["Kong Gateway Deployment"]
-            apiDeploy["API Deployment"]
-            webDeploy["Web UI Deployment"]
-            authDeploy["Auth Deployment"]
-            metricsDeploy["Metrics Scraper Deployment"]
-
-            kongSvc["Kong Service"]
-            apiSvc["API Service"]
-            webSvc["Web Service"]
-            authSvc["Auth Service"]
-            metricsSvc["Metrics Service"]
-        end
-
-        ingress["Ingress Resource"]
-        metricsServer["Kubernetes Metrics Server"]
-    end
-
-    helmChart["Helm Chart"] -->|"Installs"| kongDeploy & apiDeploy & webDeploy & authDeploy & metricsDeploy
-
-    kongDeploy --> kongSvc
-    apiDeploy --> apiSvc
-    webDeploy --> webSvc
-    authDeploy --> authSvc
-    metricsDeploy --> metricsSvc
-
-    ingress --> kongSvc
-    kongSvc --> webSvc & apiSvc & authSvc
-    metricsDeploy -->|"Queries"| metricsServer
-```
-
-![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/7165e713019d160b86c1c19463657c05.svg)
-{width=2096 height=808}
+![Kubernetes Dashboard 部署架构](dashboard-deployment-architecture.svg)
 
 ## 开发和构建系统
 
 Kubernetes Dashboard 使用模块化构建系统，以 Makefile 作为主要的编排工具。这构建各个模块并生成 Docker 镜像，然后打包到 Helm Chart 中。
 
-```mermaid
-graph LR
-    subgraph "Development Process"
-        code["Source Code"]
-        build["Build Process"]
-        docker["Docker Images"]
-        helm["Helm Chart"]
-        deploy["Deployment"]
-    end
-
-    code -->|"make build"| build
-    build -->|"Create"| docker
-    docker -->|"Package"| helm
-    helm -->|"helm install"| deploy
-```
-
-![Mermaid Diagram](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubernetes-dashboard/ae166e6072a56ca2ee27555fd891c61c.svg)
-{width=1920 height=6782}
+![Dashboard 开发与构建流程](dashboard-build-pipeline.svg)
 
 ## 主要特性
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2240" height="1400" viewBox="0 0 1120 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="terrafz-title terrafz-desc" id="terraform-internal-architecture-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="terrafz-title">Terraform 内部架构（进阶）：CLI、核心引擎与三大子系统</title>
+<desc id="terrafz-desc">terraform CLI 经 command.Commands / Meta 创建 terraform.Context；Context 构建并遍历依赖图，加载配置（configload / configs / HCL），读写状态（statemgr → local / remote backends），EvalContext 通过 gRPC 插件协议调用 Provider。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #terraform-internal-architecture-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #terraform-internal-architecture-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #terraform-internal-architecture-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#terraform-internal-architecture-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="terraform-internal-architecture-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="96" width="1050" height="112" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">CLI 层</text>
+<rect x="40" y="256" width="1050" height="120" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="278" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">核心引擎</text>
+<rect x="40" y="430" width="240" height="236" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="452" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">配置处理</text>
+<rect x="320" y="430" width="430" height="236" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="336" y="452" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">状态管理</text>
+<rect x="790" y="430" width="300" height="236" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="806" y="452" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Provider 系统</text>
+<path d="M 268 158 L 326 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 554 158 L 612 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 716 190 L 716 224 Q 716 232 708 232 L 172 232 Q 164 232 164 240 L 164 288" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 268 322 L 316 322" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 524 322 L 572 322" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 780 322 L 808 322" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 160 522 L 160 528" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 160 588 L 160 594" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 500 550 L 512 550 Q 520 550 520 542 L 520 524 Q 520 516 528 516 L 542 516" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 500 550 L 512 550 Q 520 550 520 558 L 520 584 Q 520 592 528 592 L 542 592" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 224 356 L 224 392 Q 224 400 232 400 L 408 400 Q 416 400 416 408 L 416 518" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 940 536 L 940 572" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 922 356 L 922 476" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<path d="M 164 356 L 164 462" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#terraform-internal-architecture-m-6b7280)"/>
+<rect x="64" y="130" width="200" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="64" y="130" width="200" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(89.1,147.5) scale(0.875)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15.5l-11.476 -6.216a1 1 0 0 1 -.524 -.88v-4.054a1.35 1.35 0 0 1 2.03 -1.166l9.97 5.816v10.65a1.35 1.35 0 0 1 -2.03 1.166l-3.474 -2.027a1 1 0 0 1 -.496 -.863v-11.926" /> <path d="M15 15.5l5.504 -3.21a1 1 0 0 0 .496 -.864v-3.576a1.35 1.35 0 0 0 -2.03 -1.166l-3.97 2.316" /></g>
+<text x="179.5" y="163.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">terraform CLI</text>
+<rect x="330" y="130" width="220" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="440" y="154.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">command.Commands</text>
+<text x="440" y="171.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令注册表</text>
+<rect x="616" y="130" width="200" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="716" y="154.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">command.Meta</text>
+<text x="716" y="171.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令公共上下文</text>
+<rect x="64" y="292" width="200" height="60" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="64" y="292" width="200" height="60" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="164" y="318.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">terraform.Context</text>
+<text x="164" y="335.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">执行上下文</text>
+<rect x="320" y="292" width="200" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(343.3,304) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M7 8l0 8" /> <path d="M9 18h6a2 2 0 0 0 2 -2v-5" /> <path d="M14 14l3 -3l3 3" /></g>
+<text x="443" y="318.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Graph Builder</text>
+<text x="443" y="335.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">构建依赖图</text>
+<rect x="576" y="292" width="200" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(601.7,304) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="699" y="318.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Graph Walker</text>
+<text x="699" y="335.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">遍历执行</text>
+<rect x="812" y="292" width="220" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="922" y="318.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">terraform.EvalContext</text>
+<text x="922" y="335.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">求值上下文</text>
+<rect x="56" y="466" width="208" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(78.78,482) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="175" y="496.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">configload.Loader</text>
+<rect x="56" y="532" width="208" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="160" y="562.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">configs.Config</text>
+<rect x="56" y="598" width="208" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="160" y="628.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HCL Parser</text>
+<rect x="336" y="522" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(343.38,532.5) scale(1.458)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /> <path d="M4 6v6a8 3 0 0 0 16 0v-6" /> <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></g>
+<text x="438.5" y="546.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">statemgr.Full</text>
+<text x="438.5" y="563.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">状态管理器</text>
+<rect x="546" y="490" width="188" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="640" y="512.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">local backend</text>
+<text x="640" y="528.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">本地 tfstate</text>
+<rect x="546" y="566" width="188" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="640" y="588.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">remote backends</text>
+<text x="640" y="604.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">S3/GCS/Azure/Consul/Cloud</text>
+<rect x="806" y="480" width="268" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(857.74,489.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="961.5" y="502.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Provider Plugins</text>
+<text x="961.5" y="518.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">独立进程插件</text>
+<rect x="806" y="576" width="268" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="940" y="598.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">gRPC Plugin Protocol</text>
+<text x="940" y="614.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">插件通信协议</text>
+<text x="560" y="690" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Context 是枢纽：向下加载配置、读写状态，EvalContext 通过 gRPC 插件协议调用 Provider。</text>
+<text x="560" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Terraform 内部架构（进阶）：CLI、核心引擎与三大子系统</text>
+</g>
+</svg>

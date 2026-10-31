@@ -25,48 +25,7 @@ KubeEdge 采用云 - 边双组件架构，分别在云端和边缘节点运行�
 
 下图展示了 KubeEdge 的核心组件及其交互关系，帮助理解整体架构设计。
 
-```mermaid "KubeEdge 架构示意图"
-graph TB
-    subgraph "云端"
-        CloudCore["CloudCore"]
-        KC["Kubernetes 控制平面"]
-        
-        CloudCore --> CloudHub["CloudHub"]
-        CloudCore --> EC["EdgeController"]
-        CloudCore --> DC["DeviceController"]
-        CloudCore --> SC["SyncController"]
-        CloudCore --> CS["CloudStream"]
-        
-        KC --> CloudCore
-    end
-    
-    subgraph "边缘端"
-        EdgeCore["EdgeCore"]
-        
-        EdgeCore --> Edged["Edged (轻量 Kubelet)"]
-        EdgeCore --> EdgeHub["EdgeHub"]
-        EdgeCore --> MM["MetaManager"]
-        EdgeCore --> DT["DeviceTwin"]
-        EdgeCore --> EB["EventBus"]
-        EdgeCore --> SB["ServiceBus"]
-        
-        Containers["容器"]
-        Devices["边缘设备"]
-        
-        Edged --> Containers
-        DT --> Devices
-        EB --> Devices
-    end
-    
-    %% 通信通道
-    CloudHub <--> EdgeHub
-    EC <-.-> MM
-    DC <-.-> DT
-    CS <-.-> EdgeCore
-```
-
-![KubeEdge 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/b08b32603b3ff6eb5f518f796a8a93ba.svg)
-{width=1920 height=1150}
+![KubeEdge 架构：云端 CloudCore 与边缘端 EdgeCore 及其云边通道](kubeedge-architecture.svg)
 
 ## 主要优势
 
@@ -88,29 +47,7 @@ graph TB
 
 云端的 CloudCore 组件包含多个子模块，协同实现云边通信、资源同步和设备管理。下图展示了 CloudCore 内部模块的结构关系。
 
-```mermaid "CloudCore 架构示意图"
-graph TD
-    subgraph "CloudCore 组件"
-        CloudHub["CloudHub<br/>(cloudhub.Register())"]
-        EC["EdgeController<br/>(edgecontroller.Register())"]
-        DC["DeviceController<br/>(devicecontroller.Register())"]
-        SC["SyncController<br/>(synccontroller.Register())"]
-        CS["CloudStream<br/>(cloudstream.Register())"]
-        Router["Router<br/>(router.Register())"]
-        DynamicController["DynamicController<br/>(dynamiccontroller.Register())"]
-    end
-    
-    CloudCore["CloudCore<br/>(NewCloudCoreCommand())"] --> CloudHub
-    CloudCore --> EC
-    CloudCore --> DC
-    CloudCore --> SC
-    CloudCore --> CS
-    CloudCore --> Router
-    CloudCore --> DynamicController
-```
-
-![CloudCore 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/e189132bdca84cee62bf22ea0d10e4b8.svg)
-{width=2295 height=380}
+![CloudCore 内部模块注册关系](cloudcore-modules.svg)
 
 - **CloudHub**：WebSocket 服务器，负责云边消息转发、连接管理和消息缓存。
 - **EdgeController**：扩展控制器，管理边缘节点和 Pod 元数据，同步资源到边缘，处理状态上报。
@@ -122,27 +59,7 @@ graph TD
 
 EdgeCore 作为边缘主代理，集成了多个模块，负责本地容器编排、设备管理和云边通信。下图展示了 EdgeCore 内部模块的结构关系。
 
-```mermaid "EdgeCore 架构示意图"
-graph TD
-    subgraph "EdgeCore 组件"
-        Edged["Edged<br/>(轻量 Kubelet)"]
-        EdgeHub["EdgeHub<br/>(云连接)"]
-        MM["MetaManager<br/>(元数据存储)"]
-        DT["DeviceTwin<br/>(设备状态同步)"]
-        EB["EventBus<br/>(MQTT 客户端)"]
-        SB["ServiceBus<br/>(HTTP 客户端)"]
-    end
-    
-    EdgeCore["EdgeCore<br/>(边缘主代理)"] --> Edged
-    EdgeCore --> EdgeHub
-    EdgeCore --> MM
-    EdgeCore --> DT
-    EdgeCore --> EB
-    EdgeCore --> SB
-```
-
-![EdgeCore 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/7c30bad0e052e2d47de252e1312dafea.svg)
-{width=1920 height=479}
+![EdgeCore 内部模块组成](edgecore-modules.svg)
 
 - **EdgeHub**：WebSocket 客户端，负责与 CloudHub 通信，同步云端资源变更、上报边缘状态。
 - **Edged**：轻量级 kubelet，管理本地容器应用，适配边缘环境。
@@ -155,41 +72,7 @@ graph TD
 
 KubeEdge 云边及内部模块间通信基于 Beehive 消息框架，支持可靠消息投递和多种同步模式。下图展示了消息系统的整体结构。
 
-```mermaid "KubeEdge 消息框架"
-flowchart LR
-    subgraph "消息框架"
-        Beehive["Beehive 消息系统"]
-    end
-    
-    subgraph "云边通信"
-        CloudHub["CloudHub"] <--> |"WebSocket/QUIC"| EdgeHub["EdgeHub"]
-    end
-    
-    subgraph "云端模块"
-        EC["EdgeController"]
-        DC["DeviceController"]
-        SC["SyncController"]
-    end
-    
-    subgraph "边缘模块"
-        MM["MetaManager"]
-        DT["DeviceTwin"]
-        Edged["Edged"]
-    end
-    
-    CloudHub --> Beehive
-    EC --> Beehive
-    DC --> Beehive
-    SC --> Beehive
-    
-    EdgeHub --> Beehive
-    MM --> Beehive
-    DT --> Beehive
-    Edged --> Beehive
-```
-
-![KubeEdge 消息框架](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/72c4c6c8b48196bf2ce067d4012e012e.svg)
-{width=1920 height=2011}
+![KubeEdge 消息框架：云边模块经 Beehive 收发消息](beehive-message-framework.svg)
 
 KubeEdge 支持 ACK/NO-ACK 两种消息确认模式，保障消息可靠送达。消息包含头部（ID、时间戳、版本）、路由（源、目标、操作、资源）和内容体。
 
@@ -197,77 +80,13 @@ KubeEdge 支持 ACK/NO-ACK 两种消息确认模式，保障消息可靠送达�
 
 下图展示了云到边、边到云的资源同步与状态上报流程，帮助理解其数据流转机制。
 
-```mermaid "资源同步流程"
-sequenceDiagram
-    participant K8s as Kubernetes API
-    participant EC as EdgeController
-    participant CH as CloudHub
-    participant EH as EdgeHub
-    participant MM as MetaManager
-    participant Edged as Edged
-    
-    %% 云到边
-    K8s->>EC: 资源变更（Pod、ConfigMap、Secret 等）
-    EC->>CH: 构建并发送消息
-    CH->>EH: WebSocket 转发
-    EH->>MM: 存储消息元数据
-    MM->>Edged: 通知资源变更
-    Edged->>Edged: 应用变更（容器操作）
-    
-    %% 边到云
-    Edged->>MM: 状态上报
-    MM->>EH: 转发状态
-    EH->>CH: 上报云端
-    CH->>EC: UpstreamController 更新资源
-    EC->>K8s: 更新 API Server 状态
-```
-
-![资源同步流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/e09a42fa09619512eb5e2208f4b0d1ff.svg)
-{width=1920 height=918}
+![资源同步流程：云到边下发与边到云状态上报](resource-sync-sequence.svg)
 
 ## 设备管理框架
 
 KubeEdge 提供原生的设备管理能力，支持通过 CRD（Custom Resource Definition，自定义资源定义）声明设备及模型，边缘侧通过 DeviceTwin、EventBus 与物理设备通信。下图展示了设备管理的整体流程。
 
-```mermaid "设备管理框架"
-graph TD
-    subgraph "云端"
-        DC["DeviceController"]
-        USC["UpstreamController"]
-        DSC["DownstreamController"]
-        DM["DeviceModel CRD"]
-        DD["Device CRD"]
-        
-        DC --> USC
-        DC --> DSC
-        DSC --> DM
-        DSC --> DD
-    end
-    
-    subgraph "边缘端"
-        DT["DeviceTwin"]
-        MM["MetaManager"]
-        EB["EventBus"]
-        
-        DT --> MM
-        DT --> EB
-    end
-    
-    subgraph "物理设备"
-        PD["物理设备"]
-        Mappers["设备 Mapper"]
-        
-        Mappers --> PD
-    end
-    
-    %% 连接
-    DSC <--> MM
-    USC <--> DT
-    EB <--> Mappers
-```
-
-![设备管理框架](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/33d41cdd1bc18f9d07a088f7b3cfcbb6.svg)
-{width=1920 height=1699}
+![设备管理框架：CRD、DeviceTwin、EventBus 与 Mapper](device-management-framework.svg)
 
 - 云端通过 Device CRD/DeviceModel CRD 定义设备
 - 边缘 DeviceTwin 维护设备状态，EventBus 通过 MQTT 与设备通信
@@ -277,22 +96,7 @@ graph TD
 
 KubeEdge 提供 keadm 命令行工具，简化集群部署与节点管理。下图展示了 keadm 的主要功能模块。
 
-```mermaid "管理工具 keadm"
-graph TD
-    Keadm["keadm<br/>(管理工具)"]
-    
-    Keadm --> Init["keadm init<br/>(初始化 CloudCore)"]
-    Keadm --> Join["keadm join<br/>(添加边缘节点)"]
-    Keadm --> Reset["keadm reset<br/>(移除组件)"]
-    Keadm --> Debug["keadm debug<br/>(故障排查)"]
-    
-    Debug --> Check["check<br/>(环境检查)"]
-    Debug --> Diagnose["diagnose<br/>(诊断问题)"]
-    Debug --> Collect["collect<br/>(日志收集)"]
-```
-
-![管理工具 keadm](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/dd34b56941f6cf8002df4840274b8ab2.svg)
-{width=1920 height=831}
+![keadm 命令结构](keadm-commands.svg)
 
 ## 兼容性与安全
 

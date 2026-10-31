@@ -24,74 +24,13 @@ Kubebuilder 是一个用于通过自定义资源定义（CRD）构建 Kubernetes
 
 下图展示了 Kubebuilder 的系统架构及其主要组件：
 
-```mermaid "Kubebuilder 系统架构核心组件"
-graph TD
-    subgraph "命令行接口"
-        CLI["CLI (pkg/cli)"]
-        CLI -->|执行| Commands["命令 (init, create api 等)"]
-        CLI -->|解析| Plugins["插件系统"]
-    end
-    subgraph "插件系统"
-        Plugins -->|核心| GoPlugins["Go 插件 (v4)"]
-        Plugins -->|可选| OptPlugins["可选插件 (Helm, Grafana, Deploy-Image)"]
-        Plugins -->|外部| ExtPlugins["外部插件"]
-    end
-    subgraph "脚手架引擎"
-        GoPlugins & OptPlugins & ExtPlugins -->|调用| Scaffolder["脚手架 (pkg/machinery)"]
-        Scaffolder -->|生成| Files["项目文件"]
-        Scaffolder -->|使用| Templates["模板"]
-        Scaffolder -->|读写| Config["项目配置 (pkg/config)"]
-    end
-    subgraph "运行时依赖"
-        Files -->|导入| ControllerRT["controller-runtime"]
-        Files -->|使用| K8sLibs["Kubernetes 库"]
-        Files -->|管理| GoMod["go.mod/go.sum"]
-    end
-    subgraph "构建系统"
-        Files -->|构建| Makefile["Makefile"]
-        Makefile -->|调用| ControllerGen["controller-gen"]
-        Makefile -->|调用| Kustomize["kustomize"]
-        Makefile -->|生成| Binaries["二进制 & CRD"]
-    end
-    Binaries -->|部署到| K8s["Kubernetes 集群"]
-```
-
-![Kubebuilder 系统架构核心组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/f54da153157aca0ef26f26bcd9843b1e.svg)
-{width=1920 height=1982}
+![Kubebuilder 系统架构：从 CLI 到集群](kubebuilder-architecture.svg)
 
 ### 插件系统机制
 
 Kubebuilder 的插件系统是其可扩展性的核心。插件实现了 CLI 命令所需的各种接口，支持核心功能和可选扩展：
 
-```mermaid "Kubebuilder 插件系统接口关系"
-graph LR
-    subgraph "CLI 命令解析"
-        CLI["CLI (pkg/cli)"] -->|解析| Plugins["插件系统"]
-    end
-    subgraph "插件接口"
-        Plugins -->|实现| Init["InitSubcommand"]
-        Plugins -->|实现| CreateAPI["CreateAPISubcommand"]
-        Plugins -->|实现| CreateWebhook["CreateWebhookSubcommand"]
-        Plugins -->|实现| Edit["EditSubcommand"]
-    end
-    subgraph "Go 插件 v4"
-        Init -->|由实现| GoInit["Go Init (v4)"]
-        CreateAPI -->|由实现| GoAPI["Go API (v4)"]
-        CreateWebhook -->|由实现| GoWebhook["Go Webhook (v4)"]
-        Edit -->|由实现| GoEdit["Go Edit (v4)"]
-    end
-    subgraph "可选插件"
-        CreateAPI -->|扩展| DeployImage["Deploy-Image 插件"]
-        Edit -->|扩展| HelmPlugin["Helm Chart 插件"]
-        Edit -->|扩展| GrafanaPlugin["Grafana 插件"]
-    end
-    subgraph "外部插件"
-        Init & CreateAPI & CreateWebhook & Edit -->|可为| External["外部二进制插件"]
-    end
-```
-
-![Kubebuilder 插件系统接口关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/0f8c4d7195243e71b8b1d62170b59fef.svg)
-{width=1920 height=1574}
+![Kubebuilder 插件系统：接口与实现者](plugin-system-interfaces.svg)
 
 Go v4 插件实现了完整的 `plugin.Full` 接口，支持项目初始化、新建 API 资源、新建 Webhook 及编辑资源。可选插件则针对镜像部署、Helm Chart 管理等场景扩展功能。
 
@@ -99,30 +38,7 @@ Go v4 插件实现了完整的 `plugin.Full` 接口，支持项目初始化、�
 
 Kubebuilder 提供了结构化的开发流程，便于构建高质量的 Controller：
 
-```mermaid "Kubebuilder 开发与部署流程"
-flowchart LR
-    subgraph "开发阶段"
-        Init["kubebuilder init"] --> CreateAPI["kubebuilder create api"]
-        CreateAPI --> Webhook["kubebuilder create webhook"]
-        Webhook --> Implement["实现控制器逻辑"]
-        Implement --> Test["make test"]
-    end
-    subgraph "构建与部署阶段"
-        Test --> Manifests["make manifests"]
-        Manifests --> DockerBuild["make docker-build"]
-        DockerBuild --> DockerPush["make docker-push"]
-        DockerPush --> Deploy["make deploy"]
-    end
-    subgraph "运行时"
-        Deploy --> Controller["运行控制器"]
-        Controller -->|监听| CRD["自定义资源"]
-        Controller -->|调谐| Resources["Kubernetes 资源"]
-        Controller -->|暴露| Metrics["指标"]
-    end
-```
-
-![Kubebuilder 开发与部署流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/8ef0ca0ac70a10bc71075954614a6aeb.svg)
-{width=3459 height=459}
+![Kubebuilder 开发与部署流程](dev-deploy-workflow.svg)
 
 典型流程包括：
 
@@ -159,78 +75,13 @@ flowchart LR
 
 下图展示了 Kubebuilder 的关键对象关系：
 
-```mermaid "Kubebuilder 核心对象模型"
-classDiagram
-    class CLI {
-        plugins: map[string]Plugin
-        defaultPlugins: map
-        Run() error
-    }
-    class Plugin {
-        <<interface>>
-        Name() string
-        Version() string
-        GetInitSubcommand()
-        GetCreateAPISubcommand()
-        GetCreateWebhookSubcommand()
-        GetEditSubcommand()
-    }
-    class Config {
-        Version
-        Domain
-        Repository
-        Resources[]
-        Plugins map
-    }
-    class Resource {
-        GVK
-        API
-        Controller
-        Webhooks
-    }
-    class Scaffold {
-        Execute() error
-    }
-    class Template {
-        <<interface>>
-        GetPath() string
-        SetTemplateDefaults()
-    }
-    CLI --> Plugin : 解析
-    CLI --> Config : 使用
-    Plugin --> Scaffold : 使用
-    Config --> Resource : 包含
-    Scaffold --> Template : 使用
-```
-
-![Kubebuilder 核心对象模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/f3877192b99d52bfd4a75cf54c07fde4.svg)
-{width=1920 height=4217}
+![Kubebuilder 核心对象模型](core-object-model.svg)
 
 ### 控制器运行时机制
 
 Kubebuilder 项目基于 controller-runtime 库，核心组件如下：
 
-```mermaid "controller-runtime 运行时组件"
-graph TD
-    subgraph "controller-runtime"
-        Manager["Manager"] --> Client["Client"]
-        Manager --> Cache["Cache"]
-        Manager --> Scheme["Scheme"]
-        Controller["Controller"] --> Reconciler["Reconciler 接口"]
-        Manager --> Controller
-        Webhook["Webhook 服务器"] --> AdmissionHooks["准入钩子"]
-        Manager --> Webhook
-        MetricsServer["指标服务器"]
-        Manager --> MetricsServer
-    end
-    subgraph "用户实现"
-        ReconcilerImpl["控制器 Reconciler"] -.实现.-> Reconciler
-        WebhookImpl["Webhook 函数"] -.实现.-> AdmissionHooks
-    end
-```
-
-![controller-runtime 运行时组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/dea9df04335e19584942860ccfc32e1a.svg)
-{width=1945 height=623}
+![controller-runtime 运行时组件](controller-runtime-components.svg)
 
 Manager 是核心，负责：
 
@@ -265,28 +116,7 @@ Kubebuilder 项目通过 controller-runtime 默认支持如下指标，可集成
 
 Kubebuilder 提供完善的测试能力：
 
-```mermaid "Kubebuilder 测试体系"
-graph TD
-    subgraph "测试类型"
-        Unit["单元测试"] -->|使用| Ginkgo["Ginkgo/Gomega"]
-        Integration["集成测试"] -->|使用| EnvTest["envtest"]
-        E2E["端到端测试"] -->|使用| Kind["kind 集群"]
-    end
-    subgraph "envtest 框架"
-        EnvTest -->|启动| APIServer["K8s API Server"]
-        EnvTest -->|使用| Etcd["etcd"]
-        EnvTest -->|管理| TestAssets["测试资产"]
-    end
-    subgraph "测试上下文"
-        E2E -->|使用| TestContext["TestContext"]
-        TestContext -->|执行| KubebuilderCLI["Kubebuilder CLI"]
-        TestContext -->|管理| Kubectl["kubectl"]
-        TestContext -->|构建| TestImage["控制器镜像"]
-    end
-```
-
-![Kubebuilder 测试体系](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/8dbff215afe8b91dc751f8dd277ebf1d.svg)
-{width=1920 height=774}
+![Kubebuilder 测试体系](testing-system.svg)
 
 - 单元测试：针对函数逻辑
 - 集成测试：使用 envtest 启动 API Server
@@ -300,24 +130,7 @@ graph TD
 
 下图为 Kubebuilder 项目初始化流程：
 
-```mermaid "Kubebuilder 项目初始化流程"
-flowchart TD
-    A[创建项目目录] --> B[kubebuilder init]
-    B --> C[配置项目元数据]
-    C --> D[生成基础结构]
-    D --> E[创建API资源]
-    E --> F[实现控制器逻辑]
-    F --> G[测试和部署]
-    B --> B1["--domain example.com<br/>设置域名"]
-    B --> B2["--repo github.com/user/project<br/>设置仓库地址"]
-    B --> B3["--owner TeamName<br/>设置所有者"]
-    B --> B4["--description ProjectDescription<br/>项目描述"]
-    B --> B5["--license apache2<br/>许可证类型"]
-    B --> B6["--skip-go-version-check<br/>跳过Go版本检查"]
-```
-
-![Kubebuilder 项目初始化流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/kubebuilder/eb7e91c1d51e8906d93eecc26c39ae2c.svg)
-{width=2146 height=1085}
+![Kubebuilder 项目初始化流程](project-init-flow.svg)
 
 创建项目：
 

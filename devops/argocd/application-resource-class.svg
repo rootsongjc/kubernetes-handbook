@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="640" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="applicz-title applicz-desc" id="application-resource-class-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="applicz-title">Application 资源结构</title>
+<desc id="applicz-desc">Application 包含 metadata、spec、status；ApplicationSpec 定义 source、destination、project、syncPolicy；ApplicationSource 定义 repoURL、path、targetRevision 以及 helm、kustomize 配置。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #application-resource-class-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #application-resource-class-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #application-resource-class-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#application-resource-class-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="application-resource-class-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 314 131.2 L 361 131.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#application-resource-class-m-6b7280)"/>
+<rect x="319.1" y="108.6" width="36.8" height="16.6" style="fill:#ffffff"/>
+<text x="337.5" y="120.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">spec</text>
+<path d="M 639 136 L 686 136" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#application-resource-class-m-6b7280)"/>
+<rect x="636.9" y="113.4" width="51.2" height="16.6" style="fill:#ffffff"/>
+<text x="662.5" y="125" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">source</text>
+<rect x="40" y="100" width="270" height="104" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="40" y="100" width="270" height="104" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="175" y="125" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Application</text>
+<line x1="40" y1="140" x2="310" y2="140" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="52" y="160" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">metadata: ObjectMeta</text>
+<text x="52" y="176" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">spec: ApplicationSpec</text>
+<text x="52" y="192" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">status: ApplicationStatus</text>
+<rect x="365" y="100" width="270" height="120" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="500" y="125" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ApplicationSpec</text>
+<line x1="365" y1="140" x2="635" y2="140" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="377" y="160" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">source: ApplicationSource</text>
+<text x="377" y="176" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">destination: ApplicationDestination</text>
+<text x="377" y="192" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">project: string</text>
+<text x="377" y="208" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">syncPolicy: SyncPolicy</text>
+<rect x="690" y="100" width="270" height="136" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="825" y="125" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ApplicationSource</text>
+<line x1="690" y1="140" x2="960" y2="140" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="702" y="160" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">repoURL: string</text>
+<text x="702" y="176" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">path: string</text>
+<text x="702" y="192" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">targetRevision: string</text>
+<text x="702" y="208" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">helm: HelmSpec</text>
+<text x="702" y="224" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">kustomize: KustomizeSpec</text>
+<text x="500" y="292" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">关联关系：Application 通过 spec 引用 ApplicationSpec，ApplicationSpec 通过 source 引用 ApplicationSource。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Application 资源结构</text>
+</g>
+</svg>

@@ -14,17 +14,7 @@ lastmod: 2025-10-27T12:22:21.947Z
 
 Kubernetes 通过探针（Probe）机制动态感知容器的健康和服务可用性，自动实现自愈和流量调度。
 
-```mermaid "Kubernetes 探针生命周期流程"
-flowchart LR
-    A[Pod 启动] --> B{Liveness Probe}
-    B -- 失败 --> C[重启容器]
-    B -- 成功 --> D{Readiness Probe}
-    D -- 失败 --> E[从 Service 负载均衡移除]
-    D -- 成功 --> F[正常对外服务]
-```
-
-![Kubernetes 探针生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/liveness-readiness-probes/e35048912a19d0596bcb9df7532a1a7a.svg)
-{width=1920 height=597}
+![Kubernetes 探针生命周期流程](probe-decision-flow.svg)
 
 ### Liveness Probe（存活探针）
 
@@ -191,16 +181,7 @@ livenessProbe:
 
 ## 探针配置参数
 
-```mermaid "探针参数关系"
-graph TD
-    A[initialDelaySeconds] --> B[periodSeconds]
-    B --> C[timeoutSeconds]
-    C --> D[successThreshold]
-    D --> E[failureThreshold]
-```
-
-![探针参数关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/liveness-readiness-probes/2823dc43fbec206e134991780b4452e0.svg)
-{width=1920 height=6153}
+![探针参数关系](probe-parameters.svg)
 
 ### 通用参数
 

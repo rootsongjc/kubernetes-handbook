@@ -43,39 +43,7 @@ k0rdent 的架构由多个模块组成，每个模块对应一个平台职责。
 
 下图展示了 k0rdent 在多集群体系中的位置与组件关系，有助于理解其整体架构设计：
 
-```mermaid "k0rdent 多集群架构关系图"
-flowchart TB
-    subgraph CloudProviders["云/基础设施层"]
-        A1[AWS]
-        A2[Azure]
-        A3[On-Prem]
-    end
-
-    subgraph ManagementCluster["k0rdent 管理集群"]
-        KCM[k0rdent Cluster Manager]
-        KSM[k0rdent State Manager]
-        KOF[k0rdent Observability & FinOps]
-    end
-
-    subgraph WorkloadClusters["子集群"]
-        W1[Cluster-A]
-        W2[Cluster-B]
-        W3[Cluster-C]
-    end
-
-    KCM --> W1
-    KCM --> W2
-    KCM --> W3
-    KOF --> W1
-    KOF --> W2
-    KOF --> W3
-    A1 -.-> W1
-    A2 -.-> W2
-    A3 -.-> W3
-```
-
-![k0rdent 多集群架构关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/b4e2baa0eff60475a15f6ce31b60de7e.svg)
-{width=1920 height=512}
+![k0rdent 多集群架构关系](k0rdent-multi-cluster-architecture.svg)
 
 实现视角：管理集群（Management Cluster）是控制平面的核心，运行 KCM、KSM、KOF 等控制器。用户通过 GitOps（如 ArgoCD）或 kubectl 将声明式模板应用到管理集群，随后 KCM 与 Cluster API 协同调用云/基础设施 API 完成子集群的创建与配置。
 
@@ -88,38 +56,13 @@ k0rdent 遵循声明式管理模式（Declarative Management），其工作流�
 3. 自动化执行与对齐：k0rdent 负责协调各子集群的状态，确保实际状态与期望状态一致。
 4. 统一观测与优化：通过 KOF 模块收集指标、日志与成本信息，实现闭环治理。
 
-为了更直观地理解 k0rdent 的自动化流程，下面给出一个简略的序列图：
+为了更直观地理解 k0rdent 的自动化流程，下面分两个阶段给出简略的序列图。第一阶段是声明式创建子集群：
 
-```mermaid "k0rdent 自动化流程图"
-sequenceDiagram
-    participant User as "平台工程师"
-    participant MC as "管理集群"
-    participant KCM as "k0rdent Cluster Manager"
-    participant IP as "基础设施提供商"
-    participant CC as "子集群"
-    participant KSM as "k0rdent State Manager"
-    participant KOF as "k0rdent Observability"
+![k0rdent 自动化流程（一）：声明式创建子集群](k0rdent-cluster-provisioning.svg)
 
-    User->>MC: Apply YAML 模板
-    MC->>KCM: 处理模板
-    KCM->>IP: 请求资源（计算/网络/存储）
-    IP-->>KCM: 资源就绪
-    KCM->>CC: 初始化 Kubernetes 集群
-    KCM->>KSM: 子集群可用
-    KSM->>CC: 部署 beach‑head 服务与策略
-    KSM->>KOF: 注册监控
-    KOF->>CC: 收集指标與日志
-    KOF->>User: 提供可观测性数据
+子集群可用后，进入第二阶段：KSM 下发状态与策略、KOF 接入观测，并由三个组件持续对齐集群状态：
 
-    loop 持续管理
-        KCM->>CC: 对齐集群状态
-        KSM->>CC: 对齐配置与策略
-        KOF->>CC: 监控与告警
-    end
-```
-
-![k0rdent 自动化流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/k0rdent/ed02d31ca6c57388c7c40141dfe240ca.svg)
-{width=1920 height=963}
+![k0rdent 自动化流程（二）：下发状态、接入观测与持续对齐](k0rdent-cluster-operations.svg)
 
 该流程体现了 k0rdent 的声明式、自动化和闭环治理特性。
 

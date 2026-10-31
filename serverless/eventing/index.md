@@ -20,53 +20,7 @@ Knative Eventing 是 Knative 的核心组件之一，提供事件驱动架构的
 
 下图展示了 Knative Eventing 的事件流转过程及核心组件。
 
-```mermaid "事件驱动架构"
-graph TD
-    subgraph "事件生产者"
-        PRODUCER["生产者应用"]
-        SENSOR["传感器"]
-        WEBHOOK["Webhook"]
-        TIMER["定时器"]
-    end
-
-    subgraph "事件基础设施"
-        BROKER["Broker<br/>事件代理"]
-        CHANNEL["Channel<br/>事件通道"]
-        SUBSCRIPTION["Subscription<br/>订阅"]
-    end
-
-    subgraph "事件消费者"
-        FUNCTION["Serverless 函数"]
-        SERVICE["微服务"]
-        BATCH_JOB["批处理作业"]
-        EXTERNAL["外部系统"]
-    end
-
-    subgraph "事件流"
-        SOURCE["事件源"]
-        FILTER["事件过滤"]
-        TRANSFORM["事件转换"]
-        DELIVERY["事件投递"]
-    end
-
-    PRODUCER --> SOURCE
-    SENSOR --> SOURCE
-    WEBHOOK --> SOURCE
-    TIMER --> SOURCE
-
-    SOURCE --> BROKER
-    BROKER --> FILTER
-    FILTER --> TRANSFORM
-    TRANSFORM --> CHANNEL
-    CHANNEL --> DELIVERY
-    DELIVERY --> FUNCTION
-    DELIVERY --> SERVICE
-    DELIVERY --> BATCH_JOB
-    DELIVERY --> EXTERNAL
-```
-
-![事件驱动架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/eventing/45add0ddb9c2bb092cc7af8865c1907a.svg)
-{width=1920 height=2348}
+![Knative Eventing 事件驱动架构](event-driven-architecture.svg)
 
 ### CloudEvents 标准
 
@@ -240,37 +194,7 @@ Knative Eventing 支持多种事件处理模式，满足不同业务场景需求
 
 下图展示了典型的发布 - 订阅事件分发流程。
 
-```mermaid "发布-订阅模式"
-graph TD
-    subgraph "发布者"
-        PRODUCER["订单服务"]
-    end
-
-    subgraph "代理"
-        BROKER["Broker"]
-    end
-
-    subgraph "订阅者"
-        EMAIL["邮件服务"]
-        INVENTORY["库存服务"]
-        BILLING["计费服务"]
-        ANALYTICS["分析服务"]
-    end
-
-    PRODUCER -->|"发布事件"| BROKER
-    BROKER -->|"分发事件"| EMAIL
-    BROKER -->|"分发事件"| INVENTORY
-    BROKER -->|"分发事件"| BILLING
-    BROKER -->|"分发事件"| ANALYTICS
-
-    EMAIL -.->|"Trigger 1"| BROKER
-    INVENTORY -.->|"Trigger 2"| BROKER
-    BILLING -.->|"Trigger 3"| BROKER
-    ANALYTICS -.->|"Trigger 4"| BROKER
-```
-
-![发布-订阅模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/eventing/e1bb93fe2d680147a9b8bbaa99548728.svg)
-{width=1920 height=1588}
+![发布 - 订阅模式](pub-sub-pattern.svg)
 
 ### 序列处理
 

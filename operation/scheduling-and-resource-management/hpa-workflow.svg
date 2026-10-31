@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2360" height="840" viewBox="0 0 1180 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hpaworz-title hpaworz-desc" id="hpa-workflow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="hpaworz-title">HPA 工作流程</title>
+<desc id="hpaworz-desc">HPA 控制器的指标采集器从 Metrics Server 的 metrics.k8s.io API 拉取 Pod CPU / 内存指标，交给扩缩计算器算出期望副本数，再调整 Deployment 的 ReplicaSet，由其管理 Pod 1 到 Pod 3。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #hpa-workflow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #hpa-workflow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #hpa-workflow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#hpa-workflow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="hpa-workflow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="330" y="100" width="400" height="170" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="346" y="122" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">HPA Controller</text>
+<rect x="830" y="100" width="320" height="252" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="846" y="122" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Deployment</text>
+<path d="M 346 176.6 L 214 176.6" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<rect x="254" y="155.05" width="52" height="15.55" style="fill:#ffffff"/>
+<text x="280" y="165.85" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">拉取指标</text>
+<path d="M 214 199.4 L 346 199.4" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<rect x="237.39" y="205.4" width="85.22" height="15.55" style="fill:#ffffff"/>
+<text x="280" y="216.2" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回 CPU/内存</text>
+<path d="M 514 188 L 546 188" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<path d="M 714 188 L 890 188" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<rect x="736.62" y="166.45" width="85" height="15.55" style="fill:#ffffff"/>
+<text x="779.12" y="177.25" style="fill:#6b7280" font-size="11" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">计算期望副本数</text>
+<path d="M 990 218 L 990 234 Q 990 242 982 242 L 894 242 Q 886 242 886 250 L 886 266" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<path d="M 990 218 L 990 242 Q 990 242 990 242 L 990 242 Q 990 242 990 242 L 990 266" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<path d="M 990 218 L 990 234 Q 990 242 998 242 L 1086 242 Q 1094 242 1094 250 L 1094 266" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hpa-workflow-m-6b7280)"/>
+<rect x="30" y="150" width="180" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(37.7,171) scale(1.417)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="142" y="185.275" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Metrics Server</text>
+<text x="142" y="201.225" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">metrics.k8s.io API</text>
+<rect x="350" y="150" width="160" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(356.96,171) scale(1.417)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="452" y="185.275" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">指标采集</text>
+<text x="452" y="201.225" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Metrics Collector</text>
+<rect x="550" y="150" width="160" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="550" y="150" width="160" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(560.26,171) scale(1.417)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="652" y="185.275" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">扩缩计算</text>
+<text x="652" y="201.225" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Scale Calculator</text>
+<rect x="894" y="150" width="192" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(932.2,171.5) scale(0.875)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></g>
+<text x="1005.5" y="187.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ReplicaSet</text>
+<rect x="846" y="270" width="80" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(851.26,288) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="901" y="302.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 1</text>
+<rect x="950" y="270" width="80" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(955.26,288) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="1005" y="302.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 2</text>
+<rect x="1054" y="270" width="80" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(1059.26,288) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="1109" y="302.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 3</text>
+<text x="590" y="396" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">desiredReplicas = ceil[currentReplicas × (currentMetricValue / desiredMetricValue)]</text>
+<text x="590" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HPA 工作流程</text>
+</g>
+</svg>

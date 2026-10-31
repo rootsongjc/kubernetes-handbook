@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="760" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="spanstz-title spanstz-desc" id="span-structure-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="spanstz-title">Span 结构：一次操作的时间跨度包含哪些字段</title>
+<desc id="spanstz-desc">Span 是分布式追踪的基本单位，包含操作名称、开始时间、持续时间、标签、日志和父 Span 引用六个核心字段。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #span-structure-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #span-structure-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #span-structure-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#span-structure-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="span-structure-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 500 164 L 500 212" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 110 212 L 890 212" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 110 212 L 110 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<path d="M 266 212 L 266 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<path d="M 422 212 L 422 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<path d="M 578 212 L 578 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<path d="M 734 212 L 734 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<path d="M 890 212 L 890 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#span-structure-m-6b7280)"/>
+<rect x="380" y="100" width="240" height="60" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="380" y="100" width="240" height="60" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(423,112) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M7 8l0 8" /> <path d="M9 18h6a2 2 0 0 0 2 -2v-5" /> <path d="M14 14l3 -3l3 3" /></g>
+<text x="523" y="126.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Span</text>
+<text x="523" y="143.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">一次操作的时间跨度</text>
+<rect x="40" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="110" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">操作名称</text>
+<text x="110" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">operationName</text>
+<rect x="196" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="266" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">开始时间</text>
+<text x="266" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">startTime</text>
+<rect x="352" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="422" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">持续时间</text>
+<text x="422" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">duration</text>
+<rect x="508" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="578" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标签</text>
+<text x="578" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">tags</text>
+<rect x="664" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="734" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">日志</text>
+<text x="734" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">logs</text>
+<rect x="820" y="252" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="890" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">父 Span</text>
+<text x="890" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">parentSpanId</text>
+<text x="500" y="360" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多个 Span 通过父 Span 引用组成一条 Trace；标签用于检索，日志记录 Span 内的事件。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Span 结构：一次操作的时间跨度包含哪些字段</text>
+</g>
+</svg>

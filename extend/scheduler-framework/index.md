@@ -21,17 +21,7 @@ description: 深入理解并实践 Kubernetes Scheduler Framework 插件开发�
 
 插件开发通常遵循以下步骤，流程如下图所示：
 
-```mermaid "Scheduler 插件开发流程"
-flowchart LR
-    A["定义插件结构体"] --> B["实现接口方法"]
-    B --> C["注册插件"]
-    C --> D["构建 scheduler 二进制"]
-    D --> E["配置 KubeSchedulerConfiguration 启用插件"]
-    E --> F["运行并调试插件"]
-```
-
-![Scheduler 插件开发流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-framework/c64589c9a922bfe805c539e1a11faaf8.svg)
-{width=1920 height=136}
+![Scheduler 插件开发流程](plugin-development-process.svg)
 
 每一步都对应具体的开发和集成环节。
 
@@ -253,18 +243,7 @@ plugins:
 
 下图展示了 AI 原生场景下多插件协作的流程：
 
-```mermaid "AI 原生调度插件组合流程"
-flowchart TD
-    A["PreFilter: GPU Availability"]
-    B["Filter: Node Labels + Topology"]
-    C["Score: GPU Utilization"]
-    D["Permit: Multi-Job Barrier"]
-    E["Bind: GPU Affinity Binding"]
-    A --> B --> C --> D --> E
-```
-
-![AI 原生调度插件组合流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-framework/c54911840fc3e46d0a051977d595c898.svg)
-{width=1920 height=4813}
+![AI 原生调度插件组合流程](ai-plugin-composition-flow.svg)
 
 这种组合方式常用于 AI 平台如 KubeRay、Volcano、Kueue 的多作业同步调度，实现任务对齐、GPU 优先级等智能逻辑。
 

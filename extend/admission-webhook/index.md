@@ -25,24 +25,7 @@ description: 通过准入 Webhook 扩展 Kubernetes API 的请求处理逻辑，
 
 理解 Admission Webhook 前，需了解请求在 API Server 的完整处理流程。下图展示了请求生命周期及 Webhook 的作用位置。
 
-```mermaid "Kubernetes API 请求生命周期"
-sequenceDiagram
-  participant Client
-  participant API_Server
-  participant Admission_Webhook
-  participant Etcd
-
-  Client->>API_Server: 提交请求 (Create/Update/Delete)
-  API_Server->>Admission_Webhook: 调用 Mutating Webhook (可修改对象)
-  Admission_Webhook-->>API_Server: 返回修改后的对象
-  API_Server->>Admission_Webhook: 调用 Validating Webhook (验证)
-  Admission_Webhook-->>API_Server: 返回验证结果 (允许/拒绝)
-  API_Server->>Etcd: 持久化对象
-  API_Server-->>Client: 返回响应结果
-```
-
-![Kubernetes API 请求生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/admission-webhook/87015c8235c352f655fd74d7d3d53442.svg)
-{width=1920 height=889}
+![Kubernetes API 请求生命周期与 Webhook 的位置](api-request-lifecycle.svg)
 
 > Mutating Webhook 在验证之前执行，可用于注入默认字段或修改配置；Validating Webhook 仅用于验证，不能修改对象。
 
@@ -261,17 +244,7 @@ Webhook 失败时的处理策略如下表所示。
 
 下图展示了 Webhook 在请求生命周期中的“前置守卫”作用。
 
-```mermaid "Admission Webhook 架构"
-flowchart LR
-  A[API Server] --> B[Mutating Webhook]
-  B --> C[Validating Webhook]
-  C --> D[etcd]
-  B -->|修改对象| A
-  C -->|拒绝或放行| A
-```
-
-![Admission Webhook 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/admission-webhook/f11b27b6bb4a377fa203905a76aedf1f.svg)
-{width=1920 height=275}
+![Admission Webhook 架构：写入 etcd 前的前置守卫](admission-webhook-architecture.svg)
 
 ## 总结
 

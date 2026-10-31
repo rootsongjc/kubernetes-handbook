@@ -31,18 +31,7 @@ Pod 的 `status` 字段包含一个 PodStatus 对象，其中的 `phase` 字段�
 
 下图展示了 Pod 生命周期中状态的变化流程：
 
-```mermaid "Pod 生命周期状态变化流程"
-stateDiagram-v2
-  [*] --> Pending : 被 Kube 接收
-  Pending --> Running : 至少有一个容器正在运行
-  Running --> Succeed : 所有容器以 0 退出码终止
-  Running --> Failed : 至少有一个容器以非零退出码终止
-  Failed --> Running : 重启后容器再次运行
-  Succeed --> [*]
-```
-
-![Pod 生命周期状态变化流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pod-lifecycle/e3452d9dcb65811ce4d215330d99f6b7.svg)
-{width=1920 height=2289}
+![Pod 生命周期状态变化流程](pod-phase-transitions.svg)
 
 ## Pod 状态（Status）
 

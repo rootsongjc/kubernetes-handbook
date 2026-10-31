@@ -129,22 +129,7 @@ spec:                   # 对象规范
 
 Kubernetes 对象的声明、创建、变更和删除遵循标准流程。下图展示了对象生命周期的主要阶段：
 
-```mermaid "Kubernetes 对象生命周期"
-graph TD
-    A[声明 YAML/JSON] --> B[apply 创建对象]
-    B --> C[控制器监控状态]
-    C --> D[实际状态与期望状态比对]
-    D --> E{一致?}
-    E -- 是 --> F[持续运行]
-    E -- 否 --> G[控制器修正状态]
-    G --> C
-    F --> H[更新/删除对象]
-    H --> I[apply/apply/delete]
-    I --> C
-```
-
-![Kubernetes 对象生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/pod-state-and-lifecycle/5810af7b75ae6eb50221bedf332356c3.svg)
-{width=1920 height=4815}
+![Kubernetes 对象生命周期与控制循环](object-lifecycle-control-loop.svg)
 
 ## 对象管理操作
 

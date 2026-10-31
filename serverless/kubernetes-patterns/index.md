@@ -16,40 +16,7 @@ Kubernetes 虽非为 Serverless 场景而生，但凭借其强大的控制器和
 
 HPA（Horizontal Pod Autoscaler）是 Kubernetes 内置的自动扩缩容控制器，能够根据资源利用率或自定义指标自动调整 Pod 副本数量，实现弹性伸缩。
 
-```mermaid "HPA 工作原理"
-graph TD
-    subgraph "监控层"
-        METRICS_SERVER["Metrics Server"]
-        PROMETHEUS["Prometheus<br/>自定义指标"]
-        EXTERNAL_METRICS["外部指标<br/>KEDA"]
-    end
-
-    subgraph "控制层"
-        HPA_CONTROLLER["HPA Controller"]
-        TARGET["目标资源<br/>Deployment/StatefulSet"]
-    end
-
-    subgraph "执行层"
-        SCALE_UP["扩容操作"]
-        SCALE_DOWN["缩容操作"]
-        PODS["Pod 实例"]
-    end
-
-    METRICS_SERVER --> HPA_CONTROLLER
-    PROMETHEUS --> HPA_CONTROLLER
-    EXTERNAL_METRICS --> HPA_CONTROLLER
-
-    HPA_CONTROLLER --> SCALE_UP
-    HPA_CONTROLLER --> SCALE_DOWN
-
-    SCALE_UP --> PODS
-    SCALE_DOWN --> PODS
-
-    HPA_CONTROLLER -.-> TARGET
-```
-
-![HPA 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/kubernetes-patterns/97e84e350760c562672ca58d6587826f.svg)
-{width=1920 height=1542}
+![HPA 工作原理](hpa-how-it-works.svg)
 
 ### 基于 CPU 的扩缩容
 
@@ -166,42 +133,7 @@ spec:
 
 KEDA（Kubernetes Event-driven Autoscaling）是基于事件的自动扩缩容解决方案，支持 50+ 种事件源，能实现 Pod 从 0 到 N 的弹性伸缩。
 
-```mermaid "KEDA 事件驱动扩缩容架构"
-graph TD
-    subgraph "事件源"
-        KAFKA["Apache Kafka"]
-        RABBITMQ["RabbitMQ"]
-        AWS_SQS["AWS SQS"]
-        CRON["Cron 定时器"]
-        REDIS["Redis 列表"]
-        MYSQL["MySQL"]
-        POSTGRESQL["PostgreSQL"]
-    end
-
-    subgraph "KEDA 核心"
-        SCALED_OBJECT["ScaledObject<br/>扩缩容配置"]
-        METRICS_ADAPTER["Metrics Adapter<br/>指标转换"]
-        HPA["Horizontal Pod Autoscaler"]
-    end
-
-    subgraph "工作负载"
-        DEPLOYMENT["Deployment"]
-        PODS["Pod 实例<br/>0 到 N"]
-    end
-
-    KAFKA --> SCALED_OBJECT
-    RABBITMQ --> SCALED_OBJECT
-    AWS_SQS --> SCALED_OBJECT
-    CRON --> SCALED_OBJECT
-
-    SCALED_OBJECT --> METRICS_ADAPTER
-    METRICS_ADAPTER --> HPA
-    HPA --> DEPLOYMENT
-    DEPLOYMENT --> PODS
-```
-
-![KEDA 事件驱动扩缩容架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/kubernetes-patterns/85924c427b422d4d66e2a4e042540680.svg)
-{width=1920 height=1443}
+![KEDA 事件驱动扩缩容架构](keda-architecture.svg)
 
 ### KEDA 安装与配置
 

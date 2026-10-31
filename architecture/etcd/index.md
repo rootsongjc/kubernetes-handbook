@@ -40,44 +40,7 @@ Etcd 遵循客户端 - 服务器架构，其中多个 etcd 服务器实例形成
 
 下图展示了 etcd 的主要架构组件及其交互关系。
 
-```mermaid "Etcd 系统架构"
-flowchart TD
-    subgraph "Clients"
-        ClientApp["Client Applications"]
-        etcdctl["etcdctl Command Line"]
-    end
-
-    subgraph "Client Interface"
-        ClientLibraries["clientv3 Libraries"]
-        gRPC["gRPC API"]
-    end
-
-    subgraph "etcd Server"
-        Server["EtcdServer"]
-        Auth["AuthStore"]
-        MVCC["MVCC Store"]
-        Lease["Lease Manager"]
-        Raft["Raft Consensus"]
-        WAL["Write-Ahead Log"]
-        Backend["bbolt Backend"]
-    end
-
-    ClientApp -->|API calls| ClientLibraries
-    etcdctl --> ClientLibraries
-    ClientLibraries -->|RPC| gRPC
-    gRPC --> Auth
-    Auth --> Server
-    Server --> MVCC
-    Server --> Lease
-    Server --> Raft
-    MVCC --> Backend
-    Lease --> Backend
-    Raft --> WAL
-    WAL --> Backend
-```
-
-![Etcd 系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/4a8ade6ab26cf25e1b85eb9d40bce092.svg)
-{width=1920 height=3638}
+![etcd 系统架构：客户端、接口层与服务器核心](etcd-system-architecture.svg)
 
 Etcd 架构由以下关键组件组成：
 
@@ -91,61 +54,13 @@ Etcd 架构由以下关键组件组成：
 
 ### 请求处理流程
 
-下图说明了不同类型的请求如何通过 etcd 系统处理：
+下图说明了不同类型的请求如何通过 etcd 系统处理。先看读请求：
 
-```mermaid "Etcd 请求处理流程"
-sequenceDiagram
-    participant Client as Client Application
-    participant ClientLib as clientv3 Library
-    participant Server as EtcdServer
-    participant Auth as AuthStore
-    participant MVCC as MVCC Store
-    participant Raft as Raft Node
-    participant WAL as Write-Ahead Log
-    participant Backend as bbolt Backend
+![etcd 读请求处理：可序列化读与线性化读](etcd-read-request-flow.svg)
 
-    Client->>ClientLib: Operation (Put/Get/Delete)
-    ClientLib->>Server: gRPC Request
+读取操作可分为可序列化（可能过时）和线性化（保证最新）；写入操作则始终通过 Raft 共识过程以确保跨集群一致性：
 
-    alt Read Operation (Serializable)
-        Server->>Auth: IsRangePermitted
-        Auth-->>Server: Permission Result
-        Server->>MVCC: Range
-        MVCC->>Backend: Read from storage
-        Backend-->>MVCC: Return data
-        MVCC-->>Server: Return result
-    else Read Operation (Linearizable)
-        Server->>Server: linearizableReadNotify
-        Server->>Raft: ReadIndex
-        Raft-->>Server: ReadIndex response
-        Server->>Auth: IsRangePermitted
-        Auth-->>Server: Permission Result
-        Server->>MVCC: Range
-        MVCC->>Backend: Read from storage
-        Backend-->>MVCC: Return data
-        MVCC-->>Server: Return result
-    else Write Operation
-        Server->>Server: raftRequest
-        Server->>Raft: Process (Propose)
-        Raft->>WAL: Record proposal
-        Raft->>Raft: Reach consensus
-        Raft-->>Server: Committed entry
-        Server->>Auth: Check permissions
-        Auth-->>Server: Permission Result
-        Server->>MVCC: Apply changes
-        MVCC->>Backend: Write to storage
-        Backend-->>MVCC: Confirm write
-        MVCC-->>Server: Return result
-    end
-
-    Server-->>ClientLib: gRPC Response
-    ClientLib-->>Client: Operation Result
-```
-
-![Etcd 请求处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/b335d238adb88c4613d3b6083185becf.svg)
-{width=1920 height=2024}
-
-读取操作可分为可序列化（可能过时）和线性化（保证最新）；写入操作始终通过 Raft 共识过程以确保跨集群一致性。
+![etcd 写请求处理：始终经过 Raft 共识](etcd-write-request-flow.svg)
 
 ## 核心原理与组件
 
@@ -177,44 +92,7 @@ Etcd 采用 [Raft 共识算法](http://thesecretlivesofdata.com/raft/) 实现分
 
 etcd 使用 Raft 共识算法维护集群一致性。[server/etcdserver/raft.go](https://github.com/etcd-io/etcd/blob/eac44d59/server/etcdserver/raft.go) 中的 `raftNode` 结构封装了 Raft 协议实现：
 
-```mermaid "Raft 节点与 EtcdServer 交互"
-flowchart TD
-    subgraph "RaftNode"
-        Node["raft.Node"]
-        MemoryStorage["raft.MemoryStorage"]
-        MsgSnapC["msgSnapC channel"]
-        ApplyC["applyc channel"]
-        ReadStateC["readStateC channel"]
-    end
-
-    subgraph "EtcdServer"
-        Server["EtcdServer"]
-        Apply["apply()"]
-        Process["process()"]
-    end
-
-    subgraph "Transport"
-        RaftHTTP["rafthttp.Transport"]
-        Peers["Peer Connections"]
-    end
-
-    Node --> MemoryStorage
-    Node -->|"Sends Ready"| Server
-    Server -->|"Proposes"| Node
-    Server -->|"Processes ReadIndex"| Node
-    Server -->|"Applies entries"| Apply
-    Apply -->|"Reads from"| ApplyC
-    Node -->|"Sends to"| ApplyC
-    Node -->|"Sends to"| ReadStateC
-    Node -->|"Sends snapshots to"| MsgSnapC
-
-    RaftHTTP -->|"Connects to"| Peers
-    Server -->|"Sends/Receives via"| RaftHTTP
-    RaftHTTP -->|"Delivers messages to"| Node
-```
-
-![Raft 节点与 EtcdServer 交互](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/f54519a3c8f26c3c57c1dcb1192d05db.svg)
-{width=2059 height=882}
+![raftNode 与 EtcdServer 的交互](raft-node-etcdserver-interaction.svg)
 
 Raft 实现的关键方面：
 
@@ -227,37 +105,7 @@ Raft 实现的关键方面：
 
 etcd 的存储系统由多个层组成：
 
-```mermaid "Etcd 存储层次结构"
-flowchart TD
-    subgraph "Storage Layers"
-        MVCC["MVCC (Multi-Version Concurrency Control)"]
-        Backend["bbolt Backend"]
-        WAL["Write-Ahead Log (WAL)"]
-        Snapshot["Snapshotter"]
-    end
-
-    subgraph "Data Flow"
-        Write["Write Request"]
-        Read["Read Request"]
-        Recovery["Recovery"]
-    end
-
-    Write -->|"1. Log"| WAL
-    Write -->|"2. Propose"| MVCC
-    MVCC -->|"3. Commit"| Backend
-    Read -->|"Query"| MVCC
-    MVCC -->|"Retrieve"| Backend
-
-    WAL -->|"Replay logs"| Recovery
-    Snapshot -->|"Load snapshot"| Recovery
-    Recovery -->|"Restore state"| MVCC
-
-    MVCC -->|"Periodic snapshot"| Snapshot
-    Snapshot -->|"Compact"| WAL
-```
-
-![Etcd 存储层次结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/250b7a2ab6232c056a940cf82df082cf.svg)
-{width=1920 height=1632}
+![etcd 存储层次：MVCC、bbolt、WAL 与快照](etcd-storage-layers.svg)
 
 各层功能说明：
 
@@ -270,33 +118,7 @@ flowchart TD
 
 etcd 提供全面的安全模型，具有认证和基于角色的访问控制 (RBAC)：
 
-```mermaid "Etcd 认证与授权流程"
-flowchart TD
-    subgraph "Authentication Components"
-        Auth["AuthStore"]
-        TokenProvider["TokenProvider"]
-        UserStore["User Storage"]
-        RoleStore["Role Storage"]
-    end
-
-    subgraph "Request Flow"
-        Request["Client Request"]
-        Authenticate["Authenticate"]
-        CheckPermission["Check Permission"]
-        Response["Process Request"]
-    end
-
-    Request -->|"1. Validate token"| Authenticate
-    Authenticate -->|"2. Get user info"| Auth
-    Auth -->|"Verify token"| TokenProvider
-    Auth -->|"Check user"| UserStore
-    Auth -->|"3. Check permissions"| CheckPermission
-    CheckPermission -->|"Get roles"| RoleStore
-    CheckPermission -->|"4. Allow/Deny"| Response
-```
-
-![Etcd 认证与授权流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/1baa2d031389f0054a927fab6efc5542.svg)
-{width=1920 height=1900}
+![etcd 认证与授权流程](etcd-auth-flow.svg)
 
 关键安全特性：
 
@@ -546,45 +368,7 @@ etcd 使用 Raft 共识维护集群一致性，允许容忍机器故障，包括
 
 成员可动态添加、删除或更新。新节点可作为 "learner" 添加，然后提升为完整投票成员。
 
-```mermaid "Etcd 集群形成与成员管理"
-flowchart TD
-    subgraph "Cluster Formation"
-        Bootstrap["Bootstrap"]
-        Discovery["Discovery Service"]
-        StaticConfig["Static Configuration"]
-        DNSDiscovery["DNS Discovery"]
-    end
-
-    subgraph "Membership"
-        AddMember["AddMember"]
-        RemoveMember["RemoveMember"]
-        UpdateMember["UpdateMember"]
-        PromoteMember["PromoteMember"]
-    end
-
-    subgraph "Operation"
-        Leader["Leader"]
-        Follower1["Follower"]
-        Follower2["Follower"]
-        Learner["Learner"]
-    end
-
-    Bootstrap -->|"Uses"| Discovery
-    Bootstrap -->|"Uses"| StaticConfig
-    Bootstrap -->|"Uses"| DNSDiscovery
-
-    Leader -->|"Replicates to"| Follower1
-    Leader -->|"Replicates to"| Follower2
-    Leader -->|"Replicates to"| Learner
-
-    AddMember -->|"Can add"| Learner
-    PromoteMember -->|"Promotes"| Learner
-    Learner -->|"Becomes"| Follower1
-    RemoveMember -->|"Can remove"| Follower2
-```
-
-![Etcd 集群形成与成员管理](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/4f08964b29b33fc833c5e7ad61c19786.svg)
-{width=2422 height=979}
+![etcd 集群形成与成员管理](etcd-cluster-membership.svg)
 
 ### Leader 选举与日志复制
 
@@ -612,41 +396,7 @@ leader 选举过程确保在任何时候只存在一个 leader，防止脑裂场
 - 分布式并发原语（锁、选举）
 - 集群管理操作
 
-```mermaid "Etcd 客户端库结构"
-flowchart LR
-    subgraph "Client Application"
-        App["Application Code"]
-    end
-
-    subgraph "clientv3"
-        Client["Client"]
-        KV["KV Interface"]
-        Watch["Watch Interface"]
-        Lease["Lease Interface"]
-        Auth["Auth Interface"]
-        Cluster["Cluster Interface"]
-        Maintenance["Maintenance Interface"]
-    end
-
-    subgraph "Transport"
-        Balancer["Balancer"]
-        gRPCConn["gRPC Connection"]
-    end
-
-    App -->|"Uses"| Client
-    Client -->|"Provides"| KV
-    Client -->|"Provides"| Watch
-    Client -->|"Provides"| Lease
-    Client -->|"Provides"| Auth
-    Client -->|"Provides"| Cluster
-    Client -->|"Provides"| Maintenance
-    Client -->|"Manages"| Balancer
-    Balancer -->|"Controls"| gRPCConn
-    gRPCConn -->|"Connects to"| Endpoints["etcd Endpoints"]
-```
-
-![Etcd 客户端库结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/etcd/312df6afc0c917b2391f03dc6ae39a68.svg)
-{width=1920 height=1088}
+![clientv3 客户端库结构](etcd-clientv3-structure.svg)
 
 ### etcdctl 命令行界面
 

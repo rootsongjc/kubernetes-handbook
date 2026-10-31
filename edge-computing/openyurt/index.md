@@ -26,54 +26,7 @@ OpenYurt 通过增加一系列云边组件，使得边缘节点即使在网络�
 
 下图展示了 OpenYurt 的高层系统架构，体现了云端控制面与边缘节点池（NodePool，节点池）的协作关系：
 
-```mermaid "OpenYurt 高层系统架构"
-graph TB
-    subgraph "云端环境"
-        KAS[kubernetes-apiserver]
-        YM[yurt-manager<br/>控制器与 Webhook]
-        YTS[yurt-tunnel-server<br/>可选组件]
-    end
-    
-    subgraph "边缘环境 - 节点池A"
-        subgraph "边缘节点1（池长）"
-            YH1[yurthub<br/>API 代理与缓存]
-            YC1[yurt-coordinator<br/>池长]
-            Kubelet1[kubelet]
-        end
-        
-        subgraph "边缘节点2"
-            YH2[yurthub<br/>API 代理与缓存]
-            Kubelet2[kubelet]
-        end
-    end
-    
-    subgraph "边缘环境 - 节点池B"
-        subgraph "边缘节点3"
-            YH3[yurthub<br/>API 代理与缓存]
-            YID[yurt-iot-dock<br/>IoT 管理]
-            Kubelet3[kubelet]
-        end
-    end
-    
-    KAS --> YM
-    YM -.->|管理节点池| YH1
-    YM -.->|管理节点池| YH2
-    YM -.->|管理节点池| YH3
-    
-    Kubelet1 --> YH1
-    Kubelet2 --> YH2
-    Kubelet3 --> YH3
-    
-    YH1 -.->|API 请求| KAS
-    YH2 -.->|API 请求| KAS
-    YH3 -.->|API 请求| KAS
-    
-    YH1 <--> YC1
-    YH2 -.->|池内数据| YC1
-```
-
-![OpenYurt 高层系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/06ce6af1c4e546b0aff8a89bea7be70f.svg)
-{width=2158 height=1071}
+![OpenYurt 高层系统架构：云端控制面与边缘节点池](openyurt-system-architecture.svg)
 
 如图所示，OpenYurt 采用典型的云 - 边架构，云端 Kubernetes 控制面统一管理多个物理分布的边缘节点池。每个边缘节点运行 `yurthub` 作为本地 API 代理与缓存，保障网络分区时的自治能力。
 
@@ -81,88 +34,13 @@ graph TB
 
 下图展示了 OpenYurt 中央控制器（yurt-manager）、自定义资源（CRD, Custom Resource Definition）及节点侧组件的关系。该图有助于理解控制器、CRD 以及节点功能模块之间的协作方式。
 
-```mermaid "OpenYurt 组件关系"
-graph LR
-    subgraph "yurt-manager 进程"
-        NPC[NodePoolController]
-        YASC[YurtAppSetController] 
-        YSSC[YurtStaticSetController]
-        PAC[PlatformAdminController]
-        PSC[PoolServiceController]
-        Webhooks[AdmissionWebhooks]
-    end
-    
-    subgraph "节点组件"
-        YH[yurthub<br/>pkg/yurthub]
-        YC[yurt-coordinator<br/>cmd/yurt-coordinator]
-        YID[yurt-iot-dock<br/>cmd/yurt-iot-dock]
-    end
-    
-    subgraph "自定义资源"
-        NP[NodePool<br/>apps.openyurt.io/v1beta1]
-        YAS[YurtAppSet<br/>apps.openyurt.io/v1beta1]
-        YSS[YurtStaticSet<br/>apps.openyurt.io/v1alpha1]
-        PA[PlatformAdmin<br/>iot.openyurt.io/v1alpha2]
-        PS[PoolService<br/>net.openyurt.io/v1alpha1]
-    end
-    
-    NPC --> NP
-    YASC --> YAS
-    YSSC --> YSS
-    PAC --> PA
-    PSC --> PS
-    
-    YSS -.->|管理 StaticPods| YH
-    PA -.->|部署| YID
-    NP -.->|分组| YH
-    NP -.->|分组| YC
-    
-    YH <--> YC
-```
-
-![OpenYurt 组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/ecac60dad959b620960473fc87a386d6.svg)
-{width=1920 height=1141}
+![OpenYurt 组件关系：控制器、CRD 与节点组件](openyurt-component-relations.svg)
 
 ## 组件部署架构
 
 下图说明了各核心组件在 Kubernetes 集群中的部署方式。通过该图可以直观了解控制面与边缘节点池的组件分布及其协作关系。
 
-```mermaid "OpenYurt 组件部署架构"
-graph TB
-    subgraph "Kubernetes 集群"
-        subgraph "控制面节点"
-            YM_POD[yurt-manager Pod<br/>Deployment]
-            KAPI[kube-apiserver]
-        end
-        
-        subgraph "边缘节点池"
-            subgraph "节点1（池长）"
-                YH1_POD[yurthub 静态 Pod<br/>YurtStaticSet 管理]
-                YC1_POD[yurt-coordinator Pod<br/>Deployment]
-                KUBELET1[kubelet]
-            end
-            
-            subgraph "节点2"
-                YH2_POD[yurthub 静态 Pod<br/>YurtStaticSet 管理]
-                KUBELET2[kubelet]
-            end
-        end
-    end
-    
-    YM_POD -.->|管理 CRD| KAPI
-    YM_POD -.->|创建 YurtStaticSet| YH1_POD
-    YM_POD -.->|创建 YurtStaticSet| YH2_POD
-    YM_POD -.->|管理 NodePool| YC1_POD
-    
-    KUBELET1 --> YH1_POD
-    KUBELET2 --> YH2_POD
-    
-    YH1_POD -.->|池长选举| YC1_POD
-    YH2_POD -.->|查询池数据| YC1_POD
-```
-
-![OpenYurt 组件部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/openyurt/386e3c021b0fc71f19d83263c08be46b.svg)
-{width=1920 height=992}
+![OpenYurt 组件部署架构](openyurt-deployment-architecture.svg)
 
 ## 主要组件功能表
 

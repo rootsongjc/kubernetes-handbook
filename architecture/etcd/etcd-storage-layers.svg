@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2080" height="1240" viewBox="0 0 1040 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="etcdstz-title etcdstz-desc" id="etcd-storage-layers-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="etcdstz-title">etcd 存储层次：MVCC、bbolt、WAL 与快照</title>
+<desc id="etcdstz-desc">写请求先记录到 WAL，再提案到 MVCC 并提交到 bbolt；读请求直接查询 MVCC；MVCC 定期生成快照，快照用于压缩 WAL；恢复时重放 WAL 日志并加载快照，把状态恢复到 MVCC。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #etcd-storage-layers-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #etcd-storage-layers-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #etcd-storage-layers-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#etcd-storage-layers-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="etcd-storage-layers-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 880 168 L 880 216" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="884" y="184.6" width="70.88" height="16.6" style="fill:#ffffff"/>
+<text x="888" y="196.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">1. 记录日志</text>
+<path d="M 776 120 L 348 120 Q 340 120 340 128 L 340 364 Q 340 372 348 372 L 416 372" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="660.88" y="97.4" width="46.88" height="16.6" style="fill:#ffffff"/>
+<text x="684.32" y="109" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2. 提案</text>
+<path d="M 264 382 L 416 382" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="324" y="388" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="340" y="399.6" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">查询</text>
+<path d="M 520 288 L 520 346" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="460" y="309.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="512" y="321.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">恢复状态</text>
+<path d="M 776 252 L 624 252" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="672" y="229.4" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="700" y="241" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">重放日志</text>
+<path d="M 830 346 L 830 328 Q 830 320 822 320 L 578 320 Q 570 320 570 312 L 570 288" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="669" y="297.4" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="697" y="309" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">加载快照</text>
+<path d="M 930 346 L 930 288" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="934" y="309.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="938" y="321.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">压缩</text>
+<path d="M 624 403.2 L 776 403.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="672" y="409.2" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="700" y="420.8" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">定期快照</text>
+<path d="M 520 430 L 520 476" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-storage-layers-m-6b7280)"/>
+<rect x="524" y="445.6" width="85.76" height="16.6" style="fill:#ffffff"/>
+<text x="528" y="457.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">3. 提交 / 读取</text>
+<rect x="780" y="100" width="200" height="64" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="5,4"/>
+<g aria-hidden="true" transform="translate(817.64,114) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></g>
+<text x="903" y="128.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">写请求</text>
+<text x="903" y="145.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Put / Delete</text>
+<rect x="420" y="220" width="200" height="64" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="5,4"/>
+<g aria-hidden="true" transform="translate(459.56,234) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /> <path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M14 4l0 4l-6 0l0 -4" /></g>
+<text x="543" y="248.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">恢复</text>
+<text x="543" y="265.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">启动 / 崩溃后</text>
+<rect x="780" y="220" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(808.85,234) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /> <path d="M9 9l1 0" /> <path d="M9 13l6 0" /> <path d="M9 17l6 0" /></g>
+<text x="903" y="248.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">预写日志 WAL</text>
+<text x="903" y="265.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用前记录变更</text>
+<rect x="60" y="350" width="200" height="64" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="5,4"/>
+<g aria-hidden="true" transform="translate(99.56,364) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M5 12l6 6" /> <path d="M5 12l6 -6" /></g>
+<text x="183" y="378.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">读请求</text>
+<text x="183" y="395.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Get / Range</text>
+<rect x="420" y="350" width="200" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="420" y="350" width="200" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(455,370) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /> <path d="M4 6v6a8 3 0 0 0 16 0v-6" /> <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></g>
+<text x="543" y="384.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MVCC</text>
+<text x="543" y="401.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多版本并发控制</text>
+<rect x="780" y="350" width="200" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(816.8,370) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="903" y="384.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">快照器</text>
+<text x="903" y="401.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Snapshotter</text>
+<rect x="420" y="480" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(454.88,494) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10a2 2 0 0 0 2 -2v-14a2 2 0 0 0 -2 -2h-6.172a2 2 0 0 0 -1.414 .586l-3.828 3.828a2 2 0 0 0 -.586 1.414v10.172a2 2 0 0 0 2 2" /> <path d="M13 6v2" /> <path d="M16 6v2" /> <path d="M10 7v1" /></g>
+<text x="543" y="508.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">bbolt 后端</text>
+<text x="543" y="525.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">持久化 B+tree</text>
+<text x="520" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">etcd 存储层次：MVCC、bbolt、WAL 与快照</text>
+<line x1="341.18" y1="588" x2="361.18" y2="588" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="369.18" y="592" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">虚线框：数据流入口（请求 / 恢复）</text>
+<line x1="571.82" y1="588" x2="591.82" y2="588" style="stroke:#6b7280" stroke-width="1.7"/>
+<text x="599.82" y="592" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">实线框：存储层组件</text>
+</g>
+</svg>

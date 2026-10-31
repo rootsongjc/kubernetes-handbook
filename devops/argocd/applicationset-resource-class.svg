@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="540" viewBox="0 0 800 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="applicz-title applicz-desc" id="applicationset-resource-class-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="applicz-title">ApplicationSet 资源结构</title>
+<desc id="applicz-desc">ApplicationSet 包含 metadata 与 spec；ApplicationSetSpec 由 generators 列表和 template 应用模板组成。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #applicationset-resource-class-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #applicationset-resource-class-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #applicationset-resource-class-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#applicationset-resource-class-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="applicationset-resource-class-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 364 126.4 L 436 126.4" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#applicationset-resource-class-m-6b7280)"/>
+<rect x="381.6" y="103.8" width="36.8" height="16.6" style="fill:#ffffff"/>
+<text x="400" y="115.4" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">spec</text>
+<rect x="80" y="100" width="280" height="88" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="80" y="100" width="280" height="88" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="220" y="125" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ApplicationSet</text>
+<line x1="80" y1="140" x2="360" y2="140" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="92" y="160" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">metadata: ObjectMeta</text>
+<text x="92" y="176" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">spec: ApplicationSetSpec</text>
+<rect x="440" y="100" width="280" height="88" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="580" y="125" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ApplicationSetSpec</text>
+<line x1="440" y1="140" x2="720" y2="140" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="452" y="160" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">generators: Generator[]</text>
+<text x="452" y="176" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">template: ApplicationTemplate</text>
+<text x="400" y="240" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">关联关系：ApplicationSet 通过 spec 引用 ApplicationSetSpec；generators 为模板生成参数。</text>
+<text x="400" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ApplicationSet 资源结构</text>
+</g>
+</svg>

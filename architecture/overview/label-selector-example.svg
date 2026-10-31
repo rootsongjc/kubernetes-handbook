@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="800" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="labelsz-title labelsz-desc" id="label-selector-example-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="labelsz-title">标签与选择器：选中匹配的 Pod</title>
+<desc id="labelsz-desc">标签是附加在对象上的键值对；选择器 app=nginx,tier=frontend 选中标签匹配的 Pod 1、Pod 2，不选中标签不匹配的 Pod 3。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #label-selector-example-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #label-selector-example-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #label-selector-example-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#label-selector-example-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="label-selector-example-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="90" width="480" height="290" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="112" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod 选择示例</text>
+<path d="M 492 293.6 L 552 293.6 Q 560 293.6 560 285.6 L 560 148 Q 560 140 568 140 L 696 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#label-selector-example-m-6b7280)"/>
+<rect x="644.24" y="117.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="660.24" y="129" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">选中</text>
+<path d="M 492 308 L 592 308 Q 600 308 600 300 L 600 240 Q 600 232 608 232 L 696 232" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#label-selector-example-m-6b7280)"/>
+<rect x="652" y="209.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="668" y="221" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">选中</text>
+<path d="M 492 324 L 696 324" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<rect x="623" y="330" width="44" height="16.6" style="fill:#ffffff"/>
+<text x="645" y="341.6" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">未选中</text>
+<rect x="72" y="126" width="416" height="112" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="88" y="161.15" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">标签（Label）</text>
+<text x="88" y="178.55" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">app: nginx</text>
+<text x="88" y="195.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">tier: frontend</text>
+<text x="88" y="213.35" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">environment: production</text>
+<rect x="72" y="272" width="416" height="72" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="72" y="272" width="416" height="72" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="88" y="304.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">选择器（Selector）</text>
+<text x="88" y="321.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">app=nginx,tier=frontend</text>
+<rect x="700" y="112" width="180" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(743,122) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="813" y="136.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 1</text>
+<text x="813" y="153.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标签匹配</text>
+<rect x="700" y="204" width="180" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(743,214) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="813" y="228.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 2</text>
+<text x="813" y="245.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标签匹配</text>
+<rect x="700" y="296" width="180" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(737,306) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="813" y="320.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 3</text>
+<text x="813" y="337.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标签不匹配</text>
+<text x="480" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标签与选择器：选中匹配的 Pod</text>
+</g>
+</svg>

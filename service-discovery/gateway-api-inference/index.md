@@ -30,49 +30,7 @@ Gateway API Inference Extension 是 Kubernetes Gateway API 的一个扩展，专
 
 下图展示了 Gateway API Inference Extension 的整体架构：
 
-```mermaid "系统架构总览"
-graph TB
-    subgraph "客户端层"
-        CLIENT["AI/ML 应用<br/>(OpenAI-compatible client)"]
-    end
-
-    subgraph "网关层"
-        GW["Gateway<br/>(Envoy-based proxy)"]
-        HR["HTTPRoute<br/>(gateway.networking.k8s.io/v1)"]
-    end
-
-    subgraph "扩展层"
-        BBR["Body-Based Router<br/>(pkg/bbr)"]
-        EPP["Endpoint Picker Proxy<br/>(cmd/epp)"]
-    end
-
-    subgraph "控制平面"
-        POOL["InferencePool CRD<br/>(apis/v1/inferencepool_types.go)"]
-        OBJ["InferenceObjective CRD<br/>(apis/v1alpha2/inferenceobjective_types.go)"]
-    end
-
-    subgraph "后端层"
-        MS1["Model Server Pod 1<br/>(vLLM, Triton, SGLang)"]
-        MS2["Model Server Pod 2"]
-        MS3["Model Server Pod N"]
-    end
-
-    CLIENT -->|"HTTP POST /v1/completions"| GW
-    GW -->|"ext-proc gRPC stream"| BBR
-    BBR -->|"adds X-Gateway-Model-Name header"| GW
-    GW -->|"matches HTTPRoute"| HR
-    HR -->|"backendRef: InferencePool"| POOL
-    GW -->|"ext-proc gRPC stream"| EPP
-    EPP -->|"watches"| POOL
-    EPP -->|"watches"| OBJ
-    EPP -->|"selects optimal pod"| MS1
-    EPP -.->|"alternative selection"| MS2
-    EPP -.->|"alternative selection"| MS3
-    MS1 -->|"inference response"| CLIENT
-```
-
-![系统架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/abaa6a57579f530656c7b442710119d1.svg)
-{width=2325 height=1066}
+![Gateway API Inference Extension 系统架构总览](inference-extension-architecture.svg)
 
 ### 组件说明
 
@@ -124,85 +82,17 @@ EPP 是核心智能组件，实现调度和路由逻辑。其主要子模块包�
 
 下图展示了资源之间的关系：
 
-```mermaid "Kubernetes 资源关系图"
-graph LR
-    subgraph "标准 Gateway API"
-        GW["Gateway"]
-        HR["HTTPRoute"]
-    end
-
-    subgraph "Inference Extension CRDs"
-        POOL["InferencePool<br/>inference.networking.k8s.io/v1"]
-        OBJ["InferenceObjective<br/>inference.networking.x-k8s.io/v1alpha2"]
-    end
-
-    subgraph "Core Kubernetes"
-        SVC["Service<br/>(EPP ext-proc)"]
-        POD["Pods<br/>(model servers)"]
-    end
-
-    HR -->|"backendRef"| POOL
-    POOL -->|"endpointPickerRef"| SVC
-    POOL -->|"selector.matchLabels"| POD
-    OBJ -->|"references"| POOL
-    GW -->|"parent of"| HR
-```
-
-![Kubernetes 资源关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/3bcf808bd36880367d58e3734d7ffd75.svg)
-{width=1920 height=559}
+![Inference Extension 的 Kubernetes 资源关系](inference-resource-relations.svg)
 
 ## 请求处理流程
 
-推理请求的处理流程如下图所示：
+推理请求的处理流程分为两段：下图先展示网关、BBR 与 EPP 之间的 ext-proc 交互。
 
-```mermaid "推理请求处理时序图"
-sequenceDiagram
-    participant Client as "AI/ML Client"
-    participant Envoy as "Gateway/Envoy"
-    participant BBR as "BBR ExtProc<br/>(pkg/bbr)"
-    participant SS as "StreamingServer<br/>(pkg/epp/extproc)"
-    participant Dir as "Director<br/>(pkg/epp/director)"
-    participant Sched as "Scheduler<br/>(pkg/epp/scheduler)"
-    participant DS as "Datastore<br/>(pkg/epp/datastore)"
-    participant Pod as "Model Server Pod"
+![推理请求处理时序（一）：网关、BBR 与 EPP](inference-request-sequence-gateway.svg)
 
-    Client->>Envoy: POST /v1/completions<br/>{"model": "llama-3.1-8b", ...}
-    Envoy->>BBR: ProcessingRequest(headers, body)
-    BBR->>BBR: Extract model from JSON body
-    BBR->>Envoy: Add X-Gateway-Model-Name header
+EPP 收到请求后，内部由 StreamingServer、Director、Scheduler 与 Datastore 协作完成饱和检测与调度：
 
-    Envoy->>Envoy: Match HTTPRoute by header
-    Note over Envoy: Route to InferencePool backend
-
-    Envoy->>SS: ProcessingRequest(headers, body)
-    SS->>Dir: HandleRequest(requestContext)
-
-    Dir->>DS: ObjectiveGet(modelName)
-    DS-->>Dir: InferenceObjective (priority)
-
-    Dir->>DS: PodList(selector)
-    DS-->>Dir: List of candidate pods + metrics
-
-    Dir->>Dir: Check SaturationDetector
-
-    alt System saturated AND priority < 0
-        Dir-->>SS: Error 429 TooManyRequests
-        SS-->>Envoy: ImmediateResponse(429)
-        Envoy-->>Client: 429 system saturated
-    else Accept request
-        Dir->>Sched: Schedule(request, candidates)
-        Sched->>Sched: Filter → Score → Pick
-        Sched-->>Dir: SchedulingResult(selected pod)
-        Dir-->>SS: Target endpoint
-        SS-->>Envoy: ProcessingResponse(headers)
-        Envoy->>Pod: Forward to selected pod
-        Pod-->>Envoy: Inference response
-        Envoy-->>Client: 200 OK + response
-    end
-```
-
-![推理请求处理时序图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/46cae61c36ec843180be107955f06afb.svg)
-{width=1976 height=1516}
+![推理请求处理时序（二）：EPP 内部的饱和检测与调度](inference-request-sequence-epp.svg)
 
 **关键阶段说明：**
 
@@ -223,63 +113,7 @@ sequenceDiagram
 
 下图展示了 EPP 应用的主要子系统及其关系：
 
-```mermaid "EPP 内部组件结构"
-graph TB
-    subgraph "EPP 进程"
-        MAIN["main()<br/>(cmd/epp/main.go)"]
-        RUNNER["Runner<br/>(pkg/epp/runner/runner.go)"]
-    end
-
-    subgraph "gRPC 服务器"
-        HEALTH["Health Server<br/>:9003<br/>(pkg/epp/health)"]
-        EXTPROC["ExtProc Server<br/>:9002<br/>(pkg/epp/extproc)"]
-        METRICS["Metrics Server<br/>:9090<br/>(pkg/epp/metrics)"]
-    end
-
-    subgraph "请求管道"
-        SS["StreamingServer<br/>(streaming_server.go)"]
-        DIR["Director<br/>(director.go)"]
-        SD["SaturationDetector<br/>(saturationdetector/)"]
-        SCHED["Scheduler<br/>(scheduler.go)"]
-    end
-
-    subgraph "数据层"
-        DS["Datastore<br/>(datastore.go)"]
-        POOL_CTL["InferencePoolReconciler<br/>(controllers/)"]
-        OBJ_CTL["InferenceObjectiveReconciler"]
-        POD_CTL["PodReconciler"]
-    end
-
-    subgraph "插件系统"
-        PLUGINS["Plugin Registry<br/>(plugins/)"]
-        SCORERS["Scorers<br/>(kvcache, queue, lora)"]
-        PICKERS["Pickers<br/>(maxscore, random)"]
-    end
-
-    MAIN --> RUNNER
-    RUNNER --> HEALTH
-    RUNNER --> EXTPROC
-    RUNNER --> METRICS
-    RUNNER --> DIR
-    RUNNER --> DS
-
-    EXTPROC --> SS
-    SS --> DIR
-    DIR --> SD
-    DIR --> SCHED
-    DIR --> DS
-
-    SCHED --> PLUGINS
-    PLUGINS --> SCORERS
-    PLUGINS --> PICKERS
-
-    POOL_CTL --> DS
-    OBJ_CTL --> DS
-    POD_CTL --> DS
-```
-
-![EPP 内部组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/3f9c01b2eb0fe5995400c99e2f1d0088.svg)
-{width=2052 height=1843}
+![EPP 内部组件结构](epp-internal-components.svg)
 
 **主要职责：**
 
@@ -295,38 +129,7 @@ graph TB
 
 EPP 采用三阶段调度算法，受 Kubernetes 调度器启发：
 
-```mermaid "三阶段调度算法流程"
-graph LR
-    CANDIDATES["候选 Pods<br/>(来自 InferencePool 选择器)"]
-
-    subgraph "阶段 1: 过滤"
-        F1["HeaderBasedTestingFilter<br/>(plugins/headerbasedtesting)"]
-    end
-
-    subgraph "阶段 2: 评分"
-        S1["KVCacheUtilizationScorer<br/>(plugins/kvcache)"]
-        S2["QueueScorer<br/>(plugins/queue)"]
-        S3["LoraAffinityScorer<br/>(plugins/loraaffinity)"]
-        S4["PrefixCachePlugin<br/>(plugins/prefixcache)"]
-    end
-
-    subgraph "阶段 3: 选择"
-        P1["MaxScorePicker<br/>(plugins/maxscore)"]
-    end
-
-    RESULT["选定的 Pod IP:Port"]
-
-    CANDIDATES --> F1
-    F1 -->|"过滤后的候选"| S1
-    S1 --> S2
-    S2 --> S3
-    S3 --> S4
-    S4 -->|"评分后的候选"| P1
-    P1 --> RESULT
-```
-
-![三阶段调度算法流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway-api-inference/11fa63dd41fd3cb38c6667ea0f165881.svg)
-{width=3006 height=198}
+![EPP 三阶段调度算法流程](inference-scheduling-pipeline.svg)
 
 **评分权重说明：**
 

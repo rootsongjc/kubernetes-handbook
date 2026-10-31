@@ -33,39 +33,7 @@ Argo Rollout 是 Kubernetes 的渐进式交付控制器和自定义资源定义�
 
 Argo Rollout 遵循 Kubernetes 生态系统中常见的基于控制器的架构模式。下图展示了主要组件及其交互关系，便于理解整体系统设计。
 
-```mermaid "Argo Rollout 核心架构"
-graph TD
-    Client["kubectl/Client"] -->|"creates/updates"| RO["Rollout CRD"]
-    RO -->|"watched by"| RC["Rollout Controller"]
-    subgraph "Controller Components"
-        RC -->|"manages"| RS["ReplicaSets"]
-        RC -->|"updates"| SVC["Services"]
-        RC -->|"creates"| AR["AnalysisRun"]
-        RC -->|"creates"| EXP["Experiment"]
-        RC -->|"configures"| TR["Traffic Routing"]
-    end
-    TR -->|"implements"| TR1["Istio"]
-    TR -->|"implements"| TR2["Nginx"]
-    TR -->|"implements"| TR3["ALB"]
-    TR -->|"implements"| TR4["SMI"]
-    TR -->|"implements"| TR5["AppMesh"]
-    TR -->|"implements"| TR6["Traefik"]
-    TR -->|"implements"| TR7["Ambassador"]
-    TR -->|"implements"| TR8["Apisix"]
-    AR -->|"uses"| AT["AnalysisTemplate"]
-    AR -->|"uses"| CAT["ClusterAnalysisTemplate"]
-    AR -->|"queries"| MP["Metric Providers"]
-    MP -->|"provider"| MP1["Prometheus"]
-    MP -->|"provider"| MP2["Datadog"]
-    MP -->|"provider"| MP3["Wavefront"]
-    MP -->|"provider"| MP4["NewRelic"]
-    MP -->|"provider"| MP5["CloudWatch"]
-    MP -->|"provider"| MP6["Web"]
-    MP -->|"provider"| MP7["Job"]
-```
-
-![Argo Rollout 核心架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argo-rollout/db0685afabedb791f1a59b4cfc497c5b.svg)
-{width=2782 height=1102}
+![Argo Rollout 核心架构：客户端、Rollout CRD、Rollout Controller 及其管理的对象](core-architecture.svg)
 
 Argo Rollout 的核心组成部分包括自定义资源定义（CRDs）、控制器、流量管理和分析系统，各组件协同实现渐进式交付。
 
@@ -73,32 +41,7 @@ Argo Rollout 的核心组成部分包括自定义资源定义（CRDs）、控制
 
 Argo Rollout 控制器由多个子控制器组成，分别负责渐进式交付的不同方面。下图展示了控制器的整体结构与职责分工。
 
-```mermaid "控制器实现结构"
-graph TD
-    subgraph "Controller Manager"
-        CM["Controller Manager"]
-        CM -->|"manages"| RC["Rollout Controller"]
-        CM -->|"manages"| AC["Analysis Controller"]
-        CM -->|"manages"| EC["Experiment Controller"]
-        CM -->|"manages"| SC["Service Controller"]
-        CM -->|"manages"| IC["Ingress Controller"]
-        CM -->|"manages"| NC["Notification Controller"]
-    end
-    subgraph "Kubernetes API"
-        RC -->|"watches/updates"| Rollouts["Rollouts"]
-        AC -->|"watches/updates"| AnalysisRuns["AnalysisRuns"]
-        EC -->|"watches/updates"| Experiments["Experiments"]
-        SC -->|"watches/updates"| Services["Services"]
-        IC -->|"watches/updates"| Ingresses["Ingresses"]
-    end
-    RC -->|"creates"| RS["ReplicaSets"]
-    RC -->|"updates traffic"| TR["Traffic Routing"]
-    RC -->|"creates"| AnalysisRuns
-    RC -->|"creates"| Experiments
-```
-
-![控制器实现结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argo-rollout/b89862b0fc1f9f8f90042300d03c6d46.svg)
-{width=2357 height=647}
+![控制器实现结构：Controller Manager 管理六个子控制器并操作 Kubernetes API 资源](controller-manager-structure.svg)
 
 控制器负责监控 Rollout 资源变化、管理 ReplicaSets、更新 Services、创建分析与实验对象，并与流量路由机制集成，实现渐进式流量转移。
 
@@ -106,29 +49,7 @@ graph TD
 
 Argo Rollout 支持两种主要的部署策略：BlueGreen 和 Canary。下图展示了策略结构及关键配置项。
 
-```mermaid "部署策略结构"
-graph TD
-    Rollout -->|"strategy"| Strategy
-    Strategy -->|"type"| BlueGreen["BlueGreen"]
-    Strategy -->|"type"| BlueGreen
-    BlueGreen -->|"defines"| ActiveService["activeService"]
-    BlueGreen -->|"defines"| PreviewService["previewService"]
-    BlueGreen -->|"triggers"| PrePromotion["prePromotionAnalysis"]
-    BlueGreen -->|"triggers"| PostPromotion["postPromotionAnalysis"]
-    BlueGreen -->|"configures"| AutoPromotion["autoPromotionEnabled"]
-    Strategy -->|"type"| Canary["Canary"]
-    Canary -->|"uses"| Steps["steps"]
-    Canary -->|"uses"| TrafficRouting["trafficRouting"]
-    Canary -->|"triggers"| Analysis["analysis"]
-    Steps -->|"type"| SetWeight["setWeight (%)"]
-    Steps -->|"type"| Pause["pause"]
-    Steps -->|"type"| AnalysisStep["analysis"]
-    Steps -->|"type"| ExperimentStep["experiment"]
-    Steps -->|"type"| SetHeaderRoute["setHeaderRoute"]
-```
-
-![部署策略结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argo-rollout/6a2ba63c7b63d413003fbe16a33431f7.svg)
-{width=2068 height=817}
+![部署策略结构：BlueGreen 与 Canary 的配置项及 steps 类型](deployment-strategy-structure.svg)
 
 ### BlueGreen 部署
 
@@ -142,27 +63,7 @@ Canary 部署通过逐步增加新版本流量，监控性能和健康状况，�
 
 Argo Rollout 的分析系统自动化部署验证，支持多种指标提供商。下图展示了分析流程及关键组件。
 
-```mermaid "分析系统结构"
-graph TD
-    Rollout -->|"triggers"| Analysis
-    Analysis -->|"type"| Background["Background Analysis"]
-    Analysis -->|"type"| Pre["Pre-Promotion Analysis"]
-    Analysis -->|"type"| Post["Post-Promotion Analysis"]
-    Analysis -->|"type"| Inline["Inline Analysis"]
-    Analysis -->|"uses"| Template["AnalysisTemplate"]
-    Analysis -->|"creates"| Run["AnalysisRun"]
-    Run -->|"queries"| Providers["Metric Providers"]
-    Providers -->|"type"| P1["Prometheus"]
-    Providers -->|"type"| P2["Datadog"]
-    Providers -->|"type"| P3["Wavefront"]
-    Providers -->|"type"| P4["NewRelic"]
-    Providers -->|"type"| P5["CloudWatch"]
-    Providers -->|"type"| P6["Web"]
-    Providers -->|"type"| P7["Job"]
-```
-
-![分析系统结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/argo-rollout/141ab50af2cb81e63768fd6bdc8a471e.svg)
-{width=1939 height=817}
+![分析系统结构：Rollout 触发 Analysis，创建 AnalysisRun 并查询指标提供商](analysis-system-structure.svg)
 
 分析系统通过定义指标、查询外部数据、评估成功条件，实现自动提升或回滚。支持 Prometheus、Datadog 等主流监控平台。
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="600" viewBox="0 0 1080 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="probepz-title probepz-desc" id="probe-parameters-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="probepz-title">探针参数关系</title>
+<desc id="probepz-desc">五个通用参数按生效顺序排列：initialDelaySeconds 决定首次探测时间，periodSeconds 决定频率，timeoutSeconds 限制单次耗时，successThreshold 与 failureThreshold 决定判定阈值。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #probe-parameters-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #probe-parameters-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #probe-parameters-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#probe-parameters-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="probe-parameters-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 204 162 L 240 162" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#probe-parameters-m-6b7280)"/>
+<path d="M 416 162 L 452 162" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#probe-parameters-m-6b7280)"/>
+<path d="M 628 162 L 664 162" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#probe-parameters-m-6b7280)"/>
+<path d="M 840 162 L 876 162" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#probe-parameters-m-6b7280)"/>
+<rect x="32" y="120" width="168" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="116" y="150.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">initialDelaySeconds</text>
+<text x="116" y="166.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">首次探测前等待</text>
+<text x="116" y="182.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">默认 0</text>
+<rect x="244" y="120" width="168" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="328" y="150.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">periodSeconds</text>
+<text x="328" y="166.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">探测频率</text>
+<text x="328" y="182.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">默认 10，最小 1</text>
+<rect x="456" y="120" width="168" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="540" y="150.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">timeoutSeconds</text>
+<text x="540" y="166.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">单次探测超时</text>
+<text x="540" y="182.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">默认 1，最小 1</text>
+<rect x="668" y="120" width="168" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="752" y="150.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">successThreshold</text>
+<text x="752" y="166.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">连续成功次数</text>
+<text x="752" y="182.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">默认 1（liveness 必须为 1）</text>
+<rect x="880" y="120" width="168" height="84" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="880" y="120" width="168" height="84" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="964" y="150.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">failureThreshold</text>
+<text x="964" y="166.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">连续失败次数</text>
+<text x="964" y="182.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">默认 3，最小 1</text>
+<text x="540" y="252" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">前三项控制探测时序，后两项控制判定阈值；探测失败达到 failureThreshold 次才触发重启或摘流。</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">探针参数关系</text>
+</g>
+</svg>

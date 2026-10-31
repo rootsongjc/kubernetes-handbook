@@ -46,17 +46,7 @@ Init 容器适用于多种初始化和依赖准备场景。常见用例如下：
 
 下图展示了 Init 容器在 Pod 启动流程中的作用：
 
-```mermaid "Init 容器执行流程"
-graph TD
-    A[Pod 调度到节点] --> B[网络和存储卷初始化]
-    B --> C[Init 容器 1 执行]
-    C --> D[Init 容器 2 执行]
-    D --> E[所有 Init 容器完成]
-    E --> F[应用容器启动]
-```
-
-![Init 容器执行流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/init-containers/96277efc8363e49a5e8c906089ee4622.svg)
-{width=1920 height=7628}
+![Init 容器执行流程](init-container-startup-flow.svg)
 
 ## 使用示例
 

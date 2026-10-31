@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="880" viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="podreqz-title podreqz-desc" id="pod-requests-limits-rollup-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="podreqz-title">Pod 资源请求与限制：按容器求和</title>
+<desc id="podreqz-desc">Pod 内两个容器各声明 requests（CPU 250m、Memory 64Mi）与 limits（CPU 500m、Memory 128Mi），Pod 级 requests 为 CPU 500m、Memory 128Mi，limits 为 CPU 1、Memory 256Mi。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #pod-requests-limits-rollup-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #pod-requests-limits-rollup-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #pod-requests-limits-rollup-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#pod-requests-limits-rollup-root .diagram-container { overflow-x: visible; }
+}</style>
+
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="70" y="96" width="520" height="300" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="86" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod</text>
+<rect x="90" y="130" width="220" height="246" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="106" y="152" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">容器 1（Container 1）</text>
+<rect x="350" y="130" width="220" height="246" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="366" y="152" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">容器 2（Container 2）</text>
+<rect x="640" y="130" width="260" height="246" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="656" y="152" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod 合计（Pod Total）</text>
+<rect x="106" y="166" width="188" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="200" y="193.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Requests</text>
+<text x="200" y="209.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 250m</text>
+<text x="200" y="225.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 64Mi</text>
+<rect x="106" y="276" width="188" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="200" y="303.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Limits</text>
+<text x="200" y="319.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 500m</text>
+<text x="200" y="335.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 128Mi</text>
+<rect x="366" y="166" width="188" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="460" y="193.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Requests</text>
+<text x="460" y="209.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 250m</text>
+<text x="460" y="225.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 64Mi</text>
+<rect x="366" y="276" width="188" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="460" y="303.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Limits</text>
+<text x="460" y="319.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 500m</text>
+<text x="460" y="335.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 128Mi</text>
+<rect x="656" y="166" width="228" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="656" y="166" width="228" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="770" y="193.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Requests</text>
+<text x="770" y="209.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 500m</text>
+<text x="770" y="225.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 128Mi</text>
+<rect x="656" y="276" width="228" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="656" y="276" width="228" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="770" y="303.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Limits</text>
+<text x="770" y="319.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">CPU: 1</text>
+<text x="770" y="335.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Memory: 256Mi</text>
+<text x="330" y="212" style="fill:#6b7280" font-size="24" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">+</text>
+<text x="615" y="212" style="fill:#6b7280" font-size="24" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">=</text>
+<text x="330" y="322" style="fill:#6b7280" font-size="24" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">+</text>
+<text x="615" y="322" style="fill:#6b7280" font-size="24" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">=</text>
+<text x="480" y="428" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">调度器按 Pod 合计 requests 选节点；kubelet 按各容器 limits 施加上限。</text>
+<text x="480" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 资源请求与限制：按容器求和</text>
+</g>
+</svg>

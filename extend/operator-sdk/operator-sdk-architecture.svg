@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2280" height="1160" viewBox="0 0 1140 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="operatz-title operatz-desc" id="operator-sdk-architecture-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="operatz-title">Operator SDK 总体架构</title>
+<desc id="operatz-desc">项目工具与构建系统支撑 CLI 和插件系统；CLI 生成 Go、Ansible、Helm 三类 Operator，并产出 Bundle 与 Scorecard 测试；三类 Operator、Bundle 与 Scorecard 最终都交给 Operator Lifecycle Manager 管理。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #operator-sdk-architecture-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #operator-sdk-architecture-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #operator-sdk-architecture-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#operator-sdk-architecture-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="operator-sdk-architecture-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="96" width="300" height="360" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Operator SDK 核心</text>
+<rect x="412" y="96" width="308" height="360" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="428" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Operator 实现类型</text>
+<rect x="792" y="96" width="340" height="360" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="808" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Operator 生命周期管理</text>
+<path d="M 190 220 L 190 326" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="194" y="265.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="198" y="277.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">支撑</text>
+<path d="M 320 354 L 368 354 Q 376 354 376 346 L 376 178 Q 376 170 384 170 L 432 170" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="401.2" y="147.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="417.2" y="159" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">生成</text>
+<path d="M 320 370 L 368 370 Q 376 370 376 362 L 376 288 Q 376 280 384 280 L 432 280" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<path d="M 320 386 L 374 386 Q 376 386 376 388 L 376 388 Q 376 390 378 390 L 432 390" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<path d="M 700 170 L 752 170 Q 756 170 756 174 L 756 174 Q 756 178 760 178 L 812 178" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="720" y="147.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="736" y="159" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">部署</text>
+<path d="M 700 280 L 748 280 Q 756 280 756 272 L 756 186 Q 756 178 764 178 L 812 178" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<path d="M 700 390 L 748 390 Q 756 390 756 382 L 756 186 Q 756 178 764 178 L 812 178" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<path d="M 152.2 414 L 152.2 492 Q 152.2 500 160.2 500 L 878 500 Q 886 500 886 492 L 886 428" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="471.26" y="477.4" width="81.68" height="16.6" style="fill:#ffffff"/>
+<text x="512.1" y="489" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">make bundle</text>
+<path d="M 227.8 414 L 227.8 522 Q 227.8 530 235.8 530 L 1030 530 Q 1038 530 1038 522 L 1038 428" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="589.5" y="536" width="72.8" height="16.6" style="fill:#ffffff"/>
+<text x="625.9" y="547.6" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">scorecard</text>
+<path d="M 886 356 L 886 220" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="850" y="280.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="878" y="292.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">安装</text>
+<path d="M 1038 356 L 1038 220" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-architecture-m-6b7280)"/>
+<rect x="1042" y="280.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="1046" y="292.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">验证</text>
+<rect x="64" y="140" width="252" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(91.99,161) scale(1.417)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="212" y="175.275" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">项目工具与构建系统</text>
+<text x="212" y="191.225" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">脚手架 · Makefile · 镜像构建</text>
+<rect x="64" y="330" width="252" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="64" y="330" width="252" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(111.35,352) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="213" y="366.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CLI 和插件系统</text>
+<text x="213" y="383.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">operator-sdk</text>
+<rect x="436" y="140" width="260" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(467.10,152.00) scale(1.5)" style="color:#6b7280" fill="currentColor"><path d="M1.811 10.715c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07l-4.23-.011zM.047 11.79c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07l-5.527.012zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082l-2.547-.012zM15.004 10.505c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.771.105-.129.198-.269.315-.433H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 0 1 .292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 0 1-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.021 1.098-.199 2.15-.07 3.096.572.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.199 M18.872 16.967c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 0 1-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.951 1.192-.21 2.314-.094 3.33.596.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.059-.63.07-.934.106zm2.78-4.721c-.011-.152-.011-.269-.034-.386-.21-1.157-1.274-1.811-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.209.643.28 1.285.245 1.905-.07.923-.48 1.425-1.227 1.484-2.232z"/></g>
+<text x="589" y="166.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Go-based Operator</text>
+<text x="589" y="183.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">controller-runtime</text>
+<rect x="436" y="250" width="260" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(448.8,262) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="589" y="276.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Ansible-based Operator</text>
+<text x="589" y="293.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Playbook / Role</text>
+<rect x="436" y="360" width="260" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(459.45,372) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="589" y="386.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Helm-based Operator</text>
+<text x="589" y="403.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Helm Chart</text>
+<rect x="816" y="140" width="292" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="816" y="140" width="292" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(828.15,160) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="985" y="174.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Operator Lifecycle Manager</text>
+<text x="985" y="191.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">OLM</text>
+<rect x="816" y="360" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="886" y="396.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Bundle 和包管理</text>
+<rect x="968" y="360" width="140" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1038" y="396.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Scorecard 测试</text>
+<text x="570" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Operator SDK 总体架构</text>
+</g>
+</svg>

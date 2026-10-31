@@ -22,64 +22,7 @@ Volcano 通过自定义资源（CRD）和可插拔调度插件，补齐了这些
 
 Volcano 控制平面由多个组件构成，负责批量任务调度、资源分配与生命周期管理。下图展示了主要架构组件及其交互关系。
 
-```mermaid "Volcano 架构总览"
-graph TB
-    subgraph "Kubernetes Cluster"
-        KAPI["kube-apiserver"]
-        NODES["Worker Nodes"]
-        PODS["Application Pods"]
-    end
-    
-    subgraph "Volcano Control Plane"
-        subgraph "vc-scheduler"
-            SCHED["Scheduler Core"]
-            CACHE["SchedulerCache"]
-            ACTIONS["Actions: Allocate / Preempt / Reclaim"]
-            PLUGINS["Scheduling Plugins"]
-        end
-        
-        subgraph "vc-controller-manager"
-            JOBCTRL["Job Controller"]
-            PGCTRL["PodGroup Controller"]
-            QUEUECTRL["Queue Controller"]
-            GCCTRL["GC Controller"]
-        end
-        
-        subgraph "vc-webhook-manager"
-            JOBWEBHOOK["Job Admission Webhook"]
-            QUEUEWEBHOOK["Queue Admission Webhook"]
-        end
-    end
-    
-    subgraph "Custom Resources"
-        JOBS["Jobs (batch.volcano.sh)"]
-        QUEUES["Queues (scheduling.volcano.sh)"]
-        PODGROUPS["PodGroups (scheduling.volcano.sh)"]
-    end
-    
-    subgraph "Client Tools"
-        CLI["vcctl CLI"]
-        HELM["Helm Charts"]
-    end
-    
-    SCHED <--> CACHE
-    CACHE <--> KAPI
-    ACTIONS --> SCHED
-    PLUGINS --> SCHED
-    JOBCTRL --> KAPI
-    PGCTRL --> KAPI
-    QUEUECTRL --> KAPI
-    JOBWEBHOOK --> KAPI
-    KAPI <--> JOBS
-    KAPI <--> PODGROUPS
-    KAPI <--> QUEUES
-    SCHED --> PODS
-    PODS --> NODES
-    CLI --> KAPI
-```
-
-![Volcano 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/e50d13c14269ef18427c0e5654b4688d.svg)
-{width=3992 height=1213}
+![Volcano 架构总览](volcano-architecture.svg)
 
 {{< table title="Volcano 核心组件职责" >}}
 
@@ -96,29 +39,7 @@ graph TB
 
 Volcano 通过自定义资源扩展了 Kubernetes 的原生对象模型。下图展示了各 CRD 之间的关系。
 
-```mermaid "Volcano CRD 模型"
-graph TB
-    subgraph "batch.volcano.sh/v1alpha1"
-        JOBS["Job<br/>- 任务定义<br/>- minAvailable<br/>- queue/schedulerName"]
-    end
-    
-    subgraph "scheduling.volcano.sh/v1beta1"
-        QUEUES["Queue<br/>- 资源配额/优先级<br/>- Reclaimable"]
-        PODGROUPS["PodGroup<br/>- 成组调度<br/>- minMember<br/>- Gang 语义"]
-    end
-    
-    subgraph "flow.volcano.sh/v1alpha1"
-        JOBFLOWS["JobFlow<br/>- 工作流依赖<br/>- Pipeline 调度"]
-        JOBTEMPLATES["JobTemplate<br/>- 可复用模板<br/>- 参数化定义"]
-    end
-    
-    JOBS --> PODGROUPS
-    PODGROUPS --> QUEUES
-    JOBS --> JOBFLOWS
-```
-
-![Volcano CRD 模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/1c1276cf6df0e487ce4c16fef59c1d09.svg)
-{width=1920 height=1828}
+![Volcano CRD 模型](volcano-crd-model.svg)
 
 {{< table title="Volcano CRD 功能说明" >}}
 
@@ -136,47 +57,7 @@ graph TB
 
 Volcano 的调度流程分为多个阶段，确保批量任务高效分配和资源利用。下图展示了调度循环的主要流程。
 
-```mermaid "Volcano 调度流程"
-graph LR
-    subgraph "Input"
-        USER["用户提交 Job YAML"]
-        KAPI["Kubernetes API"]
-    end
-    
-    subgraph "Controller Manager"
-        JOBCTRL["Job Controller"]
-        PODGROUP["PodGroup Controller"]
-        QUEUECTRL["Queue Controller"]
-    end
-    
-    subgraph "Scheduler"
-        CACHE["Scheduler Cache"]
-        SESSION["Scheduling Session"]
-        ENQUEUE["Enqueue Action"]
-        ALLOCATE["Allocate Action"]
-        PREEMPT["Preempt Action"]
-        RECLAIM["Reclaim Action"]
-        PLUGINS["Plugins"]
-    end
-    
-    subgraph "Output"
-        BOUND["Pods Bound to Nodes"]
-        RUNNING["Running Workloads"]
-    end
-    
-    USER --> KAPI
-    KAPI --> JOBCTRL
-    JOBCTRL --> PODGROUP
-    PODGROUP --> QUEUECTRL
-    QUEUECTRL --> CACHE
-    CACHE --> SESSION
-    SESSION --> ENQUEUE --> ALLOCATE --> PREEMPT --> RECLAIM
-    SESSION <--> PLUGINS
-    ALLOCATE --> BOUND --> RUNNING
-```
-
-![Volcano 调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/f79912c5373326c074f7e3a189fa8376.svg)
-{width=3542 height=509}
+![Volcano 调度流程](volcano-scheduling-flow.svg)
 
 调度循环（Scheduling Cycle）包括：
 
@@ -190,47 +71,7 @@ graph LR
 
 Volcano 的插件系统高度可扩展，支持在调度周期多个阶段注入自定义逻辑。下图展示了插件分类及其与核心框架的关系。
 
-```mermaid "Volcano 插件体系"
-graph TB
-    subgraph "Plugin Categories"
-        subgraph "Scheduling Plugins"
-            PREDICATES["Predicates Plugin"]
-            NODEORDER["NodeOrder Plugin"]
-            GANG["Gang Plugin"]
-        end
-        subgraph "Resource Management"
-            DRF["DRF Plugin"]
-            PROPORTION["Proportion Plugin"]
-            BINPACK["BinPack Plugin"]
-        end
-        subgraph "Job Lifecycle"
-            SSH["SSH Plugin"]
-            ENV["Env Plugin"]
-            SVC["Service Plugin"]
-        end
-    end
-    
-    subgraph "Framework Core"
-        REGISTRY["Plugin Registry"]
-        SESSION["Session Manager"]
-        ENGINE["Action Engine"]
-    end
-    
-    PREDICATES --> REGISTRY
-    NODEORDER --> REGISTRY
-    GANG --> REGISTRY
-    DRF --> REGISTRY
-    PROPORTION --> REGISTRY
-    SSH --> REGISTRY
-    
-    REGISTRY --> SESSION
-    SESSION --> ENGINE
-    ENGINE --> PREDICATES
-    ENGINE --> GANG
-```
-
-![Volcano 插件体系](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/volcano/c702ec2359e8ed558e42b311103b9c9b.svg)
-{width=2591 height=1071}
+![Volcano 插件体系](volcano-plugin-system.svg)
 
 {{< table title="常见内置插件功能" >}}
 

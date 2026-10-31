@@ -23,34 +23,7 @@ lastmod: 2025-10-19T11:32:02.451Z
 
 下图为推荐的端到端架构与数据流。
 
-```mermaid "End-to-End 发布架构"
-graph LR
-  Dev["Developer Workstation"]
-  SC["Source Control (Git)"]
-  CI["CI Runner (GitHub Actions / Tekton)"]
-  Registry["OCI Registry\n(e.g. GHCR/Harbor/ACR)"]
-  ImageScan["Image Scanning\n(Trivy/Clair)"]
-  CD["GitOps (ArgoCD)"]
-  Rollouts["Progressive Delivery\n(Argo Rollouts)"]
-  Cluster["Kubernetes Clusters\n(dev/stage/prod)"]
-  Observability["Observability\n(Prometheus/Grafana)"]
-  Policy["Policy Engine\n(Kyverno/OPA)"]
-
-  Dev -->|push| SC
-  SC --> CI
-  CI --> Registry
-  Registry --> ImageScan
-  ImageScan --> Registry
-  Registry --> CD
-  CD --> Cluster
-  Cluster --> Rollouts
-  Cluster --> Observability
-  CD --> Policy
-  Observability --> CD
-```
-
-![End-to-End 发布架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/1327ae365d5cfdf821401583f1945658.svg)
-{width=2551 height=351}
+![端到端发布架构：开发者推送到 Git，CI 构建镜像推送到 OCI 仓库并扫描，Argo CD 同步到 Kubernetes 集群并经策略引擎校验，Argo Rollouts 渐进发布，可观测性反馈回 Argo CD](end-to-end-release-architecture.svg)
 
 ## 示例应用简介
 
@@ -65,20 +38,7 @@ graph LR
 
 在本地优先进行快速迭代，建议使用轻量 Kubernetes（k3d / kind）或远程 dev-cluster，并结合 Skaffold 或 Tilt 实现代码到容器的快速循环。这样可以保持与生产相近的环境并显著缩短反馈时间。
 
-```mermaid "本地开发工作流"
-graph LR
-  Code["Code Edit"]
-  Build["Local Build\n(Docker / Buildkit)"]
-  Skaffold["Skaffold / Tilt"]
-  k3d["k3d / kind Cluster"]
-  Debug["Debug / Logs / Port-forward"]
-
-  Code --> Build --> Skaffold --> k3d
-  k3d --> Debug
-```
-
-![本地开发工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/3f5ad138a016ae1725fe2fe8811e1740.svg)
-{width=1920 height=126}
+![本地开发工作流：编辑代码、本地构建、Skaffold / Tilt 自动部署到 k3d / kind 集群，再通过日志与端口转发调试](local-dev-workflow.svg)
 
 建议工具与理由：
 
@@ -159,25 +119,7 @@ jobs:
 
 整体 GitOps 流程示意：
 
-```mermaid "GitOps 工作流"
-graph LR
-  Dev["Developer"]
-  Git["Git Repository\n(manifests / helm-values)"]
-  PR["Pull Request\n(code + manifests)"]
-  CI["CI (build + scan)"]
-  Registry["OCI Registry"]
-  ArgoCD["ArgoCD"]
-  Cluster["Kubernetes Cluster"]
-  Rollouts["Argo Rollouts"]
-
-  Dev --> PR --> CI --> Registry
-  CI --> Git
-  Git --> ArgoCD --> Cluster
-  Cluster --> Rollouts
-```
-
-![GitOps 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/deploy-applications-in-kubernetes/360e88e5d3d3f27c59218107322ea7af.svg)
-{width=2020 height=239}
+![GitOps 工作流：开发者提交 Pull Request，CI 构建扫描后推送镜像并更新 Git 仓库 manifests，Argo CD 同步到 Kubernetes 集群，由 Argo Rollouts 渐进发布](gitops-workflow.svg)
 
 ArgoCD 优势：自动化同步、回滚、审计（历史记录）、多集群支持。实践中建议：
 

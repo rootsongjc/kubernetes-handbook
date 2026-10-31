@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1552" viewBox="0 0 1000 776" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="knativz-title knativz-desc" id="knative-request-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="knativz-title">Knative Serving 请求处理流程</title>
+<desc id="knativz-desc">请求经 Ingress 到 Activator；实例数为 0 时由 Activator 激活实例、启动 Pod 并初始化容器，随后经 Queue Proxy 转发给用户容器处理，响应原路返回客户端。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #knative-request-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #knative-request-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #knative-request-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#knative-request-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="knative-request-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="444" y="272" width="530" height="178.5" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="110" y1="150" x2="110" y2="764.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="305" y1="150" x2="305" y2="764.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="500" y1="150" x2="500" y2="764.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="695" y1="150" x2="695" y2="764.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="890" y1="150" x2="890" y2="764.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<rect x="444" y="272" width="72.98" height="20" rx="2" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="452" y="286" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.06em">ALT·冷启动</text>
+<path d="M 114 190 L 301 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 309 236 L 496 236" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 504 310 L 556 310 Q 564 310 564 318 L 564 336.5 Q 564 344.5 556 344.5 L 504 344.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 504 390.5 L 691 390.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 699 436.5 L 886 436.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 504 494.5 L 691 494.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 699 540.5 L 886 540.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 886 586.5 L 699 586.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 691 632.5 L 504 632.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 496 678.5 L 309 678.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<path d="M 301 724.5 L 114 724.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#knative-request-flow-m-6b7280)"/>
+<rect x="50" y="92" width="120" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(67.5,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /> <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></g>
+<text x="131.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">客户端</text>
+<text x="131.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Client</text>
+<rect x="237.4" y="92" width="135.2" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(253.4,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 12v.01" /> <path d="M3 21h18" /> <path d="M5 21v-16a2 2 0 0 1 2 -2h6m4 10.5v7.5" /> <path d="M21 7h-7m3 -3l-3 3l3 3" /></g>
+<text x="326.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Ingress</text>
+<text x="326.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Gateway</text>
+<rect x="425.96" y="92" width="148.08" height="58" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="425.96" y="92" width="148.08" height="58" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(441.96,104.5) scale(1.375)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></g>
+<text x="521.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Activator</text>
+<text x="521.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">请求激活器</text>
+<rect x="611.86" y="92" width="166.28" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(627.86,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /> <path d="M4 12l8 4l8 -4" /> <path d="M4 16l8 4l8 -4" /></g>
+<text x="716.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Queue Proxy</text>
+<text x="716.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">请求队列</text>
+<rect x="808.28" y="92" width="163.44" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(824.28,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="911.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">用户容器</text>
+<text x="911.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">User Container</text>
+<text x="207.5" y="182" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">发送请求</text>
+<text x="402.5" y="228" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">转发请求</text>
+<text x="574" y="331.25" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">激活实例</text>
+<text x="597.5" y="382.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">启动 Pod</text>
+<text x="792.5" y="428.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">初始化容器</text>
+<text x="597.5" y="486.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">转发请求</text>
+<text x="792.5" y="532.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">处理请求</text>
+<text x="792.5" y="578.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回响应</text>
+<text x="597.5" y="624.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回响应</text>
+<text x="402.5" y="670.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回响应</text>
+<text x="207.5" y="716.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回响应</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Knative Serving 请求处理流程</text>
+</g>
+</svg>

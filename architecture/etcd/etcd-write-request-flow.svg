@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2080" height="1570" viewBox="0 0 1040 785" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="etcdwrz-title etcdwrz-desc" id="etcd-write-request-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="etcdwrz-title">etcd 写请求处理：始终经过 Raft 共识</title>
+<desc id="etcdwrz-desc">写请求由 EtcdServer 封装为 raftRequest 提交给 Raft 节点；Raft 记录 WAL 并在多数节点达成共识后返回已提交条目，EtcdServer 再做权限检查并把变更应用到 MVCC / bbolt，最后返回 gRPC 响应。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #etcd-write-request-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #etcd-write-request-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #etcd-write-request-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#etcd-write-request-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="etcd-write-request-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="etcd-write-request-flow-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<line x1="90" y1="154" x2="90" y2="773" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="305" y1="154" x2="305" y2="773" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="520" y1="154" x2="520" y2="773" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="735" y1="154" x2="735" y2="773" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="950" y1="154" x2="950" y2="773" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<rect x="301" y="246" width="8" height="449" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<rect x="946" y="326.5" width="8" height="156.5" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<path d="M 94 194 L 301 194" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<path d="M 309 254 L 361 254 Q 369 254 369 262 L 369 280.5 Q 369 288.5 361 288.5 L 309 288.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<path d="M 309 334.5 L 946 334.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<rect x="597.7" y="316.3" width="59.6" height="13.2" style="fill:#ffffff"/>
+<rect x="601.5" y="340.15" width="52" height="12.1" style="fill:#ffffff"/>
+<path d="M 954 394.5 L 1006 394.5 Q 1014 394.5 1014 402.5 L 1014 421 Q 1014 429 1006 429 L 954 429" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<path d="M 946 475 L 309 475" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<rect x="593.5" y="456.8" width="68" height="13.2" style="fill:#ffffff"/>
+<rect x="575.43" y="480.65" width="104.14" height="12.1" style="fill:#ffffff"/>
+<path d="M 309 535 L 516 535" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<path d="M 516 581 L 309 581" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<path d="M 309 627 L 731 627" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<rect x="492" y="608.8" width="56" height="13.2" style="fill:#ffffff"/>
+<rect x="447.69" y="632.65" width="144.62" height="12.1" style="fill:#ffffff"/>
+<path d="M 731 687 L 309 687" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#etcd-write-request-flow-m-6b7280)"/>
+<rect x="492" y="668.8" width="56" height="13.2" style="fill:#ffffff"/>
+<path d="M 301 733 L 94 733" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#etcd-write-request-flow-m-0a84ff)"/>
+<rect x="29.18" y="96" width="121.64" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(45.18,108.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l18 0" /> <path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8" /></g>
+<text x="111.5" y="121.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">客户端</text>
+<text x="111.5" y="137.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">clientv3</text>
+<rect x="230.6" y="96" width="148.8" height="58" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="230.6" y="96" width="148.8" height="58" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(246.6,115) scale(0.8333)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="320" y="129.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">EtcdServer</text>
+<rect x="449.8" y="96" width="140.4" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(465.8,115) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" /> <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /> <path d="M8 11v-4a4 4 0 1 1 8 0v4" /></g>
+<text x="535" y="129.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AuthStore</text>
+<rect x="661.66" y="96" width="146.68" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(677.66,108.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /> <path d="M4 6v6a8 3 0 0 0 16 0v-6" /> <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></g>
+<text x="756.5" y="121.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MVCC 存储</text>
+<text x="756.5" y="137.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">bbolt 后端</text>
+<rect x="878.76" y="96" width="142.48" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(894.76,108.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></g>
+<text x="971.5" y="121.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Raft 节点</text>
+<text x="971.5" y="137.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">WAL</text>
+<text x="197.5" y="186" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">gRPC 请求</text>
+<text x="197.5" y="209" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Put / Delete / Txn</text>
+<text x="379" y="275.25" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">raftRequest</text>
+<text x="627.5" y="326.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Propose</text>
+<text x="627.5" y="349.5" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">提交提案</text>
+<text x="938" y="408.75" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">记录 WAL · 达成共识</text>
+<text x="938" y="423.75" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">日志复制到多数节点</text>
+<text x="627.5" y="467" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">已提交条目</text>
+<text x="627.5" y="490" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Committed entry</text>
+<text x="412.5" y="527" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">检查权限</text>
+<text x="412.5" y="573" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">权限结果</text>
+<text x="520" y="619" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用变更</text>
+<text x="520" y="642" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Apply → 写入 bbolt 并确认</text>
+<text x="520" y="679" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回结果</text>
+<text x="197.5" y="725" style="fill:#0060df" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">gRPC 响应</text>
+<text x="520" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">etcd 写请求处理：始终经过 Raft 共识</text>
+</g>
+</svg>

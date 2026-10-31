@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2320" height="1120" viewBox="0 0 1160 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="raftnoz-title raftnoz-desc" id="raft-node-etcdserver-interaction-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="raftnoz-title">raftNode 与 EtcdServer 的交互</title>
+<desc id="raftnoz-desc">EtcdServer 向 raft.Node 提交 Propose 与 ReadIndex，raft.Node 以 Ready 回传；条目、读状态与快照分别送入 applyc、readStateC、msgSnapC 通道，apply() 从 applyc 取条目应用；rafthttp.Transport 负责与对等节点收发 Raft 消息并投递给 raft.Node。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #raft-node-etcdserver-interaction-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #raft-node-etcdserver-interaction-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #raft-node-etcdserver-interaction-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#raft-node-etcdserver-interaction-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="raft-node-etcdserver-interaction-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="184" y="84" width="592" height="110" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="200" y="106" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Transport</text>
+<rect x="40" y="234" width="300" height="290" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="256" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">EtcdServer</text>
+<rect x="440" y="234" width="680" height="290" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="456" y="256" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">raftNode</text>
+<path d="M 476 299.2 L 328 299.2" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="365.48" y="276.6" width="73.04" height="16.6" style="fill:#ffffff"/>
+<text x="402" y="288.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">发送 Ready</text>
+<path d="M 328 328 L 476 328" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="372.2" y="305.4" width="59.6" height="16.6" style="fill:#ffffff"/>
+<text x="402" y="317" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Propose</text>
+<path d="M 328 356.8 L 476 356.8" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="364.4" y="334.2" width="75.2" height="16.6" style="fill:#ffffff"/>
+<text x="402" y="345.8" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ReadIndex</text>
+<path d="M 146 380 L 146 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="150" y="400.6" width="56" height="16.6" style="fill:#f2f5ff"/>
+<text x="154" y="412.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">应用条目</text>
+<path d="M 240 472 L 476 472" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="342" y="449.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="358" y="461" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">读取</text>
+<path d="M 530 380 L 530 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<path d="M 680 380 L 680 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<path d="M 835 380 L 835 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<path d="M 894 356.8 L 1009 356.8 Q 1017 356.8 1017 364.8 L 1017 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="938.66" y="362.8" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="954.66" y="374.4" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">写入</text>
+<path d="M 290 276 L 290 182" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="294" y="202.8" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="298" y="214.4" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">收发消息</text>
+<path d="M 400 182 L 400 206 Q 400 214 408 214 L 632 214 Q 640 214 640 222 L 640 276" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="507" y="191.4" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="535" y="203" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">投递消息</text>
+<path d="M 424 150 L 556 150" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#raft-node-etcdserver-interaction-m-6b7280)"/>
+<rect x="474" y="127.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="490" y="139" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">连接</text>
+<rect x="200" y="122" width="220" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(214.16,133.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="331.5" y="146.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">rafthttp.Transport</text>
+<text x="331.5" y="162.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Raft 消息传输</text>
+<rect x="560" y="122" width="200" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(587.68,133.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></g>
+<text x="681.5" y="146.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">对等节点连接</text>
+<text x="681.5" y="162.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Peer Connections</text>
+<rect x="56" y="280" width="268" height="96" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="56" y="280" width="268" height="96" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(89.27,303) scale(2.083)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="220" y="316.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">EtcdServer</text>
+<text x="220" y="332.9" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">协调请求与 Raft 状态机</text>
+<text x="220" y="348.85" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">process() 处理 Raft 消息</text>
+<rect x="56" y="440" width="180" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="146" y="468.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">apply()</text>
+<text x="146" y="484.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用已提交条目</text>
+<rect x="480" y="280" width="410" height="96" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="480" y="280" width="410" height="96" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(620.49,311.5) scale(1.375)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M7 8l0 8" /> <path d="M9 18h6a2 2 0 0 0 2 -2v-5" /> <path d="M14 14l3 -3l3 3" /></g>
+<text x="706.5" y="324.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">raft.Node</text>
+<text x="706.5" y="340.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Raft 协议状态机</text>
+<rect x="480" y="440" width="100" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="530" y="468.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">applyc</text>
+<text x="530" y="484.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">channel</text>
+<rect x="620" y="440" width="120" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="680" y="468.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">readStateC</text>
+<text x="680" y="484.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">channel</text>
+<rect x="780" y="440" width="110" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="835" y="468.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">msgSnapC</text>
+<text x="835" y="484.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">channel</text>
+<rect x="930" y="440" width="174" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(943.35,456) scale(1.333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></g>
+<text x="1038" y="468.575" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MemoryStorage</text>
+<text x="1038" y="484.525" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">raft 内存日志</text>
+<text x="580" y="546" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Node 的输出都走通道：applyc 由 apply() 消费，readStateC 服务线性化读，msgSnapC 承载快照。</text>
+<text x="580" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">raftNode 与 EtcdServer 的交互</text>
+</g>
+</svg>

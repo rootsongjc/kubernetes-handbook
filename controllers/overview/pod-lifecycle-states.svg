@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1880" height="1160" viewBox="0 0 940 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="podlifz-title podlifz-desc" id="pod-lifecycle-states-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="podlifz-title">Pod 生命周期状态图</title>
+<desc id="podlifz-desc">Pod 从 Pending 开始；调度并启动容器后进入 Running；全部容器正常终止为 Succeeded，至少一个容器失败为 Failed，节点通信异常为 Unknown；启动失败则从 Pending 直接进入 Failed。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #pod-lifecycle-states-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #pod-lifecycle-states-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #pod-lifecycle-states-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#pod-lifecycle-states-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="pod-lifecycle-states-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 40 300 L 66 300" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<path d="M 224 300 L 336 300" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="228" y="277.4" width="104" height="16.6" style="fill:#ffffff"/>
+<text x="280" y="289" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">已调度并启动容器</text>
+<path d="M 494 288 L 532 288 Q 540 288 540 280 L 540 168 Q 540 160 548 160 L 646 160" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="432" y="186.6" width="104" height="16.6" style="fill:#ffffff"/>
+<text x="532" y="198.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">所有容器正常终止</text>
+<path d="M 494 300 L 646 300" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="563.44" y="277.4" width="80" height="16.6" style="fill:#ffffff"/>
+<text x="603.44" y="289" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">节点通信异常</text>
+<path d="M 494 312 L 532 312 Q 540 312 540 320 L 540 432 Q 540 440 548 440 L 646 440" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="432" y="398.6" width="104" height="16.6" style="fill:#ffffff"/>
+<text x="532" y="410.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">至少一个容器失败</text>
+<path d="M 145 334 L 145 512 Q 145 520 153 520 L 722 520 Q 730 520 730 512 L 730 474" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="339.5" y="497.4" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="367.5" y="509" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">启动失败</text>
+<path d="M 814 160 L 868 160" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<path d="M 814 300 L 868 300" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<path d="M 814 440 L 868 440" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-lifecycle-states-m-6b7280)"/>
+<rect x="70" y="270" width="150" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="145" y="296.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pending</text>
+<text x="145" y="313.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">等待调度与启动</text>
+<rect x="340" y="270" width="150" height="60" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="340" y="270" width="150" height="60" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="415" y="296.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Running</text>
+<text x="415" y="313.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">容器运行中</text>
+<rect x="650" y="130" width="160" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="730" y="156.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Succeeded</text>
+<text x="730" y="173.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">全部容器成功退出</text>
+<rect x="650" y="270" width="160" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="730" y="296.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Unknown</text>
+<text x="730" y="313.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无法获取状态</text>
+<rect x="650" y="410" width="160" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="730" y="436.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Failed</text>
+<text x="730" y="453.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">容器失败退出</text>
+<circle cx="30" cy="300" r="6" style="fill:#1d1d1f"/>
+<circle cx="880" cy="160" r="8" style="fill:#ffffff;stroke:#1d1d1f" stroke-width="1.3"/>
+<circle cx="880" cy="160" r="4.5" style="fill:#1d1d1f"/>
+<circle cx="880" cy="300" r="8" style="fill:#ffffff;stroke:#1d1d1f" stroke-width="1.3"/>
+<circle cx="880" cy="300" r="4.5" style="fill:#1d1d1f"/>
+<circle cx="880" cy="440" r="8" style="fill:#ffffff;stroke:#1d1d1f" stroke-width="1.3"/>
+<circle cx="880" cy="440" r="4.5" style="fill:#1d1d1f"/>
+<text x="470" y="562" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Succeeded、Failed、Unknown 为终止态；Pending 与 Running 之间不会回退。</text>
+<text x="470" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 生命周期状态图</text>
+</g>
+</svg>

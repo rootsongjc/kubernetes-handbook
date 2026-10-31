@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="760" viewBox="0 0 1080 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="multicz-title multicz-desc" id="multi-cluster-evolution-timeline-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="multicz-title">Kubernetes 多集群管理的演进（2016–2025）</title>
+<desc id="multicz-desc">从 2016 年 Federation v1、2018 年 KubeFed，到 2020–2021 年 MCS API 与 ServiceExport/ServiceImport，再到 2022–2024 年 Karmada、OCM、Fleet 等控制平面兴起，以及 2024–2025 年 Multi-Cluster Gateway API 成为官方推荐方向。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #multi-cluster-evolution-timeline-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #multi-cluster-evolution-timeline-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #multi-cluster-evolution-timeline-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#multi-cluster-evolution-timeline-root .diagram-container { overflow-x: visible; }
+}</style>
+
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="92" y="84" width="332" height="26" rx="4" style="fill:#f2f5ff;stroke:none" stroke-width="0"/>
+<text x="258" y="102" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Federation 阶段</text>
+<rect x="428" y="84" width="212" height="26" rx="4" style="fill:#f2f5ff;stroke:none" stroke-width="0"/>
+<text x="534" y="102" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">标准化探索阶段</text>
+<rect x="644" y="84" width="236" height="26" rx="4" style="fill:#f2f5ff;stroke:none" stroke-width="0"/>
+<text x="762" y="102" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多集群治理阶段</text>
+<rect x="884" y="84" width="154.4" height="26" rx="4" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="961.2" y="102" style="fill:#0060df" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Gateway 融合阶段</text>
+<line x1="50" y1="240" x2="1060" y2="240" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="90" y1="236" x2="90" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="90" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2016</text>
+<line x1="186" y1="236" x2="186" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="186" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2017</text>
+<line x1="282" y1="236" x2="282" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="282" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2018</text>
+<line x1="378" y1="236" x2="378" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="378" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2019</text>
+<line x1="474" y1="236" x2="474" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="474" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2020</text>
+<line x1="570" y1="236" x2="570" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="570" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2021</text>
+<line x1="666" y1="236" x2="666" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="666" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2022</text>
+<line x1="762" y1="236" x2="762" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="762" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2023</text>
+<line x1="858" y1="236" x2="858" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="858" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2024</text>
+<line x1="954" y1="236" x2="954" y2="244" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="954" y="262" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2025</text>
+<line x1="90" y1="218" x2="90" y2="232" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="282" y1="276" x2="282" y2="296" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="474" y1="218" x2="474" y2="232" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="570" y1="276" x2="570" y2="296" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="762" y1="218" x2="762" y2="232" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="906" y1="276" x2="906" y2="296" style="stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<circle cx="90" cy="240" r="5" style="fill:#1d1d1f;stroke:#ffffff" stroke-width="2"/>
+<text x="90" y="176" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2016</text>
+<text x="90" y="194" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Federation v1 发布</text>
+<text x="90" y="212" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">上层控制平面统一管理多集群</text>
+<circle cx="282" cy="240" r="5" style="fill:#1d1d1f;stroke:#ffffff" stroke-width="2"/>
+<text x="282" y="312" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2018</text>
+<text x="282" y="330" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Federation v2（KubeFed）</text>
+<text x="282" y="348" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">引入 CRD 控制面</text>
+<circle cx="474" cy="240" r="5" style="fill:#1d1d1f;stroke:#ffffff" stroke-width="2"/>
+<text x="474" y="176" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2020</text>
+<text x="474" y="194" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MCS API 提案</text>
+<text x="474" y="212" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Multicluster Services API</text>
+<circle cx="570" cy="240" r="5" style="fill:#1d1d1f;stroke:#ffffff" stroke-width="2"/>
+<text x="570" y="312" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2021</text>
+<text x="570" y="330" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ServiceExport / ServiceImport</text>
+<text x="570" y="348" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">跨集群服务导出与导入机制</text>
+<line x1="666" y1="240" x2="858" y2="240" style="stroke:#1d1d1f" stroke-width="5" stroke-linecap="round"/>
+<circle cx="762" cy="240" r="5" style="fill:#1d1d1f;stroke:#ffffff" stroke-width="2"/>
+<text x="762" y="176" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2022–2024</text>
+<text x="762" y="194" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">控制平面兴起</text>
+<text x="762" y="212" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Karmada、OCM、Fleet 等</text>
+<line x1="858" y1="240" x2="954" y2="240" style="stroke:#0a84ff" stroke-width="5" stroke-linecap="round"/>
+<circle cx="906" cy="240" r="6" style="fill:#0a84ff;stroke:#ffffff" stroke-width="2"/>
+<text x="906" y="312" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2024–2025</text>
+<text x="906" y="330" style="fill:#0060df" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Multi-Cluster Gateway API</text>
+<text x="906" y="348" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">成为官方推荐方向</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 多集群管理的演进（2016–2025）</text>
+</g>
+</svg>

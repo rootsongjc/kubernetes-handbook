@@ -45,16 +45,7 @@ Pod 是 Kubernetes 的基本调度单元，本质为逻辑概念。为实现 Pod
 
 Pause 容器的核心作用是为 Pod 内所有业务容器提供统一的命名空间基础。下图展示了 Pause 容器实现网络共享的流程：
 
-```mermaid "Pause 容器网络共享机制"
-graph TD
-    A[Pod 创建] --> B[启动 Pause 容器]
-    B --> C[创建 Network Namespace]
-    C --> D[业务容器加入命名空间]
-    D --> E[实现资源共享]
-```
-
-![Pause 容器网络共享机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pause-container/4f3bc5b609243a71ffcd051b14e0b965.svg)
-{width=1920 height=5204}
+![Pause 容器网络共享机制](pause-network-sharing.svg)
 
 ### 网络共享机制
 

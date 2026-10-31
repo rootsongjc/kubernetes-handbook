@@ -22,22 +22,7 @@ Kubernetes 是一个声明式系统。用户只需定义期望状态（Desired S
 
 控制器遵循经典的 **控制循环（Control Loop）** 模式，也称为 **Reconcile Loop**。其基本流程如下：
 
-```mermaid "控制循环机制"
-sequenceDiagram
-    participant User as 用户
-    participant APIServer as API Server
-    participant Controller as 控制器
-    participant Cluster as 集群状态
-
-    User->>APIServer: 提交资源对象（期望状态）
-    APIServer->>Controller: 通知资源事件（Add/Update/Delete）
-    Controller->>Cluster: 对比实际状态
-    Controller->>APIServer: 执行操作以收敛至期望状态
-    APIServer-->>User: 状态更新完成
-```
-
-![控制循环机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/fcef017757c65304f2145f3075e726f4.svg)
-{width=1920 height=745}
+![控制循环机制](control-loop-sequence.svg)
 
 控制器持续监听资源对象的变更事件，通过不断地 **Reconcile（调谐）** 操作，使系统最终达到期望状态。
 
@@ -57,17 +42,7 @@ sequenceDiagram
 
 {{< /table >}}
 
-```mermaid "Informer 与工作队列"
-flowchart LR
-    A[API Server] --> B[Shared Informer]
-    B --> C[Local Cache]
-    B --> D[Work Queue]
-    D --> E["Controller (Reconciler)"]
-    E -->|Update Status| A
-```
-
-![Informer 与工作队列](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/33fbb01412953624d57885ba6a0f016b.svg)
-{width=1920 height=474}
+![Informer 与工作队列](informer-work-queue.svg)
 
 这种设计使控制器具有高性能与可伸缩性，同时避免了频繁访问 API Server。
 
@@ -121,19 +96,7 @@ Operator 主要特征如下：
 - 控制整个生命周期（创建、扩缩容、备份、升级）
 - 通常由 Go 语言实现
 
-```mermaid "Operator 模式架构"
-flowchart TD
-  subgraph Kubernetes
-    A[CRD: Database]
-    B[Controller: Database Operator]
-  end
-  A -->|事件| B
-  B -->|创建/修改资源| A
-  B --> MySQL[实际数据库实例]
-```
-
-![Operator 模式架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/controller-extension/454cb90e9cdd0da246abfd5886ec93b7.svg)
-{width=1920 height=2536}
+![Operator 模式架构](operator-pattern.svg)
 
 示例：`Database Operator` 通过 CRD 管理 MySQL 集群的创建、备份、恢复和伸缩。
 

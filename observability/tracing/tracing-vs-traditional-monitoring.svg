@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2200" height="980" viewBox="0 0 1100 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tracinz-title tracinz-desc" id="tracing-vs-traditional-monitoring-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="tracinz-title">链路追踪与传统监控对比</title>
+<desc id="tracinz-desc">传统监控只看指标和分散的日志，无法把它们关联到同一个请求；链路追踪提供完整请求链路、端到端延迟分析和跨服务关联，从而快速定位问题。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #tracing-vs-traditional-monitoring-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #tracing-vs-traditional-monitoring-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #tracing-vs-traditional-monitoring-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#tracing-vs-traditional-monitoring-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="tracing-vs-traditional-monitoring-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="96" width="420" height="350" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">传统监控的局限性</text>
+<rect x="500" y="96" width="560" height="350" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="516" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">链路追踪的优势</text>
+<path d="M 250 196 L 250 213 Q 250 221 242 221 L 163 221 Q 155 221 155 229 L 155 246" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 250 196 L 250 213 Q 250 221 258 221 L 337 221 Q 345 221 345 229 L 345 246" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 155 306 L 155 328 Q 155 336 163 336 L 242 336 Q 250 336 250 344 L 250 366" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 345 306 L 345 328 Q 345 336 337 336 L 258 336 Q 250 336 250 344 L 250 366" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 780 196 L 780 213 Q 780 221 772 221 L 608 221 Q 600 221 600 229 L 600 246" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 780 196 L 780 246" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 780 196 L 780 213 Q 780 221 788 221 L 952 221 Q 960 221 960 229 L 960 246" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 600 306 L 600 328 Q 600 336 608 336 L 772 336 Q 780 336 780 344 L 780 366" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 780 306 L 780 366" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<path d="M 960 306 L 960 328 Q 960 336 952 336 L 788 336 Q 780 336 780 344 L 780 366" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#tracing-vs-traditional-monitoring-m-6b7280)"/>
+<rect x="150" y="140" width="200" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(204.5,155.5) scale(0.875)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="265.5" y="171.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">传统监控</text>
+<rect x="70" y="250" width="170" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(112,266) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="170" y="280.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">只看指标</text>
+<rect x="260" y="250" width="170" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(295,266) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /> <path d="M9 9l1 0" /> <path d="M9 13l6 0" /> <path d="M9 17l6 0" /></g>
+<text x="360" y="280.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">分散的日志</text>
+<rect x="150" y="370" width="200" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(193,386) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4" /> <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0" /> <path d="M12 16h.01" /></g>
+<text x="265" y="400.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无法关联请求</text>
+<rect x="680" y="140" width="200" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(734.5,155.5) scale(0.875)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M7 8l0 8" /> <path d="M7 8a4 4 0 0 0 4 4h4" /></g>
+<text x="795.5" y="171.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">链路追踪</text>
+<rect x="520" y="250" width="160" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(543,266) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M7 8l0 8" /> <path d="M9 18h6a2 2 0 0 0 2 -2v-5" /> <path d="M14 14l3 -3l3 3" /></g>
+<text x="615" y="280.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">完整请求链路</text>
+<rect x="700" y="250" width="160" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(716,266) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /> <path d="M4 15l4 -6l4 2l4 -5l4 4" /></g>
+<text x="795" y="280.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">端到端延迟分析</text>
+<rect x="880" y="250" width="160" height="52" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(910,266) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="975" y="280.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">跨服务关联</text>
+<rect x="680" y="370" width="200" height="52" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="680" y="370" width="200" height="52" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(723,386) scale(0.8333)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /></g>
+<text x="795" y="400.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">快速定位问题</text>
+<text x="550" y="476" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">链路追踪把同一请求在各服务中的片段串成一条链，指标和日志才有了可关联的上下文。</text>
+<text x="550" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">链路追踪与传统监控对比</text>
+</g>
+</svg>

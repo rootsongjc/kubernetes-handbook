@@ -16,37 +16,7 @@ lastmod: 2025-10-19T12:04:11.889Z
 
 下图展示了 Kubernetes 环境中的主要日志类型及其流转路径。
 
-```mermaid "Kubernetes 日志类型与流转"
-graph TD
-    subgraph "应用日志"
-        APP_LOGS[业务逻辑日志]
-        ERROR_LOGS[错误和异常日志]
-        AUDIT_LOGS[审计日志]
-    end
-
-    subgraph "系统日志"
-        KUBELET[Kubelet 日志]
-        CONTAINERD[Container Runtime 日志]
-        ETCD[etcd 日志]
-        NETWORK[网络组件日志]
-    end
-
-    subgraph "事件日志"
-        K8S_EVENTS[Kubernetes Events]
-        AUDIT_EVENTS[审计事件]
-    end
-
-    APP_LOGS --> CENTRALIZED[集中式存储]
-    SYSTEM_LOGS --> CENTRALIZED
-    K8S_EVENTS --> CENTRALIZED
-
-    CENTRALIZED --> ANALYSIS[日志分析]
-    ANALYSIS --> MONITORING[监控告警]
-    ANALYSIS --> TROUBLESHOOTING[故障排查]
-```
-
-![Kubernetes 日志类型与流转](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/logging/bb9a9e40820cda87a4981dfd6d824cc2.svg)
-{width=2000 height=1183}
+![Kubernetes 日志类型与流转：应用、系统、事件日志汇入集中式存储，经分析用于监控告警与故障排查](log-types-and-flow.svg)
 
 日志类型包括：
 
@@ -72,38 +42,7 @@ Kubernetes 日志收集常见两大技术栈：EFK 和 PLG。下文分别介绍�
 
 EFK（Elasticsearch、Fluentd、Kibana）是经典日志收集与分析方案。
 
-```mermaid "EFK 日志收集架构"
-graph TD
-    subgraph "数据源"
-        APPLICATIONS[应用容器]
-        SYSTEM[系统组件]
-    end
-
-    subgraph "收集层"
-        FLUENTD[Fluentd]
-    end
-
-    subgraph "处理层"
-        FLUENTD_AGGREGATOR[Fluentd Aggregator]
-    end
-
-    subgraph "存储层"
-        ELASTICSEARCH[Elasticsearch]
-    end
-
-    subgraph "可视化层"
-        KIBANA[Kibana]
-    end
-
-    APPLICATIONS --> FLUENTD
-    SYSTEM --> FLUENTD
-    FLUENTD --> FLUENTD_AGGREGATOR
-    FLUENTD_AGGREGATOR --> ELASTICSEARCH
-    ELASTICSEARCH --> KIBANA
-```
-
-![EFK 日志收集架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/logging/0b3586e12ce40bac8d974dd93ee5e4f2.svg)
-{width=1920 height=5009}
+![EFK 日志收集架构：Fluentd 收集、Aggregator 聚合、Elasticsearch 存储、Kibana 可视化](efk-stack.svg)
 
 组件说明：
 
@@ -115,33 +54,7 @@ graph TD
 
 PLG（Promtail、Loki、Grafana）适合资源受限场景，部署简单。
 
-```mermaid "PLG 日志收集架构"
-graph TD
-    subgraph "数据源"
-        APPLICATIONS[应用容器]
-        SYSTEM[系统组件]
-    end
-
-    subgraph "收集层"
-        PROMTAIL[Promtail]
-    end
-
-    subgraph "存储层"
-        LOKI[Loki]
-    end
-
-    subgraph "可视化层"
-        GRAFANA[Grafana]
-    end
-
-    APPLICATIONS --> PROMTAIL
-    SYSTEM --> PROMTAIL
-    PROMTAIL --> LOKI
-    LOKI --> GRAFANA
-```
-
-![PLG 日志收集架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/logging/a3b985a47d6e387a7187a119d146939f.svg)
-{width=1920 height=3938}
+![PLG 日志收集架构：Promtail 收集、Loki 存储、Grafana 可视化](plg-stack.svg)
 
 组件说明：
 
@@ -157,50 +70,7 @@ Fluent Bit 是 Fluentd 的轻量级版本，专为容器环境优化，适合边
 
 下图展示了 Fluent Bit 的插件化架构。
 
-```mermaid "Fluent Bit 插件架构"
-graph TD
-    subgraph "输入插件"
-        TAIL[Tail - 文件监控]
-        SYSTEMD[Systemd - 系统日志]
-        KUBERNETES[Kubernetes - 元数据]
-    end
-
-    subgraph "处理管道"
-        PARSER[解析器]
-        FILTER[过滤器]
-        TRANSFORM[转换器]
-    end
-
-    subgraph "输出插件"
-        ELASTICSEARCH[Elasticsearch]
-        LOKI[Loki]
-        KAFKA[Kafka]
-        HTTP[HTTP]
-    end
-
-    subgraph "核心引擎"
-        ROUTER[路由器]
-        SCHEDULER[调度器]
-        BUFFER[缓冲区]
-    end
-
-    TAIL --> PARSER
-    SYSTEMD --> PARSER
-    KUBERNETES --> FILTER
-
-    PARSER --> TRANSFORM
-    FILTER --> TRANSFORM
-    TRANSFORM --> ROUTER
-
-    ROUTER --> SCHEDULER
-    SCHEDULER --> BUFFER
-    BUFFER --> ELASTICSEARCH
-    BUFFER --> LOKI
-    BUFFER --> KAFKA
-```
-
-![Fluent Bit 插件架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/logging/1d557f3216712f6a4a9d91ed6d23aa14.svg)
-{width=1920 height=2913}
+![Fluent Bit 插件架构：输入插件、处理管道、核心引擎与输出插件](fluent-bit-plugin-architecture.svg)
 
 核心特性：
 

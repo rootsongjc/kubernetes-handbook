@@ -47,20 +47,7 @@ CSI 驱动程序通常包含以下组件：
 
 下图展示了 CSI 架构的核心组件及其交互关系：
 
-```mermaid "Kubernetes CSI 架构组件关系"
-graph LR
-    SC[StorageClass] --> PVC[PersistentVolumeClaim]
-    PVC --> PROV[external-provisioner]
-    PROV --> CTRL[CSI Controller]
-    CTRL --> PV[PersistentVolume]
-    PV --> NODE[CSI Node]
-    NODE --> POD[Pod]
-    CTRL -->|Attach/Detach| NODE
-    NODE -->|Node-driver-registrar| Kubelet
-```
-
-![Kubernetes CSI 架构组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/csi/6d7bb10a7950ffc0a3c91bc6fa4fd15b.svg)
-{width=2004 height=218}
+![Kubernetes CSI 架构组件关系](csi-architecture.svg)
 
 ## CSI 持久化卷字段
 

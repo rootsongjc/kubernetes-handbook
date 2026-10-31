@@ -17,23 +17,7 @@ lastmod: 2025-10-19T11:22:45.728Z
 
 Kustomize 由多个核心模块协同组成，支撑其灵活的配置管理能力。
 
-```mermaid "Kustomize 核心模块结构"
-graph TD
-    subgraph "Core Modules"
-        kyaml["kyaml<br>YAML Processing Library"]
-        api["api<br>Core Kustomize API"]
-        cmd_config["cmd/config<br>CLI for Config Management"]
-        kustomize["kustomize<br>Main Command-Line Tool"]
-    end
-
-    kyaml --> api
-    kyaml --> cmd_config
-    api --> kustomize
-    cmd_config --> kustomize
-```
-
-![Kustomize 核心模块结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/e3e42fdeaf54b37eb85d125cbc52d825.svg)
-{width=1920 height=596}
+![Kustomize 核心模块结构](kustomize-core-modules.svg)
 
 - **kyaml**：低级 YAML 处理库，提供解析、操作和输出 YAML 文档的基础能力
 - **api**：核心业务逻辑，负责资源转换与生成
@@ -171,53 +155,7 @@ replicas:
 
 Kustomize 遵循构建流程，将输入资源转换为定制输出。下图展示了其主要流程：
 
-```mermaid "Kustomize 构建流程"
-flowchart TD
-    subgraph "Input"
-        kustomization["kustomization.yaml"]
-        resources["Resources (YAML)"]
-        components["Components"]
-        patches["Patches"]
-    end
-
-    subgraph "Kustomize Build Process"
-        kusttarget["KustTarget"]
-        resaccumulator["ResAccumulator"]
-
-        subgraph "Phase 1: Resource Collection"
-            load_resources["Load Resources"]
-            accumulate_components["Accumulate Components"]
-        end
-
-        subgraph "Phase 2: Transformation"
-            run_generators["Run Generators"]
-            run_transformers["Run Transformers"]
-            fix_references["Fix Back References"]
-            resolve_vars["Resolve Variables"]
-        end
-
-        kusttarget --> load_resources
-        load_resources --> accumulate_components
-        accumulate_components --> run_generators
-        run_generators --> run_transformers
-        run_transformers --> fix_references
-        fix_references --> resolve_vars
-    end
-
-    subgraph "Output"
-        final_yaml["Generated YAML"]
-    end
-
-    kustomization --> kusttarget
-    resources --> load_resources
-    components --> accumulate_components
-    patches --> run_transformers
-
-    resolve_vars --> final_yaml
-```
-
-![Kustomize 构建流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/910d311ad4c31c93eb1836a7adae8016.svg)
-{width=1920 height=2690}
+![Kustomize 构建流程](kustomize-build-process.svg)
 
 ### 核心概念说明
 
@@ -233,57 +171,7 @@ flowchart TD
 
 Kustomize 提供复杂的资源处理与 YAML 操作能力。下图展示其主要处理流程：
 
-```mermaid "Kustomize 资源处理架构"
-graph TD
-    subgraph "YAML Processing (kyaml)"
-        rnode["RNode<br>(YAML Node Wrapper)"]
-        filters["Filters<br>(Node Transformations)"]
-        setters["Setters<br>(Field Value Management)"]
-        openapi["OpenAPI Schema<br>(Validation)"]
-    end
-
-    subgraph "Resource Management (api)"
-        resource["Resource<br>(K8s Object Wrapper)"]
-        resid["ResId<br>(Resource Identifier)"]
-        resmap["ResMap<br>(Resource Collection)"]
-        origin["Origin<br>(Resource Source Tracking)"]
-    end
-
-    subgraph "Transformations"
-        name_ref["Name Reference<br>(Handle Renames)"]
-        hash_transformer["Hash Transformer<br>(Content-based Names)"]
-        patches["Patch Application<br>(JSON, Strategic Merge)"]
-        replacements["Replacements<br>(Cross-resource Values)"]
-    end
-
-    subgraph "I/O System (kio)"
-        readers["Readers<br>(YAML Input)"]
-        writers["Writers<br>(YAML Output)"]
-        pipeline["Pipeline<br>(Processing Chain)"]
-    end
-
-    rnode --> filters
-    filters --> setters
-    rnode --> openapi
-
-    rnode --> resource
-    resource --> resid
-    resource --> resmap
-    resource --> origin
-
-    resmap --> name_ref
-    resmap --> hash_transformer
-    resmap --> patches
-    resmap --> replacements
-
-    rnode --> readers
-    rnode --> writers
-    readers --> pipeline
-    pipeline --> writers
-```
-
-![Kustomize 资源处理架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/03bfc18f47067061fa4fe060f1a3da14.svg)
-{width=2238 height=894}
+![Kustomize 资源处理架构](kustomize-resource-architecture.svg)
 
 主要组件说明：
 
@@ -296,60 +184,7 @@ graph TD
 
 Kustomize 支持多种插件类型，扩展资源生成与转换能力。
 
-```mermaid "Kustomize 插件系统"
-graph TD
-    subgraph "Plugin Types"
-        generators["Generators<br>(Create Resources)"]
-        transformers["Transformers<br>(Modify Resources)"]
-        validators["Validators<br>(Verify Resources)"]
-    end
-
-    subgraph "Built-in Plugins"
-        configmap_gen["ConfigMapGenerator"]
-        secret_gen["SecretGenerator"]
-        patch_transformer["PatchTransformer"]
-        namespace_transformer["NamespaceTransformer"]
-        labels_transformer["LabelTransformer"]
-        helm_chart_gen["HelmChartInflationGenerator"]
-    end
-
-    subgraph "Custom Plugin Types"
-        exec_plugin["Exec Plugins<br>(Shell Scripts)"]
-        go_plugin["Go Plugins<br>(Compiled Code)"]
-        fn_plugin["Function Plugins<br>(Containerized)"]
-    end
-
-    subgraph "Plugin Loading & Execution"
-        plugin_loader["Plugin Loader"]
-        plugin_config["Plugin Config"]
-        execution["Plugin Execution"]
-    end
-
-    generators --> configmap_gen
-    generators --> secret_gen
-    generators --> helm_chart_gen
-    transformers --> patch_transformer
-    transformers --> namespace_transformer
-    transformers --> labels_transformer
-
-    plugin_loader --> exec_plugin
-    plugin_loader --> go_plugin
-    plugin_loader --> fn_plugin
-    plugin_loader --> built_in["Built-in Plugins"]
-
-    built_in --> configmap_gen
-    built_in --> secret_gen
-    built_in --> patch_transformer
-    built_in --> namespace_transformer
-    built_in --> labels_transformer
-    built_in --> helm_chart_gen
-
-    plugin_config --> plugin_loader
-    plugin_loader --> execution
-```
-
-![Kustomize 插件系统](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/kustomize/ae1ab1d4082d6c9a3f4b885c38a6a589.svg)
-{width=3143 height=831}
+![Kustomize 插件系统](kustomize-plugin-system.svg)
 
 插件类型包括：
 

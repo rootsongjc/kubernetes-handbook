@@ -38,33 +38,7 @@ OpenTelemetry 的主要组成部分如下：
 
 了解 OpenTelemetry 在云原生中的架构有助于理解其数据流转过程。下图展示了 OTel 在云原生环境中的典型数据流转路径：
 
-```mermaid "OpenTelemetry 架构总览"
-flowchart LR
-  A[应用代码] -->|OTel SDK/Auto Instrumentation| B[OTel Collector Agent]
-  B -->|OTLP gRPC/HTTP| C[OTel Collector Gateway]
-  C -->|OTLP/Prometheus/Jaeger Exporter| D[Observability Backend]
-  D --> E[Dashboards / Alerting / Tracing UI]
-
-  subgraph 用户代码
-  A
-  end
-
-  subgraph 数据采集层
-  B
-  end
-
-  subgraph 数据聚合与路由层
-  C
-  end
-
-  subgraph 后端系统
-  D
-  E
-  end
-```
-
-![OpenTelemetry 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/94ff10048d7254d6e4548112bf464902.svg)
-{width=2415 height=198}
+![OpenTelemetry 架构总览：应用代码经 Collector Agent、Gateway 到后端系统](otel-architecture-overview.svg)
 
 该架构主要分为以下几个层次：
 
@@ -74,110 +48,17 @@ flowchart LR
 
 为了进一步清晰展现 OpenTelemetry 组件间的关系，下图详细展示了 API、SDK、Exporter 等模块的交互：
 
-```mermaid "API/SDK/Exporter 交互"
-flowchart TB
-  subgraph "Applications"
-    App["Application Code"]
-    Lib["Instrumented Libraries"]
-  end
-
-  subgraph "OpenTelemetry API"
-    TracingAPI["Tracing API"]
-    MetricsAPI["Metrics API"]
-    LogsAPI["Logs API"]
-    ContextAPI["Context API"]
-    BaggageAPI["Baggage API"]
-  end
-
-  subgraph "OpenTelemetry SDK"
-    TracingSDK["Tracing SDK"]
-    MetricsSDK["Metrics SDK"]
-    LogsSDK["Logs SDK"]
-    ResourceSDK["Resource SDK"]
-  end
-
-  subgraph "Exporters"
-    OTLP["OTLP Exporter"]
-    Prometheus["Prometheus Exporter"]
-    Zipkin["Zipkin Exporter"]
-    File["File Exporter"]
-    Stdout["Stdout Exporter"]
-  end
-
-  App --> TracingAPI & MetricsAPI & LogsAPI & ContextAPI & BaggageAPI
-  Lib --> TracingAPI & MetricsAPI & LogsAPI & ContextAPI & BaggageAPI
-  TracingAPI --> TracingSDK
-  MetricsAPI --> MetricsSDK
-  LogsAPI --> LogsSDK
-  ContextAPI -.-> TracingSDK & MetricsSDK & LogsSDK
-  BaggageAPI -.-> TracingSDK & MetricsSDK & LogsSDK
-  TracingSDK --> OTLP & Zipkin
-  MetricsSDK --> OTLP & Prometheus
-  LogsSDK --> OTLP & File & Stdout
-  ResourceSDK --> TracingSDK & MetricsSDK & LogsSDK
-```
-
-![API/SDK/Exporter 交互](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a85ae56684da6d570e4907611330a911.svg)
-{width=2615 height=910}
+![OpenTelemetry API、SDK 与 Exporter 的交互](api-sdk-exporter-interaction.svg)
 
 此外，OpenTelemetry 强调 API/SDK 分离、信号分层、上下文传递与可扩展性。下图进一步说明其架构原则：
 
-```mermaid "OpenTelemetry 架构原则"
-flowchart TD
-  subgraph "Application Code"
-    AppCode["Application Code"]
-    Libraries["Libraries"]
-  end
-  subgraph "OpenTelemetry API"
-    TracingAPI["Tracing API"]
-    MetricsAPI["Metrics API"]
-    LogsAPI["Logs API"]
-    ContextAPI["Context API"]
-    BaggageAPI["Baggage API"]
-  end
-  subgraph "OpenTelemetry SDK"
-    TracingSDK["Tracing SDK"]
-    MetricsSDK["Metrics SDK"]
-    LogsSDK["Logs SDK"]
-    ResourceSDK["Resource SDK"]
-  end
-  subgraph "Transport Layer"
-    Exporters["Exporters"]
-    Processors["Processors"]
-  end
-  BackendSystems["Telemetry Backend Systems"]
-  AppCode --> TracingAPI & MetricsAPI & LogsAPI
-  Libraries --> TracingAPI & MetricsAPI & LogsAPI
-  TracingAPI --> TracingSDK
-  MetricsAPI --> MetricsSDK
-  LogsAPI --> LogsSDK
-  ContextAPI --> TracingSDK & MetricsSDK & LogsSDK
-  BaggageAPI --> TracingSDK & MetricsSDK & LogsSDK
-  TracingSDK --> Processors --> Exporters
-  MetricsSDK --> Processors --> Exporters
-  LogsSDK --> Processors --> Exporters
-  Exporters --> BackendSystems
-  ResourceSDK --> TracingSDK & MetricsSDK & LogsSDK
-```
-
-![OpenTelemetry 架构原则](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a4a9d7698d024f4906c1dca4e4808b30.svg)
-{width=1982 height=1232}
+![OpenTelemetry 架构原则：API 与 SDK 分离、信号分层、可扩展传输](otel-architecture-principles.svg)
 
 ## Collector 详解与部署模式
 
 Collector 是 OpenTelemetry 的核心组件，主要负责数据的接收、处理与导出。下图为 Collector 内部结构示意：
 
-```mermaid "Collector 组件结构"
-flowchart TB
-  subgraph Collector
-    direction LR
-    A[Receiver<br>e.g. OTLP, Jaeger, Prometheus] --> B[Processor<br>Batch, Filtering, Attributes]
-    B --> C[Exporter<br>e.g. OTLP, Prometheus, Kafka, Logging]
-  end
-```
-
-![Collector 组件结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/65abc868ba6cea95f657dc57d7c4cb5f.svg)
-{width=1920 height=349}
+![Collector 组件结构：Receiver、Processor、Exporter](collector-components.svg)
 
 Collector 主要包含以下模块：
 
@@ -189,18 +70,7 @@ Collector 主要包含以下模块：
 
 在 Kubernetes 集群中，OpenTelemetry Collector 可灵活部署于不同层级。以下架构图直观展示了各组件在集群内的分布：
 
-```mermaid "Kubernetes 集群中的 OTel Collector 部署"
-flowchart TD
-  subgraph Kubernetes 集群
-  direction LR
-  A[应用 Pod<br>含 OTel SDK 或 Auto Instrumentation] --> B[Collector Agent<br>Sidecar 或 DaemonSet]
-  B --> C[Collector Gateway<br>Deployment Service]
-  C --> D[外部可观测性后端]
-  end
-```
-
-![Kubernetes 集群中的 OTel Collector 部署](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/f084fbf19d168bf9a56785e22385961f.svg)
-{width=1920 height=294}
+![Kubernetes 集群中的 OTel Collector 部署](collector-deployment-in-kubernetes.svg)
 
 总结来看：
 
@@ -221,104 +91,25 @@ OpenTelemetry 支持多种信号类型（Signal），全面覆盖云原生可观
 
 下图解释了各信号类型的结构与流转关系：
 
-```mermaid "OpenTelemetry 信号类型"
-flowchart LR
-  subgraph "Signals"
-    Traces["Traces Signal"]
-    Metrics["Metrics Signal"]
-    Logs["Logs Signal"]
-    Baggage["Baggage Signal"]
-  end
-  subgraph "Core Components"
-    Context["Context Propagation"]
-    Resource["Resource Information"]
-  end
-  Traces --- Context
-  Metrics --- Context
-  Logs --- Context
-  Baggage --- Context
-  Traces --- Resource
-  Metrics --- Resource
-  Logs --- Resource
-```
-
-![OpenTelemetry 信号类型](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/4d9ff1e0fd496158cc85dcbfb5d8c018.svg)
-{width=1920 height=1620}
+![OpenTelemetry 信号类型与核心组件](otel-signal-types.svg)
 
 ### Trace 结构示意
 
 为了帮助理解 Trace 的层次结构，以下图展示了分布式链路的父子 Span 关系：
 
-```mermaid "Trace 结构示意"
-flowchart TD
-  subgraph "Trace Structure"
-    RootSpan["Root Span"] --> SpanB["Span B"]
-    RootSpan --> SpanC["Span C"]
-    SpanB --> SpanD["Span D"]
-    SpanC --> SpanE["Span E"]
-    SpanC --> SpanF["Span F"]
-  end
-```
-
-![Trace 结构示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/97f6096a67f31e6ac49d050e4553dcdc.svg)
-{width=1920 height=1106}
+![Trace 结构示意：父子 Span 组成的调用树](trace-structure.svg)
 
 ### Metrics 数据流
 
 Metrics 的采集、处理与导出流程如下图所示：
 
-```mermaid "Metrics 数据流"
-flowchart LR
-  subgraph "Metrics Flow"
-    Measurement["Measurement"] --> Instrument["Instrument"]
-    Instrument --> InMemory["In-memory state"]
-    InMemory --> MetricReader["MetricReader"]
-    MetricReader --> MetricExporter["MetricExporter"]
-    MetricExporter --> Backend["Telemetry Backend"]
-  end
-```
-
-![Metrics 数据流](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/90509b784c7b713d0c1133e3a54e4431.svg)
-{width=1920 height=6708}
+![Metrics 数据流：从测量值到遥测后端](metrics-data-flow.svg)
 
 ### 上下文与跨服务传播
 
 OpenTelemetry 通过 Context 机制实现 Trace、Baggage 等的跨服务传播。下图展示了典型的上下文传递流程：
 
-```mermaid "OpenTelemetry 上下文与跨服务传播"
-flowchart LR
-  subgraph "Service A"
-    CtxA["Context"]
-    SpanA["Span"]
-    BaggageA["Baggage"]
-  end
-  subgraph "Propagation"
-    Propagators["Propagators"]
-    W3C["W3C TraceContext"]
-    W3CB["W3C Baggage"]
-    B3["B3 Format"]
-  end
-  subgraph "Transport"
-    HTTP["HTTP Headers"]
-    GRPC["gRPC Metadata"]
-    ENV["Environment Variables"]
-  end
-  subgraph "Service B"
-    CtxB["Context"]
-    SpanB["Span"]
-    BaggageB["Baggage"]
-  end
-  CtxA --> SpanA & BaggageA
-  SpanA & BaggageA --> Propagators
-  Propagators --> W3C & W3CB & B3
-  W3C & W3CB & B3 --"Inject"--> HTTP & GRPC & ENV
-  HTTP & GRPC & ENV --"Extract"--> W3C & W3CB & B3
-  W3C & W3CB & B3 --> SpanB & BaggageB
-  SpanB & BaggageB --> CtxB
-```
-
-![OpenTelemetry 上下文与跨服务传播](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/081d45e1e81c3883ccbdeb4361c0ae7b.svg)
-{width=3275 height=1098}
+![OpenTelemetry 上下文与跨服务传播](context-propagation-across-services.svg)
 
 #### 资源（Resource）
 
@@ -401,34 +192,7 @@ EOF
 
 下图展示了 OpenTelemetry 的角色分工与扩展点，帮助开发者理解系统可扩展性：
 
-```mermaid "OpenTelemetry 的角色分工与扩展点"
-flowchart TD
-  subgraph "User Roles"
-    AppOwner["Application Owner"]
-    LibAuthor["Library Author"]
-    InstAuthor["Instrumentation Author"]
-    PluginAuthor["Plugin Author"]
-  end
-  subgraph "OpenTelemetry Components"
-    API["API"]
-    SDK["SDK"]
-    SemanticConv["Semantic Conventions"]
-    Exporters["Exporters"]
-    Processors["Processors"]
-    Contrib["Contrib Packages"]
-  end
-  AppOwner -- configures --> SDK
-  AppOwner -- selects --> Exporters
-  AppOwner -- configures --> Processors
-  LibAuthor -- may use for native instrumentation --> API
-  InstAuthor -- uses exclusively --> API
-  InstAuthor -- contributes to --> Contrib
-  PluginAuthor -- extends interfaces --> SDK
-  PluginAuthor -- implements --> Exporters
-```
-
-![OpenTelemetry 的角色分工与扩展点](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/a0271696e0521b4e82362f8449477207.svg)
-{width=1981 height=462}
+![OpenTelemetry 的角色分工与扩展点](roles-and-extension-points.svg)
 
 ## 总结
 

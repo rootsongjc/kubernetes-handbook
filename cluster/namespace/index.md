@@ -12,18 +12,7 @@ lastmod: 2025-10-27T12:44:56.975Z
 
 Namespace（命名空间）是 Kubernetes 中的一个抽象概念，用于在同一个物理集群中创建多个虚拟的集群环境。它为资源对象提供作用域，使得不同 Namespace 中的资源可以使用相同的名称而不会冲突，实现逻辑分组和隔离。
 
-```mermaid "Namespace 资源隔离与作用域"
-flowchart TD
-    A[物理集群] --> B1[Namespace: dev]
-    A --> B2[Namespace: test]
-    A --> B3[Namespace: prod]
-    B1 --> C1[Pod/Service/Deployment...]
-    B2 --> C2[Pod/Service/Deployment...]
-    B3 --> C3[Pod/Service/Deployment...]
-```
-
-![Namespace 资源隔离与作用域](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/fae0b147237ef7f231660d68ee11594a.svg)
-{width=1920 height=805}
+![Namespace 资源隔离与作用域](namespace-scope.svg)
 
 ## 使用场景
 
@@ -111,23 +100,7 @@ Kubernetes 集群默认包含以下 Namespace：
 
 下图展示了 Namespace 的创建、资源隔离与删除流程：
 
-```mermaid "Namespace 生命周期与资源隔离"
-sequenceDiagram
-    participant User
-    participant APIServer
-    participant Namespace
-    participant Resource
-
-    User->>APIServer: 创建 Namespace
-    APIServer->>Namespace: 新建命名空间
-    User->>APIServer: 在 Namespace 下创建资源
-    APIServer->>Resource: 资源归属 Namespace
-    User->>APIServer: 删除 Namespace
-    APIServer->>Namespace: 级联删除所有资源
-```
-
-![Namespace 生命周期与资源隔离](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/89f4d985760f72b525c4d332ef3aa29c.svg)
-{width=1920 height=956}
+![Namespace 生命周期与资源隔离](namespace-lifecycle-sequence.svg)
 
 ## 资源配额与限制
 
@@ -136,16 +109,7 @@ sequenceDiagram
 - **ResourceQuota**：限制 Namespace 内所有资源对象的总量（如 Pod 数量、CPU/内存总量、PVC 数量等）。
 - **LimitRange**：为单个 Pod 或容器设置默认和最大/最小的资源 request/limit。
 
-```mermaid "Namespace 资源配额与限制"
-flowchart TD
-    A[Namespace] --> B[ResourceQuota]
-    A --> C[LimitRange]
-    B --> D[总资源上限]
-    C --> E[单 Pod/容器资源限制]
-```
-
-![Namespace 资源配额与限制](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/namespace/384e5f0d14f55991f335ec894416057e.svg)
-{width=1920 height=1603}
+![Namespace 资源配额与限制](namespace-quota-limitrange.svg)
 
 ### ResourceQuota 示例
 

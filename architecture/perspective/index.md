@@ -13,37 +13,7 @@ lastmod: 2025-10-27T13:31:10.437Z
 
 Kubernetes 采用分层架构设计，从底层基础设施到上层应用形成完整的技术栈。
 
-```mermaid "Kubernetes 分层架构"
-flowchart TB
-    A("云原生生态系统"):::red
-    B("接口层：客户端库与工具"):::green
-    C("治理层：自动化与策略执行"):::purple
-    D("应用层：部署与路由"):::pink
-    E("核心层：API 与执行"):::yellow
-
-    subgraph F["底层接口与依赖"]
-        F1("容器运行时接口")
-        F2("容器网络接口")
-        F3("容器存储接口")
-        F4("镜像仓库")
-        F5("云服务提供商")
-        F6("身份提供商")
-    end
-
-    %% 使用 tighter layout，减少纵向层高
-    A --> B --> C --> D --> E
-    E --- F1 & F2 & F3 & F4 & F5 & F6
-
-    %% 样式调整：更低高度、更柔和颜色
-    classDef red fill:#f8b4b4,stroke:#c44,stroke-width:1px,color:#000;
-    classDef green fill:#bff7bf,stroke:#5a995a,stroke-width:1px,color:#000;
-    classDef purple fill:#d2c2f9,stroke:#7a6bb3,stroke-width:1px,color:#000;
-    classDef pink fill:#f7c2cc,stroke:#b35d6e,stroke-width:1px,color:#000;
-    classDef yellow fill:#fff4b0,stroke:#d1b34d,stroke-width:1px,color:#000;
-```
-
-![Kubernetes 分层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/perspective/ae715519606b429d7b341fbe4cedc29a.svg)
-{width=1920 height=1159}
+![Kubernetes 分层架构](kubernetes-layered-architecture.svg)
 
 * 核心层：Kubernetes 最核心的功能，对外提供 API 构建高层的应用，对内提供插件式应用执行环境
 * 应用层：部署（无状态应用、有状态应用、批处理任务、集群应用等）和路由（服务发现、DNS 解析等）

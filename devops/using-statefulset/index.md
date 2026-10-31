@@ -39,40 +39,7 @@ lastmod: 2025-10-27T17:26:13.628Z
 - 备份与快照：使用 CSI 快照（VolumeSnapshot）与定期备份（对象存储），并演练恢复流程。
 - 安全与多租户：使用 PSP/PodSecurity（或 OPA Gatekeeper 策略）、NetworkPolicy、最小权限 SecurityContext、只读根文件系统等。
 
-```mermaid "StatefulSet Architecture Overview"
-%% mermaid 架构图：StatefulSet 与相关组件（示例）
-graph LR
-  subgraph K8s
-    svc[Headless Service]
-    sts[StatefulSet]
-    pvc1[PVC pod-0]
-    pvc2[PVC pod-1]
-    pvc3[PVC pod-2]
-    sc["StorageClass<br/>(WaitForFirstConsumer)"]
-    pdb[PDB]
-    probe[startup/readiness/liveness probes]
-    affinity[Affinity / TopologySpread]
-    operator[Optional Operator]
-    monitoring[Prometheus / Exporter]
-  end
-
-  svc --> sts
-  sts --> pvc1
-  sts --> pvc2
-  sts --> pvc3
-  pvc1 --> sc
-  pvc2 --> sc
-  pvc3 --> sc
-  sts --> probe
-  sts --> affinity
-  sts --> pdb
-  operator ---|可选| sts
-  sts --- monitoring
-  operator --- monitoring
-```
-
-![StatefulSet Architecture Overview](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/1d4549d05adba4d1377c46bd0bb4ccf2.svg)
-{width=1940 height=826}
+![StatefulSet 与相关组件架构](statefulset-architecture.svg)
 
 ## 推荐的部署流程（高层）
 
@@ -89,19 +56,7 @@ graph LR
 6. 监控与告警：Exporter、Prometheus、AlertManager、日志聚合。
 7. 持续演练：升级演练、灾难恢复（DR）流程验证。
 
-```mermaid "Deployment Workflow"
-%% mermaid 流程图：部署流程（高层）
-flowchart TD
-  A[评估：StatefulSet vs Operator] --> B[设计 StorageClass 与 拓扑]
-  B --> C[设计 Headless Service 与 对外访问]
-  C --> D[编写 StatefulSet / Operator CR]
-  D --> E[测试：部署 / 扩缩容 / 升级]
-  E --> F[生产监控与备份演练]
-  F --> G[持续演练与改进]
-```
-
-![Deployment Workflow](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/67b6ca95d61b3f730a9fb7f4202f9e53.svg)
-{width=1920 height=7038}
+![有状态应用部署流程](statefulset-deployment-workflow.svg)
 
 ## 精简示例：Headless Service + StatefulSet（最佳实践要素）
 
@@ -229,21 +184,7 @@ spec:
             storage: 50Gi
 ```
 
-```mermaid "StatefulSet Rolling Update Sequence"
-%% mermaid 序列图：滚动更新 / 启动顺序 示例（StatefulSet OrderedReady）
-sequenceDiagram
-  participant Controller as K8s Controller
-  participant Pod0 as pod-0
-  participant Pod1 as pod-1
-  participant Pod2 as pod-2
-  Controller->>Pod0: 创建并等待 ready
-  Controller->>Pod1: 创建并等待 ready (OrderedReady)
-  Controller->>Pod2: 创建并等待 ready
-  Note over Pod0,Pod2: 升级时可通过 partition 控制从最高 ordinal 开始逐个更新
-```
-
-![StatefulSet Rolling Update Sequence](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/using-statefulset/99d378c2886ad887509f1305fedaeb9d.svg)
-{width=1920 height=760}
+![StatefulSet 顺序创建与滚动更新时序](statefulset-ordered-rollout.svg)
 
 ## 生产建议清单（要点速查）
 

@@ -24,81 +24,13 @@ Terraform 通过声明式 HCL 配置描述基础设施，具备如下优势：
 
 Terraform 的架构分为 CLI 工作流、核心引擎和 Provider 三大部分。下图展示了用户视角下的主流程。
 
-```mermaid "Terraform 用户主流程"
-graph TB
-  subgraph "CLI & Workflow"
-    A[terraform CLI] --> B[init]
-    B --> C[plan]
-    C --> D[apply]
-    D --> E[destroy]
-  end
-
-  subgraph "Core Engine"
-    P[HCL 配置] --> G[依赖图构建]
-    G --> W[图遍历/执行]
-    S["State(本地/远程)"] <--> W
-  end
-
-  subgraph "Providers"
-    PR1[AWS/Azure/GCP Provider]
-    PR2[Kubernetes Provider]
-    PR3[Helm Provider]
-  end
-
-  W --> PR1
-  W --> PR2
-  W --> PR3
-```
-
-![Terraform 用户主流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/terraform/44bce2a0459da2ff6f36d38c6d178cae.svg)
-{width=2099 height=860}
+![Terraform 用户主流程](terraform-user-flow.svg)
 
 CLI 工作流包括 `init → plan → apply → destroy`，核心引擎将 HCL 配置解析为依赖图并有序执行，所有资源状态存储于 State，Provider 负责与各平台 API 交互。
 
 进阶用户可参考下图理解内部模块关系，便于源码查阅与调优。
 
-```mermaid "Terraform 内部架构（进阶）"
-graph TB
-  subgraph "CLI Layer"
-    CLI["terraform CLI"]
-    Commands["command.Commands"]
-    Meta["command.Meta"]
-  end
-
-  subgraph "Core Engine"
-    Context["terraform.Context"]
-    GraphBuilder["Graph Builder"]
-    GraphWalk["Graph Walker"]
-    EvalContext["terraform.EvalContext"]
-  end
-
-  subgraph "Configuration Processing"
-    Loader["configload.Loader"]
-    Config["configs.Config"]
-    HCL["HCL Parser"]
-  end
-
-  subgraph "State Management"
-    StateMgr["statemgr.Full"]
-    Local["local backend"]
-    Remote["remote backends (S3/GCS/Azure/Consul/Cloud)"]
-  end
-
-  subgraph "Provider System"
-    Providers["Provider Plugins"]
-    Proto["gRPC Plugin Protocol"]
-  end
-
-  CLI --> Commands --> Meta --> Context
-  Context --> GraphBuilder --> GraphWalk --> EvalContext
-  Context --> Loader --> Config --> HCL
-  Context --> StateMgr --> Local
-  StateMgr --> Remote
-  EvalContext --> Providers --> Proto
-```
-
-![Terraform 内部架构（进阶）](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/terraform/11786bd1aa0d4c26b0c939bbf5a10d4a.svg)
-{width=1920 height=2592}
+![Terraform 内部架构（进阶）](terraform-internal-architecture.svg)
 
 ## Kubernetes 场景下的两大应用路径
 
@@ -264,34 +196,11 @@ resource "kubernetes_config_map" "demo" {
 
 下图展示了从代码到集群的 IaC 工作流。
 
-```mermaid "IaC 工作流"
-graph LR
-  GIT[Git/HCL] --> CI[CI: validate/plan]
-  CI --> PLAN["Plan Review(PR 审查)"]
-  PLAN --> APPLY["Apply(批准后执行)"]
-  APPLY --> STATE["Remote State(S3/GCS/Azure/Cloud)"]
-  APPLY --> CLOUD["Cloud APIs(EKS/AKS/GKE…)"]
-  APPLY --> K8S["Kubernetes API"]
-  K8S --> RUNTIME["Pods/Services/Ingress/CRDs"]
-```
-
-![IaC 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/terraform/3a73335776a3c3975b219714510ff7eb.svg)
-{width=1920 height=403}
+![IaC 工作流](iac-workflow.svg)
 
 Terraform 的核心机制包括配置加载、依赖图构建、状态管理与 Provider 调用。
 
-```mermaid "Terraform Core 简图"
-graph TD
-  Files["*.tf(HCL)"] --> Load["configload.Loader"]
-  Load --> Config["configs.Config"]
-  Config --> Graph["Graph Builder"]
-  Graph --> Walk["Graph Walker(EvalContext)"]
-  State["State Backend"] <--> Walk
-  Walk --> Providers["Providers: Cloud/K8s/Helm"]
-```
-
-![Terraform Core 简图](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/terraform/adce39f7883671b5a39942de39ad32f1.svg)
-{width=1920 height=3697}
+![Terraform Core 简图](terraform-core-overview.svg)
 
 ## Kubernetes 场景最佳实践
 
@@ -334,52 +243,7 @@ Terraform 与 Helm、Kustomize、GitOps 并非二选一，而是各有侧重、�
 
 下图便于深入理解 Terraform 内部原理与源码结构。
 
-```mermaid "Terraform Core 系统视图"
-graph TB
-  subgraph "CLI Layer"
-    CLI["terraform CLI"]
-    Commands["command.Commands"]
-    Meta["command.Meta"]
-  end
-  
-  subgraph "Core Engine"
-    Ctx["terraform.Context"]
-    GBuild["Graph Builder"]
-    GWalk["Graph Walker"]
-    Eval["terraform.EvalContext"]
-  end
-  
-  subgraph "Configuration Processing"
-    Loader["configload.Loader"]
-    Config["configs.Config"]
-    HCL["HCL Parser"]
-  end
-  
-  subgraph "State Management"
-    SMgr["statemgr.Full"]
-    Local["local.Local"]
-    Remote["Remote Backends(S3/GCS/Azure/Cloud/Consul)"]
-    SObj["states.State/SyncState(JSON)"]
-  end
-  
-  subgraph "Provider System"
-    Prov["Provider Plugins"]
-    Iface["terraform.ResourceProvider"]
-    RPC["gRPC Plugin Protocol"]
-  end
-  
-  CLI --> Commands --> Meta --> Ctx
-  Ctx --> GBuild --> GWalk --> Eval
-  Ctx --> Loader --> Config --> HCL
-  Ctx --> SMgr
-  SMgr --> Local
-  SMgr --> Remote
-  SMgr --> SObj
-  Eval --> Prov --> Iface --> RPC
-```
-
-![Terraform Core 系统视图](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/terraform/ac40d884ecbf99ba8fa437f7392a6a29.svg)
-{width=1920 height=2142}
+![Terraform Core 系统视图](terraform-core-system-view.svg)
 
 ## 总结
 

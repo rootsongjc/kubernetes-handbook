@@ -21,71 +21,11 @@ SuperEdge 整体架构延续了“中心云 + 若干边缘站点”的模式。�
 
 下图展示了 SuperEdge 的架构示意，帮助理解其云边协同与分布式健康机制：
 
-```mermaid "SuperEdge 架构图"
-flowchart LR
-    subgraph 云端
-        MasterAPI["云端 Kubernetes Master 节点<br/>(API Server 等)"]
-        EdgeCtl["边缘控制组件<br/>(AppGrid Controller,<br/>Edge Admission 等)"]
-        TunnelCloud["隧道服务 (Tunnel Cloud)"]
-    end
-    subgraph 边缘集群
-        EdgeNode1["边缘节点A<br/>(Kubelet + lite-apiserver + edge-health + Tunnel Agent)"]
-        EdgeNode2["边缘节点B<br/>(Kubelet + lite-apiserver + edge-health + Tunnel Agent)"]
-    end
-    MasterAPI <-- 常规 Kubernetes 流量 --> EdgeNode1
-    MasterAPI <-- 常规 Kubernetes 流量 --> EdgeNode2
-    TunnelCloud <-. 隧道 .-> EdgeNode1
-    TunnelCloud <-. 隧道 .-> EdgeNode2
-    EdgeNode1 <-- 心跳互查 --> EdgeNode2
-```
-
-![SuperEdge 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/d9ffb6c57d638ad6ab85d3b14b655c87.svg)
-{width=1920 height=814}
+![SuperEdge 架构：云端控制面与边缘节点](superedge-architecture.svg)
 
 SuperEdge 还实现了更细致的云 - 边 - 站点分层架构，支持多级自治和 Kins 边缘集群能力。下图展示了 Kins 方案的整体架构：
 
-```mermaid "Kins 架构图"
-graph TB
-    subgraph "Cloud Control Plane"
-        K8S["kube-apiserver"]
-        TC["tunnel-cloud"]
-        AGC["application-grid-controller"]
-        SM["site-manager"]
-        EHA["edge-health-admission"]
-    end
-    subgraph "Edge Site"
-        subgraph "Edge Nodes"
-            EN1["Edge Node 1"]
-            EN2["Edge Node 2"]
-            EN3["Edge Node 3"]
-        end
-        subgraph "Edge Components"
-            TE["tunnel-edge"]
-            LAS["lite-apiserver"]
-            AGW["application-grid-wrapper"]
-            EH["edge-health"]
-        end
-        subgraph "Kins Cluster (Optional)"
-            K3S["k3s-server"]
-            K3SA["k3s-agent"]
-        end
-    end
-    TC <-->|"gRPC Tunnel"| TE
-    K8S <-->|"Proxy Requests"| LAS
-    K8S <--> AGC
-    K8S <--> SM
-    K8S <--> EHA
-    TE <--> LAS
-    TE <--> AGW
-    LAS <-->|"Cache/Proxy"| K8S
-    AGW <-->|"Traffic Control"| EN1
-    EH <-->|"Health Reports"| EHA
-    SM -->|"Provisions"| K3S
-    K3S <--> K3SA
-```
-
-![Kins 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/925c9427059af4df4eb7e8e8869db7c1.svg)
-{width=2543 height=1032}
+![Kins 方案整体架构：云端控制面、边缘组件与可选 K3s 集群](kins-cloud-edge-architecture.svg)
 
 为了便于查阅，下面以表格形式列出 SuperEdge 的主要云端与边缘组件及其功能。
 
@@ -117,42 +57,7 @@ SuperEdge 在云端和边缘节点均引入了多种创新组件。下方列表�
 
 下图进一步说明组件间的分布与交互关系：
 
-```mermaid "SuperEdge 组件分布与交互关系"
-graph LR
-    subgraph "Cloud"
-        API["kube-apiserver"]
-        TC["tunnel-cloud"]
-        AGC["application-grid-controller"]
-        SM["site-manager"]
-    end
-    subgraph "Edge"
-        TE["tunnel-edge"]
-        LAS["lite-apiserver"]
-        AGW["application-grid-wrapper"]
-        KUBELET["kubelet"]
-        PODS["Application Pods"]
-    end
-    subgraph "CRDs"
-        NU["NodeUnit"]
-        DG["DeploymentGrid"]
-        SG["ServiceGrid"]
-    end
-    API -->|"Watch CRDs"| AGC
-    API -->|"Watch CRDs"| SM
-    AGC -->|"Create Resources"| API
-    SM -->|"Manage Nodes"| API
-    TC <-->|"gRPC Stream"| TE
-    TE <-->|"Forward Requests"| LAS
-    LAS <-->|"Cache/Proxy"| API
-    AGW <-->|"Intercept Traffic"| KUBELET
-    KUBELET <-->|"Manage"| PODS
-    SM <-->|"Reconcile"| NU
-    AGC <-->|"Reconcile"| DG
-    AGC <-->|"Reconcile"| SG
-```
-
-![SuperEdge 组件分布与交互关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/ad4c02535945451193967b6c802bb99e.svg)
-{width=2493 height=781}
+![SuperEdge 组件分布与交互关系](component-interaction.svg)
 
 ## 主要特性
 
@@ -168,34 +73,7 @@ SuperEdge 具备多项面向边缘场景的核心能力，以下列表对其主�
 
 SuperEdge 通过 tunnel-cloud 与 tunnel-edge 组件实现云边安全互通，支持 gRPC/TLS、HTTP/TCP 等协议。下图展示了云边通信的主要流程：
 
-```mermaid "SuperEdge 云边通信流程"
-graph TB
-    subgraph "Cloud"
-        TC["tunnel-cloud"]
-        API["kube-apiserver"]
-    end
-    subgraph "Edge Site A"
-        TEA["tunnel-edge"]
-        LASA["lite-apiserver"]
-        KUBEA["kubelet"]
-    end
-    subgraph "Edge Site B"
-        TEB["tunnel-edge"]
-        LASB["lite-apiserver"]
-        KUBEB["kubelet"]
-    end
-    TC <-->|"gRPC/TLS"| TEA
-    TC <-->|"gRPC/TLS"| TEB
-    TEA <-->|"HTTP/TCP Proxy"| LASA
-    TEB <-->|"HTTP/TCP Proxy"| LASB
-    TEA <-->|"Direct Access"| KUBEA
-    TEB <-->|"Direct Access"| KUBEB
-    LASA <-->|"Cached Requests"| API
-    LASB <-->|"Cached Requests"| API
-```
-
-![SuperEdge 云边通信流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/9624f8a54c9639fe06b62033483315d0.svg)
-{width=1920 height=1168}
+![SuperEdge 云边通信流程](cloud-edge-tunnel-flow.svg)
 
 ## 分布式应用与服务治理
 
@@ -224,35 +102,7 @@ SuperEdge 支持多级自治能力，适应不同场景下的边缘需求。下�
 
 下图展示了 Kins 方案的架构细节：
 
-```mermaid "SuperEdge Kins 架构"
-graph TB
-    subgraph "Cloud Control Plane"
-        SM["site-manager"]
-        API["kube-apiserver"]
-    end
-    subgraph "NodeUnit with Kins"
-        subgraph "K3s Cluster"
-            K3SM["k3s-server"]
-            K3SA1["k3s-agent-1"]
-            K3SA2["k3s-agent-2"]
-        end
-        subgraph "Kins Components"
-            KINS_SERVER["kins-server-pod"]
-            KINS_AGENT["kins-agent-pod"]
-            KINS_CRI["kins-cri-pod"]
-        end
-    end
-    SM -->|"Provision L4/L5"| KINS_SERVER
-    SM -->|"Manage NodeUnit"| API
-    KINS_SERVER -->|"Manages"| K3SM
-    KINS_AGENT -->|"Manages"| K3SA1
-    KINS_AGENT -->|"Manages"| K3SA2
-    KINS_CRI -->|"Container Runtime"| K3SA1
-    KINS_CRI -->|"Container Runtime"| K3SA2
-```
-
-![SuperEdge Kins 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/superedge/4d3f25e527b44605608a78b12c8eec25.svg)
-{width=1920 height=1200}
+![Kins 架构细节：site-manager 为 NodeUnit 下发 K3s 集群](kins-nodeunit-architecture.svg)
 
 ## 适用场景
 

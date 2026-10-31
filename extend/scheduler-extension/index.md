@@ -185,27 +185,7 @@ Scheduler Framework 插件可以通过三种方式运行：
 
 下图展示了 AI 原生调度的插件协作关系：
 
-```mermaid "AI 原生调度插件协作关系"
-graph TD
-    subgraph "Scheduler"
-      A["Scheduler Framework"]
-      B1["Filter Plugin: GPU Fit"]
-      B2["Score Plugin: Energy Efficiency"]
-      B3["Permit Plugin: Elastic Job Barrier"]
-    end
-    subgraph "AI Platform"
-      C["KubeRay / Volcano / Kueue"]
-    end
-    A --> B1
-    A --> B2
-    A --> B3
-    B1 --> C
-    B2 --> C
-    B3 --> C
-```
-
-![AI 原生调度插件协作关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/scheduler-extension/b13344a9ade4589a9abd11f04d396928.svg)
-{width=1920 height=1127}
+![AI 原生调度插件协作关系](ai-scheduling-plugin-collaboration.svg)
 
 这些插件协同工作，实现了面向 AI 任务的智能调度。
 

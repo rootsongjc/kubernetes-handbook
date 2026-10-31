@@ -13,23 +13,7 @@ description: 本文回顾 Kubernetes 多集群架构与 API 从 Federation 到 M
 
 下图展示了 Kubernetes 多集群管理的主要演进阶段：
 
-```mermaid "Kubernetes 多集群管理的演进"
-timeline
-    title Kubernetes 多集群管理的演进
-    section Federation 阶段
-      2016: Federation v1 发布
-      2018: Federation v2 (KubeFed) 引入 CRD 控制面
-    section 标准化探索阶段
-      2020: Multicluster Services API (MCS API) 提案
-      2021: ServiceExport / ServiceImport 机制
-    section 多集群治理阶段
-      2022-2024: Karmada、OCM、Fleet 等控制平面兴起
-    section Gateway 融合阶段
-      2024-2025: Multi-Cluster Gateway API 成为官方推荐方向
-```
-
-![Kubernetes 多集群管理的演进](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/49081f0266eb1df8040742a628b912c3.svg)
-{width=1920 height=761}
+![Kubernetes 多集群管理的演进时间线（2016–2025）](multi-cluster-evolution-timeline.svg)
 
 ## Federation 与 KubeFed：早期的联邦控制平面
 
@@ -71,16 +55,7 @@ MCS API 一度被认为是“官方多集群服务发现标准”，但在 2023 
 - **Rancher Fleet**：以 GitOps 为核心的多集群声明式交付。
 - **Anthos / Azure Arc / Alibaba ACK One**：云厂商的托管式方案。
 
-```mermaid "控制平面联邦化"
-graph LR
-A[Karmada 控制平面] -->|Push/Pull 模式注册| B[成员集群 A]
-A --> C[成员集群 B]
-D[Open Cluster Management] --> E[PolicyHub]
-F[Rancher Fleet] -->|GitOps 声明式同步| G[多集群环境]
-```
-
-![控制平面联邦化](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/b4460932953ab08bd268a180ffe79806.svg)
-{width=1920 height=1493}
+![控制平面联邦化的代表项目：Karmada、OCM 与 Rancher Fleet](control-plane-federation-projects.svg)
 
 这些项目普遍采用以下核心理念：
 
@@ -134,17 +109,7 @@ Kubernetes 多集群管理已进入“生态整合阶段”，目前主流方向
 
 下图展示了多集群治理的主要技术方向：
 
-```mermaid "多集群治理方向"
-graph TD
-A[多集群治理方向] --> B[Gateway API 融合网络层]
-A --> C["控制面联邦化 (Karmada / OCM)"]
-A --> D["Service Mesh 跨集群 (Istio / Cilium)"]
-A --> E["GitOps 联邦 (Argo CD / Flux)"]
-A --> F["AI-Native 多集群 (KubeEdge / HAMi)"]
-```
-
-![多集群治理方向](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/multi-cluster-services-api/7496d5bb8f459f3a5b343d8bf203b6fc.svg)
-{width=1920 height=295}
+![多集群治理的五个主要技术方向](multi-cluster-governance-directions.svg)
 
 这些模式正在融合形成新的趋势：
 

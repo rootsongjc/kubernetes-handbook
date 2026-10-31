@@ -15,45 +15,7 @@ Kubernetes 存储系统通过抽象与解耦，实现了持久化存储的灵活
 
 下图展示了 Kubernetes 存储系统的主要组件及其协作关系。
 
-```mermaid "存储系统架构图"
-graph TD
-    subgraph "Control Plane"
-        API["API Server"]
-        PVC["PV Controller"]
-        AP["Attachment/Detachment Controller"]
-    end
-    subgraph "Node Components"
-        K["Kubelet"]
-        CSI["CSI Node Driver"]
-        VM["Volume Manager"]
-    end
-    subgraph "Storage Resources"
-        PV["PersistentVolume"]
-        SC["StorageClass"]
-        C["PersistentVolumeClaim"]
-        P["Pod"]
-    end
-    subgraph "External Components"
-        CSIC["CSI Controller Driver"]
-        DP["Dynamic Provisioner"]
-    end
-    API --> PVC
-    API --> AP
-    PVC --> PV
-    PVC --> C
-    C --> PV
-    P --> C
-    AP --> VM
-    K --> VM
-    VM --> CSI
-    CSI --> PV
-    DP --> PV
-    SC --> DP
-    CSIC --> PV
-```
-
-![存储系统架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/49c40e82a0ff701c4d4148baa8a45de0.svg)
-{width=1920 height=1269}
+![Kubernetes 存储系统架构图](storage-system-architecture.svg)
 
 Kubernetes 存储系统由控制面、节点组件、存储资源和外部插件等部分组成，共同实现持久化存储的全生命周期管理。
 
@@ -68,23 +30,7 @@ Kubernetes 存储系统由控制面、节点组件、存储资源和外部插件
 
 卷在 Pod 规范中声明，并挂载到容器。不同类型的卷有不同的生命周期和后端介质。
 
-```mermaid "Pod 与卷挂载关系"
-graph LR
-    subgraph "Pod"
-        C1["Container 1"]
-        C2["Container 2"]
-    end
-    subgraph "Volumes"
-        V1["Volume 1"]
-        V2["Volume 2"]
-    end
-    C1 -->|"volumeMounts[0]"| V1
-    C2 -->|"volumeMounts[0]"| V1
-    C2 -->|"volumeMounts[1]"| V2
-```
-
-![Pod 与卷挂载关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/85a981156d5b686de666cdee2a97b54a.svg)
-{width=1920 height=960}
+![Pod 与卷的挂载关系](pod-volume-mounts.svg)
 
 卷类型主要包括：
 
@@ -99,30 +45,7 @@ Kubernetes 通过 PV/PVC 子系统实现存储的“提供”与“消费”解�
 - **PersistentVolume（PV）**：由管理员预先创建或通过 StorageClass 动态供应的存储资源
 - **PersistentVolumeClaim（PVC）**：用户对存储的请求
 
-```mermaid "PV/PVC 绑定与类型关系"
-graph TD
-    subgraph "Storage Resources"
-        SC["StorageClass"]
-        PV["PersistentVolume"]
-        PVC["PersistentVolumeClaim"]
-        Pod["Pod"]
-    end
-    SC -->|"defines provisioning"| PV
-    PVC -->|"requests resources from"| PV
-    PVC -->|"specifies"| SC
-    Pod -->|"uses"| PVC
-    subgraph "Volume Types"
-        CSI["CSI Volume"]
-        NFS["NFS"]
-        Local["Local Volume"]
-    end
-    PV -->|"implemented as"| CSI
-    PV -->|"implemented as"| NFS
-    PV -->|"implemented as"| Local
-```
-
-![PV/PVC 绑定与类型关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/7b4b9d492e671d5f1800fc59c26491e2.svg)
-{width=1920 height=2750}
+![PV/PVC 绑定与卷类型关系](pv-pvc-binding-and-types.svg)
 
 PV 与 PVC 的生命周期：
 
@@ -154,20 +77,7 @@ PV 与 PVC 的生命周期：
 
 StorageClass 允许管理员定义不同的存储“类别”，如性能、备份策略等。
 
-```mermaid "StorageClass 关系图"
-graph TD
-    SC["StorageClass"] -->|"uses"| P["Provisioner"]
-    SC -->|"defines"| RP["Reclaim Policy"]
-    SC -->|"defines"| AM["Allow Volume Expansion"]
-    SC -->|"defines"| VBM["Volume Binding Mode"]
-    SC -->|"defines"| MT["Mount Options"]
-    P -->|"provisions"| PV["PersistentVolume"]
-    PVC["PersistentVolumeClaim"] -->|"requests"| SC
-    PVC -->|"bound to"| PV
-```
-
-![StorageClass 关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/9cf3303700437b08cde53d2fd6548825.svg)
-{width=1920 height=869}
+![StorageClass 关系图](storageclass-relationships.svg)
 
 StorageClass 主要字段：
 
@@ -194,28 +104,7 @@ StorageClass 主要字段：
 
 快照可为卷创建时间点副本，常用于备份等场景。
 
-```mermaid "卷快照资源关系"
-graph TD
-    subgraph "Snapshot Resources"
-        VS["VolumeSnapshot"]
-        VSC["VolumeSnapshotContent"]
-        VSClass["VolumeSnapshotClass"]
-    end
-    subgraph "Storage Resources"
-        PVC["PersistentVolumeClaim"]
-        PV["PersistentVolume"]
-        NewPVC["New PVC from Snapshot"]
-    end
-    VS -->|"references"| PVC
-    VS -->|"bound to"| VSC
-    VSC -->|"references"| PV
-    VSClass -->|"defines creation parameters"| VSC
-    VS -->|"references"| VSClass
-    NewPVC -->|"dataSource"| VS
-```
-
-![卷快照资源关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/458f2b51759cc12c6b58fc7ea1042d8b.svg)
-{width=1920 height=2201}
+![卷快照资源关系](volume-snapshot-resources.svg)
 
 关键资源：
 
@@ -249,33 +138,7 @@ CSI 驱动可上报卷异常，分为：
 
 CSI 标准化了存储系统与编排器的集成方式，便于供应商开发通用插件。
 
-```mermaid "CSI 组件交互图"
-graph TD
-    subgraph "Kubernetes Components"
-        K["Kubelet"]
-        Att["Attacher"]
-        Prov["Provisioner"]
-        Res["Resizer"]
-        Snap["Snapshotter"]
-    end
-    subgraph "CSI Driver Components"
-        Node["Node Plugin"]
-        Ctrl["Controller Plugin"]
-    end
-    subgraph "Storage System"
-        Store["Storage Backend"]
-    end
-    K -->|"NodePublishVolume"| Node
-    Att -->|"ControllerPublishVolume"| Ctrl
-    Prov -->|"CreateVolume"| Ctrl
-    Res -->|"ControllerExpandVolume"| Ctrl
-    Snap -->|"CreateSnapshot"| Ctrl
-    Node -->|"Storage Operations"| Store
-    Ctrl -->|"Management Operations"| Store
-```
-
-![CSI 组件交互图](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/8d9718fcf39c658785256b6ae13d9c96.svg)
-{width=1920 height=1235}
+![CSI 组件交互图](csi-component-interaction.svg)
 
 CSI 优势：
 
@@ -304,16 +167,7 @@ CSI 支持：供应/删除、挂载/卸载、快照、扩容、指标、健康�
 
 {{< /table >}}
 
-```mermaid "临时卷生命周期"
-graph TD
-    Pod -->|"creates"| GEV["Generic Ephemeral Volume"]
-    GEV -->|"creates"| PVC["PersistentVolumeClaim"]
-    PVC -->|"bound to"| PV["PersistentVolume"] 
-    Pod -->|"uses"| PVC
-```
-
-![临时卷生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/1601cd8817ec8421057d4f07aeb3caf2.svg)
-{width=1920 height=3324}
+![通用临时卷生命周期](ephemeral-volume-lifecycle.svg)
 
 Generic Ephemeral Volume 的 PVC 生命周期与 Pod 绑定，Pod 删除后 PVC 及底层卷也被删除。
 
@@ -343,18 +197,7 @@ Kubernetes 还支持动态卷限制，自动识别节点类型和驱动上报的
 
 ## 存储系统生命周期
 
-```mermaid "持久存储生命周期流程"
-graph LR
-    Provisioning -->|"Creates PV"| Binding
-    Binding -->|"PVC bound to PV"| Using
-    Using -->|"Pod uses volume"| Protection["Storage Object Protection"]
-    Protection -->|"Pods released volume"| Releasing
-    Releasing -->|"PVC deleted"| Reclaiming
-    Reclaiming -->|"Based on policy"| FinalState["Retained/Deleted/Recycled"]
-```
-
-![持久存储生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/overview/81da2dad9c0a36f352cd37c70bd041fa.svg)
-{width=2437 height=77}
+![持久存储生命周期流程](persistent-storage-lifecycle.svg)
 
 主要阶段：
 

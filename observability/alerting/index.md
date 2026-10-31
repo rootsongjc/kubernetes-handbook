@@ -25,28 +25,7 @@ lastmod: 2025-10-19T12:32:40.108Z
 
 下图展示了告警从监控到处理的完整生命周期。
 
-```mermaid "告警生命周期流程"
-graph TD
-    MONITORING[监控系统] --> THRESHOLD[阈值检查]
-    THRESHOLD --> ALERT[告警生成]
-    ALERT --> GROUPING[告警分组]
-    GROUPING --> ROUTING[告警路由]
-    ROUTING --> NOTIFICATION[通知发送]
-    NOTIFICATION --> ACKNOWLEDGMENT[确认处理]
-    ACKNOWLEDGMENT --> RESOLUTION[问题解决]
-    RESOLUTION --> MONITORING
-
-    subgraph "告警管理"
-        SILENCE[静默处理]
-        INHIBITION[抑制规则]
-    end
-
-    ALERT --> SILENCE
-    ALERT --> INHIBITION
-```
-
-![告警生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/alerting/8278944205a80664c94cb6201c345e67.svg)
-{width=1920 height=3511}
+![告警生命周期：从监控到闭环](alert-lifecycle.svg)
 
 ### 告警类型
 
@@ -75,22 +54,7 @@ Alertmanager 具备如下能力：
 
 下图展示了 Alertmanager 的核心架构及各组件协作流程。
 
-```mermaid "Alertmanager 架构与流程"
-graph TD
-    PROMETHEUS[Prometheus] --> RECEIVER[告警接收器]
-    RECEIVER --> GROUPER[分组器]
-    GROUPER --> INHIBITOR[抑制器]
-    INHIBITOR --> SILENCER[静默器]
-    SILENCER --> ROUTER[路由器]
-
-    ROUTER --> EMAIL[邮件]
-    ROUTER --> SLACK[Slack]
-    ROUTER --> WEBHOOK[Webhook]
-    ROUTER --> PAGERDUTY[PagerDuty]
-```
-
-![Alertmanager 架构与流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/alerting/daa14a54d8561cc779abc0f4d197e20c.svg)
-{width=1920 height=2597}
+![Alertmanager 架构与处理流程](alertmanager-architecture.svg)
 
 ### 核心概念
 

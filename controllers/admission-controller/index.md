@@ -26,16 +26,7 @@ lastmod: 2025-10-27T12:01:44.414Z
 
 下图展示了 API Server 处理请求的主要流程，准入控制器在认证与存储之间发挥作用。
 
-```mermaid "Kubernetes API 请求流程"
-graph TD
-  A["Client Request (kubectl/app)"] --> B[Authentication]
-  B --> C[Authorization]
-  C --> D[Admission Controllers]
-  D --> E[etcd Storage / API Response]
-```
-
-![Kubernetes API 请求流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/admission-controller/bb59bf9f845a2bea4c914597f61b3233.svg)
-{width=1920 height=4774}
+![Kubernetes API 请求流程](api-request-pipeline.svg)
 
 准入控制器位于 **认证** 和 **存储** 之间，是修改与验证资源的最后关口。
 
@@ -130,24 +121,7 @@ kube-apiserver \
 
 下图展示了准入控制器的典型执行顺序，便于理解 Mutating 与 Validating 阶段的流程。
 
-```mermaid "准入控制器执行顺序"
-sequenceDiagram
-  participant Client
-  participant APIServer
-  participant MutatingControllers
-  participant ValidatingControllers
-  participant etcd
-
-  Client->>APIServer: Submit Resource (e.g. Pod)
-  APIServer->>MutatingControllers: 执行修改逻辑 (如注入Sidecar)
-  MutatingControllers-->>APIServer: 返回修改后的对象
-  APIServer->>ValidatingControllers: 执行验证逻辑
-  ValidatingControllers-->>APIServer: 验证通过/拒绝
-  APIServer->>etcd: 存储资源对象
-```
-
-![准入控制器执行顺序](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/admission-controller/e6cabb9d9a7d6614ec221df2eaf600cf.svg)
-{width=1920 height=726}
+![准入控制器执行顺序](admission-execution-sequence.svg)
 
 ## 调试与配置
 

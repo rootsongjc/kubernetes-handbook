@@ -15,46 +15,7 @@ Kubernetes 社区通过 SIG（特别兴趣小组）和工作组的分布式治�
 
 Kubernetes 社区采用多层次治理结构，确保决策分布、协作透明和社区包容。
 
-```mermaid "Kubernetes 社区组织架构"
-graph TD
-    subgraph "治理层"
-        SC["指导委员会<br/>Steering Committee"]
-        TC["技术委员会<br/>Technical Committee"]
-    end
-
-    subgraph "协调层"
-        EC["选举委员会<br/>Election Committee"]
-        CCC["社区联络委员会<br/>Community Communications"]
-    end
-
-    subgraph "执行层"
-        SIGS["SIGs<br/>特别兴趣小组<br/>30+ 活跃小组"]
-        WGS["Working Groups<br/>工作组<br/>临时专项小组"]
-        COMMITTEES["专项委员会<br/>Code of Conduct<br/>Security Response"]
-    end
-
-    subgraph "支持层"
-        CONTRIBUTOR_SUMMIT["贡献者峰会"]
-        KUBE_CON["KubeCon + CloudNativeCon"]
-        OFFICE_HOURS["办公时间<br/>Community Office Hours"]
-    end
-
-    SC --> SIGS
-    SC --> WGS
-    TC --> SIGS
-    EC --> SC
-    CCC --> CONTRIBUTOR_SUMMIT
-    SIGS --> OFFICE_HOURS
-    WGS --> KUBE_CON
-
-    style SC fill:#e3f2fd
-    style TC fill:#f3e5f5
-    style SIGS fill:#e8f5e8
-    style WGS fill:#fff3e0
-```
-
-![Kubernetes 社区组织架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/98bae3d277ee07f68a946996b386a5ba.svg)
-{width=1920 height=1279}
+![Kubernetes 社区组织架构：治理层、协调层、执行层与支持层](community-governance-structure.svg)
 
 ### 治理原则
 
@@ -69,35 +30,7 @@ Kubernetes 社区治理遵循以下原则，保障开放与可持续发展：
 
 社区采用多元化沟通渠道，支持同步与异步协作。
 
-```mermaid "Kubernetes 社区沟通方式"
-graph TD
-    subgraph "同步沟通"
-        MEETINGS["定期会议<br/>Zoom/Google Meet<br/>双周/月度"]
-        OFFICE_HOURS["办公时间<br/>即兴问答<br/>每周固定"]
-        CONTRIBUTOR_SUMMIT["贡献者峰会<br/>面对面交流<br/>每年举办"]
-    end
-
-    subgraph "异步沟通"
-        SLACK["Slack<br/>实时聊天<br/>#sig-xxx频道"]
-        DISCORD["Discord<br/>社区服务器<br/>语音+文字"]
-        GITHUB_DISCUSSIONS["GitHub Discussions<br/>深度讨论<br/>问题追踪"]
-        MAILING_LISTS["邮件列表<br/>正式通知<br/>kubernetes-sig-xxx@googlegroups.com"]
-    end
-
-    subgraph "协作工具"
-        GITHUB["GitHub<br/>代码协作<br/>PR/Issue管理"]
-        ZULIP["Zulip<br/>结构化聊天<br/>话题组织"]
-        CALENDAR["社区日历<br/>会议安排<br/>Google Calendar"]
-    end
-
-    MEETINGS --> OFFICE_HOURS
-    SLACK --> DISCORD
-    GITHUB --> GITHUB_DISCUSSIONS
-    MAILING_LISTS --> CALENDAR
-```
-
-![Kubernetes 社区沟通方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/4054aefebac3358dbff4c299a34d919d.svg)
-{width=2155 height=705}
+![Kubernetes 社区沟通方式：同步沟通、异步沟通与协作工具](community-communication-channels.svg)
 
 - **会议平台**：主要使用 Zoom/Google Meet，支持实时字幕和录制。
 - **即时通讯**：Slack 为主，Discord 为补充，支持语音频道。
@@ -109,77 +42,7 @@ graph TD
 
 Kubernetes 社区 SIG 覆盖核心基础设施、应用、网络、云平台、开发工具、运维、社区等多个领域。
 
-```mermaid "Kubernetes 主要 SIG 列表"
-graph TD
-    subgraph "核心基础设施"
-        API[api-machinery<br/>API服务器]
-        ARCH[architecture<br/>架构设计]
-        AUTH[auth<br/>认证授权]
-        ETCD[etcd<br/>数据库]
-        INSTR[instrumentation<br/>可观测性]
-    end
-
-    subgraph "应用与工作负载"
-        APPS[apps<br/>应用部署]
-        BATCH[batch<br/>批处理]
-        AUTOSCALE[autoscaling<br/>自动扩缩容]
-        SERVING[serving<br/>服务化工作负载]
-        AI_ML[ai-ml<br/>AI/ML集成]
-    end
-
-    subgraph "网络与存储"
-        NETWORK[network<br/>网络策略]
-        STORAGE[storage<br/>存储卷]
-        MULTICLUSTER[multicluster<br/>多集群]
-    end
-
-    subgraph "云平台与集群"
-        CLOUD_PROVIDER[cloud-provider<br/>云提供商]
-        CLUSTER_API[cluster-api<br/>集群API]
-        CLUSTER_LIFECYCLE[cluster-lifecycle<br/>集群生命周期]
-    end
-
-    subgraph "开发工具"
-        CLI[cli<br/>命令行工具]
-        TESTING[testing<br/>测试框架]
-        RELEASE[release<br/>版本发布]
-        DEV_TOOLS[dev-tools<br/>开发工具链]
-    end
-
-    subgraph "运维与调度"
-        NODE[node<br/>节点管理]
-        SCHEDULING[scheduling<br/>资源调度]
-    end
-
-    subgraph "社区与文档"
-        CONTRIBUTOR[contributor-experience<br/>贡献者体验]
-        DOCS[docs<br/>文档维护]
-    end
-
-    subgraph "平台特定"
-        WINDOWS[windows<br/>Windows支持]
-        IOT_EDGE[iot-edge<br/>物联网边缘]
-        WASM[wasm<br/>WebAssembly]
-        SERVERLESS[serverless<br/>Serverless]
-        SECURITY[security<br/>安全专项]
-    end
-
-    API --> ARCH
-    ARCH --> AUTH
-    APPS --> SERVING
-    SERVING --> AI_ML
-    NETWORK --> MULTICLUSTER
-    CLOUD_PROVIDER --> CLUSTER_API
-    CLI --> DEV_TOOLS
-    NODE --> SCHEDULING
-    CONTRIBUTOR --> DOCS
-    WINDOWS --> WASM
-    IOT_EDGE --> SERVERLESS
-    AUTH --> SECURITY
-```
-
-![Kubernetes 主要 SIG 列表](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/18196d19ae94a440d97d3ca32f172579.svg)
-{width=4901 height=1268}
+![Kubernetes 主要 SIG 一览：按八个领域分组](main-sig-groups.svg)
 
 **核心基础设施**
 
@@ -317,41 +180,7 @@ graph TD
 
 工作组（WG）是跨 SIG 的临时性组织，专注于特定短期目标和新兴技术领域。
 
-```mermaid "Kubernetes 工作组结构"
-graph TD
-    subgraph "基础设施专项"
-        WG_DATA_PROTECTION["Data Protection<br/>数据保护<br/>跨SIG备份恢复"]
-        WG_MULTICLUSTER["Multicluster<br/>多集群<br/>集群联邦化"]
-        WG_EDGE["Edge<br/>边缘计算<br/>IoT和边缘场景"]
-    end
-
-    subgraph "新兴技术"
-        WG_AI_ML["AI/ML<br/>人工智能<br/>ML工作负载标准"]
-        WG_WASM["WASM<br/>WebAssembly<br/>字节码工作负载"]
-        WG_SERVERLESS["Serverless<br/>无服务器<br/>函数即服务"]
-    end
-
-    subgraph "开发工具"
-        WG_DEV_TOOLS["Dev Tools<br/>开发工具<br/>工具链标准化"]
-        WG_SECURITY["Security<br/>安全<br/>安全最佳实践"]
-        WG_COMPLIANCE["Compliance<br/>合规<br/>监管合规框架"]
-    end
-
-    subgraph "社区运营"
-        WG_CONTRIBUTOR["Contributor Experience<br/>贡献者体验<br/>新人引导"]
-        WG_DIVERSITY["Diversity & Inclusion<br/>多样性包容<br/>社区包容性"]
-    end
-
-    WG_DATA_PROTECTION --> WG_MULTICLUSTER
-    WG_EDGE --> WG_AI_ML
-    WG_WASM --> WG_SERVERLESS
-    WG_DEV_TOOLS --> WG_SECURITY
-    WG_COMPLIANCE --> WG_CONTRIBUTOR
-    WG_DIVERSITY --> WG_CONTRIBUTOR
-```
-
-![Kubernetes 工作组结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/fba39fec25dc23eab77e13b9aa2eb8f7.svg)
-{width=1982 height=422}
+![Kubernetes 工作组结构：基础设施专项、新兴技术、开发工具与社区运营](working-group-structure.svg)
 
 ### 活跃工作组详情
 
@@ -394,33 +223,7 @@ graph TD
 
 想要参与 Kubernetes 社区，可以按照以下流程逐步深入：
 
-```mermaid "Kubernetes 参与路径"
-flowchart TD
-    A[发现兴趣] --> B[选择SIG/WG]
-    B --> C[加入Slack频道]
-    C --> D[参加会议]
-    D --> E[阅读文档]
-    E --> F[开始贡献]
-
-    F --> G[小贡献开始]
-    G --> H[深度参与]
-    H --> I[成为Reviewer]
-    I --> J[成为Approver/Maintainer]
-
-    A --> A1["浏览SIG列表<br/>参加Office Hours"]
-    B --> B1["查看会议日历<br/>加入邮件列表"]
-    C --> C1["#sig-xxx频道<br/>#wg-xxx频道"]
-    D --> D1["观看录像<br/>实时参与"]
-    E --> E1["KEP文档<br/>设计提案"]
-    F --> F1["修复文档<br/>编写测试"]
-    G --> G1["提交PR<br/>修复bug"]
-    H --> H1["设计评审<br/>代码审查"]
-    I --> I1["SIG成员<br/>技术决策"]
-    J --> J1["核心维护者<br/>架构决策"]
-```
-
-![Kubernetes 参与路径](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/sigs-and-working-group/dba5c6104ecc66ba4abf587bf0311935.svg)
-{width=1920 height=2570}
+![Kubernetes 参与路径：从发现兴趣到成为 Approver/Maintainer 的十步](participation-path.svg)
 
 ### 参与步骤
 

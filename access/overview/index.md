@@ -14,65 +14,13 @@ lastmod: 2025-10-13T05:10:05.859Z
 
 Kubernetes API 是控制面的核心，提供 HTTP API 以实现用户、集群内部组件及外部系统的通信。kubectl 作为官方命令行工具，简化了 API 交互流程，自动处理认证、请求格式化和响应解析等细节。
 
-```mermaid "kubectl 到 API Server 的交互流程图"
-flowchart LR
-    subgraph "User Environment"
-        kubectl["kubectl CLI"]
-        kubeconfig[".kube/config file"]
-    end
-
-    subgraph "Kubernetes Cluster"
-        API["API Server"]
-        auth["Authentication & Authorization"]
-        store["etcd Storage"]
-    end
-
-    kubectl -- "HTTPS 请求" --> API
-    kubectl -- "读取配置" --> kubeconfig
-    kubeconfig -- "提供凭据与集群信息" --> kubectl
-    API -- "认证与授权" --> auth
-    API -- "存储/读取" --> store
-```
-
-![kubectl 到 API Server 的交互流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/849c7c97a9ab438356726e99fc3199ac.svg)
-{width=1920 height=836}
+![kubectl 到 API Server 的交互流程图](kubectl-apiserver-interaction.svg)
 
 ## Kubernetes API 基础
 
 Kubernetes API 采用 RESTful 设计，通过标准 HTTP 动词（GET、POST、PUT、PATCH、DELETE）对资源进行增删改查。资源按 API 组、版本和类型组织。
 
-```mermaid "Kubernetes API 结构图"
-flowchart TD
-    subgraph "API Structure"
-        api["API"]
-        coreGroup["Core Group (/api/v1)"]
-        namedGroups["Named Groups (/apis/{group}/{version})"]
-
-        api --> coreGroup
-        api --> namedGroups
-
-        subgraph "Resource Types"
-            namespaced["Namespaced Resources"]
-            cluster["Cluster-scoped Resources"]
-        end
-
-        coreGroup --> namespaced
-        coreGroup --> cluster
-        namedGroups --> namespaced
-        namedGroups --> cluster
-    end
-
-    subgraph "HTTP Methods"
-        GET["GET - 查询/读取"]
-        POST["POST - 创建"]
-        PUT["PUT - 替换"]
-        PATCH["PATCH - 局部更新"]
-        DELETE["DELETE - 删除"]
-    end
-```
-
-![Kubernetes API 结构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/8d81cb2cdeb21f25953307d82f32e071.svg)
-{width=1920 height=910}
+![Kubernetes API 结构图](kubernetes-api-structure.svg)
 
 常见 API URL 模式如下：
 
@@ -84,25 +32,7 @@ flowchart TD
 
 kubectl 作为 Kubernetes API 的客户端，将用户命令转为 HTTP 请求。其配置文件 kubeconfig 包含集群信息、认证方式和上下文设置。
 
-```mermaid "kubectl 请求流程图"
-sequenceDiagram
-    participant 用户
-    participant kubectl
-    participant kubeconfig as .kube/config
-    participant APIServer as API Server
-
-    用户->>kubectl: kubectl get pods
-    kubectl->>kubeconfig: 读取配置
-    kubeconfig-->>kubectl: 返回认证凭据与集群信息
-    kubectl->>kubectl: 格式化 HTTP 请求
-    kubectl->>APIServer: GET /api/v1/namespaces/default/pods
-    APIServer-->>kubectl: 返回 Pod 列表（JSON）
-    kubectl->>kubectl: 格式化输出
-    kubectl-->>用户: 展示格式化后的 Pod 列表
-```
-
-![kubectl 请求流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/88f5994a3685293b38046cf27df03fb5.svg)
-{width=1920 height=1220}
+![kubectl 请求流程图](kubectl-request-sequence.svg)
 
 ## API Server 认证机制
 
@@ -114,41 +44,7 @@ kubectl 通过 kubeconfig 文件自动完成 API Server 认证，支持多种认
 - OAuth2（外部插件）
 - ServiceAccount Token（集群内部）
 
-```mermaid "kubectl 认证流程图"
-flowchart TD
-    subgraph "Authentication Methods"
-        cert["客户端证书"]
-        token["Bearer Token"]
-        basic["基本认证"]
-        oauth["OAuth2"]
-        sa["Service Account"]
-    end
-
-    subgraph "kubectl Flow"
-        kubeconfig[".kube/config"]
-        kubectl["kubectl 命令"]
-        request["带认证的 HTTP 请求"]
-        apiserver["Kubernetes API Server"]
-    end
-
-    kubectl --> kubeconfig
-    kubeconfig --> cert
-    kubeconfig --> token
-    kubeconfig --> basic
-    kubeconfig --> oauth
-    kubeconfig --> sa
-
-    cert --> request
-    token --> request
-    basic --> request
-    oauth --> request
-    sa --> request
-
-    request --> apiserver
-```
-
-![kubectl 认证流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/54f43e41cebdf7ee3418a1285ba33292.svg)
-{width=1920 height=1135}
+![kubectl 认证流程图](kubectl-authentication-flow.svg)
 
 ## kubectl 基本用法
 
@@ -232,33 +128,7 @@ JSONPath 是一种 JSON 查询语言，kubectl 支持用其提取 API 响应中�
 
 Server-Side Apply 支持多用户/控制器协作管理同一对象，自动跟踪字段归属，避免相互覆盖。
 
-```mermaid "Server-Side Apply 原理示意图"
-flowchart TD
-    subgraph "Server-Side Apply"
-        kubectl["kubectl apply --server-side"]
-        apiServer["API Server"]
-        managedFields["managedFields 跟踪"]
-        etcd["etcd 存储"]
-    end
-
-    kubectl -- "PATCH with\
-application/apply-patch+yaml" --> apiServer
-    apiServer -- "记录字段归属" --> managedFields
-    apiServer -- "存储带归属的对象" --> etcd
-
-    subgraph "Multiple Managers"
-        user1["用户 1"]
-        user2["用户 2"]
-        controller["控制器"]
-    end
-
-    user1 --> kubectl
-    user2 --> kubectl
-    controller --> kubectl
-```
-
-![Server-Side Apply 原理示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/overview/5e40387cf91c2a0ce6c0ffd5300747b3.svg)
-{width=1920 height=2390}
+![Server-Side Apply 原理示意图](server-side-apply.svg)
 
 关键点：
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2080" height="1200" viewBox="0 0 1040 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="clipluz-title clipluz-desc" id="cli-plugin-system-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="clipluz-title">Operator SDK CLI 插件系统</title>
+<desc id="clipluz-desc">operator-sdk CLI 由插件系统与核心命令组成；插件系统按 Go、Ansible、Helm、Deploy Image 分为四个插件包，前三者各含 Kustomize、语言版本、Manifests、Scorecard 四个插件；核心命令覆盖 bundle、cleanup、generate、olm、run、scorecard、pkgmantobundle。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cli-plugin-system-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #cli-plugin-system-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #cli-plugin-system-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#cli-plugin-system-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="cli-plugin-system-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 264 348 L 292 348 Q 300 348 300 340 L 300 244 Q 300 236 308 236 L 336 236" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<path d="M 264 372 L 292 372 Q 300 372 300 380 L 300 482 Q 300 490 308 490 L 336 490" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<path d="M 564 236 L 602 236 Q 610 236 610 228 L 610 156 Q 610 148 618 148 L 656 148" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<path d="M 564 236 L 602 236 Q 610 236 610 244 L 610 260 Q 610 268 618 268 L 656 268" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<path d="M 564 236 L 602 236 Q 610 236 610 244 L 610 380 Q 610 388 618 388 L 656 388" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<path d="M 564 236 L 602 236 Q 610 236 610 244 L 610 500 Q 610 508 618 508 L 656 508" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cli-plugin-system-m-6b7280)"/>
+<rect x="40" y="320" width="220" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="40" y="320" width="220" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(54.85,342) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="173" y="356.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">operator-sdk CLI</text>
+<text x="173" y="373.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">入口命令</text>
+<rect x="340" y="200" width="220" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(363.76,218) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="473" y="232.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">插件系统</text>
+<text x="473" y="249.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">按 Operator 类型分包</text>
+<rect x="340" y="440" width="240" height="100" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="460" y="469.15" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">核心命令</text>
+<text x="460" y="486.55" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">bundle · cleanup · generate</text>
+<text x="460" y="503.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">olm · run · scorecard</text>
+<text x="460" y="521.35" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">pkgmantobundle</text>
+<rect x="660" y="100" width="340" height="96" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(723.82,120.50) scale(2.2917)" style="color:#6b7280" fill="currentColor"><path d="M1.811 10.715c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07l-4.23-.011zM.047 11.79c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07l-5.527.012zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082l-2.547-.012zM15.004 10.505c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.771.105-.129.198-.269.315-.433H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 0 1 .292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 0 1-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.021 1.098-.199 2.15-.07 3.096.572.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.199 M18.872 16.967c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 0 1-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.951 1.192-.21 2.314-.094 3.33.596.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.059-.63.07-.934.106zm2.78-4.721c-.011-.152-.011-.269-.034-.386-.21-1.157-1.274-1.811-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.209.643.28 1.285.245 1.905-.07.923-.48 1.425-1.227 1.484-2.232z"/></g>
+<text x="862.5" y="135.85" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Go 插件包</text>
+<text x="862.5" y="153.25" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Kustomize · Go V4</text>
+<text x="862.5" y="170.65" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Manifests · Scorecard</text>
+<rect x="660" y="220" width="340" height="96" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(723.82,240.5) scale(2.292)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="862.5" y="255.85" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Ansible 插件包</text>
+<text x="862.5" y="273.25" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Kustomize · Ansible V1</text>
+<text x="862.5" y="290.65" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Manifests · Scorecard</text>
+<rect x="660" y="340" width="340" height="96" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(723.82,360.5) scale(2.292)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="862.5" y="375.85" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Helm 插件包</text>
+<text x="862.5" y="393.25" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Kustomize · Helm V1</text>
+<text x="862.5" y="410.65" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Manifests · Scorecard</text>
+<rect x="660" y="460" width="340" height="96" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(730.05,490) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12.54c-1.804 -.345 -2.701 -1.08 -3.523 -2.94c-.487 .696 -1.102 1.568 -.92 2.4c.028 .238 -.32 1 -.557 1h-14c0 5.208 3.164 7 6.196 7c4.124 .022 7.828 -1.376 9.854 -5c1.146 -.101 2.296 -1.505 2.95 -2.46" /> <path d="M5 10h3v3h-3l0 -3" /> <path d="M8 10h3v3h-3l0 -3" /> <path d="M11 10h3v3h-3l0 -3" /> <path d="M8 7h3v3h-3l0 -3" /> <path d="M11 7h3v3h-3l0 -3" /> <path d="M11 4h3v3h-3l0 -3" /> <path d="M4.571 18c1.5 0 2.047 -.074 2.958 -.78" /> <path d="M10 16l0 .01" /></g>
+<text x="853" y="504.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Deploy Image 插件包</text>
+<text x="853" y="521.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">deploy-image/v1-alpha</text>
+<text x="520" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Operator SDK CLI 插件系统</text>
+</g>
+</svg>

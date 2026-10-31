@@ -22,38 +22,7 @@ Kubernetes 需要复杂的系统来决定工作负载的运行位置及资源分
 
 下图展示了调度与资源管理的主要组件关系：
 
-```mermaid "调度与资源管理核心组件"
-flowchart TD
-    subgraph ControlPlane [Control Plane]
-        kSched["kube-scheduler"]
-        API["kube-apiserver"]
-        CM["controller-manager"]
-        HPA["Horizontal Pod Autoscaler"]
-    end
-
-    subgraph Node [Node]
-        kubelet
-        CRI["Container Runtime"]
-        subgraph NodeResources [Node Resources]
-            CPU
-            Memory
-            Storage
-            Network
-        end
-    end
-
-    kSched -->|Assigns Pod<br/>to Node| API
-    API -->|Pod Assignment| kubelet
-    kubelet -->|Create Containers<br/>with Resource Limits| CRI
-    CRI -->|Uses / Monitors| NodeResources
-    CM -->|Creates / Updates| HPA
-    HPA -->|Scales| API
-    kubelet -->|Reports Resource Usage| API
-    kubelet -->|Evicts Pods<br/>under pressure| API
-```
-
-![调度与资源管理核心组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/0b48a892565f7cc99148637858b25f76.svg)
-{width=1920 height=5388}
+![调度与资源管理核心组件](scheduling-core-components.svg)
 
 ## Kubernetes 调度器原理
 
@@ -66,68 +35,13 @@ Kubernetes 调度器（kube-scheduler）负责为新建 Pod 分配节点。它�
 1. **过滤（Filtering）**：筛选出可运行 Pod 的节点集合
 2. **打分（Scoring）**：对候选节点评分，选出最优节点
 
-```mermaid "调度流程"
-flowchart LR
-    Pod["Unscheduled Pod"] --> Scheduler
-
-    subgraph "Scheduling Context"
-        subgraph "Scheduling Cycle"
-            Scheduler["kube-scheduler"] --> Filter["Filtering</br>
-(Predicates)"]
-            Filter --> Score["Scoring</br>
-(Priorities)"]
-            Score --> Select["Select Best Node"]
-        end
-
-        subgraph "Binding Cycle"
-            Select --> Bind["Bind Pod to Node"]
-        end
-    end
-
-    Bind --> ScheduledPod["Scheduled Pod"]
-```
-
-![调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/4a336c158c21caae55e2d82bb47e737e.svg)
-{width=2178 height=259}
+![调度流程：调度周期与绑定周期](scheduling-cycle-and-binding.svg)
 
 ### 调度框架与插件机制
 
 调度器采用可插拔架构（Scheduling Framework），支持多种扩展点，便于自定义调度逻辑。
 
-```mermaid "调度框架扩展点"
-flowchart LR
-    subgraph "Extension Points"
-        QS["queueSort"]
-        PF["preFilter"]
-        F["filter"]
-        PSF["postFilter"]
-        PS["preScore"]
-        S["score"]
-        NS["normalizeScore"]
-        R["reserve"]
-        P["permit"]
-        PB["preBind"]
-        B["bind"]
-        POB["postBind"]
-    end
-
-    Pod["Pod"] --> QS
-    QS --> PF
-    PF --> F
-    F --> PSF
-    PSF --> PS
-    PS --> S
-    S --> NS
-    NS --> R
-    R --> P
-    P --> PB
-    PB --> B
-    B --> POB
-    POB --> N["Node"]
-```
-
-![调度框架扩展点](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/fad38edf823ac0fb98b8b11ff3469623.svg)
-{width=3241 height=177}
+![调度框架扩展点](scheduling-framework-extension-points.svg)
 
 ### 默认调度插件
 
@@ -175,45 +89,7 @@ Kubernetes 支持为 Pod 中的容器指定资源请求（requests）与限制�
 
 每个容器可指定资源请求与限制。下图展示了 Pod 内多容器资源汇总关系：
 
-```mermaid "Pod 资源请求与限制示意"
-flowchart TD
-    subgraph "Pod"
-        subgraph "Container 1"
-            C1R["Requests:</br>
-CPU: 250m</br>
-Memory: 64Mi"]
-            C1L["Limits:</br>
-CPU: 500m</br>
-Memory: 128Mi"]
-        end
-
-        subgraph "Container 2"
-            C2R["Requests:</br>
-CPU: 250m</br>
-Memory: 64Mi"]
-            C2L["Limits:</br>
-CPU: 500m</br>
-Memory: 128Mi"]
-        end
-    end
-
-    subgraph "Pod Total"
-        PR["Requests:</br>
-CPU: 500m</br>
-Memory: 128Mi"]
-        PL["Limits:</br>
-CPU: 1</br>
-Memory: 256Mi"]
-    end
-
-    C1R --> PR
-    C2R --> PR
-    C1L --> PL
-    C2L --> PL
-```
-
-![Pod 资源请求与限制示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/97d371b394c2e5dca0e1607ceb0a294f.svg)
-{width=1920 height=1181}
+![Pod 资源请求与限制示意](pod-requests-limits-rollup.svg)
 
 - **Requests**：调度时保证的最小资源
 - **Limits**：运行时允许的最大资源
@@ -237,27 +113,7 @@ Kubernetes 提供多种机制控制 Pod 在节点间的分布。
 
 拓扑分布约束可控制 Pod 在不同故障域（如区域、可用区、节点）间的分布。
 
-```mermaid "拓扑分布约束示意"
-flowchart TD
-    subgraph "zoneA"
-        n1["Node 1"] 
-        n2["Node 2"]
-    end
-
-    subgraph "zoneB"
-        n3["Node 3"]
-        n4["Node 4"]
-    end
-
-    p1["Pod 1"] --> n1
-    p2["Pod 2"] --> n2
-    p3["Pod 3"] --> n3
-
-    newPod["New Pod"] -.- n4
-```
-
-![拓扑分布约束示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/16f568d0cfe6ce9f423c95d2d649e8ae.svg)
-{width=1920 height=716}
+![拓扑分布约束示意](topology-spread-constraints.svg)
 
 常用字段包括：
 
@@ -270,30 +126,7 @@ flowchart TD
 
 污点与容忍机制确保 Pod 不会被调度到不合适的节点。
 
-```mermaid "污点与容忍调度示意"
-flowchart LR
-    subgraph "Nodes"
-        n1["Node 1<br/>
-Taint: key=value:NoSchedule"]
-        n2["Node 2<br/>
-No Taints"]
-    end
-
-    subgraph "Pods"
-        p1["Pod 1<br/>
-No Tolerations"]
-        p2["Pod 2<br/>
-Toleration: key=value:NoSchedule"]
-    end
-
-    p1 -. "Cannot schedule" .-> n1
-    p1 --> n2
-    p2 --> n1
-    p2 --> n2
-```
-
-![污点与容忍调度示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/e8fca8cb32bd1b1c98a99fe07ccc755e.svg)
-{width=1920 height=856}
+![污点与容忍调度示意](taints-and-tolerations.svg)
 
 常见场景包括专用节点、特殊硬件节点、节点压力驱逐等。
 
@@ -305,33 +138,7 @@ Kubernetes 支持通过优先级（Priority）指定 Pod 重要性。高优先�
 
 通过 PriorityClass 对象和 `priorityClassName` 字段指定。优先级值越高，Pod 越重要。
 
-```mermaid "Pod 优先级示意"
-flowchart TD
-    subgraph "PriorityClasses"
-        PC1["system-cluster-critical</br>
-value: 2000000000"]
-        PC2["high-priority</br>
-value: 1000000"]
-        PC3["default</br>
-value: 0"]
-    end
-
-    subgraph "Pods"
-        P1["kube-dns</br>
-priority: 2000000000"]
-        P2["monitoring</br>
-priority: 1000000"]
-        P3["frontend</br>
-priority: 0"]
-    end
-
-    PC1 -->|"referenced by"| P1
-    PC2 -->|"referenced by"| P2
-    PC3 -->|"referenced by"| P3
-```
-
-![Pod 优先级示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/e78caf0e1d15dd924aab8e9ddba408c0.svg)
-{width=1920 height=1249}
+![Pod 优先级示意](pod-priority-classes.svg)
 
 内置优先级类包括 `system-cluster-critical` 和 `system-node-critical`。
 
@@ -370,32 +177,7 @@ kubelet 依据多种信号判断资源压力：
 
 Pod Disruption Budget（PDB）用于限制自愿中断（如节点维护、升级）时可同时中断的 Pod 数量。
 
-```mermaid "PDB 保护机制示意"
-flowchart TD
-    subgraph "Deployment: web-app"
-        P1["Pod 1"]
-        P2["Pod 2"]
-        P3["Pod 3"]
-        P4["Pod 4"]
-        P5["Pod 5"]
-    end
-
-    PDB["PDB</br>
-minAvailable: 4"]
-
-    P1 --- PDB
-    P2 --- PDB
-    P3 --- PDB
-    P4 --- PDB
-    P5 --- PDB
-
-    Admin["Administrator"] -->|"Drains node</br>
-with Pod 5"| P5
-    PDB -->|"Allows disruption"| P5
-```
-
-![PDB 保护机制示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/f27af411de4700b90a5753f9cc319a4d.svg)
-{width=1920 height=902}
+![PDB 保护机制示意](pdb-protection.svg)
 
 PDB 可指定 `minAvailable` 或 `maxUnavailable`，仅保护自愿中断，不防止节点故障或资源驱逐。
 
@@ -407,35 +189,7 @@ Kubernetes 支持基于指标的自动扩缩容，提升资源利用率。
 
 HPA 控制器根据指标自动调整副本数。下图展示了 HPA 工作流程：
 
-```mermaid "HPA 工作流程"
-flowchart TD
-    subgraph "HPA Controller"
-        Metrics["Metrics Collector"]
-        Calc["Scale Calculator"]
-    end
-
-    subgraph "Metrics Server"
-        MS["metrics.k8s.io API"]
-    end
-
-    subgraph "Deployment"
-        RS["ReplicaSet"]
-        P1["Pod 1"]
-        P2["Pod 2"]
-        P3["Pod 3"]
-    end
-
-    Metrics -->|"Fetch metrics"| MS
-    MS -->|"Pod CPU/Memory"| Metrics
-    Metrics --> Calc
-    Calc -->|"Calculate desired replicas"| RS
-    RS --> P1
-    RS --> P2
-    RS --> P3
-```
-
-![HPA 工作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/2156e4e4f5429e8cc0cea41478bd5386.svg)
-{width=1920 height=2029}
+![HPA 工作流程](hpa-workflow.svg)
 
 HPA 支持 CPU、内存、自定义与外部指标。核心算法如下：
 
@@ -501,31 +255,7 @@ profiles:
 
 Kubernetes 支持同时运行多个调度器，满足特殊调度需求。
 
-```mermaid "多调度器调度示意"
-flowchart TD
-    API["kube-apiserver"]
-
-    subgraph "Schedulers"
-        KS["default-scheduler"]
-        CS["custom-scheduler"]
-    end
-
-    subgraph "Pods"
-        P1["Pod 1</br>
-schedulerName: default-scheduler"]
-        P2["Pod 2</br>
-schedulerName: custom-scheduler"]
-    end
-
-    API --> KS
-    API --> CS
-
-    KS -->|"Schedules"| P1
-    CS -->|"Schedules"| P2
-```
-
-![多调度器调度示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/scheduling-and-resource-management/6ed71126383050f86c1b8c4f5c9553c7.svg)
-{width=1920 height=1742}
+![多调度器调度示意](multi-scheduler.svg)
 
 通过 Pod 的 `schedulerName` 字段指定调度器。
 

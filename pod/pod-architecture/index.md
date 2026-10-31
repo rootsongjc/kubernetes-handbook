@@ -122,18 +122,7 @@ Pod 的生命周期分为多个阶段，合理管理可提升系统稳定性。
 
 下图展示了 Pod 的生命周期主要阶段及状态转换：
 
-```mermaid "Pod 生命周期流程"
-stateDiagram-v2
-  [*] --> Pending : Kube 接收调度请求
-  Pending --> Running : 至少有一个容器正在运行
-  Running --> Succeed : 所有容器以 0 状态码终止
-  Running --> Failed : 至少有一个容器以非 0 状态码终止
-  Failed --> Running : 重启后容器再次运行
-  Succeed --> [*]
-```
-
-![Pod 生命周期流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/pod-architecture/579744754244b76400d417e5b8ebb129.svg)
-{width=1920 height=2284}
+![Pod 生命周期流程](pod-lifecycle-states.svg)
 
 ## Pod 网络和存储
 

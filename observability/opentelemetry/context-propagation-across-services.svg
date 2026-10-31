@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2080" height="1320" viewBox="0 0 1040 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="contexz-title contexz-desc" id="context-propagation-across-services-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="contexz-title">上下文与跨服务传播：Service A → Propagators → 传输载体 → Service B</title>
+<desc id="contexz-desc">Service A 的 Context 派生 Span 与 Baggage，由 Propagators 选择 W3C TraceContext、W3C Baggage 或 B3 格式注入 HTTP Headers、gRPC Metadata 或环境变量；Service B 从中提取后还原出 Span、Baggage 与 Context。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #context-propagation-across-services-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #context-propagation-across-services-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #context-propagation-across-services-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#context-propagation-across-services-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="context-propagation-across-services-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="92" width="300" height="216" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="114" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Service A</text>
+<rect x="400" y="92" width="240" height="216" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="416" y="114" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">传输载体</text>
+<rect x="700" y="92" width="300" height="216" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="716" y="114" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Service B</text>
+<rect x="40" y="372" width="960" height="252" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="394" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">传播机制</text>
+<rect x="400" y="400" width="264" height="208" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="416" y="422" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">传播格式</text>
+<path d="M 147.5 180 L 147.5 198 Q 147.5 206 139.5 206 L 126 206 Q 118 206 118 214 L 118 232" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 232.5 180 L 232.5 198 Q 232.5 206 240.5 206 L 254 206 Q 262 206 262 214 L 262 232" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 118 296 L 118 472" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 262 296 L 262 472" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 300 492 L 356 492 Q 364 492 364 484 L 364 466 Q 364 458 372 458 L 428 458" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 300 508 L 361 508 Q 364 508 364 511 L 364 511 Q 364 514 367 514 L 428 514" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 300 524 L 356 524 Q 364 524 364 532 L 364 562 Q 364 570 372 570 L 428 570" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 500 396 L 500 312" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<rect x="443.6" y="346.6" width="52.4" height="16.6" style="fill:#ffffff"/>
+<text x="492" y="358.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">Inject</text>
+<path d="M 560 312 L 560 396" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<rect x="564" y="346.6" width="59.6" height="16.6" style="fill:#ffffff"/>
+<text x="568" y="358.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Extract</text>
+<path d="M 668 458 L 770 458 Q 778 458 778 450 L 778 296" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 668 586 L 914 586 Q 922 586 922 578 L 922 296" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 778 232 L 778 214 Q 778 206 786 206 L 799.5 206 Q 807.5 206 807.5 198 L 807.5 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<path d="M 922 232 L 922 214 Q 922 206 914 206 L 900.5 206 Q 892.5 206 892.5 198 L 892.5 180" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#context-propagation-across-services-m-6b7280)"/>
+<rect x="105" y="128" width="170" height="48" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(142.25,141.5) scale(0.875)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="205.5" y="157.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Context</text>
+<rect x="56" y="236" width="124" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="118" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Span</text>
+<text x="118" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trace 上下文</text>
+<rect x="200" y="236" width="124" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="262" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Baggage</text>
+<text x="262" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">键值对</text>
+<rect x="420" y="128" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(453.06,140) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></g>
+<text x="535" y="154.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP Headers</text>
+<rect x="420" y="188" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(449.56,200) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="535" y="214.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">gRPC Metadata</text>
+<rect x="420" y="248" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(439.62,260) scale(0.8333)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="535" y="274.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Environment Vars</text>
+<rect x="765" y="128" width="170" height="48" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(802.25,141.5) scale(0.875)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="865.5" y="157.25" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Context</text>
+<rect x="716" y="236" width="124" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="778" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Span</text>
+<text x="778" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trace 上下文</text>
+<rect x="860" y="236" width="124" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="922" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Baggage</text>
+<text x="922" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">键值对</text>
+<rect x="96" y="476" width="200" height="64" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="96" y="476" width="200" height="64" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(122.75,490.00) scale(1.5)" style="color:#0a84ff" fill="currentColor"><path d="M12.6974 13.1173c-1.0224 1.0224-1.0224 2.68 0 3.7024 1.0224 1.0224 2.68 1.0224 3.7024 0 1.0224-1.0223 1.0224-2.68 0-3.7024-1.0223-1.0223-2.68-1.0223-3.7024 0zm2.7677 2.7701c-.5063.5063-1.3267.5063-1.833 0s-.5063-1.3266 0-1.833c.5063-.5062 1.3267-.5062 1.833 0 .5063.504.5063 1.3267 0 1.833zM16.356.2355l-1.6041 1.6042c-.314.314-.314.83 0 1.144L21.015 9.247c.314.314.83.314 1.144 0l1.6042-1.6041c.314-.314.314-.83 0-1.144L17.4976.2354c-.314-.314-.8276-.314-1.1416 0zM5.1173 20.734c.2848-.2848.2848-.7497 0-1.0345l-.8155-.8155c-.2848-.2848-.7497-.2848-1.0345 0l-1.6845 1.6845-.0024.0024-.4625-.4625c-.2556-.2556-.6718-.2556-.925 0-.2556.2556-.2556.6718 0 .925l2.775 2.775c.2556.2556.6718.2556.925 0 .2532-.2556.2556-.6718 0-.925l-.4625-.4625.0024-.0024zm8.4856-15.893-3.5637 3.5637c-.3164.3164-.3164.8374 0 1.1538l2.2006 2.2005c1.5554-1.1197 3.7365-.981 5.1361.4187l1.7819-1.7818c.3164-.3165.3164-.8374 0-1.1538l-4.401-4.401c-.3165-.319-.8374-.319-1.1539 0zm-2.2881 7.8455-1.2999-1.2999c-.3043-.3043-.8033-.3043-1.1076 0l-4.5836 4.586c-.3042.3043-.3042.8033 0 1.1076l2.5973 2.5973c.3043.3043.8033.3043 1.1076 0l2.9478-2.9527c-.6231-1.2877-.5112-2.8431.3384-4.0383z"/></g>
+<text x="219" y="504.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Propagators</text>
+<text x="219" y="521.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">注入 / 提取</text>
+<rect x="432" y="436" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="532" y="462.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">W3C TraceContext</text>
+<rect x="432" y="492" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="532" y="518.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">W3C Baggage</text>
+<rect x="432" y="548" width="200" height="44" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="532" y="574.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">B3 Format</text>
+<text x="520" y="648" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Inject：Service A 侧把 Span / Baggage 按传播格式写入载体；Extract：Service B 侧读出并还原 Context。</text>
+<text x="520" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">上下文与跨服务传播：Service A → Propagators → 传输载体 → Service B</text>
+</g>
+</svg>

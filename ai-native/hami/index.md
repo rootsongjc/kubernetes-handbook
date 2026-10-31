@@ -30,40 +30,7 @@ HAMi 通过一系列关键组件与 Kubernetes 深度集成，扩展了原生的
 - Device Plugin（hami-device-plugin）：在节点侧管理设备资源，并向 kubelet 上报可用性
 - 配置管理：通过 ConfigMap 存储设备参数与调度策略
 
-```mermaid "HAMi 系统架构组件"
-graph TB
-    subgraph "Kubernetes 控制面"
-        API[Kubernetes API Server]
-        Scheduler[kube-scheduler]
-    end
-    subgraph "HAMi 控制组件"
-        Webhook[hami-scheduler<br/>Admission Webhook]
-        Extender[hami-scheduler<br/>Scheduler Extender]
-        ConfigMap[hami-scheduler-device<br/>ConfigMap]
-    end
-    subgraph "工作节点"
-        DevicePlugin[hami-device-plugin<br/>DaemonSet]
-        Monitor[vGPU Monitor]
-        Hardware[GPU/NPU 硬件]
-    end
-    subgraph "监控"
-        Metrics[Prometheus Metrics]
-        Dashboard[Grafana Dashboard]
-    end
-    API --> Webhook
-    Scheduler --> Extender
-    Webhook --> ConfigMap
-    Extender --> ConfigMap
-    API --> DevicePlugin
-    DevicePlugin --> Hardware
-    Monitor --> Hardware
-    Monitor --> Metrics
-    DevicePlugin --> Metrics
-    Metrics --> Dashboard
-```
-
-![HAMi 系统架构组件](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/hami/d9f1434b86dc245eb8545cbcb5b0585c.svg)
-{width=1920 height=1116}
+![HAMi 系统架构组件](hami-architecture.svg)
 
 ## 设备虚拟化与共享机制
 
@@ -170,48 +137,7 @@ HAMi 的核心愿景是成为“Kubernetes 上异构算力的一站式管理中�
 
 **架构概览：** HAMi 采用模块化的架构，包含多个协同工作的组件：一个统一的 Mutating Webhook（变更准入控制器）、一个自定义的调度扩展（Scheduler Extender）、针对不同硬件的 Device Plugin 插件，以及每种异构设备对应的容器内虚拟化核心（HAMi-Core）。此外，HAMi 提供可选的 Web UI 界面用于资源可视化管理（v2.4+ 提供）。下图展示了 HAMi 的高层架构，各组件在 Kubernetes 集群中的配合（MutatingWebhook -> 调度器 -> 设备插件 -> HAMi-Core）：
 
-```mermaid "HAMi 架构图"
-graph TB
-    subgraph "Kubernetes Control Plane"
-        API[Kubernetes API Server]
-        Scheduler[kube-scheduler]
-    end
-    
-    subgraph "HAMi Control Components"
-        Webhook[hami-scheduler<br/>Admission Webhook]
-        Extender[hami-scheduler<br/>Scheduler Extender]
-        ConfigMap[hami-scheduler-device<br/>ConfigMap]
-    end
-    
-    subgraph "Worker Nodes"
-        DevicePlugin[hami-device-plugin<br/>DaemonSet]
-        Monitor[vGPU Monitor]
-        Hardware[GPU/NPU Hardware]
-    end
-    
-    subgraph "Monitoring"
-        Metrics[Prometheus Metrics]
-        Dashboard[Grafana Dashboard]
-    end
-    
-    API --> Webhook
-    Scheduler --> Extender
-    Webhook --> ConfigMap
-    Extender --> ConfigMap
-    API --> DevicePlugin
-    DevicePlugin --> Hardware
-    Monitor --> Hardware
-    Monitor --> Metrics
-    DevicePlugin --> Metrics
-    Metrics --> Dashboard
-    
-    style Webhook fill:#f9f9f9
-    style Extender fill:#f9f9f9
-    style DevicePlugin fill:#f9f9f9
-```
-
-![HAMi 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/hami/2b4151911c44acd2719c54a72a02111b.svg)
-{width=1920 height=829}
+![HAMi 架构图](hami-architecture.svg)
 
 ### 关键组件
 

@@ -15,42 +15,7 @@ lastmod: 2025-10-27T18:11:39.287Z
 
 Service 是 Kubernetes 中用于定义一组逻辑 Pod 及其访问策略的抽象，提供稳定的访问入口，实现应用间的解耦。
 
-```mermaid "Service 层次结构与访问流程"
-flowchart TD
-    subgraph "Client Access"
-        Client("外部客户端")
-        InternalClient("集群内 Pod 客户端")
-    end
-
-    subgraph "Service Layer"
-        Service("Service</br>（稳定 IP + DNS 名称）")
-        EP("EndpointSlices</br>（实际 Pod IP）")
-    end
-    
-    subgraph "Pod Layer"
-        Pod1("Pod 1</br>app=MyApp")
-        Pod2("Pod 2</br>app=MyApp") 
-        Pod3("Pod 3</br>app=MyApp")
-    end
-
-    Client --> Service
-    InternalClient --> Service
-    Service --> EP
-    EP --> Pod1
-    EP --> Pod2
-    EP --> Pod3
-
-    classDef plain fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
-    classDef k8s fill:#326ce5,stroke:#fff,stroke-width:4px,color:#fff;
-    classDef cluster fill:#fff,stroke:#bbb,stroke-width:2px,color:#326ce5;
-
-    class Client,InternalClient plain;
-    class Service,EP k8s;
-    class Pod1,Pod2,Pod3 k8s;
-```
-
-![Service 层次结构与访问流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/c7a47cb31c775199d3f79a9bc48ea56c.svg)
-{width=1920 height=2234}
+![Service 层次结构与访问流程：客户端经 Service 和 EndpointSlice 访问 Pod](service-access-layers.svg)
 
 ## Service 类型
 
@@ -69,43 +34,7 @@ Kubernetes 支持多种 Service 类型，满足不同场景下的访问需求。
 
 ClusterIP（默认）仅集群内可访问，NodePort 和 LoadBalancer 均基于 ClusterIP 增加了外部访问能力。
 
-```mermaid "不同 Service 类型流量路径"
-flowchart TD
-    subgraph "Kubernetes Cluster"
-        subgraph "Node 1"
-            kp1["kube-proxy"]
-            p1["Pod</br>app=MyApp"]
-            p2["Pod</br>app=MyApp"]
-            np1["NodePort</br>30007"]
-        end
-        
-        subgraph "Node 2"
-            kp2["kube-proxy"]
-            p3["Pod</br>app=MyApp"]
-            np2["NodePort</br>30007"]
-        end
-        
-        svc["ClusterIP Service</br>10.96.0.10"]
-    end
-
-    LB["负载均衡器</br>(外部 IP)"]
-    Client["外部客户端"]
-
-    Client -- "1. 通过负载均衡器访问" --> LB
-    Client -- "2. 通过 NodePort 访问" --> np1
-    Client -- "3. 通过 NodePort 访问" --> np2
-    LB --> svc
-    np1 --> svc
-    np2 --> svc
-    svc -- "路由到" --> p1
-    svc -- "路由到" --> p2
-    svc -- "路由到" --> p3
-    kp1 -- "编程路由" --> np1
-    kp2 -- "编程路由" --> np2
-```
-
-![不同 Service 类型流量路径](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/a02b613568d9af5144190b6b698d7135.svg)
-{width=1920 height=1178}
+![不同 Service 类型的流量路径：负载均衡器与 NodePort 汇入 ClusterIP Service 再路由到 Pod](service-type-traffic-paths.svg)
 
 ## Service 选择器与端点
 
@@ -115,62 +44,13 @@ Service 通过标签选择器确定后端 Pod，Kubernetes 自动生成 Endpoint
 
 Service 支持多端口暴露，需为每个端口命名。Headless Service（`clusterIP: None`）不提供统一 IP，而是直接暴露所有后端 Pod 的 IP，适用于需要点对点连接的有状态应用。
 
-```mermaid "普通 Service 与 Headless Service 对比"
-flowchart TD
-    subgraph "Normal Service"
-        svc["Service</br>ClusterIP: 10.96.0.10"] --> pod1["Pod 1</br>10.244.0.5"]
-        svc --> pod2["Pod 2</br>10.244.0.6"]
-        svc --> pod3["Pod 3</br>10.244.0.7"]
-        client1["客户端"] --> svc
-    end
-
-    subgraph "Headless Service"
-        hsvc["Headless Service</br>ClusterIP: None"]
-        client2["客户端"] -- "DNS 查询返回所有 Pod IP" --> hsvc
-        client2 -- "直连" --> hpod1["Pod 1</br>10.244.1.5"]
-        client2 -- "直连" --> hpod2["Pod 2</br>10.244.1.6"]
-        client2 -- "直连" --> hpod3["Pod 3</br>10.244.1.7"]
-    end
-```
-
-![普通 Service 与 Headless Service 对比](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/64fddc9b958a9bf4118da8ed32064302.svg)
-{width=1920 height=787}
+![普通 Service 与 Headless Service 对比](normal-vs-headless-service.svg)
 
 ## EndpointSlice 机制
 
 EndpointSlice 是 Kubernetes 跟踪网络端点的高效机制，适合大规模 Service。
 
-```mermaid "EndpointSlice 结构与关联"
-flowchart TD
-    subgraph "Service"
-        svc["Service</br>app=MyApp"]
-    end
-
-    subgraph "EndpointSlices"
-        es1["EndpointSlice 1</br>(最多 100 个端点)"]
-        es2["EndpointSlice 2</br>(更多端点)"]
-    end
-
-    subgraph "Pods"
-        p1["Pod 1</br>IP: 10.244.0.5"]
-        p2["Pod 2</br>IP: 10.244.0.6"]
-        p3["Pod 3</br>IP: 10.244.0.7"]
-        pn["...更多 Pod"]
-    end
-
-    svc -- "拥有" --> es1
-    svc -- "拥有" --> es2
-    es1 -- "引用" --> p1
-    es1 -- "引用" --> p2
-    es2 -- "引用" --> p3
-    es2 -- "引用" --> pn
-
-    kp["kube-proxy"] -- "监听" --> es1
-    kp -- "监听" --> es2
-```
-
-![EndpointSlice 结构与关联](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/06d1c1083b473f15e3e5eb06c9761bba.svg)
-{width=1920 height=1538}
+![EndpointSlice 结构与关联：Service 拥有 EndpointSlice，EndpointSlice 引用 Pod，kube-proxy 监听](endpointslice-structure.svg)
 
 控制面自动为带选择器的 Service 创建和维护 EndpointSlice，每个 Slice 包含一组端点的地址、端口和状态。
 
@@ -190,39 +70,7 @@ Pod 的 DNS 记录格式如下：
 pod-ip-address.my-namespace.pod.cluster.local
 ```
 
-```mermaid "Kubernetes DNS 解析流程"
-flowchart LR
-    subgraph "DNS Resolution in Kubernetes"
-        direction TB
-
-        subgraph "Clients"
-            podClient["Pod"]
-        end
-
-        subgraph "Core DNS"
-            coreDNS["CoreDNS</br>(cluster DNS 服务)"]
-        end
-
-        subgraph "Services DNS Records"
-            direction TB
-            svcA["my-service.my-namespace.svc.cluster.local</br>A 记录 → 10.96.0.10"]
-            svcSRV["_http._tcp.my-service.my-namespace.svc.cluster.local</br>SRV 记录"]
-        end
-
-        subgraph "Pods DNS Records"
-            direction TB
-            podA["10-244-0-5.my-namespace.pod.cluster.local</br>A 记录 → 10.244.0.5"]
-        end
-
-        podClient -- "1. DNS 查询" --> coreDNS
-        coreDNS -- "2a. Service 查询" --> svcA
-        coreDNS -- "2b. SRV 查询" --> svcSRV
-        coreDNS -- "2c. Pod 查询" --> podA
-    end
-```
-
-![Kubernetes DNS 解析流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/c07a80c96558caa732a2081f305c29db.svg)
-{width=1920 height=1702}
+![Kubernetes DNS 解析流程：Pod 查询 CoreDNS 返回 Service 与 Pod 记录](dns-resolution-flow.svg)
 
 ### Pod DNS 配置
 
@@ -237,45 +85,7 @@ flowchart LR
 
 Ingress 用于将集群外部的 HTTP/HTTPS 流量路由到集群内 Service，支持基于主机名和路径的转发。
 
-```mermaid "Ingress 流量路由示意"
-flowchart TD
-    subgraph "External"
-        client["外部客户端"]
-    end
-
-    subgraph "Kubernetes Cluster"
-        direction TB
-
-        subgraph "Ingress Layer"
-            ingCtrl["Ingress Controller</br>(如 nginx-ingress)"]
-            ing["Ingress 资源</br>host: foo.bar.com</br>path: /foo → service1:80</br>path: /bar → service2:80"]
-        end
-
-        subgraph "Service Layer"
-            svc1["Service: service1</br>ClusterIP: 10.96.0.11"]
-            svc2["Service: service2</br>ClusterIP: 10.96.0.12"]
-        end
-
-        subgraph "Pod Layer"
-            pod1["Pod 1</br>service1</br>10.244.0.5"]
-            pod2["Pod 2</br>service1</br>10.244.0.6"]
-            pod3["Pod 3</br>service2</br>10.244.0.7"]
-            pod4["Pod 4</br>service2</br>10.244.0.8"]
-        end
-    end
-
-    client --> ingCtrl
-    ingCtrl -- "实现" --> ing
-    ing -- "路由 /foo" --> svc1
-    ing -- "路由 /bar" --> svc2
-    svc1 --> pod1
-    svc1 --> pod2
-    svc2 --> pod3
-    svc2 --> pod4
-```
-
-![Ingress 流量路由示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/2e53647a7d69fc6c6eac81eaae283566.svg)
-{width=1920 height=2627}
+![Ingress 流量路由示意：Ingress Controller 按 host 与 path 把请求路由到 Service 和 Pod](ingress-routing.svg)
 
 常见 Ingress Controller 包括 NGINX、AWS Load Balancer、GCE Ingress 等。
 
@@ -297,36 +107,7 @@ Ingress 支持多种路径匹配方式：
 
 NetworkPolicy 允许基于标签选择器定义 Pod 的网络访问规则，实现细粒度的流量隔离。
 
-```mermaid "NetworkPolicy 流量控制示意"
-flowchart TD
-    subgraph K8s_Cluster [Kubernetes Cluster]
-        direction TB
-
-        subgraph NS_default [Namespace: default]
-            pod1["Pod: frontend<br/>app=frontend"]
-            pod2["Pod: backend<br/>app=backend"]
-            pod3["Pod: database<br/>role=db"]
-
-            netpol["NetworkPolicy<br/>spec.podSelector: role=db<br/>允许 ingress: app=frontend<br/>允许 egress: 10.0.0.0/24:5978"]
-        end
-
-        subgraph NS_other [Namespace: other]
-            pod4["Pod: other-service<br/>project=myproject"]
-        end
-
-        external["外部服务<br/>10.0.0.5:5978"]
-    end
-
-    pod1 -- 被允许 --> pod3
-    pod4 -- 被允许 --> pod3
-    pod2 -. 被拒绝 .-> pod3
-    pod3 -- 被允许 --> external
-
-    netpol -. 控制流量 .-> pod3
-```
-
-![NetworkPolicy 流量控制示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/12fb2634fbc2a086005dda8185e71931.svg)
-{width=1920 height=1395}
+![NetworkPolicy 流量控制示意：允许 frontend 与 other 命名空间入站，拒绝 backend，允许出站到外部服务](networkpolicy-traffic-control.svg)
 
 NetworkPolicy 支持：
 
@@ -339,37 +120,7 @@ NetworkPolicy 支持：
 
 Kubernetes 支持双栈网络，可为 Pod 和 Service 分配 IPv4 与 IPv6 地址（1.21+ 默认启用）。
 
-```mermaid "双栈网络配置与流量"
-flowchart TD
-    subgraph "Kubernetes Cluster"
-        direction TB
-
-        subgraph "Control Plane"
-            apiserver["kube-apiserver</br>--service-cluster-ip-range=10.96.0.0/16,fd00::/108"]
-            controller["kube-controller-manager</br>--cluster-cidr=10.244.0.0/16,fd01::/48"]
-        end
-
-        subgraph "Node 1"
-            kubelet1["kubelet</br>--node-ip=192.168.0.10,2001:db8::10"]
-            pod1["Pod</br>IPv4: 10.244.1.4</br>IPv6: fd01::4"]
-            pod2["Pod</br>IPv4: 10.244.1.5</br>IPv6: fd01::5"]
-        end
-
-        subgraph "Node 2"
-            kubelet2["kubelet</br>--node-ip=192.168.0.11,2001:db8::11"]
-            pod3["Pod</br>IPv4: 10.244.2.4</br>IPv6: fd01:0:0:2::4"]
-        end
-
-        svc["Service (dual-stack)</br>ClusterIPs:</br>- 10.96.0.10 (IPv4)</br>- fd00::10 (IPv6)"]
-    end
-
-    pod1 --> svc
-    pod2 --> svc
-    pod3 --> svc
-```
-
-![双栈网络配置与流量](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/overview/03a588dd8d97f0c8ac83d34a0953b2dd.svg)
-{width=1920 height=1033}
+![双栈网络配置与流量：控制面 CIDR、kubelet 节点 IP、Pod 与 Service 的 IPv4/IPv6 地址](dual-stack-network.svg)
 
 Service 的 `ipFamilyPolicy` 可设为：
 

@@ -19,23 +19,7 @@ Kubernetes 通过统一的 API、调度、伸缩、服务发现和安全控制�
 
 下图展示了 Kubernetes 在 AI 场景中的六大层级，帮助理解各组件的协作关系。
 
-```mermaid "Kubernetes AI 技术栈总体架构"
-graph TD
-  A[客户端 / 应用] --> B[AI 网关 / 推理 API]
-  B --> C["模型服务层<br/>（KServe / vLLM / LLMariner）"]
-  C --> D["调度层<br/>（Volcano / Kaito / Karpenter）"]
-  D --> E["算力层<br/>（GPU / NPU / DraNet / HAMi）"]
-  E --> F["存储层<br/>（JuiceFS / S3 / Ceph / EdgeFS）"]
-  A --> G["可观测与安全<br/>（Cilium / OpenTelemetry / K8sGPT）"]
-  subgraph 框架扩展
-  H[MLFlow / KubeRay / KubeFlow]
-  end
-  H --> B
-  B --> C
-```
-
-![Kubernetes AI 技术栈总体架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/infrastructure/1a10d07c367c1beb5031e11694c5a13b.svg)
-{width=1920 height=2978}
+![Kubernetes AI 技术栈总体架构](ai-stack-architecture.svg)
 
 这一架构分为以下层级：
 

@@ -44,56 +44,7 @@ Kubernetes 最初设计用于管理单个集群内的容器化工作负载。然
 
 不同组织会根据业务需求采用不同的多集群架构模式。以下是几种典型模式及其适用场景：
 
-```mermaid "多集群架构模式"
-graph TD
-    A["独立集群模式<br/>(Isolated Clusters)"]
-    B["主控集群模式<br/>(Hub-and-Spoke)"]
-    C["联邦模式<br/>(Federated Clusters)"]
-    D["混合模式<br/>(Hybrid Model)"]
-
-    subgraph 独立集群
-        A1[集群A]
-        A2[集群B]
-        A3[集群C]
-        A1 ---|无直接关联| A2
-        A2 ---|无直接关联| A3
-    end
-
-    subgraph 主控集群
-        B0["主集群(Hub)"]
-        B1["从集群1(Spoke)"]
-        B2["从集群2(Spoke)"]
-        B3["从集群3(Spoke)"]
-        B0 --> B1
-        B0 --> B2
-        B0 --> B3
-    end
-
-    subgraph 联邦模式
-        F1[集群1]
-        F2[集群2]
-        F3[集群3]
-        F1 --- F2
-        F2 --- F3
-        F3 --- F1
-        noteF[统一API/策略同步]
-        noteF -.-> F1
-        noteF -.-> F2
-        noteF -.-> F3
-    end
-
-    subgraph 混合模式
-        H1[中心云集群]
-        H2[边缘集群A]
-        H3[边缘集群B]
-        H1 --> H2
-        H1 --> H3
-        H2 -.-> H3
-    end
-```
-
-![多集群架构模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/multi-cluster/overview/f67d11facafc9549060d297448a76d81.svg)
-{width=4694 height=459}
+![四种典型的多集群架构模式：独立集群、主控集群、联邦与混合](multi-cluster-architecture-patterns.svg)
 
 ### 独立集群模式（Isolated Clusters）
 

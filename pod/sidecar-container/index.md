@@ -21,16 +21,7 @@ Sidecar 容器（Sidecar Container）是指与主容器（Main Container）共�
 
 下图展示了 Sidecar 容器与主容器的协作关系：
 
-```mermaid "Sidecar 容器与主容器协作关系"
-graph LR
-    Pod[Pod]
-    Pod --> Main[主容器]
-    Pod --> Sidecar[Sidecar 容器]
-    Main -- 共享卷/网络 --> Sidecar
-```
-
-![Sidecar 容器与主容器协作关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/sidecar-container/e1a1499cc6ad7bd492d158a4db5dd8b0.svg)
-{width=1920 height=354}
+![Sidecar 容器与主容器协作关系](sidecar-main-collaboration.svg)
 
 ## 常见使用场景
 

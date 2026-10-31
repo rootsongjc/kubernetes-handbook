@@ -19,29 +19,7 @@ Kubernetes 遵循结构化的发布周期，每年约发布三次，每个周期
 
 下图展示了发布流程与关键里程碑：
 
-```mermaid "发布流程与关键里程碑"
-flowchart TB
-    subgraph A["发布流程（Release Process）"]
-        A1["功能定义（Enhancement Definition）"]
-        A2["实现阶段（Implementation）"]
-        A3["稳定阶段（Stabilization）"]
-        A1 --> A2
-        A2 --> A3
-    end
-
-    subgraph B["关键里程碑（Key Milestones）"]
-        B1["功能冻结（Enhancements Freeze，第4周）"]
-        B2["代码冻结（Code Freeze，第12-14周）"]
-        B3["正式发布（Release，第14周）"]
-    end
-
-    A1 --> B1
-    A2 --> B2
-    A3 --> B3
-```
-
-![发布流程与关键里程碑](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/c280e7412bee000ca824dea091229af1.svg)
-{width=1920 height=1390}
+![发布流程与关键里程碑](release-process-milestones.svg)
 
 - **功能定义**：确定本周期计划纳入的特性，约第 4 周前完成增强提案（Enhancements Freeze）。
 - **实现阶段**：主要开发、集成测试与文档完善。
@@ -53,37 +31,7 @@ flowchart TB
 
 版本规划涉及特性负责人、SIG 领导与 Release Team。增强提案需在前 4 周内准备完毕。
 
-```mermaid "发布规划与里程碑管理"
-flowchart LR
-    subgraph A["必需标签（Required Labels）"]
-        A1["SIG 负责人标签"]
-        A2["Issue/PR 类型"]
-        A3["优先级标签"]
-        A4["里程碑（Milestone）"]
-    end
-
-    subgraph B["版本规划（Release Planning）"]
-        B1["Kubernetes 改进提案（KEPs）"]
-        B2["GitHub 里程碑创建"]
-        B3["SIG 规划与审批"]
-    end
-
-    subgraph C["问题与PR跟踪（Issue and PR Tracking）"]
-        C1["增强功能问题（Enhancement Issues）"]
-        C2["缺陷/特性问题（Bug/Feature Issues）"]
-        C3["拉取请求（Pull Requests）"]
-    end
-
-    B1 --> C1
-    B3 --> C1
-    B3 --> C2
-    C1 --> C3
-    C2 --> C3
-    C3 --> A
-```
-
-![发布规划与里程碑管理](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/fd6b25f914a80b45c72a03f6e35c0778.svg)
-{width=2385 height=480}
+![发布规划与里程碑管理](release-planning-tracking.svg)
 
 每个面向发布的 Issue 或 PR 需包含：
 
@@ -108,24 +56,7 @@ Kubernetes 采用语义化版本（SemVer）格式 **x.y.z**：
 
 Kubernetes 维护最近三个小版本的 release 分支。1.19 及以上版本约有 1 年补丁支持，1.18 及以下为 9 个月。
 
-```mermaid "版本支持生命周期"
-flowchart LR
-    A["标准支持期（12 个月）"] --> B["维护模式（2 个月）"]
-    B --> C["生命周期结束（EOL）"]
-
-    subgraph "维护模式活动"
-        D["安全漏洞修复（CVE）"]
-        E["依赖项问题修复"]
-        F["关键核心组件问题修复"]
-    end
-
-    B --> D
-    B --> E
-    B --> F
-```
-
-![版本支持生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/15e331789a82329a50ba14dc73e5ecf2.svg)
-{width=1920 height=1133}
+![版本支持生命周期](version-support-lifecycle.svg)
 
 - **标准支持期**：前 12 个月，常规补丁与安全更新
 - **维护模式**：最后 2 个月，仅修复安全漏洞、依赖项与核心组件关键问题
@@ -213,45 +144,7 @@ Release Management 团队与 Security Response Committee 紧密协作，安全�
 
 每次发布会产出多种制品，均需签名验证。下图展示了发布周期与支持关系：
 
-```mermaid "Kubernetes 版本发布与支持周期"
-flowchart LR
-    subgraph "Minor Release Cycle (3-4 months)"
-        alpha["Alpha Releases
-        (Feature Development)"]
-        beta["Beta Releases
-        (Feature Stabilization)"]
-        rc["Release Candidates
-        (Final Testing)"]
-        ga["General Availability
-        (Production Release)"]
-    end
-
-    subgraph "Support Timeline"
-        support["Standard Support
-        (12 months)"]
-        maintenance["Maintenance Mode
-        (2 months)"]
-        eol["End-of-Life"]
-    end
-
-    subgraph "Patch Releases"
-        monthly["Monthly Patches
-        (Bug Fixes, Security Updates)"]
-    end
-
-    alpha --> beta
-    beta --> rc
-    rc --> ga
-    ga --> support
-    support --> maintenance
-    maintenance --> eol
-
-    monthly -.-> support
-    monthly -.-> maintenance
-```
-
-![Kubernetes 版本发布与支持周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/release-management/efd67d8af0ef0f883d491c7aae2728cd.svg)
-{width=2377 height=420}
+![Kubernetes 版本发布与支持周期](release-and-support-cycle.svg)
 
 **二进制与镜像签名**：采用 [sigstore](https://sigstore.dev) 签名，可用 `cosign` 工具验证
 

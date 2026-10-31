@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="800" viewBox="0 0 1080 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="operatz-title operatz-desc" id="operator-sdk-dev-workflow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="operatz-title">Operator SDK 开发流程</title>
+<desc id="operatz-desc">八个步骤依次为项目初始化（operator-sdk init）、API 设计（operator-sdk create api）、控制器实现（Reconcile 逻辑、错误处理和重试）、RBAC 配置（最小权限）、测试编写（单元 + 集成，envtest）、构建打包（多架构镜像、安全扫描）、部署测试（kind / k3s 端到端验证）与发布到 OperatorHub（版本管理）。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #operator-sdk-dev-workflow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #operator-sdk-dev-workflow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #operator-sdk-dev-workflow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#operator-sdk-dev-workflow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="operator-sdk-dev-workflow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 254 158 L 290 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 522 158 L 558 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 790 158 L 826 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 942 204 L 942 224 Q 942 232 934 232 L 146 232 Q 138 232 138 240 L 138 260" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 254 306 L 290 306" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 522 306 L 558 306" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<path d="M 790 306 L 826 306" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#operator-sdk-dev-workflow-m-6b7280)"/>
+<rect x="26" y="116" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="138" y="147.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">项目初始化</text>
+<text x="138" y="163.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">operator-sdk init</text>
+<text x="138" y="179.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">--domain=example.com</text>
+<rect x="36" y="107" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="60.7" y="120" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 1</text>
+<rect x="294" y="116" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="406" y="147.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">API 设计</text>
+<text x="406" y="163.25" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">operator-sdk create api</text>
+<text x="406" y="179.2" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">--controller --resource</text>
+<rect x="304" y="107" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="328.7" y="120" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 2</text>
+<rect x="562" y="116" width="224" height="84" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="562" y="116" width="224" height="84" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="674" y="147.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">控制器实现</text>
+<text x="674" y="163.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">实现 Reconcile 逻辑</text>
+<text x="674" y="179.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">错误处理和重试</text>
+<rect x="572" y="107" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="596.7" y="120" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 3</text>
+<rect x="830" y="116" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="942" y="147.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">RBAC 配置</text>
+<text x="942" y="163.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">生成 RBAC 规则</text>
+<text x="942" y="179.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">最小权限原则</text>
+<rect x="840" y="107" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="864.7" y="120" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 4</text>
+<rect x="26" y="264" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="138" y="295.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">测试编写</text>
+<text x="138" y="311.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">单元测试 + 集成测试</text>
+<text x="138" y="327.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">envtest 框架</text>
+<rect x="36" y="255" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="60.7" y="268" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 5</text>
+<rect x="294" y="264" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="406" y="295.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">构建打包</text>
+<text x="406" y="311.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">构建多架构镜像</text>
+<text x="406" y="327.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">安全扫描</text>
+<rect x="304" y="255" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="328.7" y="268" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 6</text>
+<rect x="562" y="264" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="674" y="295.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">部署测试</text>
+<text x="674" y="311.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">kind / k3s 测试</text>
+<text x="674" y="327.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">端到端验证</text>
+<rect x="572" y="255" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="596.7" y="268" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 7</text>
+<rect x="830" y="264" width="224" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="942" y="295.3" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">发布到 Hub</text>
+<text x="942" y="311.25" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">推送到 OperatorHub</text>
+<text x="942" y="327.2" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">版本管理</text>
+<rect x="840" y="255" width="49.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="864.7" y="268" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">STEP 8</text>
+<text x="540" y="384" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">前两步直接对应 operator-sdk 命令；后续步骤对应正文中的 make generate / test / docker-buildx / deploy。</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Operator SDK 开发流程</text>
+</g>
+</svg>

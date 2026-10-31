@@ -56,95 +56,7 @@ Devtron 提供丰富的功能，覆盖应用部署、CI/CD 流水线、安全合
 
 Devtron 采用分层架构，由 API、服务、基础设施和数据层组成，协同提供全面的 Kubernetes 应用管理。下图展示了 Devtron 的主要架构组件及其交互关系。
 
-```mermaid "Devtron 系统架构"
-graph TD
-    subgraph "Client Layer"
-        Client["User/Browser"]
-    end
-
-    subgraph "API Layer"
-        Router["MuxRouter"]
-        CiHandler["CI Handlers"]
-        CdHandler["CD Handlers"]
-        AppHandler["App Handlers"]
-        ClusterHandler["Cluster Handlers"]
-        UserHandler["User/Auth Handlers"]
-        AppStoreHandler["AppStore Handlers"]
-    end
-
-    subgraph "Service Layer"
-        CiService["CI Service"]
-        CdService["CD Service"]
-        AppService["App Service"]
-        ClusterService["Cluster Service"]
-        UserAuthService["User Auth Service"]
-        AppStoreService["AppStore Service"]
-
-        WorkflowService["Workflow Service"]
-        PipelineBuilder["Pipeline Builder"]
-        CiCdPipelineOrchestrator["CI/CD Pipeline Orchestrator"]
-        DeploymentConfigService["Deployment Config Service"]
-        GitOpsConfigService["GitOps Config Service"]
-    end
-
-    subgraph "Infrastructure Layer"
-        ArgoWorkflowExecutor["Argo Workflow Executor"]
-        SystemWorkflowExecutor["System Workflow Executor"]
-        TemplateService["Template Service"]
-        GitService["Git Service"]
-        Kubernetes["Kubernetes"]
-        GitRepos["Git Repositories"]
-    end
-
-    subgraph "Data Layer"
-        PostgreSQL["PostgreSQL Database"]
-        BlobStorage["Blob Storage (S3/MinIO/Azure)"]
-    end
-
-    Client --> Router
-    Router --> CiHandler
-    Router --> CdHandler
-    Router --> AppHandler
-    Router --> ClusterHandler
-    Router --> UserHandler
-    Router --> AppStoreHandler
-
-    CiHandler --> CiService
-    CdHandler --> CdService
-    AppHandler --> AppService
-    ClusterHandler --> ClusterService
-    UserHandler --> UserAuthService
-    AppStoreHandler --> AppStoreService
-
-    CiService --> WorkflowService
-    CdService --> WorkflowService
-    AppService --> PipelineBuilder
-    PipelineBuilder --> CiCdPipelineOrchestrator
-    CiCdPipelineOrchestrator --> DeploymentConfigService
-    CiCdPipelineOrchestrator --> GitOpsConfigService
-
-    WorkflowService --> ArgoWorkflowExecutor
-    WorkflowService --> SystemWorkflowExecutor
-    DeploymentConfigService --> TemplateService
-    GitOpsConfigService --> GitService
-
-    ArgoWorkflowExecutor --> Kubernetes
-    SystemWorkflowExecutor --> Kubernetes
-    TemplateService --> Kubernetes
-    GitService --> GitRepos
-
-    CiService --> PostgreSQL
-    CdService --> PostgreSQL
-    AppService --> PostgreSQL
-    ClusterService --> PostgreSQL
-    UserAuthService --> PostgreSQL
-    AppStoreService --> PostgreSQL
-
-    WorkflowService --> BlobStorage
-```
-
-![Devtron 系统架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/7504291c03888b6ce80362434935d4a4.svg)
-{width=2741 height=1886}
+![Devtron 系统架构：客户端、API、服务、基础设施与数据层](devtron-system-architecture.svg)
 
 ### 核心组件说明
 
@@ -157,96 +69,13 @@ graph TD
 
 Devtron 提供完整的 CI/CD 流水线，自动化实现从代码提交到生产部署的全流程。下图展示了主要流程。
 
-```mermaid "Devtron CI/CD 流水线流程"
-graph TD
-    subgraph "CI Pipeline Flow"
-        GitPush["Git Push/Webhook"] --> TriggerCI["Trigger CI"]
-        TriggerCI --> CIHandler["CI Handler"]
-        CIHandler --> CIService["CI Service"]
-        CIService --> WorkflowService["Workflow Service"]
-        WorkflowService --> ExecuteWorkflow["Execute Workflow"]
-        ExecuteWorkflow --> BuildArtifact["Build Container Image"]
-        BuildArtifact --> SecurityScan["Security Scan (Optional)"]
-        SecurityScan --> PublishArtifact["Publish to Registry"]
-        PublishArtifact --> TriggerCD["Trigger CD (Auto/Manual)"]
-    end
-
-    subgraph "CD Pipeline Flow"
-        TriggerCD --> CDHandler["CD Handler"]
-        CDHandler --> CDService["CD Service"]
-        CDService --> PreStage["Pre-Deployment Stage"]
-        PreStage --> DeploymentStage["Deployment Stage"]
-        DeploymentStage --> PostStage["Post-Deployment Stage"]
-        PostStage --> UpdateStatus["Update Deployment Status"]
-    end
-
-    subgraph "Deployment Strategies"
-        DeploymentStage --> DirectK8s["Direct Kubernetes"]
-        DeploymentStage --> ArgoCD["ArgoCD GitOps"]
-        DeploymentStage --> RollingUpdate["Rolling Update"]
-        DeploymentStage --> BlueGreen["Blue/Green Deployment"]
-        DeploymentStage --> Canary["Canary Deployment"]
-    end
-
-    subgraph "Artifacts and Storage"
-        BuildArtifact --> ContainerImage["Container Image"]
-        ContainerImage --> Registry["Container Registry"]
-        BuildArtifact --> BuildLogs["Build Logs"]
-        BuildLogs --> BlobStorage["Blob Storage"]
-        DeploymentStage --> DeploymentLogs["Deployment Logs"]
-        DeploymentLogs --> BlobStorage
-    end
-```
-
-![Devtron CI/CD 流水线流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/341e02d835d8fc833aa9ca9ec17c678d.svg)
-{width=2677 height=2792}
+![Devtron CI/CD 流水线：从代码提交到部署](devtron-cicd-pipeline-flow.svg)
 
 ## 部署配置与模板
 
 Devtron 采用模板化方法配置和管理应用部署，支持多种部署模板类型，适应不同应用需求。
 
-```mermaid "Devtron 部署配置流程"
-graph TD
-    subgraph "Application Definition"
-        App["Application"] --> DeploymentTemplate["Deployment Template"]
-        App --> ConfigMaps["ConfigMaps"]
-        App --> Secrets["Secrets"]
-        App --> GitMaterials["Git Materials"]
-        App --> Workflows["Workflows"]
-    end
-
-    subgraph "Deployment Templates"
-        DeploymentTemplate --> DeploymentChart["Deployment Chart"]
-        DeploymentTemplate --> RolloutChart["Rollout Chart"]
-        DeploymentTemplate --> JobCronjobChart["Job/CronJob Chart"]
-        DeploymentTemplate --> StatefulSetChart["StatefulSet Chart"]
-    end
-
-    subgraph "Environment Configuration"
-        Environment["Environment"] --> EnvOverrides["Environment Overrides"]
-        EnvOverrides --> TemplateOverrides["Template Overrides"]
-        EnvOverrides --> ConfigMapOverrides["ConfigMap Overrides"]
-        EnvOverrides --> SecretsOverrides["Secrets Overrides"]
-    end
-
-    subgraph "Deployment Process"
-        CDPipeline["CD Pipeline"] --> FetchConfig["Fetch Configuration"]
-        FetchConfig --> MergeOverrides["Merge Overrides"]
-        MergeOverrides --> GenerateManifests["Generate K8s Manifests"]
-        GenerateManifests --> DeploymentMethod["Apply Deployment Method"]
-        DeploymentMethod --> DirectK8s["Direct to K8s"]
-        DeploymentMethod --> GitOps["Via GitOps (ArgoCD)"]
-    end
-
-    DeploymentTemplate --> EnvOverrides
-    ConfigMaps --> EnvOverrides
-    Secrets --> EnvOverrides
-    App --> CDPipeline
-    Environment --> CDPipeline
-```
-
-![Devtron 部署配置流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/devtron/29673125d086ac519fef4d4ebbbce980.svg)
-{width=3048 height=1554}
+![Devtron 部署配置：应用定义、环境覆盖与部署过程](devtron-deployment-config-flow.svg)
 
 ### 部署模板类型
 

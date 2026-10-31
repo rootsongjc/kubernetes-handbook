@@ -107,17 +107,7 @@ kubectl get pods -l '!environment'
 
 下图展示了 Label Selector 如何通过不同的选择器筛选出目标对象：
 
-```mermaid "Label Selector 选择关系"
-graph TD
-    A[所有 Pod] --> B{environment=production}
-    B --> C{tier=frontend}
-    C --> D[目标 Pod 集合]
-    A --> E{environment!=development}
-    E --> F[非开发环境 Pod]
-```
-
-![Label Selector 选择关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/313cee2b9c0595b91ee279c412b12d8a.svg)
-{width=1920 height=2837}
+![Label Selector 选择关系](label-selector-filtering.svg)
 
 ## Label 在 API 对象中的用法
 
@@ -201,16 +191,7 @@ spec:
 
 下图展示了 Service、Pod、Deployment 等对象之间通过 Label 进行关联和选择的关系：
 
-```mermaid "Kubernetes 资源与 Label 关联"
-graph LR
-    S(Service) -- selector --> P(Pod)
-    D(Deployment) -- selector --> P
-    RS(ReplicaSet) -- selector --> P
-    P -- labels --> L[Labels]
-```
-
-![Kubernetes 资源与 Label 关联](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/a796f81e5ca12e4ac213cf6a77dadefc.svg)
-{width=1920 height=1092}
+![Kubernetes 资源与 Label 关联](resources-linked-by-labels.svg)
 
 ## 实际应用示例
 

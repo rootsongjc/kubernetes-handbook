@@ -32,25 +32,7 @@ Kubernetes 之所以能成为现代云计算的基础设施，不仅因为它“
 
 Kubernetes 的扩展机制为平台的可编程性和生态繁荣奠定了基础。下图展示了各扩展机制的关系和典型实现。
 
-```mermaid "Kubernetes 扩展机制思维导图"
-mindmap
-  root(("Kubernetes 扩展机制"))
-    API 扩展
-      CRD
-      APIService
-    控制器扩展
-      Controller
-      Operator
-    准入控制
-      MutatingWebhook
-      ValidatingWebhook
-    调度扩展
-      Scheduler Framework
-      GPU / AI 调度
-```
-
-![Kubernetes 扩展机制思维导图](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/631304bb3d05d6491ade79b9259ddd28.svg)
-{width=1920 height=1082}
+![Kubernetes 扩展机制思维导图](extension-mechanisms-tree.svg)
 
 ### API 扩展
 
@@ -86,21 +68,7 @@ API 扩展让 Kubernetes 支持任意自定义资源（CRD），无需修改 API
 
 下图展示了从 Cloud-Native 到 AI-Native 的技术演进路径。
 
-```mermaid "从 Cloud-Native 到 AI-Native 演进时间线"
-timeline
-  title 从 Cloud-Native 到 AI-Native
-  section 云原生
-    Kubernetes: 容器编排与平台抽象
-    Istio/Envoy: 服务网格与可观测性
-  section 机器学习原生
-    Kubeflow/KServe: 训练与推理工作流
-  section AI 原生
-    KubeRay/Volcano/Kueue: AI 作业调度
-    MCP/AI Gateway: 智能体与模型编排
-```
-
-![从 Cloud-Native 到 AI-Native 演进时间线](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/b9dc502a39611da76740a0bb222cc076.svg)
-{width=1920 height=820}
+![从 Cloud-Native 到 AI-Native 演进时间线](cloud-native-to-ai-native-timeline.svg)
 
 ## AI-Native 扩展模式的崛起
 
@@ -123,15 +91,7 @@ LLM Workflow Controller 负责 orchestrate 智能体 / Chain / Graph 的执行�
 
 下图展示了三者之间的协同关系。
 
-```mermaid "AI-Native 扩展模式协同关系"
-graph TD
-    A["AI Gateway"] -->|API 调用| B["LLM Workflow Controller"]
-    B -->|执行链路| C["AI Operator"]
-    C -->|资源调度| D["Scheduler Framework"]
-```
-
-![AI-Native 扩展模式协同关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/3ab6bed3797e6a46fafd9c53380edc5f.svg)
-{width=1920 height=4631}
+![AI-Native 扩展模式协同关系](ai-native-extension-patterns.svg)
 
 ## AI 原生调度的愿景
 
@@ -145,18 +105,7 @@ AI 调度不再只是资源分配，而是决策优化。未来的调度器需�
 
 下图展示了 AI-Native Scheduler 的核心发展方向。
 
-```mermaid "AI-Native Scheduler 发展方向"
-mindmap
-  root(("AI-Native Scheduler"))
-    语义化调度
-    弹性伸缩与迁移
-    能耗感知优化
-    多模型共享调度
-    数据与算力共优化
-```
-
-![AI-Native Scheduler 发展方向](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/from-cloud-native-to-ai-native/547d941c44fe41c625ccd5b6fc81fa3a.svg)
-{width=1920 height=1228}
+![AI-Native Scheduler 发展方向](ai-native-scheduler-directions.svg)
 
 这将使调度器从“静态分配系统”进化为“智能决策中枢”。
 

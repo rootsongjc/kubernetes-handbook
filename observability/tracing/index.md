@@ -16,29 +16,7 @@ lastmod: 2025-10-19T12:31:56.057Z
 
 下图对比了传统监控与链路追踪的优势。
 
-```mermaid "链路追踪与传统监控对比"
-graph TD
-    subgraph "传统监控的局限性"
-        TRADITIONAL[传统监控]
-        TRADITIONAL --> METRICS[只看指标]
-        TRADITIONAL --> LOGS[分散的日志]
-        METRICS --> PROBLEM[无法关联请求]
-        LOGS --> PROBLEM
-    end
-
-    subgraph "链路追踪的优势"
-        TRACING[链路追踪]
-        TRACING --> REQUEST_FLOW[完整请求链路]
-        TRACING --> LATENCY[端到端延迟分析]
-        TRACING --> CORRELATION[跨服务关联]
-        REQUEST_FLOW --> SOLUTION[快速定位问题]
-        LATENCY --> SOLUTION
-        CORRELATION --> SOLUTION
-    end
-```
-
-![链路追踪与传统监控对比](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/aad460f5297a7e7ea53727a81bee07c6.svg)
-{width=1920 height=497}
+![链路追踪与传统监控对比：传统监控无法关联请求，链路追踪可快速定位问题](tracing-vs-traditional-monitoring.svg)
 
 链路追踪能够实现：
 
@@ -54,18 +32,7 @@ graph TD
 
 Span 是分布式追踪的基本单位，表示一个操作的时间跨度。
 
-```mermaid "Span 结构"
-graph TD
-    SPAN[Span] --> OPERATION[操作名称]
-    SPAN --> START_TIME[开始时间]
-    SPAN --> DURATION[持续时间]
-    SPAN --> TAGS[标签]
-    SPAN --> LOGS[日志]
-    SPAN --> PARENT[父 Span]
-```
-
-![Span 结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/dc3924719762f263fae4651a5e0176cd.svg)
-{width=1920 height=390}
+![Span 结构：操作名称、开始时间、持续时间、标签、日志、父 Span](span-structure.svg)
 
 #### Trace（链路）
 
@@ -101,42 +68,7 @@ Jaeger 是 CNCF 毕业项目，广泛用于分布式链路追踪。
 
 下图展示了 Jaeger 的核心架构及数据流转。
 
-```mermaid "Jaeger 架构总览"
-graph TD
-    subgraph "应用层"
-        APP[应用]
-        TRACER[Jaeger Client]
-    end
-
-    subgraph "收集层"
-        AGENT[Jaeger Agent]
-        COLLECTOR[Jaeger Collector]
-    end
-
-    subgraph "存储层"
-        CASSANDRA[(Cassandra)]
-        ELASTICSEARCH[(Elasticsearch)]
-        MEMORY[(内存)]
-    end
-
-    subgraph "查询层"
-        QUERY[Jaeger Query]
-        UI[Jaeger UI]
-    end
-
-    APP --> TRACER
-    TRACER --> AGENT
-    AGENT --> COLLECTOR
-    COLLECTOR --> CASSANDRA
-    COLLECTOR --> ELASTICSEARCH
-    COLLECTOR --> MEMORY
-    QUERY --> CASSANDRA
-    QUERY --> ELASTICSEARCH
-    UI --> QUERY
-```
-
-![Jaeger 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/a2f49e6fa4fa43b190890f522dbf4724.svg)
-{width=1920 height=2809}
+![Jaeger 架构总览：应用经 Client、Agent、Collector 写入存储，Query 读取存储供 UI 展示](jaeger-architecture.svg)
 
 ### 核心组件
 
@@ -177,45 +109,7 @@ OpenTelemetry 是 CNCF 主推的可观测性标准，支持 Trace、Metrics、Lo
 
 下图展示了 OpenTelemetry 的核心架构。
 
-```mermaid "OpenTelemetry 架构"
-graph TD
-    subgraph "应用层"
-        APP[应用]
-        API[OpenTelemetry API]
-        SDK[OpenTelemetry SDK]
-        AUTO_INSTRUMENTATION[自动插桩]
-    end
-
-    subgraph "收集器层"
-        OTEL_COLLECTOR[OpenTelemetry Collector]
-        RECEIVERS[接收器]
-        PROCESSORS[处理器]
-        EXPORTERS[导出器]
-    end
-
-    subgraph "后端系统"
-        JAEGER[Jaeger]
-        PROMETHEUS[Prometheus]
-        ELASTICSEARCH[Elasticsearch]
-    end
-
-    APP --> API
-    API --> SDK
-    SDK --> AUTO_INSTRUMENTATION
-    AUTO_INSTRUMENTATION --> OTEL_COLLECTOR
-    SDK --> OTEL_COLLECTOR
-
-    OTEL_COLLECTOR --> RECEIVERS
-    RECEIVERS --> PROCESSORS
-    PROCESSORS --> EXPORTERS
-
-    EXPORTERS --> JAEGER
-    EXPORTERS --> PROMETHEUS
-    EXPORTERS --> ELASTICSEARCH
-```
-
-![OpenTelemetry 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/tracing/78955b3c0bb0fb625b4ce4532c0a5fe1.svg)
-{width=1920 height=4385}
+![OpenTelemetry 架构：应用 API/SDK 与自动插桩经 OTLP 送入 Collector 的接收器、处理器、导出器，再导出到 Jaeger、Prometheus、Elasticsearch](opentelemetry-architecture.svg)
 
 ### 核心特性
 

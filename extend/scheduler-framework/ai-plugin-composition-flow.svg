@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2240" height="560" viewBox="0 0 1120 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="aiplugz-title aiplugz-desc" id="ai-plugin-composition-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="aiplugz-title">AI 原生调度插件组合流程</title>
+<desc id="aiplugz-desc">一次调度周期依次经过 PreFilter（GPU Availability）、Filter（Node Labels + Topology）、Score（GPU Utilization）、Permit（Multi-Job Barrier）、Bind（GPU Affinity Binding）五个插件阶段。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #ai-plugin-composition-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #ai-plugin-composition-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #ai-plugin-composition-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#ai-plugin-composition-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="ai-plugin-composition-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 220 158 L 252 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#ai-plugin-composition-flow-m-6b7280)"/>
+<path d="M 436 158 L 468 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#ai-plugin-composition-flow-m-6b7280)"/>
+<path d="M 652 158 L 684 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#ai-plugin-composition-flow-m-6b7280)"/>
+<path d="M 868 158 L 900 158" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#ai-plugin-composition-flow-m-6b7280)"/>
+<rect x="40" y="120" width="176" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="128" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU 可用性</text>
+<text x="128" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU Availability</text>
+<rect x="50" y="111" width="63.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="81.7" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">PreFilter</text>
+<rect x="256" y="120" width="176" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="344" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">节点标签与拓扑</text>
+<text x="344" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Node Labels + Topology</text>
+<rect x="266" y="111" width="44" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="288" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">Filter</text>
+<rect x="472" y="120" width="176" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="560" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU 利用率打分</text>
+<text x="560" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU Utilization</text>
+<rect x="482" y="111" width="43.8" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="503.9" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">Score</text>
+<rect x="688" y="120" width="176" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="688" y="120" width="176" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="776" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多作业同步屏障</text>
+<text x="776" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Multi-Job Barrier</text>
+<rect x="698" y="111" width="47.8" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="721.9" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">Permit</text>
+<rect x="904" y="120" width="176" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="992" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU 亲和绑定</text>
+<text x="992" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GPU Affinity Binding</text>
+<rect x="914" y="111" width="34.6" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="931.3" y="124" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">Bind</text>
+<text x="560" y="246" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">常用于 KubeRay、Volcano、Kueue 等 AI 平台的多作业同步调度，实现任务对齐与 GPU 优先级等智能逻辑。</text>
+<text x="560" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AI 原生调度插件组合流程</text>
+</g>
+</svg>

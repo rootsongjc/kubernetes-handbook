@@ -14,16 +14,7 @@ lastmod: 2025-10-27T12:31:10.385Z
 
 每个 namespace 默认存在名为 `default` 的 ServiceAccount。Pod 若需访问 Kubernetes API，会自动使用 ServiceAccount 的凭证进行身份验证。
 
-```mermaid "ServiceAccount 与 Pod 认证关系"
-flowchart LR
-    A[Pod 启动] --> B{ServiceAccount 绑定}
-    B -- 未指定 --> C[default ServiceAccount]
-    B -- 已指定 --> D[自定义 ServiceAccount]
-    C & D --> E[API Server 认证]
-```
-
-![ServiceAccount 与 Pod 认证关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/serviceaccount/ced0e8782a79e5e1d4702c2256adf4a4.svg)
-{width=1920 height=374}
+![ServiceAccount 与 Pod 认证关系](pod-serviceaccount-binding.svg)
 
 ## 使用默认的 ServiceAccount
 
@@ -127,21 +118,7 @@ spec:
 - Token 自动轮换，存储于只读投影卷
 - Token 具备时间和受众限制，提升安全性
 
-```mermaid "ServiceAccount Token 生命周期"
-sequenceDiagram
-    participant Pod
-    participant Kubelet
-    participant API_Server
-
-    Pod->>Kubelet: 请求 Token
-    Kubelet->>API_Server: TokenRequest
-    API_Server-->>Kubelet: 返回短期 Token
-    Kubelet-->>Pod: 挂载只读 Token
-    Note over Pod: Token 定期自动轮换
-```
-
-![ServiceAccount Token 生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/serviceaccount/c79bc490468256e4baa278d98e26dcdc.svg)
-{width=1920 height=1184}
+![ServiceAccount Token 生命周期](serviceaccount-token-lifecycle.svg)
 
 > **注意**  
 >

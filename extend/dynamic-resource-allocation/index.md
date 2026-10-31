@@ -62,27 +62,7 @@ DRA driver 通过 `ResourceSlice` 向集群发布其管理的设备清单与属�
 
 DRA 采用“声明式 + 多阶段协商”流程，整体工作流如下：
 
-```mermaid "DRA 工作流"
-sequenceDiagram
-  participant U as 用户/工作负载
-  participant A as API 服务器
-  participant S as 调度器
-  participant D as DRA 驱动（控制器）
-  participant K as Kubelet + DRA 插件
-
-  U->>A: 创建 ResourceClaim / ClaimTemplate + Pod
-  S->>A: 监听 Pod 和 Claims
-  S->>D: 调度时分配请求（通过 DRA 集成）
-  D->>A: 将分配结果写入 Claim.status
-  S->>A: 绑定 Pod 到节点
-  K->>D: 节点阶段准备 / 发布 CDI / 挂载 / 配置环境
-  K->>U: 启动带有已分配设备的容器
-  U->>A: Pod/Job 结束
-  D->>A: 释放分配（Claim 状态更新 / 清理）
-```
-
-![DRA 工作流](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/dynamic-resource-allocation/a88232f50b5d12a951e81d5ab4b411e0.svg)
-{width=1331 height=551}
+![DRA 工作流](dra-workflow.svg)
 
 流程要点包括：
 

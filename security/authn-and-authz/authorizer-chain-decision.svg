@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2080" height="920" viewBox="0 0 1040 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="authorz-title authorz-desc" id="authorizer-chain-decision-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="authorz-title">多鉴权器判定流程</title>
+<desc id="authorz-desc">已认证请求依次交给配置的鉴权器判定：任一鉴权器明确允许即放行，明确拒绝即返回 403 Forbidden；返回无意见则交给下一个鉴权器，全部无意见时默认拒绝。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #authorizer-chain-decision-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #authorizer-chain-decision-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #authorizer-chain-decision-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#authorizer-chain-decision-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="authorizer-chain-decision-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 194 242 L 246 242" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<path d="M 404 242 L 456 242" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="408" y="219.4" width="44" height="16.6" style="fill:#ffffff"/>
+<text x="430" y="231" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无意见</text>
+<path d="M 614 242 L 666 242" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="618" y="219.4" width="44" height="16.6" style="fill:#ffffff"/>
+<text x="640" y="231" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无意见</text>
+<path d="M 824 242 L 876 242" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="828" y="219.4" width="44" height="16.6" style="fill:#ffffff"/>
+<text x="850" y="231" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无意见</text>
+<path d="M 325 206 L 325 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="329" y="173.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="333" y="185.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">允许</text>
+<path d="M 325 278 L 325 346" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="329" y="304.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="333" y="316.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">拒绝</text>
+<path d="M 535 206 L 535 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="539" y="173.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="543" y="185.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">允许</text>
+<path d="M 535 278 L 535 346" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="539" y="304.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="543" y="316.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">拒绝</text>
+<path d="M 745 206 L 745 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="749" y="173.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="753" y="185.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">允许</text>
+<path d="M 745 278 L 745 346" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="749" y="304.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="753" y="316.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">拒绝</text>
+<path d="M 945 278 L 945 346" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#authorizer-chain-decision-m-6b7280)"/>
+<rect x="949" y="304.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="953" y="316.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">默认拒绝</text>
+<rect x="40" y="210" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(54.5,224) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0" /> <path d="M13 18l6 -6" /> <path d="M13 6l6 6" /></g>
+<text x="138" y="238.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">已认证请求</text>
+<text x="138" y="255.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">携带用户属性</text>
+<rect x="250" y="210" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(261.56,224) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" /> <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /> <path d="M8 11v-4a4 4 0 1 1 8 0v4" /></g>
+<text x="348" y="238.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">鉴权器 1</text>
+<text x="348" y="255.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Authorizer 1</text>
+<rect x="460" y="210" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(471.56,224) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" /> <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /> <path d="M8 11v-4a4 4 0 1 1 8 0v4" /></g>
+<text x="558" y="238.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">鉴权器 2</text>
+<text x="558" y="255.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Authorizer 2</text>
+<rect x="670" y="210" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(681.56,224) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" /> <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /> <path d="M8 11v-4a4 4 0 1 1 8 0v4" /></g>
+<text x="768" y="238.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">鉴权器 3</text>
+<text x="768" y="255.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Authorizer 3</text>
+<rect x="880" y="210" width="130" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="945" y="238.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">全部无意见</text>
+<text x="945" y="255.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">无鉴权器表态</text>
+<rect x="250" y="96" width="570" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="250" y="96" width="570" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="535" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">请求允许</text>
+<text x="535" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">任一鉴权器明确允许即放行</text>
+<rect x="250" y="350" width="760" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="630" y="374.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">请求拒绝（403 Forbidden）</text>
+<text x="630" y="391.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">任一鉴权器明确拒绝，或全部无意见</text>
+<text x="520" y="440" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">鉴权器按配置顺序依次判定，首个明确允许或拒绝的结果立即返回。</text>
+<text x="520" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多鉴权器判定流程</text>
+</g>
+</svg>

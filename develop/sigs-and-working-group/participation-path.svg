@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2320" height="840" viewBox="0 0 1160 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="particz-title particz-desc" id="participation-path-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="particz-title">Kubernetes 参与路径：从发现兴趣到核心维护者</title>
+<desc id="particz-desc">十步路径：发现兴趣、选择 SIG/WG、加入 Slack 频道、参加会议、阅读文档、开始贡献、小贡献开始、深度参与、成为 Reviewer、成为 Approver/Maintainer，每步附具体动作。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #participation-path-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #participation-path-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #participation-path-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#participation-path-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="participation-path-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 228 150 L 260 150" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 452 150 L 484 150" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 676 150 L 708 150" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 900 150 L 932 150" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 1028 194 L 1028 232 Q 1028 240 1020 240 L 140 240 Q 132 240 132 248 L 132 276" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 228 320 L 260 320" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 452 320 L 484 320" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 676 320 L 708 320" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<path d="M 900 320 L 932 320" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#participation-path-m-6b7280)"/>
+<rect x="40" y="110" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="132" y="137.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">发现兴趣</text>
+<text x="132" y="154.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">浏览 SIG 列表</text>
+<text x="132" y="172.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">参加 Office Hours</text>
+<rect x="50" y="101" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="62.2" y="114" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">01</text>
+<rect x="264" y="110" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="356" y="137.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">选择 SIG/WG</text>
+<text x="356" y="154.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">查看会议日历</text>
+<text x="356" y="172.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">加入邮件列表</text>
+<rect x="274" y="101" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="286.2" y="114" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">02</text>
+<rect x="488" y="110" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="580" y="137.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">加入 Slack 频道</text>
+<text x="580" y="154.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">#sig-xxx 频道</text>
+<text x="580" y="172.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">#wg-xxx 频道</text>
+<rect x="498" y="101" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="510.2" y="114" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">03</text>
+<rect x="712" y="110" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="804" y="137.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">参加会议</text>
+<text x="804" y="154.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">观看录像</text>
+<text x="804" y="172.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">实时参与</text>
+<rect x="722" y="101" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="734.2" y="114" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">04</text>
+<rect x="936" y="110" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1028" y="137.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">阅读文档</text>
+<text x="1028" y="154.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">KEP 文档</text>
+<text x="1028" y="172.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">设计提案</text>
+<rect x="946" y="101" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="958.2" y="114" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">05</text>
+<rect x="40" y="280" width="184" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="40" y="280" width="184" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="132" y="307.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">开始贡献</text>
+<text x="132" y="324.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">修复文档</text>
+<text x="132" y="342.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">编写测试</text>
+<rect x="50" y="271" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="62.2" y="284" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">06</text>
+<rect x="264" y="280" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="356" y="307.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">小贡献开始</text>
+<text x="356" y="324.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">提交 PR</text>
+<text x="356" y="342.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">修复 bug</text>
+<rect x="274" y="271" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="286.2" y="284" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">07</text>
+<rect x="488" y="280" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="580" y="307.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">深度参与</text>
+<text x="580" y="324.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">设计评审</text>
+<text x="580" y="342.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">代码审查</text>
+<rect x="498" y="271" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="510.2" y="284" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">08</text>
+<rect x="712" y="280" width="184" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="804" y="307.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">成为 Reviewer</text>
+<text x="804" y="324.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">SIG 成员</text>
+<text x="804" y="342.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">技术决策</text>
+<rect x="722" y="271" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="734.2" y="284" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">09</text>
+<rect x="936" y="280" width="184" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="936" y="280" width="184" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="1028" y="307.5" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Approver / Maintainer</text>
+<text x="1028" y="324.9" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">核心维护者</text>
+<text x="1028" y="342.3" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">架构决策</text>
+<rect x="946" y="271" width="24.4" height="18" rx="2" data-role="tag" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="958.2" y="284" style="fill:#6b7280" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" data-role="tag">10</text>
+<text x="580" y="400" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">上排为入门阶段，下排为贡献与晋升阶段；每步下方为对应的具体动作。</text>
+<text x="580" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 参与路径：从发现兴趣到核心维护者</text>
+</g>
+</svg>

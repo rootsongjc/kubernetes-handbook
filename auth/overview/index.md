@@ -25,23 +25,7 @@ lastmod: 2025-10-27T16:18:32.698Z
 
 RBAC 是 Kubernetes 最核心的权限管理机制，以下是其核心组件关系图：
 
-```mermaid "RBAC 组件关系图"
-graph TD
-    A[用户/服务账户] --> B[角色绑定 RoleBinding]
-    A --> C[集群角色绑定 ClusterRoleBinding]
-
-    D[角色 Role] --> B
-    E[集群角色 ClusterRole] --> C
-
-    B --> F[命名空间资源权限]
-    C --> G[集群范围资源权限]
-
-    F --> H[Pod、Service 等]
-    G --> I[Node、PV 等]
-```
-
-![RBAC 组件关系图](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/9a410ea713ed87d54df15fb1f071f172.svg)
-{width=1920 height=1483}
+![RBAC 组件关系图](rbac-components.svg)
 
 - **角色（Role）**：定义命名空间内的权限集合
 - **集群角色（ClusterRole）**：定义集群范围的权限
@@ -70,22 +54,7 @@ spiffe://trust-domain/path
 
 SPIRE 是 SPIFFE 规范的开源实现，提供身份管理和凭证分发：
 
-```mermaid "SPIRE 架构图"
-graph TD
-    A[SPIRE Server] --> B[节点代理 Node Attestor]
-    A --> C[工作负载代理 Workload Attestor]
-
-    B --> D[节点身份验证]
-    C --> E[工作负载身份验证]
-
-    D --> F[发放 SVID]
-    E --> F
-
-    F --> G[服务间 mTLS 通信]
-```
-
-![SPIRE 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/c1f23853d0d7494977caf36a273b05d7.svg)
-{width=1920 height=2339}
+![SPIRE 架构图](spire-architecture.svg)
 
 **SPIRE 组件**
 
@@ -116,20 +85,7 @@ SPIRE 可以与 Kubernetes 深度集成：
 
 **典型部署架构**
 
-```mermaid "SPIRE + Kubernetes 部署架构"
-graph LR
-    A[Kubernetes API Server] --> B[SPIRE Server]
-    B --> C[SPIRE Agent on Node]
-
-    C --> D[Pod with Workload]
-    D --> E[mTLS with other services]
-
-    F[Istio Control Plane] --> B
-    F --> C
-```
-
-![SPIRE + Kubernetes 部署架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/auth/overview/83f5b39d7c743a8951d113166fdf815c.svg)
-{width=1920 height=281}
+![SPIRE + Kubernetes 部署架构](spire-kubernetes-deployment.svg)
 
 ## RBAC 与 SPIFFE/SPIRE 的结合
 

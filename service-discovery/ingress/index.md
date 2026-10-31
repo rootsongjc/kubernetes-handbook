@@ -21,19 +21,7 @@ Ingress 在 Kubernetes 1.9 正式发布，目前仍被广泛使用。但对于�
 
 Ingress 的工作原理如下图所示，展示了客户端流量如何通过 Ingress 控制器路由到后端服务和 Pod。
 
-```mermaid "Ingress 运作的架构图"
-graph LR;
-  client([客户端])-. Ingress-管理的 <br> 负载均衡器 .->ingress[Ingress];
-  ingress-->|路由规则|service[Service];
-  subgraph 集群
-  ingress;
-  service-->pod1[Pod];
-  service-->pod2[Pod];
-  end
-```
-
-![Ingress 运作的架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/ingress/e0a8252231167704c4f15deeea858784.svg)
-{width=1920 height=606}
+![Ingress 运作的架构图](ingress-architecture.svg)
 
 Ingress 提供以下核心功能：
 

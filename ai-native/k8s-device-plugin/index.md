@@ -170,53 +170,7 @@ DRA（Dynamic Resource Allocation）架构对专用硬件资源管理进行了�
 
 下图展示了 DRA 工作流程图。
 
-```mermaid "DRA 工作流程"
-flowchart TD
-    subgraph User["User Workloads (Pods with ResourceClaims)"]
-        A1[ML Training Pod</br>claims: gpu.example.com]
-        A2[CUDA Pod</br>claims: nvidia.com/gpu]
-        A3[Inference Pod</br>claims: tpu.google.com]
-    end
-
-    subgraph ControlPlane["Kubernetes Control Plane (with DRA)"]
-        B1[kube-scheduler</br>DynamicResources Plugin</br>Filters nodes via CEL]
-        B2[kube-apiserver</br>API Objects:</br>ResourceClaim, DeviceClass, ResourceSlice]
-        B3[kube-controller-manager</br>Handles allocations & lifecycle]
-        B4[DRA Driver Controller</br>Publishes ResourceSlices</br>Updates status]
-    end
-
-    subgraph DRAControl["DRA Driver (Control Plane)"]
-        C1[Watches ResourceClaims]
-        C2[Creates/Updates ResourceSlices]
-        C3["Reports device attributes</br>(memory, arch, etc.)"]
-    end
-
-    subgraph NodeLayer["Node Components"]
-        D1["kubelet (DRA Manager)</br>Allocates resources via CRI</br>Injects CDI specs"]
-        D2["DRA Driver Plugin (Vendor)</br>Implements gRPC Interface</br>NodePrepareResources()"]
-        D3["Container Runtime</br>(containerd / CRI-O / Docker)</br>Mounts device nodes"]
-        D4[Hardware Drivers</br>nvidia.ko, amd.ko, tpu drivers]
-        D5[Hardware Resources</br>GPU/TPU/FPGA devices]
-    end
-
-    %% connections
-    A1 --> B1
-    A2 --> B1
-    A3 --> B1
-    B1 -->|CEL filter| B2
-    B2 --> B3
-    B3 --> B4
-    B4 --> C1
-    C1 --> C2
-    C2 --> D1
-    D1 -->|gRPC| D2
-    D2 -->|CDI specs| D3
-    D3 -->|mount device| D4
-    D4 --> D5
-```
-
-![DRA 工作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/ai-native/k8s-device-plugin/4dad4a8ac6ac56ba025f7d44a8574595.svg)
-{width=1920 height=5213}
+![DRA 工作流程：从 ResourceClaim 到设备挂载](dra-workflow.svg)
 
 这种分层架构将控制面与节点操作解耦，提升了可扩展性和安全性。DRA 还支持设备分区、健康监控、优先级列表等高级特性，极大增强了异构资源的表达能力和利用率。
 

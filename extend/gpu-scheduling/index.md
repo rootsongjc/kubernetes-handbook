@@ -22,17 +22,7 @@ Kubernetes 社区通过多种机制支持 GPU 与 AI 作业调度，主要包括
 
 下图展示了 GPU 调度的主要流程和组件关系，有助于理解各环节的协同作用。
 
-```mermaid "GPU 调度核心组件流程图"
-flowchart LR
-    A["GPU Device Plugin"] --> B["Node Resource API"]
-    B --> C["Scheduler Framework"]
-    C --> D["AI Job Controller"]
-    D --> E["Pod Scheduling Decision"]
-    E --> F["GPU Node Binding"]
-```
-
-![GPU 调度核心组件流程图](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/41f686d7f40b258ea1ee4f70f56e9bad.svg)
-{width=1920 height=82}
+![GPU 调度核心组件流程图](gpu-scheduling-components.svg)
 
 - **Device Plugin**：向 kubelet 报告 GPU 资源
 - **Scheduler Framework**：执行 GPU 感知的过滤与打分
@@ -137,16 +127,7 @@ plugins:
 
 在 GPU 资源稀缺的场景下，一个物理 GPU 可被分割为多个逻辑 GPU（如 NVIDIA A100 的 MIG）。下图展示了 MIG 分区的资源暴露流程。
 
-```mermaid "MIG 分区资源暴露流程"
-graph LR
-    A["Physical GPU"] --> B["MIG-1 (10GB)"]
-    A --> C["MIG-2 (10GB)"]
-    A --> D["MIG-3 (20GB)"]
-    B & C & D --> E["Kubernetes Node Resources"]
-```
-
-![MIG 分区资源暴露流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/ce2dcf163d00d4cc10c0f23fd3e2a1bd.svg)
-{width=1920 height=831}
+![MIG 分区资源暴露流程](mig-partition-resources.svg)
 
 MIG 模式下，每个 GPU 分区在 Kubernetes 中暴露为独立资源：
 
@@ -167,20 +148,7 @@ AI 训练任务常常由多个并行 Pod 组成（如 Parameter Server / Worker�
 
 下图展示了同步调度的流程：
 
-```mermaid "AI 训练作业同步调度流程"
-sequenceDiagram
-    participant Scheduler
-    participant Plugin
-    participant API
-    Scheduler->>Plugin: 调用 Permit()
-    Plugin-->>Scheduler: Wait()
-    Scheduler->>Plugin: 所有 Pod 就绪
-    Plugin-->>Scheduler: Allow()
-    Scheduler->>API: 执行 Bind()
-```
-
-![AI 训练作业同步调度流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/67713493d24030c80ab587057dd33f8f.svg)
-{width=1920 height=1184}
+![AI 训练作业同步调度流程](gang-scheduling-permit-sequence.svg)
 
 示例插件逻辑如下：
 
@@ -263,18 +231,7 @@ spec:
 
 AI 原生调度的未来方向包括资源语义化、动态调度、能耗感知、多模型并行与 LLM-Aware Scheduling。下图展示了 AI-Native Scheduler 的主要发展方向。
 
-```mermaid "AI-Native Scheduler 未来趋势"
-mindmap
-  root(("AI-Native Scheduler"))
-    Semantic Scheduling
-    Elastic Training
-    Energy Aware
-    Multi-Model Inference
-    LLM Graph Scheduling
-```
-
-![AI-Native Scheduler 未来趋势](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/gpu-scheduling/8dc0c5fe603043a1165c46e525125060.svg)
-{width=1920 height=1029}
+![AI-Native Scheduler 未来趋势](ai-native-scheduler-trends.svg)
 
 ## 总结
 

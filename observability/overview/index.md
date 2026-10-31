@@ -17,27 +17,7 @@ lastmod: 2025-10-19T12:07:43.380Z
 
 下图展示了可观测性的三大核心支柱及其作用。
 
-```mermaid "可观测性三支柱"
-graph TD
-    A[可观测性三支柱] --> B[Metrics 指标]
-    A --> C[Logs 日志]
-    A --> D[Traces 链路追踪]
-
-    B --> B1[系统性能监控]
-    B --> B2[资源使用情况]
-    B --> B3[业务指标]
-
-    C --> C1[应用日志]
-    C --> C2[系统日志]
-    C --> C3[审计日志]
-
-    D --> D1[请求链路跟踪]
-    D --> D2[性能瓶颈分析]
-    D --> D3[错误定位]
-```
-
-![可观测性三支柱](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/9fd2affa6ae075204219672962404eac.svg)
-{width=1992 height=399}
+![可观测性三支柱：Metrics、Logs、Traces 及各自作用](observability-three-pillars.svg)
 
 #### Metrics（指标）
 
@@ -61,47 +41,7 @@ graph TD
 
 Kubernetes 提供了丰富的可观测性原语和集成点。下图展示了各层组件与数据流动关系。
 
-```mermaid "Kubernetes 可观测性架构"
-graph TD
-    subgraph "Kubernetes 控制面"
-        API[API Server]
-        ETCD[etcd]
-        SCHEDULER[Scheduler]
-        CONTROLLER[Controller Manager]
-    end
-
-    subgraph "工作节点"
-        KUBELET[Kubelet]
-        CONTAINERD[Container Runtime]
-        CNI[CNI Plugin]
-    end
-
-    subgraph "可观测性层"
-        PROMETHEUS[Prometheus]
-        GRAFANA[Grafana]
-        LOKI[Loki]
-        TEMPO[Tempo]
-    end
-
-    subgraph "数据流"
-        METRICS[(Metrics)]
-        LOGS[(Logs)]
-        TRACES[(Traces)]
-    end
-
-    API --> METRICS
-    KUBELET --> METRICS
-    CONTAINERD --> LOGS
-    SCHEDULER --> TRACES
-
-    PROMETHEUS --> METRICS
-    GRAFANA --> PROMETHEUS
-    LOKI --> LOGS
-    TEMPO --> TRACES
-```
-
-![Kubernetes 可观测性架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/f53bcfade420485a6ae313122cc574c7.svg)
-{width=2405 height=656}
+![Kubernetes 可观测性架构：控制面与节点组件产出指标、日志、链路，由 Prometheus、Loki、Tempo 采集，Grafana 可视化](kubernetes-observability-architecture.svg)
 
 ### Kubernetes 原生可观测性
 
@@ -154,39 +94,7 @@ kubectl logs -f <pod-name>
 
 下图展示了可观测性分层策略，从基础设施到业务层逐步覆盖。
 
-```mermaid "分层观测策略"
-graph TD
-    subgraph "基础设施层"
-        INFRA[物理机/虚拟机指标]
-        NETWORK[网络设备监控]
-        STORAGE[存储系统监控]
-    end
-
-    subgraph "平台层"
-        K8S[Kubernetes 集群监控]
-        ETCD[etcd 监控]
-        NETWORK_P[K8s 网络监控]
-    end
-
-    subgraph "应用层"
-        APP[应用性能监控]
-        BUSINESS[业务指标监控]
-        USER[用户体验监控]
-    end
-
-    subgraph "业务层"
-        SLA[SLA 监控]
-        REVENUE[营收指标]
-        CUSTOMER[客户满意度]
-    end
-
-    INFRA --> PLATFORM
-    PLATFORM --> APPLICATION
-    APPLICATION --> BUSINESS
-```
-
-![分层观测策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/68d303a8b176355bf34a6315c866495b.svg)
-{width=1920 height=1416}
+![分层观测策略：基础设施层、平台层、应用层、业务层自下而上逐层覆盖](layered-observability-strategy.svg)
 
 ### 指标层次结构
 
@@ -212,32 +120,7 @@ graph TD
 
 Kubernetes 可观测性生态丰富，CNCF 毕业和孵化项目为主流选择。
 
-```mermaid "CNCF 可观测性项目"
-graph TD
-    subgraph "CNCF Graduated"
-        PROMETHEUS[Prometheus - 指标收集]
-        JAEGER[Jaeger - 分布式追踪]
-        FLUENTD[Fluentd - 日志收集]
-        OPENTELEMETRY[OpenTelemetry - 可观测性标准]
-    end
-
-    subgraph "CNCF Incubating"
-        THanos[Thanos - Prometheus 长时存储]
-        Cortex[Cortex - 可扩展 Prometheus]
-        LOKI[Loki - 日志聚合]
-        TEMPO[Tempo - 追踪存储]
-    end
-
-    subgraph "第三方工具"
-        GRAFANA[Grafana - 可视化]
-        ELASTICSEARCH[Elasticsearch - 日志存储]
-        KIBANA[Kibana - 日志查询]
-        SKYWALKING[SkyWalking - APM]
-    end
-```
-
-![CNCF 可观测性项目](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/overview/c957dd60fe6842097ba8c96228d09407.svg)
-{width=1920 height=881}
+![常用可观测性工具栈：CNCF 毕业项目、孵化项目与第三方工具](cncf-observability-projects.svg)
 
 ### 推荐工具组合
 

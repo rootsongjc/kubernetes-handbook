@@ -36,16 +36,7 @@ API 聚合层由两个关键组件构成：
 
 当请求到达主 API Server 时，如果路径匹配某个注册的 `APIService`，则会被代理转发到对应的扩展 API Server。
 
-```mermaid "API 聚合层架构"
-flowchart LR
-    Client["kubectl / client-go"]
-      --> KubeAPIServer["kube-apiserver"]
-    KubeAPIServer -->|/apis/metrics.k8s.io/v1beta1| AggregatedServer["metrics-server"]
-    AggregatedServer --> ResourceDB["Custom Data Source"]
-```
-
-![API 聚合层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/apiservice/a0b7be7f710488c91a7be4c26c7cf752.svg)
-{width=1920 height=116}
+![API 聚合层架构：kube-apiserver 与扩展 API Server](api-aggregation-architecture.svg)
 
 ## 注册机制
 
@@ -96,19 +87,7 @@ kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 - **Service Endpoint**：主 API Server 通过 `spec.service` 字段找到扩展服务的 ClusterIP。
 - **身份验证**：kube-apiserver 在反向代理前会验证目标服务的证书链。
 
-```mermaid "APIService 证书与安全通信流程"
-sequenceDiagram
-    participant Client
-    participant kube-apiserver
-    participant aggregated-apiserver
-    Client->>kube-apiserver: GET /apis/metrics.k8s.io/v1beta1/pods
-    kube-apiserver->>aggregated-apiserver: Proxy HTTPS (verify CA)
-    aggregated-apiserver-->>kube-apiserver: JSON metrics data
-    kube-apiserver-->>Client: Aggregated API Response
-```
-
-![APIService 证书与安全通信流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/apiservice/d406fe1a2be7373762413c2de408722f.svg)
-{width=1920 height=840}
+![APIService 证书与安全通信流程](apiservice-tls-proxy-flow.svg)
 
 ## 开发与部署流程
 

@@ -30,35 +30,7 @@ CNI 设计只关注网络设置、连接和资源清理，便于实现和与各�
 
 CNI 架构设计简洁，容器运行时可直接实现 CNI 规范或通过 `libcni` 库调用插件，完成容器网络配置。
 
-```mermaid "CNI 高层架构"
-graph TD
-    A["容器运行时"]
-    B["CNI 规范"]
-    C["网络插件"]
-    D["libcni 库"]
-
-    A -->|"调用"| B
-    A -->|"调用"| D
-    D -->|"实现"| B
-    D -->|"执行"| C
-    C -->|"遵循"| B
-
-    subgraph "运行时域"
-        A
-    end
-
-    subgraph "CNI 项目"
-        B
-        D
-    end
-
-    subgraph "插件域"
-        C
-    end
-```
-
-![CNI 高层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cni/c522baa04fb7bb750fd7ead0db44b40d.svg)
-{width=1920 height=3038}
+![CNI 高层架构](cni-high-level-architecture.svg)
 
 CNI 仓库同时提供规范和辅助代码，方便运行时和插件开发者实现。
 
@@ -66,31 +38,7 @@ CNI 仓库同时提供规范和辅助代码，方便运行时和插件开发者�
 
 下图展示了 CNI 关键组件之间的关系：
 
-```mermaid "CNI 组件关系"
-graph TD
-    Runtime["容器运行时"]
-    Spec["CNI 规范</br>(SPEC.md)"]
-    Libcni["libcni 库</br>(pkg/types, libcni/)"]
-    Skel["插件骨架</br>(pkg/skel)"]
-    Plugins["网络插件"]
-    
-    Runtime -->|"调用"| Libcni
-    Libcni -->|"执行"| Plugins
-    Plugins -->|"基于"| Skel
-    Plugins -->|"遵循"| Spec
-    Runtime -->|"可直接实现"| Spec
-    Libcni -->|"实现"| Spec
-    Skel -->|"实现"| Spec
-
-    subgraph "CNI 仓库"
-        Spec
-        Libcni
-        Skel
-    end
-```
-
-![CNI 组件关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cni/a3de223c2ba33a5179be7feccba7f46b.svg)
-{width=1920 height=2796}
+![CNI 组件关系](cni-component-relationships.svg)
 
 ## 关键概念
 
@@ -142,32 +90,7 @@ CNI 规范要求插件实现如下操作：
 
 下图展示了 CNI 操作的典型流程，包括 IP 地址管理插件的委托调用：
 
-```mermaid "CNI 插件执行流程"
-sequenceDiagram
-    participant Runtime as 容器运行时
-    participant CNI as libcni
-    participant Plugin as 网络插件
-    participant IPAM as IPAM 插件
-    
-    Runtime->>CNI: AddNetworkList(config)
-    CNI->>Plugin: 执行 ADD（exec）
-    Plugin->>IPAM: 委托 IPAM 操作
-    IPAM-->>Plugin: 返回 IP 信息
-    Plugin-->>CNI: 返回结果
-    CNI-->>Runtime: 返回结果
-    
-    Note over Runtime,Plugin: 容器删除时
-
-    Runtime->>CNI: DelNetworkList(config)
-    CNI->>Plugin: 执行 DEL（exec）
-    Plugin->>IPAM: 委托清理
-    IPAM-->>Plugin: 确认
-    Plugin-->>CNI: 确认
-    CNI-->>Runtime: 确认
-```
-
-![CNI 插件执行流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cni/eec825a4aef190e7437aba5f58db64ea.svg)
-{width=1920 height=1682}
+![CNI 插件执行流程](cni-plugin-execution-flow.svg)
 
 ### 插件类型
 
@@ -212,45 +135,7 @@ CNI 操作返回结构化结果，定义于 `pkg/types`，主要类型包括：
 
 下图为主要类型关系：
 
-```mermaid "CNI 结果类型关系"
-classDiagram
-    class Result {
-        <<interface>>
-        +Version() string
-        +GetAsVersion(version string) Result
-        +Print() error
-        +PrintTo(writer) error
-    }
-    
-    class Current_Result {
-        +CNIVersion string
-        +Interfaces []*Interface
-        +IPs []*IPConfig
-        +Routes []*Route
-        +DNS DNS
-    }
-    
-    class PluginConf {
-        +CNIVersion string
-        +Name string
-        +Type string
-        +IPAM IPAM
-        +DNS DNS
-        +PrevResult Result
-    }
-    
-    class NetConfList {
-        +CNIVersion string
-        +Name string
-        +Plugins []*PluginConf
-    }
-    
-    Result <|.. Current_Result : implements
-    NetConfList --> PluginConf : contains
-```
-
-![CNI 结果类型关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/cni/8ea6e7fe2d908ca5f66eada3bf13209c.svg)
-{width=1920 height=1732}
+![CNI 结果类型关系](cni-result-types-class-diagram.svg)
 
 ## 生态系统与应用
 

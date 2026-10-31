@@ -15,38 +15,7 @@ lastmod: 2025-10-27T16:45:14.453Z
 
 ConfigMap 和 Secret 都是 Kubernetes 用于存储配置信息的资源，但用途有所区别。
 
-```mermaid "ConfigMap 与 Secret 消费方式"
-flowchart TD
-    subgraph "Configuration Resources"
-        CM["ConfigMap<br>非敏感数据"]
-        S["Secret<br>敏感数据"]
-    end
-
-    subgraph "Consumption Methods"
-        ENV["环境变量"]
-        VOL["卷挂载"]
-        ARG["命令参数"]
-    end
-
-    subgraph "Pod"
-        C["容器"]
-    end
-
-    CM -->|"以此方式消费"| ENV
-    CM -->|"以此方式消费"| VOL
-    CM -->|"以此方式消费"| ARG
-
-    S -->|"以此方式消费"| ENV
-    S -->|"以此方式消费"| VOL
-    S -->|"以此方式消费"| ARG
-
-    ENV -->|"配置"| C
-    VOL -->|"配置"| C
-    ARG -->|"配置"| C
-```
-
-![ConfigMap 与 Secret 消费方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/264b709cf94d9fb0c15e96c22c1adcf7.svg)
-{width=1920 height=1796}
+![ConfigMap 与 Secret 的消费方式](config-secret-consumption-overview.svg)
 
 {{< table title="ConfigMap 与 Secret 功能对比" >}}
 
@@ -74,30 +43,7 @@ ConfigMap 可包含：
 
 ConfigMap 可通过多种方式被 Pod 使用。
 
-```mermaid "ConfigMap 消费方式"
-flowchart TD
-    subgraph "ConfigMap"
-        KV1["Key1 = Value1"]
-        KV2["Key2 = Value2"]
-        CFG["config.properties = <br>key=value<br>foo=bar"]
-    end
-
-    subgraph "Pod"
-        subgraph "Container"
-            ENV["环境变量<br>KEY1=Value1<br>KEY2=Value2"]
-            FILES["挂载文件<br>/etc/config/config.properties"]
-            CMD["命令参数<br>--config=$(KEY1)"]
-        end
-    end
-
-    KV1 -->|"env[].valueFrom.configMapKeyRef"| ENV
-    KV2 -->|"env[].valueFrom.configMapKeyRef"| ENV
-    KV1 -->|"$(KEY1)"| CMD
-    CFG -->|"volumeMounts[].volume.configMap"| FILES
-```
-
-![ConfigMap 消费方式](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/2c1fa159a5e8f941ddbc7886ecee0593.svg)
-{width=1920 height=1104}
+![ConfigMap 的三种消费方式](configmap-consumption-detail.svg)
 
 - 作为环境变量注入
 - 作为所有环境变量批量注入
@@ -111,36 +57,7 @@ Secret 用于存储敏感信息，如密码、OAuth 令牌、SSH 密钥等。与
 
 Kubernetes 提供多种内置 Secret 类型，适配不同场景。
 
-```mermaid "Secret 类型与典型用途"
-flowchart LR
-    subgraph "Secret Types"
-        Opaque["Opaque<br>（通用密文）"]
-        TLS["kubernetes.io/tls<br>TLS 证书"]
-        Docker["kubernetes.io/dockerconfigjson<br>镜像仓库认证"]
-        BasicAuth["kubernetes.io/basic-auth<br>基本认证"]
-        SSH["kubernetes.io/ssh-auth<br>SSH 密钥"]
-        SA["kubernetes.io/service-account-token<br>服务账号令牌"]
-    end
-
-    subgraph "Use Cases"
-        DB["数据库凭据"]
-        Registry["私有镜像仓库访问"]
-        HTTPS["TLS/HTTPS 终止"]
-        API["API 认证"]
-        GitAuth["Git 仓库认证"]
-        K8sAuth["Kubernetes API 认证"]
-    end
-
-    Opaque --> DB
-    TLS --> HTTPS
-    Docker --> Registry
-    BasicAuth --> API
-    SSH --> GitAuth
-    SA --> K8sAuth
-```
-
-![Secret 类型与典型用途](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/38bb71880763e102d2958db70a8762de.svg)
-{width=1920 height=2404}
+![Secret 类型与典型用途](secret-types-use-cases.svg)
 
 {{< table title="Secret 类型与用途说明" >}}
 
@@ -178,33 +95,7 @@ Secret 可通过以下方式被 Pod 消费：
 
 默认情况下，Kubernetes Secret 有如下安全风险：
 
-```mermaid "Secret 安全风险与缓解措施"
-flowchart TD
-    subgraph "Secret Security Concerns"
-        Etcd["etcd 未加密存储"]
-        API["API Server 可访问"]
-        Pod["Pod 级别访问"]
-        RBAC["RBAC 权限过宽"]
-    end
-
-    subgraph "Security Mitigations"
-        Encrypt["启用静态加密"]
-        LeastPriv["配置最小权限 RBAC"]
-        Restrict["限制容器访问"]
-        External["使用外部密文管理"]
-        Immutable["使用不可变 Secret"]
-    end
-
-    Etcd --> Encrypt
-    API --> LeastPriv
-    Pod --> Restrict
-    RBAC --> LeastPriv
-    Etcd --> External
-    API --> External
-```
-
-![Secret 安全风险与缓解措施](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/92ee38bdc2df2f01cc9cb32d8123be1b.svg)
-{width=1920 height=613}
+![Secret 默认安全风险与缓解措施](secret-risks-mitigations.svg)
 
 ### 主要安全问题
 
@@ -230,41 +121,7 @@ flowchart TD
 
 ConfigMap 和 Secret 的生命周期如下：
 
-```mermaid "ConfigMap/Secret 生命周期"
-stateDiagram-v2
-    [*] --> Created: kubectl create/apply
-    Created --> Consumed: 被 Pod 使用
-    Consumed --> Updated: kubectl apply/edit
-    Updated --> PropagateChange: 变更传播
-    PropagateChange --> Consumed
-    Consumed --> [*]: kubectl delete
-
-    note right of Created
-        创建方式：
-        - kubectl
-        - YAML 文件
-        - Kustomize
-    end note
-
-    note right of Consumed
-        消费方式：
-        - 环境变量
-        - 卷文件
-        - 命令参数
-    end note
-
-    note right of Updated
-        仅适用于可变资源
-    end note
-
-    note right of PropagateChange
-        - 卷挂载：最终一致性
-        - 环境变量：需重启 Pod
-    end note
-```
-
-![ConfigMap/Secret 生命周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/a48ed307fe2bbba38a1011156957baf8.svg)
-{width=1920 height=3158}
+![ConfigMap / Secret 生命周期](configmap-secret-lifecycle.svg)
 
 - 卷挂载方式：变更会最终同步到 Pod（不适用于 subPath 挂载），同步延迟取决于 kubelet 周期与缓存。
 - 环境变量方式：变更不会自动同步，需重启 Pod。
@@ -285,33 +142,7 @@ stateDiagram-v2
 
 选择 ConfigMap 还是 Secret 时，需综合考虑数据敏感性、访问方式、大小限制、变更频率与安全需求。
 
-```mermaid "ConfigMap vs Secret 选择流程"
-flowchart TD
-    Start["需要配置"] --> Sensitive{"数据敏感？"}
-    Sensitive -->|"是"| Secret["使用 Secret"]
-    Sensitive -->|"否"| ConfigMap["使用 ConfigMap"]
-
-    Secret --> AccessPattern{"如何访问？"}
-    ConfigMap --> AccessPattern
-
-    AccessPattern -->|"需文件结构"| Volume["卷挂载"]
-    AccessPattern -->|"简单键值"| Env["环境变量"]
-    AccessPattern -->|"命令参数"| CmdArg["命令参数"]
-
-    Volume --> Size{"数据大于 1MiB？"}
-    Env --> Size
-    CmdArg --> Size
-
-    Size -->|"是"| ExternalVolume["用外部卷或拆分资源"]
-    Size -->|"否"| Continue["Pod 规范实现"]
-
-    Continue --> Mutability{"需频繁变更？"}
-    Mutability -->|"是"| Mutable["使用可变资源"]
-    Mutability -->|"否"| Immutable["使用不可变资源"]
-```
-
-![ConfigMap vs Secret 选择流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/configuration-management/07d6e9b9d96fa077ded5e471b799b624.svg)
-{width=1920 height=5398}
+![ConfigMap 与 Secret 选择流程](configmap-vs-secret-decision.svg)
 
 ## 常见场景与示例
 

@@ -54,19 +54,7 @@ Kubernetes 的插件化架构设计带来了如下优势：
 
 下图展示了 Kubernetes 通过 CRI、CNI、CSI 三大接口将计算、网络、存储资源有机结合，形成完整的分布式应用运行平台：
 
-```mermaid "Kubernetes 核心接口协作关系"
-graph TD
-    K8s[Kubernetes 控制平面]
-    K8s --> CRI[CRI<br>容器运行时接口]
-    K8s --> CNI[CNI<br>容器网络接口]
-    K8s --> CSI[CSI<br>容器存储接口]
-    CRI --> RT[容器运行时实现<br>（containerd/CRI-O）]
-    CNI --> NET[网络插件实现<br>（Calico/Flannel/Cilium）]
-    CSI --> ST[存储插件实现<br>（EBS/PD/Ceph）]
-```
-
-![Kubernetes 核心接口协作关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/interfaces/overview/92d3003083d7d7924dd00c850782b279.svg)
-{width=1920 height=985}
+![Kubernetes 核心接口协作关系](core-interfaces-collaboration.svg)
 
 ## 总结
 

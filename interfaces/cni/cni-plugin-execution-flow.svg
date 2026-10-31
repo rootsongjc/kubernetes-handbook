@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1664" viewBox="0 0 960 832" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cnipluz-title cnipluz-desc" id="cni-plugin-execution-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="cnipluz-title">CNI 插件执行流程</title>
+<desc id="cnipluz-desc">容器创建时，运行时调用 libcni 的 AddNetworkList，libcni 以 exec 执行网络插件的 ADD，插件委托 IPAM 插件分配 IP 后逐级返回结果；容器删除时按同样路径执行 DEL 与清理并逐级确认。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cni-plugin-execution-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #cni-plugin-execution-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #cni-plugin-execution-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#cni-plugin-execution-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="cni-plugin-execution-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="cni-plugin-execution-flow-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="54" y="176" width="880" height="282" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<rect x="54" y="492" width="880" height="282" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<line x1="110" y1="146" x2="110" y2="812" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="356.667" y1="146" x2="356.667" y2="812" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="603.333" y1="146" x2="603.333" y2="812" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="850" y1="146" x2="850" y2="812" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<rect x="54" y="176" width="107.96" height="20" rx="2" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="62" y="190" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.06em">ADD · 容器创建时</text>
+<rect x="54" y="492" width="107.96" height="20" rx="2" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="62" y="506" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.06em">DEL · 容器删除时</text>
+<rect x="352.667" y="206" width="8" height="246" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<rect x="599.333" y="252" width="8" height="154" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<rect x="352.667" y="522" width="8" height="246" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<rect x="599.333" y="568" width="8" height="154" fill="#1d1d1f" style="stroke:#6b7280" stroke-width="0.8" fill-opacity="0.08"/>
+<path d="M 114 214 L 352.667 214" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 360.667 260 L 599.333 260" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 607.333 306 L 846 306" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 846 352 L 607.333 352" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 599.333 398 L 360.667 398" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 352.667 444 L 114 444" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-0a84ff)"/>
+<path d="M 114 530 L 352.667 530" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 360.667 576 L 599.333 576" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 607.333 622 L 846 622" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 846 668 L 607.333 668" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 599.333 714 L 360.667 714" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<path d="M 352.667 760 L 114 760" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-plugin-execution-flow-m-6b7280)"/>
+<rect x="15.52" y="88" width="188.96" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(31.52,100.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="131.5" y="113.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">容器运行时</text>
+<text x="131.5" y="129.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">containerd / CRI-O</text>
+<rect x="296.667" y="88" width="120" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(315.847,100.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="378.167" y="113.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">libcni</text>
+<text x="378.167" y="129.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Go 库</text>
+<rect x="537.833" y="88" width="131" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(553.833,100.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="624.833" y="113.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络插件</text>
+<text x="624.833" y="129.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">bridge 等</text>
+<rect x="775.32" y="88" width="149.36" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(791.32,100.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /> <path d="M4 6v6a8 3 0 0 0 16 0v-6" /> <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></g>
+<text x="871.5" y="113.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">IPAM 插件</text>
+<text x="871.5" y="129.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">host-local 等</text>
+<text x="233.333" y="206" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AddNetworkList(config)</text>
+<text x="480" y="252" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">执行 ADD（exec）</text>
+<text x="726.667" y="298" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">委托 IPAM 操作</text>
+<text x="726.667" y="344" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回 IP 信息</text>
+<text x="480" y="390" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回结果</text>
+<text x="233.333" y="436" style="fill:#0060df" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">返回结果</text>
+<text x="233.333" y="522" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">DelNetworkList(config)</text>
+<text x="480" y="568" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">执行 DEL（exec）</text>
+<text x="726.667" y="614" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">委托清理</text>
+<text x="726.667" y="660" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">确认</text>
+<text x="480" y="706" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">确认</text>
+<text x="233.333" y="752" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">确认</text>
+<text x="480" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CNI 插件执行流程</text>
+</g>
+</svg>

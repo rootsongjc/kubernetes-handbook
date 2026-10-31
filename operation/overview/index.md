@@ -17,45 +17,7 @@ Kubernetes 集群的运维管理涵盖从初始部署、日常维护到最终下
 
 下图展示了集群生命周期及关键工具的关系：
 
-```mermaid "Kubernetes 集群生命周期与关键工具"
-flowchart TD
-    subgraph "Cluster Lifecycle"
-        Init["集群初始化"]
-        Operate["日常运维"]
-        Upgrade["集群升级"]
-        Scale["扩容缩容"]
-        Backup["备份与恢复"]
-        EOL["下线与退役"]
-    end
-
-    Init --> Operate
-    Operate --> Upgrade
-    Upgrade --> Operate
-    Operate --> Scale
-    Scale --> Operate
-    Operate --> Backup
-    Backup --> Operate
-    Operate --> EOL
-
-    subgraph "Key Tools"
-        kubeadm["kubeadm"]
-        kubelet["kubelet"]
-        kubectl["kubectl"]
-        crictl["crictl"]
-    end
-
-    kubeadm -.-> Init
-    kubeadm -.-> Upgrade
-    kubeadm -.-> Scale
-    kubelet -.-> Operate
-    kubectl -.-> Operate
-    kubectl -.-> Scale
-    kubectl -.-> Backup
-    crictl -.-> Operate
-```
-
-![Kubernetes 集群生命周期与关键工具](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/5fe2cc0d294861b4af6dfff4e5dabd46.svg)
-{width=1920 height=1173}
+![Kubernetes 集群生命周期与关键工具](cluster-lifecycle-tools.svg)
 
 ## 使用 kubeadm 部署集群
 
@@ -95,58 +57,7 @@ flowchart TD
 
 下图展示了使用 kubeadm 创建集群的完整流程：
 
-```mermaid "kubeadm 集群创建流程"
-flowchart TD
-    prep["主机准备：
-    - 安装容器运行时
-    - 安装 kubeadm、kubelet、kubectl
-    - 配置网络"]
-
-    subgraph "控制平面初始化（kubeadm init）"
-        preflight["预检"]
-        certs["生成证书"]
-        kubeconfig["生成 kubeconfig"]
-        staticPods["创建静态 Pod 清单"]
-        mark["标记控制平面节点"]
-        token["生成引导令牌"]
-        config["配置引导认证"]
-        addon["安装核心插件（CoreDNS、kube-proxy）"]
-    end
-
-    subgraph "工作节点加入（kubeadm join）"
-        workerPreflight["预检"]
-        workerDownload["下载集群信息"]
-        workerBootstrap["TLS 引导"]
-        workerKubelet["配置 kubelet"]
-    end
-
-    subgraph "网络配置"
-        cni["安装 CNI 插件"]
-        net["配置 Pod 网络"]
-        dns["验证 CoreDNS 运行"]
-    end
-
-    prep --> preflight
-    preflight --> certs
-    certs --> kubeconfig
-    kubeconfig --> staticPods
-    staticPods --> mark
-    mark --> token
-    token --> config
-    config --> addon
-
-    addon --> cni
-    cni --> net
-    net --> dns
-
-    token -.-> workerPreflight
-    workerPreflight --> workerDownload
-    workerDownload --> workerBootstrap
-    workerBootstrap --> workerKubelet
-```
-
-![kubeadm 集群创建流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/0b4c30bb93a94ad67a15092d80040930.svg)
-{width=1920 height=6361}
+![kubeadm 集群创建流程](kubeadm-cluster-create-flow.svg)
 
 ### 高可用集群部署
 
@@ -179,38 +90,7 @@ flowchart TD
 
 下图展示了 kubeadm 升级集群的主要步骤：
 
-```mermaid "kubeadm 集群升级流程"
-flowchart TD
-    prep["升级准备：
-    - 配置软件源
-    - 阅读发布说明
-    - 备份 etcd"]
-
-    subgraph "控制平面升级"
-        cp1["首个控制平面节点"]
-        cpn["其他控制平面节点"]
-    end
-
-    subgraph "工作节点升级"
-        drain["驱逐节点"]
-        upgrade["升级 kubelet 和 kubectl"]
-        restart["重启 kubelet"]
-        uncordon["恢复调度"]
-    end
-
-    verify["验证集群状态"]
-
-    prep --> cp1
-    cp1 --> cpn
-    cpn --> drain
-    drain --> upgrade
-    upgrade --> restart
-    restart --> uncordon
-    uncordon --> verify
-```
-
-![kubeadm 集群升级流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/093b3f9502944c3a72e6256822b433c7.svg)
-{width=1920 height=8071}
+![kubeadm 集群升级流程](kubeadm-upgrade-flow.svg)
 
 详细步骤如下：
 
@@ -263,38 +143,7 @@ kubeadm 证书存放于 `/etc/kubernetes/pki`，kubeconfig 文件位于 `/etc/ku
 
 Kubernetes 遵循固定的版本发布节奏。下图展示了小版本发布周期及支持策略：
 
-```mermaid "Kubernetes 版本发布与支持周期"
-flowchart LR
-    subgraph "小版本周期（3-4 个月）"
-        alpha["Alpha 阶段（功能开发）"]
-        beta["Beta 阶段（功能稳定）"]
-        rc["RC 阶段（最终测试）"]
-        ga["GA（正式发布）"]
-    end
-
-    subgraph "支持周期"
-        support["标准支持（12 个月）"]
-        maintenance["维护模式（2 个月）"]
-        eol["生命周期结束"]
-    end
-
-    subgraph "补丁发布"
-        monthly["每月补丁（修复与安全更新）"]
-    end
-
-    alpha --> beta
-    beta --> rc
-    rc --> ga
-    ga --> support
-    support --> maintenance
-    maintenance --> eol
-
-    monthly -.-> support
-    monthly -.-> maintenance
-```
-
-![Kubernetes 版本发布与支持周期](https://assets.jimmysong.io/images/book/kubernetes-handbook/operation/overview/7f705a98c730e536df3ce2c27fd764cc.svg)
-{width=2386 height=378}
+![Kubernetes 版本发布与支持周期](release-and-support-cycle.svg)
 
 每个小版本通常支持约 14 个月：
 

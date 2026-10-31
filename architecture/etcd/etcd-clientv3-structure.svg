@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2360" height="1120" viewBox="0 0 1180 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="etcdclz-title etcdclz-desc" id="etcd-clientv3-structure-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="etcdclz-title">clientv3 客户端库结构</title>
+<desc id="etcdclz-desc">应用代码使用 clientv3 Client；Client 提供 KV、Watch、Lease、Auth、Cluster、Maintenance 六类接口，并管理 Balancer，Balancer 控制 gRPC 连接，连接到 etcd 端点。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #etcd-clientv3-structure-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #etcd-clientv3-structure-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #etcd-clientv3-structure-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#etcd-clientv3-structure-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="etcd-clientv3-structure-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="240" y="84" width="880" height="306" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="256" y="106" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">clientv3</text>
+<rect x="571" y="410" width="396" height="110" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="587" y="432" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Transport</text>
+<path d="M 326 240 L 1036 240" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 681 286 L 681 240" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<rect x="685" y="255.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="689" y="267.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">提供</text>
+<path d="M 326 240 L 326 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 468 240 L 468 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 610 240 L 610 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 752 240 L 752 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 894 240 L 894 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 1036 240 L 1036 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<path d="M 204 328 L 587 328" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<rect x="379.5" y="305.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="395.5" y="317" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">使用</text>
+<path d="M 681 370 L 681 438" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<rect x="685" y="383" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="689" y="394.6" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">管理</text>
+<path d="M 775 472 L 807 472" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<rect x="775" y="449.4" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="791" y="461" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">控制</text>
+<path d="M 955 472 L 1027 472" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#etcd-clientv3-structure-m-6b7280)"/>
+<rect x="975" y="449.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="991" y="461" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">连接</text>
+<rect x="262" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="326" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">KV</text>
+<text x="326" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Get / Put / Delete</text>
+<rect x="404" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="468" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Watch</text>
+<text x="468" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">监听变更</text>
+<rect x="546" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="610" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Lease</text>
+<text x="610" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">键 TTL 租约</text>
+<rect x="688" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="752" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Auth</text>
+<text x="752" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">用户与角色</text>
+<rect x="830" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="894" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Cluster</text>
+<text x="894" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">成员管理</text>
+<rect x="972" y="130" width="128" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1036" y="154.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Maintenance</text>
+<text x="1036" y="170.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">快照 / 碎片整理</text>
+<rect x="591" y="290" width="180" height="76" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="591" y="290" width="180" height="76" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(611.44,310) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="704" y="324.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Client</text>
+<text x="704" y="341.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">clientv3.New()</text>
+<rect x="40" y="290" width="160" height="76" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(61.84,310) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l18 0" /> <path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8" /></g>
+<text x="143" y="324.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用代码</text>
+<text x="143" y="341.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Application</text>
+<rect x="591" y="442" width="180" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(626.5,455.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /> <path d="M21 7h-8l-3.495 5" /> <path d="M18 10l3 -3l-3 -3" /> <path d="M18 20l3 -3l-3 -3" /></g>
+<text x="702.5" y="468.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Balancer</text>
+<text x="702.5" y="484.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">端点负载均衡</text>
+<rect x="811" y="442" width="140" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(824.36,455.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="902.5" y="468.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">gRPC 连接</text>
+<text x="902.5" y="484.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">连接池</text>
+<rect x="1031" y="442" width="140" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(1046.46,455.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="1122.5" y="468.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">etcd 端点</text>
+<text x="1122.5" y="484.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Endpoints</text>
+<text x="590" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">clientv3 客户端库结构</text>
+</g>
+</svg>

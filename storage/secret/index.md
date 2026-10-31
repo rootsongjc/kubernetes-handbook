@@ -13,17 +13,7 @@ lastmod: 2025-10-27T12:39:28.278Z
 
 Secret（密文对象）用于保存少量敏感信息（如密码、token、密钥等），相比直接写入 Pod spec 或镜像，更安全灵活。Secret 支持多种用法，提升了敏感数据的隔离与访问控制能力。
 
-```mermaid "Secret 生命周期与使用流程"
-flowchart TD
-    A[创建 Secret] --> B{挂载到 Pod}
-    B -- Volume 挂载 --> C[容器内文件]
-    B -- 环境变量 --> D[容器内变量]
-    B -- 镜像拉取凭证 --> E[imagePullSecret]
-    C & D & E --> F[Pod 运行时访问 Secret]
-```
-
-![Secret 生命周期与使用流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/secret/a29e9fd7d57a961ab64c0c6828220d91.svg)
-{width=1920 height=1903}
+![Secret 的使用流程](secret-consumption-paths.svg)
 
 Secret 可通过以下方式被 Pod 使用：
 
@@ -265,15 +255,7 @@ kubectl get secret sa-token-secret -o jsonpath='{.data.token}' | base64 -d
 
 ## Secret 生命周期与安全
 
-```mermaid "Secret 生命周期与节点分发"
-flowchart LR
-    A[Secret 创建于 API Server] --> B[仅分发到需要的 Node]
-    B --> C[Pod 消费 Secret]
-    C --> D[Pod 删除后 Secret 文件消失]
-```
-
-![Secret 生命周期与节点分发](https://assets.jimmysong.io/images/book/kubernetes-handbook/storage/secret/221b2d457f6955a65ce0a0c9b72563d2.svg)
-{width=1920 height=121}
+![Secret 生命周期与节点分发](secret-node-distribution.svg)
 
 - Secret 仅在被 Pod 消费时分发到节点
 - Secret 文件存储于 tmpfs，不落盘

@@ -27,48 +27,7 @@ Kiali 具备以下核心能力：
 
 下图展示了 Kiali 的主要架构组件及其交互关系。
 
-```mermaid "Kiali 架构总览"
-graph TD
-    subgraph "用户界面层"
-        WEB_UI[Kiali Web UI]
-        GRAPHQL_API[GraphQL API]
-    end
-
-    subgraph "业务逻辑层"
-        BUSINESS_LOGIC[业务逻辑服务]
-        VALIDATOR[配置验证器]
-        METRICS_ADAPTER[指标适配器]
-    end
-
-    subgraph "数据源层"
-        ISTIOD[Istiod API]
-        PROMETHEUS[Prometheus]
-        JAEGER[Jaeger]
-        KUBERNETES_API[Kubernetes API]
-    end
-
-    subgraph "存储层"
-        IN_MEMORY[(内存缓存)]
-        CONFIG_CACHE[(配置缓存)]
-    end
-
-    WEB_UI --> GRAPHQL_API
-    GRAPHQL_API --> BUSINESS_LOGIC
-
-    BUSINESS_LOGIC --> VALIDATOR
-    BUSINESS_LOGIC --> METRICS_ADAPTER
-
-    VALIDATOR --> ISTIOD
-    METRICS_ADAPTER --> PROMETHEUS
-    METRICS_ADAPTER --> JAEGER
-    BUSINESS_LOGIC --> KUBERNETES_API
-
-    BUSINESS_LOGIC --> IN_MEMORY
-    BUSINESS_LOGIC --> CONFIG_CACHE
-```
-
-![Kiali 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/kiali/9294a20b6ded2a0d40dd6638c437f8ec.svg)
-{width=1920 height=1565}
+![Kiali 架构总览：界面层、业务逻辑层、数据源层与存储层](kiali-architecture.svg)
 
 ### 组件说明
 
@@ -270,43 +229,7 @@ Kiali 提供丰富的服务网格观测与配置能力，核心功能包括：
 
 Kiali 的核心功能是可视化服务网格的拓扑结构，下图为典型拓扑示意。
 
-```mermaid "服务网格拓扑图示例"
-graph TD
-    subgraph "入口流量"
-        GATEWAY[Istio Gateway]
-    end
-
-    subgraph "服务层"
-        SVC_A[服务 A]
-        SVC_B[服务 B]
-        SVC_C[服务 C]
-        SVC_D[服务 D]
-    end
-
-    subgraph "数据层"
-        DB[(数据库)]
-        CACHE[(缓存)]
-    end
-
-    GATEWAY --> SVC_A
-    SVC_A --> SVC_B
-    SVC_A --> SVC_C
-    SVC_B --> SVC_D
-    SVC_C --> SVC_D
-    SVC_D --> DB
-    SVC_D --> CACHE
-
-    style GATEWAY fill:#e1f5fe
-    style SVC_A fill:#f3e5f5
-    style SVC_B fill:#f3e5f5
-    style SVC_C fill:#f3e5f5
-    style SVC_D fill:#f3e5f5
-    style DB fill:#fff3e0
-    style CACHE fill:#fff3e0
-```
-
-![服务网格拓扑图示例](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/kiali/d9bd19626c6497cd825605b4be832267.svg)
-{width=1920 height=3554}
+![服务网格拓扑图示例：从 Istio Gateway 经服务 A、B、C、D 到数据库与缓存](service-mesh-topology.svg)
 
 拓扑图展示：
 

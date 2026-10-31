@@ -16,51 +16,7 @@ Knative Serving 是 Knative 的核心组件之一，提供 Serverless 应用的�
 
 下图展示了 Knative Serving 的核心架构及各组件关系。
 
-```mermaid "Knative Serving 核心架构"
-graph TD
-    subgraph "用户请求"
-        CLIENT["客户端"]
-        INGRESS["Ingress Gateway<br/>Istio/Kong"]
-    end
-
-    subgraph "Knative Serving"
-        ROUTE["Route<br/>路由管理"]
-        CONFIGURATION["Configuration<br/>配置管理"]
-        REVISION["Revision<br/>版本快照"]
-    end
-
-    subgraph "运行时组件"
-        ACTIVATOR["Activator<br/>请求激活器"]
-        AUTOSCALER["Autoscaler<br/>自动扩缩容"]
-        QUEUE_PROXY["Queue Proxy<br/>请求队列"]
-        USER_CONTAINER["用户容器<br/>业务逻辑"]
-    end
-
-    subgraph "基础设施"
-        KUBERNETES["Kubernetes API"]
-        HPA["Horizontal Pod Autoscaler"]
-        SERVICE["Kubernetes Service"]
-        DEPLOYMENT["Deployment"]
-    end
-
-    CLIENT --> INGRESS
-    INGRESS --> ROUTE
-    ROUTE --> CONFIGURATION
-    CONFIGURATION --> REVISION
-
-    REVISION --> ACTIVATOR
-    ACTIVATOR --> AUTOSCALER
-    AUTOSCALER --> QUEUE_PROXY
-    QUEUE_PROXY --> USER_CONTAINER
-
-    REVISION --> KUBERNETES
-    AUTOSCALER --> HPA
-    REVISION --> SERVICE
-    REVISION --> DEPLOYMENT
-```
-
-![Knative Serving 核心架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/serving/062bf86fcea8c9094ac88933553daf35.svg)
-{width=1920 height=2558}
+![Knative Serving 核心架构](knative-serving-architecture.svg)
 
 ## 核心资源
 
@@ -319,33 +275,7 @@ Knative Serving 的请求处理流程涉及多组件协作，支持冷启动优�
 
 下图展示了请求从入口到业务容器的完整流转过程。
 
-```mermaid "请求处理流程"
-sequenceDiagram
-    participant Client
-    participant Ingress
-    participant Activator
-    participant QueueProxy
-    participant UserContainer
-
-    Client->>Ingress: 发送请求
-    Ingress->>Activator: 转发请求
-
-    alt 实例数为 0
-        Activator->>Activator: 激活实例
-        Activator->>QueueProxy: 启动 Pod
-        QueueProxy->>UserContainer: 初始化容器
-    end
-
-    Activator->>QueueProxy: 转发请求
-    QueueProxy->>UserContainer: 处理请求
-    UserContainer-->>QueueProxy: 返回响应
-    QueueProxy-->>Activator: 返回响应
-    Activator-->>Ingress: 返回响应
-    Ingress-->>Client: 返回响应
-```
-
-![请求处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/serving/f549b1b49c9f511178e6e6f5ca6cf746.svg)
-{width=1920 height=1393}
+![Knative Serving 请求处理流程](knative-request-flow.svg)
 
 ### 冷启动优化
 

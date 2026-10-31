@@ -26,65 +26,7 @@ Knative 具备以下主要特性：
 
 下图展示了 Knative 的整体架构及各核心组件关系。
 
-```mermaid "Knative 架构图"
-graph TD
-    subgraph "用户层"
-        DEVELOPER["开发者"]
-        OPERATOR["运维人员"]
-    end
-
-    subgraph "Knative 组件"
-        SERVING["Knative Serving"]
-        EVENTING["Knative Eventing"]
-    end
-
-    subgraph "数据面"
-        QUEUE_PROXY["Queue Proxy<br/>请求队列"]
-        USER_CONTAINER["用户容器<br/>业务逻辑"]
-        AUTOSCALER["Autoscaler<br/>自动扩缩容"]
-    end
-
-    subgraph "控制面"
-        CONTROLLER["Controller<br/>资源管理"]
-        WEBHOOK["Webhook<br/>准入控制"]
-        NETWORKING["Networking<br/>网络配置"]
-    end
-
-    subgraph "事件处理"
-        BROKER["Broker<br/>事件代理"]
-        TRIGGER["Trigger<br/>事件触发器"]
-        SOURCE["Source<br/>事件源"]
-    end
-
-    subgraph "基础设施"
-        KUBERNETES["Kubernetes API"]
-        ISTIO["Istio<br/>可选服务网格"]
-        CERT_MANAGER["cert-manager<br/>证书管理"]
-    end
-
-    DEVELOPER --> SERVING
-    OPERATOR --> EVENTING
-
-    SERVING --> QUEUE_PROXY
-    SERVING --> USER_CONTAINER
-    SERVING --> AUTOSCALER
-
-    SERVING --> CONTROLLER
-    SERVING --> WEBHOOK
-    SERVING --> NETWORKING
-
-    EVENTING --> BROKER
-    EVENTING --> TRIGGER
-    EVENTING --> SOURCE
-
-    SERVING --> KUBERNETES
-    EVENTING --> KUBERNETES
-    SERVING --> ISTIO
-    SERVING --> CERT_MANAGER
-```
-
-![Knative 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/knative/f066f72889e920855d549d6509fd0ef4.svg)
-{width=2941 height=720}
+![Knative 整体架构](knative-architecture.svg)
 
 ## Knative Serving
 
@@ -250,46 +192,7 @@ Knative Eventing 提供事件驱动架构，支持多种事件源和灵活的事
 
 下图展示了 Knative Eventing 的事件流转与核心组件。
 
-```mermaid "Knative Eventing 事件流"
-graph TD
-    subgraph "事件源"
-        HTTP["HTTP 请求"]
-        KAFKA["Kafka 消息"]
-        GIT["Git 推送"]
-        CRON["定时器"]
-        CLOUDEVENTS["CloudEvents"]
-    end
-
-    subgraph "事件处理"
-        BROKER["Broker<br/>事件代理"]
-        TRIGGER["Trigger<br/>事件过滤"]
-        SUBSCRIBER["订阅者<br/>处理函数"]
-    end
-
-    subgraph "事件流"
-        INGRESS["事件入口"]
-        FILTER["事件过滤"]
-        DELIVERY["事件投递"]
-        RETRY["重试机制"]
-    end
-
-    HTTP --> INGRESS
-    KAFKA --> INGRESS
-    GIT --> INGRESS
-    CRON --> INGRESS
-    CLOUDEVENTS --> INGRESS
-
-    INGRESS --> BROKER
-    BROKER --> FILTER
-    FILTER --> TRIGGER
-    TRIGGER --> SUBSCRIBER
-
-    TRIGGER --> DELIVERY
-    DELIVERY --> RETRY
-```
-
-![Knative Eventing 事件流](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/knative/088d9a5b069ba7a0dccbf6ae09550835.svg)
-{width=1920 height=2064}
+![Knative Eventing 事件流](knative-eventing-flow.svg)
 
 ### 核心组件
 

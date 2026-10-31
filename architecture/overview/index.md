@@ -14,44 +14,7 @@ lastmod: 2025-10-27T13:32:52.335Z
 
 要谈到 Kubernetes 就要不得从 Borg 系统开始谈起。Borg 是 Google 内部运行超过 15 年的大规模集群管理系统，管理着数十万个应用跨越数千个集群。它为 Kubernetes 的设计提供了宝贵的实践经验和理论基础。
 
-```mermaid "Borg 架构图"
-flowchart TB
-    subgraph User["用户接口"]
-        CFG["配置文件（config file）"]
-        CLI["命令行工具（command-line tools）"]
-        WEB["网页浏览器（web browsers）"]
-        BORGCFG["Borg 配置工具（borgcfg）"]
-    end
-
-    subgraph Cell["单元（Cell）"]
-        subgraph Master["BorgMaster"]
-            READ["读/UI 分片（read/UI shard）"]
-            LINK["链接分片（link shard）"]
-            STORE["持久化存储（Paxos store）"]
-        end
-
-        SCHED["调度器（scheduler）"]
-        SCHED --> Master
-        subgraph Workers["Borglet 节点"]
-            B1["Borglet"]
-            B2["Borglet"]
-            B3["Borglet"]
-            B4["Borglet"]
-        end
-        Master --> B1
-        Master --> B2
-        Master --> B3
-        Master --> B4
-    end
-
-    CFG --> Master
-    CLI --> Master
-    WEB --> Master
-    BORGCFG --> Master
-```
-
-![Borg 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/3482c70dd4d09f794748c5a93d539517.svg)
-{width=2300 height=1052}
+![Borg 架构：用户接口、BorgMaster 与 Borglet](borg-architecture.svg)
 
 ### Borg 核心组件
 
@@ -64,42 +27,7 @@ flowchart TB
 
 Kubernetes 采用分布式架构，控制面与工作节点分离，实现了决策集中与任务分布的高可用设计。
 
-```mermaid "Kubernetes 架构总览"
-flowchart TD
-    subgraph "Control Plane"
-        API["API Server"] 
-        ETCD["etcd<br>存储"]
-        CM["Controller<br>Manager"]
-        SCH["Scheduler"]
-    end
-
-    subgraph "Worker Nodes"
-        N1["节点 1"]
-        N2["节点 2"]
-        N3["节点 3"]
-    end
-
-    subgraph "Node Components"
-        KB["kubelet"]
-        KP["kube-proxy"]
-        CRI["容器运行时"]
-    end
-
-    API <--> ETCD
-    API <--> CM
-    API <--> SCH
-    
-    API <--> N1
-    API <--> N2
-    API <--> N3
-    
-    N1 --- KB
-    N1 --- KP
-    N1 --- CRI
-```
-
-![Kubernetes 架构总览](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/a1a89650891fe65d7173653effe1ec82.svg)
-{width=1920 height=867}
+![Kubernetes 架构总览：控制面与工作节点](kubernetes-architecture-overview.svg)
 
 ## 控制面组件
 
@@ -120,27 +48,7 @@ flowchart TD
 
 每个节点运行以下组件，负责 Pod 的实际运行与网络管理。
 
-```mermaid "节点组件与 Pod 关系"
-flowchart LR
-    subgraph "Node"
-        KB["kubelet"]
-        KP["kube-proxy"]
-        CR["容器运行时"]
-        
-        subgraph "Pods"
-            P1["Pod 1"]
-            P2["Pod 2"]
-            P3["Pod 3"]
-        end
-    end
-    
-    KB --> CR
-    CR --> Pods
-    KP --> Pods
-```
-
-![节点组件与 Pod 关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/4266a1401509a843bfb7ee758f729664.svg)
-{width=1920 height=3272}
+![节点组件与 Pod 的关系](node-components-and-pods.svg)
 
 {{< table title="Kubernetes 节点组件说明" >}}
 
@@ -158,17 +66,7 @@ Kubernetes API 定义了一组资源类型（对象），所有操作均通过 A
 
 ### API 概念
 
-```mermaid "Kubernetes API 请求流程"
-flowchart TD
-    C["客户端"] --> |请求| API["API Server"]
-    API --> |读/写| ETCD["etcd"]
-    API --> |响应| C
-    API --> |校验| V["准入控制器"]
-    API --> |认证| A["认证/鉴权"]
-```
-
-![Kubernetes API 请求流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/f28e790438943eb2d9ad110d6f0eee98.svg)
-{width=1920 height=1485}
+![Kubernetes API 请求流程](api-request-flow.svg)
 
 Kubernetes API 遵循 RESTful 设计：
 
@@ -209,25 +107,7 @@ Kubernetes 对象是集群状态的持久实体，描述：
 
 标签（Label）是附加在对象上的键值对，用于组织和筛选对象。
 
-```mermaid "标签与选择器示例"
-flowchart LR
-    subgraph "Pod Selection Example"
-        L1["标签:
-        app: nginx
-        tier: frontend
-        environment: production"]
-        
-        S1["选择器:
-        app=nginx,tier=frontend"]
-    end
-    
-    S1 --> |"选中"| P1["Pod 1"]
-    S1 --> |"选中"| P2["Pod 2"]
-    S1 -.- |"未选中"| P3["Pod 3"]
-```
-
-![标签与选择器示例](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/3efaecfe88f1518f3c91ae43a80226c9.svg)
-{width=1920 height=1407}
+![标签与选择器：选中匹配的 Pod](label-selector-example.svg)
 
 标签常用于：
 
@@ -257,28 +137,7 @@ kubectl get pods --field-selector status.phase=Running
 
 命名空间用于在单集群内隔离资源，适合多租户场景。
 
-```mermaid "命名空间资源隔离示意"
-flowchart TD
-    subgraph "Kubernetes Cluster"
-        subgraph "default namespace"
-            D1["Deployment: app-1"]
-            D2["Service: app-1-svc"]
-        end
-        
-        subgraph "kube-system namespace"
-            KD1["Deployment: kube-dns"]
-            KD2["DaemonSet: kube-proxy"]
-        end
-        
-        subgraph "team-a namespace"
-            TD1["Deployment: app-2"]
-            TD2["Service: app-2-svc"]
-        end
-    end
-```
-
-![命名空间资源隔离示意](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/256e34eafa44266a7ed019fd31298309.svg)
-{width=1920 height=2195}
+![命名空间：单集群内的资源隔离](namespace-isolation.svg)
 
 Kubernetes 默认包含四个命名空间：
 
@@ -291,16 +150,7 @@ Kubernetes 默认包含四个命名空间：
 
 Kubernetes 通过 ownerReference 管理对象生命周期，实现级联删除。
 
-```mermaid "对象所有权与级联删除"
-flowchart TD
-    D["Deployment"] --> |"owns"| RS["ReplicaSet"]
-    RS --> |"owns"| P1["Pod 1"]
-    RS --> |"owns"| P2["Pod 2"]
-    RS --> |"owns"| P3["Pod 3"]
-```
-
-![对象所有权与级联删除](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/81b618988285148d04008ace255ff37f.svg)
-{width=1920 height=1619}
+![对象所有权与级联删除](owner-reference-cascade.svg)
 
 删除对象时可选择：
 
@@ -314,18 +164,7 @@ API Server 是控制面的核心，负责所有组件间通信与 API 暴露。
 
 ### API Server 请求处理流程
 
-```mermaid "API Server 请求处理流程"
-flowchart TD
-    subgraph "API Request Lifecycle"
-        A["认证"] --> B["鉴权"]
-        B --> C["准入控制"]
-        C --> D["校验"]
-        D --> E["etcd 存储"]
-    end
-```
-
-![API Server 请求处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/c8c8f549dfbfd64e8b486ff88e7e23f6.svg)
-{width=1920 height=273}
+![API Server 请求处理流程](api-server-request-lifecycle.svg)
 
 处理流程：
 
@@ -339,17 +178,7 @@ flowchart TD
 
 Server-Side Apply 支持多客户端协作管理资源字段，自动冲突检测与合并。
 
-```mermaid "Server-Side Apply 工作原理"
-flowchart LR
-    subgraph "Server-Side Apply"
-        C1["客户端 1"] --> |"PATCH (字段 A,B)"| API
-        C2["客户端 2"] --> |"PATCH (字段 C,D)"| API
-        API["API Server"] --> |"存储合并对象"| ETCD
-    end
-```
-
-![Server-Side Apply 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/03f8026feead4a6cccd0b17e50ef49dc.svg)
-{width=1920 height=2536}
+![Server-Side Apply：多客户端按字段协作](server-side-apply.svg)
 
 主要特性：
 
@@ -361,20 +190,7 @@ flowchart LR
 
 Kubernetes 支持多种扩展方式，无需修改核心代码即可适配不同场景。
 
-```mermaid "Kubernetes 扩展点"
-flowchart TD
-    subgraph "Extension Points"
-        API["API 扩展"] 
-        ADM["准入控制器"]
-        SCH["调度扩展"]
-        AUTH["认证扩展"]
-        CNI["网络插件"]
-        CSI["存储插件"]
-    end
-```
-
-![Kubernetes 扩展点](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/5e3544b6d0aa3987b4ca85c2b5f791c3.svg)
-{width=1920 height=5819}
+![Kubernetes 扩展点](extension-points.svg)
 
 {{< table title="Kubernetes 常见扩展机制" >}}
 
@@ -413,18 +229,7 @@ Kubernetes 提供多种日志与监控能力，便于集群与应用的运维。
 
 Kubernetes 组件通过 `/metrics` 端点暴露 Prometheus 格式指标。
 
-```mermaid "Kubernetes 指标采集流程"
-flowchart LR
-    M["指标采集器"] --> |"抓取"| K1["/metrics API Server"]
-    M --> |"抓取"| K2["/metrics Kubelet"]
-    M --> |"抓取"| K3["/metrics Scheduler"]
-    M --> |"抓取"| K4["/metrics Controller Manager"]
-    M --> |"存储"| DB["指标数据库"]
-    DB --> |"查询"| D["仪表盘"]
-```
-
-![Kubernetes 指标采集流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/e4f92ef0fabb10ce42feec2a76fc7174.svg)
-{width=1920 height=1470}
+![Kubernetes 指标采集流程](metrics-collection-flow.svg)
 
 这些指标有助于集群健康与性能监控。
 
@@ -432,19 +237,7 @@ flowchart LR
 
 Kubernetes 支持分布式追踪，便于跨组件操作的监控与故障排查。
 
-```mermaid "Kubernetes 分布式追踪流程"
-flowchart LR
-    C["客户端"] --> |"请求"| API["API Server"]
-    API --> |"追踪"| ETCD["etcd"]
-    API --> |"追踪"| WH["Webhook"]
-    
-    COLLECTOR["OpenTelemetry Collector"] --> |"收集 Span"| API
-    COLLECTOR --> |"收集 Span"| ETCD
-    COLLECTOR --> |"导出"| BACKEND["追踪后端"]
-```
-
-![Kubernetes 分布式追踪流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/architecture/overview/fdf532a60038e6ace80c41d750e2b512.svg)
-{width=1920 height=743}
+![Kubernetes 分布式追踪流程](distributed-tracing-flow.svg)
 
 系统组件通过 OpenTelemetry 协议记录操作延迟与依赖关系。
 

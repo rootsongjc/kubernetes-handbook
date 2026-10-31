@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2400" height="700" viewBox="0 0 1200 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="k9scomz-title k9scomz-desc" id="k9s-command-system-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="k9scomz-title">k9s 命令系统：从输入到执行</title>
+<desc id="k9scomz-desc">用户输入进入命令缓冲区，由命令解释器解析为命令对象；命令对象执行应用动作，或按资源、上下文、命名空间、特殊命令分派到对应执行逻辑。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #k9s-command-system-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #k9s-command-system-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #k9s-command-system-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#k9s-command-system-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="k9s-command-system-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="266" y="196" width="896" height="120" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="282" y="218" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">命令执行</text>
+<path d="M 233 124 L 291 124" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<rect x="246" y="101.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="262" y="113" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">输入</text>
+<path d="M 459 124 L 517 124" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<rect x="472" y="101.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="488" y="113" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">解释</text>
+<path d="M 685 124 L 743 124" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<rect x="698" y="101.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="714" y="113" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">解析</text>
+<path d="M 911 124 L 969 124" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<rect x="924" y="101.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="940" y="113" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">执行</text>
+<path d="M 827 156 L 827 228" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<path d="M 795 156 L 795 168 Q 795 176 787 176 L 609 176 Q 601 176 601 184 L 601 228" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<path d="M 795 156 L 795 168 Q 795 176 787 176 L 383 176 Q 375 176 375 184 L 375 228" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<path d="M 859 156 L 859 168 Q 859 176 867 176 L 1045 176 Q 1053 176 1053 184 L 1053 228" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#k9s-command-system-m-6b7280)"/>
+<rect x="69" y="96" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(102,106) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /> <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></g>
+<text x="172" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">User</text>
+<text x="172" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">用户输入</text>
+<rect x="295" y="96" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="375" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令缓冲区</text>
+<text x="375" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Command Buffer</text>
+<rect x="521" y="96" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="601" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令解释器</text>
+<text x="601" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Interpreter</text>
+<rect x="747" y="96" width="160" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="747" y="96" width="160" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="827" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命令对象</text>
+<text x="827" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Command Object</text>
+<rect x="973" y="96" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1053" y="120.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用动作</text>
+<text x="1053" y="137.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Application Action</text>
+<rect x="282" y="232" width="186" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(286.45,246) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /></g>
+<text x="398" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Resource Viewer</text>
+<text x="398" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">资源命令 → 资源视图</text>
+<rect x="508" y="232" width="186" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(528.35,246) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="624" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Context 切换</text>
+<text x="624" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">上下文命令</text>
+<rect x="734" y="232" width="186" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(744.6,246) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="850" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Namespace 切换</text>
+<text x="850" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">命名空间命令</text>
+<rect x="960" y="232" width="186" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(973.9,246) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="1076" y="260.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Special Action</text>
+<text x="1076" y="277.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">特殊命令</text>
+<text x="600" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">k9s 命令系统：从输入到执行</text>
+</g>
+</svg>

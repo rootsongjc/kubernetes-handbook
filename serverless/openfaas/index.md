@@ -27,49 +27,7 @@ OpenFaaS 具备以下主要特性：
 
 下图展示了 OpenFaaS 的整体架构及各组件关系。
 
-```mermaid "OpenFaaS 架构图"
-graph TD
-    subgraph "用户层"
-        DEVELOPER["开发者"]
-        CLI["faas-cli"]
-        UI["Web UI"]
-        API["REST API"]
-    end
-
-    subgraph "控制面"
-        GATEWAY["API Gateway<br/>路由和认证"]
-        WATCHDOG["Watchdog<br/>函数执行器"]
-    end
-
-    subgraph "数据面"
-        FUNCTIONS["函数实例<br/>容器化运行"]
-        AUTOSCALER["自动扩缩容器"]
-    end
-
-    subgraph "基础设施"
-        KUBERNETES["Kubernetes API"]
-        DOCKER["Docker Registry"]
-        PROMETHEUS["Prometheus<br/>监控"]
-    end
-
-    DEVELOPER --> CLI
-    DEVELOPER --> UI
-    CLI --> API
-    UI --> API
-
-    API --> GATEWAY
-    GATEWAY --> WATCHDOG
-    WATCHDOG --> FUNCTIONS
-
-    WATCHDOG --> AUTOSCALER
-    AUTOSCALER --> KUBERNETES
-
-    FUNCTIONS --> DOCKER
-    GATEWAY --> PROMETHEUS
-```
-
-![OpenFaaS 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/serverless/openfaas/7f4e69e130e13423a66bda0e2f5d2e63.svg)
-{width=1920 height=3647}
+![OpenFaaS 架构图](openfaas-architecture.svg)
 
 ### 组件说明
 

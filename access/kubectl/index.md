@@ -13,59 +13,13 @@ kubectl 是 Kubernetes 官方命令行工具，极大简化了 API 交互、认�
 
 Kubernetes API 是控制面的核心，提供 HTTP REST 接口，支持用户、集群组件及外部系统通信。kubectl 作为官方 CLI，负责处理认证、请求格式化与响应解析。
 
-```mermaid "kubectl 到 API Server 交互流程"
-flowchart LR
-    subgraph UserEnv["用户环境"]
-        K["kubectl 命令行"]
-        C["配置文件（.kube/config）"]
-        K -->|"读取"| C
-        C -->|"提供凭证和集群信息"| K
-        K -->|"HTTPS 请求"| APIServer
-    end
-
-    subgraph Cluster["Kubernetes 集群"]
-        APIServer["API Server"]
-        Auth["认证与授权"]
-        ETCD["etcd 存储"]
-        APIServer -->|"认证与授权"| Auth
-        APIServer -->|"存储与读取"| ETCD
-    end
-```
-
-![kubectl 到 API Server 交互流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubectl/90d8522b1c4d173fce941c1923b4c05d.svg)
-{width=1920 height=628}
+![kubectl 到 API Server 交互流程](kubectl-apiserver-flow.svg)
 
 ## Kubernetes API 基础
 
 Kubernetes API 遵循 RESTful 设计，支持标准 HTTP 动作（GET、POST、PUT、PATCH、DELETE）操作资源。资源按 API 组、版本、类型组织。
 
-```mermaid "Kubernetes API 结构"
-flowchart LR
-    subgraph HTTP["HTTP 方法（HTTP Methods）"]
-        GET["GET：列表 / 读取（List / Read）"]
-        POST["POST：创建（Create）"]
-        PUT["PUT：替换（Replace）"]
-        PATCH["PATCH：部分更新（Partial Update）"]
-        DELETE["DELETE：删除（Remove）"]
-    end
-
-    subgraph API["Kubernetes API 结构"]
-        A["API 根"]
-        B1["核心组<br/>/api/v1"]
-        B2["命名组<br/>/apis/{group}/{version}"]
-        C1["命名空间资源"]
-        C2["集群级资源"]
-        A --> B1
-        A --> B2
-        B1 --> C1
-        B2 --> C2
-        B1 --> C2
-        B2 --> C1
-    end
-```
-
-![Kubernetes API 结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubectl/1c99b2cb068f66b9340dd93e3521e8ec.svg)
-{width=1920 height=987}
+![Kubernetes API 结构](kubernetes-api-structure.svg)
 
 常见 API 路径模式：
 
@@ -77,26 +31,7 @@ flowchart LR
 
 kubectl 作为 API 客户端，将用户命令转为 HTTP 请求，读取 kubeconfig 配置集群、认证与上下文信息。
 
-```mermaid "kubectl 证书签发流程"
-sequenceDiagram
-    participant 用户 as User
-    participant API服务器 as API Server
-    participant 控制器 as Controller Manager
-    participant CSR资源 as CSR Resource
-
-    用户->>API服务器: 创建 CSR 资源
-    API服务器->>CSR资源: 存储 CSR
-    用户->>API服务器: 审批 CSR
-    API服务器->>CSR资源: 更新 status.conditions
-    控制器->>CSR资源: 监听已审批的 CSR
-    控制器->>控制器: 签发证书
-    控制器->>CSR资源: 存储签名证书到 status.certificate
-    用户->>API服务器: 获取 CSR
-    API服务器->>用户: 返回签名证书
-```
-
-![kubectl 证书签发流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubectl/eb4487a0e2cbaae9404782167d217556.svg)
-{width=1920 height=1256}
+![kubectl 证书签发流程](csr-signing-sequence.svg)
 
 ## kubectl 认证机制
 
@@ -108,40 +43,7 @@ kubectl 通过 kubeconfig 自动完成 API Server 认证，支持多种方式：
 - OAuth2 Token（外部插件）
 - 服务账号 Token（集群内）
 
-```mermaid "kubectl 认证流程"
-flowchart TB
-    CMD["kubectl 命令"]
-    CONFIG["配置文件（.kube/config）"]
-    CMD --> CONFIG
-
-    subgraph AUTH["认证方法"]
-        CERT["客户端证书（Client Certificate）"]
-        TOKEN["持有者令牌（Bearer Token）"]
-        BASIC["基本认证（Basic Auth）"]
-        OAUTH["OAuth2 认证"]
-        SA["服务账号（Service Account）"]
-    end
-
-    CONFIG --> CERT
-    CONFIG --> TOKEN
-    CONFIG --> BASIC
-    CONFIG --> OAUTH
-    CONFIG --> SA
-
-    CERT --> REQ
-    TOKEN --> REQ
-    BASIC --> REQ
-    OAUTH --> REQ
-    SA --> REQ
-
-    REQ["携带认证信息的 HTTP 请求"]
-    REQ --> APISERVER
-
-    APISERVER["Kubernetes API 服务器"]
-```
-
-![kubectl 认证流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubectl/49abe7da4d4cfc4ab63048cede84ea6d.svg)
-{width=1920 height=978}
+![kubectl 认证流程](kubectl-auth-flow.svg)
 
 ## kubectl 基本用法
 
@@ -221,38 +123,7 @@ kubectl 支持多种输出格式，便于脚本与自动化：
 
 Server-Side Apply 支持多管理者协作管理同一对象，追踪字段所有权，避免相互覆盖。
 
-```mermaid "Server-Side Apply 工作原理"
-flowchart TB
-    subgraph Managers["多管理者"]
-        U1["用户1（User 1）"]
-        U2["用户2（User 2）"]
-        CTRL["控制器"]
-    end
-
-    APPLY["执行命令：</br>kubectl apply --server-side"]
-    PATCH["生成 PATCH 请求：</br>application/apply-patch+yaml"]
-    APISERVER["API 服务器"]
-
-    U1 --> APPLY
-    U2 --> APPLY
-    CTRL --> APPLY
-    APPLY --> PATCH
-    PATCH --> APISERVER
-
-    subgraph Actions["API Server 执行动作"]
-        RECORD["记录字段所有权"]
-        STORE["存储带管理字段的对象"]
-    end
-
-    APISERVER --> RECORD
-    APISERVER --> STORE
-
-    RECORD --> TRACK["字段管理追踪"]
-    STORE --> ETCD["etcd 存储"]
-```
-
-![Server-Side Apply 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/access/kubectl/98f8a4fbb3eec5842ee4706d7bc37e03.svg)
-{width=1920 height=2859}
+![Server-Side Apply 工作原理](server-side-apply-flow.svg)
 
 关键点：
 

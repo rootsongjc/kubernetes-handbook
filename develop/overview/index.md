@@ -13,42 +13,7 @@ lastmod: 2025-10-27T17:26:39.720Z
 
 Kubernetes 作为云原生应用的首选平台，为开发者提供了丰富的开发工具和扩展机制。从简单的应用部署到复杂的分布式系统管理，Kubernetes 开发涵盖了从基础设施到应用的全栈开发能力。
 
-```mermaid "Kubernetes 开发生态全景"
-graph TD
-    subgraph "开发层次"
-        INFRA["基础设施层<br/>集群部署、网络配置"]
-        RUNTIME["运行时层<br/>容器化、调度优化"]
-        EXTENSION["扩展层<br/>API扩展、Operator模式"]
-        APPLICATION["应用层<br/>微服务、声明式配置"]
-    end
-
-    subgraph "开发工具"
-        KUBECTL["kubectl<br/>命令行工具"]
-        CLIENT_GO["client-go<br/>Go客户端库"]
-        OPERATOR_SDK["Operator SDK<br/>自动化开发"]
-        HELM["Helm<br/>包管理"]
-    end
-
-    subgraph "开发模式"
-        IMPERATIVE["命令式开发<br/>直接操作资源"]
-        DECLARATIVE["声明式开发<br/>YAML配置管理"]
-        GITOPS["GitOps<br/>代码即基础设施"]
-        PLATFORM["平台工程<br/>自助服务"]
-    end
-
-    INFRA --> KUBECTL
-    RUNTIME --> CLIENT_GO
-    EXTENSION --> OPERATOR_SDK
-    APPLICATION --> HELM
-
-    KUBECTL --> IMPERATIVE
-    CLIENT_GO --> DECLARATIVE
-    OPERATOR_SDK --> GITOPS
-    HELM --> PLATFORM
-```
-
-![Kubernetes 开发生态全景](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/9dba6ec28b291fd6adf6c391fa72b168.svg)
-{width=1920 height=1228}
+![Kubernetes 开发生态全景：开发层次、开发工具与开发模式](dev-ecosystem-landscape.svg)
 
 ## 核心开发理念
 
@@ -96,63 +61,13 @@ spec:
 
 Kubernetes 的核心是**控制循环（Control Loop）**，控制器持续监控实际状态与期望状态的差异，并自动调整：
 
-```mermaid "控制器模式"
-stateDiagram-v2
-    [*] --> 监听资源变化
-    监听资源变化 --> 比较期望与实际状态
-    比较期望与实际状态 --> 需要调节: 状态不一致
-    比较期望与实际状态 --> 无需操作: 状态一致
-    需要调节 --> 执行调节操作
-    执行调节操作 --> 更新资源状态
-    更新资源状态 --> [*]
-    无需操作 --> [*]
-
-    note right of 需要调节 : 调用Kubernetes API\n创建/修改/删除资源
-    note right of 执行调节操作 : 例如：扩缩容、故障恢复\n版本更新等
-```
-
-![控制器模式](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/75cfc48ca4033e91ae8da26d324773b8.svg)
-{width=1920 height=2523}
+![控制器模式：监听、比较、调节、更新的状态流转](controller-reconcile-loop.svg)
 
 ### 可扩展架构
 
 Kubernetes 的可扩展性体现在 API、调度、网络和运行时等多个层面，支持多样化的企业需求。
 
-```mermaid "Kubernetes 可扩展架构"
-graph TD
-    subgraph "API扩展"
-        CRD["自定义资源定义<br/>Custom Resource Definitions"]
-        WEBHOOK["准入控制器<br/>Admission Controllers"]
-        AGGREGATION["API聚合层<br/>API Aggregation"]
-    end
-
-    subgraph "调度扩展"
-        SCHEDULER_EXT["调度器插件<br/>Scheduler Plugins"]
-        DESCHEDULER["驱逐调度器<br/>Descheduler"]
-    end
-
-    subgraph "网络扩展"
-        CNI["容器网络接口<br/>Container Network Interface"]
-        CSI["容器存储接口<br/>Container Storage Interface"]
-        INGRESS["入口控制器<br/>Ingress Controllers"]
-    end
-
-    subgraph "运行时扩展"
-        CONTAINERD["容器运行时<br/>containerd/cri-o"]
-        DEVICE_PLUGIN["设备插件<br/>Device Plugins"]
-    end
-
-    CRD --> SCHEDULER_EXT
-    WEBHOOK --> CNI
-    AGGREGATION --> CONTAINERD
-
-    SCHEDULER_EXT --> DEVICE_PLUGIN
-    CNI --> INGRESS
-    CSI --> CONTAINERD
-```
-
-![Kubernetes 可扩展架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/e4132f78f7bf48083081c63644119451.svg)
-{width=1920 height=917}
+![Kubernetes 可扩展架构：API、调度、网络与运行时扩展点](extensibility-architecture.svg)
 
 ## 开发工具链
 
@@ -249,39 +164,7 @@ make test
 
 Kubernetes 开发模式经历了从传统单体到云原生、再到平台工程的演变。
 
-```mermaid "开发模式演进"
-graph LR
-    subgraph "传统开发"
-        MONOLITH["单体应用<br/>Monolithic"]
-        MANUAL["手动部署<br/>Manual Deployment"]
-        INFRA_SCRIPT["基础设施脚本<br/>Infrastructure as Scripts"]
-    end
-
-    subgraph "云原生转型"
-        MICROSERVICES["微服务架构<br/>Microservices"]
-        CONTAINER["容器化<br/>Containerization"]
-        ORCHESTRATION["编排调度<br/>Orchestration"]
-    end
-
-    subgraph "高级云原生"
-        DECLARATIVE["声明式配置<br/>Declarative Config"]
-        OPERATOR["Operator模式<br/>Operator Pattern"]
-        GITOPS["GitOps工作流<br/>GitOps Workflow"]
-        PLATFORM_ENG["平台工程<br/>Platform Engineering"]
-    end
-
-    MONOLITH --> MICROSERVICES
-    MANUAL --> CONTAINER
-    INFRA_SCRIPT --> ORCHESTRATION
-
-    MICROSERVICES --> DECLARATIVE
-    CONTAINER --> OPERATOR
-    ORCHESTRATION --> GITOPS
-    GITOPS --> PLATFORM_ENG
-```
-
-![开发模式演进](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/934fff02c006b937f1051070e8233d5c.svg)
-{width=1920 height=683}
+![开发模式演进：从传统开发、云原生转型到平台工程](dev-model-evolution.svg)
 
 ### 2025 年发展趋势
 
@@ -291,66 +174,13 @@ graph LR
 
 Kubernetes 支持 AI/ML 工作负载的模型服务、推理优化和分布式训练。
 
-```mermaid "AI/ML 原生集成"
-graph TD
-    subgraph "AI/ML 开发模式"
-        MODEL_SERVING["模型服务化<br/>Model Serving"]
-        INFERENCE_OPT["推理优化<br/>Inference Optimization"]
-        DISTRIBUTED_TRAINING["分布式训练<br/>Distributed Training"]
-        MLOPS["MLOps 流水线<br/>MLOps Pipelines"]
-    end
-
-    subgraph "Kubernetes 支持"
-        GPU_SCHEDULING["GPU调度<br/>GPU Scheduling"]
-        INFERENCE_SERVING["推理服务<br/>Inference Serving"]
-        KUBEFLOW["Kubeflow<br/>ML Pipelines"]
-        RAY["Ray Operator<br/>Distributed Computing"]
-    end
-
-    MODEL_SERVING --> GPU_SCHEDULING
-    INFERENCE_OPT --> INFERENCE_SERVING
-    DISTRIBUTED_TRAINING --> KUBEFLOW
-    MLOPS --> RAY
-```
-
-![AI/ML 原生集成](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/73849ada9afbf8f9b2aebb9b5f193d7b.svg)
-{width=1920 height=774}
+![AI/ML 原生集成：开发模式与 Kubernetes 支持的对应关系](ai-ml-native-integration.svg)
 
 #### 多云和混合云开发
 
 现代应用需要在多个云环境和混合基础设施上运行，提升弹性与可用性。
 
-```mermaid "多云和混合云开发"
-graph TD
-    subgraph "多云架构"
-        CROSSPLANE["Crossplane<br/>基础设施抽象"]
-        KARMADA["Karmada<br/>多集群管理"]
-        FEDERATION["Federation<br/>集群联邦"]
-    end
-
-    subgraph "混合云支持"
-        EDGE_COMPUTING["边缘计算<br/>Edge Computing"]
-        HYBRID_CLOUD["混合云部署<br/>Hybrid Deployment"]
-        BARE_METAL["裸金属支持<br/>Bare Metal Support"]
-    end
-
-    subgraph "开发工具"
-        TERRAFORM["Terraform<br/>基础设施即代码"]
-        ARGOCD["ArgoCD<br/>GitOps部署"]
-        VELERO["Velero<br/>备份恢复"]
-    end
-
-    CROSSPLANE --> TERRAFORM
-    KARMADA --> ARGOCD
-    FEDERATION --> VELERO
-
-    EDGE_COMPUTING --> CROSSPLANE
-    HYBRID_CLOUD --> KARMADA
-    BARE_METAL --> FEDERATION
-```
-
-![多云和混合云开发](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/ca305ce8f58d8389cb6e278f7373a92b.svg)
-{width=1920 height=1657}
+![多云和混合云开发：混合云场景、多云架构与开发工具](multi-cloud-hybrid-dev.svg)
 
 ## 开发环境配置
 
@@ -461,29 +291,7 @@ kind load docker-image my-app:latest --name my-cluster
 
 测试分层有助于保障系统稳定性和可维护性。
 
-```mermaid "测试策略"
-graph TD
-    subgraph "测试层次"
-        UNIT["单元测试<br/>Unit Tests<br/>80%"]
-        INTEGRATION["集成测试<br/>Integration Tests<br/>15%"]
-        E2E["端到端测试<br/>E2E Tests<br/>5%"]
-    end
-
-    subgraph "测试类型"
-        CONTROLLER["控制器测试<br/>Controller Tests"]
-        API["API 测试<br/>API Tests"]
-        OPERATOR["Operator 测试<br/>Operator Tests"]
-        PERFORMANCE["性能测试<br/>Performance Tests"]
-    end
-
-    UNIT --> CONTROLLER
-    INTEGRATION --> API
-    E2E --> OPERATOR
-    E2E --> PERFORMANCE
-```
-
-![测试策略](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/3be90a0aca743463fcf4bcb98f83fcd1.svg)
-{width=1920 height=890}
+![测试策略：测试金字塔层次与对应测试类型](testing-strategy.svg)
 
 ### 版本管理和发布
 
@@ -499,23 +307,7 @@ version: 1.2.3          # Chart 版本
 appVersion: "v1.2.3"    # 应用版本
 ```
 
-```mermaid "发布流程"
-graph LR
-    DEV["开发分支<br/>feature/*"] --> REVIEW["代码审查<br/>Pull Request"]
-    REVIEW --> CI["持续集成<br/>CI Pipeline"]
-    CI --> STAGING["预发布环境<br/>Staging"]
-    STAGING --> APPROVAL["发布批准<br/>Release Approval"]
-    APPROVAL --> PROD["生产环境<br/>Production"]
-    PROD --> MONITOR["监控反馈<br/>Monitoring"]
-
-    DEV -->|"Git Flow"| REVIEW
-    CI -->|"自动化测试"| STAGING
-    APPROVAL -->|"手动批准"| PROD
-    MONITOR -->|"指标监控"| DEV
-```
-
-![发布流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/155cfafb3d723ac1485f16773834161c.svg)
-{width=1922 height=172}
+![发布流程：从开发分支到生产环境及监控反馈闭环](release-pipeline.svg)
 
 ## 学习路径
 
@@ -550,42 +342,7 @@ Kubernetes 社区活跃，支持多种贡献和学习方式，助力开发者成
 
 贡献路径涵盖文档、代码、测试和设计讨论，社区活动丰富。
 
-```mermaid "开源贡献路径"
-graph TD
-    subgraph "贡献路径"
-        ISSUE["发现问题<br/>Report Issues"]
-        PR["提交补丁<br/>Submit PRs"]
-        REVIEW["代码审查<br/>Code Review"]
-        MAINTAIN["维护项目<br/>Maintain Projects"]
-    end
-
-    subgraph "贡献类型"
-        DOC["文档改进<br/>Documentation"]
-        CODE["代码贡献<br/>Code Contribution"]
-        TEST["测试编写<br/>Testing"]
-        DESIGN["设计讨论<br/>Design Discussion"]
-    end
-
-    subgraph "社区参与"
-        MEETUP["线下聚会<br/>Meetups"]
-        CONFERENCE["技术大会<br/>Conferences"]
-        SIG["特别兴趣组<br/>SIGs"]
-        BLOG["技术博客<br/>Blog Posts"]
-    end
-
-    ISSUE --> DOC
-    PR --> CODE
-    REVIEW --> TEST
-    MAINTAIN --> DESIGN
-
-    DOC --> MEETUP
-    CODE --> CONFERENCE
-    TEST --> SIG
-    DESIGN --> BLOG
-```
-
-![开源贡献路径](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/overview/2affd3ec208e9b80b165df00bdfd0af3.svg)
-{width=1920 height=1343}
+![开源贡献路径：贡献路径、贡献类型与社区参与](open-source-contribution-path.svg)
 
 ### 学习资源
 

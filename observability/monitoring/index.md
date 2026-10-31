@@ -16,39 +16,7 @@ lastmod: 2025-10-19T12:06:26.872Z
 
 下图展示了 Kubernetes 监控体系的分层结构及数据流转关系。
 
-```mermaid "Kubernetes 监控层次结构"
-graph TD
-    subgraph "基础设施层"
-        NODE[节点监控]
-        CLUSTER[集群监控]
-        NETWORK[网络监控]
-    end
-
-    subgraph "平台层"
-        KUBERNETES[Kubernetes 组件]
-        ETCD[etcd 数据库]
-        API_SERVER[API Server]
-    end
-
-    subgraph "应用层"
-        PODS[Pod 监控]
-        SERVICES[服务监控]
-        APPLICATIONS[应用指标]
-    end
-
-    subgraph "业务层"
-        BUSINESS[业务指标]
-        USER_EXP[用户体验]
-        SLA[SLA 监控]
-    end
-
-    NODE --> KUBERNETES
-    KUBERNETES --> PODS
-    PODS --> BUSINESS
-```
-
-![Kubernetes 监控层次结构](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/monitoring/3eebec98d1d070ca386316be3ad8adc3.svg)
-{width=1920 height=2397}
+![Kubernetes 监控层次结构：基础设施层、平台层、应用层与业务层](monitoring-layers.svg)
 
 监控体系覆盖：
 
@@ -73,40 +41,7 @@ Prometheus 是云原生监控的事实标准，具备强大的数据模型和查
 
 下图展示了 Prometheus 的核心架构及数据流转。
 
-```mermaid "Prometheus 架构与数据流"
-graph TD
-    subgraph "数据收集"
-        EXPORTERS[各种导出器]
-        PUSHGATEWAY[推送网关]
-        CLIENT_LIBS[客户端库]
-    end
-
-    subgraph "Prometheus 核心"
-        PROMETHEUS_SERVER[Prometheus Server]
-        TSDB[(时序数据库)]
-        PROMQL[PromQL 查询引擎]
-    end
-
-    subgraph "数据消费"
-        ALERTMANAGER[Alertmanager]
-        GRAFANA[Grafana]
-        HPA[HPA]
-    end
-
-    EXPORTERS --> PROMETHEUS_SERVER
-    PUSHGATEWAY --> PROMETHEUS_SERVER
-    CLIENT_LIBS --> PROMETHEUS_SERVER
-
-    PROMETHEUS_SERVER --> TSDB
-    PROMETHEUS_SERVER --> PROMQL
-
-    PROMQL --> ALERTMANAGER
-    PROMQL --> GRAFANA
-    PROMQL --> HPA
-```
-
-![Prometheus 架构与数据流](https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/monitoring/4645bc85c438bae00b79369e06b05dfb.svg)
-{width=1920 height=2203}
+![Prometheus 架构与数据流：数据收集、Prometheus 核心与数据消费](prometheus-architecture.svg)
 
 核心特性：
 

@@ -24,20 +24,7 @@ ValidatingWebhook 常见应用包括：
 
 下图展示了 ValidatingWebhook 在 Kubernetes 请求处理流程中的位置：
 
-```mermaid "ValidatingWebhook 工作机制"
-sequenceDiagram
-    participant User
-    participant APIServer
-    participant ValidatingWebhook
-
-    User->>APIServer: 创建 Pod 请求
-    APIServer->>ValidatingWebhook: AdmissionReview (包含 Pod 对象)
-    ValidatingWebhook-->>APIServer: AdmissionResponse (allowed: false)
-    APIServer-->>User: 拒绝创建 Pod
-```
-
-![ValidatingWebhook 工作机制](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/validating-webhook/7052ab1c70c970da081974eb94b006cc.svg)
-{width=1920 height=903}
+![ValidatingWebhook 工作机制](validating-webhook-sequence.svg)
 
 ValidatingWebhook 作为最终的校验层，在 MutatingWebhook 之后执行。一旦 Webhook 返回拒绝响应，API Server 将直接中止该请求并向用户返回错误信息。
 

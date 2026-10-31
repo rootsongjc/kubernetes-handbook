@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="940" viewBox="0 0 1080 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="minikuz-title minikuz-desc" id="minikube-driver-system-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="minikuz-title">Minikube 驱动系统</title>
+<desc id="minikuz-desc">驱动管理器经驱动 API 统一调度三类驱动：VM 驱动（VirtualBox、KVM、HyperKit、Hyper-V）、容器驱动（KIC，再由 Docker 或 Podman 承载）和其他驱动（None、SSH）。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #minikube-driver-system-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #minikube-driver-system-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #minikube-driver-system-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#minikube-driver-system-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="minikube-driver-system-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="26" y="212" width="484" height="112" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="268" y="234" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">VM 驱动</text>
+<rect x="530" y="212" width="252" height="212" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="546" y="234" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">容器驱动</text>
+<rect x="802" y="212" width="252" height="112" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="928" y="234" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">其他驱动</text>
+<path d="M 540 164 L 540 192" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 94 192 L 986 192" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 94 192 L 94 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 210 192 L 210 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 326 192 L 326 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 442 192 L 442 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 656 192 L 656 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 870 192 L 870 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 986 192 L 986 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 656 312 L 656 330" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 598 330 L 714 330" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 598 330 L 598 348" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<path d="M 714 330 L 714 348" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#minikube-driver-system-m-6b7280)"/>
+<rect x="420" y="96" width="240" height="64" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="420" y="96" width="240" height="64" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(453.04,110) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="563" y="124.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">驱动接口</text>
+<text x="563" y="141.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">驱动管理器 → 驱动 API</text>
+<rect x="42" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="94" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">VirtualBox</text>
+<rect x="158" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="210" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">KVM</text>
+<rect x="274" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="326" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HyperKit</text>
+<rect x="390" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="442" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Hyper-V</text>
+<rect x="556" y="252" width="200" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="656" y="276.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">KIC</text>
+<text x="656" y="292.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes in Container</text>
+<rect x="546" y="352" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="598" y="384.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Docker</text>
+<rect x="662" y="352" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="714" y="384.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Podman</text>
+<rect x="818" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="870" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">None</text>
+<rect x="934" y="252" width="104" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="986" y="284.9" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">SSH</text>
+<text x="540" y="454" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">驱动 API 把机器置备抽象成统一接口；KIC 用专用基础镜像在容器里运行 Kubernetes，由 Docker 或 Podman 承载。</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Minikube 驱动系统</text>
+</g>
+</svg>

@@ -31,18 +31,7 @@ API Server 会自动生成该类型的 REST 接口，并提供以下支持：
 
 整个过程不需要编写或部署额外的 API Server。
 
-```mermaid "CRD 工作原理"
-flowchart LR
-  subgraph APIServer["kube-apiserver"]
-    A[Built-in API: /api/v1, /apis/apps/v1]
-    B[Custom API: /apis/example.com/v1]
-  end
-  Client["kubectl / client-go"] --> APIServer
-  APIServer --> etcd[(etcd Storage)]
-```
-
-![CRD 工作原理](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/crd/09b8d8acc744b3243b08beb32f77a4e3.svg)
-{width=1920 height=338}
+![CRD 工作原理](crd-api-extension.svg)
 
 ## CRD 的定义结构
 
@@ -135,21 +124,7 @@ CRD 通常与 **控制器（Controller）** 搭配使用。
 
 CRD 负责定义“期望状态”，控制器负责**实现状态收敛**。
 
-```mermaid "CRD 与控制器协作流程"
-sequenceDiagram
-  participant User as 用户
-  participant KubeAPIServer as API Server
-  participant Controller as 自定义控制器
-  participant Resource as 外部系统
-
-  User->>KubeAPIServer: 创建 Database CR (spec)
-  KubeAPIServer->>Controller: 通知变更事件
-  Controller->>Resource: 创建实际数据库实例
-  Controller-->>KubeAPIServer: 更新 status 状态
-```
-
-![CRD 与控制器协作流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/extend/crd/ec92ff96f7af235d32d33a39616f68d7.svg)
-{width=1920 height=760}
+![CRD 与控制器协作流程](crd-controller-sequence.svg)
 
 这种模式被称为 **Operator 模式**，是构建云原生自动化系统的标准做法。
 

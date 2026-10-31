@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2120" height="1120" viewBox="0 0 1060 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cnicomz-title cnicomz-desc" id="cni-component-relationships-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="cnicomz-title">CNI 组件关系</title>
+<desc id="cnicomz-desc">容器运行时调用 libcni（或直接实现 CNI 规范）；libcni 执行网络插件；网络插件基于插件骨架 pkg/skel 并遵循规范；libcni 与插件骨架都实现规范。规范、libcni 与骨架同属 CNI 仓库。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cni-component-relationships-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #cni-component-relationships-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #cni-component-relationships-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#cni-component-relationships-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="cni-component-relationships-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="320" y="96" width="360" height="420" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="336" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">CNI 仓库</text>
+<path d="M 244 271.6 L 272 271.6 Q 280 271.6 280 263.6 L 280 178 Q 280 170 288 170 L 340 170" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="244" y="201.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="272" y="213" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">调用</text>
+<path d="M 244 300.4 L 340 300.4" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="258" y="306.4" width="68" height="16.6" style="fill:#ffffff"/>
+<text x="292" y="318" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">可直接实现</text>
+<path d="M 500 214 L 500 262" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="504" y="230.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="508" y="242.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">实现</text>
+<path d="M 500 398 L 500 350" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="504" y="366.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="508" y="378.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">实现</text>
+<path d="M 660 170 L 732 170 Q 740 170 740 178 L 740 260 Q 740 268 748 268 L 796 268" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="744" y="199.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="748" y="211.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">执行</text>
+<path d="M 796 286 L 660 286" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="712" y="263.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="728" y="275" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">遵循</text>
+<path d="M 796 304 L 768 304 Q 760 304 760 312 L 760 434 Q 760 442 752 442 L 660 442" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#cni-component-relationships-m-6b7280)"/>
+<rect x="724" y="397.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="752" y="409.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">基于</text>
+<rect x="40" y="250" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(54.84,268) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="163" y="282.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">容器运行时</text>
+<text x="163" y="299.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">containerd / CRI-O</text>
+<rect x="344" y="130" width="312" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(415.32,152) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2" /> <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2" /></g>
+<text x="523" y="166.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">libcni 库</text>
+<text x="523" y="183.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">pkg/types · libcni/</text>
+<rect x="344" y="266" width="312" height="80" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="344" y="266" width="312" height="80" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(443.85,288) scale(1.5)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="523" y="302.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CNI 规范</text>
+<text x="523" y="319.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">SPEC.md</text>
+<rect x="344" y="402" width="312" height="80" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(447,424) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /> <path d="M12 19l7 0" /></g>
+<text x="523" y="438.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">插件骨架</text>
+<text x="523" y="455.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">pkg/skel</text>
+<rect x="800" y="250" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(820,268) scale(1.5)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="923" y="282.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络插件</text>
+<text x="923" y="299.95" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">bridge / macvlan …</text>
+<text x="530" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CNI 组件关系</text>
+<line x1="377.36" y1="536" x2="397.36" y2="536" style="stroke:#6b7280" stroke-width="1.7"/>
+<text x="405.36" y="540" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">调用 / 实现 / 遵循</text>
+<line x1="522.64" y1="536" x2="542.64" y2="536" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="550.64" y="540" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">可选：运行时直接实现规范</text>
+</g>
+</svg>

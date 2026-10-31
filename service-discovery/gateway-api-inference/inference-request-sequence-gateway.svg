@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="1638" viewBox="0 0 1080 819" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="inferez-title inferez-desc" id="inference-request-sequence-gateway-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="inferez-title">推理请求处理时序（一）：网关、BBR 与 EPP</title>
+<desc id="inferez-desc">客户端发出 OpenAI 格式请求；Envoy 经 ext-proc 让 BBR 从请求体提取模型名并注入头部，按头部匹配 HTTPRoute 到 InferencePool；再经 ext-proc 让 EPP 选择目标端点，最后把请求转发到选定 Pod 并将推理响应返回客户端。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #inference-request-sequence-gateway-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #inference-request-sequence-gateway-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #inference-request-sequence-gateway-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#inference-request-sequence-gateway-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="inference-request-sequence-gateway-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="inference-request-sequence-gateway-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<line x1="120" y1="150" x2="120" y2="807.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="330" y1="150" x2="330" y2="807.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="540" y1="150" x2="540" y2="807.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="750" y1="150" x2="750" y2="807.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="960" y1="150" x2="960" y2="807.5" style="stroke:rgba(29,29,31,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+<path d="M 124 190 L 326 190" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 334 250 L 536 250" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 544 296 L 596 296 Q 604 296 604 304 L 604 322.5 Q 604 330.5 596 330.5 L 544 330.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 536 376.5 L 334 376.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 334 422.5 L 386 422.5 Q 394 422.5 394 430.5 L 394 449 Q 394 457 386 457 L 334 457" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 334 503 L 746 503" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<rect x="424.64" y="484.8" width="230.72" height="13.2" style="fill:#ffffff"/>
+<path d="M 754 549 L 806 549 Q 814 549 814 557 L 814 575.5 Q 814 583.5 806 583.5 L 754 583.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<path d="M 746 629.5 L 334 629.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<rect x="439.28" y="611.3" width="201.44" height="13.2" style="fill:#ffffff"/>
+<path d="M 334 675.5 L 956 675.5" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#inference-request-sequence-gateway-m-0a84ff)"/>
+<rect x="597.68" y="657.3" width="94.64" height="13.2" style="fill:#ffffff"/>
+<path d="M 956 721.5 L 334 721.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<rect x="617" y="703.3" width="56" height="13.2" style="fill:#ffffff"/>
+<path d="M 326 767.5 L 124 767.5" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#inference-request-sequence-gateway-m-6b7280)"/>
+<rect x="34.48" y="92" width="171.04" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(50.48,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l18 0" /> <path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8" /></g>
+<text x="141.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AI/ML Client</text>
+<text x="141.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">OpenAI 兼容</text>
+<rect x="231.32" y="92" width="197.36" height="58" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="231.32" y="92" width="197.36" height="58" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(247.32,104.50) scale(1.375)" style="color:#0a84ff" fill="currentColor"><path d="m23.351 7.593-7.068-4.379a1.034 1.034 0 0 0-.84-.117c-.02.01-.052.021-.074.032L8.471 6.105a.695.695 0 0 0-.435.68l.17 7.355c.01.298.191.595.478.765l7.068 4.38c.255.159.574.201.84.116.02-.01.053-.021.074-.032l6.898-2.976a.705.705 0 0 0 .436-.68l-.17-7.355c-.011-.297-.192-.584-.479-.765m-7.185 10.044-6.143-3.805-.149-6.388 5.995-2.583 6.143 3.805.149 6.388zm.011-6.027a.832.832 0 0 0-.414-.67l-5.06-3.135-.159.064.032 1.52 4.007 2.487.095 4.06 1.53.946.086-.032zm-6.058 7.132L5.41 15.83l-.116-4.89 2.146-.924-.042-1.69-3.327 1.435a.611.611 0 0 0-.382.595l.138 5.74c0 .265.16.52.414.67l5.516 3.422c.224.138.5.18.734.106a.15.15 0 0 1 .064-.021l3.252-1.403-1.616-1zm-2.615-6.1-1.52-.947.032 1.446 1.52.946zm2.19 5.059-.032-1.414-1.329-.83c-.021-.01-.042-.031-.053-.042l.032 1.425zm-4.751 1.902-3.476-2.158-.085-3.613 1.7-.734-.031-1.445-2.72 1.17a.527.527 0 0 0-.33.51l.106 4.336c0 .223.138.446.35.574l4.167 2.582a.822.822 0 0 0 .627.096c.021-.01.043-.01.064-.021l2.561-1.106-1.392-.86Z"/></g>
+<text x="351.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Gateway / Envoy</text>
+<text x="351.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ext-proc 调用方</text>
+<rect x="454.76" y="92" width="170.48" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(470.76,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /></g>
+<text x="561.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">BBR ExtProc</text>
+<text x="561.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">pkg/bbr</text>
+<rect x="663" y="92" width="174" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(679,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /> <path d="M21 7h-8l-3.495 5" /> <path d="M18 10l3 -3l-3 -3" /> <path d="M18 20l3 -3l-3 -3" /></g>
+<text x="771.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">EPP</text>
+<text x="771.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">pkg/epp/extproc</text>
+<rect x="859.08" y="92" width="201.84" height="58" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(875.08,104.5) scale(1.375)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="981.5" y="117.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Model Server Pod</text>
+<text x="981.5" y="133.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">vLLM 等</text>
+<text x="225" y="182" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">POST /v1/completions</text>
+<text x="225" y="205" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">{&quot;model&quot;: &quot;llama-3.1-8b&quot;, ...}</text>
+<text x="435" y="242" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ProcessingRequest(headers, body)</text>
+<text x="614" y="317.25" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">从 JSON body 提取 model</text>
+<text x="435" y="368.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">添加 X-Gateway-Model-Name 头</text>
+<text x="404" y="436.75" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">按头部匹配 HTTPRoute</text>
+<text x="404" y="451.75" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">路由到 InferencePool 后端</text>
+<text x="540" y="495" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ProcessingRequest(headers, body)</text>
+<text x="824" y="570.25" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">选择目标端点（见下图）</text>
+<text x="540" y="621.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ProcessingResponse(headers)</text>
+<text x="645" y="667.5" style="fill:#0060df" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">转发到选定 Pod</text>
+<text x="645" y="713.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">推理响应</text>
+<text x="225" y="759.5" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">200 OK + response</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">推理请求处理时序（一）：网关、BBR 与 EPP</text>
+</g>
+</svg>

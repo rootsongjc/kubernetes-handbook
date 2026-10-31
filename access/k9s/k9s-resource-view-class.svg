@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1120" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="k9sresz-title k9sresz-desc" id="k9s-resource-view-class-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="k9sresz-title">k9s 资源视图类图</title>
+<desc id="k9sresz-desc">ResourceViewer 接口定义 Init、App、Start、Stop、GetTable；Browser 与 LogViewer 实现该接口，Browser 组合一个 Table 组件展示表格数据。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #k9s-resource-view-class-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #k9s-resource-view-class-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #k9s-resource-view-class-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#k9s-resource-view-class-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="k9s-resource-view-class-m-uml-realize" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0, 13 6, 0 12" style="fill:#ffffff;stroke:#1d1d1f" stroke-width="1.2"/></marker>
+<marker id="k9s-resource-view-class-m-uml-compose" markerWidth="16" markerHeight="10" refX="1" refY="5" orient="auto" markerUnits="userSpaceOnUse"><polygon points="1 5, 8 0, 15 5, 8 10" style="fill:#1d1d1f;stroke:#1d1d1f" stroke-width="1"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M500,276 V236" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#k9s-resource-view-class-m-uml-realize)"/>
+<path d="M190,276 H830" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<path d="M190,316 V276" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<path d="M830,316 V276" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<rect x="510" y="282" width="32" height="17" style="fill:#ffffff"/>
+<path d="M344,340 H396" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-start="url(#k9s-resource-view-class-m-uml-compose)"/>
+<rect x="330" y="96" width="340" height="136" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="330" y="96" width="340" height="136" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="500" y="111" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">«interface»</text>
+<text x="500" y="127" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ResourceViewer</text>
+<line x1="330" y1="136" x2="670" y2="136" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="342" y="156" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Init(context.Context) error</text>
+<text x="342" y="172" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ App() *App</text>
+<text x="342" y="188" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Start()</text>
+<text x="342" y="204" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Stop()</text>
+<text x="342" y="220" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ GetTable() *Table</text>
+<rect x="40" y="320" width="300" height="168" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="190" y="345" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Browser</text>
+<line x1="40" y1="360" x2="340" y2="360" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="52" y="380" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- table *Table</text>
+<text x="52" y="396" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- accessor dao.Accessor</text>
+<text x="52" y="412" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- meta *metav1.APIResource</text>
+<line x1="40" y1="424" x2="340" y2="424" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="52" y="444" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Init(context.Context)</text>
+<text x="52" y="460" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SetInstance(path)</text>
+<text x="52" y="476" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SetContextFn(ContextFunc)</text>
+<rect x="400" y="320" width="260" height="152" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="530" y="345" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Table</text>
+<line x1="400" y1="360" x2="660" y2="360" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="412" y="380" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- model *model.Table</text>
+<line x1="400" y1="392" x2="660" y2="392" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="412" y="412" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Init(context)</text>
+<text x="412" y="428" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Update(data)</text>
+<text x="412" y="444" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Start()</text>
+<text x="412" y="460" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Stop()</text>
+<rect x="700" y="320" width="260" height="136" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="830" y="345" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">LogViewer</text>
+<line x1="700" y1="360" x2="960" y2="360" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="712" y="380" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- model *model.Log</text>
+<text x="712" y="396" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">- logs *Logger</text>
+<line x1="700" y1="408" x2="960" y2="408" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="712" y="428" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ Init(context.Context)</text>
+<text x="712" y="444" style="fill:#1d1d1f" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">+ SetContainer(container)</text>
+<text x="514" y="295" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">实现</text>
+<text x="370" y="332" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">1</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">k9s 资源视图类图</text>
+<line x1="310.95" y1="532" x2="330.95" y2="532" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="338.95" y="536" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">实现（Realization）</text>
+<line x1="471.41" y1="532" x2="491.41" y2="532" style="stroke:#6b7280" stroke-width="1.7"/>
+<text x="499.41" y="536" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">组合（Composition，菱形在拥有方）</text>
+</g>
+</svg>

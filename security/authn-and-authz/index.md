@@ -15,20 +15,7 @@ Kubernetes 通过多层认证、鉴权与准入控制机制，确保 API 访问�
 
 Kubernetes API Server 在处理每个请求时，依次经过认证、鉴权和准入控制三个阶段，确保请求的合法性与合规性。
 
-```mermaid "Kubernetes API 安全处理流程"
-flowchart TD
-    Request["API Request"] --> Auth["Authentication"]
-    Auth -->|"User identity established"| Authz["Authorization"]
-    Authz -->|"Permission granted"| Admission["Admission Controllers"]
-    Admission --> APIServer["API Server Processing"]
-
-    Auth -->|"Authentication failed"| Reject1["Reject with 401 Unauthorized"]
-    Authz -->|"Permission denied"| Reject2["Reject with 403 Forbidden"]
-    Admission -->|"Request denied by policy"| Reject3["Reject with error"]
-```
-
-![Kubernetes API 安全处理流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/801cb980a749aa71a4a2f3a5cc462e06.svg)
-{width=1920 height=1744}
+![Kubernetes API 请求安全处理流程](api-request-security-pipeline.svg)
 
 ## 用户类型与身份来源
 
@@ -39,30 +26,7 @@ Kubernetes 区分两类用户：
 
 下图展示了用户身份来源与 API Server 的关系：
 
-```mermaid "Kubernetes 用户身份来源"
-flowchart LR
-    subgraph "External Identity Systems"
-        Cert["X.509 Certificates"]
-        OIDC["OpenID Connect"]
-        LDAP["LDAP/AD"]
-        Static["Static Token Files"]
-    end
-
-    subgraph "Kubernetes"
-        API["API Server"]
-        SA["ServiceAccounts\
-(Kubernetes Resources)"]
-    end
-
-    Cert --> API
-    OIDC --> API
-    LDAP --> API
-    Static --> API
-    SA --> API
-```
-
-![Kubernetes 用户身份来源](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/5145a1edfcb3c8522e295f633f42d6e9.svg)
-{width=1920 height=2268}
+![Kubernetes 用户身份来源](user-identity-sources.svg)
 
 ## 认证机制（Authentication）
 
@@ -85,39 +49,7 @@ flowchart LR
 
 #### 认证流程示意
 
-```mermaid "多认证模块短路流程"
-sequenceDiagram
-    actor User
-    participant APIServer as "kube-apiserver"
-    participant Auth1 as "Auth Module 1"
-    participant Auth2 as "Auth Module 2"
-    participant AuthN as "Auth Module N"
-
-    User->>APIServer: Request with credentials
-    APIServer->>Auth1: Try authentication
-
-    alt Auth1 succeeds
-        Auth1-->>APIServer: Authentication successful
-    else Auth1 returns "no opinion"
-        APIServer->>Auth2: Try authentication
-        alt Auth2 succeeds
-            Auth2-->>APIServer: Authentication successful
-        else Auth2 returns "no opinion"
-            APIServer->>AuthN: Try authentication
-            alt AuthN succeeds
-                AuthN-->>APIServer: Authentication successful
-            else All authenticators return "no opinion"
-                AuthN-->>APIServer: Authentication failed
-                APIServer-->>User: 401 Unauthorized
-            end
-        end
-    end
-
-    APIServer->>APIServer: Continue to Authorization
-```
-
-![多认证模块短路流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/e480392cebc83ca5e27bcf221cab57ee.svg)
-{width=1920 height=1659}
+![多认证模块短路流程](authn-module-short-circuit.svg)
 
 ### 典型认证方式说明
 
@@ -160,26 +92,7 @@ sequenceDiagram
 
 每个鉴权器依次判定，首个明确允许/拒绝即返回结果，否则最终拒绝。
 
-```mermaid "多鉴权器判定流程"
-flowchart TD
-    Request["Authenticated Request"] --> Auth1["Authorizer 1"]
-    Auth1 -->|"Approve"| Approve["Request Allowed"]
-    Auth1 -->|"Deny"| Deny["Request Denied (403 Forbidden)"]
-    Auth1 -->|"No Opinion"| Auth2["Authorizer 2"]
-
-    Auth2 -->|"Approve"| Approve
-    Auth2 -->|"Deny"| Deny
-    Auth2 -->|"No Opinion"| Auth3["Authorizer 3"]
-
-    Auth3 -->|"Approve"| Approve
-    Auth3 -->|"Deny"| Deny
-    Auth3 -->|"No Opinion"| NoOpinion["All returned No Opinion"]
-
-    NoOpinion --> Deny
-```
-
-![多鉴权器判定流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/a9194330cb1883ebf281a609d755d159.svg)
-{width=1920 height=2177}
+![多鉴权器判定流程](authorizer-chain-decision.svg)
 
 ## RBAC 授权机制
 
@@ -190,42 +103,7 @@ RBAC（基于角色的访问控制）是 Kubernetes 推荐的权限管理方式�
 - **Role/ClusterRole**：定义权限规则（命名空间/集群级）
 - **RoleBinding/ClusterRoleBinding**：将用户/组/服务账号绑定到角色
 
-```mermaid "RBAC 对象关系"
-flowchart TD
-    subgraph "Namespace-scoped"
-        Role["Role\
-(permissions in a namespace)"]
-        RoleBinding["RoleBinding\
-(links subjects to Role)"]
-    end
-
-    subgraph "Cluster-scoped"
-        ClusterRole["ClusterRole\
-(cluster-wide permissions)"]
-        ClusterRoleBinding["ClusterRoleBinding\
-(links subjects to ClusterRole)"]
-    end
-
-    subgraph "Subjects"
-        User["User"]
-        Group["Group"]
-        SA["ServiceAccount"]
-    end
-
-    User --> RoleBinding
-    User --> ClusterRoleBinding
-    Group --> RoleBinding
-    Group --> ClusterRoleBinding
-    SA --> RoleBinding
-    SA --> ClusterRoleBinding
-
-    Role --> RoleBinding
-    ClusterRole --> RoleBinding
-    ClusterRole --> ClusterRoleBinding
-```
-
-![RBAC 对象关系](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/7fd89242eca29d6231168fa9de22eb96.svg)
-{width=1920 height=533}
+![RBAC 对象关系](rbac-object-relations.svg)
 
 ### 角色与绑定示例
 
@@ -236,38 +114,7 @@ flowchart TD
 
 准入控制器在认证与鉴权后、对象持久化前拦截请求，分为变更型（Mutating）和校验型（Validating）两阶段。
 
-```mermaid "准入控制流程"
-flowchart LR
-    Request["Authorized Request"] --> MutPhase["Mutating Phase"]
-    MutPhase --> ValPhase["Validating Phase"]
-    ValPhase --> Persist["Persist Object"]
-
-    subgraph "Mutating Admission Controllers"
-        MutWebhook["MutatingAdmissionWebhook"]
-        MutOther["Other Mutating Controllers"]
-    end
-
-    subgraph "Validating Admission Controllers"
-        ValWebhook["ValidatingAdmissionWebhook"]
-        ValPolicy["ValidatingAdmissionPolicy"]
-        ValOther["Other Validating Controllers"]
-    end
-
-    MutPhase --> MutOther
-    MutPhase --> MutWebhook
-    ValPhase --> ValWebhook
-    ValPhase --> ValPolicy
-    ValPhase --> ValOther
-
-    MutOther -->|"Reject"| Reject["Reject Request"]
-    MutWebhook -->|"Reject"| Reject
-    ValWebhook -->|"Reject"| Reject
-    ValPolicy -->|"Reject"| Reject
-    ValOther -->|"Reject"| Reject
-```
-
-![准入控制流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/5887d76552c5efb30719f07a5fd6a7db.svg)
-{width=1920 height=1100}
+![准入控制流程](admission-control-phases.svg)
 
 常用准入控制器包括 PodSecurity、ResourceQuota、LimitRanger、ServiceAccount、MutatingAdmissionWebhook、ValidatingAdmissionWebhook 等。
 
@@ -294,40 +141,11 @@ Kubernetes 支持对 etcd 中敏感资源静态加密：
 
 下图展示了用户从身份认证到资源持久化的全流程：
 
-```mermaid "Kubernetes 认证与鉴权全流程"
-sequenceDiagram
-    actor User
-    participant OIDC as "Identity Provider<br>(OIDC, LDAP, etc.)"
-    participant kubectl
-    participant APIServer as "API Server"
-    participant Etcd as "etcd"
-    participant Auth as "Authenticators"
-    participant Authz as "Authorizers<br>(RBAC, ABAC, etc.)"
-    participant AdmCtrl as "Admission Controllers"
+![Kubernetes 认证与鉴权全流程（总览）](full-flow-overview.svg)
 
-    User->>OIDC: 1. Authenticate user
-    OIDC-->>User: 2. Credentials (token, cert)
-    User->>kubectl: 3. Use credentials
-    kubectl->>APIServer: 4. Request with credentials
+步骤 5–10 发生在 API Server 内部，下图展开认证器、鉴权器与准入控制器之间的交互：
 
-    APIServer->>Auth: 5. Authenticate request
-    Auth-->>APIServer: 6. User identity
-
-    APIServer->>Authz: 7. Authorize request
-    Authz-->>APIServer: 8. Authorization decision
-
-    APIServer->>AdmCtrl: 9. Admission control
-    AdmCtrl-->>APIServer: 10. Admission decision
-
-    APIServer->>Etcd: 11. Persist resource
-    Etcd-->>APIServer: 12. Confirmation
-
-    APIServer-->>kubectl: 13. Response
-    kubectl-->>User: 14. Result
-```
-
-![Kubernetes 认证与鉴权全流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authn-and-authz/c56021059b28d622e75a2927fed611a3.svg)
-{width=1920 height=880}
+![API Server 内部安全处理链（步骤 5–10）](api-server-security-chain-sequence.svg)
 
 ## 最佳实践
 

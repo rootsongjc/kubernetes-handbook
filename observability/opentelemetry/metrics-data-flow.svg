@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2320" height="460" viewBox="0 0 1160 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="metricz-title metricz-desc" id="metrics-data-flow-root" style="color-scheme: light dark"><style>svg{color-scheme:light dark}</style>
+<title id="metricz-title">Metrics 数据流：从测量值到遥测后端</title>
+<desc id="metricz-desc">应用产生的 Measurement 由 Instrument 记录进内存聚合状态，MetricReader 周期读取后交给 MetricExporter，最终写入遥测后端。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #metrics-data-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #metrics-data-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #metrics-data-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#metrics-data-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="metrics-data-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 184 140 L 216 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#metrics-data-flow-m-6b7280)"/>
+<path d="M 374 140 L 406 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#metrics-data-flow-m-6b7280)"/>
+<path d="M 564 140 L 596 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#metrics-data-flow-m-6b7280)"/>
+<path d="M 754 140 L 786 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#metrics-data-flow-m-6b7280)"/>
+<path d="M 944 140 L 976 140" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#metrics-data-flow-m-6b7280)"/>
+<rect x="30" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="105" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Measurement</text>
+<text x="105" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">测量值</text>
+<rect x="220" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="295" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Instrument</text>
+<text x="295" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Counter / Histogram</text>
+<rect x="410" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="410" y="108" width="150" height="64" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="485" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">In-memory state</text>
+<text x="485" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">内存聚合状态</text>
+<rect x="600" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="675" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MetricReader</text>
+<text x="675" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">读取器</text>
+<rect x="790" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="865" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">MetricExporter</text>
+<text x="865" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">导出器</text>
+<rect x="980" y="108" width="150" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="1055" y="136.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Telemetry Backend</text>
+<text x="1055" y="153.6" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">如 Prometheus</text>
+<text x="580" y="208" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Measurement 由应用埋点产生，依次经 Instrument 记录、内存聚合、周期读取与导出，最终写入遥测后端。</text>
+<text x="580" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Metrics 数据流：从测量值到遥测后端</text>
+</g>
+</svg>

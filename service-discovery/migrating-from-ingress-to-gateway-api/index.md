@@ -141,35 +141,7 @@ spec:
 
 下图展示了从 Ingress 到 Gateway API 的推荐迁移流程：
 
-```mermaid "从 Ingress 迁移到 Gateway API 的完整流程"
-flowchart TD
-        A[现有 Ingress 资源] --> B[分析现有配置]
-        B --> C[创建 GatewayClass]
-        C --> D[定义 Gateway 资源]
-        D --> E[创建 HTTPRoute 资源]
-        E --> F[配置高级功能]
-        F --> G[测试验证]
-        G --> H[生产环境切换]
-        
-        B --> B1[识别主机名和路径]
-        B --> B2[分析 TLS 配置]
-        B --> B3[提取注解功能]
-        
-        D --> D1[HTTP 监听器配置]
-        D --> D2[HTTPS 监听器配置]
-        D --> D3[TLS 证书配置]
-        
-        E --> E1[主机名路由]
-        E --> E2[路径匹配规则]
-        E --> E3[后端服务配置]
-        
-        F --> F1[重定向规则]
-        F --> F2[请求修改]
-        F --> F3[流量分割]
-```
-
-![从 Ingress 迁移到 Gateway API 的完整流程](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/migrating-from-ingress-to-gateway-api/43c6548dd2251b476f12cce86fd239db.svg)
-{width=1920 height=1338}
+![从 Ingress 迁移到 Gateway API 的完整流程](ingress-to-gateway-migration-flow.svg)
 
 ### 详细迁移步骤
 
