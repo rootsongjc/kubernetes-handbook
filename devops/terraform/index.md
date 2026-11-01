@@ -4,7 +4,7 @@ title: 使用 Terraform 管理 Kubernetes：从集群到应用的 IaC 实践
 weight: 4
 description: 介绍 Terraform 在 Kubernetes 集群管理和资源编排中的最佳实践与应用场景。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:12:05.229Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Terraform 作为主流 IaC 工具，已成为 Kubernetes 集群与平台组件自动化管理的事实标准。通过声明式配置、状态管理和丰富 Provider 生态，实现从底座到应用的全生命周期基础设施即代码。
@@ -95,7 +95,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
   cluster_name    = "prod-eks"
-  cluster_version = "1.30"
+  cluster_version = "1.37"
   subnet_ids      = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
 

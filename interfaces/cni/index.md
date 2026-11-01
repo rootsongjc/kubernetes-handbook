@@ -5,7 +5,7 @@ date: 2022-05-21T00:00:00+08:00
 type: book
 slug: cni
 description: 深入了解容器网络接口（CNI）的设计原理、接口定义、插件实现和使用方式，掌握 Kubernetes 网络管理的核心机制。
-lastmod: 2025-10-17T10:18:01.536Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > CNI（容器网络接口）为容器网络提供了标准化的接口和插件机制，极大地简化了容器编排平台的网络管理与扩展，是云原生网络生态的基础。
@@ -141,21 +141,20 @@ CNI 操作返回结构化结果，定义于 `pkg/types`，主要类型包括：
 
 CNI 已被众多容器运行时和编排平台采用，包括：
 
-- Kubernetes
-- OpenShift
-- Cloud Foundry
-- Apache Mesos
-- Amazon ECS
-- Singularity
+- Kubernetes 及其发行版（OpenShift、Rancher、K3s 等）
+- containerd、CRI-O 等容器运行时
+- Amazon ECS、Cloud Foundry 等非 Kubernetes 平台
+- Podman、Apptainer（原 Singularity）等单机容器工具
 
 主流网络方案均实现了 CNI 插件，如：
 
+- Cilium（基于 eBPF，CNCF 毕业项目）
 - Calico
-- Cilium
-- Weave
-- OVN-Kubernetes
-- AWS VPC CNI
-- Azure CNI
+- Flannel
+- Antrea、OVN-Kubernetes、Kube-OVN
+- AWS VPC CNI、Azure CNI、GKE Dataplane V2 等云厂商方案
+
+需要注意的是，曾广泛使用的 Weave Net 已于 2024 年停止维护，新集群不应再选用。
 
 广泛的生态应用证明了 CNI 在容器网络标准化方面的成功。
 
@@ -299,15 +298,16 @@ CNI 插件的选择和故障排查是实际运维中的重点，建议如下：
 
 ### 插件选择
 
-- **生产环境**：推荐使用成熟的网络方案如 Calico、Flannel、Cilium。
+- **生产环境**：推荐使用成熟的网络方案如 Cilium、Calico；Flannel 适合对 NetworkPolicy 没有要求的轻量场景。
+- **需要替代 kube-proxy 或 L7 可观测性**：选择 Cilium 等基于 eBPF 的方案。
 - **开发测试**：可使用简单的 bridge + host-local 组合。
-- **高性能需求**：考虑使用 SR-IOV 或 DPDK 相关插件。
+- **高性能需求**：考虑使用 SR-IOV 或 DPDK 相关插件，通常配合 Multus 为 Pod 附加第二网卡。
 
 ### 故障排查
 
-- **日志检查**：查看 kubelet 和 CNI 插件日志。
-- **网络验证**：使用 `cni` 命令行工具测试配置。
-- **网络连通性**：检查路由表和 iptables 规则。
+- **日志检查**：查看 kubelet 和容器运行时（containerd/CRI-O）日志，CNI 插件由运行时而非 kubelet 直接调用。
+- **网络验证**：使用 `cnitool` 等命令行工具测试配置。
+- **网络连通性**：检查路由表以及 iptables/nftables 或 eBPF 规则。
 
 ## 总结
 

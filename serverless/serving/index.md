@@ -3,7 +3,7 @@ title: Knative Serving
 weight: 4
 description: Knative Serving 的核心概念、配置和使用方法。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T13:00:59.193Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Knative Serving 为 Kubernetes 上的 Serverless 应用提供了自动扩缩容、流量管理和版本控制等能力，极大简化了云原生应用的部署与运维。
@@ -330,7 +330,7 @@ data:
 支持自动或手动管理 TLS 证书，提升安全性。
 
 ```yaml
-apiVersion: networking.internal.knative.dev/v1alpha1
+apiVersion: networking.internal.knative.dev/v1alpha1   # 网络层内部对象，仅供排障查看，不建议用户手工创建
 kind: Certificate
 metadata:
   name: hello-world-tls

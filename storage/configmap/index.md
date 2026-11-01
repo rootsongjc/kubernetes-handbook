@@ -3,7 +3,7 @@ weight: 30
 title: ConfigMap
 date: 2022-05-21T00:00:00+08:00
 description: ConfigMap 是 Kubernetes 用于存储配置数据的 API 资源，支持将配置信息与容器镜像解耦。本文详细介绍 ConfigMap 的概念、创建方法以及在 Pod 中的使用方式。
-lastmod: 2025-10-27T16:44:44.117Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 在 Kubernetes 的世界里，ConfigMap 让配置管理变得灵活而优雅，是实现应用可移植性与敏捷运维的关键利器。
@@ -173,7 +173,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     env:
     - name: DATABASE_HOST
       valueFrom:
@@ -199,7 +199,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     envFrom:
     - configMapRef:
         name: app-config
@@ -217,7 +217,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     command: ["/bin/sh"]
     args: ["-c", "echo 'Database: $(DATABASE_HOST):$(DATABASE_PORT)'"]
     env:
@@ -247,7 +247,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: config-volume
       mountPath: /etc/config
@@ -271,7 +271,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: config-volume
       mountPath: /etc/config
@@ -298,7 +298,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: config-volume
       mountPath: /etc/config

@@ -3,7 +3,7 @@ weight: 112
 title: 高级开发指南
 date: 2022-10-20T00:00:00+08:00
 description: 本指南面向已经熟悉 Kubernetes 基础概念的开发者，旨在通过行业最佳实践和技术栈，帮助你构建生产级的云原生应用程序。
-lastmod: 2025-10-27T17:30:02.520Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 云原生的未来属于那些敢于创新、善于实践并持续精进的开发者，Kubernetes 是你迈向智能化基础设施的坚实基石。
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: nginx:1.21
+        image: nginx:1.27
         ports:
         - containerPort: 80
       - name: log-shipper
@@ -132,7 +132,7 @@ spec:
             topologyKey: kubernetes.io/hostname
       containers:
       - name: web
-        image: nginx:1.21
+        image: nginx:1.27
 ```
 
 #### 污点容忍高级配置

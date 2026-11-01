@@ -4,7 +4,7 @@ title: Kubernetes 身份与认证管理概述
 linktitle: 概述
 date: 2025-10-27T00:00:00+08:00
 description: Kubernetes 中的身份管理、RBAC 权限控制、SPIRE/SPIFFE 安全身份框架概述。
-lastmod: 2025-10-27T16:18:32.698Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 在云原生世界，身份不仅是安全的基石，更是实现自动化与零信任架构的关键驱动力。
@@ -100,6 +100,8 @@ SPIRE 可以与 Kubernetes 深度集成：
 本章将深入探讨：
 
 - Kubernetes RBAC 的详细配置和最佳实践
+- ServiceAccount 与绑定 Token 的现代用法
+- 结构化认证与鉴权配置：用声明式文件取代 `--oidc-*`、`--authorization-mode` 等命令行参数
 - SPIFFE 规范的原理和身份格式
 - SPIRE 的部署、配置和 Kubernetes 集成
 - 实际案例：使用 SPIRE 实现服务网格安全

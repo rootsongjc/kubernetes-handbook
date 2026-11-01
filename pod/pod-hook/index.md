@@ -16,7 +16,7 @@ Hook 在容器启动后或终止前运行，为容器提供了在关键时刻执
 
 ## Hook 类型
 
-Kubernetes 支持两种类型的 Hook，分别适用于不同的场景。
+Kubernetes 支持四种 Hook 处理器（handler），分别适用于不同的场景。其中 `tcpSocket` 虽在 API 中保留，但官方文档已明确不建议用于钩子，因此实践中以 `exec`、`httpGet` 和 `sleep` 三种为主。
 
 ### Exec Hook
 
@@ -42,6 +42,19 @@ lifecycle:
       scheme: HTTP
 ```
 
+### Sleep Hook
+
+Sleep Hook 让容器在钩子阶段原地等待指定秒数（v1.29 Alpha，v1.30 Beta 并默认开启，v1.34 GA）。它主要替代以往广泛使用的 `exec: ["sh", "-c", "sleep N"]` 写法，对 distroless、scratch 等不含 shell 的镜像同样有效。典型用途是在 `preStop` 中等待几秒，让 kube-proxy 和 Ingress 控制器先完成端点摘除，再让进程收到 `SIGTERM`：
+
+```yaml
+lifecycle:
+  preStop:
+    sleep:
+      seconds: 5
+```
+
+`seconds` 允许设为 `0`（v1.32 Alpha，v1.34 随主特性一同 GA），便于在模板中通过参数统一开关该钩子。
+
 ## 生命周期事件
 
 Pod Hook 包含两个关键事件，分别在容器启动和终止时触发。
@@ -55,10 +68,14 @@ Pod Hook 包含两个关键事件，分别在容器启动和终止时触发。
 
 ### PreStop Hook
 
-- **触发时机**：容器终止前执行
-- **执行方式**：同步阻塞调用
-- **超时时间**：默认 30 秒（可通过 `terminationGracePeriodSeconds` 配置）
-- **使用场景**：优雅关闭、清理资源、保存状态等
+- **触发时机**：容器因 API 删除、探针失败、抢占、驱逐等原因被终止前执行；容器进程自行退出或 Pod 阶段已完成时**不会**触发
+- **执行方式**：同步阻塞调用，钩子结束后 kubelet 才发送 `SIGTERM`
+- **超时时间**：与 `SIGTERM` 后的等待共享 Pod 的 `terminationGracePeriodSeconds`（默认 30 秒），钩子耗时越长，留给进程退出的时间越短
+- **使用场景**：优雅关闭、清理资源、保存状态、等待端点摘除等
+
+### 与 Sidecar 容器的关系
+
+原生 Sidecar 容器（`initContainers` 中 `restartPolicy: Always` 的容器）同样支持 `postStart` 与 `preStop`。由于 Sidecar 在所有主容器退出后才被终止，其 `preStop` 通常只需处理自身收尾，无需再为"等待主容器"设置长时间 sleep。
 
 ## 配置示例
 
@@ -90,8 +107,9 @@ spec:
 
 在使用 Pod Hook 时，需关注以下细节以确保稳定性和可维护性。
 
-- **失败处理**：如果 postStart 或 preStop Hook 失败，容器将被终止
+- **失败处理**：如果 postStart Hook 失败，容器将被杀死并按 `restartPolicy` 处理；preStop Hook 失败仅记录事件，终止流程继续
 - **执行顺序**：postStart Hook 不保证在容器入口点之前执行
+- **至少一次语义**：Hook 可能被重复调用，逻辑需保证幂等
 - **资源限制**：Hook 继承容器的资源限制
 - **网络访问**：HTTP Hook 需要确保网络连通性
 
@@ -125,7 +143,8 @@ kubectl describe pod <pod-name>
 
 - 保持 Hook 逻辑简单可靠，避免复杂操作
 - 确保 Hook 可以安全地重复执行（幂等性）
-- 为 preStop Hook 设置合适的超时时间
+- 等待类逻辑优先使用 `sleep` 处理器，而不是依赖镜像内的 shell
+- 规划 preStop 耗时与 `terminationGracePeriodSeconds` 的关系，为进程退出预留足够时间
 - 在 Hook 中添加适当的错误处理逻辑
 - 充分测试 Hook 在各种场景下的行为
 

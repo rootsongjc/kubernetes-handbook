@@ -3,14 +3,14 @@ title: Knative
 weight: 3
 description: Knative 是一个基于 Kubernetes 的开源 Serverless 平台，提供 Serving 和 Eventing 两大核心组件。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T13:04:46.355Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Knative 为 Kubernetes 提供了完整的 Serverless 能力，涵盖自动扩缩容、流量管理和事件驱动等核心特性，是企业构建云原生 Serverless 应用的首选平台。
 
 ## Knative 简介
 
-Knative 是 Google 发起的开源项目，是 Kubernetes 上的 Serverless 平台。它提供了两个核心组件：**Serving** 和 **Eventing**，为容器化应用提供了完整的 Serverless 体验。
+Knative 是 Google 于 2018 年发起、2022 年捐赠给 CNCF 并于 2025 年 1 月毕业的开源项目，是 Kubernetes 上的 Serverless 平台。它提供了两个核心组件：**Serving** 和 **Eventing**，为容器化应用提供了完整的 Serverless 体验。Knative 每约三个月发布一个小版本，截至 2026 年 10 月最新版本为 1.24，并以 Kubernetes 最近两个小版本为支持基线。
 
 ### 核心特性
 
@@ -284,9 +284,13 @@ kubectl apply -f https://github.com/knative/serving/releases/latest/download/ser
 kubectl apply -f https://github.com/knative/eventing/releases/latest/download/eventing-crds.yaml
 kubectl apply -f https://github.com/knative/eventing/releases/latest/download/eventing-core.yaml
 
-# 安装网络层 (Istio)
-kubectl apply -f https://github.com/knative/net-istio/releases/latest/download/net-istio.yaml
+# 安装网络层（三选一：Kourier 轻量默认、Istio、或 Gateway API）
+kubectl apply -f https://github.com/knative/net-kourier/releases/latest/download/kourier.yaml
+# kubectl apply -f https://github.com/knative/net-istio/releases/latest/download/net-istio.yaml
+# kubectl apply -f https://github.com/knative/net-gateway-api/releases/latest/download/net-gateway-api.yaml
 ```
+
+Knative Serving 通过可插拔的网络层对接数据面：Kourier 是官方维护的轻量 Envoy 入口，Istio 适合已有网格的集群，`net-gateway-api` 则让 Knative 直接使用任意 Gateway API 实现（Istio、Envoy Gateway、Cilium 等），是未来的主要方向。Contour 网络层已停止维护。
 
 ### 使用 Operator 安装
 
@@ -303,7 +307,7 @@ metadata:
   name: knative-serving
   namespace: knative-serving
 spec:
-  version: "1.10.0"
+  version: "1.24.0"
   ingress:
     istio:
       enabled: true
@@ -412,17 +416,20 @@ spec:
 
 2. **TLS 配置**
 
+   `networking.internal.knative.dev` 下的 `Certificate` 是网络层内部对象，不应由用户直接创建。对外 TLS 推荐在 `config-network` 中开启自动证书，由 Knative 的 `net-certmanager` 组件配合 cert-manager 为每个 Service 域名自动签发并轮换证书：
+
    ```yaml
-   apiVersion: networking.internal.knative.dev/v1alpha1
-   kind: Certificate
+   apiVersion: v1
+   kind: ConfigMap
    metadata:
-     name: example-tls
-     namespace: default
-   spec:
-     dnsNames:
-     - example.com
-     secretName: example-tls
+     name: config-network
+     namespace: knative-serving
+   data:
+     external-domain-tls: Enabled      # 为外部域名自动签发证书
+     cluster-local-domain-tls: Enabled # 可选：集群内部域名也启用 TLS
    ```
+
+   随后创建 cert-manager 的 `ClusterIssuer` 并在 `config-certmanager` 中引用即可。
 
 ## 故障排除
 

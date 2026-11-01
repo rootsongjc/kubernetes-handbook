@@ -1,10 +1,10 @@
 ---
-weight: 37
+weight: 38
 title: 准入控制器（Admission Controller）
 linktitle: 准入控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 准入控制器的工作原理、类型分类和配置方法，包括变更和验证准入控制的详细说明，以及各种内置准入控制器的功能介绍和推荐配置。
-lastmod: 2025-10-27T12:01:44.414Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 准入控制器是 Kubernetes 实现策略治理和安全合规的关键机制，通过内建插件与 Webhook 扩展，用户可灵活实现自动化、合规与安全控制。
@@ -43,10 +43,13 @@ API Server 依次执行 Mutating → Validating 控制器，顺序如下：
 Authentication → Authorization → Mutating Admission → Validating Admission → etcd
 ```
 
-> **更新（2024）**  
->
-> - 从 Kubernetes 1.22 起，`admissionregistration.k8s.io/v1beta1` API 已废弃，仅支持 v1。  
-> - `PodSecurityPolicy`（PSP）已于 1.25 移除，推荐使用 `PodSecurity`（PSS）或第三方策略引擎（如 Kyverno、Gatekeeper）。
+从实现形态上看，准入控制又可分为三代：
+
+- **内建准入控制器**：编译进 kube-apiserver 的固定逻辑，由 `--enable-admission-plugins` 开关
+- **准入 Webhook**：`MutatingWebhookConfiguration` / `ValidatingWebhookConfiguration`（`admissionregistration.k8s.io/v1`，1.16 GA），把决策外包给集群内外的 HTTP 服务
+- **准入策略**：`ValidatingAdmissionPolicy`（v1.30 GA）与 `MutatingAdmissionPolicy`（v1.36 GA），用 CEL 表达式在 API Server 进程内声明校验与变更规则，无需部署和运维 Webhook 服务
+
+`PodSecurityPolicy`（PSP）已于 v1.25 移除，Pod 层面的安全基线由内建的 `PodSecurity` 准入控制器按 Pod 安全标准执行，更细粒度的组织策略则交给准入策略或 Kyverno、Gatekeeper 等策略引擎。
 
 ## 内建准入控制器插件
 
@@ -61,17 +64,17 @@ Kubernetes 内置了多种准入控制器插件，用于常见策略和安全控
 | `ServiceAccount`        | 自动为 Pod 分配 ServiceAccount       | 推荐/长期支持        |
 | `ResourceQuota`         | 检查命名空间资源配额是否超限                  | 推荐/长期支持        |
 | `NodeRestriction`       | 限制 kubelet 对 Node/Pod 对象的修改权限   | 推荐/长期支持        |
-| `PodSecurity`           | 按照 Pod 安全标准（PSS）验证安全配置          | 推荐/替代 PSP        |
+| `PodSecurity`           | 按照 Pod 安全标准（PSS）验证安全配置，v1.25 GA   | 推荐，取代 PSP        |
 | `TaintNodesByCondition` | 为 Node 添加系统级污点                  | 推荐/长期支持        |
 | `DefaultStorageClass`   | 自动为 PVC 绑定默认存储类                 | 推荐/长期支持        |
-| `PodSecurityPolicy`     | Pod 安全策略（已废弃，1.25 移除）           | 已废弃/请勿再用      |
+| `ValidatingAdmissionPolicy` | 执行集群中声明的 CEL 校验策略，v1.30 GA   | 推荐，默认启用        |
+| `MutatingAdmissionPolicy`   | 执行集群中声明的 CEL 变更策略，v1.36 GA   | 推荐，默认启用        |
+| `MutatingAdmissionWebhook` / `ValidatingAdmissionWebhook` | 调用外部 Webhook 服务 | 推荐/长期支持 |
+| `PodSecurityPolicy`     | Pod 安全策略（已于 1.25 移除）           | 已移除/请勿再用      |
 
 {{< /table >}}
 
-> **注意：**  
->
-> - `PodSecurityPolicy` 已于 1.25 正式移除，建议迁移到 `PodSecurity` 或使用 Kyverno、Gatekeeper 等策略引擎。  
-> - `PodSecurity`（PSS）自 1.23 起 GA，支持 namespace 级别安全策略。
+`PodSecurity` 以 Namespace 标签为作用单元，用法详见 [Pod 安全准入](../../security/pod-security-admission)；`ValidatingAdmissionPolicy` 与 `MutatingAdmissionPolicy` 的编写方法详见 [准入策略：用 CEL 替代 Webhook](../../extend/admission-policy)。
 
 启用和禁用内建插件时，可通过如下参数配置：
 
@@ -102,9 +105,11 @@ kube-apiserver \
 
 {{< /table >}}
 
-两者是互补关系：
+三者是互补关系：
 
-> 内建控制器负责通用策略，而 Admission Webhook 负责可编程扩展。
+> 内建控制器负责通用策略，准入策略（CEL）负责大多数无需外部数据的组织级规则，Admission Webhook 负责需要外部系统参与或复杂计算的场景。
+
+相比 Webhook，准入策略没有网络往返、没有额外服务可用性风险，也不会因为 Webhook 宕机而阻塞整个集群的写操作。官方建议新的校验/变更需求优先评估能否用准入策略实现，仅在 CEL 能力不足时才引入 Webhook。
 
 ## 典型使用场景
 

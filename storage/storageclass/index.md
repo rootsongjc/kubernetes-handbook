@@ -3,7 +3,7 @@ weight: 60
 title: Storage Class
 date: 2022-05-21T00:00:00+08:00
 description: 介绍 Kubernetes 中 StorageClass 的概念、资源定义、分配器类型、参数配置和使用方法，帮助管理员更好地管理集群存储资源。
-lastmod: 2025-10-27T16:52:44.360Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > StorageClass 为 Kubernetes 存储资源管理提供了标准化、自动化和多样化的能力，是实现弹性、分层和高效存储架构的基础。
@@ -49,13 +49,13 @@ volumeBindingMode: WaitForFirstConsumer
 
 ## 存储分配器
 
-存储分配器（Provisioner）决定了如何创建和管理持久卷。Kubernetes 支持内置分配器、CSI 分配器和外部分配器。
+存储分配器（Provisioner）决定了如何创建和管理持久卷。早期 Kubernetes 内置了 `kubernetes.io/aws-ebs`、`kubernetes.io/gce-pd` 等 in-tree 分配器，它们已在 v1.25 – v1.31 之间全部移除；如今动态供给统一由 CSI 驱动提供，仍引用旧分配器名的 StorageClass 会被 CSI 迁移机制透明地转换为对应的 CSI 驱动。
 
-### 内置分配器
+### 云厂商 CSI 分配器
 
-下表总结了主流云平台的内置分配器类型。
+下表总结了主流云平台的 CSI 分配器名称。
 
-{{< table title="主流云平台内置存储分配器" >}}
+{{< table title="主流云平台 CSI 存储分配器" >}}
 
 | 存储类型 | 分配器名称 | 云平台 |
 |---------|-----------|--------|
@@ -84,13 +84,15 @@ parameters:
 volumeBindingMode: WaitForFirstConsumer
 ```
 
-### 外部分配器
+### 其他常见 CSI 分配器
 
-对于不支持内置分配器的存储系统，可使用外部分配器：
+自建或混合云环境中常见的 CSI 驱动包括：
 
-- NFS 分配器：`nfs-client-provisioner`
+- NFS：`nfs.csi.k8s.io`（kubernetes-csi/csi-driver-nfs，取代早期的 `nfs-client-provisioner`）
+- Ceph：`rbd.csi.ceph.com`、`cephfs.csi.ceph.com`（Ceph-CSI / Rook）
 - Longhorn：`driver.longhorn.io`
-- OpenEBS：`openebs.io/provisioner-iscsi`
+- OpenEBS：`local.csi.openebs.io`（LocalPV）、`io.openebs.csi-mayastor`（Mayastor）
+- TopoLVM：`topolvm.io`
 
 ## 配置参数详解
 
@@ -145,10 +147,12 @@ metadata:
   name: standard
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-provisioner: kubernetes.io/gce-pd
+provisioner: pd.csi.storage.gke.io
 parameters:
-  type: pd-standard
+  type: pd-balanced
 ```
+
+v1.28 起，默认 StorageClass 的行为更加健壮：创建 PVC 时若集群尚无默认 StorageClass，PVC 的 `storageClassName` 会保持为空而不是被设为 `""`，待管理员之后创建默认 StorageClass，这些 PVC 会被**追溯性地**绑定到它（RetroactiveDefaultStorageClass）。若集群中存在多个默认 StorageClass，新 PVC 会使用其中最新创建的一个。
 
 ## 使用示例
 

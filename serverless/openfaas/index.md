@@ -3,7 +3,7 @@ title: OpenFaaS
 weight: 6
 description: OpenFaaS 的架构、安装和使用方法。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T13:02:37.023Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > OpenFaaS 为 Kubernetes 提供了简单易用的 Serverless 平台，支持多语言、自动扩缩容和丰富的监控集成，极大提升了函数开发与运维效率。
@@ -11,6 +11,10 @@ lastmod: 2025-10-19T13:02:37.023Z
 ## OpenFaaS 简介
 
 OpenFaaS（Functions as a Service）是一个轻量级 Serverless 框架，使开发者能够将几乎任何程序打包为容器化函数，并通过 HTTP API 调用。它提供了简单易用的 CLI 工具和 Web UI，支持多种编程语言和部署方式。
+
+{{< callout warning "许可变化" >}}
+OpenFaaS 自 2023 年起调整了授权模式：GitHub 上的 **Community Edition（CE）** 仅许可个人学习与爱好者使用，商业 PoC 限 60 天，功能上也有限制（如单命名空间、有限的扩缩容策略）；企业内部或生产使用需购买 **OpenFaaS Standard** 或 **OpenFaaS for Enterprises** 商业版。本文示例基于 CE 版本，用于学习目的；生产选型时请对照 [OpenFaaS CE EULA](https://github.com/openfaas/faas/blob/master/EULA.md) 评估，或考虑 CNCF 毕业项目 Knative 与 KEDA。
+{{< /callout >}}
 
 ### 核心特性
 

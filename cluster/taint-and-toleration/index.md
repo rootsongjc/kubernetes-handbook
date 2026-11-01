@@ -4,7 +4,7 @@ title: Taint 和 Toleration（污点和容忍）
 linktitle: 污点和容忍
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 中的 Taint 和 Toleration 机制，学习如何通过污点和容忍优化 Pod 在集群中的调度策略，包括实际配置示例和最佳实践。
-lastmod: 2025-10-27T15:51:23.881Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 污点（Taint）与容忍（Toleration）机制为 Kubernetes 提供了灵活的节点隔离与调度控制能力，是实现多租户和资源专用场景的关键手段。
@@ -152,8 +152,15 @@ Kubernetes 会自动为节点添加一些内置污点，用于反映节点健康
 | node.kubernetes.io/memory-pressure     | 内存压力       |
 | node.kubernetes.io/pid-pressure        | PID 压力       |
 | node.kubernetes.io/network-unavailable | 网络不可用     |
+| node.kubernetes.io/unschedulable       | 节点被 `kubectl cordon` 标记为不可调度 |
+| node.kubernetes.io/out-of-service      | 由管理员手动添加（`NoExecute`），声明节点已彻底下线，触发 Pod 与卷附着的强制清理（v1.28 GA） |
+| node.cloudprovider.kubernetes.io/uninitialized | 云控制器尚未初始化该节点 |
 
 {{< /table >}}
+
+其中 `not-ready` 与 `unreachable` 两个污点会以 `NoExecute` 效果自动添加，Kubernetes 默认为每个 Pod 注入对应的容忍并设置 `tolerationSeconds: 300`，即节点失联 5 分钟后 Pod 才会被驱逐。
+
+污点的概念自 v1.37 起还延伸到了设备层面：动态资源分配（DRA）支持对单个 GPU 等设备设置污点（`DeviceTaint`），用于隔离故障设备或排空待维护的设备，而无需为整个节点打污点。
 
 ## 最佳实践
 

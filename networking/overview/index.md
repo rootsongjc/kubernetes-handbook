@@ -4,7 +4,7 @@ linktitle: 概述
 weight: 1
 description: 从高层次理解 Kubernetes 网络架构，包括网络模型、通信模式、网络策略和架构设计原则。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-27T16:26:51.816Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 云原生网络的本质，是用软件定义的方式重塑连接、隔离与治理的边界，让复杂系统的流动性与安全性兼得。
@@ -61,6 +61,7 @@ Kubernetes 支持多种通信模式，满足不同场景下的流量需求。下
 
 - 通过 Service 抽象层，提供负载均衡和服务发现。
 - 支持多种 Service 类型。
+- 数据面由每个节点上的 kube-proxy 实现，Linux 上可选 iptables（默认）、IPVS（v1.35 起弃用）、nftables（v1.33 GA）三种模式；Cilium 等 eBPF 插件可完全替代 kube-proxy。各模式的差异与迁移建议见 [kube-proxy 模式演进](../kube-proxy-modes)。
 
 ## Service 网络抽象与类型
 
@@ -123,13 +124,16 @@ Kubernetes 支持多种 CNI 网络插件，满足不同场景下的性能、安�
 
 | 维度       | 考虑因素                 | 示例                    |
 |------------|-------------------------|------------------------|
-| 性能       | 网络延迟、吞吐量、资源占用 | Cilium > Calico > Flannel |
-| 安全性     | 网络策略支持、加密能力     | Calico, Cilium         |
-| 可观测性   | 流量监控、故障排查         | Cilium, Calico         |
-| 运维复杂度 | 部署难度、维护成本         | Flannel > Calico > CILIUM |
-| 云兼容性   | 云厂商集成、网络策略支持    | AWS VPC CNI, Azure CNI |
+| 性能       | 网络延迟、吞吐量、资源占用 | Cilium（eBPF）、Calico eBPF 模式优于传统 iptables 数据面 |
+| 安全性     | 网络策略支持、加密能力     | Calico、Cilium 均支持 NetworkPolicy 及 WireGuard/IPsec 加密；Flannel 不支持 NetworkPolicy |
+| 可观测性   | 流量监控、故障排查         | Cilium（Hubble）、Calico（Flow logs） |
+| 运维复杂度 | 部署难度、维护成本         | Flannel 最简单，Calico 居中，Cilium 功能多但学习成本更高 |
+| 云兼容性   | 云厂商集成、网络策略支持    | AWS VPC CNI、Azure CNI、GKE Dataplane V2（基于 Cilium） |
+| kube-proxy 替代 | 是否可省去 kube-proxy    | Cilium、Calico eBPF 模式支持 |
 
 {{< /table >}}
+
+曾被广泛使用的 Weave Net 已于 2024 年停止维护，新集群不应再选用。
 
 ## 网络架构演进与发展趋势
 
@@ -141,8 +145,10 @@ Kubernetes 网络架构从单体应用逐步演进到微服务和云原生模式
 
 - 服务网格（Service Mesh）：如 Istio、Linkerd、Consul Connect，提升应用层流量治理能力。
 - eBPF 加速：如 Cilium、Calico eBPF 模式，实现内核级高性能网络处理。
-- 多集群网络：如 Submariner、Skupper，支持集群联邦和多集群服务发现。
-- 零信任安全：基于身份的网络访问控制，声明式管理网络策略。
+- 多集群网络：如 Submariner、Cilium Cluster Mesh、Skupper，配合 SIG Multicluster 的 MCS API 实现多集群服务发现。
+- 零信任安全：基于身份的网络访问控制，声明式管理网络策略；社区正在推进 `AdminNetworkPolicy`/`BaselineAdminNetworkPolicy` 等集群级策略 API。
+- Gateway API：以角色分离的 Gateway/HTTPRoute 资源统一南北向入口与网格东西向（GAMMA）流量治理，取代特性已冻结的 Ingress。
+- 数据面现代化：kube-proxy 的 nftables 模式与 eBPF 方案逐步取代 iptables/IPVS。
 
 ## 网络故障排查框架与工具
 

@@ -4,7 +4,7 @@ title: 从外部访问 Kubernetes 中的 Pod
 linktitle: 从外部访问 Pod
 date: 2022-05-21T00:00:00+08:00
 description: 本文详细介绍了从外部访问 Kubernetes 集群中 Pod 和 Service 的多种方式，包括 hostNetwork、hostPort、NodePort、LoadBalancer 和 Ingress 等方法，并分析了各种方式的优缺点和适用场景。
-lastmod: 2025-10-13T05:09:51.672Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 在 Kubernetes 集群中，Pod 默认只能在集群内部访问。为了让外部用户能够访问集群中的应用，我们需要采用适当的网络暴露方式。本文将介绍几种主要的外部访问方法，每种方法都有其特定的使用场景和优缺点。
@@ -78,7 +78,7 @@ curl -v http://<NODE_IP>:8086/ping
 
 ### 工作原理
 
-`hostPort` 将容器端口直接映射到宿主机端口，类似于 Docker 的端口映射功能。
+`hostPort` 将容器端口直接映射到宿主机端口，类似于 `docker run -p` 的端口映射。该字段被 Pod 安全标准的 Baseline 级别禁止，仅适用于 CNI 插件、节点代理等系统组件。
 
 ### 配置示例
 
@@ -237,10 +237,12 @@ Ingress 是 Kubernetes 中用于管理外部访问集群内服务的 API 对象�
 
 使用 Ingress 前需要部署 Ingress Controller，常用的有：
 
-- NGINX Ingress Controller
 - Traefik
 - HAProxy Ingress
-- Istio Gateway
+- Istio Gateway、Envoy Gateway、Cilium（同时实现 Ingress 与 Gateway API）
+- 云厂商控制器（AWS Load Balancer Controller、GCE Ingress 等）
+
+曾经最常用的社区 Ingress NGINX 已于 2026 年 3 月退役停止维护，新集群应选择同时支持 Gateway API 的控制器，并优先用 Gateway/HTTPRoute 取代 Ingress，详见 [Gateway API](../../service-discovery/gateway)。
 
 ### 配置示例
 

@@ -4,7 +4,7 @@ title: 非 Overlay 扁平网络 Calico
 linktitle: Calico
 date: 2022-05-21T00:00:00+08:00
 description: Calico 是一个基于 eBPF 和 iptables 的云原生网络和安全解决方案，提供扁平三层网络架构，支持灵活的网络策略和高性能容器网络互联。
-lastmod: 2025-10-27T17:42:15.621Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Calico 以扁平三层网络和高性能安全策略著称，是云原生环境下容器网络与安全治理的主流方案，兼具可扩展性与易用性。
@@ -18,7 +18,7 @@ Calico 创建和管理一个扁平的三层网络（无需 overlay），每个�
 - 高性能网络：基于标准 Linux 网络栈，支持 eBPF 和 XDP 加速
 - 扁平网络架构：无需 overlay，降低延迟和复杂性
 - 灵活的网络策略：支持 Kubernetes NetworkPolicy 和 Calico 扩展策略
-- 多种数据平面：支持 iptables、IPVS、eBPF
+- 多种数据平面：支持 iptables、nftables、eBPF 以及 Windows HNS；eBPF 模式可替代 kube-proxy
 - 跨平台支持：兼容 Kubernetes、OpenShift、Docker、OpenStack 等
 
 小规模可用 BGP client 直连，大规模可用 BGP Route Reflector，所有流量均基于 IP 路由互联。

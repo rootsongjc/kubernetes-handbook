@@ -4,7 +4,7 @@ title: Kubernetes 次世代的云原生应用
 weight: 3
 description: 探讨 Kubernetes 生态发展历程，分析云原生应用碎片化问题，介绍 OAM（开放应用模型）等解决方案，展望以应用为中心的云原生未来。
 date: 2025-08-26T10:05:13.628Z
-lastmod: 2025-10-27T17:36:34.712Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 云原生的未来属于以应用为中心的创新，标准化是迈向高效协作与持续演进的关键。
@@ -36,9 +36,13 @@ Kubernetes 快速迭代，于 2017 年击败 Docker Swarm 和 Mesos，确立容�
 
 云原生应用默认运行在 Kubernetes 上。Google 主导的 Istio 和 Knative 相继开源，大量使用 Operator 扩展。2018 年 Kubernetes 从 CNCF 毕业，CNCF 重新定义云原生概念。
 
-### 成熟普及期（2019 年至今）
+### 成熟普及期（2019 – 2023 年）
 
-Kubernetes 得到大规模应用，云原生概念深入人心。基于 Operator 的生态蓬勃发展，Service Mesh 和 Serverless 快速演进，OAM 等应用定义标准涌现。
+Kubernetes 得到大规模应用，云原生概念深入人心。基于 Operator 的生态蓬勃发展，Service Mesh 和 Serverless 快速演进，OAM 等应用定义标准涌现，GitOps（Argo CD、Flux）成为交付主流，平台工程开始封装云原生复杂度。
+
+### AI 原生期（2024 年至今）
+
+大模型工作负载成为 Kubernetes 的核心场景：DRA（v1.34 GA）重塑异构设备管理，Gateway API Inference Extension 定义模型感知路由，Kueue/JobSet/LeaderWorkerSet 支撑训练与推理，CNCF 推出 Kubernetes AI Conformance 认证；与此同时 CNCF 云原生定义升级到 v1.1，把多租户、Serverless 与可持续性纳入核心特征。Kubernetes 从"容器编排器"演进为"异构算力与策略的声明式控制面"。
 
 ## Kubernetes：云原生时代的奠基者
 
@@ -166,10 +170,10 @@ CNCF SIG App Delivery 致力于推动云原生应用交付标准化。
 
 云原生生态正从基础设施关注点向应用层转移：
 
-- **基础设施标准化**：Kubernetes 成为事实标准
-- **应用定义统一**：OAM 等标准化应用模型
-- **开发者体验优化**：降低云原生应用开发门槛
-- **运维能力服务化**：Trait 化的运维能力
+- **基础设施标准化**：Kubernetes 成为事实标准，并延伸到 AI 算力（DRA）与推理流量（Inference Extension）
+- **应用定义统一**：OAM 的理念由 KubeVela 延续，Crossplane、Score、Radius 等也在探索应用/基础设施抽象
+- **开发者体验优化**：平台工程与内部开发者平台（Backstage 等）降低云原生应用开发门槛
+- **运维能力服务化**：Trait 化的运维能力，以及 CEL 准入策略、Gateway API 策略附件等声明式治理手段
 
 ### 面临的挑战
 
@@ -191,7 +195,7 @@ Kubernetes 次世代的核心在于解决云原生应用的碎片化问题，建
 
 这标志着云原生正从技术驱动转向应用驱动，从基础设施关注转向业务价值实现。
 
-## 参考资料
+## 参考文献
 
 - [Helm 3 架构解析 - developer.ibm.com](https://developer.ibm.com/technologies/containers/blogs/kubernetes-helm-3/)
 - [Kubernetes Patterns - O'Reilly](https://www.redhat.com/cms/managed-files/cm-oreilly-kubernetes-patterns-ebook-f19824-201910-en.pdf)

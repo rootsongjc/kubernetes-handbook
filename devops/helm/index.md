@@ -4,7 +4,7 @@ linktitle: Helm：Kubernetes 包管理工具
 weight: 90
 description: Helm 是 Kubernetes 的包管理工具，简化了应用的部署和管理过程。
 date: 2024-06-15T08:00:00.000Z
-lastmod: 2025-10-27T17:23:33.913Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 真正掌握 Helm，意味着你能用工程化思维驾驭 Kubernetes 应用的全生命周期，让复杂部署变得优雅可控。
@@ -26,6 +26,16 @@ Helm 提供了如下核心能力：
 - Release 生命周期管理：记录部署历史，支持轻松回滚。
 
 > Helm 3 版本移除了 Tiller（集群端服务），实现完全客户端化，提升了安全性与易用性。
+
+Helm 4 于 2025 年 11 月发布首个稳定版（截至 2026 年 10 月为 v4.3），是继 Helm 3 之后的首个大版本。它保持了对绝大多数 `apiVersion: v2` Chart 的兼容，主要变化包括：
+
+- 默认使用 **Server-Side Apply** 提交资源，字段归属更清晰，与 GitOps 工具的协作更顺畅
+- 基于 kstatus 的资源状态等待（`--wait`）更可靠
+- 重新设计的插件系统，支持 WebAssembly 插件，后渲染器（post-renderer）也改为插件形式
+- 本地内容寻址缓存与可复现的 Chart 打包
+- SDK 基于 `slog` 记录日志，并为后续 Chart `apiVersion: v3` 做好准备
+
+Helm 3 系列（v3.22+）仍在维护并接收安全修复，升级到 Helm 4 前应在测试环境验证现有 Chart 的安装与升级流程，CLI 参数与输出格式存在少量不兼容变化。
 
 ## Helm 的架构与工作原理
 
@@ -135,7 +145,7 @@ helm template mychart/ --values values.yaml
 
 ### 安全与权限
 
-- 避免使用 Helm 2 中的 Tiller。
+- 不再使用 Helm 2（Tiller 架构，2020 年停止支持）。
 - 使用 RBAC 控制 Helm 操作权限。
 - 不在 Chart 中包含敏感数据（如密码、Token）。
 

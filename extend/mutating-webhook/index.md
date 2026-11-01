@@ -3,13 +3,17 @@ title: Mutating Webhook 扩展：自动注入与资源修改控制
 linktitle: Mutating Webhook 扩展
 weight: 20
 date: 2025-10-27T21:00:00+08:00
-lastmod: 2025-10-27T14:20:22.553Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: 介绍 Kubernetes MutatingAdmissionWebhook 的工作机制与应用实践，包括自动注入 Sidecar、动态默认值填充、资源标签修改等场景，帮助你掌握集群级动态变更的最佳实践。
 ---
 
 > Mutating Webhook 让 Kubernetes 集群具备“动态变更”能力，无需修改核心代码即可实现自动注入、资源规范统一等高级功能，是云原生架构可扩展性的典范。
 
 ## Mutating Webhook 扩展：自动注入与资源修改控制
+
+{{< callout note "先评估 CEL 准入策略" >}}
+Kubernetes 已内建声明式的 `ValidatingAdmissionPolicy`（v1.30 GA）与 `MutatingAdmissionPolicy`（v1.36 GA），用 CEL 表达式在 API Server 进程内完成校验与变更，无需部署 Webhook 服务。大多数字段级规则与默认值注入应优先使用准入策略，Webhook 保留给需要外部数据或复杂计算的场景，详见 [准入策略：用 CEL 替代 Webhook](../admission-policy/)。
+{{< /callout >}}
 
 在 Kubernetes 的 API 请求生命周期中，**准入控制器**（Admission Controller）是一个重要的扩展点。  
 其中，**MutatingAdmissionWebhook**（变更型 Webhook）是最灵活的机制之一，允许开发者在对象被保存进 etcd 之前，对其进行自动修改（mutate）。

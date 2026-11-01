@@ -1,9 +1,9 @@
 ---
-weight: 34
+weight: 36
 title: Ingress 控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes Ingress 控制器的作用、官方支持的控制器类型、第三方控制器选择，以及如何在集群中部署和管理多个 Ingress 控制器。
-lastmod: 2025-10-27T16:07:37.713Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Ingress 控制器是 Kubernetes 网络流量管理的关键组件，决定了外部请求如何安全、高效地路由到集群内部服务，是实现弹性和可扩展网络架构的基础。
@@ -20,9 +20,13 @@ Kubernetes 社区官方维护和支持多种 Ingress 控制器，适用于不同
 |---------------------------------|------------------------|
 | AWS Load Balancer Controller    | 专为 AWS 环境设计      |
 | GCE Ingress Controller          | Google Cloud 原生支持  |
-| NGINX Ingress Controller        | 基于 NGINX 的开源实现  |
+| Ingress NGINX（kubernetes/ingress-nginx） | 曾经最流行的社区实现，**已于 2026 年 3 月退役**，仅作迁移参考 |
 
 {{< /table >}}
+
+{{< callout warning "Ingress NGINX 已退役" >}}
+Kubernetes 官方于 2025 年 11 月宣布社区维护的 Ingress NGINX 控制器进入退役流程，2026 年 3 月起停止一切发布、缺陷修复与安全更新，仓库转为只读。存量部署仍可运行，但任何新发现的漏洞都不会再被修复。请尽快迁移到 Gateway API 实现（如 Envoy Gateway、Cilium、Istio、Kong、Traefik、NGINX Gateway Fabric 等），或其他仍在维护的 Ingress 控制器。社区提供的 [ingress2gateway](https://github.com/kubernetes-sigs/ingress2gateway) 工具可将现有 Ingress 资源自动转换为 Gateway API 资源。注意 F5 维护的 NGINX Ingress Controller（nginx/kubernetes-ingress）是另一个独立项目，不受此次退役影响。
+{{< /callout >}}
 
 ## 第三方控制器
 
@@ -73,8 +77,8 @@ Kubernetes 社区官方维护和支持多种 Ingress 控制器，适用于不同
             <td><a href="https://docs.fortinet.com/document/fortiadc/7.0.0/fortiadc-ingress-controller/742835/fortiadc-ingress-controller-overview" target="_blank">文档</a></td>
         </tr>
         <tr>
-            <td>NGINX Ingress 控制器（商业版）</td>
-            <td>NGINX Plus 增强功能</td>
+            <td>NGINX Ingress Controller（F5，nginx/kubernetes-ingress）</td>
+            <td>F5 维护的独立项目，有开源版与 NGINX Plus 商业版，与已退役的社区 Ingress NGINX 无关</td>
             <td><a href="https://www.nginx.com/products/nginx-ingress-controller/" target="_blank">官网</a></td>
         </tr>
         <tr>
@@ -208,6 +212,7 @@ metadata:
 
 | 考虑因素         | 说明                                   |
 |------------------|----------------------------------------|
+| Gateway API 支持 | Ingress API 特性已冻结，新项目应优先选择同时实现 Gateway API 的控制器，便于平滑演进 |
 | 云环境兼容性     | 优先选择与云平台深度集成的控制器       |
 | 功能需求         | 是否需要 WAF、缓存、认证等高级功能      |
 | 性能要求         | 控制器的性能表现和资源消耗             |
@@ -218,9 +223,11 @@ metadata:
 
 ## 总结
 
-Ingress 控制器是 Kubernetes 网络流量管理的核心，直接影响集群的可扩展性、安全性和高可用性。合理选择和配置 Ingress 控制器，结合 IngressClass 等机制实现多控制器协同，是构建现代云原生网络架构的关键。建议根据实际业务需求、云平台特性和团队运维能力，选择最适合的 Ingress 控制器方案，并持续关注社区动态和最佳实践。
+Ingress 控制器是 Kubernetes 网络流量管理的核心，直接影响集群的可扩展性、安全性和高可用性。随着 Ingress NGINX 退役和 Gateway API 走向成熟，流量入口正在从 Ingress 过渡到 Gateway API，选型时应把 Gateway API 支持作为首要考量，迁移方法参见 [从 Ingress 迁移到 Gateway API](../../service-discovery/migrating-from-ingress-to-gateway-api)。合理选择和配置 Ingress 控制器，结合 IngressClass 等机制实现多控制器协同，是构建现代云原生网络架构的关键。建议根据实际业务需求、云平台特性和团队运维能力，选择最适合的 Ingress 控制器方案，并持续关注社区动态和最佳实践。
 
 ## 参考文献
 
 - [Awesome Cloud Native - jimmysong.io](https://awesome.jimmysong.io/#api-gateway)
 - [Ingress Controllers - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+- [Ingress NGINX Retirement: What You Need to Know - kubernetes.io](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/)
+- [Ingress NGINX: Statement from the Kubernetes Steering and Security Response Committees - kubernetes.io](https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/)

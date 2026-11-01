@@ -3,7 +3,7 @@ weight: 25
 title: Annotation
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Annotation 的概念、用途和使用方法，包括与 Label 的区别、常见应用场景和实际示例。
-lastmod: 2025-10-27T15:39:23.841Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Annotation 为 Kubernetes 资源对象提供了灵活的元数据扩展能力，是实现自动化运维和系统集成的关键基础。
@@ -106,7 +106,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: nginx:1.21
+        image: nginx:1.27
         ports:
         - containerPort: 8080
 ```

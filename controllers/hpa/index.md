@@ -1,11 +1,11 @@
 ---
-weight: 35
+weight: 37
 title: Horizontal Pod Autoscaling
 linkTitle: HPA
 date: 2022-05-21T00:00:00+08:00
 slug: hpa
 description: 深入了解 Kubernetes HPA（Horizontal Pod Autoscaling）的工作原理、配置方法和自定义指标支持，包括基于 CPU、内存和自定义指标的自动扩缩容实现。
-lastmod: 2025-10-27T16:04:04.775Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > HPA（Horizontal Pod Autoscaler）让 Kubernetes 集群中的 Pod 数量能够根据负载自动扩缩容，实现资源的弹性管理，是自动化运维的核心能力之一。
@@ -26,13 +26,15 @@ HPA 属于 Kubernetes 中的 **autoscaling** SIG（Special Interest Group），�
 Kubernetes HPA 的功能随着版本不断演进，主要里程碑如下：
 
 - **Kubernetes 1.2**：引入 HPA 机制
-- **Kubernetes 1.6**：从 kubelet 获取指标转为通过 API server、Heapster 或 kube-aggregator 获取
-- **Kubernetes 1.6+**：支持自定义指标
-- **现在**：推荐使用 `autoscaling/v2` API
+- **Kubernetes 1.6**：从 kubelet 获取指标转为通过 API server、Heapster 或 kube-aggregator 获取，并支持自定义指标
+- **Kubernetes 1.8**：Heapster 弃用，资源指标统一由 metrics-server 通过 `metrics.k8s.io` 提供
+- **Kubernetes 1.23**：`autoscaling/v2` API GA，`v2beta2` 已于 1.26 移除
+- **Kubernetes 1.27**：支持按容器粒度的资源指标（`ContainerResource`）GA
+- **Kubernetes 1.37**：`metrics.k8s.io` API 规范在 Beta 近九年后定义 `v1` 版本（metrics-server 需升级到提供 `v1` 的版本才会注册）；HPA 扩缩容容差（默认 10%）可在单个 HPA 对象上通过 `behavior.scaleUp/scaleDown.tolerance` 配置（v1.33 Alpha，v1.37 GA）；缩容到零（`minReplicas: 0`，仅限自定义/外部指标）进入 Beta 并默认开启
 
 ## 架构原理
 
-Horizontal Pod Autoscaling 仅适用于 Deployment 和 ReplicaSet，由 API server 和 controller 共同实现。
+Horizontal Pod Autoscaling 适用于任何实现了 `scale` 子资源的工作负载，包括 Deployment、ReplicaSet、StatefulSet 以及启用了 scale 子资源的自定义资源（DaemonSet 除外），由 API server 和 controller 共同实现。
 
 下图展示了 HPA 的整体架构：
 
@@ -149,10 +151,7 @@ spec:
 
 {{< callout warning "滚动更新注意事项" >}}
 
-- ✅ **支持**：HPA 绑定到 Deployment，支持滚动更新
-- ❌ **不支持**：HPA 直接绑定到 ReplicationController 进行滚动更新
-
-原因：滚动更新会创建新的 ReplicationController，HPA 不会自动绑定到新的 RC。
+HPA 应绑定到 Deployment / StatefulSet 这类上层控制器，而不是直接绑定 ReplicaSet：滚动更新会创建新的 ReplicaSet，直接绑定旧 ReplicaSet 的 HPA 不会自动跟随。同时，使用 HPA 时不要在 Deployment 清单里写死 `replicas`，否则每次 `kubectl apply` 都会把副本数重置为清单值。
 
 {{< /callout >}}
 
@@ -303,23 +302,33 @@ resources:
 behavior:
   scaleDown:
     stabilizationWindowSeconds: 300
+    tolerance: 0.05          # v1.37：缩容容差 5%，覆盖集群默认的 10%
     policies:
     - type: Percent
       value: 10
       periodSeconds: 60
   scaleUp:
     stabilizationWindowSeconds: 60
+    tolerance: 0.02          # 扩容更敏感
     policies:
     - type: Percent
       value: 50
       periodSeconds: 60
 ```
 
+`tolerance` 字段（特性门控 `HPAConfigurableTolerance`）让"扩容要快、缩容要稳"这类不对称策略无需再修改 kube-controller-manager 全局参数即可实现。
+
 ### 监控和告警
 
 - 监控 HPA 状态和扩缩容事件
 - 设置合理的告警阈值
 - 定期检查指标的准确性
+
+### 与其他弹性机制的配合
+
+- **KEDA**：基于消息队列长度、HTTP 请求数等外部事件源驱动扩缩容，并支持缩容到 0；KEDA 在底层仍然创建并管理 HPA 对象
+- **VPA 与原地资源调整**：v1.35 起 Pod 原地资源调整 GA，VPA 的 `InPlaceOrRecreate` 模式可在不重建 Pod 的情况下调整 CPU/内存；同一工作负载上不要让 HPA 与 VPA 同时基于 CPU/内存做决策
+- **Cluster Autoscaler / Karpenter**：HPA 扩出的 Pod 若无节点可调度，由节点级弹性组件补充节点
 
 ## 故障排除
 
@@ -354,7 +363,7 @@ kubectl describe hpa <hpa-name>
 kubectl get events --field-selector involvedObject.kind=HorizontalPodAutoscaler
 
 # 查看可用指标
-kubectl get --raw "/apis/metrics.k8s.io/v1/nodes" | jq .
+kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes" | jq .   # metrics-server 提供 v1 后可改为 /v1/
 kubectl get --raw "/apis/custom-metrics.metrics.k8s.io/v1beta2" | jq .
 ```
 
@@ -362,7 +371,7 @@ kubectl get --raw "/apis/custom-metrics.metrics.k8s.io/v1beta2" | jq .
 
 HPA 是 Kubernetes 自动化运维的核心能力之一，能够根据多种指标实现 Pod 的自动扩缩容。通过合理配置资源请求、自定义指标和扩缩容策略，可以显著提升集群资源利用率和应用弹性。实际生产中，建议结合监控和告警体系，持续优化 HPA 策略，确保系统稳定高效运行。
 
-## 参考资料
+## 参考文献
 
 - [HPA 官方文档 - kubernetes.io](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [HPA Walkthrough - kubernetes.io](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)

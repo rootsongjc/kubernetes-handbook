@@ -5,7 +5,7 @@ date: 2022-05-21T00:00:00+08:00
 type: book
 slug: csi
 description: 介绍 Kubernetes 容器存储接口（CSI）的概念、架构、使用方法和最佳实践，包括动态配置、预配置卷和 CSI 驱动程序的开发部署。
-lastmod: 2025-10-27T13:19:45.025Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > CSI（Container Storage Interface）为 Kubernetes 提供了统一、标准化的存储扩展能力，是现代云原生存储生态的基础。
@@ -26,8 +26,16 @@ CSI 在 Kubernetes 中作为 out-of-tree 插件实现，这意味着存储驱动
 | v1.10          | 升级为 Beta 特性          |
 | v1.13          | 正式 GA（General Availability） |
 | v1.14+         | CSI 成为存储插件标准方式   |
+| v1.20          | 卷快照（VolumeSnapshot）GA |
+| v1.24          | 卷扩容 GA                 |
+| v1.25 – v1.27  | 云厂商 in-tree 存储插件（AWS EBS、GCE PD、Azure Disk、OpenStack Cinder 等）相继移除，统一经 CSI 迁移接入 |
+| v1.29          | `ReadWriteOncePod` 访问模式 GA |
+| v1.31          | 移除全部剩余的 in-tree 云厂商集成及 CephFS/RBD 卷插件，主流外部存储统一经 CSI 接入 |
+| v1.34          | 卷扩容失败恢复（RecoverVolumeExpansionFailure）与 VolumeAttributesClass（在线修改卷属性）GA |
 
 {{< /table >}}
+
+如今 Kubernetes 代码树内主要保留 `hostPath`、`emptyDir`、`nfs`、`iscsi`、`fc`、`local`、`configMap`/`secret`/`projected` 等不依赖外部存储服务的卷类型，云存储与分布式存储均由 CSI 驱动实现。
 
 ## CSI 架构
 
@@ -234,6 +242,37 @@ spec:
     requests:
       storage: 20Gi  # 从 10Gi 扩容到 20Gi
 ```
+
+若扩容请求超出后端配额导致失败，用户可以把 `storage` 改回一个更小（但不小于当前容量）的值，由控制器自动恢复（RecoverVolumeExpansionFailure）。
+
+### 在线修改卷属性
+
+VolumeAttributesClass 允许在不重建卷的前提下调整 IOPS、吞吐量等由驱动定义的属性，只需在 PVC 上切换 `volumeAttributesClassName`：
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: VolumeAttributesClass
+metadata:
+  name: gold
+driverName: ebs.csi.aws.com
+parameters:
+  type: gp3
+  iops: "6000"
+  throughput: "500"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-storage-claim
+spec:
+  volumeAttributesClassName: gold   # 切换该字段即可触发驱动 ModifyVolume
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 10Gi
+```
+
+该特性要求 CSI 驱动实现 `ModifyVolume` 能力，并部署 `external-resizer` Sidecar。
 
 ## 故障排查
 

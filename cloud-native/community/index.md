@@ -3,7 +3,7 @@ title: 云原生社区（中国）
 linktitle: 云原生社区
 description: 云原生社区是由宋净超于 2020 年发起的企业中立的云原生终端用户社区，秉持"共识、共治、共建、共享"原则，致力于连接中国云原生从业者，推动技术发展与实践落地。
 weight: 7
-lastmod: 2025-10-27T17:36:10.055Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-08-26T10:10:44.477Z
 ---
 
@@ -55,7 +55,7 @@ date: 2025-08-26T10:10:44.477Z
 - **开放包容** - 欢迎不同背景的技术人员参与
 - **持续成长** - 与技术发展同步，不断迭代升级
 
-## 参考资料
+## 参考文献
 
 - [云原生社区成立公告 - cloudnative.jimmysong.io](https://cloudnative.jimmysong.io/blog/cnc-announcement/)
 - [云原生社区官网](https://cloudnative.jimmysong.io)

@@ -4,7 +4,7 @@ linktitle: 调度与资源管理
 date: 2025-10-13
 weight: 2
 description: 介绍 Kubernetes 的调度与资源管理系统，涵盖调度器工作原理、资源分配、自动扩缩容、抢占与驱逐等机制，帮助优化集群资源利用率。
-lastmod: 2025-10-13T08:35:22.023Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 灵活的调度与资源管理，是 Kubernetes 实现弹性、高可用和高效资源利用的核心竞争力。
@@ -221,7 +221,15 @@ behavior:
     selectPolicy: Max
 ```
 
-可控制扩缩容速度、窗口期与单次变更幅度。
+可控制扩缩容速度、窗口期与单次变更幅度。v1.37 起还可在 `behavior.scaleUp/scaleDown.tolerance` 中为单个 HPA 设置容差（默认集群级 10%），并以 `minReplicas: 0`（Beta，仅自定义/外部指标）实现缩容到零。
+
+### 垂直扩缩容与原地调整
+
+垂直 Pod 自动扩缩容（VPA）根据历史用量推荐并调整容器的 `requests`/`limits`。v1.35 GA 的 Pod 原地资源调整让 VPA 的 `InPlaceOrRecreate` 模式可以在不重建 Pod 的情况下生效，有状态服务的垂直弹性由此成为可能。同一工作负载不要让 HPA 与 VPA 同时基于 CPU/内存做决策。
+
+### 节点级弹性
+
+HPA 扩出的 Pod 若无节点可调度，由 Cluster Autoscaler（基于节点组）或 Karpenter（按 Pending Pod 需求实时创建合适规格节点）补充节点；两者均依赖 Pod 的 `requests` 做容量计算，这也是"始终设置 requests"的又一理由。
 
 ## 资源装箱（Bin Packing）策略
 

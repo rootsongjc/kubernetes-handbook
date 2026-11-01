@@ -4,7 +4,7 @@ linkTitle: AI Gateway
 weight: 3
 description: AI Gateway 的作用、架构和在 Kubernetes 中的实现。
 date: 2025-10-20T05:19:39.094Z
-lastmod: 2025-10-20T05:29:31.464Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > AI Gateway 是连接客户端与 AI 服务的关键桥梁，负责请求路由、负载均衡、安全控制和性能优化。本文系统梳理 AI Gateway 的核心功能、架构设计、Kubernetes 实现方式、高级特性及运维实践，助力构建高效稳定的 AI 原生应用网关。
@@ -49,34 +49,9 @@ AI Gateway 是专为 AI 应用设计的 API 网关，负责管理 AI 服务入�
 
 在 Kubernetes 环境下，AI Gateway 可通过多种方式实现，满足不同场景需求。
 
-### Ingress Controller 实现
-
-利用 Ingress Controller 实现基础的流量入口与路由。
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ai-gateway-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - host: ai.example.com
-    http:
-      paths:
-      - path: /v1/chat/completions
-        pathType: Prefix
-        backend:
-          service:
-            name: chat-service
-            port:
-              number: 80
-```
-
 ### Gateway API 实现
 
-使用 Kubernetes Gateway API 实现更灵活的路由与流量管理。
+Kubernetes Gateway API 是实现 AI Gateway 的推荐基础（Ingress 特性已冻结，社区 Ingress NGINX 已于 2026 年 3 月退役）。以下示例把 OpenAI 兼容的聊天补全路径路由到后端服务，并放宽 LLM 场景所需的请求超时。
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -106,7 +81,50 @@ spec:
     backendRefs:
     - name: chat-service
       port: 80
+    timeouts:
+      request: 300s
 ```
+
+### Gateway API Inference Extension
+
+对自托管模型，仅按路径路由还不够：多个推理副本的 KV 缓存状态、排队深度与已加载的 LoRA 适配器各不相同，轮询会显著拉高尾延迟。Kubernetes SIG Network 的 [Gateway API Inference Extension](../../service-discovery/gateway-api-inference) 用 `InferencePool`（`inference.networking.k8s.io/v1`，GA）替代 Service 作为 HTTPRoute 的后端，由端点选择器（EPP）依据模型服务器实时指标选择副本：
+
+```yaml
+apiVersion: inference.networking.k8s.io/v1
+kind: InferencePool
+metadata:
+  name: qwen3-32b
+spec:
+  selector:
+    matchLabels:
+      app: vllm-qwen3-32b
+  targetPorts:
+  - number: 8000
+  endpointPickerRef:
+    name: qwen3-32b-epp
+    port:
+      number: 9002
+    failureMode: FailOpen
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: qwen3-route
+spec:
+  parentRefs:
+  - name: ai-gateway
+  rules:
+  - matches:
+    - headers:
+      - name: X-Gateway-Model-Name     # 由 Body-Based Router 从请求体 model 字段提取
+        value: Qwen/Qwen3-32B
+    backendRefs:
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: qwen3-32b
+```
+
+Istio、Agentgateway、kgateway、NGINX Gateway Fabric、GKE Inference Gateway 等已通过其一致性测试；它也是 vLLM 与 Kubernetes 社区联合推出的 llm-d 推理栈的默认入口。
 
 ## 高级功能与优化
 
@@ -166,6 +184,22 @@ static_resources:
 - 安全加固：mTLS 加密通信
 - 可观测性：分布式追踪与性能分析
 
+### 专用 AI Gateway 项目
+
+除通用网关外，一批专门面向 LLM 流量的开源网关在 2025 – 2026 年快速成熟，它们通常同时实现 Gateway API 与 Inference Extension，并补充按 token 计费限流、提示词守卫、多模型提供商统一 API 等能力：
+
+{{< table title="主流开源 AI Gateway 项目" >}}
+
+| 项目 | 基础 | 特点 |
+|------|------|------|
+| Envoy AI Gateway | Envoy Gateway 扩展 | CNCF Envoy 社区项目，统一 OpenAI/Anthropic/Bedrock 等上游 API，按 token 限流，支持 Inference Extension |
+| Agentgateway | Rust 自研数据面（Linux 基金会） | 面向 LLM、MCP、A2A 流量，可作为 Gateway API 与 Inference Gateway 实现，是 kgateway 控制面的 AI 数据面 |
+| Higress | Envoy + Istio | 阿里开源，AI 插件生态丰富（Token 限流、缓存、安全护栏），兼容 Gateway API |
+| Kong AI Gateway | Kong Gateway 插件 | 多 LLM 供应商路由、提示词模板与守卫、语义缓存 |
+| LiteLLM | Python 代理 | 以 OpenAI 格式统一 100+ 模型提供商，常作为应用侧的轻量网关 |
+
+{{< /table >}}
+
 ## 监控与运维实践
 
 AI Gateway 的稳定运行离不开完善的监控与运维体系。
@@ -194,12 +228,13 @@ AI Gateway 的稳定运行离不开完善的监控与运维体系。
 
 ## 总结
 
-AI Gateway 是连接客户端与 AI 服务的核心枢纽，通过智能路由、负载均衡和安全控制，保障 AI 应用的稳定高效运行。在 Kubernetes 中，可结合 Ingress、Gateway API 或专用网关组件实现上述功能，满足多样化业务需求。
+AI Gateway 是连接客户端与 AI 服务的核心枢纽，通过智能路由、负载均衡和安全控制，保障 AI 应用的稳定高效运行。在 Kubernetes 中，应以 Gateway API 为基础，对自托管模型叠加 Inference Extension 的模型感知路由，再按需选用 Envoy AI Gateway、Agentgateway、Higress 等专用网关补齐 token 限流与提示词安全等能力。
 
 ## 参考文献
 
 1. [Kubernetes Gateway API 官方文档 - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/gateway-api/)
 2. [Envoy 官方文档 - envoyproxy.io](https://www.envoyproxy.io/docs/)
 3. [Istio 服务网格文档 - istio.io](https://istio.io/latest/docs/)
-4. [NGINX Ingress Controller 文档 - nginx.com](https://docs.nginx.com/nginx-ingress-controller/)
-5. [AI Gateway 设计模式 - cncf.io](https://www.cncf.io/blog/2023/ai-gateway-patterns/)
+4. [Gateway API Inference Extension - gateway-api-inference-extension.sigs.k8s.io](https://gateway-api-inference-extension.sigs.k8s.io/)
+5. [Envoy AI Gateway - aigateway.envoyproxy.io](https://aigateway.envoyproxy.io/)
+6. [Agentgateway - agentgateway.dev](https://agentgateway.dev/)

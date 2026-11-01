@@ -14,15 +14,15 @@ icon: kubernetes
 icon-pack: custom
 parts:
     - id: part-i
-      title: "Part I · 基础架构与核心抽象"
+      title: Part I · 基础架构与核心抽象
       order: 1
       collapse: false
     - id: part-ii
-      title: "Part II · 平台能力与生产实践"
+      title: Part II · 平台能力与生产实践
       order: 2
       collapse: false
     - id: part-iii
-      title: "Part III · 扩展机制与新范式"
+      title: Part III · 扩展机制与新范式
       order: 3
       collapse: false
 cascade:
@@ -33,7 +33,7 @@ cascade:
 repository:
     url: https://github.com/rootsongjc/kubernetes-handbook
     branch: main
-lastmod: 2025-11-04T02:02:55.950Z
+lastmod: 2026-11-01T09:34:56.318Z
 pdf: https://github.com/rootsongjc/kubernetes-handbook/releases/
 authors:
     - Jimmy Song
@@ -41,7 +41,7 @@ publisher: jimmysong.io
 ---
 
 {{< callout note 关于本教程 >}}
-《Kubernetes 基础教程》创建于 2017 年，持续维护与更新。本书基于 Kubernetes v1.31+ 编写，持续跟进最新的概念和 API，确保内容的时效性与准确性。开源于 [GitHub](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建。内容以 [CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
+《Kubernetes 基础教程》创建于 2017 年，持续维护与更新。本书以 Kubernetes **v1.37**（2026 年 8 月发布）为基准版本，基础架构与核心抽象部分已全面对齐，覆盖 v1.29 至 v1.37 间 GA 的原生 Sidecar、原地资源调整、用户命名空间、CEL 准入策略、DRA、nftables 等关键特性，并标注了各特性的版本状态；版本脉络可先阅读 [Kubernetes 版本演进速览](architecture/release-evolution/)。开源于 [GitHub](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建。内容以 [CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 {{< /callout >}}
 
 ## 什么是云原生
@@ -92,6 +92,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **实战导向**：着重于经验总结和最佳实践分享
 - **深入浅出**：详细解析 Kubernetes 核心概念
 - **生态完整**：涵盖微服务、DevOps、服务网格、Serverless、边缘计算、AI 原生等相关领域
-- **持续更新**：跟进最新技术发展和社区动态
+- **持续更新**：跟进最新技术发展和社区动态，2026 年 11 月完成核心章节面向 v1.37 的全面修订，其余章节持续跟进
 
 {{< section-toc show_summary="true" style="cards"  >}}

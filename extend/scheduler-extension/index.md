@@ -3,7 +3,7 @@ title: 调度架构与 Framework 扩展
 linktitle: 调度架构扩展
 weight: 30
 date: 2025-10-27T21:40:00+08:00
-lastmod: 2025-10-27T14:03:02.862Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: 介绍 Kubernetes 调度器的核心架构、工作流程与 Scheduler Framework 插件机制，理解如何通过可插拔框架扩展调度逻辑，实现 GPU、AI 等场景下的智能调度。
 ---
 
@@ -197,7 +197,8 @@ Scheduler Framework 插件可以通过三种方式运行：
 - 避免直接修改 kube-scheduler 源码；
 - 插件逻辑应保持幂等与轻量；
 - 使用 `--config` 启用多个调度 profile；
-- 对复杂逻辑（如 AI Job）可结合 `Permit` 与外部控制器协作。
+- 对复杂逻辑（如 AI Job）可结合 `Permit` 与外部控制器协作；
+- 优先复用核心调度器的新原语而非自研：调度门控（`schedulingGates`，v1.30 GA）用于外部准入与排队，动态资源分配（DRA，v1.34 GA）用于设备感知调度，成组调度 `Workload`/`PodGroup` API（v1.35 Alpha，v1.37 Beta）用于全有或全无调度；异步抢占（`SchedulerAsyncPreemption`，v1.33 Beta）与 PodGroup 级抢占策略（v1.37 Alpha）正在降低自定义 Permit 插件的必要性。
 
 这些建议有助于构建高效、可扩展的调度系统。
 

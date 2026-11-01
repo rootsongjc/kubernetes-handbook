@@ -4,7 +4,7 @@ title: 使用 kubeconfig 文件配置跨集群认证
 linktitle: kubeconfig 与跨集群访问
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes kubeconfig 文件的结构、组成和使用方法，包括集群、用户、上下文的配置，以及跨集群认证的最佳实践。
-lastmod: 2025-10-13T05:09:43.994Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 在 Kubernetes 环境中，不同的组件和用户可能需要不同的认证方式：
@@ -67,9 +67,13 @@ users:
     token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjlrOXAy...
 - name: dev-user
   user:
-    username: developer
-    password: dev-password
+    exec:                                   # 外部凭据插件（OIDC、云厂商 IAM 等）
+      apiVersion: client.authentication.k8s.io/v1
+      command: kubectl
+      args: [oidc-login, get-token, --oidc-issuer-url=https://idp.example.com, --oidc-client-id=kubernetes]
 ```
+
+kube-apiserver 的静态密码文件认证（`--basic-auth-file`）已于 v1.19 移除，kubeconfig 中的 `username`/`password` 字段只对少数第三方代理有意义；人员身份应统一走 OIDC exec 插件，自动化身份使用 ServiceAccount 短期 Token 或客户端证书。
 
 ### 核心组件详解
 
@@ -122,14 +126,10 @@ users:
 - name: token-user
   user:
     token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjlrOXAy...
-- name: basic-user
-  user:
-    username: developer
-    password: secret-password
 - name: exec-user
   user:
     exec:
-      apiVersion: client.authentication.k8s.io/v1beta1
+      apiVersion: client.authentication.k8s.io/v1   # v1 自 Kubernetes 1.22 起可用，v1beta1 仍兼容
       command: aws
       args:
       - eks

@@ -4,7 +4,7 @@ linktitle: kubectl 命令行工具
 date: 2025-10-13
 weight: 10
 description: 详解如何通过 kubectl 命令行工具与 Kubernetes API 交互，涵盖认证机制、请求模式、资源管理与自动化实践，助力高效管理集群资源。
-lastmod: 2025-10-13T09:48:21.740Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 kubectl 是 Kubernetes 官方命令行工具，极大简化了 API 交互、认证、资源管理与自动化操作。掌握 kubectl 与 API 的工作原理，有助于提升集群运维与开发效率。

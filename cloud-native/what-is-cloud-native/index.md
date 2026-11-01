@@ -4,7 +4,7 @@ linktitle: 什么是云原生？
 date: 2022-05-03T00:00:00+01:00
 description: 云原生是一种构建和运行应用程序的方法，利用云计算环境的优势来提高应用的可扩展性、弹性和敏捷性。本文深入探讨云原生的定义演进、核心特征以及技术体系。
 weight: 1
-lastmod: 2025-10-27T17:37:55.987Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 云原生不仅是技术革新，更是驱动企业敏捷创新与持续进化的核心动力。
@@ -37,10 +37,12 @@ lastmod: 2025-10-27T17:37:55.987Z
 
 ### CNCF 官方定义
 
-随着云原生生态系统的快速发展，2018 年 CNCF 对云原生进行了[重新定义](https://github.com/cncf/toc/blob/main/DEFINITION.md)，形成了更加全面和前瞻性的表述：
+随着云原生生态系统的快速发展，2018 年 CNCF 对云原生进行了[重新定义](https://github.com/cncf/toc/blob/main/DEFINITION.md)（v1.0），形成了更加全面和前瞻性的表述：
 
 > **云原生技术**有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括**容器、服务网格、微服务、不可变基础设施和声明式 API**。
 > 这些技术能够构建**容错性好、易于管理和便于观察**的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出**频繁和可预测的重大变更**。
+
+2024 年 2 月，CNCF 技术监督委员会批准了定义的 **v1.1 版本**。新版本把重心从"技术"转向"实践"：云原生实践使组织能够以可编程、可重复的方式在公有云、私有云与混合云环境中大规模开发、构建和部署工作负载，其特征是**以安全、有韧性、可管理、可持续且可观测的方式互操作的松耦合系统**；代表技术在原有五项之外增加了**多租户**与 **Serverless**，并明确该列表并非穷举。"可持续"（sustainable）的加入反映了社区对能耗与环境影响的关注。
 
 ### 核心技术栈
 
@@ -86,12 +88,14 @@ lastmod: 2025-10-27T17:37:55.987Z
 
 - **Serverless 计算**：进一步抽象基础设施管理
 - **边缘计算**：将云原生能力扩展到边缘场景
-- **AI/ML 集成**：云原生平台原生支持机器学习工作负载
-- **安全左移**：将安全能力内置到开发流程中
+- **AI 原生**：Kubernetes 通过 DRA、Gateway API Inference Extension、Kueue/JobSet 等原生支持 AI 训练与推理，CNCF 推出 Kubernetes AI Conformance 认证
+- **平台工程**：以内部开发者平台（IDP）封装云原生复杂度，提升开发者体验
+- **安全左移与供应链安全**：SBOM、镜像签名（Sigstore）、SLSA 等成为交付流程的默认组成
+- **可持续性**：能耗感知调度与碳排放可观测性进入 CNCF 定义 v1.1 与项目路线图
 
 云原生已经从一个技术概念发展为企业数字化转型的核心战略。正如 Kubernetes 开启了云原生的序幕，服务网格引领了后 Kubernetes 时代的微服务治理，我们正处在一个云原生技术快速演进和广泛应用的新时代。
 
-## 参考资料
+## 参考文献
 
-- [CNCF Cloud Native Definition v1.0 - github.com](https://github.com/cncf/toc/blob/main/DEFINITION.md)
+- [CNCF Cloud Native Definition v1.1 - github.com](https://github.com/cncf/toc/blob/main/DEFINITION.md)
 - [Cloud Native Landscape - landscape.cncf.io](https://landscape.cncf.io/)

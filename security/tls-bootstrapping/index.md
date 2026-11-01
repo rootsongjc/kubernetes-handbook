@@ -3,7 +3,7 @@ weight: 86
 title: TLS Bootstrap
 date: 2022-05-21T00:00:00+08:00
 description: 介绍如何为 Kubernetes kubelet 配置 TLS 客户端证书自动引导，包括 kube-apiserver、kube-controller-manager 和 kubelet 的详细配置步骤。
-lastmod: 2025-10-27T17:04:15.260Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > TLS Bootstrap 为 Kubernetes 节点自动化证书管理提供了安全、高效的解决方案，是大规模集群安全运维的基础能力。

@@ -4,7 +4,7 @@ linktitle: Argo Rollout：渐进式交付
 weight: 106
 description: Argo Rollout 是 Kubernetes 的渐进式交付控制器，提供蓝绿部署和金丝雀部署等高级部署策略，支持细粒度流量控制和自动化分析，提升应用交付的安全性和可靠性。
 date: 2025-01-20T00:00:00+08:00
-lastmod: 2025-10-19T11:21:14.309Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Argo Rollout 为 Kubernetes 提供了企业级渐进式交付能力，支持蓝绿和金丝雀等高级部署策略，集成流量控制与自动化分析，显著提升应用发布的安全性与可靠性。
@@ -227,7 +227,7 @@ spec:
 
 ### 流量管理
 
-- Ingress 控制器集成：NGINX、AWS ALB、Istio Gateway
+- 流量管理集成：Gateway API（HTTPRoute 权重分流，推荐）、Istio、AWS ALB、Traefik、Contour 等；社区 Ingress NGINX 已于 2026 年 3 月退役，相关 Canary 注解方案应迁移到 Gateway API 插件
 - Service Mesh 集成：Istio、Linkerd、AWS App Mesh
 
 ### 回滚策略

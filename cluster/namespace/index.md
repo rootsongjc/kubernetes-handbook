@@ -3,7 +3,7 @@ weight: 23
 title: Namespace
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Namespace 的概念、使用场景和管理方法，包括如何创建和管理命名空间以实现资源隔离和环境划分。
-lastmod: 2025-10-27T12:44:56.975Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Namespace 是 Kubernetes 实现资源隔离、环境划分和多租户管理的基础机制，合理设计有助于提升集群安全性与可维护性。
@@ -74,6 +74,10 @@ Kubernetes 集群默认包含以下 Namespace：
 
 {{< /table >}}
 
+每个 Namespace 自动带有不可变标签 `kubernetes.io/metadata.name: <名称>`（v1.22 GA），便于 NetworkPolicy、Webhook 的 `namespaceSelector` 按名称精确匹配命名空间。
+
+此外，Namespace 是 Pod 安全准入（Pod Security Admission）的作用单元：通过 `pod-security.kubernetes.io/enforce|audit|warn` 标签即可为该命名空间内所有 Pod 强制执行 `privileged`、`baseline` 或 `restricted` 安全标准，详见 [Pod 安全准入](../../security/pod-security-admission)。
+
 ## 资源作用域
 
 并非所有 Kubernetes 资源都属于 Namespace 作用域，需注意区分：
@@ -93,8 +97,11 @@ Kubernetes 集群默认包含以下 Namespace：
 | StorageClass     |                 |     ✔️     |
 | ClusterRole      |                 |     ✔️     |
 | Namespace        |                 |     ✔️     |
+| ValidatingAdmissionPolicy / CRD |  |     ✔️     |
 
 {{< /table >}}
+
+可通过 `kubectl api-resources --namespaced=true` / `--namespaced=false` 分别列出两类资源。
 
 ## Namespace 生命周期与资源隔离
 

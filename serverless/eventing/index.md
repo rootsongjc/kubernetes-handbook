@@ -3,7 +3,7 @@ title: Knative Eventing
 weight: 5
 description: Knative Eventing 的事件驱动架构和使用方法。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T13:06:04.472Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Knative Eventing 为 Kubernetes 提供了标准化、松耦合的事件驱动架构，支持多种事件源、灵活的事件处理模式和高可扩展性，是构建现代云原生事件系统的关键组件。
@@ -545,7 +545,9 @@ spec:
 
    ```bash
    # 创建事件查看器服务
-   kubectl apply -f https://github.com/knative/eventing-contrib/releases/download/v0.19.0/event-display.yaml
+   # eventing-contrib 仓库已归档，event-display 现随 eventing 发布或可直接部署镜像
+   kubectl create deployment event-display --image=gcr.io/knative-releases/knative.dev/eventing/cmd/event_display
+   kubectl expose deployment event-display --port=80
    ```
 
 3. **检查网络配置**

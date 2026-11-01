@@ -5,7 +5,7 @@ linktitle: 概述
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 了解 Kubernetes 多集群部署策略，包括多集群概念、访问配置、集群联邦以及现代多集群管理解决方案，提高应用的可用性、隔离性和可扩展性。
-lastmod: 2025-10-27T08:30:48.593Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 多集群管理已成为 Kubernetes 生态的重要发展方向。通过合理的多集群架构，企业能够提升系统的高可用性、隔离性与弹性，满足多云、合规和边缘计算等多样化需求。
@@ -88,7 +88,7 @@ Kubernetes 最初设计用于管理单个集群内的容器化工作负载。然
 3. **应用与工作负载层（Workload Layer）**  
    使用 GitOps、Service Mesh、统一服务目录等方式，在多个集群间分发与运行应用，实现业务层面的高效协作。
 
-## 当前的技术趋势（2024–2025）
+## 当前的技术趋势（2025–2026）
 
 近年来，多集群管理技术持续演进，主要趋势包括：
 
@@ -102,6 +102,10 @@ Kubernetes 最初设计用于管理单个集群内的容器化工作负载。然
   随着边缘计算的发展，多集群架构正向“中心云 + 边缘节点”的分层治理模式演进。
 - **统一可观测性与策略化安全**  
   通过集中观测平台（如 OpenTelemetry + Prometheus + Loki）以及 OPA / Kyverno 策略框架，实现跨集群的治理与合规。
+- **标准 API 回归**  
+  SIG Multicluster 的 MCS API（2026 年进入 v1beta1）与 ClusterProfile（Cluster Inventory API）为跨集群服务发现和集群清单提供了厂商中立的接口，Karmada、OCM、Cilium、Istio 等项目正围绕这些 API 对齐。
+- **AI 工作负载的多集群调度**  
+  Kueue 的 MultiKueue 借助 Job `managedBy` 字段（v1.35 GA）把训练作业分发到拥有空闲 GPU 的集群，多集群从"高可用/容灾"扩展到"算力池化"。
 
 ## 总结
 

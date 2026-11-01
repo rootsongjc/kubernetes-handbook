@@ -3,14 +3,30 @@ weight: 42
 title: Gateway API
 date: 2022-05-21T00:00:00+08:00
 description: 深入介绍 Kubernetes Gateway API 的核心概念、资源模型和最佳实践。作为 Ingress 的现代化替代方案，Gateway API 提供更强大的流量管理能力，支持多协议路由、角色分离和灵活的策略配置，已于 2023 年达到 GA 状态。
-lastmod: 2025-10-27T17:50:41.500Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
   
 > Gateway API 作为 Kubernetes 网络流量管理的现代标准，兼具协议多样性、角色分离和强大扩展性，已成为 Ingress 的理想替代方案。
 
 ## 概述
 
-Gateway API 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kubernetes 生态系统提供现代化的服务网络 API。自 2023 年 GA 以来，Gateway API 已支持多协议路由、角色分离和灵活策略配置，成为 Ingress 的下一代替代方案。
+Gateway API 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kubernetes 生态系统提供现代化的服务网络 API。自 2023 年 10 月 v1.0 GA 以来，项目保持约每半年一个小版本的节奏演进，截至本文更新时的最新版本为 v1.7（2026 年 10 月）。Gateway API 以 CRD 形式独立于 Kubernetes 版本发布，分为 **Standard**（稳定）与 **Experimental**（实验）两个发布渠道，已支持多协议路由、角色分离和灵活策略配置，成为 Ingress 的下一代替代方案。
+
+{{< table title="Gateway API 主要资源的成熟度（v1.7）" >}}
+
+| 资源                          | API 版本                        | 渠道          |
+|-------------------------------|---------------------------------|---------------|
+| GatewayClass、Gateway、HTTPRoute | `gateway.networking.k8s.io/v1`  | Standard（v1.0 起） |
+| GRPCRoute                     | `gateway.networking.k8s.io/v1`  | Standard（v1.1 起） |
+| ReferenceGrant                | `gateway.networking.k8s.io/v1beta1` | Standard         |
+| BackendTLSPolicy              | `gateway.networking.k8s.io/v1`  | Standard（v1.4 起） |
+| HTTPRoute 重试（`retry`）      | HTTPRoute 字段                  | Standard（v1.7 起） |
+| TCPRoute、UDPRoute、TLSRoute   | `gateway.networking.k8s.io/v1alpha2` | Experimental     |
+| ListenerSet、XBackendTrafficPolicy、XTelemetryPolicy 等 | `v1alpha1`/`x-k8s.io` | Experimental |
+
+{{< /table >}}
+
+2025 年 11 月社区 Ingress NGINX 控制器宣布退役（2026 年 3 月停止维护）后，Gateway API 已成为 Kubernetes 流量入口事实上的唯一演进方向。
 
 {{< callout note 注意 >}}
 

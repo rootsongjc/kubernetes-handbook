@@ -3,7 +3,7 @@ title: HAMi：Kubernetes 上的异构算力虚拟化中间件
 description: 探索 HAMi：Kubernetes 上的异构算力虚拟化中间件，提升 AI 加速器管理与调度效率，助力资源优化与灵活性。
 weight: 11
 linktitle: HAMi：算力虚拟化
-lastmod: 2025-11-08T17:40:06.679Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-20T04:55:31.153Z
 ---
 
@@ -97,10 +97,9 @@ HAMi 安装与使用门槛低，几步即可在 Kubernetes 集群中实现 GPU �
 
 **前置条件：**
 
-- Kubernetes 版本 ≥ 1.18
-- NVIDIA 驱动 ≥ 440（如需支持 NVIDIA GPU）
-- nvidia-docker 版本 > 2.0
-- Helm 版本 > 3.0
+- Kubernetes 集群（建议使用处于支持周期内的版本）与 Helm 3+
+- NVIDIA 驱动（如需支持 NVIDIA GPU），并按官方节点准备指南安装 NVIDIA Container Toolkit、把 containerd/CRI-O 的默认运行时配置为 `nvidia`（nvidia-docker2 已停止维护）
+- 为 GPU 节点打上 `gpu=on` 标签（HAMi 设备插件默认的节点选择器）
 
 **基础安装流程：**
 
@@ -129,7 +128,7 @@ resources:
 
 HAMi（Heterogeneous AI Computing Virtualization Middleware）前身是开源项目“k8s-vGPU-scheduler”，于 2021 年由第四范式等贡献者发起。项目目标是在 Kubernetes 集群中简化和自动化对 GPU、NPU、MLU 等异构 AI 加速硬件的管理。HAMi 通过将单张物理 GPU 拆分为多个虚拟单元供多任务共享，大幅提升硬件利用率。它解决了 Kubernetes 原生 NVIDIA Device Plugin 一卡一 Pod 导致的 GPU 利用率低下问题，使多个 Pod 能安全高效共享同一 GPU。
 
-在社区运营方面，HAMi 自发布以来增长迅速。截至 2024 年底，GitHub 上已有 ~1800 颗星标和 70+ 名贡献者参与（2025 年已超 2.2k Stars），初始贡献来自第四范式等公司。HAMi 于 2024 年 8 月正式被 CNCF（云原生计算基金会）接纳为 Sandbox（沙箱）级项目。目前 HAMi 作为 CNCF 编排与调度类的开源项目，已被收录进 CNCF 技术全景图和 CNAI（云原生 AI）景观。项目以开放治理为目标，由互联网、金融、制造、云厂商等多个领域共同发起，具备中立开放的社区属性。截至 2025 年初，HAMi 已广泛应用于公有云、私有云以及金融、证券、能源、电信、教育、制造等行业的生产环境，超过 50 家机构既是其终端用户也是积极贡献者。
+在社区运营方面，HAMi 自发布以来增长迅速。截至 2026 年 10 月，GitHub 上已有 5k+ 星标，最新版本为 v2.10，初始贡献来自第四范式等公司。HAMi 于 2024 年 8 月正式被 CNCF（云原生计算基金会）接纳为 Sandbox（沙箱）级项目。目前 HAMi 作为 CNCF 编排与调度类的开源项目，已被收录进 CNCF 技术全景图和 CNAI（云原生 AI）景观。项目以开放治理为目标，由互联网、金融、制造、云厂商等多个领域共同发起，具备中立开放的社区属性。截至 2025 年初，HAMi 已广泛应用于公有云、私有云以及金融、证券、能源、电信、教育、制造等行业的生产环境，超过 50 家机构既是其终端用户也是积极贡献者。
 
 HAMi 的核心愿景是成为“Kubernetes 上异构算力的一站式管理中间件”，打破不同加速硬件间的使用鸿沟，为用户提供统一的接口和体验，同时无需改动现有应用程序。2024 年 HAMi 通过 CNCF 沙箱项目投票，以超过规定票数通过并正式进入基金会治理。这标志着 HAMi 获得了云原生社区的认可，也使其生态加速壮大。
 

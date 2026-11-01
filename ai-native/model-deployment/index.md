@@ -4,7 +4,7 @@ linkTitle: 大模型部署与调优
 weight: 4
 description: 在 Kubernetes 中部署和管理大语言模型的最佳实践和性能调优技巧。
 date: 2025-10-20T05:20:04.483Z
-lastmod: 2025-10-20T05:35:45.645Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 大语言模型（LLM）在 Kubernetes 中的部署与调优涉及资源管理、性能优化、版本控制等多方面挑战。本文系统梳理 LLM 部署的关键技术、优化策略和运维实践，助力构建高效稳定的大模型服务平台。
@@ -33,23 +33,23 @@ lastmod: 2025-10-20T05:35:45.645Z
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: llama2-7b-deployment
+  name: qwen3-8b-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: llama2-7b
+      app: qwen3-8b
   template:
     metadata:
       labels:
-        app: llama2-7b
+        app: qwen3-8b
     spec:
       containers:
       - name: model-server
-        image: vllm/vllm-openai:latest
+        image: vllm/vllm-openai:v0.11.0
         args:
         - --model
-        - meta-llama/Llama-2-7b-chat-hf
+        - Qwen/Qwen3-8B
         - --tensor-parallel-size
         - "1"
         ports:

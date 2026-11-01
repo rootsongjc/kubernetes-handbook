@@ -3,13 +3,17 @@ title: ValidatingWebhook 扩展：实例验证请求的动态策略控制
 linktitle: Validating Webhook 扩展
 description: ValidatingWebhook 扩展用于在资源创建、更新、删除等操作发生前对请求进行验证，以动态地实现策略控制、安全防护和合规审计。
 weight: 10
-lastmod: 2025-10-27T14:11:47.082Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-27T11:27:02.540Z
 ---
 
 > ValidatingWebhook 是 Kubernetes 动态准入控制的核心机制，支持在 API 请求路径中灵活注入自定义校验逻辑，实现安全、合规与智能化的集群治理。
 
 ## 概述
+
+{{< callout note "先评估 CEL 准入策略" >}}
+Kubernetes 已内建声明式的 `ValidatingAdmissionPolicy`（v1.30 GA）与 `MutatingAdmissionPolicy`（v1.36 GA），用 CEL 表达式在 API Server 进程内完成校验与变更，无需部署 Webhook 服务。大多数字段级规则与默认值注入应优先使用准入策略，Webhook 保留给需要外部数据或复杂计算的场景，详见 [准入策略：用 CEL 替代 Webhook](../admission-policy/)。
+{{< /callout >}}
 
 在 Kubernetes 中，**ValidatingWebhook**（验证型 Webhook）属于 *动态准入控制（Dynamic Admission Control）* 的一部分。它能在资源写入 etcd 之前介入 API Server 的请求处理流程，对对象内容进行**校验（Validation）**，并可以**拒绝不符合策略的请求**。
 

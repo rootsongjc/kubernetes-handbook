@@ -3,7 +3,7 @@ title: API 聚合层（APIService）
 weight: 3
 linktitle: APIService
 date: 2025-10-27T19:40:00+08:00
-lastmod: 2025-10-27T09:44:30.234Z
+lastmod: 2026-11-01T00:00:00+08:00
 cover: images/k8s-apiservice-banner.png
 description: APIService 是 Kubernetes 的 API 聚合层机制，允许外部 API Server 注册到主 API Server 下，实现统一的 API 接口暴露。本文介绍其架构原理、注册方式与典型应用。
 ---
@@ -53,6 +53,8 @@ spec:
     namespace: kube-system
   group: metrics.k8s.io
   version: v1beta1
+  groupPriorityMinimum: 100
+  versionPriority: 100
   insecureSkipTLSVerify: false
   caBundle: <Base64-encoded-CA>
 ```
@@ -75,6 +77,8 @@ v1beta1.metrics.k8s.io   kube-system/metrics-server   True   25s
 ```bash
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 ```
+
+`metrics.k8s.io` API 规范在 Kubernetes v1.37 定义了 `v1` 版本（Beta 近九年后毕业）；metrics-server 截至 v0.9 仍注册 `v1beta1`，升级到提供 `v1` 的版本后只需追加一个 `v1.metrics.k8s.io` APIService，`kubectl top` 与 HPA 会自动使用可用的最新版本。
 
 主 API Server 会将该请求代理至 metrics-server，实现统一访问入口。
 
@@ -145,6 +149,6 @@ APIService 是 Kubernetes 的早期扩展机制，代表了“聚合式 API 扩�
 ## 参考文献
 
 1. [Kubernetes 官方文档：Aggregation Layer - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
-2. [APIService API Reference - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#apiservice-v1-apiregistration-k8s-io)
+2. [APIService API Reference - kubernetes.io](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/)
 3. [Kubernetes Sample API Server - github.com](https://github.com/kubernetes/sample-apiserver)
 4. [Metrics Server - github.com](https://github.com/kubernetes-sigs/metrics-server)

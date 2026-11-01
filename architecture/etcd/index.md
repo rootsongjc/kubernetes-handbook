@@ -128,14 +128,21 @@ etcd 提供全面的安全模型，具有认证和基于角色的访问控制 (R
 
 ## Kubernetes 与 Etcd 的集成
 
-Kubernetes 使用 etcd v3 API 进行所有操作，提供更好的性能和功能。
+Kubernetes 使用 etcd v3 API 进行所有操作。自 etcd 3.4 起 `etcdctl` 默认即为 v3 API，无需再设置 `ETCDCTL_API=3`；etcd 3.6 移除了 v2 存储后端，3.7 进一步移除了 v2 客户端，该环境变量已无实际意义。本文命令中保留该变量仅为兼容更早版本的工具。
 
-```bash
-# 设置 etcd v3 API
-export ETCDCTL_API=3
-```
+Kubernetes 对 etcd 的版本有明确要求，下表列出了近年主要版本 kubeadm 默认内置的 etcd 版本：
 
-> 早期版本的网络插件（如 flannel）可能使用 etcd v2 API，但现代版本通常已升级到 v3 API。
+{{< table title="Kubernetes 与 kubeadm 内置 etcd 版本对应关系" >}}
+
+| Kubernetes 版本 | 内置 etcd 版本 | 说明                                           |
+|-----------------|----------------|------------------------------------------------|
+| v1.29 – v1.33   | 3.5.x          | 3.5 系列为长期主力版本，各分支持续回合补丁（当前 3.5.24） |
+| v1.34 – v1.36   | 3.6.x          | etcd 3.6（2025 年 5 月发布）支持在线降级、v3store 成为唯一后端，内存占用显著下降 |
+| v1.37           | 3.7.x          | etcd 3.7（2026 年 7 月发布）彻底移除 v2 客户端与 v2 发现机制、清理全部实验性参数，新增 Unix Socket 端点与 FastLeaseKeepAlive |
+
+{{< /table >}}
+
+升级 etcd 必须逐小版本进行（例如 3.5 → 3.6 → 3.7），且在升级前完成快照备份；etcd 3.6 起支持降级到上一个小版本，但不支持跨越两个小版本的降级。
 
 ### 数据存储结构
 
@@ -163,13 +170,13 @@ Kubernetes 将所有资源对象存储在 etcd 的 `/registry` 路径下，结�
 
 #### 基本访问方法
 
-访问 Kubernetes 数据时，需指定 etcd v3 API：
+在 etcd 3.4 及以上版本中，`etcdctl` 默认使用 v3 API，直接执行即可：
 
 ```bash
-export ETCDCTL_API=3
+etcdctl get /registry/namespaces/default -w=json | jq .
 ```
 
-或在命令前添加环境变量：
+若使用更早版本的 `etcdctl`，需显式指定 v3 API：
 
 ```bash
 ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json | jq .
@@ -412,15 +419,17 @@ leader 选举过程确保在任何时候只存在一个 leader，防止脑裂场
 
 ## 网络插件与 Etcd
 
-现代网络插件（如 Calico、Flannel、Cilium）通常将网络配置存储在 etcd 中。
+早期的网络插件（如 Flannel、Calico 的 etcd 数据存储模式）会把网络配置直接写入 etcd。如今主流插件默认把状态存放在 Kubernetes API（CRD）中，不再直接依赖 etcd：Calico 推荐使用 Kubernetes datastore，Cilium 通过 CRD 或可选的独立 kvstore 工作，Flannel 使用 `kube-subnet-mgr` 模式从 Node 对象读取子网。只有在显式配置为 etcd 后端时，才需要用以下方式查看网络数据：
 
 ```bash
-# 查看网络配置（以 Calico 为例）
-ETCDCTL_API=3 etcdctl get /calico --prefix
+# 查看网络配置（Calico etcd 数据存储模式）
+etcdctl get /calico --prefix
 
-# 查看 Flannel 网络配置（如果使用）
-ETCDCTL_API=3 etcdctl get /coreos.com/network --prefix
+# 查看 Flannel 网络配置（etcd 后端模式）
+etcdctl get /coreos.com/network --prefix
 ```
+
+出于安全与运维隔离的考虑，生产环境不建议让网络插件与 Kubernetes 共用同一套 etcd。
 
 ## 数据备份与恢复实践
 
@@ -473,10 +482,11 @@ etcd 提供 Prometheus 指标和内置健康检查。
 
 维护操作包括：
 
-- 压缩：删除旧修订以释放空间
-- 碎片整理：回收磁盘空间
+- 压缩：删除旧修订以释放空间（kube-apiserver 默认每 5 分钟自动请求压缩）
+- 碎片整理：回收磁盘空间，`etcdctl defrag` 会短暂阻塞请求，应逐节点执行
 - 快照：创建备份
-- 升级：版本升级流程
+- 升级：版本升级流程，逐小版本升级
+- 配额：`--quota-backend-bytes` 默认 2 GiB，建议生产环境设置为 8 GiB 并配合告警；数据库超出配额后集群进入只读告警状态
 
 ## 安全最佳实践
 
@@ -530,6 +540,8 @@ Etcd 为分布式系统提供可靠的分布式键值存储，具有强一致性
 
 1. [etcd 官方文档 - etcd.io](https://etcd.io/)
 2. [Kubernetes etcd 管理指南 - kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
-3. [etcd 性能调优指南 - etcd.io](https://etcd.io/docs/v3.5/tuning/)
-4. [Etcd 架构与实现解析 - jolestar.com](http://jolestar.com/etcd-architecture/)
-5. [Raft 共识算法论文 - raft.github.io](https://raft.github.io/)
+3. [etcd 性能调优指南 - etcd.io](https://etcd.io/docs/v3.6/tuning/)
+4. [Announcing etcd v3.6.0 - etcd.io](https://etcd.io/blog/2025/announcing-etcd-3.6/)
+5. [etcd CHANGELOG 3.7 - github.com](https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.7.md)
+6. [Etcd 架构与实现解析 - jolestar.com](http://jolestar.com/etcd-architecture/)
+7. [Raft 共识算法论文 - raft.github.io](https://raft.github.io/)

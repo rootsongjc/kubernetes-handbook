@@ -3,7 +3,7 @@ weight: 27
 title: 垃圾收集
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 垃圾收集机制，包括 Owner 和 Dependent 对象关系、级联删除策略（Background、Foreground、Orphan）以及实际操作示例和最佳实践。
-lastmod: 2025-10-27T15:41:20.420Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 垃圾收集机制是 Kubernetes 资源生命周期管理的核心保障，合理配置可有效防止资源泄漏与孤儿对象堆积。
@@ -252,6 +252,16 @@ kubectl get pv <pv-name> -o yaml | grep -A 5 finalizers
 # 移除 finalizer（谨慎操作）
 kubectl patch pv <pv-name> -p '{"metadata":{"finalizers":null}}'
 ```
+
+### 其他垃圾回收机制
+
+除了基于 ownerReference 的级联删除，Kubernetes 还有多条独立的垃圾回收路径：
+
+- **已完成 Pod 的清理**：kube-controller-manager 的 `--terminated-pod-gc-threshold`（默认 12500）控制保留的已终止 Pod 数量；v1.27 起对孤儿 Pod、被驱逐 Pod 的清理更为积极
+- **Job 的 TTL 清理**：`spec.ttlSecondsAfterFinished`（v1.23 GA）让 Job 及其 Pod 在完成指定秒数后自动删除
+- **节点镜像垃圾回收**：kubelet 按磁盘使用率阈值（`imageGCHighThresholdPercent`/`imageGCLowThresholdPercent`）删除未使用镜像；v1.30 起还可按镜像最长未使用时长（`imageMaximumGCAge`）回收
+- **容器垃圾回收**：kubelet 按 `maxPerPodContainerCount`、`maxContainerCount` 清理已退出的容器实例
+- **未使用的 ResourceClaim**：DRA 为 Pod 自动生成的 ResourceClaim 会随 Pod 删除而回收
 
 ## 最佳实践
 

@@ -4,7 +4,7 @@ title: Devtron - 云原生应用管理平台
 linktitle: Devtron
 date: 2025-10-19T07:54:03.111Z
 description: Devtron 是一款开源的云原生应用管理平台，提供完整的应用生命周期管理，包括 CI/CD、GitOps、安全扫描、监控告警等功能，帮助团队高效管理 Kubernetes 应用。
-lastmod: 2025-10-19T08:13:12.023Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Devtron 是一款开源云原生应用管理平台，集成 CI/CD、GitOps、安全扫描和监控告警等功能，助力团队高效管理 Kubernetes 应用全生命周期。

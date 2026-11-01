@@ -4,24 +4,28 @@ title: Pause 容器
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 深入探究 Kubernetes 中 Pause 容器（Infra 容器）的作用与原理，了解它如何实现 Pod 内容器间的网络命名空间共享，以及在 Pod 生命周期管理中的关键作用。
-lastmod: 2025-10-27T13:35:39.329Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Pause 容器（Infra 容器）是 Kubernetes Pod 架构的核心机制，负责实现容器间命名空间共享和 Pod 生命周期管理，是多容器协作的基础。
 
 ## Pause 容器配置
 
-Pause 容器的镜像配置在 kubelet 参数中，以下为常见配置方式：
+Pause 容器又称沙箱（Sandbox）容器或 Infra 容器。在当前的 CRI 架构下，**沙箱镜像由容器运行时而非 kubelet 决定**：kubelet 通过 CRI 的 `RunPodSandbox` 调用让运行时创建沙箱，运行时据自身配置拉起 Pause 容器。以 containerd 为例：
 
-```bash
-# Kubernetes 默认配置
---pod-infra-container-image=registry.k8s.io/pause:3.9
+```toml
+# containerd 2.x：/etc/containerd/config.toml
+version = 3
+[plugins."io.containerd.cri.v1.runtime"]
+  sandbox_image = "registry.k8s.io/pause:3.10"
 
-# 早期版本配置（已过时）
---pod-infra-container-image=gcr.io/google_containers/pause-amd64:3.0
+# containerd 1.7：/etc/containerd/config.toml
+version = 2
+[plugins."io.containerd.grpc.v1.cri"]
+  sandbox_image = "registry.k8s.io/pause:3.10"
 ```
 
-> **注意**：自 Kubernetes 1.25 起，Pause 容器镜像默认为 `registry.k8s.io/pause:3.9`，支持多架构。
+CRI-O 则在 `/etc/crio/crio.conf` 的 `pause_image` 字段中配置。kubelet 的 `--pod-infra-container-image` 参数如今只用于告知 kubelet 的镜像垃圾回收不要删除该镜像，并已在 v1.30 后逐步弃用；若该参数与运行时配置不一致，以运行时配置为准。使用 kubeadm 部署时，`kubeadm config images pull` 会按 Kubernetes 版本拉取匹配的 Pause 镜像，并在 `kubeadm init` 阶段提示修正 containerd 中不一致的 `sandbox_image`。
 
 Pause 容器可自定义，官方源代码见 [Kubernetes GitHub 仓库](https://github.com/kubernetes/kubernetes/tree/master/build/pause)，采用 C 语言实现。
 
@@ -79,8 +83,8 @@ crictl ps | grep pause
 示例输出：
 
 ```text
-9cec6c0ef583   registry.k8s.io/pause:3.9   3 hours ago   Running   k8s_POD_nginx-deployment-...
-5a5ef33b0d58   registry.k8s.io/pause:3.9   3 hours ago   Running   k8s_POD_redis-cluster-...
+9cec6c0ef583   registry.k8s.io/pause:3.10   3 hours ago   Running   k8s_POD_nginx-deployment-...
+5a5ef33b0d58   registry.k8s.io/pause:3.10   3 hours ago   Running   k8s_POD_redis-cluster-...
 ```
 
 ## 实战演示
@@ -90,12 +94,14 @@ crictl ps | grep pause
 ![Pause 容器示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pause-container/pause-container.webp)
 {width=1598 height=948}
 
+以下演示借助 Docker CLI 手动复现 kubelet 与 CRI 运行时创建 Pod 的过程。Docker 在这里只是便于观察的实验工具，真实集群中这些动作由 containerd/CRI-O 通过 CRI 完成，读者也可以用 `nerdctl` 执行相同命令。
+
 ### 步骤一：启动 Pause 容器
 
 手动启动 Pause 容器作为命名空间基础：
 
 ```bash
-docker run -d --name pause -p 8880:80 --ipc=shareable registry.k8s.io/pause:3.9
+docker run -d --name pause -p 8880:80 --ipc=shareable registry.k8s.io/pause:3.10
 ```
 
 ### 步骤二：启动 Nginx 容器并共享命名空间
@@ -166,24 +172,29 @@ node        10  0.3  2.0 1254200 83788 ?       Ssl  13:53   0:03 node current/in
 
 ## 版本演进
 
+Pause 镜像的版本与 Kubernetes 版本松耦合，下表列出了近年来主要版本的对应关系：
+
 {{< table title="Pause 容器版本演进与变化" >}}
 
-| Kubernetes 版本 | Pause 容器版本 | 主要变化                     |
-|-----------------|----------------|------------------------------|
-| 1.20 及以前     | pause:3.2      | 基础功能                     |
-| 1.21-1.24       | pause:3.5      | 多架构支持                   |
-| 1.25+           | pause:3.9      | 镜像仓库迁移到 registry.k8s.io |
+| Kubernetes 版本 | Pause 容器版本 | 主要变化                                           |
+|-----------------|----------------|----------------------------------------------------|
+| 1.20 及以前     | pause:3.2      | 基础功能                                           |
+| 1.21-1.24       | pause:3.5      | 多架构支持                                         |
+| 1.25-1.30       | pause:3.9      | 镜像仓库迁移到 registry.k8s.io                       |
+| 1.31+           | pause:3.10     | 构建链升级、Windows 镜像基于 nanoserver 更新；沙箱镜像配置权转移至运行时 |
 
 {{< /table >}}
+
+需要注意的是，Pause 进程并不会随 Kubernetes 版本升级而发生功能变化，上表中的版本差异主要来自构建工具链与镜像基础层。
 
 ## 最佳实践
 
 Pause 容器相关建议如下：
 
-- **镜像选择**：使用与集群版本匹配的 Pause 容器镜像
-- **网络配置**：确保 Pause 容器镜像在所有节点可用
+- **镜像选择**：使用与集群版本匹配的 Pause 容器镜像，并在容器运行时（而非 kubelet）配置中声明
+- **镜像预置**：离线或私有仓库环境应把 Pause 镜像预先同步到每个节点，否则所有 Pod 都会卡在 `ContainerCreating`
 - **监控观察**：通过 Pause 容器状态判断 Pod 健康
-- **故障排查**：Pause 容器异常通常意味着整个 Pod 存在问题
+- **故障排查**：Pause 容器异常通常意味着整个 Pod 存在问题；`crictl pods` 可直接列出沙箱状态
 
 ## 总结
 

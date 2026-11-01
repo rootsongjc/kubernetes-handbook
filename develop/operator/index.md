@@ -4,7 +4,7 @@ linktitle: Operator
 title: Kubernetes Operator
 description: 深入了解 Kubernetes Operator 的原理、架构、应用场景和 2025 年最佳实践。
 date: 2024-01-15T11:00:00+08:00
-lastmod: 2025-10-31T12:33:13.312Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes Operator 通过将运维专家的领域知识编码为软件，实现了复杂有状态应用的自动化部署与运维，极大提升了云原生平台的可扩展性和智能化水平。
@@ -141,12 +141,12 @@ spec:
 
 | 工具 | 语言 | 特点 | 适用场景 |
 |------|------|------|----------|
-| Operator SDK v1.35+ | Go/Ansible/Helm | Red Hat 官方，成熟生态 | 企业级生产 Operator |
-| Kubebuilder v4.x | Go | Kubernetes SIG 项目，高度可定制 | 复杂业务逻辑 |
-| Kopf v1.37+ | Python | 轻量级，装饰器模式 | 快速原型和脚本化 |
-| Crossplane v1.16+ | Go/YAML | 平台抽象，多云支持 | 基础设施即代码 |
+| Operator SDK v1.42+ | Go/Ansible/Helm | Red Hat 官方，成熟生态；Go 项目内部复用 Kubebuilder 脚手架 | 企业级生产 Operator |
+| Kubebuilder v4.16+ | Go | Kubernetes SIG 项目，基于 controller-runtime v0.25，高度可定制 | 复杂业务逻辑 |
+| Kopf 1.45+ | Python | 轻量级，装饰器模式 | 快速原型和脚本化 |
+| Crossplane v2.x | Go/YAML | 平台抽象，多云支持；v2 起支持命名空间级资源与任意 Kubernetes 对象编排 | 基础设施即代码 |
 | Capsule v0.7+ | Go | 多租户 Operator | SaaS 平台 |
-| KUDO v1.4+ | YAML | 声明式，无代码开发 | 非开发者用户 |
+| Metacontroller | YAML + 任意语言 Webhook | 声明式组合控制器，无需 Go 代码 | 轻量自定义控制逻辑 |
 
 {{< /table >}}
 

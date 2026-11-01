@@ -2,7 +2,7 @@
 title: KubeEdge：云原生边缘计算框架
 weight: 10
 linktitle: KubeEdge
-lastmod: 2025-11-03T16:32:00.725Z
+lastmod: 2026-11-01T00:00:00+08:00
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/banner.webp
 social_title: KubeEdge 如何让 Kubernetes 统管云边与物联网？
 description: KubeEdge 是 CNCF 托管的云原生边缘计算框架，扩展 Kubernetes 能力至边缘和物联网场景，实现云边端一体化管理。
@@ -13,7 +13,7 @@ date: 2025-11-03T15:51:19.097Z
 
 ## 项目简介
 
-[KubeEdge](https://github.com/kubeedge/kubeedge) 是业界首个面向边缘场景、专为云边协同设计的云原生边缘计算框架。2018 年由华为开源，目前是 CNCF（Cloud Native Computing Foundation，云原生计算基金会）托管项目（2020 年晋级为孵化级别项目）。KubeEdge 在 Kubernetes 原生能力之上扩展了云端与边缘之间在应用、资源、数据和设备等方面的协同管理，实现了云、边、端的贯通管理。
+[KubeEdge](https://github.com/kubeedge/kubeedge) 是业界首个面向边缘场景、专为云边协同设计的云原生边缘计算框架。2018 年由华为开源，目前是 CNCF（Cloud Native Computing Foundation，云原生计算基金会）托管项目（2020 年晋级为孵化级别，2024 年 10 月正式毕业，是首个毕业的边缘计算项目）。KubeEdge 在 Kubernetes 原生能力之上扩展了云端与边缘之间在应用、资源、数据和设备等方面的协同管理，实现了云、边、端的贯通管理。
 
 KubeEdge 通过在云端增加 CloudCore 组件、边缘侧运行 EdgeCore，使云端的 Kubernetes 控制平面能够感知并管理远端的边缘节点和设备。它特别适合需要大规模设备管理、物联网（IoT, Internet of Things）数据处理的场景，通过将计算下沉到边缘来降低云端压力并提升实时性。
 
@@ -104,16 +104,18 @@ KubeEdge 支持多版本 Kubernetes，兼容性矩阵如下，便于用户选择
 
 {{< table title="KubeEdge 与 Kubernetes 兼容性矩阵" >}}
 
-| KubeEdge 版本 | K8s 1.25 | K8s 1.26 | K8s 1.27 | K8s 1.28 | K8s 1.29 | K8s 1.30 |
+| KubeEdge 版本 | K8s 1.27 | K8s 1.28 | K8s 1.29 | K8s 1.30 | K8s 1.31 | K8s 1.32 |
 | --- | --- | --- | --- | --- | --- | --- |
-| KubeEdge 1.16 | ✓ | ✓ | ✓ | \- | \- | \- |
-| KubeEdge 1.17 | + | ✓ | ✓ | ✓ | \- | \- |
-| KubeEdge 1.18 | + | + | ✓ | ✓ | ✓ | \- |
-| KubeEdge 1.19 | + | + | ✓ | ✓ | ✓ | \- |
-| KubeEdge 1.20 | + | + | + | ✓ | ✓ | ✓ |
+| KubeEdge 1.19 | ✓ | ✓ | ✓ | \- | \- | \- |
+| KubeEdge 1.20 | + | ✓ | ✓ | ✓ | \- | \- |
+| KubeEdge 1.21 | + | ✓ | ✓ | ✓ | \- | \- |
+| KubeEdge 1.22 | + | + | ✓ | ✓ | ✓ | \- |
+| KubeEdge 1.23 | + | + | + | ✓ | ✓ | ✓ |
 | KubeEdge HEAD | + | + | + | ✓ | ✓ | ✓ |
 
 {{< /table >}}
+
+截至 2026 年 10 月，KubeEdge 最新版本为 v1.23（上表取自项目 README）。需要注意 KubeEdge 的云端 CloudCore 对接的是 Kubernetes API Server，而边缘节点运行的是裁剪版 kubelet（EdgeCore），因此其兼容矩阵相对 Kubernetes 上游有一定滞后，生产部署时应以矩阵中标记 ✓ 的组合为准。
 
 - ✓: 完全兼容
 - +: KubeEdge 有部分功能或 API 不被该 K8s 版本支持

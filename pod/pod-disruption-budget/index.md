@@ -84,6 +84,39 @@ Pod 中断预算的典型工作流程如下：
 - 仅限自愿中断：PDB 无法阻止非自愿中断
 - 优雅终止：通过 Eviction API 驱逐的 Pod 会按照 `terminationGracePeriodSeconds` 优雅关闭
 - 滚动更新兼容：控制器（如 Deployment）在滚动更新时不受 PDB 限制
+- 中断标记：被驱逐或抢占的 Pod 会被打上 `DisruptionTarget` 条件（v1.31 GA），Job 的 Pod 失败策略可据此把"基础设施打断"与"业务失败"区分开
+
+### PDB 资源定义
+
+PDB 属于 `policy/v1` API 组（v1.21 起 GA，`policy/v1beta1` 已于 v1.25 移除）。`minAvailable` 与 `maxUnavailable` 二选一，均可写成绝对数或百分比。以下示例要求匹配 `app: web` 的 Pod 至少保留 2 个可用：
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: web
+  unhealthyPodEvictionPolicy: AlwaysAllow
+```
+
+`unhealthyPodEvictionPolicy` 字段自 v1.31 起 GA，用于控制**尚未就绪**的 Pod 是否受预算保护：
+
+{{< table title="unhealthyPodEvictionPolicy 取值说明" >}}
+
+| 取值            | 行为                                                                 | 适用场景                                   |
+|-----------------|----------------------------------------------------------------------|--------------------------------------------|
+| `IfHealthyBudget`（默认） | 仅当健康 Pod 数已满足预算时，才允许驱逐不健康的 Pod                    | 保守策略，兼容旧行为                        |
+| `AlwaysAllow`   | 不健康的 Pod 始终可被驱逐，不计入预算                                  | 避免 CrashLoop 的 Pod 卡住节点排空，生产推荐 |
+
+{{< /table >}}
+
+在以往的默认行为下，若应用因故障长期不就绪，`kubectl drain` 会因 PDB 永远无法满足而阻塞；`AlwaysAllow` 解决了这一运维痛点。
+
+对于 Deployment、StatefulSet、ReplicaSet 等内建控制器，PDB 可直接通过选择器匹配；对于通过 CRD 管理 Pod 的自定义控制器，必须在 CRD 中启用 `scale` 子资源，PDB 才能用百分比取值。
 
 ## 实践示例：节点维护场景
 
@@ -187,9 +220,10 @@ Pod 中断预算支持以下角色分离，便于团队协作和职责明确。
 
 ### PDB 最佳实践
 
-- 合理设置预算：平衡可用性和维护效率
+- 合理设置预算：平衡可用性和维护效率；`minAvailable: 100%` 或 `maxUnavailable: 0` 会让节点排空永远无法完成
+- 显式设置 `unhealthyPodEvictionPolicy: AlwaysAllow`：避免故障 Pod 阻塞集群维护
 - 测试验证：在非生产环境验证 PDB 行为
-- 监控告警：跟踪中断事件和预算使用情况
+- 监控告警：跟踪中断事件和预算使用情况，`kubectl get pdb` 的 `ALLOWED DISRUPTIONS` 列为 0 时需关注
 - 文档记录：明确记录中断容忍度要求
 
 ### 应用程序设计

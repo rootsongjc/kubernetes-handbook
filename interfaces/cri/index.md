@@ -4,7 +4,7 @@ title: 容器运行时接口（CRI）
 slug: cri
 date: 2022-05-21T00:00:00+08:00
 description: 容器运行时接口（CRI）是 Kubernetes 中定义容器和镜像服务的核心接口，基于 gRPC 协议，支持多种容器运行时后端如 containerd、CRI-O 等，为 Kubernetes 提供了灵活的容器运行时选择。
-lastmod: 2025-10-27T13:20:57.346Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > CRI（Container Runtime Interface）为 Kubernetes 提供了标准化的容器运行时抽象层，支持多种运行时后端，极大提升了平台的灵活性和可扩展性。
@@ -95,7 +95,7 @@ CRI 通过 `Version` RPC 支持版本协商，返回：
 - `runtime_version`：运行时实现版本
 - `runtime_api_version`：运行时支持的 CRI API 版本
 
-kubelet 可据此校验与运行时的兼容性。
+kubelet 可据此校验与运行时的兼容性。此外，v1.30 起 CRI 新增 `RuntimeConfig` RPC，kubelet 借此从运行时读取 cgroup 驱动（`cgroupfs`/`systemd`），不再需要在 kubelet 与运行时两侧手工保持 `cgroupDriver` 一致（kubelet 特性门控 `KubeletCgroupDriverFromCRI`，v1.31 Beta 并默认开启，v1.34 GA；同时手工配置 `cgroupDriver` 的方式自 v1.34 起弃用）。
 
 ## 预期应用场景
 
@@ -131,14 +131,19 @@ CRI **不适用于**：
 
 ## 主流 CRI 实现
 
+自 Kubernetes v1.24 移除内置的 dockershim 后，kubelet 只通过 CRI 与运行时通信；v1.26 起仅支持 CRI `v1` API（`v1alpha2` 已移除），运行时必须实现 `v1` 才能被 kubelet 接入。
+
 {{< table title="主流 CRI 实现对比" >}}
 
 | 运行时         | 维护者         | 特点                         | 使用场景                |
 | -------------- | -------------- | ---------------------------- | ----------------------- |
-| containerd     | CNCF           | 轻量级、高性能、生产就绪      | 云原生环境、生产部署     |
-| CRI-O          | Red Hat/CNCF   | 专为 Kubernetes 设计、OCI 兼容 | OpenShift、企业环境      |
+| containerd     | CNCF           | 轻量级、高性能、生产就绪，事实上的默认运行时；2.x 系列重构了 CRI 插件配置并默认启用 cgroup v2、user namespaces 等能力 | 云原生环境、生产部署、各大托管 Kubernetes 服务 |
+| CRI-O          | Red Hat/CNCF   | 专为 Kubernetes 设计、OCI 兼容，版本号与 Kubernetes 小版本同步 | OpenShift、企业环境      |
+| cri-dockerd    | Mirantis/Docker | 独立维护的 Docker Engine CRI 适配器，取代已移除的 dockershim | 需要继续使用 Docker Engine 的存量环境 |
 
 {{< /table >}}
+
+containerd 1.6 已于 2025 年初停止维护；Kubernetes v1.35 是支持 containerd 1.x 的最后一个版本，v1.36 起 kubelet 不再支持 containerd 1.x（可通过 `kubelet_cri_losing_support` 指标提前发现），生产环境应统一升级到 containerd 2.x。containerd 2.x 的 CRI 插件配置段从 `io.containerd.grpc.v1.cri` 拆分为 `io.containerd.cri.v1.runtime` 与 `io.containerd.cri.v1.images`，升级时需迁移 `config.toml`（可用 `containerd config migrate` 自动转换）。
 
 ### 安全增强型运行时
 

@@ -4,7 +4,7 @@ title: 管理集群中的 TLS
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 详细介绍 Kubernetes 集群中 TLS 证书的管理机制，包括集群根证书颁发机构（CA）的工作原理、证书签名请求（CSR）的创建和批准流程，以及如何在 Pod 中建立 TLS 信任关系。
-lastmod: 2025-10-27T17:09:00.179Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 在使用二进制文件部署 Kubernetes 集群时，TLS 证书配置往往是最容易出错的环节。理解 Kubernetes 集群中 TLS 证书的管理机制，对于构建安全可靠的集群至关重要。
@@ -155,11 +155,13 @@ EOF
 
 **重要变更**：
 
-- 在 Kubernetes 1.19+ 版本中，必须指定 `signerName`
+- `certificates.k8s.io/v1` API 要求必须指定 `signerName`（`v1beta1` 已于 v1.22 移除）
 - 常用的 signer 包括：
-  - `kubernetes.io/kube-apiserver-client`：客户端证书
-  - `kubernetes.io/kubelet-serving`：服务端证书
-  - `kubernetes.io/legacy-unknown`：兼容性 signer
+  - `kubernetes.io/kube-apiserver-client`：客户端证书，不会被控制器自动批准
+  - `kubernetes.io/kube-apiserver-client-kubelet`：kubelet 客户端证书，可由 kube-controller-manager 自动批准
+  - `kubernetes.io/kubelet-serving`：kubelet 服务端证书
+  - `kubernetes.io/legacy-unknown`：兼容性 signer，仅 `v1beta1` 时代遗留，`v1` API 中不可用
+- v1.37 起 `ClusterTrustBundle`（`certificates.k8s.io/v1`）与 Pod 证书（`PodCertificateRequest`）GA：前者让集群以标准资源分发签发方的 CA 信任包，Pod 可通过 projected 卷的 `clusterTrustBundle` 源挂载；后者让 kubelet 代表 Pod 向指定 signer 申请并自动轮换短期 X.509 证书，为工作负载 mTLS 提供了内建方案
 
 ### 查看证书签名请求状态
 
@@ -296,7 +298,7 @@ metadata:
 spec:
   containers:
   - name: kube-controller-manager
-  image: k8s.gcr.io/kube-controller-manager:v1.28.0
+  image: registry.k8s.io/kube-controller-manager:v1.37.0
   command:
   - kube-controller-manager
   - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt

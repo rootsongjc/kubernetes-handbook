@@ -3,7 +3,7 @@ weight: 44
 title: ServiceAccount
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中的 ServiceAccount 概念，包括其作用、配置方法和最佳实践，帮助理解 Pod 身份认证机制。
-lastmod: 2025-10-27T12:31:10.385Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > ServiceAccount 是 Kubernetes 集群中 Pod 身份认证与权限控制的基础机制，合理配置可提升安全性与自动化水平。
@@ -117,6 +117,23 @@ spec:
 
 - Token 自动轮换，存储于只读投影卷
 - Token 具备时间和受众限制，提升安全性
+- Token 绑定到 Pod（以及 v1.32 起 GA 的节点绑定），Pod 被删除后 Token 立即失效
+- v1.32 起 Token 中额外携带 JTI 唯一标识、Pod/Node 的名称与 UID 等声明，审计日志可据此精确追溯到发起请求的 Pod
+
+Token 在投影卷中的定义如下，`expirationSeconds` 最短 10 分钟，kubelet 会在过期前自动刷新：
+
+```yaml
+volumes:
+- name: kube-api-access
+  projected:
+    sources:
+    - serviceAccountToken:
+        path: token
+        expirationSeconds: 3600
+        audience: https://kubernetes.default.svc   # 可指定非 API Server 的受众，用于访问外部系统
+```
+
+借助 `audience` 字段与集群暴露的 OIDC 发现端点（`/.well-known/openid-configuration`、`/openid/v1/jwks`），ServiceAccount Token 还可直接作为工作负载身份与 AWS IAM、GCP、Vault 等外部系统做联合认证，无需再分发长期凭据。
 
 ![ServiceAccount Token 生命周期](serviceaccount-token-lifecycle.svg)
 
@@ -201,10 +218,12 @@ kubectl create serviceaccount sample-sa
 Kubernetes v1.24+ 推荐获取短期 Token：
 
 ```bash
-kubectl create token sample-sa
+kubectl create token sample-sa --duration=1h
+# 绑定到特定 Pod，Pod 删除后 Token 随之失效
+kubectl create token sample-sa --bound-object-kind=Pod --bound-object-name=my-pod
 ```
 
-如需长期 Token，需手动创建 Secret。
+如需长期 Token，需手动创建 Secret。v1.29 起，kube-controller-manager 会自动清理超过一年未使用的自动生成旧式 Token Secret（`LegacyServiceAccountTokenCleanUp`），并在 Secret 上记录 `kubernetes.io/legacy-token-last-used` 注解，可据此评估哪些长期 Token 已无人使用。
 
 ### 创建 ClusterRole
 

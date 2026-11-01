@@ -4,7 +4,7 @@ title: Init 容器
 date: 2022-05-21T00:00:00+08:00
 slug: init-containers
 description: Init 容器是一种专用的容器，在应用程序容器启动之前运行，用来包含一些应用镜像中不存在的实用工具或安装脚本。本文详细介绍 Init 容器的概念、用法和最佳实践。
-lastmod: 2025-10-27T13:26:42.274Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Init 容器是 Kubernetes Pod 生命周期管理中的关键机制，专为初始化任务和依赖准备而设计，提升了应用部署的灵活性和可维护性。
@@ -20,8 +20,9 @@ Init 容器（Init Container）是运行在 Pod 中的特殊容器，在应用�
 | 特性         | Init 容器                   | 应用容器                   |
 |--------------|----------------------------|----------------------------|
 | 运行方式     | 顺序执行，运行至完成        | 并行运行，持续运行         |
-| 重启策略     | 失败时重启整个 Pod         | 根据 restartPolicy 处理    |
-| 就绪探针     | 不支持 readinessProbe      | 支持各种探针               |
+| 重启策略     | 失败时按 Pod `restartPolicy` 重试 | 根据 restartPolicy 处理    |
+| 探针         | 不支持 liveness/readiness/startup 探针 | 支持各种探针               |
+| 生命周期钩子 | 不支持 `lifecycle`         | 支持 postStart/preStop     |
 | 生命周期     | 一次性执行                 | 长期运行                   |
 
 {{< /table >}}
@@ -33,7 +34,29 @@ Init 容器（Init Container）是运行在 Pod 中的特殊容器，在应用�
 
 ### 与普通容器的区别
 
-Init 容器支持应用容器的大部分特性，但在生命周期、重启策略等方面有显著差异。
+Init 容器支持应用容器的大部分特性（镜像、环境变量、卷挂载、资源限制、安全上下文等），但在生命周期、重启策略等方面有显著差异：Init 容器不支持探针和 `lifecycle` 钩子，也不能声明 `ports` 对外提供服务。
+
+### Init 容器与 Sidecar 容器
+
+自 Kubernetes v1.29 起，Init 容器新增了一个可选字段 `restartPolicy`。当某个 Init 容器的 `restartPolicy` 设为 `Always` 时，它不再是"运行一次即退出"的初始化容器，而会成为与 Pod 同寿命的**原生 Sidecar 容器**：启动成功后即放行后续容器，自身持续运行并在崩溃后自动重启，且支持探针与生命周期钩子。该字段是 Init 容器与 Sidecar 容器的唯一区别，详见 [Sidecar 容器](../sidecar-container)。
+
+以下示例同时包含一个普通 Init 容器和一个 Sidecar 容器：
+
+```yaml
+spec:
+  initContainers:
+  - name: init-schema          # 普通 Init 容器：运行完成后退出
+    image: my-app:1.0
+    command: ["python", "manage.py", "migrate"]
+  - name: log-agent            # Sidecar 容器：与 Pod 同寿命
+    image: fluent/fluent-bit:3.2
+    restartPolicy: Always
+  containers:
+  - name: app
+    image: my-app:1.0
+```
+
+本文余下内容聚焦于不设置 `restartPolicy`（或显式设为与 Pod 一致）的普通 Init 容器。
 
 ## Init 容器的使用场景
 
@@ -145,22 +168,25 @@ Init 容器的执行顺序和失败处理如下：
 3. Init 容器按顺序依次执行
 4. 所有 Init 容器成功后，应用容器启动
 
-- 若 Init 容器失败，Kubernetes 会根据 Pod 的 `restartPolicy` 重启 Pod
-- `restartPolicy: Never` 时，Pod 不会重启
-- `restartPolicy: Always` 或 `OnFailure` 时，会重启整个 Pod
+- 若 Init 容器失败，kubelet 会根据 Pod 的 `restartPolicy` 决定是否重试
+- `restartPolicy: Never` 时，Pod 直接进入 `Failed` 阶段
+- `restartPolicy: Always` 或 `OnFailure` 时，kubelet 会按指数退避反复重启该 Init 容器，直至成功
+- Init 容器的重试同样受 Pod 级 `activeDeadlineSeconds` 约束
 
 以下情况会导致 Init 容器重新执行：
 
-- Init 容器镜像更新
-- Pod 基础设施容器重启
+- Pod 的沙箱（pause 容器 / 网络命名空间）被重建，例如节点重启或容器运行时重启
+- Init 容器的 `image` 字段被更新（`spec.initContainers` 中只有 `image` 允许在 Pod 创建后修改），kubelet 会重启整个 Pod 的所有容器
 - Pod 被删除重建
 
 ## 资源管理
 
-Init 容器的资源请求和限制有独特的计算方式：
+Init 容器的资源请求和限制有独特的计算方式。由于普通 Init 容器顺序运行、互不重叠，Kubernetes 不会把它们的资源简单相加：
 
-- **有效初始请求**：所有 Init 容器中某资源的最大值
+- **有效初始请求**：所有普通 Init 容器中某资源的最大值
 - **Pod 有效请求**：max(有效初始请求，所有应用容器请求之和)
+
+如果 Pod 同时声明了 Sidecar 容器（`restartPolicy: Always` 的 Init 容器），Sidecar 的资源会与应用容器**累加**计算，详见 [Sidecar 容器](../sidecar-container) 中的资源计算规则。
 
 以下 YAML 展示了 Init 容器的资源配置：
 
@@ -278,23 +304,26 @@ initContainers:
 - 构建专用的 Init 容器镜像
 - 利用多阶段构建减小镜像大小
 
-## 版本兼容性
+## 版本演进
 
-{{< table title="Init 容器在不同 Kubernetes 版本中的支持情况" >}}
+Init 容器自 Kubernetes 1.6 起以 `spec.initContainers` 字段形式稳定提供，是最早成熟的 Pod 特性之一。近年来与之相关的重要变化集中在两点：
 
-| 版本           | 支持方式                  | 说明           |
-| -------------- | ------------------------- | -------------- |
-| Kubernetes 1.6+| `spec.initContainers` 字段 | 推荐，主流用法 |
-| Kubernetes 1.5 | beta 注解                 | 已废弃         |
-| 当前版本       | 完全支持                  | 功能稳定       |
+{{< table title="Init 容器相关特性的版本演进" >}}
+
+| 版本       | 变化                                                                 |
+| ---------- | -------------------------------------------------------------------- |
+| v1.6       | `spec.initContainers` 字段 GA，取代早期的 beta 注解写法                |
+| v1.28      | Init 容器可设置 `restartPolicy: Always`（Alpha），原生 Sidecar 雏形      |
+| v1.29      | 原生 Sidecar 容器 Beta 并默认开启                                       |
+| v1.33      | 原生 Sidecar 容器 GA                                                    |
 
 {{< /table >}}
 
-现代 Kubernetes 集群应始终使用 `spec.initContainers` 字段定义 Init 容器。
+对运行 v1.29 及以上版本的集群，Init 容器与 Sidecar 容器共同构成了 Pod 启动阶段的完整工具箱：前者负责一次性初始化，后者负责贯穿 Pod 生命周期的辅助能力。
 
 ## 总结
 
-Init 容器为 Kubernetes Pod 提供了灵活的初始化机制，适用于依赖检查、数据准备、安全配置等多种场景。通过合理设计 Init 容器及其资源配置，可显著提升应用部署的可靠性和自动化水平。建议在实际项目中充分利用 Init 容器，规范初始化流程，提升集群运维效率。
+Init 容器为 Kubernetes Pod 提供了灵活的初始化机制，适用于依赖检查、数据准备、安全配置等多种场景。通过合理设计 Init 容器及其资源配置，可显著提升应用部署的可靠性和自动化水平。对需要长期运行的辅助进程，应使用 `restartPolicy: Always` 将其声明为 Sidecar 容器，而不是用 Init 容器加后台进程的方式模拟。
 
 ## 参考文献
 

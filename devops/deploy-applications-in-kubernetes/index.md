@@ -4,7 +4,7 @@ title: 适用于 Kubernetes 的应用开发部署流程
 linktitle: 应用开发部署流程
 date: 2022-05-21T00:00:00+08:00
 description: 从本地开发、镜像构建、CI/CD、GitOps 到 Kubernetes 部署与服务网格集成的端到端流程与参考实现。
-lastmod: 2025-10-19T11:32:02.451Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 从本地快速迭代到生产级持续交付，采用 GitOps、ArgoCD/Argo Rollouts 与可观察性最佳实践构建可靠的 Kubernetes 发布流程。
@@ -189,8 +189,9 @@ spec:
 
 生产集群应启用策略引擎与 Admission 控制：
 
-- Kyverno / OPA Gatekeeper：实现合规策略（镜像签名、禁止 root、资源限制等）
-- Pod Security Standards 或者 Pod Security Admission：设置命名空间级安全策略
+- Pod 安全准入（Pod Security Admission）：以命名空间标签强制执行 Pod 安全标准，`baseline` 兜底、业务命名空间目标 `restricted`
+- ValidatingAdmissionPolicy / MutatingAdmissionPolicy（CEL，v1.30/v1.36 GA）：在 API Server 内声明镜像仓库白名单、资源限制、默认 `securityContext` 等组织规则，无需部署 Webhook
+- Kyverno / OPA Gatekeeper：实现更复杂的合规策略（镜像签名验证、跨资源规则、合规报告）
 - NetworkPolicy：默认 deny，然后按需放行服务间流量
 - 镜像策略：仅允许从受信任的 registry 和签名镜像部署
 

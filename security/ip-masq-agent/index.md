@@ -4,7 +4,7 @@ title: IP 伪装代理
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: IP 伪装代理（ip-masq-agent）通过配置 iptables 规则将 Pod IP 地址隐藏在集群节点 IP 后面，实现网络地址转换，确保集群内部流量能够正确访问外部网络。
-lastmod: 2025-10-28T04:47:48.531Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > IP 伪装代理（ip-masq-agent）为 Kubernetes 集群提供灵活的网络地址转换能力，保障 Pod 流量安全合规地访问外部网络，是云原生网络治理的重要基础设施。

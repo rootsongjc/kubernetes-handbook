@@ -1,7 +1,7 @@
 ---
 title: 从云原生到 AI 原生
 date: 2025-10-27T23:30:00+08:00
-lastmod: 2025-10-27T15:31:56.208Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 2
 draft: false
 description: 总结 Kubernetes 扩展机制的核心设计理念，梳理从 Cloud-Native 到 AI-Native 的演进路径，展望未来可扩展调度、AI Operator、AI Gateway 与 LLM Workflow Controller 的发展趋势。
@@ -62,7 +62,7 @@ API 扩展让 Kubernetes 支持任意自定义资源（CRD），无需修改 API
 | --------------------- | --------------- | ------------------------------------ |
 | Cloud-Native（云原生） | 容器化、自动化、弹性伸缩    | Kubernetes / Istio / Envoy           |
 | ML-Native（机器学习原生） | 训练与推理工作流集成      | Kubeflow / KServe / MLflow           |
-| AI-Native（人工智能原生） | 模型中心化、智能调度、语义网格 | KubeRay / Volcano / AI Gateway / MCP |
+| AI-Native（人工智能原生） | 模型中心化、智能调度、语义网格 | DRA / Kueue / JobSet / Gateway API Inference Extension / KubeRay / llm-d / MCP |
 
 {{< /table >}}
 

@@ -4,7 +4,7 @@ title: 调试集群中的 Pod
 linktitle: 调试集群中的 Pod
 date: 2024-07-05T11:00:00+08:00
 description: 详细介绍如何系统性地调试 Kubernetes 集群中的 Pod 问题，包括状态检查、节点诊断、资源配额验证和网络排障等完整流程。
-lastmod: 2025-10-19T06:06:17.283Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 系统化的调试流程是高效定位和解决 Kubernetes 集群中 Pod 问题的关键，覆盖从状态检查到网络排障的全链路实践。
@@ -158,6 +158,24 @@ kubectl run debug-pod --image=nicolaka/netshoot -it --rm -- /bin/bash
 ```bash
 kubectl exec -it <pod-name> -- /bin/bash
 ```
+
+生产镜像越来越多地采用 distroless 或 scratch 基础镜像，容器内没有 shell 与诊断工具，`kubectl exec` 无从下手。此时应使用 `kubectl debug` 注入临时容器（Ephemeral Container，v1.25 GA），它与目标容器共享网络与进程命名空间，却可以自带完整的工具链：
+
+```bash
+# 注入带网络工具的临时容器，并进入目标容器的进程命名空间
+kubectl debug -it <pod-name> --image=nicolaka/netshoot --target=<container-name>
+
+# Pod 持续 CrashLoopBackOff：复制一份 Pod 并覆盖启动命令，保留现场排查
+kubectl debug <pod-name> -it --copy-to=<pod-name>-debug --container=<container-name> -- sh
+
+# 节点级排障：在节点上启动调试 Pod，宿主机根文件系统挂载在 /host
+kubectl debug node/<node-name> -it --image=ubuntu:24.04 -- chroot /host
+
+# 需要抓包或修改 iptables 时使用 netadmin / sysadmin profile 提升权限
+kubectl debug -it <pod-name> --image=nicolaka/netshoot --target=<container-name> --profile=netadmin
+```
+
+临时容器一旦注入就无法删除，只会随 Pod 一起消失；在启用了 Pod 安全准入 `restricted` 的命名空间中，需使用 `--profile=restricted` 或自定义 profile 才能通过准入。
 
 ### 端口转发
 

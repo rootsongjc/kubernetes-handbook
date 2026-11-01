@@ -5,7 +5,7 @@ part_id: part-ii
 description: 介绍 Kubernetes 集群的安装、配置、升级和维护等操作内容。
 icon: fas fa-user-cog
 date: 2025-10-13
-lastmod: 2025-11-04T02:02:55.896Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 Kubernetes 集群运维是确保集群稳定运行和高效服务的关键环节。本章将系统介绍集群的安装、配置、升级和维护等操作内容，帮助运维人员和开发者掌握集群运维的核心技能。

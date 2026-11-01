@@ -4,7 +4,7 @@ title: NetworkPolicy
 date: 2022-05-21T00:00:00+08:00
 slug: network-policy
 description: Kubernetes NetworkPolicy 是一种声明式的网络安全策略，用于控制 Pod 之间的网络通信。本文详细介绍了 NetworkPolicy 的工作原理、配置方法、使用场景和最佳实践。
-lastmod: 2025-10-27T17:03:22.045Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > NetworkPolicy 是 Kubernetes 网络安全的基石，通过声明式策略实现微服务间的最小权限通信，有效提升集群安全性和可控性。
@@ -252,6 +252,8 @@ spec:
 - 某些 CNI 插件可能对 NetworkPolicy 功能支持不完整，建议查阅插件文档。
 - NetworkPolicy 不影响 Kubernetes 控制平面组件间的通信。
 - 在部分云厂商托管 Kubernetes 服务中，NetworkPolicy 可能有额外限制。
+- NetworkPolicy 是命名空间级、只能"允许"的白名单模型，无法表达集群级的强制拒绝或优先级。SIG Network 正在推进 `AdminNetworkPolicy`/`BaselineAdminNetworkPolicy`（network-policy-api 项目，CRD 形式）为集群管理员提供高于/低于命名空间策略的集群范围规则，Cilium、Calico、Antrea、OVN-Kubernetes 等已提供实现。
+- 需要按 FQDN、HTTP 方法/路径或工作负载身份做控制时，可使用 Cilium 的 `CiliumNetworkPolicy`、Calico 的 `GlobalNetworkPolicy` 等插件扩展策略，或引入服务网格。
 
 ## 总结
 

@@ -3,7 +3,7 @@ weight: 29
 title: Deployment
 date: 2022-05-21T00:00:00+08:00
 description: Deployment 为 Pod 和 ReplicaSet 提供了声明式的部署方案，支持滚动更新、扩缩容、暂停恢复等操作，是 Kubernetes 中管理无状态应用的核心控制器。
-lastmod: 2025-10-27T16:02:32.390Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Deployment 控制器为 Kubernetes 无状态应用提供了声明式部署、弹性伸缩与高可用保障，是现代云原生架构的核心基石。
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.20
+        image: nginx:1.26
         ports:
         - containerPort: 80
 ```
@@ -59,7 +59,7 @@ kubectl scale deployment nginx-deployment --replicas 10
 kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80
 
 # 更新镜像
-kubectl set image deployment/nginx-deployment nginx=nginx:1.21
+kubectl set image deployment/nginx-deployment nginx=nginx:1.27
 
 # 回滚到上一版本
 kubectl rollout undo deployment/nginx-deployment
@@ -99,10 +99,16 @@ Deployment 通过声明式更新能力，自动管理 Pod 和 ReplicaSet 的生�
 使用 kubectl 创建 Deployment：
 
 ```bash
-kubectl create -f nginx-deployment.yaml --record
+kubectl apply -f nginx-deployment.yaml
 ```
 
-`--record` 参数可记录变更历史，便于后续回滚和审计。
+早期教程中常见的 `--record` 参数已于 v1.22 弃用并移除。如需在 `kubectl rollout history` 中看到每个版本的变更原因，可在每次变更时手动写入 `kubernetes.io/change-cause` 注解：
+
+```bash
+kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="upgrade nginx to 1.27" --overwrite
+```
+
+在 GitOps 流程中，更常见的做法是把变更原因直接写进清单的 `metadata.annotations`。
 
 ### 查看状态
 
@@ -162,7 +168,7 @@ Deployment Controller 会自动为 Pod 添加 `pod-template-hash` 标签，用�
 更新 nginx 镜像版本：
 
 ```bash
-kubectl set image deployment/nginx-deployment nginx=nginx:1.21
+kubectl set image deployment/nginx-deployment nginx=nginx:1.27
 ```
 
 或通过编辑方式：
@@ -280,7 +286,7 @@ kubectl rollout pause deployment/nginx-deployment
 
 ```bash
 # 更新镜像
-kubectl set image deployment/nginx-deployment nginx=nginx:1.21
+kubectl set image deployment/nginx-deployment nginx=nginx:1.27
 
 # 更新资源限制
 kubectl set resources deployment nginx-deployment -c=nginx --limits=cpu=200m,memory=512Mi
@@ -370,7 +376,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.20
+        image: nginx:1.26
 
 ---
 # 金丝雀版本
@@ -428,7 +434,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.20
+        image: nginx:1.26
         ports:
         - containerPort: 80
         resources:

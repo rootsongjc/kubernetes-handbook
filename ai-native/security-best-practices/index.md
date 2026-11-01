@@ -4,7 +4,7 @@ linkTitle: 安全与最佳实践
 weight: 10
 description: AI 原生应用的安全考虑和最佳实践指南。
 date: 2025-10-20T05:20:17.601Z
-lastmod: 2025-10-20T05:24:39.914Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > AI 原生应用安全涉及模型、数据、推理、访问控制等多维挑战。本文系统梳理 AI 应用的安全架构、身份认证、数据保护、模型安全、访问控制、审计合规及最佳实践，帮助构建安全可靠的 AI 平台。
@@ -45,7 +45,7 @@ AI 平台安全架构需覆盖身份认证、访问控制、数据加密、审�
 
 ### API 密钥管理
 
-通过 Kubernetes Secret 管理 API 密钥，结合 Ingress 实现访问控制。
+通过 Kubernetes Secret 管理 API 密钥，并在网关层完成鉴权。Gateway API 本身未标准化认证过滤器，各实现通过策略资源提供：以下示例用 Envoy Gateway 的 `SecurityPolicy` 为 HTTPRoute 开启 API Key 校验（Istio 可用 `RequestAuthentication`/`AuthorizationPolicy`，Envoy AI Gateway、Higress 等专用 AI 网关则内置按 token 计量的密钥管理）。
 
 ```yaml
 apiVersion: v1
@@ -53,30 +53,40 @@ kind: Secret
 metadata:
   name: ai-api-keys
 type: Opaque
-data:
-  primary-key: <base64-encoded-key>
-  secondary-key: <base64-encoded-key>
+stringData:
+  team-a: sk-xxxxxxxxxxxxxxxx
+  team-b: sk-yyyyyyyyyyyyyyyy
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: ai-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: ai-api-keys
+  name: ai-route
 spec:
+  parentRefs:
+  - name: ai-gateway
+  hostnames: ["ai.example.com"]
   rules:
-  - host: ai.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: ai-service
-            port:
-              number: 80
+  - backendRefs:
+    - name: ai-service
+      port: 80
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: ai-api-key-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: ai-route
+  apiKeyAuth:
+    credentialRefs:
+    - name: ai-api-keys
+    extractFrom:
+    - headers: ["x-api-key"]
 ```
+
+面向人员的访问应改用 OIDC/JWT，并把 API Key 仅留给机器客户端；密钥本身建议由 External Secrets Operator 或 Secrets Store CSI Driver 从外部密管系统同步，而不是直接提交到 Git。
 
 ### JWT 令牌验证
 

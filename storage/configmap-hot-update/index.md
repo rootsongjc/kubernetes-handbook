@@ -3,7 +3,7 @@ weight: 57
 title: ConfigMap 热更新
 date: 2022-05-21T00:00:00+08:00
 description: 深入解析 Kubernetes ConfigMap 的热更新机制，包括环境变量和 Volume 两种挂载方式的差异、更新延迟、最佳实践以及常见问题的解决方案。
-lastmod: 2025-10-27T16:37:07.772Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > ConfigMap 热更新机制直接影响云原生应用的配置灵活性和可维护性，合理选择挂载方式和更新策略是高效运维的关键。
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.25
+        image: nginx:1.27
         ports:
         - containerPort: 80
         envFrom:
@@ -118,7 +118,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.25
+        image: nginx:1.27
         ports:
         - containerPort: 80
         volumeMounts:

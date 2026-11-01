@@ -2,7 +2,7 @@
 title: "DRA（Dynamic Resource Allocation）：Kubernetes 的新一代资源分配模型"
 linktitle: 动态资源分配（DRA）
 date: 2025-12-15T11:02:40.706Z
-lastmod: 2025-12-15T11:02:41.304Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 37
 description: DRA（Dynamic Resource Allocation）将“设备类资源”的分配从静态整数配额升级为可协商、可选择、可共享、可晚绑定的声明式流程，是 Kubernetes 面向 GPU/FPGA/SmartNIC 等异构硬件的核心演进方向。
 ---
@@ -12,7 +12,7 @@ description: DRA（Dynamic Resource Allocation）将“设备类资源”的分�
 DRA（Dynamic Resource Allocation，动态资源分配）是 Kubernetes 面向“设备类资源”（如 GPU、FPGA、RDMA、加速卡、SmartNIC 等）的新一代分配模型。与传统的 *extended resources + device plugin* “按整数计数”方式相比，DRA 允许工作负载根据 **属性、容量与约束** 请求设备，并将“设备选择、分配与注入”的关键决策交由 DRA Driver 实现，从而获得更高的灵活性与可扩展性。
 
 {{< callout note "版本兼容性">}}
-在 Kubernetes v1.34 版本中，DRA 已进入 stable 阶段并默认启用（实际分配设备仍需安装对应驱动）。
+DRA 核心 API（`resource.k8s.io/v1`）在 Kubernetes v1.34 进入 Stable 并默认启用，v1.35 起特性门控锁定不可关闭；实际分配设备仍需安装对应驱动。早期基于 `resource.k8s.io/v1alpha2`"经典 DRA"的实现已在 v1.32 撤回，本文全部基于结构化参数模型。
 {{< /callout >}}
 
 ## 为什么需要 DRA
@@ -67,7 +67,7 @@ DRA 采用“声明式 + 多阶段协商”流程，整体工作流如下：
 流程要点包括：
 
 - **调度阶段**：Scheduler 不仅需选节点，还需与 driver 协同确保“该节点上确实能满足 claim 的设备请求”。
-- **节点阶段**：Kubelet 侧通过插件与 driver 协作完成“设备注入”（如生成 CDI 规范、挂载设备节点、配置环境变量、准备 runtime hooks 等）。
+- **节点阶段**：Kubelet 侧通过插件与 driver 协作完成“设备注入”：driver 为分配到的设备生成 [CDI（容器设备接口）](../../interfaces/cdi) 规范并返回全限定设备名，kubelet 经 CRI 交给容器运行时完成设备节点、驱动库挂载、环境变量与 hooks 的注入。DRA 只支持 CDI 这一种注入方式。
 - **语义外置**：哪些属性可选、如何切分、是否支持共享、何时释放，均由 driver 实现负责。
 
 ## 工作负载如何使用 DRA：示例（Claim + Template + Pod/Job）
@@ -178,11 +178,61 @@ spec:
 
 [官方教程](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)提供了示例 driver 的安装方式，采用 DaemonSet 在每个节点部署 kubelet plugin。生产环境 driver 通常还会补充健康检查、节点能力探测与更完善的安全边界设计。
 
+## 近年新增能力
+
+核心 GA 之后，DRA 在 v1.35 – v1.37 间持续补齐面向生产的能力，下表按 v1.37 的状态列出：
+
+{{< table title="DRA 扩展能力及其状态（v1.37）" >}}
+
+| 能力                         | 特性门控                    | 说明                                                                 | v1.37 状态 |
+|------------------------------|-----------------------------|----------------------------------------------------------------------|------------|
+| 管理员访问                   | `DRAAdminAccess`            | `adminAccess: true` 的 Claim 可访问已被占用的设备，用于监控与排障；需命名空间带 `resource.k8s.io/admin-access` 标签 | GA（v1.36） |
+| 优先级列表                   | `DRAPrioritizedList`        | 请求中用 `firstAvailable` 按优先级给出多组备选设备规格，调度器选第一个可满足的 | GA（v1.36） |
+| 设备污点与容忍               | `DRADeviceTaints`           | 对单个设备打污点（`DeviceTaintRule` 或驱动在 ResourceSlice 中声明），隔离故障设备或排空待维护设备，Claim 可声明容忍 | GA（v1.37） |
+| 扩展资源映射                 | `DRAExtendedResource`       | `DeviceClass.spec.extendedResourceName` 让仍用 `vendor.com/gpu: 1` 申请的工作负载由 DRA 分配 | GA（v1.37） |
+| 可分区设备                   | `DRAPartitionableDevices`   | 驱动把一块物理设备（如 GPU）按 MIG 等方式发布为多个可独立分配的分区，并声明共享的容量池 | Beta |
+| 可消耗容量                   | `DRAConsumableCapacity`     | 多个 Claim 按显存、带宽等容量维度共享同一设备                           | Beta |
+| 设备绑定条件                 | `DRADeviceBindingConditions`| 允许驱动在设备真正就绪（如 FPGA 烧录完成）后才完成绑定                   | Beta |
+| 资源健康状态                 | `ResourceHealthStatus`      | 在 Pod 状态中暴露已分配设备的健康状况                                   | Beta |
+| 标准 NUMA 属性               | —                           | `resource.kubernetes.io/numaNode` 标准设备属性，便于跨驱动做拓扑对齐      | GA（v1.37） |
+
+{{< /table >}}
+
+以下示例综合使用优先级列表与设备容忍：优先申请一块 80 GB 显存的 GPU，退而求其次接受两块 40 GB 的，并容忍带有 `maintenance` 污点的设备：
+
+```yaml
+apiVersion: resource.k8s.io/v1
+kind: ResourceClaimTemplate
+metadata:
+  name: training-gpu
+spec:
+  spec:
+    devices:
+      requests:
+      - name: gpu
+        firstAvailable:
+        - name: large
+          deviceClassName: gpu.nvidia.com
+          selectors:
+          - cel:
+              expression: device.capacity['gpu.nvidia.com'].memory.compareTo(quantity('80Gi')) >= 0
+        - name: two-medium
+          deviceClassName: gpu.nvidia.com
+          count: 2
+          selectors:
+          - cel:
+              expression: device.capacity['gpu.nvidia.com'].memory.compareTo(quantity('40Gi')) >= 0
+        tolerations:
+        - key: maintenance
+          operator: Exists
+          effect: NoSchedule
+```
+
 ## 与 device plugin / extended resources 的关系
 
 DRA 并非简单“替代 device plugin”，更准确地说，它为设备类资源提供了更通用的分配抽象，并将设备语义标准化为 API + driver 行为。
 
-为兼容既有生态，Kubernetes 也支持将 DRA 与 extended resources 关联（如在 `DeviceClass` 中指定扩展资源名，使仍使用 `vendor.com/gpu` 的工作负载可逐步迁移到 DRA 模型）。
+为兼容既有生态，v1.37 GA 的扩展资源映射允许在 `DeviceClass.spec.extendedResourceName` 中指定扩展资源名，使仍通过 `resources.limits: {vendor.com/gpu: 1}` 申请的工作负载由 DRA 驱动分配，无需修改清单即可逐步迁移到 DRA 模型。NVIDIA、Intel 等厂商的 DRA 驱动已随之进入生产可用阶段，device plugin 预计会在较长时间内与 DRA 并存，但新的设备管理能力只会在 DRA 上演进。
 
 ## 什么时候应该优先使用 DRA
 

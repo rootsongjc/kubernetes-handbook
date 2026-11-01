@@ -4,7 +4,7 @@ linktitle: ArgoCD：GitOps 工具
 weight: 105
 description: Argo CD 是 Kubernetes 生态中最重要的 GitOps 工具之一，通过声明式配置和自动化同步，实现了高效、可审计的持续交付流程，适用于多集群和多租户场景。
 date: 2025-01-20T00:00:00+08:00
-lastmod: 2025-10-19T11:21:58.635Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Argo CD 是 Kubernetes 生态中最重要的 GitOps 工具之一，通过声明式配置和自动化同步，实现了高效、可审计的持续交付流程，适用于多集群和多租户场景。

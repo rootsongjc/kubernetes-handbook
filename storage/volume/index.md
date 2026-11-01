@@ -4,7 +4,7 @@ title: Volume
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 本文详细介绍 Kubernetes Volume 的概念、类型和使用方法，包括各种存储卷类型的配置示例、挂载传播、subPath 等高级特性，以及最佳实践和使用场景。
-lastmod: 2025-10-27T17:09:43.574Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes Volume（卷）为容器提供持久化和共享存储能力，是实现数据持久化、配置注入和多容器协作的核心机制。合理选择和使用卷类型，是保障应用高可用与数据安全的关键。
@@ -26,13 +26,13 @@ lastmod: 2025-10-27T17:09:43.574Z
 
 Kubernetes 支持多种卷类型，适用于不同的存储场景：
 
-- **临时卷类型**：`emptyDir`、`configMap`、`downwardAPI`、`secret`、`projected`
+- **临时卷类型**：`emptyDir`、`configMap`、`downwardAPI`、`secret`、`projected`、`ephemeral`（通用临时卷）
 - **持久卷类型**：`persistentVolumeClaim`、`local`、`hostPath`
-- **网络存储卷类型**：`nfs`、`cephfs`、`glusterfs`、`iscsi`、`fc`
-- **云存储卷类型**：`awsElasticBlockStore`、`azureDisk`、`azureFile`、`gcePersistentDisk`、`vsphereVolume`
-- **特殊用途卷类型**：`csi`、`gitRepo`（已弃用）
+- **内置网络存储卷类型**：`nfs`、`iscsi`、`fc`
+- **CSI 卷**：`csi`，所有云厂商块存储/文件存储（EBS、GCE PD、Azure Disk/File、vSphere 等）与 Ceph、Longhorn 等分布式存储均通过 CSI 驱动接入
+- **镜像卷**：`image`（v1.36 GA），把 OCI 镜像或制品以只读方式挂载为卷，适合分发模型权重、配置包等数据，详见 [OCI 镜像卷](../image-volume)
 
-**注意**：部分卷类型（如 `gitRepo`、`flocker`、`quobyte`、`storageos`）已被弃用，建议优先使用 CSI 驱动或主流存储方案。
+早期内置于 Kubernetes 代码树中的 `awsElasticBlockStore`、`gcePersistentDisk`、`azureDisk`、`azureFile`、`vsphereVolume`、`cephfs`、`rbd`、`glusterfs`、`flocker`、`quobyte`、`storageos`、`portworxVolume` 等 in-tree 卷类型已在 v1.25 – v1.33 之间陆续移除或迁移为 CSI；`gitRepo` 卷自 v1.33 起默认禁用并于 v1.36 彻底不可启用。在 Pod 规范中直接写这些类型会被拒绝或被透明转换为对应的 CSI 驱动，新配置应统一通过 PVC/StorageClass 使用 CSI。
 
 ## 常用卷类型详解
 
@@ -59,7 +59,7 @@ metadata:
   name: test-pd
 spec:
   containers:
-  - image: nginx:1.20
+  - image: nginx:1.27
     name: test-container
     volumeMounts:
     - mountPath: /cache
@@ -83,7 +83,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: config-volume
       mountPath: /etc/config
@@ -109,7 +109,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: secret-volume
       mountPath: /etc/secrets
@@ -134,7 +134,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - mountPath: /data
       name: storage-volume
@@ -185,7 +185,7 @@ metadata:
   name: hostpath-pod
 spec:
   containers:
-  - image: nginx:1.20
+  - image: nginx:1.27
     name: test-container
     volumeMounts:
     - mountPath: /test-pd
@@ -213,7 +213,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - mountPath: /data
       name: nfs-volume
@@ -238,7 +238,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - mountPath: /data
       name: csi-volume
@@ -296,7 +296,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     env:
     - name: POD_NAME
       valueFrom:
@@ -383,6 +383,32 @@ spec:
       path: /mnt/shared
 ```
 
+## 镜像卷
+
+`image` 卷类型让 Pod 直接把一个 OCI 镜像（或 OCI 制品）挂载为只读目录，无需把数据打进应用镜像或借助 Init 容器拷贝。以下示例把模型权重制品挂载到 `/models`：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: image-volume-demo
+spec:
+  containers:
+  - name: app
+    image: my-inference-server:1.0
+    volumeMounts:
+    - name: model
+      mountPath: /models
+      subPath: qwen3   # 支持 subPath，路径会做严格校验
+  volumes:
+  - name: model
+    image:
+      reference: registry.example.com/models/qwen3-8b:v1
+      pullPolicy: IfNotPresent   # Always | IfNotPresent | Never
+```
+
+镜像卷挂载始终为只读且 `noexec`，镜像拉取遵循节点的镜像凭据与垃圾回收策略，要求 containerd 2.1+ 或 CRI-O 1.31+。更多场景与限制见 [OCI 镜像卷](../image-volume)。
+
 ## 资源限制
 
 对于 `emptyDir` 卷，可通过 `sizeLimit` 字段限制最大空间，防止资源滥用。
@@ -395,7 +421,7 @@ metadata:
 spec:
   containers:
   - name: test-container
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - mountPath: /cache
       name: cache-volume

@@ -2,7 +2,7 @@
 title: Kubernetes 中的多集群管理架构与 API 的演进
 linktitle: 多集群架构与 API 的演进
 weight: 2
-lastmod: 2025-10-27T08:29:20.617Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2022-05-21T00:00:00+08:00
 description: 本文回顾 Kubernetes 多集群架构与 API 从 Federation 到 MCS API，再到 Multi-Cluster Gateway API 的演进历程，探讨当前业界主流的多集群治理模式与架构趋势。
 ---
@@ -38,19 +38,21 @@ Kubernetes 最早在 1.5 版本引入 Federation v1，希望通过一个上层�
 - **EndpointSlice 聚合**：跨集群同步服务端点，实现统一 DNS。
 - **ClusterSet**：定义一组互信的集群集合。
 
-MCS API 一度被认为是“官方多集群服务发现标准”，但在 2023 年后，SIG-Multicluster 已不再活跃维护。仓库 [kubernetes-sigs/mcs-api](https://github.com/kubernetes-sigs/mcs-api) 的最后活跃提交停留在 2023 年底，状态为“Frozen / Beta”。
+MCS API 经历了数年低速演进后在 2025 – 2026 年重新活跃：仓库 [kubernetes-sigs/mcs-api](https://github.com/kubernetes-sigs/mcs-api) 于 2026 年 5 月发布 v0.5.0，正式引入 `multicluster.x-k8s.io/v1beta1` 版本的 `ServiceExport`/`ServiceImport`，并补齐了含 IPv6/双栈在内的一致性测试套件。Cilium Cluster Mesh、Submariner、Istio、GKE Multi-Cluster Services、Karmada 等均提供了 MCS API 实现。
 
-#### 主要原因
+与此并行，SIG Multicluster 在 2024 年起推进 **Cluster Inventory API**（KEP-4322），其核心资源 `ClusterProfile` 为"有哪些集群、各自状态与能力如何"提供标准化描述，供 Karmada、OCM、Argo CD、Kueue 的 MultiKueue 等上层工具统一消费（2026 年 10 月发布 v0.2.0）。
 
-- 过于依赖同构集群与固定网络。
-- 缺乏对混合云、Service Mesh 的兼容性。
-- 实际落地主要由 Karmada / OCM 等项目自行实现。
+#### MCS API 的边界
+
+- 聚焦服务发现与 DNS，不负责集群生命周期与资源分发。
+- 要求 ClusterSet 内满足命名空间同一性（Namespace Sameness）。
+- 跨集群数据面（隧道、路由、mTLS）仍由具体实现（CNI、网格、Submariner）提供。
 
 ## 控制平面联邦化：Karmada、OCM 与 Fleet
 
 2022 年后，社区与企业厂商转向控制平面联邦化（Control Plane Federation）模型。代表项目包括：
 
-- **Karmada**（华为主导）：CNCF Sandbox 项目，支持 Push/Pull 注册模式。
+- **Karmada**（华为发起）：CNCF 孵化项目（2023 年底晋级），兼容原生 Kubernetes API，支持 Push/Pull 注册模式，最新稳定版 v1.19（2026 年 10 月）。
 - **Open Cluster Management (OCM)**（Red Hat）：聚焦策略治理与 Observability。
 - **Rancher Fleet**：以 GitOps 为核心的多集群声明式交付。
 - **Anthos / Azure Arc / Alibaba ACK One**：云厂商的托管式方案。
@@ -89,7 +91,7 @@ Kubernetes 官方的 SIG-Network 在 2024 年提出 Multi-Cluster Gateway API，
 - [Gateway API Multi-Cluster Extension](https://gateway-api.sigs.k8s.io/concepts/multicluster/)
 - [Kubernetes Enhancement Proposal #2642](https://github.com/kubernetes/enhancements/pull/2642)
 
-## 当前主流方向（2025）
+## 当前主流方向（2026）
 
 Kubernetes 多集群管理已进入“生态整合阶段”，目前主流方向包括：
 
@@ -99,7 +101,7 @@ Kubernetes 多集群管理已进入“生态整合阶段”，目前主流方向
 
 | 类别                   | 核心代表                      | 特点                   |
 | ---------------------- | ----------------------------- | ---------------------- |
-| API 标准化             | Multi-Cluster Gateway API      | 官方演进路线，流量与服务治理一体化 |
+| API 标准化             | MCS API（v1beta1）、ClusterProfile、Multi-Cluster Gateway API | SIG Multicluster/SIG Network 官方演进路线，服务发现、集群清单与流量治理一体化 |
 | 控制面治理             | Karmada / OCM / Fleet         | 策略控制、调度与统一 API |
 | Service Mesh 跨集群    | Istio / Cilium / Linkerd       | 基于 L7 服务发现、零信任流量 |
 | GitOps 联邦            | Argo CD / Flux                | 无集中控制面，靠 Git 声明式同步 |

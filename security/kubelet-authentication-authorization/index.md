@@ -3,7 +3,7 @@ weight: 85
 title: Kubelet 的认证授权
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubelet HTTPS 端点的认证和授权机制，包括匿名访问控制、X.509 证书认证、Bearer Token 认证以及基于 Webhook 的授权配置方法。
-lastmod: 2025-10-27T17:08:01.890Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubelet 的认证与授权机制是保障 Kubernetes 节点安全的核心环节，合理配置可有效防止未授权访问和敏感操作风险。
@@ -81,13 +81,26 @@ Kubelet 默认使用 `AlwaysAllow` 授权模式，允许所有经过身份验证
 
 **Kubelet 配置：**
 
-```bash
-kubelet --authorization-mode=Webhook \
-        --kubeconfig=/path/to/kubeconfig \
-        --require-kubeconfig
+```yaml
+# KubeletConfiguration（推荐，命令行参数 --authorization-mode 已弃用）
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: /etc/kubernetes/pki/ca.crt
+authorization:
+  mode: Webhook
 ```
 
 配置完成后，Kubelet 会通过调用 API Server 的 `SubjectAccessReview` API 来确定每个请求的授权状态。
+
+### 细粒度鉴权
+
+早期 kubelet 对 `/pods`、`/stats/`、`/metrics` 等端点统一映射到 `nodes/proxy` 子资源，授予监控组件读取指标的权限等同于授予其在节点上 `exec` 的能力。v1.36 GA 的 kubelet 细粒度鉴权（`KubeletFineGrainedAuthz`）为常用只读端点引入了独立的子资源：`/pods` 与 `/runningpods/` 对应 `nodes/pods`，`/healthz` 对应 `nodes/healthz`，`/configz` 对应 `nodes/configz`；kubelet 先检查这些细粒度子资源，被拒绝后才回退检查 `nodes/proxy`。监控与审计组件的 RBAC 应只授予 `nodes/pods`、`nodes/stats`、`nodes/metrics` 等最小权限，不再笼统授予 `nodes/proxy`。
 
 ## 请求属性映射
 

@@ -5,7 +5,7 @@ linktitle: 概述
 description: 介绍如何使用 kubectl 命令行工具与 Kubernetes API 交互，涵盖 kubectl 与 API Server 的通信原理、认证机制、请求响应模式及高效管理资源的方法。
 date: 2025-08-26T10:05:39.568Z
 draft: false
-lastmod: 2025-10-13T05:10:05.859Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 本文系统梳理了通过 kubectl 与 Kubernetes API 交互的原理与实践，涵盖 API 结构、认证机制、常用命令、输出格式、Server-Side Apply 及最佳实践，帮助读者高效管理和自动化 Kubernetes 资源。

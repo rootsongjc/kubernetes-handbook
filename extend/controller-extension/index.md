@@ -3,7 +3,7 @@ title: 控制器与 Operator 模式（Controller & Operator Pattern）
 slug: controller-extension
 linktitle: 控制器与 Operator 模式
 date: 2025-10-27T20:40:00+08:00
-lastmod: 2025-10-27T10:02:57.050Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 5
 description: 控制器是 Kubernetes 自动化的核心。Operator 模式将领域知识封装为控制循环，使系统能够自动维护期望状态。本文深入讲解控制循环原理、设计模式及其在云原生和 AI 场景中的实践。
 ---

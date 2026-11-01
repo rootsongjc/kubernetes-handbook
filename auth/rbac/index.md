@@ -4,7 +4,7 @@ title: 基于角色的访问控制（RBAC）
 linktitle: RBAC
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes RBAC（基于角色的访问控制）授权机制，包括 Role、ClusterRole、RoleBinding 和 ClusterRoleBinding 的概念与使用，以及默认角色、权限管理和最佳实践。
-lastmod: 2025-10-27T16:23:16.585Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > RBAC 是保障 Kubernetes 多租户安全和敏捷运维的基石，合理设计权限模型是构建可信云原生平台的关键一步。
@@ -431,13 +431,9 @@ kubectl auth can-i get secrets --as=system:serviceaccount:default:my-sa
 --v=2  # 在 API Server 日志中显示 RBAC DENY 信息
 ```
 
-## 版本升级注意事项
+## 与结构化鉴权配置的关系
 
-从早期版本升级到支持 RBAC 的版本时，可以采用以下策略：
-
-1. **并行授权**：同时运行 RBAC 和旧的授权器
-2. **逐步迁移**：逐步将权限从旧的授权方式迁移到 RBAC
-3. **权限验证**：充分测试应用在新权限模型下的运行情况
+RBAC 只是 kube-apiserver 鉴权链中的一环。v1.32 起 GA 的结构化鉴权配置（`--authorization-config`，`apiserver.config.k8s.io/v1` `AuthorizationConfiguration`）允许用一个文件声明 Node、RBAC、Webhook 等多个授权器的顺序，并为 Webhook 授权器编写 CEL `matchConditions`，只把特定请求（例如对 `kube-system` 命名空间或 `secrets` 资源的操作）转发给外部策略引擎，其余请求仍由 RBAC 快速裁决。v1.34 起还支持在 RBAC 规则之外按字段/标签选择器授权（`AuthorizeWithSelectors`），例如只允许某个节点 `list` 自己的 Pod。详见 [结构化认证与鉴权配置](../structured-authentication-authorization)。
 
 ## 总结
 

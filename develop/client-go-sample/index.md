@@ -3,7 +3,7 @@ weight: 106
 title: client-go 示例
 description: 通过一个实战示例，介绍如何使用 client-go 库实现对 Kubernetes 集群中 Deployment 资源的镜像更新操作，涵盖代码实现、编译使用及监控排查等内容。
 date: 2022-05-21T00:00:00+08:00
-lastmod: 2025-10-27T17:30:18.192Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 通过 client-go 可以实现对 Kubernetes 资源的自动化管理和精细控制，是开发自定义运维工具和平台集成的基础能力。本文以 Deployment 镜像更新为例，系统讲解 client-go 的实战用法与最佳实践。
@@ -197,10 +197,10 @@ go build -o update-deployment main.go
 ### 场景 1：正常镜像更新
 
 ```bash
-$ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
+$ ./update-deployment -deployment nginx-app -image nginx:1.27 -app nginx
 ✓ 找到 Deployment: nginx-app
-原镜像: nginx:1.20
-新镜像: nginx:1.21
+原镜像: nginx:1.26
+新镜像: nginx:1.27
 ✓ Deployment 更新成功
 ```
 
@@ -209,7 +209,7 @@ $ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
 ```bash
 $ ./update-deployment -deployment nginx-app -image nginx:nonexistent -app nginx
 ✓ 找到 Deployment: nginx-app
-原镜像: nginx:1.21
+原镜像: nginx:1.27
 新镜像: nginx:nonexistent
 ✓ Deployment 更新成功
 ```
@@ -224,10 +224,10 @@ kubectl get pods -l app=nginx-app
 ### 场景 3：回滚到正常镜像
 
 ```bash
-$ ./update-deployment -deployment nginx-app -image nginx:1.21 -app nginx
+$ ./update-deployment -deployment nginx-app -image nginx:1.27 -app nginx
 ✓ 找到 Deployment: nginx-app
 原镜像: nginx:nonexistent
-新镜像: nginx:1.21
+新镜像: nginx:1.27
 ✓ Deployment 更新成功
 ```
 

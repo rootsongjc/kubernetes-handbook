@@ -3,7 +3,7 @@ weight: 61
 title: 本地持久化存储
 date: 2022-05-21T00:00:00+08:00
 description: 了解如何在 Kubernetes 中配置和使用本地持久化存储，包括静态配置器的部署、PV/PVC 的创建以及最佳实践指南。
-lastmod: 2025-10-27T16:45:25.856Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 本地持久化存储为 Kubernetes 提供了高性能、低延迟的数据访问能力，但需要结合节点亲和、卷管理和生命周期策略，才能实现安全可靠的生产级存储方案。
@@ -52,6 +52,8 @@ Kubernetes 本地存储功能不断演进，以下为主要阶段特性。
 - `PV.NodeAffinity` 字段正式可用
 - 完整支持原始块设备
 - `volumeBindingMode` 特性稳定
+
+自 1.14 之后 `local` 卷本身没有再发生 API 变化，但生态在持续演进：sig-storage-local-static-provisioner 仍是静态管理本地盘的官方方案；需要动态供给、快照或跨节点副本时，社区普遍选择 OpenEBS LocalPV/Mayastor、Longhorn、TopoLVM 等基于 CSI 的本地存储方案，它们同样依赖 `WaitForFirstConsumer` 延迟绑定与节点亲和性机制。
 
 ### 历史版本特性
 

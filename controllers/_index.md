@@ -5,7 +5,7 @@ title: 控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 中的各种控制器，包括 Deployment、StatefulSet、DaemonSet 等，掌握它们的工作原理和使用场景。
 icon: fa-solid fa-sliders-h
-lastmod: 2025-11-04T02:02:55.935Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 控制器是 Kubernetes 实现自动化运维和自愈能力的核心机制，赋予集群强大的弹性与智能调度能力。

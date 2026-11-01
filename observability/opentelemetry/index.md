@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry：Kubernetes 可观测性的事实标准
 linktitle: OpenTelemetry
-lastmod: 2025-11-03T12:26:28.019Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 7
 description: OpenTelemetry 已成为 Kubernetes 可观测性领域的事实标准，统一了指标、追踪与日志采集，极大简化了云原生环境下的观测体系建设。
 social_title: 为什么 OpenTelemetry 是 Kubernetes 可观测性的事实标准？
@@ -137,8 +137,8 @@ OpenTelemetry 的标准化进展迅速，已成为云原生领域的主流方案
 | ------------- | --------------------- | ----------- |
 | v1.0.0        | 首个稳定版，定义 trace 语义   | 2021        |
 | v1.10         | 增加日志与 metrics 语义一致性 | 2023        |
-| v1.50         | 最新规范版本，优化指标采样算法 | 2025-10     |
-| OTLP v0.23    | 当前 Collector 默认协议版本   | 2025        |
+| v1.62         | 最新规范版本（2026 年 10 月）  | 2026-10     |
+| OTLP v1.11    | 当前协议定义版本（opentelemetry-proto，2026 年 9 月） | 2026 |
 
 {{< /table >}}
 

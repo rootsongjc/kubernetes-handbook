@@ -2,7 +2,7 @@
 title: SuperEdge：单集群多区域边缘管理框架
 weight: 40
 linktitle: SuperEdge
-lastmod: 2025-11-03T16:37:53.701Z
+lastmod: 2026-11-01T00:00:00+08:00
 social_title: 单集群多区域边缘管理，SuperEdge 有哪些独门绝技？
 description: SuperEdge 是腾讯云主导的 Kubernetes 边缘计算框架，支持单集群多区域、分布式健康检查和服务拓扑隔离，适合大规模边缘场景。
 ---
@@ -113,6 +113,10 @@ SuperEdge 特别适合大规模边缘站点统一管理的场景，比如运营�
 ## 安装与依赖
 
 SuperEdge 基于 Go（Go Programming Language）1.17 开发，依赖 Kubernetes 1.22.3，支持 amd64/arm64 架构。推荐使用 edgeadm 工具一键安装。
+
+{{< callout warning "项目状态" >}}
+SuperEdge 开源仓库自 2024 年初起已无实质性更新，所依赖的 Kubernetes 1.22 也早已超出支持周期。本文保留其架构与 ServiceGroup 等设计思想作为参考，新项目选型建议优先考虑仍在活跃维护的 KubeEdge、OpenYurt 或 K3s。
+{{< /callout >}}
 
 主要依赖如下：
 

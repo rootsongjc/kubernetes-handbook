@@ -3,7 +3,7 @@ weight: 71
 title: 资源调度
 date: 2022-05-21T00:00:00+08:00
 description: 深入探讨 Kubernetes 中的资源调度机制，包括 kube-scheduler 组件的工作原理、调度策略、高级调度功能以及相关的扩展工具。
-lastmod: 2025-10-27T15:48:42.371Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 资源调度是 Kubernetes 实现弹性伸缩与高效资源利用的核心能力，合理配置调度策略可显著提升集群稳定性与业务连续性。
@@ -52,6 +52,35 @@ Kubernetes 支持多种调度策略，适配不同类型的工作负载和业务
 - **节点亲和性（Node Affinity）**：表达更复杂的节点选择规则
 - **Pod 亲和性和反亲和性（Pod Affinity/Anti-Affinity）**：控制 Pod 之间的调度关系
 - **污点和容忍（Taints and Tolerations）**：实现节点隔离与专用资源分配
+- **拓扑分布约束（Topology Spread Constraints）**：按可用区、节点等拓扑域均匀分布 Pod，是跨可用区高可用的首选手段
+- **优先级与抢占（PriorityClass）**：高优先级 Pod 在资源不足时可抢占低优先级 Pod
+- **调度门控（Scheduling Gates，v1.30 GA）**：Pod 创建时带有 `spec.schedulingGates`，在外部控制器移除门控前调度器不会处理它，为配额、预算等外部准入提供挂钩
+- **动态资源分配（DRA，v1.34 GA）**：调度器根据 `ResourceClaim` 为 Pod 挑选同时满足 CPU/内存与 GPU 等设备约束的节点
+- **成组调度（Gang Scheduling）**：`Workload`/`PodGroup` API（v1.35 Alpha，v1.37 Beta 但默认关闭）让一组 Pod 要么全部调度、要么全部等待，面向分布式训练等场景
+
+以下示例展示了拓扑分布约束与调度门控的用法：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  schedulingGates:
+  - name: example.com/quota-check    # 由外部控制器在校验通过后移除
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: topology.kubernetes.io/zone
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app: web
+  containers:
+  - name: web
+    image: nginx:1.27
+```
 
 ## 动态调度扩展
 
@@ -72,14 +101,18 @@ Kubernetes 支持多种调度策略，适配不同类型的工作负载和业务
 对于大数据和批处理应用，Pod 的调度需要考虑数据分布：
 
 - **[Volcano](https://volcano.sh/)**（原 kube-batch）：专为批处理和机器学习工作负载设计的调度器，支持队列管理、资源配额和任务调度
+- **[Kueue](https://kueue.sigs.k8s.io/)**：Kubernetes SIG 维护的作业排队系统，不替换调度器，而是通过调度门控控制 Job/JobSet 何时进入调度，实现配额与公平共享
+- **[Karpenter](https://karpenter.sh/)**：按待调度 Pod 的实际需求实时创建合适规格的节点，取代传统 Cluster Autoscaler 的节点组模型
 
 ### 扩展调度器
 
 Kubernetes 支持多调度器和调度器扩展，便于自定义调度逻辑和策略。
 
-- **多调度器**：同时运行多个调度器实例，按需分配不同 Pod
-- **调度器扩展**：通过 Scheduler Framework 插件机制自定义调度流程
-- **调度器配置**：通过配置文件灵活调整调度策略
+- **多调度器**：同时运行多个调度器实例，Pod 通过 `spec.schedulerName` 选择
+- **调度器扩展**：通过 Scheduler Framework 插件机制在 PreFilter、Filter、Score、Bind 等扩展点自定义调度流程
+- **调度器配置**：通过 `KubeSchedulerConfiguration`（`kubescheduler.config.k8s.io/v1`）启用/禁用插件、配置多个 profile
+
+调度器框架与插件开发详见 [调度架构与 Framework 扩展](../../extend/scheduler-extension)。
 
 ## 最佳实践
 
@@ -87,9 +120,16 @@ Kubernetes 支持多调度器和调度器扩展，便于自定义调度逻辑和
 
 - 合理设置资源请求和限制，确保调度器能够做出正确的调度决策
 - 使用节点标签和选择器，实现精确的节点选择
-- 配置 Pod 反亲和性，避免单点故障
-- 监控调度性能，及时发现和解决调度瓶颈
+- 跨可用区部署优先使用拓扑分布约束，而不是只靠 Pod 反亲和性
+- 为关键系统组件设置 PriorityClass，保证资源紧张时优先运行
+- 监控 `scheduler_pending_pods`、`scheduler_scheduling_attempt_duration_seconds` 等指标，及时发现和解决调度瓶颈
 
 ## 总结
 
 Kubernetes 资源调度机制通过灵活的调度策略和可扩展的调度框架，实现了高效的资源分配与业务弹性。掌握调度原理与高级功能，有助于构建稳定、可扩展的云原生集群环境。
+
+## 参考文献
+
+- [Kubernetes Scheduler - kubernetes.io](https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/)
+- [Pod Scheduling Readiness - kubernetes.io](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-scheduling-readiness/)
+- [Pod Topology Spread Constraints - kubernetes.io](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)

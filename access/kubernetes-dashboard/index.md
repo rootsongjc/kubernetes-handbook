@@ -4,7 +4,7 @@ title: Kubernetes Dashboard - 官方 Web UI
 linktitle: Kubernetes Dashboard
 date: 2025-10-19T07:54:07.759Z
 description: Kubernetes Dashboard 是 Kubernetes 官方提供的基于 Web 的用户界面，用于管理 Kubernetes 集群中的应用和资源，支持资源查看、部署管理、故障排查等功能。
-lastmod: 2025-10-19T07:54:08.331Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) 是 Kubernetes 官方提供的通用 Web UI，用于管理 Kubernetes 集群中的应用和资源。它提供了直观的可视化界面，帮助用户轻松查看和管理集群中的各种资源。
@@ -130,19 +130,20 @@ kubectl create clusterrolebinding dashboard-admin \
   --clusterrole=cluster-admin \
   --serviceaccount=kubernetes-dashboard:dashboard-admin
 
-# 获取访问令牌
-kubectl get secret -n kubernetes-dashboard \
-  $(kubectl get serviceaccount dashboard-admin -n kubernetes-dashboard -o jsonpath="{.secrets[0].name}") \
-  -o jsonpath="{.data.token}" | base64 --decode
+# 获取访问令牌（v1.24 起 ServiceAccount 不再自动创建 Secret，用 TokenRequest 签发短期 Token）
+kubectl create token dashboard-admin -n kubernetes-dashboard --duration=1h
 ```
+
+Dashboard 自 v7 起**只支持 Helm 安装**，Chart 内置 Kong 作为统一网关，前端、API、Web、Auth、Metrics Scraper 拆分为多个 Deployment；截至 2026 年 10 月最新 Chart 版本为 7.14。
 
 ### 手动安装
 
-如果不使用 Helm，可以直接应用官方的 YAML 文件：
+如果不使用 Helm，可以用 `helm template` 渲染出清单后再 `kubectl apply`（官方不再提供单文件 YAML）：
 
 ```bash
-# 部署 Dashboard
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v3.0.0-alpha0/charts/kubernetes-dashboard.yaml
+# 渲染并部署 Dashboard
+helm template kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard \
+  --namespace kubernetes-dashboard --create-namespace | kubectl apply -f -
 
 # 创建管理员用户
 kubectl apply -f - <<EOF
@@ -189,9 +190,10 @@ metadata:
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # 以下注解以 Traefik 为例；社区 Ingress NGINX 已于 2026 年 3 月退役，新部署建议改用 Gateway API 的 HTTPRoute
+    traefik.ingress.kubernetes.io/service.serversscheme: https
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
   - host: dashboard.example.com
     http:
@@ -209,13 +211,13 @@ spec:
 
 ### 令牌认证
 
-1. 获取 ServiceAccount 的访问令牌：
+1. 获取 ServiceAccount 的访问令牌（短期 Token，默认 1 小时，可用 `--duration` 调整）：
 
     ```bash
-    kubectl get secret -n kubernetes-dashboard \
-      $(kubectl get serviceaccount admin-user -n kubernetes-dashboard -o jsonpath="{.secrets[0].name}") \
-      -o jsonpath="{.data.token}" | base64 --decode
+    kubectl create token admin-user -n kubernetes-dashboard
     ```
+
+    如确需长期 Token，可手动创建 `kubernetes.io/service-account-token` 类型的 Secret 并通过注解绑定 ServiceAccount，但应优先使用短期 Token 或接入 OIDC。
 
 2. 在 Dashboard 登录页面选择 "Token" 认证方式
 3. 输入获取到的令牌
@@ -276,8 +278,12 @@ Dashboard 也支持使用 kubeconfig 文件进行认证，需要配置适当的 
 - 检查用户角色和权限绑定
 - 确认 ClusterRoleBinding 配置正确
 
-## 参考资料
+## 总结
 
-- [Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)
-- [官方文档](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
-- [Helm Chart](https://artifacthub.io/packages/helm/k8s-dashboard/kubernetes-dashboard)
+Kubernetes Dashboard 是官方维护的 Web UI，v7 起以 Helm Chart 交付并以 Kong 为统一入口。生产环境应通过短期 ServiceAccount Token 或 OIDC 登录、按最小权限绑定角色，并把访问入口置于 Gateway API 或 Ingress 之后再加一层认证。
+
+## 参考文献
+
+- [Kubernetes Dashboard - github.com](https://github.com/kubernetes/dashboard)
+- [Deploy and Access the Kubernetes Dashboard - kubernetes.io](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+- [kubernetes-dashboard Helm Chart - artifacthub.io](https://artifacthub.io/packages/helm/k8s-dashboard/kubernetes-dashboard)

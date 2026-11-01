@@ -4,7 +4,7 @@ title: 扁平网络 Flannel
 linktitle: Flannel
 date: 2022-05-21T00:00:00+08:00
 description: 深入介绍 Kubernetes 网络插件 Flannel 的工作原理，包括网络架构、配置方式、与 Docker 的集成以及路由机制，帮助理解容器网络的底层实现。
-lastmod: 2025-10-27T16:34:12.292Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Flannel 作为 Kubernetes 最主流的网络插件之一，为集群提供了简单高效的扁平网络方案，是理解容器网络实现原理的基础。
@@ -18,9 +18,9 @@ Flannel 是 Kubernetes 集群中广泛使用的网络插件，它为集群提供
 ```bash
 [root@node1 ~]# kubectl get nodes -o wide
 NAME      STATUS    ROLES     AGE       VERSION   EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION               CONTAINER-RUNTIME
-node1     Ready     <none>    2d        v1.24.0   <none>        CentOS Linux 7 (Core)   3.10.0-693.11.6.el7.x86_64   containerd://1.6.6
-node2     Ready     <none>    2d        v1.24.0   <none>        CentOS Linux 7 (Core)   3.10.0-693.11.6.el7.x86_64   containerd://1.6.6
-node3     Ready     <none>    2d        v1.24.0   <none>        CentOS Linux 7 (Core)   3.10.0-693.11.6.el7.x86_64   containerd://1.6.6
+node1     Ready     <none>    2d        v1.37.0   <none>        Ubuntu 24.04.2 LTS      6.8.0-60-generic             containerd://2.1.3
+node2     Ready     <none>    2d        v1.37.0   <none>        Ubuntu 24.04.2 LTS      6.8.0-60-generic             containerd://2.1.3
+node3     Ready     <none>    2d        v1.37.0   <none>        Ubuntu 24.04.2 LTS      6.8.0-60-generic             containerd://2.1.3
 ```
 
 集群中 Pod 的分布情况如下：
@@ -38,7 +38,7 @@ Kubernetes 网络中常见的三类 IP 地址：
 
 - **Node IP**：宿主机物理网络 IP，用于节点间通信
 - **Pod IP**：由网络插件（如 Flannel）分配，实现跨节点 Pod 通信
-- **Cluster IP**：Service 虚拟 IP，通过 iptables/ipvs 提供服务访问
+- **Cluster IP**：Service 虚拟 IP，通过 kube-proxy 的 iptables/nftables 规则提供服务访问
 
 ## Flannel 网络架构
 
@@ -59,9 +59,20 @@ Flannel 作为二进制程序部署在每个节点上，主要实现以下功能
 ![flannel 网络架构（图片来自 openshift）](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/flannel/flannel-networking.webp)
 {width=1520 height=1039}
 
-### etcd 中的网络配置
+### 网络配置的存储方式
 
-Flannel 将网络配置信息存储在 etcd 中，便于集群内各节点同步网络状态。
+Flannel 支持两种子网管理器：早期部署直接把网络配置写入独立的 etcd；如今在 Kubernetes 中部署时默认使用 `--kube-subnet-mgr` 模式，网络配置来自 `kube-flannel-cfg` ConfigMap，每个节点的子网则从 Node 对象的 `spec.podCIDR` 读取，并把 VTEP MAC、公网 IP 等信息写回 Node 注解（`flannel.alpha.coreos.com/*`），完全不依赖额外的 etcd。
+
+```bash
+# kube-subnet-mgr 模式：查看集群网络配置
+kubectl -n kube-flannel get cm kube-flannel-cfg -o jsonpath='{.data.net-conf\.json}'
+{"Network":"10.244.0.0/16","Backend":{"Type":"vxlan"}}
+
+# 查看某节点分配到的子网与 Flannel 注解
+kubectl get node node1 -o jsonpath='{.spec.podCIDR}{"\n"}{.metadata.annotations}'
+```
+
+以下是 etcd 子网管理器模式下的等价查询，仅在存量的独立 etcd 部署中仍会用到：
 
 ```bash
 # 查看子网分配情况
@@ -79,7 +90,7 @@ Flannel 将网络配置信息存储在 etcd 中，便于集群内各节点同步
 
 - `Network`：整个集群的网络段
 - `SubnetLen`：每个节点分配的子网掩码长度
-- `Backend`：网络实现方式（host-gw、vxlan、udp）
+- `Backend`：网络实现方式（vxlan、host-gw、wireguard、ipip 等；`udp` 后端早已弃用）
 
 ## Flannel 配置详解
 
@@ -256,8 +267,10 @@ Kubernetes 会在 iptables 中注入相关规则，保障网络安全和流量�
 ### 性能优化
 
 - **选择合适的后端**：
-- `host-gw`：性能最佳，要求节点在同一子网
-- `vxlan`：适用于复杂网络环境，有轻微性能损耗
+- `host-gw`：性能最佳，要求节点在同一二层子网
+- `vxlan`：默认后端，适用于复杂网络环境，有轻微封装开销；可开启 `DirectRouting` 在同子网节点间自动走直连路由
+- `wireguard`：需要节点间加密传输时选用
+- **NetworkPolicy**：Flannel 本身不实现 NetworkPolicy，如有需求需搭配 kube-router 或改用 Calico/Cilium
 - **MTU 设置**：
 - 根据底层网络调整 MTU 值
 - 避免数据包分片导致的性能问题

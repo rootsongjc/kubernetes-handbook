@@ -4,7 +4,7 @@ linkTitle: AI 工作负载调度
 weight: 7
 description: Kubernetes 中 AI 工作负载的调度策略和优化技术。
 date: 2025-10-20T05:20:29.038Z
-lastmod: 2025-10-20T05:21:59.951Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > AI 工作负载调度是提升 Kubernetes 集群资源利用率和 AI 应用性能的关键环节。本文系统梳理了 AI 任务的资源特性、调度策略、资源配额、队列管理及最佳实践，帮助读者构建高效的 AI 工作负载调度体系。
@@ -192,26 +192,45 @@ AI 训练和推理任务常采用批处理和队列机制，提升资源利用�
 
 ### Job 队列
 
-通过 Kubernetes Job 控制任务并发度和完成数，适合批量训练场景。
+通过 Kubernetes Job 控制任务并发度和完成数，适合批量训练场景。以下示例使用 Indexed Job 为每个 worker 提供稳定索引，并用 Pod 失败策略让抢占/驱逐不消耗重试次数：
 
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: ai-training-job
+  labels:
+    kueue.x-k8s.io/queue-name: ml-team      # 交由 Kueue 排队（可选）
 spec:
-  parallelism: 2
-  completions: 1
+  completionMode: Indexed
+  parallelism: 4
+  completions: 4
+  backoffLimitPerIndex: 1
+  podFailurePolicy:
+    rules:
+    - action: Ignore
+      onPodConditions:
+      - type: DisruptionTarget
   template:
     spec:
       containers:
       - name: training
         image: ai/training:latest
         resources:
-          requests:
+          limits:
             nvidia.com/gpu: 1
       restartPolicy: Never
 ```
+
+### Kueue 作业排队与成组调度
+
+多团队共享 GPU 集群时，仅靠 Job 本身无法解决"谁先跑、配额多少、要么全跑要么都等"的问题。推荐的组合是：
+
+- **Kueue**（SIG 项目，v0.20）：以 `ClusterQueue`/`LocalQueue` 管理配额与公平共享，通过 Job 的 `suspend` 字段与调度门控控制作业何时进入调度，支持借用、抢占、全有或全无准入以及多集群分发（MultiKueue，基于 Job `managedBy`，v1.35 GA）
+- **JobSet**（SIG 项目，v0.13）：描述 driver/worker 等多角色分布式训练作业，自动创建无头 Service 并提供整体重启与成功策略，是 Kubeflow Trainer v2 的底层运行时
+- **核心调度器成组调度**：`Workload`/`PodGroup` API（v1.35 Alpha，v1.37 Beta）在节点层面保证一组 Pod 全部绑定或全部等待，长期将减少对第三方批调度器的依赖
+
+详见 [Job 高级特性与批处理生态](../../controllers/job-advanced)。
 
 ### CronJob 定时任务
 
@@ -270,6 +289,8 @@ spec:
 - 资源隔离：为 AI 工作负载创建专用节点池，避免与通用业务混用
 - 优先级管理：合理设置任务优先级，保障关键任务资源分配
 - 预留策略：预留关键资源，确保重要任务及时执行
+- 设备声明：新项目优先使用 DRA（`resource.k8s.io/v1`，v1.34 GA）按显存、型号、NUMA 等属性申请 GPU，并利用设备污点（v1.37 GA）隔离故障卡，而不是只依赖 `nvidia.com/gpu` 整数计数
+- 排队与成组：共享集群先部署 Kueue 建立配额与排队，多角色训练用 JobSet 表达
 - 监控调优：持续监控调度效率，结合指标优化配置
 
 ## 总结

@@ -3,7 +3,7 @@ title: 监控系统
 weight: 2
 description: Kubernetes 集群和应用的监控系统，包括 Prometheus、Metrics Server 和自定义指标。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:06:26.872Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 监控系统是 Kubernetes 可观测性体系的基础，通过多层次指标采集与分析，保障集群和应用的稳定运行与故障快速定位。
@@ -165,8 +165,9 @@ Kubernetes 支持通过 Custom Metrics API 扩展指标采集能力，满足复�
 
 ### 自定义指标 API
 
-- Custom Metrics API:`/apis/custom.metrics.k8s.io/v1beta1`
-- External Metrics API:`/apis/external.metrics.k8s.io/v1beta1`
+- Resource Metrics API：`/apis/metrics.k8s.io/v1beta1`（由 metrics-server 提供；API 规范已在 Kubernetes v1.37 定义 `v1` 版本，metrics-server 后续版本将同时注册）
+- Custom Metrics API：`/apis/custom.metrics.k8s.io/v1beta2`
+- External Metrics API：`/apis/external.metrics.k8s.io/v1beta1`
 
 ### Prometheus Adapter
 

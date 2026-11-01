@@ -4,7 +4,7 @@ linktitle: 自定义资源定义（CRD）
 weight: 4
 slug: crd
 date: 2025-10-27T20:10:00+08:00
-lastmod: 2025-10-27T10:07:58.539Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: CRD 是 Kubernetes 最常用的扩展机制。通过定义自定义资源类型（Custom Resource），用户无需修改核心代码即可扩展 Kubernetes 的 API，实现领域特定的控制逻辑。
 ---
 
@@ -154,6 +154,30 @@ schema:
 - `required`：指定必填字段
 - `default`：设定默认值
 - `nullable`：允许空值
+- `x-kubernetes-validations`：用 CEL 表达式编写跨字段、依赖旧值的校验规则（v1.29 GA）
+
+CEL 校验规则让大量以往必须写 Validating Webhook 的逻辑可以直接声明在 Schema 中：
+
+```yaml
+schema:
+  openAPIV3Schema:
+    type: object
+    properties:
+      spec:
+        type: object
+        x-kubernetes-validations:
+        - rule: "self.minReplicas <= self.replicas && self.replicas <= self.maxReplicas"
+          message: "replicas 必须介于 minReplicas 与 maxReplicas 之间"
+        - rule: "!has(oldSelf.storageClass) || self.storageClass == oldSelf.storageClass"
+          message: "storageClass 创建后不可修改"
+        properties:
+          replicas: {type: integer}
+          minReplicas: {type: integer}
+          maxReplicas: {type: integer}
+          storageClass: {type: string}
+```
+
+`self` 指当前字段值，`oldSelf` 指更新前的值（仅 UPDATE 时可用，需配合 `x-kubernetes-validations` 的 `optionalOldSelf` 或 transition rule 语义）。v1.33 GA 的**校验棘轮**（CRD Validation Ratcheting）进一步保证：收紧 Schema 后，存量对象只要未修改不合规字段，仍可正常更新，避免升级 CRD 时大面积写操作失败。
 
 ## 版本管理与转换（Versioning & Conversion）
 

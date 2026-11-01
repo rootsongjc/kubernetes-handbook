@@ -4,7 +4,7 @@ linktitle: 概述
 weight: 1
 date: 2025-10-13
 description: 系统梳理 Kubernetes 存储系统的核心架构、关键概念、调度机制及高级特性，帮助读者全面理解持久化与数据管理在集群中的实现方式。
-lastmod: 2025-10-27T16:34:56.231Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 存储系统不仅为云原生应用提供了强大的数据持久化能力，更以其灵活与可扩展性，成为现代基础设施演进的关键驱动力。
@@ -132,6 +132,18 @@ CSI 驱动可上报卷异常，分为：
 
 健康状态也可通过 kubelet 指标暴露。
 
+### 在线修改卷属性
+
+`VolumeAttributesClass`（`storage.k8s.io/v1`，v1.34 GA）允许在不重建卷的情况下修改 IOPS、吞吐等由 CSI 驱动定义的属性：管理员预定义若干属性档位，用户只需修改 PVC 的 `volumeAttributesClassName` 即可触发驱动的 `ModifyVolume`。它补齐了"扩容之外的在线调整"这一长期空白，详见 [持久化卷](../persistent-volume)。
+
+### 卷扩容失败恢复
+
+当 PVC 扩容请求超出后端配额而失败时，用户可以把请求容量改小（不低于当前实际容量）让控制器自动恢复（v1.34 GA）。PVC 的 `status.allocatedResourceStatus` 与 `ControllerResizeError`/`NodeResizeError` 条件会给出失败阶段与原因。
+
+### 卷填充器
+
+卷填充器（Volume Populator，v1.33 GA）允许 PVC 的 `dataSourceRef` 指向任意自定义资源，由对应的填充器控制器在卷创建时写入初始数据，例如从对象存储导入数据集或从镜像预热模型，是快照与克隆之外的第三种数据源。
+
 ## 存储接口
 
 ### CSI（容器存储接口）
@@ -164,6 +176,7 @@ CSI 支持：供应/删除、挂载/卸载、快照、扩容、指标、健康�
 | secret | 注入敏感数据 |
 | CSI ephemeral | 支持该特性的 CSI 驱动 |
 | generic ephemeral | 支持 PV 的任意驱动 |
+| image | 以只读方式挂载 OCI 镜像/制品（v1.36 GA） |
 
 {{< /table >}}
 

@@ -4,7 +4,7 @@ date: 2025-10-13
 linktitle: 概述
 description: 介绍 Kubernetes 支持的各类工作负载资源、它们之间的关系及应用生命周期管理最佳实践。
 weight: 1
-lastmod: 2025-10-27T16:11:17.135Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 工作负载管理的精髓在于灵活组合控制器与生命周期机制，实现应用的弹性、可靠与智能化运维。
@@ -142,7 +142,7 @@ Horizontal Pod Autoscaler（HPA）可根据 CPU 或自定义指标自动扩缩 D
 
 ### Init 容器与 Sidecar 容器
 
-Init 容器在主容器启动前依次运行并完成。Sidecar 容器与主容器并行运行，提供辅助功能。
+Init 容器在主容器启动前依次运行并完成。Sidecar 容器与主容器并行运行，提供辅助功能；自 v1.29 起 Kubernetes 提供原生 Sidecar 语义（`initContainers` 中设置 `restartPolicy: Always`），保证 Sidecar 先于主容器启动、晚于主容器退出，并且不会阻塞 Job 的完成。
 
 ![Pod 启动与 Sidecar 容器结构](pod-init-sidecar-containers.svg)
 
@@ -174,9 +174,10 @@ Pod Disruption Budget（PDB）限制应用可同时中断的 Pod 数，保障高
 
 | 扩缩容类型 | 控制器                  | 适用场景                       |
 | ---------- | ----------------------- | ------------------------------ |
-| 水平扩缩容 | HorizontalPodAutoscaler | 无状态应用、负载波动           |
-| 垂直扩缩容 | VerticalPodAutoscaler   | 不能水平扩展的应用             |
-| 集群扩缩容 | Cluster Autoscaler      | 整体集群容量自动管理           |
+| 水平扩缩容 | HorizontalPodAutoscaler、KEDA | 无状态应用、负载波动、事件驱动与缩容到零 |
+| 垂直扩缩容 | VerticalPodAutoscaler + 原地资源调整（v1.35 GA） | 不能水平扩展的应用，可在不重启 Pod 的情况下调整资源 |
+| 集群扩缩容 | Cluster Autoscaler、Karpenter | 整体集群容量自动管理           |
+| 批处理排队 | Kueue                   | 按配额与优先级控制 Job 何时开始运行 |
 
 {{< /table >}}
 
@@ -185,8 +186,8 @@ Pod Disruption Budget（PDB）限制应用可同时中断的 Pod 数，保障高
 - 配置合适的启动、存活、就绪探针
 - 设置 terminationGracePeriodSeconds 实现优雅关闭
 - 应用需正确处理终止信号
-- 使用 Init 容器处理依赖与启动需求
-- 利用 preStop 钩子做清理操作
+- 使用 Init 容器处理依赖与启动需求，长期辅助进程用原生 Sidecar 容器
+- 利用 preStop 钩子（含 `sleep` 动作）做清理与端点摘除等待
 
 ## 工作负载控制器选择指南
 

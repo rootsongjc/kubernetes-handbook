@@ -4,7 +4,7 @@ title: Kubernetes 中的用户与身份认证授权
 linktitle: 用户与身份认证
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 集群中的用户管理和身份认证机制，包括普通用户与 Service Account 的区别、各种认证策略的配置与使用，以及认证流程的详细实现。
-lastmod: 2025-10-27T17:10:53.912Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 用户与身份认证机制为集群安全提供了基础保障，合理区分用户类型并配置多重认证策略，是实现最小权限和合规访问的关键。
@@ -177,7 +177,7 @@ spec:
       serviceAccountName: bob-the-bot
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: nginx:1.27
 ```
 
 ### OpenID Connect Token
@@ -197,9 +197,11 @@ spec:
 4. API server 验证 JWT
 5. 完成授权
 
-**API Server 配置参数**：
+**API Server 配置**：
 
-{{< table title="OIDC 认证相关参数说明" >}}
+传统做法是通过 `--oidc-*` 命令行参数配置，且只能接入一个签发方：
+
+{{< table title="OIDC 认证相关参数说明（传统方式）" >}}
 
 | 参数 | 描述 | 是否必需 |
 |------|------|----------|
@@ -211,16 +213,38 @@ spec:
 
 {{< /table >}}
 
+自 v1.34 起 GA 的结构化认证配置（`--authentication-config` 指向 `AuthenticationConfiguration` 文件）是推荐方式：支持多个 JWT 签发方、用 CEL 表达式映射与校验声明、配置热加载，且与 `--oidc-*` 参数互斥。等价配置如下：
+
+```yaml
+apiVersion: apiserver.config.k8s.io/v1
+kind: AuthenticationConfiguration
+jwt:
+- issuer:
+    url: https://oidcidp.example.com
+    audiences: [kubernetes]
+  claimMappings:
+    username:
+      claim: email
+      prefix: "oidc:"
+    groups:
+      claim: groups
+      prefix: "oidc:"
+```
+
+详见 [结构化认证与鉴权配置](../../auth/structured-authentication-authorization)。
+
 **kubectl 配置示例**：
+
+kubectl 内置的 `--auth-provider=oidc` 已于 v1.26 移除，现应使用 exec 凭据插件（如 [kubelogin](https://github.com/int128/kubelogin)）在本地完成 OIDC 登录并缓存 Token：
 
 ```bash
 kubectl config set-credentials mmosley \
-    --auth-provider=oidc \
-    --auth-provider-arg=idp-issuer-url=https://oidcidp.example.com \
-    --auth-provider-arg=client-id=kubernetes \
-    --auth-provider-arg=client-secret=1db158f6-177d-4d9c-8a8b-d36869918ec5 \
-    --auth-provider-arg=refresh-token=q1bKLFOyUiosTfawzA93TzZ... \
-    --auth-provider-arg=id-token=eyJraWQiOiJDTj1vaWRjaWRwLnRyZW1vbG8...
+    --exec-api-version=client.authentication.k8s.io/v1 \
+    --exec-command=kubectl \
+    --exec-arg=oidc-login \
+    --exec-arg=get-token \
+    --exec-arg=--oidc-issuer-url=https://oidcidp.example.com \
+    --exec-arg=--oidc-client-id=kubernetes
 ```
 
 ### Webhook Token 认证

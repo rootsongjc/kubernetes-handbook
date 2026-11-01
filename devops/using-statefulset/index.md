@@ -4,7 +4,7 @@ title: 使用 StatefulSet 部署有状态应用
 linktitle: 部署有状态应用
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes 中部署、运行和运维有状态应用（StatefulSet 与 Operator 比较、存储与网络设计、滚动升级、备份与恢复示例）。
-lastmod: 2025-10-27T17:26:13.628Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 真正的有状态服务架构，考验的是团队对可靠性、自动化与数据安全的极致追求。
@@ -37,7 +37,7 @@ lastmod: 2025-10-27T17:26:13.628Z
 - PodDisruptionBudget（PDB）：与 rolling updates、节点维护策略配合，保证最小可用实例。
 - 拓扑感知：使用 PodAntiAffinity / topologySpreadConstraints 与 StorageClass 的拓扑绑定，保证副本分布在不同可用区/节点池。
 - 备份与快照：使用 CSI 快照（VolumeSnapshot）与定期备份（对象存储），并演练恢复流程。
-- 安全与多租户：使用 PSP/PodSecurity（或 OPA Gatekeeper 策略）、NetworkPolicy、最小权限 SecurityContext、只读根文件系统等。
+- 安全与多租户：使用 Pod 安全准入（PodSecurity，PSP 已于 v1.25 移除）或 Kyverno/Gatekeeper 策略、NetworkPolicy、最小权限 SecurityContext、只读根文件系统等；v1.32 GA 的 `persistentVolumeClaimRetentionPolicy` 可按需在缩容/删除时自动清理 PVC。
 
 ![StatefulSet 与相关组件架构](statefulset-architecture.svg)
 

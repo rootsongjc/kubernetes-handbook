@@ -4,7 +4,7 @@ title: Pod 的生命周期
 date: 2022-05-21T00:00:00+08:00
 slug: pod-lifecycle
 description: 详细介绍 Kubernetes Pod 的生命周期管理，包括 Pod 状态阶段、容器探针配置、重启策略以及生命周期的各种实际应用场景。
-lastmod: 2025-10-28T04:43:05.297Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Pod 生命周期管理是 Kubernetes 自动化运维和高可用保障的核心，合理配置探针和重启策略可显著提升应用的健壮性和弹性。
@@ -35,14 +35,24 @@ Pod 的 `status` 字段包含一个 PodStatus 对象，其中的 `phase` 字段�
 
 ## Pod 状态（Status）
 
-Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition 包含：
+Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition 包含 `type`、`status`（`True`、`False` 或 `Unknown`）、`reason`、`message` 和 `lastTransitionTime` 等字段。下表列出了 Kubernetes 内建的 Pod 条件类型：
 
-- **`type`**：条件类型，可能值包括：
-  - `PodScheduled`：Pod 是否已被调度
-  - `Ready`：Pod 是否准备好接收流量
-  - `Initialized`：所有初始化容器是否成功完成
-  - `ContainersReady`：Pod 中所有容器是否就绪
-- **`status`**：条件状态，值为 `True`、`False` 或 `Unknown`
+{{< table title="Pod 内建条件类型" >}}
+
+| 条件类型                    | 含义                                                         | 引入版本        |
+|-----------------------------|--------------------------------------------------------------|-----------------|
+| `PodScheduled`              | Pod 已被调度到某个节点                                        | 早期            |
+| `PodReadyToStartContainers` | Pod 沙箱（网络、卷等）已创建完成，可以开始启动容器               | v1.29 GA        |
+| `Initialized`               | 所有 Init 容器已成功完成（Sidecar 容器已启动）                  | 早期            |
+| `ContainersReady`           | Pod 中所有容器均已就绪                                        | 早期            |
+| `Ready`                     | Pod 可接收流量，应加入匹配 Service 的端点                      | 早期            |
+| `DisruptionTarget`          | Pod 因抢占、驱逐、节点压力等原因即将被终止，`reason` 标明原因     | v1.31 GA        |
+| `PodResizePending`          | 已提交原地资源调整请求但节点暂时无法满足（`reason` 为 `Deferred` 或 `Infeasible`） | v1.33 引入，v1.35 GA |
+| `PodResizeInProgress`       | 原地资源调整正在执行                                          | v1.33 引入，v1.35 GA |
+
+{{< /table >}}
+
+其中 `PodReadyToStartContainers` 填补了"已调度但容器尚未开始创建"这一盲区，便于定位镜像拉取、卷挂载或 CNI 配置缓慢的问题；`DisruptionTarget` 让 Job 等控制器可以通过 Pod 失败策略区分"业务失败"与"被基础设施打断"。
 
 ## 容器探针（Probes）
 
@@ -50,17 +60,20 @@ Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition �
 
 ### 探针类型
 
-下表总结了三种常见探针类型及其判定标准：
+下表总结了四种探针检查机制及其判定标准：
 
-{{< table title="容器探针类型与判定标准" >}}
+{{< table title="容器探针检查机制与判定标准" >}}
 
-| 探针类型        | 描述           | 成功条件           |
-|-----------------|----------------|--------------------|
-| ExecAction      | 执行指定命令    | 命令退出码为 0     |
-| TCPSocketAction | TCP 端口检查    | 端口可连接         |
-| HTTPGetAction   | HTTP GET 请求   | 响应状态码 200-399 |
+| 检查机制  | 描述                         | 成功条件                              |
+|-----------|------------------------------|---------------------------------------|
+| `exec`    | 在容器内执行指定命令          | 命令退出码为 0                        |
+| `tcpSocket` | 对指定端口发起 TCP 连接     | 端口可连接                            |
+| `httpGet` | 发送 HTTP GET 请求            | 响应状态码 200-399                    |
+| `grpc`    | 调用 gRPC 健康检查协议（v1.27 GA） | 返回 `SERVING` 状态                   |
 
 {{< /table >}}
+
+`grpc` 探针要求应用实现 [gRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)，无需再在镜像中打包 `grpc_health_probe` 二进制。
 
 每次探测返回以下结果之一：
 
@@ -84,11 +97,12 @@ Pod 具有 PodStatus 对象，包含 PodCondition 数组。每个 PodCondition �
 
 #### 启动探针（Startup Probe）
 
-自 Kubernetes 1.16 起支持，用于慢启动容器：
+自 Kubernetes 1.20 起稳定，用于慢启动容器：
 
 - 检测容器是否已启动
 - 启动探针成功前，其他探针被禁用
 - 适用于启动时间较长的应用
+- 对原生 Sidecar 容器而言，启动探针通过是"放行下一个容器"的判定条件
 
 ### 探针使用指南
 
@@ -184,6 +198,23 @@ PodSpec 的 `restartPolicy` 字段控制容器重启行为。下表总结了三�
 - **重启延迟**：采用指数退避算法（10s, 20s, 40s, 80s, 160s, 300s）
 - **重置条件**：容器成功运行 10 分钟后重置延迟
 - **节点限制**：容器只能在同一节点重启
+- **容器级覆盖**：Init 容器可通过自身的 `restartPolicy: Always` 声明为 Sidecar，获得独立于 Pod 的重启语义；v1.34 起还引入了容器级 `restartPolicy` 与 `restartPolicyRules`（v1.35 Beta 并默认开启），允许按退出码决定单个容器是否重启
+
+### 生命周期钩子
+
+除探针外，容器还可以定义 `lifecycle.postStart` 和 `lifecycle.preStop` 两个钩子。钩子支持 `exec`、`httpGet`、`tcpSocket` 以及 v1.34 起 GA 的 `sleep` 四种动作。`sleep` 动作最常见的用途是在 `preStop` 中短暂停顿，等待 Service 端点摘除生效后再让进程退出，且不再依赖镜像内是否存在 shell：
+
+```yaml
+containers:
+- name: app
+  image: my-app:1.0
+  lifecycle:
+    preStop:
+      sleep:
+        seconds: 5
+```
+
+更多钩子用法参见 [Pod Hook](../pod-hook)。
 
 ## Pod 生命周期管理
 
@@ -344,4 +375,4 @@ Pod 生命周期管理是 Kubernetes 自动化运维和高可用的基础。通�
 
 - [Pod Lifecycle - kubernetes.io](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 - [Configure Liveness, Readiness and Startup Probes - kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
-- [Pod Lifecycle - API Reference - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podstatus-v1-core)
+- [Pod Lifecycle - API Reference - kubernetes.io](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodStatus)

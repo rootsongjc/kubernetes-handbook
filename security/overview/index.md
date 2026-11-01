@@ -4,7 +4,7 @@ linktitle: 概述
 weight: 1
 date: 2025-10-13
 description: 本文概述 Kubernetes 安全架构与访问控制机制，涵盖认证、鉴权、准入控制与数据加密等核心安全组件，帮助读者理解集群安全防护体系。
-lastmod: 2025-10-27T17:01:01.997Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 安全是 Kubernetes 集群稳定运行的基石，只有持续优化每一环节，才能真正守护云原生世界的边界。
@@ -62,12 +62,12 @@ Kubernetes 支持多种认证方式，可同时启用：
 Kubernetes 支持多种鉴权模式，可组合使用，按顺序依次检查：
 
 - **RBAC**（推荐）：基于角色的访问控制
-- **ABAC**：基于属性的访问控制
+- **ABAC**：基于属性的访问控制，依赖静态策略文件，已极少使用
 - **Node**：专为 kubelet 设计的节点鉴权
 - **Webhook**：委托外部 HTTP 服务决策
 - **AlwaysAllow/AlwaysDeny**：全部允许/拒绝（仅测试用）
 
-若所有鉴权器均无明确意见，则默认拒绝请求。
+若所有鉴权器均无明确意见，则默认拒绝请求。鉴权链可用 `--authorization-mode` 参数声明，也可用 v1.32 GA 的结构化鉴权配置文件声明多个 Webhook 及其 CEL 匹配条件；认证侧对应的结构化认证配置（v1.34 GA）则取代了 `--oidc-*` 参数。两者详见 [结构化认证与鉴权配置](../../auth/structured-authentication-authorization)。
 
 ### RBAC 机制
 

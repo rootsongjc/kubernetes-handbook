@@ -4,12 +4,16 @@ title: Ingress
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: Ingress 是 Kubernetes 中管理集群外部访问服务的资源对象，提供 HTTP 和 HTTPS 路由功能。本文介绍 Ingress 的工作原理、配置方法、IngressClass 概念以及各种使用场景。
-lastmod: 2025-10-27T17:50:38.595Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Ingress 是 Kubernetes 集群中实现 HTTP/HTTPS 流量智能路由和安全暴露的核心机制，合理配置可实现灵活的服务访问与流量管理。
 
 ## 概述
+
+{{< callout warning "Ingress 已进入维护状态" >}}
+Ingress API（`networking.k8s.io/v1`）自 v1.19 GA 后特性已冻结，Kubernetes 不再为其增加新功能；曾经事实标准的社区控制器 Ingress NGINX 也已于 2026 年 3 月退役。Ingress 仍可长期使用，但新项目应优先选择 [Gateway API](../gateway)，存量项目可参考 [从 Ingress 迁移到 Gateway API](../migrating-from-ingress-to-gateway-api)。本文示例中的 `ingress-nginx` 注解仅作历史参考，其他控制器的注解前缀各不相同。
+{{< /callout >}}
 
 Ingress 是 Kubernetes 的资源对象，用于管理集群外部到集群内服务的 HTTP 和 HTTPS 访问。它充当智能路由器，根据定义的规则将外部流量路由到集群内的不同服务。
 
@@ -413,10 +417,10 @@ spec:
 
 | 方案                 | 适用场景           | 优势                   | 劣势                   |
 |----------------------|--------------------|------------------------|------------------------|
-| Ingress              | HTTP/HTTPS 流量管理 | 功能丰富，生态成熟     | 仅支持 7 层路由        |
+| Ingress              | 存量 HTTP/HTTPS 流量管理 | 生态成熟，几乎所有控制器都支持 | 仅支持 7 层路由，特性冻结，高级能力依赖非标准注解 |
 | LoadBalancer Service | 简单负载均衡       | 配置简单               | 成本高，功能有限       |
 | NodePort Service     | 开发测试环境       | 无需额外组件           | 端口管理复杂，安全性差 |
-| Gateway API          | 现代流量管理       | 功能强大，设计灵活     | 生态较新，待完善       |
+| Gateway API          | 新建项目的流量入口与服务网格 | 功能强大、角色分离、可移植，已是社区演进方向 | 需要学习新的资源模型；部分四层路由仍在实验渠道 |
 
 {{< /table >}}
 
@@ -435,6 +439,7 @@ Ingress 作为 Kubernetes 集群中 HTTP/HTTPS 流量暴露和路由的核心机
 
 ## 参考文献
 
-- [Ingress - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-- [Ingress Controllers - Kubernetes 官方文档](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
-- [Gateway API - Kubernetes SIG Network](https://gateway-api.sigs.k8s.io/)
+- [Ingress - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Ingress Controllers - kubernetes.io](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+- [Ingress NGINX Retirement: What You Need to Know - kubernetes.io](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/)
+- [Gateway API - gateway-api.sigs.k8s.io](https://gateway-api.sigs.k8s.io/)

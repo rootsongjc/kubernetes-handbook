@@ -3,7 +3,7 @@ weight: 33
 title: Job
 date: 2022-05-21T00:00:00+08:00
 description: Job 是 Kubernetes 中用于批处理任务的控制器，负责管理一次性任务的执行，确保指定数量的 Pod 成功完成后结束。支持并行执行、失败重试和超时控制等特性。
-lastmod: 2025-10-27T16:10:35.259Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Job 控制器让 Kubernetes 能够可靠地管理一次性批处理任务，自动完成调度、重试和清理，是实现自动化批量计算和数据处理的基础能力。
@@ -32,6 +32,11 @@ Job 控制器会持续监控 Pod 的状态，直到指定数量的 Pod 成功完
 - **spec.backoffLimit**：指定失败重试次数，默认为 6
 - **spec.activeDeadlineSeconds**：指定 Job 的最大运行时间，超时后终止
 - **spec.ttlSecondsAfterFinished**：指定 Job 完成后的保留时间
+- **spec.completionMode**：`NonIndexed`（默认）或 `Indexed`，后者为每个 Pod 分配 0 到 `completions-1` 的索引
+- **spec.suspend**：设为 `true` 可暂停 Job（不再创建新 Pod 并删除运行中的 Pod），是 Kueue 等排队系统控制 Job 启动时机的基础
+- **spec.podFailurePolicy**：按容器退出码或 Pod 条件决定失败时是重试、忽略还是直接判定 Job 失败
+- **spec.successPolicy**：对 Indexed Job 声明"部分索引成功即视为整个 Job 成功"的规则
+- **spec.backoffLimitPerIndex**：为 Indexed Job 的每个索引单独设置重试上限
 
 ### 完整示例
 
@@ -102,6 +107,46 @@ Kubernetes Job 支持多种执行模式，满足不同批处理需求。
 
 - 不设置 `completions`，设置 `parallelism: N`
 - Pod 从共享队列中获取任务，直到队列为空
+
+### 索引模式
+
+- `completionMode: Indexed`，`completions: N`
+- 每个 Pod 通过 `JOB_COMPLETION_INDEX` 环境变量与 `batch.kubernetes.io/job-completion-index` 注解获知自己的索引
+- 配合无头 Service 可得到稳定的 Pod 主机名 `<job>-<index>`，适合分布式训练、数据分片处理等需要确定性身份的任务
+
+以下示例展示了一个带失败策略的 Indexed Job：
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shard-processor
+spec:
+  completions: 8
+  parallelism: 4
+  completionMode: Indexed
+  backoffLimitPerIndex: 2
+  maxFailedIndexes: 1
+  podFailurePolicy:
+    rules:
+    - action: FailJob            # 配置错误直接失败，不浪费重试
+      onExitCodes:
+        containerName: worker
+        operator: In
+        values: [42]
+    - action: Ignore             # 被抢占/驱逐不计入重试次数
+      onPodConditions:
+      - type: DisruptionTarget
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: worker
+        image: my-shard-processor:1.0
+        command: ["sh", "-c", "process --shard=$JOB_COMPLETION_INDEX"]
+```
+
+Indexed Job、失败/成功策略以及 JobSet、Kueue 等批处理生态的深入内容见 [Job 高级特性与批处理生态](../job-advanced)。
 
 ## 最佳实践
 

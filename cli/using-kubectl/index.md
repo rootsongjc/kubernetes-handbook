@@ -3,7 +3,7 @@ weight: 80
 title: Kubectl 命令概览
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes kubectl 命令的使用方法，包括命令分类、命令行增强工具、身份认证机制和自动补全配置等实用技巧。
-lastmod: 2025-10-27T17:18:55.091Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > kubectl 是 Kubernetes 集群调试与管理的核心工具，掌握其命令体系和增强插件，是高效排障和日常运维的基础。
@@ -37,6 +37,8 @@ kubectl 的子命令按功能主要分为以下几个类别：
 - **[k9s](https://github.com/derailed/k9s)**：终端 UI，集群资源可视化管理
 - **[kubens](https://github.com/ahmetb/kubectx)**：快速切换 namespace
 - **[stern](https://github.com/stern/stern)**：多 Pod 日志聚合查看工具
+- **[krew](https://krew.sigs.k8s.io/)**：kubectl 插件管理器，`kubectl krew install` 即可安装 `neat`、`tree`、`view-secret` 等上百个社区插件
+- **kuberc**：kubectl 内建的用户偏好文件（v1.34 Beta 默认开启），可定义命令别名与默认参数，部分替代 shell alias 的用途
 
 ### kube-shell 交互式终端
 

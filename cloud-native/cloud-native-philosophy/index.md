@@ -4,7 +4,7 @@ linktitle: 云原生的设计哲学
 weight: 2
 description: 探讨云原生的核心设计理念和哲学思想，阐述云原生应用程序的特征和要求，以及云原生基础设施的本质区别。从分布式设计、配置管理、韧性设计等多个维度深入分析云原生的设计原则。
 draft: false
-lastmod: 2025-08-26T10:05:29.715Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-08-26T10:05:29.079Z
 ---
 
@@ -245,7 +245,7 @@ date: 2025-08-26T10:05:29.079Z
 
 具有这些特征的应用程序需要一个能够实际监控、收集指标并在发生故障时做出反应的平台。云原生应用程序不依赖于人员设置 ping 检查或创建系统日志规则。它们需要从选择基本操作系统或软件包管理器的过程中提取自助服务资源，并依靠服务发现和强大的网络通信来提供丰富的功能体验。
 
-## 参考资料
+## 参考文献
 
 - [《Cloud Native Infrastructure》, O'Reilly 免费电子书](https://blog.heptio.com/i-still-remember-the-first-time-i-logged-into-a-production-server-over-ssh-and-telling-myself-i-53ab1d1e7f46)
 - [CNCF Cloud Native Definition](https://github.com/cncf/toc/blob/main/DEFINITION.md)

@@ -2,7 +2,7 @@
 title: 扩展 Kubernetes 以支持 GPU 与 AI 调度
 linktitle: GPU 与 AI 调度
 date: 2025-10-27T22:55:00+08:00
-lastmod: 2025-10-27T15:55:43.071Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 40
 description: 深入理解 Kubernetes 在 GPU 与 AI 原生场景下的调度机制，涵盖 GPU 设备插件、MIG、多任务共享、AI 作业编排（KubeRay、Volcano、Kueue）及自定义调度插件实践。
 ---
@@ -142,6 +142,8 @@ Scheduler Framework 可以扩展插件：
 - Score Plugin：优先显存更匹配的节点
 - Reserve Plugin：提前锁定 MIG 分区，避免竞争
 
+需要注意的是，上述"按整数计数 + 自定义插件"的模式正在被动态资源分配（DRA，v1.34 GA）取代：DRA 驱动在 `ResourceSlice` 中以属性（型号、显存、NUMA 节点、MIG 分区等）发布设备，工作负载用 `ResourceClaim` 的 CEL 选择器按属性申请，调度器原生完成匹配；v1.36 起 Beta 的可分区设备让 MIG 分区的动态切分、v1.37 GA 的设备污点让单卡隔离都无需自定义插件。详见 [动态资源分配（DRA）](../dynamic-resource-allocation/)。
+
 ## AI 训练作业与同步调度（Permit Plugin）
 
 AI 训练任务常常由多个并行 Pod 组成（如 Parameter Server / Worker）。要求它们“要么一起运行，要么等待资源充足再一起启动”，这时就需要 Permit Plugin 实现同步调度。
@@ -160,6 +162,8 @@ func (p *BarrierPlugin) Permit(ctx context.Context, state *framework.CycleState,
     return framework.NewStatus(framework.Success, "")
 }
 ```
+
+Kubernetes 核心调度器已在 v1.35 引入、v1.37 升级为 Beta 的成组调度（`Workload`/`PodGroup` API，`scheduling.k8s.io`）原生实现了这一语义，并在 v1.37 引入 PodGroup 级抢占策略（Alpha）；Kueue、JobSet 正在对接这一机制，长期看自定义 Permit 插件将主要用于框架特定的细粒度逻辑。
 
 ## 与 AI 作业控制器的协同：KubeRay / Volcano / Kueue
 

@@ -3,7 +3,7 @@ weight: 114
 title: Minikube
 date: 2022-05-21T00:00:00+08:00
 description: 介绍如何安装配置 Minikube，以及常用的操作命令。
-lastmod: 2025-10-20T05:05:02.233Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Minikube 是本地开发和测试 Kubernetes 应用的理想工具，支持多平台、多驱动和丰富插件，极大简化了集群搭建与管理流程。本文系统梳理 Minikube 的架构、安装、配置、常用命令及最佳实践，助你高效掌握本地 K8s 环境。

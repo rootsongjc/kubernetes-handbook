@@ -3,7 +3,7 @@ title: 扩展 Kubernetes 概览
 linktitle: 概览
 weight: 1
 date: 2025-10-27T18:45:00+08:00
-lastmod: 2025-10-27T18:09:17.496Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: Kubernetes 通过模块化的 API、控制器、Webhook 和调度器设计，实现了“可扩展而不修改”的架构哲学。本章系统介绍如何扩展 Kubernetes，使其支持自定义资源、自动化逻辑与智能调度。
 ---
 
@@ -29,8 +29,9 @@ Kubernetes 提供了多种官方支持的扩展接口，涵盖从 API 层到调�
 |------------------|-------------------------------|------------------------|
 | API 扩展         | CRD / APIService              | 定义新资源类型，聚合外部 API |
 | 控制器扩展       | 自定义 Controller / Operator  | 实现自动化控制逻辑      |
-| 准入控制扩展     | Admission Webhook             | 拦截与修改对象请求      |
+| 准入控制扩展     | ValidatingAdmissionPolicy / MutatingAdmissionPolicy（CEL）、Admission Webhook | 声明式校验与变更，或外部服务拦截请求 |
 | 调度扩展         | Scheduler Framework           | 自定义资源调度策略      |
+| 设备资源扩展     | 动态资源分配（DRA）/ Device Plugin | 接入 GPU 等异构硬件，按属性声明式分配 |
 
 {{< /table >}}
 
@@ -42,7 +43,7 @@ Kubernetes 提供了多种官方支持的扩展接口，涵盖从 API 层到调�
 
 - **企业级平台团队**：通过 CRD + Operator 构建统一运维平台。
 - **AI 平台团队**：通过 Scheduler 扩展 GPU/大模型调度。
-- **安全团队**：使用 Admission Webhook 实现策略管控。
+- **安全团队**：使用 CEL 准入策略与 Admission Webhook 实现策略管控。
 - **云厂商与开源项目**：通过 APIService 聚合外部服务（如 metrics-server）。
 
 这些扩展机制使 Kubernetes 成为“云原生生态的底座”。
@@ -59,9 +60,11 @@ Kubernetes 提供了多种官方支持的扩展接口，涵盖从 API 层到调�
 6. [Operator SDK 实战](../operator-sdk/) —— 企业级 Operator 开发框架  
 7. [准入控制扩展](../admission-webhook/) —— 掌握动态策略与安全校验  
 8. [ValidatingWebhook](../validating-webhook/) 与 [MutatingWebhook](../mutating-webhook/) —— 实战示例  
-9. [调度扩展机制](../scheduler-extension/) —— 理解调度流程与 Framework  
-10. [Scheduler Framework 插件](../scheduler-framework/) —— 自定义调度逻辑  
-11. [GPU 与 AI 调度](../gpu-scheduling/) —— 面向 AI 原生场景的调度优化  
+9. [准入策略：用 CEL 替代 Webhook](../admission-policy/) —— ValidatingAdmissionPolicy 与 MutatingAdmissionPolicy  
+10. [调度扩展机制](../scheduler-extension/) —— 理解调度流程与 Framework  
+11. [Scheduler Framework 插件](../scheduler-framework/) —— 自定义调度逻辑  
+12. [动态资源分配（DRA）](../dynamic-resource-allocation/) —— 异构设备的声明式分配  
+13. [GPU 与 AI 调度](../gpu-scheduling/) —— 面向 AI 原生场景的调度优化  
 
 ## 延伸阅读
 

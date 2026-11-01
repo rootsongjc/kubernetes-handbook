@@ -5,7 +5,7 @@ linktitle: 概述
 date: 2022-05-21T00:00:00+08:00
 description: 本文深入探讨了 Kubernetes 的核心设计理念，包括分层架构、API 设计原则、控制机制设计原则，以及重要的技术概念和 API 对象，帮助读者全面理解 Kubernetes 系统的设计思想和实现机制。
 type: book
-lastmod: 2025-10-27T13:32:52.335Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 架构奠定了云原生时代的技术基石，引领分布式系统创新。
@@ -55,10 +55,12 @@ Kubernetes 采用分布式架构，控制面与工作节点分离，实现了决
 | 组件       | 描述         | 主要职责                                 |
 | ---------- | ------------ | ---------------------------------------- |
 | kubelet    | 节点代理     | 保证 Pod 中容器运行                      |
-| kube-proxy | 网络代理     | 维护节点网络规则                         |
-| 容器运行时 | 容器执行环境 | 运行容器（如 Docker、containerd、CRI-O） |
+| kube-proxy | 网络代理     | 维护节点网络规则（iptables/IPVS/nftables 模式），使用 Cilium 等 eBPF 插件时可省略 |
+| 容器运行时 | 容器执行环境 | 通过 CRI 运行容器（containerd、CRI-O 等）  |
 
 {{< /table >}}
+
+此外，控制面通常还会运行 `cloud-controller-manager`（对接云厂商 API）以及 CoreDNS、指标服务（metrics-server）等集群附加组件。
 
 ## Kubernetes API 与对象模型
 
@@ -170,7 +172,7 @@ API Server 是控制面的核心，负责所有组件间通信与 API 暴露。
 
 1. **认证**：校验客户端身份
 2. **鉴权**：检查权限
-3. **准入控制**：执行策略或修改对象
+3. **准入控制**：先执行变更准入（Mutating Webhook / MutatingAdmissionPolicy），再执行校验准入（Validating Webhook / ValidatingAdmissionPolicy）
 4. **校验**：结构合法性检查
 5. **存储**：持久化到 etcd
 
@@ -198,10 +200,12 @@ Kubernetes 支持多种扩展方式，无需修改核心代码即可适配不同
 | -------------- | ---------------------- | ---------------------------------- |
 | 自定义资源     | 扩展 API 对象类型      | CRD、API 聚合                      |
 | 准入 Webhook   | 拦截 API 请求校验/变更 | ValidatingWebhook、MutatingWebhook |
+| 准入策略       | 用 CEL 表达式在 API Server 内声明式校验/变更，无需外部服务 | ValidatingAdmissionPolicy、MutatingAdmissionPolicy |
 | 调度扩展       | 自定义 Pod 调度逻辑    | 调度插件、多调度器                 |
-| 认证模块       | 新增认证方式           | OIDC、Webhook Token Auth           |
+| 认证模块       | 新增认证方式           | OIDC、Webhook Token Auth、结构化认证配置 |
 | 网络插件       | 实现 Pod 网络          | Calico、Cilium、Flannel            |
 | 存储插件       | 支持多种存储系统       | CSI 插件                           |
+| 设备资源       | 接入 GPU 等异构硬件    | Device Plugin、动态资源分配（DRA） |
 
 {{< /table >}}
 
@@ -245,10 +249,10 @@ Kubernetes 支持分布式追踪，便于跨组件操作的监控与故障排查
 
 本文系统梳理了 Kubernetes 的核心架构、对象模型、命名空间、对象管理与扩展机制等基础内容。掌握这些核心概念，是高效使用和运维 Kubernetes 集群的前提。更多专题内容请参阅相关章节。
 
-## 参考资料
+## 参考文献
 
-- [Borg, Omega, and Kubernetes - ACM Queue](https://queue.acm.org/detail.cfm?id=2898444)
-- [Large-scale cluster management at Google with Borg](https://research.google/pubs/pub43438/)
+- [Borg, Omega, and Kubernetes - queue.acm.org](https://queue.acm.org/detail.cfm?id=2898444)
+- [Large-scale cluster management at Google with Borg - research.google](https://research.google/pubs/pub43438/)
 - [Kubernetes 官方文档 - kubernetes.io](https://kubernetes.io/docs/concepts/)
-- [Kubernetes API 参考 - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/)
+- [Kubernetes API 参考 - kubernetes.io](https://kubernetes.io/docs/reference/kubernetes-api/)
 - [Kubernetes 扩展机制 - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/)

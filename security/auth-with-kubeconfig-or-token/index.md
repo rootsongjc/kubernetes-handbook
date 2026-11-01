@@ -5,7 +5,7 @@ linktitle: kubeconfig 和 token 认证
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 详细介绍在 Kubernetes 集群中使用 kubeconfig 文件和 Service Account token 两种方式进行用户身份认证的方法，包括证书配置、token 生成和权限管理。
-lastmod: 2025-10-27T17:12:44.194Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > kubeconfig 文件和 Service Account token 是 Kubernetes 集群中最常用的两种身份认证方式，合理配置可兼顾安全性与易用性，适用于多种管理和访问场景。

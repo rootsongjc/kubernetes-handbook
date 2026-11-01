@@ -4,7 +4,7 @@ title: 使用 Service 访问集群中的应用程序
 linktitle: 通过 Service 访问
 date: 2022-05-21T00:00:00+08:00
 description: 学习如何创建 Kubernetes Service 对象来访问集群中运行的应用程序，包括创建 Deployment、配置 NodePort 服务以及实现负载均衡的完整流程。
-lastmod: 2025-10-27T17:41:28.257Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Service 是 Kubernetes 集群中实现应用访问与负载均衡的核心机制，合理配置可让外部客户端安全高效地访问集群内服务。

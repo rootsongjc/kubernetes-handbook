@@ -1,9 +1,9 @@
 ---
-title: 使用 Kubeadmin 管理 Kubernetes 集群
+title: 使用 kubeadm 管理 Kubernetes 集群
 linktitle: 集群生命周期管理
 date: 2025-10-13
 description: 详细介绍如何使用 kubeadm 创建、配置、维护和升级 Kubernetes 集群，涵盖从集群初始化到日常运维与升级的完整生命周期管理流程。
-lastmod: 2025-10-27T17:13:48.114Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > kubeadm 让 Kubernetes 集群的构建与运维变得有章可循，助你轻松驾驭复杂的生命周期管理挑战。
@@ -50,14 +50,14 @@ kubeadm 不会自动安装 kubelet 或 kubectl，需手动安装。下图展示�
 
 ### 容器运行时配置
 
-kubelet 通过 CRI（Container Runtime Interface）与容器运行时通信。常见运行时包括 containerd、CRI-O、Docker（需 cri-dockerd）。需确保 kubelet 与容器运行时使用相同的 cgroup driver。
+kubelet 通过 CRI（Container Runtime Interface）与容器运行时通信。常见运行时包括 containerd 2.x、CRI-O，Docker Engine 需经 cri-dockerd 接入（v1.36 起 containerd 1.x 不再受支持）。自 v1.34 起 kubelet 默认从 CRI 运行时自动读取 cgroup driver（`KubeletCgroupDriverFromCRI` GA），不再需要在两侧手工保持一致，手工设置 `cgroupDriver` 的方式已弃用；节点应统一使用 cgroup v2（cgroup v1 自 v1.35 起弃用，kubelet 默认拒绝启动）。
 
 {{< table title="cgroup driver 说明与推荐场景" >}}
 
 | cgroup driver | 说明 | 推荐场景 |
 | --- | --- | --- |
-| `cgroupfs` | 直接操作 cgroup 文件系统 | 非 systemd 系统 |
-| `systemd` | 由 systemd 管理 cgroup | systemd 系统（推荐） |
+| `cgroupfs` | 直接操作 cgroup 文件系统 | 非 systemd 系统（已少见） |
+| `systemd` | 由 systemd 管理 cgroup | systemd 系统（推荐，kubeadm 默认） |
 
 {{< /table >}}
 
@@ -76,7 +76,7 @@ kubeadm init
 自定义参数示例：
 
 ```bash
-kubeadm init --pod-network-cidr=192.168.0.0/16 --kubernetes-version=v1.26.0 --control-plane-endpoint="cluster-endpoint:6443"
+kubeadm init --pod-network-cidr=192.168.0.0/16 --kubernetes-version=v1.37.1 --control-plane-endpoint="cluster-endpoint:6443"
 ```
 
 ### 使用 kubeadm join 添加工作节点
@@ -144,7 +144,7 @@ kubeadm certs renew all
 
     ```bash
     sudo apt-mark unhold kubeadm && \
-    sudo apt-get update && sudo apt-get install -y kubeadm='1.26.x-*' && \
+    sudo apt-get update && sudo apt-get install -y kubeadm='1.37.x-*' && \
     sudo apt-mark hold kubeadm
     ```
 
@@ -157,7 +157,7 @@ kubeadm certs renew all
 3. 应用升级：
 
     ```bash
-    sudo kubeadm upgrade apply v1.26.x
+    sudo kubeadm upgrade apply v1.37.x
     ```
 
 4. 驱逐节点：
@@ -170,7 +170,7 @@ kubeadm certs renew all
 
     ```bash
     sudo apt-mark unhold kubelet kubectl && \
-    sudo apt-get update && sudo apt-get install -y kubelet='1.26.x-*' kubectl='1.26.x-*' && \
+    sudo apt-get update && sudo apt-get install -y kubelet='1.37.x-*' kubectl='1.37.x-*' && \
     sudo apt-mark hold kubelet kubectl
     ```
 
@@ -252,28 +252,45 @@ nodeRegistration:
 ---
 apiVersion: kubeadm.k8s.io/v1beta4
 kind: ClusterConfiguration
-kubernetesVersion: v1.26.0
+kubernetesVersion: v1.37.1
 networking:
   podSubnet: 192.168.0.0/16
   serviceSubnet: 10.96.0.0/12
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: nftables          # 显式声明代理模式，避免未来默认值变化
 ```
+
+`kubeadm.k8s.io/v1beta4` 自 v1.31 起为默认配置版本，`v1beta3` 已弃用；可用 `kubeadm config migrate` 把旧配置文件转换到 v1beta4。
 
 ### 控制面组件自定义参数
 
-可通过 `extraArgs` 字段自定义组件参数：
+可通过 `extraArgs` 字段自定义组件参数。注意 v1beta4 把 `extraArgs` 从映射改为 `name`/`value` 列表，以支持同一参数重复出现：
 
 ```yaml
 apiVersion: kubeadm.k8s.io/v1beta4
 kind: ClusterConfiguration
 apiServer:
   extraArgs:
-    enable-admission-plugins: "NodeRestriction"
+  - name: enable-admission-plugins
+    value: "NodeRestriction"
+  - name: authentication-config
+    value: /etc/kubernetes/authentication-config.yaml
+  extraVolumes:
+  - name: authn-config
+    hostPath: /etc/kubernetes/authentication-config.yaml
+    mountPath: /etc/kubernetes/authentication-config.yaml
+    readOnly: true
+    pathType: File
 controllerManager:
   extraArgs:
-    node-monitor-period: "5s"
+  - name: node-monitor-period
+    value: "5s"
 scheduler:
   extraArgs:
-    config: "/etc/kubernetes/scheduler-config.yaml"
+  - name: config
+    value: /etc/kubernetes/scheduler-config.yaml
 ```
 
 ### kubelet 配置自定义
@@ -283,8 +300,12 @@ kubelet 可通过配置对象自定义参数：
 ```yaml
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
-cgroupDriver: systemd
+memorySwap:
+  swapBehavior: LimitedSwap   # v1.34 GA，仅 cgroup v2 节点
+serverTLSBootstrap: true      # 由 kubelet 向集群 CA 申请服务端证书
 ```
+
+`cgroupDriver` 已无需手工设置，kubelet 会通过 CRI 从容器运行时自动读取。
 
 ## 总结
 

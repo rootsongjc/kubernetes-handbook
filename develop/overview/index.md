@@ -4,7 +4,7 @@ title: Kubernetes 开发概述
 linktitle: 概述
 description: 本文全面介绍 Kubernetes 开发的核心理念、工具链、开发模式及最佳实践，帮助读者系统掌握 Kubernetes 应用和扩展开发的关键技术与方法。
 date: 2025-10-20T00:00:00+08:00
-lastmod: 2025-10-27T17:26:39.720Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 开发不仅是技术的革新，更是云原生思维与工程实践的深度融合之路。
@@ -192,7 +192,7 @@ Kubernetes 支持本地和云端多种开发环境，便于快速迭代和测试
 
 ```bash
 # 启动Minikube
-minikube start --driver=docker --kubernetes-version=v1.28.0
+minikube start --driver=docker --kubernetes-version=v1.37.1
 
 # 启用插件
 minikube addons enable ingress

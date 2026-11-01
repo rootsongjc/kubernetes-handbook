@@ -4,7 +4,7 @@ title: Pod 概述
 linktitle: 概述
 date: 2017-03-10T00:00:00+08:00
 description: 深入了解 Kubernetes 中最基本的部署单元 Pod，包括其核心概念、使用模式、资源共享机制以及与控制器的关系。
-lastmod: 2025-10-28T04:39:25.016Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Pod 是 Kubernetes 中最基本的部署和调度单元，承载着容器化应用的运行环境，是实现弹性伸缩和自动化运维的基础。
@@ -22,7 +22,7 @@ Pod 封装了以下内容：
 
 Pod 作为部署单元，通常由一个或多个紧密协作的容器组成，便于资源共享和进程间通信。
 
-> **容器运行时支持说明**：Kubernetes 现已全面支持多种符合 CRI（Container Runtime Interface）标准的运行时，如 containerd、CRI-O 等。自 2022 年起，Docker 不再作为官方默认运行时，但仍可通过额外配置支持。
+> **容器运行时支持说明**：Kubernetes 通过 CRI（Container Runtime Interface）与容器运行时解耦，主流实现为 containerd 与 CRI-O。自 v1.24 移除 dockershim 后，Docker Engine 需借助 cri-dockerd 才能作为运行时接入，生产环境已普遍直接使用 containerd。
 
 ## Pod 的使用模式
 
@@ -46,9 +46,10 @@ Pod 作为部署单元，通常由一个或多个紧密协作的容器组成，�
 
 常见多容器模式包括：
 
-- **边车模式（Sidecar）**：主容器与辅助容器协作（如日志收集、代理）
+- **边车模式（Sidecar）**：主容器与辅助容器协作（如日志收集、代理）。自 v1.29 起 Kubernetes 提供原生 Sidecar 容器语义，通过 `initContainers` 中的 `restartPolicy: Always` 声明，保证辅助容器先启动、后退出，详见 [Sidecar 容器](../sidecar-container)
 - **大使模式（Ambassador）**：代理容器处理外部通信
 - **适配器模式（Adapter）**：转换容器输出格式
+- **初始化模式（Init）**：通过 [Init 容器](../init-containers) 在主容器启动前完成一次性准备工作
 
 下图展示了单容器与多容器 Pod 的结构关系：
 
@@ -136,7 +137,7 @@ metadata:
 spec:
   containers:
   - name: app-container
-    image: nginx:1.21
+    image: nginx:1.27
     ports:
     - containerPort: 80
 ```
@@ -149,8 +150,9 @@ spec:
 
 - **优先使用控制器**：避免直接创建 Pod，使用 Deployment 等控制器
 - **合理设计容器**：一个 Pod 中的容器应该紧密相关
-- **资源限制**：为容器设置适当的资源请求和限制
+- **资源限制**：为容器设置适当的资源请求和限制；v1.35 起可通过原地资源调整在不重启 Pod 的前提下修改 CPU/内存
 - **健康检查**：配置存活探针和就绪探针
+- **安全加固**：遵循 Pod 安全标准（Pod Security Standards），以非 root 用户运行并丢弃不必要的 capability
 - **标签管理**：使用标签进行 Pod 的分类和选择
 
 ## 总结

@@ -4,7 +4,7 @@ linkTitle: 概述
 weight: 1
 description: 介绍 AI 原生的概念、发展历程和在 Kubernetes 中的应用场景。
 date: 2025-10-20T05:20:13.620Z
-lastmod: 2025-10-20T05:33:36.298Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > AI 原生是人工智能与云原生技术深度融合的新范式，推动 AI 应用在 Kubernetes 等基础设施上实现弹性部署、高效推理和智能化管理。本文系统梳理 AI 原生的核心特征、技术栈、发展历程及在 Kubernetes 中的典型应用场景，帮助读者全面理解 AI 原生架构的价值与实践路径。
@@ -54,15 +54,15 @@ Kubernetes 作为云原生事实标准，是 AI 原生架构的核心平台。�
 
 AI 原生架构依赖多层技术栈，涵盖容器化、编排、服务网格、存储与网络等方面：
 
-- 容器化：使用 Docker 等容器技术封装 AI 应用
-- 编排调度：Kubernetes 进行 AI 工作负载管理
-- 服务网格：Istio 等实现 AI 服务间通信与治理
+- 容器化：以 OCI 镜像封装 AI 应用与运行时，模型权重可独立打包为 OCI 制品并经镜像卷挂载
+- 编排调度：Kubernetes 进行 AI 工作负载管理，DRA（v1.34 GA）按属性分配 GPU 等异构设备，Kueue/JobSet 负责排队与多角色训练作业
+- 推理流量治理：Gateway API Inference Extension 以 `InferencePool` 实现模型感知路由，服务网格（Istio Ambient 等）负责服务间 mTLS 与可观测性
 - 存储：对象存储与分布式文件系统用于模型与数据管理
 - 网络：高性能网络支持 AI 数据传输与分布式训练
 
 ## 发展历程
 
-AI 原生概念起源于 2023 年，伴随大模型的爆发式增长，云计算厂商开始提供专门的 AI 基础设施服务。Kubernetes 作为云原生的事实标准，逐步成为 AI 原生的核心平台，推动 AI 应用与云原生技术的深度融合。
+AI 原生概念起源于 2023 年，伴随大模型的爆发式增长，云计算厂商开始提供专门的 AI 基础设施服务。Kubernetes 作为云原生的事实标准，逐步成为 AI 原生的核心平台：2024 年起社区陆续成立 WG Serving、WG Device Management 与 WG AI Conformance 等工作组，2025 年推出 Certified Kubernetes AI Conformance 认证，DRA、Gateway API Inference Extension、JobSet、Kueue、LeaderWorkerSet 等项目在 2025–2026 年相继 GA，AI 工作负载在 Kubernetes 上从“能跑”走向了“有标准可依”。
 
 ## 总结
 

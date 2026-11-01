@@ -6,7 +6,7 @@ date: 2022-05-21T00:00:00+08:00
 type: book
 slug: pod-state-and-lifecycle
 description: 深入了解 Kubernetes 中的各种资源对象类型，包括 Pod、Service、Deployment 等核心概念，以及如何通过 YAML 文件定义和管理这些对象的 spec 和 status。
-lastmod: 2025-10-27T13:14:35.181Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 通过声明式资源对象实现集群的自动化管理与弹性扩展，理解对象类型、规范与状态是高效运维的基础。
@@ -20,12 +20,12 @@ Kubernetes 资源对象用于描述集群中各种实体和功能。下表总结
 | 类别         | 资源对象                                                                                 | 说明                         |
 | ------------ | ---------------------------------------------------------------------------------------- | ---------------------------- |
 | 工作负载     | Pod、Deployment、StatefulSet、DaemonSet、Job、CronJob、ReplicaSet                         | 应用部署与调度               |
-| 服务与网络   | Service、Ingress                                                                         | 服务发现与负载均衡           |
-| 配置与存储   | ConfigMap、Secret、Volume、PersistentVolume（PV）、PersistentVolumeClaim（PVC）           | 配置管理与持久化存储         |
-| 集群管理     | Node、Namespace、Label                                                                   | 节点管理与资源隔离           |
-| 安全与权限   | ServiceAccount、Role、ClusterRole、SecurityContext                                       | 身份认证与权限控制           |
-| 资源管理     | ResourceQuota、LimitRange、HorizontalPodAutoscaler（HPA）                                 | 资源分配与自动扩缩容         |
-| 扩展性       | CustomResourceDefinition（CRD）                                                          | 自定义资源类型               |
+| 服务与网络   | Service、EndpointSlice、Ingress、Gateway/HTTPRoute（Gateway API）、NetworkPolicy          | 服务发现、流量路由与网络隔离  |
+| 配置与存储   | ConfigMap、Secret、Volume、PersistentVolume（PV）、PersistentVolumeClaim（PVC）、StorageClass、VolumeAttributesClass | 配置管理与持久化存储 |
+| 集群管理     | Node、Namespace、Label、Lease、PriorityClass                                             | 节点管理、资源隔离与调度优先级 |
+| 安全与权限   | ServiceAccount、Role、ClusterRole、RoleBinding、ClusterRoleBinding、SecurityContext、Pod 安全准入标签 | 身份认证与权限控制 |
+| 资源管理     | ResourceQuota、LimitRange、HorizontalPodAutoscaler（HPA）、PodDisruptionBudget（PDB）、ResourceClaim（DRA） | 资源分配、弹性与可用性 |
+| 策略与扩展   | CustomResourceDefinition（CRD）、ValidatingAdmissionPolicy、MutatingAdmissionPolicy      | 自定义资源类型与声明式准入策略 |
 
 {{< /table >}}
 
@@ -44,7 +44,10 @@ Kubernetes 资源对象用于描述集群中各种实体和功能。下表总结
 ## 服务发现与负载均衡
 
 - **Service**：为 Pod 提供稳定的网络访问入口。
-- **Ingress**：管理外部访问集群服务的 HTTP 和 HTTPS 路由。
+- **EndpointSlice**：记录 Service 后端端点，取代早期的 Endpoints 对象。
+- **Ingress**：管理外部访问集群服务的 HTTP 和 HTTPS 路由，特性已冻结。
+- **Gateway、HTTPRoute 等（Gateway API）**：新一代、角色分离的流量入口与路由 API，是 Ingress 的继任者。
+- **NetworkPolicy**：声明 Pod 之间以及 Pod 与外部之间允许的网络流量。
 
 ## 配置与存储
 
@@ -53,29 +56,38 @@ Kubernetes 资源对象用于描述集群中各种实体和功能。下表总结
 - **Volume**：为容器提供存储。
 - **PersistentVolume（PV）**：集群级别的存储资源。
 - **PersistentVolumeClaim（PVC）**：用户对存储的请求。
+- **StorageClass**：描述存储类别，驱动动态供给。
+- **VolumeAttributesClass**：在不重建卷的前提下调整卷的 IOPS、吞吐等属性（v1.34 GA）。
 
 ## 集群管理
 
 - **Node**：集群中的工作节点。
 - **Namespace**：虚拟集群，用于资源隔离。
 - **Label**：键值对标签，用于资源选择和组织。
+- **Lease**：轻量级租约对象，用于节点心跳与控制器领导者选举。
+- **PriorityClass**：定义 Pod 调度优先级与抢占行为。
 
 ## 安全与权限
 
 - **ServiceAccount**：为 Pod 提供身份标识。
 - **Role**：命名空间级别的权限规则。
 - **ClusterRole**：集群级别的权限规则。
+- **RoleBinding / ClusterRoleBinding**：将角色授予用户、组或 ServiceAccount。
 - **SecurityContext**：定义 Pod 或容器的安全设置。
+- **Pod 安全准入标签**：在 Namespace 上通过 `pod-security.kubernetes.io/*` 标签强制执行 Pod 安全标准。
 
 ## 资源管理
 
 - **ResourceQuota**：限制命名空间的资源使用。
 - **LimitRange**：设置资源使用的默认值和限制。
-- **HorizontalPodAutoscaler（HPA）**：基于 CPU/内存使用率自动扩缩容。
+- **HorizontalPodAutoscaler（HPA）**：基于 CPU/内存或自定义指标自动扩缩容。
+- **PodDisruptionBudget（PDB）**：限制自愿中断时同时不可用的 Pod 数量。
+- **ResourceClaim / DeviceClass（DRA）**：以声明方式申请 GPU 等异构设备资源。
 
-## 扩展性
+## 策略与扩展
 
 - **CustomResourceDefinition（CRD）**：定义自定义资源类型，扩展 Kubernetes API。
+- **ValidatingAdmissionPolicy / MutatingAdmissionPolicy**：用 CEL 表达式在 API Server 内声明校验与变更规则，无需部署 Webhook 服务。
 
 ## 理解 Kubernetes 对象
 

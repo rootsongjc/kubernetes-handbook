@@ -4,7 +4,7 @@ linkTitle: AI 基础设施架构
 weight: 2
 description: Kubernetes AI 基础设施的设计原则、硬件加速、网络与存储优化及运维实践。
 date: 2025-10-20T05:19:59.805Z
-lastmod: 2025-11-02T12:29:01.847Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 本文系统梳理了 Kubernetes AI 基础设施的设计原则、核心组件、硬件加速、网络与存储优化及运维实践，助力构建高效稳定的 AI 平台。
@@ -109,7 +109,7 @@ AI 任务对存储有高性能和高容量的双重需求，常见优化方式�
 
 | 项目                                   | 功能                         | 特点                                   |
 | -------------------------------------- | ---------------------------- | -------------------------------------- |
-| Envoy Gateway + Inference Extension    | 模型感知路由、A/B 测试、版本治理 | 基于 Gateway API 扩展 InferenceModel CRD |
+| Gateway API Inference Extension（Istio / Agentgateway / kgateway / NGINX Gateway Fabric 等实现） | 模型感知路由、KV 缓存与队列感知负载均衡、LoRA 亲和 | 以 `InferencePool`（`inference.networking.k8s.io/v1`，GA）替代 Service 作为推理后端，EPP 调度器由 llm-d 社区演进 |
 | Cilium                                 | eBPF 网络与安全              | 零信任网络、流量观测、租户隔离         |
 | Kagent                                 | AI Agents 框架               | 支持 Agent Workflow、状态管理与推理编排 |
 

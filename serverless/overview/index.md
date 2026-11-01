@@ -4,7 +4,7 @@ weight: 1
 linktitle: 概述
 description: 从高层次理解 Kubernetes 中的 Serverless 架构、演进历程和核心设计原则
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:58:29.042Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Serverless 架构推动了云原生应用的敏捷开发与弹性扩缩容，Kubernetes 生态下的 Serverless 方案兼具事件驱动、自动扩缩容和高效资源利用等优势，适用于多种业务场景。
@@ -44,16 +44,18 @@ Kubernetes 生态下的 Serverless 方案分为多个技术层次，涵盖函数
 
 {{< table title="主流 Serverless 框架对比" >}}
 
-| 特性         | Knative           | OpenFaaS         | Kubernetes 原生   |
-|--------------|-------------------|------------------|-------------------|
-| 复杂度       | 高                | 中               | 低                |
-| 功能完整性   | 企业级 Serverless 平台 | 轻量级 FaaS   | 基础组件           |
-| 学习曲线     | 陡峭              | 中等             | 平缓              |
-| 定制化       | 高                | 中               | 高                |
-| 生产就绪     | 是                | 是               | 是                |
-| 社区活跃度   | 高                | 中               | 很高              |
+| 特性         | Knative           | OpenFaaS         | KEDA + 原生工作负载 | Kubernetes 原生   |
+|--------------|-------------------|------------------|---------------------|-------------------|
+| 复杂度       | 高                | 中               | 中                  | 低                |
+| 功能完整性   | 企业级 Serverless 平台（Serving + Eventing） | 轻量级 FaaS | 事件驱动扩缩容（含缩容到零），不改变部署模型 | 基础组件 |
+| 学习曲线     | 陡峭              | 中等             | 平缓                | 平缓              |
+| 定制化       | 高                | 中               | 高                  | 高                |
+| 生产就绪     | 是（CNCF 毕业项目） | 社区版功能受限，商业版 OpenFaaS Pro/Edge | 是（CNCF 毕业项目） | 是 |
+| 社区活跃度   | 高                | 中               | 高                  | 很高              |
 
 {{< /table >}}
+
+早年流行的 Kubeless、Fn 等 FaaS 框架已归档停止维护，Fission 仍在维护但社区较小；如今 Kubernetes 上的 Serverless 实践主要集中在 Knative、KEDA 以及各云厂商基于二者的托管服务（如 Cloud Run、EKS/AKS 的 KEDA 集成）。
 
 ## Serverless 架构的核心组件
 

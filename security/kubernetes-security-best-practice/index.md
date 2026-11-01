@@ -4,7 +4,7 @@ title: Kubernetes 集群安全性配置最佳实践
 linktitle: Kubernetes 安全最佳实践
 date: 2022-05-21T00:00:00+08:00
 description: 全面介绍 Kubernetes 集群安全配置的最佳实践，包括端口管理、API 安全设置、RBAC 配置以及安全扫描工具的使用指南。
-lastmod: 2025-10-27T17:08:53.420Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Kubernetes 集群安全配置是保障云原生基础设施稳定运行的基石，涵盖端口、API、节点、网络、监控等多维度防护，需系统性落地最佳实践。
@@ -47,6 +47,8 @@ API 服务器（kube-apiserver）是集群的核心控制面，安全配置至�
   --authorization-mode=Node,RBAC
   ```
 
+  需要接入外部策略引擎时，改用结构化鉴权配置文件（`--authorization-config`，v1.32 GA）声明授权链，并为 Webhook 设置 CEL 匹配条件与 `failurePolicy`。
+
 - **禁用匿名访问**  
   通过以下参数禁用匿名身份验证：
 
@@ -88,7 +90,9 @@ authorization:
 ### 容器运行时安全
 
 - 使用非特权容器运行工作负载
-- 配置 Pod Security Standards（PSS）替代已废弃的 PSP
+- 通过 [Pod 安全准入](../pod-security-admission) 为每个命名空间强制执行 Pod 安全标准（`baseline` 兜底、业务命名空间目标 `restricted`），PodSecurityPolicy 已于 v1.25 移除
+- 为无法改造为非 root 的遗留镜像启用用户命名空间（`hostUsers: false`，v1.36 GA）
+- 用 `ValidatingAdmissionPolicy`/`MutatingAdmissionPolicy`（CEL）落实镜像仓库白名单、默认 `securityContext` 等组织策略
 - 启用容器镜像签名验证，确保镜像来源可信
 
 ## 安全扫描与审计工具

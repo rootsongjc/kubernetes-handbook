@@ -2,7 +2,7 @@
 title: Kubernetes API 扩展机制（API Extension）
 linktitle: API 扩展机制
 date: 2025-10-27T19:10:00+08:00
-lastmod: 2025-10-27T09:39:47.621Z
+lastmod: 2026-11-01T00:00:00+08:00
 weight: 2
 description: Kubernetes 提供了 API 聚合层（APIService）和自定义资源定义（CRD）两种扩展机制，用于添加新的资源类型或集成外部 API 服务，是整个生态系统可扩展性的基础。
 ---
@@ -65,7 +65,7 @@ kubectl get apiservice | grep metrics
 v1beta1.metrics.k8s.io   kube-system/metrics-server   True   1m
 ```
 
-它通过注册 `APIService` 对象，将外部采集的资源指标（CPU/内存）聚合到 Kubernetes API 中，供 `kubectl top` 等命令调用。
+它通过注册 `APIService` 对象，将外部采集的资源指标（CPU/内存）聚合到 Kubernetes API 中，供 `kubectl top` 与 HPA 调用。`metrics.k8s.io` API 规范在 Beta 近九年后于 Kubernetes v1.37 定义了 `v1` 版本；截至 metrics-server v0.9 其 APIService 仍注册为 `v1beta1`，后续版本会同时提供 `v1`。
 
 ## 自定义资源定义（CRD）
 
@@ -119,14 +119,16 @@ kubectl apply -f mydb.yaml
 
 - **版本管理（Versioning）**：可定义多个版本（`v1alpha1`, `v1beta1`, `v1`）
 - **Conversion Webhook**：实现多版本转换
-- **Validation Schema**：通过 OpenAPI 校验字段合法性
+- **Validation Schema**：通过 OpenAPI v3 结构化 Schema 校验字段合法性
+- **CEL 校验规则**：在 Schema 中用 `x-kubernetes-validations` 编写跨字段校验表达式（v1.29 GA），无需 Webhook；v1.33 GA 的校验棘轮（ratcheting）允许存量对象在未修改的字段上不被新规则拒绝
 - **Subresources**：支持 `/status`、`/scale` 等子资源路径
+- **字段选择器**：通过 `selectableFields` 声明可用于 `--field-selector` 的自定义字段（v1.32 GA）
 
 ## APIService 与 CRD 的关系
 
 在早期版本（1.7 ~ 1.10），CRD 功能尚不完善，许多系统（如 metrics-server、service-catalog）使用 APIService 架构。
 
-但随着 CRD 的成熟，社区逐渐转向 CRD 方案。今天，除非需要“独立进程与独立生命周期”，几乎所有项目都使用 CRD。
+但随着 CRD 的成熟，社区逐渐转向 CRD 方案。今天，除非需要"自定义存储后端、独立进程与独立生命周期"（如 metrics-server 不落 etcd 的实时指标、自定义指标 API），几乎所有项目都使用 CRD。Kubernetes 自身新增的 Gateway API、JobSet、Kueue 等 SIG 项目也全部以 CRD 形式交付。
 
 {{< table title="APIService 与 CRD 对比" >}}
 
@@ -169,9 +171,8 @@ Kubernetes 的强大之处不在于它内置了多少功能，而在于它提供
 ## 参考文献
 
 1. [Kubernetes 官方文档：Extending Kubernetes API - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/)
-2. [CustomResourceDefinition API Reference - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#customresourcedefinition-v1-apiextensions-k8s-io)
+2. [CustomResourceDefinition API Reference - kubernetes.io](https://kubernetes.io/docs/reference/kubernetes-api/extend-resources/custom-resource-definition-v1/)
 3. [Kubernetes Aggregation Layer - kubernetes.io](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
 4. [Operator SDK - sdk.operatorframework.io](https://sdk.operatorframework.io/)
 5. [Kubebuilder - book.kubebuilder.io](https://book.kubebuilder.io/)
-6. [Kubernetes API Server - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#apiserver-v1-apiextensions-k8s-io)
-7. [Kubernetes API Server - kubernetes.io](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#apiserver-v1-apiextensions-k8s-io)
+6. [APIService API Reference - kubernetes.io](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/api-service-v1/)

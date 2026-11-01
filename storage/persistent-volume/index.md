@@ -4,7 +4,7 @@ linktitle: 持久化卷
 title: 持久化卷（Persistent Volume）
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes 持久化卷详解：深入介绍 PersistentVolume (PV) 和 PersistentVolumeClaim (PVC) 的核心概念、生命周期管理、配置方法和使用方式，涵盖静态和动态配置、存储类、访问模式、回收策略等关键特性，并提供最佳实践指南。
-lastmod: 2025-10-13T04:01:13.634Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 持久化卷（PV）和声明（PVC）为 Kubernetes 提供了统一、灵活的存储管理能力，是实现有状态应用和数据持久化的基础。
@@ -118,7 +118,7 @@ PV 支持多种访问模式，适应不同应用场景。
 | ReadWriteOnce | RWO | 单节点读写 | 数据库、文件系统 |
 | ReadOnlyMany | ROX | 多节点只读 | 配置文件、静态资源 |
 | ReadWriteMany | RWX | 多节点读写 | 共享文件系统 |
-| ReadWriteOncePod | RWOP | 单 Pod 读写 | 1.22+ 版本支持 |
+| ReadWriteOncePod | RWOP | 单 Pod 读写，整个集群只允许一个 Pod 挂载（v1.29 GA） | 需要严格独占的数据库、状态机 |
 
 {{< /table >}}
 
@@ -208,7 +208,7 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx:1.21
+    image: nginx:1.27
     volumeMounts:
     - name: web-content
       mountPath: /usr/share/nginx/html
@@ -235,7 +235,7 @@ metadata:
 spec:
   containers:
   - name: database
-    image: postgres:13
+    image: postgres:17
     volumeDevices:
     - name: db-storage
       devicePath: /dev/block-device
@@ -347,6 +347,50 @@ spec:
 - 只能增加容量，不能减少
 - 某些存储类型需 Pod 重启才能识别新容量
 - 文件系统扩展可能需要额外时间
+
+### 扩容失败恢复
+
+若扩容请求超出后端配额或驱动能力，PVC 会停留在 `Resizing` 状态并带有 `ControllerResizeError` 或 `NodeResizeError` 条件。v1.34 起（RecoverVolumeExpansionFailure GA）用户可把 `spec.resources.requests.storage` 改回一个**不低于当前实际容量**的较小值，控制器会自动取消失败的扩容并恢复正常；`status.allocatedResourceStatus['storage']` 字段会给出 `ControllerResizeInProgress`、`NodeResizePending`、`NodeResizeInfeasible` 等阶段信息，便于定位失败环节。
+
+## 在线修改卷属性
+
+容量之外，卷的 IOPS、吞吐量、加密等属性以往只能在创建时通过 StorageClass 参数确定。`VolumeAttributesClass`（`storage.k8s.io/v1`，v1.34 GA）允许管理员定义若干属性档位，用户通过修改 PVC 的 `volumeAttributesClassName` 在不重建卷、不中断 Pod 的情况下切换档位：
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: VolumeAttributesClass
+metadata:
+  name: silver
+driverName: ebs.csi.aws.com
+parameters:
+  type: gp3
+  iops: "3000"
+  throughput: "125"
+---
+apiVersion: storage.k8s.io/v1
+kind: VolumeAttributesClass
+metadata:
+  name: gold
+driverName: ebs.csi.aws.com
+parameters:
+  type: gp3
+  iops: "10000"
+  throughput: "500"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-data
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: ebs-sc
+  volumeAttributesClassName: silver   # 业务高峰前改为 gold 即可在线提升 IOPS
+  resources:
+    requests:
+      storage: 100Gi
+```
+
+该特性要求 CSI 驱动实现 `ModifyVolume` 能力并部署 v1.10+ 的 `external-resizer` Sidecar；PV 的 `status.volumeAttributesClassName` 反映当前实际生效的档位，`spec.volumeAttributesClassName` 则是用户期望值，两者不一致时 PVC 上会出现 `ModifyVolumeInProgress`/`ModifyVolumeInfeasible` 状态。
 
 ## 监控和故障排查
 

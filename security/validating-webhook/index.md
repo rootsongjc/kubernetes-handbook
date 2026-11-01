@@ -1,6 +1,6 @@
 ---
 title: 验证（Validating）Webhook
-lastmod: 2025-10-27T11:36:47.021Z
+lastmod: 2026-11-01T00:00:00+08:00
 linktitle: ValidatingWebhook
 description: 验证（Validating）Webhook 扩展用于在资源创建、更新、删除等操作发生前对请求进行验证，以动态地实现策略控制、安全防护和合规审计。
 date: 2025-10-27T11:33:15.268Z
@@ -12,6 +12,10 @@ weight: 46
 ## 概述
 
 在 Kubernetes 中，**ValidatingWebhook**（验证型 Webhook，参见 data/glossary.yaml）属于 *动态准入控制（Dynamic Admission Control）* 的一部分。它能在资源写入 etcd 之前介入 API Server 的请求处理流程，对对象内容进行**校验（Validation）**，并可以**拒绝不符合策略的请求**。
+
+{{< callout note "优先考虑 ValidatingAdmissionPolicy" >}}
+自 v1.30 起，Kubernetes 内建的 `ValidatingAdmissionPolicy` 可以用 CEL 表达式在 API Server 进程内完成绝大多数字段级校验，无需部署 Webhook 服务、无网络往返与可用性风险。新的校验需求应先评估能否用准入策略实现，仅在需要外部数据或复杂计算时再使用 Webhook，详见 [准入策略：用 CEL 替代 Webhook](../../extend/admission-policy)。
+{{< /callout >}}
 
 ValidatingWebhook 常见应用包括：
 
@@ -159,21 +163,23 @@ ValidatingWebhook 可用于多种场景，以下为常见应用示例：
 - **动态资源约束**  
   动态检查创建的 PVC 大小、Pod 数量是否超出配额范围。
 
-## 动态策略演进与 Gatekeeper 对比
+## 动态策略演进与方案对比
 
-下表对比 ValidatingWebhook 与 OPA Gatekeeper 的主要特性：
+下表对比自研 ValidatingWebhook、内建 ValidatingAdmissionPolicy 与策略引擎的主要特性：
 
-{{< table title="ValidatingWebhook 与 OPA Gatekeeper 对比" >}}
+{{< table title="ValidatingWebhook、ValidatingAdmissionPolicy 与策略引擎对比" >}}
 
-| 功能点    | ValidatingWebhook | OPA Gatekeeper |
-| ------ | ----------------- | -------------- |
-| 策略表达方式 | 自定义代码（Go/Python）  | Rego 声明式策略     |
-| 灵活性    | 极高                | 中等             |
-| 易用性    | 较复杂               | 易于使用           |
-| 性能     | 高度可控              | 依赖 OPA 引擎性能    |
-| 典型用途   | 企业自研策略控制、特定业务逻辑   | 通用策略与合规控制      |
+| 功能点    | ValidatingWebhook | ValidatingAdmissionPolicy（CEL） | Kyverno / OPA Gatekeeper |
+| ------ | ----------------- | -------------- | -------------- |
+| 策略表达方式 | 自定义代码（Go/Python）  | CEL 表达式，API 对象声明 | YAML/Rego 声明式策略 |
+| 部署形态   | 自行部署 HTTPS 服务与证书 | 无需部署，API Server 进程内执行 | 以 Webhook 形式部署策略引擎 |
+| 灵活性    | 极高                | 字段级逻辑，可用 `authorizer`、参数资源 | 高，支持跨资源、生成资源、报告 |
+| 性能与可用性 | 网络往返，存在单点风险   | 微秒级，无额外故障点 | 依赖引擎可用性 |
+| 典型用途   | 需要外部数据或复杂计算的业务逻辑 | 绝大多数组织级校验规则 | 策略即代码、合规报告、多集群策略分发 |
 
 {{< /table >}}
+
+Kyverno 与 Gatekeeper 都已支持把部分规则编译为 `ValidatingAdmissionPolicy` 下发，兼顾声明式体验与进程内执行性能。
 
 在实际生产环境中，两者常结合使用：**ValidatingWebhook 实现动态逻辑**，**Gatekeeper 管理通用策略模板**。
 

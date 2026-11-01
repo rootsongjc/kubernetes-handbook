@@ -3,7 +3,7 @@ title: 告警系统
 weight: 6
 description: Kubernetes 环境中的告警机制，包括 Alertmanager 和通知渠道配置。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:32:40.108Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 告警系统是 Kubernetes 可观测性体系的核心环节，帮助团队及时发现异常、自动通知并高效响应，保障业务稳定运行。

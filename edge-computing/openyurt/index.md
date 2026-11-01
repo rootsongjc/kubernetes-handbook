@@ -2,7 +2,7 @@
 title: OpenYurt：零侵入式云原生边缘平台
 linktitle: OpenYurt
 weight: 30
-lastmod: 2025-11-03T16:31:52.516Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: OpenYurt 是阿里巴巴开源的零侵入式云原生边缘平台，支持 Kubernetes 集群一键扩展到边缘，具备边缘自治、节点池、流量闭环等特性。
 social_title: OpenYurt 如何实现云原生边缘计算的零侵入？
 date: 2025-11-03T15:53:16.892Z
@@ -65,7 +65,8 @@ OpenYurt 通过增加一系列云边组件，使得边缘节点即使在网络�
 
 | OpenYurt 版本 | 支持的 Kubernetes 版本 | 主要特性 |
 | --- | --- | --- |
-| v1.6.0（当前） | v1.30 及以下 | 增强边缘自治、流量复用、托管 K8s 支持 |
+| v1.7.0（当前，2026 年 5 月） | 认证支持至 v1.34 | 持续增强边缘自治与多区域工作负载管理 |
+| v1.6.0 | v1.30 及以下 | 增强边缘自治、流量复用、托管 K8s 支持 |
 | v1.5.0 | v1.28 及以下 | NodeBucket 扩展性、YurtAppSet v1beta1 |
 | v1.4.0 | v1.22 及以下 | HostNetwork 节点池、PlatformAdmin CRD |
 

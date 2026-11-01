@@ -3,7 +3,7 @@ title: 云原生计算基金会（CNCF）
 linktitle: CNCF
 weight: 6
 description: 深入了解云原生计算基金会（CNCF）的使命、组织架构、项目成熟度分级体系，以及如何成为 CNCF Ambassador。探索 CNCF 如何推动云原生技术生态系统的发展。
-lastmod: 2025-10-27T17:35:56.092Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-08-26T10:05:08.076Z
 ---
 
@@ -13,7 +13,7 @@ date: 2025-08-26T10:05:08.076Z
 
 Cloud Native Computing Foundation（云原生计算基金会，简称 CNCF）成立于 2015 年 7 月 21 日，[于美国波特兰 OSCON 2015 上正式宣布](https://www.cncf.io/announcement/2015/06/21/new-cloud-native-computing-foundation-to-drive-alignment-among-container-technologies/)。CNCF 是一个厂商中立的基金会，致力于推广和普及云原生应用，其核心使命是**推动开源技术的发展，帮助开发者构建可扩展、高可靠的云原生应用**。
 
-作为 Linux 基金会的一部分，CNCF 专注于培育和维护云原生生态系统中的关键开源项目，如 Kubernetes、Prometheus、Envoy、Helm 等。无论你是云原生应用的开发者、运维人员还是决策者，了解 CNCF 都至关重要。
+作为 Linux 基金会的一部分，CNCF 专注于培育和维护云原生生态系统中的关键开源项目，如 Kubernetes、Prometheus、Envoy、Helm、Cilium、Istio、Argo、KEDA、Knative、KubeEdge 等。项目按成熟度分为沙箱（Sandbox）、孵化（Incubating）、毕业（Graduated）三级，截至 2026 年毕业项目已超过 30 个。无论你是云原生应用的开发者、运维人员还是决策者，了解 CNCF 都至关重要。
 
 ## CNCF 的使命与价值
 

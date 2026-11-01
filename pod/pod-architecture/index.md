@@ -74,18 +74,20 @@ Pod 支持多种设计模式，满足不同业务需求。
 
 边车模式（Sidecar Pattern）是 Kubernetes 中常见的 Pod 设计模式。在同一个 Pod 内运行主应用容器的同时，配套部署一个或多个辅助容器（边车），用于实现日志收集、数据同步、代理、监控等功能。边车容器与主容器共享网络和存储环境，提升应用的可观测性和可维护性。
 
-以下是边车模式的典型 YAML 配置示例：
+自 v1.29 起，Kubernetes 提供原生 Sidecar 容器：在 `initContainers` 中声明并设置 `restartPolicy: Always`，即可获得"先于主容器启动、晚于主容器退出、独立重启"的内建语义。以下是原生 Sidecar 的典型 YAML 配置示例：
 
 ```yaml
 # 示例：Web 应用 + 日志收集器
 apiVersion: v1
 kind: Pod
 spec:
+  initContainers:
+  - name: log-collector
+    image: fluent/fluent-bit:3.2
+    restartPolicy: Always
   containers:
   - name: web-app
-    image: nginx
-  - name: log-collector
-    image: fluentd
+    image: nginx:1.27
 ```
 
 ### 代理模式 (Proxy Pattern)
@@ -216,6 +218,12 @@ spec:
         memory: "256Mi"
         cpu: "200m"
 ```
+
+资源模型近年来有两项重要扩展：**原地资源调整**（In-place Pod Resize，v1.35 GA）允许在不重建 Pod 的情况下修改运行中容器的 CPU/内存；**Pod 级资源**（Pod-level Resources，v1.34 Beta 并默认开启）允许在 `spec.resources` 中为整个 Pod 声明资源总量，由容器共享。二者详见 [Pod 原地资源调整与 Pod 级资源](../in-place-pod-resize)。
+
+### 用户命名空间
+
+`spec.hostUsers: false` 可为 Pod 启用 Linux 用户命名空间（User Namespaces，v1.36 GA），容器内的 root 映射为宿主机上的非特权用户，大幅收窄容器逃逸后的影响范围，详见 [Pod 用户命名空间](../user-namespaces)。
 
 ## 最佳实践
 

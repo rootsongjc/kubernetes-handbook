@@ -3,7 +3,7 @@ title: 链路追踪
 weight: 4
 description: Kubernetes 分布式系统的链路追踪，包括 Jaeger 和 OpenTelemetry。
 date: 2025-10-19T00:00:00+08:00
-lastmod: 2025-10-19T12:31:56.057Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 链路追踪是 Kubernetes 可观测性体系的关键技术，通过 Jaeger 和 OpenTelemetry 等工具，帮助开发者全面洞察分布式系统的请求路径，快速定位性能瓶颈与故障源。

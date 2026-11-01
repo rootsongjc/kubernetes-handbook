@@ -3,7 +3,7 @@ title: Kubernetes 设备插件（Device Plugin）深度剖析：异构资源调�
 linktitle: 设备插件
 weight: 100
 description: 深入理解 Kubernetes 设备插件，掌握异构资源调度的实现细节。
-lastmod: 2025-10-25T05:11:52.135Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-23T11:17:59.039Z
 ---
 
@@ -136,9 +136,10 @@ Kubernetes v1.34 推出了大量 DRA 增强特性并将核心 API 升级到稳�
 与设备插件相比，DRA 的主要优势包括：
 
 - **属性驱动的请求**：开发者不再直接请求具体数量的设备，而是通过 `ResourceClaim` 对象定义对设备的要求（如显存大小、型号等），让调度器在满足条件的设备中选择合适资源。
-- **设备共享与可组合容量**：v1.34 引入了 **Consumable Capacity** 等 alpha 特性，使多个 Pod 能共享同一个物理设备的容量（如按 GPU 显存分片），通过管理员定义的分享策略管理资源分配。
-- **扩展资源映射**：DRA 支持将 DRA 管理的资源暴露为扩展资源，使现有使用设备插件的工作负载无需修改即可逐步迁移到 DRA。
-- **优先列表与绑定条件**：用户可列出多个可接受的设备组合，调度器会按顺序选择最佳方案；绑定条件功能允许在外部资源完全准备好之前延迟 Pod 绑定，提高调度可靠性。
+- **设备共享与可组合容量**：**可消耗容量**（`DRAConsumableCapacity`，v1.34 Alpha，v1.36 Beta）使多个 Pod 能共享同一个物理设备的容量（如按 GPU 显存分片）；**可分区设备**（v1.36 Beta）让驱动把一块 GPU 按 MIG 等方式发布为多个可独立分配的分区。
+- **扩展资源映射**：`DeviceClass.spec.extendedResourceName`（v1.37 GA）把 DRA 管理的设备暴露为扩展资源，使仍用 `nvidia.com/gpu: 1` 申请的工作负载无需修改即可逐步迁移到 DRA。
+- **优先列表与绑定条件**：`firstAvailable` 优先列表（v1.36 GA）允许列出多个可接受的设备组合，调度器按顺序选择第一个可满足的方案；设备绑定条件（v1.36 Beta）允许在外部资源完全准备好之前延迟 Pod 绑定。
+- **设备污点与管理员访问**：设备污点/容忍（v1.37 GA）可隔离故障或待维护的单个设备；管理员访问（v1.36 GA）让监控与排障工具访问已被占用的设备。
 
 ### DRA 架构与工作流
 
@@ -162,9 +163,9 @@ DRA（Dynamic Resource Allocation）架构对专用硬件资源管理进行了�
    - 管理资源生命周期并上报设备属性。
 1. **节点执行阶段（DRA Driver Plugin Node）**
    - kubelet 的 DRA Manager 调用 Node 端的 DRA Driver（通过 gRPC）。
-   - 执行 `NodePrepareResources()`，为容器分配设备、生成 CDI（Container Device Interface）规范。
+   - 执行 `NodePrepareResources()`，为容器分配设备、生成 [CDI（Container Device Interface）](../../interfaces/cdi) 规范并返回全限定设备名。
    - Pod 运行完后调用 `NodeUnprepareResources()` 清理设备。
-1. **容器运行时阶段（CRI-O / Docker）**
+1. **容器运行时阶段（containerd / CRI-O）**
    - 根据 CDI 规范挂载设备节点并设置权限。
    - 启动容器并提供相应的硬件访问能力。
 
@@ -193,7 +194,7 @@ DRA 仍在快速演进，未来将支持更多高级能力（如网络附加资�
 
 - **善用节点标签与 NFD**：通过明确的标签和 Node Feature Discovery 自动标记硬件类型，确保工作负载匹配合适的设备。
 - **合理设置资源请求**：GPU 等扩展资源只能在 `limits` 中指定且不可超卖，应与 `requests` 保持一致。建议同时为 CPU、内存设置合理的请求和限制，避免资源争用。
-- **关注 DRA 的演进**：随着 DRA 在 v1.34 成为 GA，并不断引入新的共享模型和属性过滤能力，开发者应考虑在新项目中使用 DRA 管理异构资源。对于老项目，可结合扩展资源映射和平稳迁移策略逐步过渡。
+- **关注 DRA 的演进**：DRA 核心 v1.34 GA、v1.35 锁定，v1.36/v1.37 又稳定了优先列表、管理员访问、设备污点与扩展资源映射，NVIDIA、Intel 等厂商的 DRA 驱动已进入生产可用阶段。新项目应直接使用 DRA 管理异构资源，老项目可借助扩展资源映射平稳迁移。
 - **AI Native 应用趋势**：随着生成式 AI 和 LLM 等工作负载普及，GPU 等特殊硬件成为基础设施核心。合理使用设备插件和 DRA 能提升硬件利用率并降低成本，为云原生应用打造稳定、高效的运行环境。
 
 ## 总结

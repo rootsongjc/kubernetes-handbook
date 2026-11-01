@@ -4,12 +4,14 @@ title: 从 Ingress 迁移到 Gateway API
 linktitle: 迁移到 Gateway API
 date: 2024-12-20T12:00:00+08:00
 description: 详细介绍如何从 Kubernetes Ingress API 迁移到新一代的 Gateway API，包括两者的主要区别、功能映射、迁移步骤和最佳实践，帮助用户顺利完成从传统 Ingress 到 Gateway API 的平滑过渡。
-lastmod: 2025-10-27T17:53:09.458Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Gateway API 作为 Kubernetes 新一代流量管理标准，凭借更强的表现力、扩展性和角色分离能力，成为 Ingress 的理想升级路径。本文系统梳理迁移流程与注意事项，助力平滑过渡。
 
 ## 迁移背景与价值
+
+2025 年 11 月，Kubernetes 官方宣布社区维护的 Ingress NGINX 控制器退役，2026 年 3 月起不再发布任何更新或安全修复。对大量依赖 `ingress-nginx` 的集群而言，迁移从"可选的技术升级"变成了"必须完成的安全任务"，Gateway API 则是官方推荐的目标。
 
 随着云原生架构的发展，Ingress API 已难以满足复杂流量管理和多团队协作的需求。Gateway API 作为 Ingress 的继任者，提供了更强大、灵活和标准化的流量治理能力。迁移到 Gateway API 能显著提升网络管理的可维护性和可扩展性。
 
@@ -266,11 +268,16 @@ curl -I https://foo.example.com/api/v1/health
 推荐使用 [ingress2gateway](https://github.com/kubernetes-sigs/ingress2gateway) 工具自动转换配置，提升效率并减少人工错误。
 
 ```bash
-go install sigs.k8s.io/ingress2gateway@latest
-kubectl get ingress -o yaml | ingress2gateway --gateway-class-name=prod
+go install github.com/kubernetes-sigs/ingress2gateway@latest
+
+# 从当前集群读取 Ingress 并转换（按控制器指定 provider，以便翻译其专有注解）
+ingress2gateway print --providers=ingress-nginx --namespace=default
+
+# 或者从本地文件转换
+ingress2gateway print --providers=ingress-nginx --input-file=ingress.yaml
 ```
 
-支持注解保留、跨命名空间等高级选项，转换后需人工复核。
+ingress2gateway 为 ingress-nginx、kong、istio、apisix、openapi 等多个 provider 提供了注解翻译规则，能把重写、超时、金丝雀等常见注解映射为 HTTPRoute 过滤器或实现特定策略；无法映射的注解会在输出中给出告警，转换后需人工复核。
 
 ## 迁移最佳实践与注意事项
 

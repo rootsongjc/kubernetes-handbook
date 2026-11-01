@@ -1,26 +1,27 @@
 ---
 weight: 32
-title: ReplicationController 和 ReplicaSet
+title: ReplicaSet
+linktitle: ReplicaSet
 date: 2022-05-21T00:00:00+08:00
-description: 介绍 Kubernetes 中 ReplicationController 和 ReplicaSet 的概念、区别和使用方法，包括配置示例和最佳实践建议。
-lastmod: 2025-10-27T16:12:04.238Z
+description: "介绍 Kubernetes 中 ReplicaSet 的概念、配置与常用操作，说明其与遗留的 ReplicationController 的区别，以及为何应通过 Deployment 间接管理 ReplicaSet。"
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
-> ReplicationController 和 ReplicaSet 是 Kubernetes 保证 Pod 副本高可用和自动恢复的核心机制，为集群提供弹性和稳定性，是现代云原生应用部署的基础。
+> ReplicaSet 是 Kubernetes 保证 Pod 副本数的最底层机制，理解它才能真正读懂 Deployment 每一次滚动更新背后发生了什么。
 
-ReplicationController 和 ReplicaSet 都是 Kubernetes 中用于管理 Pod 副本的控制器，它们确保指定数量的 Pod 副本始终在集群中运行。
-
-## ReplicationController
-
-ReplicationController（RC）是 Kubernetes 早期版本中用于管理 Pod 副本的控制器。它的主要功能包括：
+ReplicaSet（RS）是 Kubernetes 中用于管理 Pod 副本的控制器，确保指定数量的 Pod 副本始终在集群中运行。它的核心职责包括：
 
 - 确保容器应用的副本数始终保持在用户定义的副本数
-- 当有 Pod 异常退出时，自动创建新的 Pod 来替代
+- 当有 Pod 异常退出或节点故障时，自动创建新的 Pod 来替代
 - 当存在多余的 Pod 时，自动回收多出来的 Pod
+
+## 遗留的 ReplicationController
+
+ReplicationController（RC）是 Kubernetes 1.0 时代用于管理 Pod 副本的控制器，位于核心 `v1` API 组。它早已被 ReplicaSet 与 Deployment 取代：官方文档将其标记为遗留（legacy）资源，`kubectl` 相关子命令（如 `kubectl rolling-update`）已被移除，HPA 等新特性也不再面向 RC 做适配。如今仍可能在极老的集群或教程中见到 RC，新的工作负载不应再使用它。
 
 ## ReplicaSet
 
-ReplicaSet（RS）是 ReplicationController 的升级版本，在新版本的 Kubernetes 中建议使用 ReplicaSet 来取代 ReplicationController。
+ReplicaSet 是 ReplicationController 的升级版本，属于 `apps/v1` API 组。
 
 ### 主要特性
 
@@ -39,8 +40,9 @@ ReplicaSet 继承了 RC 的核心能力，并在标签选择器和兼容性方�
 | 特性         | ReplicationController      | ReplicaSet                       |
 |--------------|---------------------------|----------------------------------|
 | 标签选择器   | 仅支持相等性选择器        | 支持集合式选择器和相等性选择器   |
-| API 版本     | v1                        | apps/v1                          |
-| 推荐使用     | 已弃用                    | 推荐使用                         |
+| API 版本     | v1（核心组）              | apps/v1                          |
+| 滚动更新     | 依赖已移除的 `kubectl rolling-update` | 由 Deployment 编排           |
+| 状态         | 遗留，不再演进            | 推荐，作为 Deployment 的底层实现 |
 
 {{< /table >}}
 
@@ -149,7 +151,7 @@ kubectl delete rs frontend-rs
 
 ## 总结
 
-ReplicationController 和 ReplicaSet 是 Kubernetes 保证 Pod 副本高可用的基础机制。随着 Kubernetes 的演进，ReplicaSet 已成为主流，建议结合 Deployment 进行副本管理，实现声明式升级、滚动更新和自动回滚等高级能力。合理配置资源、健康检查和标签，有助于提升集群的稳定性和运维效率。
+ReplicaSet 是 Kubernetes 保证 Pod 副本高可用的基础机制，ReplicationController 则是它已被取代的前身。日常使用中应通过 Deployment 间接管理 ReplicaSet，由 Deployment 负责声明式升级、滚动更新和回滚；直接操作 ReplicaSet 主要出现在排障和理解滚动更新原理的场景。合理配置资源、健康检查和标签，有助于提升集群的稳定性和运维效率。
 
 ## 参考文献
 

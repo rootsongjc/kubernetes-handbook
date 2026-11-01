@@ -3,7 +3,7 @@ weight: 30
 title: StatefulSet
 date: 2022-05-21T00:00:00+08:00
 description: StatefulSet 是 Kubernetes 中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。
-lastmod: 2025-10-27T16:13:40.867Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > StatefulSet 控制器为 Kubernetes 有状态应用提供了稳定标识、持久存储和有序部署，是数据库、消息队列等关键服务高可用的基础保障。
@@ -100,7 +100,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: nginx
-        image: nginx:1.20
+        image: nginx:1.26
         ports:
         - containerPort: 80
           name: web
@@ -208,6 +208,47 @@ spec:
       partition: 2  # 只更新序数 >= 2 的 Pod
 ```
 
+#### 并行滚动更新
+
+默认情况下 StatefulSet 滚动更新一次只替换一个 Pod。`maxUnavailable` 字段（特性门控 `MaxUnavailableStatefulSet`，v1.37 Beta 并默认开启）允许同时更新多个 Pod，适合副本数较多且可容忍多实例同时不可用的集群：
+
+```yaml
+spec:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2   # 同时最多有 2 个 Pod 处于更新中
+```
+
+## 近年新增特性
+
+StatefulSet 在 v1.26 之后补齐了几项长期缺失的能力。
+
+### PVC 保留策略
+
+`persistentVolumeClaimRetentionPolicy`（v1.32 GA）控制由 `volumeClaimTemplates` 创建的 PVC 在 StatefulSet 删除或缩容时的去留，默认均为 `Retain`（保持旧行为）：
+
+```yaml
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Delete    # 删除 StatefulSet 时一并删除 PVC
+    whenScaled: Retain     # 缩容时保留 PVC，便于再次扩容时复用数据
+```
+
+### 起始序数
+
+`ordinals.start`（v1.31 GA）允许 Pod 序数从任意非负整数开始，而不是固定从 0 开始。这对跨集群迁移 StatefulSet 尤其有用：可以在目标集群先创建序数 `3..5` 的副本，再缩容源集群的 `0..2`，实现零停机搬迁：
+
+```yaml
+spec:
+  ordinals:
+    start: 3    # Pod 名称从 web-3 开始
+```
+
+### 最小就绪时间
+
+`minReadySeconds`（v1.25 GA）要求新 Pod 处于 Ready 状态至少指定秒数后才视为可用，滚动更新才会继续处理下一个 Pod，可以避免"刚 Ready 就崩溃"的实例被误判为升级成功。
+
 ## 实际操作示例
 
 以下命令展示了 StatefulSet 的常用运维操作。
@@ -240,7 +281,7 @@ kubectl patch statefulset web -p '{"spec":{"replicas":3}}'
 
 # 更新镜像
 kubectl patch statefulset web --type='json' \
-  -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value":"nginx:1.21"}]'
+  -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value":"nginx:1.27"}]'
 
 # 删除 StatefulSet（保留 PVC）
 kubectl delete statefulset web

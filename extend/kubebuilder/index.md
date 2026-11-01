@@ -5,14 +5,14 @@ title: 使用 Kubebuilder 构建控制器
 slug: kubebuilder
 date: 2024-01-15T00:00:00+08:00
 description: 介绍 Kubebuilder 的核心概念、设计原则、工作流程及最佳实践，帮助开发者快速上手使用 Kubebuilder 构建 Kubernetes 扩展。
-lastmod: 2025-10-27T10:06:26.453Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 Kubebuilder 是 Kubernetes 官方推荐的 Operator 开发框架，具备现代化架构和丰富工具链，能够帮助开发者高效构建、测试和部署自定义 API 及控制器。本文将系统介绍 Kubebuilder 的核心概念、设计原则、工作流程及最佳实践，助力你快速上手并应用于生产环境。
 
 ## 概述
 
-Kubebuilder 是一个基于 CRD 的现代化 Kubernetes API 构建框架，适用于开发 Operator、Controller 及 Webhook。其 v4.9.0 版本在性能和开发体验方面有显著提升。
+Kubebuilder 是一个基于 CRD 的现代化 Kubernetes API 构建框架，适用于开发 Operator、Controller 及 Webhook。截至 2026 年 10 月的最新版本为 v4.16（基于 controller-runtime v0.25），v4 系列把 Webhook 代码从 `api/<version>/` 迁移到 `internal/webhook/<version>/`，并默认生成 `go/v4` 项目布局。
 
 ### 框架简介与目标
 
@@ -124,7 +124,7 @@ Kubebuilder 提供完善的测试能力：
 
 ## 快速开始
 
-本节将介绍如何使用 Kubebuilder v4.9.0 初始化项目并实现核心功能。
+本节将介绍如何使用 Kubebuilder v4（示例以 v4.16 为准，`go/v4` 布局自 v4.0 起稳定，命令在 v4 各小版本间兼容）初始化项目并实现核心功能。
 
 ### 项目初始化
 

@@ -4,7 +4,7 @@ title: Secret
 slug: secret
 date: 2022-05-21T00:00:00+08:00
 description: Secret 是 Kubernetes 中用于存储敏感数据的对象，包括密码、token、密钥等，支持以 Volume 或环境变量方式使用，主要类型有 Opaque、Service Account 和 dockerconfigjson。
-lastmod: 2025-10-27T12:39:28.278Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Secret 是 Kubernetes 管理敏感信息（如密码、Token、密钥）的核心机制，合理使用可提升集群安全性与敏感数据治理能力。
@@ -94,7 +94,7 @@ metadata:
 spec:
   containers:
   - name: app
-    image: nginx:1.20
+    image: nginx:1.27
     volumeMounts:
     - name: secret-volume
       mountPath: /etc/secrets
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: nginx:1.20
+        image: nginx:1.27
         ports:
         - containerPort: 80
         env:
@@ -231,7 +231,7 @@ spec:
 
 ## Service Account 与 Secret
 
-从 Kubernetes 1.24 开始，Service Account 不再自动创建对应的 Secret。如需手动创建：
+从 Kubernetes 1.24 开始，Service Account 不再自动创建对应的 Secret，Pod 使用的是由 kubelet 通过 TokenRequest API 获取、自动轮换且绑定到 Pod 的短期 Token（投影卷）。只有在 CI 系统等确实需要长期静态凭据的场景下才应手动创建 Token Secret；v1.29 起控制器会自动清理一年以上未使用的旧式 Token Secret。如需手动创建：
 
 ```yaml
 apiVersion: v1
@@ -251,6 +251,9 @@ kubectl apply -f sa-secret.yaml
 
 # 查看 token
 kubectl get secret sa-token-secret -o jsonpath='{.data.token}' | base64 -d
+
+# 更推荐的做法：按需签发有时效的 Token，而不是落盘为 Secret
+kubectl create token my-service-account --duration=1h
 ```
 
 ## Secret 生命周期与安全

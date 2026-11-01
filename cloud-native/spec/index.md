@@ -3,7 +3,7 @@ title: 云原生应用规范模型
 linkTitle: 规范模型
 description: 基于 OAM 的云原生应用的规范模型，详细介绍 Workload、Component、Trait、ApplicationScope 和 ApplicationConfiguration 等核心概念。
 weight: 9
-lastmod: 2025-10-27T17:37:16.370Z
+lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-08-26T10:11:27.424Z
 ---
 
@@ -12,7 +12,7 @@ date: 2025-08-26T10:11:27.424Z
 OAM（Open Application Model）是一个专注于描述应用程序的规范，它通过定义标准化的应用程序模型来实现平台无关的应用程序描述。本文将详细介绍 OAM 规范中的核心概念和组件。
 
 {{< callout note "版本说明"  >}}
-本文基于 OAM v1alpha2 版本编写。
+本文基于 OAM v1alpha2 版本（对应 OAM 规范 v0.2.x）编写。OAM 规范仓库的最后一个标记版本为 2021 年的 v0.3.0，此后规范层面基本停止演进；其设计思想由 CNCF 孵化项目 [KubeVela](https://kubevela.io/)（当前 v1.11）以 `core.oam.dev/v1beta1` 的 `Application`/`ComponentDefinition`/`TraitDefinition` 等 CRD 落地并持续发展。学习 OAM 概念仍有价值，但生产实践应以 KubeVela 的 API 为准。
 {{< /callout >}}
 
 ## 设计原则
@@ -416,6 +416,6 @@ OAM 规范通过定义标准化的应用程序模型，实现了关注点分离�
 
 这种分层的设计不仅提高了开发效率，也增强了应用的可移植性和可维护性，是云原生应用开发和部署的重要规范。
 
-## 参考资料
+## 参考文献
 
 - [OAM 官方规范](https://github.com/oam-dev/spec)

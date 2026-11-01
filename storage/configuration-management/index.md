@@ -4,7 +4,7 @@ title: ConfigMap 和 Secret 管理
 date: 2025-10-13
 weight: 20
 description: 本文介绍 Kubernetes 如何通过 ConfigMap 和 Secret 实现应用配置与密文的分离，支持环境无关的容器镜像构建与安全配置注入。
-lastmod: 2025-10-27T16:45:14.453Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 在 Kubernetes 中，ConfigMap 和 Secret 是实现应用配置与密文管理的核心资源，合理使用它们能够提升应用的安全性和可维护性。
@@ -148,6 +148,10 @@ ConfigMap 和 Secret 的生命周期如下：
 
 - Web 应用配置：ConfigMap 存储非敏感参数，Secret 存储数据库密码等敏感信息。
 - 镜像仓库认证：Secret 用于存储 Docker Registry 凭据。
+
+## 配置分发的新选择
+
+除了 ConfigMap 与 Secret，v1.36 GA 的 OCI 镜像卷（`volumes[].image`）提供了另一种分发配置或大体积只读数据的方式：把配置打包成 OCI 制品推送到镜像仓库，Pod 以只读卷的形式挂载，可以复用镜像仓库的版本管理、签名与分发能力，且不受 ConfigMap 1 MiB 的大小限制，详见 [OCI 镜像卷](../image-volume)。
 
 ## Kubernetes Secret 的替代方案
 

@@ -1,9 +1,9 @@
 ---
-weight: 34
+weight: 35
 title: CronJob
 date: 2022-05-21T00:00:00+08:00
 description: CronJob 是 Kubernetes 中用于管理基于时间调度的 Job 资源，支持一次性和周期性任务执行，类似于 Linux 系统中的 crontab 功能。
-lastmod: 2025-10-27T15:54:06.305Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > CronJob 机制让 Kubernetes 能够原生支持定时任务编排，实现自动化运维、数据备份等周期性作业的高效管理。
@@ -31,6 +31,8 @@ CronJob 资源定义包含必需字段和可选字段，合理配置可满足不
 - **`.spec.jobTemplate`**：Job 模板，指定需要运行的任务，格式同 [Job](../job)
 
 ### 可选字段
+
+- **`.spec.timeZone`**：调度使用的时区（IANA 名称，如 `Asia/Shanghai`），v1.27 起 GA。未设置时按 kube-controller-manager 进程的时区（通常为 UTC）解释 `schedule`
 
 - **`.spec.startingDeadlineSeconds`**：启动 Job 的期限（秒）。如果因任何原因错过调度时间，超过此期限的 Job 将被视为失败。未指定则无期限限制
 - **`.spec.concurrencyPolicy`**：并发策略，指定如何处理 CronJob 创建的 Job 的并发执行：
@@ -120,7 +122,15 @@ CronJob 在每次调度时间内*大概*会创建一个 Job 对象。说*大概*
 
 ### 时区处理
 
-CronJob 调度基于控制平面运行的时区。如果控制平面在不同时区的多个节点上运行，调度时间可能会不可预测。
+未显式设置 `.spec.timeZone` 时，CronJob 调度基于 kube-controller-manager 进程的时区（容器化部署时通常为 UTC）。为避免歧义，建议始终显式指定 `timeZone`：
+
+```yaml
+spec:
+  schedule: "0 2 * * *"
+  timeZone: "Asia/Shanghai"   # 每天北京时间 02:00 执行
+```
+
+早期在 `schedule` 字段中写 `CRON_TZ=` 或 `TZ=` 前缀的做法未受官方支持，新版本会拒绝此类写法。
 
 ### Job 管理职责
 

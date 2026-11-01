@@ -4,7 +4,7 @@ linkTitle: vLLM 实践
 weight: 5
 description: vLLM 推理引擎在 Kubernetes 中的部署、配置和优化指南。
 date: 2025-10-20T05:20:22.064Z
-lastmod: 2025-10-20T05:37:01.371Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > vLLM 是高性能大语言模型推理引擎，结合 Kubernetes 编排能力，可实现高效、弹性、可观测的 AI 推理服务。本文系统梳理 vLLM 在 K8s 环境下的部署架构、配置优化、服务暴露、监控扩缩容及最佳实践，助力构建可扩展的 LLM 推理平台。
@@ -46,14 +46,10 @@ spec:
     spec:
       containers:
       - name: vllm
-        image: vllm/vllm-openai:latest
-        command:
-        - python
-        - -m
-        - vllm.entrypoints.openai.api_server
-        args:
+        image: vllm/vllm-openai:v0.11.0   # 生产环境固定版本；2026 年 10 月最新为 v0.32
+        args:                              # 镜像入口已是 OpenAI 兼容服务器，直接传参即可
         - --model
-        - meta-llama/Llama-2-7b-chat-hf
+        - Qwen/Qwen3-8B
         - --tensor-parallel-size
         - "1"
         - --host
@@ -77,16 +73,26 @@ spec:
             secretKeyRef:
               name: hf-token
               key: token
+        volumeMounts:
+        - name: shm                        # 张量并行依赖共享内存，默认 64Mi 不够
+          mountPath: /dev/shm
+      volumes:
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 8Gi
 ```
+
+模型权重的分发方式也值得单独考虑：除了启动时从 Hugging Face 拉取，还可以预先打包为 OCI 制品并以 [镜像卷](../../storage/image-volume)（v1.36 GA）只读挂载，或用 JuiceFS/Fluid 等做分布式缓存，避免每个副本重复下载数十 GB 权重。
 
 ### 多 GPU 分布式部署
 
-结合 Ray 等分布式框架，提升推理吞吐与模型规模。
+单节点多卡用张量并行即可；跨节点的流水线/张量并行需要 Ray 集群或 vLLM 的多节点启动脚本，Kubernetes 上推荐用 [LeaderWorkerSet](https://github.com/kubernetes-sigs/lws)（SIG Apps 项目，2026 年 10 月发布 v1.0）把"一个 leader + N 个 worker"作为一个整体扩缩与滚动更新。单节点示例：
 
 ```yaml
 args:
 - --model
-- meta-llama/Llama-2-13b-chat-hf
+- Qwen/Qwen3-32B
 - --tensor-parallel-size
 - "2"
 - --pipeline-parallel-size
@@ -146,30 +152,32 @@ spec:
   type: ClusterIP
 ```
 
-### Ingress 配置
+### Gateway API 入口
 
-通过 Ingress 实现域名访问和外部流量入口。
+对外暴露推荐使用 Gateway API 的 HTTPRoute（Ingress 特性已冻结，社区 Ingress NGINX 已于 2026 年 3 月退役）。LLM 请求生成耗时长，务必放宽默认超时：
 
 ```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: vllm-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: vllm-route
 spec:
+  parentRefs:
+  - name: inference-gateway
+  hostnames: ["vllm.example.com"]
   rules:
-  - host: vllm.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: vllm-service
-            port:
-              number: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /v1
+    backendRefs:
+    - name: vllm-service
+      port: 80
+    timeouts:
+      request: 300s
 ```
+
+当同一模型有多个副本、需要按 KV 缓存利用率、排队深度与 LoRA 亲和做智能路由时，可把 `backendRefs` 指向 `InferencePool` 而不是 Service，由 [Gateway API Inference Extension](../../service-discovery/gateway-api-inference) 的端点选择器（EPP）决定请求落到哪个副本；这也是 vLLM 社区与 Kubernetes 社区联合推出的 llm-d 推理栈的默认入口。
 
 ## 监控与可观测性
 
@@ -223,7 +231,7 @@ spec:
   - type: External
     external:
       metric:
-        name: vllm_queue_size
+        name: vllm_num_requests_waiting     # vLLM 暴露的排队请求数指标，经 Prometheus Adapter/KEDA 转为外部指标
         selector:
           matchLabels:
             app: vllm
@@ -231,6 +239,8 @@ spec:
         type: Value
         value: "10"
 ```
+
+基于排队深度而非 GPU 利用率扩缩容更符合推理负载的特性；KEDA 可直接消费 Prometheus 查询并支持缩容到零，v1.37 起 HPA 自身也对外部指标提供 `minReplicas: 0`（Beta）。GPU 节点昂贵且启动慢，扩容侧应配合 Karpenter/Cluster Autoscaler 预热节点池。
 
 ## 运维与最佳实践
 

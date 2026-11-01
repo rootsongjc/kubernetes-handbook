@@ -4,7 +4,7 @@ title: 服务质量等级（QoS）
 linktitle: 服务质量等级
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Pod 的服务质量等级（QoS）机制，包括 Guaranteed、Burstable 和 BestEffort 三种等级的配置方法和使用场景。
-lastmod: 2025-10-27T15:47:25.635Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 合理配置 QoS 等级是保障 Kubernetes 集群资源高效利用与关键业务稳定运行的基础。
@@ -87,11 +87,25 @@ QoS 等级不仅影响调度优先级，还决定了资源回收的顺序。合�
 
 ### 资源回收策略
 
-当节点资源不足时，Kubernetes 按以下顺序回收 Pod：
+当节点资源不足时，kubelet 首先依据 Pod 的实际用量是否超出 `requests` 以及 PriorityClass 决定驱逐顺序，QoS 等级在其中起到间接作用：
 
-1. 首先回收 BestEffort 级别的 Pod
+1. 首先回收 BestEffort 级别的 Pod（没有 `requests`，任何用量都视为超额）
 2. 其次回收超出 `requests` 资源使用量的 Burstable 级别 Pod
 3. 最后回收 Guaranteed 级别的 Pod（仅在系统组件需要资源时）
+
+在内核层面，kubelet 还会为不同 QoS 的容器设置不同的 `oom_score_adj`：Guaranteed 为 -997，BestEffort 为 1000，Burstable 介于两者之间并随 `requests` 占比变化。节点触发内核 OOM 时，分值越高的进程越先被杀死。
+
+### cgroup v2 与内存 QoS
+
+Kubernetes 自 v1.25 起将 cgroup v2 支持 GA，并在 v1.31 把 cgroup v1 置于维护模式，新的资源管理特性只面向 cgroup v2。v1.35 起 cgroup v1 被正式弃用，kubelet 默认拒绝在仅有 cgroup v1 的节点上启动（可用 `failCgroupV1: false` 临时放行）。在 cgroup v2 节点上，kubelet 可启用内存 QoS（特性门控 `MemoryQoS`，v1.37 Beta 并默认开启）：把 `requests.memory` 映射为 `memory.min` 以保护 Guaranteed/Burstable 容器的内存不被回收，并通过 `memory.high` 在接近 `limits` 时提前触发限流，而不是直接 OOM。
+
+### 与原地资源调整的关系
+
+Pod 的 QoS 等级在创建时确定且**不可变**。自 v1.35 起 GA 的原地资源调整允许修改运行中容器的 `requests`/`limits`，但 API Server 会拒绝导致 QoS 等级变化的调整：Guaranteed Pod 调整后必须仍保持 `requests == limits`，Burstable Pod 不能被调整为完全不设资源的 BestEffort。
+
+### 交换分区
+
+v1.34 起 kubelet 对 Linux swap 的支持进入 GA（`NodeSwap`），默认行为为 `NoSwap`，且仅支持 cgroup v2 节点。管理员可在 kubelet 配置中设置 `memorySwap.swapBehavior: LimitedSwap`，此时**仅 Burstable 级别的 Pod** 可以按其内存 `requests` 占节点内存的比例使用 swap；Guaranteed 与 BestEffort Pod 均不允许使用 swap，以保证高优先级工作负载的性能可预测。
 
 ## 查看 Pod 的 QoS 等级
 
@@ -113,6 +127,7 @@ kubectl describe pod <pod-name>
 - 开发测试环境可采用 Burstable 等级，提高资源利用率
 - 批处理任务适合使用 BestEffort 等级，充分利用集群闲置资源
 - 合理设置资源请求，避免设置过高的 `requests` 值造成资源浪费
+- 为新节点统一启用 cgroup v2（主流发行版默认已启用），避免同一集群混用 v1/v2 导致资源语义不一致
 
 ## 总结
 

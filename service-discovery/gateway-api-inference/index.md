@@ -5,7 +5,7 @@ weight: 43
 slug: gateway-api-inference
 date: 2025-10-20T05:19:44.956Z
 description: 系统介绍 Kubernetes Gateway API Inference Extension 的架构与核心组件、关键资源与请求处理流程，并解析推理调度算法与 AI 流量管理最佳实践。
-lastmod: 2025-10-27T18:14:39.810Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > Gateway API Inference Extension 为 Kubernetes AI/ML 推理工作负载提供了标准化、声明式的流量管理和智能路由能力，极大提升了模型服务的可扩展性与可维护性。
@@ -45,11 +45,11 @@ Gateway API Inference Extension 由四个主要组件协同工作，提供智能
 
 ### Gateway
 
-Gateway 是支持 Gateway API 且实现 ext-proc 的 Kubernetes 代理。常见实现包括 GKE Gateway、Istio、Kgateway 和 Agentgateway。Gateway 负责 L4-L7 路由，并通过 gRPC 流与扩展组件集成。
+Gateway 是支持 Gateway API 且实现 ext-proc 的 Kubernetes 代理。常见实现包括 Istio、Agentgateway、NGINX Gateway Fabric、kgateway 与 GKE Gateway。Gateway 负责 L4-L7 路由，并通过 gRPC 流与扩展组件集成。
 
 ### Body-Based Router (BBR)
 
-BBR 是可选 ext-proc 服务器，从 OpenAI 格式请求体中提取 `model` 字段，并注入 `X-Gateway-Model-Name` 头部，便于 HTTPRoute 按模型名称路由。
+BBR 是可选 ext-proc 服务器，从 OpenAI 格式请求体中提取 `model` 字段，并注入 `X-Gateway-Model-Name` 头部，便于 HTTPRoute 按模型名称路由。该组件现由 llm-d 社区维护。
 
 ### Endpoint Picker Proxy (EPP)
 
@@ -71,14 +71,16 @@ EPP 是核心智能组件，实现调度和路由逻辑。其主要子模块包�
 
 {{< table title="Inference Extension 关键资源一览" >}}
 
-| 资源 | API 版本 | 目的 |
-| --- | --- | --- |
-| InferencePool | inference.networking.k8s.io/v1 | 定义模型服务器 Pod 池并引用 EPP 服务进行端点选择 |
-| InferenceObjective | inference.networking.x-k8s.io/v1alpha2 | 为模型指定请求优先级和路由策略 |
-| Gateway | gateway.networking.k8s.io/v1 | 标准 Gateway API 资源，通过 EPP 集成扩展 |
-| HTTPRoute | gateway.networking.k8s.io/v1 | 将流量路由到 InferencePool 后端而非标准 Service |
+| 资源 | API 版本 | 状态 | 目的 |
+| --- | --- | --- | --- |
+| InferencePool | `inference.networking.k8s.io/v1` | GA（v1.0 起） | 定义模型服务器 Pod 池，并通过 `endpointPickerRef` 引用 EPP 服务进行端点选择；在 Gateway API 资源模型中充当"后端"，替代 Service |
+| InferencePoolImport | `inference.networking.x-k8s.io/v1alpha1` | 实验 | 由多集群控制器自动生成，代表从其他集群导入的 InferencePool，用于跨集群路由 |
+| Gateway | `gateway.networking.k8s.io/v1` | 标准 Gateway API 资源 | 入口网关，需实现 ext-proc 以与 EPP 集成 |
+| HTTPRoute | `gateway.networking.k8s.io/v1` | 标准 Gateway API 资源 | 通过 `backendRefs` 将流量路由到 InferencePool 后端而非标准 Service |
 
 {{< /table >}}
+
+需要注意的是，项目在 v1.6 前后经历了一次职责拆分：EPP 参考实现、`InferenceObjective`/`InferenceModelRewrite` API 以及 Body-Based Router（BBR）已迁移到 [llm-d/llm-d-router](https://github.com/llm-d/llm-d-router) 与 [llm-d/llm-d-inference-payload-processor](https://github.com/llm-d/llm-d-inference-payload-processor) 仓库继续演进；`kubernetes-sigs/gateway-api-inference-extension` 仓库本身只保留 InferencePool API、轻量级 EPP（LWEPP）参考实现与一致性测试。因此在阅读文档时要区分"API 标准"（本项目）与"调度器实现"（llm-d 等）。
 
 下图展示了资源之间的关系：
 
@@ -140,317 +142,234 @@ EPP 采用三阶段调度算法，受 Kubernetes 调度器启发：
 
 ## 支持的平台
 
-### Gateway 提供商
+### Gateway 实现
 
-{{< table title="主流 Gateway 提供商支持情况" >}}
+Inference Extension 只定义 API 与扩展协议，具体能力取决于网关实现是否通过了项目的一致性测试。截至 v1.6.2，官方列出的合规实现如下：
 
-| 提供商 | 状态 | 备注 |
-| --- | --- | --- |
-| GKE Gateway | 稳定 | 原生 Google Cloud 集成，支持 HealthCheckPolicy |
-| Istio | 实验性 | 需 Istio 1.28-dev+，启用 ENABLE_GATEWAY_API_INFERENCE_EXTENSION |
-| Kgateway | 技术预览 | v2.1.0+ 滚动发布支持 |
-| Agentgateway | 技术预览 | Kgateway 控制平面 AI 优化代理 |
+{{< table title="通过一致性测试的 Gateway 实现" >}}
+
+| 实现 | 说明 |
+| --- | --- |
+| Istio | 完整实现 Gateway API 的服务网格与网关，支持南北向与 GAMMA 东西向流量 |
+| Agentgateway | Rust 编写的 AI 网关，面向 LLM、MCP、A2A 流量，可独立运行或部署在 Kubernetes/llm-d 之上 |
+| NGINX Gateway Fabric | 以 NGINX 为数据面的 Gateway API 实现 |
+| kgateway、GKE Gateway | 早期版本即提供支持，GKE Inference Gateway 为 Google Cloud 托管实现 |
 
 {{< /table >}}
 
+项目要求实现方在最近三个小版本内提交一致性报告，否则会从合规列表移除，因此选型时应以官方 [实现列表](https://gateway-api-inference-extension.sigs.k8s.io/implementations/gateways/) 为准。
+
 ### 模型服务器
+
+后端模型服务器需要实现项目定义的 [模型服务器协议](https://github.com/kubernetes-sigs/gateway-api-inference-extension/tree/main/docs/proposals/003-model-server-protocol)，以 Prometheus 指标形式暴露队列长度、KV 缓存利用率、已加载 LoRA 适配器等调度所需信息：
 
 {{< table title="主流模型服务器支持情况" >}}
 
-| 服务器 | 支持级别 | 协议合规性 |
+| 服务器 | 支持级别 | 说明 |
 | --- | --- | --- |
-| vLLM | 增强 | 与 llm-d 集成的完整协议支持 |
-| Triton Inference Server | 支持 | 需协议合规指标 |
-| SGLang | 支持 | 需协议合规指标 |
+| vLLM | 完整 | 与 llm-d 深度集成，是参考实现的主要测试目标 |
+| SGLang | 支持 | 需暴露协议要求的指标 |
+| Triton Inference Server（TensorRT-LLM 后端） | 支持 | 需暴露协议要求的指标 |
 
 {{< /table >}}
 
 ## 安装与配置
 
-### 安装 Gateway API
+### 前提条件
 
-以下命令用于安装 Gateway API 及 Inference Extension：
+- 运行最近三个小版本之一的 Kubernetes 集群，支持 `LoadBalancer` 类型 Service
+- 支持原生 Sidecar 容器（v1.29 起默认开启），模型服务器部署依赖该特性
+- 已安装一个支持 Inference Extension 的 Gateway 实现（如 Istio、Agentgateway、kgateway）
+- Helm 与 jq
+
+### 安装 CRD
+
+Gateway API 与 Inference Extension 的 CRD 分别独立发布。以下命令安装 Gateway API v1.7 标准渠道 CRD 与 Inference Extension v1.6.2 的 InferencePool CRD：
 
 ```bash
-kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/gateway-api.yaml
-kubectl apply -f https://github.com/kubernetes-sigs/gateway-api-inference-extension/releases/download/v0.1.0/inference-extension.yaml
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.7.0/standard-install.yaml
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api-inference-extension/releases/download/v1.6.2/manifests.yaml
 ```
+
+如需 `InferencePoolImport` 等实验性资源，改用同一发布页中的 `experimental-manifests.yaml`。
 
 ### 创建 InferencePool
 
-以下 YAML 示例定义了一个 InferencePool：
+InferencePool 用标签选择器圈定一组同构的模型服务器 Pod（相同模型、相同加速器、相同服务框架），并引用 EPP 服务。`endpointPickerRef` 自 v1.5.0 起为可选字段，省略时由网关实现自行决定如何选择端点：
 
 ```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
+apiVersion: inference.networking.k8s.io/v1
 kind: InferencePool
 metadata:
-  name: llama-pool
+  name: vllm-qwen3-32b
 spec:
   selector:
     matchLabels:
-      app: llama-model
-  targetPortNumber: 8000
-  endpointPicker:
-    type: Random
+      app: vllm-qwen3-32b
+  targetPorts:
+    - number: 8000
+  endpointPickerRef:
+    name: vllm-qwen3-32b-epp
+    port:
+      number: 9002
+    failureMode: FailOpen   # EPP 不可用时退化为网关默认负载均衡；FailClose 则直接拒绝请求
+```
+
+EPP 本身是一个普通的 Deployment + Service。项目早期在 `registry.k8s.io` 发布的 `inferencepool` Helm Chart 可同时创建 InferencePool 与 EPP（最后一个版本为 v1.5.0）；EPP 迁移到 llm-d 后，新的调度器及其 Chart 由 [llm-d-router](https://github.com/llm-d/llm-d-router) 提供：
+
+```bash
+helm install vllm-qwen3-32b \
+  --set inferencePool.modelServers.matchLabels.app=vllm-qwen3-32b \
+  --set provider.name=istio \
+  --version v1.5.0 \
+  oci://registry.k8s.io/gateway-api-inference-extension/charts/inferencepool
 ```
 
 ### 配置 Gateway
+
+Gateway 的写法与普通 Gateway API 用法一致，`gatewayClassName` 指向已安装的实现：
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: ai-gateway
-  annotations:
-    inference.networking.x-k8s.io/enabled: "true"
+  name: inference-gateway
 spec:
-  gatewayClassName: inference-gateway
+  gatewayClassName: istio
   listeners:
   - name: http
-    hostname: ai.example.com
     port: 80
     protocol: HTTP
 ```
 
-### 创建 InferenceRoute
+### 用 HTTPRoute 路由到 InferencePool
+
+Inference Extension 没有引入新的路由资源，而是复用标准 HTTPRoute，只需在 `backendRefs` 中把 `group`/`kind` 指向 InferencePool：
 
 ```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
-kind: InferenceRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: chat-route
+  name: llm-route
 spec:
   parentRefs:
-  - name: ai-gateway
+  - name: inference-gateway
   rules:
   - matches:
-    - method: POST
-      path:
+    - path:
         type: PathPrefix
-        value: /v1/chat/completions
+        value: /
     backendRefs:
-    - kind: InferencePool
-      name: llama-pool
-      weight: 100
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: vllm-qwen3-32b
+    timeouts:
+      request: 300s     # LLM 生成耗时长，需放宽默认超时
+```
+
+部署完成后，可直接向网关地址发送 OpenAI 兼容请求验证：
+
+```bash
+IP=$(kubectl get gateway inference-gateway -o jsonpath='{.status.addresses[0].value}')
+curl -i http://$IP/v1/completions -H 'Content-Type: application/json' \
+  -d '{"model": "Qwen/Qwen3-32B", "prompt": "Kubernetes is", "max_tokens": 64}'
 ```
 
 ## 高级路由功能
 
-### 模型版本路由
+### 按模型名称路由
 
-通过 headers 匹配实现模型版本路由：
+OpenAI 兼容请求把模型名放在 JSON 请求体的 `model` 字段中，而 HTTPRoute 只能按路径、请求头等匹配。Body-Based Router（BBR，现由 llm-d 维护）作为网关的 ext-proc 过滤器解析请求体，把模型名写入 `X-Gateway-Model-Name` 请求头，随后 HTTPRoute 即可按该头部把不同模型分发到不同 InferencePool：
 
 ```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
-kind: InferenceRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: versioned-route
+  name: model-router
 spec:
+  parentRefs:
+  - name: inference-gateway
   rules:
   - matches:
     - headers:
-      - name: x-model-version
-        value: v2
+      - name: X-Gateway-Model-Name
+        value: Qwen/Qwen3-32B
     backendRefs:
-    - kind: InferencePool
-      name: llama-v2-pool
-      weight: 100
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: vllm-qwen3-32b
   - matches:
     - headers:
-      - name: x-model-version
-        value: v1
+      - name: X-Gateway-Model-Name
+        value: meta-llama/Llama-3.1-8B-Instruct
     backendRefs:
-    - kind: InferencePool
-      name: llama-v1-pool
-      weight: 100
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: vllm-llama3-8b
 ```
 
-### 流量分割
+### 流量分割与金丝雀发布
+
+借助 HTTPRoute 的 `weight` 字段，可以在两个 InferencePool（例如新旧模型版本或不同量化精度）之间按比例分流，实现模型层面的金丝雀发布：
 
 ```yaml
-spec:
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /v1/chat/completions
     backendRefs:
-    - kind: InferencePool
-      name: llama-v2-pool
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: vllm-qwen3-32b
       weight: 90
-    - kind: InferencePool
-      name: llama-v1-pool
+    - group: inference.networking.k8s.io
+      kind: InferencePool
+      name: vllm-qwen3-32b-fp8
       weight: 10
 ```
 
-### 地理位置路由
+### LoRA 适配器与请求优先级
 
-```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
-kind: InferenceRoute
-metadata:
-  name: geo-route
-spec:
-  rules:
-  - matches:
-    - headers:
-      - name: x-region
-        value: us-west
-    backendRefs:
-    - kind: InferencePool
-      name: us-west-pool
-  - matches:
-    - headers:
-      - name: x-region
-        value: eu-central
-    backendRefs:
-    - kind: InferencePool
-      name: eu-central-pool
-```
+同一个基础模型可以加载多个 LoRA 适配器，EPP 会根据各 Pod 已加载的适配器做亲和调度，避免频繁换入换出。请求优先级、关键性（criticality）以及模型名重写等能力由 llm-d-router 中的 `InferenceObjective`、`InferenceModelRewrite` API 提供，在系统饱和时可优先丢弃低优先级请求。
 
-## 负载均衡策略
+## 多集群推理
 
-### 轮询负载均衡
-
-```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
-kind: InferencePool
-metadata:
-  name: round-robin-pool
-spec:
-  endpointPicker:
-    type: RoundRobin
-```
-
-### 最小连接数
-
-```yaml
-spec:
-  endpointPicker:
-    type: LeastConnections
-```
-
-### 基于权重的负载均衡
-
-```yaml
-spec:
-  endpointPicker:
-    type: WeightedRoundRobin
-    weights:
-      endpoint-1: 70
-      endpoint-2: 30
-```
-
-## 安全与访问控制
-
-### API 密钥验证
-
-```yaml
-apiVersion: inference.networking.x-k8s.io/v1alpha1
-kind: InferenceRoute
-metadata:
-  name: secured-route
-  annotations:
-    inference.networking.x-k8s.io/auth-type: api-key
-spec:
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /v1/chat/completions
-    filters:
-    - type: RequestHeaderModifier
-      requestHeaderModifier:
-        add:
-        - name: Authorization
-          value: Bearer ${API_KEY}
-```
-
-### 速率限制
-
-```yaml
-filters:
-- type: RateLimit
-  rateLimit:
-    requestsPerUnit: 100
-    unit: Minute
-    burst: 20
-```
+`InferencePoolImport` 资源（实验性）允许把其他集群中的 InferencePool 导入本地集群，网关据此把推理流量路由到远端集群的模型服务器，为跨区域 GPU 资源池化提供基础。该资源不由用户手写，而由多集群控制器填充。
 
 ## 监控与可观测性
 
-Inference Extension 自动收集请求延迟、吞吐量、错误率、推理池健康状态等指标。
-
-### 集成 Prometheus
-
-以下为 Prometheus 集成配置示例：
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: inference-gateway-config
-data:
-  gateway-config.yaml: |
-    apiVersion: gateway.networking.k8s.io/v1
-    kind: Gateway
-    metadata:
-      name: ai-gateway
-      annotations:
-        inference.networking.x-k8s.io/metrics-enabled: "true"
-        inference.networking.x-k8s.io/prometheus-port: "9090"
-```
+EPP 与模型服务器均以 Prometheus 格式暴露指标：EPP 输出请求延迟、每个 Pod 的队列长度与 KV 缓存利用率快照、调度决策耗时等；模型服务器按协议暴露 `vllm:num_requests_waiting`、`vllm:gpu_cache_usage_perc` 等指标。推荐的做法是为 EPP 创建 `ServiceMonitor`/`PodMonitor`，并在 Grafana 中把网关侧的请求指标与模型侧的生成指标（TTFT、TPOT）关联分析。
 
 ## 最佳实践
 
-- 多副本部署，确保高可用
-- 配置健康检查与自动故障转移
-- 优化连接池与缓存策略，提升性能
-- 启用 TLS 加密与细粒度访问控制
-- 开启审计日志，便于安全追踪
+- 一个 InferencePool 只包含同模型、同加速器、同服务框架的 Pod，异构配置拆分为多个池
+- 生产环境为 EPP 部署多副本，并根据可用性要求在 `FailOpen` 与 `FailClose` 之间做出选择
+- 把 HTTPRoute 的请求超时放宽到分钟级，流式响应需确认网关实现支持 SSE 透传
+- 模型服务器 Pod 使用原生 Sidecar 承载 LoRA 适配器加载等辅助进程
+- 结合 Gateway API 的 `BackendTLSPolicy` 对网关到模型服务器的链路加密
 
 ## 故障排除
 
-常见问题及调试命令：
+常见问题及排查方向：
 
-- 路由不生效：检查 InferenceRoute 配置和标签选择器
-- 负载不均衡：验证 endpoint picker 配置
-- 性能问题：检查资源限制和网络配置
-
-```bash
-kubectl get inferencepool
-kubectl describe inferenceroute chat-route
-kubectl logs -l app=gateway-api-controller
-```
-
-## 快速开始
-
-1. 部署模型服务器（GPU/CPU/模拟器）
-2. 安装 CRDs
-3. 安装 InferencePool + EPP
-4. 部署 Gateway
-5. 发送推理请求
+- 路由不生效：确认 HTTPRoute 的 `backendRefs.group` 为 `inference.networking.k8s.io`，并检查 Gateway 实现是否声明支持 InferencePool
+- 请求全部走默认负载均衡：检查 EPP Pod 是否就绪、`endpointPickerRef` 端口是否正确，`FailOpen` 模式下 EPP 故障会被静默降级
+- 调度不均衡：确认模型服务器暴露了协议要求的指标，EPP 日志中会提示缺失的指标名
 
 ```bash
-kubectl apply -f https://github.com/kubernetes-sigs/gateway-api-inference-extension/releases/latest/download/manifests.yaml
-helm install vllm-llama3-8b-instruct oci://registry.k8s.io/gateway-api-inference-extension/charts/inferencepool
-curl ${IP}:${PORT}/v1/completions -d '{"model": "...", "prompt": "..."}'
+kubectl get inferencepool -A
+kubectl describe inferencepool vllm-qwen3-32b
+kubectl get httproute llm-route -o yaml | yq '.status'
+kubectl logs deploy/vllm-qwen3-32b-epp
 ```
 
 ## 项目状态
 
-该项目目前处于 alpha 阶段，API 及功能可能有重大变更。最新版本特性包括：
-
-- InferencePool v1 API（稳定）
-- InferenceObjective v1alpha2 API（Alpha）
-- 生产级 EPP 可插拔调度框架
-- GKE Gateway 稳定支持
-- Istio、Kgateway、Agentgateway 实验性支持
+Gateway API Inference Extension 已于 2025 年发布 v1.0 并宣布 GA，InferencePool 为稳定的 `v1` API；截至 2026 年 10 月最新版本为 v1.6.2。项目与 vLLM 社区合作推出的 [llm-d](https://llm-d.ai/) 成为推荐的完整推理服务栈，EPP 调度器及其高级 API 的演进主要在 llm-d 相关仓库中进行。
 
 ## 总结
 
-Gateway API Inference Extension 为 AI 推理服务带来了声明式、可扩展的流量管理与智能调度能力。通过标准化的 Kubernetes 资源和灵活的路由策略，极大提升了 AI 服务的可维护性与可观测性，是构建现代 AI 平台的重要基础设施组件。
+Gateway API Inference Extension 在不改变 Gateway API 资源模型的前提下，用 InferencePool 替代 Service 作为推理后端，并通过 ext-proc 协议把"根据 KV 缓存、队列深度、LoRA 亲和做调度"的能力插入网关数据面。它让 AI 推理流量管理获得了与普通微服务一致的声明式体验，是构建 Kubernetes AI 基础设施的重要组件。
 
-## 参考
+## 参考文献
 
-- [Gateway API Inference Extension](https://gateway-api-inference-extension.sigs.k8s.io/)
+- [Gateway API Inference Extension - gateway-api-inference-extension.sigs.k8s.io](https://gateway-api-inference-extension.sigs.k8s.io/)
+- [InferencePool API - gateway-api-inference-extension.sigs.k8s.io](https://gateway-api-inference-extension.sigs.k8s.io/api-types/inferencepool/)
+- [Gateway API Inference Extension Releases - github.com](https://github.com/kubernetes-sigs/gateway-api-inference-extension/releases)
+- [llm-d - llm-d.ai](https://llm-d.ai/)

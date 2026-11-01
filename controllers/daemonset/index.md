@@ -3,7 +3,7 @@ weight: 31
 title: DaemonSet
 date: 2022-05-21T00:00:00+08:00
 description: DaemonSet 是 Kubernetes 中的一种控制器，确保在集群中的每个（或特定）节点上运行一个 Pod 副本。本文详细介绍 DaemonSet 的概念、使用场景、配置方法以及管理策略。
-lastmod: 2025-10-27T15:56:40.044Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > DaemonSet 控制器为 Kubernetes 提供了节点级系统服务的自动化部署能力，是集群可观测性与基础设施运维的关键保障。
@@ -94,15 +94,19 @@ DaemonSet 支持多种更新与维护策略，便于系统级服务的平滑升�
 
 ### 滚动更新
 
-Kubernetes 1.6+ 支持 DaemonSet 滚动更新：
+DaemonSet 默认使用 `RollingUpdate` 策略，支持 `maxUnavailable` 与 `maxSurge`（v1.25 GA）两个参数：
 
 ```yaml
 spec:
+  minReadySeconds: 10
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1
+      maxUnavailable: 1   # 同一时刻最多 1 个节点上的 Pod 不可用
+      # maxSurge: 1       # 或者：允许先在节点上启动新 Pod 再删旧 Pod，适合 CNI、日志代理等不能中断的组件
 ```
+
+`maxSurge` 与 `maxUnavailable` 不能同时为非零值。对于网络插件、节点监控代理等"中断即影响整个节点"的 DaemonSet，使用 `maxSurge: 1` 可以让新旧 Pod 在同一节点上短暂并存，实现无中断升级（要求两者能共存，例如监听不同端口或使用 `SO_REUSEPORT`）。
 
 ### 更新触发条件
 

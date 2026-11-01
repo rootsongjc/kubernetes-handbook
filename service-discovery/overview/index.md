@@ -4,7 +4,7 @@ linktitle: 概述
 date: 2025-10-13
 weight: 1
 description: 系统梳理了 Kubernetes 网络与服务相关的核心概念，重点介绍 Service、EndpointSlice、DNS、Ingress、网络策略等机制，帮助读者理解集群内外通信与服务发现的实现方式。
-lastmod: 2025-10-27T18:11:39.287Z
+lastmod: 2026-11-01T00:00:00+08:00
 ---
 
 > 服务发现与网络路由是 Kubernetes 架构的灵魂，决定了云原生应用的可扩展性与弹性边界。
@@ -87,7 +87,7 @@ Ingress 用于将集群外部的 HTTP/HTTPS 流量路由到集群内 Service，�
 
 ![Ingress 流量路由示意：Ingress Controller 按 host 与 path 把请求路由到 Service 和 Pod](ingress-routing.svg)
 
-常见 Ingress Controller 包括 NGINX、AWS Load Balancer、GCE Ingress 等。
+常见 Ingress Controller 包括 AWS Load Balancer Controller、GCE Ingress、Traefik、HAProxy 等；曾经最流行的社区 Ingress NGINX 已于 2026 年 3 月退役。Ingress API 自 v1.19 GA 后特性已冻结，不再新增功能，其继任者是 [Gateway API](../gateway)：以 GatewayClass、Gateway、HTTPRoute 等角色分离的资源提供更丰富、可移植的路由能力，新项目应优先采用。
 
 ### 路径类型
 
@@ -128,9 +128,15 @@ Service 的 `ipFamilyPolicy` 可设为：
 - `PreferDualStack`：优先双栈，若支持则分配双 IP
 - `RequireDualStack`：强制要求双栈，否则失败
 
-## Service 内部流量策略
+## Service 流量策略与分发
 
-通过设置 `.spec.internalTrafficPolicy: Local`，可让 Service 仅将内部流量路由到本节点上的后端 Pod，提升性能并减少跨节点流量。
+Service 提供三类字段控制流量走向：
+
+- `internalTrafficPolicy: Local`：集群内访问只路由到本节点上的后端 Pod
+- `externalTrafficPolicy: Local`：NodePort/LoadBalancer 的外部流量只路由到本节点端点，并保留客户端源 IP
+- `trafficDistribution: PreferSameZone | PreferSameNode`（v1.33 引入，v1.35 GA）：表达"优先就近、无端点时回退"的软偏好，是 `topology-mode: Auto` 注解的简化替代
+
+详见 [Service](../service) 与 [拓扑感知路由](../topology-aware-routing)。
 
 ## 总结
 

@@ -3,7 +3,7 @@ weight: 7
 title: 使用 Operator SDK 构建 Operator
 linktitle: Operator SDK
 date: 2022-05-21T00:00:00+08:00
-lastmod: 2025-10-27T10:11:33.402Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: 介绍 Operator SDK 的核心概念、架构设计、安装配置、CLI 插件系统及开发工作流，帮助读者掌握使用 Operator SDK 构建 Kubernetes Operator 的方法与最佳实践。
 slug: operator-sdk
 ---
@@ -36,10 +36,10 @@ Operator SDK 的架构基于 controller-runtime，并通过插件和 OLM 集成�
 
 ### 前置条件
 
-- Go 1.21+
-- Docker 20.10+ 或 Podman
-- kubectl v1.26.0+
-- 访问 Kubernetes 集群 (v1.26+)
+- Go 1.24+（以所选 SDK 版本的 go.mod 为准）
+- Docker 24+ 或 Podman
+- kubectl v1.33.0+
+- 访问 Kubernetes 集群（建议运行受支持的三个小版本之一，即 v1.35+）
 - make (用于构建)
 
 ### 安装方式
@@ -47,10 +47,10 @@ Operator SDK 的架构基于 controller-runtime，并通过插件和 OLM 集成�
 #### 方式一：使用二进制文件（推荐）
 
 ```bash
-# 设置版本和架构 (2025年最新版本 v1.35.0)
+# 设置版本和架构（2026 年 10 月最新版本 v1.42.3）
 export ARCH=$(case $(uname -m) in x86_64) echo -n amd64 ;; aarch64) echo -n arm64 ;; *) echo -n $(uname -m) ;; esac)
 export OS=$(uname | awk '{print tolower($0)}')
-export OPERATOR_SDK_DL_URL=https://github.com/operator-framework/operator-sdk/releases/download/v1.35.0
+export OPERATOR_SDK_DL_URL=https://github.com/operator-framework/operator-sdk/releases/download/v1.42.3
 
 # 下载二进制文件
 curl -LO ${OPERATOR_SDK_DL_URL}/operator-sdk_${OS}_${ARCH}

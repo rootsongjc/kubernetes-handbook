@@ -2,7 +2,7 @@
 weight: 22
 title: Node
 date: 2022-05-21T00:00:00+08:00
-lastmod: 2025-10-27T14:41:59.360Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: Kubernetes 集群中的工作节点管理，包括节点状态监控、资源管理和维护操作等核心概念和实践。
 ---
 
@@ -29,7 +29,7 @@ description: Kubernetes 集群中的工作节点管理，包括节点状态监�
 - **Ready**：节点是否准备就绪接受 Pod 调度。
   - `True`：节点健康且可调度。
   - `False`：节点存在问题，不可调度。
-  - `Unknown`：Node Controller 在 40 秒内未收到节点状态报告。
+  - `Unknown`：节点控制器超过 `node-monitor-grace-period`（默认 50 秒）未收到节点心跳。节点心跳由 kubelet 通过 `kube-node-lease` 命名空间中的 Lease 对象每 10 秒更新一次，Node 状态对象本身仅在发生变化或每 5 分钟上报一次。
 - **MemoryPressure**：节点内存资源紧张时为 `True`。
 - **DiskPressure**：节点磁盘空间不足时为 `True`。
 - **PIDPressure**：节点进程数接近限制时为 `True`。
@@ -48,11 +48,21 @@ description: Kubernetes 集群中的工作节点管理，包括节点状态监�
 
 节点信息包含系统和组件版本，便于运维管理：
 
-- 操作系统版本
+- 操作系统与内核版本
 - Kubernetes 版本
-- 容器运行时版本（如 containerd、Docker）
+- 容器运行时版本（如 containerd、CRI-O）
 - kubelet 版本
-- kube-proxy 版本
+- kube-proxy 版本（使用 Cilium 等替代 kube-proxy 的集群中该字段为空）
+
+此外，`status.features.supplementalGroupsPolicy`、`status.runtimeHandlers`（声明运行时是否支持用户命名空间、递归只读挂载等能力）等字段用于向调度器与用户暴露节点级特性支持情况。
+
+### 节点运行环境要求
+
+运行 v1.37 的节点应满足以下基线：
+
+- 使用 cgroup v2（cgroup v1 自 v1.31 起进入维护模式，v1.35 起弃用并默认拒绝启动）
+- containerd 2.x（v1.35 是支持 containerd 1.x 的最后一个版本，v1.36 起不再支持）或与 Kubernetes 小版本匹配的 CRI-O
+- kubelet 与 kube-apiserver 的版本差不超过 3 个小版本（kubelet 不得高于 API Server）
 
 ## 节点管理操作
 
@@ -95,7 +105,8 @@ kubectl uncordon <node-name>
 
 - **计划维护**：使用 `cordon` 和 `drain` 命令确保应用服务不中断。
 - **监控资源**：定期检查节点的 CPU、内存和磁盘使用情况。
-- **更新管理**：制定节点系统和 Kubernetes 组件的更新策略。
+- **更新管理**：制定节点系统和 Kubernetes 组件的更新策略；节点彻底下线时可打 `node.kubernetes.io/out-of-service` 污点加速有状态 Pod 的故障转移。
+- **节点自治**：使用 Karpenter、Cluster Autoscaler 等工具按需增删节点，减少人工维护。
 - **故障恢复**：准备节点故障时的应急响应流程。
 
 ## 查看节点信息

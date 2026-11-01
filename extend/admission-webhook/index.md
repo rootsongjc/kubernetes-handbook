@@ -3,13 +3,17 @@ title: Admission Webhook 扩展：可拔插策略控制
 weight: 9
 linktitle: Admission Webhook 扩展
 date: 2025-10-27T22:30:00+08:00
-lastmod: 2025-10-27T11:25:18.415Z
+lastmod: 2026-11-01T00:00:00+08:00
 description: 通过准入 Webhook 扩展 Kubernetes API 的请求处理逻辑，实现策略验证、默认值注入与动态审计。
 ---
 
 > 准入 Webhook（Admission Webhook）是 Kubernetes 最灵活的 API 扩展机制之一，支持在 API Server 请求处理链中插入自定义校验、变更和策略逻辑，实现安全、合规与自动化治理。
 
 ## 概述
+
+{{< callout note "先评估 CEL 准入策略" >}}
+Kubernetes 已内建声明式的 `ValidatingAdmissionPolicy`（v1.30 GA）与 `MutatingAdmissionPolicy`（v1.36 GA），用 CEL 表达式在 API Server 进程内完成校验与变更，无需部署 Webhook 服务。大多数字段级规则与默认值注入应优先使用准入策略，Webhook 保留给需要外部数据或复杂计算的场景，详见 [准入策略：用 CEL 替代 Webhook](../admission-policy/)。
+{{< /callout >}}
 
 准入 Webhook（Admission Webhook）是 Kubernetes API 扩展体系的重要组成部分。  
 它允许开发者在 API Server 处理对象创建、修改、删除等请求的过程中插入自定义逻辑，常见用途包括：
