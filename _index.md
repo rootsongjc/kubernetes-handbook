@@ -41,7 +41,7 @@ publisher: jimmysong.io
 ---
 
 {{< callout note 关于本教程 >}}
-《Kubernetes 基础教程》创建于 2017 年，持续维护与更新。本书以 Kubernetes **v1.37**（2026 年 8 月发布）为基准版本，基础架构与核心抽象部分已全面对齐，覆盖 v1.29 至 v1.37 间 GA 的原生 Sidecar、原地资源调整、用户命名空间、CEL 准入策略、DRA、nftables 等关键特性，并标注了各特性的版本状态；版本脉络可先阅读 [Kubernetes 版本演进速览](architecture/release-evolution/)。开源于 [GitHub](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建。内容以 [CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
+《Kubernetes 基础教程》创建于 2017 年，持续维护与更新。本书以 Kubernetes **v1.37**（2026 年 8 月发布）为基准版本，全书各章节已完成对齐，覆盖 v1.29 至 v1.37 间 GA 的原生 Sidecar、原地资源调整、用户命名空间、CEL 准入策略、DRA、nftables 等关键特性，并补充了调度约束、节点资源管理、安全上下文、静态加密、审计、多租户、供应链安全、镜像管理、投射卷、CoreDNS、API Server 深入、节点自动扩缩、备份恢复、策略引擎、双栈、领导者选举、成本可观测性等此前缺失的主题，各特性均标注版本状态；版本脉络可先阅读 [Kubernetes 版本演进速览](architecture/release-evolution/)。开源于 [GitHub](https://github.com/rootsongjc/kubernetes-handbook)，使用 Hugo 构建。内容以 [CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议共享。
 {{< /callout >}}
 
 ## 什么是云原生
@@ -92,6 +92,6 @@ Kubernetes Handbook 项目始于 2016 年底，开源于 2017 年 3 月，作为
 - **实战导向**：着重于经验总结和最佳实践分享
 - **深入浅出**：详细解析 Kubernetes 核心概念
 - **生态完整**：涵盖微服务、DevOps、服务网格、Serverless、边缘计算、AI 原生等相关领域
-- **持续更新**：跟进最新技术发展和社区动态，2026 年 11 月完成核心章节面向 v1.37 的全面修订，其余章节持续跟进
+- **持续更新**：跟进最新技术发展和社区动态，2026 年 11 月完成全书面向 v1.37 的全面修订与缺失主题补全
 
 {{< section-toc show_summary="true" style="cards"  >}}
