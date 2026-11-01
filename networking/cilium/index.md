@@ -1,5 +1,5 @@
 ---
-weight: 52
+weight: 7
 title: 基于 eBPF 的网络 Cilium
 linktitle: Cilium
 date: 2022-05-21T00:00:00+08:00

@@ -1,16 +1,18 @@
 ---
-weight: 3
+weight: 11
 title: "节点自动扩缩：Cluster Autoscaler 与 Karpenter"
 linktitle: 节点自动扩缩
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: node-autoscaling
 description: "讲解节点层的自动扩缩：扩容（为 Pending Pod 供应节点）与整合（回收低利用率节点）两个方向的原理，Cluster Autoscaler 的节点组模型与扩展器策略，Karpenter 的 NodePool/NodeClass 模型、整合策略与中断预算，两者的选型对比，与 HPA/VPA/KEDA 的配合，以及 GPU 节点、Spot 实例与 PDB 等生产注意事项。"
+aliases:
+  - /book/kubernetes-handbook/operation/node-autoscaling/
 ---
 
 > 工作负载自动扩缩解决"要多少 Pod"，节点自动扩缩解决"这些 Pod 放在哪台机器上"——后者直接决定账单。
 
-[HPA、VPA 与 KEDA](../../controllers/vpa-and-keda) 调整的是 Pod 的数量与大小，而当集群现有节点容纳不下新的 Pod 时，就需要节点自动扩缩器（Node Autoscaler）向云平台申请新节点；反过来，当节点长期空闲或低利用率时，自动缩容与整合是云上成本优化最直接的手段。SIG Autoscaling 目前维护两个节点自动扩缩实现：Cluster Autoscaler 与 Karpenter。
+[HPA、VPA 与 KEDA](../vpa-and-keda) 调整的是 Pod 的数量与大小，而当集群现有节点容纳不下新的 Pod 时，就需要节点自动扩缩器（Node Autoscaler）向云平台申请新节点；反过来，当节点长期空闲或低利用率时，自动缩容与整合是云上成本优化最直接的手段。SIG Autoscaling 目前维护两个节点自动扩缩实现：Cluster Autoscaler 与 Karpenter。
 
 ## 节点自动扩缩的两个方向
 
@@ -115,7 +117,7 @@ Karpenter 的几个关键特性：
 - **装箱式供应**：一批 Pending Pod 会被聚合后选择一台或少数几台恰好容纳的实例，而不是按固定机型逐台加；Spot 场景下自动在多种机型中选择中断率低、价格优的组合
 - **主动整合**：`WhenEmptyOrUnderutilized` 策略下，Karpenter 会持续评估能否删除节点或把节点替换为更便宜的机型（如把 `m5.2xlarge` 换成当前更便宜的 `m6a.xlarge` + 迁移 Pod），`Balanced` 则在成本与中断之间折中；配合 `budgets` 控制速度与时间窗口
 - **节点到期与漂移**：`expireAfter` 强制定期轮换节点以应用新的 AMI 与补丁；修改 `NodeClass` 后现有节点被标记为"漂移"（Drift）并按预算逐步替换，实现声明式的节点生命周期管理
-- **Spot 中断处理**：通过云平台事件（EC2 Spot 中断通知、计划维护）提前排空节点，与 [节点优雅关机](../../cluster/kubelet-resource-management) 配合
+- **Spot 中断处理**：通过云平台事件（EC2 Spot 中断通知、计划维护）提前排空节点，与 [节点优雅关机](../kubelet-resource-management) 配合
 
 ## 选型对比
 
@@ -140,8 +142,8 @@ Karpenter 的几个关键特性：
 
 节点扩缩与 Pod 扩缩是两个独立但相互触发的回路：HPA/KEDA 增加副本 → 新 Pod Pending → 节点扩容；HPA 减少副本 → 节点利用率下降 → 整合回收。配合时需注意：
 
-- **requests 准确性**是一切的前提，[VPA](../../controllers/vpa-and-keda) 推荐模式可持续校准
-- **扩容预热**：对延迟敏感的服务，可部署低优先级（负 `PriorityClass` 值）的"占位 Pod"预留一台空闲节点，真正的业务 Pod 到来时抢占占位 Pod 立即调度，节点扩缩器随后为被抢占的占位 Pod 补充节点，详见 [优先级与抢占](../../cluster/priority-and-preemption)
+- **requests 准确性**是一切的前提，[VPA](../vpa-and-keda) 推荐模式可持续校准
+- **扩容预热**：对延迟敏感的服务，可部署低优先级（负 `PriorityClass` 值）的"占位 Pod"预留一台空闲节点，真正的业务 Pod 到来时抢占占位 Pod 立即调度，节点扩缩器随后为被抢占的占位 Pod 补充节点，详见 [优先级与抢占](../priority-and-preemption)
 - **PDB** 是整合时的安全网，没有 PDB 的多副本应用可能在整合中被同时驱逐；但过于严格的 PDB（如 `maxUnavailable: 0`）会让节点永远无法回收，Karpenter 与 CA 都会在日志与事件中报告被 PDB 阻塞的节点
 - **DaemonSet 与系统 Pod** 不会阻止缩容；带本地存储（`emptyDir` 外的 hostPath/local PV）的 Pod、未被控制器管理的裸 Pod、以及带 `cluster-autoscaler.kubernetes.io/safe-to-evict: "false"` 或 `karpenter.sh/do-not-disrupt: "true"` 注解的 Pod 会阻止其所在节点被回收
 

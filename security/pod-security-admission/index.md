@@ -1,5 +1,5 @@
 ---
-weight: 21
+weight: 2
 title: "Pod 安全准入：用 Pod 安全标准取代 PodSecurityPolicy"
 linktitle: Pod 安全准入
 date: 2026-11-01T00:00:00+08:00

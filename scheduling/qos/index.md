@@ -1,10 +1,12 @@
 ---
-weight: 72
+weight: 5
 title: 服务质量等级（QoS）
 linktitle: 服务质量等级
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Pod 的服务质量等级（QoS）机制，包括 Guaranteed、Burstable 和 BestEffort 三种等级的配置方法和使用场景。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/cluster/qos/
 ---
 
 > 合理配置 QoS 等级是保障 Kubernetes 集群资源高效利用与关键业务稳定运行的基础。

@@ -1,5 +1,5 @@
 ---
-weight: 7
+weight: 8
 title: "无 Sidecar 服务网格：Istio Ambient、Cilium 与 Linkerd 的架构对比"
 linktitle: 无 Sidecar 网格对比
 date: 2026-11-01T00:00:00+08:00

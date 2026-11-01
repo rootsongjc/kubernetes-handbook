@@ -1,5 +1,5 @@
 ---
-weight: 32
+weight: 3
 title: ReplicaSet
 linktitle: ReplicaSet
 date: 2022-05-21T00:00:00+08:00

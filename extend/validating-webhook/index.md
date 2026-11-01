@@ -5,6 +5,8 @@ description: ValidatingWebhook 扩展用于在资源创建、更新、删除等�
 weight: 10
 lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-27T11:27:02.540Z
+aliases:
+  - /book/kubernetes-handbook/security/validating-webhook/
 ---
 
 > ValidatingWebhook 是 Kubernetes 动态准入控制的核心机制，支持在 API 请求路径中灵活注入自定义校验逻辑，实现安全、合规与智能化的集群治理。

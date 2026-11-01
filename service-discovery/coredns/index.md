@@ -1,5 +1,5 @@
 ---
-weight: 44
+weight: 3
 title: "CoreDNS 与集群 DNS：解析流程、Corefile 配置、Pod DNS 策略与性能调优"
 linktitle: CoreDNS 与集群 DNS
 date: 2026-11-01T00:00:00+08:00

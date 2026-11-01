@@ -1,5 +1,5 @@
 ---
-weight: 25
+weight: 6
 title: "多租户：命名空间隔离、控制面与数据面边界以及虚拟集群"
 linktitle: 多租户
 date: 2026-11-01T00:00:00+08:00
@@ -37,7 +37,7 @@ description: "系统讨论 Kubernetes 多租户的两种模型（多团队与多
 
 - 命名空间：绝大多数资源的作用域边界，也是 RBAC、配额、策略的挂载点
 - RBAC：租户管理员在自己命名空间内获得 `admin` 角色，禁止授予集群级角色与 `escalate`/`bind`/`impersonate` 动词
-- ResourceQuota 与 LimitRange：限制租户可消耗的计算资源、对象数量与单 Pod 的资源范围，详见 [资源配额与 LimitRange](../../cluster/resource-quota-and-limitrange)
+- ResourceQuota 与 LimitRange：限制租户可消耗的计算资源、对象数量与单 Pod 的资源范围，详见 [资源配额与 LimitRange](../../scheduling/resource-quota-and-limitrange)
 - 准入控制：Pod 安全准入在命名空间上强制 `baseline`/`restricted`；验证准入策略限制租户可用的 StorageClass、镜像仓库、节点选择器等
 
 **数据面隔离**解决"租户的工作负载能否互相影响"：
@@ -45,7 +45,7 @@ description: "系统讨论 Kubernetes 多租户的两种模型（多团队与多
 - 内核隔离：securityContext 最小权限（见 [安全上下文](../security-context)）、用户命名空间（`hostUsers: false`）让容器 root 映射为宿主机普通用户
 - 沙箱运行时：gVisor、Kata Containers 通过 RuntimeClass 为不可信负载提供独立内核
 - 节点隔离：用污点/容忍与节点亲和把租户固定在专属节点池，避免噪音邻居与节点级逃逸影响其他租户
-- 优先级与抢占：为每个租户分配 PriorityClass 并用配额限制高优先级的使用量，防止一个租户的抢占驱逐他人（见 [优先级与抢占](../../cluster/priority-and-preemption)）
+- 优先级与抢占：为每个租户分配 PriorityClass 并用配额限制高优先级的使用量，防止一个租户的抢占驱逐他人（见 [优先级与抢占](../../scheduling/priority-and-preemption)）
 
 **网络与存储隔离**：
 

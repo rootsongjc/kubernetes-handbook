@@ -1,6 +1,6 @@
 ---
 title: SuperEdge：单集群多区域边缘管理框架
-weight: 40
+weight: 5
 linktitle: SuperEdge
 lastmod: 2026-11-01T00:00:00+08:00
 social_title: 单集群多区域边缘管理，SuperEdge 有哪些独门绝技？

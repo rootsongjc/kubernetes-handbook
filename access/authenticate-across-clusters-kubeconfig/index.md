@@ -1,5 +1,5 @@
 ---
-weight: 93
+weight: 6
 title: 使用 kubeconfig 文件配置跨集群认证
 linktitle: kubeconfig 与跨集群访问
 date: 2022-05-21T00:00:00+08:00

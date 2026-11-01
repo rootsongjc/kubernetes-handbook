@@ -1,5 +1,5 @@
 ---
-weight: 9
+weight: 4
 title: 容器存储接口（CSI）
 date: 2022-05-21T00:00:00+08:00
 type: book

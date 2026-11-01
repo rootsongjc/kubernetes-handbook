@@ -1,6 +1,6 @@
 ---
 title: Kubernetes 原生 Serverless 模式
-weight: 6
+weight: 5
 description: 使用 Kubernetes 原生功能实现 Serverless 模式，包括 HPA、KEDA 和 Job 模式
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

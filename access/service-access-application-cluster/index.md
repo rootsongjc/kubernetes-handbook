@@ -1,5 +1,5 @@
 ---
-weight: 95
+weight: 8
 title: 使用 Service 访问集群中的应用程序
 linktitle: 通过 Service 访问
 date: 2022-05-21T00:00:00+08:00

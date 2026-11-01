@@ -1,5 +1,5 @@
 ---
-weight: 35
+weight: 8
 title: CronJob
 date: 2022-05-21T00:00:00+08:00
 description: CronJob 是 Kubernetes 中用于管理基于时间调度的 Job 资源，支持一次性和周期性任务执行，类似于 Linux 系统中的 crontab 功能。

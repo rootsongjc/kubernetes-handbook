@@ -1,5 +1,5 @@
 ---
-weight: 26
+weight: 7
 title: "软件供应链安全：镜像签名、SBOM、来源证明与准入验证"
 linktitle: 供应链安全
 date: 2026-11-01T00:00:00+08:00

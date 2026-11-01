@@ -1,5 +1,5 @@
 ---
-weight: 30
+weight: 4
 title: StatefulSet
 date: 2022-05-21T00:00:00+08:00
 description: StatefulSet 是 Kubernetes 中用于管理有状态应用的控制器，提供稳定的网络标识、持久化存储和有序部署等特性，适用于数据库、消息队列等需要状态保持的应用场景。

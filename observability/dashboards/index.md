@@ -1,6 +1,6 @@
 ---
 title: 可视化仪表板
-weight: 5
+weight: 6
 description: Kubernetes 可观测性数据的可视化展示，包括 Grafana 和 Kiali 等工具。
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

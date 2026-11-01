@@ -1,5 +1,5 @@
 ---
-weight: 113
+weight: 10
 title: 参与 Kubernetes 社区贡献
 linktitle: 社区参与
 date: 2022-05-21T00:00:00+08:00

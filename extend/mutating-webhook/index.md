@@ -1,7 +1,7 @@
 ---
 title: Mutating Webhook 扩展：自动注入与资源修改控制
 linktitle: Mutating Webhook 扩展
-weight: 20
+weight: 11
 date: 2025-10-27T21:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 description: 介绍 Kubernetes MutatingAdmissionWebhook 的工作机制与应用实践，包括自动注入 Sidecar、动态默认值填充、资源标签修改等场景，帮助你掌握集群级动态变更的最佳实践。

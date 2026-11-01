@@ -1,5 +1,5 @@
 ---
-weight: 97
+weight: 11
 title: k9s - Kubernetes 终端 UI
 linktitle: k9s
 date: 2025-10-19T07:54:12.991Z

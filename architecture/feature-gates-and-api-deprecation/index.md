@@ -1,5 +1,5 @@
 ---
-weight: 12
+weight: 7
 title: "特性门控与 API 弃用策略：读懂 Alpha/Beta/GA 并安全地升级"
 linktitle: 特性门控与 API 弃用
 date: 2026-11-01T00:00:00+08:00

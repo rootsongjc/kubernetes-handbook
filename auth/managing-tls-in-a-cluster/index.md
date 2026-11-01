@@ -1,10 +1,12 @@
 ---
-weight: 84
+weight: 10
 title: 管理集群中的 TLS
 date: 2022-05-21T00:00:00+08:00
 type: book
 description: 详细介绍 Kubernetes 集群中 TLS 证书的管理机制，包括集群根证书颁发机构（CA）的工作原理、证书签名请求（CSR）的创建和批准流程，以及如何在 Pod 中建立 TLS 信任关系。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/security/managing-tls-in-a-cluster/
 ---
 
 在使用二进制文件部署 Kubernetes 集群时，TLS 证书配置往往是最容易出错的环节。理解 Kubernetes 集群中 TLS 证书的管理机制，对于构建安全可靠的集群至关重要。

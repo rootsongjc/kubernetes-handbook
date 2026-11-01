@@ -14,7 +14,7 @@ icon: kubernetes
 icon-pack: custom
 parts:
     - id: part-i
-      title: Part I · 基础架构与核心抽象
+      title: Part I · 云原生基础与核心抽象
       order: 1
       collapse: false
     - id: part-ii
@@ -22,7 +22,7 @@ parts:
       order: 2
       collapse: false
     - id: part-iii
-      title: Part III · 扩展机制与新范式
+      title: Part III · 新范式与生态
       order: 3
       collapse: false
 cascade:

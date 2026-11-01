@@ -1,7 +1,7 @@
 ---
 title: HAMi：Kubernetes 上的异构算力虚拟化中间件
 description: 探索 HAMi：Kubernetes 上的异构算力虚拟化中间件，提升 AI 加速器管理与调度效率，助力资源优化与灵活性。
-weight: 11
+weight: 6
 linktitle: HAMi：算力虚拟化
 lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-20T04:55:31.153Z

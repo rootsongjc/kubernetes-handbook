@@ -1,5 +1,5 @@
 ---
-weight: 13
+weight: 5
 title: "kube-apiserver 深入：请求处理链、存储层、Watch 缓存、API 优先级与公平性"
 linktitle: kube-apiserver 深入
 date: 2026-11-01T00:00:00+08:00

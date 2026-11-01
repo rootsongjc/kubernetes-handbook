@@ -1,14 +1,16 @@
 ---
-weight: 36
+weight: 6
 title: Ingress 控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes Ingress 控制器的作用、官方支持的控制器类型、第三方控制器选择，以及如何在集群中部署和管理多个 Ingress 控制器。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/controllers/ingress-controller/
 ---
 
 > Ingress 控制器是 Kubernetes 网络流量管理的关键组件，决定了外部请求如何安全、高效地路由到集群内部服务，是实现弹性和可扩展网络架构的基础。
 
-在 Kubernetes 集群中，若希望 [Ingress](../../service-discovery/ingress) 资源能够正常工作，必须部署至少一个 Ingress 控制器。与作为 `kube-controller-manager` 组件自动启动的其他控制器不同，Ingress 控制器需要用户根据实际需求单独部署和管理。选择合适的 Ingress 控制器对于集群的网络能力和安全性至关重要。
+在 Kubernetes 集群中，若希望 [Ingress](../ingress) 资源能够正常工作，必须部署至少一个 Ingress 控制器。与作为 `kube-controller-manager` 组件自动启动的其他控制器不同，Ingress 控制器需要用户根据实际需求单独部署和管理。选择合适的 Ingress 控制器对于集群的网络能力和安全性至关重要。
 
 ## 官方支持的控制器
 
@@ -223,7 +225,7 @@ metadata:
 
 ## 总结
 
-Ingress 控制器是 Kubernetes 网络流量管理的核心，直接影响集群的可扩展性、安全性和高可用性。随着 Ingress NGINX 退役和 Gateway API 走向成熟，流量入口正在从 Ingress 过渡到 Gateway API，选型时应把 Gateway API 支持作为首要考量，迁移方法参见 [从 Ingress 迁移到 Gateway API](../../service-discovery/migrating-from-ingress-to-gateway-api)。合理选择和配置 Ingress 控制器，结合 IngressClass 等机制实现多控制器协同，是构建现代云原生网络架构的关键。建议根据实际业务需求、云平台特性和团队运维能力，选择最适合的 Ingress 控制器方案，并持续关注社区动态和最佳实践。
+Ingress 控制器是 Kubernetes 网络流量管理的核心，直接影响集群的可扩展性、安全性和高可用性。随着 Ingress NGINX 退役和 Gateway API 走向成熟，流量入口正在从 Ingress 过渡到 Gateway API，选型时应把 Gateway API 支持作为首要考量，迁移方法参见 [从 Ingress 迁移到 Gateway API](../migrating-from-ingress-to-gateway-api)。合理选择和配置 Ingress 控制器，结合 IngressClass 等机制实现多控制器协同，是构建现代云原生网络架构的关键。建议根据实际业务需求、云平台特性和团队运维能力，选择最适合的 Ingress 控制器方案，并持续关注社区动态和最佳实践。
 
 ## 参考文献
 

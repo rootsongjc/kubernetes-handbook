@@ -1,5 +1,5 @@
 ---
-weight: 108
+weight: 6
 title: Kubernetes 测试指南
 linktitle: 测试指南
 description: 介绍 Kubernetes 项目中的各种测试方法和最佳实践，涵盖单元测试、集成测试和端到端测试，帮助开发者构建高质量的 Kubernetes 组件。

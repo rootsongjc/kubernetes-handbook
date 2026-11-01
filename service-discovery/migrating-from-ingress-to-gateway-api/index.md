@@ -1,5 +1,5 @@
 ---
-weight: 43
+weight: 8
 title: 从 Ingress 迁移到 Gateway API
 linktitle: 迁移到 Gateway API
 date: 2024-12-20T12:00:00+08:00

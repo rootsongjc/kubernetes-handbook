@@ -1,5 +1,5 @@
 ---
-weight: 101
+weight: 9
 title: 迁移传统应用到 Kubernetes 步骤详解——以 Hadoop YARN 为例
 linktitle: 迁移传统应用
 date: 2022-05-21T00:00:00+08:00

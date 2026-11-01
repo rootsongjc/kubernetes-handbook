@@ -1,5 +1,5 @@
 ---
-weight: 23
+weight: 4
 title: "静态数据加密：Secret 落盘保护与 KMS v2 信封加密"
 linktitle: 静态数据加密
 date: 2026-11-01T00:00:00+08:00

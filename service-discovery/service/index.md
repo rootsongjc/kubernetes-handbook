@@ -1,5 +1,5 @@
 ---
-weight: 39
+weight: 2
 title: Service
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes Service 为 Pod 提供稳定的网络访问抽象，通过标签选择器将流量路由到后端 Pod，支持多种服务发现方式和代理模式，是微服务架构中的核心组件。

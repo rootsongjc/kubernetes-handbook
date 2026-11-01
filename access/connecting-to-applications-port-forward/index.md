@@ -1,5 +1,5 @@
 ---
-weight: 94
+weight: 7
 title: 通过端口转发访问集群中的应用程序
 linktitle: 端口转发访问
 date: 2022-05-21T00:00:00+08:00

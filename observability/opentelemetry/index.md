@@ -2,7 +2,7 @@
 title: OpenTelemetry：Kubernetes 可观测性的事实标准
 linktitle: OpenTelemetry
 lastmod: 2026-11-01T00:00:00+08:00
-weight: 7
+weight: 5
 description: OpenTelemetry 已成为 Kubernetes 可观测性领域的事实标准，统一了指标、追踪与日志采集，极大简化了云原生环境下的观测体系建设。
 social_title: 为什么 OpenTelemetry 是 Kubernetes 可观测性的事实标准？
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/observability/opentelemetry/banner.webp

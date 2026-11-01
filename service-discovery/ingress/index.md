@@ -1,5 +1,5 @@
 ---
-weight: 41
+weight: 5
 title: Ingress
 date: 2022-05-21T00:00:00+08:00
 type: book
@@ -44,7 +44,7 @@ Ingress 提供以下核心功能：
 - 准备好后端 Service 和 Pod
 
 {{< callout warning "注意" >}}
-仅创建 Ingress 资源本身不会产生任何效果，必须配合 [Ingress 控制器](../../controllers/ingress-controller) 一起使用。
+仅创建 Ingress 资源本身不会产生任何效果，必须配合 [Ingress 控制器](../ingress-controller) 一起使用。
 {{< /callout >}}
 
 ## 基本配置与路径类型

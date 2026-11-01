@@ -1,11 +1,13 @@
 ---
-weight: 75
+weight: 6
 title: "ResourceQuota 与 LimitRange：命名空间级资源治理"
 linktitle: ResourceQuota 与 LimitRange
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: resource-quota-and-limitrange
 description: "介绍 Kubernetes 命名空间级资源治理的两大机制：ResourceQuota 限制命名空间内计算资源、存储、对象数量与扩展资源的总量，支持按 QoS、优先级类、跨命名空间 Pod 亲和等作用域；LimitRange 为单个 Pod/容器/PVC 设置默认值、最小/最大值与比例约束。涵盖配额与 LimitRange 的协作、对 GPU 等扩展资源的配额、常见错误与多租户实践。"
+aliases:
+  - /book/kubernetes-handbook/cluster/resource-quota-and-limitrange/
 ---
 
 > 没有配额的多租户集群只是"大家一起用的集群"；ResourceQuota 划定每个团队的总盘子，LimitRange 保证每个 Pod 都带着合理的资源声明进来。

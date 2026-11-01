@@ -1,5 +1,5 @@
 ---
-weight: 11
+weight: 3
 title: "Kubernetes 版本演进速览：v1.29 到 v1.37"
 linktitle: 版本演进速览
 date: 2026-11-01T00:00:00+08:00

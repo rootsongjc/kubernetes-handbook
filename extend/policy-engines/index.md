@@ -1,5 +1,5 @@
 ---
-weight: 22
+weight: 13
 title: "策略引擎：Kyverno、OPA Gatekeeper 与原生准入策略的选型"
 linktitle: 策略引擎
 date: 2026-11-01T00:00:00+08:00

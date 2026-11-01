@@ -1,7 +1,7 @@
 ---
 linktitle: Terraform 在 Kubernetes 运维中的应用
 title: 使用 Terraform 管理 Kubernetes：从集群到应用的 IaC 实践
-weight: 4
+weight: 7
 description: 介绍 Terraform 在 Kubernetes 集群管理和资源编排中的最佳实践与应用场景。
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

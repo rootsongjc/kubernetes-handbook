@@ -1,5 +1,5 @@
 ---
-weight: 64
+weight: 12
 title: "临时卷：emptyDir、通用临时卷、CSI 临时卷与本地临时存储配额"
 linktitle: 临时卷
 date: 2026-11-01T00:00:00+08:00
@@ -121,7 +121,7 @@ containers:
 
 调度器按 `requests.ephemeral-storage` 的总和与节点 Allocatable 匹配；kubelet 定期（默认 10 秒）统计每个容器的可写层与日志、每个 Pod 的 `emptyDir` 用量，容器超过 limit 或 Pod 中所有容器 limit 之和被超过时驱逐 Pod（`emptyDir` 的 `sizeLimit` 同理）。由于统计是周期性扫描，短时间内的突发写入可能超过限制后才被发现；开启 `LocalStorageCapacityIsolationFSQuotaMonitoring`（v1.31 起 Beta，默认关闭）可改用 XFS/ext4 项目配额做精确、实时的用量统计。
 
-节点级的磁盘保护则由 [节点压力驱逐](../../cluster/kubelet-resource-management) 的 `nodefs.available`/`imagefs.available` 阈值兜底；若节点为镜像与容器可写层配置了独立磁盘（`KubeletSeparateDiskGC`），`emptyDir` 与日志仍在 nodefs 上统计。命名空间级的总量可通过 ResourceQuota 的 `requests.ephemeral-storage`/`limits.ephemeral-storage` 限制，LimitRange 可为未声明的容器设置默认值。
+节点级的磁盘保护则由 [节点压力驱逐](../../scheduling/kubelet-resource-management) 的 `nodefs.available`/`imagefs.available` 阈值兜底；若节点为镜像与容器可写层配置了独立磁盘（`KubeletSeparateDiskGC`），`emptyDir` 与日志仍在 nodefs 上统计。命名空间级的总量可通过 ResourceQuota 的 `requests.ephemeral-storage`/`limits.ephemeral-storage` 限制，LimitRange 可为未声明的容器设置默认值。
 
 ## 选型建议
 

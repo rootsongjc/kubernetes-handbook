@@ -1,5 +1,5 @@
 ---
-weight: 47
+weight: 11
 title: SPIFFE
 date: 2022-05-21T00:00:00+08:00
 description: 本文介绍了 SPIFFE 的核心概念，包括工作负载、SPIFFE ID、信任域、SVID 和工作负载 API 等，以及它们在云原生应用中的应用。

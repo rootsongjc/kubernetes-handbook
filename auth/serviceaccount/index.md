@@ -1,5 +1,5 @@
 ---
-weight: 44
+weight: 4
 title: ServiceAccount
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中的 ServiceAccount 概念，包括其作用、配置方法和最佳实践，帮助理解 Pod 身份认证机制。

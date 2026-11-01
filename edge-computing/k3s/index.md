@@ -1,6 +1,6 @@
 ---
 title: K3s：轻量级 Kubernetes 发行版
-weight: 20
+weight: 3
 linktitle: K3s
 lastmod: 2026-11-01T00:00:00+08:00
 social_title: 轻量级 Kubernetes？K3s 如何让边缘设备也能玩转 K8s

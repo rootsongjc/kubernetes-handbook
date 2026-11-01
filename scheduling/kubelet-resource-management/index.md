@@ -1,11 +1,13 @@
 ---
-weight: 76
+weight: 7
 title: "kubelet 节点资源管理：资源预留、节点压力驱逐、垃圾回收与资源管理器"
 linktitle: kubelet 节点资源管理
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: kubelet-resource-management
 description: "深入 kubelet 在节点侧的资源管理职责：Node Allocatable 与 kube-reserved/system-reserved/eviction 预留模型、节点压力驱逐的信号/阈值/Pod 选择顺序、镜像与容器垃圾回收、节点优雅关机，以及面向延迟敏感与 AI 负载的 CPU 管理器、内存管理器、拓扑管理器与 NUMA 对齐。"
+aliases:
+  - /book/kubernetes-handbook/cluster/kubelet-resource-management/
 ---
 
 > 调度器只看"节点声称有多少资源"，而节点能不能真的兑现这些承诺，取决于 kubelet 如何预留、如何驱逐、如何在 NUMA 之间摆放 CPU 和内存。

@@ -1,5 +1,5 @@
 ---
-weight: 106
+weight: 4
 title: client-go 示例
 description: 通过一个实战示例，介绍如何使用 client-go 库实现对 Kubernetes 集群中 Deployment 资源的镜像更新操作，涵盖代码实现、编译使用及监控排查等内容。
 date: 2022-05-21T00:00:00+08:00

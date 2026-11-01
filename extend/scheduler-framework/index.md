@@ -1,7 +1,7 @@
 ---
 title: Kubernetes Scheduler Framework 插件机制
 linktitle: Scheduler Framework 插件
-weight: 35
+weight: 15
 date: 2025-10-27T22:20:00+08:00
 lastmod: 2025-10-28T13:33:38.741Z
 description: 深入理解并实践 Kubernetes Scheduler Framework 插件开发，掌握自定义调度逻辑的编写、注册、调试与应用，为 AI 原生与 GPU 调度扩展打下基础。

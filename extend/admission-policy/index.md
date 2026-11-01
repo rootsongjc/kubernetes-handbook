@@ -1,5 +1,5 @@
 ---
-weight: 21
+weight: 12
 title: "准入策略：用 CEL 替代 Webhook（ValidatingAdmissionPolicy 与 MutatingAdmissionPolicy）"
 linktitle: 准入策略（CEL）
 date: 2026-11-01T00:00:00+08:00

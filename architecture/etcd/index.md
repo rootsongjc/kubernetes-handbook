@@ -1,5 +1,5 @@
 ---
-weight: 5
+weight: 6
 title: Etcd 解析
 date: 2024-01-15T00:00:00+08:00
 description: 深入解析 etcd 在 Kubernetes 中的核心作用，包括分布式存储原理、Raft 共识算法、数据备份恢复、性能优化和安全配置等实践指南。

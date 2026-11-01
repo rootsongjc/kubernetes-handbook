@@ -1,5 +1,5 @@
 ---
-weight: 63
+weight: 11
 title: "Downward API 与投射卷：向容器注入 Pod 元数据、令牌、信任包与证书"
 linktitle: Downward API 与投射卷
 date: 2026-11-01T00:00:00+08:00

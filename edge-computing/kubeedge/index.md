@@ -1,6 +1,6 @@
 ---
 title: KubeEdge：云原生边缘计算框架
-weight: 10
+weight: 2
 linktitle: KubeEdge
 lastmod: 2026-11-01T00:00:00+08:00
 cover: https://assets.jimmysong.io/images/book/kubernetes-handbook/edge-computing/kubeedge/banner.webp

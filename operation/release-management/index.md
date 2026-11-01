@@ -2,7 +2,7 @@
 title: Kubernetes 版本发布管理
 linktitle: 版本发布管理
 date: 2025-10-13
-weight: 40
+weight: 3
 description: Kubernetes 版本发布管理系统负责版本规划、发布执行与支持保障。本文详解发布周期、角色分工、流程与策略，助力稳定可靠地交付 Kubernetes 版本。
 lastmod: 2026-11-01T00:00:00+08:00
 ---

@@ -1,15 +1,18 @@
 ---
-title: Kubernetes 调度与资源管理
-linktitle: 调度与资源管理
+title: 调度与弹性概述
+linktitle: 概述
 date: 2025-10-13
-weight: 2
-description: 介绍 Kubernetes 的调度与资源管理系统，涵盖调度器工作原理、资源分配、自动扩缩容、抢占与驱逐等机制，帮助优化集群资源利用率。
+weight: 1
+description: "本章概览：梳理 Kubernetes 调度器工作原理、资源 requests/limits、调度约束、优先级抢占、节点压力驱逐、PDB、HPA/VPA 与节点弹性、装箱策略与多调度器，并给出各主题的深入阅读导引。"
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/operation/scheduling-and-resource-management/
+slug: overview
 ---
 
 > 灵活的调度与资源管理，是 Kubernetes 实现弹性、高可用和高效资源利用的核心竞争力。
 
-Kubernetes 通过灵活的调度与资源管理机制，实现了高效的工作负载分布与资源利用。本文系统梳理调度流程、资源分配、自动扩缩容、优先级抢占、节点压力驱逐等核心内容，助力集群性能与可靠性提升。
+Kubernetes 通过灵活的调度与资源管理机制，实现了高效的工作负载分布与资源利用。本文作为本章概览，系统梳理调度流程、资源分配、自动扩缩容、优先级抢占、节点压力驱逐等核心内容；每个主题在本章后续文章中都有专门的深入讨论。
 
 ## 调度与资源管理概述
 
@@ -277,6 +280,27 @@ Kubernetes 支持大规模集群，常见上限如下：
 - 单节点最大 Pod 数：110
 
 大集群需关注控制面容量、资源配额、云厂商限制、网络与存储性能等。
+
+## 本章导读
+
+本章其余文章按"调度 → 资源管理 → 弹性"的顺序展开：
+
+{{< table title="调度与弹性章节导读" >}}
+
+| 主题 | 文章 |
+|------|------|
+| 调度器工作原理与调度框架 | [kube-scheduler 资源调度](../kube-scheduler) |
+| nodeSelector、亲和性、拓扑分布约束 | [调度约束](../scheduling-constraints) |
+| PriorityClass、抢占与 PDB 的交互 | [优先级与抢占](../priority-and-preemption) |
+| Guaranteed/Burstable/BestEffort 与驱逐顺序 | [服务质量等级](../qos) |
+| 命名空间级配额与默认资源 | [ResourceQuota 与 LimitRange](../resource-quota-and-limitrange) |
+| 资源预留、节点压力驱逐、CPU/内存/拓扑管理器 | [kubelet 节点资源管理](../kubelet-resource-management) |
+| 基于指标的水平扩缩 | [Horizontal Pod Autoscaling](../hpa)、[自定义 Pod 自动扩缩容器](../custom-autoscaler) |
+| 纵向扩缩与事件驱动扩缩 | [VPA 与 KEDA](../vpa-and-keda) |
+| 节点层弹性 | [节点自动扩缩](../node-autoscaling) |
+| 批处理与 AI 的成组调度 | [Volcano 批处理调度器](../volcano) |
+
+{{< /table >}}
 
 ## 总结
 

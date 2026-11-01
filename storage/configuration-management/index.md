@@ -2,7 +2,7 @@
 linktitle: 配置与密文管理
 title: ConfigMap 和 Secret 管理
 date: 2025-10-13
-weight: 20
+weight: 2
 description: 本文介绍 Kubernetes 如何通过 ConfigMap 和 Secret 实现应用配置与密文的分离，支持环境无关的容器镜像构建与安全配置注入。
 lastmod: 2026-11-01T00:00:00+08:00
 ---

@@ -1,10 +1,12 @@
 ---
-weight: 38
+weight: 8
 title: 准入控制器（Admission Controller）
 linktitle: 准入控制器
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 准入控制器的工作原理、类型分类和配置方法，包括变更和验证准入控制的详细说明，以及各种内置准入控制器的功能介绍和推荐配置。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/controllers/admission-controller/
 ---
 
 > 准入控制器是 Kubernetes 实现策略治理和安全合规的关键机制，通过内建插件与 Webhook 扩展，用户可灵活实现自动化、合规与安全控制。
@@ -74,7 +76,7 @@ Kubernetes 内置了多种准入控制器插件，用于常见策略和安全控
 
 {{< /table >}}
 
-`PodSecurity` 以 Namespace 标签为作用单元，用法详见 [Pod 安全准入](../../security/pod-security-admission)；`ValidatingAdmissionPolicy` 与 `MutatingAdmissionPolicy` 的编写方法详见 [准入策略：用 CEL 替代 Webhook](../../extend/admission-policy)。
+`PodSecurity` 以 Namespace 标签为作用单元，用法详见 [Pod 安全准入](../../security/pod-security-admission)；`ValidatingAdmissionPolicy` 与 `MutatingAdmissionPolicy` 的编写方法详见 [准入策略：用 CEL 替代 Webhook](../admission-policy)。
 
 启用和禁用内建插件时，可通过如下参数配置：
 

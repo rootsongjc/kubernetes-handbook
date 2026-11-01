@@ -1,7 +1,7 @@
 ---
 title: Kubernetes AI 相关工作组介绍
 linktitle: AI 工作组
-weight: 110
+weight: 4
 description: "梳理 Kubernetes 社区面向 AI 工作负载的工作组与子项目：AI Conformance（SIG Architecture 子项目与 CNCF 认证）、WG AI Gateway、WG Device Management、WG Batch、WG Workload-aware Scheduling、WG Workload Conformance，以及已归档的 WG Serving 留下的成果，说明各自职责、产出与相互关系。"
 date: 2025-11-18T13:33:59.759Z
 lastmod: 2026-11-01T00:00:00+08:00

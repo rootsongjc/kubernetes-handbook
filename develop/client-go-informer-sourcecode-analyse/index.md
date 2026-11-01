@@ -1,5 +1,5 @@
 ---
-weight: 107
+weight: 5
 linktitle: client-go informer
 title: client-go 中的 informer 源码分析
 description: 本文将以图文并茂的方式对 client-go 中的 informer 的源码进行深入分析，揭示其核心实现机制。

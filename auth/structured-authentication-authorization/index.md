@@ -1,5 +1,5 @@
 ---
-weight: 46
+weight: 6
 title: "结构化认证与鉴权配置"
 linktitle: 结构化认证与鉴权配置
 date: 2026-11-01T00:00:00+08:00

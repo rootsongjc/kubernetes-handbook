@@ -1,5 +1,5 @@
 ---
-weight: 21
+weight: 10
 title: "Pod 原地资源调整与 Pod 级资源"
 linktitle: 原地资源调整
 date: 2026-11-01T00:00:00+08:00

@@ -1,5 +1,5 @@
 ---
-weight: 61
+weight: 9
 title: 本地持久化存储
 date: 2022-05-21T00:00:00+08:00
 description: 了解如何在 Kubernetes 中配置和使用本地持久化存储，包括静态配置器的部署、PV/PVC 的创建以及最佳实践指南。

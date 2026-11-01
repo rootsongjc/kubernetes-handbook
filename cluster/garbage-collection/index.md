@@ -1,5 +1,5 @@
 ---
-weight: 27
+weight: 7
 title: 垃圾收集
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 垃圾收集机制，包括 Owner 和 Dependent 对象关系、级联删除策略（Background、Foreground、Orphan）以及实际操作示例和最佳实践。

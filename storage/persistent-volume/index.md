@@ -1,5 +1,5 @@
 ---
-weight: 59
+weight: 7
 linktitle: 持久化卷
 title: 持久化卷（Persistent Volume）
 date: 2022-05-21T00:00:00+08:00

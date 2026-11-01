@@ -1,5 +1,5 @@
 ---
-weight: 110
+weight: 8
 title: "Lease 与领导者选举：控制器高可用的协调原语"
 linktitle: Lease 与领导者选举
 date: 2026-11-01T00:00:00+08:00

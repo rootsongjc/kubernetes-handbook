@@ -1,5 +1,5 @@
 ---
-weight: 60
+weight: 8
 title: Storage Class
 date: 2022-05-21T00:00:00+08:00
 description: 介绍 Kubernetes 中 StorageClass 的概念、资源定义、分配器类型、参数配置和使用方法，帮助管理员更好地管理集群存储资源。

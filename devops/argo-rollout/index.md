@@ -1,7 +1,7 @@
 ---
 title: Argo Rollout：Kubernetes 的渐进式交付控制器
 linktitle: Argo Rollout：渐进式交付
-weight: 106
+weight: 6
 description: Argo Rollout 是 Kubernetes 的渐进式交付控制器，提供蓝绿部署和金丝雀部署等高级部署策略，支持细粒度流量控制和自动化分析，提升应用交付的安全性和可靠性。
 date: 2025-01-20T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

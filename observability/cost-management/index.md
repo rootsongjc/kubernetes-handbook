@@ -94,9 +94,9 @@ metadata:
 
 有了分摊数据后，优化从几个固定的问题开始：
 
-- **效率（Efficiency）**：`usage / request` 的比值。OpenCost 为每个工作负载报告 CPU 与内存效率，长期低于 30% – 40% 的工作负载是 [VPA](../../controllers/vpa-and-keda) 推荐模式的首要目标
+- **效率（Efficiency）**：`usage / request` 的比值。OpenCost 为每个工作负载报告 CPU 与内存效率，长期低于 30% – 40% 的工作负载是 [VPA](../../scheduling/vpa-and-keda) 推荐模式的首要目标
 - **没有 requests 的 Pod**：BestEffort Pod 不参与分摊基准，也让节点扩缩无法预估；用 LimitRange 补默认值并用策略拒绝无 requests 的生产工作负载
-- **闲置节点与装箱碎片**：节点整体分配率低于 50% 却因个别 Pod 无法回收；用 [Karpenter 的整合](../../operation/node-autoscaling)、descheduler 的 `HighNodeUtilization` 策略或调整机型
+- **闲置节点与装箱碎片**：节点整体分配率低于 50% 却因个别 Pod 无法回收；用 [Karpenter 的整合](../../scheduling/node-autoscaling)、descheduler 的 `HighNodeUtilization` 策略或调整机型
 - **非工作时间的开发/测试环境**：按 Cron 缩容到零（KEDA `cron` Scaler、kube-downscaler），通常能节省 60% 以上
 - **孤立资源**：未绑定的 PV、未被 Service 引用的负载均衡器、已完成 Job 残留的 Pod；用 Kyverno DeletingPolicy 或定期脚本清理
 - **跨区流量**：Pod 与依赖服务分布在不同可用区导致的流量费用；用 [拓扑感知路由](../../service-discovery/topology-aware-routing) 的 `trafficDistribution: PreferSameZone` 让流量尽量留在同区

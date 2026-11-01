@@ -1,5 +1,5 @@
 ---
-weight: 74
+weight: 8
 title: 配置 Pod 的 liveness 和 readiness 探针
 linktitle: 存活和就绪探针
 slug: liveness-readiness-probes

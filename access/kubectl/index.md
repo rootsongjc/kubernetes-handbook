@@ -2,9 +2,11 @@
 title: Kubernetes API 访问与 kubectl 实践
 linktitle: kubectl 命令行工具
 date: 2025-10-13
-weight: 10
+weight: 2
 description: 详解如何通过 kubectl 命令行工具与 Kubernetes API 交互，涵盖认证机制、请求模式、资源管理与自动化实践，助力高效管理集群资源。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/cli/using-kubectl/
 ---
 
 kubectl 是 Kubernetes 官方命令行工具，极大简化了 API 交互、认证、资源管理与自动化操作。掌握 kubectl 与 API 的工作原理，有助于提升集群运维与开发效率。
@@ -160,6 +162,63 @@ Kubernetes 提供多语言官方客户端库：
 ```bash
 kubectl proxy --port=8080
 curl http://localhost:8080/api/v1/namespaces/default/pods
+```
+
+## kubectl 命令分类
+
+kubectl 的子命令按功能主要分为以下几个类别：
+
+- **基础命令（入门级）**：create、expose、run、set 等基本操作命令
+- **基础命令（进阶级）**：explain、get、edit、delete 等常用管理命令
+- **部署命令**：rollout、scale、autoscale 等部署相关命令
+- **集群管理命令**：certificate、cluster-info、top 等集群维护命令
+- **故障排查和调试命令**：describe、logs、exec、port-forward 等诊断命令
+- **高级命令**：diff、apply、patch、replace 等高级操作命令
+- **设置命令**：label、annotate、completion 等配置命令
+- **其他命令**：auth、config、plugin、version 等辅助命令
+
+熟练掌握这些命令分类有助于提高 Kubernetes 集群的操作效率。
+
+## kubectl 命令行增强工具
+
+为提升 kubectl 的调试与管理效率，推荐结合多种开源增强工具。
+
+![kubectl 增强工具推荐](https://assets.jimmysong.io/images/book/kubernetes-handbook/cli/using-kubectl/tools-to-supercharge-kubectl.webp)
+{width=2048 height=1535}
+
+### 推荐工具清单
+
+- **[kubectx](https://github.com/ahmetb/kubectx)**：快速切换 Kubernetes context 和 namespace
+- **[kube-ps1](https://github.com/jonmosco/kube-ps1)**：在命令行提示符中显示当前的 Kubernetes context 和 namespace
+- **[k9s](https://github.com/derailed/k9s)**：终端 UI，集群资源可视化管理
+- **[kubens](https://github.com/ahmetb/kubectx)**：快速切换 namespace
+- **[stern](https://github.com/stern/stern)**：多 Pod 日志聚合查看工具
+- **[krew](https://krew.sigs.k8s.io/)**：kubectl 插件管理器，`kubectl krew install` 即可安装 `neat`、`tree`、`view-secret` 等上百个社区插件
+- **kuberc**：kubectl 内建的用户偏好文件（v1.34 Beta 默认开启），可定义命令别名与默认参数，部分替代 shell alias 的用途
+
+### kube-shell 交互式终端
+
+[kube-shell](https://github.com/cloudnativelabs/kube-shell) 为 kubectl 提供交互式命令行体验，适合复杂调试和命令探索。
+
+![kube-shell 交互终端界面](https://assets.jimmysong.io/images/book/kubernetes-handbook/cli/using-kubectl/kube-shell.webp)
+{width=2592 height=1976}
+
+**主要特性**：
+
+- 智能命令提示和使用说明
+- 自动补全和模糊搜索
+- 语法高亮显示
+- Tab 键列出可选对象
+- 支持 vim 编辑模式
+
+**安装方法**：
+
+```bash
+# 使用 pip 安装
+pip install kube-shell --user -U
+
+# 或使用 pipx 安装（推荐）
+pipx install kube-shell
 ```
 
 ## kubectl 脚本与自动化最佳实践

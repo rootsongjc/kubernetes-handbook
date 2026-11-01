@@ -1,5 +1,5 @@
 ---
-weight: 103
+weight: 4
 title: 持续集成与交付（CI/CD）
 linktitle: CI/CD（持续集成与交付）
 date: 2023-06-16T15:40:00+08:00

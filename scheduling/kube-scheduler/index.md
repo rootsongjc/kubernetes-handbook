@@ -1,9 +1,12 @@
 ---
-weight: 71
+weight: 2
 title: 资源调度
 date: 2022-05-21T00:00:00+08:00
 description: 深入探讨 Kubernetes 中的资源调度机制，包括 kube-scheduler 组件的工作原理、调度策略、高级调度功能以及相关的扩展工具。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/cluster/scheduling/
+slug: kube-scheduler
 ---
 
 > 资源调度是 Kubernetes 实现弹性伸缩与高效资源利用的核心能力，合理配置调度策略可显著提升集群稳定性与业务连续性。

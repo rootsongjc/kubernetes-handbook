@@ -1,5 +1,5 @@
 ---
-weight: 24
+weight: 4
 title: Label
 date: 2022-05-21T00:00:00+08:00
 description: Kubernetes Label 是附着到对象上的键值对，用于标识和选择对象。本文详细介绍了 Label 的语法规则、选择器类型，以及在不同场景下的使用方法。

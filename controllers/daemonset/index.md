@@ -1,5 +1,5 @@
 ---
-weight: 31
+weight: 5
 title: DaemonSet
 date: 2022-05-21T00:00:00+08:00
 description: DaemonSet 是 Kubernetes 中的一种控制器，确保在集群中的每个（或特定）节点上运行一个 Pod 副本。本文详细介绍 DaemonSet 的概念、使用场景、配置方法以及管理策略。

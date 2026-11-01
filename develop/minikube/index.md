@@ -1,5 +1,5 @@
 ---
-weight: 114
+weight: 11
 title: Minikube
 date: 2022-05-21T00:00:00+08:00
 description: 介绍如何安装配置 Minikube，以及常用的操作命令。

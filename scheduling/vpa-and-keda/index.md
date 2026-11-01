@@ -1,11 +1,13 @@
 ---
-weight: 39
+weight: 10
 title: "VPA 与 KEDA：纵向扩缩与事件驱动扩缩"
 linktitle: VPA 与 KEDA
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: vpa-and-keda
 description: "介绍 HPA 之外的两类工作负载自动扩缩：Vertical Pod Autoscaler 的推荐器/更新器/准入控制器架构、Off/Initial/Recreate/InPlaceOrRecreate/InPlace 更新模式及与原地资源调整的结合；KEDA 的 ScaledObject/ScaledJob 模型、70+ 事件源 Scaler、缩容到零与 HPA 的协作；以及三者的组合策略与冲突规避。"
+aliases:
+  - /book/kubernetes-handbook/controllers/vpa-and-keda/
 ---
 
 > HPA 回答"要几个副本"，VPA 回答"每个副本该多大"，KEDA 回答"该不该从零唤醒"——三者合在一起才是完整的工作负载弹性。
@@ -188,12 +190,12 @@ KEDA 内置 70 余种 Scaler，覆盖消息系统（Kafka、RabbitMQ、NATS、Pu
 | 空闲时缩到零 | KEDA（`idleReplicaCount: 0`）；HTTP 服务加 HTTP Add-on 或改用 Knative |
 | 校准 requests、消除过度申请 | VPA（`Off` 观察 → `InPlaceOrRecreate` 自动） |
 | 副本数与 requests 同时自动化 | KEDA/HPA 用非资源指标控制副本，VPA 控制 requests，避免同一维度冲突 |
-| 批处理任务按事件创建 | KEDA ScaledJob，或 Kueue 配合 [Job](../job-advanced) |
+| 批处理任务按事件创建 | KEDA ScaledJob，或 Kueue 配合 [Job](../../controllers/job-advanced) |
 | 定时预扩容应对可预期高峰 | KEDA `cron` Scaler 叠加其他触发器 |
 
 {{< /table >}}
 
-所有工作负载层的扩缩最终都要落到节点容量上，副本增加导致 Pending 时由 [节点自动扩缩](../../operation/node-autoscaling) 补充节点；VPA 上调 requests 同样可能触发节点扩容。把 VPA 的 `maxAllowed` 设在节点可分配资源以内，可以避免推荐出任何节点都放不下的 Pod。
+所有工作负载层的扩缩最终都要落到节点容量上，副本增加导致 Pending 时由 [节点自动扩缩](../node-autoscaling) 补充节点；VPA 上调 requests 同样可能触发节点扩容。把 VPA 的 `maxAllowed` 设在节点可分配资源以内，可以避免推荐出任何节点都放不下的 Pod。
 
 ## 总结
 

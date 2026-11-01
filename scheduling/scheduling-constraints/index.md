@@ -1,11 +1,13 @@
 ---
-weight: 73
+weight: 3
 title: "调度约束：节点选择、亲和性与拓扑分布"
 linktitle: 调度约束
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: scheduling-constraints
 description: "系统介绍 Kubernetes 中控制 Pod 落点的四类调度约束：nodeSelector、节点亲和性、Pod 亲和/反亲和、拓扑分布约束，解释硬/软约束语义、拓扑键、matchLabelKeys、minDomains、nodeAffinityPolicy 等字段，并给出跨可用区高可用部署的推荐组合。"
+aliases:
+  - /book/kubernetes-handbook/cluster/scheduling-constraints/
 ---
 
 > 调度约束表达的是业务对"在哪里运行"的意图：高可用要分散、低延迟要聚合、特殊硬件要匹配——四种机制各管一段，组合起来才是完整答案。
@@ -25,7 +27,7 @@ description: "系统介绍 Kubernetes 中控制 Pod 落点的四类调度约束�
 
 {{< /table >}}
 
-除这四类外，污点与容忍（见 [Taint 和 Toleration](../taint-and-toleration)）从节点侧"排斥"Pod，与亲和性从 Pod 侧"选择"节点互为补充；`spec.nodeName` 则完全绕过调度器直接绑定节点，仅用于静态 Pod 等特殊场景。
+除这四类外，污点与容忍（见 [Taint 和 Toleration](../../cluster/taint-and-toleration)）从节点侧"排斥"Pod，与亲和性从 Pod 侧"选择"节点互为补充；`spec.nodeName` 则完全绕过调度器直接绑定节点，仅用于静态 Pod 等特殊场景。
 
 ## 节点选择器
 

@@ -1,5 +1,5 @@
 ---
-weight: 42
+weight: 7
 title: Gateway API
 date: 2022-05-21T00:00:00+08:00
 description: 深入介绍 Kubernetes Gateway API 的核心概念、资源模型和最佳实践。作为 Ingress 的现代化替代方案，Gateway API 提供更强大的流量管理能力，支持多协议路由、角色分离和灵活的策略配置，已于 2023 年达到 GA 状态。
@@ -30,7 +30,7 @@ Gateway API 是由 Kubernetes SIG-NETWORK 管理的开源项目，旨在为 Kube
 
 {{< callout note 注意 >}}
 
-Gateway API 作为替代 [Ingress](../../service-discovery/ingress/) 的下一代资源，既可以处理南北向流量，还可以处理东西向流量。关于 Gateway API 的详细介绍和发展趋势，请参考 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/zh/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。
+Gateway API 作为替代 [Ingress](../ingress/) 的下一代资源，既可以处理南北向流量，还可以处理东西向流量。关于 Gateway API 的详细介绍和发展趋势，请参考 [Gateway API：Kubernetes 和服务网格入口中网关的未来](/zh/blog/why-gateway-api-is-the-future-of-ingress-and-mesh/)。
 
 {{< /callout >}}
 

@@ -1,5 +1,5 @@
 ---
-weight: 109
+weight: 7
 linktitle: Operator
 title: Kubernetes Operator
 description: 深入了解 Kubernetes Operator 的原理、架构、应用场景和 2025 年最佳实践。

@@ -1,5 +1,5 @@
 ---
-weight: 45
+weight: 5
 title: 基于角色的访问控制（RBAC）
 linktitle: RBAC
 date: 2022-05-21T00:00:00+08:00

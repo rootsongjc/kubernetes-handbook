@@ -1,5 +1,5 @@
 ---
-weight: 90
+weight: 9
 title: Kubernetes 集群安全性配置最佳实践
 linktitle: Kubernetes 安全最佳实践
 date: 2022-05-21T00:00:00+08:00

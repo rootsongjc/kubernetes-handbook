@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 5
 part_id: part-i
 title: Pod
 date: 2022-05-21T00:00:00+08:00
@@ -7,6 +7,7 @@ slug: pod
 description: 深入了解 Kubernetes 中 Pod 这一最小调度单元的构成、生命周期管理以及容器启动机制，掌握 Pod 状态管理的核心概念。
 icon: fa-solid fa-solid fa-cube
 lastmod: 2026-11-01T00:00:00+08:00
+linktitle: Pod
 ---
 
 > Pod 是 Kubernetes 世界中承载一切应用与创新的“原子单元”，其精妙设计奠定了云原生架构的坚实基石。

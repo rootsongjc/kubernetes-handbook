@@ -1,5 +1,5 @@
 ---
-weight: 96
+weight: 9
 title: 从外部访问 Kubernetes 中的 Pod
 linktitle: 从外部访问 Pod
 date: 2022-05-21T00:00:00+08:00

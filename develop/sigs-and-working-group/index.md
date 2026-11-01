@@ -1,5 +1,5 @@
 ---
-weight: 104
+weight: 2
 linktitle: SIG 和 WG
 title: Kubernetes 社区组织：SIG 和工作组
 description: 本文系统梳理 Kubernetes 社区组织架构、主要 SIG/WG 列表、参与路径及资源，帮助读者高效融入全球云原生生态。

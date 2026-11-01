@@ -1,6 +1,6 @@
 ---
 title: 告警系统
-weight: 6
+weight: 7
 description: Kubernetes 环境中的告警机制，包括 Alertmanager 和通知渠道配置。
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

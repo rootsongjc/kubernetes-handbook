@@ -1,5 +1,5 @@
 ---
-weight: 46
+weight: 8
 title: NetworkPolicy
 date: 2022-05-21T00:00:00+08:00
 slug: network-policy

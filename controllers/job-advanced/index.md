@@ -1,5 +1,5 @@
 ---
-weight: 34
+weight: 7
 title: "Job 高级特性与批处理生态：Indexed Job、失败/成功策略、JobSet 与 Kueue"
 linktitle: Job 高级特性与批处理生态
 date: 2026-11-01T00:00:00+08:00

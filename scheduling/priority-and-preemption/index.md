@@ -1,11 +1,13 @@
 ---
-weight: 74
+weight: 4
 title: "Pod 优先级与抢占"
 linktitle: 优先级与抢占
 date: 2026-11-01T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 slug: priority-and-preemption
 description: "介绍 PriorityClass 与 Pod 抢占机制：优先级如何影响调度队列顺序、资源不足时调度器如何选择牺牲者、preemptionPolicy: Never 的非抢占优先级、与 PDB 和优雅终止的交互、内建系统优先级类、异步抢占（v1.33 Beta）以及在批处理与多租户场景中的配额治理。"
+aliases:
+  - /book/kubernetes-handbook/cluster/priority-and-preemption/
 ---
 
 > 优先级决定了资源紧张时谁先上车、谁被请下车；用好它能保护关键业务，用错了会让集群陷入互相抢占的内耗。

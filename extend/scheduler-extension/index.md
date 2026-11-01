@@ -1,7 +1,7 @@
 ---
 title: 调度架构与 Framework 扩展
 linktitle: 调度架构扩展
-weight: 30
+weight: 14
 date: 2025-10-27T21:40:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 description: 介绍 Kubernetes 调度器的核心架构、工作流程与 Scheduler Framework 插件机制，理解如何通过可插拔框架扩展调度逻辑，实现 GPU、AI 等场景下的智能调度。

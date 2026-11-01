@@ -1,5 +1,5 @@
 ---
-weight: 14
+weight: 4
 title: Init 容器
 date: 2022-05-21T00:00:00+08:00
 slug: init-containers

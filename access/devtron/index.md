@@ -1,5 +1,5 @@
 ---
-weight: 97
+weight: 12
 title: Devtron - 云原生应用管理平台
 linktitle: Devtron
 date: 2025-10-19T07:54:03.111Z

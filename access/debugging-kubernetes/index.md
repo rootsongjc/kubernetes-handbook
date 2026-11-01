@@ -1,10 +1,12 @@
 ---
-weight: 84
+weight: 4
 title: 调试集群中的 Pod
 linktitle: 调试集群中的 Pod
 date: 2024-07-05T11:00:00+08:00
 description: 详细介绍如何系统性地调试 Kubernetes 集群中的 Pod 问题，包括状态检查、节点诊断、资源配额验证和网络排障等完整流程。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/cli/debugging-kubernetes/
 ---
 
 > 系统化的调试流程是高效定位和解决 Kubernetes 集群中 Pod 问题的关键，覆盖从状态检查到网络排障的全链路实践。

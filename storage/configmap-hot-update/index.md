@@ -1,5 +1,5 @@
 ---
-weight: 57
+weight: 5
 title: ConfigMap 热更新
 date: 2022-05-21T00:00:00+08:00
 description: 深入解析 Kubernetes ConfigMap 的热更新机制，包括环境变量和 Volume 两种挂载方式的差异、更新延迟、最佳实践以及常见问题的解决方案。

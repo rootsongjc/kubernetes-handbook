@@ -1,5 +1,5 @@
 ---
-weight: 98
+weight: 10
 title: Kubernetes Dashboard - 官方 Web UI
 linktitle: Kubernetes Dashboard
 date: 2025-10-19T07:54:07.759Z

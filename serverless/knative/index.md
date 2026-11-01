@@ -1,6 +1,6 @@
 ---
 title: Knative
-weight: 3
+weight: 2
 description: Knative 是一个基于 Kubernetes 的开源 Serverless 平台，提供 Serving 和 Eventing 两大核心组件。
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

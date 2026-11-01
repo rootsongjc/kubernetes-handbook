@@ -1,9 +1,11 @@
 ---
-weight: 85
+weight: 8
 title: Kubelet 的认证授权
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubelet HTTPS 端点的认证和授权机制，包括匿名访问控制、X.509 证书认证、Bearer Token 认证以及基于 Webhook 的授权配置方法。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/security/kubelet-authentication-authorization/
 ---
 
 > Kubelet 的认证与授权机制是保障 Kubernetes 节点安全的核心环节，合理配置可有效防止未授权访问和敏感操作风险。

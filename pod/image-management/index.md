@@ -1,5 +1,5 @@
 ---
-weight: 23
+weight: 12
 title: "镜像管理：拉取策略、私有仓库凭据、凭据提供者与节点镜像生命周期"
 linktitle: 镜像管理
 date: 2026-11-01T00:00:00+08:00
@@ -152,7 +152,7 @@ AI 推理镜像（CUDA + 框架 + 依赖）普遍在 10 – 30 GB，模型权重
 
 ## 节点镜像生命周期
 
-镜像拉取到节点后由容器运行时管理，kubelet 负责垃圾回收：磁盘使用率超过 `imageGCHighThresholdPercent`（默认 85%）时按最近最少使用顺序删除未被引用的镜像至 `imageGCLowThresholdPercent`（默认 80%）；`imageMaximumGCAge`（v1.35 GA）按时间回收长期未使用的镜像。节点级细节见 [kubelet 节点资源管理](../../cluster/kubelet-resource-management)。
+镜像拉取到节点后由容器运行时管理，kubelet 负责垃圾回收：磁盘使用率超过 `imageGCHighThresholdPercent`（默认 85%）时按最近最少使用顺序删除未被引用的镜像至 `imageGCLowThresholdPercent`（默认 80%）；`imageMaximumGCAge`（v1.35 GA）按时间回收长期未使用的镜像。节点级细节见 [kubelet 节点资源管理](../../scheduling/kubelet-resource-management)。
 
 运维上可用以下命令观察与干预：
 

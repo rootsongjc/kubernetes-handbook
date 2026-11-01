@@ -1,11 +1,12 @@
 ---
 title: 可观测性
-weight: 100
+weight: 15
 part_id: part-ii
-description: Kubernetes 集群和应用的全面可观测性指南，涵盖监控、日志、链路追踪等核心领域的最佳实践
+description: 构建 Kubernetes 的可观测性体系：监控、日志、链路追踪、OpenTelemetry、可视化仪表板、告警，以及作为第四维度的成本可观测性。
 icon: fas fa-eye
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
+linktitle: 可观测性
 ---
 
 可观测性是现代云原生应用的基础能力，它帮助我们：

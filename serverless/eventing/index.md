@@ -1,6 +1,6 @@
 ---
 title: Knative Eventing
-weight: 5
+weight: 4
 description: Knative Eventing 的事件驱动架构和使用方法。
 date: 2025-10-19T00:00:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00

@@ -1,5 +1,5 @@
 ---
-weight: 23
+weight: 3
 title: Namespace
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Namespace 的概念、使用场景和管理方法，包括如何创建和管理命名空间以实现资源隔离和环境划分。

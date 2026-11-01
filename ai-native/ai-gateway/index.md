@@ -1,7 +1,7 @@
 ---
 title: AI Gateway
 linkTitle: AI Gateway
-weight: 3
+weight: 11
 description: AI Gateway 的作用、架构和在 Kubernetes 中的实现。
 date: 2025-10-20T05:19:39.094Z
 lastmod: 2026-11-01T00:00:00+08:00

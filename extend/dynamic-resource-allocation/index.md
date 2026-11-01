@@ -3,7 +3,7 @@ title: "DRA（Dynamic Resource Allocation）：Kubernetes 的新一代资源分�
 linktitle: 动态资源分配（DRA）
 date: 2025-12-15T11:02:40.706Z
 lastmod: 2026-11-01T00:00:00+08:00
-weight: 37
+weight: 16
 description: DRA（Dynamic Resource Allocation）将“设备类资源”的分配从静态整数配额升级为可协商、可选择、可共享、可晚绑定的声明式流程，是 Kubernetes 面向 GPU/FPGA/SmartNIC 等异构硬件的核心演进方向。
 ---
 

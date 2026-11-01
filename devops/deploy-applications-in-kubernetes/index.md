@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 1
 title: 适用于 Kubernetes 的应用开发部署流程
 linktitle: 应用开发部署流程
 date: 2022-05-21T00:00:00+08:00

@@ -1,11 +1,12 @@
 ---
-weight: 28
+weight: 6
 part_id: part-i
-title: 控制器
+title: 工作负载控制器
 date: 2022-05-21T00:00:00+08:00
-description: 深入了解 Kubernetes 中的各种控制器，包括 Deployment、StatefulSet、DaemonSet 等，掌握它们的工作原理和使用场景。
+description: 深入 Kubernetes 内置的工作负载控制器：Deployment、ReplicaSet、StatefulSet、DaemonSet、Job 与 CronJob 的原理、配置与适用场景。
 icon: fa-solid fa-sliders-h
 lastmod: 2026-11-01T00:00:00+08:00
+linktitle: 工作负载控制器
 ---
 
 > 控制器是 Kubernetes 实现自动化运维和自愈能力的核心机制，赋予集群强大的弹性与智能调度能力。

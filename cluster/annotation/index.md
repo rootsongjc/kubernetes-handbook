@@ -1,5 +1,5 @@
 ---
-weight: 25
+weight: 5
 title: Annotation
 date: 2022-05-21T00:00:00+08:00
 description: 详细介绍 Kubernetes 中 Annotation 的概念、用途和使用方法，包括与 Label 的区别、常见应用场景和实际示例。

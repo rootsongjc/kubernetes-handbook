@@ -1,5 +1,5 @@
 ---
-weight: 7
+weight: 2
 title: 容器运行时接口（CRI）
 slug: cri
 date: 2022-05-21T00:00:00+08:00

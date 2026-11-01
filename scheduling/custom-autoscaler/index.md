@@ -1,11 +1,13 @@
 ---
 title: "自定义 Pod 自动扩缩容器"
-weight: 5
+weight: 9
 date: 2025-10-27T20:10:00+08:00
 lastmod: 2026-11-01T00:00:00+08:00
 description: 自定义 Pod 自动扩缩容器让你基于业务指标灵活定义扩缩容策略，突破标准 HPA 的局限，实现更智能的资源管理。
 slug: custom-autoscaler
 social_title: 你真的了解 Kubernetes 的自定义自动扩缩容吗？
+aliases:
+  - /book/kubernetes-handbook/extend/custom-autoscaler/
 ---
 
 > 只有理解业务，才能让自动扩缩容真正服务于系统弹性和成本优化。

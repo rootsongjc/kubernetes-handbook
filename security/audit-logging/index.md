@@ -1,5 +1,5 @@
 ---
-weight: 24
+weight: 5
 title: "审计日志：记录、过滤与分析 API Server 上发生的一切"
 linktitle: 审计日志
 date: 2026-11-01T00:00:00+08:00

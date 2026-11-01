@@ -1,5 +1,5 @@
 ---
-weight: 105
+weight: 3
 title: 配置 Kubernetes 开发环境
 linktitle: 配置开发环境
 date: 2022-05-21T00:00:00+08:00

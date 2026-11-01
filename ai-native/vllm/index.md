@@ -1,7 +1,7 @@
 ---
 title: vLLM 在 Kubernetes 中的实践
 linkTitle: vLLM 实践
-weight: 5
+weight: 9
 description: vLLM 推理引擎在 Kubernetes 中的部署、配置和优化指南。
 date: 2025-10-20T05:20:22.064Z
 lastmod: 2026-11-01T00:00:00+08:00

@@ -1,10 +1,12 @@
 ---
-weight: 89
+weight: 3
 title: Kubernetes 中的用户与身份认证授权
 linktitle: 用户与身份认证
 date: 2022-05-21T00:00:00+08:00
 description: 深入了解 Kubernetes 集群中的用户管理和身份认证机制，包括普通用户与 Service Account 的区别、各种认证策略的配置与使用，以及认证流程的详细实现。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/security/authentication/
 ---
 
 > Kubernetes 用户与身份认证机制为集群安全提供了基础保障，合理区分用户类型并配置多重认证策略，是实现最小权限和合规访问的关键。
@@ -231,7 +233,7 @@ jwt:
       prefix: "oidc:"
 ```
 
-详见 [结构化认证与鉴权配置](../../auth/structured-authentication-authorization)。
+详见 [结构化认证与鉴权配置](../structured-authentication-authorization)。
 
 **kubectl 配置示例**：
 

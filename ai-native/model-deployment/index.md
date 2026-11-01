@@ -1,7 +1,7 @@
 ---
 title: 大模型部署与调优
 linkTitle: 大模型部署与调优
-weight: 4
+weight: 8
 description: 在 Kubernetes 中部署和管理大语言模型的最佳实践和性能调优技巧。
 date: 2025-10-20T05:20:04.483Z
 lastmod: 2026-11-01T00:00:00+08:00

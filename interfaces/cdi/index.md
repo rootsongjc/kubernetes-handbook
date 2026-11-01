@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 5
 title: "容器设备接口（CDI）"
 linktitle: 容器设备接口（CDI）
 date: 2026-11-01T00:00:00+08:00

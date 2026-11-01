@@ -1,5 +1,5 @@
 ---
-weight: 104
+weight: 3
 title: 使用 Kustomize 配置 Kubernetes 应用
 linktitle: Kustomize：配置管理工具
 date: 2023-07-04T08:40:00+08:00

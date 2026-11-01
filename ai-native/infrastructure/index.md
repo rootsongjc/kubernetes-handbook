@@ -1,7 +1,7 @@
 ---
 title: Kubernetes AI 基础设施架构
 linkTitle: AI 基础设施架构
-weight: 2
+weight: 3
 description: Kubernetes AI 基础设施的设计原则、硬件加速、网络与存储优化及运维实践。
 date: 2025-10-20T05:19:59.805Z
 lastmod: 2026-11-01T00:00:00+08:00

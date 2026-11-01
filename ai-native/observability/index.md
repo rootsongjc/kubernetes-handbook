@@ -1,7 +1,7 @@
 ---
 title: AI 应用可观测性
 linkTitle: AI 应用可观测性
-weight: 9
+weight: 12
 description: AI 应用的监控、日志、追踪和性能分析。
 date: 2025-10-20T05:20:09.090Z
 lastmod: 2026-11-01T00:00:00+08:00

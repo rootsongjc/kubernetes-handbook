@@ -1,5 +1,5 @@
 ---
-weight: 17
+weight: 3
 title: Pod 的生命周期
 date: 2022-05-21T00:00:00+08:00
 slug: pod-lifecycle

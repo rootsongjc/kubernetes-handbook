@@ -1,5 +1,5 @@
 ---
-weight: 4
+weight: 2
 title: Kubernetes 的设计理念
 linktitle: 设计理念
 date: 2022-05-21T00:00:00+08:00

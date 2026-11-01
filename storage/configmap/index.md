@@ -1,5 +1,5 @@
 ---
-weight: 30
+weight: 3
 title: ConfigMap
 date: 2022-05-21T00:00:00+08:00
 description: ConfigMap 是 Kubernetes 用于存储配置数据的 API 资源，支持将配置信息与容器镜像解耦。本文详细介绍 ConfigMap 的概念、创建方法以及在 Pod 中的使用方式。

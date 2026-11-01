@@ -1,7 +1,7 @@
 ---
 title: Kubernetes 设备插件（Device Plugin）深度剖析：异构资源调度的关键技术
 linktitle: 设备插件
-weight: 100
+weight: 5
 description: 深入理解 Kubernetes 设备插件，掌握异构资源调度的实现细节。
 lastmod: 2026-11-01T00:00:00+08:00
 date: 2025-10-23T11:17:59.039Z

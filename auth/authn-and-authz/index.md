@@ -2,9 +2,11 @@
 title: Kubernetes 认证与鉴权
 linktitle: 认证与鉴权
 date: 2025-10-13
-weight: 20
+weight: 2
 description: 全面介绍 Kubernetes 的认证与鉴权体系，阐释用户身份验证与访问权限控制机制，帮助理解 API 安全的多层防护流程。
 lastmod: 2026-11-01T00:00:00+08:00
+aliases:
+  - /book/kubernetes-handbook/security/authn-and-authz/
 ---
 
 > 安全的云原生平台，始于对身份与权限的精细把控。
@@ -90,7 +92,7 @@ Kubernetes 区分两类用户：
 - **Webhook**：外部服务判定
 - **AlwaysAllow/AlwaysDeny**：全部允许/拒绝（测试用）
 
-每个鉴权器依次判定，首个明确允许/拒绝即返回结果，否则最终拒绝。鉴权链既可以用 `--authorization-mode=Node,RBAC,Webhook` 参数声明，也可以用 v1.32 起 GA 的结构化鉴权配置文件（`--authorization-config`）声明——后者支持多个 Webhook、CEL 预过滤条件与失败策略，详见 [结构化认证与鉴权配置](../../auth/structured-authentication-authorization)。
+每个鉴权器依次判定，首个明确允许/拒绝即返回结果，否则最终拒绝。鉴权链既可以用 `--authorization-mode=Node,RBAC,Webhook` 参数声明，也可以用 v1.32 起 GA 的结构化鉴权配置文件（`--authorization-config`）声明——后者支持多个 Webhook、CEL 预过滤条件与失败策略，详见 [结构化认证与鉴权配置](../structured-authentication-authorization)。
 
 ![多鉴权器判定流程](authorizer-chain-decision.svg)
 
