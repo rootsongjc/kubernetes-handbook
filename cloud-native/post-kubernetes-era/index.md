@@ -21,8 +21,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 Kubernetes 自 2014 年开源以来已走过近十年历程，开启了云原生时代。云原生的发展可分为以下几个阶段：
 
-![云原生的发展阶段](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/cloud-native-stages.svg)
-{width=1048 height=261}
+![云原生的发展阶段](cloud-native-stages.svg)
 
 ### 孵化期（2014 年）
 
@@ -103,8 +102,7 @@ Operator 基于调节器模式，遵循四个原则：
 
 Helm 通过 Chart 模板提供应用打包和版本管理能力：
 
-![Helm3 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/helm-chart.svg)
-{width=1100 height=714}
+![Helm 3 架构](helm3-architecture.svg)
 
 **核心能力：**
 
@@ -118,14 +116,13 @@ Helm 主要关注 12 因素应用中的"发布"环节，但仍有局限性。
 
 ### 应用分层模型
 
-![云原生应用的分层模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/cloud-native-app.svg)
-{width=1100 height=578}
+![云原生应用的分层模型](cloud-native-app-layers.svg)
 
 **分层说明：**
 
-- **应用定义层**：Helm、CNAB、Pulumi 等，直接定义应用组成
-- **负载定义层**：基于 Operator 的 Serverless 负载，如 Istio、Knative
-- **发布上线层**：关注构建发布、GitOps、发布策略
+- **应用定义层**：Helm、Kustomize、CNAB、Pulumi、KubeVela 等，直接定义应用组成
+- **负载定义层**：基于 Operator 的 Serverless 与网格负载，如 Knative、Istio、KEDA
+- **发布上线层**：关注构建发布、GitOps（Argo CD、Flux）、渐进式发布策略
 - **Kubernetes 原语层**：基础原语，Operator 构建基础
 
 ### OAM：开放应用模型

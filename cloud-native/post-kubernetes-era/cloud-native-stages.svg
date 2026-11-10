@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2240" height="860" viewBox="0 0 1120 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cloudnz-title cloudnz-desc" id="cloud-native-stages-root">
+<title id="cloudnz-title">云原生的发展阶段（2014 年至今）</title>
+<desc id="cloudnz-desc">时间轴分为孵化期、高速发展期、野蛮生长期、成熟普及期和 AI 原生期五个阶段，下方标出 Kubernetes 开源、CNCF 成立、CRD/Operator、Istio、Knative、OAM、GitOps、DRA 等关键事件。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cloud-native-stages-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #cloud-native-stages-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #cloud-native-stages-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#cloud-native-stages-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="cloud-native-stages-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="62" y="150" width="72.9231" height="40" rx="4" style="fill:#0f172a;stroke:none" stroke-width="0"/>
+<rect x="138.923" y="150" width="149.846" height="40" rx="4" style="fill:#0f4cbd;stroke:none" stroke-width="0"/>
+<rect x="292.769" y="150" width="149.846" height="40" rx="4" style="fill:#2563eb;stroke:none" stroke-width="0"/>
+<rect x="446.615" y="150" width="380.615" height="40" rx="4" style="fill:#0060df;stroke:none" stroke-width="0"/>
+<rect x="831.231" y="150" width="226.769" height="40" rx="4" style="fill:#0a84ff;stroke:none" stroke-width="0"/>
+<path d="M 60 204 L 1072 204" fill="none" style="stroke:#6b7280" stroke-width="1.2" marker-end="url(#cloud-native-stages-m-6b7280)"/>
+<line x1="60" y1="200" x2="60" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="136.923" y1="200" x2="136.923" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="213.846" y1="200" x2="213.846" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="290.769" y1="200" x2="290.769" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="367.692" y1="200" x2="367.692" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="444.615" y1="200" x2="444.615" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="521.538" y1="200" x2="521.538" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="598.462" y1="200" x2="598.462" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="675.385" y1="200" x2="675.385" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="752.308" y1="200" x2="752.308" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="829.231" y1="200" x2="829.231" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="906.154" y1="200" x2="906.154" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="983.077" y1="200" x2="983.077" y2="208" style="stroke:#6b7280" stroke-width="1"/>
+<line x1="98.4615" y1="210" x2="98.4615" y2="226" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="175.385" y1="210" x2="175.385" y2="296" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="252.308" y1="210" x2="252.308" y2="226" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="329.231" y1="210" x2="329.231" y2="296" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="406.154" y1="210" x2="406.154" y2="226" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="483.077" y1="210" x2="483.077" y2="296" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="636.923" y1="210" x2="636.923" y2="226" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="867.692" y1="210" x2="867.692" y2="296" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<line x1="944.615" y1="210" x2="944.615" y2="226" style="stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="98.4615" y="134" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">孵化期</text>
+<text x="213.846" y="134" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">高速发展期</text>
+<text x="367.692" y="134" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">野蛮生长期</text>
+<text x="636.923" y="134" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">成熟普及期</text>
+<text x="944.615" y="134" style="fill:#0060df" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AI 原生期</text>
+<circle cx="98.4615" cy="226" r="3.5" style="fill:#6b7280"/>
+<text x="98.4615" y="244" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 开源</text>
+<circle cx="175.385" cy="296" r="3.5" style="fill:#6b7280"/>
+<text x="175.385" y="314" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 1.0 发布</text>
+<text x="175.385" y="330" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CNCF 成立</text>
+<circle cx="252.308" cy="226" r="3.5" style="fill:#6b7280"/>
+<text x="252.308" y="244" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">CRD / Operator 模式确立</text>
+<circle cx="329.231" cy="296" r="3.5" style="fill:#6b7280"/>
+<text x="329.231" y="314" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Istio 开源</text>
+<text x="329.231" y="330" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">击败 Swarm 与 Mesos</text>
+<circle cx="406.154" cy="226" r="3.5" style="fill:#6b7280"/>
+<text x="406.154" y="244" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Knative 开源</text>
+<text x="406.154" y="260" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 从 CNCF 毕业</text>
+<circle cx="483.077" cy="296" r="3.5" style="fill:#6b7280"/>
+<text x="483.077" y="314" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">OAM 开源</text>
+<circle cx="636.923" cy="226" r="3.5" style="fill:#6b7280"/>
+<text x="636.923" y="244" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">GitOps 成为交付主流</text>
+<text x="636.923" y="260" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">平台工程兴起</text>
+<circle cx="867.692" cy="296" r="3.5" style="fill:#0a84ff"/>
+<text x="867.692" y="314" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Gateway API Inference Extension</text>
+<circle cx="944.615" cy="226" r="3.5" style="fill:#0a84ff"/>
+<text x="944.615" y="244" style="fill:#1d1d1f" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">DRA GA（v1.34）</text>
+<text x="944.615" y="260" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">AI Conformance 认证</text>
+<text x="560" y="412" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 从容器编排器演进为异构算力与策略的声明式控制面，生态重心随之从基础设施转向应用层。</text>
+<text x="560" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">云原生的发展阶段（2014 年至今）</text>
+<text x="98.4615" y="175" style="fill:#ffffff" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2014</text>
+<text x="213.846" y="175" style="fill:#ffffff" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2015 – 2016</text>
+<text x="367.692" y="175" style="fill:#ffffff" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2017 – 2018</text>
+<text x="636.923" y="175" style="fill:#ffffff" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2019 – 2023</text>
+<text x="944.615" y="175" style="fill:#ffffff" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">2024 年至今</text>
+</g>
+</svg>
