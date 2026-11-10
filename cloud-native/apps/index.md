@@ -36,8 +36,7 @@ OAM 规范中提供了一个使用以上对象定义云原生应用的工作流�
 
 下图是不同角色对于该模型的关注点示意图。
 
-![云原生应用模型中的目标角色](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/apps/roles.svg)
-{width=590 height=232}
+![云原生应用模型中的目标角色](oam-target-roles.svg)
 
 我们可以看到对于一个云原生应用来说，不同的对象是由不同的角色来负责的：
 

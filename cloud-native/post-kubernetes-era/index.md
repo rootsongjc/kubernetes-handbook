@@ -73,10 +73,7 @@ Kubernetes 继承了 Google Borg 系统经验，统一了 PaaS 平台基础设�
 
 ## 云原生应用碎片化挑战
 
-随着 Operator 生态繁荣，云原生应用出现碎片化趋势：
-
-![资源交集动画](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/resources-motion.gif)
-{width=600 height=363}
+随着 Operator 生态繁荣，云原生应用出现碎片化趋势。
 
 ### 碎片化表现
 

@@ -11,8 +11,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 云原生应用从诞生之初就面向云环境设计，为在云上高效运行而构建。在云原生应用的完整生命周期中，涉及多个专业角色的协作。随着云原生技术的发展和组织架构的演进，这些角色的定义和职责也在不断优化。
 
-![云原生应用中的角色](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/roles/roles.svg)
-{width=1024 height=558}
+![云原生应用中的三种角色](cloud-native-roles.svg)
 
 ## 核心角色概述
 
