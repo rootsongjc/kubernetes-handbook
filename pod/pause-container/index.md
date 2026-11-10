@@ -91,8 +91,7 @@ crictl ps | grep pause
 
 下图展示了 Pause 容器在 Pod 内部的资源共享机制：
 
-![Pause 容器示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/objects/pause-container/pause-container.webp)
-{width=1598 height=948}
+![Pause 容器持有 Pod 的命名空间](pause-container-namespaces.svg)
 
 以下演示借助 Docker CLI 手动复现 kubelet 与 CRI 运行时创建 Pod 的过程。Docker 在这里只是便于观察的实验工具，真实集群中这些动作由 containerd/CRI-O 通过 CRI 完成，读者也可以用 `nerdctl` 执行相同命令。
 

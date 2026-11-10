@@ -45,7 +45,6 @@ Gateway API 通过分层架构和面向角色的接口设计，提升了网络�
 Gateway API 将网络配置分解为不同关注点，实现配置解耦和角色分离。
 
 ![Gateway API 的分层架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway/gateway-api.svg)
-{width=609 height=452}
 
 ### 面向角色的设计
 
@@ -56,8 +55,7 @@ Gateway API 将网络配置分解为不同关注点，实现配置解耦和角�
 - 应用开发者：定义路由需求
 - 应用管理员：配置应用级策略
 
-![Gateway API 管理时的角色划分](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/gateway/gateway-roles.webp)
-{width=2735 height=1519}
+![Gateway API 的角色划分](gateway-api-roles.svg)
 
 ## 相比 Ingress 的优势
 

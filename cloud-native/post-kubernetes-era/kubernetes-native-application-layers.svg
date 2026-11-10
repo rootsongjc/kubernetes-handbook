@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1160" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="kubernz-title kubernz-desc" id="kubernetes-native-application-layers-root">
+<title id="kubernz-title">Kubernetes 原生应用的四层模型</title>
+<desc id="kubernz-desc">由内向外依次是核心层（应用运行时与业务逻辑）、隔离与访问层、调度层和资源层，每一层列出对应的 Kubernetes 原语。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #kubernetes-native-application-layers-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #kubernetes-native-application-layers-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #kubernetes-native-application-layers-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#kubernetes-native-application-layers-root .diagram-container { overflow-x: visible; }
+}</style>
+
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="88" width="920" height="430" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="110" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">资源层 · 网络、存储等平台资源</text>
+<rect x="80" y="136" width="840" height="334" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="96" y="158" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">调度层 · 各类调度控制器，主要扩展层</text>
+<rect x="120" y="184" width="760" height="238" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="136" y="206" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">隔离与访问层 · 资源限制、配置、身份认证、路由规则</text>
+<text x="500" y="496" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Namespace · ResourceQuota · LimitRange · PersistentVolume · StorageClass · LoadBalancer · Monitoring · Logging</text>
+<text x="500" y="448" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Deployment · StatefulSet · DaemonSet · Job · CronJob · HorizontalPodAutoscaler · VerticalPodAutoscaler · Operator</text>
+<text x="500" y="400" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ConfigMap · Secret · ServiceAccount · NetworkPolicy · Ingress / Gateway · VirtualService · DestinationRule</text>
+<rect x="160" y="232" width="680" height="134" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="160" y="232" width="680" height="134" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(297.4,279) scale(1.667)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="525" y="286.85" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">核心层 · 应用运行时与业务逻辑</text>
+<text x="525" y="304.25" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod · Container · InitContainer · Sidecar</text>
+<text x="525" y="321.65" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Service · LivenessProbe · ReadinessProbe · Annotation</text>
+<text x="500" y="556" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">越靠内越贴近业务代码，越靠外越属于平台职责；分层让开发与运维各自只关心自己那一层的原语。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Kubernetes 原生应用的四层模型</text>
+</g>
+</svg>

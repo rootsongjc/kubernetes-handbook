@@ -18,10 +18,9 @@ date: 2025-08-26T10:12:58.252Z
 
 ## 云原生应用模型
 
-下图是 OAM 定义的云原生应用模型示意图，为了便于理解，图中相同颜色的部分为同一类别的对象定义。
+下图是 OAM 定义的云原生应用模型示意图，为了便于理解，图中相同样式的部分为同一类别的对象定义。
 
-![云原生应用模型](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/apps/cloud-native-app-model.webp)
-{width=1850 height=550}
+![基于 OAM 的云原生应用模型](cloud-native-app-model.svg)
 
 OAM 的规范中定义了以下对象，它们既是 OAM 规范中的基本术语也是云原生应用的基本组成。
 

@@ -21,8 +21,7 @@ Envoy 配置的根节点称为**引导配置**（Bootstrap Configuration）。�
 
 下图展示了请求在 Envoy 各个构建模块中的流转过程：
 
-![Envoy 构建块](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/envoy-building-blocks/envoy-block.webp)
-{width=1920 height=1080}
+![请求在 Envoy 构建块中的流转](envoy-building-blocks.svg)
 
 ## 监听器（Listener）
 
@@ -61,8 +60,7 @@ Envoy 定义了三类过滤器：
 
 每个通过监听器的请求可以流经多个过滤器。我们还可以根据传入请求或连接属性选择不同的过滤器链。
 
-![过滤器链](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/envoy-building-blocks/filter-chain.webp)
-{width=1611 height=1080}
+![监听器按匹配条件选择过滤器链](envoy-filter-chain-match.svg)
 
 ### HTTP 连接管理器
 
@@ -76,8 +74,7 @@ Envoy 定义了三类过滤器：
 
 就像我们可以为每个监听器定义多个网络过滤器一样，Envoy 也支持在 HCM 过滤器中定义多个 HTTP 级过滤器。这些 HTTP 过滤器在 `http_filters` 字段下定义。
 
-![HCM 过滤器](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/envoy-building-blocks/hcm-filter.webp)
-{width=1920 height=1080}
+![HCM 过滤器内部的 HTTP 过滤器链](envoy-hcm-filter.svg)
 
 **重要提示**：HTTP 过滤器链中的最后一个过滤器必须是路由器过滤器（`envoy.filters.http.router`），它负责执行实际的路由任务。
 

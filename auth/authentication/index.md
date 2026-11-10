@@ -188,8 +188,7 @@ spec:
 
 下图展示了 OIDC 认证流程：
 
-![Kubernetes OpenID Connect Flow](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/authentication/kubernetes-oidc-login.webp)
-{width=1116 height=517}
+![Kubernetes OIDC 认证流程](kubernetes-oidc-login.svg)
 
 **认证流程**：
 

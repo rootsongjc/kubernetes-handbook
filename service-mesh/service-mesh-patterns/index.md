@@ -10,8 +10,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 在微服务架构的演进过程中，我们通常从使用**客户端库**来治理服务开始，逐步向服务网格架构迁移。下图展示了采用服务网格架构后的最终形态。
 
-![服务网格架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/arch.webp)
-{width=1140 height=892}
+![服务网格的最终形态：每个服务配一个 Sidecar 代理](service-mesh-final-form.svg)
 
 为了达到这一最终形态，我们需要逐步演进架构。以下是常见的演进路径和各个阶段的特点。
 
@@ -19,8 +18,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 对于使用 Kubernetes 进行容器编排的环境，在演进到服务网格架构之前，通常会首先引入 Ingress Controller 来处理集群内外的流量反向代理，如 Traefik、Nginx Ingress Controller 或 Envoy Gateway 等。
 
-![Ingress 或边缘代理架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/ingress.webp)
-{width=1140 height=422}
+![Ingress 或边缘代理模式](mesh-pattern-ingress.svg)
 
 **优势：**
 
@@ -37,8 +35,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 为了解决 Ingress 模式无法管理服务间流量的问题，可以在集群内部增加一个路由器层，让所有服务间的通信都通过这个中心化的路由器。
 
-![路由器网格架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/router.webp)
-{width=1142 height=498}
+![路由器网格模式](mesh-pattern-router.svg)
 
 **优势：**
 
@@ -56,8 +53,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 这种架构在每个节点上部署一个代理实例。在 Kubernetes 环境中，通常使用 `DaemonSet` 对象来实现。Linkerd 1.x 版本曾采用这种部署方式。
 
-![Proxy per node 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/proxy-per-node.webp)
-{width=1142 height=408}
+![节点代理模式（Proxy per Node）](mesh-pattern-proxy-per-node.svg)
 
 **优势：**
 
@@ -75,8 +71,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 在这个阶段，每个应用实例都会配备一个专用的代理容器，形成 Sidecar 模式。这种架构已经非常接近完整的服务网格形态。
 
-![Sidecar 代理/Fabric 模型示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/sidecar.webp)
-{width=1140 height=524}
+![Sidecar 代理模式（Fabric 模型）](mesh-pattern-sidecar.svg)
 
 **优势：**
 
@@ -95,8 +90,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 这是目前主流服务网格产品（如 Istio、Linkerd、Consul Connect）采用的架构模式，也是服务网格演进的完整形态。
 
-![Sidecar 代理/控制平面架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/service-mesh-patterns/control-plane.webp)
-{width=1142 height=814}
+![完整服务网格：Sidecar 代理 + 控制平面](mesh-pattern-control-plane.svg)
 
 **核心组件：**
 

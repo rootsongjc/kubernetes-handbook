@@ -38,8 +38,7 @@ HTTP 过滤器按照执行时机分为三种类型：
 
 下图展示了 Envoy 在请求和响应路径上调用不同过滤器类型的执行流程：
 
-![请求响应路径及 HTTP 过滤器](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/http-conneciton-manager/request-response.webp)
-{width=2029 height=1080}
+![HTTP 过滤器在请求与响应路径上的调用顺序](hcm-request-response-paths.svg)
 
 与网络过滤器类似，HTTP 过滤器可以控制后续过滤器的执行流程，并在单个请求流的生命周期内共享状态信息。
 

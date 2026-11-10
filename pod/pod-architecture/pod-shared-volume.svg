@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="980" viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="podshaz-title podshaz-desc" id="pod-shared-volume-root">
+<title id="podshaz-title">多容器 Pod 通过共享卷协作</title>
+<desc id="podshaz-desc">内容管理器把内容交给 File Puller 容器写入共享卷，Web Server 容器从同一卷读取后对外提供服务；两个容器同属一个 Pod。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #pod-shared-volume-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #pod-shared-volume-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #pod-shared-volume-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#pod-shared-volume-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="pod-shared-volume-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="190" y="208" width="520" height="224" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="206" y="230" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod（共享网络与存储卷）</text>
+<path d="M 322 168 L 322 248" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-shared-volume-m-6b7280)"/>
+<rect x="326" y="184.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="330" y="196.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">推送内容</text>
+<path d="M 578 248 L 578 168" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-shared-volume-m-6b7280)"/>
+<rect x="582" y="184.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="586" y="196.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">提供服务</text>
+<path d="M 322 320 L 322 360" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-shared-volume-m-6b7280)"/>
+<rect x="326" y="332.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="330" y="344.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">写入</text>
+<path d="M 578 360 L 578 320" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pod-shared-volume-m-6b7280)"/>
+<rect x="542" y="332.6" width="32" height="16.6" style="fill:#f2f5ff"/>
+<text x="570" y="344.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">读取</text>
+<rect x="222" y="100" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(252.94,117) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.657 18c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" /></g>
+<text x="342" y="128.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">内容管理器</text>
+<text x="342" y="144.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Content Manager</text>
+<rect x="478" y="100" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(527.2,117) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></g>
+<text x="598" y="128.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">消费者</text>
+<text x="598" y="144.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Consumers</text>
+<rect x="222" y="252" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(263.5,269) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="342" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">File Puller</text>
+<text x="342" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">拉取内容的容器</text>
+<rect x="478" y="252" width="200" height="64" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(516.56,269) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="598" y="280.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Web Server</text>
+<text x="598" y="296.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">对外服务的容器</text>
+<rect x="300" y="364" width="300" height="52" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="300" y="364" width="300" height="52" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(395.79,375) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10a2 2 0 0 0 2 -2v-14a2 2 0 0 0 -2 -2h-6.172a2 2 0 0 0 -1.414 .586l-3.828 3.828a2 2 0 0 0 -.586 1.414v10.172a2 2 0 0 0 2 2" /> <path d="M13 6v2" /> <path d="M16 6v2" /> <path d="M10 7v1" /></g>
+<text x="470" y="386.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Volume</text>
+<text x="470" y="402.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod 内共享卷</text>
+<text x="450" y="468" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">容器各司其职、独立构建与升级，但共享同一个卷与网络命名空间，所以能像本地进程一样协作。</text>
+<text x="450" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">多容器 Pod 通过共享卷协作</text>
+</g>
+</svg>

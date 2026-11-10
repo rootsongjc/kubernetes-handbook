@@ -22,30 +22,22 @@ lastmod: 2026-11-01T00:00:00+08:00
 下图展示了将单体应用迁移到云原生的整体策略：
 
 ![将单体应用迁移到云原生 (图片来自 DevOpsDay Toronto)](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/migrating-monolith-to-kubernetes.webp)
-{width=4096 height=2098}
 
 本文将以 Spark on YARN 迁移为例进行详细说明。该例子具有足够的复杂性和典型性，掌握这个案例有助于理解大部分传统应用的迁移过程。
 
 下图是整个架构的示意图，所有进程管理和容器扩容通过 Makefile 实现：
 
 ![Spark on YARN with Kubernetes](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/spark-on-yarn-with-kubernetes.webp)
-{width=2395 height=1156}
 
 > **重要提示**：本案例仅用于演示迁移步骤和复杂性，生产环境使用需要进一步验证和优化。
 
 ## 核心概念与术语
 
-在开始迁移之前，需要了解过程中涉及的关键概念：
-
-![术语](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/terms-in-kubernetes-app-deployment.webp)
-{width=1312 height=1766}
-
 为了更好地理解迁移细节，本文所有操作都通过命令手动完成，不使用自动化工具。待充分理解细节后，可以引入自动化工具优化流程，提高效率并减少人为错误。
 
 ## 迁移实施步骤
 
-![分解步骤解析](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/migrating-hadoop-yarn-to-kubernetes/migrating-hadoop-yarn-to-kubernetes.webp)
-{width=967 height=462}
+![将 Hadoop YARN 迁移到 Kubernetes 的分解步骤](migration-steps.svg)
 
 ### 第一步：应用服务化拆解
 

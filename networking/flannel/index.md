@@ -56,8 +56,7 @@ Flannel 作为二进制程序部署在每个节点上，主要实现以下功能
 
 下图展示了使用 `host-gw` 后端的 Flannel 网络架构：
 
-![flannel 网络架构（图片来自 openshift）](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/flannel/flannel-networking.webp)
-{width=1520 height=1039}
+![Flannel host-gw 后端的跨节点 Pod 网络](flannel-host-gw-networking.svg)
 
 ### 网络配置的存储方式
 

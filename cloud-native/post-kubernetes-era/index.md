@@ -61,8 +61,7 @@ Kubernetes 继承了 Google Borg 系统经验，统一了 PaaS 平台基础设�
 
 基于 Kubernetes 原语的云原生应用包含多个层次：
 
-![Kubernetes 原生应用](https://assets.jimmysong.io/images/book/kubernetes-handbook/cloud-native/post-kubernetes-era/kubernetes-native-application-motion.gif)
-{width=600 height=334}
+![Kubernetes 原生应用的四层模型](kubernetes-native-application-layers.svg)
 
 **分层架构：**
 

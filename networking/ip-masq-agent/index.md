@@ -39,8 +39,7 @@ CIDR（Classless Inter-Domain Routing）是一种基于可变长度子网掩码�
 
 下图展示了 ip-masq-agent 的基本工作流程：
 
-![IP 伪装代理工作原理示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/security/ip-masq-agent/ip-masq-1.webp)
-{width=1792 height=1308}
+![ip-masq-agent 的工作原理](ip-masq-agent-flow.svg)
 
 ip-masq-agent 的主要流程如下：
 

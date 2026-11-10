@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1160" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ipmasqz-title ipmasqz-desc" id="ip-masq-agent-flow-root">
+<title id="ipmasqz-title">ip-masq-agent 的工作原理</title>
+<desc id="ipmasqz-desc">节点上的 Pod 经 cbr0 网桥和 eth0 对外通信：目标在集群 CIDR 内的流量保持 Pod 源地址不变；目标在集群外的流量被 SNAT 为节点 eth0 的地址。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #ip-masq-agent-flow-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #ip-masq-agent-flow-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #ip-masq-agent-flow-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#ip-masq-agent-flow-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="ip-masq-agent-flow-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="ip-masq-agent-flow-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="300" y="96" width="660" height="420" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="316" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Node</text>
+<path d="M 630 200 L 630 252" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 630 320 L 630 356" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 389 356 L 869 356" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 389 356 L 389 396" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 549 356 L 549 396" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 709 356 L 709 396" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 869 356 L 869 396" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 526 154 L 264 154" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#ip-masq-agent-flow-m-6b7280)"/>
+<rect x="314.56" y="131.4" width="160.88" height="16.6" style="fill:#ffffff"/>
+<text x="395" y="143" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">不伪装 · 保留 Src 10.1.1.2</text>
+<path d="M 526 178 L 408 178 Q 400 178 400 186 L 400 278 Q 400 286 392 286 L 264 286" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#ip-masq-agent-flow-m-0a84ff)"/>
+<rect x="404" y="229.6" width="169.76" height="16.6" style="fill:#ffffff"/>
+<text x="408" y="241.2" style="fill:#0a84ff" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">SNAT 10.1.1.5 → 10.128.1.2</text>
+<rect x="530" y="136" width="200" height="60" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="530" y="136" width="200" height="60" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(580.85,151) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="650" y="162.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">eth0</text>
+<text x="650" y="178.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.128.1.2</text>
+<rect x="530" y="256" width="200" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(576.96,271) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="650" y="282.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">cbr0 网桥</text>
+<text x="650" y="298.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.1.1/24</text>
+<rect x="324" y="400" width="130" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(349.67,418) scale(1)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="406" y="426.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod A</text>
+<text x="406" y="442.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.1.2</text>
+<rect x="484" y="400" width="130" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(509.67,418) scale(1)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="566" y="426.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod B</text>
+<text x="566" y="442.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.1.3</text>
+<rect x="644" y="400" width="130" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(669.67,418) scale(1)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="726" y="426.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod C</text>
+<text x="726" y="442.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.1.4</text>
+<rect x="804" y="400" width="130" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(829.67,418) scale(1)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="886" y="426.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod D</text>
+<text x="886" y="442.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.1.5</text>
+<rect x="40" y="136" width="220" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(95,151) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="170" y="162.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">集群内目标</text>
+<text x="170" y="178.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.3.1</text>
+<rect x="40" y="256" width="220" height="60" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(90.62,271) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="170" y="282.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">集群外目标</text>
+<text x="170" y="298.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">35.188.24.176</text>
+<rect x="40" y="380" width="220" height="100" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="56" y="410.625" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">网段信息</text>
+<text x="56" y="426.575" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">子网 10.128.0.0/14</text>
+<text x="56" y="442.525" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">集群 CIDR 10.0.0.0/9</text>
+<text x="56" y="458.475" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start">Pod CIDR 10.1.1.0/24</text>
+<text x="500" y="572" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ip-masq-agent 只对目标不在 nonMasqueradeCIDRs 内的流量做 SNAT，源地址由 Pod IP 改写为节点 eth0 地址。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ip-masq-agent 的工作原理</text>
+<line x1="294.45" y1="544" x2="314.45" y2="544" style="stroke:#6b7280" stroke-width="1.7"/>
+<text x="322.45" y="548" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">目标在集群 CIDR 内：保留 Pod IP</text>
+<line x1="526.63" y1="544" x2="546.63" y2="544" style="stroke:#0a84ff" stroke-width="1.7"/>
+<text x="554.63" y="548" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">目标在集群外：伪装为节点 IP</text>
+</g>
+</svg>

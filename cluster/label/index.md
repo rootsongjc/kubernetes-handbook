@@ -199,8 +199,7 @@ spec:
 
 下图展示了 Label 在服务发现中的作用：
 
-![Label 示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/cluster/label/labels-1.webp)
-{width=803 height=588}
+![Service 通过 Label 跨节点选中 Pod](service-selects-pods-by-label.svg)
 
 ## 注意事项
 

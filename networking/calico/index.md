@@ -28,7 +28,6 @@ Calico 创建和管理一个扁平的三层网络（无需 overlay），每个�
 Calico 采用分布式架构，由多个组件协同工作，部分组件为可选。
 
 ![Calico 架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/calico/calico-architecture.webp)
-{width=2580 height=1738}
 
 ### 核心组件
 

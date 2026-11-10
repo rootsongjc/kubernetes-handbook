@@ -220,7 +220,6 @@ cluster/log-dump.sh <output-directory>
 [test-infra](https://github.com/kubernetes/test-infra) 是 Kubernetes 官方的测试框架，提供了完整的 CI/CD 测试解决方案。
 
 ![test-infra 架构图（图片来自官方 GitHub）](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/testing/kubernetes-test-architecture.webp)
-{width=1313 height=1284}
 
 主要特性：
 

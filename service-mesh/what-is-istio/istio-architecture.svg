@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1132" viewBox="0 0 1000 566" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="istioaz-title istioaz-desc" id="istio-architecture-root">
+<title id="istioaz-title">Istio 架构：数据平面与控制平面</title>
+<desc id="istioaz-desc">数据平面由每个 Pod 内与服务并列的 Envoy 代理组成，处理入口、网格内与出口流量；控制平面 istiod 统一向代理下发服务发现、配置与证书。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #istio-architecture-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #istio-architecture-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #istio-architecture-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#istio-architecture-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="istio-architecture-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+<marker id="istio-architecture-m-start-0a84ff" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0, 0 3.5, 9 7" style="fill:#0a84ff"/></marker>
+<marker id="istio-architecture-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="88" width="920" height="430" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="110" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Istio 服务网格</text>
+<rect x="200" y="128" width="200" height="240" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="216" y="150" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod A</text>
+<rect x="600" y="128" width="200" height="240" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="616" y="150" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod B</text>
+<path d="M 300 228 L 300 284" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#istio-architecture-m-0a84ff)" marker-start="url(#istio-architecture-m-start-0a84ff)"/>
+<path d="M 700 228 L 700 284" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#istio-architecture-m-0a84ff)" marker-start="url(#istio-architecture-m-start-0a84ff)"/>
+<path d="M 60 316 L 216 316" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#istio-architecture-m-0a84ff)"/>
+<rect x="110" y="293.4" width="56" height="16.6" style="fill:#f2f5ff"/>
+<text x="138" y="305" style="fill:#0a84ff" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">入口流量</text>
+<path d="M 384 316 L 616 316" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#istio-architecture-m-0a84ff)"/>
+<rect x="472" y="293.4" width="56" height="16.6" style="fill:#f2f5ff"/>
+<text x="500" y="305" style="fill:#0a84ff" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网格流量</text>
+<path d="M 784 316 L 940 316" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#istio-architecture-m-0a84ff)"/>
+<rect x="834" y="293.4" width="56" height="16.6" style="fill:#f2f5ff"/>
+<text x="862" y="305" style="fill:#0a84ff" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">出口流量</text>
+<path d="M 300 348 L 300 384 Q 300 392 308 392 L 372 392 Q 380 392 380 400 L 380 416" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#istio-architecture-m-6b7280)"/>
+<path d="M 700 348 L 700 384 Q 700 392 692 392 L 628 392 Q 620 392 620 400 L 620 416" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#istio-architecture-m-6b7280)"/>
+<rect x="220" y="168" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(258,181) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="320" y="192.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">服务 A</text>
+<text x="320" y="208.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用容器</text>
+<rect x="220" y="288" width="160" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="220" y="288" width="160" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(242.06,301.00) scale(1.25)" style="color:#0a84ff" fill="currentColor"><path d="m23.351 7.593-7.068-4.379a1.034 1.034 0 0 0-.84-.117c-.02.01-.052.021-.074.032L8.471 6.105a.695.695 0 0 0-.435.68l.17 7.355c.01.298.191.595.478.765l7.068 4.38c.255.159.574.201.84.116.02-.01.053-.021.074-.032l6.898-2.976a.705.705 0 0 0 .436-.68l-.17-7.355c-.011-.297-.192-.584-.479-.765m-7.185 10.044-6.143-3.805-.149-6.388 5.995-2.583 6.143 3.805.149 6.388zm.011-6.027a.832.832 0 0 0-.414-.67l-5.06-3.135-.159.064.032 1.52 4.007 2.487.095 4.06 1.53.946.086-.032zm-6.058 7.132L5.41 15.83l-.116-4.89 2.146-.924-.042-1.69-3.327 1.435a.611.611 0 0 0-.382.595l.138 5.74c0 .265.16.52.414.67l5.516 3.422c.224.138.5.18.734.106a.15.15 0 0 1 .064-.021l3.252-1.403-1.616-1zm-2.615-6.1-1.52-.947.032 1.446 1.52.946zm2.19 5.059-.032-1.414-1.329-.83c-.021-.01-.042-.031-.053-.042l.032 1.425zm-4.751 1.902-3.476-2.158-.085-3.613 1.7-.734-.031-1.445-2.72 1.17a.527.527 0 0 0-.33.51l.106 4.336c0 .223.138.446.35.574l4.167 2.582a.822.822 0 0 0 .627.096c.021-.01.043-.01.064-.021l2.561-1.106-1.392-.86Z"/></g>
+<text x="320" y="312.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Envoy 代理</text>
+<text x="320" y="328.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Sidecar</text>
+<rect x="620" y="168" width="160" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(658,181) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="720" y="192.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">服务 B</text>
+<text x="720" y="208.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">应用容器</text>
+<rect x="620" y="288" width="160" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="620" y="288" width="160" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(642.06,301.00) scale(1.25)" style="color:#0a84ff" fill="currentColor"><path d="m23.351 7.593-7.068-4.379a1.034 1.034 0 0 0-.84-.117c-.02.01-.052.021-.074.032L8.471 6.105a.695.695 0 0 0-.435.68l.17 7.355c.01.298.191.595.478.765l7.068 4.38c.255.159.574.201.84.116.02-.01.053-.021.074-.032l6.898-2.976a.705.705 0 0 0 .436-.68l-.17-7.355c-.011-.297-.192-.584-.479-.765m-7.185 10.044-6.143-3.805-.149-6.388 5.995-2.583 6.143 3.805.149 6.388zm.011-6.027a.832.832 0 0 0-.414-.67l-5.06-3.135-.159.064.032 1.52 4.007 2.487.095 4.06 1.53.946.086-.032zm-6.058 7.132L5.41 15.83l-.116-4.89 2.146-.924-.042-1.69-3.327 1.435a.611.611 0 0 0-.382.595l.138 5.74c0 .265.16.52.414.67l5.516 3.422c.224.138.5.18.734.106a.15.15 0 0 1 .064-.021l3.252-1.403-1.616-1zm-2.615-6.1-1.52-.947.032 1.446 1.52.946zm2.19 5.059-.032-1.414-1.329-.83c-.021-.01-.042-.031-.053-.042l.032 1.425zm-4.751 1.902-3.476-2.158-.085-3.613 1.7-.734-.031-1.445-2.72 1.17a.527.527 0 0 0-.33.51l.106 4.336c0 .223.138.446.35.574l4.167 2.582a.822.822 0 0 0 .627.096c.021-.01.043-.01.064-.021l2.561-1.106-1.392-.86Z"/></g>
+<text x="720" y="312.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Envoy 代理</text>
+<text x="720" y="328.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Sidecar</text>
+<rect x="300" y="420" width="400" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(352.29,441.00) scale(1.25)" style="color:#6b7280" fill="currentColor"><path d="M4 21 20 21 10 24zM4 20 10 19 10 8zM11 19 20 20 11 0z"/></g>
+<text x="520" y="452.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">istiod</text>
+<text x="520" y="468.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pilot · Citadel · Galley 合并为单一控制平面进程</text>
+<text x="500" y="396" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">下发服务发现、配置与证书（xDS）</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Istio 架构：数据平面与控制平面</text>
+<line x1="394" y1="544" x2="414" y2="544" style="stroke:#0a84ff" stroke-width="1.7"/>
+<text x="422" y="548" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">数据平面流量</text>
+<line x1="512" y1="544" x2="532" y2="544" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="540" y="548" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">控制平面下发</text>
+</g>
+</svg>

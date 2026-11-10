@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="960" viewBox="0 0 1080 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cloudnz-title cloudnz-desc" id="cloud-native-app-model-root">
+<title id="cloudnz-title">基于 OAM 的云原生应用模型</title>
+<desc id="cloudnz-desc">一个 ApplicationConfiguration 包含多个 ApplicationScope，每个作用域内有若干 Component，每个组件由一个 Workload 实例和若干 Trait 组成。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cloud-native-app-model-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #cloud-native-app-model-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #cloud-native-app-model-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#cloud-native-app-model-root .diagram-container { overflow-x: visible; }
+}</style>
+
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="88" width="1000" height="300" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="110" style="fill:#6b7280" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">ApplicationConfiguration A（应用配置）</text>
+<rect x="60" y="124" width="300" height="244" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="76" y="146" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">ApplicationScope A（应用作用域）</text>
+<rect x="380" y="124" width="640" height="244" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="396" y="146" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">ApplicationScope B（应用作用域）</text>
+<rect x="76" y="160" width="268" height="190" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="92" y="182" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Component A（组件）</text>
+<rect x="396" y="160" width="296" height="190" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="412" y="182" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Component B（组件）</text>
+<rect x="708" y="160" width="296" height="190" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="724" y="182" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Component C（组件）</text>
+<rect x="92" y="200" width="144" height="134" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(104.52,252) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></g>
+<text x="184" y="263.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Workload A</text>
+<text x="184" y="279.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">工作负载实例</text>
+<rect x="248" y="200" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="288" y="223.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait A</text>
+<rect x="248" y="248" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="288" y="271.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait B</text>
+<rect x="248" y="296" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="288" y="319.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait …</text>
+<rect x="412" y="200" width="172" height="134" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(438.52,252) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></g>
+<text x="518" y="263.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Workload B</text>
+<text x="518" y="279.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">工作负载实例</text>
+<rect x="596" y="200" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="636" y="223.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait A</text>
+<rect x="596" y="248" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="636" y="271.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait C</text>
+<rect x="596" y="296" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="636" y="319.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait …</text>
+<rect x="724" y="200" width="172" height="134" rx="6" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(750.52,252) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></g>
+<text x="830" y="263.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Workload B</text>
+<text x="830" y="279.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">工作负载实例</text>
+<rect x="908" y="200" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="948" y="223.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait B</text>
+<rect x="908" y="248" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="948" y="271.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait C</text>
+<rect x="908" y="296" width="80" height="38" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="948" y="319.2" style="fill:#1d1d1f" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Trait …</text>
+<text x="540" y="456" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Component 以基础设施中立的方式描述一个 Workload 实例；ApplicationScope 把组件按共同特性分组；ApplicationConfiguration 描述整体部署。</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">基于 OAM 的云原生应用模型</text>
+<rect x="321.58" y="409" width="20" height="14" rx="3" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="349.58" y="420" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Workload：由平台提供的工作负载类型</text>
+<line x1="567.4" y1="416" x2="587.4" y2="416" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="595.4" y="420" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Trait：附加在组件上的运维特征</text>
+</g>
+</svg>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1200" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="envoyfz-title envoyfz-desc" id="envoy-filter-chain-match-root">
+<title id="envoyfz-title">监听器按匹配条件选择过滤器链</title>
+<desc id="envoyfz-desc">监听器收到连接后，根据 filter_chain_match 中的目标端口、SNI、源地址等属性选择一条过滤器链，连接随后依次流经该链中的网络过滤器。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #envoy-filter-chain-match-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #envoy-filter-chain-match-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #envoy-filter-chain-match-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#envoy-filter-chain-match-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="envoy-filter-chain-match-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="60" y="300" width="240" height="248" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="76" y="322" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">过滤器链 1</text>
+<rect x="360" y="300" width="240" height="248" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="376" y="322" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">过滤器链 2</text>
+<rect x="660" y="300" width="240" height="248" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="676" y="322" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">过滤器链 3</text>
+<path d="M 480 152 L 480 176" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 180 384 L 180 416" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 180 460 L 180 492" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 480 384 L 480 416" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 480 460 L 480 492" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 780 384 L 780 416" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 780 460 L 780 492" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 480 256 L 480 280" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<path d="M 180 280 L 780 280" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<path d="M 180 280 L 180 340" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 480 280 L 480 340" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<path d="M 780 280 L 780 340" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#envoy-filter-chain-match-m-6b7280)"/>
+<rect x="380" y="92" width="200" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="380" y="92" width="200" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(404.42,105) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 12v.01" /> <path d="M3 21h18" /> <path d="M5 21v-16a2 2 0 0 1 2 -2h6m4 10.5v7.5" /> <path d="M21 7h-7m3 -3l-3 3l3 3" /></g>
+<text x="500" y="116.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">监听器 Listener</text>
+<text x="500" y="132.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">0.0.0.0:10000</text>
+<polygon points="480,180 580,216 480,252 380,216" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3" stroke-linejoin="round"/>
+<text x="480" y="213.2" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">匹配过滤器链</text>
+<text x="480" y="228.6" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">filter_chain_match</text>
+<rect x="90" y="344" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="180" y="366.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 1</text>
+<rect x="90" y="420" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="180" y="442.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 2</text>
+<rect x="90" y="496" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="180" y="518.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 3</text>
+<rect x="390" y="344" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="480" y="366.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 1</text>
+<rect x="390" y="420" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="480" y="442.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 2</text>
+<rect x="390" y="496" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="480" y="518.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 3</text>
+<rect x="690" y="344" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="780" y="366.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 1</text>
+<rect x="690" y="420" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="780" y="442.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 2</text>
+<rect x="690" y="496" width="180" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="780" y="518.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 3</text>
+<text x="480" y="580" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">每条链至少包含一个过滤器；没有任何链匹配时连接被关闭，filter_chains 为空的监听器因此无法转发流量。</text>
+<text x="480" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">监听器按匹配条件选择过滤器链</text>
+</g>
+</svg>

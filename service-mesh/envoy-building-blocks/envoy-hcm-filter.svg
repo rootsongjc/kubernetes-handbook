@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="840" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="envoyhz-title envoyhz-desc" id="envoy-hcm-filter-root">
+<title id="envoyhz-title">HCM 过滤器内部的 HTTP 过滤器链</title>
+<desc id="envoyhz-desc">网络过滤器链中的 HTTP 连接管理器（HCM）把字节流解析为 HTTP 消息，并在内部运行一条 HTTP 过滤器链，最后一个过滤器必须是执行路由的 router。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #envoy-hcm-filter-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #envoy-hcm-filter-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #envoy-hcm-filter-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#envoy-hcm-filter-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="envoy-hcm-filter-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="80" y="96" width="280" height="276" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="96" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">网络过滤器链 1</text>
+<rect x="520" y="96" width="300" height="276" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1"/>
+<text x="536" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">HCM 过滤器（HTTP 连接管理器）</text>
+<path d="M 220 180 L 220 212" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-hcm-filter-m-6b7280)"/>
+<path d="M 220 256 L 220 288" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-hcm-filter-m-6b7280)"/>
+<path d="M 670 180 L 670 212" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-hcm-filter-m-6b7280)"/>
+<path d="M 670 256 L 670 288" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-hcm-filter-m-6b7280)"/>
+<path d="M 324 310 L 432 310 Q 440 310 440 302 L 440 126 Q 440 118 448 118 L 516 118" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#envoy-hcm-filter-m-6b7280)"/>
+<rect x="444" y="226.6" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="448" y="238.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">展开</text>
+<rect x="120" y="140" width="200" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="220" y="162.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 1</text>
+<rect x="120" y="216" width="200" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="220" y="238.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">网络过滤器 2</text>
+<rect x="120" y="292" width="200" height="36" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="120" y="292" width="200" height="36" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="220" y="314.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HCM 过滤器</text>
+<rect x="560" y="140" width="220" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="670" y="162.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP 过滤器 1</text>
+<rect x="560" y="216" width="220" height="36" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="670" y="238.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP 过滤器 2</text>
+<rect x="560" y="292" width="220" height="36" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="560" y="292" width="220" height="36" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<text x="670" y="314.55" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">router 过滤器</text>
+<text x="450" y="404" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP 过滤器在 http_filters 下声明，处理访问日志、请求 ID、头部操作与路由表；router 必须排在最后。</text>
+<text x="450" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HCM 过滤器内部的 HTTP 过滤器链</text>
+</g>
+</svg>

@@ -184,7 +184,6 @@ kubectl 的子命令按功能主要分为以下几个类别：
 为提升 kubectl 的调试与管理效率，推荐结合多种开源增强工具。
 
 ![kubectl 增强工具推荐](https://assets.jimmysong.io/images/book/kubernetes-handbook/cli/using-kubectl/tools-to-supercharge-kubectl.webp)
-{width=2048 height=1535}
 
 ### 推荐工具清单
 
@@ -201,7 +200,6 @@ kubectl 的子命令按功能主要分为以下几个类别：
 [kube-shell](https://github.com/cloudnativelabs/kube-shell) 为 kubectl 提供交互式命令行体验，适合复杂调试和命令探索。
 
 ![kube-shell 交互终端界面](https://assets.jimmysong.io/images/book/kubernetes-handbook/cli/using-kubectl/kube-shell.webp)
-{width=2592 height=1976}
 
 **主要特性**：
 

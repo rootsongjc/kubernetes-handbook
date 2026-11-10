@@ -40,8 +40,7 @@ Horizontal Pod Autoscaling 适用于任何实现了 `scale` 子资源的工作�
 
 下图展示了 HPA 的整体架构：
 
-![HPA 示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/hpa/horizontal-pod-autoscaler.webp)
-{width=969 height=554}
+![Horizontal Pod Autoscaler 工作原理](hpa-architecture.svg)
 
 ### 工作机制
 

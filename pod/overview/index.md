@@ -82,8 +82,7 @@ Pod 内的多个容器可以共享以下资源，实现高效协作。
 
 下图展示了典型的多容器 Pod 架构：
 
-![多容器 Pod 架构示意图](https://assets.jimmysong.io/images/book/kubernetes-handbook/pod/overview/pod-overview-1.webp)
-{width=1156 height=908}
+![多容器 Pod 通过共享卷协作](pod-shared-volume.svg)
 
 ## Pod 的生命周期管理
 

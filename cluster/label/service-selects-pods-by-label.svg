@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1000" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="servicz-title servicz-desc" id="service-selects-pods-by-label-root">
+<title id="servicz-title">Service 通过 Label 跨节点选中 Pod</title>
+<desc id="servicz-desc">两个 Service 各自通过 selector 匹配 Pod 的 labels：app=web 的 Pod 分布在两个节点上被 Service web 选中，app=api 的 Pod 被 Service api 选中，app=cache 的 Pod 不属于任何 Service。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #service-selects-pods-by-label-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #service-selects-pods-by-label-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #service-selects-pods-by-label-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#service-selects-pods-by-label-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="service-selects-pods-by-label-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="300" width="440" height="160" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="322" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Node 1</text>
+<rect x="520" y="300" width="440" height="160" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="536" y="322" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Node 2</text>
+<path d="M 399 196 L 399 250" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 159 250 L 639 250" fill="none" style="stroke:#6b7280" stroke-width="1.7"/>
+<path d="M 159 250 L 159 344" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#service-selects-pods-by-label-m-6b7280)"/>
+<path d="M 639 250 L 639 344" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#service-selects-pods-by-label-m-6b7280)"/>
+<path d="M 845 196 L 845 344" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#service-selects-pods-by-label-m-6b7280)"/>
+<rect x="64" y="348" width="190" height="84" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="64" y="348" width="190" height="84" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(114.69,375) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="179" y="378.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="179" y="394.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">labels:</text>
+<text x="179" y="410.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">app=web</text>
+<rect x="270" y="348" width="190" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(314.31,375) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="385" y="378.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="385" y="394.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">labels:</text>
+<text x="385" y="410.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">app=cache</text>
+<rect x="544" y="348" width="190" height="84" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="544" y="348" width="190" height="84" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(594.69,375) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="659" y="378.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="659" y="394.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">labels:</text>
+<text x="659" y="410.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">app=web</text>
+<rect x="750" y="348" width="190" height="84" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(802.78,375) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="865" y="378.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="865" y="394.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">labels:</text>
+<text x="865" y="410.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">app=api</text>
+<rect x="289" y="120" width="220" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(320.68,141) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 0 -8.979 9" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h8.9" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a16.992 16.992 0 0 1 2.522 10.376" /> <path d="M17.001 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M19.001 15.5v1.5" /> <path d="M19.001 21v1.5" /> <path d="M22.032 17.25l-1.299 .75" /> <path d="M17.27 20l-1.3 .75" /> <path d="M15.97 17.25l1.3 .75" /> <path d="M20.733 20l1.3 .75" /></g>
+<text x="419" y="152.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Service web</text>
+<text x="419" y="169.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">selector: app=web</text>
+<rect x="735" y="120" width="220" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(768.96,141) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 0 -8.979 9" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h8.9" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a16.992 16.992 0 0 1 2.522 10.376" /> <path d="M17.001 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M19.001 15.5v1.5" /> <path d="M19.001 21v1.5" /> <path d="M22.032 17.25l-1.299 .75" /> <path d="M17.27 20l-1.3 .75" /> <path d="M15.97 17.25l1.3 .75" /> <path d="M20.733 20l1.3 .75" /></g>
+<text x="865" y="152.55" style="fill:#1d1d1f" font-size="15" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Service api</text>
+<text x="865" y="169.95" style="fill:#6b7280" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">selector: app=api</text>
+<text x="500" y="484" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Service 只看 labels 是否与 selector 匹配，与 Pod 落在哪个节点无关；未被任何 selector 匹配的 Pod 不会收到 Service 流量。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Service 通过 Label 跨节点选中 Pod</text>
+</g>
+</svg>

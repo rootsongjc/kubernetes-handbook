@@ -67,7 +67,6 @@ lastmod: 2026-11-01T00:00:00+08:00
 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) 是当前最受欢迎的 GitOps 工具之一，由 CNCF（Cloud Native Computing Foundation）托管。它将 Git 仓库作为真实来源，通过声明式配置实现应用程序的自动化部署和管理。
 
 ![ArgoCD 用户界面](https://assets.jimmysong.io/images/book/kubernetes-handbook/devops/ci-cd/argocd-ui.webp)
-{width=2000 height=1034}
 
 ### 核心特性
 

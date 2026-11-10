@@ -11,8 +11,7 @@ lastmod: 2026-11-01T00:00:00+08:00
 
 本文将深入分析 client-go 中 informer 机制的源码实现，帮助读者理解 Kubernetes 控制器模式的核心原理。
 
-![client-go informer](https://assets.jimmysong.io/images/book/kubernetes-handbook/develop/client-go-informer-sourcecode-analyse/client-go-informer.webp)
-{width=1058 height=794}
+![client-go Informer 工作流程](client-go-informer-flow.svg)
 
 ## 前言
 

@@ -150,8 +150,7 @@ spec:
 
 默认模式。kube-proxy 监控 Service/EndpointSlice 变化，自动生成 iptables 规则，将流量重定向到后端 Pod。支持基于客户端 IP 的会话亲和性（`service.spec.sessionAffinity: ClientIP`）。规则数量随 Service 与端点数线性增长，大规模集群下规则同步耗时明显。
 
-![iptables 代理模式下 Service 概览图](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-discovery/service/services-iptables-overview.webp)
-{width=600 height=400}
+![iptables 代理模式下的 Service](service-iptables-mode.svg)
 
 ### IPVS 代理模式
 

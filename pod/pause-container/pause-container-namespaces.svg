@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="1056" viewBox="0 0 900 528" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pausecz-title pausecz-desc" id="pause-container-namespaces-root">
+<title id="pausecz-title">Pause 容器持有 Pod 的命名空间</title>
+<desc id="pausecz-desc">pause 容器先创建 IPC、Network、PID 与 UTS 命名空间，nginx 与 ghost 容器随后加入，因而共享同一 IP、可通过 localhost 互访，用户访问 nginx 暴露的端口。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #pause-container-namespaces-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #pause-container-namespaces-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #pause-container-namespaces-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#pause-container-namespaces-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="pause-container-namespaces-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="pause-container-namespaces-m-start-6b7280" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0, 0 3.5, 9 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="200" y="88" width="660" height="392" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="216" y="110" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">IPC 命名空间</text>
+<rect x="224" y="128" width="612" height="328" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="240" y="150" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Network 命名空间</text>
+<rect x="248" y="168" width="564" height="264" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="264" y="190" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">PID 命名空间（可选共享）</text>
+<rect x="272" y="208" width="516" height="200" rx="8" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="288" y="230" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">UTS 命名空间（主机名）</text>
+<path d="M 164 360 L 288 360" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pause-container-namespaces-m-6b7280)"/>
+<rect x="191.28" y="337.4" width="69.44" height="16.6" style="fill:#ffffff"/>
+<text x="226" y="349" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP 请求</text>
+<path d="M 472 360 L 592 360" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#pause-container-namespaces-m-6b7280)" marker-start="url(#pause-container-namespaces-m-start-6b7280)"/>
+<rect x="482.64" y="337.4" width="98.72" height="16.6" style="fill:#ffffff"/>
+<text x="532" y="349" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">localhost:2368</text>
+<rect x="430" y="248" width="200" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="430" y="248" width="200" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(477,261) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="550" y="272.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">pause</text>
+<text x="550" y="288.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">持有命名空间</text>
+<rect x="292" y="332" width="176" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(340.64,345) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><title>NGINX</title><path d="M12 0L1.605 6v12L12 24l10.395-6V6L12 0zm6 16.59c0 .705-.646 1.29-1.529 1.29-.631 0-1.351-.255-1.801-.81l-6-7.141v6.66c0 .721-.57 1.29-1.274 1.29H7.32c-.721 0-1.29-.6-1.29-1.29V7.41c0-.705.63-1.29 1.5-1.29.646 0 1.38.255 1.83.81l5.97 7.141V7.41c0-.721.6-1.29 1.29-1.29h.075c.72 0 1.29.6 1.29 1.29v9.18H18z"/></g>
+<text x="400" y="356.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">nginx</text>
+<text x="400" y="372.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">端口 80</text>
+<rect x="596" y="332" width="176" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(638.04,345) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /> <path d="M12 12l8 -4.5" /> <path d="M12 12l0 9" /> <path d="M12 12l-8 -4.5" /> <path d="M16 5.25l-8 4.5" /></g>
+<text x="704" y="356.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">ghost</text>
+<text x="704" y="372.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">端口 2368</text>
+<rect x="40" y="332" width="120" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(63.5,345) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /> <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></g>
+<text x="120" y="356.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">用户</text>
+<text x="120" y="372.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">浏览器</text>
+<text x="450" y="512" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">pause 先启动并持有命名空间，业务容器以 --net/--ipc/--pid=container:pause 加入；业务容器重启不会丢失 Pod IP。</text>
+<text x="450" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pause 容器持有 Pod 的命名空间</text>
+</g>
+</svg>

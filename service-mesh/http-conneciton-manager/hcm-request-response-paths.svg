@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2000" height="1200" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hcmreqz-title hcmreqz-desc" id="hcm-request-response-paths-root">
+<title id="hcmreqz-title">HTTP 过滤器在请求与响应路径上的调用顺序</title>
+<desc id="hcmreqz-desc">过滤器链按声明顺序排列；请求路径只调用解码器与解码/编码器类型的过滤器，响应路径按相反方向只调用编码器与解码/编码器类型的过滤器。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #hcm-request-response-paths-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #hcm-request-response-paths-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #hcm-request-response-paths-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#hcm-request-response-paths-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="hcm-request-response-paths-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<path d="M 100 156 L 156 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 364 156 L 396 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 604 156 L 636 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 844 156 L 900 156" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 100 336 L 156 336" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<rect x="112" y="313.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="128" y="325" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">请求</text>
+<path d="M 180 296 L 180 256 Q 180 248 188 248 L 812 248 Q 820 248 820 256 L 820 296" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<rect x="456.88" y="225.4" width="86.24" height="16.6" style="fill:#ffffff"/>
+<text x="500" y="237" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">跳过 encoder</text>
+<path d="M 844 336 L 900 336" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 940 432 L 588 432 Q 580 432 580 440 L 580 476" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<rect x="843.2" y="409.4" width="32" height="16.6" style="fill:#ffffff"/>
+<text x="859.2" y="421" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">响应</text>
+<path d="M 396 516 L 364 516" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<path d="M 156 516 L 100 516" fill="none" style="stroke:#6b7280" stroke-width="1.7" marker-end="url(#hcm-request-response-paths-m-6b7280)"/>
+<text x="200" y="106" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">过滤器链（声明顺序）</text>
+<rect x="160" y="120" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="260" y="152.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 1</text>
+<text x="260" y="168.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder/encoder</text>
+<rect x="400" y="120" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="500" y="152.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 2</text>
+<text x="500" y="168.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">encoder</text>
+<rect x="640" y="120" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="740" y="152.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 3</text>
+<text x="740" y="168.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder</text>
+<text x="200" y="286" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">请求路径：仅调用 decoder 与 decoder/encoder</text>
+<rect x="160" y="300" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="260" y="332.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 1</text>
+<text x="260" y="348.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder/encoder</text>
+<rect x="400" y="300" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="500" y="332.925" style="fill:#6b7280" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 2</text>
+<text x="500" y="348.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">encoder</text>
+<rect x="640" y="300" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="740" y="332.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 3</text>
+<text x="740" y="348.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder</text>
+<text x="200" y="466" style="fill:#1d1d1f" font-size="13" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">响应路径：仅调用 encoder 与 decoder/encoder</text>
+<rect x="160" y="480" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="260" y="512.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 1</text>
+<text x="260" y="528.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder/encoder</text>
+<rect x="400" y="480" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<text x="500" y="512.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 2</text>
+<text x="500" y="528.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">encoder</text>
+<rect x="640" y="480" width="200" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.10)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="740" y="512.925" style="fill:#6b7280" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">过滤器 3</text>
+<text x="740" y="528.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">decoder</text>
+<text x="500" y="584" style="fill:#6b7280" font-size="12" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">同一个过滤器实例在请求与响应路径上共享状态，并可决定是否继续执行链上的后续过滤器。</text>
+<text x="500" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">HTTP 过滤器在请求与响应路径上的调用顺序</text>
+</g>
+</svg>

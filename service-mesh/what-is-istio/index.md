@@ -39,8 +39,7 @@ Istio 是一个开源的服务网格平台，旨在简化微服务架构中的�
 
 Istio 服务网格采用经典的数据平面和控制平面分离架构。数据平面负责处理实际的网络流量，而控制平面负责管理和配置数据平面组件。
 
-![Istio 架构](https://assets.jimmysong.io/images/book/kubernetes-handbook/service-mesh/what-is-istio/istio-arch.webp)
-{width=1280 height=720}
+![Istio 架构：数据平面与控制平面](istio-architecture.svg)
 
 ### 数据平面：Envoy 代理
 

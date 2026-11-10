@@ -94,8 +94,7 @@ Cilium 支持多种网络模型，适应不同基础设施和性能需求。
 
 Cilium 采用分布式组件架构，便于扩展和集成。
 
-![Cilium 组件架构图](https://assets.jimmysong.io/images/book/kubernetes-handbook/networking/cilium/cilium-arch.webp)
-{width=1619 height=1443}
+![Cilium 组件架构](cilium-architecture.svg)
 
 ### Cilium Agent
 

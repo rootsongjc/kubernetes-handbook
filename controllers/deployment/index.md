@@ -3,7 +3,7 @@ weight: 2
 title: Deployment
 date: 2022-05-21T00:00:00+08:00
 description: Deployment 为 Pod 和 ReplicaSet 提供了声明式的部署方案，支持滚动更新、扩缩容、暂停恢复等操作，是 Kubernetes 中管理无状态应用的核心控制器。
-lastmod: 2026-11-01T00:00:00+08:00
+lastmod: 2026-11-10T09:01:23.896Z
 ---
 
 > Deployment 控制器为 Kubernetes 无状态应用提供了声明式部署、弹性伸缩与高可用保障，是现代云原生架构的核心基石。
@@ -64,13 +64,6 @@ kubectl set image deployment/nginx-deployment nginx=nginx:1.27
 # 回滚到上一版本
 kubectl rollout undo deployment/nginx-deployment
 ```
-
-## 架构图解
-
-下图展示了 Deployment 控制器的核心架构与资源关系。
-
-![Kubernetes Deployment Cheatsheet](https://assets.jimmysong.io/images/book/kubernetes-handbook/controllers/deployment/deployment-cheatsheet.webp)
-{width=2142 height=2468}
 
 ## 核心概念
 

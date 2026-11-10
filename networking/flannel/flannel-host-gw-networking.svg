@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2160" height="1344" viewBox="0 0 1080 672" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="flannez-title flannez-desc" id="flannel-host-gw-networking-root">
+<title id="flannez-title">Flannel host-gw 后端的跨节点 Pod 网络</title>
+<desc id="flannez-desc">每个节点有独立的 Pod 子网；flanneld 从子网管理器读取各节点子网并写入本机路由表，Pod 流量经 cni0 网桥、路由表和 eth0 直接路由到对端节点，无需封装。</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #flannel-host-gw-networking-root { --color-paper:#ffffff; --color-ink:#1d1d1f; --color-muted:#6b7280; --font-sans:'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif:'Instrument Serif', 'Noto Serif SC', 'Songti SC', serif; --font-mono:'Geist Mono', ui-monospace, monospace; }
+      #flannel-host-gw-networking-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #flannel-host-gw-networking-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#flannel-host-gw-networking-root .diagram-container { overflow-x: visible; }
+}</style>
+<marker id="flannel-host-gw-networking-m-0a84ff" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#0a84ff"/></marker>
+<marker id="flannel-host-gw-networking-m-6b7280" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0, 9 3.5, 0 7" style="fill:#6b7280"/></marker>
+<marker id="flannel-host-gw-networking-m-start-6b7280" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="9 0, 0 3.5, 9 7" style="fill:#6b7280"/></marker>
+</defs>
+<rect width="100%" height="100%" style="fill:#ffffff"/>
+<g font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<rect x="40" y="96" width="1000" height="216" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="118" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Node 1 · 子网 10.1.15.0/24 · 主机 192.168.0.100</text>
+<rect x="40" y="424" width="1000" height="216" rx="8" style="fill:#f2f5ff;stroke:rgba(16,24,40,0.10)" stroke-width="1"/>
+<text x="56" y="446" style="fill:#6b7280" font-size="12" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Node 2 · 子网 10.1.20.0/24 · 主机 192.168.0.200</text>
+<path d="M 302 172 L 342 172" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 520 172 L 560 172" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 738 172 L 778 172" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 778 564 L 738 564" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 560 564 L 520 564" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 342 564 L 302 564" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<path d="M 520 268 L 641 268 Q 649 268 649 260 L 649 212" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#flannel-host-gw-networking-m-6b7280)"/>
+<path d="M 520 468 L 641 468 Q 649 468 649 476 L 649 524" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#flannel-host-gw-networking-m-6b7280)"/>
+<path d="M 431 300 L 431 336" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#flannel-host-gw-networking-m-6b7280)" marker-start="url(#flannel-host-gw-networking-m-start-6b7280)"/>
+<rect x="435" y="310.6" width="56" height="16.6" style="fill:#ffffff"/>
+<text x="439" y="322.2" style="fill:#6b7280" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">读写子网</text>
+<path d="M 431 400 L 431 436" fill="none" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4" marker-end="url(#flannel-host-gw-networking-m-6b7280)" marker-start="url(#flannel-host-gw-networking-m-start-6b7280)"/>
+<path d="M 867 212 L 867 524" fill="none" style="stroke:#0a84ff" stroke-width="1.7" marker-end="url(#flannel-host-gw-networking-m-0a84ff)"/>
+<rect x="747" y="360.6" width="116" height="16.6" style="fill:#ffffff"/>
+<text x="859" y="372.2" style="fill:#0a84ff" font-size="12" font-weight="500" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="end">经主机网络直接路由</text>
+<rect x="128" y="136" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(143.28,157) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="233" y="168.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="233" y="184.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">veth0 · 10.1.15.2</text>
+<rect x="346" y="136" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(375.03,157) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="451" y="168.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">cni0 网桥</text>
+<text x="451" y="184.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.15.1/24</text>
+<rect x="564" y="136" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(579.28,157) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="669" y="160.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">路由表</text>
+<text x="669" y="176.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.20.0/24</text>
+<text x="669" y="192.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">via 192.168.0.200</text>
+<rect x="782" y="136" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(807.62,157) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="887" y="168.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">eth0</text>
+<text x="887" y="184.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">192.168.0.100</text>
+<rect x="346" y="240" width="170" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(381.32,253) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="451" y="264.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">flanneld</text>
+<text x="451" y="280.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">写入路由</text>
+<rect x="346" y="340" width="170" height="56" rx="6" style="fill:#ffffff;stroke:#0a84ff" stroke-width="1.3"/>
+<rect x="346" y="340" width="170" height="56" rx="6" style="fill:rgba(10,132,255,0.07);stroke:none" stroke-width="0"/>
+<g aria-hidden="true" transform="translate(365.02,353) scale(1.25)" style="color:#0a84ff" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /> <path d="M4 6v6a8 3 0 0 0 16 0v-6" /> <path d="M4 12v6a8 3 0 0 0 16 0v-6" /></g>
+<text x="451" y="364.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">子网管理器</text>
+<text x="451" y="380.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">etcd 或 K8s API</text>
+<rect x="346" y="440" width="170" height="56" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(381.32,453) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /> <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></g>
+<text x="451" y="464.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">flanneld</text>
+<text x="451" y="480.875" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">写入路由</text>
+<rect x="128" y="528" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(143.28,549) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033" /></g>
+<text x="233" y="560.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Pod</text>
+<text x="233" y="576.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">veth0 · 10.1.20.2</text>
+<rect x="346" y="528" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(375.03,549) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M3.6 9h16.8" /> <path d="M3.6 15h16.8" /> <path d="M11.5 3a17 17 0 0 0 0 18" /> <path d="M12.5 3a17 17 0 0 1 0 18" /></g>
+<text x="451" y="560.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">cni0 网桥</text>
+<text x="451" y="576.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.20.1/24</text>
+<rect x="564" y="528" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(579.28,549) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /></g>
+<text x="669" y="552.95" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">路由表</text>
+<text x="669" y="568.9" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">10.1.15.0/24</text>
+<text x="669" y="584.85" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">via 192.168.0.100</text>
+<rect x="782" y="528" width="170" height="72" rx="6" style="fill:#ffffff;stroke:rgba(16,24,40,0.28)" stroke-width="1.3"/>
+<g aria-hidden="true" transform="translate(807.62,549) scale(1.25)" style="color:#6b7280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /> <path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /></g>
+<text x="887" y="560.925" style="fill:#1d1d1f" font-size="14" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">eth0</text>
+<text x="887" y="576.875" style="fill:#6b7280" font-size="11" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">192.168.0.200</text>
+<text x="540" y="44" style="fill:#1d1d1f" font-size="22" font-weight="600" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">Flannel host-gw 后端的跨节点 Pod 网络</text>
+<line x1="424.21" y1="656" x2="444.21" y2="656" style="stroke:#0a84ff" stroke-width="1.7"/>
+<text x="452.21" y="660" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">Pod 流量路径</text>
+<line x1="544.63" y1="656" x2="564.63" y2="656" style="stroke:#6b7280" stroke-width="1.7" stroke-dasharray="5,4"/>
+<text x="572.63" y="660" style="fill:#6b7280" font-size="11" font-family="'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="start">flanneld 控制面</text>
+</g>
+</svg>
